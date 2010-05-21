@@ -1,0 +1,58 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- // Project SIX: OVAL                                     // -->
+<!-- //                                                       // -->
+<!-- // TestNG Test Suite                                     // -->
+<!-- /////////////////////////////////////////////////////////// -->
+
+<!--
+@author     Akihito Nakamura, AIST
+@version    $Id: testng.xml 778 2010-05-11 06:26:16Z akihito $
+-->
+
+<suite name="SIX3-OVAL" verbose="1" parallel="tests">
+
+
+
+    <!-- ******************************************************* -->
+    <!-- core                                                    -->
+    <!-- ******************************************************* -->
+
+    <test name="oval" enabled="true">
+        <groups>
+            <run>
+                <include name="oval.result"/>
+            </run>
+        </groups>
+    
+        <classes>
+            <class name="jp.go.aist.six.test.oval.service.OvalXml2StoreTest"/>
+
+            <!--
+            <class name="jp.go.aist.six.test.oval.process.debian.DebianOvalBuilderTest"/>
+            <class name="jp.go.aist.six.test.oval.process.debian.DsaParserTest"/>
+            <class name="jp.go.aist.six.test.oval.process.debian.DebianOvaldiProcessorTest"/>
+            <class name="jp.go.aist.six.test.oval.process.debian.DebianOvalGeneratorTest"/>
+
+            <class name="jp.go.aist.six.test.oval.process.centos.CentOSOvalGeneratorTest"/>
+            <class name="jp.go.aist.six.test.oval.process.CentOSOvaldiProcessorTest"/>
+
+            <class name="jp.go.aist.six.test.oval.process.NetOvalInterpreterTest"/>
+            <class name="jp.go.aist.six.test.oval.OvaldiTest"/>
+            <class name="jp.go.aist.six.test.oval.service.OvalXml2StoreTest"/>
+            <class name="jp.go.aist.six.test.oval.service.OvalStoreTest"/>
+            <class name="jp.go.aist.six.test.oval.service.OvalXmlFragmentTest"/>
+            <class name="jp.go.aist.six.test.oval.service.OvalXmlMarshallingTest"/>
+            <class name="jp.go.aist.six.test.oval.service.OvalXmlTest"/>
+            <class name="jp.go.aist.six.test.oval.service.OvalXmlAnalysis"/>
+            -->
+        </classes>
+    </test>
+
+
+
+</suite>
+
+<!-- vim:set tabstop=4:set expandtab:set shiftwidth=4: -->
+
