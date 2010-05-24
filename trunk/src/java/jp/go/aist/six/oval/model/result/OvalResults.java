@@ -95,13 +95,15 @@ public class OvalResults
                     final Collection<SystemResult> results
                     )
     {
-        _results.clear();
-        if (results == null  ||  results.size() == 0) {
-            return;
-        }
+        if (results != _results) {
+            _results.clear();
+            if (results == null  ||  results.size() == 0) {
+                return;
+            }
 
-        for (SystemResult  system : results) {
-            addResult( system );
+            for (SystemResult  system : results) {
+                addResult( system );
+            }
         }
     }
 

@@ -55,13 +55,15 @@ public class OvalRepository
                     final Collection<OvalRepositoryEvent> events
                     )
     {
-        _event.clear();
-        if (events == null  ||  events.size() == 0) {
-            return;
-        }
+        if (events != _event) {
+            _event.clear();
+            if (events == null  ||  events.size() == 0) {
+                return;
+            }
 
-        for (OvalRepositoryEvent  event : events) {
-            addEvent( event );
+            for (OvalRepositoryEvent  event : events) {
+                addEvent( event );
+            }
         }
     }
 

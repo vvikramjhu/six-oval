@@ -145,10 +145,12 @@ implements Serializable
                     final Collection<Reference> referenceList
                     )
     {
-        _reference.clear();
-        if (referenceList != null) {
-            for (Reference  ref : referenceList) {
-                addReference( ref );
+        if (referenceList != _reference) {
+            _reference.clear();
+            if (referenceList != null) {
+                for (Reference  ref : referenceList) {
+                    addReference( ref );
+                }
             }
         }
     }
@@ -187,9 +189,11 @@ implements Serializable
                     final Collection<MetadataItem> anyList
                     )
     {
-        _metadataItem.clear();
-        if (anyList != null) {
-            _metadataItem.addAll( anyList );
+        if (anyList != _metadataItem) {
+            _metadataItem.clear();
+            if (anyList != null) {
+                _metadataItem.addAll( anyList );
+            }
         }
     }
 
@@ -305,16 +309,18 @@ implements Serializable
                     final Collection<Cve> cves
                     )
     {
-        if (_cves != null) {
-            _cves.clear();
-        }
+        if (cves != _cves) {
+            if (_cves != null) {
+                _cves.clear();
+            }
 
-        if (cves == null  ||  cves.size() == 0) {
-            return;
-        }
+            if (cves == null  ||  cves.size() == 0) {
+                return;
+            }
 
-        for (Cve  cve : cves) {
-            addRelatedCve( cve );
+            for (Cve  cve : cves) {
+                addRelatedCve( cve );
+            }
         }
     }
 

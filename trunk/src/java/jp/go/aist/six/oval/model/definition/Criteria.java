@@ -75,13 +75,15 @@ public class Criteria
                     final Collection<CriteriaElement> elements
                     )
     {
-        _elements.clear();
-        if (elements == null  ||  elements.size() == 0) {
-            return;
-        }
+        if (elements != _elements) {
+            _elements.clear();
+            if (elements == null  ||  elements.size() == 0) {
+                return;
+            }
 
-        for (CriteriaElement  e : elements) {
-            addElement( e );
+            for (CriteriaElement  e : elements) {
+                addElement( e );
+            }
         }
     }
 

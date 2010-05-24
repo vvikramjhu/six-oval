@@ -169,13 +169,15 @@ public class SystemInfo
                     final Collection<NetworkInterface> netifs
                     )
     {
-        _interfaces.clear();
-        if (netifs == null || netifs.size() == 0) {
-            return;
-        }
+        if (netifs != _interfaces) {
+            _interfaces.clear();
+            if (netifs == null || netifs.size() == 0) {
+                return;
+            }
 
-        for (NetworkInterface netif : netifs) {
-            addInterface( netif );
+            for (NetworkInterface netif : netifs) {
+                addInterface( netif );
+            }
         }
     }
 

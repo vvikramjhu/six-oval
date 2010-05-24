@@ -81,13 +81,15 @@ implements Persistable
                     final Collection<E> elements
                     )
     {
-        clear();
-        if (elements == null  ||  elements.size() == 0) {
-            return;
-        }
+        if (elements != _elements) {
+            clear();
+            if (elements == null  ||  elements.size() == 0) {
+                return;
+            }
 
-        for (E  e : elements) {
-            addElement( e );
+            for (E  e : elements) {
+                addElement( e );
+            }
         }
     }
 

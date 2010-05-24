@@ -178,13 +178,15 @@ public class LinuxSecurityAdvisory
                     final Collection<CveReference> cves
                     )
     {
-        _cves.clear();
-        if (cves == null  ||  cves.size() == 0) {
-            return;
-        }
+        if (cves != _cves) {
+            _cves.clear();
+            if (cves == null  ||  cves.size() == 0) {
+                return;
+            }
 
-        for (CveReference  cve : cves) {
-            addCve( cve );
+            for (CveReference  cve : cves) {
+                addCve( cve );
+            }
         }
     }
 
@@ -216,13 +218,15 @@ public class LinuxSecurityAdvisory
                     final Collection<BugzillaReference> bugzillas
                     )
     {
-        _bugzillas.clear();
-        if (bugzillas == null  ||  bugzillas.size() == 0) {
-            return;
-        }
+        if (bugzillas != _bugzillas) {
+            _bugzillas.clear();
+            if (bugzillas == null  ||  bugzillas.size() == 0) {
+                return;
+            }
 
-        for (BugzillaReference  bugzilla : bugzillas) {
-            addBugzilla( bugzilla );
+            for (BugzillaReference  bugzilla : bugzillas) {
+                addBugzilla( bugzilla );
+            }
         }
     }
 
@@ -254,13 +258,15 @@ public class LinuxSecurityAdvisory
                     final Collection<Cpe> cpes
                     )
     {
-        _cpes.clear();
-        if (cpes == null  ||  cpes.size() == 0) {
-            return;
-        }
+        if (cpes != _cpes) {
+            _cpes.clear();
+            if (cpes == null  ||  cpes.size() == 0) {
+                return;
+            }
 
-        for (Cpe  cpe : cpes) {
-            addAffectedCpe( cpe );
+            for (Cpe  cpe : cpes) {
+                addAffectedCpe( cpe );
+            }
         }
     }
 
@@ -292,13 +298,15 @@ public class LinuxSecurityAdvisory
                     final Collection<CertReference> certs
                     )
     {
-        _certs.clear();
-        if (certs == null  ||  certs.size() == 0) {
-            return;
-        }
+        if (certs != _certs) {
+            _certs.clear();
+            if (certs == null  ||  certs.size() == 0) {
+                return;
+            }
 
-        for (CertReference  cert : certs) {
-            addCert( cert );
+            for (CertReference  cert : certs) {
+                addCert( cert );
+            }
         }
     }
 
@@ -330,13 +338,15 @@ public class LinuxSecurityAdvisory
                     final Collection<DebianBugReference> bugs
                     )
     {
-        _bugs.clear();
-        if (bugs == null  ||  bugs.size() == 0) {
-            return;
-        }
+        if (bugs != _bugs) {
+            _bugs.clear();
+            if (bugs == null  ||  bugs.size() == 0) {
+                return;
+            }
 
-        for (DebianBugReference  bug : bugs) {
-            addBug( bug );
+            for (DebianBugReference  bug : bugs) {
+                addBug( bug );
+            }
         }
     }
 

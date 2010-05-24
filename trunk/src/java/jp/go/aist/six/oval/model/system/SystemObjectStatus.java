@@ -129,13 +129,15 @@ public class SystemObjectStatus
                     final Collection<ItemReference> refs
                     )
     {
-        _items.clear();
-        if (refs == null  ||  refs.size() == 0) {
-            return;
-        }
+        if (refs != _items) {
+            _items.clear();
+            if (refs == null  ||  refs.size() == 0) {
+                return;
+            }
 
-        for (ItemReference  ref : refs) {
-            addItem( ref );
+            for (ItemReference  ref : refs) {
+                addItem( ref );
+            }
         }
     }
 

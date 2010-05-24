@@ -132,13 +132,15 @@ public class OvalSystemCharacteristics
                     final Collection<SystemObjectStatus> objects
                     )
     {
-        _objects.clear();
-        if (objects == null  ||  objects.size() == 0) {
-            return;
-        }
+        if (objects != _objects) {
+            _objects.clear();
+            if (objects == null  ||  objects.size() == 0) {
+                return;
+            }
 
-        for (SystemObjectStatus  object : objects) {
-            addCollectedObject( object );
+            for (SystemObjectStatus  object : objects) {
+                addCollectedObject( object );
+            }
         }
     }
 

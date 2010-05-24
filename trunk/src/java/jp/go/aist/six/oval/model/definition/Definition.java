@@ -258,16 +258,18 @@ public class Definition
                     final Collection<Cve> cves
                     )
     {
-        if (_cves != null) {
-            _cves.clear();
-        }
+        if (cves != _cves) {
+            if (_cves != null) {
+                _cves.clear();
+            }
 
-        if (cves == null  ||  cves.size() == 0) {
-            return;
-        }
+            if (cves == null  ||  cves.size() == 0) {
+                return;
+            }
 
-        for (Cve  cve : cves) {
-            addRelatedCve( cve );
+            for (Cve  cve : cves) {
+                addRelatedCve( cve );
+            }
         }
     }
 
