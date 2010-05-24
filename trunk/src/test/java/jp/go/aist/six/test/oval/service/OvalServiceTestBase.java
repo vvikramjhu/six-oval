@@ -195,63 +195,63 @@ public abstract class OvalServiceTestBase
         return new Object[][] {
                         {
                             ComponentType.INDEPENDENT_FAMILY,
-                            "test/data/sample_oval-state-family.xml",
+                            "test/data/definition/sample_oval-state-family.xml",
                             "oval:org.mitre.oval:ste:99",
                             2
                         }
                         ,
                         {
                             ComponentType.INDEPENDENT_TEXTFILECONTENT,
-                            "test/data/sample_oval-state-textfilecontent.xml",
+                            "test/data/definition/sample_oval-state-textfilecontent.xml",
                             "oval:org.mitre.oval:ste:5132",
                             1
                         }
                         ,
                         {
                             ComponentType.WINDOWS_FILE,
-                            "test/data/sample_oval-state-file.xml",
+                            "test/data/definition/sample_oval-state-file.xml",
                             "oval:org.mitre.oval:ste:2190",
                             1
                         }
                         ,
                         {
                             ComponentType.WINDOWS_METABASE,
-                            "test/data/sample_oval-state-metabase.xml",
+                            "test/data/definition/sample_oval-state-metabase.xml",
                             "oval:org.mitre.oval:ste:537",
                             1
                         }
                         ,
                         {
                             ComponentType.WINDOWS_REGISTRY,
-                            "test/data/sample_oval-state-registry.xml",
+                            "test/data/definition/sample_oval-state-registry.xml",
                             "oval:org.mitre.oval:ste:1205",
                             1
                         }
                         ,
                         {
                             ComponentType.LINUX_DPKGINFO,
-                            "test/data/sample_oval-state-dpkginfo.xml",
+                            "test/data/definition/sample_oval-state-dpkginfo.xml",
                             "oval:org.mitre.oval:ste:5797",
                             1
                         }
                         ,
                         {
                             ComponentType.LINUX_RPMINFO,
-                            "test/data/sample_oval-state-rpminfo-evr.xml",
+                            "test/data/definition/sample_oval-state-rpminfo-evr.xml",
                             "oval:com.redhat.rhsa:ste:20100061004",
                             301
                         }
                         ,
                         {
                             ComponentType.LINUX_RPMINFO,
-                            "test/data/sample_oval-state-rpminfo-version.xml",
+                            "test/data/definition/sample_oval-state-rpminfo-version.xml",
                             "oval:com.redhat.rhsa:ste:20100061003",
                             301
                         }
                         ,
                         {
                             ComponentType.LINUX_RPMINFO,
-                            "test/data/sample_oval-state-rpminfo-signature_keyid.xml",
+                            "test/data/definition/sample_oval-state-rpminfo-signature_keyid.xml",
                             "oval:com.redhat.rhsa:ste:20100061002",
                             301
                         }
@@ -273,7 +273,7 @@ public abstract class OvalServiceTestBase
         return new Object[][] {
                         // independent : family
                         {
-                            "test/data/sample_oval-object-family.xml",
+                            "test/data/definition/sample_oval-object-family.xml",
                             "oval:org.mitre.oval:obj:99",
                             1,
                             "This is the default family object. Only one family object should exist."
@@ -281,7 +281,7 @@ public abstract class OvalServiceTestBase
 
                         // independent : textfilecontent
                         {
-                            "test/data/sample_oval-object-textfilecontent.xml",
+                            "test/data/definition/sample_oval-object-textfilecontent.xml",
                             "oval:org.mitre.oval:obj:7326",
                             1,
                             null
@@ -289,7 +289,7 @@ public abstract class OvalServiceTestBase
 
                         // linux : dpkginfo
                         {
-                            "test/data/sample_oval-object-dpkginfo.xml",
+                            "test/data/definition/sample_oval-object-dpkginfo.xml",
                             "oval:org.mitre.oval:obj:10648",
                             1,
                             "apache2 package information"
@@ -297,7 +297,7 @@ public abstract class OvalServiceTestBase
 
                         // linux : rpminfo
                         {
-                            "test/data/sample_oval-object-rpminfo.xml",
+                            "test/data/definition/sample_oval-object-rpminfo.xml",
                             "oval:com.redhat.rhsa:obj:20100061001",
                             301,
                             null
@@ -305,7 +305,7 @@ public abstract class OvalServiceTestBase
 
                         // unux : uname
                         {
-                            "test/data/sample_oval-object-uname.xml",
+                            "test/data/definition/sample_oval-object-uname.xml",
                             "oval:org.mitre.oval:obj:2759",
                             1,
                             "The single uname object."
@@ -313,7 +313,7 @@ public abstract class OvalServiceTestBase
 
                         // windows : file
                         {
-                            "test/data/sample_oval-object-file.xml",
+                            "test/data/definition/sample_oval-object-file.xml",
                             "oval:org.mitre.oval:obj:222",
                             1,
                             "The path to the mshtml.dll file in the system root"
@@ -321,7 +321,7 @@ public abstract class OvalServiceTestBase
 
                         // windows : metabase
                         {
-                            "test/data/sample_oval-object-metabase.xml",
+                            "test/data/definition/sample_oval-object-metabase.xml",
                             "oval:org.mitre.oval:obj:556",
                             2,
                             null
@@ -329,7 +329,7 @@ public abstract class OvalServiceTestBase
 
                         // windows : registry
                         {
-                            "test/data/sample_oval-object-registry.xml",
+                            "test/data/definition/sample_oval-object-registry.xml",
                             "oval:org.mitre.oval:obj:717",
                             1,
                             "This registry key holds the service pack installed on the host if one is present."
@@ -352,7 +352,7 @@ public abstract class OvalServiceTestBase
         return new Object[][] {
                         // independent : family test
                         {
-                            "test/data/sample_oval-test-family.xml",
+                            "test/data/definition/sample_oval-test-family.xml",
                             "oval:org.mitre.oval:tst:99",
                             1,
                             "the installed operating system is part of the Microsoft Windows family",
@@ -365,7 +365,7 @@ public abstract class OvalServiceTestBase
 
                         // independent : textfilecontent test
                         {
-                            "test/data/sample_oval-test-textfilecontent.xml",
+                            "test/data/definition/sample_oval-test-textfilecontent.xml",
                             "oval:org.mitre.oval:tst:11150",
                             1,
                             "Debian GNU/Linux 5.0 is installed",
@@ -378,7 +378,7 @@ public abstract class OvalServiceTestBase
 
                         // independent : unknown test
                         {
-                            "test/data/sample_oval-test-unknown.xml",
+                            "test/data/definition/sample_oval-test-unknown.xml",
                             "oval:org.mitre.oval:tst:2531",
                             1,
                             "Word 97 is installed",
@@ -391,7 +391,7 @@ public abstract class OvalServiceTestBase
 
                         // unix : uname test
                         {
-                            "test/data/sample_oval-test-uname.xml",
+                            "test/data/definition/sample_oval-test-uname.xml",
                             "oval:org.mitre.oval:tst:11195",
                             1,
                             "Installed architecture is mips",
@@ -404,7 +404,7 @@ public abstract class OvalServiceTestBase
 
                         // windows : Registry test
                         {
-                            "test/data/sample_oval-test-registry.xml",
+                            "test/data/definition/sample_oval-test-registry.xml",
                             "oval:org.mitre.oval:tst:3019",
                             2,
                             "Win2K/XP/2003/Vista/2008 service pack 2 is installed",
@@ -417,7 +417,7 @@ public abstract class OvalServiceTestBase
 
                         // windows : Metabase test
                         {
-                            "test/data/sample_oval-test-metabase.xml",
+                            "test/data/definition/sample_oval-test-metabase.xml",
                             "oval:org.mitre.oval:tst:709",
                             2,
                             "Negotiate is enabled",
@@ -430,7 +430,7 @@ public abstract class OvalServiceTestBase
 
                         // windows : File test
                         {
-                            "test/data/sample_oval-test-file.xml",
+                            "test/data/definition/sample_oval-test-file.xml",
                             "oval:org.mitre.oval:tst:2339",
                             1,
                             "the version of mshtml.dll is less than 6.0.2900.2873",
@@ -443,7 +443,7 @@ public abstract class OvalServiceTestBase
 
                         // linux : RpmInfo test
                         {
-                            "test/data/sample_oval-test-rpminfo.xml",
+                            "test/data/definition/sample_oval-test-rpminfo.xml",
                             "oval:com.redhat.rhsa:tst:20100061002",
                             301,
                             "gzip is earlier than 0:1.3.5-11.el5_4.1",
@@ -456,7 +456,7 @@ public abstract class OvalServiceTestBase
 
                         // linux : DpkgInfo test
                         {
-                            "test/data/sample_oval-test-dpkginfo.xml",
+                            "test/data/definition/sample_oval-test-dpkginfo.xml",
                             "oval:org.mitre.oval:tst:19402",
                             1,
                             "apache2-src is earlier than 2.2.9-10+lenny6",
