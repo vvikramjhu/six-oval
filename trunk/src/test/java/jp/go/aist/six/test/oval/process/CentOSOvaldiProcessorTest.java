@@ -37,7 +37,7 @@ extends OvalProcessTestBase
 
     public static final String[]  SAMPLE_REDHAT_OVAL_DEFINITIONS =
         new String[] {
-        "test/xml/sample_oval-definitions_linux-redhat.xml",
+        "test/data/sample_oval-definitions_linux-redhat.xml",
         "https://rhn.redhat.com/rhn/oval?errata=9522"
     };
 
