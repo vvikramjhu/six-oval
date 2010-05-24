@@ -4,8 +4,11 @@ import jp.go.aist.six.oval.process.debian.dsa.Dsa;
 import jp.go.aist.six.oval.process.debian.dsa.DsaParser;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.URL;
 
 
@@ -38,8 +41,8 @@ public class DsaParserTest
 
 
     /**
-     * @testng.before-class alwaysRun="true"
      */
+    @BeforeClass( alwaysRun=true )
     public void setUp()
     throws Exception
     {
@@ -49,15 +52,13 @@ public class DsaParserTest
 
     /**
      * Sample DSA HTML file.
-     *
-     * @testng.data-provider name="dsa-html-filepath"
      */
-    public
-    Object[][] dsaHtmlFilepathProvider()
+    @DataProvider( name="dsa-html-filepath" )
+    public Object[][] dsaHtmlFilepathProvider()
     {
         return new Object[][] {
                         {
-                            "test/data/dsa-1974.en.html"
+                            "test/data/debian_security_advisory/dsa-1974.en.html"
                         }
         };
     }
@@ -65,10 +66,26 @@ public class DsaParserTest
 
 
     /**
-     * @testng.test groups="oval.debian dsa"
-     *              dataProvider="dsa-html-filepath"
-     *              alwaysRun="true"
+     * Sample DSA HTML URL.
      */
+    @DataProvider( name="dsa-html-url" )
+    public Object[][] dsaHtmlUrlProvider()
+    {
+        return new Object[][] {
+                        {
+                            "http://www.debian.org/security/2010/dsa-1974.en.html"
+                        }
+        };
+    }
+
+
+
+    /**
+     */
+    @org.testng.annotations.Test( groups={"oval.debian", "dsa"},
+                    dataProvider="dsa-html-filepath",
+                    alwaysRun=true
+                    )
     public void parseFile(
                     final String dsaFilepath
                     )
@@ -81,37 +98,17 @@ public class DsaParserTest
         String  filepath = file.getAbsolutePath();
         Reporter.log( "* absolute path=" + filepath, true );
 
-        DsaParser  parser = new DsaParser();
-        Dsa  dsa = parser.parse( new FileInputStream( file ) );
-        Assert.assertNotNull( dsa );
-
-        Reporter.log( "@ DSA=" + dsa, true );
-//        Assert.assertEquals( dsa.getTitle(), "DSA-1974-1 gzip -- several vulnerabilities" );
+        _parseDsaHtml( new FileInputStream( file ) );
     }
 
 
 
     /**
-     * Sample DSA HTML URL.
-     *
-     * @testng.data-provider name="dsa-html-url"
      */
-    public
-    Object[][] dsaHtmlUrlProvider()
-    {
-        return new Object[][] {
-                        {
-                            "http://www.debian.org/security/2010/dsa-1974.en.html"
-                        }
-        };
-    }
-
-
-    /**
-     * @testng.test groups="oval.debian dsa"
-     *              dataProvider="dsa-html-url"
-     *              alwaysRun="true"
-     */
+    @org.testng.annotations.Test( groups={"oval.debian", "dsa"},
+                    dataProvider="dsa-html-url",
+                    alwaysRun=true
+                    )
     public void parseUrl(
                     final String dsaUrl
                     )
@@ -121,8 +118,18 @@ public class DsaParserTest
         Reporter.log( "*** parsing DSA HTML...: URL=" + dsaUrl, true );
 
         URL  url = new URL( dsaUrl );
+        _parseDsaHtml( url.openStream() );
+    }
+
+
+
+    private void _parseDsaHtml(
+                    final InputStream stream
+                    )
+    throws Exception
+    {
         DsaParser  parser = new DsaParser();
-        Dsa  dsa = parser.parse( url.openStream() );
+        Dsa  dsa = parser.parse( stream );
         Assert.assertNotNull( dsa );
 
         Reporter.log( "@ DSA=" + dsa, true );

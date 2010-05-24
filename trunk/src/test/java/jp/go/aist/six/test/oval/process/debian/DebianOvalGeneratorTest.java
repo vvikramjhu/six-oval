@@ -4,6 +4,8 @@ import jp.go.aist.six.oval.process.OvalProcessStatus;
 import jp.go.aist.six.oval.process.debian.DebianOvalGenerator;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 
 
 
@@ -34,8 +36,8 @@ public class DebianOvalGeneratorTest
 
 
     /**
-     * @testng.before-class alwaysRun="true"
      */
+    @BeforeClass( alwaysRun=true )
     public void setUp()
     throws Exception
     {
@@ -45,11 +47,9 @@ public class DebianOvalGeneratorTest
 
     /**
      * Sample DSA HTML locations.
-     *
-     * @testng.data-provider name="dsa-html-location"
      */
-    public
-    Object[][] dsaLocationProvider()
+    @DataProvider( name="dsa-html-location" )
+    public Object[][] dsaLocationProvider()
     {
         return new Object[][] {
 //                        {
@@ -70,10 +70,11 @@ public class DebianOvalGeneratorTest
 
 
     /**
-     * @testng.test groups="oval.debian dsa"
-     *              dataProvider="dsa-html-location"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.debian", "dsa"},
+                    dataProvider="dsa-html-location",
+                    alwaysRun=true
+                    )
     public void execute(
                     final String dsaLocation,
                     final String outputLocation
