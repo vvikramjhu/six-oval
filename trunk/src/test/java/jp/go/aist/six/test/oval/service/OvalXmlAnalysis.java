@@ -5,6 +5,8 @@ import jp.go.aist.six.oval.service.Oval;
 import jp.go.aist.six.oval.service.OvalXml;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import java.io.File;
 import java.io.FileInputStream;
 
@@ -30,8 +32,8 @@ public class OvalXmlAnalysis
 
 
     /**
-     * @testng.before-class alwaysRun="true"
      */
+    @BeforeClass( alwaysRun=true )
     public void setUp()
     throws Exception
     {
@@ -45,8 +47,8 @@ public class OvalXmlAnalysis
     //**************************************************************
 
     /**
-     * @testng.data-provider name="oval-definition"
      */
+    @DataProvider( name="oval-definition" )
     public Object[][] ovalDefinitionsProvider()
     {
         return new Object[][] {
@@ -64,6 +66,10 @@ public class OvalXmlAnalysis
      *              dataProvider="oval-definition"
      *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.xml", "definition"},
+                    dataProvider="oval-definition",
+                    alwaysRun=true
+                    )
     public void marshalDefinitionMetadataAffected(
                     final String filepath
                     )

@@ -48,11 +48,12 @@ extends OvalServiceTestBase
     //==============================================================
 
     /**
-     * @testng.test groups="oval.result oval_results"
-     *              dataProvider="oval-result-results"
-     *              dependsOnGroups="oval-def"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.result", "oval_results"},
+                    dataProvider="oval-result-results",
+                    dependsOnGroups= {"oval-def"},
+                    alwaysRun=true
+                    )
     public void processResultResults(
                     final String filepath
                     )
@@ -91,11 +92,12 @@ extends OvalServiceTestBase
     //==============================================================
 
     /**
-     * @testng.test groups="oval.service oval-res"
-     *              dataProvider="oval-result-definition"
-     *              dependsOnGroups="oval-def"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.service", "oval-res"},
+                    dataProvider="oval-result-definition",
+                    dependsOnGroups= {"oval-def"},
+                    alwaysRun=true
+                    )
     public void processResultDefinition(
                     final String filepath,
                     final String id,
@@ -142,10 +144,11 @@ extends OvalServiceTestBase
     //==============================================================
 
     /**
-     * @testng.test groups="oval.system sc"
-     *              dataProvider="oval-system-sc"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.system", "sc"},
+                    dataProvider="oval-system-sc",
+                    alwaysRun=true
+                    )
     public void processSystemSC(
                     final String filepath
                     )
@@ -190,11 +193,12 @@ extends OvalServiceTestBase
     //==============================================================
 
     /**
-     * @testng.test groups="oval.definition definition"
-     *              dataProvider="oval-definition"
-     *              dependsOnGroups="object"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.definition", "definition"},
+                    dataProvider="oval-definition",
+                    dependsOnGroups="object",
+                    alwaysRun=true
+                    )
     public void processDefinition(
                     final String filepath,
                     final String id,
@@ -235,11 +239,12 @@ extends OvalServiceTestBase
     //==============================================================
 
     /**
-     * @testng.test groups="oval.service oval-def state"
-     *              dataProvider="oval-state"
-     *              dependsOnGroups="object"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.service", "oval-def", "state"},
+                    dataProvider="oval-state",
+                    dependsOnGroups="object",
+                    alwaysRun=true
+                    )
     public void processState(
                     final ComponentType type,
                     final String filepath,
@@ -280,11 +285,12 @@ extends OvalServiceTestBase
     //==============================================================
 
     /**
-     * @testng.test groups="oval.service oval-def object"
-     *              dataProvider="oval-object"
-     *              dependsOnGroups="test"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.service", "oval-def", "object"},
+                    dataProvider="oval-object",
+                    dependsOnGroups="test",
+                    alwaysRun=true
+                    )
     public void processObject(
                     final String filepath,
                     final String id,
@@ -325,10 +331,11 @@ extends OvalServiceTestBase
     //==============================================================
 
     /**
-     * @testng.test groups="oval.service oval-def test"
-     *              dataProvider="oval-test"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.service", "oval-def", "test"},
+                    dataProvider="oval-test",
+                    alwaysRun=true
+                    )
     public void processTest(
                     final String filepath,
                     final String id,

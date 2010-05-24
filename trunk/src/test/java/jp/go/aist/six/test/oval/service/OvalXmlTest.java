@@ -37,6 +37,8 @@ import jp.go.aist.six.oval.service.Oval;
 import jp.go.aist.six.util.IsoDate;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
@@ -66,8 +68,8 @@ public class OvalXmlTest
 
 
     /**
-     * @testng.before-class alwaysRun="true"
      */
+    @BeforeClass( alwaysRun=true )
     public void setUp()
         throws Exception
     {
@@ -107,9 +109,8 @@ public class OvalXmlTest
 
     /**
      * Sample OVAL results.
-     *
-     * @testng.data-provider name="oval-results"
      */
+    @DataProvider( name="oval-results" )
     public Object[][] ovalResultsProvider()
     {
         return new Object[][] {
@@ -131,11 +132,11 @@ public class OvalXmlTest
 
     /**
      * Unmarshalls the OVAL results.
-     *
-     * @testng.test groups="oval.xml oval_results"
-     *              dataProvider="oval-results"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.xml", "oval_results"},
+                    dataProvider="oval-results",
+                    alwaysRun=true
+                    )
     public void unmarshalOvalResults(
                     final String platform,
                     final String filepath
@@ -286,9 +287,8 @@ public class OvalXmlTest
 
     /**
      * Sample OVAL SC.
-     *
-     * @testng.data-provider name="oval-sc"
      */
+    @DataProvider( name="oval-sc" )
     public Object[][] ovalScProvider()
     {
         return new Object[][] {
@@ -306,11 +306,11 @@ public class OvalXmlTest
 
     /**
      * Unmarshalls the OVAL system characteristics.
-     *
-     * @testng.test groups="oval.xml oval_system_characteristics"
-     *              dataProvider="oval-sc"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.xml", "oval_system_characteristics"},
+                    dataProvider="oval-sc",
+                    alwaysRun=true
+                    )
     public void unmarshalOvalSc(
                     final String platform,
                     final String filepath
@@ -547,9 +547,8 @@ public class OvalXmlTest
 
     /**
      * Sample OVAL Definitions.
-     *
-     * @testng.data-provider name="oval-definitions"
      */
+    @DataProvider( name="oval-definitions" )
     public Object[][] ovalDefinitionsProvider()
     {
         return new Object[][] {
@@ -583,11 +582,11 @@ public class OvalXmlTest
 
     /**
      * Unmarshalls the OVAL definitions.
-     *
-     * @testng.test groups="oval.xml oval_definitions"
-     *              dataProvider="oval-definitions"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.xml", "oval_definitions"},
+                    dataProvider="oval-definitions",
+                    alwaysRun=true
+                    )
     public void unmarshalOvalDefinitions(
                     final String platform,
                     final String filepath,

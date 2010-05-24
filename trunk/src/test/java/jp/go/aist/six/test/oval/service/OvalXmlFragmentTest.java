@@ -18,6 +18,8 @@ import jp.go.aist.six.oval.model.linux.RpmInfoState;
 import jp.go.aist.six.oval.service.Oval;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import java.io.File;
 import java.io.FileInputStream;
 
@@ -39,8 +41,8 @@ public class OvalXmlFragmentTest
 
 
     /**
-     * @testng.before-class alwaysRun="true"
      */
+    @BeforeClass( alwaysRun=true )
     public void setUp()
         throws Exception
     {
@@ -86,9 +88,8 @@ public class OvalXmlFragmentTest
 
     /**
      * Sample definitions elements.
-     *
-     * @testng.data-provider name="oval-definitions-elements"
      */
+    @DataProvider( name="oval-definitions-elements" )
     public Object[][] ovalDefinitionsElementsProvider()
     {
         return new Object[][] {
@@ -130,11 +131,11 @@ public class OvalXmlFragmentTest
 
     /**
      * Unmarshal.
-     *
-     * @testng.test groups="oval.xml oval_definitions"
-     *              dataProvider="oval-definitions-elements"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.xml", "oval_definitions"},
+                    dataProvider="oval-definitions-elements",
+                    alwaysRun=true
+                    )
     public void unmarshalOvalDefinitionsElements(
                     final String   defPath,
                     final String[] testPaths,
@@ -190,9 +191,8 @@ public class OvalXmlFragmentTest
 
     /**
      * Sample definitions.
-     *
-     * @testng.data-provider name="oval-definitions-definition"
      */
+    @DataProvider( name="oval-definitions-definition" )
     public Object[][] ovalDefinitionsDefinitionProvider()
     {
         return new Object[][] {
@@ -209,11 +209,11 @@ public class OvalXmlFragmentTest
 
     /**
      * Unmarshal.
-     *
-     * @testng.test groups="oval.xml oval_definitions definition"
-     *              dataProvider="oval-definitions-definition"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.xml", "oval_definitions", "definition"},
+                    dataProvider="oval-definitions-definition",
+                    alwaysRun=true
+                    )
     public void unmarshalOvalDefinitionsDefinition(
                     final String filepath,
                     final String id,
@@ -251,9 +251,8 @@ public class OvalXmlFragmentTest
 
     /**
      * Sample tests.
-     *
-     * @testng.data-provider name="oval-definitions-test"
      */
+    @DataProvider( name="oval-definitions-test" )
     public Object[][] ovalDefinitionsTestProvider()
     {
         return new Object[][] {
@@ -269,11 +268,11 @@ public class OvalXmlFragmentTest
 
     /**
      * Unmarshal.
-     *
-     * @testng.test groups="oval.xml oval_definitions test"
-     *              dataProvider="oval-definitions-test"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.xml", "oval_definitions", "test"},
+                    dataProvider="oval-definitions-test",
+                    alwaysRun=true
+                    )
     public void unmarshalOvalDefinitionsTest(
                     final String objectID,
                     final String stateID,
@@ -316,9 +315,8 @@ public class OvalXmlFragmentTest
 
     /**
      * Sample objects.
-     *
-     * @testng.data-provider name="oval-definitions-object"
      */
+    @DataProvider( name="oval-definitions-object" )
     public Object[][] ovalDefinitionsObjectProvider()
     {
         return new Object[][] {
@@ -333,11 +331,11 @@ public class OvalXmlFragmentTest
 
     /**
      * Unmarshal.
-     *
-     * @testng.test groups="oval.xml oval_definitions object"
-     *              dataProvider="oval-definitions-object"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.xml", "oval_definitions", "object"},
+                    dataProvider="oval-definitions-object",
+                    alwaysRun=true
+                    )
     public void unmarshalOvalDefinitionsObject(
                     final String name,
                     final String filepath
@@ -373,9 +371,8 @@ public class OvalXmlFragmentTest
 
     /**
      * Sample OVAL Definitions.
-     *
-     * @testng.data-provider name="oval-definitions-state"
      */
+    @DataProvider( name="oval-definitions-state" )
     public Object[][] ovalDefinitionsStateProvider()
     {
         return new Object[][] {
@@ -401,11 +398,11 @@ public class OvalXmlFragmentTest
 
     /**
      * Unmarshal.
-     *
-     * @testng.test groups="oval.xml oval_definitions state"
-     *              dataProvider="oval-definitions-state"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.xml", "oval_definitions", "state"},
+                    dataProvider="oval-definitions-state",
+                    alwaysRun=true
+                    )
     public void unmarshalOvalDefinitionsState(
                     final String type,
                     final String value,
@@ -475,9 +472,8 @@ public class OvalXmlFragmentTest
 
     /**
      * Sample OVAL Definitions.
-     *
-     * @testng.data-provider name="oval-definitions-state-string"
      */
+    @DataProvider( name="oval-definitions-state-string" )
     public Object[][] ovalDefinitionsStateStringProvider()
     {
         return new Object[][] {
@@ -490,11 +486,11 @@ public class OvalXmlFragmentTest
 
     /**
      * Unmarshalls the OVAL definitions.
-     *
-     * @testng.test groups="oval.xml oval_definitions state"
-     *              dataProvider="oval-definitions-state-string"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.xml", "oval_definitions", "state"},
+                    dataProvider="oval-definitions-state-string",
+                    alwaysRun=true
+                    )
     public void unmarshalOvalDefinitionsStateFromString(
                     final String xml
                     )

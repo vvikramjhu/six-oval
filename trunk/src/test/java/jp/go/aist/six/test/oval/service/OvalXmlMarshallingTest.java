@@ -17,6 +17,8 @@ import jp.go.aist.six.oval.service.Oval;
 import jp.go.aist.six.oval.service.OvalXml;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import java.io.File;
 import java.io.FileInputStream;
 
@@ -42,8 +44,8 @@ public class OvalXmlMarshallingTest
 
 
     /**
-     * @testng.before-class alwaysRun="true"
      */
+    @BeforeClass( alwaysRun=true )
     public void setUp()
     throws Exception
     {
@@ -59,6 +61,7 @@ public class OvalXmlMarshallingTest
     /**
      * @testng.data-provider name="oval-test"
      */
+    @DataProvider( name="oval-test" )
     public Object[][] ovalTestProvider()
     {
         return new Object[][] {
@@ -92,6 +95,10 @@ public class OvalXmlMarshallingTest
      *              dataProvider="oval-test"
      *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.xml", "test"},
+                    dataProvider="oval-test",
+                    alwaysRun=true
+                    )
     public void marshalTest(
                     final String filepath,
                     final String id,
@@ -135,6 +142,7 @@ public class OvalXmlMarshallingTest
     /**
      * @testng.data-provider name="oval-object"
      */
+    @DataProvider( name="oval-object" )
     public Object[][] ovalSystemObjectProvider()
     {
         return new Object[][] {
@@ -158,10 +166,11 @@ public class OvalXmlMarshallingTest
 
 
     /**
-     * @testng.test groups="oval.xml object"
-     *              dataProvider="oval-object"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.xml", "object"},
+                    dataProvider="oval-object",
+                    alwaysRun=true
+                    )
     public void marshalSystemObject(
                     final String filepath,
                     final String id,
@@ -199,8 +208,8 @@ public class OvalXmlMarshallingTest
     //==============================================================
 
     /**
-     * @testng.data-provider name="oval-definition"
      */
+    @DataProvider( name="oval-definition" )
     public Object[][] ovalDefinitionProvider()
     {
         return new Object[][] {
@@ -216,11 +225,12 @@ public class OvalXmlMarshallingTest
 
 
     /**
-     * @testng.test groups="oval.xml definition"
-     *              dataProvider="oval-definition"
-     *              alwaysRun="true"
-     *              dependsOnGroups="definition.metadata"
      */
+    @org.testng.annotations.Test( groups={"oval.xml", "definition"},
+                    dataProvider="oval-definition",
+                    dependsOnGroups="definition.metadata",
+                    alwaysRun=true
+                    )
     public void marshalDefinition(
                     final String filepath,
                     final String id,
@@ -256,8 +266,8 @@ public class OvalXmlMarshallingTest
     //==============================================================
 
     /**
-     * @testng.data-provider name="oval-definition-metadata"
      */
+    @DataProvider( name="oval-definition-metadata" )
     public Object[][] ovalDefinitionMetadataProvider()
     {
         return new Object[][] {
@@ -279,11 +289,12 @@ public class OvalXmlMarshallingTest
 
 
     /**
-     * @testng.test groups="oval.xml definition.metadata"
-     *              dataProvider="oval-definition-metadata"
-     *              alwaysRun="true"
-     *              dependsOnGroups="definition.metadata.affected"
      */
+    @org.testng.annotations.Test( groups={"oval.xml", "definition.metadata"},
+                    dataProvider="oval-definition-matadata",
+                    dependsOnGroups="definition.metadata.affected",
+                    alwaysRun=true
+                    )
     public void marshalDefinitionMetadata(
                     final String filepath,
                     final String title,
@@ -321,8 +332,8 @@ public class OvalXmlMarshallingTest
     //==============================================================
 
     /**
-     * @testng.data-provider name="oval-definition-metadata-affected"
      */
+    @DataProvider( name="oval-definition-metadata-affected" )
     public Object[][] ovalDefinitionMetadataAffectedProvider()
     {
         return new Object[][] {
@@ -356,6 +367,10 @@ public class OvalXmlMarshallingTest
      *              dataProvider="oval-definition-metadata-affected"
      *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.xml", "definition.metadata.affected"},
+                    dataProvider="oval-definition-matadata-affected",
+                    alwaysRun=true
+                    )
     public void marshalDefinitionMetadataAffected(
                     final String filepath,
                     final Platform[] platformList,

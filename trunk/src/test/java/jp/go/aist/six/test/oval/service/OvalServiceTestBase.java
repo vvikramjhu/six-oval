@@ -9,6 +9,8 @@ import jp.go.aist.six.oval.model.result.Result;
 import jp.go.aist.six.oval.service.Oval;
 import jp.go.aist.six.oval.service.OvalStore;
 import jp.go.aist.six.oval.service.OvalXml;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 
 
 
@@ -33,8 +35,8 @@ public abstract class OvalServiceTestBase
 
 
     /**
-     * @testng.before-class alwaysRun="true"
      */
+    @BeforeClass( alwaysRun=true )
     public void setUp()
     throws Exception
     {
@@ -54,8 +56,8 @@ public abstract class OvalServiceTestBase
     //==============================================================
 
     /**
-     * @testng.data-provider name="oval-result-results"
      */
+    @DataProvider( name="oval-result-results" )
     public Object[][] ovalResultsProvider()
     {
         return new Object[][] {
@@ -80,8 +82,8 @@ public abstract class OvalServiceTestBase
     //==============================================================
 
     /**
-     * @testng.data-provider name="oval-result-definition"
      */
+    @DataProvider( name="oval-result-definition" )
     public Object[][] ovalResultDefinitionProvider()
     {
         return new Object[][] {
@@ -114,8 +116,8 @@ public abstract class OvalServiceTestBase
     //==============================================================
 
     /**
-     * @testng.data-provider name="oval-system-sc"
      */
+    @DataProvider( name="oval-system-sc" )
     public Object[][] ovalSystemSCProvider()
     {
         return new Object[][] {
@@ -140,8 +142,8 @@ public abstract class OvalServiceTestBase
     //==============================================================
 
     /**
-     * @testng.data-provider name="oval-definition"
      */
+    @DataProvider( name="oval-definition" )
     public Object[][] ovalDefinitionProvider()
     {
         return new Object[][] {
@@ -186,8 +188,8 @@ public abstract class OvalServiceTestBase
     //==============================================================
 
     /**
-     * @testng.data-provider name="oval-state"
      */
+    @DataProvider( name="oval-state" )
     public Object[][] ovalStateProvider()
     {
         return new Object[][] {
@@ -264,8 +266,8 @@ public abstract class OvalServiceTestBase
     //==============================================================
 
     /**
-     * @testng.data-provider name="oval-object"
      */
+    @DataProvider( name="oval-object" )
     public Object[][] ovalObjectProvider()
     {
         return new Object[][] {
@@ -343,8 +345,8 @@ public abstract class OvalServiceTestBase
     //==============================================================
 
     /**
-     * @testng.data-provider name="oval-test"
      */
+    @DataProvider( name="oval-test" )
     public Object[][] ovalTestProvider()
     {
         return new Object[][] {
@@ -474,8 +476,8 @@ public abstract class OvalServiceTestBase
     //==============================================================
 
     /**
-     * @testng.data-provider name="oval-variable"
      */
+    @DataProvider( name="oval-variable" )
     public Object[][] ovalVariableProvider()
     {
         return new Object[][] {
