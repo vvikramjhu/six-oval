@@ -40,16 +40,16 @@ public class OvalDefinitions
     private Generator  _generator;
     //{1..1}
 
-    private Definitions  _definitions;
+    private Definitions  _definitions = new Definitions();
     //{0..1}
 
-    private Tests _tests;
+    private Tests _tests = new Tests();
     //{0..1}
 
-    private SystemObjects  _objects;
+    private SystemObjects  _objects = new SystemObjects();
     //{0..1}
 
-    private States  _states;
+    private States  _states = new States();
     //{0..1}
 
 //    private transient Map<String, Definition>   _definitionMap;

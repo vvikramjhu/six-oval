@@ -7,6 +7,7 @@ import jp.go.aist.six.oval.process.debian.dsa.DsaParser;
 import jp.go.aist.six.oval.service.Oval;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.BeforeClass;
 import java.io.File;
 import java.io.FileInputStream;
 
@@ -19,6 +20,7 @@ import java.io.FileInputStream;
  * @version $Id: DebianOvalBuilderTest.java 419 2010-03-18 09:53:12Z akihito $
  */
 public class DebianOvalBuilderTest
+extends DebianOvalTestBase
 {
 
     /**
@@ -31,16 +33,7 @@ public class DebianOvalBuilderTest
 
     /**
      */
-    public void run()
-        throws Exception
-    {
-    }
-
-
-
-    /**
-     * @testng.before-class alwaysRun="true"
-     */
+    @BeforeClass( alwaysRun=true )
     public void setUp()
     throws Exception
     {
@@ -49,27 +42,11 @@ public class DebianOvalBuilderTest
 
 
     /**
-     * Sample DSA HTML file.
-     *
-     * @testng.data-provider name="dsa-html-filepath"
      */
-    public
-    Object[][] dsaHtmlFilepathProvider()
-    {
-        return new Object[][] {
-                        {
-                            "test/data/dsa-1974.en.html"
-                        }
-        };
-    }
-
-
-
-    /**
-     * @testng.test groups="oval.debian builder"
-     *              dataProvider="dsa-html-filepath"
-     *              alwaysRun="true"
-     */
+    @org.testng.annotations.Test( groups={"oval.debian", "builder"},
+                    dataProvider="dsa-html-filepath",
+                    alwaysRun=true
+                    )
     public void createOvalDefinitions(
                     final String dsaFilepath
                     )
