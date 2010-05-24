@@ -72,6 +72,10 @@ public abstract class OvalServiceTestBase
                         {
                             "test/data/result/sample_oval-results_debian5.xml"
                         }
+                        ,
+                        {
+                            "test/data/result/sample_oval-results_inventory_windows-xp.xml"
+                        }
         };
     }
 
