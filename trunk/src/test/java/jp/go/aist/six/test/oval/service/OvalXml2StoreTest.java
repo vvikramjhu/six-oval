@@ -228,7 +228,7 @@ extends OvalServiceTestBase
         Reporter.log( "  @ marshalled XML: " + xml, true );
 
         Reporter.log( "  * syncing object...", true );
-        Definition  p_def = _store.sync( def );
+        Definition  p_def = _store.syncDefinition( def );
         Reporter.log( "  @ synced: pid=" + p_def.getPersistentID(), true );
     }
 
@@ -274,7 +274,7 @@ extends OvalServiceTestBase
         Reporter.log( "  @ marshalled XML: " + xml, true );
 
         Reporter.log( "  * syncing object...", true );
-        State  p_state = _store.sync( state );
+        State  p_state = _store.syncState( state );
         Reporter.log( "  @ synced: pid=" + p_state.getPersistentID(), true );
     }
 
@@ -320,7 +320,7 @@ extends OvalServiceTestBase
         Reporter.log( "  @ marshalled XML: " + xml, true );
 
         Reporter.log( "  * syncing object...", true );
-        SystemObject  p_object = _store.sync( object );
+        SystemObject  p_object = _store.syncObject( object );
         Reporter.log( "  @ synced: pid=" + p_object.getPersistentID(), true );
     }
 
@@ -376,7 +376,7 @@ extends OvalServiceTestBase
         }
 
         Reporter.log( "  * syncing object...", true );
-        Test  p_test = _store.sync( test );
+        Test  p_test = _store.syncTest( test );
         Reporter.log( "  @ synced: pid=" + p_test.getPersistentID(), true );
     }
 

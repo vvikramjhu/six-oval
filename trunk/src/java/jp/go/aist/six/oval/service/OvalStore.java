@@ -20,23 +20,25 @@
 
 package jp.go.aist.six.oval.service;
 
-import jp.go.aist.six.oval.model.OvalEntity;
+import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
+import jp.go.aist.six.oval.model.definition.State;
+import jp.go.aist.six.oval.model.definition.SystemObject;
+import jp.go.aist.six.oval.model.definition.Test;
 import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
+import jp.go.aist.six.util.search.SearchCriteria;
+import java.util.List;
 
 
 /**
- * The vulnerability DAO interface.
+ * The OVAL data store interface.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id: OvalStore.java 754 2010-05-10 05:26:45Z akihito $
  */
 public interface OvalStore
 {
-
-    public <T extends OvalEntity> T sync( T object );
-
 
     //==============================================================
     //  Results
@@ -61,6 +63,13 @@ public interface OvalStore
     //==============================================================
 
     public String createOvalDefinitions( OvalDefinitions defs );
+    public Definition syncDefinition( Definition def );
+    public List<Definition> searchDefinition( SearchCriteria criteria );
+
+    public Test syncTest( Test state );
+    public SystemObject syncObject( SystemObject state );
+    public State syncState( State state );
+
 
 
 
