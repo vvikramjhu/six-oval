@@ -1,6 +1,7 @@
 package jp.go.aist.six.test.oval.process;
 
 import org.testng.Reporter;
+import org.testng.annotations.BeforeClass;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -33,8 +34,8 @@ public abstract class OvalProcessTestBase
 
 
     /**
-     * @testng.before-class alwaysRun="true"
      */
+    @BeforeClass( alwaysRun=true )
     public void setUp()
     throws Exception
     {

@@ -4,6 +4,7 @@ import jp.go.aist.six.oval.process.NetOvalInterpreter;
 import jp.go.aist.six.oval.process.OvalProcessStatus;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.DataProvider;
 
 
 
@@ -44,11 +45,9 @@ extends OvalProcessTestBase
 
     /**
      * Sample Ovaldi command lines.
-     *
-     * @testng.data-provider name="ovaldi-command"
      */
-    public
-    Object[][] ovaldiCommandProvider()
+    @DataProvider( name="ovaldi-command" )
+    public Object[][] ovaldiCommandProvider()
     {
         return new Object[][] {
                         // input definitions
@@ -76,12 +75,14 @@ extends OvalProcessTestBase
 
 
     /**
-     * @testng.test groups="oval.interpriter"
-     *              dataProvider="ovaldi-command"
-     *              alwaysRun="true"
      */
-    public
-    void execute( final String[] cmdarray )
+    @org.testng.annotations.Test( groups={"oval.interpriter"},
+                    dataProvider="ovaldi-command",
+                    alwaysRun=true
+                    )
+    public void execute(
+                    final String[] cmdarray
+                    )
     throws Exception
     {
         Reporter.log( "\n// OVAL ovaldi command //", true );

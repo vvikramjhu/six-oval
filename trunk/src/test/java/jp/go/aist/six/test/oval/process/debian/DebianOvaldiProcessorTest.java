@@ -5,6 +5,7 @@ import jp.go.aist.six.oval.process.debian.DebianOvaldiProcessor;
 import jp.go.aist.six.test.oval.process.OvalProcessTestBase;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.DataProvider;
 
 
 
@@ -45,11 +46,9 @@ extends OvalProcessTestBase
 
     /**
      * Sample Ovaldi command lines.
-     *
-     * @testng.data-provider name="ovaldi-command"
      */
-    public
-    Object[][] ovaldiCommandProvider()
+    @DataProvider( name="ovaldi-command" )
+    public Object[][] ovaldiCommandProvider()
     {
         return new Object[][] {
                         { new String[] {
@@ -58,7 +57,8 @@ extends OvalProcessTestBase
                                         "-s",
                                         "-m"
                                         }
-                        },
+                        }
+                        ,
                         { new String[] {
                                         getOvaldiExecutable(),
                                         "-dsa", SAMPLE_DSA[1],
@@ -74,10 +74,11 @@ extends OvalProcessTestBase
 
 
     /**
-     * @testng.test groups="oval.interpriter"
-     *              dataProvider="ovaldi-command"
-     *              alwaysRun="true"
      */
+    @org.testng.annotations.Test( groups={"oval.interpriter"},
+                    dataProvider="ovaldi-command",
+                    alwaysRun=true
+                    )
     public void executeLinux(
                     final String[] cmdarray
                     )
