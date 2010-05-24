@@ -590,6 +590,7 @@ CREATE TABLE IF NOT EXISTS oval_s_object
     PRIMARY KEY (PID),
     
     /* INDEX */
+    INDEX (id),
     INDEX (s_sc__PID),
     INDEX (d_object__PID)
 )
