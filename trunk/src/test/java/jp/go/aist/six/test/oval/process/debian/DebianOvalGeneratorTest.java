@@ -5,7 +5,6 @@ import jp.go.aist.six.oval.process.debian.DebianOvalGenerator;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 
 
 
@@ -16,20 +15,12 @@ import org.testng.annotations.DataProvider;
  * @version $Id: DebianOvalGeneratorTest.java 521 2010-04-07 01:20:21Z akihito $
  */
 public class DebianOvalGeneratorTest
+extends DebianOvalTestBase
 {
 
     /**
      */
     public DebianOvalGeneratorTest()
-    {
-    }
-
-
-
-    /**
-     */
-    public void run()
-        throws Exception
     {
     }
 
@@ -46,49 +37,25 @@ public class DebianOvalGeneratorTest
 
 
     /**
-     * Sample DSA HTML locations.
-     */
-    @DataProvider( name="dsa-html-location" )
-    public Object[][] dsaLocationProvider()
-    {
-        return new Object[][] {
-//                        {
-//                            "http://www.debian.org/security/2010/dsa-1974.en.html",
-//                            null
-//                        },
-//                        {
-//                            "test/data/dsa-1974.en.html",
-//                            "definitions-1974.xml"
-//                        }
-                        {
-                            "test/data/dsa-1974.en.html",
-                            null
-                        }
-        };
-    }
-
-
-
-    /**
      */
     @org.testng.annotations.Test( groups={"oval.debian", "dsa"},
-                    dataProvider="dsa-html-location",
+                    dataProvider="oval-generator-input-output",
                     alwaysRun=true
                     )
     public void execute(
-                    final String dsaLocation,
-                    final String outputLocation
+                    final String inputDsaLocation,
+                    final String outputOvalLocation
                     )
     throws Exception
     {
         Reporter.log( "\n// OVAL Debian definitions generator //", true );
 
         Reporter.log( "*** generating Debian OVAL definitions...: source="
-                        + dsaLocation, true );
+                        + inputDsaLocation, true );
         DebianOvalGenerator  generator =
-            new DebianOvalGenerator( dsaLocation );
-        if (outputLocation != null) {
-            generator.setOutputDefinitionLocation( outputLocation );
+            new DebianOvalGenerator( inputDsaLocation );
+        if (outputOvalLocation != null) {
+            generator.setOutputDefinitionLocation( outputOvalLocation );
         }
         OvalProcessStatus  status = generator.execute();
 

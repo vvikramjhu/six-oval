@@ -5,7 +5,6 @@ import jp.go.aist.six.oval.process.debian.dsa.DsaParser;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -21,6 +20,7 @@ import java.net.URL;
  * @version $Id: DsaParserTest.java 469 2010-03-27 07:17:33Z akihito $
  */
 public class DsaParserTest
+    extends DebianOvalTestBase
 {
 
     /**
@@ -33,49 +33,10 @@ public class DsaParserTest
 
     /**
      */
-    public void run()
-        throws Exception
-    {
-    }
-
-
-
-    /**
-     */
     @BeforeClass( alwaysRun=true )
     public void setUp()
     throws Exception
     {
-    }
-
-
-
-    /**
-     * Sample DSA HTML file.
-     */
-    @DataProvider( name="dsa-html-filepath" )
-    public Object[][] dsaHtmlFilepathProvider()
-    {
-        return new Object[][] {
-                        {
-                            "test/data/debian_security_advisory/dsa-1974.en.html"
-                        }
-        };
-    }
-
-
-
-    /**
-     * Sample DSA HTML URL.
-     */
-    @DataProvider( name="dsa-html-url" )
-    public Object[][] dsaHtmlUrlProvider()
-    {
-        return new Object[][] {
-                        {
-                            "http://www.debian.org/security/2010/dsa-1974.en.html"
-                        }
-        };
     }
 
 
