@@ -1,0 +1,14 @@
+#summary Status of the OVAL Schema support.
+#labels Phase-Implementation
+
+= OVAL Schema Support =
+This document describes the SIX OVAL status of OVAL Schema support. 
+
+
+----
+== SIX OVAL 0.5.x: OVAL Schema 5.6 ==
+
+
+
+
+----
