@@ -29,6 +29,7 @@ import jp.go.aist.six.oval.model.definition.Criteria;
 import jp.go.aist.six.oval.model.definition.Criterion;
 import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.model.definition.DefinitionClass;
+import jp.go.aist.six.oval.model.definition.EntityStateStringType;
 import jp.go.aist.six.oval.model.definition.Metadata;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.model.definition.Platform;
@@ -43,7 +44,6 @@ import jp.go.aist.six.oval.model.linux.DpkgInfoObject;
 import jp.go.aist.six.oval.model.linux.DpkgInfoState;
 import jp.go.aist.six.oval.model.linux.DpkgInfoTest;
 import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
-import jp.go.aist.six.oval.model.linux.PkgEvr;
 import jp.go.aist.six.oval.process.OvalProcessException;
 import jp.go.aist.six.oval.process.debian.dsa.Dsa;
 import jp.go.aist.six.oval.process.debian.dsa.FixedIn;
@@ -374,7 +374,7 @@ public class DebianOvalBuilder
             States  stateCollection = new States();
             final String  stateID = _createStateID( dsaID, 1 );
             DpkgInfoState  ovalState = new DpkgInfoState( stateID, defVersion );
-            ovalState.setEvr( new PkgEvr( pkgEvr ) );
+            ovalState.setEvr( new EntityStateStringType( pkgEvr ) );
             if (_LOG.isDebugEnabled()) {
                 _LOG.debug( "state created: " + ovalState );
             }
