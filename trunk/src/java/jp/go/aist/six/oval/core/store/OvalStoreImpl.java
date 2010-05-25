@@ -32,8 +32,10 @@ import jp.go.aist.six.oval.model.result.SystemResult;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.service.OvalStore;
 import jp.go.aist.six.util.castor.CastorDataStoreService;
+import jp.go.aist.six.util.search.InBinding;
 import jp.go.aist.six.util.search.RelationalBinding;
 import jp.go.aist.six.util.search.SearchCriteria;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -107,7 +109,20 @@ implements OvalStore
                     final Result result
                     )
     {
-        throw new UnsupportedOperationException();
+//        throw new UnsupportedOperationException();
+
+        Collection<DefinitionResult>  defs = findDefinitionResult( result );
+
+        if (defs.size() > 0) {
+            InBinding  binding = new InBinding( );
+            binding.setProperty( "persistentID" );
+            for (DefinitionResult  r : defs) {
+                binding.addValue( r.getMasterPersistentID() );
+            }
+            return _search( SystemResult.class, new SearchCriteria( binding ) );
+        }
+
+        return (new ArrayList<SystemResult>());
     }
 
 
