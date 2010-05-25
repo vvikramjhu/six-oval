@@ -13,11 +13,15 @@ import jp.go.aist.six.oval.model.definition.Test;
 import jp.go.aist.six.oval.model.result.DefinitionResult;
 import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.model.result.Result;
+import jp.go.aist.six.oval.model.result.SystemResult;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
+import jp.go.aist.six.util.search.SearchCriteria;
 import org.testng.Assert;
 import org.testng.Reporter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.Collection;
+import java.util.List;
 
 
 
@@ -46,6 +50,58 @@ extends OvalServiceTestBase
     //==============================================================
     //  oval_results
     //==============================================================
+
+    /**
+     */
+    @org.testng.annotations.Test( groups={"oval.result", "search.DefinitionResult"},
+                    dataProvider="oval-definition-result-result",
+//                    dependsOnGroups= {"oval_results"},
+                    alwaysRun=true
+                    )
+    public void findDefinitionResult(
+                    final Result result
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL - store //", true );
+        Reporter.log( "* object type: oval-res:definition", true );
+
+        Reporter.log( "* target result: " + result, true );
+        Reporter.log( "*** finding DefinitionResult...", true );
+        Collection<DefinitionResult>  results = _store.findDefinitionResult( result );
+        Reporter.log( "@@@ #results: " + results.size(), true );
+        for (DefinitionResult  r : results) {
+            Reporter.log( "@@@ result: " + r, true );
+        }
+    }
+
+
+
+    /**
+     */
+    @org.testng.annotations.Test( groups={"oval.result", "search.system"},
+                    dataProvider="oval-system-result-criteria",
+//                    dependsOnGroups= {"oval_results"},
+                    alwaysRun=true
+                    )
+    public void searchSystemResult(
+                    final SearchCriteria criteria
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL - store //", true );
+        Reporter.log( "* object type: oval-res:system", true );
+
+        Reporter.log( "* search criteria: " + criteria, true );
+        Reporter.log( "*** searching system result...", true );
+        List<SystemResult>  results = _store.searchSystemResult( criteria );
+        Reporter.log( "@@@ #results: " + results.size(), true );
+        if (results.size() > 0) {
+            Reporter.log( "@@@ result[0]: " + results.get( 0 ), true );
+        }
+    }
+
+
 
     /**
      */

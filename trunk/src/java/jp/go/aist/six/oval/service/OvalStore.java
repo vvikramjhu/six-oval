@@ -25,9 +25,13 @@ import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.model.definition.State;
 import jp.go.aist.six.oval.model.definition.SystemObject;
 import jp.go.aist.six.oval.model.definition.Test;
+import jp.go.aist.six.oval.model.result.DefinitionResult;
 import jp.go.aist.six.oval.model.result.OvalResults;
+import jp.go.aist.six.oval.model.result.Result;
+import jp.go.aist.six.oval.model.result.SystemResult;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.util.search.SearchCriteria;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -46,7 +50,10 @@ public interface OvalStore
 
     public OvalResults findResults( String pid );
     public String createOvalResults( OvalResults results );
+    public List<SystemResult> searchSystemResult( SearchCriteria criteria );
+    public Collection<SystemResult> findSyetemByDefinitionResult( String defID, Result result );
 
+    public Collection<DefinitionResult> findDefinitionResult( Result result );
 
 
     //==============================================================

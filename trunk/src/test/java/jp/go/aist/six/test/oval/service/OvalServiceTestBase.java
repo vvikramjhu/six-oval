@@ -9,6 +9,9 @@ import jp.go.aist.six.oval.model.result.Result;
 import jp.go.aist.six.oval.service.Oval;
 import jp.go.aist.six.oval.service.OvalStore;
 import jp.go.aist.six.oval.service.OvalXml;
+import jp.go.aist.six.util.search.LikeBinding;
+import jp.go.aist.six.util.search.RelationalBinding;
+import jp.go.aist.six.util.search.SearchCriteria;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 
@@ -50,6 +53,50 @@ public abstract class OvalServiceTestBase
     //  OVAL Resutls
     //
     // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    /**
+     */
+    @DataProvider( name="oval-definition-result-result" )
+    public Object[][] ovalDefinitionResultResultProvider()
+    {
+        return new Object[][] {
+                        {
+                            Result.TRUE
+                        }
+        };
+    }
+
+
+    /**
+     */
+    @DataProvider( name="oval-system-result-criteria" )
+    public Object[][] ovalSystemResultCriteriaProvider()
+    {
+        return new Object[][] {
+                        {
+                            (new SearchCriteria(
+                                            RelationalBinding.equalBinding(
+                                                            "ovalSystemCharacteristics.systemInfo.primaryHostName",
+                                                            "x60" )))
+                        }
+                        ,
+                        {
+                            (new SearchCriteria(
+                                            RelationalBinding.equalBinding(
+                                                            "ovalSystemCharacteristics.systemInfo.interfaces.ipAddress",
+                                                            "192.168.158.1" )))
+                        }
+                        ,
+                        {
+                            (new SearchCriteria(
+                                            new LikeBinding(
+                                                            "ovalSystemCharacteristics.systemInfo.interfaces.interfaceName",
+                                                            "VMware%" )))
+                        }
+        };
+    }
+
+
 
     //==============================================================
     //  oval_results

@@ -25,12 +25,16 @@ import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.model.definition.State;
 import jp.go.aist.six.oval.model.definition.SystemObject;
 import jp.go.aist.six.oval.model.definition.Test;
+import jp.go.aist.six.oval.model.result.DefinitionResult;
 import jp.go.aist.six.oval.model.result.OvalResults;
+import jp.go.aist.six.oval.model.result.Result;
+import jp.go.aist.six.oval.model.result.SystemResult;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.service.OvalStore;
 import jp.go.aist.six.util.castor.CastorDataStoreService;
 import jp.go.aist.six.util.search.RelationalBinding;
 import jp.go.aist.six.util.search.SearchCriteria;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -89,6 +93,35 @@ implements OvalStore
 
 
 
+    public List<SystemResult> searchSystemResult(
+                    final SearchCriteria criteria
+                    )
+    {
+        return _search( SystemResult.class, criteria );
+    }
+
+
+
+    public Collection<SystemResult> findSyetemByDefinitionResult(
+                    final String defID,
+                    final Result result
+                    )
+    {
+        throw new UnsupportedOperationException();
+    }
+
+
+
+    public Collection<DefinitionResult> findDefinitionResult(
+                    final Result result
+                    )
+    {
+        SearchCriteria  criteria = new SearchCriteria(
+                        RelationalBinding.equalBinding( "result", result ));
+        return _search( DefinitionResult.class, criteria );
+    }
+
+
     //==============================================================
     //  OvalSystemCharacteristics
     //==============================================================
@@ -108,7 +141,6 @@ implements OvalStore
     {
         return _create( OvalSystemCharacteristics.class, sc );
     }
-
 
 
 

@@ -11,19 +11,35 @@
 @version    $Id: testng.xml 778 2010-05-11 06:26:16Z akihito $
 -->
 
-<suite name="SIX3-OVAL" verbose="1" parallel="tests">
+<suite name="six-oval" verbose="1" parallel="tests">
 
-    <test name="oval" enabled="true">
-    <!--
+    <test name="oval.service" enabled="true">
         <groups>
             <run>
-                <include name="oval.result"/>
+                <include name="search.DefinitionResult"/>
             </run>
         </groups>
+    <!--
     -->
     
         <classes>
-            <class name="jp.go.aist.six.test.oval.process.debian.DebianOvalGeneratorTest"/>
+            <class name="jp.go.aist.six.test.oval.service.OvalXml2StoreTest"/>
+
+            <!--
+            <class name="jp.go.aist.six.test.oval.service.OvalXml2StoreTest"/>
+            <class name="jp.go.aist.six.test.oval.service.OvalStoreTest"/>
+            <class name="jp.go.aist.six.test.oval.service.OvalXmlFragmentTest"/>
+            <class name="jp.go.aist.six.test.oval.service.OvalXmlMarshallingTest"/>
+            <class name="jp.go.aist.six.test.oval.service.OvalXmlTest"/>
+            <class name="jp.go.aist.six.test.oval.service.OvalXmlAnalysis"/>
+            -->
+        </classes>
+    </test>
+
+
+    <test name="oval.process" enabled="false">
+        <classes>
+            <class name="jp.go.aist.six.test.oval.process.debian.DsaParserTest"/>
 
             <!--
             <class name="jp.go.aist.six.test.oval.process.debian.DebianOvalBuilderTest"/>
