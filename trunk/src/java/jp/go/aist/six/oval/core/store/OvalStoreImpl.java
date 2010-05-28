@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.model.result.Result;
 import jp.go.aist.six.oval.model.result.SystemResult;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.service.OvalStore;
-import jp.go.aist.six.util.castor.CastorDataStoreService;
+import jp.go.aist.six.util.castor.CastorDataStore;
 import jp.go.aist.six.util.search.InBinding;
 import jp.go.aist.six.util.search.RelationalBinding;
 import jp.go.aist.six.util.search.SearchCriteria;
@@ -42,13 +42,13 @@ import java.util.List;
 
 
 /**
- * An OVAL data store service implementation.
+ * An OVAL data store implementation.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id: OvalStoreImpl.java 754 2010-05-10 05:26:45Z akihito $
  */
 public class OvalStoreImpl
-extends CastorDataStoreService
+extends CastorDataStore
 implements OvalStore
 {
 
@@ -81,7 +81,7 @@ implements OvalStore
                     final String pid
                     )
     {
-        return _find( OvalResults.class, pid );
+        return find( OvalResults.class, pid );
     }
 
 
@@ -90,7 +90,7 @@ implements OvalStore
                     final OvalResults results
                     )
     {
-        return _create( OvalResults.class, results );
+        return create( OvalResults.class, results );
     }
 
 
@@ -99,7 +99,7 @@ implements OvalStore
                     final SearchCriteria criteria
                     )
     {
-        return _search( SystemResult.class, criteria );
+        return search( SystemResult.class, criteria );
     }
 
 
@@ -119,7 +119,7 @@ implements OvalStore
             for (DefinitionResult  r : defs) {
                 binding.addValue( r.getMasterPersistentID() );
             }
-            return _search( SystemResult.class, new SearchCriteria( binding ) );
+            return search( SystemResult.class, new SearchCriteria( binding ) );
         }
 
         return (new ArrayList<SystemResult>());
@@ -133,7 +133,7 @@ implements OvalStore
     {
         SearchCriteria  criteria = new SearchCriteria(
                         RelationalBinding.equalBinding( "result", result ));
-        return _search( DefinitionResult.class, criteria );
+        return search( DefinitionResult.class, criteria );
     }
 
 
@@ -145,7 +145,7 @@ implements OvalStore
                     final String pid
                     )
     {
-        return _find( OvalSystemCharacteristics.class, pid );
+        return find( OvalSystemCharacteristics.class, pid );
     }
 
 
@@ -154,7 +154,7 @@ implements OvalStore
                     final OvalSystemCharacteristics sc
                     )
     {
-        return _create( OvalSystemCharacteristics.class, sc );
+        return create( OvalSystemCharacteristics.class, sc );
     }
 
 
@@ -167,7 +167,7 @@ implements OvalStore
                     final OvalDefinitions defs
                     )
     {
-        return _create( OvalDefinitions.class, defs );
+        return create( OvalDefinitions.class, defs );
     }
 
 
@@ -177,7 +177,7 @@ implements OvalStore
                     )
     {
         SearchCriteria  criteria = new SearchCriteria( RelationalBinding.equalBinding( "ovalID", id ));
-        List<Definition>  list = _search( Definition.class, criteria );
+        List<Definition>  list = search( Definition.class, criteria );
 
         Definition  result = null;
         if (list.size() == 0) {
@@ -203,7 +203,7 @@ implements OvalStore
                     final Definition def
                     )
     {
-        return _sync( Definition.class, def );
+        return sync( Definition.class, def );
     }
 
 
@@ -212,7 +212,7 @@ implements OvalStore
                     final Test test
                     )
     {
-        return _sync( Test.class, test );
+        return sync( Test.class, test );
     }
 
 
@@ -221,7 +221,7 @@ implements OvalStore
                     final SystemObject object
                     )
     {
-        return _sync( SystemObject.class, object );
+        return sync( SystemObject.class, object );
     }
 
 
@@ -230,7 +230,7 @@ implements OvalStore
                     final State state
                     )
     {
-        return _sync( State.class, state );
+        return sync( State.class, state );
     }
 
 
@@ -239,7 +239,7 @@ implements OvalStore
                     final SearchCriteria criteria
                     )
     {
-        return _search( Definition.class, criteria );
+        return search( Definition.class, criteria );
     }
 
 }
