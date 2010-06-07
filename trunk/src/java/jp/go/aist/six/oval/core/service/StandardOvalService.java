@@ -18,8 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.service;
+package jp.go.aist.six.oval.core.service;
 
+import jp.go.aist.six.oval.core.store.OvalStoreImpl;
+import jp.go.aist.six.oval.core.xml.OvalXmlImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.MissingResourceException;
@@ -31,14 +33,8 @@ import java.util.ResourceBundle;
  * @author  Akihito Nakamura, AIST
  * @version $Id: Oval.java 500 2010-04-02 06:28:19Z akihito $
  */
-public class Oval
+public class StandardOvalService
 {
-
-    /**
-     * The sole instance.
-     */
-    private static Oval  _instance = new Oval();
-
 
     /**
      * The Spring application context specification.
@@ -71,13 +67,13 @@ public class Oval
     /**
      * The data store sole instance.
      */
-    private OvalStore  _store;
+    private OvalStoreImpl  _store;
 
 
     /**
      * The XML processor sole instance.
      */
-    private OvalXml  _xml;
+    private OvalXmlImpl  _xml;
 
 
 
@@ -85,7 +81,7 @@ public class Oval
     /**
      * Constructor.
      */
-    private Oval()
+    private StandardOvalService()
     {
     }
 
@@ -137,11 +133,11 @@ public class Oval
 
     /**
      */
-    private OvalStore _getStore()
+    private OvalStoreImpl _getStore()
     throws Exception
     {
         if (_store == null) {
-            _store = (OvalStore)_getContext().getBean( "ovalStore" );
+            _store = (OvalStoreImpl)_getContext().getBean( "ovalStore" );
         }
 
         return _store;
@@ -150,11 +146,11 @@ public class Oval
 
     /**
      */
-    private OvalXml _getXml()
+    private OvalXmlImpl _getXml()
     throws Exception
     {
         if (_xml == null) {
-            _xml = (OvalXml)_getContext().getBean( "ovalXml" );
+            _xml = (OvalXmlImpl)_getContext().getBean( "ovalXml" );
         }
 
         return _xml;
@@ -162,39 +158,35 @@ public class Oval
 
 
 
-    ////////////////////////////////////////////////////////////////
-    //  static utility methods
-    ////////////////////////////////////////////////////////////////
-
     /**
      */
-    public static String getProperty(
+    public String getProperty(
                     final String key
                     )
     {
-        return _instance._getProperty( key );
+        return _getProperty( key );
     }
 
 
     /**
      */
-    public static OvalStore getStore()
+    public OvalStoreImpl getStore()
     throws Exception
     {
-        return _instance._getStore();
+        return _getStore();
     }
 
 
     /**
      */
-    public static OvalXml getXml()
+    public OvalXmlImpl getXml()
     throws Exception
     {
-        return _instance._getXml();
+        return _getXml();
     }
 
 }
-// Oval
+// StandardOvalService
 
 /* vim:set tabstop=4:set expandtab:set shiftwidth=4: */
 
