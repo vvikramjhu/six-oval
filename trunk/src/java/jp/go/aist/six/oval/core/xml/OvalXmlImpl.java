@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.core.xml;
 
-import jp.go.aist.six.oval.service.OvalXml;
 import jp.go.aist.six.util.castor.CastorXmlMapper;
 
 
@@ -31,7 +30,6 @@ import jp.go.aist.six.util.castor.CastorXmlMapper;
  */
 public class OvalXmlImpl
     extends CastorXmlMapper
-    implements OvalXml
 {
 
 }
