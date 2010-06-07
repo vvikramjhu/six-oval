@@ -1,6 +1,7 @@
 package jp.go.aist.six.test.oval.service;
 
 import jp.go.aist.six.oval.core.model.ComponentType;
+import jp.go.aist.six.oval.core.service.StandardOvalService;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Family;
@@ -13,8 +14,7 @@ import jp.go.aist.six.oval.model.definition.Product;
 import jp.go.aist.six.oval.model.definition.Reference;
 import jp.go.aist.six.oval.model.definition.SystemObject;
 import jp.go.aist.six.oval.model.definition.Test;
-import jp.go.aist.six.oval.service.Oval;
-import jp.go.aist.six.oval.service.OvalXml;
+import jp.go.aist.six.util.xml.XmlMapper;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -31,7 +31,7 @@ import java.io.FileInputStream;
 public class OvalXmlMarshallingTest
 {
 
-    private OvalXml  _xmlMapper = null;
+    private XmlMapper  _xmlMapper = null;
 
 
 
@@ -49,7 +49,8 @@ public class OvalXmlMarshallingTest
     public void setUp()
     throws Exception
     {
-        _xmlMapper = Oval.getXml();
+        StandardOvalService  service = new StandardOvalService();
+        _xmlMapper = service.getXml();
     }
 
 

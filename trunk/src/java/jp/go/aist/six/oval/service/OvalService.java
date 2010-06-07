@@ -41,7 +41,7 @@ import java.util.List;
  * @author  Akihito Nakamura, AIST
  * @version $Id: OvalStore.java 754 2010-05-10 05:26:45Z akihito $
  */
-public interface OvalStore
+public interface OvalService
 {
 
     //==============================================================

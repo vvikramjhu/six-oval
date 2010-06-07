@@ -81,7 +81,7 @@ public class StandardOvalService
     /**
      * Constructor.
      */
-    private StandardOvalService()
+    public StandardOvalService()
     {
     }
 

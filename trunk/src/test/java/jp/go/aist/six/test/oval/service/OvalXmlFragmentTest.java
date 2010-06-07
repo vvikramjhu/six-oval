@@ -1,5 +1,6 @@
 package jp.go.aist.six.test.oval.service;
 
+import jp.go.aist.six.oval.core.service.StandardOvalService;
 import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.model.definition.DefinitionClass;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
@@ -15,7 +16,7 @@ import jp.go.aist.six.oval.model.linux.LinuxEvrPkgInfoState;
 import jp.go.aist.six.oval.model.linux.LinuxPkgInfoObject;
 import jp.go.aist.six.oval.model.linux.LinuxPkgInfoState;
 import jp.go.aist.six.oval.model.linux.RpmInfoState;
-import jp.go.aist.six.oval.service.Oval;
+import jp.go.aist.six.util.xml.XmlMapper;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -32,6 +33,9 @@ import java.io.FileInputStream;
 public class OvalXmlFragmentTest
 {
 
+    private XmlMapper  _xmlMapper = null;
+
+
     /**
      */
     public OvalXmlFragmentTest()
@@ -46,6 +50,8 @@ public class OvalXmlFragmentTest
     public void setUp()
         throws Exception
     {
+        StandardOvalService  service = new StandardOvalService();
+        _xmlMapper = service.getXml();
     }
 
 
@@ -74,7 +80,7 @@ public class OvalXmlFragmentTest
     {
         File  file = new File( filepath );
         Reporter.log( "*** unmarshalling XML...", true );
-        Object  obj = Oval.getXml().unmarshal( new FileInputStream( file ) );
+        Object  obj = _xmlMapper.unmarshal( new FileInputStream( file ) );
         Reporter.log( "@@@ unmarshalled object: " + obj, true );
 
         return obj;
@@ -177,7 +183,7 @@ public class OvalXmlFragmentTest
         defs.setStates( states );
 
         // marshalling
-        String  xml = Oval.getXml().marshalToString( defs );
+        String  xml = _xmlMapper.marshalToString( defs );
         Reporter.log( "@@@ re-marshalled XML: ", true );
         Reporter.log( xml, true );
     }
@@ -227,7 +233,7 @@ public class OvalXmlFragmentTest
 
         File  file = new File( filepath );
         Reporter.log( "*** unmarshalling XML...", true );
-        Object  obj = Oval.getXml().unmarshal( new FileInputStream( file ) );
+        Object  obj = _xmlMapper.unmarshal( new FileInputStream( file ) );
         Reporter.log( "@@@ unmarshalled object: " + obj, true );
 
         Assert.assertNotNull( obj );
@@ -238,7 +244,7 @@ public class OvalXmlFragmentTest
         Assert.assertEquals( def.getMetadata().getTitle(), title );
 
         // marshalling
-        String  xml = Oval.getXml().marshalToString( obj );
+        String  xml = _xmlMapper.marshalToString( obj );
         Reporter.log( "@@@ re-marshalled XML: ", true );
         Reporter.log( xml, true );
     }
@@ -285,7 +291,7 @@ public class OvalXmlFragmentTest
 
         File  file = new File( filepath );
         Reporter.log( "*** unmarshalling XML...", true );
-        Object  obj = Oval.getXml().unmarshal( new FileInputStream( file ) );
+        Object  obj = _xmlMapper.unmarshal( new FileInputStream( file ) );
         Reporter.log( "@@@ unmarshalled object: " + obj, true );
 
         Assert.assertNotNull( obj );
@@ -302,7 +308,7 @@ public class OvalXmlFragmentTest
         }
 
         // marshalling
-        String  xml = Oval.getXml().marshalToString( obj );
+        String  xml = _xmlMapper.marshalToString( obj );
         Reporter.log( "@@@ re-marshalled XML: ", true );
         Reporter.log( xml, true );
     }
@@ -347,7 +353,7 @@ public class OvalXmlFragmentTest
 
         File  file = new File( filepath );
         Reporter.log( "*** unmarshalling XML...", true );
-        Object  obj = Oval.getXml().unmarshal( new FileInputStream( file ) );
+        Object  obj = _xmlMapper.unmarshal( new FileInputStream( file ) );
         Reporter.log( "@@@ unmarshalled object: " + obj, true );
 
         Assert.assertNotNull( obj );
@@ -358,7 +364,7 @@ public class OvalXmlFragmentTest
         }
 
         // marshalling
-        String  xml = Oval.getXml().marshalToString( obj );
+        String  xml = _xmlMapper.marshalToString( obj );
         Reporter.log( "@@@ re-marshalled XML: ", true );
         Reporter.log( xml, true );
     }
@@ -416,7 +422,7 @@ public class OvalXmlFragmentTest
 
         File  file = new File( filepath );
         Reporter.log( "*** unmarshalling XML...", true );
-        Object  obj = Oval.getXml().unmarshal( new FileInputStream( file ) );
+        Object  obj = _xmlMapper.unmarshal( new FileInputStream( file ) );
         Reporter.log( "@@@ unmarshalled object: " + obj, true );
 
         Assert.assertNotNull( obj );
@@ -425,7 +431,7 @@ public class OvalXmlFragmentTest
         }
 
         // marshalling
-        String  xml = Oval.getXml().marshalToString( obj );
+        String  xml = _xmlMapper.marshalToString( obj );
         Reporter.log( "@@@ re-marshalled XML: ", true );
         Reporter.log( xml, true );
     }
@@ -500,7 +506,7 @@ public class OvalXmlFragmentTest
         Reporter.log( "### xml to unmarshal: " + xml, true );
 
         Reporter.log( "*** unmarshalling XML...", true );
-        State  state = (State)Oval.getXml().unmarshalFromString( xml );
+        State  state = (State)_xmlMapper.unmarshalFromString( xml );
         Assert.assertNotNull( state );
         Reporter.log( "@@@ state: " + state, true );
     }

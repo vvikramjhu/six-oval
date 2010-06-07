@@ -1,14 +1,14 @@
 package jp.go.aist.six.test.oval.service;
 
 import jp.go.aist.six.oval.core.model.ComponentType;
+import jp.go.aist.six.oval.core.service.StandardOvalService;
+import jp.go.aist.six.oval.core.store.OvalStoreImpl;
+import jp.go.aist.six.oval.core.xml.OvalXmlImpl;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.definition.DefinitionClass;
 import jp.go.aist.six.oval.model.definition.Test;
 import jp.go.aist.six.oval.model.result.Result;
-import jp.go.aist.six.oval.service.Oval;
-import jp.go.aist.six.oval.service.OvalStore;
-import jp.go.aist.six.oval.service.OvalXml;
 import jp.go.aist.six.util.search.LikeBinding;
 import jp.go.aist.six.util.search.RelationalBinding;
 import jp.go.aist.six.util.search.SearchCriteria;
@@ -24,8 +24,8 @@ import org.testng.annotations.DataProvider;
 public abstract class OvalServiceTestBase
 {
 
-    protected OvalXml  _xml = null;
-    protected OvalStore  _store = null;
+    protected OvalXmlImpl  _xml = null;
+    protected OvalStoreImpl  _store = null;
 
 
 
@@ -43,9 +43,11 @@ public abstract class OvalServiceTestBase
     public void setUp()
     throws Exception
     {
-        _xml = Oval.getXml();
-        _store = Oval.getStore();
+        StandardOvalService  service = new StandardOvalService();
+        _xml = service.getXml();
+        _store = service.getStore();
     }
+
 
 
     // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

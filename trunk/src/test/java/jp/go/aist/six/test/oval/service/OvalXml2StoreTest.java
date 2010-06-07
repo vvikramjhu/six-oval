@@ -15,6 +15,7 @@ import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.model.result.Result;
 import jp.go.aist.six.oval.model.result.SystemResult;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
+import jp.go.aist.six.util.search.RelationalBinding;
 import jp.go.aist.six.util.search.SearchCriteria;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -68,7 +69,11 @@ extends OvalServiceTestBase
 
         Reporter.log( "* target result: " + result, true );
         Reporter.log( "*** finding DefinitionResult...", true );
-        Collection<DefinitionResult>  results = _store.findDefinitionResult( result );
+
+        Collection<DefinitionResult>  results = _store.find(
+                        DefinitionResult.class,
+                        RelationalBinding.equalBinding( "result", result ),
+                        null, null );
         Reporter.log( "@@@ #results: " + results.size(), true );
         for (DefinitionResult  r : results) {
             Reporter.log( "@@@ result: " + r, true );
@@ -94,7 +99,7 @@ extends OvalServiceTestBase
 
         Reporter.log( "* search criteria: " + criteria, true );
         Reporter.log( "*** searching system result...", true );
-        List<SystemResult>  results = _store.searchSystemResult( criteria );
+        List<?>  results = _store.search( SystemResult.class, criteria );
         Reporter.log( "@@@ #results: " + results.size(), true );
         if (results.size() > 0) {
             Reporter.log( "@@@ result[0]: " + results.get( 0 ), true );
@@ -133,11 +138,11 @@ extends OvalServiceTestBase
         Reporter.log( "  @ marshalled XML (1024): " + xml.substring( 0, 1024 ), true );
 
         Reporter.log( "  * creating object...", true );
-        String  pid = _store.createOvalResults( results );
+        String  pid = _store.create( OvalResults.class, results );
         Reporter.log( "  @ created: pid=" + pid, true );
 
         Reporter.log( "  * finding object...: pid=" + pid, true );
-        OvalResults  p_results = _store.findResults( pid );
+        OvalResults  p_results = _store.get( OvalResults.class, pid );
         Reporter.log( "  @ found: " + p_results, true );
     }
 
@@ -228,11 +233,11 @@ extends OvalServiceTestBase
         Reporter.log( "  @ marshalled XML (1024): " + xml.substring( 0, 1024 ), true );
 
         Reporter.log( "  * creating object...", true );
-        String  pid = _store.createSystemCharacteristics( sc );
+        String  pid = _store.create( OvalSystemCharacteristics.class, sc );
         Reporter.log( "  @ created: pid=" + pid, true );
 
         Reporter.log( "  * finding object...: pid=" + pid, true );
-        OvalSystemCharacteristics  p_sc = _store.findSystemCharacteristics( pid );
+        OvalSystemCharacteristics  p_sc = _store.get( OvalSystemCharacteristics.class, pid );
         Reporter.log( "  @ found: " + p_sc, true );
     }
 
@@ -284,7 +289,7 @@ extends OvalServiceTestBase
         Reporter.log( "  @ marshalled XML: " + xml, true );
 
         Reporter.log( "  * syncing object...", true );
-        Definition  p_def = _store.syncDefinition( def );
+        Definition  p_def = _store.sync( Definition.class, def );
         Reporter.log( "  @ synced: pid=" + p_def.getPersistentID(), true );
     }
 
@@ -330,7 +335,7 @@ extends OvalServiceTestBase
         Reporter.log( "  @ marshalled XML: " + xml, true );
 
         Reporter.log( "  * syncing object...", true );
-        State  p_state = _store.syncState( state );
+        State  p_state = _store.sync( State.class, state );
         Reporter.log( "  @ synced: pid=" + p_state.getPersistentID(), true );
     }
 
@@ -376,7 +381,7 @@ extends OvalServiceTestBase
         Reporter.log( "  @ marshalled XML: " + xml, true );
 
         Reporter.log( "  * syncing object...", true );
-        SystemObject  p_object = _store.syncObject( object );
+        SystemObject  p_object = _store.sync( SystemObject.class, object );
         Reporter.log( "  @ synced: pid=" + p_object.getPersistentID(), true );
     }
 
@@ -432,7 +437,7 @@ extends OvalServiceTestBase
         }
 
         Reporter.log( "  * syncing object...", true );
-        Test  p_test = _store.syncTest( test );
+        Test  p_test = _store.sync( Test.class, test );
         Reporter.log( "  @ synced: pid=" + p_test.getPersistentID(), true );
     }
 
