@@ -388,13 +388,14 @@ extends OvalServiceTestBase
 
 
     //==============================================================
-    //  test
+    //  Test
     //==============================================================
 
     /**
      */
-    @org.testng.annotations.Test( groups={"oval.service", "oval-def", "test"},
-                    dataProvider="oval-test",
+    @org.testng.annotations.Test(
+                    groups={"oval.service", "definition.test"},
+                    dataProvider="oval-definition-test",
                     alwaysRun=true
                     )
     public void processTest(
@@ -410,13 +411,13 @@ extends OvalServiceTestBase
                     )
     throws Exception
     {
-        Reporter.log( "\n// TEST: OVAL - unmarshalling XML and syncing with store //", true );
-        Reporter.log( "  * object type: oval-def:test", true );
+        Reporter.log( "\n// TEST: OVAL - XML, store //", true );
+        Reporter.log( "  - object type: definition.Test", true );
 
         File  file = new File( filepath );
-        Reporter.log( "  * unmarshalling XML...", true );
+        Reporter.log( "*** unmarshalling XML...", true );
         Object  obj = _xml.unmarshal( new FileInputStream( file ) );
-        Reporter.log( "  @ unmarshalled object: " + obj, true );
+        Reporter.log( "  - unmarshalled object: " + obj, true );
 
         Assert.assertNotNull( obj );
         Assert.assertTrue( obj instanceof Test );
@@ -436,58 +437,10 @@ extends OvalServiceTestBase
             }
         }
 
-        Reporter.log( "  * syncing object...", true );
+        Reporter.log( "@@@ syncing object...", true );
         Test  p_test = _store.sync( Test.class, test );
-        Reporter.log( "  @ synced: pid=" + p_test.getPersistentID(), true );
+        Reporter.log( "  - PID=" + p_test.getPersistentID(), true );
     }
-
-
-
-//    /**
-//     * @testng.test groups="oval.service oval-def variable"
-//     *              dataProvider="oval-variable"
-//     *              dependsOnGroups="definition"
-//     *              alwaysRun="true"
-//     */
-//    public void processVariable(
-//                    final String filepath,
-//                    final String id,
-//                    final int version
-//                    )
-//    throws Exception
-//    {
-//        Reporter.log( "\n// TEST: OVAL - unmarshalling XML and syncing with store //", true );
-//        Reporter.log( "  * object type: oval-def:variable", true );
-//
-//        File  file = new File( filepath );
-//        Reporter.log( "  * unmarshalling XML...", true );
-//        Object  obj = _xml.unmarshal( new FileInputStream( file ) );
-//        Reporter.log( "  @ unmarshalled object: " + obj, true );
-//
-//        Assert.assertNotNull( obj );
-//        Assert.assertTrue( obj instanceof Variable );
-//
-//        Variable  variable = Variable.class.cast( obj );
-//        Assert.assertEquals( id, variable.getOvalID() );
-//        Assert.assertEquals( version, variable.getOvalVersion() );
-//        Reporter.log( "  @ comment: " + variable.getComment(), true );
-//        Reporter.log( "  @ Java type: " + variable.getClass(), true );
-//
-//        if (variable instanceof LocalVariable) {
-//            LocalVariable  lvariable = LocalVariable.class.cast( variable );
-//            String  contentXml = lvariable.getContentXml();
-//            Reporter.log( "  @ content XML: " + contentXml, true );
-//        }
-//
-//
-////        Reporter.log( "  * marshalling XML...", true );
-////        String  xml = _xml.marshalToString( state );
-////        Reporter.log( "  @ marshalled XML: " + xml, true );
-////
-////        Reporter.log( "  * syncing object...", true );
-////        Variable  p_state = _store.sync( state );
-////        Reporter.log( "  @ synced: pid=" + p_state.getPersistentID(), true );
-//    }
 
 }
 // OvalXml2StoreTest

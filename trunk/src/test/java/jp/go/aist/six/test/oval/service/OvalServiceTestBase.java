@@ -399,7 +399,7 @@ public abstract class OvalServiceTestBase
 
     /**
      */
-    @DataProvider( name="oval-test" )
+    @DataProvider( name="oval-definition-test" )
     public Object[][] ovalTestProvider()
     {
         return new Object[][] {

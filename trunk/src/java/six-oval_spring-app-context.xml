@@ -113,7 +113,7 @@
     </bean>
 
 
-    <bean id="ovalStore" class="jp.go.aist.six.oval.core.store.OvalStoreImpl">
+    <bean id="ovalStore" class="jp.go.aist.six.oval.core.store.OvalStore">
         <property name="transactionManager" ref="txManager"/>
         <property name="daoRegistry" ref="daoRegistry"/>
     </bean>
@@ -132,10 +132,12 @@
                  value="true"/>
         <property name="ignoreExtraElements"
                  value="true"/>
+        <property name="suppressXsiType"
+                 value="true"/>
     </bean> 
 
 
-    <bean id="ovalXml" class="jp.go.aist.six.oval.core.xml.OvalXmlImpl">
+    <bean id="ovalXml" class="jp.go.aist.six.oval.core.xml.OvalXml">
         <property name="marshaller" ref="ovalMarshaller"/>
         <property name="unmarshaller" ref="ovalMarshaller"/>
     </bean>

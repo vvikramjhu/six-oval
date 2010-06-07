@@ -16,7 +16,7 @@
     <test name="oval.service" enabled="true">
         <groups>
             <run>
-                <include name="search.DefinitionResult"/>
+                <include name="definition.test"/>
             </run>
         </groups>
     <!--
