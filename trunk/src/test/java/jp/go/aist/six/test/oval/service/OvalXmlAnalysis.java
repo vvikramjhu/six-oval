@@ -1,8 +1,8 @@
 package jp.go.aist.six.test.oval.service;
 
+import jp.go.aist.six.oval.core.service.StandardOvalService;
+import jp.go.aist.six.oval.core.xml.OvalXmlImpl;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
-import jp.go.aist.six.oval.service.Oval;
-import jp.go.aist.six.oval.service.OvalXml;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -19,7 +19,7 @@ import java.io.FileInputStream;
 public class OvalXmlAnalysis
 {
 
-    private OvalXml  _xmlMapper = null;
+    private OvalXmlImpl  _xmlMapper = null;
 
 
 
@@ -37,7 +37,8 @@ public class OvalXmlAnalysis
     public void setUp()
     throws Exception
     {
-        _xmlMapper = Oval.getXml();
+        StandardOvalService  service = new StandardOvalService();
+        _xmlMapper = service.getXml();
     }
 
 

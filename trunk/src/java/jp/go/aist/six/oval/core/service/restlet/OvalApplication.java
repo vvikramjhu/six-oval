@@ -20,9 +20,9 @@
 
 package jp.go.aist.six.oval.core.service.restlet;
 
-import jp.go.aist.six.oval.service.Oval;
-import jp.go.aist.six.oval.service.OvalStore;
-import jp.go.aist.six.oval.service.OvalXml;
+import jp.go.aist.six.oval.core.service.StandardOvalService;
+import jp.go.aist.six.oval.core.store.OvalStoreImpl;
+import jp.go.aist.six.oval.core.xml.OvalXmlImpl;
 import org.restlet.Application;
 import org.restlet.Context;
 import org.restlet.Restlet;
@@ -48,8 +48,9 @@ public class OvalApplication
 
 
 
-    private OvalStore  _ovalStore;
-    private OvalXml  _ovalXml;
+    private StandardOvalService  _service;
+    private OvalStoreImpl  _ovalStore;
+    private OvalXmlImpl  _ovalXml;
 
 
 
@@ -70,6 +71,8 @@ public class OvalApplication
                     )
     {
         super( context );
+
+        _service = new StandardOvalService();
     }
 
 
@@ -77,11 +80,11 @@ public class OvalApplication
     /**
      *
      */
-    protected synchronized OvalStore _getOvalStore()
+    protected synchronized OvalStoreImpl _getOvalStore()
     throws Exception
     {
         if (_ovalStore == null) {
-            _ovalStore = Oval.getStore();
+            _ovalStore = _service.getStore();
         }
 
         return _ovalStore;
@@ -89,11 +92,11 @@ public class OvalApplication
 
 
 
-    protected synchronized OvalXml _getOvalXml()
+    protected synchronized OvalXmlImpl _getOvalXml()
     throws Exception
     {
         if (_ovalXml == null) {
-            _ovalXml = Oval.getXml();
+            _ovalXml = _service.getXml();
         }
 
         return _ovalXml;
@@ -102,9 +105,9 @@ public class OvalApplication
 
 
 
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
     //  extends Application
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
 
     public synchronized Restlet createRoot()
     {

@@ -1,10 +1,11 @@
 package jp.go.aist.six.test.oval.process.debian;
 
+import jp.go.aist.six.oval.core.service.StandardOvalService;
+import jp.go.aist.six.oval.core.xml.OvalXmlImpl;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.process.debian.builder.DebianOvalBuilder;
 import jp.go.aist.six.oval.process.debian.dsa.Dsa;
 import jp.go.aist.six.oval.process.debian.dsa.DsaParser;
-import jp.go.aist.six.oval.service.Oval;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -23,6 +24,10 @@ public class DebianOvalBuilderTest
 extends DebianOvalTestBase
 {
 
+    private OvalXmlImpl  _xmlMapper = null;
+
+
+
     /**
      */
     public DebianOvalBuilderTest()
@@ -37,6 +42,8 @@ extends DebianOvalTestBase
     public void setUp()
     throws Exception
     {
+        StandardOvalService  service = new StandardOvalService();
+        _xmlMapper = service.getXml();
     }
 
 
@@ -68,7 +75,7 @@ extends DebianOvalTestBase
         Assert.assertNotNull( oval );
         Reporter.log( "@@@ OvalDefinitions=" + oval, true );
 
-        String  xml = Oval.getXml().marshalToString( oval );
+        String  xml = _xmlMapper.marshalToString( oval );
         Reporter.log( "@@@ oval_definitions XML: ", true );
         Reporter.log( xml, true );
     }

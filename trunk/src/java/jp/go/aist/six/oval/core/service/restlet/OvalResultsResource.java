@@ -99,7 +99,7 @@ public class OvalResultsResource
         Representation  rep = null;
         try {
             OvalResults  results = (OvalResults)_getOvalXml().unmarshalFromString( xml );
-            String  pid = _getOvalStore().createOvalResults( results );
+            String  pid = _getOvalStore().create( OvalResults.class, results );
             getResponse().setStatus( Status.SUCCESS_CREATED );
             rep = new StringRepresentation( pid, MediaType.TEXT_PLAIN );
             rep.setIdentifier( getRequest().getResourceRef().getIdentifier()

@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.OvalEntity;
-import jp.go.aist.six.util.orm.PersistenceHelper;
+import jp.go.aist.six.util.castor.DefaultPersistenceHelper;
 
 
 
@@ -30,7 +30,7 @@ import jp.go.aist.six.util.orm.PersistenceHelper;
  * @version $Id: OvalEntityHelper.java 440 2010-03-23 05:11:44Z akihito $
  */
 public class OvalEntityHelper<T extends OvalEntity>
-    implements PersistenceHelper<T>
+    extends DefaultPersistenceHelper<T>
 {
 
     public OvalEntityHelper()
@@ -43,7 +43,7 @@ public class OvalEntityHelper<T extends OvalEntity>
     //  PersistenceHelper
     //**************************************************************
 
-    public Object getIdentity(
+    public Object getUnique(
                     final T entity
                     )
     {
@@ -55,7 +55,7 @@ public class OvalEntityHelper<T extends OvalEntity>
 
 
 
-    public String getIdentityCriteria()
+    public String getUniqueFilter()
     {
         return "WHERE o.ovalID = $1 AND o.ovalVersion = $2";
     }

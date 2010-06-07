@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.core.service.restlet;
 
-import jp.go.aist.six.oval.service.OvalStore;
-import jp.go.aist.six.oval.service.OvalXml;
+import jp.go.aist.six.oval.core.store.OvalStoreImpl;
+import jp.go.aist.six.oval.core.xml.OvalXmlImpl;
 import org.restlet.Context;
 import org.restlet.data.MediaType;
 import org.restlet.data.Request;
@@ -63,14 +63,14 @@ public abstract class BaseResource
     /**
      *
      */
-    protected OvalStore _getOvalStore()
+    protected OvalStoreImpl _getOvalStore()
     throws Exception
     {
         return ((OvalApplication)getApplication())._getOvalStore();
     }
 
 
-    protected OvalXml _getOvalXml()
+    protected OvalXmlImpl _getOvalXml()
     throws Exception
     {
         return ((OvalApplication)getApplication())._getOvalXml();

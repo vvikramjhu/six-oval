@@ -1,6 +1,8 @@
 package jp.go.aist.six.test.oval.service;
 
 import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsHelper;
+import jp.go.aist.six.oval.core.service.StandardOvalService;
+import jp.go.aist.six.oval.core.xml.OvalXmlImpl;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.definition.Affected;
@@ -33,7 +35,6 @@ import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.SystemData;
 import jp.go.aist.six.oval.model.system.SystemInfo;
 import jp.go.aist.six.oval.model.system.SystemObjectStatus;
-import jp.go.aist.six.oval.service.Oval;
 import jp.go.aist.six.util.IsoDate;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -59,6 +60,9 @@ import java.util.HashMap;
 public class OvalXmlTest
 {
 
+    protected OvalXmlImpl  _xml = null;
+
+
     /**
      */
     public OvalXmlTest()
@@ -73,6 +77,8 @@ public class OvalXmlTest
     public void setUp()
         throws Exception
     {
+        StandardOvalService  service = new StandardOvalService();
+        _xml = service.getXml();
     }
 
 
@@ -151,7 +157,7 @@ public class OvalXmlTest
         Reader  reader = new InputStreamReader(
                             new FileInputStream( file ), Charset.forName( "UTF-8" ) );
 
-        OvalResults  results = (OvalResults)Oval.getXml().unmarshal( reader );
+        OvalResults  results = (OvalResults)_xml.unmarshal( reader );
         Assert.assertNotNull( results );
 
         if (filepath.equals( _SAMPLE_OVAL_R_LINUX_CENTOS_ )) {
@@ -326,7 +332,7 @@ public class OvalXmlTest
                             new FileInputStream( file ), Charset.forName( "UTF-8" ) );
 
         OvalSystemCharacteristics  sc =
-            (OvalSystemCharacteristics)Oval.getXml().unmarshal( reader );
+            (OvalSystemCharacteristics)_xml.unmarshal( reader );
         Assert.assertNotNull( sc );
 
         if (filepath.equals( _SAMPLE_OVAL_SC_WINDOWS_ )) {
@@ -601,7 +607,7 @@ public class OvalXmlTest
 
         File  file = new File( filepath );
         Reporter.log( "*** unmarshalling XML...: file=" + file.getAbsolutePath(), true );
-        OvalDefinitions  defs = (OvalDefinitions)Oval.getXml().unmarshal(
+        OvalDefinitions  defs = (OvalDefinitions)_xml.unmarshal(
                         new FileReader( file ) );
         Assert.assertNotNull( defs );
         Reporter.log( "@@@ #definitions: " + defs.getDefinitions().getElements().size(), true );

@@ -48,7 +48,7 @@ import jp.go.aist.six.oval.process.OvalProcessException;
 import jp.go.aist.six.oval.process.debian.dsa.Dsa;
 import jp.go.aist.six.oval.process.debian.dsa.FixedIn;
 import jp.go.aist.six.oval.process.debian.dsa.FixedInArchitecture;
-import jp.go.aist.six.oval.service.Oval;
+import jp.go.aist.six.oval.service.OvalConfig;
 import jp.go.aist.six.util.IsoDate;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -516,7 +516,7 @@ public class DebianOvalBuilder
                     )
     throws IOException, MalformedURLException
     {
-        final String  optionalLocation = Oval.getProperty( PROP_DEBIAN_DSC_LOCATION );
+        final String  optionalLocation = OvalConfig.getProperty( PROP_DEBIAN_DSC_LOCATION );
         if (_LOG.isTraceEnabled()) {
             _LOG.trace( "optional Debian package dsc location: " + optionalLocation );
         }
