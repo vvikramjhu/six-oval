@@ -21,8 +21,8 @@
 package jp.go.aist.six.oval.core.service.restlet;
 
 import jp.go.aist.six.oval.core.service.StandardOvalService;
-import jp.go.aist.six.oval.core.store.OvalStoreImpl;
-import jp.go.aist.six.oval.core.xml.OvalXmlImpl;
+import jp.go.aist.six.oval.core.store.OvalStore;
+import jp.go.aist.six.oval.core.xml.OvalXml;
 import org.restlet.Application;
 import org.restlet.Context;
 import org.restlet.Restlet;
@@ -49,8 +49,8 @@ public class OvalApplication
 
 
     private StandardOvalService  _service;
-    private OvalStoreImpl  _ovalStore;
-    private OvalXmlImpl  _ovalXml;
+    private OvalStore  _ovalStore;
+    private OvalXml  _ovalXml;
 
 
 
@@ -80,7 +80,7 @@ public class OvalApplication
     /**
      *
      */
-    protected synchronized OvalStoreImpl _getOvalStore()
+    protected synchronized OvalStore _getOvalStore()
     throws Exception
     {
         if (_ovalStore == null) {
@@ -92,7 +92,7 @@ public class OvalApplication
 
 
 
-    protected synchronized OvalXmlImpl _getOvalXml()
+    protected synchronized OvalXml _getOvalXml()
     throws Exception
     {
         if (_ovalXml == null) {

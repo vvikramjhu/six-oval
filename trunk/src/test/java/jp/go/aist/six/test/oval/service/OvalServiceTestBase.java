@@ -2,8 +2,8 @@ package jp.go.aist.six.test.oval.service;
 
 import jp.go.aist.six.oval.core.model.ComponentType;
 import jp.go.aist.six.oval.core.service.StandardOvalService;
-import jp.go.aist.six.oval.core.store.OvalStoreImpl;
-import jp.go.aist.six.oval.core.xml.OvalXmlImpl;
+import jp.go.aist.six.oval.core.store.OvalStore;
+import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.definition.DefinitionClass;
@@ -24,8 +24,8 @@ import org.testng.annotations.DataProvider;
 public abstract class OvalServiceTestBase
 {
 
-    protected OvalXmlImpl  _xml = null;
-    protected OvalStoreImpl  _store = null;
+    protected OvalXml  _xml = null;
+    protected OvalStore  _store = null;
 
 
 

@@ -2,7 +2,7 @@ package jp.go.aist.six.test.oval.service;
 
 import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsHelper;
 import jp.go.aist.six.oval.core.service.StandardOvalService;
-import jp.go.aist.six.oval.core.xml.OvalXmlImpl;
+import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.definition.Affected;
@@ -60,7 +60,7 @@ import java.util.HashMap;
 public class OvalXmlTest
 {
 
-    protected OvalXmlImpl  _xml = null;
+    protected OvalXml  _xml = null;
 
 
     /**

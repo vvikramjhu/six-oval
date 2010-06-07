@@ -18,35 +18,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.store;
+package jp.go.aist.six.oval.core.xml;
 
-import jp.go.aist.six.util.castor.CastorDataStore;
+import jp.go.aist.six.util.castor.CastorXmlMapper;
 
 
 
 /**
- * An OVAL data store implementation.
- *
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalStoreImpl.java 754 2010-05-10 05:26:45Z akihito $
+ * @version $Id: OvalXmlImpl.java 440 2010-03-23 05:11:44Z akihito $
  */
-public class OvalStoreImpl
-extends CastorDataStore
+public class OvalXml
+    extends CastorXmlMapper
 {
 
-//    /**
-//     * Logger.
-//     */
-//    private static Log  _LOG = LogFactory.getLog( OvalStoreImpl.class );
-
-
-
-    /**
-     * Constructor.
-     */
-    public OvalStoreImpl()
-    {
-    }
-
 }
-// OvalStoreImpl
+// OvalXmlImpl
+
+/* vim:set tabstop=4:set expandtab:set shiftwidth=4: */
+

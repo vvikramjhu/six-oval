@@ -1,7 +1,7 @@
 package jp.go.aist.six.test.oval.process.debian;
 
 import jp.go.aist.six.oval.core.service.StandardOvalService;
-import jp.go.aist.six.oval.core.xml.OvalXmlImpl;
+import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.process.debian.builder.DebianOvalBuilder;
 import jp.go.aist.six.oval.process.debian.dsa.Dsa;
@@ -24,7 +24,7 @@ public class DebianOvalBuilderTest
 extends DebianOvalTestBase
 {
 
-    private OvalXmlImpl  _xmlMapper = null;
+    private OvalXml  _xmlMapper = null;
 
 
 

@@ -20,12 +20,10 @@
 
 package jp.go.aist.six.oval.core.service;
 
-import jp.go.aist.six.oval.core.store.OvalStoreImpl;
-import jp.go.aist.six.oval.core.xml.OvalXmlImpl;
+import jp.go.aist.six.oval.core.store.OvalStore;
+import jp.go.aist.six.oval.core.xml.OvalXml;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
 
 
 
@@ -39,22 +37,8 @@ public class StandardOvalService
     /**
      * The Spring application context specification.
      */
-    private static final String _RESOURCE_BUNDLE_
-        = "six-oval";
-
-
-    /**
-     * The Spring application context specification.
-     */
     private static final String _SPRING_APP_CONTEXT_
         = "/six-oval_spring-app-context.xml";
-
-
-
-    /**
-     */
-    private ResourceBundle  _resourceBundle;
-    private boolean  _resourceBundleAlreadyRead = false;
 
 
 
@@ -67,13 +51,13 @@ public class StandardOvalService
     /**
      * The data store sole instance.
      */
-    private OvalStoreImpl  _store;
+    private OvalStore  _store;
 
 
     /**
      * The XML processor sole instance.
      */
-    private OvalXmlImpl  _xml;
+    private OvalXml  _xml;
 
 
 
@@ -83,36 +67,6 @@ public class StandardOvalService
      */
     public StandardOvalService()
     {
-    }
-
-
-
-    /**
-     */
-    private String _getProperty(
-                    final String key
-                    )
-    {
-        String  value = System.getProperty( key );
-        if (value != null) {
-            return value;
-        }
-
-        if (!_resourceBundleAlreadyRead) {
-            _resourceBundleAlreadyRead = true;
-            try {
-                _resourceBundle = ResourceBundle.getBundle( _RESOURCE_BUNDLE_ );
-
-            } catch (MissingResourceException ex) {
-                //negligible
-            }
-        }
-
-        if (_resourceBundle != null) {
-            value = _resourceBundle.getString( key );
-        }
-
-        return value;
     }
 
 
@@ -133,11 +87,11 @@ public class StandardOvalService
 
     /**
      */
-    private OvalStoreImpl _getStore()
+    private OvalStore _getStore()
     throws Exception
     {
         if (_store == null) {
-            _store = (OvalStoreImpl)_getContext().getBean( "ovalStore" );
+            _store = (OvalStore)_getContext().getBean( "ovalStore" );
         }
 
         return _store;
@@ -146,11 +100,11 @@ public class StandardOvalService
 
     /**
      */
-    private OvalXmlImpl _getXml()
+    private OvalXml _getXml()
     throws Exception
     {
         if (_xml == null) {
-            _xml = (OvalXmlImpl)_getContext().getBean( "ovalXml" );
+            _xml = (OvalXml)_getContext().getBean( "ovalXml" );
         }
 
         return _xml;
@@ -160,17 +114,7 @@ public class StandardOvalService
 
     /**
      */
-    public String getProperty(
-                    final String key
-                    )
-    {
-        return _getProperty( key );
-    }
-
-
-    /**
-     */
-    public OvalStoreImpl getStore()
+    public OvalStore getStore()
     throws Exception
     {
         return _getStore();
@@ -179,7 +123,7 @@ public class StandardOvalService
 
     /**
      */
-    public OvalXmlImpl getXml()
+    public OvalXml getXml()
     throws Exception
     {
         return _getXml();
