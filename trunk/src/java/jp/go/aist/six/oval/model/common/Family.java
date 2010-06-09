@@ -28,7 +28,7 @@ import java.util.HashMap;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: Family.java 434 2010-03-23 05:01:24Z akihito $
+ * @version $Id$
  */
 public final class Family
     implements Serializable

@@ -20,84 +20,78 @@
 
 package jp.go.aist.six.oval.model.common;
 
-import jp.go.aist.six.util.orm.Persistable;
+
+
 
 
 
 /**
- *
- * @author	Akihito Nakamura, AIST
+ * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class Message
-    implements Persistable
+public enum CheckEnum
 {
 
-    private String  _content;
-    private MessageLevel  _level;
+             ALL( "all" ),
+    AT_LEAST_ONE( "at least one" ),
+      NONE_EXIST( "none exist" ),
+    NONE_SATISFY( "none satisfy" ),
+        ONLY_ONE( "only one" );
+
+
+
+    /**
+     * An instance factory method.
+     */
+    public static CheckEnum fromValue(
+                    final String value
+                    )
+    {
+        for (CheckEnum  c : CheckEnum.values()) {
+          if (c._value.equals( value )) {
+              return c;
+          }
+      }
+
+      throw new IllegalArgumentException( value );
+    }
+
+
+
+
+    private final String  _value;
+
+
+    /**
+     * Constructor.
+     */
+    CheckEnum(
+                    final String value
+                    )
+    {
+        this._value = value;
+    }
 
 
 
     /**
      */
-    public Message()
+    public String value()
     {
-    }
-
-
-
-    public String getContent()
-    {
-        return _content;
-    }
-
-
-    public void setContent(
-                    final String content
-                    )
-    {
-        _content = content;
-    }
-
-
-
-    public MessageLevel getLevel()
-    {
-        return _level;
-    }
-
-
-    public void setLevel(
-                    final MessageLevel level
-                    )
-    {
-        _level = level;
+        return this._value;
     }
 
 
 
     //**************************************************************
-    //  Persistable
+    //  java.lang.Object
     //**************************************************************
 
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
+    @Override
+    public String toString()
     {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
+        return this._value;
     }
 
 }
-// Message
+// CheckEnum

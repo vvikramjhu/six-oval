@@ -41,7 +41,7 @@ import java.util.Date;
  * </p>
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: Generator.java 742 2010-05-07 09:22:53Z akihito $
+ * @version $Id$
  */
 public class Generator
     implements Persistable

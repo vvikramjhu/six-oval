@@ -28,7 +28,7 @@ import java.util.HashMap;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: Datatype.java 712 2010-05-06 03:23:34Z akihito $
+ * @version $Id$
  */
 public final class Datatype
     implements Serializable
