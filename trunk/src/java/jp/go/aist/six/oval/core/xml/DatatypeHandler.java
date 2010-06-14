@@ -38,8 +38,8 @@ public class DatatypeHandler
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        Datatype  type = (Datatype)value;
-        return type.toString();
+        Datatype  e = (Datatype)value;
+        return e.value();
     }
 
 
@@ -47,13 +47,13 @@ public class DatatypeHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return Datatype.valueOf( (String)value );
+        return Datatype.fromValue( (String)value );
     }
 
 
 
     @Override
-    public Class getFieldType()
+    public Class<Datatype> getFieldType()
     {
         return Datatype.class;
     }

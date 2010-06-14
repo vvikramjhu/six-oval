@@ -38,8 +38,8 @@ public class OperationHandler
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        Operation  type = (Operation)value;
-        return type.toString();
+        Operation  e = (Operation)value;
+        return e.value();
     }
 
 
@@ -47,13 +47,13 @@ public class OperationHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return Operation.valueOf( (String)value );
+        return Operation.fromValue( (String)value );
     }
 
 
 
     @Override
-    public Class getFieldType()
+    public Class<Operation> getFieldType()
     {
         return Operation.class;
     }

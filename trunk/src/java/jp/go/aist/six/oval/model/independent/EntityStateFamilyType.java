@@ -52,7 +52,7 @@ public class EntityStateFamilyType
                     final String data
                     )
     {
-        super.setData( Family.valueOf( data ).getName() );
+        super.setData( Family.fromValue( data ).value() );
     }
 
 

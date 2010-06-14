@@ -39,7 +39,7 @@ public class OperatorHandler
     {
         if (value == null) return null;
         Operator  type = (Operator)value;
-        return type.toString();
+        return type.name();
     }
 
 
@@ -53,7 +53,7 @@ public class OperatorHandler
 
 
     @Override
-    public Class getFieldType()
+    public Class<Operator> getFieldType()
     {
         return Operator.class;
     }

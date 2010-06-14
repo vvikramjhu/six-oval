@@ -34,12 +34,13 @@ public class FamilyHandler
     }
 
 
+
     @Override
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        Family  type = (Family)value;
-        return type.toString();
+        Family  e = (Family)value;
+        return e.value();
     }
 
 
@@ -47,13 +48,13 @@ public class FamilyHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return Family.valueOf( (String)value );
+        return Family.fromValue( (String)value );
     }
 
 
 
     @Override
-    public Class getFieldType()
+    public Class<Family> getFieldType()
     {
         return Family.class;
     }

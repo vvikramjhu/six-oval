@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.model.common;
 
-import java.io.Serializable;
-import java.util.HashMap;
 
 
 
@@ -30,90 +28,68 @@ import java.util.HashMap;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public final class Check
-    implements Serializable
+public enum Check
 {
 
-    private static final String  _ALL_           = "all";
-    private static final String  _AT_LEAST_ONE_  = "at least one";
-    private static final String  _NONE_EXIST_    = "none exist";
-    private static final String  _NONE_SATISFY_  = "none satisfy";
-    private static final String  _ONLY_ONE_      = "only one";
-
-
-    public static final Check  ALL           = new Check( _ALL_ );
-    public static final Check  AT_LEAST_ONE  = new Check( _AT_LEAST_ONE_ );
-    public static final Check  NONE_EXIST    = new Check( _NONE_EXIST_ );
-    public static final Check  NONE_SATISFY  = new Check( _NONE_SATISFY_ );
-    public static final Check  ONLY_ONE      = new Check( _ONLY_ONE_ );
-
-
-
-    private static HashMap<String, Check> _INIT_()
-    {
-        HashMap<String, Check>  map = new HashMap<String, Check>();
-        map.put( _ALL_,          ALL          );
-        map.put( _AT_LEAST_ONE_, AT_LEAST_ONE );
-        map.put( _NONE_EXIST_,   NONE_EXIST   );
-        map.put( _NONE_SATISFY_, NONE_SATISFY );
-        map.put( _ONLY_ONE_,     ONLY_ONE     );
-        return map;
-    }
-
-    private static final HashMap<String, Check>  _INSTANCES_ = _INIT_();
-
+             ALL( "all" ),
+    AT_LEAST_ONE( "at least one" ),
+      NONE_EXIST( "none exist" ),
+    NONE_SATISFY( "none satisfy" ),
+        ONLY_ONE( "only one" );
 
 
 
     /**
+     * An instance factory method.
      */
-    public static Check valueOf( final String name )
+    public static Check fromValue(
+                    final String value
+                    )
     {
-        Check  flag = null;
-        if (name != null) {
-            flag = _INSTANCES_.get( name );
-        }
+        for (Check  e : Check.values()) {
+          if (e._value.equals( value )) {
+              return e;
+          }
+      }
 
-        if (flag == null) {
-            throw new IllegalArgumentException( "invalid check: " + name );
-        }
-
-        return flag;
+      throw new IllegalArgumentException( value );
     }
 
 
 
 
-    private String  _name = null;
-
+    private final String  _value;
 
 
     /**
+     * Constructor.
      */
-    private Check( final String name )
+    Check(
+                    final String value
+                    )
     {
-        _name = name;
+        this._value = value;
     }
 
 
 
     /**
      */
-    public String getName()
+    public String value()
     {
-        return _name;
+        return this._value;
     }
 
 
 
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
     //  java.lang.Object
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
 
     @Override
     public String toString()
     {
-        return getName();
+        return this._value;
     }
 
 }
