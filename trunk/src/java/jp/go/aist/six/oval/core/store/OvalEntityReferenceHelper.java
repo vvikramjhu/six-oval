@@ -44,12 +44,12 @@ extends DefaultPersistenceHelper<T>
     //**************************************************************
 
     public Object getUnique(
-                    final T entity
+                    final T object
                     )
     {
         return (new Object[] {
-                        entity.getOvalID(),
-                        Integer.valueOf( entity.getOvalVersion() )
+                        object.getOvalID(),
+                        Integer.valueOf( object.getOvalVersion() )
         });
     }
 

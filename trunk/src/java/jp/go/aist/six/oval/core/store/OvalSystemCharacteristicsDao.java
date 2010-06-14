@@ -53,7 +53,7 @@ public class OvalSystemCharacteristicsDao
     //**************************************************************
 
     @Override
-    public String create(
+    public Object create(
                     final OvalSystemCharacteristics sc
                     )
     {

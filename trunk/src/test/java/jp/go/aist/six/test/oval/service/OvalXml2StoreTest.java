@@ -138,7 +138,7 @@ extends OvalServiceTestBase
         Reporter.log( "  @ marshalled XML (1024): " + xml.substring( 0, 1024 ), true );
 
         Reporter.log( "  * creating object...", true );
-        String  pid = _store.create( OvalResults.class, results );
+        Object  pid = _store.create( OvalResults.class, results );
         Reporter.log( "  @ created: pid=" + pid, true );
 
         Reporter.log( "  * finding object...: pid=" + pid, true );
@@ -233,7 +233,7 @@ extends OvalServiceTestBase
         Reporter.log( "  @ marshalled XML (1024): " + xml.substring( 0, 1024 ), true );
 
         Reporter.log( "  * creating object...", true );
-        String  pid = _store.create( OvalSystemCharacteristics.class, sc );
+        Object  pid = _store.create( OvalSystemCharacteristics.class, sc );
         Reporter.log( "  @ created: pid=" + pid, true );
 
         Reporter.log( "  * finding object...: pid=" + pid, true );

@@ -52,7 +52,7 @@ public class OvalResultsDao
     //**************************************************************
 
     @Override
-    public String create(
+    public Object create(
                     final OvalResults results
                     )
     {

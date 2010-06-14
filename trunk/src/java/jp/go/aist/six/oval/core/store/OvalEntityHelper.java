@@ -44,12 +44,12 @@ public class OvalEntityHelper<T extends OvalEntity>
     //**************************************************************
 
     public Object getUnique(
-                    final T entity
+                    final T object
                     )
     {
         return (new Object[] {
-                        entity.getOvalID(),
-                        Integer.valueOf( entity.getOvalVersion() )
+                        object.getOvalID(),
+                        Integer.valueOf( object.getOvalVersion() )
         });
     }
 

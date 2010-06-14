@@ -78,7 +78,7 @@ public class OvalDefinitionsDao
     //**************************************************************
 
     @Override
-    public String create(
+    public Object create(
                     final OvalDefinitions defs
                     )
     {
