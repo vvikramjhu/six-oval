@@ -39,7 +39,7 @@ public class ExistenceHandler
     {
         if (value == null) return null;
         Existence  type = (Existence)value;
-        return type.toString();
+        return type.value();
     }
 
 
@@ -47,13 +47,13 @@ public class ExistenceHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return Existence.valueOf( (String)value );
+        return Existence.fromValue( (String)value );
     }
 
 
 
     @Override
-    public Class getFieldType()
+    public Class<Existence> getFieldType()
     {
         return Existence.class;
     }

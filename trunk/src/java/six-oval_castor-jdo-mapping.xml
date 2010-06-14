@@ -392,11 +392,13 @@
             <sql name="deprecated" type="bit"/>
         </field>
 
-        <field name="check" type="jp.go.aist.six.oval.model.common.Check">
+        <field name="check" 
+            type="jp.go.aist.six.oval.model.common.Check">
             <sql name="tst_check" type="char"/>
         </field>
 
-        <field name="checkExistence" type="jp.go.aist.six.oval.model.common.Existence">
+        <field name="checkExistence" 
+            type="jp.go.aist.six.oval.model.common.Existence">
             <sql name="tst_existence" type="char"/>
         </field>
 

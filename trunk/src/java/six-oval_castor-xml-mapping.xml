@@ -414,10 +414,16 @@
         <map-to xml="criteria"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
+        <field name="operator" 
+            type="jp.go.aist.six.oval.model.common.Operator">
+            <bind-xml name="operator" node="attribute"/>
+        </field>
+<!--
         <field name="operator" type="string" 
             handler="jp.go.aist.six.oval.core.xml.OperatorHandler">
             <bind-xml name="operator" node="attribute"/>
         </field>
+-->
 
         <field name="elements" 
             type="jp.go.aist.six.oval.model.definition.CriteriaElement"
@@ -698,8 +704,8 @@
 
         <!-- We found NO state with an explicit operator. -->
 <!--
-        <field name="operator" type="string" 
-            handler="jp.go.aist.six.oval.core.OperatorHandler">
+        <field name="operator" 
+            type="jp.go.aist.six.oval.model.common.Operator">
             <bind-xml name="operator" node="attribute"/>
         </field>
 -->
