@@ -38,8 +38,8 @@ public class MessageLevelHandler
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        MessageLevel  level = (MessageLevel)value;
-        return level.toString();
+        MessageLevel  e = (MessageLevel)value;
+        return e.value();
     }
 
 
@@ -47,13 +47,13 @@ public class MessageLevelHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return MessageLevel.valueOf( (String)value );
+        return MessageLevel.fromValue( (String)value );
     }
 
 
 
     @Override
-    public Class getFieldType()
+    public Class<MessageLevel> getFieldType()
     {
         return MessageLevel.class;
     }

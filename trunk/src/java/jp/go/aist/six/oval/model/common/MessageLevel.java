@@ -20,99 +20,74 @@
 
 package jp.go.aist.six.oval.model.common;
 
-import java.io.Serializable;
-import java.util.HashMap;
-
-
 
 
 /**
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public final class MessageLevel
-    implements Serializable
+public enum MessageLevel
 {
 
-    private static final String  _DEBUG_    = "debug";
-    private static final String  _ERROR_    = "error";
-    private static final String  _FATAL_    = "fatal";
-    private static final String  _INFO_     = "info";
-    private static final String  _WARNING_  = "warning";
-
-
-    public static final MessageLevel  DEBUG    = new MessageLevel( _DEBUG_ );
-    public static final MessageLevel  ERROR    = new MessageLevel( _ERROR_ );
-    public static final MessageLevel  FATAL    = new MessageLevel( _FATAL_ );
-    public static final MessageLevel  INFO     = new MessageLevel( _INFO_ );
-    public static final MessageLevel  WARNING  = new MessageLevel( _WARNING_ );
-
-
-
-    private static HashMap<String, MessageLevel> _INIT_()
-    {
-        HashMap<String, MessageLevel>  map = new HashMap<String, MessageLevel>();
-        map.put( _DEBUG_,   DEBUG );
-        map.put( _ERROR_,   ERROR );
-        map.put( _FATAL_,   FATAL );
-        map.put( _INFO_,    INFO );
-        map.put( _WARNING_, WARNING );
-        return map;
-    }
-
-    private static final HashMap<String, MessageLevel>  _INSTANCES_ = _INIT_();
-
+    DEBUG( "debug" ),
+    ERROR( "error" ),
+    FATAL( "fatal" ),
+    INFO( "info" ),
+    WARNING( "warning" );
 
 
 
     /**
+     * An instance factory method.
      */
-    public static MessageLevel valueOf( final String name )
+    public static MessageLevel fromValue(
+                    final String value
+                    )
     {
-        MessageLevel  flag = null;
-        if (name != null) {
-            flag = _INSTANCES_.get( name );
-        }
+        for (MessageLevel  e : MessageLevel.values()) {
+          if (e._value.equals( value )) {
+              return e;
+          }
+      }
 
-        if (flag == null) {
-            throw new IllegalArgumentException( "invalid message level: " + name );
-        }
-
-        return flag;
+      throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
 
+    private final String  _value;
 
 
     /**
+     * Constructor.
      */
-    private MessageLevel( final String name )
+    MessageLevel(
+                    final String value
+                    )
     {
-        _name = name;
+        this._value = value;
     }
 
 
 
     /**
      */
-    public String getName()
+    public String value()
     {
-        return _name;
+        return this._value;
     }
 
 
 
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
     //  java.lang.Object
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
 
     @Override
     public String toString()
     {
-        return getName();
+        return this._value;
     }
 
 }
