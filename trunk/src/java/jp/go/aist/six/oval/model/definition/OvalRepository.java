@@ -36,7 +36,7 @@ public class OvalRepository
     extends MetadataItem
 {
 
-    private Collection<OvalRepositoryEvent>  _event = new ArrayList<OvalRepositoryEvent>();
+    private Collection<OvalRepositoryEvent>  _dates = new ArrayList<OvalRepositoryEvent>();
 
     private DefinitionStatus  _status;
 
@@ -51,24 +51,24 @@ public class OvalRepository
 
 
 
-    public void setEvent(
-                    final Collection<OvalRepositoryEvent> events
+    public void setDates(
+                    final Collection<? extends OvalRepositoryEvent> events
                     )
     {
-        if (events != _event) {
-            _event.clear();
+        if (events != _dates) {
+            _dates.clear();
             if (events == null  ||  events.size() == 0) {
                 return;
             }
 
             for (OvalRepositoryEvent  event : events) {
-                addEvent( event );
+                addDates( event );
             }
         }
     }
 
 
-    public boolean addEvent(
+    public boolean addDates(
                     final OvalRepositoryEvent event
                     )
     {
@@ -76,13 +76,13 @@ public class OvalRepository
             return false;
         }
 
-        return _event.add( event );
+        return _dates.add( event );
     }
 
 
-    public Collection<OvalRepositoryEvent> getEvent()
+    public Collection<OvalRepositoryEvent> getDates()
     {
-        return _event;
+        return _dates;
     }
 
 
@@ -113,7 +113,7 @@ public class OvalRepository
     public String toString()
     {
         return "OvalRepository[status=" + getStatus()
-                        + ", dates=" + getEvent()
+                        + ", dates=" + getDates()
                         + "]";
     }
 

@@ -238,7 +238,7 @@ implements Serializable
 
         if (metaItem instanceof OvalRepository ) {
             OvalRepository  or = OvalRepository.class.cast( metaItem );
-            for (OvalRepositoryEvent  event : or.getEvent()) {
+            for (OvalRepositoryEvent  event : or.getDates()) {
                 if (date == null  &&  event instanceof DefinitionSubmittedEvent) {
                     date = event.getDate();
                 } else if (event instanceof DefinitionModifiedEvent) {
@@ -299,7 +299,7 @@ implements Serializable
         // Red Hat definition
         for (MetadataItem  metadata : getMetadataItem()) {
             if (metadata instanceof LinuxSecurityAdvisory) {
-                for (CveReference  ref : ((LinuxSecurityAdvisory)metadata).getCves()) {
+                for (CveReference  ref : ((LinuxSecurityAdvisory)metadata).getCve()) {
                     Cve  cve = new Cve( ref.getRefID() );
                     cves.add( cve );
                 }

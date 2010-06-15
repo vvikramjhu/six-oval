@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.common.Generator;
-import jp.go.aist.six.util.orm.Persistable;
+import jp.go.aist.six.util.orm.AbstractPersistable;
 
 
 
@@ -34,7 +34,7 @@ import jp.go.aist.six.util.orm.Persistable;
  * @version $Id$
  */
 public class OvalDefinitions
-    implements Persistable
+    extends AbstractPersistable
 {
 
     private Generator  _generator;
@@ -158,6 +158,20 @@ public class OvalDefinitions
         return _states;
     }
 
+
+
+    public void setVariables(
+                    final Variables variables
+                    )
+    {
+        _variables = variables;
+    }
+
+
+    public Variables getVariables()
+    {
+        return _variables;
+    }
 
 
 //    /**
@@ -290,31 +304,6 @@ public class OvalDefinitions
 //        }
 //
 //        return _stateMap.get( id );
-    }
-
-
-
-    //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
-    {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
     }
 
 

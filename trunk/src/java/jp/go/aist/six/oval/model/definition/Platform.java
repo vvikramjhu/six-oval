@@ -57,9 +57,6 @@ public class Platform
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -68,9 +65,6 @@ public class Platform
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj

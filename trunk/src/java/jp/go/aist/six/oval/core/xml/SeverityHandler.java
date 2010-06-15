@@ -38,8 +38,8 @@ public class SeverityHandler
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        Severity  severity = (Severity)value;
-        return severity.toString();
+        Severity  e = (Severity)value;
+        return e.value();
     }
 
 
@@ -47,13 +47,13 @@ public class SeverityHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return Severity.valueOf( (String)value );
+        return Severity.fromValue( (String)value );
     }
 
 
 
     @Override
-    public Class getFieldType()
+    public Class<Severity> getFieldType()
     {
         return Severity.class;
     }

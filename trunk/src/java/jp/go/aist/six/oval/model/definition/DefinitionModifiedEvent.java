@@ -58,9 +58,6 @@ public class DefinitionModifiedEvent
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

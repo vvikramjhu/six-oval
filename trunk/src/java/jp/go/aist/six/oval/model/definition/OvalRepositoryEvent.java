@@ -20,8 +20,9 @@
 
 package jp.go.aist.six.oval.model.definition;
 
-import jp.go.aist.six.util.orm.Persistable;
+import jp.go.aist.six.util.orm.AbstractPersistable;
 import java.util.Date;
+
 
 
 /**
@@ -30,10 +31,11 @@ import java.util.Date;
  * @version $Id$
  */
 public abstract class OvalRepositoryEvent
-    implements Persistable
+    extends AbstractPersistable
 {
 
     private Date  _date;
+
 
 
     /**
@@ -68,31 +70,6 @@ public abstract class OvalRepositoryEvent
     public Date getDate()
     {
         return _date;
-    }
-
-
-
-    //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
-    {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
     }
 
 }

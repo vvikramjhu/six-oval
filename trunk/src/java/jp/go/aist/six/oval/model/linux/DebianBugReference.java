@@ -40,8 +40,7 @@ public class DebianBugReference
     /**
      * Constructor.
      */
-    public
-    DebianBugReference()
+    public DebianBugReference()
     {
     }
 
@@ -49,8 +48,10 @@ public class DebianBugReference
     /**
      * Constructor.
      */
-    public
-    DebianBugReference( final String refID, final String refURL )
+    public DebianBugReference(
+                    final String refID,
+                    final String refURL
+                    )
     {
         super( SOURCE, refID, refURL );
     }
@@ -62,15 +63,15 @@ public class DebianBugReference
     //**************************************************************
 
     @Override
-    public
-    void setSource( final String source )
+    public void setSource(
+                    final String source
+                    )
     {
     }
 
 
     @Override
-    public
-    String getSource()
+    public String getSource()
     {
         return SOURCE;
     }
@@ -81,12 +82,8 @@ public class DebianBugReference
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
-    public
-    String toString()
+    public String toString()
     {
         return "DebianBugReport [id=" + getRefID()
                         + ", href=" + getRefURL()

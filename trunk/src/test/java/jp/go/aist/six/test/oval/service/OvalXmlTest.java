@@ -775,11 +775,11 @@ public class OvalXmlTest
         Assert.assertEquals( "secalert@redhat.com", adv.getFrom() );
         Assert.assertEquals( Severity.MODERATE, adv.getSeverity() );
 
-        Assert.assertEquals( adv.getCves().size(), 1 );
+        Assert.assertEquals( adv.getCve().size(), 1 );
         Collection<String>  cve_ids = Arrays.asList( new String[] {
                         "CVE-2010-0001"
         });
-        for (CveReference  cve : adv.getCves()) {
+        for (CveReference  cve : adv.getCve()) {
             Assert.assertTrue( cve_ids.contains( cve.getRefID() ) );
         }
 
@@ -864,11 +864,11 @@ public class OvalXmlTest
         Assert.assertEquals( "secalert@redhat.com", adv.getFrom() );
         Assert.assertEquals( Severity.MODERATE, adv.getSeverity() );
 
-        Assert.assertEquals( adv.getCves().size(), 1 );
+        Assert.assertEquals( adv.getCve().size(), 1 );
         Collection<String>  cve_ids = Arrays.asList( new String[] {
                         "CVE-2010-0001"
         });
-        for (CveReference  cve : adv.getCves()) {
+        for (CveReference  cve : adv.getCve()) {
             Assert.assertTrue( cve_ids.contains( cve.getRefID() ) );
         }
 
@@ -975,8 +975,8 @@ public class OvalXmlTest
         MetadataItem  meta = def.getMetadataElements().iterator().next();
         Assert.assertTrue( meta instanceof OvalRepository );
         OvalRepository  repo = (OvalRepository)meta;
-        Assert.assertEquals( repo.getEvent().size(), 7 );
-        for (OvalRepositoryEvent  event : repo.getEvent()) {
+        Assert.assertEquals( repo.getDates().size(), 7 );
+        for (OvalRepositoryEvent  event : repo.getDates()) {
             if (event instanceof DefinitionModifiedEvent) {
                 Calendar  cal = Calendar.getInstance();
                 cal.setTime( event.getDate() );

@@ -28,7 +28,9 @@ import java.util.Collection;
 import java.util.Date;
 
 
+
 /**
+ * A security advisory.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id: LinuxSecurityAdvisory.java 683 2010-04-24 13:27:18Z akihito $
@@ -38,16 +40,16 @@ public class LinuxSecurityAdvisory
 {
 
     private String  _from;
-    private String  _rights;
     private Severity  _severity;
+    private String  _rights;
     private Date  _issued;
     private Date  _updated;
 
-    private Collection<CveReference>  _cves = new ArrayList<CveReference>();
-    private Collection<CertReference>  _certs = new ArrayList<CertReference>();
-    private Collection<BugzillaReference>  _bugzillas = new ArrayList<BugzillaReference>();
-    private Collection<DebianBugReference>  _bugs = new ArrayList<DebianBugReference>();
-    private Collection<Cpe>  _cpes = new ArrayList<Cpe>();
+    private Collection<CveReference>  _cve = new ArrayList<CveReference>();
+    private Collection<CertReference>  _cert = new ArrayList<CertReference>();
+    private Collection<BugzillaReference>  _bugzilla = new ArrayList<BugzillaReference>();
+    private Collection<DebianBugReference>  _bug = new ArrayList<DebianBugReference>();
+    private Collection<Cpe>  _affectedCpeList = new ArrayList<Cpe>();
 
 
 
@@ -92,9 +94,9 @@ public class LinuxSecurityAdvisory
                     final Collection<Cpe> cpes)
     {
         this( from, rights, severity, issued, updated );
-        setCves( cves );
-        setBugzillas( bugzillas );
-        setAffectedCpes( cpes );
+        setCve( cves );
+        setBugzilla( bugzillas );
+        setAffectedCpeList( cpes );
     }
 
 
@@ -174,17 +176,17 @@ public class LinuxSecurityAdvisory
 
 
 
-    public void setCves(
-                    final Collection<CveReference> cves
+    public void setCve(
+                    final Collection<? extends CveReference> cveList
                     )
     {
-        if (cves != _cves) {
-            _cves.clear();
-            if (cves == null  ||  cves.size() == 0) {
+        if (cveList != _cve) {
+            _cve.clear();
+            if (cveList == null  ||  cveList.size() == 0) {
                 return;
             }
 
-            for (CveReference  cve : cves) {
+            for (CveReference  cve : cveList) {
                 addCve( cve );
             }
         }
@@ -199,32 +201,32 @@ public class LinuxSecurityAdvisory
             return false;
         }
 
-        if (!_cves.contains( cve )) {
-            return _cves.add( cve );
+        if (!_cve.contains( cve )) {
+            return _cve.add( cve );
         }
 
         return false;
     }
 
 
-    public Collection<CveReference> getCves()
+    public Collection<CveReference> getCve()
     {
-        return _cves;
+        return _cve;
     }
 
 
 
-    public void setBugzillas(
-                    final Collection<BugzillaReference> bugzillas
+    public void setBugzilla(
+                    final Collection<? extends BugzillaReference> bugzillaList
                     )
     {
-        if (bugzillas != _bugzillas) {
-            _bugzillas.clear();
-            if (bugzillas == null  ||  bugzillas.size() == 0) {
+        if (bugzillaList != _bugzilla) {
+            _bugzilla.clear();
+            if (bugzillaList == null  ||  bugzillaList.size() == 0) {
                 return;
             }
 
-            for (BugzillaReference  bugzilla : bugzillas) {
+            for (BugzillaReference  bugzilla : bugzillaList) {
                 addBugzilla( bugzilla );
             }
         }
@@ -239,32 +241,32 @@ public class LinuxSecurityAdvisory
             return false;
         }
 
-        if (!_bugzillas.contains( bugzilla )) {
-            return _bugzillas.add( bugzilla );
+        if (!_bugzilla.contains( bugzilla )) {
+            return _bugzilla.add( bugzilla );
         }
 
         return false;
     }
 
 
-    public Collection<BugzillaReference> getBugzillas()
+    public Collection<BugzillaReference> getBugzilla()
     {
-        return _bugzillas;
+        return _bugzilla;
     }
 
 
 
-    public void setAffectedCpes(
-                    final Collection<Cpe> cpes
+    public void setAffectedCpeList(
+                    final Collection<Cpe> cpeList
                     )
     {
-        if (cpes != _cpes) {
-            _cpes.clear();
-            if (cpes == null  ||  cpes.size() == 0) {
+        if (cpeList != _affectedCpeList) {
+            _affectedCpeList.clear();
+            if (cpeList == null  ||  cpeList.size() == 0) {
                 return;
             }
 
-            for (Cpe  cpe : cpes) {
+            for (Cpe  cpe : cpeList) {
                 addAffectedCpe( cpe );
             }
         }
@@ -279,32 +281,32 @@ public class LinuxSecurityAdvisory
             return false;
         }
 
-        if (!_cpes.contains( cpe )) {
-            return _cpes.add( cpe );
+        if (!_affectedCpeList.contains( cpe )) {
+            return _affectedCpeList.add( cpe );
         }
 
         return false;
     }
 
 
-    public Collection<Cpe> getAffectedCpes()
+    public Collection<Cpe> getAffectedCpeList()
     {
-        return _cpes;
+        return _affectedCpeList;
     }
 
 
 
-    public void setCerts(
-                    final Collection<CertReference> certs
+    public void setCert(
+                    final Collection<? extends CertReference> certList
                     )
     {
-        if (certs != _certs) {
-            _certs.clear();
-            if (certs == null  ||  certs.size() == 0) {
+        if (certList != _cert) {
+            _cert.clear();
+            if (certList == null  ||  certList.size() == 0) {
                 return;
             }
 
-            for (CertReference  cert : certs) {
+            for (CertReference  cert : certList) {
                 addCert( cert );
             }
         }
@@ -319,32 +321,32 @@ public class LinuxSecurityAdvisory
             return false;
         }
 
-        if (!_certs.contains( cert )) {
-            return _certs.add( cert );
+        if (!_cert.contains( cert )) {
+            return _cert.add( cert );
         }
 
         return false;
     }
 
 
-    public Collection<CertReference> getCerts()
+    public Collection<CertReference> getCert()
     {
-        return _certs;
+        return _cert;
     }
 
 
 
-    public void setBugs(
-                    final Collection<DebianBugReference> bugs
+    public void setBug(
+                    final Collection<? extends DebianBugReference> bugList
                     )
     {
-        if (bugs != _bugs) {
-            _bugs.clear();
-            if (bugs == null  ||  bugs.size() == 0) {
+        if (bugList != _bug) {
+            _bug.clear();
+            if (bugList == null  ||  bugList.size() == 0) {
                 return;
             }
 
-            for (DebianBugReference  bug : bugs) {
+            for (DebianBugReference  bug : bugList) {
                 addBug( bug );
             }
         }
@@ -359,17 +361,17 @@ public class LinuxSecurityAdvisory
             return false;
         }
 
-        if (!_bugs.contains( bug )) {
-            return _bugs.add( bug );
+        if (!_bug.contains( bug )) {
+            return _bug.add( bug );
         }
 
         return false;
     }
 
 
-    public Collection<DebianBugReference> getBugs()
+    public Collection<DebianBugReference> getBug()
     {
-        return _bugs;
+        return _bug;
     }
 
 
@@ -378,9 +380,6 @@ public class LinuxSecurityAdvisory
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
@@ -389,9 +388,9 @@ public class LinuxSecurityAdvisory
                         + ", rights=" + getRights()
                         + ", issued=" + getIssued()
                         + ", updated=" + getUpdated()
-                        + ", cve=" + getCves()
-                        + ", bugzilla=" + getBugzillas()
-                        + ", affected_cpe_list=" + getAffectedCpes()
+                        + ", cve=" + getCve()
+                        + ", bugzilla=" + getBugzilla()
+                        + ", affected_cpe_list=" + getAffectedCpeList()
                         + "]";
     }
 

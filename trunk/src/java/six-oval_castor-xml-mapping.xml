@@ -515,7 +515,7 @@
             <bind-xml name="status" node="element"/>
         </field>
 
-        <field name="event" 
+        <field name="dates" 
             type="jp.go.aist.six.oval.model.definition.OvalRepositoryEvent"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"
@@ -1847,32 +1847,32 @@
             <bind-xml name="date" node="attribute" location="updated"/>
         </field>
 
-        <field name="cves" 
+        <field name="cve" 
             type="jp.go.aist.six.oval.model.linux.CveReference"
             collection="collection">
             <bind-xml name="cve" node="element"/>
         </field>
 
-        <field name="bugzillas" 
+        <field name="bugzilla" 
             type="jp.go.aist.six.oval.model.linux.BugzillaReference"
             collection="collection">
             <bind-xml name="bugzilla" node="element"/>
         </field>
 
-        <field name="affectedCpes" 
+        <field name="affectedCpeList" 
             type="jp.go.aist.six.oval.model.definition.Cpe"
             collection="collection">
             <bind-xml name="cpe" node="element" 
                 location="affected_cpe_list"/>
         </field>
 
-        <field name="certs" 
+        <field name="cert" 
             type="jp.go.aist.six.oval.model.linux.CertReference"
             collection="collection">
             <bind-xml name="cert" node="element"/>
         </field>
 
-        <field name="bugs" 
+        <field name="bug" 
             type="jp.go.aist.six.oval.model.linux.DebianBugReference"
             collection="collection">
             <bind-xml name="debian_bts" node="element"/>

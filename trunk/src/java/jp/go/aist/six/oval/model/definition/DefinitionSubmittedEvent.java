@@ -24,7 +24,6 @@ import java.util.Date;
 
 
 
-
 /**
  *
  * @author	Akihito Nakamura, AIST
@@ -58,9 +57,6 @@ public class DefinitionSubmittedEvent
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

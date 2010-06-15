@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model;
 
-import jp.go.aist.six.util.orm.Persistable;
+import jp.go.aist.six.util.orm.AbstractPersistable;
 
 
 
@@ -30,7 +30,7 @@ import jp.go.aist.six.util.orm.Persistable;
  * @version $Id$
  */
 public abstract class NameEntity
-    implements Persistable
+    extends AbstractPersistable
 {
 
     /**
@@ -53,6 +53,7 @@ public abstract class NameEntity
 
 
 
+    // We use the name as the persistent ID.
     public void setName(
                     final String name
                     )
@@ -69,37 +70,9 @@ public abstract class NameEntity
 
 
     //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
-    {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
-    }
-
-
-
-    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -114,9 +87,6 @@ public abstract class NameEntity
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj

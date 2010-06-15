@@ -216,7 +216,7 @@ public class Definition
 
         if (meta instanceof OvalRepository ) {
             OvalRepository  repo = OvalRepository.class.cast( meta );
-            for (OvalRepositoryEvent  event : repo.getEvent()) {
+            for (OvalRepositoryEvent  event : repo.getDates()) {
                 if (date == null  &&  event instanceof DefinitionSubmittedEvent) {
                     date = event.getDate();
                 } else if (event instanceof DefinitionModifiedEvent) {
@@ -260,7 +260,7 @@ public class Definition
         // Red Hat definition
         for (MetadataItem  metadata : getMetadataElements()) {
             if (metadata instanceof LinuxSecurityAdvisory) {
-                for (CveReference  ref : ((LinuxSecurityAdvisory)metadata).getCves()) {
+                for (CveReference  ref : ((LinuxSecurityAdvisory)metadata).getCve()) {
                     Cve  cve = new Cve( ref.getRefID() );
                     cves.add( cve );
                 }
