@@ -7,7 +7,7 @@ import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.model.definition.DefinitionClass;
 import jp.go.aist.six.oval.model.definition.SimpleTest;
 import jp.go.aist.six.oval.model.definition.State;
-import jp.go.aist.six.oval.model.definition.StateReference;
+import jp.go.aist.six.oval.model.definition.StateRef;
 import jp.go.aist.six.oval.model.definition.SystemObject;
 import jp.go.aist.six.oval.model.definition.Test;
 import jp.go.aist.six.oval.model.result.DefinitionResult;
@@ -431,7 +431,7 @@ extends OvalServiceTestBase
         if (test instanceof SimpleTest) {
             SimpleTest  simpleTest = SimpleTest.class.cast( test );
             Assert.assertEquals( objectID, simpleTest.getObject().getOvalID() );
-            StateReference  stateRef = simpleTest.getState();
+            StateRef  stateRef = simpleTest.getState();
             if (stateRef != null) {
                 Assert.assertEquals( stateID, stateRef.getOvalID() );
             }

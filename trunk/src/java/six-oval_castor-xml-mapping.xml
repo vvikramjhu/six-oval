@@ -617,9 +617,9 @@
 
 
     <!-- ======================================================= -->
-    <!-- SystemObjectReference                                   -->
+    <!-- SystemObjectRef                                         -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.SystemObjectReference">
+    <class name="jp.go.aist.six.oval.model.definition.SystemObjectRef">
         <map-to xml="object"/>
     <!--
         <map-to xml="object"
@@ -641,9 +641,9 @@
 
 
     <!-- ======================================================= -->
-    <!-- StateReference - state                                  -->
+    <!-- StateRef                                                -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.StateReference">
+    <class name="jp.go.aist.six.oval.model.definition.StateRef">
         <map-to xml="state"/>
     <!--
         <map-to xml="state"
@@ -1256,12 +1256,12 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjectReference">
+            type="jp.go.aist.six.oval.model.definition.SystemObjectRef">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateReference">
+            type="jp.go.aist.six.oval.model.definition.StateRef">
             <bind-xml name="state" node="element"/>
         </field>
     </class>
@@ -1330,12 +1330,12 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjectReference">
+            type="jp.go.aist.six.oval.model.definition.SystemObjectRef">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateReference">
+            type="jp.go.aist.six.oval.model.definition.StateRef">
             <bind-xml name="state" node="element"/>
         </field>
     </class>
@@ -1451,12 +1451,12 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjectReference">
+            type="jp.go.aist.six.oval.model.definition.SystemObjectRef">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateReference">
+            type="jp.go.aist.six.oval.model.definition.StateRef">
             <bind-xml name="state" node="element"/>
         </field>
     </class>
@@ -1472,12 +1472,12 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjectReference">
+            type="jp.go.aist.six.oval.model.definition.SystemObjectRef">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateReference">
+            type="jp.go.aist.six.oval.model.definition.StateRef">
             <bind-xml name="state" node="element"/>
         </field>
 <!--
@@ -1982,12 +1982,12 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjectReference">
+            type="jp.go.aist.six.oval.model.definition.SystemObjectRef">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateReference">
+            type="jp.go.aist.six.oval.model.definition.StateRef">
             <bind-xml name="state" node="element"/>
         </field>
     </class>
@@ -2055,12 +2055,12 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjectReference">
+            type="jp.go.aist.six.oval.model.definition.SystemObjectRef">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateReference">
+            type="jp.go.aist.six.oval.model.definition.StateRef">
             <bind-xml name="state" node="element"/>
         </field>
     </class>
@@ -2218,12 +2218,12 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjectReference">
+            type="jp.go.aist.six.oval.model.definition.SystemObjectRef">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateReference">
+            type="jp.go.aist.six.oval.model.definition.StateRef">
             <bind-xml name="state" node="element"/>
         </field>
     </class>
@@ -2319,12 +2319,12 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjectReference">
+            type="jp.go.aist.six.oval.model.definition.SystemObjectRef">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateReference">
+            type="jp.go.aist.six.oval.model.definition.StateRef">
             <bind-xml name="state" node="element"/>
         </field>
 

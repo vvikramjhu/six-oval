@@ -6,7 +6,7 @@ import jp.go.aist.six.oval.model.definition.DefinitionClass;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.model.definition.SimpleTest;
 import jp.go.aist.six.oval.model.definition.State;
-import jp.go.aist.six.oval.model.definition.StateReference;
+import jp.go.aist.six.oval.model.definition.StateRef;
 import jp.go.aist.six.oval.model.definition.States;
 import jp.go.aist.six.oval.model.definition.SystemObject;
 import jp.go.aist.six.oval.model.definition.SystemObjects;
@@ -299,7 +299,7 @@ public class OvalXmlFragmentTest
         if (obj instanceof SimpleTest) {
             SimpleTest  pkgobj = (SimpleTest)obj;
             Assert.assertEquals( pkgobj.getObject().getOvalID(), objectID );
-            StateReference  stateRef = pkgobj.getState();
+            StateRef  stateRef = pkgobj.getState();
             if (stateRef == null) {
                 Assert.assertEquals( null, stateID );
             } else {

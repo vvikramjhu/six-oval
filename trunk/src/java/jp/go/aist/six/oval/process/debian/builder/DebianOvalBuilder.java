@@ -35,9 +35,9 @@ import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.model.definition.Platform;
 import jp.go.aist.six.oval.model.definition.Product;
 import jp.go.aist.six.oval.model.definition.Reference;
-import jp.go.aist.six.oval.model.definition.StateReference;
+import jp.go.aist.six.oval.model.definition.StateRef;
 import jp.go.aist.six.oval.model.definition.States;
-import jp.go.aist.six.oval.model.definition.SystemObjectReference;
+import jp.go.aist.six.oval.model.definition.SystemObjectRef;
 import jp.go.aist.six.oval.model.linux.CveReference;
 import jp.go.aist.six.oval.model.linux.DebianBugReference;
 import jp.go.aist.six.oval.model.linux.DpkgInfoObject;
@@ -397,8 +397,8 @@ public class DebianOvalBuilder
 
                 final String  testID = _createTestID( dsaID, seq );
                 DpkgInfoTest  ovalTest = new DpkgInfoTest( testID, defVersion );
-                ovalTest.setObject( new SystemObjectReference( objectID ) );
-                ovalTest.setState( new StateReference( stateID ) );
+                ovalTest.setObject( new SystemObjectRef( objectID ) );
+                ovalTest.setState( new StateRef( stateID ) );
                 ovalTest.setCheck( Check.AT_LEAST_ONE );
                 ovalTest.setComment( pkgName + " is earlier than " + pkgEvr );
                 if (_LOG.isDebugEnabled()) {

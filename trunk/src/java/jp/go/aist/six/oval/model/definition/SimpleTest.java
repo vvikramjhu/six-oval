@@ -32,11 +32,11 @@ public abstract class SimpleTest
 {
 
 //    private String  _objectID;
-    private SystemObjectReference  _objectRef;
+    private SystemObjectRef  _objectRef;
     //{oval-def:ObjectRefType, 1..1}
 
 //    private String  _stateID;
-    private StateReference  _stateRef;
+    private StateRef  _stateRef;
     //{oval-def:StateRefType, 0..1}
 
 
@@ -94,14 +94,14 @@ public abstract class SimpleTest
 
 
     public void setObject(
-                    final SystemObjectReference ref
+                    final SystemObjectRef ref
                     )
     {
         _objectRef = ref;
     }
 
 
-    public SystemObjectReference getObject()
+    public SystemObjectRef getObject()
     {
         return _objectRef;
     }
@@ -109,14 +109,14 @@ public abstract class SimpleTest
 
 
     public void setState(
-                    final StateReference ref
+                    final StateRef ref
                     )
     {
         _stateRef = ref;
     }
 
 
-    public StateReference getState()
+    public StateRef getState()
     {
         return _stateRef;
     }
@@ -127,19 +127,16 @@ public abstract class SimpleTest
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
         final int  prime = 37;
         int  result = super.hashCode();
 
-        SystemObjectReference  object = getObject();
+        SystemObjectRef  object = getObject();
         result = prime * result + ((object == null) ? 0 : object.hashCode());
 
-        StateReference  state = getState();
+        StateRef  state = getState();
         result = prime * result + ((state == null) ? 0 : state.hashCode());
 
         return result;
@@ -147,9 +144,6 @@ public abstract class SimpleTest
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -161,12 +155,12 @@ public abstract class SimpleTest
 
         if (super.equals( obj )) {
             SimpleTest  other = (SimpleTest)obj;
-            SystemObjectReference  other_object = other.getObject();
-            SystemObjectReference   this_object =  this.getObject();
+            SystemObjectRef  other_object = other.getObject();
+            SystemObjectRef   this_object =  this.getObject();
             if (this_object == other_object
                             ||  (this_object != null  &&  this_object.equals( other_object ))) {
-                StateReference  other_state = other.getState();
-                StateReference   this_state =  this.getState();
+                StateRef  other_state = other.getState();
+                StateRef   this_state =  this.getState();
                 if (this_state == other_state
                                 ||  (this_state != null  &&  this_state.equals( other_state ))) {
                     return true;
@@ -179,9 +173,6 @@ public abstract class SimpleTest
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

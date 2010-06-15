@@ -25,20 +25,21 @@ import jp.go.aist.six.oval.model.OvalEntityReference;
 
 
 
+
 /**
- * A reference to an OVAL State, independent of its version.
+ * A reference to an OVAL Object, independent of its version.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class StateReference
+public class SystemObjectRef
     extends OvalEntityReference
 {
 
     /**
      * Constructor.
      */
-    public StateReference()
+    public SystemObjectRef()
     {
     }
 
@@ -46,11 +47,11 @@ public class StateReference
     /**
      * Constructor.
      */
-    public StateReference(
-                    final String stateID
+    public SystemObjectRef(
+                    final String objectID
                     )
     {
-        super( stateID );
+        super( objectID );
     }
 
 
@@ -59,9 +60,6 @@ public class StateReference
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -70,15 +68,12 @@ public class StateReference
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
                     )
     {
-        if (!(obj instanceof StateReference)) {
+        if (!(obj instanceof SystemObjectRef)) {
             return false;
         }
 
@@ -93,9 +88,10 @@ public class StateReference
 //    @Override
 //    public String toString()
 //    {
-//        return "StateReference[" + getOvalID()
+//
+//        return "SystemObjectReference[" + getOvalID()
 //                    + "]";
 //    }
 
 }
-// StateReference
+// SystemObjectRef
