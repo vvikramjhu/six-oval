@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.definition;
 
 
 
-
 /**
  *
  * @author	Akihito Nakamura, AIST
@@ -32,7 +31,7 @@ public class ExtendDefinition
     extends CriteriaElement
 {
 
-    private String  _definitionReference;
+    private String  _definitionRef;
     //{oval:DefinitionIDPattern, required}
 
 
@@ -52,22 +51,22 @@ public class ExtendDefinition
                     final String defID
                     )
     {
-        setDefinitionReference( defID );
+        setDefinitionRef( defID );
     }
 
 
 
-    public void setDefinitionReference(
+    public void setDefinitionRef(
                     final String definitionID
                     )
     {
-        _definitionReference = definitionID;
+        _definitionRef = definitionID;
     }
 
 
-    public String getDefinitionReference()
+    public String getDefinitionRef()
     {
-        return _definitionReference;
+        return _definitionRef;
     }
 
 
@@ -76,14 +75,11 @@ public class ExtendDefinition
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
         return "ExtendDefinition[negate=" + isNegate()
-                        + ", definition_ref=" + getDefinitionReference()
+                        + ", definition_ref=" + getDefinitionRef()
                         + ", comment=" + getComment()
                         + "]";
     }

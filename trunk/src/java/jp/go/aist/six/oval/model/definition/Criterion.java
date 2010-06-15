@@ -32,7 +32,7 @@ public class Criterion
     extends CriteriaElement
 {
 
-    private String  _testReference;
+    private String  _testRef;
     //{oval:TestIDPattern, required}
 
 
@@ -52,22 +52,22 @@ public class Criterion
                     final String testID
                     )
     {
-        setTestReference( testID );
+        setTestRef( testID );
     }
 
 
 
-    public void setTestReference(
+    public void setTestRef(
                     final String testID
                     )
     {
-        _testReference = testID;
+        _testRef = testID;
     }
 
 
-    public String getTestReference()
+    public String getTestRef()
     {
-        return _testReference;
+        return _testRef;
     }
 
 
@@ -76,14 +76,11 @@ public class Criterion
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
         return "Criterion[negate=" + isNegate()
-                        + ", test_ref=" + getTestReference()
+                        + ", test_ref=" + getTestRef()
                         + ", comment=" + getComment()
                         + "]";
     }

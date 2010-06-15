@@ -35,14 +35,11 @@ public class Criteria
     extends CriteriaElement
 {
 
-    public static final Operator  DEFAULT_OPERATOR = Operator.AND;
-
-
-
     private Collection<CriteriaElement>  _elements = new ArrayList<CriteriaElement>();
     //{1..*}
 
-    private Operator  _operator = DEFAULT_OPERATOR;
+    public static final Operator  DEFAULT_OPERATOR = Operator.AND;
+    private Operator  _operator;
     //{optional, default="AND"}
 
 
@@ -66,13 +63,14 @@ public class Criteria
 
     public Operator getOperator()
     {
-        return _operator;
+        return (_operator == null ? DEFAULT_OPERATOR : _operator)
+        ;
     }
 
 
 
     public void setElements(
-                    final Collection<CriteriaElement> elements
+                    final Collection<? extends CriteriaElement> elements
                     )
     {
         if (elements != _elements) {
@@ -111,9 +109,6 @@ public class Criteria
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

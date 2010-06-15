@@ -93,7 +93,7 @@ public class DefaultCriteriaFormat
         } else {
             s.append( "[" );
         }
-        s.append( criterion.getTestReference() ).append( "] " );
+        s.append( criterion.getTestRef() ).append( "] " );
 
         s.append( criterion.getComment() );
         s.append( "}" );
@@ -112,7 +112,7 @@ public class DefaultCriteriaFormat
         } else {
             s.append( "[" );
         }
-        s.append( ext.getDefinitionReference() ).append( "] " );
+        s.append( ext.getDefinitionRef() ).append( "] " );
 
         s.append( ext.getComment() );
         s.append( "}" );

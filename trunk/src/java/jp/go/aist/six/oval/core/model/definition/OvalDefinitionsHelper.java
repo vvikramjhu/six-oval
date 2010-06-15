@@ -151,7 +151,7 @@ public class OvalDefinitionsHelper
                     final ExtendDefinition ext
                     )
     {
-        final String  defID = ext.getDefinitionReference();
+        final String  defID = ext.getDefinitionRef();
         tests.addAll( getTestsOfDefinition( defID ) );
     }
 
@@ -165,7 +165,7 @@ public class OvalDefinitionsHelper
                     final Criterion criterion
                     )
     {
-        tests.add( criterion.getTestReference() );
+        tests.add( criterion.getTestRef() );
     }
 
 }
