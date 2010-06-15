@@ -9,6 +9,7 @@ import jp.go.aist.six.oval.model.definition.Affected;
 import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.model.definition.DefinitionClass;
 import jp.go.aist.six.oval.model.definition.Metadata;
+import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.model.definition.Platform;
 import jp.go.aist.six.oval.model.definition.Product;
 import jp.go.aist.six.oval.model.definition.Reference;
@@ -215,7 +216,7 @@ public class OvalXmlMarshallingTest
     {
         return new Object[][] {
                         {
-                            "test/data/sample_oval-definition-1.xml",
+                            "test/data/definition/oval-2010-06-15.05.04.34.xml",
                             "oval:org.mitre.oval:def:1020",
                             2,
                             DefinitionClass.VULNERABILITY
@@ -227,7 +228,8 @@ public class OvalXmlMarshallingTest
 
     /**
      */
-    @org.testng.annotations.Test( groups={"oval.xml", "definition"},
+    @org.testng.annotations.Test(
+                    groups={"oval.xml", "Definition"},
                     dataProvider="oval-definition",
                     dependsOnGroups="definition.metadata",
                     alwaysRun=true
@@ -240,24 +242,30 @@ public class OvalXmlMarshallingTest
                     )
     throws Exception
     {
-        Reporter.log( "\n// TEST: OVAL - unmarshalling/marshalling from/to XML //", true );
-        Reporter.log( "  * xpath: definition", true );
+        Reporter.log( "\n// TEST: oval.core.xml //", true );
+        Reporter.log( "  * oval-def:definition", true );
 
         File  file = new File( filepath );
-        Reporter.log( "  * unmarshalling XML...", true );
+        Reporter.log( "unmarshalling XML...", true );
         Object  obj = _xmlMapper.unmarshal( new FileInputStream( file ) );
-        Reporter.log( "  @ unmarshalled object: " + obj, true );
+        Reporter.log( "  ...done", true );
+        Reporter.log( "@ unmarshalled object: " + obj, true );
 
         Assert.assertNotNull( obj );
-        Assert.assertTrue( obj instanceof Definition );
-        Definition  def = Definition.class.cast( obj );
+        Assert.assertTrue( obj instanceof OvalDefinitions );
+        OvalDefinitions  defs = OvalDefinitions.class.cast( obj );
+        Definition  def = defs.getDefinitions().findElement( id );
+        Assert.assertNotNull( def );
+        Reporter.log( "@ definition: " + def, true );
         Assert.assertEquals( id, def.getOvalID() );
         Assert.assertEquals( version, def.getOvalVersion() );
         Assert.assertEquals( clazz, def.getDefinitionClass() );
 
-        Reporter.log( "  * marshalling XML...", true );
-        String  xml = _xmlMapper.marshalToString( def );
-        Reporter.log( "  @ marshalled XML: " + xml, true );
+        Reporter.log( "  - criteria XML: " + def.getCriteriaXml(), true );
+
+//        Reporter.log( "  * marshalling XML...", true );
+//        String  xml = _xmlMapper.marshalToString( def );
+//        Reporter.log( "  @ marshalled XML: " + xml, true );
     }
 
 

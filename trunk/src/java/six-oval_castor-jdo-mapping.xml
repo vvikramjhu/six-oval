@@ -249,11 +249,11 @@
             <sql name="source" type="char"/>
         </field>
 
-        <field name="referenceID" type="string">
+        <field name="refID" type="string">
             <sql name="ref_id" type="char"/>
         </field>
 
-        <field name="referenceURL" type="string">
+        <field name="refURL" type="string">
             <sql name="ref_url" type="char"/>
         </field>
 

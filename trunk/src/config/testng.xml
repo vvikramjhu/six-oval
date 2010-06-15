@@ -16,14 +16,14 @@
     <test name="oval.service" enabled="true">
         <groups>
             <run>
-                <include name="definition.test"/>
+                <include name="Definition"/>
             </run>
         </groups>
     <!--
     -->
     
         <classes>
-            <class name="jp.go.aist.six.test.oval.service.OvalXml2StoreTest"/>
+            <class name="jp.go.aist.six.test.oval.service.OvalXmlMarshallingTest"/>
 
             <!--
             <class name="jp.go.aist.six.test.oval.service.OvalXml2StoreTest"/>

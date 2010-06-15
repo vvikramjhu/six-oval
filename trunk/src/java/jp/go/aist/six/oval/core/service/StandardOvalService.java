@@ -34,6 +34,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class StandardOvalService
 {
 
+    public static final StandardOvalService  INSTANCE = new StandardOvalService();
+
+
+
     /**
      * The Spring application context specification.
      */

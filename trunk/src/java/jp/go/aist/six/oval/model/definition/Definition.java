@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.definition;
 
+import jp.go.aist.six.oval.core.service.StandardOvalService;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.linux.CveReference;
 import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
@@ -55,6 +56,9 @@ public class Definition
 
     private Criteria  _criteria;
     //{0..1}
+
+    private String  _criteriaXml;
+
 
     private DefinitionClass  _definitionClass;
     //{ClassEnumeration, required}
@@ -147,6 +151,33 @@ public class Definition
     public Criteria getCriteria()
     {
         return _criteria;
+    }
+
+
+
+    /**
+     */
+    public void setCriteriaXml(
+                    final String criteriaXml
+                    )
+    {
+        _criteriaXml = criteriaXml;
+    }
+
+
+    /**
+     * TODO: Don't depend on StandardOvalService!!!
+     */
+    public String getCriteriaXml()
+    {
+        if (_criteria != null  &&  _criteriaXml == null) {
+            try {
+                _criteriaXml = StandardOvalService.INSTANCE.getXml().marshalToString( _criteria );
+            } catch (Exception ex) {
+
+            }
+        }
+        return _criteriaXml;
     }
 
 
