@@ -26,7 +26,6 @@ import jp.go.aist.six.oval.model.common.Operator;
 
 
 
-
 /**
  * The abstract base class that is meant to be extended by the concrete states.
  * An OVAL State is a collection of one or more characteristics
@@ -44,7 +43,7 @@ public abstract class State
 
     public static final Operator  DEFAULT_OPERATOR = Operator.AND;
 
-    private Operator  _operator = DEFAULT_OPERATOR;
+    private Operator  _operator;
     //{optional, default="AND"}
     // We found NO state with specific operator.
 
@@ -71,17 +70,6 @@ public abstract class State
 
 
 
-    public void setStateType(
-                    final ComponentType type
-                    )
-    {
-    }
-
-
-    public abstract ComponentType getStateType();
-
-
-
     public void setOperator(
                   final Operator operator
                   )
@@ -92,12 +80,19 @@ public abstract class State
 
     public Operator getOperator()
     {
-        if (_operator == null) {
-            _operator = DEFAULT_OPERATOR;
-        }
-
-        return _operator;
+        return (_operator == null ? DEFAULT_OPERATOR : _operator);
     }
+
+
+
+    public void setStateType(
+                    final ComponentType type
+                    )
+    {
+    }
+
+
+    public abstract ComponentType getStateType();
 
 
 
@@ -123,9 +118,6 @@ public abstract class State
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -134,9 +126,6 @@ public abstract class State
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj

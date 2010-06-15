@@ -24,6 +24,8 @@ import jp.go.aist.six.oval.core.model.ComponentType;
 import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
+import jp.go.aist.six.oval.model.common.Operator;
+
 
 
 /**
@@ -36,12 +38,15 @@ public abstract class Test
 {
 
     public static final Existence  DEFAULT_CHECK_EXISTENCE = Existence.AT_LEAST_ONE_EXISTS;
-
-    private Existence  _checkExistence = DEFAULT_CHECK_EXISTENCE;
+    private Existence  _checkExistence;
     //{optional, default="at_least_one_exists"}
 
     private Check  _check;
     //{required}
+
+    public static final Operator  DEFAULT_STATE_OPERATOR = Operator.AND;
+    private Operator  _stateOperator;
+    //{optional, default="AND"}
 
 
 
@@ -80,6 +85,20 @@ public abstract class Test
 
 
 
+    public void setCheckExistence(
+                    final Existence existence
+                    )
+    {
+        _checkExistence = existence;
+    }
+
+
+    public Existence getCheckExistence()
+    {
+        return (_checkExistence == null ? DEFAULT_CHECK_EXISTENCE : _checkExistence);
+    }
+
+
 
     public void setCheck(
                     final Check check
@@ -96,17 +115,21 @@ public abstract class Test
 
 
 
-    public void setCheckExistence(
-                    final Existence existence
+    /**
+     */
+    public void setStateOperator(
+                    final Operator stateOperator
                     )
     {
-        _checkExistence = existence;
+        _stateOperator = stateOperator;
     }
 
 
-    public Existence getCheckExistence()
+    /**
+     */
+    public Operator getStateOperator()
     {
-        return _checkExistence;
+        return (_stateOperator == null ? DEFAULT_STATE_OPERATOR : _stateOperator);
     }
 
 
@@ -144,9 +167,6 @@ public abstract class Test
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -155,9 +175,6 @@ public abstract class Test
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -172,15 +189,13 @@ public abstract class Test
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
         return super.toString()
                         + ", check_existence=" + getCheckExistence()
-                        + ", check=" + getCheck();
+                        + ", check=" + getCheck()
+                        + ", state_operator=" + getStateOperator();
 //                        + ", notes=" + getNotes();
     }
 

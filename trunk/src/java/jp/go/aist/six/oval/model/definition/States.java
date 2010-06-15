@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.model.OvalElementContainer;
  * @version $Id: States.java 746 2010-05-10 01:43:03Z akihito $
  */
 public class States
-extends OvalElementContainer<State>
+    extends OvalElementContainer<State>
 {
 
     /**
