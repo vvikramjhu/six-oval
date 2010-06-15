@@ -48,16 +48,16 @@ public class Definition
 {
 
     private Metadata  _metadata;
-    // {1..1}
+    //{1..1}
 
 //  private Notes  _notes;
     //{0..1}
 
     private Criteria  _criteria;
-    //{oval-def:CriteriaType, 0..1}
+    //{0..1}
 
     private DefinitionClass  _definitionClass;
-    //{oval-def:ClassEnumeration, required}
+    //{ClassEnumeration, required}
 
 
     // metadata //

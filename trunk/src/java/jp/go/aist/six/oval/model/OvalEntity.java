@@ -36,9 +36,6 @@ public abstract class OvalEntity
 {
 
     public static final boolean  DEFAULT_DEPRECATED = false;
-
-
-
     private boolean  _deprecated = DEFAULT_DEPRECATED;
 
 
@@ -101,9 +98,6 @@ public abstract class OvalEntity
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -112,9 +106,6 @@ public abstract class OvalEntity
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj

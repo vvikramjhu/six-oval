@@ -38,6 +38,7 @@ public enum Datatype
     FLOAT( "float" ),
     IOS_VERSION( "ios_version" ),
     INT( "int" ),
+    RECORD( "record" ),
     STRING( "string" ),
     VERSION( "version" );
 

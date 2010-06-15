@@ -34,11 +34,15 @@ public class Message
 {
 
     private String  _content;
-    private MessageLevel  _level;
+
+    public static final MessageLevel  DEFAULT_LEVEL = MessageLevel.INFO;
+    private MessageLevel  _level = DEFAULT_LEVEL;
+    //{optional, default="info"}
 
 
 
     /**
+     * Constructor.
      */
     public Message()
     {
@@ -63,7 +67,7 @@ public class Message
 
     public MessageLevel getLevel()
     {
-        return _level;
+        return (_level == null ? DEFAULT_LEVEL : _level);
     }
 
 
@@ -97,6 +101,20 @@ public class Message
     public String getPersistentID()
     {
         return _persistentID;
+    }
+
+
+
+    //**************************************************************
+    //  java.lang.Object
+    //**************************************************************
+
+    @Override
+    public String toString()
+    {
+        return "[level=" + getLevel()
+                        + ", " + getContent()
+                        + "]";
     }
 
 }

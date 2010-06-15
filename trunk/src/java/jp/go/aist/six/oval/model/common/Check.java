@@ -22,8 +22,6 @@ package jp.go.aist.six.oval.model.common;
 
 
 
-
-
 /**
  * @author  Akihito Nakamura, AIST
  * @version $Id$

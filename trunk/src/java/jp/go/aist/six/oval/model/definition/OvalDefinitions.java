@@ -52,6 +52,9 @@ public class OvalDefinitions
     private States  _states = new States();
     //{0..1}
 
+    private Variables  _variables = new Variables();
+    //{0..1}
+
 //    private transient Map<String, Definition>   _definitionMap;
 //    private transient Map<String, Test>   _testMap;
 //    private transient Map<String, SystemObject>   _objectMap;

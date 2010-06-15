@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.model.definition;
 
-import java.io.Serializable;
-import java.util.HashMap;
 
 
 
@@ -30,89 +28,68 @@ import java.util.HashMap;
  * @author  Akihito Nakamura, AIST
  * @version $Id: DefinitionClass.java 434 2010-03-23 05:01:24Z akihito $
  */
-public final class DefinitionClass
-    implements Serializable
+public enum DefinitionClass
 {
 
-    private static final String  _COMPLIANCE_     = "compliance";
-    private static final String  _INVENTORY_      = "inventory";
-    private static final String  _MISCELLANIOUS_  = "miscellanious";
-    private static final String  _PATCH_          = "patch";
-    private static final String  _VULNERABILITY_  = "vulnerability";
-
-
-    public static final DefinitionClass  COMPLIANCE     = new DefinitionClass( _COMPLIANCE_ );
-    public static final DefinitionClass  INVENTORY      = new DefinitionClass( _INVENTORY_ );
-    public static final DefinitionClass  MISCELLANIOUS  = new DefinitionClass( _MISCELLANIOUS_ );
-    public static final DefinitionClass  PATCH          = new DefinitionClass( _PATCH_ );
-    public static final DefinitionClass  VULNERABILITY  = new DefinitionClass( _VULNERABILITY_ );
-
-
-
-    private static HashMap<String, DefinitionClass> _INIT_()
-    {
-        HashMap<String, DefinitionClass>  map = new HashMap<String, DefinitionClass>();
-        map.put( _COMPLIANCE_,     COMPLIANCE     );
-        map.put( _INVENTORY_,      INVENTORY      );
-        map.put( _MISCELLANIOUS_,  MISCELLANIOUS  );
-        map.put( _PATCH_,          PATCH          );
-        map.put( _VULNERABILITY_,  VULNERABILITY  );
-        return map;
-    }
-
-    private static final HashMap<String, DefinitionClass>  _INSTANCES_ = _INIT_();
-
+    COMPLIANCE( "compliance" ),
+    INVENTORY( "inventory" ),
+    MISCELLANEOUS( "miscellaneous" ),
+    PATCH( "patch" ),
+    VULNERABILITY( "vulnerability" );
 
 
 
     /**
+     * An instance factory method.
      */
-    public static DefinitionClass valueOf( final String name )
+    public static DefinitionClass fromValue(
+                    final String value
+                    )
     {
-        DefinitionClass  flag = null;
-        if (name != null) {
-            flag = _INSTANCES_.get( name );
-        }
+        for (DefinitionClass  e : DefinitionClass.values()) {
+          if (e._value.equals( value )) {
+              return e;
+          }
+      }
 
-        if (flag == null) {
-            throw new IllegalArgumentException( "invalid definition class: " + name );
-        }
-
-        return flag;
+      throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
 
+    private final String  _value;
 
 
     /**
+     * Constructor.
      */
-    private DefinitionClass( final String name )
+    DefinitionClass(
+                    final String value
+                    )
     {
-        _name = name;
+        this._value = value;
     }
 
 
 
     /**
      */
-    public String getName()
+    public String value()
     {
-        return _name;
+        return this._value;
     }
 
 
 
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
     //  java.lang.Object
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
 
     @Override
     public String toString()
     {
-        return getName();
+        return this._value;
     }
 
 }
