@@ -29,6 +29,7 @@ import java.util.Collections;
 
 
 /**
+ * A collection of OvalElement instances.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id: States.java 421 2010-03-18 10:17:37Z akihito $
@@ -60,7 +61,7 @@ extends Container<E>
 
 
     //==============================================================
-    //  digest
+    //  digest computation
     //==============================================================
 
     /**

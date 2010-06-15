@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.definition;
 
-import jp.go.aist.six.util.orm.Persistable;
+import jp.go.aist.six.util.orm.AbstractPersistable;
 
 
 
@@ -34,31 +34,15 @@ import jp.go.aist.six.util.orm.Persistable;
  * @version $Id: MetadataItem.java 677 2010-04-24 08:06:29Z akihito $
  */
 public abstract class MetadataItem
-    implements Persistable
+extends AbstractPersistable
 {
 
-    //**************************************************************
-    //  Persistable
-    //**************************************************************
-
     /**
-     * The persistent identifier.
+     * Constructor.
      */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
+    public MetadataItem()
     {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
     }
 
 }
-// MetadataElement
+// MetadataItem

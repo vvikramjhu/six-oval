@@ -33,7 +33,7 @@ import java.util.Set;
 
 
 /**
- * The metadata available to an OVAL Definition.
+ * All the metadata available to an OVAL Definition.
  *
  * <p>Properties:</p>
  * <ul>
@@ -55,8 +55,8 @@ implements Serializable
     //{1..1}
 
 //    private final Collection<Affected>  _affected = new ArrayList<Affected>();
-//    //{0..*}
     private Affected  _affected;
+    //{0..*}
     //NOTE: So far, we found NO definition with multiple 'affected' elements.
 
     private final Collection<Reference>  _reference = new ArrayList<Reference>();
@@ -142,7 +142,7 @@ implements Serializable
 
 
     public void setReference(
-                    final Collection<Reference> referenceList
+                    final Collection<? extends Reference> referenceList
                     )
     {
         if (referenceList != _reference) {
@@ -156,11 +156,15 @@ implements Serializable
     }
 
 
-    public void addReference(
+    public boolean addReference(
                     final Reference ref
                     )
     {
-        _reference.add( ref );
+        if (ref == null) {
+            return false;
+        } else {
+            return _reference.add( ref );
+        }
     }
 
 
@@ -186,13 +190,15 @@ implements Serializable
 
 
     public void setMetadataItem(
-                    final Collection<MetadataItem> anyList
+                    final Collection<? extends MetadataItem> anyList
                     )
     {
         if (anyList != _metadataItem) {
             _metadataItem.clear();
             if (anyList != null) {
-                _metadataItem.addAll( anyList );
+                for (MetadataItem  i : anyList) {
+                    addMetadataItem( i );
+                }
             }
         }
     }
@@ -285,7 +291,7 @@ implements Serializable
         // Mitre OVAL repository
         for (Reference  ref : getReference()) {
             if (cve_source.equals( ref.getSource() )) {
-                Cve  cve = new Cve( ref.getReferenceID() );
+                Cve  cve = new Cve( ref.getRefID() );
                 cves.add( cve );
             }
         }
@@ -294,7 +300,7 @@ implements Serializable
         for (MetadataItem  metadata : getMetadataItem()) {
             if (metadata instanceof LinuxSecurityAdvisory) {
                 for (CveReference  ref : ((LinuxSecurityAdvisory)metadata).getCves()) {
-                    Cve  cve = new Cve( ref.getReferenceID() );
+                    Cve  cve = new Cve( ref.getRefID() );
                     cves.add( cve );
                 }
             }
@@ -306,7 +312,7 @@ implements Serializable
 
 
     public void setRelatedCves(
-                    final Collection<Cve> cves
+                    final Collection<? extends Cve> cves
                     )
     {
         if (cves != _cves) {
@@ -357,16 +363,13 @@ implements Serializable
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
         return "Metadata[title=" + getTitle()
                         + ", affected=" + getAffected()
-//                        + ", description=" + getDescription()
-//                        + ", references=" + getReferences()
+                        + ", description=(omitted)" //+ getDescription()
+                        + ", references=(omitted)" //+ getReferences()
                         + ", items=" + getMetadataItem()
                         + "]";
     }

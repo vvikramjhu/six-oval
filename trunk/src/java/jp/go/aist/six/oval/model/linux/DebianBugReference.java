@@ -88,8 +88,8 @@ public class DebianBugReference
     public
     String toString()
     {
-        return "DebianBugReport [id=" + getReferenceID()
-                        + ", href=" + getReferenceURL()
+        return "DebianBugReport [id=" + getRefID()
+                        + ", href=" + getRefURL()
                         + "]";
     }
 

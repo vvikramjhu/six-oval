@@ -109,8 +109,8 @@ public class BugzillaReference
     public
     String toString()
     {
-        return "Bugzilla [id=" + getReferenceID()
-                        + ", href=" + getReferenceURL()
+        return "Bugzilla [id=" + getRefID()
+                        + ", href=" + getRefURL()
                         + ", title=" + getTitle()
                         + "]";
     }

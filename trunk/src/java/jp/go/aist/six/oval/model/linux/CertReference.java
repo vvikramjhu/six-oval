@@ -88,8 +88,8 @@ public class CertReference
     public
     String toString()
     {
-        return "CERT [id=" + getReferenceID()
-                        + ", href=" + getReferenceURL()
+        return "CERT [id=" + getRefID()
+                        + ", href=" + getRefURL()
                         + "]";
     }
 

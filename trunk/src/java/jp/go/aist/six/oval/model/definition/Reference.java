@@ -20,8 +20,7 @@
 
 package jp.go.aist.six.oval.model.definition;
 
-import jp.go.aist.six.util.orm.Persistable;
-
+import jp.go.aist.six.util.orm.AbstractPersistable;
 
 
 
@@ -31,7 +30,7 @@ import jp.go.aist.six.util.orm.Persistable;
  * @version $Id: Reference.java 630 2010-04-20 08:15:01Z akihito $
  */
 public class Reference
-    implements Persistable
+extends AbstractPersistable
 {
 
     private String  _source;
@@ -63,8 +62,8 @@ public class Reference
                     )
     {
         setSource( source );
-        setReferenceID( refID );
-        setReferenceURL( refURL );
+        setRefID( refID );
+        setRefURL( refURL );
     }
 
 
@@ -84,23 +83,23 @@ public class Reference
 
 
 
-    public void setReferenceID(
+    public void setRefID(
                     final String id
                     )
     {
-        _refID= id;
+        _refID = id;
     }
 
 
 
-    public String getReferenceID()
+    public String getRefID()
     {
         return _refID;
     }
 
 
 
-    public void setReferenceURL(
+    public void setRefURL(
                     final String url
                     )
     {
@@ -109,7 +108,7 @@ public class Reference
 
 
 
-    public String getReferenceURL()
+    public String getRefURL()
     {
         return _refURL;
     }
@@ -140,37 +139,9 @@ public class Reference
 
 
     //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
-    {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
-    }
-
-
-
-    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -180,7 +151,7 @@ public class Reference
         String  source = getSource();
         result = prime * result + ((source == null) ? 0 : source.hashCode());
 
-        String  id = getReferenceID();
+        String  id = getRefID();
         result = prime * result + ((id == null) ? 0 : id.hashCode());
 
 //        String  url = getReferenceURL();
@@ -191,9 +162,6 @@ public class Reference
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -208,14 +176,16 @@ public class Reference
         }
 
         Reference  other = (Reference)obj;
-        String  other_id = other.getReferenceID();
-        String   this_id =  this.getReferenceID();
+        String  other_id = other.getRefID();
+        String   this_id =  this.getRefID();
         if (this_id == other_id
-                        ||  (this_id != null  &&  this_id.equals( other_id ))) {
+                        ||  (this_id != null
+                                        &&  this_id.equals( other_id ))) {
             String  other_source = other.getSource();
             String   this_source =  this.getSource();
             if (this_source == other_source
-                            ||  (this_source != null  &&  this_source.equals( other_source ))) {
+                            ||  (this_source != null
+                                            &&  this_source.equals( other_source ))) {
                 return true;
             }
         }
@@ -225,15 +195,12 @@ public class Reference
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
         return "Reference[source=" + getSource()
-                        + ", ref_id=" + getReferenceID()
-                        + ", ref_url=" + getReferenceURL()
+                        + ", ref_id=" + getRefID()
+                        + ", ref_url=" + getRefURL()
                         + "]";
     }
 

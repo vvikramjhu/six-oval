@@ -477,8 +477,8 @@ public class DebianOvalBuilder
 
         Reference  ref = new Reference();
         ref.setSource( "DSA" );
-        ref.setReferenceID( "DSA-" + dsaID );
-        ref.setReferenceURL( "http://www.debian.org/security/"
+        ref.setRefID( "DSA-" + dsaID );
+        ref.setRefURL( "http://www.debian.org/security/"
                         + dateTokens[0] + "/dsa-" + dsaID + ".en.html" );
 
         return ref;

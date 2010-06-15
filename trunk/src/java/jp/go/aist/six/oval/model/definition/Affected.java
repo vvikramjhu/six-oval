@@ -21,19 +21,21 @@
 package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.common.Family;
-import jp.go.aist.six.util.orm.Persistable;
+import jp.go.aist.six.util.orm.AbstractPersistable;
 import java.util.ArrayList;
 import java.util.Collection;
 
 
 
 /**
+ * An Affected describes family, platform(s), and product(s)
+ * to be evaluated for the OVAL Definition.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id: Affected.java 626 2010-04-20 06:13:28Z akihito $
  */
 public class Affected
-    implements Persistable
+extends AbstractPersistable
 {
 
     private Collection<Platform>  _platform = new ArrayList<Platform>();
@@ -57,13 +59,15 @@ public class Affected
 
 
     public void setPlatform(
-                    final Collection<Platform> platformList
+                    final Collection<? extends Platform> platformList
                     )
     {
-        _platform.clear();
-        if (platformList != null) {
-            for (Platform  p : platformList) {
-                addPlatform( p );
+        if (_platform != platformList) {
+            _platform.clear();
+            if (platformList != null) {
+                for (Platform  p : platformList) {
+                    addPlatform( p );
+                }
             }
         }
     }
@@ -89,13 +93,15 @@ public class Affected
 
 
     public void setProduct(
-                    final Collection<Product> productList
+                    final Collection<? extends Product> productList
                     )
     {
-        _product.clear();
-        if (productList != null) {
-            for (Product  p : productList) {
-                addProduct( p );
+        if (_product != productList) {
+            _product.clear();
+            if (productList != null) {
+                for (Product  p : productList) {
+                    addProduct( p );
+                }
             }
         }
     }
@@ -136,37 +142,9 @@ public class Affected
 
 
     //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
-    {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
-    }
-
-
-
-    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -187,9 +165,6 @@ public class Affected
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -207,11 +182,13 @@ public class Affected
         Collection<Product>  other_product = other.getProduct();
         Collection<Product>   this_product =  this.getProduct();
         if (this_product == other_product
-                        ||  (this_product != null  &&  this_product.equals( other_product ))) {
+                        ||  (this_product != null
+                                        &&  this_product.equals( other_product ))) {
             Collection<Platform>  other_platform = other.getPlatform();
             Collection<Platform>   this_platform =  this.getPlatform();
             if (this_platform == other_platform
-                        ||  (this_platform != null  &&  this_platform.equals( other_platform ))) {
+                        ||  (this_platform != null
+                                        &&  this_platform.equals( other_platform ))) {
                 if (this.getFamily() == other.getFamily()) {
                     return true;
                 }
@@ -223,15 +200,12 @@ public class Affected
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
         return "Affected[family=" + getFamily()
-                        + ", platform="    + getPlatform()
-                        + ", product="     + getProduct()
+                        + ", platform=" + getPlatform()
+                        + ", product="  + getProduct()
                         + "]";
     }
 

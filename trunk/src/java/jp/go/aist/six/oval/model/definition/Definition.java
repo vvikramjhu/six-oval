@@ -32,7 +32,7 @@ import java.util.Set;
 
 
 /**
- *
+ * A single OVAL Definition.
  * <p>Properties:</p>
  * <ul>
  *   <li>metadata (required)</li>
@@ -166,6 +166,10 @@ public class Definition
 
 
 
+    ////////////////////////////////////////////////////////////////
+    //  SIX extension
+    ////////////////////////////////////////////////////////////////
+
     /**
      * Returns the last modified date of this definition.
      * For the definitions in the Mitre OVAL repository, it is retrieved
@@ -217,7 +221,7 @@ public class Definition
         // Mitre OVAL repository
         for (Reference  ref : getMetadata().getReference()) {
             if (cve_source.equals( ref.getSource() )) {
-                Cve  cve = new Cve( ref.getReferenceID() );
+                Cve  cve = new Cve( ref.getRefID() );
                 cves.add( cve );
             }
         }
@@ -226,7 +230,7 @@ public class Definition
         for (MetadataItem  metadata : getMetadataElements()) {
             if (metadata instanceof LinuxSecurityAdvisory) {
                 for (CveReference  ref : ((LinuxSecurityAdvisory)metadata).getCves()) {
-                    Cve  cve = new Cve( ref.getReferenceID() );
+                    Cve  cve = new Cve( ref.getRefID() );
                     cves.add( cve );
                 }
             }
@@ -383,9 +387,6 @@ public class Definition
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -394,9 +395,6 @@ public class Definition
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -411,13 +409,10 @@ public class Definition
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
-        return "Definition [" + super.toString()
+        return "Definition[" + super.toString()
                         + ", class=" + getDefinitionClass()
                         + ", metadata=" + getMetadata()
 //                        + ", criteria=" + getCriteria()

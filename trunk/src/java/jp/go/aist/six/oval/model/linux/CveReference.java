@@ -88,8 +88,8 @@ public class CveReference
     public
     String toString()
     {
-        return "CVE [id=" + getReferenceID()
-                        + ", href=" + getReferenceURL()
+        return "CVE [id=" + getRefID()
+                        + ", href=" + getRefURL()
                         + "]";
     }
 

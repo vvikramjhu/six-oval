@@ -218,8 +218,8 @@ public class OvalXmlTest
         Reference  ref = metadata.getReference().iterator().next();
 //        Reporter.log( "    @@@ reference=" + ref, true );
         Assert.assertEquals( ref.getSource(), "RHSA" );
-        Assert.assertEquals( ref.getReferenceID(), "RHSA-2009:1039-00" );
-        Assert.assertEquals( ref.getReferenceURL(), "https://rhn.redhat.com/errata/RHSA-2009-1039.html" );
+        Assert.assertEquals( ref.getRefID(), "RHSA-2009:1039-00" );
+        Assert.assertEquals( ref.getRefURL(), "https://rhn.redhat.com/errata/RHSA-2009-1039.html" );
 
         // definition/metadata/affected //
         Affected  affected = metadata.getAffected();
@@ -665,8 +665,8 @@ public class OvalXmlTest
         Reference  ref = metadata.getReference().iterator().next();
 //        Reporter.log( "    @@@ reference=" + ref, true );
         Assert.assertEquals( ref.getSource(), "DSA" );
-        Assert.assertEquals( ref.getReferenceID(), "dsa-1960" );
-        Assert.assertEquals( ref.getReferenceURL(), "http://www.debian.org/security/2009/dsa-1960.en.html" );
+        Assert.assertEquals( ref.getRefID(), "dsa-1960" );
+        Assert.assertEquals( ref.getRefURL(), "http://www.debian.org/security/2009/dsa-1960.en.html" );
 
         // definition/metadata/affected //
         Reporter.log( "*** checking definition/metadata/affected....", true );
@@ -754,8 +754,8 @@ public class OvalXmlTest
         Reference  ref = metadata.getReference().iterator().next();
 //        Reporter.log( "    @@@ reference=" + ref, true );
         Assert.assertEquals( ref.getSource(), "RHSA" );
-        Assert.assertEquals( ref.getReferenceID(), "RHSA-2010:0061-00" );
-        Assert.assertEquals( ref.getReferenceURL(), "https://rhn.redhat.com/errata/RHSA-2010-0061.html" );
+        Assert.assertEquals( ref.getRefID(), "RHSA-2010:0061-00" );
+        Assert.assertEquals( ref.getRefURL(), "https://rhn.redhat.com/errata/RHSA-2010-0061.html" );
 
         // definition/metadata/affected //
         Reporter.log( "*** checking definition/metadata/affected....", true );
@@ -780,7 +780,7 @@ public class OvalXmlTest
                         "CVE-2010-0001"
         });
         for (CveReference  cve : adv.getCves()) {
-            Assert.assertTrue( cve_ids.contains( cve.getReferenceID() ) );
+            Assert.assertTrue( cve_ids.contains( cve.getRefID() ) );
         }
 
         Reporter.log( "*** checking related CVEs...", true );
@@ -843,8 +843,8 @@ public class OvalXmlTest
         Reference  ref = metadata.getReference().iterator().next();
 //        Reporter.log( "    @@@ reference=" + ref, true );
         Assert.assertEquals( ref.getSource(), "RHSA" );
-        Assert.assertEquals( ref.getReferenceID(), "RHSA-2010:0061-00" );
-        Assert.assertEquals( ref.getReferenceURL(), "https://rhn.redhat.com/errata/RHSA-2010-0061.html" );
+        Assert.assertEquals( ref.getRefID(), "RHSA-2010:0061-00" );
+        Assert.assertEquals( ref.getRefURL(), "https://rhn.redhat.com/errata/RHSA-2010-0061.html" );
 
         // definition/metadata/affected //
         Reporter.log( "*** checking definition/metadata/affected....", true );
@@ -869,7 +869,7 @@ public class OvalXmlTest
                         "CVE-2010-0001"
         });
         for (CveReference  cve : adv.getCves()) {
-            Assert.assertTrue( cve_ids.contains( cve.getReferenceID() ) );
+            Assert.assertTrue( cve_ids.contains( cve.getRefID() ) );
         }
 
 //        Assert.assertEquals( 1, adv.getAffectedCpes().size() );
@@ -945,8 +945,8 @@ public class OvalXmlTest
         Assert.assertEquals( metadata.getReference().size(), 1 );
         Reference  ref = metadata.getReference().iterator().next();
         Assert.assertEquals( ref.getSource(), "CVE" );
-        Assert.assertEquals( ref.getReferenceID(), "CVE-2006-1189" );
-        Assert.assertEquals( ref.getReferenceURL(), "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1189" );
+        Assert.assertEquals( ref.getRefID(), "CVE-2006-1189" );
+        Assert.assertEquals( ref.getRefURL(), "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1189" );
 
         // definition/metadata/affected //
         Reporter.log( "  *** checking definition/metadata/affected....", true );

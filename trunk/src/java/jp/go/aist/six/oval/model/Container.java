@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model;
 
-import jp.go.aist.six.util.orm.Persistable;
+import jp.go.aist.six.util.orm.AbstractPersistable;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -32,7 +32,7 @@ import java.util.Collection;
  * @version $Id: States.java 421 2010-03-18 10:17:37Z akihito $
  */
 public abstract class Container<E>
-implements Persistable
+extends AbstractPersistable
 {
 
 //    private final Map<Object, E>  _elements = new LinkedHashMap<Object, E>();
@@ -46,6 +46,17 @@ implements Persistable
      */
     public Container()
     {
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public Container(
+                    final Collection<? extends E> elements
+                    )
+    {
+        setElements( elements );
     }
 
 
@@ -78,7 +89,7 @@ implements Persistable
     /**
      */
     public void setElements(
-                    final Collection<E> elements
+                    final Collection<? extends E> elements
                     )
     {
         if (elements != _elements) {
@@ -95,6 +106,9 @@ implements Persistable
 
 
     /**
+     * Appends an element.
+     * If the argument element is null, it is simply ignored
+     * and this method returns immediately.
      */
     public void addElement(
                     final E element
@@ -110,6 +124,10 @@ implements Persistable
 
 
     /**
+     * Returns the elements.
+     * This method never returns null.
+     * Note that this method may returns
+     * the internal implementing collection object.
      */
     public Collection<E> getElements()
     {
@@ -120,7 +138,9 @@ implements Persistable
 
     /**
      */
-    public E findElement( final Object key )
+    public E findElement(
+                    final Object key
+                    )
     {
         if (key == null) {
             throw new IllegalArgumentException( "null key" );
@@ -155,37 +175,9 @@ implements Persistable
 
 
     //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
-    {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
-    }
-
-
-
-    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -200,9 +192,6 @@ implements Persistable
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -230,9 +219,6 @@ implements Persistable
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

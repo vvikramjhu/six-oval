@@ -22,19 +22,45 @@ package jp.go.aist.six.oval.model.definition;
 
 
 
-
-
 /**
+ * The DefinitionClass defines the different classes of definitions.
+ * Each class defines a certain intent regarding how an OVAL Definition
+ * is written and what that definition is describing.
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id: DefinitionClass.java 434 2010-03-23 05:01:24Z akihito $
  */
 public enum DefinitionClass
 {
 
+    /**
+     * A compliance definition describes the state of a machine
+     * as it complies with a specific policy.
+     */
     COMPLIANCE( "compliance" ),
+
+    /**
+     * An inventory definition describes whether a specific piece of software
+     * is installed on the system.
+     */
     INVENTORY( "inventory" ),
+
+    /**
+     * The 'miscellaneous' class is used to identify definitions
+     * that do not fall into any of the other defined classes.
+     */
     MISCELLANEOUS( "miscellaneous" ),
+
+    /**
+     * A patch definition details the machine state of
+     * whether a patch executable should be installed.
+     */
     PATCH( "patch" ),
+
+    /**
+     * A vulnerability definition describes the conditions
+     * under which a machine is vulnerable.
+     */
     VULNERABILITY( "vulnerability" );
 
 
