@@ -26,7 +26,7 @@ package jp.go.aist.six.oval.model.definition;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: Criterion.java 635 2010-04-20 09:29:15Z akihito $
+ * @version $Id$
  */
 public class Criterion
     extends CriteriaElement

@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.OvalEntityReference;
  * A reference to an OVAL Object, independent of its version.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: SystemObjectReference.java 651 2010-04-21 08:02:07Z akihito $
+ * @version $Id$
  */
 public class SystemObjectReference
     extends OvalEntityReference

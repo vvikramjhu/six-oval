@@ -25,7 +25,7 @@ package jp.go.aist.six.oval.model.definition;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: EntityStateAnyType.java 712 2010-05-06 03:23:34Z akihito $
+ * @version $Id$
  */
 public class EntityStateAnyType
     extends EntityStateBaseType

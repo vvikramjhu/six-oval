@@ -29,7 +29,7 @@ import java.util.Collection;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: Criteria.java 634 2010-04-20 09:14:26Z akihito $
+ * @version $Id$
  */
 public class Criteria
     extends CriteriaElement

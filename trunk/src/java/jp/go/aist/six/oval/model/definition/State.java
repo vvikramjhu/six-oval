@@ -35,7 +35,7 @@ import jp.go.aist.six.oval.model.common.Operator;
  * certain characteristics.
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: State.java 697 2010-04-26 10:25:37Z akihito $
+ * @version $Id$
  */
 public abstract class State
     extends CommentedOvalEntity //, Noted

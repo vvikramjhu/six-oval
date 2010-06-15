@@ -31,7 +31,7 @@ import jp.go.aist.six.util.orm.AbstractPersistable;
  * that they feel are important.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: MetadataItem.java 677 2010-04-24 08:06:29Z akihito $
+ * @version $Id$
  */
 public abstract class MetadataItem
 extends AbstractPersistable

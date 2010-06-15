@@ -28,7 +28,7 @@ import jp.go.aist.six.util.orm.Persistable;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: EntityBaseType.java 712 2010-05-06 03:23:34Z akihito $
+ * @version $Id$
  */
 public abstract class EntityBaseType
     implements Persistable

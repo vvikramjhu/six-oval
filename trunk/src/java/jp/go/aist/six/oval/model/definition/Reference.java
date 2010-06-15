@@ -27,7 +27,7 @@ import jp.go.aist.six.util.orm.AbstractPersistable;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: Reference.java 630 2010-04-20 08:15:01Z akihito $
+ * @version $Id$
  */
 public class Reference
 extends AbstractPersistable

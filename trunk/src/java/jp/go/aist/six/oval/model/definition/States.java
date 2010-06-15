@@ -28,7 +28,7 @@ import jp.go.aist.six.oval.model.OvalElementContainer;
  * A collection of State objects.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: States.java 746 2010-05-10 01:43:03Z akihito $
+ * @version $Id$
  */
 public class States
     extends OvalElementContainer<State>

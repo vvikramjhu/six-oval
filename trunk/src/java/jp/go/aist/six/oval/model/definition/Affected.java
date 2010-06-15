@@ -32,7 +32,7 @@ import java.util.Collection;
  * to be evaluated for the OVAL Definition.
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: Affected.java 626 2010-04-20 06:13:28Z akihito $
+ * @version $Id$
  */
 public class Affected
 extends AbstractPersistable

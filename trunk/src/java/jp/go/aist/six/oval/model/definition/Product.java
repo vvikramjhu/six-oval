@@ -27,7 +27,7 @@ import jp.go.aist.six.oval.model.NameEntity;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: Product.java 631 2010-04-20 08:33:34Z akihito $
+ * @version $Id$
  */
 public class Product
     extends NameEntity

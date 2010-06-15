@@ -28,7 +28,7 @@ import jp.go.aist.six.oval.model.OvalElementContainer;
  * A collection of Definition objects.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: Definitions.java 746 2010-05-10 01:43:03Z akihito $
+ * @version $Id$
  */
 public class Definitions
 extends OvalElementContainer<Definition>

@@ -31,7 +31,7 @@ import jp.go.aist.six.util.orm.Persistable;
  * generator, definitions, tests, objects, states, and variables.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalDefinitions.java 648 2010-04-21 06:27:04Z akihito $
+ * @version $Id$
  */
 public class OvalDefinitions
     implements Persistable

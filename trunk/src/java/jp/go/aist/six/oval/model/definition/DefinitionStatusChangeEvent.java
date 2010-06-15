@@ -28,7 +28,7 @@ import java.util.Date;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: DefinitionStatusChangeEvent.java 674 2010-04-23 09:51:49Z akihito $
+ * @version $Id$
  */
 public class DefinitionStatusChangeEvent
     extends OvalRepositoryEvent

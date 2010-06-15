@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.model.CommentedOvalEntity;
  * has the special meaning in Java.
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: SystemObject.java 696 2010-04-26 10:22:00Z akihito $
+ * @version $Id$
  */
 public abstract class SystemObject
     extends CommentedOvalEntity

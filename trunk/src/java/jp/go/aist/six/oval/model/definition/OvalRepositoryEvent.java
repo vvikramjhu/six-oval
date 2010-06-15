@@ -27,7 +27,7 @@ import java.util.Date;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: OvalRepositoryEvent.java 434 2010-03-23 05:01:24Z akihito $
+ * @version $Id$
  */
 public abstract class OvalRepositoryEvent
     implements Persistable

@@ -27,7 +27,7 @@ import jp.go.aist.six.util.orm.AbstractPersistable;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: CriteriaElement.java 634 2010-04-20 09:14:26Z akihito $
+ * @version $Id$
  */
 public abstract class CriteriaElement
     extends AbstractPersistable

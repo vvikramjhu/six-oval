@@ -27,7 +27,7 @@ import jp.go.aist.six.oval.model.common.Check;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: EntityObjectBaseType.java 705 2010-04-27 08:32:35Z akihito $
+ * @version $Id$
  */
 public abstract class EntityObjectBaseType
     extends EntityBaseType

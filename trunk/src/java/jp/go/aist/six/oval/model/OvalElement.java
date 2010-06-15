@@ -28,7 +28,7 @@ import jp.go.aist.six.util.orm.AbstractPersistable;
  * An OVAL entity or an analysis result.
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: OvalElement.java 635 2010-04-20 09:29:15Z akihito $
+ * @version $Id$
  */
 public abstract class OvalElement
     extends AbstractPersistable

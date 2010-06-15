@@ -29,7 +29,7 @@ package jp.go.aist.six.oval.model;
  * Every OVAL entity is identified by a pair of its identifier and version.
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: OvalEntity.java 541 2010-04-08 08:43:59Z akihito $
+ * @version $Id$
  */
 public abstract class OvalEntity
     extends OvalElement

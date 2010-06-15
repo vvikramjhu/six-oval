@@ -28,7 +28,7 @@ import java.util.Date;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: DefinitionModifiedEvent.java 674 2010-04-23 09:51:49Z akihito $
+ * @version $Id$
  */
 public class DefinitionModifiedEvent
     extends OvalRepositoryEvent

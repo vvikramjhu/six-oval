@@ -30,7 +30,7 @@ import java.util.Collection;
  * A marker class for definition/metadata/any elements.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalRepository.java 677 2010-04-24 08:06:29Z akihito $
+ * @version $Id$
  */
 public class OvalRepository
     extends MetadataItem

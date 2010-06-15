@@ -25,7 +25,7 @@ package jp.go.aist.six.oval.model;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: CommentedOvalEntity.java 434 2010-03-23 05:01:24Z akihito $
+ * @version $Id$
  */
 public abstract class CommentedOvalEntity
     extends OvalEntity

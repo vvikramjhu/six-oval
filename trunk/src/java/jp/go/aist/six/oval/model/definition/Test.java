@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.model.common.Operator;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: Test.java 696 2010-04-26 10:22:00Z akihito $
+ * @version $Id$
  */
 public abstract class Test
     extends CommentedOvalEntity //, Noted

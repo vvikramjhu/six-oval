@@ -41,7 +41,7 @@ import java.util.Set;
  * </ul>
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: Definition.java 677 2010-04-24 08:06:29Z akihito $
+ * @version $Id$
  */
 public class Definition
     extends OvalEntity //, Noted

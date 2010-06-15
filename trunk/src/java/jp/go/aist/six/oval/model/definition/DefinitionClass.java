@@ -28,7 +28,7 @@ package jp.go.aist.six.oval.model.definition;
  * is written and what that definition is describing.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: DefinitionClass.java 434 2010-03-23 05:01:24Z akihito $
+ * @version $Id$
  */
 public enum DefinitionClass
 {

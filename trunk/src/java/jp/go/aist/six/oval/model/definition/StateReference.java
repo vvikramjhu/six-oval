@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.OvalEntityReference;
  * A reference to an OVAL State, independent of its version.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: StateReference.java 651 2010-04-21 08:02:07Z akihito $
+ * @version $Id$
  */
 public class StateReference
     extends OvalEntityReference

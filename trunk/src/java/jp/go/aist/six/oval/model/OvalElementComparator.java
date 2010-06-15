@@ -28,7 +28,7 @@ import java.util.Comparator;
  * A comparison function for OvalElement objects.
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: OvalElementComparator.java 543 2010-04-08 09:13:47Z akihito $
+ * @version $Id$
  */
 public class OvalElementComparator
 implements Comparator<OvalElement>

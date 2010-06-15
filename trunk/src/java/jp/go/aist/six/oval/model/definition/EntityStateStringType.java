@@ -25,7 +25,7 @@ package jp.go.aist.six.oval.model.definition;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: EntityStateStringType.java 707 2010-04-27 09:01:36Z akihito $
+ * @version $Id$
  */
 public class EntityStateStringType
     extends EntityStateBaseType

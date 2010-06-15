@@ -25,7 +25,7 @@ package jp.go.aist.six.oval.model.definition;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: SimpleTest.java 657 2010-04-23 01:48:17Z akihito $
+ * @version $Id$
  */
 public abstract class SimpleTest
     extends Test

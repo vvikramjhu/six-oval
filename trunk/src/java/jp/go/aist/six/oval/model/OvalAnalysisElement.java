@@ -27,7 +27,7 @@ package jp.go.aist.six.oval.model;
  * A reference to the OvalEntity.
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: OvalAnalysisElement.java 434 2010-03-23 05:01:24Z akihito $
+ * @version $Id$
  */
 public abstract class OvalAnalysisElement
     extends OvalElement

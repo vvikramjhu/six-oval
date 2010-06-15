@@ -31,7 +31,7 @@ import java.util.Collections;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: States.java 421 2010-03-18 10:17:37Z akihito $
+ * @version $Id$
  */
 public class OvalElementCollection<E extends OvalElement>
 {

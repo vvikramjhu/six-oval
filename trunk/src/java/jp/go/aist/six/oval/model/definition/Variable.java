@@ -28,7 +28,7 @@ import jp.go.aist.six.oval.model.common.Datatype;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: Variable.java 736 2010-05-07 06:42:16Z akihito $
+ * @version $Id$
  */
 public abstract class Variable
     extends CommentedOvalEntity

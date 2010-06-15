@@ -28,7 +28,7 @@ import jp.go.aist.six.oval.model.OvalElementContainer;
  * A collection of SystemObject instances.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: States.java 421 2010-03-18 10:17:37Z akihito $
+ * @version $Id$
  */
 public class SystemObjects
 extends OvalElementContainer<SystemObject>
