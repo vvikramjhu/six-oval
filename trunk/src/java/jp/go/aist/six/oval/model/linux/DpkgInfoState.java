@@ -24,8 +24,6 @@ import jp.go.aist.six.oval.core.model.ComponentType;
 
 
 
-
-
 /**
  *
  * @author  Akihito Nakamura, AIST
@@ -72,23 +70,14 @@ public class DpkgInfoState
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
-//        final int  prime = 37;
-        int  result = super.hashCode();
-
-        return result;
+        return super.hashCode();
     }
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -103,14 +92,10 @@ public class DpkgInfoState
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
-        return "DpkgInfoState[" + super.toString()
-                        + "]";
+        return "DpkgInfoState[" + super.toString() + "]";
     }
 
 }

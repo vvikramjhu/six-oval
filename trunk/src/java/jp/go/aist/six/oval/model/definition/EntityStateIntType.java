@@ -31,10 +31,6 @@ public class EntityStateIntType
     extends EntityStateBaseType
 {
 
-//    private int  _value;
-
-
-
     /**
      * Constructor.
      */
@@ -47,10 +43,21 @@ public class EntityStateIntType
      * Constructor.
      */
     public EntityStateIntType(
-                    final int value
+                    final String data
                     )
     {
-        setData( String.valueOf( value ) );
+        super( data );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateIntType(
+                    final int data
+                    )
+    {
+        super( String.valueOf( data ) );
     }
 
 
@@ -74,25 +81,14 @@ public class EntityStateIntType
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
-//        final int  prime = 37;
-        int  result = super.hashCode();
-
-//        result = prime * result + getValue();
-
-        return result;
+        return super.hashCode();
     }
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -106,31 +102,15 @@ public class EntityStateIntType
             return false;
         }
 
-        if (super.equals( obj )) {
-//            EntityStateIntType  other = (EntityStateIntType)obj;
-//            int  other_value = other.getValue();
-//            int   this_value =  this.getValue();
-//            if (this_value == other_value) {
-                return true;
-//            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
-        return "EntityStateIntType[" + super.toString() + "]";
-
-//        return "[value=" + getValue()
-//                        + ", " + super.toString()
-//                        + "]";
+        return "EntityStateInt[" + super.toString() + "]";
     }
 
 }

@@ -26,7 +26,6 @@ import jp.go.aist.six.oval.model.definition.EntityStateStringType;
 
 
 
-
 /**
  *
  * @author  Akihito Nakamura, AIST
@@ -92,9 +91,6 @@ public class RpmInfoState
     // java.lang.Object
     // **************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -109,9 +105,6 @@ public class RpmInfoState
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -134,14 +127,12 @@ public class RpmInfoState
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
         return "RpmInfoState[" + super.toString()
-                        + ", signature_keyid=" + getSignatureKeyID() + "]";
+                        + ", signature_keyid=" + getSignatureKeyID()
+                        + "]";
     }
 
 }

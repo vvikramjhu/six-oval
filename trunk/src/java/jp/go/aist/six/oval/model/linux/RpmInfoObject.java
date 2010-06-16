@@ -25,8 +25,6 @@ import jp.go.aist.six.oval.model.definition.EntityObjectStringType;
 
 
 
-
-
 /**
  *
  * @author  Akihito Nakamura, AIST
@@ -99,26 +97,14 @@ public class RpmInfoObject
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
-//        final int  prime = 37;
-        int  result = super.hashCode();
-
-//        String  name = getName();
-//        result = prime * result + ((name == null) ? 0 : name.hashCode());
-
-        return result;
+        return super.hashCode();
     }
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -133,15 +119,10 @@ public class RpmInfoObject
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
-        return "RpmInfoObject["
-                        + super.toString()
-                        + "]";
+        return "RpmInfoObject[" + super.toString() + "]";
     }
 
 }

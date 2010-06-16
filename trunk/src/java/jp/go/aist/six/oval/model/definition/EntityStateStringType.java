@@ -31,10 +31,6 @@ public class EntityStateStringType
     extends EntityStateBaseType
 {
 
-//    private String  _value;
-
-
-
     /**
      * Constructor.
      */
@@ -50,7 +46,7 @@ public class EntityStateStringType
                     final String data
                     )
     {
-        setData( data );
+        super( data );
     }
 
 
@@ -74,26 +70,14 @@ public class EntityStateStringType
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
-//        final int  prime = 37;
-        int  result = super.hashCode();
-
-//        String  value= getValue();
-//        result = prime * result + ((value == null) ? 0 : value.hashCode());
-
-        return result;
+        return super.hashCode();
     }
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -107,31 +91,16 @@ public class EntityStateStringType
             return false;
         }
 
-        if (super.equals( obj )) {
-//            EntityStateStringType  other = (EntityStateStringType)obj;
-//            String  other_value= other.getValue();
-//            String   this_value=  this.getValue();
-//            if (this_value == other_value
-//                            ||  (this_value != null  &&  this_value.equals( other_value ))) {
-                return true;
-//            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 
 
-//    /**
-//     * @see java.lang.Object#toString()
-//     */
-//    @Override
-//    public String toString()
-//    {
-//        return "[value=" + getValue()
-//                        + ", " + super.toString()
-//                        + "]";
-//    }
+    @Override
+    public String toString()
+    {
+        return "EntityStateString[" + super.toString() + "]";
+    }
 
 }
 // EntityStateStringType

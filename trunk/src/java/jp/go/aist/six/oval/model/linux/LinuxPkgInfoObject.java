@@ -25,7 +25,6 @@ import jp.go.aist.six.oval.model.definition.SystemObject;
 
 
 
-
 /**
  *
  * @author  Akihito Nakamura, AIST
@@ -46,7 +45,6 @@ public abstract class LinuxPkgInfoObject
     public LinuxPkgInfoObject()
     {
     }
-
 
 
     /**
@@ -71,8 +69,7 @@ public abstract class LinuxPkgInfoObject
                     final String name
                     )
     {
-        super( id, version );
-        setName( name );
+        this( id, version, new EntityObjectStringType( name ) );
     }
 
 
@@ -91,12 +88,12 @@ public abstract class LinuxPkgInfoObject
 
 
 
-    public void setName(
-                    final String name
-                    )
-    {
-        setName( new EntityObjectStringType( name ) );
-    }
+//    public void setName(
+//                    final String name
+//                    )
+//    {
+//        setName( new EntityObjectStringType( name ) );
+//    }
 
 
     public void setName(
@@ -118,9 +115,6 @@ public abstract class LinuxPkgInfoObject
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -135,9 +129,6 @@ public abstract class LinuxPkgInfoObject
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -162,9 +153,6 @@ public abstract class LinuxPkgInfoObject
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

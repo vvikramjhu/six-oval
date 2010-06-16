@@ -38,7 +38,7 @@ public abstract class SimpleTest
 //    private String  _stateID;
     private StateRef  _stateRef;
     //{oval-def:StateRefType, 0..1}
-
+    // dpkginfo_test: {0..*}
 
 
 

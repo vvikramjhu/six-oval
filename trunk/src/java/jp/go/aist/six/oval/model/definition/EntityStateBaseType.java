@@ -51,6 +51,18 @@ public abstract class EntityStateBaseType
     }
 
 
+    /**
+     * Constructor.
+     */
+    public EntityStateBaseType(
+                    final String data
+                    )
+    {
+        super( data );
+    }
+
+
+
 
     public void setEntityCheck(
                     final Check check

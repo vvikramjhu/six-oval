@@ -24,7 +24,6 @@ import jp.go.aist.six.util.orm.AbstractPersistable;
 
 
 
-
 /**
  * Additional metadata which is not part of the official OVAL Schema.
  * Individual organizations can place metadata items

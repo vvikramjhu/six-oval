@@ -25,6 +25,7 @@ import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.util.orm.AbstractPersistable;
 
 
+
 /**
  *
  * @author  Akihito Nakamura, AIST
@@ -146,6 +147,20 @@ public abstract class EntityBaseType
     public String getVarRef()
     {
         return _varRef;
+    }
+
+
+
+    public static boolean EQUALS(
+                    final EntityBaseType obj1,
+                    final EntityBaseType obj2
+                    )
+    {
+        if (obj1 == obj2  ||  (obj1 != null  &&  obj1.equals( obj2 ))) {
+            return true;
+        }
+
+        return false;
     }
 
 

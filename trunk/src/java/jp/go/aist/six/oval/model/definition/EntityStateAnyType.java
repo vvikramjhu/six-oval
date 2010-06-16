@@ -46,7 +46,7 @@ public class EntityStateAnyType
                     final String data
                     )
     {
-        setData( data );
+        super( data );
     }
 
 
@@ -55,23 +55,14 @@ public class EntityStateAnyType
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
-//        final int  prime = 37;
-        int  result = super.hashCode();
-
-        return result;
+        return super.hashCode();
     }
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -86,6 +77,14 @@ public class EntityStateAnyType
         }
 
         return super.equals( obj );
+    }
+
+
+
+    @Override
+    public String toString()
+    {
+        return "EntityStateAny[" + super.toString() + "]";
     }
 
 }

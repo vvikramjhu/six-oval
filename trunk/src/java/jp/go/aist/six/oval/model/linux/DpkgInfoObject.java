@@ -25,8 +25,6 @@ import jp.go.aist.six.oval.model.definition.EntityObjectStringType;
 
 
 
-
-
 /**
  *
  * @author  Akihito Nakamura, AIST
@@ -100,9 +98,6 @@ public class DpkgInfoObject
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -111,9 +106,6 @@ public class DpkgInfoObject
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -128,15 +120,10 @@ public class DpkgInfoObject
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
-        return "DpkgInfoObject["
-                        + super.toString()
-                        + "]";
+        return "DpkgInfoObject[" + super.toString() + "]";
     }
 
 }

@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model;
 import jp.go.aist.six.util.orm.AbstractPersistable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 
 
@@ -32,7 +33,8 @@ import java.util.Collection;
  * @version $Id$
  */
 public abstract class Container<E>
-extends AbstractPersistable
+    extends AbstractPersistable
+    implements Iterable<E>
 {
 
 //    private final Map<Object, E>  _elements = new LinkedHashMap<Object, E>();
@@ -170,6 +172,17 @@ extends AbstractPersistable
     public int size()
     {
         return _elements.size();
+    }
+
+
+
+    //**************************************************************
+    //  Iterable
+    //**************************************************************
+
+    public Iterator<E> iterator()
+    {
+        return _elements.iterator();
     }
 
 

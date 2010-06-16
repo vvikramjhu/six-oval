@@ -25,7 +25,6 @@ import jp.go.aist.six.oval.model.definition.EntityStateStringType;
 
 
 
-
 /**
  *
  * @author  Akihito Nakamura, AIST
@@ -35,13 +34,13 @@ public abstract class LinuxEvrPkgInfoState
     extends LinuxPkgInfoState
 {
 
-    private EntityStateStringType     _epoch;
+    private EntityStateStringType  _epoch;
     //{0..1}
 
-    private EntityStateStringType   _release;
+    private EntityStateStringType  _release;
     //{0..1}
 
-    private EntityStateStringType   _evr;
+    private EntityStateStringType  _evr;
     //{0..1}
 
 
@@ -116,9 +115,6 @@ public abstract class LinuxEvrPkgInfoState
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -139,9 +135,6 @@ public abstract class LinuxEvrPkgInfoState
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -167,9 +160,6 @@ public abstract class LinuxEvrPkgInfoState
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

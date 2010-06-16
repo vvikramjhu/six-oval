@@ -36,7 +36,7 @@ public abstract class LinuxPkgInfoState
     extends State
 {
 
-    private EntityStateStringType   _name;
+    private EntityStateStringType  _name;
     //{0..1}
 
     private EntityStateStringType  _arch;
@@ -84,7 +84,7 @@ public abstract class LinuxPkgInfoState
 
 
 
-    public void setArchitecture(
+    public void setArch(
                     final EntityStateStringType arch
                     )
     {
@@ -92,7 +92,7 @@ public abstract class LinuxPkgInfoState
     }
 
 
-    public EntityStateStringType getArchitecture()
+    public EntityStateStringType getArch()
     {
         return _arch;
     }
@@ -118,9 +118,6 @@ public abstract class LinuxPkgInfoState
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -130,7 +127,7 @@ public abstract class LinuxPkgInfoState
         EntityStateStringType  name = getName();
         result = prime * result + ((name == null) ? 0 : name.hashCode());
 
-        EntityStateStringType  arch = getArchitecture();
+        EntityStateStringType  arch = getArch();
         result = prime * result + ((arch == null) ? 0 : arch.hashCode());
 
         EntityStateStringType  version = getVersion();
@@ -141,9 +138,6 @@ public abstract class LinuxPkgInfoState
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -157,7 +151,7 @@ public abstract class LinuxPkgInfoState
             LinuxPkgInfoState  other = (LinuxPkgInfoState)obj;
             if (EntityTypeHelper.equals( this.getVersion(), other.getVersion() )) {
                 if (EntityTypeHelper.equals( this.getName(), other.getName() )) {
-                    if (EntityTypeHelper.equals( this.getArchitecture(), other.getArchitecture() )) {
+                    if (EntityTypeHelper.equals( this.getArch(), other.getArch() )) {
                         return true;
                     }
                 }
@@ -169,14 +163,11 @@ public abstract class LinuxPkgInfoState
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
         return super.toString()
-                        + ", arch=" + getArchitecture()
+                        + ", arch=" + getArch()
                         + ", name=" + getName()
                         + ", version=" + getVersion();
     }

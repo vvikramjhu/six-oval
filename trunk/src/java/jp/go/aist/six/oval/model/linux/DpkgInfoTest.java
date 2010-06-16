@@ -25,7 +25,6 @@ import jp.go.aist.six.oval.model.definition.SimpleTest;
 
 
 
-
 /**
  *
  * @author  Akihito Nakamura, AIST
@@ -72,23 +71,14 @@ public class DpkgInfoTest
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
-//        final int  prime = 37;
-        int  result = super.hashCode();
-
-        return result;
+        return super.hashCode();
     }
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -103,9 +93,6 @@ public class DpkgInfoTest
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
