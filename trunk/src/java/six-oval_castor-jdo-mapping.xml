@@ -1345,7 +1345,7 @@
             <sql name="name" type="char"/>
         </field>
 
-        <field name="architecture" type="string">
+        <field name="arch" type="string">
             <sql name="arch" type="char"/>
         </field>
 
@@ -1385,7 +1385,7 @@
             <sql name="name" type="char"/>
         </field>
 
-        <field name="architecture" type="string">
+        <field name="arch" type="string">
             <sql name="arch" type="char"/>
         </field>
 

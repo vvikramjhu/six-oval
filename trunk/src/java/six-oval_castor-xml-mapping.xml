@@ -1601,7 +1601,7 @@
         <map-to
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"/>
 
-        <field name="architecture" 
+        <field name="arch" 
             type="jp.go.aist.six.oval.model.definition.EntityStateStringType">
             <bind-xml name="arch" node="element"/>
         </field>
@@ -1700,7 +1700,7 @@
             <bind-xml name="name" node="element"/>
         </field>
 
-        <field name="architecture" type="string">
+        <field name="arch" type="string">
             <bind-xml name="arch" node="element"/>
         </field>
 
@@ -1750,7 +1750,7 @@
             <bind-xml name="name" node="element"/>
         </field>
 
-        <field name="architecture" type="string">
+        <field name="arch" type="string">
             <bind-xml name="arch" node="element"/>
         </field>
 
@@ -1785,7 +1785,7 @@
             <bind-xml name="name" node="element"/>
         </field>
 
-        <field name="architecture" type="string">
+        <field name="arch" type="string">
             <bind-xml name="arch" node="element"/>
         </field>
 

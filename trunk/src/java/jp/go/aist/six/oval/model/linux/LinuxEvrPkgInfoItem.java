@@ -122,7 +122,7 @@ public abstract class LinuxEvrPkgInfoItem
     {
         this( id, status );
         setName( name );
-        setArchitecture( arch );
+        setArch( arch );
         setEpoch( epoch );
         setRelease( release);
         setVersion( version );

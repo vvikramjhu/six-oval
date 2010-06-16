@@ -151,20 +151,6 @@ public abstract class EntityBaseType
 
 
 
-    public static boolean EQUALS(
-                    final EntityBaseType obj1,
-                    final EntityBaseType obj2
-                    )
-    {
-        if (obj1 == obj2  ||  (obj1 != null  &&  obj1.equals( obj2 ))) {
-            return true;
-        }
-
-        return false;
-    }
-
-
-
     //**************************************************************
     //  java.lang.Object
     //**************************************************************

@@ -116,14 +116,14 @@ public abstract class LinuxPkgInfoItem
                     )
     {
         this( id, status );
-        setArchitecture( arch );
+        setArch( arch );
         setName( name );
         setVersion( version );
     }
 
 
 
-    public void setArchitecture(
+    public void setArch(
                     final String arch
                     )
     {
@@ -131,7 +131,7 @@ public abstract class LinuxPkgInfoItem
     }
 
 
-    public String getArchitecture()
+    public String getArch()
     {
         return _arch;
     }
@@ -179,7 +179,7 @@ public abstract class LinuxPkgInfoItem
     public String toString()
     {
         return super.toString()
-                        + ", arch=" + getArchitecture()
+                        + ", arch=" + getArch()
                         + ", name=" + getName()
                         + ", version=" + getVersion()
                         + "]";
