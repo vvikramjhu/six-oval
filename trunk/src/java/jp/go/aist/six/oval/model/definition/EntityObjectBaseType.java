@@ -34,7 +34,7 @@ public abstract class EntityObjectBaseType
 {
 
     public static final Check  DEFAULT_VARIABLE_CHECK = Check.ALL;
-    private Check  _varCheck = DEFAULT_VARIABLE_CHECK;
+    private Check  _varCheck;
     //{optional, default="all"}
 
 
@@ -47,8 +47,19 @@ public abstract class EntityObjectBaseType
     }
 
 
+    /**
+     * Constructor.
+     */
+    public EntityObjectBaseType(
+                    final String data
+                    )
+    {
+        super( data );
+    }
 
-    public void setVariableCheck(
+
+
+    public void setVarCheck(
                     final Check check
                     )
     {
@@ -56,9 +67,9 @@ public abstract class EntityObjectBaseType
     }
 
 
-    public Check getVariableCheck()
+    public Check getVarCheck()
     {
-        return _varCheck;
+        return (_varCheck == null ? DEFAULT_VARIABLE_CHECK : _varCheck);
     }
 
 
@@ -67,16 +78,13 @@ public abstract class EntityObjectBaseType
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
         final int  prime = 37;
         int  result = super.hashCode();
 
-        Check  check = getVariableCheck();
+        Check  check = getVarCheck();
         result = prime * result + ((check == null) ? 0 : check.hashCode());
 
         return result;
@@ -84,9 +92,6 @@ public abstract class EntityObjectBaseType
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -102,8 +107,8 @@ public abstract class EntityObjectBaseType
 
         if (super.equals( obj )) {
             EntityObjectBaseType  other = (EntityObjectBaseType)obj;
-            Check  other_check = other.getVariableCheck();
-            Check   this_check =  this.getVariableCheck();
+            Check  other_check = other.getVarCheck();
+            Check   this_check =  this.getVarCheck();
             if (this_check == other_check) {
                 return true;
             }
@@ -114,14 +119,11 @@ public abstract class EntityObjectBaseType
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
         return super.toString()
-                        + ", var_check=" + getVariableCheck();
+                        + ", var_check=" + getVarCheck();
     }
 
 }

@@ -772,7 +772,7 @@
             <bind-xml name="mask" node="attribute"/>
         </field>
 
-        <field name="variableReference" type="string">
+        <field name="varRef" type="string">
             <bind-xml name="var_ref" node="attribute"/>
         </field>
     </class>
@@ -786,7 +786,7 @@
         extends="jp.go.aist.six.oval.model.definition.EntityBaseType"
         verify-constructable="false">
 
-        <field name="variableCheck" type="string" 
+        <field name="varCheck" type="string" 
             handler="jp.go.aist.six.oval.core.xml.CheckHandler">
             <bind-xml name="var_check" node="attribute"/>
         </field>
@@ -815,7 +815,7 @@
             <bind-xml name="entity_check" node="attribute"/>
         </field>
 
-        <field name="variableCheck" type="string" 
+        <field name="varCheck" type="string" 
             handler="jp.go.aist.six.oval.core.xml.CheckHandler">
             <bind-xml name="var_check" node="attribute"/>
         </field>

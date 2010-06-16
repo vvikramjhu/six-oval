@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.Operation;
-import jp.go.aist.six.util.orm.Persistable;
+import jp.go.aist.six.util.orm.AbstractPersistable;
 
 
 /**
@@ -31,18 +31,19 @@ import jp.go.aist.six.util.orm.Persistable;
  * @version $Id$
  */
 public abstract class EntityBaseType
-    implements Persistable
+    extends AbstractPersistable
 {
 
     private String  _data;
-    //{base="xsd:anySimpleType"}
+    //{complexContent, base="xsd:anyType"}
+    // OVAL Schema 5.6: simpleContent, base=xsd:anySimpleType
 
     public static final Datatype  DEFAULT_DATATYPE = Datatype.STRING;
-    private Datatype  _datatype = DEFAULT_DATATYPE;
-    //{optional,default="string"}
+    private Datatype  _datatype;
+    //{optional, default="string"}
 
     public static final Operation  DEFAULT_OPERATION = Operation.EQUALS;
-    private Operation  _operation = DEFAULT_OPERATION;
+    private Operation  _operation;
     //{optional, default="equals"}
 
     public static final boolean  DEFAULT_MASK = false;
@@ -59,6 +60,17 @@ public abstract class EntityBaseType
      */
     public EntityBaseType()
     {
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityBaseType(
+                    final String data
+                    )
+    {
+        setData( data );
     }
 
 
@@ -103,7 +115,7 @@ public abstract class EntityBaseType
 
     public Operation getOperation()
     {
-        return _operation;
+        return (_operation == null ? DEFAULT_OPERATION : _operation);
     }
 
 
@@ -123,7 +135,7 @@ public abstract class EntityBaseType
 
 
 
-    public void setVariableReference(
+    public void setVarRef(
                     final String varRef
                     )
     {
@@ -131,34 +143,9 @@ public abstract class EntityBaseType
     }
 
 
-    public String getVariableReference()
+    public String getVarRef()
     {
         return _varRef;
-    }
-
-
-
-    //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
-    {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
     }
 
 
@@ -167,9 +154,6 @@ public abstract class EntityBaseType
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -187,7 +171,7 @@ public abstract class EntityBaseType
 
         result = prime * result + (getMask() ? 0 : 1);
 
-        String  var_ref = getVariableReference();
+        String  var_ref = getVarRef();
         result = prime * result + ((var_ref == null) ? 0 : var_ref.hashCode());
 
         return result;
@@ -195,9 +179,6 @@ public abstract class EntityBaseType
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -216,8 +197,8 @@ public abstract class EntityBaseType
         String   this_data =  this.getData();
         if (this_data == other_data
                         ||  (this_data != null  &&  this_data.equals( other_data ))) {
-            String  other_var_ref = other.getVariableReference();
-            String   this_var_ref =  this.getVariableReference();
+            String  other_var_ref = other.getVarRef();
+            String   this_var_ref =  this.getVarRef();
             if (this_var_ref == other_var_ref
                         ||  (this_var_ref != null  &&  this_var_ref.equals( other_var_ref ))) {
                 Operation  other_op = other.getOperation();
@@ -239,9 +220,6 @@ public abstract class EntityBaseType
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
@@ -249,7 +227,7 @@ public abstract class EntityBaseType
                         + ", datatype=" + getDatatype()
                         + ", operation=" + getOperation()
 //                        + ", mask=" + getMask()
-                        + ", var_ref=" + getVariableReference();
+                        + ", var_ref=" + getVarRef();
     }
 
 }

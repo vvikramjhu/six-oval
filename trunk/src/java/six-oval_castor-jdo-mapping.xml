@@ -1040,11 +1040,11 @@
             <sql name="path" type="char"/>
         </field>
 
-        <field name="path.variableReference" type="string">
+        <field name="path.varRef" type="string">
             <sql name="path_var_ref" type="char"/>
         </field>
 
-        <field name="path.variableCheck" 
+        <field name="path.varCheck" 
             type="jp.go.aist.six.oval.model.common.Check">
             <sql name="path_var_check" type="char"/>
         </field>
@@ -1058,11 +1058,11 @@
             <sql name="line" type="char"/>
         </field>
 
-        <field name="line.variableReference" type="string">
+        <field name="line.varRef" type="string">
             <sql name="line_var_ref" type="char"/>
         </field>
 
-        <field name="line.variableCheck" 
+        <field name="line.varCheck" 
             type="jp.go.aist.six.oval.model.common.Check">
             <sql name="line_var_check" type="char"/>
         </field>
@@ -1550,11 +1550,11 @@
             <sql name="path" type="char"/>
         </field>
 
-        <field name="path.variableReference" type="string">
+        <field name="path.varRef" type="string">
             <sql name="path_var_ref" type="char"/>
         </field>
 
-        <field name="path.variableCheck" 
+        <field name="path.varCheck" 
             type="jp.go.aist.six.oval.model.common.Check">
             <sql name="path_var_check" type="char"/>
         </field>
@@ -1788,12 +1788,12 @@
             <sql name="regkey" type="char"/>
         </field>
 
-        <field name="key.variableReference" type="string"
+        <field name="key.varRef" type="string"
             set-method="%2">
             <sql name="regkey_var_ref" type="char"/>
         </field>
 
-        <field name="key.variableCheck" 
+        <field name="key.varCheck" 
             type="jp.go.aist.six.oval.model.common.Check"
             set-method="%3">
             <sql name="regkey_var_check" type="char"/>
@@ -1840,11 +1840,11 @@ No registry object has 'behaviors' child element in the definition XML.
             <sql name="regkey" type="char"/>
         </field>
 
-        <field name="key.variableReference" type="string">
+        <field name="key.varRef" type="string">
             <sql name="regkey_var_ref" type="char"/>
         </field>
 
-        <field name="key.variableCheck" 
+        <field name="key.varCheck" 
             type="jp.go.aist.six.oval.model.common.Check">
             <sql name="regkey_var_check" type="char"/>
         </field>

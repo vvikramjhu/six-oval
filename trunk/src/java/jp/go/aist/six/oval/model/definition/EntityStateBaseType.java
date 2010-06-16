@@ -33,11 +33,11 @@ public abstract class EntityStateBaseType
     extends EntityBaseType
 {
 
-    public Check  DEFAULT_ENTITY_CHECK = Check.ALL;
-    private Check  _entityCheck = DEFAULT_ENTITY_CHECK;
+    public static final Check  DEFAULT_ENTITY_CHECK = Check.ALL;
+    private Check  _entityCheck;
     //{optional, default="all"}
 
-    public Check  DEFAULT_VARIABLE_CHECK = Check.ALL;
+    public static final Check  DEFAULT_VARIABLE_CHECK = Check.ALL;
     private Check  _varCheck = DEFAULT_VARIABLE_CHECK;
     //{optional, default="all"}
 
@@ -62,12 +62,12 @@ public abstract class EntityStateBaseType
 
     public Check getEntityCheck()
     {
-        return _entityCheck;
+        return (_entityCheck == null ? DEFAULT_ENTITY_CHECK : _entityCheck);
     }
 
 
 
-    public void setVariableCheck(
+    public void setVarCheck(
                     final Check check
                     )
     {
@@ -75,9 +75,9 @@ public abstract class EntityStateBaseType
     }
 
 
-    public Check getVariableCheck()
+    public Check getVarCheck()
     {
-        return _varCheck;
+        return (_varCheck == null ? DEFAULT_ENTITY_CHECK : _varCheck);
     }
 
 
@@ -86,9 +86,6 @@ public abstract class EntityStateBaseType
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -98,7 +95,7 @@ public abstract class EntityStateBaseType
         Check  e_check = getEntityCheck();
         result = prime * result + ((e_check == null) ? 0 : e_check.hashCode());
 
-        Check  v_check = getVariableCheck();
+        Check  v_check = getVarCheck();
         result = prime * result + ((v_check == null) ? 0 : v_check.hashCode());
 
         return result;
@@ -106,9 +103,6 @@ public abstract class EntityStateBaseType
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -127,8 +121,8 @@ public abstract class EntityStateBaseType
             Check  other_e_check = other.getEntityCheck();
             Check   this_e_check =  this.getEntityCheck();
             if (this_e_check == other_e_check) {
-                Check  other_v_check = other.getVariableCheck();
-                Check   this_v_check =  this.getVariableCheck();
+                Check  other_v_check = other.getVarCheck();
+                Check   this_v_check =  this.getVarCheck();
                 if (this_v_check == other_v_check) {
                     return true;
                 }
@@ -140,15 +134,12 @@ public abstract class EntityStateBaseType
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
         return super.toString()
                         + ", entity_check=" + getEntityCheck()
-                        + ", var_check=" + getVariableCheck();
+                        + ", var_check=" + getVarCheck();
     }
 
 }

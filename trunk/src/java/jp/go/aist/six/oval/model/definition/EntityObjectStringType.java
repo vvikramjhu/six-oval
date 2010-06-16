@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.definition;
 
 
 
-
 /**
  *
  * @author  Akihito Nakamura, AIST
@@ -31,10 +30,6 @@ package jp.go.aist.six.oval.model.definition;
 public class EntityObjectStringType
     extends EntityObjectBaseType
 {
-
-//    private String  _value;
-
-
 
     /**
      * Constructor.
@@ -48,26 +43,11 @@ public class EntityObjectStringType
      * Constructor.
      */
     public EntityObjectStringType(
-                    final String value
+                    final String data
                     )
     {
-        setData( value );
+        super( data );
     }
-
-
-
-//    public void setValue(
-//                    final String value
-//                    )
-//    {
-//        _value = value;
-//    }
-//
-//
-//    public String getValue()
-//    {
-//        return _value;
-//    }
 
 
 
@@ -75,26 +55,14 @@ public class EntityObjectStringType
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
-//        final int  prime = 37;
-        int  result = super.hashCode();
-
-//        String  value= getValue();
-//        result = prime * result + ((value == null) ? 0 : value.hashCode());
-
-        return result;
+        return super.hashCode();
     }
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -108,32 +76,15 @@ public class EntityObjectStringType
             return false;
         }
 
-        if (super.equals( obj )) {
-//            EntityObjectStringType  other = (EntityObjectStringType)obj;
-//            String  other_value= other.getValue();
-//            String   this_value=  this.getValue();
-//            if (this_value == other_value
-//                            ||  (this_value != null  &&  this_value.equals( other_value ))) {
-                return true;
-//            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
-        return "EntityObjectStringType[" + super.toString() + "]";
-
-//        return "[value=" + getValue()
-//                        + ", " + super.toString()
-//                        + "]";
+        return "EntityObjectString[" + super.toString() + "]";
     }
 
 }
