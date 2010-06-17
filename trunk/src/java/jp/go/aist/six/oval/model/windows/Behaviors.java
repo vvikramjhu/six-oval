@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.util.orm.Persistable;
+import jp.go.aist.six.util.orm.AbstractPersistable;
 
 
 
@@ -31,17 +31,19 @@ import jp.go.aist.six.util.orm.Persistable;
  * @version $Id: Behaviors.java 684 2010-04-24 14:36:18Z akihito $
  */
 public class Behaviors
-    implements Persistable
+    extends AbstractPersistable
 {
 
     public static final Behaviors  DEFAULT_VALUE = new Behaviors();
+
+
 
     public static final int  DEFAULT_MAX_DEPTH = -1;
     private int _maxDepth = DEFAULT_MAX_DEPTH;
     //{optional, default="-1"}
 
     public static final RecurseDirection  DEFAULT_RECURSE_DIRECTION = RecurseDirection.NONE;
-    private RecurseDirection  _recurseDirection = DEFAULT_RECURSE_DIRECTION;
+    private RecurseDirection  _recurseDirection;
     //{optional, default="none"}
 
 
@@ -71,10 +73,10 @@ public class Behaviors
 
 
     public void setRecurseDirection(
-                    final RecurseDirection recurseDirection
+                    final RecurseDirection direction
                     )
     {
-        _recurseDirection = recurseDirection;
+        _recurseDirection = direction;
     }
 
 
@@ -88,37 +90,9 @@ public class Behaviors
 
 
     //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
-    {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
-    }
-
-
-
-    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -135,9 +109,6 @@ public class Behaviors
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -165,9 +136,6 @@ public class Behaviors
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
