@@ -24,17 +24,16 @@ import jp.go.aist.six.util.orm.AbstractPersistable;
 
 
 
-
 /**
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class Behaviors
+public abstract class Behaviors
     extends AbstractPersistable
 {
 
-    public static final Behaviors  DEFAULT_VALUE = new Behaviors();
+//    public static final Behaviors  DEFAULT_VALUE = new Behaviors();
 
 
 
@@ -139,9 +138,8 @@ public class Behaviors
     @Override
     public String toString()
     {
-        return "Behaviors[max_depth=" + getMaxDepth()
-                        + ", recurse_direction=" + getRecurseDirection()
-                        + "]";
+        return "max_depth=" + getMaxDepth()
+                        + ", recurse_direction=" + getRecurseDirection();
     }
 
 }

@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.util.orm.AbstractPersistable;
-
 
 
 
@@ -30,61 +28,15 @@ import jp.go.aist.six.util.orm.AbstractPersistable;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class Behaviors
-    extends AbstractPersistable
+public class RegistryBehaviors
+    extends Behaviors
 {
-
-    public static final Behaviors  DEFAULT_VALUE = new Behaviors();
-
-
-
-    public static final int  DEFAULT_MAX_DEPTH = -1;
-    private int _maxDepth = DEFAULT_MAX_DEPTH;
-    //{optional, default="-1"}
-
-    public static final RecurseDirection  DEFAULT_RECURSE_DIRECTION = RecurseDirection.NONE;
-    private RecurseDirection  _recurseDirection;
-    //{optional, default="none"}
-
-
 
     /**
      * Constructor.
      */
-    public Behaviors()
+    public RegistryBehaviors()
     {
-    }
-
-
-
-    public void setMaxDepth(
-                    final int maxDepth
-                    )
-    {
-        _maxDepth = maxDepth;
-    }
-
-
-    public int getMaxDepth()
-    {
-        return _maxDepth;
-    }
-
-
-
-    public void setRecurseDirection(
-                    final RecurseDirection direction
-                    )
-    {
-        _recurseDirection = direction;
-    }
-
-
-    public RecurseDirection getRecurseDirection()
-    {
-        return (_recurseDirection == null
-                        ? DEFAULT_RECURSE_DIRECTION
-                        : _recurseDirection);
     }
 
 
@@ -96,15 +48,7 @@ public class Behaviors
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  result = 17;
-
-        result = prime * result + getMaxDepth();
-
-        RecurseDirection  rd = getRecurseDirection();
-        result = prime * result + ((rd == null) ? 0 : rd.hashCode());
-
-        return result;
+        return super.hashCode();
     }
 
 
@@ -114,24 +58,11 @@ public class Behaviors
                     final Object obj
                     )
     {
-        if (this == obj) {
-            return true;
-        }
-
-        if (!(obj instanceof Behaviors)) {
+        if (!(obj instanceof RegistryBehaviors)) {
             return false;
         }
 
-        Behaviors  other = (Behaviors)obj;
-        if (this.getMaxDepth() == other.getMaxDepth()) {
-            RecurseDirection  other_rd = other.getRecurseDirection();
-            RecurseDirection   this_rd =  this.getRecurseDirection();
-            if (this_rd == other_rd) {
-                return true;
-            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 
@@ -139,10 +70,8 @@ public class Behaviors
     @Override
     public String toString()
     {
-        return "Behaviors[max_depth=" + getMaxDepth()
-                        + ", recurse_direction=" + getRecurseDirection()
-                        + "]";
+        return "RegistryBehaviors[" + super.toString() + "]";
     }
 
 }
-// Behaviors
+// RegistryBehaviors

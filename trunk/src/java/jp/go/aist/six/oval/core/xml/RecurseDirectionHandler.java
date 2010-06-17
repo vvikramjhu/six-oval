@@ -24,6 +24,7 @@ import jp.go.aist.six.oval.model.windows.RecurseDirection;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
+
 public class RecurseDirectionHandler
     extends GeneralizedFieldHandler
 {
@@ -38,8 +39,8 @@ public class RecurseDirectionHandler
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        RecurseDirection  type = (RecurseDirection)value;
-        return type.toString();
+        RecurseDirection  e = (RecurseDirection)value;
+        return e.value();
     }
 
 
@@ -47,13 +48,13 @@ public class RecurseDirectionHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return RecurseDirection.valueOf( (String)value );
+        return RecurseDirection.fromValue( (String)value );
     }
 
 
 
     @Override
-    public Class getFieldType()
+    public Class<RecurseDirection> getFieldType()
     {
         return RecurseDirection.class;
     }

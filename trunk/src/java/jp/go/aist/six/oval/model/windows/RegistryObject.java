@@ -37,7 +37,7 @@ public class RegistryObject
     extends SystemObject
 {
 
-    private Behaviors  _behaviors;// = Behaviors.DEFAULT_VALUE;
+    private RegistryBehaviors  _behaviors;// = Behaviors.DEFAULT_VALUE;
     //{0..1}
 
     private RegistryHive  _hive;
@@ -109,7 +109,7 @@ public class RegistryObject
 
 
     public void setBehaviors(
-                    final Behaviors behaviors
+                    final RegistryBehaviors behaviors
                     )
     {
         _behaviors = behaviors;
@@ -117,7 +117,7 @@ public class RegistryObject
 
 
 
-    public Behaviors getBehaviors()
+    public RegistryBehaviors getBehaviors()
     {
         return _behaviors;
     }
@@ -211,7 +211,7 @@ public class RegistryObject
         final int  prime = 37;
         int  result = super.hashCode();
 
-        Behaviors  behaviors = getBehaviors();
+        RegistryBehaviors  behaviors = getBehaviors();
         result = prime * result + ((behaviors == null) ? 0 : behaviors.hashCode());
 
         RegistryHive  hive = getHive();
@@ -251,8 +251,8 @@ public class RegistryObject
                     RegistryHive  other_hive = other.getHive();
                     RegistryHive   this_hive =  this.getHive();
                     if (this_hive == other_hive) {
-                        Behaviors  other_behaviors = other.getBehaviors();
-                        Behaviors   this_behaviors =  this.getBehaviors();
+                        RegistryBehaviors  other_behaviors = other.getBehaviors();
+                        RegistryBehaviors   this_behaviors =  this.getBehaviors();
                         if (this_behaviors == other_behaviors
                                         ||  (this_behaviors != null  &&  this_behaviors.equals( other_behaviors ))) {
                             return true;
