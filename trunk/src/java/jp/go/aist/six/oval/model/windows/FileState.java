@@ -21,10 +21,11 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.core.model.ComponentType;
+import jp.go.aist.six.oval.model.definition.EntityStateBaseType;
 import jp.go.aist.six.oval.model.definition.EntityStateStringType;
-import jp.go.aist.six.oval.model.definition.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definition.State;
-
+import java.util.EnumMap;
+import java.util.Map;
 
 
 
@@ -36,6 +37,20 @@ import jp.go.aist.six.oval.model.definition.State;
 public class FileState
     extends State
 {
+    protected static enum Property
+    {
+        FILEPATH, PATH, FILENAME, OWNER,
+        SIZE, A_TIME, C_TIME, M_TIME, // Int
+        MS_CHECKSUM, VERSION,
+        TYPE, //FileType
+        DEVELOPMENT_CLASS, COMPANY,
+        INTERNAL_NAME, LANGUAGE, ORIGINAL_FILENAME,
+        PRODUCT_NAME, PRODUCT_VERSION;
+    }
+
+
+    private Map<Property,EntityStateBaseType>  _properties =
+        new EnumMap<Property,EntityStateBaseType>( Property.class );
 
 //    private EntityStateStringType  _path;
 //    private EntityStateStringType  _filename;
@@ -46,8 +61,8 @@ public class FileState
 //    private EntityStateIntType  _mTime;
 //    private EntityStateStringType  _msChecksum;
 
-    private EntityStateStringType  _version;
-    //{0..1}
+//    private EntityStateStringType  _version;
+//    //{0..1}
 
 //    private EntityStateFileType  _type;
 //    private EntityStateStringType  _developmentClass;
@@ -83,12 +98,23 @@ public class FileState
 
 
     /**
+     *
+     */
+    protected Map<Property,EntityStateBaseType> _getProperties()
+    {
+        return _properties;
+    }
+
+
+
+    /**
      */
     public void setVersion(
                     final EntityStateStringType version
                     )
     {
-        _version = version;
+        _properties.put( Property.VERSION, version );
+//        _version = version;
     }
 
 
@@ -96,7 +122,8 @@ public class FileState
      */
     public EntityStateStringType getVersion()
     {
-        return _version;
+        return (EntityStateStringType)_properties.get( Property.VERSION );
+//        return _version;
     }
 
 
@@ -117,26 +144,21 @@ public class FileState
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
         final int  prime = 37;
         int  result = super.hashCode();
 
-        EntityStateStringType  version = getVersion();
-        result = prime * result + ((version == null) ? 0 : version.hashCode());
+        result = prime * result + _getProperties().hashCode();
+//        EntityStateStringType  version = getVersion();
+//        result = prime * result + ((version == null) ? 0 : version.hashCode());
 
         return result;
     }
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -148,11 +170,17 @@ public class FileState
 
         if (super.equals( obj )) {
             FileState  other = (FileState)obj;
-            EntityStateStringType  other_version = other.getVersion();
-            EntityStateStringType   this_version =  this.getVersion();
-            if (EntityTypeHelper.equals( this_version, other_version )) {
+            Map<Property,EntityStateBaseType>  other_props = other._getProperties();
+            Map<Property,EntityStateBaseType>   this_props =  this._getProperties();
+            if (this_props == other_props
+                            ||  (this_props != null  &&  this_props.equals( other_props ))) {
                 return true;
             }
+//            EntityStateStringType  other_version = other.getVersion();
+//            EntityStateStringType   this_version =  this.getVersion();
+//            if (EntityTypeHelper.equals( this_version, other_version )) {
+//                return true;
+//            }
         }
 
         return false;
@@ -160,13 +188,12 @@ public class FileState
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
-        return super.toString() + ", version=" + getVersion();
+        return "FileState[" + super.toString()
+                        + ", version=" + getVersion()
+                        + "]";
     }
 
 }

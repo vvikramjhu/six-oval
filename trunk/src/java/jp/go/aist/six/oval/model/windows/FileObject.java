@@ -27,7 +27,6 @@ import jp.go.aist.six.oval.model.definition.SystemObject;
 
 
 
-
 /**
  *
  * @author  Akihito Nakamura, AIST
@@ -37,15 +36,18 @@ public class FileObject
     extends SystemObject
 {
 
-    private Behaviors  _behaviors;// = Behaviors.DEFAULT_VALUE;
+    private Behaviors  _behaviors;
     //{0..1}
 
-    private EntityObjectStringType  _path;// = new EntityObjectStringType();
+    //TODO: schema 5.7 changes the content model.
+    private EntityObjectStringType  _filepath;
     //{1..1}
 
-    private EntityObjectStringType  _filename;// = new EntityObjectStringType();
-    //{1..1, nillable}
+    private EntityObjectStringType  _path;
+    //{1..1}
 
+    private EntityObjectStringType  _filename;
+    //{1..1, nillable="true"}
 
 
 
@@ -79,9 +81,10 @@ public class FileObject
                     final String filename
                     )
     {
-        super( id, version );
-        setPath( path );
-        setFilename( filename );
+        this( id, version,
+                        new EntityObjectStringType( path ),
+                        new EntityObjectStringType( filename )
+        );
     }
 
 
@@ -102,36 +105,19 @@ public class FileObject
 
 
 
-
-    public void setFilename(
-                    final String filename
+    public void setBehaviors(
+                    final Behaviors behaviors
                     )
     {
-        setFilename( new EntityObjectStringType( filename ) );
+        _behaviors = behaviors;
     }
 
 
-    public void setFilename(
-                    final EntityObjectStringType filename
-                    )
+    public Behaviors getBehaviors()
     {
-        _filename = filename;
+        return _behaviors;
     }
 
-
-    public EntityObjectStringType getFilename()
-    {
-        return _filename;
-    }
-
-
-
-    public void setPath(
-                    final String path
-                    )
-    {
-        setPath( new EntityObjectStringType( path ) );
-    }
 
 
     public void setPath(
@@ -149,17 +135,17 @@ public class FileObject
 
 
 
-    public void setBehaviors(
-                    final Behaviors behaviors
+    public void setFilename(
+                    final EntityObjectStringType filename
                     )
     {
-        _behaviors = behaviors;
+        _filename = filename;
     }
 
 
-    public Behaviors getBehaviors()
+    public EntityObjectStringType getFilename()
     {
-        return _behaviors;
+        return _filename;
     }
 
 
@@ -180,9 +166,6 @@ public class FileObject
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -202,9 +185,6 @@ public class FileObject
     }
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
