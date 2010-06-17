@@ -36,10 +36,20 @@ public class FileObject
     extends SystemObject
 {
 
-    private Behaviors  _behaviors;
+    private FileBehaviors  _behaviors;
     //{0..1}
 
     //TODO: schema 5.7 changes the content model.
+    // sequence(
+    //           behaviors,
+    //           choice(
+    //                      filepath,
+    //                      sequence(
+    //                                 path,
+    //                                 filename
+    //                              )
+    //                 )
+    //         )
     private EntityObjectStringType  _filepath;
     //{1..1}
 
@@ -106,16 +116,34 @@ public class FileObject
 
 
     public void setBehaviors(
-                    final Behaviors behaviors
+                    final FileBehaviors behaviors
                     )
     {
         _behaviors = behaviors;
     }
 
 
-    public Behaviors getBehaviors()
+    public FileBehaviors getBehaviors()
     {
         return _behaviors;
+    }
+
+
+    /**
+     */
+    public void setFilepath(
+                    final EntityObjectStringType filepath
+                    )
+    {
+        _filepath = filepath;
+    }
+
+
+    /**
+     */
+    public EntityObjectStringType getFilepath()
+    {
+        return _filepath;
     }
 
 
@@ -202,8 +230,8 @@ public class FileObject
                 EntityObjectStringType  other_path = other.getPath();
                 EntityObjectStringType   this_path =  this.getPath();
                 if (EntityTypeHelper.equals( this_path, other_path)) {
-                    Behaviors  other_behaviors = other.getBehaviors();
-                    Behaviors   this_behaviors =  this.getBehaviors();
+                    FileBehaviors  other_behaviors = other.getBehaviors();
+                    FileBehaviors   this_behaviors =  this.getBehaviors();
                     if (this_behaviors == other_behaviors
                                     ||  (this_behaviors != null  &&  this_behaviors.equals( other_behaviors ))) {
                         return true;
@@ -217,9 +245,6 @@ public class FileObject
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

@@ -22,21 +22,45 @@ package jp.go.aist.six.oval.model.windows;
 
 
 
-
 /**
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class RegistryBehaviors
+public class FileBehaviors
     extends Behaviors
 {
+
+    public static final RecurseFileSystem  DEFAULT_RECURSE_DIRECTION = RecurseFileSystem.ALL;
+    private RecurseFileSystem  _recurseFileSystem;
+    //{optional, default="all"}
+
+
 
     /**
      * Constructor.
      */
-    public RegistryBehaviors()
+    public FileBehaviors()
     {
+    }
+
+
+
+    /**
+     */
+    public void setRecurseFileSystem(
+                    final RecurseFileSystem recurseFileSystem
+                    )
+    {
+        _recurseFileSystem = recurseFileSystem;
+    }
+
+
+    /**
+     */
+    public RecurseFileSystem getRecurseFileSystem()
+    {
+        return _recurseFileSystem;
     }
 
 
@@ -48,7 +72,13 @@ public class RegistryBehaviors
     @Override
     public int hashCode()
     {
-        return super.hashCode();
+        final int  prime = 37;
+        int  result = super.hashCode();
+
+        RecurseFileSystem  r = getRecurseFileSystem();
+        result = prime * result + ((r == null) ? 0 : r.hashCode());
+
+        return result;
     }
 
 
@@ -58,11 +88,20 @@ public class RegistryBehaviors
                     final Object obj
                     )
     {
-        if (!(obj instanceof RegistryBehaviors)) {
+        if (!(obj instanceof FileBehaviors)) {
             return false;
         }
 
-        return super.equals( obj );
+        if (super.equals( obj )) {
+            FileBehaviors  other = (FileBehaviors)obj;
+            RecurseFileSystem  other_r = other.getRecurseFileSystem();  // enum
+            RecurseFileSystem   this_r =  this.getRecurseFileSystem();
+            if (this_r == other_r) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 
@@ -70,8 +109,8 @@ public class RegistryBehaviors
     @Override
     public String toString()
     {
-        return "RegistryBehaviors[" + super.toString() + "]";
+        return "FileBehaviors[" + super.toString() + "]";
     }
 
 }
-// RegistryBehaviors
+// FileBehaviors

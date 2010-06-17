@@ -20,16 +20,16 @@
 
 package jp.go.aist.six.oval.core.xml;
 
-import jp.go.aist.six.oval.model.windows.RecurseDirection;
+import jp.go.aist.six.oval.model.windows.RecurseFileSystem;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
 
-public class RecurseDirectionHandler
+public class RecurseFileSystemHandler
     extends GeneralizedFieldHandler
 {
 
-    public RecurseDirectionHandler()
+    public RecurseFileSystemHandler()
     {
         super();
     }
@@ -39,7 +39,7 @@ public class RecurseDirectionHandler
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        RecurseDirection  e = (RecurseDirection)value;
+        RecurseFileSystem  e = (RecurseFileSystem)value;
         return e.value();
     }
 
@@ -48,15 +48,15 @@ public class RecurseDirectionHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return RecurseDirection.fromValue( (String)value );
+        return RecurseFileSystem.fromValue( (String)value );
     }
 
 
 
     @Override
-    public Class<RecurseDirection> getFieldType()
+    public Class<RecurseFileSystem> getFieldType()
     {
-        return RecurseDirection.class;
+        return RecurseFileSystem.class;
     }
 
 
@@ -69,4 +69,4 @@ public class RecurseDirectionHandler
     }
 
 }
-// RecurseDirectionHandler
+// RecurseFileSystemHandler
