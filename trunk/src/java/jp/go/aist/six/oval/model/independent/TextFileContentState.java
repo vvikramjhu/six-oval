@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.core.model.ComponentType;
-import jp.go.aist.six.oval.model.definition.EntityStateAnyType;
+import jp.go.aist.six.oval.model.definition.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definition.EntityStateStringType;
 import jp.go.aist.six.oval.model.definition.State;
 
@@ -46,7 +46,7 @@ public class TextFileContentState
     private EntityStateStringType  _line;
     //{0..1}
 
-    private EntityStateAnyType  _subExpression;
+    private EntityStateAnySimpleType  _subExpression;
     //{0..1}
 
 
@@ -128,14 +128,14 @@ public class TextFileContentState
     /**
      */
     public void setSubExpression(
-                    final EntityStateAnyType subexpression
+                    final EntityStateAnySimpleType subexpression
                     )
     {
         _subExpression = subexpression;
     }
 
 
-    public EntityStateAnyType getSubExpression()
+    public EntityStateAnySimpleType getSubExpression()
     {
         return _subExpression;
     }
@@ -176,7 +176,7 @@ public class TextFileContentState
         EntityStateStringType  line = getLine();
         result = prime * result + ((line == null) ? 0 : line.hashCode());
 
-        EntityStateAnyType  subexpression = getSubExpression();
+        EntityStateAnySimpleType  subexpression = getSubExpression();
         result = prime * result + ((subexpression == null) ? 0 : subexpression.hashCode());
 
         return result;
@@ -210,8 +210,8 @@ public class TextFileContentState
                     EntityStateStringType   this_line =  this.getLine();
                     if (this_line == other_line
                                     ||  (this_line != null  &&  this_line.equals( other_line ))) {
-                        EntityStateAnyType  other_subexpression = other.getSubExpression();
-                        EntityStateAnyType   this_subexpression =  this.getSubExpression();
+                        EntityStateAnySimpleType  other_subexpression = other.getSubExpression();
+                        EntityStateAnySimpleType   this_subexpression =  this.getSubExpression();
                         if (this_subexpression == other_subexpression
                                         ||  (this_subexpression != null  &&  this_subexpression.equals( other_subexpression ))) {
                             return true;

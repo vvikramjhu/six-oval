@@ -27,7 +27,6 @@ import jp.go.aist.six.oval.model.definition.SystemObject;
 
 
 
-
 /**
  *
  * @author  Akihito Nakamura, AIST
@@ -37,9 +36,10 @@ public class RegistryObject
     extends SystemObject
 {
 
-    private RegistryBehaviors  _behaviors;// = Behaviors.DEFAULT_VALUE;
+    private RegistryBehaviors  _behaviors;
     //{0..1}
 
+    //TODO: EntityObjectRegistryHiveType
     private RegistryHive  _hive;
     //{1..1}
 
@@ -82,10 +82,10 @@ public class RegistryObject
                     final String name
                     )
     {
-        super( id, version );
-        setHive( hive );
-        setKey( key );
-        setName( name );
+        this( id, version, hive,
+                        new EntityObjectStringType( key ),
+                        new EntityObjectStringType( name )
+        );
     }
 
 
@@ -141,14 +141,6 @@ public class RegistryObject
 
 
     public void setKey(
-                    final String key
-                    )
-    {
-        setKey( new EntityObjectStringType( key ) );
-    }
-
-
-    public void setKey(
                     final EntityObjectStringType key
                     )
     {
@@ -161,14 +153,6 @@ public class RegistryObject
         return _key;
     }
 
-
-
-    public void setName(
-                    final String name
-                    )
-    {
-        setName( new EntityObjectStringType( name ) );
-    }
 
 
     public void setName(
@@ -202,9 +186,6 @@ public class RegistryObject
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -228,9 +209,6 @@ public class RegistryObject
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -267,9 +245,6 @@ public class RegistryObject
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

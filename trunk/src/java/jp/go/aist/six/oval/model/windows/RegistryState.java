@@ -21,10 +21,12 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.core.model.ComponentType;
-import jp.go.aist.six.oval.model.definition.EntityStateAnyType;
+import jp.go.aist.six.oval.model.definition.EntityStateAnySimpleType;
+import jp.go.aist.six.oval.model.definition.EntityStateBaseType;
 import jp.go.aist.six.oval.model.definition.EntityStateStringType;
 import jp.go.aist.six.oval.model.definition.State;
-
+import java.util.EnumMap;
+import java.util.Map;
 
 
 
@@ -37,20 +39,32 @@ public class RegistryState
     extends State
 {
 
-    private EntityStateRegistryHiveType  _hive;
-    //{0..1}
+    protected static enum Property
+    {
+        HIVE,
+        KEY,
+        NAME,
+        TYPE,
+        VALUE;
+    }
 
-    private EntityStateStringType  _key;
-    //{0..1}
+    private Map<Property,EntityStateBaseType>  _properties =
+        new EnumMap<Property,EntityStateBaseType>( Property.class );
 
-    private EntityStateStringType  _name;
-    //{0..1}
-
-    private EntityStateRegistryType  _type;
-    //{0..1}
-
-    private EntityStateAnyType  _value;
-    //{0..1}
+//    private EntityStateRegistryHiveType  _hive;
+//    //{0..1}
+//
+//    private EntityStateStringType  _key;
+//    //{0..1}
+//
+//    private EntityStateStringType  _name;
+//    //{0..1}
+//
+//    private EntityStateRegistryType  _type;
+//    //{0..1}
+//
+//    private EntityStateAnySimpleType  _value;
+//    //{0..1}
 
 
 
@@ -76,12 +90,23 @@ public class RegistryState
 
 
     /**
+     *
+     */
+    protected Map<Property,EntityStateBaseType> _getProperties()
+    {
+        return _properties;
+    }
+
+
+
+    /**
      */
     public void setHive(
                     final EntityStateRegistryHiveType hive
                     )
     {
-        _hive = hive;
+        _properties.put( Property.HIVE, hive  );
+//        _hive = hive;
     }
 
 
@@ -89,7 +114,8 @@ public class RegistryState
      */
     public EntityStateRegistryHiveType getHive()
     {
-        return _hive;
+        return (EntityStateRegistryHiveType)_properties.get( Property.HIVE );
+//        return _hive;
     }
 
 
@@ -100,13 +126,15 @@ public class RegistryState
                     final EntityStateStringType key
                     )
     {
-        _key = key;
+        _properties.put( Property.KEY, key );
+//        _key = key;
     }
 
 
     public EntityStateStringType getKey()
     {
-        return _key;
+        return (EntityStateStringType)_properties.get( Property.KEY );
+//        return _key;
     }
 
 
@@ -117,13 +145,15 @@ public class RegistryState
                     final EntityStateStringType name
                     )
     {
-        _name = name;
+        _properties.put( Property.NAME, name );
+//        _name = name;
     }
 
 
     public EntityStateStringType getName()
     {
-        return _name;
+        return (EntityStateStringType)_properties.get( Property.NAME );
+//        return _name;
     }
 
 
@@ -134,7 +164,8 @@ public class RegistryState
                     final EntityStateRegistryType type
                     )
     {
-        _type = type;
+        _properties.put( Property.TYPE, type );
+//        _type = type;
     }
 
 
@@ -142,7 +173,8 @@ public class RegistryState
      */
     public EntityStateRegistryType getType()
     {
-        return _type;
+        return (EntityStateRegistryType)_properties.get( Property.TYPE );
+//        return _type;
     }
 
 
@@ -150,16 +182,18 @@ public class RegistryState
     /**
      */
     public void setValue(
-                    final EntityStateAnyType value
+                    final EntityStateAnySimpleType value
                     )
     {
-        _value = value;
+        _properties.put( Property.VALUE, value );
+//        _value = value;
     }
 
 
-    public EntityStateAnyType getValue()
+    public EntityStateAnySimpleType getValue()
     {
-        return _value;
+        return (EntityStateAnySimpleType)_properties.get( Property.VALUE );
+//        return _value;
     }
 
 
@@ -180,29 +214,28 @@ public class RegistryState
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
         final int  prime = 37;
         int  result = super.hashCode();
 
-        EntityStateRegistryHiveType  hive = getHive();
-        result = prime * result + ((hive == null) ? 0 : hive.hashCode());
+        result = prime * result + _getProperties().hashCode();
 
-        EntityStateStringType  key = getKey();
-        result = prime * result + ((key == null) ? 0 : key.hashCode());
-
-        EntityStateStringType  name = getName();
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-
-        EntityStateStringType  type = getType();
-        result = prime * result + ((type == null) ? 0 : type.hashCode());
-
-        EntityStateAnyType  value = getValue();
-        result = prime * result + ((value == null) ? 0 : value.hashCode());
+//        EntityStateRegistryHiveType  hive = getHive();
+//        result = prime * result + ((hive == null) ? 0 : hive.hashCode());
+//
+//        EntityStateStringType  key = getKey();
+//        result = prime * result + ((key == null) ? 0 : key.hashCode());
+//
+//        EntityStateStringType  name = getName();
+//        result = prime * result + ((name == null) ? 0 : name.hashCode());
+//
+//        EntityStateStringType  type = getType();
+//        result = prime * result + ((type == null) ? 0 : type.hashCode());
+//
+//        EntityStateAnySimpleType  value = getValue();
+//        result = prime * result + ((value == null) ? 0 : value.hashCode());
 
         return result;
     }
@@ -223,32 +256,38 @@ public class RegistryState
 
         if (super.equals( obj )) {
             RegistryState  other = (RegistryState)obj;
-            EntityStateRegistryHiveType  other_hive = other.getHive();
-            EntityStateRegistryHiveType   this_hive =  this.getHive();
-            if (this_hive == other_hive
-                            ||  (this_hive != null  &&  this_hive.equals( other_hive ))) {
-                EntityStateStringType  other_key = other.getKey();
-                EntityStateStringType   this_key =  this.getKey();
-                if (this_key == other_key
-                                ||  (this_key != null  &&  this_key.equals( other_key ))) {
-                    EntityStateStringType  other_name = other.getName();
-                    EntityStateStringType   this_name =  this.getName();
-                    if (this_name == other_name
-                                    ||  (this_name != null  &&  this_name.equals( other_name ))) {
-                        EntityStateRegistryType  other_type = other.getType();
-                        EntityStateRegistryType   this_type =  this.getType();
-                        if (this_type == other_type
-                                        ||  (this_type != null  &&  this_type.equals( other_type ))) {
-                            EntityStateAnyType  other_value = other.getValue();
-                            EntityStateAnyType   this_value =  this.getValue();
-                            if (this_value == other_value
-                                            ||  (this_value != null  &&  this_value.equals( other_value ))) {
-                                return true;
-                            }
-                        }
-                    }
-                }
+            Map<Property,EntityStateBaseType>  other_props = other._getProperties();
+            Map<Property,EntityStateBaseType>   this_props =  this._getProperties();
+            if (this_props == other_props
+                            ||  (this_props != null  &&  this_props.equals( other_props ))) {
+                return true;
             }
+//            EntityStateRegistryHiveType  other_hive = other.getHive();
+//            EntityStateRegistryHiveType   this_hive =  this.getHive();
+//            if (this_hive == other_hive
+//                            ||  (this_hive != null  &&  this_hive.equals( other_hive ))) {
+//                EntityStateStringType  other_key = other.getKey();
+//                EntityStateStringType   this_key =  this.getKey();
+//                if (this_key == other_key
+//                                ||  (this_key != null  &&  this_key.equals( other_key ))) {
+//                    EntityStateStringType  other_name = other.getName();
+//                    EntityStateStringType   this_name =  this.getName();
+//                    if (this_name == other_name
+//                                    ||  (this_name != null  &&  this_name.equals( other_name ))) {
+//                        EntityStateRegistryType  other_type = other.getType();
+//                        EntityStateRegistryType   this_type =  this.getType();
+//                        if (this_type == other_type
+//                                        ||  (this_type != null  &&  this_type.equals( other_type ))) {
+//                            EntityStateAnySimpleType  other_value = other.getValue();
+//                            EntityStateAnySimpleType   this_value =  this.getValue();
+//                            if (this_value == other_value
+//                                            ||  (this_value != null  &&  this_value.equals( other_value ))) {
+//                                return true;
+//                            }
+//                        }
+//                    }
+//                }
+//            }
         }
 
         return false;
@@ -256,9 +295,6 @@ public class RegistryState
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

@@ -21,10 +21,10 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.core.model.ComponentType;
+import jp.go.aist.six.oval.model.definition.EntityObjectIntType;
 import jp.go.aist.six.oval.model.definition.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definition.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definition.SystemObject;
-
 
 
 
@@ -40,7 +40,7 @@ public class MetabaseObject
     private EntityObjectStringType  _key;
     //{0..1}
 
-    private EntityObjectStringType  _id;
+    private EntityObjectIntType  _id;
     //{0..1, nillable="true"}
 
 
@@ -75,9 +75,10 @@ public class MetabaseObject
                     final String mbID
                     )
     {
-        super( id, version );
-        setKey( mbKey );
-        setID( mbID );
+        this( id, version,
+                        new EntityObjectStringType( mbKey ),
+                        new EntityObjectIntType( mbID )
+        );
     }
 
 
@@ -88,7 +89,7 @@ public class MetabaseObject
                     final String id,
                     final int version,
                     final EntityObjectStringType mbKey,
-                    final EntityObjectStringType mbID
+                    final EntityObjectIntType mbID
                     )
     {
         super( id, version );
@@ -96,14 +97,6 @@ public class MetabaseObject
         setID( mbID );
     }
 
-
-
-    public void setKey(
-                    final String key
-                    )
-    {
-        setKey( new EntityObjectStringType( key ) );
-    }
 
 
     public void setKey(
@@ -122,22 +115,14 @@ public class MetabaseObject
 
 
     public void setID(
-                    final String id
-                    )
-    {
-        setID( new EntityObjectStringType( id ) );
-    }
-
-
-    public void setID(
-                    final EntityObjectStringType id
+                    final EntityObjectIntType id
                     )
     {
         _id = id;
     }
 
 
-    public EntityObjectStringType getID()
+    public EntityObjectIntType getID()
     {
         return _id;
     }
@@ -160,9 +145,6 @@ public class MetabaseObject
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -172,7 +154,7 @@ public class MetabaseObject
         EntityObjectStringType  key = getKey();
         result = prime * result + ((key == null) ? 0 : key.hashCode());
 
-        EntityObjectStringType  id = getID();
+        EntityObjectIntType  id = getID();
         result = prime * result + ((id == null) ? 0 : id.hashCode());
 
         return result;
@@ -194,8 +176,8 @@ public class MetabaseObject
 
         if (super.equals( obj )) {
             MetabaseObject  other = (MetabaseObject)obj;
-            EntityObjectStringType  other_id = other.getID();
-            EntityObjectStringType   this_id =  this.getID();
+            EntityObjectIntType  other_id = other.getID();
+            EntityObjectIntType   this_id =  this.getID();
             if (EntityTypeHelper.equals( this_id, other_id)) {
                 EntityObjectStringType  other_key = other.getKey();
                 EntityObjectStringType   this_key =  this.getKey();
@@ -210,9 +192,6 @@ public class MetabaseObject
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

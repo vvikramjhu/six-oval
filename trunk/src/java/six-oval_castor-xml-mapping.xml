@@ -832,9 +832,9 @@
 
 
     <!-- ======================================================= -->
-    <!-- EntityStateAnyType                                      -->
+    <!-- EntityStateAnySimpleType                                -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.EntityStateAnyType"
+    <class name="jp.go.aist.six.oval.model.definition.EntityStateAnySimpleType"
         extends="jp.go.aist.six.oval.model.definition.EntityStateBaseType">
     </class>
 
@@ -1389,7 +1389,7 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"/>
 
         <field name="subExpression" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateAnyType">
+            type="jp.go.aist.six.oval.model.definition.EntityStateAnySimpleType">
             <bind-xml name="subexpression" node="element"/>
         </field>
     </class>
@@ -2282,7 +2282,7 @@
         </field>
         
         <field name="ID" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definition.EntityObjectIntType">
             <bind-xml name="id" node="element"/>
         </field>
 
@@ -2299,7 +2299,7 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
         <field name="data" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateAnyType">
+            type="jp.go.aist.six.oval.model.definition.EntityStateAnySimpleType">
             <bind-xml name="data" node="element"/>
         </field>
     </class>
@@ -2429,7 +2429,7 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
         <field name="value" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateAnyType">
+            type="jp.go.aist.six.oval.model.definition.EntityStateAnySimpleType">
             <bind-xml name="value" node="element"/>
         </field>
     </class>
