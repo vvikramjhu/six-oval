@@ -28,7 +28,7 @@ import java.util.HashMap;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: RegistryType.java 439 2010-03-23 05:07:19Z akihito $
+ * @version $Id$
  */
 public final class RegistryType
     implements Serializable

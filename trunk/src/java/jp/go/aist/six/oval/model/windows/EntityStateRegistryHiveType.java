@@ -27,7 +27,7 @@ import jp.go.aist.six.oval.model.definition.EntityStateStringType;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: EntityStateRegistryHiveType.java 712 2010-05-06 03:23:34Z akihito $
+ * @version $Id$
  */
 public class EntityStateRegistryHiveType
     extends EntityStateStringType

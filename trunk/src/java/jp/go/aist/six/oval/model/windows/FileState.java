@@ -32,7 +32,7 @@ import java.util.Map;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: FileState.java 702 2010-04-27 01:29:19Z akihito $
+ * @version $Id$
  */
 public class FileState
     extends State

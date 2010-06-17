@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.model.definition.State;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: RegistryState.java 712 2010-05-06 03:23:34Z akihito $
+ * @version $Id$
  */
 public class RegistryState
     extends State

@@ -28,7 +28,7 @@ import jp.go.aist.six.oval.model.definition.SimpleTest;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: MetabaseTest.java 697 2010-04-26 10:25:37Z akihito $
+ * @version $Id$
  */
 public class MetabaseTest
     extends SimpleTest

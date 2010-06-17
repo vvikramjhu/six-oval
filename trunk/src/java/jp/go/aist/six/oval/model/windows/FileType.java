@@ -26,7 +26,7 @@ package jp.go.aist.six.oval.model.windows;
  * The Windows file types.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: FileType.java 439 2010-03-23 05:07:19Z akihito $
+ * @version $Id$
  */
 public enum FileType
 {

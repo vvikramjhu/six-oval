@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.definition.SystemObject;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: FileObject.java 696 2010-04-26 10:22:00Z akihito $
+ * @version $Id$
  */
 public class FileObject
     extends SystemObject

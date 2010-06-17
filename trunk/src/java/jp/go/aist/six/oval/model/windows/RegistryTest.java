@@ -28,7 +28,7 @@ import jp.go.aist.six.oval.model.definition.SimpleTest;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: RegistryTest.java 696 2010-04-26 10:22:00Z akihito $
+ * @version $Id$
  */
 public class RegistryTest
     extends SimpleTest

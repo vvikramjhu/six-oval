@@ -28,7 +28,7 @@ import java.util.HashMap;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: RegistryHive.java 684 2010-04-24 14:36:18Z akihito $
+ * @version $Id$
  */
 public final class RegistryHive
     implements Serializable

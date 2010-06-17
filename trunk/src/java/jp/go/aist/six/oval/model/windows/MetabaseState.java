@@ -32,7 +32,7 @@ import jp.go.aist.six.oval.model.definition.State;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: MetabaseState.java 715 2010-05-06 07:05:49Z akihito $
+ * @version $Id$
  */
 public class MetabaseState
     extends State

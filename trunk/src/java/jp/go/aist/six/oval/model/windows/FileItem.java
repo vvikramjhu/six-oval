@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.system.ItemStatus;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: FileItem.java 439 2010-03-23 05:07:19Z akihito $
+ * @version $Id$
  */
 public class FileItem
     extends Item

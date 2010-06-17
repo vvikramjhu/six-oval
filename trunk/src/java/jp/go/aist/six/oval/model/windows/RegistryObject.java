@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.model.definition.SystemObject;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: RegistryObject.java 696 2010-04-26 10:22:00Z akihito $
+ * @version $Id$
  */
 public class RegistryObject
     extends SystemObject

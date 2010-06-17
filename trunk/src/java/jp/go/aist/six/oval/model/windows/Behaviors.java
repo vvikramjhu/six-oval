@@ -28,7 +28,7 @@ import jp.go.aist.six.util.orm.AbstractPersistable;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: Behaviors.java 684 2010-04-24 14:36:18Z akihito $
+ * @version $Id$
  */
 public class Behaviors
     extends AbstractPersistable

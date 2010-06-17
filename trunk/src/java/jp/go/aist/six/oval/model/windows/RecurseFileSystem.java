@@ -24,25 +24,25 @@ package jp.go.aist.six.oval.model.windows;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: RecurseDirection.java 638 2010-04-20 15:35:12Z akihito $
+ * @version $Id$
  */
-public enum RecurseDirection
+public enum RecurseFileSystem
 {
 
-    NONE( "none" ),
-    UP( "up" ),
-    DOWN( "down" );
+    ALL( "all" ),
+    LOCAL( "local" ),
+    DEFINED( "defined" );
 
 
 
     /**
      * An instance factory method.
      */
-    public static RecurseDirection fromValue(
+    public static RecurseFileSystem fromValue(
                     final String value
                     )
     {
-        for (RecurseDirection  e : RecurseDirection.values()) {
+        for (RecurseFileSystem  e : RecurseFileSystem.values()) {
           if (e._value.equals( value )) {
               return e;
           }
@@ -59,7 +59,7 @@ public enum RecurseDirection
     /**
      * Constructor.
      */
-    RecurseDirection(
+    RecurseFileSystem(
                     final String value
                     )
     {
@@ -88,4 +88,4 @@ public enum RecurseDirection
     }
 
 }
-// RecurseDirection
+// RecurseFileSystem

@@ -24,7 +24,7 @@ package jp.go.aist.six.oval.model.windows;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: RecurseDirection.java 638 2010-04-20 15:35:12Z akihito $
+ * @version $Id$
  */
 public enum RecurseDirection
 {
