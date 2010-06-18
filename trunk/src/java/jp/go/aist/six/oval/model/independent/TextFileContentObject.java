@@ -35,7 +35,7 @@ public class TextFileContentObject
     extends SystemObject
 {
 
-//    private Behaviors  _behaviors;
+    private TextFileContentBehaviors  _behaviors;
     //{0..1}
 
 
@@ -106,6 +106,24 @@ public class TextFileContentObject
         setLine( line );
     }
 
+
+
+    /**
+     */
+    public void setBehaviors(
+                    final TextFileContentBehaviors behaviors
+                    )
+    {
+        _behaviors = behaviors;
+    }
+
+
+    /**
+     */
+    public TextFileContentBehaviors getBehaviors()
+    {
+        return _behaviors;
+    }
 
 
 

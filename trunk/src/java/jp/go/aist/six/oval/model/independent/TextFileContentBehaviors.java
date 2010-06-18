@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.common.Behaviors;
 
@@ -29,15 +29,20 @@ import jp.go.aist.six.oval.model.common.Behaviors;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class RegistryBehaviors
+public class TextFileContentBehaviors
     extends Behaviors
 {
+
+    public static final int  DEFAULT_MAX_DEPTH = 1;
+
+
 
     /**
      * Constructor.
      */
-    public RegistryBehaviors()
+    public TextFileContentBehaviors()
     {
+        setMaxDepth( DEFAULT_MAX_DEPTH );
     }
 
 
@@ -59,7 +64,7 @@ public class RegistryBehaviors
                     final Object obj
                     )
     {
-        if (!(obj instanceof RegistryBehaviors)) {
+        if (!(obj instanceof TextFileContentBehaviors)) {
             return false;
         }
 
@@ -71,8 +76,8 @@ public class RegistryBehaviors
     @Override
     public String toString()
     {
-        return "RegistryBehaviors[" + super.toString() + "]";
+        return "TextFileContentBehaviors[" + super.toString() + "]";
     }
 
 }
-// RegistryBehaviors
+// TextFileContentBehaviors

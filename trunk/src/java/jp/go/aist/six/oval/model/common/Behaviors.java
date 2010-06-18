@@ -25,7 +25,7 @@ import jp.go.aist.six.util.orm.AbstractPersistable;
 
 
 /**
- * A base class for all the conclete Behaviors.
+ * A base class for all the concrete Behaviors.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -33,10 +33,6 @@ import jp.go.aist.six.util.orm.AbstractPersistable;
 public abstract class Behaviors
     extends AbstractPersistable
 {
-
-//    public static final Behaviors  DEFAULT_VALUE = new Behaviors();
-
-
 
     /**
      * The default maxDepth: -1.
