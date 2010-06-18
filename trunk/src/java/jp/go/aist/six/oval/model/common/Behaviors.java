@@ -18,13 +18,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.common;
 
 import jp.go.aist.six.util.orm.AbstractPersistable;
 
 
 
 /**
+ * A base class for all the conclete Behaviors.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -37,10 +38,16 @@ public abstract class Behaviors
 
 
 
+    /**
+     * The default maxDepth: -1.
+     */
     public static final int  DEFAULT_MAX_DEPTH = -1;
     private int _maxDepth = DEFAULT_MAX_DEPTH;
     //{optional, default="-1"}
 
+    /**
+     * The default recurseDirection: "none".
+     */
     public static final RecurseDirection  DEFAULT_RECURSE_DIRECTION = RecurseDirection.NONE;
     private RecurseDirection  _recurseDirection;
     //{optional, default="none"}
