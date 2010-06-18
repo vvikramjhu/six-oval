@@ -37,20 +37,10 @@ import java.util.Map;
 public class FileState
     extends State
 {
-//    protected static enum Property
-//    {
-//        FILEPATH, PATH, FILENAME, OWNER,
-//        SIZE, A_TIME, C_TIME, M_TIME, // Int
-//        MS_CHECKSUM, VERSION,
-//        TYPE, //FileType
-//        DEVELOPMENT_CLASS, COMPANY,
-//        INTERNAL_NAME, LANGUAGE, ORIGINAL_FILENAME,
-//        PRODUCT_NAME, PRODUCT_VERSION;
-//    }
-
 
     private Map<FileProperty,EntityStateBaseType>  _properties =
         new EnumMap<FileProperty,EntityStateBaseType>( FileProperty.class );
+    //EntityStateBaseType{0..1}
 
 //    private EntityStateStringType  _path;
 //    private EntityStateStringType  _filename;
