@@ -25,7 +25,6 @@ import jp.go.aist.six.oval.model.definition.SystemObject;
 
 
 
-
 /**
  * The UnameObject is used by an uname test to define those objects
  * to evaluated based on a specified state.
@@ -33,7 +32,7 @@ import jp.go.aist.six.oval.model.definition.SystemObject;
  * the system as a whole.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: UnameObject.java 696 2010-04-26 10:22:00Z akihito $
+ * @version $Id$
  */
 public class UnameObject
     extends SystemObject
@@ -44,6 +43,18 @@ public class UnameObject
      */
     public UnameObject()
     {
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public UnameObject(
+                    final String id,
+                    final int version
+                    )
+    {
+        super( id, version );
     }
 
 
@@ -64,9 +75,6 @@ public class UnameObject
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -75,9 +83,6 @@ public class UnameObject
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -92,14 +97,10 @@ public class UnameObject
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
-        return "UnameObject[" + super.toString()
-                        + "]";
+        return "UnameObject[" + super.toString() + "]";
     }
 
 }
