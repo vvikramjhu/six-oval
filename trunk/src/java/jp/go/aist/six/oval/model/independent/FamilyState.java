@@ -25,11 +25,10 @@ import jp.go.aist.six.oval.model.definition.State;
 
 
 
-
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: FamilyState.java 720 2010-05-06 08:07:03Z akihito $
+ * @version $Id$
  */
 public class FamilyState
     extends State
@@ -58,7 +57,6 @@ public class FamilyState
     {
         super( id, version );
     }
-
 
 
 
@@ -97,9 +95,6 @@ public class FamilyState
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -114,9 +109,6 @@ public class FamilyState
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -141,9 +133,6 @@ public class FamilyState
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

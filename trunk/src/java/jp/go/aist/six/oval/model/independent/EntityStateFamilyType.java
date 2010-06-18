@@ -28,7 +28,7 @@ import jp.go.aist.six.oval.model.definition.EntityStateStringType;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: EntityStateFamilyType.java 717 2010-05-06 07:24:24Z akihito $
+ * @version $Id$
  */
 public class EntityStateFamilyType
     extends EntityStateStringType
@@ -61,23 +61,14 @@ public class EntityStateFamilyType
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
-//        final int  prime = 37;
-        int  result = super.hashCode();
-
-        return result;
+        return super.hashCode();
     }
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -96,13 +87,10 @@ public class EntityStateFamilyType
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
-        return "EntityStateFamilyType[" + super.toString() + "]";
+        return "EntityStateFamily[" + super.toString() + "]";
     }
 
 }

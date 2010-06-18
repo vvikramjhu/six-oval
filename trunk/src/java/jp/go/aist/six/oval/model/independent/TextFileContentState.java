@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.model.definition.State;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: TextFileContentState.java 722 2010-05-06 08:30:34Z akihito $
+ * @version $Id$
  */
 public class TextFileContentState
     extends State

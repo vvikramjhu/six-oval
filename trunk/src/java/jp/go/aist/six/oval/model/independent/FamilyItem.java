@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.system.ItemStatus;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: FamilyItem.java 769 2010-05-11 01:25:10Z akihito $
+ * @version $Id$
  */
 public class FamilyItem
     extends Item

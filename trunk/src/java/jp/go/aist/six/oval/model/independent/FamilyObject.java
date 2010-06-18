@@ -25,7 +25,6 @@ import jp.go.aist.six.oval.model.definition.SystemObject;
 
 
 
-
 /**
  * The FamilyObject is used by a family test to define those objects
  * to evaluate based on a specified state.
@@ -33,7 +32,7 @@ import jp.go.aist.six.oval.model.definition.SystemObject;
  * and this is the system as a whole.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: FamilyObject.java 696 2010-04-26 10:22:00Z akihito $
+ * @version $Id$
  */
 public class FamilyObject
     extends SystemObject
@@ -44,6 +43,18 @@ public class FamilyObject
      */
     public FamilyObject()
     {
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public FamilyObject(
+                    final String id,
+                    final int version
+                    )
+    {
+        super( id, version );
     }
 
 
@@ -64,9 +75,6 @@ public class FamilyObject
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -75,9 +83,6 @@ public class FamilyObject
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -92,9 +97,6 @@ public class FamilyObject
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

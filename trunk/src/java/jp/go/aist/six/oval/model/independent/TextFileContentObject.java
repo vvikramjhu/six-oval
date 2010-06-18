@@ -26,11 +26,10 @@ import jp.go.aist.six.oval.model.definition.SystemObject;
 
 
 
-
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: TextFileContentObject.java 696 2010-04-26 10:22:00Z akihito $
+ * @version $Id$
  */
 public class TextFileContentObject
     extends SystemObject
@@ -78,12 +77,15 @@ public class TextFileContentObject
                     final String id,
                     final int version,
                     final String path,
-                    final String filename
+                    final String filename,
+                    final String line
                     )
     {
-        super( id, version );
-        setPath( path );
-        setFilename( filename );
+        this( id, version,
+                        new EntityObjectStringType( path ),
+                        new EntityObjectStringType( filename ),
+                        new EntityObjectStringType( line)
+                        );
     }
 
 
@@ -107,14 +109,6 @@ public class TextFileContentObject
 
 
 
-    public void setPath(
-                    final String path
-                    )
-    {
-        setPath( new EntityObjectStringType( path ) );
-    }
-
-
     /**
      */
     public void setPath(
@@ -132,14 +126,6 @@ public class TextFileContentObject
         return _path;
     }
 
-
-
-    public void setFilename(
-                    final String filename
-                    )
-    {
-        setFilename( new EntityObjectStringType( filename ) );
-    }
 
 
     /**
@@ -180,7 +166,6 @@ public class TextFileContentObject
 
 
 
-
     //**************************************************************
     //  SystemObject
     //**************************************************************
@@ -197,9 +182,6 @@ public class TextFileContentObject
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -208,9 +190,6 @@ public class TextFileContentObject
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -225,14 +204,10 @@ public class TextFileContentObject
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
-        return "FamilyObject[" + super.toString()
-                        + "]";
+        return "TextFileContentObject[" + super.toString() + "]";
     }
 
 }
