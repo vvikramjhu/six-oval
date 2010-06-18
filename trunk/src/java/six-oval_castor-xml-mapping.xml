@@ -2101,9 +2101,9 @@
 
 
     <!-- ======================================================= -->
-    <!-- Behaviors - behaviors                                   -->
+    <!-- Behaviors                                               -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.windows.Behaviors"
+    <class name="jp.go.aist.six.oval.model.common.Behaviors"
         verify-constructable="false"
         >
 <!--
@@ -2127,7 +2127,7 @@
     <!-- FileBehaviors                                           -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.FileBehaviors"
-        extends="jp.go.aist.six.oval.model.windows.Behaviors">
+        extends="jp.go.aist.six.oval.model.common.Behaviors">
         <map-to xml="behaviors"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
@@ -2143,7 +2143,7 @@
     <!-- RegistryBehaviors                                       -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.RegistryBehaviors"
-        extends="jp.go.aist.six.oval.model.windows.Behaviors">
+        extends="jp.go.aist.six.oval.model.common.Behaviors">
         <map-to xml="behaviors"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
