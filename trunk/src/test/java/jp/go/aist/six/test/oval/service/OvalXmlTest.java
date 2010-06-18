@@ -414,7 +414,7 @@ public class OvalXmlTest
 
             Assert.assertEquals( object.getItems().size(), 1 );
             int  item_ref = object_item_refs.get( object.getOvalID() ).intValue();
-            Assert.assertEquals( object.getItems().iterator().next().getItemID(), item_ref );
+            Assert.assertEquals( object.getItems().iterator().next().getItemRef(), item_ref );
         }
 
 

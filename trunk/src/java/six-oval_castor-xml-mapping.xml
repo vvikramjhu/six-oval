@@ -1077,13 +1077,13 @@
 
 
     <!-- ======================================================= -->
-    <!-- ItemReference - reference                               -->
+    <!-- ItemReference                                           -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.system.ItemReference">
         <map-to xml="reference"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
 
-        <field name="itemID" type="int">
+        <field name="itemRef" type="int">
             <bind-xml name="item_ref" node="attribute"/>
         </field>
 

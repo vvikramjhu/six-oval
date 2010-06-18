@@ -20,19 +20,19 @@
 
 package jp.go.aist.six.oval.model.system;
 
+import jp.go.aist.six.util.orm.AbstractPersistable;
 import jp.go.aist.six.util.orm.Dependent;
-import jp.go.aist.six.util.orm.Persistable;
 
 
 
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: NetworkInterface.java 752 2010-05-10 03:14:15Z akihito $
+ * @version $Id$
  */
 public class NetworkInterface
-    implements Persistable
-    , Dependent<SystemInfo>
+    extends AbstractPersistable
+    implements Dependent<SystemInfo>
 {
 
     private String  _interfaceName;
@@ -139,37 +139,9 @@ public class NetworkInterface
 
 
     //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
-    {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
-    }
-
-
-
-    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -190,9 +162,6 @@ public class NetworkInterface
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -229,9 +198,6 @@ public class NetworkInterface
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

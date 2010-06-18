@@ -29,7 +29,7 @@ import java.util.HashMap;
  * The FlagEnumeration.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: ObjectFlag.java 438 2010-03-23 05:05:24Z akihito $
+ * @version $Id$
  */
 public final class ObjectFlag
     implements Serializable

@@ -26,7 +26,7 @@ package jp.go.aist.six.oval.model.system;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: EntityItemIntType.java 777 2010-05-11 06:08:03Z akihito $
+ * @version $Id$
  */
 public class EntityItemIntType
     extends EntityItemBaseType

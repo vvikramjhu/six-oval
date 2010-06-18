@@ -24,14 +24,13 @@ import jp.go.aist.six.oval.model.Container;
 
 
 
-
 /**
-*
-* @author  Akihito Nakamura, AIST
-* @version $Id: SystemData.java 665 2010-04-23 06:41:53Z akihito $
-*/
+ *
+ * @author  Akihito Nakamura, AIST
+ * @version $Id$
+ */
 public class SystemData
-extends Container<Item>
+    extends Container<Item> //{1..*}
 {
 
     /**

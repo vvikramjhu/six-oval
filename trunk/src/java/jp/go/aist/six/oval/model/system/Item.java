@@ -21,19 +21,19 @@
 package jp.go.aist.six.oval.model.system;
 
 import jp.go.aist.six.oval.core.model.system.ItemType;
+import jp.go.aist.six.util.orm.AbstractPersistable;
 import jp.go.aist.six.util.orm.Dependent;
-import jp.go.aist.six.util.orm.Persistable;
-
 
 
 
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: Item.java 761 2010-05-10 07:22:50Z akihito $
+ * @version $Id$
  */
 public abstract class Item
-    implements Persistable, Dependent<OvalSystemCharacteristics>
+    extends AbstractPersistable
+    implements Dependent<OvalSystemCharacteristics>
 {
 
 //  private Message  _message;
@@ -42,6 +42,9 @@ public abstract class Item
     private int  _id;
     //{oval:ItemIDPattern, required}
 
+    /**
+     * The default status: "exists".
+     */
     public static final ItemStatus  DEFAULT_STATUS = ItemStatus.EXISTS;
     private ItemStatus  _status;
     //{optional, default="exists"}
@@ -170,37 +173,9 @@ public abstract class Item
 
 
     //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
-    {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
-    }
-
-
-
-    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

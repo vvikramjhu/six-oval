@@ -27,7 +27,7 @@ import jp.go.aist.six.util.orm.Persistable;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: VariableValue.java 438 2010-03-23 05:05:24Z akihito $
+ * @version $Id$
  */
 public class VariableValue
     implements Persistable

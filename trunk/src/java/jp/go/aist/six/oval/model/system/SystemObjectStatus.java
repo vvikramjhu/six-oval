@@ -25,10 +25,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 
+
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: SystemObjectStatus.java 438 2010-03-23 05:05:24Z akihito $
+ * @version $Id$
  */
 public class SystemObjectStatus
     extends OvalAnalysisElement

@@ -719,7 +719,7 @@
             <sql name="PID" type="integer"/>
         </field>
 
-        <field name="itemID" type="integer">
+        <field name="itemRef" type="integer">
             <sql name="item_id" type="integer"/>
         </field>
 

@@ -20,85 +20,63 @@
 
 package jp.go.aist.six.oval.model.system;
 
-import java.io.Serializable;
-import java.util.HashMap;
+
+
 
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: ItemStatus.java 738 2010-05-07 07:10:20Z akihito $
+ * @version $Id$
  */
-public final class ItemStatus
-    implements Serializable
+public enum ItemStatus
 {
 
-    private static final String  _ERROR_           = "error";
-    private static final String  _EXISTS_          = "exists";
-    private static final String  _DOES_NOT_EXIST_  = "does not exist";
-    private static final String  _NOT_COLLECTED_   = "not collected";
-
-
-    public static final ItemStatus  ERROR          = new ItemStatus( _ERROR_ );
-    public static final ItemStatus  EXISTS         = new ItemStatus( _EXISTS_ );
-    public static final ItemStatus  DOES_NOT_EXIST = new ItemStatus( _DOES_NOT_EXIST_ );
-    public static final ItemStatus  NOT_COLLECTED  = new ItemStatus( _NOT_COLLECTED_ );
-
-
-    private static HashMap<String, ItemStatus> _INIT_()
-    {
-        HashMap<String, ItemStatus>  map = new HashMap<String, ItemStatus>();
-        map.put( _ERROR_,           ERROR          );
-        map.put( _EXISTS_,          EXISTS         );
-        map.put( _DOES_NOT_EXIST_,  DOES_NOT_EXIST );
-        map.put( _NOT_COLLECTED_,   NOT_COLLECTED  );
-        return map;
-    }
-
-    private static final HashMap<String, ItemStatus>  _INSTANCES_ = _INIT_();
-
+    ERROR( "error" ),
+    EXISTS( "exists" ),
+    DOES_NOT_EXIST( "does not exist" ),
+    NOT_COLLECTED( "not collected" );
 
 
 
     /**
+     * An instance factory method.
      */
-    public static ItemStatus valueOf(
-                    final String name
+    public static ItemStatus fromValue(
+                    final String value
                     )
     {
-        ItemStatus  status = null;
-        if (name != null) {
-            status = _INSTANCES_.get( name );
-        }
+        for (ItemStatus  e : ItemStatus.values()) {
+          if (e._value.equals( value )) {
+              return e;
+          }
+      }
 
-        if (status == null) {
-            throw new IllegalArgumentException( "invalid item status: " + name );
-        }
-
-        return status;
+      throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
 
+    private final String  _value;
 
 
     /**
+     * Constructor.
      */
-    private ItemStatus(
-                    final String name
+    ItemStatus(
+                    final String value
                     )
     {
-        _name = name;
+        this._value = value;
     }
 
 
 
     /**
      */
-    public String getName()
+    public String value()
     {
-        return _name;
+        return this._value;
     }
 
 
@@ -110,7 +88,7 @@ public final class ItemStatus
     @Override
     public String toString()
     {
-        return getName();
+        return this._value;
     }
 
 }

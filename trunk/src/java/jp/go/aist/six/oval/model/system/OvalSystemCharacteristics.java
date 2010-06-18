@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.system;
 
 import jp.go.aist.six.oval.model.common.Generator;
-import jp.go.aist.six.util.orm.Persistable;
+import jp.go.aist.six.util.orm.AbstractPersistable;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -30,10 +30,10 @@ import java.util.Collection;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalSystemCharacteristics.java 772 2010-05-11 03:03:12Z akihito $
+ * @version $Id$
  */
 public class OvalSystemCharacteristics
-    implements Persistable
+    extends AbstractPersistable
 {
 
     private Generator  _generator;
@@ -41,6 +41,10 @@ public class OvalSystemCharacteristics
 
     private SystemInfo _systemInfo;
     //{1..1}
+
+    //TODO: refactor _objects field!!!
+//    private CollectedSystemObjects  _colectedObjects;
+//    //{0..1}
 
     private Collection<SystemObjectStatus>  _objects = new ArrayList<SystemObjectStatus>();
 //    private String  _objectsDigest;
@@ -218,37 +222,9 @@ public class OvalSystemCharacteristics
 
 
     //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
-    {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
-    }
-
-
-
-    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

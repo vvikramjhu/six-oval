@@ -20,21 +20,22 @@
 
 package jp.go.aist.six.oval.model.system;
 
-import jp.go.aist.six.util.orm.Persistable;
-
+import jp.go.aist.six.util.orm.AbstractPersistable;
+import jp.go.aist.six.util.orm.Dependent;
 
 
 
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: ItemReference.java 438 2010-03-23 05:05:24Z akihito $
+ * @version $Id$
  */
 public class ItemReference
-    implements Persistable
+    extends AbstractPersistable
+    implements Dependent<SystemObjectStatus>
 {
 
-    private int  _itemID;
+    private int  _itemRef;
 
 
 
@@ -53,28 +54,28 @@ public class ItemReference
                     final int itemID
                     )
     {
-        setItemID( itemID );
+        setItemRef( itemID );
     }
 
 
 
-    public void setItemID(
+    public void setItemRef(
                     final int id
                     )
     {
-        _itemID = id;
+        _itemRef = id;
     }
 
 
-    public int getItemID()
+    public int getItemRef()
     {
-        return _itemID;
+        return _itemRef;
     }
 
 
 
     //**************************************************************
-    //  Castor JDO support
+    //  Dependent
     //**************************************************************
 
     private SystemObjectStatus  _master;
@@ -97,53 +98,22 @@ public class ItemReference
 
 
     //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
-    {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
-    }
-
-
-
-    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
         final int  prime = 37;
         int  result = 17;
 
-        result = prime * result + getItemID();
+        result = prime * result + getItemRef();
 
         return result;
     }
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -158,7 +128,7 @@ public class ItemReference
         }
 
         ItemReference  other = (ItemReference)obj;
-        if (this.getItemID() == other.getItemID()) {
+        if (this.getItemRef() == other.getItemRef()) {
             return true;
         }
 
@@ -167,13 +137,10 @@ public class ItemReference
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
-        return "ItemReference [item_ref=" + getItemID()
+        return "ItemReference [item_ref=" + getItemRef()
                         + "]";
     }
 

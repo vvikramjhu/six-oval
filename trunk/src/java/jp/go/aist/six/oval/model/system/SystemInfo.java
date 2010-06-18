@@ -20,20 +20,21 @@
 
 package jp.go.aist.six.oval.model.system;
 
+import jp.go.aist.six.util.orm.AbstractPersistable;
 import jp.go.aist.six.util.orm.Dependent;
-import jp.go.aist.six.util.orm.Persistable;
 import java.util.ArrayList;
 import java.util.Collection;
+
 
 
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: SystemInfo.java 752 2010-05-10 03:14:15Z akihito $
+ * @version $Id$
  */
 public class SystemInfo
-    implements Persistable
-    , Dependent<OvalSystemCharacteristics>
+    extends AbstractPersistable
+    implements Dependent<OvalSystemCharacteristics>
 {
 
     private String  _osName;
@@ -166,7 +167,7 @@ public class SystemInfo
 
 
     public void setInterfaces(
-                    final Collection<NetworkInterface> netifs
+                    final Collection<? extends NetworkInterface> netifs
                     )
     {
         if (netifs != _interfaces) {
@@ -224,37 +225,9 @@ public class SystemInfo
 
 
     //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
-    {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
-    }
-
-
-
-    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

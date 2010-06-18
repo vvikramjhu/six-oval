@@ -85,9 +85,6 @@ public abstract class OvalAnalysisElement
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -96,9 +93,6 @@ public abstract class OvalAnalysisElement
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
