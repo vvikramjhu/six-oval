@@ -27,50 +27,26 @@ package jp.go.aist.six.oval.model.windows;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class RegistryBehaviors
-    extends Behaviors
+public enum FileProperty
 {
-
-    /**
-     * Constructor.
-     */
-    public RegistryBehaviors()
-    {
-    }
-
-
-
-    //**************************************************************
-    //  java.lang.Object
-    //**************************************************************
-
-    @Override
-    public int hashCode()
-    {
-        return super.hashCode();
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (!(obj instanceof RegistryBehaviors)) {
-            return false;
-        }
-
-        return super.equals( obj );
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return "RegistryBehaviors[" + super.toString() + "]";
-    }
+    FILEPATH,
+    PATH,
+    FILENAME,
+    OWNER,
+    SIZE,
+    A_TIME,
+    C_TIME,
+    M_TIME, // Int
+    MS_CHECKSUM,
+    VERSION,
+    TYPE, //FileType
+    DEVELOPMENT_CLASS,
+    COMPANY,
+    INTERNAL_NAME,
+    LANGUAGE,
+    ORIGINAL_FILENAME,
+    PRODUCT_NAME,
+    PRODUCT_VERSION;
 
 }
-// RegistryBehaviors
+// FileProperty

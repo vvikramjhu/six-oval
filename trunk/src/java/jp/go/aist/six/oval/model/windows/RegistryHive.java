@@ -33,8 +33,8 @@ public enum RegistryHive
     HKEY_CURRENT_CONFIG,
     HKEY_CURRENT_USER,
     HKEY_LOCAL_MACHINE,
-    HKEY_USERS,
-    NONE;
+    HKEY_USERS;
+//    NONE; // ""
 
 }
 // RegistryHive

@@ -37,20 +37,20 @@ import java.util.Map;
 public class FileState
     extends State
 {
-    protected static enum Property
-    {
-        FILEPATH, PATH, FILENAME, OWNER,
-        SIZE, A_TIME, C_TIME, M_TIME, // Int
-        MS_CHECKSUM, VERSION,
-        TYPE, //FileType
-        DEVELOPMENT_CLASS, COMPANY,
-        INTERNAL_NAME, LANGUAGE, ORIGINAL_FILENAME,
-        PRODUCT_NAME, PRODUCT_VERSION;
-    }
+//    protected static enum Property
+//    {
+//        FILEPATH, PATH, FILENAME, OWNER,
+//        SIZE, A_TIME, C_TIME, M_TIME, // Int
+//        MS_CHECKSUM, VERSION,
+//        TYPE, //FileType
+//        DEVELOPMENT_CLASS, COMPANY,
+//        INTERNAL_NAME, LANGUAGE, ORIGINAL_FILENAME,
+//        PRODUCT_NAME, PRODUCT_VERSION;
+//    }
 
 
-    private Map<Property,EntityStateBaseType>  _properties =
-        new EnumMap<Property,EntityStateBaseType>( Property.class );
+    private Map<FileProperty,EntityStateBaseType>  _properties =
+        new EnumMap<FileProperty,EntityStateBaseType>( FileProperty.class );
 
 //    private EntityStateStringType  _path;
 //    private EntityStateStringType  _filename;
@@ -100,7 +100,7 @@ public class FileState
     /**
      *
      */
-    protected Map<Property,EntityStateBaseType> _getProperties()
+    protected Map<FileProperty,EntityStateBaseType> _getProperties()
     {
         return _properties;
     }
@@ -113,7 +113,7 @@ public class FileState
                     final EntityStateStringType version
                     )
     {
-        _properties.put( Property.VERSION, version );
+        _properties.put( FileProperty.VERSION, version );
 //        _version = version;
     }
 
@@ -122,7 +122,7 @@ public class FileState
      */
     public EntityStateStringType getVersion()
     {
-        return (EntityStateStringType)_properties.get( Property.VERSION );
+        return (EntityStateStringType)_properties.get( FileProperty.VERSION );
 //        return _version;
     }
 
@@ -170,8 +170,8 @@ public class FileState
 
         if (super.equals( obj )) {
             FileState  other = (FileState)obj;
-            Map<Property,EntityStateBaseType>  other_props = other._getProperties();
-            Map<Property,EntityStateBaseType>   this_props =  this._getProperties();
+            Map<FileProperty,EntityStateBaseType>  other_props = other._getProperties();
+            Map<FileProperty,EntityStateBaseType>   this_props =  this._getProperties();
             if (this_props == other_props
                             ||  (this_props != null  &&  this_props.equals( other_props ))) {
                 return true;

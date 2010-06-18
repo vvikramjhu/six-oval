@@ -20,7 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.definition.EntityStateStringType;
+import jp.go.aist.six.oval.model.definition.EntityObjectStringType;
+
 
 
 
@@ -29,14 +30,14 @@ import jp.go.aist.six.oval.model.definition.EntityStateStringType;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class EntityStateRegistryHiveType
-    extends EntityStateStringType
+public class EntityObjectRegistryHiveType
+    extends EntityObjectStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityStateRegistryHiveType()
+    public EntityObjectRegistryHiveType()
     {
     }
 
@@ -44,7 +45,7 @@ public class EntityStateRegistryHiveType
     /**
      * Constructor.
      */
-    public EntityStateRegistryHiveType(
+    public EntityObjectRegistryHiveType(
                     final String data
                     )
     {
@@ -88,7 +89,7 @@ public class EntityStateRegistryHiveType
             return true;
         }
 
-        if (!(obj instanceof EntityStateRegistryHiveType)) {
+        if (!(obj instanceof EntityObjectRegistryHiveType)) {
             return false;
         }
 
@@ -100,8 +101,8 @@ public class EntityStateRegistryHiveType
     @Override
     public String toString()
     {
-        return "EntityStateRegistryHiveType[" + super.toString() + "]";
+        return "EntityObjectRegistryHive[" + super.toString() + "]";
     }
 
 }
-// EntityStateRegistryHiveType
+// EntityObjectRegistryHiveType
