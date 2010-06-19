@@ -24,7 +24,6 @@ import jp.go.aist.six.oval.model.definition.EntityObjectStringType;
 
 
 
-
 /**
  *
  * @author  Akihito Nakamura, AIST

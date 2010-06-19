@@ -2382,7 +2382,16 @@
 
 
     <!-- ======================================================= -->
-    <!-- RegistryObject - registry_object                        -->
+    <!-- EntityObjectRegistryHiveType                            -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHiveType"
+        extends="jp.go.aist.six.oval.model.definition.EntityObjectStringType">
+    </class>
+
+
+
+    <!-- ======================================================= -->
+    <!-- RegistryObject                                          -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.RegistryObject"
         extends="jp.go.aist.six.oval.model.definition.SystemObject">
@@ -2394,16 +2403,16 @@
             <bind-xml name="behaviors" node="element"/>
         </field>
         
-<!--
-        <field name="hive" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.RegistryHiveHandler">
-            <bind-xml node="text" location="hive"/>
+        <field name="hive" 
+            type="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHiveType" >
+            <bind-xml name="hive" node="element"/>
         </field>
--->
+<!--
         <field name="hive" type="string" 
             handler="jp.go.aist.six.oval.core.xml.RegistryHiveHandler">
             <bind-xml name="hive" node="element"/>
         </field>
+-->
 
 
         <field name="key" 

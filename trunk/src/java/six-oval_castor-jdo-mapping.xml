@@ -1831,10 +1831,16 @@ No registry object has 'behaviors' child element in the definition XML.
         <field name="persistentID" type="string">
             <sql name="PID" type="char"/>
         </field>
+
+        <field name="hive.data" type="string">
+            <sql name="hive" type="char"/>
+        </field>
+<!--
         <field name="hive" 
             type="jp.go.aist.six.oval.model.windows.RegistryHive">
             <sql name="hive" type="char"/>
         </field>
+-->
 
         <field name="key.data" type="string">
             <sql name="regkey" type="char"/>
