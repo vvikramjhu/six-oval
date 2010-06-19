@@ -13,7 +13,25 @@
 
 <suite name="six-oval" verbose="1" parallel="tests">
 
-    <test name="oval.service" enabled="true">
+    <test name="oval.core" enabled="true">
+    <!--
+        <groups>
+            <run>
+                <include name="Definition"/>
+            </run>
+        </groups>
+    -->
+    
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.OvalXmlTest"/>
+
+            <!--
+            -->
+        </classes>
+    </test>
+
+
+    <test name="oval.service" enabled="false">
         <groups>
             <run>
                 <include name="Definition"/>

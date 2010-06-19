@@ -48,7 +48,7 @@ public class SystemInfo
     private String  _primaryHostName;
     //{1..1}
 
-    private NetworkInterfaces  _interfaces;
+    private NetworkInterfaces  _interfaces = new NetworkInterfaces();
     //{1..1}
 
 //    private Collection<NetworkInterface>  _interfaceList =
