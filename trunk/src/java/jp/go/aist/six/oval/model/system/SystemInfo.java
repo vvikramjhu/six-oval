@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.system;
 
 import jp.go.aist.six.util.orm.AbstractPersistable;
 import jp.go.aist.six.util.orm.Dependent;
-import java.util.ArrayList;
 import java.util.Collection;
 
 
@@ -49,12 +48,12 @@ public class SystemInfo
     private String  _primaryHostName;
     //{1..1}
 
-//  private Interfaces  _interfaces;
-//  //{1..1}
+    private NetworkInterfaces  _interfaces;
+    //{1..1}
 
-    private Collection<NetworkInterface>  _interfaces =
-        new ArrayList<NetworkInterface>();
-    //{0..*}
+//    private Collection<NetworkInterface>  _interfaceList =
+//        new ArrayList<NetworkInterface>();
+//    //{0..*}
 
 
 
@@ -93,11 +92,11 @@ public class SystemInfo
                     final String osVersion,
                     final String arch,
                     final String hostName,
-                    Collection<NetworkInterface> ifs
+                    Collection<? extends NetworkInterface> ifs
                     )
     {
         this( osName, osVersion, arch, hostName );
-        setInterfaces( ifs );
+        setInterfaces( new NetworkInterfaces( ifs ) );
     }
 
 
@@ -166,39 +165,58 @@ public class SystemInfo
 
 
 
+    /**
+     */
     public void setInterfaces(
-                    final Collection<? extends NetworkInterface> netifs
+                    final NetworkInterfaces interfaces
                     )
     {
-        if (netifs != _interfaces) {
-            _interfaces.clear();
-            if (netifs == null || netifs.size() == 0) {
-                return;
-            }
-
-            for (NetworkInterface netif : netifs) {
-                addInterface( netif );
-            }
-        }
+        _interfaces = interfaces;
     }
 
 
-    public boolean addInterface(
-                    final NetworkInterface netif
-                    )
-    {
-        if (netif == null) {
-            return false;
-        }
-
-        return _interfaces.add( netif );
-    }
-
-
-    public Collection<NetworkInterface> getInterfaces()
+    /**
+     */
+    public NetworkInterfaces getInterfaces()
     {
         return _interfaces;
     }
+
+
+
+//    public void setInterfaces(
+//                    final Collection<? extends NetworkInterface> netifs
+//                    )
+//    {
+//        if (netifs != _interfaceList) {
+//            _interfaceList.clear();
+//            if (netifs == null || netifs.size() == 0) {
+//                return;
+//            }
+//
+//            for (NetworkInterface netif : netifs) {
+//                addInterface( netif );
+//            }
+//        }
+//    }
+//
+//
+//    public boolean addInterface(
+//                    final NetworkInterface netif
+//                    )
+//    {
+//        if (netif == null) {
+//            return false;
+//        }
+//
+//        return _interfaceList.add( netif );
+//    }
+//
+//
+//    public Collection<NetworkInterface> getInterfaces()
+//    {
+//        return _interfaceList;
+//    }
 
 
 

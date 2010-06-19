@@ -20,9 +20,7 @@
 
 package jp.go.aist.six.oval.model.system;
 
-import jp.go.aist.six.util.orm.AbstractPersistable;
-import jp.go.aist.six.util.orm.Dependent;
-import java.util.ArrayList;
+import jp.go.aist.six.oval.model.Container;
 import java.util.Collection;
 
 
@@ -32,36 +30,15 @@ import java.util.Collection;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class SystemInfo
-    extends AbstractPersistable
-    implements Dependent<OvalSystemCharacteristics>
+public class NetworkInterfaces
+    extends Container<NetworkInterface>
+//implements Serializable, Iterable<NetworkInterface>
 {
 
-    private String  _osName;
-    //{1..1}
-
-    private String  _osVersion;
-    //{1..1}
-
-    private String  _architecture;
-    //{1..1}
-
-    private String  _primaryHostName;
-    //{1..1}
-
-//  private Interfaces  _interfaces;
-//  //{1..1}
-
-    private Collection<NetworkInterface>  _interfaces =
-        new ArrayList<NetworkInterface>();
-    //{0..*}
-
-
-
     /**
      * Constructor.
      */
-    public SystemInfo()
+    public NetworkInterfaces()
     {
     }
 
@@ -70,157 +47,61 @@ public class SystemInfo
     /**
      * Constructor.
      */
-    public SystemInfo(
-                    final String osName,
-                    final String osVersion,
-                    final String arch,
-                    final String hostName
+    public NetworkInterfaces(
+                    Collection<? extends NetworkInterface> ifs
                     )
     {
-        setOsName( osName );
-        setOsVersion( osVersion );
-        setArchitecture( arch );
-        setPrimaryHostName( hostName );
+        super( ifs );
     }
 
 
 
-    /**
-     * Constructor.
-     */
-    public SystemInfo(
-                    final String osName,
-                    final String osVersion,
-                    final String arch,
-                    final String hostName,
-                    Collection<NetworkInterface> ifs
-                    )
-    {
-        this( osName, osVersion, arch, hostName );
-        setInterfaces( ifs );
-    }
-
-
-
-    public void setOsName(
-                    final String name
-                    )
-    {
-        _osName = name;
-    }
-
-
-
-    public String getOsName()
-    {
-        return _osName;
-    }
-
-
-
-    public void setOsVersion(
-                    final String version
-                    )
-    {
-        _osVersion = version;
-    }
-
-
-
-    public String getOsVersion()
-    {
-        return _osVersion;
-    }
-
-
-
-    public void setArchitecture(
-                    final String architecture
-                    )
-    {
-        _architecture = architecture;
-    }
-
-
-
-    public String getArchitecture()
-    {
-        return _architecture;
-    }
-
-
-
-    public void setPrimaryHostName(
-                    final String hostName
-                    )
-    {
-        _primaryHostName = hostName;
-    }
-
-
-
-    public String getPrimaryHostName()
-    {
-        return _primaryHostName;
-    }
-
-
-
-    public void setInterfaces(
+    public void setInterface(
                     final Collection<? extends NetworkInterface> netifs
                     )
     {
-        if (netifs != _interfaces) {
-            _interfaces.clear();
-            if (netifs == null || netifs.size() == 0) {
-                return;
-            }
-
-            for (NetworkInterface netif : netifs) {
-                addInterface( netif );
-            }
-        }
+        setElements( netifs );
     }
 
 
-    public boolean addInterface(
+//    public boolean addInterface(
+//                    final NetworkInterface netif
+//                    )
+//    {
+//        addElement( netif );
+//
+//        return true;
+//    }
+
+
+    public Collection<NetworkInterface> getInterface()
+    {
+        return getElements();
+    }
+
+
+
+    //**************************************************************
+    //  Container
+    //**************************************************************
+
+    protected Object _getKey(
                     final NetworkInterface netif
                     )
     {
-        if (netif == null) {
-            return false;
-        }
-
-        return _interfaces.add( netif );
-    }
-
-
-    public Collection<NetworkInterface> getInterfaces()
-    {
-        return _interfaces;
+        return netif.getInterfaceName();
     }
 
 
 
     //**************************************************************
-    //  Dependent
+    //  Iterable
     //**************************************************************
 
-    private OvalSystemCharacteristics  _master;
-
-
-    public void setMasterObject(
-                    final OvalSystemCharacteristics sc
-                    )
-    {
-        _master = sc;
-    }
-
-
-    public OvalSystemCharacteristics getMasterObject()
-    {
-        return _master;
-    }
+//    public Iterator<NetworkInterface> iterator()
+//    {
+//        return _interface.iterator();
+//    }
 
 
 
@@ -228,15 +109,11 @@ public class SystemInfo
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public String toString()
-    {
-        return "SystemInfo[os=" + getOsName() + " " + getOsVersion()
-                    + ", architecture=" + getArchitecture()
-                    + ", primary_host_name=" + getPrimaryHostName()
-                    + ", interfaces=" + getInterfaces()
-                    + "]";
-    }
+//    @Override
+//    public String toString()
+//    {
+//        return String.valueOf( getInterface() );
+//    }
 
 }
-// SystemInfo
+// NetworkInterfaces

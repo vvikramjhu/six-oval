@@ -991,7 +991,7 @@
             <bind-xml name="primary_host_name" node="element"/>
         </field>
 
-        <field name="interfaces" 
+        <field name="interfaces.interface" 
             type="jp.go.aist.six.oval.model.system.NetworkInterface"
             collection="collection">
             <bind-xml name="interface" node="element" 
