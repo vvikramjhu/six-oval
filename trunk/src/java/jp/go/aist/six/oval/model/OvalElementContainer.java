@@ -86,7 +86,7 @@ extends Container<E>
     {
         final int  currentHash = hashCode();
         if (currentHash != _hashOnDigest) {
-            _digest = _computeDigest( getElements() );
+            _digest = _computeDigest( _values() );  //TODO: keySet() is enough ???
             _hashOnDigest = currentHash;
         }
 

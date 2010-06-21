@@ -90,9 +90,9 @@ public class OvalDefinitionsDao
         Tests  test_list = defs.getTests();
         if (test_list != null) {
             Tests  p_tests = new Tests();
-            for (Test  test : test_list.getElements()) {
+            for (Test  test : test_list) {
                 Test  p_test = getForwardingDao( Test.class ).sync( test );
-                p_tests.addElement( p_test );
+                p_tests.add( p_test );
                 OvalDefinitionsTestAssociation  assoc =
                     new OvalDefinitionsTestAssociation( defs, p_test );
                 getForwardingDao( OvalDefinitionsTestAssociation.class ).sync( assoc );
@@ -105,9 +105,9 @@ public class OvalDefinitionsDao
         SystemObjects  objects = defs.getObjects();
         if (objects != null) {
             SystemObjects  p_objects = new SystemObjects();
-            for (SystemObject  object : objects.getElements()) {
+            for (SystemObject  object : objects) {
                 SystemObject  p_object = getForwardingDao( SystemObject.class ).sync( object );
-                p_objects.addElement( p_object );
+                p_objects.add( p_object );
                 OvalDefinitionsObjectAssociation  assoc =
                     new OvalDefinitionsObjectAssociation( defs, p_object );
                 getForwardingDao( OvalDefinitionsObjectAssociation.class ).sync( assoc );
@@ -138,12 +138,12 @@ public class OvalDefinitionsDao
         Definitions  def_list = defs.getDefinitions();
         if (def_list != null) {
             Definitions  p_def_list = new Definitions();
-            for (Definition  def : def_list.getElements()) {
+            for (Definition  def : def_list) {
                 if (_LOG.isInfoEnabled()) {
                     _LOG.info( "creating Definition: " + def.getOvalID() );
                 }
                 Definition  p_def = getForwardingDao( Definition.class ).sync( def );
-                p_def_list.addElement( p_def );
+                p_def_list.add( p_def );
 
                 OvalDefinitionsDefinitionAssociation  assoc =
                     new OvalDefinitionsDefinitionAssociation( defs, p_def );

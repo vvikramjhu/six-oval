@@ -52,8 +52,8 @@ public class OvalXmlTest
         Assert.assertEquals( actual.getArchitecture(), expected.getArchitecture() );
         Assert.assertEquals( actual.getPrimaryHostName(), expected.getPrimaryHostName() );
 
-        Set<NetworkInterface>  a_netifs = new HashSet<NetworkInterface>( actual.getInterfaces().getElements() );
-        Set<NetworkInterface>  e_netifs = new HashSet<NetworkInterface>( expected.getInterfaces().getElements() );
+        Set<NetworkInterface>  a_netifs = new HashSet<NetworkInterface>( actual.getInterfaces().getAll() );
+        Set<NetworkInterface>  e_netifs = new HashSet<NetworkInterface>( expected.getInterfaces().getAll() );
         Assert.assertEquals( a_netifs, e_netifs );
     }
 

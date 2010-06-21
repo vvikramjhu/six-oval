@@ -312,7 +312,7 @@ public class DebianOvalBuilder
         final String  defID = _createDefinitionID( dsaID );
         final int  defVersion = dsaVersion;
         Definition  def = new Definition( defID, defVersion, DefinitionClass.PATCH );
-        oval.getDefinitions().addElement( def );
+        oval.getDefinitions().add( def );
 
         // TODO: metadata //
         Metadata  metadata = new Metadata();
@@ -378,7 +378,7 @@ public class DebianOvalBuilder
             if (_LOG.isDebugEnabled()) {
                 _LOG.debug( "state created: " + ovalState );
             }
-            stateCollection.addElement( ovalState );
+            stateCollection.add( ovalState );
             oval.setStates( stateCollection );
 
             Criteria  criteria = new Criteria();
@@ -405,8 +405,8 @@ public class DebianOvalBuilder
                     _LOG.debug( "test created: " + ovalTest );
                 }
 
-                oval.getObjects().addElement( ovalObject );
-                oval.getTests().addElement( ovalTest );
+                oval.getObjects().add( ovalObject );
+                oval.getTests().add( ovalTest );
 
                 criteria.addElement( new Criterion( testID ) );
 

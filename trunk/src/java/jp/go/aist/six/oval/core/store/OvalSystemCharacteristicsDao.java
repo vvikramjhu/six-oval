@@ -72,7 +72,7 @@ public class OvalSystemCharacteristicsDao
 
         SystemData  sd = sc.getSystemData();
         if (sd != null  &&  sd.size() > 0) {
-            for (Item  item : sd.getElements()) {
+            for (Item  item : sd) {
                 item.setMasterObject( sc );
                 getForwardingDao( Item.class ).create( item );
             }

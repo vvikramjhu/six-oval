@@ -65,10 +65,10 @@ public class SystemResultDao
         DefinitionResults  dr_list = system.getDefinitions();
         if (dr_list != null  &&  dr_list.size() > 0) {
             DefinitionResults  p_dr_list = new DefinitionResults();
-            for (DefinitionResult  dr : dr_list.getElements()) {
+            for (DefinitionResult  dr : dr_list) {
                 dr.setMasterObject( system );
                 DefinitionResult  p_dr = getForwardingDao( DefinitionResult.class ).sync( dr );
-                p_dr_list.addElement( p_dr );
+                p_dr_list.add( p_dr );
             }
 
             system.setDefinitions( p_dr_list );

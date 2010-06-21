@@ -254,7 +254,7 @@ public class OvalXmlMarshallingTest
         Assert.assertNotNull( obj );
         Assert.assertTrue( obj instanceof OvalDefinitions );
         OvalDefinitions  defs = OvalDefinitions.class.cast( obj );
-        Definition  def = defs.getDefinitions().findElement( id );
+        Definition  def = defs.getDefinitions().find( id );
         Assert.assertNotNull( def );
         Reporter.log( "@ definition: " + def, true );
         Assert.assertEquals( id, def.getOvalID() );

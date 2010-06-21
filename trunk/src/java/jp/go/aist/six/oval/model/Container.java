@@ -21,25 +21,29 @@
 package jp.go.aist.six.oval.model;
 
 import jp.go.aist.six.util.orm.AbstractPersistable;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 
 
 /**
+ * A collection of element objects.
+ * Every element MUST not be null.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
 public abstract class Container<E>
     extends AbstractPersistable
-    implements Iterable<E>
+    implements Collection<E>
+//implements Iterable<E>
 {
 
-//    private final Map<Object, E>  _elements = new LinkedHashMap<Object, E>();
-    private final Collection<E>  _elements = new ArrayList<E>();
-//    private final Map<Object, E>  _map = null;
+//    private final Collection<E>  _elements = new ArrayList<E>();
+
+    private final Map<Object, E>  _elements = new LinkedHashMap<Object, E>();
 
 
 
@@ -58,7 +62,7 @@ public abstract class Container<E>
                     final Collection<? extends E> elements
                     )
     {
-        setElements( elements );
+        addAll( elements );
     }
 
 
@@ -67,6 +71,15 @@ public abstract class Container<E>
      */
     protected abstract Object _getKey( E element );
 
+
+
+    /**
+     *
+     */
+    protected Collection<E>  _values()
+    {
+        return _elements.values();
+    }
 
 
 
@@ -88,87 +101,51 @@ public abstract class Container<E>
 
 
 
-    /**
-     */
-    public void setElements(
-                    final Collection<? extends E> elements
-                    )
-    {
-        if (elements != _elements) {
-            clear();
-            if (elements == null  ||  elements.size() == 0) {
-                return;
-            }
-
-            for (E  e : elements) {
-                addElement( e );
-            }
-        }
-    }
-
-
-    /**
-     * Appends an element.
-     * If the argument element is null, it is simply ignored
-     * and this method returns immediately.
-     */
-    public void addElement(
-                    final E element
-                    )
-    {
-        if (element == null) {
-            return;
-        }
-
-        _elements.add( element );
-//        _elements.put( _getKey( element ), element );
-    }
-
-
-    /**
-     * Returns the elements.
-     * This method never returns null.
-     * Note that this method may returns
-     * the internal implementing collection object.
-     */
-    public Collection<E> getElements()
-    {
-        return _elements;
+//    /**
+//     * Returns the elements.
+//     * This method never returns null.
+//     * Note that this method may returns
+//     * the internal implementing collection object.
+//     */
+//    public Collection<E> getAll()
+//    {
+////        return _elements;
 //        return _elements.values();
-    }
+//    }
+
 
 
     /**
      */
-    public E findElement(
+    public E find(
                     final Object key
                     )
     {
         if (key == null) {
-            throw new IllegalArgumentException( "null key" );
+            throw new NullPointerException( "find: null argument" );
         }
 
-        for (E  element : getElements()) {
-            if (key.equals( _getKey( element ) )) {
-                return element;
-            }
-        }
-        return null;
+        return _elements.get( key );
     }
 
 
 
-    /**
-     */
-    public void clear()
-    {
-        _elements.clear();
-    }
+
+//    //**************************************************************
+//    //  Iterable
+//    //**************************************************************
+
+//    public Iterator<E> iterator()
+//    {
+//        return _elements.iterator();
+//    }
 
 
 
-    /**
-     */
+    //**************************************************************
+    //  Collection
+    //**************************************************************
+
     public int size()
     {
         return _elements.size();
@@ -176,13 +153,170 @@ public abstract class Container<E>
 
 
 
-    //**************************************************************
-    //  Iterable
-    //**************************************************************
+    public boolean isEmpty()
+    {
+        return _elements.isEmpty();
+    }
+
+
+
+    public boolean contains(
+                    final Object o
+                    )
+    {
+        if (o == null) {
+            throw new NullPointerException( "contains: null argument" );
+        }
+
+        return _elements.containsValue( o );
+    }
+
+
 
     public Iterator<E> iterator()
     {
-        return _elements.iterator();
+        return _elements.values().iterator();
+    }
+
+
+
+    public Object[] toArray()
+    {
+        return _elements.values().toArray();
+    }
+
+
+
+    public <T> T[] toArray(
+                    final T[] a
+                    )
+    {
+        return _elements.values().toArray( a );
+    }
+
+
+
+    public boolean add(
+                    final E e
+                    )
+    {
+        if (e == null) {
+            throw new NullPointerException( "add: null argument" );
+        }
+
+        Object  key = _getKey( e );
+        if (key == null) {
+            throw new IllegalArgumentException( "add: null-key argument" );
+        }
+
+        E  previousValue = _elements.put( key, e );
+
+        return (e != previousValue);
+    }
+
+
+
+    public boolean remove(
+                    final Object o
+                    )
+    {
+        if (o == null) {
+            throw new NullPointerException( "remove: null argument" );
+        }
+
+        @SuppressWarnings( "unchecked" )
+        E  e = (E)o;
+
+        Object  key = _getKey( e );
+        if (key == null) {
+            throw new IllegalArgumentException( "remove: null-key argument " );
+        }
+
+        E  previousValue = _elements.remove( key );
+
+        return (previousValue != null);
+    }
+
+
+
+    public boolean containsAll(
+                    final Collection<?> c
+                    )
+    {
+        if (c == null) {
+            throw new NullPointerException( "containsAll: null argument collection" );
+        }
+
+        for (Object  o : c) {
+            if (o == null) {
+                throw new NullPointerException( "containsAll: null element in argument collection" );
+            }
+        }
+
+        return _elements.values().containsAll( c );
+    }
+
+
+
+    public boolean addAll(
+                    final Collection<? extends E> c
+                    )
+    {
+        if (c == null) {
+            throw new NullPointerException( "containsAll: null argument collection" );
+        }
+
+        boolean  changed = false;
+        for (E  e : c) {
+            changed = changed || add( e );
+        }
+
+        return changed;
+    }
+
+
+
+    public boolean removeAll(
+                    final Collection<?> c
+                    )
+    {
+        if (c == null) {
+            throw new NullPointerException( "removeAll: null argument collection" );
+        }
+
+        boolean  changed = false;
+        for (Object  o : c) {
+            changed = changed || remove( o );
+        }
+
+        return changed;
+    }
+
+
+
+    public boolean retainAll(
+                    final Collection<?> c
+                    )
+    {
+        if (c == null) {
+            throw new NullPointerException( "retainAll: null argument collection" );
+        }
+
+        boolean  changed = false;
+        for (Object  o : c) {
+            if (!contains( o )) {
+                changed = changed || remove( o );
+            }
+        }
+
+        return changed;
+    }
+
+
+
+    public void clear()
+    {
+        _elements.clear();
     }
 
 
@@ -194,13 +328,15 @@ public abstract class Container<E>
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  result = 17;
+        return _elements.hashCode();
 
-        Collection<E>  elements = getElements();
-        result = prime * result + elements.hashCode();
-
-        return result;
+//        final int  prime = 37;
+//        int  result = 17;
+//
+//        Collection<E>  elements = getAll();
+//        result = prime * result + elements.hashCode();
+//
+//        return result;
     }
 
 
@@ -219,15 +355,17 @@ public abstract class Container<E>
         }
 
         Container<?>  other = Container.class.cast( obj );
-        Collection<?>  other_elements = other.getElements();
-        Collection<?>   this_elements =  this.getElements();
-        if (this_elements == other_elements
-                        ||  (this_elements != null
-                                        &&  this_elements.equals( other_elements ))) {
-            return true;
-        }
+        return other.containsAll( _elements.values() );
 
-        return false;
+//        Collection<?>  other_elements = other.getAll();
+//        Collection<?>   this_elements =  this.getAll();
+//        if (this_elements == other_elements
+//                        ||  (this_elements != null
+//                                        &&  this_elements.equals( other_elements ))) {
+//            return true;
+//        }
+//
+//        return false;
     }
 
 
@@ -235,7 +373,7 @@ public abstract class Container<E>
     @Override
     public String toString()
     {
-        return String.valueOf( getElements() );
+        return String.valueOf( _elements.values() );
     }
 
 }

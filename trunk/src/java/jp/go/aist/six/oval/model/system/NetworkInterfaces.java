@@ -60,7 +60,8 @@ public class NetworkInterfaces
                     final Collection<? extends NetworkInterface> netifs
                     )
     {
-        setElements( netifs );
+        clear();
+        addAll( netifs );
     }
 
 
@@ -76,7 +77,7 @@ public class NetworkInterfaces
 
     public Collection<NetworkInterface> getInterface()
     {
-        return getElements();
+        return _values();
     }
 
 

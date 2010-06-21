@@ -232,7 +232,7 @@ public class OvalDefinitions
                     final String id
                     )
     {
-        return getDefinitions().findElement( id );
+        return getDefinitions().find( id );
 
 //        Definitions  defs = getDefinitions();
 //        if (defs == null) {
@@ -252,7 +252,7 @@ public class OvalDefinitions
                     final String id
                     )
     {
-        return getTests().findElement( id );
+        return getTests().find( id );
 
 //        Tests  tests = getTests();
 //        if (tests == null) {
@@ -272,7 +272,7 @@ public class OvalDefinitions
                     final String id
                     )
     {
-        return getObjects().findElement( id );
+        return getObjects().find( id );
 
 //        SystemObjects  objects = getObjects();
 //        if (objects == null) {
@@ -292,7 +292,7 @@ public class OvalDefinitions
                     final String id
                     )
     {
-        return getStates().findElement( id );
+        return getStates().find( id );
 
 //        States  states = getStates();
 //        if (states == null) {

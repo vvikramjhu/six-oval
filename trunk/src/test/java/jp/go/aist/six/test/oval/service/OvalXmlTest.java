@@ -203,8 +203,8 @@ public class OvalXmlTest
 
         Reporter.log( "  *** checking oval_definitions/definitions...", true );
         Definitions  def_list = defs.getDefinitions();
-        Assert.assertEquals( def_list.getElements().size(), 1 );
-        Definition  def = def_list.getElements().iterator().next();
+        Assert.assertEquals( def_list.getAll().size(), 1 );
+        Definition  def = def_list.getAll().iterator().next();
         Reporter.log( "    @@@ definiton id=" + def.getOvalID(), true );
         Assert.assertEquals( def.getOvalID(), definition_id );
         Assert.assertEquals( def.getOvalVersion(), 301 );
@@ -232,7 +232,7 @@ public class OvalXmlTest
 
 
         Reporter.log( "  *** checking oval_definitions/tests...", true );
-        Assert.assertEquals( defs.getTests().getElements().size(), 3 );
+        Assert.assertEquals( defs.getTests().getAll().size(), 3 );
 
 
         // results //
@@ -241,7 +241,7 @@ public class OvalXmlTest
         Assert.assertEquals( results.getResults().size(), 1 );
         SystemResult  system = results.getResults().iterator().next();
         Assert.assertEquals( system.getDefinitions().size(), 1 );
-        DefinitionResult  def_result = system.getDefinitions().getElements().iterator().next();
+        DefinitionResult  def_result = system.getDefinitions().getAll().iterator().next();
         Assert.assertEquals( def_result.getOvalID(), definition_id );
         Assert.assertEquals( def_result.getResult(), Result.TRUE );
 
@@ -442,7 +442,7 @@ public class OvalXmlTest
         rpm_evrs.put( "mod_ssl", "1:2.2.3-22.el5.centos.1" );
         rpm_evrs.put( "httpd-devel", null );
 
-        for (Item  item : sd.getElements()) {
+        for (Item  item : sd.getAll()) {
             int  id = item.getID();
 //          Reporter.log( "    item: " + item, true );
             Assert.assertTrue( item instanceof RpmInfoItem);
@@ -610,7 +610,7 @@ public class OvalXmlTest
         OvalDefinitions  defs = (OvalDefinitions)_xml.unmarshal(
                         new FileReader( file ) );
         Assert.assertNotNull( defs );
-        Reporter.log( "@@@ #definitions: " + defs.getDefinitions().getElements().size(), true );
+        Reporter.log( "@@@ #definitions: " + defs.getDefinitions().getAll().size(), true );
 
         if (filepath.equals( _SAMPLE_OVAL_D_LINUX_REDHAT_ )) {
             _validateOvalDefinitionsLinuxRedHat( defs );
@@ -640,7 +640,7 @@ public class OvalXmlTest
 
         // definitions //
         Reporter.log( "*** checking definitions...", true );
-        Collection<Definition>  def_list = defs.getDefinitions().getElements();
+        Collection<Definition>  def_list = defs.getDefinitions().getAll();
         Assert.assertEquals( def_list.size(), 1 );
         Definition  def = def_list.iterator().next();
         Reporter.log( "@@@ definiton[0]: id=" + def.getOvalID()
@@ -704,13 +704,13 @@ public class OvalXmlTest
 //        Assert.assertEquals( def.getLastModified(), "2010-01-20" );
 
         Reporter.log( "*** checking tests...", true );
-        Reporter.log( "@@@ #tests=" + defs.getTests().getElements().size(), true );
+        Reporter.log( "@@@ #tests=" + defs.getTests().getAll().size(), true );
 //        Reporter.log( "    @@@ tests=" + defs.getTests(), true );
-        Assert.assertEquals( defs.getTests().getElements().size(), 1 );
+        Assert.assertEquals( defs.getTests().getAll().size(), 1 );
 
         Reporter.log( "*** checking objects...", true );
-        Reporter.log( "@@@ #objects=" + defs.getObjects().getElements().size(), true );
-        Assert.assertEquals( defs.getObjects().getElements().size(), 1 );
+        Reporter.log( "@@@ #objects=" + defs.getObjects().getAll().size(), true );
+        Assert.assertEquals( defs.getObjects().getAll().size(), 1 );
     }
 
 
@@ -729,7 +729,7 @@ public class OvalXmlTest
 
         // definitions //
         Reporter.log( "*** checking definitions...", true );
-        Collection<Definition>  def_list = defs.getDefinitions().getElements();
+        Collection<Definition>  def_list = defs.getDefinitions().getAll();
         Assert.assertEquals( def_list.size(), 1 );
         Definition  def = def_list.iterator().next();
         Reporter.log( "@@@ definiton[0]: id=" + def.getOvalID()
@@ -793,13 +793,13 @@ public class OvalXmlTest
         Assert.assertEquals( def.getLastModified(), "2010-01-20" );
 
         Reporter.log( "*** checking tests...", true );
-        Reporter.log( "@@@ #tests=" + defs.getTests().getElements().size(), true );
+        Reporter.log( "@@@ #tests=" + defs.getTests().getAll().size(), true );
 //        Reporter.log( "    @@@ tests=" + defs.getTests(), true );
-        Assert.assertEquals( defs.getTests().getElements().size(), 19 );
+        Assert.assertEquals( defs.getTests().getAll().size(), 19 );
 
         Reporter.log( "*** checking objects...", true );
-        Reporter.log( "@@@ #objects=" + defs.getObjects().getElements().size(), true );
-        Assert.assertEquals( defs.getObjects().getElements().size(), 3 );
+        Reporter.log( "@@@ #objects=" + defs.getObjects().getAll().size(), true );
+        Assert.assertEquals( defs.getObjects().getAll().size(), 3 );
     }
 
 
@@ -818,7 +818,7 @@ public class OvalXmlTest
 
         // definitions //
         Reporter.log( "*** checking definitions...", true );
-        Collection<Definition>  def_list = defs.getDefinitions().getElements();
+        Collection<Definition>  def_list = defs.getDefinitions().getAll();
         Assert.assertEquals( def_list.size(), 1 );
         Definition  def = def_list.iterator().next();
         Reporter.log( "@@@ definiton[0]: id=" + def.getOvalID()
@@ -886,13 +886,13 @@ public class OvalXmlTest
         Assert.assertEquals( def.getLastModified(), "2010-01-20" );
 
         Reporter.log( "*** checking tests...", true );
-        Reporter.log( "@@@ #tests=" + defs.getTests().getElements().size(), true );
+        Reporter.log( "@@@ #tests=" + defs.getTests().getAll().size(), true );
 //        Reporter.log( "    @@@ tests=" + defs.getTests(), true );
-        Assert.assertEquals( defs.getTests().getElements().size(), 8 );
+        Assert.assertEquals( defs.getTests().getAll().size(), 8 );
 
         Reporter.log( "*** checking objects...", true );
-        Reporter.log( "@@@ #objects=" + defs.getObjects().getElements().size(), true );
-        Assert.assertEquals( defs.getObjects().getElements().size(), 2 );
+        Reporter.log( "@@@ #objects=" + defs.getObjects().getAll().size(), true );
+        Assert.assertEquals( defs.getObjects().getAll().size(), 2 );
 //        Collection<String>  object_names = Arrays.asList( new String[] {
 //                        "httpd-manual", "httpd-devel", "redhat-release", "mod_ssl", "httpd"
 //        });
@@ -921,7 +921,7 @@ public class OvalXmlTest
 
         // definitions //
         Reporter.log( "  *** checking definitions...", true );
-        Collection<Definition>  def_list = defs.getDefinitions().getElements();
+        Collection<Definition>  def_list = defs.getDefinitions().getAll();
         Assert.assertEquals( def_list.size(), 1 );
         Definition  def = def_list.iterator().next();
         Reporter.log( "    @@@ definiton id=" + def.getOvalID(), true );
@@ -1000,13 +1000,13 @@ public class OvalXmlTest
         }
 
         Reporter.log( "  *** checking tests...", true );
-        Reporter.log( "    @@@ #tests=" + defs.getTests().getElements().size(), true );
+        Reporter.log( "    @@@ #tests=" + defs.getTests().getAll().size(), true );
 //        Reporter.log( "    @@@ tests=" + defs.getTests(), true );
-        Assert.assertEquals( defs.getTests().getElements().size(), 6 );
+        Assert.assertEquals( defs.getTests().getAll().size(), 6 );
 
         Reporter.log( "  *** checking #objects...", true );
-        Reporter.log( "    @@@ #objects=" + defs.getObjects().getElements().size(), true );
-        Assert.assertEquals( defs.getObjects().getElements().size(), 5 );
+        Reporter.log( "    @@@ #objects=" + defs.getObjects().getAll().size(), true );
+        Assert.assertEquals( defs.getObjects().getAll().size(), 5 );
 
 //        for (SystemObject object : defs.getObjects()) {
 //            if (object.getOvalID().equals( "oval:org.mitre.oval:obj:419" )) {
