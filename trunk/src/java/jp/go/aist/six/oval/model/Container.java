@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model;
 
 import jp.go.aist.six.util.orm.AbstractPersistable;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -64,6 +65,18 @@ public abstract class Container<E>
     {
         addAll( elements );
     }
+
+
+    /**
+     * Constructor.
+     */
+    public Container(
+                    final E[] elements
+                    )
+    {
+        addAll( Arrays.asList( elements ) );
+    }
+
 
 
 

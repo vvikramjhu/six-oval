@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.system;
 
 import jp.go.aist.six.oval.model.Container;
 import java.util.Collection;
+import java.util.Iterator;
 
 
 
@@ -56,28 +57,46 @@ public class NetworkInterfaces
 
 
 
-    public void setInterface(
-                    final Collection<? extends NetworkInterface> netifs
+    /**
+     * Constructor.
+     */
+    public NetworkInterfaces(
+                    NetworkInterface[] ifs
                     )
     {
-        clear();
-        addAll( netifs );
+        super( ifs );
     }
 
 
-//    public boolean addInterface(
-//                    final NetworkInterface netif
+
+
+//    public void setInterface(
+//                    final Collection<? extends NetworkInterface> netifs
 //                    )
 //    {
-//        addElement( netif );
-//
-//        return true;
+//        clear();
+//        addAll( netifs );
 //    }
 
 
-    public Collection<NetworkInterface> getInterface()
+    public boolean addInterface(
+                    final NetworkInterface netif
+                    )
     {
-        return _values();
+        return add( netif );
+    }
+
+
+//    public Collection<NetworkInterface> getInterface()
+//    {
+//        return _values();
+//    }
+
+
+
+    public Iterator<NetworkInterface> iterateInterface()
+    {
+        return iterator();
     }
 
 
@@ -96,25 +115,8 @@ public class NetworkInterfaces
 
 
     //**************************************************************
-    //  Iterable
-    //**************************************************************
-
-//    public Iterator<NetworkInterface> iterator()
-//    {
-//        return _interface.iterator();
-//    }
-
-
-
-    //**************************************************************
     //  java.lang.Object
     //**************************************************************
-
-//    @Override
-//    public String toString()
-//    {
-//        return String.valueOf( getInterface() );
-//    }
 
 }
 // NetworkInterfaces
