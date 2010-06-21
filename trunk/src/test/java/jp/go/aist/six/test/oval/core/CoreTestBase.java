@@ -3,9 +3,14 @@ package jp.go.aist.six.test.oval.core;
 import jp.go.aist.six.oval.core.service.StandardOvalService;
 import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
+import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.system.NetworkInterface;
+import jp.go.aist.six.oval.model.system.SystemInfo;
+import jp.go.aist.six.util.IsoDate;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
+import java.util.Arrays;
+import java.util.Collection;
 
 
 
@@ -58,6 +63,48 @@ public abstract class CoreTestBase
     //  System Characteristics
     //
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    private static final Collection<NetworkInterface> _WINDWS_NETWORK_INTERFACES_
+    = Arrays.asList( new NetworkInterface[] {
+                    new NetworkInterface(
+                                    "VMware Virtual Ethernet Adapter for VMnet1",
+                                    "192.168.158.1",
+                                    "00-50-56-C0-00-01"
+                                    ),
+                    new NetworkInterface(
+                                    "VMware Virtual Ethernet Adapter for VMnet8",
+                                    "192.168.1.1",
+                                    "00-50-56-C0-00-08"
+                                    )
+    } );
+
+
+
+    //==============================================================
+    //  oval_system_characteristics
+    //==============================================================
+
+    @DataProvider( name="oval-sc-oval_system_characteristics" )
+    public Object[][] ovalScOvalSystemCharacteristicsData()
+    {
+        return new Object[][] {
+                        {
+                            "oval-sc:oval_system_characteristics",
+                            "test/data/sc/oval-sc.oval_system_characteristics.1-windows-minimal.xml",
+                            new Generator( "5.6", IsoDate.valueOf( "2010-05-12T20:27:08" ), "OVAL Definition Interpreter", "5.6 Build: 4" ),
+                            new SystemInfo(
+                                            "Microsoft Windows XP Professional Service Pack 3",
+                                            "5.1.2600",
+                                            "INTEL32",
+                                            "x60",
+                                            _WINDWS_NETWORK_INTERFACES_
+                                            )
+                        }
+        };
+
+    }
+
+
 
     //==============================================================
     //  system_info
