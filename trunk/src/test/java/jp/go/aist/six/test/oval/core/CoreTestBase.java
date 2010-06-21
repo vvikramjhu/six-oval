@@ -117,22 +117,13 @@ public abstract class CoreTestBase
                         {
                             "oval-sc:system_info",
                             "test/data/sc/oval-sc.system_info.1-windows.xml",
-                            "Microsoft Windows XP Professional Service Pack 3",
-                            "5.1.2600",
-                            "INTEL32",
-                            "x60",
-                            new NetworkInterface[] {
-                                            new NetworkInterface(
-                                                            "VMware Virtual Ethernet Adapter for VMnet1",
-                                                            "192.168.158.1",
-                                                            "00-50-56-C0-00-01"
-                                                            ),
-                                            new NetworkInterface(
-                                                            "VMware Virtual Ethernet Adapter for VMnet8",
-                                                            "192.168.1.1",
-                                                            "00-50-56-C0-00-08"
-                                                            )
-                            }
+                            new SystemInfo(
+                                            "Microsoft Windows XP Professional Service Pack 3",
+                                            "5.1.2600",
+                                            "INTEL32",
+                                            "x60",
+                                            _WINDWS_NETWORK_INTERFACES_
+                                            )
                         }
         };
 

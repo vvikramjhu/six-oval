@@ -8,7 +8,6 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,6 +25,36 @@ public class OvalXmlTest
      */
     public OvalXmlTest()
     {
+    }
+
+
+
+    private void _validate(
+                    final Generator actual,
+                    final Generator expected
+                    )
+    {
+        Assert.assertEquals( actual.getSchemaVersion(), expected.getSchemaVersion() );
+        Assert.assertEquals( actual.getTimestamp(), expected.getTimestamp() );
+        Assert.assertEquals( actual.getProductName(), expected.getProductName() );
+        Assert.assertEquals( actual.getProductVersion(), expected.getProductVersion() );
+    }
+
+
+
+    private void _validate(
+                    final SystemInfo actual,
+                    final SystemInfo expected
+                    )
+    {
+        Assert.assertEquals( actual.getOsName(), expected.getOsName() );
+        Assert.assertEquals( actual.getOsVersion(), expected.getOsVersion() );
+        Assert.assertEquals( actual.getArchitecture(), expected.getArchitecture() );
+        Assert.assertEquals( actual.getPrimaryHostName(), expected.getPrimaryHostName() );
+
+        Set<NetworkInterface>  a_netifs = new HashSet<NetworkInterface>( actual.getInterfaces().getElements() );
+        Set<NetworkInterface>  e_netifs = new HashSet<NetworkInterface>( expected.getInterfaces().getElements() );
+        Assert.assertEquals( a_netifs, e_netifs );
     }
 
 
@@ -70,36 +99,6 @@ public class OvalXmlTest
 
 
 
-    private void _validate(
-                    final Generator actual,
-                    final Generator expected
-                    )
-    {
-        Assert.assertEquals( actual.getSchemaVersion(), expected.getSchemaVersion() );
-        Assert.assertEquals( actual.getTimestamp(), expected.getTimestamp() );
-        Assert.assertEquals( actual.getProductName(), expected.getProductName() );
-        Assert.assertEquals( actual.getProductVersion(), expected.getProductVersion() );
-    }
-
-
-
-    private void _validate(
-                    final SystemInfo actual,
-                    final SystemInfo expected
-                    )
-    {
-        Assert.assertEquals( actual.getOsName(), expected.getOsName() );
-        Assert.assertEquals( actual.getOsVersion(), expected.getOsVersion() );
-        Assert.assertEquals( actual.getArchitecture(), expected.getArchitecture() );
-        Assert.assertEquals( actual.getPrimaryHostName(), expected.getPrimaryHostName() );
-
-        Set<NetworkInterface>  a_netifs = new HashSet<NetworkInterface>( actual.getInterfaces().getElements() );
-        Set<NetworkInterface>  e_netifs = new HashSet<NetworkInterface>( expected.getInterfaces().getElements() );
-        Assert.assertEquals( a_netifs, e_netifs );
-    }
-
-
-
     //==============================================================
     //  system_info
     //==============================================================
@@ -114,11 +113,7 @@ public class OvalXmlTest
     public void processSystemInfo(
                     final String testTarget,
                     final String filepath,
-                    final String osName,
-                    final String osVersion,
-                    final String architecture,
-                    final String primaryHostName,
-                    final NetworkInterface[] netifs
+                    final SystemInfo systemInfo
                     )
     throws Exception
     {
@@ -135,18 +130,8 @@ public class OvalXmlTest
         Assert.assertNotNull( obj );
         Assert.assertTrue( obj instanceof SystemInfo);
 
-        SystemInfo  state = SystemInfo.class.cast( obj );
-        Assert.assertEquals( osName, state.getOsName() );
-        Assert.assertEquals( osVersion, state.getOsVersion() );
-        Assert.assertEquals( architecture, state.getArchitecture() );
-        Assert.assertEquals( primaryHostName, state.getPrimaryHostName() );
-        if (netifs != null) {
-            Collection<NetworkInterface>  interfaces = state.getInterfaces().getElements();
-            Assert.assertEquals( netifs.length, interfaces.size() );
-            for (NetworkInterface  ni : netifs) {
-                Assert.assertTrue( interfaces.contains( ni ) );
-            }
-        }
+        SystemInfo  a_systemInfo = SystemInfo.class.cast( obj );
+        _validate( a_systemInfo, systemInfo);
         Reporter.log( "...validation OK", true );
     }
 
