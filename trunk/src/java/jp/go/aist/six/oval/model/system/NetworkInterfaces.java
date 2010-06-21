@@ -70,13 +70,12 @@ public class NetworkInterfaces
 
 
 
-//    public void setInterface(
-//                    final Collection<? extends NetworkInterface> netifs
-//                    )
-//    {
-//        clear();
-//        addAll( netifs );
-//    }
+    public void setInterface(
+                    final Collection<? extends NetworkInterface> netifs
+                    )
+    {
+        reset( netifs );
+    }
 
 
     public boolean addInterface(
@@ -87,11 +86,10 @@ public class NetworkInterfaces
     }
 
 
-//    public Collection<NetworkInterface> getInterface()
-//    {
-//        return _values();
-//    }
-
+    public Collection<NetworkInterface> getInterface()
+    {
+        return _values();
+    }
 
 
     public Iterator<NetworkInterface> iterateInterface()

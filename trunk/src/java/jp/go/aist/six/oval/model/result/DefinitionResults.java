@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.result;
 
 import jp.go.aist.six.oval.model.OvalElementContainer;
+import java.util.Collection;
 
 
 
@@ -39,6 +40,43 @@ extends OvalElementContainer<DefinitionResult>
      */
     public DefinitionResults()
     {
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public DefinitionResults(
+                    final Collection<? extends DefinitionResult> elements
+                    )
+    {
+        super( elements );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public DefinitionResults(
+                    final DefinitionResult[] elements
+                    )
+    {
+        super( elements );
+    }
+
+
+
+    public void setDefinition(
+                    final Collection<? extends DefinitionResult> elements
+                    )
+    {
+        reset( elements );
+    }
+
+
+    public Collection<DefinitionResult> getDefinition()
+    {
+        return _values();
     }
 
 }

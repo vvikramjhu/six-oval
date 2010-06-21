@@ -35,7 +35,7 @@ import java.util.Collections;
  * @version $Id$
  */
 public class OvalElementContainer<E extends OvalElement>
-extends Container<E>
+    extends Container<E>
 {
 
     /**
@@ -43,6 +43,28 @@ extends Container<E>
      */
     public OvalElementContainer()
     {
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public OvalElementContainer(
+                    final Collection<? extends E> elements
+                    )
+    {
+        super( elements );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public OvalElementContainer(
+                    final E[] elements
+                    )
+    {
+        super( elements );
     }
 
 

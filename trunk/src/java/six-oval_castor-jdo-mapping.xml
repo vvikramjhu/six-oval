@@ -581,11 +581,17 @@
         <!-- SC : NetworkInterface = 1 : n -->
         <field name="systemInfo.interfaces.interface"
             type="jp.go.aist.six.oval.model.system.NetworkInterface"
+            collection="collection">
+            <sql many-key="s_sc__PID"/>
+        </field>
+<!-- backup
+        <field name="systemInfo.interfaces.interface"
+            type="jp.go.aist.six.oval.model.system.NetworkInterface"
             collection="collection"
             lazy="true">
             <sql many-key="s_sc__PID"/>
         </field>
-
+-->
     </class>
 
 

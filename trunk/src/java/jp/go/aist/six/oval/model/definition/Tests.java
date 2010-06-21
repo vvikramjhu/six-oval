@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.OvalElementContainer;
+import java.util.Collection;
 
 
 
@@ -31,7 +32,7 @@ import jp.go.aist.six.oval.model.OvalElementContainer;
  * @version $Id$
  */
 public class Tests
-extends OvalElementContainer<Test>
+    extends OvalElementContainer<Test>
 {
 
     /**
@@ -39,6 +40,43 @@ extends OvalElementContainer<Test>
      */
     public Tests()
     {
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public Tests(
+                    final Collection<? extends Test> elements
+                    )
+    {
+        super( elements );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public Tests(
+                    final Test[] elements
+                    )
+    {
+        super( elements );
+    }
+
+
+
+    public void setTest(
+                    final Collection<? extends Test> elements
+                    )
+    {
+        reset( elements );
+    }
+
+
+    public Collection<Test> getTest()
+    {
+        return _values();
     }
 
 }

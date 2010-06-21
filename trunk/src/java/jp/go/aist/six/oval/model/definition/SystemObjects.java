@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.OvalElementContainer;
+import java.util.Collection;
 
 
 
@@ -39,6 +40,43 @@ extends OvalElementContainer<SystemObject>
      */
     public SystemObjects()
     {
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public SystemObjects(
+                    final Collection<? extends SystemObject> elements
+                    )
+    {
+        super( elements );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public SystemObjects(
+                    final SystemObject[] elements
+                    )
+    {
+        super( elements );
+    }
+
+
+
+    public void setObject(
+                    final Collection<? extends SystemObject> elements
+                    )
+    {
+        reset( elements );
+    }
+
+
+    public Collection<SystemObject> getObject()
+    {
+        return _values();
     }
 
 }

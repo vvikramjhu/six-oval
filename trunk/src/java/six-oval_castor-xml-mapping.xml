@@ -290,13 +290,12 @@
 
 
     <!-- ======================================================= -->
-    <!-- Definitions - definitions                               -->
+    <!-- Definitions                                             -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definition.Definitions">
-        <field name="elements" 
+        <field name="definition" 
             type="jp.go.aist.six.oval.model.definition.Definition"
-            collection="collection"
-            >
+            collection="collection">
             <bind-xml name="definition" node="element"/>
         </field>
     </class>
@@ -610,10 +609,10 @@
 
 
     <!-- ======================================================= -->
-    <!-- Tests - tests                                           -->
+    <!-- Tests                                                   -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definition.Tests">
-        <field name="elements" 
+        <field name="test" 
             type="jp.go.aist.six.oval.model.definition.Test"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
@@ -689,11 +688,11 @@
 
 
     <!-- ======================================================= -->
-    <!-- SystemObjects - objects                                 -->
+    <!-- SystemObjects                                           -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definition.SystemObjects">
 
-        <field name="elements" 
+        <field name="object" 
             type="jp.go.aist.six.oval.model.definition.SystemObject"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
@@ -727,11 +726,11 @@
 
 
     <!-- ======================================================= -->
-    <!-- States - states                                         -->
+    <!-- States                                                  -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definition.States">
 
-        <field name="elements" 
+        <field name="state" 
             type="jp.go.aist.six.oval.model.definition.State"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
@@ -991,13 +990,39 @@
             <bind-xml name="primary_host_name" node="element"/>
         </field>
 
+        <field name="interfaces" 
+            type="jp.go.aist.six.oval.model.system.NetworkInterfaces">
+            <bind-xml name="interfaces" node="element"/> 
+        </field>
+<!--
         <field name="interfaces.interface" 
             type="jp.go.aist.six.oval.model.system.NetworkInterface"
             collection="collection">
             <bind-xml name="interface" node="element" 
                 location="interfaces"/>
         </field>
+-->
 
+    </class>
+
+
+
+    <!-- ======================================================= -->
+    <!-- NetworkInterfaces                                       -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.system.NetworkInterfaces">
+        <map-to xml="interfaces"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
+
+        <field name="interface" 
+            type="jp.go.aist.six.oval.model.system.NetworkInterface"
+            collection="collection"
+            get-method="iterateInterface"
+            set-method="addInterface"
+            >
+            <bind-xml name="interface" node="element" 
+                />
+        </field>
     </class>
 
 
@@ -1114,7 +1139,7 @@
     <!-- SystemData                                              -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.system.SystemData">
-        <field name="elements" 
+        <field name="item" 
             type="jp.go.aist.six.oval.model.system.Item"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
@@ -1186,7 +1211,7 @@
     <!-- DefinitionResults                                       -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.result.DefinitionResults">
-        <field name="elements" 
+        <field name="definition" 
             type="jp.go.aist.six.oval.model.result.DefinitionResult"
             collection="collection">
             <bind-xml name="definition" node="element"/>

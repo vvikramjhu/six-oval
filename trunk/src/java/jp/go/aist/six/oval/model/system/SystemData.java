@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.system;
 
 import jp.go.aist.six.oval.model.Container;
+import java.util.Collection;
 
 
 
@@ -40,6 +41,42 @@ public class SystemData
     {
     }
 
+
+    /**
+     * Constructor.
+     */
+    public SystemData(
+                    final Collection<? extends Item> elements
+                    )
+    {
+        super( elements );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public SystemData(
+                    final Item[] elements
+                    )
+    {
+        super( elements );
+    }
+
+
+
+    public void setItem(
+                    final Collection<? extends Item> elements
+                    )
+    {
+        reset( elements );
+    }
+
+
+    public Collection<Item> getItem()
+    {
+        return _values();
+    }
 
 
     //**************************************************************

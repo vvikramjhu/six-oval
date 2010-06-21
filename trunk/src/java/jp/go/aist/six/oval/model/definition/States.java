@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.OvalElementContainer;
+import java.util.Collection;
 
 
 
@@ -39,6 +40,43 @@ public class States
      */
     public States()
     {
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public States(
+                    final Collection<? extends State> elements
+                    )
+    {
+        super( elements );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public States(
+                    final State[] elements
+                    )
+    {
+        super( elements );
+    }
+
+
+
+    public void setState(
+                    final Collection<? extends State> elements
+                    )
+    {
+        reset( elements );
+    }
+
+
+    public Collection<State> getState()
+    {
+        return _values();
     }
 
 }

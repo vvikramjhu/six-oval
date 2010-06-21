@@ -96,6 +96,18 @@ public abstract class Container<E>
 
 
 
+    /**
+     */
+    public void reset(
+                    final Collection<? extends E> elements
+                    )
+    {
+        clear();
+        addAll( elements );
+    }
+
+
+
 //    /**
 //     */
 //    protected Set<Map.Entry<Object, E>> _entrySet()
@@ -316,8 +328,8 @@ public abstract class Container<E>
         }
 
         boolean  changed = false;
-        for (Object  o : c) {
-            if (!contains( o )) {
+        for (Object  o : this) {
+            if (!c.contains( o )) {
                 changed = changed || remove( o );
             }
         }
