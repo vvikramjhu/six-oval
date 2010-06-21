@@ -156,13 +156,13 @@ public class OvalXmlFragmentTest
 
         Definition  def = (Definition)_unmarshal( defPath );
         Assert.assertNotNull( def );
-        defs.getDefinitions().addElement( def );
+        defs.getDefinitions().add( def );
 
         Tests  tests = new Tests();
         for (String  path : testPaths) {
             Test  test = (Test)_unmarshal( path );
             Assert.assertNotNull( test );
-            tests.addElement( test );
+            tests.add( test );
         }
         defs.setTests( tests );
 
@@ -170,7 +170,7 @@ public class OvalXmlFragmentTest
         for (String  path : objectPaths) {
             SystemObject  obj = (SystemObject)_unmarshal( path );
             Assert.assertNotNull( obj );
-            objects.addElement( obj );
+            objects.add( obj );
         }
         defs.setObjects( objects );
 
@@ -178,7 +178,7 @@ public class OvalXmlFragmentTest
         for (String  path : statePaths) {
             State  state= (State)_unmarshal( path );
             Assert.assertNotNull( state );
-            states.addElement( state );
+            states.add( state );
         }
         defs.setStates( states );
 
