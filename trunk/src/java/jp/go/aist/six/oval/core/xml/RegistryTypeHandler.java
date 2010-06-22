@@ -24,6 +24,7 @@ import jp.go.aist.six.oval.model.windows.RegistryType;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
+
 public class RegistryTypeHandler
     extends GeneralizedFieldHandler
 {
@@ -38,8 +39,8 @@ public class RegistryTypeHandler
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        RegistryType  type = (RegistryType)value;
-        return type.toString();
+        RegistryType  e = (RegistryType)value;
+        return e.value();
     }
 
 
@@ -47,13 +48,13 @@ public class RegistryTypeHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return RegistryType.valueOf( (String)value );
+        return RegistryType.fromValue( (String)value );
     }
 
 
 
     @Override
-    public Class getFieldType()
+    public Class<RegistryType> getFieldType()
     {
         return RegistryType.class;
     }

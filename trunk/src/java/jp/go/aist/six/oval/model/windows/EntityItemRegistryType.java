@@ -62,7 +62,11 @@ public class EntityItemRegistryType
                     final String data
                     )
     {
-        super.setData( RegistryType.fromValue( data ).value() );
+        if (data != null  &&  data.length() > 0) {
+            RegistryType.fromValue( data );   //validation
+        }
+
+        super.setData( data );
     }
 
 
@@ -93,14 +97,6 @@ public class EntityItemRegistryType
         }
 
         return super.equals( obj );
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return "EntityItemRegistryType[" + super.toString() + "]";
     }
 
 }

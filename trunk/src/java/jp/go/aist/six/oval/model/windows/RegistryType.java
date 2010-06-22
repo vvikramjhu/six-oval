@@ -20,105 +20,76 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import java.io.Serializable;
-import java.util.HashMap;
-
-
 
 
 /**
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public final class RegistryType
-    implements Serializable
+public enum RegistryType
 {
 
-    private static final String  _REG_BINARY_    = "reg_binary";
-    private static final String  _REG_DWORD_     = "reg_dword";
-    private static final String  _REG_EXPAND_SZ_ = "reg_expand_sz";
-    private static final String  _REG_MULTI_SZ_  = "reg_multi_sz";
-    private static final String  _REG_NONE_      = "reg_none";
-    private static final String  _REG_QWORD_     = "reg_qword";
-    private static final String  _REG_SZ_        = "reg_sz";
-
-
-    public static final RegistryType  REG_BINARY    = new RegistryType( _REG_BINARY_ );
-    public static final RegistryType  REG_DWORD     = new RegistryType( _REG_DWORD_ );
-    public static final RegistryType  REG_EXPAND_SZ = new RegistryType( _REG_EXPAND_SZ_ );
-    public static final RegistryType  REG_MULTI_SZ  = new RegistryType( _REG_MULTI_SZ_ );
-    public static final RegistryType  REG_NONE      = new RegistryType( _REG_NONE_ );
-    public static final RegistryType  REG_QWORD     = new RegistryType( _REG_QWORD_ );
-    public static final RegistryType  REG_SZ        = new RegistryType( _REG_SZ_ );
-
-
-
-    private static HashMap<String, RegistryType> _INIT_()
-    {
-        HashMap<String, RegistryType>  map = new HashMap<String, RegistryType>();
-        map.put( _REG_BINARY_,    REG_BINARY );
-        map.put( _REG_DWORD_,     REG_DWORD );
-        map.put( _REG_EXPAND_SZ_, REG_EXPAND_SZ );
-        map.put( _REG_MULTI_SZ_,  REG_MULTI_SZ );
-        map.put( _REG_NONE_,      REG_NONE );
-        map.put( _REG_QWORD_,     REG_QWORD );
-        map.put( _REG_SZ_,        REG_SZ );
-        return map;
-    }
-
-    private static final HashMap<String, RegistryType>  _INSTANCES_ = _INIT_();
-
+    REG_BINARY( "reg_binary" ),
+    REG_DWORD( "reg_dword" ),
+    REG_EXPAND_SZ( "reg_expand_sz" ),
+    REG_MULTI_SZ( "reg_multi_sz" ),
+    REG_NONE( "reg_none" ),
+    REG_QWORD( "reg_qword" ),
+    REG_SZ( "reg_sz" );
 
 
 
     /**
+     * An instance factory method.
      */
-    public static RegistryType valueOf( final String name )
+    public static RegistryType fromValue(
+                    final String value
+                    )
     {
-        RegistryType  flag = null;
-        if (name != null) {
-            flag = _INSTANCES_.get( name );
-        }
+        for (RegistryType  e : RegistryType.values()) {
+          if (e._value.equals( value )) {
+              return e;
+          }
+      }
 
-        if (flag == null) {
-            throw new IllegalArgumentException( "invalid registry type: " + name );
-        }
-
-        return flag;
+      throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
 
+    private final String  _value;
 
 
     /**
+     * Constructor.
      */
-    private RegistryType( final String name )
+    RegistryType(
+                    final String value
+                    )
     {
-        _name = name;
+        this._value = value;
     }
 
 
 
     /**
      */
-    public String getName()
+    public String value()
     {
-        return _name;
+        return this._value;
     }
 
 
 
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
     //  java.lang.Object
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
 
     @Override
     public String toString()
     {
-        return getName();
+        return this._value;
     }
 
 }

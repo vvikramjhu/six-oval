@@ -51,7 +51,7 @@ public class EntityStateRegistryType
                     final String data
                     )
     {
-        super.setData( RegistryType.valueOf( data ).getName() );
+        super.setData( RegistryType.fromValue( data ).value() );
     }
 
 

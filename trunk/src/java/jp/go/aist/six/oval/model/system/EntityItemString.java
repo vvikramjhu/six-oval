@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.system;
 
+import jp.go.aist.six.oval.model.common.Datatype;
+
 
 
 /**
@@ -46,7 +48,20 @@ public class EntityItemString
                     final String data
                     )
     {
-        setData( data );
+        super( data );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemString(
+                    final String data,
+                    final Datatype datatype,
+                    final Status status
+                    )
+    {
+        super( data, datatype, status );
     }
 
 
@@ -77,14 +92,6 @@ public class EntityItemString
         }
 
         return super.equals( obj );
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return "EntityItemString[" + super.toString() + "]";
     }
 
 }

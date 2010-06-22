@@ -29,14 +29,14 @@ import jp.go.aist.six.oval.model.system.EntityItemString;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class EntityItemRegistryType
+public class EntityItemRegistryHive
     extends EntityItemString
 {
 
     /**
      * Constructor.
      */
-    public EntityItemRegistryType()
+    public EntityItemRegistryHive()
     {
     }
 
@@ -44,7 +44,7 @@ public class EntityItemRegistryType
     /**
      * Constructor.
      */
-    public EntityItemRegistryType(
+    public EntityItemRegistryHive(
                     final String data
                     )
     {
@@ -62,7 +62,11 @@ public class EntityItemRegistryType
                     final String data
                     )
     {
-        super.setData( RegistryType.fromValue( data ).value() );
+        if (data != null  &&  data.length() > 0) {
+            RegistryHive.valueOf( data );   //validation
+        }
+
+        super.setData( data );
     }
 
 
@@ -88,19 +92,11 @@ public class EntityItemRegistryType
             return true;
         }
 
-        if (!(obj instanceof EntityItemRegistryType)) {
+        if (!(obj instanceof EntityItemRegistryHive)) {
             return false;
         }
 
         return super.equals( obj );
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return "EntityItemRegistryType[" + super.toString() + "]";
     }
 
 }

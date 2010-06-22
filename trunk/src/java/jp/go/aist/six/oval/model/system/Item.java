@@ -177,6 +177,45 @@ public abstract class Item
     //**************************************************************
 
     @Override
+    public int hashCode()
+    {
+        final int  prime = 37;
+        int  result = 17;
+
+        int  id = getID();
+        result = prime * result + id;
+
+        return result;
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof Item)) {
+            return false;
+        }
+
+        Item  other = (Item)obj;
+        int  other_id = other.getID();
+        int   this_id =  this.getID();
+        if (this_id == other_id) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+
+    @Override
     public String toString()
     {
         return "id=" + getID()

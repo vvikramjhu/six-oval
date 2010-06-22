@@ -73,10 +73,19 @@ public class SystemData
     }
 
 
+//    public boolean addItem(
+//                    final Item element
+//                    )
+//    {
+//        return add( element );
+//    }
+
+
     public Collection<Item> getItem()
     {
         return _values();
     }
+
 
 
     //**************************************************************

@@ -877,9 +877,9 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <!-- ======================================================= -->
-    <!-- EntityItemBaseType                                          -->
+    <!-- EntityItemBase                                          -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.system.EntityItemBaseType"
+    <class name="jp.go.aist.six.oval.model.system.EntityItemBase"
         verify-constructable="false">
 
         <field name="data" type="string">
@@ -904,25 +904,34 @@
 
 
     <!-- ======================================================= -->
-    <!-- EntityItemAnyType                                       -->
+    <!-- EntityItemAnySimple                                     -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.system.EntityItemAnyType"
-        extends="jp.go.aist.six.oval.model.system.EntityItemBaseType">
+    <class name="jp.go.aist.six.oval.model.system.EntityItemAnySimple"
+        extends="jp.go.aist.six.oval.model.system.EntityItemBase">
     </class>
 
 
 
     <!-- ======================================================= -->
-    <!-- EntityItemStringType                                  -->
+    <!-- EntityItemInt                                           -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.system.EntityItemStringType"
-        extends="jp.go.aist.six.oval.model.system.EntityItemBaseType">
+    <class name="jp.go.aist.six.oval.model.system.EntityItemInt"
+        extends="jp.go.aist.six.oval.model.system.EntityItemBase">
     </class>
 
 
 
     <!-- ======================================================= -->
-    <!-- OvalSystemCharacteristics - oval_system_characteristics -->
+    <!-- EntityItemString                                        -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.system.EntityItemString"
+        extends="jp.go.aist.six.oval.model.system.EntityItemBase">
+    </class>
+
+
+
+    <!-- ======================================================= -->
+    <!-- OvalSystemCharacteristics                               -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics">
         <map-to xml="oval_system_characteristics"
@@ -1147,6 +1156,9 @@
     <!-- SystemData                                              -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.system.SystemData">
+        <map-to xml="system_data"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
+
         <field name="item" 
             type="jp.go.aist.six.oval.model.system.Item"
             collection="collection">
@@ -2087,6 +2099,24 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <!-- ======================================================= -->
+    <!-- EntityItemRegistryHive                                  -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemRegistryHive"
+        extends="jp.go.aist.six.oval.model.system.EntityItemString">
+    </class>
+
+
+
+    <!-- ======================================================= -->
+    <!-- EntityItemRegistryType                                  -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemRegistryType"
+        extends="jp.go.aist.six.oval.model.system.EntityItemString">
+    </class>
+
+
+
+    <!-- ======================================================= -->
     <!-- FileTest                                               -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.FileTest"
@@ -2348,32 +2378,32 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"/>
 
         <field name="key" 
-            type="jp.go.aist.six.oval.model.system.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="key" node="element"/>
         </field>
 
         <field name="metabaseID" 
-            type="jp.go.aist.six.oval.model.system.EntityItemIntType">
+            type="jp.go.aist.six.oval.model.system.EntityItemInt">
             <bind-xml name="id" node="element"/>
         </field>
 
         <field name="name" 
-            type="jp.go.aist.six.oval.model.system.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="name" node="element"/>
         </field>
 
         <field name="userType"  
-            type="jp.go.aist.six.oval.model.system.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="user_type" node="element"/>
         </field>
 
         <field name="dataType"  
-            type="jp.go.aist.six.oval.model.system.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="data_type" node="element"/>
         </field>
 
         <field name="data" 
-            type="jp.go.aist.six.oval.model.system.EntityItemAnyType"
+            type="jp.go.aist.six.oval.model.system.EntityItemAnySimple"
             collection="collection">
             <bind-xml name="data" node="element"/>
         </field>
@@ -2486,28 +2516,28 @@
         <map-to xml="registry_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"/>
 
-        <field name="hive" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.RegistryHiveHandler">
+        <field name="hive"
+            type="jp.go.aist.six.oval.model.windows.EntityItemRegistryHive">
             <bind-xml name="hive" node="element"/>
         </field>
 
         <field name="key" 
-            type="jp.go.aist.six.oval.model.system.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="key" node="element"/>
         </field>
 
         <field name="name" 
-            type="jp.go.aist.six.oval.model.system.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="name" node="element"/>
         </field>
 
-        <field name="type" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.RegistryTypeHandler">
+        <field name="type" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemRegistryType">
             <bind-xml name="type" node="element"/>
         </field>
 
         <field name="value" 
-            type="jp.go.aist.six.oval.model.system.EntityItemAnyType">
+            type="jp.go.aist.six.oval.model.system.EntityItemAnySimple">
             <bind-xml name="value" node="element"/>
         </field>
     </class>

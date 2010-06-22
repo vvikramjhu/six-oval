@@ -47,7 +47,7 @@ public class OvalSystemCharacteristics
 
 //    private String  _objectsDigest;
 
-    private SystemData  _systemData;
+    private SystemData  _systemData = new SystemData();
     //{0..1}
 //    private Collection<Item>  _items = new ArrayList<Item>();
 

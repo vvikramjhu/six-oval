@@ -21,8 +21,8 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.core.model.system.ItemType;
-import jp.go.aist.six.oval.model.system.EntityItemAnyType;
-import jp.go.aist.six.oval.model.system.EntityItemStringType;
+import jp.go.aist.six.oval.model.system.EntityItemAnySimple;
+import jp.go.aist.six.oval.model.system.EntityItemString;
 import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.Status;
 
@@ -37,22 +37,22 @@ public class RegistryItem
     extends Item
 {
 
-    private RegistryHive  _hive;
-    //{win-sc:EntityItemRegistryHiveType, 0..1}
+    private EntityItemRegistryHive  _hive;
+    //{0..1}
 
-    private EntityItemStringType  _key;
-    //{oval-sc:EntityItemStringType, 0..1, nillable="true"}
+    private EntityItemString  _key;
+    //{0..1, nillable="true"}
 
-    private EntityItemStringType  _name;
-    //{oval-sc:EntityItemStringType, 0..1, nillable="true"}
+    private EntityItemString  _name;
+    //{0..1, nillable="true"}
 
-    private RegistryType  _type;
-    //{win-sc:EntityItemRegistryTypeType, 0..1}
+    private EntityItemRegistryType  _type;
+    //{0..1}
 
-    private EntityItemAnyType  _value;
-    //{oval-sc:EntityItemAnyType, 0..*}
-    // We found that every registry item has at most one value!!! //
-//    private List<EntityItemAnyType>  _values = new ArrayList<EntityItemAnyType>();
+    private EntityItemAnySimple  _value;
+    //{0..*}
+    // We have never found a registry item that has more than one value!!! //
+//    private List<EntityItemAnySimple>  _values = new ArrayList<EntityItemAnySimple>();
 
 
 
@@ -93,31 +93,31 @@ public class RegistryItem
     public RegistryItem(
                     final int id,
                     final Status status,
-                    final RegistryHive hive,
-                    final EntityItemStringType key,
-                    final EntityItemStringType name,
-                    final EntityItemAnyType value,
-                    final RegistryType type
+                    final EntityItemRegistryHive hive,
+                    final EntityItemString key,
+                    final EntityItemString name,
+                    final EntityItemRegistryType type,
+                    final EntityItemAnySimple value
                     )
     {
         this( id, status );
         setHive( hive );
         setKey( key );
         setName( name );
-        setValue( value );
         setType( type );
+        setValue( value );
     }
 
 
 
-    public RegistryHive getHive()
+    public EntityItemRegistryHive getHive()
     {
         return _hive;
     }
 
 
     public void setHive(
-                    final RegistryHive hive
+                    final EntityItemRegistryHive hive
                     )
     {
         _hive = hive;
@@ -125,14 +125,14 @@ public class RegistryItem
 
 
 
-    public EntityItemStringType getKey()
+    public EntityItemString getKey()
     {
         return _key;
     }
 
 
     public void setKey(
-                    final EntityItemStringType key
+                    final EntityItemString key
                     )
     {
         _key = key;
@@ -140,14 +140,14 @@ public class RegistryItem
 
 
 
-    public EntityItemStringType getName()
+    public EntityItemString getName()
     {
         return _name;
     }
 
 
     public void setName(
-                    final EntityItemStringType name
+                    final EntityItemString name
                     )
     {
         _name = name;
@@ -155,14 +155,14 @@ public class RegistryItem
 
 
 
-    public RegistryType getType()
+    public EntityItemRegistryType getType()
     {
         return _type;
     }
 
 
     public void setType(
-                    final RegistryType type
+                    final EntityItemRegistryType type
                     )
     {
         _type = type;
@@ -171,48 +171,17 @@ public class RegistryItem
 
 
     public void setValue(
-                    final EntityItemAnyType value
+                    final EntityItemAnySimple value
                     )
     {
         _value = value;
     }
 
 
-    public EntityItemAnyType getValue()
+    public EntityItemAnySimple getValue()
     {
         return _value;
     }
-
-//    /**
-//     * @return the values
-//     */
-//    public List<EntityItemAnyType> getValues()
-//    {
-//        return _values;
-//    }
-//
-//
-//
-//    /**
-//     * @param values the values to set
-//     */
-//    public void setValues( final List<EntityItemAnyType> values )
-//    {
-//        _values.clear();
-//        Iterator<EntityItemAnyType>  i = values.iterator();
-//        while (i.hasNext()) {
-//            addValue( i.next() );
-//        }
-//    }
-//
-//
-//    /**
-//     *
-//     */
-//    public boolean addValue( final EntityItemAnyType value )
-//    {
-//        return _values.add( value );
-//    }
 
 
 
@@ -232,9 +201,28 @@ public class RegistryItem
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
+    @Override
+    public int hashCode()
+    {
+        return super.hashCode();
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (!(obj instanceof RegistryItem)) {
+            return false;
+        }
+
+        return super.equals( obj );
+    }
+
+
+
     @Override
     public String toString()
     {

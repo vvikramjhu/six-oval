@@ -21,9 +21,9 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.core.model.system.ItemType;
-import jp.go.aist.six.oval.model.system.EntityItemAnyType;
-import jp.go.aist.six.oval.model.system.EntityItemIntType;
-import jp.go.aist.six.oval.model.system.EntityItemStringType;
+import jp.go.aist.six.oval.model.system.EntityItemAnySimple;
+import jp.go.aist.six.oval.model.system.EntityItemInt;
+import jp.go.aist.six.oval.model.system.EntityItemString;
 import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.Status;
 import java.util.ArrayList;
@@ -40,22 +40,22 @@ public class MetabaseItem
     extends Item
 {
 
-    private EntityItemStringType  _key;
+    private EntityItemString  _key;
     //{oval-sc:EntityItemStringType, 0..1}
 
-    private EntityItemIntType  _mbID;
+    private EntityItemInt  _mbID;
     //{oval-sc:EntityItemIntType, 0..1, nillable="true"}
 
-    private EntityItemStringType  _name;
+    private EntityItemString  _name;
     //{oval-sc:EntityItemStringType, 0..1}
 
-    private EntityItemStringType  _userType;
+    private EntityItemString  _userType;
     //{oval-sc:EntityItemStringType, 0..1}
 
-    private EntityItemStringType  _dataType;
+    private EntityItemString  _dataType;
     //{oval-sc:EntityItemStringType, 0..1}
 
-    private Collection<EntityItemAnyType>  _data = new ArrayList<EntityItemAnyType>();
+    private Collection<EntityItemAnySimple>  _data = new ArrayList<EntityItemAnySimple>();
     //{oval-sc:EntityItemAnyType, 0..*}
 
 
@@ -91,14 +91,14 @@ public class MetabaseItem
     }
 
 
-    public EntityItemStringType getKey()
+    public EntityItemString getKey()
     {
         return _key;
     }
 
 
     public void setKey(
-                    final EntityItemStringType key
+                    final EntityItemString key
                     )
     {
         _key = key;
@@ -106,14 +106,14 @@ public class MetabaseItem
 
 
 
-    public EntityItemIntType getMetabaseID()
+    public EntityItemInt getMetabaseID()
     {
         return _mbID;
     }
 
 
     public void setMetabaseID(
-                    final EntityItemIntType id
+                    final EntityItemInt id
                     )
     {
         _mbID = id;
@@ -121,14 +121,14 @@ public class MetabaseItem
 
 
 
-    public EntityItemStringType getName()
+    public EntityItemString getName()
     {
         return _name;
     }
 
 
     public void setName(
-                    final EntityItemStringType name
+                    final EntityItemString name
                     )
     {
         _name = name;
@@ -136,14 +136,14 @@ public class MetabaseItem
 
 
 
-    public EntityItemStringType getUserType()
+    public EntityItemString getUserType()
     {
         return _userType;
     }
 
 
     public void setUserType(
-                    final EntityItemStringType type
+                    final EntityItemString type
                     )
     {
         _userType = type;
@@ -151,14 +151,14 @@ public class MetabaseItem
 
 
 
-    public EntityItemStringType getDataType()
+    public EntityItemString getDataType()
     {
         return _dataType;
     }
 
 
     public void setDataType(
-                    final EntityItemStringType type
+                    final EntityItemString type
                     )
     {
         _dataType = type;
@@ -167,14 +167,14 @@ public class MetabaseItem
 
 
     public void setData(
-                    final Collection<EntityItemAnyType> data
+                    final Collection<EntityItemAnySimple> data
                     )
     {
         _data = data;
     }
 
 
-    public Collection<EntityItemAnyType> getData()
+    public Collection<EntityItemAnySimple> getData()
     {
         return _data;
     }

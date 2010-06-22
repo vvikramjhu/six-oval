@@ -1,6 +1,7 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.model.common.Generator;
+import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.NetworkInterface;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.SystemInfo;
@@ -55,6 +56,17 @@ public class OvalXmlTest
         Set<NetworkInterface>  a_netifs = new HashSet<NetworkInterface>( actual.getInterfaces() );
         Set<NetworkInterface>  e_netifs = new HashSet<NetworkInterface>( expected.getInterfaces() );
         Assert.assertEquals( a_netifs, e_netifs );
+    }
+
+
+
+    private void _validate(
+                    final Item actual,
+                    final Item expected
+                    )
+    {
+        Assert.assertEquals( actual.getID(), expected.getID() );
+        Assert.assertEquals( actual.getStatus(), expected.getStatus() );
     }
 
 
@@ -137,6 +149,36 @@ public class OvalXmlTest
 
         Reporter.log( "validating...", true );
         _validate( a_systemInfo, systemInfo);
+        Reporter.log( "...validation OK", true );
+    }
+
+
+
+    //==============================================================
+    //  item
+    //==============================================================
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "oval-sc:item"},
+                    dataProvider="oval-sc-item",
+                    alwaysRun=true
+                    )
+    public void processItem(
+                    final String testTarget,
+                    final String filepath,
+                    final Item expectedObject
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL XML //", true );
+        Reporter.log( "  * target type: " + testTarget, true );
+
+        Item  actualObject = _unmarshalFile( filepath, Item.class );
+
+        Reporter.log( "validating...", true );
+        _validate( actualObject, expectedObject );
         Reporter.log( "...validation OK", true );
     }
 

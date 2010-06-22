@@ -59,6 +59,34 @@ public abstract class EntityItemBase
     }
 
 
+    /**
+     * Constructor.
+     */
+    public EntityItemBase(
+                    final String data
+                    )
+    {
+        setData( data );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemBase(
+                    final String data,
+                    final Datatype datatype,
+                    final Status status
+                    )
+    {
+        setData( data );
+        setDatatype( datatype );
+        setStatus( status );
+    }
+
+
+
+
 
     public void setData(
                     final String data
@@ -185,10 +213,11 @@ public abstract class EntityItemBase
     @Override
     public String toString()
     {
-        return "datatype=" + getDatatype()
+        return "[datatype=" + getDatatype()
                         + ", status=" + getStatus()
 //                        + ", mask=" + getMask()
-                        + ", data=" + getData();
+                        + ", data=" + getData()
+                        + "]";
     }
 
 }
