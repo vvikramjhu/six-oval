@@ -126,7 +126,7 @@ public abstract class Item
 
 
     //**************************************************************
-    //  Castor JDO support
+    //  Dependent
     //**************************************************************
 
     private OvalSystemCharacteristics  _master;
