@@ -43,7 +43,6 @@
           </object>
         </collected_objects>
 
-<!--
         <system_data>
           <registry_item id="83" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows">
             <hive>HKEY_LOCAL_MACHINE</hive>
@@ -81,5 +80,5 @@
             <key status="does not exist">SOFTWARE\Microsoft\Office\9.0\Publisher\InstallRoot</key>
           </registry_item>
         </system_data>
--->
+
 </oval_system_characteristics>

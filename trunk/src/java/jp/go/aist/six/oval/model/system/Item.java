@@ -45,8 +45,8 @@ public abstract class Item
     /**
      * The default status: "exists".
      */
-    public static final ItemStatus  DEFAULT_STATUS = ItemStatus.EXISTS;
-    private ItemStatus  _status;
+    public static final Status  DEFAULT_STATUS = Status.EXISTS;
+    private Status  _status;
     //{optional, default="exists"}
 
 
@@ -75,7 +75,7 @@ public abstract class Item
      */
     public Item(
                     final int id,
-                    final ItemStatus status
+                    final Status status
                     )
     {
         setID( id );
@@ -111,14 +111,14 @@ public abstract class Item
 
 
     public void setStatus(
-                    final ItemStatus status
+                    final Status status
                     )
     {
         _status = status;
     }
 
 
-    public ItemStatus getStatus()
+    public Status getStatus()
     {
         return (_status == null ? DEFAULT_STATUS : _status);
     }

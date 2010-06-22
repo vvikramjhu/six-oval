@@ -24,7 +24,7 @@ import jp.go.aist.six.oval.core.model.system.ItemType;
 import jp.go.aist.six.oval.model.system.EntityItemAnyType;
 import jp.go.aist.six.oval.model.system.EntityItemStringType;
 import jp.go.aist.six.oval.model.system.Item;
-import jp.go.aist.six.oval.model.system.ItemStatus;
+import jp.go.aist.six.oval.model.system.Status;
 
 
 
@@ -80,7 +80,7 @@ public class RegistryItem
      */
     public RegistryItem(
                     final int id,
-                    final ItemStatus status
+                    final Status status
                     )
     {
         super( id, status );
@@ -92,7 +92,7 @@ public class RegistryItem
      */
     public RegistryItem(
                     final int id,
-                    final ItemStatus status,
+                    final Status status,
                     final RegistryHive hive,
                     final EntityItemStringType key,
                     final EntityItemStringType name,

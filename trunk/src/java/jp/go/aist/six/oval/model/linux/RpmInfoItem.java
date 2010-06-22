@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.core.model.system.ItemType;
-import jp.go.aist.six.oval.model.system.ItemStatus;
+import jp.go.aist.six.oval.model.system.Status;
 
 
 
@@ -64,7 +64,7 @@ public class RpmInfoItem
      */
     public RpmInfoItem(
                     final int id,
-                    final ItemStatus status
+                    final Status status
                     )
     {
         super( id, status );
@@ -76,7 +76,7 @@ public class RpmInfoItem
      */
     public RpmInfoItem(
                     final int id,
-                    final ItemStatus status,
+                    final Status status,
                     final String name
                     )
     {
@@ -108,7 +108,7 @@ public class RpmInfoItem
      */
     public RpmInfoItem(
                     final int id,
-                    final ItemStatus status,
+                    final Status status,
                     final String name,
                     final String arch,
                     final String epoch,

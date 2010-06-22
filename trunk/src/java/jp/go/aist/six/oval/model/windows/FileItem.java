@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.core.model.system.ItemType;
 import jp.go.aist.six.oval.model.system.Item;
-import jp.go.aist.six.oval.model.system.ItemStatus;
+import jp.go.aist.six.oval.model.system.Status;
 
 
 
@@ -79,7 +79,7 @@ public class FileItem
      */
     public FileItem(
                     final int id,
-                    final ItemStatus status
+                    final Status status
                     )
     {
         super( id, status );
@@ -91,7 +91,7 @@ public class FileItem
      */
     public FileItem(
                     final int id,
-                    final ItemStatus status,
+                    final Status status,
                     final String path,
                     final String filename,
                     final String owner,
@@ -115,7 +115,7 @@ public class FileItem
      */
     public FileItem(
                     final int id,
-                    final ItemStatus status,
+                    final Status status,
                     final String path,
                     final String filename,
                     final String owner,

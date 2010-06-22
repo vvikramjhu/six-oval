@@ -757,7 +757,7 @@
         </field>
 
         <field name="status" 
-            type="jp.go.aist.six.oval.model.system.ItemStatus">
+            type="jp.go.aist.six.oval.model.system.Status">
             <sql name="status" type="char"/>
         </field>
 

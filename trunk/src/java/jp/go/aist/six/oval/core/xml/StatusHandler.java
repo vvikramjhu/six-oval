@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.xml;
 
-import jp.go.aist.six.oval.model.system.ItemStatus;
+import jp.go.aist.six.oval.model.system.Status;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
@@ -30,11 +30,11 @@ import org.exolab.castor.mapping.GeneralizedFieldHandler;
  * @author  Akihito Nakamura, AIST
  * @version $Id: ItemStatusHandler.java 769 2010-05-11 01:25:10Z akihito $
  */
-public class ItemStatusHandler
+public class StatusHandler
     extends GeneralizedFieldHandler
 {
 
-    public ItemStatusHandler()
+    public StatusHandler()
     {
         super();
     }
@@ -44,7 +44,7 @@ public class ItemStatusHandler
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        ItemStatus  e = (ItemStatus)value;
+        Status  e = (Status)value;
         return e.value();
     }
 
@@ -53,15 +53,15 @@ public class ItemStatusHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return ItemStatus.fromValue( (String)value );
+        return Status.fromValue( (String)value );
     }
 
 
 
     @Override
-    public Class<ItemStatus> getFieldType()
+    public Class<Status> getFieldType()
     {
-        return ItemStatus.class;
+        return Status.class;
     }
 
 

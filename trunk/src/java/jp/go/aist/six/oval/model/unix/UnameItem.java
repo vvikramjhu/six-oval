@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.unix;
 
 import jp.go.aist.six.oval.core.model.system.ItemType;
 import jp.go.aist.six.oval.model.system.Item;
-import jp.go.aist.six.oval.model.system.ItemStatus;
+import jp.go.aist.six.oval.model.system.Status;
 
 
 
@@ -79,7 +79,7 @@ public class UnameItem
      */
     public UnameItem(
                     final int id,
-                    final ItemStatus status
+                    final Status status
                     )
     {
         super( id, status );

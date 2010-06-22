@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.result.SystemResult;
 import jp.go.aist.six.oval.model.system.CollectedSystemObject;
 import jp.go.aist.six.oval.model.system.Flag;
 import jp.go.aist.six.oval.model.system.Item;
-import jp.go.aist.six.oval.model.system.ItemStatus;
+import jp.go.aist.six.oval.model.system.Status;
 import jp.go.aist.six.oval.model.system.NetworkInterface;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.SystemData;
@@ -452,7 +452,7 @@ public class OvalXmlTest
             Assert.assertEquals( rpm_evrs.get( rpm_name ), rpm_info.getEvr() );
 
             if (id == 2) {
-                Assert.assertEquals( item.getStatus(), ItemStatus.DOES_NOT_EXIST );
+                Assert.assertEquals( item.getStatus(), Status.DOES_NOT_EXIST );
             } else {
                 Assert.assertEquals( rpm_info.getSignatureKeyID(), "a8a447dce8562897" );
             }

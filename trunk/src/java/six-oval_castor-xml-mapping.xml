@@ -896,7 +896,7 @@
         </field>
 
         <field name="status" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.ItemStatusHandler">
+            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
             <bind-xml name="status" node="attribute"/>
         </field>
     </class>
@@ -1167,7 +1167,7 @@
         </field>
 
         <field name="status" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.ItemStatusHandler">
+            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
             <bind-xml name="status" node="attribute"/>
         </field>
 

@@ -44,8 +44,8 @@ public abstract class EntityItemBaseType
     private boolean  _mask = DEFAULT_MASK;
     //{optional, default="false"}
 
-    public static final ItemStatus  DEFAULT_STATUS = ItemStatus.EXISTS;
-    private ItemStatus  _status;
+    public static final Status  DEFAULT_STATUS = Status.EXISTS;
+    private Status  _status;
     //{optional, default="exists"}
 
 
@@ -105,14 +105,14 @@ public abstract class EntityItemBaseType
 
 
     public void setStatus(
-                    final ItemStatus status
+                    final Status status
                     )
     {
         _status = status;
     }
 
 
-    public ItemStatus getStatus()
+    public Status getStatus()
     {
         return (_status == null ? DEFAULT_STATUS : _status);
     }
@@ -165,7 +165,7 @@ public abstract class EntityItemBaseType
 
         result = prime * result + (getMask() ? 0 : 1);
 
-        ItemStatus  status = getStatus();
+        Status  status = getStatus();
         result = prime * result + ((status == null) ? 0 : status.hashCode());
 
         return result;
@@ -194,8 +194,8 @@ public abstract class EntityItemBaseType
         String   this_data =  this.getData();
         if (this_data == other_data
                         ||  (this_data != null  &&  this_data.equals( other_data ))) {
-            ItemStatus  other_status = other.getStatus();
-            ItemStatus   this_status =  this.getStatus();
+            Status  other_status = other.getStatus();
+            Status   this_status =  this.getStatus();
             if (this_status == other_status) {
                 Datatype  other_type = other.getDatatype();
                 Datatype   this_type =  this.getDatatype();

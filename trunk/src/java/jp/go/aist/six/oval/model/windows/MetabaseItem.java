@@ -25,7 +25,7 @@ import jp.go.aist.six.oval.model.system.EntityItemAnyType;
 import jp.go.aist.six.oval.model.system.EntityItemIntType;
 import jp.go.aist.six.oval.model.system.EntityItemStringType;
 import jp.go.aist.six.oval.model.system.Item;
-import jp.go.aist.six.oval.model.system.ItemStatus;
+import jp.go.aist.six.oval.model.system.Status;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -84,7 +84,7 @@ public class MetabaseItem
      */
     public MetabaseItem(
                     final int id,
-                    final ItemStatus status
+                    final Status status
                     )
     {
         super( id, status );

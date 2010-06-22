@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.core.model.system.ItemType;
-import jp.go.aist.six.oval.model.system.ItemStatus;
+import jp.go.aist.six.oval.model.system.Status;
 
 
 
@@ -59,7 +59,7 @@ public class DpkgInfoItem
      */
     public DpkgInfoItem(
                     final int id,
-                    final ItemStatus status
+                    final Status status
                     )
     {
         super( id, status );
@@ -71,7 +71,7 @@ public class DpkgInfoItem
      */
     public DpkgInfoItem(
                     final int id,
-                    final ItemStatus status,
+                    final Status status,
                     final String name
                     )
     {
@@ -101,7 +101,7 @@ public class DpkgInfoItem
      */
     public DpkgInfoItem(
                     final int id,
-                    final ItemStatus status,
+                    final Status status,
                     final String arch,
                     final String name,
                     final String version,

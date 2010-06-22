@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.independent;
 import jp.go.aist.six.oval.core.model.system.ItemType;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.system.Item;
-import jp.go.aist.six.oval.model.system.ItemStatus;
+import jp.go.aist.six.oval.model.system.Status;
 
 
 
@@ -64,7 +64,7 @@ public class FamilyItem
      */
     public FamilyItem(
                     final int id,
-                    final ItemStatus status
+                    final Status status
                     )
     {
         super( id, status );
@@ -76,7 +76,7 @@ public class FamilyItem
      */
     public FamilyItem(
                     final int id,
-                    final ItemStatus status,
+                    final Status status,
                     final Family family
                     )
     {

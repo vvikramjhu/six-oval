@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.system.ItemStatus;
+import jp.go.aist.six.oval.model.system.Status;
 
 
 
@@ -69,7 +69,7 @@ public abstract class LinuxEvrPkgInfoItem
      */
     public LinuxEvrPkgInfoItem(
                     final int id,
-                    final ItemStatus status
+                    final Status status
                     )
     {
         super( id, status );
@@ -81,7 +81,7 @@ public abstract class LinuxEvrPkgInfoItem
      */
     public LinuxEvrPkgInfoItem(
                     final int id,
-                    final ItemStatus status,
+                    final Status status,
                     final String name
                     )
     {
@@ -111,7 +111,7 @@ public abstract class LinuxEvrPkgInfoItem
      */
     public LinuxEvrPkgInfoItem(
                     final int id,
-                    final ItemStatus status,
+                    final Status status,
                     final String arch,
                     final String name,
                     final String version,

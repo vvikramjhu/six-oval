@@ -27,7 +27,7 @@ package jp.go.aist.six.oval.model.system;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public enum ItemStatus
+public enum Status
 {
 
     ERROR( "error" ),
@@ -40,11 +40,11 @@ public enum ItemStatus
     /**
      * An instance factory method.
      */
-    public static ItemStatus fromValue(
+    public static Status fromValue(
                     final String value
                     )
     {
-        for (ItemStatus  e : ItemStatus.values()) {
+        for (Status  e : Status.values()) {
           if (e._value.equals( value )) {
               return e;
           }
@@ -62,7 +62,7 @@ public enum ItemStatus
     /**
      * Constructor.
      */
-    ItemStatus(
+    Status(
                     final String value
                     )
     {
@@ -91,7 +91,7 @@ public enum ItemStatus
     }
 
 }
-// ItemStatus
+// Status
 
 /* vim:set tabstop=4:set expandtab:set shiftwidth=4: */
 
