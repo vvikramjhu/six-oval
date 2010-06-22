@@ -59,6 +59,27 @@ public class OvalXmlTest
 
 
 
+    /**
+     */
+    protected <T> T _unmarshalFile(
+                    final String filepath,
+                    final Class<T> type
+                    )
+    throws Exception
+    {
+        File  file = new File( filepath );
+        Reporter.log( "unmarshalling XML...", true );
+        Object  obj = _getXml().unmarshal( new FileInputStream( file ) );
+        Reporter.log( "...unmarshalling done", true );
+        Reporter.log( "  @ unmarshalled object: " + obj, true );
+
+        Assert.assertTrue( type.isInstance( obj ) );
+
+        return type.cast( obj );
+    }
+
+
+
     //==============================================================
     //  oval_system_characteristics
     //==============================================================
@@ -81,17 +102,9 @@ public class OvalXmlTest
         Reporter.log( "\n// TEST: OVAL XML //", true );
         Reporter.log( "  * target type: " + testTarget, true );
 
-        File  file = new File( filepath );
-        Reporter.log( "unmarshalling XML...", true );
-        Object  obj = _getXml().unmarshal( new FileInputStream( file ) );
-        Reporter.log( "...unmarshalling done", true );
-        Reporter.log( "  @ unmarshalled object: " + obj, true );
+        OvalSystemCharacteristics  sc = _unmarshalFile( filepath, OvalSystemCharacteristics.class );
 
         Reporter.log( "validating...", true );
-        Assert.assertNotNull( obj );
-        Assert.assertTrue( obj instanceof OvalSystemCharacteristics);
-
-        OvalSystemCharacteristics  sc = OvalSystemCharacteristics.class.cast( obj );
         _validate( sc.getGenerator(), generator );
         _validate( sc.getSystemInfo(), systemInfo);
         Reporter.log( "...validation OK", true );
@@ -120,17 +133,9 @@ public class OvalXmlTest
         Reporter.log( "\n// TEST: OVAL XML //", true );
         Reporter.log( "  * target type: " + testTarget, true );
 
-        File  file = new File( filepath );
-        Reporter.log( "unmarshalling XML...", true );
-        Object  obj = _getXml().unmarshal( new FileInputStream( file ) );
-        Reporter.log( "...unmarshalling done", true );
-        Reporter.log( "  @ unmarshalled object: " + obj, true );
+        SystemInfo  a_systemInfo = _unmarshalFile( filepath, SystemInfo.class );
 
         Reporter.log( "validating...", true );
-        Assert.assertNotNull( obj );
-        Assert.assertTrue( obj instanceof SystemInfo);
-
-        SystemInfo  a_systemInfo = SystemInfo.class.cast( obj );
         _validate( a_systemInfo, systemInfo);
         Reporter.log( "...validation OK", true );
     }

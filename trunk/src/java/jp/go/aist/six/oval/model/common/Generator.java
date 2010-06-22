@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.common;
 
-import jp.go.aist.six.util.orm.Persistable;
+import jp.go.aist.six.util.orm.AbstractPersistable;
 import java.util.Date;
 
 
@@ -44,7 +44,7 @@ import java.util.Date;
  * @version $Id$
  */
 public class Generator
-    implements Persistable
+    extends AbstractPersistable
 {
 
     private String  _productName;
@@ -160,37 +160,9 @@ public class Generator
 
 
     //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
-    {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
-    }
-
-
-
-    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -214,9 +186,6 @@ public class Generator
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -258,9 +227,6 @@ public class Generator
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

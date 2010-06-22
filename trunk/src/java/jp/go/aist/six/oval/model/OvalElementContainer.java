@@ -118,6 +118,36 @@ public class OvalElementContainer<E extends OvalElement>
 
     /**
      */
+    protected String _computeOvalIDDigest(
+                    final Collection<String> ovalIDs
+                    )
+    {
+        MessageDigest  digest = null;
+        try {
+            digest = MessageDigest.getInstance( DIGEST_ALGORITHM );
+                                              //@throws NoSuchAlgorithmException
+        } catch (NoSuchAlgorithmException ex) {
+            return null;
+        }
+
+        if (ovalIDs == null  ||  ovalIDs.size() == 0) {
+            _update( digest, "" );
+        } else {
+            ArrayList<String>  list = new ArrayList<String>( ovalIDs );
+            Collections.sort( list, String.CASE_INSENSITIVE_ORDER );
+
+            for (String  ovalID : list) {
+                _update( digest, ovalID );
+            }
+        }
+
+        return _byteArrayToHexString( digest.digest() );
+    }
+
+
+
+    /**
+     */
     protected String _computeDigest(
                     final Collection<E> elements
                     )

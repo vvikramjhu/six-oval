@@ -27,6 +27,7 @@ import java.util.Iterator;
 
 
 /**
+ * A collection of NetworkInterface instances.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
@@ -42,7 +43,6 @@ public class NetworkInterfaces
     public NetworkInterfaces()
     {
     }
-
 
 
     /**

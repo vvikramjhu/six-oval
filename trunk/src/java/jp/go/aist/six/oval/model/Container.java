@@ -26,6 +26,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 
 
@@ -92,6 +93,15 @@ public abstract class Container<E>
     protected Collection<E>  _values()
     {
         return _elements.values();
+    }
+
+
+
+    /**
+     */
+    protected Set<Object>  _keySet()
+    {
+        return _elements.keySet();
     }
 
 
@@ -288,12 +298,16 @@ public abstract class Container<E>
                     )
     {
         if (c == null) {
-            throw new NullPointerException( "containsAll: null argument collection" );
+            throw new NullPointerException( "addAll: null argument collection" );
         }
 
         boolean  changed = false;
         for (E  e : c) {
-            changed = changed || add( e );
+            boolean  e_added = add( e );
+            changed = e_added || changed;
+
+//          changed = changed || add( e );  // This code is BUG!!!
+            // if "change" is true, add( E ) is not called.
         }
 
         return changed;
