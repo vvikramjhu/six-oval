@@ -18,7 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.system;
+package jp.go.aist.six.oval.model.windows;
+
+import jp.go.aist.six.oval.model.system.EntityItemString;
 
 
 
@@ -27,14 +29,14 @@ package jp.go.aist.six.oval.model.system;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class EntityItemString
-    extends EntityItemBase
+public class EntityItemRegistryType
+    extends EntityItemString
 {
 
     /**
      * Constructor.
      */
-    public EntityItemString()
+    public EntityItemRegistryType()
     {
     }
 
@@ -42,11 +44,25 @@ public class EntityItemString
     /**
      * Constructor.
      */
-    public EntityItemString(
+    public EntityItemRegistryType(
                     final String data
                     )
     {
         setData( data );
+    }
+
+
+
+    //**************************************************************
+    //  EntityItemBase
+    //**************************************************************
+
+    @Override
+    public void setData(
+                    final String data
+                    )
+    {
+        super.setData( RegistryType.fromValue( data ).value() );
     }
 
 
@@ -72,7 +88,7 @@ public class EntityItemString
             return true;
         }
 
-        if (!(obj instanceof EntityItemString)) {
+        if (!(obj instanceof EntityItemRegistryType)) {
             return false;
         }
 
@@ -84,8 +100,8 @@ public class EntityItemString
     @Override
     public String toString()
     {
-        return "EntityItemString[" + super.toString() + "]";
+        return "EntityItemRegistryType[" + super.toString() + "]";
     }
 
 }
-// EntityItemString
+// EntityItemRegistryType
