@@ -631,9 +631,9 @@
 
 
     <!-- ******************************************************* -->
-    <!-- SystemObjectStatus                                      -->
+    <!-- CollectedSystemObject                                   -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.system.SystemObjectStatus"
+    <class name="jp.go.aist.six.oval.model.system.CollectedSystemObject"
         identity="persistentID"
         key-generator="IDENTITY">
         <cache-type type="unlimited"/>
@@ -660,7 +660,7 @@
             <sql name="message" type="char"/>
         </field>
 
-        <!-- SystemObjectStatus : ItemReference = 1 : n -->
+        <!-- CollectedSystemObject : ItemReference = 1 : n -->
         <field name="items"
             type="jp.go.aist.six.oval.model.system.ItemReference"
             collection="collection"
@@ -714,7 +714,7 @@
     <!-- ItemReference                                           -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.system.ItemReference"
-        depends="jp.go.aist.six.oval.model.system.SystemObjectStatus"
+        depends="jp.go.aist.six.oval.model.system.CollectedSystemObject"
         identity="persistentID"
         key-generator="IDENTITY"
         >
@@ -731,7 +731,7 @@
 
         <!-- (FK) -->
         <field name="masterObject" 
-            type="jp.go.aist.six.oval.model.system.SystemObjectStatus">
+            type="jp.go.aist.six.oval.model.system.CollectedSystemObject">
             <sql name="s_object__PID"/>
         </field>
 

@@ -32,7 +32,7 @@ import jp.go.aist.six.util.orm.Dependent;
  */
 public class ItemReference
     extends AbstractPersistable
-    implements Dependent<SystemObjectStatus>
+    implements Dependent<CollectedSystemObject>
 {
 
     private int  _itemRef;
@@ -78,19 +78,19 @@ public class ItemReference
     //  Dependent
     //**************************************************************
 
-    private SystemObjectStatus  _master;
+    private CollectedSystemObject  _master;
 
 
 
     public void setMasterObject(
-                    final SystemObjectStatus master
+                    final CollectedSystemObject master
                     )
     {
         _master = master;
     }
 
 
-    public SystemObjectStatus getMasterObject()
+    public CollectedSystemObject getMasterObject()
     {
         return _master;
     }

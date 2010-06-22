@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.system.SystemObjectStatus;
+import jp.go.aist.six.oval.model.system.CollectedSystemObject;
 
 
 
@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.system.SystemObjectStatus;
  * @version $Id: SystemObjectStatusDao.java 440 2010-03-23 05:11:44Z akihito $
  */
 public class SystemObjectStatusDao
-    extends OvalEntityReferenceDao<SystemObjectStatus>
+    extends OvalEntityReferenceDao<CollectedSystemObject>
 {
 
     /**
@@ -37,7 +37,7 @@ public class SystemObjectStatusDao
      */
     public SystemObjectStatusDao()
     {
-        super( SystemObjectStatus.class );
+        super( CollectedSystemObject.class );
     }
 
 

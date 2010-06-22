@@ -31,25 +31,35 @@ import java.util.Collection;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class SystemObjectStatus
+public class CollectedSystemObject
     extends OvalAnalysisElement
 {
 
-    private ObjectFlag  _flag;
-
     private String  _message;
-//    private Collection<Message>  _messages = new ArrayList<Message>();
+    //{0..*}
+//  private Collection<Message>  _messages = new ArrayList<Message>();
     /*** Every result has at most one message. ***/
 
+    // NOT implemented yet
+//  private Collection<VariableValue>  _variableValues = new ArrayList<VariableValue>();
+//    //{0..*}
+
     private Collection<ItemReference>  _items = new ArrayList<ItemReference>();
-//    private Collection<VariableValue>  _variableValues = new ArrayList<VariableValue>();
+    //{0..*}
+
+//    public static final int  DEFAULT_VARIABLE_INSTANCE = 1;
+//    private int  _variableInstance = DEFAULT_VARIABLE_INSTANCE;
+    //{optional, default="1"}
+
+    private ObjectFlag  _flag;
+    //{required}
 
 
 
     /**
      * Constructor.
      */
-    public SystemObjectStatus()
+    public CollectedSystemObject()
     {
     }
 
@@ -57,7 +67,7 @@ public class SystemObjectStatus
     /**
      * Constructor.
      */
-    public SystemObjectStatus(
+    public CollectedSystemObject(
                     final String id,
                     final int version
                     )
@@ -69,7 +79,7 @@ public class SystemObjectStatus
     /**
      * Constructor.
      */
-    public SystemObjectStatus(
+    public CollectedSystemObject(
                     final String id,
                     final int version,
                     final ObjectFlag flag
@@ -83,7 +93,7 @@ public class SystemObjectStatus
     /**
      * Constructor.
      */
-    public SystemObjectStatus(
+    public CollectedSystemObject(
                     final String id,
                     final int version,
                     final ObjectFlag flag,
@@ -297,13 +307,10 @@ public class SystemObjectStatus
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
-        return "SystemObjectStatus [" + super.toString()
+        return "CollectedSystemObject[" + super.toString()
                         + ", flag=" + getFlag()
                         + ", items=" + getItems()
 //                        + ", variable_instance=" + getVariableInstance()
@@ -327,4 +334,4 @@ public class SystemObjectStatus
 //    public Collection<VariableValue> getVariableValues()
 
 }
-// SystemObjectStatus
+// CollectedSystemObject

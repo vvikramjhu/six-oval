@@ -34,7 +34,7 @@ import jp.go.aist.six.oval.model.system.ObjectFlag;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.SystemData;
 import jp.go.aist.six.oval.model.system.SystemInfo;
-import jp.go.aist.six.oval.model.system.SystemObjectStatus;
+import jp.go.aist.six.oval.model.system.CollectedSystemObject;
 import jp.go.aist.six.util.IsoDate;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -268,7 +268,7 @@ public class OvalXmlTest
                         "eth0", "150.29.149.254", "00.0c.29.78.1a.8b" );
         Assert.assertEquals( sys.getInterfaces().iterator().next(), netif );
 
-        Collection<SystemObjectStatus>  collected_objects = sc.getCollectedObjects();
+        Collection<CollectedSystemObject>  collected_objects = sc.getCollectedObjects();
         Reporter.log( "    @@@ #collected objects: " + collected_objects.size(), true );
         Assert.assertEquals( collected_objects.size(), 2 );
 
@@ -382,7 +382,7 @@ public class OvalXmlTest
         // collected_objects
         //==========================================================
         Reporter.log( "  *** checking objects...", true );
-        Collection<SystemObjectStatus>  objects = sc.getCollectedObjects();
+        Collection<CollectedSystemObject>  objects = sc.getCollectedObjects();
         Reporter.log( "    @@@ #objects: " + objects.size(), true );
         Assert.assertEquals( objects.size(), 5 );
 
@@ -402,7 +402,7 @@ public class OvalXmlTest
         object_item_refs.put( "oval:com.redhat.rhsa:obj:20091148005", new Integer( 2 ) );
 
         // object's id, version, flag, reference
-        for (SystemObjectStatus  object : objects) {
+        for (CollectedSystemObject  object : objects) {
 //          Reporter.log( "    object: " + object, true );
             Assert.assertTrue( object_ids.contains( object.getOvalID() ) );
             Assert.assertEquals( object.getOvalVersion(), 301 );
@@ -479,7 +479,7 @@ public class OvalXmlTest
         // collected_objects
         //==========================================================
         Reporter.log( "  *** checking objects...", true );
-        Collection<SystemObjectStatus>  objects = sc.getCollectedObjects();
+        Collection<CollectedSystemObject>  objects = sc.getCollectedObjects();
         Reporter.log( "    #objects: " + objects.size(), true );
 
         Collection<String>  messaged_ids = Arrays.asList( new String[] {
@@ -488,7 +488,7 @@ public class OvalXmlTest
                         "oval:org.mitre.oval:obj:1070"
         });
 
-        for (SystemObjectStatus  object : objects) {
+        for (CollectedSystemObject  object : objects) {
             String  id = object.getOvalID();
             if (messaged_ids.contains( id )) {
 //                Reporter.log( "    object: id=" + object.getID()

@@ -46,7 +46,7 @@ public class OvalSystemCharacteristics
 //    private CollectedSystemObjects  _colectedObjects;
 //    //{0..1}
 
-    private Collection<SystemObjectStatus>  _objects = new ArrayList<SystemObjectStatus>();
+    private Collection<CollectedSystemObject>  _objects = new ArrayList<CollectedSystemObject>();
 //    private String  _objectsDigest;
 
     private SystemData  _systemData;
@@ -133,7 +133,7 @@ public class OvalSystemCharacteristics
 
 
     public void setCollectedObjects(
-                    final Collection<SystemObjectStatus> objects
+                    final Collection<CollectedSystemObject> objects
                     )
     {
         if (objects != _objects) {
@@ -142,7 +142,7 @@ public class OvalSystemCharacteristics
                 return;
             }
 
-            for (SystemObjectStatus  object : objects) {
+            for (CollectedSystemObject  object : objects) {
                 addCollectedObject( object );
             }
         }
@@ -150,7 +150,7 @@ public class OvalSystemCharacteristics
 
 
     public boolean addCollectedObject(
-                    final SystemObjectStatus object
+                    final CollectedSystemObject object
                     )
     {
         if (object == null) {
@@ -161,7 +161,7 @@ public class OvalSystemCharacteristics
     }
 
 
-    public Collection<SystemObjectStatus> getCollectedObjects()
+    public Collection<CollectedSystemObject> getCollectedObjects()
     {
         return _objects;
     }

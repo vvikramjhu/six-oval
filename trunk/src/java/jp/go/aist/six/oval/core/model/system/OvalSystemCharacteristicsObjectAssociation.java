@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.core.model.system;
 
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.model.system.SystemObjectStatus;
+import jp.go.aist.six.oval.model.system.CollectedSystemObject;
 import jp.go.aist.six.util.orm.Association;
 
 
@@ -31,7 +31,7 @@ import jp.go.aist.six.util.orm.Association;
  * @version $Id: OvalSystemCharacteristicsObjectAssociation.java 440 2010-03-23 05:11:44Z akihito $
  */
 public class OvalSystemCharacteristicsObjectAssociation
-    extends Association<OvalSystemCharacteristics, SystemObjectStatus>
+    extends Association<OvalSystemCharacteristics, CollectedSystemObject>
 {
 
     /**
@@ -47,7 +47,7 @@ public class OvalSystemCharacteristicsObjectAssociation
      */
     public OvalSystemCharacteristicsObjectAssociation(
                     final OvalSystemCharacteristics antecendent,
-                    final SystemObjectStatus dependent
+                    final CollectedSystemObject dependent
                     )
     {
         super( antecendent, dependent );

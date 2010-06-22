@@ -940,7 +940,7 @@
         </field>
 
         <field name="collectedObjects" 
-            type="jp.go.aist.six.oval.model.system.SystemObjectStatus"
+            type="jp.go.aist.six.oval.model.system.CollectedSystemObject"
             collection="collection">
             <bind-xml name="object" node="element" 
                 location="collected_objects"/>
@@ -1053,9 +1053,9 @@
 
 
     <!-- ======================================================= -->
-    <!-- SystemObjectStatus - object                             -->
+    <!-- CollectedSystemObject                                   -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.system.SystemObjectStatus"
+    <class name="jp.go.aist.six.oval.model.system.CollectedSystemObject"
         extends="jp.go.aist.six.oval.model.OvalAnalysisElement"
         >
 <!--

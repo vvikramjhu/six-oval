@@ -20,9 +20,6 @@
 
 package jp.go.aist.six.oval.model.system;
 
-import java.io.Serializable;
-import java.util.HashMap;
-
 
 
 /**
@@ -31,92 +28,68 @@ import java.util.HashMap;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public final class ObjectFlag
-    implements Serializable
+public enum ObjectFlag
 {
 
-    private static final String  _ERROR_           = "error";
-    private static final String  _COMPLETE_        = "complete";
-    private static final String  _INCOMPLETE_      = "incomplete";
-    private static final String  _DOES_NOT_EXIST_  = "does not exist";
-    private static final String  _NOT_COLLECTED_   = "not collected";
-    private static final String  _NOT_APPLICABLE_  = "not applicable";
-
-
-    public static final ObjectFlag  ERROR          = new ObjectFlag( _ERROR_ );
-    public static final ObjectFlag  COMPLETE       = new ObjectFlag( _COMPLETE_ );
-    public static final ObjectFlag  INCOMPLETE     = new ObjectFlag( _INCOMPLETE_ );
-    public static final ObjectFlag  DOES_NOT_EXIST = new ObjectFlag( _DOES_NOT_EXIST_ );
-    public static final ObjectFlag  NOT_COLLECTED  = new ObjectFlag( _NOT_COLLECTED_ );
-    public static final ObjectFlag  NOT_APPLICABLE = new ObjectFlag( _NOT_APPLICABLE_ );
-
-
-
-    private static HashMap<String, ObjectFlag> _INIT_()
-    {
-        HashMap<String, ObjectFlag>  map = new HashMap<String, ObjectFlag>();
-        map.put( _ERROR_,           ERROR          );
-        map.put( _COMPLETE_,        COMPLETE       );
-        map.put( _INCOMPLETE_,      INCOMPLETE     );
-        map.put( _DOES_NOT_EXIST_,  DOES_NOT_EXIST );
-        map.put( _NOT_COLLECTED_,   NOT_COLLECTED  );
-        map.put( _NOT_APPLICABLE_,  NOT_APPLICABLE );
-        return map;
-    }
-
-    private static final HashMap<String, ObjectFlag>  _INSTANCES_ = _INIT_();
-
-
+    ERROR( "error" ),
+    COMPLETE( "complete" ),
+    INCOMPLETE( "incomplete" ),
+    DOES_NOT_EXIST( "does not exist" ),
+    NOT_COLLECTED( "not collected" ),
+    NOT_APPLICABLE( "not applicable" );
 
 
     /**
+     * An instance factory method.
      */
-    public static ObjectFlag valueOf( final String name )
+    public static ObjectFlag fromValue(
+                    final String value
+                    )
     {
-        ObjectFlag  flag = null;
-        if (name != null) {
-            flag = _INSTANCES_.get( name );
-        }
+        for (ObjectFlag  e : ObjectFlag.values()) {
+          if (e._value.equals( value )) {
+              return e;
+          }
+      }
 
-        if (flag == null) {
-            throw new IllegalArgumentException( "invalid flag: " + name );
-        }
-
-        return flag;
+      throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
 
+    private final String  _value;
 
 
     /**
+     * Constructor.
      */
-    private ObjectFlag( final String name )
+    ObjectFlag(
+                    final String value
+                    )
     {
-        _name = name;
+        this._value = value;
     }
 
 
 
     /**
      */
-    public String getName()
+    public String value()
     {
-        return _name;
+        return this._value;
     }
 
 
 
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
     //  java.lang.Object
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
 
     @Override
     public String toString()
     {
-        return getName();
+        return this._value;
     }
 
 }

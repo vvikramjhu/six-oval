@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.core.model.system.OvalSystemCharacteristicsObjectAssociation;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.model.system.SystemObjectStatus;
+import jp.go.aist.six.oval.model.system.CollectedSystemObject;
 import jp.go.aist.six.util.castor.AssociationDao;
 
 
@@ -32,7 +32,7 @@ import jp.go.aist.six.util.castor.AssociationDao;
  * @version $Id: OvalSystemCharacteristicsObjectAssociationDao.java 440 2010-03-23 05:11:44Z akihito $
  */
 public class OvalSystemCharacteristicsObjectAssociationDao
-    extends AssociationDao<OvalSystemCharacteristics,SystemObjectStatus,OvalSystemCharacteristicsObjectAssociation>
+    extends AssociationDao<OvalSystemCharacteristics,CollectedSystemObject,OvalSystemCharacteristicsObjectAssociation>
 {
 
     public OvalSystemCharacteristicsObjectAssociationDao()

@@ -100,6 +100,19 @@ public abstract class CoreTestBase
                                             _WINDWS_NETWORK_INTERFACES_
                                             )
                         }
+                        ,
+                        {
+                            "oval-sc:oval_system_characteristics",
+                            "test/data/sc/oval-sc.ocal_system_characteristics.2-windows.xml",
+                            new Generator( "5.6", IsoDate.valueOf( "2010-05-12T20:27:08" ), "OVAL Definition Interpreter", "5.6 Build: 4" ),
+                            new SystemInfo(
+                                            "Microsoft Windows XP Professional Service Pack 3",
+                                            "5.1.2600",
+                                            "INTEL32",
+                                            "x60",
+                                            _WINDWS_NETWORK_INTERFACES_
+                                            )
+                        }
         };
 
     }
