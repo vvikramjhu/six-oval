@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<oval_system_characteristics xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"
+    xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" >
+        <generator>
+          <oval:product_name>OVAL Definition Interpreter</oval:product_name>
+          <oval:product_version>5.6 Build: 4</oval:product_version>
+          <oval:schema_version>5.6</oval:schema_version>
+          <oval:timestamp>2010-05-12T20:27:08</oval:timestamp>
+          <vendor>The MITRE Corporation</vendor>
+        </generator>
+        <system_info>
+          <os_name>Microsoft Windows XP Professional Service Pack 3</os_name>
+          <os_version>5.1.2600</os_version>
+          <architecture>INTEL32</architecture>
+          <primary_host_name>x60</primary_host_name>
+          <interfaces>
+            <interface>
+              <interface_name>VMware Virtual Ethernet Adapter for VMnet1</interface_name>
+              <ip_address>192.168.158.1</ip_address>
+              <mac_address>00-50-56-C0-00-01</mac_address>
+            </interface>
+            <interface>
+              <interface_name>VMware Virtual Ethernet Adapter for VMnet8</interface_name>
+              <ip_address>192.168.1.1</ip_address>
+              <mac_address>00-50-56-C0-00-08</mac_address>
+            </interface>
+          </interfaces>
+        </system_info>
+
+        <collected_objects>
+          <object comment="Registry key that is set when Service Pack 1 for Microsoft Visual Studio .NET 2002" flag="does not exist" id="oval:org.mitre.oval:obj:10" version="1">
+            <reference item_ref="83"/>
+          </object>
+          <object flag="complete" id="oval:org.mitre.oval:obj:1070" version="2">
+            <variable_value variable_id="oval:org.mitre.oval:var:247">C:\Program Files\Microsoft Office\OFFICE11\</variable_value>
+            <reference item_ref="46"/>
+          </object>
+          <object flag="complete" id="oval:org.mitre.oval:obj:1071" version="1">
+            <reference item_ref="45"/>
+          </object>
+          <object flag="does not exist" id="oval:org.mitre.oval:obj:109" version="1">
+            <reference item_ref="103"/>
+          </object>
+        </collected_objects>
+
+<!--
+        <system_data>
+          <registry_item id="83" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows">
+            <hive>HKEY_LOCAL_MACHINE</hive>
+            <key status="does not exist">SOFTWARE\Microsoft\Updates\Visual Studio\7.0\S895309</key>
+          </registry_item>
+          <file_item id="46" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows">
+            <filepath>C:\Program Files\Microsoft Office\OFFICE11\outlook.exe</filepath>
+            <path>C:\Program Files\Microsoft Office\OFFICE11\</path>
+            <filename>outlook.exe</filename>
+            <owner>Administrators</owner>
+            <size datatype="int">196424</size>
+            <a_time datatype="int">115938124830012212</a_time>
+            <c_time datatype="int">25257592830077382</c_time>
+            <m_time datatype="int">115938124830012212</m_time>
+            <ms_checksum>212346</ms_checksum>
+            <version datatype="version">11.0.8312.0</version>
+            <type>FILE_TYPE_DISK</type>
+            <development_class status="does not exist"/>
+            <company>Microsoft Corporation</company>
+            <internal_name>Outlook</internal_name>
+            <language status="not collected"/>
+            <original_filename>Outlook.exe</original_filename>
+            <product_name>Microsoft Office Outlook</product_name>
+            <product_version>11.0.8312</product_version>
+          </file_item>
+          <registry_item id="45" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows">
+            <hive>HKEY_LOCAL_MACHINE</hive>
+            <key>SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\OUTLOOK.EXE</key>
+            <name>Path</name>
+            <type>reg_sz</type>
+            <value>C:\Program Files\Microsoft Office\OFFICE11\</value>
+          </registry_item>
+          <registry_item id="103" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows">
+            <hive>HKEY_LOCAL_MACHINE</hive>
+            <key status="does not exist">SOFTWARE\Microsoft\Office\9.0\Publisher\InstallRoot</key>
+          </registry_item>
+        </system_data>
+-->
+</oval_system_characteristics>

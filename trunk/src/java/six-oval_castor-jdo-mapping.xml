@@ -661,7 +661,7 @@
         </field>
 
         <!-- CollectedSystemObject : ItemReference = 1 : n -->
-        <field name="items"
+        <field name="reference"
             type="jp.go.aist.six.oval.model.system.ItemReference"
             collection="collection"
             lazy="true"

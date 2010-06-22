@@ -939,12 +939,20 @@
             <bind-xml name="system_info" node="element"/>
         </field>
 
+        <field name="collectedObjects.object" 
+            type="jp.go.aist.six.oval.model.system.CollectedSystemObject"
+            collection="collection">
+            <bind-xml name="object" node="element" 
+                location="collected_objects"/>
+        </field>
+<!--
         <field name="collectedObjects" 
             type="jp.go.aist.six.oval.model.system.CollectedSystemObject"
             collection="collection">
             <bind-xml name="object" node="element" 
                 location="collected_objects"/>
         </field>
+-->
 
         <field name="systemData" 
             type="jp.go.aist.six.oval.model.system.SystemData">
@@ -1069,7 +1077,7 @@
             <bind-xml name="flag" node="attribute"/>
         </field>
 
-        <field name="items" 
+        <field name="reference" 
             type="jp.go.aist.six.oval.model.system.ItemReference"
             collection="collection">
             <bind-xml name="reference" node="element"/>

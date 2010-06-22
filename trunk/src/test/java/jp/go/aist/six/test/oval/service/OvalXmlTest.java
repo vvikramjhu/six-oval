@@ -27,14 +27,14 @@ import jp.go.aist.six.oval.model.result.DefinitionResult;
 import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.model.result.Result;
 import jp.go.aist.six.oval.model.result.SystemResult;
+import jp.go.aist.six.oval.model.system.CollectedSystemObject;
+import jp.go.aist.six.oval.model.system.Flag;
 import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.ItemStatus;
 import jp.go.aist.six.oval.model.system.NetworkInterface;
-import jp.go.aist.six.oval.model.system.Flag;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.SystemData;
 import jp.go.aist.six.oval.model.system.SystemInfo;
-import jp.go.aist.six.oval.model.system.CollectedSystemObject;
 import jp.go.aist.six.util.IsoDate;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -268,7 +268,7 @@ public class OvalXmlTest
                         "eth0", "150.29.149.254", "00.0c.29.78.1a.8b" );
         Assert.assertEquals( sys.getInterfaces().iterator().next(), netif );
 
-        Collection<CollectedSystemObject>  collected_objects = sc.getCollectedObjects();
+        Collection<CollectedSystemObject>  collected_objects = sc.getCollectedObjects().getObject();
         Reporter.log( "    @@@ #collected objects: " + collected_objects.size(), true );
         Assert.assertEquals( collected_objects.size(), 2 );
 
@@ -382,7 +382,7 @@ public class OvalXmlTest
         // collected_objects
         //==========================================================
         Reporter.log( "  *** checking objects...", true );
-        Collection<CollectedSystemObject>  objects = sc.getCollectedObjects();
+        Collection<CollectedSystemObject>  objects = sc.getCollectedObjects().getObject();
         Reporter.log( "    @@@ #objects: " + objects.size(), true );
         Assert.assertEquals( objects.size(), 5 );
 
@@ -479,7 +479,7 @@ public class OvalXmlTest
         // collected_objects
         //==========================================================
         Reporter.log( "  *** checking objects...", true );
-        Collection<CollectedSystemObject>  objects = sc.getCollectedObjects();
+        Collection<CollectedSystemObject>  objects = sc.getCollectedObjects().getObject();
         Reporter.log( "    #objects: " + objects.size(), true );
 
         Collection<String>  messaged_ids = Arrays.asList( new String[] {

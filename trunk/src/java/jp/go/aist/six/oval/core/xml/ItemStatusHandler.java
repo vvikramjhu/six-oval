@@ -41,23 +41,19 @@ public class ItemStatusHandler
 
 
     @Override
-    public Object convertUponGet(
-                    final Object value
-                    )
+    public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        ItemStatus  status = (ItemStatus)value;
-        return status.toString();
+        ItemStatus  e = (ItemStatus)value;
+        return e.value();
     }
 
 
 
     @Override
-    public Object convertUponSet(
-                    final Object value
-                    )
+    public Object convertUponSet( Object value )
     {
-        return ItemStatus.valueOf( (String)value );
+        return ItemStatus.fromValue( (String)value );
     }
 
 

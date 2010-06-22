@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.system;
 
 
 
-
 /**
  *
  * @author  Akihito Nakamura, AIST

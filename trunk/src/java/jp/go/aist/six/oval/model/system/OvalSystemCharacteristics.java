@@ -22,8 +22,6 @@ package jp.go.aist.six.oval.model.system;
 
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.util.orm.AbstractPersistable;
-import java.util.ArrayList;
-import java.util.Collection;
 
 
 
@@ -43,10 +41,10 @@ public class OvalSystemCharacteristics
     //{1..1}
 
     //TODO: refactor _objects field!!!
-//    private CollectedSystemObjects  _colectedObjects;
+    private CollectedSystemObjects  _collectedObjects = new CollectedSystemObjects();
 //    //{0..1}
+//    private Collection<CollectedSystemObject>  _objects = new ArrayList<CollectedSystemObject>();
 
-    private Collection<CollectedSystemObject>  _objects = new ArrayList<CollectedSystemObject>();
 //    private String  _objectsDigest;
 
     private SystemData  _systemData;
@@ -132,39 +130,58 @@ public class OvalSystemCharacteristics
 
 
 
+    /**
+     */
     public void setCollectedObjects(
-                    final Collection<CollectedSystemObject> objects
+                    final CollectedSystemObjects objects
                     )
     {
-        if (objects != _objects) {
-            _objects.clear();
-            if (objects == null  ||  objects.size() == 0) {
-                return;
-            }
-
-            for (CollectedSystemObject  object : objects) {
-                addCollectedObject( object );
-            }
-        }
+        _collectedObjects = objects;
     }
 
 
-    public boolean addCollectedObject(
-                    final CollectedSystemObject object
-                    )
+    /**
+     */
+    public CollectedSystemObjects getCollectedObjects()
     {
-        if (object == null) {
-            return false;
-        }
-
-        return _objects.add( object );
+        return _collectedObjects;
     }
 
 
-    public Collection<CollectedSystemObject> getCollectedObjects()
-    {
-        return _objects;
-    }
+
+//    public void setCollectedObjects(
+//                    final Collection<CollectedSystemObject> objects
+//                    )
+//    {
+//        if (objects != _objects) {
+//            _objects.clear();
+//            if (objects == null  ||  objects.size() == 0) {
+//                return;
+//            }
+//
+//            for (CollectedSystemObject  object : objects) {
+//                addCollectedObject( object );
+//            }
+//        }
+//    }
+//
+//
+//    public boolean addCollectedObject(
+//                    final CollectedSystemObject object
+//                    )
+//    {
+//        if (object == null) {
+//            return false;
+//        }
+//
+//        return _objects.add( object );
+//    }
+//
+//
+//    public Collection<CollectedSystemObject> getCollectedObjects()
+//    {
+//        return _objects;
+//    }
 
 
 
@@ -231,7 +248,7 @@ public class OvalSystemCharacteristics
         SystemData  sd = getSystemData();
         return "OvalSystemCharacteristics[generator=" + getGenerator()
                         + ", system_info=" + getSystemInfo()
-                        + ", #collected_objects=" + getCollectedObjects().size()
+                        + ", #collected_objects=" + getCollectedObjects().getObject().size()
                         + ", #items=" + (sd == null ? 0 : sd.size())
 //                        + ", collected_objects=" + getCollectedObjects()
                         + "]";
