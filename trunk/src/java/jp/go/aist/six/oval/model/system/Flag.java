@@ -28,7 +28,7 @@ package jp.go.aist.six.oval.model.system;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public enum ObjectFlag
+public enum Flag
 {
 
     ERROR( "error" ),
@@ -42,11 +42,11 @@ public enum ObjectFlag
     /**
      * An instance factory method.
      */
-    public static ObjectFlag fromValue(
+    public static Flag fromValue(
                     final String value
                     )
     {
-        for (ObjectFlag  e : ObjectFlag.values()) {
+        for (Flag  e : Flag.values()) {
           if (e._value.equals( value )) {
               return e;
           }
@@ -64,7 +64,7 @@ public enum ObjectFlag
     /**
      * Constructor.
      */
-    ObjectFlag(
+    Flag(
                     final String value
                     )
     {

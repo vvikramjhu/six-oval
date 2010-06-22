@@ -1065,7 +1065,7 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
 
         <field name="flag" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.ObjectFlagHandler">
+            handler="jp.go.aist.six.oval.core.xml.FlagHandler">
             <bind-xml name="flag" node="attribute"/>
         </field>
 

@@ -51,7 +51,7 @@ public class CollectedSystemObject
 //    private int  _variableInstance = DEFAULT_VARIABLE_INSTANCE;
     //{optional, default="1"}
 
-    private ObjectFlag  _flag;
+    private Flag  _flag;
     //{required}
 
 
@@ -82,7 +82,7 @@ public class CollectedSystemObject
     public CollectedSystemObject(
                     final String id,
                     final int version,
-                    final ObjectFlag flag
+                    final Flag flag
                     )
     {
         super( id, version );
@@ -96,7 +96,7 @@ public class CollectedSystemObject
     public CollectedSystemObject(
                     final String id,
                     final int version,
-                    final ObjectFlag flag,
+                    final Flag flag,
                     final Collection<ItemReference> items
                     )
     {
@@ -107,14 +107,14 @@ public class CollectedSystemObject
 
 
     public void setFlag(
-                    final ObjectFlag flag
+                    final Flag flag
                     )
     {
         _flag = flag;
     }
 
 
-    public ObjectFlag getFlag()
+    public Flag getFlag()
     {
         return _flag;
     }

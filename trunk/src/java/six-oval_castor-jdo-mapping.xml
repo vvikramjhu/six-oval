@@ -652,7 +652,7 @@
         </field>
 
         <field name="flag" 
-            type="jp.go.aist.six.oval.model.system.ObjectFlag">
+            type="jp.go.aist.six.oval.model.system.Flag">
             <sql name="flag" type="char"/>
         </field>
 

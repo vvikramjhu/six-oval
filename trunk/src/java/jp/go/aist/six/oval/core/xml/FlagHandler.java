@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.xml;
 
-import jp.go.aist.six.oval.model.system.ObjectFlag;
+import jp.go.aist.six.oval.model.system.Flag;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
@@ -30,11 +30,11 @@ import org.exolab.castor.mapping.GeneralizedFieldHandler;
  * @author  Akihito Nakamura, AIST
  * @version $Id: ObjectFlagHandler.java 440 2010-03-23 05:11:44Z akihito $
  */
-public class ObjectFlagHandler
+public class FlagHandler
     extends GeneralizedFieldHandler
 {
 
-    public ObjectFlagHandler()
+    public FlagHandler()
     {
         super();
     }
@@ -44,8 +44,8 @@ public class ObjectFlagHandler
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        ObjectFlag  flag = (ObjectFlag)value;
-        return flag.toString();
+        Flag  e = (Flag)value;
+        return e.value();
     }
 
 
@@ -53,15 +53,15 @@ public class ObjectFlagHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return ObjectFlag.valueOf( (String)value );
+        return Flag.fromValue( (String)value );
     }
 
 
 
     @Override
-    public Class getFieldType()
+    public Class<Flag> getFieldType()
     {
-        return ObjectFlag.class;
+        return Flag.class;
     }
 
 

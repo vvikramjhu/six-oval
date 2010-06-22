@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.result.SystemResult;
 import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.ItemStatus;
 import jp.go.aist.six.oval.model.system.NetworkInterface;
-import jp.go.aist.six.oval.model.system.ObjectFlag;
+import jp.go.aist.six.oval.model.system.Flag;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.SystemData;
 import jp.go.aist.six.oval.model.system.SystemInfo;
@@ -407,9 +407,9 @@ public class OvalXmlTest
             Assert.assertTrue( object_ids.contains( object.getOvalID() ) );
             Assert.assertEquals( object.getOvalVersion(), 301 );
             if (object.getOvalID().equals( "oval:com.redhat.rhsa:obj:20091148005" )) {
-                Assert.assertEquals( ObjectFlag.DOES_NOT_EXIST, object.getFlag() );
+                Assert.assertEquals( Flag.DOES_NOT_EXIST, object.getFlag() );
             } else {
-                Assert.assertEquals( ObjectFlag.COMPLETE, object.getFlag() );
+                Assert.assertEquals( Flag.COMPLETE, object.getFlag() );
             }
 
             Assert.assertEquals( object.getItems().size(), 1 );
