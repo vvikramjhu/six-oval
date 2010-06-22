@@ -33,7 +33,7 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class NetworkInterfaces
-    extends Container<NetworkInterface>
+    extends Container<String,NetworkInterface>
 //implements Serializable, Iterable<NetworkInterface>
 {
 
@@ -103,7 +103,7 @@ public class NetworkInterfaces
     //  Container
     //**************************************************************
 
-    protected Object _getKey(
+    protected String _getKey(
                     final NetworkInterface netif
                     )
     {

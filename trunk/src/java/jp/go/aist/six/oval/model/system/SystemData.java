@@ -31,7 +31,7 @@ import java.util.Collection;
  * @version $Id$
  */
 public class SystemData
-    extends Container<Item> //{1..*}
+    extends Container<Integer,Item> //{1..*}
 {
 
     /**
@@ -83,7 +83,7 @@ public class SystemData
     //  Container
     //**************************************************************
 
-    protected Object _getKey(
+    protected Integer _getKey(
                     final Item element
                     )
     {

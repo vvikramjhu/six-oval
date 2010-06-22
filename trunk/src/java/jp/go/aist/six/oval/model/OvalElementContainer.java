@@ -35,7 +35,7 @@ import java.util.Collections;
  * @version $Id$
  */
 public class OvalElementContainer<E extends OvalElement>
-    extends Container<E>
+    extends Container<String,E>
 {
 
     /**
@@ -73,7 +73,7 @@ public class OvalElementContainer<E extends OvalElement>
     //  Container
     //**************************************************************
 
-    protected Object _getKey(
+    protected String _getKey(
                     final OvalElement element
                     )
     {
@@ -108,7 +108,8 @@ public class OvalElementContainer<E extends OvalElement>
     {
         final int  currentHash = hashCode();
         if (currentHash != _hashOnDigest) {
-            _digest = _computeDigest( _values() );  //TODO: keySet() is enough ???
+            _digest = _computeOvalIDDigest( _keySet() );
+//            _digest = _computeDigest( _values() );  //TODO: keySet() is enough ???
             _hashOnDigest = currentHash;
         }
 

@@ -32,20 +32,20 @@ import java.util.Set;
 
 /**
  * A collection of element objects.
- * Every element MUST not be null.
+ * Every element MUST NOT be null.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class Container<E>
+public abstract class Container<K,V>
     extends AbstractPersistable
-    implements Collection<E>
+    implements Collection<V>
 //implements Iterable<E>
 {
 
 //    private final Collection<E>  _elements = new ArrayList<E>();
 
-    private final Map<Object, E>  _elements = new LinkedHashMap<Object, E>();
+    private final Map<K,V>  _elements = new LinkedHashMap<K,V>();
 
 
 
@@ -61,7 +61,7 @@ public abstract class Container<E>
      * Constructor.
      */
     public Container(
-                    final Collection<? extends E> elements
+                    final Collection<? extends V> elements
                     )
     {
         addAll( elements );
@@ -72,7 +72,7 @@ public abstract class Container<E>
      * Constructor.
      */
     public Container(
-                    final E[] elements
+                    final V[] elements
                     )
     {
         addAll( Arrays.asList( elements ) );
@@ -80,17 +80,17 @@ public abstract class Container<E>
 
 
 
-
     /**
+     * Returns the key of the specified element.
      */
-    protected abstract Object _getKey( E element );
+    protected abstract K _getKey( V element );
 
 
 
     /**
      *
      */
-    protected Collection<E>  _values()
+    protected Collection<V>  _values()
     {
         return _elements.values();
     }
@@ -99,9 +99,17 @@ public abstract class Container<E>
 
     /**
      */
-    protected Set<Object>  _keySet()
+    protected Set<K>  _keySet()
     {
         return _elements.keySet();
+    }
+
+
+    /**
+     */
+    protected Set<Map.Entry<K, V>> _entrySet()
+    {
+        return _elements.entrySet();
     }
 
 
@@ -109,7 +117,7 @@ public abstract class Container<E>
     /**
      */
     public void reset(
-                    final Collection<? extends E> elements
+                    final Collection<? extends V> elements
                     )
     {
         clear();
@@ -118,42 +126,10 @@ public abstract class Container<E>
 
 
 
-//    /**
-//     */
-//    protected Set<Map.Entry<Object, E>> _entrySet()
-//    {
-//        return _elements.entrySet();
-//    }
-
-
-
-//    /**
-//     */
-//    protected Set<Object> _keySet()
-//    {
-//        return _elements.keySet();
-//    }
-
-
-
-//    /**
-//     * Returns the elements.
-//     * This method never returns null.
-//     * Note that this method may returns
-//     * the internal implementing collection object.
-//     */
-//    public Collection<E> getAll()
-//    {
-////        return _elements;
-//        return _elements.values();
-//    }
-
-
-
     /**
      */
-    public E find(
-                    final Object key
+    public V find(
+                    final K key
                     )
     {
         if (key == null) {
@@ -162,18 +138,6 @@ public abstract class Container<E>
 
         return _elements.get( key );
     }
-
-
-
-
-//    //**************************************************************
-//    //  Iterable
-//    //**************************************************************
-
-//    public Iterator<E> iterator()
-//    {
-//        return _elements.iterator();
-//    }
 
 
 
@@ -208,7 +172,7 @@ public abstract class Container<E>
 
 
 
-    public Iterator<E> iterator()
+    public Iterator<V> iterator()
     {
         return _elements.values().iterator();
     }
@@ -232,19 +196,19 @@ public abstract class Container<E>
 
 
     public boolean add(
-                    final E e
+                    final V e
                     )
     {
         if (e == null) {
             throw new NullPointerException( "add: null argument" );
         }
 
-        Object  key = _getKey( e );
+        K  key = _getKey( e );
         if (key == null) {
             throw new IllegalArgumentException( "add: null-key argument" );
         }
 
-        E  previousValue = _elements.put( key, e );
+        V  previousValue = _elements.put( key, e );
 
         return (e != previousValue);
     }
@@ -260,14 +224,14 @@ public abstract class Container<E>
         }
 
         @SuppressWarnings( "unchecked" )
-        E  e = (E)o;
+        V  e = (V)o;
 
-        Object  key = _getKey( e );
+        K  key = _getKey( e );
         if (key == null) {
             throw new IllegalArgumentException( "remove: null-key argument " );
         }
 
-        E  previousValue = _elements.remove( key );
+        V  previousValue = _elements.remove( key );
 
         return (previousValue != null);
     }
@@ -294,7 +258,7 @@ public abstract class Container<E>
 
 
     public boolean addAll(
-                    final Collection<? extends E> c
+                    final Collection<? extends V> c
                     )
     {
         if (c == null) {
@@ -302,7 +266,7 @@ public abstract class Container<E>
         }
 
         boolean  changed = false;
-        for (E  e : c) {
+        for (V  e : c) {
             boolean  e_added = add( e );
             changed = e_added || changed;
 
@@ -325,7 +289,8 @@ public abstract class Container<E>
 
         boolean  changed = false;
         for (Object  o : c) {
-            changed = changed || remove( o );
+            boolean  o_removed =  remove( o );
+            changed = o_removed || changed;
         }
 
         return changed;
@@ -344,7 +309,8 @@ public abstract class Container<E>
         boolean  changed = false;
         for (Object  o : this) {
             if (!c.contains( o )) {
-                changed = changed || remove( o );
+                boolean  o_removed = remove( o );
+                changed = o_removed || changed;
             }
         }
 
@@ -368,14 +334,6 @@ public abstract class Container<E>
     public int hashCode()
     {
         return _elements.hashCode();
-
-//        final int  prime = 37;
-//        int  result = 17;
-//
-//        Collection<E>  elements = getAll();
-//        result = prime * result + elements.hashCode();
-//
-//        return result;
     }
 
 
@@ -393,18 +351,12 @@ public abstract class Container<E>
             return false;
         }
 
-        Container<?>  other = Container.class.cast( obj );
-        return other.containsAll( _elements.values() );
-
-//        Collection<?>  other_elements = other.getAll();
-//        Collection<?>   this_elements =  this.getAll();
-//        if (this_elements == other_elements
-//                        ||  (this_elements != null
-//                                        &&  this_elements.equals( other_elements ))) {
-//            return true;
-//        }
-//
-//        return false;
+        @SuppressWarnings( "unchecked" )
+        Container<K,V>  other = (Container<K,V>)obj;
+        if (this.size() == other.size()) {
+            return this._entrySet().equals( other._entrySet());
+        }
+        return false;
     }
 
 
