@@ -33,6 +33,8 @@ import java.util.Set;
 /**
  * A collection of element objects.
  * Every element MUST NOT be null.
+ * In this collection, each element is identified by its key.
+ * Every subclass has to implement _getKey() method to obtain the key.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -40,12 +42,11 @@ import java.util.Set;
 public abstract class Container<K,V>
     extends AbstractPersistable
     implements Collection<V>
-//implements Iterable<E>
 {
 
-//    private final Collection<E>  _elements = new ArrayList<E>();
-
     private final Map<K,V>  _elements = new LinkedHashMap<K,V>();
+
+//  private final Collection<E>  _elements = new ArrayList<E>();
 
 
 
@@ -88,7 +89,6 @@ public abstract class Container<K,V>
 
 
     /**
-     *
      */
     protected Collection<V>  _values()
     {

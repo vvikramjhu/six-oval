@@ -98,8 +98,16 @@ public class OvalElementContainer<E extends OvalElement>
 
     private String  _digest;
 
-    private int  _hashOnDigest = 0;
+    private transient int  _hashOnDigest = 0;
 
+
+
+    /**
+     */
+    public void setDigest( final String digest )
+    {
+        _digest = digest;
+    }
 
 
     /**
