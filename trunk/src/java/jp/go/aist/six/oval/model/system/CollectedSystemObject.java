@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.system;
 
 import jp.go.aist.six.oval.model.OvalAnalysisElement;
+import jp.go.aist.six.util.orm.Dependent;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -33,23 +34,24 @@ import java.util.Collection;
  */
 public class CollectedSystemObject
     extends OvalAnalysisElement
+    implements Dependent<OvalSystemCharacteristics>
 {
 
     private String  _message;
     //{0..*}
 //  private Collection<Message>  _messages = new ArrayList<Message>();
-    /*** Every result has at most one message. ***/
+    /*** We have never seen a result which has multiple messages. ***/
 
     // NOT implemented yet
 //  private Collection<VariableValue>  _variableValues = new ArrayList<VariableValue>();
 //    //{0..*}
 
-    private Collection<ItemReference>  _items = new ArrayList<ItemReference>();
+    private Collection<ItemReference>  _reference = new ArrayList<ItemReference>();
     //{0..*}
 
-//    public static final int  DEFAULT_VARIABLE_INSTANCE = 1;
-//    private int  _variableInstance = DEFAULT_VARIABLE_INSTANCE;
-    //{optional, default="1"}
+    public static final int  DEFAULT_VARIABLE_INSTANCE = 1;
+    private int  _variableInstance = DEFAULT_VARIABLE_INSTANCE;
+    //{xsd:nonNegativeInteger, optional, default="1"}
 
     private Flag  _flag;
     //{required}
@@ -97,26 +99,11 @@ public class CollectedSystemObject
                     final String id,
                     final int version,
                     final Flag flag,
-                    final Collection<ItemReference> items
+                    final Collection<? extends ItemReference> items
                     )
     {
         this( id, version, flag );
-        setItems( items );
-    }
-
-
-
-    public void setFlag(
-                    final Flag flag
-                    )
-    {
-        _flag = flag;
-    }
-
-
-    public Flag getFlag()
-    {
-        return _flag;
+        setReference( items );
     }
 
 
@@ -136,24 +123,24 @@ public class CollectedSystemObject
 
 
 
-    public void setItems(
-                    final Collection<ItemReference> refs
+    public void setReference(
+                    final Collection<? extends ItemReference> refList
                     )
     {
-        if (refs != _items) {
-            _items.clear();
-            if (refs == null  ||  refs.size() == 0) {
+        if (refList != _reference) {
+            _reference.clear();
+            if (refList == null  ||  refList.size() == 0) {
                 return;
             }
 
-            for (ItemReference  ref : refs) {
-                addItem( ref );
+            for (ItemReference  ref : refList) {
+                addReference( ref );
             }
         }
     }
 
 
-    public boolean addItem(
+    public boolean addReference(
                     final ItemReference ref
                     )
     {
@@ -162,14 +149,49 @@ public class CollectedSystemObject
         }
 
 //        ref.setObject( this );
-        return _items.add( ref );
+        return _reference.add( ref );
     }
 
 
-    public Collection<ItemReference> getItems()
+    public Collection<ItemReference> getReference()
     {
-        return _items;
+        return _reference;
     }
+
+
+
+    /**
+     */
+    public void setVariableInstance(
+                    final int variableInstance
+                    )
+    {
+        _variableInstance = variableInstance;
+    }
+
+
+    /**
+     */
+    public int getVariableInstance()
+    {
+        return _variableInstance;
+    }
+
+
+
+    public void setFlag(
+                    final Flag flag
+                    )
+    {
+        _flag = flag;
+    }
+
+
+    public Flag getFlag()
+    {
+        return _flag;
+    }
+
 
 
 
@@ -256,7 +278,7 @@ public class CollectedSystemObject
 
 
     //**************************************************************
-    //  Castor JDO support
+    //  Dependent
     //**************************************************************
 
     private OvalSystemCharacteristics  _master;
@@ -312,13 +334,12 @@ public class CollectedSystemObject
     {
         return "CollectedSystemObject[" + super.toString()
                         + ", flag=" + getFlag()
-                        + ", items=" + getItems()
+                        + ", items=" + getReference()
 //                        + ", variable_instance=" + getVariableInstance()
 //                        + ", messages=" + getMessages()
 //                        + ", variable_values=" + getVariableValues()
                         + "]";
     }
-
 
 //    public void setMessages( final Collection<Message> messages )
 //    public boolean addMessage( final Message message )

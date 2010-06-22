@@ -18,66 +18,88 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definition;
+package jp.go.aist.six.oval.model.system;
 
-import jp.go.aist.six.oval.model.OvalElementContainer;
+import jp.go.aist.six.util.orm.AbstractPersistable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 
 
 /**
- * A collection of Definition objects.
+ * A collection of CollectedSystemObject instances.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class Definitions
-extends OvalElementContainer<Definition>
+public class CollectedSystemObjects
+    extends AbstractPersistable
+//    extends Container<CollectedSystemObjectKey,CollectedSystemObject>
 {
 
-    /**
-     * Constructor.
-     */
-    public Definitions()
-    {
-    }
+    private Collection<CollectedSystemObject>  _object = new ArrayList<CollectedSystemObject>();
+    //{1..*}
+
 
 
     /**
      * Constructor.
      */
-    public Definitions(
-                    final Collection<? extends Definition> elements
-                    )
+    public CollectedSystemObjects()
     {
-        super( elements );
     }
 
 
     /**
      * Constructor.
      */
-    public Definitions(
-                    final Definition[] elements
+    public CollectedSystemObjects(
+                    final Collection<? extends CollectedSystemObject> elements
                     )
     {
-        super( elements );
+        setObject( elements );
     }
 
 
-
-    public void setDefinition(
-                    final Collection<? extends Definition> elements
+    /**
+     * Constructor.
+     */
+    public CollectedSystemObjects(
+                    final CollectedSystemObject[] elements
                     )
     {
-        reset( elements );
+        setObject( Arrays.asList( elements ) );
     }
 
 
-    public Collection<Definition> getDefinition()
+
+    public void setObject(
+                    final Collection<? extends CollectedSystemObject> objectList
+                    )
     {
-        return _values();
+        _object.clear();
+        _object.addAll( objectList );
     }
+
+
+    public Collection<CollectedSystemObject> getObject()
+    {
+        return _object;
+    }
+
+
+
+//    //**************************************************************
+//    //  Container
+//    //**************************************************************
+//
+//    protected CollectedSystemObjectKey _getKey(
+//                    final CollectedSystemObject object
+//                    )
+//    {
+//        return (new CollectedSystemObjectKey( object.getOvalID(), object.getOvalVersion(), object.getVariableInstance() ));
+//    }
 
 }
-// Definitions
+// CollectedSystemObjects

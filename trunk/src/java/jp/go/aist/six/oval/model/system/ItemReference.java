@@ -36,6 +36,7 @@ public class ItemReference
 {
 
     private int  _itemRef;
+    //{required}
 
 
 
