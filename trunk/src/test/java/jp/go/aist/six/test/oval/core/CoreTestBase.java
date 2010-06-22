@@ -4,13 +4,16 @@ import jp.go.aist.six.oval.core.service.StandardOvalService;
 import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.common.Generator;
+import jp.go.aist.six.oval.model.system.EntityItemAnySimple;
 import jp.go.aist.six.oval.model.system.EntityItemString;
 import jp.go.aist.six.oval.model.system.NetworkInterface;
 import jp.go.aist.six.oval.model.system.Status;
 import jp.go.aist.six.oval.model.system.SystemInfo;
 import jp.go.aist.six.oval.model.windows.EntityItemRegistryHive;
+import jp.go.aist.six.oval.model.windows.EntityItemRegistryType;
 import jp.go.aist.six.oval.model.windows.RegistryHive;
 import jp.go.aist.six.oval.model.windows.RegistryItem;
+import jp.go.aist.six.oval.model.windows.RegistryType;
 import jp.go.aist.six.util.IsoDate;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -163,7 +166,7 @@ public abstract class CoreTestBase
                             new RegistryItem(
                                             83,
                                             Status.DOES_NOT_EXIST,
-                                            new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE.name() ),
+                                            new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
                                             new EntityItemString(
                                                             "SOFTWARE\\Microsoft\\Updates\\Visual Studio\\7.0\\S895309",
                                                             EntityItemString.DEFAULT_DATATYPE,
@@ -172,6 +175,20 @@ public abstract class CoreTestBase
                                             null,
                                             null,
                                             null
+                                            )
+                        }
+                        ,
+                        {
+                            "oval-sc#windows:registry_item",
+                            "test/data/sc/oval-sc.item.registry_item.2.xml",
+                            new RegistryItem(
+                                            45,
+                                            RegistryItem.DEFAULT_STATUS,
+                                            new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                                            new EntityItemString( "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\OUTLOOK.EXE" ),
+                                            new EntityItemString( "Path" ),
+                                            new EntityItemRegistryType( RegistryType.REG_SZ ),
+                                            new EntityItemAnySimple( "C:\\Program Files\\Microsoft Office\\OFFICE11\\" )
                                             )
                         }
         };

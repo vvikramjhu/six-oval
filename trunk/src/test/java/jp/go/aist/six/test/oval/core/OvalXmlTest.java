@@ -5,6 +5,7 @@ import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.NetworkInterface;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.SystemInfo;
+import jp.go.aist.six.oval.model.windows.RegistryItem;
 import org.testng.Assert;
 import org.testng.Reporter;
 import java.io.File;
@@ -65,9 +66,34 @@ public class OvalXmlTest
                     final Item expected
                     )
     {
+        Reporter.log( " - ID", true );
         Assert.assertEquals( actual.getID(), expected.getID() );
+        Reporter.log( " - status", true );
         Assert.assertEquals( actual.getStatus(), expected.getStatus() );
+
+        if (expected instanceof RegistryItem) {
+            _validate( RegistryItem.class.cast( actual ), RegistryItem.class.cast( expected ) );
+        }
     }
+
+
+    private void _validate(
+                    final RegistryItem actual,
+                    final RegistryItem expected
+                    )
+    {
+        Reporter.log( " - hive", true );
+        Assert.assertEquals( actual.getHive(), expected.getHive() );
+        Reporter.log( " - key", true );
+        Assert.assertEquals( actual.getKey(), expected.getKey() );
+        Reporter.log( " - name", true );
+        Assert.assertEquals( actual.getName(), expected.getName() );
+        Reporter.log( " - type", true );
+        Assert.assertEquals( actual.getType(), expected.getType() );
+        Reporter.log( " - value", true );
+        Assert.assertEquals( actual.getValue(), expected.getValue() );
+    }
+
 
 
 

@@ -48,7 +48,18 @@ public class EntityItemRegistryType
                     final String data
                     )
     {
-        setData( data );
+        super( data );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemRegistryType(
+                    final RegistryType data
+                    )
+    {
+        super( data.value() );
     }
 
 

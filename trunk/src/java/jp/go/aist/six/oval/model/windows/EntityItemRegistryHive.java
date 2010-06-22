@@ -48,8 +48,20 @@ public class EntityItemRegistryHive
                     final String data
                     )
     {
-        setData( data );
+        super( data );
     }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemRegistryHive(
+                    final RegistryHive data
+                    )
+    {
+        super( data.name() );
+    }
+
 
 
 
