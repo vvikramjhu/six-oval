@@ -1621,6 +1621,10 @@
             <sql name="PID" type="integer"/>
         </field>
 
+        <field name="filepath.data" type="string">
+            <sql name="filepath" type="char"/>
+        </field>
+
         <field name="path.data" type="string">
             <sql name="path" type="char"/>
         </field>

@@ -2256,6 +2256,11 @@
         <map-to xml="file_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"/>
 
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+
         <field name="path" 
             type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="path" node="element"/>

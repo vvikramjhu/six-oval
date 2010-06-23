@@ -5,6 +5,7 @@ import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.NetworkInterface;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.SystemInfo;
+import jp.go.aist.six.oval.model.windows.FileItem;
 import jp.go.aist.six.oval.model.windows.RegistryItem;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -61,6 +62,7 @@ public class OvalXmlTest
 
 
 
+    //Item
     private void _validate(
                     final Item actual,
                     final Item expected
@@ -73,10 +75,13 @@ public class OvalXmlTest
 
         if (expected instanceof RegistryItem) {
             _validate( RegistryItem.class.cast( actual ), RegistryItem.class.cast( expected ) );
+        } else if (expected instanceof FileItem) {
+            _validate( FileItem.class.cast( actual ), FileItem.class.cast( expected ) );
         }
     }
 
 
+    //RegistryItem
     private void _validate(
                     final RegistryItem actual,
                     final RegistryItem expected
@@ -92,6 +97,51 @@ public class OvalXmlTest
         Assert.assertEquals( actual.getType(), expected.getType() );
         Reporter.log( " - value", true );
         Assert.assertEquals( actual.getValue(), expected.getValue() );
+    }
+
+
+    //FileItem
+    private void _validate(
+                    final FileItem actual,
+                    final FileItem expected
+                    )
+    {
+        Reporter.log( " - filepath", true );
+        Assert.assertEquals( actual.getFilepath(), expected.getFilepath() );
+        Reporter.log( " - path", true );
+        Assert.assertEquals( actual.getPath(), expected.getPath() );
+        Reporter.log( " - filename", true );
+        Assert.assertEquals( actual.getFilename(), expected.getFilename() );
+        Reporter.log( " - owner", true );
+        Assert.assertEquals( actual.getOwner(), expected.getOwner() );
+        Reporter.log( " - size", true );
+        Assert.assertEquals( actual.getSize(), expected.getSize() );
+        Reporter.log( " - aTime", true );
+        Assert.assertEquals( actual.getATime(), expected.getATime() );
+        Reporter.log( " - cTime", true );
+        Assert.assertEquals( actual.getCTime(), expected.getCTime() );
+        Reporter.log( " - mTime", true );
+        Assert.assertEquals( actual.getMTime(), expected.getMTime() );
+        Reporter.log( " - msChecksum", true );
+        Assert.assertEquals( actual.getMsChecksum(), expected.getMsChecksum() );
+        Reporter.log( " - version", true );
+        Assert.assertEquals( actual.getVersion(), expected.getVersion() );
+        Reporter.log( " - type", true );
+        Assert.assertEquals( actual.getType(), expected.getType() );
+        Reporter.log( " - developmentClass", true );
+        Assert.assertEquals( actual.getDevelopmentClass(), expected.getDevelopmentClass() );
+        Reporter.log( " - company", true );
+        Assert.assertEquals( actual.getCompany(), expected.getCompany() );
+        Reporter.log( " - internalName", true );
+        Assert.assertEquals( actual.getInternalName(), expected.getInternalName() );
+        Reporter.log( " - language", true );
+        Assert.assertEquals( actual.getLanguage(), expected.getLanguage() );
+        Reporter.log( " - originalFilename", true );
+        Assert.assertEquals( actual.getOriginalFilename(), expected.getOriginalFilename() );
+        Reporter.log( " - productName", true );
+        Assert.assertEquals( actual.getProductName(), expected.getProductName() );
+        Reporter.log( " - productVersion", true );
+        Assert.assertEquals( actual.getProductVersion(), expected.getProductVersion() );
     }
 
 

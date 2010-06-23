@@ -1399,6 +1399,7 @@ CREATE TABLE IF NOT EXISTS oval_s_item_file
 (
     PID                 INT             NOT NULL,
 
+    filepath            VARCHAR(255),
     path                VARCHAR(255),
     filename            VARCHAR(255),
     owner               VARCHAR(64),
