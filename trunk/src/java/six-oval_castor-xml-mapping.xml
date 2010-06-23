@@ -1161,7 +1161,9 @@
 
         <field name="item" 
             type="jp.go.aist.six.oval.model.system.Item"
-            collection="collection">
+            collection="collection"
+            get-method="iterateItem"
+            set-method="addItem">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
     </class>

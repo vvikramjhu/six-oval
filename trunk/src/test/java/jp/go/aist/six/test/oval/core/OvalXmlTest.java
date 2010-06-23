@@ -4,6 +4,7 @@ import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.NetworkInterface;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.system.SystemData;
 import jp.go.aist.six.oval.model.system.SystemInfo;
 import jp.go.aist.six.oval.model.windows.FileItem;
 import jp.go.aist.six.oval.model.windows.RegistryItem;
@@ -58,6 +59,16 @@ public class OvalXmlTest
         Set<NetworkInterface>  a_netifs = new HashSet<NetworkInterface>( actual.getInterfaces() );
         Set<NetworkInterface>  e_netifs = new HashSet<NetworkInterface>( expected.getInterfaces() );
         Assert.assertEquals( a_netifs, e_netifs );
+    }
+
+
+
+    private void _validate(
+                    final SystemData actual,
+                    final SystemData expected
+                    )
+    {
+        Assert.assertEquals( actual, expected );
     }
 
 
@@ -225,6 +236,36 @@ public class OvalXmlTest
 
         Reporter.log( "validating...", true );
         _validate( a_systemInfo, systemInfo);
+        Reporter.log( "...validation OK", true );
+    }
+
+
+
+    //==============================================================
+    //  system_data
+    //==============================================================
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "oval-sc:system_data"},
+                    dataProvider="oval-sc-system_data",
+                    alwaysRun=true
+                    )
+    public void processSystemData(
+                    final String testTarget,
+                    final String filepath,
+                    final SystemData systemData
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL XML //", true );
+        Reporter.log( "  * target type: " + testTarget, true );
+
+        SystemData  a_systemData = _unmarshalFile( filepath, SystemData.class );
+
+        Reporter.log( "validating...", true );
+        _validate( a_systemData, systemData );
         Reporter.log( "...validation OK", true );
     }
 

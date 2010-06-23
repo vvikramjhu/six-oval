@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.system;
 
 import jp.go.aist.six.oval.model.Container;
 import java.util.Collection;
+import java.util.Iterator;
 
 
 
@@ -73,17 +74,24 @@ public class SystemData
     }
 
 
-//    public boolean addItem(
-//                    final Item element
-//                    )
-//    {
-//        return add( element );
-//    }
+    public boolean addItem(
+                    final Item element
+                    )
+    {
+        return add( element );
+    }
 
 
     public Collection<Item> getItem()
     {
         return _values();
+    }
+
+
+    public Iterator<Item> iterateItem()
+
+    {
+        return iterator();
     }
 
 

@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model;
 import jp.go.aist.six.util.orm.AbstractPersistable;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -44,7 +44,9 @@ public abstract class Container<K,V>
     implements Collection<V>
 {
 
-    private final Map<K,V>  _elements = new LinkedHashMap<K,V>();
+    private final Map<K,V>  _elements = new HashMap<K,V>();
+    //TODO: If we use LnkedHashMap, Container.equals() method does NOT work.
+    // The order of elements seems to be affected.
 
 //  private final Collection<E>  _elements = new ArrayList<E>();
 
@@ -354,7 +356,8 @@ public abstract class Container<K,V>
         @SuppressWarnings( "unchecked" )
         Container<K,V>  other = (Container<K,V>)obj;
         if (this.size() == other.size()) {
-            return this._entrySet().equals( other._entrySet());
+//            return this._keySet().equals( other._keySet() );
+            return this._entrySet().equals( other._entrySet() );
         }
         return false;
     }
