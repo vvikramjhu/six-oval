@@ -1621,27 +1621,27 @@
             <sql name="PID" type="integer"/>
         </field>
 
-        <field name="path" type="string">
+        <field name="path.data" type="string">
             <sql name="path" type="char"/>
         </field>
 
-        <field name="filename" type="string">
+        <field name="filename.data" type="string">
             <sql name="filename" type="char"/>
         </field>
 
-        <field name="owner" type="string">
+        <field name="owner.data" type="string">
             <sql name="owner" type="char"/>
         </field>
 
-        <field name="company" type="string">
+        <field name="company.data" type="string">
             <sql name="company" type="char"/>
         </field>
 
-        <field name="productName" type="string">
+        <field name="productName.data" type="string">
             <sql name="product_name" type="char"/>
         </field>
 
-        <field name="productVersion" type="string">
+        <field name="productVersion.data" type="string">
             <sql name="product_version" type="char"/>
         </field>
     </class>

@@ -2099,6 +2099,24 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <!-- ======================================================= -->
+    <!-- EntityObjectRegistryHiveType                            -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHiveType"
+        extends="jp.go.aist.six.oval.model.definition.EntityObjectStringType">
+    </class>
+
+
+
+    <!-- ======================================================= -->
+    <!-- EntityItemFileType                                      -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemFileType"
+        extends="jp.go.aist.six.oval.model.system.EntityItemString">
+    </class>
+
+
+
+    <!-- ======================================================= -->
     <!-- EntityItemRegistryHive                                  -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.EntityItemRegistryHive"
@@ -2238,76 +2256,92 @@
         <map-to xml="file_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"/>
 
-        <field name="path" type="string">
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="path" node="element"/>
         </field>
 
-        <field name="filename" type="string">
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="filename" node="element"/>
         </field>
 
-        <field name="owner" type="string">
+        <field name="owner" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="owner" node="element"/>
         </field>
 
-        <field name="size" type="long">
+        <field name="size" 
+            type="jp.go.aist.six.oval.model.system.EntityItemInt">
             <bind-xml name="size" node="element"/>
         </field>
 
-        <field name="aTime" type="long">
+        <field name="aTime" 
+            type="jp.go.aist.six.oval.model.system.EntityItemInt">
             <bind-xml name="a_time" node="element"/>
         </field>
 
-        <field name="cTime" type="long">
+        <field name="cTime" 
+            type="jp.go.aist.six.oval.model.system.EntityItemInt">
             <bind-xml name="c_time" node="element"/>
         </field>
 
-        <field name="mTime" type="long">
+        <field name="mTime" 
+            type="jp.go.aist.six.oval.model.system.EntityItemInt">
             <bind-xml name="m_time" node="element"/>
         </field>
 
-        <field name="msChecksum" type="string">
+        <field name="msChecksum" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="ms_checksum" node="element"/>
         </field>
 
-        <field name="version" type="string">
+        <field name="version" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="version" node="element"/>
         </field>
 
-        <field name="type" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.FileTypeHandler">
+        <field name="type" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemFileType">
             <bind-xml name="type" node="element"/>
         </field>
 
-        <field name="developmentClass" type="string">
+        <field name="developmentClass" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="development_class" node="element"/>
         </field>
 
-        <field name="company" type="string">
+        <field name="company" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="company" node="element"/>
         </field>
 
-        <field name="internalName" type="string">
+        <field name="internalName" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="internal_name" node="element"/>
         </field>
 
-        <field name="language" type="string">
+        <field name="language" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="language" node="element"/>
         </field>
 
-        <field name="originalFilename" type="string">
+        <field name="originalFilename" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="original_filename" node="element"/>
         </field>
 
-        <field name="productName" type="string">
+        <field name="productName" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="product_name" node="element"/>
         </field>
 
-        <field name="productVersion" type="string">
+        <field name="productVersion" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="product_version" node="element"/>
         </field>
-
     </class>
+
 
 
     <!-- ======================================================= -->
@@ -2440,15 +2474,6 @@
                 location="state"/>
         </field>
 -->
-    </class>
-
-
-
-    <!-- ======================================================= -->
-    <!-- EntityObjectRegistryHiveType                            -->
-    <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHiveType"
-        extends="jp.go.aist.six.oval.model.definition.EntityObjectStringType">
     </class>
 
 
