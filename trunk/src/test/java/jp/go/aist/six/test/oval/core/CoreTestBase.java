@@ -3,14 +3,19 @@ package jp.go.aist.six.test.oval.core;
 import jp.go.aist.six.oval.core.service.StandardOvalService;
 import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
+import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.system.EntityItemAnySimple;
+import jp.go.aist.six.oval.model.system.EntityItemInt;
 import jp.go.aist.six.oval.model.system.EntityItemString;
 import jp.go.aist.six.oval.model.system.NetworkInterface;
 import jp.go.aist.six.oval.model.system.Status;
 import jp.go.aist.six.oval.model.system.SystemInfo;
+import jp.go.aist.six.oval.model.windows.EntityItemFileType;
 import jp.go.aist.six.oval.model.windows.EntityItemRegistryHive;
 import jp.go.aist.six.oval.model.windows.EntityItemRegistryType;
+import jp.go.aist.six.oval.model.windows.FileItem;
+import jp.go.aist.six.oval.model.windows.FileType;
 import jp.go.aist.six.oval.model.windows.RegistryHive;
 import jp.go.aist.six.oval.model.windows.RegistryItem;
 import jp.go.aist.six.oval.model.windows.RegistryType;
@@ -189,6 +194,33 @@ public abstract class CoreTestBase
                                             new EntityItemString( "Path" ),
                                             new EntityItemRegistryType( RegistryType.REG_SZ ),
                                             new EntityItemAnySimple( "C:\\Program Files\\Microsoft Office\\OFFICE11\\" )
+                                            )
+                        }
+                        ,
+                        {
+                            "oval-sc#windows:file_item",
+                            "test/data/sc/oval-sc.item.file_item.1.xml",
+                            new FileItem(
+                                            46,
+                                            RegistryItem.DEFAULT_STATUS,
+                                            new EntityItemString( "C:\\Program Files\\Microsoft Office\\OFFICE11\\outlook.exe" ), //filepath
+                                            new EntityItemString( "C:\\Program Files\\Microsoft Office\\OFFICE11\\" ),  //path
+                                            new EntityItemString( "outlook.exe" ),  //filename
+                                            new EntityItemString( "Administrators" ),  //owner
+                                            new EntityItemInt( "196424", Datatype.INT ),  //size
+                                            new EntityItemInt( "115938124830012212", Datatype.INT ),  //a_time
+                                            new EntityItemInt( "25257592830077382", Datatype.INT ),  //c_time
+                                            new EntityItemInt( "115938124830012212", Datatype.INT ),  //m_time
+                                            new EntityItemString( "212346" ),  //ms_checksum
+                                            new EntityItemString( "11.0.8312.0", Datatype.VERSION ),  //version
+                                            new EntityItemFileType( FileType.FILE_TYPE_DISK ), //type
+                                            new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.DOES_NOT_EXIST ),  //development_class
+                                            new EntityItemString( "Microsoft Corporation" ),  //company
+                                            new EntityItemString( "Outlook" ),  //internal_name
+                                            new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.NOT_COLLECTED ),  //language
+                                            new EntityItemString( "Outlook.exe" ),  //original_filename
+                                            new EntityItemString( "Microsoft Office Outlook" ),  //product_name
+                                            new EntityItemString( "11.0.8312" )  //product_version
                                             )
                         }
         };

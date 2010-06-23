@@ -57,6 +57,18 @@ public class EntityItemString
      */
     public EntityItemString(
                     final String data,
+                    final Datatype datatype
+                    )
+    {
+        super( data, datatype );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemString(
+                    final String data,
                     final Datatype datatype,
                     final Status status
                     )

@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.system;
 
+import jp.go.aist.six.oval.model.common.Datatype;
+
 
 
 /**
@@ -46,7 +48,68 @@ public class EntityItemInt
                     final String data
                     )
     {
-        setData( data );
+        super( data );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemInt(
+                    final String data,
+                    final Datatype datatype
+                    )
+    {
+        super( data, datatype );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemInt(
+                    final String data,
+                    final Datatype datatype,
+                    final Status status
+                    )
+    {
+        super( data, datatype, status );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemInt(
+                    final long data
+                    )
+    {
+        this( String.valueOf( data ) );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemInt(
+                    final long data,
+                    final Datatype datatype
+                    )
+    {
+        this( String.valueOf( data ), datatype );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemInt(
+                    final long data,
+                    final Datatype datatype,
+                    final Status status
+                    )
+    {
+        this( String.valueOf( data ), datatype, status );
     }
 
 

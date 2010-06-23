@@ -66,7 +66,19 @@ public abstract class EntityItemBase
                     final String data
                     )
     {
-        setData( data );
+        this( data, DEFAULT_DATATYPE, DEFAULT_STATUS );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemBase(
+                    final String data,
+                    final Datatype datatype
+                    )
+    {
+        this( data, datatype, DEFAULT_STATUS );
     }
 
 

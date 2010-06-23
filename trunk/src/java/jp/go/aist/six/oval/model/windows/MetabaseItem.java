@@ -41,22 +41,22 @@ public class MetabaseItem
 {
 
     private EntityItemString  _key;
-    //{oval-sc:EntityItemStringType, 0..1}
+    //{0..1}
 
     private EntityItemInt  _mbID;
-    //{oval-sc:EntityItemIntType, 0..1, nillable="true"}
+    //{0..1, nillable="true"}
 
     private EntityItemString  _name;
-    //{oval-sc:EntityItemStringType, 0..1}
+    //{0..1}
 
     private EntityItemString  _userType;
-    //{oval-sc:EntityItemStringType, 0..1}
+    //{0..1}
 
     private EntityItemString  _dataType;
-    //{oval-sc:EntityItemStringType, 0..1}
+    //{0..1}
 
     private Collection<EntityItemAnySimple>  _data = new ArrayList<EntityItemAnySimple>();
-    //{oval-sc:EntityItemAnyType, 0..*}
+    //{0..*}
 
 
 
@@ -167,10 +167,11 @@ public class MetabaseItem
 
 
     public void setData(
-                    final Collection<EntityItemAnySimple> data
+                    final Collection<? extends EntityItemAnySimple> data
                     )
     {
-        _data = data;
+        _data.clear();
+        _data.addAll( data );
     }
 
 
@@ -197,15 +198,12 @@ public class MetabaseItem
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
-        return "metabase_item[" + super.toString()
+        return "MtabaseItem[" + super.toString()
                         + ", key=" + getKey()
-                        + ", id=" + getMetabaseID()
+                        + ", mb_id=" + getMetabaseID()
                         + ", name=" + getName()
                         + ", user_type=" + getUserType()
                         + ", data_type=" + getDataType()

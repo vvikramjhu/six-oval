@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.core.model.system.ItemType;
+import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.system.EntityItemBase;
 import jp.go.aist.six.oval.model.system.EntityItemInt;
 import jp.go.aist.six.oval.model.system.EntityItemString;
@@ -117,46 +118,117 @@ public class FileItem
 //        setProductName( productName );
 //        setProductVersion( productVersion );
 //    }
-//
-//
-//    /**
-//     * Constructor.
-//     */
-//    public FileItem(
-//                    final int id,
-//                    final Status status,
-//                    final String path,
-//                    final String filename,
-//                    final String owner,
-//                    final long size,
-//                    final long atime,
-//                    final long ctime,
-//                    final long mtime,
-//                    final String checksum,
-//                    final String version,
-//                    final FileType type,
-//                    final String devclass,
-//                    final String company,
-//                    final String internalname,
-//                    final String language,
-//                    final String originalFilename,
-//                    final String productName,
-//                    final String productVersion
-//                    )
-//    {
-//        this( id, status, path, filename, owner, company, productName, productVersion );
-//        setSize( size );
-//        setATime( atime );
-//        setCTime( ctime );
-//        setMTime( mtime );
-//        setMsChecksum( checksum );
-//        setVersion( version );
-//        setType( type );
-//        setDevelopmentClass( devclass );
-//        setInternalName( internalname );
-//        setLanguage( language );
-//        setOriginalFilename( originalFilename );
-//    }
+
+
+    /**
+     * Constructor.
+     */
+    public FileItem(
+                    final int id,
+                    final Status status,
+                    final String filepath,
+                    final String path,
+                    final String filename,
+                    final String owner,
+                    final long size,
+                    final long atime,
+                    final long ctime,
+                    final long mtime,
+                    final String checksum,
+                    final String version,
+                    final FileType type,
+                    final String devclass,
+                    final String company,
+                    final String internalname,
+                    final String language,
+                    final String originalFilename,
+                    final String productName,
+                    final String productVersion
+                    )
+    {
+        this( id, status );
+        setFilepath( new EntityItemString( filepath ) );
+        setPath( new EntityItemString( path ) );
+        setFilename( new EntityItemString( filename ) );
+        setOwner( new EntityItemString( owner ) );
+        setSize( new EntityItemInt( size, Datatype.INT ) );
+        setATime( new EntityItemInt( atime, Datatype.INT ) );
+        setCTime( new EntityItemInt( ctime, Datatype.INT ) );
+        setMTime( new EntityItemInt( mtime, Datatype.INT ) );
+        setMsChecksum( new EntityItemString( checksum ) );
+        setVersion( new EntityItemString( version, Datatype.VERSION ) );
+        setType( new EntityItemFileType( type ) );
+        setDevelopmentClass( new EntityItemString( devclass ) );
+        setCompany( new EntityItemString( company ) );
+        setInternalName( new EntityItemString( internalname ) );
+        setLanguage( new EntityItemString( language ) );
+        setOriginalFilename( new EntityItemString( originalFilename ) );
+        setProductName( new EntityItemString( productName ) );
+        setProductVersion( new EntityItemString( productVersion ) );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public FileItem(
+                    final int id,
+                    final Status status,
+                    final EntityItemString filepath,
+                    final EntityItemString path,
+                    final EntityItemString filename,
+                    final EntityItemString owner,
+                    final EntityItemInt size,
+                    final EntityItemInt atime,
+                    final EntityItemInt ctime,
+                    final EntityItemInt mtime,
+                    final EntityItemString checksum,
+                    final EntityItemString version,
+                    final EntityItemFileType type,
+                    final EntityItemString devclass,
+                    final EntityItemString company,
+                    final EntityItemString internalname,
+                    final EntityItemString language,
+                    final EntityItemString originalFilename,
+                    final EntityItemString productName,
+                    final EntityItemString productVersion
+                    )
+    {
+        this( id, status );
+        setFilepath( filepath );
+        setPath( path );
+        setFilename( filename );
+        setOwner( owner );
+        setSize( size );
+        setATime( atime );
+        setCTime( ctime );
+        setMTime( mtime );
+        setMsChecksum( checksum );
+        setVersion( version );
+        setType( type );
+        setDevelopmentClass( devclass );
+        setCompany( company );
+        setInternalName( internalname );
+        setLanguage( language );
+        setOriginalFilename( originalFilename );
+        setProductName( productName );
+        setProductVersion( productVersion );
+    }
+
+
+
+    public EntityItemString getFilepath()
+    {
+        return (EntityItemString)_properties.get( FileProperty.FILEPATH );
+    }
+
+
+    public void setFilepath(
+                    final EntityItemString filepath
+                    )
+    {
+        _properties.put( FileProperty.FILEPATH, filepath );
+    }
 
 
 
