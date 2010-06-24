@@ -37,4 +37,4 @@ public enum UnameProperty
     PROCESSOR_TYPE;
 
 }
-// UnmaeProperty
+// UnameProperty

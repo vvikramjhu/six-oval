@@ -37,18 +37,8 @@ public class UnameState
     extends State
 {
 
-    protected static enum Property
-    {
-        MACHINE_CLASS,
-        NODE_NAME,
-        OS_NAME,
-        OS_RELEASE,
-        OS_VERSION,
-        PROCESSOR_TYPE;
-    }
-
-    private Map<Property,EntityStateStringType>  _properties =
-        new EnumMap<Property,EntityStateStringType>( Property.class );
+    private Map<UnameProperty,EntityStateStringType>  _properties =
+        new EnumMap<UnameProperty,EntityStateStringType>( UnameProperty.class );
 
 
 
@@ -76,7 +66,7 @@ public class UnameState
     /**
      *
      */
-    protected Map<Property,EntityStateStringType> _getProperties()
+    protected Map<UnameProperty,EntityStateStringType> _getProperties()
     {
         return _properties;
     }
@@ -89,13 +79,13 @@ public class UnameState
                     final EntityStateStringType machineClass
                     )
     {
-        _properties.put( Property.MACHINE_CLASS, machineClass );
+        _properties.put( UnameProperty.MACHINE_CLASS, machineClass );
     }
 
 
     public EntityStateStringType getMachineClass()
     {
-        return _properties.get( Property.MACHINE_CLASS );
+        return _properties.get( UnameProperty.MACHINE_CLASS );
     }
 
 
@@ -106,13 +96,13 @@ public class UnameState
                     final EntityStateStringType nodeName
                     )
     {
-        _properties.put( Property.NODE_NAME, nodeName );
+        _properties.put( UnameProperty.NODE_NAME, nodeName );
     }
 
 
     public EntityStateStringType getNodeName()
     {
-        return _properties.get( Property.NODE_NAME );
+        return _properties.get( UnameProperty.NODE_NAME );
     }
 
 
@@ -123,13 +113,13 @@ public class UnameState
                     final EntityStateStringType name
                     )
     {
-        _properties.put( Property.OS_NAME, name );
+        _properties.put( UnameProperty.OS_NAME, name );
     }
 
 
     public EntityStateStringType getOsName()
     {
-        return _properties.get( Property.OS_NAME );
+        return _properties.get( UnameProperty.OS_NAME );
     }
 
 
@@ -140,13 +130,13 @@ public class UnameState
                     final EntityStateStringType release
                     )
     {
-        _properties.put( Property.OS_RELEASE, release );
+        _properties.put( UnameProperty.OS_RELEASE, release );
     }
 
 
     public EntityStateStringType getOsRelease()
     {
-        return _properties.get( Property.OS_RELEASE );
+        return _properties.get( UnameProperty.OS_RELEASE );
     }
 
 
@@ -157,13 +147,13 @@ public class UnameState
                     final EntityStateStringType version
                     )
     {
-        _properties.put( Property.OS_VERSION, version );
+        _properties.put( UnameProperty.OS_VERSION, version );
     }
 
 
     public EntityStateStringType getOsVersion()
     {
-        return _properties.get( Property.OS_VERSION );
+        return _properties.get( UnameProperty.OS_VERSION );
     }
 
 
@@ -174,16 +164,14 @@ public class UnameState
                     final EntityStateStringType type
                     )
     {
-        _properties.put( Property.PROCESSOR_TYPE, type );
+        _properties.put( UnameProperty.PROCESSOR_TYPE, type );
     }
 
 
     public EntityStateStringType getProcessorType()
     {
-        return _properties.get( Property.PROCESSOR_TYPE );
+        return _properties.get( UnameProperty.PROCESSOR_TYPE );
     }
-
-
 
 
 
@@ -227,8 +215,8 @@ public class UnameState
 
         if (super.equals( obj )) {
             UnameState  other = (UnameState)obj;
-            Map<Property,EntityStateStringType>  other_props = other._getProperties();
-            Map<Property,EntityStateStringType>   this_props =  this._getProperties();
+            Map<UnameProperty,EntityStateStringType>  other_props = other._getProperties();
+            Map<UnameProperty,EntityStateStringType>   this_props =  this._getProperties();
             if (this_props == other_props
                             ||  (this_props != null  &&  this_props.equals( other_props ))) {
                 return true;
