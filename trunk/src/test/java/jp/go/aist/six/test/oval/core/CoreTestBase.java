@@ -7,6 +7,7 @@ import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.independent.FamilyItem;
+import jp.go.aist.six.oval.model.independent.TextFileContentItem;
 import jp.go.aist.six.oval.model.system.EntityItemAnySimple;
 import jp.go.aist.six.oval.model.system.EntityItemInt;
 import jp.go.aist.six.oval.model.system.EntityItemString;
@@ -164,6 +165,8 @@ public abstract class CoreTestBase
             _validate( RegistryItem.class.cast( actual ), RegistryItem.class.cast( expected ) );
         } else if (expected instanceof FileItem) {
             _validate( FileItem.class.cast( actual ), FileItem.class.cast( expected ) );
+        } else if (expected instanceof TextFileContentItem) {
+            _validate( TextFileContentItem.class.cast( actual ), TextFileContentItem.class.cast( expected ) );
         } else if (expected instanceof FamilyItem) {
             _validate( FamilyItem.class.cast( actual ), FamilyItem.class.cast( expected ) );
         }
@@ -178,6 +181,33 @@ public abstract class CoreTestBase
     {
         Reporter.log( " - family", true );
         Assert.assertEquals( actual.getFamily(), expected.getFamily() );
+    }
+
+
+
+    //TextFileContentItem
+    private void _validate(
+                    final TextFileContentItem actual,
+                    final TextFileContentItem expected
+                    )
+    {
+        Reporter.log( " - filepath", true );
+        Assert.assertEquals( actual.getFilepath(), expected.getFilepath() );
+        Reporter.log( " - path", true );
+        Assert.assertEquals( actual.getPath(), expected.getPath() );
+        Reporter.log( " - filename", true );
+        Assert.assertEquals( actual.getFilename(), expected.getFilename() );
+        Reporter.log( " - pattern", true );
+        Assert.assertEquals( actual.getPattern(), expected.getPattern() );
+        Reporter.log( " - instance", true );
+        Assert.assertEquals( actual.getInstance(), expected.getInstance() );
+        Reporter.log( " - line", true );
+        Assert.assertEquals( actual.getLine(), expected.getLine() );
+        Reporter.log( " - text", true );
+        Assert.assertEquals( actual.getText(), expected.getText() );
+        Reporter.log( " - subexpression", true );
+        Assert.assertEquals( new HashSet<EntityItemAnySimple>( actual.getSubexpression() ),
+                        new HashSet<EntityItemAnySimple>( expected.getSubexpression() ) );
     }
 
 
@@ -444,6 +474,21 @@ public abstract class CoreTestBase
                         );
 
 
+    public static final TextFileContentItem  TEXTFILECONTENT_ITEM_1 =
+        new TextFileContentItem(
+                        1,
+                        RegistryItem.DEFAULT_STATUS,
+                        null,   //filepath
+                        new EntityItemString( "/etc" ),   //path
+                        new EntityItemString( "debian_version" ),   //filename
+                        null,   //pattern
+                        null,   //instance
+                        new EntityItemString( "5.0.4" ),    //line
+                        null,   //text
+                        null    //subexpression
+        );
+
+
 
     @DataProvider( name="oval-sc-item" )
     public Object[][] ovalScItemData()
@@ -471,6 +516,12 @@ public abstract class CoreTestBase
                             "oval-sc#independent:family_item",
                             "test/data/sc/oval-sc.item.family_item.1.xml",
                             FAMILY_ITEM_497
+                        }
+                        ,
+                        {
+                            "oval-sc#independent:textfilecontent_item",
+                            "test/data/sc/oval-sc.item.textfilecontent_item.1.xml",
+                            TEXTFILECONTENT_ITEM_1
                         }
         };
 

@@ -1134,29 +1134,40 @@
             <sql name="PID" type="integer"/>
         </field>
 
-        <field name="filepath" type="string">
+        <field name="filepath.data" type="string">
             <sql name="filepath" type="char"/>
         </field>
 
-        <field name="path" type="string">
+        <field name="path.data" type="string">
             <sql name="path" type="char"/>
         </field>
 
-        <field name="filename" type="string">
+        <field name="filename.data" type="string">
             <sql name="filename" type="char"/>
         </field>
 
-        <field name="pattern" type="string">
+        <field name="pattern.data" type="string">
             <sql name="pattern" type="char"/>
         </field>
 
-        <field name="line" type="string">
+        <field name="instance.data" type="string">
+            <sql name="instance" type="char"/>
+        </field>
+
+        <field name="line.data" type="string">
             <sql name="line" type="char"/>
         </field>
 
-        <field name="text" type="string">
+        <field name="text.data" type="string">
             <sql name="text" type="char"/>
         </field>
+
+<!-- TODO:
+        <field name="subexpression.data" type="string"
+            collection="collection">
+            <sql name="subexpression" type="char"/>
+        </field>
+-->
     </class>
 
 

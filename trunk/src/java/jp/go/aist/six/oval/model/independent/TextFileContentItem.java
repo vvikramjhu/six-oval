@@ -21,8 +21,13 @@
 package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.core.model.system.ItemType;
+import jp.go.aist.six.oval.model.system.EntityItemAnySimple;
+import jp.go.aist.six.oval.model.system.EntityItemInt;
+import jp.go.aist.six.oval.model.system.EntityItemString;
 import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.Status;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 
@@ -35,29 +40,29 @@ public class TextFileContentItem
     extends Item
 {
 
-    private String  _filepath;
-    //{oval-sc:EntityItemStringType, 0..1}
+    private EntityItemString  _filepath;
+    //{0..1}
 
-    private String  _path;
-    //{oval-sc:EntityItemStringType, 0..1}
+    private EntityItemString  _path;
+    //{0..1}
 
-    private String  _filename;
-    //{oval-sc:EntityItemStringType, 0..1}
+    private EntityItemString  _filename;
+    //{0..1}
 
-    private String  _pattern;
-    //{oval-sc:EntityItemStringType, 0..1}
+    private EntityItemString  _pattern;
+    //{0..1}
 
-//    private String  _instance;
-//    //{oval-sc:EntityItemStringType, 0..1}
+    private EntityItemInt  _instance;
+    //{0..1}
 
-    private String  _line;
-    //{oval-sc:EntityItemStringType, 0..1}
+    private EntityItemString  _line;
+    //{0..1}
 
-    private String  _text;
-    //{oval-sc:EntityItemStringType, 0..1}
+    private EntityItemString  _text;
+    //{0..1}
 
-//    private Collection<String>  _subexpression;
-//    //{oval-sc:EntityItemAnyType, 0..*}
+    private Collection<EntityItemAnySimple>  _subexpression = new ArrayList<EntityItemAnySimple>();
+    //{0..*}
 
 
 
@@ -92,15 +97,98 @@ public class TextFileContentItem
     }
 
 
+    /**
+     * Constructor.
+     */
+    public TextFileContentItem(
+                    final int id,
+                    final Status status,
+                    final String filepath,
+                    final String path,
+                    final String filename,
+                    final String pattern,
+                    final String instance,  //int
+                    final String line,
+                    final String text,
+                    final Collection<String> subexpression
+                    )
+    {
+        this( id, status );
 
-    public String getFilepath()
+        if (subexpression != null) {
+            Collection<EntityItemAnySimple>  subexp = new ArrayList<EntityItemAnySimple>();
+            for (String  s : subexpression) {
+                subexp.add( new EntityItemAnySimple( s ) );
+            }
+            setSubexpression( subexp );
+        }
+
+        if (filepath != null) {
+            setFilepath( new EntityItemString( filepath ) );
+        }
+
+        if (path != null) {
+            setPath( new EntityItemString( path ) );
+        }
+
+        if (filename != null) {
+            setFilename( new EntityItemString( filename ) );
+        }
+
+        if (pattern != null) {
+            setPattern( new EntityItemString( pattern ) );
+        }
+
+        if (instance != null) {
+            setInstance( new EntityItemInt( instance ) );
+        }
+
+        if (line != null) {
+            setLine( new EntityItemString( line ) );
+        }
+        if (text != null) {
+            setText( new EntityItemString( text ) );
+        }
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public TextFileContentItem(
+                    final int id,
+                    final Status status,
+                    final EntityItemString filepath,
+                    final EntityItemString path,
+                    final EntityItemString filename,
+                    final EntityItemString pattern,
+                    final EntityItemInt instance,
+                    final EntityItemString line,
+                    final EntityItemString text,
+                    final Collection<? extends EntityItemAnySimple> subexpression
+                    )
+    {
+        this( id, status );
+        setFilepath( filepath );
+        setPath( path );
+        setFilename( filename );
+        setPattern( pattern );
+        setInstance( instance );
+        setLine( line );
+        setText( text );
+        setSubexpression( subexpression );
+    }
+
+
+
+    public EntityItemString getFilepath()
     {
         return _filepath;
     }
 
 
     public void setFilepath(
-                    final String filepath
+                    final EntityItemString filepath
                     )
     {
         _filepath = filepath;
@@ -108,14 +196,14 @@ public class TextFileContentItem
 
 
 
-    public String getPath()
+    public EntityItemString getPath()
     {
         return _path;
     }
 
 
     public void setPath(
-                    final String path
+                    final EntityItemString path
                     )
     {
         _path = path;
@@ -123,14 +211,14 @@ public class TextFileContentItem
 
 
 
-    public String getFilename()
+    public EntityItemString getFilename()
     {
         return _filename;
     }
 
 
     public void setFilename(
-                    final String filename
+                    final EntityItemString filename
                     )
     {
         _filename = filename;
@@ -138,14 +226,14 @@ public class TextFileContentItem
 
 
 
-    public String getPattern()
+    public EntityItemString getPattern()
     {
         return _pattern;
     }
 
 
     public void setPattern(
-                    final String pattern
+                    final EntityItemString pattern
                     )
     {
         _pattern = pattern;
@@ -153,14 +241,33 @@ public class TextFileContentItem
 
 
 
-    public String getLine()
+    /**
+     */
+    public void setInstance(
+                    final EntityItemInt instance
+                    )
+    {
+        _instance = instance;
+    }
+
+
+    /**
+     */
+    public EntityItemInt getInstance()
+    {
+        return _instance;
+    }
+
+
+
+    public EntityItemString getLine()
     {
         return _line;
     }
 
 
     public void setLine(
-                    final String line
+                    final EntityItemString line
                     )
     {
         _line = line;
@@ -168,7 +275,7 @@ public class TextFileContentItem
 
 
 
-    public String getText()
+    public EntityItemString getText()
     {
         return _text;
     }
@@ -176,10 +283,32 @@ public class TextFileContentItem
 
 
     public void setText(
-                    final String text
+                    final EntityItemString text
                     )
     {
         _text = text;
+    }
+
+
+
+    /**
+     */
+    public void setSubexpression(
+                    final Collection<? extends EntityItemAnySimple> subexpression
+                    )
+    {
+        _subexpression.clear();
+        if (subexpression != null) {
+            _subexpression.addAll( subexpression );
+        }
+    }
+
+
+    /**
+     */
+    public Collection<EntityItemAnySimple> getSubexpression()
+    {
+        return _subexpression;
     }
 
 
@@ -200,13 +329,10 @@ public class TextFileContentItem
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
-        return "textfilecontent_item[" + super.toString()
+        return "TextFileContentItem[" + super.toString()
                         + ", filepath=" + getFilepath()
                         + ", path=" + getPath()
                         + ", filename=" + getFilename()

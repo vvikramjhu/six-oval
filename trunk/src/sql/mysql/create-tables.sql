@@ -976,6 +976,7 @@ CREATE TABLE IF NOT EXISTS oval_s_item_textfilecontent
     path                VARCHAR(255),
     filename            VARCHAR(64),
     pattern             VARCHAR(64),
+    instance            VARCHAR(32),    /* int as string */
     line                VARCHAR(64),
     text                VARCHAR(255),
 
