@@ -24,10 +24,16 @@ import jp.go.aist.six.oval.model.windows.RegistryHive;
 import jp.go.aist.six.oval.model.windows.RegistryItem;
 import jp.go.aist.six.oval.model.windows.RegistryType;
 import jp.go.aist.six.util.IsoDate;
+import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 
 
@@ -74,6 +80,176 @@ public abstract class CoreTestBase
     }
 
 
+
+    /**
+     */
+    protected <T> T _unmarshalFile(
+                    final String filepath,
+                    final Class<T> type
+                    )
+    throws Exception
+    {
+        File  file = new File( filepath );
+        Reporter.log( "unmarshalling XML...", true );
+        Object  obj = _getXml().unmarshal( new FileInputStream( file ) );
+        Reporter.log( "...unmarshalling done", true );
+        Reporter.log( "  @ unmarshalled object: " + obj, true );
+
+        Assert.assertTrue( type.isInstance( obj ) );
+
+        return type.cast( obj );
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////
+    //  Validation of Instances
+    ////////////////////////////////////////////////////////////////
+
+    //Generator
+    protected void _validate(
+                    final Generator actual,
+                    final Generator expected
+                    )
+    {
+        Assert.assertEquals( actual.getSchemaVersion(), expected.getSchemaVersion() );
+        Assert.assertEquals( actual.getTimestamp(), expected.getTimestamp() );
+        Assert.assertEquals( actual.getProductName(), expected.getProductName() );
+        Assert.assertEquals( actual.getProductVersion(), expected.getProductVersion() );
+    }
+
+
+
+    //SystemInfo
+    protected void _validate(
+                    final SystemInfo actual,
+                    final SystemInfo expected
+                    )
+    {
+        Assert.assertEquals( actual.getOsName(), expected.getOsName() );
+        Assert.assertEquals( actual.getOsVersion(), expected.getOsVersion() );
+        Assert.assertEquals( actual.getArchitecture(), expected.getArchitecture() );
+        Assert.assertEquals( actual.getPrimaryHostName(), expected.getPrimaryHostName() );
+
+        Set<NetworkInterface>  a_netifs = new HashSet<NetworkInterface>( actual.getInterfaces() );
+        Set<NetworkInterface>  e_netifs = new HashSet<NetworkInterface>( expected.getInterfaces() );
+        Assert.assertEquals( a_netifs, e_netifs );
+    }
+
+
+
+    // SystemData
+    protected void _validate(
+                    final SystemData actual,
+                    final SystemData expected
+                    )
+    {
+        Assert.assertEquals( actual, expected );
+    }
+
+
+
+    //Item
+    protected void _validate(
+                    final Item actual,
+                    final Item expected
+                    )
+    {
+        Reporter.log( " - ID", true );
+        Assert.assertEquals( actual.getID(), expected.getID() );
+        Reporter.log( " - status", true );
+        Assert.assertEquals( actual.getStatus(), expected.getStatus() );
+
+        if (expected instanceof RegistryItem) {
+            _validate( RegistryItem.class.cast( actual ), RegistryItem.class.cast( expected ) );
+        } else if (expected instanceof FileItem) {
+            _validate( FileItem.class.cast( actual ), FileItem.class.cast( expected ) );
+        } else if (expected instanceof FamilyItem) {
+            _validate( FamilyItem.class.cast( actual ), FamilyItem.class.cast( expected ) );
+        }
+    }
+
+
+    //FamilyItem
+    private void _validate(
+                    final FamilyItem actual,
+                    final FamilyItem expected
+                    )
+    {
+        Reporter.log( " - family", true );
+        Assert.assertEquals( actual.getFamily(), expected.getFamily() );
+    }
+
+
+
+    //RegistryItem
+    private void _validate(
+                    final RegistryItem actual,
+                    final RegistryItem expected
+                    )
+    {
+        Reporter.log( " - hive", true );
+        Assert.assertEquals( actual.getHive(), expected.getHive() );
+        Reporter.log( " - key", true );
+        Assert.assertEquals( actual.getKey(), expected.getKey() );
+        Reporter.log( " - name", true );
+        Assert.assertEquals( actual.getName(), expected.getName() );
+        Reporter.log( " - type", true );
+        Assert.assertEquals( actual.getType(), expected.getType() );
+        Reporter.log( " - value", true );
+        Assert.assertEquals( actual.getValue(), expected.getValue() );
+    }
+
+
+    //FileItem
+    private void _validate(
+                    final FileItem actual,
+                    final FileItem expected
+                    )
+    {
+        Reporter.log( " - filepath", true );
+        Assert.assertEquals( actual.getFilepath(), expected.getFilepath() );
+        Reporter.log( " - path", true );
+        Assert.assertEquals( actual.getPath(), expected.getPath() );
+        Reporter.log( " - filename", true );
+        Assert.assertEquals( actual.getFilename(), expected.getFilename() );
+        Reporter.log( " - owner", true );
+        Assert.assertEquals( actual.getOwner(), expected.getOwner() );
+        Reporter.log( " - size", true );
+        Assert.assertEquals( actual.getSize(), expected.getSize() );
+        Reporter.log( " - aTime", true );
+        Assert.assertEquals( actual.getATime(), expected.getATime() );
+        Reporter.log( " - cTime", true );
+        Assert.assertEquals( actual.getCTime(), expected.getCTime() );
+        Reporter.log( " - mTime", true );
+        Assert.assertEquals( actual.getMTime(), expected.getMTime() );
+        Reporter.log( " - msChecksum", true );
+        Assert.assertEquals( actual.getMsChecksum(), expected.getMsChecksum() );
+        Reporter.log( " - version", true );
+        Assert.assertEquals( actual.getVersion(), expected.getVersion() );
+        Reporter.log( " - type", true );
+        Assert.assertEquals( actual.getType(), expected.getType() );
+        Reporter.log( " - developmentClass", true );
+        Assert.assertEquals( actual.getDevelopmentClass(), expected.getDevelopmentClass() );
+        Reporter.log( " - company", true );
+        Assert.assertEquals( actual.getCompany(), expected.getCompany() );
+        Reporter.log( " - internalName", true );
+        Assert.assertEquals( actual.getInternalName(), expected.getInternalName() );
+        Reporter.log( " - language", true );
+        Assert.assertEquals( actual.getLanguage(), expected.getLanguage() );
+        Reporter.log( " - originalFilename", true );
+        Assert.assertEquals( actual.getOriginalFilename(), expected.getOriginalFilename() );
+        Reporter.log( " - productName", true );
+        Assert.assertEquals( actual.getProductName(), expected.getProductName() );
+        Reporter.log( " - productVersion", true );
+        Assert.assertEquals( actual.getProductVersion(), expected.getProductVersion() );
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////
+    //  Data Providers
+    ////////////////////////////////////////////////////////////////
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     //
