@@ -1363,27 +1363,27 @@
             <sql name="PID" type="integer"/>
         </field>
 
-        <field name="name" type="string">
+        <field name="name.data" type="string">
             <sql name="name" type="char"/>
         </field>
 
-        <field name="arch" type="string">
+        <field name="arch.data" type="string">
             <sql name="arch" type="char"/>
         </field>
 
-        <field name="epoch" type="string">
+        <field name="epoch.data" type="string">
             <sql name="epoch" type="char"/>
         </field>
 
-        <field name="release" type="string">
+        <field name="release.data" type="string">
             <sql name="release1" type="char"/>
         </field>
 
-        <field name="version" type="string">
+        <field name="version.data" type="string">
             <sql name="version" type="char"/>
         </field>
 
-        <field name="evr" type="string">
+        <field name="evr.data" type="string">
             <sql name="evr" type="char"/>
         </field>
     </class>
@@ -1403,31 +1403,31 @@
             <sql name="PID" type="integer"/>
         </field>
 
-        <field name="name" type="string">
+        <field name="name.data" type="string">
             <sql name="name" type="char"/>
         </field>
 
-        <field name="arch" type="string">
+        <field name="arch.data" type="string">
             <sql name="arch" type="char"/>
         </field>
 
-        <field name="epoch" type="string">
+        <field name="epoch.data" type="string">
             <sql name="epoch" type="char"/>
         </field>
 
-        <field name="release" type="string">
+        <field name="release.data" type="string">
             <sql name="release1" type="char"/>
         </field>
 
-        <field name="version" type="string">
+        <field name="version.data" type="string">
             <sql name="version" type="char"/>
         </field>
 
-        <field name="evr" type="string">
+        <field name="evr.data" type="string">
             <sql name="evr" type="char"/>
         </field>
 
-        <field name="signatureKeyID" type="string">
+        <field name="signatureKeyID.data" type="string">
             <sql name="signature_keyid" type="char"/>
         </field>
 

@@ -25,7 +25,6 @@ import jp.go.aist.six.oval.model.system.Status;
 
 
 
-
 /**
  *
  * @author  Akihito Nakamura, AIST
@@ -92,7 +91,7 @@ public class DpkgInfoItem
                     final String evr
                     )
     {
-        this( id, DEFAULT_STATUS, name, arch, epoch, release, version, evr );
+        super( id, name, arch, epoch, release, version, evr );
     }
 
 
@@ -136,9 +135,6 @@ public class DpkgInfoItem
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.core.model.system.ItemType;
+import jp.go.aist.six.oval.model.system.EntityItemString;
 import jp.go.aist.six.oval.model.system.Status;
 
 
@@ -35,8 +36,8 @@ public class RpmInfoItem
     extends LinuxEvrPkgInfoItem
 {
 
-    private String  _signatureKeyID;
-    //{oval-sc:EntityItemStringType, 0..1}
+//    private EntityItemString  _signatureKeyID;
+//    //{0..1}
 
 
 
@@ -80,8 +81,7 @@ public class RpmInfoItem
                     final String name
                     )
     {
-        this( id, status );
-        setName( name );
+        super( id, status, name );
     }
 
 
@@ -119,22 +119,25 @@ public class RpmInfoItem
                     )
     {
         super( id, status, name, arch, epoch, release, version, evr );
-        setSignatureKeyID( sigkeyid );
+
+        if (sigkeyid != null) {
+            setSignatureKeyID( new EntityItemString( sigkeyid ) );
+        }
     }
 
 
 
     public void setSignatureKeyID(
-                    final String signatureKeyID
+                    final EntityItemString signatureKeyID
                     )
     {
-        _signatureKeyID = signatureKeyID;
+        _properties.put( LinuxPkgProperty.SIGNATURE_KEYID, signatureKeyID);
     }
 
 
-    public String getSignatureKeyID()
+    public EntityItemString getSignatureKeyID()
     {
-        return _signatureKeyID;
+        return _properties.get( LinuxPkgProperty.SIGNATURE_KEYID );
     }
 
 
@@ -155,9 +158,6 @@ public class RpmInfoItem
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
