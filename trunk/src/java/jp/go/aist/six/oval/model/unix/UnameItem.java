@@ -21,8 +21,11 @@
 package jp.go.aist.six.oval.model.unix;
 
 import jp.go.aist.six.oval.core.model.system.ItemType;
+import jp.go.aist.six.oval.model.system.EntityItemString;
 import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.Status;
+import java.util.EnumMap;
+import java.util.Map;
 
 
 
@@ -35,23 +38,26 @@ public class UnameItem
     extends Item
 {
 
-    private String  _machineClass;
-    //{oval-sc:EntityItemStringType, 0..1}
+    private Map<UnameProperty,EntityItemString>  _properties =
+        new EnumMap<UnameProperty,EntityItemString>( UnameProperty.class );
 
-    private String  _nodeName;
-    //{oval-sc:EntityItemStringType, 0..1}
-
-    private String  _osName;
-    //{oval-sc:EntityItemStringType, 0..1}
-
-    private String  _osRelease;
-    //{oval-sc:EntityItemStringType, 0..1}
-
-    private String  _osVersion;
-    //{oval-sc:EntityItemStringType, 0..1}
-
-    private String  _processorType;
-    //{oval-sc:EntityItemStringType, 0..1}
+//   private EntityItemString  _machineClass;
+//    //{0..1}
+//
+//    private EntityItemString  _nodeName;
+//    //{0..1}
+//
+//    private EntityItemString  _osName;
+//    //{0..1}
+//
+//    private EntityItemString  _osRelease;
+//    //{0..1}
+//
+//    private EntityItemString  _osVersion;
+//    //{0..1}
+//
+//    private EntityItemString  _processorType;
+//    //{0..1}
 
 
 
@@ -87,94 +93,161 @@ public class UnameItem
 
 
 
-    public String getMachineClass()
+    /**
+     * Constructor.
+     */
+    public UnameItem(
+                    final int id,
+                    final Status status,
+                    final String machineClass,
+                    final String nodeName,
+                    final String osName,
+                    final String osRelease,
+                    final String osVersion,
+                    final String processorType
+                    )
     {
-        return _machineClass;
+        this( id, status );
+
+        if (machineClass != null) {
+            setMachineClass( new EntityItemString( machineClass ) );
+        }
+
+        if (nodeName != null) {
+            setNodeName( new EntityItemString( nodeName ) );
+        }
+
+        if (osName != null) {
+            setOsName( new EntityItemString( osName ) );
+        }
+
+        if (osRelease != null) {
+            setOsRelease( new EntityItemString( osRelease ) );
+        }
+
+        if (osVersion != null) {
+            setOsVersion( new EntityItemString( osVersion ) );
+        }
+
+        if (processorType != null) {
+            setProcessorType( new EntityItemString( processorType ) );
+        }
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public UnameItem(
+                    final int id,
+                    final Status status,
+                    final EntityItemString machineClass,
+                    final EntityItemString nodeName,
+                    final EntityItemString osName,
+                    final EntityItemString osRelease,
+                    final EntityItemString osVersion,
+                    final EntityItemString processorType
+                    )
+    {
+        this( id, status );
+        setMachineClass( machineClass );
+        setNodeName( nodeName );
+        setOsName( osName );
+        setOsRelease( osRelease );
+        setOsVersion( osVersion );
+        setProcessorType( processorType );
+    }
+
+
+
+    public EntityItemString getMachineClass()
+    {
+        return _properties.get( UnameProperty.MACHINE_CLASS );
     }
 
 
     public void setMachineClass(
-                    final String machineClass
+                    final EntityItemString machineClass
                     )
     {
-        _machineClass = machineClass;
+        _properties.put( UnameProperty.MACHINE_CLASS, machineClass );
     }
 
 
 
-    public String getNodeName()
+    public EntityItemString getNodeName()
     {
-        return _nodeName;
+        return _properties.get( UnameProperty.NODE_NAME );
     }
 
 
 
     public void setNodeName(
-                    final String nodeName
+                    final EntityItemString nodeName
                     )
     {
-        _nodeName = nodeName;
+        _properties.put( UnameProperty.NODE_NAME, nodeName );
     }
 
 
 
-    public String getOsName()
+    public EntityItemString getOsName()
     {
-        return _osName;
+        return _properties.get( UnameProperty.OS_NAME );
     }
 
 
     public void setOsName(
-                    final String osName
+                    final EntityItemString osName
                     )
     {
-        _osName = osName;
+        _properties.put( UnameProperty.OS_NAME, osName );
     }
 
 
 
-    public String getOsRelease()
+    public EntityItemString getOsRelease()
     {
-        return _osRelease;
+        return _properties.get( UnameProperty.OS_RELEASE );
     }
 
 
     public void setOsRelease(
-                    final String osRelease
+                    final EntityItemString osRelease
                     )
     {
-        _osRelease = osRelease;
+        _properties.put( UnameProperty.OS_RELEASE, osRelease );
     }
 
 
 
-    public String getOsVersion()
+    public EntityItemString getOsVersion()
     {
-        return _osVersion;
+        return _properties.get( UnameProperty.OS_VERSION );
     }
 
 
     public void setOsVersion(
-                    final String osVersion
+                    final EntityItemString osVersion
                     )
     {
-        _osVersion = osVersion;
+        _properties.put( UnameProperty.OS_VERSION, osVersion );
     }
 
 
 
-    public String getProcessorType()
+    public EntityItemString getProcessorType()
     {
-        return _processorType;
+        return _properties.get( UnameProperty.PROCESSOR_TYPE );
     }
 
 
 
     public void setProcessorType(
-                    final String processorType
+                    final EntityItemString processorType
                     )
     {
-        _processorType = processorType;
+        _properties.put( UnameProperty.PROCESSOR_TYPE, processorType );
     }
 
 
@@ -195,9 +268,6 @@ public class UnameItem
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

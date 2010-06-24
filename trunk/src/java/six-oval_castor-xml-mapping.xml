@@ -2099,27 +2099,33 @@
         <map-to xml="uname_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"/>
 
-        <field name="machineClass" type="string">
+        <field name="machineClass" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="machine_class" node="element"/>
         </field>
 
-        <field name="nodeName" type="string">
+        <field name="nodeName" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="node_name" node="element"/>
         </field>
 
-        <field name="osName" type="string">
+        <field name="osName" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="os_name" node="element"/>
         </field>
 
-        <field name="osRelease" type="string">
+        <field name="osRelease" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="os_release" node="element"/>
         </field>
 
-        <field name="osVersion" type="string">
+        <field name="osVersion" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="os_version" node="element"/>
         </field>
 
-        <field name="processorType" type="string">
+        <field name="processorType" 
+            type="jp.go.aist.six.oval.model.system.EntityItemString">
             <bind-xml name="processor_type" node="element"/>
         </field>
     </class>

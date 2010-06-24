@@ -1494,27 +1494,27 @@
             <sql name="PID" type="integer"/>
         </field>
 
-        <field name="machineClass" type="string">
+        <field name="machineClass.data" type="string">
             <sql name="machine_class" type="char"/>
         </field>
 
-        <field name="nodeName" type="string">
+        <field name="nodeName.data" type="string">
             <sql name="node_name" type="char"/>
         </field>
 
-        <field name="osName" type="string">
+        <field name="osName.data" type="string">
             <sql name="os_name" type="char"/>
         </field>
 
-        <field name="osRelease" type="string">
+        <field name="osRelease.data" type="string">
             <sql name="os_release" type="char"/>
         </field>
 
-        <field name="osVersion" type="string">
+        <field name="osVersion.data" type="string">
             <sql name="os_version" type="char"/>
         </field>
 
-        <field name="processorType" type="string">
+        <field name="processorType.data" type="string">
             <sql name="processor_type" type="char"/>
         </field>
     </class>

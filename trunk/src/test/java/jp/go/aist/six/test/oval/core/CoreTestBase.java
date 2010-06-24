@@ -16,6 +16,7 @@ import jp.go.aist.six.oval.model.system.NetworkInterface;
 import jp.go.aist.six.oval.model.system.Status;
 import jp.go.aist.six.oval.model.system.SystemData;
 import jp.go.aist.six.oval.model.system.SystemInfo;
+import jp.go.aist.six.oval.model.unix.UnameItem;
 import jp.go.aist.six.oval.model.windows.EntityItemFileType;
 import jp.go.aist.six.oval.model.windows.EntityItemRegistryHive;
 import jp.go.aist.six.oval.model.windows.EntityItemRegistryType;
@@ -165,6 +166,8 @@ public abstract class CoreTestBase
             _validate( RegistryItem.class.cast( actual ), RegistryItem.class.cast( expected ) );
         } else if (expected instanceof FileItem) {
             _validate( FileItem.class.cast( actual ), FileItem.class.cast( expected ) );
+        } else if (expected instanceof UnameItem) {
+            _validate( UnameItem.class.cast( actual ), UnameItem.class.cast( expected ) );
         } else if (expected instanceof TextFileContentItem) {
             _validate( TextFileContentItem.class.cast( actual ), TextFileContentItem.class.cast( expected ) );
         } else if (expected instanceof FamilyItem) {
@@ -273,6 +276,27 @@ public abstract class CoreTestBase
         Assert.assertEquals( actual.getProductName(), expected.getProductName() );
         Reporter.log( " - productVersion", true );
         Assert.assertEquals( actual.getProductVersion(), expected.getProductVersion() );
+    }
+
+
+    //UnameItem
+    private void _validate(
+                    final UnameItem actual,
+                    final UnameItem expected
+                    )
+    {
+        Reporter.log( " - machine_class", true );
+        Assert.assertEquals( actual.getMachineClass(), expected.getMachineClass() );
+        Reporter.log( " - node_name", true );
+        Assert.assertEquals( actual.getNodeName(), expected.getNodeName() );
+        Reporter.log( " - os_name", true );
+        Assert.assertEquals( actual.getOsName(), expected.getOsName() );
+        Reporter.log( " - os_release", true );
+        Assert.assertEquals( actual.getOsRelease(), expected.getOsRelease() );
+        Reporter.log( " - os_version", true );
+        Assert.assertEquals( actual.getOsVersion(), expected.getOsVersion() );
+        Reporter.log( " - processor_type", true );
+        Assert.assertEquals( actual.getProcessorType(), expected.getProcessorType() );
     }
 
 
@@ -489,6 +513,19 @@ public abstract class CoreTestBase
         );
 
 
+    public static final UnameItem  UNAME_ITEM_17  =
+        new UnameItem(
+                        17,
+                        UnameItem.DEFAULT_STATUS,
+                        "i686",
+                        "debian50064",
+                        "Linux",
+                        "2.6.26-2-686",
+                        "#1 SMP Tue Mar 9 17:35:51 UTC 2010",
+                        "i686"
+                        );
+
+
 
     @DataProvider( name="oval-sc-item" )
     public Object[][] ovalScItemData()
@@ -522,6 +559,12 @@ public abstract class CoreTestBase
                             "oval-sc#independent:textfilecontent_item",
                             "test/data/sc/oval-sc.item.textfilecontent_item.1.xml",
                             TEXTFILECONTENT_ITEM_1
+                        }
+                        ,
+                        {
+                            "oval-sc#independent:uname_item",
+                            "test/data/sc/oval-sc.item.uname_item.1.xml",
+                            UNAME_ITEM_17
                         }
         };
 

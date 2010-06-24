@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.unix;
 
 
 
@@ -27,26 +27,14 @@ package jp.go.aist.six.oval.model.windows;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public enum FileProperty
+public enum UnameProperty
 {
-    FILEPATH,
-    PATH,
-    FILENAME,
-    OWNER,
-    SIZE,
-    A_TIME,
-    C_TIME,
-    M_TIME, // Int
-    MS_CHECKSUM,
-    VERSION,
-    TYPE, //FileType
-    DEVELOPMENT_CLASS,
-    COMPANY,
-    INTERNAL_NAME,
-    LANGUAGE,
-    ORIGINAL_FILENAME,
-    PRODUCT_NAME,
-    PRODUCT_VERSION;
+    MACHINE_CLASS,
+    NODE_NAME,
+    OS_NAME,
+    OS_RELEASE,
+    OS_VERSION,
+    PROCESSOR_TYPE;
 
 }
-// FileProperty
+// UnmaeProperty
