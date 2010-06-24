@@ -101,5 +101,19 @@ public class CollectedSystemObjects
 //        return (new CollectedSystemObjectKey( object.getOvalID(), object.getOvalVersion(), object.getVariableInstance() ));
 //    }
 
+
+
+    //**************************************************************
+    //  java.lang.Object
+    //**************************************************************
+
+    @Override
+    public String toString()
+    {
+        return "CollectedSystemObjects["
+                        + String.valueOf( _object )
+                        + "]";
+    }
+
 }
 // CollectedSystemObjects

@@ -10,10 +10,15 @@ import jp.go.aist.six.oval.model.independent.FamilyItem;
 import jp.go.aist.six.oval.model.independent.TextFileContentItem;
 import jp.go.aist.six.oval.model.linux.DpkgInfoItem;
 import jp.go.aist.six.oval.model.linux.LinuxPkgInfoItem;
+import jp.go.aist.six.oval.model.linux.RpmInfoItem;
+import jp.go.aist.six.oval.model.system.CollectedSystemObject;
+import jp.go.aist.six.oval.model.system.CollectedSystemObjects;
 import jp.go.aist.six.oval.model.system.EntityItemAnySimple;
 import jp.go.aist.six.oval.model.system.EntityItemInt;
 import jp.go.aist.six.oval.model.system.EntityItemString;
+import jp.go.aist.six.oval.model.system.Flag;
 import jp.go.aist.six.oval.model.system.Item;
+import jp.go.aist.six.oval.model.system.ItemReference;
 import jp.go.aist.six.oval.model.system.NetworkInterface;
 import jp.go.aist.six.oval.model.system.Status;
 import jp.go.aist.six.oval.model.system.SystemData;
@@ -138,6 +143,20 @@ public abstract class CoreTestBase
         Set<NetworkInterface>  a_netifs = new HashSet<NetworkInterface>( actual.getInterfaces() );
         Set<NetworkInterface>  e_netifs = new HashSet<NetworkInterface>( expected.getInterfaces() );
         Assert.assertEquals( a_netifs, e_netifs );
+    }
+
+
+
+    // CollectedSystemObjects
+    protected void _validate(
+                    final CollectedSystemObjects actual,
+                    final CollectedSystemObjects expected
+                    )
+    {
+        Assert.assertEquals(
+                        new HashSet<CollectedSystemObject>( actual.getObject() ),
+                        new HashSet<CollectedSystemObject>( expected.getObject() )
+                        );
     }
 
 
@@ -332,6 +351,8 @@ public abstract class CoreTestBase
     //
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    //NetworkInterface
+
     private static final Collection<NetworkInterface> _WINDWS_NETWORK_INTERFACES_
     = Arrays.asList( new NetworkInterface[] {
                     new NetworkInterface(
@@ -346,6 +367,52 @@ public abstract class CoreTestBase
                                     )
     } );
 
+
+
+    //collected_objects
+
+    private static final CollectedSystemObject  COLLECTED_OBJECT_10 =
+        new CollectedSystemObject(
+                        "oval:org.mitre.oval:obj:10",
+                        1,
+                        Flag.DOES_NOT_EXIST,
+                        new ItemReference[] {
+                                        new ItemReference( 83 )
+                        }
+        );
+
+
+    private static final CollectedSystemObject  COLLECTED_OBJECT_1070 =
+        new CollectedSystemObject(
+                        "oval:org.mitre.oval:obj:1070",
+                        2,
+                        Flag.COMPLETE,
+                        new ItemReference[] {
+                                        new ItemReference( 46 )
+                        }
+        );
+
+
+    private static final CollectedSystemObject  COLLECTED_OBJECT_1071 =
+        new CollectedSystemObject(
+                        "oval:org.mitre.oval:obj:1071",
+                        1,
+                        Flag.COMPLETE,
+                        new ItemReference[] {
+                                        new ItemReference( 45 )
+                        }
+        );
+
+
+    private static final CollectedSystemObject  COLLECTED_OBJECT_109 =
+        new CollectedSystemObject(
+                        "oval:org.mitre.oval:obj:109",
+                        1,
+                        Flag.DOES_NOT_EXIST,
+                        new ItemReference[] {
+                                        new ItemReference( 103 )
+                        }
+        );
 
 
     //==============================================================
@@ -405,6 +472,30 @@ public abstract class CoreTestBase
                                             "x60",
                                             _WINDWS_NETWORK_INTERFACES_
                                             )
+                        }
+        };
+
+    }
+
+
+    //==============================================================
+    //  collected_objects
+    //==============================================================
+
+    @DataProvider( name="oval-sc-collected_objects" )
+    public Object[][] ovalScCollectedObjects()
+    {
+        return new Object[][] {
+                        {
+                            "oval-sc:collected_objects",
+                            "test/data/sc/oval-sc.collected_objects.1.xml",
+                            new CollectedSystemObjects(
+                                            new CollectedSystemObject[] {
+                                                            COLLECTED_OBJECT_10,
+                                                            COLLECTED_OBJECT_1070,
+                                                            COLLECTED_OBJECT_1071,
+                                                            COLLECTED_OBJECT_109
+                                            })
                         }
         };
 
@@ -555,6 +646,20 @@ public abstract class CoreTestBase
                         );
 
 
+    public static final RpmInfoItem  RPM_INFO_ITEM_2  =
+        new RpmInfoItem(
+                        2,
+                        RpmInfoItem.DEFAULT_STATUS,
+                        new EntityItemString( "i386" ),
+                        new EntityItemString( "gzip" ),
+                        new EntityItemString( "1.3.5" ),
+                        new EntityItemString( "10.el5" ),
+                        new EntityItemString( "(none)" ),
+                        new EntityItemString( "0:1.3.5-10.el5" ),
+                        new EntityItemString( "5326810137017186" )
+                        );
+
+
 
     @DataProvider( name="oval-sc-item" )
     public Object[][] ovalScItemData()
@@ -600,6 +705,12 @@ public abstract class CoreTestBase
                             "oval-sc#independent:dpkginfo_item",
                             "test/data/sc/oval-sc.item.dpkginfo_item.1.xml",
                             DPKG_INFO_ITEM_14
+                        }
+                        ,
+                        {
+                            "oval-sc#independent:rpminfo_item",
+                            "test/data/sc/oval-sc.item.rpminfo_item.1.xml",
+                            RPM_INFO_ITEM_2
                         }
         };
 

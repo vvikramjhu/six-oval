@@ -117,7 +117,7 @@ public abstract class LinuxEvrPkgInfoItem
                     final String evr
                     )
     {
-        this( id, DEFAULT_STATUS, name, arch, epoch, release, version, evr );
+        this( id, DEFAULT_STATUS, arch, name, version, release, epoch, evr );
     }
 
 

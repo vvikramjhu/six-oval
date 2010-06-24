@@ -1,6 +1,7 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.model.common.Generator;
+import jp.go.aist.six.oval.model.system.CollectedSystemObjects;
 import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.SystemData;
@@ -82,6 +83,36 @@ public class OvalXmlTest
 
         Reporter.log( "validating...", true );
         _validate( a_systemInfo, systemInfo);
+        Reporter.log( "...validation OK", true );
+    }
+
+
+
+    //==============================================================
+    //  collected_objects
+    //==============================================================
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "oval-sc:collected_objects"},
+                    dataProvider="oval-sc-collected_objects",
+                    alwaysRun=true
+                    )
+    public void processCollectedObjects(
+                    final String testTarget,
+                    final String filepath,
+                    final CollectedSystemObjects expected
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL XML //", true );
+        Reporter.log( "  * target type: " + testTarget, true );
+
+        CollectedSystemObjects  actual = _unmarshalFile( filepath, CollectedSystemObjects.class );
+
+        Reporter.log( "validating...", true );
+        _validate( actual, expected );
         Reporter.log( "...validation OK", true );
     }
 

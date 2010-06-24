@@ -981,6 +981,23 @@
 
 
     <!-- ======================================================= -->
+    <!-- CollectedSystemObjects                                  -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.system.CollectedSystemObjects">
+        <map-to xml="collected_objects"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.system.CollectedSystemObject"
+            collection="collection">
+            <bind-xml name="object" node="element" 
+                />
+        </field>
+    </class>
+
+
+
+    <!-- ======================================================= -->
     <!-- SystemInfo                                              -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.system.SystemInfo">

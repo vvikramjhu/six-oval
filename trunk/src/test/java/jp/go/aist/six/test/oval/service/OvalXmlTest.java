@@ -28,11 +28,12 @@ import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.model.result.Result;
 import jp.go.aist.six.oval.model.result.SystemResult;
 import jp.go.aist.six.oval.model.system.CollectedSystemObject;
+import jp.go.aist.six.oval.model.system.EntityItemString;
 import jp.go.aist.six.oval.model.system.Flag;
 import jp.go.aist.six.oval.model.system.Item;
-import jp.go.aist.six.oval.model.system.Status;
 import jp.go.aist.six.oval.model.system.NetworkInterface;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.system.Status;
 import jp.go.aist.six.oval.model.system.SystemData;
 import jp.go.aist.six.oval.model.system.SystemInfo;
 import jp.go.aist.six.util.IsoDate;
@@ -447,9 +448,14 @@ public class OvalXmlTest
 //          Reporter.log( "    item: " + item, true );
             Assert.assertTrue( item instanceof RpmInfoItem);
             RpmInfoItem  rpm_info = (RpmInfoItem)item;
-            String  rpm_name = rpm_info.getName();
-            Assert.assertEquals( rpm_names.get( new Integer( id ) ), rpm_name );
-            Assert.assertEquals( rpm_evrs.get( rpm_name ), rpm_info.getEvr() );
+            if (rpm_info != null) {
+                EntityItemString  rpm_name = rpm_info.getName();
+                if (rpm_name != null) {
+                    String  pkg_name = rpm_name.getData();
+                    Assert.assertEquals( rpm_names.get( new Integer( id ) ), pkg_name );
+                    Assert.assertEquals( rpm_evrs.get( pkg_name ), rpm_info.getEvr() );
+                }
+            }
 
             if (id == 2) {
                 Assert.assertEquals( item.getStatus(), Status.DOES_NOT_EXIST );

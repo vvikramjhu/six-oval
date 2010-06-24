@@ -90,16 +90,16 @@ public class RpmInfoItem
      */
     public RpmInfoItem(
                     final int id,
-                    final String name,
                     final String arch,
-                    final String epoch,
-                    final String release,
+                    final String name,
                     final String version,
+                    final String release,
+                    final String epoch,
                     final String evr,
                     final String sigkeyid
                     )
     {
-        this( id, DEFAULT_STATUS, name, arch, epoch, release, version, evr, sigkeyid );
+        this( id, DEFAULT_STATUS, arch, name, version, release, epoch, evr, sigkeyid );
     }
 
 
@@ -109,20 +109,41 @@ public class RpmInfoItem
     public RpmInfoItem(
                     final int id,
                     final Status status,
-                    final String name,
                     final String arch,
-                    final String epoch,
-                    final String release,
+                    final String name,
                     final String version,
+                    final String release,
+                    final String epoch,
                     final String evr,
                     final String sigkeyid
                     )
     {
-        super( id, status, name, arch, epoch, release, version, evr );
+        super( id, status, arch, name, version, release, epoch, evr );
 
         if (sigkeyid != null) {
             setSignatureKeyID( new EntityItemString( sigkeyid ) );
         }
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public RpmInfoItem(
+                    final int id,
+                    final Status status,
+                    final EntityItemString arch,
+                    final EntityItemString name,
+                    final EntityItemString version,
+                    final EntityItemString release,
+                    final EntityItemString epoch,
+                    final EntityItemString evr,
+                    final EntityItemString sigkeyid
+                    )
+    {
+        super( id, status, arch, name, version, release, epoch, evr );
+
+        setSignatureKeyID( sigkeyid );
     }
 
 

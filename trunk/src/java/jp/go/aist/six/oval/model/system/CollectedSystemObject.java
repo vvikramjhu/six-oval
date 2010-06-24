@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.system;
 import jp.go.aist.six.oval.model.OvalAnalysisElement;
 import jp.go.aist.six.util.orm.Dependent;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 
@@ -89,6 +90,20 @@ public class CollectedSystemObject
     {
         super( id, version );
         setFlag( flag);
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public CollectedSystemObject(
+                    final String id,
+                    final int version,
+                    final Flag flag,
+                    final ItemReference[] items
+                    )
+    {
+        this( id, version, flag, Arrays.asList( items ) );
     }
 
 
