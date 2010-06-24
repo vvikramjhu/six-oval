@@ -4,7 +4,9 @@ import jp.go.aist.six.oval.core.service.StandardOvalService;
 import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.common.Datatype;
+import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Generator;
+import jp.go.aist.six.oval.model.independent.FamilyItem;
 import jp.go.aist.six.oval.model.system.EntityItemAnySimple;
 import jp.go.aist.six.oval.model.system.EntityItemInt;
 import jp.go.aist.six.oval.model.system.EntityItemString;
@@ -258,6 +260,14 @@ public abstract class CoreTestBase
         );
 
 
+    public static final FamilyItem  FAMILY_ITEM_497 =
+        new FamilyItem(
+                        497,
+                        FamilyItem.DEFAULT_STATUS,
+                        Family.WINDOWS
+                        );
+
+
 
     @DataProvider( name="oval-sc-item" )
     public Object[][] ovalScItemData()
@@ -279,6 +289,12 @@ public abstract class CoreTestBase
                             "oval-sc#windows:file_item",
                             "test/data/sc/oval-sc.item.file_item.1.xml",
                             FILE_ITEM_46
+                        }
+                        ,
+                        {
+                            "oval-sc#independent:family_item",
+                            "test/data/sc/oval-sc.item.family_item.1.xml",
+                            FAMILY_ITEM_497
                         }
         };
 

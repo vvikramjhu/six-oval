@@ -1,6 +1,7 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.model.common.Generator;
+import jp.go.aist.six.oval.model.independent.FamilyItem;
 import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.NetworkInterface;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
@@ -88,8 +89,22 @@ public class OvalXmlTest
             _validate( RegistryItem.class.cast( actual ), RegistryItem.class.cast( expected ) );
         } else if (expected instanceof FileItem) {
             _validate( FileItem.class.cast( actual ), FileItem.class.cast( expected ) );
+        } else if (expected instanceof FamilyItem) {
+            _validate( FamilyItem.class.cast( actual ), FamilyItem.class.cast( expected ) );
         }
     }
+
+
+    //FamilyItem
+    private void _validate(
+                    final FamilyItem actual,
+                    final FamilyItem expected
+                    )
+    {
+        Reporter.log( " - family", true );
+        Assert.assertEquals( actual.getFamily(), expected.getFamily() );
+    }
+
 
 
     //RegistryItem

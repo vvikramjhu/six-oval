@@ -36,7 +36,8 @@ public class FamilyItem
     extends Item
 {
 
-    private Family  _family;
+    private EntityItemFamily  _family;
+    //{0..1}
 
 
 
@@ -80,21 +81,35 @@ public class FamilyItem
                     final Family family
                     )
     {
-        this( id, status );
+        this( id, status, new EntityItemFamily( family ) );
+    }
+
+
+
+    /**
+     * Constructor.
+     */
+    public FamilyItem(
+                    final int id,
+                    final Status status,
+                    final EntityItemFamily family
+                    )
+    {
+        super( id, status );
         setFamily( family );
     }
 
 
 
     public void setFamily(
-                    final Family family
+                    final EntityItemFamily family
                     )
     {
         _family = family;
     }
 
 
-    public Family getFamily()
+    public EntityItemFamily getFamily()
     {
         return _family;
     }
@@ -117,9 +132,6 @@ public class FamilyItem
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

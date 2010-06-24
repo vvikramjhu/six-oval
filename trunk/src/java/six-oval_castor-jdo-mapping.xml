@@ -993,10 +993,15 @@
             <sql name="PID" type="integer"/>
         </field>
 
+        <field name="family.data" type="string">
+            <sql name="family" type="char"/>
+        </field>
+<!--
         <field name="family"
             type="jp.go.aist.six.oval.model.common.Family">
             <sql name="family" type="char"/>
         </field>
+-->
     </class>
 
 
