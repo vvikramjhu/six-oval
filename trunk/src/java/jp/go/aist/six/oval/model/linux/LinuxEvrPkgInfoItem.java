@@ -95,6 +95,20 @@ public abstract class LinuxEvrPkgInfoItem
      */
     public LinuxEvrPkgInfoItem(
                     final int id,
+                    final Status status,
+                    final EntityItemString name
+                    )
+    {
+        super( id, status, name );
+    }
+
+
+
+    /**
+     * Constructor.
+     */
+    public LinuxEvrPkgInfoItem(
+                    final int id,
                     final String arch,
                     final String name,
                     final String version,
@@ -134,6 +148,28 @@ public abstract class LinuxEvrPkgInfoItem
         if (evr != null) {
             setEvr( new EntityItemString( evr ) );
         }
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public LinuxEvrPkgInfoItem(
+                    final int id,
+                    final Status status,
+                    final EntityItemString arch,
+                    final EntityItemString name,
+                    final EntityItemString version,
+                    final EntityItemString release,
+                    final EntityItemString epoch,
+                    final EntityItemString evr
+                    )
+    {
+        super( id, status, arch, name, version );
+
+        setEpoch( epoch );
+        setRelease( release );
+        setEvr( evr );
     }
 
 

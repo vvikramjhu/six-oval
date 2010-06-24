@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.core.model.system.ItemType;
+import jp.go.aist.six.oval.model.system.EntityItemString;
 import jp.go.aist.six.oval.model.system.Status;
 
 
@@ -83,6 +84,19 @@ public class DpkgInfoItem
      */
     public DpkgInfoItem(
                     final int id,
+                    final Status status,
+                    final EntityItemString name
+                    )
+    {
+        super( id, status, name );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public DpkgInfoItem(
+                    final int id,
                     final String arch,
                     final String name,
                     final String version,
@@ -107,6 +121,24 @@ public class DpkgInfoItem
                     final String release,
                     final String epoch,
                     final String evr
+                    )
+    {
+        super( id, status, arch, name, version, release, epoch, evr );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public DpkgInfoItem(
+                    final int id,
+                    final Status status,
+                    final EntityItemString arch,
+                    final EntityItemString name,
+                    final EntityItemString version,
+                    final EntityItemString release,
+                    final EntityItemString epoch,
+                    final EntityItemString evr
                     )
     {
         super( id, status, arch, name, version, release, epoch, evr );

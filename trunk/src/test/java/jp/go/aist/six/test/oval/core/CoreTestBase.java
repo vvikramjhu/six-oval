@@ -8,6 +8,8 @@ import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.independent.FamilyItem;
 import jp.go.aist.six.oval.model.independent.TextFileContentItem;
+import jp.go.aist.six.oval.model.linux.DpkgInfoItem;
+import jp.go.aist.six.oval.model.linux.LinuxPkgInfoItem;
 import jp.go.aist.six.oval.model.system.EntityItemAnySimple;
 import jp.go.aist.six.oval.model.system.EntityItemInt;
 import jp.go.aist.six.oval.model.system.EntityItemString;
@@ -166,6 +168,8 @@ public abstract class CoreTestBase
             _validate( RegistryItem.class.cast( actual ), RegistryItem.class.cast( expected ) );
         } else if (expected instanceof FileItem) {
             _validate( FileItem.class.cast( actual ), FileItem.class.cast( expected ) );
+        } else if (expected instanceof LinuxPkgInfoItem) {
+            _validate( LinuxPkgInfoItem.class.cast( actual ), LinuxPkgInfoItem.class.cast( expected ) );
         } else if (expected instanceof UnameItem) {
             _validate( UnameItem.class.cast( actual ), UnameItem.class.cast( expected ) );
         } else if (expected instanceof TextFileContentItem) {
@@ -297,6 +301,23 @@ public abstract class CoreTestBase
         Assert.assertEquals( actual.getOsVersion(), expected.getOsVersion() );
         Reporter.log( " - processor_type", true );
         Assert.assertEquals( actual.getProcessorType(), expected.getProcessorType() );
+    }
+
+
+    //LinuxPkgInfoItem
+    private void _validate(
+                    final LinuxPkgInfoItem actual,
+                    final LinuxPkgInfoItem expected
+                    )
+    {
+        Reporter.log( " - name", true );
+        Assert.assertEquals( actual.getName(), expected.getName() );
+
+        Reporter.log( " - arch", true );
+        Assert.assertEquals( actual.getArch(), expected.getArch() );
+
+        Reporter.log( " - version", true );
+        Assert.assertEquals( actual.getVersion(), expected.getVersion() );
     }
 
 
@@ -526,6 +547,14 @@ public abstract class CoreTestBase
                         );
 
 
+    public static final DpkgInfoItem  DPKG_INFO_ITEM_14  =
+        new DpkgInfoItem(
+                        14,
+                        Status.DOES_NOT_EXIST,
+                        new EntityItemString( "apache2", EntityItemString.DEFAULT_DATATYPE, Status.DOES_NOT_EXIST )
+                        );
+
+
 
     @DataProvider( name="oval-sc-item" )
     public Object[][] ovalScItemData()
@@ -565,6 +594,12 @@ public abstract class CoreTestBase
                             "oval-sc#independent:uname_item",
                             "test/data/sc/oval-sc.item.uname_item.1.xml",
                             UNAME_ITEM_17
+                        }
+                        ,
+                        {
+                            "oval-sc#independent:dpkginfo_item",
+                            "test/data/sc/oval-sc.item.dpkginfo_item.1.xml",
+                            DPKG_INFO_ITEM_14
                         }
         };
 

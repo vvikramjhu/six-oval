@@ -100,6 +100,19 @@ public abstract class LinuxPkgInfoItem
      */
     public LinuxPkgInfoItem(
                     final int id,
+                    final Status status,
+                    final EntityItemString name
+                    )
+    {
+        this( id, status, (EntityItemString)null, name, (EntityItemString)null );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public LinuxPkgInfoItem(
+                    final int id,
                     final String arch,
                     final String name,
                     final String version
@@ -120,7 +133,7 @@ public abstract class LinuxPkgInfoItem
                     final String version
                     )
     {
-        this( id, status );
+        super( id, status );
 
         if (arch != null) {
             setArch( new EntityItemString( arch ) );
@@ -129,9 +142,29 @@ public abstract class LinuxPkgInfoItem
         if (name != null) {
             setName( new EntityItemString( name ) );
         }
+
         if (version != null) {
             setVersion( new EntityItemString( version ) );
         }
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public LinuxPkgInfoItem(
+                    final int id,
+                    final Status status,
+                    final EntityItemString arch,
+                    final EntityItemString name,
+                    final EntityItemString version
+                    )
+    {
+        super( id, status );
+
+        setArch( arch);
+        setName( name );
+        setVersion( version );
     }
 
 
