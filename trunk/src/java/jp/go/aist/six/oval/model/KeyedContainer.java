@@ -39,7 +39,7 @@ import java.util.Set;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class Container<K,V>
+public abstract class KeyedContainer<K,V>
     extends AbstractPersistable
     implements Collection<V>
 {
@@ -55,7 +55,7 @@ public abstract class Container<K,V>
     /**
      * Constructor.
      */
-    public Container()
+    public KeyedContainer()
     {
     }
 
@@ -63,7 +63,7 @@ public abstract class Container<K,V>
     /**
      * Constructor.
      */
-    public Container(
+    public KeyedContainer(
                     final Collection<? extends V> elements
                     )
     {
@@ -74,7 +74,7 @@ public abstract class Container<K,V>
     /**
      * Constructor.
      */
-    public Container(
+    public KeyedContainer(
                     final V[] elements
                     )
     {
@@ -349,12 +349,12 @@ public abstract class Container<K,V>
             return true;
         }
 
-        if (! Container.class.isInstance( obj )) {
+        if (! KeyedContainer.class.isInstance( obj )) {
             return false;
         }
 
         @SuppressWarnings( "unchecked" )
-        Container<K,V>  other = (Container<K,V>)obj;
+        KeyedContainer<K,V>  other = (KeyedContainer<K,V>)obj;
         if (this.size() == other.size()) {
 //            return this._keySet().equals( other._keySet() );
             return this._entrySet().equals( other._entrySet() );

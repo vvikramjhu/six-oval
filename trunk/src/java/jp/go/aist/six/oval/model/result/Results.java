@@ -18,27 +18,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.system;
+package jp.go.aist.six.oval.model.result;
 
 import jp.go.aist.six.util.orm.AbstractPersistable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Iterator;
 
 
 
 /**
- * A collection of CollectedSystemObject instances.
+ * A collection of System instances.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class CollectedSystemObjects
+public class Results
     extends AbstractPersistable
-//    extends Container<CollectedSystemObjectKey,CollectedSystemObject>
+    implements Iterable<SystemResult>
 {
 
-    private Collection<CollectedSystemObject>  _object = new ArrayList<CollectedSystemObject>();
+    private Collection<SystemResult>  _system = new ArrayList<SystemResult>();
     //{1..*}
 
 
@@ -46,7 +47,7 @@ public class CollectedSystemObjects
     /**
      * Constructor.
      */
-    public CollectedSystemObjects()
+    public Results()
     {
     }
 
@@ -54,52 +55,64 @@ public class CollectedSystemObjects
     /**
      * Constructor.
      */
-    public CollectedSystemObjects(
-                    final Collection<? extends CollectedSystemObject> elements
+    public Results(
+                    final Collection<? extends SystemResult> system
                     )
     {
-        setObject( elements );
+        setSystem( system );
     }
 
 
     /**
      * Constructor.
      */
-    public CollectedSystemObjects(
-                    final CollectedSystemObject[] elements
+    public Results(
+                    final SystemResult[] system
                     )
     {
-        setObject( Arrays.asList( elements ) );
+        setSystem( Arrays.asList( system ) );
     }
 
 
 
-    public void setObject(
-                    final Collection<? extends CollectedSystemObject> objectList
+    public void setSystem(
+                    final Collection<? extends SystemResult> system
                     )
     {
-        _object.clear();
-        _object.addAll( objectList );
+        _system.clear();
+        _system.addAll( system );
     }
 
 
-    public Collection<CollectedSystemObject> getObject()
+    public Collection<SystemResult> getSystem()
     {
-        return _object;
+        return _system;
     }
 
 
-
-//    //**************************************************************
-//    //  Container
-//    //**************************************************************
-//
-//    protected CollectedSystemObjectKey _getKey(
-//                    final CollectedSystemObject object
+//    public boolean addSystem(
+//                    final SystemResult system
 //                    )
 //    {
-//        return (new CollectedSystemObjectKey( object.getOvalID(), object.getOvalVersion(), object.getVariableInstance() ));
+//        return _system.add( system );
 //    }
+
+
+//    public Iterator<SystemResult> iterateSystems()
+//    {
+//        return _system.iterator();
+//    }
+
+
+
+    //**************************************************************
+    //  Iterable
+    //**************************************************************
+
+    public Iterator<SystemResult> iterator()
+    {
+        return _system.iterator();
+    }
 
 
 
@@ -110,10 +123,10 @@ public class CollectedSystemObjects
     @Override
     public String toString()
     {
-        return "CollectedSystemObjects["
-                        + String.valueOf( _object )
+        return "Results["
+                        + String.valueOf( _system )
                         + "]";
     }
 
 }
-// CollectedSystemObjects
+// Results

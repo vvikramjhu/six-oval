@@ -35,7 +35,7 @@ import java.util.Collections;
  * @version $Id$
  */
 public class OvalElementContainer<E extends OvalElement>
-    extends Container<String,E>
+    extends KeyedContainer<String,E>
 {
 
     /**

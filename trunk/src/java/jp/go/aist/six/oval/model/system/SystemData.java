@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.system;
 
-import jp.go.aist.six.oval.model.Container;
+import jp.go.aist.six.oval.model.KeyedContainer;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -32,7 +32,7 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class SystemData
-    extends Container<Integer,Item> //{1..*}
+    extends KeyedContainer<Integer,Item> //{1..*}
 {
 
     /**

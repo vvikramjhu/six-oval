@@ -21,8 +21,9 @@
 package jp.go.aist.six.oval.model.result;
 
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
+import jp.go.aist.six.util.orm.AbstractPersistable;
 import jp.go.aist.six.util.orm.Dependent;
-import jp.go.aist.six.util.orm.Persistable;
+
 
 
 /**
@@ -31,7 +32,8 @@ import jp.go.aist.six.util.orm.Persistable;
  * @version $Id: SystemResult.java 758 2010-05-10 06:28:46Z akihito $
  */
 public class SystemResult
-    implements Persistable, Dependent<OvalResults>
+    extends AbstractPersistable
+    implements Dependent<OvalResults>
 {
 
     private DefinitionResults  _definitions;
@@ -41,12 +43,12 @@ public class SystemResult
 //    private Collection<DefinitionResult>  _definitions =
 //        new ArrayList<DefinitionResult>();  //{1..*}
 
+//    private TestResults  _tests;
+//    //{0..1}
 
     private OvalSystemCharacteristics  _ovalSystemCharacteristics;
     //{1..1}
 
-
-//    private Collection<TestResult>  _tests = new ArrayList<TestResult>();
 
     private String  _definitionsDigest;
 
@@ -202,37 +204,9 @@ public class SystemResult
 
 
     //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
-    {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
-    }
-
-
-
-    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

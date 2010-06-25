@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.system;
 
-import jp.go.aist.six.oval.model.Container;
+import jp.go.aist.six.oval.model.KeyedContainer;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -33,7 +33,7 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class NetworkInterfaces
-    extends Container<String,NetworkInterface>
+    extends KeyedContainer<String,NetworkInterface>
 //implements Serializable, Iterable<NetworkInterface>
 {
 
