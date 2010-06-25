@@ -20,11 +20,9 @@
 
 package jp.go.aist.six.oval.model.result;
 
-import jp.go.aist.six.util.orm.AbstractPersistable;
-import java.util.ArrayList;
+import jp.go.aist.six.oval.model.Container;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Iterator;
 
 
 
@@ -35,14 +33,8 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class Results
-    extends AbstractPersistable
-    implements Iterable<SystemResult>
+    extends Container<SystemResult> //{1..*}
 {
-
-    private Collection<SystemResult>  _system = new ArrayList<SystemResult>();
-    //{1..*}
-
-
 
     /**
      * Constructor.
@@ -59,7 +51,7 @@ public class Results
                     final Collection<? extends SystemResult> system
                     )
     {
-        setSystem( system );
+        super( system );
     }
 
 
@@ -70,7 +62,7 @@ public class Results
                     final SystemResult[] system
                     )
     {
-        setSystem( Arrays.asList( system ) );
+        super( Arrays.asList( system ) );
     }
 
 
@@ -79,14 +71,13 @@ public class Results
                     final Collection<? extends SystemResult> system
                     )
     {
-        _system.clear();
-        _system.addAll( system );
+        reset( system );
     }
 
 
     public Collection<SystemResult> getSystem()
     {
-        return _system;
+        return _elements();
     }
 
 
@@ -94,25 +85,14 @@ public class Results
 //                    final SystemResult system
 //                    )
 //    {
-//        return _system.add( system );
+//        return add( system );
 //    }
 
 
 //    public Iterator<SystemResult> iterateSystems()
 //    {
-//        return _system.iterator();
+//        return iterator();
 //    }
-
-
-
-    //**************************************************************
-    //  Iterable
-    //**************************************************************
-
-    public Iterator<SystemResult> iterator()
-    {
-        return _system.iterator();
-    }
 
 
 
@@ -124,7 +104,7 @@ public class Results
     public String toString()
     {
         return "Results["
-                        + String.valueOf( _system )
+                        + super.toString()
                         + "]";
     }
 

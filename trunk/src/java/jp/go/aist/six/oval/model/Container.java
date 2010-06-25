@@ -23,9 +23,8 @@ package jp.go.aist.six.oval.model;
 import jp.go.aist.six.util.orm.AbstractPersistable;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 
 
@@ -33,29 +32,23 @@ import java.util.Set;
 /**
  * A collection of element objects.
  * Every element MUST NOT be null.
- * In this collection, each element is identified by its key.
- * Every subclass has to implement _getKey() method to obtain the key.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class KeyedContainer<K,V>
+public abstract class Container<E>
     extends AbstractPersistable
-    implements Collection<V>
+    implements Set<E>
 {
 
-    private final Map<K,V>  _elements = new HashMap<K,V>();
-    //TODO: If we use LnkedHashMap, Container.equals() method does NOT work.
-    // The order of elements seems to be affected.
-
-//  private final Collection<E>  _elements = new ArrayList<E>();
+    private final Set<E>  _elements = new HashSet<E>();
 
 
 
     /**
      * Constructor.
      */
-    public KeyedContainer()
+    public Container()
     {
     }
 
@@ -63,8 +56,8 @@ public abstract class KeyedContainer<K,V>
     /**
      * Constructor.
      */
-    public KeyedContainer(
-                    final Collection<? extends V> elements
+    public Container(
+                    final Collection<? extends E> elements
                     )
     {
         addAll( elements );
@@ -74,8 +67,8 @@ public abstract class KeyedContainer<K,V>
     /**
      * Constructor.
      */
-    public KeyedContainer(
-                    final V[] elements
+    public Container(
+                    final E[] elements
                     )
     {
         addAll( Arrays.asList( elements ) );
@@ -84,34 +77,10 @@ public abstract class KeyedContainer<K,V>
 
 
     /**
-     * Returns the key of the specified element.
      */
-    protected abstract K _getKey( V element );
-
-
-
-    /**
-     */
-    protected Collection<V>  _values()
+    protected Set<E>  _elements()
     {
-        return _elements.values();
-    }
-
-
-
-    /**
-     */
-    protected Set<K>  _keySet()
-    {
-        return _elements.keySet();
-    }
-
-
-    /**
-     */
-    protected Set<Map.Entry<K, V>> _entrySet()
-    {
-        return _elements.entrySet();
+        return _elements;
     }
 
 
@@ -119,32 +88,17 @@ public abstract class KeyedContainer<K,V>
     /**
      */
     public void reset(
-                    final Collection<? extends V> elements
+                    final Collection<? extends E> c
                     )
     {
         clear();
-        addAll( elements );
-    }
-
-
-
-    /**
-     */
-    public V find(
-                    final K key
-                    )
-    {
-        if (key == null) {
-            throw new NullPointerException( "find: null argument" );
-        }
-
-        return _elements.get( key );
+        addAll( c );
     }
 
 
 
     //**************************************************************
-    //  Collection
+    //  Set
     //**************************************************************
 
     public int size()
@@ -169,21 +123,21 @@ public abstract class KeyedContainer<K,V>
             throw new NullPointerException( "contains: null argument" );
         }
 
-        return _elements.containsValue( o );
+        return _elements.contains( o );
     }
 
 
 
-    public Iterator<V> iterator()
+    public Iterator<E> iterator()
     {
-        return _elements.values().iterator();
+        return _elements.iterator();
     }
 
 
 
     public Object[] toArray()
     {
-        return _elements.values().toArray();
+        return _elements.toArray();
     }
 
 
@@ -192,27 +146,20 @@ public abstract class KeyedContainer<K,V>
                     final T[] a
                     )
     {
-        return _elements.values().toArray( a );
+        return _elements.toArray( a );
     }
 
 
 
     public boolean add(
-                    final V e
+                    final E e
                     )
     {
         if (e == null) {
             throw new NullPointerException( "add: null argument" );
         }
 
-        K  key = _getKey( e );
-        if (key == null) {
-            throw new IllegalArgumentException( "add: null-key argument" );
-        }
-
-        V  previousValue = _elements.put( key, e );
-
-        return (e != previousValue);
+        return _elements.add( e );
     }
 
 
@@ -225,17 +172,7 @@ public abstract class KeyedContainer<K,V>
             throw new NullPointerException( "remove: null argument" );
         }
 
-        @SuppressWarnings( "unchecked" )
-        V  e = (V)o;
-
-        K  key = _getKey( e );
-        if (key == null) {
-            throw new IllegalArgumentException( "remove: null-key argument " );
-        }
-
-        V  previousValue = _elements.remove( key );
-
-        return (previousValue != null);
+        return _elements.remove( o );
     }
 
 
@@ -248,35 +185,20 @@ public abstract class KeyedContainer<K,V>
             throw new NullPointerException( "containsAll: null argument collection" );
         }
 
-        for (Object  o : c) {
-            if (o == null) {
-                throw new NullPointerException( "containsAll: null element in argument collection" );
-            }
-        }
-
-        return _elements.values().containsAll( c );
+        return _elements.containsAll( c );
     }
 
 
 
     public boolean addAll(
-                    final Collection<? extends V> c
+                    final Collection<? extends E> c
                     )
     {
         if (c == null) {
             throw new NullPointerException( "addAll: null argument collection" );
         }
 
-        boolean  changed = false;
-        for (V  e : c) {
-            boolean  e_added = add( e );
-            changed = e_added || changed;
-
-//          changed = changed || add( e );  // This code is BUG!!!
-            // if "change" is true, add( E ) is not called.
-        }
-
-        return changed;
+        return _elements.addAll( c );
     }
 
 
@@ -289,13 +211,7 @@ public abstract class KeyedContainer<K,V>
             throw new NullPointerException( "removeAll: null argument collection" );
         }
 
-        boolean  changed = false;
-        for (Object  o : c) {
-            boolean  o_removed =  remove( o );
-            changed = o_removed || changed;
-        }
-
-        return changed;
+        return _elements.removeAll( c );
     }
 
 
@@ -308,15 +224,7 @@ public abstract class KeyedContainer<K,V>
             throw new NullPointerException( "retainAll: null argument collection" );
         }
 
-        boolean  changed = false;
-        for (Object  o : this) {
-            if (!c.contains( o )) {
-                boolean  o_removed = remove( o );
-                changed = o_removed || changed;
-            }
-        }
-
-        return changed;
+        return _elements.retainAll( c );
     }
 
 
@@ -335,7 +243,7 @@ public abstract class KeyedContainer<K,V>
     @Override
     public int hashCode()
     {
-        return _elements.hashCode();
+        return _elements().hashCode();
     }
 
 
@@ -349,16 +257,16 @@ public abstract class KeyedContainer<K,V>
             return true;
         }
 
-        if (! KeyedContainer.class.isInstance( obj )) {
+        if (! Container.class.isInstance( obj )) {
             return false;
         }
 
         @SuppressWarnings( "unchecked" )
-        KeyedContainer<K,V>  other = (KeyedContainer<K,V>)obj;
+        Container<E>  other = (Container<E>)obj;
         if (this.size() == other.size()) {
-//            return this._keySet().equals( other._keySet() );
-            return this._entrySet().equals( other._entrySet() );
+            return this._elements().equals( other._elements() );
         }
+
         return false;
     }
 
@@ -367,7 +275,7 @@ public abstract class KeyedContainer<K,V>
     @Override
     public String toString()
     {
-        return String.valueOf( _elements.values() );
+        return String.valueOf( _elements() );
     }
 
 }
