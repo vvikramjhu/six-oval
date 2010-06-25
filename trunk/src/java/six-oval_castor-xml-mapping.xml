@@ -1247,9 +1247,51 @@
 
 
     <!-- ======================================================= -->
+    <!-- Directives                                              -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.result.Directives">
+        <map-to xml="directives"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
+
+        <field name="definitionTrue" 
+            type="jp.go.aist.six.oval.model.result.Directive">
+            <bind-xml name="definition_true" node="element"/>
+        </field>
+
+        <field name="definitionFalse" 
+            type="jp.go.aist.six.oval.model.result.Directive">
+            <bind-xml name="definition_false" node="element"/>
+        </field>
+
+        <field name="definitionUnknown" 
+            type="jp.go.aist.six.oval.model.result.Directive">
+            <bind-xml name="definition_unknown" node="element"/>
+        </field>
+
+        <field name="definitionError" 
+            type="jp.go.aist.six.oval.model.result.Directive">
+            <bind-xml name="definition_error" node="element"/>
+        </field>
+
+        <field name="definitionNotEvaluated" 
+            type="jp.go.aist.six.oval.model.result.Directive">
+            <bind-xml name="definition_not_evaluated" node="element"/>
+        </field>
+
+        <field name="definitionNotApplicable" 
+            type="jp.go.aist.six.oval.model.result.Directive">
+            <bind-xml name="definition_not_applicable" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ======================================================= -->
     <!-- Directive                                               -->
     <!-- ======================================================= -->
     <class name ="jp.go.aist.six.oval.model.result.Directive">
+        <map-to xml="directive"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
         <field name="reported" type="boolean">
             <bind-xml name="reported" node="attribute"/>

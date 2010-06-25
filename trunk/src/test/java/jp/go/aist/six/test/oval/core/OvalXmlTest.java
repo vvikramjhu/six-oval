@@ -1,6 +1,7 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.model.common.Generator;
+import jp.go.aist.six.oval.model.result.Directives;
 import jp.go.aist.six.oval.model.system.CollectedSystemObjects;
 import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
@@ -22,6 +23,42 @@ public class OvalXmlTest
      */
     public OvalXmlTest()
     {
+    }
+
+
+
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    //
+    //  Results
+    //
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    //==============================================================
+    //  directives
+    //==============================================================
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "oval-results:directives"},
+                    dataProvider="oval-results-directives",
+                    alwaysRun=true
+                    )
+    public void processDirectives(
+                    final String testTarget,
+                    final String filepath,
+                    final Directives expected
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL XML //", true );
+        Reporter.log( "  * target type: " + testTarget, true );
+
+        Directives  actual = _unmarshalFile( filepath, Directives.class );
+
+        Reporter.log( "validating...", true );
+        _validate( actual, expected );
+        Reporter.log( "...validation OK", true );
     }
 
 

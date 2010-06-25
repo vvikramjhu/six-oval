@@ -103,7 +103,7 @@ public class Directive
 
     public Content getContent()
     {
-        return _content;
+        return (_content == null ? DEFAULT_CONTENT : _content);
     }
 
 
@@ -129,39 +129,53 @@ public class Directive
 //    {
 //        return _master;
 //    }
-//
-//
-//
-//    private String _masterPersistentID;
-//
-//
-//
-//    public void setMasterPersistentID(
-//                    final String id
-//                    )
-//    {
-//        _masterPersistentID = id;
-//    }
-//
-//
-//
-//    public String getMasterPersistentID()
-//    {
-//        if (_masterPersistentID == null) {
-//            SystemResult  master = getMasterObject();
-//            if (master != null) {
-//                setMasterPersistentID( master.getPersistentID() );
-//            }
-//        }
-//
-//        return _masterPersistentID;
-//    }
 
 
 
     // **************************************************************
     // java.lang.Object
     // **************************************************************
+
+    @Override
+    public int hashCode()
+    {
+        final int  prime = 37;
+        int  result = 17;
+
+        result = prime * result + (isReported() ? 0 : 1);
+
+        Content  content = getContent();
+        result = prime * result + ((content == null) ? 0 : content.hashCode());
+
+        return result;
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof Directive)) {
+            return false;
+        }
+
+        Directive  other = (Directive)obj;
+        if (this.getContent() == other.getContent()) {
+            if (this.isReported() == other.isReported()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
 
     @Override
     public String toString()

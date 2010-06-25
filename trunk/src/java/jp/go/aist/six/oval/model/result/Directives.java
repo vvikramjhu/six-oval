@@ -21,6 +21,8 @@
 package jp.go.aist.six.oval.model.result;
 
 import jp.go.aist.six.util.orm.AbstractPersistable;
+import java.util.EnumMap;
+import java.util.Map;
 
 
 
@@ -33,23 +35,36 @@ public class Directives
     extends AbstractPersistable
 {
 
-    private Directive  _definitionTrue;
-    //{1..1}
+    protected static enum Category
+    {
+        TRUE,
+        FALSE,
+        UNKNOWN,
+        ERROR,
+        NOT_EVALUATED,
+        NOT_APPLICABLE;
+    }
 
-    private Directive  _definitionFalse;
-    //{1..1}
+    private Map<Category, Directive>  _directives =
+        new EnumMap<Category, Directive>( Category.class );
 
-    private Directive  _definitionUnknown;
-    //{1..1}
-
-    private Directive  _definitionError;
-    //{1..1}
-
-    private Directive  _definitionNotEvaluated;
-    //{1..1}
-
-    private Directive  _definitionNotApplicable;
-    //{1..1}
+//    private Directive  _definitionTrue;
+//    //{1..1}
+//
+//    private Directive  _definitionFalse;
+//    //{1..1}
+//
+//    private Directive  _definitionUnknown;
+//    //{1..1}
+//
+//    private Directive  _definitionError;
+//    //{1..1}
+//
+//    private Directive  _definitionNotEvaluated;
+//    //{1..1}
+//
+//    private Directive  _definitionNotApplicable;
+//    //{1..1}
 
 
 
@@ -87,17 +102,17 @@ public class Directives
      */
     public Directive getDefinitionTrue()
     {
-        return _definitionTrue;
+        return _directives.get( Category.TRUE );
     }
 
 
     /**
      */
     public void setDefinitionTrue(
-                    final Directive definitionTrue
+                    final Directive directive
                     )
     {
-        _definitionTrue = definitionTrue;
+        _directives.put( Category.TRUE, directive );
     }
 
 
@@ -106,17 +121,17 @@ public class Directives
      */
     public Directive getDefinitionFalse()
     {
-        return _definitionFalse;
+        return _directives.get( Category.FALSE );
     }
 
 
     /**
      */
     public void setDefinitionFalse(
-                    final Directive definitionFalse
+                    final Directive directive
                     )
     {
-        _definitionFalse = definitionFalse;
+        _directives.put( Category.FALSE, directive );
     }
 
 
@@ -125,17 +140,17 @@ public class Directives
      */
     public Directive getDefinitionUnknown()
     {
-        return _definitionUnknown;
+        return _directives.get( Category.UNKNOWN );
     }
 
 
     /**
      */
     public void setDefinitionUnknown(
-                    final Directive definitionUnknown
+                    final Directive directive
                     )
     {
-        _definitionUnknown = definitionUnknown;
+        _directives.put( Category.UNKNOWN, directive );
     }
 
 
@@ -144,17 +159,17 @@ public class Directives
      */
     public Directive getDefinitionError()
     {
-        return _definitionError;
+        return _directives.get( Category.ERROR );
     }
 
 
     /**
      */
     public void setDefinitionError(
-                    final Directive definitionError
+                    final Directive directive
                     )
     {
-        _definitionError = definitionError;
+        _directives.put( Category.ERROR, directive );
     }
 
 
@@ -163,17 +178,17 @@ public class Directives
      */
     public Directive getDefinitionNotEvaluated()
     {
-        return _definitionNotEvaluated;
+        return _directives.get( Category.NOT_EVALUATED );
     }
 
 
     /**
      */
     public void setDefinitionNotEvaluated(
-                    final Directive definitionNotEvaluated
+                    final Directive directive
                     )
     {
-        _definitionNotEvaluated = definitionNotEvaluated;
+        _directives.put( Category.NOT_EVALUATED, directive );
     }
 
 
@@ -182,17 +197,17 @@ public class Directives
      */
     public Directive getDefinitionNotApplicable()
     {
-        return _definitionNotApplicable;
+        return _directives.get( Category.NOT_APPLICABLE );
     }
 
 
     /**
      */
     public void setDefinitionNotApplicable(
-                    final Directive definitionNotApplicable
+                    final Directive directive
                     )
     {
-        _definitionNotApplicable = definitionNotApplicable;
+        _directives.put( Category.NOT_APPLICABLE, directive );
     }
 
 
@@ -200,6 +215,86 @@ public class Directives
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
+
+    @Override
+    public int hashCode()
+    {
+        final int  prime = 37;
+        int  result = 17;
+
+        Directive  defTrue = getDefinitionTrue();
+        result = prime * result + ((defTrue == null) ? 0 : defTrue.hashCode());
+
+        Directive  defFalse= getDefinitionFalse();
+        result = prime * result + ((defFalse == null) ? 0 : defFalse.hashCode());
+
+        Directive  defUnknown = getDefinitionUnknown();
+        result = prime * result + ((defUnknown == null) ? 0 : defUnknown.hashCode());
+
+        Directive  defError = getDefinitionError();
+        result = prime * result + ((defError == null) ? 0 : defError.hashCode());
+
+        Directive  defNotEvaluated = getDefinitionNotEvaluated();
+        result = prime * result + ((defNotEvaluated == null) ? 0 : defNotEvaluated.hashCode());
+
+        Directive  defNotApplicable = getDefinitionNotApplicable();
+        result = prime * result + ((defNotApplicable == null) ? 0 : defNotApplicable.hashCode());
+
+        return result;
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof Directives)) {
+            return false;
+        }
+
+        Directives  other = (Directives)obj;
+        Directive  other_false = other.getDefinitionFalse();
+        Directive   this_false =  this.getDefinitionFalse();
+        if (this_false == other_false
+                        ||  (this_false != null  &&  this_false.equals( other_false ))) {
+            Directive  other_unknown = other.getDefinitionUnknown();
+            Directive   this_unknown =  this.getDefinitionUnknown();
+            if (this_unknown == other_unknown
+                            ||  (this_unknown != null  &&  this_unknown.equals( other_unknown ))) {
+                Directive  other_error = other.getDefinitionError();
+                Directive   this_error =  this.getDefinitionError();
+                if (this_error == other_error
+                                ||  (this_error != null  &&  this_error.equals( other_error ))) {
+                    Directive  other_not_eval = other.getDefinitionNotEvaluated();
+                    Directive   this_not_eval =  this.getDefinitionNotEvaluated();
+                    if (this_not_eval == other_not_eval
+                                    ||  (this_not_eval != null  &&  this_not_eval.equals( other_not_eval ))) {
+                        Directive  other_not_app = other.getDefinitionNotApplicable();
+                        Directive   this_not_app =  this.getDefinitionNotApplicable();
+                        if (this_not_app == other_not_app
+                                        ||  (this_not_app != null  &&  this_not_app.equals( other_not_app ))) {
+                            Directive  other_true = other.getDefinitionTrue();
+                            Directive   this_true =  this.getDefinitionTrue();
+                            if (this_true == other_true
+                                            ||  (this_true != null  &&  this_true.equals( other_true ))) {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
+
 
     @Override
     public String toString()

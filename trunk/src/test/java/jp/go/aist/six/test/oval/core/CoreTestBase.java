@@ -11,6 +11,9 @@ import jp.go.aist.six.oval.model.independent.TextFileContentItem;
 import jp.go.aist.six.oval.model.linux.DpkgInfoItem;
 import jp.go.aist.six.oval.model.linux.LinuxPkgInfoItem;
 import jp.go.aist.six.oval.model.linux.RpmInfoItem;
+import jp.go.aist.six.oval.model.result.Content;
+import jp.go.aist.six.oval.model.result.Directive;
+import jp.go.aist.six.oval.model.result.Directives;
 import jp.go.aist.six.oval.model.system.CollectedSystemObject;
 import jp.go.aist.six.oval.model.system.CollectedSystemObjects;
 import jp.go.aist.six.oval.model.system.EntityItemAnySimple;
@@ -340,10 +343,76 @@ public abstract class CoreTestBase
     }
 
 
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    //
+    //  Results
+    //
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    //Directives
+    protected void _validate(
+                    final Directives actual,
+                    final Directives expected
+                    )
+    {
+        Assert.assertEquals( actual, expected );
+//        Reporter.log( " - definition_true", true );
+//        Assert.assertEquals( actual.getDefinitionTrue(), expected.getDefinitionTrue() );
+//
+//        Reporter.log( " - definition_false", true );
+//        Assert.assertEquals( actual.getDefinitionFalse(), expected.getDefinitionFalse() );
+//
+//        Reporter.log( " - definition_unknown", true );
+//        Assert.assertEquals( actual.getDefinitionUnknown(), expected.getDefinitionUnknown() );
+//
+//        Reporter.log( " - definition_error", true );
+//        Assert.assertEquals( actual.getDefinitionError(), expected.getDefinitionError() );
+//
+//        Reporter.log( " - definition_not_evaluated", true );
+//        Assert.assertEquals( actual.getDefinitionNotEvaluated(), expected.getDefinitionNotEvaluated() );
+//
+//        Reporter.log( " - definition_not_applicable", true );
+//        Assert.assertEquals( actual.getDefinitionNotApplicable(), expected.getDefinitionNotApplicable() );
+    }
+
+
+
 
     ////////////////////////////////////////////////////////////////
     //  Data Providers
     ////////////////////////////////////////////////////////////////
+
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    //
+    //  Results
+    //
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    public static final Directives DIRECTIVES_1 =
+        new Directives(
+                        new Directive( true, Content.FULL ),
+                        new Directive( true, Content.FULL ),
+                        new Directive( true, Content.FULL ),
+                        new Directive( true, Content.FULL ),
+                        new Directive( true, Content.FULL ),
+                        new Directive( true, Content.FULL )
+                        );
+
+
+    @DataProvider( name="oval-results-directives" )
+    public Object[][] ovalResultsDirectivesData()
+    {
+        return new Object[][] {
+                        {
+                            "oval-results:directives",
+                            "test/data/result/oval-results.directive.1.xml",
+                            DIRECTIVES_1
+                        }
+        };
+
+    }
+
+
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     //
