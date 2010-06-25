@@ -20,21 +20,15 @@
 
 package jp.go.aist.six.oval.core.xml;
 
-import jp.go.aist.six.oval.model.result.Result;
+import jp.go.aist.six.oval.model.result.Content;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-
-/**
- *
- * @author  Akihito Nakamura, AIST
- * @version $Id: ResultHandler.java 440 2010-03-23 05:11:44Z akihito $
- */
-public class ResultHandler
+public class ContentHandler
     extends GeneralizedFieldHandler
 {
 
-    public ResultHandler()
+    public ContentHandler()
     {
         super();
     }
@@ -44,7 +38,7 @@ public class ResultHandler
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        Result  e = (Result)value;
+        Content  e = (Content)value;
         return e.value();
     }
 
@@ -53,15 +47,15 @@ public class ResultHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return Result.fromValue( (String)value );
+        return Content.fromValue( (String)value );
     }
 
 
 
     @Override
-    public Class<Result> getFieldType()
+    public Class<Content> getFieldType()
     {
-        return Result.class;
+        return Content.class;
     }
 
 
@@ -74,4 +68,4 @@ public class ResultHandler
     }
 
 }
-// ResultHandler
+// ContentHandler

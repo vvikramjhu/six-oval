@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.result;
 
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
-import jp.go.aist.six.util.orm.Persistable;
+import jp.go.aist.six.util.orm.AbstractPersistable;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -34,14 +34,14 @@ import java.util.Collection;
  * @version $Id: OvalResults.java 757 2010-05-10 06:25:22Z akihito $
  */
 public class OvalResults
-    implements Persistable
+    extends AbstractPersistable
 {
 
     private Generator  _generator;
     //{1..1}
 
-//    private Directives _directives;
-//    //{1..1}
+    private Directives  _directives;
+    //{1..1}
 
     private OvalDefinitions  _definitions;
     //{0..1}
@@ -72,6 +72,25 @@ public class OvalResults
     public Generator getGenerator()
     {
         return _generator;
+    }
+
+
+
+    /**
+     */
+    public void setDirectives(
+                    final Directives directives
+                    )
+    {
+        _directives = directives;
+    }
+
+
+    /**
+     */
+    public Directives getDirectives()
+    {
+        return _directives;
     }
 
 
@@ -131,37 +150,9 @@ public class OvalResults
 
 
     //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
-    {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
-    }
-
-
-
-    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

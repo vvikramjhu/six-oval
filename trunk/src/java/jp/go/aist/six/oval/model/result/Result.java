@@ -20,94 +20,62 @@
 
 package jp.go.aist.six.oval.model.result;
 
-import java.io.Serializable;
-import java.util.HashMap;
-
-
 
 
 /**
  * @author  Akihito Nakamura, AIST
  * @version $Id: Result.java 739 2010-05-07 08:11:01Z akihito $
  */
-public final class Result
-    implements Serializable
+public enum Result
 {
 
-    private static final String  _TRUE_            = "true";
-    private static final String  _FALSE_           = "false";
-    private static final String  _UNKNOWN_         = "unknown";
-    private static final String  _ERROR_           = "error";
-    private static final String  _NOT_EVALUATED_   = "not evaluated";
-    private static final String  _NOT_APPLICABLE_  = "not applicable";
-
-
-    public static final Result  TRUE           = new Result( _TRUE_ );
-    public static final Result  FALSE          = new Result( _FALSE_ );
-    public static final Result  UNKNOWN        = new Result( _UNKNOWN_ );
-    public static final Result  ERROR          = new Result( _ERROR_ );
-    public static final Result  NOT_EVALUATED  = new Result( _NOT_EVALUATED_ );
-    public static final Result  NOT_APPLICABLE = new Result( _NOT_APPLICABLE_ );
-
-
-
-    private static HashMap<String, Result> _INIT_()
-    {
-        HashMap<String, Result>  map = new HashMap<String, Result>();
-        map.put( _TRUE_,           TRUE );
-        map.put( _FALSE_,          FALSE );
-        map.put( _UNKNOWN_,        UNKNOWN  );
-        map.put( _ERROR_,          ERROR );
-        map.put( _NOT_EVALUATED_,  NOT_EVALUATED );
-        map.put( _NOT_APPLICABLE_, NOT_APPLICABLE );
-        return map;
-    }
-
-    private static final HashMap<String, Result>  _INSTANCES_ = _INIT_();
-
-
+    TRUE( "true" ),
+    FALSE( "false" ),
+    UNKNOWN( "unknown" ),
+    ERROR( "error" ),
+    NOT_EVALUATED( "not evaluated" ),
+    NOT_APPLICABLE( "not applicable" );
 
 
     /**
+     * An instance factory method.
      */
-    public static Result valueOf(
-                    final String name
+    public static Result fromValue(
+                    final String value
                     )
     {
-        Result  result = null;
-        if (name != null) {
-            result = _INSTANCES_.get( name );
-        }
+        for (Result  e : Result.values()) {
+          if (e._value.equals( value )) {
+              return e;
+          }
+      }
 
-        if (result == null) {
-            throw new IllegalArgumentException( "invalid result: " + name );
-        }
-
-        return result;
+      throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
 
+    private final String  _value;
 
 
     /**
+     * Constructor.
      */
-    private Result(
-                    final String name
+    Result(
+                    final String value
                     )
     {
-        _name = name;
+        this._value = value;
     }
 
 
 
     /**
      */
-    public String getName()
+    public String value()
     {
-        return _name;
+        return this._value;
     }
 
 
@@ -119,7 +87,7 @@ public final class Result
     @Override
     public String toString()
     {
-        return getName();
+        return this._value;
     }
 
 }

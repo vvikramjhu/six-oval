@@ -53,7 +53,7 @@ public class RegistryHiveHandler
 
 
     @Override
-    public Class getFieldType()
+    public Class<RegistryHive> getFieldType()
     {
         return RegistryHive.class;
     }

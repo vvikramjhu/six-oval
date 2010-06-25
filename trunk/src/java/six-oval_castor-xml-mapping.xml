@@ -1247,6 +1247,23 @@
 
 
     <!-- ======================================================= -->
+    <!-- Directive                                               -->
+    <!-- ======================================================= -->
+    <class name ="jp.go.aist.six.oval.model.result.Directive">
+
+        <field name="reported" type="boolean">
+            <bind-xml name="reported" node="attribute"/>
+        </field>
+
+        <field name="content" type="string" 
+            handler="jp.go.aist.six.oval.core.xml.ContentHandler">
+            <bind-xml name="content" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <!-- ======================================================= -->
     <!-- DefinitionResults                                       -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.result.DefinitionResults">

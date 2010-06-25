@@ -53,7 +53,7 @@ public class FileTypeHandler
 
 
     @Override
-    public Class getFieldType()
+    public Class<FileType> getFieldType()
     {
         return FileType.class;
     }
