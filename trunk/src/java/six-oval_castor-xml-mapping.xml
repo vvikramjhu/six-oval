@@ -1319,7 +1319,7 @@
 
 
     <!-- ======================================================= -->
-    <!-- SystemResult - system                                   -->
+    <!-- SystemResult                                            -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.result.SystemResult">
         <map-to xml="system"
@@ -1340,8 +1340,7 @@
 -->
 
         <field name="ovalSystemCharacteristics" 
-            type="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics"
-            >
+            type="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics">
             <bind-xml name="oval_system_characteristics" node="element"/>
         </field>
     </class>

@@ -54,8 +54,22 @@ public class SystemResult
 
 
 
+    /**
+     * constructor.
+     */
     public SystemResult()
     {
+    }
+
+
+    /**
+     * constructor.
+     */
+    public SystemResult(
+                    final OvalSystemCharacteristics sc
+                    )
+    {
+        setOvalSystemCharacteristics( sc );
     }
 
 

@@ -24,7 +24,6 @@ import jp.go.aist.six.oval.model.OvalAnalysisElement;
 
 
 
-
 /**
  *
  * @author	Akihito Nakamura, AIST
@@ -93,9 +92,6 @@ public abstract class OvalResultElement
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

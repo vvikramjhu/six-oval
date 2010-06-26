@@ -24,8 +24,6 @@ import jp.go.aist.six.util.orm.Dependent;
 
 
 
-
-
 /**
  *
  * @author	Akihito Nakamura, AIST
@@ -45,7 +43,6 @@ public class DefinitionResult
 
     private int  _variableInstance = DEFAULT_VARIABLE_INSTANCE;
     //{xsd:nonNegativeInteger, optional, default="1"}
-
 
 
 
@@ -226,9 +223,6 @@ public class DefinitionResult
     // java.lang.Object
     // **************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {

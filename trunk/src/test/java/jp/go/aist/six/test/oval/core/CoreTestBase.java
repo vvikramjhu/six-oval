@@ -12,8 +12,11 @@ import jp.go.aist.six.oval.model.linux.DpkgInfoItem;
 import jp.go.aist.six.oval.model.linux.LinuxPkgInfoItem;
 import jp.go.aist.six.oval.model.linux.RpmInfoItem;
 import jp.go.aist.six.oval.model.result.Content;
+import jp.go.aist.six.oval.model.result.DefinitionResult;
 import jp.go.aist.six.oval.model.result.Directive;
 import jp.go.aist.six.oval.model.result.Directives;
+import jp.go.aist.six.oval.model.result.Result;
+import jp.go.aist.six.oval.model.result.SystemResult;
 import jp.go.aist.six.oval.model.system.CollectedSystemObject;
 import jp.go.aist.six.oval.model.system.CollectedSystemObjects;
 import jp.go.aist.six.oval.model.system.EntityItemAnySimple;
@@ -23,6 +26,7 @@ import jp.go.aist.six.oval.model.system.Flag;
 import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.ItemReference;
 import jp.go.aist.six.oval.model.system.NetworkInterface;
+import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.Status;
 import jp.go.aist.six.oval.model.system.SystemData;
 import jp.go.aist.six.oval.model.system.SystemInfo;
@@ -343,6 +347,21 @@ public abstract class CoreTestBase
     }
 
 
+    //OvalSystemCharacteristics
+    protected void _validate(
+                    final OvalSystemCharacteristics actual,
+                    final OvalSystemCharacteristics expected
+                    )
+    {
+        Reporter.log( " - generator", true );
+        _validate( actual.getGenerator(), expected.getGenerator() );
+
+        Reporter.log( " - system_info", true );
+        _validate( actual.getSystemInfo(), expected.getSystemInfo() );
+    }
+
+
+
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     //
     //  Results
@@ -356,63 +375,40 @@ public abstract class CoreTestBase
                     )
     {
         Assert.assertEquals( actual, expected );
-//        Reporter.log( " - definition_true", true );
-//        Assert.assertEquals( actual.getDefinitionTrue(), expected.getDefinitionTrue() );
-//
-//        Reporter.log( " - definition_false", true );
-//        Assert.assertEquals( actual.getDefinitionFalse(), expected.getDefinitionFalse() );
-//
-//        Reporter.log( " - definition_unknown", true );
-//        Assert.assertEquals( actual.getDefinitionUnknown(), expected.getDefinitionUnknown() );
-//
-//        Reporter.log( " - definition_error", true );
-//        Assert.assertEquals( actual.getDefinitionError(), expected.getDefinitionError() );
-//
-//        Reporter.log( " - definition_not_evaluated", true );
-//        Assert.assertEquals( actual.getDefinitionNotEvaluated(), expected.getDefinitionNotEvaluated() );
-//
-//        Reporter.log( " - definition_not_applicable", true );
-//        Assert.assertEquals( actual.getDefinitionNotApplicable(), expected.getDefinitionNotApplicable() );
     }
 
+
+
+    //SystemResult
+    protected void _validate(
+                    final SystemResult actual,
+                    final SystemResult expected
+                    )
+    {
+        _validate(
+                        actual.getOvalSystemCharacteristics(),
+                        expected.getOvalSystemCharacteristics()
+                        );
+    }
+
+
+    //SystemResult
+    protected void _validate(
+                    final DefinitionResult actual,
+                    final DefinitionResult expected
+                    )
+    {
+        Assert.assertEquals( actual.getDefinitionID(), expected.getDefinitionID() );
+        Assert.assertEquals( actual.getOvalVersion(), expected.getOvalVersion() );
+        Assert.assertEquals( actual.getResult(), expected.getResult() );
+        Assert.assertEquals( actual.getVariableInstance(), expected.getVariableInstance() );
+    }
 
 
 
     ////////////////////////////////////////////////////////////////
     //  Data Providers
     ////////////////////////////////////////////////////////////////
-
-    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    //
-    //  Results
-    //
-    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    public static final Directives DIRECTIVES_1 =
-        new Directives(
-                        new Directive( true, Content.FULL ),
-                        new Directive( true, Content.FULL ),
-                        new Directive( true, Content.FULL ),
-                        new Directive( true, Content.FULL ),
-                        new Directive( true, Content.FULL ),
-                        new Directive( true, Content.FULL )
-                        );
-
-
-    @DataProvider( name="oval-results-directives" )
-    public Object[][] ovalResultsDirectivesData()
-    {
-        return new Object[][] {
-                        {
-                            "oval-results:directives",
-                            "test/data/result/oval-results.directive.1.xml",
-                            DIRECTIVES_1
-                        }
-        };
-
-    }
-
-
 
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     //
@@ -482,6 +478,23 @@ public abstract class CoreTestBase
                                         new ItemReference( 103 )
                         }
         );
+
+
+
+    private static final Generator  _SC_GENERATOR_WINDOWS_ =
+        new Generator( "5.6", IsoDate.valueOf( "2010-05-12T20:27:08" ), "OVAL Definition Interpreter", "5.6 Build: 4" );
+
+
+
+    private static final SystemInfo  _SC_SYSTEM_INFO_WINDOWS_ =
+        new SystemInfo(
+                        "Microsoft Windows XP Professional Service Pack 3",
+                        "5.1.2600",
+                        "INTEL32",
+                        "x60",
+                        _WINDWS_NETWORK_INTERFACES_
+                        );
+
 
 
     //==============================================================
@@ -780,6 +793,86 @@ public abstract class CoreTestBase
                             "oval-sc#independent:rpminfo_item",
                             "test/data/sc/oval-sc.item.rpminfo_item.1.xml",
                             RPM_INFO_ITEM_2
+                        }
+        };
+
+    }
+
+
+
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    //
+    //  Results
+    //
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    // directives //
+
+    public static final Directives DIRECTIVES_1 =
+        new Directives(
+                        new Directive( true, Content.FULL ),
+                        new Directive( true, Content.FULL ),
+                        new Directive( true, Content.FULL ),
+                        new Directive( true, Content.FULL ),
+                        new Directive( true, Content.FULL ),
+                        new Directive( true, Content.FULL )
+                        );
+
+
+    @DataProvider( name="oval-results-directives" )
+    public Object[][] ovalResultsDirectivesData()
+    {
+        return new Object[][] {
+                        {
+                            "oval-results:directives",
+                            "test/data/result/oval-results.directive.1.xml",
+                            DIRECTIVES_1
+                        }
+        };
+
+    }
+
+
+    // definition //
+    public static final DefinitionResult  DEFINITION_RESULT_6262 =
+        new DefinitionResult(
+                        "oval:org.mitre.oval:def:6262",
+                        0,
+                        Result.FALSE
+                        );
+
+    @DataProvider( name="oval-results-definition" )
+    public Object[][] ovalResultsDefinitionData()
+    {
+        return new Object[][] {
+                        {
+                            "oval-results:definition",
+                            "test/data/result/oval-results.definition.1.xml",
+                            DEFINITION_RESULT_6262
+                        }
+        };
+
+    }
+
+
+    // system //
+
+    public static final SystemResult  SYSTEM_RESULT_MINIMAL =
+        new SystemResult( new OvalSystemCharacteristics(
+                        _SC_GENERATOR_WINDOWS_,
+                        _SC_SYSTEM_INFO_WINDOWS_
+                        )
+        );
+
+
+    @DataProvider( name="oval-results-system" )
+    public Object[][] ovalResultsSystemData()
+    {
+        return new Object[][] {
+                        {
+                            "oval-results:system",
+                            "test/data/result/oval-results.oval_results.1-minimal.xml",
+                            SYSTEM_RESULT_MINIMAL
                         }
         };
 

@@ -22,9 +22,7 @@ package jp.go.aist.six.oval.model;
 
 
 
-
 /**
- * A reference to the OvalEntity.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

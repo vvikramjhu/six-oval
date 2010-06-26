@@ -1,7 +1,9 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.model.common.Generator;
+import jp.go.aist.six.oval.model.result.DefinitionResult;
 import jp.go.aist.six.oval.model.result.Directives;
+import jp.go.aist.six.oval.model.result.SystemResult;
 import jp.go.aist.six.oval.model.system.CollectedSystemObjects;
 import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
@@ -23,42 +25,6 @@ public class OvalXmlTest
      */
     public OvalXmlTest()
     {
-    }
-
-
-
-    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    //
-    //  Results
-    //
-    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    //==============================================================
-    //  directives
-    //==============================================================
-
-    /**
-     */
-    @org.testng.annotations.Test(
-                    groups={"oval.core.xml", "oval-results:directives"},
-                    dataProvider="oval-results-directives",
-                    alwaysRun=true
-                    )
-    public void processDirectives(
-                    final String testTarget,
-                    final String filepath,
-                    final Directives expected
-                    )
-    throws Exception
-    {
-        Reporter.log( "\n// TEST: OVAL XML //", true );
-        Reporter.log( "  * target type: " + testTarget, true );
-
-        Directives  actual = _unmarshalFile( filepath, Directives.class );
-
-        Reporter.log( "validating...", true );
-        _validate( actual, expected );
-        Reporter.log( "...validation OK", true );
     }
 
 
@@ -212,6 +178,104 @@ public class OvalXmlTest
         _validate( actualObject, expectedObject );
         Reporter.log( "...validation OK", true );
     }
+
+
+
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    //
+    //  Results
+    //
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    //==============================================================
+    //  directives
+    //==============================================================
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "oval-results:directives"},
+                    dataProvider="oval-results-directives",
+                    alwaysRun=true
+                    )
+    public void processDirectives(
+                    final String testTarget,
+                    final String filepath,
+                    final Directives expected
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL XML //", true );
+        Reporter.log( "  * target type: " + testTarget, true );
+
+        Directives  actual = _unmarshalFile( filepath, Directives.class );
+
+        Reporter.log( "validating...", true );
+        _validate( actual, expected );
+        Reporter.log( "...validation OK", true );
+    }
+
+
+
+    //==============================================================
+    //  system
+    //==============================================================
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "oval-results:system"},
+                    dataProvider="oval-results-system",
+                    alwaysRun=true
+                    )
+    public void processSystem(
+                    final String testTarget,
+                    final String filepath,
+                    final SystemResult expected
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL XML //", true );
+        Reporter.log( "  * target type: " + testTarget, true );
+
+        SystemResult  actual = _unmarshalFile( filepath, SystemResult.class );
+
+        Reporter.log( "validating...", true );
+        _validate( actual, expected );
+        Reporter.log( "...validation OK", true );
+    }
+
+
+
+    //==============================================================
+    //  oval-res:definition
+    //==============================================================
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "oval-results:definition"},
+                    dataProvider="oval-results-definition",
+                    alwaysRun=true
+                    )
+    public void processDefinitionResult(
+                    final String testTarget,
+                    final String filepath,
+                    final DefinitionResult expected
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL XML //", true );
+        Reporter.log( "  * target type: " + testTarget, true );
+
+        DefinitionResult  actual = _unmarshalFile( filepath, DefinitionResult.class );
+
+        Reporter.log( "validating...", true );
+        _validate( actual, expected );
+        Reporter.log( "...validation OK", true );
+    }
+
+
 
 }
 // OvalXmlTest
