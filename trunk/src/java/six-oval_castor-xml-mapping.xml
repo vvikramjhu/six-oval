@@ -165,7 +165,7 @@
 
 
     <!-- ======================================================= -->
-    <!-- OvalDefinitions - oval_definitions                      -->
+    <!-- OvalDefinitions                                         -->
     <!-- ======================================================= -->
 <!-- unnecessary, but it works if exists.
     <class name="jp.go.aist.six.oval.model.definition.OvalDefinitions"
@@ -295,7 +295,9 @@
     <class name="jp.go.aist.six.oval.model.definition.Definitions">
         <field name="definition" 
             type="jp.go.aist.six.oval.model.definition.Definition"
-            collection="collection">
+            collection="collection"
+            set-method="addDefinition"
+            get-method="iterateDefinition">
             <bind-xml name="definition" node="element"/>
         </field>
     </class>
@@ -303,7 +305,7 @@
 
 
     <!-- ======================================================= -->
-    <!-- def:Metadata                                            -->
+    <!-- Metadata                                                -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definition.Metadata">
         <map-to xml="metadata"
@@ -614,7 +616,9 @@
     <class name="jp.go.aist.six.oval.model.definition.Tests">
         <field name="test" 
             type="jp.go.aist.six.oval.model.definition.Test"
-            collection="collection">
+            collection="collection"
+            set-method="addTest"
+            get-method="iterateTest">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
     </class>
@@ -671,7 +675,7 @@
 
 
     <!-- ======================================================= -->
-    <!-- SystemObject - object                                   -->
+    <!-- SystemObject                                            -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definition.SystemObject"
         extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
@@ -691,10 +695,11 @@
     <!-- SystemObjects                                           -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definition.SystemObjects">
-
         <field name="object" 
             type="jp.go.aist.six.oval.model.definition.SystemObject"
-            collection="collection">
+            collection="collection"
+            set-method="addObject"
+            get-method="iterateObject">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
     </class>
@@ -732,7 +737,9 @@
 
         <field name="state" 
             type="jp.go.aist.six.oval.model.definition.State"
-            collection="collection">
+            collection="collection"
+            set-method="addState"
+            get-method="iterateState">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
 <!--
@@ -1231,16 +1238,43 @@
             <bind-xml name="generator" node="element"/>
         </field>
         
+        <field name="directives" 
+            type="jp.go.aist.six.oval.model.result.Directives">
+            <bind-xml name="directives" node="element"/>
+        </field>
+        
         <field name="definitions" 
             type="jp.go.aist.six.oval.model.definition.OvalDefinitions">
             <bind-xml name="oval_definitions" node="element"/>
         </field>
 
         <field name="results" 
+            type="jp.go.aist.six.oval.model.result.Results">
+            <bind-xml name="results" node="element"/>
+        </field>
+<!--
+        <field name="results" 
             type="jp.go.aist.six.oval.model.result.SystemResult"
             collection="collection">
             <bind-xml name="system" node="element" 
                 location="results"/>
+        </field>
+-->
+    </class>
+
+
+
+    <!-- ======================================================= -->
+    <!-- Results                                                 -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.result.Results">
+        <map-to xml="results"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
+
+        <field name="system" 
+            type="jp.go.aist.six.oval.model.result.SystemResult"
+            collection="collection">
+            <bind-xml name="system" node="element"/>
         </field>
     </class>
 
@@ -1311,7 +1345,9 @@
     <class name="jp.go.aist.six.oval.model.result.DefinitionResults">
         <field name="definition" 
             type="jp.go.aist.six.oval.model.result.DefinitionResult"
-            collection="collection">
+            collection="collection"
+            set-method="addDefinition"
+            get-method="iterateDefinition">
             <bind-xml name="definition" node="element"/>
         </field>
     </class>

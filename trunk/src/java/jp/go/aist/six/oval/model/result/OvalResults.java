@@ -23,8 +23,6 @@ package jp.go.aist.six.oval.model.result;
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.util.orm.AbstractPersistable;
-import java.util.ArrayList;
-import java.util.Collection;
 
 
 
@@ -46,10 +44,11 @@ public class OvalResults
     private OvalDefinitions  _definitions;
     //{0..1}
 
-    // ./results
+    private Results  _results;
     //{1..1}
-    private Collection<SystemResult>  _results = new ArrayList<SystemResult>();
-    //{1..*}
+
+//    private Collection<SystemResult>  _systemResults = new ArrayList<SystemResult>();
+//    //{1..*}
 
 
 
@@ -110,42 +109,61 @@ public class OvalResults
 
 
 
+    /**
+     */
     public void setResults(
-                    final Collection<SystemResult> results
-                    )
+                    final Results results )
     {
-        if (results != _results) {
-            _results.clear();
-            if (results == null  ||  results.size() == 0) {
-                return;
-            }
-
-            for (SystemResult  system : results) {
-                addResult( system );
-            }
-        }
+        _results = results;
     }
 
 
-    public boolean addResult(
-                    final SystemResult result
-                    )
+
+    /**
+     */
+    public Results getResults()
     {
-        if (result == null) {
-            return false;
-        }
-
-//        System.out.println( "### setting the container OvalResults ###" );
-//        system.setMasterObject( this );
-        return _results.add( result );
-    }
-
-
-    public Collection<SystemResult> getResults()
-    {
-//        System.out.println( "### OvalResults.getSystems() ###" );
         return _results;
     }
+
+
+
+//    public void setResults(
+//                    final Collection<SystemResult> results
+//                    )
+//    {
+//        if (results != _systemResults) {
+//            _systemResults.clear();
+//            if (results == null  ||  results.size() == 0) {
+//                return;
+//            }
+//
+//            for (SystemResult  system : results) {
+//                addResult( system );
+//            }
+//        }
+//    }
+//
+//
+//    public boolean addResult(
+//                    final SystemResult result
+//                    )
+//    {
+//        if (result == null) {
+//            return false;
+//        }
+//
+////        System.out.println( "### setting the container OvalResults ###" );
+////        system.setMasterObject( this );
+//        return _systemResults.add( result );
+//    }
+//
+//
+//    public Collection<SystemResult> getResults()
+//    {
+////        System.out.println( "### OvalResults.getSystems() ###" );
+//        return _systemResults;
+//    }
 
 
 

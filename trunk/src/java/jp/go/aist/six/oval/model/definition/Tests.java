@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.OvalElementContainer;
 import java.util.Collection;
+import java.util.Iterator;
 
 
 
@@ -74,9 +75,23 @@ public class Tests
     }
 
 
+    public boolean addTest(
+                    final Test e
+                    )
+    {
+        return add( e );
+    }
+
+
     public Collection<Test> getTest()
     {
         return _values();
+    }
+
+
+    public Iterator<Test> iterateTest()
+    {
+        return iterator();
     }
 
 }

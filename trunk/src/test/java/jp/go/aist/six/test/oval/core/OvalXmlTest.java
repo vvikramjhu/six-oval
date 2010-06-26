@@ -3,6 +3,7 @@ package jp.go.aist.six.test.oval.core;
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.result.DefinitionResult;
 import jp.go.aist.six.oval.model.result.Directives;
+import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.model.result.SystemResult;
 import jp.go.aist.six.oval.model.system.CollectedSystemObjects;
 import jp.go.aist.six.oval.model.system.Item;
@@ -276,6 +277,36 @@ public class OvalXmlTest
     }
 
 
+
+    //==============================================================
+    //  oval-res:oval_results
+    //==============================================================
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "oval-results:oval_results"},
+                    dataProvider="oval-results-oval_results",
+                    alwaysRun=true
+                    )
+    public void processOvalResults(
+                    final String testTarget,
+                    final String filepath,
+                    final Generator expectedGenerator,
+                    final Directives expectedDirectives
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL XML //", true );
+        Reporter.log( "  * target type: " + testTarget, true );
+
+        OvalResults  actual = _unmarshalFile( filepath, OvalResults.class );
+
+        Reporter.log( "validating...", true );
+        _validate( actual.getGenerator(), expectedGenerator );
+        _validate( actual.getDirectives(), expectedDirectives );
+        Reporter.log( "...validation OK", true );
+    }
 
 }
 // OvalXmlTest

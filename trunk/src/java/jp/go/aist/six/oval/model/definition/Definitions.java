@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.OvalElementContainer;
 import java.util.Collection;
+import java.util.Iterator;
 
 
 
@@ -74,9 +75,23 @@ extends OvalElementContainer<Definition>
     }
 
 
+    public boolean addDefinition(
+                    final Definition e
+                    )
+    {
+        return add( e );
+    }
+
+
     public Collection<Definition> getDefinition()
     {
         return _values();
+    }
+
+
+    public Iterator<Definition> iterateDefinition()
+    {
+        return iterator();
     }
 
 }

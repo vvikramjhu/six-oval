@@ -14,13 +14,11 @@
 <suite name="six-oval" verbose="1" parallel="tests">
 
     <test name="oval.core" enabled="true">
-    <!--
         <groups>
             <run>
-                <include name="Definition"/>
+                <include name="oval-results:oval_results"/>
             </run>
         </groups>
-    -->
     
         <classes>
             <class name="jp.go.aist.six.test.oval.core.OvalXmlTest"/>

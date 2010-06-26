@@ -15,6 +15,7 @@ import jp.go.aist.six.oval.model.result.Content;
 import jp.go.aist.six.oval.model.result.DefinitionResult;
 import jp.go.aist.six.oval.model.result.Directive;
 import jp.go.aist.six.oval.model.result.Directives;
+import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.model.result.Result;
 import jp.go.aist.six.oval.model.result.SystemResult;
 import jp.go.aist.six.oval.model.system.CollectedSystemObject;
@@ -392,7 +393,7 @@ public abstract class CoreTestBase
     }
 
 
-    //SystemResult
+    //DefinitionResult
     protected void _validate(
                     final DefinitionResult actual,
                     final DefinitionResult expected
@@ -402,6 +403,17 @@ public abstract class CoreTestBase
         Assert.assertEquals( actual.getOvalVersion(), expected.getOvalVersion() );
         Assert.assertEquals( actual.getResult(), expected.getResult() );
         Assert.assertEquals( actual.getVariableInstance(), expected.getVariableInstance() );
+    }
+
+
+
+    protected void _validate(
+                    final OvalResults actual,
+                    final OvalResults expected
+                    )
+    {
+        Assert.assertEquals( actual.getGenerator(), expected.getGenerator() );
+        Assert.assertEquals( actual.getDirectives(), expected.getDirectives() );
     }
 
 
@@ -808,7 +820,7 @@ public abstract class CoreTestBase
 
     // directives //
 
-    public static final Directives DIRECTIVES_1 =
+    private static final Directives _DIRECTIVES_1_ =
         new Directives(
                         new Directive( true, Content.FULL ),
                         new Directive( true, Content.FULL ),
@@ -826,7 +838,7 @@ public abstract class CoreTestBase
                         {
                             "oval-results:directives",
                             "test/data/result/oval-results.directive.1.xml",
-                            DIRECTIVES_1
+                            _DIRECTIVES_1_
                         }
         };
 
@@ -873,6 +885,32 @@ public abstract class CoreTestBase
                             "oval-results:system",
                             "test/data/result/oval-results.oval_results.1-minimal.xml",
                             SYSTEM_RESULT_MINIMAL
+                        }
+        };
+
+    }
+
+
+    // oval_results //
+
+    private static final Generator  _RESULTS_GENERATOR_1_ =
+        new Generator(
+                        "5.6",
+                        IsoDate.valueOf( "2010-05-12T20:27:10" ),
+                        "OVAL Definition Interpreter",
+                        "5.6 Build: 4"
+                        );
+
+
+    @DataProvider( name="oval-results-oval_results" )
+    public Object[][] ovalResultsOvalResultsData()
+    {
+        return new Object[][] {
+                        {
+                            "oval-results:oval_results",
+                            "test/data/result/oval-results.oval_results.1.inventory.windows.xml",
+                            _RESULTS_GENERATOR_1_,
+                            _DIRECTIVES_1_
                         }
         };
 

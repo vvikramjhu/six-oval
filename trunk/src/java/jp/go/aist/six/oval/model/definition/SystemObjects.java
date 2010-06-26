@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.OvalElementContainer;
 import java.util.Collection;
+import java.util.Iterator;
 
 
 
@@ -32,7 +33,7 @@ import java.util.Collection;
  * @version $Id$
  */
 public class SystemObjects
-extends OvalElementContainer<SystemObject>
+    extends OvalElementContainer<SystemObject>
 {
 
     /**
@@ -74,9 +75,23 @@ extends OvalElementContainer<SystemObject>
     }
 
 
+    public boolean addObject(
+                    final SystemObject e
+                    )
+    {
+        return add( e );
+    }
+
+
     public Collection<SystemObject> getObject()
     {
         return _values();
+    }
+
+
+    public Iterator<SystemObject> iterateObject()
+    {
+        return iterator();
     }
 
 }
