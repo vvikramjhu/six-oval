@@ -1,6 +1,8 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.model.common.Generator;
+import jp.go.aist.six.oval.model.definition.Definitions;
+import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.model.result.DefinitionResult;
 import jp.go.aist.six.oval.model.result.Directives;
 import jp.go.aist.six.oval.model.result.OvalResults;
@@ -27,6 +29,45 @@ public class OvalXmlTest
     public OvalXmlTest()
     {
     }
+
+
+
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    //
+    //  Definitions
+    //
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    //==============================================================
+    //  oval_definitions
+    //==============================================================
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "oval-def:oval_definitions"},
+                    dataProvider="oval-def-oval_definitions",
+                    alwaysRun=true
+                    )
+    public void testOvalDefinitions(
+                    final String testTarget,
+                    final String filepath,
+                    final Generator generator,
+                    final Definitions definitions
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL XML //", true );
+        Reporter.log( "  * target type: " + testTarget, true );
+
+        OvalDefinitions  sc = _unmarshalFile( filepath, OvalDefinitions.class );
+
+        Reporter.log( "validating...", true );
+        _validate( sc.getGenerator(), generator );
+        _validate( sc.getDefinitions(), definitions );
+        Reporter.log( "...validation OK", true );
+    }
+
 
 
 

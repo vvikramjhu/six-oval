@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.definition;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.util.orm.AbstractPersistable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 
@@ -54,6 +55,53 @@ extends AbstractPersistable
      */
     public Affected()
     {
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public Affected(
+                    final Family family
+                    )
+    {
+        setFamily( family );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public Affected(
+                    final Family family,
+                    final Collection<? extends Platform> platform,
+                    final Collection<? extends Product> product
+                    )
+    {
+        setFamily( family );
+        setPlatform( platform );
+        setProduct( product );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public Affected(
+                    final Family family,
+                    final Platform[] platform,
+                    final Product[] product
+                    )
+    {
+        setFamily( family );
+
+        if (platform != null) {
+            setPlatform( Arrays.asList( platform ) );
+        }
+
+        if (product != null) {
+            setProduct( Arrays.asList( product ) );
+        }
     }
 
 

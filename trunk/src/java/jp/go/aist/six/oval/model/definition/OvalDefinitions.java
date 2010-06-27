@@ -55,13 +55,6 @@ public class OvalDefinitions
     private Variables  _variables = new Variables();
     //{0..1}
 
-//    private transient Map<String, Definition>   _definitionMap;
-//    private transient Map<String, Test>   _testMap;
-//    private transient Map<String, SystemObject>   _objectMap;
-//    private transient Map<String, State>   _stateMap;
-
-
-
 //    private String  _definitionsDigest;
 
 
@@ -174,26 +167,6 @@ public class OvalDefinitions
     }
 
 
-//    /**
-//     * Creates OvalID-OvalEntity map from the given OvalEntity list.
-//     */
-//    private <T extends OvalEntity> Map<String, T> _asMap(
-//                    final Collection<T> entities
-//                    )
-//    {
-//        if (entities == null || entities.size() == 0) {
-//            return Collections.emptyMap();
-//        }
-//
-//        Map<String, T> map = new HashMap<String, T>();
-//        for (T entity : entities) {
-//            map.put( entity.getOvalID(), entity );
-//        }
-//
-//        return map;
-//    }
-
-
 
     /**
      */
@@ -214,16 +187,6 @@ public class OvalDefinitions
         } else {
             return _definitions.getDigest();
         }
-
-//        if (_definitionsDigest == null) {
-//            try {
-//                _definitionsDigest = OvalDigest.DEFAULT_INSTANCE.compute( getDefinitions() );
-//            } catch (Exception ex) {
-//                // TODO:
-//            }
-//        }
-//
-//        return _definitionsDigest;
     }
 
 
@@ -232,18 +195,8 @@ public class OvalDefinitions
                     final String id
                     )
     {
-        return getDefinitions().find( id );
-
-//        Definitions  defs = getDefinitions();
-//        if (defs == null) {
-//            return null;
-//        }
-//
-//        if (_definitionMap == null) {
-//            _definitionMap = _asMap( defs.getElements() );
-//        }
-//
-//        return _definitionMap.get( id );
+        Definitions  definitions = getDefinitions();
+        return (definitions == null ? null : definitions.find( id ));
     }
 
 
@@ -252,18 +205,8 @@ public class OvalDefinitions
                     final String id
                     )
     {
-        return getTests().find( id );
-
-//        Tests  tests = getTests();
-//        if (tests == null) {
-//            return null;
-//        }
-//
-//        if (_testMap == null) {
-//            _testMap = _asMap( tests.getElements() );
-//        }
-//
-//        return _testMap.get( id );
+        Tests  tests = getTests();
+        return (tests == null ? null : tests.find( id ));
     }
 
 
@@ -272,18 +215,8 @@ public class OvalDefinitions
                     final String id
                     )
     {
-        return getObjects().find( id );
-
-//        SystemObjects  objects = getObjects();
-//        if (objects == null) {
-//            return null;
-//        }
-//
-//        if (_objectMap == null) {
-//            _objectMap = _asMap( objects.getElements() );
-//        }
-//
-//        return _objectMap.get( id );
+        SystemObjects  objects = getObjects();
+        return (objects == null ? null : objects.find( id ));
     }
 
 
@@ -292,18 +225,8 @@ public class OvalDefinitions
                     final String id
                     )
     {
-        return getStates().find( id );
-
-//        States  states = getStates();
-//        if (states == null) {
-//            return null;
-//        }
-//
-//        if (_stateMap == null) {
-//            _stateMap = _asMap( states.getElements() );
-//        }
-//
-//        return _stateMap.get( id );
+        States  states = getStates();
+        return (states == null ? null : states.find( id ));
     }
 
 
@@ -312,9 +235,6 @@ public class OvalDefinitions
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
@@ -326,17 +246,6 @@ public class OvalDefinitions
 //                        + ", variables=" + getVariables()
                         + "]";
     }
-
-
-
-//    public void setStates( Collection<State> states );
-//    public boolean addState( State state );
-//    public Collection<State> getStates();
-//
-//
-//    public void setVariables( Collection<Variable> variables );
-//    public boolean addVariable( Variable variable );
-//    public Collection<Variable> getVariables();
 
 }
 // OvalDefinitions

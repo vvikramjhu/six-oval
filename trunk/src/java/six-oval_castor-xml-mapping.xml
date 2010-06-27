@@ -167,18 +167,6 @@
     <!-- ======================================================= -->
     <!-- OvalDefinitions                                         -->
     <!-- ======================================================= -->
-<!-- unnecessary, but it works if exists.
-    <class name="jp.go.aist.six.oval.model.definition.OvalDefinitions"
-        verify-constructable="false">
-        <map-to xml="oval_definitions"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
-
-        <field name="generator" type="jp.go.aist.six.oval.core.model.common.GeneratorImpl">
-            <bind-xml name="generator" node="element"/>
-        </field>
-    </class>
--->
-
     <class name="jp.go.aist.six.oval.model.definition.OvalDefinitions">
         <map-to xml="oval_definitions"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
