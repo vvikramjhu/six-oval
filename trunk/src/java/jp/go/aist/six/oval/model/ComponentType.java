@@ -20,9 +20,6 @@
 
 package jp.go.aist.six.oval.model;
 
-import java.io.Serializable;
-import java.util.HashMap;
-
 
 
 /**
@@ -30,92 +27,58 @@ import java.util.HashMap;
  * @author  Akihito Nakamura, AIST
  * @version $Id: ComponentType.java 696 2010-04-26 10:22:00Z akihito $
  */
-public final class ComponentType
-    implements Serializable
+public enum ComponentType
 {
 
-    private static final String  _INDEPENDENT_FAMILY_   = "independent.family";
-    private static final String  _INDEPENDENT_TEXTFILECONTENT_   = "independent.textfilecontent";
-    private static final String  _INDEPENDENT_UNKNOWN_  = "independent.unknown";
-    private static final String  _LINUX_DPKGINFO_       = "linux.dpkginfo";
-    private static final String  _LINUX_RPMINFO_        = "linux.rpminfo";
-    private static final String  _UNIX_UNAME_           = "unix.uname";
-    private static final String  _WINDOWS_FILE_         = "windows.file";
-    private static final String  _WINDOWS_METABASE_     = "windows.metabase";
-    private static final String  _WINDOWS_REGISTRY_     = "windows.registry";
-
-
-    public static final ComponentType  INDEPENDENT_FAMILY    = new ComponentType( _INDEPENDENT_FAMILY_ );
-    public static final ComponentType  INDEPENDENT_TEXTFILECONTENT = new ComponentType( _INDEPENDENT_TEXTFILECONTENT_ );
-    public static final ComponentType  INDEPENDENT_UNKNOWN   = new ComponentType( _INDEPENDENT_UNKNOWN_ );
-    public static final ComponentType  LINUX_DPKGINFO        = new ComponentType( _LINUX_DPKGINFO_ );
-    public static final ComponentType  LINUX_RPMINFO         = new ComponentType( _LINUX_RPMINFO_ );
-    public static final ComponentType  UNIX_UNAME            = new ComponentType( _UNIX_UNAME_ );
-    public static final ComponentType  WINDOWS_FILE          = new ComponentType( _WINDOWS_FILE_ );
-    public static final ComponentType  WINDOWS_METABASE      = new ComponentType( _WINDOWS_METABASE_ );
-    public static final ComponentType  WINDOWS_REGISTRY      = new ComponentType( _WINDOWS_REGISTRY_ );
-
-
-    private static HashMap<String, ComponentType> _INIT_()
-    {
-        HashMap<String, ComponentType>  map = new HashMap<String, ComponentType>();
-        map.put( _INDEPENDENT_FAMILY_,  INDEPENDENT_FAMILY  );
-        map.put( _INDEPENDENT_TEXTFILECONTENT_,  INDEPENDENT_TEXTFILECONTENT  );
-        map.put( _INDEPENDENT_UNKNOWN_, INDEPENDENT_UNKNOWN  );
-        map.put( _LINUX_DPKGINFO_,      LINUX_DPKGINFO      );
-        map.put( _LINUX_RPMINFO_,       LINUX_RPMINFO       );
-        map.put( _UNIX_UNAME_,          UNIX_UNAME      );
-        map.put( _WINDOWS_FILE_,        WINDOWS_FILE        );
-        map.put( _WINDOWS_METABASE_,    WINDOWS_METABASE    );
-        map.put( _WINDOWS_REGISTRY_,    WINDOWS_REGISTRY    );
-        return map;
-    }
-
-    private static final HashMap<String, ComponentType>  _INSTANCES_ = _INIT_();
-
-
-
+    INDEPENDENT_FAMILY( "independent.family" ),
+    INDEPENDENT_TEXTFILECONTENT( "independent.textfilecontent" ),
+    INDEPENDENT_UNKNOWN( "independent.unknown" ),
+    LINUX_DPKGINFO( "linux.dpkginfo" ),
+    LINUX_RPMINFO( "linux.rpminfo" ),
+    UNIX_UNAME( "unix.uname" ),
+    WINDOWS_FILE( "windows.file" ),
+    WINDOWS_METABASE( "windows.metabase" ),
+    WINDOWS_REGISTRY( "windows.registry" );
 
     /**
+     * An instance factory method.
      */
-    public static ComponentType valueOf(
-                    final String name
+    public static ComponentType fromValue(
+                    final String value
                     )
     {
-        ComponentType  status = null;
-        if (name != null) {
-            status = _INSTANCES_.get( name );
-        }
+        for (ComponentType  e : ComponentType.values()) {
+          if (e._value.equals( value )) {
+              return e;
+          }
+      }
 
-        if (status == null) {
-            throw new IllegalArgumentException( "invalid component type: " + name );
-        }
-
-        return status;
+      throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
 
+    private final String  _value;
 
 
     /**
+     * Constructor.
      */
-    private ComponentType(
-                    final String name
+    ComponentType(
+                    final String value
                     )
     {
-        _name = name;
+        this._value = value;
     }
 
 
 
     /**
      */
-    public String getName()
+    public String value()
     {
-        return _name;
+        return this._value;
     }
 
 
@@ -127,7 +90,7 @@ public final class ComponentType
     @Override
     public String toString()
     {
-        return getName();
+        return this._value;
     }
 
 }
