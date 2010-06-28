@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.core.model.ComponentType;
-import jp.go.aist.six.oval.model.definition.EntityStateStringType;
+import jp.go.aist.six.oval.model.definition.EntityStateString;
 import jp.go.aist.six.oval.model.definition.EntityTypeHelper;
 
 
@@ -35,7 +35,7 @@ public class RpmInfoState
     extends LinuxEvrPkgInfoState
 {
 
-    private EntityStateStringType  _signatureKeyID;
+    private EntityStateString  _signatureKeyID;
     //{0..1}
 
 
@@ -61,14 +61,14 @@ public class RpmInfoState
 
 
     public void setSignatureKeyID(
-                    final EntityStateStringType keyid
+                    final EntityStateString keyid
                     )
     {
         _signatureKeyID = keyid;
     }
 
 
-    public EntityStateStringType getSignatureKeyID()
+    public EntityStateString getSignatureKeyID()
     {
         return _signatureKeyID;
     }
@@ -97,7 +97,7 @@ public class RpmInfoState
         final int prime = 37;
         int result = super.hashCode();
 
-        EntityStateStringType  sig = getSignatureKeyID();
+        EntityStateString  sig = getSignatureKeyID();
         result = prime * result + ((sig == null) ? 0 : sig.hashCode());
 
         return result;

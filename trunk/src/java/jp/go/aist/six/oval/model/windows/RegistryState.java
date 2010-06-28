@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.windows;
 import jp.go.aist.six.oval.core.model.ComponentType;
 import jp.go.aist.six.oval.model.definition.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definition.EntityStateBase;
-import jp.go.aist.six.oval.model.definition.EntityStateStringType;
+import jp.go.aist.six.oval.model.definition.EntityStateString;
 import jp.go.aist.six.oval.model.definition.State;
 import java.util.EnumMap;
 import java.util.Map;
@@ -123,7 +123,7 @@ public class RegistryState
     /**
      */
     public void setKey(
-                    final EntityStateStringType key
+                    final EntityStateString key
                     )
     {
         _properties.put( Property.KEY, key );
@@ -131,9 +131,9 @@ public class RegistryState
     }
 
 
-    public EntityStateStringType getKey()
+    public EntityStateString getKey()
     {
-        return (EntityStateStringType)_properties.get( Property.KEY );
+        return (EntityStateString)_properties.get( Property.KEY );
 //        return _key;
     }
 
@@ -142,7 +142,7 @@ public class RegistryState
     /**
      */
     public void setName(
-                    final EntityStateStringType name
+                    final EntityStateString name
                     )
     {
         _properties.put( Property.NAME, name );
@@ -150,9 +150,9 @@ public class RegistryState
     }
 
 
-    public EntityStateStringType getName()
+    public EntityStateString getName()
     {
-        return (EntityStateStringType)_properties.get( Property.NAME );
+        return (EntityStateString)_properties.get( Property.NAME );
 //        return _name;
     }
 

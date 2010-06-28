@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.definition.EntityStateStringType;
+import jp.go.aist.six.oval.model.definition.EntityStateString;
 import jp.go.aist.six.oval.model.definition.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definition.State;
 
@@ -36,13 +36,13 @@ public abstract class LinuxPkgInfoState
     extends State
 {
 
-    private EntityStateStringType  _name;
+    private EntityStateString  _name;
     //{0..1}
 
-    private EntityStateStringType  _arch;
+    private EntityStateString  _arch;
     //{0..1}
 
-    private EntityStateStringType  _version;
+    private EntityStateString  _version;
     //{0..1}
 
 
@@ -70,14 +70,14 @@ public abstract class LinuxPkgInfoState
 
 
     public void setName(
-                    final EntityStateStringType name
+                    final EntityStateString name
                     )
     {
         _name = name;
     }
 
 
-    public EntityStateStringType getName()
+    public EntityStateString getName()
     {
         return _name;
     }
@@ -85,14 +85,14 @@ public abstract class LinuxPkgInfoState
 
 
     public void setArch(
-                    final EntityStateStringType arch
+                    final EntityStateString arch
                     )
     {
         _arch = arch;
     }
 
 
-    public EntityStateStringType getArch()
+    public EntityStateString getArch()
     {
         return _arch;
     }
@@ -100,14 +100,14 @@ public abstract class LinuxPkgInfoState
 
 
     public void setVersion(
-                    final EntityStateStringType version
+                    final EntityStateString version
                     )
     {
         _version = version;
     }
 
 
-    public EntityStateStringType getVersion()
+    public EntityStateString getVersion()
     {
         return _version;
     }
@@ -124,13 +124,13 @@ public abstract class LinuxPkgInfoState
         final int  prime = 37;
         int  result = super.hashCode();
 
-        EntityStateStringType  name = getName();
+        EntityStateString  name = getName();
         result = prime * result + ((name == null) ? 0 : name.hashCode());
 
-        EntityStateStringType  arch = getArch();
+        EntityStateString  arch = getArch();
         result = prime * result + ((arch == null) ? 0 : arch.hashCode());
 
-        EntityStateStringType  version = getVersion();
+        EntityStateString  version = getVersion();
         result = prime * result + ((version == null) ? 0 : version.hashCode());
 
         return result;

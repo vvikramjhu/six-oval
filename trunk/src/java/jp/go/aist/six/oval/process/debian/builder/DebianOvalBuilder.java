@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definition.Criteria;
 import jp.go.aist.six.oval.model.definition.Criterion;
 import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.model.definition.DefinitionClass;
-import jp.go.aist.six.oval.model.definition.EntityStateStringType;
+import jp.go.aist.six.oval.model.definition.EntityStateString;
 import jp.go.aist.six.oval.model.definition.Metadata;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.model.definition.Platform;
@@ -374,7 +374,7 @@ public class DebianOvalBuilder
             States  stateCollection = new States();
             final String  stateID = _createStateID( dsaID, 1 );
             DpkgInfoState  ovalState = new DpkgInfoState( stateID, defVersion );
-            ovalState.setEvr( new EntityStateStringType( pkgEvr ) );
+            ovalState.setEvr( new EntityStateString( pkgEvr ) );
             if (_LOG.isDebugEnabled()) {
                 _LOG.debug( "state created: " + ovalState );
             }

@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.common.Family;
-import jp.go.aist.six.oval.model.definition.EntityStateStringType;
+import jp.go.aist.six.oval.model.definition.EntityStateString;
 
 
 
@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.model.definition.EntityStateStringType;
  * @version $Id$
  */
 public class EntityStateFamilyType
-    extends EntityStateStringType
+    extends EntityStateString
 {
 
     /**

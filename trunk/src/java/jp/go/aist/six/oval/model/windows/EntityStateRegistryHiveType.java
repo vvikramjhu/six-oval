@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.definition.EntityStateStringType;
+import jp.go.aist.six.oval.model.definition.EntityStateString;
 
 
 
@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.definition.EntityStateStringType;
  * @version $Id$
  */
 public class EntityStateRegistryHiveType
-    extends EntityStateStringType
+    extends EntityStateString
 {
 
     /**

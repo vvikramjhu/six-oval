@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.definition.EntityStateStringType;
+import jp.go.aist.six.oval.model.definition.EntityStateString;
 import jp.go.aist.six.oval.model.definition.EntityTypeHelper;
 
 
@@ -34,13 +34,13 @@ public abstract class LinuxEvrPkgInfoState
     extends LinuxPkgInfoState
 {
 
-    private EntityStateStringType  _epoch;
+    private EntityStateString  _epoch;
     //{0..1}
 
-    private EntityStateStringType  _release;
+    private EntityStateString  _release;
     //{0..1}
 
-    private EntityStateStringType  _evr;
+    private EntityStateString  _evr;
     //{0..1}
 
 
@@ -67,14 +67,14 @@ public abstract class LinuxEvrPkgInfoState
 
 
     public void setEpoch(
-                    final EntityStateStringType epoch
+                    final EntityStateString epoch
                     )
     {
         _epoch = epoch;
     }
 
 
-    public EntityStateStringType getEpoch()
+    public EntityStateString getEpoch()
     {
         return _epoch;
     }
@@ -82,14 +82,14 @@ public abstract class LinuxEvrPkgInfoState
 
 
     public void setRelease(
-                    final EntityStateStringType release
+                    final EntityStateString release
                     )
     {
         _release = release;
     }
 
 
-    public EntityStateStringType getRelease()
+    public EntityStateString getRelease()
     {
         return _release;
     }
@@ -97,14 +97,14 @@ public abstract class LinuxEvrPkgInfoState
 
 
     public void setEvr(
-                    final EntityStateStringType evr
+                    final EntityStateString evr
                     )
     {
         _evr = evr;
     }
 
 
-    public EntityStateStringType getEvr()
+    public EntityStateString getEvr()
     {
         return _evr;
     }
@@ -121,13 +121,13 @@ public abstract class LinuxEvrPkgInfoState
         final int  prime = 37;
         int  result = super.hashCode();
 
-        EntityStateStringType  epoch = getEpoch();
+        EntityStateString  epoch = getEpoch();
         result = prime * result + ((epoch == null) ? 0 : epoch.hashCode());
 
-        EntityStateStringType  release = getRelease();
+        EntityStateString  release = getRelease();
         result = prime * result + ((release == null) ? 0 : release.hashCode());
 
-        EntityStateStringType  evr = getEvr();
+        EntityStateString  evr = getEvr();
         result = prime * result + ((evr == null) ? 0 : evr.hashCode());
 
         return result;

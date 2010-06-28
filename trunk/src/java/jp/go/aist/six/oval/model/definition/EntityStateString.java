@@ -27,14 +27,14 @@ package jp.go.aist.six.oval.model.definition;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class EntityStateStringType
+public class EntityStateString
     extends EntityStateBase
 {
 
     /**
      * Constructor.
      */
-    public EntityStateStringType()
+    public EntityStateString()
     {
     }
 
@@ -42,27 +42,12 @@ public class EntityStateStringType
     /**
      * Constructor.
      */
-    public EntityStateStringType(
+    public EntityStateString(
                     final String data
                     )
     {
         super( data );
     }
-
-
-
-//    public void setValue(
-//                    final String value
-//                    )
-//    {
-//        _value = value;
-//    }
-//
-//
-//    public String getValue()
-//    {
-//        return _value;
-//    }
 
 
 
@@ -87,7 +72,7 @@ public class EntityStateStringType
             return true;
         }
 
-        if (!(obj instanceof EntityStateStringType)) {
+        if (!(obj instanceof EntityStateString)) {
             return false;
         }
 
@@ -103,4 +88,4 @@ public class EntityStateStringType
     }
 
 }
-// EntityStateStringType
+// EntityStateString

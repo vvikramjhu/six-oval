@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.core.model.ComponentType;
 import jp.go.aist.six.oval.model.definition.EntityStateAnySimpleType;
-import jp.go.aist.six.oval.model.definition.EntityStateStringType;
+import jp.go.aist.six.oval.model.definition.EntityStateString;
 import jp.go.aist.six.oval.model.definition.State;
 
 
@@ -37,13 +37,13 @@ public class TextFileContentState
     extends State
 {
 
-    private EntityStateStringType  _path;
+    private EntityStateString  _path;
     //{0..1}
 
-    private EntityStateStringType  _fileName;
+    private EntityStateString  _fileName;
     //{0..1}
 
-    private EntityStateStringType  _line;
+    private EntityStateString  _line;
     //{0..1}
 
     private EntityStateAnySimpleType  _subExpression;
@@ -75,14 +75,14 @@ public class TextFileContentState
     /**
      */
     public void setPath(
-                    final EntityStateStringType path
+                    final EntityStateString path
                     )
     {
         _path = path;
     }
 
 
-    public EntityStateStringType getPath()
+    public EntityStateString getPath()
     {
         return _path;
     }
@@ -92,14 +92,14 @@ public class TextFileContentState
     /**
      */
     public void setFileName(
-                    final EntityStateStringType filename
+                    final EntityStateString filename
                     )
     {
         _fileName = filename;
     }
 
 
-    public EntityStateStringType getFileName()
+    public EntityStateString getFileName()
     {
         return _fileName;
     }
@@ -109,7 +109,7 @@ public class TextFileContentState
     /**
      */
     public void setLine(
-                    final EntityStateStringType line
+                    final EntityStateString line
                     )
     {
         _line = line;
@@ -118,7 +118,7 @@ public class TextFileContentState
 
     /**
      */
-    public EntityStateStringType getLine()
+    public EntityStateString getLine()
     {
         return _line;
     }
@@ -167,13 +167,13 @@ public class TextFileContentState
         final int  prime = 37;
         int  result = super.hashCode();
 
-        EntityStateStringType  path = getPath();
+        EntityStateString  path = getPath();
         result = prime * result + ((path == null) ? 0 : path.hashCode());
 
-        EntityStateStringType  filename = getFileName();
+        EntityStateString  filename = getFileName();
         result = prime * result + ((filename == null) ? 0 : filename.hashCode());
 
-        EntityStateStringType  line = getLine();
+        EntityStateString  line = getLine();
         result = prime * result + ((line == null) ? 0 : line.hashCode());
 
         EntityStateAnySimpleType  subexpression = getSubExpression();
@@ -198,16 +198,16 @@ public class TextFileContentState
 
         if (super.equals( obj )) {
             TextFileContentState  other = (TextFileContentState)obj;
-            EntityStateStringType  other_path = other.getPath();
-            EntityStateStringType   this_path =  this.getPath();
+            EntityStateString  other_path = other.getPath();
+            EntityStateString   this_path =  this.getPath();
             if (this_path == other_path
                             ||  (this_path != null  &&  this_path.equals( other_path ))) {
-                EntityStateStringType  other_filename = other.getFileName();
-                EntityStateStringType   this_filename =  this.getFileName();
+                EntityStateString  other_filename = other.getFileName();
+                EntityStateString   this_filename =  this.getFileName();
                 if (this_filename == other_filename
                                 ||  (this_filename != null  &&  this_filename.equals( other_filename ))) {
-                    EntityStateStringType  other_line = other.getLine();
-                    EntityStateStringType   this_line =  this.getLine();
+                    EntityStateString  other_line = other.getLine();
+                    EntityStateString   this_line =  this.getLine();
                     if (this_line == other_line
                                     ||  (this_line != null  &&  this_line.equals( other_line ))) {
                         EntityStateAnySimpleType  other_subexpression = other.getSubExpression();

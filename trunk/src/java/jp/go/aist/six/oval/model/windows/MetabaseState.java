@@ -24,7 +24,7 @@ import jp.go.aist.six.oval.core.model.ComponentType;
 import jp.go.aist.six.oval.model.definition.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definition.EntityStateBase;
 import jp.go.aist.six.oval.model.definition.EntityStateIntType;
-import jp.go.aist.six.oval.model.definition.EntityStateStringType;
+import jp.go.aist.six.oval.model.definition.EntityStateString;
 import jp.go.aist.six.oval.model.definition.State;
 import java.util.EnumMap;
 import java.util.Map;
@@ -108,9 +108,9 @@ public class MetabaseState
 
     /**
      */
-    public EntityStateStringType getKey()
+    public EntityStateString getKey()
     {
-        return (EntityStateStringType)_properties.get( Property.KEY );
+        return (EntityStateString)_properties.get( Property.KEY );
 //        return _key;
     }
 
@@ -118,7 +118,7 @@ public class MetabaseState
     /**
      */
     public void setKey(
-                    final EntityStateStringType key
+                    final EntityStateString key
                     )
     {
         _properties.put( Property.KEY, key );
@@ -150,9 +150,9 @@ public class MetabaseState
 
     /**
      */
-    public EntityStateStringType getName()
+    public EntityStateString getName()
     {
-        return (EntityStateStringType)_properties.get( Property.NAME );
+        return (EntityStateString)_properties.get( Property.NAME );
 //        return _name;
     }
 
@@ -160,7 +160,7 @@ public class MetabaseState
     /**
      */
     public void setName(
-                    final EntityStateStringType name
+                    final EntityStateString name
                     )
     {
         _properties.put( Property.NAME, name );
@@ -171,9 +171,9 @@ public class MetabaseState
 
     /**
      */
-    public EntityStateStringType getUserType()
+    public EntityStateString getUserType()
     {
-        return (EntityStateStringType)_properties.get( Property.USER_TYPE );
+        return (EntityStateString)_properties.get( Property.USER_TYPE );
 //        return _userType;
     }
 
@@ -181,7 +181,7 @@ public class MetabaseState
     /**
      */
     public void setUserType(
-                    final EntityStateStringType userType
+                    final EntityStateString userType
                     )
     {
         _properties.put( Property.USER_TYPE, userType );
@@ -192,9 +192,9 @@ public class MetabaseState
 
     /**
      */
-    public EntityStateStringType getDataType()
+    public EntityStateString getDataType()
     {
-        return (EntityStateStringType)_properties.get( Property.DATA_TYPE );
+        return (EntityStateString)_properties.get( Property.DATA_TYPE );
 //        return _dataType;
     }
 
@@ -202,7 +202,7 @@ public class MetabaseState
     /**
      */
     public void setDataType(
-                    final EntityStateStringType dataType
+                    final EntityStateString dataType
                     )
     {
         _properties.put( Property.DATA_TYPE, dataType );

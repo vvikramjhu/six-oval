@@ -827,10 +827,10 @@
 
 
     <!-- ======================================================= -->
-    <!-- EntityStateStringType                                   -->
+    <!-- EntityStateString                                       -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.EntityStateStringType"
-        extends="jp.go.aist.six.oval.model.definition.EntityStateBaseType">
+    <class name="jp.go.aist.six.oval.model.definition.EntityStateString"
+        extends="jp.go.aist.six.oval.model.definition.EntityStateBase">
     </class>
 
 
@@ -838,7 +838,7 @@
     <!-- EntityStateAnySimpleType                                -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definition.EntityStateAnySimpleType"
-        extends="jp.go.aist.six.oval.model.definition.EntityStateBaseType">
+        extends="jp.go.aist.six.oval.model.definition.EntityStateBase">
     </class>
 
 
@@ -1458,10 +1458,10 @@
 
 
     <!-- ======================================================= -->
-    <!-- EntityStateStringType                                   -->
+    <!-- EntityStateFamily                                       -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.independent.EntityStateFamilyType"
-        extends="jp.go.aist.six.oval.model.definition.EntityStateStringType">
+        extends="jp.go.aist.six.oval.model.definition.EntityStateString">
     </class>
 
 
@@ -1789,17 +1789,17 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"/>
 
         <field name="arch" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateStringType">
+            type="jp.go.aist.six.oval.model.definition.EntityStateString">
             <bind-xml name="arch" node="element"/>
         </field>
         
         <field name="name" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateStringType">
+            type="jp.go.aist.six.oval.model.definition.EntityStateString">
             <bind-xml name="name" node="element"/>
         </field>
         
         <field name="version" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateStringType">
+            type="jp.go.aist.six.oval.model.definition.EntityStateString">
             <bind-xml name="version" node="element"/>
         </field>
     </class>
@@ -1816,17 +1816,17 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"/>
         
         <field name="release" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateStringType">
+            type="jp.go.aist.six.oval.model.definition.EntityStateString">
             <bind-xml name="release" node="element"/>
         </field>
         
         <field name="epoch" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateStringType">
+            type="jp.go.aist.six.oval.model.definition.EntityStateString">
             <bind-xml name="epoch" node="element"/>
         </field>
         
         <field name="evr" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateStringType">
+            type="jp.go.aist.six.oval.model.definition.EntityStateString">
             <bind-xml name="evr" node="element"/>
         </field>
     </class>
@@ -1860,7 +1860,7 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"/>
 
         <field name="signatureKeyID" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateStringType">
+            type="jp.go.aist.six.oval.model.definition.EntityStateString">
             <bind-xml name="signature_keyid" node="element"/>
         </field>
     </class>
@@ -2402,7 +2402,7 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
         <field name="version" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateStringType">
+            type="jp.go.aist.six.oval.model.definition.EntityStateString">
             <bind-xml name="version" node="element"/>
         </field>
     </class>

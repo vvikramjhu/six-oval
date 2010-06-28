@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.unix;
 
 import jp.go.aist.six.oval.core.model.ComponentType;
-import jp.go.aist.six.oval.model.definition.EntityStateStringType;
+import jp.go.aist.six.oval.model.definition.EntityStateString;
 import jp.go.aist.six.oval.model.definition.State;
 import java.util.EnumMap;
 import java.util.Map;
@@ -37,8 +37,8 @@ public class UnameState
     extends State
 {
 
-    private Map<UnameProperty,EntityStateStringType>  _properties =
-        new EnumMap<UnameProperty,EntityStateStringType>( UnameProperty.class );
+    private Map<UnameProperty,EntityStateString>  _properties =
+        new EnumMap<UnameProperty,EntityStateString>( UnameProperty.class );
 
 
 
@@ -66,7 +66,7 @@ public class UnameState
     /**
      *
      */
-    protected Map<UnameProperty,EntityStateStringType> _getProperties()
+    protected Map<UnameProperty,EntityStateString> _getProperties()
     {
         return _properties;
     }
@@ -76,14 +76,14 @@ public class UnameState
     /**
      */
     public void setMachineClass(
-                    final EntityStateStringType machineClass
+                    final EntityStateString machineClass
                     )
     {
         _properties.put( UnameProperty.MACHINE_CLASS, machineClass );
     }
 
 
-    public EntityStateStringType getMachineClass()
+    public EntityStateString getMachineClass()
     {
         return _properties.get( UnameProperty.MACHINE_CLASS );
     }
@@ -93,14 +93,14 @@ public class UnameState
     /**
      */
     public void setNodeName(
-                    final EntityStateStringType nodeName
+                    final EntityStateString nodeName
                     )
     {
         _properties.put( UnameProperty.NODE_NAME, nodeName );
     }
 
 
-    public EntityStateStringType getNodeName()
+    public EntityStateString getNodeName()
     {
         return _properties.get( UnameProperty.NODE_NAME );
     }
@@ -110,14 +110,14 @@ public class UnameState
     /**
      */
     public void setOsName(
-                    final EntityStateStringType name
+                    final EntityStateString name
                     )
     {
         _properties.put( UnameProperty.OS_NAME, name );
     }
 
 
-    public EntityStateStringType getOsName()
+    public EntityStateString getOsName()
     {
         return _properties.get( UnameProperty.OS_NAME );
     }
@@ -127,14 +127,14 @@ public class UnameState
     /**
      */
     public void setOsRelease(
-                    final EntityStateStringType release
+                    final EntityStateString release
                     )
     {
         _properties.put( UnameProperty.OS_RELEASE, release );
     }
 
 
-    public EntityStateStringType getOsRelease()
+    public EntityStateString getOsRelease()
     {
         return _properties.get( UnameProperty.OS_RELEASE );
     }
@@ -144,14 +144,14 @@ public class UnameState
     /**
      */
     public void setOsVersion(
-                    final EntityStateStringType version
+                    final EntityStateString version
                     )
     {
         _properties.put( UnameProperty.OS_VERSION, version );
     }
 
 
-    public EntityStateStringType getOsVersion()
+    public EntityStateString getOsVersion()
     {
         return _properties.get( UnameProperty.OS_VERSION );
     }
@@ -161,14 +161,14 @@ public class UnameState
     /**
      */
     public void setProcessorType(
-                    final EntityStateStringType type
+                    final EntityStateString type
                     )
     {
         _properties.put( UnameProperty.PROCESSOR_TYPE, type );
     }
 
 
-    public EntityStateStringType getProcessorType()
+    public EntityStateString getProcessorType()
     {
         return _properties.get( UnameProperty.PROCESSOR_TYPE );
     }
@@ -215,8 +215,8 @@ public class UnameState
 
         if (super.equals( obj )) {
             UnameState  other = (UnameState)obj;
-            Map<UnameProperty,EntityStateStringType>  other_props = other._getProperties();
-            Map<UnameProperty,EntityStateStringType>   this_props =  this._getProperties();
+            Map<UnameProperty,EntityStateString>  other_props = other._getProperties();
+            Map<UnameProperty,EntityStateString>   this_props =  this._getProperties();
             if (this_props == other_props
                             ||  (this_props != null  &&  this_props.equals( other_props ))) {
                 return true;

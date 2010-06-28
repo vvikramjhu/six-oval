@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.core.model.ComponentType;
 import jp.go.aist.six.oval.model.definition.EntityStateBase;
-import jp.go.aist.six.oval.model.definition.EntityStateStringType;
+import jp.go.aist.six.oval.model.definition.EntityStateString;
 import jp.go.aist.six.oval.model.definition.State;
 import java.util.EnumMap;
 import java.util.Map;
@@ -100,7 +100,7 @@ public class FileState
     /**
      */
     public void setVersion(
-                    final EntityStateStringType version
+                    final EntityStateString version
                     )
     {
         _properties.put( FileProperty.VERSION, version );
@@ -110,9 +110,9 @@ public class FileState
 
     /**
      */
-    public EntityStateStringType getVersion()
+    public EntityStateString getVersion()
     {
-        return (EntityStateStringType)_properties.get( FileProperty.VERSION );
+        return (EntityStateString)_properties.get( FileProperty.VERSION );
 //        return _version;
     }
 
