@@ -26,7 +26,7 @@ import jp.go.aist.six.oval.model.system.CollectedSystemObject;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: SystemObjectStatusDao.java 440 2010-03-23 05:11:44Z akihito $
+ * @version $Id$
  */
 public class SystemObjectStatusDao
     extends OvalEntityReferenceDao<CollectedSystemObject>

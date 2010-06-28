@@ -789,6 +789,15 @@
 
 
     <!-- ======================================================= -->
+    <!-- EntityObjectIntType                                     -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.definition.EntityObjectIntType"
+        extends="jp.go.aist.six.oval.model.definition.EntityObjectBaseType">
+    </class>
+
+
+
+    <!-- ======================================================= -->
     <!-- EntityObjectStringType                                  -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definition.EntityObjectStringType"

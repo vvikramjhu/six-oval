@@ -31,7 +31,7 @@ import java.util.UUID;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: SystemResultDao.java 758 2010-05-10 06:28:46Z akihito $
+ * @version $Id$
  */
 public class SystemResultDao
     extends CastorDao<SystemResult>

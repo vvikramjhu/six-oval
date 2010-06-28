@@ -42,7 +42,7 @@ import java.util.UUID;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalDefinitionsDao.java 606 2010-04-16 06:16:56Z akihito $
+ * @version $Id$
  */
 public class OvalDefinitionsDao
     extends CastorDao<OvalDefinitions>

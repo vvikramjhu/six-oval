@@ -29,7 +29,7 @@ import jp.go.aist.six.util.castor.AssociationDao;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalDefinitionsDefinitionAssociationDao.java 440 2010-03-23 05:11:44Z akihito $
+ * @version $Id$
  */
 public class OvalDefinitionsDefinitionAssociationDao
     extends AssociationDao<OvalDefinitions,Definition,OvalDefinitionsDefinitionAssociation>

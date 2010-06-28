@@ -32,7 +32,7 @@ import java.util.UUID;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalSystemCharacteristicsDao.java 763 2010-05-10 08:30:29Z akihito $
+ * @version $Id$
  */
 public class OvalSystemCharacteristicsDao
     extends CastorDao<OvalSystemCharacteristics>

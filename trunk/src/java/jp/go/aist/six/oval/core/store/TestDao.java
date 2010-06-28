@@ -26,7 +26,7 @@ import jp.go.aist.six.oval.model.definition.Test;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: TestDao.java 440 2010-03-23 05:11:44Z akihito $
+ * @version $Id$
  */
 public class TestDao
     extends OvalEntityDao<Test>

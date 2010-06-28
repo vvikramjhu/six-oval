@@ -25,7 +25,7 @@ package jp.go.aist.six.oval.core.store;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: FactoryDaoRegistry.java 606 2010-04-16 06:16:56Z akihito $
+ * @version $Id$
  */
 public class FactoryDaoRegistry
     extends jp.go.aist.six.util.castor.FactoryDaoRegistry

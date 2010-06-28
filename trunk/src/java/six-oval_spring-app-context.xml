@@ -65,6 +65,8 @@
                 <entry key="jp.go.aist.six.oval.core.model.definition.OvalDefinitionsTestAssociation"
                     value="jp.go.aist.six.oval.core.store.OvalDefinitionsTestAssociationDao"/>
 
+<!-- CastorDao???
+-->
                 <entry key="jp.go.aist.six.oval.model.definition.SystemObject"
                     value="jp.go.aist.six.oval.core.store.SystemObjectDao"/>
 

@@ -29,7 +29,7 @@ import jp.go.aist.six.util.castor.AssociationDao;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalResultsSystemAssociationDao.java 440 2010-03-23 05:11:44Z akihito $
+ * @version $Id$
  */
 public class OvalResultsSystemAssociationDao
     extends AssociationDao<OvalResults,SystemResult,OvalResultsSystemAssociation>

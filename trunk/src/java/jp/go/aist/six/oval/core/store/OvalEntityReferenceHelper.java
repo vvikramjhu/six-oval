@@ -27,7 +27,7 @@ import jp.go.aist.six.util.castor.DefaultPersistenceHelper;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalEntityReferenceHelper.java 440 2010-03-23 05:11:44Z akihito $
+ * @version $Id$
  */
 public class OvalEntityReferenceHelper<T extends OvalAnalysisElement>
 extends DefaultPersistenceHelper<T>

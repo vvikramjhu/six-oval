@@ -6,6 +6,7 @@ import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.definition.Definitions;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.model.definition.State;
+import jp.go.aist.six.oval.model.definition.SystemObject;
 import org.testng.Assert;
 import org.testng.Reporter;
 
@@ -26,6 +27,9 @@ public class OvalStoreTest
     }
 
 
+
+    /**
+     */
     private <T extends OvalEntity> void _syncOvalEntity(
                     final Class<T> type,
                     final T e
@@ -53,6 +57,41 @@ public class OvalStoreTest
     //  Definitions
     //
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    //==============================================================
+    //  object
+    //==============================================================
+
+    /**
+     */
+    @org.testng.annotations.Test( groups={"oval.service", "oval-def:object"},
+                    dataProvider="oval-def-object",
+                    dependsOnGroups="test",
+                    alwaysRun=true
+                    )
+    public void processObject(
+                    final ComponentType type,
+                    final String filepath,
+                    final String id,
+                    final int version,
+                    final String comment
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL - Store //", true );
+        Reporter.log( "  * object type: " + type, true );
+
+        SystemObject  obj = _unmarshalFile( filepath, SystemObject.class );
+
+        Assert.assertEquals( obj.getOvalID(), id );
+        Assert.assertEquals( obj.getOvalVersion(), version );
+        Assert.assertEquals( obj.getSystemObjectType(), type );
+        Assert.assertEquals( obj.getComment(), comment );
+
+        _syncOvalEntity( SystemObject.class, obj );
+    }
+
+
 
     //==============================================================
     //  state

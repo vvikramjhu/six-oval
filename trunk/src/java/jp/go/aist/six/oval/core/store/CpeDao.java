@@ -27,7 +27,7 @@ import jp.go.aist.six.util.castor.CastorDao;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: CpeDao.java 440 2010-03-23 05:11:44Z akihito $
+ * @version $Id$
  */
 public class CpeDao
     extends CastorDao<Cpe>

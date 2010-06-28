@@ -28,7 +28,7 @@ import jp.go.aist.six.util.castor.CastorDataStore;
  * An OVAL data store implementation.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalStoreImpl.java 754 2010-05-10 05:26:45Z akihito $
+ * @version $Id$
  */
 public class OvalStore
 extends CastorDataStore

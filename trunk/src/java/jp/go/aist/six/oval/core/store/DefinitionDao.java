@@ -34,7 +34,7 @@ import java.util.List;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: DefinitionDao.java 673 2010-04-23 09:07:11Z akihito $
+ * @version $Id$
  */
 public class DefinitionDao
     extends OvalEntityDao<Definition>

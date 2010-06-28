@@ -16,7 +16,7 @@
     <test name="oval.core" enabled="true">
         <groups>
             <run>
-                <include name="oval-def:state"/>
+                <include name="oval-def:object"/>
             </run>
         </groups>
     
