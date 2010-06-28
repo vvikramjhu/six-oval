@@ -112,12 +112,25 @@ public class Definition
     public Definition(
                     final String id,
                     final int version,
-                    final DefinitionClass clazz,
-                    final Metadata metadata
+                    final DefinitionClass clazz
                     )
     {
         super( id, version );
         setDefinitionClass( clazz );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public Definition(
+                    final String id,
+                    final int version,
+                    final DefinitionClass clazz,
+                    final Metadata metadata
+                    )
+    {
+        this( id, version, clazz );
         setMetadata( metadata );
     }
 

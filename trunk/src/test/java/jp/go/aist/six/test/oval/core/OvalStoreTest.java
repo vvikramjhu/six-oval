@@ -20,12 +20,38 @@ public class OvalStoreTest
     extends CoreTestBase
 {
 
+    public static void main( final String[] args )
+    throws Exception
+    {
+        OvalStoreTest  test = new OvalStoreTest();
+        test.setUp();
+        test.testAll();
+    }
+
+
+
     /**
      */
     public OvalStoreTest()
     {
     }
 
+
+
+    public void testAll()
+    throws Exception
+    {
+        Object[][]  data = ovalDefObjectProvider();
+        for (int  i = 0; i < data.length; i++) {
+            testObject(
+                        (ComponentType)data[i][0],
+                        (String)data[i][1],
+                        (String)data[i][2],
+                        (Integer)data[i][3],
+                        (String)data[i][4]
+                        );
+        }
+    }
 
 
     /**
@@ -43,6 +69,9 @@ public class OvalStoreTest
         Reporter.log( "  @ synced: pid=" + pid, true );
 
         Reporter.log( "getting object...", true );
+
+        @SuppressWarnings( "unchecked" )
+//        T  p2 = (T)_getStore().get( p.getClass(), pid );
         T  p2 = _getStore().get( type, pid );
         Reporter.log( "...get done", true );
         Reporter.log( "  @ get: object=" + p2, true );
@@ -64,12 +93,13 @@ public class OvalStoreTest
 
     /**
      */
-    @org.testng.annotations.Test( groups={"oval.service", "oval-def:object"},
+    @org.testng.annotations.Test(
+                    groups={"oval.service", "oval-def:object"},
                     dataProvider="oval-def-object",
                     dependsOnGroups="test",
                     alwaysRun=true
                     )
-    public void processObject(
+    public void testObject(
                     final ComponentType type,
                     final String filepath,
                     final String id,
@@ -97,7 +127,8 @@ public class OvalStoreTest
     //  state
     //==============================================================
 
-    @org.testng.annotations.Test( groups={"oval.service", "oval-def:state"},
+    @org.testng.annotations.Test(
+                    groups={"oval.service", "oval-def:state"},
                     dataProvider="oval-def-state",
                     dependsOnGroups="object",
                     alwaysRun=true
