@@ -1,6 +1,7 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.model.common.Generator;
+import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.model.definition.Definitions;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.model.result.DefinitionResult;
@@ -60,11 +61,14 @@ public class OvalXmlTest
         Reporter.log( "\n// TEST: OVAL XML //", true );
         Reporter.log( "  * target type: " + testTarget, true );
 
-        OvalDefinitions  sc = _unmarshalFile( filepath, OvalDefinitions.class );
+        OvalDefinitions  ovalDefs = _unmarshalFile( filepath, OvalDefinitions.class );
+        for (Definition  def : ovalDefs.getDefinitions()) {
+            Reporter.log( "  * definition: " + def, true );
+        }
 
         Reporter.log( "validating...", true );
-        _validate( sc.getGenerator(), generator );
-        _validate( sc.getDefinitions(), definitions );
+        _validate( ovalDefs.getGenerator(), generator );
+        _validate( ovalDefs.getDefinitions(), definitions );
         Reporter.log( "...validation OK", true );
     }
 

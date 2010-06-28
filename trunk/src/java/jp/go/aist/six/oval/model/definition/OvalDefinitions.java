@@ -238,12 +238,23 @@ public class OvalDefinitions
     @Override
     public String toString()
     {
+        Definitions  definitions = getDefinitions();
+        Tests  tests = getTests();
+        SystemObjects  objects = getObjects();
+        States  states = getStates();
+        Variables  variables = getVariables();
+
         return "OvalDefinitions[generator=" + getGenerator()
-//                        + ", definitions =" + getDefinitions()
-//                        + ", tests=" + getTests()
-//                        + ", objects=" + getObjects()
-//                        + ", states=" + getStates()
-//                        + ", variables=" + getVariables()
+                        + ", #definitions="
+                        + (definitions == null ? 0 : definitions.size())
+                        + ", #tests="
+                        + (tests == null ? 0 : tests.size())
+                        + ", objects="
+                        + (objects == null ? 0 : objects.size())
+                        + ", states="
+                        + (states == null ? 0 : states.size())
+                        + ", variables="
+                        + (variables == null ? 0 : variables.size())
                         + "]";
     }
 

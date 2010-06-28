@@ -152,9 +152,16 @@ public abstract class CoreTestBase
                     final Generator expected
                     )
     {
+        Reporter.log( " - schema_version", true );
         Assert.assertEquals( actual.getSchemaVersion(), expected.getSchemaVersion() );
+
+        Reporter.log( " - timestamp", true );
         Assert.assertEquals( actual.getTimestamp(), expected.getTimestamp() );
+
+        Reporter.log( " - product_name", true );
         Assert.assertEquals( actual.getProductName(), expected.getProductName() );
+
+        Reporter.log( " - product_version", true );
         Assert.assertEquals( actual.getProductVersion(), expected.getProductVersion() );
     }
 
@@ -174,8 +181,10 @@ public abstract class CoreTestBase
 
 
     public static final Definition  DEFINITION_1020_2 =
-        new Definition( "oval:org.mitre.oval:def:1020", 2, DefinitionClass.VULNERABILITY );
+        new Definition( "oval:org.mitre.oval:def:1020", 2 );
     {
+        DEFINITION_1020_2.setDefinitionClass( DefinitionClass.VULNERABILITY );
+
         Metadata  metadata = new Metadata(
                         "IE6 Double Byte Character Parsing Memory Corruption (WinXP)",
                         "Buffer overflow in URLMON.DLL in Microsoft Internet Explorer 5.01 through 6 allows remote attackers to execute arbitrary code via a crafted URL with an International Domain Name (IDN) using double-byte character sets (DBCS), aka the \"Double Byte Character Parsing Memory Corruption Vulnerability.\""
@@ -234,9 +243,43 @@ public abstract class CoreTestBase
     {
         Assert.assertEquals( actual.getGenerator(),    expected.getGenerator() );
         Assert.assertEquals( actual.getDefinitions(),  expected.getDefinitions() );
+
+        Definitions  expected_definitions = expected.getDefinitions();
+        for (Definition  actual_def : actual.getDefinitions()) {
+            String  id = actual_def.getOvalID();
+            Definition  expected_def = expected_definitions.find( id );
+            Assert.assertEquals( actual_def, expected_def );
+        }
+
 //        Assert.assertEquals( actual.getTests(),        expected.getTests() );
 //        Assert.assertEquals( actual.getObjects(),      expected.getObjects() );
 //        Assert.assertEquals( actual.getStates(),       expected.getStates() );
+    }
+
+
+    protected void _validate(
+                    final Definition actual,
+                    final Definition expected
+                    )
+    {
+        Reporter.log( " - metadata", true );
+        _validate( actual.getMetadata(), expected.getMetadata() );
+    }
+
+
+    protected void _validate(
+                    final Metadata actual,
+                    final Metadata expected
+                    )
+    {
+        Reporter.log( " - title", true );
+        Assert.assertEquals( actual.getTitle(),    expected.getTitle() );
+
+        Reporter.log( " - description", true );
+        Assert.assertEquals( actual.getDescription(),  expected.getDescription() );
+
+        Reporter.log( " - affected", true );
+        Assert.assertEquals( actual.getAffected(),  expected.getAffected() );
     }
 
 

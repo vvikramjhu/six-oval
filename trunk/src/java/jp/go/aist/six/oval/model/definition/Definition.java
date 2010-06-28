@@ -94,18 +94,15 @@ public class Definition
     }
 
 
-
     /**
      * Constructor.
      */
     public Definition(
                     final String id,
-                    final int version,
-                    final DefinitionClass clazz
+                    final int version
                     )
     {
         super( id, version );
-        setDefinitionClass( clazz );
     }
 
 
@@ -119,7 +116,8 @@ public class Definition
                     final Metadata metadata
                     )
     {
-        this( id, version, clazz );
+        super( id, version );
+        setDefinitionClass( clazz );
         setMetadata( metadata );
     }
 
@@ -450,20 +448,6 @@ public class Definition
 //                        + ", notes=" + getNotes()
                         + "]";
     }
-
-
-
-
-
-
-    // implementation-specific
-//    public String getCriteriaAsString()
-//    public void setCriteriaAsString( String criteria )
-
-
-    // We found no definition with specific notes.
-//    public void setNotes( Notes notes );
-//    public Notes getNotes();
 
 }
 // Definition
