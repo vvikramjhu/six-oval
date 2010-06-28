@@ -36,8 +36,8 @@ public abstract class EntityBaseType
 {
 
     private String  _data;
-    //{complexContent, base="xsd:anyType"}
-    // OVAL Schema 5.6: simpleContent, base=xsd:anySimpleType
+    // OVAL Schema 5.7: {complexContent, base="xsd:anyType"}
+    // OVAL Schema 5.6: {simpleContent, base=xsd:anySimpleType}
 
     public static final Datatype  DEFAULT_DATATYPE = Datatype.STRING;
     private Datatype  _datatype;
