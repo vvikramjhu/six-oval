@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.definition.EntityObjectStringType;
+import jp.go.aist.six.oval.model.definition.EntityObjectString;
 import jp.go.aist.six.oval.model.definition.SystemObject;
 
 
@@ -34,7 +34,7 @@ public abstract class LinuxPkgInfoObject
     extends SystemObject
 {
 
-    private EntityObjectStringType  _name;
+    private EntityObjectString  _name;
     //{1..1}
 
 
@@ -69,7 +69,7 @@ public abstract class LinuxPkgInfoObject
                     final String name
                     )
     {
-        this( id, version, new EntityObjectStringType( name ) );
+        this( id, version, new EntityObjectString( name ) );
     }
 
 
@@ -79,7 +79,7 @@ public abstract class LinuxPkgInfoObject
     public LinuxPkgInfoObject(
                     final String id,
                     final int version,
-                    final EntityObjectStringType name
+                    final EntityObjectString name
                     )
     {
         super( id, version );
@@ -97,14 +97,14 @@ public abstract class LinuxPkgInfoObject
 
 
     public void setName(
-                    final EntityObjectStringType name
+                    final EntityObjectString name
                     )
     {
         _name = name;
     }
 
 
-    public EntityObjectStringType getName()
+    public EntityObjectString getName()
     {
         return _name;
     }
@@ -121,7 +121,7 @@ public abstract class LinuxPkgInfoObject
         final int  prime = 37;
         int  result = super.hashCode();
 
-        EntityObjectStringType  name = getName();
+        EntityObjectString  name = getName();
         result = prime * result + ((name == null) ? 0 : name.hashCode());
 
         return result;
@@ -140,8 +140,8 @@ public abstract class LinuxPkgInfoObject
 
         if (super.equals( obj )) {
             LinuxPkgInfoObject  other = (LinuxPkgInfoObject)obj;
-            EntityObjectStringType  other_name = other.getName();
-            EntityObjectStringType   this_name =  this.getName();
+            EntityObjectString  other_name = other.getName();
+            EntityObjectString   this_name =  this.getName();
             if (this_name == other_name
                             ||  (this_name != null  &&  this_name.equals( other_name ))) {
                 return true;
@@ -156,7 +156,7 @@ public abstract class LinuxPkgInfoObject
     @Override
     public String toString()
     {
-        EntityObjectStringType  name = getName();
+        EntityObjectString  name = getName();
         return "name=" + (name == null ? null : name.getData())
                         + ", " + super.toString();
     }

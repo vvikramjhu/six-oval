@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.ComponentType;
-import jp.go.aist.six.oval.model.definition.EntityObjectStringType;
+import jp.go.aist.six.oval.model.definition.EntityObjectString;
 
 
 
@@ -73,7 +73,7 @@ public class RpmInfoObject
     public RpmInfoObject(
                     final String id,
                     final int version,
-                    final EntityObjectStringType name
+                    final EntityObjectString name
                     )
     {
         super( id, version, name );

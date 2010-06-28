@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.definition.EntityObjectIntType;
-import jp.go.aist.six.oval.model.definition.EntityObjectStringType;
+import jp.go.aist.six.oval.model.definition.EntityObjectString;
 import jp.go.aist.six.oval.model.definition.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definition.SystemObject;
 
@@ -37,7 +37,7 @@ public class MetabaseObject
     extends SystemObject
 {
 
-    private EntityObjectStringType  _key;
+    private EntityObjectString  _key;
     //{0..1}
 
     private EntityObjectIntType  _id;
@@ -76,7 +76,7 @@ public class MetabaseObject
                     )
     {
         this( id, version,
-                        new EntityObjectStringType( mbKey ),
+                        new EntityObjectString( mbKey ),
                         new EntityObjectIntType( mbID )
         );
     }
@@ -88,7 +88,7 @@ public class MetabaseObject
     public MetabaseObject(
                     final String id,
                     final int version,
-                    final EntityObjectStringType mbKey,
+                    final EntityObjectString mbKey,
                     final EntityObjectIntType mbID
                     )
     {
@@ -100,14 +100,14 @@ public class MetabaseObject
 
 
     public void setKey(
-                    final EntityObjectStringType key
+                    final EntityObjectString key
                     )
     {
         _key = key;
     }
 
 
-    public EntityObjectStringType getKey()
+    public EntityObjectString getKey()
     {
         return _key;
     }
@@ -151,7 +151,7 @@ public class MetabaseObject
         final int  prime = 37;
         int  result = super.hashCode();
 
-        EntityObjectStringType  key = getKey();
+        EntityObjectString  key = getKey();
         result = prime * result + ((key == null) ? 0 : key.hashCode());
 
         EntityObjectIntType  id = getID();
@@ -179,8 +179,8 @@ public class MetabaseObject
             EntityObjectIntType  other_id = other.getID();
             EntityObjectIntType   this_id =  this.getID();
             if (EntityTypeHelper.equals( this_id, other_id)) {
-                EntityObjectStringType  other_key = other.getKey();
-                EntityObjectStringType   this_key =  this.getKey();
+                EntityObjectString  other_key = other.getKey();
+                EntityObjectString   this_key =  this.getKey();
                 if (EntityTypeHelper.equals( this_key, other_key)) {
                     return true;
                 }

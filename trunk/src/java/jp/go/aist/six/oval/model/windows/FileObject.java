@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.common.Behaviors;
-import jp.go.aist.six.oval.model.definition.EntityObjectStringType;
+import jp.go.aist.six.oval.model.definition.EntityObjectString;
 import jp.go.aist.six.oval.model.definition.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definition.SystemObject;
 
@@ -51,13 +51,13 @@ public class FileObject
     //                              )
     //                 )
     //         )
-    private EntityObjectStringType  _filepath;
+    private EntityObjectString  _filepath;
     //{1..1}
 
-    private EntityObjectStringType  _path;
+    private EntityObjectString  _path;
     //{1..1}
 
-    private EntityObjectStringType  _filename;
+    private EntityObjectString  _filename;
     //{1..1, nillable="true"}
 
 
@@ -93,8 +93,8 @@ public class FileObject
                     )
     {
         this( id, version,
-                        new EntityObjectStringType( path ),
-                        new EntityObjectStringType( filename )
+                        new EntityObjectString( path ),
+                        new EntityObjectString( filename )
         );
     }
 
@@ -105,8 +105,8 @@ public class FileObject
     public FileObject(
                     final String id,
                     final int version,
-                    final EntityObjectStringType path,
-                    final EntityObjectStringType filename
+                    final EntityObjectString path,
+                    final EntityObjectString filename
                     )
     {
         super( id, version );
@@ -133,7 +133,7 @@ public class FileObject
     /**
      */
     public void setFilepath(
-                    final EntityObjectStringType filepath
+                    final EntityObjectString filepath
                     )
     {
         _filepath = filepath;
@@ -142,7 +142,7 @@ public class FileObject
 
     /**
      */
-    public EntityObjectStringType getFilepath()
+    public EntityObjectString getFilepath()
     {
         return _filepath;
     }
@@ -150,14 +150,14 @@ public class FileObject
 
 
     public void setPath(
-                    final EntityObjectStringType path
+                    final EntityObjectString path
                     )
     {
         _path = path;
     }
 
 
-    public EntityObjectStringType getPath()
+    public EntityObjectString getPath()
     {
         return _path;
     }
@@ -165,14 +165,14 @@ public class FileObject
 
 
     public void setFilename(
-                    final EntityObjectStringType filename
+                    final EntityObjectString filename
                     )
     {
         _filename = filename;
     }
 
 
-    public EntityObjectStringType getFilename()
+    public EntityObjectString getFilename()
     {
         return _filename;
     }
@@ -204,10 +204,10 @@ public class FileObject
         Behaviors  behaviors = getBehaviors();
         result = prime * result + ((behaviors == null) ? 0 : behaviors.hashCode());
 
-        EntityObjectStringType  path = getPath();
+        EntityObjectString  path = getPath();
         result = prime * result + ((path == null) ? 0 : path.hashCode());
 
-        EntityObjectStringType  filename = getFilename();
+        EntityObjectString  filename = getFilename();
         result = prime * result + ((filename == null) ? 0 : filename.hashCode());
 
         return result;
@@ -225,11 +225,11 @@ public class FileObject
 
         if (super.equals( obj )) {
             FileObject  other = (FileObject)obj;
-            EntityObjectStringType  other_filename = other.getFilename();
-            EntityObjectStringType   this_filename =  this.getFilename();
+            EntityObjectString  other_filename = other.getFilename();
+            EntityObjectString   this_filename =  this.getFilename();
             if (EntityTypeHelper.equals( this_filename, other_filename )) {
-                EntityObjectStringType  other_path = other.getPath();
-                EntityObjectStringType   this_path =  this.getPath();
+                EntityObjectString  other_path = other.getPath();
+                EntityObjectString   this_path =  this.getPath();
                 if (EntityTypeHelper.equals( this_path, other_path)) {
                     FileBehaviors  other_behaviors = other.getBehaviors();
                     FileBehaviors   this_behaviors =  this.getBehaviors();

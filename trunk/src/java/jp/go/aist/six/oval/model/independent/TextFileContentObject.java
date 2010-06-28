@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.ComponentType;
-import jp.go.aist.six.oval.model.definition.EntityObjectStringType;
+import jp.go.aist.six.oval.model.definition.EntityObjectString;
 import jp.go.aist.six.oval.model.definition.SystemObject;
 
 
@@ -39,13 +39,13 @@ public class TextFileContentObject
     //{0..1}
 
 
-    private EntityObjectStringType  _path;
+    private EntityObjectString  _path;
     //{1..1}
 
-    private EntityObjectStringType  _filename;
+    private EntityObjectString  _filename;
     //{1..1}
 
-    private EntityObjectStringType  _line;
+    private EntityObjectString  _line;
     //{1..1}
 
 
@@ -82,9 +82,9 @@ public class TextFileContentObject
                     )
     {
         this( id, version,
-                        new EntityObjectStringType( path ),
-                        new EntityObjectStringType( filename ),
-                        new EntityObjectStringType( line)
+                        new EntityObjectString( path ),
+                        new EntityObjectString( filename ),
+                        new EntityObjectString( line)
                         );
     }
 
@@ -95,9 +95,9 @@ public class TextFileContentObject
     public TextFileContentObject(
                     final String id,
                     final int version,
-                    final EntityObjectStringType path,
-                    final EntityObjectStringType filename,
-                    final EntityObjectStringType line
+                    final EntityObjectString path,
+                    final EntityObjectString filename,
+                    final EntityObjectString line
                     )
     {
         super( id, version );
@@ -130,7 +130,7 @@ public class TextFileContentObject
     /**
      */
     public void setPath(
-                    final EntityObjectStringType path
+                    final EntityObjectString path
                     )
     {
         _path = path;
@@ -139,7 +139,7 @@ public class TextFileContentObject
 
     /**
      */
-    public EntityObjectStringType getPath()
+    public EntityObjectString getPath()
     {
         return _path;
     }
@@ -149,7 +149,7 @@ public class TextFileContentObject
     /**
      */
     public void setFilename(
-                    final EntityObjectStringType filename
+                    final EntityObjectString filename
                     )
     {
         _filename = filename;
@@ -158,7 +158,7 @@ public class TextFileContentObject
 
     /**
      */
-    public EntityObjectStringType getFilename()
+    public EntityObjectString getFilename()
     {
         return _filename;
     }
@@ -168,7 +168,7 @@ public class TextFileContentObject
     /**
      */
     public void setLine(
-                    final EntityObjectStringType line
+                    final EntityObjectString line
                     )
     {
         _line = line;
@@ -177,7 +177,7 @@ public class TextFileContentObject
 
     /**
      */
-    public EntityObjectStringType getLine()
+    public EntityObjectString getLine()
     {
         return _line;
     }

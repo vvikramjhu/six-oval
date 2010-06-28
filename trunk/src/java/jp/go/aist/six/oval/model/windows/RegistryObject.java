@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.ComponentType;
-import jp.go.aist.six.oval.model.definition.EntityObjectStringType;
+import jp.go.aist.six.oval.model.definition.EntityObjectString;
 import jp.go.aist.six.oval.model.definition.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definition.SystemObject;
 
@@ -42,10 +42,10 @@ public class RegistryObject
     private EntityObjectRegistryHiveType  _hive;
     //{1..1}
 
-    private EntityObjectStringType  _key;
+    private EntityObjectString  _key;
     //{1..1, nillable="true"}
 
-    private EntityObjectStringType  _name;
+    private EntityObjectString  _name;
     //{1..1, nillable="true"}
 
 
@@ -83,8 +83,8 @@ public class RegistryObject
     {
         this( id, version,
                         new EntityObjectRegistryHiveType( hive.name() ),
-                        new EntityObjectStringType( key ),
-                        new EntityObjectStringType( name )
+                        new EntityObjectString( key ),
+                        new EntityObjectString( name )
         );
     }
 
@@ -96,8 +96,8 @@ public class RegistryObject
                     final String id,
                     final int version,
                     final EntityObjectRegistryHiveType hive,
-                    final EntityObjectStringType key,
-                    final EntityObjectStringType name
+                    final EntityObjectString key,
+                    final EntityObjectString name
                     )
     {
         super( id, version );
@@ -141,14 +141,14 @@ public class RegistryObject
 
 
     public void setKey(
-                    final EntityObjectStringType key
+                    final EntityObjectString key
                     )
     {
         _key = key;
     }
 
 
-    public EntityObjectStringType getKey()
+    public EntityObjectString getKey()
     {
         return _key;
     }
@@ -156,14 +156,14 @@ public class RegistryObject
 
 
     public void setName(
-                    final EntityObjectStringType name
+                    final EntityObjectString name
                     )
     {
         _name = name;
     }
 
 
-    public EntityObjectStringType getName()
+    public EntityObjectString getName()
     {
         return _name;
     }
@@ -198,10 +198,10 @@ public class RegistryObject
         EntityObjectRegistryHiveType  hive = getHive();
         result = prime * result + ((hive == null) ? 0 : hive.hashCode());
 
-        EntityObjectStringType  key = getKey();
+        EntityObjectString  key = getKey();
         result = prime * result + ((key == null) ? 0 : key.hashCode());
 
-        EntityObjectStringType  name = getName();
+        EntityObjectString  name = getName();
         result = prime * result + ((name == null) ? 0 : name.hashCode());
 
         return result;
@@ -220,11 +220,11 @@ public class RegistryObject
 
         if (super.equals( obj )) {
             RegistryObject  other = (RegistryObject)obj;
-            EntityObjectStringType  other_name = other.getName();
-            EntityObjectStringType   this_name =  this.getName();
+            EntityObjectString  other_name = other.getName();
+            EntityObjectString   this_name =  this.getName();
             if (EntityTypeHelper.equals( this_name, other_name)) {
-                EntityObjectStringType  other_key = other.getKey();
-                EntityObjectStringType   this_key =  this.getKey();
+                EntityObjectString  other_key = other.getKey();
+                EntityObjectString   this_key =  this.getKey();
                 if (EntityTypeHelper.equals( this_key, other_key)) {
                     EntityObjectRegistryHiveType  other_hive = other.getHive();
                     EntityObjectRegistryHiveType   this_hive =  this.getHive();

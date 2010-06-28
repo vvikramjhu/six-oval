@@ -798,9 +798,9 @@
 
 
     <!-- ======================================================= -->
-    <!-- EntityObjectStringType                                  -->
+    <!-- EntityObjectString                                      -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.EntityObjectStringType"
+    <class name="jp.go.aist.six.oval.model.definition.EntityObjectString"
         extends="jp.go.aist.six.oval.model.definition.EntityObjectBase">
     </class>
 
@@ -1533,17 +1533,17 @@
 -->
         
         <field name="path" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
             <bind-xml name="path" node="element"/>
         </field>
         
         <field name="filename" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
             <bind-xml name="filename" node="element"/>
         </field>
 
         <field name="line" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
             <bind-xml name="line" node="element"/>
         </field>
     </class>
@@ -1750,7 +1750,7 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"/>
 
         <field name="name"
-            type="jp.go.aist.six.oval.model.definition.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
             <bind-xml name="name" node="element"/>
         </field>
     </class>
@@ -2263,7 +2263,7 @@
     <!-- EntityObjectRegistryHiveType                            -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHiveType"
-        extends="jp.go.aist.six.oval.model.definition.EntityObjectStringType">
+        extends="jp.go.aist.six.oval.model.definition.EntityObjectString">
     </class>
 
 
@@ -2330,12 +2330,12 @@
         </field>
         
         <field name="path" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
             <bind-xml name="path" node="element"/>
         </field>
         
         <field name="filename" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
             <bind-xml name="filename" node="element"/>
         </field>
     </class>
@@ -2540,7 +2540,7 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
         <field name="key" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
             <bind-xml name="key" node="element"/>
         </field>
         
@@ -2670,12 +2670,12 @@
 
 
         <field name="key" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
             <bind-xml name="key" node="element"/>
         </field>
         
         <field name="name" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
             <bind-xml name="name" node="element"/>
         </field>
 
