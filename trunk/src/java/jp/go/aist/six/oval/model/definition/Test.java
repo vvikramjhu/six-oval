@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.definition;
 
-import jp.go.aist.six.oval.core.model.ComponentType;
 import jp.go.aist.six.oval.model.CommentedOvalEntity;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Operator;

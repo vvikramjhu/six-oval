@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.core.model.ComponentType;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.definition.EntityStateString;
 import jp.go.aist.six.oval.model.definition.EntityTypeHelper;
 

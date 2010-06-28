@@ -1,9 +1,9 @@
 package jp.go.aist.six.test.oval.core;
 
-import jp.go.aist.six.oval.core.model.ComponentType;
 import jp.go.aist.six.oval.core.service.StandardOvalService;
 import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.OvalElementContainer;
 import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.Family;

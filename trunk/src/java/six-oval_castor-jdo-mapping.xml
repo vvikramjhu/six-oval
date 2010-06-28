@@ -406,7 +406,7 @@
         -->
 
         <field name="TestType" 
-            type="jp.go.aist.six.oval.core.model.ComponentType">
+            type="jp.go.aist.six.oval.model.ComponentType">
             <sql name="test_type" type="char"/>
         </field>
 
@@ -470,7 +470,7 @@
         </field>
 
         <field name="systemObjectType" 
-            type="jp.go.aist.six.oval.core.model.ComponentType">
+            type="jp.go.aist.six.oval.model.ComponentType">
             <sql name="object_type" type="char"/>
         </field>
 
@@ -507,7 +507,7 @@
         </field>
 
         <field name="stateType" 
-            type="jp.go.aist.six.oval.core.model.ComponentType">
+            type="jp.go.aist.six.oval.model.ComponentType">
             <sql name="state_type" type="char"/>
         </field>
 

@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.core;
 
-import jp.go.aist.six.oval.core.model.ComponentType;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.definition.Definitions;
