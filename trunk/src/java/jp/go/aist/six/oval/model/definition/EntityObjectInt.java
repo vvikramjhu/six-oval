@@ -27,14 +27,14 @@ package jp.go.aist.six.oval.model.definition;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class EntityObjectIntType
+public class EntityObjectInt
     extends EntityObjectBase
 {
 
     /**
      * Constructor.
      */
-    public EntityObjectIntType()
+    public EntityObjectInt()
     {
     }
 
@@ -42,7 +42,7 @@ public class EntityObjectIntType
     /**
      * Constructor.
      */
-    public EntityObjectIntType(
+    public EntityObjectInt(
                     final String data
                     )
     {
@@ -72,7 +72,7 @@ public class EntityObjectIntType
             return true;
         }
 
-        if (!(obj instanceof EntityObjectIntType)) {
+        if (!(obj instanceof EntityObjectInt)) {
             return false;
         }
 
@@ -88,4 +88,4 @@ public class EntityObjectIntType
     }
 
 }
-// EntityObjectIntType
+// EntityObjectInt

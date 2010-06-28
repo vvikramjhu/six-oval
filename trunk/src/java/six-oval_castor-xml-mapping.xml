@@ -789,9 +789,9 @@
 
 
     <!-- ======================================================= -->
-    <!-- EntityObjectIntType                                     -->
+    <!-- EntityObjectInt                                         -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.EntityObjectIntType"
+    <class name="jp.go.aist.six.oval.model.definition.EntityObjectInt"
         extends="jp.go.aist.six.oval.model.definition.EntityObjectBase">
     </class>
 
@@ -2545,7 +2545,7 @@
         </field>
         
         <field name="ID" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectIntType">
+            type="jp.go.aist.six.oval.model.definition.EntityObjectInt">
             <bind-xml name="id" node="element"/>
         </field>
 

@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.ComponentType;
-import jp.go.aist.six.oval.model.definition.EntityObjectIntType;
+import jp.go.aist.six.oval.model.definition.EntityObjectInt;
 import jp.go.aist.six.oval.model.definition.EntityObjectString;
 import jp.go.aist.six.oval.model.definition.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definition.SystemObject;
@@ -40,7 +40,7 @@ public class MetabaseObject
     private EntityObjectString  _key;
     //{0..1}
 
-    private EntityObjectIntType  _id;
+    private EntityObjectInt  _id;
     //{0..1, nillable="true"}
 
 
@@ -77,7 +77,7 @@ public class MetabaseObject
     {
         this( id, version,
                         new EntityObjectString( mbKey ),
-                        new EntityObjectIntType( mbID )
+                        new EntityObjectInt( mbID )
         );
     }
 
@@ -89,7 +89,7 @@ public class MetabaseObject
                     final String id,
                     final int version,
                     final EntityObjectString mbKey,
-                    final EntityObjectIntType mbID
+                    final EntityObjectInt mbID
                     )
     {
         super( id, version );
@@ -115,14 +115,14 @@ public class MetabaseObject
 
 
     public void setID(
-                    final EntityObjectIntType id
+                    final EntityObjectInt id
                     )
     {
         _id = id;
     }
 
 
-    public EntityObjectIntType getID()
+    public EntityObjectInt getID()
     {
         return _id;
     }
@@ -154,7 +154,7 @@ public class MetabaseObject
         EntityObjectString  key = getKey();
         result = prime * result + ((key == null) ? 0 : key.hashCode());
 
-        EntityObjectIntType  id = getID();
+        EntityObjectInt  id = getID();
         result = prime * result + ((id == null) ? 0 : id.hashCode());
 
         return result;
@@ -176,8 +176,8 @@ public class MetabaseObject
 
         if (super.equals( obj )) {
             MetabaseObject  other = (MetabaseObject)obj;
-            EntityObjectIntType  other_id = other.getID();
-            EntityObjectIntType   this_id =  this.getID();
+            EntityObjectInt  other_id = other.getID();
+            EntityObjectInt   this_id =  this.getID();
             if (EntityTypeHelper.equals( this_id, other_id)) {
                 EntityObjectString  other_key = other.getKey();
                 EntityObjectString   this_key =  this.getKey();
