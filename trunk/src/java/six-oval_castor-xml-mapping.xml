@@ -1450,7 +1450,7 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"/>
 
         <field name="family" 
-            type="jp.go.aist.six.oval.model.independent.EntityStateFamilyType">
+            type="jp.go.aist.six.oval.model.independent.EntityStateFamily">
             <bind-xml name="family" node="element"/>
         </field>
     </class>
@@ -1460,7 +1460,7 @@
     <!-- ======================================================= -->
     <!-- EntityStateFamily                                       -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.independent.EntityStateFamilyType"
+    <class name="jp.go.aist.six.oval.model.independent.EntityStateFamily"
         extends="jp.go.aist.six.oval.model.definition.EntityStateString">
     </class>
 

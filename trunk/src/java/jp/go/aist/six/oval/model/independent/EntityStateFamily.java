@@ -30,15 +30,37 @@ import jp.go.aist.six.oval.model.definition.EntityStateString;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class EntityStateFamilyType
+public class EntityStateFamily
     extends EntityStateString
 {
 
     /**
      * Constructor.
      */
-    public EntityStateFamilyType()
+    public EntityStateFamily()
     {
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateFamily(
+                    final String data
+                    )
+    {
+        super( data );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateFamily(
+                    final Family data
+                    )
+    {
+        this( (data == null ? null : data.value()) );
     }
 
 
@@ -78,7 +100,7 @@ public class EntityStateFamilyType
             return true;
         }
 
-        if (!(obj instanceof EntityStateFamilyType)) {
+        if (!(obj instanceof EntityStateFamily)) {
             return false;
         }
 
@@ -94,4 +116,4 @@ public class EntityStateFamilyType
     }
 
 }
-// EntityStateFamilyType
+// EntityStateFamily

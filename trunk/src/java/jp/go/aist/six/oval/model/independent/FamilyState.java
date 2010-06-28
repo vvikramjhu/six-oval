@@ -34,7 +34,7 @@ public class FamilyState
     extends State
 {
 
-    private EntityStateFamilyType  _family;
+    private EntityStateFamily  _family;
     //{0..1}
 
 
@@ -62,7 +62,7 @@ public class FamilyState
 
     /**
      */
-    public EntityStateFamilyType getFamily()
+    public EntityStateFamily getFamily()
     {
         return _family;
     }
@@ -71,7 +71,7 @@ public class FamilyState
     /**
      */
     public void setFamily(
-                    final EntityStateFamilyType family
+                    final EntityStateFamily family
                     )
     {
         _family = family;
@@ -101,7 +101,7 @@ public class FamilyState
         final int  prime = 37;
         int  result = super.hashCode();
 
-        EntityStateFamilyType  family = getFamily();
+        EntityStateFamily  family = getFamily();
         result = prime * result + ((family == null) ? 0 : family.hashCode());
 
         return result;
@@ -120,8 +120,8 @@ public class FamilyState
 
         if (super.equals( obj )) {
             FamilyState  other = (FamilyState)obj;
-            EntityStateFamilyType  other_family = other.getFamily();
-            EntityStateFamilyType   this_family =  this.getFamily();
+            EntityStateFamily  other_family = other.getFamily();
+            EntityStateFamily   this_family =  this.getFamily();
             if (this_family == other_family
                             ||  (this_family != null  &&  this_family.equals( other_family ))) {
                 return true;
