@@ -37,7 +37,7 @@ import java.util.Set;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: OvalDefinitionsHelper.java 635 2010-04-20 09:29:15Z akihito $
+ * @version $Id$
  */
 public class OvalDefinitionsHelper
 {

@@ -24,10 +24,13 @@ import jp.go.aist.six.oval.core.model.definition.DefinitionTestAssociation;
 import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsDefinitionAssociation;
 import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsHelper;
 import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsObjectAssociation;
+import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsStateAssociation;
 import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsTestAssociation;
 import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.model.definition.Definitions;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
+import jp.go.aist.six.oval.model.definition.State;
+import jp.go.aist.six.oval.model.definition.States;
 import jp.go.aist.six.oval.model.definition.SystemObject;
 import jp.go.aist.six.oval.model.definition.SystemObjects;
 import jp.go.aist.six.oval.model.definition.Test;
@@ -116,23 +119,20 @@ public class OvalDefinitionsDao
             defs.setObjects( p_objects );
         }
 
+        States  states = defs.getStates();
+        if (states != null) {
+            States  p_objects = new States();
+            for (State  object : states) {
+                State  p_object = getForwardingDao( State.class ).sync( object );
+                p_objects.add( p_object );
+                OvalDefinitionsStateAssociation  assoc =
+                    new OvalDefinitionsStateAssociation( defs, p_object );
+                getForwardingDao( OvalDefinitionsStateAssociation.class ).sync( assoc );
+            }
 
-//        Collection<SystemObject>  object_list = defs.getObjects().getElements();
-//        if (object_list != null  &&  object_list.size() > 0) {
-//            List<SystemObject>  p_object_list = new ArrayList<SystemObject>();
-//            for (SystemObject  object : object_list) {
-////                if (_LOG.isTraceEnabled()) {
-////                    _LOG.trace( "object: " + object );
-////                }
-//                SystemObject  p_object = getForwardingDao().sync( SystemObject.class, object );
-//                p_object_list.add( p_object );
-//
-//                OvalDefinitionsObjectAssociation  assoc =
-//                    new OvalDefinitionsObjectAssociation( defs, p_object );
-//                getForwardingDao().sync( OvalDefinitionsObjectAssociation.class, assoc );
-//            }
-//            defs.setObjects( p_object_list );
-//        }
+            defs.setStates( p_objects );
+        }
+
 
         OvalDefinitionsHelper  helper = OvalDefinitionsHelper.newInstance( defs );
         Definitions  def_list = defs.getDefinitions();

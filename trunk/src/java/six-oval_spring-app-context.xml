@@ -70,11 +70,17 @@
                 <entry key="jp.go.aist.six.oval.model.definition.SystemObject"
                     value="jp.go.aist.six.oval.core.store.SystemObjectDao"/>
 
-                <entry key="jp.go.aist.six.oval.core.model.definition.OvalDefinitionsObjectAssociation"
-                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsObjectAssociationDao"/>
+                <entry key="jp.go.aist.six.oval.model.definition.State"
+                    value="jp.go.aist.six.oval.core.store.StateDao"/>
 
                 <entry key="jp.go.aist.six.oval.core.model.definition.DefinitionTestAssociation"
                     value="jp.go.aist.six.oval.core.store.DefinitionTestAssociationDao"/>
+
+                <entry key="jp.go.aist.six.oval.core.model.definition.OvalDefinitionsObjectAssociation"
+                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsObjectAssociationDao"/>
+
+                <entry key="jp.go.aist.six.oval.core.model.definition.OvalDefinitionsStateAssociation"
+                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsStateAssociationDao"/>
 
 
             <!-- // System Characteristics // -->

@@ -225,7 +225,11 @@ public class TextFileContentObject
     @Override
     public String toString()
     {
-        return "TextFileContentObject[" + super.toString() + "]";
+        return "TextFileContentObject[" + super.toString()
+                        + ", path=" + getPath()
+                        + ", filename=" + getFilename()
+                        + ", line=" + getLine()
+                        + "]";
     }
 
 }

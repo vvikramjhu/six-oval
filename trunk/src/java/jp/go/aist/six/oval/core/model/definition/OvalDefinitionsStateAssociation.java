@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.core.model.definition;
 
-import jp.go.aist.six.oval.model.definition.Definition;
-import jp.go.aist.six.oval.model.definition.Test;
+import jp.go.aist.six.oval.model.definition.OvalDefinitions;
+import jp.go.aist.six.oval.model.definition.State;
 import jp.go.aist.six.util.orm.Association;
 
 
@@ -30,41 +30,29 @@ import jp.go.aist.six.util.orm.Association;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionTestAssociation
-    extends Association<Definition, Test>
+public class OvalDefinitionsStateAssociation
+    extends Association<OvalDefinitions, State>
 {
 
     /**
      * Constructor.
      */
-    public DefinitionTestAssociation()
+    public OvalDefinitionsStateAssociation()
     {
     }
+
 
 
     /**
      * Constructor.
      */
-    public DefinitionTestAssociation(
-                    final Definition antecendent,
-                    final Test dependent
+    public OvalDefinitionsStateAssociation(
+                    final OvalDefinitions antecendent,
+                    final State dependent
                     )
     {
         super( antecendent, dependent );
     }
 
-
-
-//    /**
-//     * Constructor.
-//     */
-//    public
-//    DefinitionTestAssociation(
-//                    final String antecendentID,
-//                    final String dependentID )
-//    {
-//        super( antecendentID, dependentID );
-//    }
-
 }
-// DefinitionTestAssociation
+// OvalDefinitionsStateAssociation

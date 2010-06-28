@@ -515,6 +515,32 @@
 
 
 
+    <!-- ******************************************************* -->
+    <!-- OvalDefinitionsStateAssociation                         -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.core.model.definition.OvalDefinitionsStateAssociation"
+        identity="persistentID"
+        key-generator="IDENTITY"
+        >
+        <cache-type type="unlimited"/>
+        <map-to table="oval_assoc__d_definitions__d_state"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="definitions__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="state__PID" type="char"/>
+        </field>
+
+    </class>
+
+
+
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <!-- %                                                     % -->
     <!-- %  OVAL System Characteristics                        % -->

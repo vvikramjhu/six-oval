@@ -9,6 +9,7 @@ import jp.go.aist.six.oval.model.definition.State;
 import jp.go.aist.six.oval.model.definition.SystemObject;
 import org.testng.Assert;
 import org.testng.Reporter;
+import java.util.Collection;
 
 
 
@@ -70,7 +71,7 @@ public class OvalStoreTest
 
         Reporter.log( "getting object...", true );
 
-        @SuppressWarnings( "unchecked" )
+//        @SuppressWarnings( "unchecked" )
 //        T  p2 = (T)_getStore().get( p.getClass(), pid );
         T  p2 = _getStore().get( type, pid );
         Reporter.log( "...get done", true );
@@ -119,6 +120,12 @@ public class OvalStoreTest
         Assert.assertEquals( obj.getComment(), comment );
 
         _syncOvalEntity( SystemObject.class, obj );
+
+        Collection<SystemObject>  all = _getStore().getAll( SystemObject.class );
+        Reporter.log( "  @ all object: #objects=" + all.size(), true );
+        for (SystemObject  o : all) {
+            Reporter.log( "  @ object: " + o, true );
+        }
     }
 
 

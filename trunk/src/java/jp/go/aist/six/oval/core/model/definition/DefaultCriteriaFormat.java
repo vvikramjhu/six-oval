@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.model.definition.ExtendDefinition;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: DefaultCriteriaFormat.java 635 2010-04-20 09:29:15Z akihito $
+ * @version $Id$
  */
 public class DefaultCriteriaFormat
     implements CriteriaFormat

@@ -487,17 +487,17 @@ CHARACTER SET utf8;
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_assoc__d_definitions__d_state
 (
-    oid                 INT             NOT NULL    AUTO_INCREMENT,
+    PID                 INT             NOT NULL    AUTO_INCREMENT,
 
     /* (FK) */
-    definitions__oid    CHAR(36)        NOT NULL,
-    state__oid          VARCHAR(64)     NOT NULL,
+    definitions__PID    CHAR(36)        NOT NULL,
+    state__PID          VARCHAR(64)     NOT NULL,
 
     /* (PK) */
-    PRIMARY KEY (oid),
+    PRIMARY KEY (PID),
     
     /* INDEX */
-    UNIQUE (definitions__oid, state__oid)
+    UNIQUE (definitions__PID, state__PID)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;

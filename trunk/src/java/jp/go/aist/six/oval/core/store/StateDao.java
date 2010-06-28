@@ -18,21 +18,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.model.definition;
+package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.definition.Criteria;
+import jp.go.aist.six.oval.model.definition.State;
+
 
 
 
 /**
- *
- * @author	Akihito Nakamura, AIST
+ * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public interface CriteriaFormat
+public class StateDao
+    extends OvalEntityDao<State>
 {
 
-    public String format( Criteria criteria );
+    public StateDao()
+    {
+        super( State.class );
+    }
 
 }
-// CriteriaFormatter
+// StateDao

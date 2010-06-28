@@ -28,7 +28,7 @@ import jp.go.aist.six.util.orm.Association;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: OvalDefinitionsTestAssociation.java 440 2010-03-23 05:11:44Z akihito $
+ * @version $Id$
  */
 public class OvalDefinitionsTestAssociation
     extends Association<OvalDefinitions, Test>

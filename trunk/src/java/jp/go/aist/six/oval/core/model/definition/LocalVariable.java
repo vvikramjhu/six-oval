@@ -27,7 +27,7 @@ import jp.go.aist.six.oval.model.definition.Variable;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: LocalVariable.java 736 2010-05-07 06:42:16Z akihito $
+ * @version $Id$
  */
 public class LocalVariable
     extends Variable
