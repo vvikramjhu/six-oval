@@ -31,7 +31,7 @@ import jp.go.aist.six.util.orm.AbstractPersistable;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class EntityBaseType
+public abstract class EntityBase
     extends AbstractPersistable
 {
 
@@ -59,7 +59,7 @@ public abstract class EntityBaseType
     /**
      * Constructor.
      */
-    public EntityBaseType()
+    public EntityBase()
     {
     }
 
@@ -67,7 +67,7 @@ public abstract class EntityBaseType
     /**
      * Constructor.
      */
-    public EntityBaseType(
+    public EntityBase(
                     final String data
                     )
     {
@@ -189,11 +189,11 @@ public abstract class EntityBaseType
             return true;
         }
 
-        if (!(obj instanceof EntityBaseType)) {
+        if (!(obj instanceof EntityBase)) {
             return false;
         }
 
-        EntityBaseType  other = (EntityBaseType)obj;
+        EntityBase  other = (EntityBase)obj;
         String  other_data = other.getData();
         String   this_data =  this.getData();
         if (this_data == other_data
@@ -232,4 +232,4 @@ public abstract class EntityBaseType
     }
 
 }
-// EntityBaseType
+// EntityBase

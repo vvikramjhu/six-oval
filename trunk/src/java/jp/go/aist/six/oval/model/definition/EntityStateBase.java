@@ -29,8 +29,8 @@ import jp.go.aist.six.oval.model.common.Check;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class EntityStateBaseType
-    extends EntityBaseType
+public abstract class EntityStateBase
+    extends EntityBase
 {
 
     public static final Check  DEFAULT_ENTITY_CHECK = Check.ALL;
@@ -46,7 +46,7 @@ public abstract class EntityStateBaseType
     /**
      * Constructor.
      */
-    public EntityStateBaseType()
+    public EntityStateBase()
     {
     }
 
@@ -54,13 +54,12 @@ public abstract class EntityStateBaseType
     /**
      * Constructor.
      */
-    public EntityStateBaseType(
+    public EntityStateBase(
                     final String data
                     )
     {
         super( data );
     }
-
 
 
 
@@ -124,12 +123,12 @@ public abstract class EntityStateBaseType
             return true;
         }
 
-        if (!(obj instanceof EntityStateBaseType)) {
+        if (!(obj instanceof EntityStateBase)) {
             return false;
         }
 
         if (super.equals( obj )) {
-            EntityStateBaseType  other = (EntityStateBaseType)obj;
+            EntityStateBase  other = (EntityStateBase)obj;
             Check  other_e_check = other.getEntityCheck();
             Check   this_e_check =  this.getEntityCheck();
             if (this_e_check == other_e_check) {
@@ -155,4 +154,4 @@ public abstract class EntityStateBaseType
     }
 
 }
-// EntityStateBaseType
+// EntityStateBase

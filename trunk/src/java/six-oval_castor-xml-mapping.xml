@@ -743,9 +743,9 @@
 
 
     <!-- ======================================================= -->
-    <!-- EntityBaseType                                          -->
+    <!-- EntityBase                                              -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.EntityBaseType"
+    <class name="jp.go.aist.six.oval.model.definition.EntityBase"
         verify-constructable="false">
 
         <field name="data" type="string">
@@ -777,7 +777,7 @@
     <!-- EntityObjectBaseType                                    -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definition.EntityObjectBaseType"
-        extends="jp.go.aist.six.oval.model.definition.EntityBaseType"
+        extends="jp.go.aist.six.oval.model.definition.EntityBase"
         verify-constructable="false">
 
         <field name="varCheck" type="string" 
@@ -807,10 +807,10 @@
 
 
     <!-- ======================================================= -->
-    <!-- EntityStateBaseType                                     -->
+    <!-- EntityStateBase                                         -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.EntityStateBaseType"
-        extends="jp.go.aist.six.oval.model.definition.EntityBaseType"
+    <class name="jp.go.aist.six.oval.model.definition.EntityStateBase"
+        extends="jp.go.aist.six.oval.model.definition.EntityBase"
         verify-constructable="false">
 
         <field name="entityCheck" type="string" 

@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.common.Check;
  * @version $Id$
  */
 public abstract class EntityObjectBaseType
-    extends EntityBaseType
+    extends EntityBase
 {
 
     public static final Check  DEFAULT_VARIABLE_CHECK = Check.ALL;

@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.core.model.ComponentType;
-import jp.go.aist.six.oval.model.definition.EntityStateBaseType;
+import jp.go.aist.six.oval.model.definition.EntityStateBase;
 import jp.go.aist.six.oval.model.definition.EntityStateStringType;
 import jp.go.aist.six.oval.model.definition.State;
 import java.util.EnumMap;
@@ -38,8 +38,8 @@ public class FileState
     extends State
 {
 
-    private Map<FileProperty,EntityStateBaseType>  _properties =
-        new EnumMap<FileProperty,EntityStateBaseType>( FileProperty.class );
+    private Map<FileProperty,EntityStateBase>  _properties =
+        new EnumMap<FileProperty,EntityStateBase>( FileProperty.class );
     //EntityStateBaseType{0..1}
 
 //    private EntityStateStringType  _path;
@@ -90,7 +90,7 @@ public class FileState
     /**
      *
      */
-    protected Map<FileProperty,EntityStateBaseType> _getProperties()
+    protected Map<FileProperty,EntityStateBase> _getProperties()
     {
         return _properties;
     }
@@ -160,8 +160,8 @@ public class FileState
 
         if (super.equals( obj )) {
             FileState  other = (FileState)obj;
-            Map<FileProperty,EntityStateBaseType>  other_props = other._getProperties();
-            Map<FileProperty,EntityStateBaseType>   this_props =  this._getProperties();
+            Map<FileProperty,EntityStateBase>  other_props = other._getProperties();
+            Map<FileProperty,EntityStateBase>   this_props =  this._getProperties();
             if (this_props == other_props
                             ||  (this_props != null  &&  this_props.equals( other_props ))) {
                 return true;

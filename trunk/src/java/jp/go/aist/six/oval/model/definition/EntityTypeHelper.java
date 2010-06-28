@@ -31,8 +31,8 @@ public class EntityTypeHelper
 {
 
     public static boolean equals(
-                    final EntityBaseType obj1,
-                    final EntityBaseType obj2
+                    final EntityBase obj1,
+                    final EntityBase obj2
                     )
     {
         if (obj1 == obj2  ||  (obj1 != null  &&  obj1.equals( obj2 ))) {

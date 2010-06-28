@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.core.model.ComponentType;
 import jp.go.aist.six.oval.model.definition.EntityStateAnySimpleType;
-import jp.go.aist.six.oval.model.definition.EntityStateBaseType;
+import jp.go.aist.six.oval.model.definition.EntityStateBase;
 import jp.go.aist.six.oval.model.definition.EntityStateStringType;
 import jp.go.aist.six.oval.model.definition.State;
 import java.util.EnumMap;
@@ -48,8 +48,8 @@ public class RegistryState
         VALUE;
     }
 
-    private Map<Property,EntityStateBaseType>  _properties =
-        new EnumMap<Property,EntityStateBaseType>( Property.class );
+    private Map<Property,EntityStateBase>  _properties =
+        new EnumMap<Property,EntityStateBase>( Property.class );
 
 //    private EntityStateRegistryHiveType  _hive;
 //    //{0..1}
@@ -92,7 +92,7 @@ public class RegistryState
     /**
      *
      */
-    protected Map<Property,EntityStateBaseType> _getProperties()
+    protected Map<Property,EntityStateBase> _getProperties()
     {
         return _properties;
     }
@@ -256,8 +256,8 @@ public class RegistryState
 
         if (super.equals( obj )) {
             RegistryState  other = (RegistryState)obj;
-            Map<Property,EntityStateBaseType>  other_props = other._getProperties();
-            Map<Property,EntityStateBaseType>   this_props =  this._getProperties();
+            Map<Property,EntityStateBase>  other_props = other._getProperties();
+            Map<Property,EntityStateBase>   this_props =  this._getProperties();
             if (this_props == other_props
                             ||  (this_props != null  &&  this_props.equals( other_props ))) {
                 return true;
