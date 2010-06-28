@@ -774,9 +774,9 @@
 
 
     <!-- ======================================================= -->
-    <!-- EntityObjectBaseType                                    -->
+    <!-- EntityObjectBase                                        -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.EntityObjectBaseType"
+    <class name="jp.go.aist.six.oval.model.definition.EntityObjectBase"
         extends="jp.go.aist.six.oval.model.definition.EntityBase"
         verify-constructable="false">
 
@@ -792,7 +792,7 @@
     <!-- EntityObjectIntType                                     -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definition.EntityObjectIntType"
-        extends="jp.go.aist.six.oval.model.definition.EntityObjectBaseType">
+        extends="jp.go.aist.six.oval.model.definition.EntityObjectBase">
     </class>
 
 
@@ -801,7 +801,7 @@
     <!-- EntityObjectStringType                                  -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definition.EntityObjectStringType"
-        extends="jp.go.aist.six.oval.model.definition.EntityObjectBaseType">
+        extends="jp.go.aist.six.oval.model.definition.EntityObjectBase">
     </class>
 
 

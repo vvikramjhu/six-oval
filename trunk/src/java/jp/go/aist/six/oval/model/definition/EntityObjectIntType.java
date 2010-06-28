@@ -28,7 +28,7 @@ package jp.go.aist.six.oval.model.definition;
  * @version $Id$
  */
 public class EntityObjectIntType
-    extends EntityObjectBaseType
+    extends EntityObjectBase
 {
 
     /**

@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.common.Check;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class EntityObjectBaseType
+public abstract class EntityObjectBase
     extends EntityBase
 {
 
@@ -42,7 +42,7 @@ public abstract class EntityObjectBaseType
     /**
      * Constructor.
      */
-    public EntityObjectBaseType()
+    public EntityObjectBase()
     {
     }
 
@@ -50,7 +50,7 @@ public abstract class EntityObjectBaseType
     /**
      * Constructor.
      */
-    public EntityObjectBaseType(
+    public EntityObjectBase(
                     final String data
                     )
     {
@@ -101,12 +101,12 @@ public abstract class EntityObjectBaseType
             return true;
         }
 
-        if (!(obj instanceof EntityObjectBaseType)) {
+        if (!(obj instanceof EntityObjectBase)) {
             return false;
         }
 
         if (super.equals( obj )) {
-            EntityObjectBaseType  other = (EntityObjectBaseType)obj;
+            EntityObjectBase  other = (EntityObjectBase)obj;
             Check  other_check = other.getVarCheck();
             Check   this_check =  this.getVarCheck();
             if (this_check == other_check) {
@@ -127,4 +127,4 @@ public abstract class EntityObjectBaseType
     }
 
 }
-// EntityObjectBaseType
+// EntityObjectBase
