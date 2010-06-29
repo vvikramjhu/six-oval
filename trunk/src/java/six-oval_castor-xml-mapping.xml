@@ -827,6 +827,15 @@
 
 
     <!-- ======================================================= -->
+    <!-- EntityStateInt                                          -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.definition.EntityStateInt"
+        extends="jp.go.aist.six.oval.model.definition.EntityStateBase">
+    </class>
+
+
+
+    <!-- ======================================================= -->
     <!-- EntityStateString                                       -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definition.EntityStateString"
@@ -835,9 +844,9 @@
 
 
     <!-- ======================================================= -->
-    <!-- EntityStateAnySimpleType                                -->
+    <!-- EntityStateAnySimple                                    -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.EntityStateAnySimpleType"
+    <class name="jp.go.aist.six.oval.model.definition.EntityStateAnySimple"
         extends="jp.go.aist.six.oval.model.definition.EntityStateBase">
     </class>
 
@@ -1559,7 +1568,7 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"/>
 
         <field name="subExpression" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateAnySimpleType">
+            type="jp.go.aist.six.oval.model.definition.EntityStateAnySimple">
             <bind-xml name="subexpression" node="element"/>
         </field>
     </class>
@@ -2260,9 +2269,9 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <!-- ======================================================= -->
-    <!-- EntityObjectRegistryHiveType                            -->
+    <!-- EntityObjectRegistryHive                                -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHiveType"
+    <class name="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHive"
         extends="jp.go.aist.six.oval.model.definition.EntityObjectString">
     </class>
 
@@ -2561,8 +2570,33 @@
         <map-to xml="metabase_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
+        <field name="key" 
+            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            <bind-xml name="key" node="element"/>
+        </field>
+
+        <field name="ID" 
+            type="jp.go.aist.six.oval.model.definition.EntityStateInt">
+            <bind-xml name="id" node="element"/>
+        </field>
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="userType" 
+            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            <bind-xml name="user_type" node="element"/>
+        </field>
+
+        <field name="dataType" 
+            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            <bind-xml name="data_type" node="element"/>
+        </field>
+
         <field name="data" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateAnySimpleType">
+            type="jp.go.aist.six.oval.model.definition.EntityStateAnySimple">
             <bind-xml name="data" node="element"/>
         </field>
     </class>
@@ -2658,7 +2692,7 @@
         </field>
         
         <field name="hive" 
-            type="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHiveType" >
+            type="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHive" >
             <bind-xml name="hive" node="element"/>
         </field>
 <!--
@@ -2691,8 +2725,28 @@
         <map-to xml="registry_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
+        <field name="hive" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateRegistryHive">
+            <bind-xml name="hive" node="element"/>
+        </field>
+
+        <field name="key" 
+            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            <bind-xml name="key" node="element"/>
+        </field>
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="type" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateRegistryType">
+            <bind-xml name="type" node="element"/>
+        </field>
+
         <field name="value" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateAnySimpleType">
+            type="jp.go.aist.six.oval.model.definition.EntityStateAnySimple">
             <bind-xml name="value" node="element"/>
         </field>
     </class>

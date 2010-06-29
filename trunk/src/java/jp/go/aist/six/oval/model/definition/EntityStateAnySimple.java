@@ -18,9 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
-
-import jp.go.aist.six.oval.model.definition.EntityStateString;
+package jp.go.aist.six.oval.model.definition;
 
 
 
@@ -29,14 +27,14 @@ import jp.go.aist.six.oval.model.definition.EntityStateString;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class EntityStateRegistryHiveType
-    extends EntityStateString
+public class EntityStateAnySimple
+    extends EntityStateBase
 {
 
     /**
      * Constructor.
      */
-    public EntityStateRegistryHiveType()
+    public EntityStateAnySimple()
     {
     }
 
@@ -44,25 +42,11 @@ public class EntityStateRegistryHiveType
     /**
      * Constructor.
      */
-    public EntityStateRegistryHiveType(
+    public EntityStateAnySimple(
                     final String data
                     )
     {
         super( data );
-    }
-
-
-
-    //**************************************************************
-    //  EntityBaseType
-    //**************************************************************
-
-    @Override
-    public void setData(
-                    final String data
-                    )
-    {
-        super.setData( RegistryHive.valueOf( data ).name() );
     }
 
 
@@ -88,7 +72,7 @@ public class EntityStateRegistryHiveType
             return true;
         }
 
-        if (!(obj instanceof EntityStateRegistryHiveType)) {
+        if (!(obj instanceof EntityStateAnySimple)) {
             return false;
         }
 
@@ -100,8 +84,8 @@ public class EntityStateRegistryHiveType
     @Override
     public String toString()
     {
-        return "EntityStateRegistryHiveType[" + super.toString() + "]";
+        return "EntityStateAnySimple[" + super.toString() + "]";
     }
 
 }
-// EntityStateRegistryHiveType
+// EntityStateAnySimple

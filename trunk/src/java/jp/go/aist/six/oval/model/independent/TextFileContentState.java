@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.ComponentType;
-import jp.go.aist.six.oval.model.definition.EntityStateAnySimpleType;
+import jp.go.aist.six.oval.model.definition.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definition.EntityStateString;
 import jp.go.aist.six.oval.model.definition.State;
 
@@ -46,7 +46,7 @@ public class TextFileContentState
     private EntityStateString  _line;
     //{0..1}
 
-    private EntityStateAnySimpleType  _subExpression;
+    private EntityStateAnySimple  _subExpression;
     //{0..1}
 
 
@@ -128,14 +128,14 @@ public class TextFileContentState
     /**
      */
     public void setSubExpression(
-                    final EntityStateAnySimpleType subexpression
+                    final EntityStateAnySimple subexpression
                     )
     {
         _subExpression = subexpression;
     }
 
 
-    public EntityStateAnySimpleType getSubExpression()
+    public EntityStateAnySimple getSubExpression()
     {
         return _subExpression;
     }
@@ -176,7 +176,7 @@ public class TextFileContentState
         EntityStateString  line = getLine();
         result = prime * result + ((line == null) ? 0 : line.hashCode());
 
-        EntityStateAnySimpleType  subexpression = getSubExpression();
+        EntityStateAnySimple  subexpression = getSubExpression();
         result = prime * result + ((subexpression == null) ? 0 : subexpression.hashCode());
 
         return result;
@@ -210,8 +210,8 @@ public class TextFileContentState
                     EntityStateString   this_line =  this.getLine();
                     if (this_line == other_line
                                     ||  (this_line != null  &&  this_line.equals( other_line ))) {
-                        EntityStateAnySimpleType  other_subexpression = other.getSubExpression();
-                        EntityStateAnySimpleType   this_subexpression =  this.getSubExpression();
+                        EntityStateAnySimple  other_subexpression = other.getSubExpression();
+                        EntityStateAnySimple   this_subexpression =  this.getSubExpression();
                         if (this_subexpression == other_subexpression
                                         ||  (this_subexpression != null  &&  this_subexpression.equals( other_subexpression ))) {
                             return true;

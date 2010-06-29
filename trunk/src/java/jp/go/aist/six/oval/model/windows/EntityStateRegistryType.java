@@ -41,6 +41,29 @@ public class EntityStateRegistryType
     }
 
 
+    /**
+     * Constructor.
+     */
+    public EntityStateRegistryType(
+                    final String data
+                    )
+    {
+        super( data );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateRegistryType(
+                    final RegistryType data
+                    )
+    {
+        super( (data == null ? null : data.value()) );
+    }
+
+
+
 
     //**************************************************************
     //  EntityBaseType
@@ -51,7 +74,8 @@ public class EntityStateRegistryType
                     final String data
                     )
     {
-        super.setData( RegistryType.fromValue( data ).value() );
+        String  e = (data == null ? null : RegistryType.fromValue( data ).value() );
+        super.setData( e );
     }
 
 

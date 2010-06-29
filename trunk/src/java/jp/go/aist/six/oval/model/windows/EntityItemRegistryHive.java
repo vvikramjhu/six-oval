@@ -59,7 +59,7 @@ public class EntityItemRegistryHive
                     final RegistryHive data
                     )
     {
-        super( data.name() );
+        super( (data == null ? null : data.name()) );
     }
 
 
@@ -74,11 +74,8 @@ public class EntityItemRegistryHive
                     final String data
                     )
     {
-        if (data != null  &&  data.length() > 0) {
-            RegistryHive.valueOf( data );   //validation
-        }
-
-        super.setData( data );
+        String  e = (data == null ? null : RegistryHive.valueOf( data ).name() );
+        super.setData( e );
     }
 
 

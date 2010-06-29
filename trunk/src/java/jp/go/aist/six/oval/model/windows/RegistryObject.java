@@ -39,7 +39,7 @@ public class RegistryObject
     private RegistryBehaviors  _behaviors;
     //{0..1}
 
-    private EntityObjectRegistryHiveType  _hive;
+    private EntityObjectRegistryHive  _hive;
     //{1..1}
 
     private EntityObjectString  _key;
@@ -82,7 +82,7 @@ public class RegistryObject
                     )
     {
         this( id, version,
-                        new EntityObjectRegistryHiveType( hive.name() ),
+                        new EntityObjectRegistryHive( hive.name() ),
                         new EntityObjectString( key ),
                         new EntityObjectString( name )
         );
@@ -95,7 +95,7 @@ public class RegistryObject
     public RegistryObject(
                     final String id,
                     final int version,
-                    final EntityObjectRegistryHiveType hive,
+                    final EntityObjectRegistryHive hive,
                     final EntityObjectString key,
                     final EntityObjectString name
                     )
@@ -125,7 +125,7 @@ public class RegistryObject
 
 
     public void setHive(
-                    final EntityObjectRegistryHiveType hive
+                    final EntityObjectRegistryHive hive
                     )
     {
         _hive = hive;
@@ -133,7 +133,7 @@ public class RegistryObject
 
 
 
-    public EntityObjectRegistryHiveType getHive()
+    public EntityObjectRegistryHive getHive()
     {
         return _hive;
     }
@@ -195,7 +195,7 @@ public class RegistryObject
         RegistryBehaviors  behaviors = getBehaviors();
         result = prime * result + ((behaviors == null) ? 0 : behaviors.hashCode());
 
-        EntityObjectRegistryHiveType  hive = getHive();
+        EntityObjectRegistryHive  hive = getHive();
         result = prime * result + ((hive == null) ? 0 : hive.hashCode());
 
         EntityObjectString  key = getKey();
@@ -226,8 +226,8 @@ public class RegistryObject
                 EntityObjectString  other_key = other.getKey();
                 EntityObjectString   this_key =  this.getKey();
                 if (EntityTypeHelper.equals( this_key, other_key)) {
-                    EntityObjectRegistryHiveType  other_hive = other.getHive();
-                    EntityObjectRegistryHiveType   this_hive =  this.getHive();
+                    EntityObjectRegistryHive  other_hive = other.getHive();
+                    EntityObjectRegistryHive   this_hive =  this.getHive();
                     if (this_hive == other_hive) {
                         RegistryBehaviors  other_behaviors = other.getBehaviors();
                         RegistryBehaviors   this_behaviors =  this.getBehaviors();

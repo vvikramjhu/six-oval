@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.ComponentType;
-import jp.go.aist.six.oval.model.definition.EntityStateAnySimpleType;
+import jp.go.aist.six.oval.model.definition.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definition.EntityStateBase;
 import jp.go.aist.six.oval.model.definition.EntityStateString;
 import jp.go.aist.six.oval.model.definition.State;
@@ -102,7 +102,7 @@ public class RegistryState
     /**
      */
     public void setHive(
-                    final EntityStateRegistryHiveType hive
+                    final EntityStateRegistryHive hive
                     )
     {
         _properties.put( Property.HIVE, hive  );
@@ -112,9 +112,9 @@ public class RegistryState
 
     /**
      */
-    public EntityStateRegistryHiveType getHive()
+    public EntityStateRegistryHive getHive()
     {
-        return (EntityStateRegistryHiveType)_properties.get( Property.HIVE );
+        return (EntityStateRegistryHive)_properties.get( Property.HIVE );
 //        return _hive;
     }
 
@@ -182,7 +182,7 @@ public class RegistryState
     /**
      */
     public void setValue(
-                    final EntityStateAnySimpleType value
+                    final EntityStateAnySimple value
                     )
     {
         _properties.put( Property.VALUE, value );
@@ -190,9 +190,9 @@ public class RegistryState
     }
 
 
-    public EntityStateAnySimpleType getValue()
+    public EntityStateAnySimple getValue()
     {
-        return (EntityStateAnySimpleType)_properties.get( Property.VALUE );
+        return (EntityStateAnySimple)_properties.get( Property.VALUE );
 //        return _value;
     }
 

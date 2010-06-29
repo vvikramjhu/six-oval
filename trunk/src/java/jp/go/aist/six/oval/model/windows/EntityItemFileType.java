@@ -59,7 +59,7 @@ public class EntityItemFileType
                     final FileType data
                     )
     {
-        super( data.name() );
+        super( (data == null ? null : data.name()) );
     }
 
 
@@ -73,11 +73,8 @@ public class EntityItemFileType
                     final String data
                     )
     {
-        if (data != null  &&  data.length() > 0) {
-            FileType.valueOf( data );   //validation
-        }
-
-        super.setData( data );
+        String  e = (data == null ? null : FileType.valueOf( data ).name() );
+        super.setData( e );
     }
 
 

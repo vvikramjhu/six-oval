@@ -60,7 +60,7 @@ public class EntityItemFamily
                     final Family data
                     )
     {
-        super( data.value() );
+        super( (data == null ? null : data.value()) );
     }
 
 
@@ -74,11 +74,8 @@ public class EntityItemFamily
                     final String data
                     )
     {
-        if (data != null  &&  data.length() > 0) {
-            Family.fromValue( data );   //validation
-        }
-
-        super.setData( data );
+        String  e = (data == null ? null : Family.valueOf( data ).name() );
+        super.setData( e );
     }
 
 

@@ -29,14 +29,14 @@ import jp.go.aist.six.oval.model.definition.EntityObjectString;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class EntityObjectRegistryHiveType
+public class EntityObjectRegistryHive
     extends EntityObjectString
 {
 
     /**
      * Constructor.
      */
-    public EntityObjectRegistryHiveType()
+    public EntityObjectRegistryHive()
     {
     }
 
@@ -44,12 +44,24 @@ public class EntityObjectRegistryHiveType
     /**
      * Constructor.
      */
-    public EntityObjectRegistryHiveType(
+    public EntityObjectRegistryHive(
                     final String data
                     )
     {
         super( data );
     }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityObjectRegistryHive(
+                    final RegistryHive data
+                    )
+    {
+        super( (data == null ? null : data.name()) );
+    }
+
 
 
 
@@ -62,7 +74,8 @@ public class EntityObjectRegistryHiveType
                     final String data
                     )
     {
-        super.setData( RegistryHive.valueOf( data ).name() );
+        String  e = (data == null ? null : RegistryHive.valueOf( data ).name() );
+        super.setData( e );
     }
 
 
@@ -88,7 +101,7 @@ public class EntityObjectRegistryHiveType
             return true;
         }
 
-        if (!(obj instanceof EntityObjectRegistryHiveType)) {
+        if (!(obj instanceof EntityObjectRegistryHive)) {
             return false;
         }
 
@@ -104,4 +117,4 @@ public class EntityObjectRegistryHiveType
     }
 
 }
-// EntityObjectRegistryHiveType
+// EntityObjectRegistryHive

@@ -18,7 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definition;
+package jp.go.aist.six.oval.model.windows;
+
+import jp.go.aist.six.oval.model.definition.EntityStateString;
 
 
 
@@ -27,14 +29,14 @@ package jp.go.aist.six.oval.model.definition;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class EntityStateIntType
-    extends EntityStateBase
+public class EntityStateRegistryHive
+    extends EntityStateString
 {
 
     /**
      * Constructor.
      */
-    public  EntityStateIntType()
+    public EntityStateRegistryHive()
     {
     }
 
@@ -42,7 +44,7 @@ public class EntityStateIntType
     /**
      * Constructor.
      */
-    public EntityStateIntType(
+    public EntityStateRegistryHive(
                     final String data
                     )
     {
@@ -53,27 +55,27 @@ public class EntityStateIntType
     /**
      * Constructor.
      */
-    public EntityStateIntType(
-                    final int data
+    public EntityStateRegistryHive(
+                    final RegistryHive data
                     )
     {
-        super( String.valueOf( data ) );
+        super( (data == null ? null : data.name()) );
     }
 
 
 
-//    public void setValue(
-//                    final int value
-//                    )
-//    {
-//        _value = value;
-//    }
-//
-//
-//    public int getValue()
-//    {
-//        return _value;
-//    }
+    //**************************************************************
+    //  EntityBaseType
+    //**************************************************************
+
+    @Override
+    public void setData(
+                    final String data
+                    )
+    {
+        String  e = (data == null ? null : RegistryHive.valueOf( data ).name() );
+        super.setData( e );
+    }
 
 
 
@@ -98,7 +100,7 @@ public class EntityStateIntType
             return true;
         }
 
-        if (!(obj instanceof EntityStateIntType)) {
+        if (!(obj instanceof EntityStateRegistryHive)) {
             return false;
         }
 
@@ -110,8 +112,8 @@ public class EntityStateIntType
     @Override
     public String toString()
     {
-        return "EntityStateInt[" + super.toString() + "]";
+        return "EntityStateRegistryHive[" + super.toString() + "]";
     }
 
 }
-// EntityStateIntType
+// EntityStateRegistryHive

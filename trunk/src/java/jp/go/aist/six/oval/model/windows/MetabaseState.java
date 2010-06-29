@@ -21,9 +21,9 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.ComponentType;
-import jp.go.aist.six.oval.model.definition.EntityStateAnySimpleType;
+import jp.go.aist.six.oval.model.definition.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definition.EntityStateBase;
-import jp.go.aist.six.oval.model.definition.EntityStateIntType;
+import jp.go.aist.six.oval.model.definition.EntityStateInt;
 import jp.go.aist.six.oval.model.definition.EntityStateString;
 import jp.go.aist.six.oval.model.definition.State;
 import java.util.EnumMap;
@@ -129,9 +129,9 @@ public class MetabaseState
 
     /**
      */
-    public EntityStateIntType getID()
+    public EntityStateInt getID()
     {
-        return (EntityStateIntType)_properties.get( Property.ID );
+        return (EntityStateInt)_properties.get( Property.ID );
 //        return _id;
     }
 
@@ -139,7 +139,7 @@ public class MetabaseState
     /**
      */
     public void setID(
-                    final EntityStateIntType id
+                    final EntityStateInt id
                     )
     {
         _properties.put( Property.ID, id );
@@ -213,9 +213,9 @@ public class MetabaseState
 
     /**
      */
-    public EntityStateAnySimpleType getData()
+    public EntityStateAnySimple getData()
     {
-        return (EntityStateAnySimpleType)_properties.get( Property.DATA );
+        return (EntityStateAnySimple)_properties.get( Property.DATA );
 //        return _data;
     }
 
@@ -223,7 +223,7 @@ public class MetabaseState
     /**
      */
     public void setData(
-                    final EntityStateAnySimpleType data
+                    final EntityStateAnySimple data
                     )
     {
         _properties.put( Property.DATA, data );

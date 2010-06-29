@@ -74,7 +74,8 @@ public class EntityStateFamily
                     final String data
                     )
     {
-        super.setData( Family.fromValue( data ).value() );
+        String  e = (data == null ? null : Family.fromValue( data ).name() );
+        super.setData( e );
     }
 
 
