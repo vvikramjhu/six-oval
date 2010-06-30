@@ -35,8 +35,7 @@ public class DefinitionTestAssociationDao
     extends AssociationDao<Definition,Test,DefinitionTestAssociation>
 {
 
-    public
-    DefinitionTestAssociationDao()
+    public DefinitionTestAssociationDao()
     {
         super( DefinitionTestAssociation.class );
     }

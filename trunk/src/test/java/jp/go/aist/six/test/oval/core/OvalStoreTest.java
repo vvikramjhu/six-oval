@@ -7,6 +7,8 @@ import jp.go.aist.six.oval.model.definition.Definitions;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.model.definition.State;
 import jp.go.aist.six.oval.model.definition.SystemObject;
+import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.system.SystemInfo;
 import org.testng.Assert;
 import org.testng.Reporter;
 import java.util.Collection;
@@ -63,6 +65,16 @@ public class OvalStoreTest
                     )
     throws Exception
     {
+        Reporter.log( "getting object...", true );
+        T  p_eq = _getStore().get( type, e.getPersistentID() );
+        Reporter.log( "...get done", true );
+        Reporter.log( "  @ persistent object: " + p_eq, true );
+
+        Reporter.log( "finding equaivalent...", true );
+        p_eq = _getStore().findEquivalent( type, e );
+        Reporter.log( "...find equivalent done", true );
+        Reporter.log( "  @ equivalent: " + p_eq, true );
+
         Reporter.log( "syncing object...", true );
         T  p = _getStore().sync( type, e );
         Reporter.log( "...sync done", true );
@@ -193,6 +205,47 @@ public class OvalStoreTest
 
         _getStore().sync( OvalDefinitions.class, ovalDefs );
     }
+
+
+
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    //
+    //  System Characteristics
+    //
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    //==============================================================
+    //  oval_system_characteristics
+    //==============================================================
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={"oval.core.store", "oval-sc:oval_system_characteristics"},
+                    dataProvider="oval-sc-oval_system_characteristics",
+                    alwaysRun=true
+                    )
+    public void processOvalSystemCharacteristics(
+                    final String testTarget,
+                    final String filepath,
+                    final Generator generator,
+                    final SystemInfo  systemInfo
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL XML //", true );
+        Reporter.log( "  * target type: " + testTarget, true );
+
+        OvalSystemCharacteristics  sc = _unmarshalFile( filepath, OvalSystemCharacteristics.class );
+
+        Reporter.log( "validating...", true );
+        _validate( sc.getGenerator(), generator );
+        _validate( sc.getSystemInfo(), systemInfo);
+        Reporter.log( "...validation OK", true );
+
+        _getStore().sync( OvalSystemCharacteristics.class, sc );
+    }
+
 
 
 

@@ -74,7 +74,7 @@ public class EntityItemFamily
                     final String data
                     )
     {
-        String  e = (data == null ? null : Family.valueOf( data ).name() );
+        String  e = (data == null ? null : Family.fromValue( data ).value() );
         super.setData( e );
     }
 
