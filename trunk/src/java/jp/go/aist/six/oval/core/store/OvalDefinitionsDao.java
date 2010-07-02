@@ -48,7 +48,7 @@ import java.util.UUID;
  * @version $Id$
  */
 public class OvalDefinitionsDao
-    extends CastorDao<OvalDefinitions>
+    extends CastorDao<String, OvalDefinitions>
 {
 
     /**
@@ -81,7 +81,7 @@ public class OvalDefinitionsDao
     //**************************************************************
 
     @Override
-    public Object create(
+    public String create(
                     final OvalDefinitions defs
                     )
     {

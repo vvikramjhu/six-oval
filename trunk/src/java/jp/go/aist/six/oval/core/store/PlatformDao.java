@@ -30,7 +30,7 @@ import jp.go.aist.six.util.castor.CastorDao;
  * @version $Id$
  */
 public class PlatformDao
-    extends CastorDao<Platform>
+    extends CastorDao<String, Platform>
 {
 
     public PlatformDao()

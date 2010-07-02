@@ -35,7 +35,7 @@ import java.util.UUID;
  * @version $Id$
  */
 public class OvalSystemCharacteristicsDao
-    extends CastorDao<OvalSystemCharacteristics>
+    extends CastorDao<String, OvalSystemCharacteristics>
 {
 
     /**
@@ -53,7 +53,7 @@ public class OvalSystemCharacteristicsDao
     //**************************************************************
 
     @Override
-    public Object create(
+    public String create(
                     final OvalSystemCharacteristics sc
                     )
     {

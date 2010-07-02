@@ -30,7 +30,7 @@ import jp.go.aist.six.util.castor.CastorDao;
  * @version $Id$
  */
 public class CpeDao
-    extends CastorDao<Cpe>
+    extends CastorDao<String, Cpe>
 {
 
     public

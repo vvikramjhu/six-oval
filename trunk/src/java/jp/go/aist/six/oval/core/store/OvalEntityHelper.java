@@ -30,7 +30,7 @@ import jp.go.aist.six.util.castor.DefaultPersistenceHelper;
  * @version $Id$
  */
 public class OvalEntityHelper<T extends OvalEntity>
-    extends DefaultPersistenceHelper<T>
+    extends DefaultPersistenceHelper<String, T>
 {
 
     public OvalEntityHelper()

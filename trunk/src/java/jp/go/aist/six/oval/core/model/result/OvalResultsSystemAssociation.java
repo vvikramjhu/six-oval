@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.core.model.result;
 
 import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.model.result.SystemResult;
-import jp.go.aist.six.util.orm.Association;
+import jp.go.aist.six.util.castor.StandardAssociation;
 
 
 /**
@@ -31,7 +31,7 @@ import jp.go.aist.six.util.orm.Association;
  * @version $Id: OvalResultsSystemAssociation.java 440 2010-03-23 05:11:44Z akihito $
  */
 public class OvalResultsSystemAssociation
-    extends Association<OvalResults, SystemResult>
+    extends StandardAssociation<String, String, OvalResults, SystemResult>
 {
 
     /**

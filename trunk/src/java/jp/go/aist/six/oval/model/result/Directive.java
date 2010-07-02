@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.result;
 
-import jp.go.aist.six.util.orm.AbstractPersistable;
+import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 

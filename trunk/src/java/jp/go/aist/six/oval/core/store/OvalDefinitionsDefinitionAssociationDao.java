@@ -32,7 +32,7 @@ import jp.go.aist.six.util.castor.AssociationDao;
  * @version $Id$
  */
 public class OvalDefinitionsDefinitionAssociationDao
-    extends AssociationDao<OvalDefinitions,Definition,OvalDefinitionsDefinitionAssociation>
+    extends AssociationDao<String, String, String, OvalDefinitions, Definition, OvalDefinitionsDefinitionAssociation>
 {
 
     public OvalDefinitionsDefinitionAssociationDao()

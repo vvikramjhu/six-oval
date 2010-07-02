@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.definition;
 import jp.go.aist.six.oval.model.linux.CveReference;
 import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
 import jp.go.aist.six.util.IsoDate;
-import jp.go.aist.six.util.orm.AbstractPersistable;
+import jp.go.aist.six.util.castor.AbstractPersistable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;

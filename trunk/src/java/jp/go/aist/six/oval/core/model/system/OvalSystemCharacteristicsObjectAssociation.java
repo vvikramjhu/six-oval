@@ -20,9 +20,9 @@
 
 package jp.go.aist.six.oval.core.model.system;
 
-import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.CollectedSystemObject;
-import jp.go.aist.six.util.orm.Association;
+import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
+import jp.go.aist.six.util.castor.StandardAssociation;
 
 
 /**
@@ -31,7 +31,7 @@ import jp.go.aist.six.util.orm.Association;
  * @version $Id: OvalSystemCharacteristicsObjectAssociation.java 440 2010-03-23 05:11:44Z akihito $
  */
 public class OvalSystemCharacteristicsObjectAssociation
-    extends Association<OvalSystemCharacteristics, CollectedSystemObject>
+    extends StandardAssociation<String, String, OvalSystemCharacteristics, CollectedSystemObject>
 {
 
     /**

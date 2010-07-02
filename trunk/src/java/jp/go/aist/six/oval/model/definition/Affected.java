@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.common.Family;
-import jp.go.aist.six.util.orm.AbstractPersistable;
+import jp.go.aist.six.util.castor.AbstractPersistable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -36,7 +36,7 @@ import java.util.Collection;
  * @version $Id$
  */
 public class Affected
-extends AbstractPersistable
+    extends AbstractPersistable
 {
 
     private Collection<Platform>  _platform = new ArrayList<Platform>();

@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.system;
 
 import jp.go.aist.six.oval.core.model.system.ItemType;
-import jp.go.aist.six.util.orm.AbstractPersistable;
+import jp.go.aist.six.util.castor.AbstractPersistable;
 import jp.go.aist.six.util.orm.Dependent;
 
 

@@ -30,7 +30,7 @@ import jp.go.aist.six.util.castor.CastorDao;
  * @version $Id$
  */
 public class ReferenceDao
-    extends CastorDao<Reference>
+    extends CastorDao<String, Reference>
 {
 
     public ReferenceDao()

@@ -21,8 +21,8 @@
 package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.core.model.system.OvalSystemCharacteristicsObjectAssociation;
-import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.CollectedSystemObject;
+import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.util.castor.AssociationDao;
 
 
@@ -32,7 +32,7 @@ import jp.go.aist.six.util.castor.AssociationDao;
  * @version $Id$
  */
 public class OvalSystemCharacteristicsObjectAssociationDao
-    extends AssociationDao<OvalSystemCharacteristics,CollectedSystemObject,OvalSystemCharacteristicsObjectAssociation>
+    extends AssociationDao<String, String, String, OvalSystemCharacteristics, CollectedSystemObject, OvalSystemCharacteristicsObjectAssociation>
 {
 
     public OvalSystemCharacteristicsObjectAssociationDao()

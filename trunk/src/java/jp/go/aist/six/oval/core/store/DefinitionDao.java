@@ -71,7 +71,7 @@ public class DefinitionDao
     //**************************************************************
 
     @Override
-    public Object create(
+    public String create(
                     final Definition def
                     )
     {

@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.core.model.definition;
 
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.model.definition.SystemObject;
-import jp.go.aist.six.util.orm.Association;
+import jp.go.aist.six.util.castor.StandardAssociation;
 
 
 /**
@@ -31,7 +31,7 @@ import jp.go.aist.six.util.orm.Association;
  * @version $Id$
  */
 public class OvalDefinitionsObjectAssociation
-    extends Association<OvalDefinitions, SystemObject>
+    extends StandardAssociation<String, String, OvalDefinitions, SystemObject>
 {
 
     /**

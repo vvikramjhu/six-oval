@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.system;
 
-import jp.go.aist.six.util.orm.Persistable;
+import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 
@@ -30,7 +30,7 @@ import jp.go.aist.six.util.orm.Persistable;
  * @version $Id$
  */
 public class VariableValue
-    implements Persistable
+    extends AbstractPersistable
 {
 
     private String  _variableID;

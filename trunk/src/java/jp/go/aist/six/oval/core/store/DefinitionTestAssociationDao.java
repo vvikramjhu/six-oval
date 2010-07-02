@@ -32,7 +32,7 @@ import jp.go.aist.six.util.castor.AssociationDao;
  * @version $Id$
  */
 public class DefinitionTestAssociationDao
-    extends AssociationDao<Definition,Test,DefinitionTestAssociation>
+    extends AssociationDao<String, String, String, Definition, Test, DefinitionTestAssociation>
 {
 
     public DefinitionTestAssociationDao()

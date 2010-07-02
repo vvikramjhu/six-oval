@@ -34,7 +34,7 @@ import java.util.UUID;
  * @version $Id$
  */
 public class SystemResultDao
-    extends CastorDao<SystemResult>
+    extends CastorDao<String, SystemResult>
 {
 
     public SystemResultDao()
@@ -49,7 +49,7 @@ public class SystemResultDao
     //**************************************************************
 
     @Override
-    public Object create(
+    public String create(
                     final SystemResult system
                     )
     {

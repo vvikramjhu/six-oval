@@ -30,7 +30,7 @@ import jp.go.aist.six.util.castor.CastorDao;
  * @version $Id$
  */
 public class OvalEntityDao<T extends OvalEntity>
-    extends CastorDao<T>
+    extends CastorDao<String, T>
 {
 
     public OvalEntityDao()

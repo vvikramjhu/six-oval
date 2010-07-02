@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.definition;
 
-import jp.go.aist.six.util.orm.AbstractPersistable;
+import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 
@@ -30,7 +30,7 @@ import jp.go.aist.six.util.orm.AbstractPersistable;
  * @version $Id$
  */
 public class Reference
-extends AbstractPersistable
+    extends AbstractPersistable
 {
 
     private String  _source;
