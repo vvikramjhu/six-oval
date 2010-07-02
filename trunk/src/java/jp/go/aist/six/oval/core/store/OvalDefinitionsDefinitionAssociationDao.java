@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.core.store;
 import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsDefinitionAssociation;
 import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
-import jp.go.aist.six.util.castor.AssociationDao;
+import jp.go.aist.six.util.castor.StandardAssociationDao;
 
 
 
@@ -32,7 +32,7 @@ import jp.go.aist.six.util.castor.AssociationDao;
  * @version $Id$
  */
 public class OvalDefinitionsDefinitionAssociationDao
-    extends AssociationDao<String, String, String, OvalDefinitions, Definition, OvalDefinitionsDefinitionAssociation>
+    extends StandardAssociationDao<String, String, OvalDefinitions, Definition, OvalDefinitionsDefinitionAssociation>
 {
 
     public OvalDefinitionsDefinitionAssociationDao()
