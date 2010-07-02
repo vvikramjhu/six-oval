@@ -39,7 +39,7 @@ public class DefinitionStatusHandler
     {
         if (value == null) return null;
         DefinitionStatus  status = (DefinitionStatus)value;
-        return status.toString();
+        return status.name();
     }
 
 
@@ -53,7 +53,7 @@ public class DefinitionStatusHandler
 
 
     @Override
-    public Class getFieldType()
+    public Class<DefinitionStatus> getFieldType()
     {
         return DefinitionStatus.class;
     }
