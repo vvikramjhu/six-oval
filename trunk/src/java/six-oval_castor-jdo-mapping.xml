@@ -1778,6 +1778,11 @@
             <sql name="mb_id" type="char"/>
         </field>
 
+        <field name="ID.datatype" 
+            type="jp.go.aist.six.oval.model.common.Datatype">
+            <sql name="mb_id_datatype" type="char"/>
+        </field>
+
     </class>
 
 

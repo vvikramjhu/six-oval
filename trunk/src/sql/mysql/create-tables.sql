@@ -1457,6 +1457,7 @@ CREATE TABLE IF NOT EXISTS oval_d_object_metabase
 
     /* id */
     mb_id               VARCHAR(255),
+    mb_id_datatype      VARCHAR(16),
 
     /* (PK) */
     PRIMARY KEY (PID)

@@ -22,6 +22,8 @@ package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.util.castor.CastorDao;
+import jp.go.aist.six.util.castor.DefaultPersistenceHelper;
+import jp.go.aist.six.util.orm.PersistenceHelper;
 import jp.go.aist.six.util.search.RelationalBinding;
 import java.util.List;
 
@@ -40,23 +42,40 @@ public class OvalEntityDao<T extends OvalEntity>
     }
 
 
-
     public OvalEntityDao(
                     final Class<? extends T> type
                     )
     {
-        this( type, new OvalEntityHelper<T>() );
+        this( type, new DefaultPersistenceHelper<String, T>() );
     }
 
 
 
     public OvalEntityDao(
                     final Class<? extends T> type,
-                    final OvalEntityHelper<? super T> helper
+                    final PersistenceHelper<String, ? super T> helper
                     )
     {
         super( type, helper );
     }
+
+
+//    public OvalEntityDao(
+//                    final Class<? extends T> type
+//                    )
+//    {
+//        this( type, new OvalEntityHelper<T>() );
+//    }
+//
+//
+//
+//    public OvalEntityDao(
+//                    final Class<? extends T> type,
+//                    final OvalEntityHelper<? super T> helper
+//                    )
+//    {
+//        super( type, helper );
+//    }
 
 
 

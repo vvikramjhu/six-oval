@@ -222,13 +222,13 @@ public class RegistryObject
             RegistryObject  other = (RegistryObject)obj;
             EntityObjectString  other_name = other.getName();
             EntityObjectString   this_name =  this.getName();
-            if (EntityTypeHelper.equals( this_name, other_name)) {
+            if (EntityTypeHelper.equals( this_name, other_name )) {
                 EntityObjectString  other_key = other.getKey();
                 EntityObjectString   this_key =  this.getKey();
-                if (EntityTypeHelper.equals( this_key, other_key)) {
+                if (EntityTypeHelper.equals( this_key, other_key )) {
                     EntityObjectRegistryHive  other_hive = other.getHive();
                     EntityObjectRegistryHive   this_hive =  this.getHive();
-                    if (this_hive == other_hive) {
+                    if (EntityTypeHelper.equals( this_hive, other_hive )) {
                         RegistryBehaviors  other_behaviors = other.getBehaviors();
                         RegistryBehaviors   this_behaviors =  this.getBehaviors();
                         if (this_behaviors == other_behaviors

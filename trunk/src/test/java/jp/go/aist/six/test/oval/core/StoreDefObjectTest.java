@@ -1,16 +1,10 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.model.ComponentType;
-import jp.go.aist.six.oval.model.common.Generator;
-import jp.go.aist.six.oval.model.definition.Cve;
-import jp.go.aist.six.oval.model.definition.Definitions;
-import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.model.definition.SystemObject;
-import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.model.system.SystemInfo;
 import org.testng.Assert;
 import org.testng.Reporter;
-import java.util.Collection;
+import org.testng.annotations.DataProvider;
 
 
 
@@ -18,105 +12,103 @@ import java.util.Collection;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalStoreTest
+public class StoreDefObjectTest
     extends CoreTestBase
 {
-
-    public static void main( final String[] args )
-    throws Exception
-    {
-        OvalStoreTest  test = new OvalStoreTest();
-        test.setUp();
-        test.testAll();
-    }
-
-
-
-    /**
-     */
-    public OvalStoreTest()
-    {
-    }
-
-
-
-    public void testAll()
-    throws Exception
-    {
-        Object[][]  data = ovalDefObjectProvider();
-        for (int  i = 0; i < data.length; i++) {
-            testObject(
-                        (ComponentType)data[i][0],
-                        (String)data[i][1],
-                        (String)data[i][2],
-                        (Integer)data[i][3],
-                        (String)data[i][4]
-                        );
-        }
-    }
-
-
-    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    //
-    //  System Characteristics
-    //
-    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    //==============================================================
-    //  oval_system_characteristics
-    //==============================================================
-
-    /**
-     */
-    @org.testng.annotations.Test(
-                    groups={"oval.core.store", "oval-sc:oval_system_characteristics"},
-                    dataProvider="oval-sc-oval_system_characteristics",
-                    alwaysRun=true
-                    )
-    public void processOvalSystemCharacteristics(
-                    final String testTarget,
-                    final String filepath,
-                    final Generator generator,
-                    final SystemInfo  systemInfo
-                    )
-    throws Exception
-    {
-        Reporter.log( "\n// TEST: OVAL XML //", true );
-        Reporter.log( "  * target type: " + testTarget, true );
-
-        OvalSystemCharacteristics  sc = _unmarshalFile( filepath, OvalSystemCharacteristics.class );
-
-        Reporter.log( "validating...", true );
-        _validate( sc.getGenerator(), generator );
-        _validate( sc.getSystemInfo(), systemInfo);
-        Reporter.log( "...validation OK", true );
-
-        _getStore().sync( OvalSystemCharacteristics.class, sc );
-    }
-
-
-
-
-
-    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    //
-    //  Definitions
-    //
-    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     //==============================================================
     //  object
     //==============================================================
 
+    @DataProvider( name="oval-def-object" )
+    public Object[][] ovalDefObjectProvider()
+    {
+        return new Object[][] {
+                        // independent : family
+                        {
+                            ComponentType.INDEPENDENT_FAMILY,
+                            "test/data/definition/sample_oval-object-family.xml",
+                            "oval:org.mitre.oval:obj:99",
+                            1,
+                            "This is the default family object. Only one family object should exist."
+                        }
+                        ,
+                        // independent : textfilecontent
+                        {
+                            ComponentType.INDEPENDENT_TEXTFILECONTENT,
+                            "test/data/definition/sample_oval-object-textfilecontent.xml",
+                            "oval:org.mitre.oval:obj:7326",
+                            1,
+                            null
+                        }
+                        ,
+                        // linux : dpkginfo
+                        {
+                            ComponentType.LINUX_DPKGINFO,
+                            "test/data/definition/sample_oval-object-dpkginfo.xml",
+                            "oval:org.mitre.oval:obj:10648",
+                            1,
+                            "apache2 package information"
+                        }
+                        ,
+                        // linux : rpminfo
+                        {
+                            ComponentType.LINUX_RPMINFO,
+                            "test/data/definition/sample_oval-object-rpminfo.xml",
+                            "oval:com.redhat.rhsa:obj:20100061001",
+                            301,
+                            null
+                        }
+                        ,
+                        // unux : uname
+                        {
+                            ComponentType.UNIX_UNAME,
+                            "test/data/definition/sample_oval-object-uname.xml",
+                            "oval:org.mitre.oval:obj:2759",
+                            1,
+                            "The single uname object."
+                        }
+                        ,
+                        // windows : file
+                        {
+                            ComponentType.WINDOWS_FILE,
+                            "test/data/definition/sample_oval-object-file.xml",
+                            "oval:org.mitre.oval:obj:222",
+                            1,
+                            "The path to the mshtml.dll file in the system root"
+                        }
+                        ,
+                        // windows : metabase
+                        {
+                            ComponentType.WINDOWS_METABASE,
+                            "test/data/definition/sample_oval-object-metabase.xml",
+                            "oval:org.mitre.oval:obj:556",
+                            2,
+                            null
+                        }
+                        ,
+                        // windows : registry
+                        {
+                            ComponentType.WINDOWS_REGISTRY,
+                            "test/data/definition/sample_oval-object-registry.xml",
+                            "oval:org.mitre.oval:obj:717",
+                            1,
+                            "This registry key holds the service pack installed on the host if one is present."
+                        }
+        };
+    }
+
+
+
     /**
      */
     @org.testng.annotations.Test(
-                    groups={"oval.service", "oval-def:object"},
+                    groups={"oval.service", "oval-def.object"},
                     dataProvider="oval-def-object",
                     dependsOnGroups="test",
                     alwaysRun=true
                     )
-    public void testObject(
+    public void testDefObject(
                     final ComponentType type,
                     final String filepath,
                     final String id,
@@ -137,72 +129,12 @@ public class OvalStoreTest
 
         _syncOvalEntity( SystemObject.class, obj );
 
-        Collection<SystemObject>  all = _getStore().getAll( SystemObject.class );
-        Reporter.log( "  @ all object: #objects=" + all.size(), true );
-        for (SystemObject  o : all) {
-            Reporter.log( "  @ object: " + o, true );
-        }
+//        Collection<SystemObject>  all = _getStore().getAll( SystemObject.class );
+//        Reporter.log( "  @ all object: #objects=" + all.size(), true );
+//        for (SystemObject  o : all) {
+//            Reporter.log( "  @ object: " + o, true );
+//        }
     }
-
-
-
-    //==============================================================
-    //  oval_definitions
-    //==============================================================
-
-    /**
-     */
-    @org.testng.annotations.Test(
-                    groups={"oval.core.store", "oval-def.cve"},
-                    dataProvider="oval-def-cve",
-                    alwaysRun=true
-                    )
-    public void testDefCve(
-                    final String testTarget,
-                    final Cve cve
-                    )
-    throws Exception
-    {
-        Reporter.log( "\n// TEST: OVAL Store //", true );
-        Reporter.log( "  * target type: " + testTarget, true );
-
-        _syncNameEntity( Cve.class, cve );
-    }
-
-
-
-    //==============================================================
-    //  oval_definitions
-    //==============================================================
-
-    /**
-     */
-    @org.testng.annotations.Test(
-                    groups={"oval.core.store", "oval-def:oval_definitions"},
-                    dataProvider="oval-def-oval_definitions",
-                    alwaysRun=true
-                    )
-    public void testOvalDefinitions(
-                    final String testTarget,
-                    final String filepath,
-                    final Generator generator,
-                    final Definitions definitions
-                    )
-    throws Exception
-    {
-        Reporter.log( "\n// TEST: OVAL Store //", true );
-        Reporter.log( "  * target type: " + testTarget, true );
-
-        OvalDefinitions  ovalDefs = _unmarshalFile( filepath, OvalDefinitions.class );
-
-        Reporter.log( "validating...", true );
-        _validate( ovalDefs.getGenerator(), generator );
-        _validate( ovalDefs.getDefinitions(), definitions );
-        Reporter.log( "...validation OK", true );
-
-        _getStore().sync( OvalDefinitions.class, ovalDefs );
-    }
-
 
 }
 // OvalStoreTest
