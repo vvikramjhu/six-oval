@@ -25,6 +25,8 @@ import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Operator;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 
 
@@ -36,6 +38,11 @@ import jp.go.aist.six.oval.model.common.Operator;
 public abstract class Test
     extends CommentedOvalEntity //, Noted
 {
+
+    /**
+     * Logger.
+     */
+    private static Log  _LOG = LogFactory.getLog( Test.class );
 
     public static final Existence  DEFAULT_CHECK_EXISTENCE = Existence.AT_LEAST_ONE_EXISTS;
     private Existence  _checkExistence;
@@ -104,6 +111,9 @@ public abstract class Test
                     final Check check
                     )
     {
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace(  "setCheck: " + check );
+        }
         _check = check;
     }
 

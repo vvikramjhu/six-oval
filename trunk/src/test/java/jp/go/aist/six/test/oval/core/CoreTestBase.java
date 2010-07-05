@@ -164,6 +164,7 @@ public abstract class CoreTestBase
         Reporter.log( "...sync done", true );
         String  pid = p.getPersistentID();
         Reporter.log( "  @ synced: pid=" + pid, true );
+        Reporter.log( "  @ synced object: hash=" + p.hashCode(), true );
 
 
 //        Reporter.log( "finding object by ID...", true );
