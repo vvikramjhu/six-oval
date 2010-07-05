@@ -4,11 +4,14 @@ import jp.go.aist.six.oval.core.service.StandardOvalService;
 import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.NameEntity;
 import jp.go.aist.six.oval.model.OvalElementContainer;
+import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.definition.Affected;
+import jp.go.aist.six.oval.model.definition.Cve;
 import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.model.definition.DefinitionClass;
 import jp.go.aist.six.oval.model.definition.Definitions;
@@ -137,6 +140,74 @@ public abstract class CoreTestBase
 
 
 
+    /**
+     */
+    protected <T extends OvalEntity> void _syncOvalEntity(
+                    final Class<T> type,
+                    final T e
+                    )
+    throws Exception
+    {
+//        Reporter.log( "getting object...", true );
+//        T  p_eq = _getStore().get( type, e.getPersistentID() );
+//        Reporter.log( "...get done", true );
+//        Reporter.log( "  @ persistent object: " + p_eq, true );
+//
+//        Reporter.log( "finding equaivalent...", true );
+//        p_eq = _getStore().findEquivalent( type, e );
+//        Reporter.log( "...find equivalent done", true );
+//        Reporter.log( "  @ equivalent: " + p_eq, true );
+
+        Reporter.log( "syncing object...", true );
+        T  p = _getStore().sync( type, e );
+        Reporter.log( "...sync done", true );
+        String  pid = p.getPersistentID();
+        Reporter.log( "  @ synced: pid=" + pid, true );
+
+        Reporter.log( "getting object...", true );
+
+        T  p2 = _getStore().get( type, pid );
+        Reporter.log( "...get done", true );
+        Reporter.log( "  @ get: object=" + p2, true );
+        Assert.assertEquals( p2.getOvalID(), e.getOvalID() );
+        Assert.assertEquals( p2.getOvalVersion(), e.getOvalVersion() );
+    }
+
+
+
+    /**
+     */
+    protected <T extends NameEntity> void _syncNameEntity(
+                    final Class<T> type,
+                    final T e
+                    )
+    throws Exception
+    {
+//        Reporter.log( "getting object...", true );
+//        T  p_eq = _getStore().get( type, e.getPersistentID() );
+//        Reporter.log( "...get done", true );
+//        Reporter.log( "  @ persistent object: " + p_eq, true );
+
+//        Reporter.log( "finding equaivalent...", true );
+//        p_eq = _getStore().findEquivalent( type, e );
+//        Reporter.log( "...find equivalent done", true );
+//        Reporter.log( "  @ equivalent: " + p_eq, true );
+
+        Reporter.log( "syncing object...", true );
+        T  p = _getStore().sync( type, e );
+        Reporter.log( "...sync done", true );
+        String  pid = p.getPersistentID();
+        Reporter.log( "  @ synced: pid=" + pid, true );
+
+        Reporter.log( "getting object...", true );
+        T  p2 = _getStore().get( type, pid );
+        Reporter.log( "...get done", true );
+        Reporter.log( "  @ get: object=" + p2, true );
+    }
+
+
+
+
     protected void _validate(
                     final OvalElementContainer<?> actual,
                     final OvalElementContainer<?> expected
@@ -179,6 +250,24 @@ public abstract class CoreTestBase
     //  Definitions
     //
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    @DataProvider( name="oval-def-cve" )
+    public Object[][] ovalDefCveProvider()
+    {
+        return new Object[][] {
+                        {
+                            "oval-def:cve",
+                            new Cve( "CVE-2011-0001" )
+                        }
+                        ,
+                        {
+                            "oval-def:cve",
+                            new Cve( "CVE-2011-0002" )
+                        }
+        };
+    }
+
+
 
     //==============================================================
     //  object
