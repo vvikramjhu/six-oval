@@ -27,11 +27,11 @@
 -->
     
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.StoreCveTest"/>
+            <class name="jp.go.aist.six.test.oval.core.StoreDefStateTest"/>
 
             <!--
             <class name="jp.go.aist.six.test.oval.core.StoreDefStateTest"/>
-            <class name="jp.go.aist.six.test.oval.core.StoreCveTest"/>
+            <class name="jp.go.aist.six.test.oval.core.StoreDefCveTest"/>
             <class name="jp.go.aist.six.test.oval.core.OvalStoreTest"/>
             <class name="jp.go.aist.six.test.oval.core.OvalXmlTest"/>
             -->

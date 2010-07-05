@@ -1380,7 +1380,8 @@ CREATE TABLE IF NOT EXISTS oval_d_state_file
     version             VARCHAR(64),
     version_operation   VARCHAR(32)     NOT NULL    DEFAULT 'equals',
                         /* enum('equals', ..., 'case insensitive not equal', ...) */
-
+    version_datatype        VARCHAR(16),
+    
     /* (FK) */
     
     /* (PK) */

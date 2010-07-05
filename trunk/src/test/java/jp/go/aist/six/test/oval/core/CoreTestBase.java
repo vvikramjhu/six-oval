@@ -180,8 +180,9 @@ public abstract class CoreTestBase
         T  p2 = _getStore().get( type, pid );
         Reporter.log( "...get done", true );
         Reporter.log( "  @ get: object=" + p2, true );
-        Assert.assertEquals( p2.getOvalID(), e.getOvalID() );
-        Assert.assertEquals( p2.getOvalVersion(), e.getOvalVersion() );
+        Assert.assertEquals( p2, e );
+//        Assert.assertEquals( p2.getOvalID(), e.getOvalID() );
+//        Assert.assertEquals( p2.getOvalVersion(), e.getOvalVersion() );
     }
 
 

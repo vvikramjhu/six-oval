@@ -1646,6 +1646,11 @@
             type="jp.go.aist.six.oval.model.common.Operation">
             <sql name="version_operation" type="char"/>
         </field>
+
+        <field name="version.datatype" 
+            type="jp.go.aist.six.oval.model.common.Datatype">
+            <sql name="version_datatype" type="char"/>
+        </field>
     </class>
 
 
