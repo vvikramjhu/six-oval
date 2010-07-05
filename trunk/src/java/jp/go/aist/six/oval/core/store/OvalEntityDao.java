@@ -22,6 +22,8 @@ package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.util.castor.CastorDao;
+import jp.go.aist.six.util.search.RelationalBinding;
+import java.util.List;
 
 
 
@@ -54,6 +56,27 @@ public class OvalEntityDao<T extends OvalEntity>
                     )
     {
         super( type, helper );
+    }
+
+
+
+    //**************************************************************
+    //  Dao, CastorDao
+    //**************************************************************
+
+    // Polymorphic loading of abstract class, OvalEnrity, State, Test,...
+    // fails with NullPointerException:
+    //  at org.castor.persist.ObjectTracker.untrackObject(ObjectTracker.java:443)
+
+    // workaround:
+    @Override
+    public T get(
+                    final Object identity
+                    )
+    {
+        List<T>  p_objects = find(
+                        RelationalBinding.equalBinding( "persistentID", identity ) );
+        return (p_objects.size() == 0 ? null : p_objects.get( 0 ) );
     }
 
 }
