@@ -55,6 +55,7 @@ import jp.go.aist.six.oval.model.windows.RegistryHive;
 import jp.go.aist.six.oval.model.windows.RegistryItem;
 import jp.go.aist.six.oval.model.windows.RegistryType;
 import jp.go.aist.six.util.IsoDate;
+import jp.go.aist.six.util.search.RelationalBinding;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -65,6 +66,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -148,6 +150,8 @@ public abstract class CoreTestBase
                     )
     throws Exception
     {
+        Reporter.log( "syncing OvalEntity: " + e, true );
+
 //        Reporter.log( "getting object...", true );
 //        T  p_eq = _getStore().get( type, e.getPersistentID() );
 //        Reporter.log( "...get done", true );
@@ -164,8 +168,18 @@ public abstract class CoreTestBase
         String  pid = p.getPersistentID();
         Reporter.log( "  @ synced: pid=" + pid, true );
 
-        Reporter.log( "getting object...", true );
 
+        Reporter.log( "finding object by ID...", true );
+        RelationalBinding  idFilter = RelationalBinding.equalBinding( "persistentID", pid );
+        List<T>  entities = _getStore().find( type, idFilter );
+        Reporter.log( "...find done", true );
+        T  p3 = entities.get( 0 );
+        Reporter.log( "  @ find by ID: object=" + p3, true );
+        Assert.assertEquals( p3.getOvalID(), e.getOvalID() );
+        Assert.assertEquals( p3.getOvalVersion(), e.getOvalVersion() );
+
+
+        Reporter.log( "getting object...", true );
         T  p2 = _getStore().get( type, pid );
         Reporter.log( "...get done", true );
         Reporter.log( "  @ get: object=" + p2, true );
