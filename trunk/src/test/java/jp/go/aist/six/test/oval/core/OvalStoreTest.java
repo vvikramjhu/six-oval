@@ -5,7 +5,6 @@ import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.definition.Cve;
 import jp.go.aist.six.oval.model.definition.Definitions;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
-import jp.go.aist.six.oval.model.definition.State;
 import jp.go.aist.six.oval.model.definition.SystemObject;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.SystemInfo;
@@ -148,33 +147,26 @@ public class OvalStoreTest
 
 
     //==============================================================
-    //  state
+    //  oval_definitions
     //==============================================================
 
+    /**
+     */
     @org.testng.annotations.Test(
-                    groups={"oval.service", "oval-def:state"},
-                    dataProvider="oval-def-state",
-                    dependsOnGroups="object",
+                    groups={"oval.core.store", "oval-def.cve"},
+                    dataProvider="oval-def-cve",
                     alwaysRun=true
                     )
-    public void testState(
-                    final ComponentType type,
-                    final String filepath,
-                    final String id,
-                    final int version
+    public void testDefCve(
+                    final String testTarget,
+                    final Cve cve
                     )
     throws Exception
     {
         Reporter.log( "\n// TEST: OVAL Store //", true );
-        Reporter.log( "  * object type: " + type, true );
+        Reporter.log( "  * target type: " + testTarget, true );
 
-        State  obj = _unmarshalFile( filepath, State.class );
-
-        Assert.assertEquals( obj.getOvalID(), id );
-        Assert.assertEquals( obj.getOvalVersion(), version );
-        Assert.assertEquals( obj.getStateType(), type );
-
-        _syncOvalEntity( State.class, obj );
+        _syncNameEntity( Cve.class, cve );
     }
 
 
@@ -211,26 +203,6 @@ public class OvalStoreTest
         _getStore().sync( OvalDefinitions.class, ovalDefs );
     }
 
-
-
-    /**
-     */
-    @org.testng.annotations.Test(
-                    groups={"oval.core.store", "oval-def:cve"},
-                    dataProvider="oval-def-cve",
-                    alwaysRun=true
-                    )
-    public void testOvalDefinitions(
-                    final String testTarget,
-                    final Cve cve
-                    )
-    throws Exception
-    {
-        Reporter.log( "\n// TEST: OVAL Store //", true );
-        Reporter.log( "  * target type: " + testTarget, true );
-
-        _syncNameEntity( Cve.class, cve );
-    }
 
 }
 // OvalStoreTest

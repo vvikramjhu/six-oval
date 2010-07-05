@@ -11,7 +11,6 @@ import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.definition.Affected;
-import jp.go.aist.six.oval.model.definition.Cve;
 import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.model.definition.DefinitionClass;
 import jp.go.aist.six.oval.model.definition.Definitions;
@@ -215,6 +214,7 @@ public abstract class CoreTestBase
         T  p2 = _getStore().get( type, pid );
         Reporter.log( "...get done", true );
         Reporter.log( "  @ get: object=" + p2, true );
+        Assert.assertEquals( p2, e );
     }
 
 
@@ -262,24 +262,6 @@ public abstract class CoreTestBase
     //  Definitions
     //
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    @DataProvider( name="oval-def-cve" )
-    public Object[][] ovalDefCveProvider()
-    {
-        return new Object[][] {
-                        {
-                            "oval-def:cve",
-                            new Cve( "CVE-2011-0001" )
-                        }
-                        ,
-                        {
-                            "oval-def:cve",
-                            new Cve( "CVE-2011-0002" )
-                        }
-        };
-    }
-
-
 
     //==============================================================
     //  object
