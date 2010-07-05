@@ -20,7 +20,7 @@ public class StoreDefStateTest
     //==============================================================
 
     @org.testng.annotations.Test(
-                    groups={"oval.service", "oval-def:state"},
+                    groups={"oval.service", "oval-def.state"},
                     dataProvider="oval-def-state",
                     dependsOnGroups="object",
                     alwaysRun=true
