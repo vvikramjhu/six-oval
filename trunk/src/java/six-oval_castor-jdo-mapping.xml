@@ -1329,6 +1329,11 @@
             type="jp.go.aist.six.oval.model.common.Operation">
             <sql name="evr_operation" type="char"/>
         </field>
+
+        <field name="evr.datatype" 
+            type="jp.go.aist.six.oval.model.common.Datatype">
+            <sql name="evr_datatype" type="char"/>
+        </field>
     </class>
 
 
@@ -1353,6 +1358,11 @@
         <field name="evr.operation" 
             type="jp.go.aist.six.oval.model.common.Operation">
             <sql name="evr_operation" type="char"/>
+        </field>
+
+        <field name="evr.datatype" 
+            type="jp.go.aist.six.oval.model.common.Datatype">
+            <sql name="evr_datatype" type="char"/>
         </field>
 
         <field name="version.data" type="string">
