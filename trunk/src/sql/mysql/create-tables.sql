@@ -1070,13 +1070,13 @@ CREATE TABLE IF NOT EXISTS oval_d_object_dpkginfo
     PID                 VARCHAR(64)     NOT NULL,
                         /* id + version, e.g. oval:org.mitre.oval:obj:419:1 */
 
-    pkg_name            VARCHAR(64)     NOT NULL,
+    name                VARCHAR(64)     NOT NULL,
 
     /* (PK) */
     PRIMARY KEY (PID),
 
     /* INDEX */
-    INDEX (pkg_name)
+    INDEX (name)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;
@@ -1091,13 +1091,13 @@ CREATE TABLE IF NOT EXISTS oval_d_object_rpminfo
     PID                 VARCHAR(64)     NOT NULL,
                         /* id + version, e.g. oval:org.mitre.oval:obj:419:1 */
 
-    pkg_name            VARCHAR(64)     NOT NULL,
+    name                VARCHAR(64)     NOT NULL,
 
     /* (PK) */
     PRIMARY KEY (PID),
 
     /* INDEX */
-    INDEX (pkg_name)
+    INDEX (name)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;

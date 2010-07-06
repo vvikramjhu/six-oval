@@ -24,7 +24,6 @@ public class StoreDefObjectTest
     public Object[][] ovalDefObjectProvider()
     {
         return new Object[][] {
-                        // independent : family
                         {
                             ComponentType.INDEPENDENT_FAMILY,
                             "test/data/definition/sample_oval-object-family.xml",
@@ -33,7 +32,7 @@ public class StoreDefObjectTest
                             "This is the default family object. Only one family object should exist."
                         }
                         ,
-                        // independent : textfilecontent
+
                         {
                             ComponentType.INDEPENDENT_TEXTFILECONTENT,
                             "test/data/definition/sample_oval-object-textfilecontent.xml",
@@ -42,7 +41,7 @@ public class StoreDefObjectTest
                             null
                         }
                         ,
-                        // linux : dpkginfo
+
                         {
                             ComponentType.LINUX_DPKGINFO,
                             "test/data/definition/sample_oval-object-dpkginfo.xml",
@@ -51,7 +50,7 @@ public class StoreDefObjectTest
                             "apache2 package information"
                         }
                         ,
-                        // linux : rpminfo
+
                         {
                             ComponentType.LINUX_RPMINFO,
                             "test/data/definition/sample_oval-object-rpminfo.xml",
@@ -60,7 +59,7 @@ public class StoreDefObjectTest
                             null
                         }
                         ,
-                        // unux : uname
+
                         {
                             ComponentType.UNIX_UNAME,
                             "test/data/definition/sample_oval-object-uname.xml",
@@ -69,7 +68,7 @@ public class StoreDefObjectTest
                             "The single uname object."
                         }
                         ,
-                        // windows : file
+
                         {
                             ComponentType.WINDOWS_FILE,
                             "test/data/definition/sample_oval-object-file.xml",
@@ -78,7 +77,7 @@ public class StoreDefObjectTest
                             "The path to the mshtml.dll file in the system root"
                         }
                         ,
-                        // windows : metabase
+
                         {
                             ComponentType.WINDOWS_METABASE,
                             "test/data/definition/sample_oval-object-metabase.xml",
@@ -87,7 +86,7 @@ public class StoreDefObjectTest
                             null
                         }
                         ,
-                        // windows : registry
+
                         {
                             ComponentType.WINDOWS_REGISTRY,
                             "test/data/definition/sample_oval-object-registry.xml",

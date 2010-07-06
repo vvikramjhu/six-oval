@@ -177,7 +177,6 @@ public class StoreDefTestTest
         Reporter.log( "  * object type: " + type, true );
 
         Test  obj = _unmarshalFile( filepath, Test.class );
-        Reporter.log( "  * unmarshalled object: hash=" + obj.hashCode(), true );
 
         Assert.assertEquals( obj.getOvalID(), id );
         Assert.assertEquals( obj.getOvalVersion(), version );

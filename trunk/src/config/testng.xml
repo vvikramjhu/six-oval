@@ -27,9 +27,10 @@
 -->
     
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.StoreDefTestTest"/>
+            <class name="jp.go.aist.six.test.oval.core.StoreDefObjectTest"/>
 
             <!--
+            <class name="jp.go.aist.six.test.oval.core.StoreDefTestTest"/>
             <class name="jp.go.aist.six.test.oval.core.StoreDefObjectTest"/>
             <class name="jp.go.aist.six.test.oval.core.StoreDefStateTest"/>
             <class name="jp.go.aist.six.test.oval.core.StoreDefCveTest"/>

@@ -69,7 +69,9 @@ public abstract class LinuxPkgInfoObject
                     final String name
                     )
     {
-        this( id, version, new EntityObjectString( name ) );
+        this( id, version,
+                        (name == null ? null : (new EntityObjectString( name )))
+                        );
     }
 
 

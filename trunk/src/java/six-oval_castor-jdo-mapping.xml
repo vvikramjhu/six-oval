@@ -1286,7 +1286,7 @@
         </field>
 
         <field name="name.data" type="string">
-            <sql name="pkg_name" type="char"/>
+            <sql name="name" type="char"/>
         </field>
     </class>
 
@@ -1306,7 +1306,7 @@
         </field>
 
         <field name="name.data" type="string">
-            <sql name="pkg_name" type="char"/>
+            <sql name="name" type="char"/>
         </field>
     </class>
 
