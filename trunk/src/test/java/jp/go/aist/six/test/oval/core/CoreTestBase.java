@@ -147,8 +147,6 @@ public abstract class CoreTestBase
                     )
     throws Exception
     {
-        Reporter.log( "syncing OvalEntity: " + e, true );
-
 //        Reporter.log( "getting object...", true );
 //        T  p_eq = _getStore().get( type, e.getPersistentID() );
 //        Reporter.log( "...get done", true );
@@ -159,12 +157,12 @@ public abstract class CoreTestBase
 //        Reporter.log( "...find equivalent done", true );
 //        Reporter.log( "  @ equivalent: " + p_eq, true );
 
-        Reporter.log( "syncing object...", true );
+        Reporter.log( "syncing OvalEntity: " + e, true );
         T  p = _getStore().sync( type, e );
         Reporter.log( "...sync done", true );
         String  pid = p.getPersistentID();
         Reporter.log( "  @ synced: pid=" + pid, true );
-        Reporter.log( "  @ synced object: hash=" + p.hashCode(), true );
+        Reporter.log( "  @ synced: hash=" + p.hashCode(), true );
 
 
 //        Reporter.log( "finding object by ID...", true );
@@ -181,6 +179,7 @@ public abstract class CoreTestBase
         T  p2 = _getStore().get( type, pid );
         Reporter.log( "...get done", true );
         Reporter.log( "  @ get: object=" + p2, true );
+        Reporter.log( "  @ get: hash=" + p.hashCode(), true );
         Assert.assertEquals( p2, e );
 //        Assert.assertEquals( p2.getOvalID(), e.getOvalID() );
 //        Assert.assertEquals( p2.getOvalVersion(), e.getOvalVersion() );
