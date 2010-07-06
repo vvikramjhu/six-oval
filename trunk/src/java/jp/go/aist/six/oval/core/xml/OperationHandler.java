@@ -34,12 +34,13 @@ public class OperationHandler
     }
 
 
+
     @Override
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        Operation  e = (Operation)value;
-        return e.value();
+        Operation  type = (Operation)value;
+        return type.getName();
     }
 
 
@@ -47,7 +48,7 @@ public class OperationHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return Operation.fromValue( (String)value );
+        return Operation.valueOf( (String)value );
     }
 
 

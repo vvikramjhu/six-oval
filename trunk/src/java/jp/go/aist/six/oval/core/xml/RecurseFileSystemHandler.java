@@ -39,8 +39,8 @@ public class RecurseFileSystemHandler
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        RecurseFileSystem  e = (RecurseFileSystem)value;
-        return e.value();
+        RecurseFileSystem  type = (RecurseFileSystem)value;
+        return type.getName();
     }
 
 
@@ -48,7 +48,7 @@ public class RecurseFileSystemHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return RecurseFileSystem.fromValue( (String)value );
+        return RecurseFileSystem.valueOf( (String)value );
     }
 
 

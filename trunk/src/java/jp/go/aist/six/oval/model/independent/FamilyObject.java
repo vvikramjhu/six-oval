@@ -100,8 +100,7 @@ public class FamilyObject
     @Override
     public String toString()
     {
-        return "FamilyObject[" + super.toString()
-                        + "]";
+        return "FamilyObject[" + super.toString() + "]";
     }
 
 }

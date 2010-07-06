@@ -38,8 +38,8 @@ public class DefinitionClassHandler
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        DefinitionClass  e = (DefinitionClass)value;
-        return e.value();
+        DefinitionClass  type = (DefinitionClass)value;
+        return type.getName();
     }
 
 
@@ -47,7 +47,7 @@ public class DefinitionClassHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return DefinitionClass.fromValue( (String)value );
+        return DefinitionClass.valueOf( (String)value );
     }
 
 

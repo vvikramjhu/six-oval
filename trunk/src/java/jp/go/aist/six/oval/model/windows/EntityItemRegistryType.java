@@ -59,7 +59,7 @@ public class EntityItemRegistryType
                     final RegistryType data
                     )
     {
-        super( (data == null ? null : data.value()) );
+        super( (data == null ? null : data.getName()) );
     }
 
 
@@ -73,8 +73,12 @@ public class EntityItemRegistryType
                     final String data
                     )
     {
-        String  e = (data == null ? null : RegistryType.fromValue( data ).value() );
-        super.setData( e );
+        if (data != null) {
+            // validation
+            RegistryType.valueOf( data );
+        }
+
+        super.setData( data );
     }
 
 

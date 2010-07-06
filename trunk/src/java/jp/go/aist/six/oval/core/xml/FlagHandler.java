@@ -44,8 +44,8 @@ public class FlagHandler
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        Flag  e = (Flag)value;
-        return e.value();
+        Flag  type = (Flag)value;
+        return type.getName();
     }
 
 
@@ -53,7 +53,7 @@ public class FlagHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return Flag.fromValue( (String)value );
+        return Flag.valueOf( (String)value );
     }
 
 

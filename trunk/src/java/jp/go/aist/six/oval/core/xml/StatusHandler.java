@@ -45,7 +45,7 @@ public class StatusHandler
     {
         if (value == null) return null;
         Status  e = (Status)value;
-        return e.value();
+        return e.getName();
     }
 
 
@@ -53,7 +53,7 @@ public class StatusHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return Status.fromValue( (String)value );
+        return Status.valueOf( (String)value );
     }
 
 

@@ -35,12 +35,13 @@ public class RecurseDirectionHandler
     }
 
 
+
     @Override
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
         RecurseDirection  e = (RecurseDirection)value;
-        return e.value();
+        return e.getName();
     }
 
 
@@ -48,7 +49,7 @@ public class RecurseDirectionHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return RecurseDirection.fromValue( (String)value );
+        return RecurseDirection.valueOf( (String)value );
     }
 
 

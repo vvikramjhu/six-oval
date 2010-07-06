@@ -34,12 +34,13 @@ public class RegistryHiveHandler
     }
 
 
+
     @Override
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
         RegistryHive  type = (RegistryHive)value;
-        return type.toString();
+        return type.getName();
     }
 
 

@@ -74,8 +74,12 @@ public class EntityObjectRegistryHive
                     final String data
                     )
     {
-        String  e = (data == null ? null : RegistryHive.valueOf( data ).getName() );
-        super.setData( e );
+        if (data != null) {
+            //validation
+            RegistryHive.valueOf( data );
+        }
+
+        super.setData( data );
     }
 
 

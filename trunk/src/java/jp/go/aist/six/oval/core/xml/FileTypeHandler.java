@@ -39,7 +39,7 @@ public class FileTypeHandler
     {
         if (value == null) return null;
         FileType  type = (FileType)value;
-        return type.toString();
+        return type.getName();
     }
 
 

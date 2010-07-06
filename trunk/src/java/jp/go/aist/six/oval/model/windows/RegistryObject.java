@@ -82,9 +82,9 @@ public class RegistryObject
                     )
     {
         this( id, version,
-                        new EntityObjectRegistryHive( hive.name() ),
-                        new EntityObjectString( key ),
-                        new EntityObjectString( name )
+                        (hive == null ? null : (new EntityObjectRegistryHive( hive.getName() ))),
+                        (key == null ? null : (new EntityObjectString( key ))),
+                        (name == null ? null : (new EntityObjectString( name )))
         );
     }
 

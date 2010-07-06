@@ -34,12 +34,13 @@ public class OperatorHandler
     }
 
 
+
     @Override
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
         Operator  type = (Operator)value;
-        return type.name();
+        return type.getName();
     }
 
 

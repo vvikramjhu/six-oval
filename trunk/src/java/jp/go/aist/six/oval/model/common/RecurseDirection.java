@@ -20,59 +20,86 @@
 
 package jp.go.aist.six.oval.model.common;
 
+import java.io.Serializable;
+import java.util.HashMap;
+
+
 
 
 /**
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public enum RecurseDirection
+public final class RecurseDirection
+    implements Serializable
 {
 
-    NONE( "none" ),
-    UP( "up" ),
-    DOWN( "down" );
+    private static final String  _NONE_  = "none";
+    private static final String  _UP_    = "up";
+    private static final String  _DOWN_  = "down";
+
+
+    public static final RecurseDirection  NONE  = new RecurseDirection( _NONE_ );
+    public static final RecurseDirection  UP    = new RecurseDirection( _UP_ );
+    public static final RecurseDirection  DOWN  = new RecurseDirection( _DOWN_ );
+
+
+
+    private static HashMap<String, RecurseDirection> _INIT_()
+    {
+        HashMap<String, RecurseDirection>  map = new HashMap<String, RecurseDirection>();
+        map.put( _NONE_,  NONE );
+        map.put( _UP_,    UP   );
+        map.put( _DOWN_,  DOWN );
+        return map;
+    }
+
+    private static final HashMap<String, RecurseDirection>  _INSTANCES_ = _INIT_();
+
 
 
 
     /**
-     * An instance factory method.
      */
-    public static RecurseDirection fromValue(
-                    final String value
+    public static RecurseDirection valueOf(
+                    final String name
                     )
     {
-        for (RecurseDirection  e : RecurseDirection.values()) {
-          if (e._value.equals( value )) {
-              return e;
-          }
-      }
+        RecurseDirection  flag = null;
+        if (name != null) {
+            flag = _INSTANCES_.get( name );
+        }
 
-      throw new IllegalArgumentException( value );
+        if (flag == null) {
+            throw new IllegalArgumentException( "invalid recurse direction: " + name );
+        }
+
+        return flag;
     }
 
 
 
-    private final String  _value;
+    private String  _name = null;
+
 
 
     /**
      * Constructor.
      */
-    RecurseDirection(
-                    final String value
+    private RecurseDirection(
+                    final String name
                     )
     {
-        this._value = value;
+        _name = name;
     }
 
 
 
     /**
      */
-    public String value()
+    public String getName()
     {
-        return this._value;
+        return _name;
     }
 
 
@@ -84,7 +111,7 @@ public enum RecurseDirection
     @Override
     public String toString()
     {
-        return this._value;
+        return getName();
     }
 
 }

@@ -35,12 +35,13 @@ public class RegistryTypeHandler
     }
 
 
+
     @Override
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        RegistryType  e = (RegistryType)value;
-        return e.value();
+        RegistryType  type = (RegistryType)value;
+        return type.getName();
     }
 
 
@@ -48,7 +49,7 @@ public class RegistryTypeHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return RegistryType.fromValue( (String)value );
+        return RegistryType.valueOf( (String)value );
     }
 
 

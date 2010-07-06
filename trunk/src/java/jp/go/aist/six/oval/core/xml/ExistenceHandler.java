@@ -39,7 +39,7 @@ public class ExistenceHandler
     {
         if (value == null) return null;
         Existence  type = (Existence)value;
-        return type.value();
+        return type.getName();
     }
 
 
@@ -47,7 +47,7 @@ public class ExistenceHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return Existence.fromValue( (String)value );
+        return Existence.valueOf( (String)value );
     }
 
 

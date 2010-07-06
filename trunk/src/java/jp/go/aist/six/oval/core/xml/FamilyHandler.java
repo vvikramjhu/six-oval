@@ -39,8 +39,8 @@ public class FamilyHandler
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        Family  e = (Family)value;
-        return e.value();
+        Family  type = (Family)value;
+        return type.getName();
     }
 
 
@@ -48,7 +48,7 @@ public class FamilyHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return Family.fromValue( (String)value );
+        return Family.valueOf( (String)value );
     }
 
 

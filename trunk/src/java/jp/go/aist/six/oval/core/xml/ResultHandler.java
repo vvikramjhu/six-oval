@@ -40,12 +40,13 @@ public class ResultHandler
     }
 
 
+
     @Override
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        Result  e = (Result)value;
-        return e.value();
+        Result  type = (Result)value;
+        return type.getName();
     }
 
 
@@ -53,7 +54,7 @@ public class ResultHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return Result.fromValue( (String)value );
+        return Result.valueOf( (String)value );
     }
 
 

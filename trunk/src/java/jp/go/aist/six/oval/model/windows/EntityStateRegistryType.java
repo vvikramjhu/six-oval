@@ -74,8 +74,11 @@ public class EntityStateRegistryType
                     final String data
                     )
     {
-        String  e = (data == null ? null : RegistryType.valueOf( data ).getName() );
-        super.setData( e );
+        if (data != null) {
+            RegistryType.valueOf( data );
+        }
+
+        super.setData( data );
     }
 
 

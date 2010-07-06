@@ -81,7 +81,9 @@ public class FamilyItem
                     final Family family
                     )
     {
-        this( id, status, new EntityItemFamily( family ) );
+        this( id, status,
+                        (family == null ? null : (new EntityItemFamily( family )))
+                        );
     }
 
 
@@ -135,8 +137,8 @@ public class FamilyItem
     @Override
     public String toString()
     {
-        return "FamilyItem[" + super.toString()
-                        + ", family=" + getFamily()
+        return "FamilyItem[family=" + getFamily()
+                        + super.toString()
                         + "]";
     }
 

@@ -38,8 +38,8 @@ public class ContentHandler
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        Content  e = (Content)value;
-        return e.value();
+        Content  type = (Content)value;
+        return type.getName();
     }
 
 
@@ -47,7 +47,7 @@ public class ContentHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return Content.fromValue( (String)value );
+        return Content.valueOf( (String)value );
     }
 
 

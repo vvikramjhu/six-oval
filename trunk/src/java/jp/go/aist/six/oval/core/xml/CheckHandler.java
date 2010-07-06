@@ -38,8 +38,8 @@ public class CheckHandler
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        Check  e = (Check)value;
-        return e.value();
+        Check  type = (Check)value;
+        return type.getName();
     }
 
 
@@ -47,7 +47,7 @@ public class CheckHandler
     @Override
     public Object convertUponSet( Object value )
     {
-        return Check.fromValue( (String)value );
+        return Check.valueOf( (String)value );
     }
 
 

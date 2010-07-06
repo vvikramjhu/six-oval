@@ -20,59 +20,85 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.io.Serializable;
+import java.util.HashMap;
+
 
 
 /**
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public enum RecurseFileSystem
+public final class RecurseFileSystem
+    implements Serializable
 {
 
-    ALL( "all" ),
-    LOCAL( "local" ),
-    DEFINED( "defined" );
+    private static final String  _ALL_      = "all";
+    private static final String  _LOCAL_    = "local";
+    private static final String  _DEFINED_  = "defined";
+
+
+    public static final RecurseFileSystem  ALL      = new RecurseFileSystem( _ALL_ );
+    public static final RecurseFileSystem  LOCAL    = new RecurseFileSystem( _LOCAL_ );
+    public static final RecurseFileSystem  DEFINED  = new RecurseFileSystem( _DEFINED_ );
+
+
+
+    private static HashMap<String, RecurseFileSystem> _INIT_()
+    {
+        HashMap<String, RecurseFileSystem>  map = new HashMap<String, RecurseFileSystem>();
+        map.put( _ALL_,      ALL );
+        map.put( _LOCAL_,    LOCAL);
+        map.put( _DEFINED_,  DEFINED );
+        return map;
+    }
+
+    private static final HashMap<String, RecurseFileSystem>  _INSTANCES_ = _INIT_();
+
 
 
 
     /**
-     * An instance factory method.
      */
-    public static RecurseFileSystem fromValue(
-                    final String value
+    public static RecurseFileSystem valueOf(
+                    final String name
                     )
     {
-        for (RecurseFileSystem  e : RecurseFileSystem.values()) {
-          if (e._value.equals( value )) {
-              return e;
-          }
-      }
+        RecurseFileSystem  e = null;
+        if (name != null) {
+            e = _INSTANCES_.get( name );
+        }
 
-      throw new IllegalArgumentException( value );
+        if (e == null) {
+            throw new IllegalArgumentException( "invalid recurse direction: " + name );
+        }
+
+        return e;
     }
 
 
 
-    private final String  _value;
+    private String  _name = null;
+
 
 
     /**
      * Constructor.
      */
-    RecurseFileSystem(
-                    final String value
+    private RecurseFileSystem(
+                    final String name
                     )
     {
-        this._value = value;
+        _name = name;
     }
 
 
 
     /**
      */
-    public String value()
+    public String getName()
     {
-        return this._value;
+        return _name;
     }
 
 
@@ -84,7 +110,7 @@ public enum RecurseFileSystem
     @Override
     public String toString()
     {
-        return this._value;
+        return getName();
     }
 
 }

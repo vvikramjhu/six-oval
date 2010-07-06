@@ -38,8 +38,8 @@ public class DefinitionStatusHandler
     public Object convertUponGet( Object value )
     {
         if (value == null) return null;
-        DefinitionStatus  status = (DefinitionStatus)value;
-        return status.name();
+        DefinitionStatus  type = (DefinitionStatus)value;
+        return type.getName();
     }
 
 
