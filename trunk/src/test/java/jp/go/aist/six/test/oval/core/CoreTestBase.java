@@ -162,7 +162,7 @@ public abstract class CoreTestBase
         Reporter.log( "...sync done", true );
         String  pid = p.getPersistentID();
         Reporter.log( "  @ synced: pid=" + pid, true );
-        Reporter.log( "  @ synced: hash=" + p.hashCode(), true );
+//        Reporter.log( "  @ synced: hash=" + p.hashCode(), true );
 
 
 //        Reporter.log( "finding object by ID...", true );
@@ -179,10 +179,8 @@ public abstract class CoreTestBase
         T  p2 = _getStore().get( type, pid );
         Reporter.log( "...get done", true );
         Reporter.log( "  @ get: object=" + p2, true );
-        Reporter.log( "  @ get: hash=" + p.hashCode(), true );
+//        Reporter.log( "  @ get: hash=" + p.hashCode(), true );
         Assert.assertEquals( p2, e );
-//        Assert.assertEquals( p2.getOvalID(), e.getOvalID() );
-//        Assert.assertEquals( p2.getOvalVersion(), e.getOvalVersion() );
     }
 
 

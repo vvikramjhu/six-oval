@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.definition.SimpleTest;
 
 
@@ -51,6 +52,19 @@ public class DpkgInfoTest
                     )
     {
         super( id, version );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public DpkgInfoTest(
+                    final String id,
+                    final int version,
+                    final Check check
+                    )
+    {
+        super( id, version, check );
     }
 
 
