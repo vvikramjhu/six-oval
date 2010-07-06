@@ -62,7 +62,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -373,56 +372,6 @@ public abstract class CoreTestBase
                                         )
                         );
         DEFINITION_1020_2.setMetadata( metadata );
-    }
-
-
-
-    @DataProvider( name="oval-def-oval_definitions" )
-    public Object[][] ovalDefOvalDefinitionsProvider()
-    {
-//        SimpleDateFormat  format = new SimpleDateFormat( "yyyy-MM-dd'T'HH:mm:ss.SSSZ" );
-        Date  timestamp = null;
-        try {
-//            timestamp = format.parse( "2010-06-15T05:04:34.164-0400" );
-            timestamp = (new org.exolab.castor.types.DateTime( "2010-06-15T05:04:34.164-04:00" )).toDate();
-        } catch (Exception ex) {
-            Reporter.log( "ERROR: timestamp parse: " + ex.getMessage(), true );
-        }
-
-        return new Object[][] {
-                        {
-                            "oval-def:oval_definitions",
-                            "test/data/definition/oval-def-oval_definitions.0.xml",
-                            new Generator(
-                                            "5.7",
-                                            timestamp,
-                                            "The OVAL Repository",
-                                            null
-                                            ),
-                            new Definitions(
-                                            new Definition[] {
-                                                            DEFINITION_1020_2
-                                            }
-                                            )
-                        }
-//                        ,
-//                        {
-//                            "oval-def:oval_definitions",
-//                            "test/data/definition/oval-2010-06-15.05.04.34.xml",
-//                            new Generator(
-//                                            "5.7",
-//                                            timestamp,
-//                                            "The OVAL Repository",
-//                                            null
-//                                            ),
-//                            new Definitions(
-//                                            new Definition[] {
-//                                                            DEFINITION_1020_2
-//                                            }
-//                                            )
-//                        }
-        };
-
     }
 
 
