@@ -20,6 +20,9 @@
 
 package jp.go.aist.six.oval.model.system;
 
+import java.io.Serializable;
+import java.util.HashMap;
+
 
 
 /**
@@ -27,55 +30,77 @@ package jp.go.aist.six.oval.model.system;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public enum Status
+public final class Status
+    implements Serializable
 {
 
-    ERROR( "error" ),
-    EXISTS( "exists" ),
-    DOES_NOT_EXIST( "does not exist" ),
-    NOT_COLLECTED( "not collected" );
+    private static final String  _ERROR_           = "error";
+    private static final String  _EXISTS_          = "exists";
+    private static final String  _DOES_NOT_EXIST_  = "does not exist";
+    private static final String  _NOT_COLLECTED_   = "not collected";
+
+
+    public static final Status  ERROR          = new Status( _ERROR_ );
+    public static final Status  EXISTS         = new Status( _EXISTS_ );
+    public static final Status  DOES_NOT_EXIST = new Status( _DOES_NOT_EXIST_ );
+    public static final Status  NOT_COLLECTED  = new Status( _NOT_COLLECTED_ );
+
+
+    private static HashMap<String, Status> _INIT_()
+    {
+        HashMap<String, Status>  map = new HashMap<String, Status>();
+        map.put( _ERROR_,           ERROR          );
+        map.put( _EXISTS_,          EXISTS         );
+        map.put( _DOES_NOT_EXIST_,  DOES_NOT_EXIST );
+        map.put( _NOT_COLLECTED_,   NOT_COLLECTED  );
+        return map;
+    }
+
+    private static final HashMap<String, Status>  _INSTANCES_ = _INIT_();
+
 
 
 
     /**
-     * An instance factory method.
      */
-    public static Status fromValue(
-                    final String value
+    public static Status valueOf(
+                    final String name
                     )
     {
-        for (Status  e : Status.values()) {
-          if (e._value.equals( value )) {
-              return e;
-          }
-      }
+        Status  status = null;
+        if (name != null) {
+            status = _INSTANCES_.get( name );
+        }
 
-      throw new IllegalArgumentException( value );
+        if (status == null) {
+            throw new IllegalArgumentException( "invalid item status: " + name );
+        }
+
+        return status;
     }
 
 
 
+    private String  _name = null;
 
-    private final String  _value;
 
 
     /**
-     * Constructor.
      */
-    Status(
-                    final String value
+    private Status(
+                    final String name
                     )
     {
-        this._value = value;
+        _name = name;
     }
 
 
 
     /**
      */
-    public String value()
+    public String getName()
     {
-        return this._value;
+        return _name;
     }
 
 
@@ -87,7 +112,7 @@ public enum Status
     @Override
     public String toString()
     {
-        return this._value;
+        return getName();
     }
 
 }

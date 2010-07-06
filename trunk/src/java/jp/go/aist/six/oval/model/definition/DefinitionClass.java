@@ -20,102 +20,99 @@
 
 package jp.go.aist.six.oval.model.definition;
 
+import java.io.Serializable;
+import java.util.HashMap;
+
+
 
 
 /**
- * The DefinitionClass defines the different classes of definitions.
- * Each class defines a certain intent regarding how an OVAL Definition
- * is written and what that definition is describing.
- *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public enum DefinitionClass
+public final class DefinitionClass
+    implements Serializable
 {
 
-    /**
-     * A compliance definition describes the state of a machine
-     * as it complies with a specific policy.
-     */
-    COMPLIANCE( "compliance" ),
+    private static final String  _COMPLIANCE_     = "compliance";
+    private static final String  _INVENTORY_      = "inventory";
+    private static final String  _MISCELLANIOUS_  = "miscellanious";
+    private static final String  _PATCH_          = "patch";
+    private static final String  _VULNERABILITY_  = "vulnerability";
 
-    /**
-     * An inventory definition describes whether a specific piece of software
-     * is installed on the system.
-     */
-    INVENTORY( "inventory" ),
 
-    /**
-     * The 'miscellaneous' class is used to identify definitions
-     * that do not fall into any of the other defined classes.
-     */
-    MISCELLANEOUS( "miscellaneous" ),
-
-    /**
-     * A patch definition details the machine state of
-     * whether a patch executable should be installed.
-     */
-    PATCH( "patch" ),
-
-    /**
-     * A vulnerability definition describes the conditions
-     * under which a machine is vulnerable.
-     */
-    VULNERABILITY( "vulnerability" );
+    public static final DefinitionClass  COMPLIANCE     = new DefinitionClass( _COMPLIANCE_ );
+    public static final DefinitionClass  INVENTORY      = new DefinitionClass( _INVENTORY_ );
+    public static final DefinitionClass  MISCELLANIOUS  = new DefinitionClass( _MISCELLANIOUS_ );
+    public static final DefinitionClass  PATCH          = new DefinitionClass( _PATCH_ );
+    public static final DefinitionClass  VULNERABILITY  = new DefinitionClass( _VULNERABILITY_ );
 
 
 
-    /**
-     * An instance factory method.
-     */
-    public static DefinitionClass fromValue(
-                    final String value
-                    )
+    private static HashMap<String, DefinitionClass> _INIT_()
     {
-        for (DefinitionClass  e : DefinitionClass.values()) {
-          if (e._value.equals( value )) {
-              return e;
-          }
-      }
+        HashMap<String, DefinitionClass>  map = new HashMap<String, DefinitionClass>();
+        map.put( _COMPLIANCE_,     COMPLIANCE     );
+        map.put( _INVENTORY_,      INVENTORY      );
+        map.put( _MISCELLANIOUS_,  MISCELLANIOUS  );
+        map.put( _PATCH_,          PATCH          );
+        map.put( _VULNERABILITY_,  VULNERABILITY  );
+        return map;
+    }
 
-      throw new IllegalArgumentException( value );
+    private static final HashMap<String, DefinitionClass>  _INSTANCES_ = _INIT_();
+
+
+
+
+    /**
+     */
+    public static DefinitionClass valueOf( final String name )
+    {
+        DefinitionClass  flag = null;
+        if (name != null) {
+            flag = _INSTANCES_.get( name );
+        }
+
+        if (flag == null) {
+            throw new IllegalArgumentException( "invalid definition class: " + name );
+        }
+
+        return flag;
     }
 
 
 
+    private String  _name = null;
 
-    private final String  _value;
 
 
     /**
-     * Constructor.
      */
-    DefinitionClass(
-                    final String value
-                    )
+    private DefinitionClass( final String name )
     {
-        this._value = value;
+        _name = name;
     }
 
 
 
     /**
      */
-    public String value()
+    public String getName()
     {
-        return this._value;
+        return _name;
     }
 
 
 
-    //**************************************************************
+    ////////////////////////////////////////////////////////////////
     //  java.lang.Object
-    //**************************************************************
+    ////////////////////////////////////////////////////////////////
 
     @Override
     public String toString()
     {
-        return this._value;
+        return getName();
     }
 
 }

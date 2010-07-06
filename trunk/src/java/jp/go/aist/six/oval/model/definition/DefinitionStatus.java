@@ -20,6 +20,9 @@
 
 package jp.go.aist.six.oval.model.definition;
 
+import java.io.Serializable;
+import java.util.HashMap;
+
 
 
 
@@ -27,13 +30,91 @@ package jp.go.aist.six.oval.model.definition;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public enum DefinitionStatus
+public final class DefinitionStatus
+    implements Serializable
 {
 
-    DRAFT,
-    INTERIM,
-    ACCEPTED,
-    DEPRECATED;
+    private static final String  _DRAFT_      = "DRAFT";
+    private static final String  _INTERIM_    = "INTERIM";
+    private static final String  _ACCEPTED_   = "ACCEPTED";
+    private static final String  _DEPRECATED_ = "DEPRECATED";
+
+
+    public static final DefinitionStatus  DRAFT      = new DefinitionStatus( _DRAFT_ );
+    public static final DefinitionStatus  INTERIM    = new DefinitionStatus( _INTERIM_ );
+    public static final DefinitionStatus  ACCEPTED   = new DefinitionStatus( _ACCEPTED_ );
+    public static final DefinitionStatus  DEPRECATED = new DefinitionStatus( _DEPRECATED_ );
+
+
+
+    private static HashMap<String, DefinitionStatus> _INIT_()
+    {
+        HashMap<String, DefinitionStatus>  map = new HashMap<String, DefinitionStatus>();
+        map.put( _DRAFT_,      DRAFT    );
+        map.put( _INTERIM_,    INTERIM  );
+        map.put( _ACCEPTED_,   ACCEPTED );
+        map.put( _DEPRECATED_, DEPRECATED );
+        return map;
+    }
+
+    private static final HashMap<String, DefinitionStatus>  _INSTANCES_ = _INIT_();
+
+
+
+
+    /**
+     */
+    public static DefinitionStatus valueOf(
+                    final String name
+                    )
+    {
+        DefinitionStatus  flag = null;
+        if (name != null) {
+            flag = _INSTANCES_.get( name );
+        }
+
+        if (flag == null) {
+            throw new IllegalArgumentException( "invalid definition status: " + name );
+        }
+
+        return flag;
+    }
+
+
+
+    private String  _name = null;
+
+
+
+    /**
+     */
+    private DefinitionStatus(
+                    final String name
+                    )
+    {
+        _name = name;
+    }
+
+
+
+    /**
+     */
+    public String getName()
+    {
+        return _name;
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////
+    //  java.lang.Object
+    ////////////////////////////////////////////////////////////////
+
+    @Override
+    public String toString()
+    {
+        return getName();
+    }
 
 }
 // DefinitionStatus

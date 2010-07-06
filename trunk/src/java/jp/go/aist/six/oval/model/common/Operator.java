@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.common;
 
+import java.io.Serializable;
+import java.util.HashMap;
 
 
 
@@ -28,13 +30,87 @@ package jp.go.aist.six.oval.model.common;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public enum Operator
+public final class Operator
+    implements Serializable
 {
 
-    AND,
-    ONE,
-    OR,
-    XOR;
+    private static final String  _AND_  = "AND";
+    private static final String  _ONE_  = "ONE";
+    private static final String  _OR_   = "OR";
+    private static final String  _XOR_  = "XOR";
+
+
+    public static final Operator  AND = new Operator( _AND_ );
+    public static final Operator  ONE = new Operator( _ONE_ );
+    public static final Operator  OR  = new Operator( _OR_ );
+    public static final Operator  XOR = new Operator( _XOR_ );
+
+
+
+    private static HashMap<String, Operator> _INIT_()
+    {
+        HashMap<String, Operator>  map = new HashMap<String, Operator>();
+        map.put( _AND_,  AND );
+        map.put( _ONE_,  ONE );
+        map.put( _OR_,   OR  );
+        map.put( _XOR_,  XOR );
+        return map;
+    }
+
+    private static final HashMap<String, Operator>  _INSTANCES_ = _INIT_();
+
+
+
+
+    /**
+     */
+    public static Operator valueOf( final String name )
+    {
+        Operator  flag = null;
+        if (name != null) {
+            flag = _INSTANCES_.get( name );
+        }
+
+        if (flag == null) {
+            throw new IllegalArgumentException( "invalid operator: " + name );
+        }
+
+        return flag;
+    }
+
+
+
+    private String  _name = null;
+
+
+
+    /**
+     */
+    private Operator( final String name )
+    {
+        _name = name;
+    }
+
+
+
+    /**
+     */
+    public String getName()
+    {
+        return _name;
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////
+    //  extends Object
+    ////////////////////////////////////////////////////////////////
+
+    @Override
+    public String toString()
+    {
+        return getName();
+    }
 
 }
 // Operator

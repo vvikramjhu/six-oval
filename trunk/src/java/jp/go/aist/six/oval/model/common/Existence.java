@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.common;
 
+import java.io.Serializable;
+import java.util.HashMap;
 
 
 
@@ -28,68 +30,89 @@ package jp.go.aist.six.oval.model.common;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public enum Existence
+public final class Existence
+    implements Serializable
 {
 
-    ALL_EXIST( "all_exist" ),
-    ANY_EXIST( "any_exist" ),
-    AT_LEAST_ONE_EXISTS( "at_least_one_exists" ),
-    NONE_EXIST( "none_exist" ),
-    ONLY_ONE_EXISTS( "only_one_exists" );
+    private static final String  _ALL_EXIST_            = "all_exist";
+    private static final String  _ANY_EXIST_            = "any_exist";
+    private static final String  _AT_LEAST_ONE_EXISTS_  = "at_least_one_exists";
+    private static final String  _NONE_EXIST_           = "none_exist";
+    private static final String  _ONLY_ONE_EXISTS_      = "only_one_exists";
+
+
+    public static final Existence  ALL_EXIST            = new Existence( _ALL_EXIST_ );
+    public static final Existence  ANY_EXIST            = new Existence( _ANY_EXIST_ );
+    public static final Existence  AT_LEAST_ONE_EXISTS  = new Existence( _AT_LEAST_ONE_EXISTS_ );
+    public static final Existence  NONE_EXIST           = new Existence( _NONE_EXIST_ );
+    public static final Existence  ONLY_ONE_EXISTS      = new Existence( _ONLY_ONE_EXISTS_ );
 
 
 
-    /**
-     * An instance factory method.
-     */
-    public static Existence fromValue(
-                    final String value
-                    )
+    private static HashMap<String, Existence> _INIT_()
     {
-        for (Existence  e : Existence.values()) {
-          if (e._value.equals( value )) {
-              return e;
-          }
-      }
-
-      throw new IllegalArgumentException( value );
+        HashMap<String, Existence>  map = new HashMap<String, Existence>();
+        map.put( _ALL_EXIST_,           ALL_EXIST           );
+        map.put( _ANY_EXIST_,           ANY_EXIST           );
+        map.put( _AT_LEAST_ONE_EXISTS_, AT_LEAST_ONE_EXISTS );
+        map.put( _NONE_EXIST_,          NONE_EXIST          );
+        map.put( _ONLY_ONE_EXISTS_,     ONLY_ONE_EXISTS     );
+        return map;
     }
 
+    private static final HashMap<String, Existence>  _INSTANCES_ = _INIT_();
 
-
-
-    private final String  _value;
-
-
-    /**
-     * Constructor.
-     */
-    Existence(
-                    final String value
-                    )
-    {
-        this._value = value;
-    }
 
 
 
     /**
      */
-    public String value()
+    public static Existence valueOf( final String name )
     {
-        return this._value;
+        Existence  flag = null;
+        if (name != null) {
+            flag = _INSTANCES_.get( name );
+        }
+
+        if (flag == null) {
+            throw new IllegalArgumentException( "invalid existence: " + name );
+        }
+
+        return flag;
     }
 
 
 
-    //**************************************************************
+    private String  _name = null;
+
+
+
+    /**
+     */
+    private Existence( final String name )
+    {
+        _name = name;
+    }
+
+
+
+    /**
+     */
+    public String getName()
+    {
+        return _name;
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////
     //  java.lang.Object
-    //**************************************************************
+    ////////////////////////////////////////////////////////////////
 
     @Override
     public String toString()
     {
-        return this._value;
+        return getName();
     }
 
 }

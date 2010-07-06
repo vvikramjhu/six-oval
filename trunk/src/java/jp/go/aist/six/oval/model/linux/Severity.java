@@ -20,72 +20,96 @@
 
 package jp.go.aist.six.oval.model.linux;
 
+import java.io.Serializable;
+import java.util.HashMap;
+
+
 
 
 /**
  * @author  Akihito Nakamura, AIST
  * @version $Id: Severity.java 436 2010-03-23 05:03:30Z akihito $
  */
-public enum Severity
+public final class Severity
+    implements Serializable
 {
 
-    LOW( "Low" ),
-    MODERATE( "Moderate" ),
-    IMPORTANT( "Important" ),
-    CRITICAL( "Critical" );
+    private static final String  _LOW_        = "Low";
+    private static final String  _MODERATE_   = "Moderate";
+    private static final String  _IMPORTANT_  = "Important";
+    private static final String  _CRITICAL_   = "Critical";
 
 
-    /**
-     * An instance factory method.
-     */
-    public static Severity fromValue(
-                    final String value
-                    )
+    public static final Severity  LOW        = new Severity( _LOW_       );
+    public static final Severity  MODERATE   = new Severity( _MODERATE_  );
+    public static final Severity  IMPORTANT  = new Severity( _IMPORTANT_ );
+    public static final Severity  CRITICAL   = new Severity( _CRITICAL_  );
+
+
+
+    private static HashMap<String, Severity> _INIT_()
     {
-        for (Severity  e : Severity.values()) {
-          if (e._value.equals( value )) {
-              return e;
-          }
-      }
-
-      throw new IllegalArgumentException( value );
+        HashMap<String, Severity>  map = new HashMap<String, Severity>();
+        map.put( _LOW_,       LOW       );
+        map.put( _MODERATE_,  MODERATE  );
+        map.put( _IMPORTANT_, IMPORTANT );
+        map.put( _CRITICAL_,  CRITICAL  );
+        return map;
     }
 
+    private static final HashMap<String, Severity>  _INSTANCES_ = _INIT_();
 
-
-
-    private final String  _value;
-
-
-    /**
-     * Constructor.
-     */
-    Severity(
-                    final String value
-                    )
-    {
-        this._value = value;
-    }
 
 
 
     /**
      */
-    public String value()
+    public static Severity valueOf( final String name )
     {
-        return this._value;
+        Severity  flag = null;
+        if (name != null) {
+            flag = _INSTANCES_.get( name );
+        }
+
+        if (flag == null) {
+            throw new IllegalArgumentException( "invalid severity: " + name );
+        }
+
+        return flag;
     }
 
 
 
-    //**************************************************************
+    private String  _name = null;
+
+
+
+    /**
+     */
+    private Severity( final String name )
+    {
+        _name = name;
+    }
+
+
+
+    /**
+     */
+    public String getName()
+    {
+        return _name;
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////
     //  java.lang.Object
-    //**************************************************************
+    ////////////////////////////////////////////////////////////////
 
     @Override
     public String toString()
     {
-        return this._value;
+        return getName();
     }
 
 }

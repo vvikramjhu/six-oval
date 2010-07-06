@@ -20,58 +20,81 @@
 
 package jp.go.aist.six.oval.model.result;
 
+import java.io.Serializable;
+import java.util.HashMap;
+
 
 
 /**
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public enum Content
+public final class Content
+    implements Serializable
 {
 
-    THIN( "thin" ),
-    FULL( "full" );
+    private static final String  _THIN_ = "thin";
+    private static final String  _FULL_ = "full";
+
+
+    public static final Content  THIN = new Content( _THIN_ );
+    public static final Content  FULL = new Content( _FULL_ );
+
+
+
+    private static HashMap<String, Content> _INIT_()
+    {
+        HashMap<String, Content>  map = new HashMap<String, Content>();
+        map.put( _THIN_, THIN );
+        map.put( _FULL_, FULL );
+        return map;
+    }
+
+    private static final HashMap<String, Content>  _INSTANCES_ = _INIT_();
+
+
 
 
     /**
-     * An instance factory method.
      */
-    public static Content fromValue(
-                    final String value
+    public static Content valueOf(
+                    final String name
                     )
     {
-        for (Content  e : Content.values()) {
-          if (e._value.equals( value )) {
-              return e;
-          }
-      }
+        Content  e = null;
+        if (name != null) {
+            e = _INSTANCES_.get( name );
+        }
 
-      throw new IllegalArgumentException( value );
+        if (e == null) {
+            throw new IllegalArgumentException( "invalid result: " + name );
+        }
+
+        return e;
     }
 
 
 
+    private String  _name = null;
 
-    private final String  _value;
 
 
     /**
-     * Constructor.
      */
-    Content(
-                    final String value
+    private Content(
+                    final String name
                     )
     {
-        this._value = value;
+        _name = name;
     }
 
 
 
     /**
      */
-    public String value()
+    public String getName()
     {
-        return this._value;
+        return _name;
     }
 
 
@@ -83,7 +106,7 @@ public enum Content
     @Override
     public String toString()
     {
-        return this._value;
+        return getName();
     }
 
 }

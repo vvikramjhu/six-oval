@@ -20,6 +20,9 @@
 
 package jp.go.aist.six.oval.model.system;
 
+import java.io.Serializable;
+import java.util.HashMap;
+
 
 
 /**
@@ -28,69 +31,97 @@ package jp.go.aist.six.oval.model.system;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public enum Flag
+public final class Flag
+    implements Serializable
 {
 
-    ERROR( "error" ),
-    COMPLETE( "complete" ),
-    INCOMPLETE( "incomplete" ),
-    DOES_NOT_EXIST( "does not exist" ),
-    NOT_COLLECTED( "not collected" ),
-    NOT_APPLICABLE( "not applicable" );
+    private static final String  _ERROR_           = "error";
+    private static final String  _COMPLETE_        = "complete";
+    private static final String  _INCOMPLETE_      = "incomplete";
+    private static final String  _DOES_NOT_EXIST_  = "does not exist";
+    private static final String  _NOT_COLLECTED_   = "not collected";
+    private static final String  _NOT_APPLICABLE_  = "not applicable";
+
+
+    public static final Flag  ERROR          = new Flag( _ERROR_ );
+    public static final Flag  COMPLETE       = new Flag( _COMPLETE_ );
+    public static final Flag  INCOMPLETE     = new Flag( _INCOMPLETE_ );
+    public static final Flag  DOES_NOT_EXIST = new Flag( _DOES_NOT_EXIST_ );
+    public static final Flag  NOT_COLLECTED  = new Flag( _NOT_COLLECTED_ );
+    public static final Flag  NOT_APPLICABLE = new Flag( _NOT_APPLICABLE_ );
+
+
+
+    private static HashMap<String, Flag> _INIT_()
+    {
+        HashMap<String, Flag>  map = new HashMap<String, Flag>();
+        map.put( _ERROR_,           ERROR          );
+        map.put( _COMPLETE_,        COMPLETE       );
+        map.put( _INCOMPLETE_,      INCOMPLETE     );
+        map.put( _DOES_NOT_EXIST_,  DOES_NOT_EXIST );
+        map.put( _NOT_COLLECTED_,   NOT_COLLECTED  );
+        map.put( _NOT_APPLICABLE_,  NOT_APPLICABLE );
+        return map;
+    }
+
+    private static final HashMap<String, Flag>  _INSTANCES_ = _INIT_();
+
+
 
 
     /**
-     * An instance factory method.
      */
-    public static Flag fromValue(
-                    final String value
+    public static Flag valueOf(
+                    final String name
                     )
     {
-        for (Flag  e : Flag.values()) {
-          if (e._value.equals( value )) {
-              return e;
-          }
-      }
+        Flag  e = null;
+        if (name != null) {
+            e = _INSTANCES_.get( name );
+        }
 
-      throw new IllegalArgumentException( value );
+        if (e == null) {
+            throw new IllegalArgumentException( "invalid flag: " + name );
+        }
+
+        return e;
     }
 
 
 
+    private String  _name = null;
 
-    private final String  _value;
 
 
     /**
-     * Constructor.
      */
-    Flag(
-                    final String value
+    private Flag(
+                    final String name
                     )
     {
-        this._value = value;
+        _name = name;
     }
 
 
 
     /**
      */
-    public String value()
+    public String getName()
     {
-        return this._value;
+        return _name;
     }
 
 
 
-    //**************************************************************
+    ////////////////////////////////////////////////////////////////
     //  java.lang.Object
-    //**************************************************************
+    ////////////////////////////////////////////////////////////////
 
     @Override
     public String toString()
     {
-        return this._value;
+        return getName();
     }
 
 }
-// ObjectFlag
+// Flag

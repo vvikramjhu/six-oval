@@ -20,74 +20,99 @@
 
 package jp.go.aist.six.oval.model.common;
 
+import java.io.Serializable;
+import java.util.HashMap;
+
+
 
 
 /**
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public enum MessageLevel
+public final class MessageLevel
+    implements Serializable
 {
 
-    DEBUG( "debug" ),
-    ERROR( "error" ),
-    FATAL( "fatal" ),
-    INFO( "info" ),
-    WARNING( "warning" );
+    private static final String  _DEBUG_    = "debug";
+    private static final String  _ERROR_    = "error";
+    private static final String  _FATAL_    = "fatal";
+    private static final String  _INFO_     = "info";
+    private static final String  _WARNING_  = "warning";
+
+
+    public static final MessageLevel  DEBUG    = new MessageLevel( _DEBUG_ );
+    public static final MessageLevel  ERROR    = new MessageLevel( _ERROR_ );
+    public static final MessageLevel  FATAL    = new MessageLevel( _FATAL_ );
+    public static final MessageLevel  INFO     = new MessageLevel( _INFO_ );
+    public static final MessageLevel  WARNING  = new MessageLevel( _WARNING_ );
 
 
 
-    /**
-     * An instance factory method.
-     */
-    public static MessageLevel fromValue(
-                    final String value
-                    )
+    private static HashMap<String, MessageLevel> _INIT_()
     {
-        for (MessageLevel  e : MessageLevel.values()) {
-          if (e._value.equals( value )) {
-              return e;
-          }
-      }
-
-      throw new IllegalArgumentException( value );
+        HashMap<String, MessageLevel>  map = new HashMap<String, MessageLevel>();
+        map.put( _DEBUG_,   DEBUG );
+        map.put( _ERROR_,   ERROR );
+        map.put( _FATAL_,   FATAL );
+        map.put( _INFO_,    INFO );
+        map.put( _WARNING_, WARNING );
+        return map;
     }
 
+    private static final HashMap<String, MessageLevel>  _INSTANCES_ = _INIT_();
 
-
-
-    private final String  _value;
-
-
-    /**
-     * Constructor.
-     */
-    MessageLevel(
-                    final String value
-                    )
-    {
-        this._value = value;
-    }
 
 
 
     /**
      */
-    public String value()
+    public static MessageLevel valueOf( final String name )
     {
-        return this._value;
+        MessageLevel  flag = null;
+        if (name != null) {
+            flag = _INSTANCES_.get( name );
+        }
+
+        if (flag == null) {
+            throw new IllegalArgumentException( "invalid message level: " + name );
+        }
+
+        return flag;
     }
 
 
 
-    //**************************************************************
+    private String  _name = null;
+
+
+
+    /**
+     */
+    private MessageLevel( final String name )
+    {
+        _name = name;
+    }
+
+
+
+    /**
+     */
+    public String getName()
+    {
+        return _name;
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////
     //  java.lang.Object
-    //**************************************************************
+    ////////////////////////////////////////////////////////////////
 
     @Override
     public String toString()
     {
-        return this._value;
+        return getName();
     }
 
 }

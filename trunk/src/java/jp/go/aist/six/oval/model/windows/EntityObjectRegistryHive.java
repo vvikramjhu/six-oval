@@ -59,7 +59,7 @@ public class EntityObjectRegistryHive
                     final RegistryHive data
                     )
     {
-        super( (data == null ? null : data.name()) );
+        super( (data == null ? null : data.getName()) );
     }
 
 
@@ -74,7 +74,7 @@ public class EntityObjectRegistryHive
                     final String data
                     )
     {
-        String  e = (data == null ? null : RegistryHive.valueOf( data ).name() );
+        String  e = (data == null ? null : RegistryHive.valueOf( data ).getName() );
         super.setData( e );
     }
 

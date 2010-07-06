@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.common;
 
+import java.io.Serializable;
+import java.util.HashMap;
 
 
 
@@ -28,74 +30,107 @@ package jp.go.aist.six.oval.model.common;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public enum Operation
+public final class Operation
+    implements Serializable
 {
 
-    EQUALS( "equals" ),
-    NOT_EQUAL( "not equal" ),
-    CASE_INSENSITIVE_EQUALS( "case insensitive equals" ),
-    CASE_INSENSITIVE_NOT_EQUAL( "case insensitive not equal" ),
-    GREATER_THAN( "greater than" ),
-    LESS_THAN( "less than" ),
-    GREATER_THAN_OR_EQUAL( "greater than or equal" ),
-    LESS_THAN_OR_EQUAL( "less than or equal" ),
-    BITWISE_AND( "bitwise and" ),
-    BITWISE_OR( "bitwise or" ),
-    PATTERN_MATCH( "pattern match" );
+    private static final String  _EQUALS_                      = "equals";
+    private static final String  _NOT_EQUAL_                   = "not equal";
+    private static final String  _CASE_INSENSITIVE_EQUALS_     = "case insensitive equals";
+    private static final String  _CASE_INSENSITIVE_NOT_EQUAL_  = "case insensitive not equal";
+    private static final String  _GREATER_THAN_                = "greater than";
+    private static final String  _GREATER_THAN_OR_EQUAL_       = "greater than or equal";
+    private static final String  _LESS_THAN_                   = "less than";
+    private static final String  _LESS_THAN_OR_EQUAL_          = "less than or equal";
+    private static final String  _BITWISE_AND_                 = "bitwise and";
+    private static final String  _BITWISE_OR_                  = "bitwise or";
+    private static final String  _PATTERN_MATCH_               = "pattern match";
+
+
+    public static final Operation  EQUALS                      = new Operation( _EQUALS_ );
+    public static final Operation  NOT_EQUAL                   = new Operation( _NOT_EQUAL_ );
+    public static final Operation  CASE_INSENSITIVE_EQUALS     = new Operation( _CASE_INSENSITIVE_EQUALS_ );
+    public static final Operation  CASE_INSENSITIVE_NOT_EQUAL  = new Operation( _CASE_INSENSITIVE_NOT_EQUAL_ );
+    public static final Operation  GREATER_THAN                = new Operation( _GREATER_THAN_ );
+    public static final Operation  GREATER_THAN_OR_EQUAL       = new Operation( _GREATER_THAN_OR_EQUAL_ );
+    public static final Operation  LESS_THAN                   = new Operation( _LESS_THAN_ );
+    public static final Operation  LESS_THAN_OR_EQUAL          = new Operation( _LESS_THAN_OR_EQUAL_ );
+    public static final Operation  BITWISE_AND                 = new Operation( _BITWISE_AND_ );
+    public static final Operation  BITWISE_OR                  = new Operation( _BITWISE_OR_ );
+    public static final Operation  PATTERN_MATCH               = new Operation( _PATTERN_MATCH_ );
+
+
+
+    private static HashMap<String, Operation> _INIT_()
+    {
+        HashMap<String, Operation>  map = new HashMap<String, Operation>();
+        map.put( _EQUALS_,                      EQUALS                     );
+        map.put( _NOT_EQUAL_,                   NOT_EQUAL                  );
+        map.put( _CASE_INSENSITIVE_EQUALS_,     CASE_INSENSITIVE_EQUALS    );
+        map.put( _CASE_INSENSITIVE_NOT_EQUAL_,  CASE_INSENSITIVE_NOT_EQUAL );
+        map.put( _GREATER_THAN_,                GREATER_THAN               );
+        map.put( _GREATER_THAN_OR_EQUAL_,       GREATER_THAN_OR_EQUAL      );
+        map.put( _LESS_THAN_,                   LESS_THAN                  );
+        map.put( _LESS_THAN_OR_EQUAL_,          LESS_THAN_OR_EQUAL         );
+        map.put( _BITWISE_AND_,                 BITWISE_AND                );
+        map.put( _BITWISE_OR_,                  BITWISE_OR                 );
+        map.put( _PATTERN_MATCH_,               PATTERN_MATCH              );
+        return map;
+    }
+
+    private static final HashMap<String, Operation>  _INSTANCES_ = _INIT_();
+
 
 
 
     /**
-     * An instance factory method.
      */
-    public static Operation fromValue(
-                    final String value
-                    )
+    public static Operation valueOf( final String name )
     {
-        for (Operation  e : Operation.values()) {
-          if (e._value.equals( value )) {
-              return e;
-          }
-      }
+        Operation  flag = null;
+        if (name != null) {
+            flag = _INSTANCES_.get( name );
+        }
 
-      throw new IllegalArgumentException( value );
+        if (flag == null) {
+            throw new IllegalArgumentException( "invalid operation: " + name );
+        }
+
+        return flag;
     }
 
 
 
+    private String  _name = null;
 
-    private final String  _value;
 
 
     /**
-     * Constructor.
      */
-    Operation(
-                    final String value
-                    )
+    private Operation( final String name )
     {
-        this._value = value;
+        _name = name;
     }
 
 
 
     /**
      */
-    public String value()
+    public String getName()
     {
-        return this._value;
+        return _name;
     }
 
 
 
-    //**************************************************************
+    ////////////////////////////////////////////////////////////////
     //  java.lang.Object
-    //**************************************************************
+    ////////////////////////////////////////////////////////////////
 
     @Override
     public String toString()
     {
-        return this._value;
+        return getName();
     }
 
 }

@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.common;
 
+import java.io.Serializable;
+import java.util.HashMap;
 
 
 
@@ -28,61 +30,94 @@ package jp.go.aist.six.oval.model.common;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public enum Datatype
+public final class Datatype
+    implements Serializable
 {
 
-    BINARY( "binary" ),
-    BOOLEAN( "boolean" ),
-    EVR_STRING( "evr_string" ),
-    FILESET_REVISION( "fileset_revision" ),
-    FLOAT( "float" ),
-    IOS_VERSION( "ios_version" ),
-    INT( "int" ),
-    RECORD( "record" ),
-    STRING( "string" ),
-    VERSION( "version" );
+    private static final String  _BINARY_           = "binary";
+    private static final String  _BOOLEAN_          = "boolean";
+    private static final String  _EVR_STRING_       = "evr_string";
+    private static final String  _FILESET_REVISION_ = "fileset_revision";
+    private static final String  _FLOAT_            = "float";
+    private static final String  _IOS_VERSION_      = "ios_version";
+    private static final String  _INT_              = "int";
+    private static final String  _STRING_           = "string";
+    private static final String  _VERSION_          = "version";
+
+
+    public static final Datatype  BINARY            = new Datatype( _BINARY_ );
+    public static final Datatype  BOOLEAN           = new Datatype( _BOOLEAN_ );
+    public static final Datatype  EVR_STRING        = new Datatype( _EVR_STRING_ );
+    public static final Datatype  FILESET_REVISION  = new Datatype( _FILESET_REVISION_ );
+    public static final Datatype  FLOAT             = new Datatype( _FLOAT_ );
+    public static final Datatype  IOS_VERSION       = new Datatype( _IOS_VERSION_ );
+    public static final Datatype  INT               = new Datatype( _INT_ );
+    public static final Datatype  STRING            = new Datatype( _STRING_ );
+    public static final Datatype  VERSION           = new Datatype( _VERSION_ );
+
+
+
+    private static HashMap<String, Datatype> _INIT_()
+    {
+        HashMap<String, Datatype>  map = new HashMap<String, Datatype>();
+        map.put( _BINARY_,            BINARY );
+        map.put( _BOOLEAN_,           BOOLEAN );
+        map.put( _EVR_STRING_,        EVR_STRING );
+        map.put( _FILESET_REVISION_,  FILESET_REVISION );
+        map.put( _FLOAT_,             FLOAT );
+        map.put( _IOS_VERSION_,       IOS_VERSION );
+        map.put( _INT_,               INT );
+        map.put( _STRING_,            STRING );
+        map.put( _VERSION_,           VERSION );
+        return map;
+    }
+
+    private static final HashMap<String, Datatype>  _INSTANCES_ = _INIT_();
+
 
 
 
     /**
-     * An instance factory method.
      */
-    public static Datatype fromValue(
-                    final String value
+    public static Datatype valueOf(
+                    final String name
                     )
     {
-        for (Datatype  e : Datatype.values()) {
-          if (e._value.equals( value )) {
-              return e;
-          }
-      }
+        Datatype  flag = null;
+        if (name != null) {
+            flag = _INSTANCES_.get( name );
+        }
 
-      throw new IllegalArgumentException( value );
+        if (flag == null) {
+            throw new IllegalArgumentException( "invalid datatype: " + name );
+        }
+
+        return flag;
     }
 
 
 
 
-    private final String  _value;
+    private String  _name = null;
+
 
 
     /**
-     * Constructor.
      */
-    Datatype(
-                    final String value
+    private Datatype(
+                    final String name
                     )
     {
-        this._value = value;
+        _name = name;
     }
 
 
 
     /**
      */
-    public String value()
+    public String getName()
     {
-        return this._value;
+        return _name;
     }
 
 
@@ -94,7 +129,7 @@ public enum Datatype
     @Override
     public String toString()
     {
-        return this._value;
+        return getName();
     }
 
 }
