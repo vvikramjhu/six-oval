@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- // Project SIX: OVAL                                     // -->
+<!-- //                                                       // -->
+<!-- // Ant buildfile                                         // -->
+<!-- /////////////////////////////////////////////////////////// -->
+
+<!--
+@author     Akihito Nakamura, AIST
+@version    $Id: build.xml 669 2010-04-23 07:12:06Z akihito $
+-->
+
+
+<!--
+CONTENTS:
+-->
+
+<!-- %*=+ -->
+<project name="six3-oval" default="default" basedir=".."
+    xmlns:six="http://aist.go.jp/six">
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %                                                     % -->
+    <!-- %  External Components                                % -->
+    <!-- %                                                     % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <import file="ant-six.xml"/>
+
+
+
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %                                                     % -->
+    <!-- %  Properties                                         % -->
+    <!-- %                                                     % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <!-- Castor code generation -->
+    <property name="webapp.src.dir"     location="${src.dir}/webapp"/>
+    <property name="webapp.build.dir"   location="${build.dir}/webapp/${six.webapp.path}"/>
+
+   
+    <!-- Castor code generation 
+    <property name="schema.src.dir"     location="${src.dir}/schema"/>
+    -->
+
+   
+    <!-- SQL scripts -->
+    <property name="sql.src.dir"        location="${src.dir}/sql/${six.db.engine}"/>
+    <property name="build.sql.dir"      location="${build.dir}/sql"/>
+
+
+    
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %                                                     % -->
+    <!-- %  Task Definitions                                   % -->
+    <!-- %                                                     % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <!-- TestNG -->
+    <taskdef name="testng-14"
+        classname="org.testng.TestNGAntTask"
+        classpathref="java.run.classpath"
+        />
+
+    
+
+    <!-- Castor Source Code Generator 
+    <taskdef name="castor-codegen" 
+        classname="org.castor.anttask.CastorCodeGenTask"
+        classpathref="java.run.classpath" />
+    -->
+
+    
+
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %                                                     % -->
+    <!-- %  Targets                                            % -->
+    <!-- %                                                     % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <!-- pre-compile: e.g. code generation 
+    <target name="pre-compile" depends="codegen">
+    </target>
+    -->
+    
+    
+
+    <!-- ******************************************************* -->
+    <!-- *  Webapp                                             * -->
+    <!-- ******************************************************* -->
+
+    <target name="webapp" depends="jar,init" >
+        
+        <delete dir="${webapp.build.dir}"/>
+        <mkdir dir="${webapp.build.dir}"/>
+        <mkdir dir="${webapp.build.dir}/WEB-INF"/>
+        <mkdir dir="${webapp.build.dir}/WEB-INF/lib"/>
+
+        <copy file="${webapp.src.dir}/web.xml" todir="${webapp.build.dir}/WEB-INF"/>
+        <copy todir="${webapp.build.dir}/WEB-INF/lib">
+            <fileset dir="${lib.dir}" includes="**/*.jar" />
+        </copy>
+        <copy file="${product.jar}" todir="${webapp.build.dir}/WEB-INF/lib"/>
+
+    </target>
+
+    
+    
+    <!-- ******************************************************* -->
+    <!-- *  Test                                               * -->
+    <!-- ******************************************************* -->
+
+    <target name="test.oval-store" depends="test.compile,init">
+        <java
+            classname="jp.go.aist.six.test.oval.core.OvalStoreTest"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="256m"
+            >
+        </java>
+    </target>
+
+
+
+    <!-- CentOSOvalGenerator: invokes from command line -->
+    <target name="test.net-interpreter" depends="compile,init">
+        <java
+            classname="jp.go.aist.six.oval.process.NetOvalInterpreterCli"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="256m"
+            >
+            <arg line="C:\\app\\oval\\ovaldi-5.6.4\\ovaldi.exe -a C:\\app\\oval\\ovaldi-5.6.4\\xml -o http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a1020 -m"/>
+        </java>
+    </target>
+
+
+    <!-- CentOSOvalGenerator: invokes from command line -->
+    <target name="test.oval-generator.centos" depends="compile,init">
+        <java
+            classname="jp.go.aist.six.oval.process.centos.CentOSOvalGeneratorCli"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="256m"
+            >
+            <arg line="-rho src/test/data/sample_oval-definitions_linux-redhat.xml -o oval-definitions_centos.xml"/>
+        </java>
+    </target>
+
+
+    <!-- DebianOvalGenerator: invokes from command line -->
+    <target name="test.oval-generator.debian" depends="compile,init">
+        <java
+            classname="jp.go.aist.six.oval.process.debian.DebianOvalGeneratorCli"
+            classpathref="java.run.classpath"
+            fork="true"
+            maxmemory="256m"
+            >
+            <sysproperty key="six.oval.debian.dsc" value="src/test/data/dsa"/> 
+            <arg line="-dsa src/test/data/dsa-1974.en.html -o oval-definitions_debian.xml"/>
+        </java>
+    </target>
+
+
+    <!-- test: @override 
+    <target name="test" depends="db.delete-sample-data,test.compile,init">
+    -->
+    <target name="test" depends="test.compile,init">
+        <mkdir dir="${build.test.dir}"/>
+
+        <testng-14
+            classpathref="java.run.classpath"
+            outputdir="${build.test.dir}"
+            sourcedir="${java.test.src.dir}"
+            haltonfailure="true"
+            >
+            <xmlfileset dir="${config.src.dir}" includes="testng.xml"/>
+            <jvmarg value="-Xms256m"/>
+            <jvmarg value="-Xmx256m"/>
+            <!-- sysproperty key="six.oval.debian.dsc" value="test/data/debian/dsc"/ -->
+        </testng-14>
+    </target>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- *  database                                           * -->
+    <!-- ******************************************************* -->
+
+    <!-- database: Deletes the records. -->
+    <target name="db.delete-records" depends="db.create-tables">
+        <six:execsql src="${build.sql.dir}/delete-records.sql">
+        </six:execsql>
+    </target>
+
+
+    <!-- database: Rebuilds the tables. -->
+    <target name="db.rebuild-tables" depends="db.prepare-sql-files">
+        <antcall target="db.drop-tables"/>
+        <antcall target="db.create-tables"/>
+    </target>
+
+
+    <!-- database: Drops the tables. -->
+    <target name="db.drop-tables" depends="db.prepare-sql-files">
+        <six:execsql src="${build.sql.dir}/drop-tables.sql">
+        </six:execsql>
+    </target>
+
+
+    <!-- database: Creates the tables. -->
+    <target name="db.create-tables" depends="db.prepare-sql-files">
+        <six:execsql src="${build.sql.dir}/create-tables.sql">
+        </six:execsql>
+    </target>
+
+
+
+    <!-- Prepares the SQL files.
+    The execution-ready SQL files are located in ${build.sql.dir}.
+    Some parameter tokens in the source SQL files are replaced with
+    the configured property values.  
+    -->
+    <target name="db.prepare-sql-files" depends="init">
+        <echo message="database engine=${six.db.engine}"/>
+        
+        <delete dir="${build.sql.dir}"/>
+        <mkdir  dir="${build.sql.dir}"/>
+
+        <copy todir="${build.sql.dir}">
+            <fileset dir="${sql.src.dir}" includes="**/*.sql"/>
+
+            <filterset>
+                <filter token="six.db.database" value="${six.db.database}"/>
+            </filterset>
+        </copy>
+    </target>
+
+
+    
+    <!-- ******************************************************* -->
+    <!-- *  Source Code Generation                             * -->
+    <!-- ******************************************************* -->
+
+    <!-- codegen:  
+    <target name="codegen" depends="is-codegen-required,init" 
+        if="codegen-required">
+        
+        <delete dir="${build.java.codegen.dir}"/>
+        <mkdir dir="${build.java.codegen.dir}"/>
+
+        <castor-codegen
+            file="${schema.src.dir}/linux-system-characteristics-schema.xsd"
+            todir="${build.java.codegen.dir}"
+            bindingfile="${schema.src.dir}/castor-mapping-binding.xml"
+            package="jp.go.aist.six.oval.model"
+            types="j2"
+            warnings="true"
+            properties="${config.src.dir}/castorbuilder.properties"
+            />
+    </target>
+    -->
+
+
+    <!-- codegen: Determines whether to generate the code or not.
+    The generation is required if 
+    (1) no generated code exists, or
+    (2) the object mapping schema is newer than the existing generated code.
+    -->
+    <target name="is-codegen-required" 
+        depends="model.is-codegen-required">
+        <condition property="codegen-required">
+            <or>
+                <not>
+                    <available file="${build.java.codegen.dir}"/>
+                </not>
+
+                <isset property="model.codegen-required"/>
+
+                <uptodate targetfile="${schema.src.dir}/castor-mapping-binding.xsd">
+                    <srcfiles dir="${java.codegen.dir}" includes="**/*.java">
+                    </srcfiles>
+                </uptodate>
+            </or>
+        </condition>
+        
+        <echo message="codegen-required=${codegen-required}"/>
+    </target>
+
+    <target name="model.is-codegen-required">
+        <condition property="model.codegen-required">
+            <or>
+                <not>
+                    <available file="${build.java.codegen.dir}"/>
+                </not>
+
+                <uptodate targetfile="${schema.src.dir}/linux-system-characteristics-schema.xsd">
+                    <srcfiles dir="${build.java.codegen.dir}" includes="**/*.java"/>
+                </uptodate>
+            </or>
+        </condition>
+        
+        <echo message="model.codegen-required=${model.codegen-required}"/>
+    </target>
+
+
+    
+    
+    <!-- ******************************************************* -->
+    <!-- *  Private Targets                                    * -->
+    <!-- ******************************************************* -->
+
+    <!-- ======================================================= -->
+    <!-- =  Generating Delivarables                            = -->
+    <!-- ======================================================= -->
+
+
+    <!-- ======================================================= -->
+    <!-- =  Java Compilation and API Documentation             = -->
+    <!-- ======================================================= -->
+
+
+    <!-- ======================================================= -->
+    <!-- =  Initialization                                     = -->
+    <!-- ======================================================= -->
+
+</project>
+
+<!-- vim:set tabstop=4:set expandtab:set shiftwidth=4: -->
+

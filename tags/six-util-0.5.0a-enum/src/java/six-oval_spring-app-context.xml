@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- // Project SIX: OVAL                                     // -->
+<!-- //                                                       // -->
+<!-- // Spring Application Context                            // -->
+<!-- /////////////////////////////////////////////////////////// -->
+
+<!--
+@author     Akihito Nakamura, AIST
+@version    $Id$
+-->
+
+<beans>
+
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %  OVAL Data Store                                    % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <bean id="jdoManager" 
+        class="org.castor.spring.orm.LocalCastorFactoryBean"
+        >
+        <property name="databaseName" value="six3oval"/>
+        <property name="configLocation" value="classpath:six-oval_castor-jdo-conf.xml"/>
+    </bean>
+
+    <bean id="txManager" 
+        class="org.castor.spring.orm.CastorTransactionManager"
+        >
+        <property name="JDOManager" ref="jdoManager"/>
+    </bean>
+
+
+    <!-- // DaoRegistry // -->
+    <bean id="daoRegistry" 
+        class="jp.go.aist.six.util.castor.FactoryDaoRegistry">
+        <property name="JDOManager" ref="jdoManager"/>
+        <property name="daoTypeMapping">
+            <map>
+                <entry key="jp.go.aist.six.oval.model.definition.OvalDefinitions"
+                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsDao"/>
+                    
+                <entry key="jp.go.aist.six.oval.model.definition.Definition"
+                    value="jp.go.aist.six.oval.core.store.DefinitionDao"/>
+
+                <entry key="jp.go.aist.six.oval.core.model.definition.OvalDefinitionsDefinitionAssociation"
+                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsDefinitionAssociationDao"/>
+
+<!-- CastoDao
+                <entry key="jp.go.aist.six.oval.model.definition.Reference"
+                    value="jp.go.aist.six.oval.core.store.ReferenceDao"/>
+                <entry key="jp.go.aist.six.oval.model.definition.Platform"
+                    value="jp.go.aist.six.oval.core.store.PlatformDao"/>
+                <entry key="jp.go.aist.six.oval.model.definition.Product"
+                    value="jp.go.aist.six.oval.core.store.ProductDao"/>
+                <entry key="jp.go.aist.six.oval.model.definition.Cve"
+                    value="jp.go.aist.six.oval.core.store.CveDao"/>
+-->                    
+
+                <entry key="jp.go.aist.six.oval.model.definition.Test"
+                    value="jp.go.aist.six.oval.core.store.TestDao"/>
+
+                <entry key="jp.go.aist.six.oval.core.model.definition.OvalDefinitionsTestAssociation"
+                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsTestAssociationDao"/>
+
+<!-- CastorDao???
+-->
+                <entry key="jp.go.aist.six.oval.model.definition.SystemObject"
+                    value="jp.go.aist.six.oval.core.store.SystemObjectDao"/>
+
+                <entry key="jp.go.aist.six.oval.model.definition.State"
+                    value="jp.go.aist.six.oval.core.store.StateDao"/>
+
+                <entry key="jp.go.aist.six.oval.core.model.definition.DefinitionTestAssociation"
+                    value="jp.go.aist.six.oval.core.store.DefinitionTestAssociationDao"/>
+
+                <entry key="jp.go.aist.six.oval.core.model.definition.OvalDefinitionsObjectAssociation"
+                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsObjectAssociationDao"/>
+
+                <entry key="jp.go.aist.six.oval.core.model.definition.OvalDefinitionsStateAssociation"
+                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsStateAssociationDao"/>
+
+
+            <!-- // System Characteristics // -->
+
+                <entry key="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics"
+                    value="jp.go.aist.six.oval.core.store.OvalSystemCharacteristicsDao"/>
+
+                <entry key="jp.go.aist.six.oval.model.system.SystemObjectStatus"
+                    value="jp.go.aist.six.oval.core.store.SystemObjectStatusDao"/>
+
+<!-- CastoDao
+                <entry key="jp.go.aist.six.oval.model.system.Item"
+                    value="jp.go.aist.six.oval.core.store.ItemDao"/>
+-->
+
+<!--
+                <entry key="jp.go.aist.six.oval.core.model.system.OvalSystemCharacteristicsObjectAssociation"
+                    value="jp.go.aist.six.oval.core.store.OvalSystemCharacteristicsObjectAssociationDao"/>
+-->
+
+
+            <!-- // Results // -->
+            
+                <entry key="jp.go.aist.six.oval.model.result.OvalResults"
+                    value="jp.go.aist.six.oval.core.store.OvalResultsDao"/>
+
+                <entry key="jp.go.aist.six.oval.model.result.SystemResult"
+                    value="jp.go.aist.six.oval.core.store.SystemResultDao"/>
+
+                <entry key="jp.go.aist.six.oval.model.result.DefinitionResult"
+                    value="jp.go.aist.six.oval.core.store.DefinitionResultDao"/>
+
+                <entry key="jp.go.aist.six.oval.core.model.result.OvalResultsSystemAssociation"
+                    value="jp.go.aist.six.oval.core.store.OvalResultsSystemAssociationDao"/>
+
+            </map>
+        </property>
+    </bean>
+
+
+    <bean id="ovalStore" class="jp.go.aist.six.oval.core.store.OvalStore">
+        <property name="transactionManager" ref="txManager"/>
+        <property name="daoRegistry" ref="daoRegistry"/>
+    </bean>
+
+
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %  OVAL XML                                           % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <bean id="ovalMarshaller" 
+      class="org.springframework.oxm.castor.CastorMarshaller">
+        <property name="mappingLocations"
+                 value="classpath:six-oval_castor-xml-mapping.xml"/>
+        <property name="ignoreExtraAttributes"
+                 value="true"/>
+        <property name="ignoreExtraElements"
+                 value="true"/>
+        <property name="suppressXsiType"
+                 value="true"/>
+    </bean> 
+
+
+    <bean id="ovalXml" class="jp.go.aist.six.oval.core.xml.OvalXml">
+        <property name="marshaller" ref="ovalMarshaller"/>
+        <property name="unmarshaller" ref="ovalMarshaller"/>
+    </bean>
+
+</beans>
