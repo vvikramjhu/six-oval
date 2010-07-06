@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.CommentedOvalEntity;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.common.Datatype;
 
 
@@ -60,15 +61,33 @@ public abstract class Variable
 
 
 
-//    /**
-//     * Constructor.
-//     */
-//    public Variable(
-//                    final Datatype datatype
-//                    )
-//    {
-//        setDatatype( datatype );
-//    }
+    /**
+     * Constructor.
+     */
+    public Variable(
+                    final String id,
+                    final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
+    }
+
+
+
+    /**
+     * Constructor.
+     */
+    public Variable(
+                    final String id,
+                    final int version,
+                    final String comment,
+                    final Datatype datatype
+                    )
+    {
+        this( id, version, comment );
+        setDatatype( datatype );
+    }
 
 
 
@@ -85,6 +104,17 @@ public abstract class Variable
     {
         return _datatype;
     }
+
+
+
+    public void setVariableType(
+                    final ComponentType type
+                    )
+    {
+    }
+
+
+    public abstract ComponentType getVariableType();
 
 
 
@@ -117,9 +147,8 @@ public abstract class Variable
     @Override
     public String toString()
     {
-        return "Variable[" + super.toString()
-                        + ", datatype=" + getDatatype()
-                        + "]";
+        return super.toString()
+                        + ", datatype=" + getDatatype();
     }
 
 }

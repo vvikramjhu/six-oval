@@ -543,6 +543,63 @@
 
 
 
+    <!-- ******************************************************* -->
+    <!-- Variable                                                -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.definition.Variable"
+        identity="persistentID">
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_variable"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+
+        <field name="ovalID" type="string">
+            <sql name="id" type="char"/>
+        </field>
+
+        <field name="ovalVersion" type="integer">
+            <sql name="version" type="integer"/>
+        </field>
+
+        <field name="deprecated" type="boolean">
+            <sql name="deprecated" type="bit"/>
+        </field>
+
+        <field name="comment" type="string">
+            <sql name="comment" type="char"/>
+        </field>
+
+        <field name="datatype" 
+            type="jp.go.aist.six.oval.model.common.Datatype">
+            <sql name="datatype" type="char"/>
+        </field>
+
+        <field name="variableType" 
+            type="jp.go.aist.six.oval.model.ComponentType">
+            <sql name="variable_type" type="char"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- LOcalVariable                                           -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.definition.LocalVariable"
+        extends="jp.go.aist.six.oval.model.definition.Variable"
+        identity="persistentID">
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_variable_local"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+    </class>
+
+
+
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <!-- %                                                     % -->
     <!-- %  OVAL System Characteristics                        % -->

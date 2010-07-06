@@ -195,6 +195,12 @@
             type="jp.go.aist.six.oval.model.definition.States">
             <bind-xml name="states" node="element"/>
         </field>
+
+        <field name="variables" 
+            type="jp.go.aist.six.oval.model.definition.Variables">
+            <bind-xml name="variables" node="element"/>
+        </field>
+
 <!--
         <field name="tests" 
             type="jp.go.aist.six.oval.model.definition.Test"
@@ -870,16 +876,33 @@
     <!-- ======================================================= -->
     <!-- LocalVariable                                           -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.core.model.definition.LocalVariable"
+    <class name="jp.go.aist.six.oval.model.definition.LocalVariable"
         extends="jp.go.aist.six.oval.model.definition.Variable">
         <map-to xml="local_variable"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
-
+<!--
         <field name="contentXml" type="java.lang.Object" 
             handler="jp.go.aist.six.oval.core.xml.StringXmlHandler">
             <bind-xml name="object_component" node="element"/>
         </field>
+-->
     </class>
+
+
+
+    <!-- ======================================================= -->
+    <!-- Variables                                               -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.definition.Variables">
+        <field name="variable" 
+            type="jp.go.aist.six.oval.model.definition.Variable"
+            collection="collection"
+            set-method="addVariable"
+            get-method="iterateVariable">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+    </class>
+
 
 
 

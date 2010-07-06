@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.definition.Test;
+import jp.go.aist.six.oval.model.definition.Variable;
 
 
 
@@ -28,14 +28,14 @@ import jp.go.aist.six.oval.model.definition.Test;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class TestDao
-    extends OvalEntityDao<Test>
+public class VariableDao
+    extends OvalEntityDao<Variable>
 {
 
-    public TestDao()
+    public VariableDao()
     {
-        super( Test.class );
+        super( Variable.class );
     }
 
 }
-// TestDao
+// VariableDao

@@ -18,9 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.model.definition;
+package jp.go.aist.six.oval.model.definition;
 
-import jp.go.aist.six.oval.model.definition.Variable;
+import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.common.Datatype;
 
 
 
@@ -57,6 +58,34 @@ public class LocalVariable
     }
 
 
+    /**
+     * Constructor.
+     */
+    public LocalVariable(
+                    final String id,
+                    final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
+    }
+
+
+
+    /**
+     * Constructor.
+     */
+    public LocalVariable(
+                    final String id,
+                    final int version,
+                    final String comment,
+                    final Datatype datatype
+                    )
+    {
+        super( id, version, comment, datatype );
+    }
+
+
 
     /**
      */
@@ -78,12 +107,21 @@ public class LocalVariable
 
 
     //**************************************************************
+    //  Variable
+    //**************************************************************
+
+    @Override
+    public ComponentType getVariableType()
+    {
+        return ComponentType.VARIABLE_LOCAL;
+    }
+
+
+
+    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -92,9 +130,6 @@ public class LocalVariable
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -105,6 +140,14 @@ public class LocalVariable
         }
 
         return super.equals( obj );
+    }
+
+
+
+    @Override
+    public String toString()
+    {
+        return "LocalVariable[" + super.toString() + "]";
     }
 
 }

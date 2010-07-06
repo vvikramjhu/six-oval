@@ -35,6 +35,8 @@ import jp.go.aist.six.oval.model.definition.SystemObject;
 import jp.go.aist.six.oval.model.definition.SystemObjects;
 import jp.go.aist.six.oval.model.definition.Test;
 import jp.go.aist.six.oval.model.definition.Tests;
+import jp.go.aist.six.oval.model.definition.Variable;
+import jp.go.aist.six.oval.model.definition.Variables;
 import jp.go.aist.six.util.castor.CastorDao;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -131,6 +133,21 @@ public class OvalDefinitionsDao
             }
 
             defs.setStates( p_objects );
+        }
+
+
+        Variables  variables = defs.getVariables();
+        if (variables != null) {
+            Variables  p_objects = new Variables();
+            for (Variable  object : variables) {
+                Variable  p_object = getForwardingDao( Variable.class ).sync( object );
+                p_objects.add( p_object );
+//                OvalDefinitionsStateAssociation  assoc =
+//                    new OvalDefinitionsStateAssociation( defs, p_object );
+//                getForwardingDao( OvalDefinitionsStateAssociation.class ).sync( assoc );
+            }
+
+            defs.setVariables( p_objects );
         }
 
 

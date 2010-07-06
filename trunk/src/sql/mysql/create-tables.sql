@@ -504,6 +504,59 @@ CHARACTER SET utf8;
 
 
 
+/* ============================================================== */
+/* Variable                                                       */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_d_variable
+(
+    PID                 VARCHAR(64)     NOT NULL,
+                        /* id + version, e.g. oval:org.mitre.oval:var:419:1 */
+
+    id                  VARCHAR(64)     NOT NULL,
+                        /* e.g. oval:org.mitre.oval:var:419 */
+    version             INT             NOT NULL,
+
+    deprecated          BOOLEAN         NOT NULL    DEFAULT false,
+    comment             VARCHAR(255),
+
+    datatype            VARCHAR(16)     NOT NULL,
+
+    variable_type       VARCHAR(32),
+
+    /* (FK) */
+
+    /* (PK) */
+    PRIMARY KEY (PID),
+
+    /* INDEX */
+    UNIQUE (id, version)
+
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
+/* LocalVariable                                                  */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_d_variable_local
+(
+    PID                 VARCHAR(64)     NOT NULL,
+                        /* id + version, e.g. oval:org.mitre.oval:var:419:1 */
+
+    /* (FK) */
+    
+    /* (PK) */
+    PRIMARY KEY (PID)
+
+    /* INDEX */
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 /* %                                                            % */
 /* % OVAL System Characteristics                                % */

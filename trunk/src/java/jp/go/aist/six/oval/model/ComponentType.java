@@ -44,6 +44,9 @@ public final class ComponentType
     private static final String  _WINDOWS_METABASE_     = "windows.metabase";
     private static final String  _WINDOWS_REGISTRY_     = "windows.registry";
 
+    private static final String  _VARIABLE_LOCAL_       = "variable.local";
+    private static final String  _VARIABLE_EXTERNAL_    = "variable.external";
+
 
     public static final ComponentType  INDEPENDENT_FAMILY    = new ComponentType( _INDEPENDENT_FAMILY_ );
     public static final ComponentType  INDEPENDENT_TEXTFILECONTENT = new ComponentType( _INDEPENDENT_TEXTFILECONTENT_ );
@@ -54,6 +57,9 @@ public final class ComponentType
     public static final ComponentType  WINDOWS_FILE          = new ComponentType( _WINDOWS_FILE_ );
     public static final ComponentType  WINDOWS_METABASE      = new ComponentType( _WINDOWS_METABASE_ );
     public static final ComponentType  WINDOWS_REGISTRY      = new ComponentType( _WINDOWS_REGISTRY_ );
+
+    public static final ComponentType  VARIABLE_LOCAL        = new ComponentType( _VARIABLE_LOCAL_ );
+    public static final ComponentType  VARIABLE_EXTERNAL     = new ComponentType( _VARIABLE_EXTERNAL_ );
 
 
     private static HashMap<String, ComponentType> _INIT_()
@@ -68,6 +74,9 @@ public final class ComponentType
         map.put( _WINDOWS_FILE_,        WINDOWS_FILE        );
         map.put( _WINDOWS_METABASE_,    WINDOWS_METABASE    );
         map.put( _WINDOWS_REGISTRY_,    WINDOWS_REGISTRY    );
+
+        map.put( _VARIABLE_LOCAL_,      VARIABLE_LOCAL    );
+        map.put( _VARIABLE_EXTERNAL_,   VARIABLE_EXTERNAL    );
         return map;
     }
 
