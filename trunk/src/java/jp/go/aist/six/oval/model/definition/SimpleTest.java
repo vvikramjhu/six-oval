@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.definition;
 
+import jp.go.aist.six.oval.model.common.Check;
+
 
 
 /**
@@ -59,6 +61,19 @@ public abstract class SimpleTest
                     )
     {
         super( id, version );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public SimpleTest(
+                    final String id,
+                    final int version,
+                    final Check check
+                    )
+    {
+        super( id, version, check );
     }
 
 

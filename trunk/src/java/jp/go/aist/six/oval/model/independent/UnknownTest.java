@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.definition.Test;
 
 
@@ -52,6 +53,19 @@ public class UnknownTest
                     )
     {
         super( id, version );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public UnknownTest(
+                    final String id,
+                    final int version,
+                    final Check check
+                    )
+    {
+        super( id, version, check );
     }
 
 

@@ -26,19 +26,21 @@ public class StoreDefTestTest
     public Object[][] ovalDefTestProvider()
     {
         return new Object[][] {
-//                        // independent : family test
-//                        {
-//                            "test/data/definition/sample_oval-test-family.xml",
-//                            "oval:org.mitre.oval:tst:99",
-//                            1,
-//                            "the installed operating system is part of the Microsoft Windows family",
-//                            Existence.AT_LEAST_ONE_EXISTS,
-//                            Check.ONLY_ONE,
-//                            ComponentType.INDEPENDENT_FAMILY,
-//                            "oval:org.mitre.oval:obj:99",
-//                            "oval:org.mitre.oval:ste:99"
-//                        }
-//                        ,
+                        // independent : family test
+                        {
+                            ComponentType.INDEPENDENT_FAMILY,
+                            "test/data/definition/sample_oval-test-family.xml",
+                            "oval:org.mitre.oval:tst:99",
+                            1,
+                            "the installed operating system is part of the Microsoft Windows family",
+                            Existence.AT_LEAST_ONE_EXISTS,
+                            Check.ONLY_ONE,
+                            ComponentType.INDEPENDENT_FAMILY,
+                            "oval:org.mitre.oval:obj:99",
+                            "oval:org.mitre.oval:ste:99"
+                        }
+                        ,
+
                         // independent : textfilecontent test
                         {
                             ComponentType.INDEPENDENT_TEXTFILECONTENT,
@@ -52,20 +54,21 @@ public class StoreDefTestTest
                             "oval:org.mitre.oval:obj:7326",
                             "oval:org.mitre.oval:ste:5739"
                         }
-//                        ,
-//
-//                        // independent : unknown test
-//                        {
-//                            "test/data/definition/sample_oval-test-unknown.xml",
-//                            "oval:org.mitre.oval:tst:2531",
-//                            1,
-//                            "Word 97 is installed",
-//                            Existence.AT_LEAST_ONE_EXISTS,
-//                            Check.ALL,
-//                            ComponentType.INDEPENDENT_UNKNOWN,
-//                            null,
-//                            null
-//                        }
+                        ,
+
+                        // independent : unknown test
+                        {
+                            ComponentType.INDEPENDENT_UNKNOWN,
+                            "test/data/definition/sample_oval-test-unknown.xml",
+                            "oval:org.mitre.oval:tst:2531",
+                            1,
+                            "Word 97 is installed",
+                            Existence.AT_LEAST_ONE_EXISTS,
+                            Check.ALL,
+                            ComponentType.INDEPENDENT_UNKNOWN,
+                            null,
+                            null
+                        }
 //                        ,
 //
 //                        // unix : uname test
