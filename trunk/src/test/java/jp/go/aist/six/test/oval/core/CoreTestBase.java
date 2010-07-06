@@ -432,7 +432,7 @@ public abstract class CoreTestBase
 
     //NetworkInterface
 
-    private static final Collection<NetworkInterface> _WINDWS_NETWORK_INTERFACES_
+    public static final Collection<NetworkInterface> WINDWS_NETWORK_INTERFACES
     = Arrays.asList( new NetworkInterface[] {
                     new NetworkInterface(
                                     "VMware Virtual Ethernet Adapter for VMnet1",
@@ -506,7 +506,7 @@ public abstract class CoreTestBase
                         "5.1.2600",
                         "INTEL32",
                         "x60",
-                        _WINDWS_NETWORK_INTERFACES_
+                        WINDWS_NETWORK_INTERFACES
                         );
 
 
@@ -528,7 +528,7 @@ public abstract class CoreTestBase
                                             "5.1.2600",
                                             "INTEL32",
                                             "x60",
-                                            _WINDWS_NETWORK_INTERFACES_
+                                            WINDWS_NETWORK_INTERFACES
                                             )
                         }
                         ,
@@ -541,7 +541,7 @@ public abstract class CoreTestBase
                                             "5.1.2600",
                                             "INTEL32",
                                             "x60",
-                                            _WINDWS_NETWORK_INTERFACES_
+                                            WINDWS_NETWORK_INTERFACES
                                             )
                         }
         };
@@ -566,7 +566,7 @@ public abstract class CoreTestBase
                                             "5.1.2600",
                                             "INTEL32",
                                             "x60",
-                                            _WINDWS_NETWORK_INTERFACES_
+                                            WINDWS_NETWORK_INTERFACES
                                             )
                         }
         };

@@ -92,8 +92,8 @@
                 <entry key="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics"
                     value="jp.go.aist.six.oval.core.store.OvalSystemCharacteristicsDao"/>
 
-                <entry key="jp.go.aist.six.oval.model.system.SystemObjectStatus"
-                    value="jp.go.aist.six.oval.core.store.SystemObjectStatusDao"/>
+                <entry key="jp.go.aist.six.oval.model.system.CollectedSystemObject"
+                    value="jp.go.aist.six.oval.core.store.CollectedSystemObjectDao"/>
 
 <!-- CastoDao
                 <entry key="jp.go.aist.six.oval.model.system.Item"

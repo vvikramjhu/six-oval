@@ -20,8 +20,7 @@
 
 package jp.go.aist.six.oval.model.system;
 
-import jp.go.aist.six.util.castor.AbstractPersistable;
-import java.util.ArrayList;
+import jp.go.aist.six.oval.model.Container;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -34,11 +33,12 @@ import java.util.Collection;
  * @version $Id$
  */
 public class CollectedSystemObjects
-    extends AbstractPersistable
+    extends Container<CollectedSystemObject>
+//    extends AbstractPersistable
 //    extends Container<CollectedSystemObjectKey,CollectedSystemObject>
 {
 
-    private Collection<CollectedSystemObject>  _object = new ArrayList<CollectedSystemObject>();
+//    private Collection<CollectedSystemObject>  _object = new ArrayList<CollectedSystemObject>();
     //{1..*}
 
 
@@ -58,7 +58,7 @@ public class CollectedSystemObjects
                     final Collection<? extends CollectedSystemObject> elements
                     )
     {
-        setObject( elements );
+        super( elements );
     }
 
 
@@ -69,7 +69,7 @@ public class CollectedSystemObjects
                     final CollectedSystemObject[] elements
                     )
     {
-        setObject( Arrays.asList( elements ) );
+        super( Arrays.asList( elements ) );
     }
 
 
@@ -78,14 +78,13 @@ public class CollectedSystemObjects
                     final Collection<? extends CollectedSystemObject> objectList
                     )
     {
-        _object.clear();
-        _object.addAll( objectList );
+        reset( objectList );
     }
 
 
     public Collection<CollectedSystemObject> getObject()
     {
-        return _object;
+        return _elements();
     }
 
 
@@ -111,7 +110,7 @@ public class CollectedSystemObjects
     public String toString()
     {
         return "CollectedSystemObjects["
-                        + String.valueOf( _object )
+                        + super.toString()
                         + "]";
     }
 

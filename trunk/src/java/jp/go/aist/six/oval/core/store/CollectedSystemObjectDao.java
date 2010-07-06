@@ -28,14 +28,14 @@ import jp.go.aist.six.oval.model.system.CollectedSystemObject;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class SystemObjectStatusDao
+public class CollectedSystemObjectDao
     extends OvalEntityReferenceDao<CollectedSystemObject>
 {
 
     /**
      * Constructor.
      */
-    public SystemObjectStatusDao()
+    public CollectedSystemObjectDao()
     {
         super( CollectedSystemObject.class );
     }
@@ -48,4 +48,4 @@ public class SystemObjectStatusDao
 
 
 }
-// SystemObjectResultDao
+// CollectedSystemObjectDao

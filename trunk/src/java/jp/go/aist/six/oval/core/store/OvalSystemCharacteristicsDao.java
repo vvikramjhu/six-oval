@@ -20,7 +20,11 @@
 
 package jp.go.aist.six.oval.core.store;
 
+import jp.go.aist.six.oval.core.model.system.OvalSystemCharacteristicsObjectAssociation;
+import jp.go.aist.six.oval.model.system.CollectedSystemObject;
+import jp.go.aist.six.oval.model.system.CollectedSystemObjects;
 import jp.go.aist.six.oval.model.system.Item;
+import jp.go.aist.six.oval.model.system.ItemReference;
 import jp.go.aist.six.oval.model.system.NetworkInterface;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.SystemData;
@@ -83,19 +87,22 @@ public class OvalSystemCharacteristicsDao
             item.setMasterObject( sc );
             getForwardingDao( Item.class ).create( item );
         }
-
-        for (SystemObjectStatus  object : sc.getCollectedObjects()) {
-            object.setMasterObject( sc );
-            for (ItemReference  item_ref : object.getItems()) {
-                item_ref.setMasterObject( object );
-            }
-            getForwardingDao( SystemObjectStatus.class ).create( object );
-
-//            OvalSystemCharacteristicsObjectAssociation  sco_assoc =
-//                new OvalSystemCharacteristicsObjectAssociation( sc, object );
-//            getForwardingDao().create( OvalSystemCharacteristicsObjectAssociation.class, sco_assoc );
-        }
 */
+
+        CollectedSystemObjects  objects = sc.getCollectedObjects();
+        if (objects != null  &&  objects.size() > 0) {
+            for (CollectedSystemObject  object : objects) {
+                object.setMasterObject( sc );
+                for (ItemReference  item_ref : object.getReference()) {
+                    item_ref.setMasterObject( object );
+                }
+                getForwardingDao( CollectedSystemObject.class ).create( object );
+
+                OvalSystemCharacteristicsObjectAssociation  sco_assoc =
+                    new OvalSystemCharacteristicsObjectAssociation( sc, object );
+                getForwardingDao( OvalSystemCharacteristicsObjectAssociation.class).sync( sco_assoc );
+            }
+        }
 
         return super.create( sc );
     }
