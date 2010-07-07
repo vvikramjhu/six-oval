@@ -28,7 +28,7 @@ import jp.go.aist.six.util.castor.StandardAssociation;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: OvalResultsSystemAssociation.java 440 2010-03-23 05:11:44Z akihito $
+ * @version $Id$
  */
 public class OvalResultsSystemAssociation
     extends StandardAssociation<String, String, OvalResults, SystemResult>

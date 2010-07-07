@@ -26,7 +26,7 @@ import java.util.HashMap;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: ItemType.java 774 2010-05-11 05:06:22Z akihito $
+ * @version $Id$
  */
 public final class ItemType
     implements Serializable

@@ -28,7 +28,7 @@ import jp.go.aist.six.util.castor.StandardAssociation;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: OvalSystemCharacteristicsObjectAssociation.java 440 2010-03-23 05:11:44Z akihito $
+ * @version $Id$
  */
 public class OvalSystemCharacteristicsObjectAssociation
     extends StandardAssociation<String, String, OvalSystemCharacteristics, CollectedSystemObject>
