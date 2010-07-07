@@ -20,13 +20,19 @@
 
 package jp.go.aist.six.oval.core.store;
 
+import jp.go.aist.six.oval.core.service.StandardOvalService;
+import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.definition.Affected;
+import jp.go.aist.six.oval.model.definition.Criteria;
 import jp.go.aist.six.oval.model.definition.Cve;
 import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.model.definition.Metadata;
 import jp.go.aist.six.oval.model.definition.Platform;
 import jp.go.aist.six.oval.model.definition.Product;
 import jp.go.aist.six.oval.model.definition.Reference;
+import jp.go.aist.six.util.xml.OxmException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import java.util.Collection;
 import java.util.List;
 
@@ -41,11 +47,29 @@ public class DefinitionDao
 {
 
     /**
+     * Logger.
+     */
+    private static Log  _LOG = LogFactory.getLog( DefinitionDao.class );
+
+
+
+    private OvalXml  _xmlMapper;
+
+
+
+    /**
      * Constructor.
      */
     public DefinitionDao()
     {
         super( Definition.class );
+
+        try {
+            _xmlMapper = StandardOvalService.INSTANCE.getXml();
+        } catch (Exception ex) {
+            // TODO:
+            _LOG.error(  "XmlMapper instantiation failed: " + ex.getMessage() );
+        }
     }
 
 
@@ -106,6 +130,17 @@ public class DefinitionDao
             Collection<Cve>  p_cves =
                 getForwardingDao( Cve.class ).syncAll( cves );
             def.setRelatedCves( p_cves );
+        }
+
+        Criteria  criteria = def.getCriteria();
+        if (criteria != null  &&  _xmlMapper != null) {
+            try {
+                String  xml = _xmlMapper.marshalToString( criteria );
+                def.setCriteriaXml( xml );
+            } catch (OxmException ex) {
+                // TODO:
+                _LOG.warn(  "'criteria' property NOT persisted" );
+            }
         }
 
         return super.create( def );

@@ -116,6 +116,35 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
+/* Definition                                                     */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_d_definition_criteria
+(
+    PID                 VARCHAR(64)     NOT NULL,
+                        /* id + version, e.g. oval:com.redhat.rhsa:def:20090003:302 */
+
+    id                  VARCHAR(64)     NOT NULL,
+                        /* e.g. oval:com.redhat.rhsa:def:20090003 */
+    version             INT             NOT NULL,
+
+    /* criteria as string */
+    criteria            VARCHAR(8191),
+                        /* max. length = 7452, id = oval:org.mitre.oval:def:6233 */
+
+    /* (FK) */
+
+    /* (PK) */
+    PRIMARY KEY (PID),
+
+    /* INDEX */
+    UNIQUE (id, version)
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
 /* OvalDefinitions - Definition association                       */
 /* ============================================================== */
 /* CREATE TABLE IF NOT EXISTS oval_d_definitions__definition */
