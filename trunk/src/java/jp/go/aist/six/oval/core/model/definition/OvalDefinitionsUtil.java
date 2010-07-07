@@ -81,7 +81,7 @@ public class OvalDefinitionsUtil
     /**
      *
      */
-    public Collection<String> getTestsOfDefinition(
+    public Collection<String> getRelatedTestIDOfDefinition(
                     final String defID
                     )
     {
@@ -96,7 +96,7 @@ public class OvalDefinitionsUtil
 
         Collection<String>  tests = _testsOfDefinition.get( defID );
         if (tests == null) {
-            tests = _collectTests( def );
+            tests = _collectRelatedTestID( def );
             _testsOfDefinition.put( defID, tests );
         }
 
@@ -108,13 +108,13 @@ public class OvalDefinitionsUtil
     /**
      *
      */
-    private Collection<String> _collectTests(
+    private Collection<String> _collectRelatedTestID(
                     final Definition def
                     )
     {
         Set<String>  tests = new HashSet<String>();
         Criteria  criteria = def.getCriteria();
-        _collectTests( tests, criteria );
+        _collectTestID( tests, criteria );
 
         return tests;
     }
@@ -123,7 +123,7 @@ public class OvalDefinitionsUtil
 
     /**
      */
-    private void _collectTests(
+    private void _collectTestID(
                     final Set<String> tests,
                     final Criteria criteria
                     )
@@ -131,11 +131,11 @@ public class OvalDefinitionsUtil
         if (criteria != null) {
             for (CriteriaElement  e : criteria.getElements()) {
                 if (e instanceof Criterion) {
-                    _collectTests( tests, Criterion.class.cast( e ) );
+                    _collectTestID( tests, Criterion.class.cast( e ) );
                 } else if (e instanceof Criteria) {
-                        _collectTests( tests, Criteria.class.cast( e ) );
+                        _collectTestID( tests, Criteria.class.cast( e ) );
                 } else if (e instanceof ExtendDefinition) {
-                    _collectTests( tests, ExtendDefinition.class.cast( e ) );
+                    _collectTestID( tests, ExtendDefinition.class.cast( e ) );
                 }
             }
         }
@@ -146,13 +146,13 @@ public class OvalDefinitionsUtil
     /**
      *
      */
-    private void _collectTests(
+    private void _collectTestID(
                     final Set<String> tests,
                     final ExtendDefinition ext
                     )
     {
         final String  defID = ext.getDefinitionRef();
-        tests.addAll( getTestsOfDefinition( defID ) );
+        tests.addAll( getRelatedTestIDOfDefinition( defID ) );
     }
 
 
@@ -160,7 +160,7 @@ public class OvalDefinitionsUtil
     /**
      *
      */
-    private void _collectTests(
+    private void _collectTestID(
                     final Set<String> tests,
                     final Criterion criterion
                     )

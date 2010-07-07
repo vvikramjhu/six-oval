@@ -658,7 +658,7 @@ public class OvalXmlTest
 //        Assert.assertEquals( def.getDefinitionClass(), DefinitionClass.PATCH );
 
         Collection<String>  testIDs =
-            OvalDefinitionsUtil.newInstance( defs ).getTestsOfDefinition( def.getOvalID() );
+            OvalDefinitionsUtil.newInstance( defs ).getRelatedTestIDOfDefinition( def.getOvalID() );
 //        Reporter.log( "    @@@ test ids in criteria =" + testIDs, true );
         Assert.assertEquals( testIDs.size(), 1 );
 
@@ -747,7 +747,7 @@ public class OvalXmlTest
         Assert.assertEquals( def.getDefinitionClass(), DefinitionClass.PATCH );
 
         Collection<String>  testIDs =
-            OvalDefinitionsUtil.newInstance( defs ).getTestsOfDefinition( def.getOvalID() );
+            OvalDefinitionsUtil.newInstance( defs ).getRelatedTestIDOfDefinition( def.getOvalID() );
 //        Reporter.log( "    @@@ test ids in criteria =" + testIDs, true );
         Assert.assertEquals( testIDs.size(), 14 );
 
@@ -836,7 +836,7 @@ public class OvalXmlTest
         Assert.assertEquals( def.getDefinitionClass(), DefinitionClass.PATCH );
 
         Collection<String>  testIDs =
-            OvalDefinitionsUtil.newInstance( defs ).getTestsOfDefinition( def.getOvalID() );
+            OvalDefinitionsUtil.newInstance( defs ).getRelatedTestIDOfDefinition( def.getOvalID() );
 //        Reporter.log( "    @@@ test ids in criteria =" + testIDs, true );
         Assert.assertEquals( testIDs.size(), 8 );
 
@@ -938,7 +938,7 @@ public class OvalXmlTest
         Assert.assertEquals( def.getDefinitionClass(), DefinitionClass.VULNERABILITY );
 
         Collection<String>  testIDs =
-            OvalDefinitionsUtil.newInstance( defs ).getTestsOfDefinition( def.getOvalID() );
+            OvalDefinitionsUtil.newInstance( defs ).getRelatedTestIDOfDefinition( def.getOvalID() );
 //        Reporter.log( "    @@@ test ids in criteria =" + testIDs, true );
         // test: {2339, 2747, 2748, 2838(twice), 2843, 3019}
         Assert.assertEquals( testIDs.size(), 6 );

@@ -171,7 +171,7 @@ public class OvalDefinitionsDao
                 getForwardingDao( OvalDefinitionsDefinitionAssociation.class ).sync( assoc );
 
                 final String  defID = def.getOvalID();
-                Collection<String>  testIDs = util.getTestsOfDefinition( defID );
+                Collection<String>  testIDs = util.getRelatedTestIDOfDefinition( defID );
                 for (String  testID : testIDs) {
                     DefinitionTestAssociation  dt_assoc =
                         new DefinitionTestAssociation( def, defs.getTest( testID ) );
