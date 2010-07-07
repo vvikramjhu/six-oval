@@ -55,7 +55,7 @@ public class OvalDefinitions
     private Variables  _variables = new Variables();
     //{0..1}
 
-//    private String  _definitionsDigest;
+    private String  _definitionsDigest;
 
 
 
@@ -174,7 +174,7 @@ public class OvalDefinitions
                     final String digest
                     )
     {
-//        _definitionsDigest = digest;
+        _definitionsDigest = digest;
     }
 
 
@@ -182,10 +182,15 @@ public class OvalDefinitions
      */
     public String getDefinitionsDigest()
     {
+        if (_definitionsDigest != null) {
+            return _definitionsDigest;
+        }
+
         if (_definitions == null) {
             return null;
         } else {
-            return _definitions.getDigest();
+            _definitionsDigest = _definitions.getDigest();
+            return _definitionsDigest;
         }
     }
 
