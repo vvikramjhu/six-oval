@@ -3,7 +3,6 @@ package jp.go.aist.six.test.oval.core;
 import jp.go.aist.six.oval.core.service.StandardOvalService;
 import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
-import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.NameEntity;
 import jp.go.aist.six.oval.model.OvalElementContainer;
 import jp.go.aist.six.oval.model.OvalEntity;
@@ -260,90 +259,6 @@ public abstract class CoreTestBase
     //  Definitions
     //
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    //==============================================================
-    //  object
-    //==============================================================
-
-    @DataProvider( name="oval-def-object" )
-    public Object[][] ovalDefObjectProvider()
-    {
-        return new Object[][] {
-                        // independent : family
-                        {
-                            ComponentType.INDEPENDENT_FAMILY,
-                            "test/data/definition/sample_oval-object-family.xml",
-                            "oval:org.mitre.oval:obj:99",
-                            1,
-                            "This is the default family object. Only one family object should exist."
-                        }
-                        ,
-                        // independent : textfilecontent
-                        {
-                            ComponentType.INDEPENDENT_TEXTFILECONTENT,
-                            "test/data/definition/sample_oval-object-textfilecontent.xml",
-                            "oval:org.mitre.oval:obj:7326",
-                            1,
-                            null
-                        }
-                        ,
-                        // linux : dpkginfo
-                        {
-                            ComponentType.LINUX_DPKGINFO,
-                            "test/data/definition/sample_oval-object-dpkginfo.xml",
-                            "oval:org.mitre.oval:obj:10648",
-                            1,
-                            "apache2 package information"
-                        }
-                        ,
-                        // linux : rpminfo
-                        {
-                            ComponentType.LINUX_RPMINFO,
-                            "test/data/definition/sample_oval-object-rpminfo.xml",
-                            "oval:com.redhat.rhsa:obj:20100061001",
-                            301,
-                            null
-                        }
-                        ,
-                        // unux : uname
-                        {
-                            ComponentType.UNIX_UNAME,
-                            "test/data/definition/sample_oval-object-uname.xml",
-                            "oval:org.mitre.oval:obj:2759",
-                            1,
-                            "The single uname object."
-                        }
-                        ,
-                        // windows : file
-                        {
-                            ComponentType.WINDOWS_FILE,
-                            "test/data/definition/sample_oval-object-file.xml",
-                            "oval:org.mitre.oval:obj:222",
-                            1,
-                            "The path to the mshtml.dll file in the system root"
-                        }
-                        ,
-                        // windows : metabase
-                        {
-                            ComponentType.WINDOWS_METABASE,
-                            "test/data/definition/sample_oval-object-metabase.xml",
-                            "oval:org.mitre.oval:obj:556",
-                            2,
-                            null
-                        }
-                        ,
-                        // windows : registry
-                        {
-                            ComponentType.WINDOWS_REGISTRY,
-                            "test/data/definition/sample_oval-object-registry.xml",
-                            "oval:org.mitre.oval:obj:717",
-                            1,
-                            "This registry key holds the service pack installed on the host if one is present."
-                        }
-        };
-    }
-
-
 
     // definition //
 
@@ -1108,7 +1023,7 @@ public abstract class CoreTestBase
 
     // directives //
 
-    private static final Directives _DIRECTIVES_1_ =
+    public static final Directives DIRECTIVES_1 =
         new Directives(
                         new Directive( true, Content.FULL ),
                         new Directive( true, Content.FULL ),
@@ -1126,7 +1041,7 @@ public abstract class CoreTestBase
                         {
                             "oval-results:directives",
                             "test/data/result/oval-results.directive.1.xml",
-                            _DIRECTIVES_1_
+                            DIRECTIVES_1
                         }
         };
 
@@ -1181,7 +1096,7 @@ public abstract class CoreTestBase
 
     // oval_results //
 
-    private static final Generator  _RESULTS_GENERATOR_1_ =
+    public static final Generator  RESULTS_GENERATOR_1 =
         new Generator(
                         "5.6",
                         IsoDate.valueOf( "2010-05-12T20:27:10" ),
@@ -1189,20 +1104,6 @@ public abstract class CoreTestBase
                         "5.6 Build: 4"
                         );
 
-
-    @DataProvider( name="oval-results-oval_results" )
-    public Object[][] ovalResultsOvalResultsData()
-    {
-        return new Object[][] {
-                        {
-                            "oval-results:oval_results",
-                            "test/data/result/oval-results.oval_results.1.inventory.windows.xml",
-                            _RESULTS_GENERATOR_1_,
-                            _DIRECTIVES_1_
-                        }
-        };
-
-    }
 
 }
 // CoreTestBase

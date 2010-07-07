@@ -13,7 +13,7 @@ import org.testng.annotations.DataProvider;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class StoreScOvalSc
+public class StoreScOvalScTest
     extends CoreTestBase
 {
 

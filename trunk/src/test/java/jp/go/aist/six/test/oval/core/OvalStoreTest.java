@@ -42,16 +42,16 @@ public class OvalStoreTest
     public void testAll()
     throws Exception
     {
-        Object[][]  data = ovalDefObjectProvider();
-        for (int  i = 0; i < data.length; i++) {
-            testObject(
-                        (ComponentType)data[i][0],
-                        (String)data[i][1],
-                        (String)data[i][2],
-                        (Integer)data[i][3],
-                        (String)data[i][4]
-                        );
-        }
+//        Object[][]  data = ovalDefObjectProvider();
+//        for (int  i = 0; i < data.length; i++) {
+//            testObject(
+//                        (ComponentType)data[i][0],
+//                        (String)data[i][1],
+//                        (String)data[i][2],
+//                        (Integer)data[i][3],
+//                        (String)data[i][4]
+//                        );
+//        }
     }
 
 
