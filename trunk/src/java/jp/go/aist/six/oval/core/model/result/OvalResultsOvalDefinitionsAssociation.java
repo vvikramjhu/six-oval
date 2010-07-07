@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.core.model.result;
 
+import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.model.result.OvalResults;
-import jp.go.aist.six.oval.model.result.SystemResult;
 import jp.go.aist.six.util.castor.StandardAssociation;
 
 
@@ -30,14 +30,14 @@ import jp.go.aist.six.util.castor.StandardAssociation;
  * @author	Akihito Nakamura, AIST
  * @version $Id: OvalResultsSystemAssociation.java 440 2010-03-23 05:11:44Z akihito $
  */
-public class OvalResultsSystemAssociation
-    extends StandardAssociation<String, String, OvalResults, SystemResult>
+public class OvalResultsOvalDefinitionsAssociation
+    extends StandardAssociation<String, String, OvalResults, OvalDefinitions>
 {
 
     /**
      * Constructor.
      */
-    public OvalResultsSystemAssociation()
+    public OvalResultsOvalDefinitionsAssociation()
     {
     }
 
@@ -46,13 +46,13 @@ public class OvalResultsSystemAssociation
     /**
      * Constructor.
      */
-    public OvalResultsSystemAssociation(
+    public OvalResultsOvalDefinitionsAssociation(
                     final OvalResults antecendent,
-                    final SystemResult dependent
+                    final OvalDefinitions dependent
                     )
     {
         super( antecendent, dependent );
     }
 
 }
-// OvalResultsSystemAssociation
+// OvalResultsOvalDefinitionsAssociation

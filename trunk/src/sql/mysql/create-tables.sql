@@ -772,6 +772,28 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
+/* OvalResults - OvalDefinitions association                      */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_assoc__r_results__d_definitions
+(
+    PID                 INT             NOT NULL    AUTO_INCREMENT,
+
+    /* (FK) */
+    r_results__PID      CHAR(36)        NOT NULL,
+    d_definitions__PID  CHAR(36)        NOT NULL,
+
+    /* (PK) */
+    PRIMARY KEY (PID),
+    
+    /* INDEX */
+    UNIQUE (r_results__PID, d_definitions__PID)
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
 /* SystemResult                                                   */
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_r_system

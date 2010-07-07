@@ -949,11 +949,36 @@
             type="jp.go.aist.six.oval.model.result.Content">
             <sql name="definition_not_applicable_content" type="char"/>
         </field>
-        
+
 
         <field name="definitions" 
             type="jp.go.aist.six.oval.model.definition.OvalDefinitions">
             <sql name="d_definitions__PID"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- OvalResultsOvalDefinitionsAssociation                   -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.core.model.result.OvalResultsOvalDefinitionsAssociation"
+        identity="persistentID"
+        key-generator="IDENTITY"
+        >
+        <cache-type type="unlimited"/>
+        <map-to table="oval_assoc__r_results__d_definitions"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="r_results__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="d_definitions__PID" type="char"/>
         </field>
     </class>
 
@@ -1006,7 +1031,6 @@
         <field name="dependentPersistentID" type="string">
             <sql name="r_system__PID" type="char"/>
         </field>
-
     </class>
 
 
