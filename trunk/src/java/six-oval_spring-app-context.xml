@@ -117,6 +117,9 @@
                 <entry key="jp.go.aist.six.oval.model.result.DefinitionResult"
                     value="jp.go.aist.six.oval.core.store.DefinitionResultDao"/>
 
+                <entry key="jp.go.aist.six.oval.core.model.result.OvalResultsOvalDefinitionsAssociation"
+                    value="jp.go.aist.six.oval.core.store.OvalResultsOvalDefinitionsAssociationDao"/>
+
                 <entry key="jp.go.aist.six.oval.core.model.result.OvalResultsSystemAssociation"
                     value="jp.go.aist.six.oval.core.store.OvalResultsSystemAssociationDao"/>
 

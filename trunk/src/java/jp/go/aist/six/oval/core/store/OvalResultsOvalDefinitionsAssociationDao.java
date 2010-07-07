@@ -20,9 +20,9 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.core.model.result.OvalResultsSystemAssociation;
+import jp.go.aist.six.oval.core.model.result.OvalResultsOvalDefinitionsAssociation;
+import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.model.result.OvalResults;
-import jp.go.aist.six.oval.model.result.SystemResult;
 import jp.go.aist.six.util.castor.StandardAssociationDao;
 
 
@@ -31,14 +31,14 @@ import jp.go.aist.six.util.castor.StandardAssociationDao;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalResultsSystemAssociationDao
-    extends StandardAssociationDao<String, String, OvalResults, SystemResult, OvalResultsSystemAssociation>
+public class OvalResultsOvalDefinitionsAssociationDao
+    extends StandardAssociationDao<String, String, OvalResults, OvalDefinitions, OvalResultsOvalDefinitionsAssociation>
 {
 
-    public OvalResultsSystemAssociationDao()
+    public OvalResultsOvalDefinitionsAssociationDao()
     {
-        super( OvalResultsSystemAssociation.class );
+        super( OvalResultsOvalDefinitionsAssociation.class );
     }
 
 }
-// OvalResultsSystemAssociationDao
+// OvalResultsOvalDefinitionsAssociationDao
