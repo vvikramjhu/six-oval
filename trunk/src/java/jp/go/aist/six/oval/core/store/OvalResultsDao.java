@@ -73,10 +73,10 @@ public class OvalResultsDao
 
         OvalDefinitions  defs = results.getDefinitions();
         if (defs != null) {
-            getForwardingDao( OvalDefinitions.class ).sync( defs );
+            OvalDefinitions  p_defs = getForwardingDao( OvalDefinitions.class ).sync( defs );
 
             OvalResultsOvalDefinitionsAssociation  or_od_assoc =
-                new OvalResultsOvalDefinitionsAssociation( results, defs );
+                new OvalResultsOvalDefinitionsAssociation( results, p_defs );
             getForwardingDao( OvalResultsOvalDefinitionsAssociation.class ).sync( or_od_assoc );
         }
 

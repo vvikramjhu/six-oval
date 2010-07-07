@@ -20,7 +20,8 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.OvalEntity;
+import jp.go.aist.six.oval.model.common.Generator;
+import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.util.castor.DefaultPersistenceHelper;
 
 
@@ -29,11 +30,11 @@ import jp.go.aist.six.util.castor.DefaultPersistenceHelper;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalEntityHelper<T extends OvalEntity>
-    extends DefaultPersistenceHelper<String, T>
+public class OvalDefinitionsHelper
+    extends DefaultPersistenceHelper<String, OvalDefinitions>
 {
 
-    public OvalEntityHelper()
+    public OvalDefinitionsHelper()
     {
     }
 
@@ -44,12 +45,17 @@ public class OvalEntityHelper<T extends OvalEntity>
     //**************************************************************
 
     public Object getUnique(
-                    final T object
+                    final OvalDefinitions object
                     )
     {
+        Generator  generator = object.getGenerator();
+        String  digest = object.getDefinitionsDigest();
+
         return (new Object[] {
-                        object.getOvalID(),
-                        Integer.valueOf( object.getOvalVersion() )
+                        generator.getSchemaVersion(),
+                        generator.getTimestamp(),
+                        generator.getProductName(),
+                        digest
         });
     }
 
@@ -57,9 +63,9 @@ public class OvalEntityHelper<T extends OvalEntity>
 
     public String getUniqueFilter()
     {
-        return "WHERE o.ovalID = $1 AND o.ovalVersion = $2";
+        return "WHERE o.generator.schemaVersion = $1 AND o.generator.timestamp = $2 AND o.generator.productName = $3 AND o.definitionsDigest = $4";
     }
 
 }
-// OvalEntityHelper
+// OvalDefinitionsHelper
 

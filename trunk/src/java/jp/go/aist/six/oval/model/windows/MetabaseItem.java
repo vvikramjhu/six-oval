@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.core.model.system.ItemType;
+import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.system.EntityItemAnySimple;
 import jp.go.aist.six.oval.model.system.EntityItemInt;
 import jp.go.aist.six.oval.model.system.EntityItemString;
@@ -187,9 +187,9 @@ public class MetabaseItem
     //**************************************************************
 
     @Override
-    public ItemType getItemType()
+    public ComponentType getItemType()
     {
-        return ItemType.WINDOWS_METABASE;
+        return ComponentType.WINDOWS_METABASE;
     }
 
 

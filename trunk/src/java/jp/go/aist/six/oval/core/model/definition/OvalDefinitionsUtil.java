@@ -39,17 +39,17 @@ import java.util.Set;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalDefinitionsHelper
+public class OvalDefinitionsUtil
 {
 
     /**
      * A static factory method.
      */
-    public static OvalDefinitionsHelper newInstance(
+    public static OvalDefinitionsUtil newInstance(
                     final OvalDefinitions defs
                     )
     {
-        return (new OvalDefinitionsHelper( defs ));
+        return (new OvalDefinitionsUtil( defs ));
     }
 
 
@@ -65,7 +65,7 @@ public class OvalDefinitionsHelper
     /**
      *
      */
-    private OvalDefinitionsHelper(
+    private OvalDefinitionsUtil(
                     final OvalDefinitions defs
                     )
     {
@@ -169,4 +169,4 @@ public class OvalDefinitionsHelper
     }
 
 }
-// OvalDefinitionsHelper
+// OvalDefinitionsUtil

@@ -22,10 +22,10 @@ package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.core.model.definition.DefinitionTestAssociation;
 import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsDefinitionAssociation;
-import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsHelper;
 import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsObjectAssociation;
 import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsStateAssociation;
 import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsTestAssociation;
+import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsUtil;
 import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.model.definition.Definitions;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
@@ -65,15 +65,19 @@ public class OvalDefinitionsDao
      */
     public OvalDefinitionsDao()
     {
-        // Which is correct???
+        this( OvalDefinitions.class, new OvalDefinitionsHelper() );
+    }
 
-        super( OvalDefinitions.class );
 
-        // IMPORTANT:
-        // If we use the interface type, instances can NOT be loaded.
-        // This is because the Castor JDO mapping does NOT include
-        // mapping for the interface type.
-//        super( OvalDefinitions.class );
+    /**
+     * Constructor.
+     */
+    public OvalDefinitionsDao(
+                    final Class<? extends OvalDefinitions> type,
+                    final OvalDefinitionsHelper helper
+                    )
+    {
+        super( type, helper );
     }
 
 
@@ -151,7 +155,7 @@ public class OvalDefinitionsDao
         }
 
 
-        OvalDefinitionsHelper  helper = OvalDefinitionsHelper.newInstance( defs );
+        OvalDefinitionsUtil  util = OvalDefinitionsUtil.newInstance( defs );
         Definitions  def_list = defs.getDefinitions();
         if (def_list != null) {
             Definitions  p_def_list = new Definitions();
@@ -167,7 +171,7 @@ public class OvalDefinitionsDao
                 getForwardingDao( OvalDefinitionsDefinitionAssociation.class ).sync( assoc );
 
                 final String  defID = def.getOvalID();
-                Collection<String>  testIDs = helper.getTestsOfDefinition( defID );
+                Collection<String>  testIDs = util.getTestsOfDefinition( defID );
                 for (String  testID : testIDs) {
                     DefinitionTestAssociation  dt_assoc =
                         new DefinitionTestAssociation( def, defs.getTest( testID ) );

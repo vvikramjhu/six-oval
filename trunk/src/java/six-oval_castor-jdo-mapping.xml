@@ -847,7 +847,7 @@
         </field>
 
         <field name="itemType" 
-            type="jp.go.aist.six.oval.core.model.system.ItemType">
+            type="jp.go.aist.six.oval.model.ComponentType">
             <sql name="item_type" type="char"/>
         </field>
 
