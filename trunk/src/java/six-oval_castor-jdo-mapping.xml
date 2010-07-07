@@ -893,6 +893,63 @@
         <field name="generator.productVersion" type="string">
             <sql name="gen_product_version" type="char"/>
         </field>
+        
+        
+        <!-- directives -->
+        <field name="directives.definitionTrue.reported" type="boolean">
+            <sql name="definition_true_reported" type="bit"/>
+        </field>
+
+        <field name="directives.definitionTrue.content"
+            type="jp.go.aist.six.oval.model.result.Content">
+            <sql name="definition_true_content" type="char"/>
+        </field>
+
+        <field name="directives.definitionFalse.reported" type="boolean">
+            <sql name="definition_false_reported" type="bit"/>
+        </field>
+
+        <field name="directives.definitionFalse.content"
+            type="jp.go.aist.six.oval.model.result.Content">
+            <sql name="definition_false_content" type="char"/>
+        </field>
+        
+        <field name="directives.definitionUnknown.reported" type="boolean">
+            <sql name="definition_unknown_reported" type="bit"/>
+        </field>
+
+        <field name="directives.definitionUnknown.content"
+            type="jp.go.aist.six.oval.model.result.Content">
+            <sql name="definition_unknown_content" type="char"/>
+        </field>
+        
+        <field name="directives.definitionError.reported" type="boolean">
+            <sql name="definition_error_reported" type="bit"/>
+        </field>
+
+        <field name="directives.definitionError.content"
+            type="jp.go.aist.six.oval.model.result.Content">
+            <sql name="definition_error_content" type="char"/>
+        </field>
+        
+        <field name="directives.definitionNotEvaluated.reported" type="boolean">
+            <sql name="definition_not_evaluated_reported" type="bit"/>
+        </field>
+
+        <field name="directives.definitionNotEvaluated.content"
+            type="jp.go.aist.six.oval.model.result.Content">
+            <sql name="definition_not_evaluated_content" type="char"/>
+        </field>
+        
+        <field name="directives.definitionNotApplicable.reported" type="boolean">
+            <sql name="definition_not_applicable_reported" type="bit"/>
+        </field>
+
+        <field name="directives.definitionNotApplicable.content"
+            type="jp.go.aist.six.oval.model.result.Content">
+            <sql name="definition_not_applicable_content" type="char"/>
+        </field>
+        
 
         <field name="definitions" 
             type="jp.go.aist.six.oval.model.definition.OvalDefinitions">

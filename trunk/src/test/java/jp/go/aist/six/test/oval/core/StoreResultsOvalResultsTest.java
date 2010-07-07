@@ -1,5 +1,9 @@
 package jp.go.aist.six.test.oval.core;
 
+import jp.go.aist.six.oval.model.common.Generator;
+import jp.go.aist.six.oval.model.result.Directives;
+import jp.go.aist.six.oval.model.result.OvalResults;
+import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
 
 
@@ -26,8 +30,39 @@ public class StoreResultsOvalResultsTest
 
     }
 
+
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={"oval.core.store", "oval-results.oval_results"},
+                    dataProvider="oval-results-oval_results",
+                    alwaysRun=true
+                    )
+    public void testOvalResults(
+                    final String testTarget,
+                    final String filepath,
+                    final Generator generator,
+                    final Directives directives
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL Store //", true );
+        Reporter.log( "  * target type: " + testTarget, true );
+
+        OvalResults  or = _unmarshalFile( filepath, OvalResults.class );
+
+        Reporter.log( "validating...", true );
+        _validate( or.getGenerator(), generator );
+        _validate( or.getDirectives(), directives );
+        Reporter.log( "...validation OK", true );
+
+        Reporter.log( "syncing...", true );
+        OvalResults  p_or = _getStore().sync( OvalResults.class, or );
+        String  pid = p_or.getPersistentID();
+        Reporter.log( "...syncing done: pid=" + pid, true );
+    }
+
 }
 // StoreResultsOvalResultsTest
-
-/* vim:set tabstop=4:set expandtab:set shiftwidth=4: */
 

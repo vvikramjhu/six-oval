@@ -742,6 +742,20 @@ CREATE TABLE IF NOT EXISTS oval_r_results
     gen_schema_version  VARCHAR(8)      NOT NULL,
     gen_product_name    VARCHAR(64),
     gen_product_version VARCHAR(64),
+    
+    /* directives */
+    definition_true_reported            BOOLEAN NOT NULL,
+    definition_true_content             VARCHAR(5), /* {'full', 'thin'} */
+    definition_false_reported           BOOLEAN NOT NULL,
+    definition_false_content            VARCHAR(5),
+    definition_unknown_reported         BOOLEAN NOT NULL,
+    definition_unknown_content          VARCHAR(5),
+    definition_error_reported           BOOLEAN NOT NULL,
+    definition_error_content            VARCHAR(5),
+    definition_not_evaluated_reported   BOOLEAN NOT NULL,
+    definition_not_evaluated_content    VARCHAR(5),
+    definition_not_applicable_reported  BOOLEAN NOT NULL,
+    definition_not_applicable_content   VARCHAR(5),
 
     /* (FK) */
     d_definitions__PID  CHAR(36),
