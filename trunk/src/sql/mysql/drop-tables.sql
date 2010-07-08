@@ -5,7 +5,7 @@
 /* ////////////////////////////////////////////////////////////// */
 
 /* @author  Akihito Nakamura, AIST */
-/* @version $Id: drop-tables.sql 774 2010-05-11 05:06:22Z akihito $ */
+/* @version $Id$ */
 /* @engine  mysql */
 
 
@@ -90,6 +90,7 @@ DROP TABLE IF EXISTS oval_d_cve;
 DROP TABLE IF EXISTS oval_d_platform;
 DROP TABLE IF EXISTS oval_d_product;
 DROP TABLE IF EXISTS oval_d_reference;
+DROP TABLE IF EXISTS oval_d_definition_criteria;
 DROP TABLE IF EXISTS oval_d_definition;
 DROP TABLE IF EXISTS oval_d_definitions;
 

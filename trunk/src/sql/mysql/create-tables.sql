@@ -5,7 +5,7 @@
 /* ////////////////////////////////////////////////////////////// */
 
 /* @author  Akihito Nakamura, AIST */
-/* @version $Id: create-tables.sql 774 2010-05-11 05:06:22Z akihito $ */
+/* @version $Id$ */
 /* @engine  mysql */
 
 
