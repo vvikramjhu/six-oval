@@ -33,8 +33,7 @@ public class ItemDao
     extends CastorDao<String, Item>
 {
 
-    public
-    ItemDao()
+    public ItemDao()
     {
         super( Item.class );
     }

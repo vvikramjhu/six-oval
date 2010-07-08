@@ -37,5 +37,10 @@ public class VariableDao
         super( Variable.class );
     }
 
+
+    //TODO: Store the content model as an XML document,
+    //like as Definition's Criteria.
+
+
 }
 // VariableDao

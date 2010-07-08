@@ -33,8 +33,7 @@ public class CveDao
     extends CastorDao<String, Cve>
 {
 
-    public
-    CveDao()
+    public CveDao()
     {
         super( Cve.class );
     }

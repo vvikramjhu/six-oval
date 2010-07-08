@@ -33,8 +33,7 @@ public class CpeDao
     extends CastorDao<String, Cpe>
 {
 
-    public
-    CpeDao()
+    public CpeDao()
     {
         super( Cpe.class );
     }

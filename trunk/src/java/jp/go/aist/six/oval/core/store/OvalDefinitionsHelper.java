@@ -27,6 +27,9 @@ import jp.go.aist.six.util.castor.DefaultPersistenceHelper;
 
 
 /**
+ * TODO: Change this class as a nested class of OvalDefinitionsDao.
+ * Do the same change to other helper classes and Dao classes
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */

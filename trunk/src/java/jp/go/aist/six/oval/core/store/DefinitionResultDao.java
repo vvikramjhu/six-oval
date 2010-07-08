@@ -32,8 +32,7 @@ public class DefinitionResultDao
     extends OvalEntityReferenceDao<DefinitionResult>
 {
 
-    public
-    DefinitionResultDao()
+    public DefinitionResultDao()
     {
         super( DefinitionResult.class );
     }
