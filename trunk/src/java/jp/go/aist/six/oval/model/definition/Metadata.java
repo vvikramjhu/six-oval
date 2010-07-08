@@ -236,8 +236,8 @@ public class Metadata
     {
         Date  date = null;
 
-        if (metaItem instanceof OvalRepository ) {
-            OvalRepository  or = OvalRepository.class.cast( metaItem );
+        if (metaItem instanceof OvalRepositoryMetadataItem ) {
+            OvalRepositoryMetadataItem  or = OvalRepositoryMetadataItem.class.cast( metaItem );
             for (OvalRepositoryEvent  event : or.getDates()) {
                 if (date == null  &&  event instanceof DefinitionSubmittedEvent) {
                     date = event.getDate();

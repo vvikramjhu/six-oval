@@ -14,7 +14,7 @@ import jp.go.aist.six.oval.model.definition.Definitions;
 import jp.go.aist.six.oval.model.definition.Metadata;
 import jp.go.aist.six.oval.model.definition.MetadataItem;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
-import jp.go.aist.six.oval.model.definition.OvalRepository;
+import jp.go.aist.six.oval.model.definition.OvalRepositoryMetadataItem;
 import jp.go.aist.six.oval.model.definition.OvalRepositoryEvent;
 import jp.go.aist.six.oval.model.definition.Platform;
 import jp.go.aist.six.oval.model.definition.Product;
@@ -979,8 +979,8 @@ public class OvalXmlTest
         Reporter.log( "  *** checking definition/metadata...", true );
         Assert.assertEquals( def.getMetadataElements().size(), 1 );
         MetadataItem  meta = def.getMetadataElements().iterator().next();
-        Assert.assertTrue( meta instanceof OvalRepository );
-        OvalRepository  repo = (OvalRepository)meta;
+        Assert.assertTrue( meta instanceof OvalRepositoryMetadataItem );
+        OvalRepositoryMetadataItem  repo = (OvalRepositoryMetadataItem)meta;
         Assert.assertEquals( repo.getDates().size(), 7 );
         for (OvalRepositoryEvent  event : repo.getDates()) {
             if (event instanceof DefinitionModifiedEvent) {

@@ -498,9 +498,9 @@
 
 
     <!-- ======================================================= -->
-    <!-- def:OvalRepository                                      -->
+    <!-- OvalRepositoryMetadataItem                              -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.OvalRepository"
+    <class name="jp.go.aist.six.oval.model.definition.OvalRepositoryMetadataItem"
         extends="jp.go.aist.six.oval.model.definition.MetadataItem">
         <map-to xml="oval_repository"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>

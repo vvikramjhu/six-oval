@@ -217,8 +217,8 @@ public class Definition
     {
         Date  date = null;
 
-        if (meta instanceof OvalRepository ) {
-            OvalRepository  repo = OvalRepository.class.cast( meta );
+        if (meta instanceof OvalRepositoryMetadataItem ) {
+            OvalRepositoryMetadataItem  repo = OvalRepositoryMetadataItem.class.cast( meta );
             for (OvalRepositoryEvent  event : repo.getDates()) {
                 if (date == null  &&  event instanceof DefinitionSubmittedEvent) {
                     date = event.getDate();

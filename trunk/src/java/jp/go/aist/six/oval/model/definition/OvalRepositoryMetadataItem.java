@@ -25,14 +25,13 @@ import java.util.Collection;
 
 
 
-
 /**
- * A marker class for definition/metadata/any elements.
+ * A metadata of OVAL Definition in OVAL repository.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalRepository
+public class OvalRepositoryMetadataItem
     extends MetadataItem
 {
 
@@ -45,7 +44,7 @@ public class OvalRepository
     /**
      * Constructor.
      */
-    public OvalRepository()
+    public OvalRepositoryMetadataItem()
     {
     }
 
@@ -106,9 +105,6 @@ public class OvalRepository
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
@@ -118,4 +114,4 @@ public class OvalRepository
     }
 
 }
-// OvalRepository
+// OvalRepositoryMetadata

@@ -98,7 +98,8 @@ CREATE TABLE IF NOT EXISTS oval_d_definition
                         /* max. length = 3960, id = com.redhat.rhsa:def:20090473 */
 
     /* criteria as string */
-    criteria            VARCHAR(8191),
+    /* This column is moved to oval_d_definition_criteria table. */
+/*  criteria            VARCHAR(8191), */ 
                         /* max. length = 7452, id = oval:org.mitre.oval:def:6233 */
 
     /* (FK) */
