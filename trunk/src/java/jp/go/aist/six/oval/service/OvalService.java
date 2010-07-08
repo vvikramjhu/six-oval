@@ -39,7 +39,7 @@ import java.util.List;
  * The OVAL data store interface.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalStore.java 754 2010-05-10 05:26:45Z akihito $
+ * @version $Id$
  */
 public interface OvalService
 {

@@ -26,7 +26,7 @@ package jp.go.aist.six.oval.service;
  * An exceptional condition that occurred during the Oval processing.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalProcessException.java 434 2010-03-23 05:01:24Z akihito $
+ * @version $Id$
  */
 public class OvalServiceException
     extends Exception

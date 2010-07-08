@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: Oval.java 500 2010-04-02 06:28:19Z akihito $
+ * @version $Id$
  */
 public class OvalConfig
 {
