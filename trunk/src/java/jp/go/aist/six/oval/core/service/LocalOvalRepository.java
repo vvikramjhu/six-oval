@@ -27,8 +27,10 @@ import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.definition.Criteria;
 import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.service.OvalServiceException;
+import jp.go.aist.six.util.search.RelationalBinding;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import java.util.Collection;
 
 
 
@@ -85,6 +87,20 @@ public class LocalOvalRepository
     //**************************************************************
     //  OvalRepository
     //**************************************************************
+
+
+    public Collection<String> findDefinitionIDByCve(
+                    final String cve
+                    )
+    throws OvalServiceException
+    {
+        RelationalBinding  filter = RelationalBinding.equalBinding( "relatedCves.name", cve );
+        Collection<String>  ovalIDList = _store.findIdentity( Definition.class, filter );
+
+        return ovalIDList;
+    }
+
+
 
     public Criteria getDefinitionCriteria(
                     final Definition  def
