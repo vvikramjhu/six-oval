@@ -22,7 +22,7 @@ import jp.go.aist.six.oval.model.linux.RpmInfoItem;
 import jp.go.aist.six.oval.model.linux.Severity;
 import jp.go.aist.six.oval.model.mitre.DefinitionModifiedEvent;
 import jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent;
-import jp.go.aist.six.oval.model.mitre.OvalRepositoryMetadataItem;
+import jp.go.aist.six.oval.model.mitre.MitreRepositoryMetadataItem;
 import jp.go.aist.six.oval.model.result.DefinitionResult;
 import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.model.result.Result;
@@ -979,8 +979,8 @@ public class OvalXmlTest
         Reporter.log( "  *** checking definition/metadata...", true );
         Assert.assertEquals( def.getMetadataElements().size(), 1 );
         MetadataItem  meta = def.getMetadataElements().iterator().next();
-        Assert.assertTrue( meta instanceof OvalRepositoryMetadataItem );
-        OvalRepositoryMetadataItem  repo = (OvalRepositoryMetadataItem)meta;
+        Assert.assertTrue( meta instanceof MitreRepositoryMetadataItem );
+        MitreRepositoryMetadataItem  repo = (MitreRepositoryMetadataItem)meta;
         Assert.assertEquals( repo.getDates().size(), 7 );
         for (OvalRepositoryEvent  event : repo.getDates()) {
             if (event instanceof DefinitionModifiedEvent) {

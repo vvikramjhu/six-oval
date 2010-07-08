@@ -32,7 +32,7 @@ import java.util.Collection;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalRepositoryMetadataItem
+public class MitreRepositoryMetadataItem
     extends MetadataItem
 {
 
@@ -45,7 +45,7 @@ public class OvalRepositoryMetadataItem
     /**
      * Constructor.
      */
-    public OvalRepositoryMetadataItem()
+    public MitreRepositoryMetadataItem()
     {
     }
 
