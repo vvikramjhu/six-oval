@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definition;
+package jp.go.aist.six.oval.model.mitre;
 
 import java.util.Date;
 
@@ -29,14 +29,14 @@ import java.util.Date;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionSubmittedEvent
+public class DefinitionModifiedEvent
     extends OvalRepositoryEvent
 {
 
     /**
      * Constructor.
      */
-    public DefinitionSubmittedEvent()
+    public DefinitionModifiedEvent()
     {
     }
 
@@ -44,7 +44,7 @@ public class DefinitionSubmittedEvent
     /**
      * Constructor.
      */
-    public DefinitionSubmittedEvent(
+    public DefinitionModifiedEvent(
                     final Date date
                     )
     {
@@ -60,8 +60,8 @@ public class DefinitionSubmittedEvent
     @Override
     public String toString()
     {
-        return "submitted[date=" + getDate() + "]";
+        return "modified[date=" + getDate() + "]";
     }
 
 }
-// DefinitionSubmittedEvent
+// DefinitionModifiedEvent

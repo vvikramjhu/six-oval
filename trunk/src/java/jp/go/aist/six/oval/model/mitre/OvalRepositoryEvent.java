@@ -18,10 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definition;
+package jp.go.aist.six.oval.model.mitre;
 
+import jp.go.aist.six.util.castor.AbstractPersistable;
 import java.util.Date;
-
 
 
 
@@ -30,62 +30,47 @@ import java.util.Date;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionStatusChangeEvent
-    extends OvalRepositoryEvent
+public abstract class OvalRepositoryEvent
+    extends AbstractPersistable
 {
 
-    private DefinitionStatus  _status;
+    private Date  _date;
 
 
 
     /**
      * Constructor.
      */
-    public DefinitionStatusChangeEvent()
+    public OvalRepositoryEvent()
     {
     }
+
 
 
     /**
      * Constructor.
      */
-    public DefinitionStatusChangeEvent(
-                    final Date date,
-                    final DefinitionStatus status
+    public OvalRepositoryEvent(
+                    final Date date
                     )
     {
-        super( date );
-        setStatus( status );
+        setDate( date );
     }
 
 
 
-    public void setStatus(
-                    final DefinitionStatus status
+    public void setDate(
+                    final Date date
                     )
     {
-        _status = status;
+        this._date = date;
     }
 
 
-    public DefinitionStatus getStatus()
+    public Date getDate()
     {
-        return _status;
-    }
-
-
-
-    //**************************************************************
-    //  java.lang.Object
-    //**************************************************************
-
-    @Override
-    public String toString()
-    {
-        return "status_change[date=" + getDate()
-                        + ", status=" + getStatus()
-                        + "]";
+        return _date;
     }
 
 }
-// DefinitionStatusChangeEvent
+// OvalRepositoryEvent

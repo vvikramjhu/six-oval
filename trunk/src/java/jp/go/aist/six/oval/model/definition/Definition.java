@@ -23,9 +23,7 @@ package jp.go.aist.six.oval.model.definition;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.linux.CveReference;
 import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
-import jp.go.aist.six.util.IsoDate;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -80,7 +78,7 @@ public class Definition
 
     // derived properties //
     private Collection<Cve>  _cves;
-    private String  _lastModified;
+//    private String  _lastModified;    // moved to Metadata
 
 //  private Collection<SystemObject>  _relatedObjects;
 
@@ -205,46 +203,6 @@ public class Definition
     ////////////////////////////////////////////////////////////////
 
     /**
-     * Returns the last modified date of this definition.
-     * For the definitions in the Mitre OVAL repository, it is retrieved
-     * from the "metadata/oval_repository/dates/" element.
-     * For the Red Hat definition, it is retrieved
-     * from the "metadata/advisory/updated" element.
-     */
-    private String _getLastModifiedDate(
-                    final MetadataItem meta
-                    )
-    {
-        Date  date = null;
-
-        if (meta instanceof OvalRepositoryMetadataItem ) {
-            OvalRepositoryMetadataItem  repo = OvalRepositoryMetadataItem.class.cast( meta );
-            for (OvalRepositoryEvent  event : repo.getDates()) {
-                if (date == null  &&  event instanceof DefinitionSubmittedEvent) {
-                    date = event.getDate();
-                } else if (event instanceof DefinitionModifiedEvent) {
-                    if (date == null) {
-                        date = event.getDate();
-                    } else if (date.compareTo( event.getDate() ) < 0) {
-                        date = event.getDate();
-                    }
-                }
-
-            }
-        } else if (meta instanceof LinuxSecurityAdvisory) {
-            LinuxSecurityAdvisory  adv = LinuxSecurityAdvisory.class.cast( meta );
-            date = adv.getUpdated();
-        }
-
-        return (date == null ? null : IsoDate.formatDate( date ));
-
-//            SimpleDateFormat  formatter = new SimpleDateFormat( "yyyy-MM-dd" );
-//            return formatter.format( date );
-    }
-
-
-
-    /**
      *
      */
     private Collection<Cve> _getCves()
@@ -273,23 +231,6 @@ public class Definition
         return cves;
     }
 
-
-
-    public void setLastModified( final String date )
-    {
-        _lastModified = date;
-    }
-
-
-    public String getLastModified()
-    {
-        if (_lastModified == null  &&  getMetadataElements().size() > 0) {
-            MetadataItem  meta = getMetadataElements().iterator().next();
-            _lastModified = _getLastModifiedDate( meta );
-        }
-
-        return _lastModified;
-    }
 
 
     public void setRelatedCves(

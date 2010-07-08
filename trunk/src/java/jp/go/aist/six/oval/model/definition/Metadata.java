@@ -22,6 +22,10 @@ package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.linux.CveReference;
 import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
+import jp.go.aist.six.oval.model.mitre.DefinitionModifiedEvent;
+import jp.go.aist.six.oval.model.mitre.DefinitionSubmittedEvent;
+import jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent;
+import jp.go.aist.six.oval.model.mitre.OvalRepositoryMetadataItem;
 import jp.go.aist.six.util.IsoDate;
 import jp.go.aist.six.util.castor.AbstractPersistable;
 import java.util.ArrayList;

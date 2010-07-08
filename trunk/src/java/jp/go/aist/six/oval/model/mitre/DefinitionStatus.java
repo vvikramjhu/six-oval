@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definition;
+package jp.go.aist.six.oval.model.mitre;
 
 import java.io.Serializable;
 import java.util.HashMap;

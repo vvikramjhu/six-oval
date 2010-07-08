@@ -18,8 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definition;
+package jp.go.aist.six.oval.model.mitre;
 
+import jp.go.aist.six.oval.model.definition.MetadataItem;
 import java.util.ArrayList;
 import java.util.Collection;
 

@@ -9,13 +9,10 @@ import jp.go.aist.six.oval.model.definition.Affected;
 import jp.go.aist.six.oval.model.definition.Cve;
 import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.model.definition.DefinitionClass;
-import jp.go.aist.six.oval.model.definition.DefinitionModifiedEvent;
 import jp.go.aist.six.oval.model.definition.Definitions;
 import jp.go.aist.six.oval.model.definition.Metadata;
 import jp.go.aist.six.oval.model.definition.MetadataItem;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
-import jp.go.aist.six.oval.model.definition.OvalRepositoryMetadataItem;
-import jp.go.aist.six.oval.model.definition.OvalRepositoryEvent;
 import jp.go.aist.six.oval.model.definition.Platform;
 import jp.go.aist.six.oval.model.definition.Product;
 import jp.go.aist.six.oval.model.definition.Reference;
@@ -23,6 +20,9 @@ import jp.go.aist.six.oval.model.linux.CveReference;
 import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
 import jp.go.aist.six.oval.model.linux.RpmInfoItem;
 import jp.go.aist.six.oval.model.linux.Severity;
+import jp.go.aist.six.oval.model.mitre.DefinitionModifiedEvent;
+import jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent;
+import jp.go.aist.six.oval.model.mitre.OvalRepositoryMetadataItem;
 import jp.go.aist.six.oval.model.result.DefinitionResult;
 import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.model.result.Result;
@@ -796,7 +796,7 @@ public class OvalXmlTest
             Assert.assertTrue( cve_ids.contains( cve.getName() ) );
         }
 
-        Assert.assertEquals( def.getLastModified(), "2010-01-20" );
+        Assert.assertEquals( def.getMetadata().getLastModifiedDate(), "2010-01-20" );
 
         Reporter.log( "*** checking tests...", true );
         Reporter.log( "@@@ #tests=" + defs.getTests().size(), true );
@@ -889,7 +889,7 @@ public class OvalXmlTest
             Assert.assertTrue( cve_ids.contains( cve.getName() ) );
         }
 
-        Assert.assertEquals( def.getLastModified(), "2010-01-20" );
+        Assert.assertEquals( def.getMetadata().getLastModifiedDate(), "2010-01-20" );
 
         Reporter.log( "*** checking tests...", true );
         Reporter.log( "@@@ #tests=" + defs.getTests().size(), true );
@@ -992,7 +992,7 @@ public class OvalXmlTest
             }
         }
 
-        Assert.assertEquals( def.getLastModified(), "2009-05-07" );
+        Assert.assertEquals( def.getMetadata().getLastModifiedDate(), "2009-05-07" );
 
 
         Reporter.log( "  *** checking related CVEs...", true );

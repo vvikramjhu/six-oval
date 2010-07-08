@@ -18,9 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definition;
+package jp.go.aist.six.oval.model.mitre;
 
-import jp.go.aist.six.util.castor.AbstractPersistable;
 import java.util.Date;
 
 
@@ -30,47 +29,39 @@ import java.util.Date;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class OvalRepositoryEvent
-    extends AbstractPersistable
+public class DefinitionSubmittedEvent
+    extends OvalRepositoryEvent
 {
 
-    private Date  _date;
-
+    /**
+     * Constructor.
+     */
+    public DefinitionSubmittedEvent()
+    {
+    }
 
 
     /**
      * Constructor.
      */
-    public OvalRepositoryEvent()
-    {
-    }
-
-
-
-    /**
-     * Constructor.
-     */
-    public OvalRepositoryEvent(
+    public DefinitionSubmittedEvent(
                     final Date date
                     )
     {
-        setDate( date );
+        super( date );
     }
 
 
 
-    public void setDate(
-                    final Date date
-                    )
-    {
-        this._date = date;
-    }
+    //**************************************************************
+    //  java.lang.Object
+    //**************************************************************
 
-
-    public Date getDate()
+    @Override
+    public String toString()
     {
-        return _date;
+        return "submitted[date=" + getDate() + "]";
     }
 
 }
-// OvalRepositoryEvent
+// DefinitionSubmittedEvent
