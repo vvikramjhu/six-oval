@@ -201,6 +201,35 @@
         </field>
         -->
 
+<!-- This field is moved to DefinitionCriteria class.
+        <field name="criteriaXml" type="string">
+            <sql name="criteria" type="char"/>
+        </field>
+-->
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- DefinitionCriteria                                      -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.core.model.definition.DefinitionCriteria"
+        identity="persistentID">
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_definition_criteria"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+
+        <field name="ovalID" type="string">
+            <sql name="id" type="char"/>
+        </field>
+
+        <field name="ovalVersion" type="integer">
+            <sql name="version" type="integer"/>
+        </field>
+
         <field name="criteriaXml" type="string">
             <sql name="criteria" type="char"/>
         </field>

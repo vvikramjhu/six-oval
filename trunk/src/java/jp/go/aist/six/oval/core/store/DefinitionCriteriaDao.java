@@ -20,8 +20,7 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.definition.State;
-
+import jp.go.aist.six.oval.core.model.definition.DefinitionCriteria;
 
 
 
@@ -29,15 +28,14 @@ import jp.go.aist.six.oval.model.definition.State;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class StateDao
-    extends OvalEntityDao<State>
-//extends CastorDao<String,State>
+public class DefinitionCriteriaDao
+    extends OvalEntityDao<DefinitionCriteria>
 {
 
-    public StateDao()
+    public DefinitionCriteriaDao()
     {
-        super( State.class );
+        super( DefinitionCriteria.class );
     }
 
 }
-// StateDao
+// DefinitionCriteriaDao

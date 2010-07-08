@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.core.store;
 
+import jp.go.aist.six.oval.core.model.definition.DefinitionCriteria;
 import jp.go.aist.six.oval.core.service.StandardOvalService;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.definition.Affected;
@@ -136,7 +137,13 @@ public class DefinitionDao
         if (criteria != null  &&  _xmlMapper != null) {
             try {
                 String  xml = _xmlMapper.marshalToString( criteria );
-                def.setCriteriaXml( xml );
+                DefinitionCriteria  dc = new DefinitionCriteria();
+                dc.setOvalID( def.getOvalID() );
+                dc.setOvalVersion( def.getOvalVersion() );
+                dc.setCriteriaXml( xml );
+                getForwardingDao( DefinitionCriteria.class ).sync( dc );
+
+//                def.setCriteriaXml( xml );
             } catch (OxmException ex) {
                 // TODO:
                 _LOG.warn(  "'criteria' property NOT persisted" );

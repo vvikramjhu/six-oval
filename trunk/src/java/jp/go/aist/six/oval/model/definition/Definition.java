@@ -56,7 +56,8 @@ public class Definition
     private Criteria  _criteria;
     //{0..1}
 
-    private String  _criteriaXml;
+    // This field is moved to DefinitionCriteria class.
+//    private String  _criteriaXml;
 
 
     private DefinitionClass  _definitionClass;
@@ -165,30 +166,22 @@ public class Definition
 
 
 
-    /**
-     */
-    public void setCriteriaXml(
-                    final String criteriaXml
-                    )
-    {
-        _criteriaXml = criteriaXml;
-    }
-
-
-    /**
-     * TODO: Don't depend on StandardOvalService!!!
-     */
-    public String getCriteriaXml()
-    {
-//        if (_criteria != null  &&  _criteriaXml == null) {
-//            try {
-//                _criteriaXml = StandardOvalService.INSTANCE.getXml().marshalToString( _criteria );
-//            } catch (Exception ex) {
+//    /**
+//     */
+//    public void setCriteriaXml(
+//                    final String criteriaXml
+//                    )
+//    {
+//        _criteriaXml = criteriaXml;
+//    }
 //
-//            }
-//        }
-        return _criteriaXml;
-    }
+//
+//    /**
+//     */
+//    public String getCriteriaXml()
+//    {
+//        return _criteriaXml;
+//    }
 
 
 

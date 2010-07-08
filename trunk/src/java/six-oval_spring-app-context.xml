@@ -45,6 +45,9 @@
                 <entry key="jp.go.aist.six.oval.model.definition.Definition"
                     value="jp.go.aist.six.oval.core.store.DefinitionDao"/>
 
+                <entry key="jp.go.aist.six.oval.core.model.definition.DefinitionCriteria"
+                    value="jp.go.aist.six.oval.core.store.DefinitionCriteriaDao"/>
+
                 <entry key="jp.go.aist.six.oval.core.model.definition.OvalDefinitionsDefinitionAssociation"
                     value="jp.go.aist.six.oval.core.store.OvalDefinitionsDefinitionAssociationDao"/>
 
