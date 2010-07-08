@@ -131,22 +131,22 @@ public class StoreDefOvalDefinitionsTest
 //                                            )
 //                        }
 //                        ,
-//                        {
-//                            "oval-def:oval_definitions",
-//                            "test/data/definition/oval-2010-06-15.05.04.34.xml",
-//                            new Generator(
-//                                            "5.7",
-//                                            mitreTimestamp,
-//                                            "The OVAL Repository",
-//                                            null
-//                                            ),
-//                            new Definitions(
-//                                            new Definition[] {
-//                                                            DEFINITION_1020_2
-//                                            }
-//                                            )
-//                        }
-//                        ,
+                        {
+                            "oval-def:oval_definitions",
+                            "test/data/definition/oval-2010-06-15.05.04.34.xml",
+                            new Generator(
+                                            "5.7",
+                                            mitreTimestamp,
+                                            "The OVAL Repository",
+                                            null
+                                            ),
+                            new Definitions(
+                                            new Definition[] {
+                                                            DEFINITION_1020_2
+                                            }
+                                            )
+                        }
+                        ,
 
                         // Red Hat
                         {
