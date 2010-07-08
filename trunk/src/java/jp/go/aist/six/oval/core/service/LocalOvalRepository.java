@@ -94,7 +94,8 @@ public class LocalOvalRepository
                     )
     throws OvalServiceException
     {
-        RelationalBinding  filter = RelationalBinding.equalBinding( "relatedCves.name", cve );
+        RelationalBinding  filter = RelationalBinding.equalBinding(
+                        "relatedCves.persistentID", cve );
         Collection<String>  ovalIDList = _store.findIdentity( Definition.class, filter );
 
         return ovalIDList;

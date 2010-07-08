@@ -68,7 +68,7 @@ import java.util.Set;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalServiceTestBase.java 778 2010-05-11 06:26:16Z akihito $
+ * @version $Id$
  */
 public abstract class CoreTestBase
 {

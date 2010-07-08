@@ -19,7 +19,7 @@ import org.testng.Reporter;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalXmlTest.java 764 2010-05-10 08:47:46Z akihito $
+ * @version $Id$
  */
 public class OvalXmlTest
     extends CoreTestBase

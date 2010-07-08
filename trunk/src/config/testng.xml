@@ -27,7 +27,7 @@
 -->
     
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.StoreDefOvalDefinitionsTest"/>
+            <class name="jp.go.aist.six.test.oval.core.LocalOvalRepositoryTest"/>
 
             <!--
             <class name="jp.go.aist.six.test.oval.core.StoreResultsOvalResultsTest"/>
