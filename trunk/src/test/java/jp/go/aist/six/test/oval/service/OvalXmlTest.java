@@ -1,7 +1,7 @@
 package jp.go.aist.six.test.oval.service;
 
 import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsUtil;
-import jp.go.aist.six.oval.core.service.StandardOvalService;
+import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Generator;
@@ -78,7 +78,7 @@ public class OvalXmlTest
     public void setUp()
         throws Exception
     {
-        StandardOvalService  service = new StandardOvalService();
+        OvalContext  service = new OvalContext();
         _xml = service.getXml();
     }
 

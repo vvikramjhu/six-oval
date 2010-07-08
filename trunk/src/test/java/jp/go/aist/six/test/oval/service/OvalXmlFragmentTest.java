@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.service;
 
-import jp.go.aist.six.oval.core.service.StandardOvalService;
+import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.model.definition.DefinitionClass;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
@@ -50,7 +50,7 @@ public class OvalXmlFragmentTest
     public void setUp()
         throws Exception
     {
-        StandardOvalService  service = new StandardOvalService();
+        OvalContext  service = new OvalContext();
         _xmlMapper = service.getXml();
     }
 

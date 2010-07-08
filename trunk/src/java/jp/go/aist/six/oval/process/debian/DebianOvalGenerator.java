@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.process.debian;
 
-import jp.go.aist.six.oval.core.service.StandardOvalService;
+import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.process.OvalGenerator;
 import jp.go.aist.six.oval.process.OvalProcessStatus;
@@ -173,8 +173,8 @@ extends OvalGenerator
         try {
             outStream = _getDefinitionOutputStream( status );
             if (! status.isError()) {
-                StandardOvalService  service = new StandardOvalService();
-                service.getXml().marshal( oval, outStream );
+                OvalContext  context = new OvalContext();
+                context.getXml().marshal( oval, outStream );
                               //@throws OxmException
             }
         } catch (Exception ex) {

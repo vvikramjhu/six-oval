@@ -31,10 +31,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author  Akihito Nakamura, AIST
  * @version $Id: Oval.java 500 2010-04-02 06:28:19Z akihito $
  */
-public class StandardOvalService
+public class OvalContext
 {
 
-    public static final StandardOvalService  INSTANCE = new StandardOvalService();
+    public static final OvalContext  INSTANCE = new OvalContext();
 
 
 
@@ -69,7 +69,7 @@ public class StandardOvalService
     /**
      * Constructor.
      */
-    public StandardOvalService()
+    public OvalContext()
     {
     }
 

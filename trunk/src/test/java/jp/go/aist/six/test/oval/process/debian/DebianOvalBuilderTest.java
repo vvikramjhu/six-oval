@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.process.debian;
 
-import jp.go.aist.six.oval.core.service.StandardOvalService;
+import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.process.debian.builder.DebianOvalBuilder;
@@ -42,7 +42,7 @@ extends DebianOvalTestBase
     public void setUp()
     throws Exception
     {
-        StandardOvalService  service = new StandardOvalService();
+        OvalContext  service = new OvalContext();
         _xmlMapper = service.getXml();
     }
 

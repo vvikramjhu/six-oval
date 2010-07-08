@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.core.model.definition.DefinitionCriteria;
-import jp.go.aist.six.oval.core.service.StandardOvalService;
+import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.definition.Affected;
 import jp.go.aist.six.oval.model.definition.Criteria;
@@ -66,7 +66,7 @@ public class DefinitionDao
         super( Definition.class );
 
         try {
-            _xmlMapper = StandardOvalService.INSTANCE.getXml();
+            _xmlMapper = OvalContext.INSTANCE.getXml();
         } catch (Exception ex) {
             // TODO:
             _LOG.error(  "XmlMapper instantiation failed: " + ex.getMessage() );

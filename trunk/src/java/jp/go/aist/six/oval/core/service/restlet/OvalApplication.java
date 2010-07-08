@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.service.restlet;
 
-import jp.go.aist.six.oval.core.service.StandardOvalService;
+import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import org.restlet.Application;
@@ -48,7 +48,7 @@ public class OvalApplication
 
 
 
-    private StandardOvalService  _service;
+    private OvalContext  _context;
     private OvalStore  _ovalStore;
     private OvalXml  _ovalXml;
 
@@ -72,7 +72,7 @@ public class OvalApplication
     {
         super( context );
 
-        _service = new StandardOvalService();
+        _context = new OvalContext();
     }
 
 
@@ -84,7 +84,7 @@ public class OvalApplication
     throws Exception
     {
         if (_ovalStore == null) {
-            _ovalStore = _service.getStore();
+            _ovalStore = _context.getStore();
         }
 
         return _ovalStore;
@@ -96,7 +96,7 @@ public class OvalApplication
     throws Exception
     {
         if (_ovalXml == null) {
-            _ovalXml = _service.getXml();
+            _ovalXml = _context.getXml();
         }
 
         return _ovalXml;

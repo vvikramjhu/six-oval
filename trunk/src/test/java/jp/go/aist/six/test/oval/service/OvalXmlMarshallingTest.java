@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.service;
 
-import jp.go.aist.six.oval.core.service.StandardOvalService;
+import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.model.ComponentType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
@@ -50,7 +50,7 @@ public class OvalXmlMarshallingTest
     public void setUp()
     throws Exception
     {
-        StandardOvalService  service = new StandardOvalService();
+        OvalContext  service = new OvalContext();
         _xmlMapper = service.getXml();
     }
 
@@ -260,8 +260,6 @@ public class OvalXmlMarshallingTest
         Assert.assertEquals( id, def.getOvalID() );
         Assert.assertEquals( version, def.getOvalVersion() );
         Assert.assertEquals( clazz, def.getDefinitionClass() );
-
-        Reporter.log( "  - criteria XML: " + def.getCriteriaXml(), true );
 
 //        Reporter.log( "  * marshalling XML...", true );
 //        String  xml = _xmlMapper.marshalToString( def );
