@@ -76,6 +76,32 @@ public abstract class OvalEntity
 
 
 
+    public static final String generatePersistentID(
+                    final OvalEntity entity
+                    )
+    {
+        if (entity == null) {
+            throw new IllegalArgumentException( "null entity" );
+        }
+
+        return generatePersistentID( entity.getOvalID(), entity.getOvalVersion() );
+    }
+
+
+    public static final String generatePersistentID(
+                    final String ovalID,
+                    final int ovalVersion
+                    )
+    {
+        if (ovalID == null  ||  ovalID.length() == 0) {
+            throw new IllegalArgumentException( "null or empty ovalID" );
+        }
+
+        return ovalID + ":" + ovalVersion;
+    }
+
+
+
     //**************************************************************
     //  Persistable
     //**************************************************************
@@ -85,7 +111,7 @@ public abstract class OvalEntity
     {
         String  pid = super.getPersistentID();
         if (pid == null) {
-            pid = getOvalID() + ":" + getOvalVersion();
+            pid = generatePersistentID( this );
             super.setPersistentID( pid );
         }
 

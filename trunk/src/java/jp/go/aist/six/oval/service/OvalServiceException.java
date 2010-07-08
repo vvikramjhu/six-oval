@@ -18,8 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.process;
-
+package jp.go.aist.six.oval.service;
 
 
 
@@ -29,14 +28,14 @@ package jp.go.aist.six.oval.process;
  * @author  Akihito Nakamura, AIST
  * @version $Id: OvalProcessException.java 434 2010-03-23 05:01:24Z akihito $
  */
-public class OvalProcessException
+public class OvalServiceException
     extends Exception
 {
 
     /**
      * Constructs an OvalProcessException with no detail message.
      */
-    public OvalProcessException()
+    public OvalServiceException()
     {
         super();
     }
@@ -49,7 +48,7 @@ public class OvalProcessException
      * @param  message
      *   the detail message.
      */
-    public OvalProcessException(
+    public OvalServiceException(
                     final String message
                     )
     {
@@ -64,7 +63,7 @@ public class OvalProcessException
      * @param   cause
      *  the cause.
      */
-    public OvalProcessException(
+    public OvalServiceException(
                     final Throwable cause
                     )
     {
@@ -82,7 +81,7 @@ public class OvalProcessException
      * @param   cause
      *  the cause.
      */
-    public OvalProcessException(
+    public OvalServiceException(
                     final String message,
                     final Throwable cause
                     )
@@ -91,7 +90,5 @@ public class OvalProcessException
     }
 
 }
-// OvalProcessException
-
-/* vim:set tabstop=4:set expandtab:set shiftwidth=4: */
+// OvalServiceException
 
