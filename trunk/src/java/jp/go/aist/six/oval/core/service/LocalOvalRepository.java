@@ -25,8 +25,8 @@ import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.definition.Criteria;
+import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.service.OvalServiceException;
-import jp.go.aist.six.util.xml.OxmException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -70,12 +70,28 @@ public class LocalOvalRepository
 
 
 
+    /**
+     */
     private void _initialize()
     throws Exception
     {
         OvalContext  context = new OvalContext();
         _store = context.getStore();
         _xml = context.getXml();
+    }
+
+
+
+    //**************************************************************
+    //  OvalRepository
+    //**************************************************************
+
+    public Criteria getDefinitionCriteria(
+                    final Definition  def
+                    )
+    throws OvalServiceException
+    {
+        return getDefinitionCriteria( def.getOvalID(), def.getOvalVersion() );
     }
 
 
@@ -91,8 +107,9 @@ public class LocalOvalRepository
         if (dc != null) {
             try {
                 criteria = (Criteria)_xml.unmarshalFromString( dc.getCriteriaXml() );
-            } catch (OxmException oxm_ex) {
-                throw new OvalServiceException( oxm_ex );
+            } catch (Exception ex) {
+                _LOG.error( "unmarshal criteria: " + ex.getMessage() );
+                throw new OvalServiceException( ex );
             }
         }
 
@@ -100,5 +117,5 @@ public class LocalOvalRepository
     }
 
 }
-// LocalOvalrepository
+// LocalOvalRepository
 
