@@ -21,8 +21,8 @@ import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
 import jp.go.aist.six.oval.model.linux.RpmInfoItem;
 import jp.go.aist.six.oval.model.linux.Severity;
 import jp.go.aist.six.oval.model.mitre.DefinitionModifiedEvent;
-import jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent;
 import jp.go.aist.six.oval.model.mitre.MitreRepositoryMetadataItem;
+import jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent;
 import jp.go.aist.six.oval.model.result.DefinitionResult;
 import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.model.result.Result;
@@ -774,18 +774,19 @@ public class OvalXmlTest
         }
 
         Reporter.log( "*** checking metadata/advisory...", true );
-        Assert.assertEquals( def.getMetadataElements().size(), 1 );
-        MetadataItem  meta = def.getMetadataElements().iterator().next();
-        Assert.assertTrue( meta instanceof LinuxSecurityAdvisory );
-        LinuxSecurityAdvisory  adv = (LinuxSecurityAdvisory)def.getMetadataElements().iterator().next();
-        Assert.assertEquals( "secalert@redhat.com", adv.getFrom() );
-        Assert.assertEquals( Severity.MODERATE, adv.getSeverity() );
+        Collection<MetadataItem>  metadataItems = def.getMetadata().getMetadataItem();
+        Assert.assertEquals( metadataItems.size(), 1 );
+        MetadataItem  metadataItem = metadataItems.iterator().next();
+        Assert.assertTrue( metadataItem instanceof LinuxSecurityAdvisory );
+        LinuxSecurityAdvisory  advisory = (LinuxSecurityAdvisory)metadataItem;
+        Assert.assertEquals( "secalert@redhat.com", advisory.getFrom() );
+        Assert.assertEquals( Severity.MODERATE, advisory.getSeverity() );
 
-        Assert.assertEquals( adv.getCve().size(), 1 );
+        Assert.assertEquals( advisory.getCve().size(), 1 );
         Collection<String>  cve_ids = Arrays.asList( new String[] {
                         "CVE-2010-0001"
         });
-        for (CveReference  cve : adv.getCve()) {
+        for (CveReference  cve : advisory.getCve()) {
             Assert.assertTrue( cve_ids.contains( cve.getRefID() ) );
         }
 
@@ -863,18 +864,19 @@ public class OvalXmlTest
         }
 
         Reporter.log( "*** checking metadata/advisory...", true );
-        Assert.assertEquals( def.getMetadataElements().size(), 1 );
-        MetadataItem  meta = def.getMetadataElements().iterator().next();
-        Assert.assertTrue( meta instanceof LinuxSecurityAdvisory );
-        LinuxSecurityAdvisory  adv = (LinuxSecurityAdvisory)def.getMetadataElements().iterator().next();
-        Assert.assertEquals( "secalert@redhat.com", adv.getFrom() );
-        Assert.assertEquals( Severity.MODERATE, adv.getSeverity() );
+        Collection<MetadataItem>  metadataItems = def.getMetadata().getMetadataItem();
+        Assert.assertEquals( metadataItems.size(), 1 );
+        MetadataItem  metadataItem = metadataItems.iterator().next();
+        Assert.assertTrue( metadataItem instanceof LinuxSecurityAdvisory );
+        LinuxSecurityAdvisory  advisory = (LinuxSecurityAdvisory)metadataItem;
+        Assert.assertEquals( "secalert@redhat.com", advisory.getFrom() );
+        Assert.assertEquals( Severity.MODERATE, advisory.getSeverity() );
 
-        Assert.assertEquals( adv.getCve().size(), 1 );
+        Assert.assertEquals( advisory.getCve().size(), 1 );
         Collection<String>  cve_ids = Arrays.asList( new String[] {
                         "CVE-2010-0001"
         });
-        for (CveReference  cve : adv.getCve()) {
+        for (CveReference  cve : advisory.getCve()) {
             Assert.assertTrue( cve_ids.contains( cve.getRefID() ) );
         }
 
@@ -977,10 +979,11 @@ public class OvalXmlTest
 //        Assert.assertEquals( product.getName(), "Microsoft Internet Explorer" );
 
         Reporter.log( "  *** checking definition/metadata...", true );
-        Assert.assertEquals( def.getMetadataElements().size(), 1 );
-        MetadataItem  meta = def.getMetadataElements().iterator().next();
-        Assert.assertTrue( meta instanceof MitreRepositoryMetadataItem );
-        MitreRepositoryMetadataItem  repo = (MitreRepositoryMetadataItem)meta;
+        Collection<MetadataItem>  metadataItems = def.getMetadata().getMetadataItem();
+        Assert.assertEquals( metadataItems.size(), 1 );
+        MetadataItem  metadataItem = metadataItems.iterator().next();
+        Assert.assertTrue( metadataItem instanceof MitreRepositoryMetadataItem );
+        MitreRepositoryMetadataItem  repo = (MitreRepositoryMetadataItem)metadataItem;
         Assert.assertEquals( repo.getDates().size(), 7 );
         for (OvalRepositoryEvent  event : repo.getDates()) {
             if (event instanceof DefinitionModifiedEvent) {

@@ -434,7 +434,7 @@ public class DebianOvalBuilder
 
         _buildAdvisoryReferences( advisory, dsa );
 
-        def.addMetadataElement( advisory );
+        def.getMetadata().addMetadataItem( advisory );
     }
 
 

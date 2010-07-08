@@ -144,6 +144,9 @@ public class Definition
 
     public Metadata getMetadata()
     {
+        if (_metadata == null) {
+            _metadata = new Metadata();
+        }
         return _metadata;
     }
 
@@ -219,7 +222,7 @@ public class Definition
         }
 
         // Red Hat definition
-        for (MetadataItem  metadata : getMetadataElements()) {
+        for (MetadataItem  metadata : getMetadata().getMetadataItem()) {
             if (metadata instanceof LinuxSecurityAdvisory) {
                 for (CveReference  ref : ((LinuxSecurityAdvisory)metadata).getCve()) {
                     Cve  cve = new Cve( ref.getRefID() );
@@ -281,60 +284,36 @@ public class Definition
 
 
 
-    public void setMetadataElements(
-                    final Collection<MetadataItem> any
-                    )
-    {
-//        _metadataElements.clear();
-//        if (any == null  ||  any.size() == 0) {
-//            return;
-//        }
-//
-//        for (MetadataElement  e : any) {
-//            addMetadataElement( e );
-//        }
-    }
-
-
-    public boolean addMetadataElement(
-                    final MetadataItem any
-                    )
-    {
-        if (any == null) {
-            return false;
-        }
-
-        return _metadata.addMetadataItem( any );
-    }
-
-
-    public Collection<MetadataItem> getMetadataElements()
-    {
-        return _metadata.getMetadataItem();
-    }
-
-
-
-//    /**
-//     */
-//    public String getCriteriaAsString()
+//    public void setMetadataElements(
+//                    final Collection<MetadataItem> any
+//                    )
 //    {
-//        if (_criteriaAsString == null) {
-//            Criteria  criteria = getCriteria();
-//            if (criteria != null) {
-//                _criteriaAsString = criteria.asString();
-//            }
-//        }
-//
-//        return _criteriaAsString;
+////        _metadataElements.clear();
+////        if (any == null  ||  any.size() == 0) {
+////            return;
+////        }
+////
+////        for (MetadataElement  e : any) {
+////            addMetadataElement( e );
+////        }
 //    }
 //
 //
-//    /**
-//     */
-//    public void setCriteriaAsString( final String criteria )
+//    public boolean addMetadataElement(
+//                    final MetadataItem any
+//                    )
 //    {
-//        this._criteriaAsString = criteria;
+//        if (any == null) {
+//            return false;
+//        }
+//
+//        return _metadata.addMetadataItem( any );
+//    }
+//
+//
+//    public Collection<MetadataItem> getMetadataElements()
+//    {
+//        return _metadata.getMetadataItem();
 //    }
 
 
