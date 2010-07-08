@@ -27,9 +27,10 @@
 -->
     
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.StoreResultsOvalResultsTest"/>
+            <class name="jp.go.aist.six.test.oval.core.StoreDefOvalDefinitionsTest"/>
 
             <!--
+            <class name="jp.go.aist.six.test.oval.core.StoreResultsOvalResultsTest"/>
             <class name="jp.go.aist.six.test.oval.core.StoreScOvalScTest"/>
             <class name="jp.go.aist.six.test.oval.core.StoreDefOvalDefinitionsTest"/>
             <class name="jp.go.aist.six.test.oval.core.StoreDefTestTest"/>

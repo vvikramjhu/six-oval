@@ -1,11 +1,24 @@
 package jp.go.aist.six.test.oval.core;
 
+import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Generator;
+import jp.go.aist.six.oval.model.definition.Affected;
+import jp.go.aist.six.oval.model.definition.Cpe;
 import jp.go.aist.six.oval.model.definition.Definition;
+import jp.go.aist.six.oval.model.definition.DefinitionClass;
 import jp.go.aist.six.oval.model.definition.Definitions;
+import jp.go.aist.six.oval.model.definition.Metadata;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
+import jp.go.aist.six.oval.model.definition.Platform;
+import jp.go.aist.six.oval.model.definition.Product;
+import jp.go.aist.six.oval.model.definition.Reference;
+import jp.go.aist.six.oval.model.linux.BugzillaReference;
+import jp.go.aist.six.oval.model.linux.CveReference;
+import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
+import jp.go.aist.six.oval.model.linux.Severity;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
+import java.util.Arrays;
 import java.util.Date;
 
 
@@ -22,14 +35,81 @@ public class StoreDefOvalDefinitionsTest
     //  oval_definitions
     //==============================================================
 
+    public static final Affected AFFECTED_20100061_301 =
+        new Affected( Family.UNIX,
+                        new Platform[] {
+                                            new Platform( "Red Hat Enterprise Linux 3" ),
+                                            new Platform( "Red Hat Enterprise Linux 4" ),
+                                            new Platform( "Red Hat Enterprise Linux 5" )
+                                       },
+                        new Product[] { }
+        );
+
+
+    public static final Definition  DEFINITION_20100061_301 =
+        new Definition( "oval:com.redhat.rhsa:def:20100061", 301 );
+    {
+        DEFINITION_20100061_301.setDefinitionClass( DefinitionClass.PATCH );
+
+        Metadata  metadata = new Metadata(
+                        "RHSA-2010:0061: gzip security update (Moderate)",
+                        "The gzip package provides the GNU gzip data compression program. An integer underflow flaw, leading to an array index error, was found in the way gzip expanded archive files compressed with the Lempel-Ziv-Welch (LZW) compression algorithm. If a victim expanded a specially-crafted archive, it could cause gzip to crash or, potentially, execute arbitrary code with the privileges of the user running gzip. This flaw only affects 64-bit systems. (CVE-2010-0001) Red Hat would like to thank Aki Helin of the Oulu University Secure Programming Group for responsibly reporting this flaw. Users of gzip should upgrade to this updated package, which contains a backported patch to correct this issue."
+                        );
+        metadata.setAffected( AFFECTED_20100061_301 );
+        metadata.addReference(
+                        new Reference(
+                                        "RHSA",
+                                        "RHSA-2010:0061-00",
+                                        "https://rhn.redhat.com/errata/RHSA-2010-0061.html"
+                                        )
+                        );
+
+        CveReference[]  cveList = new CveReference[] {
+                        new CveReference( "CVE-2010-0001", "https://www.redhat.com/security/data/cve/CVE-2010-0001.html" )
+        };
+
+        BugzillaReference[]  bugzillaList = new BugzillaReference[] {
+                        new BugzillaReference( "554418", "http://bugzilla.redhat.com/554418", "CVE-2010-0001 gzip: (64 bit) Integer underflow by decompressing LZW format files" )
+        };
+
+        Cpe[]  cpeList = new Cpe[] {
+                        new Cpe( "cpe:/o:redhat:enterprise_linux" )
+        };
+
+        LinuxSecurityAdvisory  advisory =
+            new LinuxSecurityAdvisory(
+                            "secalert@redhat.com",
+                            "Copyright 2010 Red Hat, Inc.",
+                            Severity.MODERATE,
+                            "2010-01-20",
+                            "2010-01-20",
+                            Arrays.asList( cveList ),
+                            Arrays.asList( bugzillaList ),
+                            Arrays.asList( cpeList )
+                            );
+        metadata.addMetadataItem( advisory );
+
+        DEFINITION_20100061_301.setMetadata( metadata );
+    }
+
+
+
+
     @DataProvider( name="oval-def-oval_definitions" )
     public Object[][] ovalDefOvalDefinitionsProvider()
     {
 //        SimpleDateFormat  format = new SimpleDateFormat( "yyyy-MM-dd'T'HH:mm:ss.SSSZ" );
-        Date  timestamp = null;
+        Date  mitreTimestamp = null;
         try {
 //            timestamp = format.parse( "2010-06-15T05:04:34.164-0400" );
-            timestamp = (new org.exolab.castor.types.DateTime( "2010-06-15T05:04:34.164-04:00" )).toDate();
+            mitreTimestamp = (new org.exolab.castor.types.DateTime( "2010-06-15T05:04:34.164-04:00" )).toDate();
+        } catch (Exception ex) {
+            Reporter.log( "ERROR: timestamp parse: " + ex.getMessage(), true );
+        }
+
+        Date  redhatTimestamp = null;
+        try {
+            redhatTimestamp = (new org.exolab.castor.types.DateTime( "2010-01-20T09:40:09" )).toDate();
         } catch (Exception ex) {
             Reporter.log( "ERROR: timestamp parse: " + ex.getMessage(), true );
         }
@@ -40,7 +120,7 @@ public class StoreDefOvalDefinitionsTest
 //                            "test/data/definition/oval-def-oval_definitions.0.xml",
 //                            new Generator(
 //                                            "5.7",
-//                                            timestamp,
+//                                            mitreTimestamp,
 //                                            "The OVAL Repository",
 //                                            null
 //                                            ),
@@ -51,18 +131,36 @@ public class StoreDefOvalDefinitionsTest
 //                                            )
 //                        }
 //                        ,
+//                        {
+//                            "oval-def:oval_definitions",
+//                            "test/data/definition/oval-2010-06-15.05.04.34.xml",
+//                            new Generator(
+//                                            "5.7",
+//                                            mitreTimestamp,
+//                                            "The OVAL Repository",
+//                                            null
+//                                            ),
+//                            new Definitions(
+//                                            new Definition[] {
+//                                                            DEFINITION_1020_2
+//                                            }
+//                                            )
+//                        }
+//                        ,
+
+                        // Red Hat
                         {
                             "oval-def:oval_definitions",
-                            "test/data/definition/oval-2010-06-15.05.04.34.xml",
+                            "test/data/definition/com.redhat.rhsa-20100061.xml",
                             new Generator(
-                                            "5.7",
-                                            timestamp,
-                                            "The OVAL Repository",
+                                            "5.3",
+                                            redhatTimestamp,
+                                            "Red Hat Errata System",
                                             null
                                             ),
                             new Definitions(
                                             new Definition[] {
-                                                            DEFINITION_1020_2
+                                                            DEFINITION_20100061_301
                                             }
                                             )
                         }

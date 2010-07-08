@@ -189,6 +189,7 @@
 -->
 
         <!-- Definition : Cve = n : m 
+        -->
         <field name="relatedCves"
             type="jp.go.aist.six.oval.model.definition.Cve"
             collection="collection"
@@ -199,7 +200,6 @@
                 many-key="definition__PID"
                 />
         </field>
-        -->
 
 <!-- This field is moved to DefinitionCriteria class.
         <field name="criteriaXml" type="string">
