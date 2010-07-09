@@ -48,20 +48,16 @@ public class CollectedSystemObjectDao
     //  Dao, CastorDao
     //**************************************************************
 
-    //**************************************************************
-    //  Dao, CastorDao
-    //**************************************************************
-
     @Override
     public String create(
                     final CollectedSystemObject object
                     )
     {
-
         Collection<VariableValue>  vv = object.getVariableValue();
         for(VariableValue v : vv) {
             v.setMasterObject( object );
         }
+
         return super.create( object );
     }
 

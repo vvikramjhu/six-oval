@@ -691,7 +691,7 @@ CREATE TABLE IF NOT EXISTS oval_s_variable_value
 
     variable_id         VARCHAR(64)     NOT NULL,
                         /* e.g. oval:org.mitre.oval:var:419 */
-    value               VARCHAR(255),
+    data                VARCHAR(255),
 
     /* (FK) */
     s_object__PID       VARCHAR(64)     NOT NULL,

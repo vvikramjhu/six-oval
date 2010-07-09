@@ -780,9 +780,7 @@
         <!-- CollectedSystemObject : ItemReference = 1 : n -->
         <field name="reference"
             type="jp.go.aist.six.oval.model.system.ItemReference"
-            collection="collection"
-            lazy="true"
-            >
+            collection="collection">
             <sql many-key="s_object__PID"/>
         </field>
 
@@ -826,7 +824,13 @@
         </field>
 
         <field name="value" type="string">
-            <sql name="value" type="char"/>
+            <sql name="data" type="char"/>
+        </field>
+
+        <!-- (FK) -->
+        <field name="masterObject" 
+            type="jp.go.aist.six.oval.model.system.CollectedSystemObject">
+            <sql name="s_object__PID"/>
         </field>
     </class>
 
@@ -882,7 +886,6 @@
             type="jp.go.aist.six.oval.model.system.CollectedSystemObject">
             <sql name="s_object__PID"/>
         </field>
-
     </class>
 
 
