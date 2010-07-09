@@ -26,6 +26,8 @@ import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.definition.Criteria;
 import jp.go.aist.six.oval.model.definition.Definition;
+import jp.go.aist.six.oval.model.definition.OvalDefinitions;
+import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.service.OvalServiceException;
 import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.RelationalBinding;
@@ -89,6 +91,76 @@ public class LocalOvalRepository
     //**************************************************************
     //  OvalRepository
     //**************************************************************
+
+    // OvalDefinitions //
+
+    public String createOvalDefinitions(
+                    final OvalDefinitions defs
+                    )
+    throws OvalServiceException
+    {
+        String  pid = null;
+        try {
+            pid = _store.create( OvalDefinitions.class, defs );
+        } catch (Exception ex) {
+            throw new OvalServiceException( ex );
+        }
+
+        return pid;
+    }
+
+
+    public OvalDefinitions getOvalDefinitions(
+                    final String pid
+                    )
+    throws OvalServiceException
+    {
+        OvalDefinitions  defs = null;
+        try {
+            defs = _store.get( OvalDefinitions.class, pid );
+        } catch (Exception ex) {
+            throw new OvalServiceException( ex );
+        }
+
+        return defs;
+    }
+
+
+
+    // OvalResutls //
+
+    public String createOvalResults(
+                    final OvalResults resutls
+                    )
+    throws OvalServiceException
+    {
+        String  pid = null;
+        try {
+            pid = _store.create( OvalResults.class, resutls );
+        } catch (Exception ex) {
+            throw new OvalServiceException( ex );
+        }
+
+        return pid;
+    }
+
+
+    public OvalResults getOvalResults(
+                    final String pid
+                    )
+    throws OvalServiceException
+    {
+        OvalResults  results = null;
+        try {
+            results = _store.get( OvalResults.class, pid );
+        } catch (Exception ex) {
+            throw new OvalServiceException( ex );
+        }
+
+        return results;
+    }
+
+
 
     public List<String> findDefinitionID(
                     final Binding filter
