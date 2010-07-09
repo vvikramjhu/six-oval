@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.CommentedOvalEntity;
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Operator;
@@ -134,14 +134,14 @@ public abstract class Test
 
 
 
-    public void setTestType(
-                    final ComponentType type
+    public void setObjectType(
+                    final ObjectType type
                     )
     {
     }
 
 
-    public abstract ComponentType getTestType();
+    public abstract ObjectType getObjectType();
 
 
 

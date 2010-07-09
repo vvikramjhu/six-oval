@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.core;
 
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.definition.Definitions;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
@@ -116,7 +116,7 @@ public class OvalStoreTest
                     alwaysRun=true
                     )
     public void testObject(
-                    final ComponentType type,
+                    final ObjectType type,
                     final String filepath,
                     final String id,
                     final int version,
@@ -131,7 +131,7 @@ public class OvalStoreTest
 
         Assert.assertEquals( obj.getOvalID(), id );
         Assert.assertEquals( obj.getOvalVersion(), version );
-        Assert.assertEquals( obj.getSystemObjectType(), type );
+        Assert.assertEquals( obj.getObjectType(), type );
         Assert.assertEquals( obj.getComment(), comment );
 
         _syncOvalEntity( SystemObject.class, obj );

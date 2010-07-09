@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.CommentedOvalEntity;
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Operator;
 
 
@@ -85,14 +85,14 @@ public abstract class State
 
 
 
-    public void setStateType(
-                    final ComponentType type
+    public void setObjectType(
+                    final ObjectType type
                     )
     {
     }
 
 
-    public abstract ComponentType getStateType();
+    public abstract ObjectType getObjectType();
 
 
 

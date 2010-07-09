@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.definition.EntityStateBase;
 import jp.go.aist.six.oval.model.definition.EntityStateString;
 import jp.go.aist.six.oval.model.definition.State;
@@ -123,9 +123,9 @@ public class FileState
     //**************************************************************
 
     @Override
-    public ComponentType getStateType()
+    public ObjectType getObjectType()
     {
-        return ComponentType.WINDOWS_FILE;
+        return ObjectType.WINDOWS_FILE;
     }
 
 

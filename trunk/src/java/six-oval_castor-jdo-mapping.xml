@@ -436,9 +436,9 @@
             <sql name="tst_existence" type="char"/>
         </field>
 
-        <field name="TestType" 
-            type="jp.go.aist.six.oval.model.ComponentType">
-            <sql name="test_type" type="char"/>
+        <field name="objectType" 
+            type="jp.go.aist.six.oval.model.ObjectType">
+            <sql name="object_type" type="char"/>
         </field>
 
         <!-- The object and state reference fields are defined in the subclass mappings.
@@ -503,8 +503,8 @@
             <sql name="comment" type="char"/>
         </field>
 
-        <field name="systemObjectType" 
-            type="jp.go.aist.six.oval.model.ComponentType">
+        <field name="objectType" 
+            type="jp.go.aist.six.oval.model.ObjectType">
             <sql name="object_type" type="char"/>
         </field>
 
@@ -540,9 +540,9 @@
             <sql name="comment" type="char"/>
         </field>
 
-        <field name="stateType" 
-            type="jp.go.aist.six.oval.model.ComponentType">
-            <sql name="state_type" type="char"/>
+        <field name="objectType" 
+            type="jp.go.aist.six.oval.model.ObjectType">
+            <sql name="object_type" type="char"/>
         </field>
 
     </class>
@@ -608,9 +608,9 @@
             <sql name="datatype" type="char"/>
         </field>
 
-        <field name="variableType" 
-            type="jp.go.aist.six.oval.model.ComponentType">
-            <sql name="variable_type" type="char"/>
+        <field name="objectType" 
+            type="jp.go.aist.six.oval.model.ObjectType">
+            <sql name="object_type" type="char"/>
         </field>
     </class>
 
@@ -912,9 +912,9 @@
             <sql name="status" type="char"/>
         </field>
 
-        <field name="itemType" 
-            type="jp.go.aist.six.oval.model.ComponentType">
-            <sql name="item_type" type="char"/>
+        <field name="objectType" 
+            type="jp.go.aist.six.oval.model.ObjectType">
+            <sql name="object_type" type="char"/>
         </field>
 
         <!-- (FK) -->

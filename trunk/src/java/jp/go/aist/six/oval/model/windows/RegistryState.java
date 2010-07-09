@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.definition.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definition.EntityStateBase;
 import jp.go.aist.six.oval.model.definition.EntityStateString;
@@ -203,9 +203,9 @@ public class RegistryState
     //**************************************************************
 
     @Override
-    public ComponentType getStateType()
+    public ObjectType getObjectType()
     {
-        return ComponentType.WINDOWS_REGISTRY;
+        return ObjectType.WINDOWS_REGISTRY;
     }
 
 

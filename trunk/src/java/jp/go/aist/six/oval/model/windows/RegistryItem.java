@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.system.EntityItemAnySimple;
 import jp.go.aist.six.oval.model.system.EntityItemString;
 import jp.go.aist.six.oval.model.system.Item;
@@ -190,9 +190,9 @@ public class RegistryItem
     //**************************************************************
 
     @Override
-    public ComponentType getItemType()
+    public ObjectType getObjectType()
     {
-        return ComponentType.WINDOWS_REGISTRY;
+        return ObjectType.WINDOWS_REGISTRY;
     }
 
 

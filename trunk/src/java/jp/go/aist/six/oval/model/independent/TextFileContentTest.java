@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.definition.SimpleTest;
 
@@ -75,9 +75,9 @@ public class TextFileContentTest
     //**************************************************************
 
     @Override
-    public ComponentType getTestType()
+    public ObjectType getObjectType()
     {
-        return ComponentType.INDEPENDENT_TEXTFILECONTENT;
+        return ObjectType.INDEPENDENT_TEXTFILECONTENT;
     }
 
 

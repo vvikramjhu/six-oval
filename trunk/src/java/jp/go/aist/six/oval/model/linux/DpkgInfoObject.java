@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.definition.EntityObjectString;
 
 
@@ -87,9 +87,9 @@ public class DpkgInfoObject
     //**************************************************************
 
     @Override
-    public ComponentType getSystemObjectType()
+    public ObjectType getObjectType()
     {
-        return ComponentType.LINUX_DPKGINFO;
+        return ObjectType.LINUX_DPKGINFO;
     }
 
 

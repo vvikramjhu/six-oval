@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.core;
 
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.definition.State;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -39,7 +39,7 @@ public class StoreDefStateTest
 //                        }
 //                        ,
                         {
-                            ComponentType.WINDOWS_FILE,
+                            ObjectType.WINDOWS_FILE,
                             "test/data/definition/sample_oval-state-file.xml",
                             "oval:org.mitre.oval:ste:2190",
                             1
@@ -98,7 +98,7 @@ public class StoreDefStateTest
                     alwaysRun=true
                     )
     public void testDefState(
-                    final ComponentType type,
+                    final ObjectType type,
                     final String filepath,
                     final String id,
                     final int version
@@ -112,7 +112,7 @@ public class StoreDefStateTest
 
         Assert.assertEquals( obj.getOvalID(), id );
         Assert.assertEquals( obj.getOvalVersion(), version );
-        Assert.assertEquals( obj.getStateType(), type );
+        Assert.assertEquals( obj.getObjectType(), type );
 
         _syncOvalEntity( State.class, obj );
     }

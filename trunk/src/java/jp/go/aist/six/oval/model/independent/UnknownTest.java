@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.definition.Test;
 
@@ -75,9 +75,9 @@ public class UnknownTest
     //**************************************************************
 
     @Override
-    public ComponentType getTestType()
+    public ObjectType getObjectType()
     {
-        return ComponentType.INDEPENDENT_UNKNOWN;
+        return ObjectType.INDEPENDENT_UNKNOWN;
     }
 
 

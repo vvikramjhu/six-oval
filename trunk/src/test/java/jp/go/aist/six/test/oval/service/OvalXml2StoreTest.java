@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.service;
 
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.definition.Definition;
@@ -307,7 +307,7 @@ extends OvalServiceTestBase
                     alwaysRun=true
                     )
     public void processState(
-                    final ComponentType type,
+                    final ObjectType type,
                     final String filepath,
                     final String id,
                     final int version
@@ -328,7 +328,7 @@ extends OvalServiceTestBase
         State  state = State.class.cast( obj );
         Assert.assertEquals( id, state.getOvalID() );
         Assert.assertEquals( version, state.getOvalVersion() );
-        Assert.assertEquals( type, state.getStateType() );
+        Assert.assertEquals( type, state.getObjectType() );
 
         Reporter.log( "  * marshalling XML...", true );
         String  xml = _xml.marshalToString( state );
@@ -405,7 +405,7 @@ extends OvalServiceTestBase
                     final String comment,
                     final Existence existence,
                     final Check check,
-                    final ComponentType type,
+                    final ObjectType type,
                     final String objectID,
                     final String stateID
                     )
@@ -427,7 +427,7 @@ extends OvalServiceTestBase
         Assert.assertEquals( comment, test.getComment() );
         Assert.assertEquals( existence, test.getCheckExistence() );
         Assert.assertEquals( check, test.getCheck() );
-        Assert.assertEquals( type, test.getTestType() );
+        Assert.assertEquals( type, test.getObjectType() );
         if (test instanceof SimpleTest) {
             SimpleTest  simpleTest = SimpleTest.class.cast( test );
             Assert.assertEquals( objectID, simpleTest.getObject().getOvalID() );

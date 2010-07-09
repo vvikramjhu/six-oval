@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.core;
 
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.definition.Test;
@@ -28,7 +28,7 @@ public class StoreDefTestTest
         return new Object[][] {
                         // independent : family test
                         {
-                            ComponentType.INDEPENDENT_FAMILY,
+                            ObjectType.INDEPENDENT_FAMILY,
                             "test/data/definition/sample_oval-test-family.xml",
                             "oval:org.mitre.oval:tst:99",
                             1,
@@ -42,7 +42,7 @@ public class StoreDefTestTest
 
                         // independent : textfilecontent test
                         {
-                            ComponentType.INDEPENDENT_TEXTFILECONTENT,
+                            ObjectType.INDEPENDENT_TEXTFILECONTENT,
                             "test/data/definition/sample_oval-test-textfilecontent.xml",
                             "oval:org.mitre.oval:tst:11150",
                             1,
@@ -56,7 +56,7 @@ public class StoreDefTestTest
 
                         // independent : unknown test
                         {
-                            ComponentType.INDEPENDENT_UNKNOWN,
+                            ObjectType.INDEPENDENT_UNKNOWN,
                             "test/data/definition/sample_oval-test-unknown.xml",
                             "oval:org.mitre.oval:tst:2531",
                             1,
@@ -70,7 +70,7 @@ public class StoreDefTestTest
 
                         // unix : uname test
                         {
-                            ComponentType.UNIX_UNAME,
+                            ObjectType.UNIX_UNAME,
                             "test/data/definition/sample_oval-test-uname.xml",
                             "oval:org.mitre.oval:tst:11195",
                             1,
@@ -84,7 +84,7 @@ public class StoreDefTestTest
 
                         // windows : Registry test
                         {
-                            ComponentType.WINDOWS_REGISTRY,
+                            ObjectType.WINDOWS_REGISTRY,
                             "test/data/definition/sample_oval-test-registry.xml",
                             "oval:org.mitre.oval:tst:3019",
                             2,
@@ -98,7 +98,7 @@ public class StoreDefTestTest
 
                         // windows : Metabase test
                         {
-                            ComponentType.WINDOWS_METABASE,
+                            ObjectType.WINDOWS_METABASE,
                             "test/data/definition/sample_oval-test-metabase.xml",
                             "oval:org.mitre.oval:tst:709",
                             2,
@@ -112,7 +112,7 @@ public class StoreDefTestTest
 
                         // windows : File test
                         {
-                            ComponentType.WINDOWS_FILE,
+                            ObjectType.WINDOWS_FILE,
                             "test/data/definition/sample_oval-test-file.xml",
                             "oval:org.mitre.oval:tst:2339",
                             1,
@@ -126,7 +126,7 @@ public class StoreDefTestTest
 
                         // linux : RpmInfo test
                         {
-                            ComponentType.LINUX_RPMINFO,
+                            ObjectType.LINUX_RPMINFO,
                             "test/data/definition/sample_oval-test-rpminfo.xml",
                             "oval:com.redhat.rhsa:tst:20100061002",
                             301,
@@ -140,7 +140,7 @@ public class StoreDefTestTest
 
                         // linux : DpkgInfo test
                         {
-                            ComponentType.LINUX_DPKGINFO,
+                            ObjectType.LINUX_DPKGINFO,
                             "test/data/definition/sample_oval-test-dpkginfo.xml",
                             "oval:org.mitre.oval:tst:19402",
                             1,
@@ -161,7 +161,7 @@ public class StoreDefTestTest
                     alwaysRun=true
                     )
     public void testDefTest(
-                    final ComponentType type,
+                    final ObjectType type,
                     final String filepath,
                     final String id,
                     final int version,
@@ -180,7 +180,7 @@ public class StoreDefTestTest
 
         Assert.assertEquals( obj.getOvalID(), id );
         Assert.assertEquals( obj.getOvalVersion(), version );
-        Assert.assertEquals( obj.getTestType(), type );
+        Assert.assertEquals( obj.getObjectType(), type );
 
         _syncOvalEntity( Test.class, obj );
     }

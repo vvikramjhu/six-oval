@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.system;
 
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.util.castor.AbstractPersistable;
 import jp.go.aist.six.util.orm.Dependent;
 
@@ -84,14 +84,14 @@ public abstract class Item
 
 
 
-    public void setItemType(
-                    final ComponentType type
+    public void setObjectType(
+                    final ObjectType type
                     )
     {
     }
 
 
-    public abstract ComponentType getItemType();
+    public abstract ObjectType getObjectType();
 
 
 

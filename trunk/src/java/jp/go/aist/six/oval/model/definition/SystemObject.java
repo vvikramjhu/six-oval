@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.CommentedOvalEntity;
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 
 
 
@@ -58,14 +58,14 @@ public abstract class SystemObject
 
 
 
-    public void setSystemObjectType(
-                    final ComponentType type
+    public void setObjectType(
+                    final ObjectType type
                     )
     {
     }
 
 
-    public abstract ComponentType getSystemObjectType();
+    public abstract ObjectType getObjectType();
 
 
 

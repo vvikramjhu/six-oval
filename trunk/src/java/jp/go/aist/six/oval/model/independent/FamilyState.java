@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.definition.State;
 
 
@@ -84,9 +84,9 @@ public class FamilyState
     //**************************************************************
 
     @Override
-    public ComponentType getStateType()
+    public ObjectType getObjectType()
     {
-        return ComponentType.INDEPENDENT_FAMILY;
+        return ObjectType.INDEPENDENT_FAMILY;
     }
 
 

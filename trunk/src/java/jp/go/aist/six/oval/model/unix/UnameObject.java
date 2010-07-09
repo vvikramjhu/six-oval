@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.definition.SystemObject;
 
 
@@ -64,9 +64,9 @@ public class UnameObject
     //**************************************************************
 
     @Override
-    public ComponentType getSystemObjectType()
+    public ObjectType getObjectType()
     {
-        return ComponentType.UNIX_UNAME;
+        return ObjectType.UNIX_UNAME;
     }
 
 

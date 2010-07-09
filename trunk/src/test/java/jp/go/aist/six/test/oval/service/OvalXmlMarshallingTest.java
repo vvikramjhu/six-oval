@@ -1,7 +1,7 @@
 package jp.go.aist.six.test.oval.service;
 
 import jp.go.aist.six.oval.core.service.OvalContext;
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Family;
@@ -75,7 +75,7 @@ public class OvalXmlMarshallingTest
                             "Word 97 is installed",
                             Existence.AT_LEAST_ONE_EXISTS,
                             Check.ALL,
-                            ComponentType.INDEPENDENT_UNKNOWN
+                            ObjectType.INDEPENDENT_UNKNOWN
                         },
                         // Registry test
                         {
@@ -85,7 +85,7 @@ public class OvalXmlMarshallingTest
                             "Win2K/XP/2003/Vista/2008 service pack 2 is installed",
                             Existence.AT_LEAST_ONE_EXISTS,
                             Check.AT_LEAST_ONE,
-                            ComponentType.WINDOWS_REGISTRY
+                            ObjectType.WINDOWS_REGISTRY
                         }
         };
     }
@@ -108,7 +108,7 @@ public class OvalXmlMarshallingTest
                     final String comment,
                     final Existence existence,
                     final Check check,
-                    final ComponentType type
+                    final ObjectType type
                     )
     throws Exception
     {
@@ -128,7 +128,7 @@ public class OvalXmlMarshallingTest
         Assert.assertEquals( comment, test.getComment() );
         Assert.assertEquals( existence, test.getCheckExistence() );
         Assert.assertEquals( check, test.getCheck() );
-        Assert.assertEquals( type, test.getTestType() );
+        Assert.assertEquals( type, test.getObjectType() );
 
         Reporter.log( "  * marshalling XML...", true );
         String  xml = _xmlMapper.marshalToString( test );
@@ -153,14 +153,14 @@ public class OvalXmlMarshallingTest
                             "oval:org.mitre.oval:obj:99",
                             1,
                             "This is the default family object. Only one family object should exist.",
-                            ComponentType.INDEPENDENT_FAMILY
+                            ObjectType.INDEPENDENT_FAMILY
                         },
                         {
                             "test/data/sample_oval-object-rpminfo.xml",
                             "oval:com.redhat.rhsa:obj:20100061001",
                             301,
                             null,
-                            ComponentType.LINUX_RPMINFO
+                            ObjectType.LINUX_RPMINFO
                         }
         };
     }
@@ -178,7 +178,7 @@ public class OvalXmlMarshallingTest
                     final String id,
                     final int version,
                     final String comment,
-                    final ComponentType type
+                    final ObjectType type
                     )
     throws Exception
     {
@@ -196,7 +196,7 @@ public class OvalXmlMarshallingTest
         Assert.assertEquals( id, object.getOvalID() );
         Assert.assertEquals( version, object.getOvalVersion() );
         Assert.assertEquals( comment, object.getComment() );
-        Assert.assertEquals( type, object.getSystemObjectType() );
+        Assert.assertEquals( type, object.getObjectType() );
 
         Reporter.log( "  * marshalling XML...", true );
         String  xml = _xmlMapper.marshalToString( object );

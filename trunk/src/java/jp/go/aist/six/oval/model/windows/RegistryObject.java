@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.definition.EntityObjectString;
 import jp.go.aist.six.oval.model.definition.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definition.SystemObject;
@@ -175,9 +175,9 @@ public class RegistryObject
     //**************************************************************
 
     @Override
-    public ComponentType getSystemObjectType()
+    public ObjectType getObjectType()
     {
-        return ComponentType.WINDOWS_REGISTRY;
+        return ObjectType.WINDOWS_REGISTRY;
     }
 
 

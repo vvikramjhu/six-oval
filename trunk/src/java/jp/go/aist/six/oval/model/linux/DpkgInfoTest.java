@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.definition.SimpleTest;
 
@@ -74,9 +74,9 @@ public class DpkgInfoTest
     //**************************************************************
 
     @Override
-    public ComponentType getTestType()
+    public ObjectType getObjectType()
     {
-        return ComponentType.LINUX_DPKGINFO;
+        return ObjectType.LINUX_DPKGINFO;
     }
 
 

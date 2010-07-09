@@ -30,7 +30,7 @@ import java.util.HashMap;
  * @author  Akihito Nakamura, AIST
  * @version $Id: ComponentType.java 696 2010-04-26 10:22:00Z akihito $
  */
-public final class ComponentType
+public final class ObjectType
     implements Serializable
 {
 
@@ -48,23 +48,23 @@ public final class ComponentType
     private static final String  _VARIABLE_EXTERNAL_    = "variable.external";
 
 
-    public static final ComponentType  INDEPENDENT_FAMILY    = new ComponentType( _INDEPENDENT_FAMILY_ );
-    public static final ComponentType  INDEPENDENT_TEXTFILECONTENT = new ComponentType( _INDEPENDENT_TEXTFILECONTENT_ );
-    public static final ComponentType  INDEPENDENT_UNKNOWN   = new ComponentType( _INDEPENDENT_UNKNOWN_ );
-    public static final ComponentType  LINUX_DPKGINFO        = new ComponentType( _LINUX_DPKGINFO_ );
-    public static final ComponentType  LINUX_RPMINFO         = new ComponentType( _LINUX_RPMINFO_ );
-    public static final ComponentType  UNIX_UNAME            = new ComponentType( _UNIX_UNAME_ );
-    public static final ComponentType  WINDOWS_FILE          = new ComponentType( _WINDOWS_FILE_ );
-    public static final ComponentType  WINDOWS_METABASE      = new ComponentType( _WINDOWS_METABASE_ );
-    public static final ComponentType  WINDOWS_REGISTRY      = new ComponentType( _WINDOWS_REGISTRY_ );
+    public static final ObjectType  INDEPENDENT_FAMILY    = new ObjectType( _INDEPENDENT_FAMILY_ );
+    public static final ObjectType  INDEPENDENT_TEXTFILECONTENT = new ObjectType( _INDEPENDENT_TEXTFILECONTENT_ );
+    public static final ObjectType  INDEPENDENT_UNKNOWN   = new ObjectType( _INDEPENDENT_UNKNOWN_ );
+    public static final ObjectType  LINUX_DPKGINFO        = new ObjectType( _LINUX_DPKGINFO_ );
+    public static final ObjectType  LINUX_RPMINFO         = new ObjectType( _LINUX_RPMINFO_ );
+    public static final ObjectType  UNIX_UNAME            = new ObjectType( _UNIX_UNAME_ );
+    public static final ObjectType  WINDOWS_FILE          = new ObjectType( _WINDOWS_FILE_ );
+    public static final ObjectType  WINDOWS_METABASE      = new ObjectType( _WINDOWS_METABASE_ );
+    public static final ObjectType  WINDOWS_REGISTRY      = new ObjectType( _WINDOWS_REGISTRY_ );
 
-    public static final ComponentType  VARIABLE_LOCAL        = new ComponentType( _VARIABLE_LOCAL_ );
-    public static final ComponentType  VARIABLE_EXTERNAL     = new ComponentType( _VARIABLE_EXTERNAL_ );
+    public static final ObjectType  VARIABLE_LOCAL        = new ObjectType( _VARIABLE_LOCAL_ );
+    public static final ObjectType  VARIABLE_EXTERNAL     = new ObjectType( _VARIABLE_EXTERNAL_ );
 
 
-    private static HashMap<String, ComponentType> _INIT_()
+    private static HashMap<String, ObjectType> _INIT_()
     {
-        HashMap<String, ComponentType>  map = new HashMap<String, ComponentType>();
+        HashMap<String, ObjectType>  map = new HashMap<String, ObjectType>();
         map.put( _INDEPENDENT_FAMILY_,  INDEPENDENT_FAMILY  );
         map.put( _INDEPENDENT_TEXTFILECONTENT_,  INDEPENDENT_TEXTFILECONTENT  );
         map.put( _INDEPENDENT_UNKNOWN_, INDEPENDENT_UNKNOWN  );
@@ -80,18 +80,18 @@ public final class ComponentType
         return map;
     }
 
-    private static final HashMap<String, ComponentType>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, ObjectType>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static ComponentType valueOf(
+    public static ObjectType valueOf(
                     final String name
                     )
     {
-        ComponentType  status = null;
+        ObjectType  status = null;
         if (name != null) {
             status = _INSTANCES_.get( name );
         }
@@ -111,7 +111,7 @@ public final class ComponentType
 
     /**
      */
-    private ComponentType(
+    private ObjectType(
                     final String name
                     )
     {
@@ -140,7 +140,7 @@ public final class ComponentType
     }
 
 }
-// ComponentType
+// ObjectType
 
 /* vim:set tabstop=4:set expandtab:set shiftwidth=4: */
 

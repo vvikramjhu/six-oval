@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.definition.SimpleTest;
 
@@ -74,9 +74,9 @@ public class FileTest
     //**************************************************************
 
     @Override
-    public ComponentType getTestType()
+    public ObjectType getObjectType()
     {
-        return ComponentType.WINDOWS_FILE;
+        return ObjectType.WINDOWS_FILE;
     }
 
 

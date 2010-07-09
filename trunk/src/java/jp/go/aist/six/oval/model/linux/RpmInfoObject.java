@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.definition.EntityObjectString;
 
 
@@ -86,9 +86,9 @@ public class RpmInfoObject
     //**************************************************************
 
     @Override
-    public ComponentType getSystemObjectType()
+    public ObjectType getObjectType()
     {
-        return ComponentType.LINUX_RPMINFO;
+        return ObjectType.LINUX_RPMINFO;
     }
 
 

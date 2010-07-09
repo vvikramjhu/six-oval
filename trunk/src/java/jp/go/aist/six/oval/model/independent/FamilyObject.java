@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.definition.SystemObject;
 
 
@@ -64,9 +64,9 @@ public class FamilyObject
     //**************************************************************
 
     @Override
-    public ComponentType getSystemObjectType()
+    public ObjectType getObjectType()
     {
-        return ComponentType.INDEPENDENT_FAMILY;
+        return ObjectType.INDEPENDENT_FAMILY;
     }
 
 

@@ -37,6 +37,7 @@ public abstract class OvalEntity
 
     public static final boolean  DEFAULT_DEPRECATED = false;
     private boolean  _deprecated = DEFAULT_DEPRECATED;
+    //{optional, default="false"}
 
 
 

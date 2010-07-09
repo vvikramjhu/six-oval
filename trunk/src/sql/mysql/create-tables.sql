@@ -20,6 +20,9 @@ use @six.db.database@;
 -- * UUID:
 --      xxx                 CHAR(36),
 --
+-- * URL:
+--      xxx                 VARCHAR(255),
+--
 -- * Generator:
 --      gen_timestamp       DATETIME        NOT NULL,
 --      gen_schema_version  VARCHAR(8)      NOT NULL,
@@ -117,7 +120,7 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
-/* Definition                                                     */
+/* DefinitionCriteria                                             */
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_definition_criteria
 (
@@ -230,7 +233,7 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
-/* Definition - Affected Platform association                     */
+/* Definition - Platform association                              */
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_assoc__d_definition__d_platform
 (
@@ -267,7 +270,7 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
-/* Definition - Affected Product association                      */
+/* Definition - Product association                               */
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_assoc__d_definition__d_product
 (
@@ -339,9 +342,9 @@ CREATE TABLE IF NOT EXISTS oval_d_test
     comment             VARCHAR(255),
 
     tst_check           VARCHAR(16)     NOT NULL,
-    tst_existence       VARCHAR(20)     NOT NULL    DEFAULT 'at_least_one_exists',
+    tst_existence       VARCHAR(20)                 DEFAULT 'at_least_one_exists',
 
-    test_type           VARCHAR(32)     NOT NULL,
+    object_type         VARCHAR(32)     NOT NULL,
 
     /* (FK) */
 
@@ -416,7 +419,7 @@ CREATE TABLE IF NOT EXISTS oval_d_object
     deprecated          BOOLEAN         NOT NULL    DEFAULT false,
     comment             VARCHAR(255),
 
-    object_type         VARCHAR(32),
+    object_type         VARCHAR(32)     NOT NULL,
     
     /* (FK) */
 
@@ -496,7 +499,7 @@ CREATE TABLE IF NOT EXISTS oval_d_state
 
     /* We found NO state with an explicit note. */
 
-    state_type          VARCHAR(32),
+    object_type          VARCHAR(32)    NOT NULL,
 
     /* (FK) */
 
@@ -551,7 +554,7 @@ CREATE TABLE IF NOT EXISTS oval_d_variable
 
     datatype            VARCHAR(16)     NOT NULL,
 
-    variable_type       VARCHAR(32),
+    object_type         VARCHAR(32)     NOT NULL,
 
     /* (FK) */
 
@@ -764,7 +767,7 @@ CREATE TABLE IF NOT EXISTS oval_s_item
     status              VARCHAR(16)     NOT NULL    DEFAULT 'exists',
                         /* ENUM( 'error', ..., 'not collected') */
     
-    item_type           VARCHAR(32)     NOT NULL,
+    object_type         VARCHAR(32)     NOT NULL,
 
     /* (FK) */
     s_sc__PID           CHAR(36)        NOT NULL,

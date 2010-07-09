@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.CommentedOvalEntity;
-import jp.go.aist.six.oval.model.ComponentType;
+import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Datatype;
 
 
@@ -107,14 +107,14 @@ public abstract class Variable
 
 
 
-    public void setVariableType(
-                    final ComponentType type
+    public void setObjectType(
+                    final ObjectType type
                     )
     {
     }
 
 
-    public abstract ComponentType getVariableType();
+    public abstract ObjectType getObjectType();
 
 
 
