@@ -651,7 +651,7 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
-/* SystemObjectStatus                                             */
+/* CollectedSystemObject                                          */
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_s_object
 (
@@ -683,7 +683,33 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
-/* OvalSystemCharacteristics - SystemObjectStatus association     */
+/* VariableValue                                                  */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_s_variable_value
+(
+    PID                 INT             NOT NULL    AUTO_INCREMENT,
+
+    variable_id         VARCHAR(64)     NOT NULL,
+                        /* e.g. oval:org.mitre.oval:var:419 */
+    value               VARCHAR(255),
+
+    /* (FK) */
+    s_object__PID       VARCHAR(64)     NOT NULL,
+
+    /* (PK) */
+    PRIMARY KEY (PID),
+    
+    /* INDEX */
+/*  INDEX (variable_id), */
+    INDEX (s_object__PID)
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
+/* OvalSystemCharacteristics - CollectedSystemObject association  */
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_assoc__s_sc__s_object
 (

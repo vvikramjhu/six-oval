@@ -21,6 +21,8 @@
 package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.system.CollectedSystemObject;
+import jp.go.aist.six.oval.model.system.VariableValue;
+import java.util.Collection;
 
 
 
@@ -46,6 +48,22 @@ public class CollectedSystemObjectDao
     //  Dao, CastorDao
     //**************************************************************
 
+    //**************************************************************
+    //  Dao, CastorDao
+    //**************************************************************
+
+    @Override
+    public String create(
+                    final CollectedSystemObject object
+                    )
+    {
+
+        Collection<VariableValue>  vv = object.getVariableValue();
+        for(VariableValue v : vv) {
+            v.setMasterObject( object );
+        }
+        return super.create( object );
+    }
 
 }
 // CollectedSystemObjectDao

@@ -1085,13 +1085,13 @@
         <field name="variableInstance" type="int">
             <bind-xml name="variable_instance" node="attribute"/>
         </field>
+-->
 
-        <field name="variableValues" 
+        <field name="variableValue" 
             type="jp.go.aist.six.oval.model.system.VariableValue"
             collection="collection">
             <bind-xml name="variable_value" node="element"/>
         </field>
--->
 
     </class>
 
@@ -1113,7 +1113,7 @@
 
 
     <!-- ======================================================= -->
-    <!-- VariableValue - variable_value                          -->
+    <!-- VariableValue                                           -->
     <!-- ======================================================= -->
     <class name ="jp.go.aist.six.oval.model.system.VariableValue">
         <map-to xml="variable_value"
@@ -1126,7 +1126,6 @@
         <field name="value" type="string">
             <bind-xml node="text"/>
         </field>
-        
     </class>
 
 

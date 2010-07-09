@@ -43,9 +43,8 @@ public class CollectedSystemObject
 //  private Collection<Message>  _messages = new ArrayList<Message>();
     /*** We have never seen a result which has multiple messages. ***/
 
-    // NOT implemented yet
-//  private Collection<VariableValue>  _variableValues = new ArrayList<VariableValue>();
-//    //{0..*}
+    private Collection<VariableValue>  _variableValue = new ArrayList<VariableValue>();
+    //{0..*}
 
     private Collection<ItemReference>  _reference = new ArrayList<ItemReference>();
     //{0..*}
@@ -261,34 +260,21 @@ public class CollectedSystemObject
 
 
 
-//    public void setVariableValues( final Collection<VariableValue> values )
-//    {
-//        _variableValues.clear();
-//        Iterator<VariableValue>  i = values.iterator();
-//        while (i.hasNext()) {
-//            addVariableValue( i.next() );
-//        }
-//    }
-//
-//
-//    public boolean addVariableValue( final VariableValue value )
-//    {
-//        if (value == null) {
-//            return false;
-//        }
-//
-//        if (!_variableValues.contains( value )) {
-//            return _variableValues.add( value );
-//        }
-//
-//        return false;
-//    }
-//
-//
-//    public Collection<VariableValue> getVariableValues()
-//    {
-//        return _variableValues;
-//    }
+    public void setVariableValue(
+                    final Collection<? extends VariableValue> values
+                    )
+    {
+        _variableValue.clear();
+        if (values != null) {
+            _variableValue.addAll( values );
+        }
+    }
+
+
+    public Collection<VariableValue> getVariableValue()
+    {
+        return _variableValue;
+    }
 
 
 
@@ -352,22 +338,13 @@ public class CollectedSystemObject
                         + ", items=" + getReference()
 //                        + ", variable_instance=" + getVariableInstance()
 //                        + ", messages=" + getMessages()
-//                        + ", variable_values=" + getVariableValues()
+                        + ", variable_values=" + getVariableValue()
                         + "]";
     }
 
 //    public void setMessages( final Collection<Message> messages )
 //    public boolean addMessage( final Message message )
 //    public Collection<Message> getMessages()
-
-
-//    public void setVariableInstance( final int variableInstance )
-//    public int getVariableInstance()
-
-
-//    public void setVariableValues( final Collection<VariableValue> values )
-//    public boolean addVariableValue( final VariableValue value )
-//    public Collection<VariableValue> getVariableValues()
 
 }
 // CollectedSystemObject

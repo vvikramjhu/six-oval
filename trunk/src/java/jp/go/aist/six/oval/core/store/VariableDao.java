@@ -32,15 +32,56 @@ public class VariableDao
     extends OvalEntityDao<Variable>
 {
 
+//    /**
+//     * Logger.
+//     */
+//    private static Log  _LOG = LogFactory.getLog( VariableDao.class );
+
+
+
+//    private OvalXml  _xmlMapper;
+
+
+
     public VariableDao()
     {
         super( Variable.class );
+
+//        try {
+//            _xmlMapper = OvalContext.INSTANCE.getXml();
+//        } catch (Exception ex) {
+//            // TODO:
+//            _LOG.error(  "XmlMapper instantiation failed: " + ex.getMessage() );
+//        }
     }
 
 
     //TODO: Store the content model as an XML document,
     //like as Definition's Criteria.
 
+
+    //**************************************************************
+    //  Dao, CastorDao
+    //**************************************************************
+
+//    @Override
+//    public String create(
+//                    final Variable variable
+//                    )
+//    {
+//        if (_xmlMapper != null) {
+//            try {
+//                String  xml = _xmlMapper.marshalToString( variable );
+//                VariableXml  vx = new VariableXml( variable, xml );
+//                getForwardingDao( VariableXml.class ).sync( vx );
+//            } catch (OxmException ex) {
+//                // TODO:
+//                _LOG.warn(  "'variable' XML NOT persisted" );
+//            }
+//        }
+//
+//        return super.create( variable );
+//    }
 
 }
 // VariableDao

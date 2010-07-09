@@ -786,6 +786,12 @@
             <sql many-key="s_object__PID"/>
         </field>
 
+        <field name="variableValue"
+            type="jp.go.aist.six.oval.model.system.VariableValue"
+            collection="collection">
+            <sql many-key="s_object__PID"/>
+        </field>
+
         <!-- (FK) OvalSystemCharacteristics:  This FK is implemented using a mapping table???
         -->
         <field name="masterPersistentID" type="string">
@@ -797,6 +803,31 @@
             <sql name="d_object__PID" type="char"/>
         </field>
 
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- VariableValue                                           -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.system.VariableValue"
+        depends="jp.go.aist.six.oval.model.system.CollectedSystemObject"
+        identity="persistentID"
+        key-generator="IDENTITY">
+        <cache-type type="unlimited"/>
+        <map-to table="oval_s_variable_value"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="variableID" type="string">
+            <sql name="variable_id" type="char"/>
+        </field>
+
+        <field name="value" type="string">
+            <sql name="value" type="char"/>
+        </field>
     </class>
 
 

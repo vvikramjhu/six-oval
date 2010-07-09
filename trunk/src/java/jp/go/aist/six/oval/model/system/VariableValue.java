@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.system;
 
 import jp.go.aist.six.util.castor.AbstractPersistable;
+import jp.go.aist.six.util.orm.Dependent;
 
 
 
@@ -31,16 +32,37 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  */
 public class VariableValue
     extends AbstractPersistable
+    implements Dependent<CollectedSystemObject>
 {
 
     private String  _variableID;
+    //{required}
+
     private String  _value;
+    //{xsd:anysimpleType}
 
 
 
+    /**
+     * Constructor.
+     */
     public VariableValue()
     {
     }
+
+
+    /**
+     * Constructor.
+     */
+    public VariableValue(
+                    final String variableID,
+                    final String value
+                    )
+    {
+        setVariableID( variableID );
+        setValue( value );
+    }
+
 
 
 
@@ -75,26 +97,24 @@ public class VariableValue
 
 
     //**************************************************************
-    //  Persistable
+    //  Dependent
     //**************************************************************
 
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
+    private CollectedSystemObject  _master;
 
 
-    public void setPersistentID(
-                    final String id
+
+    public void setMasterObject(
+                    final CollectedSystemObject master
                     )
     {
-        _persistentID = id;
+        _master = master;
     }
 
 
-    public String getPersistentID()
+    public CollectedSystemObject getMasterObject()
     {
-        return _persistentID;
+        return _master;
     }
 
 
@@ -103,9 +123,6 @@ public class VariableValue
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
