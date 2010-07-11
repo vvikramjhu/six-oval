@@ -31,14 +31,14 @@ import jp.go.aist.six.oval.model.definition.SimpleTest;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class RegistryTest
+public class WmiTest
     extends SimpleTest
 {
 
     /**
      * Constructor.
      */
-    public RegistryTest()
+    public WmiTest()
     {
     }
 
@@ -46,7 +46,7 @@ public class RegistryTest
     /**
      * Constructor.
      */
-    public RegistryTest(
+    public WmiTest(
                     final String id,
                     final int version
                     )
@@ -58,7 +58,7 @@ public class RegistryTest
     /**
      * Constructor.
      */
-    public RegistryTest(
+    public WmiTest(
                     final String id,
                     final int version,
                     final Check check
@@ -76,7 +76,7 @@ public class RegistryTest
     @Override
     public ObjectType getObjectType()
     {
-        return ObjectType.WINDOWS_REGISTRY;
+        return ObjectType.WINDOWS_WMI;
     }
 
 
@@ -98,7 +98,7 @@ public class RegistryTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof RegistryTest)) {
+        if (!(obj instanceof WmiTest)) {
             return false;
         }
 
@@ -110,8 +110,8 @@ public class RegistryTest
     @Override
     public String toString()
     {
-        return "RegistryTest[" + super.toString() + "]";
+        return "WmiTest[" + super.toString() + "]";
     }
 
 }
-// RegistryTest
+// WmiTest

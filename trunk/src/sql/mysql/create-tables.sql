@@ -132,8 +132,8 @@ CREATE TABLE IF NOT EXISTS oval_d_definition_criteria
     version             INT             NOT NULL,
 
     /* criteria as string */
-    criteria            VARCHAR(8191),
-                        /* max. length = 7452, id = oval:org.mitre.oval:def:6233 */
+    criteria            TEXT,
+                        /* max. length = 20480, id = oval:org.mitre.oval:def:6491 */
 
     /* (FK) */
 
@@ -1488,14 +1488,17 @@ CREATE TABLE IF NOT EXISTS oval_d_object_file
     PID                 VARCHAR(64)     NOT NULL,
                         /* id + version, e.g. oval:org.mitre.oval:obj:419:1 */
 
+    /* XSD: choice( filepath, sequence(path, filename) ) */
+    /* Therefore, 'NOT NULL' can't be specified. */
+    
     /* path */
     path                VARCHAR(255),
     path_var_ref        VARCHAR(255),
-    path_var_check      VARCHAR(16)     NOT NULL    DEFAULT 'all',
+    path_var_check      VARCHAR(16)   /*NOT NULL*/    DEFAULT 'all',
                         /* enum('all', 'at least one',...) */
 /*  path_datatype       VARCHAR(16)     NOT NULL    DEFAULT 'string', */
                         /*** all the datatype may be 'string'. ***/
-    path_operation      VARCHAR(32)     NOT NULL    DEFAULT 'equals',
+    path_operation      VARCHAR(32)   /*NOT NULL*/  DEFAULT 'equals',
                         /* enum('equals', ..., 'case insensitive not equal', ...) */
 /*  path_mask           BOOLEAN         NOT NULL    DEFAULT false,    */
 
@@ -1526,9 +1529,9 @@ CREATE TABLE IF NOT EXISTS oval_d_state_file
                         /* id + version, e.g. oval:org.mitre.oval:ste:419:1 */
 
     version             VARCHAR(64),
-    version_operation   VARCHAR(32)     NOT NULL    DEFAULT 'equals',
+    version_operation   VARCHAR(32)     DEFAULT 'equals',
                         /* enum('equals', ..., 'case insensitive not equal', ...) */
-    version_datatype        VARCHAR(16),
+    version_datatype    VARCHAR(16),
     
     /* (FK) */
     
@@ -1714,6 +1717,8 @@ CREATE TABLE IF NOT EXISTS oval_d_state_registry
     value_operation     VARCHAR(32)     NOT NULL    DEFAULT 'equals',
                         /* enum('equals', ..., 'case insensitive not equal', ...) */
 
+    type_data           VARCHAR(16),
+
     /* (FK) */
     
     /* (PK) */
@@ -1748,6 +1753,85 @@ CREATE TABLE IF NOT EXISTS oval_s_item_registry
 ENGINE=InnoDB
 CHARACTER SET utf8;
 
+
+
+/* ============================================================== */
+/* WmiTest                                                        */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_d_test_wmi
+(
+    PID                 VARCHAR(64)     NOT NULL,
+                        /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
+
+    object__id          VARCHAR(64)     NOT NULL,
+    state__id           VARCHAR(64),
+    
+    /* (FK) */
+
+    /* (PK) */
+    PRIMARY KEY (PID)
+
+    /* INDEX */
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
+/* WmiObject                                                      */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_d_object_wmi
+(
+    PID                 VARCHAR(64)     NOT NULL,
+                        /* id + version, e.g. oval:org.mitre.oval:obj:419:1 */
+
+    /* key */
+    namespace           VARCHAR(64),
+    namespace_var_ref   VARCHAR(255),
+    namespace_var_check VARCHAR(16)     DEFAULT 'all',
+    namespace_operation VARCHAR(32)     DEFAULT 'equals',
+
+    wql                 VARCHAR(255),
+    wql_operation       VARCHAR(32)     DEFAULT 'equals',
+
+    /* (PK) */
+    PRIMARY KEY (PID)
+
+    /* INDEX */
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
+/* WmiState                                                       */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_d_state_wmi
+(
+    PID                 VARCHAR(64)     NOT NULL,
+                        /* id + version, e.g. oval:org.mitre.oval:ste:419:1 */
+
+    namespace           VARCHAR(64),
+    namespace_datatype  VARCHAR(16)     DEFAULT 'string',
+    namespace_operation VARCHAR(32)     DEFAULT 'equals',
+                        /* enum('equals', ..., 'case insensitive not equal', ...) */
+
+    wql                 VARCHAR(255),
+
+    result              VARCHAR(255),
+    result_operation    VARCHAR(32)     DEFAULT 'equals',
+
+    /* (FK) */
+    
+    /* (PK) */
+    PRIMARY KEY (PID)
+
+    /* INDEX */
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
 
 
 

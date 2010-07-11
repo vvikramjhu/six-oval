@@ -2184,6 +2184,11 @@ No registry object has 'behaviors' child element in the definition XML.
             type="jp.go.aist.six.oval.model.common.Operation">
             <sql name="value_operation" type="char"/>
         </field>
+
+        <field name="type.data" type="string">
+            <sql name="type_data" type="char"/>
+        </field>
+
     </class>
 
 
@@ -2223,6 +2228,111 @@ No registry object has 'behaviors' child element in the definition XML.
             <sql name="value1" type="char"/>
         </field>
     </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- WmiTest                                                 -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.windows.WmiTest"
+        extends="jp.go.aist.six.oval.model.definition.Test"
+        identity="persistentID">
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_test_wmi"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+
+        <field name="object.ovalID" type="string">
+            <sql name="object__id" type="char"/>
+        </field>
+
+        <field name="state.ovalID" type="string">
+            <sql name="state__id" type="char"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- WmiObject                                               -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.windows.WmiObject"
+        extends="jp.go.aist.six.oval.model.definition.SystemObject"
+        identity="persistentID"
+        >
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_object_wmi"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+
+        <field name="namespace.data" type="string">
+            <sql name="namespace" type="char"/>
+        </field>
+<!--
+        <field name="namespace.varRef" type="string">
+            <sql name="regkey_var_ref" type="char"/>
+        </field>
+
+        <field name="namespace.varCheck" 
+            type="jp.go.aist.six.oval.model.common.Check">
+            <sql name="namespace_var_check" type="char"/>
+        </field>
+-->
+
+        <field name="namespace.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="namespace_operation" type="char"/>
+        </field>
+
+        <field name="wql.data" type="string">
+            <sql name="wql" type="char"/>
+        </field>
+
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- WmiState                                           -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.windows.WmiState"
+        extends="jp.go.aist.six.oval.model.definition.State"
+        identity="persistentID">
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_state_wmi"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+
+        <field name="namespace.data" type="string">
+            <sql name="namespace" type="char"/>
+        </field>
+
+        <field name="namespace.datatype" 
+            type="jp.go.aist.six.oval.model.common.Datatype">
+            <sql name="namespace_datatype" type="char"/>
+        </field>
+
+        <field name="namespace.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="namespace_operation" type="char"/>
+        </field>
+
+        <field name="wql.data" type="string">
+            <sql name="wql" type="char"/>
+        </field>
+
+        <field name="result.data" type="string">
+            <sql name="result" type="char"/>
+        </field>
+    </class>
+
+
 
 </mapping>
 

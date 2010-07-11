@@ -157,9 +157,18 @@ public class RegistryObject
 
     public void setName(
                     final EntityObjectString name
+                    // nillable ="true"
                     )
     {
-        _name = name;
+        EntityObjectString  n = name;
+        if (name != null) {
+            String  data = name.getData();
+            if (data == null  ||  data.length() == 0) {
+                n = null;
+            }
+        }
+
+        _name = n;
     }
 
 

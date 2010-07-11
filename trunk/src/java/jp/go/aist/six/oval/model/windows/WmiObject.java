@@ -32,28 +32,22 @@ import jp.go.aist.six.oval.model.definition.SystemObject;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class RegistryObject
+public class WmiObject
     extends SystemObject
 {
 
-    private RegistryBehaviors  _behaviors;
+    private EntityObjectString  _namespace;
     //{0..1}
 
-    private EntityObjectRegistryHive  _hive;
-    //{1..1}
-
-    private EntityObjectString  _key;
-    //{1..1, nillable="true"}
-
-    private EntityObjectString  _name;
-    //{1..1, nillable="true"}
+    private EntityObjectString  _wql;
+    //{0..1}
 
 
 
     /**
      * Constructor.
      */
-    public RegistryObject()
+    public WmiObject()
     {
     }
 
@@ -61,7 +55,7 @@ public class RegistryObject
     /**
      * Constructor.
      */
-    public RegistryObject(
+    public WmiObject(
                     final String id,
                     final int version
                     )
@@ -73,18 +67,16 @@ public class RegistryObject
     /**
      * Constructor.
      */
-    public RegistryObject(
+    public WmiObject(
                     final String id,
                     final int version,
-                    final RegistryHive hive,
-                    final String key,
-                    final String name
+                    final String namespace,
+                    final String wql
                     )
     {
         this( id, version,
-                        (hive == null ? null : (new EntityObjectRegistryHive( hive.getName() ))),
-                        (key == null ? null : (new EntityObjectString( key ))),
-                        (name == null ? null : (new EntityObjectString( name )))
+                        (namespace == null ? null : (new EntityObjectString( namespace ))),
+                        (wql == null ? null : (new EntityObjectString( wql )))
         );
     }
 
@@ -92,80 +84,47 @@ public class RegistryObject
     /**
      * Constructor.
      */
-    public RegistryObject(
+    public WmiObject(
                     final String id,
                     final int version,
-                    final EntityObjectRegistryHive hive,
-                    final EntityObjectString key,
-                    final EntityObjectString name
+                    final EntityObjectString namespace,
+                    final EntityObjectString wql
                     )
     {
         super( id, version );
-        setHive( hive );
-        setKey( key );
-        setName( name );
+
+        setNamespace( namespace );
+        setWql( wql );
     }
 
 
 
-    public void setBehaviors(
-                    final RegistryBehaviors behaviors
+    public void setNamespace(
+                    final EntityObjectString namespace
                     )
     {
-        _behaviors = behaviors;
+        _namespace = namespace;
     }
 
 
-
-    public RegistryBehaviors getBehaviors()
+    public EntityObjectString getNamespace()
     {
-        return _behaviors;
+        return _namespace;
     }
 
 
 
-    public void setHive(
-                    final EntityObjectRegistryHive hive
+    public void setWql(
+                    final EntityObjectString wql
                     )
     {
-        _hive = hive;
+        _wql = wql;
     }
 
 
-
-    public EntityObjectRegistryHive getHive()
+    public EntityObjectString getWql()
     {
-        return _hive;
-    }
-
-
-
-    public void setKey(
-                    final EntityObjectString key
-                    )
-    {
-        _key = key;
-    }
-
-
-    public EntityObjectString getKey()
-    {
-        return _key;
-    }
-
-
-
-    public void setName(
-                    final EntityObjectString name
-                    )
-    {
-        _name = name;
-    }
-
-
-    public EntityObjectString getName()
-    {
-        return _name;
+        return _wql;
     }
 
 
@@ -177,7 +136,7 @@ public class RegistryObject
     @Override
     public ObjectType getObjectType()
     {
-        return ObjectType.WINDOWS_REGISTRY;
+        return ObjectType.WINDOWS_WMI;
     }
 
 
@@ -192,17 +151,11 @@ public class RegistryObject
         final int  prime = 37;
         int  result = super.hashCode();
 
-        RegistryBehaviors  behaviors = getBehaviors();
-        result = prime * result + ((behaviors == null) ? 0 : behaviors.hashCode());
+        EntityObjectString  namespace = getNamespace();
+        result = prime * result + ((namespace == null) ? 0 : namespace.hashCode());
 
-        EntityObjectRegistryHive  hive = getHive();
-        result = prime * result + ((hive == null) ? 0 : hive.hashCode());
-
-        EntityObjectString  key = getKey();
-        result = prime * result + ((key == null) ? 0 : key.hashCode());
-
-        EntityObjectString  name = getName();
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        EntityObjectString  wql = getWql();
+        result = prime * result + ((wql == null) ? 0 : wql.hashCode());
 
         return result;
     }
@@ -214,28 +167,19 @@ public class RegistryObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof RegistryObject)) {
+        if (!(obj instanceof WmiObject)) {
             return false;
         }
 
         if (super.equals( obj )) {
-            RegistryObject  other = (RegistryObject)obj;
-            EntityObjectString  other_name = other.getName();
-            EntityObjectString   this_name =  this.getName();
-            if (EntityTypeHelper.equals( this_name, other_name )) {
-                EntityObjectString  other_key = other.getKey();
-                EntityObjectString   this_key =  this.getKey();
-                if (EntityTypeHelper.equals( this_key, other_key )) {
-                    EntityObjectRegistryHive  other_hive = other.getHive();
-                    EntityObjectRegistryHive   this_hive =  this.getHive();
-                    if (EntityTypeHelper.equals( this_hive, other_hive )) {
-                        RegistryBehaviors  other_behaviors = other.getBehaviors();
-                        RegistryBehaviors   this_behaviors =  this.getBehaviors();
-                        if (this_behaviors == other_behaviors
-                                        ||  (this_behaviors != null  &&  this_behaviors.equals( other_behaviors ))) {
-                            return true;
-                        }
-                    }
+            WmiObject  other = (WmiObject)obj;
+            EntityObjectString  other_wql = other.getWql();
+            EntityObjectString   this_wql =  this.getWql();
+            if (EntityTypeHelper.equals( this_wql, other_wql )) {
+                EntityObjectString  other_namespace = other.getNamespace();
+                EntityObjectString   this_namespace =  this.getNamespace();
+                if (EntityTypeHelper.equals( this_namespace, other_namespace )) {
+                    return true;
                 }
             }
         }
@@ -248,13 +192,11 @@ public class RegistryObject
     @Override
     public String toString()
     {
-        return "RegistryObject[" + super.toString()
-                        + ", hive=" + getHive()
-                        + ", key=" + getKey()
-                        + ", name=" + getName()
-                        + ", behaviors=" + getBehaviors()
+        return "WqlObject[" + super.toString()
+                        + ", namespace=" + getNamespace()
+                        + ", wql=" + getWql()
                         + "]";
     }
 
 }
-// RegistryObject
+// WqlObject

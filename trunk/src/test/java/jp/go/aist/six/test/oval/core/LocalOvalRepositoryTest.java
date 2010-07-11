@@ -1,6 +1,7 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.core.service.LocalOvalRepository;
+import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -26,10 +27,49 @@ public class LocalOvalRepositoryTest
     public void setUp()
     throws Exception
     {
+        super.setUp();
         _repository = new LocalOvalRepository();
     }
 
 
+
+    @DataProvider( name="oval_definitions" )
+    private Object[][] _ovalDefinitionsProvider()
+    {
+        return new Object[][] {
+                        {
+                            "test/data/definition/20100511_oval-vulnerability_microsoft.windows.xp.xml",
+                        }
+        };
+
+    }
+
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={"oval.service.repository", "oval_definitions"},
+                    dataProvider="oval_definitions",
+                    alwaysRun=true
+                    )
+    public void testCreateOvalDefinitions(
+                    final String filepath
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL - OvalRepository //", true );
+
+        OvalDefinitions  ovalDefs = _unmarshalFile( filepath, OvalDefinitions.class );
+
+        Reporter.log( "creating OvalDefinitions...", true );
+        String  pid = _repository.createOvalDefinitions( ovalDefs );
+        Reporter.log( "...find done: PID=" + pid, true );
+
+    }
+
+
+
+    // CVE //
 
     @DataProvider( name="cve-name" )
     public Object[][] ovalCveNameProvider()
@@ -50,7 +90,7 @@ public class LocalOvalRepositoryTest
     /**
      */
     @org.testng.annotations.Test(
-                    groups={"oval.service"},
+                    groups={"oval.service.repository", "cve"},
                     dataProvider="cve-name",
                     alwaysRun=true
                     )

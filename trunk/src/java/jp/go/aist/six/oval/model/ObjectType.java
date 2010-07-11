@@ -43,6 +43,7 @@ public final class ObjectType
     private static final String  _WINDOWS_FILE_         = "windows.file";
     private static final String  _WINDOWS_METABASE_     = "windows.metabase";
     private static final String  _WINDOWS_REGISTRY_     = "windows.registry";
+    private static final String  _WINDOWS_WMI_          = "windows.wmi";
 
     private static final String  _VARIABLE_LOCAL_       = "variable.local";
     private static final String  _VARIABLE_EXTERNAL_    = "variable.external";
@@ -57,6 +58,7 @@ public final class ObjectType
     public static final ObjectType  WINDOWS_FILE          = new ObjectType( _WINDOWS_FILE_ );
     public static final ObjectType  WINDOWS_METABASE      = new ObjectType( _WINDOWS_METABASE_ );
     public static final ObjectType  WINDOWS_REGISTRY      = new ObjectType( _WINDOWS_REGISTRY_ );
+    public static final ObjectType  WINDOWS_WMI           = new ObjectType( _WINDOWS_WMI_ );
 
     public static final ObjectType  VARIABLE_LOCAL        = new ObjectType( _VARIABLE_LOCAL_ );
     public static final ObjectType  VARIABLE_EXTERNAL     = new ObjectType( _VARIABLE_EXTERNAL_ );
@@ -67,16 +69,17 @@ public final class ObjectType
         HashMap<String, ObjectType>  map = new HashMap<String, ObjectType>();
         map.put( _INDEPENDENT_FAMILY_,  INDEPENDENT_FAMILY  );
         map.put( _INDEPENDENT_TEXTFILECONTENT_,  INDEPENDENT_TEXTFILECONTENT  );
-        map.put( _INDEPENDENT_UNKNOWN_, INDEPENDENT_UNKNOWN  );
+        map.put( _INDEPENDENT_UNKNOWN_, INDEPENDENT_UNKNOWN );
         map.put( _LINUX_DPKGINFO_,      LINUX_DPKGINFO      );
         map.put( _LINUX_RPMINFO_,       LINUX_RPMINFO       );
-        map.put( _UNIX_UNAME_,          UNIX_UNAME      );
+        map.put( _UNIX_UNAME_,          UNIX_UNAME          );
         map.put( _WINDOWS_FILE_,        WINDOWS_FILE        );
         map.put( _WINDOWS_METABASE_,    WINDOWS_METABASE    );
         map.put( _WINDOWS_REGISTRY_,    WINDOWS_REGISTRY    );
+        map.put( _WINDOWS_WMI_,         WINDOWS_WMI         );
 
-        map.put( _VARIABLE_LOCAL_,      VARIABLE_LOCAL    );
-        map.put( _VARIABLE_EXTERNAL_,   VARIABLE_EXTERNAL    );
+        map.put( _VARIABLE_LOCAL_,      VARIABLE_LOCAL      );
+        map.put( _VARIABLE_EXTERNAL_,   VARIABLE_EXTERNAL   );
         return map;
     }
 

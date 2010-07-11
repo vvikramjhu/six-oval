@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.independent;
+package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.definition.EntityStateAnySimple;
@@ -33,20 +33,17 @@ import jp.go.aist.six.oval.model.definition.State;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class TextFileContentState
+public class WmiState
     extends State
 {
 
-    private EntityStateString  _path;
+    private EntityStateString  _namespace;
     //{0..1}
 
-    private EntityStateString  _fileName;
+    private EntityStateString  _wql;
     //{0..1}
 
-    private EntityStateString  _line;
-    //{0..1}
-
-    private EntityStateAnySimple  _subExpression;
+    private EntityStateAnySimple  _result;
     //{0..1}
 
 
@@ -54,7 +51,7 @@ public class TextFileContentState
     /**
      * Constructor.
      */
-    public TextFileContentState()
+    public WmiState()
     {
     }
 
@@ -62,7 +59,7 @@ public class TextFileContentState
     /**
      * Constructor.
      */
-    public TextFileContentState(
+    public WmiState(
                     final String id,
                     final int version
                     )
@@ -74,70 +71,51 @@ public class TextFileContentState
 
     /**
      */
-    public void setPath(
-                    final EntityStateString path
+    public void setNamespace(
+                    final EntityStateString namespace
                     )
     {
-        _path = path;
+        _namespace = namespace;
     }
 
 
-    public EntityStateString getPath()
+    public EntityStateString getNamespace()
     {
-        return _path;
+        return _namespace;
     }
 
 
 
     /**
      */
-    public void setFileName(
-                    final EntityStateString filename
+    public void setWql(
+                    final EntityStateString wql
                     )
     {
-        _fileName = filename;
+        _wql = wql;
     }
 
 
-    public EntityStateString getFileName()
+    public EntityStateString getWql()
     {
-        return _fileName;
+        return _wql;
     }
 
 
 
     /**
      */
-    public void setLine(
-                    final EntityStateString line
+    public void setResult(
+                    final EntityStateAnySimple result
                     )
     {
-        _line = line;
+        _result = result;
     }
 
 
-    /**
-     */
-    public EntityStateString getLine()
+    public EntityStateAnySimple getResult()
     {
-        return _line;
-    }
-
-
-
-    /**
-     */
-    public void setSubExpression(
-                    final EntityStateAnySimple subexpression
-                    )
-    {
-        _subExpression = subexpression;
-    }
-
-
-    public EntityStateAnySimple getSubExpression()
-    {
-        return _subExpression;
+        return _result;
     }
 
 
@@ -149,7 +127,7 @@ public class TextFileContentState
     @Override
     public ObjectType getObjectType()
     {
-        return ObjectType.INDEPENDENT_TEXTFILECONTENT;
+        return ObjectType.WINDOWS_WMI;
     }
 
 
@@ -158,64 +136,50 @@ public class TextFileContentState
     //  java.lang.Object
     //**************************************************************
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
         final int  prime = 37;
-        int  result = super.hashCode();
+        int  code = super.hashCode();
 
-        EntityStateString  path = getPath();
-        result = prime * result + ((path == null) ? 0 : path.hashCode());
+        EntityStateString  namespace = getNamespace();
+        code = prime * code + ((namespace == null) ? 0 : namespace.hashCode());
 
-        EntityStateString  filename = getFileName();
-        result = prime * result + ((filename == null) ? 0 : filename.hashCode());
+        EntityStateString  wql = getWql();
+        code = prime * code + ((wql == null) ? 0 : wql.hashCode());
 
-        EntityStateString  line = getLine();
-        result = prime * result + ((line == null) ? 0 : line.hashCode());
+        EntityStateAnySimple  result = getResult();
+        code = prime * code + ((result == null) ? 0 : result.hashCode());
 
-        EntityStateAnySimple  subexpression = getSubExpression();
-        result = prime * result + ((subexpression == null) ? 0 : subexpression.hashCode());
-
-        return result;
+        return code;
     }
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
                     )
     {
-        if (!(obj instanceof TextFileContentState)) {
+        if (!(obj instanceof WmiState)) {
             return false;
         }
 
         if (super.equals( obj )) {
-            TextFileContentState  other = (TextFileContentState)obj;
-            EntityStateString  other_path = other.getPath();
-            EntityStateString   this_path =  this.getPath();
-            if (this_path == other_path
-                            ||  (this_path != null  &&  this_path.equals( other_path ))) {
-                EntityStateString  other_filename = other.getFileName();
-                EntityStateString   this_filename =  this.getFileName();
-                if (this_filename == other_filename
-                                ||  (this_filename != null  &&  this_filename.equals( other_filename ))) {
-                    EntityStateString  other_line = other.getLine();
-                    EntityStateString   this_line =  this.getLine();
-                    if (this_line == other_line
-                                    ||  (this_line != null  &&  this_line.equals( other_line ))) {
-                        EntityStateAnySimple  other_subexpression = other.getSubExpression();
-                        EntityStateAnySimple   this_subexpression =  this.getSubExpression();
-                        if (this_subexpression == other_subexpression
-                                        ||  (this_subexpression != null  &&  this_subexpression.equals( other_subexpression ))) {
-                            return true;
-                        }
+            WmiState  other = (WmiState)obj;
+            EntityStateString  other_namespace = other.getNamespace();
+            EntityStateString   this_namespace =  this.getNamespace();
+            if (this_namespace == other_namespace
+                            ||  (this_namespace != null  &&  this_namespace.equals( other_namespace ))) {
+                EntityStateString  other_wql = other.getWql();
+                EntityStateString   this_wql =  this.getWql();
+                if (this_wql == other_wql
+                                ||  (this_wql != null  &&  this_wql.equals( other_wql ))) {
+                    EntityStateAnySimple  other_result = other.getResult();
+                    EntityStateAnySimple   this_result =  this.getResult();
+                    if (this_result == other_result
+                                    ||  (this_result != null  &&  this_result.equals( other_result ))) {
+                        return true;
                     }
                 }
             }
@@ -226,14 +190,11 @@ public class TextFileContentState
 
 
 
-    /**
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
-        return "TextFileContentState[" + super.toString() + "]";
+        return "WqlState[" + super.toString() + "]";
     }
 
 }
-// TextFileContentState
+// WqlState

@@ -115,6 +115,9 @@ public class OvalDefinitionsDao
         if (objects != null) {
             SystemObjects  p_objects = new SystemObjects();
             for (SystemObject  object : objects) {
+                if (_LOG.isInfoEnabled()) {
+                    _LOG.info( "creating Definition: " + object.getOvalID() );
+                }
                 SystemObject  p_object = getForwardingDao( SystemObject.class ).sync( object );
                 p_objects.add( p_object );
                 OvalDefinitionsObjectAssociation  assoc =
@@ -173,8 +176,10 @@ public class OvalDefinitionsDao
                 final String  defID = def.getOvalID();
                 Collection<String>  testIDs = util.getRelatedTestIDOfDefinition( defID );
                 for (String  testID : testIDs) {
+//                    _LOG.info( "Definition-Test assoc: finding test=" + testID );
                     DefinitionTestAssociation  dt_assoc =
                         new DefinitionTestAssociation( def, defs.getTest( testID ) );
+//                    _LOG.info( "Definition-Test assoc: " + dt_assoc );
                     getForwardingDao( DefinitionTestAssociation.class ).sync( dt_assoc );
                 }
             }
