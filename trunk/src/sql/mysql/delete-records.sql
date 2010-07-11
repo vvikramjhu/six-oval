@@ -63,6 +63,7 @@ DELETE FROM oval_d_object_uname;
 DELETE FROM oval_d_object_file;
 DELETE FROM oval_d_object_metabase;
 DELETE FROM oval_d_object_registry;
+DELETE FROM oval_d_object_wmi;
 DELETE FROM oval_d_object;
 
 DELETE FROM oval_d_state_family;
@@ -72,6 +73,7 @@ DELETE FROM oval_d_state_rpminfo;
 DELETE FROM oval_d_state_file;
 DELETE FROM oval_d_state_metabase;
 DELETE FROM oval_d_state_registry;
+DELETE FROM oval_d_state_wmi;
 DELETE FROM oval_d_state;
 
 DELETE FROM oval_d_test_family;
@@ -83,6 +85,7 @@ DELETE FROM oval_d_test_uname;
 DELETE FROM oval_d_test_file;
 DELETE FROM oval_d_test_metabase;
 DELETE FROM oval_d_test_registry;
+DELETE FROM oval_d_test_wmi;
 DELETE FROM oval_d_test;
 
 DELETE FROM oval_d_variable_local;

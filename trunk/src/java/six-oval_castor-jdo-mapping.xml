@@ -2330,6 +2330,11 @@ No registry object has 'behaviors' child element in the definition XML.
         <field name="result.data" type="string">
             <sql name="result" type="char"/>
         </field>
+
+        <field name="result.operation"
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="result_operation" type="char"/>
+        </field>
     </class>
 
 

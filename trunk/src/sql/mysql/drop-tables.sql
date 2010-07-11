@@ -62,6 +62,7 @@ DROP TABLE IF EXISTS oval_d_object_uname;
 DROP TABLE IF EXISTS oval_d_object_file;
 DROP TABLE IF EXISTS oval_d_object_metabase;
 DROP TABLE IF EXISTS oval_d_object_registry;
+DROP TABLE IF EXISTS oval_d_object_wmi;
 DROP TABLE IF EXISTS oval_d_object;
 
 DROP TABLE IF EXISTS oval_d_state_family;
@@ -71,6 +72,7 @@ DROP TABLE IF EXISTS oval_d_state_rpminfo;
 DROP TABLE IF EXISTS oval_d_state_file;
 DROP TABLE IF EXISTS oval_d_state_metabase;
 DROP TABLE IF EXISTS oval_d_state_registry;
+DROP TABLE IF EXISTS oval_d_state_wmi;
 DROP TABLE IF EXISTS oval_d_state;
 
 DROP TABLE IF EXISTS oval_d_test_family;
@@ -82,6 +84,7 @@ DROP TABLE IF EXISTS oval_d_test_uname;
 DROP TABLE IF EXISTS oval_d_test_file;
 DROP TABLE IF EXISTS oval_d_test_metabase;
 DROP TABLE IF EXISTS oval_d_test_registry;
+DROP TABLE IF EXISTS oval_d_test_wmi;
 DROP TABLE IF EXISTS oval_d_test;
 
 DROP TABLE IF EXISTS oval_d_variable_local;
