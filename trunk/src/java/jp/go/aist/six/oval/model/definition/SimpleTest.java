@@ -33,14 +33,20 @@ public abstract class SimpleTest
     extends Test
 {
 
-//    private String  _objectID;
     private SystemObjectRef  _objectRef;
     //{oval-def:ObjectRefType, 1..1}
 
-//    private String  _stateID;
     private StateRef  _stateRef;
     //{oval-def:StateRefType, 0..1}
-    // dpkginfo_test: {0..*}
+    // independent#family_test: {0..*}
+    // independent#textfilecontent_test: {0..*}
+    // linux#dpkginfo_test: {0..*}
+    // linux#rpminfo_test: {0..*}
+    // unix#uname_test: {0..*}
+    // windows#file_test: {0..*}
+    // windows#metabase_test: {0..*}
+    // windows#registry_test: {0..*}
+    // windows#wmi_test: {0..*}
 
 
 
