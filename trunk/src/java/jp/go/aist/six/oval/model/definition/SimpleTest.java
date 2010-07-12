@@ -37,7 +37,7 @@ public abstract class SimpleTest
     //{oval-def:ObjectRefType, 1..1}
 
     private StateRef  _stateRef;
-    //{oval-def:StateRefType, 0..1}
+    //{oval-def:StateRefType, 0..*}
     // independent#family_test: {0..*}
     // independent#textfilecontent_test: {0..*}
     // linux#dpkginfo_test: {0..*}
