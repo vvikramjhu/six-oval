@@ -132,8 +132,8 @@ CREATE TABLE IF NOT EXISTS oval_d_definition_criteria
     version             INT             NOT NULL,
 
     /* criteria as string */
-    criteria            TEXT,
-                        /* max. length = 20480, id = oval:org.mitre.oval:def:6491 */
+    criteria            MEDIUMTEXT,
+                        /* max. length = 49,152, id = oval:com.redhat.rhsa:def:20100101 */
 
     /* (FK) */
 
