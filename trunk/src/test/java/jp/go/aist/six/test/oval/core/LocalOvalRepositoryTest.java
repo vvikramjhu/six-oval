@@ -37,16 +37,16 @@ public class LocalOvalRepositoryTest
     private Object[][] _ovalDefinitionsProvider()
     {
         return new Object[][] {
-                        // windows vulnerability
-                        {
-                            "test/data/definition/20100511_oval-vulnerability_microsoft.windows.xp.xml",
-                        }
-                        ,
-
-//                        // Red Hat patch
+//                        // windows vulnerability
 //                        {
-//                            "test/data/definition/20100713_com.redhat.rhsa-all.xml",
+//                            "test/data/definition/20100714_oval-vulnerability_microsoft.windows.xp.xml",
 //                        }
+//                        ,
+
+                        // Red Hat patch
+                        {
+                            "test/data/definition/20100713_com.redhat.rhsa-all.xml",
+                        }
                         //Note:
                         // contains "cve" elements without CVE names.
                         // "oval:com.redhat.rhsa:def:20070993", line# 58399
