@@ -37,16 +37,16 @@ public class LocalOvalRepositoryTest
     private Object[][] _ovalDefinitionsProvider()
     {
         return new Object[][] {
-                        // windows vulnerability
-                        {
-                            "test/data/definition/oval-2010-06-15.05.04.34.xml",
-                        }
-                        ,
-
 //                        // windows vulnerability
 //                        {
-//                            "test/data/definition/20100714_oval-vulnerability_microsoft.windows.xp.xml",
+//                            "test/data/definition/oval-2010-06-15.05.04.34.xml",
 //                        }
+//                        ,
+
+                        // windows vulnerability
+                        {
+                            "test/data/definition/20100714_oval-vulnerability_microsoft.windows.xp.xml",
+                        }
 //                        ,
 
 //                        // Red Hat patch
