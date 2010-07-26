@@ -14,12 +14,12 @@
 <suite name="six-oval" verbose="1" parallel="tests">
 
     <test name="oval.core" enabled="true">
+<!--
         <groups>
             <run>
-                <include name="oval-def.complex-test"/>
+                <include name="oval_definitions"/>
             </run>
         </groups>
-<!--
                 <include name="oval_definitions"/>
 -->
 <!--

@@ -22,59 +22,6 @@ public class StoreDefTestTest
     //  test
     //==============================================================
 
-    @DataProvider( name="oval-def-complex-test" )
-    public Object[][] ovalDefComplexTestProvider()
-    {
-        return new Object[][] {
-                        // windows : File test
-                        {
-                            ObjectType.WINDOWS_FILE,
-                            "test/data/definition/sample_oval-test-file_complex.xml",
-                            "oval:org.mitre.oval:tst:10629",
-                            1,
-                            "Opera.exe version 9.x to 10.0.x",
-                            Existence.AT_LEAST_ONE_EXISTS,
-                            Check.ALL,
-                            "oval:org.mitre.oval:obj:6638",
-                            new String[] {
-                                            "oval:org.mitre.oval:ste:2190"
-                            }
-                        }
-        };
-    }
-
-
-    @org.testng.annotations.Test(
-                    groups={"oval.service", "oval-def.complex-test"},
-                    dataProvider="oval-def-complex-test",
-                    alwaysRun=true
-                    )
-    public void testDefComplexTest(
-                    final ObjectType type,
-                    final String filepath,
-                    final String id,
-                    final int version,
-                    final String comment,
-                    final Existence existence,
-                    final Check check,
-                    final String objectID,
-                    final String[] stateID
-                    )
-    throws Exception
-    {
-        Reporter.log( "\n// TEST: OVAL Store //", true );
-        Reporter.log( "  * object type: " + type, true );
-
-        Test  obj = _unmarshalFile( filepath, Test.class );
-
-        Assert.assertEquals( obj.getOvalID(), id );
-        Assert.assertEquals( obj.getOvalVersion(), version );
-        Assert.assertEquals( obj.getObjectType(), type );
-
-        _syncOvalEntity( Test.class, obj );
-    }
-
-
     @DataProvider( name="oval-def-test" )
     public Object[][] ovalDefTestProvider()
     {
@@ -89,7 +36,7 @@ public class StoreDefTestTest
                             Existence.AT_LEAST_ONE_EXISTS,
                             Check.ONLY_ONE,
                             "oval:org.mitre.oval:obj:99",
-                            "oval:org.mitre.oval:ste:99"
+                            new String[] { "oval:org.mitre.oval:ste:99" }
                         }
                         ,
 
@@ -103,7 +50,7 @@ public class StoreDefTestTest
                             Existence.AT_LEAST_ONE_EXISTS,
                             Check.ALL,
                             "oval:org.mitre.oval:obj:7326",
-                            "oval:org.mitre.oval:ste:5739"
+                            new String[] { "oval:org.mitre.oval:ste:5739" }
                         }
                         ,
 
@@ -131,7 +78,7 @@ public class StoreDefTestTest
                             Existence.AT_LEAST_ONE_EXISTS,
                             Check.ALL,
                             "oval:org.mitre.oval:obj:2759",
-                            "oval:org.mitre.oval:ste:5601"
+                            new String[] { "oval:org.mitre.oval:ste:5601" }
                         }
                         ,
 
@@ -145,7 +92,7 @@ public class StoreDefTestTest
                             Existence.AT_LEAST_ONE_EXISTS,
                             Check.AT_LEAST_ONE,
                             "oval:org.mitre.oval:obj:717",
-                            "oval:org.mitre.oval:ste:2827"
+                            new String[] { "oval:org.mitre.oval:ste:2827" }
                         }
                         ,
 
@@ -173,7 +120,24 @@ public class StoreDefTestTest
                             Existence.AT_LEAST_ONE_EXISTS,
                             Check.AT_LEAST_ONE,
                             "oval:org.mitre.oval:obj:222",
-                            "oval:org.mitre.oval:ste:2190"
+                            new String[] { "oval:org.mitre.oval:ste:2190" }
+                        }
+                        ,
+
+                        // windows : File test No.2
+                        {
+                            ObjectType.WINDOWS_FILE,
+                            "test/data/definition/sample_oval-test-file_complex.xml",
+                            "oval:org.mitre.oval:tst:10629",
+                            1,
+                            "Opera.exe version 9.x to 10.0.x",
+                            Existence.AT_LEAST_ONE_EXISTS,
+                            Check.ALL,
+                            "oval:org.mitre.oval:obj:6638",
+                            new String[] {
+                                            "oval:org.mitre.oval:ste:4847",
+                                            "oval:org.mitre.oval:ste:5298"
+                            }
                         }
                         ,
 
@@ -187,7 +151,7 @@ public class StoreDefTestTest
                             Test.DEFAULT_CHECK_EXISTENCE,
                             Check.AT_LEAST_ONE,
                             "oval:com.redhat.rhsa:obj:20100061002",
-                            "oval:com.redhat.rhsa:ste:20100061004"
+                            new String[] { "oval:com.redhat.rhsa:ste:20100061004" }
                         }
                         ,
 
@@ -201,7 +165,7 @@ public class StoreDefTestTest
                             Existence.AT_LEAST_ONE_EXISTS,
                             Check.ALL,
                             "oval:org.mitre.oval:obj:10286",
-                            "oval:org.mitre.oval:ste:6372"
+                            new String[] { "oval:org.mitre.oval:ste:6372" }
                         }
         };
     }
@@ -222,7 +186,7 @@ public class StoreDefTestTest
                     final Existence existence,
                     final Check check,
                     final String objectID,
-                    final String stateID
+                    final String[] stateID
                     )
     throws Exception
     {
