@@ -527,6 +527,7 @@
     e.g.  'object_ref' attribute in xxx_test/object reference,
           'state_ref' attribute in xxx_test/state reference.
     -->
+    <!--
     <class name="jp.go.aist.six.oval.model.definition.SimpleTest"
         extends="jp.go.aist.six.oval.model.definition.Test"
         verify-constructable="false">
@@ -536,6 +537,7 @@
         extends="jp.go.aist.six.oval.model.definition.Test"
         verify-constructable="false">
     </class>
+    -->
 
 
 
@@ -1459,7 +1461,7 @@
     <!-- FamilyTest                                              -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.independent.FamilyTest"
-        extends="jp.go.aist.six.oval.model.definition.SimpleTest">
+        extends="jp.go.aist.six.oval.model.definition.Test">
         <map-to xml="family_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"/>
 
@@ -1469,7 +1471,8 @@
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateRef">
+            type="jp.go.aist.six.oval.model.definition.StateRef"
+            collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
     </class>
@@ -1548,7 +1551,7 @@
     <!-- TextFileContentTest                                     -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.independent.TextFileContentTest"
-        extends="jp.go.aist.six.oval.model.definition.SimpleTest">
+        extends="jp.go.aist.six.oval.model.definition.Test">
         <map-to xml="textfilecontent_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"/>
 
@@ -1558,7 +1561,8 @@
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateRef">
+            type="jp.go.aist.six.oval.model.definition.StateRef"
+            collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
     </class>
@@ -1671,7 +1675,6 @@
         extends="jp.go.aist.six.oval.model.definition.Test">
         <map-to xml="unknown_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"/>
-
     </class>
 
 
@@ -1686,7 +1689,7 @@
     <!-- DpkgInfoTest                                            -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.linux.DpkgInfoTest"
-        extends="jp.go.aist.six.oval.model.definition.SimpleTest">
+        extends="jp.go.aist.six.oval.model.definition.Test">
         <map-to xml="dpkginfo_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"/>
 
@@ -1696,7 +1699,8 @@
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateRef">
+            type="jp.go.aist.six.oval.model.definition.StateRef"
+            collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
     </class>
@@ -1707,7 +1711,7 @@
     <!-- RpmInfoTest - rpminfo_test                              -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.linux.RpmInfoTest"
-        extends="jp.go.aist.six.oval.model.definition.SimpleTest">
+        extends="jp.go.aist.six.oval.model.definition.Test">
         <map-to xml="rpminfo_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"/>
 
@@ -1717,7 +1721,8 @@
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateRef">
+            type="jp.go.aist.six.oval.model.definition.StateRef"
+            collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
 <!--
@@ -2230,7 +2235,7 @@
     <!-- UnameTest                                               -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.unix.UnameTest"
-        extends="jp.go.aist.six.oval.model.definition.SimpleTest">
+        extends="jp.go.aist.six.oval.model.definition.Test">
         <map-to xml="uname_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"/>
 
@@ -2240,7 +2245,8 @@
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateRef">
+            type="jp.go.aist.six.oval.model.definition.StateRef"
+            collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
     </class>
@@ -2354,7 +2360,7 @@
     <!-- FileTest                                               -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.FileTest"
-        extends="jp.go.aist.six.oval.model.definition.ComplexTest">
+        extends="jp.go.aist.six.oval.model.definition.Test">
         <map-to xml="file_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
@@ -2363,7 +2369,7 @@
             <bind-xml name="object" node="element"/>
         </field>
         
-        <field name="stateRef" 
+        <field name="state" 
             type="jp.go.aist.six.oval.model.definition.StateRef"
             collection="collection">
             <bind-xml name="state" node="element"/>
@@ -2588,7 +2594,7 @@
     <!-- MetabaseTest                                            -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.MetabaseTest"
-        extends="jp.go.aist.six.oval.model.definition.SimpleTest">
+        extends="jp.go.aist.six.oval.model.definition.Test">
         <map-to xml="metabase_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
@@ -2598,7 +2604,8 @@
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateRef">
+            type="jp.go.aist.six.oval.model.definition.StateRef"
+            collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
     </class>
@@ -2711,10 +2718,10 @@
 
 
     <!-- ======================================================= -->
-    <!-- RegistryTest - registry_test                            -->
+    <!-- RegistryTest                                            -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.RegistryTest"
-        extends="jp.go.aist.six.oval.model.definition.SimpleTest">
+        extends="jp.go.aist.six.oval.model.definition.Test">
         <map-to xml="registry_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
@@ -2724,7 +2731,8 @@
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateRef">
+            type="jp.go.aist.six.oval.model.definition.StateRef"
+            collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
 
@@ -2857,7 +2865,7 @@
     <!-- WqlTest                                                 -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.WmiTest"
-        extends="jp.go.aist.six.oval.model.definition.SimpleTest">
+        extends="jp.go.aist.six.oval.model.definition.Test">
         <map-to xml="wmi_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
@@ -2867,10 +2875,12 @@
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateRef">
+            type="jp.go.aist.six.oval.model.definition.StateRef"
+            collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
     </class>
+
 
 
     <!-- ======================================================= -->

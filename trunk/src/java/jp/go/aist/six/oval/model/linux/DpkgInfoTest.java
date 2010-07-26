@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Check;
-import jp.go.aist.six.oval.model.definition.SimpleTest;
+import jp.go.aist.six.oval.model.definition.Test;
 
 
 
@@ -32,7 +32,8 @@ import jp.go.aist.six.oval.model.definition.SimpleTest;
  * @version $Id: DpkgInfoTest.java 696 2010-04-26 10:22:00Z akihito $
  */
 public class DpkgInfoTest
-    extends SimpleTest
+    extends Test
+//extends SimpleTest
 {
 
     /**

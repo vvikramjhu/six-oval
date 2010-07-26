@@ -51,21 +51,42 @@ public abstract class Test
     //{optional, default="AND"}
 
 
-    private Collection<StateRef>  _stateRef = new ArrayList<StateRef>();
-    // windows#file_test: {0..*}
+    private SystemObjectRef  _objectRef;
+    //{1..1}
+    //{0/UnknownTest}
 
-    public void setStateRef(
+    private Collection<StateRef>  _stateRef = new ArrayList<StateRef>();
+    // {0..*}
+
+
+
+    public void setObject(
+                    final SystemObjectRef ref
+                    )
+    {
+        _objectRef = ref;
+    }
+
+
+    public SystemObjectRef getObject()
+    {
+        return _objectRef;
+    }
+
+
+
+    public void setState(
                     final Collection<? extends StateRef> ref
                     )
     {
         _stateRef.clear();
-        if (ref != null) {
+        if (ref != null  &&  ref != _stateRef) {
             _stateRef.addAll( ref );
         }
     }
 
 
-    public Collection<StateRef> getStateRef()
+    public Collection<StateRef> getState()
     {
         return _stateRef;
     }
@@ -219,8 +240,10 @@ public abstract class Test
         return super.toString()
                         + ", check_existence=" + getCheckExistence()
                         + ", check=" + getCheck()
-                        + ", state_operator=" + getStateOperator();
+                        + ", state_operator=" + getStateOperator()
 //                        + ", notes=" + getNotes();
+                        + ", object_ref=" + getObject()
+                        + ", state_ref=" + getState();
     }
 
 }

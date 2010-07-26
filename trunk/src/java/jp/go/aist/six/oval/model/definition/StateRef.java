@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.OvalEntityReference;
-import jp.go.aist.six.util.orm.Dependent;
 
 
 
@@ -34,7 +33,6 @@ import jp.go.aist.six.util.orm.Dependent;
  */
 public class StateRef
     extends OvalEntityReference
-    implements Dependent<Test>
 {
 
     /**
@@ -53,29 +51,6 @@ public class StateRef
                     )
     {
         super( stateID );
-    }
-
-
-
-    //**************************************************************
-    //  Dependent
-    //**************************************************************
-
-    private Test  _master;
-
-
-
-    public void setMasterObject(
-                    final Test master
-                    )
-    {
-        _master = master;
-    }
-
-
-    public Test getMasterObject()
-    {
-        return _master;
     }
 
 

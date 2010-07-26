@@ -129,7 +129,7 @@ public abstract class SimpleTest
 
 
 
-    public void setState(
+    public void setSingleState(
                     final StateRef ref
                     )
     {
@@ -137,7 +137,7 @@ public abstract class SimpleTest
     }
 
 
-    public StateRef getState()
+    public StateRef getSingleState()
     {
         return _stateRef;
     }
@@ -148,59 +148,59 @@ public abstract class SimpleTest
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public int hashCode()
-    {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        SystemObjectRef  object = getObject();
-        result = prime * result + ((object == null) ? 0 : object.hashCode());
-
-        StateRef  state = getState();
-        result = prime * result + ((state == null) ? 0 : state.hashCode());
-
-        return result;
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (!(obj instanceof SimpleTest)) {
-            return false;
-        }
-
-        if (super.equals( obj )) {
-            SimpleTest  other = (SimpleTest)obj;
-            SystemObjectRef  other_object = other.getObject();
-            SystemObjectRef   this_object =  this.getObject();
-            if (this_object == other_object
-                            ||  (this_object != null  &&  this_object.equals( other_object ))) {
-                StateRef  other_state = other.getState();
-                StateRef   this_state =  this.getState();
-                if (this_state == other_state
-                                ||  (this_state != null  &&  this_state.equals( other_state ))) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return super.toString()
-                        + ", object_ref=" + getObject()
-                        + ", state_ref=" + getState();
-    }
+//    @Override
+//    public int hashCode()
+//    {
+//        final int  prime = 37;
+//        int  result = super.hashCode();
+//
+//        SystemObjectRef  object = getObject();
+//        result = prime * result + ((object == null) ? 0 : object.hashCode());
+//
+//        StateRef  state = getState();
+//        result = prime * result + ((state == null) ? 0 : state.hashCode());
+//
+//        return result;
+//    }
+//
+//
+//
+//    @Override
+//    public boolean equals(
+//                    final Object obj
+//                    )
+//    {
+//        if (!(obj instanceof SimpleTest)) {
+//            return false;
+//        }
+//
+//        if (super.equals( obj )) {
+//            SimpleTest  other = (SimpleTest)obj;
+//            SystemObjectRef  other_object = other.getObject();
+//            SystemObjectRef   this_object =  this.getObject();
+//            if (this_object == other_object
+//                            ||  (this_object != null  &&  this_object.equals( other_object ))) {
+//                StateRef  other_state = other.getState();
+//                StateRef   this_state =  this.getState();
+//                if (this_state == other_state
+//                                ||  (this_state != null  &&  this_state.equals( other_state ))) {
+//                    return true;
+//                }
+//            }
+//        }
+//
+//        return false;
+//    }
+//
+//
+//
+//    @Override
+//    public String toString()
+//    {
+//        return super.toString()
+//                        + ", object_ref=" + getObject()
+//                        + ", state_ref=" + getState();
+//    }
 
 }
 // SimpleTest

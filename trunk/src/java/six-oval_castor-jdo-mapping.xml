@@ -79,7 +79,7 @@
 
 
     <!-- ******************************************************* -->
-    <!-- def:Definition                                          -->
+    <!-- Definition                                              -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.definition.Definition"
         identity="persistentID">
@@ -449,10 +449,18 @@
         <!-- The object and state reference fields are defined in the subclass mappings.
         -->
 
-        <field name="stateRef"
+        <field name="object.ovalID" type="string">
+            <sql name="object__id" type="char"/>
+        </field>
+
+        <field name="state"
             type="jp.go.aist.six.oval.model.definition.StateRef"
-            collection="collection">
-            <sql many-key="d_test__PID"/>
+            collection="collection"
+            >
+            <sql name="state_ref__PID"
+                many-table="oval_assoc__d_test__d_state_ref"
+                many-key="test__PID"
+                />
         </field>
     </class>
 
@@ -462,26 +470,14 @@
     <!-- StateRef                                                -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.definition.StateRef"
-        depends="jp.go.aist.six.oval.model.definition.Test"
-        identity="persistentID"
-        key-generator="IDENTITY">
+        identity="persistentID">
         <cache-type type="unlimited"/>
-        <map-to table="oval_d_test__state"/>
+        <map-to table="oval_d_state_ref"/>
 
         <field name="persistentID" type="string">
-            <sql name="PID" type="integer"/>
-        </field>
-
-        <field name="ovalID" type="string">
-            <sql name="state__id" type="char"/>
-        </field>
-
-        <field name="masterObject" 
-            type="jp.go.aist.six.oval.model.definition.Test">
-            <sql name="d_test__PID"/>
+            <sql name="PID" type="char"/>
         </field>
     </class>
-
 
 
 
@@ -1198,6 +1194,7 @@
             <sql name="PID" type="char"/>
         </field>
 
+<!--
         <field name="object.ovalID" type="string">
             <sql name="object__id" type="char"/>
         </field>
@@ -1205,6 +1202,7 @@
         <field name="state.ovalID" type="string">
             <sql name="state__id" type="char"/>
         </field>
+-->
     </class>
 
 
@@ -1282,15 +1280,14 @@
     <class name="jp.go.aist.six.oval.model.independent.TextFileContentTest"
         extends="jp.go.aist.six.oval.model.definition.Test"
         identity="persistentID">
-<!--
         <cache-type type="unlimited"/>
--->
         <map-to table="oval_d_test_textfilecontent"/>
 
         <field name="persistentID" type="string">
             <sql name="PID" type="char"/>
         </field>
 
+<!--
         <field name="object.ovalID" type="string">
             <sql name="object__id" type="char"/>
         </field>
@@ -1298,6 +1295,7 @@
         <field name="state.ovalID" type="string">
             <sql name="state__id" type="char"/>
         </field>
+-->
     </class>
 
 
@@ -1479,6 +1477,7 @@
             <sql name="PID" type="char"/>
         </field>
 
+<!--
         <field name="object.ovalID" type="string">
             <sql name="object__id" type="char"/>
         </field>
@@ -1486,6 +1485,7 @@
         <field name="state.ovalID" type="string">
             <sql name="state__id" type="char"/>
         </field>
+-->
     </class>
 
 
@@ -1503,6 +1503,7 @@
             <sql name="PID" type="char"/>
         </field>
 
+<!--
         <field name="object.ovalID" type="string">
             <sql name="object__id" type="char"/>
         </field>
@@ -1510,6 +1511,7 @@
         <field name="state.ovalID" type="string">
             <sql name="state__id" type="char"/>
         </field>
+-->
     </class>
 
 
@@ -1736,6 +1738,7 @@
             <sql name="PID" type="char"/>
         </field>
 
+<!--
         <field name="object.ovalID" type="string">
             <sql name="object__id" type="char"/>
         </field>
@@ -1743,6 +1746,7 @@
         <field name="state.ovalID" type="string">
             <sql name="state__id" type="char"/>
         </field>
+-->
     </class>
 
 
@@ -1822,11 +1826,11 @@
             <sql name="PID" type="char"/>
         </field>
 
+<!--
         <field name="object.ovalID" type="string">
             <sql name="object__id" type="char"/>
         </field>
 
-<!--
         <field name="state.ovalID" type="string">
             <sql name="state__id" type="char"/>
         </field>
@@ -1970,6 +1974,7 @@
             <sql name="PID" type="char"/>
         </field>
 
+<!-- 
         <field name="object.ovalID" type="string">
             <sql name="object__id" type="char"/>
         </field>
@@ -1977,6 +1982,7 @@
         <field name="state.ovalID" type="string">
             <sql name="state__id" type="char"/>
         </field>
+-->
     </class>
 
 
@@ -2072,6 +2078,7 @@
             <sql name="PID" type="char"/>
         </field>
 
+<!-- 
         <field name="object.ovalID" type="string">
             <sql name="object__id" type="char"/>
         </field>
@@ -2079,6 +2086,7 @@
         <field name="state.ovalID" type="string">
             <sql name="state__id" type="char"/>
         </field>
+-->
     </class>
 
 
@@ -2283,6 +2291,7 @@ No registry object has 'behaviors' child element in the definition XML.
             <sql name="PID" type="char"/>
         </field>
 
+<!--
         <field name="object.ovalID" type="string">
             <sql name="object__id" type="char"/>
         </field>
@@ -2290,6 +2299,7 @@ No registry object has 'behaviors' child element in the definition XML.
         <field name="state.ovalID" type="string">
             <sql name="state__id" type="char"/>
         </field>
+-->
     </class>
 
 

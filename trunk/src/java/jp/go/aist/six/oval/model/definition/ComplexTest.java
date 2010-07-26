@@ -21,8 +21,6 @@
 package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.common.Check;
-import java.util.ArrayList;
-import java.util.Collection;
 
 
 
@@ -35,11 +33,11 @@ public abstract class ComplexTest
     extends Test
 {
 
-    private SystemObjectRef  _objectRef;
-    //{oval-def:ObjectRefType, 1..1}
-
-    private Collection<StateRef>  _stateRef = new ArrayList<StateRef>();
-    // windows#file_test: {0..*}
+//    private SystemObjectRef  _objectRef;
+//    //{oval-def:ObjectRefType, 1..1}
+//
+//    private Collection<StateRef>  _stateRef = new ArrayList<StateRef>();
+//    // windows#file_test: {0..*}
 
 
 
@@ -77,36 +75,36 @@ public abstract class ComplexTest
 
 
 
-    public void setObject(
-                    final SystemObjectRef ref
-                    )
-    {
-        _objectRef = ref;
-    }
+//    public void setObject(
+//                    final SystemObjectRef ref
+//                    )
+//    {
+//        _objectRef = ref;
+//    }
+//
+//
+//    public SystemObjectRef getObject()
+//    {
+//        return _objectRef;
+//    }
 
 
-    public SystemObjectRef getObject()
-    {
-        return _objectRef;
-    }
 
-
-
-    public void setState(
-                    final Collection<? extends StateRef> ref
-                    )
-    {
-        _stateRef.clear();
-        if (ref != null) {
-            _stateRef.addAll( ref );
-        }
-    }
-
-
-    public Collection<StateRef> getState()
-    {
-        return _stateRef;
-    }
+//    public void setState(
+//                    final Collection<? extends StateRef> ref
+//                    )
+//    {
+//        _stateRef.clear();
+//        if (ref != null) {
+//            _stateRef.addAll( ref );
+//        }
+//    }
+//
+//
+//    public Collection<StateRef> getState()
+//    {
+//        return _stateRef;
+//    }
 
 
 
@@ -114,59 +112,59 @@ public abstract class ComplexTest
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public int hashCode()
-    {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        SystemObjectRef  object = getObject();
-        result = prime * result + ((object == null) ? 0 : object.hashCode());
-
-        Collection<StateRef>  state = getState();
-        result = prime * result + ((state == null) ? 0 : state.hashCode());
-
-        return result;
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (!(obj instanceof ComplexTest)) {
-            return false;
-        }
-
-        if (super.equals( obj )) {
-            ComplexTest  other = (ComplexTest)obj;
-            SystemObjectRef  other_object = other.getObject();
-            SystemObjectRef   this_object =  this.getObject();
-            if (this_object == other_object
-                            ||  (this_object != null  &&  this_object.equals( other_object ))) {
-                Collection<StateRef>  other_state = other.getState();
-                Collection<StateRef>   this_state =  this.getState();
-                if (this_state == other_state
-                                ||  (this_state != null  &&  this_state.equals( other_state ))) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return super.toString()
-                        + ", object_ref=" + getObject()
-                        + ", state_ref=" + getState();
-    }
+//    @Override
+//    public int hashCode()
+//    {
+//        final int  prime = 37;
+//        int  result = super.hashCode();
+//
+//        SystemObjectRef  object = getObject();
+//        result = prime * result + ((object == null) ? 0 : object.hashCode());
+//
+//        Collection<StateRef>  state = getState();
+//        result = prime * result + ((state == null) ? 0 : state.hashCode());
+//
+//        return result;
+//    }
+//
+//
+//
+//    @Override
+//    public boolean equals(
+//                    final Object obj
+//                    )
+//    {
+//        if (!(obj instanceof ComplexTest)) {
+//            return false;
+//        }
+//
+//        if (super.equals( obj )) {
+//            ComplexTest  other = (ComplexTest)obj;
+//            SystemObjectRef  other_object = other.getObject();
+//            SystemObjectRef   this_object =  this.getObject();
+//            if (this_object == other_object
+//                            ||  (this_object != null  &&  this_object.equals( other_object ))) {
+//                Collection<StateRef>  other_state = other.getState();
+//                Collection<StateRef>   this_state =  this.getState();
+//                if (this_state == other_state
+//                                ||  (this_state != null  &&  this_state.equals( other_state ))) {
+//                    return true;
+//                }
+//            }
+//        }
+//
+//        return false;
+//    }
+//
+//
+//
+//    @Override
+//    public String toString()
+//    {
+//        return super.toString()
+//                        + ", object_ref=" + getObject()
+//                        + ", state_ref=" + getState();
+//    }
 
 }
 // ComplexTest

@@ -22,7 +22,10 @@ package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Check;
+import jp.go.aist.six.oval.model.definition.StateRef;
+import jp.go.aist.six.oval.model.definition.SystemObjectRef;
 import jp.go.aist.six.oval.model.definition.Test;
+import java.util.Collection;
 
 
 
@@ -78,6 +81,30 @@ public class UnknownTest
     public ObjectType getObjectType()
     {
         return ObjectType.INDEPENDENT_UNKNOWN;
+    }
+
+
+    @Override
+    public void setObject(
+                    final SystemObjectRef ref
+                    )
+    {
+    }
+
+
+    @Override
+    public SystemObjectRef getObject()
+    {
+        return null;
+    }
+
+
+
+    @Override
+    public void setState(
+                    final Collection<? extends StateRef> ref
+                    )
+    {
     }
 
 

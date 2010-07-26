@@ -20,9 +20,10 @@
 
 package jp.go.aist.six.oval.core.model.definition;
 
-import jp.go.aist.six.oval.model.definition.Definition;
+import jp.go.aist.six.oval.model.definition.StateRef;
 import jp.go.aist.six.oval.model.definition.Test;
 import jp.go.aist.six.util.castor.StandardAssociation;
+
 
 
 /**
@@ -30,14 +31,14 @@ import jp.go.aist.six.util.castor.StandardAssociation;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionTestAssociation
-    extends StandardAssociation<String, String, Definition, Test>
+public class TestStateAssociation
+    extends StandardAssociation<String, String, Test, StateRef>
 {
 
     /**
      * Constructor.
      */
-    public DefinitionTestAssociation()
+    public TestStateAssociation()
     {
     }
 
@@ -45,26 +46,13 @@ public class DefinitionTestAssociation
     /**
      * Constructor.
      */
-    public DefinitionTestAssociation(
-                    final Definition antecendent,
-                    final Test dependent
+    public TestStateAssociation(
+                    final Test antecendent,
+                    final StateRef dependent
                     )
     {
         super( antecendent, dependent );
     }
 
-
-
-//    /**
-//     * Constructor.
-//     */
-//    public
-//    DefinitionTestAssociation(
-//                    final String antecendentID,
-//                    final String dependentID )
-//    {
-//        super( antecendentID, dependentID );
-//    }
-
 }
-// DefinitionTestAssociation
+// TestStateAssociation

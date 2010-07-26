@@ -53,6 +53,7 @@ DELETE FROM oval_assoc__d_definition__d_platform;
 DELETE FROM oval_assoc__d_definition__d_product;
 DELETE FROM oval_assoc__d_definition__d_reference;
 DELETE FROM oval_assoc__d_definitions__d_definition;
+DELETE FROM oval_assoc__d_test__d_state_ref;
 
 
 DELETE FROM oval_d_object_family;
@@ -82,7 +83,6 @@ DELETE FROM oval_d_test_unknown;
 DELETE FROM oval_d_test_dpkginfo;
 DELETE FROM oval_d_test_rpminfo;
 DELETE FROM oval_d_test_uname;
-DELETE FROM oval_d_test_file__state;
 DELETE FROM oval_d_test_file;
 DELETE FROM oval_d_test_metabase;
 DELETE FROM oval_d_test_registry;
@@ -92,6 +92,7 @@ DELETE FROM oval_d_test;
 DELETE FROM oval_d_variable_local;
 DELETE FROM oval_d_variable;
 
+DELETE FROM oval_d_state_ref;
 DELETE FROM oval_d_cve;
 DELETE FROM oval_d_platform;
 DELETE FROM oval_d_product;

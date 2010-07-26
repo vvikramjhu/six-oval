@@ -35,7 +35,7 @@ public abstract class OvalEntityReference
     extends AbstractPersistable
 {
 
-    private String  _ovalID;
+//    private String  _ovalID;
 
 
     /**
@@ -58,17 +58,21 @@ public abstract class OvalEntityReference
 
 
 
+    /**
+     */
     public void setOvalID(
                     final String id
                     )
     {
-        _ovalID = id;
+        setPersistentID( id );
+//      _ovalID = id;
     }
 
 
     public String getOvalID()
     {
-        return _ovalID;
+        return getPersistentID();
+//      return _ovalID;
     }
 
 

@@ -345,6 +345,9 @@ CREATE TABLE IF NOT EXISTS oval_d_test
     tst_existence       VARCHAR(20)                 DEFAULT 'at_least_one_exists',
 
     state_operator      VARCHAR(4)                  DEFAULT 'AND',
+    
+    object__id          VARCHAR(64),
+
     object_type         VARCHAR(32)     NOT NULL,
 
     /* (FK) */
@@ -944,8 +947,6 @@ CREATE TABLE IF NOT EXISTS oval_d_test_family
                         /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
 
     /* (FK) */
-    object__id          VARCHAR(64)     NOT NULL,
-    state__id           VARCHAR(64),
     
     /* (PK) */
     PRIMARY KEY (PID)
@@ -1029,8 +1030,6 @@ CREATE TABLE IF NOT EXISTS oval_d_test_textfilecontent
                         /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
 
     /* (FK) */
-    object__id          VARCHAR(64)     NOT NULL,
-    state__id           VARCHAR(64),
     
     /* (PK) */
     PRIMARY KEY (PID)
@@ -1173,9 +1172,6 @@ CREATE TABLE IF NOT EXISTS oval_d_test_dpkginfo
     PID                 VARCHAR(64)     NOT NULL,
                         /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
 
-    object__id          VARCHAR(64)     NOT NULL,
-    state__id           VARCHAR(64),
-    
     /* (FK) */
 
     /* (PK) */
@@ -1196,9 +1192,6 @@ CREATE TABLE IF NOT EXISTS oval_d_test_rpminfo
     PID                 VARCHAR(64)     NOT NULL,
                         /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
 
-    object__id          VARCHAR(64)     NOT NULL,
-    state__id           VARCHAR(64),
-    
     /* (FK) */
 
     /* (PK) */
@@ -1393,9 +1386,6 @@ CREATE TABLE IF NOT EXISTS oval_d_test_uname
     PID                 VARCHAR(64)     NOT NULL,
                         /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
 
-    object__id          VARCHAR(64)     NOT NULL,
-    state__id           VARCHAR(64),
-    
     /* (FK) */
 
     /* (PK) */
@@ -1466,8 +1456,8 @@ CREATE TABLE IF NOT EXISTS oval_d_test_file
     PID                 VARCHAR(64)     NOT NULL,
                         /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
 
-    object__id          VARCHAR(64)     NOT NULL,
-    state__id           VARCHAR(64),
+/*    object__id          VARCHAR(64)     NOT NULL, */
+/*    state__id           VARCHAR(64), */
     
     /* (FK) */
 
@@ -1484,14 +1474,11 @@ CHARACTER SET utf8;
 /* ============================================================== */
 /* StateRef                                                       */
 /* ============================================================== */
-CREATE TABLE IF NOT EXISTS oval_d_test__state
+CREATE TABLE IF NOT EXISTS oval_d_state_ref
 (
-    PID                 INT             NOT NULL    AUTO_INCREMENT,
-
-    state__id           VARCHAR(64),
+    PID                 VARCHAR(64)     NOT NULL,
     
     /* (FK) */
-    d_test__PID         VARCHAR(64)     NOT NULL,
 
     /* (PK) */
     PRIMARY KEY (PID)
@@ -1501,6 +1488,26 @@ CREATE TABLE IF NOT EXISTS oval_d_test__state
 ENGINE=InnoDB
 CHARACTER SET utf8;
 
+
+
+/* ============================================================== */
+/* Test - StateRef association                                    */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_assoc__d_test__d_state_ref
+(
+    PID                 INT             NOT NULL    AUTO_INCREMENT,
+
+    test__PID           VARCHAR(64)     NOT NULL,
+    state_ref__PID      VARCHAR(64)     NOT NULL,
+
+    /* (PK) */
+    PRIMARY KEY (PID),
+    
+    /* INDEX */
+    UNIQUE (test__PID, state_ref__PID)
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
 
 
 
@@ -1604,9 +1611,6 @@ CREATE TABLE IF NOT EXISTS oval_d_test_metabase
     PID                 VARCHAR(64)     NOT NULL,
                         /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
 
-    object__id          VARCHAR(64)     NOT NULL,
-    state__id           VARCHAR(64),
-    
     /* (FK) */
 
     /* (PK) */
@@ -1676,9 +1680,6 @@ CREATE TABLE IF NOT EXISTS oval_d_test_registry
     PID                 VARCHAR(64)     NOT NULL,
                         /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
 
-    object__id          VARCHAR(64)     NOT NULL,
-    state__id           VARCHAR(64),
-    
     /* (FK) */
 
     /* (PK) */
@@ -1787,9 +1788,6 @@ CREATE TABLE IF NOT EXISTS oval_d_test_wmi
     PID                 VARCHAR(64)     NOT NULL,
                         /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
 
-    object__id          VARCHAR(64)     NOT NULL,
-    state__id           VARCHAR(64),
-    
     /* (FK) */
 
     /* (PK) */

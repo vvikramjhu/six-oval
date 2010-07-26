@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.definition.StateRef;
 import jp.go.aist.six.oval.model.definition.Test;
-import jp.go.aist.six.oval.model.windows.FileTest;
+import java.util.Collection;
 
 
 
@@ -50,11 +50,13 @@ public class TestDao
                     final Test test
                     )
     {
-        if (test instanceof FileTest) {
-            for (StateRef  sref : test.getStateRef()) {
-                sref.setMasterObject( test );
-            }
+        Collection<StateRef>  states = test.getState();
+        if (states != null  &&  states.size() > 0) {
+            Collection<StateRef>  p_states =
+                getForwardingDao( StateRef.class ).syncAll( states );
+            test.setState( p_states );
         }
+
 
         return super.create( test );
     }
