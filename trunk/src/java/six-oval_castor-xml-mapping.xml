@@ -518,22 +518,16 @@
             type="jp.go.aist.six.oval.model.common.Operator">
             <bind-xml name="state_operator" node="attribute"/>
         </field>
+
+        <!-- Since the attribute name of the elements are different,
+        the property 'ovalID' should be mapped in the concrete class. 
+        e.g.  'object_ref' attribute in xxx_test/object reference,
+              'state_ref' attribute in xxx_test/state reference.
+        -->
     </class>
 
-
-
-    <!-- Since the attribute name of the elements are different,
-    the property 'ovalID' should be mapped in the concrete class. 
-    e.g.  'object_ref' attribute in xxx_test/object reference,
-          'state_ref' attribute in xxx_test/state reference.
-    -->
     <!--
     <class name="jp.go.aist.six.oval.model.definition.SimpleTest"
-        extends="jp.go.aist.six.oval.model.definition.Test"
-        verify-constructable="false">
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.definition.ComplexTest"
         extends="jp.go.aist.six.oval.model.definition.Test"
         verify-constructable="false">
     </class>
@@ -573,13 +567,6 @@
     </class>
 
 
-<!--
-    <class name="jp.go.aist.six.oval.core.model.definition.SystemObjectReference"
-        extends="jp.go.aist.six.oval.model.definition.SystemObjectReference">
-    </class>
--->
-
-
 
     <!-- ======================================================= -->
     <!-- StateRef                                                -->
@@ -595,13 +582,6 @@
             <bind-xml name="state_ref" node="attribute"/>
         </field>
     </class>
-
-
-<!--
-    <class name="jp.go.aist.six.oval.core.model.definition.StateReferenceImpl"
-        extends="jp.go.aist.six.oval.model.definition.StateReference">
-    </class>
--->
 
 
 
@@ -2375,24 +2355,6 @@
             <bind-xml name="state" node="element"/>
         </field>
     </class>
-<!--
-    <class name="jp.go.aist.six.oval.model.windows.FileTest"
-        extends="jp.go.aist.six.oval.model.definition.SimpleTest">
-        <map-to xml="file_test"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
-
-        <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjectRef">
-            <bind-xml name="object" node="element"/>
-        </field>
-        
-        <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateRef">
-            <bind-xml name="state" node="element"/>
-        </field>
-    </class>
--->
-
 
 
 
