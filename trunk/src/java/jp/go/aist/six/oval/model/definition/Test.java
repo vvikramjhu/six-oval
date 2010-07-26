@@ -25,6 +25,8 @@ import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Operator;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 
@@ -47,6 +49,28 @@ public abstract class Test
     public static final Operator  DEFAULT_STATE_OPERATOR = Operator.AND;
     private Operator  _stateOperator;
     //{optional, default="AND"}
+
+
+    private Collection<StateRef>  _stateRef = new ArrayList<StateRef>();
+    // windows#file_test: {0..*}
+
+    public void setStateRef(
+                    final Collection<? extends StateRef> ref
+                    )
+    {
+        _stateRef.clear();
+        if (ref != null) {
+            _stateRef.addAll( ref );
+        }
+    }
+
+
+    public Collection<StateRef> getStateRef()
+    {
+        return _stateRef;
+    }
+
+
 
 
 

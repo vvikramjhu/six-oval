@@ -20,9 +20,9 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.definition.ComplexTest;
 import jp.go.aist.six.oval.model.definition.StateRef;
 import jp.go.aist.six.oval.model.definition.Test;
+import jp.go.aist.six.oval.model.windows.FileTest;
 
 
 
@@ -50,9 +50,8 @@ public class TestDao
                     final Test test
                     )
     {
-        if (test instanceof ComplexTest) {
-            ComplexTest  ctest = (ComplexTest)test;
-            for (StateRef  sref : ctest.getState()) {
+        if (test instanceof FileTest) {
+            for (StateRef  sref : test.getStateRef()) {
                 sref.setMasterObject( test );
             }
         }

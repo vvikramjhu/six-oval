@@ -436,6 +436,11 @@
             <sql name="tst_existence" type="char"/>
         </field>
 
+        <field name="stateOperator" 
+            type="jp.go.aist.six.oval.model.common.Operator">
+            <sql name="state_operator" type="char"/>
+        </field>
+
         <field name="objectType" 
             type="jp.go.aist.six.oval.model.ObjectType">
             <sql name="object_type" type="char"/>
@@ -444,7 +449,39 @@
         <!-- The object and state reference fields are defined in the subclass mappings.
         -->
 
+        <field name="stateRef"
+            type="jp.go.aist.six.oval.model.definition.StateRef"
+            collection="collection">
+            <sql many-key="d_test__PID"/>
+        </field>
     </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- StateRef                                                -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.definition.StateRef"
+        depends="jp.go.aist.six.oval.model.definition.Test"
+        identity="persistentID"
+        key-generator="IDENTITY">
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_test__state"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="ovalID" type="string">
+            <sql name="state__id" type="char"/>
+        </field>
+
+        <field name="masterObject" 
+            type="jp.go.aist.six.oval.model.definition.Test">
+            <sql name="d_test__PID"/>
+        </field>
+    </class>
+
 
 
 
@@ -1794,37 +1831,6 @@
             <sql name="state__id" type="char"/>
         </field>
 -->
-        <field name="state"
-            type="jp.go.aist.six.oval.model.definition.StateRef"
-            collection="collection">
-            <sql many-key="d_test__PID"/>
-        </field>
-    </class>
-
-
-
-    <!-- ******************************************************* -->
-    <!-- StateRef                                                -->
-    <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.definition.StateRef"
-        depends="jp.go.aist.six.oval.model.windows.FileTest"
-        identity="persistentID"
-        key-generator="IDENTITY">
-        <cache-type type="unlimited"/>
-        <map-to table="oval_d_test__state"/>
-
-        <field name="persistentID" type="string">
-            <sql name="PID" type="integer"/>
-        </field>
-
-        <field name="ovalID" type="string">
-            <sql name="state__id" type="char"/>
-        </field>
-
-        <field name="masterObject" 
-            type="jp.go.aist.six.oval.model.definition.Test">
-            <sql name="d_test__PID"/>
-        </field>
     </class>
 
 

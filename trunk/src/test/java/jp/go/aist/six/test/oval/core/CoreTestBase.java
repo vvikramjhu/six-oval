@@ -175,6 +175,7 @@ public abstract class CoreTestBase
 
         Reporter.log( "getting object...", true );
         T  p2 = _getStore().get( type, pid );
+//        T  p2 = _getStore().get( type, pid );
         Reporter.log( "...get done", true );
         Reporter.log( "  @ get: object=" + p2, true );
 //        Reporter.log( "  @ get: hash=" + p.hashCode(), true );

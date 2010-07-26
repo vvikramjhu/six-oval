@@ -498,7 +498,7 @@
 
 
     <!-- ======================================================= -->
-    <!-- Test - test                                             -->
+    <!-- Test                                                    -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definition.Test"
         extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
@@ -514,6 +514,10 @@
             <bind-xml name="check_existence" node="attribute"/>
         </field>
 
+        <field name="stateOperator" 
+            type="jp.go.aist.six.oval.model.common.Operator">
+            <bind-xml name="state_operator" node="attribute"/>
+        </field>
     </class>
 
 
@@ -2359,7 +2363,7 @@
             <bind-xml name="object" node="element"/>
         </field>
         
-        <field name="state" 
+        <field name="stateRef" 
             type="jp.go.aist.six.oval.model.definition.StateRef"
             collection="collection">
             <bind-xml name="state" node="element"/>
