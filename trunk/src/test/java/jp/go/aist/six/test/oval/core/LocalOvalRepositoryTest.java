@@ -2,6 +2,7 @@ package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.core.service.LocalOvalRepository;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
+import jp.go.aist.six.oval.model.result.OvalResults;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -21,6 +22,8 @@ public class LocalOvalRepositoryTest
 
 
 
+
+
     /**
      */
     @BeforeClass( alwaysRun=true )
@@ -32,6 +35,52 @@ public class LocalOvalRepositoryTest
     }
 
 
+
+    //==============================================================
+    //  results
+    //==============================================================
+
+    @DataProvider( name="oval_results" )
+    private Object[][] _ovalResultsProvider()
+    {
+        return new Object[][] {
+                        // windows vulnerability
+                        {
+                            "test/data/result/sample_oval-results_inventory_windows-xp.xml",
+                        }
+//                        ,
+
+        };
+
+    }
+
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={"oval.service.repository", "oval_results"},
+                    dataProvider="oval_results",
+                    alwaysRun=true
+                    )
+    public void testCreateOvalResults(
+                    final String filepath
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL - OvalRepository //", true );
+
+        OvalResults  ovalResults = _unmarshalFile( filepath, OvalResults.class );
+
+        Reporter.log( "creating OvalResults...", true );
+        String  pid = _repository.createOvalResults( ovalResults );
+        Reporter.log( "...find done: PID=" + pid, true );
+    }
+
+
+
+    //==============================================================
+    //  definitions
+    //==============================================================
 
     @DataProvider( name="oval_definitions" )
     private Object[][] _ovalDefinitionsProvider()

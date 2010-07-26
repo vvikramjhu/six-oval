@@ -650,7 +650,7 @@
 
 
     <!-- ******************************************************* -->
-    <!-- LOcalVariable                                           -->
+    <!-- LocalVariable                                           -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.definition.LocalVariable"
         extends="jp.go.aist.six.oval.model.definition.Variable"
