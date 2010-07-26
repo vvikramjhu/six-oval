@@ -398,7 +398,7 @@ public class DebianOvalBuilder
                 final String  testID = _createTestID( dsaID, seq );
                 DpkgInfoTest  ovalTest = new DpkgInfoTest( testID, defVersion );
                 ovalTest.setObject( new SystemObjectRef( objectID ) );
-                ovalTest.setState( new StateRef( stateID ) );
+                ovalTest.addState( new StateRef( stateID ) );
                 ovalTest.setCheck( Check.AT_LEAST_ONE );
                 ovalTest.setComment( pkgName + " is earlier than " + pkgEvr );
                 if (_LOG.isDebugEnabled()) {

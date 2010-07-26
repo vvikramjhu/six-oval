@@ -5,7 +5,6 @@ import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.model.definition.DefinitionClass;
-import jp.go.aist.six.oval.model.definition.SimpleTest;
 import jp.go.aist.six.oval.model.definition.State;
 import jp.go.aist.six.oval.model.definition.StateRef;
 import jp.go.aist.six.oval.model.definition.SystemObject;
@@ -428,13 +427,11 @@ extends OvalServiceTestBase
         Assert.assertEquals( existence, test.getCheckExistence() );
         Assert.assertEquals( check, test.getCheck() );
         Assert.assertEquals( type, test.getObjectType() );
-        if (test instanceof SimpleTest) {
-            SimpleTest  simpleTest = SimpleTest.class.cast( test );
-            Assert.assertEquals( objectID, simpleTest.getObject().getOvalID() );
-            StateRef  stateRef = simpleTest.getState();
-            if (stateRef != null) {
-                Assert.assertEquals( stateID, stateRef.getOvalID() );
-            }
+        Assert.assertEquals( objectID, test.getObject().getOvalID() );
+        Collection<StateRef>  stateRef = test.getState();
+        if (stateRef != null  &&  stateRef.size() > 0) {
+            StateRef  ref = stateRef.iterator().next();
+            Assert.assertEquals( stateID, ref.getOvalID() );
         }
 
         Reporter.log( "@@@ syncing object...", true );

@@ -60,41 +60,6 @@ public abstract class Test
 
 
 
-    public void setObject(
-                    final SystemObjectRef ref
-                    )
-    {
-        _objectRef = ref;
-    }
-
-
-    public SystemObjectRef getObject()
-    {
-        return _objectRef;
-    }
-
-
-
-    public void setState(
-                    final Collection<? extends StateRef> ref
-                    )
-    {
-        _stateRef.clear();
-        if (ref != null  &&  ref != _stateRef) {
-            _stateRef.addAll( ref );
-        }
-    }
-
-
-    public Collection<StateRef> getState()
-    {
-        return _stateRef;
-    }
-
-
-
-
-
     /**
      * Constructor.
      */
@@ -175,6 +140,51 @@ public abstract class Test
     public Operator getStateOperator()
     {
         return (_stateOperator == null ? DEFAULT_STATE_OPERATOR : _stateOperator);
+    }
+
+
+
+    public void setObject(
+                    final SystemObjectRef ref
+                    )
+    {
+        _objectRef = ref;
+    }
+
+
+    public SystemObjectRef getObject()
+    {
+        return _objectRef;
+    }
+
+
+
+    public void setState(
+                    final Collection<? extends StateRef> ref
+                    )
+    {
+        _stateRef.clear();
+        if (ref != null  &&  ref != _stateRef) {
+            _stateRef.addAll( ref );
+        }
+    }
+
+
+    public boolean addState(
+                    final StateRef ref
+                    )
+    {
+        if (_stateRef.contains( ref )) {
+            return false;
+        } else {
+            return _stateRef.add( ref );
+        }
+    }
+
+
+    public Collection<StateRef> getState()
+    {
+        return _stateRef;
     }
 
 

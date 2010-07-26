@@ -33,10 +33,10 @@ public abstract class SimpleTest
     extends Test
 {
 
-    private SystemObjectRef  _objectRef;
-    //{oval-def:ObjectRefType, 1..1}
-
-    private StateRef  _stateRef;
+//    private SystemObjectRef  _objectRef;
+//    //{oval-def:ObjectRefType, 1..1}
+//
+//    private StateRef  _stateRef;
     //{oval-def:StateRefType, 0..*}
     // independent#family_test: {0..*}
     // independent#textfilecontent_test: {0..*}
@@ -114,33 +114,33 @@ public abstract class SimpleTest
 
 
 
-    public void setObject(
-                    final SystemObjectRef ref
-                    )
-    {
-        _objectRef = ref;
-    }
-
-
-    public SystemObjectRef getObject()
-    {
-        return _objectRef;
-    }
-
-
-
-    public void setSingleState(
-                    final StateRef ref
-                    )
-    {
-        _stateRef = ref;
-    }
-
-
-    public StateRef getSingleState()
-    {
-        return _stateRef;
-    }
+//    public void setObject(
+//                    final SystemObjectRef ref
+//                    )
+//    {
+//        _objectRef = ref;
+//    }
+//
+//
+//    public SystemObjectRef getObject()
+//    {
+//        return _objectRef;
+//    }
+//
+//
+//
+//    public void setSingleState(
+//                    final StateRef ref
+//                    )
+//    {
+//        _stateRef = ref;
+//    }
+//
+//
+//    public StateRef getSingleState()
+//    {
+//        return _stateRef;
+//    }
 
 
 

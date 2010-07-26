@@ -4,7 +4,6 @@ import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.model.definition.Definition;
 import jp.go.aist.six.oval.model.definition.DefinitionClass;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
-import jp.go.aist.six.oval.model.definition.SimpleTest;
 import jp.go.aist.six.oval.model.definition.State;
 import jp.go.aist.six.oval.model.definition.StateRef;
 import jp.go.aist.six.oval.model.definition.States;
@@ -23,6 +22,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.Collection;
 
 
 
@@ -296,15 +296,14 @@ public class OvalXmlFragmentTest
 
         Assert.assertNotNull( obj );
         Assert.assertTrue( obj instanceof Test );
-        if (obj instanceof SimpleTest) {
-            SimpleTest  pkgobj = (SimpleTest)obj;
-            Assert.assertEquals( pkgobj.getObject().getOvalID(), objectID );
-            StateRef  stateRef = pkgobj.getState();
-            if (stateRef == null) {
-                Assert.assertEquals( null, stateID );
-            } else {
-                Assert.assertEquals( stateRef.getOvalID(), stateID );
-            }
+        Test  test = (Test)obj;
+        Assert.assertEquals( test.getObject().getOvalID(), objectID );
+        Collection<StateRef>  stateRef = test.getState();
+        if (stateRef == null  ||  stateRef.size() == 0) {
+            Assert.assertEquals( null, stateID );
+        } else {
+            StateRef  ref = stateRef.iterator().next();
+            Assert.assertEquals( ref.getOvalID(), stateID );
         }
 
         // marshalling
