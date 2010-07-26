@@ -22,6 +22,59 @@ public class StoreDefTestTest
     //  test
     //==============================================================
 
+    @DataProvider( name="oval-def-complex-test" )
+    public Object[][] ovalDefComplexTestProvider()
+    {
+        return new Object[][] {
+                        // windows : File test
+                        {
+                            ObjectType.WINDOWS_FILE,
+                            "test/data/definition/sample_oval-test-file_complex.xml",
+                            "oval:org.mitre.oval:tst:10629",
+                            1,
+                            "Opera.exe version 9.x to 10.0.x",
+                            Existence.AT_LEAST_ONE_EXISTS,
+                            Check.ALL,
+                            "oval:org.mitre.oval:obj:6638",
+                            new String[] {
+                                            "oval:org.mitre.oval:ste:2190"
+                            }
+                        }
+        };
+    }
+
+
+    @org.testng.annotations.Test(
+                    groups={"oval.service", "oval-def.complex-test"},
+                    dataProvider="oval-def-complex-test",
+                    alwaysRun=true
+                    )
+    public void testDefComplexTest(
+                    final ObjectType type,
+                    final String filepath,
+                    final String id,
+                    final int version,
+                    final String comment,
+                    final Existence existence,
+                    final Check check,
+                    final String objectID,
+                    final String[] stateID
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL Store //", true );
+        Reporter.log( "  * object type: " + type, true );
+
+        Test  obj = _unmarshalFile( filepath, Test.class );
+
+        Assert.assertEquals( obj.getOvalID(), id );
+        Assert.assertEquals( obj.getOvalVersion(), version );
+        Assert.assertEquals( obj.getObjectType(), type );
+
+        _syncOvalEntity( Test.class, obj );
+    }
+
+
     @DataProvider( name="oval-def-test" )
     public Object[][] ovalDefTestProvider()
     {

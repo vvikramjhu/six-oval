@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Check;
-import jp.go.aist.six.oval.model.definition.SimpleTest;
+import jp.go.aist.six.oval.model.definition.ComplexTest;
 
 
 
@@ -32,7 +32,8 @@ import jp.go.aist.six.oval.model.definition.SimpleTest;
  * @version $Id$
  */
 public class FileTest
-    extends SimpleTest
+    extends ComplexTest
+//    extends SimpleTest
 {
 
     /**

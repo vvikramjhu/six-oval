@@ -21,6 +21,8 @@
 package jp.go.aist.six.oval.model.definition;
 
 import jp.go.aist.six.oval.model.common.Check;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 
@@ -29,31 +31,22 @@ import jp.go.aist.six.oval.model.common.Check;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class SimpleTest
+public abstract class ComplexTest
     extends Test
 {
 
     private SystemObjectRef  _objectRef;
     //{oval-def:ObjectRefType, 1..1}
 
-    private StateRef  _stateRef;
-    //{oval-def:StateRefType, 0..*}
-    // independent#family_test: {0..*}
-    // independent#textfilecontent_test: {0..*}
-    // linux#dpkginfo_test: {0..*}
-    // linux#rpminfo_test: {0..*}
-    // unix#uname_test: {0..*}
+    private Collection<StateRef>  _stateRef = new ArrayList<StateRef>();
     // windows#file_test: {0..*}
-    // windows#metabase_test: {0..*}
-    // windows#registry_test: {0..*}
-    // windows#wmi_test: {0..*}
 
 
 
     /**
      * Constructor.
      */
-    public SimpleTest()
+    public ComplexTest()
     {
     }
 
@@ -61,7 +54,7 @@ public abstract class SimpleTest
     /**
      * Constructor.
      */
-    public SimpleTest(
+    public ComplexTest(
                     final String id,
                     final int version
                     )
@@ -73,7 +66,7 @@ public abstract class SimpleTest
     /**
      * Constructor.
      */
-    public SimpleTest(
+    public ComplexTest(
                     final String id,
                     final int version,
                     final Check check
@@ -81,36 +74,6 @@ public abstract class SimpleTest
     {
         super( id, version, check );
     }
-
-
-
-//    public void setObjectID(
-//                    final String ovalID
-//                    )
-//    {
-//        _objectID = ovalID;
-//    }
-//
-//
-//    public String getObjectID()
-//    {
-//        return _objectID;
-//    }
-//
-//
-//
-//    public void setStateID(
-//                    final String ovalID
-//                    )
-//    {
-//        _stateID = ovalID;
-//    }
-//
-//
-//    public String getStateID()
-//    {
-//        return _stateID;
-//    }
 
 
 
@@ -130,14 +93,17 @@ public abstract class SimpleTest
 
 
     public void setState(
-                    final StateRef ref
+                    final Collection<? extends StateRef> ref
                     )
     {
-        _stateRef = ref;
+        _stateRef.clear();
+        if (ref != null) {
+            _stateRef.addAll( ref );
+        }
     }
 
 
-    public StateRef getState()
+    public Collection<StateRef> getState()
     {
         return _stateRef;
     }
@@ -157,7 +123,7 @@ public abstract class SimpleTest
         SystemObjectRef  object = getObject();
         result = prime * result + ((object == null) ? 0 : object.hashCode());
 
-        StateRef  state = getState();
+        Collection<StateRef>  state = getState();
         result = prime * result + ((state == null) ? 0 : state.hashCode());
 
         return result;
@@ -170,18 +136,18 @@ public abstract class SimpleTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof SimpleTest)) {
+        if (!(obj instanceof ComplexTest)) {
             return false;
         }
 
         if (super.equals( obj )) {
-            SimpleTest  other = (SimpleTest)obj;
+            ComplexTest  other = (ComplexTest)obj;
             SystemObjectRef  other_object = other.getObject();
             SystemObjectRef   this_object =  this.getObject();
             if (this_object == other_object
                             ||  (this_object != null  &&  this_object.equals( other_object ))) {
-                StateRef  other_state = other.getState();
-                StateRef   this_state =  this.getState();
+                Collection<StateRef>  other_state = other.getState();
+                Collection<StateRef>   this_state =  this.getState();
                 if (this_state == other_state
                                 ||  (this_state != null  &&  this_state.equals( other_state ))) {
                     return true;
@@ -203,4 +169,4 @@ public abstract class SimpleTest
     }
 
 }
-// SimpleTest
+// ComplexTest

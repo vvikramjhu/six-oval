@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.core.store;
 
+import jp.go.aist.six.oval.model.definition.ComplexTest;
+import jp.go.aist.six.oval.model.definition.StateRef;
 import jp.go.aist.six.oval.model.definition.Test;
 
 
@@ -35,6 +37,27 @@ public class TestDao
     public TestDao()
     {
         super( Test.class );
+    }
+
+
+
+    //**************************************************************
+    //  Dao, CastorDao
+    //**************************************************************
+
+    @Override
+    public String create(
+                    final Test test
+                    )
+    {
+        if (test instanceof ComplexTest) {
+            ComplexTest  ctest = (ComplexTest)test;
+            for (StateRef  sref : ctest.getState()) {
+                sref.setMasterObject( test );
+            }
+        }
+
+        return super.create( test );
     }
 
 }

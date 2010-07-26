@@ -1481,6 +1481,29 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
+/* StateRef                                                       */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_d_test__state
+(
+    PID                 INT             NOT NULL    AUTO_INCREMENT,
+
+    state__id           VARCHAR(64),
+    
+    /* (FK) */
+    d_test__PID         VARCHAR(64)     NOT NULL,
+
+    /* (PK) */
+    PRIMARY KEY (PID)
+
+    /* INDEX */
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+
+/* ============================================================== */
 /* FileObject                                                     */
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_object_file

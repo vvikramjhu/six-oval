@@ -26,7 +26,16 @@ import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.definition.Criteria;
 import jp.go.aist.six.oval.model.definition.Definition;
+import jp.go.aist.six.oval.model.definition.Definitions;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
+import jp.go.aist.six.oval.model.definition.State;
+import jp.go.aist.six.oval.model.definition.States;
+import jp.go.aist.six.oval.model.definition.SystemObject;
+import jp.go.aist.six.oval.model.definition.SystemObjects;
+import jp.go.aist.six.oval.model.definition.Test;
+import jp.go.aist.six.oval.model.definition.Tests;
+import jp.go.aist.six.oval.model.definition.Variable;
+import jp.go.aist.six.oval.model.definition.Variables;
 import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.service.OvalServiceException;
 import jp.go.aist.six.util.search.Binding;
@@ -88,6 +97,83 @@ public class LocalOvalRepository
 
 
 
+    /**
+     */
+    private void _createRelated(
+                    final OvalDefinitions defs
+                    )
+    {
+//        if (defs.getPersistentID() == null) {
+//            String  uuid = UUID.randomUUID().toString();
+//            defs.setPersistentID( uuid );
+//        }
+
+        Tests  test_list = defs.getTests();
+        if (test_list != null) {
+            Tests  p_tests = new Tests();
+            for (Test  test : test_list) {
+                Test  p_test = _store.sync( Test.class, test );
+                p_tests.add( p_test );
+            }
+
+            defs.setTests( p_tests );
+        }
+
+
+        SystemObjects  objects = defs.getObjects();
+        if (objects != null) {
+            SystemObjects  p_objects = new SystemObjects();
+            for (SystemObject  object : objects) {
+                if (_LOG.isInfoEnabled()) {
+                    _LOG.info( "creating Definition: " + object.getOvalID() );
+                }
+                SystemObject  p_object = _store.sync( SystemObject.class, object );
+                p_objects.add( p_object );
+            }
+
+            defs.setObjects( p_objects );
+        }
+
+        States  states = defs.getStates();
+        if (states != null) {
+            States  p_objects = new States();
+            for (State  object : states) {
+                State  p_object = _store.sync( State.class, object );
+                p_objects.add( p_object );
+            }
+
+            defs.setStates( p_objects );
+        }
+
+
+        Variables  variables = defs.getVariables();
+        if (variables != null) {
+            Variables  p_objects = new Variables();
+            for (Variable  object : variables) {
+                Variable  p_object = _store.sync( Variable.class, object );
+                p_objects.add( p_object );
+            }
+
+            defs.setVariables( p_objects );
+        }
+
+
+        Definitions  def_list = defs.getDefinitions();
+        if (def_list != null) {
+            Definitions  p_def_list = new Definitions();
+            for (Definition  def : def_list) {
+                if (_LOG.isInfoEnabled()) {
+                    _LOG.info( "creating Definition: " + def.getOvalID() );
+                }
+                Definition  p_def = _store.sync( Definition.class, def );
+                p_def_list.add( p_def );
+            }
+            defs.setDefinitions( p_def_list );
+        }
+    }
+
+
+
     //**************************************************************
     //  OvalRepository
     //**************************************************************
@@ -101,6 +187,7 @@ public class LocalOvalRepository
     {
         String  pid = null;
         try {
+//            _createRelated( defs );
             pid = _store.create( OvalDefinitions.class, defs );
         } catch (Exception ex) {
             throw new OvalServiceException( ex );

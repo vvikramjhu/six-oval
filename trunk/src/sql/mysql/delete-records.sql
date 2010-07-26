@@ -82,6 +82,7 @@ DELETE FROM oval_d_test_unknown;
 DELETE FROM oval_d_test_dpkginfo;
 DELETE FROM oval_d_test_rpminfo;
 DELETE FROM oval_d_test_uname;
+DELETE FROM oval_d_test_file__state;
 DELETE FROM oval_d_test_file;
 DELETE FROM oval_d_test_metabase;
 DELETE FROM oval_d_test_registry;

@@ -81,6 +81,7 @@ DROP TABLE IF EXISTS oval_d_test_unknown;
 DROP TABLE IF EXISTS oval_d_test_dpkginfo;
 DROP TABLE IF EXISTS oval_d_test_rpminfo;
 DROP TABLE IF EXISTS oval_d_test_uname;
+DROP TABLE IF EXISTS oval_d_test_file__state;
 DROP TABLE IF EXISTS oval_d_test_file;
 DROP TABLE IF EXISTS oval_d_test_metabase;
 DROP TABLE IF EXISTS oval_d_test_registry;
