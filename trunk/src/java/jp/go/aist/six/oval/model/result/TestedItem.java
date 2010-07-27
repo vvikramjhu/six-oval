@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.result;
 
-import jp.go.aist.six.oval.model.OvalAnalysisElement;
+import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 
@@ -29,19 +29,23 @@ import jp.go.aist.six.oval.model.OvalAnalysisElement;
  * @author	Akihito Nakamura, AIST
  * @version $Id: OvalResultElement.java 739 2010-05-07 08:11:01Z akihito $
  */
-public abstract class OvalResultElement
-    extends OvalAnalysisElement
+public class TestedItem
+    extends AbstractPersistable
 {
 
+    private int  _itemID;
+    //{required}
+
+
     private Result  _result;
-    //{required} - oval-res:DefinitionType
+    //{required}
 
 
 
     /**
      * Constructor.
      */
-    public OvalResultElement()
+    public TestedItem()
     {
     }
 
@@ -49,26 +53,30 @@ public abstract class OvalResultElement
     /**
      * Constructor.
      */
-    public OvalResultElement(
-                    final String id,
-                    final int version
-                    )
-    {
-        super( id, version );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public OvalResultElement(
-                    final String id,
-                    final int version,
+    public TestedItem(
+                    final int itemID,
                     final Result result
                     )
     {
-        this( id, version );
+        setItemID( itemID );
         setResult( result );
+    }
+
+
+
+    /**
+     */
+    public void setItemID(
+                    final int id
+                    )
+    {
+        _itemID = id;
+    }
+
+
+    public int getItemID()
+    {
+        return _itemID;
     }
 
 
@@ -77,7 +85,7 @@ public abstract class OvalResultElement
                     final Result result
                     )
     {
-        _result= result;
+        _result = result;
     }
 
 
@@ -93,11 +101,58 @@ public abstract class OvalResultElement
     //**************************************************************
 
     @Override
+    public int hashCode()
+    {
+        final int  prime = 37;
+        int  hash = 17;
+
+        int  itemID = getItemID();
+        hash = prime * hash + itemID;
+
+        Result  result = getResult();
+        hash = prime * hash + ((result == null) ? 0 : result.hashCode());
+
+        return hash;
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof TestedItem)) {
+            return false;
+        }
+
+        TestedItem  other = (TestedItem)obj;
+        int  other_itemID = other.getItemID();
+        int   this_itemID =  this.getItemID();
+        if (this_itemID == other_itemID) {
+            Result  other_reault = other.getResult();
+            Result   this_result =  this.getResult();
+            if (this_result == other_reault) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+
+    @Override
     public String toString()
     {
-        return super.toString()
-                        + ", result=" + getResult();
+        return "TestedItem[item_id=" + getItemID()
+                        + ", result=" + getResult()
+                        + "]";
     }
 
 }
-// OvalResultElement
+// TestedItem

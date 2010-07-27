@@ -24,6 +24,8 @@ import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Operator;
 import jp.go.aist.six.util.orm.Dependent;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 
@@ -39,8 +41,14 @@ public class TestResult
 
 //  private Collection<Message>  _messages = new ArrayList<Message>();
 
-//    private CriteriaResult  _criteria;
-//    //{0..1}
+
+    private Collection<TestedItem>  _testedItem = new ArrayList<TestedItem>();
+    //{0..*}
+
+
+    private Collection<TestedVariable>  _testedVariable= new ArrayList<TestedVariable>();
+    //{0..*}
+
 
     public static final int  DEFAULT_VARIABLE_INSTANCE = 1;
     private int  _variableInstance = DEFAULT_VARIABLE_INSTANCE;
@@ -94,6 +102,44 @@ public class TestResult
         super( id, version, result );
     }
 
+
+
+    /**
+     */
+    public void setTestedItem(
+                    final Collection<? extends TestedItem> items
+                    )
+    {
+        _testedItem.clear();
+        if (items != null  &&  items != _testedItem) {
+            _testedItem.addAll( items );
+        }
+    }
+
+
+    public Collection<TestedItem> getTestedItem()
+    {
+        return _testedItem;
+    }
+
+
+    /**
+     */
+    public void setTestedVariable(
+                    final Collection<? extends TestedVariable> vars
+                    )
+    {
+        _testedVariable.clear();
+        if (vars != null  &&  vars != _testedVariable) {
+            _testedVariable.addAll( vars );
+        }
+    }
+
+
+    public Collection<TestedVariable> getTestedVariable()
+    {
+        return _testedVariable;
+    }
 
 
     /**

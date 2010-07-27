@@ -18,10 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definition;
+package jp.go.aist.six.oval.model.result;
 
-import jp.go.aist.six.oval.model.common.Datatype;
-import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
@@ -31,35 +29,23 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class EntityBase
+public class TestedVariable
     extends AbstractPersistable
 {
 
-    private String  _data;
-    // OVAL Schema 5.7: {complexContent, base="xsd:anyType"}
-    // OVAL Schema 5.6: {simpleContent, base=xsd:anySimpleType}
+    private String  _value;
+    //{simpleContent, base=xsd:anySimpleType}
 
-    public static final Datatype  DEFAULT_DATATYPE = Datatype.STRING;
-    private Datatype  _datatype;
-    //{optional, default="string"}
 
-    public static final Operation  DEFAULT_OPERATION = Operation.EQUALS;
-    private Operation  _operation;
-    //{optional, default="equals"}
-
-    public static final boolean  DEFAULT_MASK = false;
-    private boolean  _mask = DEFAULT_MASK;
-    //{optional, default="false"}
-
-    private String  _varRef;
-    //{optional, type="oval:VariableIDPattern"}
+    private String  _variableID;
+    //{required, type="oval:VariableIDPattern"}
 
 
 
     /**
      * Constructor.
      */
-    public EntityBase()
+    public TestedVariable()
     {
     }
 
@@ -67,86 +53,47 @@ public abstract class EntityBase
     /**
      * Constructor.
      */
-    public EntityBase(
-                    final String data
+    public TestedVariable(
+                    final String variableID,
+                    final String value
                     )
     {
-        setData( data );
+        setVariableID( variableID );
+        setValue( value );
     }
 
 
 
-    public void setData(
-                    final String data
+    /**
+     */
+    public void setValue(
+                    final String value
                     )
     {
-        _data = data;
+        _value = value;
     }
 
 
-    public String getData()
+    public String getValue()
     {
-        return _data;
+        return _value;
     }
 
 
 
-    public void setDatatype(
-                    final Datatype datatype
+    /**
+     */
+    public void setVariableID(
+                    final String id
                     )
     {
-        _datatype = datatype;
+        _variableID = id;
     }
 
 
-    public Datatype getDatatype()
+    public String getVariableID()
     {
-        return (_datatype == null ? DEFAULT_DATATYPE : _datatype);
-    }
-
-
-
-    public void setOperation(
-                    final Operation operation
-                    )
-    {
-        _operation = operation;
-    }
-
-
-    public Operation getOperation()
-    {
-        return (_operation == null ? DEFAULT_OPERATION : _operation);
-    }
-
-
-
-    public boolean getMask()
-    {
-        return _mask;
-    }
-
-
-    public void setMask(
-                    final boolean mask
-                    )
-    {
-        _mask = mask;
-    }
-
-
-
-    public void setVarRef(
-                    final String varRef
-                    )
-    {
-        _varRef= varRef;
-    }
-
-
-    public String getVarRef()
-    {
-        return _varRef;
+        return _variableID;
     }
 
 
@@ -161,19 +108,11 @@ public abstract class EntityBase
         final int  prime = 37;
         int  result = 17;
 
-        String  data = getData();
-        result = prime * result + ((data == null) ? 0 : data.hashCode());
+        String  value = getValue();
+        result = prime * result + ((value == null) ? 0 : value.hashCode());
 
-        Datatype  datatype = getDatatype();
-        result = prime * result + ((datatype == null) ? 0 : datatype.hashCode());
-
-        Operation  op = getOperation();
-        result = prime * result + ((op == null) ? 0 : op.hashCode());
-
-        result = prime * result + (getMask() ? 0 : 1);
-
-        String  var_ref = getVarRef();
-        result = prime * result + ((var_ref == null) ? 0 : var_ref.hashCode());
+        String  varID = getVariableID();
+        result = prime * result + ((varID == null) ? 0 : varID.hashCode());
 
         return result;
     }
@@ -189,30 +128,20 @@ public abstract class EntityBase
             return true;
         }
 
-        if (!(obj instanceof EntityBase)) {
+        if (!(obj instanceof TestedVariable)) {
             return false;
         }
 
-        EntityBase  other = (EntityBase)obj;
-        String  other_data = other.getData();
-        String   this_data =  this.getData();
-        if (this_data == other_data
-                        ||  (this_data != null  &&  this_data.equals( other_data ))) {
-            String  other_var_ref = other.getVarRef();
-            String   this_var_ref =  this.getVarRef();
-            if (this_var_ref == other_var_ref
-                        ||  (this_var_ref != null  &&  this_var_ref.equals( other_var_ref ))) {
-                Operation  other_op = other.getOperation();
-                Operation   this_op =  this.getOperation();
-                if (this_op == other_op) {
-                    Datatype  other_type = other.getDatatype();
-                    Datatype   this_type =  this.getDatatype();
-                    if (this_type == other_type) {
-                        if (this.getMask() == other.getMask()) {
-                            return true;
-                        }
-                    }
-                }
+        TestedVariable  other = (TestedVariable)obj;
+        String  other_value = other.getValue();
+        String   this_value =  this.getValue();
+        if (this_value == other_value
+                        ||  (this_value != null  &&  this_value.equals( other_value ))) {
+            String  other_varID = other.getVariableID();
+            String   this_varID =  this.getVariableID();
+            if (this_varID == other_varID
+                            ||  (this_varID != null  &&  this_varID.equals( other_varID ))) {
+                return true;
             }
         }
 
@@ -224,12 +153,10 @@ public abstract class EntityBase
     @Override
     public String toString()
     {
-        return "data=" + getData()
-                        + ", datatype=" + getDatatype()
-                        + ", operation=" + getOperation()
-//                        + ", mask=" + getMask()
-                        + ", var_ref=" + getVarRef();
+        return "TestedVariable[variable_id=" + getVariableID()
+                        + ", value=" + getValue()
+                        + "]";
     }
 
 }
-// EntityBase
+// TestedVariable
