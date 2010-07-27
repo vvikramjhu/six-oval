@@ -158,6 +158,8 @@ public class OvalDefinitionsDao
         }
 
 
+        //TODO: move this part to DefinitionDao,
+        // and create 1:N definition-Criteria relation?
         OvalDefinitionsUtil  util = OvalDefinitionsUtil.newInstance( defs );
         Definitions  def_list = defs.getDefinitions();
         if (def_list != null) {
