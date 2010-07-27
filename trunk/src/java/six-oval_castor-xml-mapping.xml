@@ -1693,6 +1693,11 @@
         <map-to xml="textfilecontent_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"/>
 
+        <field name="line" 
+            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            <bind-xml name="line" node="element"/>
+        </field>
+
         <field name="subExpression" 
             type="jp.go.aist.six.oval.model.definition.EntityStateAnySimple">
             <bind-xml name="subexpression" node="element"/>
