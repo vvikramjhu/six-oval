@@ -39,12 +39,10 @@ public class SystemResult
     private DefinitionResults  _definitions;
     //{0..1}
 
-//    // ./definitions // {0..1} //
-//    private Collection<DefinitionResult>  _definitions =
-//        new ArrayList<DefinitionResult>();  //{1..*}
 
-//    private TestResults  _tests;
-//    //{0..1}
+    private TestResults  _tests;
+    //{0..1}
+
 
     private OvalSystemCharacteristics  _ovalSystemCharacteristics;
     //{1..1}
@@ -164,34 +162,18 @@ public class SystemResult
 
 
 
-//    public void setTests( final Collection<TestResult> tests )
-//    {
-//        _tests.clear();
-//        Iterator<TestResult>  i = tests.iterator();
-//        while (i.hasNext()) {
-//            addTest( i.next() );
-//        }
-//    }
-//
-//
-//    public boolean addTest( final TestResult test )
-//    {
-//        if (test == null) {
-//            return false;
-//        }
-//
-//        if (!_tests.contains( test )) {
-//            return _tests.add( test );
-//        }
-//
-//        return false;
-//    }
-//
-//
-//    public Collection<TestResult> getTests()
-//    {
-//        return _tests;
-//    }
+    public void setTests(
+                    final TestResults tests
+                    )
+    {
+        _tests = tests;
+    }
+
+
+    public TestResults getTests()
+    {
+        return _tests;
+    }
 
 
 
@@ -224,9 +206,12 @@ public class SystemResult
     @Override
     public String toString()
     {
+        DefinitionResults  defs = getDefinitions();
+        TestResults  tests = getTests();
+
         return "SystemResult[oval_system_characteristics=" + getOvalSystemCharacteristics()
-                        + ", definitions=" + getDefinitions()
-//                        + ", tests=" + getTests()
+                        + ", #definitions=" + (defs == null ? 0 : defs.size())
+                        + ", #tests=" + (tests == null ? 0 : tests.size())
                         + "]";
     }
 

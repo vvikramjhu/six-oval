@@ -1,8 +1,13 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.model.common.Generator;
+import jp.go.aist.six.oval.model.result.DefinitionResult;
 import jp.go.aist.six.oval.model.result.Directives;
 import jp.go.aist.six.oval.model.result.OvalResults;
+import jp.go.aist.six.oval.model.result.Results;
+import jp.go.aist.six.oval.model.result.SystemResult;
+import jp.go.aist.six.oval.model.result.TestResult;
+import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
 
@@ -56,6 +61,22 @@ public class StoreResultsOvalResultsTest
         _validate( or.getGenerator(), generator );
         _validate( or.getDirectives(), directives );
         Reporter.log( "...validation OK", true );
+
+        Reporter.log( "view results...", true );
+        Results  results = or.getResults();
+        if (results != null) {
+            for (SystemResult  system : results.getSystem()) {
+                OvalSystemCharacteristics  sc = system.getOvalSystemCharacteristics();
+                Reporter.log( "  * OVAL SC: " + sc, true );
+                for (TestResult  test : system.getTests().getTest()) {
+                    Reporter.log( "  * test result: " + test, true );
+                }
+                for (DefinitionResult  def : system.getDefinitions().getDefinition()) {
+                    Reporter.log( "  * definition result: " + def, true );
+                }
+            }
+        }
+
 
         Reporter.log( "syncing...", true );
         OvalResults  p_or = _getStore().sync( OvalResults.class, or );
