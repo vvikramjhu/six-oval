@@ -20,6 +20,9 @@
 
 package jp.go.aist.six.oval.model.result;
 
+import jp.go.aist.six.oval.model.common.Check;
+import jp.go.aist.six.oval.model.common.Existence;
+import jp.go.aist.six.oval.model.common.Operator;
 import jp.go.aist.six.util.orm.Dependent;
 
 
@@ -29,7 +32,7 @@ import jp.go.aist.six.util.orm.Dependent;
  * @author	Akihito Nakamura, AIST
  * @version $Id: DefinitionResult.java 759 2010-05-10 06:56:29Z akihito $
  */
-public class DefinitionResult
+public class TestResult
     extends OvalResultElement
     implements Dependent<SystemResult>
 {
@@ -40,16 +43,29 @@ public class DefinitionResult
 //    //{0..1}
 
     public static final int  DEFAULT_VARIABLE_INSTANCE = 1;
-
     private int  _variableInstance = DEFAULT_VARIABLE_INSTANCE;
     //{xsd:nonNegativeInteger, optional, default="1"}
+
+
+    public static final Existence  DEFAULT_CHECK_EXISTENCE = Existence.AT_LEAST_ONE_EXISTS;
+    private Existence  _checkExistence;
+    //{optional, default="at_least_one_exists"}
+
+
+    private Check  _check;
+    //{required}
+
+
+    public static final Operator  DEFAULT_STATE_OPERATOR = Operator.AND;
+    private Operator  _stateOperator;
+    //{optional, default="AND"}
 
 
 
     /**
      * Constructor.
      */
-    public DefinitionResult()
+    public TestResult()
     {
     }
 
@@ -57,7 +73,7 @@ public class DefinitionResult
     /**
      * Constructor.
      */
-    public DefinitionResult(
+    public TestResult(
                     final String id,
                     final int version
                     )
@@ -69,7 +85,7 @@ public class DefinitionResult
     /**
      * Constructor.
      */
-    public DefinitionResult(
+    public TestResult(
                     final String id,
                     final int version,
                     final Result result
@@ -82,7 +98,7 @@ public class DefinitionResult
 
     /**
      */
-    public void setDefinitionID(
+    public void setTestID(
                     final String id
                     )
     {
@@ -90,7 +106,7 @@ public class DefinitionResult
     }
 
 
-    public String getDefinitionID()
+    public String getTestID()
     {
         return getOvalID();
     }
@@ -117,54 +133,52 @@ public class DefinitionResult
 
 
 
-    // /**
-    // * @return the criteria
-    // */
-    // public Criteria getCriteria()
-    // {
-    // return _criteria;
-    // }
-    //
-    //
-    //
-    // /**
-    // * @param criteria the criteria to set
-    // */
-    // public void setCriteria( final Criteria criteria )
-    // {
-    // this._criteria = criteria;
-    // }
-    //
-    //
-    //
-    // public void setMessages( final Collection<Message> messages )
-    // {
-    // _messages.clear();
-    // Iterator<Message> i = messages.iterator();
-    // while (i.hasNext()) {
-    // addMessage( i.next() );
-    // }
-    // }
-    //
-    //
-    // public boolean addMessage( final Message message )
-    // {
-    // if (message == null) {
-    // return false;
-    // }
-    //
-    // if (!_messages.contains( message )) {
-    // return _messages.add( message );
-    // }
-    //
-    // return false;
-    // }
-    //
-    //
-    // public Collection<Message> getMessages()
-    // {
-    // return _messages;
-    // }
+    public void setCheckExistence(
+                    final Existence existence
+                    )
+    {
+        _checkExistence = existence;
+    }
+
+
+    public Existence getCheckExistence()
+    {
+        return (_checkExistence == null ? DEFAULT_CHECK_EXISTENCE : _checkExistence);
+    }
+
+
+
+    public void setCheck(
+                    final Check check
+                    )
+    {
+        _check = check;
+    }
+
+
+    public Check getCheck()
+    {
+        return _check;
+    }
+
+
+
+    /**
+     */
+    public void setStateOperator(
+                    final Operator stateOperator
+                    )
+    {
+        _stateOperator = stateOperator;
+    }
+
+
+    /**
+     */
+    public Operator getStateOperator()
+    {
+        return (_stateOperator == null ? DEFAULT_STATE_OPERATOR : _stateOperator);
+    }
 
 
 
@@ -226,9 +240,9 @@ public class DefinitionResult
     @Override
     public String toString()
     {
-        return "DefinitionResult[" + super.toString()
+        return "TestResult[" + super.toString()
                         + "]";
     }
 
 }
-// DefinitionResult
+// TestResult
