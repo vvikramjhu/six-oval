@@ -46,8 +46,14 @@ public class LocalOvalRepositoryTest
         return new Object[][] {
                         // windows vulnerability
                         {
-                            "test/data/result/sample_oval-results_inventory_windows-xp.xml",
+                            "test/data/result/oval-2010-06-15.05.04.34_results.xml",
                         }
+                        ,
+
+//                        // windows inventory
+//                        {
+//                            "test/data/result/sample_oval-results_inventory_windows-xp.xml",
+//                        }
 //                        ,
 
         };
