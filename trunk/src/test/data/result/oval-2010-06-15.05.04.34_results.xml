@@ -5,7 +5,7 @@
     <oval:product_name>OVAL Definition Interpreter</oval:product_name>
     <oval:product_version>5.7 Build: 1</oval:product_version>
     <oval:schema_version>5.7</oval:schema_version>
-    <oval:timestamp>2010-07-27T17:04:51</oval:timestamp>
+    <oval:timestamp>2010-07-26T20:51:37</oval:timestamp>
     <vendor>The MITRE Corporation</vendor>
   </generator>
 
@@ -199,23 +199,33 @@
           <oval:product_name>OVAL Definition Interpreter</oval:product_name>
           <oval:product_version>5.7 Build: 1</oval:product_version>
           <oval:schema_version>5.7</oval:schema_version>
-          <oval:timestamp>2010-07-27T17:04:49</oval:timestamp>
+          <oval:timestamp>2010-07-26T20:51:37</oval:timestamp>
           <vendor>The MITRE Corporation</vendor>
         </generator>
         <system_info>
           <os_name>Microsoft Windows XP Professional Service Pack 3</os_name>
           <os_version>5.1.2600</os_version>
           <architecture>INTEL32</architecture>
-          <primary_host_name>c2-1</primary_host_name>
+          <primary_host_name>akihito-x60</primary_host_name>
           <interfaces>
             <interface>
-              <interface_name>Realtek RTL8168C(P)/8111C(P) Family PCI-E GBE NIC - パケット スケジューラ ミニポート</interface_name>
-              <ip_address>150.29.148.96</ip_address>
-              <mac_address>00-1F-D0-A3-A7-A3</mac_address>
+              <interface_name>11a/b/g/n Wireless LAN Mini-PCI Express Adapter - パケット スケジューラ ミニポート</interface_name>
+              <ip_address>169.254.120.206</ip_address>
+              <mac_address>00-19-7D-39-59-AE</mac_address>
+            </interface>
+            <interface>
+              <interface_name>Intel(R) PRO/1000 PL Network Connection - パケット スケジューラ ミニポート</interface_name>
+              <ip_address>0.0.0.0</ip_address>
+              <mac_address>00-16-D3-35-B1-41</mac_address>
+            </interface>
+            <interface>
+              <interface_name>WAN (PPP/SLIP) Interface</interface_name>
+              <ip_address>61.121.4.31</ip_address>
+              <mac_address>00-53-45-00-00-00</mac_address>
             </interface>
             <interface>
               <interface_name>VMware Virtual Ethernet Adapter for VMnet1</interface_name>
-              <ip_address>192.168.153.1</ip_address>
+              <ip_address>192.168.158.1</ip_address>
               <mac_address>00-50-56-C0-00-01</mac_address>
             </interface>
             <interface>
@@ -264,7 +274,7 @@
             <filename>mshtml.dll</filename>
             <owner>BUILTIN\Administrators</owner>
             <size datatype="int">5950976</size>
-            <a_time datatype="int">129246894422812500</a_time>
+            <a_time datatype="int">129246179349062500</a_time>
             <c_time datatype="int">128526480000000000</c_time>
             <m_time datatype="int">129176154920000000</m_time>
             <ms_checksum>5981456</ms_checksum>
