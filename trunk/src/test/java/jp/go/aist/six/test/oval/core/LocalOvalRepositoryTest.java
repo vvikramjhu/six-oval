@@ -44,9 +44,27 @@ public class LocalOvalRepositoryTest
     private Object[][] _ovalResultsProvider()
     {
         return new Object[][] {
-                        // windows vulnerability
+                        // windows vulnerability, CVE-2010-0176
                         {
                             "test/data/result/oval-2010-07-15.03.55.24_CVE-2010-0176_results.xml",
+                        }
+                        ,
+
+                        // Red Hat patch, CVE-2010-0176, RHSA 20100332
+                        {
+                            "test/data/result/com.redhat.rhsa-20100332_CVE-2010-0176_results.xml",
+                        }
+                        ,
+
+                        // Red Hat patch, CVE-2010-0176, RHSA 20100333
+                        {
+                            "test/data/result/com.redhat.rhsa-20100332_CVE-2010-0176_results.xml",
+                        }
+                        ,
+
+                        // Debian patch, CVE-2010-0176
+                        {
+                            "test/data/result/oval-2010-07-27.04.27.53_DSA-2027_results.xml",
                         }
                         ,
 

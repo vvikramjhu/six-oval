@@ -1379,6 +1379,15 @@
             <sql name="PID" type="char"/>
         </field>
 
+        <field name="line.data" type="string">
+            <sql name="line" type="char"/>
+        </field>
+
+        <field name="line.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="line_operation" type="char"/>
+        </field>
+
         <field name="subExpression.data" type="string">
             <sql name="subexpression" type="char"/>
         </field>

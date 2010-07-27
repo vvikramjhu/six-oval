@@ -1097,8 +1097,11 @@ CREATE TABLE IF NOT EXISTS oval_d_state_textfilecontent
     PID                 VARCHAR(64)     NOT NULL,
                         /* id + version, e.g. oval:org.mitre.oval:ste:419:1 */
 
+    line                VARCHAR(255),
+    line_operation      VARCHAR(32)     DEFAULT 'equals',
+
     subexpression       VARCHAR(255),
-    subexpression_operation VARCHAR(32)     NOT NULL    DEFAULT 'equals',
+    subexpression_operation VARCHAR(32) DEFAULT 'equals',
                         /* enum('equals', ..., 'case insensitive not equal', ...) */
 
     /* (FK) */
