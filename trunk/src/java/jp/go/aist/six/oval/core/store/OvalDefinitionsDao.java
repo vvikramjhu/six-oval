@@ -158,8 +158,6 @@ public class OvalDefinitionsDao
         }
 
 
-        //TODO: move this part to DefinitionDao,
-        // and create 1:N definition-Criteria relation?
         OvalDefinitionsUtil  util = OvalDefinitionsUtil.newInstance( defs );
         Definitions  def_list = defs.getDefinitions();
         if (def_list != null) {
@@ -175,6 +173,8 @@ public class OvalDefinitionsDao
                     new OvalDefinitionsDefinitionAssociation( defs, p_def );
                 getForwardingDao( OvalDefinitionsDefinitionAssociation.class ).sync( assoc );
 
+                //TODO: move this part to DefinitionDao,
+                // and create 1:N definition-Criteria relation?
                 final String  defID = def.getOvalID();
                 Collection<String>  testIDs = util.getRelatedTestIDOfDefinition( defID );
                 for (String  testID : testIDs) {
