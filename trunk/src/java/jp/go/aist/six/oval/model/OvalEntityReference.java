@@ -35,7 +35,7 @@ public abstract class OvalEntityReference
     extends AbstractPersistable
 {
 
-//    private String  _ovalID;
+    private String  _ovalID;
 
 
     /**
@@ -64,15 +64,13 @@ public abstract class OvalEntityReference
                     final String id
                     )
     {
-        setPersistentID( id );
-//      _ovalID = id;
+        _ovalID = id;
     }
 
 
     public String getOvalID()
     {
-        return getPersistentID();
-//      return _ovalID;
+        return _ovalID;
     }
 
 
@@ -129,3 +127,98 @@ public abstract class OvalEntityReference
 
 }
 // OvalEntityReference
+//{
+//
+////  private String  _ovalID;
+//
+//
+//  /**
+//   * Constructor.
+//   */
+//  public OvalEntityReference()
+//  {
+//  }
+//
+//
+//  /**
+//   * Constructor.
+//   */
+//  public OvalEntityReference(
+//                  final String ovalID
+//                  )
+//  {
+//      setOvalID( ovalID );
+//  }
+//
+//
+//
+//  /**
+//   */
+//  public void setOvalID(
+//                  final String id
+//                  )
+//  {
+//      setPersistentID( id );
+////    _ovalID = id;
+//  }
+//
+//
+//  public String getOvalID()
+//  {
+//      return getPersistentID();
+////    return _ovalID;
+//  }
+//
+//
+//
+//  //**************************************************************
+//  //  java.lang.Object
+//  //**************************************************************
+//
+//  @Override
+//  public int hashCode()
+//  {
+//      final int  prime = 37;
+//      int  result = 17;
+//
+//      String  id = getOvalID();
+//      result = prime * result + ((id == null) ? 0 : id.hashCode());
+//
+//      return result;
+//  }
+//
+//
+//
+//  @Override
+//  public boolean equals(
+//                  final Object obj
+//                  )
+//  {
+//      if (this == obj) {
+//          return true;
+//      }
+//
+//      if (!(obj instanceof OvalEntityReference)) {
+//          return false;
+//      }
+//
+//      OvalEntityReference  other = (OvalEntityReference)obj;
+//      String  other_id = other.getOvalID();
+//      String   this_id =  this.getOvalID();
+//      if (this_id == other_id
+//                      ||  (this_id != null  &&  this_id.equals( other_id ))) {
+//          return true;
+//      }
+//
+//      return false;
+//  }
+//
+//
+//
+//  @Override
+//  public String toString()
+//  {
+//      return getOvalID();
+//  }
+//
+//}

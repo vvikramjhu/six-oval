@@ -86,6 +86,7 @@ DROP TABLE IF EXISTS oval_d_test_file;
 DROP TABLE IF EXISTS oval_d_test_metabase;
 DROP TABLE IF EXISTS oval_d_test_registry;
 DROP TABLE IF EXISTS oval_d_test_wmi;
+DROP TABLE IF EXISTS oval_d_test__state_ref;
 DROP TABLE IF EXISTS oval_d_test;
 
 DROP TABLE IF EXISTS oval_d_variable_local;

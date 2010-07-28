@@ -52,14 +52,31 @@ public class TestDao
     {
         Collection<StateRef>  states = test.getState();
         if (states != null  &&  states.size() > 0) {
-            Collection<StateRef>  p_states =
-                getForwardingDao( StateRef.class ).syncAll( states );
-            test.setState( p_states );
+            for (StateRef  state : states) {
+                state.setMasterObject( test );
+            }
         }
 
 
         return super.create( test );
     }
+
+    // case: independent implementation
+//    @Override
+//    public String create(
+//                    final Test test
+//                    )
+//    {
+//        Collection<StateRef>  states = test.getState();
+//        if (states != null  &&  states.size() > 0) {
+//            Collection<StateRef>  p_states =
+//                getForwardingDao( StateRef.class ).syncAll( states );
+//            test.setState( p_states );
+//        }
+//
+//
+//        return super.create( test );
+//    }
 
 }
 // TestDao

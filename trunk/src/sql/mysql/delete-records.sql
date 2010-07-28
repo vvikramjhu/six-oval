@@ -87,6 +87,7 @@ DELETE FROM oval_d_test_file;
 DELETE FROM oval_d_test_metabase;
 DELETE FROM oval_d_test_registry;
 DELETE FROM oval_d_test_wmi;
+DELETE FROM oval_d_test__state_ref;
 DELETE FROM oval_d_test;
 
 DELETE FROM oval_d_variable_local;

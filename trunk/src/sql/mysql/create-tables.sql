@@ -365,6 +365,28 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
+/* StateRef                                                       */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_d_test__state_ref
+(
+    PID                 INT             NOT NULL    AUTO_INCREMENT,
+    
+    state_ref           VARCHAR(64)     NOT NULL,
+
+    /* (FK) */
+    test__PID           VARCHAR(64)     NOT NULL,
+
+    /* (PK) */
+    PRIMARY KEY (PID)
+
+    /* INDEX */
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
 /* OvalDefinitions - Test association                             */
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_assoc__d_definitions__d_test
