@@ -42,6 +42,7 @@ DROP TABLE IF EXISTS oval_s_sc;
 
 
 /* definitions */
+
 DROP TABLE IF EXISTS oval_assoc__d_definition__d_object;
 DROP TABLE IF EXISTS oval_assoc__d_definitions__d_object;
 DROP TABLE IF EXISTS oval_assoc__d_definitions__d_state;
@@ -52,8 +53,20 @@ DROP TABLE IF EXISTS oval_assoc__d_definition__d_platform;
 DROP TABLE IF EXISTS oval_assoc__d_definition__d_product;
 DROP TABLE IF EXISTS oval_assoc__d_definition__d_reference;
 DROP TABLE IF EXISTS oval_assoc__d_definitions__d_definition;
-DROP TABLE IF EXISTS oval_assoc__d_test__d_state_ref;
 
+
+DROP TABLE IF EXISTS oval_d_test_family;
+DROP TABLE IF EXISTS oval_d_test_textfilecontent;
+DROP TABLE IF EXISTS oval_d_test_unknown;
+DROP TABLE IF EXISTS oval_d_test_dpkginfo;
+DROP TABLE IF EXISTS oval_d_test_rpminfo;
+DROP TABLE IF EXISTS oval_d_test_uname;
+DROP TABLE IF EXISTS oval_d_test_file;
+DROP TABLE IF EXISTS oval_d_test_metabase;
+DROP TABLE IF EXISTS oval_d_test_registry;
+DROP TABLE IF EXISTS oval_d_test_wmi;
+DROP TABLE IF EXISTS oval_d_test__state_ref;
+DROP TABLE IF EXISTS oval_d_test;
 
 DROP TABLE IF EXISTS oval_d_object_family;
 DROP TABLE IF EXISTS oval_d_object_textfilecontent;
@@ -76,23 +89,9 @@ DROP TABLE IF EXISTS oval_d_state_registry;
 DROP TABLE IF EXISTS oval_d_state_wmi;
 DROP TABLE IF EXISTS oval_d_state;
 
-DROP TABLE IF EXISTS oval_d_test_family;
-DROP TABLE IF EXISTS oval_d_test_textfilecontent;
-DROP TABLE IF EXISTS oval_d_test_unknown;
-DROP TABLE IF EXISTS oval_d_test_dpkginfo;
-DROP TABLE IF EXISTS oval_d_test_rpminfo;
-DROP TABLE IF EXISTS oval_d_test_uname;
-DROP TABLE IF EXISTS oval_d_test_file;
-DROP TABLE IF EXISTS oval_d_test_metabase;
-DROP TABLE IF EXISTS oval_d_test_registry;
-DROP TABLE IF EXISTS oval_d_test_wmi;
-DROP TABLE IF EXISTS oval_d_test__state_ref;
-DROP TABLE IF EXISTS oval_d_test;
-
 DROP TABLE IF EXISTS oval_d_variable_local;
 DROP TABLE IF EXISTS oval_d_variable;
 
-DROP TABLE IF EXISTS oval_d_state_ref;
 DROP TABLE IF EXISTS oval_d_cve;
 DROP TABLE IF EXISTS oval_d_platform;
 DROP TABLE IF EXISTS oval_d_product;
