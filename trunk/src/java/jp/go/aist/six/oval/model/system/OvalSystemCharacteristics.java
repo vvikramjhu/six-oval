@@ -37,19 +37,17 @@ public class OvalSystemCharacteristics
     private Generator  _generator;
     //{1..1}
 
+
     private SystemInfo _systemInfo;
     //{1..1}
 
-    //TODO: refactor _objects field!!!
-    private CollectedSystemObjects  _collectedObjects = new CollectedSystemObjects();
-//    //{0..1}
-//    private Collection<CollectedSystemObject>  _objects = new ArrayList<CollectedSystemObject>();
 
-//    private String  _objectsDigest;
+    private CollectedSystemObjects  _collectedObjects = new CollectedSystemObjects();
+    //{0..1}
+
 
     private SystemData  _systemData = new SystemData();
     //{0..1}
-//    private Collection<Item>  _items = new ArrayList<Item>();
 
 
 
@@ -97,6 +95,8 @@ public class OvalSystemCharacteristics
 
 
 
+    /**
+     */
     public void setGenerator(
                     final Generator generator
                     )
@@ -112,14 +112,13 @@ public class OvalSystemCharacteristics
 
 
 
+    /**
+     */
     public void setSystemInfo(
                     final SystemInfo systemInfo
                     )
     {
         _systemInfo = systemInfo;
-//        if (_systemInfo != null) {
-//            _systemInfo.setSystemCharacteristics( this );
-//        }
     }
 
 
@@ -140,82 +139,10 @@ public class OvalSystemCharacteristics
     }
 
 
-    /**
-     */
     public CollectedSystemObjects getCollectedObjects()
     {
         return _collectedObjects;
     }
-
-
-
-//    public void setCollectedObjects(
-//                    final Collection<CollectedSystemObject> objects
-//                    )
-//    {
-//        if (objects != _objects) {
-//            _objects.clear();
-//            if (objects == null  ||  objects.size() == 0) {
-//                return;
-//            }
-//
-//            for (CollectedSystemObject  object : objects) {
-//                addCollectedObject( object );
-//            }
-//        }
-//    }
-//
-//
-//    public boolean addCollectedObject(
-//                    final CollectedSystemObject object
-//                    )
-//    {
-//        if (object == null) {
-//            return false;
-//        }
-//
-//        return _objects.add( object );
-//    }
-//
-//
-//    public Collection<CollectedSystemObject> getCollectedObjects()
-//    {
-//        return _objects;
-//    }
-
-
-
-//    public void setCollectedItems(
-//                    final Collection<Item> items
-//                    )
-//    {
-//        _items.clear();
-//        if (items == null  ||  items.size() == 0) {
-//            return;
-//        }
-//
-//        for (Item  item : items) {
-//            addCollectedItem( item );
-//        }
-//    }
-//
-//
-//    public boolean addCollectedItem(
-//                    final Item item
-//                    )
-//    {
-//        if (item == null) {
-//            return false;
-//        }
-//
-//        return _items.add( item );
-//    }
-//
-//
-//    public Collection<Item> getCollectedItems()
-//    {
-//        return _items;
-//    }
 
 
 
@@ -229,8 +156,6 @@ public class OvalSystemCharacteristics
     }
 
 
-    /**
-     */
     public SystemData getSystemData()
     {
         return _systemData;
@@ -245,12 +170,15 @@ public class OvalSystemCharacteristics
     @Override
     public String toString()
     {
-        SystemData  sd = getSystemData();
+        CollectedSystemObjects  collectedObjects = getCollectedObjects();
+        SystemData  systemData = getSystemData();
+
         return "OvalSystemCharacteristics[generator=" + getGenerator()
                         + ", system_info=" + getSystemInfo()
-                        + ", #collected_objects=" + getCollectedObjects().getObject().size()
-                        + ", #items=" + (sd == null ? 0 : sd.size())
-//                        + ", collected_objects=" + getCollectedObjects()
+                        + ", #collected_objects="
+                        + (collectedObjects == null ? 0 : collectedObjects.size())
+                        + ", #items="
+                        + (systemData == null ? 0 : systemData.size())
                         + "]";
     }
 

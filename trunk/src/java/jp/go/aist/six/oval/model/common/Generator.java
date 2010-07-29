@@ -29,13 +29,13 @@ import java.util.Date;
  *
  * <p>Properties:
  * <ul>
- *   <li>schemaVersion {required}: version of the OVAL schema used.
- *   </li>
- *   <li>timestamp {required}: date/time when the document is generated.
- *   </li>
  *   <li>productName: name of the tool used.
  *   </li>
  *   <li>productVersion: version of the tool used.
+ *   </li>
+ *   <li>schemaVersion {required}: version of the OVAL schema used.
+ *   </li>
+ *   <li>timestamp {required}: date/time when the document is generated.
  *   </li>
  * </ul>
  * </p>

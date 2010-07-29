@@ -65,7 +65,8 @@ public class VariableValue
 
 
 
-
+    /**
+     */
     public void setVariableID(
                     final String id
                     )
@@ -81,6 +82,8 @@ public class VariableValue
 
 
 
+    /**
+     */
     public void setValue(
                     final String value
                     )
@@ -126,7 +129,7 @@ public class VariableValue
     @Override
     public String toString()
     {
-        return "VariableValue [variable_id=" + getVariableID()
+        return "VariableValue[variable_id=" + getVariableID()
                         + ", " + getValue()
                         + "]";
     }

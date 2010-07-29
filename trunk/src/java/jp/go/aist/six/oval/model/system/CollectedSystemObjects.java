@@ -21,8 +21,8 @@
 package jp.go.aist.six.oval.model.system;
 
 import jp.go.aist.six.oval.model.Container;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.Iterator;
 
 
 
@@ -33,15 +33,8 @@ import java.util.Collection;
  * @version $Id$
  */
 public class CollectedSystemObjects
-    extends Container<CollectedSystemObject>
-//    extends AbstractPersistable
-//    extends Container<CollectedSystemObjectKey,CollectedSystemObject>
+    extends Container<CollectedSystemObject>    //{1..*}
 {
-
-//    private Collection<CollectedSystemObject>  _object = new ArrayList<CollectedSystemObject>();
-    //{1..*}
-
-
 
     /**
      * Constructor.
@@ -69,16 +62,27 @@ public class CollectedSystemObjects
                     final CollectedSystemObject[] elements
                     )
     {
-        super( Arrays.asList( elements ) );
+        super( elements );
     }
 
 
 
+    /**
+     */
     public void setObject(
-                    final Collection<? extends CollectedSystemObject> objectList
+                    final Collection<? extends CollectedSystemObject> objects
                     )
     {
-        reset( objectList );
+        reset( objects );
+    }
+
+
+
+    public boolean addObject(
+                    final CollectedSystemObject object
+                    )
+    {
+        return add( object );
     }
 
 
@@ -89,16 +93,10 @@ public class CollectedSystemObjects
 
 
 
-//    //**************************************************************
-//    //  Container
-//    //**************************************************************
-//
-//    protected CollectedSystemObjectKey _getKey(
-//                    final CollectedSystemObject object
-//                    )
-//    {
-//        return (new CollectedSystemObjectKey( object.getOvalID(), object.getOvalVersion(), object.getVariableInstance() ));
-//    }
+    public Iterator<CollectedSystemObject> iterateObject()
+    {
+        return iterator();
+    }
 
 
 

@@ -42,6 +42,7 @@ public abstract class Item
     private int  _id;
     //{oval:ItemIDPattern, required}
 
+
     /**
      * The default status: "exists".
      */
@@ -95,6 +96,8 @@ public abstract class Item
 
 
 
+    /**
+     */
     public void setID(
                     final int id
                     )
@@ -110,6 +113,8 @@ public abstract class Item
 
 
 
+    /**
+     */
     public void setStatus(
                     final Status status
                     )

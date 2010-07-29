@@ -70,6 +70,8 @@ public class NetworkInterface
 
 
 
+    /**
+     */
     public void setInterfaceName(
                     final String name
                     )
@@ -85,6 +87,8 @@ public class NetworkInterface
 
 
 
+    /**
+     */
     public void setIpAddress(
                     final String ip
                     )
@@ -100,6 +104,8 @@ public class NetworkInterface
 
 
 
+    /**
+     */
     public void setMacAddress(
                     final String mac
                     )

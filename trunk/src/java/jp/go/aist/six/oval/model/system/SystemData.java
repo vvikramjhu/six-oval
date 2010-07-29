@@ -32,7 +32,7 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class SystemData
-    extends KeyedContainer<Integer,Item> //{1..*}
+    extends KeyedContainer<Integer, Item> //{1..*}
 {
 
     /**
@@ -47,10 +47,10 @@ public class SystemData
      * Constructor.
      */
     public SystemData(
-                    final Collection<? extends Item> elements
+                    final Collection<? extends Item> items
                     )
     {
-        super( elements );
+        super( items );
     }
 
 
@@ -58,27 +58,29 @@ public class SystemData
      * Constructor.
      */
     public SystemData(
-                    final Item[] elements
+                    final Item[] items
                     )
     {
-        super( elements );
+        super( items );
     }
 
 
 
+    /**
+     */
     public void setItem(
-                    final Collection<? extends Item> elements
+                    final Collection<? extends Item> items
                     )
     {
-        reset( elements );
+        reset( items );
     }
 
 
     public boolean addItem(
-                    final Item element
+                    final Item item
                     )
     {
-        return add( element );
+        return add( item );
     }
 
 

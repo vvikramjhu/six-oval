@@ -61,10 +61,10 @@ public class ItemReference
 
 
     public void setItemRef(
-                    final int id
+                    final int itemID
                     )
     {
-        _itemRef = id;
+        _itemRef = itemID;
     }
 
 
@@ -141,7 +141,7 @@ public class ItemReference
     @Override
     public String toString()
     {
-        return "ItemReference [item_ref=" + getItemRef()
+        return "ItemReference[item_ref=" + getItemRef()
                         + "]";
     }
 

@@ -51,10 +51,6 @@ public class SystemInfo
     private NetworkInterfaces  _interfaces = new NetworkInterfaces();
     //{1..1}
 
-//    private Collection<NetworkInterface>  _interfaceList =
-//        new ArrayList<NetworkInterface>();
-//    //{0..*}
-
 
 
     /**
@@ -63,7 +59,6 @@ public class SystemInfo
     public SystemInfo()
     {
     }
-
 
 
     /**
@@ -101,13 +96,14 @@ public class SystemInfo
 
 
 
+    /**
+     */
     public void setOsName(
                     final String name
                     )
     {
         _osName = name;
     }
-
 
 
     public String getOsName()
@@ -117,13 +113,14 @@ public class SystemInfo
 
 
 
+    /**
+     */
     public void setOsVersion(
                     final String version
                     )
     {
         _osVersion = version;
     }
-
 
 
     public String getOsVersion()
@@ -133,13 +130,14 @@ public class SystemInfo
 
 
 
+    /**
+     */
     public void setArchitecture(
                     final String architecture
                     )
     {
         _architecture = architecture;
     }
-
 
 
     public String getArchitecture()
@@ -149,6 +147,8 @@ public class SystemInfo
 
 
 
+    /**
+     */
     public void setPrimaryHostName(
                     final String hostName
                     )
@@ -175,48 +175,10 @@ public class SystemInfo
     }
 
 
-    /**
-     */
     public NetworkInterfaces getInterfaces()
     {
         return _interfaces;
     }
-
-
-
-//    public void setInterfaces(
-//                    final Collection<? extends NetworkInterface> netifs
-//                    )
-//    {
-//        if (netifs != _interfaceList) {
-//            _interfaceList.clear();
-//            if (netifs == null || netifs.size() == 0) {
-//                return;
-//            }
-//
-//            for (NetworkInterface netif : netifs) {
-//                addInterface( netif );
-//            }
-//        }
-//    }
-//
-//
-//    public boolean addInterface(
-//                    final NetworkInterface netif
-//                    )
-//    {
-//        if (netif == null) {
-//            return false;
-//        }
-//
-//        return _interfaceList.add( netif );
-//    }
-//
-//
-//    public Collection<NetworkInterface> getInterfaces()
-//    {
-//        return _interfaceList;
-//    }
 
 
 

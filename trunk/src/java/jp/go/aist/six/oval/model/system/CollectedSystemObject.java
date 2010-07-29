@@ -25,6 +25,7 @@ import jp.go.aist.six.util.orm.Dependent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Iterator;
 
 
 
@@ -38,20 +39,24 @@ public class CollectedSystemObject
     implements Dependent<OvalSystemCharacteristics>
 {
 
-    private String  _message;
-    //{0..*}
 //  private Collection<Message>  _messages = new ArrayList<Message>();
     /*** We have never seen a result which has multiple messages. ***/
+    private String  _message;
+    //{0..*}
+
 
     private Collection<VariableValue>  _variableValue = new ArrayList<VariableValue>();
     //{0..*}
 
+
     private Collection<ItemReference>  _reference = new ArrayList<ItemReference>();
     //{0..*}
+
 
     public static final int  DEFAULT_VARIABLE_INSTANCE = 1;
     private int  _variableInstance = DEFAULT_VARIABLE_INSTANCE;
     //{xsd:nonNegativeInteger, optional, default="1"}
+
 
     private Flag  _flag;
     //{required}
@@ -122,6 +127,8 @@ public class CollectedSystemObject
 
 
 
+    /**
+     */
     public void setMessage(
                     final String message
                     )
@@ -137,39 +144,62 @@ public class CollectedSystemObject
 
 
 
-    public void setReference(
-                    final Collection<? extends ItemReference> refList
+    public void setVariableValue(
+                    final Collection<? extends VariableValue> values
                     )
     {
-        if (refList != _reference) {
+        _variableValue.clear();
+        if (values != null) {
+            _variableValue.addAll( values );
+        }
+    }
+
+
+    public Collection<VariableValue> getVariableValue()
+    {
+        return _variableValue;
+    }
+
+
+
+    public void setReference(
+                    final Collection<? extends ItemReference> references
+                    )
+    {
+        if (references != _reference) {
             _reference.clear();
-            if (refList == null  ||  refList.size() == 0) {
+            if (references == null  ||  references.size() == 0) {
                 return;
             }
 
-            for (ItemReference  ref : refList) {
-                addReference( ref );
+            for (ItemReference  reference : references) {
+                addReference( reference );
             }
         }
     }
 
 
     public boolean addReference(
-                    final ItemReference ref
+                    final ItemReference reference
                     )
     {
-        if (ref == null) {
+        if (reference == null) {
             return false;
         }
 
-//        ref.setObject( this );
-        return _reference.add( ref );
+        return _reference.add( reference );
     }
 
 
     public Collection<ItemReference> getReference()
     {
         return _reference;
+    }
+
+
+    public Iterator<ItemReference> iterateReference()
+    {
+        return _reference.iterator();
     }
 
 
@@ -184,8 +214,6 @@ public class CollectedSystemObject
     }
 
 
-    /**
-     */
     public int getVariableInstance()
     {
         return _variableInstance;
@@ -204,76 +232,6 @@ public class CollectedSystemObject
     public Flag getFlag()
     {
         return _flag;
-    }
-
-
-
-
-
-//    /**
-//     * @param variableInstance the variableInstance to set
-//     */
-//    public void setVariableInstance( final int variableInstance )
-//    {
-//        this._variableInstance = variableInstance;
-//    }
-//
-//
-//    /**
-//     * @return the variableInstance
-//     */
-//    public int getVariableInstance()
-//    {
-//        return _variableInstance;
-//    }
-
-
-
-//    public void setMessages( final Collection<Message> messages )
-//    {
-//        _messages.clear();
-//        Iterator<Message>  i = messages.iterator();
-//        while (i.hasNext()) {
-//            addMessage( i.next() );
-//        }
-//    }
-//
-//
-//    public boolean addMessage( final Message message )
-//    {
-//        if (message == null) {
-//            return false;
-//        }
-//
-//        if (!_messages.contains( message )) {
-//            return _messages.add( message );
-//        }
-//
-//        return false;
-//    }
-//
-//
-//    public Collection<Message> getMessages()
-//    {
-//        return _messages;
-//    }
-
-
-
-    public void setVariableValue(
-                    final Collection<? extends VariableValue> values
-                    )
-    {
-        _variableValue.clear();
-        if (values != null) {
-            _variableValue.addAll( values );
-        }
-    }
-
-
-    public Collection<VariableValue> getVariableValue()
-    {
-        return _variableValue;
     }
 
 
@@ -335,16 +293,12 @@ public class CollectedSystemObject
     {
         return "CollectedSystemObject[" + super.toString()
                         + ", flag=" + getFlag()
-                        + ", items=" + getReference()
+                        + ", reference=" + getReference()
 //                        + ", variable_instance=" + getVariableInstance()
 //                        + ", messages=" + getMessages()
                         + ", variable_values=" + getVariableValue()
                         + "]";
     }
-
-//    public void setMessages( final Collection<Message> messages )
-//    public boolean addMessage( final Message message )
-//    public Collection<Message> getMessages()
 
 }
 // CollectedSystemObject

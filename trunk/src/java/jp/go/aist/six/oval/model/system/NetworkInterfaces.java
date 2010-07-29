@@ -34,7 +34,6 @@ import java.util.Iterator;
  */
 public class NetworkInterfaces
     extends KeyedContainer<String,NetworkInterface>
-//implements Serializable, Iterable<NetworkInterface>
 {
 
     /**
