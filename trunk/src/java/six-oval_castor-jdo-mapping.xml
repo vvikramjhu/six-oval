@@ -878,7 +878,7 @@
         identity="persistentID"
         key-generator="IDENTITY">
         <cache-type type="unlimited"/>
-        <map-to table="oval_s_variable_value"/>
+        <map-to table="oval_s_object__variable_value"/>
 
         <field name="persistentID" type="string">
             <sql name="PID" type="integer"/>
@@ -889,7 +889,7 @@
         </field>
 
         <field name="value" type="string">
-            <sql name="data" type="char"/>
+            <sql name="value" type="char"/>
         </field>
 
         <!-- (FK) -->

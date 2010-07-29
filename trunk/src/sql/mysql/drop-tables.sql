@@ -35,7 +35,7 @@ DROP TABLE IF EXISTS oval_s_item_file;
 DROP TABLE IF EXISTS oval_s_item_registry;
 DROP TABLE IF EXISTS oval_s_item;
 DROP TABLE IF EXISTS oval_s_item_reference;
-DROP TABLE IF EXISTS oval_s_variable_value;
+DROP TABLE IF EXISTS oval_s_object__variable_value;
 DROP TABLE IF EXISTS oval_s_object;
 DROP TABLE IF EXISTS oval_s_interface;
 DROP TABLE IF EXISTS oval_s_sc;

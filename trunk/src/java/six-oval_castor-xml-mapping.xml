@@ -1055,6 +1055,12 @@
             <bind-xml name="flag" node="attribute"/>
         </field>
 
+        <field name="variableValue" 
+            type="jp.go.aist.six.oval.model.system.VariableValue"
+            collection="collection">
+            <bind-xml name="variable_value" node="element"/>
+        </field>
+
         <field name="reference" 
             type="jp.go.aist.six.oval.model.system.ItemReference"
             collection="collection">
@@ -1070,19 +1076,6 @@
             <bind-xml name="message" node="element"/>
         </field>
 -->
-
-<!--
-        <field name="variableInstance" type="int">
-            <bind-xml name="variable_instance" node="attribute"/>
-        </field>
--->
-
-        <field name="variableValue" 
-            type="jp.go.aist.six.oval.model.system.VariableValue"
-            collection="collection">
-            <bind-xml name="variable_value" node="element"/>
-        </field>
-
     </class>
 
 

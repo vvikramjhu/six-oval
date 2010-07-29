@@ -44,6 +44,12 @@ public class LocalOvalRepositoryTest
     private Object[][] _ovalResultsProvider()
     {
         return new Object[][] {
+                        // windows vulnerability, IE6, CVE-2006-1189
+                        {
+                            "test/data/result/oval-2010-06-15.05.04.34_results.xml",
+                        }
+                        ,
+
                         // windows vulnerability, CVE-2010-0176
                         {
                             "test/data/result/oval-2010-07-15.03.55.24_CVE-2010-0176_results.xml",

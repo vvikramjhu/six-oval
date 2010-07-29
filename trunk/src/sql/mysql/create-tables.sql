@@ -714,13 +714,13 @@ CHARACTER SET utf8;
 /* ============================================================== */
 /* VariableValue                                                  */
 /* ============================================================== */
-CREATE TABLE IF NOT EXISTS oval_s_variable_value
+CREATE TABLE IF NOT EXISTS oval_s_object__variable_value
 (
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
     variable_id         VARCHAR(64)     NOT NULL,
                         /* e.g. oval:org.mitre.oval:var:419 */
-    data                VARCHAR(255),
+    value               VARCHAR(255),
 
     /* (FK) */
     s_object__PID       VARCHAR(64)     NOT NULL,
