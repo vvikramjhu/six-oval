@@ -39,8 +39,8 @@ public class DefinitionResult
 //    private CriteriaResult  _criteria;
 //    //{0..1}
 
-    public static final int  DEFAULT_VARIABLE_INSTANCE = 1;
 
+    public static final int  DEFAULT_VARIABLE_INSTANCE = 1;
     private int  _variableInstance = DEFAULT_VARIABLE_INSTANCE;
     //{xsd:nonNegativeInteger, optional, default="1"}
 
@@ -97,6 +97,8 @@ public class DefinitionResult
 
 
 
+    /**
+     */
     public void setVariableInstance(
                     final int variableInstance
                     )
@@ -114,57 +116,6 @@ public class DefinitionResult
     {
         return _variableInstance;
     }
-
-
-
-    // /**
-    // * @return the criteria
-    // */
-    // public Criteria getCriteria()
-    // {
-    // return _criteria;
-    // }
-    //
-    //
-    //
-    // /**
-    // * @param criteria the criteria to set
-    // */
-    // public void setCriteria( final Criteria criteria )
-    // {
-    // this._criteria = criteria;
-    // }
-    //
-    //
-    //
-    // public void setMessages( final Collection<Message> messages )
-    // {
-    // _messages.clear();
-    // Iterator<Message> i = messages.iterator();
-    // while (i.hasNext()) {
-    // addMessage( i.next() );
-    // }
-    // }
-    //
-    //
-    // public boolean addMessage( final Message message )
-    // {
-    // if (message == null) {
-    // return false;
-    // }
-    //
-    // if (!_messages.contains( message )) {
-    // return _messages.add( message );
-    // }
-    //
-    // return false;
-    // }
-    //
-    //
-    // public Collection<Message> getMessages()
-    // {
-    // return _messages;
-    // }
 
 
 
@@ -219,15 +170,14 @@ public class DefinitionResult
 
 
 
-    // **************************************************************
-    // java.lang.Object
-    // **************************************************************
+    //**************************************************************
+    //  java.lang.Object
+    //**************************************************************
 
     @Override
     public String toString()
     {
-        return "DefinitionResult[" + super.toString()
-                        + "]";
+        return "DefinitionResult[" + super.toString() + "]";
     }
 
 }

@@ -44,7 +44,7 @@ public class SystemResult
     //{0..1}
 
 
-    private OvalSystemCharacteristics  _ovalSystemCharacteristics;
+    private OvalSystemCharacteristics  _ovalSC;
     //{1..1}
 
 
@@ -71,6 +71,21 @@ public class SystemResult
     }
 
 
+    /**
+     * constructor.
+     */
+    public SystemResult(
+                    final OvalSystemCharacteristics sc,
+                    final DefinitionResults definitions,
+                    final TestResults tests
+                    )
+    {
+        setOvalSystemCharacteristics( sc );
+        setDefinitions( definitions );
+        setTests( tests );
+    }
+
+
 
     /**
      */
@@ -82,8 +97,6 @@ public class SystemResult
     }
 
 
-    /**
-     */
     public DefinitionResults getDefinitions()
     {
         return _definitions;
@@ -91,37 +104,37 @@ public class SystemResult
 
 
 
-//    public void setDefinitionResults(
-//                    final Collection<DefinitionResult> results
-//                    )
-//    {
-//        _definitions.clear();
-//        if (results == null  ||  results.size() == 0) {
-//            return;
-//        }
-//
-//        for (DefinitionResult  result : results) {
-//            addDefinitionResult( result );
-//        }
-//    }
-//
-//
-//    public boolean addDefinitionResult(
-//                    final DefinitionResult result
-//                    )
-//    {
-//        if (result == null) {
-//            return false;
-//        }
-//
-//        return _definitions.add( result );
-//    }
-//
-//
-//    public Collection<DefinitionResult> getDefinitionResults()
-//    {
-//        return _definitions;
-//    }
+    /**
+     */
+    public void setTests(
+                    final TestResults tests
+                    )
+    {
+        _tests = tests;
+    }
+
+
+    public TestResults getTests()
+    {
+        return _tests;
+    }
+
+
+
+    /**
+     */
+    public void setOvalSystemCharacteristics(
+                    final OvalSystemCharacteristics sc
+                    )
+    {
+        _ovalSC = sc;
+    }
+
+
+    public OvalSystemCharacteristics getOvalSystemCharacteristics()
+    {
+        return _ovalSC;
+    }
 
 
 
@@ -135,44 +148,14 @@ public class SystemResult
     }
 
 
-    /**
-     */
     public String getDefinitionsDigest()
     {
-        DefinitionResults  definitions = getDefinitions();
-        _definitionsDigest = (definitions == null ? null : definitions.getDigest());
+//        if (_definitionsDigest == null) {
+//            DefinitionResults  definitions = getDefinitions();
+//            _definitionsDigest = (definitions == null ? null : definitions.getDigest());
+//        }
 
         return _definitionsDigest;
-    }
-
-
-
-    public void setOvalSystemCharacteristics(
-                    final OvalSystemCharacteristics sc
-                    )
-    {
-        _ovalSystemCharacteristics = sc;
-    }
-
-
-    public OvalSystemCharacteristics getOvalSystemCharacteristics()
-    {
-        return _ovalSystemCharacteristics;
-    }
-
-
-
-    public void setTests(
-                    final TestResults tests
-                    )
-    {
-        _tests = tests;
-    }
-
-
-    public TestResults getTests()
-    {
-        return _tests;
     }
 
 

@@ -932,10 +932,11 @@ CREATE TABLE IF NOT EXISTS oval_r_definition
 (
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
-    id                  VARCHAR(64)    NOT NULL,
+    definition_id       VARCHAR(64)     NOT NULL,
                         /* e.g. oval:org.mitre.oval:def:1001 */
     version             INT             NOT NULL,
-    result              VARCHAR(16)     NOT NULL,
+    variable_instance   INT                         DEFAULT 1,
+    result              VARCHAR(14)     NOT NULL,
                         /* ENUM( 'true', 'false', ..., 'not applicable') */
 
     /* (FK) */
@@ -947,7 +948,7 @@ CREATE TABLE IF NOT EXISTS oval_r_definition
     
     /* INDEX */
     INDEX (r_system__PID),
-    INDEX (id)
+    INDEX (definition_id)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;

@@ -34,7 +34,7 @@ public abstract class OvalResultElement
 {
 
     private Result  _result;
-    //{required} - oval-res:DefinitionType
+    //{required} // oval-res:DefinitionType
 
 
 
@@ -73,6 +73,8 @@ public abstract class OvalResultElement
 
 
 
+    /**
+     */
     public void setResult(
                     final Result result
                     )

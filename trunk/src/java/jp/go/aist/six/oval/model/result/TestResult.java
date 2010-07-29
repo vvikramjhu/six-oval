@@ -126,12 +126,12 @@ public class TestResult
     /**
      */
     public void setTestedVariable(
-                    final Collection<? extends TestedVariable> vars
+                    final Collection<? extends TestedVariable> variables
                     )
     {
         _testedVariable.clear();
-        if (vars != null  &&  vars != _testedVariable) {
-            _testedVariable.addAll( vars );
+        if (variables != null  &&  variables != _testedVariable) {
+            _testedVariable.addAll( variables );
         }
     }
 
@@ -159,6 +159,8 @@ public class TestResult
 
 
 
+    /**
+     */
     public void setVariableInstance(
                     final int variableInstance
                     )
@@ -179,6 +181,8 @@ public class TestResult
 
 
 
+    /**
+     */
     public void setCheckExistence(
                     final Existence existence
                     )
@@ -194,6 +198,8 @@ public class TestResult
 
 
 
+    /**
+     */
     public void setCheck(
                     final Check check
                     )
@@ -212,15 +218,13 @@ public class TestResult
     /**
      */
     public void setStateOperator(
-                    final Operator stateOperator
+                    final Operator operator
                     )
     {
-        _stateOperator = stateOperator;
+        _stateOperator = operator;
     }
 
 
-    /**
-     */
     public Operator getStateOperator()
     {
         return (_stateOperator == null ? DEFAULT_STATE_OPERATOR : _stateOperator);
@@ -286,8 +290,7 @@ public class TestResult
     @Override
     public String toString()
     {
-        return "TestResult[" + super.toString()
-                        + "]";
+        return "TestResult[" + super.toString() + "]";
     }
 
 }

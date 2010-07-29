@@ -1168,7 +1168,7 @@
 
 
     <!-- ******************************************************* -->
-    <!-- DefinitionResult                                         -->
+    <!-- DefinitionResult                                        -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.result.DefinitionResult"
         identity="persistentID"
@@ -1181,11 +1181,15 @@
         </field>
 
         <field name="ovalID" type="string">
-            <sql name="id" type="char"/>
+            <sql name="definition_id" type="char"/>
         </field>
 
         <field name="ovalVersion" type="integer">
             <sql name="version" type="integer"/>
+        </field>
+
+        <field name="variableInstance" type="integer">
+            <sql name="variable_instance" type="integer"/>
         </field>
 
         <field name="result"
