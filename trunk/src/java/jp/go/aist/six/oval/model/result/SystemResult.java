@@ -48,6 +48,12 @@ public class SystemResult
     //{1..1}
 
 
+    //TODO:
+    // Since the xsd:key "definitionInstanceKey" is composed of
+    // @definition_id, @version, and @variable_instance,
+    // DefinitionResults may contain multiple elements
+    // whose @definition_id is the same.
+    // So, digest must be computed from @definition_id set.
     private String  _definitionsDigest;
 
 
