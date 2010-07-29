@@ -34,7 +34,7 @@ DELETE FROM oval_s_item_uname;
 DELETE FROM oval_s_item_file;
 DELETE FROM oval_s_item_registry;
 DELETE FROM oval_s_item;
-DELETE FROM oval_s_item_reference;
+DELETE FROM oval_s_object__item_reference;
 DELETE FROM oval_s_object__variable_value;
 DELETE FROM oval_s_object;
 DELETE FROM oval_s_interface;

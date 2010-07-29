@@ -936,7 +936,7 @@
         key-generator="IDENTITY"
         >
         <cache-type type="unlimited"/>
-        <map-to table="oval_s_item_reference"/>
+        <map-to table="oval_s_object__item_reference"/>
 
         <field name="persistentID" type="string">
             <sql name="PID" type="integer"/>

@@ -762,7 +762,7 @@ CHARACTER SET utf8;
 /* ============================================================== */
 /* ItemReference                                                  */
 /* ============================================================== */
-CREATE TABLE IF NOT EXISTS oval_s_item_reference
+CREATE TABLE IF NOT EXISTS oval_s_object__item_reference
 (
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
