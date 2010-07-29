@@ -37,6 +37,7 @@ public class Directive
     private boolean  _reported;
     //{required}
 
+
     public static final Content  DEFAULT_CONTENT = Content.FULL;
     private Content  _content;
     //{optional, default="full"}
@@ -76,13 +77,14 @@ public class Directive
 
 
 
+    /**
+     */
     public void setReported(
                     final boolean reported
                     )
     {
         _reported = reported;
     }
-
 
 
     public boolean isReported()
@@ -92,6 +94,8 @@ public class Directive
 
 
 
+    /**
+     */
     public void setContent(
                     final Content content
                     )
@@ -100,35 +104,10 @@ public class Directive
     }
 
 
-
     public Content getContent()
     {
         return (_content == null ? DEFAULT_CONTENT : _content);
     }
-
-
-
-//    //**************************************************************
-//    //  Dependent
-//    //**************************************************************
-//
-//    private SystemResult _master;
-//
-//
-//
-//    public void setMasterObject(
-//                    final SystemResult master
-//                    )
-//    {
-//        _master = master;
-//    }
-//
-//
-//
-//    public SystemResult getMasterObject()
-//    {
-//        return _master;
-//    }
 
 
 

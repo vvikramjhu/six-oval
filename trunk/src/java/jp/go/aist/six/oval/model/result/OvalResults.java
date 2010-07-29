@@ -47,11 +47,11 @@ public class OvalResults
     private Results  _results;
     //{1..1}
 
-//    private Collection<SystemResult>  _systemResults = new ArrayList<SystemResult>();
-//    //{1..*}
 
 
-
+    /**
+     * Constructor.
+     */
     public OvalResults()
     {
     }
@@ -85,8 +85,6 @@ public class OvalResults
     }
 
 
-    /**
-     */
     public Directives getDirectives()
     {
         return _directives;
@@ -94,6 +92,8 @@ public class OvalResults
 
 
 
+    /**
+     */
     public void setDefinitions(
                     final OvalDefinitions definitions
                     )
@@ -112,7 +112,8 @@ public class OvalResults
     /**
      */
     public void setResults(
-                    final Results results )
+                    final Results results
+                    )
     {
         _results = results;
     }
@@ -128,45 +129,6 @@ public class OvalResults
 
 
 
-//    public void setResults(
-//                    final Collection<SystemResult> results
-//                    )
-//    {
-//        if (results != _systemResults) {
-//            _systemResults.clear();
-//            if (results == null  ||  results.size() == 0) {
-//                return;
-//            }
-//
-//            for (SystemResult  system : results) {
-//                addResult( system );
-//            }
-//        }
-//    }
-//
-//
-//    public boolean addResult(
-//                    final SystemResult result
-//                    )
-//    {
-//        if (result == null) {
-//            return false;
-//        }
-//
-////        System.out.println( "### setting the container OvalResults ###" );
-////        system.setMasterObject( this );
-//        return _systemResults.add( result );
-//    }
-//
-//
-//    public Collection<SystemResult> getResults()
-//    {
-////        System.out.println( "### OvalResults.getSystems() ###" );
-//        return _systemResults;
-//    }
-
-
-
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -175,6 +137,7 @@ public class OvalResults
     public String toString()
     {
         return "OvalResults[generator=" + getGenerator()
+                        + ", directives=" + getDirectives()
                         + ", results=" + getResults()
                         + "]";
     }

@@ -35,7 +35,7 @@ public class Directives
     extends AbstractPersistable
 {
 
-    protected static enum Category
+    protected static enum ResultType
     {
         TRUE,
         FALSE,
@@ -45,26 +45,9 @@ public class Directives
         NOT_APPLICABLE;
     }
 
-    private Map<Category, Directive>  _directives =
-        new EnumMap<Category, Directive>( Category.class );
-
-//    private Directive  _definitionTrue;
-//    //{1..1}
-//
-//    private Directive  _definitionFalse;
-//    //{1..1}
-//
-//    private Directive  _definitionUnknown;
-//    //{1..1}
-//
-//    private Directive  _definitionError;
-//    //{1..1}
-//
-//    private Directive  _definitionNotEvaluated;
-//    //{1..1}
-//
-//    private Directive  _definitionNotApplicable;
-//    //{1..1}
+    private Map<ResultType, Directive>  _directives =
+        new EnumMap<ResultType, Directive>( ResultType.class );
+    //{1..1}
 
 
 
@@ -102,17 +85,15 @@ public class Directives
      */
     public Directive getDefinitionTrue()
     {
-        return _directives.get( Category.TRUE );
+        return _directives.get( ResultType.TRUE );
     }
 
 
-    /**
-     */
     public void setDefinitionTrue(
                     final Directive directive
                     )
     {
-        _directives.put( Category.TRUE, directive );
+        _directives.put( ResultType.TRUE, directive );
     }
 
 
@@ -121,17 +102,15 @@ public class Directives
      */
     public Directive getDefinitionFalse()
     {
-        return _directives.get( Category.FALSE );
+        return _directives.get( ResultType.FALSE );
     }
 
 
-    /**
-     */
     public void setDefinitionFalse(
                     final Directive directive
                     )
     {
-        _directives.put( Category.FALSE, directive );
+        _directives.put( ResultType.FALSE, directive );
     }
 
 
@@ -140,17 +119,15 @@ public class Directives
      */
     public Directive getDefinitionUnknown()
     {
-        return _directives.get( Category.UNKNOWN );
+        return _directives.get( ResultType.UNKNOWN );
     }
 
 
-    /**
-     */
     public void setDefinitionUnknown(
                     final Directive directive
                     )
     {
-        _directives.put( Category.UNKNOWN, directive );
+        _directives.put( ResultType.UNKNOWN, directive );
     }
 
 
@@ -159,17 +136,15 @@ public class Directives
      */
     public Directive getDefinitionError()
     {
-        return _directives.get( Category.ERROR );
+        return _directives.get( ResultType.ERROR );
     }
 
 
-    /**
-     */
     public void setDefinitionError(
                     final Directive directive
                     )
     {
-        _directives.put( Category.ERROR, directive );
+        _directives.put( ResultType.ERROR, directive );
     }
 
 
@@ -178,17 +153,15 @@ public class Directives
      */
     public Directive getDefinitionNotEvaluated()
     {
-        return _directives.get( Category.NOT_EVALUATED );
+        return _directives.get( ResultType.NOT_EVALUATED );
     }
 
 
-    /**
-     */
     public void setDefinitionNotEvaluated(
                     final Directive directive
                     )
     {
-        _directives.put( Category.NOT_EVALUATED, directive );
+        _directives.put( ResultType.NOT_EVALUATED, directive );
     }
 
 
@@ -197,17 +170,15 @@ public class Directives
      */
     public Directive getDefinitionNotApplicable()
     {
-        return _directives.get( Category.NOT_APPLICABLE );
+        return _directives.get( ResultType.NOT_APPLICABLE );
     }
 
 
-    /**
-     */
     public void setDefinitionNotApplicable(
                     final Directive directive
                     )
     {
-        _directives.put( Category.NOT_APPLICABLE, directive );
+        _directives.put( ResultType.NOT_APPLICABLE, directive );
     }
 
 

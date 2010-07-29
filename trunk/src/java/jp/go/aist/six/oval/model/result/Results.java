@@ -21,8 +21,8 @@
 package jp.go.aist.six.oval.model.result;
 
 import jp.go.aist.six.oval.model.Container;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.Iterator;
 
 
 
@@ -62,16 +62,26 @@ public class Results
                     final SystemResult[] system
                     )
     {
-        super( Arrays.asList( system ) );
+        super( system );
     }
 
 
 
+    /**
+     */
     public void setSystem(
                     final Collection<? extends SystemResult> system
                     )
     {
         reset( system );
+    }
+
+
+    public boolean addSystem(
+                    final SystemResult system
+                    )
+    {
+        return add( system );
     }
 
 
@@ -81,18 +91,10 @@ public class Results
     }
 
 
-//    public boolean addSystem(
-//                    final SystemResult system
-//                    )
-//    {
-//        return add( system );
-//    }
-
-
-//    public Iterator<SystemResult> iterateSystems()
-//    {
-//        return iterator();
-//    }
+    public Iterator<SystemResult> iterateSystem()
+    {
+        return iterator();
+    }
 
 
 

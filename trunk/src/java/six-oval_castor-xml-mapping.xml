@@ -1209,22 +1209,6 @@
 
 
     <!-- ======================================================= -->
-    <!-- Results                                                 -->
-    <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.result.Results">
-        <map-to xml="results"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
-
-        <field name="system" 
-            type="jp.go.aist.six.oval.model.result.SystemResult"
-            collection="collection">
-            <bind-xml name="system" node="element"/>
-        </field>
-    </class>
-
-
-
-    <!-- ======================================================= -->
     <!-- Directives                                              -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.result.Directives">
@@ -1278,6 +1262,24 @@
         <field name="content" type="string" 
             handler="jp.go.aist.six.oval.core.xml.ContentHandler">
             <bind-xml name="content" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <!-- ======================================================= -->
+    <!-- Results                                                 -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.result.Results">
+        <map-to xml="results"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
+
+        <field name="system" 
+            type="jp.go.aist.six.oval.model.result.SystemResult"
+            collection="collection"
+            set-method="addSystem"
+            get-method="iterateSystem">
+            <bind-xml name="system" node="element"/>
         </field>
     </class>
 
