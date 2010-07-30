@@ -804,6 +804,7 @@
             <sql name="mac_address" type="char"/>
         </field>
 
+        <!-- (FK) -->
         <field name="masterObject.masterObject" 
             type="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics">
             <sql name="s_sc__PID"/>
@@ -873,7 +874,6 @@
         <field name="targetEntityPersistentID" type="string">
             <sql name="d_object__PID" type="char"/>
         </field>
-
     </class>
 
 
@@ -930,7 +930,6 @@
         <field name="dependentPersistentID" type="string">
             <sql name="s_object__PID" type="char"/>
         </field>
-
     </class>
 
 
@@ -951,7 +950,7 @@
         </field>
 
         <field name="itemRef" type="integer">
-            <sql name="item_id" type="integer"/>
+            <sql name="item_ref" type="integer"/>
         </field>
 
         <!-- (FK) -->

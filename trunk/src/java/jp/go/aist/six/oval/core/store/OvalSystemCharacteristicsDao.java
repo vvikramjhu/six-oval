@@ -24,7 +24,6 @@ import jp.go.aist.six.oval.core.model.system.OvalSystemCharacteristicsObjectAsso
 import jp.go.aist.six.oval.model.system.CollectedSystemObject;
 import jp.go.aist.six.oval.model.system.CollectedSystemObjects;
 import jp.go.aist.six.oval.model.system.Item;
-import jp.go.aist.six.oval.model.system.ItemReference;
 import jp.go.aist.six.oval.model.system.NetInterface;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.SystemData;
@@ -93,9 +92,6 @@ public class OvalSystemCharacteristicsDao
         if (objects != null  &&  objects.size() > 0) {
             for (CollectedSystemObject  object : objects) {
                 object.setMasterObject( sc );
-                for (ItemReference  item_ref : object.getReference()) {
-                    item_ref.setMasterObject( object );
-                }
                 getForwardingDao( CollectedSystemObject.class ).create( object );
 
                 OvalSystemCharacteristicsObjectAssociation  sco_assoc =

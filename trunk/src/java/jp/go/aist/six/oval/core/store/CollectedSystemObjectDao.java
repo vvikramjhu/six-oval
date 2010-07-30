@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.system.CollectedSystemObject;
+import jp.go.aist.six.oval.model.system.ItemReference;
 import jp.go.aist.six.oval.model.system.VariableValue;
 import java.util.Collection;
 
@@ -54,8 +55,15 @@ public class CollectedSystemObjectDao
                     )
     {
         Collection<VariableValue>  vv = object.getVariableValue();
-        for(VariableValue v : vv) {
-            v.setMasterObject( object );
+        if (vv != null  &&  vv.size() > 0) {
+            for(VariableValue v : vv) {
+                v.setMasterObject( object );
+            }
+        }
+
+        Collection<ItemReference>  references = object.getReference();
+        for (ItemReference  r : references) {
+            r.setMasterObject( object );
         }
 
         return super.create( object );

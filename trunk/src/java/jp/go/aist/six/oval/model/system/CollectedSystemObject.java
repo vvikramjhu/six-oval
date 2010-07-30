@@ -40,9 +40,9 @@ public class CollectedSystemObject
 {
 
 //  private Collection<Message>  _messages = new ArrayList<Message>();
+    //{0..*}
     /*** We have never seen a result which has multiple messages. ***/
     private String  _message;
-    //{0..*}
 
 
     private Collection<VariableValue>  _variableValue = new ArrayList<VariableValue>();
@@ -58,7 +58,6 @@ public class CollectedSystemObject
     //{xsd:nonNegativeInteger, optional, default="1"}
 
 
-    //TODO: implement this?
     private String  _comment;
 
 

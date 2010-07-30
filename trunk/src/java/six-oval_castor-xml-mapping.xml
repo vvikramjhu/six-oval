@@ -1092,7 +1092,6 @@
         <field name="itemRef" type="int">
             <bind-xml name="item_ref" node="attribute"/>
         </field>
-
     </class>
 
 

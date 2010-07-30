@@ -768,7 +768,7 @@ CREATE TABLE IF NOT EXISTS oval_s_object__item_reference
 (
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
-    item_id             INT             NOT NULL,
+    item_ref            INT             NOT NULL,
 
     /* (FK) */
     s_object__PID       INT             NOT NULL,
@@ -777,7 +777,7 @@ CREATE TABLE IF NOT EXISTS oval_s_object__item_reference
     PRIMARY KEY (PID),
     
     /* INDEX */
-    UNIQUE (s_object__PID, item_id)
+    UNIQUE (s_object__PID, item_ref)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;
