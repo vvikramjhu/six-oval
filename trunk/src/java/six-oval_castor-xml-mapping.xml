@@ -1188,7 +1188,7 @@
         </field>
 
         <field name="results" 
-            type="jp.go.aist.six.oval.model.result.Results">
+            type="jp.go.aist.six.oval.model.result.SystemResults">
             <bind-xml name="results" node="element"/>
         </field>
 <!--
@@ -1263,9 +1263,9 @@
 
 
     <!-- ======================================================= -->
-    <!-- Results                                                 -->
+    <!-- SystemResults                                           -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.result.Results">
+    <class name="jp.go.aist.six.oval.model.result.SystemResults">
         <map-to xml="results"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 

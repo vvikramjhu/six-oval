@@ -32,14 +32,14 @@ import java.util.Iterator;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class Results
+public class SystemResults
     extends Container<SystemResult> //{1..*}
 {
 
     /**
      * Constructor.
      */
-    public Results()
+    public SystemResults()
     {
     }
 
@@ -47,7 +47,7 @@ public class Results
     /**
      * Constructor.
      */
-    public Results(
+    public SystemResults(
                     final Collection<? extends SystemResult> system
                     )
     {
@@ -58,7 +58,7 @@ public class Results
     /**
      * Constructor.
      */
-    public Results(
+    public SystemResults(
                     final SystemResult[] system
                     )
     {
@@ -105,10 +105,10 @@ public class Results
     @Override
     public String toString()
     {
-        return "Results["
+        return "SystemResults["
                         + super.toString()
                         + "]";
     }
 
 }
-// Results
+// SystemResults

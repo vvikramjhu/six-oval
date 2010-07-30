@@ -44,7 +44,7 @@ public class OvalResults
     private OvalDefinitions  _definitions;
     //{0..1}
 
-    private Results  _results;
+    private SystemResults  _results;
     //{1..1}
 
 
@@ -112,17 +112,14 @@ public class OvalResults
     /**
      */
     public void setResults(
-                    final Results results
+                    final SystemResults results
                     )
     {
         _results = results;
     }
 
 
-
-    /**
-     */
-    public Results getResults()
+    public SystemResults getResults()
     {
         return _results;
     }
