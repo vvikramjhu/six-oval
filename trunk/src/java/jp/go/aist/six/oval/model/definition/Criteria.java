@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.definition;
 import jp.go.aist.six.oval.model.common.Operator;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 
 
@@ -63,8 +64,7 @@ public class Criteria
 
     public Operator getOperator()
     {
-        return (_operator == null ? DEFAULT_OPERATOR : _operator)
-        ;
+        return (_operator == null ? DEFAULT_OPERATOR : _operator);
     }
 
 
@@ -101,6 +101,12 @@ public class Criteria
     public Collection<CriteriaElement> getElements()
     {
         return _elements;
+    }
+
+
+    public Iterator<CriteriaElement> iterateElements()
+    {
+        return _elements.iterator();
     }
 
 

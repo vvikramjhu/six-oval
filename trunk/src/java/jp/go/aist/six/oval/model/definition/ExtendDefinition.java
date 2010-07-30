@@ -48,10 +48,10 @@ public class ExtendDefinition
      * Constructor.
      */
     public ExtendDefinition(
-                    final String defID
+                    final String definitionID
                     )
     {
-        setDefinitionRef( defID );
+        setDefinitionRef( definitionID );
     }
 
 
