@@ -58,6 +58,10 @@ public class CollectedSystemObject
     //{xsd:nonNegativeInteger, optional, default="1"}
 
 
+    //TODO: implement this?
+//    private String  _comment;
+
+
     private Flag  _flag;
     //{required}
 

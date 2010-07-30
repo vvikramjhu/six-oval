@@ -33,7 +33,7 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class NetworkInterfaces
-    extends KeyedContainer<String,NetworkInterface>
+    extends KeyedContainer<String, NetworkInterface>
 {
 
     /**
@@ -48,27 +48,27 @@ public class NetworkInterfaces
      * Constructor.
      */
     public NetworkInterfaces(
-                    Collection<? extends NetworkInterface> ifs
+                    Collection<? extends NetworkInterface> netifs
                     )
     {
-        super( ifs );
+        super( netifs );
     }
-
 
 
     /**
      * Constructor.
      */
     public NetworkInterfaces(
-                    NetworkInterface[] ifs
+                    NetworkInterface[] netifs
                     )
     {
-        super( ifs );
+        super( netifs );
     }
 
 
 
-
+    /**
+     */
     public void setInterface(
                     final Collection<? extends NetworkInterface> netifs
                     )

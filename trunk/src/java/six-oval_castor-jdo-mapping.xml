@@ -986,7 +986,6 @@
         <field name="masterPersistentID" type="string">
             <sql name="s_sc__PID" type="char"/>
         </field>
-
     </class>
 
 

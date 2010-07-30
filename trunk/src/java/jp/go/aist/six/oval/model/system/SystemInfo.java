@@ -52,6 +52,11 @@ public class SystemInfo
     //{1..1}
 
 
+    //TODO: add property which denotes the OS name.
+    // The domain of the OS names is the same as the affected platforms.
+    // XSD namaspace should be, e.g. http://.../six.
+
+
 
     /**
      * Constructor.
