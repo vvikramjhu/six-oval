@@ -27,6 +27,7 @@ import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Operator;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 
 
@@ -191,6 +192,12 @@ public abstract class Test
     public Collection<StateRef> getState()
     {
         return _stateRef;
+    }
+
+
+    public Iterator<StateRef> iterateState()
+    {
+        return _stateRef.iterator();
     }
 
 
