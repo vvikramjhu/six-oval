@@ -833,6 +833,14 @@
             <sql name="version" type="integer"/>
         </field>
 
+        <field name="variableInstance" type="integer">
+            <sql name="variable_instance" type="integer"/>
+        </field>
+
+        <field name="comment" type="string">
+            <sql name="comment" type="char"/>
+        </field>
+
         <field name="flag" 
             type="jp.go.aist.six.oval.model.system.Flag">
             <sql name="flag" type="char"/>
@@ -842,15 +850,15 @@
             <sql name="message" type="char"/>
         </field>
 
-        <!-- CollectedSystemObject : ItemReference = 1 : n -->
-        <field name="reference"
-            type="jp.go.aist.six.oval.model.system.ItemReference"
+        <field name="variableValue"
+            type="jp.go.aist.six.oval.model.system.VariableValue"
             collection="collection">
             <sql many-key="s_object__PID"/>
         </field>
 
-        <field name="variableValue"
-            type="jp.go.aist.six.oval.model.system.VariableValue"
+        <!-- CollectedSystemObject : ItemReference = 1 : n -->
+        <field name="reference"
+            type="jp.go.aist.six.oval.model.system.ItemReference"
             collection="collection">
             <sql many-key="s_object__PID"/>
         </field>

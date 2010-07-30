@@ -59,7 +59,7 @@ public class CollectedSystemObject
 
 
     //TODO: implement this?
-//    private String  _comment;
+    private String  _comment;
 
 
     private Flag  _flag;
@@ -225,6 +225,25 @@ public class CollectedSystemObject
 
 
 
+    /**
+     */
+    public void setComment(
+                    final String flag
+                    )
+    {
+        _comment = flag;
+    }
+
+
+    public String getComment()
+    {
+        return _comment;
+    }
+
+
+
+    /**
+     */
     public void setFlag(
                     final Flag flag
                     )

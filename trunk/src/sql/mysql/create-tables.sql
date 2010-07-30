@@ -692,6 +692,8 @@ CREATE TABLE IF NOT EXISTS oval_s_object
     flag                VARCHAR(16)     NOT NULL,
                         /* ENUM( 'error', ..., 'not applicable') */
 
+    variable_instance   INT,
+    comment             VARCHAR(255),
     message             VARCHAR(255),
 
     /* (FK) */
