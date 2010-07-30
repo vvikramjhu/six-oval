@@ -33,7 +33,7 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class SystemObjects
-    extends OvalElementContainer<SystemObject>
+    extends OvalElementContainer<SystemObject>  //{1..*}
 {
 
     /**

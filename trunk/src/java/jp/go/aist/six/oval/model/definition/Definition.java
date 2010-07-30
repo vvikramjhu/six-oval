@@ -48,39 +48,21 @@ public class Definition
     private Metadata  _metadata;
     //{1..1}
 
+
 //  private Notes  _notes;
     //{0..1}
+
 
     private Criteria  _criteria;
     //{0..1}
 
-    // This field is moved to DefinitionCriteria class.
-//    private String  _criteriaXml;
-
 
     private DefinitionClass  _definitionClass;
-    //{ClassEnumeration, required}
-
-
-    // metadata //
-//    private String  _title;             //{required}
-//    private String  _description;       //{required}
-//    private Collection<Reference>  _references = new ArrayList<Reference>();    //{0..*}
-//
-//    // metadata/affected //
-//    private Affected  _affected;    //{0..*}
-//                                    //We found NO definition with multiple 'affected' elements.
-//
-//    private Collection<MetadataElement>  _metadataElements =
-//        new ArrayList<MetadataElement>();   //{xsd:any, 0..*}
-
+    //{required}
 
 
     // derived properties //
     private Collection<Cve>  _cves;
-//    private String  _lastModified;    // moved to Metadata
-
-//  private Collection<SystemObject>  _relatedObjects;
 
 
 
@@ -134,6 +116,8 @@ public class Definition
 
 
 
+    /**
+     */
     public void setMetadata(
                     final Metadata metadata
                     )
@@ -152,6 +136,8 @@ public class Definition
 
 
 
+    /**
+     */
     public void setCriteria(
                     final Criteria criteria
                     )
@@ -167,25 +153,8 @@ public class Definition
 
 
 
-//    /**
-//     */
-//    public void setCriteriaXml(
-//                    final String criteriaXml
-//                    )
-//    {
-//        _criteriaXml = criteriaXml;
-//    }
-//
-//
-//    /**
-//     */
-//    public String getCriteriaXml()
-//    {
-//        return _criteriaXml;
-//    }
-
-
-
+    /**
+     */
     public void setDefinitionClass(
                     final DefinitionClass clazz
                     )
@@ -284,42 +253,7 @@ public class Definition
 
 
 
-//    public void setMetadataElements(
-//                    final Collection<MetadataItem> any
-//                    )
-//    {
-////        _metadataElements.clear();
-////        if (any == null  ||  any.size() == 0) {
-////            return;
-////        }
-////
-////        for (MetadataElement  e : any) {
-////            addMetadataElement( e );
-////        }
-//    }
-//
-//
-//    public boolean addMetadataElement(
-//                    final MetadataItem any
-//                    )
-//    {
-//        if (any == null) {
-//            return false;
-//        }
-//
-//        return _metadata.addMetadataItem( any );
-//    }
-//
-//
-//    public Collection<MetadataItem> getMetadataElements()
-//    {
-//        return _metadata.getMetadataItem();
-//    }
-
-
-
 //    /**
-//     * @param notes the notes to set
 //     */
 //    public void setNotes( final Notes notes )
 //    {
@@ -328,7 +262,6 @@ public class Definition
 //
 //
 //    /**
-//     * @return the notes
 //     */
 //    public Notes getNotes()
 //    {

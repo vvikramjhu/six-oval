@@ -25,6 +25,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Iterator;
 
 
 
@@ -42,8 +43,10 @@ public class Affected
     private Collection<Platform>  _platform = new ArrayList<Platform>();
     //{0..*}
 
+
     private Collection<Product>  _product = new ArrayList<Product>();
     //{0..*}
+
 
     private Family  _family;
     //{required}
@@ -106,14 +109,16 @@ public class Affected
 
 
 
+    /**
+     */
     public void setPlatform(
-                    final Collection<? extends Platform> platformList
+                    final Collection<? extends Platform> platforms
                     )
     {
-        if (_platform != platformList) {
+        if (_platform != platforms) {
             _platform.clear();
-            if (platformList != null) {
-                for (Platform  p : platformList) {
+            if (platforms != null) {
+                for (Platform  p : platforms) {
                     addPlatform( p );
                 }
             }
@@ -139,15 +144,23 @@ public class Affected
     }
 
 
+    public Iterator<Platform> iteratePlatform()
+    {
+        return _platform.iterator();
+    }
 
+
+
+    /**
+     */
     public void setProduct(
-                    final Collection<? extends Product> productList
+                    final Collection<? extends Product> products
                     )
     {
-        if (_product != productList) {
+        if (_product != products) {
             _product.clear();
-            if (productList != null) {
-                for (Product  p : productList) {
+            if (products != null) {
+                for (Product  p : products) {
                     addProduct( p );
                 }
             }
@@ -173,7 +186,15 @@ public class Affected
     }
 
 
+    public Iterator<Product> iterateProduct()
+    {
+        return _product.iterator();
+    }
 
+
+
+    /**
+     */
     public void setFamily(
                     final Family family
                     )

@@ -56,6 +56,23 @@ public class StateRef
 
 
 
+    /**
+     */
+    public void setStateRef(
+                    final String stateID
+                    )
+    {
+        setOvalID( stateID );
+    }
+
+
+    public String getStateRef()
+    {
+        return getOvalID();
+    }
+
+
+
     //**************************************************************
     //  Dependent
     //**************************************************************

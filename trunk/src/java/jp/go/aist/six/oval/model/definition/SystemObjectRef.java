@@ -56,6 +56,23 @@ public class SystemObjectRef
 
 
 
+    /**
+     */
+    public void setObjectRef(
+                    final String objectID
+                    )
+    {
+        setOvalID( objectID );
+    }
+
+
+    public String getObjectRef()
+    {
+        return getOvalID();
+    }
+
+
+
     //**************************************************************
     //  Dependent
     //**************************************************************

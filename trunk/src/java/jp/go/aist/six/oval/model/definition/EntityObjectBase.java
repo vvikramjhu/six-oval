@@ -33,7 +33,7 @@ public abstract class EntityObjectBase
     extends EntityBase
 {
 
-    public static final Check  DEFAULT_VARIABLE_CHECK = Check.ALL;
+    public static final Check  DEFAULT_VAR_CHECK = Check.ALL;
     private Check  _varCheck;
     //{optional, default="all"}
 
@@ -69,7 +69,7 @@ public abstract class EntityObjectBase
 
     public Check getVarCheck()
     {
-        return (_varCheck == null ? DEFAULT_VARIABLE_CHECK : _varCheck);
+        return (_varCheck == null ? DEFAULT_VAR_CHECK : _varCheck);
     }
 
 

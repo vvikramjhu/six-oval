@@ -36,8 +36,10 @@ public class Reference
     private String  _source;
     //{xsd:string, required}
 
+
     private String  _refID;
     //{xsd:string, required}
+
 
     private String  _refURL;
     //{xsd:anyURI, optional}
@@ -68,6 +70,8 @@ public class Reference
 
 
 
+    /**
+     */
     public void setSource(
                     final String source
                     )
@@ -83,13 +87,14 @@ public class Reference
 
 
 
+    /**
+     */
     public void setRefID(
                     final String id
                     )
     {
         _refID = id;
     }
-
 
 
     public String getRefID()
@@ -99,13 +104,14 @@ public class Reference
 
 
 
+    /**
+     */
     public void setRefURL(
                     final String url
                     )
     {
         _refURL = url;
     }
-
 
 
     public String getRefURL()

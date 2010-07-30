@@ -43,8 +43,10 @@ public abstract class Test
     private Existence  _checkExistence;
     //{optional, default="at_least_one_exists"}
 
+
     private Check  _check;
     //{required}
+
 
     public static final Operator  DEFAULT_STATE_OPERATOR = Operator.AND;
     private Operator  _stateOperator;
@@ -54,6 +56,7 @@ public abstract class Test
     private SystemObjectRef  _objectRef;
     //{1..1}
     //{0/UnknownTest}
+
 
     private Collection<StateRef>  _stateRef = new ArrayList<StateRef>();
     // {0..*}
@@ -86,10 +89,11 @@ public abstract class Test
     public Test(
                     final String id,
                     final int version,
+                    final String comment,
                     final Check check
                     )
     {
-        super( id, version );
+        super( id, version, comment );
         setCheck( check );
     }
 
@@ -163,9 +167,11 @@ public abstract class Test
                     final Collection<? extends StateRef> ref
                     )
     {
-        _stateRef.clear();
-        if (ref != null  &&  ref != _stateRef) {
-            _stateRef.addAll( ref );
+        if (ref != _stateRef) {
+            _stateRef.clear();
+            if (ref != null) {
+                _stateRef.addAll( ref );
+            }
         }
     }
 
@@ -251,9 +257,9 @@ public abstract class Test
                         + ", check_existence=" + getCheckExistence()
                         + ", check=" + getCheck()
                         + ", state_operator=" + getStateOperator()
-//                        + ", notes=" + getNotes();
                         + ", object_ref=" + getObject()
                         + ", state_ref=" + getState();
+//                      + ", notes=" + getNotes();
     }
 
 }

@@ -42,10 +42,8 @@ public abstract class State
 {
 
     public static final Operator  DEFAULT_OPERATOR = Operator.AND;
-
     private Operator  _operator;
     //{optional, default="AND"}
-    // We found NO state with specific operator.
 
 
 

@@ -36,14 +36,14 @@ public final class DefinitionClass
 
     private static final String  _COMPLIANCE_     = "compliance";
     private static final String  _INVENTORY_      = "inventory";
-    private static final String  _MISCELLANIOUS_  = "miscellanious";
+    private static final String  _MISCELLANEOUS_  = "miscellaneous";
     private static final String  _PATCH_          = "patch";
     private static final String  _VULNERABILITY_  = "vulnerability";
 
 
     public static final DefinitionClass  COMPLIANCE     = new DefinitionClass( _COMPLIANCE_ );
     public static final DefinitionClass  INVENTORY      = new DefinitionClass( _INVENTORY_ );
-    public static final DefinitionClass  MISCELLANIOUS  = new DefinitionClass( _MISCELLANIOUS_ );
+    public static final DefinitionClass  MISCELLANEOUS  = new DefinitionClass( _MISCELLANEOUS_ );
     public static final DefinitionClass  PATCH          = new DefinitionClass( _PATCH_ );
     public static final DefinitionClass  VULNERABILITY  = new DefinitionClass( _VULNERABILITY_ );
 
@@ -54,7 +54,7 @@ public final class DefinitionClass
         HashMap<String, DefinitionClass>  map = new HashMap<String, DefinitionClass>();
         map.put( _COMPLIANCE_,     COMPLIANCE     );
         map.put( _INVENTORY_,      INVENTORY      );
-        map.put( _MISCELLANIOUS_,  MISCELLANIOUS  );
+        map.put( _MISCELLANEOUS_,  MISCELLANEOUS  );
         map.put( _PATCH_,          PATCH          );
         map.put( _VULNERABILITY_,  VULNERABILITY  );
         return map;

@@ -33,7 +33,7 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class Definitions
-extends OvalElementContainer<Definition>
+    extends OvalElementContainer<Definition>    //{1..*}
 {
 
     /**

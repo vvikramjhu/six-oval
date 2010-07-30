@@ -37,8 +37,8 @@ public abstract class EntityStateBase
     private Check  _entityCheck;
     //{optional, default="all"}
 
-    public static final Check  DEFAULT_VARIABLE_CHECK = Check.ALL;
-    private Check  _varCheck = DEFAULT_VARIABLE_CHECK;
+    public static final Check  DEFAULT_VAR_CHECK = Check.ALL;
+    private Check  _varCheck = DEFAULT_VAR_CHECK;
     //{optional, default="all"}
 
 
@@ -88,7 +88,7 @@ public abstract class EntityStateBase
 
     public Check getVarCheck()
     {
-        return (_varCheck == null ? DEFAULT_ENTITY_CHECK : _varCheck);
+        return (_varCheck == null ? DEFAULT_VAR_CHECK : _varCheck);
     }
 
 

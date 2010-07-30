@@ -24,8 +24,8 @@ import jp.go.aist.six.oval.model.linux.CveReference;
 import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
 import jp.go.aist.six.oval.model.mitre.DefinitionModifiedEvent;
 import jp.go.aist.six.oval.model.mitre.DefinitionSubmittedEvent;
-import jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent;
 import jp.go.aist.six.oval.model.mitre.MitreRepositoryMetadataItem;
+import jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent;
 import jp.go.aist.six.util.IsoDate;
 import jp.go.aist.six.util.castor.AbstractPersistable;
 import java.util.ArrayList;
@@ -100,6 +100,8 @@ public class Metadata
 
 
 
+    /**
+     */
     public void setTitle(
                     final String title
                     )
@@ -115,22 +117,8 @@ public class Metadata
 
 
 
-//    public void setAffected(
-//                    final Collection<Affected> affectedList
-//                    )
-//    {
-//        _affected.clear();
-//        if (affectedList != null) {
-//            _affected.addAll( affectedList );
-//        }
-//    }
-//
-//
-//    public Collection<Affected> getAffected()
-//    {
-//        return _affected;
-//    }
-
+    /**
+     */
     public void setAffected(
                     final Affected affected
                     )
@@ -145,6 +133,9 @@ public class Metadata
     }
 
 
+
+    /**
+     */
     public void setReference(
                     final Collection<? extends Reference> referenceList
                     )
@@ -178,6 +169,8 @@ public class Metadata
     }
 
 
+    /**
+     */
     public void setDescription(
                     final String description
                     )
@@ -193,14 +186,16 @@ public class Metadata
 
 
 
+    /**
+     */
     public void setMetadataItem(
-                    final Collection<? extends MetadataItem> anyList
+                    final Collection<? extends MetadataItem> items
                     )
     {
-        if (anyList != _metadataItem) {
+        if (items != _metadataItem) {
             _metadataItem.clear();
-            if (anyList != null) {
-                for (MetadataItem  i : anyList) {
+            if (items != null) {
+                for (MetadataItem  i : items) {
                     addMetadataItem( i );
                 }
             }
@@ -209,14 +204,14 @@ public class Metadata
 
 
     public boolean addMetadataItem(
-                    final MetadataItem any
+                    final MetadataItem item
                     )
     {
-        if (any == null) {
+        if (item == null) {
             return false;
         }
 
-        return _metadataItem.add( any );
+        return _metadataItem.add( item );
     }
 
 
@@ -373,8 +368,8 @@ public class Metadata
         return "Metadata[title=" + getTitle()
                         + ", affected=" + getAffected()
                         + ", description=(omitted)" //+ getDescription()
-                        + ", references=(omitted)" //+ getReferences()
-                        + ", items=" + getMetadataItem()
+                        + ", references" + getReference()
+                        + ", item=" + getMetadataItem()
                         + "]";
     }
 
