@@ -111,7 +111,9 @@ public class FileBehaviors
     @Override
     public String toString()
     {
-        return "FileBehaviors[" + super.toString() + "]";
+        return "FileBehaviors[" + super.toString()
+                        + ", recurse_file_system=" + getRecurseFileSystem()
+                        + "]";
     }
 
 }
