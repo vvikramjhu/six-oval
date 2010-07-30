@@ -29,14 +29,14 @@ import jp.go.aist.six.oval.model.definition.EntityStateString;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class EntityStateRegistryType
+public class EntityStateFileType
     extends EntityStateString
 {
 
     /**
      * Constructor.
      */
-    public EntityStateRegistryType()
+    public EntityStateFileType()
     {
     }
 
@@ -44,7 +44,7 @@ public class EntityStateRegistryType
     /**
      * Constructor.
      */
-    public EntityStateRegistryType(
+    public EntityStateFileType(
                     final String data
                     )
     {
@@ -55,8 +55,8 @@ public class EntityStateRegistryType
     /**
      * Constructor.
      */
-    public EntityStateRegistryType(
-                    final RegistryType data
+    public EntityStateFileType(
+                    final FileType data
                     )
     {
         super( (data == null ? null : data.getName()) );
@@ -75,7 +75,7 @@ public class EntityStateRegistryType
                     )
     {
         if (data != null) {
-            RegistryType.valueOf( data );
+            FileType.valueOf( data );
         }
 
         super.setData( data );
@@ -104,7 +104,7 @@ public class EntityStateRegistryType
             return true;
         }
 
-        if (!(obj instanceof EntityStateRegistryType)) {
+        if (!(obj instanceof EntityStateFileType)) {
             return false;
         }
 
@@ -116,8 +116,8 @@ public class EntityStateRegistryType
     @Override
     public String toString()
     {
-        return "EntityStateRegistryType[" + super.toString() + "]";
+        return "EntityStateFileType[" + super.toString() + "]";
     }
 
 }
-// EntityStateRegistryType
+// EntityStateFileType

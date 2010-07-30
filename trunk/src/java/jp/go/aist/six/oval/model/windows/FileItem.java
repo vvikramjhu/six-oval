@@ -41,10 +41,11 @@ public class FileItem
     extends Item
 {
 
-    private Map<FileProperty,EntityItemBase>  _properties =
-        new EnumMap<FileProperty,EntityItemBase>( FileProperty.class );
+    private Map<FileProperty, EntityItemBase>  _properties =
+        new EnumMap<FileProperty, EntityItemBase>( FileProperty.class );
 
 
+//    private String  _filepath;
 //    private String  _path;
 //    private String  _filename;
 //    private String  _owner;
@@ -235,7 +236,6 @@ public class FileItem
     public EntityItemString getPath()
     {
         return (EntityItemString)_properties.get( FileProperty.PATH );
-//        return _path;
     }
 
 
@@ -244,7 +244,6 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.PATH, path );
-//        _path = path;
     }
 
 
@@ -252,7 +251,6 @@ public class FileItem
     public EntityItemString getFilename()
     {
         return (EntityItemString)_properties.get( FileProperty.FILENAME );
-//        return _filename;
     }
 
 
@@ -261,7 +259,6 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.FILENAME, filename );
-//        _filename = filename;
     }
 
 
@@ -269,7 +266,6 @@ public class FileItem
     public EntityItemString getOwner()
     {
         return (EntityItemString)_properties.get( FileProperty.OWNER );
-//        return _owner;
     }
 
 
@@ -278,7 +274,6 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.OWNER, owner );
-//        _owner = owner;
     }
 
 
@@ -286,7 +281,6 @@ public class FileItem
     public EntityItemInt getSize()
     {
         return (EntityItemInt)_properties.get( FileProperty.SIZE );
-//        return _size;
     }
 
 
@@ -295,7 +289,6 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.SIZE, size );
-//        _size = size;
     }
 
 
@@ -303,7 +296,6 @@ public class FileItem
     public EntityItemInt getATime()
     {
         return (EntityItemInt)_properties.get( FileProperty.A_TIME );
-//        return _aTime;
     }
 
 
@@ -312,7 +304,6 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.A_TIME, aTime );
-//        _aTime = aTime;
     }
 
 
@@ -320,7 +311,6 @@ public class FileItem
     public EntityItemInt getCTime()
     {
         return (EntityItemInt)_properties.get( FileProperty.C_TIME );
-//        return _cTime;
     }
 
 
@@ -329,7 +319,6 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.C_TIME, cTime );
-//        _cTime = cTime;
     }
 
 
@@ -337,7 +326,6 @@ public class FileItem
     public EntityItemInt getMTime()
     {
         return (EntityItemInt)_properties.get( FileProperty.M_TIME );
-//        return _mTime;
     }
 
 
@@ -346,7 +334,6 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.M_TIME, mTime );
-//        _mTime = mTime;
     }
 
 
@@ -354,7 +341,6 @@ public class FileItem
     public EntityItemString getMsChecksum()
     {
         return (EntityItemString)_properties.get( FileProperty.MS_CHECKSUM );
-//        return _msChecksum;
     }
 
 
@@ -363,7 +349,6 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.MS_CHECKSUM, msChecksum );
-//        _msChecksum = msChecksum;
     }
 
 
@@ -371,7 +356,6 @@ public class FileItem
     public EntityItemString getVersion()
     {
         return (EntityItemString)_properties.get( FileProperty.VERSION );
-//        return _version;
     }
 
 
@@ -381,7 +365,6 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.VERSION, version );
-//        _version = version;
     }
 
 
@@ -389,7 +372,6 @@ public class FileItem
     public EntityItemFileType getType()
     {
         return (EntityItemFileType)_properties.get( FileProperty.TYPE );
-//        return _type;
     }
 
 
@@ -398,7 +380,6 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.TYPE, type );
-//        _type = type;
     }
 
 
@@ -406,7 +387,6 @@ public class FileItem
     public EntityItemString getDevelopmentClass()
     {
         return (EntityItemString)_properties.get( FileProperty.DEVELOPMENT_CLASS );
-//        return _developmentClass;
     }
 
 
@@ -415,7 +395,6 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.DEVELOPMENT_CLASS, developmentClass );
-//        _developmentClass = developmentClass;
     }
 
 
@@ -423,7 +402,6 @@ public class FileItem
     public EntityItemString getCompany()
     {
         return (EntityItemString)_properties.get( FileProperty.COMPANY );
-//        return _company;
     }
 
 
@@ -432,7 +410,6 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.COMPANY, company );
-//        _company = company;
     }
 
 
@@ -440,7 +417,6 @@ public class FileItem
     public EntityItemString getInternalName()
     {
         return (EntityItemString)_properties.get( FileProperty.INTERNAL_NAME );
-//        return _internalName;
     }
 
 
@@ -450,7 +426,6 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.INTERNAL_NAME, internalName );
-//        _internalName = internalName;
     }
 
 
@@ -458,7 +433,6 @@ public class FileItem
     public EntityItemString getLanguage()
     {
         return (EntityItemString)_properties.get( FileProperty.LANGUAGE );
-//        return _language;
     }
 
 
@@ -467,7 +441,6 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.LANGUAGE, language );
-//        _language = language;
     }
 
 
@@ -475,7 +448,6 @@ public class FileItem
     public EntityItemString getOriginalFilename()
     {
         return (EntityItemString)_properties.get( FileProperty.ORIGINAL_FILENAME );
-//        return _originalFilename;
     }
 
 
@@ -484,7 +456,6 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.ORIGINAL_FILENAME, originalFilename );
-//        _originalFilename = originalFilename;
     }
 
 
@@ -492,7 +463,6 @@ public class FileItem
     public EntityItemString getProductName()
     {
         return (EntityItemString)_properties.get( FileProperty.PRODUCT_NAME );
-//        return _productName;
     }
 
 
@@ -501,7 +471,6 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.PRODUCT_NAME, productName );
-//        _productName = productName;
     }
 
 
@@ -509,7 +478,6 @@ public class FileItem
     public EntityItemString getProductVersion()
     {
         return (EntityItemString)_properties.get( FileProperty.PRODUCT_VERSION );
-//        return _productVersion;
     }
 
 
@@ -518,7 +486,6 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.PRODUCT_VERSION, productVersion );
-//        _productVersion = productVersion;
     }
 
 
@@ -543,12 +510,7 @@ public class FileItem
     public String toString()
     {
         return "FileItem[" + super.toString()
-                        + ", path=" + getPath()
-                        + ", filename=" + getFilename()
-                        + ", owner=" + getOwner()
-                        + ", company=" + getCompany()
-                        + ", productName=" + getProductName()
-                        + ", productVersion=" + getProductVersion()
+                        + ", " + _properties
                         + "]";
     }
 
