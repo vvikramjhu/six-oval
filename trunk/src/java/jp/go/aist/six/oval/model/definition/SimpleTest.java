@@ -76,10 +76,11 @@ public abstract class SimpleTest
     public SimpleTest(
                     final String id,
                     final int version,
+                    final String comment,
                     final Check check
                     )
     {
-        super( id, version, check );
+        super( id, version, comment, check );
     }
 
 

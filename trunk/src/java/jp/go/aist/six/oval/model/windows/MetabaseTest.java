@@ -62,10 +62,11 @@ public class MetabaseTest
     public MetabaseTest(
                     final String id,
                     final int version,
+                    final String comment,
                     final Check check
                     )
     {
-        super( id, version, check );
+        super( id, version, comment, check );
     }
 
 

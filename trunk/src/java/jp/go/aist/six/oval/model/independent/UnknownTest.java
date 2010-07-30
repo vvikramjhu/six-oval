@@ -65,10 +65,11 @@ public class UnknownTest
     public UnknownTest(
                     final String id,
                     final int version,
+                    final String comment,
                     final Check check
                     )
     {
-        super( id, version, check );
+        super( id, version, comment, check );
     }
 
 
