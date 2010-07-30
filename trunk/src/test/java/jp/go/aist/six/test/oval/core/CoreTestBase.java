@@ -38,7 +38,7 @@ import jp.go.aist.six.oval.model.system.EntityItemString;
 import jp.go.aist.six.oval.model.system.Flag;
 import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.ItemReference;
-import jp.go.aist.six.oval.model.system.NetworkInterface;
+import jp.go.aist.six.oval.model.system.NetInterface;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.Status;
 import jp.go.aist.six.oval.model.system.SystemData;
@@ -348,14 +348,14 @@ public abstract class CoreTestBase
 
     //NetworkInterface
 
-    public static final Collection<NetworkInterface> WINDWS_NETWORK_INTERFACES
-    = Arrays.asList( new NetworkInterface[] {
-                    new NetworkInterface(
+    public static final Collection<NetInterface> WINDWS_NETWORK_INTERFACES
+    = Arrays.asList( new NetInterface[] {
+                    new NetInterface(
                                     "VMware Virtual Ethernet Adapter for VMnet1",
                                     "192.168.158.1",
                                     "00-50-56-C0-00-01"
                                     ),
-                    new NetworkInterface(
+                    new NetInterface(
                                     "VMware Virtual Ethernet Adapter for VMnet8",
                                     "192.168.1.1",
                                     "00-50-56-C0-00-08"
@@ -742,8 +742,8 @@ public abstract class CoreTestBase
         Assert.assertEquals( actual.getArchitecture(), expected.getArchitecture() );
         Assert.assertEquals( actual.getPrimaryHostName(), expected.getPrimaryHostName() );
 
-        Set<NetworkInterface>  a_netifs = new HashSet<NetworkInterface>( actual.getInterfaces() );
-        Set<NetworkInterface>  e_netifs = new HashSet<NetworkInterface>( expected.getInterfaces() );
+        Set<NetInterface>  a_netifs = new HashSet<NetInterface>( actual.getInterfaces() );
+        Set<NetInterface>  e_netifs = new HashSet<NetInterface>( expected.getInterfaces() );
         Assert.assertEquals( a_netifs, e_netifs );
     }
 

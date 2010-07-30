@@ -977,12 +977,12 @@
         </field>
 
         <field name="interfaces" 
-            type="jp.go.aist.six.oval.model.system.NetworkInterfaces">
+            type="jp.go.aist.six.oval.model.system.NetInterfaces">
             <bind-xml name="interfaces" node="element"/> 
         </field>
 <!--
         <field name="interfaces.interface" 
-            type="jp.go.aist.six.oval.model.system.NetworkInterface"
+            type="jp.go.aist.six.oval.model.system.NetInterface"
             collection="collection">
             <bind-xml name="interface" node="element" 
                 location="interfaces"/>
@@ -994,14 +994,14 @@
 
 
     <!-- ======================================================= -->
-    <!-- NetworkInterfaces                                       -->
+    <!-- NetInterfaces                                           -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.system.NetworkInterfaces">
+    <class name="jp.go.aist.six.oval.model.system.NetInterfaces">
         <map-to xml="interfaces"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
 
         <field name="interface" 
-            type="jp.go.aist.six.oval.model.system.NetworkInterface"
+            type="jp.go.aist.six.oval.model.system.NetInterface"
             collection="collection"
             get-method="iterateInterface"
             set-method="addInterface"
@@ -1014,9 +1014,9 @@
 
 
     <!-- ======================================================= -->
-    <!-- NetworkInterface - interface                            -->
+    <!-- NetInterface                                            -->
     <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.system.NetworkInterface">
+    <class name ="jp.go.aist.six.oval.model.system.NetInterface">
         <map-to xml="interface"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
 

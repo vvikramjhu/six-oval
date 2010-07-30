@@ -30,7 +30,7 @@ import jp.go.aist.six.util.orm.Dependent;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class NetworkInterface
+public class NetInterface
     extends AbstractPersistable
     implements Dependent<SystemInfo>
 {
@@ -49,7 +49,7 @@ public class NetworkInterface
     /**
      * Constructor.
      */
-    public NetworkInterface()
+    public NetInterface()
     {
     }
 
@@ -57,7 +57,7 @@ public class NetworkInterface
     /**
      * Constructor.
      */
-    public NetworkInterface(
+    public NetInterface(
                     final String name,
                     final String ip,
                     final String mac
@@ -177,11 +177,11 @@ public class NetworkInterface
             return true;
         }
 
-        if (!(obj instanceof NetworkInterface)) {
+        if (!(obj instanceof NetInterface)) {
             return false;
         }
 
-        NetworkInterface  other = (NetworkInterface)obj;
+        NetInterface  other = (NetInterface)obj;
         String  other_ip = other.getIpAddress();
         String   this_ip =  this.getIpAddress();
         if (this_ip == other_ip
@@ -214,4 +214,4 @@ public class NetworkInterface
     }
 
 }
-// NetworkInterface
+// NetInterface

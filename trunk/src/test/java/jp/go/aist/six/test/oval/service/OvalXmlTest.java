@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.model.system.CollectedSystemObject;
 import jp.go.aist.six.oval.model.system.EntityItemString;
 import jp.go.aist.six.oval.model.system.Flag;
 import jp.go.aist.six.oval.model.system.Item;
-import jp.go.aist.six.oval.model.system.NetworkInterface;
+import jp.go.aist.six.oval.model.system.NetInterface;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.Status;
 import jp.go.aist.six.oval.model.system.SystemData;
@@ -265,7 +265,7 @@ public class OvalXmlTest
         Assert.assertEquals( sys.getPrimaryHostName(), "dhcp149254.a01.aist.go.jp" );
 
         Assert.assertEquals( sys.getInterfaces().size(), 1 );
-        NetworkInterface  netif = new NetworkInterface(
+        NetInterface  netif = new NetInterface(
                         "eth0", "150.29.149.254", "00.0c.29.78.1a.8b" );
         Assert.assertEquals( sys.getInterfaces().iterator().next(), netif );
 
@@ -374,7 +374,7 @@ public class OvalXmlTest
         Assert.assertEquals( sys.getPrimaryHostName(), "dhcp149254.a01.aist.go.jp" );
 
         Assert.assertEquals( sys.getInterfaces().size(), 1 );
-        NetworkInterface  netif = new NetworkInterface(
+        NetInterface  netif = new NetInterface(
                         "eth0", "150.29.149.254", "00.0c.29.78.1a.8b" );
         Assert.assertEquals( sys.getInterfaces().iterator().next(), netif );
 
@@ -476,7 +476,7 @@ public class OvalXmlTest
         //==========================================================
         Reporter.log( "*** checking system_info...", true );
         SystemInfo  sys = sc.getSystemInfo();
-        for (NetworkInterface  netif : sys.getInterfaces()) {
+        for (NetInterface  netif : sys.getInterfaces()) {
             Reporter.log( "@@@ network interface: " + netif, true );
         }
 

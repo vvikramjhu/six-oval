@@ -32,14 +32,14 @@ import java.util.Iterator;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class NetworkInterfaces
-    extends KeyedContainer<String, NetworkInterface>
+public class NetInterfaces
+    extends KeyedContainer<String, NetInterface>
 {
 
     /**
      * Constructor.
      */
-    public NetworkInterfaces()
+    public NetInterfaces()
     {
     }
 
@@ -47,8 +47,8 @@ public class NetworkInterfaces
     /**
      * Constructor.
      */
-    public NetworkInterfaces(
-                    Collection<? extends NetworkInterface> netifs
+    public NetInterfaces(
+                    Collection<? extends NetInterface> netifs
                     )
     {
         super( netifs );
@@ -58,8 +58,8 @@ public class NetworkInterfaces
     /**
      * Constructor.
      */
-    public NetworkInterfaces(
-                    NetworkInterface[] netifs
+    public NetInterfaces(
+                    NetInterface[] netifs
                     )
     {
         super( netifs );
@@ -70,7 +70,7 @@ public class NetworkInterfaces
     /**
      */
     public void setInterface(
-                    final Collection<? extends NetworkInterface> netifs
+                    final Collection<? extends NetInterface> netifs
                     )
     {
         reset( netifs );
@@ -78,20 +78,20 @@ public class NetworkInterfaces
 
 
     public boolean addInterface(
-                    final NetworkInterface netif
+                    final NetInterface netif
                     )
     {
         return add( netif );
     }
 
 
-    public Collection<NetworkInterface> getInterface()
+    public Collection<NetInterface> getInterface()
     {
         return _values();
     }
 
 
-    public Iterator<NetworkInterface> iterateInterface()
+    public Iterator<NetInterface> iterateInterface()
     {
         return iterator();
     }
@@ -103,7 +103,7 @@ public class NetworkInterfaces
     //**************************************************************
 
     protected String _getKey(
-                    final NetworkInterface netif
+                    final NetInterface netif
                     )
     {
         return netif.getInterfaceName();
@@ -116,4 +116,4 @@ public class NetworkInterfaces
     //**************************************************************
 
 }
-// NetworkInterfaces
+// NetInterfaces

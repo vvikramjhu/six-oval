@@ -25,7 +25,7 @@ import jp.go.aist.six.oval.model.system.CollectedSystemObject;
 import jp.go.aist.six.oval.model.system.CollectedSystemObjects;
 import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.ItemReference;
-import jp.go.aist.six.oval.model.system.NetworkInterface;
+import jp.go.aist.six.oval.model.system.NetInterface;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.SystemData;
 import jp.go.aist.six.oval.model.system.SystemInfo;
@@ -69,7 +69,7 @@ public class OvalSystemCharacteristicsDao
         SystemInfo  sysinfo = sc.getSystemInfo();
         sysinfo.setMasterObject( sc );
 
-        for (NetworkInterface  netif : sysinfo.getInterfaces()) {
+        for (NetInterface  netif : sysinfo.getInterfaces()) {
             netif.setMasterObject( sysinfo );
         }
 

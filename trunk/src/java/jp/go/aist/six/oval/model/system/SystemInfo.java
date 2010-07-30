@@ -48,7 +48,7 @@ public class SystemInfo
     private String  _primaryHostName;
     //{1..1}
 
-    private NetworkInterfaces  _interfaces = new NetworkInterfaces();
+    private NetInterfaces  _interfaces = new NetInterfaces();
     //{1..1}
 
 
@@ -92,11 +92,11 @@ public class SystemInfo
                     final String osVersion,
                     final String arch,
                     final String hostName,
-                    Collection<? extends NetworkInterface> ifs
+                    Collection<? extends NetInterface> ifs
                     )
     {
         this( osName, osVersion, arch, hostName );
-        setInterfaces( new NetworkInterfaces( ifs ) );
+        setInterfaces( new NetInterfaces( ifs ) );
     }
 
 
@@ -173,14 +173,14 @@ public class SystemInfo
     /**
      */
     public void setInterfaces(
-                    final NetworkInterfaces interfaces
+                    final NetInterfaces interfaces
                     )
     {
         _interfaces = interfaces;
     }
 
 
-    public NetworkInterfaces getInterfaces()
+    public NetInterfaces getInterfaces()
     {
         return _interfaces;
     }
