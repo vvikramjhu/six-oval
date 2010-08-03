@@ -716,6 +716,25 @@
         </field>
 
         
+        <!-- // Generator // -->
+
+        <field name="generator.timestamp" type="date">
+            <sql name="gen_timestamp" type="timestamp"/>
+        </field>
+
+        <field name="generator.schemaVersion" type="string">
+            <sql name="gen_schema_version" type="char"/>
+        </field>
+
+        <field name="generator.productName" type="string">
+            <sql name="gen_product_name" type="char"/>
+        </field>
+
+        <field name="generator.productVersion" type="string">
+            <sql name="gen_product_version" type="char"/>
+        </field>
+
+
         <!-- // SystemInfo // -->
 
         <field name="systemInfo.primaryHostName" type="string">
@@ -735,24 +754,6 @@
         </field>
         
         
-        <!-- // Generator // -->
-
-        <field name="generator.timestamp" type="date">
-            <sql name="gen_timestamp" type="timestamp"/>
-        </field>
-
-        <field name="generator.schemaVersion" type="string">
-            <sql name="gen_schema_version" type="char"/>
-        </field>
-
-        <field name="generator.productName" type="string">
-            <sql name="gen_product_name" type="char"/>
-        </field>
-
-        <field name="generator.productVersion" type="string">
-            <sql name="gen_product_version" type="char"/>
-        </field>
-
 <!--
         <field name="collectedObjectsDigest" type="string">
             <sql name="objects_digest" type="char"/>
@@ -1097,7 +1098,6 @@
 
         <field name="definitions" 
             type="jp.go.aist.six.oval.model.definition.OvalDefinitions"
-            lazy="true"
             >
             <sql name="d_definitions__PID"/>
         </field>

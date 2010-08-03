@@ -109,7 +109,11 @@ public class LocalOvalRepositoryTest
 
         Reporter.log( "creating OvalResults...", true );
         String  pid = _repository.createOvalResults( ovalResults );
-        Reporter.log( "...find done: PID=" + pid, true );
+        Reporter.log( "...create done: PID=" + pid, true );
+
+        Reporter.log( "getting OvalResults: PID=" + pid, true );
+        ovalResults = _repository.getOvalResults( pid );
+        Reporter.log( "...get done: PID=" + ovalResults.getPersistentID(), true );
     }
 
 

@@ -631,15 +631,17 @@ CREATE TABLE IF NOT EXISTS oval_s_sc
     PID                 CHAR(36)        NOT NULL,
                         /* UUID: e.g. 911d6c54-6965-48df-88c3-2af47e54acd2 */
 
-    sys_primary_host_name   VARCHAR(64) NOT NULL,
-    sys_os_name         VARCHAR(64)     NOT NULL,
-    sys_os_version      VARCHAR(64)     NOT NULL,
-    sys_architecture    VARCHAR(16)     NOT NULL,
-
+    /* Generator */
     gen_timestamp       DATETIME        NOT NULL,
     gen_schema_version  VARCHAR(8)      NOT NULL,
     gen_product_name    VARCHAR(64),
     gen_product_version VARCHAR(64),
+
+    /* SystemInfo */
+    sys_os_name         VARCHAR(64)     NOT NULL,
+    sys_os_version      VARCHAR(64)     NOT NULL,
+    sys_architecture    VARCHAR(16)     NOT NULL,
+    sys_primary_host_name   VARCHAR(64) NOT NULL,
 
     objects_digest      VARCHAR(32)     /* NOT NULL */,
 
@@ -655,14 +657,14 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
-/* NetworkInterface                                               */
+/* NetInterface                                                   */
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_s_interface
 (
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
     interface_name      VARCHAR(255)    NOT NULL,
-    ip_address          VARCHAR(32)     NOT NULL,
+    ip_address          VARCHAR(16)     NOT NULL,
     mac_address         VARCHAR(20)     NOT NULL,
 
     /* (FK) */
@@ -859,6 +861,7 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
+/* deprecated:                                                    */
 /* OvalResults - OvalDefinitions association                      */
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_assoc__r_results__d_definitions
@@ -907,6 +910,7 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
+/* deprecated:                                                    */
 /* OvalResults - SystemResult association                         */
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_assoc__r_results__r_system
