@@ -290,7 +290,10 @@ public class TestResult
     @Override
     public String toString()
     {
-        return "TestResult[" + super.toString() + "]";
+        return "TestResult[" + super.toString()
+                        + ", tested_item=" + getTestedItem()
+                        + ", tested_variable=" + getTestedVariable()
+                        + "]";
     }
 
 }

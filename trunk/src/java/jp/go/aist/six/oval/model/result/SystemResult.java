@@ -200,7 +200,8 @@ public class SystemResult
 
         return "SystemResult[oval_system_characteristics=" + getOvalSystemCharacteristics()
                         + ", #definitions=" + (defs == null ? 0 : defs.size())
-                        + ", #tests=" + (tests == null ? 0 : tests.size())
+                        + ", tests=" + tests
+//                        + ", #tests=" + (tests == null ? 0 : tests.size())
                         + "]";
     }
 

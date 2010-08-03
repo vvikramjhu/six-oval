@@ -25,8 +25,11 @@ import jp.go.aist.six.oval.model.result.DefinitionResults;
 import jp.go.aist.six.oval.model.result.SystemResult;
 import jp.go.aist.six.oval.model.result.TestResult;
 import jp.go.aist.six.oval.model.result.TestResults;
+import jp.go.aist.six.oval.model.result.TestedItem;
+import jp.go.aist.six.oval.model.result.TestedVariable;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.util.castor.CastorDao;
+import java.util.Collection;
 import java.util.UUID;
 
 
@@ -80,6 +83,20 @@ public class SystemResultDao
         if (tests != null  &&  tests.size() > 0) {
             for (TestResult  test : tests) {
                 test.setMasterObject( system );
+
+                Collection<TestedItem>  items = test.getTestedItem();
+                if (items != null   &&  items.size() > 0) {
+                    for (TestedItem  item : items) {
+                        item.setMasterObject( test );
+                    }
+                }
+
+                Collection<TestedVariable>  variables = test.getTestedVariable();
+                if (variables != null   &&  variables.size() > 0) {
+                    for (TestedVariable  variable : variables) {
+                        variable.setMasterObject( test );
+                    }
+                }
             }
         }
 
