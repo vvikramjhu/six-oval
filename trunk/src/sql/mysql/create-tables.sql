@@ -957,6 +957,41 @@ CHARACTER SET utf8;
 
 
 
+/* ============================================================== */
+/* TestResult                                                     */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_r_test
+(
+    PID                 INT             NOT NULL    AUTO_INCREMENT,
+
+    test_id             VARCHAR(64)     NOT NULL,
+                        /* e.g. oval:org.mitre.oval:def:1001 */
+    version             INT             NOT NULL,
+    variable_instance   INT                         DEFAULT 1,
+    result              VARCHAR(14)     NOT NULL,
+                        /* ENUM( 'true', 'false', ..., 'not applicable') */
+
+    existence           VARCHAR(20)                 DEFAULT 'at_least_one_exists',
+    check1              VARCHAR(16)     NOT NULL,
+
+    state_operator      VARCHAR(4)                  DEFAULT 'AND',
+
+    /* (FK) */
+    r_system__PID       CHAR(36)        NOT NULL,
+    d_test__PID         VARCHAR(64)     NOT NULL,
+
+    /* (PK) */
+    PRIMARY KEY (PID),
+    
+    /* INDEX */
+    INDEX (r_system__PID),
+    INDEX (test_id)
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 /* %                                                            % */
 /* % #independent                                               % */

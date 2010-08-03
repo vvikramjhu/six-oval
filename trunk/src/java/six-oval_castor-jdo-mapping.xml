@@ -1138,12 +1138,17 @@
             <sql name="definitions_digest" type="char"/>
         </field>
 
+        <field name="definitions.definition"
+            type="jp.go.aist.six.oval.model.result.DefinitionResult"
+            collection="collection">
+            <sql many-key="r_system__PID"/>
+        </field>
+
         <!-- (FK) -->
         <field name="ovalSystemCharacteristics" 
             type="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics">
             <sql name="s_sc__PID"/>
         </field>
-
     </class>
 
 
@@ -1177,6 +1182,7 @@
     <!-- DefinitionResult                                        -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.result.DefinitionResult"
+        depends="jp.go.aist.six.oval.model.result.SystemResult"
         identity="persistentID"
         key-generator="IDENTITY">
         <cache-type type="unlimited"/>
@@ -1204,9 +1210,15 @@
         </field>
 
         <!-- (FK) SystemResult -->
+        <field name="masterObject" 
+            type="jp.go.aist.six.oval.model.result.SystemResult">
+            <sql name="r_system__PID"/>
+        </field>
+<!--
         <field name="masterPersistentID" type="string">
             <sql name="r_system__PID" type="char"/>
         </field>
+-->
 
         <!-- (FK) Definition -->
         <field name="targetEntityPersistentID" type="string">
