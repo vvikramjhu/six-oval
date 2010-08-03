@@ -32,7 +32,8 @@ import jp.go.aist.six.util.orm.Dependent;
  */
 public class NetInterface
     extends AbstractPersistable
-    implements Dependent<SystemInfo>
+    implements Dependent<OvalSystemCharacteristics>
+//implements Dependent<SystemInfo>
 {
 
     private String  _interfaceName;
@@ -125,19 +126,19 @@ public class NetInterface
     //  Dependent
     //**************************************************************
 
-    private SystemInfo  _master;
+    private OvalSystemCharacteristics  _master;
 
 
 
     public void setMasterObject(
-                    final SystemInfo master
+                    final OvalSystemCharacteristics master
                     )
     {
         _master = master;
     }
 
 
-    public SystemInfo getMasterObject()
+    public OvalSystemCharacteristics getMasterObject()
     {
         return _master;
     }

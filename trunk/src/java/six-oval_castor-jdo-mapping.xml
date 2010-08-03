@@ -775,6 +775,13 @@
             <sql many-key="s_sc__PID"/>
         </field>
 -->
+
+        <!-- SC : Item = 1 : n -->
+        <field name="systemData.item"
+            type="jp.go.aist.six.oval.model.system.Item"
+            collection="collection">
+            <sql many-key="s_sc__PID"/>
+        </field>
     </class>
 
 
@@ -806,10 +813,16 @@
         </field>
 
         <!-- (FK) -->
+        <field name="masterObject" 
+            type="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics">
+            <sql name="s_sc__PID"/>
+        </field>
+<!--
         <field name="masterObject.masterObject" 
             type="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics">
             <sql name="s_sc__PID"/>
         </field>
+-->
     </class>
 
 
@@ -967,8 +980,10 @@
     <!-- Item                                                    -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.system.Item"
+        depends="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics"
         identity="persistentID"
         key-generator="IDENTITY">
+
         <cache-type type="unlimited"/>
         <map-to table="oval_s_item"/>
 
@@ -991,9 +1006,15 @@
         </field>
 
         <!-- (FK) -->
+        <field name="masterObject" 
+            type="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics">
+            <sql name="s_sc__PID"/>
+        </field>
+<!--
         <field name="masterPersistentID" type="string">
             <sql name="s_sc__PID" type="char"/>
         </field>
+-->
     </class>
 
 
@@ -1091,7 +1112,6 @@
         <field name="results.system"
             type="jp.go.aist.six.oval.model.result.SystemResult"
             collection="collection"
-            lazy="true"
             >
             <sql many-key="r_results__PID"/>
         </field>

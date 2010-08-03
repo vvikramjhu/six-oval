@@ -69,7 +69,8 @@ public class OvalSystemCharacteristicsDao
         sysinfo.setMasterObject( sc );
 
         for (NetInterface  netif : sysinfo.getInterfaces()) {
-            netif.setMasterObject( sysinfo );
+            netif.setMasterObject( sc );
+//            netif.setMasterObject( sysinfo );
         }
 
 
@@ -77,16 +78,10 @@ public class OvalSystemCharacteristicsDao
         if (sd != null  &&  sd.size() > 0) {
             for (Item  item : sd) {
                 item.setMasterObject( sc );
-                getForwardingDao( Item.class ).create( item );
+//                getForwardingDao( Item.class ).create( item );
             }
         }
 
-        /*
-        for (Item  item : sc.getCollectedItems()) {
-            item.setMasterObject( sc );
-            getForwardingDao( Item.class ).create( item );
-        }
-*/
 
         CollectedSystemObjects  objects = sc.getCollectedObjects();
         if (objects != null  &&  objects.size() > 0) {
