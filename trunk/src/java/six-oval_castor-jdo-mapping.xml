@@ -1087,6 +1087,14 @@
             <sql name="definition_not_applicable_content" type="char"/>
         </field>
 
+        <field name="results.system"
+            type="jp.go.aist.six.oval.model.result.SystemResult"
+            collection="collection"
+            lazy="true"
+            >
+            <sql many-key="r_results__PID"/>
+        </field>
+
 <!--
         <field name="definitions" 
             type="jp.go.aist.six.oval.model.definition.OvalDefinitions">
@@ -1126,12 +1134,15 @@
     <!-- SystemResult                                            -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.result.SystemResult"
-        identity="persistentID">
+        depends="jp.go.aist.six.oval.model.result.OvalResults"
+        identity="persistentID"
+        key-generator="IDENTITY"
+        >
         <cache-type type="unlimited"/>
         <map-to table="oval_r_system"/>
 
         <field name="persistentID" type="string">
-            <sql name="PID" type="char"/>
+            <sql name="PID" type="integer"/>
         </field>
 
         <field name="definitionsDigest" type="string">
@@ -1154,6 +1165,12 @@
         <field name="ovalSystemCharacteristics" 
             type="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics">
             <sql name="s_sc__PID"/>
+        </field>
+
+        <!-- (FK) -->
+        <field name="masterObject" 
+            type="jp.go.aist.six.oval.model.result.OvalResults">
+            <sql name="r_results__PID"/>
         </field>
     </class>
 

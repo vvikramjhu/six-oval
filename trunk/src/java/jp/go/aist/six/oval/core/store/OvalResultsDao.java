@@ -21,11 +21,18 @@
 package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.core.model.result.OvalResultsOvalDefinitionsAssociation;
-import jp.go.aist.six.oval.core.model.result.OvalResultsSystemAssociation;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
+import jp.go.aist.six.oval.model.result.DefinitionResult;
+import jp.go.aist.six.oval.model.result.DefinitionResults;
 import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.model.result.SystemResult;
+import jp.go.aist.six.oval.model.result.TestResult;
+import jp.go.aist.six.oval.model.result.TestResults;
+import jp.go.aist.six.oval.model.result.TestedItem;
+import jp.go.aist.six.oval.model.result.TestedVariable;
+import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.util.castor.CastorDao;
+import java.util.Collection;
 import java.util.UUID;
 
 
@@ -48,6 +55,46 @@ public class OvalResultsDao
 
 
 
+    /**
+     */
+    private void _createSystem(
+                    final SystemResult system
+                    )
+    {
+            OvalSystemCharacteristics  sc = system.getOvalSystemCharacteristics();
+            getForwardingDao( OvalSystemCharacteristics.class ).create( sc );
+
+            DefinitionResults  dr_list = system.getDefinitions();
+            if (dr_list != null  &&  dr_list.size() > 0) {
+                for (DefinitionResult  dr : dr_list) {
+                    dr.setMasterObject( system );
+                }
+            }
+
+            TestResults  tests = system.getTests();
+            if (tests != null  &&  tests.size() > 0) {
+                for (TestResult  test : tests) {
+                    test.setMasterObject( system );
+
+                    Collection<TestedItem>  items = test.getTestedItem();
+                    if (items != null   &&  items.size() > 0) {
+                        for (TestedItem  item : items) {
+                            item.setMasterObject( test );
+                        }
+                    }
+
+                    Collection<TestedVariable>  variables = test.getTestedVariable();
+                    if (variables != null   &&  variables.size() > 0) {
+                        for (TestedVariable  variable : variables) {
+                            variable.setMasterObject( test );
+                        }
+                    }
+                }
+            }
+    }
+
+
+
     //**************************************************************
     //  Dao, CastorDao
     //**************************************************************
@@ -64,11 +111,13 @@ public class OvalResultsDao
 
         for (SystemResult  system : results.getResults()) {
             system.setMasterObject( results );
-            getForwardingDao( SystemResult.class ).create( system );
 
-            OvalResultsSystemAssociation  assoc =
-                new OvalResultsSystemAssociation( results, system );
-            getForwardingDao( OvalResultsSystemAssociation.class ).sync( assoc );
+            _createSystem( system );
+//            getForwardingDao( SystemResult.class ).create( system );
+
+//            OvalResultsSystemAssociation  assoc =
+//                new OvalResultsSystemAssociation( results, system );
+//            getForwardingDao( OvalResultsSystemAssociation.class ).sync( assoc );
         }
 
         OvalDefinitions  defs = results.getDefinitions();

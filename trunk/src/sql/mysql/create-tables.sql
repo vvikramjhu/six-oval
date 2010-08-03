@@ -885,20 +885,21 @@ CHARACTER SET utf8;
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_r_system
 (
-    PID                 CHAR(36)        NOT NULL,
-                        /* UUID: 911d6c54-6965-48df-88c3-2af47e54acd2 */
+    PID                 INT             NOT NULL    AUTO_INCREMENT,
 
     definitions_digest  VARCHAR(32)     /* NOT NULL */,
 
     /* (FK) */
     s_sc__PID           CHAR(36)        NOT NULL,
+    r_results__PID      CHAR(36)        NOT NULL,
 
     /* (PK) */
     PRIMARY KEY (PID),
     
     /* INDEX */
+    INDEX (definitions_digest),
     INDEX (s_sc__PID),
-    INDEX (definitions_digest)
+    INDEX (r_results__PID)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;
