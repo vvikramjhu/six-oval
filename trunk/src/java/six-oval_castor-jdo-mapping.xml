@@ -1030,8 +1030,8 @@
         <field name="generator.productVersion" type="string">
             <sql name="gen_product_version" type="char"/>
         </field>
-        
-        
+
+
         <!-- directives -->
         <field name="directives.definitionTrue.reported" type="boolean">
             <sql name="definition_true_reported" type="bit"/>
@@ -1095,11 +1095,13 @@
             <sql many-key="r_results__PID"/>
         </field>
 
-<!--
         <field name="definitions" 
-            type="jp.go.aist.six.oval.model.definition.OvalDefinitions">
+            type="jp.go.aist.six.oval.model.definition.OvalDefinitions"
+            lazy="true"
+            >
             <sql name="d_definitions__PID"/>
         </field>
+<!--
 -->
     </class>
 

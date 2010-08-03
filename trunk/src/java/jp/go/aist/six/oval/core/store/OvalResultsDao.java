@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.core.model.result.OvalResultsOvalDefinitionsAssociation;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.model.result.DefinitionResult;
 import jp.go.aist.six.oval.model.result.DefinitionResults;
@@ -122,17 +121,17 @@ public class OvalResultsDao
 
         OvalDefinitions  defs = results.getDefinitions();
         if (defs != null) {
-            OvalDefinitions  p_defs = getForwardingDao( OvalDefinitions.class ).sync( defs );
-
-            OvalResultsOvalDefinitionsAssociation  or_od_assoc =
-                new OvalResultsOvalDefinitionsAssociation( results, p_defs );
-            getForwardingDao( OvalResultsOvalDefinitionsAssociation.class ).sync( or_od_assoc );
+            getForwardingDao( OvalDefinitions.class ).sync( defs );
         }
-
-//        OvalDefinitions  defs = results.getDefinitions();
-//        if (defs != null) {
-//            getForwardingDao( OvalDefinitions.class ).sync( defs );
-//        }
+//
+//      OvalDefinitions  defs = results.getDefinitions();
+//      if (defs != null) {
+//          OvalDefinitions  p_defs = getForwardingDao( OvalDefinitions.class ).sync( defs );
+//
+//          OvalResultsOvalDefinitionsAssociation  or_od_assoc =
+//              new OvalResultsOvalDefinitionsAssociation( results, p_defs );
+//          getForwardingDao( OvalResultsOvalDefinitionsAssociation.class ).sync( or_od_assoc );
+//      }
 
         return super.create( results );
     }

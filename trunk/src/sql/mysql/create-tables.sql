@@ -915,7 +915,7 @@ CREATE TABLE IF NOT EXISTS oval_assoc__r_results__r_system
 
     /* (FK) */
     r_results__PID      CHAR(36)        NOT NULL,
-    r_system__PID       CHAR(36)        NOT NULL,
+    r_system__PID       INT             NOT NULL,
 
     /* (PK) */
     PRIMARY KEY (PID),

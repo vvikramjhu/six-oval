@@ -114,18 +114,19 @@
                 <entry key="jp.go.aist.six.oval.model.result.OvalResults"
                     value="jp.go.aist.six.oval.core.store.OvalResultsDao"/>
 
+<!-- dependent relationship 
+                <entry key="jp.go.aist.six.oval.core.model.result.OvalResultsOvalDefinitionsAssociation"
+                    value="jp.go.aist.six.oval.core.store.OvalResultsOvalDefinitionsAssociationDao"/>
+
                 <entry key="jp.go.aist.six.oval.model.result.SystemResult"
                     value="jp.go.aist.six.oval.core.store.SystemResultDao"/>
 
                 <entry key="jp.go.aist.six.oval.model.result.DefinitionResult"
                     value="jp.go.aist.six.oval.core.store.DefinitionResultDao"/>
 
-                <entry key="jp.go.aist.six.oval.core.model.result.OvalResultsOvalDefinitionsAssociation"
-                    value="jp.go.aist.six.oval.core.store.OvalResultsOvalDefinitionsAssociationDao"/>
-
                 <entry key="jp.go.aist.six.oval.core.model.result.OvalResultsSystemAssociation"
                     value="jp.go.aist.six.oval.core.store.OvalResultsSystemAssociationDao"/>
-
+-->
             </map>
         </property>
     </bean>
