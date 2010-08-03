@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.result;
 
 import jp.go.aist.six.util.castor.AbstractPersistable;
+import jp.go.aist.six.util.orm.Dependent;
 
 
 
@@ -31,6 +32,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  */
 public class TestedItem
     extends AbstractPersistable
+    implements Dependent<TestResult>
 {
 
     private int  _itemID;
@@ -92,6 +94,30 @@ public class TestedItem
     public Result getResult()
     {
         return _result;
+    }
+
+
+
+    //**************************************************************
+    //  Dependent
+    //**************************************************************
+
+    private TestResult  _master;
+
+
+
+    public void setMasterObject(
+                    final TestResult master
+                    )
+    {
+        _master = master;
+    }
+
+
+
+    public TestResult getMasterObject()
+    {
+        return _master;
     }
 
 

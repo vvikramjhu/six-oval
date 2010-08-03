@@ -965,16 +965,14 @@ CREATE TABLE IF NOT EXISTS oval_r_test
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
     test_id             VARCHAR(64)     NOT NULL,
-                        /* e.g. oval:org.mitre.oval:def:1001 */
+                        /* e.g. oval:org.mitre.oval:tst:1001 */
     version             INT             NOT NULL,
     variable_instance   INT                         DEFAULT 1,
-    result              VARCHAR(14)     NOT NULL,
-                        /* ENUM( 'true', 'false', ..., 'not applicable') */
-
     existence           VARCHAR(20)                 DEFAULT 'at_least_one_exists',
     check1              VARCHAR(16)     NOT NULL,
-
     state_operator      VARCHAR(4)                  DEFAULT 'AND',
+    result              VARCHAR(14)     NOT NULL,
+                        /* ENUM( 'true', 'false', ..., 'not applicable') */
 
     /* (FK) */
     r_system__PID       CHAR(36)        NOT NULL,
@@ -986,6 +984,55 @@ CREATE TABLE IF NOT EXISTS oval_r_test
     /* INDEX */
     INDEX (r_system__PID),
     INDEX (test_id)
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
+/* TestedItem                                                     */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_r_test__tested_item
+(
+    PID                 INT             NOT NULL    AUTO_INCREMENT,
+
+    item_id             INT             NOT NULL,
+    result              VARCHAR(14)     NOT NULL,
+                        /* ENUM( 'true', 'false', ..., 'not applicable') */
+
+    /* (FK) */
+    r_test__PID         INT             NOT NULL,
+
+    /* (PK) */
+    PRIMARY KEY (PID),
+    
+    /* INDEX */
+    INDEX (r_test__PID)
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
+/* TestedVariable                                                 */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_r_test__tested_variable
+(
+    PID                 INT             NOT NULL    AUTO_INCREMENT,
+
+    variable_id         INT             NOT NULL,
+    value               VARCHAR(255),
+
+    /* (FK) */
+    r_test__PID         INT             NOT NULL,
+
+    /* (PK) */
+    PRIMARY KEY (PID),
+    
+    /* INDEX */
+    INDEX (r_test__PID)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;

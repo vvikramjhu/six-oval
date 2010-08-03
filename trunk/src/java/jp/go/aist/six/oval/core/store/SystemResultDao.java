@@ -23,6 +23,8 @@ package jp.go.aist.six.oval.core.store;
 import jp.go.aist.six.oval.model.result.DefinitionResult;
 import jp.go.aist.six.oval.model.result.DefinitionResults;
 import jp.go.aist.six.oval.model.result.SystemResult;
+import jp.go.aist.six.oval.model.result.TestResult;
+import jp.go.aist.six.oval.model.result.TestResults;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.util.castor.CastorDao;
 import java.util.UUID;
@@ -72,6 +74,13 @@ public class SystemResultDao
             }
 
 //            system.setDefinitions( p_dr_list );
+        }
+
+        TestResults  tests = system.getTests();
+        if (tests != null  &&  tests.size() > 0) {
+            for (TestResult  test : tests) {
+                test.setMasterObject( system );
+            }
         }
 
         return super.create( system );
