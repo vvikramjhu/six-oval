@@ -722,7 +722,7 @@ CREATE TABLE IF NOT EXISTS oval_s_object__variable_value
 
     variable_id         VARCHAR(64)     NOT NULL,
                         /* e.g. oval:org.mitre.oval:var:419 */
-    value               VARCHAR(255),
+    value1              VARCHAR(255),
 
     /* (FK) */
     s_object__PID       VARCHAR(64)     NOT NULL,
@@ -1022,8 +1022,8 @@ CREATE TABLE IF NOT EXISTS oval_r_test__tested_variable
 (
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
-    variable_id         INT             NOT NULL,
-    value               VARCHAR(255),
+    variable_id         VARCHAR(64)     NOT NULL,
+    value1              VARCHAR(255),
 
     /* (FK) */
     r_test__PID         INT             NOT NULL,

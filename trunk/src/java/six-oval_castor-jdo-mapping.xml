@@ -897,7 +897,7 @@
         </field>
 
         <field name="value" type="string">
-            <sql name="value" type="char"/>
+            <sql name="value1" type="char"/>
         </field>
 
         <!-- (FK) -->
@@ -1287,6 +1287,12 @@
             <sql many-key="r_test__PID"/>
         </field>
 
+        <field name="testedVariable"
+            type="jp.go.aist.six.oval.model.result.TestedVariable"
+            collection="collection">
+            <sql many-key="r_test__PID"/>
+        </field>
+
         <!-- (FK) SystemResult -->
         <field name="masterObject" 
             type="jp.go.aist.six.oval.model.result.SystemResult">
@@ -1322,6 +1328,37 @@
         <field name="result"
             type="jp.go.aist.six.oval.model.result.Result">
             <sql name="result" type="char"/>
+        </field>
+
+        <!-- (FK) TestResult -->
+        <field name="masterObject" 
+            type="jp.go.aist.six.oval.model.result.TestResult">
+            <sql name="r_test__PID"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- TestedVariable                                          -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.result.TestedVariable"
+        depends="jp.go.aist.six.oval.model.result.TestResult"
+        identity="persistentID"
+        key-generator="IDENTITY">
+        <cache-type type="unlimited"/>
+        <map-to table="oval_r_test__tested_variable"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="variableID" type="string">
+            <sql name="variable_id" type="char"/>
+        </field>
+
+        <field name="value" type="string">
+            <sql name="value1" type="char"/>
         </field>
 
         <!-- (FK) TestResult -->
