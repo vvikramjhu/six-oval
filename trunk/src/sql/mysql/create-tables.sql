@@ -994,7 +994,7 @@ CHARACTER SET utf8;
 /* ============================================================== */
 /* TestedItem                                                     */
 /* ============================================================== */
-CREATE TABLE IF NOT EXISTS oval_r_test__tested_item
+CREATE TABLE IF NOT EXISTS oval_r_tested_item
 (
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
@@ -1019,7 +1019,7 @@ CHARACTER SET utf8;
 /* ============================================================== */
 /* TestedVariable                                                 */
 /* ============================================================== */
-CREATE TABLE IF NOT EXISTS oval_r_test__tested_variable
+CREATE TABLE IF NOT EXISTS oval_r_tested_variable
 (
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
