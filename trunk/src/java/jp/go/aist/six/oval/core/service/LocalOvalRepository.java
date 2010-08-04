@@ -37,6 +37,7 @@ import jp.go.aist.six.oval.model.definition.Tests;
 import jp.go.aist.six.oval.model.definition.Variable;
 import jp.go.aist.six.oval.model.definition.Variables;
 import jp.go.aist.six.oval.model.result.OvalResults;
+import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.service.OvalServiceException;
 import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.RelationalBinding;
@@ -170,6 +171,27 @@ public class LocalOvalRepository
             }
             defs.setDefinitions( p_def_list );
         }
+    }
+
+
+
+    //**************************************************************
+    //  OvalRepository
+    //**************************************************************
+
+    public OvalSystemCharacteristics getOvalSystemCharacteristics(
+                    final String pid
+                    )
+    throws OvalServiceException
+    {
+        OvalSystemCharacteristics  sc = null;
+        try {
+            sc = _store.get( OvalSystemCharacteristics.class, pid );
+        } catch (Exception ex) {
+            throw new OvalServiceException( ex );
+        }
+
+        return sc;
     }
 
 

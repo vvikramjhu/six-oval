@@ -3,6 +3,8 @@ package jp.go.aist.six.test.oval.core;
 import jp.go.aist.six.oval.core.service.LocalOvalRepository;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.model.result.OvalResults;
+import jp.go.aist.six.oval.model.system.Item;
+import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -110,6 +112,15 @@ public class LocalOvalRepositoryTest
         Reporter.log( "creating OvalResults...", true );
         String  pid = _repository.createOvalResults( ovalResults );
         Reporter.log( "...create done: PID=" + pid, true );
+
+        String  sc_pid = ovalResults.getResults().iterator().next().getOvalSystemCharacteristics().getPersistentID();
+        Reporter.log( "getting OvalSC: PID=" + sc_pid, true );
+        OvalSystemCharacteristics  sc = _repository.getOvalSystemCharacteristics( sc_pid );
+        Reporter.log( "...get done: PID=" + sc.getPersistentID(), true );
+        Reporter.log( "items: ", true );
+        for (Item  item : sc.getItem()) {
+            Reporter.log( "  @ item: " + item, true );
+        }
 
         Reporter.log( "getting OvalResults: PID=" + pid, true );
         ovalResults = _repository.getOvalResults( pid );

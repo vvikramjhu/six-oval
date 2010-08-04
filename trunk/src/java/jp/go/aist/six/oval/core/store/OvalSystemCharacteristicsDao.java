@@ -74,6 +74,13 @@ public class OvalSystemCharacteristicsDao
         }
 
 
+        // TEST //
+//        Collection<Item>  items = sc.getItem();
+//        if (items != null  &&  items.size() > 0) {
+//            for (Item  item : items) {
+//                item.setMasterObject( sc );
+//            }
+//        }
         SystemData  sd = sc.getSystemData();
         if (sd != null  &&  sd.size() > 0) {
             for (Item  item : sd) {

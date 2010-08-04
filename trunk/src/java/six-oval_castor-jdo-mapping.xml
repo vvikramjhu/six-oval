@@ -777,11 +777,18 @@
 -->
 
         <!-- SC : Item = 1 : n -->
+        <field name="item"
+            type="jp.go.aist.six.oval.model.system.Item"
+            collection="collection">
+            <sql many-key="s_sc__PID"/>
+        </field>
+<!--
         <field name="systemData.item"
             type="jp.go.aist.six.oval.model.system.Item"
             collection="collection">
             <sql many-key="s_sc__PID"/>
         </field>
+-->
     </class>
 
 
