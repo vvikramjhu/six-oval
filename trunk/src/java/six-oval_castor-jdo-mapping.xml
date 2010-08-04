@@ -985,6 +985,7 @@
     <!-- Item                                                    -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.system.Item"
+        verify-constructable="false"
         identity="persistentID"
         key-generator="IDENTITY">
 <!--
@@ -995,7 +996,7 @@
         </field>
 -->
 
-        <cache-type type="unlimited"/>
+        <!-- cache-type type="unlimited"/ -->
         <map-to table="oval_s_item"/>
 
         <field name="persistentID" type="string">
