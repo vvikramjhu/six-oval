@@ -95,8 +95,10 @@
                 <entry key="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics"
                     value="jp.go.aist.six.oval.core.store.OvalSystemCharacteristicsDao"/>
 
+<!-- CastoDao
                 <entry key="jp.go.aist.six.oval.model.system.Item"
                     value="jp.go.aist.six.oval.core.store.ItemDao"/>
+-->
 
 <!-- dependent
                 <entry key="jp.go.aist.six.oval.model.system.CollectedSystemObject"
