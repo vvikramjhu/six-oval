@@ -91,8 +91,10 @@ public abstract class Container<E>
                     final Collection<? extends E> c
                     )
     {
-        clear();
-        addAll( c );
+        if (c != _elements) {
+            clear();
+            addAll( c );
+        }
     }
 
 
@@ -196,6 +198,10 @@ public abstract class Container<E>
     {
         if (c == null) {
             throw new NullPointerException( "addAll: null argument collection" );
+        }
+
+        if (c == _elements) {
+            return false;
         }
 
         return _elements.addAll( c );
