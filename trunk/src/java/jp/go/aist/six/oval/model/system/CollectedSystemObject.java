@@ -151,9 +151,11 @@ public class CollectedSystemObject
                     final Collection<? extends VariableValue> values
                     )
     {
-        _variableValue.clear();
-        if (values != null) {
-            _variableValue.addAll( values );
+        if (values != _variableValue) {
+            _variableValue.clear();
+            if (values != null  &&  values.size() > 0) {
+                _variableValue.addAll( values );
+            }
         }
     }
 
@@ -281,31 +283,6 @@ public class CollectedSystemObject
 
 
 
-    private String  _masterPersistentID;
-
-
-    public void setMasterPersistentID(
-                    final String id
-                    )
-    {
-        _masterPersistentID = id;
-    }
-
-
-    public String getMasterPersistentID()
-    {
-        if (_masterPersistentID == null) {
-            OvalSystemCharacteristics  master = getMasterObject();
-            if (master != null) {
-                setMasterPersistentID( master.getPersistentID() );
-            }
-        }
-
-        return _masterPersistentID;
-    }
-
-
-
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -315,10 +292,10 @@ public class CollectedSystemObject
     {
         return "CollectedSystemObject[" + super.toString()
                         + ", flag=" + getFlag()
+                        + ", variable_values=" + getVariableValue()
                         + ", reference=" + getReference()
 //                        + ", variable_instance=" + getVariableInstance()
-//                        + ", messages=" + getMessages()
-                        + ", variable_values=" + getVariableValue()
+                        + ", message=" + getMessage()
                         + "]";
     }
 

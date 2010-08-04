@@ -20,15 +20,17 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.core.model.system.OvalSystemCharacteristicsObjectAssociation;
 import jp.go.aist.six.oval.model.system.CollectedSystemObject;
 import jp.go.aist.six.oval.model.system.CollectedSystemObjects;
 import jp.go.aist.six.oval.model.system.Item;
+import jp.go.aist.six.oval.model.system.ItemReference;
 import jp.go.aist.six.oval.model.system.NetInterface;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.system.SystemData;
 import jp.go.aist.six.oval.model.system.SystemInfo;
+import jp.go.aist.six.oval.model.system.VariableValue;
 import jp.go.aist.six.util.castor.CastorDao;
+import java.util.Collection;
 import java.util.UUID;
 
 
@@ -94,11 +96,25 @@ public class OvalSystemCharacteristicsDao
         if (objects != null  &&  objects.size() > 0) {
             for (CollectedSystemObject  object : objects) {
                 object.setMasterObject( sc );
-                getForwardingDao( CollectedSystemObject.class ).create( object );
+//                getForwardingDao( CollectedSystemObject.class ).create( object );
 
-                OvalSystemCharacteristicsObjectAssociation  sco_assoc =
-                    new OvalSystemCharacteristicsObjectAssociation( sc, object );
-                getForwardingDao( OvalSystemCharacteristicsObjectAssociation.class).sync( sco_assoc );
+//                OvalSystemCharacteristicsObjectAssociation  sco_assoc =
+//                    new OvalSystemCharacteristicsObjectAssociation( sc, object );
+//                getForwardingDao( OvalSystemCharacteristicsObjectAssociation.class).sync( sco_assoc );
+
+                Collection<VariableValue>  vvs = object.getVariableValue();
+                if (vvs != null  &&  vvs.size() > 0) {
+                    for (VariableValue  vv : vvs) {
+                        vv.setMasterObject( object );
+                    }
+                }
+
+                Collection<ItemReference>  references = object.getReference();
+                if (references != null  &&  references.size() > 0) {
+                    for (ItemReference  reference : references) {
+                        reference.setMasterObject( object );
+                    }
+                }
             }
         }
 

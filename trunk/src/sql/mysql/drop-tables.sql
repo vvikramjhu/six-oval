@@ -29,6 +29,9 @@ DROP TABLE IF EXISTS oval_r_results;
 
 DROP TABLE IF EXISTS oval_assoc__s_sc__s_object;
 
+DROP TABLE IF EXISTS oval_s_reference;
+DROP TABLE IF EXISTS oval_s_variable_value;
+
 DROP TABLE IF EXISTS oval_s_item_family;
 DROP TABLE IF EXISTS oval_s_item_textfilecontent;
 DROP TABLE IF EXISTS oval_s_item_dpkginfo;
@@ -37,8 +40,7 @@ DROP TABLE IF EXISTS oval_s_item_uname;
 DROP TABLE IF EXISTS oval_s_item_file;
 DROP TABLE IF EXISTS oval_s_item_registry;
 DROP TABLE IF EXISTS oval_s_item;
-DROP TABLE IF EXISTS oval_s_object__item_reference;
-DROP TABLE IF EXISTS oval_s_object__variable_value;
+
 DROP TABLE IF EXISTS oval_s_object;
 DROP TABLE IF EXISTS oval_s_interface;
 DROP TABLE IF EXISTS oval_s_sc;

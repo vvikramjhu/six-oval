@@ -776,14 +776,23 @@
         </field>
 -->
 
-        <!-- SC : Item = 1 : n -->
-        <field name="item"
+        <!-- 1 : n -->
+        <field name="collectedObjects.object"
+            type="jp.go.aist.six.oval.model.system.CollectedSystemObject"
+            collection="collection">
+            <sql many-key="s_sc__PID"/>
+        </field>
+
+        <!-- 1 : n -->
+<!-- temporally disabled.
+        <field name="systemData.item"
             type="jp.go.aist.six.oval.model.system.Item"
             collection="collection">
             <sql many-key="s_sc__PID"/>
         </field>
-<!--
-        <field name="systemData.item"
+-->
+<!-- test
+        <field name="item"
             type="jp.go.aist.six.oval.model.system.Item"
             collection="collection">
             <sql many-key="s_sc__PID"/>
@@ -838,8 +847,10 @@
     <!-- CollectedSystemObject                                   -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.system.CollectedSystemObject"
+        depends="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics"
         identity="persistentID"
         key-generator="IDENTITY">
+
         <cache-type type="unlimited"/>
         <map-to table="oval_s_object"/>
 
@@ -872,59 +883,30 @@
             <sql name="message" type="char"/>
         </field>
 
+        <!-- 1 : N -->
         <field name="variableValue"
             type="jp.go.aist.six.oval.model.system.VariableValue"
             collection="collection">
             <sql many-key="s_object__PID"/>
         </field>
 
-        <!-- CollectedSystemObject : ItemReference = 1 : n -->
+        <!-- 1 : N -->
         <field name="reference"
             type="jp.go.aist.six.oval.model.system.ItemReference"
             collection="collection">
             <sql many-key="s_object__PID"/>
         </field>
 
-        <!-- (FK) OvalSystemCharacteristics:  This FK is implemented using a mapping table???
-        -->
-        <field name="masterPersistentID" type="string">
-            <sql name="s_sc__PID" type="char"/>
-        </field>
-
         <!-- (FK) SystemObject -->
         <field name="targetEntityPersistentID" type="string">
             <sql name="d_object__PID" type="char"/>
         </field>
-    </class>
 
-
-
-    <!-- ******************************************************* -->
-    <!-- VariableValue                                           -->
-    <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.system.VariableValue"
-        depends="jp.go.aist.six.oval.model.system.CollectedSystemObject"
-        identity="persistentID"
-        key-generator="IDENTITY">
-        <cache-type type="unlimited"/>
-        <map-to table="oval_s_object__variable_value"/>
-
-        <field name="persistentID" type="string">
-            <sql name="PID" type="integer"/>
-        </field>
-
-        <field name="variableID" type="string">
-            <sql name="variable_id" type="char"/>
-        </field>
-
-        <field name="value" type="string">
-            <sql name="value1" type="char"/>
-        </field>
-
-        <!-- (FK) -->
+        <!-- (FK) OvalSystemCharacteristics:  This FK is implemented using a mapping table???
+        -->
         <field name="masterObject" 
-            type="jp.go.aist.six.oval.model.system.CollectedSystemObject">
-            <sql name="s_object__PID"/>
+            type="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics">
+            <sql name="s_sc__PID"/>
         </field>
     </class>
 
@@ -956,15 +938,47 @@
 
 
     <!-- ******************************************************* -->
+    <!-- VariableValue                                           -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.system.VariableValue"
+        depends="jp.go.aist.six.oval.model.system.CollectedSystemObject"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <cache-type type="unlimited"/>
+        <map-to table="oval_s_variable_value"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="variableID" type="string">
+            <sql name="variable_id" type="char"/>
+        </field>
+
+        <field name="value" type="string">
+            <sql name="value1" type="char"/>
+        </field>
+
+        <!-- (FK) -->
+        <field name="masterObject" 
+            type="jp.go.aist.six.oval.model.system.CollectedSystemObject">
+            <sql name="s_object__PID"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- ItemReference                                           -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.system.ItemReference"
         depends="jp.go.aist.six.oval.model.system.CollectedSystemObject"
         identity="persistentID"
-        key-generator="IDENTITY"
-        >
+        key-generator="IDENTITY">
+
         <cache-type type="unlimited"/>
-        <map-to table="oval_s_object__item_reference"/>
+        <map-to table="oval_s_reference"/>
 
         <field name="persistentID" type="string">
             <sql name="PID" type="integer"/>

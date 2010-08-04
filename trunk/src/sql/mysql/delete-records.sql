@@ -29,6 +29,9 @@ DELETE FROM oval_r_results;
 
 DELETE FROM oval_assoc__s_sc__s_object;
 
+DELETE FROM oval_s_reference;
+DELETE FROM oval_s_variable_value;
+
 DELETE FROM oval_s_item_family;
 DELETE FROM oval_s_item_textfilecontent;
 DELETE FROM oval_s_item_dpkginfo;
@@ -37,8 +40,7 @@ DELETE FROM oval_s_item_uname;
 DELETE FROM oval_s_item_file;
 DELETE FROM oval_s_item_registry;
 DELETE FROM oval_s_item;
-DELETE FROM oval_s_object__item_reference;
-DELETE FROM oval_s_object__variable_value;
+
 DELETE FROM oval_s_object;
 DELETE FROM oval_s_interface;
 DELETE FROM oval_s_sc;

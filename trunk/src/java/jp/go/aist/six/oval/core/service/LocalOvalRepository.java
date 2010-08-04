@@ -196,10 +196,6 @@ public class LocalOvalRepository
 
 
 
-    //**************************************************************
-    //  OvalRepository
-    //**************************************************************
-
     // OvalDefinitions //
 
     public String createOvalDefinitions(

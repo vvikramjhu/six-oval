@@ -3,6 +3,7 @@ package jp.go.aist.six.test.oval.core;
 import jp.go.aist.six.oval.core.service.LocalOvalRepository;
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
 import jp.go.aist.six.oval.model.result.OvalResults;
+import jp.go.aist.six.oval.model.system.CollectedSystemObject;
 import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import org.testng.Reporter;
@@ -50,31 +51,31 @@ public class LocalOvalRepositoryTest
                         {
                             "test/data/result/oval-2010-06-15.05.04.34_results.xml",
                         }
-                        ,
-
-                        // windows vulnerability, CVE-2010-0176
-                        {
-                            "test/data/result/oval-2010-07-15.03.55.24_CVE-2010-0176_results.xml",
-                        }
-                        ,
-
-                        // Red Hat patch, CVE-2010-0176, RHSA 20100332
-                        {
-                            "test/data/result/com.redhat.rhsa-20100332_CVE-2010-0176_results.xml",
-                        }
-                        ,
-
-                        // Red Hat patch, CVE-2010-0176, RHSA 20100333
-                        {
-                            "test/data/result/com.redhat.rhsa-20100332_CVE-2010-0176_results.xml",
-                        }
-                        ,
-
-                        // Debian patch, CVE-2010-0176
-                        {
-                            "test/data/result/oval-2010-07-27.04.27.53_DSA-2027_results.xml",
-                        }
-                        ,
+//                        ,
+//
+//                        // windows vulnerability, CVE-2010-0176
+//                        {
+//                            "test/data/result/oval-2010-07-15.03.55.24_CVE-2010-0176_results.xml",
+//                        }
+//                        ,
+//
+//                        // Red Hat patch, CVE-2010-0176, RHSA 20100332
+//                        {
+//                            "test/data/result/com.redhat.rhsa-20100332_CVE-2010-0176_results.xml",
+//                        }
+//                        ,
+//
+//                        // Red Hat patch, CVE-2010-0176, RHSA 20100333
+//                        {
+//                            "test/data/result/com.redhat.rhsa-20100332_CVE-2010-0176_results.xml",
+//                        }
+//                        ,
+//
+//                        // Debian patch, CVE-2010-0176
+//                        {
+//                            "test/data/result/oval-2010-07-27.04.27.53_DSA-2027_results.xml",
+//                        }
+//                        ,
 
 //                        // windows vulnerability
 //                        {
@@ -117,7 +118,12 @@ public class LocalOvalRepositoryTest
         Reporter.log( "getting OvalSC: PID=" + sc_pid, true );
         OvalSystemCharacteristics  sc = _repository.getOvalSystemCharacteristics( sc_pid );
         Reporter.log( "...get done: PID=" + sc.getPersistentID(), true );
-        Reporter.log( "items: ", true );
+        Reporter.log( "  @ OvalSC: " + sc, true );
+        Reporter.log( "  collected_objects: ", true );
+        for (CollectedSystemObject  object : sc.getCollectedObjects()) {
+            Reporter.log( "  @ object: " + object, true );
+        }
+        Reporter.log( "  items: ", true );
         for (Item  item : sc.getItem()) {
             Reporter.log( "  @ item: " + item, true );
         }

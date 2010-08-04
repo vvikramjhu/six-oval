@@ -691,16 +691,16 @@ CREATE TABLE IF NOT EXISTS oval_s_object
     id                  VARCHAR(64)     NOT NULL,
                         /* e.g. oval:org.mitre.oval:obj:419 */
     version             INT             NOT NULL,
+    variable_instance   INT,
+    comment             VARCHAR(255),
     flag                VARCHAR(16)     NOT NULL,
                         /* ENUM( 'error', ..., 'not applicable') */
 
-    variable_instance   INT,
-    comment             VARCHAR(255),
     message             VARCHAR(255),
 
     /* (FK) */
-    s_sc__PID           CHAR(36)        NOT NULL,
     d_object__PID       VARCHAR(64)     NOT NULL,
+    s_sc__PID           CHAR(36)        NOT NULL,
 
     /* (PK) */
     PRIMARY KEY (PID),
@@ -709,32 +709,6 @@ CREATE TABLE IF NOT EXISTS oval_s_object
     INDEX (id),
     INDEX (s_sc__PID),
     INDEX (d_object__PID)
-)
-ENGINE=InnoDB
-CHARACTER SET utf8;
-
-
-
-/* ============================================================== */
-/* VariableValue                                                  */
-/* ============================================================== */
-CREATE TABLE IF NOT EXISTS oval_s_object__variable_value
-(
-    PID                 INT             NOT NULL    AUTO_INCREMENT,
-
-    variable_id         VARCHAR(64)     NOT NULL,
-                        /* e.g. oval:org.mitre.oval:var:419 */
-    value1              VARCHAR(255),
-
-    /* (FK) */
-    s_object__PID       VARCHAR(64)     NOT NULL,
-
-    /* (PK) */
-    PRIMARY KEY (PID),
-    
-    /* INDEX */
-/*  INDEX (variable_id), */
-    INDEX (s_object__PID)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;
@@ -764,9 +738,35 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
+/* VariableValue                                                  */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_s_variable_value
+(
+    PID                 INT             NOT NULL    AUTO_INCREMENT,
+
+    variable_id         VARCHAR(64)     NOT NULL,
+                        /* e.g. oval:org.mitre.oval:var:419 */
+    value1              VARCHAR(255),
+
+    /* (FK) */
+    s_object__PID       INT             NOT NULL,
+
+    /* (PK) */
+    PRIMARY KEY (PID),
+    
+    /* INDEX */
+/*  INDEX (variable_id), */
+    INDEX (s_object__PID)
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
 /* ItemReference                                                  */
 /* ============================================================== */
-CREATE TABLE IF NOT EXISTS oval_s_object__item_reference
+CREATE TABLE IF NOT EXISTS oval_s_reference
 (
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
@@ -779,6 +779,7 @@ CREATE TABLE IF NOT EXISTS oval_s_object__item_reference
     PRIMARY KEY (PID),
     
     /* INDEX */
+    INDEX (s_object__PID),
     UNIQUE (s_object__PID, item_ref)
 )
 ENGINE=InnoDB
