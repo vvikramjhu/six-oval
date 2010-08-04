@@ -185,15 +185,27 @@ public class LocalOvalRepository
                     )
     throws OvalServiceException
     {
-        OvalSystemCharacteristics  sc = null;
+        RelationalBinding  filter = RelationalBinding.equalBinding(
+                        "persistentID", pid );
+        List<OvalSystemCharacteristics>  sc = null;
         try {
-            sc = _store.get( OvalSystemCharacteristics.class, pid );
+            sc = _store.find( OvalSystemCharacteristics.class, filter);
         } catch (Exception ex) {
             throw new OvalServiceException( ex );
         }
 
-        return sc;
+        return (sc.size() == 0 ? null : sc.get( 0 ));
     }
+//    {
+//        OvalSystemCharacteristics  sc = null;
+//        try {
+//            sc = _store.get( OvalSystemCharacteristics.class, pid );
+//        } catch (Exception ex) {
+//            throw new OvalServiceException( ex );
+//        }
+//
+//        return sc;
+//    }
 
 
     public Collection<Item> getAllItems(
