@@ -127,10 +127,10 @@ public class LocalOvalRepositoryTest
         for (CollectedSystemObject  object : sc.getCollectedObjects()) {
             Reporter.log( "  @ object: " + object, true );
         }
-        Reporter.log( "  items: ", true );
-        for (Item  item : sc.getItem()) {
-            Reporter.log( "  @ item: " + item, true );
-        }
+//        Reporter.log( "  items: ", true );
+//        for (Item  item : sc.getItem()) {
+//            Reporter.log( "  @ item: " + item, true );
+//        }
 
         Reporter.log( "getting OvalResults: PID=" + pid, true );
         ovalResults = _repository.getOvalResults( pid );

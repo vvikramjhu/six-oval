@@ -780,7 +780,7 @@ CREATE TABLE IF NOT EXISTS oval_s_item
     object_type         VARCHAR(32)     NOT NULL,
 
     /* (FK) */
-    s_sc__PID           CHAR(36)        /* NOT NULL */,
+    s_sc__PID           CHAR(36)        NOT NULL,
 
     /* (PK) */
     PRIMARY KEY(PID),

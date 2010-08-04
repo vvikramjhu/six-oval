@@ -152,28 +152,28 @@ public abstract class Item
 
 
 
-//    private String  _masterPersistentID;
-//
-//
-//    public void setMasterPersistentID(
-//                    final String id
-//                    )
-//    {
-//        _masterPersistentID = id;
-//    }
-//
-//
-//    public String getMasterPersistentID()
-//    {
-//        if (_masterPersistentID == null) {
-//            OvalSystemCharacteristics  master = getMasterObject();
-//            if (master != null) {
-//                _masterPersistentID = master.getPersistentID();
-//            }
-//        }
-//
-//        return _masterPersistentID;
-//    }
+    private String  _masterPersistentID;
+
+
+    public void setMasterPersistentID(
+                    final String id
+                    )
+    {
+        _masterPersistentID = id;
+    }
+
+
+    public String getMasterPersistentID()
+    {
+        if (_masterPersistentID == null) {
+            OvalSystemCharacteristics  master = getMasterObject();
+            if (master != null) {
+                _masterPersistentID = master.getPersistentID();
+            }
+        }
+
+        return _masterPersistentID;
+    }
 
 
 

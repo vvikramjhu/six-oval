@@ -22,8 +22,6 @@ package jp.go.aist.six.oval.model.system;
 
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.util.castor.AbstractPersistable;
-import java.util.ArrayList;
-import java.util.Collection;
 
 
 
@@ -51,7 +49,8 @@ public class OvalSystemCharacteristics
     private SystemData  _systemData = new SystemData();
     //{0..1}
 
-    private Collection<Item>  _item = new ArrayList<Item>();
+    // test:
+//    private Collection<Item>  _item = new ArrayList<Item>();
 
 
 
@@ -77,22 +76,34 @@ public class OvalSystemCharacteristics
 
 
 
-    public void setItem(
-                    final Collection<? extends Item> items
-                    )
-    {
-        if (items != _item) {
-            _item.clear();
-            if (items != null  &&  items.size() > 0)
-            _item.addAll( items );
-        }
-    }
-
-
-    public Collection<Item> getItem()
-    {
-        return _item;
-    }
+//    public void setItem(
+//                    final Collection<? extends Item> items
+//                    )
+//    {
+//        if (items != _item) {
+//            _item.clear();
+//            if (items != null  &&  items.size() > 0)
+//            _item.addAll( items );
+//        }
+//    }
+//
+//
+//    public void addItem(
+//                    final Item item
+//                    )
+//    {
+//        _item.add( item );
+//    }
+//
+//
+//    public Collection<Item> getItem()
+//    {
+//        if (_item.size() == 0) {
+//            _item.addAll( _systemData.getItem() );
+//        }
+//
+//        return _item;
+//    }
 
 
 //    public
