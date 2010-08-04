@@ -208,21 +208,23 @@ public class LocalOvalRepository
 //    }
 
 
-    public Collection<Item> getAllItems(
-                    final Collection<String> pids
+    public Collection<Item> getItem(
+                    final String scPID
                     )
     throws OvalServiceException
     {
+        RelationalBinding  filter = RelationalBinding.equalBinding(
+                        "masterPersistentID", scPID );
+
         Collection<Item>  items = null;
         try {
-            items = _store.getAll( Item.class, pids );
+            items = _store.find( Item.class, filter );
         } catch (Exception ex) {
             throw new OvalServiceException( ex );
         }
 
         return items;
     }
-
 
 
 

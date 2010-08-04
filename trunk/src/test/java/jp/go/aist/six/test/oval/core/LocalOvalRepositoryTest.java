@@ -6,11 +6,9 @@ import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.model.system.CollectedSystemObject;
 import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.model.system.SystemData;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
-import java.util.ArrayList;
 import java.util.Collection;
 
 
@@ -116,9 +114,9 @@ public class LocalOvalRepositoryTest
         String  pid = _repository.createOvalResults( ovalResults );
         Reporter.log( "...create done: PID=" + pid, true );
 
-        _getItems( ovalResults.getResults().iterator().next().getOvalSystemCharacteristics() );
-
         String  sc_pid = ovalResults.getResults().iterator().next().getOvalSystemCharacteristics().getPersistentID();
+        _getItem( sc_pid );
+
         Reporter.log( "getting OvalSC: PID=" + sc_pid, true );
         OvalSystemCharacteristics  sc = _repository.getOvalSystemCharacteristics( sc_pid );
         Reporter.log( "...get done: PID=" + sc.getPersistentID(), true );
@@ -139,20 +137,15 @@ public class LocalOvalRepositoryTest
 
 
 
-    private void _getItems( final OvalSystemCharacteristics sc )
+    private void _getItem(
+                    final String scPID
+                    )
     throws Exception
     {
-        SystemData  sd = sc.getSystemData();
-        if (sd != null  &&  sd.size() > 0) {
-            Collection<String>  pids = new ArrayList<String>();
-            for (Item  item : sd) {
-                pids.add( item.getPersistentID() );
-            }
-            Collection<Item>  items = _repository.getAllItems( pids );
-            Reporter.log( "  items: ", true );
-            for (Item  item : items) {
-                Reporter.log( "  @ item: " + item, true );
-            }
+        Reporter.log( "  items: ", true );
+        Collection<Item>  items = _repository.getItem( scPID );
+        for (Item  item : items) {
+            Reporter.log( "  @ item: " + item, true );
         }
     }
 

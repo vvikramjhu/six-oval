@@ -1130,8 +1130,7 @@
 
         <field name="results.system"
             type="jp.go.aist.six.oval.model.result.SystemResult"
-            collection="collection"
-            >
+            collection="collection">
             <sql many-key="r_results__PID"/>
         </field>
 
@@ -1177,8 +1176,7 @@
     <class name="jp.go.aist.six.oval.model.result.SystemResult"
         depends="jp.go.aist.six.oval.model.result.OvalResults"
         identity="persistentID"
-        key-generator="IDENTITY"
-        >
+        key-generator="IDENTITY">
         <cache-type type="unlimited"/>
         <map-to table="oval_r_system"/>
 
@@ -1274,7 +1272,12 @@
             <sql name="result" type="char"/>
         </field>
 
-        <!-- (FK) SystemResult -->
+        <!-- (FK) Definition -->
+        <field name="targetEntityPersistentID" type="string">
+            <sql name="d_definition__PID" type="char"/>
+        </field>
+
+        <!-- (FK) -->
         <field name="masterObject" 
             type="jp.go.aist.six.oval.model.result.SystemResult">
             <sql name="r_system__PID"/>
@@ -1284,11 +1287,6 @@
             <sql name="r_system__PID" type="char"/>
         </field>
 -->
-
-        <!-- (FK) Definition -->
-        <field name="targetEntityPersistentID" type="string">
-            <sql name="d_definition__PID" type="char"/>
-        </field>
     </class>
 
 
