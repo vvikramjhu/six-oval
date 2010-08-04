@@ -780,7 +780,7 @@ CREATE TABLE IF NOT EXISTS oval_s_item
     object_type         VARCHAR(32)     NOT NULL,
 
     /* (FK) */
-    s_sc__PID           CHAR(36)        NOT NULL,
+    s_sc__PID           CHAR(36)        /* NOT NULL */,
 
     /* (PK) */
     PRIMARY KEY(PID),
@@ -790,6 +790,28 @@ CREATE TABLE IF NOT EXISTS oval_s_item
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
+/* OvalSC - Item association                                      */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_assoc__s_sc__s_item
+(
+    PID                 INT             NOT NULL    AUTO_INCREMENT,
+
+    s_sc__PID           CHAR(36)        NOT NULL,
+    s_item__PID         INT             NOT NULL,
+
+    /* (PK) */
+    PRIMARY KEY (PID),
+    
+    /* INDEX */
+    UNIQUE (s_sc__PID, s_item__PID)
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
 
 
 

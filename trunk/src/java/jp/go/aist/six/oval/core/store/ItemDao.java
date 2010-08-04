@@ -22,6 +22,8 @@ package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.util.castor.CastorDao;
+import jp.go.aist.six.util.search.RelationalBinding;
+import java.util.List;
 
 
 
@@ -36,6 +38,23 @@ public class ItemDao
     public ItemDao()
     {
         super( Item.class );
+    }
+
+
+
+    //**************************************************************
+    //  Dao, CastorDao
+    //**************************************************************
+
+    // workaround:
+    @Override
+    public Item get(
+                    final Object identity
+                    )
+    {
+        List<Item>  p_objects = find(
+                        RelationalBinding.equalBinding( "persistentID", identity ) );
+        return (p_objects.size() == 0 ? null : p_objects.get( 0 ) );
     }
 
 }

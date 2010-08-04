@@ -37,6 +37,7 @@ import jp.go.aist.six.oval.model.definition.Tests;
 import jp.go.aist.six.oval.model.definition.Variable;
 import jp.go.aist.six.oval.model.definition.Variables;
 import jp.go.aist.six.oval.model.result.OvalResults;
+import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.service.OvalServiceException;
 import jp.go.aist.six.util.search.Binding;
@@ -193,6 +194,23 @@ public class LocalOvalRepository
 
         return sc;
     }
+
+
+    public Collection<Item> getAllItems(
+                    final Collection<String> pids
+                    )
+    throws OvalServiceException
+    {
+        Collection<Item>  items = null;
+        try {
+            items = _store.getAll( Item.class, pids );
+        } catch (Exception ex) {
+            throw new OvalServiceException( ex );
+        }
+
+        return items;
+    }
+
 
 
 

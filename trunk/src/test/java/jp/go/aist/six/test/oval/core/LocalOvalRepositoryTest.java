@@ -6,9 +6,11 @@ import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.model.system.CollectedSystemObject;
 import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.system.SystemData;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
+import java.util.ArrayList;
 import java.util.Collection;
 
 
@@ -114,6 +116,8 @@ public class LocalOvalRepositoryTest
         String  pid = _repository.createOvalResults( ovalResults );
         Reporter.log( "...create done: PID=" + pid, true );
 
+        _getItems( ovalResults.getResults().iterator().next().getOvalSystemCharacteristics() );
+
         String  sc_pid = ovalResults.getResults().iterator().next().getOvalSystemCharacteristics().getPersistentID();
         Reporter.log( "getting OvalSC: PID=" + sc_pid, true );
         OvalSystemCharacteristics  sc = _repository.getOvalSystemCharacteristics( sc_pid );
@@ -133,6 +137,24 @@ public class LocalOvalRepositoryTest
         Reporter.log( "...get done: PID=" + ovalResults.getPersistentID(), true );
     }
 
+
+
+    private void _getItems( final OvalSystemCharacteristics sc )
+    throws Exception
+    {
+        SystemData  sd = sc.getSystemData();
+        if (sd != null  &&  sd.size() > 0) {
+            Collection<String>  pids = new ArrayList<String>();
+            for (Item  item : sd) {
+                pids.add( item.getPersistentID() );
+            }
+            Collection<Item>  items = _repository.getAllItems( pids );
+            Reporter.log( "  items: ", true );
+            for (Item  item : items) {
+                Reporter.log( "  @ item: " + item, true );
+            }
+        }
+    }
 
 
     //==============================================================

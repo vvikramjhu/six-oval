@@ -27,6 +27,8 @@ DROP TABLE IF EXISTS oval_r_results;
 
 /* system characteristics */
 
+DROP TABLE IF EXISTS oval_assoc__s_sc__s_item;
+
 DROP TABLE IF EXISTS oval_s_reference;
 DROP TABLE IF EXISTS oval_s_variable_value;
 

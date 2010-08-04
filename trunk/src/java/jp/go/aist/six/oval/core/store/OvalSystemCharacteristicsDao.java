@@ -57,6 +57,19 @@ public class OvalSystemCharacteristicsDao
     //  Dao, CastorDao
     //**************************************************************
 
+//    // workaround:
+//    @Override
+//    public OvalSystemCharacteristics get(
+//                    final Object identity
+//                    )
+//    {
+//        List<OvalSystemCharacteristics>  p_objects = find(
+//                        RelationalBinding.equalBinding( "persistentID", identity ) );
+//        return (p_objects.size() == 0 ? null : p_objects.get( 0 ) );
+//    }
+
+
+
     @Override
     public String create(
                     final OvalSystemCharacteristics sc
@@ -87,7 +100,7 @@ public class OvalSystemCharacteristicsDao
         if (sd != null  &&  sd.size() > 0) {
             for (Item  item : sd) {
                 item.setMasterObject( sc );
-//                getForwardingDao( Item.class ).create( item );
+                getForwardingDao( Item.class ).create( item );
             }
         }
 
