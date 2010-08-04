@@ -902,36 +902,10 @@
             <sql name="d_object__PID" type="char"/>
         </field>
 
-        <!-- (FK) OvalSystemCharacteristics:  This FK is implemented using a mapping table???
-        -->
+        <!-- (FK: depends) -->
         <field name="masterObject" 
             type="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics">
             <sql name="s_sc__PID"/>
-        </field>
-    </class>
-
-
-
-    <!-- ******************************************************* -->
-    <!-- OvalSystemCharacteristicsObjectAssociation              -->
-    <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.core.model.system.OvalSystemCharacteristicsObjectAssociation"
-        identity="persistentID"
-        key-generator="IDENTITY"
-        >
-        <cache-type type="unlimited"/>
-        <map-to table="oval_assoc__s_sc__s_object"/>
-
-        <field name="persistentID" type="string">
-            <sql name="PID" type="integer"/>
-        </field>
-
-        <field name="antecendentPersistentID" type="string">
-            <sql name="s_sc__PID" type="char"/>
-        </field>
-
-        <field name="dependentPersistentID" type="string">
-            <sql name="s_object__PID" type="char"/>
         </field>
     </class>
 
@@ -960,7 +934,7 @@
             <sql name="value1" type="char"/>
         </field>
 
-        <!-- (FK) -->
+        <!-- (FK: depends) -->
         <field name="masterObject" 
             type="jp.go.aist.six.oval.model.system.CollectedSystemObject">
             <sql name="s_object__PID"/>
@@ -988,7 +962,7 @@
             <sql name="item_ref" type="integer"/>
         </field>
 
-        <!-- (FK) -->
+        <!-- (FK: depends) -->
         <field name="masterObject" 
             type="jp.go.aist.six.oval.model.system.CollectedSystemObject">
             <sql name="s_object__PID"/>

@@ -27,8 +27,6 @@ DELETE FROM oval_r_results;
 
 /* system characteristics */
 
-DELETE FROM oval_assoc__s_sc__s_object;
-
 DELETE FROM oval_s_reference;
 DELETE FROM oval_s_variable_value;
 

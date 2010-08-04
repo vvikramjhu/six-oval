@@ -667,7 +667,7 @@ CREATE TABLE IF NOT EXISTS oval_s_interface
     ip_address          VARCHAR(16)     NOT NULL,
     mac_address         VARCHAR(20)     NOT NULL,
 
-    /* (FK) */
+    /* (FK: depends) */
     s_sc__PID           CHAR(36)        NOT NULL,
 
     /* (PK) */
@@ -700,6 +700,7 @@ CREATE TABLE IF NOT EXISTS oval_s_object
 
     /* (FK) */
     d_object__PID       VARCHAR(64)     NOT NULL,
+    /* (FK: depends) */
     s_sc__PID           CHAR(36)        NOT NULL,
 
     /* (PK) */
@@ -709,28 +710,6 @@ CREATE TABLE IF NOT EXISTS oval_s_object
     INDEX (id),
     INDEX (s_sc__PID),
     INDEX (d_object__PID)
-)
-ENGINE=InnoDB
-CHARACTER SET utf8;
-
-
-
-/* ============================================================== */
-/* OvalSystemCharacteristics - CollectedSystemObject association  */
-/* ============================================================== */
-CREATE TABLE IF NOT EXISTS oval_assoc__s_sc__s_object
-(
-    PID                 INT             NOT NULL    AUTO_INCREMENT,
-
-    /* (FK) */
-    s_sc__PID           CHAR(36)        NOT NULL,
-    s_object__PID       INT             NOT NULL,
-
-    /* (PK) */
-    PRIMARY KEY (PID),
-    
-    /* INDEX */
-    UNIQUE (s_sc__PID, s_object__PID)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;
@@ -748,7 +727,7 @@ CREATE TABLE IF NOT EXISTS oval_s_variable_value
                         /* e.g. oval:org.mitre.oval:var:419 */
     value1              VARCHAR(255),
 
-    /* (FK) */
+    /* (FK: depends) */
     s_object__PID       INT             NOT NULL,
 
     /* (PK) */
@@ -772,7 +751,7 @@ CREATE TABLE IF NOT EXISTS oval_s_reference
 
     item_ref            INT             NOT NULL,
 
-    /* (FK) */
+    /* (FK: depends) */
     s_object__PID       INT             NOT NULL,
 
     /* (PK) */
