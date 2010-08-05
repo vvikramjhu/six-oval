@@ -29,6 +29,8 @@ use @six.db.database@;
 --      gen_product_name    VARCHAR(64),
 --      gen_product_version VARCHAR(64),
 --
+-- * operation              VARCHAR(32),
+--                          /* max. length = 26, 'case insensitive not equal' */
 -- * datatype               VARCHAR(16),
 --                          /* max. length = 16, 'fileset_revision' */
 --
@@ -333,7 +335,7 @@ CREATE TABLE IF NOT EXISTS oval_d_test
                         /* e.g. oval:org.mitre.oval:obj:419 */
     version             INT             NOT NULL,
 
-    deprecated          BOOLEAN         NOT NULL    DEFAULT false,
+    deprecated          BOOLEAN                     DEFAULT false,
     comment             VARCHAR(255),
 
     check1              VARCHAR(16)     NOT NULL,
@@ -389,14 +391,14 @@ CREATE TABLE IF NOT EXISTS oval_assoc__d_definitions__d_test
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
     /* (FK) */
-    definitions__PID    CHAR(36)        NOT NULL,
-    test__PID           VARCHAR(64)     NOT NULL,
+    d_definitions__PID  CHAR(36)        NOT NULL,
+    d_test__PID         VARCHAR(64)     NOT NULL,
 
     /* (PK) */
     PRIMARY KEY (PID),
     
     /* INDEX */
-    UNIQUE (definitions__PID, test__PID)
+    UNIQUE (d_definitions__PID, d_test__PID)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;
@@ -437,7 +439,7 @@ CREATE TABLE IF NOT EXISTS oval_d_object
                         /* e.g. oval:org.mitre.oval:obj:419 */
     version             INT             NOT NULL,
 
-    deprecated          BOOLEAN         NOT NULL    DEFAULT false,
+    deprecated          BOOLEAN                     DEFAULT false,
     comment             VARCHAR(255),
 
     object_type         VARCHAR(32)     NOT NULL,
@@ -464,14 +466,14 @@ CREATE TABLE IF NOT EXISTS oval_assoc__d_definitions__d_object
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
     /* (FK) */
-    definitions__PID    CHAR(36)        NOT NULL,
-    object__PID         VARCHAR(64)     NOT NULL,
+    d_definitions__PID  CHAR(36)        NOT NULL,
+    d_object__PID       VARCHAR(64)     NOT NULL,
 
     /* (PK) */
     PRIMARY KEY (PID),
     
     /* INDEX */
-    UNIQUE (definitions__PID, object__PID)
+    UNIQUE (d_definitions__PID, d_object__PID)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;
@@ -1647,6 +1649,7 @@ CREATE TABLE IF NOT EXISTS oval_d_object_file
 
     /* filename */
     filename            VARCHAR(255),
+    filename_operation  VARCHAR(32)   /*NOT NULL*/  DEFAULT 'equals',
 
     /* behaviors */
 /*  max_depth           INT             NOT NULL    DEFAULT -1,      */

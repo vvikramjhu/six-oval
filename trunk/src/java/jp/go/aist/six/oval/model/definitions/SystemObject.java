@@ -57,6 +57,19 @@ public abstract class SystemObject
     }
 
 
+    /**
+     * Constructor.
+     */
+    public SystemObject(
+                    final String id,
+                    final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
+    }
+
+
 
     public void setObjectType(
                     final ObjectType type
@@ -66,27 +79,6 @@ public abstract class SystemObject
 
 
     public abstract ObjectType getObjectType();
-
-
-
-    // We found NO object with specific notes.
-
-//    /**
-//     * @param notes the notes to set
-//     */
-//    public void setNotes( final Notes notes )
-//    {
-//        _notes = notes;
-//    }
-//
-//
-//    /**
-//     * @return the notes
-//     */
-//    public Notes getNotes()
-//    {
-//        return _notes;
-//    }
 
 
 

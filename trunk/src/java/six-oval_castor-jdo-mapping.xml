@@ -348,8 +348,8 @@
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsTestAssociation"
         identity="persistentID"
-        key-generator="IDENTITY"
-        >
+        key-generator="IDENTITY">
+
         <cache-type type="unlimited"/>
         <map-to table="oval_assoc__d_definitions__d_test"/>
 
@@ -358,13 +358,12 @@
         </field>
 
         <field name="antecendentPersistentID" type="string">
-            <sql name="definitions__PID" type="char"/>
+            <sql name="d_definitions__PID" type="char"/>
         </field>
 
         <field name="dependentPersistentID" type="string">
-            <sql name="test__PID" type="char"/>
+            <sql name="d_test__PID" type="char"/>
         </field>
-
     </class>
 
 
@@ -390,7 +389,6 @@
         <field name="dependentPersistentID" type="string">
             <sql name="test__PID" type="char"/>
         </field>
-
     </class>
 
 
@@ -399,11 +397,9 @@
     <!-- Test                                                    -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.definitions.Test"
-        identity="persistentID"
-        >
-<!--
+        identity="persistentID">
+
         <cache-type type="unlimited"/>
--->
         <map-to table="oval_d_test"/>
 
         <field name="persistentID" type="string">
@@ -495,8 +491,8 @@
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsObjectAssociation"
         identity="persistentID"
-        key-generator="IDENTITY"
-        >
+        key-generator="IDENTITY">
+
         <cache-type type="unlimited"/>
         <map-to table="oval_assoc__d_definitions__d_object"/>
 
@@ -505,11 +501,11 @@
         </field>
 
         <field name="antecendentPersistentID" type="string">
-            <sql name="definitions__PID" type="char"/>
+            <sql name="d_definitions__PID" type="char"/>
         </field>
 
         <field name="dependentPersistentID" type="string">
-            <sql name="object__PID" type="char"/>
+            <sql name="d_object__PID" type="char"/>
         </field>
 
     </class>
@@ -520,8 +516,8 @@
     <!-- SystemObject                                            -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.definitions.SystemObject"
-        identity="persistentID"
-        >
+        identity="persistentID">
+
         <cache-type type="unlimited"/>
         <map-to table="oval_d_object"/>
 
@@ -549,7 +545,6 @@
             type="jp.go.aist.six.oval.model.ObjectType">
             <sql name="object_type" type="char"/>
         </field>
-
     </class>
 
 
@@ -2082,6 +2077,7 @@
     <class name="jp.go.aist.six.oval.model.windows.FileObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObject"
         identity="persistentID">
+
         <cache-type type="unlimited"/>
         <map-to table="oval_d_object_file"/>
 
@@ -2089,10 +2085,9 @@
             <sql name="PID" type="char"/>
         </field>
 
-        <field name="filename.data" type="string">
-            <sql name="filename" type="char"/>
-        </field>
 
+        <!-- path -->
+        
         <field name="path.data" type="string">
             <sql name="path" type="char"/>
         </field>
@@ -2109,6 +2104,18 @@
         <field name="path.operation" 
             type="jp.go.aist.six.oval.model.common.Operation">
             <sql name="path_operation" type="char"/>
+        </field>
+
+
+        <!-- filename -->
+        
+        <field name="filename.data" type="string">
+            <sql name="filename" type="char"/>
+        </field>
+
+        <field name="filename.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="filename_operation" type="char"/>
         </field>
 
 <!--No file object has 'behaviors' child element in the definition XML. 
