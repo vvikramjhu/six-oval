@@ -60,36 +60,37 @@ public class OvalResultsDao
                     final SystemResult system
                     )
     {
-            OvalSystemCharacteristics  sc = system.getOvalSystemCharacteristics();
-            getForwardingDao( OvalSystemCharacteristics.class ).create( sc );
+        OvalSystemCharacteristics  sc = system.getOvalSystemCharacteristics();
+        OvalSystemCharacteristics  p_sc = getForwardingDao( OvalSystemCharacteristics.class ).sync( sc );
+        system.setOvalSystemCharacteristics( p_sc );
 
-            DefinitionResults  dr_list = system.getDefinitions();
-            if (dr_list != null  &&  dr_list.size() > 0) {
-                for (DefinitionResult  dr : dr_list) {
-                    dr.setMasterObject( system );
-                }
+        DefinitionResults  dr_list = system.getDefinitions();
+        if (dr_list != null  &&  dr_list.size() > 0) {
+            for (DefinitionResult  dr : dr_list) {
+                dr.setMasterObject( system );
             }
+        }
 
-            TestResults  tests = system.getTests();
-            if (tests != null  &&  tests.size() > 0) {
-                for (TestResult  test : tests) {
-                    test.setMasterObject( system );
+        TestResults  tests = system.getTests();
+        if (tests != null  &&  tests.size() > 0) {
+            for (TestResult  test : tests) {
+                test.setMasterObject( system );
 
-                    Collection<TestedItem>  items = test.getTestedItem();
-                    if (items != null   &&  items.size() > 0) {
-                        for (TestedItem  item : items) {
-                            item.setMasterObject( test );
-                        }
-                    }
-
-                    Collection<TestedVariable>  variables = test.getTestedVariable();
-                    if (variables != null   &&  variables.size() > 0) {
-                        for (TestedVariable  variable : variables) {
-                            variable.setMasterObject( test );
-                        }
+                Collection<TestedItem>  items = test.getTestedItem();
+                if (items != null   &&  items.size() > 0) {
+                    for (TestedItem  item : items) {
+                        item.setMasterObject( test );
                     }
                 }
+
+                Collection<TestedVariable>  variables = test.getTestedVariable();
+                if (variables != null   &&  variables.size() > 0) {
+                    for (TestedVariable  variable : variables) {
+                        variable.setMasterObject( test );
+                    }
+                }
             }
+        }
     }
 
 
