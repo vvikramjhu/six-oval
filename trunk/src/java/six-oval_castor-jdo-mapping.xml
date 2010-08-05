@@ -615,6 +615,7 @@
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.definitions.Variable"
         identity="persistentID">
+
         <cache-type type="unlimited"/>
         <map-to table="oval_d_variable"/>
 

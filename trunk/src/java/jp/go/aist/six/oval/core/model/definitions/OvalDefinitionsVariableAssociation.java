@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.core.model.definitions;
 
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.util.castor.StandardAssociation;
 
 
@@ -30,14 +30,14 @@ import jp.go.aist.six.util.castor.StandardAssociation;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalDefinitionsTestAssociation
-    extends StandardAssociation<String, String, OvalDefinitions, Test>
+public class OvalDefinitionsVariableAssociation
+    extends StandardAssociation<String, String, OvalDefinitions, Variable>
 {
 
     /**
      * Constructor.
      */
-    public OvalDefinitionsTestAssociation()
+    public OvalDefinitionsVariableAssociation()
     {
     }
 
@@ -46,13 +46,13 @@ public class OvalDefinitionsTestAssociation
     /**
      * Constructor.
      */
-    public OvalDefinitionsTestAssociation(
+    public OvalDefinitionsVariableAssociation(
                     final OvalDefinitions antecendent,
-                    final Test dependent
+                    final Variable dependent
                     )
     {
         super( antecendent, dependent );
     }
 
 }
-// OvalDefinitionsTestAssociation
+// OvalDefinitionsVariableAssociation

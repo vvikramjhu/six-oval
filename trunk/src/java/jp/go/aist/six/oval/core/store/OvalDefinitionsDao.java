@@ -26,6 +26,7 @@ import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsObjectAssociati
 import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsStateAssociation;
 import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsTestAssociation;
 import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsUtil;
+import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsVariableAssociation;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Definitions;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
@@ -149,9 +150,9 @@ public class OvalDefinitionsDao
             for (Variable  object : variables) {
                 Variable  p_object = getForwardingDao( Variable.class ).sync( object );
                 p_objects.add( p_object );
-//                OvalDefinitionsStateAssociation  assoc =
-//                    new OvalDefinitionsStateAssociation( defs, p_object );
-//                getForwardingDao( OvalDefinitionsStateAssociation.class ).sync( assoc );
+                OvalDefinitionsVariableAssociation  assoc =
+                    new OvalDefinitionsVariableAssociation( defs, p_object );
+                getForwardingDao( OvalDefinitionsVariableAssociation.class ).sync( assoc );
             }
 
             defs.setVariables( p_objects );

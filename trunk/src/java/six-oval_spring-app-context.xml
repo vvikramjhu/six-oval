@@ -89,6 +89,9 @@
                 <entry key="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsStateAssociation"
                     value="jp.go.aist.six.oval.core.store.OvalDefinitionsStateAssociationDao"/>
 
+                <entry key="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsVariableAssociation"
+                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsVariableAssociationDao"/>
+
 
             <!-- // System Characteristics // -->
 

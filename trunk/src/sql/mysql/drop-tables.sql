@@ -53,6 +53,7 @@ DROP TABLE IF EXISTS oval_assoc__d_definitions__d_object;
 DROP TABLE IF EXISTS oval_assoc__d_definitions__d_state;
 DROP TABLE IF EXISTS oval_assoc__d_definition__d_test;
 DROP TABLE IF EXISTS oval_assoc__d_definitions__d_test;
+DROP TABLE IF EXISTS oval_assoc__d_definitions__d_variable;
 DROP TABLE IF EXISTS oval_assoc__d_definition__d_cve;
 DROP TABLE IF EXISTS oval_assoc__d_definition__d_platform;
 DROP TABLE IF EXISTS oval_assoc__d_definition__d_product;

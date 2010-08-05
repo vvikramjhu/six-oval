@@ -336,7 +336,7 @@ CREATE TABLE IF NOT EXISTS oval_d_test
     version             INT             NOT NULL,
 
     deprecated          BOOLEAN                     DEFAULT false,
-    comment             VARCHAR(255),
+    comment             VARCHAR(255)    NOT NULL,
 
     check1              VARCHAR(16)     NOT NULL,
     existence           VARCHAR(20)                 DEFAULT 'at_least_one_exists',
@@ -571,8 +571,8 @@ CREATE TABLE IF NOT EXISTS oval_d_variable
                         /* e.g. oval:org.mitre.oval:var:419 */
     version             INT             NOT NULL,
 
-    deprecated          BOOLEAN         NOT NULL    DEFAULT false,
-    comment             VARCHAR(255),
+    deprecated          BOOLEAN                     DEFAULT false,
+    comment             VARCHAR(255)    NOT NULL,
 
     datatype            VARCHAR(16)     NOT NULL,
 
@@ -585,7 +585,28 @@ CREATE TABLE IF NOT EXISTS oval_d_variable
 
     /* INDEX */
     UNIQUE (id, version)
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
 
+
+
+/* ============================================================== */
+/* OvalDefinitions - Variable association                         */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_assoc__d_definitions__d_variable
+(
+    PID                 INT             NOT NULL    AUTO_INCREMENT,
+
+    /* (FK) */
+    d_definitions__PID  CHAR(36)        NOT NULL,
+    d_variable__PID     VARCHAR(64)     NOT NULL,
+
+    /* (PK) */
+    PRIMARY KEY (PID),
+    
+    /* INDEX */
+    UNIQUE (d_definitions__PID, d_variable__PID)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;

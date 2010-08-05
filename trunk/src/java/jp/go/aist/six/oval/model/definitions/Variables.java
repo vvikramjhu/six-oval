@@ -68,18 +68,18 @@ public class Variables
 
 
     public void setVariable(
-                    final Collection<? extends Variable> elements
+                    final Collection<? extends Variable> variables
                     )
     {
-        reset( elements );
+        reset( variables );
     }
 
 
     public boolean addVariable(
-                    final Variable e
+                    final Variable variable
                     )
     {
-        return add( e );
+        return add( variable );
     }
 
 
