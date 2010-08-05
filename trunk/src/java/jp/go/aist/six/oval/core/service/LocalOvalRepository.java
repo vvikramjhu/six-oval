@@ -41,6 +41,8 @@ import jp.go.aist.six.oval.model.system.Item;
 import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.service.OvalServiceException;
 import jp.go.aist.six.util.search.Binding;
+import jp.go.aist.six.util.search.Limit;
+import jp.go.aist.six.util.search.Order;
 import jp.go.aist.six.util.search.RelationalBinding;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -290,6 +292,24 @@ public class LocalOvalRepository
         OvalResults  results = null;
         try {
             results = _store.get( OvalResults.class, pid );
+        } catch (Exception ex) {
+            throw new OvalServiceException( ex );
+        }
+
+        return results;
+    }
+
+
+    public List<OvalResults> findOvalResults(
+                    final Binding filter,
+                    final List<Order> ordering,
+                    final Limit limit
+                    )
+    throws OvalServiceException
+    {
+        List<OvalResults>  results = null;
+        try {
+            results = _store.find( OvalResults.class, filter, ordering, limit );
         } catch (Exception ex) {
             throw new OvalServiceException( ex );
         }
