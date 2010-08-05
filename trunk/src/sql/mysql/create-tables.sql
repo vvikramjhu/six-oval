@@ -336,12 +336,12 @@ CREATE TABLE IF NOT EXISTS oval_d_test
     deprecated          BOOLEAN         NOT NULL    DEFAULT false,
     comment             VARCHAR(255),
 
-    tst_check           VARCHAR(16)     NOT NULL,
-    tst_existence       VARCHAR(20)                 DEFAULT 'at_least_one_exists',
+    check1              VARCHAR(16)     NOT NULL,
+    existence           VARCHAR(20)                 DEFAULT 'at_least_one_exists',
 
     state_operator      VARCHAR(4)                  DEFAULT 'AND',
     
-    object__id          VARCHAR(64),
+    object_ref          VARCHAR(64),
 
     object_type         VARCHAR(32)     NOT NULL,
 

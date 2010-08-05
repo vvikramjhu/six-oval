@@ -428,12 +428,12 @@
 
         <field name="check" 
             type="jp.go.aist.six.oval.model.common.Check">
-            <sql name="tst_check" type="char"/>
+            <sql name="check1" type="char"/>
         </field>
 
         <field name="checkExistence" 
             type="jp.go.aist.six.oval.model.common.Existence">
-            <sql name="tst_existence" type="char"/>
+            <sql name="existence" type="char"/>
         </field>
 
         <field name="stateOperator" 
@@ -450,7 +450,7 @@
         -->
 
         <field name="object.ovalID" type="string">
-            <sql name="object__id" type="char"/>
+            <sql name="object_ref" type="char"/>
         </field>
 
         <field name="state"

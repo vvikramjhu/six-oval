@@ -150,10 +150,10 @@ public abstract class Test
 
 
     public void setObject(
-                    final SystemObjectRef ref
+                    final SystemObjectRef objectRef
                     )
     {
-        _objectRef = ref;
+        _objectRef = objectRef;
     }
 
 
@@ -165,26 +165,26 @@ public abstract class Test
 
 
     public void setState(
-                    final Collection<? extends StateRef> ref
+                    final Collection<? extends StateRef> stateRefs
                     )
     {
-        if (ref != _stateRef) {
+        if (stateRefs != _stateRef) {
             _stateRef.clear();
-            if (ref != null) {
-                _stateRef.addAll( ref );
+            if (stateRefs != null  &&  stateRefs.size() > 0) {
+                _stateRef.addAll( stateRefs );
             }
         }
     }
 
 
     public boolean addState(
-                    final StateRef ref
+                    final StateRef stateRef
                     )
     {
-        if (_stateRef.contains( ref )) {
+        if (_stateRef.contains( stateRef )) {
             return false;
         } else {
-            return _stateRef.add( ref );
+            return _stateRef.add( stateRef );
         }
     }
 
