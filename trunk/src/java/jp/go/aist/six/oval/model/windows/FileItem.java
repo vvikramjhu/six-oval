@@ -22,11 +22,11 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Datatype;
-import jp.go.aist.six.oval.model.system.EntityItemBase;
-import jp.go.aist.six.oval.model.system.EntityItemInt;
-import jp.go.aist.six.oval.model.system.EntityItemString;
-import jp.go.aist.six.oval.model.system.Item;
-import jp.go.aist.six.oval.model.system.Status;
+import jp.go.aist.six.oval.model.sc.EntityItemBase;
+import jp.go.aist.six.oval.model.sc.EntityItemInt;
+import jp.go.aist.six.oval.model.sc.EntityItemString;
+import jp.go.aist.six.oval.model.sc.Item;
+import jp.go.aist.six.oval.model.sc.Status;
 import java.util.EnumMap;
 import java.util.Map;
 

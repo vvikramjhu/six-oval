@@ -18,32 +18,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.system;
+package jp.go.aist.six.oval.model.sc;
 
-import jp.go.aist.six.util.castor.AbstractPersistable;
-import jp.go.aist.six.util.orm.Dependent;
+import jp.go.aist.six.oval.model.common.Datatype;
 
 
 
 /**
  *
- * @author	Akihito Nakamura, AIST
+ * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class ItemReference
-    extends AbstractPersistable
-    implements Dependent<CollectedSystemObject>
+public class EntityItemInt
+    extends EntityItemBase
 {
 
-    private int  _itemRef;
-    //{required}
-
-
-
     /**
      * Constructor.
      */
-    public ItemReference()
+    public EntityItemInt()
     {
     }
 
@@ -51,49 +44,72 @@ public class ItemReference
     /**
      * Constructor.
      */
-    public ItemReference(
-                    final int itemID
+    public EntityItemInt(
+                    final String data
                     )
     {
-        setItemRef( itemID );
+        super( data );
     }
 
 
-
-    public void setItemRef(
-                    final int itemID
+    /**
+     * Constructor.
+     */
+    public EntityItemInt(
+                    final String data,
+                    final Datatype datatype
                     )
     {
-        _itemRef = itemID;
+        super( data, datatype );
     }
 
 
-    public int getItemRef()
-    {
-        return _itemRef;
-    }
-
-
-
-    //**************************************************************
-    //  Dependent
-    //**************************************************************
-
-    private CollectedSystemObject  _master;
-
-
-
-    public void setMasterObject(
-                    final CollectedSystemObject master
+    /**
+     * Constructor.
+     */
+    public EntityItemInt(
+                    final String data,
+                    final Datatype datatype,
+                    final Status status
                     )
     {
-        _master = master;
+        super( data, datatype, status );
     }
 
 
-    public CollectedSystemObject getMasterObject()
+    /**
+     * Constructor.
+     */
+    public EntityItemInt(
+                    final long data
+                    )
     {
-        return _master;
+        this( String.valueOf( data ) );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemInt(
+                    final long data,
+                    final Datatype datatype
+                    )
+    {
+        this( String.valueOf( data ), datatype );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemInt(
+                    final long data,
+                    final Datatype datatype,
+                    final Status status
+                    )
+    {
+        this( String.valueOf( data ), datatype, status );
     }
 
 
@@ -105,12 +121,7 @@ public class ItemReference
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  result = 17;
-
-        result = prime * result + getItemRef();
-
-        return result;
+        return super.hashCode();
     }
 
 
@@ -124,16 +135,11 @@ public class ItemReference
             return true;
         }
 
-        if (!(obj instanceof ItemReference)) {
+        if (!(obj instanceof EntityItemInt)) {
             return false;
         }
 
-        ItemReference  other = (ItemReference)obj;
-        if (this.getItemRef() == other.getItemRef()) {
-            return true;
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 
@@ -141,9 +147,8 @@ public class ItemReference
     @Override
     public String toString()
     {
-        return "ItemReference[item_ref=" + getItemRef()
-                        + "]";
+        return "EntityItemInt[" + super.toString() + "]";
     }
 
 }
-// ItemReference
+// EntityItemInt

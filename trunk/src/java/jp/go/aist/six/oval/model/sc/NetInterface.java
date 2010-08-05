@@ -18,9 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.system;
+package jp.go.aist.six.oval.model.sc;
 
-import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.util.castor.AbstractPersistable;
 import jp.go.aist.six.util.orm.Dependent;
 
@@ -28,35 +27,30 @@ import jp.go.aist.six.util.orm.Dependent;
 
 /**
  *
- * @author  Akihito Nakamura, AIST
+ * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-//public abstract class Item
-public class Item
+public class NetInterface
     extends AbstractPersistable
     implements Dependent<OvalSystemCharacteristics>
+//implements Dependent<SystemInfo>
 {
 
-//  private Message  _message;
-    //{0..1}
+    private String  _interfaceName;
+    //{1..1}
 
-    private int  _id;
-    //{oval:ItemIDPattern, required}
+    private String  _ipAddress;
+    //{1..1}
 
-
-    /**
-     * The default status: "exists".
-     */
-    public static final Status  DEFAULT_STATUS = Status.EXISTS;
-    private Status  _status;
-    //{optional, default="exists"}
+    private String  _macAddress;
+    //{1..1}
 
 
 
     /**
      * Constructor.
      */
-    public Item()
+    public NetInterface()
     {
     }
 
@@ -64,73 +58,66 @@ public class Item
     /**
      * Constructor.
      */
-    public Item(
-                    final int id
+    public NetInterface(
+                    final String name,
+                    final String ip,
+                    final String mac
                     )
     {
-        this( id, DEFAULT_STATUS );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public Item(
-                    final int id,
-                    final Status status
-                    )
-    {
-        setID( id );
-        setStatus( status );
-    }
-
-
-
-    public void setObjectType(
-                    final ObjectType type
-                    )
-    {
-    }
-
-
-//    public abstract ObjectType getObjectType();
-    public ObjectType getObjectType()
-    {
-        return null;
+        setInterfaceName( name );
+        setIpAddress( ip );
+        setMacAddress( mac );
     }
 
 
 
     /**
      */
-    public void setID(
-                    final int id
+    public void setInterfaceName(
+                    final String name
                     )
     {
-        _id = id;
+        _interfaceName = name;
     }
 
 
-    public int getID()
+    public String getInterfaceName()
     {
-        return _id;
+        return _interfaceName;
     }
 
 
 
     /**
      */
-    public void setStatus(
-                    final Status status
+    public void setIpAddress(
+                    final String ip
                     )
     {
-        _status = status;
+        _ipAddress = ip;
     }
 
 
-    public Status getStatus()
+    public String getIpAddress()
     {
-        return (_status == null ? DEFAULT_STATUS : _status);
+        return _ipAddress;
+    }
+
+
+
+    /**
+     */
+    public void setMacAddress(
+                    final String mac
+                    )
+    {
+        _macAddress = mac;
+    }
+
+
+    public String getMacAddress()
+    {
+        return _macAddress;
     }
 
 
@@ -140,6 +127,7 @@ public class Item
     //**************************************************************
 
     private OvalSystemCharacteristics  _master;
+
 
 
     public void setMasterObject(
@@ -157,31 +145,6 @@ public class Item
 
 
 
-    private String  _masterPersistentID;
-
-
-    public void setMasterPersistentID(
-                    final String id
-                    )
-    {
-        _masterPersistentID = id;
-    }
-
-
-    public String getMasterPersistentID()
-    {
-        if (_masterPersistentID == null) {
-            OvalSystemCharacteristics  master = getMasterObject();
-            if (master != null) {
-                _masterPersistentID = master.getPersistentID();
-            }
-        }
-
-        return _masterPersistentID;
-    }
-
-
-
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -192,8 +155,14 @@ public class Item
         final int  prime = 37;
         int  result = 17;
 
-        int  id = getID();
-        result = prime * result + id;
+        String  name = getInterfaceName();
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+
+        String  ip = getIpAddress();
+        result = prime * result + ((ip == null) ? 0 : ip.hashCode());
+
+        String  mac = getMacAddress();
+        result = prime * result + ((mac == null) ? 0 : mac.hashCode());
 
         return result;
     }
@@ -209,15 +178,26 @@ public class Item
             return true;
         }
 
-        if (!(obj instanceof Item)) {
+        if (!(obj instanceof NetInterface)) {
             return false;
         }
 
-        Item  other = (Item)obj;
-        int  other_id = other.getID();
-        int   this_id =  this.getID();
-        if (this_id == other_id) {
-            return true;
+        NetInterface  other = (NetInterface)obj;
+        String  other_ip = other.getIpAddress();
+        String   this_ip =  this.getIpAddress();
+        if (this_ip == other_ip
+                        ||  (this_ip != null  &&  this_ip.equals( other_ip ))) {
+            String  other_mac = other.getMacAddress();
+            String   this_mac =  this.getMacAddress();
+            if (this_mac == other_mac
+                            ||  (this_mac != null  &&  this_mac.equals( other_mac ))) {
+                String  other_name = other.getInterfaceName();
+                String   this_name =  this.getInterfaceName();
+                if (this_name == other_name
+                                ||  (this_name != null  &&  this_name.equals( other_name ))) {
+                    return true;
+                }
+            }
         }
 
         return false;
@@ -228,9 +208,11 @@ public class Item
     @Override
     public String toString()
     {
-        return "id=" + getID()
-                + ", status=" + getStatus();
+        return "NetworkInterface[name=" + getInterfaceName()
+                        + ", IP=" + getIpAddress()
+                        + ", MAC=" + getMacAddress()
+                        + "]";
     }
 
 }
-// Item
+// NetInterface

@@ -8,11 +8,11 @@ import jp.go.aist.six.oval.model.result.DefinitionResult;
 import jp.go.aist.six.oval.model.result.Directives;
 import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.model.result.SystemResult;
-import jp.go.aist.six.oval.model.system.CollectedSystemObjects;
-import jp.go.aist.six.oval.model.system.Item;
-import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.model.system.SystemData;
-import jp.go.aist.six.oval.model.system.SystemInfo;
+import jp.go.aist.six.oval.model.sc.CollectedSystemObjects;
+import jp.go.aist.six.oval.model.sc.Item;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.sc.SystemData;
+import jp.go.aist.six.oval.model.sc.SystemInfo;
 import org.testng.Reporter;
 
 

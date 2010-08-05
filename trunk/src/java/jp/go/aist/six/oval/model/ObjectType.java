@@ -34,6 +34,7 @@ public final class ObjectType
     implements Serializable
 {
 
+    private static final String  _UNKNOWN_              = "unknown";
     private static final String  _INDEPENDENT_FAMILY_   = "independent.family";
     private static final String  _INDEPENDENT_TEXTFILECONTENT_   = "independent.textfilecontent";
     private static final String  _INDEPENDENT_UNKNOWN_  = "independent.unknown";
@@ -49,6 +50,7 @@ public final class ObjectType
     private static final String  _VARIABLE_EXTERNAL_    = "variable.external";
 
 
+    public static final ObjectType  UNKNOWN               = new ObjectType( _UNKNOWN_ );
     public static final ObjectType  INDEPENDENT_FAMILY    = new ObjectType( _INDEPENDENT_FAMILY_ );
     public static final ObjectType  INDEPENDENT_TEXTFILECONTENT = new ObjectType( _INDEPENDENT_TEXTFILECONTENT_ );
     public static final ObjectType  INDEPENDENT_UNKNOWN   = new ObjectType( _INDEPENDENT_UNKNOWN_ );
@@ -67,6 +69,7 @@ public final class ObjectType
     private static HashMap<String, ObjectType> _INIT_()
     {
         HashMap<String, ObjectType>  map = new HashMap<String, ObjectType>();
+        map.put( _UNKNOWN_,             UNKNOWN             );
         map.put( _INDEPENDENT_FAMILY_,  INDEPENDENT_FAMILY  );
         map.put( _INDEPENDENT_TEXTFILECONTENT_,  INDEPENDENT_TEXTFILECONTENT  );
         map.put( _INDEPENDENT_UNKNOWN_, INDEPENDENT_UNKNOWN );
@@ -100,7 +103,7 @@ public final class ObjectType
         }
 
         if (status == null) {
-            throw new IllegalArgumentException( "invalid component type: " + name );
+            throw new IllegalArgumentException( "invalid object type: " + name );
         }
 
         return status;

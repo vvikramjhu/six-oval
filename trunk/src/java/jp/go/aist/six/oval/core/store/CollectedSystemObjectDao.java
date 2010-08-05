@@ -20,9 +20,9 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.system.CollectedSystemObject;
-import jp.go.aist.six.oval.model.system.ItemReference;
-import jp.go.aist.six.oval.model.system.VariableValue;
+import jp.go.aist.six.oval.model.sc.CollectedSystemObject;
+import jp.go.aist.six.oval.model.sc.ItemReference;
+import jp.go.aist.six.oval.model.sc.VariableValue;
 import java.util.Collection;
 
 

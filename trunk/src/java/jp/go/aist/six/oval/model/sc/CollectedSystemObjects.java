@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.system;
+package jp.go.aist.six.oval.model.sc;
 
 import jp.go.aist.six.oval.model.Container;
 import java.util.Collection;
@@ -27,19 +27,19 @@ import java.util.Iterator;
 
 
 /**
- * A collection of NetworkInterface instances.
+ * A collection of CollectedSystemObject instances.
  *
- * @author	Akihito Nakamura, AIST
+ * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class NetInterfaces
-    extends Container<NetInterface>
+public class CollectedSystemObjects
+    extends Container<CollectedSystemObject>    //{1..*}
 {
 
     /**
      * Constructor.
      */
-    public NetInterfaces()
+    public CollectedSystemObjects()
     {
     }
 
@@ -47,51 +47,53 @@ public class NetInterfaces
     /**
      * Constructor.
      */
-    public NetInterfaces(
-                    Collection<? extends NetInterface> netifs
+    public CollectedSystemObjects(
+                    final Collection<? extends CollectedSystemObject> elements
                     )
     {
-        super( netifs );
+        super( elements );
     }
 
 
     /**
      * Constructor.
      */
-    public NetInterfaces(
-                    NetInterface[] netifs
+    public CollectedSystemObjects(
+                    final CollectedSystemObject[] elements
                     )
     {
-        super( netifs );
+        super( elements );
     }
 
 
 
     /**
      */
-    public void setInterface(
-                    final Collection<? extends NetInterface> netifs
+    public void setObject(
+                    final Collection<? extends CollectedSystemObject> objects
                     )
     {
-        reset( netifs );
+        reset( objects );
     }
 
 
-    public boolean addInterface(
-                    final NetInterface netif
+
+    public boolean addObject(
+                    final CollectedSystemObject object
                     )
     {
-        return add( netif );
+        return add( object );
     }
 
 
-    public Collection<NetInterface> getInterface()
+    public Collection<CollectedSystemObject> getObject()
     {
         return _elements();
     }
 
 
-    public Iterator<NetInterface> iterateInterface()
+
+    public Iterator<CollectedSystemObject> iterateObject()
     {
         return iterator();
     }
@@ -99,21 +101,16 @@ public class NetInterfaces
 
 
     //**************************************************************
-    //  Container
-    //**************************************************************
-
-//    protected String _getKey(
-//                    final NetInterface netif
-//                    )
-//    {
-//        return netif.getInterfaceName();
-//    }
-
-
-
-    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
+    @Override
+    public String toString()
+    {
+        return "CollectedSystemObjects["
+                        + super.toString()
+                        + "]";
+    }
+
 }
-// NetInterfaces
+// CollectedSystemObjects

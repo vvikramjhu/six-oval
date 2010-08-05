@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.system;
+package jp.go.aist.six.oval.model.sc;
 
 import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.util.castor.AbstractPersistable;

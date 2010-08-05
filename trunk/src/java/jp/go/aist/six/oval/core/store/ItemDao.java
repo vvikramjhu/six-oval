@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.system.Item;
+import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.util.castor.CastorDao;
 
 

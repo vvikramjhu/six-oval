@@ -18,84 +18,106 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.system;
+package jp.go.aist.six.oval.model.sc;
 
-import jp.go.aist.six.oval.model.Container;
-import java.util.Collection;
-import java.util.Iterator;
+import jp.go.aist.six.util.castor.AbstractPersistable;
+import jp.go.aist.six.util.orm.Dependent;
 
 
 
 /**
- * A collection of CollectedSystemObject instances.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class CollectedSystemObjects
-    extends Container<CollectedSystemObject>    //{1..*}
+public class VariableValue
+    extends AbstractPersistable
+    implements Dependent<CollectedSystemObject>
 {
 
+    private String  _variableID;
+    //{required}
+
+    private String  _value;
+    //{xsd:anysimpleType}
+
+
+
     /**
      * Constructor.
      */
-    public CollectedSystemObjects()
+    public VariableValue()
     {
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public CollectedSystemObjects(
-                    final Collection<? extends CollectedSystemObject> elements
-                    )
-    {
-        super( elements );
     }
 
 
     /**
      * Constructor.
      */
-    public CollectedSystemObjects(
-                    final CollectedSystemObject[] elements
+    public VariableValue(
+                    final String variableID,
+                    final String value
                     )
     {
-        super( elements );
+        setVariableID( variableID );
+        setValue( value );
     }
 
 
 
     /**
      */
-    public void setObject(
-                    final Collection<? extends CollectedSystemObject> objects
+    public void setVariableID(
+                    final String id
                     )
     {
-        reset( objects );
+        _variableID = id;
+    }
+
+
+    public String getVariableID()
+    {
+        return _variableID;
     }
 
 
 
-    public boolean addObject(
-                    final CollectedSystemObject object
+    /**
+     */
+    public void setValue(
+                    final String value
                     )
     {
-        return add( object );
+        _value = value;
     }
 
 
-    public Collection<CollectedSystemObject> getObject()
+    public String getValue()
     {
-        return _elements();
+        return _value;
     }
 
 
 
-    public Iterator<CollectedSystemObject> iterateObject()
+    //**************************************************************
+    //  Dependent
+    //**************************************************************
+
+    private CollectedSystemObject  _master;
+
+
+
+    public void setMasterObject(
+                    final CollectedSystemObject master
+                    )
     {
-        return iterator();
+        _master = master;
+    }
+
+
+    public CollectedSystemObject getMasterObject()
+    {
+        return _master;
     }
 
 
@@ -107,10 +129,10 @@ public class CollectedSystemObjects
     @Override
     public String toString()
     {
-        return "CollectedSystemObjects["
-                        + super.toString()
+        return "VariableValue[variable_id=" + getVariableID()
+                        + ", " + getValue()
                         + "]";
     }
 
 }
-// CollectedSystemObjects
+// VariableValue

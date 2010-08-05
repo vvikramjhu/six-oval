@@ -20,15 +20,15 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.system.CollectedSystemObject;
-import jp.go.aist.six.oval.model.system.CollectedSystemObjects;
-import jp.go.aist.six.oval.model.system.Item;
-import jp.go.aist.six.oval.model.system.ItemReference;
-import jp.go.aist.six.oval.model.system.NetInterface;
-import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.model.system.SystemData;
-import jp.go.aist.six.oval.model.system.SystemInfo;
-import jp.go.aist.six.oval.model.system.VariableValue;
+import jp.go.aist.six.oval.model.sc.CollectedSystemObject;
+import jp.go.aist.six.oval.model.sc.CollectedSystemObjects;
+import jp.go.aist.six.oval.model.sc.Item;
+import jp.go.aist.six.oval.model.sc.ItemReference;
+import jp.go.aist.six.oval.model.sc.NetInterface;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.sc.SystemData;
+import jp.go.aist.six.oval.model.sc.SystemInfo;
+import jp.go.aist.six.oval.model.sc.VariableValue;
 import jp.go.aist.six.util.castor.CastorDao;
 import java.util.Collection;
 import java.util.UUID;

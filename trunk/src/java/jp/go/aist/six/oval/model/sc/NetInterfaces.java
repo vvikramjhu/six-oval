@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.system;
+package jp.go.aist.six.oval.model.sc;
 
 import jp.go.aist.six.oval.model.Container;
 import java.util.Collection;
@@ -27,18 +27,19 @@ import java.util.Iterator;
 
 
 /**
+ * A collection of NetworkInterface instances.
  *
- * @author  Akihito Nakamura, AIST
+ * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class SystemData
-    extends Container<Item>
+public class NetInterfaces
+    extends Container<NetInterface>
 {
 
     /**
      * Constructor.
      */
-    public SystemData()
+    public NetInterfaces()
     {
     }
 
@@ -46,52 +47,51 @@ public class SystemData
     /**
      * Constructor.
      */
-    public SystemData(
-                    final Collection<? extends Item> items
+    public NetInterfaces(
+                    Collection<? extends NetInterface> netifs
                     )
     {
-        super( items );
+        super( netifs );
     }
 
 
     /**
      * Constructor.
      */
-    public SystemData(
-                    final Item[] items
+    public NetInterfaces(
+                    NetInterface[] netifs
                     )
     {
-        super( items );
+        super( netifs );
     }
 
 
 
     /**
      */
-    public void setItem(
-                    final Collection<? extends Item> items
+    public void setInterface(
+                    final Collection<? extends NetInterface> netifs
                     )
     {
-        reset( items );
+        reset( netifs );
     }
 
 
-    public boolean addItem(
-                    final Item item
+    public boolean addInterface(
+                    final NetInterface netif
                     )
     {
-        return add( item );
+        return add( netif );
     }
 
 
-    public Collection<Item> getItem()
+    public Collection<NetInterface> getInterface()
     {
         return _elements();
     }
 
 
-    public Iterator<Item> iterateItem()
-
+    public Iterator<NetInterface> iterateInterface()
     {
         return iterator();
     }
@@ -99,16 +99,21 @@ public class SystemData
 
 
     //**************************************************************
+    //  Container
+    //**************************************************************
+
+//    protected String _getKey(
+//                    final NetInterface netif
+//                    )
+//    {
+//        return netif.getInterfaceName();
+//    }
+
+
+
+    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public String toString()
-    {
-        return "SystemData["
-                        + getItem()
-                        + "]";
-    }
-
 }
-// SystemData
+// NetInterfaces

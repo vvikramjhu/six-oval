@@ -1,8 +1,8 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.model.common.Generator;
-import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.model.system.SystemInfo;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.sc.SystemInfo;
 import jp.go.aist.six.util.IsoDate;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;

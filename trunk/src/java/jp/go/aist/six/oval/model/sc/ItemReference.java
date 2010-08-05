@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.system;
+package jp.go.aist.six.oval.model.sc;
 
 import jp.go.aist.six.util.castor.AbstractPersistable;
 import jp.go.aist.six.util.orm.Dependent;
@@ -27,26 +27,23 @@ import jp.go.aist.six.util.orm.Dependent;
 
 /**
  *
- * @author  Akihito Nakamura, AIST
+ * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class VariableValue
+public class ItemReference
     extends AbstractPersistable
     implements Dependent<CollectedSystemObject>
 {
 
-    private String  _variableID;
+    private int  _itemRef;
     //{required}
 
-    private String  _value;
-    //{xsd:anysimpleType}
-
 
 
     /**
      * Constructor.
      */
-    public VariableValue()
+    public ItemReference()
     {
     }
 
@@ -54,47 +51,26 @@ public class VariableValue
     /**
      * Constructor.
      */
-    public VariableValue(
-                    final String variableID,
-                    final String value
+    public ItemReference(
+                    final int itemID
                     )
     {
-        setVariableID( variableID );
-        setValue( value );
+        setItemRef( itemID );
     }
 
 
 
-    /**
-     */
-    public void setVariableID(
-                    final String id
+    public void setItemRef(
+                    final int itemID
                     )
     {
-        _variableID = id;
+        _itemRef = itemID;
     }
 
 
-    public String getVariableID()
+    public int getItemRef()
     {
-        return _variableID;
-    }
-
-
-
-    /**
-     */
-    public void setValue(
-                    final String value
-                    )
-    {
-        _value = value;
-    }
-
-
-    public String getValue()
-    {
-        return _value;
+        return _itemRef;
     }
 
 
@@ -127,12 +103,47 @@ public class VariableValue
     //**************************************************************
 
     @Override
+    public int hashCode()
+    {
+        final int  prime = 37;
+        int  result = 17;
+
+        result = prime * result + getItemRef();
+
+        return result;
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof ItemReference)) {
+            return false;
+        }
+
+        ItemReference  other = (ItemReference)obj;
+        if (this.getItemRef() == other.getItemRef()) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+
+    @Override
     public String toString()
     {
-        return "VariableValue[variable_id=" + getVariableID()
-                        + ", " + getValue()
+        return "ItemReference[item_ref=" + getItemRef()
                         + "]";
     }
 
 }
-// VariableValue
+// ItemReference

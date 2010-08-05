@@ -22,8 +22,8 @@ package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Family;
-import jp.go.aist.six.oval.model.system.Item;
-import jp.go.aist.six.oval.model.system.Status;
+import jp.go.aist.six.oval.model.sc.Item;
+import jp.go.aist.six.oval.model.sc.Status;
 
 
 

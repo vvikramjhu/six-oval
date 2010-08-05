@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.result.TestResult;
 import jp.go.aist.six.oval.model.result.TestResults;
 import jp.go.aist.six.oval.model.result.TestedItem;
 import jp.go.aist.six.oval.model.result.TestedVariable;
-import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.util.castor.CastorDao;
 import java.util.Collection;
 import java.util.UUID;

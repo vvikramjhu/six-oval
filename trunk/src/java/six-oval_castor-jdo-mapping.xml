@@ -706,7 +706,7 @@
     <!-- ******************************************************* -->
     <!-- OvalSystemCharacteristics                               -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics"
+    <class name="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_s_sc"/>
@@ -763,13 +763,13 @@
 
         <!-- SC : NetInterface = 1 : n -->
         <field name="systemInfo.interfaces.interface"
-            type="jp.go.aist.six.oval.model.system.NetInterface"
+            type="jp.go.aist.six.oval.model.sc.NetInterface"
             collection="collection">
             <sql many-key="s_sc__PID"/>
         </field>
 <!-- backup
         <field name="systemInfo.interfaces.interface"
-            type="jp.go.aist.six.oval.model.system.NetInterface"
+            type="jp.go.aist.six.oval.model.sc.NetInterface"
             collection="collection"
             lazy="true">
             <sql many-key="s_sc__PID"/>
@@ -778,14 +778,14 @@
 
         <!-- 1 : n -->
         <field name="collectedObjects.object"
-            type="jp.go.aist.six.oval.model.system.CollectedSystemObject"
+            type="jp.go.aist.six.oval.model.sc.CollectedSystemObject"
             collection="collection">
             <sql many-key="s_sc__PID"/>
         </field>
 
         <!-- 1 : n -->
         <field name="systemData.item"
-            type="jp.go.aist.six.oval.model.system.Item"
+            type="jp.go.aist.six.oval.model.sc.Item"
             collection="collection">
             <sql many-key="s_sc__PID"/>
         </field>
@@ -794,7 +794,7 @@
 
 <!-- test: 1:N using M:N relationship
         <field name="systemData.item"
-            type="jp.go.aist.six.oval.model.system.Item"
+            type="jp.go.aist.six.oval.model.sc.Item"
             collection="collection"
             >
             <sql name="s_item__PID"
@@ -806,7 +806,7 @@
 
 <!-- test
         <field name="item"
-            type="jp.go.aist.six.oval.model.system.Item"
+            type="jp.go.aist.six.oval.model.sc.Item"
             collection="collection">
             <sql name="s_item__PID"
                 many-table="oval_assoc__s_sc__s_item"
@@ -814,7 +814,7 @@
                 dirty="ignore"/>
         </field>
         <field name="item"
-            type="jp.go.aist.six.oval.model.system.Item"
+            type="jp.go.aist.six.oval.model.sc.Item"
             collection="collection">
             <sql many-key="s_sc__PID"/>
         </field>
@@ -826,8 +826,8 @@
     <!-- ******************************************************* -->
     <!-- NetInterface                                            -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.system.NetInterface"
-        depends="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics"
+    <class name="jp.go.aist.six.oval.model.sc.NetInterface"
+        depends="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics"
         identity="persistentID"
         key-generator="IDENTITY">
         <cache-type type="unlimited"/>
@@ -851,12 +851,12 @@
 
         <!-- (FK) -->
         <field name="masterObject" 
-            type="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics">
+            type="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics">
             <sql name="s_sc__PID"/>
         </field>
 <!--
         <field name="masterObject.masterObject" 
-            type="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics">
+            type="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics">
             <sql name="s_sc__PID"/>
         </field>
 -->
@@ -867,8 +867,8 @@
     <!-- ******************************************************* -->
     <!-- CollectedSystemObject                                   -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.system.CollectedSystemObject"
-        depends="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics"
+    <class name="jp.go.aist.six.oval.model.sc.CollectedSystemObject"
+        depends="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics"
         identity="persistentID"
         key-generator="IDENTITY">
 
@@ -896,7 +896,7 @@
         </field>
 
         <field name="flag" 
-            type="jp.go.aist.six.oval.model.system.Flag">
+            type="jp.go.aist.six.oval.model.sc.Flag">
             <sql name="flag" type="char"/>
         </field>
 
@@ -906,14 +906,14 @@
 
         <!-- 1 : N -->
         <field name="variableValue"
-            type="jp.go.aist.six.oval.model.system.VariableValue"
+            type="jp.go.aist.six.oval.model.sc.VariableValue"
             collection="collection">
             <sql many-key="s_object__PID"/>
         </field>
 
         <!-- 1 : N -->
         <field name="reference"
-            type="jp.go.aist.six.oval.model.system.ItemReference"
+            type="jp.go.aist.six.oval.model.sc.ItemReference"
             collection="collection">
             <sql many-key="s_object__PID"/>
         </field>
@@ -925,7 +925,7 @@
 
         <!-- (FK: depends) -->
         <field name="masterObject" 
-            type="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics">
+            type="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics">
             <sql name="s_sc__PID"/>
         </field>
     </class>
@@ -935,8 +935,8 @@
     <!-- ******************************************************* -->
     <!-- VariableValue                                           -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.system.VariableValue"
-        depends="jp.go.aist.six.oval.model.system.CollectedSystemObject"
+    <class name="jp.go.aist.six.oval.model.sc.VariableValue"
+        depends="jp.go.aist.six.oval.model.sc.CollectedSystemObject"
         identity="persistentID"
         key-generator="IDENTITY">
 
@@ -957,7 +957,7 @@
 
         <!-- (FK: depends) -->
         <field name="masterObject" 
-            type="jp.go.aist.six.oval.model.system.CollectedSystemObject">
+            type="jp.go.aist.six.oval.model.sc.CollectedSystemObject">
             <sql name="s_object__PID"/>
         </field>
     </class>
@@ -967,8 +967,8 @@
     <!-- ******************************************************* -->
     <!-- ItemReference                                           -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.system.ItemReference"
-        depends="jp.go.aist.six.oval.model.system.CollectedSystemObject"
+    <class name="jp.go.aist.six.oval.model.sc.ItemReference"
+        depends="jp.go.aist.six.oval.model.sc.CollectedSystemObject"
         identity="persistentID"
         key-generator="IDENTITY">
 
@@ -985,7 +985,7 @@
 
         <!-- (FK: depends) -->
         <field name="masterObject" 
-            type="jp.go.aist.six.oval.model.system.CollectedSystemObject">
+            type="jp.go.aist.six.oval.model.sc.CollectedSystemObject">
             <sql name="s_object__PID"/>
         </field>
     </class>
@@ -995,8 +995,8 @@
     <!-- ******************************************************* -->
     <!-- Item                                                    -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.system.Item"
-        depends="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics"
+    <class name="jp.go.aist.six.oval.model.sc.Item"
+        depends="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics"
         identity="persistentID"
         key-generator="IDENTITY">
 
@@ -1012,7 +1012,7 @@
         </field>
 
         <field name="status" 
-            type="jp.go.aist.six.oval.model.system.Status">
+            type="jp.go.aist.six.oval.model.sc.Status">
             <sql name="status" type="char"/>
         </field>
 
@@ -1023,7 +1023,7 @@
 
         <!-- (FK) -->
         <field name="masterObject" 
-            type="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics">
+            type="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics">
             <sql name="s_sc__PID"/>
         </field>
 <!--
@@ -1199,7 +1199,7 @@
 
         <!-- (FK) -->
         <field name="ovalSystemCharacteristics" 
-            type="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics">
+            type="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics">
             <sql name="s_sc__PID"/>
         </field>
 
@@ -1503,7 +1503,7 @@
     <!-- FamilyItem                                              -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.independent.FamilyItem"
-        extends="jp.go.aist.six.oval.model.system.Item"
+        extends="jp.go.aist.six.oval.model.sc.Item"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_s_item_family"/>
@@ -1655,7 +1655,7 @@
     <!-- TextFileContentItem                                     -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.independent.TextFileContentItem"
-        extends="jp.go.aist.six.oval.model.system.Item"
+        extends="jp.go.aist.six.oval.model.sc.Item"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_s_item_textfilecontent"/>
@@ -1898,7 +1898,7 @@
     <!-- DpkgInfoItem                                            -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.linux.DpkgInfoItem"
-        extends="jp.go.aist.six.oval.model.system.Item"
+        extends="jp.go.aist.six.oval.model.sc.Item"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_s_item_dpkginfo"/>
@@ -1938,7 +1938,7 @@
     <!-- RpmInfoItem                                             -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.linux.RpmInfoItem"
-        extends="jp.go.aist.six.oval.model.system.Item"
+        extends="jp.go.aist.six.oval.model.sc.Item"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_s_item_rpminfo"/>
@@ -2031,7 +2031,7 @@
     <!-- UnameItem                                               -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.unix.UnameItem"
-        extends="jp.go.aist.six.oval.model.system.Item"
+        extends="jp.go.aist.six.oval.model.sc.Item"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_s_item_uname"/>
@@ -2181,7 +2181,7 @@
     <!-- FileItem                                                -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.windows.FileItem"
-        extends="jp.go.aist.six.oval.model.system.Item"
+        extends="jp.go.aist.six.oval.model.sc.Item"
         identity="persistentID">
 
         <!-- cache-type type="unlimited"/ -->
@@ -2505,7 +2505,7 @@ No registry object has 'behaviors' child element in the definition XML.
     <!-- RegistryItem                                            -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.windows.RegistryItem"
-        extends="jp.go.aist.six.oval.model.system.Item"
+        extends="jp.go.aist.six.oval.model.sc.Item"
         identity="persistentID">
 
         <!-- cache-type type="unlimited"/ -->

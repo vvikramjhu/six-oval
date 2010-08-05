@@ -21,8 +21,8 @@
 package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.ObjectType;
-import jp.go.aist.six.oval.model.system.EntityItemString;
-import jp.go.aist.six.oval.model.system.Status;
+import jp.go.aist.six.oval.model.sc.EntityItemString;
+import jp.go.aist.six.oval.model.sc.Status;
 
 
 

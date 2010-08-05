@@ -18,9 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.system;
-
-import jp.go.aist.six.oval.model.common.Datatype;
+package jp.go.aist.six.oval.model.sc;
 
 
 
@@ -29,14 +27,14 @@ import jp.go.aist.six.oval.model.common.Datatype;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class EntityItemInt
+public class EntityItemAnySimple
     extends EntityItemBase
 {
 
     /**
      * Constructor.
      */
-    public EntityItemInt()
+    public EntityItemAnySimple()
     {
     }
 
@@ -44,72 +42,11 @@ public class EntityItemInt
     /**
      * Constructor.
      */
-    public EntityItemInt(
+    public EntityItemAnySimple(
                     final String data
                     )
     {
-        super( data );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemInt(
-                    final String data,
-                    final Datatype datatype
-                    )
-    {
-        super( data, datatype );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemInt(
-                    final String data,
-                    final Datatype datatype,
-                    final Status status
-                    )
-    {
-        super( data, datatype, status );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemInt(
-                    final long data
-                    )
-    {
-        this( String.valueOf( data ) );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemInt(
-                    final long data,
-                    final Datatype datatype
-                    )
-    {
-        this( String.valueOf( data ), datatype );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemInt(
-                    final long data,
-                    final Datatype datatype,
-                    final Status status
-                    )
-    {
-        this( String.valueOf( data ), datatype, status );
+        setData( data );
     }
 
 
@@ -135,7 +72,7 @@ public class EntityItemInt
             return true;
         }
 
-        if (!(obj instanceof EntityItemInt)) {
+        if (!(obj instanceof EntityItemAnySimple)) {
             return false;
         }
 
@@ -147,8 +84,8 @@ public class EntityItemInt
     @Override
     public String toString()
     {
-        return "EntityItemInt[" + super.toString() + "]";
+        return "EntityItemAnySimple[" + super.toString() + "]";
     }
 
 }
-// EntityItemInt
+// EntityItemAnySimple

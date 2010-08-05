@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.core.model.system;
 
-import jp.go.aist.six.oval.model.system.CollectedSystemObject;
-import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.sc.CollectedSystemObject;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.util.castor.StandardAssociation;
 
 

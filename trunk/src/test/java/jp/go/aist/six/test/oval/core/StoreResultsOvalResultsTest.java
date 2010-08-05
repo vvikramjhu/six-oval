@@ -7,7 +7,7 @@ import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.model.result.SystemResults;
 import jp.go.aist.six.oval.model.result.SystemResult;
 import jp.go.aist.six.oval.model.result.TestResult;
-import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
 

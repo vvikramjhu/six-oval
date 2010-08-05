@@ -13,7 +13,7 @@ import jp.go.aist.six.oval.model.result.DefinitionResult;
 import jp.go.aist.six.oval.model.result.OvalResults;
 import jp.go.aist.six.oval.model.result.Result;
 import jp.go.aist.six.oval.model.result.SystemResult;
-import jp.go.aist.six.oval.model.system.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.util.search.RelationalBinding;
 import jp.go.aist.six.util.search.SearchCriteria;
 import org.testng.Assert;
