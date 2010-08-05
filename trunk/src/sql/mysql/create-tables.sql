@@ -369,7 +369,7 @@ CREATE TABLE IF NOT EXISTS oval_d_test__state_ref
     state_ref           VARCHAR(64)     NOT NULL,
 
     /* (FK) */
-    test__PID           VARCHAR(64)     NOT NULL,
+    d_test__PID         VARCHAR(64)     NOT NULL,
 
     /* (PK) */
     PRIMARY KEY (PID)

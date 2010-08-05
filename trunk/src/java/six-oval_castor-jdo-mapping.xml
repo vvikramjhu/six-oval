@@ -456,19 +456,8 @@
         <field name="state"
             type="jp.go.aist.six.oval.model.definitions.StateRef"
             collection="collection">
-            <sql many-key="test__PID"/>
+            <sql many-key="d_test__PID"/>
         </field>
-<!-- case: independent implementation
-        <field name="state"
-            type="jp.go.aist.six.oval.model.definitions.StateRef"
-            collection="collection"
-            >
-            <sql name="state_ref__PID"
-                many-table="oval_assoc__d_test__d_state_ref"
-                many-key="test__PID"
-                />
-        </field>
--->
     </class>
 
 
@@ -479,8 +468,8 @@
     <class name="jp.go.aist.six.oval.model.definitions.StateRef"
         depends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID"
-        key-generator="IDENTITY"
-        >
+        key-generator="IDENTITY">
+
         <cache-type type="unlimited"/>
         <map-to table="oval_d_test__state_ref"/>
 
@@ -495,21 +484,9 @@
         <!-- (FK) -->
         <field name="masterObject" 
             type="jp.go.aist.six.oval.model.definitions.Test">
-            <sql name="test__PID"/>
+            <sql name="d_test__PID"/>
         </field>
     </class>
-    
-<!-- case: independent implementation 
-    <class name="jp.go.aist.six.oval.model.definitions.StateRef"
-        identity="persistentID">
-        <cache-type type="unlimited"/>
-        <map-to table="oval_d_state_ref"/>
-
-        <field name="persistentID" type="string">
-            <sql name="PID" type="char"/>
-        </field>
-    </class>
--->
 
 
 
