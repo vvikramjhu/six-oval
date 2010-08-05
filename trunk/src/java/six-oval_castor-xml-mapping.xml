@@ -317,7 +317,7 @@
             <bind-xml name="description" node="element"/>
         </field>
 
-        <field name="metadataItem" 
+        <field name="additionalMetadata" 
             type="jp.go.aist.six.oval.model.definitions.MetadataItem"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>

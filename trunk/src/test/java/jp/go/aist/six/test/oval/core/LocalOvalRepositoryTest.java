@@ -1,14 +1,18 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.core.service.LocalOvalRepository;
+import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.Definitions;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.CollectedSystemObject;
 import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
+import java.util.Arrays;
 import java.util.Collection;
 
 
@@ -151,23 +155,34 @@ public class LocalOvalRepositoryTest
 
 
     //==============================================================
-    //  definitions
+    //  oval-definitions
     //==============================================================
 
     @DataProvider( name="oval_definitions" )
     private Object[][] _ovalDefinitionsProvider()
     {
         return new Object[][] {
+                        // windows vulnerability, oval:org.mitre.oval:def:8500, CVE-2009-4019
+                        {
+                            "test/data/definitions/oval-definitions_CVE-2009-4019_MySQL.xml",
+                            new String[] {
+                                            "oval:org.mitre.oval:def:8500",
+                                            "oval:org.mitre.oval:def:8297",
+                                            "oval:org.mitre.oval:def:8282"
+                            }
+                        }
+//                        ,
+
 //                        // windows vulnerability
 //                        {
 //                            "test/data/definition/oval-2010-06-15.05.04.34.xml",
 //                        }
 //                        ,
 
-                        // windows vulnerability
-                        {
-                            "test/data/definition/20100714_oval-vulnerability_microsoft.windows.xp.xml",
-                        }
+//                        // windows vulnerability
+//                        {
+//                            "test/data/definition/20100714_oval-vulnerability_microsoft.windows.xp.xml",
+//                        }
 //                        ,
 
 //                        // Red Hat patch
@@ -193,18 +208,53 @@ public class LocalOvalRepositoryTest
                     alwaysRun=true
                     )
     public void testCreateOvalDefinitions(
-                    final String filepath
+                    final String filepath,
+                    final String[] defIDs
                     )
     throws Exception
     {
         Reporter.log( "\n// TEST: OVAL - OvalRepository //", true );
 
+        Reporter.log( "unmarshalling XML...", true );
         OvalDefinitions  ovalDefs = _unmarshalFile( filepath, OvalDefinitions.class );
+        Reporter.log( "...unmarshal OK", true );
+
+        Collection<String>  defIDCollection = Arrays.asList( defIDs );
+        _validateOvalDefinitions( ovalDefs, defIDCollection );
 
         Reporter.log( "creating OvalDefinitions...", true );
         String  pid = _repository.createOvalDefinitions( ovalDefs );
-        Reporter.log( "...find done: PID=" + pid, true );
+        Reporter.log( "...create OvalDefinitions OK", true );
+        Reporter.log( "  @ OvalalDefinitions.PID=" + pid, true );
 
+        Reporter.log( "getting OvalDefinitions...", true );
+        OvalDefinitions  ovalDefsP = _repository.getOvalDefinitions( pid );
+        Reporter.log( "...getting OvalDefinitions OK", true );
+        Reporter.log( "  @ OvalDefinitions=" + ovalDefsP, true );
+//        _validateOvalDefinitions( ovalDefsP, defIDCollection );
+
+        for (Definition  def : ovalDefs.getDefinitions()) {
+            String  defPID = def.getPersistentID();
+            Reporter.log( "getting Definition...: PID=" + defPID, true );
+            Definition  defP = _repository.getDefinition( defPID );
+            Reporter.log( "  @ Definition=" + defP, true );
+        }
+    }
+
+
+
+    private void _validateOvalDefinitions(
+                    final OvalDefinitions ovalDefs,
+                    final Collection<String> defIDs
+                    )
+    {
+        Reporter.log( "validating...", true );
+        Definitions  defs = ovalDefs.getDefinitions();
+        Assert.assertEquals( defs.size(), defIDs.size() );
+        for (Definition  def : defs) {
+            Assert.assertTrue( defIDs.contains( def.getOvalID() ) );
+        }
+        Reporter.log( "...validation OK", true );
     }
 
 

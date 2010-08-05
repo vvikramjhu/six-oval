@@ -774,7 +774,7 @@ public class OvalXmlTest
         }
 
         Reporter.log( "*** checking metadata/advisory...", true );
-        Collection<MetadataItem>  metadataItems = def.getMetadata().getMetadataItem();
+        Collection<MetadataItem>  metadataItems = def.getMetadata().getAdditionalMetadata();
         Assert.assertEquals( metadataItems.size(), 1 );
         MetadataItem  metadataItem = metadataItems.iterator().next();
         Assert.assertTrue( metadataItem instanceof LinuxSecurityAdvisory );
@@ -864,7 +864,7 @@ public class OvalXmlTest
         }
 
         Reporter.log( "*** checking metadata/advisory...", true );
-        Collection<MetadataItem>  metadataItems = def.getMetadata().getMetadataItem();
+        Collection<MetadataItem>  metadataItems = def.getMetadata().getAdditionalMetadata();
         Assert.assertEquals( metadataItems.size(), 1 );
         MetadataItem  metadataItem = metadataItems.iterator().next();
         Assert.assertTrue( metadataItem instanceof LinuxSecurityAdvisory );
@@ -979,7 +979,7 @@ public class OvalXmlTest
 //        Assert.assertEquals( product.getName(), "Microsoft Internet Explorer" );
 
         Reporter.log( "  *** checking definition/metadata...", true );
-        Collection<MetadataItem>  metadataItems = def.getMetadata().getMetadataItem();
+        Collection<MetadataItem>  metadataItems = def.getMetadata().getAdditionalMetadata();
         Assert.assertEquals( metadataItems.size(), 1 );
         MetadataItem  metadataItem = metadataItems.iterator().next();
         Assert.assertTrue( metadataItem instanceof MitreRepositoryMetadataItem );

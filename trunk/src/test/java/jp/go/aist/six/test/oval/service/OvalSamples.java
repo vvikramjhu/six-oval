@@ -139,7 +139,7 @@ public class OvalSamples
         }
 
         // RedHat advisory //
-        metadata.addMetadataItem( ADVISORY_1 );
+        metadata.addAdditionalMetadata( ADVISORY_1 );
 
         def.setMetadata( metadata );
 

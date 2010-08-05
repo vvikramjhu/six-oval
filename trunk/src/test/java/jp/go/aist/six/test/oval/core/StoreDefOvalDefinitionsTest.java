@@ -87,7 +87,7 @@ public class StoreDefOvalDefinitionsTest
                             Arrays.asList( bugzillaList ),
                             Arrays.asList( cpeList )
                             );
-        metadata.addMetadataItem( advisory );
+        metadata.addAdditionalMetadata( advisory );
 
         DEFINITION_20100061_301.setMetadata( metadata );
     }

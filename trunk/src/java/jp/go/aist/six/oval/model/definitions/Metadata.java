@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 
@@ -69,7 +70,7 @@ public class Metadata
     private String  _description;
     //{1..1}
 
-    private final Collection<MetadataItem>  _metadataItem = new ArrayList<MetadataItem>();
+    private final Collection<MetadataItem>  _additionalMetadata = new ArrayList<MetadataItem>();
     //{xsd:any, 0..*}
 
     // derived properties //
@@ -137,28 +138,26 @@ public class Metadata
     /**
      */
     public void setReference(
-                    final Collection<? extends Reference> referenceList
+                    final Collection<? extends Reference> references
                     )
     {
-        if (referenceList != _reference) {
+        if (references != _reference) {
             _reference.clear();
-            if (referenceList != null) {
-                for (Reference  ref : referenceList) {
-                    addReference( ref );
-                }
+            if (references != null  &&  references.size() > 0) {
+                _reference.addAll( references );
             }
         }
     }
 
 
     public boolean addReference(
-                    final Reference ref
+                    final Reference reference
                     )
     {
-        if (ref == null) {
+        if (reference == null) {
             return false;
         } else {
-            return _reference.add( ref );
+            return _reference.add( reference );
         }
     }
 
@@ -167,6 +166,13 @@ public class Metadata
     {
         return _reference;
     }
+
+
+    public Iterator<Reference> iterateReference()
+    {
+        return _reference.iterator();
+    }
+
 
 
     /**
@@ -188,22 +194,20 @@ public class Metadata
 
     /**
      */
-    public void setMetadataItem(
+    public void setAdditionalMetadata(
                     final Collection<? extends MetadataItem> items
                     )
     {
-        if (items != _metadataItem) {
-            _metadataItem.clear();
-            if (items != null) {
-                for (MetadataItem  i : items) {
-                    addMetadataItem( i );
-                }
+        if (items != _additionalMetadata) {
+            _additionalMetadata.clear();
+            if (items != null  &&  items.size() > 0) {
+                _additionalMetadata.addAll( items );
             }
         }
     }
 
 
-    public boolean addMetadataItem(
+    public boolean addAdditionalMetadata(
                     final MetadataItem item
                     )
     {
@@ -211,13 +215,19 @@ public class Metadata
             return false;
         }
 
-        return _metadataItem.add( item );
+        return _additionalMetadata.add( item );
     }
 
 
-    public Collection<MetadataItem> getMetadataItem()
+    public Collection<MetadataItem> getAdditionalMetadata()
     {
-        return _metadataItem;
+        return _additionalMetadata;
+    }
+
+
+    public Iterator<MetadataItem> iterateAdditionalMetadata()
+    {
+        return _additionalMetadata.iterator();
     }
 
 
@@ -270,8 +280,8 @@ public class Metadata
 
     public String getLastModifiedDate()
     {
-        if (_lastModifiedDate == null  &&  getMetadataItem().size() > 0) {
-            MetadataItem  meta = getMetadataItem().iterator().next();
+        if (_lastModifiedDate == null  &&  getAdditionalMetadata().size() > 0) {
+            MetadataItem  meta = getAdditionalMetadata().iterator().next();
             _lastModifiedDate = _findLastModifiedDate( meta );
         }
 
@@ -296,7 +306,7 @@ public class Metadata
         }
 
         // Red Hat definition
-        for (MetadataItem  metadata : getMetadataItem()) {
+        for (MetadataItem  metadata : getAdditionalMetadata()) {
             if (metadata instanceof LinuxSecurityAdvisory) {
                 for (CveReference  ref : ((LinuxSecurityAdvisory)metadata).getCve()) {
                     Cve  cve = new Cve( ref.getRefID() );
@@ -369,7 +379,7 @@ public class Metadata
                         + ", affected=" + getAffected()
                         + ", description=(omitted)" //+ getDescription()
                         + ", references" + getReference()
-                        + ", additional metadata=" + getMetadataItem()
+                        + ", additional metadata=" + getAdditionalMetadata()
                         + "]";
     }
 

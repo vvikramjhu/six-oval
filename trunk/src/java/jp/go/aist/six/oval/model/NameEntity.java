@@ -31,6 +31,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  */
 public abstract class NameEntity
     extends AbstractPersistable
+    implements Comparable<NameEntity>
 {
 
     /**
@@ -65,6 +66,18 @@ public abstract class NameEntity
     public String getName()
     {
         return getPersistentID();
+    }
+
+
+
+    //**************************************************************
+    //  Comparable
+    //**************************************************************
+
+    public int compareTo( final NameEntity o
+                    )
+    {
+        return String.CASE_INSENSITIVE_ORDER.compare( getName(), o.getName() );
     }
 
 

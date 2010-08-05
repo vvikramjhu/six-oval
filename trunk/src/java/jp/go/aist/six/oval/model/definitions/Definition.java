@@ -191,7 +191,7 @@ public class Definition
         }
 
         // Red Hat definition
-        for (MetadataItem  metadata : getMetadata().getMetadataItem()) {
+        for (MetadataItem  metadata : getMetadata().getAdditionalMetadata()) {
             if (metadata instanceof LinuxSecurityAdvisory) {
                 for (CveReference  ref : ((LinuxSecurityAdvisory)metadata).getCve()) {
                     Cve  cve = new Cve( ref.getRefID() );

@@ -32,7 +32,7 @@ use @six.db.database@;
 -- * datatype               VARCHAR(16),
 --                          /* max. length = 16, 'fileset_revision' */
 --
--- * OVAL ID (e.g. 'oval:org.mitre.oval:def:1001')
+-- * OVAL ID (e.g. 'oval:org.mitre.oval:def:8500')
 --      id                  VARCHAR(64)    NOT NULL,
 --
 -- * host name:
@@ -54,12 +54,12 @@ use @six.db.database@;
 CREATE TABLE IF NOT EXISTS oval_d_definitions
 (
     PID                 CHAR(36)        NOT NULL,
-                        /* 911d6c54-6965-48df-88c3-2af47e54acd2 */
+                        /* UUID */
 
-    gen_timestamp       DATETIME        NOT NULL,
-    gen_schema_version  VARCHAR(8)      NOT NULL,
     gen_product_name    VARCHAR(64),
     gen_product_version VARCHAR(64),
+    gen_schema_version  VARCHAR(8)      NOT NULL,
+    gen_timestamp       DATETIME        NOT NULL,
     
     definitions_digest  VARCHAR(32)  /* NOT NULL */,
 /*    objects_digest      VARCHAR(32)     NOT NULL, */
@@ -81,29 +81,24 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_definition
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:com.redhat.rhsa:def:20090003:302 */
+                        /* id + version, e.g. oval:org.mitre.oval:def:8500:1 */
 
     id                  VARCHAR(64)     NOT NULL,
-                        /* e.g. oval:com.redhat.rhsa:def:20090003 */
+                        /* e.g. oval:org.mitre.oval:def:8500 */
     version             INT             NOT NULL,
-    deprecated          BOOLEAN         NOT NULL    DEFAULT false,
+    deprecated          BOOLEAN                     DEFAULT false,
 
     class               VARCHAR(16)     NOT NULL,
                         /* ENUM( 'vulnerability', 'patch', 'inventory', ...) */
 
     /* // metadata // */
+    title               VARCHAR(255)    NOT NULL,
+    affected_family     VARCHAR(16),
+                        /* ENUM( 'ios', 'unix', 'windows', ...) */
     last_modified       VARCHAR(10),
                         /* e.g. '2009-05-07' */
-    affected_family     VARCHAR(16)     NOT NULL,
-                        /* ENUM( 'ios', 'unix', 'windows', ...) */
-    title               VARCHAR(255)    NOT NULL,
     description         VARCHAR(4095)   NOT NULL,
                         /* max. length = 3960, id = com.redhat.rhsa:def:20090473 */
-
-    /* criteria as string */
-    /* This column is moved to oval_d_definition_criteria table. */
-/*  criteria            VARCHAR(8191), */ 
-                        /* max. length = 7452, id = oval:org.mitre.oval:def:6233 */
 
     /* (FK) */
 
@@ -239,14 +234,14 @@ CREATE TABLE IF NOT EXISTS oval_assoc__d_definition__d_platform
 (
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
-    definition__PID     VARCHAR(64)     NOT NULL,
-    platform__PID       VARCHAR(128)    NOT NULL,
+    d_definition__PID   VARCHAR(64)     NOT NULL,
+    d_platform__PID     VARCHAR(128)    NOT NULL,
 
     /* (PK) */
     PRIMARY KEY (PID),
     
     /* INDEX */
-    UNIQUE (definition__PID, platform__PID)
+    UNIQUE (d_definition__PID, d_platform__PID)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;
@@ -276,14 +271,14 @@ CREATE TABLE IF NOT EXISTS oval_assoc__d_definition__d_product
 (
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
-    definition__PID     VARCHAR(64)     NOT NULL,
-    product__PID        VARCHAR(128)    NOT NULL,
+    d_definition__PID   VARCHAR(64)     NOT NULL,
+    d_product__PID      VARCHAR(128)    NOT NULL,
 
     /* (PK) */
     PRIMARY KEY (PID),
     
     /* INDEX */
-    UNIQUE (definition__PID, product__PID)
+    UNIQUE (d_definition__PID, d_product__PID)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;

@@ -230,7 +230,9 @@ public class LocalOvalRepository
 
 
 
-    // OvalDefinitions //
+    //==============================================================
+    // oval-definitions
+    //==============================================================
 
     public String createOvalDefinitions(
                     final OvalDefinitions defs
@@ -266,7 +268,26 @@ public class LocalOvalRepository
 
 
 
-    // OvalResutls //
+    public Definition getDefinition(
+                    final String pid
+                    )
+    throws OvalServiceException
+    {
+        Definition  def = null;
+        try {
+            def = _store.get( Definition.class, pid );
+        } catch (Exception ex) {
+            throw new OvalServiceException( ex );
+        }
+
+        return def;
+    }
+
+
+
+    //==============================================================
+    // oval-results
+    //==============================================================
 
     public String createOvalResults(
                     final OvalResults resutls

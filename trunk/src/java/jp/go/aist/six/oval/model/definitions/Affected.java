@@ -117,10 +117,8 @@ public class Affected
     {
         if (_platform != platforms) {
             _platform.clear();
-            if (platforms != null) {
-                for (Platform  p : platforms) {
-                    addPlatform( p );
-                }
+            if (platforms != null  &&  platforms.size() > 0) {
+                _platform.addAll( platforms );
             }
         }
     }
@@ -159,10 +157,8 @@ public class Affected
     {
         if (_product != products) {
             _product.clear();
-            if (products != null) {
-                for (Product  p : products) {
-                    addProduct( p );
-                }
+            if (products != null  &&  products.size() > 0) {
+                _product.addAll( products );
             }
         }
     }

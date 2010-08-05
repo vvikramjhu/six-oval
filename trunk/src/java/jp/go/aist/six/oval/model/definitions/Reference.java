@@ -122,29 +122,6 @@ public class Reference
 
 
     //**************************************************************
-    //  Castor JDO support
-    //**************************************************************
-
-//    /**
-//     * A bidirectional link.
-//     */
-//    private Definition  _definition;
-//
-//
-//    public void setDefinition( final Definition def )
-//    {
-//        _definition = def;
-//    }
-//
-//
-//    public Definition getDefinition()
-//    {
-//        return _definition;
-//    }
-
-
-
-    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
