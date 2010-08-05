@@ -18,11 +18,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.model.definition;
+package jp.go.aist.six.oval.core.model.definitions;
 
-import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.StateRef;
 import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.util.castor.StandardAssociation;
+
 
 
 /**
@@ -30,14 +31,14 @@ import jp.go.aist.six.util.castor.StandardAssociation;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionTestAssociation
-    extends StandardAssociation<String, String, Definition, Test>
+public class TestStateAssociation
+    extends StandardAssociation<String, String, Test, StateRef>
 {
 
     /**
      * Constructor.
      */
-    public DefinitionTestAssociation()
+    public TestStateAssociation()
     {
     }
 
@@ -45,26 +46,13 @@ public class DefinitionTestAssociation
     /**
      * Constructor.
      */
-    public DefinitionTestAssociation(
-                    final Definition antecendent,
-                    final Test dependent
+    public TestStateAssociation(
+                    final Test antecendent,
+                    final StateRef dependent
                     )
     {
         super( antecendent, dependent );
     }
 
-
-
-//    /**
-//     * Constructor.
-//     */
-//    public
-//    DefinitionTestAssociation(
-//                    final String antecendentID,
-//                    final String dependentID )
-//    {
-//        super( antecendentID, dependentID );
-//    }
-
 }
-// DefinitionTestAssociation
+// TestStateAssociation

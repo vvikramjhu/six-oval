@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.core.model.result.OvalResultsOvalDefinitionsAssociation;
+import jp.go.aist.six.oval.core.model.results.OvalResultsOvalDefinitionsAssociation;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.util.castor.StandardAssociationDao;

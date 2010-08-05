@@ -18,11 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.model.definition;
+package jp.go.aist.six.oval.core.model.definitions;
 
-import jp.go.aist.six.oval.model.definitions.StateRef;
-import jp.go.aist.six.oval.model.definitions.Test;
-import jp.go.aist.six.util.castor.StandardAssociation;
+import jp.go.aist.six.oval.model.definitions.Criteria;
 
 
 
@@ -31,28 +29,10 @@ import jp.go.aist.six.util.castor.StandardAssociation;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class TestStateAssociation
-    extends StandardAssociation<String, String, Test, StateRef>
+public interface CriteriaFormat
 {
 
-    /**
-     * Constructor.
-     */
-    public TestStateAssociation()
-    {
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public TestStateAssociation(
-                    final Test antecendent,
-                    final StateRef dependent
-                    )
-    {
-        super( antecendent, dependent );
-    }
+    public String format( Criteria criteria );
 
 }
-// TestStateAssociation
+// CriteriaFormatter

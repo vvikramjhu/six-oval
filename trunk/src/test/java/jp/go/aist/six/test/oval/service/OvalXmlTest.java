@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.service;
 
-import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsUtil;
+import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsUtil;
 import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.common.Family;

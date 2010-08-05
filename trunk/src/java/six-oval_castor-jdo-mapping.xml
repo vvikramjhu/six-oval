@@ -213,7 +213,7 @@
     <!-- ******************************************************* -->
     <!-- DefinitionCriteria                                      -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.core.model.definition.DefinitionCriteria"
+    <class name="jp.go.aist.six.oval.core.model.definitions.DefinitionCriteria"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_definition_criteria"/>
@@ -240,7 +240,7 @@
     <!-- ******************************************************* -->
     <!-- OvalDefinitionsDefinitionAssociation                    -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.core.model.definition.OvalDefinitionsDefinitionAssociation"
+    <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsDefinitionAssociation"
         identity="persistentID"
         key-generator="IDENTITY"
         >
@@ -346,7 +346,7 @@
     <!-- ******************************************************* -->
     <!-- OvalDefinitionsTestAssociation                          -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.core.model.definition.OvalDefinitionsTestAssociation"
+    <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsTestAssociation"
         identity="persistentID"
         key-generator="IDENTITY"
         >
@@ -372,7 +372,7 @@
     <!-- ******************************************************* -->
     <!-- DefinitionTestAssociation                               -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.core.model.definition.DefinitionTestAssociation"
+    <class name="jp.go.aist.six.oval.core.model.definitions.DefinitionTestAssociation"
         identity="persistentID"
         key-generator="IDENTITY"
         >
@@ -516,7 +516,7 @@
     <!-- ******************************************************* -->
     <!-- OvalDefinitionsObjectAssociation                        -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.core.model.definition.OvalDefinitionsObjectAssociation"
+    <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsObjectAssociation"
         identity="persistentID"
         key-generator="IDENTITY"
         >
@@ -617,7 +617,7 @@
     <!-- ******************************************************* -->
     <!-- OvalDefinitionsStateAssociation                         -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.core.model.definition.OvalDefinitionsStateAssociation"
+    <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsStateAssociation"
         identity="persistentID"
         key-generator="IDENTITY"
         >
@@ -1145,7 +1145,7 @@
     <!-- ******************************************************* -->
     <!-- OvalResultsOvalDefinitionsAssociation                   -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.core.model.result.OvalResultsOvalDefinitionsAssociation"
+    <class name="jp.go.aist.six.oval.core.model.results.OvalResultsOvalDefinitionsAssociation"
         identity="persistentID"
         key-generator="IDENTITY"
         >
@@ -1215,7 +1215,7 @@
     <!-- ******************************************************* -->
     <!-- OvalResultsSystemAssociation                            -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.core.model.result.OvalResultsSystemAssociation"
+    <class name="jp.go.aist.six.oval.core.model.results.OvalResultsSystemAssociation"
         identity="persistentID"
         key-generator="IDENTITY"
         >

@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.service;
 
-import jp.go.aist.six.oval.core.model.definition.DefinitionCriteria;
+import jp.go.aist.six.oval.core.model.definitions.DefinitionCriteria;
 import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.OvalEntity;

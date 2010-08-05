@@ -20,12 +20,12 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.core.model.definition.DefinitionTestAssociation;
-import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsDefinitionAssociation;
-import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsObjectAssociation;
-import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsStateAssociation;
-import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsTestAssociation;
-import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsUtil;
+import jp.go.aist.six.oval.core.model.definitions.DefinitionTestAssociation;
+import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsDefinitionAssociation;
+import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsObjectAssociation;
+import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsStateAssociation;
+import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsTestAssociation;
+import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsUtil;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Definitions;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;

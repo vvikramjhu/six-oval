@@ -18,10 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.model.definition;
+package jp.go.aist.six.oval.core.model.definitions;
 
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.util.castor.StandardAssociation;
 
 
@@ -30,14 +30,14 @@ import jp.go.aist.six.util.castor.StandardAssociation;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalDefinitionsTestAssociation
-    extends StandardAssociation<String, String, OvalDefinitions, Test>
+public class OvalDefinitionsStateAssociation
+    extends StandardAssociation<String, String, OvalDefinitions, State>
 {
 
     /**
      * Constructor.
      */
-    public OvalDefinitionsTestAssociation()
+    public OvalDefinitionsStateAssociation()
     {
     }
 
@@ -46,13 +46,13 @@ public class OvalDefinitionsTestAssociation
     /**
      * Constructor.
      */
-    public OvalDefinitionsTestAssociation(
+    public OvalDefinitionsStateAssociation(
                     final OvalDefinitions antecendent,
-                    final Test dependent
+                    final State dependent
                     )
     {
         super( antecendent, dependent );
     }
 
 }
-// OvalDefinitionsTestAssociation
+// OvalDefinitionsStateAssociation

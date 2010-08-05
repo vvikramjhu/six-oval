@@ -79,13 +79,6 @@
         verify-constructable="false">
 
     </class>
-<!--
-    <class name ="jp.go.aist.six.oval.core.model.AbstractOvalEntityReference"
-        extends="jp.go.aist.six.oval.core.model.AbstractOvalElement"
-        verify-constructable="false">
-
-    </class>
--->
 
 
 
@@ -98,7 +91,6 @@
         <field name="name" type="string">
             <bind-xml name="name" node="attribute"/>
         </field>
-
     </class>
 
 
@@ -1042,11 +1034,8 @@
     <!-- CollectedSystemObject                                   -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.sc.CollectedSystemObject"
-        extends="jp.go.aist.six.oval.model.OvalAnalysisElement"
-        >
-<!--
-        extends="jp.go.aist.six.oval.core.model.AbstractOvalEntityReference"
--->
+        extends="jp.go.aist.six.oval.model.OvalAnalysisElement">
+        
         <map-to xml="object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
 

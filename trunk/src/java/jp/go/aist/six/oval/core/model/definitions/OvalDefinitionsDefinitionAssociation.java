@@ -18,10 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.model.definition;
+package jp.go.aist.six.oval.core.model.definitions;
 
-import jp.go.aist.six.oval.model.definitions.Criteria;
-
+import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.util.castor.StandardAssociation;
 
 
 /**
@@ -29,10 +30,29 @@ import jp.go.aist.six.oval.model.definitions.Criteria;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public interface CriteriaFormat
+public class OvalDefinitionsDefinitionAssociation
+    extends StandardAssociation<String, String, OvalDefinitions, Definition>
 {
 
-    public String format( Criteria criteria );
+    /**
+     * Constructor.
+     */
+    public OvalDefinitionsDefinitionAssociation()
+    {
+    }
+
+
+
+    /**
+     * Constructor.
+     */
+    public OvalDefinitionsDefinitionAssociation(
+                    final OvalDefinitions antecendent,
+                    final Definition dependent
+                    )
+    {
+        super( antecendent, dependent );
+    }
 
 }
-// CriteriaFormatter
+// OvalDefinitionsDefinitionAssociation
