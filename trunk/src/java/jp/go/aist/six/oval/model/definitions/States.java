@@ -68,18 +68,18 @@ public class States
 
 
     public void setState(
-                    final Collection<? extends State> elements
+                    final Collection<? extends State> states
                     )
     {
-        reset( elements );
+        reset( states );
     }
 
 
     public boolean addState(
-                    final State e
+                    final State state
                     )
     {
-        return add( e );
+        return add( state );
     }
 
 

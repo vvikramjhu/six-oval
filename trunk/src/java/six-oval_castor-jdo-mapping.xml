@@ -554,6 +554,7 @@
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.definitions.State"
         identity="persistentID">
+
         <cache-type type="unlimited"/>
         <map-to table="oval_d_state"/>
 
@@ -581,7 +582,6 @@
             type="jp.go.aist.six.oval.model.ObjectType">
             <sql name="object_type" type="char"/>
         </field>
-
     </class>
 
 
@@ -591,8 +591,8 @@
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsStateAssociation"
         identity="persistentID"
-        key-generator="IDENTITY"
-        >
+        key-generator="IDENTITY">
+
         <cache-type type="unlimited"/>
         <map-to table="oval_assoc__d_definitions__d_state"/>
 
@@ -601,13 +601,12 @@
         </field>
 
         <field name="antecendentPersistentID" type="string">
-            <sql name="definitions__PID" type="char"/>
+            <sql name="d_definitions__PID" type="char"/>
         </field>
 
         <field name="dependentPersistentID" type="string">
-            <sql name="state__PID" type="char"/>
+            <sql name="d_state__PID" type="char"/>
         </field>
-
     </class>
 
 
@@ -2456,6 +2455,7 @@ No registry object has 'behaviors' child element in the definition XML.
     <class name="jp.go.aist.six.oval.model.windows.RegistryState"
         extends="jp.go.aist.six.oval.model.definitions.State"
         identity="persistentID">
+
         <cache-type type="unlimited"/>
         <map-to table="oval_d_state_registry"/>
 
@@ -2480,7 +2480,6 @@ No registry object has 'behaviors' child element in the definition XML.
         <field name="type.data" type="string">
             <sql name="type_data" type="char"/>
         </field>
-
     </class>
 
 

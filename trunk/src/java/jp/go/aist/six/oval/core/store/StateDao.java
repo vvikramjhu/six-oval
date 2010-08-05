@@ -31,7 +31,6 @@ import jp.go.aist.six.oval.model.definitions.State;
  */
 public class StateDao
     extends OvalEntityDao<State>
-//extends CastorDao<String,State>
 {
 
     public StateDao()

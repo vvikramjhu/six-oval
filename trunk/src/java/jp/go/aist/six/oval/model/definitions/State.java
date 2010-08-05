@@ -95,24 +95,6 @@ public abstract class State
 
 
     //**************************************************************
-    //  Noted
-    //**************************************************************
-
-    // We found NO state with specific notes.
-//    public void setNotes( final Notes notes )
-//    {
-//        _notes = notes;
-//    }
-//
-//
-//    public Notes getNotes()
-//    {
-//        return _notes;
-//    }
-
-
-
-    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
