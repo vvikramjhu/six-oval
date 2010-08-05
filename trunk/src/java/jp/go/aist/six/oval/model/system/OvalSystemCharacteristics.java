@@ -49,9 +49,6 @@ public class OvalSystemCharacteristics
     private SystemData  _systemData = new SystemData();
     //{0..1}
 
-    // test:
-//    private Collection<Item>  _item = new ArrayList<Item>();
-
 
 
     /**
@@ -74,36 +71,6 @@ public class OvalSystemCharacteristics
         setSystemInfo( system );
     }
 
-
-
-//    public void setItem(
-//                    final Collection<? extends Item> items
-//                    )
-//    {
-//        if (items != _item) {
-//            _item.clear();
-//            if (items != null  &&  items.size() > 0)
-//            _item.addAll( items );
-//        }
-//    }
-//
-//
-//    public void addItem(
-//                    final Item item
-//                    )
-//    {
-//        _item.add( item );
-//    }
-//
-//
-//    public Collection<Item> getItem()
-//    {
-//        if (_item.size() == 0) {
-//            _item.addAll( _systemData.getItem() );
-//        }
-//
-//        return _item;
-//    }
 
 
 //    public
