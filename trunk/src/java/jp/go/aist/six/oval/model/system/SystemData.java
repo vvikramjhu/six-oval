@@ -20,8 +20,7 @@
 
 package jp.go.aist.six.oval.model.system;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import jp.go.aist.six.oval.model.Container;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -33,12 +32,8 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class SystemData
-    implements Iterable<Item>
+    extends Container<Item>
 {
-
-    private Collection<Item>  _item = new ArrayList<Item>();
-
-
 
     /**
      * Constructor.
@@ -53,9 +48,9 @@ public class SystemData
      */
     public SystemData(
                     final Collection<? extends Item> items
-                      )
+                    )
     {
-        setItem( items );
+        super( items );
     }
 
 
@@ -64,22 +59,20 @@ public class SystemData
      */
     public SystemData(
                     final Item[] items
-                      )
+                    )
     {
-        setItem( Arrays.asList( items ) );
+        super( items );
     }
 
 
 
+    /**
+     */
     public void setItem(
                     final Collection<? extends Item> items
                     )
     {
-        if (items != _item) {
-            _item.clear();
-            if (items != null  &&  items.size() > 0)
-            _item.addAll( items );
-        }
+        reset( items );
     }
 
 
@@ -87,36 +80,30 @@ public class SystemData
                     final Item item
                     )
     {
-        return _item.add( item );
+        return add( item );
     }
 
 
     public Collection<Item> getItem()
     {
-        return _item;
-    }
-
-
-    public Iterator<Item> iterator()
-    {
-        return _item.iterator();
+        return _elements();
     }
 
 
     public Iterator<Item> iterateItem()
-    {
-        return _item.iterator();
-    }
 
-
-    public int size()
     {
-        return _item.size();
+        return iterator();
     }
 
 }
-//    extends Container<Item>
+
+//implements Iterable<Item>
 //{
+//
+//    private Collection<Item>  _item = new ArrayList<Item>();
+//
+//
 //
 //    /**
 //     * Constructor.
@@ -131,9 +118,9 @@ public class SystemData
 //     */
 //    public SystemData(
 //                    final Collection<? extends Item> items
-//                    )
+//                      )
 //    {
-//        super( items );
+//        setItem( items );
 //    }
 //
 //
@@ -142,20 +129,22 @@ public class SystemData
 //     */
 //    public SystemData(
 //                    final Item[] items
-//                    )
+//                      )
 //    {
-//        super( items );
+//        setItem( Arrays.asList( items ) );
 //    }
 //
 //
 //
-//    /**
-//     */
 //    public void setItem(
 //                    final Collection<? extends Item> items
 //                    )
 //    {
-//        reset( items );
+//        if (items != _item) {
+//            _item.clear();
+//            if (items != null  &&  items.size() > 0)
+//            _item.addAll( items );
+//        }
 //    }
 //
 //
@@ -163,37 +152,35 @@ public class SystemData
 //                    final Item item
 //                    )
 //    {
-//        return add( item );
+//        return _item.add( item );
 //    }
 //
 //
 //    public Collection<Item> getItem()
 //    {
-//        return _elements();
+//        return _item;
+//    }
+//
+//
+//    public Iterator<Item> iterator()
+//    {
+//        return _item.iterator();
 //    }
 //
 //
 //    public Iterator<Item> iterateItem()
-//
 //    {
-//        return iterator();
+//        return _item.iterator();
 //    }
 //
 //
-//
-//    //**************************************************************
-//    //  Container
-//    //**************************************************************
-//
-//    protected Integer _getKey(
-//                    final Item element
-//                    )
+//    public int size()
 //    {
-//        return Integer.valueOf( element.getID() );
-//
+//        return _item.size();
 //    }
 //
 //}
+
 //    implements Iterable<Item>
 //{
 //

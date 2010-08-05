@@ -997,12 +997,8 @@
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.system.Item"
         depends="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics"
-        verify-constructable="false"
         identity="persistentID"
         key-generator="IDENTITY">
-<!--
-        depends="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics"
--->
 
         <!-- cache-type type="unlimited"/ -->
         <map-to table="oval_s_item"/>
@@ -1026,15 +1022,15 @@
         </field>
 
         <!-- (FK) -->
+        <field name="masterObject" 
+            type="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics">
+            <sql name="s_sc__PID"/>
+        </field>
 <!--
         <field name="masterPersistentID" type="string">
             <sql name="s_sc__PID" type="char"/>
         </field>
 -->
-        <field name="masterObject" 
-            type="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics">
-            <sql name="s_sc__PID"/>
-        </field>
     </class>
 
 
