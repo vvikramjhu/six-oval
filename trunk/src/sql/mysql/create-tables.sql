@@ -154,14 +154,14 @@ CREATE TABLE IF NOT EXISTS oval_assoc__d_definitions__d_definition
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
     /* (FK) */
-    definitions__PID    CHAR(36)        NOT NULL,
-    definition__PID     VARCHAR(64)     NOT NULL,
+    d_definitions__PID  CHAR(36)        NOT NULL,
+    d_definition__PID   VARCHAR(64)     NOT NULL,
 
     /* (PK) */
     PRIMARY KEY (PID),
     
     /* INDEX */
-    UNIQUE (definitions__PID, definition__PID)
+    UNIQUE (d_definitions__PID, d_definition__PID)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;
@@ -1571,25 +1571,6 @@ CREATE TABLE IF NOT EXISTS oval_d_test_file
 
 /*    object__id          VARCHAR(64)     NOT NULL, */
 /*    state__id           VARCHAR(64), */
-    
-    /* (FK) */
-
-    /* (PK) */
-    PRIMARY KEY (PID)
-
-    /* INDEX */
-)
-ENGINE=InnoDB
-CHARACTER SET utf8;
-
-
-
-/* ============================================================== */
-/* StateRef                                                       */
-/* ============================================================== */
-CREATE TABLE IF NOT EXISTS oval_d_state_ref
-(
-    PID                 VARCHAR(64)     NOT NULL,
     
     /* (FK) */
 

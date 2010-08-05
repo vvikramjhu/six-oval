@@ -242,8 +242,8 @@
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsDefinitionAssociation"
         identity="persistentID"
-        key-generator="IDENTITY"
-        >
+        key-generator="IDENTITY">
+
         <cache-type type="unlimited"/>
         <map-to table="oval_assoc__d_definitions__d_definition"/>
 
@@ -252,13 +252,12 @@
         </field>
 
         <field name="antecendentPersistentID" type="string">
-            <sql name="definitions__PID" type="char"/>
+            <sql name="d_definitions__PID" type="char"/>
         </field>
 
         <field name="dependentPersistentID" type="string">
-            <sql name="definition__PID" type="char"/>
+            <sql name="d_definition__PID" type="char"/>
         </field>
-
     </class>
 
 
