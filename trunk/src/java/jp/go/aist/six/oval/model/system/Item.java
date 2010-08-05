@@ -31,7 +31,8 @@ import jp.go.aist.six.util.orm.Dependent;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class Item
+//public abstract class Item
+public class Item
     extends AbstractPersistable
     implements Dependent<OvalSystemCharacteristics>
 {
@@ -92,7 +93,11 @@ public abstract class Item
     }
 
 
-    public abstract ObjectType getObjectType();
+//    public abstract ObjectType getObjectType();
+    public ObjectType getObjectType()
+    {
+        return null;
+    }
 
 
 

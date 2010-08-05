@@ -100,7 +100,7 @@ public class OvalSystemCharacteristicsDao
         if (sd != null  &&  sd.size() > 0) {
             for (Item  item : sd) {
                 item.setMasterObject( sc );
-                getForwardingDao( Item.class ).create( item );
+//                getForwardingDao( Item.class ).create( item );
             }
         }
 

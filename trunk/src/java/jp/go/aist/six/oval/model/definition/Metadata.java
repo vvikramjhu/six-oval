@@ -369,7 +369,7 @@ public class Metadata
                         + ", affected=" + getAffected()
                         + ", description=(omitted)" //+ getDescription()
                         + ", references" + getReference()
-                        + ", item=" + getMetadataItem()
+                        + ", additional metadata=" + getMetadataItem()
                         + "]";
     }
 

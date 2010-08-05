@@ -784,12 +784,12 @@
         </field>
 
         <!-- 1 : n -->
-<!-- workaround:
         <field name="systemData.item"
             type="jp.go.aist.six.oval.model.system.Item"
             collection="collection">
             <sql many-key="s_sc__PID"/>
         </field>
+<!-- workaround:
 -->
 
 <!-- test: 1:N using M:N relationship
@@ -996,6 +996,7 @@
     <!-- Item                                                    -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.system.Item"
+        depends="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics"
         verify-constructable="false"
         identity="persistentID"
         key-generator="IDENTITY">
@@ -1025,15 +1026,15 @@
         </field>
 
         <!-- (FK) -->
+<!--
         <field name="masterPersistentID" type="string">
             <sql name="s_sc__PID" type="char"/>
         </field>
-<!--
+-->
         <field name="masterObject" 
             type="jp.go.aist.six.oval.model.system.OvalSystemCharacteristics">
             <sql name="s_sc__PID"/>
         </field>
--->
     </class>
 
 

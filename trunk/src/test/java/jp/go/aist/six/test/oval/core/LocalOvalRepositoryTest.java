@@ -115,7 +115,7 @@ public class LocalOvalRepositoryTest
         Reporter.log( "...create done: PID=" + pid, true );
 
         String  sc_pid = ovalResults.getResults().iterator().next().getOvalSystemCharacteristics().getPersistentID();
-        _getItem( sc_pid );
+//        _getItem( sc_pid );
 
         Reporter.log( "getting OvalSC: PID=" + sc_pid, true );
         OvalSystemCharacteristics  sc = _repository.getOvalSystemCharacteristics( sc_pid );
@@ -125,10 +125,10 @@ public class LocalOvalRepositoryTest
         for (CollectedSystemObject  object : sc.getCollectedObjects()) {
             Reporter.log( "  @ object: " + object, true );
         }
-//        Reporter.log( "  items: ", true );
-//        for (Item  item : sc.getItem()) {
-//            Reporter.log( "  @ item: " + item, true );
-//        }
+        Reporter.log( "  items: ", true );
+        for (Item  item : sc.getSystemData().getItem()) {
+            Reporter.log( "  @ item: " + item, true );
+        }
 
         Reporter.log( "getting OvalResults: PID=" + pid, true );
         ovalResults = _repository.getOvalResults( pid );
