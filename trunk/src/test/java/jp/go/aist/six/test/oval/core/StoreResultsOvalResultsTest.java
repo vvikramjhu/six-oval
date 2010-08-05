@@ -1,12 +1,12 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.model.common.Generator;
-import jp.go.aist.six.oval.model.result.DefinitionResult;
-import jp.go.aist.six.oval.model.result.Directives;
-import jp.go.aist.six.oval.model.result.OvalResults;
-import jp.go.aist.six.oval.model.result.SystemResults;
-import jp.go.aist.six.oval.model.result.SystemResult;
-import jp.go.aist.six.oval.model.result.TestResult;
+import jp.go.aist.six.oval.model.results.DefinitionResult;
+import jp.go.aist.six.oval.model.results.Directives;
+import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.model.results.SystemResult;
+import jp.go.aist.six.oval.model.results.SystemResults;
+import jp.go.aist.six.oval.model.results.TestResult;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;

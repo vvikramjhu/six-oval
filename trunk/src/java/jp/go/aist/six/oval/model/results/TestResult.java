@@ -18,9 +18,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.result;
+package jp.go.aist.six.oval.model.results;
 
+import jp.go.aist.six.oval.model.common.Check;
+import jp.go.aist.six.oval.model.common.Existence;
+import jp.go.aist.six.oval.model.common.Operator;
 import jp.go.aist.six.util.orm.Dependent;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 
@@ -29,15 +34,20 @@ import jp.go.aist.six.util.orm.Dependent;
  * @author	Akihito Nakamura, AIST
  * @version $Id: DefinitionResult.java 759 2010-05-10 06:56:29Z akihito $
  */
-public class DefinitionResult
+public class TestResult
     extends OvalResultElement
     implements Dependent<SystemResult>
 {
 
 //  private Collection<Message>  _messages = new ArrayList<Message>();
 
-//    private CriteriaResult  _criteria;
-//    //{0..1}
+
+    private Collection<TestedItem>  _testedItem = new ArrayList<TestedItem>();
+    //{0..*}
+
+
+    private Collection<TestedVariable>  _testedVariable= new ArrayList<TestedVariable>();
+    //{0..*}
 
 
     public static final int  DEFAULT_VARIABLE_INSTANCE = 1;
@@ -45,11 +55,25 @@ public class DefinitionResult
     //{xsd:nonNegativeInteger, optional, default="1"}
 
 
+    public static final Existence  DEFAULT_CHECK_EXISTENCE = Existence.AT_LEAST_ONE_EXISTS;
+    private Existence  _checkExistence;
+    //{optional, default="at_least_one_exists"}
+
+
+    private Check  _check;
+    //{required}
+
+
+    public static final Operator  DEFAULT_STATE_OPERATOR = Operator.AND;
+    private Operator  _stateOperator;
+    //{optional, default="AND"}
+
+
 
     /**
      * Constructor.
      */
-    public DefinitionResult()
+    public TestResult()
     {
     }
 
@@ -57,7 +81,7 @@ public class DefinitionResult
     /**
      * Constructor.
      */
-    public DefinitionResult(
+    public TestResult(
                     final String id,
                     final int version
                     )
@@ -69,7 +93,7 @@ public class DefinitionResult
     /**
      * Constructor.
      */
-    public DefinitionResult(
+    public TestResult(
                     final String id,
                     final int version,
                     final Result result
@@ -82,7 +106,45 @@ public class DefinitionResult
 
     /**
      */
-    public void setDefinitionID(
+    public void setTestedItem(
+                    final Collection<? extends TestedItem> items
+                    )
+    {
+        _testedItem.clear();
+        if (items != null  &&  items != _testedItem) {
+            _testedItem.addAll( items );
+        }
+    }
+
+
+    public Collection<TestedItem> getTestedItem()
+    {
+        return _testedItem;
+    }
+
+
+    /**
+     */
+    public void setTestedVariable(
+                    final Collection<? extends TestedVariable> variables
+                    )
+    {
+        _testedVariable.clear();
+        if (variables != null  &&  variables != _testedVariable) {
+            _testedVariable.addAll( variables );
+        }
+    }
+
+
+    public Collection<TestedVariable> getTestedVariable()
+    {
+        return _testedVariable;
+    }
+
+
+    /**
+     */
+    public void setTestID(
                     final String id
                     )
     {
@@ -90,7 +152,7 @@ public class DefinitionResult
     }
 
 
-    public String getDefinitionID()
+    public String getTestID()
     {
         return getOvalID();
     }
@@ -115,6 +177,57 @@ public class DefinitionResult
     public int getVariableInstance()
     {
         return _variableInstance;
+    }
+
+
+
+    /**
+     */
+    public void setCheckExistence(
+                    final Existence existence
+                    )
+    {
+        _checkExistence = existence;
+    }
+
+
+    public Existence getCheckExistence()
+    {
+        return (_checkExistence == null ? DEFAULT_CHECK_EXISTENCE : _checkExistence);
+    }
+
+
+
+    /**
+     */
+    public void setCheck(
+                    final Check check
+                    )
+    {
+        _check = check;
+    }
+
+
+    public Check getCheck()
+    {
+        return _check;
+    }
+
+
+
+    /**
+     */
+    public void setStateOperator(
+                    final Operator operator
+                    )
+    {
+        _stateOperator = operator;
+    }
+
+
+    public Operator getStateOperator()
+    {
+        return (_stateOperator == null ? DEFAULT_STATE_OPERATOR : _stateOperator);
     }
 
 
@@ -170,15 +283,18 @@ public class DefinitionResult
 
 
 
-    //**************************************************************
-    //  java.lang.Object
-    //**************************************************************
+    // **************************************************************
+    // java.lang.Object
+    // **************************************************************
 
     @Override
     public String toString()
     {
-        return "DefinitionResult[" + super.toString() + "]";
+        return "TestResult[" + super.toString()
+                        + ", tested_item=" + getTestedItem()
+                        + ", tested_variable=" + getTestedVariable()
+                        + "]";
     }
 
 }
-// DefinitionResult
+// TestResult

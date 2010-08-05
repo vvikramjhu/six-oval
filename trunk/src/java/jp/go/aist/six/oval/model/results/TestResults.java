@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.result;
+package jp.go.aist.six.oval.model.results;
 
 import jp.go.aist.six.oval.model.Container;
 import java.util.Collection;
@@ -27,20 +27,19 @@ import java.util.Iterator;
 
 
 /**
- * A collection of DefinitionResult objects.
+ * A collection of TestResult objects.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id: DefinitionResults.java 742 2010-05-07 09:22:53Z akihito $
  */
-public class DefinitionResults
-    extends Container<DefinitionResult>  //{1..*}
-//extends OvalElementContainer<DefinitionResult>  //{1..*}
+public class TestResults
+    extends Container<TestResult>   //{1..*}
 {
 
     /**
      * Constructor.
      */
-    public DefinitionResults()
+    public TestResults()
     {
     }
 
@@ -48,8 +47,8 @@ public class DefinitionResults
     /**
      * Constructor.
      */
-    public DefinitionResults(
-                    final Collection<? extends DefinitionResult> elements
+    public TestResults(
+                    final Collection<? extends TestResult> elements
                     )
     {
         super( elements );
@@ -59,8 +58,8 @@ public class DefinitionResults
     /**
      * Constructor.
      */
-    public DefinitionResults(
-                    final DefinitionResult[] elements
+    public TestResults(
+                    final TestResult[] elements
                     )
     {
         super( elements );
@@ -68,35 +67,32 @@ public class DefinitionResults
 
 
 
-    /**
-     */
-    public void setDefinition(
-                    final Collection<? extends DefinitionResult> elements
+    public void setTest(
+                    final Collection<? extends TestResult> elements
                     )
     {
         reset( elements );
     }
 
 
-    public boolean addDefinition(
-                    final DefinitionResult e
+    public boolean addTest(
+                    final TestResult e
                     )
     {
         return add( e );
     }
 
 
-    public Collection<DefinitionResult> getDefinition()
+    public Collection<TestResult> getTest()
     {
         return _elements();
-//        return _values();
     }
 
 
-    public Iterator<DefinitionResult> iterateDefinition()
+    public Iterator<TestResult> iterateTest()
     {
         return iterator();
     }
 
 }
-// DefinitionResults
+// TestResults

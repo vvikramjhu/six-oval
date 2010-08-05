@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.core.model.result;
 
 import jp.go.aist.six.oval.model.definition.OvalDefinitions;
-import jp.go.aist.six.oval.model.result.OvalResults;
+import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.util.castor.StandardAssociation;
 
 

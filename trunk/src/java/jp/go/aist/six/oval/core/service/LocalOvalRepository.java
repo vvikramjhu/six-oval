@@ -36,7 +36,7 @@ import jp.go.aist.six.oval.model.definition.Test;
 import jp.go.aist.six.oval.model.definition.Tests;
 import jp.go.aist.six.oval.model.definition.Variable;
 import jp.go.aist.six.oval.model.definition.Variables;
-import jp.go.aist.six.oval.model.result.OvalResults;
+import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.service.OvalServiceException;

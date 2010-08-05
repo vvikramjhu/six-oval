@@ -109,17 +109,17 @@
 
             <!-- // Results // -->
             
-                <entry key="jp.go.aist.six.oval.model.result.OvalResults"
+                <entry key="jp.go.aist.six.oval.model.results.OvalResults"
                     value="jp.go.aist.six.oval.core.store.OvalResultsDao"/>
 
 <!-- dependent relationship 
                 <entry key="jp.go.aist.six.oval.core.model.result.OvalResultsOvalDefinitionsAssociation"
                     value="jp.go.aist.six.oval.core.store.OvalResultsOvalDefinitionsAssociationDao"/>
 
-                <entry key="jp.go.aist.six.oval.model.result.SystemResult"
+                <entry key="jp.go.aist.six.oval.model.results.SystemResult"
                     value="jp.go.aist.six.oval.core.store.SystemResultDao"/>
 
-                <entry key="jp.go.aist.six.oval.model.result.DefinitionResult"
+                <entry key="jp.go.aist.six.oval.model.results.DefinitionResult"
                     value="jp.go.aist.six.oval.core.store.DefinitionResultDao"/>
 
                 <entry key="jp.go.aist.six.oval.core.model.result.OvalResultsSystemAssociation"

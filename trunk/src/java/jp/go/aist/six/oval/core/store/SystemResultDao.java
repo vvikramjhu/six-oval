@@ -20,13 +20,13 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.result.DefinitionResult;
-import jp.go.aist.six.oval.model.result.DefinitionResults;
-import jp.go.aist.six.oval.model.result.SystemResult;
-import jp.go.aist.six.oval.model.result.TestResult;
-import jp.go.aist.six.oval.model.result.TestResults;
-import jp.go.aist.six.oval.model.result.TestedItem;
-import jp.go.aist.six.oval.model.result.TestedVariable;
+import jp.go.aist.six.oval.model.results.DefinitionResult;
+import jp.go.aist.six.oval.model.results.DefinitionResults;
+import jp.go.aist.six.oval.model.results.SystemResult;
+import jp.go.aist.six.oval.model.results.TestResult;
+import jp.go.aist.six.oval.model.results.TestResults;
+import jp.go.aist.six.oval.model.results.TestedItem;
+import jp.go.aist.six.oval.model.results.TestedVariable;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.util.castor.CastorDao;
 import java.util.Collection;

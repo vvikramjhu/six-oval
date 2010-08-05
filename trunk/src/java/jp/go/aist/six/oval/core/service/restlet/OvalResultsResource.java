@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.service.restlet;
 
-import jp.go.aist.six.oval.model.result.OvalResults;
+import jp.go.aist.six.oval.model.results.OvalResults;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.restlet.Context;

@@ -8,7 +8,7 @@ import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.definition.DefinitionClass;
 import jp.go.aist.six.oval.model.definition.Test;
-import jp.go.aist.six.oval.model.result.Result;
+import jp.go.aist.six.oval.model.results.Result;
 import jp.go.aist.six.util.search.LikeBinding;
 import jp.go.aist.six.util.search.RelationalBinding;
 import jp.go.aist.six.util.search.SearchCriteria;

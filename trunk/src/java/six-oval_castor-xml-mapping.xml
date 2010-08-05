@@ -1167,7 +1167,7 @@
     <!-- ======================================================= -->
     <!-- OvalResults                                             -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.result.OvalResults">
+    <class name="jp.go.aist.six.oval.model.results.OvalResults">
         <map-to xml="oval_results"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
@@ -1177,7 +1177,7 @@
         </field>
         
         <field name="directives" 
-            type="jp.go.aist.six.oval.model.result.Directives">
+            type="jp.go.aist.six.oval.model.results.Directives">
             <bind-xml name="directives" node="element"/>
         </field>
         
@@ -1187,12 +1187,12 @@
         </field>
 
         <field name="results" 
-            type="jp.go.aist.six.oval.model.result.SystemResults">
+            type="jp.go.aist.six.oval.model.results.SystemResults">
             <bind-xml name="results" node="element"/>
         </field>
 <!--
         <field name="results" 
-            type="jp.go.aist.six.oval.model.result.SystemResult"
+            type="jp.go.aist.six.oval.model.results.SystemResult"
             collection="collection">
             <bind-xml name="system" node="element" 
                 location="results"/>
@@ -1205,37 +1205,37 @@
     <!-- ======================================================= -->
     <!-- Directives                                              -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.result.Directives">
+    <class name="jp.go.aist.six.oval.model.results.Directives">
         <map-to xml="directives"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
         <field name="definitionTrue" 
-            type="jp.go.aist.six.oval.model.result.Directive">
+            type="jp.go.aist.six.oval.model.results.Directive">
             <bind-xml name="definition_true" node="element"/>
         </field>
 
         <field name="definitionFalse" 
-            type="jp.go.aist.six.oval.model.result.Directive">
+            type="jp.go.aist.six.oval.model.results.Directive">
             <bind-xml name="definition_false" node="element"/>
         </field>
 
         <field name="definitionUnknown" 
-            type="jp.go.aist.six.oval.model.result.Directive">
+            type="jp.go.aist.six.oval.model.results.Directive">
             <bind-xml name="definition_unknown" node="element"/>
         </field>
 
         <field name="definitionError" 
-            type="jp.go.aist.six.oval.model.result.Directive">
+            type="jp.go.aist.six.oval.model.results.Directive">
             <bind-xml name="definition_error" node="element"/>
         </field>
 
         <field name="definitionNotEvaluated" 
-            type="jp.go.aist.six.oval.model.result.Directive">
+            type="jp.go.aist.six.oval.model.results.Directive">
             <bind-xml name="definition_not_evaluated" node="element"/>
         </field>
 
         <field name="definitionNotApplicable" 
-            type="jp.go.aist.six.oval.model.result.Directive">
+            type="jp.go.aist.six.oval.model.results.Directive">
             <bind-xml name="definition_not_applicable" node="element"/>
         </field>
     </class>
@@ -1245,7 +1245,7 @@
     <!-- ======================================================= -->
     <!-- Directive                                               -->
     <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.result.Directive">
+    <class name ="jp.go.aist.six.oval.model.results.Directive">
         <map-to xml="directive"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
@@ -1264,12 +1264,12 @@
     <!-- ======================================================= -->
     <!-- SystemResults                                           -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.result.SystemResults">
+    <class name="jp.go.aist.six.oval.model.results.SystemResults">
         <map-to xml="results"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
         <field name="system" 
-            type="jp.go.aist.six.oval.model.result.SystemResult"
+            type="jp.go.aist.six.oval.model.results.SystemResult"
             collection="collection"
             set-method="addSystem"
             get-method="iterateSystem">
@@ -1282,17 +1282,17 @@
     <!-- ======================================================= -->
     <!-- SystemResult                                            -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.result.SystemResult">
+    <class name="jp.go.aist.six.oval.model.results.SystemResult">
         <map-to xml="system"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
         <field name="definitions" 
-            type="jp.go.aist.six.oval.model.result.DefinitionResults">
+            type="jp.go.aist.six.oval.model.results.DefinitionResults">
             <bind-xml name="definitions" node="element"/>
         </field>
 
         <field name="tests" 
-            type="jp.go.aist.six.oval.model.result.TestResults">
+            type="jp.go.aist.six.oval.model.results.TestResults">
             <bind-xml name="tests" node="element"/>
         </field>
 
@@ -1307,7 +1307,7 @@
     <!-- ======================================================= -->
     <!-- DefinitionResult                                        -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.result.DefinitionResult">
+    <class name="jp.go.aist.six.oval.model.results.DefinitionResult">
         <map-to xml="definition"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
@@ -1330,12 +1330,12 @@
     <!-- ======================================================= -->
     <!-- DefinitionResults                                       -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.result.DefinitionResults">
+    <class name="jp.go.aist.six.oval.model.results.DefinitionResults">
         <map-to xml="definitions"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
         <field name="definition" 
-            type="jp.go.aist.six.oval.model.result.DefinitionResult"
+            type="jp.go.aist.six.oval.model.results.DefinitionResult"
             collection="collection"
             set-method="addDefinition"
             get-method="iterateDefinition">
@@ -1348,7 +1348,7 @@
     <!-- ======================================================= -->
     <!-- TestedItem                                              -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.result.TestedItem">
+    <class name="jp.go.aist.six.oval.model.results.TestedItem">
         <map-to xml="tested_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
@@ -1367,7 +1367,7 @@
     <!-- ======================================================= -->
     <!-- TestedVariable                                          -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.result.TestedVariable">
+    <class name="jp.go.aist.six.oval.model.results.TestedVariable">
         <map-to xml="tested_variable"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
@@ -1385,7 +1385,7 @@
     <!-- ======================================================= -->
     <!-- TestResult                                              -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.result.TestResult">
+    <class name="jp.go.aist.six.oval.model.results.TestResult">
         <map-to xml="test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
@@ -1418,13 +1418,13 @@
         </field>
 
         <field name="testedItem" 
-            type="jp.go.aist.six.oval.model.result.TestedItem"
+            type="jp.go.aist.six.oval.model.results.TestedItem"
             collection="collection">
             <bind-xml name="tested_item" node="element"/>
         </field>
 
         <field name="testedVariable" 
-            type="jp.go.aist.six.oval.model.result.TestedVariable"
+            type="jp.go.aist.six.oval.model.results.TestedVariable"
             collection="collection">
             <bind-xml name="tested_variable" node="element"/>
         </field>
@@ -1435,12 +1435,12 @@
     <!-- ======================================================= -->
     <!-- TestResults                                             -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.result.TestResults">
+    <class name="jp.go.aist.six.oval.model.results.TestResults">
         <map-to xml="tests"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
         <field name="test" 
-            type="jp.go.aist.six.oval.model.result.TestResult"
+            type="jp.go.aist.six.oval.model.results.TestResult"
             collection="collection"
             set-method="addTest"
             get-method="iterateTest">

@@ -1044,7 +1044,7 @@
     <!-- ******************************************************* -->
     <!-- OvalResults                                             -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.result.OvalResults"
+    <class name="jp.go.aist.six.oval.model.results.OvalResults"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_r_results"/>
@@ -1076,7 +1076,7 @@
         </field>
 
         <field name="directives.definitionTrue.content"
-            type="jp.go.aist.six.oval.model.result.Content">
+            type="jp.go.aist.six.oval.model.results.Content">
             <sql name="definition_true_content" type="char"/>
         </field>
 
@@ -1085,7 +1085,7 @@
         </field>
 
         <field name="directives.definitionFalse.content"
-            type="jp.go.aist.six.oval.model.result.Content">
+            type="jp.go.aist.six.oval.model.results.Content">
             <sql name="definition_false_content" type="char"/>
         </field>
         
@@ -1094,7 +1094,7 @@
         </field>
 
         <field name="directives.definitionUnknown.content"
-            type="jp.go.aist.six.oval.model.result.Content">
+            type="jp.go.aist.six.oval.model.results.Content">
             <sql name="definition_unknown_content" type="char"/>
         </field>
         
@@ -1103,7 +1103,7 @@
         </field>
 
         <field name="directives.definitionError.content"
-            type="jp.go.aist.six.oval.model.result.Content">
+            type="jp.go.aist.six.oval.model.results.Content">
             <sql name="definition_error_content" type="char"/>
         </field>
         
@@ -1112,7 +1112,7 @@
         </field>
 
         <field name="directives.definitionNotEvaluated.content"
-            type="jp.go.aist.six.oval.model.result.Content">
+            type="jp.go.aist.six.oval.model.results.Content">
             <sql name="definition_not_evaluated_content" type="char"/>
         </field>
         
@@ -1121,12 +1121,12 @@
         </field>
 
         <field name="directives.definitionNotApplicable.content"
-            type="jp.go.aist.six.oval.model.result.Content">
+            type="jp.go.aist.six.oval.model.results.Content">
             <sql name="definition_not_applicable_content" type="char"/>
         </field>
 
         <field name="results.system"
-            type="jp.go.aist.six.oval.model.result.SystemResult"
+            type="jp.go.aist.six.oval.model.results.SystemResult"
             collection="collection">
             <sql many-key="r_results__PID"/>
         </field>
@@ -1170,8 +1170,8 @@
     <!-- ******************************************************* -->
     <!-- SystemResult                                            -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.result.SystemResult"
-        depends="jp.go.aist.six.oval.model.result.OvalResults"
+    <class name="jp.go.aist.six.oval.model.results.SystemResult"
+        depends="jp.go.aist.six.oval.model.results.OvalResults"
         identity="persistentID"
         key-generator="IDENTITY">
         <cache-type type="unlimited"/>
@@ -1186,13 +1186,13 @@
         </field>
 
         <field name="definitions.definition"
-            type="jp.go.aist.six.oval.model.result.DefinitionResult"
+            type="jp.go.aist.six.oval.model.results.DefinitionResult"
             collection="collection">
             <sql many-key="r_system__PID"/>
         </field>
 
         <field name="tests.test"
-            type="jp.go.aist.six.oval.model.result.TestResult"
+            type="jp.go.aist.six.oval.model.results.TestResult"
             collection="collection">
             <sql many-key="r_system__PID"/>
         </field>
@@ -1205,7 +1205,7 @@
 
         <!-- (FK) -->
         <field name="masterObject" 
-            type="jp.go.aist.six.oval.model.result.OvalResults">
+            type="jp.go.aist.six.oval.model.results.OvalResults">
             <sql name="r_results__PID"/>
         </field>
     </class>
@@ -1240,8 +1240,8 @@
     <!-- ******************************************************* -->
     <!-- DefinitionResult                                        -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.result.DefinitionResult"
-        depends="jp.go.aist.six.oval.model.result.SystemResult"
+    <class name="jp.go.aist.six.oval.model.results.DefinitionResult"
+        depends="jp.go.aist.six.oval.model.results.SystemResult"
         identity="persistentID"
         key-generator="IDENTITY">
 
@@ -1265,7 +1265,7 @@
         </field>
 
         <field name="result"
-            type="jp.go.aist.six.oval.model.result.Result">
+            type="jp.go.aist.six.oval.model.results.Result">
             <sql name="result" type="char"/>
         </field>
 
@@ -1276,7 +1276,7 @@
 
         <!-- (FK) -->
         <field name="masterObject" 
-            type="jp.go.aist.six.oval.model.result.SystemResult">
+            type="jp.go.aist.six.oval.model.results.SystemResult">
             <sql name="r_system__PID"/>
         </field>
 <!--
@@ -1291,8 +1291,8 @@
     <!-- ******************************************************* -->
     <!-- TestResult                                              -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.result.TestResult"
-        depends="jp.go.aist.six.oval.model.result.SystemResult"
+    <class name="jp.go.aist.six.oval.model.results.TestResult"
+        depends="jp.go.aist.six.oval.model.results.SystemResult"
         identity="persistentID"
         key-generator="IDENTITY">
 
@@ -1331,25 +1331,25 @@
         </field>
 
         <field name="result"
-            type="jp.go.aist.six.oval.model.result.Result">
+            type="jp.go.aist.six.oval.model.results.Result">
             <sql name="result" type="char"/>
         </field>
 
         <field name="testedItem"
-            type="jp.go.aist.six.oval.model.result.TestedItem"
+            type="jp.go.aist.six.oval.model.results.TestedItem"
             collection="collection">
             <sql many-key="r_test__PID"/>
         </field>
 
         <field name="testedVariable"
-            type="jp.go.aist.six.oval.model.result.TestedVariable"
+            type="jp.go.aist.six.oval.model.results.TestedVariable"
             collection="collection">
             <sql many-key="r_test__PID"/>
         </field>
 
         <!-- (FK) SystemResult -->
         <field name="masterObject" 
-            type="jp.go.aist.six.oval.model.result.SystemResult">
+            type="jp.go.aist.six.oval.model.results.SystemResult">
             <sql name="r_system__PID"/>
         </field>
 
@@ -1364,8 +1364,8 @@
     <!-- ******************************************************* -->
     <!-- TestedItem                                              -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.result.TestedItem"
-        depends="jp.go.aist.six.oval.model.result.TestResult"
+    <class name="jp.go.aist.six.oval.model.results.TestedItem"
+        depends="jp.go.aist.six.oval.model.results.TestResult"
         identity="persistentID"
         key-generator="IDENTITY">
 
@@ -1381,13 +1381,13 @@
         </field>
 
         <field name="result"
-            type="jp.go.aist.six.oval.model.result.Result">
+            type="jp.go.aist.six.oval.model.results.Result">
             <sql name="result" type="char"/>
         </field>
 
         <!-- (FK) -->
         <field name="masterObject" 
-            type="jp.go.aist.six.oval.model.result.TestResult">
+            type="jp.go.aist.six.oval.model.results.TestResult">
             <sql name="r_test__PID"/>
         </field>
     </class>
@@ -1397,8 +1397,8 @@
     <!-- ******************************************************* -->
     <!-- TestedVariable                                          -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.result.TestedVariable"
-        depends="jp.go.aist.six.oval.model.result.TestResult"
+    <class name="jp.go.aist.six.oval.model.results.TestedVariable"
+        depends="jp.go.aist.six.oval.model.results.TestResult"
         identity="persistentID"
         key-generator="IDENTITY">
 
@@ -1419,7 +1419,7 @@
 
         <!-- (FK) -->
         <field name="masterObject" 
-            type="jp.go.aist.six.oval.model.result.TestResult">
+            type="jp.go.aist.six.oval.model.results.TestResult">
             <sql name="r_test__PID"/>
         </field>
     </class>
