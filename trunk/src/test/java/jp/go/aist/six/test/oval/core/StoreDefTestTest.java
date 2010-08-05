@@ -3,7 +3,7 @@ package jp.go.aist.six.test.oval.core;
 import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
-import jp.go.aist.six.oval.model.definition.Test;
+import jp.go.aist.six.oval.model.definitions.Test;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;

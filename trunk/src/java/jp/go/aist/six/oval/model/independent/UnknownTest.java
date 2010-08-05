@@ -22,9 +22,9 @@ package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Check;
-import jp.go.aist.six.oval.model.definition.StateRef;
-import jp.go.aist.six.oval.model.definition.SystemObjectRef;
-import jp.go.aist.six.oval.model.definition.Test;
+import jp.go.aist.six.oval.model.definitions.StateRef;
+import jp.go.aist.six.oval.model.definitions.SystemObjectRef;
+import jp.go.aist.six.oval.model.definitions.Test;
 import java.util.Collection;
 
 

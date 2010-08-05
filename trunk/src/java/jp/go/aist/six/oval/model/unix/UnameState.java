@@ -21,8 +21,8 @@
 package jp.go.aist.six.oval.model.unix;
 
 import jp.go.aist.six.oval.model.ObjectType;
-import jp.go.aist.six.oval.model.definition.EntityStateString;
-import jp.go.aist.six.oval.model.definition.State;
+import jp.go.aist.six.oval.model.definitions.EntityStateString;
+import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
 import java.util.Map;
 

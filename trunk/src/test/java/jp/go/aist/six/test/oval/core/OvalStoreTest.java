@@ -2,9 +2,9 @@ package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Generator;
-import jp.go.aist.six.oval.model.definition.Definitions;
-import jp.go.aist.six.oval.model.definition.OvalDefinitions;
-import jp.go.aist.six.oval.model.definition.SystemObject;
+import jp.go.aist.six.oval.model.definitions.Definitions;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
 import org.testng.Assert;

@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.definition.Reference;
+import jp.go.aist.six.oval.model.definitions.Reference;
 
 
 

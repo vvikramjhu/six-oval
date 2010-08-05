@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.definition.EntityObjectString;
-import jp.go.aist.six.oval.model.definition.SystemObject;
+import jp.go.aist.six.oval.model.definitions.EntityObjectString;
+import jp.go.aist.six.oval.model.definitions.SystemObject;
 
 
 

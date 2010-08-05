@@ -20,11 +20,11 @@
 
 package jp.go.aist.six.oval.service;
 
-import jp.go.aist.six.oval.model.definition.Definition;
-import jp.go.aist.six.oval.model.definition.OvalDefinitions;
-import jp.go.aist.six.oval.model.definition.State;
-import jp.go.aist.six.oval.model.definition.SystemObject;
-import jp.go.aist.six.oval.model.definition.Test;
+import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.State;
+import jp.go.aist.six.oval.model.definitions.SystemObject;
+import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.Result;

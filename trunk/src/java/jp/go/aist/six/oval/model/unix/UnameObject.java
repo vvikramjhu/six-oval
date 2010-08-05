@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.unix;
 
 import jp.go.aist.six.oval.model.ObjectType;
-import jp.go.aist.six.oval.model.definition.SystemObject;
+import jp.go.aist.six.oval.model.definitions.SystemObject;
 
 
 

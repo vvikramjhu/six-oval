@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.mitre;
 
-import jp.go.aist.six.oval.model.definition.MetadataItem;
+import jp.go.aist.six.oval.model.definitions.MetadataItem;
 import java.util.ArrayList;
 import java.util.Collection;
 

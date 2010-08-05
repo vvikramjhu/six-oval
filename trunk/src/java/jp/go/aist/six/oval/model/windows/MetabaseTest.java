@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.ObjectType;
 import jp.go.aist.six.oval.model.common.Check;
-import jp.go.aist.six.oval.model.definition.Test;
+import jp.go.aist.six.oval.model.definitions.Test;
 
 
 

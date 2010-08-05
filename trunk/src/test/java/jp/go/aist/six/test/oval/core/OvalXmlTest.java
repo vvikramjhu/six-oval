@@ -1,9 +1,9 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.model.common.Generator;
-import jp.go.aist.six.oval.model.definition.Definition;
-import jp.go.aist.six.oval.model.definition.Definitions;
-import jp.go.aist.six.oval.model.definition.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.Definitions;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.Directives;
 import jp.go.aist.six.oval.model.results.OvalResults;

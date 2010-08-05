@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.definition.StateRef;
-import jp.go.aist.six.oval.model.definition.Test;
+import jp.go.aist.six.oval.model.definitions.StateRef;
+import jp.go.aist.six.oval.model.definitions.Test;
 import java.util.Collection;
 
 

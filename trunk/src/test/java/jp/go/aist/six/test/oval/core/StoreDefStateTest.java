@@ -1,7 +1,7 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.model.ObjectType;
-import jp.go.aist.six.oval.model.definition.State;
+import jp.go.aist.six.oval.model.definitions.State;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;

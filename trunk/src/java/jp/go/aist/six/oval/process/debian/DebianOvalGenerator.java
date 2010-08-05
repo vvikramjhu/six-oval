@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.process.debian;
 
 import jp.go.aist.six.oval.core.service.OvalContext;
-import jp.go.aist.six.oval.model.definition.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.process.OvalGenerator;
 import jp.go.aist.six.oval.process.OvalProcessStatus;
 import jp.go.aist.six.oval.process.debian.builder.DebianOvalBuilder;

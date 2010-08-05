@@ -1,16 +1,16 @@
 package jp.go.aist.six.test.oval.service;
 
 import jp.go.aist.six.oval.core.service.OvalContext;
-import jp.go.aist.six.oval.model.definition.Definition;
-import jp.go.aist.six.oval.model.definition.DefinitionClass;
-import jp.go.aist.six.oval.model.definition.OvalDefinitions;
-import jp.go.aist.six.oval.model.definition.State;
-import jp.go.aist.six.oval.model.definition.StateRef;
-import jp.go.aist.six.oval.model.definition.States;
-import jp.go.aist.six.oval.model.definition.SystemObject;
-import jp.go.aist.six.oval.model.definition.SystemObjects;
-import jp.go.aist.six.oval.model.definition.Test;
-import jp.go.aist.six.oval.model.definition.Tests;
+import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.DefinitionClass;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.State;
+import jp.go.aist.six.oval.model.definitions.StateRef;
+import jp.go.aist.six.oval.model.definitions.States;
+import jp.go.aist.six.oval.model.definitions.SystemObject;
+import jp.go.aist.six.oval.model.definitions.SystemObjects;
+import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.definitions.Tests;
 import jp.go.aist.six.oval.model.linux.LinuxEvrPkgInfoState;
 import jp.go.aist.six.oval.model.linux.LinuxPkgInfoObject;
 import jp.go.aist.six.oval.model.linux.LinuxPkgInfoState;

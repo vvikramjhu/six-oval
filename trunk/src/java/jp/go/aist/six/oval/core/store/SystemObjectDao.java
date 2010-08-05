@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.definition.SystemObject;
+import jp.go.aist.six.oval.model.definitions.SystemObject;
 
 
 

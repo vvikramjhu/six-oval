@@ -22,7 +22,7 @@
     <!-- ******************************************************* -->
     <!-- OvalDefinitions                                         -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.definition.OvalDefinitions"
+    <class name="jp.go.aist.six.oval.model.definitions.OvalDefinitions"
         identity="persistentID"
         >
         <cache-type type="unlimited"/>
@@ -63,7 +63,7 @@
         <!-- This relation is stored using Association. -->
 <!--
         <field name="definitions"
-            type="jp.go.aist.six.oval.model.definition.Definition"
+            type="jp.go.aist.six.oval.model.definitions.Definition"
             collection="collection"
             lazy="true"
             >
@@ -81,7 +81,7 @@
     <!-- ******************************************************* -->
     <!-- Definition                                              -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.definition.Definition"
+    <class name="jp.go.aist.six.oval.model.definitions.Definition"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_definition"/>
@@ -99,7 +99,7 @@
         </field>
 
         <field name="definitionClass" 
-            type="jp.go.aist.six.oval.model.definition.DefinitionClass">
+            type="jp.go.aist.six.oval.model.definitions.DefinitionClass">
             <sql name="class" type="char"/>
         </field>
 
@@ -123,7 +123,7 @@
 
         <!-- Definition : Reference = m : n -->
         <field name="metadata.reference"
-            type="jp.go.aist.six.oval.model.definition.Reference"
+            type="jp.go.aist.six.oval.model.definitions.Reference"
             collection="collection"
             lazy="true">
             <sql name="reference__PID"
@@ -140,7 +140,7 @@
         </field>
 
         <field name="metadata.affected.platform"
-            type="jp.go.aist.six.oval.model.definition.Platform"
+            type="jp.go.aist.six.oval.model.definitions.Platform"
             collection="collection"
             lazy="true">
             <description>Definition : Platform = n : m</description>
@@ -150,7 +150,7 @@
         </field>
 
         <field name="metadata.affected.product"
-            type="jp.go.aist.six.oval.model.definition.Product"
+            type="jp.go.aist.six.oval.model.definitions.Product"
             collection="collection"
             lazy="true">
             <description>Definition : Product = n : m</description>
@@ -166,7 +166,7 @@
         </field>
 
         <field name="affectedPlatforms"
-            type="jp.go.aist.six.oval.model.definition.Platform"
+            type="jp.go.aist.six.oval.model.definitions.Platform"
             collection="collection"
             lazy="true"
             >
@@ -177,7 +177,7 @@
         </field>
 
         <field name="affectedProducts"
-            type="jp.go.aist.six.oval.model.definition.Product"
+            type="jp.go.aist.six.oval.model.definitions.Product"
             collection="collection"
             lazy="true"
             >
@@ -191,7 +191,7 @@
         <!-- Definition : Cve = n : m 
         -->
         <field name="relatedCves"
-            type="jp.go.aist.six.oval.model.definition.Cve"
+            type="jp.go.aist.six.oval.model.definitions.Cve"
             collection="collection"
             lazy="true"
             >
@@ -266,7 +266,7 @@
     <!-- ******************************************************* -->
     <!-- Reference                                               -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.definition.Reference"
+    <class name="jp.go.aist.six.oval.model.definitions.Reference"
         identity="persistentID"
         key-generator="IDENTITY"
         >
@@ -296,7 +296,7 @@
     <!-- ******************************************************* -->
     <!-- Platform                                                -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.definition.Platform"
+    <class name="jp.go.aist.six.oval.model.definitions.Platform"
         identity="persistentID"
         >
         <cache-type type="unlimited"/>
@@ -312,7 +312,7 @@
     <!-- ******************************************************* -->
     <!-- Product                                                 -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.definition.Product"
+    <class name="jp.go.aist.six.oval.model.definitions.Product"
         identity="persistentID"
         >
         <cache-type type="unlimited"/>
@@ -329,7 +329,7 @@
     <!-- ******************************************************* -->
     <!-- Cve                                                     -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.definition.Cve"
+    <class name="jp.go.aist.six.oval.model.definitions.Cve"
         identity="persistentID"
         >
         <cache-type type="unlimited"/>
@@ -398,7 +398,7 @@
     <!-- ******************************************************* -->
     <!-- Test                                                    -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.definition.Test"
+    <class name="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID"
         >
 <!--
@@ -454,13 +454,13 @@
         </field>
 
         <field name="state"
-            type="jp.go.aist.six.oval.model.definition.StateRef"
+            type="jp.go.aist.six.oval.model.definitions.StateRef"
             collection="collection">
             <sql many-key="test__PID"/>
         </field>
 <!-- case: independent implementation
         <field name="state"
-            type="jp.go.aist.six.oval.model.definition.StateRef"
+            type="jp.go.aist.six.oval.model.definitions.StateRef"
             collection="collection"
             >
             <sql name="state_ref__PID"
@@ -476,8 +476,8 @@
     <!-- ******************************************************* -->
     <!-- StateRef                                                -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.definition.StateRef"
-        depends="jp.go.aist.six.oval.model.definition.Test"
+    <class name="jp.go.aist.six.oval.model.definitions.StateRef"
+        depends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID"
         key-generator="IDENTITY"
         >
@@ -494,13 +494,13 @@
         
         <!-- (FK) -->
         <field name="masterObject" 
-            type="jp.go.aist.six.oval.model.definition.Test">
+            type="jp.go.aist.six.oval.model.definitions.Test">
             <sql name="test__PID"/>
         </field>
     </class>
     
 <!-- case: independent implementation 
-    <class name="jp.go.aist.six.oval.model.definition.StateRef"
+    <class name="jp.go.aist.six.oval.model.definitions.StateRef"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_state_ref"/>
@@ -542,7 +542,7 @@
     <!-- ******************************************************* -->
     <!-- SystemObject                                            -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.definition.SystemObject"
+    <class name="jp.go.aist.six.oval.model.definitions.SystemObject"
         identity="persistentID"
         >
         <cache-type type="unlimited"/>
@@ -580,7 +580,7 @@
     <!-- ******************************************************* -->
     <!-- State                                                   -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.definition.State"
+    <class name="jp.go.aist.six.oval.model.definitions.State"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_state"/>
@@ -643,7 +643,7 @@
     <!-- ******************************************************* -->
     <!-- Variable                                                -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.definition.Variable"
+    <class name="jp.go.aist.six.oval.model.definitions.Variable"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_variable"/>
@@ -684,8 +684,8 @@
     <!-- ******************************************************* -->
     <!-- LocalVariable                                           -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.definition.LocalVariable"
-        extends="jp.go.aist.six.oval.model.definition.Variable"
+    <class name="jp.go.aist.six.oval.model.definitions.LocalVariable"
+        extends="jp.go.aist.six.oval.model.definitions.Variable"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_variable_local"/>
@@ -1132,7 +1132,7 @@
         </field>
 
         <field name="definitions" 
-            type="jp.go.aist.six.oval.model.definition.OvalDefinitions"
+            type="jp.go.aist.six.oval.model.definitions.OvalDefinitions"
             >
             <sql name="d_definitions__PID"/>
         </field>
@@ -1436,7 +1436,7 @@
     <!-- FamilyTest                                              -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.independent.FamilyTest"
-        extends="jp.go.aist.six.oval.model.definition.Test"
+        extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_test_family"/>
@@ -1462,7 +1462,7 @@
     <!-- FamilyObject                                            -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.independent.FamilyObject"
-        extends="jp.go.aist.six.oval.model.definition.SystemObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_object_family"/>
@@ -1478,7 +1478,7 @@
     <!-- FamilyState                                             -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.independent.FamilyState"
-        extends="jp.go.aist.six.oval.model.definition.State"
+        extends="jp.go.aist.six.oval.model.definitions.State"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_state_family"/>
@@ -1529,7 +1529,7 @@
     <!-- TextFileContentTest                                     -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.independent.TextFileContentTest"
-        extends="jp.go.aist.six.oval.model.definition.Test"
+        extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_test_textfilecontent"/>
@@ -1555,7 +1555,7 @@
     <!-- TextFileContentObject                                   -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.independent.TextFileContentObject"
-        extends="jp.go.aist.six.oval.model.definition.SystemObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_object_textfilecontent"/>
@@ -1621,7 +1621,7 @@
     <!-- TextFileContentState                                    -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.independent.TextFileContentState"
-        extends="jp.go.aist.six.oval.model.definition.State"
+        extends="jp.go.aist.six.oval.model.definitions.State"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_state_textfilecontent"/>
@@ -1706,7 +1706,7 @@
     <!-- UnknownTest                                             -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.independent.UnknownTest"
-        extends="jp.go.aist.six.oval.model.definition.Test"
+        extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_test_unknown"/>
@@ -1728,7 +1728,7 @@
     <!-- DpkgInfoTest                                            -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.linux.DpkgInfoTest"
-        extends="jp.go.aist.six.oval.model.definition.Test"
+        extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_test_dpkginfo"/>
@@ -1754,7 +1754,7 @@
     <!-- RpmInfoTest                                             -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.linux.RpmInfoTest"
-        extends="jp.go.aist.six.oval.model.definition.Test"
+        extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_test_rpminfo"/>
@@ -1780,7 +1780,7 @@
     <!-- DpkgInfoObject                                          -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.linux.DpkgInfoObject"
-        extends="jp.go.aist.six.oval.model.definition.SystemObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_object_dpkginfo"/>
@@ -1800,7 +1800,7 @@
     <!-- RpmInfoObject                                           -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.linux.RpmInfoObject"
-        extends="jp.go.aist.six.oval.model.definition.SystemObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_object_rpminfo"/>
@@ -1820,7 +1820,7 @@
     <!-- DpkgInfoState                                           -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.linux.DpkgInfoState"
-        extends="jp.go.aist.six.oval.model.definition.State"
+        extends="jp.go.aist.six.oval.model.definitions.State"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_state_dpkginfo"/>
@@ -1850,7 +1850,7 @@
     <!-- RpmInfoState                                            -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.linux.RpmInfoState"
-        extends="jp.go.aist.six.oval.model.definition.State"
+        extends="jp.go.aist.six.oval.model.definitions.State"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_state_rpminfo"/>
@@ -1989,7 +1989,7 @@
     <!-- UnameTest                                               -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.unix.UnameTest"
-        extends="jp.go.aist.six.oval.model.definition.Test"
+        extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_test_uname"/>
@@ -2015,7 +2015,7 @@
     <!-- UnameObject                                             -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.unix.UnameObject"
-        extends="jp.go.aist.six.oval.model.definition.SystemObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_object_uname"/>
@@ -2077,7 +2077,7 @@
     <!-- FileTest                                                -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.windows.FileTest"
-        extends="jp.go.aist.six.oval.model.definition.Test"
+        extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_test_file"/>
@@ -2103,7 +2103,7 @@
     <!-- FileObject                                              -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.windows.FileObject"
-        extends="jp.go.aist.six.oval.model.definition.SystemObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_object_file"/>
@@ -2151,7 +2151,7 @@
     <!-- FileState                                               -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.windows.FileState"
-        extends="jp.go.aist.six.oval.model.definition.State"
+        extends="jp.go.aist.six.oval.model.definitions.State"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_state_file"/>
@@ -2226,7 +2226,7 @@
     <!-- MetabaseTest                                            -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.windows.MetabaseTest"
-        extends="jp.go.aist.six.oval.model.definition.Test"
+        extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_test_metabase"/>
@@ -2276,7 +2276,7 @@
     </class>
 -->
     <class name="jp.go.aist.six.oval.model.windows.MetabaseObject"
-        extends="jp.go.aist.six.oval.model.definition.SystemObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_object_metabase"/>
@@ -2305,7 +2305,7 @@
     <!-- MetabaseState                                           -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.windows.MetabaseState"
-        extends="jp.go.aist.six.oval.model.definition.State"
+        extends="jp.go.aist.six.oval.model.definitions.State"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_state_metabase"/>
@@ -2330,7 +2330,7 @@
     <!-- RegistryTest                                            -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.windows.RegistryTest"
-        extends="jp.go.aist.six.oval.model.definition.Test"
+        extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_test_registry"/>
@@ -2411,7 +2411,7 @@ No registry object has 'behaviors' child element in the definition XML.
     </class>
 -->
     <class name="jp.go.aist.six.oval.model.windows.RegistryObject"
-        extends="jp.go.aist.six.oval.model.definition.SystemObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject"
         identity="persistentID"
         >
         <cache-type type="unlimited"/>
@@ -2470,7 +2470,7 @@ No registry object has 'behaviors' child element in the definition XML.
     <!-- RegistryState                                           -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.windows.RegistryState"
-        extends="jp.go.aist.six.oval.model.definition.State"
+        extends="jp.go.aist.six.oval.model.definitions.State"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_state_registry"/>
@@ -2544,7 +2544,7 @@ No registry object has 'behaviors' child element in the definition XML.
     <!-- WmiTest                                                 -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.windows.WmiTest"
-        extends="jp.go.aist.six.oval.model.definition.Test"
+        extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_test_wmi"/>
@@ -2570,7 +2570,7 @@ No registry object has 'behaviors' child element in the definition XML.
     <!-- WmiObject                                               -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.windows.WmiObject"
-        extends="jp.go.aist.six.oval.model.definition.SystemObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject"
         identity="persistentID"
         >
         <cache-type type="unlimited"/>
@@ -2611,7 +2611,7 @@ No registry object has 'behaviors' child element in the definition XML.
     <!-- WmiState                                           -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.windows.WmiState"
-        extends="jp.go.aist.six.oval.model.definition.State"
+        extends="jp.go.aist.six.oval.model.definitions.State"
         identity="persistentID">
         <cache-type type="unlimited"/>
         <map-to table="oval_d_state_wmi"/>

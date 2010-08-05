@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.core.model.definition;
 
-import jp.go.aist.six.oval.model.definition.Definition;
-import jp.go.aist.six.oval.model.definition.Test;
+import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.util.castor.StandardAssociation;
 
 

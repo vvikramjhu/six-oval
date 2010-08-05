@@ -21,8 +21,8 @@
 package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.core.model.definition.OvalDefinitionsStateAssociation;
-import jp.go.aist.six.oval.model.definition.OvalDefinitions;
-import jp.go.aist.six.oval.model.definition.State;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.util.castor.StandardAssociationDao;
 
 

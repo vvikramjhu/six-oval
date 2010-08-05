@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.model.definition;
 
-import jp.go.aist.six.oval.model.definition.Criteria;
+import jp.go.aist.six.oval.model.definitions.Criteria;
 
 
 

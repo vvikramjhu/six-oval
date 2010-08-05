@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.definition.Cpe;
-import jp.go.aist.six.oval.model.definition.MetadataItem;
+import jp.go.aist.six.oval.model.definitions.Cpe;
+import jp.go.aist.six.oval.model.definitions.MetadataItem;
 import jp.go.aist.six.util.IsoDate;
 import java.util.ArrayList;
 import java.util.Collection;

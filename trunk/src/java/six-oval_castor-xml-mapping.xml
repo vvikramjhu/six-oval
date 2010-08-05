@@ -167,7 +167,7 @@
     <!-- ======================================================= -->
     <!-- OvalDefinitions                                         -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.OvalDefinitions">
+    <class name="jp.go.aist.six.oval.model.definitions.OvalDefinitions">
         <map-to xml="oval_definitions"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -177,47 +177,47 @@
         </field>
         
         <field name="definitions" 
-            type="jp.go.aist.six.oval.model.definition.Definitions">
+            type="jp.go.aist.six.oval.model.definitions.Definitions">
             <bind-xml name="definitions" node="element"/>
         </field>
 
         <field name="tests" 
-            type="jp.go.aist.six.oval.model.definition.Tests">
+            type="jp.go.aist.six.oval.model.definitions.Tests">
             <bind-xml name="tests" node="element"/>
         </field>
 
         <field name="objects" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjects">
+            type="jp.go.aist.six.oval.model.definitions.SystemObjects">
             <bind-xml name="objects" node="element"/>
         </field>
 
         <field name="states" 
-            type="jp.go.aist.six.oval.model.definition.States">
+            type="jp.go.aist.six.oval.model.definitions.States">
             <bind-xml name="states" node="element"/>
         </field>
 
         <field name="variables" 
-            type="jp.go.aist.six.oval.model.definition.Variables">
+            type="jp.go.aist.six.oval.model.definitions.Variables">
             <bind-xml name="variables" node="element"/>
         </field>
 
 <!--
         <field name="tests" 
-            type="jp.go.aist.six.oval.model.definition.Test"
+            type="jp.go.aist.six.oval.model.definitions.Test"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element" 
                 location="tests"/>
         </field>
 
         <field name="objects" 
-            type="jp.go.aist.six.oval.model.definition.SystemObject"
+            type="jp.go.aist.six.oval.model.definitions.SystemObject"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element" 
                 location="objects"/>
         </field>
 
         <field name="states" 
-            type="jp.go.aist.six.oval.model.definition.State"
+            type="jp.go.aist.six.oval.model.definitions.State"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element" 
                 location="states"/>
@@ -230,13 +230,13 @@
     <!-- ======================================================= -->
     <!-- Definition                                              -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.Definition"
+    <class name="jp.go.aist.six.oval.model.definitions.Definition"
         extends="jp.go.aist.six.oval.model.OvalEntity">
         <map-to xml="definition"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="metadata" 
-            type="jp.go.aist.six.oval.model.definition.Metadata">
+            type="jp.go.aist.six.oval.model.definitions.Metadata">
             <bind-xml name="metadata" node="element"/>
         </field>
 
@@ -247,7 +247,7 @@
         </field>
 
         <field name="criteria" 
-            type="jp.go.aist.six.oval.model.definition.Criteria">
+            type="jp.go.aist.six.oval.model.definitions.Criteria">
             <bind-xml name="criteria" node="element"/>
         </field>
 
@@ -272,7 +272,7 @@
         </field>
 
         <field name="references" 
-            type="jp.go.aist.six.oval.model.definition.Reference"
+            type="jp.go.aist.six.oval.model.definitions.Reference"
             collection="collection">
             <bind-xml name="reference" node="element"
                 location="metadata"/>
@@ -286,9 +286,9 @@
     <!-- ======================================================= -->
     <!-- Definitions                                             -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.Definitions">
+    <class name="jp.go.aist.six.oval.model.definitions.Definitions">
         <field name="definition" 
-            type="jp.go.aist.six.oval.model.definition.Definition"
+            type="jp.go.aist.six.oval.model.definitions.Definition"
             collection="collection"
             set-method="addDefinition"
             get-method="iterateDefinition">
@@ -301,7 +301,7 @@
     <!-- ======================================================= -->
     <!-- Metadata                                                -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.Metadata">
+    <class name="jp.go.aist.six.oval.model.definitions.Metadata">
         <map-to xml="metadata"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -310,13 +310,13 @@
         </field>
 
         <field name="affected" 
-            type="jp.go.aist.six.oval.model.definition.Affected">
+            type="jp.go.aist.six.oval.model.definitions.Affected">
             <!-- collection="collection" -->
             <bind-xml name="affected" node="element"/>
         </field>
 
         <field name="reference" 
-            type="jp.go.aist.six.oval.model.definition.Reference"
+            type="jp.go.aist.six.oval.model.definitions.Reference"
             collection="collection">
             <bind-xml name="reference" node="element"/>
         </field>
@@ -326,7 +326,7 @@
         </field>
 
         <field name="metadataItem" 
-            type="jp.go.aist.six.oval.model.definition.MetadataItem"
+            type="jp.go.aist.six.oval.model.definitions.MetadataItem"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
@@ -336,7 +336,7 @@
     <!-- ======================================================= -->
     <!-- Affected                                                -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.Affected">
+    <class name="jp.go.aist.six.oval.model.definitions.Affected">
         <map-to xml="affected"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -346,13 +346,13 @@
         </field>
 
         <field name="platform" 
-            type="jp.go.aist.six.oval.model.definition.Platform"
+            type="jp.go.aist.six.oval.model.definitions.Platform"
             collection="collection">
             <bind-xml name="platform" node="element"/>
         </field>
 
         <field name="product" 
-            type="jp.go.aist.six.oval.model.definition.Product"
+            type="jp.go.aist.six.oval.model.definitions.Product"
             collection="collection">
             <bind-xml name="product" node="element"/>
         </field>
@@ -363,7 +363,7 @@
     <!-- ======================================================= -->
     <!-- CriteriaElement                                         -->
     <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.definition.CriteriaElement"
+    <class name ="jp.go.aist.six.oval.model.definitions.CriteriaElement"
         verify-constructable="false">
 
         <field name="negate" type="boolean">
@@ -380,8 +380,8 @@
     <!-- ======================================================= -->
     <!-- Criterion                                               -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.Criterion"
-        extends="jp.go.aist.six.oval.model.definition.CriteriaElement">
+    <class name="jp.go.aist.six.oval.model.definitions.Criterion"
+        extends="jp.go.aist.six.oval.model.definitions.CriteriaElement">
         <map-to xml="criterion"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -395,8 +395,8 @@
     <!-- ======================================================= -->
     <!-- ExtendDefinition                                        -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.ExtendDefinition"
-        extends="jp.go.aist.six.oval.model.definition.CriteriaElement">
+    <class name="jp.go.aist.six.oval.model.definitions.ExtendDefinition"
+        extends="jp.go.aist.six.oval.model.definitions.CriteriaElement">
         <map-to xml="extend_definition"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -411,8 +411,8 @@
     <!-- ======================================================= -->
     <!-- Criteria - criteria                                     -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.Criteria"
-        extends="jp.go.aist.six.oval.model.definition.CriteriaElement">
+    <class name="jp.go.aist.six.oval.model.definitions.Criteria"
+        extends="jp.go.aist.six.oval.model.definitions.CriteriaElement">
         <map-to xml="criteria"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -428,7 +428,7 @@
 -->
 
         <field name="elements" 
-            type="jp.go.aist.six.oval.model.definition.CriteriaElement"
+            type="jp.go.aist.six.oval.model.definitions.CriteriaElement"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
@@ -440,7 +440,7 @@
     <!-- ======================================================= -->
     <!-- MetadataItem                                            -->
     <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.definition.MetadataItem"
+    <class name ="jp.go.aist.six.oval.model.definitions.MetadataItem"
         verify-constructable="false">
     </class>
 
@@ -449,7 +449,7 @@
     <!-- ======================================================= -->
     <!-- Reference                                               -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.Reference">
+    <class name="jp.go.aist.six.oval.model.definitions.Reference">
         <map-to xml="reference"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -472,7 +472,7 @@
     <!-- ======================================================= -->
     <!-- Platform - platform                                     -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.Platform">
+    <class name="jp.go.aist.six.oval.model.definitions.Platform">
         <map-to xml="platform"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -486,7 +486,7 @@
     <!-- ======================================================= -->
     <!-- Product - product                                       -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.Product">
+    <class name="jp.go.aist.six.oval.model.definitions.Product">
         <map-to xml="product"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -500,7 +500,7 @@
     <!-- ======================================================= -->
     <!-- Test                                                    -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.Test"
+    <class name="jp.go.aist.six.oval.model.definitions.Test"
         extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
         verify-constructable="false">
 
@@ -527,8 +527,8 @@
     </class>
 
     <!--
-    <class name="jp.go.aist.six.oval.model.definition.SimpleTest"
-        extends="jp.go.aist.six.oval.model.definition.Test"
+    <class name="jp.go.aist.six.oval.model.definitions.SimpleTest"
+        extends="jp.go.aist.six.oval.model.definitions.Test"
         verify-constructable="false">
     </class>
     -->
@@ -538,9 +538,9 @@
     <!-- ======================================================= -->
     <!-- Tests                                                   -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.Tests">
+    <class name="jp.go.aist.six.oval.model.definitions.Tests">
         <field name="test" 
-            type="jp.go.aist.six.oval.model.definition.Test"
+            type="jp.go.aist.six.oval.model.definitions.Test"
             collection="collection"
             set-method="addTest"
             get-method="iterateTest">
@@ -553,7 +553,7 @@
     <!-- ======================================================= -->
     <!-- SystemObjectRef                                         -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.SystemObjectRef">
+    <class name="jp.go.aist.six.oval.model.definitions.SystemObjectRef">
         <map-to xml="object"/>
     <!--
         <map-to xml="object"
@@ -570,7 +570,7 @@
     <!-- ======================================================= -->
     <!-- StateRef                                                -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.StateRef">
+    <class name="jp.go.aist.six.oval.model.definitions.StateRef">
         <map-to xml="state"/>
     <!--
         <map-to xml="state"
@@ -587,13 +587,13 @@
     <!-- ======================================================= -->
     <!-- SystemObject                                            -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.SystemObject"
+    <class name="jp.go.aist.six.oval.model.definitions.SystemObject"
         extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
         verify-constructable="false">
 
         <!-- We found no object with notes. -->
 <!--
-        <field name="notes" type="jp.go.aist.six.oval.model.definition.Notes">
+        <field name="notes" type="jp.go.aist.six.oval.model.definitions.Notes">
             <bind-xml name="notes" node="element"/>
         </field>
 -->
@@ -604,9 +604,9 @@
     <!-- ======================================================= -->
     <!-- SystemObjects                                           -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.SystemObjects">
+    <class name="jp.go.aist.six.oval.model.definitions.SystemObjects">
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObject"
+            type="jp.go.aist.six.oval.model.definitions.SystemObject"
             collection="collection"
             set-method="addObject"
             get-method="iterateObject">
@@ -619,7 +619,7 @@
     <!-- ======================================================= -->
     <!-- State                                                   -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.State"
+    <class name="jp.go.aist.six.oval.model.definitions.State"
         extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
         verify-constructable="false">
 
@@ -633,7 +633,7 @@
 
         <!-- We found NO state with an explicit note. -->
 <!--
-        <field name="notes" type="jp.go.aist.six.oval.model.definition.Notes">
+        <field name="notes" type="jp.go.aist.six.oval.model.definitions.Notes">
             <bind-xml name="notes" node="element"/>
         </field>
 -->
@@ -643,10 +643,10 @@
     <!-- ======================================================= -->
     <!-- States                                                  -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.States">
+    <class name="jp.go.aist.six.oval.model.definitions.States">
 
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.State"
+            type="jp.go.aist.six.oval.model.definitions.State"
             collection="collection"
             set-method="addState"
             get-method="iterateState">
@@ -654,7 +654,7 @@
         </field>
 <!--
         <field name="states" 
-            type="jp.go.aist.six.oval.model.definition.State"
+            type="jp.go.aist.six.oval.model.definitions.State"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element" 
                 />
@@ -667,7 +667,7 @@
     <!-- ======================================================= -->
     <!-- EntityBase                                              -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.EntityBase"
+    <class name="jp.go.aist.six.oval.model.definitions.EntityBase"
         verify-constructable="false">
 
         <field name="data" type="string">
@@ -698,8 +698,8 @@
     <!-- ======================================================= -->
     <!-- EntityObjectBase                                        -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.EntityObjectBase"
-        extends="jp.go.aist.six.oval.model.definition.EntityBase"
+    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectBase"
+        extends="jp.go.aist.six.oval.model.definitions.EntityBase"
         verify-constructable="false">
 
         <field name="varCheck" type="string" 
@@ -713,8 +713,8 @@
     <!-- ======================================================= -->
     <!-- EntityObjectInt                                         -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.EntityObjectInt"
-        extends="jp.go.aist.six.oval.model.definition.EntityObjectBase">
+    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectInt"
+        extends="jp.go.aist.six.oval.model.definitions.EntityObjectBase">
     </class>
 
 
@@ -722,8 +722,8 @@
     <!-- ======================================================= -->
     <!-- EntityObjectString                                      -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.EntityObjectString"
-        extends="jp.go.aist.six.oval.model.definition.EntityObjectBase">
+    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectString"
+        extends="jp.go.aist.six.oval.model.definitions.EntityObjectBase">
     </class>
 
 
@@ -731,8 +731,8 @@
     <!-- ======================================================= -->
     <!-- EntityStateBase                                         -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.EntityStateBase"
-        extends="jp.go.aist.six.oval.model.definition.EntityBase"
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateBase"
+        extends="jp.go.aist.six.oval.model.definitions.EntityBase"
         verify-constructable="false">
 
         <field name="entityCheck" type="string" 
@@ -751,8 +751,8 @@
     <!-- ======================================================= -->
     <!-- EntityStateInt                                          -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.EntityStateInt"
-        extends="jp.go.aist.six.oval.model.definition.EntityStateBase">
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateInt"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateBase">
     </class>
 
 
@@ -760,16 +760,16 @@
     <!-- ======================================================= -->
     <!-- EntityStateString                                       -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.EntityStateString"
-        extends="jp.go.aist.six.oval.model.definition.EntityStateBase">
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateString"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateBase">
     </class>
 
 
     <!-- ======================================================= -->
     <!-- EntityStateAnySimple                                    -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.EntityStateAnySimple"
-        extends="jp.go.aist.six.oval.model.definition.EntityStateBase">
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateAnySimple"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateBase">
     </class>
 
 
@@ -777,7 +777,7 @@
     <!-- ======================================================= -->
     <!-- Variable                                                -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.Variable"
+    <class name="jp.go.aist.six.oval.model.definitions.Variable"
         extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
         verify-constructable="false">
 
@@ -792,8 +792,8 @@
     <!-- ======================================================= -->
     <!-- LocalVariable                                           -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.LocalVariable"
-        extends="jp.go.aist.six.oval.model.definition.Variable">
+    <class name="jp.go.aist.six.oval.model.definitions.LocalVariable"
+        extends="jp.go.aist.six.oval.model.definitions.Variable">
         <map-to xml="local_variable"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 <!--
@@ -809,9 +809,9 @@
     <!-- ======================================================= -->
     <!-- Variables                                               -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.Variables">
+    <class name="jp.go.aist.six.oval.model.definitions.Variables">
         <field name="variable" 
-            type="jp.go.aist.six.oval.model.definition.Variable"
+            type="jp.go.aist.six.oval.model.definitions.Variable"
             collection="collection"
             set-method="addVariable"
             get-method="iterateVariable">
@@ -1182,7 +1182,7 @@
         </field>
         
         <field name="definitions" 
-            type="jp.go.aist.six.oval.model.definition.OvalDefinitions">
+            type="jp.go.aist.six.oval.model.definitions.OvalDefinitions">
             <bind-xml name="oval_definitions" node="element"/>
         </field>
 
@@ -1461,7 +1461,7 @@
     <!-- MitreRepositoryMetadataItem                             -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.mitre.MitreRepositoryMetadataItem"
-        extends="jp.go.aist.six.oval.model.definition.MetadataItem">
+        extends="jp.go.aist.six.oval.model.definitions.MetadataItem">
         <map-to xml="oval_repository"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -1541,17 +1541,17 @@
     <!-- FamilyTest                                              -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.independent.FamilyTest"
-        extends="jp.go.aist.six.oval.model.definition.Test">
+        extends="jp.go.aist.six.oval.model.definitions.Test">
         <map-to xml="family_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjectRef">
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRef">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateRef"
+            type="jp.go.aist.six.oval.model.definitions.StateRef"
             collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
@@ -1563,7 +1563,7 @@
     <!-- FamilyObject                                            -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.independent.FamilyObject"
-        extends="jp.go.aist.six.oval.model.definition.SystemObject">
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject">
         <map-to xml="family_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"/>
     </class>
@@ -1574,7 +1574,7 @@
     <!-- FamilyState                                             -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.independent.FamilyState"
-        extends="jp.go.aist.six.oval.model.definition.State">
+        extends="jp.go.aist.six.oval.model.definitions.State">
         <map-to xml="family_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"/>
 
@@ -1590,7 +1590,7 @@
     <!-- EntityStateFamily                                       -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.independent.EntityStateFamily"
-        extends="jp.go.aist.six.oval.model.definition.EntityStateString">
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateString">
     </class>
 
 
@@ -1631,17 +1631,17 @@
     <!-- TextFileContentTest                                     -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.independent.TextFileContentTest"
-        extends="jp.go.aist.six.oval.model.definition.Test">
+        extends="jp.go.aist.six.oval.model.definitions.Test">
         <map-to xml="textfilecontent_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjectRef">
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRef">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateRef"
+            type="jp.go.aist.six.oval.model.definitions.StateRef"
             collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
@@ -1652,7 +1652,7 @@
     <!-- TextFileContentObject                                   -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.independent.TextFileContentObject"
-        extends="jp.go.aist.six.oval.model.definition.SystemObject">
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject">
         <map-to xml="textfilecontent_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"/>
 <!--
@@ -1663,17 +1663,17 @@
 -->
         
         <field name="path" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
             <bind-xml name="path" node="element"/>
         </field>
         
         <field name="filename" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
             <bind-xml name="filename" node="element"/>
         </field>
 
         <field name="line" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
             <bind-xml name="line" node="element"/>
         </field>
     </class>
@@ -1684,17 +1684,17 @@
     <!-- TextFileContentState                                    -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.independent.TextFileContentState"
-        extends="jp.go.aist.six.oval.model.definition.State">
+        extends="jp.go.aist.six.oval.model.definitions.State">
         <map-to xml="textfilecontent_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"/>
 
         <field name="line" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
             <bind-xml name="line" node="element"/>
         </field>
 
         <field name="subExpression" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateAnySimple">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimple">
             <bind-xml name="subexpression" node="element"/>
         </field>
     </class>
@@ -1757,7 +1757,7 @@
     <!-- UnknownTest - unknown_test                              -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.independent.UnknownTest"
-        extends="jp.go.aist.six.oval.model.definition.Test">
+        extends="jp.go.aist.six.oval.model.definitions.Test">
         <map-to xml="unknown_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"/>
     </class>
@@ -1774,17 +1774,17 @@
     <!-- DpkgInfoTest                                            -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.linux.DpkgInfoTest"
-        extends="jp.go.aist.six.oval.model.definition.Test">
+        extends="jp.go.aist.six.oval.model.definitions.Test">
         <map-to xml="dpkginfo_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjectRef">
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRef">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateRef"
+            type="jp.go.aist.six.oval.model.definitions.StateRef"
             collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
@@ -1796,17 +1796,17 @@
     <!-- RpmInfoTest - rpminfo_test                              -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.linux.RpmInfoTest"
-        extends="jp.go.aist.six.oval.model.definition.Test">
+        extends="jp.go.aist.six.oval.model.definitions.Test">
         <map-to xml="rpminfo_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjectRef">
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRef">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateRef"
+            type="jp.go.aist.six.oval.model.definitions.StateRef"
             collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
@@ -1880,13 +1880,13 @@
     <!-- LinuxPkgInfoObject                                      -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.linux.LinuxPkgInfoObject"
-        extends="jp.go.aist.six.oval.model.definition.SystemObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject"
         verify-constructable="false">
         <map-to
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"/>
 
         <field name="name"
-            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
             <bind-xml name="name" node="element"/>
         </field>
     </class>
@@ -1919,23 +1919,23 @@
     <!-- LinuxPkgInfoState                                       -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.linux.LinuxPkgInfoState"
-        extends="jp.go.aist.six.oval.model.definition.State"
+        extends="jp.go.aist.six.oval.model.definitions.State"
         verify-constructable="false">
         <map-to
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"/>
 
         <field name="arch" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
             <bind-xml name="arch" node="element"/>
         </field>
         
         <field name="name" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
             <bind-xml name="name" node="element"/>
         </field>
         
         <field name="version" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
             <bind-xml name="version" node="element"/>
         </field>
     </class>
@@ -1952,17 +1952,17 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"/>
         
         <field name="release" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
             <bind-xml name="release" node="element"/>
         </field>
         
         <field name="epoch" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
             <bind-xml name="epoch" node="element"/>
         </field>
         
         <field name="evr" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
             <bind-xml name="evr" node="element"/>
         </field>
     </class>
@@ -1975,7 +1975,7 @@
     <class name="jp.go.aist.six.oval.model.linux.DpkgInfoState"
         extends="jp.go.aist.six.oval.model.linux.LinuxEvrPkgInfoState">
         <!--
-        extends="jp.go.aist.six.oval.model.definition.State"
+        extends="jp.go.aist.six.oval.model.definitions.State"
         -->
         
         <map-to xml="dpkginfo_state"
@@ -1990,13 +1990,13 @@
     <class name="jp.go.aist.six.oval.model.linux.RpmInfoState"
         extends="jp.go.aist.six.oval.model.linux.LinuxEvrPkgInfoState">
         <!--
-        extends="jp.go.aist.six.oval.model.definition.State"
+        extends="jp.go.aist.six.oval.model.definitions.State"
         -->
         <map-to xml="rpminfo_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"/>
 
         <field name="signatureKeyID" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
             <bind-xml name="signature_keyid" node="element"/>
         </field>
     </class>
@@ -2014,7 +2014,7 @@
 -->
 <!--
     <class name="jp.go.aist.six.oval.model.linux.LinuxPkgInfoItem"
-        extends="jp.go.aist.six.oval.model.definition.Item"
+        extends="jp.go.aist.six.oval.model.definitions.Item"
         verify-constructable="false">
         <map-to
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"/>
@@ -2156,7 +2156,7 @@
     <!-- LinuxSecurityAdvisory - advisory                        -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory"
-        extends="jp.go.aist.six.oval.model.definition.MetadataItem">
+        extends="jp.go.aist.six.oval.model.definitions.MetadataItem">
         <map-to xml="advisory"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -2196,7 +2196,7 @@
         </field>
 
         <field name="affectedCpeList" 
-            type="jp.go.aist.six.oval.model.definition.Cpe"
+            type="jp.go.aist.six.oval.model.definitions.Cpe"
             collection="collection">
             <bind-xml name="cpe" node="element" 
                 location="affected_cpe_list"/>
@@ -2298,7 +2298,7 @@
     <!-- ======================================================= -->
     <!-- Cpe - cpe                                               -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.definition.Cpe">
+    <class name="jp.go.aist.six.oval.model.definitions.Cpe">
         <map-to xml="cpe"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -2320,17 +2320,17 @@
     <!-- UnameTest                                               -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.unix.UnameTest"
-        extends="jp.go.aist.six.oval.model.definition.Test">
+        extends="jp.go.aist.six.oval.model.definitions.Test">
         <map-to xml="uname_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjectRef">
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRef">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateRef"
+            type="jp.go.aist.six.oval.model.definitions.StateRef"
             collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
@@ -2342,7 +2342,7 @@
     <!-- UnameObject                                            -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.unix.UnameObject"
-        extends="jp.go.aist.six.oval.model.definition.SystemObject">
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject">
         <map-to xml="uname_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"/>
     </class>
@@ -2400,7 +2400,7 @@
     <!-- EntityObjectRegistryHive                                -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHive"
-        extends="jp.go.aist.six.oval.model.definition.EntityObjectString">
+        extends="jp.go.aist.six.oval.model.definitions.EntityObjectString">
     </class>
 
 
@@ -2409,7 +2409,7 @@
     <!-- EntityStateRegistryType                                 -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.EntityStateRegistryType"
-        extends="jp.go.aist.six.oval.model.definition.EntityStateString">
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateString">
     </class>
 
 
@@ -2445,17 +2445,17 @@
     <!-- FileTest                                               -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.FileTest"
-        extends="jp.go.aist.six.oval.model.definition.Test">
+        extends="jp.go.aist.six.oval.model.definitions.Test">
         <map-to xml="file_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjectRef">
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRef">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateRef"
+            type="jp.go.aist.six.oval.model.definitions.StateRef"
             collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
@@ -2467,7 +2467,7 @@
     <!-- FileObject                                              -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.FileObject"
-        extends="jp.go.aist.six.oval.model.definition.SystemObject">
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject">
         <map-to xml="file_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
@@ -2477,12 +2477,12 @@
         </field>
         
         <field name="path" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
             <bind-xml name="path" node="element"/>
         </field>
         
         <field name="filename" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
             <bind-xml name="filename" node="element"/>
         </field>
     </class>
@@ -2544,12 +2544,12 @@
     <!-- FileState                                               -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.FileState"
-        extends="jp.go.aist.six.oval.model.definition.State">
+        extends="jp.go.aist.six.oval.model.definitions.State">
         <map-to xml="file_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
         <field name="version" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
             <bind-xml name="version" node="element"/>
         </field>
     </class>
@@ -2661,17 +2661,17 @@
     <!-- MetabaseTest                                            -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.MetabaseTest"
-        extends="jp.go.aist.six.oval.model.definition.Test">
+        extends="jp.go.aist.six.oval.model.definitions.Test">
         <map-to xml="metabase_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjectRef">
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRef">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateRef"
+            type="jp.go.aist.six.oval.model.definitions.StateRef"
             collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
@@ -2683,17 +2683,17 @@
     <!-- MetabaseObject                                          -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.MetabaseObject"
-        extends="jp.go.aist.six.oval.model.definition.SystemObject">
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject">
         <map-to xml="metabase_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
         <field name="key" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
             <bind-xml name="key" node="element"/>
         </field>
         
         <field name="ID" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectInt">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectInt">
             <bind-xml name="id" node="element"/>
         </field>
 
@@ -2705,37 +2705,37 @@
     <!-- MetabaseState                                           -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.MetabaseState"
-        extends="jp.go.aist.six.oval.model.definition.State">
+        extends="jp.go.aist.six.oval.model.definitions.State">
         <map-to xml="metabase_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
         <field name="key" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
             <bind-xml name="key" node="element"/>
         </field>
 
         <field name="ID" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateInt">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateInt">
             <bind-xml name="id" node="element"/>
         </field>
 
         <field name="name" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
             <bind-xml name="name" node="element"/>
         </field>
 
         <field name="userType" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
             <bind-xml name="user_type" node="element"/>
         </field>
 
         <field name="dataType" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
             <bind-xml name="data_type" node="element"/>
         </field>
 
         <field name="data" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateAnySimple">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimple">
             <bind-xml name="data" node="element"/>
         </field>
     </class>
@@ -2788,17 +2788,17 @@
     <!-- RegistryTest                                            -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.RegistryTest"
-        extends="jp.go.aist.six.oval.model.definition.Test">
+        extends="jp.go.aist.six.oval.model.definitions.Test">
         <map-to xml="registry_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjectRef">
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRef">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateRef"
+            type="jp.go.aist.six.oval.model.definitions.StateRef"
             collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
@@ -2822,7 +2822,7 @@
     <!-- RegistryObject                                          -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.RegistryObject"
-        extends="jp.go.aist.six.oval.model.definition.SystemObject">
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject">
         <map-to xml="registry_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
@@ -2844,12 +2844,12 @@
 
 
         <field name="key" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
             <bind-xml name="key" node="element"/>
         </field>
         
         <field name="name" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
             <bind-xml name="name" node="element"/>
         </field>
     </class>
@@ -2860,7 +2860,7 @@
     <!-- RegistryState                                           -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.RegistryState"
-        extends="jp.go.aist.six.oval.model.definition.State">
+        extends="jp.go.aist.six.oval.model.definitions.State">
         <map-to xml="registry_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
@@ -2870,12 +2870,12 @@
         </field>
 
         <field name="key" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
             <bind-xml name="key" node="element"/>
         </field>
 
         <field name="name" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
             <bind-xml name="name" node="element"/>
         </field>
 
@@ -2885,7 +2885,7 @@
         </field>
 
         <field name="value" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateAnySimple">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimple">
             <bind-xml name="value" node="element"/>
         </field>
     </class>
@@ -2932,17 +2932,17 @@
     <!-- WqlTest                                                 -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.WmiTest"
-        extends="jp.go.aist.six.oval.model.definition.Test">
+        extends="jp.go.aist.six.oval.model.definitions.Test">
         <map-to xml="wmi_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definition.SystemObjectRef">
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRef">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definition.StateRef"
+            type="jp.go.aist.six.oval.model.definitions.StateRef"
             collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
@@ -2954,17 +2954,17 @@
     <!-- WmiObject                                               -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.WmiObject"
-        extends="jp.go.aist.six.oval.model.definition.SystemObject">
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject">
         <map-to xml="wmi_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
         <field name="namespace" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
             <bind-xml name="namespace" node="element"/>
         </field>
         
         <field name="wql" 
-            type="jp.go.aist.six.oval.model.definition.EntityObjectString">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
             <bind-xml name="wql" node="element"/>
         </field>
     </class>
@@ -2975,22 +2975,22 @@
     <!-- WmiState                                                -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.WmiState"
-        extends="jp.go.aist.six.oval.model.definition.State">
+        extends="jp.go.aist.six.oval.model.definitions.State">
         <map-to xml="wmi_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
         <field name="namespace" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
             <bind-xml name="namespace" node="element"/>
         </field>
 
         <field name="wql" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
             <bind-xml name="wql" node="element"/>
         </field>
 
         <field name="result" 
-            type="jp.go.aist.six.oval.model.definition.EntityStateAnySimple">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimple">
             <bind-xml name="result" node="element"/>
         </field>
     </class>

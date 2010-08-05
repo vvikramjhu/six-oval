@@ -2,7 +2,7 @@ package jp.go.aist.six.test.oval.service;
 
 import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.xml.OvalXml;
-import jp.go.aist.six.oval.model.definition.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;

@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.common.Family;
-import jp.go.aist.six.oval.model.definition.EntityStateString;
+import jp.go.aist.six.oval.model.definitions.EntityStateString;
 
 
 

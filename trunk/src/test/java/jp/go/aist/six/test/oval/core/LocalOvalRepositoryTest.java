@@ -1,7 +1,7 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.core.service.LocalOvalRepository;
-import jp.go.aist.six.oval.model.definition.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.CollectedSystemObject;
 import jp.go.aist.six.oval.model.sc.Item;

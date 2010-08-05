@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.definition.Reference;
+import jp.go.aist.six.oval.model.definitions.Reference;
 import jp.go.aist.six.util.castor.CastorDao;
 
 

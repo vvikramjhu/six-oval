@@ -21,10 +21,10 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.ObjectType;
-import jp.go.aist.six.oval.model.definition.EntityObjectInt;
-import jp.go.aist.six.oval.model.definition.EntityObjectString;
-import jp.go.aist.six.oval.model.definition.EntityTypeHelper;
-import jp.go.aist.six.oval.model.definition.SystemObject;
+import jp.go.aist.six.oval.model.definitions.EntityObjectInt;
+import jp.go.aist.six.oval.model.definitions.EntityObjectString;
+import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
+import jp.go.aist.six.oval.model.definitions.SystemObject;
 
 
 

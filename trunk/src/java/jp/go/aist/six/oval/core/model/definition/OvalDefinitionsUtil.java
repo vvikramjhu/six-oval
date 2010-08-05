@@ -20,12 +20,12 @@
 
 package jp.go.aist.six.oval.core.model.definition;
 
-import jp.go.aist.six.oval.model.definition.Criteria;
-import jp.go.aist.six.oval.model.definition.CriteriaElement;
-import jp.go.aist.six.oval.model.definition.Criterion;
-import jp.go.aist.six.oval.model.definition.Definition;
-import jp.go.aist.six.oval.model.definition.ExtendDefinition;
-import jp.go.aist.six.oval.model.definition.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.Criteria;
+import jp.go.aist.six.oval.model.definitions.CriteriaElement;
+import jp.go.aist.six.oval.model.definitions.Criterion;
+import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.ExtendDefinition;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
