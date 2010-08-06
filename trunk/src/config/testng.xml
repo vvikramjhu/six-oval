@@ -8,7 +8,7 @@
 
 <!--
 @author     Akihito Nakamura, AIST
-@version    $Id: testng.xml 778 2010-05-11 06:26:16Z akihito $
+@version    $Id$
 -->
 
 <suite name="six-oval" verbose="1" parallel="tests">
