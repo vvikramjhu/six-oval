@@ -238,6 +238,7 @@ public class LocalOvalRepositoryTest
             Reporter.log( "getting Definition...: PID=" + defPID, true );
             Definition  defP = _repository.getDefinition( defPID );
             Reporter.log( "  @ Definition=" + defP, true );
+            Reporter.log( "    - related CVE: " + defP.getRelatedCve(), true );
         }
     }
 
