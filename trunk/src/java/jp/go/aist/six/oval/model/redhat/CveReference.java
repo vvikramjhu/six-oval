@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.model.redhat;
 
 import jp.go.aist.six.oval.model.definitions.Reference;
 
@@ -40,8 +40,7 @@ public class CveReference
     /**
      * Constructor.
      */
-    public
-    CveReference()
+    public CveReference()
     {
     }
 
@@ -49,8 +48,10 @@ public class CveReference
     /**
      * Constructor.
      */
-    public
-    CveReference( final String refID, final String refURL )
+    public CveReference(
+                    final String refID,
+                    final String refURL
+                    )
     {
         super( SOURCE, refID, refURL );
     }
@@ -62,15 +63,15 @@ public class CveReference
     //**************************************************************
 
     @Override
-    public
-    void setSource( final String source )
+    public void setSource(
+                    final String source
+                    )
     {
     }
 
 
     @Override
-    public
-    String getSource()
+    public String getSource()
     {
         return SOURCE;
     }
@@ -82,13 +83,11 @@ public class CveReference
     //**************************************************************
 
     /**
-     * @see java.lang.Object#toString()
      */
     @Override
-    public
-    String toString()
+    public String toString()
     {
-        return "CVE [id=" + getRefID()
+        return "CVE[id=" + getRefID()
                         + ", href=" + getRefURL()
                         + "]";
     }

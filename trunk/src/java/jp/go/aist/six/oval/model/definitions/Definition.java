@@ -219,7 +219,7 @@ public class Definition
         if (! _relatedCveComputed) {
             Metadata  meta = getMetadata();
             if (meta != null) {
-                _relatedCve = meta.getRelatedCve();
+                _relatedCve.addAll( meta.getRelatedCve() );
             }
             _relatedCveComputed = true;
         }

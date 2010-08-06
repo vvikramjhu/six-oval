@@ -171,7 +171,15 @@ public class LocalOvalRepositoryTest
                                             "oval:org.mitre.oval:def:8282"
                             }
                         }
-//                        ,
+                        ,
+
+                        // Red Hat,
+                        {
+                            "test/data/definitions/oval-definitions_CVE-2010-0176_rhsa20100333.xml",
+                            new String[] {
+                                            "oval:com.redhat.rhsa:def:20100333"
+                            }
+                        }
 
 //                        // windows vulnerability
 //                        {

@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.model.redhat;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -86,7 +86,9 @@ public final class Severity
 
     /**
      */
-    private Severity( final String name )
+    private Severity(
+                    final String name
+                    )
     {
         _name = name;
     }
@@ -102,9 +104,9 @@ public final class Severity
 
 
 
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
     //  java.lang.Object
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
 
     @Override
     public String toString()

@@ -18,10 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.model.redhat;
 
 import jp.go.aist.six.oval.model.definitions.Reference;
-
 
 
 
@@ -45,8 +44,7 @@ public class BugzillaReference
     /**
      * Constructor.
      */
-    public
-    BugzillaReference()
+    public BugzillaReference()
     {
     }
 
@@ -54,8 +52,11 @@ public class BugzillaReference
     /**
      * Constructor.
      */
-    public
-    BugzillaReference( final String refID, final String refURL, final String title )
+    public BugzillaReference(
+                    final String refID,
+                    final String refURL,
+                    final String title
+                    )
     {
         super( SOURCE, refID, refURL );
         setTitle( title );
@@ -63,15 +64,15 @@ public class BugzillaReference
 
 
 
-    public
-    void setTitle( final String title )
+    public void setTitle(
+                    final String title
+                    )
     {
         _title = title;
     }
 
 
-    public
-    String getTitle()
+    public String getTitle()
     {
         return _title;
     }
@@ -83,15 +84,15 @@ public class BugzillaReference
     //**************************************************************
 
     @Override
-    public
-    void setSource( final String source )
+    public void setSource(
+                    final String source
+                    )
     {
     }
 
 
     @Override
-    public
-    String getSource()
+    public String getSource()
     {
         return SOURCE;
     }
@@ -103,13 +104,11 @@ public class BugzillaReference
     //**************************************************************
 
     /**
-     * @see java.lang.Object#toString()
      */
     @Override
-    public
-    String toString()
+    public String toString()
     {
-        return "Bugzilla [id=" + getRefID()
+        return "Bugzilla[id=" + getRefID()
                         + ", href=" + getRefURL()
                         + ", title=" + getTitle()
                         + "]";

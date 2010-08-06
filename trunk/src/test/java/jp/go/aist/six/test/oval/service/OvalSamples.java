@@ -11,10 +11,10 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.Platform;
 import jp.go.aist.six.oval.model.definitions.Product;
 import jp.go.aist.six.oval.model.definitions.Reference;
-import jp.go.aist.six.oval.model.linux.BugzillaReference;
-import jp.go.aist.six.oval.model.linux.CveReference;
-import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
-import jp.go.aist.six.oval.model.linux.Severity;
+import jp.go.aist.six.oval.model.redhat.BugzillaReference;
+import jp.go.aist.six.oval.model.redhat.CveReference;
+import jp.go.aist.six.oval.model.redhat.LinuxSecurityAdvisory;
+import jp.go.aist.six.oval.model.redhat.Severity;
 import java.util.Arrays;
 import java.util.Date;
 

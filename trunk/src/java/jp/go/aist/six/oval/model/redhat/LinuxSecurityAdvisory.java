@@ -18,10 +18,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.model.redhat;
 
 import jp.go.aist.six.oval.model.definitions.Cpe;
 import jp.go.aist.six.oval.model.definitions.MetadataItem;
+import jp.go.aist.six.oval.model.linux.CertReference;
+import jp.go.aist.six.oval.model.linux.DebianBugReference;
 import jp.go.aist.six.util.IsoDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -30,7 +32,7 @@ import java.util.Date;
 
 
 /**
- * A security advisory.
+ * A Red Hat security advisory.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id: LinuxSecurityAdvisory.java 683 2010-04-24 13:27:18Z akihito $
@@ -89,9 +91,9 @@ public class LinuxSecurityAdvisory
                     final Severity severity,
                     final String issued,
                     final String updated,
-                    final Collection<CveReference> cves,
-                    final Collection<BugzillaReference> bugzillas,
-                    final Collection<Cpe> cpes)
+                    final Collection<? extends CveReference> cves,
+                    final Collection<? extends BugzillaReference> bugzillas,
+                    final Collection<? extends Cpe> cpes)
     {
         this( from, rights, severity, issued, updated );
         setCve( cves );
@@ -182,12 +184,8 @@ public class LinuxSecurityAdvisory
     {
         if (cveList != _cve) {
             _cve.clear();
-            if (cveList == null  ||  cveList.size() == 0) {
-                return;
-            }
-
-            for (CveReference  cve : cveList) {
-                addCve( cve );
+            if (cveList != null  &&  cveList.size() > 0) {
+                _cve.addAll( cveList );
             }
         }
     }
@@ -197,15 +195,7 @@ public class LinuxSecurityAdvisory
                     final CveReference cve
                     )
     {
-        if (cve == null) {
-            return false;
-        }
-
-        if (!_cve.contains( cve )) {
-            return _cve.add( cve );
-        }
-
-        return false;
+        return _cve.add( cve );
     }
 
 
@@ -222,30 +212,10 @@ public class LinuxSecurityAdvisory
     {
         if (bugzillaList != _bugzilla) {
             _bugzilla.clear();
-            if (bugzillaList == null  ||  bugzillaList.size() == 0) {
-                return;
-            }
-
-            for (BugzillaReference  bugzilla : bugzillaList) {
-                addBugzilla( bugzilla );
+            if (bugzillaList != null  &&  bugzillaList.size() > 0) {
+                _bugzilla.addAll( bugzillaList );
             }
         }
-    }
-
-
-    public boolean addBugzilla(
-                    final BugzillaReference bugzilla
-                    )
-    {
-        if (bugzilla == null) {
-            return false;
-        }
-
-        if (!_bugzilla.contains( bugzilla )) {
-            return _bugzilla.add( bugzilla );
-        }
-
-        return false;
     }
 
 
@@ -257,35 +227,15 @@ public class LinuxSecurityAdvisory
 
 
     public void setAffectedCpeList(
-                    final Collection<Cpe> cpeList
+                    final Collection<? extends Cpe> cpeList
                     )
     {
         if (cpeList != _affectedCpeList) {
             _affectedCpeList.clear();
-            if (cpeList == null  ||  cpeList.size() == 0) {
-                return;
-            }
-
-            for (Cpe  cpe : cpeList) {
-                addAffectedCpe( cpe );
+            if (cpeList != null  &&  cpeList.size() > 0) {
+                _affectedCpeList.addAll( cpeList );
             }
         }
-    }
-
-
-    public boolean addAffectedCpe(
-                    final Cpe cpe
-                    )
-    {
-        if (cpe == null) {
-            return false;
-        }
-
-        if (!_affectedCpeList.contains( cpe )) {
-            return _affectedCpeList.add( cpe );
-        }
-
-        return false;
     }
 
 
@@ -302,30 +252,10 @@ public class LinuxSecurityAdvisory
     {
         if (certList != _cert) {
             _cert.clear();
-            if (certList == null  ||  certList.size() == 0) {
-                return;
-            }
-
-            for (CertReference  cert : certList) {
-                addCert( cert );
+            if (certList != null  &&  certList.size() > 0) {
+                _cert.addAll( certList );
             }
         }
-    }
-
-
-    public boolean addCert(
-                    final CertReference cert
-                    )
-    {
-        if (cert == null) {
-            return false;
-        }
-
-        if (!_cert.contains( cert )) {
-            return _cert.add( cert );
-        }
-
-        return false;
     }
 
 
@@ -342,12 +272,8 @@ public class LinuxSecurityAdvisory
     {
         if (bugList != _bug) {
             _bug.clear();
-            if (bugList == null  ||  bugList.size() == 0) {
-                return;
-            }
-
-            for (DebianBugReference  bug : bugList) {
-                addBug( bug );
+            if (bugList != null  &&  bugList.size() > 0) {
+                _bug.addAll( bugList );
             }
         }
     }
@@ -357,15 +283,7 @@ public class LinuxSecurityAdvisory
                     final DebianBugReference bug
                     )
     {
-        if (bug == null) {
-            return false;
-        }
-
-        if (!_bug.contains( bug )) {
-            return _bug.add( bug );
-        }
-
-        return false;
+        return _bug.add( bug );
     }
 
 
@@ -383,7 +301,7 @@ public class LinuxSecurityAdvisory
     @Override
     public String toString()
     {
-        return "Advisory [from=" + getFrom()
+        return "Advisory[from=" + getFrom()
                         + ", severity=" + getSeverity()
                         + ", rights=" + getRights()
                         + ", issued=" + getIssued()
