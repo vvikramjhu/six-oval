@@ -73,10 +73,6 @@ public class Metadata
     private final Collection<MetadataItem>  _additionalMetadata = new ArrayList<MetadataItem>();
     //{xsd:any, 0..*}
 
-    // derived properties //
-    private String  _lastModifiedDate;
-    private Collection<Cve>  _cves;
-
 
 
     /**
@@ -232,6 +228,10 @@ public class Metadata
 
 
 
+    //==============================================================
+    //  SIX: extended properties
+    //==============================================================
+
     /**
      * Returns the last modified date of this definition.
      * For a definition in Mitre OVAL repository, it is retrieved
@@ -239,78 +239,85 @@ public class Metadata
      * For a Red Hat definition, it is retrieved
      * from the "advisory/updated" element.
      */
-    private String _findLastModifiedDate(
-                    final MetadataItem metaItem
+    public String getLastModifiedDate()
+    {
+        String  lastModifiedDate = null;
+
+        Collection<MetadataItem>  items = getAdditionalMetadata();
+        if (items != null  &&  items.size() > 0) {
+            for (MetadataItem  item : items) {
+                String  itemDate = _getLastModifiedDate( item );
+                if (lastModifiedDate == null
+                                    ||  lastModifiedDate.compareTo( itemDate ) < 0) {
+                    lastModifiedDate = itemDate;
+                }
+            }
+        }
+
+        return lastModifiedDate;
+    }
+
+
+    private String _getLastModifiedDate(
+                    final MetadataItem item
                     )
     {
-        Date  date = null;
+        Date  lastModifiedDate = null;
 
-        if (metaItem instanceof MitreRepositoryMetadataItem ) {
-            MitreRepositoryMetadataItem  or = MitreRepositoryMetadataItem.class.cast( metaItem );
+        if (item instanceof MitreRepositoryMetadataItem) {
+            // Mitre OVAL repository
+            MitreRepositoryMetadataItem  or = MitreRepositoryMetadataItem.class.cast( item );
             for (OvalRepositoryEvent  event : or.getDates()) {
-                if (date == null  &&  event instanceof DefinitionSubmittedEvent) {
-                    date = event.getDate();
+                if (lastModifiedDate == null  &&  (event instanceof DefinitionSubmittedEvent)) {
+                    lastModifiedDate = event.getDate();
                 } else if (event instanceof DefinitionModifiedEvent) {
                     Date  eventDate = event.getDate();
-                    if (date == null) {
-                        date = eventDate;
-                    } else if (date.compareTo( eventDate ) < 0) {
-                        date = eventDate;
+                    if (lastModifiedDate == null
+                                    ||  lastModifiedDate.compareTo( eventDate ) < 0) {
+                        lastModifiedDate = eventDate;
                     }
                 }
 
             }
-        } else if (metaItem instanceof LinuxSecurityAdvisory) {
-            LinuxSecurityAdvisory  adv = LinuxSecurityAdvisory.class.cast( metaItem );
-            date = adv.getUpdated();
+        } else if (item instanceof LinuxSecurityAdvisory) {
+            // Red Hat definition
+            LinuxSecurityAdvisory  adv = LinuxSecurityAdvisory.class.cast( item );
+            lastModifiedDate = adv.getUpdated();
         }
 
-        return (date == null ? null : IsoDate.formatDate( date ));
-    }
-
-
-
-    public void setLastModifiedDate(
-                    final String date
-                    )
-    {
-        _lastModifiedDate = date;
-    }
-
-
-    public String getLastModifiedDate()
-    {
-        if (_lastModifiedDate == null  &&  getAdditionalMetadata().size() > 0) {
-            MetadataItem  meta = getAdditionalMetadata().iterator().next();
-            _lastModifiedDate = _findLastModifiedDate( meta );
-        }
-
-        return _lastModifiedDate;
+        return (lastModifiedDate == null ? null : IsoDate.formatDate( lastModifiedDate ));
     }
 
 
 
     /**
      */
-    private Collection<Cve> _getCves()
+    public Collection<Cve> getRelatedCve()
     {
         Set<Cve>  cves = new HashSet<Cve>();
-        final String  cve_source = "CVE";
+        final String  cveSource = "CVE";
 
         // Mitre OVAL repository
-        for (Reference  ref : getReference()) {
-            if (cve_source.equals( ref.getSource() )) {
-                Cve  cve = new Cve( ref.getRefID() );
-                cves.add( cve );
+        Collection<Reference>  references = getReference();
+        if (references != null  &&  references.size() > 0) {
+            for (Reference  ref : references) {
+                if (cveSource.equals( ref.getSource() )) {
+                    Cve  cve = new Cve( ref.getRefID() );
+                    cves.add( cve );
+                }
             }
         }
 
         // Red Hat definition
-        for (MetadataItem  metadata : getAdditionalMetadata()) {
-            if (metadata instanceof LinuxSecurityAdvisory) {
-                for (CveReference  ref : ((LinuxSecurityAdvisory)metadata).getCve()) {
-                    Cve  cve = new Cve( ref.getRefID() );
-                    cves.add( cve );
+        Collection<MetadataItem>  items = getAdditionalMetadata();
+        if (items != null  &&  items.size() > 0) {
+            for (MetadataItem  item : items) {
+                if (item instanceof LinuxSecurityAdvisory) {
+                    LinuxSecurityAdvisory  advisory = (LinuxSecurityAdvisory)item;
+                    for (CveReference  ref : advisory.getCve()) {
+                        Cve  cve = new Cve( ref.getRefID() );
+                        cves.add( cve );
+                    }
                 }
             }
         }
@@ -318,53 +325,6 @@ public class Metadata
         return cves;
     }
 
-
-
-    public void setRelatedCves(
-                    final Collection<? extends Cve> cves
-                    )
-    {
-        if (cves != _cves) {
-            if (_cves != null) {
-                _cves.clear();
-            }
-
-            if (cves == null  ||  cves.size() == 0) {
-                return;
-            }
-
-            for (Cve  cve : cves) {
-                addRelatedCve( cve );
-            }
-        }
-    }
-
-
-    public boolean addRelatedCve(
-                    final Cve cve
-                    )
-    {
-        if (cve == null) {
-            return false;
-        }
-
-        Collection<Cve>  cves = getRelatedCves();
-        if (! cves.contains( cve )) {
-            return cves.add( cve );
-        }
-
-        return false;
-    }
-
-
-    public Collection<Cve> getRelatedCves()
-    {
-        if (_cves == null) {
-            _cves = _getCves();
-        }
-
-        return _cves;
-    }
 
 
 

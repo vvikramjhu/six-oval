@@ -126,11 +126,11 @@ public class DefinitionDao
             }
         }
 
-        Collection<Cve>  cves = def.getRelatedCves();
+        Collection<Cve>  cves = def.getRelatedCve();
         if (cves != null  &&  cves.size() > 0) {
             Collection<Cve>  p_cves =
                 getForwardingDao( Cve.class ).syncAll( cves );
-            def.setRelatedCves( p_cves );
+            def.setRelatedCve( p_cves );
         }
 
         Criteria  criteria = def.getCriteria();

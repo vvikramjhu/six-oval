@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.core.model.definitions.DefinitionTestAssociation;
 import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsDefinitionAssociation;
 import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsObjectAssociation;
 import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsStateAssociation;
@@ -41,7 +40,6 @@ import jp.go.aist.six.oval.model.definitions.Variables;
 import jp.go.aist.six.util.castor.CastorDao;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import java.util.Collection;
 import java.util.UUID;
 
 
@@ -176,15 +174,13 @@ public class OvalDefinitionsDao
 
                 //TODO: move this part to DefinitionDao,
                 // and create 1:N definition-Criteria relation?
-                final String  defID = def.getOvalID();
-                Collection<String>  testIDs = util.getRelatedTestIDOfDefinition( defID );
-                for (String  testID : testIDs) {
-//                    _LOG.info( "Definition-Test assoc: finding test=" + testID );
-                    DefinitionTestAssociation  dt_assoc =
-                        new DefinitionTestAssociation( def, defs.getTest( testID ) );
-//                    _LOG.info( "Definition-Test assoc: " + dt_assoc );
-                    getForwardingDao( DefinitionTestAssociation.class ).sync( dt_assoc );
-                }
+//                final String  defID = def.getOvalID();
+//                Collection<String>  testIDs = util.getRelatedTestIDOfDefinition( defID );
+//                for (String  testID : testIDs) {
+//                    DefinitionTestAssociation  dt_assoc =
+//                        new DefinitionTestAssociation( def, defs.getTest( testID ) );
+//                    getForwardingDao( DefinitionTestAssociation.class ).sync( dt_assoc );
+//                }
             }
             defs.setDefinitions( p_def_list );
         }

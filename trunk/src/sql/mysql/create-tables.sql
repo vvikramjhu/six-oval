@@ -302,6 +302,7 @@ ENGINE=InnoDB
 CHARACTER SET utf8;
 
 
+
 /* ============================================================== */
 /* Definition - Cve association                                   */
 /* ============================================================== */
@@ -309,14 +310,14 @@ CREATE TABLE IF NOT EXISTS oval_assoc__d_definition__d_cve
 (
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
-    definition__PID     VARCHAR(64)     NOT NULL,
-    cve__PID            CHAR(13)        NOT NULL,
+    d_definition__PID   VARCHAR(64)     NOT NULL,
+    d_cve__PID          CHAR(13)        NOT NULL,
 
     /* (PK) */
     PRIMARY KEY (PID),
     
     /* INDEX */
-    UNIQUE (definition__PID, cve__PID)
+    UNIQUE (d_definition__PID, d_cve__PID)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;

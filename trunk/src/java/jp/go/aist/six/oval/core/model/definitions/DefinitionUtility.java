@@ -18,182 +18,135 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.core.model.definitions;
 
-import jp.go.aist.six.oval.model.OvalEntity;
+import jp.go.aist.six.oval.model.definitions.Cve;
+import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.Metadata;
+import jp.go.aist.six.oval.model.definitions.MetadataItem;
+import jp.go.aist.six.oval.model.definitions.Reference;
 import jp.go.aist.six.oval.model.linux.CveReference;
 import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
+import jp.go.aist.six.oval.model.mitre.DefinitionModifiedEvent;
+import jp.go.aist.six.oval.model.mitre.DefinitionSubmittedEvent;
+import jp.go.aist.six.oval.model.mitre.MitreRepositoryMetadataItem;
+import jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent;
+import jp.go.aist.six.util.IsoDate;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 
 
 /**
- * A single OVAL Definition.
- * <p>Properties:</p>
- * <ul>
- *   <li>metadata (required)</li>
- *   <li>criteria (option)</li>
- *   <li>definitionClass (required)</li>
- * </ul>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class Definition
-    extends OvalEntity //, Noted
+public class DefinitionUtility
 {
 
-    private Metadata  _metadata;
-    //{1..1}
-
-
-//  private Notes  _notes;
-    //{0..1}
-
-
-    private Criteria  _criteria;
-    //{0..1}
-
-
-    private DefinitionClass  _definitionClass;
-    //{required}
-
-
-    // derived properties //
-    private Collection<Cve>  _cves;
-
-
-
     /**
-     * Constructor.
-     */
-    public Definition()
-    {
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public Definition(
-                    final String id,
-                    final int version
-                    )
-    {
-        super( id, version );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public Definition(
-                    final String id,
-                    final int version,
-                    final DefinitionClass clazz
-                    )
-    {
-        super( id, version );
-        setDefinitionClass( clazz );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public Definition(
-                    final String id,
-                    final int version,
-                    final DefinitionClass clazz,
-                    final Metadata metadata
-                    )
-    {
-        this( id, version, clazz );
-        setMetadata( metadata );
-    }
-
-
-
-    /**
-     */
-    public void setMetadata(
-                    final Metadata metadata
-                    )
-    {
-        _metadata = metadata;
-    }
-
-
-    public Metadata getMetadata()
-    {
-        if (_metadata == null) {
-            _metadata = new Metadata();
-        }
-        return _metadata;
-    }
-
-
-
-    /**
-     */
-    public void setCriteria(
-                    final Criteria criteria
-                    )
-    {
-        _criteria = criteria;
-    }
-
-
-    public Criteria getCriteria()
-    {
-        return _criteria;
-    }
-
-
-
-    /**
-     */
-    public void setDefinitionClass(
-                    final DefinitionClass clazz
-                    )
-    {
-        _definitionClass = clazz;
-    }
-
-
-    public DefinitionClass getDefinitionClass()
-    {
-        return _definitionClass;
-    }
-
-
-
-    ////////////////////////////////////////////////////////////////
-    //  SIX extension
-    ////////////////////////////////////////////////////////////////
-
-    /**
+     * Returns the last modified date of the specified definition.
+     * For a definition in Mitre OVAL repository, it is retrieved
+     * from the latest "oval_repository/dates/" element.
+     * For a Red Hat definition, it is retrieved
+     * from the "advisory/updated" element.
      *
+     * @return
+     *  the last modified date of the specified definition,
+     *  or null if the date was not found.
      */
-    private Collection<Cve> _getCves()
+    public static String getLastModifiedDate(
+                    final Definition def
+                    )
+    {
+        Metadata  meta = def.getMetadata();
+
+        if (meta == null) {
+            return null;
+        }
+
+        Collection<MetadataItem>  items = meta.getAdditionalMetadata();
+        if (items == null  ||  items.size() == 0) {
+            return null;
+        }
+
+        String  lastModifiedDate = null;
+        for (MetadataItem  item : items) {
+            String  date = _getLastModifiedDate( item );
+            if (date != null) {
+                if (lastModifiedDate == null
+                                ||  lastModifiedDate.compareTo( date ) < 0) {
+                    lastModifiedDate = date;
+                }
+            }
+        }
+
+        return lastModifiedDate;
+    }
+
+
+    private static String _getLastModifiedDate(
+                    final MetadataItem item
+                    )
+    {
+        Date  lastModifiedDate = null;
+
+        if (item instanceof MitreRepositoryMetadataItem) {
+            MitreRepositoryMetadataItem  or = MitreRepositoryMetadataItem.class.cast( item );
+            for (OvalRepositoryEvent  event : or.getDates()) {
+                if (lastModifiedDate == null  &&  (event instanceof DefinitionSubmittedEvent)) {
+                    lastModifiedDate = event.getDate();
+                } else if (event instanceof DefinitionModifiedEvent) {
+                    Date  eventDate = event.getDate();
+                    if (lastModifiedDate == null
+                                    ||  lastModifiedDate.compareTo( eventDate ) < 0) {
+                        lastModifiedDate = eventDate;
+                    }
+                }
+
+            }
+        } else if (item instanceof LinuxSecurityAdvisory) {
+            LinuxSecurityAdvisory  adv = LinuxSecurityAdvisory.class.cast( item );
+            lastModifiedDate = adv.getUpdated();
+        }
+
+        return (lastModifiedDate == null ? null : IsoDate.formatDate( lastModifiedDate ));
+    }
+
+
+
+
+    /**
+     */
+    public static Collection<Cve> getAffectCves(
+                    final Definition def
+                    )
     {
         Set<Cve>  cves = new HashSet<Cve>();
-        final String  cve_source = "CVE";
+        Metadata  meta = def.getMetadata();
+
+        if (meta == null) {
+            return cves;
+        }
+
+        final String  cveSource = "CVE";
 
         // Mitre OVAL repository
-        for (Reference  ref : getMetadata().getReference()) {
-            if (cve_source.equals( ref.getSource() )) {
+        for (Reference  ref : meta.getReference()) {
+            if (cveSource.equals( ref.getSource() )) {
                 Cve  cve = new Cve( ref.getRefID() );
                 cves.add( cve );
             }
         }
 
         // Red Hat definition
-        for (MetadataItem  metadata : getMetadata().getAdditionalMetadata()) {
-            if (metadata instanceof LinuxSecurityAdvisory) {
-                for (CveReference  ref : ((LinuxSecurityAdvisory)metadata).getCve()) {
+        for (MetadataItem  item : meta.getAdditionalMetadata()) {
+            if (item instanceof LinuxSecurityAdvisory) {
+                LinuxSecurityAdvisory  advisory = (LinuxSecurityAdvisory)item;
+                for (CveReference  ref : advisory.getCve()) {
                     Cve  cve = new Cve( ref.getRefID() );
                     cves.add( cve );
                 }
@@ -203,109 +156,5 @@ public class Definition
         return cves;
     }
 
-
-
-    public void setRelatedCves(
-                    final Collection<Cve> cves
-                    )
-    {
-        if (cves != _cves) {
-            if (_cves != null) {
-                _cves.clear();
-            }
-
-            if (cves == null  ||  cves.size() == 0) {
-                return;
-            }
-
-            for (Cve  cve : cves) {
-                addRelatedCve( cve );
-            }
-        }
-    }
-
-
-    public boolean addRelatedCve(
-                    final Cve cve
-                    )
-    {
-        if (cve == null) {
-            return false;
-        }
-
-        Collection<Cve>  cves = getRelatedCves();
-        if (! cves.contains( cve )) {
-            return cves.add( cve );
-        }
-
-        return false;
-    }
-
-
-    public Collection<Cve> getRelatedCves()
-    {
-        if (_cves == null) {
-            _cves = _getCves();
-        }
-
-        return _cves;
-    }
-
-
-
-//    /**
-//     */
-//    public void setNotes( final Notes notes )
-//    {
-//        _notes = notes;
-//    }
-//
-//
-//    /**
-//     */
-//    public Notes getNotes()
-//    {
-//        return _notes;
-//    }
-
-
-
-    //**************************************************************
-    //  java.lang.Object
-    //**************************************************************
-
-    @Override
-    public int hashCode()
-    {
-        return super.hashCode();
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (!(obj instanceof Definition)) {
-            return false;
-        }
-
-        return super.equals( obj );
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return "Definition[" + super.toString()
-                        + ", class=" + getDefinitionClass()
-                        + ", metadata=" + getMetadata()
-//                        + ", criteria=" + getCriteria()
-//                        + ", notes=" + getNotes()
-                        + "]";
-    }
-
 }
-// Definition
+// DefinitionUtility

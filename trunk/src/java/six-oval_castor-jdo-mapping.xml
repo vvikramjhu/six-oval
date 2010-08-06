@@ -109,10 +109,6 @@
 
 
         <!-- // metadata // -->
-        <field name="metadata.lastModifiedDate" type="string">
-            <sql name="last_modified" type="char"/>
-        </field>
-
         <field name="metadata.title" type="string">
             <sql name="title" type="char"/>
         </field>
@@ -188,9 +184,15 @@
         </field>
 -->
 
-        <!-- Definition : Cve = n : m 
-        -->
-        <field name="relatedCves"
+
+        <!-- SIX: extended properties -->
+
+        <field name="lastModifiedDate" type="string">
+            <sql name="last_modified" type="char"/>
+        </field>
+
+        <!-- N:M -->
+        <field name="relatedCve"
             type="jp.go.aist.six.oval.model.definitions.Cve"
             collection="collection"
             lazy="true"
@@ -200,12 +202,6 @@
                 many-key="definition__PID"
                 />
         </field>
-
-<!-- This field is moved to DefinitionCriteria class.
-        <field name="criteriaXml" type="string">
-            <sql name="criteria" type="char"/>
-        </field>
--->
     </class>
 
 

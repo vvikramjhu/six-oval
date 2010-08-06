@@ -791,7 +791,7 @@ public class OvalXmlTest
         }
 
         Reporter.log( "*** checking related CVEs...", true );
-        Collection<Cve>  cves = def.getRelatedCves();
+        Collection<Cve>  cves = def.getRelatedCve();
         Assert.assertEquals( cves.size(), 1 );
         for (Cve  cve : cves) {
             Assert.assertTrue( cve_ids.contains( cve.getName() ) );
@@ -885,7 +885,7 @@ public class OvalXmlTest
 //        Assert.assertEquals( "cpe:/o:redhat:enterprise_linux", cpe.getName() );
 
         Reporter.log( "*** checking related CVEs...", true );
-        Collection<Cve>  cves = def.getRelatedCves();
+        Collection<Cve>  cves = def.getRelatedCve();
         Assert.assertEquals( cves.size(), 1 );
         for (Cve  cve : cves) {
             Assert.assertTrue( cve_ids.contains( cve.getName() ) );
@@ -999,7 +999,7 @@ public class OvalXmlTest
 
 
         Reporter.log( "  *** checking related CVEs...", true );
-        Collection<Cve>  cves = def.getRelatedCves();
+        Collection<Cve>  cves = def.getRelatedCve();
         Assert.assertEquals( cves.size(), 1 );
         Collection<String>  cve_ids = Arrays.asList( new String[] {
                         "CVE-2006-1189"

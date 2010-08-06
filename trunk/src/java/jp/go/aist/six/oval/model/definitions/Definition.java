@@ -21,11 +21,8 @@
 package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.OvalEntity;
-import jp.go.aist.six.oval.model.linux.CveReference;
-import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 
 
 
@@ -61,8 +58,9 @@ public class Definition
     //{required}
 
 
-    // derived properties //
-    private Collection<Cve>  _cves;
+    // SIX: extended properties //
+    private String  _lastModifiedDate;
+    private Collection<Cve>  _relatedCve = new ArrayList<Cve>();
 
 
 
@@ -170,103 +168,64 @@ public class Definition
 
 
 
-    ////////////////////////////////////////////////////////////////
-    //  SIX extension
-    ////////////////////////////////////////////////////////////////
+    //==============================================================
+    //  SIX: extended properties
+    //==============================================================
 
     /**
-     *
      */
-    private Collection<Cve> _getCves()
+    public void setLastModifiedDate(
+                    final String date
+                    )
     {
-        Set<Cve>  cves = new HashSet<Cve>();
-        final String  cve_source = "CVE";
+        _lastModifiedDate = date;
+    }
 
-        // Mitre OVAL repository
-        for (Reference  ref : getMetadata().getReference()) {
-            if (cve_source.equals( ref.getSource() )) {
-                Cve  cve = new Cve( ref.getRefID() );
-                cves.add( cve );
+
+    public String getLastModifiedDate()
+    {
+        if (_lastModifiedDate == null) {
+            Metadata  meta = getMetadata();
+            if (meta != null) {
+                _lastModifiedDate = meta.getLastModifiedDate();
             }
         }
 
-        // Red Hat definition
-        for (MetadataItem  metadata : getMetadata().getAdditionalMetadata()) {
-            if (metadata instanceof LinuxSecurityAdvisory) {
-                for (CveReference  ref : ((LinuxSecurityAdvisory)metadata).getCve()) {
-                    Cve  cve = new Cve( ref.getRefID() );
-                    cves.add( cve );
-                }
-            }
-        }
-
-        return cves;
+        return _lastModifiedDate;
     }
 
 
 
-    public void setRelatedCves(
+    /**
+     */
+    public void setRelatedCve(
                     final Collection<Cve> cves
                     )
     {
-        if (cves != _cves) {
-            if (_cves != null) {
-                _cves.clear();
-            }
+        if (cves != _relatedCve) {
+            _relatedCve.clear();
 
-            if (cves == null  ||  cves.size() == 0) {
-                return;
-            }
-
-            for (Cve  cve : cves) {
-                addRelatedCve( cve );
+            if (cves != null  &&  cves.size() > 0) {
+                _relatedCve.addAll( cves );
             }
         }
     }
 
 
-    public boolean addRelatedCve(
-                    final Cve cve
-                    )
+    private transient boolean  _relatedCveComputed = false;
+
+    public Collection<Cve> getRelatedCve()
     {
-        if (cve == null) {
-            return false;
+        if (! _relatedCveComputed) {
+            Metadata  meta = getMetadata();
+            if (meta != null) {
+                _relatedCve = meta.getRelatedCve();
+            }
+            _relatedCveComputed = true;
         }
 
-        Collection<Cve>  cves = getRelatedCves();
-        if (! cves.contains( cve )) {
-            return cves.add( cve );
-        }
-
-        return false;
+        return _relatedCve;
     }
-
-
-    public Collection<Cve> getRelatedCves()
-    {
-        if (_cves == null) {
-            _cves = _getCves();
-        }
-
-        return _cves;
-    }
-
-
-
-//    /**
-//     */
-//    public void setNotes( final Notes notes )
-//    {
-//        _notes = notes;
-//    }
-//
-//
-//    /**
-//     */
-//    public Notes getNotes()
-//    {
-//        return _notes;
-//    }
 
 
 
