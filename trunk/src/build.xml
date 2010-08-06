@@ -61,7 +61,7 @@ CONTENTS:
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <!-- TestNG -->
-    <taskdef name="testng-14"
+    <taskdef name="testng"
         classname="org.testng.TestNGAntTask"
         classpathref="java.run.classpath"
         />
@@ -173,7 +173,7 @@ CONTENTS:
     <target name="test" depends="test.compile,init">
         <mkdir dir="${build.test.dir}"/>
 
-        <testng-14
+        <testng
             classpathref="java.run.classpath"
             outputdir="${build.test.dir}"
             sourcedir="${java.test.src.dir}"
@@ -183,7 +183,7 @@ CONTENTS:
             <jvmarg value="-Xms256m"/>
             <jvmarg value="-Xmx256m"/>
             <!-- sysproperty key="six.oval.debian.dsc" value="test/data/debian/dsc"/ -->
-        </testng-14>
+        </testng>
     </target>
 
 
