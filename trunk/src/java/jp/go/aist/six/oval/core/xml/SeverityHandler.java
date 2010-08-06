@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.xml;
 
-import jp.go.aist.six.oval.model.redhat.Severity;
+import jp.go.aist.six.oval.model.linux.Severity;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 

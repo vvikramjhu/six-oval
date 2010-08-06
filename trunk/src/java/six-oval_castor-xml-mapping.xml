@@ -2144,7 +2144,7 @@
     <!-- ======================================================= -->
     <!-- LinuxSecurityAdvisory - advisory                        -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.redhat.LinuxSecurityAdvisory"
+    <class name="jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory"
         extends="jp.go.aist.six.oval.model.definitions.MetadataItem">
         <map-to xml="advisory"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
@@ -2173,13 +2173,13 @@
         </field>
 
         <field name="cve" 
-            type="jp.go.aist.six.oval.model.redhat.CveReference"
+            type="jp.go.aist.six.oval.model.linux.CveReference"
             collection="collection">
             <bind-xml name="cve" node="element"/>
         </field>
 
         <field name="bugzilla" 
-            type="jp.go.aist.six.oval.model.redhat.BugzillaReference"
+            type="jp.go.aist.six.oval.model.linux.BugzillaReference"
             collection="collection">
             <bind-xml name="bugzilla" node="element"/>
         </field>
@@ -2210,7 +2210,7 @@
     <!-- ======================================================= -->
     <!-- CveReference                                            -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.redhat.CveReference">
+    <class name="jp.go.aist.six.oval.model.linux.CveReference">
         <map-to xml="cve"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -2264,7 +2264,7 @@
     <!-- ======================================================= -->
     <!-- BugzillaReference                                       -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.redhat.BugzillaReference">
+    <class name="jp.go.aist.six.oval.model.linux.BugzillaReference">
         <map-to xml="bugzilla"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
