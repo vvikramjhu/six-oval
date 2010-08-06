@@ -197,9 +197,9 @@
             collection="collection"
             lazy="true"
             >
-            <sql name="cve__PID"
+            <sql name="d_cve__PID"
                 many-table="oval_assoc__d_definition__d_cve"
-                many-key="definition__PID"
+                many-key="d_definition__PID"
                 />
         </field>
     </class>
