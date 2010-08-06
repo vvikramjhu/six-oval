@@ -653,6 +653,31 @@
 
 
     <!-- ******************************************************* -->
+    <!-- OvalDefinitionsVariableAssociation                      -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsVariableAssociation"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <cache-type type="unlimited"/>
+        <map-to table="oval_assoc__d_definitions__d_variable"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="d_definitions__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="d_variable__PID" type="char"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- LocalVariable                                           -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.definitions.LocalVariable"
