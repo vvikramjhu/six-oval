@@ -207,6 +207,38 @@
 
 
     <!-- ******************************************************* -->
+    <!-- CriteriaElement                                         -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.definitions.CriteriaElement"
+        depends="jp.go.aist.six.oval.model.definition.Definition"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_criteria_element"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="negate" type="boolean">
+            <sql name="negate" type="bit"/>
+        </field>
+
+        <field name="comment" type="string">
+            <sql name="comment" type="char"/>
+        </field>
+
+        <!-- (FK) -->
+        <field name="masterObject" 
+            type="jp.go.aist.six.oval.model.definitions.Definition">
+            <sql name="d_definition__PID"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- DefinitionCriteria                                      -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.core.model.definitions.DefinitionCriteria"

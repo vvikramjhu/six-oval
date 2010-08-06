@@ -230,6 +230,11 @@ public class LocalOvalRepositoryTest
         Collection<String>  defIDCollection = Arrays.asList( defIDs );
         _validateOvalDefinitions( ovalDefs, defIDCollection );
 
+        Reporter.log( "checking Criteria...", true );
+        for (Definition  def : ovalDefs.getDefinitions()) {
+
+        }
+
         Reporter.log( "creating OvalDefinitions...", true );
         String  pid = _repository.createOvalDefinitions( ovalDefs );
         Reporter.log( "...create OvalDefinitions OK", true );

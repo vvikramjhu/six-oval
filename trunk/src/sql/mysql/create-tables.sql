@@ -146,6 +146,95 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
+/* CriteriaElement                                                */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_d_criteria_element
+(
+    PID                 INT             NOT NULL    AUTO_INCREMENT,
+
+    negate              BOOLEAN                     DEFAULT false,
+    comment             VARCHAR(255),
+
+    /* (FK) */
+    d_definition__PID   VARCHAR(64)     NOT NULL,
+
+    /* (PK) */
+    PRIMARY KEY (PID),
+
+    /* INDEX */
+    INDEX (d_definition__PID)
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
+/* Criteria                                                       */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_d_criteria
+(
+    PID                 INT             NOT NULL,
+
+    operator            VARCHAR(4)                  DEFAULT 'AND',
+
+    /* (FK) */
+
+    /* (PK) */
+    PRIMARY KEY (PID)
+
+    /* INDEX */
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
+/* Criterion                                                      */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_d_criterion
+(
+    PID                 INT             NOT NULL,
+    
+    test_ref            VARCHAR(64)     NOT NULL,
+
+    /* (FK) */
+
+    /* (PK) */
+    PRIMARY KEY (PID),
+
+    /* INDEX */
+    INDEX (test_ref)
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
+/* ExtendDefinition                                               */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_d_extend_definition
+(
+    PID                 INT             NOT NULL,
+    
+    definition_ref      VARCHAR(64)     NOT NULL,
+
+    /* (FK) */
+
+    /* (PK) */
+    PRIMARY KEY (PID),
+
+    /* INDEX */
+    INDEX (definition_ref)
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
 /* OvalDefinitions - Definition association                       */
 /* ============================================================== */
 /* CREATE TABLE IF NOT EXISTS oval_d_definitions__definition */

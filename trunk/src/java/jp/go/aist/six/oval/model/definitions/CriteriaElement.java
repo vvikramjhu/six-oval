@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.util.castor.AbstractPersistable;
+import jp.go.aist.six.util.orm.Dependent;
 
 
 
@@ -31,6 +32,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  */
 public abstract class CriteriaElement
     extends AbstractPersistable
+    implements Dependent<Definition>
 {
 
     public static final boolean  DEFAULT_NEGATE = false;
@@ -77,6 +79,29 @@ public abstract class CriteriaElement
     public String getComment()
     {
         return _comment;
+    }
+
+
+
+    //**************************************************************
+    //  Dependent
+    //**************************************************************
+
+    private Definition  _master;
+
+
+
+    public void setMasterObject(
+                    final Definition master
+                    )
+    {
+        _master = master;
+    }
+
+
+    public Definition getMasterObject()
+    {
+        return _master;
     }
 
 }
