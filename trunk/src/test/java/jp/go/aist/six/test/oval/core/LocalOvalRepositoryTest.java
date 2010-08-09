@@ -52,22 +52,22 @@ public class LocalOvalRepositoryTest
     {
         return new Object[][] {
                       // Windows @Mitre, CVE-2010-0176
-//                      {
-//                          "test/data/results/oval-results_CVE-2010-0176_mitre7222.xml",
-//                      }
-//                      ,
+                      {
+                          "test/data/results/oval-results_CVE-2010-0176_mitre7222.xml",
+                      }
+                      ,
 
-//                      // Red Hat patch, CVE-2010-0176, RHSA 20100332
-//                      {
-//                          "test/data/results/oval-results_CVE-2010-0176_rhsa20100332.xml",
-//                      }
-//                      ,
+                      // Red Hat patch, CVE-2010-0176, RHSA 20100332
+                      {
+                          "test/data/results/oval-results_CVE-2010-0176_rhsa20100332.xml",
+                      }
+                      ,
 
                       // Debian @Mitre, CVE-2010-0176, DSA-2027
                       {
                           "test/data/results/oval-results_CVE-2010-0176_mitre7432_DSA-2027.xml",
                       }
-                    ,
+//                      ,
 
 //                    // Red Hat patch, CVE-2010-0176, RHSA 20100333
 //                    {
@@ -76,10 +76,10 @@ public class LocalOvalRepositoryTest
 //                    ,
 //
 
-                        // windows vulnerability, IE6, CVE-2006-1189
-                        {
-                            "test/data/result/oval-2010-06-15.05.04.34_results.xml",
-                        }
+//                        // windows vulnerability, IE6, CVE-2006-1189
+//                        {
+//                            "test/data/result/oval-2010-06-15.05.04.34_results.xml",
+//                        }
 //                        ,
 //
 //                        // Debian patch, CVE-2010-0176
