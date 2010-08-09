@@ -173,7 +173,19 @@ public class LocalOvalRepositoryTest
                         }
                         ,
 
-                        // Red Hat,
+                        // Windows @Mitre, CVE-2010-0176
+                        {
+                            "test/data/definitions/oval-definitions_CVE-2010-0176_mitre7222.xml",
+                            new String[] {
+                                            "oval:org.mitre.oval:def:7222",
+                                            "oval:org.mitre.oval:def:6562",
+                                            "oval:org.mitre.oval:def:6504",
+                                            "oval:org.mitre.oval:def:6372"
+                            }
+                        }
+                        ,
+
+                        // Red Hat, CVE-2010-0176
                         {
                             "test/data/definitions/oval-definitions_CVE-2010-0176_rhsa20100333.xml",
                             new String[] {
