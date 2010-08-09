@@ -55,24 +55,25 @@ public class LocalOvalRepositoryTest
                       {
                           "test/data/results/oval-results_CVE-2010-0176_mitre7222.xml",
                       }
-//                      ,
+                      ,
+
+
+                    // Red Hat patch, CVE-2010-0176, RHSA 20100332
+                    {
+                        "test/data/results/oval-results_CVE-2010-0176_rhsa20100332.xml",
+                    }
+//                    ,
+
+//                    // Red Hat patch, CVE-2010-0176, RHSA 20100333
+//                    {
+//                        "test/data/result/com.redhat.rhsa-20100332_CVE-2010-0176_results.xml",
+//                    }
+//                    ,
 //
 
 //                        // windows vulnerability, IE6, CVE-2006-1189
 //                        {
 //                            "test/data/result/oval-2010-06-15.05.04.34_results.xml",
-//                        }
-//                        ,
-//
-//                        // Red Hat patch, CVE-2010-0176, RHSA 20100332
-//                        {
-//                            "test/data/result/com.redhat.rhsa-20100332_CVE-2010-0176_results.xml",
-//                        }
-//                        ,
-//
-//                        // Red Hat patch, CVE-2010-0176, RHSA 20100333
-//                        {
-//                            "test/data/result/com.redhat.rhsa-20100332_CVE-2010-0176_results.xml",
 //                        }
 //                        ,
 //
@@ -164,15 +165,15 @@ public class LocalOvalRepositoryTest
     {
         return new Object[][] {
                         // windows vulnerability, oval:org.mitre.oval:def:8500, CVE-2009-4019
-                        {
-                            "test/data/definitions/oval-definitions_CVE-2009-4019_MySQL.xml",
-                            new String[] {
-                                            "oval:org.mitre.oval:def:8500",
-                                            "oval:org.mitre.oval:def:8297",
-                                            "oval:org.mitre.oval:def:8282"
-                            }
-                        }
-                        ,
+//                        {
+//                            "test/data/definitions/oval-definitions_CVE-2009-4019_MySQL.xml",
+//                            new String[] {
+//                                            "oval:org.mitre.oval:def:8500",
+//                                            "oval:org.mitre.oval:def:8297",
+//                                            "oval:org.mitre.oval:def:8282"
+//                            }
+//                        }
+//                        ,
 
                         // Windows @Mitre, CVE-2010-0176
                         {
@@ -188,11 +189,21 @@ public class LocalOvalRepositoryTest
 
                         // Red Hat, CVE-2010-0176
                         {
-                            "test/data/definitions/oval-definitions_CVE-2010-0176_rhsa20100333.xml",
+                            "test/data/definitions/oval-definitions_CVE-2010-0176_rhsa20100332.xml",
                             new String[] {
-                                            "oval:com.redhat.rhsa:def:20100333"
+                                            "oval:com.redhat.rhsa:def:20100332"
                             }
                         }
+//                        ,
+
+                        // Red Hat, CVE-2010-0176
+//                        {
+//                            "test/data/definitions/oval-definitions_CVE-2010-0176_rhsa20100333.xml",
+//                            new String[] {
+//                                            "oval:com.redhat.rhsa:def:20100333"
+//                            }
+//                        }
+//                        ,
 
 //                        // windows vulnerability
 //                        {

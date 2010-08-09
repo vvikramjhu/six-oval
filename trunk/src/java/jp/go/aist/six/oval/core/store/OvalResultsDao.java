@@ -122,7 +122,8 @@ public class OvalResultsDao
 
         OvalDefinitions  defs = results.getDefinitions();
         if (defs != null) {
-            getForwardingDao( OvalDefinitions.class ).sync( defs );
+            OvalDefinitions  p_defs = getForwardingDao( OvalDefinitions.class ).sync( defs );
+            results.setDefinitions( p_defs );
         }
 //
 //      OvalDefinitions  defs = results.getDefinitions();
