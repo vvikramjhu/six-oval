@@ -25,6 +25,7 @@ import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.definitions.Affected;
 import jp.go.aist.six.oval.model.definitions.Criteria;
+import jp.go.aist.six.oval.model.definitions.CriteriaElement;
 import jp.go.aist.six.oval.model.definitions.Cve;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Metadata;
@@ -131,6 +132,16 @@ public class DefinitionDao
             Collection<Cve>  p_cves =
                 getForwardingDao( Cve.class ).syncAll( cves );
             def.setRelatedCve( p_cves );
+        }
+
+        Collection<CriteriaElement>  criteriaElements = def.getCriteriaElement();
+        if (_LOG.isInfoEnabled()) {
+            _LOG.info( "#criteria Elements: " + criteriaElements.size() );
+        }
+        if (criteriaElements != null  &&  criteriaElements.size() > 0) {
+            for (CriteriaElement  element : criteriaElements) {
+                element.setMasterObject( def );
+            }
         }
 
         Criteria  criteria = def.getCriteria();

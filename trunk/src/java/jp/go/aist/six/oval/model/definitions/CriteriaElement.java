@@ -30,7 +30,7 @@ import jp.go.aist.six.util.orm.Dependent;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class CriteriaElement
+public class CriteriaElement
     extends AbstractPersistable
     implements Dependent<Definition>
 {

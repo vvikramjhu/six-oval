@@ -98,6 +98,11 @@ DROP TABLE IF EXISTS oval_d_state;
 DROP TABLE IF EXISTS oval_d_variable_local;
 DROP TABLE IF EXISTS oval_d_variable;
 
+DROP TABLE IF EXISTS oval_d_criteria_element;
+DROP TABLE IF EXISTS oval_d_criteria;
+DROP TABLE IF EXISTS oval_d_criterion;
+DROP TABLE IF EXISTS oval_d_extend_definition;
+
 DROP TABLE IF EXISTS oval_d_cve;
 DROP TABLE IF EXISTS oval_d_platform;
 DROP TABLE IF EXISTS oval_d_product;

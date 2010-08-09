@@ -187,6 +187,12 @@
 
         <!-- SIX: extended properties -->
 
+        <field name="criteriaElement"
+            type="jp.go.aist.six.oval.model.definitions.CriteriaElement"
+            collection="collection">
+            <sql many-key="d_definition__PID"/>
+        </field>
+
         <field name="lastModifiedDate" type="string">
             <sql name="last_modified" type="char"/>
         </field>
@@ -210,7 +216,7 @@
     <!-- CriteriaElement                                         -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.definitions.CriteriaElement"
-        depends="jp.go.aist.six.oval.model.definition.Definition"
+        depends="jp.go.aist.six.oval.model.definitions.Definition"
         identity="persistentID"
         key-generator="IDENTITY">
 
@@ -233,6 +239,73 @@
         <field name="masterObject" 
             type="jp.go.aist.six.oval.model.definitions.Definition">
             <sql name="d_definition__PID"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- Criteria                                                -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.definitions.Criteria"
+        extends="jp.go.aist.six.oval.model.definitions.CriteriaElement"
+        identity="persistentID"
+        >
+
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_criteria"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="operator" 
+            type="jp.go.aist.six.oval.model.common.Operator">
+            <sql name="operator" type="char"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- Criterion                                               -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.definitions.Criterion"
+        extends="jp.go.aist.six.oval.model.definitions.CriteriaElement"
+        identity="persistentID"
+        >
+
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_criterion"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="testRef" type="string">
+            <sql name="test_ref" type="char"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- ExtendDefinition                                        -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.definitions.ExtendDefinition"
+        extends="jp.go.aist.six.oval.model.definitions.CriteriaElement"
+        identity="persistentID"
+        >
+
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_criterion"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="definitionRef" type="string">
+            <sql name="definition_ref" type="char"/>
         </field>
     </class>
 
@@ -503,7 +576,7 @@
         <field name="ovalID" type="string">
             <sql name="state_ref" type="char"/>
         </field>
-        
+
         <!-- (FK) -->
         <field name="masterObject" 
             type="jp.go.aist.six.oval.model.definitions.Test">
