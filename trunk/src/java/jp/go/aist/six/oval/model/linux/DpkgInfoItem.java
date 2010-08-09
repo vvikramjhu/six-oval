@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.sc.Status;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: DpkgInfoItem.java 772 2010-05-11 03:03:12Z akihito $
+ * @version $Id$
  */
 public class DpkgInfoItem
     extends LinuxEvrPkgInfoItem

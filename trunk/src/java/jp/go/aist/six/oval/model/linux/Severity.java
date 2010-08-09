@@ -28,7 +28,7 @@ import java.util.HashMap;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: Severity.java 436 2010-03-23 05:03:30Z akihito $
+ * @version $Id$
  */
 public final class Severity
     implements Serializable

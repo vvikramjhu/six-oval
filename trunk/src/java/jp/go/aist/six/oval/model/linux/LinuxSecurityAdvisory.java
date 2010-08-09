@@ -33,7 +33,7 @@ import java.util.Date;
  * A Red Hat security advisory.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: LinuxSecurityAdvisory.java 683 2010-04-24 13:27:18Z akihito $
+ * @version $Id$
  */
 public class LinuxSecurityAdvisory
     extends MetadataItem

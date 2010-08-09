@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: RpmInfoState.java 725 2010-05-07 02:27:17Z akihito $
+ * @version $Id$
  */
 public class RpmInfoState
     extends LinuxEvrPkgInfoState

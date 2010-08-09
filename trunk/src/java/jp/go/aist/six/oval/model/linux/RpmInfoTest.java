@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.Test;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: RpmInfoTest.java 696 2010-04-26 10:22:00Z akihito $
+ * @version $Id$
  */
 public class RpmInfoTest
     extends Test

@@ -28,7 +28,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObject;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: LinuxPkgInfoObject.java 707 2010-04-27 09:01:36Z akihito $
+ * @version $Id$
  */
 public abstract class LinuxPkgInfoObject
     extends SystemObject

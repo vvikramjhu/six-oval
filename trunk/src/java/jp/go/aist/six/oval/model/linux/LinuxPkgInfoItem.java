@@ -31,7 +31,7 @@ import java.util.Map;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: LinuxPkgInfoItem.java 764 2010-05-10 08:47:46Z akihito $
+ * @version $Id$
  */
 public abstract class LinuxPkgInfoItem
     extends Item

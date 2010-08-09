@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.sc.Status;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: RpmInfoItem.java 763 2010-05-10 08:30:29Z akihito $
+ * @version $Id$
  */
 public class RpmInfoItem
     extends LinuxEvrPkgInfoItem

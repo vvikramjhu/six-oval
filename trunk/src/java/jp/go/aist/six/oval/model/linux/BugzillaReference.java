@@ -27,7 +27,7 @@ import jp.go.aist.six.oval.model.definitions.Reference;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: BugzillaReference.java 436 2010-03-23 05:03:30Z akihito $
+ * @version $Id$
  */
 public class BugzillaReference
     extends Reference
