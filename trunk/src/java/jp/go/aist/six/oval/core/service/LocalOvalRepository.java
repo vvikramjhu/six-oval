@@ -24,6 +24,7 @@ import jp.go.aist.six.oval.core.model.definitions.DefinitionCriteria;
 import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.OvalEntity;
+import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.definitions.Criteria;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Definitions;
@@ -46,7 +47,9 @@ import jp.go.aist.six.util.search.Order;
 import jp.go.aist.six.util.search.RelationalBinding;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 
@@ -282,6 +285,85 @@ public class LocalOvalRepository
 
         return def;
     }
+
+
+
+    /**
+     */
+    public OvalDefinitions buildOvalDefinitionsFor(
+                    final String defID
+                    )
+    throws OvalServiceException
+    {
+        RelationalBinding  filter = RelationalBinding.equalBinding(
+                        "ovalID", defID );
+        Order  order = new Order( "ovalVersion", true );
+        List<Definition>  defList = null;
+        try {
+            defList = _store.find( Definition.class,
+                            filter,
+                            Arrays.asList( new Order[] { order } ),
+                            new Limit( 1 ) );
+        } catch (Exception ex) {
+            throw new OvalServiceException( ex );
+        }
+
+        if (defList == null  ||  defList.size() == 0) {
+            throw new OvalServiceException( "no such OVAL Definition: " + defID );
+        }
+
+        Definition  def = defList.get( 0 );
+        Criteria  criteria = _getDefinitionCriteria( def.getPersistentID() );
+        def.setCriteria( criteria );
+
+        Definitions  defs = new Definitions();
+        defs.add( def );
+
+        OvalDefinitions  ovalDefs = new OvalDefinitions();
+        Generator  generator = new Generator(
+                        "5.7",
+                        new Date(),
+                        "SIX OVAL Repository Replica",
+                        "0.5.0" );
+        ovalDefs.setGenerator( generator );
+        ovalDefs.setDefinitions( defs );
+        if (_LOG.isInfoEnabled()) {
+            _LOG.info( "oval_definitions built: " + ovalDefs );
+        }
+
+        return ovalDefs;
+    }
+
+
+
+    private Criteria _getDefinitionCriteria(
+                    final String defPID
+                    )
+    throws OvalServiceException
+    {
+        DefinitionCriteria  defCriteria = null; // may be NULL!!!
+        try {
+            defCriteria = _store.get( DefinitionCriteria.class, defPID );
+        } catch (Exception ex) {
+            throw new OvalServiceException( ex );
+        }
+
+        Criteria  criteria = null;
+        if (defCriteria != null) {
+            try {
+                OvalXml  xmlMapper = OvalContext.INSTANCE.getXml();
+                criteria = (Criteria)xmlMapper.unmarshalFromString(
+                                defCriteria.getCriteriaXml() );
+            } catch (Exception ex) {
+                throw new OvalServiceException(
+                                "internal ERROR - get OVAL Definition Criteria: "
+                                + defPID + ", " + ex.getMessage() );
+            }
+        }
+
+        return criteria;
+    }
+
 
 
 

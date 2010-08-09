@@ -160,6 +160,44 @@ public class LocalOvalRepositoryTest
     //  oval-definitions
     //==============================================================
 
+    @DataProvider( name="oval_definition_id" )
+    private Object[][] _ovalDefinitionIDProvider()
+    {
+        return new Object[][] {
+                        {
+                            "oval:org.mitre.oval:def:7222"
+                        }
+        };
+    }
+
+
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={"oval.service.repository", "build_oval_definitions"},
+                    dataProvider="oval_definition_id",
+                    alwaysRun=true
+                    )
+    public void testBuildOvalDefinitionsFor(
+                    final String defID
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL - OvalRepository //", true );
+
+        Reporter.log( "building OvalDefinitions...: definition ID=" + defID, true );
+        OvalDefinitions  ovalDefs = _repository.buildOvalDefinitionsFor( defID );
+        Reporter.log( "...build OvalDefinitions OK", true );
+        Reporter.log( "  @ OvalalDefinitions=" + ovalDefs, true );
+        for (Definition  def : ovalDefs.getDefinitions()) {
+            Reporter.log( "    - Definition=" + def, true );
+            Reporter.log( "      - Criteria=" + def.getCriteria(), true );
+        }
+    }
+
+
+
     @DataProvider( name="oval_definitions" )
     private Object[][] _ovalDefinitionsProvider()
     {
