@@ -1544,7 +1544,8 @@
     <class name="jp.go.aist.six.oval.model.independent.FamilyItem"
         extends="jp.go.aist.six.oval.model.sc.Item"
         identity="persistentID">
-        <cache-type type="unlimited"/>
+
+        <!-- cache-type type="unlimited"/ -->
         <map-to table="oval_s_item_family"/>
 
         <field name="persistentID" type="string">
@@ -1554,12 +1555,6 @@
         <field name="family.data" type="string">
             <sql name="family" type="char"/>
         </field>
-<!--
-        <field name="family"
-            type="jp.go.aist.six.oval.model.common.Family">
-            <sql name="family" type="char"/>
-        </field>
--->
     </class>
 
 
@@ -1596,6 +1591,7 @@
     <class name="jp.go.aist.six.oval.model.independent.TextFileContentObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObject"
         identity="persistentID">
+
         <cache-type type="unlimited"/>
         <map-to table="oval_d_object_textfilecontent"/>
 
@@ -1696,7 +1692,8 @@
     <class name="jp.go.aist.six.oval.model.independent.TextFileContentItem"
         extends="jp.go.aist.six.oval.model.sc.Item"
         identity="persistentID">
-        <cache-type type="unlimited"/>
+
+        <!-- cache-type type="unlimited"/ -->
         <map-to table="oval_s_item_textfilecontent"/>
 
         <field name="persistentID" type="string">
@@ -1939,7 +1936,8 @@
     <class name="jp.go.aist.six.oval.model.linux.DpkgInfoItem"
         extends="jp.go.aist.six.oval.model.sc.Item"
         identity="persistentID">
-        <cache-type type="unlimited"/>
+
+        <!-- cache-type type="unlimited"/ -->
         <map-to table="oval_s_item_dpkginfo"/>
 
         <field name="persistentID" type="string">
@@ -1979,7 +1977,8 @@
     <class name="jp.go.aist.six.oval.model.linux.RpmInfoItem"
         extends="jp.go.aist.six.oval.model.sc.Item"
         identity="persistentID">
-        <cache-type type="unlimited"/>
+
+        <!-- cache-type type="unlimited"/ -->
         <map-to table="oval_s_item_rpminfo"/>
 
         <field name="persistentID" type="string">

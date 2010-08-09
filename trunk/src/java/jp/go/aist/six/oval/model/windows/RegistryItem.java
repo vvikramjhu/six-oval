@@ -201,25 +201,25 @@ public class RegistryItem
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public int hashCode()
-    {
-        return super.hashCode();
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (!(obj instanceof RegistryItem)) {
-            return false;
-        }
-
-        return super.equals( obj );
-    }
+//    @Override
+//    public int hashCode()
+//    {
+//        return super.hashCode();
+//    }
+//
+//
+//
+//    @Override
+//    public boolean equals(
+//                    final Object obj
+//                    )
+//    {
+//        if (!(obj instanceof RegistryItem)) {
+//            return false;
+//        }
+//
+//        return super.equals( obj );
+//    }
 
 
 
