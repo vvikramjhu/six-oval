@@ -25,6 +25,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 
 
 
@@ -35,7 +36,7 @@ import java.util.Collections;
  * @version $Id$
  */
 public class OvalElementContainer<E extends OvalElement>
-    extends KeyedContainer<String,E>
+    extends KeyedContainer<String, E>
 {
 
     /**
@@ -104,15 +105,42 @@ public class OvalElementContainer<E extends OvalElement>
 
     /**
      */
-    public void setDigest( final String digest )
+    public void setDigest(
+                    final String digest
+                    )
     {
         _digest = digest;
     }
 
 
+    public String getDigest()
+    {
+        Set<String>  keys = _keySet();
+        final int  currentHash = (keys == null ? 0 : keys.hashCode());
+        if (currentHash != _hashOnDigest) {
+            MessageDigest  digest = null;
+            try {
+                digest = MessageDigest.getInstance( DIGEST_ALGORITHM );
+                                                  //@throws NoSuchAlgorithmException
+            } catch (NoSuchAlgorithmException ex) {
+                return null;
+            }
+
+            String  currentHashString = (currentHash == 0 ? "" : String.valueOf( currentHash ));
+            _update( digest, currentHashString );
+
+            _digest = _byteArrayToHexString( digest.digest() );
+            _hashOnDigest = currentHash;
+        }
+
+        return _digest;
+    }
+
+
+
     /**
      */
-    public String getDigest()
+    public String getOvalIDDigest()
     {
         final int  currentHash = hashCode();
         if (currentHash != _hashOnDigest) {

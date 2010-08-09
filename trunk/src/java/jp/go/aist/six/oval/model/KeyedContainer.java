@@ -48,8 +48,6 @@ public abstract class KeyedContainer<K,V>
     //TODO: If we use LnkedHashMap, Container.equals() method does NOT work.
     // The order of elements seems to be affected.
 
-//  private final Collection<E>  _elements = new ArrayList<E>();
-
 
 
     /**
@@ -92,7 +90,7 @@ public abstract class KeyedContainer<K,V>
 
     /**
      */
-    protected Collection<V>  _values()
+    protected Collection<V> _values()
     {
         return _elements.values();
     }
@@ -101,7 +99,7 @@ public abstract class KeyedContainer<K,V>
 
     /**
      */
-    protected Set<K>  _keySet()
+    protected Set<K> _keySet()
     {
         return _elements.keySet();
     }
@@ -273,7 +271,7 @@ public abstract class KeyedContainer<K,V>
             changed = e_added || changed;
 
 //          changed = changed || add( e );  // This code is BUG!!!
-            // if "change" is true, add( E ) is not called.
+            // if "changed" is true, add( E ) is not called.
         }
 
         return changed;
@@ -356,7 +354,6 @@ public abstract class KeyedContainer<K,V>
         @SuppressWarnings( "unchecked" )
         KeyedContainer<K,V>  other = (KeyedContainer<K,V>)obj;
         if (this.size() == other.size()) {
-//            return this._keySet().equals( other._keySet() );
             return this._entrySet().equals( other._entrySet() );
         }
         return false;
@@ -371,4 +368,4 @@ public abstract class KeyedContainer<K,V>
     }
 
 }
-// Container
+// KeyedContainer
