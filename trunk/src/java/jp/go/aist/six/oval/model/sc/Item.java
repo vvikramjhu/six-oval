@@ -31,6 +31,9 @@ import jp.go.aist.six.util.orm.Dependent;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
+// TODO: This class must be abstract.
+// Castor fails to load polymorphic objects
+// if the common abstract super class is mapped to a super table.
 //public abstract class Item
 public class Item
     extends AbstractPersistable

@@ -155,43 +155,15 @@
                 many-key="d_definition__PID"/>
         </field>
 
-<!--
-        <field name="affectedFamily" 
-            type="jp.go.aist.six.oval.model.common.Family">
-            <sql name="affected_family" type="char"/>
-        </field>
-
-        <field name="affectedPlatforms"
-            type="jp.go.aist.six.oval.model.definitions.Platform"
-            collection="collection"
-            lazy="true"
-            >
-            <sql name="platform__PID"
-                many-table="oval_assoc__d_definition__d_platform"
-                many-key="definition__PID"
-                />
-        </field>
-
-        <field name="affectedProducts"
-            type="jp.go.aist.six.oval.model.definitions.Product"
-            collection="collection"
-            lazy="true"
-            >
-            <sql name="product__PID"
-                many-table="oval_assoc__d_definition__d_product"
-                many-key="definition__PID"
-                />
-        </field>
--->
-
 
         <!-- SIX: extended properties -->
-
+<!--
         <field name="criteriaElement"
             type="jp.go.aist.six.oval.model.definitions.CriteriaElement"
             collection="collection">
             <sql many-key="d_definition__PID"/>
         </field>
+-->
 
         <field name="lastModifiedDate" type="string">
             <sql name="last_modified" type="char"/>
@@ -298,7 +270,7 @@
         >
 
         <cache-type type="unlimited"/>
-        <map-to table="oval_d_criterion"/>
+        <map-to table="oval_d_extend_definition"/>
 
         <field name="persistentID" type="string">
             <sql name="PID" type="integer"/>
@@ -886,36 +858,6 @@
             collection="collection">
             <sql many-key="s_sc__PID"/>
         </field>
-<!-- workaround:
--->
-
-<!-- test: 1:N using M:N relationship
-        <field name="systemData.item"
-            type="jp.go.aist.six.oval.model.sc.Item"
-            collection="collection"
-            >
-            <sql name="s_item__PID"
-                many-table="oval_assoc__s_sc__s_item"
-                many-key="s_sc__PID"
-                dirty="ignore"/>
-        </field>
--->
-
-<!-- test
-        <field name="item"
-            type="jp.go.aist.six.oval.model.sc.Item"
-            collection="collection">
-            <sql name="s_item__PID"
-                many-table="oval_assoc__s_sc__s_item"
-                many-key="s_sc__PID"
-                dirty="ignore"/>
-        </field>
-        <field name="item"
-            type="jp.go.aist.six.oval.model.sc.Item"
-            collection="collection">
-            <sql many-key="s_sc__PID"/>
-        </field>
--->
     </class>
 
 
