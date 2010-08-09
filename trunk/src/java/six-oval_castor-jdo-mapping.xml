@@ -517,7 +517,7 @@
         <!-- The object and state reference fields are defined in the subclass mappings.
         -->
 
-        <field name="object.ovalID" type="string">
+        <field name="object.objectRef" type="string">
             <sql name="object_ref" type="char"/>
         </field>
 
@@ -545,7 +545,7 @@
             <sql name="PID" type="integer"/>
         </field>
 
-        <field name="ovalID" type="string">
+        <field name="stateRef" type="string">
             <sql name="state_ref" type="char"/>
         </field>
 

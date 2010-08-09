@@ -172,49 +172,49 @@ public class Definition
     //  SIX: extended properties
     //==============================================================
 
-    private Collection<CriteriaElement>  _criteriaElement = new ArrayList<CriteriaElement>();
-
-
-    public void setCriteriaElement(
-                    final Collection<? extends CriteriaElement> elements
-                    )
-    {
-        if (elements != _criteriaElement) {
-            _criteriaElement.clear();
-            if (elements != null  &&  elements.size() > 0) {
-                _criteriaElement.addAll( elements );
-            }
-        }
-    }
-
-
-
-    public Collection<CriteriaElement> getCriteriaElement()
-    {
-        if (_criteriaElement.size() == 0) {
-            Criteria  criteria = getCriteria();
-            if (criteria != null) {
-                _collectCriteriaElement( _criteriaElement, criteria );
-            }
-        }
-
-        return _criteriaElement;
-    }
-
-
-    private void _collectCriteriaElement(
-                    final Collection<CriteriaElement> elementCollection,
-                    final CriteriaElement element
-                    )
-    {
-        elementCollection.add( element );
-        if (element instanceof Criteria) {
-            Criteria  criteria = Criteria.class.cast( element );
-            for (CriteriaElement  e : criteria.getElements()) {
-                _collectCriteriaElement( elementCollection, e );
-            }
-        }
-    }
+//    private Collection<CriteriaElement>  _criteriaElement = new ArrayList<CriteriaElement>();
+//
+//
+//    public void setCriteriaElement(
+//                    final Collection<? extends CriteriaElement> elements
+//                    )
+//    {
+//        if (elements != _criteriaElement) {
+//            _criteriaElement.clear();
+//            if (elements != null  &&  elements.size() > 0) {
+//                _criteriaElement.addAll( elements );
+//            }
+//        }
+//    }
+//
+//
+//
+//    public Collection<CriteriaElement> getCriteriaElement()
+//    {
+//        if (_criteriaElement.size() == 0) {
+//            Criteria  criteria = getCriteria();
+//            if (criteria != null) {
+//                _collectCriteriaElement( _criteriaElement, criteria );
+//            }
+//        }
+//
+//        return _criteriaElement;
+//    }
+//
+//
+//    private void _collectCriteriaElement(
+//                    final Collection<CriteriaElement> elementCollection,
+//                    final CriteriaElement element
+//                    )
+//    {
+//        elementCollection.add( element );
+//        if (element instanceof Criteria) {
+//            Criteria  criteria = Criteria.class.cast( element );
+//            for (CriteriaElement  e : criteria.getElements()) {
+//                _collectCriteriaElement( elementCollection, e );
+//            }
+//        }
+//    }
 
 
 

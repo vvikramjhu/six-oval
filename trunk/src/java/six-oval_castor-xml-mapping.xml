@@ -518,13 +518,6 @@
         -->
     </class>
 
-    <!--
-    <class name="jp.go.aist.six.oval.model.definitions.SimpleTest"
-        extends="jp.go.aist.six.oval.model.definitions.Test"
-        verify-constructable="false">
-    </class>
-    -->
-
 
 
     <!-- ======================================================= -->
@@ -552,7 +545,7 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
     -->
 
-        <field name="ovalID" type="string">
+        <field name="objectRef" type="string">
             <bind-xml name="object_ref" node="attribute"/>
         </field>
     </class>
@@ -569,7 +562,7 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
     -->
 
-        <field name="ovalID" type="string">
+        <field name="stateRef" type="string">
             <bind-xml name="state_ref" node="attribute"/>
         </field>
     </class>
@@ -583,9 +576,9 @@
         extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
         verify-constructable="false">
 
-        <!-- We found no object with notes. -->
 <!--
-        <field name="notes" type="jp.go.aist.six.oval.model.definitions.Notes">
+        <field name="notes" 
+            type="jp.go.aist.six.oval.model.definitions.Notes">
             <bind-xml name="notes" node="element"/>
         </field>
 -->
