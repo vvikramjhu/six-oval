@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.ObjectType;
+import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateInt;
@@ -237,9 +237,9 @@ public class MetabaseState
     //**************************************************************
 
     @Override
-    public ObjectType getObjectType()
+    public EntityType getObjectType()
     {
-        return ObjectType.WINDOWS_METABASE;
+        return EntityType.WINDOWS_METABASE;
     }
 
 

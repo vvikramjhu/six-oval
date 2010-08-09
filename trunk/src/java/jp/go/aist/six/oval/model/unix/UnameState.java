@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.ObjectType;
+import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
@@ -180,9 +180,9 @@ public class UnameState
     //**************************************************************
 
     @Override
-    public ObjectType getObjectType()
+    public EntityType getObjectType()
     {
-        return ObjectType.UNIX_UNAME;
+        return EntityType.UNIX_UNAME;
     }
 
 

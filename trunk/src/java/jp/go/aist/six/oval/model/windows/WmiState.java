@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.ObjectType;
+import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
@@ -125,9 +125,9 @@ public class WmiState
     //**************************************************************
 
     @Override
-    public ObjectType getObjectType()
+    public EntityType getObjectType()
     {
-        return ObjectType.WINDOWS_WMI;
+        return EntityType.WINDOWS_WMI;
     }
 
 

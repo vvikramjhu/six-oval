@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.ObjectType;
+import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
@@ -134,9 +134,9 @@ public class WmiObject
     //**************************************************************
 
     @Override
-    public ObjectType getObjectType()
+    public EntityType getObjectType()
     {
-        return ObjectType.WINDOWS_WMI;
+        return EntityType.WINDOWS_WMI;
     }
 
 

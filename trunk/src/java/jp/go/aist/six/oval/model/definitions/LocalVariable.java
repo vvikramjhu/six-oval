@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.ObjectType;
+import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.common.Datatype;
 
 
@@ -111,9 +111,9 @@ public class LocalVariable
     //**************************************************************
 
     @Override
-    public ObjectType getObjectType()
+    public EntityType getObjectType()
     {
-        return ObjectType.VARIABLE_LOCAL;
+        return EntityType.VARIABLE_LOCAL;
     }
 
 

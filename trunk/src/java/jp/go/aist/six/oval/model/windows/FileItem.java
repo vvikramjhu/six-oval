@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.ObjectType;
+import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.sc.EntityItemBase;
 import jp.go.aist.six.oval.model.sc.EntityItemInt;
@@ -495,9 +495,9 @@ public class FileItem
     //**************************************************************
 
     @Override
-    public ObjectType getObjectType()
+    public EntityType getObjectType()
     {
-        return ObjectType.WINDOWS_FILE;
+        return EntityType.WINDOWS_FILE;
     }
 
 

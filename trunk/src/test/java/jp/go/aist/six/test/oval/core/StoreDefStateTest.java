@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.core;
 
-import jp.go.aist.six.oval.model.ObjectType;
+import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.State;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -39,7 +39,7 @@ public class StoreDefStateTest
 //                        }
 //                        ,
                         {
-                            ObjectType.WINDOWS_FILE,
+                            EntityType.WINDOWS_FILE,
                             "test/data/definition/sample_oval-state-file.xml",
                             "oval:org.mitre.oval:ste:2190",
                             1
@@ -98,7 +98,7 @@ public class StoreDefStateTest
                     alwaysRun=true
                     )
     public void testDefState(
-                    final ObjectType type,
+                    final EntityType type,
                     final String filepath,
                     final String id,
                     final int version

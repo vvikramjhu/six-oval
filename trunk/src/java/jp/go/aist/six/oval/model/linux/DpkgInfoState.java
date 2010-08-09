@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.ObjectType;
+import jp.go.aist.six.oval.model.EntityType;
 
 
 
@@ -59,9 +59,9 @@ public class DpkgInfoState
     //**************************************************************
 
     @Override
-    public ObjectType getObjectType()
+    public EntityType getObjectType()
     {
-        return ObjectType.LINUX_DPKGINFO;
+        return EntityType.LINUX_DPKGINFO;
     }
 
 

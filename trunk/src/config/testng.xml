@@ -16,7 +16,7 @@
     <test name="oval.core" enabled="true">
         <groups>
             <run>
-                <include name="oval_definitions"/>
+                <include name="oval_results"/>
             </run>
         </groups>
 <!--

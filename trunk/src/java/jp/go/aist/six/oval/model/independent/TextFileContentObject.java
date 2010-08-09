@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.ObjectType;
+import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 
@@ -189,9 +189,9 @@ public class TextFileContentObject
     //**************************************************************
 
     @Override
-    public ObjectType getObjectType()
+    public EntityType getObjectType()
     {
-        return ObjectType.INDEPENDENT_TEXTFILECONTENT;
+        return EntityType.INDEPENDENT_TEXTFILECONTENT;
     }
 
 

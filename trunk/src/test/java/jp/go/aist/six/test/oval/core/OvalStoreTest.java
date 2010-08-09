@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.core;
 
-import jp.go.aist.six.oval.model.ObjectType;
+import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.definitions.Definitions;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
@@ -116,7 +116,7 @@ public class OvalStoreTest
                     alwaysRun=true
                     )
     public void testObject(
-                    final ObjectType type,
+                    final EntityType type,
                     final String filepath,
                     final String id,
                     final int version,

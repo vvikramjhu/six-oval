@@ -1,7 +1,7 @@
 package jp.go.aist.six.test.oval.service;
 
 import jp.go.aist.six.oval.core.service.OvalContext;
-import jp.go.aist.six.oval.model.ObjectType;
+import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Family;
@@ -75,7 +75,7 @@ public class OvalXmlMarshallingTest
                             "Word 97 is installed",
                             Existence.AT_LEAST_ONE_EXISTS,
                             Check.ALL,
-                            ObjectType.INDEPENDENT_UNKNOWN
+                            EntityType.INDEPENDENT_UNKNOWN
                         },
                         // Registry test
                         {
@@ -85,7 +85,7 @@ public class OvalXmlMarshallingTest
                             "Win2K/XP/2003/Vista/2008 service pack 2 is installed",
                             Existence.AT_LEAST_ONE_EXISTS,
                             Check.AT_LEAST_ONE,
-                            ObjectType.WINDOWS_REGISTRY
+                            EntityType.WINDOWS_REGISTRY
                         }
         };
     }
@@ -108,7 +108,7 @@ public class OvalXmlMarshallingTest
                     final String comment,
                     final Existence existence,
                     final Check check,
-                    final ObjectType type
+                    final EntityType type
                     )
     throws Exception
     {
@@ -153,14 +153,14 @@ public class OvalXmlMarshallingTest
                             "oval:org.mitre.oval:obj:99",
                             1,
                             "This is the default family object. Only one family object should exist.",
-                            ObjectType.INDEPENDENT_FAMILY
+                            EntityType.INDEPENDENT_FAMILY
                         },
                         {
                             "test/data/sample_oval-object-rpminfo.xml",
                             "oval:com.redhat.rhsa:obj:20100061001",
                             301,
                             null,
-                            ObjectType.LINUX_RPMINFO
+                            EntityType.LINUX_RPMINFO
                         }
         };
     }
@@ -178,7 +178,7 @@ public class OvalXmlMarshallingTest
                     final String id,
                     final int version,
                     final String comment,
-                    final ObjectType type
+                    final EntityType type
                     )
     throws Exception
     {

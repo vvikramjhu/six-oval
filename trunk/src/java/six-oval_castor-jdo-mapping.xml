@@ -510,7 +510,7 @@
         </field>
 
         <field name="objectType" 
-            type="jp.go.aist.six.oval.model.ObjectType">
+            type="jp.go.aist.six.oval.model.EntityType">
             <sql name="object_type" type="char"/>
         </field>
 
@@ -614,7 +614,7 @@
         </field>
 
         <field name="objectType" 
-            type="jp.go.aist.six.oval.model.ObjectType">
+            type="jp.go.aist.six.oval.model.EntityType">
             <sql name="object_type" type="char"/>
         </field>
     </class>
@@ -651,7 +651,7 @@
         </field>
 
         <field name="objectType" 
-            type="jp.go.aist.six.oval.model.ObjectType">
+            type="jp.go.aist.six.oval.model.EntityType">
             <sql name="object_type" type="char"/>
         </field>
     </class>
@@ -718,7 +718,7 @@
         </field>
 
         <field name="objectType" 
-            type="jp.go.aist.six.oval.model.ObjectType">
+            type="jp.go.aist.six.oval.model.EntityType">
             <sql name="object_type" type="char"/>
         </field>
     </class>
@@ -1056,7 +1056,7 @@
         </field>
 
         <field name="objectType" 
-            type="jp.go.aist.six.oval.model.ObjectType">
+            type="jp.go.aist.six.oval.model.EntityType">
             <sql name="object_type" type="char"/>
         </field>
 
@@ -2072,7 +2072,8 @@
     <class name="jp.go.aist.six.oval.model.unix.UnameItem"
         extends="jp.go.aist.six.oval.model.sc.Item"
         identity="persistentID">
-        <cache-type type="unlimited"/>
+
+        <!-- cache-type type="unlimited"/ -->
         <map-to table="oval_s_item_uname"/>
 
         <field name="persistentID" type="string">

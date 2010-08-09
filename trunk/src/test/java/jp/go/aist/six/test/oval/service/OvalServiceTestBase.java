@@ -3,7 +3,7 @@ package jp.go.aist.six.test.oval.service;
 import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
-import jp.go.aist.six.oval.model.ObjectType;
+import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.definitions.DefinitionClass;
@@ -247,63 +247,63 @@ public abstract class OvalServiceTestBase
     {
         return new Object[][] {
                         {
-                            ObjectType.INDEPENDENT_FAMILY,
+                            EntityType.INDEPENDENT_FAMILY,
                             "test/data/definition/sample_oval-state-family.xml",
                             "oval:org.mitre.oval:ste:99",
                             2
                         }
                         ,
                         {
-                            ObjectType.INDEPENDENT_TEXTFILECONTENT,
+                            EntityType.INDEPENDENT_TEXTFILECONTENT,
                             "test/data/definition/sample_oval-state-textfilecontent.xml",
                             "oval:org.mitre.oval:ste:5132",
                             1
                         }
                         ,
                         {
-                            ObjectType.WINDOWS_FILE,
+                            EntityType.WINDOWS_FILE,
                             "test/data/definition/sample_oval-state-file.xml",
                             "oval:org.mitre.oval:ste:2190",
                             1
                         }
                         ,
                         {
-                            ObjectType.WINDOWS_METABASE,
+                            EntityType.WINDOWS_METABASE,
                             "test/data/definition/sample_oval-state-metabase.xml",
                             "oval:org.mitre.oval:ste:537",
                             1
                         }
                         ,
                         {
-                            ObjectType.WINDOWS_REGISTRY,
+                            EntityType.WINDOWS_REGISTRY,
                             "test/data/definition/sample_oval-state-registry.xml",
                             "oval:org.mitre.oval:ste:1205",
                             1
                         }
                         ,
                         {
-                            ObjectType.LINUX_DPKGINFO,
+                            EntityType.LINUX_DPKGINFO,
                             "test/data/definition/sample_oval-state-dpkginfo.xml",
                             "oval:org.mitre.oval:ste:5797",
                             1
                         }
                         ,
                         {
-                            ObjectType.LINUX_RPMINFO,
+                            EntityType.LINUX_RPMINFO,
                             "test/data/definition/sample_oval-state-rpminfo-evr.xml",
                             "oval:com.redhat.rhsa:ste:20100061004",
                             301
                         }
                         ,
                         {
-                            ObjectType.LINUX_RPMINFO,
+                            EntityType.LINUX_RPMINFO,
                             "test/data/definition/sample_oval-state-rpminfo-version.xml",
                             "oval:com.redhat.rhsa:ste:20100061003",
                             301
                         }
                         ,
                         {
-                            ObjectType.LINUX_RPMINFO,
+                            EntityType.LINUX_RPMINFO,
                             "test/data/definition/sample_oval-state-rpminfo-signature_keyid.xml",
                             "oval:com.redhat.rhsa:ste:20100061002",
                             301
@@ -411,7 +411,7 @@ public abstract class OvalServiceTestBase
                             "the installed operating system is part of the Microsoft Windows family",
                             Existence.AT_LEAST_ONE_EXISTS,
                             Check.ONLY_ONE,
-                            ObjectType.INDEPENDENT_FAMILY,
+                            EntityType.INDEPENDENT_FAMILY,
                             "oval:org.mitre.oval:obj:99",
                             "oval:org.mitre.oval:ste:99"
                         },
@@ -424,7 +424,7 @@ public abstract class OvalServiceTestBase
                             "Debian GNU/Linux 5.0 is installed",
                             Existence.AT_LEAST_ONE_EXISTS,
                             Check.ALL,
-                            ObjectType.INDEPENDENT_TEXTFILECONTENT,
+                            EntityType.INDEPENDENT_TEXTFILECONTENT,
                             "oval:org.mitre.oval:obj:7326",
                             "oval:org.mitre.oval:ste:5739"
                         },
@@ -437,7 +437,7 @@ public abstract class OvalServiceTestBase
                             "Word 97 is installed",
                             Existence.AT_LEAST_ONE_EXISTS,
                             Check.ALL,
-                            ObjectType.INDEPENDENT_UNKNOWN,
+                            EntityType.INDEPENDENT_UNKNOWN,
                             null,
                             null
                         },
@@ -450,7 +450,7 @@ public abstract class OvalServiceTestBase
                             "Installed architecture is mips",
                             Existence.AT_LEAST_ONE_EXISTS,
                             Check.ALL,
-                            ObjectType.UNIX_UNAME,
+                            EntityType.UNIX_UNAME,
                             "oval:org.mitre.oval:obj:2759",
                             "oval:org.mitre.oval:ste:5601"
                         },
@@ -463,7 +463,7 @@ public abstract class OvalServiceTestBase
                             "Win2K/XP/2003/Vista/2008 service pack 2 is installed",
                             Existence.AT_LEAST_ONE_EXISTS,
                             Check.AT_LEAST_ONE,
-                            ObjectType.WINDOWS_REGISTRY,
+                            EntityType.WINDOWS_REGISTRY,
                             "oval:org.mitre.oval:obj:717",
                             "oval:org.mitre.oval:ste:2827"
                         },
@@ -476,7 +476,7 @@ public abstract class OvalServiceTestBase
                             "Negotiate is enabled",
                             Existence.AT_LEAST_ONE_EXISTS,
                             Check.AT_LEAST_ONE,
-                            ObjectType.WINDOWS_METABASE,
+                            EntityType.WINDOWS_METABASE,
                             "oval:org.mitre.oval:obj:556",
                             null
                         },
@@ -489,7 +489,7 @@ public abstract class OvalServiceTestBase
                             "the version of mshtml.dll is less than 6.0.2900.2873",
                             Existence.AT_LEAST_ONE_EXISTS,
                             Check.AT_LEAST_ONE,
-                            ObjectType.WINDOWS_FILE,
+                            EntityType.WINDOWS_FILE,
                             "oval:org.mitre.oval:obj:222",
                             "oval:org.mitre.oval:ste:2190"
                         },
@@ -502,7 +502,7 @@ public abstract class OvalServiceTestBase
                             "gzip is earlier than 0:1.3.5-11.el5_4.1",
                             Test.DEFAULT_CHECK_EXISTENCE,
                             Check.AT_LEAST_ONE,
-                            ObjectType.LINUX_RPMINFO,
+                            EntityType.LINUX_RPMINFO,
                             "oval:com.redhat.rhsa:obj:20100061002",
                             "oval:com.redhat.rhsa:ste:20100061004"
                         },
@@ -515,7 +515,7 @@ public abstract class OvalServiceTestBase
                             "apache2-src is earlier than 2.2.9-10+lenny6",
                             Existence.AT_LEAST_ONE_EXISTS,
                             Check.ALL,
-                            ObjectType.LINUX_DPKGINFO,
+                            EntityType.LINUX_DPKGINFO,
                             "oval:org.mitre.oval:obj:10286",
                             "oval:org.mitre.oval:ste:6372"
                         }

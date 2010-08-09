@@ -30,7 +30,7 @@ import java.util.HashMap;
  * @author  Akihito Nakamura, AIST
  * @version $Id: ComponentType.java 696 2010-04-26 10:22:00Z akihito $
  */
-public final class ObjectType
+public final class EntityType
     implements Serializable
 {
 
@@ -50,25 +50,25 @@ public final class ObjectType
     private static final String  _VARIABLE_EXTERNAL_    = "variable.external";
 
 
-    public static final ObjectType  UNKNOWN               = new ObjectType( _UNKNOWN_ );
-    public static final ObjectType  INDEPENDENT_FAMILY    = new ObjectType( _INDEPENDENT_FAMILY_ );
-    public static final ObjectType  INDEPENDENT_TEXTFILECONTENT = new ObjectType( _INDEPENDENT_TEXTFILECONTENT_ );
-    public static final ObjectType  INDEPENDENT_UNKNOWN   = new ObjectType( _INDEPENDENT_UNKNOWN_ );
-    public static final ObjectType  LINUX_DPKGINFO        = new ObjectType( _LINUX_DPKGINFO_ );
-    public static final ObjectType  LINUX_RPMINFO         = new ObjectType( _LINUX_RPMINFO_ );
-    public static final ObjectType  UNIX_UNAME            = new ObjectType( _UNIX_UNAME_ );
-    public static final ObjectType  WINDOWS_FILE          = new ObjectType( _WINDOWS_FILE_ );
-    public static final ObjectType  WINDOWS_METABASE      = new ObjectType( _WINDOWS_METABASE_ );
-    public static final ObjectType  WINDOWS_REGISTRY      = new ObjectType( _WINDOWS_REGISTRY_ );
-    public static final ObjectType  WINDOWS_WMI           = new ObjectType( _WINDOWS_WMI_ );
+    public static final EntityType  UNKNOWN               = new EntityType( _UNKNOWN_ );
+    public static final EntityType  INDEPENDENT_FAMILY    = new EntityType( _INDEPENDENT_FAMILY_ );
+    public static final EntityType  INDEPENDENT_TEXTFILECONTENT = new EntityType( _INDEPENDENT_TEXTFILECONTENT_ );
+    public static final EntityType  INDEPENDENT_UNKNOWN   = new EntityType( _INDEPENDENT_UNKNOWN_ );
+    public static final EntityType  LINUX_DPKGINFO        = new EntityType( _LINUX_DPKGINFO_ );
+    public static final EntityType  LINUX_RPMINFO         = new EntityType( _LINUX_RPMINFO_ );
+    public static final EntityType  UNIX_UNAME            = new EntityType( _UNIX_UNAME_ );
+    public static final EntityType  WINDOWS_FILE          = new EntityType( _WINDOWS_FILE_ );
+    public static final EntityType  WINDOWS_METABASE      = new EntityType( _WINDOWS_METABASE_ );
+    public static final EntityType  WINDOWS_REGISTRY      = new EntityType( _WINDOWS_REGISTRY_ );
+    public static final EntityType  WINDOWS_WMI           = new EntityType( _WINDOWS_WMI_ );
 
-    public static final ObjectType  VARIABLE_LOCAL        = new ObjectType( _VARIABLE_LOCAL_ );
-    public static final ObjectType  VARIABLE_EXTERNAL     = new ObjectType( _VARIABLE_EXTERNAL_ );
+    public static final EntityType  VARIABLE_LOCAL        = new EntityType( _VARIABLE_LOCAL_ );
+    public static final EntityType  VARIABLE_EXTERNAL     = new EntityType( _VARIABLE_EXTERNAL_ );
 
 
-    private static HashMap<String, ObjectType> _INIT_()
+    private static HashMap<String, EntityType> _INIT_()
     {
-        HashMap<String, ObjectType>  map = new HashMap<String, ObjectType>();
+        HashMap<String, EntityType>  map = new HashMap<String, EntityType>();
         map.put( _UNKNOWN_,             UNKNOWN             );
         map.put( _INDEPENDENT_FAMILY_,  INDEPENDENT_FAMILY  );
         map.put( _INDEPENDENT_TEXTFILECONTENT_,  INDEPENDENT_TEXTFILECONTENT  );
@@ -86,27 +86,27 @@ public final class ObjectType
         return map;
     }
 
-    private static final HashMap<String, ObjectType>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, EntityType>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static ObjectType valueOf(
+    public static EntityType valueOf(
                     final String name
                     )
     {
-        ObjectType  status = null;
+        EntityType  type = null;
         if (name != null) {
-            status = _INSTANCES_.get( name );
+            type = _INSTANCES_.get( name );
         }
 
-        if (status == null) {
-            throw new IllegalArgumentException( "invalid object type: " + name );
+        if (type == null) {
+            throw new IllegalArgumentException( "invalid entity type: " + name );
         }
 
-        return status;
+        return type;
     }
 
 
@@ -117,7 +117,7 @@ public final class ObjectType
 
     /**
      */
-    private ObjectType(
+    private EntityType(
                     final String name
                     )
     {
@@ -146,7 +146,7 @@ public final class ObjectType
     }
 
 }
-// ObjectType
+// EntityType
 
 /* vim:set tabstop=4:set expandtab:set shiftwidth=4: */
 

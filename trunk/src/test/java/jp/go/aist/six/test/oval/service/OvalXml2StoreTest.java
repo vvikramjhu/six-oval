@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.service;
 
-import jp.go.aist.six.oval.model.ObjectType;
+import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.definitions.Definition;
@@ -306,7 +306,7 @@ extends OvalServiceTestBase
                     alwaysRun=true
                     )
     public void processState(
-                    final ObjectType type,
+                    final EntityType type,
                     final String filepath,
                     final String id,
                     final int version
@@ -404,7 +404,7 @@ extends OvalServiceTestBase
                     final String comment,
                     final Existence existence,
                     final Check check,
-                    final ObjectType type,
+                    final EntityType type,
                     final String objectID,
                     final String stateID
                     )
