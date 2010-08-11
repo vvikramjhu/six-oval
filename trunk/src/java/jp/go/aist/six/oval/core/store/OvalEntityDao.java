@@ -90,20 +90,13 @@ public class OvalEntityDao<T extends OvalEntity>
     // workaround:
     @Override
     public T get(
-                    final Object identity
+                    final String identity
                     )
     {
         List<T>  p_objects = find(
                         RelationalBinding.equalBinding( "persistentID", identity ) );
         return (p_objects.size() == 0 ? null : p_objects.get( 0 ) );
     }
-
-
-//    @Override
-//    public T findEquivalent( final T object )
-//    {
-//        return get( object.getPersistentID() );
-//    }
 
 }
 // OvalEntityDao
