@@ -30,9 +30,14 @@ import java.util.Collection;
  * A single OVAL Definition.
  * <p>Properties:</p>
  * <ul>
- *   <li>metadata (required)</li>
- *   <li>criteria (option)</li>
- *   <li>definitionClass (required)</li>
+ *   <li>id (required)</li>
+ *   <li>version (required)</li>
+ *   <li>definitionClass (required): 'class' is renamed.</li>
+ *   <li>deprecated (optional -- default='false')</li>
+ *   <li>Signature (0..1): NOT supported.</li>
+ *   <li>metadata (1..1)</li>
+ *   <li>notes (0..1): NOT supported.</li>
+ *   <li>criteria (0..1)</li>
  * </ul>
  *
  * @author	Akihito Nakamura, AIST

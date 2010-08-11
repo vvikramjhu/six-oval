@@ -25,7 +25,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 /**
- * An OVAL entity or an analysis result.
+ * An OVAL entity or an object to refer an entity.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
@@ -52,6 +52,11 @@ public abstract class OvalElement
 
     /**
      * Constructor.
+     *
+     * @param   id
+     *  the OVAL-ID of the entity.
+     * @param   version
+     *  the version of the entity.
      */
     public OvalElement(
                     final String id,
@@ -64,6 +69,12 @@ public abstract class OvalElement
 
 
 
+    /**
+     * Sets the OVAL-ID.
+     *
+     * @param   id
+     *  the OVAL-ID.
+     */
     public void setOvalID(
                     final String id
                     )
@@ -72,6 +83,12 @@ public abstract class OvalElement
     }
 
 
+    /**
+     * Retuens the OVAL-ID.
+     *
+     * @return
+     *  the OVAL-ID.
+     */
     public String getOvalID()
     {
         return _ovalID;
@@ -79,6 +96,12 @@ public abstract class OvalElement
 
 
 
+    /**
+     * Sets the version.
+     *
+     * @param   version
+     *  the version.
+     */
     public void setOvalVersion(
                     final int version
                     )
@@ -91,6 +114,12 @@ public abstract class OvalElement
     }
 
 
+    /**
+     * Returns the version.
+     *
+     * @return
+     *  the version.
+     */
     public int getOvalVersion()
     {
         return _ovalVersion;

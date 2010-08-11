@@ -45,8 +45,8 @@ public abstract class KeyedContainer<K,V>
 {
 
     private final Map<K,V>  _elements = new HashMap<K,V>();
-    //TODO: If we use LnkedHashMap, Container.equals() method does NOT work.
-    // The order of elements seems to be affected.
+    //NOTE: If we use LnkedHashMap, Container.equals() method does NOT work.
+    //The order of elements has meaning.
 
 
 

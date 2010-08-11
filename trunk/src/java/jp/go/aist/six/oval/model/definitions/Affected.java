@@ -30,8 +30,14 @@ import java.util.Iterator;
 
 
 /**
- * An Affected describes family, platform(s), and product(s)
- * to be evaluated for the OVAL Definition.
+ * A description of the family, platform(s), and product(s)
+ * to be evaluated for an OVAL Definition.
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>family (required)</li>
+ *   <li>platform (0..*)</li>
+ *   <li>product (0..*)</li>
+ * </ul>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

@@ -27,7 +27,11 @@ import java.util.Iterator;
 
 
 /**
- * A collection of Definition objects.
+ * A container for one or more Definition elements.
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>definition (1..*)</li>
+ * </ul>
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -48,10 +52,10 @@ public class Definitions
      * Constructor.
      */
     public Definitions(
-                    final Collection<? extends Definition> elements
+                    final Collection<? extends Definition> definitions
                     )
     {
-        super( elements );
+        super( definitions );
     }
 
 
@@ -59,27 +63,27 @@ public class Definitions
      * Constructor.
      */
     public Definitions(
-                    final Definition[] elements
+                    final Definition[] definitions
                     )
     {
-        super( elements );
+        super( definitions );
     }
 
 
 
     public void setDefinition(
-                    final Collection<? extends Definition> elements
+                    final Collection<? extends Definition> definitions
                     )
     {
-        reset( elements );
+        reset( definitions );
     }
 
 
     public boolean addDefinition(
-                    final Definition e
+                    final Definition definition
                     )
     {
-        return add( e );
+        return add( definition );
     }
 
 

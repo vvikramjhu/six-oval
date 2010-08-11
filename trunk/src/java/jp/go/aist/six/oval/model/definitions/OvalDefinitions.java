@@ -27,8 +27,15 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 
 /**
  * The root of an OVAL Definition Document.
- * This bind together the major sections of a Definitions document;
- * generator, definitions, tests, objects, states, and variables.
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>generator (1..1)</li>
+ *   <li>definitions (0..1)</li>
+ *   <li>tests (0..1)</li>
+ *   <li>objects(0..1)</li>
+ *   <li>states (0..1)</li>
+ *   <li>variables (0..1)</li>
+ * </ul>
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

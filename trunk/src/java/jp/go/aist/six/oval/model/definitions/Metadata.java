@@ -39,14 +39,16 @@ import java.util.Set;
 
 /**
  * All the metadata available to an OVAL Definition.
+ * Additional metadata is also allowed although it is not
+ * part of the official OVAL Schema.
  *
  * <p>Properties:</p>
  * <ul>
- *   <li>title (required)</li>
- *   <li>affected (option)</li>
- *   <li>reference (option, 0..*)</li>
- *   <li>description (required)</li>
- *   <li>metadataItem (option, 0..*)</li>
+ *   <li>title (1..1)</li>
+ *   <li>affected (0..1): the right cardinality is 0..*.</li>
+ *   <li>reference (0..*)</li>
+ *   <li>description (1..1)</li>
+ *   <li>additionalMetadata (0..*): xsd:any.</li>
  * </ul>
  *
  * @author	Akihito Nakamura, AIST

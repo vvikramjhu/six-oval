@@ -25,15 +25,13 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 /**
- * Additional metadata which is not part of the official OVAL Schema.
- * Individual organizations can place metadata items
- * that they feel are important.
+ * Additional metadata provided by individual organizations.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
 public abstract class MetadataItem
-extends AbstractPersistable
+    extends AbstractPersistable
 {
 
     /**
