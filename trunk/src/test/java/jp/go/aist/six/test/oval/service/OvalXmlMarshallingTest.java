@@ -128,7 +128,7 @@ public class OvalXmlMarshallingTest
         Assert.assertEquals( comment, test.getComment() );
         Assert.assertEquals( existence, test.getCheckExistence() );
         Assert.assertEquals( check, test.getCheck() );
-        Assert.assertEquals( type, test.getObjectType() );
+        Assert.assertEquals( type, test.getEntityType() );
 
         Reporter.log( "  * marshalling XML...", true );
         String  xml = _xmlMapper.marshalToString( test );
@@ -196,7 +196,7 @@ public class OvalXmlMarshallingTest
         Assert.assertEquals( id, object.getOvalID() );
         Assert.assertEquals( version, object.getOvalVersion() );
         Assert.assertEquals( comment, object.getComment() );
-        Assert.assertEquals( type, object.getObjectType() );
+        Assert.assertEquals( type, object.getEntityType() );
 
         Reporter.log( "  * marshalling XML...", true );
         String  xml = _xmlMapper.marshalToString( object );

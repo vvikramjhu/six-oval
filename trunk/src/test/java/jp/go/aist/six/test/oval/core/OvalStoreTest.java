@@ -131,7 +131,7 @@ public class OvalStoreTest
 
         Assert.assertEquals( obj.getOvalID(), id );
         Assert.assertEquals( obj.getOvalVersion(), version );
-        Assert.assertEquals( obj.getObjectType(), type );
+        Assert.assertEquals( obj.getEntityType(), type );
         Assert.assertEquals( obj.getComment(), comment );
 
         _syncOvalEntity( SystemObject.class, obj );

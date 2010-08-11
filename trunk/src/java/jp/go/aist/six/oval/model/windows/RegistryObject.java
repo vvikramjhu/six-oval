@@ -184,7 +184,7 @@ public class RegistryObject
     //**************************************************************
 
     @Override
-    public EntityType getObjectType()
+    public EntityType getEntityType()
     {
         return EntityType.WINDOWS_REGISTRY;
     }

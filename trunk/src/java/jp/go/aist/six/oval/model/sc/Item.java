@@ -89,15 +89,17 @@ public class Item
 
 
 
-    public void setObjectType(
+    /**
+     */
+    public void setEntityType(
                     final EntityType type
                     )
     {
     }
 
 
-//    public abstract ObjectType getObjectType();
-    public EntityType getObjectType()
+//    public abstract EntityType getEntityType();
+    public EntityType getEntityType()
     {
         return EntityType.UNKNOWN;
     }

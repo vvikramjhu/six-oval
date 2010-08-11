@@ -202,14 +202,16 @@ public abstract class Test
 
 
 
-    public void setObjectType(
+    /**
+     */
+    public void setEntityType(
                     final EntityType type
                     )
     {
     }
 
 
-    public abstract EntityType getObjectType();
+    public abstract EntityType getEntityType();
 
 
 

@@ -197,7 +197,7 @@ public class StoreDefTestTest
 
         Assert.assertEquals( obj.getOvalID(), id );
         Assert.assertEquals( obj.getOvalVersion(), version );
-        Assert.assertEquals( obj.getObjectType(), type );
+        Assert.assertEquals( obj.getEntityType(), type );
 
         _syncOvalEntity( Test.class, obj );
     }

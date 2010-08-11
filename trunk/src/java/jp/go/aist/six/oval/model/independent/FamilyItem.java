@@ -123,7 +123,7 @@ public class FamilyItem
     //**************************************************************
 
     @Override
-    public EntityType getObjectType()
+    public EntityType getEntityType()
     {
         return EntityType.INDEPENDENT_FAMILY;
     }

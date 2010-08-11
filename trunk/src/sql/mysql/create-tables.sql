@@ -435,7 +435,7 @@ CREATE TABLE IF NOT EXISTS oval_d_test
     
     object_ref          VARCHAR(64),
 
-    object_type         VARCHAR(32)     NOT NULL,
+    entity_type         VARCHAR(32)     NOT NULL,
 
     /* (FK) */
 
@@ -532,7 +532,7 @@ CREATE TABLE IF NOT EXISTS oval_d_object
     deprecated          BOOLEAN                     DEFAULT false,
     comment             VARCHAR(255),
 
-    object_type         VARCHAR(32)     NOT NULL,
+    entity_type         VARCHAR(32)     NOT NULL,
     
     /* (FK) */
 
@@ -612,7 +612,7 @@ CREATE TABLE IF NOT EXISTS oval_d_state
 
     /* We found NO state with an explicit note. */
 
-    object_type          VARCHAR(32)    NOT NULL,
+    entity_type          VARCHAR(32)    NOT NULL,
 
     /* (FK) */
 
@@ -666,7 +666,7 @@ CREATE TABLE IF NOT EXISTS oval_d_variable
 
     datatype            VARCHAR(16)     NOT NULL,
 
-    object_type         VARCHAR(32)     NOT NULL,
+    entity_type         VARCHAR(32)     NOT NULL,
 
     /* (FK) */
 
@@ -884,7 +884,7 @@ CREATE TABLE IF NOT EXISTS oval_s_item
     status              VARCHAR(16)     NOT NULL    DEFAULT 'exists',
                         /* ENUM( 'error', ..., 'not collected') */
     
-    object_type         VARCHAR(32)     NOT NULL,
+    entity_type         VARCHAR(32)     NOT NULL,
 
     /* (FK) */
     s_sc__PID           CHAR(36)        NOT NULL,

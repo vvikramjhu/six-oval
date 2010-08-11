@@ -327,7 +327,7 @@ extends OvalServiceTestBase
         State  state = State.class.cast( obj );
         Assert.assertEquals( id, state.getOvalID() );
         Assert.assertEquals( version, state.getOvalVersion() );
-        Assert.assertEquals( type, state.getObjectType() );
+        Assert.assertEquals( type, state.getEntityType() );
 
         Reporter.log( "  * marshalling XML...", true );
         String  xml = _xml.marshalToString( state );
@@ -426,7 +426,7 @@ extends OvalServiceTestBase
         Assert.assertEquals( comment, test.getComment() );
         Assert.assertEquals( existence, test.getCheckExistence() );
         Assert.assertEquals( check, test.getCheck() );
-        Assert.assertEquals( type, test.getObjectType() );
+        Assert.assertEquals( type, test.getEntityType() );
         Assert.assertEquals( objectID, test.getObject().getOvalID() );
         Collection<StateRef>  stateRef = test.getState();
         if (stateRef != null  &&  stateRef.size() > 0) {

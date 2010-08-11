@@ -78,8 +78,7 @@ public class UnknownTest
     //  Test
     //**************************************************************
 
-    @Override
-    public EntityType getObjectType()
+    public EntityType getEntityType()
     {
         return EntityType.INDEPENDENT_UNKNOWN;
     }

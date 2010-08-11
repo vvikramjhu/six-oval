@@ -75,8 +75,7 @@ public class RpmInfoTest
     //  Test
     //**************************************************************
 
-    @Override
-    public EntityType getObjectType()
+    public EntityType getEntityType()
     {
         return EntityType.LINUX_RPMINFO;
     }

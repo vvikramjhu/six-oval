@@ -75,8 +75,7 @@ public class UnameTest
     //  Test
     //**************************************************************
 
-    @Override
-    public EntityType getObjectType()
+    public EntityType getEntityType()
     {
         return EntityType.UNIX_UNAME;
     }

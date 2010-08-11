@@ -151,7 +151,7 @@ public class DpkgInfoItem
     //**************************************************************
 
     @Override
-    public EntityType getObjectType()
+    public EntityType getEntityType()
     {
         return EntityType.LINUX_DPKGINFO;
     }

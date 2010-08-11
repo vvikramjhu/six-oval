@@ -147,7 +147,7 @@ public class TextFileContentState
     //**************************************************************
 
     @Override
-    public EntityType getObjectType()
+    public EntityType getEntityType()
     {
         return EntityType.INDEPENDENT_TEXTFILECONTENT;
     }

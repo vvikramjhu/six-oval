@@ -111,7 +111,7 @@ public class LocalVariable
     //**************************************************************
 
     @Override
-    public EntityType getObjectType()
+    public EntityType getEntityType()
     {
         return EntityType.VARIABLE_LOCAL;
     }

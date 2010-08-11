@@ -107,14 +107,16 @@ public abstract class Variable
 
 
 
-    public void setObjectType(
+    /**
+     */
+    public void setEntityType(
                     final EntityType type
                     )
     {
     }
 
 
-    public abstract EntityType getObjectType();
+    public abstract EntityType getEntityType();
 
 
 

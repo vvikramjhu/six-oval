@@ -125,7 +125,7 @@ public class WmiState
     //**************************************************************
 
     @Override
-    public EntityType getObjectType()
+    public EntityType getEntityType()
     {
         return EntityType.WINDOWS_WMI;
     }

@@ -509,9 +509,9 @@
             <sql name="state_operator" type="char"/>
         </field>
 
-        <field name="objectType" 
+        <field name="entityType" 
             type="jp.go.aist.six.oval.model.EntityType">
-            <sql name="object_type" type="char"/>
+            <sql name="entity_type" type="char"/>
         </field>
 
         <!-- The object and state reference fields are defined in the subclass mappings.
@@ -613,9 +613,9 @@
             <sql name="comment" type="char"/>
         </field>
 
-        <field name="objectType" 
+        <field name="entityType" 
             type="jp.go.aist.six.oval.model.EntityType">
-            <sql name="object_type" type="char"/>
+            <sql name="entity_type" type="char"/>
         </field>
     </class>
 
@@ -650,9 +650,9 @@
             <sql name="comment" type="char"/>
         </field>
 
-        <field name="objectType" 
+        <field name="entityType" 
             type="jp.go.aist.six.oval.model.EntityType">
-            <sql name="object_type" type="char"/>
+            <sql name="entity_type" type="char"/>
         </field>
     </class>
 
@@ -717,9 +717,9 @@
             <sql name="datatype" type="char"/>
         </field>
 
-        <field name="objectType" 
+        <field name="entityType" 
             type="jp.go.aist.six.oval.model.EntityType">
-            <sql name="object_type" type="char"/>
+            <sql name="entity_type" type="char"/>
         </field>
     </class>
 
@@ -1055,9 +1055,9 @@
             <sql name="status" type="char"/>
         </field>
 
-        <field name="objectType" 
+        <field name="entityType" 
             type="jp.go.aist.six.oval.model.EntityType">
-            <sql name="object_type" type="char"/>
+            <sql name="entity_type" type="char"/>
         </field>
 
         <!-- (FK) -->
