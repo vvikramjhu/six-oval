@@ -28,6 +28,17 @@ import java.util.Iterator;
 
 
 /**
+ * A high level container for all the tests.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>operator (optional -- default='AND')</li>
+ *   <li>negate (optional -- default='false')</li>
+ *   <li>comment (optional)</li>
+ *   <li>criteria (0..*)</li>
+ *   <li>criterion (0..*)</li>
+ *   <li>extend_definition (0..*)</li>
+ * </ul>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

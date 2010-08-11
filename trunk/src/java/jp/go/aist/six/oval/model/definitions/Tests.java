@@ -27,7 +27,12 @@ import java.util.Iterator;
 
 
 /**
- * A collection of Test entities.
+ * A container for one or more Test objects.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>test (1..*)</li>
+ * </ul>
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

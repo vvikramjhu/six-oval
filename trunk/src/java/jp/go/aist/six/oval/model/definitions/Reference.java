@@ -25,6 +25,14 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 /**
+ * A link from the OVAL Definition to a definitive external reference.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>source (required)</li>
+ *   <li>ref_id (required)</li>
+ *   <li>ref_url (optional)</li>
+ * </ul>
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

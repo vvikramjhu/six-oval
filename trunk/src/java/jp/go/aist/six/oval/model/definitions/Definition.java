@@ -28,15 +28,16 @@ import java.util.Collection;
 
 /**
  * A single OVAL Definition.
+ *
  * <p>Properties:</p>
  * <ul>
  *   <li>id (required)</li>
  *   <li>version (required)</li>
- *   <li>definitionClass (required): 'class' is renamed.</li>
+ *   <li>definitionClass (required): 'class' was renamed.</li>
  *   <li>deprecated (optional -- default='false')</li>
- *   <li>Signature (0..1): NOT supported.</li>
+ *   <li>Signature (0..1): currently NOT supported.</li>
  *   <li>metadata (1..1)</li>
- *   <li>notes (0..1): NOT supported.</li>
+ *   <li>notes (0..1): currently NOT supported.</li>
  *   <li>criteria (0..1)</li>
  * </ul>
  *
