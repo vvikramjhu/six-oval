@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.core.service.restlet;
 
-import jp.go.aist.six.oval.model.definitions.Definition;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.restlet.Context;
@@ -32,6 +31,8 @@ import org.restlet.resource.Representation;
 import org.restlet.resource.ResourceException;
 import org.restlet.resource.StringRepresentation;
 import org.restlet.resource.Variant;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 
 
@@ -81,12 +82,16 @@ public class CountDefinitionsResource
     {
         Representation  rep = null;
         try {
-            int  count = _getOvalStore().countAll( Definition.class );
-            getResponse().setStatus( Status.SUCCESS_CREATED );
+//            int  count = _getOvalStore().countAll( Definition.class );
+            int  count = 100;
+            getResponse().setStatus( Status.SUCCESS_OK );
             rep = new StringRepresentation( String.valueOf( count ), MediaType.TEXT_PLAIN );
         } catch (Exception ex) {
             if (_LOG.isWarnEnabled()) {
                 _LOG.warn( ex );
+                StringWriter  s = new StringWriter();
+                ex.printStackTrace( new PrintWriter( s ) );
+                _LOG.warn( s.toString() );
             }
             getResponse().setStatus( Status.SERVER_ERROR_INTERNAL );
             rep = new StringRepresentation(
@@ -94,7 +99,7 @@ public class CountDefinitionsResource
                     MediaType.TEXT_PLAIN );
         }
 
-//        getResponse().setEntity( rep );
+        getResponse().setEntity( rep );
 
         return rep;
     }
