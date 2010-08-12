@@ -20,11 +20,10 @@
 
 package jp.go.aist.six.oval.core.service.restlet;
 
-import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.model.definitions.Definition;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.restlet.Context;
-import org.restlet.data.Form;
 import org.restlet.data.MediaType;
 import org.restlet.data.Request;
 import org.restlet.data.Response;
@@ -41,14 +40,14 @@ import org.restlet.resource.Variant;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalResultsResource
+public class CountDefinitionsResource
     extends BaseResource
 {
 
     /**
      * Logger.
      */
-    private static Log  _LOG = LogFactory.getLog( OvalResultsResource.class );
+    private static Log  _LOG = LogFactory.getLog( CountDefinitionsResource.class );
 
 
 
@@ -56,7 +55,7 @@ public class OvalResultsResource
     /**
      * Constructor.
      */
-    public OvalResultsResource(
+    public CountDefinitionsResource(
                     final Context context,
                     final Request request,
                     final Response response
@@ -73,47 +72,31 @@ public class OvalResultsResource
     //  Resource
     //**************************************************************
 
+    // GET:
     @Override
-    public boolean allowPost()
-    {
-        return true;
-    }
-
-
-
-    // POST: create a new OvalResults, return the ID
-    @Override
-    public void acceptRepresentation(
-                    final Representation entity
+    public Representation represent(
+                    final Variant variant
                     )
     throws ResourceException
     {
-        Form  form = new Form( entity );
-        String  xml = form.getFirstValue( "oval_results" );
-        if (_LOG.isTraceEnabled()) {
-            _LOG.trace( "content XML: length=" + xml.length() );
-//          _LOG.trace( "content XML: " + xml );
-        }
-
         Representation  rep = null;
         try {
-            OvalResults  results = (OvalResults)_getOvalXml().unmarshalFromString( xml );
-            Object  pid = _getOvalStore().create( OvalResults.class, results );
+            int  count = _getOvalStore().countAll( Definition.class );
             getResponse().setStatus( Status.SUCCESS_CREATED );
-            rep = new StringRepresentation( String.valueOf( pid ), MediaType.TEXT_PLAIN );
-            rep.setIdentifier( getRequest().getResourceRef().getIdentifier()
-                            + "/" + pid );
+            rep = new StringRepresentation( String.valueOf( count ), MediaType.TEXT_PLAIN );
         } catch (Exception ex) {
             if (_LOG.isWarnEnabled()) {
                 _LOG.warn( ex );
             }
             getResponse().setStatus( Status.SERVER_ERROR_INTERNAL );
             rep = new StringRepresentation(
-                    "there was an error creating OvalResults",
+                    "there was an error",
                     MediaType.TEXT_PLAIN );
         }
 
-        getResponse().setEntity( rep );
+//        getResponse().setEntity( rep );
+
+        return rep;
     }
 
 }
