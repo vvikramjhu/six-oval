@@ -26,7 +26,7 @@ import jp.go.aist.six.util.orm.Dependent;
 
 
 /**
- * A reference to an OVAL Object, independent of its version.
+ * An Object reference to be used by OVAL Tests.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

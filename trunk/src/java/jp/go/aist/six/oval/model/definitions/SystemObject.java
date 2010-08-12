@@ -30,6 +30,16 @@ import jp.go.aist.six.oval.model.EntityType;
  * The class name "SystemObject" is used because the name "Object"
  * has the special meaning in Java.
  *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>id (required)</li>
+ *   <li>version (required)</li>
+ *   <li>comment (optional)</li>
+ *   <li>deprecated (optional -- default='false')</li>
+ *   <li>Signature (0..1): currently NOT supported.</li>
+ *   <li>notes (0..1): currently NOT supported.</li>
+ * </ul>
+ *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */

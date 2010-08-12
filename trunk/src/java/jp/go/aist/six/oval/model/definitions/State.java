@@ -27,12 +27,22 @@ import jp.go.aist.six.oval.model.common.Operator;
 
 
 /**
- * The abstract base class that is meant to be extended by the concrete states.
  * An OVAL State is a collection of one or more characteristics
  * pertaining to a specific object type.
  * The OVAL State is used by an OVAL Test to determine
  * if a set of items identified on a system meet
  * certain characteristics.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>id (required)</li>
+ *   <li>version (required)</li>
+ *   <li>state_operator (optional-- default='AND')</li>
+ *   <li>comment (optional)</li>
+ *   <li>deprecated (optional -- default='false')</li>
+ *   <li>Signature (0..1): currently NOT supported.</li>
+ *   <li>notes (0..1): currently NOT supported.</li>
+ * </ul>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

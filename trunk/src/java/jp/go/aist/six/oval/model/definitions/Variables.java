@@ -27,7 +27,12 @@ import java.util.Iterator;
 
 
 /**
- * A collection of Variable objects.
+ * A container for one or more Variable instances.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>variable (1..*)</li>
+ * </ul>
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

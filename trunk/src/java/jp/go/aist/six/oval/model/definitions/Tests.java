@@ -27,7 +27,7 @@ import java.util.Iterator;
 
 
 /**
- * A container for one or more Test objects.
+ * A container for one or more Test instances.
  *
  * <p>Properties:</p>
  * <ul>

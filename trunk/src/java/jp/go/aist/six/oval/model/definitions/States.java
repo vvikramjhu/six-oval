@@ -27,7 +27,12 @@ import java.util.Iterator;
 
 
 /**
- * A collection of State objects.
+ * A container for one or more State instances.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>state (1..*)</li>
+ * </ul>
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

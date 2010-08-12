@@ -26,7 +26,7 @@ import jp.go.aist.six.util.orm.Dependent;
 
 
 /**
- * A reference to an OVAL State, independent of its version.
+ * A State reference to be used by OVAL States.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

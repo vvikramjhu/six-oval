@@ -27,7 +27,7 @@ import java.util.Iterator;
 
 
 /**
- * A container for one or more Definition objects.
+ * A container for one or more Definition instances.
  *
  * <p>Properties:</p>
  * <ul>
