@@ -36,7 +36,6 @@ import org.restlet.resource.Variant;
 
 
 
-
 /**
  *
  * @author  Akihito Nakamura, AIST

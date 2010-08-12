@@ -37,11 +37,15 @@ CONTENTS:
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-    <!-- Castor code generation -->
+    <!-- webapp -->
     <property name="webapp.src.dir"     location="${src.dir}/webapp"/>
+    <property name="web.xml"            location="${webapp.src.dir}/web.xml"/>
     <property name="webapp.build.dir"   location="${build.dir}/webapp/${six.webapp.path}"/>
 
-   
+    <property name="product.warname"    value="${product.id}.war"/>
+    <property name="product.war"        location="${build.dir}/${product.warname}"/>
+
+
     <!-- Castor code generation 
     <property name="schema.src.dir"     location="${src.dir}/schema"/>
     -->
@@ -109,7 +113,30 @@ CONTENTS:
 
     </target>
 
-    
+
+
+    <!-- WAR -->
+    <target name="war" depends="jar">
+        <echo message="web.xml path: ${web.xml}"/>
+
+        <mkdir dir="${build.dir}/WEB-INF/lib"/>
+        <copy todir="${build.dir}/WEB-INF/lib" flatten="true">
+            <fileset dir="${lib.dir}" includes="**/*.jar" />
+        </copy>
+
+        <war
+            destfile="${product.war}"
+            webxml="${web.xml}"
+            >
+            <fileset dir="${webapp.src.dir}"
+                excludes="**/web.xml"/>
+            <classes dir="${config.src.dir}"/>
+            <lib dir="${build.dir}" includes="*.jar"/>
+            <lib dir="${build.dir}/WEB-INF/lib" includes="*.jar" />
+        </war>
+    </target>
+
+
     
     <!-- ******************************************************* -->
     <!-- *  Test                                               * -->
