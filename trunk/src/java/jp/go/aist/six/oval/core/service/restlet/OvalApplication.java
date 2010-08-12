@@ -47,7 +47,7 @@ public class OvalApplication
 
 
 
-    private OvalContext  _context;
+    private OvalContext  _context = new OvalContext();
     private OvalStore  _ovalStore;
     private OvalXml  _ovalXml;
 
@@ -70,8 +70,6 @@ public class OvalApplication
                     )
     {
         super( context );
-
-        _context = new OvalContext();
     }
 
 

@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.core.service.restlet;
 
+import jp.go.aist.six.oval.model.definitions.Definition;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.restlet.Context;
@@ -82,8 +83,8 @@ public class CountDefinitionsResource
     {
         Representation  rep = null;
         try {
-//            int  count = _getOvalStore().countAll( Definition.class );
-            int  count = 100;
+            int  count = _getOvalStore().countAll( Definition.class );
+//            int  count = 100;
             getResponse().setStatus( Status.SUCCESS_OK );
             rep = new StringRepresentation( String.valueOf( count ), MediaType.TEXT_PLAIN );
         } catch (Exception ex) {
