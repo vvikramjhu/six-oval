@@ -8,8 +8,6 @@
 
 || *SIX OVAL version* || *OVAL Schema version* ||
 || 0.5.0              || 5.7                   ||
-|| 0.4.0              || 5.6                   ||
-
 
 
 
@@ -17,11 +15,11 @@
 
 || *Java Package* || *OVAL Namespace* ||
 || jp.go.aist.six.oval.model.common || http://oval.mitre.org/XMLSchema/oval-common-5 ||
-|| jp.go.aist.six.oval.model.definition || http://oval.mitre.org/XMLSchema/oval-definitions-5 ||
+|| jp.go.aist.six.oval.model.definitions || http://oval.mitre.org/XMLSchema/oval-definitions-5 ||
 || jp.go.aist.six.oval.model.independent || http://oval.mitre.org/XMLSchema/oval-definitions-5#independent<br>http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent ||
 || jp.go.aist.six.oval.model.linux || http://oval.mitre.org/XMLSchema/oval-definitions-5#linux<br>http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux ||
-|| jp.go.aist.six.oval.model.result || http://oval.mitre.org/XMLSchema/oval-results-5 ||
-|| jp.go.aist.six.oval.model.system || http://oval.mitre.org/XMLSchema/oval-system-characteristics-5 ||
+|| jp.go.aist.six.oval.model.results || http://oval.mitre.org/XMLSchema/oval-results-5 ||
+|| jp.go.aist.six.oval.model.sc || http://oval.mitre.org/XMLSchema/oval-system-characteristics-5 ||
 || jp.go.aist.six.oval.model.unix || http://oval.mitre.org/XMLSchema/oval-definitions-5#unix<br>http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix ||
 || jp.go.aist.six.oval.model.windows || http://oval.mitre.org/XMLSchema/oval-definitions-5#windows<br>http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows ||
 
