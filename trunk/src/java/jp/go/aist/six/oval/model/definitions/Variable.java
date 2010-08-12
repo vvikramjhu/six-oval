@@ -139,28 +139,6 @@ public abstract class Variable
     //**************************************************************
 
     @Override
-    public int hashCode()
-    {
-        return super.hashCode();
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (!(obj instanceof Variable)) {
-            return false;
-        }
-
-        return super.equals( obj );
-    }
-
-
-
-    @Override
     public String toString()
     {
         return super.toString()

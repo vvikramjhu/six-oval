@@ -85,25 +85,5 @@ public abstract class SystemObject
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public int hashCode()
-    {
-        return super.hashCode();
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (!(obj instanceof SystemObject)) {
-            return false;
-        }
-
-        return super.equals( obj );
-    }
-
 }
 // SystemObject

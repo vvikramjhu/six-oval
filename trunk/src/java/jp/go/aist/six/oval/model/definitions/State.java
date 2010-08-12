@@ -110,25 +110,5 @@ public abstract class State
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public int hashCode()
-    {
-        return super.hashCode();
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (!(obj instanceof State)) {
-            return false;
-        }
-
-        return super.equals( obj );
-    }
-
 }
 // State
