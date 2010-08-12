@@ -38,7 +38,7 @@ import java.io.IOException;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: BaseResource.java 440 2010-03-23 05:11:44Z akihito $
+ * @version $Id$
  */
 public abstract class BaseResource
     extends Resource

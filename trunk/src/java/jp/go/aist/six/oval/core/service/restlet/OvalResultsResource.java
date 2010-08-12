@@ -40,7 +40,7 @@ import org.restlet.resource.Variant;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalResultsResource.java 440 2010-03-23 05:11:44Z akihito $
+ * @version $Id$
  */
 public class OvalResultsResource
     extends BaseResource
