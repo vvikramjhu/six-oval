@@ -181,60 +181,8 @@ public class LocalOvalRepository
 
 
 
-    //**************************************************************
-    //  OvalRepository
-    //**************************************************************
-
-    public OvalSystemCharacteristics getOvalSystemCharacteristics(
-                    final String pid
-                    )
-    throws OvalServiceException
-    {
-        OvalSystemCharacteristics  sc = null;
-        try {
-            sc = _store.get( OvalSystemCharacteristics.class, pid );
-        } catch (Exception ex) {
-            throw new OvalServiceException( ex );
-        }
-
-        return sc;
-    }
-//    {
-//        RelationalBinding  filter = RelationalBinding.equalBinding(
-//                        "persistentID", pid );
-//        List<OvalSystemCharacteristics>  sc = null;
-//        try {
-//            sc = _store.find( OvalSystemCharacteristics.class, filter);
-//        } catch (Exception ex) {
-//            throw new OvalServiceException( ex );
-//        }
-//
-//        return (sc.size() == 0 ? null : sc.get( 0 ));
-//    }
-
-
-    public Collection<Item> getItem(
-                    final String scPID
-                    )
-    throws OvalServiceException
-    {
-        RelationalBinding  filter = RelationalBinding.equalBinding(
-                        "masterPersistentID", scPID );
-
-        Collection<Item>  items = null;
-        try {
-            items = _store.find( Item.class, filter );
-        } catch (Exception ex) {
-            throw new OvalServiceException( ex );
-        }
-
-        return items;
-    }
-
-
-
     //==============================================================
-    // oval-definitions
+    // Definitions
     //==============================================================
 
     public String createOvalDefinitions(
@@ -366,9 +314,60 @@ public class LocalOvalRepository
 
 
 
+    //==============================================================
+    //  System Characteristics
+    //==============================================================
+
+    public OvalSystemCharacteristics getOvalSystemCharacteristics(
+                    final String pid
+                    )
+    throws OvalServiceException
+    {
+        OvalSystemCharacteristics  sc = null;
+        try {
+            sc = _store.get( OvalSystemCharacteristics.class, pid );
+        } catch (Exception ex) {
+            throw new OvalServiceException( ex );
+        }
+
+        return sc;
+    }
+//    {
+//        RelationalBinding  filter = RelationalBinding.equalBinding(
+//                        "persistentID", pid );
+//        List<OvalSystemCharacteristics>  sc = null;
+//        try {
+//            sc = _store.find( OvalSystemCharacteristics.class, filter);
+//        } catch (Exception ex) {
+//            throw new OvalServiceException( ex );
+//        }
+//
+//        return (sc.size() == 0 ? null : sc.get( 0 ));
+//    }
+
+
+    public Collection<Item> getItem(
+                    final String scPID
+                    )
+    throws OvalServiceException
+    {
+        RelationalBinding  filter = RelationalBinding.equalBinding(
+                        "masterPersistentID", scPID );
+
+        Collection<Item>  items = null;
+        try {
+            items = _store.find( Item.class, filter );
+        } catch (Exception ex) {
+            throw new OvalServiceException( ex );
+        }
+
+        return items;
+    }
+
+
 
     //==============================================================
-    // oval-results
+    // Results
     //==============================================================
 
     public String createOvalResults(
@@ -401,6 +400,7 @@ public class LocalOvalRepository
 
         return results;
     }
+
 
 
     public List<OvalResults> findOvalResults(

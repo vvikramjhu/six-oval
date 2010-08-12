@@ -35,7 +35,6 @@ import java.io.IOException;
 
 
 
-
 /**
  *
  * @author  Akihito Nakamura, AIST
@@ -59,9 +58,7 @@ public abstract class BaseResource
 
 
 
-
     /**
-     *
      */
     protected OvalStore _getOvalStore()
     throws Exception
