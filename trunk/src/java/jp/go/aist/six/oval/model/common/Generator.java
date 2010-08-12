@@ -25,20 +25,18 @@ import java.util.Date;
 
 
 /**
- * The generator information.
+ * Information about when a particular OVAL document was compiled,
+ * what version of the schema was used,
+ * what tool compiled the document, and
+ * what version of that tools was used.
  *
- * <p>Properties:
+ * <p>Properties:</p>
  * <ul>
- *   <li>productName: name of the tool used.
- *   </li>
- *   <li>productVersion: version of the tool used.
- *   </li>
- *   <li>schemaVersion {required}: version of the OVAL schema used.
- *   </li>
- *   <li>timestamp {required}: date/time when the document is generated.
- *   </li>
+ *   <li>productName (0..1)</li>
+ *   <li>productVersion (0..1)</li>
+ *   <li>schemaVersion (1..1)</li>
+ *   <li>timestamp (1..1)</li>
  * </ul>
- * </p>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
