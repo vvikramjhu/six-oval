@@ -26,6 +26,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 /**
+ * The root of an OVAL System Characteristics Document.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
