@@ -131,7 +131,7 @@ CONTENTS:
             <fileset dir="${webapp.src.dir}"
                 excludes="**/web.xml"/>
             <classes dir="${build.classes.dir}" includes="*.xml,*.properties"/>
-            <classes dir="${config.src.dir}" includes="log4j.properties"/>
+            <classes dir="${webapp.src.dir}" includes="log4j.properties"/>
             <lib dir="${build.dir}" includes="*.jar"/>
             <lib dir="${build.dir}/WEB-INF/lib" includes="*.jar" />
         </war>
