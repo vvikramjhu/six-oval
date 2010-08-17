@@ -26,6 +26,16 @@ import jp.go.aist.six.util.orm.Dependent;
 
 
 /**
+ * An existing network interface on the system.
+ * The name "interface" in the OVAL Schema is renamed
+ * because the name "interface" has the special meaning in Java.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>interace_name (1..1)</li>
+ *   <li>ip_address (1..1)</li>
+ *   <li>mac_address(1..1)</li>
+ * </ul>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

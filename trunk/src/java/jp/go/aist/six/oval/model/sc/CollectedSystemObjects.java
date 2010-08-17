@@ -27,7 +27,13 @@ import java.util.Iterator;
 
 
 /**
- * A collection of CollectedSystemObject instances.
+ * A collection of all the objects that have been collected
+ * by the system characteristics file..
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>object (1..*)</li>
+ * </ul>
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

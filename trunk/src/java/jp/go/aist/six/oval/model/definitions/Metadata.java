@@ -45,7 +45,7 @@ import java.util.Set;
  * <p>Properties:</p>
  * <ul>
  *   <li>title (1..1)</li>
- *   <li>affected (0..1): the right cardinality is 0..*.</li>
+ *   <li>affected (0..1): the original cardinality is (0..*).</li>
  *   <li>reference (0..*)</li>
  *   <li>description (1..1)</li>
  *   <li>additionalMetadata (0..*): xsd:any.</li>

@@ -27,6 +27,18 @@ import java.util.Collection;
 
 
 /**
+ * General information about the system that data was collected from,
+ * including information that can be used to identify the system.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>os_name (1..1)</li>
+ *   <li>os_version (1..1)</li>
+ *   <li>architecture (1..1)</li>
+ *   <li>primaryhostName (1..1)</li>
+ *   <li>netInterfaces (1..1): "interfaces" is renamed
+ *   because the name "interface" has the special meaning in Java. </li>
+ * </ul>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

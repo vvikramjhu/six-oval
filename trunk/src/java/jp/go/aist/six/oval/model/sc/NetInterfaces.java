@@ -27,7 +27,12 @@ import java.util.Iterator;
 
 
 /**
- * A collection of NetworkInterface instances.
+ * A container for one or more NetInterface instances.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>interface (0..*)</li>
+ * </ul>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

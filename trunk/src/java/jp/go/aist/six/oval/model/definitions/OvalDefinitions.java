@@ -35,6 +35,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  *   <li>objects(0..1)</li>
  *   <li>states (0..1)</li>
  *   <li>variables (0..1)</li>
+ *   <li>signature (0..1): currently NOT supported.</li>
  * </ul>
  *
  * @author  Akihito Nakamura, AIST
