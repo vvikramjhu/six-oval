@@ -13,7 +13,15 @@
 
 <suite name="six-oval" verbose="1" parallel="tests">
 
-    <test name="oval.core" enabled="true">
+    <test name="oval.core.service.restlet" enabled="true">
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.service.restlet.RestClientTest"/>
+        </classes>
+    </test>
+
+
+
+    <test name="oval.core" enabled="false">
         <groups>
             <run>
                 <include name="oval_results"/>
