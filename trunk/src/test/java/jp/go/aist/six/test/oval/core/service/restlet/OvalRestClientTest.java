@@ -20,7 +20,7 @@ import java.io.StringWriter;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class RestClientTest
+public class OvalRestClientTest
     extends CoreTestBase
 {
 

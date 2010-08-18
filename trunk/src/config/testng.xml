@@ -15,7 +15,7 @@
 
     <test name="oval.core.service.restlet" enabled="true">
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.service.restlet.RestClientTest"/>
+            <class name="jp.go.aist.six.test.oval.core.service.restlet.OvalRestClientTest"/>
         </classes>
     </test>
 
