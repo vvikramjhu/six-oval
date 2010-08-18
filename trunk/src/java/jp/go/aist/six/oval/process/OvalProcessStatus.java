@@ -31,7 +31,7 @@ import java.util.Set;
  * A status of an execution of the OvalProcessor.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalProcessStatus.java 519 2010-04-07 01:02:57Z akihito $
+ * @version $Id$
  */
 public class OvalProcessStatus
 {

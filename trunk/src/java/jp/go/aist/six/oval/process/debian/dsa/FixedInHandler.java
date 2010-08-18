@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 
 /**
  * @author   kmatsuda @ Lisonal, Akihito Nakamura @ AIST
- * @version $Id: FixedInHandler.java 552 2010-04-09 07:59:14Z akihito $
+ * @version $Id$
  */
 public class FixedInHandler
 implements DsaElementHandler

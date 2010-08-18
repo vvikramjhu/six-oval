@@ -38,7 +38,7 @@ import java.util.Map;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: DebianOvaldiProcessor.java 524 2010-04-07 06:11:11Z akihito $
+ * @version $Id$
  */
 public class DebianOvaldiProcessor
 extends NetOvalInterpreter

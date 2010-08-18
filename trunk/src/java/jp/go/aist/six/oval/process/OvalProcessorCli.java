@@ -30,7 +30,7 @@ import org.apache.commons.logging.LogFactory;
  * A command line interface for OvalProcessor.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalProcessorCli.java 529 2010-04-07 07:22:59Z akihito $
+ * @version $Id$
  */
 public abstract class OvalProcessorCli<T extends OvalProcessor>
 {

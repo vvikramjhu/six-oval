@@ -28,7 +28,7 @@ package jp.go.aist.six.oval.process;
  * A command line interface for OvalProcessor.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: NetOvalInterpreterCli.java 529 2010-04-07 07:22:59Z akihito $
+ * @version $Id$
  */
 public class NetOvalInterpreterCli
 extends OvalProcessorCli<NetOvalInterpreter>

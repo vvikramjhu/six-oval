@@ -29,7 +29,7 @@ import java.util.Map;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: Dsa.java 434 2010-03-23 05:01:24Z akihito $
+ * @version $Id$
  */
 public class Dsa
 {

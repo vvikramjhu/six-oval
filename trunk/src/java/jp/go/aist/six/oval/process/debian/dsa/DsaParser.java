@@ -33,7 +33,7 @@ import java.util.Map;
 
 /**
  * @author   kmatsuda @ Lisonal, Akihito Nakamura @ AIST
- * @version $Id: DsaParser.java 469 2010-03-27 07:17:33Z akihito $
+ * @version $Id$
  */
 public class DsaParser
 {

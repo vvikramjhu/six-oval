@@ -9,7 +9,7 @@
 <!-- /////////////////////////////////////////////////////////// -->
 
 <!-- @author    Akihito Nakamura, AIST -->
-<!-- @version   $Id: oval-rhel2centos.xsl 362 2010-03-11 23:51:36Z akihito $ -->
+<!-- @version   $Id$ -->
 
 <xsl:stylesheet version="1.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"

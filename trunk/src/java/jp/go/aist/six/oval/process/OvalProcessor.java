@@ -27,7 +27,7 @@ package jp.go.aist.six.oval.process;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalProcessor.java 434 2010-03-23 05:01:24Z akihito $
+ * @version $Id$
  */
 public interface OvalProcessor
 {

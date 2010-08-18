@@ -36,7 +36,7 @@ import java.util.Map;
  * An ovaldi command wrapper.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvaldiCommand.java 490 2010-03-29 06:32:03Z akihito $
+ * @version $Id$
  */
 public class OvaldiCommand
     extends Command

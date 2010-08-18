@@ -46,7 +46,7 @@ import java.net.URL;
  * The Debian Security Advisory pages are transformed to Definition documents.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: DebianOvalGenerator.java 521 2010-04-07 01:20:21Z akihito $
+ * @version $Id$
  * @see <a href="http://www.debian.org/security/index.en.html">Debian Security Information</a>
  */
 public class DebianOvalGenerator

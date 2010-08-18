@@ -9,7 +9,7 @@
 <!-- /////////////////////////////////////////////////////////// -->
 
 <!-- @author    Akihito Nakamura, AIST -->
-<!-- @version   $Id: oval2csv.xsl 619 2010-04-19 02:01:06Z akihito $ -->
+<!-- @version   $Id$ -->
 
 <xsl:stylesheet version="1.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"

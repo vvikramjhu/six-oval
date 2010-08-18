@@ -26,7 +26,7 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  * @author   kmatsuda @ Lisonal, Akihito Nakamura @ AIST
- * @version $Id: VulnerableHandler.java 434 2010-03-23 05:01:24Z akihito $
+ * @version $Id$
  */
 public class VulnerableHandler
 implements DsaElementHandler

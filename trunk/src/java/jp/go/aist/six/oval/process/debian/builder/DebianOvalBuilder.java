@@ -68,7 +68,7 @@ import java.util.Map;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: DebianOvalBuilder.java 724 2010-05-07 01:24:37Z akihito $
+ * @version $Id$
  */
 public class DebianOvalBuilder
 {

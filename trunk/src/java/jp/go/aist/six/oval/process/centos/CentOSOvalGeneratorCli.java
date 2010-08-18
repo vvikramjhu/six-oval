@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.process.OvalProcessorCli;
  * A command line interface for OvalProcessor.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: CentOSOvalGeneratorCli.java 529 2010-04-07 07:22:59Z akihito $
+ * @version $Id$
  */
 public class CentOSOvalGeneratorCli
 extends OvalProcessorCli<CentOSOvalGenerator>

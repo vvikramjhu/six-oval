@@ -51,7 +51,7 @@ import java.util.Map;
  * and sending OVAL results via HTTP POST method.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: NetOvalInterpreter.java 619 2010-04-19 02:01:06Z akihito $
+ * @version $Id$
  */
 public class NetOvalInterpreter
 implements OvalProcessor

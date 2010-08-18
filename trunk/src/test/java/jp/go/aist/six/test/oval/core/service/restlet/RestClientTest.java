@@ -1,6 +1,5 @@
-package jp.go.aist.six.test.oval.core;
+package jp.go.aist.six.test.oval.core.service.restlet;
 
-import jp.go.aist.six.oval.core.service.LocalOvalRepository;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Definitions;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
@@ -8,6 +7,7 @@ import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.CollectedSystemObject;
 import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.test.oval.core.CoreTestBase;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -21,14 +21,9 @@ import java.util.Collection;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class LocalOvalRepositoryTest
+public class RestClientTest
     extends CoreTestBase
 {
-
-    private LocalOvalRepository  _repository;
-
-
-
 
 
     /**
@@ -38,7 +33,6 @@ public class LocalOvalRepositoryTest
     throws Exception
     {
         super.setUp();
-        _repository = new LocalOvalRepository();
     }
 
 
@@ -55,18 +49,18 @@ public class LocalOvalRepositoryTest
                       {
                           "test/data/results/oval-results_CVE-2010-0176_mitre7222.xml",
                       }
-                      ,
-
-                      // Red Hat patch, CVE-2010-0176, RHSA 20100332
-                      {
-                          "test/data/results/oval-results_CVE-2010-0176_rhsa20100332.xml",
-                      }
-                      ,
-
-                      // Debian @Mitre, CVE-2010-0176, DSA-2027
-                      {
-                          "test/data/results/oval-results_CVE-2010-0176_mitre7432_DSA-2027.xml",
-                      }
+//                      ,
+//
+//                      // Red Hat patch, CVE-2010-0176, RHSA 20100332
+//                      {
+//                          "test/data/results/oval-results_CVE-2010-0176_rhsa20100332.xml",
+//                      }
+//                      ,
+//
+//                      // Debian @Mitre, CVE-2010-0176, DSA-2027
+//                      {
+//                          "test/data/results/oval-results_CVE-2010-0176_mitre7432_DSA-2027.xml",
+//                      }
 //                      ,
 
 //                    // Red Hat patch, CVE-2010-0176, RHSA 20100333
@@ -108,16 +102,16 @@ public class LocalOvalRepositoryTest
     /**
      */
     @org.testng.annotations.Test(
-                    groups={"oval.service.repository", "oval_results"},
+                    groups={"oval.service.core.restlet", "oval_results"},
                     dataProvider="oval_results",
                     alwaysRun=true
                     )
-    public void testCreateOvalResults(
+    public void testPostOvalResults(
                     final String filepath
                     )
     throws Exception
     {
-        Reporter.log( "\n// TEST: OVAL - OvalRepository //", true );
+        Reporter.log( "\n// TEST: OVAL - OvalRestClient //", true );
 
         OvalResults  ovalResults = _unmarshalFile( filepath, OvalResults.class );
 

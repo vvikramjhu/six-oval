@@ -27,7 +27,7 @@ package jp.go.aist.six.oval.process;
  * An OVAL Definition document generator.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalGenerator.java 515 2010-04-06 07:10:37Z akihito $
+ * @version $Id$
  */
 public abstract class OvalGenerator
 implements OvalProcessor

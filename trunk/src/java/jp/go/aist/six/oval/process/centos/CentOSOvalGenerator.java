@@ -45,7 +45,7 @@ import javax.xml.transform.stream.StreamSource;
  * the ones for Red Hat Enterprise Linux.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: CentOSOvalGenerator.java 516 2010-04-06 07:29:49Z akihito $
+ * @version $Id$
  */
 public class CentOSOvalGenerator
 extends OvalGenerator

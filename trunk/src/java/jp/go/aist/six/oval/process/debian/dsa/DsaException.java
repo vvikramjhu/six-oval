@@ -27,7 +27,7 @@ package jp.go.aist.six.oval.process.debian.dsa;
  * An exceptional condition that occurred during the DSA processing.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: DsaException.java 434 2010-03-23 05:01:24Z akihito $
+ * @version $Id$
  */
 public class DsaException
     extends Exception

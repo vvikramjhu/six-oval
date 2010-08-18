@@ -25,7 +25,7 @@ import java.util.Map;
 
 /**
  * @author   kmatsuda @ Lisonal, Akihito Nakamura @ AIST
- * @version $Id: FixedIn.java 434 2010-03-23 05:01:24Z akihito $
+ * @version $Id$
  */
 public class FixedIn
 {

@@ -32,7 +32,7 @@ import java.util.Map;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: CentOSOvaldiProcessor.java 524 2010-04-07 06:11:11Z akihito $
+ * @version $Id$
  */
 public class CentOSOvaldiProcessor
 extends NetOvalInterpreter

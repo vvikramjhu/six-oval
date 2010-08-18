@@ -44,7 +44,7 @@ import javax.xml.transform.stream.StreamSource;
  * This transformer generates a CSV that represents an OVAL definitions.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalDefinitionsCsvTransformer.java 434 2010-03-23 05:01:24Z akihito $
+ * @version $Id$
  */
 public class OvalDefinitionsCsvTransformer
 {
