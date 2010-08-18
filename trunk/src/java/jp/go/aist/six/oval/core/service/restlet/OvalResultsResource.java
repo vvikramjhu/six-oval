@@ -52,7 +52,6 @@ public class OvalResultsResource
 
 
 
-
     /**
      * Constructor.
      */
@@ -98,9 +97,12 @@ public class OvalResultsResource
         Representation  rep = null;
         try {
             OvalResults  results = (OvalResults)_getOvalXml().unmarshalFromString( xml );
-            Object  pid = _getOvalStore().create( OvalResults.class, results );
+            String  pid = _getOvalStore().create( OvalResults.class, results );
+            if (_LOG.isInfoEnabled()) {
+                _LOG.info( "OVAL Results created: PID=" + pid );
+            }
             getResponse().setStatus( Status.SUCCESS_CREATED );
-            rep = new StringRepresentation( String.valueOf( pid ), MediaType.TEXT_PLAIN );
+            rep = new StringRepresentation( pid, MediaType.TEXT_PLAIN );
             rep.setIdentifier( getRequest().getResourceRef().getIdentifier()
                             + "/" + pid );
         } catch (Exception ex) {
