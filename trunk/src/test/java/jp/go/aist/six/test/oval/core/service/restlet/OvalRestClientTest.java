@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.core.service.restlet;
 
-import jp.go.aist.six.oval.process.OvalDocument;
+import jp.go.aist.six.oval.process.OvalDocumentUtil;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.util.net.RestletHttp;
 import org.restlet.data.Form;
@@ -115,7 +115,7 @@ public class OvalRestClientTest
         Reporter.log( "\n// TEST: OVAL - OvalRestClient //", true );
 
         StringWriter  writer = new StringWriter();
-        OvalDocument.read( writer, new File( filepath ) );
+        OvalDocumentUtil.read( writer, new File( filepath ) );
 
         String  xmlString = writer.toString();
 

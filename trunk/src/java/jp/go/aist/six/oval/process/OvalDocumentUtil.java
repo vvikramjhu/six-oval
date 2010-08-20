@@ -38,13 +38,13 @@ import java.nio.charset.Charset;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalDocument
+public class OvalDocumentUtil
 {
 
     /**
      * Constructor.
      */
-    public OvalDocument()
+    public OvalDocumentUtil()
     {
     }
 
