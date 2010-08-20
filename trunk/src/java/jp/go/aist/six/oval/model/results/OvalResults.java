@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.results;
 
+import jp.go.aist.six.oval.model.OvalDocument;
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.util.castor.AbstractPersistable;
@@ -33,6 +34,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  */
 public class OvalResults
     extends AbstractPersistable
+    implements OvalDocument
 {
 
     private Generator  _generator;
