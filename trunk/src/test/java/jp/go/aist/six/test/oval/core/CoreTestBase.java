@@ -73,7 +73,7 @@ import java.util.Set;
 public abstract class CoreTestBase
 {
 
-    private OvalContext  _service = null;
+    private OvalContext  _context = null;
 
 
 
@@ -91,8 +91,8 @@ public abstract class CoreTestBase
     public void setUp()
     throws Exception
     {
-        if (_service == null) {
-            _service = new OvalContext();
+        if (_context == null) {
+            _context = new OvalContext();
         }
     }
 
@@ -100,18 +100,18 @@ public abstract class CoreTestBase
     protected OvalXml _getXml()
     throws Exception
     {
-        return _service.getXml();
+        return _context.getXml();
     }
 
 
     protected OvalStore _getStore()
     throws Exception
     {
-        if (_service == null) {
+        if (_context == null) {
             setUp();
         }
 
-        return _service.getStore();
+        return _context.getStore();
     }
 
 

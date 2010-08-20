@@ -56,6 +56,14 @@ public class Directives
      */
     public Directives()
     {
+        this(
+                        new Directive(),
+                        new Directive(),
+                        new Directive(),
+                        new Directive(),
+                        new Directive(),
+                        new Directive()
+                        );
     }
 
 
@@ -71,11 +79,11 @@ public class Directives
                     final Directive definitionNotApplicable
                     )
     {
-        setDefinitionTrue( definitionTrue );
-        setDefinitionFalse( definitionFalse );
-        setDefinitionUnknown( definitionUnknown );
-        setDefinitionError( definitionError );
-        setDefinitionNotEvaluated( definitionNotEvaluated );
+        setDefinitionTrue(          definitionTrue );
+        setDefinitionFalse(         definitionFalse );
+        setDefinitionUnknown(       definitionUnknown );
+        setDefinitionError(         definitionError );
+        setDefinitionNotEvaluated(  definitionNotEvaluated );
         setDefinitionNotApplicable( definitionNotApplicable );
     }
 
@@ -270,11 +278,11 @@ public class Directives
     @Override
     public String toString()
     {
-        return "Directives[definition_true=" + getDefinitionTrue()
-                        + ", definition_false=" + getDefinitionFalse()
-                        + ", definition_unknown=" + getDefinitionUnknown()
-                        + ", definition_error=" + getDefinitionError()
-                        + ", definition_not_evaluated=" + getDefinitionNotEvaluated()
+        return "Directives[definition_true="             + getDefinitionTrue()
+                        + ", definition_false="          + getDefinitionFalse()
+                        + ", definition_unknown="        + getDefinitionUnknown()
+                        + ", definition_error="          + getDefinitionError()
+                        + ", definition_not_evaluated="  + getDefinitionNotEvaluated()
                         + ", definition_not_applicable=" + getDefinitionNotApplicable()
                         + "]";
     }

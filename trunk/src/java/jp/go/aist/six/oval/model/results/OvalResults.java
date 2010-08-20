@@ -37,16 +37,16 @@ public class OvalResults
     implements OvalDocument
 {
 
-    private Generator  _generator;
+    private Generator  _generator = new Generator();
     //{1..1}
 
-    private Directives  _directives;
+    private Directives  _directives = new Directives();
     //{1..1}
 
     private OvalDefinitions  _definitions;
     //{0..1}
 
-    private SystemResults  _results;
+    private SystemResults  _results = new SystemResults();
     //{1..1}
 
 
