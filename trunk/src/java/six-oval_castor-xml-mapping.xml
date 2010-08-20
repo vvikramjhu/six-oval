@@ -279,11 +279,15 @@
     <!-- Definitions                                             -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definitions.Definitions">
+        <map-to xml="definitions"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
         <field name="definition" 
             type="jp.go.aist.six.oval.model.definitions.Definition"
             collection="collection"
             set-method="addDefinition"
-            get-method="iterateDefinition">
+            get-method="iterateDefinition"
+            >
             <bind-xml name="definition" node="element"/>
         </field>
     </class>

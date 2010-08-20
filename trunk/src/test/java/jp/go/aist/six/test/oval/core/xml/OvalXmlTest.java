@@ -1,5 +1,6 @@
 package jp.go.aist.six.test.oval.core.xml;
 
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.Content;
 import jp.go.aist.six.oval.model.results.Directive;
 import jp.go.aist.six.oval.model.results.Directives;
@@ -40,6 +41,79 @@ public class OvalXmlTest
         Reporter.log( "...marshalling done", true );
     }
 
+
+
+    /**
+     */
+    protected void _processXml(
+                    final Class<?> type,
+                    final String testedXPath,
+                    final String filepath,
+                    final Object expected
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n// TEST: OVAL XML //", true );
+        Reporter.log( "  * tested XPath: " + testedXPath, true );
+        Reporter.log( "  * tested XML file: " + filepath, true );
+
+        Object  actual = _unmarshalFile( filepath, type );
+
+        if (expected != null) {
+            Reporter.log( "validating...", true );
+            Assert.assertEquals( actual, expected );
+            Reporter.log( "...validation OK", true );
+        }
+
+        _marshal( actual, System.out );
+    }
+
+
+
+
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    //
+    //  Definitions
+    //
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    //==============================================================
+    //  oval_definitions
+    //==============================================================
+
+    @DataProvider( name="oval-definitions_oval_definitions" )
+    public Object[][] provideOvalDefinitionsOvalDefinitions()
+    {
+        return new Object[][] {
+                        {
+                            OvalDefinitions.class,
+                            "/oval_definitions",
+                            "test/data/definitions/oval-definitions_CVE-2009-4019_MySQL.xml",
+                            null
+                        }
+        };
+
+    }
+
+
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "oval-definitions.oval_definitions"},
+                    dataProvider="oval-definitions_oval_definitions",
+                    alwaysRun=true
+                    )
+    public void testOvalDefinitionsOvalDefinitions(
+                    final Class<?> type,
+                    final String testedXPath,
+                    final String filepath,
+                    final OvalDefinitions expected
+                    )
+    throws Exception
+    {
+        _processXml( type, testedXPath, filepath, expected );
+    }
 
 
 
@@ -101,9 +175,11 @@ public class OvalXmlTest
 
         Object  actual = _unmarshalFile( filepath, type );
 
-        Reporter.log( "validating...", true );
-        Assert.assertEquals( actual, expected );
-        Reporter.log( "...validation OK", true );
+        if (expected != null) {
+            Reporter.log( "validating...", true );
+            Assert.assertEquals( actual, expected );
+            Reporter.log( "...validation OK", true );
+        }
 
         _marshal( actual, System.out );
     }

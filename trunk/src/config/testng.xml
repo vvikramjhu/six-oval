@@ -22,6 +22,12 @@
 
 
     <test name="oval.core.xml" enabled="true">
+        <groups>
+            <run>
+                <include name="oval-definitions.*"/>
+            </run>
+        </groups>
+
         <classes>
             <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlTest"/>
         </classes>
