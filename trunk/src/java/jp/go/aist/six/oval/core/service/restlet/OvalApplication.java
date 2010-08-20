@@ -110,7 +110,8 @@ public class OvalApplication
     {
         Router  router = new Router( getContext() );
 
-        router.attach( "/results", OvalResultsResource.class );
+//        router.attach( "/results", OvalResultsResource.class );
+        router.attach( "/results/{id}", OvalResultsResource.class );
         router.attach( "/countDefinitions", CountDefinitionsResource.class );
 //        router.attach( ManagementResource.INSTALLED_SOFTWARE_URI_PATH,
 //        				InstalledSoftwareResource.class );

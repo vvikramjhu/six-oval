@@ -53,6 +53,13 @@ public class OvalResultsResource
 
 
     /**
+     *
+     */
+    private String  _pid;
+
+
+
+    /**
      * Constructor.
      */
     public OvalResultsResource(
@@ -64,6 +71,7 @@ public class OvalResultsResource
         super( context, request, response );
 
         getVariants().add( new Variant(MediaType.APPLICATION_XML) );
+        _pid = (String)getRequest().getAttributes().get( "id" );
     }
 
 
@@ -76,6 +84,32 @@ public class OvalResultsResource
     public boolean allowPost()
     {
         return true;
+    }
+
+
+
+    // GET:
+    @Override
+    public Representation represent(
+                    final Variant variant
+                    )
+    throws ResourceException
+    {
+        Representation  rep = null;
+        try {
+            OvalResults  object = _getOvalStore().get( OvalResults.class, _pid );
+            String  xml = _getOvalXml().marshalToString( object );
+            rep = new StringRepresentation( xml );
+        } catch (Exception ex) {
+            getResponse().setStatus( Status.SERVER_ERROR_INTERNAL );
+            rep = new StringRepresentation(
+                    "there was an error: " + ex.getMessage(),
+                    MediaType.TEXT_PLAIN );
+        }
+
+        getResponse().setEntity( rep );
+
+        return rep;
     }
 
 
