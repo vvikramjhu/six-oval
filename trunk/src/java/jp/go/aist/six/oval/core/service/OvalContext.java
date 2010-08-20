@@ -24,6 +24,8 @@ import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 
 
 
@@ -39,10 +41,23 @@ public class OvalContext
 
 
     /**
+     * The base name of the resource bundle.
+     */
+    private static final String _RESOURCE_BUNDLE_ = "six-oval";
+
+
+
+    /**
      * The Spring application context specification.
      */
     private static final String _SPRING_APP_CONTEXT_
-        = "/six-oval_spring-app-context.xml";
+        = "six-oval_spring-app-context.xml";
+
+
+
+    /**
+     */
+    private ResourceBundle  _resourceBundle;
 
 
 
@@ -71,6 +86,40 @@ public class OvalContext
      */
     public OvalContext()
     {
+        _initResourceBundle();
+    }
+
+
+
+    /**
+     */
+    private void _initResourceBundle()
+    {
+        try {
+            _resourceBundle = ResourceBundle.getBundle( _RESOURCE_BUNDLE_ );
+        } catch (MissingResourceException ex) {
+            //negligible
+        }
+    }
+
+
+
+    /**
+     */
+    public String getProperty(
+                    final String key
+                    )
+    {
+        String  value = System.getProperty( key );
+        if (value != null) {
+            return value;
+        }
+
+        if (_resourceBundle != null) {
+            value = _resourceBundle.getString( key );
+        }
+
+        return value;
     }
 
 
@@ -89,9 +138,10 @@ public class OvalContext
     }
 
 
+
     /**
      */
-    private OvalStore _getStore()
+    public OvalStore getStore()
     throws Exception
     {
         if (_store == null) {
@@ -104,7 +154,7 @@ public class OvalContext
 
     /**
      */
-    private OvalXml _getXml()
+    public OvalXml getXml()
     throws Exception
     {
         if (_xml == null) {
@@ -112,25 +162,6 @@ public class OvalContext
         }
 
         return _xml;
-    }
-
-
-
-    /**
-     */
-    public OvalStore getStore()
-    throws Exception
-    {
-        return _getStore();
-    }
-
-
-    /**
-     */
-    public OvalXml getXml()
-    throws Exception
-    {
-        return _getXml();
     }
 
 }
