@@ -88,7 +88,8 @@ public class DefinitionResults
 
     public Collection<DefinitionResult> getDefinition()
     {
-        return _elements();
+        return this;
+//        return _elements();
 //        return _values();
     }
 

@@ -167,7 +167,7 @@
             type="jp.go.aist.six.oval.model.common.Generator">
             <bind-xml name="generator" node="element"/>
         </field>
-        
+
         <field name="definitions.definition" 
             type="jp.go.aist.six.oval.model.definitions.Definition"
             collection="collection">
@@ -921,16 +921,16 @@
         </field>
 -->
 
-        <field name="systemData" 
-            type="jp.go.aist.six.oval.model.sc.SystemData">
-            <bind-xml name="system_data"/>
-        </field>
-<!--
-        <field name="collectedItems" 
+        <field name="systemData.item" 
             type="jp.go.aist.six.oval.model.sc.Item"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element" 
                 location="system_data"/>
+        </field>
+<!--
+        <field name="systemData" 
+            type="jp.go.aist.six.oval.model.sc.SystemData">
+            <bind-xml name="system_data"/>
         </field>
 -->
 
@@ -1189,16 +1189,16 @@
             <bind-xml name="oval_definitions" node="element"/>
         </field>
 
-        <field name="results" 
-            type="jp.go.aist.six.oval.model.results.SystemResults">
-            <bind-xml name="results" node="element"/>
-        </field>
-<!--
-        <field name="results" 
+        <field name="results.system" 
             type="jp.go.aist.six.oval.model.results.SystemResult"
             collection="collection">
             <bind-xml name="system" node="element" 
                 location="results"/>
+        </field>
+<!--
+        <field name="results" 
+            type="jp.go.aist.six.oval.model.results.SystemResults">
+            <bind-xml name="results" node="element"/>
         </field>
 -->
     </class>
@@ -1289,15 +1289,31 @@
         <map-to xml="system"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
+        <field name="definitions.definition" 
+            type="jp.go.aist.six.oval.model.results.DefinitionResult"
+            collection="collection">
+            <bind-xml name="definition" node="element" 
+                location="definitions"/>
+        </field>
+<!--
         <field name="definitions" 
             type="jp.go.aist.six.oval.model.results.DefinitionResults">
             <bind-xml name="definitions" node="element"/>
         </field>
+-->
 
+        <field name="tests.test" 
+            type="jp.go.aist.six.oval.model.results.TestResult"
+            collection="collection">
+            <bind-xml name="test" node="element" 
+                location="tests"/>
+        </field>
+<!--
         <field name="tests" 
             type="jp.go.aist.six.oval.model.results.TestResults">
             <bind-xml name="tests" node="element"/>
         </field>
+-->
 
         <field name="ovalSystemCharacteristics" 
             type="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics">

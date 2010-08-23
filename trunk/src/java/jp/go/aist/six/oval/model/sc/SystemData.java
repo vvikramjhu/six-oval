@@ -86,7 +86,8 @@ public class SystemData
 
     public Collection<Item> getItem()
     {
-        return _elements();
+        return this;
+//        return _elements();
     }
 
 

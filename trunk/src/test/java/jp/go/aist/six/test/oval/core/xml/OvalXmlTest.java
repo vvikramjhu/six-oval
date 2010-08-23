@@ -4,6 +4,7 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.Content;
 import jp.go.aist.six.oval.model.results.Directive;
 import jp.go.aist.six.oval.model.results.Directives;
+import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -122,6 +123,61 @@ public class OvalXmlTest
     //  Results
     //
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    //==============================================================
+    //  oval_results
+    //==============================================================
+
+    @DataProvider( name="oval-results_oval_results" )
+    public Object[][] provideOvalResultsOvalResults()
+    {
+        return new Object[][] {
+                      // Windows @Mitre, CVE-2010-0176
+                      {
+                          OvalResults.class,
+                          "/oval_results",
+                          "test/data/results/oval-results_CVE-2010-0176_mitre7222.xml",
+                          null
+                      }
+//                      ,
+//
+//                      // Red Hat patch, CVE-2010-0176, RHSA 20100332
+//                      {
+//                          "test/data/results/oval-results_CVE-2010-0176_rhsa20100332.xml",
+//                      }
+//                      ,
+//
+//                      // Debian @Mitre, CVE-2010-0176, DSA-2027
+//                      {
+//                          "test/data/results/oval-results_CVE-2010-0176_mitre7432_DSA-2027.xml",
+//                      }
+////                      ,
+
+        };
+
+    }
+
+
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "oval-results.oval_results"},
+                    dataProvider="oval-results_oval_results",
+                    alwaysRun=true
+                    )
+    public void testOvalResultsOvalResults(
+                    final Class<?> type,
+                    final String testedXPath,
+                    final String filepath,
+                    final Object expected
+                    )
+    throws Exception
+    {
+        _processXml( type, testedXPath, filepath, expected );
+    }
+
+
 
     //==============================================================
     //  directives

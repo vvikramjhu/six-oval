@@ -87,7 +87,8 @@ public class SystemResults
 
     public Collection<SystemResult> getSystem()
     {
-        return _elements();
+        return this;
+//        return _elements();
     }
 
 

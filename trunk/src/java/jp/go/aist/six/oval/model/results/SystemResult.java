@@ -36,11 +36,11 @@ public class SystemResult
     implements Dependent<OvalResults>
 {
 
-    private DefinitionResults  _definitions;
+    private DefinitionResults  _definitions = new DefinitionResults();
     //{0..1}
 
 
-    private TestResults  _tests;
+    private TestResults  _tests = new TestResults();
     //{0..1}
 
 

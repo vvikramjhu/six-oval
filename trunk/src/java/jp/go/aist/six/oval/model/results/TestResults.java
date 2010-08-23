@@ -85,7 +85,8 @@ public class TestResults
 
     public Collection<TestResult> getTest()
     {
-        return _elements();
+        return this;
+//        return _elements();
     }
 
 
