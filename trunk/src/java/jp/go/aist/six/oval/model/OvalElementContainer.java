@@ -76,12 +76,14 @@ public class OvalElementContainer<E extends OvalElement>
         if (id == null) {
             throw new IllegalArgumentException();
         }
-        E  result = null;
-        for (E  e : this) {
 
+        for (E  e : this) {
+            if (id.equals( e.getOvalID() )) {
+                return e;
+            }
         }
 
-        return result;
+        return null;
     }
 
 
