@@ -9,6 +9,8 @@ import jp.go.aist.six.test.oval.core.CoreTestBase;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.OutputStream;
 
 
@@ -66,7 +68,9 @@ public class OvalXmlTest
             Reporter.log( "...validation OK", true );
         }
 
-        _marshal( actual, System.out );
+        _marshal( actual, new FileOutputStream( new File( "foo.xml" ) ) );
+
+//        _marshal( actual, System.out );
     }
 
 

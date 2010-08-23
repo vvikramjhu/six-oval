@@ -154,6 +154,8 @@
                  value="true"/>
         <property name="suppressXsiType"
                  value="true"/>
+        <property name="encoding"
+                 value="UTF-8"/>
     </bean> 
 
 
