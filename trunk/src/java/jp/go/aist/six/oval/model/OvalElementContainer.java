@@ -25,6 +25,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -36,7 +37,8 @@ import java.util.Set;
  * @version $Id$
  */
 public class OvalElementContainer<E extends OvalElement>
-    extends KeyedContainer<String, E>
+    extends Container<E>
+//extends KeyedContainer<String, E>
 {
 
     /**
@@ -68,6 +70,19 @@ public class OvalElementContainer<E extends OvalElement>
         super( elements );
     }
 
+
+    public E find( final String id )
+    {
+        if (id == null) {
+            throw new IllegalArgumentException();
+        }
+        E  result = null;
+        for (E  e : this) {
+
+        }
+
+        return result;
+    }
 
 
     //**************************************************************
@@ -115,9 +130,10 @@ public class OvalElementContainer<E extends OvalElement>
 
     public String getDigest()
     {
-        Set<String>  keys = _keySet();
-        final int  currentHash = (keys == null ? 0 : keys.hashCode());
-        if (currentHash != _hashOnDigest) {
+        int  thisHash = hashCode();
+        if (_digest == null  ||  thisHash != _hashOnDigest) {
+            Set<String>  keys = _keySet();
+            int  keysHash = keys.hashCode();
             MessageDigest  digest = null;
             try {
                 digest = MessageDigest.getInstance( DIGEST_ALGORITHM );
@@ -126,31 +142,63 @@ public class OvalElementContainer<E extends OvalElement>
                 return null;
             }
 
-            String  currentHashString = (currentHash == 0 ? "" : String.valueOf( currentHash ));
+            String  currentHashString = (keysHash == 0 ? "" : String.valueOf( keysHash ));
             _update( digest, currentHashString );
 
             _digest = _byteArrayToHexString( digest.digest() );
-            _hashOnDigest = currentHash;
+            _hashOnDigest = thisHash;
         }
 
         return _digest;
     }
+    // keyedContainer implementation
+//    {
+//        Set<String>  keys = _keySet();
+//        final int  currentHash = (keys == null ? 0 : keys.hashCode());
+//        if (currentHash != _hashOnDigest) {
+//            MessageDigest  digest = null;
+//            try {
+//                digest = MessageDigest.getInstance( DIGEST_ALGORITHM );
+//                                                  //@throws NoSuchAlgorithmException
+//            } catch (NoSuchAlgorithmException ex) {
+//                return null;
+//            }
+//
+//            String  currentHashString = (currentHash == 0 ? "" : String.valueOf( currentHash ));
+//            _update( digest, currentHashString );
+//
+//            _digest = _byteArrayToHexString( digest.digest() );
+//            _hashOnDigest = currentHash;
+//        }
+//
+//        return _digest;
+//    }
 
+
+    private Set<String> _keySet()
+    {
+        Set<String>  set = new HashSet<String>();
+        for (OvalElement  e : this) {
+            set.add( e.getOvalID() );
+        }
+
+        return set;
+    }
 
 
     /**
      */
-    public String getOvalIDDigest()
-    {
-        final int  currentHash = hashCode();
-        if (currentHash != _hashOnDigest) {
-            _digest = _computeOvalIDDigest( _keySet() );
-//            _digest = _computeDigest( _values() );  //TODO: keySet() is enough ???
-            _hashOnDigest = currentHash;
-        }
-
-        return _digest;
-    }
+//    public String getOvalIDDigest()
+//    {
+//        final int  currentHash = hashCode();
+//        if (currentHash != _hashOnDigest) {
+//            _digest = _computeOvalIDDigest( _keySet() );
+////            _digest = _computeDigest( _values() );  //TODO: keySet() is enough ???
+//            _hashOnDigest = currentHash;
+//        }
+//
+//        return _digest;
+//    }
 
 
     /**

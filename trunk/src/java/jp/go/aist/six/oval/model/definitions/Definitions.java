@@ -90,7 +90,8 @@ public class Definitions
 
     public Collection<Definition> getDefinition()
     {
-        return _values();
+        return this;
+//        return _values();
     }
 
 

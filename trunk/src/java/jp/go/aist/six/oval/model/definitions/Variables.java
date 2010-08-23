@@ -90,7 +90,8 @@ public class Variables
 
     public Collection<Variable> getVariable()
     {
-        return _values();
+        return this;
+//      return _values();
     }
 
 

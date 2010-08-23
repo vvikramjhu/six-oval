@@ -90,7 +90,8 @@ public class Tests
 
     public Collection<Test> getTest()
     {
-        return _values();
+        return this;
+//        return _values();
     }
 
 

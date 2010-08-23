@@ -90,7 +90,8 @@ public class SystemObjects
 
     public Collection<SystemObject> getObject()
     {
-        return _values();
+        return this;
+//      return _values();
     }
 
 

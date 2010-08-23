@@ -90,7 +90,8 @@ public class States
 
     public Collection<State> getState()
     {
-        return _values();
+        return this;
+//      return _values();
     }
 
 
