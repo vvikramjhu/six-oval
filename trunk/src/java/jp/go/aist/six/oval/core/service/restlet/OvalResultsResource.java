@@ -21,10 +21,7 @@
 package jp.go.aist.six.oval.core.service.restlet;
 
 import jp.go.aist.six.oval.model.results.OvalResults;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.restlet.Context;
-import org.restlet.data.Form;
 import org.restlet.data.MediaType;
 import org.restlet.data.Request;
 import org.restlet.data.Response;
@@ -44,13 +41,6 @@ import org.restlet.resource.Variant;
 public class OvalResultsResource
     extends BaseResource
 {
-
-    /**
-     * Logger.
-     */
-    private static Log  _LOG = LogFactory.getLog( OvalResultsResource.class );
-
-
 
     /**
      *
@@ -110,46 +100,6 @@ public class OvalResultsResource
         getResponse().setEntity( rep );
 
         return rep;
-    }
-
-
-
-    // POST: create a new OvalResults, return the ID
-    @Override
-    public void acceptRepresentation(
-                    final Representation entity
-                    )
-    throws ResourceException
-    {
-        Form  form = new Form( entity );
-        String  xml = form.getFirstValue( "oval_results" );
-        if (_LOG.isTraceEnabled()) {
-            _LOG.trace( "content XML: length=" + xml.length() );
-//          _LOG.trace( "content XML: " + xml );
-        }
-
-        Representation  rep = null;
-        try {
-            OvalResults  results = (OvalResults)_getOvalXml().unmarshalFromString( xml );
-            String  pid = _getOvalStore().create( OvalResults.class, results );
-            if (_LOG.isInfoEnabled()) {
-                _LOG.info( "OVAL Results created: PID=" + pid );
-            }
-            getResponse().setStatus( Status.SUCCESS_CREATED );
-            rep = new StringRepresentation( pid, MediaType.TEXT_PLAIN );
-            rep.setIdentifier( getRequest().getResourceRef().getIdentifier()
-                            + "/" + pid );
-        } catch (Exception ex) {
-            if (_LOG.isWarnEnabled()) {
-                _LOG.warn( ex );
-            }
-            getResponse().setStatus( Status.SERVER_ERROR_INTERNAL );
-            rep = new StringRepresentation(
-                    "there was an error creating OvalResults",
-                    MediaType.TEXT_PLAIN );
-        }
-
-        getResponse().setEntity( rep );
     }
 
 }

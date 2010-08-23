@@ -41,28 +41,21 @@ import org.restlet.resource.Variant;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalResultsResource
+public class OvalResultsCollectionResource
     extends BaseResource
 {
 
     /**
      * Logger.
      */
-    private static Log  _LOG = LogFactory.getLog( OvalResultsResource.class );
-
-
-
-    /**
-     *
-     */
-    private String  _pid;
+    private static Log  _LOG = LogFactory.getLog( OvalResultsCollectionResource.class );
 
 
 
     /**
      * Constructor.
      */
-    public OvalResultsResource(
+    public OvalResultsCollectionResource(
                     final Context context,
                     final Request request,
                     final Response response
@@ -71,7 +64,6 @@ public class OvalResultsResource
         super( context, request, response );
 
         getVariants().add( new Variant(MediaType.APPLICATION_XML) );
-        _pid = (String)getRequest().getAttributes().get( "id" );
     }
 
 
@@ -88,29 +80,29 @@ public class OvalResultsResource
 
 
 
-    // GET:
-    @Override
-    public Representation represent(
-                    final Variant variant
-                    )
-    throws ResourceException
-    {
-        Representation  rep = null;
-        try {
-            OvalResults  object = _getOvalStore().get( OvalResults.class, _pid );
-            String  xml = _getOvalXml().marshalToString( object );
-            rep = new StringRepresentation( xml );
-        } catch (Exception ex) {
-            getResponse().setStatus( Status.SERVER_ERROR_INTERNAL );
-            rep = new StringRepresentation(
-                    "there was an error: " + ex.getMessage(),
-                    MediaType.TEXT_PLAIN );
-        }
-
-        getResponse().setEntity( rep );
-
-        return rep;
-    }
+//    // GET:
+//    @Override
+//    public Representation represent(
+//                    final Variant variant
+//                    )
+//    throws ResourceException
+//    {
+//        Representation  rep = null;
+//        try {
+//            OvalResults  object = _getOvalStore().get( OvalResults.class, _pid );
+//            String  xml = _getOvalXml().marshalToString( object );
+//            rep = new StringRepresentation( xml );
+//        } catch (Exception ex) {
+//            getResponse().setStatus( Status.SERVER_ERROR_INTERNAL );
+//            rep = new StringRepresentation(
+//                    "there was an error: " + ex.getMessage(),
+//                    MediaType.TEXT_PLAIN );
+//        }
+//
+//        getResponse().setEntity( rep );
+//
+//        return rep;
+//    }
 
 
 
@@ -153,7 +145,7 @@ public class OvalResultsResource
     }
 
 }
-// OvalResultsResource
+// OvalResultsCollectionResource
 
 /* vim:set tabstop=4:set expandtab:set shiftwidth=4: */
 
