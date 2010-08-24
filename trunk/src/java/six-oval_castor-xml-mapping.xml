@@ -1186,7 +1186,12 @@
         
         <field name="definitions" 
             type="jp.go.aist.six.oval.model.definitions.OvalDefinitions">
-            <bind-xml name="oval_definitions" node="element"/>
+            <bind-xml name="oval-def:oval_definitions" node="element"
+                xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+                />
+<!--
+                QName-prefix="oval-def"
+-->
         </field>
 
         <field name="results.system" 
