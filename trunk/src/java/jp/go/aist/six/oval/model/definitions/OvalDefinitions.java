@@ -216,33 +216,33 @@ public class OvalDefinitions
 
 
 
-    public Test getTest(
-                    final String id
-                    )
-    {
-        Tests  tests = getTests();
-        return (tests == null ? null : tests.find( id ));
-    }
-
-
-
-    public SystemObject getObject(
-                    final String id
-                    )
-    {
-        SystemObjects  objects = getObjects();
-        return (objects == null ? null : objects.find( id ));
-    }
-
-
-
-    public State getState(
-                    final String id
-                    )
-    {
-        States  states = getStates();
-        return (states == null ? null : states.find( id ));
-    }
+//    public Test getTest(
+//                    final String id
+//                    )
+//    {
+//        Tests  tests = getTests();
+//        return (tests == null ? null : tests.find( id ));
+//    }
+//
+//
+//
+//    public SystemObject getObject(
+//                    final String id
+//                    )
+//    {
+//        SystemObjects  objects = getObjects();
+//        return (objects == null ? null : objects.find( id ));
+//    }
+//
+//
+//
+//    public State getState(
+//                    final String id
+//                    )
+//    {
+//        States  states = getStates();
+//        return (states == null ? null : states.find( id ));
+//    }
 
 
 

@@ -378,7 +378,7 @@ public class DebianOvalBuilder
             if (_LOG.isDebugEnabled()) {
                 _LOG.debug( "state created: " + ovalState );
             }
-            stateCollection.add( ovalState );
+            stateCollection.addState( ovalState );
             oval.setStates( stateCollection );
 
             Criteria  criteria = new Criteria();
@@ -405,8 +405,8 @@ public class DebianOvalBuilder
                     _LOG.debug( "test created: " + ovalTest );
                 }
 
-                oval.getObjects().add( ovalObject );
-                oval.getTests().add( ovalTest );
+                oval.getObjects().addObject( ovalObject );
+                oval.getTests().addTest( ovalTest );
 
                 criteria.addElement( new Criterion( testID ) );
 

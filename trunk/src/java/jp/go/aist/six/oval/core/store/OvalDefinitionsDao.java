@@ -100,7 +100,7 @@ public class OvalDefinitionsDao
             Tests  p_tests = new Tests();
             for (Test  test : test_list) {
                 Test  p_test = getForwardingDao( Test.class ).sync( test );
-                p_tests.add( p_test );
+                p_tests.addTest( p_test );
                 OvalDefinitionsTestAssociation  assoc =
                     new OvalDefinitionsTestAssociation( defs, p_test );
                 getForwardingDao( OvalDefinitionsTestAssociation.class ).sync( assoc );
@@ -118,7 +118,7 @@ public class OvalDefinitionsDao
                     _LOG.info( "creating Definition: " + object.getOvalID() );
                 }
                 SystemObject  p_object = getForwardingDao( SystemObject.class ).sync( object );
-                p_objects.add( p_object );
+                p_objects.addObject( p_object );
                 OvalDefinitionsObjectAssociation  assoc =
                     new OvalDefinitionsObjectAssociation( defs, p_object );
                 getForwardingDao( OvalDefinitionsObjectAssociation.class ).sync( assoc );
@@ -132,7 +132,7 @@ public class OvalDefinitionsDao
             States  p_objects = new States();
             for (State  object : states) {
                 State  p_object = getForwardingDao( State.class ).sync( object );
-                p_objects.add( p_object );
+                p_objects.addState( p_object );
                 OvalDefinitionsStateAssociation  assoc =
                     new OvalDefinitionsStateAssociation( defs, p_object );
                 getForwardingDao( OvalDefinitionsStateAssociation.class ).sync( assoc );

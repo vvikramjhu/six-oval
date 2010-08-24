@@ -120,7 +120,7 @@ public class LocalOvalRepository
             Tests  p_tests = new Tests();
             for (Test  test : test_list) {
                 Test  p_test = _store.sync( Test.class, test );
-                p_tests.add( p_test );
+                p_tests.addTest( p_test );
             }
 
             defs.setTests( p_tests );
@@ -135,7 +135,7 @@ public class LocalOvalRepository
                     _LOG.info( "creating Definition: " + object.getOvalID() );
                 }
                 SystemObject  p_object = _store.sync( SystemObject.class, object );
-                p_objects.add( p_object );
+                p_objects.addObject( p_object );
             }
 
             defs.setObjects( p_objects );
@@ -146,7 +146,7 @@ public class LocalOvalRepository
             States  p_objects = new States();
             for (State  object : states) {
                 State  p_object = _store.sync( State.class, object );
-                p_objects.add( p_object );
+                p_objects.addState( p_object );
             }
 
             defs.setStates( p_objects );
