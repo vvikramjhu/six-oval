@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.OvalElementContainer;
+import jp.go.aist.six.oval.model.SetContainer;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -38,7 +38,8 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class States
-    extends OvalElementContainer<State> //{1..*}
+    extends SetContainer<State> //{1..*}
+//extends OvalElementContainer<State> //{1..*}
 {
 
     /**
@@ -72,26 +73,17 @@ public class States
 
 
 
-    public void setState(
-                    final Collection<? extends State> states
-                    )
-    {
-        reset( states );
-    }
-
-
     public boolean addState(
                     final State state
                     )
     {
-        return add( state );
+        return _addElement( state );
     }
 
 
     public Collection<State> getState()
     {
-        return this;
-//      return _values();
+        return _getElement();
     }
 
 
