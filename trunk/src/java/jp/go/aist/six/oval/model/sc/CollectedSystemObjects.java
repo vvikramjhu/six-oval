@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.sc;
 
-import jp.go.aist.six.oval.model.Container;
+import jp.go.aist.six.oval.model.SetContainer;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -39,7 +39,7 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class CollectedSystemObjects
-    extends Container<CollectedSystemObject>    //{1..*}
+    extends SetContainer<CollectedSystemObject>    //{1..*}
 {
 
     /**
@@ -73,28 +73,17 @@ public class CollectedSystemObjects
 
 
 
-    /**
-     */
-    public void setObject(
-                    final Collection<? extends CollectedSystemObject> objects
-                    )
-    {
-        reset( objects );
-    }
-
-
-
     public boolean addObject(
                     final CollectedSystemObject object
                     )
     {
-        return add( object );
+        return _addElement( object );
     }
 
 
     public Collection<CollectedSystemObject> getObject()
     {
-        return _elements();
+        return _getElement();
     }
 
 
@@ -114,7 +103,7 @@ public class CollectedSystemObjects
     public String toString()
     {
         return "CollectedSystemObjects["
-                        + super.toString()
+                        + _getElement()
                         + "]";
     }
 

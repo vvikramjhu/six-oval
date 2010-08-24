@@ -156,20 +156,20 @@
                  value="true"/>
         <property name="encoding"
                  value="UTF-8"/>
-<!--
         <property name="namespaceMappings">
             <map>
                 <entry key="oval"
                     value="http://oval.mitre.org/XMLSchema/oval-common-5"/>
+<!--
                 <entry key="oval-def"
                     value="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
                 <entry key="oval-sc"
                     value="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
                 <entry key="oval-sc-windows"
                     value="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"/>
+-->
             </map>
         </property>                    
--->
     </bean> 
 
 
