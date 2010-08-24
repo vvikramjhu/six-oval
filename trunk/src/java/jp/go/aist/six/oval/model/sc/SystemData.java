@@ -34,6 +34,7 @@ import java.util.Iterator;
  */
 public class SystemData
 //    extends Container<Item>
+implements Iterable<Item>
 {
 
     private Collection<Item>  _items = new ArrayList<Item>();
@@ -125,6 +126,18 @@ public class SystemData
     {
         return _items.size();
     }
+
+
+
+    //**************************************************************
+    //  Iterable
+    //**************************************************************
+
+    public Iterator<Item> iterator()
+    {
+        return _items.iterator();
+    }
+
 
 
     //**************************************************************
