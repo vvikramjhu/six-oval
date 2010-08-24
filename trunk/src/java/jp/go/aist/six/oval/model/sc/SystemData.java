@@ -20,8 +20,7 @@
 
 package jp.go.aist.six.oval.model.sc;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import jp.go.aist.six.oval.model.SetContainer;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -33,13 +32,9 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class SystemData
+    extends SetContainer<Item>
 //    extends Container<Item>
-implements Iterable<Item>
 {
-
-    private Collection<Item>  _items = new ArrayList<Item>();
-
-
 
     /**
      * Constructor.
@@ -56,8 +51,7 @@ implements Iterable<Item>
                     final Collection<? extends Item> items
                     )
     {
-        setItem( items );
-//        super( items );
+        super( items );
     }
 
 
@@ -68,74 +62,28 @@ implements Iterable<Item>
                     final Item[] items
                     )
     {
-        setItem( Arrays.asList( items ) );
-//        super( items );
+        super( items );
     }
 
-
-
-    /**
-     */
-    public void setItem(
-                    final Collection<? extends Item> items
-                    )
-    {
-        if (items != _items) {
-            _items.clear();
-            if (items != null  &&  items.size() > 0) {
-                _items.addAll( items );
-            }
-        }
-    }
-//    {
-//        reset( items );
-//    }
 
 
     public boolean addItem(
                     final Item item
                     )
     {
-        return _items.add( item );
+        return _addElement( item );
     }
-//    {
-//        return add( item );
-//    }
 
 
     public Collection<Item> getItem()
     {
-        return _items;
+        return _getElement();
     }
-//    {
-////      return this;
-//      return _elements();
-//  }
 
 
     public Iterator<Item> iterateItem()
     {
-        return _items.iterator();
-    }
-//    {
-//        return iterator();
-//    }
-
-
-    public int size()
-    {
-        return _items.size();
-    }
-
-
-
-    //**************************************************************
-    //  Iterable
-    //**************************************************************
-
-    public Iterator<Item> iterator()
-    {
-        return _items.iterator();
+        return iterator();
     }
 
 
