@@ -162,6 +162,10 @@
                     value="http://oval.mitre.org/XMLSchema/oval-common-5"/>
                 <entry key="oval-def"
                     value="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+                <entry key="oval-sc"
+                    value="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
+                <entry key="oval-sc-windows"
+                    value="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"/>
             </map>
         </property>                    
 <!--

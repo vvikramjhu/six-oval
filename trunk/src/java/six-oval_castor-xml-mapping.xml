@@ -12,7 +12,11 @@
 <!-- @author    Akihito Nakamura, AIST -->
 <!-- @version   $Id$ -->
 
-<mapping>
+<mapping
+    >
+<!--
+    xmlns:oval-sc-windows="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+-->
 
     <!-- include href="castor-xml-mapping_vuln.xml" / -->
 
@@ -1120,6 +1124,7 @@
     <!-- ======================================================= -->
     <!-- SystemData                                              -->
     <!-- ======================================================= -->
+<!--
     <class name="jp.go.aist.six.oval.model.sc.SystemData">
         <map-to xml="system_data"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
@@ -1132,6 +1137,7 @@
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
     </class>
+-->
 
 
 
@@ -1322,7 +1328,9 @@
 
         <field name="ovalSystemCharacteristics" 
             type="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics">
-            <bind-xml name="oval_system_characteristics" node="element"/>
+            <bind-xml name="oval-sc:oval_system_characteristics" node="element"
+                xmlns:oval-sc="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"
+                />
         </field>
     </class>
 
@@ -2919,9 +2927,14 @@
     <!-- RegistryItem                                            -->
     <!-- ======================================================= -->
     <class name ="jp.go.aist.six.oval.model.windows.RegistryItem"
-        extends="jp.go.aist.six.oval.model.sc.Item">
+        extends="jp.go.aist.six.oval.model.sc.Item"
+        >
         <map-to xml="registry_item"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"/>
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            />
+<!--
+            ns-prefix="oval-sc-windows"
+-->
 
         <field name="hive"
             type="jp.go.aist.six.oval.model.windows.EntityItemRegistryHive">
