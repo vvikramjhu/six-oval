@@ -165,7 +165,8 @@
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definitions.OvalDefinitions">
         <map-to xml="oval_definitions"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            ns-prefix=""/>
 
         <field name="generator" 
             type="jp.go.aist.six.oval.model.common.Generator">
@@ -1640,10 +1641,25 @@
     <!-- ======================================================= -->
     <!-- FamilyItem                                              -->
     <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.independent.FamilyItem"
-        extends="jp.go.aist.six.oval.model.sc.Item">
+    <class name ="jp.go.aist.six.oval.model.independent.FamilyItem">
         <map-to xml="family_item"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent"/>
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent"
+            ns-prefix=""
+            />
+
+        <!-- BEGIN: extends="jp.go.aist.six.oval.model.sc.Item" -->
+
+        <field name="ID" type="int">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+
+        <field name="status" type="string" 
+            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
+            <bind-xml name="status" node="attribute"/>
+        </field>
+
+        <!-- END: extends="jp.go.aist.six.oval.model.sc.Item" -->
+
 
         <field name="family" 
             type="jp.go.aist.six.oval.model.independent.EntityItemFamily">
@@ -1737,10 +1753,25 @@
     <!-- ======================================================= -->
     <!-- TextFileContentItem                                     -->
     <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.independent.TextFileContentItem"
-        extends="jp.go.aist.six.oval.model.sc.Item">
+    <class name ="jp.go.aist.six.oval.model.independent.TextFileContentItem">
         <map-to xml="textfilecontent_item"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent"/>
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent"
+            ns-prefix=""
+            />
+
+        <!-- BEGIN: extends="jp.go.aist.six.oval.model.sc.Item" -->
+
+        <field name="ID" type="int">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+
+        <field name="status" type="string" 
+            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
+            <bind-xml name="status" node="attribute"/>
+        </field>
+
+        <!-- END: extends="jp.go.aist.six.oval.model.sc.Item" -->
+
 
         <field name="filepath" 
             type="jp.go.aist.six.oval.model.sc.EntityItemString">
@@ -2097,10 +2128,25 @@
     <!-- ======================================================= -->
     <!-- DpkgInfoItem                                            -->
     <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.linux.DpkgInfoItem"
-        extends="jp.go.aist.six.oval.model.sc.Item">
+    <class name ="jp.go.aist.six.oval.model.linux.DpkgInfoItem">
         <map-to xml="dpkginfo_item"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux"/>
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux"
+            ns-prefix=""
+            />
+
+        <!-- BEGIN: extends="jp.go.aist.six.oval.model.sc.Item" -->
+
+        <field name="ID" type="int">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+
+        <field name="status" type="string" 
+            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
+            <bind-xml name="status" node="attribute"/>
+        </field>
+
+        <!-- END: extends="jp.go.aist.six.oval.model.sc.Item" -->
+
 
         <field name="name" 
             type="jp.go.aist.six.oval.model.sc.EntityItemString">
@@ -2138,10 +2184,25 @@
     <!-- ======================================================= -->
     <!-- RpmInfoItem                                             -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.linux.RpmInfoItem"
-        extends="jp.go.aist.six.oval.model.sc.Item">
+    <class name="jp.go.aist.six.oval.model.linux.RpmInfoItem">
         <map-to xml="rpminfo_item"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux"/>
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux"
+            ns-prefix=""
+            />
+
+        <!-- BEGIN: extends="jp.go.aist.six.oval.model.sc.Item" -->
+
+        <field name="ID" type="int">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+
+        <field name="status" type="string" 
+            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
+            <bind-xml name="status" node="attribute"/>
+        </field>
+
+        <!-- END: extends="jp.go.aist.six.oval.model.sc.Item" -->
+
 
         <field name="name" 
             type="jp.go.aist.six.oval.model.sc.EntityItemString">
@@ -2384,10 +2445,25 @@
     <!-- ======================================================= -->
     <!-- UnameItem                                               -->
     <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.unix.UnameItem"
-        extends="jp.go.aist.six.oval.model.sc.Item">
+    <class name ="jp.go.aist.six.oval.model.unix.UnameItem">
         <map-to xml="uname_item"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"/>
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"
+            ns-prefix=""
+            />
+
+        <!-- BEGIN: extends="jp.go.aist.six.oval.model.sc.Item" -->
+
+        <field name="ID" type="int">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+
+        <field name="status" type="string" 
+            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
+            <bind-xml name="status" node="attribute"/>
+        </field>
+
+        <!-- END: extends="jp.go.aist.six.oval.model.sc.Item" -->
+
 
         <field name="machineClass" 
             type="jp.go.aist.six.oval.model.sc.EntityItemString">
@@ -2591,10 +2667,25 @@
     <!-- ======================================================= -->
     <!-- FileItem                                                -->
     <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.windows.FileItem"
-        extends="jp.go.aist.six.oval.model.sc.Item">
+    <class name ="jp.go.aist.six.oval.model.windows.FileItem">
         <map-to xml="file_item"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"/>
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""
+            />
+
+        <!-- BEGIN: extends="jp.go.aist.six.oval.model.sc.Item" -->
+
+        <field name="ID" type="int">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+
+        <field name="status" type="string" 
+            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
+            <bind-xml name="status" node="attribute"/>
+        </field>
+
+        <!-- END: extends="jp.go.aist.six.oval.model.sc.Item" -->
+
 
         <field name="filepath" 
             type="jp.go.aist.six.oval.model.sc.EntityItemString">
@@ -2777,10 +2868,25 @@
     <!-- ======================================================= -->
     <!-- MetabaseItem                                            -->
     <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.windows.MetabaseItem"
-        extends="jp.go.aist.six.oval.model.sc.Item">
+    <class name ="jp.go.aist.six.oval.model.windows.MetabaseItem">
         <map-to xml="metabase_item"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"/>
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""
+            />
+
+        <!-- BEGIN: extends="jp.go.aist.six.oval.model.sc.Item" -->
+
+        <field name="ID" type="int">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+
+        <field name="status" type="string" 
+            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
+            <bind-xml name="status" node="attribute"/>
+        </field>
+
+        <!-- END: extends="jp.go.aist.six.oval.model.sc.Item" -->
+
 
         <field name="key" 
             type="jp.go.aist.six.oval.model.sc.EntityItemString">
@@ -2927,8 +3033,7 @@
     <!-- ======================================================= -->
     <!-- RegistryItem                                            -->
     <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.windows.RegistryItem"
-        >
+    <class name ="jp.go.aist.six.oval.model.windows.RegistryItem">
         <map-to xml="registry_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""
