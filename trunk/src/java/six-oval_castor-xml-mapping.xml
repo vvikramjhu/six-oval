@@ -897,7 +897,8 @@
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics">
         <map-to xml="oval_system_characteristics"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"
+            ns-prefix=""/>
 
         <field name="generator" 
             type="jp.go.aist.six.oval.model.common.Generator">
@@ -925,16 +926,16 @@
         </field>
 -->
 
+        <field name="systemData" 
+            type="jp.go.aist.six.oval.model.sc.SystemData">
+            <bind-xml name="system_data" node="element"/>
+        </field>
+<!--
         <field name="systemData.item" 
             type="jp.go.aist.six.oval.model.sc.Item"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element" 
                 location="system_data"/>
-        </field>
-<!--
-        <field name="systemData" 
-            type="jp.go.aist.six.oval.model.sc.SystemData">
-            <bind-xml name="system_data"/>
         </field>
 -->
 
@@ -1124,6 +1125,14 @@
     <!-- ======================================================= -->
     <!-- SystemData                                              -->
     <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.sc.SystemData">
+
+        <field name="item" 
+            type="jp.go.aist.six.oval.model.sc.Item"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+    </class>
 <!--
     <class name="jp.go.aist.six.oval.model.sc.SystemData">
         <map-to xml="system_data"
@@ -1144,6 +1153,7 @@
     <!-- ======================================================= -->
     <!-- Item                                                    -->
     <!-- ======================================================= -->
+<!--
     <class name="jp.go.aist.six.oval.model.sc.Item"
         verify-constructable="false">
 
@@ -1156,14 +1166,8 @@
             <bind-xml name="status" node="attribute"/>
         </field>
 
-        <!-- Castor 1.3 fails in unmarshalling of Java 5 Enum. -->        
-<!-- NG! This does not work!!!
-
-        <field name="status" type="jp.go.aist.six.oval.model.sc.StatusEnum">
-            <bind-xml name="status" node="attribute"/>
-        </field>
--->
     </class>
+-->
 
 
 
@@ -2927,14 +2931,25 @@
     <!-- RegistryItem                                            -->
     <!-- ======================================================= -->
     <class name ="jp.go.aist.six.oval.model.windows.RegistryItem"
-        extends="jp.go.aist.six.oval.model.sc.Item"
         >
         <map-to xml="registry_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""
             />
-<!--
-            ns-prefix="oval-sc-windows"
--->
+
+        <!-- BEGIN: extends="jp.go.aist.six.oval.model.sc.Item" -->
+
+        <field name="ID" type="int">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+
+        <field name="status" type="string" 
+            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
+            <bind-xml name="status" node="attribute"/>
+        </field>
+
+        <!-- END: extends="jp.go.aist.six.oval.model.sc.Item" -->
+
 
         <field name="hive"
             type="jp.go.aist.six.oval.model.windows.EntityItemRegistryHive">

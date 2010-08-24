@@ -20,7 +20,8 @@
 
 package jp.go.aist.six.oval.model.sc;
 
-import jp.go.aist.six.oval.model.Container;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -32,8 +33,12 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class SystemData
-    extends Container<Item>
+//    extends Container<Item>
 {
+
+    private Collection<Item>  _items = new ArrayList<Item>();
+
+
 
     /**
      * Constructor.
@@ -50,7 +55,8 @@ public class SystemData
                     final Collection<? extends Item> items
                     )
     {
-        super( items );
+        setItem( items );
+//        super( items );
     }
 
 
@@ -61,7 +67,8 @@ public class SystemData
                     final Item[] items
                     )
     {
-        super( items );
+        setItem( Arrays.asList( items ) );
+//        super( items );
     }
 
 
@@ -72,31 +79,52 @@ public class SystemData
                     final Collection<? extends Item> items
                     )
     {
-        reset( items );
+        if (items != _items) {
+            _items.clear();
+            if (items != null  &&  items.size() > 0) {
+                _items.addAll( items );
+            }
+        }
     }
+//    {
+//        reset( items );
+//    }
 
 
     public boolean addItem(
                     final Item item
                     )
     {
-        return add( item );
+        return _items.add( item );
     }
+//    {
+//        return add( item );
+//    }
 
 
     public Collection<Item> getItem()
     {
-        return this;
-//        return _elements();
+        return _items;
     }
+//    {
+////      return this;
+//      return _elements();
+//  }
 
 
     public Iterator<Item> iterateItem()
-
     {
-        return iterator();
+        return _items.iterator();
     }
+//    {
+//        return iterator();
+//    }
 
+
+    public int size()
+    {
+        return _items.size();
+    }
 
 
     //**************************************************************

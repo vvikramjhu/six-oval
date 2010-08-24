@@ -156,6 +156,7 @@
                  value="true"/>
         <property name="encoding"
                  value="UTF-8"/>
+<!--
         <property name="namespaceMappings">
             <map>
                 <entry key="oval"
@@ -168,7 +169,6 @@
                     value="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"/>
             </map>
         </property>                    
-<!--
 -->
     </bean> 
 
