@@ -51,16 +51,17 @@ public class OvalXmlTest
     protected void _processXml(
                     final Class<?> type,
                     final String testedXPath,
-                    final String filepath,
-                    final Object expected
+                    final String sourceFilepath,
+                    final Object expected,
+                    final String resultFilepath
                     )
     throws Exception
     {
         Reporter.log( "\n// TEST: OVAL XML //", true );
         Reporter.log( "  * tested XPath: " + testedXPath, true );
-        Reporter.log( "  * tested XML file: " + filepath, true );
+        Reporter.log( "  * tested XML file: " + sourceFilepath, true );
 
-        Object  actual = _unmarshalFile( filepath, type );
+        Object  actual = _unmarshalFile( sourceFilepath, type );
 
         if (expected != null) {
             Reporter.log( "validating...", true );
@@ -68,9 +69,14 @@ public class OvalXmlTest
             Reporter.log( "...validation OK", true );
         }
 
-        _marshal( actual, new FileOutputStream( new File( "foo.xml" ) ) );
-
-//        _marshal( actual, System.out );
+        OutputStream  output = null;
+        if (resultFilepath == null) {
+            output = System.out;
+        } else {
+            Reporter.log( "  * marshalled XML file: " + resultFilepath, true );
+            output = new FileOutputStream( new File( resultFilepath ) );
+        }
+        _marshal( actual, output );
     }
 
 
@@ -86,7 +92,7 @@ public class OvalXmlTest
     //  oval_definitions
     //==============================================================
 
-    @DataProvider( name="oval-definitions_oval_definitions" )
+    @DataProvider( name="definitions.oval_definitions" )
     public Object[][] provideOvalDefinitionsOvalDefinitions()
     {
         return new Object[][] {
@@ -94,7 +100,8 @@ public class OvalXmlTest
                             OvalDefinitions.class,
                             "/oval_definitions",
                             "test/data/definitions/oval-definitions_CVE-2009-4019_MySQL.xml",
-                            null
+                            null,
+                            "marshalled_oval-definitions_CVE-2009-4019_MySQL.xml"
                         }
         };
 
@@ -105,19 +112,20 @@ public class OvalXmlTest
     /**
      */
     @org.testng.annotations.Test(
-                    groups={"oval.core.xml", "oval-definitions.oval_definitions"},
-                    dataProvider="oval-definitions_oval_definitions",
+                    groups={"oval.core.xml", "definitions.oval_definitions"},
+                    dataProvider="definitions.oval_definitions",
                     alwaysRun=true
                     )
     public void testOvalDefinitionsOvalDefinitions(
                     final Class<?> type,
                     final String testedXPath,
                     final String filepath,
-                    final OvalDefinitions expected
+                    final OvalDefinitions expected,
+                    final String resultFilepath
                     )
     throws Exception
     {
-        _processXml( type, testedXPath, filepath, expected );
+        _processXml( type, testedXPath, filepath, expected, resultFilepath );
     }
 
 
@@ -132,7 +140,7 @@ public class OvalXmlTest
     //  oval_results
     //==============================================================
 
-    @DataProvider( name="oval-results_oval_results" )
+    @DataProvider( name="results.oval_results" )
     public Object[][] provideOvalResultsOvalResults()
     {
         return new Object[][] {
@@ -141,7 +149,8 @@ public class OvalXmlTest
                           OvalResults.class,
                           "/oval_results",
                           "test/data/results/oval-results_CVE-2010-0176_mitre7222.xml",
-                          null
+                          null,
+                          "marshalled_oval-results_CVE-2010-0176_mitre7222.xml"
                       }
 //                      ,
 //
@@ -172,19 +181,20 @@ public class OvalXmlTest
     /**
      */
     @org.testng.annotations.Test(
-                    groups={"oval.core.xml", "oval-results.oval_results"},
-                    dataProvider="oval-results_oval_results",
+                    groups={"oval.core.xml", "results.oval_results"},
+                    dataProvider="results.oval_results",
                     alwaysRun=true
                     )
     public void testOvalResultsOvalResults(
                     final Class<?> type,
                     final String testedXPath,
-                    final String filepath,
-                    final Object expected
+                    final String sourceFilepath,
+                    final Object expected,
+                    final String resultFilepath
                     )
     throws Exception
     {
-        _processXml( type, testedXPath, filepath, expected );
+        _processXml( type, testedXPath, sourceFilepath, expected, resultFilepath );
     }
 
 
@@ -204,7 +214,7 @@ public class OvalXmlTest
                         );
 
 
-    @DataProvider( name="oval-results_directives" )
+    @DataProvider( name="results.directives" )
     public Object[][] provideOvalResultsDirectives()
     {
         return new Object[][] {
@@ -223,8 +233,8 @@ public class OvalXmlTest
     /**
      */
     @org.testng.annotations.Test(
-                    groups={"oval.core.xml", "oval-results.directives"},
-                    dataProvider="oval-results_directives",
+                    groups={"oval.core.xml", "results.directives"},
+                    dataProvider="results.directives",
                     alwaysRun=true
                     )
     public void testOvalResultsDirectives(

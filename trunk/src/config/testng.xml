@@ -24,7 +24,8 @@
     <test name="oval.core.xml" enabled="true">
         <groups>
             <run>
-                <include name="oval-results.oval_results"/>
+                <!-- include name="definitions.*"/ -->
+                <include name="results.oval_results"/>
             </run>
         </groups>
 
