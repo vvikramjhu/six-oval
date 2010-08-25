@@ -162,6 +162,8 @@
 -->
         <property name="namespaceMappings">
             <map>
+                <entry key="xsi"
+                    value="http://www.w3.org/2001/XMLSchema-instance"/>
                 <entry key="oval"
                     value="http://oval.mitre.org/XMLSchema/oval-common-5"/>
 <!--

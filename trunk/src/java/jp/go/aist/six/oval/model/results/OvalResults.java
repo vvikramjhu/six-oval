@@ -62,6 +62,23 @@ public class OvalResults
 
     /**
      */
+    public void getSchemaLocation(
+                    final String location
+                    )
+    {
+        //Do nothing.
+    }
+
+
+    public String getSchemaLocation()
+    {
+        return SCHEMA_LOCATION;
+    }
+
+
+
+    /**
+     */
     public void setGenerator(
                     final Generator generator
                     )
