@@ -98,7 +98,7 @@
 
     <test name="oval.process" enabled="false">
         <classes>
-            <class name="jp.go.aist.six.test.oval.process.debian.DsaParserTest"/>
+            <class name="jp.go.aist.six.test.oval.process.NetOvalInterpreterTest"/>
 
             <!--
             <class name="jp.go.aist.six.test.oval.process.debian.DebianOvalBuilderTest"/>
@@ -109,7 +109,6 @@
             <class name="jp.go.aist.six.test.oval.process.centos.CentOSOvalGeneratorTest"/>
             <class name="jp.go.aist.six.test.oval.process.CentOSOvaldiProcessorTest"/>
 
-            <class name="jp.go.aist.six.test.oval.process.NetOvalInterpreterTest"/>
             <class name="jp.go.aist.six.test.oval.OvaldiTest"/>
             <class name="jp.go.aist.six.test.oval.service.OvalXml2StoreTest"/>
             <class name="jp.go.aist.six.test.oval.service.OvalStoreTest"/>
