@@ -12,8 +12,7 @@
 <!-- @author    Akihito Nakamura, AIST -->
 <!-- @version   $Id$ -->
 
-<mapping
-    >
+<mapping>
 <!--
     xmlns:oval-sc-windows="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
 -->
