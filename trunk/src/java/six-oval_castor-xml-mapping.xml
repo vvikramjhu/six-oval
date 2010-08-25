@@ -166,8 +166,8 @@
             <bind-xml name="max_depth" node="attribute"/>
         </field>
 
-        <field name="recurseDirection" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.RecurseDirectionHandler">
+        <field name="recurseDirection"
+            type="jp.go.aist.six.oval.model.common.RecurseDirection">
             <bind-xml name="recurse_direction" node="attribute"/>
         </field>
     </class>
@@ -282,8 +282,8 @@
         </field>
 
 
-        <field name="definitionClass" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.DefinitionClassHandler">
+        <field name="definitionClass" 
+            type="jp.go.aist.six.oval.model.definitions.DefinitionClass">
             <bind-xml name="class" node="attribute"/>
         </field>
 
@@ -513,13 +513,19 @@
         extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
         verify-constructable="false">
 
+        <field name="check" 
+            type="jp.go.aist.six.oval.model.common.Check">
+            <bind-xml name="check" node="attribute"/>
+        </field>
+<!--
         <field name="check" type="string" 
             handler="jp.go.aist.six.oval.core.xml.CheckHandler">
             <bind-xml name="check" node="attribute"/>
         </field>
+-->
 
-        <field name="checkExistence" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.ExistenceHandler">
+        <field name="checkExistence"
+            type="jp.go.aist.six.oval.model.common.Existence">
             <bind-xml name="check_existence" node="attribute"/>
         </field>
 
@@ -645,13 +651,13 @@
             <bind-xml node="text"/>
         </field>
 
-        <field name="datatype" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.DatatypeHandler">
+        <field name="datatype"
+            type="jp.go.aist.six.oval.model.common.Datatype">
             <bind-xml name="datatype" node="attribute"/>
         </field>
 
-        <field name="operation" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.OperationHandler">
+        <field name="operation"
+            type="jp.go.aist.six.oval.model.common.Operation">
             <bind-xml name="operation" node="attribute"/>
         </field>
 
@@ -673,8 +679,8 @@
         extends="jp.go.aist.six.oval.model.definitions.EntityBase"
         verify-constructable="false">
 
-        <field name="varCheck" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.CheckHandler">
+        <field name="varCheck"
+            type="jp.go.aist.six.oval.model.common.Check">
             <bind-xml name="var_check" node="attribute"/>
         </field>
     </class>
@@ -706,13 +712,13 @@
         extends="jp.go.aist.six.oval.model.definitions.EntityBase"
         verify-constructable="false">
 
-        <field name="entityCheck" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.CheckHandler">
+        <field name="entityCheck"
+            type="jp.go.aist.six.oval.model.common.Check">
             <bind-xml name="entity_check" node="attribute"/>
         </field>
 
-        <field name="varCheck" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.CheckHandler">
+        <field name="varCheck" 
+            type="jp.go.aist.six.oval.model.common.Check">
             <bind-xml name="var_check" node="attribute"/>
         </field>
     </class>
@@ -752,8 +758,8 @@
         extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
         verify-constructable="false">
 
-        <field name="datatype" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.DatatypeHandler">
+        <field name="datatype"  
+            type="jp.go.aist.six.oval.model.common.Datatype">
             <bind-xml name="datatype" node="attribute"/>
         </field>
     </class>
@@ -809,8 +815,8 @@
             <bind-xml node="text"/>
         </field>
 
-        <field name="datatype" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.DatatypeHandler">
+        <field name="datatype" 
+            type="jp.go.aist.six.oval.model.common.Datatype">
             <bind-xml name="datatype" node="attribute"/>
         </field>
 
@@ -818,8 +824,8 @@
             <bind-xml name="mask" node="attribute"/>
         </field>
 
-        <field name="status" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
+        <field name="status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
             <bind-xml name="status" node="attribute"/>
         </field>
     </class>
@@ -1022,8 +1028,8 @@
             <bind-xml name="comment" node="attribute"/>
         </field>
 
-        <field name="flag" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.FlagHandler">
+        <field name="flag"  
+            type="jp.go.aist.six.oval.model.sc.Flag">
             <bind-xml name="flag" node="attribute"/>
         </field>
     </class>
@@ -1198,8 +1204,8 @@
             <bind-xml name="reported" node="attribute"/>
         </field>
 
-        <field name="content" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.ContentHandler">
+        <field name="content" 
+            type="jp.go.aist.six.oval.model.results.Content">
             <bind-xml name="content" node="attribute"/>
         </field>
     </class>
@@ -1287,8 +1293,8 @@
             <bind-xml name="version" node="attribute"/>
         </field>
 
-        <field name="result" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.ResultHandler">
+        <field name="result" 
+            type="jp.go.aist.six.oval.model.results.Result">
             <bind-xml name="result" node="attribute"/>
         </field>
     </class>
@@ -1323,8 +1329,8 @@
             <bind-xml name="negate" node="attribute"/>
         </field>
 
-        <field name="result" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.ResultHandler">
+        <field name="result" 
+            type="jp.go.aist.six.oval.model.results.Result">
             <bind-xml name="result" node="attribute"/>
         </field>
     </class>
@@ -1412,8 +1418,8 @@
             <bind-xml name="item_id" node="attribute"/>
         </field>
 
-        <field name="result" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.ResultHandler">
+        <field name="result" 
+            type="jp.go.aist.six.oval.model.results.Result">
             <bind-xml name="result" node="attribute"/>
         </field>
     </class>
@@ -1453,18 +1459,18 @@
             <bind-xml name="version" node="attribute"/>
         </field>
 
-        <field name="result" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.ResultHandler">
+        <field name="result" 
+            type="jp.go.aist.six.oval.model.results.Result">
             <bind-xml name="result" node="attribute"/>
         </field>
 
-        <field name="checkExistence" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.ExistenceHandler">
+        <field name="checkExistence" 
+            type="jp.go.aist.six.oval.model.common.Existence">
             <bind-xml name="check_existence" node="attribute"/>
         </field>
 
-        <field name="check" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.CheckHandler">
+        <field name="check" 
+            type="jp.go.aist.six.oval.model.common.Check">
             <bind-xml name="check" node="attribute"/>
         </field>
 
@@ -1521,8 +1527,8 @@
         <map-to xml="oval_repository"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
-        <field name="status" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.DefinitionStatusHandler">
+        <field name="status" 
+            type="jp.go.aist.six.oval.model.mitre.DefinitionStatus">
             <bind-xml name="status" node="element"/>
         </field>
 
@@ -1579,8 +1585,8 @@
         <map-to xml="status_change"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
-        <field name="status" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.DefinitionStatusHandler">
+        <field name="status" 
+            type="jp.go.aist.six.oval.model.mitre.DefinitionStatus">
             <bind-xml node="text"/>
         </field>
     </class>
@@ -1678,8 +1684,8 @@
             <bind-xml name="id" node="attribute"/>
         </field>
 
-        <field name="status" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
+        <field name="status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
             <bind-xml name="status" node="attribute"/>
         </field>
 
@@ -1793,8 +1799,8 @@
             <bind-xml name="id" node="attribute"/>
         </field>
 
-        <field name="status" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
+        <field name="status"  
+            type="jp.go.aist.six.oval.model.sc.Status">
             <bind-xml name="status" node="attribute"/>
         </field>
 
@@ -2233,8 +2239,8 @@
             <bind-xml name="id" node="attribute"/>
         </field>
 
-        <field name="status" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
+        <field name="status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
             <bind-xml name="status" node="attribute"/>
         </field>
 
@@ -2288,8 +2294,8 @@
             <bind-xml name="id" node="attribute"/>
         </field>
 
-        <field name="status" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
+        <field name="status"  
+            type="jp.go.aist.six.oval.model.sc.Status">
             <bind-xml name="status" node="attribute"/>
         </field>
 
@@ -2350,8 +2356,8 @@
             <bind-xml name="from" node="attribute"/>
         </field>
 
-        <field name="severity" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.SeverityHandler">
+        <field name="severity" 
+            type="jp.go.aist.six.oval.model.linux.Severity">
             <bind-xml name="severity" node="element"/>
         </field>
 
@@ -2593,8 +2599,8 @@
             <bind-xml name="id" node="attribute"/>
         </field>
 
-        <field name="status" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
+        <field name="status"  
+            type="jp.go.aist.six.oval.model.sc.Status">
             <bind-xml name="status" node="attribute"/>
         </field>
 
@@ -2743,8 +2749,8 @@
         <map-to xml="behaviors"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
-        <field name="recurseFileSystem" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.RecurseFileSystemHandler">
+        <field name="recurseFileSystem"  
+            type="jp.go.aist.six.oval.model.windows.RecurseFileSystem">
             <bind-xml name="recurse_file_system" node="attribute"/>
         </field>
     </class>
@@ -2795,8 +2801,8 @@
             <bind-xml name="id" node="attribute"/>
         </field>
 
-        <field name="status" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
+        <field name="status"  
+            type="jp.go.aist.six.oval.model.sc.Status">
             <bind-xml name="status" node="attribute"/>
         </field>
 
@@ -2999,8 +3005,8 @@
             <bind-xml name="id" node="attribute"/>
         </field>
 
-        <field name="status" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
+        <field name="status"  
+            type="jp.go.aist.six.oval.model.sc.Status">
             <bind-xml name="status" node="attribute"/>
         </field>
 
@@ -3082,13 +3088,6 @@
             type="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHive" >
             <bind-xml name="hive" node="element"/>
         </field>
-<!--
-        <field name="hive" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.RegistryHiveHandler">
-            <bind-xml name="hive" node="element"/>
-        </field>
--->
-
 
         <field name="key" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
@@ -3155,8 +3154,8 @@
             <bind-xml name="id" node="attribute"/>
         </field>
 
-        <field name="status" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.StatusHandler">
+        <field name="status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
             <bind-xml name="status" node="attribute"/>
         </field>
 
