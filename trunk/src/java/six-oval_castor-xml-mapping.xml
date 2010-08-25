@@ -19,6 +19,12 @@
 
     <!-- include href="castor-xml-mapping_vuln.xml" / -->
 
+    <field-handler name="timestampHandler" 
+        class="jp.go.aist.six.util.castor.CastorDateHandler">
+        <param name="pattern" value="yyyy-MM-dd'T'HH:mm:ss"/>
+    </field-handler>
+
+
 
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <!-- %                                                     % -->
@@ -140,6 +146,12 @@
         <field name="timestamp" type="date">
             <bind-xml name="timestamp" node="element"/>
         </field>
+<!--
+        <field name="timestamp" type="string"
+            handler="timestampHandler">
+            <bind-xml name="timestamp" node="element"/>
+        </field>
+-->
 
         <field name="productName" type="string">
             <bind-xml name="product_name" node="element"/>
@@ -355,8 +367,8 @@
         <map-to xml="affected"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
-        <field name="family" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.FamilyHandler">
+        <field name="family" 
+            type="jp.go.aist.six.oval.model.common.Family">
             <bind-xml name="family" node="attribute"/>
         </field>
 
@@ -1695,13 +1707,6 @@
             type="jp.go.aist.six.oval.model.independent.EntityItemFamily">
             <bind-xml name="family" node="element"/>
         </field>
-<!--
-        <field name="family" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.FamilyHandler">
-            <bind-xml name="family" node="text"
-                location="family"/>
-        </field>
--->
     </class>
 
 

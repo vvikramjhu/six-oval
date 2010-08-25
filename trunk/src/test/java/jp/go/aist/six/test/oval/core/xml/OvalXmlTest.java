@@ -159,7 +159,8 @@ public class OvalXmlTest
 //                          OvalResults.class,
 //                          "/oval_results",
 //                          "test/data/results/oval-results_CVE-2010-0176_rhsa20100332.xml",
-//                          null
+//                          null,
+//                          "marshalled_oval-results_CVE-2010-0176_rhsa20100332.xml"
 //                      }
 //                      ,
 //
@@ -168,7 +169,8 @@ public class OvalXmlTest
 //                          OvalResults.class,
 //                          "/oval_results",
 //                          "test/data/results/oval-results_CVE-2010-0176_mitre7432_DSA-2027.xml",
-//                          null
+//                          null,
+//                          "marshalled_oval-results_CVE-2010-0176_mitre7432_DSA-2027.xml"
 //                      }
 ////                      ,
 
