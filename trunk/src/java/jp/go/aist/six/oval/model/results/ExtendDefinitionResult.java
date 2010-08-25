@@ -23,27 +23,13 @@ package jp.go.aist.six.oval.model.results;
 
 
 /**
- * The ExtendDefinition allows existing definitions
- * to be extended by another definition.
- *
- * <p>Properties:</p>
- * <ul>
- *   <li>definition_ref (required)</li>
- *   <li>negate (optional -- default='false')</li>
- *   <li>comment (optional)</li>
- * </ul>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
 public class ExtendDefinitionResult
-    extends CriteriaResultElement
+    extends CriteriaResultLeafElement
 {
-
-    private String  _definitionRef;
-    //{oval:DefinitionIDPattern, required}
-
-
 
     /**
      * Constructor.
@@ -57,10 +43,24 @@ public class ExtendDefinitionResult
      * Constructor.
      */
     public ExtendDefinitionResult(
-                    final String definitionID
+                    final String testID,
+                    final int version
                     )
     {
-        setDefinitionRef( definitionID );
+        super( testID, version );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public ExtendDefinitionResult(
+                    final String id,
+                    final int version,
+                    final Result result
+                    )
+    {
+        super( id, version, result );
     }
 
 
@@ -69,13 +69,13 @@ public class ExtendDefinitionResult
                     final String definitionID
                     )
     {
-        _definitionRef = definitionID;
+        _setEntityRef( definitionID );
     }
 
 
     public String getDefinitionRef()
     {
-        return _definitionRef;
+        return _getEntityRef();
     }
 
 
@@ -87,10 +87,10 @@ public class ExtendDefinitionResult
     @Override
     public String toString()
     {
-        return "ExtendDefinition[negate=" + isNegate()
-                        + ", definition_ref=" + getDefinitionRef()
+        return "Criterion[definition_ref=" + getDefinitionRef()
+                        + ", " + super.toString()
                         + "]";
     }
 
 }
-// ExtendDefinition
+// ExtendDefinitionResult

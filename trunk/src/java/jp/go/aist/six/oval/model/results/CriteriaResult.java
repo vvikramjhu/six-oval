@@ -28,17 +28,6 @@ import java.util.Iterator;
 
 
 /**
- * A high level container for all the tests.
- *
- * <p>Properties:</p>
- * <ul>
- *   <li>operator (optional -- default='AND')</li>
- *   <li>negate (optional -- default='false')</li>
- *   <li>comment (optional)</li>
- *   <li>criteria (0..*)</li>
- *   <li>criterion (0..*)</li>
- *   <li>extend_definition (0..*)</li>
- * </ul>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
@@ -50,9 +39,9 @@ public class CriteriaResult
     private Collection<CriteriaResultElement>  _elements = new ArrayList<CriteriaResultElement>();
     //{1..*}
 
-    public static final Operator  DEFAULT_OPERATOR = Operator.AND;
+
     private Operator  _operator;
-    //{optional, default="AND"}
+    //{required}
 
 
 
@@ -75,7 +64,7 @@ public class CriteriaResult
 
     public Operator getOperator()
     {
-        return (_operator == null ? DEFAULT_OPERATOR : _operator);
+        return _operator;
     }
 
 
@@ -129,7 +118,7 @@ public class CriteriaResult
     @Override
     public String toString()
     {
-        return "Criteria[negate=" + isNegate()
+        return "Criteria[" + super.toString()
                         + ", operator=" + getOperator()
                         + ", " + getElements()
                         + "]";

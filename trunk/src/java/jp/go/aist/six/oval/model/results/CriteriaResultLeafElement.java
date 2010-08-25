@@ -23,32 +23,31 @@ package jp.go.aist.six.oval.model.results;
 
 
 /**
- * The Criterion identifies a specific test
- * to be included in the definition's criteria.
- *
- * <p>Properties:</p>
- * <ul>
- *   <li>test_ref (required)</li>
- *   <li>negate (optional -- default='false')</li>
- *   <li>comment (optional)</li>
- * </ul>
- *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class CriterionResult
+public abstract class CriteriaResultLeafElement
     extends CriteriaResultElement
 {
 
-    private String  _testRef;
-    //{oval:TestIDPattern, required}
+    private String  _entityRef;
+    //{required}
+
+
+    private int  _version;
+    //{xsd:nonNegativeInteger, required}
+
+
+    public static final int  DEFAULT_VARIABLE_INSTANCE = 1;
+    private int  _variableInstance = DEFAULT_VARIABLE_INSTANCE;
+    //{xsd:nonNegativeInteger, optional, default="1"}
 
 
 
     /**
      * Constructor.
      */
-    public CriterionResult()
+    public CriteriaResultLeafElement()
     {
     }
 
@@ -56,26 +55,88 @@ public class CriterionResult
     /**
      * Constructor.
      */
-    public CriterionResult(
-                    final String testID
+    public CriteriaResultLeafElement(
+                    final String id,
+                    final int version
                     )
     {
-        setTestRef( testID );
+        _setEntityRef( id );
+        setVersion( version );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public CriteriaResultLeafElement(
+                    final String id,
+                    final int version,
+                    final Result result
+                    )
+    {
+        this( id, version );
+        setResult( result );
     }
 
 
 
-    public void setTestRef(
-                    final String testID
+    /**
+     */
+    protected void _setEntityRef(
+                    final String entityID
                     )
     {
-        _testRef = testID;
+        _entityRef = entityID;
     }
 
 
-    public String getTestRef()
+    protected String _getEntityRef()
     {
-        return _testRef;
+        return _entityRef;
+    }
+
+
+
+    /**
+     */
+    public void setVersion(
+                    final int version
+                    )
+    {
+        if (version < 0) {
+            throw new IllegalArgumentException(
+                            "negative version: " + version );
+        }
+
+        _version = version;
+    }
+
+
+    public int getVersion()
+    {
+        return _version;
+    }
+
+
+
+    /**
+     */
+    public void setVariableInstance(
+                    final int variableInstance
+                    )
+    {
+        if (variableInstance < 0) {
+            throw new IllegalArgumentException(
+                            "negative variable instance: " + variableInstance );
+        }
+
+        _variableInstance = variableInstance;
+    }
+
+
+    public int getVariableInstance()
+    {
+        return _variableInstance;
     }
 
 
@@ -87,10 +148,10 @@ public class CriterionResult
     @Override
     public String toString()
     {
-        return "Criterion[negate=" + isNegate()
-                        + ", test_ref=" + getTestRef()
-                        + "]";
+        return "version=" + getVersion()
+                        + ", variable_instance=" + getVariableInstance()
+                        + ", " + super.toString();
     }
 
 }
-// CriterionResult
+// CriterionResultLeafElement

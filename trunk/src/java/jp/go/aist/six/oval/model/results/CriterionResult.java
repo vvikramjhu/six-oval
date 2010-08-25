@@ -23,27 +23,13 @@ package jp.go.aist.six.oval.model.results;
 
 
 /**
- * The Criterion identifies a specific test
- * to be included in the definition's criteria.
- *
- * <p>Properties:</p>
- * <ul>
- *   <li>test_ref (required)</li>
- *   <li>negate (optional -- default='false')</li>
- *   <li>comment (optional)</li>
- * </ul>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
 public class CriterionResult
-    extends CriteriaResultElement
+    extends CriteriaResultLeafElement
 {
-
-    private String  _testRef;
-    //{oval:TestIDPattern, required}
-
-
 
     /**
      * Constructor.
@@ -57,10 +43,24 @@ public class CriterionResult
      * Constructor.
      */
     public CriterionResult(
-                    final String testID
+                    final String testID,
+                    final int version
                     )
     {
-        setTestRef( testID );
+        super( testID, version );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public CriterionResult(
+                    final String id,
+                    final int version,
+                    final Result result
+                    )
+    {
+        super( id, version, result );
     }
 
 
@@ -69,13 +69,13 @@ public class CriterionResult
                     final String testID
                     )
     {
-        _testRef = testID;
+        _setEntityRef( testID );
     }
 
 
     public String getTestRef()
     {
-        return _testRef;
+        return _getEntityRef();
     }
 
 
@@ -87,8 +87,8 @@ public class CriterionResult
     @Override
     public String toString()
     {
-        return "Criterion[negate=" + isNegate()
-                        + ", test_ref=" + getTestRef()
+        return "Criterion[test_ref=" + getTestRef()
+                        + ", " + super.toString()
                         + "]";
     }
 
