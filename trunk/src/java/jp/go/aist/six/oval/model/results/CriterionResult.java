@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.results;
 
 
 
@@ -36,8 +36,8 @@ package jp.go.aist.six.oval.model.definitions;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class Criterion
-    extends CriteriaElement
+public class CriterionResult
+    extends CriteriaResultElement
 {
 
     private String  _testRef;
@@ -48,7 +48,7 @@ public class Criterion
     /**
      * Constructor.
      */
-    public Criterion()
+    public CriterionResult()
     {
     }
 
@@ -56,7 +56,7 @@ public class Criterion
     /**
      * Constructor.
      */
-    public Criterion(
+    public CriterionResult(
                     final String testID
                     )
     {
@@ -89,9 +89,8 @@ public class Criterion
     {
         return "Criterion[negate=" + isNegate()
                         + ", test_ref=" + getTestRef()
-                        + ", comment=" + getComment()
                         + "]";
     }
 
 }
-// Criterion
+// CriterionResult

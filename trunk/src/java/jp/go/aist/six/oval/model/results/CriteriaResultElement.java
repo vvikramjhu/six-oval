@@ -18,10 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.results;
 
 import jp.go.aist.six.util.castor.AbstractPersistable;
-import jp.go.aist.six.util.orm.Dependent;
 
 
 
@@ -30,25 +29,35 @@ import jp.go.aist.six.util.orm.Dependent;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class CriteriaElement
+public abstract class CriteriaResultElement
     extends AbstractPersistable
-    implements Dependent<Definition>
 {
 
     public static final boolean  DEFAULT_NEGATE = false;
     private boolean  _negate = DEFAULT_NEGATE;
     //{xsd:boolean, optional, default="false"}
 
-    private String  _comment;
-    //{xsd:string, optional}
+    private Result  _result;
+    //{required}
 
 
 
     /**
      * Constructor.
      */
-    public CriteriaElement()
+    public CriteriaResultElement()
     {
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public CriteriaResultElement(
+                    final Result result
+                    )
+    {
+        setResult( result );
     }
 
 
@@ -68,41 +77,33 @@ public class CriteriaElement
 
 
 
-    public void setComment(
-                    final String comment
+    /**
+     */
+    public void setResult(
+                    final Result result
                     )
     {
-        _comment = comment;
+        _result= result;
     }
 
 
-    public String getComment()
+    public Result getResult()
     {
-        return _comment;
+        return _result;
     }
 
 
 
     //**************************************************************
-    //  Dependent
+    //  java.lang.Object
     //**************************************************************
 
-    private Definition  _master;
-
-
-
-    public void setMasterObject(
-                    final Definition master
-                    )
+    @Override
+    public String toString()
     {
-        _master = master;
-    }
-
-
-    public Definition getMasterObject()
-    {
-        return _master;
+        return "result=" + getResult()
+                        + ", negate=" + isNegate();
     }
 
 }
-// CriteriaElement
+// CriteriaResultElement

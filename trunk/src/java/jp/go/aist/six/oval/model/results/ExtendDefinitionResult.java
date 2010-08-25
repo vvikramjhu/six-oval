@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.results;
 
 
 
@@ -36,8 +36,8 @@ package jp.go.aist.six.oval.model.definitions;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class ExtendDefinition
-    extends CriteriaElement
+public class ExtendDefinitionResult
+    extends CriteriaResultElement
 {
 
     private String  _definitionRef;
@@ -48,7 +48,7 @@ public class ExtendDefinition
     /**
      * Constructor.
      */
-    public ExtendDefinition()
+    public ExtendDefinitionResult()
     {
     }
 
@@ -56,7 +56,7 @@ public class ExtendDefinition
     /**
      * Constructor.
      */
-    public ExtendDefinition(
+    public ExtendDefinitionResult(
                     final String definitionID
                     )
     {
@@ -89,7 +89,6 @@ public class ExtendDefinition
     {
         return "ExtendDefinition[negate=" + isNegate()
                         + ", definition_ref=" + getDefinitionRef()
-                        + ", comment=" + getComment()
                         + "]";
     }
 

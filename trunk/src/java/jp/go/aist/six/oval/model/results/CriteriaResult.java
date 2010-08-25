@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.results;
 
 import jp.go.aist.six.oval.model.common.Operator;
 import java.util.ArrayList;
@@ -43,11 +43,11 @@ import java.util.Iterator;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class Criteria
-    extends CriteriaElement
+public class CriteriaResult
+    extends CriteriaResultElement
 {
 
-    private Collection<CriteriaElement>  _elements = new ArrayList<CriteriaElement>();
+    private Collection<CriteriaResultElement>  _elements = new ArrayList<CriteriaResultElement>();
     //{1..*}
 
     public static final Operator  DEFAULT_OPERATOR = Operator.AND;
@@ -59,7 +59,7 @@ public class Criteria
     /**
      * Constructor.
      */
-    public Criteria()
+    public CriteriaResult()
     {
     }
 
@@ -81,7 +81,7 @@ public class Criteria
 
 
     public void setElements(
-                    final Collection<? extends CriteriaElement> elements
+                    final Collection<? extends CriteriaResultElement> elements
                     )
     {
         if (elements != _elements) {
@@ -90,7 +90,7 @@ public class Criteria
                 return;
             }
 
-            for (CriteriaElement  e : elements) {
+            for (CriteriaResultElement  e : elements) {
                 addElement( e );
             }
         }
@@ -98,7 +98,7 @@ public class Criteria
 
 
     public boolean addElement(
-                    final CriteriaElement element
+                    final CriteriaResultElement element
                     )
     {
         if (element == null) {
@@ -109,13 +109,13 @@ public class Criteria
     }
 
 
-    public Collection<CriteriaElement> getElements()
+    public Collection<CriteriaResultElement> getElements()
     {
         return _elements;
     }
 
 
-    public Iterator<CriteriaElement> iterateElements()
+    public Iterator<CriteriaResultElement> iterateElements()
     {
         return _elements.iterator();
     }
@@ -136,4 +136,4 @@ public class Criteria
     }
 
 }
-// Criteria
+// CriteriaResult
