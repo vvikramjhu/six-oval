@@ -36,8 +36,8 @@ public class DefinitionResult
 
 //  private Collection<Message>  _messages = new ArrayList<Message>();
 
-//    private CriteriaResult  _criteria;
-//    //{0..1}
+    private CriteriaResult  _criteria;
+    //{0..1}
 
 
     public static final int  DEFAULT_VARIABLE_INSTANCE = 1;
@@ -76,6 +76,23 @@ public class DefinitionResult
                     )
     {
         super( id, version, result );
+    }
+
+
+
+    /**
+     */
+    public void setCriteria(
+                    final CriteriaResult criteria
+                    )
+    {
+        _criteria = criteria;
+    }
+
+
+    public CriteriaResult getCriteria()
+    {
+        return _criteria;
     }
 
 
