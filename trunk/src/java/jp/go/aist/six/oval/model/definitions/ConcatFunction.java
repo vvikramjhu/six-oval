@@ -20,7 +20,8 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.common.Datatype;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 
@@ -29,38 +30,53 @@ import jp.go.aist.six.oval.model.common.Datatype;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class LiteralVariableComponent
-    extends VariableComponent
+public class ConcatFunction
+    extends VariableFunction
 {
 
-    private Datatype  _datatype;
-    //{optional, defualt="string"}
+    private Collection<VariableComponent>  _component = new ArrayList<VariableComponent>();;
+    //{2..*}
 
 
 
     /**
      * Constructor.
      */
-    public LiteralVariableComponent()
+    public ConcatFunction()
     {
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public ConcatFunction(
+                    final Collection<? extends VariableComponent> components
+                    )
+    {
+        setComponent( components );
     }
 
 
 
     /**
      */
-    public void setDatatype(
-                    final Datatype datatype
+    public void setComponent(
+                    final Collection<? extends VariableComponent> components
                     )
     {
-        _datatype = datatype;
+        if (components != _component) {
+            _component.clear();
+            if (components != null  &&  components.size() > 0) {
+                _component.addAll( components );
+            }
+        }
     }
 
 
-
-    public Datatype getDatatype()
+    public Collection<VariableComponent> getComponent()
     {
-        return _datatype;
+        return _component;
     }
 
 
@@ -72,9 +88,9 @@ public class LiteralVariableComponent
     @Override
     public String toString()
     {
-        return "LiteralVariableComponent[datatype=" + getDatatype()
+        return "ConcatFunction[" + getComponent()
                         + "]";
     }
 
 }
-// LiteralVariableComponent
+// ConcatFunction

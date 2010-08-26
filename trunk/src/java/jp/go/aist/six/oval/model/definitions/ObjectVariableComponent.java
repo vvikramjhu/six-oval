@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.common.Datatype;
-
 
 
 /**
@@ -29,38 +27,91 @@ import jp.go.aist.six.oval.model.common.Datatype;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class LiteralVariableComponent
+public class ObjectVariableComponent
     extends VariableComponent
 {
 
-    private Datatype  _datatype;
-    //{optional, defualt="string"}
+    private String  _objectRef;
+    //{required}
+
+    private String  _itemField;
+    //{required}
+
+
+    private String  _recordField;
+    //{optional}
 
 
 
     /**
      * Constructor.
      */
-    public LiteralVariableComponent()
+    public ObjectVariableComponent()
     {
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public ObjectVariableComponent(
+                    final String objectRef,
+                    final String itemField
+                    )
+    {
+        setObjectRef( objectRef );
+        setItemField( itemField );
     }
 
 
 
     /**
      */
-    public void setDatatype(
-                    final Datatype datatype
+    public String getObjectRef()
+    {
+        return _objectRef;
+    }
+
+
+    public void setObjectRef(
+                    final String objectRef
                     )
     {
-        _datatype = datatype;
+        _objectRef = objectRef;
     }
 
 
 
-    public Datatype getDatatype()
+    /**
+     */
+    public String getItemField()
     {
-        return _datatype;
+        return _itemField;
+    }
+
+
+    public void setItemField(
+                    final String itemField
+                    )
+    {
+        _itemField = itemField;
+    }
+
+
+
+    /**
+     */
+    public String getRecordField()
+    {
+        return _recordField;
+    }
+
+
+    public void setRecordField(
+                    final String recordField
+                    )
+    {
+        _recordField = recordField;
     }
 
 
@@ -72,9 +123,11 @@ public class LiteralVariableComponent
     @Override
     public String toString()
     {
-        return "LiteralVariableComponent[datatype=" + getDatatype()
+        return "ObjectVariableComponent[object_ref=" + getObjectRef()
+                        + ", item_field" + getItemField()
+                        + ", record_field" + getRecordField()
                         + "]";
     }
 
 }
-// LiteralVariableComponent
+// ObjectVariableComponent
