@@ -143,12 +143,12 @@
             <bind-xml name="schema_version" node="element"/>
         </field>
 
-        <field name="timestamp" type="date">
+        <field name="timestamp" type="string"
+            handler="timestampHandler">
             <bind-xml name="timestamp" node="element"/>
         </field>
 <!--
-        <field name="timestamp" type="string"
-            handler="timestampHandler">
+        <field name="timestamp" type="date">
             <bind-xml name="timestamp" node="element"/>
         </field>
 -->

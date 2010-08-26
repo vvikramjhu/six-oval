@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.results;
 import jp.go.aist.six.oval.model.OvalDocument;
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 
@@ -33,8 +32,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  * @version $Id: OvalResults.java 757 2010-05-10 06:25:22Z akihito $
  */
 public class OvalResults
-    extends AbstractPersistable
-    implements OvalDocument
+    extends OvalDocument
 {
 
     private Generator  _generator = new Generator();
@@ -56,23 +54,6 @@ public class OvalResults
      */
     public OvalResults()
     {
-    }
-
-
-
-    /**
-     */
-    public void getSchemaLocation(
-                    final String location
-                    )
-    {
-        //Do nothing.
-    }
-
-
-    public String getSchemaLocation()
-    {
-        return SCHEMA_LOCATION;
     }
 
 
