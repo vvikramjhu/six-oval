@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import java.util.ArrayList;
-import java.util.Collection;
 
 
 
@@ -30,19 +28,19 @@ import java.util.Collection;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class ConcatFunction
+public class EscapeRegexFunction
     extends VariableFunction
 {
 
-    private Collection<VariableComponent>  _component = new ArrayList<VariableComponent>();;
-    //{2..*}
+    private VariableComponent  _component;
+    //{1..1}
 
 
 
     /**
      * Constructor.
      */
-    public ConcatFunction()
+    public EscapeRegexFunction()
     {
     }
 
@@ -50,11 +48,11 @@ public class ConcatFunction
     /**
      * Constructor.
      */
-    public ConcatFunction(
-                    final Collection<? extends VariableComponent> components
+    public EscapeRegexFunction(
+                    final VariableComponent component
                     )
     {
-        setComponent( components );
+        setComponent( component );
     }
 
 
@@ -62,19 +60,14 @@ public class ConcatFunction
     /**
      */
     public void setComponent(
-                    final Collection<? extends VariableComponent> components
+                    final VariableComponent component
                     )
     {
-        if (components != _component) {
-            _component.clear();
-            if (components != null  &&  components.size() > 0) {
-                _component.addAll( components );
-            }
-        }
+        _component = component;
     }
 
 
-    public Collection<VariableComponent> getComponent()
+    public VariableComponent getComponent()
     {
         return _component;
     }
@@ -88,9 +81,9 @@ public class ConcatFunction
     @Override
     public String toString()
     {
-        return "ConcatFunction[" + getComponent()
+        return "EscapeRegexFunction[" + getComponent()
                         + "]";
     }
 
 }
-// ConcatFunction
+// EscapeRegexFunction

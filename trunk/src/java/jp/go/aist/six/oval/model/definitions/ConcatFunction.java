@@ -34,7 +34,7 @@ public class ConcatFunction
     extends VariableFunction
 {
 
-    private Collection<VariableComponent>  _component = new ArrayList<VariableComponent>();;
+    private Collection<VariableComponent>  _component = new ArrayList<VariableComponent>();
     //{2..*}
 
 
