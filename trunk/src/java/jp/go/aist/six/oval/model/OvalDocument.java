@@ -27,6 +27,11 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 /**
  * A marker for all the OVAL Documents.
  *
+ * <p>
+ * This implementation of the schemaLocation property is a dirty hack.
+ * Because the Spring OXM support for Castor does NOT provide the property.
+ * </p>
+ *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
