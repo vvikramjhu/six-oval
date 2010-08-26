@@ -20,91 +20,35 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.CommentedOvalEntity;
-import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.common.Datatype;
 
 
 
 /**
- * The OVAL Variable describes different sources
- * for obtaining a value(s) for the variable.
- * There are currently three types of variables;
- * local, external, and constant.
- *
- * <p>Properties:</p>
- * <ul>
- *   <li>id (required)</li>
- *   <li>version (required)</li>
- *   <li>datatype (required)</li>
- *   <li>comment (required)</li>
- *   <li>deprecated (optional -- default='false')</li>
- *   <li>Signature (0..1): currently NOT supported.</li>
- * </ul>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class Variable
-    extends CommentedOvalEntity
+public class LiteralVariableComponent
+    extends VariableComponent
 {
 
     private Datatype  _datatype;
-    //{required}
+    //{optional, defualt="string"}
 
 
 
     /**
      * Constructor.
      */
-    public Variable()
+    public LiteralVariableComponent()
     {
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public Variable(
-                    final String id,
-                    final int version
-                    )
-    {
-        super( id, version );
     }
 
 
 
     /**
-     * Constructor.
      */
-    public Variable(
-                    final String id,
-                    final int version,
-                    final String comment
-                    )
-    {
-        super( id, version, comment );
-    }
-
-
-
-    /**
-     * Constructor.
-     */
-    public Variable(
-                    final String id,
-                    final int version,
-                    final String comment,
-                    final Datatype datatype
-                    )
-    {
-        this( id, version, comment );
-        setDatatype( datatype );
-    }
-
-
-
     public void setDatatype(
                     final Datatype datatype
                     )
@@ -121,19 +65,6 @@ public abstract class Variable
 
 
 
-    /**
-     */
-    public void setEntityType(
-                    final EntityType type
-                    )
-    {
-    }
-
-
-    public abstract EntityType getEntityType();
-
-
-
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -141,9 +72,9 @@ public abstract class Variable
     @Override
     public String toString()
     {
-        return super.toString()
-                        + ", datatype=" + getDatatype();
+        return "LiteralVariableComponent[datatype=" + getDatatype()
+                        + "]";
     }
 
 }
-// Variable
+// LiteralVariableComponent

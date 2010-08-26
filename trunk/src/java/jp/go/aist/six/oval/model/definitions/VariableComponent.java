@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.util.castor.AbstractPersistable;
-import jp.go.aist.six.util.orm.Dependent;
 
 
 
@@ -30,79 +29,17 @@ import jp.go.aist.six.util.orm.Dependent;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class CriteriaElement
+public abstract class VariableComponent
     extends AbstractPersistable
-    implements Dependent<Definition>
+//    implements Dependent<LocalVariable>
 {
-
-    public static final boolean  DEFAULT_NEGATE = false;
-    private boolean  _negate = DEFAULT_NEGATE;
-    //{xsd:boolean, optional, default="false"}
-
-    private String  _comment;
-    //{xsd:string, optional}
-
-
 
     /**
      * Constructor.
      */
-    public CriteriaElement()
+    public VariableComponent()
     {
-    }
-
-
-
-    public void setNegate(
-                    final boolean negate
-                    )
-    {
-        _negate = negate;
-    }
-
-
-    public boolean isNegate()
-    {
-        return _negate;
-    }
-
-
-
-    public void setComment(
-                    final String comment
-                    )
-    {
-        _comment = comment;
-    }
-
-
-    public String getComment()
-    {
-        return _comment;
-    }
-
-
-
-    //**************************************************************
-    //  Dependent
-    //**************************************************************
-
-    private Definition  _master;
-
-
-
-    public void setMasterObject(
-                    final Definition master
-                    )
-    {
-        _master = master;
-    }
-
-
-    public Definition getMasterObject()
-    {
-        return _master;
     }
 
 }
-// CriteriaElement
+// VariableComponent
