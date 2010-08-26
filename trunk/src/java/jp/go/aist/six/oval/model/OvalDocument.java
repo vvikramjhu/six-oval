@@ -25,7 +25,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 /**
- * A marker interface for all the OVAL Documents.
+ * A marker for all the OVAL Documents.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
@@ -38,6 +38,9 @@ public abstract class OvalDocument
         = "http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5 oval-system-characteristics-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-results-5 oval-results-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows windows-system-characteristics-schema.xsd";
 
 
+    private String  _schemaLocation;
+
+
 
     /**
      */
@@ -45,13 +48,13 @@ public abstract class OvalDocument
                     final String location
                     )
     {
-        //Do nothing.
+        _schemaLocation = location;
     }
 
 
     public String getSchemaLocation()
     {
-        return SCHEMA_LOCATION;
+        return (_schemaLocation == null ? SCHEMA_LOCATION : _schemaLocation);
     }
 
 }

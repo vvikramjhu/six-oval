@@ -103,6 +103,26 @@ public class OvalXmlTest
                             null,
                             "marshalled_oval-definitions_CVE-2009-4019_MySQL.xml"
                         }
+                        ,
+
+//                      // Red Hat patch, CVE-2010-0176, RHSA 20100332
+                        {
+                            OvalDefinitions.class,
+                            "/oval_definitions",
+                            "test/data/definitions/oval-definitions_CVE-2010-0176_rhsa20100332.xml",
+                            null,
+                            "marshalled_oval-definitions_CVE-2010-0176_rhsa20100332.xml"
+                        }
+                        ,
+
+//                      // Debian @Mitre, CVE-2010-0176, DSA-2027
+                        {
+                            OvalDefinitions.class,
+                            "/oval_definitions",
+                            "test/data/definitions/oval-definitions_CVE-2010-0176_mitre7432_DSA-2027.xml",
+                            null,
+                            "marshalled_oval-definitions_CVE-2010-0176_mitre7432_DSA-2027.xml"
+                        }
         };
 
     }
