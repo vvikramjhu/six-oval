@@ -36,7 +36,7 @@ public class MitreOvalRepository
     extends MetadataItem
 {
 
-    private Collection<OvalRepositoryEvent>  _event = new ArrayList<OvalRepositoryEvent>();
+    private Collection<Event>  _event = new ArrayList<Event>();
 
     private DefinitionStatus  _status;
 
@@ -52,7 +52,7 @@ public class MitreOvalRepository
 
 
     public void setEvent(
-                    final Collection<? extends OvalRepositoryEvent> events
+                    final Collection<? extends Event> events
                     )
     {
         if (events != _event) {
@@ -61,7 +61,7 @@ public class MitreOvalRepository
                 return;
             }
 
-            for (OvalRepositoryEvent  event : events) {
+            for (Event  event : events) {
                 addEvent( event );
             }
         }
@@ -69,7 +69,7 @@ public class MitreOvalRepository
 
 
     public boolean addEvent(
-                    final OvalRepositoryEvent event
+                    final Event event
                     )
     {
         if (event == null) {
@@ -80,7 +80,7 @@ public class MitreOvalRepository
     }
 
 
-    public Collection<OvalRepositoryEvent> getEvent()
+    public Collection<Event> getEvent()
     {
         return _event;
     }

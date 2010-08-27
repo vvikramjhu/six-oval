@@ -1663,7 +1663,7 @@
         </field>
 
         <field name="event" 
-            type="jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent"
+            type="jp.go.aist.six.oval.model.mitre.Event"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"
                 location="dates"/>
@@ -1691,9 +1691,9 @@
 
 
     <!-- ======================================================= -->
-    <!-- OvalRepositoryEvent                                     -->
+    <!-- Event                                                   -->
     <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent"
+    <class name ="jp.go.aist.six.oval.model.mitre.Event"
         verify-constructable="false">
 
         <field name="date" type="string"
@@ -1713,7 +1713,7 @@
     <!-- Submitted                                               -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.mitre.Submitted"
-        extends="jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent">
+        extends="jp.go.aist.six.oval.model.mitre.Event">
         <map-to xml="submitted"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -1729,7 +1729,7 @@
     <!-- Modified                                                -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.mitre.Modified"
-        extends="jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent">
+        extends="jp.go.aist.six.oval.model.mitre.Event">
         <map-to xml="modified"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -1749,7 +1749,7 @@
     <!-- StatusChange                                            -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.mitre.StatusChange"
-        extends="jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent">
+        extends="jp.go.aist.six.oval.model.mitre.Event">
         <map-to xml="status_change"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 

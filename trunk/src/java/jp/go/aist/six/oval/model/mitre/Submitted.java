@@ -30,7 +30,7 @@ import java.util.Date;
  * @version $Id$
  */
 public class Submitted
-    extends OvalRepositoryEvent
+    extends Event
 {
 
     private Contributor  _contributor;
@@ -88,4 +88,4 @@ public class Submitted
     }
 
 }
-// DefinitionSubmittedEvent
+// Submitted

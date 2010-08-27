@@ -30,7 +30,7 @@ import java.util.Date;
  * @version $Id$
  */
 public class Modified
-    extends OvalRepositoryEvent
+    extends Event
 {
 
     private String  _comment;
@@ -109,4 +109,4 @@ public class Modified
     }
 
 }
-// DefinitionModifiedEvent
+// Modified

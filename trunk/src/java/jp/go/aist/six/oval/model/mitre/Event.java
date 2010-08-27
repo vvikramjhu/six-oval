@@ -30,7 +30,7 @@ import java.util.Date;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class OvalRepositoryEvent
+public abstract class Event
     extends AbstractPersistable
 {
 
@@ -41,7 +41,7 @@ public abstract class OvalRepositoryEvent
     /**
      * Constructor.
      */
-    public OvalRepositoryEvent()
+    public Event()
     {
     }
 
@@ -49,7 +49,7 @@ public abstract class OvalRepositoryEvent
     /**
      * Constructor.
      */
-    public OvalRepositoryEvent(
+    public Event(
                     final Date date
                     )
     {
@@ -72,4 +72,4 @@ public abstract class OvalRepositoryEvent
     }
 
 }
-// OvalRepositoryEvent
+// Event

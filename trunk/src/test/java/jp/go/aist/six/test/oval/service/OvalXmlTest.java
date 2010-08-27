@@ -22,7 +22,7 @@ import jp.go.aist.six.oval.model.linux.RpmInfoItem;
 import jp.go.aist.six.oval.model.linux.Severity;
 import jp.go.aist.six.oval.model.mitre.Modified;
 import jp.go.aist.six.oval.model.mitre.MitreOvalRepository;
-import jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent;
+import jp.go.aist.six.oval.model.mitre.Event;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.Result;
@@ -985,7 +985,7 @@ public class OvalXmlTest
         Assert.assertTrue( metadataItem instanceof MitreOvalRepository );
         MitreOvalRepository  repo = (MitreOvalRepository)metadataItem;
         Assert.assertEquals( repo.getEvent().size(), 7 );
-        for (OvalRepositoryEvent  event : repo.getEvent()) {
+        for (Event  event : repo.getEvent()) {
             if (event instanceof Modified) {
                 Calendar  cal = Calendar.getInstance();
                 cal.setTime( event.getDate() );

@@ -25,7 +25,7 @@ import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
 import jp.go.aist.six.oval.model.mitre.Modified;
 import jp.go.aist.six.oval.model.mitre.Submitted;
 import jp.go.aist.six.oval.model.mitre.MitreOvalRepository;
-import jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent;
+import jp.go.aist.six.oval.model.mitre.Event;
 import jp.go.aist.six.util.IsoDate;
 import jp.go.aist.six.util.castor.AbstractPersistable;
 import java.util.ArrayList;
@@ -269,7 +269,7 @@ public class Metadata
         if (item instanceof MitreOvalRepository) {
             // Mitre OVAL repository
             MitreOvalRepository  or = MitreOvalRepository.class.cast( item );
-            for (OvalRepositoryEvent  event : or.getEvent()) {
+            for (Event  event : or.getEvent()) {
                 if (lastModifiedDate == null  &&  (event instanceof Submitted)) {
                     lastModifiedDate = event.getDate();
                 } else if (event instanceof Modified) {

@@ -30,7 +30,7 @@ import java.util.Date;
  * @version $Id$
  */
 public class StatusChange
-    extends OvalRepositoryEvent
+    extends Event
 {
 
     private DefinitionStatus  _status;
@@ -87,4 +87,4 @@ public class StatusChange
     }
 
 }
-// DefinitionStatusChangeEvent
+// StatusChange
