@@ -21,7 +21,7 @@ import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
 import jp.go.aist.six.oval.model.linux.RpmInfoItem;
 import jp.go.aist.six.oval.model.linux.Severity;
 import jp.go.aist.six.oval.model.mitre.Modified;
-import jp.go.aist.six.oval.model.mitre.MitreOvalRepository;
+import jp.go.aist.six.oval.model.mitre.OvalRepository;
 import jp.go.aist.six.oval.model.mitre.Event;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.OvalResults;
@@ -982,8 +982,8 @@ public class OvalXmlTest
         Collection<MetadataItem>  metadataItems = def.getMetadata().getAdditionalMetadata();
         Assert.assertEquals( metadataItems.size(), 1 );
         MetadataItem  metadataItem = metadataItems.iterator().next();
-        Assert.assertTrue( metadataItem instanceof MitreOvalRepository );
-        MitreOvalRepository  repo = (MitreOvalRepository)metadataItem;
+        Assert.assertTrue( metadataItem instanceof OvalRepository );
+        OvalRepository  repo = (OvalRepository)metadataItem;
         Assert.assertEquals( repo.getEvent().size(), 7 );
         for (Event  event : repo.getEvent()) {
             if (event instanceof Modified) {

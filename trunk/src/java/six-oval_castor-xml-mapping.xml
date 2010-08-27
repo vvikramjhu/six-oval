@@ -1650,9 +1650,9 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <!-- ======================================================= -->
-    <!-- MitreOvalRepository                                     -->
+    <!-- OvalRepository                                          -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.mitre.MitreOvalRepository"
+    <class name="jp.go.aist.six.oval.model.mitre.OvalRepository"
         extends="jp.go.aist.six.oval.model.definitions.MetadataItem">
         <map-to xml="oval_repository"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>

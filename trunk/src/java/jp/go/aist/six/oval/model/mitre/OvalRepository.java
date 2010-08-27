@@ -23,16 +23,17 @@ package jp.go.aist.six.oval.model.mitre;
 import jp.go.aist.six.oval.model.definitions.MetadataItem;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 
 
 /**
- * A metadata of OVAL Definition in OVAL repository.
+ * A history of the OVAL Definition in the Mitre's OVAL repository.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class MitreOvalRepository
+public class OvalRepository
     extends MetadataItem
 {
 
@@ -45,7 +46,7 @@ public class MitreOvalRepository
     /**
      * Constructor.
      */
-    public MitreOvalRepository()
+    public OvalRepository()
     {
     }
 
@@ -86,6 +87,12 @@ public class MitreOvalRepository
     }
 
 
+    public Iterator<Event> iterateEvent()
+    {
+        return _event.iterator();
+    }
+
+
 
     public void setStatus(
                     final DefinitionStatus status
@@ -109,10 +116,10 @@ public class MitreOvalRepository
     @Override
     public String toString()
     {
-        return "OvalRepository[status=" + getStatus()
+        return "oval_repository[status=" + getStatus()
                         + ", dates=" + getEvent()
                         + "]";
     }
 
 }
-// MitreOvalRepository
+// OvalRepository

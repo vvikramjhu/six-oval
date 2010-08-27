@@ -24,7 +24,7 @@ import jp.go.aist.six.oval.model.linux.CveReference;
 import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
 import jp.go.aist.six.oval.model.mitre.Modified;
 import jp.go.aist.six.oval.model.mitre.Submitted;
-import jp.go.aist.six.oval.model.mitre.MitreOvalRepository;
+import jp.go.aist.six.oval.model.mitre.OvalRepository;
 import jp.go.aist.six.oval.model.mitre.Event;
 import jp.go.aist.six.util.IsoDate;
 import jp.go.aist.six.util.castor.AbstractPersistable;
@@ -266,9 +266,9 @@ public class Metadata
     {
         Date  lastModifiedDate = null;
 
-        if (item instanceof MitreOvalRepository) {
+        if (item instanceof OvalRepository) {
             // Mitre OVAL repository
-            MitreOvalRepository  or = MitreOvalRepository.class.cast( item );
+            OvalRepository  or = OvalRepository.class.cast( item );
             for (Event  event : or.getEvent()) {
                 if (lastModifiedDate == null  &&  (event instanceof Submitted)) {
                     lastModifiedDate = event.getDate();
