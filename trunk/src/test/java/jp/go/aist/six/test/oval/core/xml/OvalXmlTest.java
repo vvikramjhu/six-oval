@@ -183,26 +183,26 @@ public class OvalXmlTest
                           null,
                           "marshalled_oval-results_CVE-2010-0176_mitre7222.xml"
                       }
-//                      ,
-//
-//                      // Red Hat patch, CVE-2010-0176, RHSA 20100332
-//                      {
-//                          OvalResults.class,
-//                          "/oval_results",
-//                          "test/data/results/oval-results_CVE-2010-0176_rhsa20100332.xml",
-//                          null,
-//                          "marshalled_oval-results_CVE-2010-0176_rhsa20100332.xml"
-//                      }
-//                      ,
-//
-//                      // Debian @Mitre, CVE-2010-0176, DSA-2027
-//                      {
-//                          OvalResults.class,
-//                          "/oval_results",
-//                          "test/data/results/oval-results_CVE-2010-0176_mitre7432_DSA-2027.xml",
-//                          null,
-//                          "marshalled_oval-results_CVE-2010-0176_mitre7432_DSA-2027.xml"
-//                      }
+                      ,
+
+                      // Red Hat patch, CVE-2010-0176, RHSA 20100332
+                      {
+                          OvalResults.class,
+                          "/oval_results",
+                          "test/data/results/oval-results_CVE-2010-0176_rhsa20100332.xml",
+                          null,
+                          "marshalled_oval-results_CVE-2010-0176_rhsa20100332.xml"
+                      }
+                      ,
+
+                      // Debian @Mitre, CVE-2010-0176, DSA-2027
+                      {
+                          OvalResults.class,
+                          "/oval_results",
+                          "test/data/results/oval-results_CVE-2010-0176_mitre7432_DSA-2027.xml",
+                          null,
+                          "marshalled_oval-results_CVE-2010-0176_mitre7432_DSA-2027.xml"
+                      }
 ////                      ,
 
         };
