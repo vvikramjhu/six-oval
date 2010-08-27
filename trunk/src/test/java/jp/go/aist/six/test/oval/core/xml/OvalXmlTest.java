@@ -134,6 +134,16 @@ public class OvalXmlTest
                             null,
                             "marshalled_20100827_vulnerability_microsoft.windows.xp.xml"
                         }
+                        ,
+
+                        // Windows 7 @ Mitre, all vulnerability, 2010-08-27
+                        {
+                            OvalDefinitions.class,
+                            "/oval_definitions",
+                            "test/data/definitions/20100827_vulnerability_microsoft.windows.7.xml",
+                            null,
+                            "marshalled_20100827_vulnerability_microsoft.windows.7.xml"
+                        }
         };
 
     }

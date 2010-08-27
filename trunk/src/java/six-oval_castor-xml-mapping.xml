@@ -12,6 +12,12 @@
 <!-- @author    Akihito Nakamura, AIST -->
 <!-- @version   $Id$ -->
 
+<!-- TODO:
+* oval-def:definition/notes
+* oval-independent:unknown_test/notes
+-->
+
+
 <mapping>
 <!--
     xmlns:oval-sc-windows="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
@@ -2889,6 +2895,11 @@
             <bind-xml name="behaviors" node="element"/>
         </field>
         
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+        
         <field name="path" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
             <bind-xml name="path" node="element"/>
@@ -2942,6 +2953,11 @@
         <field name="version" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateString">
             <bind-xml name="version" node="element"/>
+        </field>
+
+        <field name="productVersion" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
+            <bind-xml name="product_version" node="element"/>
         </field>
     </class>
 
