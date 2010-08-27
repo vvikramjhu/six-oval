@@ -22,25 +22,31 @@ package jp.go.aist.six.oval.model.definitions;
 
 
 
-
 /**
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class EscapeRegexFunction
-    extends Function
+public class ObjectComponent
+    extends ComponentElement
 {
 
-    private ComponentElement  _component;
-    //{1..1}
+    private String  _objectRef;
+    //{required}
+
+    private String  _itemField;
+    //{required}
+
+
+    private String  _recordField;
+    //{optional}
 
 
 
     /**
      * Constructor.
      */
-    public EscapeRegexFunction()
+    public ObjectComponent()
     {
     }
 
@@ -48,28 +54,64 @@ public class EscapeRegexFunction
     /**
      * Constructor.
      */
-    public EscapeRegexFunction(
-                    final ComponentElement component
+    public ObjectComponent(
+                    final String objectRef,
+                    final String itemField
                     )
     {
-        setComponent( component );
+        setObjectRef( objectRef );
+        setItemField( itemField );
     }
 
 
 
     /**
      */
-    public void setComponent(
-                    final ComponentElement component
-                    )
+    public String getObjectRef()
     {
-        _component = component;
+        return _objectRef;
     }
 
 
-    public ComponentElement getComponent()
+    public void setObjectRef(
+                    final String objectRef
+                    )
     {
-        return _component;
+        _objectRef = objectRef;
+    }
+
+
+
+    /**
+     */
+    public String getItemField()
+    {
+        return _itemField;
+    }
+
+
+    public void setItemField(
+                    final String itemField
+                    )
+    {
+        _itemField = itemField;
+    }
+
+
+
+    /**
+     */
+    public String getRecordField()
+    {
+        return _recordField;
+    }
+
+
+    public void setRecordField(
+                    final String recordField
+                    )
+    {
+        _recordField = recordField;
     }
 
 
@@ -81,9 +123,11 @@ public class EscapeRegexFunction
     @Override
     public String toString()
     {
-        return "EscapeRegexFunction[" + getComponent()
+        return "ObjectVariableComponent[object_ref=" + getObjectRef()
+                        + ", item_field" + getItemField()
+                        + ", record_field" + getRecordField()
                         + "]";
     }
 
 }
-// EscapeRegexFunction
+// ObjectVariableComponent

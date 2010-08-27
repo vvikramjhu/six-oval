@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.common.Datatype;
 
 
 
@@ -29,52 +28,17 @@ import jp.go.aist.six.oval.model.common.Datatype;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class LiteralVariableComponent
-    extends VariableComponent
+public abstract class Function
+    extends ComponentElement
+//    implements Dependent<LocalVariable>
 {
-
-    private Datatype  _datatype;
-    //{optional, defualt="string"}
-
-
 
     /**
      * Constructor.
      */
-    public LiteralVariableComponent()
+    public Function()
     {
-    }
-
-
-
-    /**
-     */
-    public void setDatatype(
-                    final Datatype datatype
-                    )
-    {
-        _datatype = datatype;
-    }
-
-
-
-    public Datatype getDatatype()
-    {
-        return _datatype;
-    }
-
-
-
-    //**************************************************************
-    //  java.lang.Object
-    //**************************************************************
-
-    @Override
-    public String toString()
-    {
-        return "LiteralVariableComponent[datatype=" + getDatatype()
-                        + "]";
     }
 
 }
-// LiteralVariableComponent
+// Function

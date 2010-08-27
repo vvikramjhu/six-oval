@@ -34,6 +34,10 @@ public class LocalVariable
     extends Variable
 {
 
+    private ComponentElement  _component;
+    //{1..1}
+
+
     private String  _contentXml;
 
 
@@ -89,6 +93,25 @@ public class LocalVariable
 
     /**
      */
+    public void setComponent(
+                    final ComponentElement component
+                    )
+    {
+        _component = component;
+    }
+
+
+    /**
+     */
+    public ComponentElement getComponent()
+    {
+        return _component;
+    }
+
+
+
+    /**
+     */
     public void setContentXml(
                     final String xml
                     )
@@ -97,8 +120,6 @@ public class LocalVariable
     }
 
 
-    /**
-     */
     public String getContentXml()
     {
         return _contentXml;
@@ -147,7 +168,9 @@ public class LocalVariable
     @Override
     public String toString()
     {
-        return "LocalVariable[" + super.toString() + "]";
+        return "LocalVariable[" + super.toString()
+                        + ", " + getComponent()
+                        + "]";
     }
 
 }

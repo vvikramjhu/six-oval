@@ -789,6 +789,12 @@
         extends="jp.go.aist.six.oval.model.definitions.Variable">
         <map-to xml="local_variable"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="component" 
+            type="jp.go.aist.six.oval.model.definitions.ComponentElement">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+
 <!--
         <field name="contentXml" type="java.lang.Object" 
             handler="jp.go.aist.six.oval.core.xml.StringXmlHandler">
@@ -811,6 +817,100 @@
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
     </class>
+
+
+
+    <!-- ======================================================= -->
+    <!-- ComponentElement                                        -->
+    <!-- ======================================================= -->
+<!--
+    <class name ="jp.go.aist.six.oval.model.definitions.ComponentElement"
+        verify-constructable="false">
+
+    </class>
+-->
+
+
+    <!-- ======================================================= -->
+    <!-- LiteralComponent                                        -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.definitions.LiteralComponent">
+        <map-to xml="literal_component"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="data" type="string">
+            <bind-xml node="text"/>
+        </field>
+
+        <field name="datatype"
+            type="jp.go.aist.six.oval.model.common.Datatype">
+            <bind-xml name="datatype" node="attribute"/>
+        </field>
+    </class>
+
+
+    <!-- ======================================================= -->
+    <!-- ObjectComponent                                         -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.definitions.ObjectComponent">
+        <map-to xml="object_component"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="objectRef" type="string">
+            <bind-xml name="object_ref" node="attribute"/>
+        </field>
+
+        <field name="itemField" type="string">
+            <bind-xml name="item_field" node="attribute"/>
+        </field>
+
+        <field name="recordField" type="string">
+            <bind-xml name="record_field" node="attribute"/>
+        </field>
+    </class>
+
+
+    <!-- ======================================================= -->
+    <!-- Function                                                -->
+    <!-- ======================================================= -->
+<!--
+    <class name="jp.go.aist.six.oval.model.definitions.Function"
+        verify-constructable="false">
+
+    </class>
+-->
+
+
+    <!-- ======================================================= -->
+    <!-- ConcatFunction                                          -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.definitions.ConcatFunction">
+        <map-to xml="concat"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="component" 
+            type="jp.go.aist.six.oval.model.definitions.ComponentElement"
+            collection="collection"
+            set-method="addComponent"
+            get-method="iterateComponent">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+    </class>
+
+
+    <!-- ======================================================= -->
+    <!-- EscapeRegexFunction                                     -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.definitions.EscapeRegexFunction">
+        <map-to xml="escape_regex"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="component" 
+            type="jp.go.aist.six.oval.model.definitions.ComponentElement">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+    </class>
+
 
 
 

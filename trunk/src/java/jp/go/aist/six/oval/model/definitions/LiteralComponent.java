@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import jp.go.aist.six.oval.model.common.Datatype;
+
 
 
 /**
@@ -27,91 +29,58 @@ package jp.go.aist.six.oval.model.definitions;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class ObjectVariableComponent
-    extends VariableComponent
+public class LiteralComponent
+    extends ComponentElement
 {
 
-    private String  _objectRef;
-    //{required}
-
-    private String  _itemField;
-    //{required}
+    private String  _data;
+    //{xsd:anySimpleType}
 
 
-    private String  _recordField;
-    //{optional}
+    private Datatype  _datatype;
+    //{optional, defualt="string"}
 
 
 
     /**
      * Constructor.
      */
-    public ObjectVariableComponent()
+    public LiteralComponent()
     {
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public ObjectVariableComponent(
-                    final String objectRef,
-                    final String itemField
-                    )
-    {
-        setObjectRef( objectRef );
-        setItemField( itemField );
     }
 
 
 
     /**
      */
-    public String getObjectRef()
+    public void setData(
+                    final String data
+                    )
     {
-        return _objectRef;
+        _data = data;
     }
 
 
-    public void setObjectRef(
-                    final String objectRef
-                    )
+    public String getData()
     {
-        _objectRef = objectRef;
+        return _data;
     }
 
 
 
     /**
      */
-    public String getItemField()
-    {
-        return _itemField;
-    }
-
-
-    public void setItemField(
-                    final String itemField
+    public void setDatatype(
+                    final Datatype datatype
                     )
     {
-        _itemField = itemField;
+        _datatype = datatype;
     }
 
 
-
-    /**
-     */
-    public String getRecordField()
+    public Datatype getDatatype()
     {
-        return _recordField;
-    }
-
-
-    public void setRecordField(
-                    final String recordField
-                    )
-    {
-        _recordField = recordField;
+        return _datatype;
     }
 
 
@@ -123,11 +92,9 @@ public class ObjectVariableComponent
     @Override
     public String toString()
     {
-        return "ObjectVariableComponent[object_ref=" + getObjectRef()
-                        + ", item_field" + getItemField()
-                        + ", record_field" + getRecordField()
+        return "LiteralVariableComponent[datatype=" + getDatatype()
                         + "]";
     }
 
 }
-// ObjectVariableComponent
+// LiteralVariableComponent

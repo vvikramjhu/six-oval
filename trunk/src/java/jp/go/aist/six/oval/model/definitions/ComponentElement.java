@@ -29,7 +29,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class VariableComponent
+public abstract class ComponentElement
     extends AbstractPersistable
 //    implements Dependent<LocalVariable>
 {
@@ -37,7 +37,7 @@ public abstract class VariableComponent
     /**
      * Constructor.
      */
-    public VariableComponent()
+    public ComponentElement()
     {
     }
 

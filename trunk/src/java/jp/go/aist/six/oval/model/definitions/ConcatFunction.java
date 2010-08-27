@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.definitions;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 
 
@@ -31,10 +32,10 @@ import java.util.Collection;
  * @version $Id$
  */
 public class ConcatFunction
-    extends VariableFunction
+    extends Function
 {
 
-    private Collection<VariableComponent>  _component = new ArrayList<VariableComponent>();
+    private Collection<ComponentElement>  _component = new ArrayList<ComponentElement>();
     //{2..*}
 
 
@@ -51,7 +52,7 @@ public class ConcatFunction
      * Constructor.
      */
     public ConcatFunction(
-                    final Collection<? extends VariableComponent> components
+                    final Collection<? extends ComponentElement> components
                     )
     {
         setComponent( components );
@@ -62,7 +63,7 @@ public class ConcatFunction
     /**
      */
     public void setComponent(
-                    final Collection<? extends VariableComponent> components
+                    final Collection<? extends ComponentElement> components
                     )
     {
         if (components != _component) {
@@ -74,9 +75,23 @@ public class ConcatFunction
     }
 
 
-    public Collection<VariableComponent> getComponent()
+    public boolean addComponent(
+                    final ComponentElement component
+                    )
+    {
+        return _component.add( component );
+    }
+
+
+    public Collection<ComponentElement> getComponent()
     {
         return _component;
+    }
+
+
+    public Iterator<ComponentElement> iterateComponent()
+    {
+        return _component.iterator();
     }
 
 
