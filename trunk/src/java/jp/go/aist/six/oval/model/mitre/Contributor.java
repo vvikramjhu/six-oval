@@ -18,113 +18,69 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.mitre;
 
 import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 
 /**
- * A link from the OVAL Definition to a definitive external reference.
- *
- * <p>Properties:</p>
- * <ul>
- *   <li>source (required)</li>
- *   <li>ref_id (required)</li>
- *   <li>ref_url (optional)</li>
- * </ul>
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class Reference
+public class Contributor
     extends AbstractPersistable
 {
 
-    private String  _source;
-    //{xsd:string, required}
+    private String  _name;
+    //{xsd:string?}
 
 
-    private String  _refID;
-    //{xsd:string, required}
-
-
-    private String  _refURL;
-    //{xsd:anyURI, optional}
+    private String  _organization;
+    //{xsd:string}
 
 
 
     /**
      * Constructor.
      */
-    public Reference()
+    public Contributor()
     {
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public Reference(
-                    final String source,
-                    final String refID,
-                    final String refURL
-                    )
-    {
-        setSource( source );
-        setRefID( refID );
-        setRefURL( refURL );
     }
 
 
 
     /**
      */
-    public void setSource(
-                    final String source
+    public void setName(
+                    final String name
                     )
     {
-        _source = source;
+        _name = name;
     }
 
 
-    public String getSource()
+    public String getName()
     {
-        return _source;
+        return _name;
     }
 
 
 
     /**
      */
-    public void setRefID(
-                    final String id
+    public void setOrganization(
+                    final String organization
                     )
     {
-        _refID = id;
+        _organization = organization;
     }
 
 
-    public String getRefID()
+    public String getOrganization()
     {
-        return _refID;
-    }
-
-
-
-    /**
-     */
-    public void setRefURL(
-                    final String url
-                    )
-    {
-        _refURL = url;
-    }
-
-
-    public String getRefURL()
-    {
-        return _refURL;
+        return _organization;
     }
 
 
@@ -134,66 +90,12 @@ public class Reference
     //**************************************************************
 
     @Override
-    public int hashCode()
-    {
-        final int  prime = 37;
-        int  result = 17;
-
-        String  source = getSource();
-        result = prime * result + ((source == null) ? 0 : source.hashCode());
-
-        String  id = getRefID();
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-
-//        String  url = getReferenceURL();
-//        result = prime * result + ((url == null) ? 0 : url.hashCode());
-
-        return result;
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (this == obj) {
-            return true;
-        }
-
-        if (!(obj instanceof Reference)) {
-            return false;
-        }
-
-        Reference  other = (Reference)obj;
-        String  other_id = other.getRefID();
-        String   this_id =  this.getRefID();
-        if (this_id == other_id
-                        ||  (this_id != null
-                                        &&  this_id.equals( other_id ))) {
-            String  other_source = other.getSource();
-            String   this_source =  this.getSource();
-            if (this_source == other_source
-                            ||  (this_source != null
-                                            &&  this_source.equals( other_source ))) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-
-
-    @Override
     public String toString()
     {
-        return "Reference[source=" + getSource()
-                        + ", ref_id=" + getRefID()
-                        + ", ref_url=" + getRefURL()
+        return "Contributor[organization=" + getOrganization()
+                        + ", name=" + getName()
                         + "]";
     }
 
 }
-// Reference
+// Contributor

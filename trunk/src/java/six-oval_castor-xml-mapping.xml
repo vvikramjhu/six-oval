@@ -1669,6 +1669,24 @@
 
 
     <!-- ======================================================= -->
+    <!-- Contributor                                             -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.mitre.Contributor">
+        <map-to xml="contributor"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="organization" type="string">
+            <bind-xml name="organization" node="attribute"/>
+        </field>
+
+        <field name="name" type="string">
+            <bind-xml node="text"/>
+        </field>
+    </class>
+
+
+
+    <!-- ======================================================= -->
     <!-- OvalRepositoryEvent                                     -->
     <!-- ======================================================= -->
     <class name ="jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent"
@@ -1688,6 +1706,11 @@
         extends="jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent">
         <map-to xml="submitted"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="contributor" 
+            type="jp.go.aist.six.oval.model.mitre.Contributor">
+            <bind-xml name="contributor" node="element"/>
+        </field>
     </class>
 
 
@@ -1699,6 +1722,11 @@
         extends="jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent">
         <map-to xml="modified"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="contributor" 
+            type="jp.go.aist.six.oval.model.mitre.Contributor">
+            <bind-xml name="contributor" node="element"/>
+        </field>
     </class>
 
 

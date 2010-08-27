@@ -33,6 +33,11 @@ public class DefinitionSubmittedEvent
     extends OvalRepositoryEvent
 {
 
+    private Contributor  _contributor;
+    //{0..1}
+
+
+
     /**
      * Constructor.
      */
@@ -53,6 +58,23 @@ public class DefinitionSubmittedEvent
 
 
 
+    /**
+     */
+    public void setContributor(
+                    final Contributor contributor
+                    )
+    {
+        _contributor = contributor;
+    }
+
+
+    public Contributor getContributor()
+    {
+        return _contributor;
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -60,7 +82,9 @@ public class DefinitionSubmittedEvent
     @Override
     public String toString()
     {
-        return "submitted[date=" + getDate() + "]";
+        return "submitted[date=" + getDate()
+                        + ", contributor=" + getContributor()
+                        + "]";
     }
 
 }
