@@ -29,18 +29,19 @@ import java.util.Date;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionStatusChangeEvent
+public class Submitted
     extends OvalRepositoryEvent
 {
 
-    private DefinitionStatus  _status;
+    private Contributor  _contributor;
+    //{0..1}
 
 
 
     /**
      * Constructor.
      */
-    public DefinitionStatusChangeEvent()
+    public Submitted()
     {
     }
 
@@ -48,28 +49,28 @@ public class DefinitionStatusChangeEvent
     /**
      * Constructor.
      */
-    public DefinitionStatusChangeEvent(
-                    final Date date,
-                    final DefinitionStatus status
+    public Submitted(
+                    final Date date
                     )
     {
         super( date );
-        setStatus( status );
     }
 
 
 
-    public void setStatus(
-                    final DefinitionStatus status
+    /**
+     */
+    public void setContributor(
+                    final Contributor contributor
                     )
     {
-        _status = status;
+        _contributor = contributor;
     }
 
 
-    public DefinitionStatus getStatus()
+    public Contributor getContributor()
     {
-        return _status;
+        return _contributor;
     }
 
 
@@ -81,10 +82,10 @@ public class DefinitionStatusChangeEvent
     @Override
     public String toString()
     {
-        return "status_change[date=" + getDate()
-                        + ", status=" + getStatus()
+        return "submitted[date=" + getDate()
+                        + ", contributor=" + getContributor()
                         + "]";
     }
 
 }
-// DefinitionStatusChangeEvent
+// DefinitionSubmittedEvent

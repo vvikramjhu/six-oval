@@ -24,6 +24,11 @@
         <param name="pattern" value="yyyy-MM-dd'T'HH:mm:ss"/>
     </field-handler>
 
+    <field-handler name="eventDateHandler" 
+        class="jp.go.aist.six.util.castor.CastorDateHandler">
+        <param name="pattern" value="yyyy-MM-dd'T'HH:mm:ss"/>
+    </field-handler>
+
 
 
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -75,7 +80,6 @@
         <field name="comment" type="string">
             <bind-xml name="comment" node="attribute"/>
         </field>
-
     </class>
 
 
@@ -1646,9 +1650,9 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <!-- ======================================================= -->
-    <!-- MitreRepositoryMetadataItem                             -->
+    <!-- MitreOvalRepository                                     -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.mitre.MitreRepositoryMetadataItem"
+    <class name="jp.go.aist.six.oval.model.mitre.MitreOvalRepository"
         extends="jp.go.aist.six.oval.model.definitions.MetadataItem">
         <map-to xml="oval_repository"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
@@ -1658,7 +1662,7 @@
             <bind-xml name="status" node="element"/>
         </field>
 
-        <field name="dates" 
+        <field name="event" 
             type="jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"
@@ -1692,17 +1696,23 @@
     <class name ="jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent"
         verify-constructable="false">
 
+        <field name="date" type="string"
+            handler="eventDateHandler">
+            <bind-xml name="date" node="attribute"/>
+        </field>
+<!--
         <field name="date" type="date">
             <bind-xml name="date" node="attribute"/>
         </field>
+-->
     </class>
 
 
 
     <!-- ======================================================= -->
-    <!-- DefinitionSubmittedEvent                                -->
+    <!-- Submitted                                               -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.mitre.DefinitionSubmittedEvent"
+    <class name="jp.go.aist.six.oval.model.mitre.Submitted"
         extends="jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent">
         <map-to xml="submitted"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
@@ -1716,12 +1726,16 @@
 
 
     <!-- ======================================================= -->
-    <!-- DefinitionModifiedEvent                                 -->
+    <!-- Modified                                                -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.mitre.DefinitionModifiedEvent"
+    <class name="jp.go.aist.six.oval.model.mitre.Modified"
         extends="jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent">
         <map-to xml="modified"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="comment" type="string">
+            <bind-xml name="comment" node="attribute"/>
+        </field>
 
         <field name="contributor" 
             type="jp.go.aist.six.oval.model.mitre.Contributor">
@@ -1732,9 +1746,9 @@
 
 
     <!-- ======================================================= -->
-    <!-- DefinitionStatusChangeEvent                             -->
+    <!-- StatusChange                                            -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.mitre.DefinitionStatusChangeEvent"
+    <class name="jp.go.aist.six.oval.model.mitre.StatusChange"
         extends="jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent">
         <map-to xml="status_change"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>

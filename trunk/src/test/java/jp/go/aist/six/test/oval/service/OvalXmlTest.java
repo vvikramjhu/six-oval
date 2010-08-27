@@ -20,8 +20,8 @@ import jp.go.aist.six.oval.model.linux.CveReference;
 import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
 import jp.go.aist.six.oval.model.linux.RpmInfoItem;
 import jp.go.aist.six.oval.model.linux.Severity;
-import jp.go.aist.six.oval.model.mitre.DefinitionModifiedEvent;
-import jp.go.aist.six.oval.model.mitre.MitreRepositoryMetadataItem;
+import jp.go.aist.six.oval.model.mitre.Modified;
+import jp.go.aist.six.oval.model.mitre.MitreOvalRepository;
 import jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.OvalResults;
@@ -982,11 +982,11 @@ public class OvalXmlTest
         Collection<MetadataItem>  metadataItems = def.getMetadata().getAdditionalMetadata();
         Assert.assertEquals( metadataItems.size(), 1 );
         MetadataItem  metadataItem = metadataItems.iterator().next();
-        Assert.assertTrue( metadataItem instanceof MitreRepositoryMetadataItem );
-        MitreRepositoryMetadataItem  repo = (MitreRepositoryMetadataItem)metadataItem;
-        Assert.assertEquals( repo.getDates().size(), 7 );
-        for (OvalRepositoryEvent  event : repo.getDates()) {
-            if (event instanceof DefinitionModifiedEvent) {
+        Assert.assertTrue( metadataItem instanceof MitreOvalRepository );
+        MitreOvalRepository  repo = (MitreOvalRepository)metadataItem;
+        Assert.assertEquals( repo.getEvent().size(), 7 );
+        for (OvalRepositoryEvent  event : repo.getEvent()) {
+            if (event instanceof Modified) {
                 Calendar  cal = Calendar.getInstance();
                 cal.setTime( event.getDate() );
                 Assert.assertEquals( cal.get( Calendar.YEAR ), 2009 );

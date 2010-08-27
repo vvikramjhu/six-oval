@@ -20,23 +20,18 @@
 
 package jp.go.aist.six.oval.model.mitre;
 
-import jp.go.aist.six.oval.model.definitions.MetadataItem;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Date;
 
 
 
 /**
- * A metadata of OVAL Definition in OVAL repository.
  *
- * @author  Akihito Nakamura, AIST
+ * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class MitreRepositoryMetadataItem
-    extends MetadataItem
+public class StatusChange
+    extends OvalRepositoryEvent
 {
-
-    private Collection<OvalRepositoryEvent>  _dates = new ArrayList<OvalRepositoryEvent>();
 
     private DefinitionStatus  _status;
 
@@ -45,44 +40,21 @@ public class MitreRepositoryMetadataItem
     /**
      * Constructor.
      */
-    public MitreRepositoryMetadataItem()
+    public StatusChange()
     {
     }
 
 
-
-    public void setDates(
-                    final Collection<? extends OvalRepositoryEvent> events
+    /**
+     * Constructor.
+     */
+    public StatusChange(
+                    final Date date,
+                    final DefinitionStatus status
                     )
     {
-        if (events != _dates) {
-            _dates.clear();
-            if (events == null  ||  events.size() == 0) {
-                return;
-            }
-
-            for (OvalRepositoryEvent  event : events) {
-                addDates( event );
-            }
-        }
-    }
-
-
-    public boolean addDates(
-                    final OvalRepositoryEvent event
-                    )
-    {
-        if (event == null) {
-            return false;
-        }
-
-        return _dates.add( event );
-    }
-
-
-    public Collection<OvalRepositoryEvent> getDates()
-    {
-        return _dates;
+        super( date );
+        setStatus( status );
     }
 
 
@@ -109,10 +81,10 @@ public class MitreRepositoryMetadataItem
     @Override
     public String toString()
     {
-        return "OvalRepository[status=" + getStatus()
-                        + ", dates=" + getDates()
+        return "status_change[date=" + getDate()
+                        + ", status=" + getStatus()
                         + "]";
     }
 
 }
-// OvalRepositoryMetadata
+// DefinitionStatusChangeEvent

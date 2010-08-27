@@ -46,7 +46,6 @@ public abstract class OvalRepositoryEvent
     }
 
 
-
     /**
      * Constructor.
      */

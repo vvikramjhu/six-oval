@@ -29,9 +29,12 @@ import java.util.Date;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionModifiedEvent
+public class Modified
     extends OvalRepositoryEvent
 {
+
+    private String  _comment;
+
 
     private Contributor  _contributor;
     //{0..1}
@@ -41,7 +44,7 @@ public class DefinitionModifiedEvent
     /**
      * Constructor.
      */
-    public DefinitionModifiedEvent()
+    public Modified()
     {
     }
 
@@ -49,11 +52,28 @@ public class DefinitionModifiedEvent
     /**
      * Constructor.
      */
-    public DefinitionModifiedEvent(
+    public Modified(
                     final Date date
                     )
     {
         super( date );
+    }
+
+
+
+    /**
+     */
+    public void setComment(
+                    final String comment
+                    )
+    {
+        _comment = comment;
+    }
+
+
+    public String getComment()
+    {
+        return _comment;
     }
 
 
@@ -83,6 +103,7 @@ public class DefinitionModifiedEvent
     public String toString()
     {
         return "modified[date=" + getDate()
+                        + ", comment=" + getComment()
                         + ", contributor=" + getContributor()
                         + "]";
     }

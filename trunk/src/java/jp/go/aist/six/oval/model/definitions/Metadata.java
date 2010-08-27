@@ -22,9 +22,9 @@ package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.linux.CveReference;
 import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
-import jp.go.aist.six.oval.model.mitre.DefinitionModifiedEvent;
-import jp.go.aist.six.oval.model.mitre.DefinitionSubmittedEvent;
-import jp.go.aist.six.oval.model.mitre.MitreRepositoryMetadataItem;
+import jp.go.aist.six.oval.model.mitre.Modified;
+import jp.go.aist.six.oval.model.mitre.Submitted;
+import jp.go.aist.six.oval.model.mitre.MitreOvalRepository;
 import jp.go.aist.six.oval.model.mitre.OvalRepositoryEvent;
 import jp.go.aist.six.util.IsoDate;
 import jp.go.aist.six.util.castor.AbstractPersistable;
@@ -266,13 +266,13 @@ public class Metadata
     {
         Date  lastModifiedDate = null;
 
-        if (item instanceof MitreRepositoryMetadataItem) {
+        if (item instanceof MitreOvalRepository) {
             // Mitre OVAL repository
-            MitreRepositoryMetadataItem  or = MitreRepositoryMetadataItem.class.cast( item );
-            for (OvalRepositoryEvent  event : or.getDates()) {
-                if (lastModifiedDate == null  &&  (event instanceof DefinitionSubmittedEvent)) {
+            MitreOvalRepository  or = MitreOvalRepository.class.cast( item );
+            for (OvalRepositoryEvent  event : or.getEvent()) {
+                if (lastModifiedDate == null  &&  (event instanceof Submitted)) {
                     lastModifiedDate = event.getDate();
-                } else if (event instanceof DefinitionModifiedEvent) {
+                } else if (event instanceof Modified) {
                     Date  eventDate = event.getDate();
                     if (lastModifiedDate == null
                                     ||  lastModifiedDate.compareTo( eventDate ) < 0) {
