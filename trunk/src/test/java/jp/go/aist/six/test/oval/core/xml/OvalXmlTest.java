@@ -96,53 +96,63 @@ public class OvalXmlTest
     public Object[][] provideOvalDefinitionsOvalDefinitions()
     {
         return new Object[][] {
-                        // Windows @ Mitre, CVE-2009-4019
-                        {
-                            OvalDefinitions.class,
-                            "/oval_definitions",
-                            "test/data/definitions/oval-definitions_CVE-2009-4019_MySQL.xml",
-                            null,
-                            "marshalled_oval-definitions_CVE-2009-4019_MySQL.xml"
-                        }
-                        ,
+//                        // Windows @ Mitre, CVE-2009-4019
+//                        {
+//                            OvalDefinitions.class,
+//                            "/oval_definitions",
+//                            "test/data/definitions/oval-definitions_CVE-2009-4019_MySQL.xml",
+//                            null,
+//                            "marshalled_oval-definitions_CVE-2009-4019_MySQL.xml"
+//                        }
+//                        ,
+//
+////                      // Red Hat, CVE-2010-0176, RHSA 20100332
+//                        {
+//                            OvalDefinitions.class,
+//                            "/oval_definitions",
+//                            "test/data/definitions/oval-definitions_CVE-2010-0176_rhsa20100332.xml",
+//                            null,
+//                            "marshalled_oval-definitions_CVE-2010-0176_rhsa20100332.xml"
+//                        }
+//                        ,
+//
+////                      // Debian @Mitre, CVE-2010-0176, DSA-2027
+//                        {
+//                            OvalDefinitions.class,
+//                            "/oval_definitions",
+//                            "test/data/definitions/oval-definitions_CVE-2010-0176_mitre7432_DSA-2027.xml",
+//                            null,
+//                            "marshalled_oval-definitions_CVE-2010-0176_mitre7432_DSA-2027.xml"
+//                        }
+//                        ,
+//
+//                        // Windows XP @ Mitre, all vulnerability, 2010-08-27
+//                        {
+//                            OvalDefinitions.class,
+//                            "/oval_definitions",
+//                            "test/data/definitions/20100827_vulnerability_microsoft.windows.xp.xml",
+//                            null,
+//                            "marshalled_20100827_vulnerability_microsoft.windows.xp.xml"
+//                        }
+//                        ,
+//
+//                        // Windows 7 @ Mitre, all vulnerability, 2010-08-27
+//                        {
+//                            OvalDefinitions.class,
+//                            "/oval_definitions",
+//                            "test/data/definitions/20100827_vulnerability_microsoft.windows.7.xml",
+//                            null,
+//                            "marshalled_20100827_vulnerability_microsoft.windows.7.xml"
+//                        }
+//                        ,
 
-//                      // Red Hat, CVE-2010-0176, RHSA 20100332
+                        // Windows Server 2008 @ Mitre, all vulnerability, 2010-08-27
                         {
                             OvalDefinitions.class,
                             "/oval_definitions",
-                            "test/data/definitions/oval-definitions_CVE-2010-0176_rhsa20100332.xml",
+                            "test/data/definitions/20100827_vulnerability_microsoft.windows.server.2008.xml",
                             null,
-                            "marshalled_oval-definitions_CVE-2010-0176_rhsa20100332.xml"
-                        }
-                        ,
-
-//                      // Debian @Mitre, CVE-2010-0176, DSA-2027
-                        {
-                            OvalDefinitions.class,
-                            "/oval_definitions",
-                            "test/data/definitions/oval-definitions_CVE-2010-0176_mitre7432_DSA-2027.xml",
-                            null,
-                            "marshalled_oval-definitions_CVE-2010-0176_mitre7432_DSA-2027.xml"
-                        }
-                        ,
-
-                        // Windows XP @ Mitre, all vulnerability, 2010-08-27
-                        {
-                            OvalDefinitions.class,
-                            "/oval_definitions",
-                            "test/data/definitions/20100827_vulnerability_microsoft.windows.xp.xml",
-                            null,
-                            "marshalled_20100827_vulnerability_microsoft.windows.xp.xml"
-                        }
-                        ,
-
-                        // Windows 7 @ Mitre, all vulnerability, 2010-08-27
-                        {
-                            OvalDefinitions.class,
-                            "/oval_definitions",
-                            "test/data/definitions/20100827_vulnerability_microsoft.windows.7.xml",
-                            null,
-                            "marshalled_20100827_vulnerability_microsoft.windows.7.xml"
+                            "marshalled_20100827_vulnerability_microsoft.windows.server.2008.xml"
                         }
         };
 
