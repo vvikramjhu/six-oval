@@ -1390,16 +1390,16 @@
         </field>
 -->
 
+        <field name="tests" 
+            type="jp.go.aist.six.oval.model.results.TestResults">
+            <bind-xml name="tests" node="element"/>
+        </field>
+<!--
         <field name="tests.test" 
             type="jp.go.aist.six.oval.model.results.TestResult"
             collection="collection">
             <bind-xml name="test" node="element" 
                 location="tests"/>
-        </field>
-<!--
-        <field name="tests" 
-            type="jp.go.aist.six.oval.model.results.TestResults">
-            <bind-xml name="tests" node="element"/>
         </field>
 -->
 

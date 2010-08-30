@@ -742,8 +742,8 @@ public abstract class CoreTestBase
         Assert.assertEquals( actual.getArchitecture(), expected.getArchitecture() );
         Assert.assertEquals( actual.getPrimaryHostName(), expected.getPrimaryHostName() );
 
-        Set<NetInterface>  a_netifs = new HashSet<NetInterface>( actual.getInterfaces() );
-        Set<NetInterface>  e_netifs = new HashSet<NetInterface>( expected.getInterfaces() );
+        Set<NetInterface>  a_netifs = new HashSet<NetInterface>( actual.getInterfaces().getInterface() );
+        Set<NetInterface>  e_netifs = new HashSet<NetInterface>( expected.getInterfaces().getInterface() );
         Assert.assertEquals( a_netifs, e_netifs );
     }
 
