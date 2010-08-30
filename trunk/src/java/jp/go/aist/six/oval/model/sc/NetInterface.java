@@ -218,9 +218,9 @@ public class NetInterface
     @Override
     public String toString()
     {
-        return "NetworkInterface[name=" + getInterfaceName()
-                        + ", IP=" + getIpAddress()
-                        + ", MAC=" + getMacAddress()
+        return "interface[interface_name=" + getInterfaceName()
+                        + ", ip_address=" + getIpAddress()
+                        + ", mac_address=" + getMacAddress()
                         + "]";
     }
 

@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.sc;
 
-import jp.go.aist.six.oval.model.Container;
+import jp.go.aist.six.oval.model.SetContainer;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -38,7 +38,8 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class NetInterfaces
-    extends Container<NetInterface>
+    extends SetContainer<NetInterface>
+//extends Container<NetInterface>
 {
 
     /**
@@ -72,27 +73,17 @@ public class NetInterfaces
 
 
 
-    /**
-     */
-    public void setInterface(
-                    final Collection<? extends NetInterface> netifs
-                    )
-    {
-        reset( netifs );
-    }
-
-
     public boolean addInterface(
                     final NetInterface netif
                     )
     {
-        return add( netif );
+        return _addElement( netif );
     }
 
 
     public Collection<NetInterface> getInterface()
     {
-        return _elements();
+        return _getElement();
     }
 
 
