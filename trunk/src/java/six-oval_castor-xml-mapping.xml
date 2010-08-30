@@ -1277,16 +1277,16 @@
 -->
         </field>
 
+        <field name="results" 
+            type="jp.go.aist.six.oval.model.results.SystemResults">
+            <bind-xml name="results" node="element"/>
+        </field>
+<!--
         <field name="results.system" 
             type="jp.go.aist.six.oval.model.results.SystemResult"
             collection="collection">
             <bind-xml name="system" node="element" 
                 location="results"/>
-        </field>
-<!--
-        <field name="results" 
-            type="jp.go.aist.six.oval.model.results.SystemResults">
-            <bind-xml name="results" node="element"/>
         </field>
 -->
     </class>

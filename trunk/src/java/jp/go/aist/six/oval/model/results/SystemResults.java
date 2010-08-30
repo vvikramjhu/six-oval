@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.results;
 
-import jp.go.aist.six.oval.model.Container;
+import jp.go.aist.six.oval.model.SetContainer;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -33,7 +33,7 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class SystemResults
-    extends Container<SystemResult> //{1..*}
+    extends SetContainer<SystemResult> //{1..*}
 {
 
     /**
@@ -67,28 +67,17 @@ public class SystemResults
 
 
 
-    /**
-     */
-    public void setSystem(
-                    final Collection<? extends SystemResult> system
-                    )
-    {
-        reset( system );
-    }
-
-
     public boolean addSystem(
                     final SystemResult system
                     )
     {
-        return add( system );
+        return _addElement( system );
     }
 
 
     public Collection<SystemResult> getSystem()
     {
-        return this;
-//        return _elements();
+        return _getElement();
     }
 
 
@@ -106,7 +95,7 @@ public class SystemResults
     @Override
     public String toString()
     {
-        return "SystemResults["
+        return "results["
                         + super.toString()
                         + "]";
     }
