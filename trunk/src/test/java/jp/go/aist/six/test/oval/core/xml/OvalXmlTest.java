@@ -174,6 +174,16 @@ public class OvalXmlTest
 //                            null,
 //                            "marshalled_20100830_vulnerability_red.hat.enterprise.linux.5.xml"
 //                        }
+//                        ,
+//
+//                        // Red Hat Enterprise Linux @ Red Hat, all , 2010-08-26
+//                        {
+//                            OvalDefinitions.class,
+//                            "/oval_definitions",
+//                            "test/data/definitions/20100826_com.redhat.rhsa-all.xml",
+//                            null,
+//                            "marshalled_20100826_com.redhat.rhsa-all.xml"
+//                        }
         };
 
     }
