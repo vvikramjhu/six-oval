@@ -324,6 +324,15 @@ public abstract class CoreTestBase
 
 
     protected void _validate(
+                    final Definitions actual,
+                    final Definitions expected
+                    )
+    {
+        Assert.assertEquals( actual,  expected );
+    }
+
+
+    protected void _validate(
                     final Metadata actual,
                     final Metadata expected
                     )

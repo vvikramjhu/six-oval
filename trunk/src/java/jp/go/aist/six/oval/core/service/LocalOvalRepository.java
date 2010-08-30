@@ -158,7 +158,7 @@ public class LocalOvalRepository
             Variables  p_objects = new Variables();
             for (Variable  object : variables) {
                 Variable  p_object = _store.sync( Variable.class, object );
-                p_objects.add( p_object );
+                p_objects.addVariable( p_object );
             }
 
             defs.setVariables( p_objects );
@@ -173,7 +173,7 @@ public class LocalOvalRepository
                     _LOG.info( "creating Definition: " + def.getOvalID() );
                 }
                 Definition  p_def = _store.sync( Definition.class, def );
-                p_def_list.add( p_def );
+                p_def_list.addDefinition( p_def );
             }
             defs.setDefinitions( p_def_list );
         }
@@ -265,7 +265,7 @@ public class LocalOvalRepository
         def.setCriteria( criteria );
 
         Definitions  defs = new Definitions();
-        defs.add( def );
+        defs.addDefinition( def );
 
         OvalDefinitions  ovalDefs = new OvalDefinitions();
         Generator  generator = new Generator(

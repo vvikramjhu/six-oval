@@ -156,7 +156,7 @@ public class OvalXmlFragmentTest
 
         Definition  def = (Definition)_unmarshal( defPath );
         Assert.assertNotNull( def );
-        defs.getDefinitions().add( def );
+        defs.getDefinitions().addDefinition( def );
 
         Tests  tests = new Tests();
         for (String  path : testPaths) {

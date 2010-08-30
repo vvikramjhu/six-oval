@@ -20,9 +20,9 @@ import jp.go.aist.six.oval.model.linux.CveReference;
 import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
 import jp.go.aist.six.oval.model.linux.RpmInfoItem;
 import jp.go.aist.six.oval.model.linux.Severity;
+import jp.go.aist.six.oval.model.mitre.Event;
 import jp.go.aist.six.oval.model.mitre.Modified;
 import jp.go.aist.six.oval.model.mitre.OvalRepository;
-import jp.go.aist.six.oval.model.mitre.Event;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.Result;
@@ -646,7 +646,7 @@ public class OvalXmlTest
 
         // definitions //
         Reporter.log( "*** checking definitions...", true );
-        Collection<Definition>  def_list = defs.getDefinitions();
+        Definitions  def_list = defs.getDefinitions();
         Assert.assertEquals( def_list.size(), 1 );
         Definition  def = def_list.iterator().next();
         Reporter.log( "@@@ definiton[0]: id=" + def.getOvalID()
@@ -735,7 +735,7 @@ public class OvalXmlTest
 
         // definitions //
         Reporter.log( "*** checking definitions...", true );
-        Collection<Definition>  def_list = defs.getDefinitions();
+        Definitions  def_list = defs.getDefinitions();
         Assert.assertEquals( def_list.size(), 1 );
         Definition  def = def_list.iterator().next();
         Reporter.log( "@@@ definiton[0]: id=" + def.getOvalID()
@@ -825,7 +825,7 @@ public class OvalXmlTest
 
         // definitions //
         Reporter.log( "*** checking definitions...", true );
-        Collection<Definition>  def_list = defs.getDefinitions();
+        Definitions  def_list = defs.getDefinitions();
         Assert.assertEquals( def_list.size(), 1 );
         Definition  def = def_list.iterator().next();
         Reporter.log( "@@@ definiton[0]: id=" + def.getOvalID()
@@ -929,7 +929,7 @@ public class OvalXmlTest
 
         // definitions //
         Reporter.log( "  *** checking definitions...", true );
-        Collection<Definition>  def_list = defs.getDefinitions();
+        Definitions  def_list = defs.getDefinitions();
         Assert.assertEquals( def_list.size(), 1 );
         Definition  def = def_list.iterator().next();
         Reporter.log( "    @@@ definiton id=" + def.getOvalID(), true );

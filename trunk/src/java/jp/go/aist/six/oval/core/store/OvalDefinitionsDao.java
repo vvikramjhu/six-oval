@@ -147,7 +147,7 @@ public class OvalDefinitionsDao
             Variables  p_objects = new Variables();
             for (Variable  object : variables) {
                 Variable  p_object = getForwardingDao( Variable.class ).sync( object );
-                p_objects.add( p_object );
+                p_objects.addVariable( p_object );
                 OvalDefinitionsVariableAssociation  assoc =
                     new OvalDefinitionsVariableAssociation( defs, p_object );
                 getForwardingDao( OvalDefinitionsVariableAssociation.class ).sync( assoc );
@@ -166,7 +166,7 @@ public class OvalDefinitionsDao
                     _LOG.info( "creating Definition: " + def.getOvalID() );
                 }
                 Definition  p_def = getForwardingDao( Definition.class ).sync( def );
-                p_def_list.add( p_def );
+                p_def_list.addDefinition( p_def );
 
                 OvalDefinitionsDefinitionAssociation  assoc =
                     new OvalDefinitionsDefinitionAssociation( defs, p_def );

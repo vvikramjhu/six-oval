@@ -222,11 +222,9 @@
             <bind-xml name="generator" node="element"/>
         </field>
 
-        <field name="definitions.definition" 
-            type="jp.go.aist.six.oval.model.definitions.Definition"
-            collection="collection">
-            <bind-xml name="definition" node="element" 
-                location="definitions"/>
+        <field name="definitions" 
+            type="jp.go.aist.six.oval.model.definitions.Definitions">
+            <bind-xml name="definitions" node="element"/>
         </field>
 
         <field name="tests" 
@@ -250,6 +248,13 @@
         </field>
 
 <!--
+        <field name="definitions.definition" 
+            type="jp.go.aist.six.oval.model.definitions.Definition"
+            collection="collection">
+            <bind-xml name="definition" node="element" 
+                location="definitions"/>
+        </field>
+
         <field name="tests.test" 
             type="jp.go.aist.six.oval.model.definitions.Test"
             collection="collection">
@@ -269,17 +274,6 @@
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element" 
                 location="objects"/>
-        </field>
-
-
-        <field name="definitions" 
-            type="jp.go.aist.six.oval.model.definitions.Definitions">
-            <bind-xml name="definitions" node="element"/>
-        </field>
-
-        <field name="tests" 
-            type="jp.go.aist.six.oval.model.definitions.Tests">
-            <bind-xml name="tests" node="element"/>
         </field>
 
         <field name="variables.variable" 
@@ -332,8 +326,7 @@
             type="jp.go.aist.six.oval.model.definitions.Definition"
             collection="collection"
             set-method="addDefinition"
-            get-method="iterateDefinition"
-            >
+            get-method="iterateDefinition">
             <bind-xml name="definition" node="element"/>
         </field>
     </class>

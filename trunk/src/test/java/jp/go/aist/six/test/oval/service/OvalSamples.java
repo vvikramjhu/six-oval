@@ -165,7 +165,7 @@ public class OvalSamples
     private static OvalDefinitions _createOvalDefinitions1()
     {
         OvalDefinitions  defs = new OvalDefinitions( GENERATOR_1 );
-        defs.getDefinitions().add( DEFINITION_1 );
+        defs.getDefinitions().addDefinition( DEFINITION_1 );
 
         return defs;
     }

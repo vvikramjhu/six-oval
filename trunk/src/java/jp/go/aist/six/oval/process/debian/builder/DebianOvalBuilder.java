@@ -312,7 +312,7 @@ public class DebianOvalBuilder
         final String  defID = _createDefinitionID( dsaID );
         final int  defVersion = dsaVersion;
         Definition  def = new Definition( defID, defVersion, DefinitionClass.PATCH );
-        oval.getDefinitions().add( def );
+        oval.getDefinitions().addDefinition( def );
 
         // TODO: metadata //
         Metadata  metadata = new Metadata();

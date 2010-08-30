@@ -36,15 +36,14 @@ import java.util.Set;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalElementContainer<E extends OvalElement>
-    extends Container<E>
-//extends KeyedContainer<String, E>
+public class OvalElementSetContainer<E extends OvalElement>
+    extends SetContainer<E>
 {
 
     /**
      * Constructor.
      */
-    public OvalElementContainer()
+    public OvalElementSetContainer()
     {
     }
 
@@ -52,7 +51,7 @@ public class OvalElementContainer<E extends OvalElement>
     /**
      * Constructor.
      */
-    public OvalElementContainer(
+    public OvalElementSetContainer(
                     final Collection<? extends E> elements
                     )
     {
@@ -63,7 +62,7 @@ public class OvalElementContainer<E extends OvalElement>
     /**
      * Constructor.
      */
-    public OvalElementContainer(
+    public OvalElementSetContainer(
                     final E[] elements
                     )
     {
@@ -71,7 +70,9 @@ public class OvalElementContainer<E extends OvalElement>
     }
 
 
-    public E find( final String id )
+    public E find(
+                    final String id
+                    )
     {
         if (id == null) {
             throw new IllegalArgumentException();
@@ -87,16 +88,17 @@ public class OvalElementContainer<E extends OvalElement>
     }
 
 
-    //**************************************************************
-    //  Container
-    //**************************************************************
 
-    protected String _getKey(
-                    final OvalElement element
-                    )
-    {
-        return element.getOvalID();
-    }
+//    //**************************************************************
+//    //  Container
+//    //**************************************************************
+//
+//    protected String _getKey(
+//                    final OvalElement element
+//                    )
+//    {
+//        return element.getOvalID();
+//    }
 
 
 
@@ -144,8 +146,7 @@ public class OvalElementContainer<E extends OvalElement>
                 return null;
             }
 
-            String  currentHashString = (keysHash == 0 ? "" : String.valueOf( keysHash ));
-            _update( digest, currentHashString );
+            _update( digest, String.valueOf( keysHash ) );
 
             _digest = _byteArrayToHexString( digest.digest() );
             _hashOnDigest = thisHash;
@@ -185,50 +186,6 @@ public class OvalElementContainer<E extends OvalElement>
         }
 
         return set;
-    }
-
-
-    /**
-     */
-//    public String getOvalIDDigest()
-//    {
-//        final int  currentHash = hashCode();
-//        if (currentHash != _hashOnDigest) {
-//            _digest = _computeOvalIDDigest( _keySet() );
-////            _digest = _computeDigest( _values() );  //TODO: keySet() is enough ???
-//            _hashOnDigest = currentHash;
-//        }
-//
-//        return _digest;
-//    }
-
-
-    /**
-     */
-    protected String _computeOvalIDDigest(
-                    final Collection<String> ovalIDs
-                    )
-    {
-        MessageDigest  digest = null;
-        try {
-            digest = MessageDigest.getInstance( DIGEST_ALGORITHM );
-                                              //@throws NoSuchAlgorithmException
-        } catch (NoSuchAlgorithmException ex) {
-            return null;
-        }
-
-        if (ovalIDs == null  ||  ovalIDs.size() == 0) {
-            _update( digest, "" );
-        } else {
-            ArrayList<String>  list = new ArrayList<String>( ovalIDs );
-            Collections.sort( list, String.CASE_INSENSITIVE_ORDER );
-
-            for (String  ovalID : list) {
-                _update( digest, ovalID );
-            }
-        }
-
-        return _byteArrayToHexString( digest.digest() );
     }
 
 
