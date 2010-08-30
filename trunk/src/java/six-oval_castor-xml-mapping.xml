@@ -1377,16 +1377,16 @@
         <map-to xml="system"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
+        <field name="definitions" 
+            type="jp.go.aist.six.oval.model.results.DefinitionResults">
+            <bind-xml name="definitions" node="element"/>
+        </field>
+<!--
         <field name="definitions.definition" 
             type="jp.go.aist.six.oval.model.results.DefinitionResult"
             collection="collection">
             <bind-xml name="definition" node="element" 
                 location="definitions"/>
-        </field>
-<!--
-        <field name="definitions" 
-            type="jp.go.aist.six.oval.model.results.DefinitionResults">
-            <bind-xml name="definitions" node="element"/>
         </field>
 -->
 

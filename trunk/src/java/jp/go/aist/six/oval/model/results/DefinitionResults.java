@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.results;
 
-import jp.go.aist.six.oval.model.Container;
+import jp.go.aist.six.oval.model.SetContainer;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -33,7 +33,7 @@ import java.util.Iterator;
  * @version $Id: DefinitionResults.java 742 2010-05-07 09:22:53Z akihito $
  */
 public class DefinitionResults
-    extends Container<DefinitionResult>  //{1..*}
+    extends SetContainer<DefinitionResult>  //{1..*}
 //extends OvalElementContainer<DefinitionResult>  //{1..*}
 {
 
@@ -49,10 +49,10 @@ public class DefinitionResults
      * Constructor.
      */
     public DefinitionResults(
-                    final Collection<? extends DefinitionResult> elements
+                    final Collection<? extends DefinitionResult> definitions
                     )
     {
-        super( elements );
+        super( definitions );
     }
 
 
@@ -68,29 +68,17 @@ public class DefinitionResults
 
 
 
-    /**
-     */
-    public void setDefinition(
-                    final Collection<? extends DefinitionResult> elements
-                    )
-    {
-        reset( elements );
-    }
-
-
     public boolean addDefinition(
-                    final DefinitionResult e
+                    final DefinitionResult definition
                     )
     {
-        return add( e );
+        return _addElement( definition );
     }
 
 
     public Collection<DefinitionResult> getDefinition()
     {
-        return this;
-//        return _elements();
-//        return _values();
+        return _getElement();
     }
 
 
