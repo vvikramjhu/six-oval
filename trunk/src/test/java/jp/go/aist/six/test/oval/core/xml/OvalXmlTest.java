@@ -96,14 +96,14 @@ public class OvalXmlTest
     public Object[][] provideOvalDefinitionsOvalDefinitions()
     {
         return new Object[][] {
-//                        // Windows @ Mitre, CVE-2009-4019
-//                        {
-//                            OvalDefinitions.class,
-//                            "/oval_definitions",
-//                            "test/data/definitions/oval-definitions_CVE-2009-4019_MySQL.xml",
-//                            null,
-//                            "marshalled_oval-definitions_CVE-2009-4019_MySQL.xml"
-//                        }
+                        // Windows @ Mitre, CVE-2009-4019
+                        {
+                            OvalDefinitions.class,
+                            "/oval_definitions",
+                            "test/data/definitions/oval-definitions_CVE-2009-4019_MySQL.xml",
+                            null,
+                            "marshalled_oval-definitions_CVE-2009-4019_MySQL.xml"
+                        }
 //                        ,
 //
 ////                      // Red Hat, CVE-2010-0176, RHSA 20100332
@@ -145,15 +145,35 @@ public class OvalXmlTest
 //                            "marshalled_20100827_vulnerability_microsoft.windows.7.xml"
 //                        }
 //                        ,
-
-                        // Windows Server 2008 @ Mitre, all vulnerability, 2010-08-27
-                        {
-                            OvalDefinitions.class,
-                            "/oval_definitions",
-                            "test/data/definitions/20100827_vulnerability_microsoft.windows.server.2008.xml",
-                            null,
-                            "marshalled_20100827_vulnerability_microsoft.windows.server.2008.xml"
-                        }
+//
+//                        // Windows Server 2008 @ Mitre, all vulnerability, 2010-08-27
+//                        {
+//                            OvalDefinitions.class,
+//                            "/oval_definitions",
+//                            "test/data/definitions/20100827_vulnerability_microsoft.windows.server.2008.xml",
+//                            null,
+//                            "marshalled_20100827_vulnerability_microsoft.windows.server.2008.xml"
+//                        }
+//                        ,
+//
+//                        // Debian 5.0 @ Mitre, all patches, 2010-08-30
+//                        {
+//                            OvalDefinitions.class,
+//                            "/oval_definitions",
+//                            "test/data/definitions/20100830_patch_debian.gnu.linux.5.0.xml",
+//                            null,
+//                            "marshalled_20100830_patch_debian.gnu.linux.5.0.xml"
+//                        }
+//                        ,
+//
+//                        // Red Hat Enterprise Linux 5.0 @ Mitre, all vulnerabilities, 2010-08-30
+//                        {
+//                            OvalDefinitions.class,
+//                            "/oval_definitions",
+//                            "test/data/definitions/20100830_vulnerability_red.hat.enterprise.linux.5.xml",
+//                            null,
+//                            "marshalled_20100830_vulnerability_red.hat.enterprise.linux.5.xml"
+//                        }
         };
 
     }
