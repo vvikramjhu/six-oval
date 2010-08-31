@@ -1,9 +1,7 @@
 package jp.go.aist.six.test.oval.service;
 
-import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.DefinitionClass;
-import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.OvalResults;
@@ -286,52 +284,6 @@ extends OvalServiceTestBase
         Reporter.log( "  * syncing object...", true );
         Definition  p_def = _store.sync( Definition.class, def );
         Reporter.log( "  @ synced: pid=" + p_def.getPersistentID(), true );
-    }
-
-
-
-    //==============================================================
-    //  state
-    //==============================================================
-
-    /**
-     */
-    @org.testng.annotations.Test( groups={"oval.service", "oval-def", "state"},
-                    dataProvider="oval-state",
-                    dependsOnGroups="object",
-                    alwaysRun=true
-                    )
-    public void processState(
-                    final EntityType type,
-                    final String filepath,
-                    final String id,
-                    final int version
-                    )
-    throws Exception
-    {
-        Reporter.log( "\n// TEST: OVAL - unmarshalling XML and syncing with store //", true );
-        Reporter.log( "  * object type: oval-def:state", true );
-
-        File  file = new File( filepath );
-        Reporter.log( "  * unmarshalling XML...", true );
-        Object  obj = _xml.unmarshal( new FileInputStream( file ) );
-        Reporter.log( "  @ unmarshalled object: " + obj, true );
-
-        Assert.assertNotNull( obj );
-        Assert.assertTrue( obj instanceof State );
-
-        State  state = State.class.cast( obj );
-        Assert.assertEquals( id, state.getOvalID() );
-        Assert.assertEquals( version, state.getOvalVersion() );
-        Assert.assertEquals( type, state.getEntityType() );
-
-        Reporter.log( "  * marshalling XML...", true );
-        String  xml = _xml.marshalToString( state );
-        Reporter.log( "  @ marshalled XML: " + xml, true );
-
-        Reporter.log( "  * syncing object...", true );
-        State  p_state = _store.sync( State.class, state );
-        Reporter.log( "  @ synced: pid=" + p_state.getPersistentID(), true );
     }
 
 

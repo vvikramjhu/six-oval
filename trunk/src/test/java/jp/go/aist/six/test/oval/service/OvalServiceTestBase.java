@@ -3,7 +3,6 @@ package jp.go.aist.six.test.oval.service;
 import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
-import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.DefinitionClass;
 import jp.go.aist.six.oval.model.results.Result;
 import jp.go.aist.six.util.search.LikeBinding;
@@ -229,84 +228,6 @@ public abstract class OvalServiceTestBase
                             DefinitionClass.PATCH
                         }
         };
-    }
-
-
-
-    //==============================================================
-    //  state
-    //==============================================================
-
-    /**
-     */
-    @DataProvider( name="oval-state" )
-    public Object[][] ovalStateProvider()
-    {
-        return new Object[][] {
-                        {
-                            EntityType.INDEPENDENT_FAMILY,
-                            "test/data/definition/sample_oval-state-family.xml",
-                            "oval:org.mitre.oval:ste:99",
-                            2
-                        }
-                        ,
-                        {
-                            EntityType.INDEPENDENT_TEXTFILECONTENT,
-                            "test/data/definition/sample_oval-state-textfilecontent.xml",
-                            "oval:org.mitre.oval:ste:5132",
-                            1
-                        }
-                        ,
-                        {
-                            EntityType.WINDOWS_FILE,
-                            "test/data/definition/sample_oval-state-file.xml",
-                            "oval:org.mitre.oval:ste:2190",
-                            1
-                        }
-                        ,
-                        {
-                            EntityType.WINDOWS_METABASE,
-                            "test/data/definition/sample_oval-state-metabase.xml",
-                            "oval:org.mitre.oval:ste:537",
-                            1
-                        }
-                        ,
-                        {
-                            EntityType.WINDOWS_REGISTRY,
-                            "test/data/definition/sample_oval-state-registry.xml",
-                            "oval:org.mitre.oval:ste:1205",
-                            1
-                        }
-                        ,
-                        {
-                            EntityType.LINUX_DPKGINFO,
-                            "test/data/definition/sample_oval-state-dpkginfo.xml",
-                            "oval:org.mitre.oval:ste:5797",
-                            1
-                        }
-                        ,
-                        {
-                            EntityType.LINUX_RPMINFO,
-                            "test/data/definition/sample_oval-state-rpminfo-evr.xml",
-                            "oval:com.redhat.rhsa:ste:20100061004",
-                            301
-                        }
-                        ,
-                        {
-                            EntityType.LINUX_RPMINFO,
-                            "test/data/definition/sample_oval-state-rpminfo-version.xml",
-                            "oval:com.redhat.rhsa:ste:20100061003",
-                            301
-                        }
-                        ,
-                        {
-                            EntityType.LINUX_RPMINFO,
-                            "test/data/definition/sample_oval-state-rpminfo-signature_keyid.xml",
-                            "oval:com.redhat.rhsa:ste:20100061002",
-                            301
-                        }
-        };
-
     }
 
 
