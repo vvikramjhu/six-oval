@@ -68,13 +68,20 @@ public class FamilyState
     }
 
 
-    /**
-     */
     public void setFamily(
                     final EntityStateFamily family
                     )
     {
         _family = family;
+    }
+
+
+    public FamilyState family(
+                    final EntityStateFamily family
+                    )
+    {
+        setFamily( family );
+        return this;
     }
 
 
@@ -136,7 +143,9 @@ public class FamilyState
     @Override
     public String toString()
     {
-        return "FamilyState[" + super.toString() + "]";
+        return "FamilyState[" + super.toString()
+                        + ", family=" + getFamily()
+                        + "]";
     }
 
 }

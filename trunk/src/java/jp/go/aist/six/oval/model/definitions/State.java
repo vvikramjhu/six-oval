@@ -78,11 +78,20 @@ public abstract class State
 
 
 
-    public void setOperator(
+    public State operator(
                   final Operator operator
                   )
     {
-      _operator = operator;
+        setOperator( operator );
+        return this;
+    }
+
+
+    public void setOperator(
+                    final Operator operator
+                    )
+    {
+        _operator = operator;
     }
 
 

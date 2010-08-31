@@ -3,8 +3,13 @@ package jp.go.aist.six.test.oval.core.store;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
+import jp.go.aist.six.oval.model.common.Family;
+import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.common.Operator;
+import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.independent.EntityStateFamily;
+import jp.go.aist.six.oval.model.independent.FamilyState;
 import jp.go.aist.six.oval.model.independent.FamilyTest;
 import jp.go.aist.six.oval.model.independent.TextFileContentTest;
 import jp.go.aist.six.oval.model.independent.UnknownTest;
@@ -85,6 +90,120 @@ public class StoreDefinitionsTest
 
         Reporter.log( "  @ get: object=" + persistent2, true );
         Assert.assertEquals( persistent2, object );
+    }
+
+
+
+    //==============================================================
+    //  state
+    //==============================================================
+
+    @DataProvider( name="definitions.state" )
+    public Object[][] provideDefinitionsState()
+    {
+        EntityStateFamily  stateFamily = new EntityStateFamily( Family.WINDOWS );
+        stateFamily.setOperation( Operation.CASE_INSENSITIVE_EQUALS );
+
+        return new Object[][] {
+                        {
+                            State.class,
+                            "test/data/definitions/state-family_oval-ste-99_2.xml",
+                            "oval_definitions/states/independent:family_state",
+                            new FamilyState( "oval:org.mitre.oval:ste:99",
+                                            2 )
+                                .family( stateFamily )
+                                .comment( "the installed operating system is part of the Microsoft Windows family")
+                        }
+//                        {
+//                            EntityType.INDEPENDENT_FAMILY,
+//                            "test/data/definition/sample_oval-state-family.xml",
+//                            "oval:org.mitre.oval:ste:99",
+//                            2
+//                        }
+//                        ,
+//                        {
+//                            EntityType.INDEPENDENT_TEXTFILECONTENT,
+//                            "test/data/definition/sample_oval-state-textfilecontent.xml",
+//                            "oval:org.mitre.oval:ste:5132",
+//                            1
+//                        }
+//                        ,
+//                        {
+//                            EntityType.WINDOWS_FILE,
+//                            "test/data/definition/sample_oval-state-file.xml",
+//                            "oval:org.mitre.oval:ste:2190",
+//                            1
+//                        }
+//                        ,
+//                        {
+//                            EntityType.WINDOWS_METABASE,
+//                            "test/data/definition/sample_oval-state-metabase.xml",
+//                            "oval:org.mitre.oval:ste:537",
+//                            1
+//                        }
+//                        ,
+//                        {
+//                            EntityType.WINDOWS_REGISTRY,
+//                            "test/data/definition/sample_oval-state-registry.xml",
+//                            "oval:org.mitre.oval:ste:1205",
+//                            1
+//                        }
+//                        ,
+//                        {
+//                            EntityType.LINUX_DPKGINFO,
+//                            "test/data/definition/sample_oval-state-dpkginfo.xml",
+//                            "oval:org.mitre.oval:ste:5797",
+//                            1
+//                        }
+//                        ,
+//                        {
+//                            EntityType.LINUX_RPMINFO,
+//                            "test/data/definition/sample_oval-state-rpminfo-evr.xml",
+//                            "oval:com.redhat.rhsa:ste:20100061004",
+//                            301
+//                        }
+//                        ,
+//                        {
+//                            EntityType.LINUX_RPMINFO,
+//                            "test/data/definition/sample_oval-state-rpminfo-version.xml",
+//                            "oval:com.redhat.rhsa:ste:20100061003",
+//                            301
+//                        }
+//                        ,
+//                        {
+//                            EntityType.LINUX_RPMINFO,
+//                            "test/data/definition/sample_oval-state-rpminfo-signature_keyid.xml",
+//                            "oval:com.redhat.rhsa:ste:20100061002",
+//                            301
+//                        }
+        };
+
+    }
+
+
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={"oval.core.store", "definitions.state"},
+                    dataProvider="definitions.state",
+                    alwaysRun=true
+                    )
+    public <T extends State> void testDefinitionsState(
+                    final Class<T> type,
+                    final String filepath,
+                    final String xpath,
+                    final T expected
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n////////////////////////////////////////////////////////////////", true );
+        Reporter.log( "  * object type: " + type, true );
+
+        T  object = _readObjectFromXmlFile( type, filepath, xpath, expected );
+        Assert.assertNotNull( object );
+
+        _syncOvalEntity( type, object );
     }
 
 

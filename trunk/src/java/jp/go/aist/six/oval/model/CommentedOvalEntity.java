@@ -70,6 +70,15 @@ public abstract class CommentedOvalEntity
 
 
 
+    public CommentedOvalEntity comment(
+                    final String comment
+                    )
+    {
+        setComment( comment );
+        return this;
+    }
+
+
     public void setComment(
                     final String comment
                     )
