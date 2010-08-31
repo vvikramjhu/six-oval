@@ -97,7 +97,6 @@ public class MetabaseState
 
 
     /**
-     *
      */
     protected Map<Property,EntityStateBase> _getProperties()
     {
@@ -111,18 +110,23 @@ public class MetabaseState
     public EntityStateString getKey()
     {
         return (EntityStateString)_properties.get( Property.KEY );
-//        return _key;
     }
 
 
-    /**
-     */
     public void setKey(
                     final EntityStateString key
                     )
     {
         _properties.put( Property.KEY, key );
-//        _key = key;
+    }
+
+
+    public MetabaseState key(
+                    final EntityStateString key
+                    )
+    {
+        setKey( key );
+        return this;
     }
 
 
@@ -132,18 +136,23 @@ public class MetabaseState
     public EntityStateInt getID()
     {
         return (EntityStateInt)_properties.get( Property.ID );
-//        return _id;
     }
 
 
-    /**
-     */
     public void setID(
                     final EntityStateInt id
                     )
     {
         _properties.put( Property.ID, id );
-//        _id = id;
+    }
+
+
+    public MetabaseState ID(
+                    final EntityStateInt id
+                    )
+    {
+        setID( id );
+        return this;
     }
 
 
@@ -153,18 +162,23 @@ public class MetabaseState
     public EntityStateString getName()
     {
         return (EntityStateString)_properties.get( Property.NAME );
-//        return _name;
     }
 
 
-    /**
-     */
     public void setName(
                     final EntityStateString name
                     )
     {
         _properties.put( Property.NAME, name );
-//        _name = name;
+    }
+
+
+    public MetabaseState name(
+                    final EntityStateString name
+                    )
+    {
+        setName( name );
+        return this;
     }
 
 
@@ -174,18 +188,23 @@ public class MetabaseState
     public EntityStateString getUserType()
     {
         return (EntityStateString)_properties.get( Property.USER_TYPE );
-//        return _userType;
     }
 
 
-    /**
-     */
     public void setUserType(
                     final EntityStateString userType
                     )
     {
         _properties.put( Property.USER_TYPE, userType );
-//        _userType = userType;
+    }
+
+
+    public MetabaseState userType(
+                    final EntityStateString userType
+                    )
+    {
+        setUserType( userType );
+        return this;
     }
 
 
@@ -195,18 +214,23 @@ public class MetabaseState
     public EntityStateString getDataType()
     {
         return (EntityStateString)_properties.get( Property.DATA_TYPE );
-//        return _dataType;
     }
 
 
-    /**
-     */
     public void setDataType(
                     final EntityStateString dataType
                     )
     {
         _properties.put( Property.DATA_TYPE, dataType );
-//        _dataType = dataType;
+    }
+
+
+    public MetabaseState dataType(
+                    final EntityStateString dataType
+                    )
+    {
+        setDataType( dataType );
+        return this;
     }
 
 
@@ -216,18 +240,23 @@ public class MetabaseState
     public EntityStateAnySimple getData()
     {
         return (EntityStateAnySimple)_properties.get( Property.DATA );
-//        return _data;
     }
 
 
-    /**
-     */
     public void setData(
                     final EntityStateAnySimple data
                     )
     {
         _properties.put( Property.DATA, data );
-//        _data = data;
+    }
+
+
+    public MetabaseState data(
+                    final EntityStateAnySimple data
+                    )
+    {
+        setData( data );
+        return this;
     }
 
 

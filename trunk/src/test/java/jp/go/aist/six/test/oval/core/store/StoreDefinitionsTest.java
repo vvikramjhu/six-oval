@@ -22,6 +22,7 @@ import jp.go.aist.six.oval.model.linux.RpmInfoTest;
 import jp.go.aist.six.oval.model.unix.UnameTest;
 import jp.go.aist.six.oval.model.windows.FileState;
 import jp.go.aist.six.oval.model.windows.FileTest;
+import jp.go.aist.six.oval.model.windows.MetabaseState;
 import jp.go.aist.six.oval.model.windows.MetabaseTest;
 import jp.go.aist.six.oval.model.windows.RegistryTest;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
@@ -116,8 +117,11 @@ public class StoreDefinitionsTest
         fileVersion.setDatatype( Datatype.VERSION );
         fileVersion.setOperation( Operation.LESS_THAN );
 
+        EntityStateAnySimple  metabaseData = new EntityStateAnySimple( "^http:*,PERMANENT,*" );
+        metabaseData.setOperation( Operation.PATTERN_MATCH );
+
         return new Object[][] {
-                        // family
+                        // independent : family
                         {
                             State.class,
                             "test/data/definitions/state-family_oval-ste-99_2.xml",
@@ -128,7 +132,7 @@ public class StoreDefinitionsTest
                                 .comment( "the installed operating system is part of the Microsoft Windows family")
                         }
                         ,
-                        // textfilecontent
+                        // independent : textfilecontent
                         {
                             State.class,
                             "test/data/definitions/state-textfilecontent_oval-ste-5132_1.xml",
@@ -138,7 +142,7 @@ public class StoreDefinitionsTest
                                 .subExpression( subexpression )
                         }
                         ,
-                        // file
+                        // windows : file
                         {
                             State.class,
                             "test/data/definitions/state-file_oval-ste-2190_1.xml",
@@ -146,6 +150,16 @@ public class StoreDefinitionsTest
                             new FileState( "oval:org.mitre.oval:ste:2190",
                                             1 )
                                 .version( fileVersion )
+                        }
+                        ,
+                        // windows : metabase
+                        {
+                            State.class,
+                            "test/data/definitions/state-metabase_oval-ste-537_1.xml",
+                            "oval_definitions/states/windows:metabase_state",
+                            new MetabaseState( "oval:org.mitre.oval:ste:537",
+                                            1 )
+                                .data( metabaseData )
                         }
 //                        ,
 //                        {
