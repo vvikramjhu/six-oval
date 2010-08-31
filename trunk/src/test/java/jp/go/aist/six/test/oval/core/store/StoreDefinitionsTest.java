@@ -24,6 +24,7 @@ import jp.go.aist.six.oval.model.windows.FileState;
 import jp.go.aist.six.oval.model.windows.FileTest;
 import jp.go.aist.six.oval.model.windows.MetabaseState;
 import jp.go.aist.six.oval.model.windows.MetabaseTest;
+import jp.go.aist.six.oval.model.windows.RegistryState;
 import jp.go.aist.six.oval.model.windows.RegistryTest;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import org.testng.Assert;
@@ -120,6 +121,10 @@ public class StoreDefinitionsTest
         EntityStateAnySimple  metabaseData = new EntityStateAnySimple( "^http:*,PERMANENT,*" );
         metabaseData.setOperation( Operation.PATTERN_MATCH );
 
+        EntityStateAnySimple  registryValue = new EntityStateAnySimple( "1" );
+        registryValue.setOperation( Operation.EQUALS );
+        registryValue.setDatatype( Datatype.INT );
+
         return new Object[][] {
                         // independent : family
                         {
@@ -161,13 +166,16 @@ public class StoreDefinitionsTest
                                             1 )
                                 .data( metabaseData )
                         }
-//                        ,
-//                        {
-//                            EntityType.WINDOWS_METABASE,
-//                            "test/data/definition/sample_oval-state-metabase.xml",
-//                            "oval:org.mitre.oval:ste:537",
-//                            1
-//                        }
+                        ,
+                        // windows : registry
+                        {
+                            State.class,
+                            "test/data/definitions/state-registry_oval-ste-1205_1.xml",
+                            "oval_definitions/states/windows:registry_state",
+                            new RegistryState( "oval:org.mitre.oval:ste:1205",
+                                            1 )
+                                .value( registryValue )
+                        }
 //                        ,
 //                        {
 //                            EntityType.WINDOWS_REGISTRY,

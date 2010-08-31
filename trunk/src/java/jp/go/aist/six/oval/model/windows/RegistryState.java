@@ -106,16 +106,21 @@ public class RegistryState
                     )
     {
         _properties.put( Property.HIVE, hive  );
-//        _hive = hive;
     }
 
 
-    /**
-     */
+    public RegistryState hive(
+                    final EntityStateRegistryHive hive
+                    )
+    {
+        setHive( hive );
+        return this;
+    }
+
+
     public EntityStateRegistryHive getHive()
     {
         return (EntityStateRegistryHive)_properties.get( Property.HIVE );
-//        return _hive;
     }
 
 
@@ -127,14 +132,21 @@ public class RegistryState
                     )
     {
         _properties.put( Property.KEY, key );
-//        _key = key;
+    }
+
+
+    public RegistryState key(
+                    final EntityStateString key
+                    )
+    {
+        setKey( key );
+        return this;
     }
 
 
     public EntityStateString getKey()
     {
         return (EntityStateString)_properties.get( Property.KEY );
-//        return _key;
     }
 
 
@@ -146,14 +158,21 @@ public class RegistryState
                     )
     {
         _properties.put( Property.NAME, name );
-//        _name = name;
+    }
+
+
+    public RegistryState name(
+                    final EntityStateString name
+                    )
+    {
+        setName( name );
+        return this;
     }
 
 
     public EntityStateString getName()
     {
         return (EntityStateString)_properties.get( Property.NAME );
-//        return _name;
     }
 
 
@@ -165,7 +184,15 @@ public class RegistryState
                     )
     {
         _properties.put( Property.TYPE, type );
-//        _type = type;
+    }
+
+
+    public RegistryState type(
+                    final EntityStateRegistryType type
+                    )
+    {
+        setType( type );
+        return this;
     }
 
 
@@ -174,7 +201,6 @@ public class RegistryState
     public EntityStateRegistryType getType()
     {
         return (EntityStateRegistryType)_properties.get( Property.TYPE );
-//        return _type;
     }
 
 
@@ -186,14 +212,21 @@ public class RegistryState
                     )
     {
         _properties.put( Property.VALUE, value );
-//        _value = value;
+    }
+
+
+    public RegistryState value(
+                    final EntityStateAnySimple value
+                    )
+    {
+        setValue( value );
+        return this;
     }
 
 
     public EntityStateAnySimple getValue()
     {
         return (EntityStateAnySimple)_properties.get( Property.VALUE );
-//        return _value;
     }
 
 
@@ -222,21 +255,6 @@ public class RegistryState
 
         result = prime * result + _getProperties().hashCode();
 
-//        EntityStateRegistryHiveType  hive = getHive();
-//        result = prime * result + ((hive == null) ? 0 : hive.hashCode());
-//
-//        EntityStateStringType  key = getKey();
-//        result = prime * result + ((key == null) ? 0 : key.hashCode());
-//
-//        EntityStateStringType  name = getName();
-//        result = prime * result + ((name == null) ? 0 : name.hashCode());
-//
-//        EntityStateStringType  type = getType();
-//        result = prime * result + ((type == null) ? 0 : type.hashCode());
-//
-//        EntityStateAnySimpleType  value = getValue();
-//        result = prime * result + ((value == null) ? 0 : value.hashCode());
-
         return result;
     }
 
@@ -262,32 +280,6 @@ public class RegistryState
                             ||  (this_props != null  &&  this_props.equals( other_props ))) {
                 return true;
             }
-//            EntityStateRegistryHiveType  other_hive = other.getHive();
-//            EntityStateRegistryHiveType   this_hive =  this.getHive();
-//            if (this_hive == other_hive
-//                            ||  (this_hive != null  &&  this_hive.equals( other_hive ))) {
-//                EntityStateStringType  other_key = other.getKey();
-//                EntityStateStringType   this_key =  this.getKey();
-//                if (this_key == other_key
-//                                ||  (this_key != null  &&  this_key.equals( other_key ))) {
-//                    EntityStateStringType  other_name = other.getName();
-//                    EntityStateStringType   this_name =  this.getName();
-//                    if (this_name == other_name
-//                                    ||  (this_name != null  &&  this_name.equals( other_name ))) {
-//                        EntityStateRegistryType  other_type = other.getType();
-//                        EntityStateRegistryType   this_type =  this.getType();
-//                        if (this_type == other_type
-//                                        ||  (this_type != null  &&  this_type.equals( other_type ))) {
-//                            EntityStateAnySimpleType  other_value = other.getValue();
-//                            EntityStateAnySimpleType   this_value =  this.getValue();
-//                            if (this_value == other_value
-//                                            ||  (this_value != null  &&  this_value.equals( other_value ))) {
-//                                return true;
-//                            }
-//                        }
-//                    }
-//                }
-//            }
         }
 
         return false;
