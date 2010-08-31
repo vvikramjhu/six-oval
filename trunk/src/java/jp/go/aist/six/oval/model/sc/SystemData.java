@@ -67,6 +67,14 @@ public class SystemData
 
 
 
+    public void setItem(
+                    final Collection<? extends Item> items
+                    )
+    {
+        _setElement( items );
+    }
+
+
     public boolean addItem(
                     final Item item
                     )
