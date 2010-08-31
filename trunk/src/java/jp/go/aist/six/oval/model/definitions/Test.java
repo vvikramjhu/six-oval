@@ -114,6 +114,15 @@ public abstract class Test
 
 
 
+    public Test checkExistence(
+                    final Existence existence
+                    )
+    {
+        setCheckExistence( existence );
+        return this;
+    }
+
+
     public void setCheckExistence(
                     final Existence existence
                     )
@@ -127,6 +136,15 @@ public abstract class Test
         return (_checkExistence == null ? DEFAULT_CHECK_EXISTENCE : _checkExistence);
     }
 
+
+
+    public Test check(
+                    final Check check
+                    )
+    {
+        setCheck( check );
+        return this;
+    }
 
 
     public void setCheck(
@@ -146,6 +164,15 @@ public abstract class Test
 
     /**
      */
+    public Test stateOperator(
+                    final Operator stateOperator
+                    )
+    {
+        setStateOperator( stateOperator );
+        return this;
+    }
+
+
     public void setStateOperator(
                     final Operator stateOperator
                     )
@@ -163,6 +190,23 @@ public abstract class Test
 
 
 
+    public Test object(
+                    final SystemObjectRef objectRef
+                    )
+    {
+        setObject( objectRef );
+        return this;
+    }
+
+
+    public Test object(
+                    final String objectRef
+                    )
+    {
+        return object( new SystemObjectRef( objectRef ) );
+    }
+
+
     public void setObject(
                     final SystemObjectRef objectRef
                     )
@@ -178,6 +222,23 @@ public abstract class Test
 
 
 
+    public Test state(
+                    final StateRef stateRef
+                    )
+    {
+        addState( stateRef );
+        return this;
+    }
+
+
+    public Test state(
+                    final String stateRef
+                    )
+    {
+        return state( new StateRef( stateRef ) );
+    }
+
+
     public void setState(
                     final Collection<? extends StateRef> stateRefs
                     )
@@ -185,7 +246,9 @@ public abstract class Test
         if (stateRefs != _stateRef) {
             _stateRef.clear();
             if (stateRefs != null  &&  stateRefs.size() > 0) {
-                _stateRef.addAll( stateRefs );
+                for (StateRef  s : stateRefs) {
+                    addState( s );
+                }
             }
         }
     }

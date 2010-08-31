@@ -1,7 +1,12 @@
 package jp.go.aist.six.test.oval.core.store;
 
 import jp.go.aist.six.oval.model.OvalEntity;
+import jp.go.aist.six.oval.model.common.Check;
+import jp.go.aist.six.oval.model.common.Existence;
+import jp.go.aist.six.oval.model.common.Operator;
 import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.linux.RpmInfoTest;
+import jp.go.aist.six.oval.model.windows.FileTest;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -22,6 +27,7 @@ public class StoreDefinitionsTest
     public StoreDefinitionsTest()
     {
     }
+
 
 
     /**
@@ -54,23 +60,24 @@ public class StoreDefinitionsTest
      */
     protected <T extends OvalEntity> void _syncOvalEntity(
                     final Class<T> type,
-                    final T e
+                    final T object
                     )
     throws Exception
     {
-        Reporter.log( "sync OvalEntity: " + e.getOvalID(), true );
-        T  p = _getStore().sync( type, e );
+        Reporter.log( "sync OvalEntity: " + object.getOvalID(), true );
+        T  persistent = _getStore().sync( type, object );
         Reporter.log( "...sync done", true );
 
-        String  pid = p.getPersistentID();
-        Reporter.log( "  @ sync: pid=" + pid, true );
+        String  pid = persistent.getPersistentID();
+        Reporter.log( "  @ pid=" + pid, true );
 
         Reporter.log( "get object...", true );
-        T  p2 = _getStore().get( type, pid );
+        Reporter.log( "  - pid=" + pid, true );
+        T  persistent2 = _getStore().get( type, pid );
         Reporter.log( "...get done", true );
 
-        Reporter.log( "  @ get: object=" + p2, true );
-        Assert.assertEquals( p2, e );
+        Reporter.log( "  @ get: object=" + persistent2, true );
+        Assert.assertEquals( persistent2, object );
     }
 
 
@@ -181,7 +188,16 @@ public class StoreDefinitionsTest
                         {
                             Test.class,
                             "test/data/definitions/test_file_oval-tst-10629-1.xml",
-                            "oval_definitions/tests/rpminfo_test"
+                            "oval_definitions/tests/windows:file_test",
+                            new FileTest( "oval:org.mitre.oval:tst:10629",
+                                            1,
+                                            "Opera.exe version 9.x to 10.0.x",
+                                            Check.ALL )
+                                .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+                                .stateOperator( Operator.OR )
+                                .object( "oval:org.mitre.oval:obj:6638" )
+                                .state( "oval:org.mitre.oval:ste:4847" )
+                                .state( "oval:org.mitre.oval:ste:5298" )
                         }
                         ,
 
@@ -189,7 +205,13 @@ public class StoreDefinitionsTest
                         {
                             Test.class,
                             "test/data/definitions/test_rpminfo_rhsa-tst-20100061002-301.xml",
-                            "oval_definitions/tests/rpminfo_test"
+                            "oval_definitions/tests/linux:rpminfo_test",
+                            new RpmInfoTest( "oval:com.redhat.rhsa:tst:20100061002",
+                                            301,
+                                            "gzip is earlier than 0:1.3.5-11.el5_4.1",
+                                            Check.AT_LEAST_ONE )
+                                .object( "oval:com.redhat.rhsa:obj:20100061002" )
+                                .state( "oval:com.redhat.rhsa:ste:20100061004" )
                         }
 //                        {
 //                            "test/data/definition/sample_oval-test-rpminfo.xml",
@@ -232,17 +254,18 @@ public class StoreDefinitionsTest
     public <T extends Test> void testDefinitionsTest(
                     final Class<T> type,
                     final String filepath,
-                    final String xpath
+                    final String xpath,
+                    final T expected
                     )
     throws Exception
     {
         Reporter.log( "\n////////////////////////////////", true );
         Reporter.log( "  * object type: " + type, true );
 
-        T  obj = _readObjectFromXmlFile( type, filepath, xpath, null );
-        Assert.assertNotNull( obj );
+        T  object = _readObjectFromXmlFile( type, filepath, xpath, expected );
+        Assert.assertNotNull( object );
 
-        _syncOvalEntity( type, obj );
+        _syncOvalEntity( type, object );
     }
 
 }
