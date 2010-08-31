@@ -108,6 +108,15 @@ public class FileState
     }
 
 
+    public FileState filepath(
+                    final EntityStateString filepath
+                    )
+    {
+        setFilepath( filepath );
+        return this;
+    }
+
+
     public EntityStateString getFilepath()
     {
         return (EntityStateString)_properties.get( FileProperty.FILEPATH );
@@ -122,6 +131,15 @@ public class FileState
                     )
     {
         _properties.put( FileProperty.PATH, path );
+    }
+
+
+    public FileState path(
+                    final EntityStateString path
+                    )
+    {
+        setPath( path );
+        return this;
     }
 
 
@@ -142,6 +160,15 @@ public class FileState
     }
 
 
+    public FileState filename(
+                    final EntityStateString filename
+                    )
+    {
+        setFilename( filename );
+        return this;
+    }
+
+
     public EntityStateString getFilename()
     {
         return (EntityStateString)_properties.get( FileProperty.FILENAME );
@@ -156,6 +183,15 @@ public class FileState
                     )
     {
         _properties.put( FileProperty.OWNER, owner );
+    }
+
+
+    public FileState owner(
+                    final EntityStateString owner
+                    )
+    {
+        setOwner( owner );
+        return this;
     }
 
 
@@ -258,6 +294,15 @@ public class FileState
                     )
     {
         _properties.put( FileProperty.VERSION, version );
+    }
+
+
+    public FileState version(
+                    final EntityStateString version
+                    )
+    {
+        setVersion( version );
+        return this;
     }
 
 

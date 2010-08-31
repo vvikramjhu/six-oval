@@ -2,20 +2,25 @@ package jp.go.aist.six.test.oval.core.store;
 
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.common.Check;
+import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.common.Operator;
+import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
+import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.independent.EntityStateFamily;
 import jp.go.aist.six.oval.model.independent.FamilyState;
 import jp.go.aist.six.oval.model.independent.FamilyTest;
+import jp.go.aist.six.oval.model.independent.TextFileContentState;
 import jp.go.aist.six.oval.model.independent.TextFileContentTest;
 import jp.go.aist.six.oval.model.independent.UnknownTest;
 import jp.go.aist.six.oval.model.linux.DpkgInfoTest;
 import jp.go.aist.six.oval.model.linux.RpmInfoTest;
 import jp.go.aist.six.oval.model.unix.UnameTest;
+import jp.go.aist.six.oval.model.windows.FileState;
 import jp.go.aist.six.oval.model.windows.FileTest;
 import jp.go.aist.six.oval.model.windows.MetabaseTest;
 import jp.go.aist.six.oval.model.windows.RegistryTest;
@@ -104,7 +109,15 @@ public class StoreDefinitionsTest
         EntityStateFamily  stateFamily = new EntityStateFamily( Family.WINDOWS );
         stateFamily.setOperation( Operation.CASE_INSENSITIVE_EQUALS );
 
+        EntityStateAnySimple  subexpression = new EntityStateAnySimple( "\\brw\\b" );
+        subexpression.setOperation( Operation.PATTERN_MATCH );
+
+        EntityStateString  fileVersion = new EntityStateString( "6.0.2900.2873" );
+        fileVersion.setDatatype( Datatype.VERSION );
+        fileVersion.setOperation( Operation.LESS_THAN );
+
         return new Object[][] {
+                        // family
                         {
                             State.class,
                             "test/data/definitions/state-family_oval-ste-99_2.xml",
@@ -114,26 +127,26 @@ public class StoreDefinitionsTest
                                 .family( stateFamily )
                                 .comment( "the installed operating system is part of the Microsoft Windows family")
                         }
-//                        {
-//                            EntityType.INDEPENDENT_FAMILY,
-//                            "test/data/definition/sample_oval-state-family.xml",
-//                            "oval:org.mitre.oval:ste:99",
-//                            2
-//                        }
-//                        ,
-//                        {
-//                            EntityType.INDEPENDENT_TEXTFILECONTENT,
-//                            "test/data/definition/sample_oval-state-textfilecontent.xml",
-//                            "oval:org.mitre.oval:ste:5132",
-//                            1
-//                        }
-//                        ,
-//                        {
-//                            EntityType.WINDOWS_FILE,
-//                            "test/data/definition/sample_oval-state-file.xml",
-//                            "oval:org.mitre.oval:ste:2190",
-//                            1
-//                        }
+                        ,
+                        // textfilecontent
+                        {
+                            State.class,
+                            "test/data/definitions/state-textfilecontent_oval-ste-5132_1.xml",
+                            "oval_definitions/states/independent:textfilecontent_state",
+                            new TextFileContentState( "oval:org.mitre.oval:ste:5132",
+                                            1 )
+                                .subExpression( subexpression )
+                        }
+                        ,
+                        // file
+                        {
+                            State.class,
+                            "test/data/definitions/state-file_oval-ste-2190_1.xml",
+                            "oval_definitions/states/windows:file_state",
+                            new FileState( "oval:org.mitre.oval:ste:2190",
+                                            1 )
+                                .version( fileVersion )
+                        }
 //                        ,
 //                        {
 //                            EntityType.WINDOWS_METABASE,

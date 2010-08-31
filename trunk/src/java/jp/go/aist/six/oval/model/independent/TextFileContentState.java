@@ -40,7 +40,7 @@ public class TextFileContentState
     private EntityStateString  _path;
     //{0..1}
 
-    private EntityStateString  _fileName;
+    private EntityStateString  _filename;
     //{0..1}
 
     private EntityStateString  _line;
@@ -82,6 +82,15 @@ public class TextFileContentState
     }
 
 
+    public TextFileContentState path(
+                    final EntityStateString path
+                    )
+    {
+        setPath( path );
+        return this;
+    }
+
+
     public EntityStateString getPath()
     {
         return _path;
@@ -91,17 +100,26 @@ public class TextFileContentState
 
     /**
      */
-    public void setFileName(
+    public void setFilename(
                     final EntityStateString filename
                     )
     {
-        _fileName = filename;
+        _filename = filename;
     }
 
 
-    public EntityStateString getFileName()
+    public TextFileContentState filename(
+                    final EntityStateString filename
+                    )
     {
-        return _fileName;
+        setFilename( filename );
+        return this;
+    }
+
+
+    public EntityStateString getFilename()
+    {
+        return _filename;
     }
 
 
@@ -116,8 +134,15 @@ public class TextFileContentState
     }
 
 
-    /**
-     */
+    public TextFileContentState line(
+                    final EntityStateString line
+                    )
+    {
+        setLine( line );
+        return this;
+    }
+
+
     public EntityStateString getLine()
     {
         return _line;
@@ -132,6 +157,15 @@ public class TextFileContentState
                     )
     {
         _subExpression = subexpression;
+    }
+
+
+    public TextFileContentState subExpression(
+                    final EntityStateAnySimple subexpression
+                    )
+    {
+        setSubExpression( subexpression );
+        return this;
     }
 
 
@@ -167,7 +201,7 @@ public class TextFileContentState
         EntityStateString  path = getPath();
         result = prime * result + ((path == null) ? 0 : path.hashCode());
 
-        EntityStateString  filename = getFileName();
+        EntityStateString  filename = getFilename();
         result = prime * result + ((filename == null) ? 0 : filename.hashCode());
 
         EntityStateString  line = getLine();
@@ -196,8 +230,8 @@ public class TextFileContentState
             EntityStateString   this_path =  this.getPath();
             if (this_path == other_path
                             ||  (this_path != null  &&  this_path.equals( other_path ))) {
-                EntityStateString  other_filename = other.getFileName();
-                EntityStateString   this_filename =  this.getFileName();
+                EntityStateString  other_filename = other.getFilename();
+                EntityStateString   this_filename =  this.getFilename();
                 if (this_filename == other_filename
                                 ||  (this_filename != null  &&  this_filename.equals( other_filename ))) {
                     EntityStateString  other_line = other.getLine();
