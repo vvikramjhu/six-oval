@@ -36,7 +36,7 @@ import java.util.Set;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class Container<E>
+public abstract class ContainerBak<E>
     extends AbstractPersistable
     implements Set<E>
 {
@@ -48,7 +48,7 @@ public abstract class Container<E>
     /**
      * Constructor.
      */
-    public Container()
+    public ContainerBak()
     {
     }
 
@@ -56,7 +56,7 @@ public abstract class Container<E>
     /**
      * Constructor.
      */
-    public Container(
+    public ContainerBak(
                     final Collection<? extends E> elements
                     )
     {
@@ -67,7 +67,7 @@ public abstract class Container<E>
     /**
      * Constructor.
      */
-    public Container(
+    public ContainerBak(
                     final E[] elements
                     )
     {
@@ -263,12 +263,12 @@ public abstract class Container<E>
             return true;
         }
 
-        if (! Container.class.isInstance( obj )) {
+        if (! ContainerBak.class.isInstance( obj )) {
             return false;
         }
 
         @SuppressWarnings( "unchecked" )
-        Container<E>  other = (Container<E>)obj;
+        ContainerBak<E>  other = (ContainerBak<E>)obj;
         if (this.size() == other.size()) {
             return this._elements().equals( other._elements() );
         }

@@ -36,15 +36,15 @@ import java.util.Set;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalElementContainer<E extends OvalElement>
-    extends Container<E>
+public class OvalElementContainerBak<E extends OvalElement>
+    extends ContainerBak<E>
 //extends KeyedContainer<String, E>
 {
 
     /**
      * Constructor.
      */
-    public OvalElementContainer()
+    public OvalElementContainerBak()
     {
     }
 
@@ -52,7 +52,7 @@ public class OvalElementContainer<E extends OvalElement>
     /**
      * Constructor.
      */
-    public OvalElementContainer(
+    public OvalElementContainerBak(
                     final Collection<? extends E> elements
                     )
     {
@@ -63,7 +63,7 @@ public class OvalElementContainer<E extends OvalElement>
     /**
      * Constructor.
      */
-    public OvalElementContainer(
+    public OvalElementContainerBak(
                     final E[] elements
                     )
     {

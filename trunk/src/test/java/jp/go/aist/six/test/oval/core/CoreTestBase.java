@@ -4,7 +4,7 @@ import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.NameEntity;
-import jp.go.aist.six.oval.model.OvalElementContainer;
+import jp.go.aist.six.oval.model.OvalElementContainerBak;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.Family;
@@ -219,8 +219,8 @@ public abstract class CoreTestBase
 
 
     protected void _validate(
-                    final OvalElementContainer<?> actual,
-                    final OvalElementContainer<?> expected
+                    final OvalElementContainerBak<?> actual,
+                    final OvalElementContainerBak<?> expected
                     )
     {
         Assert.assertEquals( actual, expected );
