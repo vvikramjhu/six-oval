@@ -19,6 +19,7 @@ import jp.go.aist.six.oval.model.independent.TextFileContentTest;
 import jp.go.aist.six.oval.model.independent.UnknownTest;
 import jp.go.aist.six.oval.model.linux.DpkgInfoState;
 import jp.go.aist.six.oval.model.linux.DpkgInfoTest;
+import jp.go.aist.six.oval.model.linux.RpmInfoState;
 import jp.go.aist.six.oval.model.linux.RpmInfoTest;
 import jp.go.aist.six.oval.model.unix.UnameTest;
 import jp.go.aist.six.oval.model.windows.FileState;
@@ -130,6 +131,16 @@ public class StoreDefinitionsTest
         dpkginfoEvr.setDatatype( Datatype.EVR_STRING );
         dpkginfoEvr.setOperation( Operation.LESS_THAN );
 
+        EntityStateString  rpminfoEvr = new EntityStateString( "0:1.3.5-11.el5_4.1" );
+        rpminfoEvr.setDatatype( Datatype.EVR_STRING );
+        rpminfoEvr.setOperation( Operation.LESS_THAN );
+
+        EntityStateString  rpminfoVersion = new EntityStateString( "^5[^[:digit:]]" );
+        rpminfoVersion.setOperation( Operation.PATTERN_MATCH );
+
+        EntityStateString  rpminfoSignatureKeyID = new EntityStateString( "5326810137017186" );
+        rpminfoSignatureKeyID.setOperation( Operation.EQUALS );
+
         return new Object[][] {
                         // independent : family
                         {
@@ -191,34 +202,36 @@ public class StoreDefinitionsTest
                                             1 )
                                 .evr( dpkginfoEvr )
                         }
-//                        ,
-//                        {
-//                            EntityType.LINUX_DPKGINFO,
-//                            "test/data/definition/sample_oval-state-dpkginfo.xml",
-//                            "oval:org.mitre.oval:ste:5797",
-//                            1
-//                        }
-//                        ,
-//                        {
-//                            EntityType.LINUX_RPMINFO,
-//                            "test/data/definition/sample_oval-state-rpminfo-evr.xml",
-//                            "oval:com.redhat.rhsa:ste:20100061004",
-//                            301
-//                        }
-//                        ,
-//                        {
-//                            EntityType.LINUX_RPMINFO,
-//                            "test/data/definition/sample_oval-state-rpminfo-version.xml",
-//                            "oval:com.redhat.rhsa:ste:20100061003",
-//                            301
-//                        }
-//                        ,
-//                        {
-//                            EntityType.LINUX_RPMINFO,
-//                            "test/data/definition/sample_oval-state-rpminfo-signature_keyid.xml",
-//                            "oval:com.redhat.rhsa:ste:20100061002",
-//                            301
-//                        }
+                        ,
+                        // linux : rpminfo/evr
+                        {
+                            State.class,
+                            "test/data/definitions/state-rpminfo_rhsa-ste-20100061004_301.xml",
+                            "oval_definitions/states/linux:rpminfo_state",
+                            new RpmInfoState( "oval:com.redhat.rhsa:ste:20100061004",
+                                            301 )
+                                .evr( rpminfoEvr )
+                        }
+                        ,
+                        // linux : rpminfo/version
+                        {
+                            State.class,
+                            "test/data/definitions/state-rpminfo_rhsa-ste-20100061003_301.xml",
+                            "oval_definitions/states/linux:rpminfo_state",
+                            new RpmInfoState( "oval:com.redhat.rhsa:ste:20100061003",
+                                            301 )
+                                .version( rpminfoVersion )
+                        }
+                        ,
+                        // linux : rpminfo/signature_keyid
+                        {
+                            State.class,
+                            "test/data/definitions/state-rpminfo_rhsa-ste-20100061002_301.xml",
+                            "oval_definitions/states/linux:rpminfo_state",
+                            new RpmInfoState( "oval:com.redhat.rhsa:ste:20100061002",
+                                            301 )
+                                .signatureKeyID( rpminfoSignatureKeyID )
+                        }
         };
 
     }

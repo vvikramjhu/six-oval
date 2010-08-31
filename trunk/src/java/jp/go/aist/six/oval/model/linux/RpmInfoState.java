@@ -60,12 +60,42 @@ public class RpmInfoState
 
 
 
+    public RpmInfoState version(
+                    final EntityStateString version
+                    )
+    {
+        setVersion( version );
+        return this;
+    }
+
+
+
+    public RpmInfoState evr(
+                    final EntityStateString evr
+                    )
+    {
+        setEvr( evr );
+        return this;
+    }
+
+
+
     public void setSignatureKeyID(
                     final EntityStateString keyid
                     )
     {
         _signatureKeyID = keyid;
     }
+
+
+    public RpmInfoState signatureKeyID(
+                    final EntityStateString keyid
+                    )
+    {
+        setSignatureKeyID( keyid );
+        return this;
+    }
+
 
 
     public EntityStateString getSignatureKeyID()
