@@ -77,7 +77,7 @@ public class NetInterfaces
                     final NetInterface netif
                     )
     {
-        return _addElement( netif );
+        return add( netif );
     }
 
 

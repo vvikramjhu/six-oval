@@ -71,7 +71,7 @@ public class SystemResults
                     final SystemResult system
                     )
     {
-        return _addElement( system );
+        return add( system );
     }
 
 

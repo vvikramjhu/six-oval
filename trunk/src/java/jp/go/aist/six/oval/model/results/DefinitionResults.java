@@ -72,7 +72,7 @@ public class DefinitionResults
                     final DefinitionResult definition
                     )
     {
-        return _addElement( definition );
+        return add( definition );
     }
 
 

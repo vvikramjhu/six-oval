@@ -77,7 +77,7 @@ public class Tests
                     final Test e
                     )
     {
-        return _addElement( e );
+        return add( e );
     }
 
 

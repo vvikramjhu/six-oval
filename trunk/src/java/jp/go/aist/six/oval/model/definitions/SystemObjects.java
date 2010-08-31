@@ -77,7 +77,7 @@ public class SystemObjects
                     final SystemObject e
                     )
     {
-        return _addElement( e );
+        return add( e );
     }
 
 

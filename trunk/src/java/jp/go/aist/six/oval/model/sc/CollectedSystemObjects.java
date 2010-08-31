@@ -77,7 +77,7 @@ public class CollectedSystemObjects
                     final CollectedSystemObject object
                     )
     {
-        return _addElement( object );
+        return add( object );
     }
 
 

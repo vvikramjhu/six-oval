@@ -77,7 +77,7 @@ public class Definitions
                     final Definition definition
                     )
     {
-        return _addElement( definition );
+        return add( definition );
     }
 
 

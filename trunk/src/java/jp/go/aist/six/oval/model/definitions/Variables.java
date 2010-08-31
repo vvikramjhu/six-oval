@@ -77,7 +77,7 @@ public class Variables
                     final Variable variable
                     )
     {
-        return _addElement( variable );
+        return add( variable );
     }
 
 

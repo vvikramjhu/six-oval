@@ -77,7 +77,7 @@ public class States
                     final State state
                     )
     {
-        return _addElement( state );
+        return add( state );
     }
 
 

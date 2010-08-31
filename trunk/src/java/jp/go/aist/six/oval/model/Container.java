@@ -36,7 +36,7 @@ import java.util.Set;
  * @version $Id$
  */
 public abstract class Container<E>
-    implements Iterable<E>
+    implements Set<E>
 {
 
     private final Set<E>  _elements = new HashSet<E>();
@@ -74,19 +74,6 @@ public abstract class Container<E>
 
 
 
-    protected boolean _addElement(
-                    final E e
-                    )
-    {
-        if (e == null) {
-            throw new NullPointerException( "add: null argument" );
-        }
-
-        return _elements.add( e );
-    }
-
-
-
     /**
      */
     protected Set<E> _getElement()
@@ -105,12 +92,138 @@ public abstract class Container<E>
         if (c != _elements) {
             _elements.clear();
             if (c != null  &&  c.size() > 0) {
-                for (E  e : c) {
-                    _addElement( e );
-                }
-//              _elements.addAll( c );
+                addAll( c );
             }
         }
+    }
+
+
+
+    //**************************************************************
+    //  Set
+    //**************************************************************
+
+    public int size()
+    {
+        return _elements.size();
+    }
+
+
+
+    public boolean isEmpty()
+    {
+        return _elements.isEmpty();
+    }
+
+
+
+    public boolean contains(
+                    final Object o
+                    )
+    {
+        if (o == null) {
+            throw new NullPointerException( "contains: null argument" );
+        }
+
+        return _elements.contains( o );
+    }
+
+
+
+    public Object[] toArray()
+    {
+        return _elements.toArray();
+    }
+
+
+
+    public <T> T[] toArray(
+                    final T[] a
+                    )
+    {
+        return _elements.toArray( a );
+    }
+
+
+
+    public boolean add(
+                    final E e
+                    )
+    {
+        if (e == null) {
+            throw new NullPointerException( "add: null argument" );
+        }
+
+        return _elements.add( e );
+    }
+
+
+
+    public boolean remove(
+                    final Object o
+                    )
+    {
+        if (o == null) {
+            throw new NullPointerException( "remove: null argument" );
+        }
+
+        return _elements.remove( o );
+    }
+
+
+
+    public boolean containsAll(
+                    final Collection<?> c
+                    )
+    {
+        if (c == null) {
+            throw new NullPointerException( "containsAll: null argument collection" );
+        }
+
+        return _elements.containsAll( c );
+    }
+
+
+
+    public boolean addAll(
+                    final Collection<? extends E> c
+                    )
+    {
+        if (c == null) {
+            throw new NullPointerException( "addAll: null argument collection" );
+        }
+
+        if (c == _elements) {
+            return false;
+        }
+
+        return _elements.addAll( c );
+    }
+
+
+
+    public boolean removeAll(
+                    final Collection<?> c
+                    )
+    {
+        if (c == null) {
+            throw new NullPointerException( "removeAll: null argument collection" );
+        }
+
+        return _elements.removeAll( c );
+    }
+
+
+
+    public boolean retainAll(
+                    final Collection<?> c
+                    )
+    {
+        if (c == null) {
+            throw new NullPointerException( "retainAll: null argument collection" );
+        }
+
+        return _elements.retainAll( c );
     }
 
 
@@ -118,12 +231,6 @@ public abstract class Container<E>
     public void clear()
     {
         _elements.clear();
-    }
-
-
-    public int size()
-    {
-        return _elements.size();
     }
 
 
@@ -182,4 +289,4 @@ public abstract class Container<E>
     }
 
 }
-// SetContainer
+// Container
