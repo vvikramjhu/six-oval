@@ -31,7 +31,7 @@
 -->
 
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.store.DefnitionsTest"/>
+            <class name="jp.go.aist.six.test.oval.core.store.StoreDefinitionsTest"/>
         </classes>
     </test>
 

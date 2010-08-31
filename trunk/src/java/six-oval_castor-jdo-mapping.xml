@@ -465,9 +465,9 @@
 
 
 
-    <!-- ******************************************************* -->
+    <!-- ======================================================= -->
     <!-- Test                                                    -->
-    <!-- ******************************************************* -->
+    <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
 
@@ -514,9 +514,6 @@
             <sql name="entity_type" type="char"/>
         </field>
 
-        <!-- The object and state reference fields are defined in the subclass mappings.
-        -->
-
         <field name="object.objectRef" type="string">
             <sql name="object_ref" type="char"/>
         </field>
@@ -530,9 +527,9 @@
 
 
 
-    <!-- ******************************************************* -->
+    <!-- ======================================================= -->
     <!-- StateRef                                                -->
-    <!-- ******************************************************* -->
+    <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definitions.StateRef"
         depends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID"

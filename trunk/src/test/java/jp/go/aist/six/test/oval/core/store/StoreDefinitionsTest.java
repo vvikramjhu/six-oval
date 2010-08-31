@@ -13,13 +13,13 @@ import org.testng.annotations.DataProvider;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefnitionsTest
+public class StoreDefinitionsTest
     extends CoreTestBase
 {
 
     /**
      */
-    public DefnitionsTest()
+    public StoreDefinitionsTest()
     {
     }
 
@@ -176,7 +176,16 @@ public class DefnitionsTest
 //                            "oval:org.mitre.oval:ste:2190"
 //                        },
 //
-//                        // linux : RpmInfo test
+
+                        // windows : File test, 2 states
+                        {
+                            Test.class,
+                            "test/data/definitions/test_file_oval-tst-10629-1.xml",
+                            "oval_definitions/tests/rpminfo_test"
+                        }
+                        ,
+
+                        // linux : RpmInfo test
                         {
                             Test.class,
                             "test/data/definitions/test_rpminfo_rhsa-tst-20100061002-301.xml",
