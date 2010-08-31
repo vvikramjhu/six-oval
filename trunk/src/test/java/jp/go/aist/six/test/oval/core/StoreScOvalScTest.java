@@ -74,7 +74,7 @@ public class StoreScOvalScTest
         Reporter.log( "\n// TEST: OVAL Store //", true );
         Reporter.log( "  * target type: " + testTarget, true );
 
-        OvalSystemCharacteristics  sc = _unmarshalFile( filepath, OvalSystemCharacteristics.class );
+        OvalSystemCharacteristics  sc = _unmarshalFromFile( filepath, OvalSystemCharacteristics.class );
 
         Reporter.log( "validating...", true );
         _validate( sc.getGenerator(), generator );

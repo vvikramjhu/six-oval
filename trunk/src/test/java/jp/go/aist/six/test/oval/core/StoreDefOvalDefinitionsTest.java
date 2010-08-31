@@ -188,7 +188,7 @@ public class StoreDefOvalDefinitionsTest
         Reporter.log( "\n// TEST: OVAL Store //", true );
         Reporter.log( "  * target type: " + testTarget, true );
 
-        OvalDefinitions  ovalDefs = _unmarshalFile( filepath, OvalDefinitions.class );
+        OvalDefinitions  ovalDefs = _unmarshalFromFile( filepath, OvalDefinitions.class );
 
         Reporter.log( "validating...", true );
         _validate( ovalDefs.getGenerator(), generator );

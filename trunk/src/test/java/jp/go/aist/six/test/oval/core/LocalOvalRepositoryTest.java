@@ -119,7 +119,7 @@ public class LocalOvalRepositoryTest
     {
         Reporter.log( "\n// TEST: OVAL - OvalRepository //", true );
 
-        OvalResults  ovalResults = _unmarshalFile( filepath, OvalResults.class );
+        OvalResults  ovalResults = _unmarshalFromFile( filepath, OvalResults.class );
 
         Reporter.log( "creating OvalResults...", true );
         String  pid = _repository.createOvalResults( ovalResults );
@@ -291,7 +291,7 @@ public class LocalOvalRepositoryTest
         Reporter.log( "\n// TEST: OVAL - OvalRepository //", true );
 
         Reporter.log( "unmarshalling XML...", true );
-        OvalDefinitions  ovalDefs = _unmarshalFile( filepath, OvalDefinitions.class );
+        OvalDefinitions  ovalDefs = _unmarshalFromFile( filepath, OvalDefinitions.class );
         Reporter.log( "...unmarshal OK", true );
 
         Collection<String>  defIDCollection = Arrays.asList( defIDs );

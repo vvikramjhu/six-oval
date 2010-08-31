@@ -61,7 +61,7 @@ public class OvalXmlTest
         Reporter.log( "  * tested XPath: " + testedXPath, true );
         Reporter.log( "  * tested XML file: " + sourceFilepath, true );
 
-        Object  actual = _unmarshalFile( sourceFilepath, type );
+        Object  actual = _unmarshalFromFile( sourceFilepath, type );
 
         if (expected != null) {
             Reporter.log( "validating...", true );
@@ -332,7 +332,7 @@ public class OvalXmlTest
         Reporter.log( "  * tested XPath: " + testedXPath, true );
         Reporter.log( "  * tested XML file: " + filepath, true );
 
-        Object  actual = _unmarshalFile( filepath, type );
+        Object  actual = _unmarshalFromFile( filepath, type );
 
         if (expected != null) {
             Reporter.log( "validating...", true );

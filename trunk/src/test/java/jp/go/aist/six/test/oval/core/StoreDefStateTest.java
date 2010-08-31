@@ -108,7 +108,7 @@ public class StoreDefStateTest
         Reporter.log( "\n// TEST: OVAL Store //", true );
         Reporter.log( "  * object type: " + type, true );
 
-        State  obj = _unmarshalFile( filepath, State.class );
+        State  obj = _unmarshalFromFile( filepath, State.class );
 
         Assert.assertEquals( obj.getOvalID(), id );
         Assert.assertEquals( obj.getOvalVersion(), version );

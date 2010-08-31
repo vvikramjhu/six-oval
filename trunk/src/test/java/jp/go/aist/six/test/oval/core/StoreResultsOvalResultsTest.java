@@ -55,7 +55,7 @@ public class StoreResultsOvalResultsTest
         Reporter.log( "\n// TEST: OVAL Store //", true );
         Reporter.log( "  * target type: " + testTarget, true );
 
-        OvalResults  or = _unmarshalFile( filepath, OvalResults.class );
+        OvalResults  or = _unmarshalFromFile( filepath, OvalResults.class );
 
         Reporter.log( "validating...", true );
         _validate( or.getGenerator(), generator );

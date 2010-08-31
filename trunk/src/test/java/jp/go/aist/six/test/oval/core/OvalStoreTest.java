@@ -83,7 +83,7 @@ public class OvalStoreTest
         Reporter.log( "\n// TEST: OVAL XML //", true );
         Reporter.log( "  * target type: " + testTarget, true );
 
-        OvalSystemCharacteristics  sc = _unmarshalFile( filepath, OvalSystemCharacteristics.class );
+        OvalSystemCharacteristics  sc = _unmarshalFromFile( filepath, OvalSystemCharacteristics.class );
 
         Reporter.log( "validating...", true );
         _validate( sc.getGenerator(), generator );
@@ -127,7 +127,7 @@ public class OvalStoreTest
         Reporter.log( "\n// TEST: OVAL - Store //", true );
         Reporter.log( "  * object type: " + type, true );
 
-        SystemObject  obj = _unmarshalFile( filepath, SystemObject.class );
+        SystemObject  obj = _unmarshalFromFile( filepath, SystemObject.class );
 
         Assert.assertEquals( obj.getOvalID(), id );
         Assert.assertEquals( obj.getOvalVersion(), version );
@@ -167,7 +167,7 @@ public class OvalStoreTest
         Reporter.log( "\n// TEST: OVAL Store //", true );
         Reporter.log( "  * target type: " + testTarget, true );
 
-        OvalDefinitions  ovalDefs = _unmarshalFile( filepath, OvalDefinitions.class );
+        OvalDefinitions  ovalDefs = _unmarshalFromFile( filepath, OvalDefinitions.class );
 
         Reporter.log( "validating...", true );
         _validate( ovalDefs.getGenerator(), generator );

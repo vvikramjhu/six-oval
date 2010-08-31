@@ -75,6 +75,9 @@ public abstract class CoreTestBase
 
     private OvalContext  _context = null;
 
+    private OvalXml  _xml = null;
+    private OvalStore  _store = null;
+
 
 
     /**
@@ -91,34 +94,36 @@ public abstract class CoreTestBase
     public void setUp()
     throws Exception
     {
-        if (_context == null) {
-            _context = new OvalContext();
-        }
+        _context = new OvalContext();
     }
 
 
     protected OvalXml _getXml()
     throws Exception
     {
-        return _context.getXml();
+        if (_xml == null) {
+            _xml = _context.getXml();
+        }
+
+        return _xml;
     }
 
 
     protected OvalStore _getStore()
     throws Exception
     {
-        if (_context == null) {
-            setUp();
+        if (_store == null) {
+            _store = _context.getStore();
         }
 
-        return _context.getStore();
+        return _store;
     }
 
 
 
     /**
      */
-    protected <T> T _unmarshalFile(
+    protected <T> T _unmarshalFromFile(
                     final String filepath,
                     final Class<T> type
                     )

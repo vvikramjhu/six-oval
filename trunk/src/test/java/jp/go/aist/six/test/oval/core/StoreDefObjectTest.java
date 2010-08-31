@@ -119,7 +119,7 @@ public class StoreDefObjectTest
         Reporter.log( "\n// TEST: OVAL - Store //", true );
         Reporter.log( "  * object type: " + type, true );
 
-        SystemObject  obj = _unmarshalFile( filepath, SystemObject.class );
+        SystemObject  obj = _unmarshalFromFile( filepath, SystemObject.class );
 
         Assert.assertEquals( obj.getOvalID(), id );
         Assert.assertEquals( obj.getOvalVersion(), version );

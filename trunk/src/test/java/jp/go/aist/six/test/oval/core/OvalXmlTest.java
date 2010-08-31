@@ -61,7 +61,7 @@ public class OvalXmlTest
         Reporter.log( "\n// TEST: OVAL XML //", true );
         Reporter.log( "  * target type: " + testTarget, true );
 
-        OvalDefinitions  ovalDefs = _unmarshalFile( filepath, OvalDefinitions.class );
+        OvalDefinitions  ovalDefs = _unmarshalFromFile( filepath, OvalDefinitions.class );
         for (Definition  def : ovalDefs.getDefinitions()) {
             Reporter.log( "  * definition: " + def, true );
         }
@@ -97,7 +97,7 @@ public class OvalXmlTest
         Reporter.log( "\n// TEST: OVAL XML //", true );
         Reporter.log( "  * target type: " + testTarget, true );
 
-        OvalSystemCharacteristics  sc = _unmarshalFile( filepath, OvalSystemCharacteristics.class );
+        OvalSystemCharacteristics  sc = _unmarshalFromFile( filepath, OvalSystemCharacteristics.class );
 
         Reporter.log( "validating...", true );
         _validate( sc.getGenerator(), generator );
@@ -128,7 +128,7 @@ public class OvalXmlTest
         Reporter.log( "\n// TEST: OVAL XML //", true );
         Reporter.log( "  * target type: " + testTarget, true );
 
-        SystemInfo  a_systemInfo = _unmarshalFile( filepath, SystemInfo.class );
+        SystemInfo  a_systemInfo = _unmarshalFromFile( filepath, SystemInfo.class );
 
         Reporter.log( "validating...", true );
         _validate( a_systemInfo, systemInfo);
@@ -158,7 +158,7 @@ public class OvalXmlTest
         Reporter.log( "\n// TEST: OVAL XML //", true );
         Reporter.log( "  * target type: " + testTarget, true );
 
-        CollectedSystemObjects  actual = _unmarshalFile( filepath, CollectedSystemObjects.class );
+        CollectedSystemObjects  actual = _unmarshalFromFile( filepath, CollectedSystemObjects.class );
 
         Reporter.log( "validating...", true );
         _validate( actual, expected );
@@ -188,7 +188,7 @@ public class OvalXmlTest
         Reporter.log( "\n// TEST: OVAL XML //", true );
         Reporter.log( "  * target type: " + testTarget, true );
 
-        SystemData  a_systemData = _unmarshalFile( filepath, SystemData.class );
+        SystemData  a_systemData = _unmarshalFromFile( filepath, SystemData.class );
 
         Reporter.log( "validating...", true );
         _validate( a_systemData, systemData );
@@ -218,7 +218,7 @@ public class OvalXmlTest
         Reporter.log( "\n// TEST: OVAL XML //", true );
         Reporter.log( "  * target type: " + testTarget, true );
 
-        Item  actualObject = _unmarshalFile( filepath, Item.class );
+        Item  actualObject = _unmarshalFromFile( filepath, Item.class );
 
         Reporter.log( "validating...", true );
         _validate( actualObject, expectedObject );
@@ -254,7 +254,7 @@ public class OvalXmlTest
         Reporter.log( "\n// TEST: OVAL XML //", true );
         Reporter.log( "  * target type: " + testTarget, true );
 
-        Directives  actual = _unmarshalFile( filepath, Directives.class );
+        Directives  actual = _unmarshalFromFile( filepath, Directives.class );
 
         Reporter.log( "validating...", true );
         _validate( actual, expected );
@@ -284,7 +284,7 @@ public class OvalXmlTest
         Reporter.log( "\n// TEST: OVAL XML //", true );
         Reporter.log( "  * target type: " + testTarget, true );
 
-        SystemResult  actual = _unmarshalFile( filepath, SystemResult.class );
+        SystemResult  actual = _unmarshalFromFile( filepath, SystemResult.class );
 
         Reporter.log( "validating...", true );
         _validate( actual, expected );
@@ -314,7 +314,7 @@ public class OvalXmlTest
         Reporter.log( "\n// TEST: OVAL XML //", true );
         Reporter.log( "  * target type: " + testTarget, true );
 
-        DefinitionResult  actual = _unmarshalFile( filepath, DefinitionResult.class );
+        DefinitionResult  actual = _unmarshalFromFile( filepath, DefinitionResult.class );
 
         Reporter.log( "validating...", true );
         _validate( actual, expected );
@@ -345,7 +345,7 @@ public class OvalXmlTest
         Reporter.log( "\n// TEST: OVAL XML //", true );
         Reporter.log( "  * target type: " + testTarget, true );
 
-        OvalResults  actual = _unmarshalFile( filepath, OvalResults.class );
+        OvalResults  actual = _unmarshalFromFile( filepath, OvalResults.class );
 
         Reporter.log( "validating...", true );
         _validate( actual.getGenerator(), expectedGenerator );

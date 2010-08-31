@@ -21,6 +21,21 @@
 
 
 
+    <test name="oval.core.store" enabled="true">
+<!--
+        <groups>
+            <run>
+                <include name="definitions.*"/>
+            </run>
+        </groups>
+-->
+
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.store.DefnitionsTest"/>
+        </classes>
+    </test>
+
+
     <test name="oval.core.xml" enabled="false">
         <groups>
             <run>
@@ -36,7 +51,7 @@
 
 
 
-    <test name="oval.core" enabled="true">
+    <test name="oval.core" enabled="false">
         <groups>
             <run>
                 <include name="oval_results"/>
