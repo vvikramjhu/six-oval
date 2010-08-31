@@ -5,8 +5,15 @@ import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Operator;
 import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.independent.FamilyTest;
+import jp.go.aist.six.oval.model.independent.TextFileContentTest;
+import jp.go.aist.six.oval.model.independent.UnknownTest;
+import jp.go.aist.six.oval.model.linux.DpkgInfoTest;
 import jp.go.aist.six.oval.model.linux.RpmInfoTest;
+import jp.go.aist.six.oval.model.unix.UnameTest;
 import jp.go.aist.six.oval.model.windows.FileTest;
+import jp.go.aist.six.oval.model.windows.MetabaseTest;
+import jp.go.aist.six.oval.model.windows.RegistryTest;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -92,102 +99,104 @@ public class StoreDefinitionsTest
     public Object[][] provideDefinitionsTest()
     {
         return new Object[][] {
-//                        // independent : family test
-//                        {
-//                            "test/data/definition/sample_oval-test-family.xml",
-//                            "oval:org.mitre.oval:tst:99",
-//                            1,
-//                            "the installed operating system is part of the Microsoft Windows family",
-//                            Existence.AT_LEAST_ONE_EXISTS,
-//                            Check.ONLY_ONE,
-//                            EntityType.INDEPENDENT_FAMILY,
-//                            "oval:org.mitre.oval:obj:99",
-//                            "oval:org.mitre.oval:ste:99"
-//                        },
-//
-//                        // independent : textfilecontent test
-//                        {
-//                            "test/data/definition/sample_oval-test-textfilecontent.xml",
-//                            "oval:org.mitre.oval:tst:11150",
-//                            1,
-//                            "Debian GNU/Linux 5.0 is installed",
-//                            Existence.AT_LEAST_ONE_EXISTS,
-//                            Check.ALL,
-//                            EntityType.INDEPENDENT_TEXTFILECONTENT,
-//                            "oval:org.mitre.oval:obj:7326",
-//                            "oval:org.mitre.oval:ste:5739"
-//                        },
-//
-//                        // independent : unknown test
-//                        {
-//                            "test/data/definition/sample_oval-test-unknown.xml",
-//                            "oval:org.mitre.oval:tst:2531",
-//                            1,
-//                            "Word 97 is installed",
-//                            Existence.AT_LEAST_ONE_EXISTS,
-//                            Check.ALL,
-//                            EntityType.INDEPENDENT_UNKNOWN,
-//                            null,
-//                            null
-//                        },
-//
-//                        // unix : uname test
-//                        {
-//                            "test/data/definition/sample_oval-test-uname.xml",
-//                            "oval:org.mitre.oval:tst:11195",
-//                            1,
-//                            "Installed architecture is mips",
-//                            Existence.AT_LEAST_ONE_EXISTS,
-//                            Check.ALL,
-//                            EntityType.UNIX_UNAME,
-//                            "oval:org.mitre.oval:obj:2759",
-//                            "oval:org.mitre.oval:ste:5601"
-//                        },
-//
-//                        // windows : Registry test
-//                        {
-//                            "test/data/definition/sample_oval-test-registry.xml",
-//                            "oval:org.mitre.oval:tst:3019",
-//                            2,
-//                            "Win2K/XP/2003/Vista/2008 service pack 2 is installed",
-//                            Existence.AT_LEAST_ONE_EXISTS,
-//                            Check.AT_LEAST_ONE,
-//                            EntityType.WINDOWS_REGISTRY,
-//                            "oval:org.mitre.oval:obj:717",
-//                            "oval:org.mitre.oval:ste:2827"
-//                        },
-//
-//                        // windows : Metabase test
-//                        {
-//                            "test/data/definition/sample_oval-test-metabase.xml",
-//                            "oval:org.mitre.oval:tst:709",
-//                            2,
-//                            "Negotiate is enabled",
-//                            Existence.AT_LEAST_ONE_EXISTS,
-//                            Check.AT_LEAST_ONE,
-//                            EntityType.WINDOWS_METABASE,
-//                            "oval:org.mitre.oval:obj:556",
-//                            null
-//                        },
-//
-//                        // windows : File test
-//                        {
-//                            "test/data/definition/sample_oval-test-file.xml",
-//                            "oval:org.mitre.oval:tst:2339",
-//                            1,
-//                            "the version of mshtml.dll is less than 6.0.2900.2873",
-//                            Existence.AT_LEAST_ONE_EXISTS,
-//                            Check.AT_LEAST_ONE,
-//                            EntityType.WINDOWS_FILE,
-//                            "oval:org.mitre.oval:obj:222",
-//                            "oval:org.mitre.oval:ste:2190"
-//                        },
-//
-
-                        // windows : File test, 2 states
+                        // independent : family
                         {
                             Test.class,
-                            "test/data/definitions/test_file_oval-tst-10629-1.xml",
+                            "test/data/definitions/test-family_oval-tst-99_1.xml",
+                            "oval_definitions/tests/independent:family_test",
+                            new FamilyTest( "oval:org.mitre.oval:tst:99",
+                                            1,
+                                            "the installed operating system is part of the Microsoft Windows family",
+                                            Check.ONLY_ONE )
+                                .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+                                .object( "oval:org.mitre.oval:obj:99" )
+                                .state( "oval:org.mitre.oval:ste:99" )
+                        }
+                        ,
+                        // independent : textfilecontent
+                        {
+                            Test.class,
+                            "test/data/definitions/test-textfilecontent_oval-tst-11150_1.xml",
+                            "oval_definitions/tests/independent:textfilecontent_test",
+                            new TextFileContentTest( "oval:org.mitre.oval:tst:11150",
+                                            1,
+                                            "Debian GNU/Linux 5.0 is installed",
+                                            Check.ALL )
+                                .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+                                .object( "oval:org.mitre.oval:obj:7326" )
+                                .state( "oval:org.mitre.oval:ste:5739" )
+                        }
+                        ,
+                        // independent : unknown
+                        {
+                            Test.class,
+                            "test/data/definitions/test-unknown_oval-tst-2531_1.xml",
+                            "oval_definitions/tests/independent:unknown_test",
+                            new UnknownTest( "oval:org.mitre.oval:tst:2531",
+                                            1,
+                                            "Word 97 is installed",
+                                            Check.ALL )
+                        }
+                        ,
+                        // linux : DpkgInfo
+                        {
+                            Test.class,
+                            "test/data/definitions/test-dpkginfo_oval-tst-19402_1.xml",
+                            "oval_definitions/tests/linux:dpkginfo_test",
+                            new DpkgInfoTest( "oval:org.mitre.oval:tst:19402",
+                                            1,
+                                            "apache2-src is earlier than 2.2.9-10+lenny6",
+                                            Check.ALL )
+                                .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+                                .object( "oval:org.mitre.oval:obj:10286" )
+                                .state( "oval:org.mitre.oval:ste:6372" )
+                        }
+                        ,
+                        // linux : RpmInfo
+                        {
+                            Test.class,
+                            "test/data/definitions/test-rpminfo_rhsa-tst-20100061002-301.xml",
+                            "oval_definitions/tests/linux:rpminfo_test",
+                            new RpmInfoTest( "oval:com.redhat.rhsa:tst:20100061002",
+                                            301,
+                                            "gzip is earlier than 0:1.3.5-11.el5_4.1",
+                                            Check.AT_LEAST_ONE )
+                                .object( "oval:com.redhat.rhsa:obj:20100061002" )
+                                .state( "oval:com.redhat.rhsa:ste:20100061004" )
+                        }
+                        ,
+                        // unix : uname
+                        {
+                            Test.class,
+                            "test/data/definitions/test-uname_oval-tst-11195_1.xml",
+                            "oval_definitions/tests/unix:uname_test",
+                            new UnameTest( "oval:org.mitre.oval:tst:11195",
+                                            1,
+                                            "Installed architecture is mips",
+                                            Check.ALL )
+                                .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+                                .object( "oval:org.mitre.oval:obj:2759" )
+                                .state( "oval:org.mitre.oval:ste:5601" )
+                        }
+                        ,
+                        // windows : File
+                        {
+                            Test.class,
+                            "test/data/definitions/test-file_oval-tst-2339_1.xml",
+                            "oval_definitions/tests/windows:file_test",
+                            new FileTest( "oval:org.mitre.oval:tst:2339",
+                                            1,
+                                            "the version of mshtml.dll is less than 6.0.2900.2873",
+                                            Check.AT_LEAST_ONE )
+                                .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+                                .object( "oval:org.mitre.oval:obj:222" )
+                                .state( "oval:org.mitre.oval:ste:2190" )
+                        }
+                        ,
+                        // windows : File 2
+                        {
+                            Test.class,
+                            "test/data/definitions/test-file_oval-tst-10629-1.xml",
                             "oval_definitions/tests/windows:file_test",
                             new FileTest( "oval:org.mitre.oval:tst:10629",
                                             1,
@@ -200,49 +209,36 @@ public class StoreDefinitionsTest
                                 .state( "oval:org.mitre.oval:ste:5298" )
                         }
                         ,
-
-                        // linux : RpmInfo test
+                        // windows : Metabase test
                         {
                             Test.class,
-                            "test/data/definitions/test_rpminfo_rhsa-tst-20100061002-301.xml",
-                            "oval_definitions/tests/linux:rpminfo_test",
-                            new RpmInfoTest( "oval:com.redhat.rhsa:tst:20100061002",
-                                            301,
-                                            "gzip is earlier than 0:1.3.5-11.el5_4.1",
+                            "test/data/definitions/test-metabase_oval-tst-709_2.xml",
+                            "oval_definitions/tests/windows:metabase_test",
+                            new MetabaseTest( "oval:org.mitre.oval:tst:709",
+                                            2,
+                                            "Negotiate is enabled",
                                             Check.AT_LEAST_ONE )
-                                .object( "oval:com.redhat.rhsa:obj:20100061002" )
-                                .state( "oval:com.redhat.rhsa:ste:20100061004" )
+                                .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+                                .object( "oval:org.mitre.oval:obj:556" )
                         }
-//                        {
-//                            "test/data/definition/sample_oval-test-rpminfo.xml",
-//                            "oval:com.redhat.rhsa:tst:20100061002",
-//                            301,
-//                            "gzip is earlier than 0:1.3.5-11.el5_4.1",
-//                            Test.DEFAULT_CHECK_EXISTENCE,
-//                            Check.AT_LEAST_ONE,
-//                            EntityType.LINUX_RPMINFO,
-//                            "oval:com.redhat.rhsa:obj:20100061002",
-//                            "oval:com.redhat.rhsa:ste:20100061004"
-//                        },
-//
-//                        // linux : DpkgInfo test
-//                        {
-//                            "test/data/definition/sample_oval-test-dpkginfo.xml",
-//                            "oval:org.mitre.oval:tst:19402",
-//                            1,
-//                            "apache2-src is earlier than 2.2.9-10+lenny6",
-//                            Existence.AT_LEAST_ONE_EXISTS,
-//                            Check.ALL,
-//                            EntityType.LINUX_DPKGINFO,
-//                            "oval:org.mitre.oval:obj:10286",
-//                            "oval:org.mitre.oval:ste:6372"
-//                        }
+                        ,
+                        // windows : Registry test
+                        {
+                            Test.class,
+                            "test/data/definitions/test-registry_oval-tst-3019_2.xml",
+                            "oval_definitions/tests/windows:registry_test",
+                            new RegistryTest( "oval:org.mitre.oval:tst:3019",
+                                            2,
+                                            "Win2K/XP/2003/Vista/2008 service pack 2 is installed",
+                                            Check.AT_LEAST_ONE )
+                                .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+                                .object( "oval:org.mitre.oval:obj:717" )
+                                .state( "oval:org.mitre.oval:ste:2827" )
+                        }
         };
     }
 
-    //==============================================================
-    //  Test
-    //==============================================================
+
 
     /**
      */
