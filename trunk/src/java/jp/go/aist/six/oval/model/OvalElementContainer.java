@@ -36,14 +36,14 @@ import java.util.Set;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalElementSetContainer<E extends OvalElement>
-    extends SetContainer<E>
+public class OvalElementContainer<E extends OvalElement>
+    extends Container<E>
 {
 
     /**
      * Constructor.
      */
-    public OvalElementSetContainer()
+    public OvalElementContainer()
     {
     }
 
@@ -51,7 +51,7 @@ public class OvalElementSetContainer<E extends OvalElement>
     /**
      * Constructor.
      */
-    public OvalElementSetContainer(
+    public OvalElementContainer(
                     final Collection<? extends E> elements
                     )
     {
@@ -62,7 +62,7 @@ public class OvalElementSetContainer<E extends OvalElement>
     /**
      * Constructor.
      */
-    public OvalElementSetContainer(
+    public OvalElementContainer(
                     final E[] elements
                     )
     {

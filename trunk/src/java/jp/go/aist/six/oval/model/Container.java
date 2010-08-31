@@ -35,7 +35,7 @@ import java.util.Set;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class SetContainer<E>
+public abstract class Container<E>
     implements Iterable<E>
 {
 
@@ -46,7 +46,7 @@ public abstract class SetContainer<E>
     /**
      * Constructor.
      */
-    public SetContainer()
+    public Container()
     {
     }
 
@@ -54,7 +54,7 @@ public abstract class SetContainer<E>
     /**
      * Constructor.
      */
-    public SetContainer(
+    public Container(
                     final Collection<? extends E> elements
                     )
     {
@@ -65,7 +65,7 @@ public abstract class SetContainer<E>
     /**
      * Constructor.
      */
-    public SetContainer(
+    public Container(
                     final E[] elements
                     )
     {
@@ -160,12 +160,12 @@ public abstract class SetContainer<E>
             return true;
         }
 
-        if (! SetContainer.class.isInstance( obj )) {
+        if (! Container.class.isInstance( obj )) {
             return false;
         }
 
         @SuppressWarnings( "unchecked" )
-        SetContainer<E>  other = (SetContainer<E>)obj;
+        Container<E>  other = (Container<E>)obj;
         if (this.size() == other.size()) {
             return this._getElement().equals( other._getElement() );
         }

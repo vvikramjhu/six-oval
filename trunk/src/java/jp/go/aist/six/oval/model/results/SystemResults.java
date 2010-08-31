@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.results;
 
-import jp.go.aist.six.oval.model.SetContainer;
+import jp.go.aist.six.oval.model.Container;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -33,7 +33,7 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class SystemResults
-    extends SetContainer<SystemResult> //{1..*}
+    extends Container<SystemResult> //{1..*}
 {
 
     /**

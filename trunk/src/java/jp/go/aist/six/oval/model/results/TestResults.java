@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.results;
 
-import jp.go.aist.six.oval.model.SetContainer;
+import jp.go.aist.six.oval.model.Container;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -33,7 +33,7 @@ import java.util.Iterator;
  * @version $Id: DefinitionResults.java 742 2010-05-07 09:22:53Z akihito $
  */
 public class TestResults
-    extends SetContainer<TestResult>   //{1..*}
+    extends Container<TestResult>   //{1..*}
 {
 
     /**

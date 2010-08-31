@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.OvalElementSetContainer;
+import jp.go.aist.six.oval.model.OvalElementContainer;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -38,7 +38,7 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class Definitions
-    extends OvalElementSetContainer<Definition>    //{1..*}
+    extends OvalElementContainer<Definition>    //{1..*}
 //extends OvalElementContainer<Definition>    //{1..*}
 {
 

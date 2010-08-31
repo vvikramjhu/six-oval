@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.SetContainer;
+import jp.go.aist.six.oval.model.Container;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -38,7 +38,7 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class SystemObjects
-    extends SetContainer<SystemObject>  //{1..*}
+    extends Container<SystemObject>  //{1..*}
 //extends OvalElementContainer<SystemObject>  //{1..*}
 {
 

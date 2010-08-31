@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.sc;
 
-import jp.go.aist.six.oval.model.SetContainer;
+import jp.go.aist.six.oval.model.Container;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -32,7 +32,7 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class SystemData
-    extends SetContainer<Item>
+    extends Container<Item>
 //    extends Container<Item>
 {
 
