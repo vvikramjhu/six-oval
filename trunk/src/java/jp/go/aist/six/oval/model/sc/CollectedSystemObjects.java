@@ -73,6 +73,14 @@ public class CollectedSystemObjects
 
 
 
+    public void setObject(
+                    final Collection<? extends CollectedSystemObject> objects
+                    )
+    {
+        _setElement( objects );
+    }
+
+
     public boolean addObject(
                     final CollectedSystemObject object
                     )

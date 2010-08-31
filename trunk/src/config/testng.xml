@@ -21,7 +21,7 @@
 
 
 
-    <test name="oval.core.xml" enabled="true">
+    <test name="oval.core.xml" enabled="false">
         <groups>
             <run>
                 <!-- include name="definitions.*"/ -->
@@ -36,7 +36,7 @@
 
 
 
-    <test name="oval.core" enabled="false">
+    <test name="oval.core" enabled="true">
         <groups>
             <run>
                 <include name="oval_results"/>

@@ -73,6 +73,14 @@ public class NetInterfaces
 
 
 
+    public void setInterface(
+                    Collection<? extends NetInterface> netifs
+                    )
+    {
+        _setElement( netifs );
+    }
+
+
     public boolean addInterface(
                     final NetInterface netif
                     )
