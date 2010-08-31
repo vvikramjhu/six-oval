@@ -17,6 +17,7 @@ import jp.go.aist.six.oval.model.independent.FamilyTest;
 import jp.go.aist.six.oval.model.independent.TextFileContentState;
 import jp.go.aist.six.oval.model.independent.TextFileContentTest;
 import jp.go.aist.six.oval.model.independent.UnknownTest;
+import jp.go.aist.six.oval.model.linux.DpkgInfoState;
 import jp.go.aist.six.oval.model.linux.DpkgInfoTest;
 import jp.go.aist.six.oval.model.linux.RpmInfoTest;
 import jp.go.aist.six.oval.model.unix.UnameTest;
@@ -125,6 +126,10 @@ public class StoreDefinitionsTest
         registryValue.setOperation( Operation.EQUALS );
         registryValue.setDatatype( Datatype.INT );
 
+        EntityStateString  dpkginfoEvr = new EntityStateString( "0:2.2.6-02-1+lenny2+b2" );
+        dpkginfoEvr.setDatatype( Datatype.EVR_STRING );
+        dpkginfoEvr.setOperation( Operation.LESS_THAN );
+
         return new Object[][] {
                         // independent : family
                         {
@@ -176,13 +181,16 @@ public class StoreDefinitionsTest
                                             1 )
                                 .value( registryValue )
                         }
-//                        ,
-//                        {
-//                            EntityType.WINDOWS_REGISTRY,
-//                            "test/data/definition/sample_oval-state-registry.xml",
-//                            "oval:org.mitre.oval:ste:1205",
-//                            1
-//                        }
+                        ,
+                        // linux : dpkginfo
+                        {
+                            State.class,
+                            "test/data/definitions/state-dpkginfo_oval-ste-5797_1.xml",
+                            "oval_definitions/states/linux:dpkginfo_state",
+                            new DpkgInfoState( "oval:org.mitre.oval:ste:5797",
+                                            1 )
+                                .evr( dpkginfoEvr )
+                        }
 //                        ,
 //                        {
 //                            EntityType.LINUX_DPKGINFO,

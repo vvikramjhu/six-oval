@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.definitions.EntityStateString;
 
 
 
@@ -50,6 +51,16 @@ public class DpkgInfoState
                     )
     {
         super( id, version );
+    }
+
+
+
+    public DpkgInfoState evr(
+                    final EntityStateString evr
+                    )
+    {
+        setEvr( evr );
+        return this;
     }
 
 
