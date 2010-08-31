@@ -1,14 +1,10 @@
 package jp.go.aist.six.test.oval.service;
 
 import jp.go.aist.six.oval.model.EntityType;
-import jp.go.aist.six.oval.model.common.Check;
-import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.DefinitionClass;
 import jp.go.aist.six.oval.model.definitions.State;
-import jp.go.aist.six.oval.model.definitions.StateRef;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
-import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.Result;
@@ -382,61 +378,6 @@ extends OvalServiceTestBase
         Reporter.log( "  * syncing object...", true );
         SystemObject  p_object = _store.sync( SystemObject.class, object );
         Reporter.log( "  @ synced: pid=" + p_object.getPersistentID(), true );
-    }
-
-
-
-    //==============================================================
-    //  Test
-    //==============================================================
-
-    /**
-     */
-    @org.testng.annotations.Test(
-                    groups={"oval.service", "definition.test"},
-                    dataProvider="oval-definition-test",
-                    alwaysRun=true
-                    )
-    public void processTest(
-                    final String filepath,
-                    final String id,
-                    final int version,
-                    final String comment,
-                    final Existence existence,
-                    final Check check,
-                    final EntityType type,
-                    final String objectID,
-                    final String stateID
-                    )
-    throws Exception
-    {
-        Reporter.log( "\n// TEST: OVAL - XML, store //", true );
-        Reporter.log( "  - object type: definition.Test", true );
-
-        File  file = new File( filepath );
-        Reporter.log( "*** unmarshalling XML...", true );
-        Object  obj = _xml.unmarshal( new FileInputStream( file ) );
-        Reporter.log( "  - unmarshalled object: " + obj, true );
-
-        Assert.assertNotNull( obj );
-        Assert.assertTrue( obj instanceof Test );
-        Test  test = Test.class.cast( obj );
-        Assert.assertEquals( id, test.getOvalID() );
-        Assert.assertEquals( version, test.getOvalVersion() );
-        Assert.assertEquals( comment, test.getComment() );
-        Assert.assertEquals( existence, test.getCheckExistence() );
-        Assert.assertEquals( check, test.getCheck() );
-        Assert.assertEquals( type, test.getEntityType() );
-        Assert.assertEquals( objectID, test.getObject().getOvalID() );
-        Collection<StateRef>  stateRef = test.getState();
-        if (stateRef != null  &&  stateRef.size() > 0) {
-            StateRef  ref = stateRef.iterator().next();
-            Assert.assertEquals( stateID, ref.getOvalID() );
-        }
-
-        Reporter.log( "@@@ syncing object...", true );
-        Test  p_test = _store.sync( Test.class, test );
-        Reporter.log( "  - PID=" + p_test.getPersistentID(), true );
     }
 
 }
