@@ -58,6 +58,19 @@ public class UnameObject
     }
 
 
+    /**
+     * Constructor.
+     */
+    public UnameObject(
+                    final String id,
+                    final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
+    }
+
+
 
     //**************************************************************
     //  SystemObject

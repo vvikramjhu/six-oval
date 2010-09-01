@@ -27,6 +27,7 @@ import jp.go.aist.six.oval.model.linux.DpkgInfoTest;
 import jp.go.aist.six.oval.model.linux.RpmInfoObject;
 import jp.go.aist.six.oval.model.linux.RpmInfoState;
 import jp.go.aist.six.oval.model.linux.RpmInfoTest;
+import jp.go.aist.six.oval.model.unix.UnameObject;
 import jp.go.aist.six.oval.model.unix.UnameTest;
 import jp.go.aist.six.oval.model.windows.FileState;
 import jp.go.aist.six.oval.model.windows.FileTest;
@@ -487,7 +488,7 @@ public class StoreDefinitionsTest
                         {
                             SystemObject.class,
                             "test/data/definitions/object-dpkginfo_oval-obj-10648_1.xml",
-                            "oval_definitions/objects/independent:dpkginfo_object",
+                            "oval_definitions/objects/linux:dpkginfo_object",
                             new DpkgInfoObject( "oval:org.mitre.oval:obj:10648",
                                             1,
                                             "apache2 package information"
@@ -495,24 +496,27 @@ public class StoreDefinitionsTest
                                 .name( new EntityObjectString( "apache2" ) )
                         }
                         ,
-//                        // linux : rpminfo
+                        // linux : rpminfo
                         {
                             SystemObject.class,
                             "test/data/definitions/object-rpminfo_rhsa-obj-20100061001_301.xml",
-                            "oval_definitions/objects/independent:rpminfo_object",
+                            "oval_definitions/objects/linux:rpminfo_object",
                             new RpmInfoObject( "oval:com.redhat.rhsa:obj:20100061001",
                                             301
                                             )
                                 .name( new EntityObjectString( "redhat-release" ) )
                         }
-//                        {
-//                            "test/data/definition/sample_oval-object-rpminfo.xml",
-//                            "oval:com.redhat.rhsa:obj:20100061001",
-//                            301,
-//                            null
-//                        },
-//
+                        ,
 //                        // unux : uname
+                        {
+                            SystemObject.class,
+                            "test/data/definitions/object-uname_oval-obj-2759_1.xml",
+                            "oval_definitions/objects/unix:uname_object",
+                            new UnameObject( "oval:org.mitre.oval:obj:2759",
+                                            1,
+                                            "The single uname object."
+                                            )
+                        }
 //                        {
 //                            "test/data/definition/sample_oval-object-uname.xml",
 //                            "oval:org.mitre.oval:obj:2759",
