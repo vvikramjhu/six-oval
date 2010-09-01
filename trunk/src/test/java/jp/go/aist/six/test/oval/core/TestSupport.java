@@ -14,13 +14,13 @@ import org.testng.Reporter;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class Validator
+public abstract class TestSupport
 {
 
     /**
      * Constructor.
      */
-    public Validator()
+    public TestSupport()
     {
     }
 
@@ -159,7 +159,7 @@ public abstract class Validator
     /**
      */
     public static abstract class OvalElementValidator
-    extends Validator
+    extends TestSupport
     {
 
         public void equals(
@@ -177,7 +177,7 @@ public abstract class Validator
 
     /**
      */
-    public abstract class OvalEntityValidator
+    public static abstract class OvalEntityValidator
     extends OvalElementValidator
     {
 
