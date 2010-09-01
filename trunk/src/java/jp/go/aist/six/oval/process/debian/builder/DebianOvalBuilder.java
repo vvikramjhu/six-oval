@@ -29,6 +29,7 @@ import jp.go.aist.six.oval.model.definitions.Criteria;
 import jp.go.aist.six.oval.model.definitions.Criterion;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.DefinitionClass;
+import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
@@ -390,7 +391,8 @@ public class DebianOvalBuilder
                 }
 
                 final String  objectID = _createSystemObjectID( dsaID, seq );
-                DpkgInfoObject  ovalObject = new DpkgInfoObject( objectID, defVersion, pkgName );
+                DpkgInfoObject  ovalObject = new DpkgInfoObject( objectID, defVersion );
+                ovalObject.setName( new EntityObjectString( pkgName ) );
                 if (_LOG.isDebugEnabled()) {
                     _LOG.debug( "object created: " + ovalObject );
                 }

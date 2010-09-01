@@ -21,6 +21,7 @@ import jp.go.aist.six.oval.model.independent.TextFileContentObject;
 import jp.go.aist.six.oval.model.independent.TextFileContentState;
 import jp.go.aist.six.oval.model.independent.TextFileContentTest;
 import jp.go.aist.six.oval.model.independent.UnknownTest;
+import jp.go.aist.six.oval.model.linux.DpkgInfoObject;
 import jp.go.aist.six.oval.model.linux.DpkgInfoState;
 import jp.go.aist.six.oval.model.linux.DpkgInfoTest;
 import jp.go.aist.six.oval.model.linux.RpmInfoState;
@@ -480,14 +481,18 @@ public class StoreDefinitionsTest
                                 .filename( new EntityObjectString( "debian_version" ) )
                                 .line( textfilecontentLine )
                         }
-//                        // independent : textfilecontent
-//                        {
-//                            "test/data/definition/sample_oval-object-textfilecontent.xml",
-//                            "oval:org.mitre.oval:obj:7326",
-//                            1,
-//                            null
-//                        },
-//
+                        ,
+                        // independent : textfilecontent
+                        {
+                            SystemObject.class,
+                            "test/data/definitions/object-dpkginfo_oval-obj-10648_1.xml",
+                            "oval_definitions/objects/independent:dpkginfo_object",
+                            new DpkgInfoObject( "oval:org.mitre.oval:obj:10648",
+                                            1,
+                                            "apache2 package information"
+                                            )
+                                .name( new EntityObjectString( "apache2" ) )
+                        }
 //                        // linux : dpkginfo
 //                        {
 //                            "test/data/definition/sample_oval-object-dpkginfo.xml",

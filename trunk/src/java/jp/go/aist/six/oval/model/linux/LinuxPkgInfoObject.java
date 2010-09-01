@@ -66,36 +66,12 @@ public abstract class LinuxPkgInfoObject
     public LinuxPkgInfoObject(
                     final String id,
                     final int version,
-                    final String name
+                    final String comment
                     )
     {
-        this( id, version,
-                        (name == null ? null : (new EntityObjectString( name )))
-                        );
+        super( id, version, comment );
     }
 
-
-    /**
-     * Constructor.
-     */
-    public LinuxPkgInfoObject(
-                    final String id,
-                    final int version,
-                    final EntityObjectString name
-                    )
-    {
-        super( id, version );
-        setName( name );
-    }
-
-
-
-//    public void setName(
-//                    final String name
-//                    )
-//    {
-//        setName( new EntityObjectStringType( name ) );
-//    }
 
 
     public void setName(

@@ -60,23 +60,30 @@ public class RpmInfoObject
     public RpmInfoObject(
                     final String id,
                     final int version,
-                    final String name
+                    final String comment
                     )
     {
-        super( id, version, name );
+        super( id, version, comment );
     }
 
 
+
     /**
-     * Constructor.
      */
-    public RpmInfoObject(
-                    final String id,
-                    final int version,
+    public RpmInfoObject name(
                     final EntityObjectString name
                     )
     {
-        super( id, version, name );
+        setName( name );
+        return this;
+    }
+
+
+    public RpmInfoObject name(
+                    final String name
+                    )
+    {
+        return name( new EntityObjectString( name ) );
     }
 
 

@@ -60,23 +60,30 @@ public class DpkgInfoObject
     public DpkgInfoObject(
                     final String id,
                     final int version,
-                    final String name
+                    final String comment
                     )
     {
-        super( id, version, name );
+        super( id, version, comment );
     }
 
 
+
     /**
-     * Constructor.
      */
-    public DpkgInfoObject(
-                    final String id,
-                    final int version,
+    public DpkgInfoObject name(
                     final EntityObjectString name
                     )
     {
-        super( id, version, name );
+        setName( name );
+        return this;
+    }
+
+
+    public DpkgInfoObject name(
+                    final String name
+                    )
+    {
+        return name( new EntityObjectString( name ) );
     }
 
 
