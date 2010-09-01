@@ -2,7 +2,6 @@ package jp.go.aist.six.test.oval.service;
 
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.DefinitionClass;
-import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.Result;
@@ -284,52 +283,6 @@ extends OvalServiceTestBase
         Reporter.log( "  * syncing object...", true );
         Definition  p_def = _store.sync( Definition.class, def );
         Reporter.log( "  @ synced: pid=" + p_def.getPersistentID(), true );
-    }
-
-
-
-    //==============================================================
-    //  object
-    //==============================================================
-
-    /**
-     */
-    @org.testng.annotations.Test( groups={"oval.service", "oval-def", "object"},
-                    dataProvider="oval-object",
-                    dependsOnGroups="test",
-                    alwaysRun=true
-                    )
-    public void processObject(
-                    final String filepath,
-                    final String id,
-                    final int version,
-                    final String comment
-                    )
-    throws Exception
-    {
-        Reporter.log( "\n// TEST: OVAL - unmarshalling XML and syncing with store //", true );
-        Reporter.log( "  * object type: oval-def:object", true );
-
-        File  file = new File( filepath );
-        Reporter.log( "  * unmarshalling XML...", true );
-        Object  obj = _xml.unmarshal( new FileInputStream( file ) );
-        Reporter.log( "  @ unmarshalled object: " + obj, true );
-
-        Assert.assertNotNull( obj );
-        Assert.assertTrue( obj instanceof SystemObject );
-
-        SystemObject  object = SystemObject.class.cast( obj );
-        Assert.assertEquals( id, object.getOvalID() );
-        Assert.assertEquals( version, object.getOvalVersion() );
-        Assert.assertEquals( comment, object.getComment() );
-
-        Reporter.log( "  * marshalling XML...", true );
-        String  xml = _xml.marshalToString( object );
-        Reporter.log( "  @ marshalled XML: " + xml, true );
-
-        Reporter.log( "  * syncing object...", true );
-        SystemObject  p_object = _store.sync( SystemObject.class, object );
-        Reporter.log( "  @ synced: pid=" + p_object.getPersistentID(), true );
     }
 
 }
