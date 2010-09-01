@@ -14,26 +14,49 @@ import org.testng.Reporter;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class Validator
+public abstract class Validator
 {
 
     /**
-     * Object
+     * Constructor.
+     */
+    public Validator()
+    {
+    }
+
+
+
+    /**
+     *
      */
     public void equals(
                     final Object actual,
                     final Object expected
                     )
     {
-        Reporter.log( " - as Object", true );
         Assert.assertEquals( actual, expected );
-
-        if (OvalEntity.class.isInstance( actual )
-                        &&  OvalEntity.class.isInstance( expected )) {
-            _assertEquals( OvalEntity.class.cast( actual ),
-                            OvalEntity.class.cast( expected ) );
-        }
     }
+
+
+
+
+//    /**
+//     * Object
+//     */
+//    public void equals(
+//                    final Object actual,
+//                    final Object expected
+//                    )
+//    {
+//        Reporter.log( " - as Object", true );
+//        Assert.assertEquals( actual, expected );
+//
+//        if (OvalEntity.class.isInstance( actual )
+//                        &&  OvalEntity.class.isInstance( expected )) {
+//            _assertEquals( OvalEntity.class.cast( actual ),
+//                            OvalEntity.class.cast( expected ) );
+//        }
+//    }
 
 
 
