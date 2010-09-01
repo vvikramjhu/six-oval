@@ -22,12 +22,12 @@
 
 
     <test name="oval.core.store" enabled="true">
-<!--
         <groups>
             <run>
-                <include name="definitions.*"/>
+                <include name="definitions.object"/>
             </run>
         </groups>
+<!--
 -->
 
         <classes>

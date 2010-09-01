@@ -3,7 +3,9 @@ package jp.go.aist.six.test.oval.core;
 import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
+import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.NameEntity;
+import jp.go.aist.six.oval.model.OvalElement;
 import jp.go.aist.six.oval.model.OvalElementContainerBak;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.common.Datatype;
@@ -117,6 +119,67 @@ public abstract class CoreTestBase
         }
 
         return _store;
+    }
+
+
+
+    protected void _assertEquals(
+                    final Object actual,
+                    final Object expected
+                    )
+    {
+        Reporter.log( " - as Object", true );
+        Assert.assertEquals( actual, expected );
+
+        if (OvalEntity.class.isInstance( actual )
+                        &&  OvalEntity.class.isInstance( expected )) {
+            _assertEquals( OvalEntity.class.cast( actual ),
+                            OvalEntity.class.cast( expected ) );
+        }
+    }
+
+
+    protected void _assertEquals(
+                    final OvalElement actual,
+                    final OvalElement expected
+                    )
+    {
+        Reporter.log( " - OVAL ID", true );
+        Assert.assertEquals( actual.getOvalID(), expected.getOvalID() );
+        Reporter.log( " - OVAL version", true );
+        Assert.assertEquals( actual.getOvalVersion(), expected.getOvalVersion() );
+
+        if (OvalEntity.class.isInstance( actual )
+                        &&  OvalEntity.class.isInstance( expected )) {
+            _assertEquals( OvalEntity.class.cast( actual ),
+                            OvalEntity.class.cast( expected ) );
+        }
+    }
+
+
+    protected void _assertEquals(
+                    final OvalEntity actual,
+                    final OvalEntity expected
+                    )
+    {
+        Reporter.log( " - deprecated", true );
+        Assert.assertEquals( actual.isDeprecated(), expected.isDeprecated() );
+
+        if (CommentedOvalEntity.class.isInstance( actual )
+                        &&  CommentedOvalEntity.class.isInstance( expected )) {
+            _assertEquals( CommentedOvalEntity.class.cast( actual ),
+                            CommentedOvalEntity.class.cast( expected ) );
+        }
+    }
+
+
+    protected void _assertEquals(
+                    final CommentedOvalEntity actual,
+                    final CommentedOvalEntity expected
+                    )
+    {
+        Reporter.log( " - comment", true );
+        Assert.assertEquals( actual.getComment(), expected.getComment() );
     }
 
 
@@ -265,6 +328,7 @@ public abstract class CoreTestBase
     //  Definitions
     //
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
     // definition //
 

@@ -58,6 +58,19 @@ public class FamilyObject
     }
 
 
+    /**
+     * Constructor.
+     */
+    public FamilyObject(
+                    final String id,
+                    final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
+    }
+
+
 
     //**************************************************************
     //  SystemObject

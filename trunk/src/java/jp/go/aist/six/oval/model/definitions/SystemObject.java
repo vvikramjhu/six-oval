@@ -67,6 +67,18 @@ public abstract class SystemObject
     }
 
 
+    /**
+     * Constructor.
+     */
+    public SystemObject(
+                    final String id,
+                    final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
+    }
+
 
     /**
      */
