@@ -24,6 +24,7 @@ import jp.go.aist.six.oval.model.independent.UnknownTest;
 import jp.go.aist.six.oval.model.linux.DpkgInfoObject;
 import jp.go.aist.six.oval.model.linux.DpkgInfoState;
 import jp.go.aist.six.oval.model.linux.DpkgInfoTest;
+import jp.go.aist.six.oval.model.linux.RpmInfoObject;
 import jp.go.aist.six.oval.model.linux.RpmInfoState;
 import jp.go.aist.six.oval.model.linux.RpmInfoTest;
 import jp.go.aist.six.oval.model.unix.UnameTest;
@@ -482,7 +483,7 @@ public class StoreDefinitionsTest
                                 .line( textfilecontentLine )
                         }
                         ,
-                        // independent : textfilecontent
+                        // linux : dpkginfo
                         {
                             SystemObject.class,
                             "test/data/definitions/object-dpkginfo_oval-obj-10648_1.xml",
@@ -493,15 +494,17 @@ public class StoreDefinitionsTest
                                             )
                                 .name( new EntityObjectString( "apache2" ) )
                         }
-//                        // linux : dpkginfo
-//                        {
-//                            "test/data/definition/sample_oval-object-dpkginfo.xml",
-//                            "oval:org.mitre.oval:obj:10648",
-//                            1,
-//                            "apache2 package information"
-//                        },
-//
+                        ,
 //                        // linux : rpminfo
+                        {
+                            SystemObject.class,
+                            "test/data/definitions/object-rpminfo_rhsa-obj-20100061001_301.xml",
+                            "oval_definitions/objects/independent:rpminfo_object",
+                            new RpmInfoObject( "oval:com.redhat.rhsa:obj:20100061001",
+                                            301
+                                            )
+                                .name( new EntityObjectString( "redhat-release" ) )
+                        }
 //                        {
 //                            "test/data/definition/sample_oval-object-rpminfo.xml",
 //                            "oval:com.redhat.rhsa:obj:20100061001",
