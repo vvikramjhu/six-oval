@@ -154,6 +154,45 @@ public abstract class Validator
         Assert.assertEquals( actual.getLine(), expected.getLine() );
     }
 
+
+
+    /**
+     */
+    public static abstract class OvalElementValidator
+    extends Validator
+    {
+
+        public void equals(
+                        final OvalElement actual,
+                        final OvalElement expected
+                        )
+        {
+            super.equals( actual, expected );
+        }
+
+    }
+    // OvalElementValidator
+
+
+
+    /**
+     */
+    public abstract class OvalEntityValidator
+    extends OvalElementValidator
+    {
+
+        public void equals(
+                        final OvalEntity actual,
+                        final OvalEntity expected
+                        )
+        {
+            super.equals( actual, expected );
+            Assert.assertEquals( actual.isDeprecated(), expected.isDeprecated() );
+        }
+
+    }
+    // OvalEntityValidator
+
 }
 //
 

@@ -1,7 +1,7 @@
 package jp.go.aist.six.test.oval.core;
 
-import jp.go.aist.six.oval.model.OvalElement;
-
+import jp.go.aist.six.oval.model.OvalEntity;
+import org.testng.Assert;
 
 
 
@@ -9,27 +9,28 @@ import jp.go.aist.six.oval.model.OvalElement;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class OvalElementValidator
-    extends Validator
+public abstract class OvalEntityValidator
+    extends OvalElementValidator
 {
 
     /**
      * Constructor.
      */
-    public OvalElementValidator()
+    public OvalEntityValidator()
     {
     }
 
 
 
     public void equals(
-                    final OvalElement actual,
-                    final OvalElement expected
+                    final OvalEntity actual,
+                    final OvalEntity expected
                     )
     {
         super.equals( actual, expected );
+        Assert.assertEquals( actual.isDeprecated(), expected.isDeprecated() );
     }
 
 }
-// OvalElementValidator
+// OvalEntityValidator
 
