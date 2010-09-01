@@ -5,9 +5,12 @@ import jp.go.aist.six.oval.model.OvalElement;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
+import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.independent.TextFileContentObject;
 import org.testng.Assert;
 import org.testng.Reporter;
+import java.util.HashMap;
+import java.util.Map;
 
 
 
@@ -15,7 +18,7 @@ import org.testng.Reporter;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class Validator
+public abstract class Validators
 {
 
 
@@ -152,61 +155,147 @@ public abstract class Validator
 
     /**
      */
-    public static abstract class OvalElementValidator
-    extends Validator
+    public static abstract class Validator<T>
     {
-
         public void equals(
-                        final OvalElement actual,
-                        final OvalElement expected
+                        final T actual,
+                        final T expected
                         )
         {
-            super.equals( actual, expected );
+            Assert.assertEquals( actual, expected );
         }
-
     }
-    // OvalElementValidator
 
 
 
     /**
      */
-    public static abstract class OvalEntityValidator
-    extends OvalElementValidator
+    public static abstract class OvalElementValidator<T extends OvalElement>
+    extends Validator<T>
     {
-
+        @Override
         public void equals(
-                        final OvalEntity actual,
-                        final OvalEntity expected
+                        final T actual,
+                        final T expected
+                        )
+        {
+            Reporter.log( " - OVAL ID", true );
+            Assert.assertEquals( actual.getOvalID(), expected.getOvalID() );
+            Reporter.log( " - OVAL version", true );
+            Assert.assertEquals( actual.getOvalVersion(), expected.getOvalVersion() );
+        }
+    }
+
+
+
+    /**
+     */
+    public static abstract class OvalEntityValidator<T extends OvalEntity>
+    extends OvalElementValidator<T>
+    {
+        @Override
+        public void equals(
+                        final T actual,
+                        final T expected
                         )
         {
             super.equals( actual, expected );
+            Reporter.log( " - deprecated", true );
             Assert.assertEquals( actual.isDeprecated(), expected.isDeprecated() );
         }
-
     }
-    // OvalEntityValidator
+
+
+
+    /**
+     */
+    public static abstract class CommentedOvalEntityValidator<T extends CommentedOvalEntity>
+    extends OvalEntityValidator<T>
+    {
+        @Override
+        public void equals(
+                        final T actual,
+                        final T expected
+                        )
+        {
+            super.equals( actual, expected );
+            Reporter.log( " - comment", true );
+            Assert.assertEquals( actual.getComment(), expected.getComment() );
+        }
+    }
 
 
 
     /**
      */
     public static class StateValidator
-    extends OvalEntityValidator
+    extends CommentedOvalEntityValidator<State>
     {
-
+        @Override
         public void equals(
                         final State actual,
                         final State expected
                         )
         {
             super.equals( actual, expected );
+            Reporter.log( " - operator", true );
             Assert.assertEquals( actual.getOperator(), expected.getOperator() );
         }
-
     }
-    // StateValidator
+
+
+
+    /**
+     */
+    public static class TestValidator
+    extends CommentedOvalEntityValidator<Test>
+    {
+        @Override
+        public void equals(
+                        final Test actual,
+                        final Test expected
+                        )
+        {
+            super.equals( actual, expected );
+            Reporter.log( " - checkExistence", true );
+            Assert.assertEquals( actual.getCheckExistence(), expected.getCheckExistence() );
+            Reporter.log( " - check", true );
+            Assert.assertEquals( actual.getCheck(), expected.getCheck() );
+            Reporter.log( " - stateOperator", true );
+            Assert.assertEquals( actual.getStateOperator(), expected.getStateOperator() );
+            Reporter.log( " - object", true );
+            Assert.assertEquals( actual.getObject(), expected.getObject() );
+
+            //TODO: state
+        }
+    }
+
+
+
+    private static Map<Class<?>, Validator<?>>  _validators
+    = new HashMap<Class<?>, Validator<?>>();
+
+
+    @SuppressWarnings( "unchecked" )
+    public static <T> Validator<T> validator(
+                    final Class<T> type
+                    )
+    {
+        Validator<T>  v = (Validator<T>)_validators.get( type );
+        if (v == null) {
+            if (Test.class.isAssignableFrom( type )) {
+                v = (Validator<T>)(new TestValidator());
+                _validators.put( Test.class, v );
+            } else if (State.class.isAssignableFrom( type )) {
+                v = (Validator<T>)(new StateValidator());
+                _validators.put( State.class, v );
+            }
+        }
+
+        Assert.assertNotNull( v );
+        return v;
+    }
 
 }
-// Validator
+// Validators
 

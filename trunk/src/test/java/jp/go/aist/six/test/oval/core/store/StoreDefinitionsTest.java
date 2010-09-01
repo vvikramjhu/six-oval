@@ -41,6 +41,7 @@ import jp.go.aist.six.oval.model.windows.RegistryObject;
 import jp.go.aist.six.oval.model.windows.RegistryState;
 import jp.go.aist.six.oval.model.windows.RegistryTest;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
+import jp.go.aist.six.test.oval.core.Validators;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
@@ -99,7 +100,8 @@ public class StoreDefinitionsTest
 
         if (expected != null) {
             Reporter.log( "validating...", true );
-            _assertEquals( actual, expected );
+            Validators.validator( type ).equals( actual, expected );
+//            _assertEquals( actual, expected );
             Reporter.log( "...validation OK", true );
         }
 
@@ -129,7 +131,8 @@ public class StoreDefinitionsTest
         Reporter.log( "...get done", true );
 
         Reporter.log( "  @ get: object=" + persistent2, true );
-        _assertEquals( persistent2, object );
+        Validators.validator( type ).equals( persistent2, object );
+//        _assertEquals( persistent2, object );
     }
 
 

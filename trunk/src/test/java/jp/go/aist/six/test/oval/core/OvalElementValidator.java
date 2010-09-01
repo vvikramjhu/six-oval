@@ -10,7 +10,7 @@ import jp.go.aist.six.oval.model.OvalElement;
  * @version $Id$
  */
 public abstract class OvalElementValidator
-    extends Validator
+    extends Validators
 {
 
     /**

@@ -12,7 +12,7 @@ public class OvalDefinitionsSupport
     /**
      */
     public static class StateValidator
-    extends Validator.OvalEntityValidator
+    extends Validators.OvalEntityValidator
     {
 
         public void equals(
