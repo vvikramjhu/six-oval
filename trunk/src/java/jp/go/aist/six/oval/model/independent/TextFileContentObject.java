@@ -118,8 +118,15 @@ public class TextFileContentObject
     }
 
 
-    /**
-     */
+    public TextFileContentObject behaviors(
+                    final TextFileContentBehaviors behaviors
+                    )
+    {
+        setBehaviors( behaviors );
+        return this;
+    }
+
+
     public TextFileContentBehaviors getBehaviors()
     {
         return _behaviors;
@@ -137,8 +144,15 @@ public class TextFileContentObject
     }
 
 
-    /**
-     */
+    public TextFileContentObject path(
+                    final EntityObjectString path
+                    )
+    {
+        setPath( path );
+        return this;
+    }
+
+
     public EntityObjectString getPath()
     {
         return _path;
@@ -156,8 +170,15 @@ public class TextFileContentObject
     }
 
 
-    /**
-     */
+    public TextFileContentObject filename(
+                    final EntityObjectString filename
+                    )
+    {
+        setFilename( filename );
+        return this;
+    }
+
+
     public EntityObjectString getFilename()
     {
         return _filename;
@@ -175,8 +196,15 @@ public class TextFileContentObject
     }
 
 
-    /**
-     */
+    public TextFileContentObject line(
+                    final EntityObjectString line
+                    )
+    {
+        setLine( line );
+        return this;
+    }
+
+
     public EntityObjectString getLine()
     {
         return _line;

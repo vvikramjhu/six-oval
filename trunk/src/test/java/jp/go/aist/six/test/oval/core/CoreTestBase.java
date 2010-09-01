@@ -20,8 +20,10 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.Platform;
 import jp.go.aist.six.oval.model.definitions.Product;
 import jp.go.aist.six.oval.model.definitions.Reference;
+import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.independent.FamilyItem;
 import jp.go.aist.six.oval.model.independent.TextFileContentItem;
+import jp.go.aist.six.oval.model.independent.TextFileContentObject;
 import jp.go.aist.six.oval.model.linux.DpkgInfoItem;
 import jp.go.aist.six.oval.model.linux.LinuxPkgInfoItem;
 import jp.go.aist.six.oval.model.linux.RpmInfoItem;
@@ -123,6 +125,9 @@ public abstract class CoreTestBase
 
 
 
+    /**
+     * Object
+     */
     protected void _assertEquals(
                     final Object actual,
                     final Object expected
@@ -139,6 +144,9 @@ public abstract class CoreTestBase
     }
 
 
+    /**
+     * OvalElement
+     */
     protected void _assertEquals(
                     final OvalElement actual,
                     final OvalElement expected
@@ -157,6 +165,9 @@ public abstract class CoreTestBase
     }
 
 
+    /**
+     * OvalEntity
+     */
     protected void _assertEquals(
                     final OvalEntity actual,
                     final OvalEntity expected
@@ -173,6 +184,9 @@ public abstract class CoreTestBase
     }
 
 
+    /**
+     * CommentedOvalEntity
+     */
     protected void _assertEquals(
                     final CommentedOvalEntity actual,
                     final CommentedOvalEntity expected
@@ -180,6 +194,48 @@ public abstract class CoreTestBase
     {
         Reporter.log( " - comment", true );
         Assert.assertEquals( actual.getComment(), expected.getComment() );
+
+        if (SystemObject.class.isInstance( actual )) {
+            if (SystemObject.class.isInstance( expected )) {
+                _assertEquals( SystemObject.class.cast( actual ),
+                                SystemObject.class.cast( expected ) );
+            }
+        }
+    }
+
+
+
+    /**
+     * CommentedOvalEntity
+     */
+    protected void _assertEquals(
+                    final SystemObject actual,
+                    final SystemObject expected
+                    )
+    {
+        if (TextFileContentObject.class.isInstance( actual )) {
+            if (TextFileContentObject.class.isInstance( expected )) {
+                _assertEquals( TextFileContentObject.class.cast( actual ),
+                                TextFileContentObject.class.cast( expected ) );
+            }
+        }
+    }
+
+
+    /**
+     * TextFileContentObject
+     */
+    protected void _assertEquals(
+                    final TextFileContentObject actual,
+                    final TextFileContentObject expected
+                    )
+    {
+        Reporter.log( " - path", true );
+        Assert.assertEquals( actual.getPath(), expected.getPath() );
+        Reporter.log( " - filename", true );
+        Assert.assertEquals( actual.getFilename(), expected.getFilename() );
+        Reporter.log( " - line", true );
+        Assert.assertEquals( actual.getLine(), expected.getLine() );
     }
 
 

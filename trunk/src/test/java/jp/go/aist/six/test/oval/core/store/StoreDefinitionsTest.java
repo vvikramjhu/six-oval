@@ -7,6 +7,7 @@ import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.common.Operator;
+import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
@@ -16,6 +17,7 @@ import jp.go.aist.six.oval.model.independent.EntityStateFamily;
 import jp.go.aist.six.oval.model.independent.FamilyObject;
 import jp.go.aist.six.oval.model.independent.FamilyState;
 import jp.go.aist.six.oval.model.independent.FamilyTest;
+import jp.go.aist.six.oval.model.independent.TextFileContentObject;
 import jp.go.aist.six.oval.model.independent.TextFileContentState;
 import jp.go.aist.six.oval.model.independent.TextFileContentTest;
 import jp.go.aist.six.oval.model.independent.UnknownTest;
@@ -451,6 +453,9 @@ public class StoreDefinitionsTest
     @DataProvider( name="definitions.object" )
     public Object[][] provideDefinitionsObject()
     {
+        EntityObjectString  textfilecontentLine = new EntityObjectString( "\\d\\.\\d" );
+        textfilecontentLine.setOperation( Operation.PATTERN_MATCH );
+
         return new Object[][] {
                         // independent : family
                         {
@@ -462,15 +467,19 @@ public class StoreDefinitionsTest
                                             "This is the default family object. Only one family object should exist."
                                             )
                         }
-//                        ,
-//                        // independent : family
-//                        {
-//                            "test/data/definition/sample_oval-object-family.xml",
-//                            "oval:org.mitre.oval:obj:99",
-//                            1,
-//                            "This is the default family object. Only one family object should exist."
-//                        },
-//
+                        ,
+                        // independent : textfilecontent
+                        {
+                            SystemObject.class,
+                            "test/data/definitions/object-textfilecontent_oval-obj-7326_1.xml",
+                            "oval_definitions/objects/independent:textfilecontent_object",
+                            new TextFileContentObject( "oval:org.mitre.oval:obj:7326",
+                                            1
+                                            )
+                                .path( new EntityObjectString( "/etc" ) )
+                                .filename( new EntityObjectString( "debian_version" ) )
+                                .line( textfilecontentLine )
+                        }
 //                        // independent : textfilecontent
 //                        {
 //                            "test/data/definition/sample_oval-object-textfilecontent.xml",
