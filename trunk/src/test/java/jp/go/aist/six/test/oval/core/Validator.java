@@ -3,6 +3,7 @@ package jp.go.aist.six.test.oval.core;
 import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.OvalElement;
 import jp.go.aist.six.oval.model.OvalEntity;
+import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.independent.TextFileContentObject;
 import org.testng.Assert;
@@ -14,15 +15,8 @@ import org.testng.Reporter;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class TestSupport
+public abstract class Validator
 {
-
-    /**
-     * Constructor.
-     */
-    public TestSupport()
-    {
-    }
 
 
 
@@ -159,7 +153,7 @@ public abstract class TestSupport
     /**
      */
     public static abstract class OvalElementValidator
-    extends TestSupport
+    extends Validator
     {
 
         public void equals(
@@ -193,6 +187,26 @@ public abstract class TestSupport
     }
     // OvalEntityValidator
 
+
+
+    /**
+     */
+    public static class StateValidator
+    extends OvalEntityValidator
+    {
+
+        public void equals(
+                        final State actual,
+                        final State expected
+                        )
+        {
+            super.equals( actual, expected );
+            Assert.assertEquals( actual.getOperator(), expected.getOperator() );
+        }
+
+    }
+    // StateValidator
+
 }
-//
+// Validator
 
