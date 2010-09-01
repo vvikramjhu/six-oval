@@ -2463,8 +2463,8 @@ No registry object has 'behaviors' child element in the definition XML.
 -->
     <class name="jp.go.aist.six.oval.model.windows.RegistryObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObject"
-        identity="persistentID"
-        >
+        identity="persistentID">
+        
         <cache-type type="unlimited"/>
         <map-to table="oval_d_object_registry"/>
 

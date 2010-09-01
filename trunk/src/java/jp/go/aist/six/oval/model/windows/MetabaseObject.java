@@ -71,6 +71,19 @@ public class MetabaseObject
     public MetabaseObject(
                     final String id,
                     final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public MetabaseObject(
+                    final String id,
+                    final int version,
                     final String mbKey,
                     final String mbID
                     )
@@ -107,6 +120,15 @@ public class MetabaseObject
     }
 
 
+    public MetabaseObject key(
+                    final EntityObjectString key
+                    )
+    {
+        setKey( key );
+        return this;
+    }
+
+
     public EntityObjectString getKey()
     {
         return _key;
@@ -119,6 +141,15 @@ public class MetabaseObject
                     )
     {
         _id = id;
+    }
+
+
+    public MetabaseObject ID(
+                    final EntityObjectInt id
+                    )
+    {
+        setID( id );
+        return this;
     }
 
 

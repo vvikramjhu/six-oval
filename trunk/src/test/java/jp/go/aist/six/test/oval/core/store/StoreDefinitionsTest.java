@@ -7,6 +7,7 @@ import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.common.Operator;
+import jp.go.aist.six.oval.model.definitions.EntityObjectInt;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
@@ -29,11 +30,14 @@ import jp.go.aist.six.oval.model.linux.RpmInfoState;
 import jp.go.aist.six.oval.model.linux.RpmInfoTest;
 import jp.go.aist.six.oval.model.unix.UnameObject;
 import jp.go.aist.six.oval.model.unix.UnameTest;
+import jp.go.aist.six.oval.model.windows.EntityObjectRegistryHive;
 import jp.go.aist.six.oval.model.windows.FileObject;
 import jp.go.aist.six.oval.model.windows.FileState;
 import jp.go.aist.six.oval.model.windows.FileTest;
+import jp.go.aist.six.oval.model.windows.MetabaseObject;
 import jp.go.aist.six.oval.model.windows.MetabaseState;
 import jp.go.aist.six.oval.model.windows.MetabaseTest;
+import jp.go.aist.six.oval.model.windows.RegistryObject;
 import jp.go.aist.six.oval.model.windows.RegistryState;
 import jp.go.aist.six.oval.model.windows.RegistryTest;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
@@ -464,6 +468,9 @@ public class StoreDefinitionsTest
         filePath.setVarRef( "oval:org.mitre.oval:var:200" );
         filePath.setVarCheck( Check.ALL );
 
+        EntityObjectInt  metabaseID = new EntityObjectInt( "6032" );
+        metabaseID.setDatatype( Datatype.INT );
+
         return new Object[][] {
                         // independent : family
                         {
@@ -534,31 +541,33 @@ public class StoreDefinitionsTest
                                             )
                                 .path( filePath )
                                 .filename( new EntityObjectString( "mshtml.dll" ) )
-
-
                         }
-//                        {
-//                            "test/data/definition/sample_oval-object-file.xml",
-//                            "oval:org.mitre.oval:obj:222",
-//                            1,
-//                            "The path to the mshtml.dll file in the system root"
-//                        },
-//
-//                        // windows : metabase
-//                        {
-//                            "test/data/definition/sample_oval-object-metabase.xml",
-//                            "oval:org.mitre.oval:obj:556",
-//                            2,
-//                            null
-//                        },
-//
-//                        // windows : registry
-//                        {
-//                            "test/data/definition/sample_oval-object-registry.xml",
-//                            "oval:org.mitre.oval:obj:717",
-//                            1,
-//                            "This registry key holds the service pack installed on the host if one is present."
-//                        }
+                        ,
+                        // windows : metabase
+                        {
+                            SystemObject.class,
+                            "test/data/definitions/object-metabase_oval-obj-556_2.xml",
+                            "oval_definitions/objects/windows:metabase_object",
+                            new MetabaseObject( "oval:org.mitre.oval:obj:556",
+                                            2
+                                            )
+                                .key( new EntityObjectString( "LM/W3SVC" ) )
+                                .ID( metabaseID )
+                        }
+                        ,
+                        // windows : registry
+                        {
+                            SystemObject.class,
+                            "test/data/definitions/object-registry_oval-obj-717_1.xml",
+                            "oval_definitions/objects/windows:registry_object",
+                            new RegistryObject( "oval:org.mitre.oval:obj:717",
+                                            1,
+                                            "This registry key holds the service pack installed on the host if one is present."
+                                            )
+                                .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )
+                                .key( new EntityObjectString( "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion" ) )
+                                .name( new EntityObjectString( "CSDVersion" ) )
+                        }
         };
     }
 

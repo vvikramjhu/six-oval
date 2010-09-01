@@ -76,6 +76,19 @@ public class RegistryObject
     public RegistryObject(
                     final String id,
                     final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public RegistryObject(
+                    final String id,
+                    final int version,
                     final RegistryHive hive,
                     final String key,
                     final String name
@@ -116,6 +129,14 @@ public class RegistryObject
     }
 
 
+    public RegistryObject behaviors(
+                    final RegistryBehaviors behaviors
+                    )
+    {
+        setBehaviors( behaviors );
+        return this;
+    }
+
 
     public RegistryBehaviors getBehaviors()
     {
@@ -131,6 +152,14 @@ public class RegistryObject
         _hive = hive;
     }
 
+
+    public RegistryObject hive(
+                    final EntityObjectRegistryHive hive
+                    )
+    {
+        setHive( hive );
+        return this;
+    }
 
 
     public EntityObjectRegistryHive getHive()
@@ -148,6 +177,15 @@ public class RegistryObject
     }
 
 
+    public RegistryObject key(
+                    final EntityObjectString key
+                    )
+    {
+        setKey( key );
+        return this;
+    }
+
+
     public EntityObjectString getKey()
     {
         return _key;
@@ -160,15 +198,26 @@ public class RegistryObject
                     // nillable ="true"
                     )
     {
-        EntityObjectString  n = name;
-        if (name != null) {
-            String  data = name.getData();
-            if (data == null  ||  data.length() == 0) {
-                n = null;
-            }
-        }
+        _name = name;
 
-        _name = n;
+//        EntityObjectString  n = name;
+//        if (name != null) {
+//            String  data = name.getData();
+//            if (data == null  ||  data.length() == 0) {
+//                n = null;
+//            }
+//        }
+//
+//        _name = n;
+    }
+
+
+    public RegistryObject name(
+                    final EntityObjectString name
+                    )
+    {
+        setName( name );
+        return this;
     }
 
 
