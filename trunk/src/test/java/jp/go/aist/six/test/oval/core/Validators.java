@@ -4,11 +4,13 @@ import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.OvalElement;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.definitions.State;
+import jp.go.aist.six.oval.model.definitions.StateRef;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.independent.TextFileContentObject;
 import org.testng.Assert;
 import org.testng.Reporter;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -266,7 +268,15 @@ public abstract class Validators
             Reporter.log( " - object", true );
             Assert.assertEquals( actual.getObject(), expected.getObject() );
 
-            //TODO: state
+            Reporter.log( " - state", true );
+            Collection<StateRef>  expectedStates = expected.getState();
+            Collection<StateRef>  actualStates = actual.getState();
+            if (expectedStates == null  ||  expectedStates.size() == 0) {
+                Assert.assertTrue( (actualStates == null  ||  actualStates.size() == 0) );
+            } else {
+                Assert.assertEquals( actualStates.size(), expectedStates.size() );
+                Assert.assertTrue( actualStates.containsAll( expectedStates ));
+            }
         }
     }
 
