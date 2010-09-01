@@ -29,6 +29,7 @@ import jp.go.aist.six.oval.model.linux.RpmInfoState;
 import jp.go.aist.six.oval.model.linux.RpmInfoTest;
 import jp.go.aist.six.oval.model.unix.UnameObject;
 import jp.go.aist.six.oval.model.unix.UnameTest;
+import jp.go.aist.six.oval.model.windows.FileObject;
 import jp.go.aist.six.oval.model.windows.FileState;
 import jp.go.aist.six.oval.model.windows.FileTest;
 import jp.go.aist.six.oval.model.windows.MetabaseState;
@@ -459,6 +460,10 @@ public class StoreDefinitionsTest
         EntityObjectString  textfilecontentLine = new EntityObjectString( "\\d\\.\\d" );
         textfilecontentLine.setOperation( Operation.PATTERN_MATCH );
 
+        EntityObjectString  filePath = new EntityObjectString();
+        filePath.setVarRef( "oval:org.mitre.oval:var:200" );
+        filePath.setVarCheck( Check.ALL );
+
         return new Object[][] {
                         // independent : family
                         {
@@ -507,7 +512,7 @@ public class StoreDefinitionsTest
                                 .name( new EntityObjectString( "redhat-release" ) )
                         }
                         ,
-//                        // unux : uname
+                        // unux : uname
                         {
                             SystemObject.class,
                             "test/data/definitions/object-uname_oval-obj-2759_1.xml",
@@ -517,14 +522,21 @@ public class StoreDefinitionsTest
                                             "The single uname object."
                                             )
                         }
-//                        {
-//                            "test/data/definition/sample_oval-object-uname.xml",
-//                            "oval:org.mitre.oval:obj:2759",
-//                            1,
-//                            "The single uname object."
-//                        },
-//
+                        ,
 //                        // windows : file
+                        {
+                            SystemObject.class,
+                            "test/data/definitions/object-file_oval-obj-222_1.xml",
+                            "oval_definitions/objects/windows:file_object",
+                            new FileObject( "oval:org.mitre.oval:obj:222",
+                                            1,
+                                            "The path to the mshtml.dll file in the system root"
+                                            )
+                                .path( filePath )
+                                .filename( new EntityObjectString( "mshtml.dll" ) )
+
+
+                        }
 //                        {
 //                            "test/data/definition/sample_oval-object-file.xml",
 //                            "oval:org.mitre.oval:obj:222",

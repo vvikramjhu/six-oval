@@ -88,6 +88,19 @@ public class FileObject
     public FileObject(
                     final String id,
                     final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public FileObject(
+                    final String id,
+                    final int version,
                     final String path,
                     final String filename
                     )
@@ -124,6 +137,15 @@ public class FileObject
     }
 
 
+    public FileObject behaviors(
+                    final FileBehaviors behaviors
+                    )
+    {
+        setBehaviors( behaviors );
+        return this;
+    }
+
+
     public FileBehaviors getBehaviors()
     {
         return _behaviors;
@@ -140,8 +162,15 @@ public class FileObject
     }
 
 
-    /**
-     */
+    public FileObject filepath(
+                    final EntityObjectString filepath
+                    )
+    {
+        setFilepath( filepath );
+        return this;
+    }
+
+
     public EntityObjectString getFilepath()
     {
         return _filepath;
@@ -157,6 +186,15 @@ public class FileObject
     }
 
 
+    public FileObject path(
+                    final EntityObjectString path
+                    )
+    {
+        setPath( path );
+        return this;
+    }
+
+
     public EntityObjectString getPath()
     {
         return _path;
@@ -169,6 +207,15 @@ public class FileObject
                     )
     {
         _filename = filename;
+    }
+
+
+    public FileObject filename(
+                    final EntityObjectString filename
+                    )
+    {
+        setFilename( filename );
+        return this;
     }
 
 
