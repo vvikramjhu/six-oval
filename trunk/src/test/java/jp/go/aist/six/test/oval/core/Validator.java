@@ -14,7 +14,7 @@ import org.testng.Reporter;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class Validate
+public class Validator
 {
 
     /**
