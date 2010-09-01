@@ -7,6 +7,8 @@ import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.common.Operator;
+import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.DefinitionClass;
 import jp.go.aist.six.oval.model.definitions.EntityObjectInt;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
@@ -135,6 +137,46 @@ public class StoreDefinitionsTest
         Validators.validator( type ).equals( persistent2, object );
 //        _assertEquals( persistent2, object );
         Reporter.log( "...validation OK", true );
+    }
+
+
+
+    //==============================================================
+    //  definition
+    //==============================================================
+
+    @DataProvider( name="definitions.definition" )
+    public Object[][] provideDefinitionsDefinition()
+    {
+        return new Object[][] {
+                        // independent : family
+                        {
+                            Definition.class,
+                            "test/data/definitions/definition_oval-def-8500_1.xml",
+                            "oval_definitions/definitions/definition",
+                            new Definition( "oval:org.mitre.oval:def:8500",
+                                            1,
+                                            DefinitionClass.VULNERABILITY )
+                        }
+        };
+    }
+
+
+
+    @org.testng.annotations.Test(
+                    groups={"oval.core.store", "definitions.definition"},
+                    dataProvider="definitions.definition",
+                    alwaysRun=true
+                    )
+    public <T extends Definition> void testDefinitionsDefinition(
+                    final Class<T> type,
+                    final String filepath,
+                    final String xpath,
+                    final T expected
+                    )
+    throws Exception
+    {
+        _testOvalEntity( type, filepath, xpath, expected );
     }
 
 
