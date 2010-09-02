@@ -31,7 +31,6 @@ import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.Platform;
 import jp.go.aist.six.oval.model.definitions.Product;
 import jp.go.aist.six.oval.model.definitions.Reference;
-import jp.go.aist.six.util.xml.OxmException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import java.util.Collection;
@@ -54,23 +53,12 @@ public class DefinitionDao
 
 
 
-    private OvalXml  _xmlMapper;
-
-
-
     /**
      * Constructor.
      */
     public DefinitionDao()
     {
         super( Definition.class );
-
-        try {
-            _xmlMapper = OvalContext.INSTANCE.getXml();
-        } catch (Exception ex) {
-            // TODO:
-            _LOG.error(  "XmlMapper instantiation failed: " + ex.getMessage() );
-        }
     }
 
 
@@ -143,10 +131,12 @@ public class DefinitionDao
 //            }
 //        }
 
+        // persist the criteria as XML string.
         Criteria  criteria = def.getCriteria();
-        if (criteria != null  &&  _xmlMapper != null) {
+        if (criteria != null) {
             try {
-                String  xml = _xmlMapper.marshalToString( criteria );
+                OvalXml  mapper = OvalContext.INSTANCE.getXml();
+                String  xml = mapper.marshalToString( criteria );
                 DefinitionCriteria  dc = new DefinitionCriteria();
                 dc.setOvalID( def.getOvalID() );
                 dc.setOvalVersion( def.getOvalVersion() );
@@ -154,7 +144,7 @@ public class DefinitionDao
                 getForwardingDao( DefinitionCriteria.class ).sync( dc );
 
 //                def.setCriteriaXml( xml );
-            } catch (OxmException ex) {
+            } catch (Exception ex) {
                 // TODO:
                 _LOG.warn(  "'criteria' property NOT persisted" );
             }
