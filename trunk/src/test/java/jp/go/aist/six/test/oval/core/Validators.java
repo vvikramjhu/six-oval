@@ -4,6 +4,7 @@ import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.OvalElement;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.StateRef;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
@@ -22,6 +23,21 @@ import java.util.Map;
  */
 public abstract class Validators
 {
+
+    public static <T> void assertEquals(
+                    final Collection<T> actual,
+                    final Collection<T> expected
+                    )
+    {
+        if (actual == null) {
+            Assert.assertTrue( expected == null  ||  expected.size() == 0 );
+        } else {
+            Assert.assertEquals( actual.size(), expected.size() );
+            Assert.assertTrue( actual.containsAll( expected ) );
+        }
+    }
+
+
 
     /**
      */
@@ -168,6 +184,7 @@ public abstract class Validators
 
 
     /**
+     * Definition
      */
     public static class DefinitionValidator
     extends OvalEntityValidator<Definition>
@@ -182,6 +199,26 @@ public abstract class Validators
 
             Reporter.log( " - class", true );
             Assert.assertEquals( actual.getDefinitionClass(), expected.getDefinitionClass() );
+
+            Reporter.log( " - metadata", true );
+            _assertEquals( actual.getMetadata(), expected.getMetadata() );
+        }
+
+
+        private void _assertEquals(
+                        final Metadata actual,
+                        final Metadata expected
+                        )
+        {
+            if (actual == null) {
+                Assert.assertNull( expected );
+                return;
+            }
+
+            Assert.assertEquals( actual.getTitle(), expected.getTitle() );
+            Assert.assertEquals( actual.getAffected(), expected.getAffected() );
+            Assert.assertEquals( actual.getDescription(), expected.getDescription() );
+            assertEquals( actual.getReference(), expected.getReference() );
         }
     }
 

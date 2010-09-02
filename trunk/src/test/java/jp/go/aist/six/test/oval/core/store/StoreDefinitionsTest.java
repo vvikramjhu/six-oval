@@ -149,7 +149,7 @@ public class StoreDefinitionsTest
     public Object[][] provideDefinitionsDefinition()
     {
         return new Object[][] {
-                        // independent : family
+                        // Mitre, windows, vulnerability, MySQL 5.1
                         {
                             Definition.class,
                             "test/data/definitions/definition_oval-def-8500_1.xml",
@@ -157,6 +157,16 @@ public class StoreDefinitionsTest
                             new Definition( "oval:org.mitre.oval:def:8500",
                                             1,
                                             DefinitionClass.VULNERABILITY )
+                        }
+                        ,
+                        // Mitre, windows, inverntory, MySQL 5.1
+                        {
+                            Definition.class,
+                            "test/data/definitions/definition_oval-def-8297_1.xml",
+                            "oval_definitions/definitions/definition",
+                            new Definition( "oval:org.mitre.oval:def:8297",
+                                            1,
+                                            DefinitionClass.INVENTORY )
                         }
         };
     }
