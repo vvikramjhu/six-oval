@@ -59,6 +59,20 @@ public class FamilyState
     }
 
 
+    /**
+     * Constructor.
+     */
+    public FamilyState(
+                    final String id,
+                    final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
+    }
+
+
+
 
     /**
      */

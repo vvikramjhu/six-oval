@@ -15,7 +15,6 @@ import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.Reference;
-import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.independent.EntityStateFamily;
@@ -245,143 +244,71 @@ public class OvalSample
     //  def:state
     //==============================================================
 
+    public static final FamilyState  STATE_FAMILY_99 =
+        new FamilyState( "oval:org.mitre.oval:ste:99", 2,
+        "the installed operating system is part of the Microsoft Windows family" )
+    .family( new EntityStateFamily( Family.WINDOWS,
+                    Operation.CASE_INSENSITIVE_EQUALS )
+    );
 
-    @DataProvider( name="definitions.state" )
-    public Object[][] provideDefinitionsState()
-    {
-        EntityStateFamily  stateFamily =
-            new EntityStateFamily( Family.WINDOWS, Operation.CASE_INSENSITIVE_EQUALS );
 
-        EntityStateAnySimple  subexpression =
-            new EntityStateAnySimple( "\\brw\\b",
-                            Operation.PATTERN_MATCH );
+    public static final TextFileContentState  STATE_TEXTFILECONTENT_5132 =
+        new TextFileContentState( "oval:org.mitre.oval:ste:5132", 1 )
+    .subExpression( new EntityStateAnySimple( "\\brw\\b",
+                    Operation.PATTERN_MATCH )
+    );
 
-        EntityStateString  fileVersion =
-            new EntityStateString( "6.0.2900.2873",
-                            Datatype.VERSION,
-                            Operation.LESS_THAN );
 
-        EntityStateAnySimple  metabaseData =
-            new EntityStateAnySimple( "^http:*,PERMANENT,*",
-                            Operation.PATTERN_MATCH );
+    public static final FileState  STATE_FILE_2190 =
+        new FileState( "oval:org.mitre.oval:ste:2190", 1 )
+    .version( new EntityStateString( "6.0.2900.2873",
+                    Datatype.VERSION, Operation.LESS_THAN )
+    );
 
-        EntityStateAnySimple  registryValue =
-            new EntityStateAnySimple( "1",
-                            Datatype.INT,
-                            Operation.EQUALS );
 
-        EntityStateString  dpkginfoEvr =
-            new EntityStateString( "0:2.2.6-02-1+lenny2+b2",
-                            Datatype.EVR_STRING,
-                            Operation.LESS_THAN );
+    public static final MetabaseState  STATE_METABASE_537 =
+        new MetabaseState( "oval:org.mitre.oval:ste:537", 1 )
+    .data( new EntityStateAnySimple( "^http:*,PERMANENT,*",
+                    Operation.PATTERN_MATCH )
+    );
 
-        EntityStateString  rpminfoEvr =
-            new EntityStateString( "0:1.3.5-11.el5_4.1",
-                            Datatype.EVR_STRING,
-                            Operation.LESS_THAN );
 
-        EntityStateString  rpminfoVersion =
-            new EntityStateString( "^5[^[:digit:]]",
-                            Operation.PATTERN_MATCH );
+    public static final RegistryState  STATE_REGISTRY_1205 =
+        new RegistryState( "oval:org.mitre.oval:ste:1205", 1 )
+    .value( new EntityStateAnySimple( "1",
+                    Datatype.INT,
+                    Operation.EQUALS )
+    );
 
-        EntityStateString  rpminfoSignatureKeyID =
-            new EntityStateString( "5326810137017186",
-                            Operation.EQUALS );
 
-        return new Object[][] {
-                        // independent : family
-                        {
-                            State.class,
-                            "test/data/definitions/state-family_oval-ste-99_2.xml",
-                            "oval_definitions/states/independent:family_state",
-                            new FamilyState( "oval:org.mitre.oval:ste:99",
-                                            2 )
-                                .family( stateFamily )
-                                .comment( "the installed operating system is part of the Microsoft Windows family")
-                        }
-                        ,
-                        // independent : textfilecontent
-                        {
-                            State.class,
-                            "test/data/definitions/state-textfilecontent_oval-ste-5132_1.xml",
-                            "oval_definitions/states/independent:textfilecontent_state",
-                            new TextFileContentState( "oval:org.mitre.oval:ste:5132",
-                                            1 )
-                                .subExpression( subexpression )
-                        }
-                        ,
-                        // windows : file
-                        {
-                            State.class,
-                            "test/data/definitions/state-file_oval-ste-2190_1.xml",
-                            "oval_definitions/states/windows:file_state",
-                            new FileState( "oval:org.mitre.oval:ste:2190",
-                                            1 )
-                                .version( fileVersion )
-                        }
-                        ,
-                        // windows : metabase
-                        {
-                            State.class,
-                            "test/data/definitions/state-metabase_oval-ste-537_1.xml",
-                            "oval_definitions/states/windows:metabase_state",
-                            new MetabaseState( "oval:org.mitre.oval:ste:537",
-                                            1 )
-                                .data( metabaseData )
-                        }
-                        ,
-                        // windows : registry
-                        {
-                            State.class,
-                            "test/data/definitions/state-registry_oval-ste-1205_1.xml",
-                            "oval_definitions/states/windows:registry_state",
-                            new RegistryState( "oval:org.mitre.oval:ste:1205",
-                                            1 )
-                                .value( registryValue )
-                        }
-                        ,
-                        // linux : dpkginfo
-                        {
-                            State.class,
-                            "test/data/definitions/state-dpkginfo_oval-ste-5797_1.xml",
-                            "oval_definitions/states/linux:dpkginfo_state",
-                            new DpkgInfoState( "oval:org.mitre.oval:ste:5797",
-                                            1 )
-                                .evr( dpkginfoEvr )
-                        }
-                        ,
-                        // linux : rpminfo/evr
-                        {
-                            State.class,
-                            "test/data/definitions/state-rpminfo_rhsa-ste-20100061004_301.xml",
-                            "oval_definitions/states/linux:rpminfo_state",
-                            new RpmInfoState( "oval:com.redhat.rhsa:ste:20100061004",
-                                            301 )
-                                .evr( rpminfoEvr )
-                        }
-                        ,
-                        // linux : rpminfo/version
-                        {
-                            State.class,
-                            "test/data/definitions/state-rpminfo_rhsa-ste-20100061003_301.xml",
-                            "oval_definitions/states/linux:rpminfo_state",
-                            new RpmInfoState( "oval:com.redhat.rhsa:ste:20100061003",
-                                            301 )
-                                .version( rpminfoVersion )
-                        }
-                        ,
-                        // linux : rpminfo/signature_keyid
-                        {
-                            State.class,
-                            "test/data/definitions/state-rpminfo_rhsa-ste-20100061002_301.xml",
-                            "oval_definitions/states/linux:rpminfo_state",
-                            new RpmInfoState( "oval:com.redhat.rhsa:ste:20100061002",
-                                            301 )
-                                .signatureKeyID( rpminfoSignatureKeyID )
-                        }
-        };
+    public static final DpkgInfoState  STATE_DPKGINFO_5797 =
+        new DpkgInfoState( "oval:org.mitre.oval:ste:5797", 1 )
+    .evr( new EntityStateString( "0:2.2.6-02-1+lenny2+b2",
+                    Datatype.EVR_STRING,
+                    Operation.LESS_THAN )
+    );
 
-    }
+
+    public static final RpmInfoState  STATE_RPMINFO_20100061004 =
+        new RpmInfoState( "oval:com.redhat.rhsa:ste:20100061004", 301 )
+    .evr( new EntityStateString( "0:1.3.5-11.el5_4.1",
+                    Datatype.EVR_STRING,
+                    Operation.LESS_THAN )
+    );
+
+
+    public static final RpmInfoState  STATE_RPMINFO_20100061003 =
+        new RpmInfoState( "oval:com.redhat.rhsa:ste:20100061003", 301 )
+    .version( new EntityStateString( "^5[^[:digit:]]",
+                    Operation.PATTERN_MATCH )
+    );
+
+
+    public static final RpmInfoState  STATE_RPMINFO_20100061002  =
+        new RpmInfoState( "oval:com.redhat.rhsa:ste:20100061002", 301 )
+    .signatureKeyID( new EntityStateString( "5326810137017186",
+                    Operation.EQUALS )
+    );
 
 
 

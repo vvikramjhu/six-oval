@@ -77,7 +77,22 @@ public abstract class State
     }
 
 
+    /**
+     * Constructor.
+     */
+    public State(
+                    final String id,
+                    final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
+    }
 
+
+
+    /**
+     */
     public State operator(
                   final Operator operator
                   )
