@@ -130,6 +130,15 @@ public class Definition
     }
 
 
+    public Definition metadata(
+                    final Metadata metadata
+                    )
+    {
+        setMetadata( metadata );
+        return this;
+    }
+
+
     public Metadata getMetadata()
     {
         if (_metadata == null) {

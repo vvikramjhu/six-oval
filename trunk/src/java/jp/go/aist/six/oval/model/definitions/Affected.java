@@ -253,13 +253,15 @@ public class Affected
         Collection<Product>  other_product = other.getProduct();
         Collection<Product>   this_product =  this.getProduct();
         if (this_product == other_product
-                        ||  (this_product != null
-                                        &&  this_product.equals( other_product ))) {
+                        ||  (this_product != null  &&  other_product != null
+                                        &&  this_product.size() == other_product.size()
+                                        &&  this_product.containsAll( other_product ))) {
             Collection<Platform>  other_platform = other.getPlatform();
             Collection<Platform>   this_platform =  this.getPlatform();
             if (this_platform == other_platform
-                        ||  (this_platform != null
-                                        &&  this_platform.equals( other_platform ))) {
+                        ||  (this_platform != null  &&  other_platform != null
+                                        &&  this_platform.size() == other_platform.size()
+                                        &&  this_platform.containsAll( other_platform ))) {
                 if (this.getFamily() == other.getFamily()) {
                     return true;
                 }
@@ -268,6 +270,34 @@ public class Affected
 
         return false;
     }
+//    {
+//        if (this == obj) {
+//            return true;
+//        }
+//
+//        if (!(obj instanceof Affected)) {
+//            return false;
+//        }
+//
+//        Affected  other = (Affected)obj;
+//        Collection<Product>  other_product = other.getProduct();
+//        Collection<Product>   this_product =  this.getProduct();
+//        if (this_product == other_product
+//                        ||  (this_product != null
+//                                        &&  this_product.equals( other_product ))) {
+//            Collection<Platform>  other_platform = other.getPlatform();
+//            Collection<Platform>   this_platform =  this.getPlatform();
+//            if (this_platform == other_platform
+//                        ||  (this_platform != null
+//                                        &&  this_platform.equals( other_platform ))) {
+//                if (this.getFamily() == other.getFamily()) {
+//                    return true;
+//                }
+//            }
+//        }
+//
+//        return false;
+//    }
 
 
 

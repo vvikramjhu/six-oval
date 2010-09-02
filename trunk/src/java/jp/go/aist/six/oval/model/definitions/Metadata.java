@@ -22,10 +22,10 @@ package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.linux.CveReference;
 import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
-import jp.go.aist.six.oval.model.mitre.Modified;
-import jp.go.aist.six.oval.model.mitre.Submitted;
-import jp.go.aist.six.oval.model.mitre.OvalRepository;
 import jp.go.aist.six.oval.model.mitre.Event;
+import jp.go.aist.six.oval.model.mitre.Modified;
+import jp.go.aist.six.oval.model.mitre.OvalRepository;
+import jp.go.aist.six.oval.model.mitre.Submitted;
 import jp.go.aist.six.util.IsoDate;
 import jp.go.aist.six.util.castor.AbstractPersistable;
 import java.util.ArrayList;
@@ -109,6 +109,15 @@ public class Metadata
     }
 
 
+    public Metadata title(
+                    final String title
+                    )
+    {
+        setTitle( title );
+        return this;
+    }
+
+
     public String getTitle()
     {
         return _title;
@@ -123,6 +132,15 @@ public class Metadata
                     )
     {
         _affected = affected;
+    }
+
+
+    public Metadata affected(
+                    final Affected affected
+                    )
+    {
+        setAffected( affected );
+        return this;
     }
 
 
@@ -142,7 +160,9 @@ public class Metadata
         if (references != _reference) {
             _reference.clear();
             if (references != null  &&  references.size() > 0) {
-                _reference.addAll( references );
+                for (Reference r : references) {
+                    addReference( r );
+                }
             }
         }
     }
@@ -157,6 +177,15 @@ public class Metadata
         } else {
             return _reference.add( reference );
         }
+    }
+
+
+    public Metadata reference(
+                    final Reference reference
+                    )
+    {
+        addReference( reference );
+        return this;
     }
 
 
@@ -180,6 +209,15 @@ public class Metadata
                     )
     {
         _description= description;
+    }
+
+
+    public Metadata description(
+                    final String description
+                    )
+    {
+        setDescription( description );
+        return this;
     }
 
 

@@ -7,12 +7,17 @@ import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.common.Operator;
+import jp.go.aist.six.oval.model.definitions.Affected;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.DefinitionClass;
 import jp.go.aist.six.oval.model.definitions.EntityObjectInt;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
+import jp.go.aist.six.oval.model.definitions.Metadata;
+import jp.go.aist.six.oval.model.definitions.Platform;
+import jp.go.aist.six.oval.model.definitions.Product;
+import jp.go.aist.six.oval.model.definitions.Reference;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
@@ -148,15 +153,77 @@ public class StoreDefinitionsTest
     @DataProvider( name="definitions.definition" )
     public Object[][] provideDefinitionsDefinition()
     {
+        Affected  affected8500 =
+            new Affected( Family.WINDOWS,
+                            new Platform[] {
+                                new Platform( "Microsoft Windows 2000" ),
+                                new Platform( "Microsoft Windows XP" ),
+                                new Platform( "Microsoft Windows Server 2003" ),
+                                new Platform( "Microsoft Windows Vista" ),
+                                new Platform( "Microsoft Windows 7" ),
+                                new Platform( "Microsoft Windows Server 2008" )
+                            },
+                            new Product[] {
+                                new Product( "MySQL Server 5.0" ),
+                                new Product( "MySQL Server 5.1" )
+                            }
+            );
+
+        Metadata  meta8500 =
+            new Metadata( "MySQL 5.0 and 5.1 SELECT Statement DOS Vulnerability",
+                            "mysqld in MySQL 5.0.x before 5.0.88 and 5.1.x before 5.1.41"
+                            + " does not (1) properly handle errors during execution of certain SELECT statements with subqueries, and does not"
+                            + " (2) preserve certain null_value flags during execution of statements"
+                            + " that use the GeomFromWKB function, which allows remote authenticated users"
+                            + " to cause a denial of service (daemon crash) via a crafted statement."
+                            )
+                .affected( affected8500 )
+                .reference( new Reference( "CVE", "CVE-2009-4019",
+                                "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4019")
+                );
+
+        Definition def8500 =
+            new Definition( "oval:org.mitre.oval:def:8500", 1,
+                        DefinitionClass.VULNERABILITY,
+                        meta8500
+                        );
+
+
+        Affected  affected8297 =
+            new Affected( Family.WINDOWS,
+                        new Platform[] {
+                            new Platform( "Microsoft Windows 2000" ),
+                            new Platform( "Microsoft Windows XP" ),
+                            new Platform( "Microsoft Windows Server 2003" ),
+                            new Platform( "Microsoft Windows Vista" ),
+                            new Platform( "Microsoft Windows 7" ),
+                            new Platform( "Microsoft Windows Server 2008" )
+                        },
+                        new Product[] {
+                            new Product( "MySQL Server 5.1" )
+                        }
+            );
+
+        Metadata  meta8297 =
+            new Metadata( "MySQL 5.1 is installed",
+                            "MySQL Server 5.1 is installed"
+                            )
+                .affected( affected8297 )
+                .reference( new Reference( "CPE", "cpe:/a:mysql:mysql:5.1", null ) );
+
+        Definition  def8297 =
+            new Definition( "oval:org.mitre.oval:def:8297", 1,
+                        DefinitionClass.INVENTORY,
+                        meta8297
+                        );
+
         return new Object[][] {
                         // Mitre, windows, vulnerability, MySQL 5.1
                         {
                             Definition.class,
                             "test/data/definitions/definition_oval-def-8500_1.xml",
                             "oval_definitions/definitions/definition",
-                            new Definition( "oval:org.mitre.oval:def:8500",
-                                            1,
-                                            DefinitionClass.VULNERABILITY )
+                            def8500
                         }
                         ,
                         // Mitre, windows, inverntory, MySQL 5.1
@@ -164,9 +231,7 @@ public class StoreDefinitionsTest
                             Definition.class,
                             "test/data/definitions/definition_oval-def-8297_1.xml",
                             "oval_definitions/definitions/definition",
-                            new Definition( "oval:org.mitre.oval:def:8297",
-                                            1,
-                                            DefinitionClass.INVENTORY )
+                            def8297
                         }
         };
     }

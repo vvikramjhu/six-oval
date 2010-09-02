@@ -215,9 +215,13 @@ public abstract class Validators
                 return;
             }
 
+            Reporter.log( " - metadata.title", true );
             Assert.assertEquals( actual.getTitle(), expected.getTitle() );
+            Reporter.log( " - metadata.affected", true );
             Assert.assertEquals( actual.getAffected(), expected.getAffected() );
+            Reporter.log( " - metadata.description", true );
             Assert.assertEquals( actual.getDescription(), expected.getDescription() );
+            Reporter.log( " - metadata.reference", true );
             assertEquals( actual.getReference(), expected.getReference() );
         }
     }
