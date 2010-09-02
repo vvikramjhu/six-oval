@@ -217,6 +217,41 @@ public class StoreDefinitionsTest
                         meta8297
                         );
 
+        Affected  affected20100332 =
+            new Affected( Family.UNIX,
+                            new Platform[] {
+                                new Platform( "Red Hat Enterprise Linux 5" ),
+                                new Platform( "Red Hat Enterprise Linux 4" )
+                            },
+                            null
+                            );
+
+        Metadata  meta20100332 =
+            new Metadata( "RHSA-2010:0332: firefox security update (Critical)",
+                            "Mozilla Firefox is an open source Web browser. XULRunner provides the XUL\n"
+                            + "Runtime environment for Mozilla Firefox. Several use-after-free flaws were found in Firefox. Visiting a web page\n"
+                            + "containing malicious content could result in Firefox executing arbitrary code with the privileges of the user running Firefox. (CVE-2010-0175,\n"
+                            + "CVE-2010-0176, CVE-2010-0177) A flaw was found in Firefox that could allow an applet to generate a drag\n"
+                            + "and drop action from a mouse click. Such an action could be used to execute arbitrary JavaScript with the privileges of the user running Firefox.\n"
+                            + "(CVE-2010-0178) A privilege escalation flaw was found in Firefox when the Firebug add-on is\n"
+                            + "in use. The XMLHttpRequestSpy module in the Firebug add-on exposes a Chrome privilege escalation flaw that could be used to execute arbitrary\n"
+                            + "JavaScript with the privileges of the user running Firefox. (CVE-2010-0179) Several flaws were found in the processing of malformed web content. A web\n"
+                            + "page containing malicious content could cause Firefox to crash or, potentially, execute arbitrary code with the privileges of the user running\n"
+                            + "Firefox. (CVE-2010-0174) For technical details regarding these flaws, refer to the Mozilla security\n"
+                            + "advisories for Firefox 3.0.19. You can find a link to the Mozilla advisories in the References section of this erratum.\n\n"
+                            + "All Firefox users should upgrade to these updated packages, which contain Firefox version 3.0.19, which corrects these issues. After installing the\n"
+                            + "update, Firefox must be restarted for the changes to take effect."
+                            )
+                .affected( affected20100332 )
+                .reference( new Reference( "RHSA", "RHSA-2010:0332-00",
+                                "https://rhn.redhat.com/errata/RHSA-2010-0332.html" ) );
+
+        Definition  def20100332 =
+            new Definition( "oval:com.redhat.rhsa:def:20100332", 301,
+                        DefinitionClass.PATCH,
+                        meta20100332
+                        );
+
         return new Object[][] {
                         // Mitre, windows, vulnerability, MySQL 5.1
                         {
@@ -232,6 +267,14 @@ public class StoreDefinitionsTest
                             "test/data/definitions/definition_oval-def-8297_1.xml",
                             "oval_definitions/definitions/definition",
                             def8297
+                        }
+                        ,
+                        // Red Hat, unix, patch, firefox
+                        {
+                            Definition.class,
+                            "test/data/definitions/definition_rhsa-def-20100332_301.xml",
+                            "oval_definitions/definitions/definition",
+                            def20100332
                         }
         };
     }
