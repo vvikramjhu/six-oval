@@ -319,15 +319,14 @@ public class OvalSample
     @DataProvider( name="definitions.object" )
     public Object[][] provideDefinitionsObject()
     {
-        EntityObjectString  textfilecontentLine = new EntityObjectString( "\\d\\.\\d" );
-        textfilecontentLine.setOperation( Operation.PATTERN_MATCH );
+        EntityObjectString  textfilecontentLine =
+            new EntityObjectString( "\\d\\.\\d", Operation.PATTERN_MATCH );
 
-        EntityObjectString  filePath = new EntityObjectString();
-        filePath.setVarRef( "oval:org.mitre.oval:var:200" );
-        filePath.setVarCheck( Check.ALL );
+        EntityObjectString  filePath =
+            new EntityObjectString( "oval:org.mitre.oval:var:200", Check.ALL );
 
-        EntityObjectInt  metabaseID = new EntityObjectInt( "6032" );
-        metabaseID.setDatatype( Datatype.INT );
+        EntityObjectInt  metabaseID =
+            new EntityObjectInt( "6032", Datatype.INT, EntityObjectInt.DEFAULT_OPERATION );
 
         return new Object[][] {
                         // independent : family
@@ -335,8 +334,7 @@ public class OvalSample
                             SystemObject.class,
                             "test/data/definitions/object-family_oval-obj-99_1.xml",
                             "oval_definitions/objects/independent:family_object",
-                            new FamilyObject( "oval:org.mitre.oval:obj:99",
-                                            1,
+                            new FamilyObject( "oval:org.mitre.oval:obj:99", 1,
                                             "This is the default family object. Only one family object should exist."
                                             )
                         }
@@ -346,9 +344,7 @@ public class OvalSample
                             SystemObject.class,
                             "test/data/definitions/object-textfilecontent_oval-obj-7326_1.xml",
                             "oval_definitions/objects/independent:textfilecontent_object",
-                            new TextFileContentObject( "oval:org.mitre.oval:obj:7326",
-                                            1
-                                            )
+                            new TextFileContentObject( "oval:org.mitre.oval:obj:7326", 1 )
                                 .path( new EntityObjectString( "/etc" ) )
                                 .filename( new EntityObjectString( "debian_version" ) )
                                 .line( textfilecontentLine )
@@ -359,8 +355,7 @@ public class OvalSample
                             SystemObject.class,
                             "test/data/definitions/object-dpkginfo_oval-obj-10648_1.xml",
                             "oval_definitions/objects/linux:dpkginfo_object",
-                            new DpkgInfoObject( "oval:org.mitre.oval:obj:10648",
-                                            1,
+                            new DpkgInfoObject( "oval:org.mitre.oval:obj:10648", 1,
                                             "apache2 package information"
                                             )
                                 .name( new EntityObjectString( "apache2" ) )
@@ -371,9 +366,7 @@ public class OvalSample
                             SystemObject.class,
                             "test/data/definitions/object-rpminfo_rhsa-obj-20100061001_301.xml",
                             "oval_definitions/objects/linux:rpminfo_object",
-                            new RpmInfoObject( "oval:com.redhat.rhsa:obj:20100061001",
-                                            301
-                                            )
+                            new RpmInfoObject( "oval:com.redhat.rhsa:obj:20100061001", 301 )
                                 .name( new EntityObjectString( "redhat-release" ) )
                         }
                         ,
@@ -382,8 +375,7 @@ public class OvalSample
                             SystemObject.class,
                             "test/data/definitions/object-uname_oval-obj-2759_1.xml",
                             "oval_definitions/objects/unix:uname_object",
-                            new UnameObject( "oval:org.mitre.oval:obj:2759",
-                                            1,
+                            new UnameObject( "oval:org.mitre.oval:obj:2759", 1,
                                             "The single uname object."
                                             )
                         }
@@ -393,8 +385,7 @@ public class OvalSample
                             SystemObject.class,
                             "test/data/definitions/object-file_oval-obj-222_1.xml",
                             "oval_definitions/objects/windows:file_object",
-                            new FileObject( "oval:org.mitre.oval:obj:222",
-                                            1,
+                            new FileObject( "oval:org.mitre.oval:obj:222", 1,
                                             "The path to the mshtml.dll file in the system root"
                                             )
                                 .path( filePath )
@@ -406,9 +397,7 @@ public class OvalSample
                             SystemObject.class,
                             "test/data/definitions/object-metabase_oval-obj-556_2.xml",
                             "oval_definitions/objects/windows:metabase_object",
-                            new MetabaseObject( "oval:org.mitre.oval:obj:556",
-                                            2
-                                            )
+                            new MetabaseObject( "oval:org.mitre.oval:obj:556", 2 )
                                 .key( new EntityObjectString( "LM/W3SVC" ) )
                                 .ID( metabaseID )
                         }
@@ -418,8 +407,7 @@ public class OvalSample
                             SystemObject.class,
                             "test/data/definitions/object-registry_oval-obj-717_1.xml",
                             "oval_definitions/objects/windows:registry_object",
-                            new RegistryObject( "oval:org.mitre.oval:obj:717",
-                                            1,
+                            new RegistryObject( "oval:org.mitre.oval:obj:717", 1,
                                             "This registry key holds the service pack installed on the host if one is present."
                                             )
                                 .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )

@@ -20,6 +20,10 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import jp.go.aist.six.oval.model.common.Check;
+import jp.go.aist.six.oval.model.common.Datatype;
+import jp.go.aist.six.oval.model.common.Operation;
+
 
 
 /**
@@ -47,6 +51,43 @@ public class EntityObjectString
                     )
     {
         super( data );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityObjectString(
+                    final String data,
+                    final Operation operation
+                    )
+    {
+        super( data, operation );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityObjectString(
+                    final String data,
+                    final Datatype datatype,
+                    final Operation operation
+                    )
+    {
+        super( data, datatype, operation );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityObjectString(
+                    final String varRef,
+                    final Check varCheck
+                    )
+    {
+        super( varRef, varCheck );
     }
 
 
