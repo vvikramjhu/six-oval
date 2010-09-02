@@ -71,11 +71,40 @@ public abstract class EntityBase
                     final String data
                     )
     {
+        this( data, DEFAULT_OPERATION );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityBase(
+                    final String data,
+                    final Operation operation
+                    )
+    {
+        this( data, DEFAULT_DATATYPE, operation );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityBase(
+                    final String data,
+                    final Datatype datatype,
+                    final Operation operation
+                    )
+    {
         setData( data );
+        setDatatype( datatype );
+        setOperation( operation );
     }
 
 
 
+    /**
+     */
     public void setData(
                     final String data
                     )

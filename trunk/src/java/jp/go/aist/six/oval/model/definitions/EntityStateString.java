@@ -20,6 +20,9 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import jp.go.aist.six.oval.model.common.Datatype;
+import jp.go.aist.six.oval.model.common.Operation;
+
 
 
 /**
@@ -47,6 +50,31 @@ public class EntityStateString
                     )
     {
         super( data );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateString(
+                    final String data,
+                    final Operation operation
+                    )
+    {
+        super( data, operation );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateString(
+                    final String data,
+                    final Datatype datatype,
+                    final Operation operation
+                    )
+    {
+        super( data, datatype, operation );
     }
 
 

@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.common.Family;
+import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 
 
@@ -49,7 +50,7 @@ public class EntityStateFamily
                     final String data
                     )
     {
-        super( data );
+        this( data, DEFAULT_OPERATION );
     }
 
 
@@ -60,7 +61,32 @@ public class EntityStateFamily
                     final Family data
                     )
     {
-        this( (data == null ? null : data.getName()) );
+        this( data, DEFAULT_OPERATION );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateFamily(
+                    final String data,
+                    final Operation operation
+                    )
+    {
+        this( Family.valueOf( data ), operation );
+    }
+
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateFamily(
+                    final Family data,
+                    final Operation operation
+                    )
+    {
+        super( (data == null ? null : data.getName()), operation );
     }
 
 

@@ -142,6 +142,24 @@ public class Affected
     }
 
 
+    public Affected platform(
+                    final Platform platform
+                    )
+    {
+        addPlatform( platform );
+        return this;
+    }
+
+
+    public Affected platform(
+                    final String platform
+                    )
+    {
+        addPlatform( new Platform( platform ) );
+        return this;
+    }
+
+
     public Collection<Platform> getPlatform()
     {
         return _platform;
@@ -179,6 +197,24 @@ public class Affected
         }
 
         return _product.add( product );
+    }
+
+
+    public Affected product(
+                    final Product product
+                    )
+    {
+        addProduct( product );
+        return this;
+    }
+
+
+    public Affected product(
+                    final String product
+                    )
+    {
+        addProduct( new Product( product ) );
+        return this;
     }
 
 

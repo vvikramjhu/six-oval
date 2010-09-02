@@ -21,6 +21,8 @@
 package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.common.Check;
+import jp.go.aist.six.oval.model.common.Datatype;
+import jp.go.aist.six.oval.model.common.Operation;
 
 
 
@@ -62,7 +64,34 @@ public abstract class EntityStateBase
     }
 
 
+    /**
+     * Constructor.
+     */
+    public EntityStateBase(
+                    final String data,
+                    final Operation operation
+                    )
+    {
+        super( data, operation );
+    }
 
+
+    /**
+     * Constructor.
+     */
+    public EntityStateBase(
+                    final String data,
+                    final Datatype datatype,
+                    final Operation operation
+                    )
+    {
+        super( data, datatype, operation );
+    }
+
+
+
+    /**
+     */
     public void setEntityCheck(
                     final Check check
                     )
