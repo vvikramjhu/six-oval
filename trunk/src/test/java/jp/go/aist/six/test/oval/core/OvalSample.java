@@ -4,6 +4,7 @@ import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Family;
+import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.common.Operator;
 import jp.go.aist.six.oval.model.definitions.Affected;
@@ -14,6 +15,7 @@ import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.Metadata;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.Reference;
 import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.independent.EntityStateFamily;
@@ -42,6 +44,7 @@ import jp.go.aist.six.oval.model.windows.MetabaseTest;
 import jp.go.aist.six.oval.model.windows.RegistryObject;
 import jp.go.aist.six.oval.model.windows.RegistryState;
 import jp.go.aist.six.oval.model.windows.RegistryTest;
+import jp.go.aist.six.util.IsoDate;
 
 
 
@@ -51,99 +54,6 @@ import jp.go.aist.six.oval.model.windows.RegistryTest;
  */
 public class OvalSample
 {
-
-    //==============================================================
-    //  def:definition
-    //==============================================================
-
-    public static final Affected  AFFECTED_8500 = new Affected( Family.WINDOWS )
-    .platform( "Microsoft Windows 2000" )
-    .platform( "Microsoft Windows XP" )
-    .platform( "Microsoft Windows Server 2003" )
-    .platform( "Microsoft Windows Vista" )
-    .platform( "Microsoft Windows 7" )
-    .platform( "Microsoft Windows Server 2008" )
-    .product( "MySQL Server 5.0" )
-    .product( "MySQL Server 5.1" );
-
-
-    public static final Metadata  METADATA_8500 =
-        new Metadata( "MySQL 5.0 and 5.1 SELECT Statement DOS Vulnerability",
-                        "mysqld in MySQL 5.0.x before 5.0.88 and 5.1.x before 5.1.41"
-                        + " does not (1) properly handle errors during execution of certain SELECT statements with subqueries, and does not"
-                        + " (2) preserve certain null_value flags during execution of statements"
-                        + " that use the GeomFromWKB function, which allows remote authenticated users"
-                        + " to cause a denial of service (daemon crash) via a crafted statement."
-        )
-    .affected( AFFECTED_8500 )
-    .reference( new Reference( "CVE", "CVE-2009-4019", "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4019") );
-
-
-    public static final Definition  DEFINITION_8500 =
-        new Definition( "oval:org.mitre.oval:def:8500", 1,
-                        DefinitionClass.VULNERABILITY,
-                        METADATA_8500
-                        );
-
-
-    public static final Affected  AFFECTED_8297 = new Affected( Family.WINDOWS )
-    .platform( "Microsoft Windows 2000" )
-    .platform( "Microsoft Windows XP" )
-    .platform( "Microsoft Windows Server 2003" )
-    .platform( "Microsoft Windows Vista" )
-    .platform( "Microsoft Windows 7" )
-    .platform( "Microsoft Windows Server 2008" )
-    .product( "MySQL Server 5.1" );
-
-
-    public static final Metadata  METADATA_8297 =
-        new Metadata( "MySQL 5.1 is installed",
-                        "MySQL Server 5.1 is installed"
-        )
-    .affected( AFFECTED_8297 )
-    .reference( new Reference( "CPE", "cpe:/a:mysql:mysql:5.1", null ) );
-
-
-    public static final Definition  DEFINITION_8297 =
-        new Definition( "oval:org.mitre.oval:def:8297", 1,
-                        DefinitionClass.INVENTORY,
-                        METADATA_8297
-                        );
-
-
-    public static final Affected  AFFECTED_20100332 =
-        new Affected( Family.UNIX )
-    .platform( "Red Hat Enterprise Linux 5" )
-    .platform( "Red Hat Enterprise Linux 4" );
-
-
-    public static final Metadata  METADATA_20100332 =
-        new Metadata( "RHSA-2010:0332: firefox security update (Critical)",
-                        "Mozilla Firefox is an open source Web browser. XULRunner provides the XUL\n"
-                        + "Runtime environment for Mozilla Firefox. Several use-after-free flaws were found in Firefox. Visiting a web page\n"
-                        + "containing malicious content could result in Firefox executing arbitrary code with the privileges of the user running Firefox. (CVE-2010-0175,\n"
-                        + "CVE-2010-0176, CVE-2010-0177) A flaw was found in Firefox that could allow an applet to generate a drag\n"
-                        + "and drop action from a mouse click. Such an action could be used to execute arbitrary JavaScript with the privileges of the user running Firefox.\n"
-                        + "(CVE-2010-0178) A privilege escalation flaw was found in Firefox when the Firebug add-on is\n"
-                        + "in use. The XMLHttpRequestSpy module in the Firebug add-on exposes a Chrome privilege escalation flaw that could be used to execute arbitrary\n"
-                        + "JavaScript with the privileges of the user running Firefox. (CVE-2010-0179) Several flaws were found in the processing of malformed web content. A web\n"
-                        + "page containing malicious content could cause Firefox to crash or, potentially, execute arbitrary code with the privileges of the user running\n"
-                        + "Firefox. (CVE-2010-0174) For technical details regarding these flaws, refer to the Mozilla security\n"
-                        + "advisories for Firefox 3.0.19. You can find a link to the Mozilla advisories in the References section of this erratum.\n\n"
-                        + "All Firefox users should upgrade to these updated packages, which contain Firefox version 3.0.19, which corrects these issues. After installing the\n"
-                        + "update, Firefox must be restarted for the changes to take effect."
-        )
-    .affected( AFFECTED_20100332 )
-    .reference( new Reference( "RHSA", "RHSA-2010:0332-00", "https://rhn.redhat.com/errata/RHSA-2010-0332.html" ) );
-
-
-    public static final Definition  DEFINITION_20100332 =
-        new Definition( "oval:com.redhat.rhsa:def:20100332", 301,
-                        DefinitionClass.PATCH,
-                        METADATA_20100332
-                        );
-
-
 
     //==============================================================
     //  def:test
@@ -237,6 +147,154 @@ public class OvalSample
     .state( "oval:org.mitre.oval:ste:2827" );
 
 
+    //**************************************************************
+    // oval:org.mitre.oval:def:8500 related test
+    //**************************************************************
+
+    public static final Test  TEST_REGISTRY_21087 =
+        new RegistryTest( "oval:org.mitre.oval:tst:21087", 1,
+                        "MySQL 5.1 is installed",
+                        Check.AT_LEAST_ONE )
+    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+    .object( "oval:org.mitre.oval:obj:911" )
+    .state( "oval:org.mitre.oval:ste:6216" );
+
+
+    public static final Test  TEST_FILE_21031 =
+        new FileTest( "oval:org.mitre.oval:tst:21031", 1,
+                        "mysqld.exe or mysqld-nt.exe exists",
+                        Check.ALL )
+    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+    .stateOperator( Operator.OR )
+    .object( "oval:org.mitre.oval:obj:11786" );
+
+
+    public static final Test  TEST_REGISTRY_20481 =
+        new RegistryTest( "oval:org.mitre.oval:tst:20481", 1,
+                        "MySQL 5.0 is installed",
+                        Check.AT_LEAST_ONE )
+    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+    .object( "oval:org.mitre.oval:obj:911" )
+    .state( "oval:org.mitre.oval:ste:6475" );
+
+
+    public static final Test  TEST_REGISTRY_20859 =
+        new RegistryTest( "oval:org.mitre.oval:tst:20859", 1,
+                        "MySQL Server 5.1 version is less than 5.1.41",
+                        Check.AT_LEAST_ONE )
+    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+    .object( "oval:org.mitre.oval:obj:11866" )
+    .state( "oval:org.mitre.oval:ste:6693" );
+
+
+    public static final Test  TEST_REGISTRY_20192 =
+        new RegistryTest( "oval:org.mitre.oval:tst:20192", 1,
+                        "MySQL Server 5.0 version is less than 5.0.88",
+                        Check.AT_LEAST_ONE )
+    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+    .object( "oval:org.mitre.oval:obj:11871" )
+    .state( "oval:org.mitre.oval:ste:6359" );
+
+
+
+    //==============================================================
+    //  def:object
+    //==============================================================
+
+    public static final FamilyObject  OBJECT_FAMILY_99 =
+        new FamilyObject( "oval:org.mitre.oval:obj:99", 1,
+                    "This is the default family object. Only one family object should exist."
+                    );
+
+
+    public static final TextFileContentObject  OBJECT_TEXTFILECONTENT_7326 =
+        new TextFileContentObject( "oval:org.mitre.oval:obj:7326", 1 )
+    .path( new EntityObjectString( "/etc" ) )
+    .filename( new EntityObjectString( "debian_version" ) )
+    .line( new EntityObjectString( "\\d\\.\\d", Operation.PATTERN_MATCH ) );
+
+
+    public static final DpkgInfoObject  OBJECT_DPKGINFO_10648 =
+        new DpkgInfoObject( "oval:org.mitre.oval:obj:10648", 1,
+                        "apache2 package information"
+        )
+    .name( new EntityObjectString( "apache2" ) );
+
+
+    public static final RpmInfoObject  OBJECT_RPMINFO_20100061001 =
+        new RpmInfoObject( "oval:com.redhat.rhsa:obj:20100061001", 301 )
+    .name( new EntityObjectString( "redhat-release" ) );
+
+
+    public static final UnameObject  OBJECT_UNAME_2759 =
+        new UnameObject( "oval:org.mitre.oval:obj:2759", 1,
+                        "The single uname object."
+        );
+
+
+    public static final FileObject  OBJECT_FILE_222 =
+        new FileObject( "oval:org.mitre.oval:obj:222", 1,
+                        "The path to the mshtml.dll file in the system root"
+        )
+    .path( new EntityObjectString( "oval:org.mitre.oval:var:200", Check.ALL ) )
+    .filename( new EntityObjectString( "mshtml.dll" ) );
+
+
+    public static final MetabaseObject  OBJECT_METABASE_556 =
+        new MetabaseObject( "oval:org.mitre.oval:obj:556", 2 )
+    .key( new EntityObjectString( "LM/W3SVC" ) )
+    .ID( new EntityObjectInt( "6032", Datatype.INT, EntityObjectInt.DEFAULT_OPERATION ) );
+
+
+    public static final RegistryObject  OBJECT_REGISTRY_717 =
+        new RegistryObject( "oval:org.mitre.oval:obj:717", 1,
+                        "This registry key holds the service pack installed on the host if one is present."
+        )
+    .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )
+    .key( new EntityObjectString( "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion" ) )
+    .name( new EntityObjectString( "CSDVersion" ) );
+
+
+    //**************************************************************
+    // oval:org.mitre.oval:def:8500 related object
+    //**************************************************************
+
+    public static final FileObject  OBJECT_FILE_11786 =
+        new FileObject( "oval:org.mitre.oval:obj:11786", 1,
+                        "Full path to MySQL executable"
+        )
+    .path( new EntityObjectString( "oval:org.mitre.oval:var:349", Check.ALL ) )
+    .filename( new EntityObjectString( "^mysqld(|-nt)\\.exe$", Operation.PATTERN_MATCH ) );
+
+
+    public static final RegistryObject  OBJECT_REGISTRY_11992 =
+        new RegistryObject( "oval:org.mitre.oval:obj:11992", 1 )
+    .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )
+    .key( new EntityObjectString( "^SOFTWARE\\\\MySQL AB\\\\MySQL Server [0-9]\\.[0-9]$", Operation.PATTERN_MATCH ) )
+    .name( new EntityObjectString( "Location" ) );
+
+
+    public static final RegistryObject  OBJECT_REGISTRY_911 =
+        new RegistryObject( "oval:org.mitre.oval:obj:911", 1 )
+    .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )
+    .key( new EntityObjectString( "^Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Uninstall\\\\.*", Operation.PATTERN_MATCH ) )
+    .name( new EntityObjectString( "DisplayName" ) );
+
+
+    public static final RegistryObject  OBJECT_REGISTRY_11866 =
+        new RegistryObject( "oval:org.mitre.oval:obj:11866", 1 )
+    .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )
+    .key( new EntityObjectString( "SOFTWARE\\MySQL AB\\MySQL Server 5.1" ) )
+    .name( new EntityObjectString( "Version" ) );
+
+
+    public static final RegistryObject  OBJECT_REGISTRY_11871 =
+        new RegistryObject( "oval:org.mitre.oval:obj:11871", 1 )
+    .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )
+    .key( new EntityObjectString( "SOFTWARE\\MySQL AB\\MySQL Server 5.0" ) )
+    .name( new EntityObjectString( "Version" ) );
+
+
 
     //==============================================================
     //  def:state
@@ -309,63 +367,210 @@ public class OvalSample
     );
 
 
+    //**************************************************************
+    // oval:org.mitre.oval:def:8500 related state
+    //**************************************************************
+
+    public static final RegistryState  STATE_REGISTRY_6216 =
+        new RegistryState( "oval:org.mitre.oval:ste:6216", 1,
+                        "MySQL 5.1 check"
+        )
+    .value( new EntityStateAnySimple( "MySQL Server 5.1" )
+    );
+
+
+    public static final RegistryState  STATE_REGISTRY_6475 =
+        new RegistryState( "oval:org.mitre.oval:ste:6475", 1,
+                        "MySQL 5.0 check"
+        )
+    .value( new EntityStateAnySimple( "MySQL Server 5.0" )
+    );
+
+
+    public static final RegistryState  STATE_REGISTRY_6693 =
+        new RegistryState( "oval:org.mitre.oval:ste:6693", 1,
+                        "MySQL Server 5.1 version is less than 5.1.41"
+        )
+    .value( new EntityStateAnySimple( "^5\\.1\\.(([0-9]|[1-3][0-9]|40)?(|[a-z\\_\\-]+))$",
+                    Operation.PATTERN_MATCH )
+    );
+
+
+    public static final RegistryState  STATE_REGISTRY_6359 =
+        new RegistryState( "oval:org.mitre.oval:ste:6359", 1,
+                        "MySQL Server 5.0 version is less than 5.0.88"
+        )
+    .value( new EntityStateAnySimple( "5\\.0\\.([0-9]|[1-7][0-9]|8[0-7])?(|[a-z\\_\\-]+|\\..*)$",
+                    Operation.PATTERN_MATCH )
+    );
+
+
 
     //==============================================================
-    //  def:object
+    //  def:definition
     //==============================================================
 
-    public static final FamilyObject  OBJECT_FAMILY_99 =
-        new FamilyObject( "oval:org.mitre.oval:obj:99", 1,
-                    "This is the default family object. Only one family object should exist."
-                    );
+    //**************************************************************
+    // oval:org.mitre.oval:def:8500, MySQL 5.0 and 5.1 SELECT Statement DOS Vulnerability
+    //**************************************************************
+
+    public static final Affected  AFFECTED_8500 = new Affected( Family.WINDOWS )
+    .platform( "Microsoft Windows 2000" )
+    .platform( "Microsoft Windows XP" )
+    .platform( "Microsoft Windows Server 2003" )
+    .platform( "Microsoft Windows Vista" )
+    .platform( "Microsoft Windows 7" )
+    .platform( "Microsoft Windows Server 2008" )
+    .product( "MySQL Server 5.0" )
+    .product( "MySQL Server 5.1" );
 
 
-    public static final TextFileContentObject  OBJECT_TEXTFILECONTENT_7326 =
-        new TextFileContentObject( "oval:org.mitre.oval:obj:7326", 1 )
-    .path( new EntityObjectString( "/etc" ) )
-    .filename( new EntityObjectString( "debian_version" ) )
-    .line( new EntityObjectString( "\\d\\.\\d", Operation.PATTERN_MATCH ) );
-
-
-    public static final DpkgInfoObject  OBJECT_DPKGINFO_10648 =
-        new DpkgInfoObject( "oval:org.mitre.oval:obj:10648", 1,
-                        "apache2 package information"
+    public static final Metadata  METADATA_8500 =
+        new Metadata( "MySQL 5.0 and 5.1 SELECT Statement DOS Vulnerability",
+                        "mysqld in MySQL 5.0.x before 5.0.88 and 5.1.x before 5.1.41"
+                        + " does not (1) properly handle errors during execution of certain SELECT statements with subqueries, and does not"
+                        + " (2) preserve certain null_value flags during execution of statements"
+                        + " that use the GeomFromWKB function, which allows remote authenticated users"
+                        + " to cause a denial of service (daemon crash) via a crafted statement."
         )
-    .name( new EntityObjectString( "apache2" ) );
+    .affected( AFFECTED_8500 )
+    .reference( new Reference( "CVE", "CVE-2009-4019", "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4019") );
 
 
-    public static final RpmInfoObject  OBJECT_RPMINFO_20100061001 =
-        new RpmInfoObject( "oval:com.redhat.rhsa:obj:20100061001", 301 )
-    .name( new EntityObjectString( "redhat-release" ) );
+    public static final Definition  DEFINITION_8500 =
+        new Definition( "oval:org.mitre.oval:def:8500", 1,
+                        DefinitionClass.VULNERABILITY,
+                        METADATA_8500
+                        );
 
 
-    public static final UnameObject  OBJECT_UNAME_2759 =
-        new UnameObject( "oval:org.mitre.oval:obj:2759", 1,
-                        "The single uname object."
-        );
+    //**************************************************************
+    // oval:org.mitre.oval:def:8297, MySQL 5.1 is installed
+    //**************************************************************
+
+    public static final Affected  AFFECTED_8297 = new Affected( Family.WINDOWS )
+    .platform( "Microsoft Windows 2000" )
+    .platform( "Microsoft Windows XP" )
+    .platform( "Microsoft Windows Server 2003" )
+    .platform( "Microsoft Windows Vista" )
+    .platform( "Microsoft Windows 7" )
+    .platform( "Microsoft Windows Server 2008" )
+    .product( "MySQL Server 5.1" );
 
 
-    public static final FileObject  OBJECT_FILE_222 =
-        new FileObject( "oval:org.mitre.oval:obj:222", 1,
-                        "The path to the mshtml.dll file in the system root"
+    public static final Metadata  METADATA_8297 =
+        new Metadata( "MySQL 5.1 is installed",
+                        "MySQL Server 5.1 is installed"
         )
-    .path( new EntityObjectString( "oval:org.mitre.oval:var:200", Check.ALL ) )
-    .filename( new EntityObjectString( "mshtml.dll" ) );
+    .affected( AFFECTED_8297 )
+    .reference( new Reference( "CPE", "cpe:/a:mysql:mysql:5.1", null ) );
 
 
-    public static final MetabaseObject  OBJECT_METABASE_556 =
-        new MetabaseObject( "oval:org.mitre.oval:obj:556", 2 )
-    .key( new EntityObjectString( "LM/W3SVC" ) )
-    .ID( new EntityObjectInt( "6032", Datatype.INT, EntityObjectInt.DEFAULT_OPERATION ) );
+    public static final Definition  DEFINITION_8297 =
+        new Definition( "oval:org.mitre.oval:def:8297", 1,
+                        DefinitionClass.INVENTORY,
+                        METADATA_8297
+                        );
 
 
-    public static final RegistryObject  OBJECT_REGISTRY_717 =
-        new RegistryObject( "oval:org.mitre.oval:obj:717", 1,
-                        "This registry key holds the service pack installed on the host if one is present."
+    //**************************************************************
+    // oval:org.mitre.oval:def:8282, MySQL 5.0 is installed
+    //**************************************************************
+
+    public static final Affected  AFFECTED_8282 = new Affected( Family.WINDOWS )
+    .platform( "Microsoft Windows 2000" )
+    .platform( "Microsoft Windows XP" )
+    .platform( "Microsoft Windows Server 2003" )
+    .platform( "Microsoft Windows Vista" )
+    .platform( "Microsoft Windows 7" )
+    .platform( "Microsoft Windows Server 2008" )
+    .product( "MySQL Server 5.0" );
+
+
+    public static final Metadata  METADATA_8282 =
+        new Metadata( "MySQL 5.0 is installed",
+                        "MySQL Server 5.0 is installed"
         )
-    .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )
-    .key( new EntityObjectString( "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion" ) )
-    .name( new EntityObjectString( "CSDVersion" ) );
+    .affected( AFFECTED_8282 )
+    .reference( new Reference( "CPE", "cpe:/a:mysql:mysql:5.0", null ) );
+
+
+    public static final Definition  DEFINITION_8282 =
+        new Definition( "oval:org.mitre.oval:def:8282", 1,
+                        DefinitionClass.INVENTORY,
+                        METADATA_8282
+                        );
+
+
+    //**************************************************************
+    // oval:com.redhat.rhsa:def:20100332, RHSA-2010:0332: firefox security update (Critical)
+    //**************************************************************
+
+    public static final Affected  AFFECTED_20100332 =
+        new Affected( Family.UNIX )
+    .platform( "Red Hat Enterprise Linux 5" )
+    .platform( "Red Hat Enterprise Linux 4" );
+
+
+    public static final Metadata  METADATA_20100332 =
+        new Metadata( "RHSA-2010:0332: firefox security update (Critical)",
+                        "Mozilla Firefox is an open source Web browser. XULRunner provides the XUL\n"
+                        + "Runtime environment for Mozilla Firefox. Several use-after-free flaws were found in Firefox. Visiting a web page\n"
+                        + "containing malicious content could result in Firefox executing arbitrary code with the privileges of the user running Firefox. (CVE-2010-0175,\n"
+                        + "CVE-2010-0176, CVE-2010-0177) A flaw was found in Firefox that could allow an applet to generate a drag\n"
+                        + "and drop action from a mouse click. Such an action could be used to execute arbitrary JavaScript with the privileges of the user running Firefox.\n"
+                        + "(CVE-2010-0178) A privilege escalation flaw was found in Firefox when the Firebug add-on is\n"
+                        + "in use. The XMLHttpRequestSpy module in the Firebug add-on exposes a Chrome privilege escalation flaw that could be used to execute arbitrary\n"
+                        + "JavaScript with the privileges of the user running Firefox. (CVE-2010-0179) Several flaws were found in the processing of malformed web content. A web\n"
+                        + "page containing malicious content could cause Firefox to crash or, potentially, execute arbitrary code with the privileges of the user running\n"
+                        + "Firefox. (CVE-2010-0174) For technical details regarding these flaws, refer to the Mozilla security\n"
+                        + "advisories for Firefox 3.0.19. You can find a link to the Mozilla advisories in the References section of this erratum.\n\n"
+                        + "All Firefox users should upgrade to these updated packages, which contain Firefox version 3.0.19, which corrects these issues. After installing the\n"
+                        + "update, Firefox must be restarted for the changes to take effect."
+        )
+    .affected( AFFECTED_20100332 )
+    .reference( new Reference( "RHSA", "RHSA-2010:0332-00", "https://rhn.redhat.com/errata/RHSA-2010-0332.html" ) );
+
+
+    public static final Definition  DEFINITION_20100332 =
+        new Definition( "oval:com.redhat.rhsa:def:20100332", 301,
+                        DefinitionClass.PATCH,
+                        METADATA_20100332
+                        );
+
+
+    //==============================================================
+    //  def:oval_definitions
+    //==============================================================
+
+    private static final Generator  _GENERATOR_8500_ =
+        new Generator( "5.7",
+                        IsoDate.valueOf( "2010-08-05T03:28:32.987" ),
+                        "The OVAL Repository",
+                        null
+                        );
+
+
+    public static final OvalDefinitions  OVAL_DEFINITIONS_8500 =
+        new OvalDefinitions( _GENERATOR_8500_ )
+    .definition( DEFINITION_8297 )
+    .definition( DEFINITION_8500 )
+    .definition( DEFINITION_8282 )
+    .test( TEST_REGISTRY_21087 )
+    .test( TEST_FILE_21031 )
+    .test( TEST_REGISTRY_20481 )
+    .test( TEST_REGISTRY_20859 )
+    .test( TEST_REGISTRY_20192 )
+    .object( OBJECT_FILE_11786 )
+    .object( OBJECT_REGISTRY_11992 )
+    .object( OBJECT_REGISTRY_911 )
+    .object( OBJECT_REGISTRY_11866 )
+    .object( OBJECT_REGISTRY_11871 )
+    .state( STATE_REGISTRY_6216 )
+    .state( STATE_REGISTRY_6475 )
+    .state( STATE_REGISTRY_6693 )
+    .state( STATE_REGISTRY_6359 )
+    ;
 
 }
 // OvalSample

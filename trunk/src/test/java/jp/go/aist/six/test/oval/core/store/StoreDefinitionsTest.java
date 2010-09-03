@@ -2,6 +2,7 @@ package jp.go.aist.six.test.oval.core.store;
 
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
@@ -102,6 +103,93 @@ public class StoreDefinitionsTest
 //        _assertEquals( persistent2, object );
         Reporter.log( "...validation OK", true );
     }
+
+
+
+    /**
+     */
+    private void _testOvalDefinitions(
+                    final Class<OvalDefinitions> type,
+                    final String filepath,
+                    final String xpath,
+                    final OvalDefinitions expected
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n////////////////////////////////////////////////////////////////", true );
+        Reporter.log( "  * object type: " + type, true );
+
+        OvalDefinitions  object = _readObjectFromXmlFile( type, filepath, xpath, expected );
+        Assert.assertNotNull( object );
+
+        _syncOvalDefinitions( object );
+    }
+
+
+
+    /**
+     */
+    protected void _syncOvalDefinitions(
+                    final OvalDefinitions object
+                    )
+    throws Exception
+    {
+        Reporter.log( "sync OvalDefinitions..." , true );
+        OvalDefinitions  persistent = _getStore().sync( OvalDefinitions.class, object );
+        Reporter.log( "...sync done", true );
+
+        String  pid = persistent.getPersistentID();
+        Reporter.log( "  @ pid=" + pid, true );
+
+        Reporter.log( "get object...", true );
+        Reporter.log( "  - pid=" + pid, true );
+        OvalDefinitions  persistent2 = _getStore().get( OvalDefinitions.class, pid );
+        Reporter.log( "...get done", true );
+
+        Reporter.log( "  @ get: object=" + persistent2, true );
+        Reporter.log( "validating...", true );
+        Validators.validator( OvalDefinitions.class ).equals( persistent2, object );
+        Reporter.log( "...validation OK", true );
+    }
+
+
+
+
+    //==============================================================
+    //  oval_definitions
+    //==============================================================
+
+    @DataProvider( name="definitions.oval_definitions" )
+    public Object[][] provideDefinitionsOvalDefinitions()
+    {
+        return new Object[][] {
+                        // Mitre, CVE-2009-4019, MySQL
+                        {
+                            OvalDefinitions.class,
+                            "test/data/definitions/oval-definitions_CVE-2009-4019_MySQL.xml",
+                            "/oval_definitions",
+                            OvalSample.OVAL_DEFINITIONS_8500
+                        }
+        };
+    }
+
+
+    @org.testng.annotations.Test(
+                    groups={"oval.core.store", "definitions.oval_definitions"},
+                    dataProvider="definitions.oval_definitions",
+                    alwaysRun=true
+                    )
+    public void testDefinitionsOvalDefinitions(
+                    final Class<OvalDefinitions> type,
+                    final String filepath,
+                    final String xpath,
+                    final OvalDefinitions expected
+                    )
+    throws Exception
+    {
+        _testOvalDefinitions( type, filepath, xpath, expected );
+    }
+
 
 
 

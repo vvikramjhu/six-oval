@@ -5,6 +5,7 @@ import jp.go.aist.six.oval.model.OvalElement;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Metadata;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.StateRef;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
@@ -227,6 +228,24 @@ public abstract class Validators
     }
 
 
+    /**
+     * OvalDefinitions
+     */
+    public static class OvalDefinitionsValidator
+    extends Validator<OvalDefinitions>
+    {
+        @Override
+        public void equals(
+                        final OvalDefinitions actual,
+                        final OvalDefinitions expected
+                        )
+        {
+//            Reporter.log( " - generator", true );
+//            Assert.assertEquals( actual.getGenerator(), expected.getGenerator() );
+        }
+    }
+
+
 
     private static Map<Class<?>, Validator<?>>  _validators
     = new HashMap<Class<?>, Validator<?>>();
@@ -239,7 +258,10 @@ public abstract class Validators
     {
         Validator<T>  v = (Validator<T>)_validators.get( type );
         if (v == null) {
-            if (Definition.class.isAssignableFrom( type )) {
+            if (OvalDefinitions.class.isAssignableFrom( type )) {
+                v = (Validator<T>)(new OvalDefinitionsValidator());
+                _validators.put( OvalDefinitions.class, v );
+            } else if (Definition.class.isAssignableFrom( type )) {
                 v = (Validator<T>)(new DefinitionValidator());
                 _validators.put( Definition.class, v );
             } else if (Test.class.isAssignableFrom( type )) {

@@ -116,6 +116,21 @@ public class OvalDefinitions
     }
 
 
+    public OvalDefinitions definition(
+                    final Definition definition
+                    )
+    {
+        Definitions  defs = getDefinitions();
+        if (defs == null) {
+            defs = new Definitions();
+            setDefinitions( defs );
+        }
+        defs.addDefinition( definition );
+
+        return this;
+    }
+
+
 
     public void setTests(
                     final Tests tests
@@ -131,6 +146,21 @@ public class OvalDefinitions
     }
 
 
+    public OvalDefinitions test(
+                    final Test test
+                    )
+    {
+        Tests  tests = getTests();
+        if (tests == null) {
+            tests = new Tests();
+            setTests( tests );
+        }
+        tests.addTest( test );
+
+        return this;
+    }
+
+
     public void setObjects(
                     final SystemObjects objects
                     )
@@ -142,6 +172,21 @@ public class OvalDefinitions
     public SystemObjects getObjects()
     {
         return _objects;
+    }
+
+
+    public OvalDefinitions object(
+                    final SystemObject object
+                    )
+    {
+        SystemObjects  objects = getObjects();
+        if (objects == null) {
+            objects = new SystemObjects();
+            setObjects( objects );
+        }
+        objects.addObject( object );
+
+        return this;
     }
 
 
@@ -160,6 +205,21 @@ public class OvalDefinitions
     }
 
 
+    public OvalDefinitions state(
+                    final State state
+                    )
+    {
+        States  states = getStates();
+        if (states == null) {
+            states = new States();
+            setStates( states );
+        }
+        states.addState( state );
+
+        return this;
+    }
+
+
 
     public void setVariables(
                     final Variables variables
@@ -172,6 +232,21 @@ public class OvalDefinitions
     public Variables getVariables()
     {
         return _variables;
+    }
+
+
+    public OvalDefinitions variable(
+                    final Variable variable
+                    )
+    {
+        Variables  variables = getVariables();
+        if (variables == null) {
+            variables = new Variables();
+            setVariables( variables );
+        }
+        variables.addVariable( variable );
+
+        return this;
     }
 
 

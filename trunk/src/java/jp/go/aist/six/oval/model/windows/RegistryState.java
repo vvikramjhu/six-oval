@@ -88,6 +88,19 @@ public class RegistryState
     }
 
 
+    /**
+     * Constructor.
+     */
+    public RegistryState(
+                    final String id,
+                    final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
+    }
+
+
 
     /**
      *
