@@ -15,7 +15,6 @@ import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.Reference;
-import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.independent.EntityStateFamily;
 import jp.go.aist.six.oval.model.independent.FamilyObject;
@@ -43,7 +42,6 @@ import jp.go.aist.six.oval.model.windows.MetabaseTest;
 import jp.go.aist.six.oval.model.windows.RegistryObject;
 import jp.go.aist.six.oval.model.windows.RegistryState;
 import jp.go.aist.six.oval.model.windows.RegistryTest;
-import org.testng.annotations.DataProvider;
 
 
 
@@ -58,7 +56,7 @@ public class OvalSample
     //  def:definition
     //==============================================================
 
-    public static final Affected  affected8500 = new Affected( Family.WINDOWS )
+    public static final Affected  AFFECTED_8500 = new Affected( Family.WINDOWS )
     .platform( "Microsoft Windows 2000" )
     .platform( "Microsoft Windows XP" )
     .platform( "Microsoft Windows Server 2003" )
@@ -69,7 +67,7 @@ public class OvalSample
     .product( "MySQL Server 5.1" );
 
 
-    public static final Metadata  meta8500 =
+    public static final Metadata  METADATA_8500 =
         new Metadata( "MySQL 5.0 and 5.1 SELECT Statement DOS Vulnerability",
                         "mysqld in MySQL 5.0.x before 5.0.88 and 5.1.x before 5.1.41"
                         + " does not (1) properly handle errors during execution of certain SELECT statements with subqueries, and does not"
@@ -77,18 +75,18 @@ public class OvalSample
                         + " that use the GeomFromWKB function, which allows remote authenticated users"
                         + " to cause a denial of service (daemon crash) via a crafted statement."
         )
-    .affected( affected8500 )
+    .affected( AFFECTED_8500 )
     .reference( new Reference( "CVE", "CVE-2009-4019", "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4019") );
 
 
-    public static final Definition  def8500 =
+    public static final Definition  DEFINITION_8500 =
         new Definition( "oval:org.mitre.oval:def:8500", 1,
                         DefinitionClass.VULNERABILITY,
-                        meta8500
+                        METADATA_8500
                         );
 
 
-    public static final Affected  affected8297 = new Affected( Family.WINDOWS )
+    public static final Affected  AFFECTED_8297 = new Affected( Family.WINDOWS )
     .platform( "Microsoft Windows 2000" )
     .platform( "Microsoft Windows XP" )
     .platform( "Microsoft Windows Server 2003" )
@@ -98,28 +96,28 @@ public class OvalSample
     .product( "MySQL Server 5.1" );
 
 
-    public static final Metadata  meta8297 =
+    public static final Metadata  METADATA_8297 =
         new Metadata( "MySQL 5.1 is installed",
                         "MySQL Server 5.1 is installed"
         )
-    .affected( affected8297 )
+    .affected( AFFECTED_8297 )
     .reference( new Reference( "CPE", "cpe:/a:mysql:mysql:5.1", null ) );
 
 
-    public static final Definition  def8297 =
+    public static final Definition  DEFINITION_8297 =
         new Definition( "oval:org.mitre.oval:def:8297", 1,
                         DefinitionClass.INVENTORY,
-                        meta8297
+                        METADATA_8297
                         );
 
 
-    public static final Affected  affected20100332 =
+    public static final Affected  AFFECTED_20100332 =
         new Affected( Family.UNIX )
     .platform( "Red Hat Enterprise Linux 5" )
     .platform( "Red Hat Enterprise Linux 4" );
 
 
-    public static final Metadata  meta20100332 =
+    public static final Metadata  METADATA_20100332 =
         new Metadata( "RHSA-2010:0332: firefox security update (Critical)",
                         "Mozilla Firefox is an open source Web browser. XULRunner provides the XUL\n"
                         + "Runtime environment for Mozilla Firefox. Several use-after-free flaws were found in Firefox. Visiting a web page\n"
@@ -135,14 +133,14 @@ public class OvalSample
                         + "All Firefox users should upgrade to these updated packages, which contain Firefox version 3.0.19, which corrects these issues. After installing the\n"
                         + "update, Firefox must be restarted for the changes to take effect."
         )
-    .affected( affected20100332 )
+    .affected( AFFECTED_20100332 )
     .reference( new Reference( "RHSA", "RHSA-2010:0332-00", "https://rhn.redhat.com/errata/RHSA-2010-0332.html" ) );
 
 
-    public static final Definition  def20100332 =
+    public static final Definition  DEFINITION_20100332 =
         new Definition( "oval:com.redhat.rhsa:def:20100332", 301,
                         DefinitionClass.PATCH,
-                        meta20100332
+                        METADATA_20100332
                         );
 
 
@@ -246,7 +244,7 @@ public class OvalSample
 
     public static final FamilyState  STATE_FAMILY_99 =
         new FamilyState( "oval:org.mitre.oval:ste:99", 2,
-        "the installed operating system is part of the Microsoft Windows family" )
+        "Microsoft Windows family" )
     .family( new EntityStateFamily( Family.WINDOWS,
                     Operation.CASE_INSENSITIVE_EQUALS )
     );
@@ -316,106 +314,58 @@ public class OvalSample
     //  def:object
     //==============================================================
 
-    @DataProvider( name="definitions.object" )
-    public Object[][] provideDefinitionsObject()
-    {
-        EntityObjectString  textfilecontentLine =
-            new EntityObjectString( "\\d\\.\\d", Operation.PATTERN_MATCH );
+    public static final FamilyObject  OBJECT_FAMILY_99 =
+        new FamilyObject( "oval:org.mitre.oval:obj:99", 1,
+                    "This is the default family object. Only one family object should exist."
+                    );
 
-        EntityObjectString  filePath =
-            new EntityObjectString( "oval:org.mitre.oval:var:200", Check.ALL );
 
-        EntityObjectInt  metabaseID =
-            new EntityObjectInt( "6032", Datatype.INT, EntityObjectInt.DEFAULT_OPERATION );
+    public static final TextFileContentObject  OBJECT_TEXTFILECONTENT_7326 =
+        new TextFileContentObject( "oval:org.mitre.oval:obj:7326", 1 )
+    .path( new EntityObjectString( "/etc" ) )
+    .filename( new EntityObjectString( "debian_version" ) )
+    .line( new EntityObjectString( "\\d\\.\\d", Operation.PATTERN_MATCH ) );
 
-        return new Object[][] {
-                        // independent : family
-                        {
-                            SystemObject.class,
-                            "test/data/definitions/object-family_oval-obj-99_1.xml",
-                            "oval_definitions/objects/independent:family_object",
-                            new FamilyObject( "oval:org.mitre.oval:obj:99", 1,
-                                            "This is the default family object. Only one family object should exist."
-                                            )
-                        }
-                        ,
-                        // independent : textfilecontent
-                        {
-                            SystemObject.class,
-                            "test/data/definitions/object-textfilecontent_oval-obj-7326_1.xml",
-                            "oval_definitions/objects/independent:textfilecontent_object",
-                            new TextFileContentObject( "oval:org.mitre.oval:obj:7326", 1 )
-                                .path( new EntityObjectString( "/etc" ) )
-                                .filename( new EntityObjectString( "debian_version" ) )
-                                .line( textfilecontentLine )
-                        }
-                        ,
-                        // linux : dpkginfo
-                        {
-                            SystemObject.class,
-                            "test/data/definitions/object-dpkginfo_oval-obj-10648_1.xml",
-                            "oval_definitions/objects/linux:dpkginfo_object",
-                            new DpkgInfoObject( "oval:org.mitre.oval:obj:10648", 1,
-                                            "apache2 package information"
-                                            )
-                                .name( new EntityObjectString( "apache2" ) )
-                        }
-                        ,
-                        // linux : rpminfo
-                        {
-                            SystemObject.class,
-                            "test/data/definitions/object-rpminfo_rhsa-obj-20100061001_301.xml",
-                            "oval_definitions/objects/linux:rpminfo_object",
-                            new RpmInfoObject( "oval:com.redhat.rhsa:obj:20100061001", 301 )
-                                .name( new EntityObjectString( "redhat-release" ) )
-                        }
-                        ,
-                        // unux : uname
-                        {
-                            SystemObject.class,
-                            "test/data/definitions/object-uname_oval-obj-2759_1.xml",
-                            "oval_definitions/objects/unix:uname_object",
-                            new UnameObject( "oval:org.mitre.oval:obj:2759", 1,
-                                            "The single uname object."
-                                            )
-                        }
-                        ,
-//                        // windows : file
-                        {
-                            SystemObject.class,
-                            "test/data/definitions/object-file_oval-obj-222_1.xml",
-                            "oval_definitions/objects/windows:file_object",
-                            new FileObject( "oval:org.mitre.oval:obj:222", 1,
-                                            "The path to the mshtml.dll file in the system root"
-                                            )
-                                .path( filePath )
-                                .filename( new EntityObjectString( "mshtml.dll" ) )
-                        }
-                        ,
-                        // windows : metabase
-                        {
-                            SystemObject.class,
-                            "test/data/definitions/object-metabase_oval-obj-556_2.xml",
-                            "oval_definitions/objects/windows:metabase_object",
-                            new MetabaseObject( "oval:org.mitre.oval:obj:556", 2 )
-                                .key( new EntityObjectString( "LM/W3SVC" ) )
-                                .ID( metabaseID )
-                        }
-                        ,
-                        // windows : registry
-                        {
-                            SystemObject.class,
-                            "test/data/definitions/object-registry_oval-obj-717_1.xml",
-                            "oval_definitions/objects/windows:registry_object",
-                            new RegistryObject( "oval:org.mitre.oval:obj:717", 1,
-                                            "This registry key holds the service pack installed on the host if one is present."
-                                            )
-                                .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )
-                                .key( new EntityObjectString( "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion" ) )
-                                .name( new EntityObjectString( "CSDVersion" ) )
-                        }
-        };
-    }
+
+    public static final DpkgInfoObject  OBJECT_DPKGINFO_10648 =
+        new DpkgInfoObject( "oval:org.mitre.oval:obj:10648", 1,
+                        "apache2 package information"
+        )
+    .name( new EntityObjectString( "apache2" ) );
+
+
+    public static final RpmInfoObject  OBJECT_RPMINFO_20100061001 =
+        new RpmInfoObject( "oval:com.redhat.rhsa:obj:20100061001", 301 )
+    .name( new EntityObjectString( "redhat-release" ) );
+
+
+    public static final UnameObject  OBJECT_UNAME_2759 =
+        new UnameObject( "oval:org.mitre.oval:obj:2759", 1,
+                        "The single uname object."
+        );
+
+
+    public static final FileObject  OBJECT_FILE_222 =
+        new FileObject( "oval:org.mitre.oval:obj:222", 1,
+                        "The path to the mshtml.dll file in the system root"
+        )
+    .path( new EntityObjectString( "oval:org.mitre.oval:var:200", Check.ALL ) )
+    .filename( new EntityObjectString( "mshtml.dll" ) );
+
+
+    public static final MetabaseObject  OBJECT_METABASE_556 =
+        new MetabaseObject( "oval:org.mitre.oval:obj:556", 2 )
+    .key( new EntityObjectString( "LM/W3SVC" ) )
+    .ID( new EntityObjectInt( "6032", Datatype.INT, EntityObjectInt.DEFAULT_OPERATION ) );
+
+
+    public static final RegistryObject  OBJECT_REGISTRY_717 =
+        new RegistryObject( "oval:org.mitre.oval:obj:717", 1,
+                        "This registry key holds the service pack installed on the host if one is present."
+        )
+    .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )
+    .key( new EntityObjectString( "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion" ) )
+    .name( new EntityObjectString( "CSDVersion" ) );
 
 }
 // OvalSample
