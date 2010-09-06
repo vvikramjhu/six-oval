@@ -711,6 +711,8 @@ CREATE TABLE IF NOT EXISTS oval_d_variable_local
     PID                 VARCHAR(64)     NOT NULL,
                         /* id + version, e.g. oval:org.mitre.oval:var:419:1 */
 
+    component_xml       VARCHAR(1024),
+
     /* (FK) */
     
     /* (PK) */

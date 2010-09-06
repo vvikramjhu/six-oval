@@ -494,11 +494,11 @@ public class OvalSample
 
     private static final Criteria  _CRITERIA_8297_ =
         new Criteria()
-    .element( new Criterion( "oval:org.mitre.oval:tst:21087",
-                    "MySQL 5.1 is installed")
-    )
     .element( new Criterion( "oval:org.mitre.oval:tst:21031",
                     "mysqld.exe or mysqld-nt.exe exists" )
+    )
+    .element( new Criterion( "oval:org.mitre.oval:tst:21087",
+                    "MySQL 5.1 is installed")
     );
 
 

@@ -20,7 +20,13 @@
 
 package jp.go.aist.six.oval.core.store;
 
+import jp.go.aist.six.oval.core.service.OvalContext;
+import jp.go.aist.six.oval.core.xml.OvalXml;
+import jp.go.aist.six.oval.model.definitions.ComponentElement;
+import jp.go.aist.six.oval.model.definitions.LocalVariable;
 import jp.go.aist.six.oval.model.definitions.Variable;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 
 
@@ -32,10 +38,10 @@ public class VariableDao
     extends OvalEntityDao<Variable>
 {
 
-//    /**
-//     * Logger.
-//     */
-//    private static Log  _LOG = LogFactory.getLog( VariableDao.class );
+    /**
+     * Logger.
+     */
+    private static Log  _LOG = LogFactory.getLog( VariableDao.class );
 
 
 
@@ -64,24 +70,28 @@ public class VariableDao
     //  Dao, CastorDao
     //**************************************************************
 
-//    @Override
-//    public String create(
-//                    final Variable variable
-//                    )
-//    {
-//        if (_xmlMapper != null) {
-//            try {
-//                String  xml = _xmlMapper.marshalToString( variable );
-//                VariableXml  vx = new VariableXml( variable, xml );
-//                getForwardingDao( VariableXml.class ).sync( vx );
-//            } catch (OxmException ex) {
-//                // TODO:
-//                _LOG.warn(  "'variable' XML NOT persisted" );
-//            }
-//        }
-//
-//        return super.create( variable );
-//    }
+    @Override
+    public String create(
+                    final Variable variable
+                    )
+    {
+        if (LocalVariable.class.isInstance( variable )) {
+            LocalVariable  lv = LocalVariable.class.cast( variable );
+            ComponentElement  component = lv.getComponent();
+            if (component != null) {
+                try {
+                    OvalXml  mapper = OvalContext.INSTANCE.getXml();
+                    String  xml = mapper.marshalToString( component );
+                    lv.setComponentXml( xml );
+                } catch (Exception ex) {
+                    // TODO:
+                    _LOG.warn(  "'component' property NOT persisted" );
+                }
+            }
+        }
+
+        return super.create( variable );
+    }
 
 }
 // VariableDao

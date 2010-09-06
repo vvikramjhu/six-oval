@@ -759,6 +759,10 @@
         <field name="persistentID" type="string">
             <sql name="PID" type="char"/>
         </field>
+
+        <field name="componentXml" type="string">
+            <sql name="component_xml" type="char"/>
+        </field>
     </class>
 
 

@@ -112,7 +112,7 @@ public class LocalVariable
 
     /**
      */
-    public void setContentXml(
+    public void setComponentXml(
                     final String xml
                     )
     {
@@ -120,7 +120,7 @@ public class LocalVariable
     }
 
 
-    public String getContentXml()
+    public String getComponentXml()
     {
         return _contentXml;
     }
