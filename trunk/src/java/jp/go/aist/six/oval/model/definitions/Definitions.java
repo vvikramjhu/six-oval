@@ -73,6 +73,19 @@ public class Definitions
 
 
 
+    public void setDefinition(
+                    final Collection<? extends Definition> definition
+                    )
+    {
+        if (_getElement() != definition) {
+            clear();
+            if (definition != null  &&  definition.size() > 0) {
+                addAll( definition );
+            }
+        }
+    }
+
+
     public boolean addDefinition(
                     final Definition definition
                     )

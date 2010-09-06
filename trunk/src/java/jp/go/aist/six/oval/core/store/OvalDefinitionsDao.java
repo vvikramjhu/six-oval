@@ -20,11 +20,9 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsDefinitionAssociation;
 import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsObjectAssociation;
 import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsStateAssociation;
 import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsTestAssociation;
-import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsUtil;
 import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsVariableAssociation;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Definitions;
@@ -40,6 +38,8 @@ import jp.go.aist.six.oval.model.definitions.Variables;
 import jp.go.aist.six.util.castor.CastorDao;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -157,33 +157,45 @@ public class OvalDefinitionsDao
         }
 
 
-        OvalDefinitionsUtil  util = OvalDefinitionsUtil.newInstance( defs );
-        Definitions  def_list = defs.getDefinitions();
-        if (def_list != null) {
-            Definitions  p_def_list = new Definitions();
-            for (Definition  def : def_list) {
-                if (_LOG.isInfoEnabled()) {
-                    _LOG.info( "creating Definition: " + def.getOvalID() );
-                }
-                Definition  p_def = getForwardingDao( Definition.class ).sync( def );
-                p_def_list.addDefinition( p_def );
-
-                OvalDefinitionsDefinitionAssociation  assoc =
-                    new OvalDefinitionsDefinitionAssociation( defs, p_def );
-                getForwardingDao( OvalDefinitionsDefinitionAssociation.class ).sync( assoc );
-
-                //TODO: move this part to DefinitionDao,
-                // and create 1:N definition-Criteria relation?
-//                final String  defID = def.getOvalID();
-//                Collection<String>  testIDs = util.getRelatedTestIDOfDefinition( defID );
-//                for (String  testID : testIDs) {
-//                    DefinitionTestAssociation  dt_assoc =
-//                        new DefinitionTestAssociation( def, defs.getTest( testID ) );
-//                    getForwardingDao( DefinitionTestAssociation.class ).sync( dt_assoc );
-//                }
+        Definitions  definitions = defs.getDefinitions();
+        if (definitions != null) {
+            Collection<Definition>  def_list = definitions.getDefinition();
+            if (def_list != null  &&  def_list.size() > 0) {
+                List<Definition>  p_def_list =
+                    getForwardingDao( Definition.class ).syncAll( def_list );
+                defs.setDefinitions( new Definitions( p_def_list ) );
             }
-            defs.setDefinitions( p_def_list );
         }
+
+
+
+////        OvalDefinitionsUtil  util = OvalDefinitionsUtil.newInstance( defs );
+//        Definitions  def_list = defs.getDefinitions();
+//        if (def_list != null) {
+//            Definitions  p_def_list = new Definitions();
+//            for (Definition  def : def_list) {
+//                if (_LOG.isInfoEnabled()) {
+//                    _LOG.info( "creating Definition: " + def.getOvalID() );
+//                }
+//                Definition  p_def = getForwardingDao( Definition.class ).sync( def );
+//                p_def_list.addDefinition( p_def );
+//
+//                OvalDefinitionsDefinitionAssociation  assoc =
+//                    new OvalDefinitionsDefinitionAssociation( defs, p_def );
+//                getForwardingDao( OvalDefinitionsDefinitionAssociation.class ).sync( assoc );
+//
+//                //TODO: move this part to DefinitionDao,
+//                // and create 1:N definition-Criteria relation?
+////                final String  defID = def.getOvalID();
+////                Collection<String>  testIDs = util.getRelatedTestIDOfDefinition( defID );
+////                for (String  testID : testIDs) {
+////                    DefinitionTestAssociation  dt_assoc =
+////                        new DefinitionTestAssociation( def, defs.getTest( testID ) );
+////                    getForwardingDao( DefinitionTestAssociation.class ).sync( dt_assoc );
+////                }
+//            }
+//            defs.setDefinitions( p_def_list );
+//        }
 
         return super.create( defs );
     }

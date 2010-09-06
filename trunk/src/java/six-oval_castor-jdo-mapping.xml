@@ -58,6 +58,15 @@
         </field>
 -->
 
+        <!-- m : n -->
+        <field name="definitions.definition"
+            type="jp.go.aist.six.oval.model.definitions.Definition"
+            collection="collection">
+            <sql name="d_definition__PID"
+                many-table="oval_assoc__d_definitions__d_definition"
+                many-key="d_definitions__PID"/>
+        </field>
+
 
         <!-- OvalDefinitions : Definition = n : m -->
         <!-- This relation is stored using Association. -->
