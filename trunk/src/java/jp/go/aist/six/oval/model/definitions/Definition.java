@@ -159,6 +159,15 @@ public class Definition
     }
 
 
+    public Definition criteria(
+                    final Criteria criteria
+                    )
+    {
+        setCriteria( criteria );
+        return this;
+    }
+
+
     public Criteria getCriteria()
     {
         return _criteria;

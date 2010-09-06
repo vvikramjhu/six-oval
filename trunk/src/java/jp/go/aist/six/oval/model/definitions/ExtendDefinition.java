@@ -60,8 +60,22 @@ public class ExtendDefinition
                     final String definitionID
                     )
     {
+        this( definitionID, null );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public ExtendDefinition(
+                    final String definitionID,
+                    final String comment
+                    )
+    {
+        super( comment );
         setDefinitionRef( definitionID );
     }
+
 
 
 
@@ -85,9 +99,52 @@ public class ExtendDefinition
     //**************************************************************
 
     @Override
+    public int hashCode()
+    {
+        final int  prime = 37;
+        int  result = super.hashCode();
+
+        String  defRef = getDefinitionRef();
+        result = prime * result + ((defRef == null) ? 0 : defRef.hashCode());
+
+        return result;
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof ExtendDefinition)) {
+            return false;
+        }
+
+        if (super.equals( obj )) {
+            ExtendDefinition  other = (ExtendDefinition)obj;
+            String  other_defRef = other.getDefinitionRef();
+            String   this_defRef =  this.getDefinitionRef();
+            if (this_defRef == other_defRef
+                            ||  (this_defRef != null
+                                            &&  this_defRef.equals( other_defRef ))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+
+    @Override
     public String toString()
     {
-        return "ExtendDefinition[negate=" + isNegate()
+        return "extend_definition[negate=" + isNegate()
                         + ", definition_ref=" + getDefinitionRef()
                         + ", comment=" + getComment()
                         + "]";

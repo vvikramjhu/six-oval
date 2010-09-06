@@ -52,7 +52,20 @@ public class CriteriaElement
     }
 
 
+    /**
+     * Constructor.
+     */
+    public CriteriaElement(
+                    final String comment
+                    )
+    {
+        setComment( comment );
+    }
 
+
+
+    /**
+     */
     public void setNegate(
                     final boolean negate
                     )
@@ -68,6 +81,8 @@ public class CriteriaElement
 
 
 
+    /**
+     */
     public void setComment(
                     final String comment
                     )
@@ -102,6 +117,46 @@ public class CriteriaElement
     public Definition getMasterObject()
     {
         return _master;
+    }
+
+
+
+    //**************************************************************
+    //  java.lang.Object
+    //**************************************************************
+
+    @Override
+    public int hashCode()
+    {
+        final int  prime = 37;
+        int  result = 17;
+
+        result = prime * result + (isNegate() ? 0 : 1);
+
+        return result;
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof CriteriaElement)) {
+            return false;
+        }
+
+        CriteriaElement  other = (CriteriaElement)obj;
+        if (this.isNegate() == other.isNegate()) {
+            return true;
+        }
+
+        return false;
     }
 
 }

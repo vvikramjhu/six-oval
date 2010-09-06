@@ -60,6 +60,19 @@ public class Criterion
                     final String testID
                     )
     {
+        this( testID, null );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public Criterion(
+                    final String testID,
+                    final String comment
+                    )
+    {
+        super( comment );
         setTestRef( testID );
     }
 
@@ -85,9 +98,52 @@ public class Criterion
     //**************************************************************
 
     @Override
+    public int hashCode()
+    {
+        final int  prime = 37;
+        int  result = super.hashCode();
+
+        String  testRef = getTestRef();
+        result = prime * result + ((testRef == null) ? 0 : testRef.hashCode());
+
+        return result;
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof Criterion)) {
+            return false;
+        }
+
+        if (super.equals( obj )) {
+            Criterion  other = (Criterion)obj;
+            String  other_testRef = other.getTestRef();
+            String   this_testRef =  this.getTestRef();
+            if (this_testRef == other_testRef
+                            ||  (this_testRef != null
+                                            &&  this_testRef.equals( other_testRef ))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+
+    @Override
     public String toString()
     {
-        return "Criterion[negate=" + isNegate()
+        return "criterion[negate=" + isNegate()
                         + ", test_ref=" + getTestRef()
                         + ", comment=" + getComment()
                         + "]";

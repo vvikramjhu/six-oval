@@ -203,6 +203,13 @@ public abstract class Validators
 
             Reporter.log( " - metadata", true );
             _assertEquals( actual.getMetadata(), expected.getMetadata() );
+
+            if (actual.getCriteria() == null) {
+                Reporter.log( " - criteria (SKIP)", true );
+            } else {
+                Reporter.log( " - criteria", true );
+                Assert.assertEquals( actual.getCriteria(), expected.getCriteria() );
+            }
         }
 
 

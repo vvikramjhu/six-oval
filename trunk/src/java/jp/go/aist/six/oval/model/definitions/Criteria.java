@@ -21,9 +21,10 @@
 package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.common.Operator;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 
 
@@ -47,7 +48,7 @@ public class Criteria
     extends CriteriaElement
 {
 
-    private Collection<CriteriaElement>  _elements = new ArrayList<CriteriaElement>();
+    private Set<CriteriaElement>  _elements = new HashSet<CriteriaElement>();
     //{1..*}
 
     public static final Operator  DEFAULT_OPERATOR = Operator.AND;
@@ -64,7 +65,54 @@ public class Criteria
     }
 
 
+    /**
+     * Constructor.
+     */
+    public Criteria(
+                    final String comment
+                    )
+    {
+        super( comment );
+    }
 
+
+    /**
+     * Constructor.
+     */
+    public Criteria(
+                    final Operator operator
+                    )
+    {
+        setOperator( operator );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public Criteria(
+                    final Operator operator,
+                    final Collection<? extends CriteriaElement> elements
+                    )
+    {
+        this( operator );
+        setElements( elements );
+    }
+
+
+
+    public Criteria comment(
+                    final String comment
+                    )
+    {
+        setComment( comment );
+        return this;
+    }
+
+
+
+    /**
+     */
     public void setOperator(
                     final Operator operator
                     )
@@ -80,6 +128,8 @@ public class Criteria
 
 
 
+    /**
+     */
     public void setElements(
                     final Collection<? extends CriteriaElement> elements
                     )
@@ -109,7 +159,7 @@ public class Criteria
     }
 
 
-    public Collection<CriteriaElement> getElements()
+    public Set<CriteriaElement> getElements()
     {
         return _elements;
     }
@@ -121,15 +171,100 @@ public class Criteria
     }
 
 
+    public Criteria element(
+                    final CriteriaElement element
+                    )
+    {
+        addElement( element );
+        return this;
+    }
+
+
+    public Criteria criteria(
+                    final Operator operator
+                    )
+    {
+        return element( new Criteria( operator ) );
+    }
+
+
+    public Criteria criterion(
+                    final String testID,
+                    final String comment
+                    )
+    {
+        return element( new Criterion( testID, comment ) );
+    }
+
+
+    public Criteria extendDefinition(
+                    final String definitionID,
+                    final String comment
+                    )
+    {
+        return element( new ExtendDefinition( definitionID, comment ) );
+    }
+
+
 
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
     @Override
+    public int hashCode()
+    {
+        final int  prime = 37;
+        int  result = super.hashCode();
+
+        Collection<CriteriaElement>  elements = getElements();
+        result = prime * result + ((elements == null) ? 0 : elements.hashCode());
+
+        Operator  operator = getOperator();
+        result = prime * result + ((operator == null) ? 0 : operator.hashCode());
+
+        return result;
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof Criteria)) {
+            return false;
+        }
+
+        if (super.equals( obj )) {
+            Criteria  other = (Criteria)obj;
+            Operator  other_operator = other.getOperator();
+            Operator   this_operator =  this.getOperator();
+            if (this_operator == other_operator) {
+                Collection<CriteriaElement>  other_elements = other.getElements();
+                Collection<CriteriaElement>   this_elements =  this.getElements();
+                if (this_elements == other_elements
+                                ||  (this_elements != null
+                                                &&  this_elements.equals( other_elements ))) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+
+
+    @Override
     public String toString()
     {
-        return "Criteria[negate=" + isNegate()
+        return "criteria[negate=" + isNegate()
                         + ", operator=" + getOperator()
                         + ", " + getElements()
                         + "]";

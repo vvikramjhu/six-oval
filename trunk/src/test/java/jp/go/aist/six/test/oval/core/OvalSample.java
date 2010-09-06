@@ -8,12 +8,15 @@ import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.common.Operator;
 import jp.go.aist.six.oval.model.definitions.Affected;
+import jp.go.aist.six.oval.model.definitions.Criteria;
+import jp.go.aist.six.oval.model.definitions.Criterion;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.DefinitionClass;
 import jp.go.aist.six.oval.model.definitions.EntityObjectInt;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
+import jp.go.aist.six.oval.model.definitions.ExtendDefinition;
 import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.Reference;
@@ -437,11 +440,34 @@ public class OvalSample
     .reference( new Reference( "CVE", "CVE-2009-4019", "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4019") );
 
 
+    private static final Criteria  _CRITERIA_8500_ =
+        new Criteria( Operator.OR )
+    .element(
+                    new Criteria( Operator.AND )
+                    .element( new ExtendDefinition( "oval:org.mitre.oval:def:8282",
+                                    "MySQL 5.0 is installed" )
+                    )
+                    .element( new Criterion( "oval:org.mitre.oval:tst:20192",
+                                    "MySQL Server 5.0 version is less than 5.0.88" )
+                    )
+    )
+    .element(
+                    new Criteria( Operator.AND )
+                    .element( new ExtendDefinition( "oval:org.mitre.oval:def:8297",
+                                    "MySQL 5.1 is installed" )
+                    )
+                    .element( new Criterion( "oval:org.mitre.oval:tst:20859",
+                                    "MySQL Server 5.1 version is less than 5.1.41" )
+                    )
+    );
+
+
     public static final Definition  DEFINITION_8500 =
         new Definition( "oval:org.mitre.oval:def:8500", 1,
                         DefinitionClass.VULNERABILITY,
                         METADATA_8500
-                        );
+                        )
+    .criteria( _CRITERIA_8500_ );
 
 
     //**************************************************************
@@ -466,11 +492,22 @@ public class OvalSample
     .reference( new Reference( "CPE", "cpe:/a:mysql:mysql:5.1", null ) );
 
 
+    private static final Criteria  _CRITERIA_8297_ =
+        new Criteria()
+    .element( new Criterion( "oval:org.mitre.oval:tst:21087",
+                    "MySQL 5.1 is installed")
+    )
+    .element( new Criterion( "oval:org.mitre.oval:tst:21031",
+                    "mysqld.exe or mysqld-nt.exe exists" )
+    );
+
+
     public static final Definition  DEFINITION_8297 =
         new Definition( "oval:org.mitre.oval:def:8297", 1,
                         DefinitionClass.INVENTORY,
                         METADATA_8297
-                        );
+                        )
+    .criteria( _CRITERIA_8297_ );
 
 
     //**************************************************************
@@ -495,11 +532,22 @@ public class OvalSample
     .reference( new Reference( "CPE", "cpe:/a:mysql:mysql:5.0", null ) );
 
 
+    private static final Criteria  _CRITERIA_8282_ =
+        new Criteria()
+    .element( new Criterion( "oval:org.mitre.oval:tst:20481",
+                    "MySQL 5.0 is installed")
+    )
+    .element( new Criterion( "oval:org.mitre.oval:tst:21031",
+                    "mysqld.exe or mysqld-nt.exe exists" )
+    );
+
+
     public static final Definition  DEFINITION_8282 =
         new Definition( "oval:org.mitre.oval:def:8282", 1,
                         DefinitionClass.INVENTORY,
                         METADATA_8282
-                        );
+        )
+    .criteria( _CRITERIA_8282_ );
 
 
     //**************************************************************
@@ -532,11 +580,58 @@ public class OvalSample
     .reference( new Reference( "RHSA", "RHSA-2010:0332-00", "https://rhn.redhat.com/errata/RHSA-2010-0332.html" ) );
 
 
+    private static final Criteria  _CRITERIA_20100332_ =
+        new Criteria( Operator.OR )
+    .element(
+                    new Criteria( Operator.AND )
+                    .element(
+                                    new Criterion( "oval:com.redhat.rhsa:tst:20100332001",
+                                    "Red Hat Enterprise Linux 5 is installed" )
+                    )
+                    .element(
+                                    new Criteria( Operator.OR )
+                                    .element(
+                                                    new Criteria( Operator.AND )
+                                                    .element( new Criterion( "oval:com.redhat.rhsa:tst:20100332006", "xulrunner-devel-unstable is earlier than 0:1.9.0.19-1.el5_5" ) )
+                                                    .element( new Criterion( "oval:com.redhat.rhsa:tst:20100332007", "xulrunner-devel-unstable is signed with Red Hat redhatrelease key" ) )
+                                    )
+                                    .element(
+                                                    new Criteria( Operator.AND )
+                                                    .element( new Criterion( "oval:com.redhat.rhsa:tst:20100332002", "xulrunner is earlier than 0:1.9.0.19-1.el5_5" ) )
+                                                    .element( new Criterion( "oval:com.redhat.rhsa:tst:20100332003", "xulrunner is signed with Red Hat redhatrelease key" ) )
+                                    )
+                                    .element(
+                                                    new Criteria( Operator.AND )
+                                                    .element( new Criterion( "oval:com.redhat.rhsa:tst:20100332004", "xulrunner-devel is earlier than 0:1.9.0.19-1.el5_5" ) )
+                                                    .element( new Criterion( "oval:com.redhat.rhsa:tst:20100332005", "xulrunner-devel is signed with Red Hat redhatrelease key" ) )
+                                    )
+                                    .element(
+                                                    new Criteria( Operator.AND )
+                                                    .element( new Criterion( "oval:com.redhat.rhsa:tst:20100332008", "firefox is earlier than 0:3.0.19-1.el5_5" ) )
+                                                    .element( new Criterion( "oval:com.redhat.rhsa:tst:20100332009", "firefox is signed with Red Hat redhatrelease key" ) )
+                                    )
+                    )
+    )
+    .element(
+                    new Criteria( Operator.AND )
+                    .element(
+                                    new Criterion( "oval:com.redhat.rhsa:tst:20100332010", "Red Hat Enterprise Linux 4 is installed" )
+                    )
+                    .element(
+                                    new Criterion( "oval:com.redhat.rhsa:tst:20100332011", "firefox is earlier than 0:3.0.19-1.el4" )
+                    )
+                    .element(
+                                    new Criterion( "oval:com.redhat.rhsa:tst:20100332012", "firefox is signed with Red Hat master key" )
+                    )
+    );
+
+
     public static final Definition  DEFINITION_20100332 =
         new Definition( "oval:com.redhat.rhsa:def:20100332", 301,
                         DefinitionClass.PATCH,
                         METADATA_20100332
-                        );
+                        )
+    .criteria( _CRITERIA_20100332_ );
 
 
     //==============================================================
