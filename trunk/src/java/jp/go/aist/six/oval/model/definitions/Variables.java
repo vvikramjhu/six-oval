@@ -73,6 +73,19 @@ public class Variables
 
 
 
+    public void setVariable(
+                    final Collection<? extends Variable> variables
+                    )
+    {
+        if (_getElement() != variables) {
+            clear();
+            if (variables != null  &&  variables.size() > 0) {
+                addAll( variables );
+            }
+        }
+    }
+
+
     public boolean addVariable(
                     final Variable variable
                     )

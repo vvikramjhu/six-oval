@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsVariableAssociation;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Definitions;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
@@ -168,17 +167,25 @@ public class OvalDefinitionsDao
 
         Variables  variables = defs.getVariables();
         if (variables != null) {
-            Variables  p_objects = new Variables();
-            for (Variable  object : variables) {
-                Variable  p_object = getForwardingDao( Variable.class ).sync( object );
-                p_objects.addVariable( p_object );
-                OvalDefinitionsVariableAssociation  assoc =
-                    new OvalDefinitionsVariableAssociation( defs, p_object );
-                getForwardingDao( OvalDefinitionsVariableAssociation.class ).sync( assoc );
+            Collection<Variable>  variable_list = variables.getVariable();
+            if (variable_list != null  &&  variable_list.size() > 0) {
+                List<Variable>  p_variable_list =
+                    getForwardingDao( Variable.class ).syncAll( variable_list );
+                defs.setVariables( new Variables( p_variable_list ) );
             }
-
-            defs.setVariables( p_objects );
         }
+//        if (variables != null) {
+//            Variables  p_objects = new Variables();
+//            for (Variable  object : variables) {
+//                Variable  p_object = getForwardingDao( Variable.class ).sync( object );
+//                p_objects.addVariable( p_object );
+//                OvalDefinitionsVariableAssociation  assoc =
+//                    new OvalDefinitionsVariableAssociation( defs, p_object );
+//                getForwardingDao( OvalDefinitionsVariableAssociation.class ).sync( assoc );
+//            }
+//
+//            defs.setVariables( p_objects );
+//        }
 
 
         Definitions  definitions = defs.getDefinitions();

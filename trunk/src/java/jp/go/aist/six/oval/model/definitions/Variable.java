@@ -45,7 +45,8 @@ import jp.go.aist.six.oval.model.common.Datatype;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class Variable
+public class Variable
+//public abstract class Variable
     extends CommentedOvalEntity
 {
 
@@ -130,7 +131,11 @@ public abstract class Variable
     }
 
 
-    public abstract EntityType getEntityType();
+//    public abstract EntityType getEntityType();
+    public EntityType getEntityType()
+    {
+        return EntityType.UNKNOWN;
+    }
 
 
 
