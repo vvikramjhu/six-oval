@@ -86,16 +86,18 @@ public class StoreDefinitionsTest
     throws Exception
     {
         Reporter.log( "sync OvalEntity: " + object.getOvalID(), true );
+        long  time = System.currentTimeMillis();
         T  persistent = _getStore().sync( type, object );
-        Reporter.log( "...sync done", true );
+        Reporter.log( "...sync done: " + (System.currentTimeMillis() - time) + "(ms)", true );
 
         String  pid = persistent.getPersistentID();
         Reporter.log( "  @ pid=" + pid, true );
 
         Reporter.log( "get object...", true );
         Reporter.log( "  - pid=" + pid, true );
+        time = System.currentTimeMillis();
         T  persistent2 = _getStore().get( type, pid );
-        Reporter.log( "...get done", true );
+        Reporter.log( "...get done: " + (System.currentTimeMillis() - time) + "(ms)", true );
 
         Reporter.log( "  @ get: object=" + persistent2, true );
         Reporter.log( "validating...", true );
@@ -135,16 +137,18 @@ public class StoreDefinitionsTest
     throws Exception
     {
         Reporter.log( "sync OvalDefinitions..." , true );
+        long  time = System.currentTimeMillis();
         OvalDefinitions  persistent = _getStore().sync( OvalDefinitions.class, object );
-        Reporter.log( "...sync done", true );
+        Reporter.log( "...sync done: " + (System.currentTimeMillis() - time) + "(ms)", true );
 
         String  pid = persistent.getPersistentID();
         Reporter.log( "  @ pid=" + pid, true );
 
         Reporter.log( "get object...", true );
         Reporter.log( "  - pid=" + pid, true );
+        time = System.currentTimeMillis();
         OvalDefinitions  persistent2 = _getStore().get( OvalDefinitions.class, pid );
-        Reporter.log( "...get done", true );
+        Reporter.log( "...get done: " + (System.currentTimeMillis() - time) + "(ms)", true );
 
         Reporter.log( "  @ get: object=" + persistent2, true );
         Reporter.log( "validating...", true );

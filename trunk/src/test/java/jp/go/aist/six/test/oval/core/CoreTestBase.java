@@ -250,8 +250,9 @@ public abstract class CoreTestBase
     {
         File  file = new File( filepath );
         Reporter.log( "unmarshalling XML...", true );
+        long  time = System.currentTimeMillis();
         Object  obj = _getXml().unmarshal( new FileInputStream( file ) );
-        Reporter.log( "...unmarshalling done", true );
+        Reporter.log( "...unmarshalling done: " + (System.currentTimeMillis() - time) + "(ms)", true );
         Reporter.log( "  @ unmarshalled object: " + obj, true );
 
         Assert.assertTrue( type.isInstance( obj ) );
