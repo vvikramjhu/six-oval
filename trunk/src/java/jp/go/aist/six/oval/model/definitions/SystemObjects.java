@@ -77,12 +77,13 @@ public class SystemObjects
                     final Collection<? extends SystemObject> objects
                     )
     {
-        if (_getElement() != objects) {
-            clear();
-            if (objects != null  &&  objects.size() > 0) {
-                addAll( objects );
-            }
-        }
+        _setElement( objects );
+//        if (_getElement() != objects) {
+//            clear();
+//            if (objects != null  &&  objects.size() > 0) {
+//                addAll( objects );
+//            }
+//        }
     }
 
 

@@ -77,12 +77,14 @@ public class Variables
                     final Collection<? extends Variable> variables
                     )
     {
-        if (_getElement() != variables) {
-            clear();
-            if (variables != null  &&  variables.size() > 0) {
-                addAll( variables );
-            }
-        }
+        _setElement( variables );
+
+//        if (_getElement() != variables) {
+//            clear();
+//            if (variables != null  &&  variables.size() > 0) {
+//                addAll( variables );
+//            }
+//        }
     }
 
 

@@ -77,12 +77,13 @@ public class States
                     final Collection<? extends State> states
                     )
     {
-        if (_getElement() != states) {
-            clear();
-            if (states != null  &&  states.size() > 0) {
-                addAll( states );
-            }
-        }
+        _setElement( states );
+//        if (_getElement() != states) {
+//            clear();
+//            if (states != null  &&  states.size() > 0) {
+//                addAll( states );
+//            }
+//        }
     }
 
 

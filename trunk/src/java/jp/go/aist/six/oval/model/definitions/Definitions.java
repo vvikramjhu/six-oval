@@ -77,12 +77,13 @@ public class Definitions
                     final Collection<? extends Definition> definitions
                     )
     {
-        if (_getElement() != definitions) {
-            clear();
-            if (definitions != null  &&  definitions.size() > 0) {
-                addAll( definitions );
-            }
-        }
+        _setElement( definitions );
+//        if (_getElement() != definitions) {
+//            clear();
+//            if (definitions != null  &&  definitions.size() > 0) {
+//                addAll( definitions );
+//            }
+//        }
     }
 
 

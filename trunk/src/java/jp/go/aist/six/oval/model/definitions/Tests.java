@@ -77,12 +77,14 @@ public class Tests
                     final Collection<? extends Test> tests
                     )
     {
-        if (_getElement() != tests) {
-            clear();
-            if (tests != null  &&  tests.size() > 0) {
-                addAll( tests );
-            }
-        }
+        _setElement( tests );
+
+//        if (_getElement() != tests) {
+//            clear();
+//            if (tests != null  &&  tests.size() > 0) {
+//                addAll( tests );
+//            }
+//        }
     }
 
 
