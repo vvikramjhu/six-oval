@@ -113,11 +113,6 @@ public class OvalResultsDao
             system.setMasterObject( results );
 
             _createSystem( system );
-//            getForwardingDao( SystemResult.class ).create( system );
-
-//            OvalResultsSystemAssociation  assoc =
-//                new OvalResultsSystemAssociation( results, system );
-//            getForwardingDao( OvalResultsSystemAssociation.class ).sync( assoc );
         }
 
         OvalDefinitions  defs = results.getDefinitions();
@@ -125,15 +120,6 @@ public class OvalResultsDao
             OvalDefinitions  p_defs = getForwardingDao( OvalDefinitions.class ).sync( defs );
             results.setDefinitions( p_defs );
         }
-//
-//      OvalDefinitions  defs = results.getDefinitions();
-//      if (defs != null) {
-//          OvalDefinitions  p_defs = getForwardingDao( OvalDefinitions.class ).sync( defs );
-//
-//          OvalResultsOvalDefinitionsAssociation  or_od_assoc =
-//              new OvalResultsOvalDefinitionsAssociation( results, p_defs );
-//          getForwardingDao( OvalResultsOvalDefinitionsAssociation.class ).sync( or_od_assoc );
-//      }
 
         return super.create( results );
     }
