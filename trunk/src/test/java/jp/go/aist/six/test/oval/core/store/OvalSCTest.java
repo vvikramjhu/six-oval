@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.core.store;
 
-import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -12,13 +12,13 @@ import org.testng.annotations.DataProvider;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class StoreResultsTest
+public class OvalSCTest
     extends CoreTestBase
 {
 
     /**
      */
-    public StoreResultsTest()
+    public OvalSCTest()
     {
     }
 
@@ -26,35 +26,35 @@ public class StoreResultsTest
 
     /**
      */
-    private void _testOvalResults(
-                    final Class<OvalResults> type,
+    private void _testOvalSC(
+                    final Class<OvalSystemCharacteristics> type,
                     final String filepath,
                     final String xpath,
-                    final OvalResults expected
+                    final OvalSystemCharacteristics expected
                     )
     throws Exception
     {
         Reporter.log( "\n////////////////////////////////////////////////////////////////", true );
         Reporter.log( "  * object type: " + type, true );
 
-        OvalResults  object = _readObjectFromXmlFile( type, filepath, xpath, expected );
+        OvalSystemCharacteristics  object = _readObjectFromXmlFile( type, filepath, xpath, expected );
         Assert.assertNotNull( object );
 
-        _syncOvalResults( object );
+        _syncOvalSC( object );
     }
 
 
 
     /**
      */
-    protected void _syncOvalResults(
-                    final OvalResults object
+    protected void _syncOvalSC(
+                    final OvalSystemCharacteristics object
                     )
     throws Exception
     {
-        Reporter.log( "sync OvalResults..." , true );
+        Reporter.log( "sync OvalSystemCharacteristics..." , true );
         long  time = System.currentTimeMillis();
-        OvalResults  persistent = _getStore().sync( OvalResults.class, object );
+        OvalSystemCharacteristics  persistent = _getStore().sync( OvalSystemCharacteristics.class, object );
         Reporter.log( "...sync done: " + (System.currentTimeMillis() - time) + "(ms)", true );
 
         String  pid = persistent.getPersistentID();
@@ -63,7 +63,7 @@ public class StoreResultsTest
         Reporter.log( "get object...", true );
         Reporter.log( "  - pid=" + pid, true );
         time = System.currentTimeMillis();
-        OvalResults  persistent2 = _getStore().get( OvalResults.class, pid );
+        OvalSystemCharacteristics  persistent2 = _getStore().get( OvalSystemCharacteristics.class, pid );
         Reporter.log( "...get done: " + (System.currentTimeMillis() - time) + "(ms)", true );
 
         Reporter.log( "  @ get: object=" + persistent2, true );
@@ -76,18 +76,18 @@ public class StoreResultsTest
 
 
     //==============================================================
-    //  oval_results
+    //  oval_system_characteristics
     //==============================================================
 
-    @DataProvider( name="results.oval_results" )
-    public Object[][] provideResultsOvalResults()
+    @DataProvider( name="sc.oval_system_characteristics" )
+    public Object[][] provideSCOvalSC()
     {
         return new Object[][] {
                         // Mitre, CVE-2009-4019, MySQL
                         {
-                            OvalResults.class,
-                            "test/data/results/oval-results_CVE-2009-4019_MySQL.xml",
-                            "/oval_results",
+                            OvalSystemCharacteristics.class,
+                            "test/data/sc/oval-sc_CVE-2009-4019_MySQL.xml",
+                            "/oval_system_characteristics",
                             null
                         }
         };
@@ -95,23 +95,23 @@ public class StoreResultsTest
 
 
     @org.testng.annotations.Test(
-                    groups={"oval.core.store", "results.oval_results"},
-                    dataProvider="results.oval_results",
+                    groups={"oval.core.store", "sc.oval_system_characteristics"},
+                    dataProvider="sc.oval_system_characteristics",
                     alwaysRun=true
                     )
-    public void testResultsOvalResults(
-                    final Class<OvalResults> type,
+    public void testSCOvalSC(
+                    final Class<OvalSystemCharacteristics> type,
                     final String filepath,
                     final String xpath,
-                    final OvalResults expected
+                    final OvalSystemCharacteristics expected
                     )
     throws Exception
     {
-        _testOvalResults( type, filepath, xpath, expected );
+        _testOvalSC( type, filepath, xpath, expected );
     }
 
 }
-// StoreResultsTest
+// StoreSCTest
 
 /* vim:set tabstop=4:set expandtab:set shiftwidth=4: */
 
