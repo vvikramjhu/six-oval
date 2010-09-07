@@ -126,6 +126,136 @@ public abstract class CoreTestBase
 
 
     /**
+     */
+    protected <T> T _readObjectFromXmlFile(
+                    final Class<T> type,
+                    final String filepath,
+                    final String xpath,
+                    final T expected
+                    )
+    throws Exception
+    {
+        Reporter.log( "  * XPath: " + xpath, true );
+        Reporter.log( "  * XML file: " + filepath, true );
+
+        T  actual = _unmarshalFromFile( filepath, type );
+
+        if (expected != null) {
+            Reporter.log( "validating...", true );
+            Validators.validator( type ).equals( actual, expected );
+//            _assertEquals( actual, expected );
+            Reporter.log( "...validation OK", true );
+        }
+
+        return actual;
+    }
+
+
+
+    /**
+     */
+    protected <T> T _unmarshalFromFile(
+                    final String filepath,
+                    final Class<T> type
+                    )
+    throws Exception
+    {
+        File  file = new File( filepath );
+        Reporter.log( "unmarshalling XML...", true );
+        long  time = System.currentTimeMillis();
+        Object  obj = _getXml().unmarshal( new FileInputStream( file ) );
+        Reporter.log( "...unmarshalling done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+        Reporter.log( "  @ unmarshalled object: " + obj, true );
+
+        Assert.assertTrue( type.isInstance( obj ) );
+
+        return type.cast( obj );
+    }
+
+
+
+    /**
+     */
+    protected <T extends OvalEntity> void _syncOvalEntity(
+                    final Class<T> type,
+                    final T e
+                    )
+    throws Exception
+    {
+//        Reporter.log( "getting object...", true );
+//        T  p_eq = _getStore().get( type, e.getPersistentID() );
+//        Reporter.log( "...get done", true );
+//        Reporter.log( "  @ persistent object: " + p_eq, true );
+//
+//        Reporter.log( "finding equaivalent...", true );
+//        p_eq = _getStore().findEquivalent( type, e );
+//        Reporter.log( "...find equivalent done", true );
+//        Reporter.log( "  @ equivalent: " + p_eq, true );
+
+        Reporter.log( "syncing OvalEntity: " + e, true );
+        T  p = _getStore().sync( type, e );
+        Reporter.log( "...sync done", true );
+        String  pid = p.getPersistentID();
+        Reporter.log( "  @ synced: pid=" + pid, true );
+//        Reporter.log( "  @ synced: hash=" + p.hashCode(), true );
+
+
+//        Reporter.log( "finding object by ID...", true );
+//        RelationalBinding  idFilter = RelationalBinding.equalBinding( "persistentID", pid );
+//        List<T>  entities = _getStore().find( type, idFilter );
+//        Reporter.log( "...find done", true );
+//        T  p3 = entities.get( 0 );
+//        Reporter.log( "  @ find by ID: object=" + p3, true );
+//        Assert.assertEquals( p3.getOvalID(), e.getOvalID() );
+//        Assert.assertEquals( p3.getOvalVersion(), e.getOvalVersion() );
+
+
+        Reporter.log( "getting object...", true );
+        T  p2 = _getStore().get( type, pid );
+//        T  p2 = _getStore().get( type, pid );
+        Reporter.log( "...get done", true );
+        Reporter.log( "  @ get: object=" + p2, true );
+//        Reporter.log( "  @ get: hash=" + p.hashCode(), true );
+        Assert.assertEquals( p2, e );
+    }
+
+
+
+    /**
+     */
+    protected <T extends NameEntity> void _syncNameEntity(
+                    final Class<T> type,
+                    final T e
+                    )
+    throws Exception
+    {
+//        Reporter.log( "getting object...", true );
+//        T  p_eq = _getStore().get( type, e.getPersistentID() );
+//        Reporter.log( "...get done", true );
+//        Reporter.log( "  @ persistent object: " + p_eq, true );
+
+//        Reporter.log( "finding equaivalent...", true );
+//        p_eq = _getStore().findEquivalent( type, e );
+//        Reporter.log( "...find equivalent done", true );
+//        Reporter.log( "  @ equivalent: " + p_eq, true );
+
+        Reporter.log( "syncing object...", true );
+        T  p = _getStore().sync( type, e );
+        Reporter.log( "...sync done", true );
+        String  pid = p.getPersistentID();
+        Reporter.log( "  @ synced: pid=" + pid, true );
+
+        Reporter.log( "getting object...", true );
+        T  p2 = _getStore().get( type, pid );
+        Reporter.log( "...get done", true );
+        Reporter.log( "  @ get: object=" + p2, true );
+        Assert.assertEquals( p2, e );
+    }
+
+
+
+
+    /**
      * Object
      */
     protected void _assertEquals(
@@ -237,109 +367,6 @@ public abstract class CoreTestBase
         Reporter.log( " - line", true );
         Assert.assertEquals( actual.getLine(), expected.getLine() );
     }
-
-
-
-    /**
-     */
-    protected <T> T _unmarshalFromFile(
-                    final String filepath,
-                    final Class<T> type
-                    )
-    throws Exception
-    {
-        File  file = new File( filepath );
-        Reporter.log( "unmarshalling XML...", true );
-        long  time = System.currentTimeMillis();
-        Object  obj = _getXml().unmarshal( new FileInputStream( file ) );
-        Reporter.log( "...unmarshalling done: " + (System.currentTimeMillis() - time) + "(ms)", true );
-        Reporter.log( "  @ unmarshalled object: " + obj, true );
-
-        Assert.assertTrue( type.isInstance( obj ) );
-
-        return type.cast( obj );
-    }
-
-
-
-    /**
-     */
-    protected <T extends OvalEntity> void _syncOvalEntity(
-                    final Class<T> type,
-                    final T e
-                    )
-    throws Exception
-    {
-//        Reporter.log( "getting object...", true );
-//        T  p_eq = _getStore().get( type, e.getPersistentID() );
-//        Reporter.log( "...get done", true );
-//        Reporter.log( "  @ persistent object: " + p_eq, true );
-//
-//        Reporter.log( "finding equaivalent...", true );
-//        p_eq = _getStore().findEquivalent( type, e );
-//        Reporter.log( "...find equivalent done", true );
-//        Reporter.log( "  @ equivalent: " + p_eq, true );
-
-        Reporter.log( "syncing OvalEntity: " + e, true );
-        T  p = _getStore().sync( type, e );
-        Reporter.log( "...sync done", true );
-        String  pid = p.getPersistentID();
-        Reporter.log( "  @ synced: pid=" + pid, true );
-//        Reporter.log( "  @ synced: hash=" + p.hashCode(), true );
-
-
-//        Reporter.log( "finding object by ID...", true );
-//        RelationalBinding  idFilter = RelationalBinding.equalBinding( "persistentID", pid );
-//        List<T>  entities = _getStore().find( type, idFilter );
-//        Reporter.log( "...find done", true );
-//        T  p3 = entities.get( 0 );
-//        Reporter.log( "  @ find by ID: object=" + p3, true );
-//        Assert.assertEquals( p3.getOvalID(), e.getOvalID() );
-//        Assert.assertEquals( p3.getOvalVersion(), e.getOvalVersion() );
-
-
-        Reporter.log( "getting object...", true );
-        T  p2 = _getStore().get( type, pid );
-//        T  p2 = _getStore().get( type, pid );
-        Reporter.log( "...get done", true );
-        Reporter.log( "  @ get: object=" + p2, true );
-//        Reporter.log( "  @ get: hash=" + p.hashCode(), true );
-        Assert.assertEquals( p2, e );
-    }
-
-
-
-    /**
-     */
-    protected <T extends NameEntity> void _syncNameEntity(
-                    final Class<T> type,
-                    final T e
-                    )
-    throws Exception
-    {
-//        Reporter.log( "getting object...", true );
-//        T  p_eq = _getStore().get( type, e.getPersistentID() );
-//        Reporter.log( "...get done", true );
-//        Reporter.log( "  @ persistent object: " + p_eq, true );
-
-//        Reporter.log( "finding equaivalent...", true );
-//        p_eq = _getStore().findEquivalent( type, e );
-//        Reporter.log( "...find equivalent done", true );
-//        Reporter.log( "  @ equivalent: " + p_eq, true );
-
-        Reporter.log( "syncing object...", true );
-        T  p = _getStore().sync( type, e );
-        Reporter.log( "...sync done", true );
-        String  pid = p.getPersistentID();
-        Reporter.log( "  @ synced: pid=" + pid, true );
-
-        Reporter.log( "getting object...", true );
-        T  p2 = _getStore().get( type, pid );
-        Reporter.log( "...get done", true );
-        Reporter.log( "  @ get: object=" + p2, true );
-        Assert.assertEquals( p2, e );
-    }
-
 
 
 

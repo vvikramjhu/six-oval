@@ -52,33 +52,6 @@ public class StoreDefinitionsTest
 
     /**
      */
-    private <T> T _readObjectFromXmlFile(
-                    final Class<T> type,
-                    final String filepath,
-                    final String xpath,
-                    final T expected
-                    )
-    throws Exception
-    {
-        Reporter.log( "  * XPath: " + xpath, true );
-        Reporter.log( "  * XML file: " + filepath, true );
-
-        T  actual = _unmarshalFromFile( filepath, type );
-
-        if (expected != null) {
-            Reporter.log( "validating...", true );
-            Validators.validator( type ).equals( actual, expected );
-//            _assertEquals( actual, expected );
-            Reporter.log( "...validation OK", true );
-        }
-
-        return actual;
-    }
-
-
-
-    /**
-     */
     protected <T extends OvalEntity> void _syncOvalEntity(
                     final Class<T> type,
                     final T object
