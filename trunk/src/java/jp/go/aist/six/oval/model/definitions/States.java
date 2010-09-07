@@ -54,10 +54,10 @@ public class States
      * Constructor.
      */
     public States(
-                    final Collection<? extends State> elements
+                    final Collection<? extends State> states
                     )
     {
-        super( elements );
+        super( states );
     }
 
 
@@ -65,12 +65,25 @@ public class States
      * Constructor.
      */
     public States(
-                    final State[] elements
+                    final State[] states
                     )
     {
-        super( elements );
+        super( states );
     }
 
+
+
+    public void setState(
+                    final Collection<? extends State> states
+                    )
+    {
+        if (_getElement() != states) {
+            clear();
+            if (states != null  &&  states.size() > 0) {
+                addAll( states );
+            }
+        }
+    }
 
 
     public boolean addState(

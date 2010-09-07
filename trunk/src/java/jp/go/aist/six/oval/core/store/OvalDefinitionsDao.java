@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsStateAssociation;
 import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsVariableAssociation;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Definitions;
@@ -143,19 +142,28 @@ public class OvalDefinitionsDao
 //            defs.setObjects( p_objects );
 //        }
 
+
         States  states = defs.getStates();
         if (states != null) {
-            States  p_objects = new States();
-            for (State  object : states) {
-                State  p_object = getForwardingDao( State.class ).sync( object );
-                p_objects.addState( p_object );
-                OvalDefinitionsStateAssociation  assoc =
-                    new OvalDefinitionsStateAssociation( defs, p_object );
-                getForwardingDao( OvalDefinitionsStateAssociation.class ).sync( assoc );
+            Collection<State>  state_list = states.getState();
+            if (state_list != null  &&  state_list.size() > 0) {
+                List<State>  p_state_list =
+                    getForwardingDao( State.class ).syncAll( state_list );
+                defs.setStates( new States( p_state_list ) );
             }
-
-            defs.setStates( p_objects );
         }
+//        if (states != null) {
+//            States  p_objects = new States();
+//            for (State  object : states) {
+//                State  p_object = getForwardingDao( State.class ).sync( object );
+//                p_objects.addState( p_object );
+//                OvalDefinitionsStateAssociation  assoc =
+//                    new OvalDefinitionsStateAssociation( defs, p_object );
+//                getForwardingDao( OvalDefinitionsStateAssociation.class ).sync( assoc );
+//            }
+//
+//            defs.setStates( p_objects );
+//        }
 
 
         Variables  variables = defs.getVariables();

@@ -47,7 +47,8 @@ import jp.go.aist.six.oval.model.common.Operator;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class State
+public class State
+//public abstract class State
     extends CommentedOvalEntity //, Noted
 {
 
@@ -126,7 +127,11 @@ public abstract class State
     }
 
 
-    public abstract EntityType getEntityType();
+//    public abstract EntityType getEntityType();
+    public EntityType getEntityType()
+    {
+        return EntityType.UNKNOWN;
+    }
 
 
 
