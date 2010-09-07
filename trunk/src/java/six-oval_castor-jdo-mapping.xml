@@ -1192,8 +1192,7 @@
         </field>
 
         <field name="definitions" 
-            type="jp.go.aist.six.oval.model.definitions.OvalDefinitions"
-            >
+            type="jp.go.aist.six.oval.model.definitions.OvalDefinitions">
             <sql name="d_definitions__PID"/>
         </field>
 <!--

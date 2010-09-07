@@ -198,7 +198,7 @@ public class SystemResult
         DefinitionResults  defs = getDefinitions();
         TestResults  tests = getTests();
 
-        return "SystemResult[oval_system_characteristics=" + getOvalSystemCharacteristics()
+        return "system[oval_system_characteristics=" + getOvalSystemCharacteristics()
                         + ", #definitions=" + (defs == null ? 0 : defs.size())
 //                        + ", tests=" + tests
                         + ", #tests=" + (tests == null ? 0 : tests.size())

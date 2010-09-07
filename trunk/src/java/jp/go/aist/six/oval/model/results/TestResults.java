@@ -94,5 +94,17 @@ public class TestResults
         return iterator();
     }
 
+
+
+    //**************************************************************
+    //  java.lang.Object
+    //**************************************************************
+
+    @Override
+    public String toString()
+    {
+        return "tests[" + getTest() + "]";
+    }
+
 }
 // TestResults

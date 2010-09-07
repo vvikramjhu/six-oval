@@ -95,5 +95,17 @@ public class DefinitionResults
         return iterator();
     }
 
+
+
+    //**************************************************************
+    //  java.lang.Object
+    //**************************************************************
+
+    @Override
+    public String toString()
+    {
+        return "definitions[" + getDefinition() + "]";
+    }
+
 }
 // DefinitionResults
