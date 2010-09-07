@@ -849,8 +849,8 @@
         <field name="systemInfo.architecture" type="string">
             <sql name="sys_architecture" type="char"/>
         </field>
-        
-        
+
+
 <!--
         <field name="collectedObjectsDigest" type="string">
             <sql name="objects_digest" type="char"/>
@@ -858,20 +858,12 @@
 -->
 
 
-        <!-- SC : NetInterface = 1 : n -->
+        <!-- 1 : n -->
         <field name="systemInfo.interfaces.interface"
             type="jp.go.aist.six.oval.model.sc.NetInterface"
             collection="collection">
             <sql many-key="s_sc__PID"/>
         </field>
-<!-- backup
-        <field name="systemInfo.interfaces.interface"
-            type="jp.go.aist.six.oval.model.sc.NetInterface"
-            collection="collection"
-            lazy="true">
-            <sql many-key="s_sc__PID"/>
-        </field>
--->
 
         <!-- 1 : n -->
         <field name="collectedObjects.object"

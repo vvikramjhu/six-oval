@@ -60,12 +60,20 @@ public class DefinitionResults
      * Constructor.
      */
     public DefinitionResults(
-                    final DefinitionResult[] elements
+                    final DefinitionResult[] definitions
                     )
     {
-        super( elements );
+        super( definitions );
     }
 
+
+
+    public void setDefinition(
+                    final Collection<? extends DefinitionResult> definitions
+                    )
+    {
+        _setElement( definitions );
+    }
 
 
     public boolean addDefinition(

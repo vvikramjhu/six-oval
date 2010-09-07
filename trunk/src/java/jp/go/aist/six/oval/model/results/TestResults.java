@@ -48,10 +48,10 @@ public class TestResults
      * Constructor.
      */
     public TestResults(
-                    final Collection<? extends TestResult> elements
+                    final Collection<? extends TestResult> tests
                     )
     {
-        super( elements );
+        super( tests );
     }
 
 
@@ -59,19 +59,27 @@ public class TestResults
      * Constructor.
      */
     public TestResults(
-                    final TestResult[] elements
+                    final TestResult[] tests
                     )
     {
-        super( elements );
+        super( tests );
     }
 
 
 
-    public boolean addTest(
-                    final TestResult e
+    public void setTest(
+                    final Collection<? extends TestResult> tests
                     )
     {
-        return add( e );
+        _setElement( tests );
+    }
+
+
+    public boolean addTest(
+                    final TestResult test
+                    )
+    {
+        return add( test );
     }
 
 

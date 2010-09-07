@@ -54,10 +54,10 @@ public class CollectedSystemObjects
      * Constructor.
      */
     public CollectedSystemObjects(
-                    final Collection<? extends CollectedSystemObject> elements
+                    final Collection<? extends CollectedSystemObject> objects
                     )
     {
-        super( elements );
+        super( objects );
     }
 
 
@@ -65,10 +65,10 @@ public class CollectedSystemObjects
      * Constructor.
      */
     public CollectedSystemObjects(
-                    final CollectedSystemObject[] elements
+                    final CollectedSystemObject[] objects
                     )
     {
-        super( elements );
+        super( objects );
     }
 
 

@@ -54,7 +54,7 @@ public class NetInterfaces
      * Constructor.
      */
     public NetInterfaces(
-                    Collection<? extends NetInterface> netifs
+                    final Collection<? extends NetInterface> netifs
                     )
     {
         super( netifs );
@@ -65,7 +65,7 @@ public class NetInterfaces
      * Constructor.
      */
     public NetInterfaces(
-                    NetInterface[] netifs
+                    final NetInterface[] netifs
                     )
     {
         super( netifs );
@@ -74,7 +74,7 @@ public class NetInterfaces
 
 
     public void setInterface(
-                    Collection<? extends NetInterface> netifs
+                    final Collection<? extends NetInterface> netifs
                     )
     {
         _setElement( netifs );

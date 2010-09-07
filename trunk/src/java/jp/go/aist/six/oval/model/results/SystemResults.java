@@ -48,10 +48,10 @@ public class SystemResults
      * Constructor.
      */
     public SystemResults(
-                    final Collection<? extends SystemResult> system
+                    final Collection<? extends SystemResult> systems
                     )
     {
-        super( system );
+        super( systems );
     }
 
 
@@ -59,12 +59,20 @@ public class SystemResults
      * Constructor.
      */
     public SystemResults(
-                    final SystemResult[] system
+                    final SystemResult[] systems
                     )
     {
-        super( system );
+        super( systems );
     }
 
+
+
+    public void setSystem(
+                    final Collection<? extends SystemResult> systems
+                    )
+    {
+        _setElement( systems );
+    }
 
 
     public boolean addSystem(
