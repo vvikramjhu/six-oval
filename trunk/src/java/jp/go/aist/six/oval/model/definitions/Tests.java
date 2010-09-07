@@ -54,10 +54,10 @@ public class Tests
      * Constructor.
      */
     public Tests(
-                    final Collection<? extends Test> elements
+                    final Collection<? extends Test> tests
                     )
     {
-        super( elements );
+        super( tests );
     }
 
 
@@ -71,6 +71,19 @@ public class Tests
         super( elements );
     }
 
+
+
+    public void setTest(
+                    final Collection<? extends Test> tests
+                    )
+    {
+        if (_getElement() != tests) {
+            clear();
+            if (tests != null  &&  tests.size() > 0) {
+                addAll( tests );
+            }
+        }
+    }
 
 
     public boolean addTest(

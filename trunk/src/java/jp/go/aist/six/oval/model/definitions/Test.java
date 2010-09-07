@@ -50,7 +50,8 @@ import java.util.Iterator;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class Test
+public class Test
+//public abstract class Test
     extends CommentedOvalEntity //, Noted
 {
 
@@ -288,7 +289,11 @@ public abstract class Test
     }
 
 
-    public abstract EntityType getEntityType();
+//    public abstract EntityType getEntityType();
+    public EntityType getEntityType()
+    {
+        return EntityType.UNKNOWN;
+    }
 
 
 

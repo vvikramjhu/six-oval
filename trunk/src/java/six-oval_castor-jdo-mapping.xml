@@ -52,36 +52,25 @@
             <sql name="definitions_digest" type="char"/>
         </field>
 
-<!--
-        <field name="objectsDigest" type="string">
-            <sql name="objects_digest" type="char"/>
-        </field>
--->
-
         <!-- m : n -->
         <field name="definitions.definition"
             type="jp.go.aist.six.oval.model.definitions.Definition"
-            collection="collection">
+            collection="collection"
+            lazy="true">
             <sql name="d_definition__PID"
                 many-table="oval_assoc__d_definitions__d_definition"
                 many-key="d_definitions__PID"/>
         </field>
 
-
-        <!-- OvalDefinitions : Definition = n : m -->
-        <!-- This relation is stored using Association. -->
-<!--
-        <field name="definitions"
-            type="jp.go.aist.six.oval.model.definitions.Definition"
+        <!-- m : n -->
+        <field name="tests.test"
+            type="jp.go.aist.six.oval.model.definitions.Test"
             collection="collection"
-            lazy="true"
-            >
-            <sql name="definition__oid"
-                many-table="oval_d_definitions__definition"
-                many-key="definitions__oid"
-                />
+            lazy="true">
+            <sql name="d_test__PID"
+                many-table="oval_assoc__d_definitions__d_test"
+                many-key="d_definitions__PID"/>
         </field>
--->
 
     </class>
 

@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsObjectAssociation;
 import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsStateAssociation;
-import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsTestAssociation;
 import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsVariableAssociation;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Definitions;
@@ -95,19 +94,28 @@ public class OvalDefinitionsDao
             defs.setPersistentID( uuid );
         }
 
-        Tests  test_list = defs.getTests();
-        if (test_list != null) {
-            Tests  p_tests = new Tests();
-            for (Test  test : test_list) {
-                Test  p_test = getForwardingDao( Test.class ).sync( test );
-                p_tests.addTest( p_test );
-                OvalDefinitionsTestAssociation  assoc =
-                    new OvalDefinitionsTestAssociation( defs, p_test );
-                getForwardingDao( OvalDefinitionsTestAssociation.class ).sync( assoc );
+        Tests  tests = defs.getTests();
+        if (tests != null) {
+            Collection<Test>  test_list = tests.getTest();
+            if (test_list != null  &&  test_list.size() > 0) {
+                List<Test>  p_test_list =
+                    getForwardingDao( Test.class ).syncAll( test_list );
+                defs.setTests( new Tests( p_test_list ) );
             }
-
-            defs.setTests( p_tests );
         }
+//        Tests  test_list = defs.getTests();
+//        if (test_list != null) {
+//            Tests  p_tests = new Tests();
+//            for (Test  test : test_list) {
+//                Test  p_test = getForwardingDao( Test.class ).sync( test );
+//                p_tests.addTest( p_test );
+//                OvalDefinitionsTestAssociation  assoc =
+//                    new OvalDefinitionsTestAssociation( defs, p_test );
+//                getForwardingDao( OvalDefinitionsTestAssociation.class ).sync( assoc );
+//            }
+//
+//            defs.setTests( p_tests );
+//        }
 
 
         SystemObjects  objects = defs.getObjects();
