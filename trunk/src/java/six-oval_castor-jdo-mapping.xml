@@ -72,6 +72,16 @@
                 many-key="d_definitions__PID"/>
         </field>
 
+        <!-- m : n -->
+        <field name="objects.object"
+            type="jp.go.aist.six.oval.model.definitions.SystemObject"
+            collection="collection"
+            lazy="true">
+            <sql name="d_object__PID"
+                many-table="oval_assoc__d_definitions__d_object"
+                many-key="d_definitions__PID"/>
+        </field>
+
     </class>
 
 

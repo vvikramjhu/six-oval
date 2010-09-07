@@ -43,7 +43,8 @@ import jp.go.aist.six.oval.model.EntityType;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class SystemObject
+public class SystemObject
+//public abstract class SystemObject
     extends CommentedOvalEntity
 {
 
@@ -89,7 +90,11 @@ public abstract class SystemObject
     }
 
 
-    public abstract EntityType getEntityType();
+//    public abstract EntityType getEntityType();
+    public EntityType getEntityType()
+    {
+        return EntityType.UNKNOWN;
+    }
 
 
 

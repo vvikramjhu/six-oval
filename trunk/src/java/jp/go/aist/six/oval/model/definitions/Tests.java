@@ -65,10 +65,10 @@ public class Tests
      * Constructor.
      */
     public Tests(
-                    final Test[] elements
+                    final Test[] tests
                     )
     {
-        super( elements );
+        super( tests );
     }
 
 
@@ -87,10 +87,10 @@ public class Tests
 
 
     public boolean addTest(
-                    final Test e
+                    final Test test
                     )
     {
-        return add( e );
+        return add( test );
     }
 
 

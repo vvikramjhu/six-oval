@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsObjectAssociation;
 import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsStateAssociation;
 import jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsVariableAssociation;
 import jp.go.aist.six.oval.model.definitions.Definition;
@@ -120,20 +119,29 @@ public class OvalDefinitionsDao
 
         SystemObjects  objects = defs.getObjects();
         if (objects != null) {
-            SystemObjects  p_objects = new SystemObjects();
-            for (SystemObject  object : objects) {
-                if (_LOG.isInfoEnabled()) {
-                    _LOG.info( "creating Definition: " + object.getOvalID() );
-                }
-                SystemObject  p_object = getForwardingDao( SystemObject.class ).sync( object );
-                p_objects.addObject( p_object );
-                OvalDefinitionsObjectAssociation  assoc =
-                    new OvalDefinitionsObjectAssociation( defs, p_object );
-                getForwardingDao( OvalDefinitionsObjectAssociation.class ).sync( assoc );
+            Collection<SystemObject>  object_list = objects.getObject();
+            if (object_list != null  &&  object_list.size() > 0) {
+                List<SystemObject>  p_object_list =
+                    getForwardingDao( SystemObject.class ).syncAll( object_list );
+                defs.setObjects( new SystemObjects( p_object_list ) );
             }
-
-            defs.setObjects( p_objects );
         }
+//        SystemObjects  objects = defs.getObjects();
+//        if (objects != null) {
+//            SystemObjects  p_objects = new SystemObjects();
+//            for (SystemObject  object : objects) {
+//                if (_LOG.isInfoEnabled()) {
+//                    _LOG.info( "creating SystemObject: " + object.getOvalID() );
+//                }
+//                SystemObject  p_object = getForwardingDao( SystemObject.class ).sync( object );
+//                p_objects.addObject( p_object );
+//                OvalDefinitionsObjectAssociation  assoc =
+//                    new OvalDefinitionsObjectAssociation( defs, p_object );
+//                getForwardingDao( OvalDefinitionsObjectAssociation.class ).sync( assoc );
+//            }
+//
+//            defs.setObjects( p_objects );
+//        }
 
         States  states = defs.getStates();
         if (states != null) {

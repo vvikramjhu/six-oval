@@ -54,10 +54,10 @@ public class SystemObjects
      * Constructor.
      */
     public SystemObjects(
-                    final Collection<? extends SystemObject> elements
+                    final Collection<? extends SystemObject> objects
                     )
     {
-        super( elements );
+        super( objects );
     }
 
 
@@ -65,19 +65,32 @@ public class SystemObjects
      * Constructor.
      */
     public SystemObjects(
-                    final SystemObject[] elements
+                    final SystemObject[] objects
                     )
     {
-        super( elements );
+        super( objects );
     }
 
 
 
-    public boolean addObject(
-                    final SystemObject e
+    public void setObject(
+                    final Collection<? extends SystemObject> objects
                     )
     {
-        return add( e );
+        if (_getElement() != objects) {
+            clear();
+            if (objects != null  &&  objects.size() > 0) {
+                addAll( objects );
+            }
+        }
+    }
+
+
+    public boolean addObject(
+                    final SystemObject object
+                    )
+    {
+        return add( object );
     }
 
 
