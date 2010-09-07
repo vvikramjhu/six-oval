@@ -12,13 +12,13 @@ import org.testng.annotations.DataProvider;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalSCTest
+public class StoreSCTest
     extends CoreTestBase
 {
 
     /**
      */
-    public OvalSCTest()
+    public StoreSCTest()
     {
     }
 
