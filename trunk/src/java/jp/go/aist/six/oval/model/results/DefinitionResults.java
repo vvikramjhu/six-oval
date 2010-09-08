@@ -30,7 +30,7 @@ import java.util.Iterator;
  * A collection of DefinitionResult objects.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: DefinitionResults.java 742 2010-05-07 09:22:53Z akihito $
+ * @version $Id$
  */
 public class DefinitionResults
     extends Container<DefinitionResult>  //{1..*}

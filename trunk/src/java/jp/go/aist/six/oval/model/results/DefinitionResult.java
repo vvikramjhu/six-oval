@@ -27,7 +27,7 @@ import jp.go.aist.six.util.orm.Dependent;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: DefinitionResult.java 759 2010-05-10 06:56:29Z akihito $
+ * @version $Id$
  */
 public class DefinitionResult
     extends OvalResultElement

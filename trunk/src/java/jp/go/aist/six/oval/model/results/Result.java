@@ -27,7 +27,7 @@ import java.util.HashMap;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: Result.java 739 2010-05-07 08:11:01Z akihito $
+ * @version $Id$
  */
 public final class Result
     implements Serializable

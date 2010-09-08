@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: OvalResults.java 757 2010-05-10 06:25:22Z akihito $
+ * @version $Id$
  */
 public class OvalResults
     extends OvalDocument

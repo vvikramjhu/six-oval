@@ -29,7 +29,7 @@ import jp.go.aist.six.util.orm.Dependent;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: SystemResult.java 758 2010-05-10 06:28:46Z akihito $
+ * @version $Id$
  */
 public class SystemResult
     extends AbstractPersistable

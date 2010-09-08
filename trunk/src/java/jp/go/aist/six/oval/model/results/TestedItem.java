@@ -28,7 +28,7 @@ import jp.go.aist.six.util.orm.Dependent;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: OvalResultElement.java 739 2010-05-07 08:11:01Z akihito $
+ * @version $Id$
  */
 public class TestedItem
     extends AbstractPersistable

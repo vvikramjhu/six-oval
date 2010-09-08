@@ -30,7 +30,7 @@ import java.util.Iterator;
  * A collection of TestResult objects.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: DefinitionResults.java 742 2010-05-07 09:22:53Z akihito $
+ * @version $Id$
  */
 public class TestResults
     extends Container<TestResult>   //{1..*}
