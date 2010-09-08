@@ -114,6 +114,23 @@ public class SystemInfo
 
 
     /**
+     * Constructor.
+     */
+    public SystemInfo(
+                    final String osName,
+                    final String osVersion,
+                    final String arch,
+                    final String hostName,
+                    NetInterface[] ifs
+                    )
+    {
+        this( osName, osVersion, arch, hostName );
+        setInterfaces( new NetInterfaces( ifs ) );
+    }
+
+
+
+    /**
      */
     public void setOsName(
                     final String name

@@ -109,6 +109,21 @@ public class SystemResult
     }
 
 
+    public SystemResult definition(
+                    final DefinitionResult definition
+                    )
+    {
+        DefinitionResults  defs = getDefinitions();
+        if (defs == null) {
+            defs = new DefinitionResults();
+            setDefinitions( defs );
+        }
+        defs.addDefinition( definition );
+
+        return this;
+    }
+
+
 
     /**
      */

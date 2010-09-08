@@ -38,7 +38,11 @@ import jp.go.aist.six.oval.model.linux.RpmInfoTest;
 import jp.go.aist.six.oval.model.results.CriteriaResult;
 import jp.go.aist.six.oval.model.results.CriterionResult;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
+import jp.go.aist.six.oval.model.results.ExtendDefinitionResult;
 import jp.go.aist.six.oval.model.results.Result;
+import jp.go.aist.six.oval.model.results.SystemResult;
+import jp.go.aist.six.oval.model.sc.NetInterface;
+import jp.go.aist.six.oval.model.sc.SystemInfo;
 import jp.go.aist.six.oval.model.unix.UnameObject;
 import jp.go.aist.six.oval.model.unix.UnameTest;
 import jp.go.aist.six.oval.model.windows.EntityObjectRegistryHive;
@@ -674,11 +678,43 @@ public class OvalSample
 
 
     //==============================================================
+    //  sc:system_info
+    //==============================================================
+
+    private static final NetInterface[]  _NET_INTERFACES_1_ =
+        new NetInterface[] {
+        new NetInterface( "Realtek RTL8168C(P)/8111C(P) Family PCI-E GBE NIC - パケット スケジューラ ミニポート",
+                        "150.168.1.100",
+                        "00-AA-BB-CC-11-22"
+        ),
+        new NetInterface( "VMware Virtual Ethernet Adapter for VMnet1",
+                        "192.168.153.1",
+                        "00-50-56-C0-00-01"
+        ),
+        new NetInterface( "VMware Virtual Ethernet Adapter for VMnet8",
+                        "192.168.1.1",
+                        "00-50-56-C0-00-08"
+        )
+    };
+
+
+    private static final SystemInfo  _SYSTEM_INFO_1_ =
+        new SystemInfo(
+                        "Microsoft Windows XP Professional Service Pack 3",
+                        "5.1.2600",
+                        "INTEL32",
+                        "foo.example.org",
+                        _NET_INTERFACES_1_
+        );
+
+
+
+    //==============================================================
     //  results:definition
     //==============================================================
 
     public static final DefinitionResult  DEFINITION_RESULT_8297 =
-        new DefinitionResult( "oval:org.mitre.oval:def:8297", 1, Result.TRUE)
+        new DefinitionResult( "oval:org.mitre.oval:def:8297", 1, Result.TRUE )
     .criteria(
                     new CriteriaResult( Operator.AND, Result.TRUE )
                     .element(
@@ -689,6 +725,51 @@ public class OvalSample
                     )
     );
 
+
+    public static final DefinitionResult  DEFINITION_RESULT_8500 =
+        new DefinitionResult( "oval:org.mitre.oval:def:8500", 1, Result.TRUE )
+    .criteria(
+                    new CriteriaResult( Operator.OR, Result.TRUE )
+                    .element(
+                                    new CriteriaResult( Operator.AND, Result.FALSE )
+                                    .element(
+                                                    new ExtendDefinitionResult( "oval:org.mitre.oval:def:8282", 1, Result.FALSE )
+                                    )
+                                    .element(
+                                                    new CriterionResult( "oval:org.mitre.oval:tst:20192", 1, Result.FALSE )
+                                    )
+                    )
+                    .element(
+                                    new CriteriaResult( Operator.AND, Result.TRUE )
+                                    .element(
+                                                    new ExtendDefinitionResult( "oval:org.mitre.oval:def:8297", 1, Result.TRUE )
+                                    )
+                                    .element(
+                                                    new CriterionResult( "oval:org.mitre.oval:tst:20859", 1, Result.TRUE )
+                                    )
+                    )
+    );
+
+
+    public static final DefinitionResult  DEFINITION_RESULT_8282 =
+        new DefinitionResult( "oval:org.mitre.oval:def:8282", 1, Result.FALSE )
+    .criteria(
+                    new CriteriaResult( Operator.AND, Result.FALSE )
+                    .element(
+                                    new CriterionResult( "oval:org.mitre.oval:tst:20481", 1, Result.FALSE )
+                    )
+                    .element(
+                                    new CriterionResult( "oval:org.mitre.oval:tst:21031", 1, Result.TRUE )
+                    )
+    );
+
+
+    private static final SystemResult  _SYSTEM_RESULT_8500_ =
+        new SystemResult()
+    .definition( DEFINITION_RESULT_8297 )
+    .definition( DEFINITION_RESULT_8500 )
+    .definition( DEFINITION_RESULT_8282 )
+    ;
 
 }
 // OvalSample
