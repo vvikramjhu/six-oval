@@ -96,6 +96,15 @@ public class DefinitionResult
     }
 
 
+    public DefinitionResult criteria(
+                    final CriteriaResult criteria
+                    )
+    {
+        setCriteria( criteria );
+        return this;
+    }
+
+
 
     /**
      */

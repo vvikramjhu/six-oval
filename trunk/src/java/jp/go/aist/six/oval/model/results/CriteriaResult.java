@@ -53,6 +53,19 @@ public class CriteriaResult
     }
 
 
+    /**
+     * Constructor.
+     */
+    public CriteriaResult(
+                    final Operator operator,
+                    final Result result
+                    )
+    {
+        super( result );
+        setOperator( operator );
+    }
+
+
 
     public void setOperator(
                     final Operator operator
@@ -95,6 +108,15 @@ public class CriteriaResult
         }
 
         return _elements.add( element );
+    }
+
+
+    public CriteriaResult element(
+                    final CriteriaResultElement element
+                    )
+    {
+        addElement( element );
+        return this;
     }
 
 

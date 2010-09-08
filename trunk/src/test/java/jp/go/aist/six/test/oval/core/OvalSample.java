@@ -35,6 +35,10 @@ import jp.go.aist.six.oval.model.linux.DpkgInfoTest;
 import jp.go.aist.six.oval.model.linux.RpmInfoObject;
 import jp.go.aist.six.oval.model.linux.RpmInfoState;
 import jp.go.aist.six.oval.model.linux.RpmInfoTest;
+import jp.go.aist.six.oval.model.results.CriteriaResult;
+import jp.go.aist.six.oval.model.results.CriterionResult;
+import jp.go.aist.six.oval.model.results.DefinitionResult;
+import jp.go.aist.six.oval.model.results.Result;
 import jp.go.aist.six.oval.model.unix.UnameObject;
 import jp.go.aist.six.oval.model.unix.UnameTest;
 import jp.go.aist.six.oval.model.windows.EntityObjectRegistryHive;
@@ -666,6 +670,25 @@ public class OvalSample
     .state( STATE_REGISTRY_6693 )
     .state( STATE_REGISTRY_6359 )
     ;
+
+
+
+    //==============================================================
+    //  results:definition
+    //==============================================================
+
+    public static final DefinitionResult  DEFINITION_RESULT_8297 =
+        new DefinitionResult( "oval:org.mitre.oval:def:8297", 1, Result.TRUE)
+    .criteria(
+                    new CriteriaResult( Operator.AND, Result.TRUE )
+                    .element(
+                                    new CriterionResult( "oval:org.mitre.oval:tst:21087", 1, Result.TRUE )
+                    )
+                    .element(
+                                    new CriterionResult( "oval:org.mitre.oval:tst:21031", 1, Result.TRUE )
+                    )
+    );
+
 
 }
 // OvalSample

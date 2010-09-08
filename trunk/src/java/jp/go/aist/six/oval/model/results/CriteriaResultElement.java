@@ -57,7 +57,20 @@ public abstract class CriteriaResultElement
                     final Result result
                     )
     {
+        this( result, DEFAULT_NEGATE );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public CriteriaResultElement(
+                    final Result result,
+                    final boolean negate
+                    )
+    {
         setResult( result );
+        setNegate( negate );
     }
 
 
