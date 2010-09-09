@@ -250,6 +250,7 @@ public abstract class Validators
         {
 //            Reporter.log( " - generator", true );
 //            Assert.assertEquals( actual.getGenerator(), expected.getGenerator() );
+
             Reporter.log( " - definitions", true );
             Assert.assertEquals( actual.getDefinitions(), expected.getDefinitions() );
             Definitions  expectedDefinitions = expected.getDefinitions();
@@ -260,6 +261,18 @@ public abstract class Validators
                     validator( Definition.class ).equals( actualDefinition, expectedDefinition );
                 }
             }
+
+            Reporter.log( " - tests", true );
+            Assert.assertEquals( actual.getTests(), expected.getTests() );
+
+            Reporter.log( " - objects", true );
+            Assert.assertEquals( actual.getObjects(), expected.getObjects() );
+
+            Reporter.log( " - states", true );
+            Assert.assertEquals( actual.getStates(), expected.getStates() );
+
+            Reporter.log( " - variables", true );
+            Assert.assertEquals( actual.getVariables(), expected.getVariables() );
         }
     }
 

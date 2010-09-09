@@ -37,6 +37,7 @@ public class LiteralComponent
     //{xsd:anySimpleType}
 
 
+    public static final Datatype  DEFAULT_DATATYPE = Datatype.STRING;
     private Datatype  _datatype;
     //{optional, defualt="string"}
 
@@ -47,6 +48,30 @@ public class LiteralComponent
      */
     public LiteralComponent()
     {
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public LiteralComponent(
+                    final String data
+                    )
+    {
+        this( data, DEFAULT_DATATYPE );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public LiteralComponent(
+                    final String data,
+                    final Datatype datatype
+                    )
+    {
+        setData( data );
+        setDatatype( datatype );
     }
 
 
@@ -80,7 +105,7 @@ public class LiteralComponent
 
     public Datatype getDatatype()
     {
-        return _datatype;
+        return (_datatype == null ? DEFAULT_DATATYPE : _datatype);
     }
 
 
@@ -92,9 +117,10 @@ public class LiteralComponent
     @Override
     public String toString()
     {
-        return "LiteralVariableComponent[datatype=" + getDatatype()
+        return "literal_component[datatype=" + getDatatype()
+                        + ", " + getData()
                         + "]";
     }
 
 }
-// LiteralVariableComponent
+// LiteralComponent

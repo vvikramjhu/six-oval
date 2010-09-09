@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.definitions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -56,6 +57,17 @@ public class ConcatFunction
                     )
     {
         setComponent( components );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public ConcatFunction(
+                    final ComponentElement[] components
+                    )
+    {
+        setComponent( Arrays.asList( components ) );
     }
 
 

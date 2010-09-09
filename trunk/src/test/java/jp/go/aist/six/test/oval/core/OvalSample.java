@@ -8,6 +8,8 @@ import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.common.Operator;
 import jp.go.aist.six.oval.model.definitions.Affected;
+import jp.go.aist.six.oval.model.definitions.ComponentElement;
+import jp.go.aist.six.oval.model.definitions.ConcatFunction;
 import jp.go.aist.six.oval.model.definitions.Criteria;
 import jp.go.aist.six.oval.model.definitions.Criterion;
 import jp.go.aist.six.oval.model.definitions.Definition;
@@ -17,7 +19,10 @@ import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.ExtendDefinition;
+import jp.go.aist.six.oval.model.definitions.LiteralComponent;
+import jp.go.aist.six.oval.model.definitions.LocalVariable;
 import jp.go.aist.six.oval.model.definitions.Metadata;
+import jp.go.aist.six.oval.model.definitions.ObjectComponent;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.Reference;
 import jp.go.aist.six.oval.model.definitions.Test;
@@ -430,6 +435,26 @@ public class OvalSample
 
 
     //==============================================================
+    //  def:variable
+    //==============================================================
+
+    public static final LocalVariable  VARIABLE_349 =
+        new LocalVariable( "oval:org.mitre.oval:var:349", 1,
+                        "Path to MySQL bin directory",
+                        Datatype.STRING
+        )
+    .component(
+                    new ConcatFunction(
+                                    new ComponentElement[] {
+                                                    new ObjectComponent( "oval:org.mitre.oval:obj:11992", "value" ),
+                                                    new LiteralComponent( "bin\\" )
+                                    }
+                    )
+    );
+
+
+
+    //==============================================================
     //  def:definition
     //==============================================================
 
@@ -685,6 +710,7 @@ public class OvalSample
     .state( STATE_REGISTRY_6475 )
     .state( STATE_REGISTRY_6693 )
     .state( STATE_REGISTRY_6359 )
+    .variable( VARIABLE_349 )
     ;
 
 

@@ -101,8 +101,15 @@ public class LocalVariable
     }
 
 
-    /**
-     */
+    public LocalVariable component(
+                    final ComponentElement component
+                    )
+    {
+        setComponent( component );
+        return this;
+    }
+
+
     public ComponentElement getComponent()
     {
         return _component;
