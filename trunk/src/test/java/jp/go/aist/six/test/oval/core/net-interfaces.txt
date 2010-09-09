@@ -1,0 +1,17 @@
+    private static final NetInterface[]  _NET_INTERFACES_1_ =
+        new NetInterface[] {
+//        new NetInterface( "Realtek RTL8168C(P)/8111C(P) Family PCI-E GBE NIC - パケット スケジューラ ミニポート",
+//                        "150.168.1.100",
+//                        "00-AA-BB-CC-11-22"
+//        ),
+        new NetInterface( "VMware Virtual Ethernet Adapter for VMnet1",
+                        "192.168.153.1",
+                        "00-50-56-C0-00-01"
+        ),
+        new NetInterface( "VMware Virtual Ethernet Adapter for VMnet8",
+                        "192.168.1.1",
+                        "00-50-56-C0-00-08"
+        )
+    };
+
+
