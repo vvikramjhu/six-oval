@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.sc;
 
 import jp.go.aist.six.oval.model.OvalDocument;
 import jp.go.aist.six.oval.model.common.Generator;
+import java.util.Collection;
 
 
 
@@ -79,6 +80,54 @@ public class OvalSystemCharacteristics
     {
         setGenerator( generator );
         setSystemInfo( system );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public OvalSystemCharacteristics(
+                    final Generator generator,
+                    final SystemInfo system,
+                    final CollectedSystemObjects collectedObjects,
+                    final SystemData systemData
+                    )
+    {
+        this( generator, system );
+        setCollectedObjects( collectedObjects );
+        setSystemData( systemData );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public OvalSystemCharacteristics(
+                    final Generator generator,
+                    final SystemInfo system,
+                    final Collection<CollectedSystemObject> collectedObjects,
+                    final Collection<Item> systemData
+                    )
+    {
+        this( generator, system );
+        setCollectedObjects( new CollectedSystemObjects( collectedObjects ) );
+        setSystemData( new SystemData( systemData ) );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public OvalSystemCharacteristics(
+                    final Generator generator,
+                    final SystemInfo system,
+                    final CollectedSystemObject[] collectedObjects,
+                    final Item[] systemData
+                    )
+    {
+        this( generator, system );
+        setCollectedObjects( new CollectedSystemObjects( collectedObjects ) );
+        setSystemData( new SystemData( systemData ) );
     }
 
 

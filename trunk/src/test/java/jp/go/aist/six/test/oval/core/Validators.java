@@ -4,6 +4,7 @@ import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.OvalElement;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.Definitions;
 import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
@@ -249,6 +250,16 @@ public abstract class Validators
         {
 //            Reporter.log( " - generator", true );
 //            Assert.assertEquals( actual.getGenerator(), expected.getGenerator() );
+            Reporter.log( " - definitions", true );
+            Assert.assertEquals( actual.getDefinitions(), expected.getDefinitions() );
+            Definitions  expectedDefinitions = expected.getDefinitions();
+            if (expectedDefinitions != null) {
+                Definitions  actualDefinitions = actual.getDefinitions();
+                for (Definition  expectedDefinition : expectedDefinitions) {
+                    Definition  actualDefinition = actualDefinitions.find( expectedDefinition.getOvalID() );
+                    validator( Definition.class ).equals( actualDefinition, expectedDefinition );
+                }
+            }
         }
     }
 
