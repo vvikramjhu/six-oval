@@ -1,6 +1,15 @@
-    private static final NetInterface[]  _NET_INTERFACES_1_ =
+package jp.go.aist.six.test.oval.core;
+
+import jp.go.aist.six.oval.model.sc.NetInterface;
+
+
+
+public class NetInterfacesSample
+{
+
+    public static final NetInterface[]  NET_INTERFACES_1 =
         new NetInterface[] {
-//        new NetInterface( "Realtek RTL8168C(P)/8111C(P) Family PCI-E GBE NIC - „Éë„Ç±„ÉÉ„Éà „Çπ„Ç±„Ç∏„É•„Éº„É© „Éü„Éã„Éù„Éº„Éà",
+//        new NetInterface( "Realtek RTL8168C(P)/8111C(P) Family PCI-E GBE NIC - ÉpÉPÉbÉg ÉXÉPÉWÉÖÅ[Éâ É~ÉjÉ|Å[Ég",
 //                        "150.168.1.100",
 //                        "00-AA-BB-CC-11-22"
 //        ),
@@ -14,4 +23,4 @@
         )
     };
 
-
+}

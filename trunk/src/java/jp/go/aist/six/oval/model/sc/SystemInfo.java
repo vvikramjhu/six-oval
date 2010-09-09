@@ -245,7 +245,8 @@ public class SystemInfo
     @Override
     public String toString()
     {
-        return "SystemInfo[os=" + getOsName() + " " + getOsVersion()
+        return "system_info[os_name=" + getOsName()
+                    + ", os_version=" + getOsVersion()
                     + ", architecture=" + getArchitecture()
                     + ", primary_host_name=" + getPrimaryHostName()
                     + ", interfaces=" + getInterfaces()

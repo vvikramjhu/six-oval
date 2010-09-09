@@ -738,7 +738,8 @@ public class OvalSample
                         "5.1.2600",
                         "INTEL32",
                         "foo.example.org",
-                        _NET_INTERFACES_1_
+                        NetInterfacesSample.NET_INTERFACES_1
+//                        _NET_INTERFACES_1_
         );
 
 

@@ -11,6 +11,8 @@ import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.StateRef;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.sc.SystemInfo;
 import org.testng.Assert;
 import org.testng.Reporter;
 import java.util.Collection;
@@ -278,6 +280,52 @@ public abstract class Validators
 
 
 
+    //==============================================================
+    //  sc
+    //==============================================================
+
+    /**
+     * SystemInfo
+     */
+    public static class SystemInfoValidator
+    extends Validator<SystemInfo>
+    {
+        @Override
+        public void equals(
+                        final SystemInfo actual,
+                        final SystemInfo expected
+                        )
+        {
+            Assert.assertEquals( actual.getOsName(), expected.getOsName() );
+            Assert.assertEquals( actual.getOsVersion(), expected.getOsVersion() );
+            Assert.assertEquals( actual.getArchitecture(), expected.getArchitecture() );
+            Assert.assertEquals( actual.getPrimaryHostName(), expected.getPrimaryHostName() );
+        }
+    }
+
+
+    /**
+     * OvalSystemCharacteristics
+     */
+    public static class OvalSystemCharacteristicsValidator
+    extends Validator<OvalSystemCharacteristics>
+    {
+        @Override
+        public void equals(
+                        final OvalSystemCharacteristics actual,
+                        final OvalSystemCharacteristics expected
+                        )
+        {
+//            Reporter.log( " - generator", true );
+//            Assert.assertEquals( actual.getGenerator(), expected.getGenerator() );
+
+            Reporter.log( " - system_info", true );
+            validator( SystemInfo.class ).equals( actual.getSystemInfo(), expected.getSystemInfo() );
+        }
+    }
+
+
+
     private static Map<Class<?>, Validator<?>>  _validators
     = new HashMap<Class<?>, Validator<?>>();
 
@@ -304,6 +352,13 @@ public abstract class Validators
             } else if (SystemObject.class.isAssignableFrom( type )) {
                 v = (Validator<T>)(new SystemObjectValidator());
                 _validators.put( SystemObject.class, v );
+
+            } else if (OvalSystemCharacteristics.class.isAssignableFrom( type )) {
+                v = (Validator<T>)(new OvalSystemCharacteristicsValidator());
+                _validators.put( OvalSystemCharacteristics.class, v );
+            } else if (SystemInfo.class.isAssignableFrom( type )) {
+                v = (Validator<T>)(new SystemInfoValidator());
+                _validators.put( SystemInfo.class, v );
             }
         }
 
