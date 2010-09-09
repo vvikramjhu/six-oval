@@ -94,15 +94,30 @@ public class RegistryItem
                     final int id,
                     final Status status,
                     final EntityItemRegistryHive hive,
+                    final EntityItemString key
+                    )
+    {
+        this( id, status );
+        setHive( hive );
+        setKey( key );
+    }
+
+
+
+    /**
+     * Constructor.
+     */
+    public RegistryItem(
+                    final int id,
+                    final Status status,
+                    final EntityItemRegistryHive hive,
                     final EntityItemString key,
                     final EntityItemString name,
                     final EntityItemRegistryType type,
                     final EntityItemAnySimple value
                     )
     {
-        this( id, status );
-        setHive( hive );
-        setKey( key );
+        this( id, status, hive, key );
         setName( name );
         setType( type );
         setValue( value );

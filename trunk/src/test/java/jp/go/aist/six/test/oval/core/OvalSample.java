@@ -41,20 +41,37 @@ import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.ExtendDefinitionResult;
 import jp.go.aist.six.oval.model.results.Result;
 import jp.go.aist.six.oval.model.results.SystemResult;
+import jp.go.aist.six.oval.model.sc.CollectedSystemObject;
+import jp.go.aist.six.oval.model.sc.EntityItemAnySimple;
+import jp.go.aist.six.oval.model.sc.EntityItemInt;
+import jp.go.aist.six.oval.model.sc.EntityItemString;
+import jp.go.aist.six.oval.model.sc.Flag;
+import jp.go.aist.six.oval.model.sc.Item;
+import jp.go.aist.six.oval.model.sc.ItemReference;
 import jp.go.aist.six.oval.model.sc.NetInterface;
+import jp.go.aist.six.oval.model.sc.Status;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
+import jp.go.aist.six.oval.model.sc.VariableValue;
 import jp.go.aist.six.oval.model.unix.UnameObject;
 import jp.go.aist.six.oval.model.unix.UnameTest;
+import jp.go.aist.six.oval.model.windows.EntityItemFileType;
+import jp.go.aist.six.oval.model.windows.EntityItemRegistryHive;
+import jp.go.aist.six.oval.model.windows.EntityItemRegistryType;
 import jp.go.aist.six.oval.model.windows.EntityObjectRegistryHive;
+import jp.go.aist.six.oval.model.windows.FileItem;
 import jp.go.aist.six.oval.model.windows.FileObject;
 import jp.go.aist.six.oval.model.windows.FileState;
 import jp.go.aist.six.oval.model.windows.FileTest;
+import jp.go.aist.six.oval.model.windows.FileType;
 import jp.go.aist.six.oval.model.windows.MetabaseObject;
 import jp.go.aist.six.oval.model.windows.MetabaseState;
 import jp.go.aist.six.oval.model.windows.MetabaseTest;
+import jp.go.aist.six.oval.model.windows.RegistryHive;
+import jp.go.aist.six.oval.model.windows.RegistryItem;
 import jp.go.aist.six.oval.model.windows.RegistryObject;
 import jp.go.aist.six.oval.model.windows.RegistryState;
 import jp.go.aist.six.oval.model.windows.RegistryTest;
+import jp.go.aist.six.oval.model.windows.RegistryType;
 import jp.go.aist.six.util.IsoDate;
 
 
@@ -706,6 +723,483 @@ public class OvalSample
                         "foo.example.org",
                         _NET_INTERFACES_1_
         );
+
+
+    private static final CollectedSystemObject _COLLECTED_OBJECT_911_ =
+        new CollectedSystemObject( "oval:org.mitre.oval:obj:911", 1,
+                        Flag.COMPLETE );
+    //static initializer
+    {
+        for (int  item_ref = 3; item_ref < 197; item_ref++) {
+            _COLLECTED_OBJECT_911_.addReference( new ItemReference( item_ref ) );
+        }
+    }
+
+
+    private static final CollectedSystemObject[]  _COLLECTED_OBJECTS_1_ = new CollectedSystemObject[] {
+        new CollectedSystemObject( "oval:org.mitre.oval:obj:11786", 1,
+                        Flag.COMPLETE )
+        .comment( "Full path to MySQL executable" )
+        .reference( new ItemReference( 2 ) )
+        .variableValue( new VariableValue( "oval:org.mitre.oval:var:349", "C:\\Program Files\\MySQL\\MySQL Server 5.1\\bin\\" ) )
+        ,
+        new CollectedSystemObject( "oval:org.mitre.oval:obj:11866", 1,
+                        Flag.COMPLETE )
+        .reference( new ItemReference( 197 ) )
+        ,
+        new CollectedSystemObject( "oval:org.mitre.oval:obj:11871", 1,
+                        Flag.DOES_NOT_EXIST )
+        .reference( new ItemReference( 198 ) )
+        ,
+        new CollectedSystemObject( "oval:org.mitre.oval:obj:11992", 1,
+                        Flag.COMPLETE )
+        .reference( new ItemReference( 1 ) )
+        ,
+        _COLLECTED_OBJECT_911_
+    };
+
+
+    private static final Item[]  _ITEMS_1_ = new Item[] {
+        new FileItem(
+                        2,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemString( "C:\\Program Files\\MySQL\\MySQL Server 5.1\\bin\\mysqld.exe" ),
+                        new EntityItemString( "C:\\Program Files\\MySQL\\MySQL Server 5.1\\bin\\" ),
+                        new EntityItemString( "mysqld.exe" ),
+                        new EntityItemString( "BUILTIN\\Administrators" ),
+                        new EntityItemInt( 6591104, Datatype.INT ),
+                        new EntityItemInt( 129258204872031250L, Datatype.INT ),
+                        new EntityItemInt( 128919810880000000L, Datatype.INT ),
+                        new EntityItemInt( 128919810880000000L, Datatype.INT ),
+                        new EntityItemString( "6592576" ),
+                        new EntityItemString( null, Datatype.VERSION, Status.ERROR ),
+                        new EntityItemFileType( FileType.FILE_TYPE_DISK ),
+                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
+                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
+                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
+                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
+                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
+                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
+                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR )
+        )
+        ,
+        new RegistryItem(
+                        197,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "SOFTWARE\\MySQL AB\\MySQL Server 5.1" ),
+                        new EntityItemString( "Version" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "5.1.37" )
+        )
+        ,
+        new RegistryItem(
+                        198,
+                        Status.DOES_NOT_EXIST,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "SOFTWARE\\MySQL AB\\MySQL Server 5.0", EntityItemString.DEFAULT_DATATYPE, Status.DOES_NOT_EXIST )
+        )
+        ,
+        new RegistryItem(
+                        1,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "SOFTWARE\\MySQL AB\\MySQL Server 5.1" ),
+                        new EntityItemString( "Location" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "C:\\Program Files\\MySQL\\MySQL Server 5.1\\" )
+        )
+        ,
+        new RegistryItem(
+                        3,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Adobe Flash Player ActiveX" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Adobe Flash Player 10 ActiveX" )
+        )
+        ,
+        new RegistryItem(
+                        4,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Adobe Flex Builder 3 Plug-in" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Adobe Flex Builder 3 Plug-in" )
+        )
+        ,
+        new RegistryItem(
+                        5,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Adobe_6a3003001b9c4e53e6b3f44e0db85d4" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Adobe Update Manager CS3" )
+        )
+        ,
+        new RegistryItem(
+                        6,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\EdMaxU" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "EdMax" )
+        )
+        ,
+        new RegistryItem(
+                        7,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\FFFTP" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "FFFTP" )
+        )
+        ,
+        new RegistryItem(
+                        8,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\GPL Ghostscript 8.71" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "GPL Ghostscript 8.71" )
+        )
+        ,
+        new RegistryItem(
+                        9,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\GSview 4.9" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "GSview 4.9" )
+        )
+        ,
+        new RegistryItem(
+                        10,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\HDMI" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Intel(R) Graphics Media Accelerator Driver" )
+        )
+        ,
+        new RegistryItem(
+                        11,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\IDNMitigationAPIs" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Microsoft Internationalized Domain Names Mitigation APIs" )
+        )
+        ,
+        new RegistryItem(
+                        12,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\InstallShield_{3A801B30-F3FD-42C2-B460-4A4117B572EE}" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "au Music Port" )
+        )
+        ,
+        new RegistryItem(
+                        13,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\InstallShield_{457D7505-D665-4F95-91C3-ECB8C56E9ACA}" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Easy Tune 6 B08.1030.1" )
+        )
+        ,
+        new RegistryItem(
+                        14,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB2229593" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB2229593)" )
+        )
+        ,
+        new RegistryItem(
+                        15,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB2286198" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB2286198)" )
+        )
+        ,
+        new RegistryItem(
+                        16,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB892130" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows Genuine Advantage Validation Tool (KB892130)" )
+        )
+        ,
+        new RegistryItem(
+                        17,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB898461" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB898461)" )
+        )
+        ,
+        new RegistryItem(
+                        18,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB923561" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB923561)" )
+        )
+        ,
+        new RegistryItem(
+                        19,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB923789" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB923789)" )
+        )
+        ,
+        new RegistryItem(
+                        20,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB927489" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "MS ゴシック ＆ MS 明朝 JIS2004 対応フォント (KB927489)" )
+        )
+        ,
+        new RegistryItem(
+                        21,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB929399" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Hotfix for Windows Media Format 11 SDK (KB929399)" )
+        )
+        ,
+        new RegistryItem(
+                        22,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB938127-v2-IE7" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows Internet Explorer 7 セキュリティ更新 (KB938127-v2)" )
+        )
+        ,
+        new RegistryItem(
+                        23,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB938464-v2" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB938464-v2)" )
+        )
+        ,
+        new RegistryItem(
+                        24,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB939683" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows Media Player 11 (KB939683) ホットフィックス" )
+        )
+        ,
+        new RegistryItem(
+                        25,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB941569" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows XP (KB941569) セキュリティ問題の修正プログラム" )
+        )
+        ,
+        new RegistryItem(
+                        26,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB941776_WM11" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows Media Player 11 (KB941776) ホットフィックス" )
+        )
+        ,
+        new RegistryItem(
+                        27,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB946648" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB946648)" )
+        )
+        ,
+        new RegistryItem(
+                        28,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB950762" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB950762)" )
+        )
+        ,
+        new RegistryItem(
+                        29,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB950974" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB950974)" )
+        )
+        ,
+        new RegistryItem(
+                        30,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB951066" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB951066)" )
+        )
+        ,
+        new RegistryItem(
+                        31,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB951376-v2" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB951376-v2)" )
+        )
+        ,
+        new RegistryItem(
+                        32,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB951748" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB951748)" )
+        )
+        ,
+        new RegistryItem(
+                        33,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB951978" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB951978)" )
+        )
+        ,
+        new RegistryItem(
+                        34,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB952004" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB952004)" )
+        )
+        ,
+        new RegistryItem(
+                        35,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB952069_WM9" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows Media Player (KB952069) セキュリティ問題の修正プログラム" )
+        )
+        ,
+        new RegistryItem(
+                        36,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB952287" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows XP ホットフィックス (KB952287)" )
+        )
+        ,
+        new RegistryItem(
+                        37,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB952954" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB952954)" )
+        )
+        ,
+        new RegistryItem(
+                        38,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB954154_WM11" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows Media Player 11 (KB954154) セキュリティ問題の修正プログラム" )
+        )
+        ,
+        new RegistryItem(
+                        39,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB954155_WM9" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows Media Player (KB954155) セキュリティ問題の修正プログラム" )
+        )
+        ,
+        new RegistryItem(
+                        40,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB954459" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB954459)" )
+        )
+        ,
+        new RegistryItem(
+                        41,
+                        Item.DEFAULT_STATUS,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB954550-v5" ),
+                        new EntityItemString( "DisplayName" ),
+                        new EntityItemRegistryType( RegistryType.REG_SZ ),
+                        new EntityItemAnySimple( "Hotfix for Windows XP (KB954550-v5)" )
+        )
+    };
 
 
 

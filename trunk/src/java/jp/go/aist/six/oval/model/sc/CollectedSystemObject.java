@@ -167,9 +167,33 @@ public class CollectedSystemObject
         if (values != _variableValue) {
             _variableValue.clear();
             if (values != null  &&  values.size() > 0) {
-                _variableValue.addAll( values );
+                for (VariableValue  v : values) {
+                    addVariableValue( v );
+                }
+//                _variableValue.addAll( values );
             }
         }
+    }
+
+
+    public boolean addVariableValue(
+                    final VariableValue value
+                    )
+    {
+        if (value == null) {
+            return false;
+        }
+
+        return _variableValue.add( value );
+    }
+
+
+    public CollectedSystemObject variableValue(
+                    final VariableValue value
+                    )
+    {
+        addVariableValue( value );
+        return this;
     }
 
 
@@ -209,6 +233,15 @@ public class CollectedSystemObject
     }
 
 
+    public CollectedSystemObject reference(
+                    final ItemReference reference
+                    )
+    {
+        addReference( reference );
+        return this;
+    }
+
+
     public Collection<ItemReference> getReference()
     {
         return _reference;
@@ -242,10 +275,19 @@ public class CollectedSystemObject
     /**
      */
     public void setComment(
-                    final String flag
+                    final String comment
                     )
     {
-        _comment = flag;
+        _comment = comment;
+    }
+
+
+    public CollectedSystemObject comment(
+                    final String comment
+                    )
+    {
+        setComment( comment );
+        return this;
     }
 
 
