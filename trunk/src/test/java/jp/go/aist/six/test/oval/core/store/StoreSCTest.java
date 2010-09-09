@@ -109,6 +109,7 @@ public class StoreSCTest
                     )
     throws Exception
     {
+        Reporter.log( "  * expected object: " + expected, true );
         _testOvalSC( type, filepath, xpath, expected );
     }
 

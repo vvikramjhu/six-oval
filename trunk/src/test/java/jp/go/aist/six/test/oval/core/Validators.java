@@ -281,7 +281,7 @@ public abstract class Validators
 
 
     //==============================================================
-    //  sc
+    //  oval-sc
     //==============================================================
 
     /**
@@ -300,6 +300,8 @@ public abstract class Validators
             Assert.assertEquals( actual.getOsVersion(), expected.getOsVersion() );
             Assert.assertEquals( actual.getArchitecture(), expected.getArchitecture() );
             Assert.assertEquals( actual.getPrimaryHostName(), expected.getPrimaryHostName() );
+
+            Assert.assertEquals( actual.getInterfaces(), expected.getInterfaces() );
         }
     }
 
@@ -325,6 +327,10 @@ public abstract class Validators
     }
 
 
+
+    //==============================================================
+    //  validator instances
+    //==============================================================
 
     private static Map<Class<?>, Validator<?>>  _validators
     = new HashMap<Class<?>, Validator<?>>();
