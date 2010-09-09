@@ -52,7 +52,6 @@ import jp.go.aist.six.oval.model.sc.EntityItemString;
 import jp.go.aist.six.oval.model.sc.Flag;
 import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.ItemReference;
-import jp.go.aist.six.oval.model.sc.NetInterface;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.Status;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
@@ -719,19 +718,6 @@ public class OvalSample
     //  sc
     //==============================================================
 
-    private static final NetInterface[]  _NET_INTERFACES_1_ =
-        new NetInterface[] {
-        new NetInterface( "VMware Virtual Ethernet Adapter for VMnet1",
-                        "192.168.153.1",
-                        "00-50-56-C0-00-01"
-        ),
-        new NetInterface( "VMware Virtual Ethernet Adapter for VMnet8",
-                        "192.168.1.1",
-                        "00-50-56-C0-00-08"
-        )
-    };
-
-
     private static final SystemInfo  _SYSTEM_INFO_1_ =
         new SystemInfo(
                         "Microsoft Windows XP Professional Service Pack 3",
@@ -739,7 +725,7 @@ public class OvalSample
                         "INTEL32",
                         "foo.example.org",
                         NetInterfacesSample.NET_INTERFACES_1
-//                        _NET_INTERFACES_1_
+                        //native2ascii
         );
 
 
@@ -812,7 +798,7 @@ public class OvalSample
                         ),
                         _SYSTEM_INFO_1_,
                         _COLLECTED_OBJECTS_1_,
-                        _ITEMS_1_
+                        ItemsSample.ITEMS_1
         );
 
 

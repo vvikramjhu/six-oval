@@ -1,5 +1,25 @@
+package jp.go.aist.six.test.oval.core;
 
-    private static final Item[]  _ITEMS_1_ = new Item[] {
+import jp.go.aist.six.oval.model.common.Datatype;
+import jp.go.aist.six.oval.model.sc.EntityItemAnySimple;
+import jp.go.aist.six.oval.model.sc.EntityItemInt;
+import jp.go.aist.six.oval.model.sc.EntityItemString;
+import jp.go.aist.six.oval.model.sc.Item;
+import jp.go.aist.six.oval.model.sc.Status;
+import jp.go.aist.six.oval.model.windows.EntityItemFileType;
+import jp.go.aist.six.oval.model.windows.EntityItemRegistryHive;
+import jp.go.aist.six.oval.model.windows.EntityItemRegistryType;
+import jp.go.aist.six.oval.model.windows.FileItem;
+import jp.go.aist.six.oval.model.windows.FileType;
+import jp.go.aist.six.oval.model.windows.RegistryHive;
+import jp.go.aist.six.oval.model.windows.RegistryItem;
+import jp.go.aist.six.oval.model.windows.RegistryType;
+
+
+public class ItemsSample
+{
+
+    public static final Item[]  ITEMS_1 = new Item[] {
         new FileItem(
                         2,
                         Item.DEFAULT_STATUS,
@@ -22,7 +42,6 @@
                         new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
                         new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR )
         )
-        /*
         ,
         new RegistryItem(
                         197,
@@ -168,7 +187,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB2229593" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB2229593)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB2229593)" )
         )
         ,
         new RegistryItem(
@@ -178,7 +197,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB2286198" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB2286198)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB2286198)" )
         )
         ,
         new RegistryItem(
@@ -198,7 +217,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB898461" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB898461)" )
+                        new EntityItemAnySimple( "Windows XP 更新 (KB898461)" )
         )
         ,
         new RegistryItem(
@@ -208,7 +227,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB923561" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB923561)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB923561)" )
         )
         ,
         new RegistryItem(
@@ -218,7 +237,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB923789" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB923789)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB923789)" )
         )
         ,
         new RegistryItem(
@@ -228,7 +247,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB927489" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "MS ?S?V?b?N ?? MS ???? JIS2004 ????t?H???g (KB927489)" )
+                        new EntityItemAnySimple( "MS ゴシック ＆ MS 明朝 JIS2004 対応フォント (KB927489)" )
         )
         ,
         new RegistryItem(
@@ -248,7 +267,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB938127-v2-IE7" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Internet Explorer 7 ?Z?L?????e?B?X?V (KB938127-v2)" )
+                        new EntityItemAnySimple( "Windows Internet Explorer 7 セキュリティ更新 (KB938127-v2)" )
         )
         ,
         new RegistryItem(
@@ -258,7 +277,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB938464-v2" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB938464-v2)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB938464-v2)" )
         )
         ,
         new RegistryItem(
@@ -268,7 +287,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB939683" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Media Player 11 (KB939683) ?z?b?g?t?B?b?N?X" )
+                        new EntityItemAnySimple( "Windows Media Player 11 (KB939683) ホットフィックス" )
         )
         ,
         new RegistryItem(
@@ -278,7 +297,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB941569" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP (KB941569) ?Z?L?????e?B????C???v???O????" )
+                        new EntityItemAnySimple( "Windows XP (KB941569) セキュリティ問題の修正プログラム" )
         )
         ,
         new RegistryItem(
@@ -288,7 +307,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB941776_WM11" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Media Player 11 (KB941776) ?z?b?g?t?B?b?N?X" )
+                        new EntityItemAnySimple( "Windows Media Player 11 (KB941776) ホットフィックス" )
         )
         ,
         new RegistryItem(
@@ -298,7 +317,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB946648" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB946648)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB946648)" )
         )
         ,
         new RegistryItem(
@@ -308,7 +327,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB950762" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB950762)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB950762)" )
         )
         ,
         new RegistryItem(
@@ -318,7 +337,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB950974" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB950974)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB950974)" )
         )
         ,
         new RegistryItem(
@@ -328,7 +347,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB951066" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB951066)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB951066)" )
         )
         ,
         new RegistryItem(
@@ -338,7 +357,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB951376-v2" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB951376-v2)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB951376-v2)" )
         )
         ,
         new RegistryItem(
@@ -348,7 +367,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB951748" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB951748)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB951748)" )
         )
         ,
         new RegistryItem(
@@ -358,7 +377,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB951978" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB951978)" )
+                        new EntityItemAnySimple( "Windows XP 更新 (KB951978)" )
         )
         ,
         new RegistryItem(
@@ -368,7 +387,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB952004" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB952004)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB952004)" )
         )
         ,
         new RegistryItem(
@@ -378,7 +397,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB952069_WM9" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Media Player (KB952069) ?Z?L?????e?B????C???v???O????" )
+                        new EntityItemAnySimple( "Windows Media Player (KB952069) セキュリティ問題の修正プログラム" )
         )
         ,
         new RegistryItem(
@@ -388,7 +407,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB952287" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?z?b?g?t?B?b?N?X (KB952287)" )
+                        new EntityItemAnySimple( "Windows XP ホットフィックス (KB952287)" )
         )
         ,
         new RegistryItem(
@@ -398,7 +417,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB952954" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB952954)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB952954)" )
         )
         ,
         new RegistryItem(
@@ -408,7 +427,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB954154_WM11" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Media Player 11 (KB954154) ?Z?L?????e?B????C???v???O????" )
+                        new EntityItemAnySimple( "Windows Media Player 11 (KB954154) セキュリティ問題の修正プログラム" )
         )
         ,
         new RegistryItem(
@@ -418,7 +437,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB954155_WM9" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Media Player (KB954155) ?Z?L?????e?B????C???v???O????" )
+                        new EntityItemAnySimple( "Windows Media Player (KB954155) セキュリティ問題の修正プログラム" )
         )
         ,
         new RegistryItem(
@@ -428,7 +447,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB954459" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB954459)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB954459)" )
         )
         ,
         new RegistryItem(
@@ -448,7 +467,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB954600" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB954600)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB954600)" )
         )
         ,
         new RegistryItem(
@@ -458,7 +477,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB955069" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB955069)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB955069)" )
         )
         ,
         new RegistryItem(
@@ -468,7 +487,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB955759" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB955759)" )
+                        new EntityItemAnySimple( "Windows XP 更新 (KB955759)" )
         )
         ,
         new RegistryItem(
@@ -478,7 +497,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB955839" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB955839)" )
+                        new EntityItemAnySimple( "Windows XP 更新 (KB955839)" )
         )
         ,
         new RegistryItem(
@@ -488,7 +507,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB956572" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB956572)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB956572)" )
         )
         ,
         new RegistryItem(
@@ -498,7 +517,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB956744" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB956744)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB956744)" )
         )
         ,
         new RegistryItem(
@@ -508,7 +527,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB956802" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB956802)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB956802)" )
         )
         ,
         new RegistryItem(
@@ -518,7 +537,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB956803" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB956803)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB956803)" )
         )
         ,
         new RegistryItem(
@@ -528,7 +547,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB956844" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB956844)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB956844)" )
         )
         ,
         new RegistryItem(
@@ -538,7 +557,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB957097" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB957097)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB957097)" )
         )
         ,
         new RegistryItem(
@@ -548,7 +567,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB958644" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB958644)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB958644)" )
         )
         ,
         new RegistryItem(
@@ -558,7 +577,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB958687" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB958687)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB958687)" )
         )
         ,
         new RegistryItem(
@@ -568,7 +587,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB958869" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB958869)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB958869)" )
         )
         ,
         new RegistryItem(
@@ -578,7 +597,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB959426" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB959426)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB959426)" )
         )
         ,
         new RegistryItem(
@@ -588,7 +607,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB960225" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB960225)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB960225)" )
         )
         ,
         new RegistryItem(
@@ -598,7 +617,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB960803" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB960803)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB960803)" )
         )
         ,
         new RegistryItem(
@@ -608,7 +627,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB960859" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB960859)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB960859)" )
         )
         ,
         new RegistryItem(
@@ -618,7 +637,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB961118" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?z?b?g?t?B?b?N?X (KB961118)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB961118)" )
         )
         ,
         new RegistryItem(
@@ -628,7 +647,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB961371-v2" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB961371-v2)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB961371-v2)" )
         )
         ,
         new RegistryItem(
@@ -638,7 +657,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB961501" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB961501)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB961501)" )
         )
         ,
         new RegistryItem(
@@ -648,7 +667,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB967715" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB967715)" )
+                        new EntityItemAnySimple( "Windows XP 更新 (KB967715)" )
         )
         ,
         new RegistryItem(
@@ -658,7 +677,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB968389" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB968389)" )
+                        new EntityItemAnySimple( "Windows XP 更新 (KB968389)" )
         )
         ,
         new RegistryItem(
@@ -668,7 +687,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB968537" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB968537)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB968537)" )
         )
         ,
         new RegistryItem(
@@ -678,7 +697,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB968816_WM9" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Media Player (KB968816) ?Z?L?????e?B????C???v???O????" )
+                        new EntityItemAnySimple( "Windows Media Player (KB968816) セキュリティ問題の修正プログラム" )
         )
         ,
         new RegistryItem(
@@ -688,7 +707,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB969059" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB969059)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB969059)" )
         )
         ,
         new RegistryItem(
@@ -698,7 +717,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB969947" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB969947)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB969947)" )
         )
         ,
         new RegistryItem(
@@ -708,7 +727,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB970238" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB970238)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB970238)" )
         )
         ,
         new RegistryItem(
@@ -718,7 +737,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB970430" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB970430)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB970430)" )
         )
         ,
         new RegistryItem(
@@ -728,7 +747,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB970653-v3" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?z?b?g?t?B?b?N?X (KB970653-v3)" )
+                        new EntityItemAnySimple( "Windows XP ホットフィックス (KB970653-v3)" )
         )
         ,
         new RegistryItem(
@@ -738,7 +757,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB971468" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB971468)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB971468)" )
         )
         ,
         new RegistryItem(
@@ -748,7 +767,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB971486" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB971486)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB971486)" )
         )
         ,
         new RegistryItem(
@@ -758,7 +777,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB971557" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB971557)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB971557)" )
         )
         ,
         new RegistryItem(
@@ -768,7 +787,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB971633" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB971633)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB971633)" )
         )
         ,
         new RegistryItem(
@@ -778,7 +797,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB971657" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB971657)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB971657)" )
         )
         ,
         new RegistryItem(
@@ -788,7 +807,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB971737" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB971737)" )
+                        new EntityItemAnySimple( "Windows XP 更新 (KB971737)" )
         )
         ,
         new RegistryItem(
@@ -798,7 +817,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB971961" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB971961)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB971961)" )
         )
         ,
         new RegistryItem(
@@ -808,7 +827,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB971961-IE8" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Internet Explorer 8 ?Z?L?????e?B?X?V (KB971961)" )
+                        new EntityItemAnySimple( "Windows Internet Explorer 8 セキュリティ更新 (KB971961)" )
         )
         ,
         new RegistryItem(
@@ -818,7 +837,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB972260" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB972260)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB972260)" )
         )
         ,
         new RegistryItem(
@@ -828,7 +847,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB972260-IE7" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Internet Explorer 7 ?Z?L?????e?B?X?V (KB972260)" )
+                        new EntityItemAnySimple( "Windows Internet Explorer 7 セキュリティ更新 (KB972260)" )
         )
         ,
         new RegistryItem(
@@ -838,7 +857,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB972270" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB972270)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB972270)" )
         )
         ,
         new RegistryItem(
@@ -848,7 +867,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB973346" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB973346)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB973346)" )
         )
         ,
         new RegistryItem(
@@ -858,7 +877,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB973354" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB973354)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB973354)" )
         )
         ,
         new RegistryItem(
@@ -868,7 +887,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB973507" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB973507)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB973507)" )
         )
         ,
         new RegistryItem(
@@ -878,7 +897,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB973525" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB973525)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB973525)" )
         )
         ,
         new RegistryItem(
@@ -888,7 +907,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB973540_WM9" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Media Player (KB973540) ?Z?L?????e?B????C???v???O????" )
+                        new EntityItemAnySimple( "Windows Media Player (KB973540) セキュリティ問題の修正プログラム" )
         )
         ,
         new RegistryItem(
@@ -898,7 +917,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB973687" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?X?V (KB973687)" )
+                        new EntityItemAnySimple( "Windows XP 更新 (KB973687)" )
         )
         ,
         new RegistryItem(
@@ -908,7 +927,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB973815" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?X?V (KB973815)" )
+                        new EntityItemAnySimple( "Windows XP 更新 (KB973815)" )
         )
         ,
         new RegistryItem(
@@ -918,7 +937,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB973869" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB973869)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB973869)" )
         )
         ,
         new RegistryItem(
@@ -928,7 +947,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB973904" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB973904)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB973904)" )
         )
         ,
         new RegistryItem(
@@ -938,7 +957,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB974112" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB974112)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB974112)" )
         )
         ,
         new RegistryItem(
@@ -948,7 +967,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB974318" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB974318)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB974318)" )
         )
         ,
         new RegistryItem(
@@ -958,7 +977,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB974392" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB974392)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB974392)" )
         )
         ,
         new RegistryItem(
@@ -968,7 +987,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB974455-IE7" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Internet Explorer 7 ?Z?L?????e?B?X?V (KB974455)" )
+                        new EntityItemAnySimple( "Windows Internet Explorer 7 セキュリティ更新 (KB974455)" )
         )
         ,
         new RegistryItem(
@@ -978,7 +997,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB974571" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB974571)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB974571)" )
         )
         ,
         new RegistryItem(
@@ -988,7 +1007,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB975025" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB975025)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB975025)" )
         )
         ,
         new RegistryItem(
@@ -998,7 +1017,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB975467" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB975467)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB975467)" )
         )
         ,
         new RegistryItem(
@@ -1008,7 +1027,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB975560" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB975560)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB975560)" )
         )
         ,
         new RegistryItem(
@@ -1018,7 +1037,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB975561" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB975561)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB975561)" )
         )
         ,
         new RegistryItem(
@@ -1028,7 +1047,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB975562" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB975562)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB975562)" )
         )
         ,
         new RegistryItem(
@@ -1038,7 +1057,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB975713" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB975713)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB975713)" )
         )
         ,
         new RegistryItem(
@@ -1048,7 +1067,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB976098-v2" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?z?b?g?t?B?b?N?X (KB976098-v2)" )
+                        new EntityItemAnySimple( "Windows XP ホットフィックス (KB976098-v2)" )
         )
         ,
         new RegistryItem(
@@ -1058,7 +1077,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB976325-IE7" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Internet Explorer 7 ?Z?L?????e?B?X?V (KB976325)" )
+                        new EntityItemAnySimple( "Windows Internet Explorer 7 セキュリティ更新 (KB976325)" )
         )
         ,
         new RegistryItem(
@@ -1068,7 +1087,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB976325-IE8" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Internet Explorer 8 ?Z?L?????e?B?X?V (KB976325)" )
+                        new EntityItemAnySimple( "Windows Internet Explorer 8 セキュリティ更新 (KB976325)" )
         )
         ,
         new RegistryItem(
@@ -1078,7 +1097,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB976662-IE8" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Internet Explorer 8 ?X?V (KB976662)" )
+                        new EntityItemAnySimple( "Windows Internet Explorer 8 更新 (KB976662)" )
         )
         ,
         new RegistryItem(
@@ -1088,7 +1107,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB976749-IE7" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Internet Explorer 7 ?X?V (KB976749)" )
+                        new EntityItemAnySimple( "Windows Internet Explorer 7 更新 (KB976749)" )
         )
         ,
         new RegistryItem(
@@ -1098,7 +1117,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB977165" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB977165)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB977165)" )
         )
         ,
         new RegistryItem(
@@ -1108,7 +1127,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB977816" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB977816)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB977816)" )
         )
         ,
         new RegistryItem(
@@ -1118,7 +1137,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB977914" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB977914)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB977914)" )
         )
         ,
         new RegistryItem(
@@ -1128,7 +1147,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB978037" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB978037)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB978037)" )
         )
         ,
         new RegistryItem(
@@ -1138,7 +1157,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB978207-IE7" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Internet Explorer 7 ?Z?L?????e?B?X?V (KB978207)" )
+                        new EntityItemAnySimple( "Windows Internet Explorer 7 セキュリティ更新 (KB978207)" )
         )
         ,
         new RegistryItem(
@@ -1148,7 +1167,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB978207-IE8" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Internet Explorer 8 ?Z?L?????e?B?X?V (KB978207)" )
+                        new EntityItemAnySimple( "Windows Internet Explorer 8 セキュリティ更新 (KB978207)" )
         )
         ,
         new RegistryItem(
@@ -1158,7 +1177,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB978251" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB978251)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB978251)" )
         )
         ,
         new RegistryItem(
@@ -1168,7 +1187,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB978262" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB978262)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB978262)" )
         )
         ,
         new RegistryItem(
@@ -1178,7 +1197,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB978338" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB978338)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB978338)" )
         )
         ,
         new RegistryItem(
@@ -1188,7 +1207,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB978506-IE8" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Internet Explorer 8 ?X?V (KB978506)" )
+                        new EntityItemAnySimple( "Windows Internet Explorer 8 更新 (KB978506)" )
         )
         ,
         new RegistryItem(
@@ -1198,7 +1217,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB978542" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB978542)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB978542)" )
         )
         ,
         new RegistryItem(
@@ -1208,7 +1227,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB978601" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB978601)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB978601)" )
         )
         ,
         new RegistryItem(
@@ -1218,7 +1237,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB978695_WM9" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Media Player (KB978695) ?Z?L?????e?B????C???v???O????" )
+                        new EntityItemAnySimple( "Windows Media Player (KB978695) セキュリティ問題の修正プログラム" )
         )
         ,
         new RegistryItem(
@@ -1228,7 +1247,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB978706" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB978706)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB978706)" )
         )
         ,
         new RegistryItem(
@@ -1238,7 +1257,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB979306" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?z?b?g?t?B?b?N?X (KB979306)" )
+                        new EntityItemAnySimple( "Windows XP ホットフィックス (KB979306)" )
         )
         ,
         new RegistryItem(
@@ -1248,7 +1267,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB979309" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB979309)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB979309)" )
         )
         ,
         new RegistryItem(
@@ -1258,7 +1277,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB979482" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB979482)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB979482)" )
         )
         ,
         new RegistryItem(
@@ -1268,7 +1287,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB979559" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB979559)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB979559)" )
         )
         ,
         new RegistryItem(
@@ -1278,7 +1297,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB979683" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB979683)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB979683)" )
         )
         ,
         new RegistryItem(
@@ -1288,7 +1307,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB980182-IE8" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Internet Explorer 8 ?X?V (KB980182)" )
+                        new EntityItemAnySimple( "Windows Internet Explorer 8 更新 (KB980182)" )
         )
         ,
         new RegistryItem(
@@ -1298,7 +1317,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB980195" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB980195)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB980195)" )
         )
         ,
         new RegistryItem(
@@ -1308,7 +1327,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB980218" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB980218)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB980218)" )
         )
         ,
         new RegistryItem(
@@ -1318,7 +1337,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB980232" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?Z?L?????e?B?X?V (KB980232)" )
+                        new EntityItemAnySimple( "Windows XP セキュリティ更新 (KB980232)" )
         )
         ,
         new RegistryItem(
@@ -1338,7 +1357,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB981793" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows XP ?z?b?g?t?B?b?N?X (KB981793)" )
+                        new EntityItemAnySimple( "Windows XP ホットフィックス (KB981793)" )
         )
         ,
         new RegistryItem(
@@ -1348,7 +1367,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\KB982381-IE8" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Windows Internet Explorer 8 ?Z?L?????e?B?X?V (KB982381)" )
+                        new EntityItemAnySimple( "Windows Internet Explorer 8 セキュリティ更新 (KB982381)" )
         )
         ,
         new RegistryItem(
@@ -1388,7 +1407,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Microsoft .NET Framework 3.5 Language Pack SP1 - jpn" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Microsoft .NET Framework 3.5 Language Pack SP1 - ??{??" )
+                        new EntityItemAnySimple( "Microsoft .NET Framework 3.5 Language Pack SP1 - 日本語" )
         )
         ,
         new RegistryItem(
@@ -1418,7 +1437,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\OKI LPR Utility" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "OKI LPR ?e?e" )
+                        new EntityItemAnySimple( "OKI LPR ﾕｰﾃｨﾘﾃｨ" )
         )
         ,
         new RegistryItem(
@@ -1428,7 +1447,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\ST6UNST #1" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "?v???[???e?[?V?????^?C?}?[<Pt> Ver.1.52" )
+                        new EntityItemAnySimple( "プレゼンテーションタイマー<Pt> Ver.1.52" )
         )
         ,
         new RegistryItem(
@@ -1588,7 +1607,7 @@
                         new EntityItemString( "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{034A00E1-3975-4267-9F39-1DC4745090B7}" ),
                         new EntityItemString( "DisplayName" ),
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "Microsoft ?G???J???^ ??????S?? 2003" )
+                        new EntityItemAnySimple( "Microsoft エンカルタ 総合大百科 2003" )
         )
         ,
         new RegistryItem(
@@ -1990,8 +2009,7 @@
                         new EntityItemRegistryType( RegistryType.REG_SZ ),
                         new EntityItemAnySimple( "Adobe Setup" )
         )
-        */
     };
 
-
+}
 
