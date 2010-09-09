@@ -509,7 +509,7 @@ public class FileItem
     @Override
     public String toString()
     {
-        return "FileItem[" + super.toString()
+        return "file_item[" + super.toString()
                         + ", " + _properties
                         + "]";
     }

@@ -1,6 +1,8 @@
 package jp.go.aist.six.test.oval.core.store;
 
+import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.sc.SystemData;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.test.oval.core.OvalSample;
 import jp.go.aist.six.test.oval.core.Validators;
@@ -110,6 +112,15 @@ public class StoreSCTest
     throws Exception
     {
         Reporter.log( "  * expected object: " + expected, true );
+        if (expected != null) {
+            SystemData  systemData = expected.getSystemData();
+            if (systemData != null  &&  systemData.size() > 0) {
+                for (Item  item : systemData) {
+                    Reporter.log( "  * item: " + item, true );
+                }
+            }
+        }
+
         _testOvalSC( type, filepath, xpath, expected );
     }
 

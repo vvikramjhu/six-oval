@@ -241,7 +241,7 @@ public class RegistryItem
     @Override
     public String toString()
     {
-        return "RegistryItem[" + super.toString()
+        return "registry_item[" + super.toString()
                         + ", hive=" + getHive()
                         + ", key=" + getKey()
                         + ", name=" + getName()

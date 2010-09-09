@@ -323,6 +323,9 @@ public abstract class Validators
 
             Reporter.log( " - system_info", true );
             validator( SystemInfo.class ).equals( actual.getSystemInfo(), expected.getSystemInfo() );
+
+            Reporter.log( " - system_data", true );
+            Assert.assertEquals( actual.getSystemData().size(), expected.getSystemData().size() );
         }
     }
 
