@@ -2268,20 +2268,59 @@
             <sql name="filepath" type="char"/>
         </field>
 
+        <field name="filepath.status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
+            <sql name="filepath_status" type="char"/>
+        </field>
+
         <field name="path.data" type="string">
             <sql name="path" type="char"/>
+        </field>
+
+        <field name="path.status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
+            <sql name="path_status" type="char"/>
         </field>
 
         <field name="filename.data" type="string">
             <sql name="filename" type="char"/>
         </field>
 
+        <field name="filename.status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
+            <sql name="filename_status" type="char"/>
+        </field>
+
         <field name="owner.data" type="string">
             <sql name="owner" type="char"/>
         </field>
 
+        <field name="owner.status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
+            <sql name="owner_status" type="char"/>
+        </field>
+
+        <field name="size.data" type="string">
+            <sql name="size" type="char"/>
+        </field>
+
+        <field name="size.status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
+            <sql name="size_status" type="char"/>
+        </field>
+
+        <field name="size.datatype" 
+            type="jp.go.aist.six.oval.model.common.Datatype">
+            <sql name="size_type" type="char"/>
+        </field>
+
         <field name="company.data" type="string">
             <sql name="company" type="char"/>
+        </field>
+
+        <field name="company.status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
+            <sql name="company_status" type="char"/>
         </field>
 
         <field name="productName.data" type="string">

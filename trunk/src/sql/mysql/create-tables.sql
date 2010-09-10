@@ -41,7 +41,15 @@ use @six.db.database@;
 --                          VARCHAR(64),
 -- * message digest:
 --      xxx_digest          VARCHAR(32),
-
+--
+--
+-- * sc:Status:
+--      status              VARCHAR(16),
+--                          /* max. length = 14, 'does not exist' */
+--
+-- * windows:FileType:
+--      filetype            VARCHAR(24),
+--                          /* max. length = 24, 'FILE_ATTRIBUTE_DIRECTORY' */
 
 
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
@@ -1789,10 +1797,34 @@ CREATE TABLE IF NOT EXISTS oval_s_item_file
     PID                 INT             NOT NULL,
 
     filepath            VARCHAR(255),
+    filepath_status     VARCHAR(16),
     path                VARCHAR(255),
+    path_status         VARCHAR(16),
     filename            VARCHAR(255),
+    filename_status     VARCHAR(16),
     owner               VARCHAR(64),
+    owner_status        VARCHAR(16),
+    size                VARCHAR(20),
+    size_status         VARCHAR(16),
+    size_type           VARCHAR(16),
+    a_time              VARCHAR(20),
+    a_time_status       VARCHAR(16),
+    a_time_type         VARCHAR(16),
+    c_time              VARCHAR(20),
+    c_time_status       VARCHAR(16),
+    c_time_type         VARCHAR(16),
+    m_time              VARCHAR(20),
+    m_time_status       VARCHAR(16),
+    m_time_type         VARCHAR(16),
+    ms_checksum         VARCHAR(8),
+    ms_chacksum_status  VARCHAR(16),
+    version             VARCHAR(24),
+    version_status      VARCHAR(16),
+    version_type        VARCHAR(16),
+    type1               VARCHAR(24),
+    type1_status        VARCHAR(16),
     company             VARCHAR(128),
+    company_status      VARCHAR(16),
                         /* We found the following longest company: 88 characters. */
                         /* 'Macrovision Corporation, Macrovision Europe Limited, and Macrovision Japan and Asia K.K.' */
     product_name        VARCHAR(64),
