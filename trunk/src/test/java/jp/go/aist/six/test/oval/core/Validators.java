@@ -12,6 +12,8 @@ import jp.go.aist.six.oval.model.definitions.StateRef;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.model.results.SystemResult;
+import jp.go.aist.six.oval.model.results.SystemResults;
 import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemData;
@@ -358,6 +360,47 @@ public abstract class Validators
 
     /**
      */
+    public static class SystemResultValidator
+    extends Validator<SystemResult>
+    {
+        @Override
+        public void equals(
+                        final SystemResult actual,
+                        final SystemResult expected
+                        )
+        {
+            Reporter.log( " - results/system", true );
+            validator( OvalSystemCharacteristics.class )
+            .equals( actual.getOvalSystemCharacteristics(), expected.getOvalSystemCharacteristics() );
+        }
+    }
+
+
+
+    /**
+     */
+    public static class SystemResultsValidator
+    extends Validator<SystemResults>
+    {
+        @Override
+        public void equals(
+                        final SystemResults actual,
+                        final SystemResults expected
+                        )
+        {
+            if (expected.size() == 1) {
+                Assert.assertTrue( actual.size() == 1 );
+                SystemResult  expectedResult = expected.iterator().next();
+                SystemResult  actualResult = actual.iterator().next();
+                validator( SystemResult.class ).equals( actualResult, expectedResult );
+            }
+        }
+    }
+
+
+
+    /**
+     */
     public static class OvalResultsValidator
     extends Validator<OvalResults>
     {
@@ -372,6 +415,12 @@ public abstract class Validators
 
             Reporter.log( " - directives", true );
             Assert.assertEquals( actual.getDirectives(), expected.getDirectives() );
+
+            Reporter.log( " - oval_definitions", true );
+            validator( OvalDefinitions.class ).equals( actual.getDefinitions(), expected.getDefinitions() );
+
+            Reporter.log( " - results", true );
+            validator( SystemResults.class ).equals( actual.getResults(), expected.getResults() );
         }
     }
 
@@ -418,6 +467,12 @@ public abstract class Validators
             } else if (OvalResults.class.isAssignableFrom( type )) {
                 v = (Validator<T>)(new OvalResultsValidator());
                 _validators.put( OvalResults.class, v );
+            } else if (SystemResults.class.isAssignableFrom( type )) {
+                v = (Validator<T>)(new SystemResultsValidator());
+                _validators.put( SystemResults.class, v );
+            } else if (SystemResult.class.isAssignableFrom( type )) {
+                v = (Validator<T>)(new SystemResultValidator());
+                _validators.put( SystemResult.class, v );
             }
         }
 
