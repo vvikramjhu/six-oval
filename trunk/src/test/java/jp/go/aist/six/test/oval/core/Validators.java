@@ -11,7 +11,9 @@ import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.StateRef;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.sc.SystemData;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -325,7 +327,25 @@ public abstract class Validators
             validator( SystemInfo.class ).equals( actual.getSystemInfo(), expected.getSystemInfo() );
 
             Reporter.log( " - system_data", true );
-            Assert.assertEquals( actual.getSystemData().size(), expected.getSystemData().size() );
+            SystemData  expectedItems = expected.getSystemData();
+            SystemData  actualItems = actual.getSystemData();
+            if (expectedItems == null  ||  expectedItems.size() == 0) {
+                Assert.assertTrue( actualItems == null  || actualItems.size() == 0 );
+            } else {
+                Assert.assertEquals( actualItems.size(), expectedItems.size() );
+                for (Item  expectedItem : expectedItems) {
+                    boolean  contained = false;
+                    for (Item  actualItem : actualItems) {
+                        if (actualItem.getID() == expectedItem.getID()) {
+//                            Assert.assertEquals( actualItem.getEntityType(), expectedItem.getEntityType() );
+                            Assert.assertEquals( actualItem.getStatus(), expectedItem.getStatus() );
+                            contained = true;
+                            break;
+                        }
+                    }
+                    Assert.assertTrue( contained );
+                }
+            }
         }
     }
 
