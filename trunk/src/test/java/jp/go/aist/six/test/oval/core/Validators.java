@@ -11,6 +11,7 @@ import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.StateRef;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemData;
@@ -352,6 +353,31 @@ public abstract class Validators
 
 
     //==============================================================
+    //  oval-results
+    //==============================================================
+
+    /**
+     */
+    public static class OvalResultsValidator
+    extends Validator<OvalResults>
+    {
+        @Override
+        public void equals(
+                        final OvalResults actual,
+                        final OvalResults expected
+                        )
+        {
+//            Reporter.log( " - generator", true );
+//            Assert.assertEquals( actual.getGenerator(), expected.getGenerator() );
+
+            Reporter.log( " - directives", true );
+            Assert.assertEquals( actual.getDirectives(), expected.getDirectives() );
+        }
+    }
+
+
+
+    //==============================================================
     //  validator instances
     //==============================================================
 
@@ -388,6 +414,10 @@ public abstract class Validators
             } else if (SystemInfo.class.isAssignableFrom( type )) {
                 v = (Validator<T>)(new SystemInfoValidator());
                 _validators.put( SystemInfo.class, v );
+
+            } else if (OvalResults.class.isAssignableFrom( type )) {
+                v = (Validator<T>)(new OvalResultsValidator());
+                _validators.put( OvalResults.class, v );
             }
         }
 

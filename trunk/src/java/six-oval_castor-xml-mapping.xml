@@ -1350,11 +1350,11 @@
         <map-to xml="results"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
-        <field name="system" 
+        <field name="result" 
             type="jp.go.aist.six.oval.model.results.SystemResult"
             collection="collection"
-            set-method="addSystem"
-            get-method="iterateSystem">
+            set-method="addResult"
+            get-method="iterateResult">
             <bind-xml name="system" node="element"/>
         </field>
     </class>

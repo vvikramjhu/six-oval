@@ -2,6 +2,8 @@ package jp.go.aist.six.test.oval.core.store;
 
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
+import jp.go.aist.six.test.oval.core.OvalSample;
+import jp.go.aist.six.test.oval.core.Validators;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
@@ -67,9 +69,9 @@ public class StoreResultsTest
         Reporter.log( "...get done: " + (System.currentTimeMillis() - time) + "(ms)", true );
 
         Reporter.log( "  @ get: object=" + persistent2, true );
-//        Reporter.log( "validating...", true );
-//        Validators.validator( OvalResults.class ).equals( persistent2, object );
-//        Reporter.log( "...validation OK", true );
+        Reporter.log( "validating...", true );
+        Validators.validator( OvalResults.class ).equals( persistent2, object );
+        Reporter.log( "...validation OK", true );
     }
 
 
@@ -88,7 +90,7 @@ public class StoreResultsTest
                             OvalResults.class,
                             "test/data/results/oval-results_CVE-2009-4019_MySQL.xml",
                             "/oval_results",
-                            null
+                            OvalSample.OVAL_RESULTS_8500
                         }
         };
     }
