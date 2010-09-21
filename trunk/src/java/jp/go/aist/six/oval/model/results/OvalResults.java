@@ -57,6 +57,22 @@ public class OvalResults
     }
 
 
+    /**
+     * Constructor.
+     */
+    public OvalResults(
+                    final Generator generator,
+                    final Directives directives,
+                    final SystemResults results
+                    )
+    {
+        setGenerator( generator );
+        setDirectives( directives );
+        setResults( results );
+    }
+
+
+
 
     /**
      */
@@ -102,6 +118,15 @@ public class OvalResults
     }
 
 
+    public OvalResults definitions(
+                    final OvalDefinitions definitions
+                    )
+    {
+        setDefinitions( definitions );
+        return this;
+    }
+
+
     public OvalDefinitions getDefinitions()
     {
         return _definitions;
@@ -125,6 +150,21 @@ public class OvalResults
     }
 
 
+    public OvalResults result(
+                    final SystemResult result
+                    )
+    {
+        SystemResults  results = getResults();
+        if (results == null) {
+            results = new SystemResults();
+            setResults( results );
+        }
+        results.addResult( result );
+
+        return this;
+    }
+
+
 
     //**************************************************************
     //  java.lang.Object
@@ -133,7 +173,7 @@ public class OvalResults
     @Override
     public String toString()
     {
-        return "OvalResults[generator=" + getGenerator()
+        return "oval_results[generator=" + getGenerator()
                         + ", directives=" + getDirectives()
                         + ", results=" + getResults()
                         + "]";

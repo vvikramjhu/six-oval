@@ -117,6 +117,23 @@ public class TestResult
     }
 
 
+    public boolean addTestedItem(
+                    final TestedItem item
+                    )
+    {
+        return _testedItem.add( item );
+    }
+
+
+    public TestResult testedItem(
+                    final TestedItem item
+                    )
+    {
+        addTestedItem( item );
+        return this;
+    }
+
+
     public Collection<TestedItem> getTestedItem()
     {
         return _testedItem;
@@ -133,6 +150,23 @@ public class TestResult
         if (variables != null  &&  variables != _testedVariable) {
             _testedVariable.addAll( variables );
         }
+    }
+
+
+    public boolean addTestedVariable(
+                    final TestedVariable variable
+                    )
+    {
+        return _testedVariable.add( variable );
+    }
+
+
+    public TestResult testedVariable(
+                    final TestedVariable variable
+                    )
+    {
+        addTestedVariable( variable );
+        return this;
     }
 
 
@@ -191,6 +225,15 @@ public class TestResult
     }
 
 
+    public TestResult checkExistence(
+                    final Existence existence
+                    )
+    {
+        setCheckExistence( existence );
+        return this;
+    }
+
+
     public Existence getCheckExistence()
     {
         return (_checkExistence == null ? DEFAULT_CHECK_EXISTENCE : _checkExistence);
@@ -208,6 +251,15 @@ public class TestResult
     }
 
 
+    public TestResult check(
+                    final Check check
+                    )
+    {
+        setCheck( check );
+        return this;
+    }
+
+
     public Check getCheck()
     {
         return _check;
@@ -222,6 +274,15 @@ public class TestResult
                     )
     {
         _stateOperator = operator;
+    }
+
+
+    public TestResult stateOperator(
+                    final Operator operator
+                    )
+    {
+        setStateOperator( operator );
+        return this;
     }
 
 

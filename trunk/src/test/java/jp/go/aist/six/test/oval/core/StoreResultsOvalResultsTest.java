@@ -65,7 +65,7 @@ public class StoreResultsOvalResultsTest
         Reporter.log( "view results...", true );
         SystemResults  results = or.getResults();
         if (results != null) {
-            for (SystemResult  system : results.getSystem()) {
+            for (SystemResult  system : results.getResult()) {
                 OvalSystemCharacteristics  sc = system.getOvalSystemCharacteristics();
                 Reporter.log( "  * OVAL SC: " + sc, true );
                 for (TestResult  test : system.getTests().getTest()) {

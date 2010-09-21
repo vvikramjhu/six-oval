@@ -60,7 +60,7 @@ public class OvalResultsDao
                     final SystemResult system
                     )
     {
-        OvalSystemCharacteristics  sc = system.getOvalSystemCharacteristics();
+        OvalSystemCharacteristics    sc = system.getOvalSystemCharacteristics();
         OvalSystemCharacteristics  p_sc = getForwardingDao( OvalSystemCharacteristics.class ).sync( sc );
         system.setOvalSystemCharacteristics( p_sc );
 

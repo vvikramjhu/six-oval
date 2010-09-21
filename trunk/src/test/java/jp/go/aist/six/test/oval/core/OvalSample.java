@@ -40,31 +40,32 @@ import jp.go.aist.six.oval.model.linux.DpkgInfoTest;
 import jp.go.aist.six.oval.model.linux.RpmInfoObject;
 import jp.go.aist.six.oval.model.linux.RpmInfoState;
 import jp.go.aist.six.oval.model.linux.RpmInfoTest;
+import jp.go.aist.six.oval.model.results.Content;
 import jp.go.aist.six.oval.model.results.CriteriaResult;
 import jp.go.aist.six.oval.model.results.CriterionResult;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
+import jp.go.aist.six.oval.model.results.Directive;
+import jp.go.aist.six.oval.model.results.Directives;
 import jp.go.aist.six.oval.model.results.ExtendDefinitionResult;
+import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.Result;
 import jp.go.aist.six.oval.model.results.SystemResult;
+import jp.go.aist.six.oval.model.results.SystemResults;
+import jp.go.aist.six.oval.model.results.TestResult;
+import jp.go.aist.six.oval.model.results.TestedItem;
+import jp.go.aist.six.oval.model.results.TestedVariable;
 import jp.go.aist.six.oval.model.sc.CollectedSystemObject;
-import jp.go.aist.six.oval.model.sc.EntityItemInt;
-import jp.go.aist.six.oval.model.sc.EntityItemString;
 import jp.go.aist.six.oval.model.sc.Flag;
-import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.ItemReference;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.model.sc.Status;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
 import jp.go.aist.six.oval.model.sc.VariableValue;
 import jp.go.aist.six.oval.model.unix.UnameObject;
 import jp.go.aist.six.oval.model.unix.UnameTest;
-import jp.go.aist.six.oval.model.windows.EntityItemFileType;
 import jp.go.aist.six.oval.model.windows.EntityObjectRegistryHive;
-import jp.go.aist.six.oval.model.windows.FileItem;
 import jp.go.aist.six.oval.model.windows.FileObject;
 import jp.go.aist.six.oval.model.windows.FileState;
 import jp.go.aist.six.oval.model.windows.FileTest;
-import jp.go.aist.six.oval.model.windows.FileType;
 import jp.go.aist.six.oval.model.windows.MetabaseObject;
 import jp.go.aist.six.oval.model.windows.MetabaseState;
 import jp.go.aist.six.oval.model.windows.MetabaseTest;
@@ -763,32 +764,6 @@ public class OvalSample
     };
 
 
-    private static final Item[]  _ITEMS_1_ = new Item[] {
-        new FileItem(
-                        2,
-                        Item.DEFAULT_STATUS,
-                        new EntityItemString( "C:\\Program Files\\MySQL\\MySQL Server 5.1\\bin\\mysqld.exe" ),
-                        new EntityItemString( "C:\\Program Files\\MySQL\\MySQL Server 5.1\\bin\\" ),
-                        new EntityItemString( "mysqld.exe" ),
-                        new EntityItemString( "BUILTIN\\Administrators" ),
-                        new EntityItemInt( 6591104, Datatype.INT ),
-                        new EntityItemInt( 129258204872031250L, Datatype.INT ),
-                        new EntityItemInt( 128919810880000000L, Datatype.INT ),
-                        new EntityItemInt( 128919810880000000L, Datatype.INT ),
-                        new EntityItemString( "6592576" ),
-                        new EntityItemString( null, Datatype.VERSION, Status.ERROR ),
-                        new EntityItemFileType( FileType.FILE_TYPE_DISK ),
-                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
-                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
-                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
-                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
-                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
-                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
-                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR )
-        )
-    };
-
-
 
     public static final OvalSystemCharacteristics  OVAL_SC_8500 =
         new OvalSystemCharacteristics(
@@ -858,12 +833,93 @@ public class OvalSample
     );
 
 
+
+    // results:test
+    private static final TestResult  _TEST_RESULT_21087_ =
+        new TestResult( "oval:org.mitre.oval:tst:21087", 1, Result.TRUE )
+    .check( Check.AT_LEAST_ONE )
+    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+    .stateOperator( Operator.AND );
+    {
+        for (int  id = 3; id <= 196; id++) {
+            _TEST_RESULT_21087_.addTestedItem( new TestedItem( id, Result.FALSE ) );
+        }
+    }
+
+
+    // results:test
+    private static final TestResult  _TEST_RESULT_21031_ =
+        new TestResult( "oval:org.mitre.oval:tst:21031", 1, Result.TRUE )
+    .check( Check.ALL )
+    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+    .stateOperator( Operator.AND )
+    .testedItem( new TestedItem( 2, Result.NOT_EVALUATED ) )
+    .testedVariable( new TestedVariable( "oval:org.mitre.oval:var:349", "C:\\Program Files\\MySQL\\MySQL Server 5.1\\bin\\" ) );
+
+
+    // results:test
+    private static final TestResult  _TEST_RESULT_20481_ =
+        new TestResult( "oval:org.mitre.oval:tst:20481", 1, Result.FALSE )
+    .check( Check.AT_LEAST_ONE )
+    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+    .stateOperator( Operator.AND );
+    {
+        for (int  id = 3; id <= 196; id++) {
+            _TEST_RESULT_21087_.addTestedItem( new TestedItem( id, Result.FALSE ) );
+        }
+    }
+
+
+    // results:test
+    private static final TestResult  _TEST_RESULT_20192_ =
+        new TestResult( "oval:org.mitre.oval:tst:20192", 1, Result.FALSE )
+    .check( Check.AT_LEAST_ONE )
+    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+    .stateOperator( Operator.AND )
+    .testedItem( new TestedItem( 198, Result.NOT_EVALUATED ) );
+
+
+    // results:test
+    private static final TestResult  _TEST_RESULT_20859_ =
+        new TestResult( "oval:org.mitre.oval:tst:20859", 1, Result.FALSE )
+    .check( Check.AT_LEAST_ONE )
+    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+    .stateOperator( Operator.AND )
+    .testedItem( new TestedItem( 197, Result.TRUE ) );
+
+
     private static final SystemResult  _SYSTEM_RESULT_8500_ =
-        new SystemResult()
+        new SystemResult( OVAL_SC_8500 )
     .definition( DEFINITION_RESULT_8297 )
     .definition( DEFINITION_RESULT_8500 )
     .definition( DEFINITION_RESULT_8282 )
+    .test( _TEST_RESULT_21087_ )
+    .test( _TEST_RESULT_21031_ )
+    .test( _TEST_RESULT_20481_ )
+    .test( _TEST_RESULT_20192_ )
+    .test( _TEST_RESULT_20859_ )
     ;
+
+
+
+    public static final OvalResults  OVAL_RESULTS_8500 =
+        new OvalResults(
+                        new Generator( "5.7",
+                                        IsoDate.valueOf( "2010-08-09T18:41:27" ),
+                                        "OVAL Definition Interpreter",
+                                        "5.7 Build: 2"
+                        ),
+                        new Directives(
+                                        new Directive( true, Content.FULL ),
+                                        new Directive( true, Content.FULL ),
+                                        new Directive( true, Content.FULL ),
+                                        new Directive( true, Content.FULL ),
+                                        new Directive( true, Content.FULL ),
+                                        new Directive( true, Content.FULL )
+                                        ),
+                        new SystemResults( new SystemResult[] { _SYSTEM_RESULT_8500_ } )
+                        )
+    .definitions( OVAL_DEFINITIONS_8500 );
 
 }
 // OvalSample

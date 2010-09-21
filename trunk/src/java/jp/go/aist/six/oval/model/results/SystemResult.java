@@ -141,6 +141,21 @@ public class SystemResult
     }
 
 
+    public SystemResult test(
+                    final TestResult test
+                    )
+    {
+        TestResults  tests = getTests();
+        if (tests == null) {
+            tests = new TestResults();
+            setTests( tests );
+        }
+        tests.addTest( test );
+
+        return this;
+    }
+
+
 
     /**
      */
