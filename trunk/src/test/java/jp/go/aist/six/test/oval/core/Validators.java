@@ -11,9 +11,14 @@ import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.StateRef;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.results.DefinitionResult;
+import jp.go.aist.six.oval.model.results.DefinitionResults;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.SystemResult;
 import jp.go.aist.six.oval.model.results.SystemResults;
+import jp.go.aist.six.oval.model.results.TestResult;
+import jp.go.aist.six.oval.model.results.TestResults;
+import jp.go.aist.six.oval.model.results.TestedItem;
 import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemData;
@@ -22,6 +27,7 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 
@@ -370,8 +376,62 @@ public abstract class Validators
                         )
         {
             Reporter.log( " - results/system", true );
+
             validator( OvalSystemCharacteristics.class )
             .equals( actual.getOvalSystemCharacteristics(), expected.getOvalSystemCharacteristics() );
+
+            Reporter.log( " - results/system/definitions", true );
+            DefinitionResults  expectedDefinitions = expected.getDefinitions();
+            DefinitionResults    actualDefinitions =   actual.getDefinitions();
+            Reporter.log( "  * expected definitions: " + expectedDefinitions, true );
+            Reporter.log( "  *    actualdefinitions: " + actualDefinitions, true );
+            if (expectedDefinitions == null  ||  expectedDefinitions.size() == 0) {
+                Assert.assertTrue( actualDefinitions == null  || actualDefinitions.size() == 0 );
+            } else {
+                Assert.assertEquals( actualDefinitions.size(), expectedDefinitions.size() );
+                for (DefinitionResult  expectedDef : expectedDefinitions) {
+                    boolean  contained = false;
+                    for (DefinitionResult  actualDef: actualDefinitions) {
+                        if (actualDef.getOvalID().equals( expectedDef.getOvalID() )) {
+                            Reporter.log( " - results/system/definitions/definition/@id", true );
+                            Reporter.log( " - results/system/definitions/definition/@version", true );
+                            Assert.assertEquals( actualDef.getOvalVersion(), expectedDef.getOvalVersion() );
+                            Reporter.log( " - results/system/definitions/definition/@result", true );
+                            Assert.assertEquals( actualDef.getResult(), expectedDef.getResult() );
+                            contained = true;
+                            break;
+                        }
+                    }
+                    Assert.assertTrue( contained );
+                }
+            }
+
+            Reporter.log( " - results/system/tests", true );
+            TestResults  expectedTests = expected.getTests();
+            TestResults    actualTests =   actual.getTests();
+            if (expectedTests == null  ||  expectedTests.size() == 0) {
+                Assert.assertTrue( actualTests == null  || actualTests.size() == 0 );
+            } else {
+                Assert.assertEquals( actualTests.size(), expectedTests.size() );
+                for (TestResult  expectedTest : expectedTests) {
+                    Reporter.log( " - results/system/tests/test: " + expectedTest.getOvalID(), true );
+                    boolean  contained = false;
+                    for (TestResult  actualTest: actualTests) {
+                        if (actualTest.getOvalID().equals( expectedTest.getOvalID() )) {
+                            Reporter.log( " - results/system/tests/test/@version", true );
+                            Assert.assertEquals( actualTest.getOvalVersion(), expectedTest.getOvalVersion() );
+                            Reporter.log( " - results/system/tests/test/@result", true );
+                            Assert.assertEquals( actualTest.getResult(), expectedTest.getResult() );
+                            Reporter.log( " - results/system/tests/test/tested_item", true );
+                            Assert.assertEquals( new HashSet<TestedItem>( actualTest.getTestedItem() ),
+                                            new HashSet<TestedItem>( expectedTest.getTestedItem() ) );
+                            contained = true;
+                            break;
+                        }
+                    }
+                    Assert.assertTrue( contained );
+                }
+            }
         }
     }
 

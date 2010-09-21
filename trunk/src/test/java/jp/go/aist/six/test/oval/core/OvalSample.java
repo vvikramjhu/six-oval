@@ -835,16 +835,35 @@ public class OvalSample
 
 
     // results:test
-    private static final TestResult  _TEST_RESULT_21087_ =
-        new TestResult( "oval:org.mitre.oval:tst:21087", 1, Result.TRUE )
-    .check( Check.AT_LEAST_ONE )
-    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
-    .stateOperator( Operator.AND );
+    private static TestResult _createTestResult21087()
     {
+        TestResult  test =
+            new TestResult( "oval:org.mitre.oval:tst:21087", 1, Result.TRUE )
+        .check( Check.AT_LEAST_ONE )
+        .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+        .stateOperator( Operator.AND );
         for (int  id = 3; id <= 196; id++) {
-            _TEST_RESULT_21087_.addTestedItem( new TestedItem( id, Result.FALSE ) );
+            if (id == 157) {
+                test.addTestedItem( new TestedItem( id, Result.TRUE ) );
+            } else {
+                test.addTestedItem( new TestedItem( id, Result.FALSE ) );
+            }
         }
+
+        return test;
     }
+
+    private static final TestResult  _TEST_RESULT_21087_ =
+        _createTestResult21087();
+//        new TestResult( "oval:org.mitre.oval:tst:21087", 1, Result.TRUE )
+//    .check( Check.AT_LEAST_ONE )
+//    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+//    .stateOperator( Operator.AND );
+//    {
+//        for (int  id = 3; id <= 196; id++) {
+//            _TEST_RESULT_21087_.addTestedItem( new TestedItem( id, Result.FALSE ) );
+//        }
+//    }
 
 
     // results:test
@@ -858,16 +877,26 @@ public class OvalSample
 
 
     // results:test
-    private static final TestResult  _TEST_RESULT_20481_ =
-        new TestResult( "oval:org.mitre.oval:tst:20481", 1, Result.FALSE )
-    .check( Check.AT_LEAST_ONE )
-    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
-    .stateOperator( Operator.AND );
+    private static TestResult _createTestResult20481()
     {
+        TestResult  test =
+            new TestResult( "oval:org.mitre.oval:tst:20481", 1, Result.FALSE )
+        .check( Check.AT_LEAST_ONE )
+        .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+        .stateOperator( Operator.AND );
         for (int  id = 3; id <= 196; id++) {
-            _TEST_RESULT_21087_.addTestedItem( new TestedItem( id, Result.FALSE ) );
+            test.addTestedItem( new TestedItem( id, Result.FALSE ) );
         }
+
+        return test;
     }
+
+    private static final TestResult  _TEST_RESULT_20481_ =
+        _createTestResult20481();
+//        new TestResult( "oval:org.mitre.oval:tst:20481", 1, Result.FALSE )
+//    .check( Check.AT_LEAST_ONE )
+//    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+//    .stateOperator( Operator.AND );
 
 
     // results:test
@@ -881,7 +910,7 @@ public class OvalSample
 
     // results:test
     private static final TestResult  _TEST_RESULT_20859_ =
-        new TestResult( "oval:org.mitre.oval:tst:20859", 1, Result.FALSE )
+        new TestResult( "oval:org.mitre.oval:tst:20859", 1, Result.TRUE )
     .check( Check.AT_LEAST_ONE )
     .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
     .stateOperator( Operator.AND )
