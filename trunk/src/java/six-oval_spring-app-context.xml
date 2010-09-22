@@ -48,28 +48,9 @@
                 <entry key="jp.go.aist.six.oval.core.model.definitions.DefinitionCriteria"
                     value="jp.go.aist.six.oval.core.store.DefinitionCriteriaDao"/>
 
-                <entry key="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsDefinitionAssociation"
-                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsDefinitionAssociationDao"/>
-
-<!-- CastoDao
-                <entry key="jp.go.aist.six.oval.model.definitions.Reference"
-                    value="jp.go.aist.six.oval.core.store.ReferenceDao"/>
-                <entry key="jp.go.aist.six.oval.model.definitions.Platform"
-                    value="jp.go.aist.six.oval.core.store.PlatformDao"/>
-                <entry key="jp.go.aist.six.oval.model.definitions.Product"
-                    value="jp.go.aist.six.oval.core.store.ProductDao"/>
-                <entry key="jp.go.aist.six.oval.model.definitions.Cve"
-                    value="jp.go.aist.six.oval.core.store.CveDao"/>
--->                    
-
                 <entry key="jp.go.aist.six.oval.model.definitions.Test"
                     value="jp.go.aist.six.oval.core.store.TestDao"/>
 
-                <entry key="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsTestAssociation"
-                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsTestAssociationDao"/>
-
-<!-- CastorDao???
--->
                 <entry key="jp.go.aist.six.oval.model.definitions.SystemObject"
                     value="jp.go.aist.six.oval.core.store.SystemObjectDao"/>
 
@@ -79,18 +60,8 @@
                 <entry key="jp.go.aist.six.oval.model.definitions.Variable"
                     value="jp.go.aist.six.oval.core.store.VariableDao"/>
 
-
                 <entry key="jp.go.aist.six.oval.core.model.definitions.DefinitionTestAssociation"
                     value="jp.go.aist.six.oval.core.store.DefinitionTestAssociationDao"/>
-
-                <entry key="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsObjectAssociation"
-                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsObjectAssociationDao"/>
-
-                <entry key="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsStateAssociation"
-                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsStateAssociationDao"/>
-
-                <entry key="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsVariableAssociation"
-                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsVariableAssociationDao"/>
 
 
             <!-- // System Characteristics // -->
@@ -98,35 +69,53 @@
                 <entry key="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics"
                     value="jp.go.aist.six.oval.core.store.OvalSystemCharacteristicsDao"/>
 
-<!-- CastoDao
-                <entry key="jp.go.aist.six.oval.model.sc.Item"
-                    value="jp.go.aist.six.oval.core.store.ItemDao"/>
--->
-
-<!-- dependent
-                <entry key="jp.go.aist.six.oval.model.sc.CollectedSystemObject"
-                    value="jp.go.aist.six.oval.core.store.CollectedSystemObjectDao"/>
--->
-
-
 
             <!-- // Results // -->
             
                 <entry key="jp.go.aist.six.oval.model.results.OvalResults"
                     value="jp.go.aist.six.oval.core.store.OvalResultsDao"/>
 
-<!-- dependent relationship 
+
+
+            <!-- // deprecated // -->
+
+<!-- using pure CastoDao
+                <entry key="jp.go.aist.six.oval.model.definitions.Reference"
+                    value="jp.go.aist.six.oval.core.store.ReferenceDao"/>
+                <entry key="jp.go.aist.six.oval.model.definitions.Platform"
+                    value="jp.go.aist.six.oval.core.store.PlatformDao"/>
+                <entry key="jp.go.aist.six.oval.model.definitions.Product"
+                    value="jp.go.aist.six.oval.core.store.ProductDao"/>
+                <entry key="jp.go.aist.six.oval.model.definitions.Cve"
+                    value="jp.go.aist.six.oval.core.store.CveDao"/>
+
+                <entry key="jp.go.aist.six.oval.model.sc.Item"
+                    value="jp.go.aist.six.oval.core.store.ItemDao"/>
+-->                    
+
+<!-- related or dependent relationship using Castor JDO Mapping  ==> ext
+                <entry key="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsDefinitionAssociation"
+                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsDefinitionAssociationDao"/>
+                <entry key="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsTestAssociation"
+                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsTestAssociationDao"/>
+                <entry key="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsObjectAssociation"
+                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsObjectAssociationDao"/>
+                <entry key="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsStateAssociation"
+                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsStateAssociationDao"/>
+                <entry key="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsVariableAssociation"
+                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsVariableAssociationDao"/>
+
+                <entry key="jp.go.aist.six.oval.model.sc.CollectedSystemObject"
+                    value="jp.go.aist.six.oval.core.store.CollectedSystemObjectDao"/>
                 <entry key="jp.go.aist.six.oval.core.model.results.OvalResultsOvalDefinitionsAssociation"
                     value="jp.go.aist.six.oval.core.store.OvalResultsOvalDefinitionsAssociationDao"/>
 
-                <entry key="jp.go.aist.six.oval.model.results.SystemResult"
-                    value="jp.go.aist.six.oval.core.store.SystemResultDao"/>
-
-                <entry key="jp.go.aist.six.oval.model.results.DefinitionResult"
-                    value="jp.go.aist.six.oval.core.store.DefinitionResultDao"/>
-
                 <entry key="jp.go.aist.six.oval.core.model.results.OvalResultsSystemAssociation"
                     value="jp.go.aist.six.oval.core.store.OvalResultsSystemAssociationDao"/>
+                <entry key="jp.go.aist.six.oval.model.results.SystemResult"
+                    value="jp.go.aist.six.oval.core.store.SystemResultDao"/>
+                <entry key="jp.go.aist.six.oval.model.results.DefinitionResult"
+                    value="jp.go.aist.six.oval.core.store.DefinitionResultDao"/>
 -->
             </map>
         </property>
