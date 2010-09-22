@@ -63,6 +63,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
@@ -154,6 +156,30 @@ public abstract class CoreTestBase
 
     /**
      */
+    protected void _writeObjectToXmlFile(
+                    final Object object,
+                    final String filepath
+                    )
+    throws Exception
+    {
+        OutputStream  output = null;
+        if (filepath == null) {
+            output = System.out;
+        } else {
+            Reporter.log( "  * result XML file: " + filepath, true );
+            output = new FileOutputStream( new File( filepath ) );
+        }
+
+        Reporter.log( "marshalling...", true );
+        long  time = System.currentTimeMillis();
+        _getXml().marshal( object, output );
+        Reporter.log( "...marshalling done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+    }
+
+
+
+    /**
+     */
     protected <T> T _unmarshalFromFile(
                     final String filepath,
                     final Class<T> type
@@ -174,8 +200,7 @@ public abstract class CoreTestBase
 
 
 
-    /**
-     */
+    /** deprecated
     protected <T extends OvalEntity> void _syncOvalEntity(
                     final Class<T> type,
                     final T e
@@ -218,6 +243,7 @@ public abstract class CoreTestBase
 //        Reporter.log( "  @ get: hash=" + p.hashCode(), true );
         Assert.assertEquals( p2, e );
     }
+     */
 
 
 

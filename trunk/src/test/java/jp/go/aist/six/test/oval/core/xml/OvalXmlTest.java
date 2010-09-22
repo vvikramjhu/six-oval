@@ -6,11 +6,8 @@ import jp.go.aist.six.oval.model.results.Directive;
 import jp.go.aist.six.oval.model.results.Directives;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
-import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.OutputStream;
 
 
@@ -48,36 +45,55 @@ public class OvalXmlTest
 
     /**
      */
-    protected void _processXml(
-                    final Class<?> type,
-                    final String testedXPath,
+    protected <T> void _testXml(
+                    final Class<T> type,
                     final String sourceFilepath,
-                    final Object expected,
+                    final String xpath,
+                    final T expected,
                     final String resultFilepath
                     )
     throws Exception
     {
-        Reporter.log( "\n// TEST: OVAL XML //", true );
-        Reporter.log( "  * tested XPath: " + testedXPath, true );
-        Reporter.log( "  * tested XML file: " + sourceFilepath, true );
+        T  actual = _readObjectFromXmlFile( type, sourceFilepath, xpath, expected );
+        _writeObjectToXmlFile( actual, resultFilepath );
+    }
 
-        Object  actual = _unmarshalFromFile( sourceFilepath, type );
 
-        if (expected != null) {
-            Reporter.log( "validating...", true );
-            Assert.assertEquals( actual, expected );
-            Reporter.log( "...validation OK", true );
-        }
+
+    /** deprecated!!!
+    protected <T> void _processXml(
+                    final Class<T> type,
+                    final String xpath,
+                    final String sourceFilepath,
+                    final T expected,
+                    final String resultFilepath
+                    )
+    throws Exception
+    {
+        T  actual = _readObjectFromXmlFile( type, sourceFilepath, xpath, expected );
+
+//        Reporter.log( "\n// TEST: OVAL XML //", true );
+//        Reporter.log( "  * tested XPath: " + xpath, true );
+//        Reporter.log( "  * tested XML file: " + sourceFilepath, true );
+//
+//        Object  actual = _unmarshalFromFile( sourceFilepath, type );
+//
+//        if (expected != null) {
+//            Reporter.log( "validating...", true );
+//            Assert.assertEquals( actual, expected );
+//            Reporter.log( "...validation OK", true );
+//        }
 
         OutputStream  output = null;
         if (resultFilepath == null) {
             output = System.out;
         } else {
-            Reporter.log( "  * marshalled XML file: " + resultFilepath, true );
+            Reporter.log( "  * result XML file: " + resultFilepath, true );
             output = new FileOutputStream( new File( resultFilepath ) );
         }
         _marshal( actual, output );
     }
+     */
 
 
 
@@ -99,8 +115,8 @@ public class OvalXmlTest
                         // Windows @ Mitre, CVE-2009-4019
                         {
                             OvalDefinitions.class,
-                            "/oval_definitions",
                             "test/data/definitions/oval-definitions_CVE-2009-4019_MySQL.xml",
+                            "/oval_definitions",
                             null,
                             "marshalled_oval-definitions_CVE-2009-4019_MySQL.xml"
                         }
@@ -197,16 +213,17 @@ public class OvalXmlTest
                     dataProvider="definitions.oval_definitions",
                     alwaysRun=true
                     )
-    public void testOvalDefinitionsOvalDefinitions(
-                    final Class<?> type,
-                    final String testedXPath,
-                    final String filepath,
+    public void testDefinitionsOvalDefinitions(
+                    final Class<OvalDefinitions> type,
+                    final String sourceFilepath,
+                    final String xpath,
                     final OvalDefinitions expected,
                     final String resultFilepath
                     )
     throws Exception
     {
-        _processXml( type, testedXPath, filepath, expected, resultFilepath );
+        _testXml( type, sourceFilepath, xpath, expected, resultFilepath );
+//        _processXml( type, testedXPath, sourceFilepath, expected, resultFilepath );
     }
 
 
@@ -228,8 +245,8 @@ public class OvalXmlTest
                       // Windows @Mitre, CVE-2010-0176
                       {
                           OvalResults.class,
-                          "/oval_results",
                           "test/data/results/oval-results_CVE-2010-0176_mitre7222.xml",
+                          "/oval_results",
                           null,
                           "marshalled_oval-results_CVE-2010-0176_mitre7222.xml"
                       }
@@ -238,8 +255,8 @@ public class OvalXmlTest
                       // Red Hat patch, CVE-2010-0176, RHSA 20100332
                       {
                           OvalResults.class,
-                          "/oval_results",
                           "test/data/results/oval-results_CVE-2010-0176_rhsa20100332.xml",
+                          "/oval_results",
                           null,
                           "marshalled_oval-results_CVE-2010-0176_rhsa20100332.xml"
                       }
@@ -248,15 +265,12 @@ public class OvalXmlTest
                       // Debian @Mitre, CVE-2010-0176, DSA-2027
                       {
                           OvalResults.class,
-                          "/oval_results",
                           "test/data/results/oval-results_CVE-2010-0176_mitre7432_DSA-2027.xml",
+                          "/oval_results",
                           null,
                           "marshalled_oval-results_CVE-2010-0176_mitre7432_DSA-2027.xml"
                       }
-////                      ,
-
         };
-
     }
 
 
@@ -269,15 +283,16 @@ public class OvalXmlTest
                     alwaysRun=true
                     )
     public void testOvalResultsOvalResults(
-                    final Class<?> type,
-                    final String testedXPath,
+                    final Class<OvalResults> type,
                     final String sourceFilepath,
-                    final Object expected,
+                    final String xpath,
+                    final OvalResults expected,
                     final String resultFilepath
                     )
     throws Exception
     {
-        _processXml( type, testedXPath, sourceFilepath, expected, resultFilepath );
+        _testXml( type, sourceFilepath, xpath, expected, resultFilepath );
+//        _processXml( type, testedXPath, sourceFilepath, expected, resultFilepath );
     }
 
 
@@ -303,8 +318,8 @@ public class OvalXmlTest
         return new Object[][] {
                         {
                             Directives.class,
-                            "/oval_results/directives",
                             "test/data/results/directives_01.xml",
+                            "/oval_results/directives",
                             OVAL_RESULTS_DIRECTIVES_01
                         }
         };
@@ -321,26 +336,17 @@ public class OvalXmlTest
                     alwaysRun=true
                     )
     public void testOvalResultsDirectives(
-                    final Class<?> type,
-                    final String testedXPath,
+                    final Class<Directives> type,
                     final String filepath,
+                    final String xpath,
                     final Directives expected
                     )
     throws Exception
     {
-        Reporter.log( "\n// TEST: OVAL XML //", true );
-        Reporter.log( "  * tested XPath: " + testedXPath, true );
-        Reporter.log( "  * tested XML file: " + filepath, true );
+        Directives  actual =
+            _readObjectFromXmlFile( type, filepath, xpath, expected );
 
-        Object  actual = _unmarshalFromFile( filepath, type );
-
-        if (expected != null) {
-            Reporter.log( "validating...", true );
-            Assert.assertEquals( actual, expected );
-            Reporter.log( "...validation OK", true );
-        }
-
-        _marshal( actual, System.out );
+        _writeObjectToXmlFile( actual, null );
     }
 
 }
