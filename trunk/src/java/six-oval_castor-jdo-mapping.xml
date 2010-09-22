@@ -338,31 +338,6 @@
 
 
     <!-- ******************************************************* -->
-    <!-- OvalDefinitionsDefinitionAssociation                    -->
-    <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsDefinitionAssociation"
-        identity="persistentID"
-        key-generator="IDENTITY">
-
-        <cache-type type="unlimited"/>
-        <map-to table="oval_assoc__d_definitions__d_definition"/>
-
-        <field name="persistentID" type="string">
-            <sql name="PID" type="integer"/>
-        </field>
-
-        <field name="antecendentPersistentID" type="string">
-            <sql name="d_definitions__PID" type="char"/>
-        </field>
-
-        <field name="dependentPersistentID" type="string">
-            <sql name="d_definition__PID" type="char"/>
-        </field>
-    </class>
-
-
-
-    <!-- ******************************************************* -->
     <!-- Reference                                               -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.definitions.Reference"
@@ -438,31 +413,6 @@
             <sql name="PID" type="char"/>
         </field>
 
-    </class>
-
-
-
-    <!-- ******************************************************* -->
-    <!-- OvalDefinitionsTestAssociation                          -->
-    <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsTestAssociation"
-        identity="persistentID"
-        key-generator="IDENTITY">
-
-        <cache-type type="unlimited"/>
-        <map-to table="oval_assoc__d_definitions__d_test"/>
-
-        <field name="persistentID" type="string">
-            <sql name="PID" type="integer"/>
-        </field>
-
-        <field name="antecendentPersistentID" type="string">
-            <sql name="d_definitions__PID" type="char"/>
-        </field>
-
-        <field name="dependentPersistentID" type="string">
-            <sql name="d_test__PID" type="char"/>
-        </field>
     </class>
 
 
@@ -583,32 +533,6 @@
 
 
     <!-- ******************************************************* -->
-    <!-- OvalDefinitionsObjectAssociation                        -->
-    <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsObjectAssociation"
-        identity="persistentID"
-        key-generator="IDENTITY">
-
-        <cache-type type="unlimited"/>
-        <map-to table="oval_assoc__d_definitions__d_object"/>
-
-        <field name="persistentID" type="string">
-            <sql name="PID" type="integer"/>
-        </field>
-
-        <field name="antecendentPersistentID" type="string">
-            <sql name="d_definitions__PID" type="char"/>
-        </field>
-
-        <field name="dependentPersistentID" type="string">
-            <sql name="d_object__PID" type="char"/>
-        </field>
-
-    </class>
-
-
-
-    <!-- ******************************************************* -->
     <!-- SystemObject                                            -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.definitions.SystemObject"
@@ -683,31 +607,6 @@
 
 
     <!-- ******************************************************* -->
-    <!-- OvalDefinitionsStateAssociation                         -->
-    <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsStateAssociation"
-        identity="persistentID"
-        key-generator="IDENTITY">
-
-        <cache-type type="unlimited"/>
-        <map-to table="oval_assoc__d_definitions__d_state"/>
-
-        <field name="persistentID" type="string">
-            <sql name="PID" type="integer"/>
-        </field>
-
-        <field name="antecendentPersistentID" type="string">
-            <sql name="d_definitions__PID" type="char"/>
-        </field>
-
-        <field name="dependentPersistentID" type="string">
-            <sql name="d_state__PID" type="char"/>
-        </field>
-    </class>
-
-
-
-    <!-- ******************************************************* -->
     <!-- Variable                                                -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.definitions.Variable"
@@ -744,31 +643,6 @@
         <field name="entityType" 
             type="jp.go.aist.six.oval.model.EntityType">
             <sql name="entity_type" type="char"/>
-        </field>
-    </class>
-
-
-
-    <!-- ******************************************************* -->
-    <!-- OvalDefinitionsVariableAssociation                      -->
-    <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsVariableAssociation"
-        identity="persistentID"
-        key-generator="IDENTITY">
-
-        <cache-type type="unlimited"/>
-        <map-to table="oval_assoc__d_definitions__d_variable"/>
-
-        <field name="persistentID" type="string">
-            <sql name="PID" type="integer"/>
-        </field>
-
-        <field name="antecendentPersistentID" type="string">
-            <sql name="d_definitions__PID" type="char"/>
-        </field>
-
-        <field name="dependentPersistentID" type="string">
-            <sql name="d_variable__PID" type="char"/>
         </field>
     </class>
 
@@ -1202,31 +1076,6 @@
 
 
     <!-- ******************************************************* -->
-    <!-- OvalResultsOvalDefinitionsAssociation                   -->
-    <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.core.model.results.OvalResultsOvalDefinitionsAssociation"
-        identity="persistentID"
-        key-generator="IDENTITY"
-        >
-        <cache-type type="unlimited"/>
-        <map-to table="oval_assoc__r_results__d_definitions"/>
-
-        <field name="persistentID" type="string">
-            <sql name="PID" type="integer"/>
-        </field>
-
-        <field name="antecendentPersistentID" type="string">
-            <sql name="r_results__PID" type="char"/>
-        </field>
-
-        <field name="dependentPersistentID" type="string">
-            <sql name="d_definitions__PID" type="char"/>
-        </field>
-    </class>
-
-
-
-    <!-- ******************************************************* -->
     <!-- SystemResult                                            -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.results.SystemResult"
@@ -1268,31 +1117,6 @@
         <field name="masterObject" 
             type="jp.go.aist.six.oval.model.results.OvalResults">
             <sql name="r_results__PID"/>
-        </field>
-    </class>
-
-
-
-    <!-- ******************************************************* -->
-    <!-- OvalResultsSystemAssociation                            -->
-    <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.core.model.results.OvalResultsSystemAssociation"
-        identity="persistentID"
-        key-generator="IDENTITY"
-        >
-        <cache-type type="unlimited"/>
-        <map-to table="oval_assoc__r_results__r_system"/>
-
-        <field name="persistentID" type="string">
-            <sql name="PID" type="integer"/>
-        </field>
-
-        <field name="antecendentPersistentID" type="string">
-            <sql name="r_results__PID" type="char"/>
-        </field>
-
-        <field name="dependentPersistentID" type="string">
-            <sql name="r_system__PID" type="char"/>
         </field>
     </class>
 
@@ -2363,30 +2187,6 @@
     <!-- ******************************************************* -->
     <!-- MetabaseObject                                          -->
     <!-- ******************************************************* -->
-<!--
-    <class name="jp.go.aist.six.oval.core.model.windows.MetabaseObjectImpl"
-        extends="jp.go.aist.six.oval.core.model.definition.AbstractSystemObject"
-        identity="persistentID"
-        >
-        <cache-type type="unlimited"/>
-        <map-to table="oval_d_object_metabase"/>
-
-        <field name="persistentID" type="string">
-            <sql name="PID" type="char"/>
-        </field>
-
-        <field name="metabaseKey.value" type="string"
-            set-method="%1">
-            <sql name="mb_key" type="char"/>
-        </field>
-
-        <field name="metabaseID.value" type="string"
-            set-method="%2">
-            <sql name="mb_id" type="char"/>
-        </field>
-
-    </class>
--->
     <class name="jp.go.aist.six.oval.model.windows.MetabaseObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObject"
         identity="persistentID">
@@ -2467,61 +2267,6 @@
     <!-- ******************************************************* -->
     <!-- RegistryObject                                          -->
     <!-- ******************************************************* -->
-<!--
-    <class name="jp.go.aist.six.oval.core.model.windows.RegistryObjectImpl"
-        extends="jp.go.aist.six.oval.core.model.definition.AbstractSystemObject"
-        identity="persistentID"
-        >
-        <cache-type type="unlimited"/>
-        <map-to table="oval_d_object_registry"/>
-
-        <field name="persistentID" type="string">
-            <sql name="PID" type="char"/>
-        </field>
-        
-        <field name="hive" 
-            type="jp.go.aist.six.oval.model.windows.RegistryHive">
-            <sql name="hive" type="char"/>
-        </field>
-
-        <field name="key.value" type="string"
-            set-method="%1">
-            <sql name="regkey" type="char"/>
-        </field>
-
-        <field name="key.varRef" type="string"
-            set-method="%2">
-            <sql name="regkey_var_ref" type="char"/>
-        </field>
-
-        <field name="key.varCheck" 
-            type="jp.go.aist.six.oval.model.common.Check"
-            set-method="%3">
-            <sql name="regkey_var_check" type="char"/>
-        </field>
-
-        <field name="key.operation" 
-            type="jp.go.aist.six.oval.model.common.Operation"
-            set-method="%4">
-            <sql name="regkey_operation" type="char"/>
-        </field>
-
-        <field name="name.value" type="string"
-            set-method="%5">
-            <sql name="regname" type="char"/>
-        </field>
-
-No registry object has 'behaviors' child element in the definition XML. 
-        <field name="behaviors.maxDepth" type="integer">
-            <sql name="max_depth" type="integer"/>
-        </field>
-        <field name="behaviors.recurseDirection" 
-            type="jp.go.aist.six.oval.model.windows.RecurseDirection">
-            <sql name="recurse_direction" type="char"/>
-        </field>
-
-    </class>
--->
     <class name="jp.go.aist.six.oval.model.windows.RegistryObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObject"
         identity="persistentID">
@@ -2759,6 +2504,198 @@ No registry object has 'behaviors' child element in the definition XML.
             <sql name="result_operation" type="char"/>
         </field>
     </class>
+
+
+
+<!-- // deprecated ///////////////////////////////////////////// -->
+
+
+    <!-- ******************************************************* -->
+    <!-- OvalDefinitionsDefinitionAssociation                    -->
+    <!-- ******************************************************* -->
+<!--
+    <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsDefinitionAssociation"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <cache-type type="unlimited"/>
+        <map-to table="oval_assoc__d_definitions__d_definition"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="d_definitions__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="d_definition__PID" type="char"/>
+        </field>
+    </class>
+-->
+
+
+    <!-- ******************************************************* -->
+    <!-- OvalDefinitionsTestAssociation                          -->
+    <!-- ******************************************************* -->
+<!--
+    <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsTestAssociation"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <cache-type type="unlimited"/>
+        <map-to table="oval_assoc__d_definitions__d_test"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="d_definitions__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="d_test__PID" type="char"/>
+        </field>
+    </class>
+-->
+
+
+    <!-- ******************************************************* -->
+    <!-- OvalDefinitionsObjectAssociation                        -->
+    <!-- ******************************************************* -->
+<!--
+    <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsObjectAssociation"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <cache-type type="unlimited"/>
+        <map-to table="oval_assoc__d_definitions__d_object"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="d_definitions__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="d_object__PID" type="char"/>
+        </field>
+    </class>
+-->
+
+
+    <!-- ******************************************************* -->
+    <!-- OvalDefinitionsStateAssociation                         -->
+    <!-- ******************************************************* -->
+<!--
+    <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsStateAssociation"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <cache-type type="unlimited"/>
+        <map-to table="oval_assoc__d_definitions__d_state"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="d_definitions__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="d_state__PID" type="char"/>
+        </field>
+    </class>
+-->
+
+
+    <!-- ******************************************************* -->
+    <!-- OvalDefinitionsVariableAssociation                      -->
+    <!-- ******************************************************* -->
+<!--
+    <class name="jp.go.aist.six.oval.core.model.definitions.OvalDefinitionsVariableAssociation"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <cache-type type="unlimited"/>
+        <map-to table="oval_assoc__d_definitions__d_variable"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="d_definitions__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="d_variable__PID" type="char"/>
+        </field>
+    </class>
+-->
+
+
+    <!-- ******************************************************* -->
+    <!-- OvalResultsOvalDefinitionsAssociation                   -->
+    <!-- ******************************************************* -->
+<!--
+    <class name="jp.go.aist.six.oval.core.model.results.OvalResultsOvalDefinitionsAssociation"
+        identity="persistentID"
+        key-generator="IDENTITY"
+        >
+        <cache-type type="unlimited"/>
+        <map-to table="oval_assoc__r_results__d_definitions"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="r_results__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="d_definitions__PID" type="char"/>
+        </field>
+    </class>
+-->
+
+
+    <!-- ******************************************************* -->
+    <!-- OvalResultsSystemAssociation                            -->
+    <!-- ******************************************************* -->
+<!--
+    <class name="jp.go.aist.six.oval.core.model.results.OvalResultsSystemAssociation"
+        identity="persistentID"
+        key-generator="IDENTITY"
+        >
+        <cache-type type="unlimited"/>
+        <map-to table="oval_assoc__r_results__r_system"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="r_results__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="r_system__PID" type="char"/>
+        </field>
+    </class>
+-->
+
+
+
+
+
+
 
 
 
