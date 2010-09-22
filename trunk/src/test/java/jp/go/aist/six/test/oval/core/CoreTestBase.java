@@ -45,7 +45,6 @@ import jp.go.aist.six.oval.model.windows.FileType;
 import jp.go.aist.six.oval.model.windows.RegistryHive;
 import jp.go.aist.six.oval.model.windows.RegistryItem;
 import jp.go.aist.six.oval.model.windows.RegistryType;
-import jp.go.aist.six.util.IsoDate;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -371,7 +370,7 @@ public abstract class CoreTestBase
 
 
     private static final Generator  _SC_GENERATOR_WINDOWS_ =
-        new Generator( "5.6", IsoDate.valueOf( "2010-05-12T20:27:08" ), "OVAL Definition Interpreter", "5.6 Build: 4" );
+        new Generator( "5.6", "2010-05-12T20:27:08", "OVAL Definition Interpreter", "5.6 Build: 4" );
 
 
 
@@ -1020,7 +1019,7 @@ public abstract class CoreTestBase
     public static final Generator  RESULTS_GENERATOR_1 =
         new Generator(
                         "5.6",
-                        IsoDate.valueOf( "2010-05-12T20:27:10" ),
+                        "2010-05-12T20:27:10",
                         "OVAL Definition Interpreter",
                         "5.6 Build: 4"
                         );

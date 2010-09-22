@@ -261,8 +261,8 @@ public abstract class Validators
                         final OvalDefinitions expected
                         )
         {
-//            Reporter.log( " - generator", true );
-//            Assert.assertEquals( actual.getGenerator(), expected.getGenerator() );
+            Reporter.log( " - generator", true );
+            Assert.assertEquals( actual.getGenerator(), expected.getGenerator() );
 
             Reporter.log( " - definitions", true );
             Assert.assertEquals( actual.getDefinitions(), expected.getDefinitions() );
@@ -329,8 +329,8 @@ public abstract class Validators
                         final OvalSystemCharacteristics expected
                         )
         {
-//            Reporter.log( " - generator", true );
-//            Assert.assertEquals( actual.getGenerator(), expected.getGenerator() );
+            Reporter.log( " - generator", true );
+            Assert.assertEquals( actual.getGenerator(), expected.getGenerator() );
 
             Reporter.log( " - system_info", true );
             validator( SystemInfo.class ).equals( actual.getSystemInfo(), expected.getSystemInfo() );
@@ -470,8 +470,8 @@ public abstract class Validators
                         final OvalResults expected
                         )
         {
-//            Reporter.log( " - generator", true );
-//            Assert.assertEquals( actual.getGenerator(), expected.getGenerator() );
+            Reporter.log( " - generator", true );
+            Assert.assertEquals( actual.getGenerator(), expected.getGenerator() );
 
             Reporter.log( " - directives", true );
             Assert.assertEquals( actual.getDirectives(), expected.getDirectives() );

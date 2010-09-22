@@ -28,6 +28,10 @@ use @six.db.database@;
 --      gen_schema_version  VARCHAR(8)      NOT NULL,
 --      gen_product_name    VARCHAR(64),
 --      gen_product_version VARCHAR(64),
+
+-- NOTE: Until the treatment of timezone is decided,
+--      the values are stored as CHAR type. 
+
 --
 -- * operation              VARCHAR(32),
 --                          /* max. length = 26, 'case insensitive not equal' */
@@ -69,7 +73,8 @@ CREATE TABLE IF NOT EXISTS oval_d_definitions
     gen_product_name    VARCHAR(64),
     gen_product_version VARCHAR(64),
     gen_schema_version  VARCHAR(8)      NOT NULL,
-    gen_timestamp       DATETIME        NOT NULL,
+    gen_timestamp       VARCHAR(32)     NOT NULL,
+/*  gen_timestamp       DATETIME        NOT NULL, */
     
     definitions_digest  VARCHAR(32)  /* NOT NULL */,
 /*    objects_digest      VARCHAR(32)     NOT NULL, */
@@ -749,10 +754,11 @@ CREATE TABLE IF NOT EXISTS oval_s_sc
                         /* UUID: e.g. 911d6c54-6965-48df-88c3-2af47e54acd2 */
 
     /* Generator */
-    gen_timestamp       DATETIME        NOT NULL,
-    gen_schema_version  VARCHAR(8)      NOT NULL,
     gen_product_name    VARCHAR(64),
     gen_product_version VARCHAR(64),
+    gen_schema_version  VARCHAR(8)      NOT NULL,
+    gen_timestamp       VARCHAR(32)     NOT NULL,
+/*  gen_timestamp       DATETIME        NOT NULL, */
 
     /* SystemInfo */
     sys_os_name         VARCHAR(64)     NOT NULL,
@@ -946,10 +952,11 @@ CREATE TABLE IF NOT EXISTS oval_r_results
     PID                 CHAR(36)        NOT NULL,
                         /* UUID: 911d6c54-6965-48df-88c3-2af47e54acd2 */
 
-    gen_timestamp       DATETIME        NOT NULL,
-    gen_schema_version  VARCHAR(8)      NOT NULL,
     gen_product_name    VARCHAR(64),
     gen_product_version VARCHAR(64),
+    gen_schema_version  VARCHAR(8)      NOT NULL,
+    gen_timestamp       VARCHAR(32)     NOT NULL,
+/*  gen_timestamp       DATETIME        NOT NULL, */
     
     /* directives */
     definition_true_reported            BOOLEAN NOT NULL,

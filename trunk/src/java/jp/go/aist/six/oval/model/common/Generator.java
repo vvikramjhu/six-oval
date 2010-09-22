@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.model.common;
 
 import jp.go.aist.six.util.castor.AbstractPersistable;
-import java.util.Date;
 
 
 /**
@@ -54,7 +53,8 @@ public class Generator
     private String  _schemaVersion;
     //{xsd:decimal, 1..1}
 
-    private Date  _timestamp;
+    private String  _timestamp;
+//    private Date  _timestamp;
     //{xsd:dateTime, 1..1}
 
 
@@ -72,7 +72,7 @@ public class Generator
      */
     public Generator(
                     final String schemaVersion,
-                    final Date timestamp
+                    final String timestamp
                     )
     {
         setSchemaVersion( schemaVersion );
@@ -85,7 +85,7 @@ public class Generator
      */
     public Generator(
                     final String schemaVersion,
-                    final Date timestamp,
+                    final String timestamp,
                     final String prodName,
                     final String prodVersion
                     )
@@ -143,14 +143,14 @@ public class Generator
 
 
     public void setTimestamp(
-                    final Date timestamp
+                    final String timestamp
                     )
     {
         _timestamp = timestamp;
     }
 
 
-    public Date getTimestamp()
+    public String getTimestamp()
     {
         return _timestamp;
     }
@@ -176,7 +176,7 @@ public class Generator
         String  schemaVersion = getSchemaVersion();
         result = prime * result + ((schemaVersion == null) ? 0 : schemaVersion.hashCode());
 
-        Date  timestamp = getTimestamp();
+        String  timestamp = getTimestamp();
         result = prime * result + ((timestamp == null) ? 0 : timestamp.hashCode());
 
         return result;
@@ -198,8 +198,8 @@ public class Generator
         }
 
         Generator  other = (Generator)obj;
-        Date  other_ts = other.getTimestamp();
-        Date   this_ts =  this.getTimestamp();
+        String  other_ts = other.getTimestamp();
+        String   this_ts =  this.getTimestamp();
         if (this_ts == other_ts
                         ||  (this_ts != null  &&  this_ts.equals( other_ts ))) {
             String  other_sv = other.getSchemaVersion();

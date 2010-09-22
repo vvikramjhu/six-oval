@@ -32,9 +32,14 @@
             <sql name="PID" type="char"/>
         </field>
 
+        <field name="generator.timestamp" type="string">
+            <sql name="gen_timestamp" type="char"/>
+        </field>
+<!-- date
         <field name="generator.timestamp" type="date">
             <sql name="gen_timestamp" type="timestamp"/>
         </field>
+-->
 
         <field name="generator.schemaVersion" type="string">
             <sql name="gen_schema_version" type="char"/>
@@ -689,9 +694,14 @@
         
         <!-- // Generator // -->
 
+        <field name="generator.timestamp" type="string">
+            <sql name="gen_timestamp" type="char"/>
+        </field>
+<!-- date
         <field name="generator.timestamp" type="date">
             <sql name="gen_timestamp" type="timestamp"/>
         </field>
+-->
 
         <field name="generator.schemaVersion" type="string">
             <sql name="gen_schema_version" type="char"/>
@@ -986,9 +996,14 @@
             <sql name="PID" type="char"/>
         </field>
 
+        <field name="generator.timestamp" type="string">
+            <sql name="gen_timestamp" type="char"/>
+        </field>
+<!-- date
         <field name="generator.timestamp" type="date">
             <sql name="gen_timestamp" type="timestamp"/>
         </field>
+-->
 
         <field name="generator.schemaVersion" type="string">
             <sql name="gen_schema_version" type="char"/>

@@ -72,7 +72,6 @@ import jp.go.aist.six.oval.model.windows.MetabaseTest;
 import jp.go.aist.six.oval.model.windows.RegistryObject;
 import jp.go.aist.six.oval.model.windows.RegistryState;
 import jp.go.aist.six.oval.model.windows.RegistryTest;
-import jp.go.aist.six.util.IsoDate;
 
 
 
@@ -685,7 +684,7 @@ public class OvalSample
 
     private static final Generator  _GENERATOR_8500_ =
         new Generator( "5.7",
-                        IsoDate.valueOf( "2010-08-05T03:28:32.987" ),
+                        "2010-08-05T03:28:32.987-04:00",
                         "The OVAL Repository",
                         null
                         );
@@ -767,7 +766,8 @@ public class OvalSample
 
     public static final OvalSystemCharacteristics  OVAL_SC_8500 =
         new OvalSystemCharacteristics(
-                        new Generator( "5.7", IsoDate.valueOf( "2010-08-09T18:41:27" ),
+                        new Generator( "5.7",
+                                        "2010-08-09T18:41:27",
                                         "OVAL Definition Interpreter",
                                         "5.7 Build: 2"
                         ),
@@ -934,7 +934,7 @@ public class OvalSample
     public static final OvalResults  OVAL_RESULTS_8500 =
         new OvalResults(
                         new Generator( "5.7",
-                                        IsoDate.valueOf( "2010-08-09T18:41:27" ),
+                                        "2010-08-09T18:41:27",
                                         "OVAL Definition Interpreter",
                                         "5.7 Build: 2"
                         ),
