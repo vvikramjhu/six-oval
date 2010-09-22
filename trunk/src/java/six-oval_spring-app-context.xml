@@ -144,7 +144,7 @@
     <!-- %  OVAL XML                                           % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-    <bean id="ovalMarshaller" 
+    <bean id="castorMarshaller" 
       class="org.springframework.oxm.castor.CastorMarshaller">
         <property name="mappingLocations"
                  value="classpath:six-oval_castor-xml-mapping.xml"/>
@@ -180,8 +180,8 @@
 
 
     <bean id="ovalXml" class="jp.go.aist.six.oval.core.xml.OvalXml">
-        <property name="marshaller" ref="ovalMarshaller"/>
-        <property name="unmarshaller" ref="ovalMarshaller"/>
+        <property name="marshaller"   ref="castorMarshaller"/>
+        <property name="unmarshaller" ref="castorMarshaller"/>
     </bean>
 
 </beans>
