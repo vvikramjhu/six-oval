@@ -6,9 +6,7 @@ import jp.go.aist.six.oval.model.results.Directive;
 import jp.go.aist.six.oval.model.results.Directives;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
-import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
-import java.io.OutputStream;
 
 
 
@@ -30,21 +28,6 @@ public class OvalXmlTest
 
     /**
      */
-    protected void _marshal(
-                    final Object object,
-                    final OutputStream out
-                    )
-    throws Exception
-    {
-        Reporter.log( "marshalling...", true );
-        _getXml().marshal( object, out );
-        Reporter.log( "...marshalling done", true );
-    }
-
-
-
-    /**
-     */
     protected <T> void _testXml(
                     final Class<T> type,
                     final String sourceFilepath,
@@ -57,44 +40,6 @@ public class OvalXmlTest
         T  actual = _readObjectFromXmlFile( type, sourceFilepath, xpath, expected );
         _writeObjectToXmlFile( actual, resultFilepath );
     }
-
-
-
-    /** deprecated!!!
-    protected <T> void _processXml(
-                    final Class<T> type,
-                    final String xpath,
-                    final String sourceFilepath,
-                    final T expected,
-                    final String resultFilepath
-                    )
-    throws Exception
-    {
-        T  actual = _readObjectFromXmlFile( type, sourceFilepath, xpath, expected );
-
-//        Reporter.log( "\n// TEST: OVAL XML //", true );
-//        Reporter.log( "  * tested XPath: " + xpath, true );
-//        Reporter.log( "  * tested XML file: " + sourceFilepath, true );
-//
-//        Object  actual = _unmarshalFromFile( sourceFilepath, type );
-//
-//        if (expected != null) {
-//            Reporter.log( "validating...", true );
-//            Assert.assertEquals( actual, expected );
-//            Reporter.log( "...validation OK", true );
-//        }
-
-        OutputStream  output = null;
-        if (resultFilepath == null) {
-            output = System.out;
-        } else {
-            Reporter.log( "  * result XML file: " + resultFilepath, true );
-            output = new FileOutputStream( new File( resultFilepath ) );
-        }
-        _marshal( actual, output );
-    }
-     */
-
 
 
 
@@ -223,7 +168,6 @@ public class OvalXmlTest
     throws Exception
     {
         _testXml( type, sourceFilepath, xpath, expected, resultFilepath );
-//        _processXml( type, testedXPath, sourceFilepath, expected, resultFilepath );
     }
 
 
@@ -292,7 +236,6 @@ public class OvalXmlTest
     throws Exception
     {
         _testXml( type, sourceFilepath, xpath, expected, resultFilepath );
-//        _processXml( type, testedXPath, sourceFilepath, expected, resultFilepath );
     }
 
 
