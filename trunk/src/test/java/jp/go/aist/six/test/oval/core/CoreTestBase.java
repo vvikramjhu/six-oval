@@ -3,27 +3,16 @@ package jp.go.aist.six.test.oval.core;
 import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
-import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.NameEntity;
-import jp.go.aist.six.oval.model.OvalElement;
-import jp.go.aist.six.oval.model.OvalElementContainerBak;
-import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Generator;
-import jp.go.aist.six.oval.model.definitions.Affected;
 import jp.go.aist.six.oval.model.definitions.Definition;
-import jp.go.aist.six.oval.model.definitions.DefinitionClass;
 import jp.go.aist.six.oval.model.definitions.Definitions;
 import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.definitions.Platform;
-import jp.go.aist.six.oval.model.definitions.Product;
-import jp.go.aist.six.oval.model.definitions.Reference;
-import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.independent.FamilyItem;
 import jp.go.aist.six.oval.model.independent.TextFileContentItem;
-import jp.go.aist.six.oval.model.independent.TextFileContentObject;
 import jp.go.aist.six.oval.model.linux.DpkgInfoItem;
 import jp.go.aist.six.oval.model.linux.LinuxPkgInfoItem;
 import jp.go.aist.six.oval.model.linux.RpmInfoItem;
@@ -140,12 +129,20 @@ public abstract class CoreTestBase
         Reporter.log( "  * XPath: " + xpath, true );
         Reporter.log( "  * XML file: " + filepath, true );
 
-        T  actual = _unmarshalFromFile( filepath, type );
+        File  file = new File( filepath );
+        Reporter.log( "unmarshalling XML...", true );
+        long  time = System.currentTimeMillis();
+        Object  obj = _getXml().unmarshal( new FileInputStream( file ) );
+        Reporter.log( "...unmarshalling done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+
+        Reporter.log( "  @ unmarshalled object: " + obj, true );
+        Assert.assertTrue( type.isInstance( obj ) );
+
+        T  actual = type.cast( obj );
 
         if (expected != null) {
             Reporter.log( "validating...", true );
             Validators.validator( type ).equals( actual, expected );
-//            _assertEquals( actual, expected );
             Reporter.log( "...validation OK", true );
         }
 
@@ -176,74 +173,6 @@ public abstract class CoreTestBase
         Reporter.log( "...marshalling done: " + (System.currentTimeMillis() - time) + "(ms)", true );
     }
 
-
-
-    /**
-     */
-    protected <T> T _unmarshalFromFile(
-                    final String filepath,
-                    final Class<T> type
-                    )
-    throws Exception
-    {
-        File  file = new File( filepath );
-        Reporter.log( "unmarshalling XML...", true );
-        long  time = System.currentTimeMillis();
-        Object  obj = _getXml().unmarshal( new FileInputStream( file ) );
-        Reporter.log( "...unmarshalling done: " + (System.currentTimeMillis() - time) + "(ms)", true );
-        Reporter.log( "  @ unmarshalled object: " + obj, true );
-
-        Assert.assertTrue( type.isInstance( obj ) );
-
-        return type.cast( obj );
-    }
-
-
-
-    /** deprecated
-    protected <T extends OvalEntity> void _syncOvalEntity(
-                    final Class<T> type,
-                    final T e
-                    )
-    throws Exception
-    {
-//        Reporter.log( "getting object...", true );
-//        T  p_eq = _getStore().get( type, e.getPersistentID() );
-//        Reporter.log( "...get done", true );
-//        Reporter.log( "  @ persistent object: " + p_eq, true );
-//
-//        Reporter.log( "finding equaivalent...", true );
-//        p_eq = _getStore().findEquivalent( type, e );
-//        Reporter.log( "...find equivalent done", true );
-//        Reporter.log( "  @ equivalent: " + p_eq, true );
-
-        Reporter.log( "syncing OvalEntity: " + e, true );
-        T  p = _getStore().sync( type, e );
-        Reporter.log( "...sync done", true );
-        String  pid = p.getPersistentID();
-        Reporter.log( "  @ synced: pid=" + pid, true );
-//        Reporter.log( "  @ synced: hash=" + p.hashCode(), true );
-
-
-//        Reporter.log( "finding object by ID...", true );
-//        RelationalBinding  idFilter = RelationalBinding.equalBinding( "persistentID", pid );
-//        List<T>  entities = _getStore().find( type, idFilter );
-//        Reporter.log( "...find done", true );
-//        T  p3 = entities.get( 0 );
-//        Reporter.log( "  @ find by ID: object=" + p3, true );
-//        Assert.assertEquals( p3.getOvalID(), e.getOvalID() );
-//        Assert.assertEquals( p3.getOvalVersion(), e.getOvalVersion() );
-
-
-        Reporter.log( "getting object...", true );
-        T  p2 = _getStore().get( type, pid );
-//        T  p2 = _getStore().get( type, pid );
-        Reporter.log( "...get done", true );
-        Reporter.log( "  @ get: object=" + p2, true );
-//        Reporter.log( "  @ get: hash=" + p.hashCode(), true );
-        Assert.assertEquals( p2, e );
-    }
-     */
 
 
 
@@ -280,132 +209,6 @@ public abstract class CoreTestBase
 
 
 
-
-    /**
-     * Object
-     */
-    protected void _assertEquals(
-                    final Object actual,
-                    final Object expected
-                    )
-    {
-        Reporter.log( " - as Object", true );
-        Assert.assertEquals( actual, expected );
-
-        if (OvalEntity.class.isInstance( actual )
-                        &&  OvalEntity.class.isInstance( expected )) {
-            _assertEquals( OvalEntity.class.cast( actual ),
-                            OvalEntity.class.cast( expected ) );
-        }
-    }
-
-
-    /**
-     * OvalElement
-     */
-    protected void _assertEquals(
-                    final OvalElement actual,
-                    final OvalElement expected
-                    )
-    {
-        Reporter.log( " - OVAL ID", true );
-        Assert.assertEquals( actual.getOvalID(), expected.getOvalID() );
-        Reporter.log( " - OVAL version", true );
-        Assert.assertEquals( actual.getOvalVersion(), expected.getOvalVersion() );
-
-        if (OvalEntity.class.isInstance( actual )
-                        &&  OvalEntity.class.isInstance( expected )) {
-            _assertEquals( OvalEntity.class.cast( actual ),
-                            OvalEntity.class.cast( expected ) );
-        }
-    }
-
-
-    /**
-     * OvalEntity
-     */
-    protected void _assertEquals(
-                    final OvalEntity actual,
-                    final OvalEntity expected
-                    )
-    {
-        Reporter.log( " - deprecated", true );
-        Assert.assertEquals( actual.isDeprecated(), expected.isDeprecated() );
-
-        if (CommentedOvalEntity.class.isInstance( actual )
-                        &&  CommentedOvalEntity.class.isInstance( expected )) {
-            _assertEquals( CommentedOvalEntity.class.cast( actual ),
-                            CommentedOvalEntity.class.cast( expected ) );
-        }
-    }
-
-
-    /**
-     * CommentedOvalEntity
-     */
-    protected void _assertEquals(
-                    final CommentedOvalEntity actual,
-                    final CommentedOvalEntity expected
-                    )
-    {
-        Reporter.log( " - comment", true );
-        Assert.assertEquals( actual.getComment(), expected.getComment() );
-
-        if (SystemObject.class.isInstance( actual )) {
-            if (SystemObject.class.isInstance( expected )) {
-                _assertEquals( SystemObject.class.cast( actual ),
-                                SystemObject.class.cast( expected ) );
-            }
-        }
-    }
-
-
-
-    /**
-     * CommentedOvalEntity
-     */
-    protected void _assertEquals(
-                    final SystemObject actual,
-                    final SystemObject expected
-                    )
-    {
-        if (TextFileContentObject.class.isInstance( actual )) {
-            if (TextFileContentObject.class.isInstance( expected )) {
-                _assertEquals( TextFileContentObject.class.cast( actual ),
-                                TextFileContentObject.class.cast( expected ) );
-            }
-        }
-    }
-
-
-    /**
-     * TextFileContentObject
-     */
-    protected void _assertEquals(
-                    final TextFileContentObject actual,
-                    final TextFileContentObject expected
-                    )
-    {
-        Reporter.log( " - path", true );
-        Assert.assertEquals( actual.getPath(), expected.getPath() );
-        Reporter.log( " - filename", true );
-        Assert.assertEquals( actual.getFilename(), expected.getFilename() );
-        Reporter.log( " - line", true );
-        Assert.assertEquals( actual.getLine(), expected.getLine() );
-    }
-
-
-
-    protected void _validate(
-                    final OvalElementContainerBak<?> actual,
-                    final OvalElementContainerBak<?> expected
-                    )
-    {
-        Assert.assertEquals( actual, expected );
-    }
-
-
-
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     //
     //  Common
@@ -438,38 +241,6 @@ public abstract class CoreTestBase
     //  Definitions
     //
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-    // definition //
-
-    public static final Affected AfFECTED_1020_2 =
-        new Affected( Family.WINDOWS,
-                        new Platform[] { new Platform( "Microsoft Windows XP" ) },
-                        new Product[] { new Product( "Microsoft Internet Explorer" ) }
-        );
-
-
-    public static final Definition  DEFINITION_1020_2 =
-        new Definition( "oval:org.mitre.oval:def:1020", 2 );
-    {
-        DEFINITION_1020_2.setDefinitionClass( DefinitionClass.VULNERABILITY );
-
-        Metadata  metadata = new Metadata(
-                        "IE6 Double Byte Character Parsing Memory Corruption (WinXP)",
-                        "Buffer overflow in URLMON.DLL in Microsoft Internet Explorer 5.01 through 6 allows remote attackers to execute arbitrary code via a crafted URL with an International Domain Name (IDN) using double-byte character sets (DBCS), aka the \"Double Byte Character Parsing Memory Corruption Vulnerability.\""
-                        );
-        metadata.setAffected( AfFECTED_1020_2 );
-        metadata.addReference(
-                        new Reference(
-                                        "CVE",
-                                        "CVE-2006-1189",
-                                        "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1189"
-                                        )
-                        );
-        DEFINITION_1020_2.setMetadata( metadata );
-    }
-
-
 
     protected void _validate(
                     final OvalDefinitions actual,
@@ -612,45 +383,6 @@ public abstract class CoreTestBase
                         "x60",
                         WINDWS_NETWORK_INTERFACES
                         );
-
-
-
-    //==============================================================
-    //  oval_system_characteristics
-    //==============================================================
-
-    @DataProvider( name="oval-sc-oval_system_characteristics" )
-    public Object[][] ovalScOvalSystemCharacteristicsData()
-    {
-        return new Object[][] {
-                        {
-                            "oval-sc:oval_system_characteristics",
-                            "test/data/sc/oval-sc.oval_system_characteristics.1-windows-minimal.xml",
-                            new Generator( "5.6", IsoDate.valueOf( "2010-05-12T20:27:08" ), "OVAL Definition Interpreter", "5.6 Build: 4" ),
-                            new SystemInfo(
-                                            "Microsoft Windows XP Professional Service Pack 3",
-                                            "5.1.2600",
-                                            "INTEL32",
-                                            "x60",
-                                            WINDWS_NETWORK_INTERFACES
-                                            )
-                        }
-                        ,
-                        {
-                            "oval-sc:oval_system_characteristics",
-                            "test/data/sc/oval-sc.oval_system_characteristics.2-windows.xml",
-                            new Generator( "5.6", IsoDate.valueOf( "2010-05-12T20:27:08" ), "OVAL Definition Interpreter", "5.6 Build: 4" ),
-                            new SystemInfo(
-                                            "Microsoft Windows XP Professional Service Pack 3",
-                                            "5.1.2600",
-                                            "INTEL32",
-                                            "x60",
-                                            WINDWS_NETWORK_INTERFACES
-                                            )
-                        }
-        };
-
-    }
 
 
 

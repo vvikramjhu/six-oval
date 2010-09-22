@@ -77,7 +77,6 @@ public class StoreDefinitionsTest
         Reporter.log( "  @ get: object=" + persistent2, true );
         Reporter.log( "validating...", true );
         Validators.validator( type ).equals( persistent2, object );
-//        _assertEquals( persistent2, object );
         Reporter.log( "...validation OK", true );
     }
 
