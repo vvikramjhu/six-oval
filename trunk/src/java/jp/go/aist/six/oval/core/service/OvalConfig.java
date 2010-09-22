@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.service;
+package jp.go.aist.six.oval.core.service;
 
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
