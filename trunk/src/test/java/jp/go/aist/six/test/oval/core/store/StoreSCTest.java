@@ -1,13 +1,7 @@
 package jp.go.aist.six.test.oval.core.store;
 
-import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.model.sc.SystemData;
-import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.test.oval.core.OvalSample;
-import jp.go.aist.six.test.oval.core.Validators;
-import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
 
 
@@ -17,7 +11,7 @@ import org.testng.annotations.DataProvider;
  * @version $Id$
  */
 public class StoreSCTest
-    extends CoreTestBase
+    extends StoreTestBase
 {
 
     /**
@@ -25,57 +19,6 @@ public class StoreSCTest
     public StoreSCTest()
     {
     }
-
-
-
-    /**
-     */
-    private void _testOvalSC(
-                    final Class<OvalSystemCharacteristics> type,
-                    final String filepath,
-                    final String xpath,
-                    final OvalSystemCharacteristics expected
-                    )
-    throws Exception
-    {
-        Reporter.log( "\n////////////////////////////////////////////////////////////////", true );
-        Reporter.log( "  * object type: " + type, true );
-
-        OvalSystemCharacteristics  object = _readObjectFromXmlFile( type, filepath, xpath, expected );
-        Assert.assertNotNull( object );
-
-        _syncOvalSC( object );
-    }
-
-
-
-    /**
-     */
-    protected void _syncOvalSC(
-                    final OvalSystemCharacteristics object
-                    )
-    throws Exception
-    {
-        Reporter.log( "sync OvalSystemCharacteristics..." , true );
-        long  time = System.currentTimeMillis();
-        OvalSystemCharacteristics  persistent = _getStore().sync( OvalSystemCharacteristics.class, object );
-        Reporter.log( "...sync done: " + (System.currentTimeMillis() - time) + "(ms)", true );
-
-        String  pid = persistent.getPersistentID();
-        Reporter.log( "  @ pid=" + pid, true );
-
-        Reporter.log( "get object...", true );
-        Reporter.log( "  - pid=" + pid, true );
-        time = System.currentTimeMillis();
-        OvalSystemCharacteristics  persistent2 = _getStore().get( OvalSystemCharacteristics.class, pid );
-        Reporter.log( "...get done: " + (System.currentTimeMillis() - time) + "(ms)", true );
-
-        Reporter.log( "  @ get: object=" + persistent2, true );
-        Reporter.log( "validating...", true );
-        Validators.validator( OvalSystemCharacteristics.class ).equals( persistent2, object );
-        Reporter.log( "...validation OK", true );
-    }
-
 
 
 
@@ -111,17 +54,18 @@ public class StoreSCTest
                     )
     throws Exception
     {
-        Reporter.log( "  * expected object: " + expected, true );
-        if (expected != null) {
-            SystemData  systemData = expected.getSystemData();
-            if (systemData != null  &&  systemData.size() > 0) {
-                for (Item  item : systemData) {
-                    Reporter.log( "  * item: " + item, true );
-                }
-            }
-        }
+        // DEBUG
+//        Reporter.log( "  * expected object: " + expected, true );
+//        if (expected != null) {
+//            SystemData  systemData = expected.getSystemData();
+//            if (systemData != null  &&  systemData.size() > 0) {
+//                for (Item  item : systemData) {
+//                    Reporter.log( "  * item: " + item, true );
+//                }
+//            }
+//        }
 
-        _testOvalSC( type, filepath, xpath, expected );
+        _testStoreSync( type, filepath, xpath, expected );
     }
 
 }

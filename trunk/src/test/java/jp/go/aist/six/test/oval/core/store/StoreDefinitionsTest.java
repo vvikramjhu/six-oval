@@ -1,16 +1,11 @@
 package jp.go.aist.six.test.oval.core.store;
 
-import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
-import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.test.oval.core.OvalSample;
-import jp.go.aist.six.test.oval.core.Validators;
-import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
 
 
@@ -20,7 +15,7 @@ import org.testng.annotations.DataProvider;
  * @version $Id$
  */
 public class StoreDefinitionsTest
-    extends CoreTestBase
+    extends StoreTestBase
 {
 
     /**
@@ -28,108 +23,6 @@ public class StoreDefinitionsTest
     public StoreDefinitionsTest()
     {
     }
-
-
-
-    /**
-     */
-    private <T extends OvalEntity> void _testOvalEntity(
-                    final Class<T> type,
-                    final String filepath,
-                    final String xpath,
-                    final T expected
-                    )
-    throws Exception
-    {
-        Reporter.log( "\n////////////////////////////////////////////////////////////////", true );
-        Reporter.log( "  * object type: " + type, true );
-
-        T  object = _readObjectFromXmlFile( type, filepath, xpath, expected );
-        Assert.assertNotNull( object );
-
-        _syncOvalEntity( type, object );
-    }
-
-
-
-    /**
-     */
-    protected <T extends OvalEntity> void _syncOvalEntity(
-                    final Class<T> type,
-                    final T object
-                    )
-    throws Exception
-    {
-        Reporter.log( "sync OvalEntity: " + object.getOvalID(), true );
-        long  time = System.currentTimeMillis();
-        T  persistent = _getStore().sync( type, object );
-        Reporter.log( "...sync done: " + (System.currentTimeMillis() - time) + "(ms)", true );
-
-        String  pid = persistent.getPersistentID();
-        Reporter.log( "  @ pid=" + pid, true );
-
-        Reporter.log( "get object...", true );
-        Reporter.log( "  - pid=" + pid, true );
-        time = System.currentTimeMillis();
-        T  persistent2 = _getStore().get( type, pid );
-        Reporter.log( "...get done: " + (System.currentTimeMillis() - time) + "(ms)", true );
-
-        Reporter.log( "  @ get: object=" + persistent2, true );
-        Reporter.log( "validating...", true );
-        Validators.validator( type ).equals( persistent2, object );
-        Reporter.log( "...validation OK", true );
-    }
-
-
-
-    /**
-     */
-    private void _testOvalDefinitions(
-                    final Class<OvalDefinitions> type,
-                    final String filepath,
-                    final String xpath,
-                    final OvalDefinitions expected
-                    )
-    throws Exception
-    {
-        Reporter.log( "\n////////////////////////////////////////////////////////////////", true );
-        Reporter.log( "  * object type: " + type, true );
-
-        OvalDefinitions  object = _readObjectFromXmlFile( type, filepath, xpath, expected );
-        Assert.assertNotNull( object );
-
-        _syncOvalDefinitions( object );
-    }
-
-
-
-    /**
-     */
-    protected void _syncOvalDefinitions(
-                    final OvalDefinitions object
-                    )
-    throws Exception
-    {
-        Reporter.log( "sync OvalDefinitions..." , true );
-        long  time = System.currentTimeMillis();
-        OvalDefinitions  persistent = _getStore().sync( OvalDefinitions.class, object );
-        Reporter.log( "...sync done: " + (System.currentTimeMillis() - time) + "(ms)", true );
-
-        String  pid = persistent.getPersistentID();
-        Reporter.log( "  @ pid=" + pid, true );
-
-        Reporter.log( "get object...", true );
-        Reporter.log( "  - pid=" + pid, true );
-        time = System.currentTimeMillis();
-        OvalDefinitions  persistent2 = _getStore().get( OvalDefinitions.class, pid );
-        Reporter.log( "...get done: " + (System.currentTimeMillis() - time) + "(ms)", true );
-
-        Reporter.log( "  @ get: object=" + persistent2, true );
-        Reporter.log( "validating...", true );
-        Validators.validator( OvalDefinitions.class ).equals( persistent2, object );
-        Reporter.log( "...validation OK", true );
-    }
-
 
 
 
@@ -165,7 +58,8 @@ public class StoreDefinitionsTest
                     )
     throws Exception
     {
-        _testOvalDefinitions( type, filepath, xpath, expected );
+        _testStoreSync( type, filepath, xpath, expected );
+//        _testOvalDefinitions( type, filepath, xpath, expected );
     }
 
 
@@ -220,7 +114,7 @@ public class StoreDefinitionsTest
                     )
     throws Exception
     {
-        _testOvalEntity( type, filepath, xpath, expected );
+        _testStoreSync( type, filepath, xpath, expected );
     }
 
 
@@ -330,7 +224,7 @@ public class StoreDefinitionsTest
                     )
     throws Exception
     {
-        _testOvalEntity( type, filepath, xpath, expected );
+        _testStoreSync( type, filepath, xpath, expected );
     }
 
 
@@ -433,7 +327,7 @@ public class StoreDefinitionsTest
                     )
     throws Exception
     {
-        _testOvalEntity( type, filepath, xpath, expected );
+        _testStoreSync( type, filepath, xpath, expected );
     }
 
 
@@ -527,7 +421,7 @@ public class StoreDefinitionsTest
                     )
     throws Exception
     {
-        _testOvalEntity( type, filepath, xpath, expected );
+        _testStoreSync( type, filepath, xpath, expected );
     }
 
 }

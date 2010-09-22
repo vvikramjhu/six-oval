@@ -21,20 +21,20 @@
 
 
 
-    <test name="oval.core.store" enabled="false">
+    <test name="oval.core.store" enabled="true">
+<!--
         <groups>
             <run>
-                <include name="definitions.test"/>
+                <include name="definitions.oval_definitions"/>
             </run>
         </groups>
-<!--
 -->
 
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.store.StoreDefinitionsTest"/>
-<!--
-            <class name="jp.go.aist.six.test.oval.core.store.StoreSCTest"/>
             <class name="jp.go.aist.six.test.oval.core.store.StoreResultsTest"/>
+<!--
+            <class name="jp.go.aist.six.test.oval.core.store.StoreResultsTest"/>
+            <class name="jp.go.aist.six.test.oval.core.store.StoreSCTest"/>
             <class name="jp.go.aist.six.test.oval.core.store.StoreDefinitionsTest"/>
 -->
         </classes>
@@ -42,7 +42,7 @@
 
 
 
-    <test name="oval.core.xml" enabled="true">
+    <test name="oval.core.xml" enabled="false">
         <groups>
             <run>
                 <include name="definitions.*"/>
