@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.mitre;
 
-import java.util.Date;
 
 
 
@@ -53,7 +52,7 @@ public class Modified
      * Constructor.
      */
     public Modified(
-                    final Date date
+                    final String date
                     )
     {
         super( date );

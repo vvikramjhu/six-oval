@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.model.mitre;
 
 import jp.go.aist.six.util.castor.AbstractPersistable;
-import java.util.Date;
 
 
 
@@ -34,7 +33,8 @@ public abstract class Event
     extends AbstractPersistable
 {
 
-    private Date  _date;
+    private String  _date;
+//    private Date  _date;
 
 
 
@@ -50,7 +50,7 @@ public abstract class Event
      * Constructor.
      */
     public Event(
-                    final Date date
+                    final String date
                     )
     {
         setDate( date );
@@ -59,14 +59,14 @@ public abstract class Event
 
 
     public void setDate(
-                    final Date date
+                    final String date
                     )
     {
-        this._date = date;
+        _date = date;
     }
 
 
-    public Date getDate()
+    public String getDate()
     {
         return _date;
     }

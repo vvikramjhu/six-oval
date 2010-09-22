@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.mitre;
 
-import java.util.Date;
 
 
 
@@ -50,7 +49,7 @@ public class Submitted
      * Constructor.
      */
     public Submitted(
-                    final Date date
+                    final String date
                     )
     {
         super( date );

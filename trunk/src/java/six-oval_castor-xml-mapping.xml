@@ -25,6 +25,7 @@
 
     <!-- include href="castor-xml-mapping_vuln.xml" / -->
 
+<!--
     <field-handler name="timestampHandler" 
         class="jp.go.aist.six.util.castor.CastorDateHandler">
         <param name="pattern" value="yyyy-MM-dd'T'HH:mm:ss.SSS"/>
@@ -34,6 +35,7 @@
         class="jp.go.aist.six.util.castor.CastorDateHandler">
         <param name="pattern" value="yyyy-MM-dd'T'HH:mm:ss.SSS"/>
     </field-handler>
+-->
 
 
 
@@ -1702,11 +1704,15 @@
     <class name ="jp.go.aist.six.oval.model.mitre.Event"
         verify-constructable="false">
 
+        <field name="date" type="string">
+            <bind-xml name="date" node="attribute"/>
+        </field>
+<!--
         <field name="date" type="string"
             handler="eventDateHandler">
             <bind-xml name="date" node="attribute"/>
         </field>
-<!--
+
         <field name="date" type="date">
             <bind-xml name="date" node="attribute"/>
         </field>
@@ -2542,6 +2548,14 @@
             <bind-xml name="rights" node="element"/>
         </field>
 
+        <field name="issued" type="string">
+            <bind-xml name="date" node="attribute" location="issued"/>
+        </field>
+
+        <field name="updated" type="string">
+            <bind-xml name="date" node="attribute" location="updated"/>
+        </field>
+<!--
         <field name="issued" type="string" 
             handler="jp.go.aist.six.util.castor.CastorDateHandler">
             <bind-xml name="date" node="attribute" location="issued"/>
@@ -2551,6 +2565,7 @@
             handler="jp.go.aist.six.util.castor.CastorDateHandler">
             <bind-xml name="date" node="attribute" location="updated"/>
         </field>
+-->
 
         <field name="cve" 
             type="jp.go.aist.six.oval.model.linux.CveReference"

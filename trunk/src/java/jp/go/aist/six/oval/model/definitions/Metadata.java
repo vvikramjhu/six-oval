@@ -26,11 +26,9 @@ import jp.go.aist.six.oval.model.mitre.Event;
 import jp.go.aist.six.oval.model.mitre.Modified;
 import jp.go.aist.six.oval.model.mitre.OvalRepository;
 import jp.go.aist.six.oval.model.mitre.Submitted;
-import jp.go.aist.six.util.IsoDate;
 import jp.go.aist.six.util.castor.AbstractPersistable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -302,7 +300,7 @@ public class Metadata
                     final MetadataItem item
                     )
     {
-        Date  lastModifiedDate = null;
+        String  lastModifiedDate = null;
 
         if (item instanceof OvalRepository) {
             // Mitre OVAL repository
@@ -311,7 +309,7 @@ public class Metadata
                 if (lastModifiedDate == null  &&  (event instanceof Submitted)) {
                     lastModifiedDate = event.getDate();
                 } else if (event instanceof Modified) {
-                    Date  eventDate = event.getDate();
+                    String  eventDate = event.getDate();
                     if (lastModifiedDate == null
                                     ||  lastModifiedDate.compareTo( eventDate ) < 0) {
                         lastModifiedDate = eventDate;
@@ -319,14 +317,43 @@ public class Metadata
                 }
 
             }
+            if (lastModifiedDate != null) {
+                lastModifiedDate = lastModifiedDate.substring( 0, 10 );
+            }
         } else if (item instanceof LinuxSecurityAdvisory) {
             // Red Hat definition
             LinuxSecurityAdvisory  adv = LinuxSecurityAdvisory.class.cast( item );
             lastModifiedDate = adv.getUpdated();
         }
 
-        return (lastModifiedDate == null ? null : IsoDate.formatDate( lastModifiedDate ));
+        return lastModifiedDate;
     }
+//    {
+//        Date  lastModifiedDate = null;
+//
+//        if (item instanceof OvalRepository) {
+//            // Mitre OVAL repository
+//            OvalRepository  or = OvalRepository.class.cast( item );
+//            for (Event  event : or.getEvent()) {
+//                if (lastModifiedDate == null  &&  (event instanceof Submitted)) {
+//                    lastModifiedDate = event.getDate();
+//                } else if (event instanceof Modified) {
+//                    Date  eventDate = event.getDate();
+//                    if (lastModifiedDate == null
+//                                    ||  lastModifiedDate.compareTo( eventDate ) < 0) {
+//                        lastModifiedDate = eventDate;
+//                    }
+//                }
+//
+//            }
+//        } else if (item instanceof LinuxSecurityAdvisory) {
+//            // Red Hat definition
+//            LinuxSecurityAdvisory  adv = LinuxSecurityAdvisory.class.cast( item );
+//            lastModifiedDate = adv.getUpdated();
+//        }
+//
+//        return (lastModifiedDate == null ? null : IsoDate.formatDate( lastModifiedDate ));
+//    }
 
 
 

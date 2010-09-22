@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.mitre;
 
-import java.util.Date;
 
 
 
@@ -49,7 +48,7 @@ public class StatusChange
      * Constructor.
      */
     public StatusChange(
-                    final Date date,
+                    final String date,
                     final DefinitionStatus status
                     )
     {

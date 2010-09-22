@@ -22,10 +22,8 @@ package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.definitions.Cpe;
 import jp.go.aist.six.oval.model.definitions.MetadataItem;
-import jp.go.aist.six.util.IsoDate;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 
 
@@ -42,8 +40,11 @@ public class LinuxSecurityAdvisory
     private String  _from;
     private Severity  _severity;
     private String  _rights;
-    private Date  _issued;
-    private Date  _updated;
+
+    private String  _issued;
+    private String  _updated;
+//    private Date  _issued;
+//    private Date  _updated;
 
     private Collection<CveReference>  _cve = new ArrayList<CveReference>();
     private Collection<CertReference>  _cert = new ArrayList<CertReference>();
@@ -75,8 +76,8 @@ public class LinuxSecurityAdvisory
         setFrom( from );
         setRights( rights );
         setSeverity( severity );
-        setIssued( IsoDate.dateValueOf( issued ) );
-        setUpdated( IsoDate.dateValueOf( updated ) );
+        setIssued( issued );
+        setUpdated( updated );
     }
 
 
@@ -147,14 +148,14 @@ public class LinuxSecurityAdvisory
 
 
     public void setIssued(
-                    final Date issued
+                    final String issued
                     )
     {
         _issued = issued;
     }
 
 
-    public Date getIssued()
+    public String getIssued()
     {
         return _issued;
     }
@@ -162,14 +163,14 @@ public class LinuxSecurityAdvisory
 
 
     public void setUpdated(
-                    final Date updated
+                    final String updated
                     )
     {
         _updated = updated;
     }
 
 
-    public Date getUpdated()
+    public String getUpdated()
     {
         return _updated;
     }
