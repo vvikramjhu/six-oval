@@ -41,6 +41,9 @@ public abstract class OvalElement
     //{xsd:nonNegativeInteger, required}
 
 
+    private transient String  _ovalGlobalID;
+
+
 
     /**
      * Constructor.
@@ -123,6 +126,27 @@ public abstract class OvalElement
     public int getOvalVersion()
     {
         return _ovalVersion;
+    }
+
+
+
+    /**
+     */
+    public void setOvalGlobalID(
+                    final String gid
+                    )
+    {
+        _ovalGlobalID = gid;
+    }
+
+
+    public String getOvalGlobalID()
+    {
+        if (_ovalGlobalID == null) {
+            _ovalGlobalID = getOvalID() + ":" + getOvalVersion();
+        }
+
+        return _ovalGlobalID;
     }
 
 

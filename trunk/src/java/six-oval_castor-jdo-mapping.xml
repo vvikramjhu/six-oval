@@ -862,9 +862,14 @@
         </field>
 
         <!-- (FK) SystemObject -->
+        <field name="ovalGlobalID" type="string">
+            <sql name="d_object__PID" type="char"/>
+        </field>
+<!--
         <field name="targetEntityPersistentID" type="string">
             <sql name="d_object__PID" type="char"/>
         </field>
+-->
 
         <!-- (FK: depends) -->
         <field name="masterObject" 
@@ -1170,20 +1175,20 @@
         </field>
 
         <!-- (FK) Definition -->
+        <field name="ovalGlobalID" type="string">
+            <sql name="d_definition__PID" type="char"/>
+        </field>
+<!--
         <field name="targetEntityPersistentID" type="string">
             <sql name="d_definition__PID" type="char"/>
         </field>
+-->
 
         <!-- (FK) -->
         <field name="masterObject" 
             type="jp.go.aist.six.oval.model.results.SystemResult">
             <sql name="r_system__PID"/>
         </field>
-<!--
-        <field name="masterPersistentID" type="string">
-            <sql name="r_system__PID" type="char"/>
-        </field>
--->
     </class>
 
 
@@ -1254,9 +1259,14 @@
         </field>
 
         <!-- (FK) Test -->
+        <field name="ovalGlobalID" type="string">
+            <sql name="d_test__PID" type="char"/>
+        </field>
+<!--
         <field name="targetEntityPersistentID" type="string">
             <sql name="d_test__PID" type="char"/>
         </field>
+-->
     </class>
 
 
