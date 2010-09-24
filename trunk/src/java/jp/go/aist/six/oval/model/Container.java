@@ -29,13 +29,13 @@ import java.util.Set;
 
 
 /**
- * A collection of element objects.
+ * A set of element objects.
  * Every element MUST NOT be null.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class Container<E>
+public class Container<E>
     implements Set<E>
 {
 

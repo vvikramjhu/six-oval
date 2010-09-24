@@ -31,7 +31,7 @@ import java.util.Set;
 
 
 /**
- * A collection of OvalElement instances.
+ * A set of OvalElement instances.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
