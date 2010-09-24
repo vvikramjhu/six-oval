@@ -32,6 +32,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  */
 public abstract class OvalElement
     extends AbstractPersistable
+    implements Comparable<OvalElement>
 {
 
     private String  _ovalID;
@@ -178,6 +179,28 @@ public abstract class OvalElement
         }
 
         return _ovalGlobalID;
+    }
+
+
+
+    //**************************************************************
+    //  Comparable
+    //**************************************************************
+
+    public int compareTo(
+                    final OvalElement o
+                    )
+    {
+        String  id1 = getOvalID();
+        String  id2 = o.getOvalID();
+        int  order = id1.compareTo( id2 );
+        if (order != 0) {
+            return order;
+        }
+
+        int  version1 = getOvalVersion();
+        int  version2 = o.getOvalVersion();
+        return (version1 - version2);
     }
 
 

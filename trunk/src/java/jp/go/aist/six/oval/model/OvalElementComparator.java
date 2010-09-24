@@ -31,7 +31,7 @@ import java.util.Comparator;
  * @version $Id$
  */
 public class OvalElementComparator
-implements Comparator<OvalElement>
+    implements Comparator<OvalElement>
 {
 
     /**

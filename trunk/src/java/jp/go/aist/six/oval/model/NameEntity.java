@@ -74,7 +74,8 @@ public abstract class NameEntity
     //  Comparable
     //**************************************************************
 
-    public int compareTo( final NameEntity o
+    public int compareTo(
+                    final NameEntity o
                     )
     {
         return String.CASE_INSENSITIVE_ORDER.compare( getName(), o.getName() );

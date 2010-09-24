@@ -89,6 +89,20 @@ public class OvalElementContainer<E extends OvalElement>
 
 
 
+    /**
+     */
+    private Set<String> _keySet()
+    {
+        Set<String>  set = new HashSet<String>();
+        for (OvalElement  e : this) {
+            set.add( e.getOvalID() );
+        }
+
+        return set;
+    }
+
+
+
 //    //**************************************************************
 //    //  Container
 //    //**************************************************************
@@ -112,8 +126,8 @@ public class OvalElementContainer<E extends OvalElement>
     public static final String  DIGEST_ALGORITHM = "MD5";
 
 
-    private static final OvalElementComparator  _ELEMENT_COMPARATOR_ =
-        new OvalElementComparator();
+//    private static final OvalElementComparator  _ELEMENT_COMPARATOR_ =
+//        new OvalElementComparator();
 
 
     private String  _digest;
@@ -178,18 +192,6 @@ public class OvalElementContainer<E extends OvalElement>
 //    }
 
 
-    private Set<String> _keySet()
-    {
-        Set<String>  set = new HashSet<String>();
-        for (OvalElement  e : this) {
-            set.add( e.getOvalID() );
-        }
-
-        return set;
-    }
-
-
-
     /**
      */
     protected String _computeDigest(
@@ -208,7 +210,8 @@ public class OvalElementContainer<E extends OvalElement>
             _update( digest, "" );
         } else {
             ArrayList<E>  list = new ArrayList<E>( elements );
-            Collections.sort( list, _ELEMENT_COMPARATOR_ );
+            Collections.sort( list );
+//            Collections.sort( list, _ELEMENT_COMPARATOR_ );
 
             for (OvalElement  element : list) {
                 _update( digest, element );
