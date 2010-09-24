@@ -41,6 +41,9 @@ public abstract class OvalElement
     //{xsd:nonNegativeInteger, required}
 
 
+    /**
+     * ovalID + ":" + ovalVersion
+     */
     private transient String  _ovalGlobalID;
 
 

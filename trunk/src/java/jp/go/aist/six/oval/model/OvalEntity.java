@@ -84,13 +84,15 @@ public abstract class OvalEntity
     @Override
     public String getPersistentID()
     {
-        String  pid = super.getPersistentID();
-        if (pid == null) {
-            pid = getOvalGlobalID();
-            super.setPersistentID( pid );
-        }
+        return getOvalGlobalID();
 
-        return pid;
+//        String  pid = super.getPersistentID();
+//        if (pid == null) {
+//            pid = getOvalGlobalID();
+//            super.setPersistentID( pid );
+//        }
+//
+//        return pid;
     }
 
 
