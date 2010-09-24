@@ -143,7 +143,12 @@ public abstract class OvalElement
     public String getOvalGlobalID()
     {
         if (_ovalGlobalID == null) {
-            _ovalGlobalID = getOvalID() + ":" + getOvalVersion();
+            final String  id = getOvalID();
+            final int  version = getOvalVersion();
+            if (id == null  ||  id.length() == 0) {
+                throw new IllegalStateException( "null or empty ovalID" );
+            }
+            _ovalGlobalID = id + ":" + version;
         }
 
         return _ovalGlobalID;

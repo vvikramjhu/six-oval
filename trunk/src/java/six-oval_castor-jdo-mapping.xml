@@ -865,11 +865,6 @@
         <field name="ovalGlobalID" type="string">
             <sql name="d_object__PID" type="char"/>
         </field>
-<!--
-        <field name="targetEntityPersistentID" type="string">
-            <sql name="d_object__PID" type="char"/>
-        </field>
--->
 
         <!-- (FK: depends) -->
         <field name="masterObject" 
@@ -1178,11 +1173,6 @@
         <field name="ovalGlobalID" type="string">
             <sql name="d_definition__PID" type="char"/>
         </field>
-<!--
-        <field name="targetEntityPersistentID" type="string">
-            <sql name="d_definition__PID" type="char"/>
-        </field>
--->
 
         <!-- (FK) -->
         <field name="masterObject" 
@@ -1262,11 +1252,6 @@
         <field name="ovalGlobalID" type="string">
             <sql name="d_test__PID" type="char"/>
         </field>
-<!--
-        <field name="targetEntityPersistentID" type="string">
-            <sql name="d_test__PID" type="char"/>
-        </field>
--->
     </class>
 
 

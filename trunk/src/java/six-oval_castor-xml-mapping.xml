@@ -93,19 +93,6 @@
 
 
     <!-- ======================================================= -->
-    <!-- OvalAnalysisElement                                     -->
-    <!-- ======================================================= -->
-<!-- deprecated!!!
-    <class name ="jp.go.aist.six.oval.model.OvalAnalysisElement"
-        extends="jp.go.aist.six.oval.model.OvalElement"
-        verify-constructable="false">
-
-    </class>
--->
-
-
-
-    <!-- ======================================================= -->
     <!-- NameEntity                                              -->
     <!-- ======================================================= -->
     <class name ="jp.go.aist.six.oval.model.NameEntity"
