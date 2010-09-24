@@ -93,6 +93,9 @@ public abstract class NameEntity
         int  result = 17;
 
         String  name = getName();
+        if (name != null) {
+            name = name.toLowerCase();
+        }
         result = prime * result + ((name == null) ? 0 : name.hashCode());
 
         return result;
@@ -117,7 +120,8 @@ public abstract class NameEntity
         String  other_name = other.getName();
         String   this_name =  this.getName();
         if (this_name == other_name
-                        ||  (this_name != null  &&  this_name.equals( other_name ))) {
+                        ||  (this_name != null
+                                        &&  this_name.equalsIgnoreCase( other_name ))) {
                 return true;
         }
 
