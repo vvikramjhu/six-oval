@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.results;
 
-import jp.go.aist.six.oval.model.OvalAnalysisElement;
+import jp.go.aist.six.oval.model.OvalElement;
 
 
 
@@ -30,7 +30,8 @@ import jp.go.aist.six.oval.model.OvalAnalysisElement;
  * @version $Id$
  */
 public abstract class OvalResultElement
-    extends OvalAnalysisElement
+    extends OvalElement
+//    extends OvalAnalysisElement
 {
 
     private Result  _result;

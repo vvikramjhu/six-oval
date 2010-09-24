@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.sc;
 
-import jp.go.aist.six.oval.model.OvalAnalysisElement;
+import jp.go.aist.six.oval.model.OvalElement;
 import jp.go.aist.six.util.orm.Dependent;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,7 +48,8 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class CollectedSystemObject
-    extends OvalAnalysisElement
+    extends OvalElement
+//    extends OvalAnalysisElement
     implements Dependent<OvalSystemCharacteristics>
 {
 

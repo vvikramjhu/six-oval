@@ -95,11 +95,13 @@
     <!-- ======================================================= -->
     <!-- OvalAnalysisElement                                     -->
     <!-- ======================================================= -->
+<!-- deprecated!!!
     <class name ="jp.go.aist.six.oval.model.OvalAnalysisElement"
         extends="jp.go.aist.six.oval.model.OvalElement"
         verify-constructable="false">
 
     </class>
+-->
 
 
 
@@ -1130,7 +1132,7 @@
     <!-- CollectedSystemObject                                   -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.sc.CollectedSystemObject"
-        extends="jp.go.aist.six.oval.model.OvalAnalysisElement">
+        extends="jp.go.aist.six.oval.model.OvalElement">
         
         <map-to xml="object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
