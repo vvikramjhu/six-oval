@@ -132,6 +132,34 @@ public abstract class OvalElement
 
     /**
      */
+    public static final String generateGlobalOvalID(
+                    final OvalElement e
+                    )
+    {
+        if (e == null) {
+            throw new IllegalArgumentException( "null element" );
+        }
+
+        return generateGlobalOvalID( e.getOvalID(), e.getOvalVersion() );
+    }
+
+
+    public static final String generateGlobalOvalID(
+                    final String id,
+                    final int version
+                    )
+    {
+        if (id == null || id.length() == 0) {
+            throw new IllegalArgumentException( "null or empty ovalID" );
+        }
+
+        return id + ":" + version;
+    }
+
+
+
+    /**
+     */
     public void setOvalGlobalID(
                     final String gid
                     )
@@ -143,12 +171,7 @@ public abstract class OvalElement
     public String getOvalGlobalID()
     {
         if (_ovalGlobalID == null) {
-            final String  id = getOvalID();
-            final int  version = getOvalVersion();
-            if (id == null  ||  id.length() == 0) {
-                throw new IllegalStateException( "null or empty ovalID" );
-            }
-            _ovalGlobalID = id + ":" + version;
+            _ovalGlobalID = generateGlobalOvalID( this );
         }
 
         return _ovalGlobalID;
