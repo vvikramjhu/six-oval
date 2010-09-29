@@ -258,7 +258,7 @@
         <zip destfile="${dist.src.zip}"
             >
             <fileset dir="${build.dir}" includes="src/**"/>
-            <fileset dir="${basedir}"   includes="build*.xml,*.properties"/>
+            <fileset dir="${basedir}"   includes="build.xml,ant-six.xml,*.properties"/>
         </zip>
 
         <copy todir="${dist.dir.current}">
@@ -296,34 +296,46 @@
     </target>
 -->
 
-    <!-- source code: -->
+    <!-- source code: 
     <target name="src" depends="java.src">
+    -->
+    <target name="src" depends="java.src">
+        <mkdir dir="${build.src.dir}"/>
+<!--
         <echo message="filter: product.title = ${product.title}"/>
         <echo message="filter: product.vendor = ${product.vendor}"/>
         <echo message="filter: product.copyright-year = ${product.copyright-year}"/>
         <echo message="filter: product.registration-number = ${product.registration-number}"/>
+-->
+        <copy todir="${build.src.dir}">
+            <fileset dir="${src.dir}">
+                <include name="config/**"/>
+                <include name="sql/**"/>
+                <include name="webapp/**"/>
+            </fileset>
+        </copy>
+        
     </target>
 
 
     <!-- source code: Java -->
     <target name="java.src" depends="compile">
+        <mkdir dir="${build.src.dir}/java"/>
+
         <!-- copies source files -->
-        <copy todir="${build.src.dir}">
-            <fileset dir="${src.dir}" excludes="${java.resource.files.excludes}">
+        <copy todir="${build.src.dir}/java">
+            <fileset dir="${java.src.dir}" excludes="${java.resource.files.excludes}">
                 <patternset refid="java.source.files" />
                 <patternset refid="java.resource.files" />
-                <exclude name="config/**"/>
-                <exclude name="doc/**"/>
-                <exclude name="schema/**"/>
-                <exclude name="test/**"/>
             </fileset>
 
+            <!-- TODO: rename the tokens -->
             <filterset>
-                <filter token="product.title"   value="${product.title}"/>
+                <filter token="ProductName"   value="${product.title}"/>
                 <filter token="product.vendor"  value="${product.vendor}"/>
-                <filter token="product.copyright-year"
+                <filter token="CopyrightYear"
                                                 value="${product.copyright-year}"/>
-                <filter token="product.registration-number"
+                <filter token="AISTRegistrationNumber"
                                                 value="${product.registration-number}"/>
             </filterset>
         </copy>
