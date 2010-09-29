@@ -296,9 +296,7 @@
     </target>
 -->
 
-    <!-- source code: 
-    <target name="src" depends="java.src">
-    -->
+    <!-- source code: -->
     <target name="src" depends="java.src">
         <mkdir dir="${build.src.dir}"/>
 <!--
@@ -308,13 +306,13 @@
         <echo message="filter: product.registration-number = ${product.registration-number}"/>
 -->
         <copy todir="${build.src.dir}">
-            <fileset dir="${src.dir}">
+            <fileset dir="${src.dir}"
+                includes="build.xml,ant-six.xml,build.properties,project.properties">
                 <include name="config/**"/>
                 <include name="sql/**"/>
                 <include name="webapp/**"/>
             </fileset>
         </copy>
-        
     </target>
 
 
