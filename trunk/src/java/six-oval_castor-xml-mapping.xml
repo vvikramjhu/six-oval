@@ -2576,13 +2576,13 @@
         </field>
 
         <field name="cert" 
-            type="jp.go.aist.six.oval.model.linux.CertReference"
+            type="jp.go.aist.six.oval.model.debian.CertReference"
             collection="collection">
             <bind-xml name="cert" node="element"/>
         </field>
 
         <field name="bug" 
-            type="jp.go.aist.six.oval.model.linux.DebianBugReference"
+            type="jp.go.aist.six.oval.model.debian.DebianBugReference"
             collection="collection">
             <bind-xml name="debian_bts" node="element"/>
         </field>
@@ -2634,7 +2634,7 @@
     <!-- ======================================================= -->
     <!-- CertReference - cert                                    -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.linux.CertReference">
+    <class name="jp.go.aist.six.oval.model.debian.CertReference">
         <map-to xml="cert"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -2652,7 +2652,7 @@
     <!-- ======================================================= -->
     <!-- DebianBugReference                                      -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.linux.DebianBugReference">
+    <class name="jp.go.aist.six.oval.model.debian.DebianBugReference">
         <map-to xml="debian_bts"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 

@@ -22,17 +22,18 @@
 
 
     <test name="oval.core.store" enabled="true">
-<!--
         <groups>
             <run>
                 <include name="definitions.oval_definitions"/>
             </run>
         </groups>
+<!--
 -->
 
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.store.StoreQueryTest"/>
+            <class name="jp.go.aist.six.test.oval.core.store.StoreDefinitionsTest"/>
 <!--
+            <class name="jp.go.aist.six.test.oval.core.store.StoreQueryTest"/>
             <class name="jp.go.aist.six.test.oval.core.store.StoreResultsTest"/>
             <class name="jp.go.aist.six.test.oval.core.store.StoreSCTest"/>
             <class name="jp.go.aist.six.test.oval.core.store.StoreDefinitionsTest"/>
