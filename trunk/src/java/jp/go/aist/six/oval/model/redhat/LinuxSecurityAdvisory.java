@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.model.redhat;
 
-import jp.go.aist.six.oval.model.debian.CertReference;
-import jp.go.aist.six.oval.model.debian.DebianBugReference;
 import jp.go.aist.six.oval.model.definitions.Cpe;
 import jp.go.aist.six.oval.model.definitions.MetadataItem;
 import java.util.ArrayList;
@@ -49,11 +47,12 @@ public class LinuxSecurityAdvisory
 //    private Date  _updated;
 
     private Collection<CveReference>  _cve = new ArrayList<CveReference>();
-    private Collection<CertReference>  _cert = new ArrayList<CertReference>();
     private Collection<BugzillaReference>  _bugzilla = new ArrayList<BugzillaReference>();
-    private Collection<DebianBugReference>  _bug = new ArrayList<DebianBugReference>();
     private Collection<Cpe>  _affectedCpeList = new ArrayList<Cpe>();
 
+
+//    private Collection<CertReference>  _cert = new ArrayList<CertReference>();
+//    private Collection<DebianBugReference>  _bug = new ArrayList<DebianBugReference>();
 
 
     /**
@@ -246,7 +245,7 @@ public class LinuxSecurityAdvisory
     }
 
 
-
+/* for Debian
     public void setCert(
                     final Collection<? extends CertReference> certList
                     )
@@ -292,7 +291,7 @@ public class LinuxSecurityAdvisory
     {
         return _bug;
     }
-
+*/
 
 
     //**************************************************************
