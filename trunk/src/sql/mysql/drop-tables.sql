@@ -89,6 +89,7 @@ DROP TABLE IF EXISTS oval_d_state_family;
 DROP TABLE IF EXISTS oval_d_state_textfilecontent;
 DROP TABLE IF EXISTS oval_d_state_dpkginfo;
 DROP TABLE IF EXISTS oval_d_state_rpminfo;
+DROP TABLE IF EXISTS oval_d_state_uname;
 DROP TABLE IF EXISTS oval_d_state_file;
 DROP TABLE IF EXISTS oval_d_state_metabase;
 DROP TABLE IF EXISTS oval_d_state_registry;

@@ -1922,6 +1922,27 @@
 
 
     <!-- ******************************************************* -->
+    <!-- UnameState                                              -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.unix.UnameState"
+        extends="jp.go.aist.six.oval.model.definitions.State"
+        identity="persistentID">
+
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_state_uname"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+
+        <field name="processorType.data" type="string">
+            <sql name="processor_type" type="char"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- UnameItem                                               -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.unix.UnameItem"

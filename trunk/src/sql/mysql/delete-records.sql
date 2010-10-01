@@ -89,6 +89,7 @@ DELETE FROM oval_d_state_family;
 DELETE FROM oval_d_state_textfilecontent;
 DELETE FROM oval_d_state_dpkginfo;
 DELETE FROM oval_d_state_rpminfo;
+DELETE FROM oval_d_state_uname;
 DELETE FROM oval_d_state_file;
 DELETE FROM oval_d_state_metabase;
 DELETE FROM oval_d_state_registry;

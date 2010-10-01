@@ -42,10 +42,18 @@ public class StoreDefinitionsTest
                             OvalSample.OVAL_DEFINITIONS_8500
                         }
                         ,
-                        // Red Hat, CVE-2010-0176, Firefox
+                        // Red Hat, CVE-2010-0176, Firefox/xulrunner on RHEL
                         {
                             OvalDefinitions.class,
                             "test/data/definitions/oval-definitions_CVE-2010-0176_rhsa20100332.xml",
+                            "/oval_definitions",
+                            null
+                        }
+                        ,
+                        // Mitre, CVE-2010-0176, Firefox/xulrunner on Debian
+                        {
+                            OvalDefinitions.class,
+                            "test/data/definitions/oval-definitions_CVE-2010-0176_DSA-2027.xml",
                             "/oval_definitions",
                             null
                         }

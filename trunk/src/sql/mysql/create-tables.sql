@@ -1655,6 +1655,28 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
+/* UnameState                                                     */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_d_state_uname
+(
+    PID                 VARCHAR(64)     NOT NULL,
+                        /* id + version, e.g. oval:org.mitre.oval:ste:419:1 */
+
+    processor_type      VARCHAR(16),
+
+    /* (FK) */
+    
+    /* (PK) */
+    PRIMARY KEY (PID)
+
+    /* INDEX */
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
 /* UnameItem                                                      */
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_s_item_uname
