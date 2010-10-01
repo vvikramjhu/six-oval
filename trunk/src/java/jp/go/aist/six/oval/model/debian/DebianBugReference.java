@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.model.debian;
 
 import jp.go.aist.six.oval.model.definitions.Reference;
 

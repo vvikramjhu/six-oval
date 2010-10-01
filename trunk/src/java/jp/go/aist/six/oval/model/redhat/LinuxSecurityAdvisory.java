@@ -20,10 +20,10 @@
 
 package jp.go.aist.six.oval.model.redhat;
 
+import jp.go.aist.six.oval.model.debian.CertReference;
+import jp.go.aist.six.oval.model.debian.DebianBugReference;
 import jp.go.aist.six.oval.model.definitions.Cpe;
 import jp.go.aist.six.oval.model.definitions.MetadataItem;
-import jp.go.aist.six.oval.model.linux.CertReference;
-import jp.go.aist.six.oval.model.linux.DebianBugReference;
 import java.util.ArrayList;
 import java.util.Collection;
 
