@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.model.redhat;
 
 import jp.go.aist.six.oval.model.definitions.Reference;
 
@@ -29,18 +29,22 @@ import jp.go.aist.six.oval.model.definitions.Reference;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class CveReference
+public class BugzillaReference
     extends Reference
 {
 
-    public static final String  SOURCE = "CVE";
+    public static final String  SOURCE = "bugzilla";
+
+
+
+    private String  _title;
 
 
 
     /**
      * Constructor.
      */
-    public CveReference()
+    public BugzillaReference()
     {
     }
 
@@ -48,12 +52,29 @@ public class CveReference
     /**
      * Constructor.
      */
-    public CveReference(
+    public BugzillaReference(
                     final String refID,
-                    final String refURL
+                    final String refURL,
+                    final String title
                     )
     {
         super( SOURCE, refID, refURL );
+        setTitle( title );
+    }
+
+
+
+    public void setTitle(
+                    final String title
+                    )
+    {
+        _title = title;
+    }
+
+
+    public String getTitle()
+    {
+        return _title;
     }
 
 
@@ -87,10 +108,11 @@ public class CveReference
     @Override
     public String toString()
     {
-        return "CVE[id=" + getRefID()
+        return "Bugzilla[id=" + getRefID()
                         + ", href=" + getRefURL()
+                        + ", title=" + getTitle()
                         + "]";
     }
 
 }
-// CveReference
+// BugzillaReference

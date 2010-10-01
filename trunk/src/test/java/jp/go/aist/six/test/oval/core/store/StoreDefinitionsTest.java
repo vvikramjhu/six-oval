@@ -41,6 +41,14 @@ public class StoreDefinitionsTest
                             "/oval_definitions",
                             OvalSample.OVAL_DEFINITIONS_8500
                         }
+                        ,
+                        // Red Hat, CVE-2010-0176, Firefox
+                        {
+                            OvalDefinitions.class,
+                            "test/data/definitions/oval-definitions_CVE-2010-0176_rhsa20100332.xml",
+                            "/oval_definitions",
+                            null
+                        }
         };
     }
 

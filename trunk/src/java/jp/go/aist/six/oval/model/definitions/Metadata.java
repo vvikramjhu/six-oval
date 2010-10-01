@@ -20,12 +20,12 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.linux.CveReference;
-import jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory;
 import jp.go.aist.six.oval.model.mitre.Event;
 import jp.go.aist.six.oval.model.mitre.Modified;
 import jp.go.aist.six.oval.model.mitre.OvalRepository;
 import jp.go.aist.six.oval.model.mitre.Submitted;
+import jp.go.aist.six.oval.model.redhat.CveReference;
+import jp.go.aist.six.oval.model.redhat.LinuxSecurityAdvisory;
 import jp.go.aist.six.util.castor.AbstractPersistable;
 import java.util.ArrayList;
 import java.util.Collection;

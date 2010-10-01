@@ -2517,9 +2517,9 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <!-- ======================================================= -->
-    <!-- LinuxSecurityAdvisory - advisory                        -->
+    <!-- Advisory                                                -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.linux.LinuxSecurityAdvisory"
+    <class name="jp.go.aist.six.oval.model.redhat.LinuxSecurityAdvisory"
         extends="jp.go.aist.six.oval.model.definitions.MetadataItem">
         <map-to xml="advisory"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
@@ -2529,7 +2529,7 @@
         </field>
 
         <field name="severity" 
-            type="jp.go.aist.six.oval.model.linux.Severity">
+            type="jp.go.aist.six.oval.model.redhat.Severity">
             <bind-xml name="severity" node="element"/>
         </field>
 
@@ -2557,13 +2557,13 @@
 -->
 
         <field name="cve" 
-            type="jp.go.aist.six.oval.model.linux.CveReference"
+            type="jp.go.aist.six.oval.model.redhat.CveReference"
             collection="collection">
             <bind-xml name="cve" node="element"/>
         </field>
 
         <field name="bugzilla" 
-            type="jp.go.aist.six.oval.model.linux.BugzillaReference"
+            type="jp.go.aist.six.oval.model.redhat.BugzillaReference"
             collection="collection">
             <bind-xml name="bugzilla" node="element"/>
         </field>
@@ -2594,7 +2594,7 @@
     <!-- ======================================================= -->
     <!-- CveReference                                            -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.linux.CveReference">
+    <class name="jp.go.aist.six.oval.model.redhat.CveReference">
         <map-to xml="cve"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -2604,6 +2604,28 @@
 
         <field name="refURL" type="string">
             <bind-xml name="href" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <!-- ======================================================= -->
+    <!-- BugzillaReference                                       -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.redhat.BugzillaReference">
+        <map-to xml="bugzilla"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="refID" type="string">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+
+        <field name="refURL" type="string">
+            <bind-xml name="href" node="attribute"/>
+        </field>
+
+        <field name="title" type="string">
+            <bind-xml node="text"/>
         </field>
     </class>
 
@@ -2643,28 +2665,6 @@
         </field>
 
     </class>
-
-
-    <!-- ======================================================= -->
-    <!-- BugzillaReference                                       -->
-    <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.linux.BugzillaReference">
-        <map-to xml="bugzilla"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
-
-        <field name="refID" type="string">
-            <bind-xml name="id" node="attribute"/>
-        </field>
-
-        <field name="refURL" type="string">
-            <bind-xml name="href" node="attribute"/>
-        </field>
-
-        <field name="title" type="string">
-            <bind-xml node="text"/>
-        </field>
-    </class>
-
 
 
     <!-- ======================================================= -->

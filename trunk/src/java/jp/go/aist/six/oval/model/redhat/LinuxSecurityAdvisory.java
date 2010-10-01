@@ -18,10 +18,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.model.redhat;
 
 import jp.go.aist.six.oval.model.definitions.Cpe;
 import jp.go.aist.six.oval.model.definitions.MetadataItem;
+import jp.go.aist.six.oval.model.linux.CertReference;
+import jp.go.aist.six.oval.model.linux.DebianBugReference;
 import java.util.ArrayList;
 import java.util.Collection;
 

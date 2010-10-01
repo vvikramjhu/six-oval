@@ -261,6 +261,10 @@ public abstract class Validators
                         final OvalDefinitions expected
                         )
         {
+            if (expected == null) {
+                return;
+            }
+
             Reporter.log( " - generator", true );
             Assert.assertEquals( actual.getGenerator(), expected.getGenerator() );
 
