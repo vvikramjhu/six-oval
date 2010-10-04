@@ -32,7 +32,7 @@ import java.util.Iterator;
  * @version $Id$
  */
 public class SystemData
-    extends Container<Item>
+    extends Container<Item> //{1..*}
 //    extends Container<Item>
 {
 
