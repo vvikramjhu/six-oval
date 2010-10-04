@@ -27,7 +27,12 @@ import java.util.Iterator;
 
 
 /**
- * A collection of System instances.
+ * The SystemResult is a container for one or more SystemResult elements.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>system (1..*)</li>
+ * </ul>
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -48,10 +53,10 @@ public class SystemResults
      * Constructor.
      */
     public SystemResults(
-                    final Collection<? extends SystemResult> results
+                    final Collection<? extends SystemResult> systems
                     )
     {
-        super( results );
+        super( systems );
     }
 
 
@@ -59,37 +64,37 @@ public class SystemResults
      * Constructor.
      */
     public SystemResults(
-                    final SystemResult[] results
+                    final SystemResult[] systems
                     )
     {
-        super( results );
+        super( systems );
     }
 
 
 
-    public void setResult(
-                    final Collection<? extends SystemResult> results
+    public void setSystem(
+                    final Collection<? extends SystemResult> systems
                     )
     {
-        _setElement( results );
+        _setElement( systems );
     }
 
 
-    public boolean addResult(
-                    final SystemResult result
+    public boolean addSystem(
+                    final SystemResult system
                     )
     {
-        return add( result );
+        return add( system );
     }
 
 
-    public Collection<SystemResult> getResult()
+    public Collection<SystemResult> getSystem()
     {
         return _getElement();
     }
 
 
-    public Iterator<SystemResult> iterateResult()
+    public Iterator<SystemResult> iterateSystem()
     {
         return iterator();
     }

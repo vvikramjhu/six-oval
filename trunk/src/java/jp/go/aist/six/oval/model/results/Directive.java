@@ -25,6 +25,14 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 /**
+ * Each Directive determines whether or not certain results are included
+ * in the results file.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>reported (required)</li>
+ *   <li>content (optional -- default='full')</li>
+ * </ul>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

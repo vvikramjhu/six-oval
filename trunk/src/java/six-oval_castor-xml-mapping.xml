@@ -1346,11 +1346,11 @@
         <map-to xml="results"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
-        <field name="result" 
+        <field name="system" 
             type="jp.go.aist.six.oval.model.results.SystemResult"
             collection="collection"
-            set-method="addResult"
-            get-method="iterateResult">
+            set-method="addSystem"
+            get-method="iterateSystem">
             <bind-xml name="system" node="element"/>
         </field>
     </class>

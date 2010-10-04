@@ -27,6 +27,16 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 
 
 /**
+ * The OvalResults represents an OVAL Results Document.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>generator (1..1)</li>
+ *   <li>directives (0..1)</li>
+ *   <li>oval_definitions (0..1)</li>
+ *   <li>results (0..1)</li>
+ *   <li>signature (0..1): currently NOT supported.</li>
+ * </ul>
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -159,7 +169,7 @@ public class OvalResults
             results = new SystemResults();
             setResults( results );
         }
-        results.addResult( result );
+        results.addSystem( result );
 
         return this;
     }

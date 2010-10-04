@@ -27,6 +27,17 @@ import jp.go.aist.six.util.orm.Dependent;
 
 
 /**
+ * The SystemResult holds the evaluation results of the definitions and tests,
+ * as well as a copy of the OVAL System Characteristics used to perform the evaluation.
+ * The definitions section holds the results of the definitions
+ * and the tests section holds the results of the tests.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>definitions (0..1)</li>
+ *   <li>tests (0..1)</li>
+ *   <li>oval_system_characteristics (1..1)</li>
+ * </ul>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

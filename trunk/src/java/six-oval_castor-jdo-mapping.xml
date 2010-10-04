@@ -1074,7 +1074,7 @@
         </field>
 
 
-        <field name="results.result"
+        <field name="results.system"
             type="jp.go.aist.six.oval.model.results.SystemResult"
             collection="collection">
             <sql many-key="r_results__PID"/>
