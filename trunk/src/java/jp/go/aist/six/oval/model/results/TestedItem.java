@@ -26,6 +26,15 @@ import jp.go.aist.six.util.orm.Dependent;
 
 
 /**
+ * The TestedItem holds a reference to a system characteristic item
+ * that matched the object specified in a test.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>item_id (required)</li>
+ *   <li>result (required)</li>
+ *   <li>message (0..*): currently NOT supported.</li>
+ * </ul>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

@@ -27,7 +27,12 @@ import java.util.Iterator;
 
 
 /**
- * A collection of DefinitionResult objects.
+ * The DefinitionResults is a container for one or more DefinitionResult elements.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>definition (1..*)</li>
+ * </ul>
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

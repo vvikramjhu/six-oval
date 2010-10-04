@@ -25,6 +25,17 @@ import jp.go.aist.six.util.orm.Dependent;
 
 
 /**
+ * The DefinitionResult holds the result of the evaluation of an OVAL Definition.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>definition_id (required)</li>
+ *   <li>version (required)</li>
+ *   <li>variable_instance (optional -- default='1')</li>
+ *   <li>result (required)</li>
+ *   <li>message (0..*): currently NOT supported.</li>
+ *   <li>criteria (0..1)</li>
+ * </ul>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

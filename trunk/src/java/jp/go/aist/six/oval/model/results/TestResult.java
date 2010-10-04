@@ -30,6 +30,22 @@ import java.util.Collection;
 
 
 /**
+ * The TestResult provides a reference to every item
+ * that matched the object section of the original test
+ * as well as providing an overall test result based on those items.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>test_id (required)</li>
+ *   <li>version (required)</li>
+ *   <li>variable_instance (optional -- default='1')</li>
+ *   <li>check_existence (optional -- default='at_least_one_exists')</li>
+ *   <li>check (required)</li>
+ *   <li>state_operator (optional -- default='AND')</li>
+ *   <li>message (0..*): currently NOT supported.</li>
+ *   <li>tested_item (0..*)</li>
+ *   <li>tested_variable (0..*)</li>
+ * </ul>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

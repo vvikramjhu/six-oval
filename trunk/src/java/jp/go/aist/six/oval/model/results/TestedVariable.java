@@ -26,6 +26,14 @@ import jp.go.aist.six.util.orm.Dependent;
 
 
 /**
+ * The TestedVariable holds the value to a variable
+ * used during the evaluation of a test.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>variable_id (required)</li>
+ *   <li>simple content</li>
+ * </ul>
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
