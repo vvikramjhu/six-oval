@@ -27,6 +27,13 @@ import java.util.Iterator;
 
 
 /**
+ * The SystemData is a container for one or more item elements.
+ * Each item defines a specific piece of data on the system.
+ *
+ * <p>Properties:</p>
+ * <ul>
+ *   <li>item (1..*)</li>
+ * </ul>
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
