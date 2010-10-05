@@ -21,7 +21,7 @@
 
 
 
-    <test name="oval.core.store" enabled="true">
+    <test name="oval.core.store" enabled="false">
 <!--
         <groups>
             <run>
@@ -43,7 +43,7 @@
 
 
 
-    <test name="oval.core.xml" enabled="false">
+    <test name="oval.core.xml" enabled="true">
         <groups>
             <run>
                 <include name="definitions.*"/>
@@ -56,92 +56,6 @@
         </classes>
     </test>
 
-
-
-    <test name="oval.core" enabled="false">
-        <groups>
-            <run>
-                <include name="oval_results"/>
-            </run>
-        </groups>
-<!--
-                <include name="build_oval_definitions"/>
-                <include name="oval_results"/>
-                <include name="oval_definitions"/>
--->
-<!--
-                <include name="oval-def:definition"/>
-                <include name="oval-def:oval_definitions"/>
--->
-    
-        <classes>
-            <class name="jp.go.aist.six.test.oval.core.LocalOvalRepositoryTest"/>
-
-            <!--
-            <class name="jp.go.aist.six.test.oval.core.LocalOvalRepositoryTest"/>
-
-            <class name="jp.go.aist.six.test.oval.core.StoreResultsOvalResultsTest"/>
-            <class name="jp.go.aist.six.test.oval.core.StoreScOvalScTest"/>
-            <class name="jp.go.aist.six.test.oval.core.StoreDefOvalDefinitionsTest"/>
-            <class name="jp.go.aist.six.test.oval.core.StoreDefCveTest"/>
-            <class name="jp.go.aist.six.test.oval.core.OvalStoreTest"/>
-            <class name="jp.go.aist.six.test.oval.core.OvalXmlTest"/>
-            -->
-        </classes>
-    </test>
-
-
-    <test name="oval.service" enabled="false">
-        <groups>
-            <run>
-                <include name="Definition"/>
-            </run>
-        </groups>
-    <!--
-    -->
-    
-        <classes>
-            <class name="jp.go.aist.six.test.oval.service.OvalXmlMarshallingTest"/>
-
-            <!--
-            <class name="jp.go.aist.six.test.oval.service.OvalXml2StoreTest"/>
-            <class name="jp.go.aist.six.test.oval.service.OvalStoreTest"/>
-            <class name="jp.go.aist.six.test.oval.service.OvalXmlFragmentTest"/>
-            <class name="jp.go.aist.six.test.oval.service.OvalXmlMarshallingTest"/>
-            <class name="jp.go.aist.six.test.oval.service.OvalXmlTest"/>
-            <class name="jp.go.aist.six.test.oval.service.OvalXmlAnalysis"/>
-            -->
-        </classes>
-    </test>
-
-
-    <test name="oval.process" enabled="false">
-        <classes>
-            <class name="jp.go.aist.six.test.oval.process.NetOvalInterpreterTest"/>
-
-            <!--
-            <class name="jp.go.aist.six.test.oval.process.debian.DebianOvalBuilderTest"/>
-            <class name="jp.go.aist.six.test.oval.process.debian.DsaParserTest"/>
-            <class name="jp.go.aist.six.test.oval.process.debian.DebianOvaldiProcessorTest"/>
-            <class name="jp.go.aist.six.test.oval.process.debian.DebianOvalGeneratorTest"/>
-
-            <class name="jp.go.aist.six.test.oval.process.centos.CentOSOvalGeneratorTest"/>
-            <class name="jp.go.aist.six.test.oval.process.CentOSOvaldiProcessorTest"/>
-
-            <class name="jp.go.aist.six.test.oval.OvaldiTest"/>
-            <class name="jp.go.aist.six.test.oval.service.OvalXml2StoreTest"/>
-            <class name="jp.go.aist.six.test.oval.service.OvalStoreTest"/>
-            <class name="jp.go.aist.six.test.oval.service.OvalXmlFragmentTest"/>
-            <class name="jp.go.aist.six.test.oval.service.OvalXmlMarshallingTest"/>
-            <class name="jp.go.aist.six.test.oval.service.OvalXmlTest"/>
-            <class name="jp.go.aist.six.test.oval.service.OvalXmlAnalysis"/>
-            -->
-        </classes>
-    </test>
-
-
-
 </suite>
 
-<!-- vim:set tabstop=4:set expandtab:set shiftwidth=4: -->
 
