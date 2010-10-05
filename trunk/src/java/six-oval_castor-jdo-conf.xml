@@ -13,7 +13,7 @@
 
 <jdo-conf>
 
-    <database name="six3oval" engine="@six.db.engine@" >
+    <database name="oval" engine="@six.db.engine@" >
         <data-source class-name="org.apache.commons.dbcp.BasicDataSource">
             <param name="driver-class-name" value="@six.db.driver@"/>
             <param name="url"               value="@six.db.url@"/>

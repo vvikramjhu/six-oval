@@ -22,7 +22,7 @@
     <bean id="jdoManager" 
         class="org.castor.spring.orm.LocalCastorFactoryBean"
         >
-        <property name="databaseName" value="six3oval"/>
+        <property name="databaseName" value="oval"/>
         <property name="configLocation" value="classpath:six-oval_castor-jdo-conf.xml"/>
     </bean>
 
