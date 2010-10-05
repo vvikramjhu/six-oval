@@ -57,6 +57,15 @@ public class OvalXmlTest
     public Object[][] provideOvalDefinitionsOvalDefinitions()
     {
         return new Object[][] {
+//                        // Windows XP @ Mitre, all the vulnerabilities
+//                        {
+//                            OvalDefinitions.class,
+//                            "test/data/definitions/20100827_vulnerability_microsoft.windows.xp.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_20100827_vulnerability_microsoft.windows.xp.xml"
+//                        }
+//                        ,
                         // Windows @ Mitre, CVE-2009-4019
                         {
                             OvalDefinitions.class,
