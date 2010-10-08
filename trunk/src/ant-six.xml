@@ -329,8 +329,13 @@
 
             <!-- TODO: rename the tokens -->
             <filterset>
-                <filter token="ProductName"   value="${product.title}"/>
+                <filter token="product.title"   value="${product.title}"/>
                 <filter token="product.vendor"  value="${product.vendor}"/>
+                <filter token="product.copyright-year" value="${product.copyright-year}"/>
+                <filter token="product.registration-number"
+                                                value="${product.registration-number}"/>
+
+                <filter token="ProductName"   value="${product.title}"/>
                 <filter token="CopyrightYear"
                                                 value="${product.copyright-year}"/>
                 <filter token="AISTRegistrationNumber"
