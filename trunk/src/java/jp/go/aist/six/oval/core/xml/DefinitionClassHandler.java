@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.xml;
 
-import jp.go.aist.six.oval.model.definitions.DefinitionClass;
+import jp.go.aist.six.oval.model.common.DefinitionClass;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 

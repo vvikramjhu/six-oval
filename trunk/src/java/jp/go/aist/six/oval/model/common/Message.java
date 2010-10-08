@@ -25,9 +25,14 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 /**
+ * The MessageType complex type defines the structure for which
+ * messages are relayed from the data collection engine.
+ * Each message is a text string that has an associated level attribute
+ * identifying the type of message being sent.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Message
     extends AbstractPersistable
@@ -76,31 +81,6 @@ public class Message
                     )
     {
         _level = level;
-    }
-
-
-
-    //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    /**
-     * The persistent identifier.
-     */
-    private  String  _persistentID;
-
-
-    public void setPersistentID(
-                    final String id
-                    )
-    {
-        _persistentID = id;
-    }
-
-
-    public String getPersistentID()
-    {
-        return _persistentID;
     }
 
 

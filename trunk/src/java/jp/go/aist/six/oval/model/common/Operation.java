@@ -25,10 +25,12 @@ import java.util.HashMap;
 
 
 
-
 /**
+ * The Operation defines acceptable operations.
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public final class Operation
     implements Serializable
@@ -45,6 +47,8 @@ public final class Operation
     private static final String  _BITWISE_AND_                 = "bitwise and";
     private static final String  _BITWISE_OR_                  = "bitwise or";
     private static final String  _PATTERN_MATCH_               = "pattern match";
+    private static final String  _SUBSET_OF_                   = "subset of";
+    private static final String  _SUPERSET_OF_                 = "superset of";
 
 
     public static final Operation  EQUALS                      = new Operation( _EQUALS_ );
@@ -58,6 +62,8 @@ public final class Operation
     public static final Operation  BITWISE_AND                 = new Operation( _BITWISE_AND_ );
     public static final Operation  BITWISE_OR                  = new Operation( _BITWISE_OR_ );
     public static final Operation  PATTERN_MATCH               = new Operation( _PATTERN_MATCH_ );
+    public static final Operation  SUBSET_OF                   = new Operation( _SUBSET_OF_ );
+    public static final Operation  SUPERSET_OF                 = new Operation( _SUPERSET_OF_ );
 
 
 
@@ -75,6 +81,8 @@ public final class Operation
         map.put( _BITWISE_AND_,                 BITWISE_AND                );
         map.put( _BITWISE_OR_,                  BITWISE_OR                 );
         map.put( _PATTERN_MATCH_,               PATTERN_MATCH              );
+        map.put( _SUBSET_OF_,                   SUBSET_OF                  );
+        map.put( _SUPERSET_OF_,                 SUPERSET_OF                );
         return map;
     }
 
@@ -85,7 +93,9 @@ public final class Operation
 
     /**
      */
-    public static Operation valueOf( final String name )
+    public static Operation valueOf(
+                    final String name
+                    )
     {
         Operation  flag = null;
         if (name != null) {
@@ -106,8 +116,11 @@ public final class Operation
 
 
     /**
+     * Constrcutor.
      */
-    private Operation( final String name )
+    private Operation(
+                    final String name
+                    )
     {
         _name = name;
     }
@@ -123,9 +136,9 @@ public final class Operation
 
 
 
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
     //  java.lang.Object
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
 
     @Override
     public String toString()

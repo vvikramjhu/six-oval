@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.OvalEntity;
+import jp.go.aist.six.oval.model.common.DefinitionClass;
 import java.util.ArrayList;
 import java.util.Collection;
 

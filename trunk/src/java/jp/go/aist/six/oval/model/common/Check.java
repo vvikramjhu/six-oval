@@ -26,9 +26,13 @@ import java.util.HashMap;
 
 
 /**
+ * The Check defines acceptable check values,
+ * which are used to determine the final result of something
+ * based on the results of individual components.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public final class Check
     implements Serializable
@@ -67,7 +71,9 @@ public final class Check
 
     /**
      */
-    public static Check valueOf( final String name )
+    public static Check valueOf(
+                    final String name
+                    )
     {
         Check  flag = null;
         if (name != null) {
@@ -89,8 +95,11 @@ public final class Check
 
 
     /**
+     * Constructor.
      */
-    private Check( final String name )
+    private Check(
+                    final String name
+                    )
     {
         _name = name;
     }

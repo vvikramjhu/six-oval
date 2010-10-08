@@ -18,17 +18,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.common;
 
 import java.io.Serializable;
 import java.util.HashMap;
 
 
 
-
 /**
+ * The DefinitionClass defines the different classes of definitions.
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public final class DefinitionClass
     implements Serializable
@@ -88,8 +90,11 @@ public final class DefinitionClass
 
 
     /**
+     * Constructor.
      */
-    private DefinitionClass( final String name )
+    private DefinitionClass(
+                    final String name
+                    )
     {
         _name = name;
     }
@@ -105,9 +110,9 @@ public final class DefinitionClass
 
 
 
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
     //  java.lang.Object
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
 
     @Override
     public String toString()

@@ -25,10 +25,13 @@ import java.util.HashMap;
 
 
 
-
 /**
+ * The MessageLevelEnumeration simple type defines the different levels
+ * associated with a message.
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public final class MessageLevel
     implements Serializable
@@ -67,7 +70,9 @@ public final class MessageLevel
 
     /**
      */
-    public static MessageLevel valueOf( final String name )
+    public static MessageLevel valueOf(
+                    final String name
+                    )
     {
         MessageLevel  flag = null;
         if (name != null) {
@@ -88,8 +93,11 @@ public final class MessageLevel
 
 
     /**
+     * Constructor.
      */
-    private MessageLevel( final String name )
+    private MessageLevel(
+                    final String name
+                    )
     {
         _name = name;
     }
@@ -105,9 +113,9 @@ public final class MessageLevel
 
 
 
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
     //  java.lang.Object
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
 
     @Override
     public String toString()

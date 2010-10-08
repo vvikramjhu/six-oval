@@ -25,10 +25,12 @@ import java.util.HashMap;
 
 
 
-
 /**
+ * The Family is a listing of families that OVAL supports at this time.
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public final class Family
     implements Serializable
@@ -40,6 +42,7 @@ public final class Family
     private static final String  _PIXOS_     = "pixos";
     private static final String  _UNDEFINED_ = "undefined";
     private static final String  _UNIX_      = "unix";
+    private static final String  _VMWARE_INFRASTRUCTURE_ = "vmware_infrastructure";
     private static final String  _WINDOWS_   = "windows";
 
 
@@ -49,6 +52,7 @@ public final class Family
     public static final Family  PIXOS      = new Family( _PIXOS_ );
     public static final Family  UNDEFINED  = new Family( _UNDEFINED_ );
     public static final Family  UNIX       = new Family( _UNIX_ );
+    public static final Family  VMWARE_INFRASTRUCTURE = new Family( _VMWARE_INFRASTRUCTURE_ );
     public static final Family  WINDOWS    = new Family( _WINDOWS_ );
 
 
@@ -62,6 +66,7 @@ public final class Family
         map.put( _PIXOS_,      PIXOS     );
         map.put( _UNDEFINED_,  UNDEFINED );
         map.put( _UNIX_,       UNIX      );
+        map.put( _VMWARE_INFRASTRUCTURE_, VMWARE_INFRASTRUCTURE );
         map.put( _WINDOWS_,    WINDOWS   );
         return map;
     }
@@ -70,10 +75,11 @@ public final class Family
 
 
 
-
     /**
      */
-    public static Family valueOf( final String name )
+    public static Family valueOf(
+                    final String name
+                    )
     {
         Family  flag = null;
         if (name != null) {
@@ -94,8 +100,11 @@ public final class Family
 
 
     /**
+     * Constructor.
      */
-    private Family( final String name )
+    private Family(
+                    final String name
+                    )
     {
         _name = name;
     }
@@ -111,9 +120,9 @@ public final class Family
 
 
 
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
     //  java.lang.Object
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
 
     @Override
     public String toString()

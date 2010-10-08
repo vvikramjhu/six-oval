@@ -25,10 +25,12 @@ import java.util.HashMap;
 
 
 
-
 /**
+ * The OperatorEnumeration simple type defines acceptable operators.
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public final class Operator
     implements Serializable
@@ -64,7 +66,9 @@ public final class Operator
 
     /**
      */
-    public static Operator valueOf( final String name )
+    public static Operator valueOf(
+                    final String name
+                    )
     {
         Operator  flag = null;
         if (name != null) {
@@ -85,8 +89,11 @@ public final class Operator
 
 
     /**
+     * Constructor.
      */
-    private Operator( final String name )
+    private Operator(
+                    final String name
+                    )
     {
         _name = name;
     }
@@ -102,9 +109,9 @@ public final class Operator
 
 
 
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
     //  extends Object
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
 
     @Override
     public String toString()

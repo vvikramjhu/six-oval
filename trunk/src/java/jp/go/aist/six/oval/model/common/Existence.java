@@ -25,10 +25,14 @@ import java.util.HashMap;
 
 
 
-
 /**
+ * The Existence defines acceptable existence values,
+ * which are used to determine a result
+ * based on the existence of individual components.
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public final class Existence
     implements Serializable
@@ -67,7 +71,9 @@ public final class Existence
 
     /**
      */
-    public static Existence valueOf( final String name )
+    public static Existence valueOf(
+                    final String name
+                    )
     {
         Existence  flag = null;
         if (name != null) {
@@ -88,8 +94,11 @@ public final class Existence
 
 
     /**
+     * Constructor.
      */
-    private Existence( final String name )
+    private Existence(
+                    final String name
+                    )
     {
         _name = name;
     }
@@ -105,9 +114,9 @@ public final class Existence
 
 
 
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
     //  java.lang.Object
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
 
     @Override
     public String toString()

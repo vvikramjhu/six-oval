@@ -2,6 +2,7 @@ package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Datatype;
+import jp.go.aist.six.oval.model.common.DefinitionClass;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Generator;
@@ -13,7 +14,6 @@ import jp.go.aist.six.oval.model.definitions.ConcatFunction;
 import jp.go.aist.six.oval.model.definitions.Criteria;
 import jp.go.aist.six.oval.model.definitions.Criterion;
 import jp.go.aist.six.oval.model.definitions.Definition;
-import jp.go.aist.six.oval.model.definitions.DefinitionClass;
 import jp.go.aist.six.oval.model.definitions.EntityObjectInt;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;

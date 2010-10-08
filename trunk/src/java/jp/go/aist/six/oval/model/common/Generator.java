@@ -24,10 +24,10 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 /**
- * Information about when a particular OVAL document was compiled,
- * what version of the schema was used,
- * what tool compiled the document, and
- * what version of that tools was used.
+ * The Generator holds information about when a particular OVAL document
+ * was compiled, what version of the schema was used,
+ * what tool compiled the document,
+ * and what version of that tools was used.
  *
  * <p>Properties:</p>
  * <ul>
@@ -39,6 +39,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Generator
     extends AbstractPersistable
@@ -53,6 +54,11 @@ public class Generator
     private String  _schemaVersion;
     //{xsd:decimal, 1..1}
 
+    /**
+     * The required timestamp specifies when the particular
+     * OVAL document was compiled.
+     * The format for the timestamp is yyyy-mm-ddThh:mm:ss.
+     */
     private String  _timestamp;
 //    private Date  _timestamp;
     //{xsd:dateTime, 1..1}

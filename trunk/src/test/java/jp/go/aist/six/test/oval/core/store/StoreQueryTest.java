@@ -1,7 +1,7 @@
 package jp.go.aist.six.test.oval.core.store;
 
+import jp.go.aist.six.oval.model.common.DefinitionClass;
 import jp.go.aist.six.oval.model.definitions.Definition;
-import jp.go.aist.six.oval.model.definitions.DefinitionClass;
 import jp.go.aist.six.util.orm.Persistable;
 import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.LikeBinding;

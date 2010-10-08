@@ -25,10 +25,10 @@ import java.util.HashMap;
 
 
 
-
 /**
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public final class Datatype
     implements Serializable
@@ -103,6 +103,7 @@ public final class Datatype
 
 
     /**
+     * Constructor.
      */
     private Datatype(
                     final String name
