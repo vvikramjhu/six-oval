@@ -26,13 +26,12 @@ import jp.go.aist.six.oval.model.definitions.SystemObject;
 
 
 /**
- * The FamilyObject is used by a family test to define those objects
- * to evaluate based on a specified state.
- * There is actually only one object relating to family
- * and this is the system as a whole.
+ * The FamilyObject is used by a family test
+ * to define those objects to evaluate based on a specified state.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class FamilyObject
     extends SystemObject
@@ -113,7 +112,7 @@ public class FamilyObject
     @Override
     public String toString()
     {
-        return "FamilyObject[" + super.toString() + "]";
+        return "family_object[" + super.toString() + "]";
     }
 
 }

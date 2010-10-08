@@ -30,10 +30,11 @@ import java.util.Collection;
 
 
 /**
- * An unknown test acts as a placeholder for tests whose implementation is unknown.
+ * An UnknownTest acts as a placeholder for tests whose implementation is unknown.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class UnknownTest
     extends Test
@@ -138,7 +139,7 @@ public class UnknownTest
     @Override
     public String toString()
     {
-        return "UnknownTest[" + super.toString() + "]";
+        return "unknown_test[" + super.toString() + "]";
     }
 
 }

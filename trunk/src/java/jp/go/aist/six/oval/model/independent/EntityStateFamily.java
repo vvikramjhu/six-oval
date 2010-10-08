@@ -27,9 +27,15 @@ import jp.go.aist.six.oval.model.definitions.EntityStateString;
 
 
 /**
+ * The EntityStateFamily defines a string entity value that is
+ * restricted to a set of enumerations.
+ * Each valid enumeration is a high-level family of system operating system.
+ * The empty string is also allowed to support empty elements
+ * associated with variable references.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class EntityStateFamily
     extends EntityStateString
@@ -140,11 +146,11 @@ public class EntityStateFamily
 
 
 
-    @Override
-    public String toString()
-    {
-        return "EntityStateFamily[" + super.toString() + "]";
-    }
+//    @Override
+//    public String toString()
+//    {
+//        return "EntityStateFamily[" + super.toString() + "]";
+//    }
 
 }
 // EntityStateFamily

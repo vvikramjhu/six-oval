@@ -26,9 +26,12 @@ import jp.go.aist.six.oval.model.sc.EntityItemString;
 
 
 /**
+ * The EntityItemFamily defines a string entity value
+ * that is restricted to a set of enumerations.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class EntityItemFamily
     extends EntityItemString

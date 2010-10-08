@@ -32,9 +32,12 @@ import java.util.Collection;
 
 
 /**
+ * The textfilecontent_item looks at the contents of a text file
+ * (aka a configuration file) by looking at individual lines.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class TextFileContentItem
     extends Item

@@ -27,9 +27,12 @@ import jp.go.aist.six.oval.model.definitions.SystemObject;
 
 
 /**
+ * The textfilecontent_object element is used by a text file content test
+ * to define the specific line(s) of a file(s) to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class TextFileContentObject
     extends SystemObject
@@ -253,7 +256,7 @@ public class TextFileContentObject
     @Override
     public String toString()
     {
-        return "TextFileContentObject[" + super.toString()
+        return "textfilecontent_object[" + super.toString()
                         + ", path=" + getPath()
                         + ", filename=" + getFilename()
                         + ", line=" + getLine()

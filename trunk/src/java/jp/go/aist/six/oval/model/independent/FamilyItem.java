@@ -28,9 +28,12 @@ import jp.go.aist.six.oval.model.sc.Status;
 
 
 /**
+ * This element stores high level system OS type,
+ * otherwise known as the family.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class FamilyItem
     extends Item

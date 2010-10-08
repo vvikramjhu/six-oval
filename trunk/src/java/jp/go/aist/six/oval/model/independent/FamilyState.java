@@ -26,9 +26,12 @@ import jp.go.aist.six.oval.model.definitions.State;
 
 
 /**
+ * The FamilyState contains a single entity that is used
+ * to check the family associated with the system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class FamilyState
     extends State
@@ -157,7 +160,7 @@ public class FamilyState
     @Override
     public String toString()
     {
-        return "FamilyState[" + super.toString()
+        return "family_state[" + super.toString()
                         + ", family=" + getFamily()
                         + "]";
     }

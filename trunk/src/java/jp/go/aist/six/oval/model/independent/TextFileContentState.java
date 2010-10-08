@@ -27,11 +27,14 @@ import jp.go.aist.six.oval.model.definitions.State;
 
 
 
-
 /**
+ * The textfilecontent_state element contains entities that are used
+ * to check the file path and name, as well as the line in question
+ * and the value of the specific subexpression.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class TextFileContentState
     extends State
@@ -257,7 +260,7 @@ public class TextFileContentState
     @Override
     public String toString()
     {
-        return "TextFileContentState[" + super.toString() + "]";
+        return "textfilecontent_state[" + super.toString() + "]";
     }
 
 }

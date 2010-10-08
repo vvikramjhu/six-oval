@@ -27,13 +27,14 @@ import jp.go.aist.six.oval.model.definitions.Test;
 
 
 /**
+ * The FamilyTest is used to check the family a certain system belongs to.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class FamilyTest
     extends Test
-//    extends SimpleTest
 {
 
     /**
@@ -111,7 +112,7 @@ public class FamilyTest
     @Override
     public String toString()
     {
-        return "FamilyTest[" + super.toString() + "]";
+        return "family_test[" + super.toString() + "]";
     }
 
 }
