@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jdo-conf PUBLIC "-//EXOLAB/Castor JDO Configuration DTD Version 1.0//EN"
+                          "http://castor.org/jdo-conf.dtd">
+
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- // Project SIX: OVAL                                     // -->
+<!-- //                                                       // -->
+<!-- // Castor JDO configuration                              // -->
+<!-- /////////////////////////////////////////////////////////// -->
+
+<!-- @author    Akihito Nakamura, AIST -->
+<!-- @version   $Id$ -->
+
+<jdo-conf>
+
+    <database name="oval" engine="@six.db.engine@" >
+        <data-source class-name="org.apache.commons.dbcp.BasicDataSource">
+            <param name="driver-class-name" value="@six.db.driver@"/>
+            <param name="url"               value="@six.db.url@"/>
+            <param name="max-active"        value="8"/>
+            <param name="validation-query"  value="SELECT 1"/>
+            <param name="username"          value="@six.db.username@"/>
+            <param name="password"          value="@six.db.password@"/>
+        </data-source>
+
+        <mapping href="six-oval_castor-jdo-mapping.xml"/>
+    </database>
+
+<!--
+    <database name="six3oval" engine="mysql" >
+        <data-source class-name="org.apache.commons.dbcp.BasicDataSource">
+            <param name="driver-class-name" value="com.mysql.jdbc.Driver"/>
+            <param name="url"               value="jdbc:mysql://localhost/six3oval"/>
+            <param name="max-active"        value="8"/>
+            <param name="validation-query"  value="SELECT 1"/>
+            <param name="username"          value="six3"/>
+            <param name="password"          value="six3-admin"/>
+        </data-source>
+
+        <mapping href="six-oval_castor-jdo-mapping.xml"/>
+    </database>
+-->
+
+
+    <transaction-demarcation mode="local">
+        <transaction-manager name="local" />
+    </transaction-demarcation>
+
+</jdo-conf>
+
+<!-- vim:set tabstop=4:set expandtab:set shiftwidth=4: -->

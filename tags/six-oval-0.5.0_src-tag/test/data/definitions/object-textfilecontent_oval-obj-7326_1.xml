@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<textfilecontent_object xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux linux-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd" 
+xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+  version="1" id="oval:org.mitre.oval:obj:7326" >
+      <path>/etc</path>
+      <filename>debian_version</filename>
+      <line operation="pattern match">\d\.\d</line>
+</textfilecontent_object>

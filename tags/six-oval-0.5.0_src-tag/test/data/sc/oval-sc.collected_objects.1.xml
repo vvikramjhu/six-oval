@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<collected_objects xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5">
+          <object comment="Registry key that is set when Service Pack 1 for Microsoft Visual Studio .NET 2002" flag="does not exist" id="oval:org.mitre.oval:obj:10" version="1">
+            <reference item_ref="83"/>
+          </object>
+          <object flag="complete" id="oval:org.mitre.oval:obj:1070" version="2">
+            <variable_value variable_id="oval:org.mitre.oval:var:247">C:\Program Files\Microsoft Office\OFFICE11\</variable_value>
+            <reference item_ref="46"/>
+          </object>
+          <object flag="complete" id="oval:org.mitre.oval:obj:1071" version="1">
+            <reference item_ref="45"/>
+          </object>
+          <object flag="does not exist" id="oval:org.mitre.oval:obj:109" version="1">
+            <reference item_ref="103"/>
+          </object>
+</collected_objects>
+

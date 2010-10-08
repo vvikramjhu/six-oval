@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<definition id="oval:com.redhat.rhsa:def:20100333" version="302" class="patch"
+xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:unix-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" xmlns:red-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#linux linux-definitions-schema.xsd">
+      <metadata>
+        <title>RHSA-2010:0333: seamonkey security update (Critical)
+    </title>
+    <affected family="unix">
+            <platform>Red Hat Enterprise Linux 4</platform>
+             <platform>Red Hat Enterprise Linux 3</platform>
+             </affected>
+        <reference source="RHSA" ref_id="RHSA-2010:0333-01" ref_url="https://rhn.redhat.com/errata/RHSA-2010-0333.html" />
+    <description>SeaMonkey is an open source Web browser, email and newsgroup client, IRC
+chat client, and HTML editor.
+
+Several use-after-free flaws were found in SeaMonkey. Visiting a web page
+containing malicious content could result in SeaMonkey executing arbitrary
+code with the privileges of the user running SeaMonkey. (CVE-2010-0175,
+CVE-2010-0176, CVE-2010-0177)
+
+Several flaws were found in the processing of malformed web content. A web
+page containing malicious content could cause SeaMonkey to crash or,
+potentially, execute arbitrary code with the privileges of the user running
+SeaMonkey. (CVE-2010-0174)
+
+All SeaMonkey users should upgrade to these updated packages, which correct
+these issues. After installing the update, SeaMonkey must be restarted for
+the changes to take effect.</description>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~   advisory details   ~~~~~~~~~~~~~~~~~~~ -->
+
+<advisory from="secalert@redhat.com">
+
+        <severity>Critical</severity>
+
+        <rights>Copyright 2010 Red Hat, Inc.</rights>
+        <issued date="2010-03-30" />
+        <updated date="2010-03-30" />
+            <cve href="https://www.redhat.com/security/data/cve/CVE-2010-0174.html">CVE-2010-0174</cve>
+            <cve href="https://www.redhat.com/security/data/cve/CVE-2010-0175.html">CVE-2010-0175</cve>
+            <cve href="https://www.redhat.com/security/data/cve/CVE-2010-0176.html">CVE-2010-0176</cve>
+            <cve href="https://www.redhat.com/security/data/cve/CVE-2010-0177.html">CVE-2010-0177</cve>
+                <bugzilla href="http://bugzilla.redhat.com/578147" id="578147">CVE-2010-0174 Mozilla crashes with evidence of memory corruption</bugzilla>
+            <bugzilla href="http://bugzilla.redhat.com/578149" id="578149">CVE-2010-0175 Mozilla remote code execution with use-after-free in nsTreeSelection</bugzilla>
+            <bugzilla href="http://bugzilla.redhat.com/578150" id="578150">CVE-2010-0176 Mozilla Dangling pointer vulnerability in nsTreeContentView</bugzilla>
+            <bugzilla href="http://bugzilla.redhat.com/578152" id="578152">CVE-2010-0177 Mozilla Dangling pointer vulnerability in nsPluginArray</bugzilla>
+        <affected_cpe_list>
+            <cpe>cpe:/o:redhat:enterprise_linux</cpe>
+        </affected_cpe_list>
+</advisory>
+      </metadata>
+      <criteria operator="OR">
+ 
+ <criteria operator="AND">
+ <criterion test_ref="oval:com.redhat.rhba:tst:20040164001" comment="Red Hat Enterprise Linux 3 is installed" />
+ <criteria operator="OR">
+ 
+ <criteria operator="AND">
+ <criterion test_ref="oval:com.redhat.rhsa:tst:20100333010" comment="seamonkey-nspr is earlier than 0:1.0.9-0.52.el3" /><criterion test_ref="oval:com.redhat.rhsa:tst:20060578015" comment="seamonkey-nspr is signed with Red Hat master key" />
+ 
+</criteria>
+<criteria operator="AND">
+ <criterion test_ref="oval:com.redhat.rhsa:tst:20100333016" comment="seamonkey-dom-inspector is earlier than 0:1.0.9-0.52.el3" /><criterion test_ref="oval:com.redhat.rhsa:tst:20060578009" comment="seamonkey-dom-inspector is signed with Red Hat master key" />
+ 
+</criteria>
+<criteria operator="AND">
+ <criterion test_ref="oval:com.redhat.rhsa:tst:20100333006" comment="seamonkey-nspr-devel is earlier than 0:1.0.9-0.52.el3" /><criterion test_ref="oval:com.redhat.rhsa:tst:20060578017" comment="seamonkey-nspr-devel is signed with Red Hat master key" />
+ 
+</criteria>
+<criteria operator="AND">
+ <criterion test_ref="oval:com.redhat.rhsa:tst:20100333020" comment="seamonkey-mail is earlier than 0:1.0.9-0.52.el3" /><criterion test_ref="oval:com.redhat.rhsa:tst:20060578013" comment="seamonkey-mail is signed with Red Hat master key" />
+ 
+</criteria>
+<criteria operator="AND">
+ <criterion test_ref="oval:com.redhat.rhsa:tst:20100333002" comment="seamonkey is earlier than 0:1.0.9-0.52.el3" /><criterion test_ref="oval:com.redhat.rhsa:tst:20060578003" comment="seamonkey is signed with Red Hat master key" />
+ 
+</criteria>
+<criteria operator="AND">
+ <criterion test_ref="oval:com.redhat.rhsa:tst:20100333018" comment="seamonkey-devel is earlier than 0:1.0.9-0.52.el3" /><criterion test_ref="oval:com.redhat.rhsa:tst:20060578007" comment="seamonkey-devel is signed with Red Hat master key" />
+ 
+</criteria>
+<criteria operator="AND">
+ <criterion test_ref="oval:com.redhat.rhsa:tst:20100333014" comment="seamonkey-nss is earlier than 0:1.0.9-0.52.el3" /><criterion test_ref="oval:com.redhat.rhsa:tst:20060578019" comment="seamonkey-nss is signed with Red Hat master key" />
+ 
+</criteria>
+<criteria operator="AND">
+ <criterion test_ref="oval:com.redhat.rhsa:tst:20100333012" comment="seamonkey-nss-devel is earlier than 0:1.0.9-0.52.el3" /><criterion test_ref="oval:com.redhat.rhsa:tst:20060578021" comment="seamonkey-nss-devel is signed with Red Hat master key" />
+ 
+</criteria>
+<criteria operator="AND">
+ <criterion test_ref="oval:com.redhat.rhsa:tst:20100333004" comment="seamonkey-chat is earlier than 0:1.0.9-0.52.el3" /><criterion test_ref="oval:com.redhat.rhsa:tst:20060578005" comment="seamonkey-chat is signed with Red Hat master key" />
+ 
+</criteria>
+<criteria operator="AND">
+ <criterion test_ref="oval:com.redhat.rhsa:tst:20100333008" comment="seamonkey-js-debugger is earlier than 0:1.0.9-0.52.el3" /><criterion test_ref="oval:com.redhat.rhsa:tst:20060578011" comment="seamonkey-js-debugger is signed with Red Hat master key" />
+ 
+</criteria>
+
+</criteria>
+
+</criteria>
+<criteria operator="AND">
+ <criterion test_ref="oval:com.redhat.rhba:tst:20060288001" comment="Red Hat Enterprise Linux 4 is installed" />
+ <criteria operator="OR">
+ 
+ <criteria operator="AND">
+ <criterion test_ref="oval:com.redhat.rhsa:tst:20100333024" comment="seamonkey-dom-inspector is earlier than 0:1.0.9-54.el4_8" /><criterion test_ref="oval:com.redhat.rhsa:tst:20060578009" comment="seamonkey-dom-inspector is signed with Red Hat master key" />
+ 
+</criteria>
+<criteria operator="AND">
+ <criterion test_ref="oval:com.redhat.rhsa:tst:20100333027" comment="seamonkey-mail is earlier than 0:1.0.9-54.el4_8" /><criterion test_ref="oval:com.redhat.rhsa:tst:20060578013" comment="seamonkey-mail is signed with Red Hat master key" />
+ 
+</criteria>
+<criteria operator="AND">
+ <criterion test_ref="oval:com.redhat.rhsa:tst:20100333023" comment="seamonkey is earlier than 0:1.0.9-54.el4_8" /><criterion test_ref="oval:com.redhat.rhsa:tst:20060578003" comment="seamonkey is signed with Red Hat master key" />
+ 
+</criteria>
+<criteria operator="AND">
+ <criterion test_ref="oval:com.redhat.rhsa:tst:20100333026" comment="seamonkey-devel is earlier than 0:1.0.9-54.el4_8" /><criterion test_ref="oval:com.redhat.rhsa:tst:20060578007" comment="seamonkey-devel is signed with Red Hat master key" />
+ 
+</criteria>
+<criteria operator="AND">
+ <criterion test_ref="oval:com.redhat.rhsa:tst:20100333028" comment="seamonkey-chat is earlier than 0:1.0.9-54.el4_8" /><criterion test_ref="oval:com.redhat.rhsa:tst:20060578005" comment="seamonkey-chat is signed with Red Hat master key" />
+ 
+</criteria>
+<criteria operator="AND">
+ <criterion test_ref="oval:com.redhat.rhsa:tst:20100333025" comment="seamonkey-js-debugger is earlier than 0:1.0.9-54.el4_8" /><criterion test_ref="oval:com.redhat.rhsa:tst:20060578011" comment="seamonkey-js-debugger is signed with Red Hat master key" />
+ 
+</criteria>
+
+</criteria>
+
+</criteria>
+
+</criteria>
+
+    </definition>

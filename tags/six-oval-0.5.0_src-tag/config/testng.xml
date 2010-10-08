@@ -1,0 +1,61 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- // Project SIX: OVAL                                     // -->
+<!-- //                                                       // -->
+<!-- // TestNG Test Suite                                     // -->
+<!-- /////////////////////////////////////////////////////////// -->
+
+<!--
+@author     Akihito Nakamura, AIST
+@version    $Id$
+-->
+
+<suite name="six-oval" verbose="1" parallel="tests">
+
+    <test name="oval.core.service.restlet" enabled="false">
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.service.restlet.OvalRestClientTest"/>
+        </classes>
+    </test>
+
+
+
+    <test name="oval.core.store" enabled="false">
+<!--
+        <groups>
+            <run>
+                <include name="definitions.oval_definitions"/>
+            </run>
+        </groups>
+-->
+
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.store.StoreResultsTest"/>
+<!--
+            <class name="jp.go.aist.six.test.oval.core.store.StoreQueryTest"/>
+            <class name="jp.go.aist.six.test.oval.core.store.StoreResultsTest"/>
+            <class name="jp.go.aist.six.test.oval.core.store.StoreSCTest"/>
+            <class name="jp.go.aist.six.test.oval.core.store.StoreDefinitionsTest"/>
+-->
+        </classes>
+    </test>
+
+
+
+    <test name="oval.core.xml" enabled="true">
+        <groups>
+            <run>
+                <include name="definitions.*"/>
+                <!-- include name="results.oval_results"/ -->
+            </run>
+        </groups>
+
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlTest"/>
+        </classes>
+    </test>
+
+</suite>
+
+
