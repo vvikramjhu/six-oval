@@ -35,6 +35,7 @@ import java.util.Set;
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class OvalElementContainer<E extends OvalElement>
     extends Container<E>

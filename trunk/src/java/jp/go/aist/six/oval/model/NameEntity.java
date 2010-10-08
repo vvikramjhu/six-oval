@@ -28,6 +28,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class NameEntity
     extends AbstractPersistable

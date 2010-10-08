@@ -29,6 +29,7 @@ import java.util.HashMap;
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id: ComponentType.java 696 2010-04-26 10:22:00Z akihito $
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public final class EntityType
     implements Serializable

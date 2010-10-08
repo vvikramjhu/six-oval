@@ -29,6 +29,7 @@ import java.util.Comparator;
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class OvalElementComparator
     implements Comparator<OvalElement>
