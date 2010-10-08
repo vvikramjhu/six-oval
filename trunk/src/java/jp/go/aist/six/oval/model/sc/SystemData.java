@@ -1,8 +1,8 @@
 /*
- *  @ProductName@
- *  Copyright (C) @CopyrightYear@
- *    National Institute of Advanced Industrial Science and Technology (AIST)
- *    Registration Number: @AISTRegistrationNumber@
+ *  @product.title@
+ *  Copyright (C) @product.copyright-year@
+ *    @product.vendor@
+ *    Registration Number: @product.registration-number@
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,6 +37,7 @@ import java.util.Iterator;
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class SystemData
     extends Container<Item> //{1..*}
