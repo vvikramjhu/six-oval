@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import jp.go.aist.six.oval.model.common.Datatype;
+
 
 
 /**
@@ -31,6 +33,10 @@ package jp.go.aist.six.oval.model.definitions;
 public class EntityStateInt
     extends EntityStateBase
 {
+
+    public static final Datatype  FIXED_DATATYPE = Datatype.INT;
+
+
 
     /**
      * Constructor.
@@ -63,18 +69,28 @@ public class EntityStateInt
 
 
 
-//    public void setValue(
-//                    final int value
-//                    )
-//    {
-//        _value = value;
-//    }
-//
-//
-//    public int getValue()
-//    {
-//        return _value;
-//    }
+    //**************************************************************
+    //  EntityBase
+    //**************************************************************
+
+    @Override
+    public void setDatatype(
+                    final Datatype datatype
+                    )
+    {
+        if (datatype != null  &&  datatype != Datatype.INT) {
+            throw new IllegalArgumentException( "invalid datatype: " + datatype);
+        }
+
+        super.setDatatype( datatype );
+    }
+
+
+    @Override
+    public Datatype getDatatype()
+    {
+        return FIXED_DATATYPE;
+    }
 
 
 
@@ -108,11 +124,11 @@ public class EntityStateInt
 
 
 
-    @Override
-    public String toString()
-    {
-        return "EntityStateInt[" + super.toString() + "]";
-    }
+//    @Override
+//    public String toString()
+//    {
+//        return "EntityStateInt[" + super.toString() + "]";
+//    }
 
 }
 // EntityStateInt
