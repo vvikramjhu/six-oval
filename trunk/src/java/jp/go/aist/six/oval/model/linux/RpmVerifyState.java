@@ -32,6 +32,8 @@ import java.util.Map;
 
 
 /**
+ * The RpmVerifyState defines the different information
+ * that can be used to evaluate the specified rpm.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -63,6 +65,7 @@ public class RpmVerifyState
 
     private Map<Property, EntityStateBase>  _properties =
         new EnumMap<Property, EntityStateBase>( Property.class );
+    //{0..1}
 
 
 

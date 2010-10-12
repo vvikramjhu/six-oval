@@ -131,7 +131,7 @@ public class DpkgInfoObject
     @Override
     public String toString()
     {
-        return "DpkgInfoObject[" + super.toString() + "]";
+        return "dpkginfo_object[" + super.toString() + "]";
     }
 
 }

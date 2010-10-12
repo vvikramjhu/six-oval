@@ -21,7 +21,11 @@
 package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
+import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 
 
@@ -37,6 +41,10 @@ public abstract class LinuxPkgInfoObject
 
     private EntityObjectString  _name;
     //{1..1}
+
+
+    private Collection<Filter>  _filter = new ArrayList<Filter>();
+    //{0..*}
 
 
 
@@ -90,6 +98,46 @@ public abstract class LinuxPkgInfoObject
 
 
 
+    /**
+     */
+    public void setFilter(
+                    final Collection<? extends Filter> filters
+                    )
+    {
+        if (_filter != filters) {
+            _filter.clear();
+            if (filters != null  &&  filters.size() > 0) {
+                _filter.addAll( filters );
+            }
+        }
+    }
+
+
+    public boolean addFilter(
+                    final Filter filter
+                    )
+    {
+        if (filter == null) {
+            return false;
+        }
+
+        return _filter.add( filter );
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return _filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return _filter.iterator();
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -102,6 +150,9 @@ public abstract class LinuxPkgInfoObject
 
         EntityObjectString  name = getName();
         result = prime * result + ((name == null) ? 0 : name.hashCode());
+
+        Collection<Filter>  filter = getFilter();
+        result = prime * result + ((filter == null) ? 0 : filter.hashCode());
 
         return result;
     }
@@ -123,7 +174,12 @@ public abstract class LinuxPkgInfoObject
             EntityObjectString   this_name =  this.getName();
             if (this_name == other_name
                             ||  (this_name != null  &&  this_name.equals( other_name ))) {
-                return true;
+                Collection<Filter>  otherFilter = other.getFilter();
+                Collection<Filter>   thisFilter =  this.getFilter();
+                if (thisFilter == otherFilter
+                                ||  (thisFilter != null  &&  thisFilter.equals( otherFilter ))) {
+                    return true;
+                }
             }
         }
 
@@ -136,7 +192,9 @@ public abstract class LinuxPkgInfoObject
     public String toString()
     {
         EntityObjectString  name = getName();
+        Collection<Filter>  filter = getFilter();
         return "name=" + (name == null ? null : name.getData())
+                        + ", filter=" + filter
                         + ", " + super.toString();
     }
 

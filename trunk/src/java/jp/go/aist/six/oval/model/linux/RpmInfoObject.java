@@ -26,6 +26,7 @@ import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 
 
 /**
+ * The RpmInfoObject is used by a RpmInfoTest to define the object to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -130,7 +131,7 @@ public class RpmInfoObject
     @Override
     public String toString()
     {
-        return "RpmInfoObject[" + super.toString() + "]";
+        return "rpminfo_object[" + super.toString() + "]";
     }
 
 }

@@ -27,6 +27,8 @@ import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 
 
 /**
+ * The RpmInfoState defines the different information
+ * that can be used to evaluate the specified rpm.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
