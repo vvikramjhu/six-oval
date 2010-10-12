@@ -22,9 +22,9 @@ package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.util.castor.AbstractPersistable;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 
 
@@ -47,11 +47,11 @@ public class Affected
     extends AbstractPersistable
 {
 
-    private Collection<Platform>  _platform = new ArrayList<Platform>();
+    private Collection<Platform>  _platform = new HashSet<Platform>();
     //{0..*}
 
 
-    private Collection<Product>  _product = new ArrayList<Product>();
+    private Collection<Product>  _product = new HashSet<Product>();
     //{0..*}
 
 

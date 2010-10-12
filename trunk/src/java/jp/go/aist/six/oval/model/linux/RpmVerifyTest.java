@@ -32,14 +32,14 @@ import jp.go.aist.six.oval.model.definitions.Test;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class RpmInfoTest
+public class RpmVerifyTest
     extends Test
 {
 
     /**
      * Constructor.
      */
-    public RpmInfoTest()
+    public RpmVerifyTest()
     {
     }
 
@@ -47,7 +47,7 @@ public class RpmInfoTest
     /**
      * Constructor.
      */
-    public RpmInfoTest(
+    public RpmVerifyTest(
                     final String id,
                     final int version
                     )
@@ -59,7 +59,7 @@ public class RpmInfoTest
     /**
      * Constructor.
      */
-    public RpmInfoTest(
+    public RpmVerifyTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -99,7 +99,7 @@ public class RpmInfoTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof RpmInfoTest)) {
+        if (!(obj instanceof RpmVerifyTest)) {
             return false;
         }
 
@@ -111,8 +111,8 @@ public class RpmInfoTest
     @Override
     public String toString()
     {
-        return "RpmInfoTest[" + super.toString() + "]";
+        return "rpmverify_test[" + super.toString() + "]";
     }
 
 }
-// RpmInfoTest
+// RpmVerifyTest

@@ -299,7 +299,7 @@
 
 
         <field name="definitionClass" 
-            type="jp.go.aist.six.oval.model.definitions.DefinitionClass">
+            type="jp.go.aist.six.oval.model.common.DefinitionClass">
             <bind-xml name="class" node="attribute"/>
         </field>
 

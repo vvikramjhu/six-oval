@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.linux;
 
 
 
@@ -28,26 +28,23 @@ package jp.go.aist.six.oval.model.windows;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum FileProperty
+public enum RpmVerifyProperties
 {
-    FILEPATH,
-    PATH,
-    FILENAME,
-    OWNER,
-    SIZE,
-    A_TIME,
-    C_TIME,
-    M_TIME, // Int
-    MS_CHECKSUM,
-    VERSION,
-    TYPE, //FileType
-    DEVELOPMENT_CLASS,
-    COMPANY,
-    INTERNAL_NAME,
-    LANGUAGE,
-    ORIGINAL_FILENAME,
-    PRODUCT_NAME,
-    PRODUCT_VERSION;
+    NO_DEPS,
+    NO_DIGEST,
+    NO_FILES,
+    NO_SCRIPTS,
+    NO_SIGNATURE,
+    NO_LINK_TO,
+    NO_MD5,
+    NO_SIZE,
+    NO_USER,
+    NO_GROUP,
+    NO_MTIME,
+    NO_MODE,
+    NO_RDEV,
+    NO_CONFIG_FILES,
+    NO_GHOST_FILES;
 
 }
-// FileProperty
+// RpmVerifyProperties

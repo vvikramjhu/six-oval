@@ -34,8 +34,8 @@ public class TextFileContentBehaviors
     extends Behaviors
 {
 
-    public static final int  DEFAULT_MAX_DEPTH = 1;
-
+//    public static final int  DEFAULT_MAX_DEPTH = 1;
+    // corrected in OVAL Schema 5.8
 
 
     /**
@@ -43,7 +43,7 @@ public class TextFileContentBehaviors
      */
     public TextFileContentBehaviors()
     {
-        setMaxDepth( DEFAULT_MAX_DEPTH );
+//        setMaxDepth( DEFAULT_MAX_DEPTH );
     }
 
 
@@ -74,11 +74,11 @@ public class TextFileContentBehaviors
 
 
 
-    @Override
-    public String toString()
-    {
-        return "TextFileContentBehaviors[" + super.toString() + "]";
-    }
+//    @Override
+//    public String toString()
+//    {
+//        return "TextFileContentBehaviors[" + super.toString() + "]";
+//    }
 
 }
 // TextFileContentBehaviors

@@ -131,7 +131,7 @@
         </field>
 
         <field name="definitionClass" 
-            type="jp.go.aist.six.oval.model.definitions.DefinitionClass">
+            type="jp.go.aist.six.oval.model.common.DefinitionClass">
             <sql name="class" type="char"/>
         </field>
 
