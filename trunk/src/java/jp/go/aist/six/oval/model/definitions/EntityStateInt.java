@@ -78,7 +78,7 @@ public class EntityStateInt
                     final Datatype datatype
                     )
     {
-        if (datatype != null  &&  datatype != Datatype.INT) {
+        if (datatype != null  &&  datatype != FIXED_DATATYPE) {
             throw new IllegalArgumentException( "invalid datatype: " + datatype);
         }
 

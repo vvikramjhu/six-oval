@@ -18,33 +18,33 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.independent;
+package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 
 
 
 /**
- * The EntityStateFamily defines a string entity value that is
- * restricted to a set of enumerations.
- * Each valid enumeration is a high-level family of system operating system.
- * The empty string is also allowed to support empty elements
+ * The EntityStateRpmVerifyResult restricts a string value
+ * to the set of possible outcomes of checking an attribute
+ * of a file included in an RPM against the actual value
+ * of that attribute in the RPM database.
+ * The empty string is also allowed to support the empty element
  * associated with variable references.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateFamily
+public class EntityStateRpmVerifyResult
     extends EntityStateString
 {
 
     /**
      * Constructor.
      */
-    public EntityStateFamily()
+    public EntityStateRpmVerifyResult()
     {
     }
 
@@ -52,7 +52,7 @@ public class EntityStateFamily
     /**
      * Constructor.
      */
-    public EntityStateFamily(
+    public EntityStateRpmVerifyResult(
                     final String data
                     )
     {
@@ -63,8 +63,8 @@ public class EntityStateFamily
     /**
      * Constructor.
      */
-    public EntityStateFamily(
-                    final Family data
+    public EntityStateRpmVerifyResult(
+                    final RpmVerifyResult data
                     )
     {
         this( data, DEFAULT_OPERATION );
@@ -74,12 +74,12 @@ public class EntityStateFamily
     /**
      * Constructor.
      */
-    public EntityStateFamily(
+    public EntityStateRpmVerifyResult(
                     final String data,
                     final Operation operation
                     )
     {
-        this( Family.valueOf( data ), operation );
+        this( RpmVerifyResult.valueOf( data ), operation );
     }
 
 
@@ -87,8 +87,8 @@ public class EntityStateFamily
     /**
      * Constructor.
      */
-    public EntityStateFamily(
-                    final Family data,
+    public EntityStateRpmVerifyResult(
+                    final RpmVerifyResult data,
                     final Operation operation
                     )
     {
@@ -108,7 +108,7 @@ public class EntityStateFamily
     {
         if (data != null) {
             //validation
-            Family.valueOf( data );
+            RpmVerifyResult.valueOf( data );
         }
 
         super.setData( data );
@@ -137,7 +137,7 @@ public class EntityStateFamily
             return true;
         }
 
-        if (!(obj instanceof EntityStateFamily)) {
+        if (!(obj instanceof EntityStateRpmVerifyResult)) {
             return false;
         }
 
@@ -153,4 +153,4 @@ public class EntityStateFamily
 //    }
 
 }
-// EntityStateFamily
+// EntityStateRpmVerifyResult

@@ -22,23 +22,44 @@ package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
+import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
+import jp.go.aist.six.oval.model.definitions.SystemObject;
 
 
 
 /**
+ * The RpmVerifyObject is used by a rpmverity test to define
+ * a set of files within a set of RPMs to verify.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class RpmInfoObject
-    extends LinuxPkgInfoObject
+public class RpmVerifyObject
+    extends SystemObject
 {
+
+    private RpmVerifyBehaviors  _behaviors;
+    //{0..1}
+
+
+    private EntityObjectString  _name;
+    //{1..1}
+
+
+    private EntityObjectString  _filepath;
+    //{1..1}
+
+
+//    private Filter  _filter;
+    //{0..*}
+
+
 
     /**
      * Constructor.
      */
-    public RpmInfoObject()
+    public RpmVerifyObject()
     {
     }
 
@@ -46,7 +67,7 @@ public class RpmInfoObject
     /**
      * Constructor.
      */
-    public RpmInfoObject(
+    public RpmVerifyObject(
                     final String id,
                     final int version
                     )
@@ -58,7 +79,7 @@ public class RpmInfoObject
     /**
      * Constructor.
      */
-    public RpmInfoObject(
+    public RpmVerifyObject(
                     final String id,
                     final int version,
                     final String comment
@@ -71,20 +92,51 @@ public class RpmInfoObject
 
     /**
      */
-    public RpmInfoObject name(
-                    final EntityObjectString name
+    public void setBehaviors(
+                    final RpmVerifyBehaviors behaviors
                     )
     {
-        setName( name );
-        return this;
+        _behaviors = behaviors;
     }
 
 
-    public RpmInfoObject name(
-                    final String name
+    public RpmVerifyBehaviors getBehaviors()
+    {
+        return _behaviors;
+    }
+
+
+
+    /**
+     */
+    public void setName(
+                    final EntityObjectString name
                     )
     {
-        return name( new EntityObjectString( name ) );
+        _name = name;
+    }
+
+
+    public EntityObjectString getName()
+    {
+        return _name;
+    }
+
+
+
+    /**
+     */
+    public void setFilepath(
+                    final EntityObjectString filepath
+                    )
+    {
+        _filepath = filepath;
+    }
+
+
+    public EntityObjectString getFilepath()
+    {
+        return _filepath;
     }
 
 
@@ -96,7 +148,7 @@ public class RpmInfoObject
     @Override
     public EntityType getEntityType()
     {
-        return EntityType.LINUX_RPMINFO;
+        return EntityType.LINUX_RPMVERIFY;
     }
 
 
@@ -108,7 +160,19 @@ public class RpmInfoObject
     @Override
     public int hashCode()
     {
-        return super.hashCode();
+        final int prime = 37;
+        int result = super.hashCode();
+
+        RpmVerifyBehaviors  behaviors = getBehaviors();
+        result = prime * result + ((behaviors == null) ? 0 : behaviors.hashCode());
+
+        EntityObjectString  name = getName();
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+
+        EntityObjectString  filepath = getFilepath();
+        result = prime * result + ((filepath == null) ? 0 : filepath.hashCode());
+
+        return result;
     }
 
 
@@ -118,11 +182,29 @@ public class RpmInfoObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof RpmInfoObject)) {
+        if (!(obj instanceof RpmVerifyObject)) {
             return false;
         }
 
-        return super.equals( obj );
+        if (super.equals( obj )) {
+            RpmVerifyObject  other = (RpmVerifyObject)obj;
+            EntityObjectString  otherName = other.getName();
+            EntityObjectString   thisName =  this.getName();
+            if (EntityTypeHelper.equals( thisName, otherName )) {
+                EntityObjectString  otherFilepath = other.getFilepath();
+                EntityObjectString   thisFilepath =  this.getFilepath();
+                if (EntityTypeHelper.equals( thisFilepath, otherFilepath )) {
+                    RpmVerifyBehaviors  otherBehaviors = other.getBehaviors();
+                    RpmVerifyBehaviors   thisBehaviors =  this.getBehaviors();
+                    if (thisBehaviors == otherBehaviors
+                                    ||  (thisBehaviors != null  &&  thisBehaviors.equals( otherBehaviors ))) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
     }
 
 
@@ -130,8 +212,8 @@ public class RpmInfoObject
     @Override
     public String toString()
     {
-        return "RpmInfoObject[" + super.toString() + "]";
+        return "rpmverify_object[" + super.toString() + "]";
     }
 
 }
-// RpmInfoObject
+// RpmVerifyObject

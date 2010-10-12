@@ -41,6 +41,7 @@ public final class EntityType
     private static final String  _INDEPENDENT_UNKNOWN_  = "independent.unknown";
     private static final String  _LINUX_DPKGINFO_       = "linux.dpkginfo";
     private static final String  _LINUX_RPMINFO_        = "linux.rpminfo";
+    private static final String  _LINUX_RPMVERIFY_      = "linux.rpmverify";
     private static final String  _UNIX_UNAME_           = "unix.uname";
     private static final String  _WINDOWS_FILE_         = "windows.file";
     private static final String  _WINDOWS_METABASE_     = "windows.metabase";
@@ -57,6 +58,7 @@ public final class EntityType
     public static final EntityType  INDEPENDENT_UNKNOWN   = new EntityType( _INDEPENDENT_UNKNOWN_ );
     public static final EntityType  LINUX_DPKGINFO        = new EntityType( _LINUX_DPKGINFO_ );
     public static final EntityType  LINUX_RPMINFO         = new EntityType( _LINUX_RPMINFO_ );
+    public static final EntityType  LINUX_RPMVERIFY       = new EntityType( _LINUX_RPMVERIFY_ );
     public static final EntityType  UNIX_UNAME            = new EntityType( _UNIX_UNAME_ );
     public static final EntityType  WINDOWS_FILE          = new EntityType( _WINDOWS_FILE_ );
     public static final EntityType  WINDOWS_METABASE      = new EntityType( _WINDOWS_METABASE_ );
@@ -76,6 +78,7 @@ public final class EntityType
         map.put( _INDEPENDENT_UNKNOWN_, INDEPENDENT_UNKNOWN );
         map.put( _LINUX_DPKGINFO_,      LINUX_DPKGINFO      );
         map.put( _LINUX_RPMINFO_,       LINUX_RPMINFO       );
+        map.put( _LINUX_RPMVERIFY_,     LINUX_RPMVERIFY     );
         map.put( _UNIX_UNAME_,          UNIX_UNAME          );
         map.put( _WINDOWS_FILE_,        WINDOWS_FILE        );
         map.put( _WINDOWS_METABASE_,    WINDOWS_METABASE    );

@@ -30,18 +30,18 @@ import jp.go.aist.six.oval.model.common.Datatype;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateInt
+public class EntityStateBool
     extends EntityStateBase
 {
 
-    public static final Datatype  FIXED_DATATYPE = Datatype.INT;
+    public static final Datatype  FIXED_DATATYPE = Datatype.BOOLEAN;
 
 
 
     /**
      * Constructor.
      */
-    public  EntityStateInt()
+    public  EntityStateBool()
     {
     }
 
@@ -49,7 +49,7 @@ public class EntityStateInt
     /**
      * Constructor.
      */
-    public EntityStateInt(
+    public EntityStateBool(
                     final String data
                     )
     {
@@ -60,8 +60,8 @@ public class EntityStateInt
     /**
      * Constructor.
      */
-    public EntityStateInt(
-                    final int data
+    public EntityStateBool(
+                    final boolean data
                     )
     {
         super( String.valueOf( data ) );
@@ -78,7 +78,7 @@ public class EntityStateInt
                     final Datatype datatype
                     )
     {
-        if (datatype != null  &&  datatype != Datatype.INT) {
+        if (datatype != null  &&  datatype != FIXED_DATATYPE) {
             throw new IllegalArgumentException( "invalid datatype: " + datatype);
         }
 
@@ -115,20 +115,12 @@ public class EntityStateInt
             return true;
         }
 
-        if (!(obj instanceof EntityStateInt)) {
+        if (!(obj instanceof EntityStateBool)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return "EntityStateInt[" + super.toString() + "]";
-//    }
-
 }
-// EntityStateInt
+// EntityStateBool
