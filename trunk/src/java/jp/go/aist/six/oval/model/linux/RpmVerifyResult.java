@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.common;
+package jp.go.aist.six.oval.model.linux;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -26,62 +26,56 @@ import java.util.HashMap;
 
 
 /**
- * The Check defines acceptable check values,
- * which are used to determine the final result of something
- * based on the results of individual components.
+ * The set of possible outcomes of checking an attribute of a file
+ * included in an RPM against the actual value of that attribute
+ * in the RPM database.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class Check
+public final class RpmVerifyResult
     implements Serializable
 {
 
-    private static final String  _ALL_           = "all";
-    private static final String  _AT_LEAST_ONE_  = "at least one";
-    private static final String  _NONE_EXIST_    = "none exist";
-    private static final String  _NONE_SATISFY_  = "none satisfy";
-    private static final String  _ONLY_ONE_      = "only one";
+    private static final String  _PASS_           = "pass";
+    private static final String  _FAIL_           = "fail";
+    private static final String  _NOT_PERFORMED_  = "not performed";
 
 
-    public static final Check  ALL           = new Check( _ALL_ );
-    public static final Check  AT_LEAST_ONE  = new Check( _AT_LEAST_ONE_ );
-    public static final Check  NONE_EXIST    = new Check( _NONE_EXIST_ );
-    public static final Check  NONE_SATISFY  = new Check( _NONE_SATISFY_ );
-    public static final Check  ONLY_ONE      = new Check( _ONLY_ONE_ );
+    public static final RpmVerifyResult  PASS           = new RpmVerifyResult( _PASS_ );
+    public static final RpmVerifyResult  FAIL           = new RpmVerifyResult( _FAIL_ );
+    public static final RpmVerifyResult  NOT_PERFORMED  = new RpmVerifyResult( _NOT_PERFORMED_ );
 
 
 
-    private static HashMap<String, Check> _INIT_()
+    private static HashMap<String, RpmVerifyResult> _INIT_()
     {
-        HashMap<String, Check>  map = new HashMap<String, Check>();
-        map.put( _ALL_,          ALL          );
-        map.put( _AT_LEAST_ONE_, AT_LEAST_ONE );
-        map.put( _NONE_EXIST_,   NONE_EXIST   );
-        map.put( _NONE_SATISFY_, NONE_SATISFY );
-        map.put( _ONLY_ONE_,     ONLY_ONE     );
+        HashMap<String, RpmVerifyResult>  map = new HashMap<String, RpmVerifyResult>();
+        map.put( _PASS_,           PASS          );
+        map.put( _FAIL_,           FAIL          );
+        map.put( _NOT_PERFORMED_,  NOT_PERFORMED );
         return map;
     }
 
-    private static final HashMap<String, Check>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, RpmVerifyResult>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static Check valueOf(
+    public static RpmVerifyResult valueOf(
                     final String name
                     )
     {
-        Check  flag = null;
+        RpmVerifyResult  flag = null;
         if (name != null) {
             flag = _INSTANCES_.get( name );
         }
 
         if (flag == null) {
-            throw new IllegalArgumentException( "invalid check: " + name );
+            throw new IllegalArgumentException( "invalid RPM verify result: " + name );
         }
 
         return flag;
@@ -97,7 +91,7 @@ public final class Check
     /**
      * Constructor.
      */
-    private Check(
+    private RpmVerifyResult(
                     final String name
                     )
     {
@@ -115,9 +109,9 @@ public final class Check
 
 
 
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
     //  java.lang.Object
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
 
     @Override
     public String toString()
@@ -126,4 +120,4 @@ public final class Check
     }
 
 }
-// Check
+// RpmVerifyResult
