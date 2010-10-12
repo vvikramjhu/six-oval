@@ -27,6 +27,8 @@ import jp.go.aist.six.oval.model.definitions.Test;
 
 
 /**
+ * The RpmVerifyTest is used to verify the integrity of installed RPMs.
+ * This test aligns with the rpm -V command for verifying RPMs.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -77,7 +79,7 @@ public class RpmVerifyTest
 
     public EntityType getEntityType()
     {
-        return EntityType.LINUX_RPMINFO;
+        return EntityType.LINUX_RPMVERIFY;
     }
 
 
