@@ -26,7 +26,7 @@ import java.util.HashMap;
 
 
 /**
- * The OperatorEnumeration simple type defines acceptable operators.
+ * The Operator enumeration defines acceptable operators.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

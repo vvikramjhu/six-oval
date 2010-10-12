@@ -23,7 +23,11 @@ package jp.go.aist.six.oval.model.linux;
 import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
+import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 
 
@@ -51,7 +55,7 @@ public class RpmVerifyObject
     //{1..1}
 
 
-//    private Filter  _filter;
+    private Collection<Filter>  _filter = new ArrayList<Filter>();
     //{0..*}
 
 
@@ -141,6 +145,55 @@ public class RpmVerifyObject
 
 
 
+    /**
+     */
+    public void setFilter(
+                    final Collection<? extends Filter> filters
+                    )
+    {
+        if (_filter != filters) {
+            _filter.clear();
+            if (filters != null  &&  filters.size() > 0) {
+                _filter.addAll( filters );
+            }
+        }
+    }
+
+
+    public boolean addFilter(
+                    final Filter filter
+                    )
+    {
+        if (filter == null) {
+            return false;
+        }
+
+        return _filter.add( filter );
+    }
+
+
+    public RpmVerifyObject filter(
+                    final Filter filter
+                    )
+    {
+        addFilter( filter );
+        return this;
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return _filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return _filter.iterator();
+    }
+
+
+
     //**************************************************************
     //  SystemObject
     //**************************************************************
@@ -172,6 +225,9 @@ public class RpmVerifyObject
         EntityObjectString  filepath = getFilepath();
         result = prime * result + ((filepath == null) ? 0 : filepath.hashCode());
 
+        Collection<Filter>  filter = getFilter();
+        result = prime * result + ((filter == null) ? 0 : filter.hashCode());
+
         return result;
     }
 
@@ -198,7 +254,12 @@ public class RpmVerifyObject
                     RpmVerifyBehaviors   thisBehaviors =  this.getBehaviors();
                     if (thisBehaviors == otherBehaviors
                                     ||  (thisBehaviors != null  &&  thisBehaviors.equals( otherBehaviors ))) {
-                        return true;
+                        Collection<Filter>  otherFilter = other.getFilter();
+                        Collection<Filter>   thisFilter =  this.getFilter();
+                        if (thisFilter == otherFilter
+                                        ||  (thisFilter != null  &&  thisFilter.equals( otherFilter ))) {
+                            return true;
+                        }
                     }
                 }
             }
@@ -212,7 +273,12 @@ public class RpmVerifyObject
     @Override
     public String toString()
     {
-        return "rpmverify_object[" + super.toString() + "]";
+        return "rpmverify_object[" + super.toString()
+                        + ", behaviors=" + getBehaviors()
+                        + ", name=" + getName()
+                        + ", filepath=" + getFilepath()
+                        + ", filter=" + getFilter()
+                        + "]";
     }
 
 }

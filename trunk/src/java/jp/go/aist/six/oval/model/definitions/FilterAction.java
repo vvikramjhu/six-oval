@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.common;
+package jp.go.aist.six.oval.model.definitions;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -26,57 +26,52 @@ import java.util.HashMap;
 
 
 /**
- * The OperatorEnumeration simple type defines acceptable operators.
+ * The FilterAction enumeration defines the different options
+ * for filtering sets of items.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class Operator
+public final class FilterAction
     implements Serializable
 {
 
-    private static final String  _AND_  = "AND";
-    private static final String  _ONE_  = "ONE";
-    private static final String  _OR_   = "OR";
-    private static final String  _XOR_  = "XOR";
+    private static final String  _EXCLUDE_  = "exclude";
+    private static final String  _INCLUDE_  = "include";
 
 
-    public static final Operator  AND = new Operator( _AND_ );
-    public static final Operator  ONE = new Operator( _ONE_ );
-    public static final Operator  OR  = new Operator( _OR_ );
-    public static final Operator  XOR = new Operator( _XOR_ );
+    public static final FilterAction  EXCLUDE = new FilterAction( _EXCLUDE_ );
+    public static final FilterAction  INCLUDE = new FilterAction( _INCLUDE_ );
 
 
 
-    private static HashMap<String, Operator> _INIT_()
+    private static HashMap<String, FilterAction> _INIT_()
     {
-        HashMap<String, Operator>  map = new HashMap<String, Operator>();
-        map.put( _AND_,  AND );
-        map.put( _ONE_,  ONE );
-        map.put( _OR_,   OR  );
-        map.put( _XOR_,  XOR );
+        HashMap<String, FilterAction>  map = new HashMap<String, FilterAction>();
+        map.put( _EXCLUDE_,  EXCLUDE );
+        map.put( _INCLUDE_,  INCLUDE );
         return map;
     }
 
-    private static final HashMap<String, Operator>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, FilterAction>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static Operator valueOf(
+    public static FilterAction valueOf(
                     final String name
                     )
     {
-        Operator  flag = null;
+        FilterAction  flag = null;
         if (name != null) {
             flag = _INSTANCES_.get( name );
         }
 
         if (flag == null) {
-            throw new IllegalArgumentException( "invalid operator: " + name );
+            throw new IllegalArgumentException( "invalid filter action: " + name );
         }
 
         return flag;
@@ -91,7 +86,7 @@ public final class Operator
     /**
      * Constructor.
      */
-    private Operator(
+    private FilterAction(
                     final String name
                     )
     {
@@ -110,7 +105,7 @@ public final class Operator
 
 
     //**************************************************************
-    //  extends Object
+    //  java.lang.Object
     //**************************************************************
 
     @Override
@@ -120,4 +115,4 @@ public final class Operator
     }
 
 }
-// Operator
+// FilterAction

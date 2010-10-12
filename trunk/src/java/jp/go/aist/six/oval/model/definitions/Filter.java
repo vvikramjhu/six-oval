@@ -20,50 +20,39 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.util.castor.AbstractPersistable;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
 
 
 
 /**
- * A description of the family, platform(s), and product(s)
- * to be evaluated for an OVAL Definition.
- * <p>Properties:</p>
- * <ul>
- *   <li>family (required)</li>
- *   <li>platform (0..*)</li>
- *   <li>product (0..*)</li>
- * </ul>
+ * The Filter provides a reference to an existing OVAL State
+ * and includes an optional action property.
+ * The action property is used to specify whether items
+ * that match the referenced OVAL State will be included in the resulting set
+ * or excluded from the resulting set.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Affected
+public class Filter
     extends AbstractPersistable
 {
 
-    private Collection<Platform>  _platform = new HashSet<Platform>();
-    //{0..*}
+    private String  _value;
+    //{simpleContent}
 
 
-    private Collection<Product>  _product = new HashSet<Product>();
-    //{0..*}
-
-
-    private Family  _family;
-    //{required}
+    public static final FilterAction  DEFAULT_ACTION = FilterAction.EXCLUDE;
+    private FilterAction  _action;
+    //{optional, default='exclude'}
 
 
 
     /**
      * Constructor.
      */
-    public Affected()
+    public Filter()
     {
     }
 
@@ -71,180 +60,59 @@ public class Affected
     /**
      * Constructor.
      */
-    public Affected(
-                    final Family family
+    public Filter(
+                    final String value
                     )
     {
-        setFamily( family );
+        this( value, DEFAULT_ACTION );
     }
 
 
     /**
      * Constructor.
      */
-    public Affected(
-                    final Family family,
-                    final Collection<? extends Platform> platform,
-                    final Collection<? extends Product> product
+    public Filter(
+                    final String value,
+                    final FilterAction action
                     )
     {
-        setFamily( family );
-        setPlatform( platform );
-        setProduct( product );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public Affected(
-                    final Family family,
-                    final Platform[] platform,
-                    final Product[] product
-                    )
-    {
-        setFamily( family );
-
-        if (platform != null) {
-            setPlatform( Arrays.asList( platform ) );
-        }
-
-        if (product != null) {
-            setProduct( Arrays.asList( product ) );
-        }
+        setAction( action );
     }
 
 
 
     /**
      */
-    public void setPlatform(
-                    final Collection<? extends Platform> platforms
+    public void setValue(
+                    final String value
                     )
     {
-        if (_platform != platforms) {
-            _platform.clear();
-            if (platforms != null  &&  platforms.size() > 0) {
-                _platform.addAll( platforms );
-            }
-        }
+        _value = value;
     }
 
 
-    public boolean addPlatform(
-                    final Platform platform
-                    )
+    /**
+     */
+    public String getValue()
     {
-        if (platform == null) {
-            return false;
-        }
-
-        return _platform.add( platform );
-    }
-
-
-    public Affected platform(
-                    final Platform platform
-                    )
-    {
-        addPlatform( platform );
-        return this;
-    }
-
-
-    public Affected platform(
-                    final String platform
-                    )
-    {
-        addPlatform( new Platform( platform ) );
-        return this;
-    }
-
-
-    public Collection<Platform> getPlatform()
-    {
-        return _platform;
-    }
-
-
-    public Iterator<Platform> iteratePlatform()
-    {
-        return _platform.iterator();
+        return _value;
     }
 
 
 
     /**
      */
-    public void setProduct(
-                    final Collection<? extends Product> products
+    public void setAction(
+                    final FilterAction action
                     )
     {
-        if (_product != products) {
-            _product.clear();
-            if (products != null  &&  products.size() > 0) {
-                _product.addAll( products );
-            }
-        }
+        _action = action;
     }
 
 
-    public boolean addProduct(
-                    final Product product
-                    )
+    public FilterAction getAction()
     {
-        if (product == null) {
-            return false;
-        }
-
-        return _product.add( product );
-    }
-
-
-    public Affected product(
-                    final Product product
-                    )
-    {
-        addProduct( product );
-        return this;
-    }
-
-
-    public Affected product(
-                    final String product
-                    )
-    {
-        addProduct( new Product( product ) );
-        return this;
-    }
-
-
-    public Collection<Product> getProduct()
-    {
-        return _product;
-    }
-
-
-    public Iterator<Product> iterateProduct()
-    {
-        return _product.iterator();
-    }
-
-
-
-    /**
-     */
-    public void setFamily(
-                    final Family family
-                    )
-    {
-        _family = family;
-    }
-
-
-    public Family getFamily()
-    {
-        return _family;
+        return (_action == null ? DEFAULT_ACTION : _action);
     }
 
 
@@ -259,14 +127,11 @@ public class Affected
         final int  prime = 37;
         int  result = 17;
 
-        Collection<Platform>  platform = getPlatform();
-        result = prime * result + ((platform == null) ? 0 : platform.hashCode());
+        String  value = getValue();
+        result = prime * result + ((value == null) ? 0 : value.hashCode());
 
-        Collection<Product>  product = getProduct();
-        result = prime * result + ((product == null) ? 0 : product.hashCode());
-
-        Family  family = getFamily();
-        result = prime * result + ((family == null) ? 0 : family.hashCode());
+        FilterAction  action = getAction();
+        result = prime * result + ((action == null) ? 0 : action.hashCode());
 
         return result;
     }
@@ -282,70 +147,32 @@ public class Affected
             return true;
         }
 
-        if (!(obj instanceof Affected)) {
+        if (!(obj instanceof Filter)) {
             return false;
         }
 
-        Affected  other = (Affected)obj;
-        Collection<Product>  other_product = other.getProduct();
-        Collection<Product>   this_product =  this.getProduct();
-        if (this_product == other_product
-                        ||  (this_product != null  &&  other_product != null
-                                        &&  this_product.size() == other_product.size()
-                                        &&  this_product.containsAll( other_product ))) {
-            Collection<Platform>  other_platform = other.getPlatform();
-            Collection<Platform>   this_platform =  this.getPlatform();
-            if (this_platform == other_platform
-                        ||  (this_platform != null  &&  other_platform != null
-                                        &&  this_platform.size() == other_platform.size()
-                                        &&  this_platform.containsAll( other_platform ))) {
-                if (this.getFamily() == other.getFamily()) {
-                    return true;
-                }
+        Filter  other = (Filter)obj;
+        String  otherValue = other.getValue();
+        String   thisValue =  this.getValue();
+        if (thisValue == otherValue
+                        ||  (thisValue != null  &&  thisValue.equals( otherValue ))) {
+            if (this.getAction() == other.getAction()) {
+                return true;
             }
         }
 
         return false;
     }
-//    {
-//        if (this == obj) {
-//            return true;
-//        }
-//
-//        if (!(obj instanceof Affected)) {
-//            return false;
-//        }
-//
-//        Affected  other = (Affected)obj;
-//        Collection<Product>  other_product = other.getProduct();
-//        Collection<Product>   this_product =  this.getProduct();
-//        if (this_product == other_product
-//                        ||  (this_product != null
-//                                        &&  this_product.equals( other_product ))) {
-//            Collection<Platform>  other_platform = other.getPlatform();
-//            Collection<Platform>   this_platform =  this.getPlatform();
-//            if (this_platform == other_platform
-//                        ||  (this_platform != null
-//                                        &&  this_platform.equals( other_platform ))) {
-//                if (this.getFamily() == other.getFamily()) {
-//                    return true;
-//                }
-//            }
-//        }
-//
-//        return false;
-//    }
 
 
 
     @Override
     public String toString()
     {
-        return "Affected[family=" + getFamily()
-                        + ", platform=" + getPlatform()
-                        + ", product="  + getProduct()
+        return "filter[" + getValue()
+                        + ", action=" + getAction()
                         + "]";
     }
 
 }
-// Affected
+// Filter
