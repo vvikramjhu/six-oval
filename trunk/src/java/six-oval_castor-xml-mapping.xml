@@ -285,6 +285,23 @@
 
 
     <!-- ======================================================= -->
+    <!-- Notes                                                   -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.definitions.Notes">
+        <map-to xml="notes"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="note" type="string"
+            collection="collection"
+            set-method="addNote"
+            get-method="iterateNote">
+            <bind-xml name="note" node="text" location="note"/>
+        </field>
+    </class>
+
+
+
+    <!-- ======================================================= -->
     <!-- Definition                                              -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definitions.Definition"
@@ -297,6 +314,10 @@
             <bind-xml name="metadata" node="element"/>
         </field>
 
+        <field name="notes" 
+            type="jp.go.aist.six.oval.model.definitions.Notes">
+            <bind-xml name="notes" node="element"/>
+        </field>
 
         <field name="definitionClass" 
             type="jp.go.aist.six.oval.model.common.DefinitionClass">
@@ -527,6 +548,11 @@
     <class name="jp.go.aist.six.oval.model.definitions.Test"
         extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
         verify-constructable="false">
+
+        <field name="notes" 
+            type="jp.go.aist.six.oval.model.definitions.Notes">
+            <bind-xml name="notes" node="element"/>
+        </field>
 
         <field name="check" 
             type="jp.go.aist.six.oval.model.common.Check">
