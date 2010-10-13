@@ -176,7 +176,7 @@
     <!--
     This is NOT an OVAL Schema element. 
     -->
-    <class name="jp.go.aist.six.oval.model.common.Behaviors"
+    <class name="jp.go.aist.six.oval.model.Behaviors"
         verify-constructable="false">
 
         <field name="maxDepth" type="int">
@@ -184,7 +184,7 @@
         </field>
 
         <field name="recurseDirection"
-            type="jp.go.aist.six.oval.model.common.RecurseDirection">
+            type="jp.go.aist.six.oval.model.RecurseDirection">
             <bind-xml name="recurse_direction" node="attribute"/>
         </field>
     </class>
@@ -2959,7 +2959,7 @@
     <!-- FileBehaviors                                           -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.FileBehaviors"
-        extends="jp.go.aist.six.oval.model.common.Behaviors">
+        extends="jp.go.aist.six.oval.model.Behaviors">
         <map-to xml="behaviors"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 
@@ -2975,7 +2975,7 @@
     <!-- RegistryBehaviors                                       -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.RegistryBehaviors"
-        extends="jp.go.aist.six.oval.model.common.Behaviors">
+        extends="jp.go.aist.six.oval.model.Behaviors">
         <map-to xml="behaviors"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
 

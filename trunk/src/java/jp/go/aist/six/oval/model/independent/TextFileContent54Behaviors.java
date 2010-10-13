@@ -24,7 +24,7 @@ package jp.go.aist.six.oval.model.independent;
 
 
 /**
- * The Textfilecontent54Behaviors defines a number of behaviors
+ * The TextFileContent54Behaviors defines a number of behaviors
  * that allow a more detailed definition of the textfilecontent54 object
  * being specified.
  *
