@@ -208,8 +208,8 @@ CONTENTS:
             haltonfailure="true"
             >
             <xmlfileset dir="${config.src.dir}" includes="testng.xml"/>
-            <jvmarg value="-Xms256m"/>
-            <jvmarg value="-Xmx256m"/>
+            <jvmarg value="-Xms512m"/>
+            <jvmarg value="-Xmx512m"/>
             <!-- sysproperty key="six.oval.debian.dsc" value="test/data/debian/dsc"/ -->
         </testng>
     </target>

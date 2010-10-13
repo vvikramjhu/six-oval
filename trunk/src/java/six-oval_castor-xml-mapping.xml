@@ -1896,6 +1896,129 @@
 
 
     <!-- ======================================================= -->
+    <!-- FileBehaviors                                           -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.independent.FileBehaviors">
+
+        <field name="maxDepth" type="int">
+            <bind-xml name="max_depth" node="attribute"/>
+        </field>
+
+        <field name="recurse"
+            type="jp.go.aist.six.oval.model.Recurse">
+            <bind-xml name="recurse" node="attribute"/>
+        </field>
+
+        <field name="recurseDirection"
+            type="jp.go.aist.six.oval.model.RecurseDirection">
+            <bind-xml name="recurse_direction" node="attribute"/>
+        </field>
+
+        <field name="recurseFileSystem"
+            type="jp.go.aist.six.oval.model.RecurseFileSystem">
+            <bind-xml name="recurse_file_system" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <!-- ======================================================= -->
+    <!-- TextFileContent54Test                                   -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.independent.TextFileContent54Test"
+        extends="jp.go.aist.six.oval.model.definitions.Test">
+        <map-to xml="textfilecontent54_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRef">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRef"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+    <!-- ======================================================= -->
+    <!-- TextFileContent54Object                                 -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.independent.TextFileContent54Object"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject">
+        <map-to xml="textfilecontent54_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="behaviors" 
+            type="jp.go.aist.six.oval.model.independent.FileBehaviors">
+            <bind-xml name="behaviors" node="element"/>
+        </field>
+        
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+        
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
+            <bind-xml name="path" node="element"/>
+        </field>
+        
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
+            <bind-xml name="filename" node="element"/>
+        </field>
+
+        <field name="pattern" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
+            <bind-xml name="pattern" node="element"/>
+        </field>
+
+        <field name="instance" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectInt">
+            <bind-xml name="instance" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ======================================================= -->
+    <!-- TextFileContent54State                                  -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.independent.TextFileContent54State"
+        extends="jp.go.aist.six.oval.model.definitions.State">
+        <map-to xml="textfilecontent54_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
+            <bind-xml name="path" node="element"/>
+        </field>
+
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
+            <bind-xml name="filename" node="element"/>
+        </field>
+
+        <field name="line" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
+            <bind-xml name="line" node="element"/>
+        </field>
+
+        <field name="subexpression" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimple">
+            <bind-xml name="subexpression" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ======================================================= -->
     <!-- TextFileContentTest                                     -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.independent.TextFileContentTest"

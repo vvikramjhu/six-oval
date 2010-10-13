@@ -62,6 +62,7 @@ DROP TABLE IF EXISTS oval_assoc__d_definitions__d_definition;
 
 
 DROP TABLE IF EXISTS oval_d_test_family;
+DROP TABLE IF EXISTS oval_d_test_textfilecontent54;
 DROP TABLE IF EXISTS oval_d_test_textfilecontent;
 DROP TABLE IF EXISTS oval_d_test_unknown;
 DROP TABLE IF EXISTS oval_d_test_dpkginfo;
@@ -75,6 +76,7 @@ DROP TABLE IF EXISTS oval_d_test__state_ref;
 DROP TABLE IF EXISTS oval_d_test;
 
 DROP TABLE IF EXISTS oval_d_object_family;
+DROP TABLE IF EXISTS oval_d_object_textfilecontent54;
 DROP TABLE IF EXISTS oval_d_object_textfilecontent;
 DROP TABLE IF EXISTS oval_d_object_dpkginfo;
 DROP TABLE IF EXISTS oval_d_object_rpminfo;
@@ -86,6 +88,7 @@ DROP TABLE IF EXISTS oval_d_object_wmi;
 DROP TABLE IF EXISTS oval_d_object;
 
 DROP TABLE IF EXISTS oval_d_state_family;
+DROP TABLE IF EXISTS oval_d_state_textfilecontent54;
 DROP TABLE IF EXISTS oval_d_state_textfilecontent;
 DROP TABLE IF EXISTS oval_d_state_dpkginfo;
 DROP TABLE IF EXISTS oval_d_state_rpminfo;

@@ -1257,6 +1257,104 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
+/* TextFileContent54Test                                          */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_d_test_textfilecontent54
+(
+    PID                 VARCHAR(64)     NOT NULL,
+                        /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
+
+    /* (FK) */
+    
+    /* (PK) */
+    PRIMARY KEY (PID)
+
+    /* INDEX */
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
+/* TextFileContent54Object                                        */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_d_object_textfilecontent54
+(
+    PID                 VARCHAR(64)     NOT NULL,
+                        /* id + version, e.g. oval:org.mitre.oval:obj:419:1 */
+
+    /* path */
+    path                VARCHAR(255),
+    path_var_ref        VARCHAR(255),
+    path_var_check      VARCHAR(16)     NOT NULL    DEFAULT 'all',
+                        /* enum('all', 'at least one',...) */
+/*  path_datatype       VARCHAR(16)     NOT NULL    DEFAULT 'string', */
+                        /*** all the datatype may be 'string'. ***/
+    path_operation      VARCHAR(32)     NOT NULL    DEFAULT 'equals',
+                        /* enum('equals', ..., 'case insensitive not equal', ...) */
+/*  path_mask           BOOLEAN         NOT NULL    DEFAULT false,    */
+
+    /* filename */
+    filename            VARCHAR(255),
+
+    /* pattern */
+    pattern             VARCHAR(255),
+    pattern_var_ref     VARCHAR(255),
+    pattern_var_check   VARCHAR(16)     NOT NULL    DEFAULT 'all',
+                        /* enum('all', 'at least one',...) */
+/*  pattern_datatype    VARCHAR(16)     NOT NULL    DEFAULT 'string', */
+                        /*** all the datatype may be 'string'. ***/
+    pattern_operation   VARCHAR(32)     NOT NULL    DEFAULT 'equals',
+                        /* enum('equals', ..., 'case insensitive not equal', ...) */
+/*  pattern_mask        BOOLEAN         NOT NULL    DEFAULT false,    */
+
+    /* behaviors */
+/*  max_depth           INT             NOT NULL    DEFAULT -1,      */
+/*  recurse_direction   VARCHAR(8)      NOT NULL    DEFAULT 'none',  */
+                        /* enum('none', 'up', 'down') */
+
+    /* pattern */
+    instance            VARCHAR(8),
+
+    /* (PK) */
+    PRIMARY KEY (PID)
+
+    /* INDEX */
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
+/* TextFileContent54State                                         */
+/* ============================================================== */
+CREATE TABLE IF NOT EXISTS oval_d_state_textfilecontent54
+(
+    PID                 VARCHAR(64)     NOT NULL,
+                        /* id + version, e.g. oval:org.mitre.oval:ste:419:1 */
+
+    text                VARCHAR(255),
+    text_operation      VARCHAR(32)     DEFAULT 'equals',
+
+    subexpression       VARCHAR(255),
+    subexpression_operation VARCHAR(32) DEFAULT 'equals',
+                        /* enum('equals', ..., 'case insensitive not equal', ...) */
+
+    /* (FK) */
+    
+    /* (PK) */
+    PRIMARY KEY (PID)
+
+    /* INDEX */
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+/* ============================================================== */
 /* TextFileContentTest                                            */
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_test_textfilecontent

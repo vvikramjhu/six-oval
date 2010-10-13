@@ -62,6 +62,7 @@ DELETE FROM oval_assoc__d_definitions__d_definition;
 
 
 DELETE FROM oval_d_test_family;
+DELETE FROM oval_d_test_textfilecontent54;
 DELETE FROM oval_d_test_textfilecontent;
 DELETE FROM oval_d_test_unknown;
 DELETE FROM oval_d_test_dpkginfo;
@@ -75,6 +76,7 @@ DELETE FROM oval_d_test__state_ref;
 DELETE FROM oval_d_test;
 
 DELETE FROM oval_d_object_family;
+DELETE FROM oval_d_object_textfilecontent54;
 DELETE FROM oval_d_object_textfilecontent;
 DELETE FROM oval_d_object_dpkginfo;
 DELETE FROM oval_d_object_rpminfo;
@@ -86,6 +88,7 @@ DELETE FROM oval_d_object_wmi;
 DELETE FROM oval_d_object;
 
 DELETE FROM oval_d_state_family;
+DELETE FROM oval_d_state_textfilecontent54;
 DELETE FROM oval_d_state_textfilecontent;
 DELETE FROM oval_d_state_dpkginfo;
 DELETE FROM oval_d_state_rpminfo;
