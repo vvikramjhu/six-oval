@@ -38,6 +38,7 @@ public final class EntityType
     private static final String  _UNKNOWN_              = "unknown";
     private static final String  _INDEPENDENT_FAMILY_   = "independent.family";
     private static final String  _INDEPENDENT_TEXTFILECONTENT_   = "independent.textfilecontent";
+    private static final String  _INDEPENDENT_TEXTFILECONTENT54_ = "independent.textfilecontent54";
     private static final String  _INDEPENDENT_UNKNOWN_  = "independent.unknown";
     private static final String  _LINUX_DPKGINFO_       = "linux.dpkginfo";
     private static final String  _LINUX_RPMINFO_        = "linux.rpminfo";
@@ -55,6 +56,7 @@ public final class EntityType
     public static final EntityType  UNKNOWN               = new EntityType( _UNKNOWN_ );
     public static final EntityType  INDEPENDENT_FAMILY    = new EntityType( _INDEPENDENT_FAMILY_ );
     public static final EntityType  INDEPENDENT_TEXTFILECONTENT = new EntityType( _INDEPENDENT_TEXTFILECONTENT_ );
+    public static final EntityType  INDEPENDENT_TEXTFILECONTENT54 = new EntityType( _INDEPENDENT_TEXTFILECONTENT54_ );
     public static final EntityType  INDEPENDENT_UNKNOWN   = new EntityType( _INDEPENDENT_UNKNOWN_ );
     public static final EntityType  LINUX_DPKGINFO        = new EntityType( _LINUX_DPKGINFO_ );
     public static final EntityType  LINUX_RPMINFO         = new EntityType( _LINUX_RPMINFO_ );
@@ -74,7 +76,8 @@ public final class EntityType
         HashMap<String, EntityType>  map = new HashMap<String, EntityType>();
         map.put( _UNKNOWN_,             UNKNOWN             );
         map.put( _INDEPENDENT_FAMILY_,  INDEPENDENT_FAMILY  );
-        map.put( _INDEPENDENT_TEXTFILECONTENT_,  INDEPENDENT_TEXTFILECONTENT  );
+        map.put( _INDEPENDENT_TEXTFILECONTENT_,   INDEPENDENT_TEXTFILECONTENT    );
+        map.put( _INDEPENDENT_TEXTFILECONTENT54_, INDEPENDENT_TEXTFILECONTENT54  );
         map.put( _INDEPENDENT_UNKNOWN_, INDEPENDENT_UNKNOWN );
         map.put( _LINUX_DPKGINFO_,      LINUX_DPKGINFO      );
         map.put( _LINUX_RPMINFO_,       LINUX_RPMINFO       );
