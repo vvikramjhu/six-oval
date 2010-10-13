@@ -34,26 +34,34 @@ public class StoreDefinitionsTest
     public Object[][] provideDefinitionsOvalDefinitions()
     {
         return new Object[][] {
-                        // Mitre, CVE-2009-4019, MySQL
+//                        // Mitre, CVE-2009-4019, MySQL
+//                        {
+//                            OvalDefinitions.class,
+//                            "test/data/definitions/oval-definitions_CVE-2009-4019_MySQL.xml",
+//                            "/oval_definitions",
+//                            OvalSample.OVAL_DEFINITIONS_8500
+//                        }
+//                        ,
+//                        // Red Hat, CVE-2010-0176, Firefox/xulrunner on RHEL
+//                        {
+//                            OvalDefinitions.class,
+//                            "test/data/definitions/oval-definitions_CVE-2010-0176_rhsa20100332.xml",
+//                            "/oval_definitions",
+//                            null
+//                        }
+//                        ,
+//                        // Mitre, CVE-2010-0176, Firefox/xulrunner on Debian
+//                        {
+//                            OvalDefinitions.class,
+//                            "test/data/definitions/oval-definitions_CVE-2010-0176_DSA-2027.xml",
+//                            "/oval_definitions",
+//                            null
+//                        }
+//                        ,
+                        // Mitre, vulnerability, Windows XP, OVAL Schema 5.8
                         {
                             OvalDefinitions.class,
-                            "test/data/definitions/oval-definitions_CVE-2009-4019_MySQL.xml",
-                            "/oval_definitions",
-                            OvalSample.OVAL_DEFINITIONS_8500
-                        }
-                        ,
-                        // Red Hat, CVE-2010-0176, Firefox/xulrunner on RHEL
-                        {
-                            OvalDefinitions.class,
-                            "test/data/definitions/oval-definitions_CVE-2010-0176_rhsa20100332.xml",
-                            "/oval_definitions",
-                            null
-                        }
-                        ,
-                        // Mitre, CVE-2010-0176, Firefox/xulrunner on Debian
-                        {
-                            OvalDefinitions.class,
-                            "test/data/definitions/oval-definitions_CVE-2010-0176_DSA-2027.xml",
+                            "test/data/definitions/20101012_vulnerability_microsoft.windows.xp.xml",
                             "/oval_definitions",
                             null
                         }

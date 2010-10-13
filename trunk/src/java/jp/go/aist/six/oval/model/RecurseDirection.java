@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.common;
+package jp.go.aist.six.oval.model;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -26,6 +26,9 @@ import java.util.HashMap;
 
 
 /**
+ * The RecurseDirection defines the direction to recurse,
+ * either 'up' to parent directories, or 'down' into child directories.
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
@@ -55,7 +58,6 @@ public final class RecurseDirection
     }
 
     private static final HashMap<String, RecurseDirection>  _INSTANCES_ = _INIT_();
-
 
 
 

@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.common.Behaviors;
+import jp.go.aist.six.oval.model.Behaviors;
 
 
 

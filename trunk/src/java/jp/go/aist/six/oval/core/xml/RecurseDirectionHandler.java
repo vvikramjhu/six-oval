@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.xml;
 
-import jp.go.aist.six.oval.model.common.RecurseDirection;
+import jp.go.aist.six.oval.model.RecurseDirection;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 

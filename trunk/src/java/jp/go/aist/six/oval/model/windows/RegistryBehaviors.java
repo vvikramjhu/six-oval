@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.common.Behaviors;
+import jp.go.aist.six.oval.model.Behaviors;
 
 
 

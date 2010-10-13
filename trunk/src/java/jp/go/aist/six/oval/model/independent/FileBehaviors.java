@@ -18,8 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.common;
+package jp.go.aist.six.oval.model.independent;
 
+import jp.go.aist.six.oval.model.RecurseDirection;
 import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
@@ -31,7 +32,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class Behaviors
+public class FileBehaviors
     extends AbstractPersistable
 {
 
@@ -40,7 +41,8 @@ public abstract class Behaviors
      */
     public static final int  DEFAULT_MAX_DEPTH = -1;
     private int _maxDepth = DEFAULT_MAX_DEPTH;
-    //{optional, default="-1"}
+    //{optional, default='-1', minInclusive='-1'}
+
 
     /**
      * The default recurseDirection: "none".
@@ -54,7 +56,7 @@ public abstract class Behaviors
     /**
      * Constructor.
      */
-    public Behaviors()
+    public FileBehaviors()
     {
     }
 
@@ -121,11 +123,11 @@ public abstract class Behaviors
             return true;
         }
 
-        if (!(obj instanceof Behaviors)) {
+        if (!(obj instanceof FileBehaviors)) {
             return false;
         }
 
-        Behaviors  other = (Behaviors)obj;
+        FileBehaviors  other = (FileBehaviors)obj;
         if (this.getMaxDepth() == other.getMaxDepth()) {
             RecurseDirection  other_rd = other.getRecurseDirection();
             RecurseDirection   this_rd =  this.getRecurseDirection();
@@ -147,4 +149,4 @@ public abstract class Behaviors
     }
 
 }
-// Behaviors
+// FileBehaviors

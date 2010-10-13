@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import jp.go.aist.six.oval.model.Behaviors;
 import jp.go.aist.six.oval.model.EntityType;
-import jp.go.aist.six.oval.model.common.Behaviors;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
