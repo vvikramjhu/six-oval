@@ -26,6 +26,8 @@ import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 
 
 /**
+ * The dpkginfo object is used by a dpkginfo test to define
+ * the object to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

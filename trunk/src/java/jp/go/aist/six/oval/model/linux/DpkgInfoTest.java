@@ -27,6 +27,7 @@ import jp.go.aist.six.oval.model.definitions.Test;
 
 
 /**
+ * The dpkginfo test is used to check information for a given DPKG package.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -112,7 +113,7 @@ public class DpkgInfoTest
     @Override
     public String toString()
     {
-        return "DpkgInfoTest[" + super.toString() + "]";
+        return "dpkginfo_test[" + super.toString() + "]";
     }
 
 }

@@ -27,7 +27,7 @@ import jp.go.aist.six.oval.model.definitions.Test;
 
 
 /**
- * The RpmInfoTest is used to check the RPM header information
+ * The rpminfo test is used to check the RPM header information
  * for a given RPM package.
  *
  * @author  Akihito Nakamura, AIST
@@ -113,7 +113,7 @@ public class RpmInfoTest
     @Override
     public String toString()
     {
-        return "RpmInfoTest[" + super.toString() + "]";
+        return "rpminfo_test[" + super.toString() + "]";
     }
 
 }

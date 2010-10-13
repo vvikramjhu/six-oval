@@ -27,7 +27,7 @@ import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 
 
 /**
- * The RpmInfoState defines the different information
+ * The rpminfo state defines the different information
  * that can be used to evaluate the specified rpm.
  *
  * @author  Akihito Nakamura, AIST
@@ -163,7 +163,7 @@ public class RpmInfoState
     @Override
     public String toString()
     {
-        return "RpmInfoState[" + super.toString()
+        return "rpminfo_state[" + super.toString()
                         + ", signature_keyid=" + getSignatureKeyID()
                         + "]";
     }

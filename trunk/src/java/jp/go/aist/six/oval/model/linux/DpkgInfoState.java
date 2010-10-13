@@ -26,6 +26,8 @@ import jp.go.aist.six.oval.model.definitions.EntityStateString;
 
 
 /**
+ * The dpkginfo state defines the different information
+ * that can be used to evaluate the specified DPKG package.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -107,7 +109,7 @@ public class DpkgInfoState
     @Override
     public String toString()
     {
-        return "DpkgInfoState[" + super.toString() + "]";
+        return "dpkginfo_state[" + super.toString() + "]";
     }
 
 }
