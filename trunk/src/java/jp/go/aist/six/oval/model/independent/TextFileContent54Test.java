@@ -27,21 +27,21 @@ import jp.go.aist.six.oval.model.definitions.Test;
 
 
 /**
- * The textfilecontent_test element is used to check the contents
- * of a text file (aka a configuration file) by looking at individual lines.
+ * The textfilecontent54 test is used to check the contents of a text file
+ * (aka a configuration file) by looking at individual blocks of text.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class TextFileContentTest
+public class TextFileContent54Test
     extends Test
 {
 
     /**
      * Constructor.
      */
-    public TextFileContentTest()
+    public TextFileContent54Test()
     {
     }
 
@@ -49,7 +49,7 @@ public class TextFileContentTest
     /**
      * Constructor.
      */
-    public TextFileContentTest(
+    public TextFileContent54Test(
                     final String id,
                     final int version
                     )
@@ -61,7 +61,7 @@ public class TextFileContentTest
     /**
      * Constructor.
      */
-    public TextFileContentTest(
+    public TextFileContent54Test(
                     final String id,
                     final int version,
                     final String comment,
@@ -80,7 +80,7 @@ public class TextFileContentTest
 
     public EntityType getEntityType()
     {
-        return EntityType.INDEPENDENT_TEXTFILECONTENT;
+        return EntityType.INDEPENDENT_TEXTFILECONTENT54;
     }
 
 
@@ -102,7 +102,7 @@ public class TextFileContentTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof TextFileContentTest)) {
+        if (!(obj instanceof TextFileContent54Test)) {
             return false;
         }
 
@@ -114,8 +114,8 @@ public class TextFileContentTest
     @Override
     public String toString()
     {
-        return "textfilecontent_test[" + super.toString() + "]";
+        return "textfilecontent54_test[" + super.toString() + "]";
     }
 
 }
-// TextFileContentTest
+// TextFileContent54Test

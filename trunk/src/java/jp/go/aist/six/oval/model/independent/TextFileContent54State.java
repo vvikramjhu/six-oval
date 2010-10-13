@@ -22,42 +22,48 @@ package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
+import jp.go.aist.six.oval.model.definitions.EntityStateBase;
+import jp.go.aist.six.oval.model.definitions.EntityStateInt;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
+import java.util.EnumMap;
+import java.util.Map;
 
 
 
 /**
- * The textfilecontent_state element contains entities that are used
- * to check the file path and name, as well as the line in question
- * and the value of the specific subexpression.
+ * The textfilecontent54 state contains entities that are used to check
+ * the file path and name, as well as the text block in question
+ * and the value of the subexpressions.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class TextFileContentState
+public class TextFileContent54State
     extends State
 {
 
-    private EntityStateString  _path;
-    //{0..1}
+    protected static enum Property
+    {
+        FILEPATH,       //{EntityStateString, 0..1}
+        PATH,           //{EntityStateString, 0..1}
+        FILENAME,       //{EntityStateString, 0..1}
+        PATTERN,        //{EntityStateString, 0..1}
+        INSTANCE,       //{EntityStateInt, 0..1}
+        TEXT,           //{EntityStateAnySimple, 0..1}
+        SUBEXPRESSION;  //{EntityStateAnySimple, 0..1}
+    }
 
-    private EntityStateString  _filename;
-    //{0..1}
-
-    private EntityStateString  _line;
-    //{0..1}
-
-    private EntityStateAnySimple  _subexpression;
-    //{0..1}
+    private Map<Property, EntityStateBase>  _properties =
+        new EnumMap<Property, EntityStateBase>( Property.class );
 
 
 
     /**
      * Constructor.
      */
-    public TextFileContentState()
+    public TextFileContent54State()
     {
     }
 
@@ -65,7 +71,7 @@ public class TextFileContentState
     /**
      * Constructor.
      */
-    public TextFileContentState(
+    public TextFileContent54State(
                     final String id,
                     final int version
                     )
@@ -77,15 +83,41 @@ public class TextFileContentState
 
     /**
      */
+    public void setFilepath(
+                    final EntityStateString filepath
+                    )
+    {
+        _properties.put( Property.FILEPATH, filepath );
+    }
+
+
+    public TextFileContent54State filepath(
+                    final EntityStateString filepath
+                    )
+    {
+        setFilepath( filepath );
+        return this;
+    }
+
+
+    public EntityStateString getFilepath()
+    {
+        return (EntityStateString)_properties.get( Property.FILEPATH );
+    }
+
+
+
+    /**
+     */
     public void setPath(
                     final EntityStateString path
                     )
     {
-        _path = path;
+        _properties.put( Property.PATH, path );
     }
 
 
-    public TextFileContentState path(
+    public TextFileContent54State path(
                     final EntityStateString path
                     )
     {
@@ -96,7 +128,7 @@ public class TextFileContentState
 
     public EntityStateString getPath()
     {
-        return _path;
+        return (EntityStateString)_properties.get( Property.PATH );
     }
 
 
@@ -107,11 +139,11 @@ public class TextFileContentState
                     final EntityStateString filename
                     )
     {
-        _filename = filename;
+        _properties.put( Property.FILENAME, filename );
     }
 
 
-    public TextFileContentState filename(
+    public TextFileContent54State filename(
                     final EntityStateString filename
                     )
     {
@@ -122,33 +154,85 @@ public class TextFileContentState
 
     public EntityStateString getFilename()
     {
-        return _filename;
+        return (EntityStateString)_properties.get( Property.FILENAME );
     }
 
 
 
     /**
      */
-    public void setLine(
-                    final EntityStateString line
+    public void setPattern(
+                    final EntityStateString pattern
                     )
     {
-        _line = line;
+        _properties.put( Property.PATTERN, pattern );
     }
 
 
-    public TextFileContentState line(
-                    final EntityStateString line
+    public TextFileContent54State pattern(
+                    final EntityStateString pattern
                     )
     {
-        setLine( line );
+        setPattern( pattern );
         return this;
     }
 
 
-    public EntityStateString getLine()
+    public EntityStateString getPattern()
     {
-        return _line;
+        return (EntityStateString)_properties.get( Property.PATTERN );
+    }
+
+
+
+    /**
+     */
+    public void setInstance(
+                    final EntityStateInt instance
+                    )
+    {
+        _properties.put( Property.INSTANCE, instance );
+    }
+
+
+    public TextFileContent54State instance(
+                    final EntityStateInt instance
+                    )
+    {
+        setInstance( instance );
+        return this;
+    }
+
+
+    public EntityStateInt getInstance()
+    {
+        return (EntityStateInt)_properties.get( Property.INSTANCE );
+    }
+
+
+
+    /**
+     */
+    public void setText(
+                    final EntityStateAnySimple text
+                    )
+    {
+        _properties.put( Property.TEXT, text );
+    }
+
+
+    public TextFileContent54State text(
+                    final EntityStateAnySimple text
+                    )
+    {
+        setText( text );
+        return this;
+    }
+
+
+    public EntityStateAnySimple getText()
+    {
+        return (EntityStateAnySimple)_properties.get( Property.TEXT );
     }
 
 
@@ -159,11 +243,11 @@ public class TextFileContentState
                     final EntityStateAnySimple subexpression
                     )
     {
-        _subexpression = subexpression;
+        _properties.put( Property.SUBEXPRESSION, subexpression );
     }
 
 
-    public TextFileContentState subexpression(
+    public TextFileContent54State subexpression(
                     final EntityStateAnySimple subexpression
                     )
     {
@@ -174,7 +258,7 @@ public class TextFileContentState
 
     public EntityStateAnySimple getSubexpression()
     {
-        return _subexpression;
+        return (EntityStateAnySimple)_properties.get( Property.SUBEXPRESSION );
     }
 
 
@@ -186,7 +270,7 @@ public class TextFileContentState
     @Override
     public EntityType getEntityType()
     {
-        return EntityType.INDEPENDENT_TEXTFILECONTENT;
+        return EntityType.INDEPENDENT_TEXTFILECONTENT54;
     }
 
 
@@ -201,14 +285,23 @@ public class TextFileContentState
         final int  prime = 37;
         int  result = super.hashCode();
 
+        EntityStateString  filepath = getFilepath();
+        result = prime * result + ((filepath == null) ? 0 : filepath.hashCode());
+
         EntityStateString  path = getPath();
         result = prime * result + ((path == null) ? 0 : path.hashCode());
 
         EntityStateString  filename = getFilename();
         result = prime * result + ((filename == null) ? 0 : filename.hashCode());
 
-        EntityStateString  line = getLine();
-        result = prime * result + ((line == null) ? 0 : line.hashCode());
+        EntityStateString  pattern = getPattern();
+        result = prime * result + ((pattern == null) ? 0 : pattern.hashCode());
+
+        EntityStateInt  instance = getInstance();
+        result = prime * result + ((instance == null) ? 0 : instance.hashCode());
+
+        EntityStateAnySimple  text = getText();
+        result = prime * result + ((text == null) ? 0 : text.hashCode());
 
         EntityStateAnySimple  subexpression = getSubexpression();
         result = prime * result + ((subexpression == null) ? 0 : subexpression.hashCode());
@@ -223,29 +316,44 @@ public class TextFileContentState
                     final Object obj
                     )
     {
-        if (!(obj instanceof TextFileContentState)) {
+        if (!(obj instanceof TextFileContent54State)) {
             return false;
         }
 
         if (super.equals( obj )) {
-            TextFileContentState  other = (TextFileContentState)obj;
-            EntityStateString  other_path = other.getPath();
-            EntityStateString   this_path =  this.getPath();
-            if (this_path == other_path
-                            ||  (this_path != null  &&  this_path.equals( other_path ))) {
-                EntityStateString  other_filename = other.getFilename();
-                EntityStateString   this_filename =  this.getFilename();
-                if (this_filename == other_filename
-                                ||  (this_filename != null  &&  this_filename.equals( other_filename ))) {
-                    EntityStateString  other_line = other.getLine();
-                    EntityStateString   this_line =  this.getLine();
-                    if (this_line == other_line
-                                    ||  (this_line != null  &&  this_line.equals( other_line ))) {
-                        EntityStateAnySimple  other_subexpression = other.getSubexpression();
-                        EntityStateAnySimple   this_subexpression =  this.getSubexpression();
-                        if (this_subexpression == other_subexpression
-                                        ||  (this_subexpression != null  &&  this_subexpression.equals( other_subexpression ))) {
-                            return true;
+            TextFileContent54State  other = (TextFileContent54State)obj;
+            EntityStateString  otherFilepath = other.getFilepath();
+            EntityStateString   thisFilepath =  this.getFilepath();
+            if (thisFilepath == otherFilepath
+                            ||  (thisFilepath != null  &&  thisFilepath.equals( otherFilepath ))) {
+                EntityStateString  otherPath = other.getPath();
+                EntityStateString   thisPath =  this.getPath();
+                if (thisPath == otherPath
+                                ||  (thisPath != null  &&  thisPath.equals( otherPath ))) {
+                    EntityStateString  otherFilename = other.getFilename();
+                    EntityStateString   thisFilename =  this.getFilename();
+                    if (thisFilename == otherFilename
+                                    ||  (thisFilename != null  &&  thisFilename.equals( otherFilename ))) {
+                        EntityStateString  otherPattern = other.getPattern();
+                        EntityStateString   thisPattern =  this.getPattern();
+                        if (thisPattern == otherPattern
+                                        ||  (thisPattern != null  &&  thisPattern.equals( otherPattern ))) {
+                            EntityStateInt  otherInstance = other.getInstance();
+                            EntityStateInt   thisInstance =  this.getInstance();
+                            if (thisInstance == otherInstance
+                                            ||  (thisInstance != null  &&  thisInstance.equals( otherInstance ))) {
+                                EntityStateAnySimple  otherText = other.getText();
+                                EntityStateAnySimple   thisText =  this.getText();
+                                if (thisText == otherText
+                                                ||  (thisText != null  &&  thisText.equals( otherText ))) {
+                                    EntityStateAnySimple  otherSubexpression = other.getSubexpression();
+                                    EntityStateAnySimple   thisSubexpression =  this.getSubexpression();
+                                    if (thisSubexpression == otherSubexpression
+                                                    ||  (thisSubexpression != null  &&  thisSubexpression.equals( otherSubexpression ))) {
+                                        return true;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -260,8 +368,16 @@ public class TextFileContentState
     @Override
     public String toString()
     {
-        return "textfilecontent_state[" + super.toString() + "]";
+        return "textfilecontent54_state[" + super.toString()
+                        + ", filepath="      + getFilepath()
+                        + ", path="          + getPath()
+                        + ", filename="      + getFilename()
+                        + ", pattern="       + getPattern()
+                        + ", instance="      + getInstance()
+                        + ", text="          + getText()
+                        + ", subexpression=" + getSubexpression()
+                        + "]";
     }
 
 }
-// TextFileContentState
+// TextFileContent54State
