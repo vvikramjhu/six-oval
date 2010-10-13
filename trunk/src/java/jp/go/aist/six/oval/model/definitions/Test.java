@@ -56,6 +56,10 @@ public class Test
     extends CommentedOvalEntity //, Noted
 {
 
+    private Notes  _notes;
+    //{0..1}
+
+
     public static final Existence  DEFAULT_CHECK_EXISTENCE = Existence.AT_LEAST_ONE_EXISTS;
     private Existence  _checkExistence;
     //{optional, default="at_least_one_exists"}
@@ -112,6 +116,25 @@ public class Test
     {
         super( id, version, comment );
         setCheck( check );
+    }
+
+
+
+    /**
+     */
+    public void setNotes(
+                    final Notes notes
+                    )
+    {
+        _notes = notes;
+    }
+
+
+    /**
+     */
+    public Notes getNotes()
+    {
+        return _notes;
     }
 
 

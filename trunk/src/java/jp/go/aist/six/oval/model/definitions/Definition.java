@@ -38,7 +38,7 @@ import java.util.Collection;
  *   <li>deprecated (optional -- default='false')</li>
  *   <li>signature (0..1): currently NOT supported.</li>
  *   <li>metadata (1..1)</li>
- *   <li>notes (0..1): currently NOT supported.</li>
+ *   <li>notes (0..1)</li>
  *   <li>criteria (0..1)</li>
  * </ul>
  *
@@ -47,14 +47,14 @@ import java.util.Collection;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Definition
-    extends OvalEntity //, Noted
+    extends OvalEntity
 {
 
     private Metadata  _metadata;
     //{1..1}
 
 
-//  private Notes  _notes;
+    private Notes  _notes;
     //{0..1}
 
 
@@ -147,6 +147,25 @@ public class Definition
             _metadata = new Metadata();
         }
         return _metadata;
+    }
+
+
+
+    /**
+     */
+    public void setNotes(
+                    final Notes notes
+                    )
+    {
+        _notes = notes;
+    }
+
+
+    /**
+     */
+    public Notes getNotes()
+    {
+        return _notes;
     }
 
 
@@ -330,7 +349,7 @@ public class Definition
     @Override
     public String toString()
     {
-        return "Definition[" + super.toString()
+        return "definition[" + super.toString()
                         + ", class=" + getDefinitionClass()
                         + ", metadata=" + getMetadata()
 //                        + ", criteria=" + getCriteria()

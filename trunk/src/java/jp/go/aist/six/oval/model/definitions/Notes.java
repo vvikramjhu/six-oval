@@ -20,93 +20,104 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.Container;
+import jp.go.aist.six.util.castor.AbstractPersistable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
 
 
 /**
- * A container for one or more Test instances.
- *
- * <p>Properties:</p>
- * <ul>
- *   <li>test (1..*)</li>
- * </ul>
+ * The Notes is a container for one or more note child elements.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Tests
-    extends Container<Test>  //{1..*}
-//extends OvalElementContainer<Test>  //{1..*}
+public class Notes
+    extends AbstractPersistable
 {
 
-    /**
-     * Constructor.
-     */
-    public Tests()
-    {
-    }
+    private Collection<String>  _note = new ArrayList<String>();
+    //{1..*}
+
 
 
     /**
      * Constructor.
      */
-    public Tests(
-                    final Collection<? extends Test> tests
-                    )
+    public Notes()
     {
-        super( tests );
     }
 
 
     /**
      * Constructor.
      */
-    public Tests(
-                    final Test[] tests
+    public Notes(
+                    final Collection<String> notes
                     )
     {
-        super( tests );
+        setNote( notes );
     }
 
 
-
-    public void setTest(
-                    final Collection<? extends Test> tests
+    /**
+     * Constructor.
+     */
+    public Notes(
+                    final String[] notes
                     )
     {
-        _setElement( tests );
-
-//        if (_getElement() != tests) {
-//            clear();
-//            if (tests != null  &&  tests.size() > 0) {
-//                addAll( tests );
-//            }
-//        }
+        setNote( Arrays.asList( notes ) );
     }
 
 
-    public boolean addTest(
-                    final Test test
+
+    public void setNote(
+                    final Collection<String> notes
                     )
     {
-        return add( test );
+        if (_note != notes) {
+            _note.clear();
+            if (notes != null  &&  notes.size() > 0) {
+                _note.addAll( notes );
+            }
+        }
     }
 
 
-    public Collection<Test> getTest()
+    public boolean addNote(
+                    final String note
+                    )
     {
-        return _getElement();
+        return _note.add( note );
     }
 
 
-    public Iterator<Test> iterateTest()
+    public Collection<String> getNote()
     {
-        return iterator();
+        return _note;
+    }
+
+
+    public Iterator<String> iterateNote()
+    {
+        return _note.iterator();
+    }
+
+
+
+    //**************************************************************
+    //  java.lang.Object
+    //**************************************************************
+
+    @Override
+    public String toString()
+    {
+        return String.valueOf( getNote() );
     }
 
 }
-// Tests
+// Notes
