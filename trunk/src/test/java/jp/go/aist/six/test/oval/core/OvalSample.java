@@ -337,7 +337,7 @@ public class OvalSample
 
     public static final TextFileContentState  STATE_TEXTFILECONTENT_5132 =
         new TextFileContentState( "oval:org.mitre.oval:ste:5132", 1 )
-    .subExpression( new EntityStateAnySimple( "\\brw\\b",
+    .subexpression( new EntityStateAnySimple( "\\brw\\b",
                     Operation.PATTERN_MATCH )
     );
 

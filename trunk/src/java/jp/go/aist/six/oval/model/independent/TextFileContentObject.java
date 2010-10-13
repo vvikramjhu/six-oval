@@ -27,7 +27,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObject;
 
 
 /**
- * The textfilecontent_object element is used by a text file content test
+ * The textfilecontent object is used by a text file content test
  * to define the specific line(s) of a file(s) to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
@@ -38,7 +38,7 @@ public class TextFileContentObject
     extends SystemObject
 {
 
-    private TextFileContentBehaviors  _behaviors;
+    private FileBehaviors  _behaviors;
     //{0..1}
 
 
@@ -114,7 +114,7 @@ public class TextFileContentObject
     /**
      */
     public void setBehaviors(
-                    final TextFileContentBehaviors behaviors
+                    final FileBehaviors behaviors
                     )
     {
         _behaviors = behaviors;
@@ -122,7 +122,7 @@ public class TextFileContentObject
 
 
     public TextFileContentObject behaviors(
-                    final TextFileContentBehaviors behaviors
+                    final FileBehaviors behaviors
                     )
     {
         setBehaviors( behaviors );
@@ -130,7 +130,7 @@ public class TextFileContentObject
     }
 
 
-    public TextFileContentBehaviors getBehaviors()
+    public FileBehaviors getBehaviors()
     {
         return _behaviors;
     }
@@ -257,6 +257,7 @@ public class TextFileContentObject
     public String toString()
     {
         return "textfilecontent_object[" + super.toString()
+                        + ", behaviors=" + getBehaviors()
                         + ", path=" + getPath()
                         + ", filename=" + getFilename()
                         + ", line=" + getLine()

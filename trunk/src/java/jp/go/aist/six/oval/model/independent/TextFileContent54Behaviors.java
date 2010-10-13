@@ -20,30 +20,94 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.Behaviors;
 
 
 
 /**
+ * The Textfilecontent54Behaviors defines a number of behaviors
+ * that allow a more detailed definition of the textfilecontent54 object
+ * being specified.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class TextFileContentBehaviors
-    extends Behaviors
+public class TextFileContent54Behaviors
+    extends FileBehaviors
 {
 
-//    public static final int  DEFAULT_MAX_DEPTH = 1;
-    // corrected in OVAL Schema 5.8
+    public static final boolean  DEFAULT_IGNORE_CASE = false;
+    private boolean  _ignoreCase = DEFAULT_IGNORE_CASE;
+    //{optional, default='false'}
+
+
+    public static final boolean  DEFAULT_MULTILINE = true;
+    private boolean  _multiline = DEFAULT_MULTILINE;
+    //{optional, default='true'}
+
+
+    public static final boolean  DEFAULT_SINGLELINE = false;
+    private boolean  _singleline = DEFAULT_SINGLELINE;
+    //{optional, default='false'}
+
 
 
     /**
      * Constructor.
      */
-    public TextFileContentBehaviors()
+    public TextFileContent54Behaviors()
     {
-//        setMaxDepth( DEFAULT_MAX_DEPTH );
+    }
+
+
+
+    /**
+     */
+    public void setIgnoreCase(
+                    final boolean ignoreCase
+                    )
+    {
+        _ignoreCase = ignoreCase;
+    }
+
+
+    public boolean isIgnoreCase()
+    {
+        return _ignoreCase;
+    }
+
+
+
+    /**
+     */
+    public void setMultiline(
+                    final boolean multiline
+                    )
+    {
+        _multiline = multiline;
+    }
+
+
+    public boolean isMultiline()
+    {
+        return _multiline;
+    }
+
+
+
+    /**
+     */
+    public void setSingleline(
+                    final boolean singleline
+                    )
+    {
+        _singleline = singleline;
+    }
+
+
+    public boolean isSingleline()
+    {
+        return _singleline;
     }
 
 
@@ -55,7 +119,14 @@ public class TextFileContentBehaviors
     @Override
     public int hashCode()
     {
-        return super.hashCode();
+        final int  prime = 37;
+        int  result = 17;
+
+        result = prime * result + (isIgnoreCase() ? 0 : 1);
+        result = prime * result + (isMultiline()  ? 0 : 1);
+        result = prime * result + (isSingleline() ? 0 : 1);
+
+        return result;
     }
 
 
@@ -65,20 +136,35 @@ public class TextFileContentBehaviors
                     final Object obj
                     )
     {
-        if (!(obj instanceof TextFileContentBehaviors)) {
+        if (!(obj instanceof TextFileContent54Behaviors)) {
             return false;
         }
 
-        return super.equals( obj );
+        if (super.equals( obj )) {
+            TextFileContent54Behaviors  other = (TextFileContent54Behaviors)obj;
+            if (isIgnoreCase() && other.isIgnoreCase()) {
+                if (isMultiline() && other.isMultiline()) {
+                    if (isSingleline() && other.isSingleline()) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
     }
 
 
 
-//    @Override
-//    public String toString()
-//    {
-//        return "TextFileContentBehaviors[" + super.toString() + "]";
-//    }
+    @Override
+    public String toString()
+    {
+        return super.toString()
+                        + ", ignore_case=" + isIgnoreCase()
+                        + ", multiline=" + isMultiline()
+                        + ", singleline=" + isSingleline()
+                        ;
+    }
 
 }
-// TextFileContentBehaviors
+// TextFileContent54Behaviors

@@ -1974,7 +1974,7 @@
             <bind-xml name="line" node="element"/>
         </field>
 
-        <field name="subExpression" 
+        <field name="subexpression" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimple">
             <bind-xml name="subexpression" node="element"/>
         </field>

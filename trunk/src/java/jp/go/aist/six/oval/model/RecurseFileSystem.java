@@ -26,54 +26,58 @@ import java.util.HashMap;
 
 
 /**
- * The RecurseDirection defines the direction to recurse,
- * either 'up' to parent directories, or 'down' into child directories.
+ * The RecurseFileSystem defines the file system limitation of any recursion,
+ * either 'local' limiting data collection to local file systems
+ * (as opposed to file systems mounted from an external system),
+ * or 'defined' to keep any recursion within the file system
+ * that the file_object (path+filename) has specified.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class RecurseDirection
+public final class RecurseFileSystem
     implements Serializable
 {
 
-    private static final String  _NONE_  = "none";
-    private static final String  _UP_    = "up";
-    private static final String  _DOWN_  = "down";
+    private static final String  _ALL_      = "all";
+    private static final String  _LOCAL_    = "local";
+    private static final String  _DEFINED_  = "defined";
 
 
-    public static final RecurseDirection  NONE  = new RecurseDirection( _NONE_ );
-    public static final RecurseDirection  UP    = new RecurseDirection( _UP_ );
-    public static final RecurseDirection  DOWN  = new RecurseDirection( _DOWN_ );
+    public static final RecurseFileSystem  ALL      = new RecurseFileSystem( _ALL_ );
+    public static final RecurseFileSystem  LOCAL    = new RecurseFileSystem( _LOCAL_ );
+    public static final RecurseFileSystem  DEFINED  = new RecurseFileSystem( _DEFINED_ );
 
 
 
-    private static HashMap<String, RecurseDirection> _INIT_()
+    private static HashMap<String, RecurseFileSystem> _INIT_()
     {
-        HashMap<String, RecurseDirection>  map = new HashMap<String, RecurseDirection>();
-        map.put( _NONE_,  NONE );
-        map.put( _UP_,    UP   );
-        map.put( _DOWN_,  DOWN );
+        HashMap<String, RecurseFileSystem>  map = new HashMap<String, RecurseFileSystem>();
+        map.put( _ALL_,      ALL     );
+        map.put( _LOCAL_,    LOCAL   );
+        map.put( _DEFINED_,  DEFINED );
         return map;
     }
 
-    private static final HashMap<String, RecurseDirection>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, RecurseFileSystem>  _INSTANCES_ = _INIT_();
 
 
 
     /**
      */
-    public static RecurseDirection valueOf(
+    public static RecurseFileSystem valueOf(
                     final String name
                     )
     {
-        RecurseDirection  flag = null;
+        RecurseFileSystem  flag = null;
         if (name != null) {
             flag = _INSTANCES_.get( name );
         }
 
         if (flag == null) {
-            throw new IllegalArgumentException( "invalid recurse direction: " + name );
+            throw new IllegalArgumentException(
+                            "invalid recurse file system: " + name );
         }
 
         return flag;
@@ -88,7 +92,7 @@ public final class RecurseDirection
     /**
      * Constructor.
      */
-    private RecurseDirection(
+    private RecurseFileSystem(
                     final String name
                     )
     {
@@ -117,4 +121,4 @@ public final class RecurseDirection
     }
 
 }
-// RecurseDirection
+// RecurseFileSystem

@@ -26,54 +26,54 @@ import java.util.HashMap;
 
 
 /**
- * The RecurseDirection defines the direction to recurse,
- * either 'up' to parent directories, or 'down' into child directories.
+ * The Recurse defines how to recurse into the path entity,
+ * in other words what to follow during recursion.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class RecurseDirection
+public final class Recurse
     implements Serializable
 {
 
-    private static final String  _NONE_  = "none";
-    private static final String  _UP_    = "up";
-    private static final String  _DOWN_  = "down";
+    private static final String  _DIRECTORIES_  = "directories";
+    private static final String  _SYMLINKS_     = "symlinks";
+    private static final String  _SYMLINKS_AND_DIRECTORIES_  = "symlinks and directories";
 
 
-    public static final RecurseDirection  NONE  = new RecurseDirection( _NONE_ );
-    public static final RecurseDirection  UP    = new RecurseDirection( _UP_ );
-    public static final RecurseDirection  DOWN  = new RecurseDirection( _DOWN_ );
+    public static final Recurse  DIRECTORIES    = new Recurse( _DIRECTORIES_ );
+    public static final Recurse  SYMLINKS       = new Recurse( _SYMLINKS_ );
+    public static final Recurse  SYMLINKS_AND_DIRECTORIES  = new Recurse( _SYMLINKS_AND_DIRECTORIES_ );
 
 
 
-    private static HashMap<String, RecurseDirection> _INIT_()
+    private static HashMap<String, Recurse> _INIT_()
     {
-        HashMap<String, RecurseDirection>  map = new HashMap<String, RecurseDirection>();
-        map.put( _NONE_,  NONE );
-        map.put( _UP_,    UP   );
-        map.put( _DOWN_,  DOWN );
+        HashMap<String, Recurse>  map = new HashMap<String, Recurse>();
+        map.put( _DIRECTORIES_,               DIRECTORIES              );
+        map.put( _SYMLINKS_,                  SYMLINKS                 );
+        map.put( _SYMLINKS_AND_DIRECTORIES_,  SYMLINKS_AND_DIRECTORIES );
         return map;
     }
 
-    private static final HashMap<String, RecurseDirection>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, Recurse>  _INSTANCES_ = _INIT_();
 
 
 
     /**
      */
-    public static RecurseDirection valueOf(
+    public static Recurse valueOf(
                     final String name
                     )
     {
-        RecurseDirection  flag = null;
+        Recurse  flag = null;
         if (name != null) {
             flag = _INSTANCES_.get( name );
         }
 
         if (flag == null) {
-            throw new IllegalArgumentException( "invalid recurse direction: " + name );
+            throw new IllegalArgumentException( "invalid recurse: " + name );
         }
 
         return flag;
@@ -88,7 +88,7 @@ public final class RecurseDirection
     /**
      * Constructor.
      */
-    private RecurseDirection(
+    private Recurse(
                     final String name
                     )
     {
@@ -117,4 +117,4 @@ public final class RecurseDirection
     }
 
 }
-// RecurseDirection
+// Recurse

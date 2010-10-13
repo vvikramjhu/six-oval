@@ -20,7 +20,9 @@
 
 package jp.go.aist.six.oval.model.independent;
 
+import jp.go.aist.six.oval.model.Recurse;
 import jp.go.aist.six.oval.model.RecurseDirection;
+import jp.go.aist.six.oval.model.RecurseFileSystem;
 import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
@@ -45,11 +47,27 @@ public class FileBehaviors
 
 
     /**
+     * The default recurseDirection: "symlinks and directories".
+     */
+    public static final Recurse  DEFAULT_RECURSE = Recurse.SYMLINKS_AND_DIRECTORIES;
+    private Recurse  _recurse;
+    //{optional, default='symlinks and directories'}
+
+
+    /**
      * The default recurseDirection: "none".
      */
     public static final RecurseDirection  DEFAULT_RECURSE_DIRECTION = RecurseDirection.NONE;
     private RecurseDirection  _recurseDirection;
-    //{optional, default="none"}
+    //{optional, default='none'}
+
+
+    /**
+     * The default recurseDirection: "all".
+     */
+    public static final RecurseFileSystem  DEFAULT_RECURSE_FILE_SYSTEM = RecurseFileSystem.ALL;
+    private RecurseFileSystem  _recurseFileSystem;
+    //{optional, default='all'}
 
 
 
@@ -62,10 +80,16 @@ public class FileBehaviors
 
 
 
+    /**
+     */
     public void setMaxDepth(
                     final int maxDepth
                     )
     {
+        if (maxDepth < -1) {
+            throw new IllegalArgumentException( "invalid maxDepth: " + maxDepth );
+        }
+
         _maxDepth = maxDepth;
     }
 
@@ -77,6 +101,27 @@ public class FileBehaviors
 
 
 
+    /**
+     */
+    public void setRecurse(
+                    final Recurse recurse
+                    )
+    {
+        _recurse = recurse;
+    }
+
+
+    public Recurse getRecurse()
+    {
+        return (_recurse == null
+                        ? DEFAULT_RECURSE
+                        : _recurse);
+    }
+
+
+
+    /**
+     */
     public void setRecurseDirection(
                     final RecurseDirection direction
                     )
@@ -94,6 +139,25 @@ public class FileBehaviors
 
 
 
+    /**
+     */
+    public void setRecurseFileSystem(
+                    final RecurseFileSystem fileSystem
+                    )
+    {
+        _recurseFileSystem = fileSystem;
+    }
+
+
+    public RecurseFileSystem getRecurseFileSystem()
+    {
+        return (_recurseFileSystem == null
+                        ? DEFAULT_RECURSE_FILE_SYSTEM
+                        : _recurseFileSystem);
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -106,8 +170,14 @@ public class FileBehaviors
 
         result = prime * result + getMaxDepth();
 
+        Recurse  r = getRecurse();
+        result = prime * result + ((r == null) ? 0 : r.hashCode());
+
         RecurseDirection  rd = getRecurseDirection();
         result = prime * result + ((rd == null) ? 0 : rd.hashCode());
+
+        RecurseFileSystem  rfs = getRecurseFileSystem();
+        result = prime * result + ((rfs == null) ? 0 : rfs.hashCode());
 
         return result;
     }
@@ -129,10 +199,18 @@ public class FileBehaviors
 
         FileBehaviors  other = (FileBehaviors)obj;
         if (this.getMaxDepth() == other.getMaxDepth()) {
-            RecurseDirection  other_rd = other.getRecurseDirection();
-            RecurseDirection   this_rd =  this.getRecurseDirection();
-            if (this_rd == other_rd) {
-                return true;
+            Recurse  other_r = other.getRecurse();
+            Recurse   this_r =  this.getRecurse();
+            if (this_r == other_r) {
+                RecurseDirection  other_rd = other.getRecurseDirection();
+                RecurseDirection   this_rd =  this.getRecurseDirection();
+                if (this_rd == other_rd) {
+                    RecurseFileSystem  other_rfs = other.getRecurseFileSystem();
+                    RecurseFileSystem   this_rfs =  this.getRecurseFileSystem();
+                    if (this_rfs == other_rfs) {
+                        return true;
+                    }
+                }
             }
         }
 
@@ -145,7 +223,10 @@ public class FileBehaviors
     public String toString()
     {
         return "max_depth=" + getMaxDepth()
-                        + ", recurse_direction=" + getRecurseDirection();
+                        + ", recurse=" + getRecurse()
+                        + ", recurse_direction=" + getRecurseDirection()
+                        + ", recurse_file_system=" + getRecurseFileSystem()
+                        ;
     }
 
 }
