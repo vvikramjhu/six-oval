@@ -1416,6 +1416,150 @@
 
 
     <!-- ******************************************************* -->
+    <!-- TextFileContent54Test                                   -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.independent.TextFileContent54Test"
+        extends="jp.go.aist.six.oval.model.definitions.Test"
+        identity="persistentID">
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_test_textfilecontent54"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- TextFileContent54Object                                 -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.independent.TextFileContent54Object"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject"
+        identity="persistentID">
+
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_object_textfilecontent54"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+
+        <field name="behaviors.multiline" type="boolean">
+            <sql name="behaviors_multiline" type="bit"/>
+        </field>
+
+<!-- 
+        <field name="behaviors.maxDepth" type="integer">
+            <sql name="max_depth" type="integer"/>
+        </field>
+
+        <field name="behaviors.recurseDirection" type="jp.go.aist.six.oval.model.windows.RecurseDirection">
+            <sql name="recurse_direction" type="char"/>
+        </field>
+-->
+        <field name="filepath.data" type="string">
+            <sql name="filepath" type="char"/>
+        </field>
+
+        <field name="filepath.varRef" type="string">
+            <sql name="filepath_var_ref" type="char"/>
+        </field>
+
+        <field name="filepath.varCheck" 
+            type="jp.go.aist.six.oval.model.common.Check">
+            <sql name="filepath_var_check" type="char"/>
+        </field>
+
+        <field name="filepath.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="filepath_operation" type="char"/>
+        </field>
+
+        <field name="path.data" type="string">
+            <sql name="path" type="char"/>
+        </field>
+
+        <field name="path.varRef" type="string">
+            <sql name="path_var_ref" type="char"/>
+        </field>
+
+        <field name="path.varCheck" 
+            type="jp.go.aist.six.oval.model.common.Check">
+            <sql name="path_var_check" type="char"/>
+        </field>
+
+        <field name="path.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="path_operation" type="char"/>
+        </field>
+
+        <field name="filename.data" type="string">
+            <sql name="filename" type="char"/>
+        </field>
+
+        <field name="pattern.data" type="string">
+            <sql name="pattern" type="char"/>
+        </field>
+
+        <field name="pattern.varRef" type="string">
+            <sql name="pattern_var_ref" type="char"/>
+        </field>
+
+        <field name="pattern.varCheck" 
+            type="jp.go.aist.six.oval.model.common.Check">
+            <sql name="pattern_var_check" type="char"/>
+        </field>
+
+        <field name="pattern.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="pattern_operation" type="char"/>
+        </field>
+
+        <field name="instance.data" type="string">
+            <sql name="instance" type="char"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- TextFileContent54State                                    -->
+    <!-- ******************************************************* -->
+    <class name="jp.go.aist.six.oval.model.independent.TextFileContent54State"
+        extends="jp.go.aist.six.oval.model.definitions.State"
+        identity="persistentID">
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_state_textfilecontent54"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+
+        <field name="text.data" type="string">
+            <sql name="text" type="char"/>
+        </field>
+
+        <field name="text.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="text_operation" type="char"/>
+        </field>
+
+<!-- TODO: other properties.
+        <field name="subexpression.data" type="string">
+            <sql name="subexpression" type="char"/>
+        </field>
+
+        <field name="subexpression.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="subexpression_operation" type="char"/>
+        </field>
+-->
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- TextFileContentTest                                     -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.independent.TextFileContentTest"

@@ -1284,14 +1284,27 @@ CREATE TABLE IF NOT EXISTS oval_d_object_textfilecontent54
     PID                 VARCHAR(64)     NOT NULL,
                         /* id + version, e.g. oval:org.mitre.oval:obj:419:1 */
 
+    behaviors_multiline BOOLEAN                     DEFAULT true,
+
+    /* filepath */
+    filepath            VARCHAR(255),
+    filepath_var_ref    VARCHAR(255),
+    filepath_var_check  VARCHAR(16)     DEFAULT 'all',
+                        /* enum('all', 'at least one',...) */
+/*  filepath_datatype   VARCHAR(16)     NOT NULL    DEFAULT 'string', */
+                        /*** all the datatype may be 'string'. ***/
+    filepath_operation  VARCHAR(32)     DEFAULT 'equals',
+                        /* enum('equals', ..., 'case insensitive not equal', ...) */
+/*  filepath_mask       BOOLEAN         NOT NULL    DEFAULT false,    */
+
     /* path */
     path                VARCHAR(255),
     path_var_ref        VARCHAR(255),
-    path_var_check      VARCHAR(16)     NOT NULL    DEFAULT 'all',
+    path_var_check      VARCHAR(16)     DEFAULT 'all',
                         /* enum('all', 'at least one',...) */
 /*  path_datatype       VARCHAR(16)     NOT NULL    DEFAULT 'string', */
                         /*** all the datatype may be 'string'. ***/
-    path_operation      VARCHAR(32)     NOT NULL    DEFAULT 'equals',
+    path_operation      VARCHAR(32)     DEFAULT 'equals',
                         /* enum('equals', ..., 'case insensitive not equal', ...) */
 /*  path_mask           BOOLEAN         NOT NULL    DEFAULT false,    */
 
@@ -1301,11 +1314,11 @@ CREATE TABLE IF NOT EXISTS oval_d_object_textfilecontent54
     /* pattern */
     pattern             VARCHAR(255),
     pattern_var_ref     VARCHAR(255),
-    pattern_var_check   VARCHAR(16)     NOT NULL    DEFAULT 'all',
+    pattern_var_check   VARCHAR(16)     DEFAULT 'all',
                         /* enum('all', 'at least one',...) */
 /*  pattern_datatype    VARCHAR(16)     NOT NULL    DEFAULT 'string', */
                         /*** all the datatype may be 'string'. ***/
-    pattern_operation   VARCHAR(32)     NOT NULL    DEFAULT 'equals',
+    pattern_operation   VARCHAR(32)     DEFAULT 'equals',
                         /* enum('equals', ..., 'case insensitive not equal', ...) */
 /*  pattern_mask        BOOLEAN         NOT NULL    DEFAULT false,    */
 
@@ -1314,7 +1327,7 @@ CREATE TABLE IF NOT EXISTS oval_d_object_textfilecontent54
 /*  recurse_direction   VARCHAR(8)      NOT NULL    DEFAULT 'none',  */
                         /* enum('none', 'up', 'down') */
 
-    /* pattern */
+    /* instance */
     instance            VARCHAR(8),
 
     /* (PK) */
@@ -1337,10 +1350,6 @@ CREATE TABLE IF NOT EXISTS oval_d_state_textfilecontent54
 
     text                VARCHAR(255),
     text_operation      VARCHAR(32)     DEFAULT 'equals',
-
-    subexpression       VARCHAR(255),
-    subexpression_operation VARCHAR(32) DEFAULT 'equals',
-                        /* enum('equals', ..., 'case insensitive not equal', ...) */
 
     /* (FK) */
     
