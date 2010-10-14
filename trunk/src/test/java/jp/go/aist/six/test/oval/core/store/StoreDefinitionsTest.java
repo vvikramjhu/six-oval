@@ -58,10 +58,19 @@ public class StoreDefinitionsTest
 //                            null
 //                        }
 //                        ,
-                        // Mitre, vulnerability, Windows XP, OVAL Schema 5.8
+//                        // Mitre, vulnerability, Windows XP, OVAL Schema 5.8
+                          // Java OutOfMemoryError!!!
+//                        {
+//                            OvalDefinitions.class,
+//                            "test/data/definitions/20101012_vulnerability_microsoft.windows.xp.xml",
+//                            "/oval_definitions",
+//                            null
+//                        }
+//                        ,
+                        // Mitre, vulnerability, Windows XP, OVAL Schema 5.8 textfilecontent54 entities
                         {
                             OvalDefinitions.class,
-                            "test/data/definitions/20101012_vulnerability_microsoft.windows.xp.xml",
+                            "test/data/definitions/oval-definitions_windows-def-11757.xml",
                             "/oval_definitions",
                             null
                         }
