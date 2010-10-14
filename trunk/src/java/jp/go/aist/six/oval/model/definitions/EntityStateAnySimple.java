@@ -26,6 +26,9 @@ import jp.go.aist.six.oval.model.common.Operation;
 
 
 /**
+ * The EntityStateAnySimple type is extended by the entities
+ * of an individual OVAL State.
+ * This specific type describes any simple data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -81,6 +84,24 @@ public class EntityStateAnySimple
 
 
     //**************************************************************
+    //  EntityBase
+    //**************************************************************
+
+    @Override
+    public void setDatatype(
+                    final Datatype datatype
+                    )
+    {
+        if (datatype != null  &&  datatype.isComplex()) {
+            throw new IllegalArgumentException( "invalid datatype: " + datatype );
+        }
+
+        super.setDatatype( datatype );
+    }
+
+
+
+    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
@@ -106,14 +127,6 @@ public class EntityStateAnySimple
         }
 
         return super.equals( obj );
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return "EntityStateAnySimple[" + super.toString() + "]";
     }
 
 }

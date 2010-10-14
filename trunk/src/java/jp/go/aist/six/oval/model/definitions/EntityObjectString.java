@@ -27,7 +27,7 @@ import jp.go.aist.six.oval.model.common.Operation;
 
 
 /**
- * The EntityString type is extended by the entities of
+ * The EntityObjectString type is extended by the entities of
  * an individual OVAL Object.
  * This specific type describes simple string data.
  *

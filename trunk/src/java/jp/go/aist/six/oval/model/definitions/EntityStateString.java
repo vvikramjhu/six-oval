@@ -26,6 +26,9 @@ import jp.go.aist.six.oval.model.common.Operation;
 
 
 /**
+ * The EntityStateString type is extended by the entities
+ * of an individual OVAL State.
+ * This specific type describes simple string data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -34,6 +37,10 @@ import jp.go.aist.six.oval.model.common.Operation;
 public class EntityStateString
     extends EntityStateBase
 {
+
+    public static final Datatype  FIXED_DATATYPE = Datatype.STRING;
+
+
 
     /**
      * Constructor.
@@ -76,6 +83,31 @@ public class EntityStateString
                     )
     {
         super( data, datatype, operation );
+    }
+
+
+
+    //**************************************************************
+    //  EntityBase
+    //**************************************************************
+
+    @Override
+    public void setDatatype(
+                    final Datatype datatype
+                    )
+    {
+        if (datatype != null  &&  datatype != FIXED_DATATYPE) {
+            throw new IllegalArgumentException( "invalid datatype: " + datatype);
+        }
+
+        super.setDatatype( datatype );
+    }
+
+
+    @Override
+    public Datatype getDatatype()
+    {
+        return FIXED_DATATYPE;
     }
 
 

@@ -25,6 +25,9 @@ import jp.go.aist.six.oval.model.common.Datatype;
 
 
 /**
+ * The EntityStateBool type is extended by the entities
+ * of an individual OVAL State.
+ * This specific type describes simple boolean data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -79,7 +82,7 @@ public class EntityStateBool
                     )
     {
         if (datatype != null  &&  datatype != FIXED_DATATYPE) {
-            throw new IllegalArgumentException( "invalid datatype: " + datatype);
+            throw new IllegalArgumentException( "invalid datatype: " + datatype );
         }
 
         super.setDatatype( datatype );
@@ -90,6 +93,27 @@ public class EntityStateBool
     public Datatype getDatatype()
     {
         return FIXED_DATATYPE;
+    }
+
+
+
+    @Override
+    public void setData(
+                    final String data
+                    )
+    {
+        if (data != null) {
+            if (data.equalsIgnoreCase( "true" )
+                            ||  data.equalsIgnoreCase( "false" )
+                            ||  data.equalsIgnoreCase( "1" )
+                            ||  data.equalsIgnoreCase( "0" )) {
+                // valid xsd:boolean value
+            } else {
+                throw new IllegalArgumentException( "invalid boolean data: " + data );
+            }
+        }
+
+        super.setData( data );
     }
 
 

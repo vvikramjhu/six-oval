@@ -25,6 +25,9 @@ import jp.go.aist.six.oval.model.common.Datatype;
 
 
 /**
+ * The EntityStateInt type is extended by the entities
+ * of an individual OVAL State.
+ * This specific type describes simple integer data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
