@@ -17,7 +17,9 @@ import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.EntityObjectInt;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
+import jp.go.aist.six.oval.model.definitions.EntityStateEVRString;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
+import jp.go.aist.six.oval.model.definitions.EntityStateVersion;
 import jp.go.aist.six.oval.model.definitions.ExtendDefinition;
 import jp.go.aist.six.oval.model.definitions.LiteralComponent;
 import jp.go.aist.six.oval.model.definitions.LocalVariable;
@@ -344,7 +346,7 @@ public class OvalSample
 
     public static final FileState  STATE_FILE_2190 =
         new FileState( "oval:org.mitre.oval:ste:2190", 1 )
-    .version( new EntityStateString( "6.0.2900.2873",
+    .version( new EntityStateVersion( "6.0.2900.2873",
                     Datatype.VERSION, Operation.LESS_THAN )
     );
 
@@ -366,7 +368,7 @@ public class OvalSample
 
     public static final DpkgInfoState  STATE_DPKGINFO_5797 =
         new DpkgInfoState( "oval:org.mitre.oval:ste:5797", 1 )
-    .evr( new EntityStateString( "0:2.2.6-02-1+lenny2+b2",
+    .evr( new EntityStateEVRString( "0:2.2.6-02-1+lenny2+b2",
                     Datatype.EVR_STRING,
                     Operation.LESS_THAN )
     );
@@ -374,7 +376,7 @@ public class OvalSample
 
     public static final RpmInfoState  STATE_RPMINFO_20100061004 =
         new RpmInfoState( "oval:com.redhat.rhsa:ste:20100061004", 301 )
-    .evr( new EntityStateString( "0:1.3.5-11.el5_4.1",
+    .evr( new EntityStateEVRString( "0:1.3.5-11.el5_4.1",
                     Datatype.EVR_STRING,
                     Operation.LESS_THAN )
     );
@@ -382,7 +384,7 @@ public class OvalSample
 
     public static final RpmInfoState  STATE_RPMINFO_20100061003 =
         new RpmInfoState( "oval:com.redhat.rhsa:ste:20100061003", 301 )
-    .version( new EntityStateString( "^5[^[:digit:]]",
+    .version( new EntityStateAnySimple( "^5[^[:digit:]]",
                     Operation.PATTERN_MATCH )
     );
 

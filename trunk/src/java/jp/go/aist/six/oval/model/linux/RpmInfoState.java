@@ -21,6 +21,8 @@
 package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
+import jp.go.aist.six.oval.model.definitions.EntityStateEVRString;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 
@@ -64,7 +66,7 @@ public class RpmInfoState
 
 
     public RpmInfoState version(
-                    final EntityStateString version
+                    final EntityStateAnySimple version
                     )
     {
         setVersion( version );
@@ -74,7 +76,7 @@ public class RpmInfoState
 
 
     public RpmInfoState evr(
-                    final EntityStateString evr
+                    final EntityStateEVRString evr
                     )
     {
         setEvr( evr );
