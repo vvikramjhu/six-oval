@@ -26,10 +26,8 @@ import jp.go.aist.six.oval.model.definitions.SystemObject;
 
 
 /**
- * The UnameObject is used by an uname test to define those objects
+ * The uname object is used by an uname test to define those objects
  * to evaluated based on a specified state.
- * There is actually only one object relating to uname and this is
- * the system as a whole.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -114,7 +112,7 @@ public class UnameObject
     @Override
     public String toString()
     {
-        return "UnameObject[" + super.toString() + "]";
+        return "uname_object[" + super.toString() + "]";
     }
 
 }

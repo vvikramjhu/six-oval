@@ -27,6 +27,8 @@ import jp.go.aist.six.oval.model.definitions.Test;
 
 
 /**
+ * The uname test reveals information about the hardware
+ * the machine is running on.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -112,7 +114,7 @@ public class UnameTest
     @Override
     public String toString()
     {
-        return "UnameTest[" + super.toString() + "]";
+        return "uname_test[" + super.toString() + "]";
     }
 
 }

@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.unix;
 
 import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
+import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
 import java.util.Map;
@@ -29,6 +30,8 @@ import java.util.Map;
 
 
 /**
+ * The uname state defines the information about the hardware
+ * the machine is running one.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -38,7 +41,7 @@ public class UnameState
     extends State
 {
 
-    private Map<UnameProperty,EntityStateString>  _properties =
+    private Map<UnameProperty, EntityStateString>  _properties =
         new EnumMap<UnameProperty,EntityStateString>( UnameProperty.class );
 
 
@@ -67,7 +70,7 @@ public class UnameState
     /**
      *
      */
-    protected Map<UnameProperty,EntityStateString> _getProperties()
+    protected Map<UnameProperty, EntityStateString> _getProperties()
     {
         return _properties;
     }
@@ -198,7 +201,11 @@ public class UnameState
         final int  prime = 37;
         int  result = super.hashCode();
 
-        result = prime * result + _getProperties().hashCode();
+        Map<UnameProperty, EntityStateString>  properties = _getProperties();
+        for (UnameProperty  p : UnameProperty.values()) {
+            EntityStateString  s = properties.get( p );
+            result = prime * result + ((s == null) ? 0 : s.hashCode());
+        }
 
         return result;
     }
@@ -214,17 +221,37 @@ public class UnameState
             return false;
         }
 
-        if (super.equals( obj )) {
-            UnameState  other = (UnameState)obj;
-            Map<UnameProperty,EntityStateString>  other_props = other._getProperties();
-            Map<UnameProperty,EntityStateString>   this_props =  this._getProperties();
-            if (this_props == other_props
-                            ||  (this_props != null  &&  this_props.equals( other_props ))) {
-                return true;
-            }
+        if (!super.equals( obj )) {
+            return false;
         }
 
-        return false;
+        UnameState  other = (UnameState)obj;
+
+        if (!EntityTypeHelper.equals( getMachineClass(), other.getMachineClass() )) {
+            return false;
+        }
+
+        if (!EntityTypeHelper.equals( getNodeName(), other.getNodeName() )) {
+            return false;
+        }
+
+        if (!EntityTypeHelper.equals( getOsName(), other.getOsName() )) {
+            return false;
+        }
+
+        if (!EntityTypeHelper.equals( getOsRelease(), other.getOsRelease() )) {
+            return false;
+        }
+
+        if (!EntityTypeHelper.equals( getOsVersion(), other.getOsVersion() )) {
+            return false;
+        }
+
+        if (!EntityTypeHelper.equals( getProcessorType(), other.getProcessorType() )) {
+            return false;
+        }
+
+        return true;
     }
 
 
@@ -232,7 +259,7 @@ public class UnameState
     @Override
     public String toString()
     {
-        return "UnameState[" + super.toString() + "]";
+        return "uname_state[" + super.toString() + "]";
     }
 
 }
