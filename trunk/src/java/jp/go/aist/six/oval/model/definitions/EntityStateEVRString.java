@@ -26,26 +26,30 @@ import jp.go.aist.six.oval.model.common.Operation;
 
 
 /**
- * The EntityStateVersion type is extended by the entities
+ * The EntityStateEVRString type is extended by the entities
  * of an individual OVAL State.
- * This specific type describes simple version data.
+ * This type represents the epoch, version, and release fields
+ * as a single version string.
+ * It has the form "EPOCH:VERSION-RELEASE".
+ * Note that a null epoch (or '(none)' as returned by rpm)
+ * is equivalent to '0' and would hence have the form 0:VERSION-RELEASE.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateVersion
+public class EntityStateEVRString
     extends EntityStateBase
 {
 
-    public static final Datatype  FIXED_DATATYPE = Datatype.VERSION;
+    public static final Datatype  FIXED_DATATYPE = Datatype.EVR_STRING;
 
 
 
     /**
      * Constructor.
      */
-    public EntityStateVersion()
+    public EntityStateEVRString()
     {
     }
 
@@ -53,7 +57,7 @@ public class EntityStateVersion
     /**
      * Constructor.
      */
-    public EntityStateVersion(
+    public EntityStateEVRString(
                     final String data
                     )
     {
@@ -64,7 +68,7 @@ public class EntityStateVersion
     /**
      * Constructor.
      */
-    public EntityStateVersion(
+    public EntityStateEVRString(
                     final String data,
                     final Operation operation
                     )
@@ -76,7 +80,7 @@ public class EntityStateVersion
     /**
      * Constructor.
      */
-    public EntityStateVersion(
+    public EntityStateEVRString(
                     final String data,
                     final Datatype datatype,
                     final Operation operation
@@ -133,7 +137,7 @@ public class EntityStateVersion
             return true;
         }
 
-        if (!(obj instanceof EntityStateVersion)) {
+        if (!(obj instanceof EntityStateEVRString)) {
             return false;
         }
 
@@ -141,4 +145,4 @@ public class EntityStateVersion
     }
 
 }
-// EntityStateVersion
+// EntityStateEVRString

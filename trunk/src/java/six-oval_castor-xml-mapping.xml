@@ -784,6 +784,14 @@
 
 
     <!-- ======================================================= -->
+    <!-- EntityStateEVRString                                    -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateEVRString"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateBase">
+    </class>
+
+
+    <!-- ======================================================= -->
     <!-- EntityStateVersion                                      -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definitions.EntityStateVersion"
@@ -2489,7 +2497,7 @@
         </field>
         
         <field name="evr" 
-            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateEVRString">
             <bind-xml name="evr" node="element"/>
         </field>
     </class>
@@ -2531,7 +2539,7 @@
         </field>
         
         <field name="evr" 
-            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateEVRString">
             <bind-xml name="evr" node="element"/>
         </field>
 

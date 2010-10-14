@@ -57,14 +57,32 @@ public class OvalXmlTest
     public Object[][] provideOvalDefinitionsOvalDefinitions()
     {
         return new Object[][] {
-                        // Windows XP @ Mitre, all the vulnerabilities
+                        // Debian 5.0 @ Mitre, all patches, 2010-10-12
                         {
                             OvalDefinitions.class,
-                            "test/data/definitions/20101012_vulnerability_microsoft.windows.xp.xml",
+                            "test/data/definitions/20101012_patch_debian.gnu.linux.5.0.xml",
                             "/oval_definitions",
                             null,
-                            "marshalled_20101012_vulnerability_microsoft.windows.xp.xml"
+                            "marshalled_20101012_patch_debian.gnu.linux.5.0.xml"
                         }
+//                        ,
+//                        // Windows Server 2008 @ Mitre, all the vulnerabilities
+//                        {
+//                            OvalDefinitions.class,
+//                            "test/data/definitions/20101012_vulnerability_microsoft.windows.server.2008.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_20101012_vulnerability_microsoft.windows.server.2008.xml"
+//                        }
+//                        ,
+//                        // Windows XP @ Mitre, all the vulnerabilities
+//                        {
+//                            OvalDefinitions.class,
+//                            "test/data/definitions/20101012_vulnerability_microsoft.windows.xp.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_20101012_vulnerability_microsoft.windows.xp.xml"
+//                        }
 //                        ,
 //                        // Windows @ Mitre, CVE-2009-4019
 //                        {
@@ -96,16 +114,6 @@ public class OvalXmlTest
 //                        }
 //                        ,
 //
-//                        // Windows XP @ Mitre, all vulnerability, 2010-08-27
-//                        {
-//                            OvalDefinitions.class,
-//                            "/oval_definitions",
-//                            "test/data/definitions/20100827_vulnerability_microsoft.windows.xp.xml",
-//                            null,
-//                            "marshalled_20100827_vulnerability_microsoft.windows.xp.xml"
-//                        }
-//                        ,
-//
 //                        // Windows 7 @ Mitre, all vulnerability, 2010-08-27
 //                        {
 //                            OvalDefinitions.class,
@@ -116,25 +124,6 @@ public class OvalXmlTest
 //                        }
 //                        ,
 //
-//                        // Windows Server 2008 @ Mitre, all vulnerability, 2010-08-27
-//                        {
-//                            OvalDefinitions.class,
-//                            "/oval_definitions",
-//                            "test/data/definitions/20100827_vulnerability_microsoft.windows.server.2008.xml",
-//                            null,
-//                            "marshalled_20100827_vulnerability_microsoft.windows.server.2008.xml"
-//                        }
-//                        ,
-//
-//                        // Debian 5.0 @ Mitre, all patches, 2010-08-30
-//                        {
-//                            OvalDefinitions.class,
-//                            "/oval_definitions",
-//                            "test/data/definitions/20100830_patch_debian.gnu.linux.5.0.xml",
-//                            null,
-//                            "marshalled_20100830_patch_debian.gnu.linux.5.0.xml"
-//                        }
-//                        ,
 //
 //                        // Red Hat Enterprise Linux 5.0 @ Mitre, all vulnerabilities, 2010-08-30
 //                        {

@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.linux;
 
+import jp.go.aist.six.oval.model.definitions.EntityStateEVRString;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 
@@ -41,7 +42,7 @@ public abstract class LinuxEvrPkgInfoState
     private EntityStateString  _release;
     //{0..1}
 
-    private EntityStateString  _evr;
+    private EntityStateEVRString  _evr;
     //{0..1}
 
 
@@ -98,14 +99,14 @@ public abstract class LinuxEvrPkgInfoState
 
 
     public void setEvr(
-                    final EntityStateString evr
+                    final EntityStateEVRString evr
                     )
     {
         _evr = evr;
     }
 
 
-    public EntityStateString getEvr()
+    public EntityStateEVRString getEvr()
     {
         return _evr;
     }
@@ -128,7 +129,7 @@ public abstract class LinuxEvrPkgInfoState
         EntityStateString  release = getRelease();
         result = prime * result + ((release == null) ? 0 : release.hashCode());
 
-        EntityStateString  evr = getEvr();
+        EntityStateEVRString  evr = getEvr();
         result = prime * result + ((evr == null) ? 0 : evr.hashCode());
 
         return result;
