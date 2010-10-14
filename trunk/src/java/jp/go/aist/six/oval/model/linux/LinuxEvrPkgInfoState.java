@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
+import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateEVRString;
-import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 
 
@@ -36,10 +36,10 @@ public abstract class LinuxEvrPkgInfoState
     extends LinuxPkgInfoState
 {
 
-    private EntityStateString  _epoch;
+    private EntityStateAnySimple  _epoch;
     //{0..1}
 
-    private EntityStateString  _release;
+    private EntityStateAnySimple  _release;
     //{0..1}
 
     private EntityStateEVRString  _evr;
@@ -69,14 +69,14 @@ public abstract class LinuxEvrPkgInfoState
 
 
     public void setEpoch(
-                    final EntityStateString epoch
+                    final EntityStateAnySimple epoch
                     )
     {
         _epoch = epoch;
     }
 
 
-    public EntityStateString getEpoch()
+    public EntityStateAnySimple getEpoch()
     {
         return _epoch;
     }
@@ -84,14 +84,14 @@ public abstract class LinuxEvrPkgInfoState
 
 
     public void setRelease(
-                    final EntityStateString release
+                    final EntityStateAnySimple release
                     )
     {
         _release = release;
     }
 
 
-    public EntityStateString getRelease()
+    public EntityStateAnySimple getRelease()
     {
         return _release;
     }
@@ -123,10 +123,10 @@ public abstract class LinuxEvrPkgInfoState
         final int  prime = 37;
         int  result = super.hashCode();
 
-        EntityStateString  epoch = getEpoch();
+        EntityStateAnySimple  epoch = getEpoch();
         result = prime * result + ((epoch == null) ? 0 : epoch.hashCode());
 
-        EntityStateString  release = getRelease();
+        EntityStateAnySimple  release = getRelease();
         result = prime * result + ((release == null) ? 0 : release.hashCode());
 
         EntityStateEVRString  evr = getEvr();

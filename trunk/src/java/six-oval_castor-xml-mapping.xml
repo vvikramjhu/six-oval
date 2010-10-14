@@ -2492,12 +2492,12 @@
         </field>
 
         <field name="release" 
-            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimple">
             <bind-xml name="release" node="element"/>
         </field>
         
         <field name="epoch" 
-            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimple">
             <bind-xml name="epoch" node="element"/>
         </field>
         
@@ -2534,12 +2534,12 @@
         </field>
 
         <field name="release" 
-            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimple">
             <bind-xml name="release" node="element"/>
         </field>
         
         <field name="epoch" 
-            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimple">
             <bind-xml name="epoch" node="element"/>
         </field>
         
