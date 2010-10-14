@@ -25,6 +25,8 @@ import jp.go.aist.six.oval.model.definitions.EntityStateString;
 
 
 /**
+ * The EntityStateFileType type restricts a string value to a specific set of values.
+ * These values describe the type of file being represented.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -110,14 +112,6 @@ public class EntityStateFileType
         }
 
         return super.equals( obj );
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return "EntityStateFileType[" + super.toString() + "]";
     }
 
 }

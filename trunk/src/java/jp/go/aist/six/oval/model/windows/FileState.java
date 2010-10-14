@@ -24,6 +24,7 @@ import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateInt;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
+import jp.go.aist.six.oval.model.definitions.EntityStateVersion;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
 import java.util.Map;
@@ -31,6 +32,7 @@ import java.util.Map;
 
 
 /**
+ * The file state defines the different metadata associate with a Windows file.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -42,7 +44,7 @@ public class FileState
 
     private Map<FileProperty, EntityStateBase>  _properties =
         new EnumMap<FileProperty, EntityStateBase>( FileProperty.class );
-    //EntityStateBaseType{0..1}
+    //EntityStateBase{0..1}
 
 //    private EntityStateStringType  _filepath;
 //    private EntityStateStringType  _path;
@@ -54,7 +56,7 @@ public class FileState
 //    private EntityStateIntType  _mTime;
 //    private EntityStateStringType  _msChecksum;
 
-//    private EntityStateStringType  _version;
+//    private EntityStateVersionType  _version;
 //    //{0..1}
 
 //    private EntityStateFileType  _type;
@@ -64,7 +66,7 @@ public class FileState
 //    private EntityStateStringType  _language;
 //    private EntityStateStringType  _originalFilename;
 //    private EntityStateStringType  _productName;
-//    private EntityStateStringType  _productVersion;
+//    private EntityStateVersionType  _productVersion;
 
 
 
@@ -291,7 +293,7 @@ public class FileState
     /**
      */
     public void setVersion(
-                    final EntityStateString version
+                    final EntityStateVersion version
                     )
     {
         _properties.put( FileProperty.VERSION, version );
@@ -299,7 +301,7 @@ public class FileState
 
 
     public FileState version(
-                    final EntityStateString version
+                    final EntityStateVersion version
                     )
     {
         setVersion( version );
@@ -307,9 +309,9 @@ public class FileState
     }
 
 
-    public EntityStateString getVersion()
+    public EntityStateVersion getVersion()
     {
-        return (EntityStateString)_properties.get( FileProperty.VERSION );
+        return (EntityStateVersion)_properties.get( FileProperty.VERSION );
     }
 
 
@@ -436,16 +438,16 @@ public class FileState
     /**
      */
     public void setProductVersion(
-                    final EntityStateString version
+                    final EntityStateVersion version
                     )
     {
         _properties.put( FileProperty.PRODUCT_VERSION, version );
     }
 
 
-    public EntityStateString getProductVersion()
+    public EntityStateVersion getProductVersion()
     {
-        return (EntityStateString)_properties.get( FileProperty.PRODUCT_VERSION );
+        return (EntityStateVersion)_properties.get( FileProperty.PRODUCT_VERSION );
     }
 
 
@@ -506,7 +508,7 @@ public class FileState
     @Override
     public String toString()
     {
-        return "FileState[" + super.toString()
+        return "file_state[" + super.toString()
                         + ", " + _getProperties()
                         + "]";
     }

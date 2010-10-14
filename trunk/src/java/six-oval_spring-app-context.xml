@@ -138,7 +138,7 @@
         <property name="mappingLocations"
                  value="classpath:six-oval_castor-xml-mapping.xml"/>
         <property name="ignoreExtraAttributes"
-                 value="true"/>
+                 value="false"/>
         <property name="ignoreExtraElements"
                  value="false"/>
         <property name="suppressXsiType"

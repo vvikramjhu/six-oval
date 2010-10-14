@@ -784,6 +784,14 @@
 
 
     <!-- ======================================================= -->
+    <!-- EntityStateVersion                                      -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateVersion"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateBase">
+    </class>
+
+
+    <!-- ======================================================= -->
     <!-- EntityStateAnySimple                                    -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definitions.EntityStateAnySimple"
@@ -3163,12 +3171,17 @@
             ns-prefix=""/>
 
         <field name="version" 
-            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateVersion">
             <bind-xml name="version" node="element"/>
         </field>
 
-        <field name="productVersion" 
+        <field name="productName" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateString">
+            <bind-xml name="product_name" node="element"/>
+        </field>
+
+        <field name="productVersion" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateVersion">
             <bind-xml name="product_version" node="element"/>
         </field>
     </class>

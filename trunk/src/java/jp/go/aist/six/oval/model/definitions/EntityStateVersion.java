@@ -26,26 +26,26 @@ import jp.go.aist.six.oval.model.common.Operation;
 
 
 /**
- * The EntityStateString type is extended by the entities
+ * The EntityStateVersion type is extended by the entities
  * of an individual OVAL State.
- * This specific type describes simple string data.
+ * This specific type describes simple version data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateString
+public class EntityStateVersion
     extends EntityStateBase
 {
 
-    public static final Datatype  FIXED_DATATYPE = Datatype.STRING;
+    public static final Datatype  FIXED_DATATYPE = Datatype.VERSION;
 
 
 
     /**
      * Constructor.
      */
-    public EntityStateString()
+    public EntityStateVersion()
     {
     }
 
@@ -53,7 +53,7 @@ public class EntityStateString
     /**
      * Constructor.
      */
-    public EntityStateString(
+    public EntityStateVersion(
                     final String data
                     )
     {
@@ -64,7 +64,7 @@ public class EntityStateString
     /**
      * Constructor.
      */
-    public EntityStateString(
+    public EntityStateVersion(
                     final String data,
                     final Operation operation
                     )
@@ -76,7 +76,7 @@ public class EntityStateString
     /**
      * Constructor.
      */
-    public EntityStateString(
+    public EntityStateVersion(
                     final String data,
                     final Datatype datatype,
                     final Operation operation
@@ -133,20 +133,12 @@ public class EntityStateString
             return true;
         }
 
-        if (!(obj instanceof EntityStateString)) {
+        if (!(obj instanceof EntityStateVersion)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return "EntityStateString[" + super.toString() + "]";
-//    }
-
 }
-// EntityStateString
+// EntityStateVersion

@@ -75,7 +75,9 @@ public final class FileType
 
     /**
      */
-    public static FileType valueOf( final String name )
+    public static FileType valueOf(
+                    final String name
+                    )
     {
         FileType  flag = null;
         if (name != null) {
@@ -97,7 +99,9 @@ public final class FileType
 
     /**
      */
-    private FileType( final String name )
+    private FileType(
+                    final String name
+                    )
     {
         _name = name;
     }
@@ -113,9 +117,9 @@ public final class FileType
 
 
 
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
     //  java.lang.Object
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
 
     @Override
     public String toString()
