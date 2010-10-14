@@ -28,6 +28,8 @@ import java.util.Iterator;
 
 
 /**
+ * The concat function takes two or more components
+ * and concatenates them together to form a single string.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
@@ -116,7 +118,7 @@ public class ConcatFunction
     @Override
     public String toString()
     {
-        return "ConcatFunction[" + getComponent()
+        return "concat[" + getComponent()
                         + "]";
     }
 

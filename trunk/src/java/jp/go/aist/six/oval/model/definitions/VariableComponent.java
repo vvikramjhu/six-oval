@@ -23,34 +23,26 @@ package jp.go.aist.six.oval.model.definitions;
 
 
 /**
- * The ObjectComponent type defines a specific value or set of values
- * on the local system to obtain.
+ * The VariableComponent type defines a specific value obtained by
+ * looking at the value of another OVAL Variable.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class ObjectComponent
+public class VariableComponent
     extends Component
 {
 
-    private String  _objectRef;
-    //{required, oval:ObjectIDPattern}
-
-
-    private String  _itemField;
-    //{required, oval:NonEmptyStringType}
-
-
-    private String  _recordField;
-    //{optional, oval:NonEmptyStringType}
+    private String  _varRef;
+    //{required, oval:VariableIDPattern}
 
 
 
     /**
      * Constructor.
      */
-    public ObjectComponent()
+    public VariableComponent()
     {
     }
 
@@ -58,64 +50,28 @@ public class ObjectComponent
     /**
      * Constructor.
      */
-    public ObjectComponent(
-                    final String objectRef,
-                    final String itemField
+    public VariableComponent(
+                    final String varRef
                     )
     {
-        setObjectRef( objectRef );
-        setItemField( itemField );
+        setVarRef( varRef );
     }
 
 
 
     /**
      */
-    public String getObjectRef()
+    public String getVarRef()
     {
-        return _objectRef;
+        return _varRef;
     }
 
 
-    public void setObjectRef(
-                    final String objectRef
+    public void setVarRef(
+                    final String varRef
                     )
     {
-        _objectRef = objectRef;
-    }
-
-
-
-    /**
-     */
-    public String getItemField()
-    {
-        return _itemField;
-    }
-
-
-    public void setItemField(
-                    final String itemField
-                    )
-    {
-        _itemField = itemField;
-    }
-
-
-
-    /**
-     */
-    public String getRecordField()
-    {
-        return _recordField;
-    }
-
-
-    public void setRecordField(
-                    final String recordField
-                    )
-    {
-        _recordField = recordField;
+        _varRef = varRef;
     }
 
 
@@ -127,11 +83,9 @@ public class ObjectComponent
     @Override
     public String toString()
     {
-        return "object_component[object_ref=" + getObjectRef()
-                        + ", item_field=" + getItemField()
-                        + ", record_field=" + getRecordField()
+        return "variable_component[var_ref=" + getVarRef()
                         + "]";
     }
 
 }
-// ObjectComponent
+// VariableComponent

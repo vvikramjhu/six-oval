@@ -895,6 +895,21 @@
     </class>
 
 
+
+    <!-- ======================================================= -->
+    <!-- VariableComponent                                       -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.definitions.VariableComponent">
+        <map-to xml="variable_component"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="varRef" type="string">
+            <bind-xml name="var_ref" node="attribute"/>
+        </field>
+    </class>
+
+
+
     <!-- ======================================================= -->
     <!-- Function                                                -->
     <!-- ======================================================= -->
@@ -937,6 +952,23 @@
     </class>
 
 
+
+    <!-- ======================================================= -->
+    <!-- RegexCaptureFunction                                    -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.definitions.RegexCaptureFunction">
+        <map-to xml="regex_capture"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="component" 
+            type="jp.go.aist.six.oval.model.definitions.Component">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+
+        <field name="pattern" type="string">
+            <bind-xml name="pattern" node="attribute"/>
+        </field>
+    </class>
 
 
 

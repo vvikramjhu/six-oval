@@ -22,8 +22,9 @@ package jp.go.aist.six.oval.model.definitions;
 
 
 
-
 /**
+ * The escape_regex function takes a single string component
+ * and escapes all of the regular expression characters.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
@@ -82,7 +83,7 @@ public class EscapeRegexFunction
     @Override
     public String toString()
     {
-        return "EscapeRegexFunction[" + getComponent()
+        return "escape_regex[" + getComponent()
                         + "]";
     }
 

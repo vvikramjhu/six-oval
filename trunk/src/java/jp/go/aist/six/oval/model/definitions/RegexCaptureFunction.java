@@ -22,14 +22,14 @@ package jp.go.aist.six.oval.model.definitions;
 
 
 
-
 /**
+ * The regex_capture function captures a single substring from a string component.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EscapeRegexFunction
+public class RegexCaptureFunction
     extends Function
 {
 
@@ -37,11 +37,15 @@ public class EscapeRegexFunction
     //{1..1}
 
 
+    private String  _pattern;
+    //{option}
+
+
 
     /**
      * Constructor.
      */
-    public EscapeRegexFunction()
+    public RegexCaptureFunction()
     {
     }
 
@@ -49,7 +53,7 @@ public class EscapeRegexFunction
     /**
      * Constructor.
      */
-    public EscapeRegexFunction(
+    public RegexCaptureFunction(
                     final Component component
                     )
     {
@@ -75,6 +79,23 @@ public class EscapeRegexFunction
 
 
 
+    /**
+     */
+    public void setPattern(
+                    final String pattern
+                    )
+    {
+        _pattern = pattern;
+    }
+
+
+    public String getPattern()
+    {
+        return _pattern;
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -82,9 +103,10 @@ public class EscapeRegexFunction
     @Override
     public String toString()
     {
-        return "EscapeRegexFunction[" + getComponent()
+        return "regex_capture[pattern=" + getPattern()
+                        + ", " + getComponent()
                         + "]";
     }
 
 }
-// EscapeRegexFunction
+// RegexCaptureFunction
