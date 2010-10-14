@@ -26,9 +26,9 @@ import java.util.HashMap;
 
 
 /**
- * The Existence defines acceptable existence values,
- * which are used to determine a result
- * based on the existence of individual components.
+ * The Existence enumeration type defines acceptable existence values,
+ * which are used to determine a result based on the existence
+ * of individual components.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

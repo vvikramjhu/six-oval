@@ -26,7 +26,7 @@ import java.util.HashMap;
 
 
 /**
- * The Check defines acceptable check values,
+ * The Check enumeration type defines acceptable check values,
  * which are used to determine the final result of something
  * based on the results of individual components.
  *

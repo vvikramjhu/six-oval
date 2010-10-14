@@ -26,7 +26,7 @@ import java.util.HashMap;
 
 
 /**
- * The MessageLevelEnumeration simple type defines the different levels
+ * The MessageLevel enumeration type defines the different levels
  * associated with a message.
  *
  * @author  Akihito Nakamura, AIST

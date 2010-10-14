@@ -26,7 +26,8 @@ import java.util.HashMap;
 
 
 /**
- * The Family is a listing of families that OVAL supports at this time.
+ * The Family enumeration type is a listing of families
+ * that OVAL supports at this time.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

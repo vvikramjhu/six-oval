@@ -24,10 +24,11 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 /**
- * The Generator holds information about when a particular OVAL document
- * was compiled, what version of the schema was used,
- * what tool compiled the document,
- * and what version of that tools was used.
+ * The Generator type defines an element that is used to hold
+ * information about when a particular OVAL document was compiled,
+ * what version of the schema was used,
+ * what tool compiled the document, and
+ * what version of that tools was used.
  *
  * <p>Properties:</p>
  * <ul>

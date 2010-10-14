@@ -26,7 +26,8 @@ import java.util.HashMap;
 
 
 /**
- * The Operator enumeration defines acceptable operators.
+ * The Operator enumeration type defines acceptable operators.
+ * Each operator defines how to evaluate multiple arguments.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

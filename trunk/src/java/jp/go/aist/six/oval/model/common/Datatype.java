@@ -26,6 +26,9 @@ import java.util.HashMap;
 
 
 /**
+ * The Datatype enumeration type defines the legal datatypes
+ * that are used to describe the values of individual entities.
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

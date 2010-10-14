@@ -26,7 +26,8 @@ import java.util.HashMap;
 
 
 /**
- * The Operation defines acceptable operations.
+ * The Operation enumeration type defines acceptable operations.
+ * Each operation defines how to compare entities against their actual values.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

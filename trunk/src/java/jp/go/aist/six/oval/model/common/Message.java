@@ -25,10 +25,10 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 /**
- * The MessageType complex type defines the structure for which
- * messages are relayed from the data collection engine.
- * Each message is a text string that has an associated level attribute
- * identifying the type of message being sent.
+ * The Message type defines the structure for which messages
+ * are relayed from the data collection engine.
+ * Each message is a text string that has an associated
+ * level attribute identifying the type of message being sent.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
