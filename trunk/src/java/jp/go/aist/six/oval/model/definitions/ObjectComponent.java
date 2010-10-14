@@ -23,24 +23,27 @@ package jp.go.aist.six.oval.model.definitions;
 
 
 /**
+ * The ObjectComponent type defines a specific value or set of values
+ * on the local system to obtain.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class ObjectComponent
-    extends ComponentElement
+    extends ComponentGroup
 {
 
     private String  _objectRef;
-    //{required}
+    //{required, oval:ObjectIDPattern}
+
 
     private String  _itemField;
-    //{required}
+    //{required, oval:NonEmptyStringType}
 
 
     private String  _recordField;
-    //{optional}
+    //{optional, oval:NonEmptyStringType}
 
 
 
@@ -124,11 +127,11 @@ public class ObjectComponent
     @Override
     public String toString()
     {
-        return "ObjectVariableComponent[object_ref=" + getObjectRef()
-                        + ", item_field" + getItemField()
-                        + ", record_field" + getRecordField()
+        return "object_component[object_ref=" + getObjectRef()
+                        + ", item_field=" + getItemField()
+                        + ", record_field=" + getRecordField()
                         + "]";
     }
 
 }
-// ObjectVariableComponent
+// ObjectComponent

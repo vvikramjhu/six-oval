@@ -140,7 +140,7 @@
         <property name="ignoreExtraAttributes"
                  value="true"/>
         <property name="ignoreExtraElements"
-                 value="true"/>
+                 value="false"/>
         <property name="suppressXsiType"
                  value="true"/>
         <property name="encoding"

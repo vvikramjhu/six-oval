@@ -25,12 +25,14 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 /**
+ * Any value that is pulled directly off the local system
+ * is defined by the basic component.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class ComponentElement
+public abstract class ComponentGroup
     extends AbstractPersistable
 //    implements Dependent<LocalVariable>
 {
@@ -38,9 +40,9 @@ public abstract class ComponentElement
     /**
      * Constructor.
      */
-    public ComponentElement()
+    public ComponentGroup()
     {
     }
 
 }
-// VariableComponent
+// ComponentGroup

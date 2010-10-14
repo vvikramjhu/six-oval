@@ -9,7 +9,7 @@ import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.common.Operator;
 import jp.go.aist.six.oval.model.definitions.Affected;
-import jp.go.aist.six.oval.model.definitions.ComponentElement;
+import jp.go.aist.six.oval.model.definitions.ComponentGroup;
 import jp.go.aist.six.oval.model.definitions.ConcatFunction;
 import jp.go.aist.six.oval.model.definitions.Criteria;
 import jp.go.aist.six.oval.model.definitions.Criterion;
@@ -444,7 +444,7 @@ public class OvalSample
         )
     .component(
                     new ConcatFunction(
-                                    new ComponentElement[] {
+                                    new ComponentGroup[] {
                                                     new ObjectComponent( "oval:org.mitre.oval:obj:11992", "value" ),
                                                     new LiteralComponent( "bin\\" )
                                     }

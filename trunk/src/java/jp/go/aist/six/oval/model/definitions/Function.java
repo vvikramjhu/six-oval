@@ -24,13 +24,16 @@ package jp.go.aist.six.oval.model.definitions;
 
 
 /**
+ * Complex functions have been defined that help determine
+ * how to manipulate specific values.
+ * These functions can be nested together to form complex statements.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class Function
-    extends ComponentElement
+    extends ComponentGroup
 //    implements Dependent<LocalVariable>
 {
 

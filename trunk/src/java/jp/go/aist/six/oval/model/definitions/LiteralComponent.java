@@ -25,13 +25,14 @@ import jp.go.aist.six.oval.model.common.Datatype;
 
 
 /**
+ * The LiteralComponent type defines a literal value to be used as a component.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class LiteralComponent
-    extends ComponentElement
+    extends ComponentGroup
 {
 
     private String  _data;

@@ -37,7 +37,7 @@ public class ConcatFunction
     extends Function
 {
 
-    private Collection<ComponentElement>  _component = new ArrayList<ComponentElement>();
+    private Collection<ComponentGroup>  _component = new ArrayList<ComponentGroup>();
     //{2..*}
 
 
@@ -54,7 +54,7 @@ public class ConcatFunction
      * Constructor.
      */
     public ConcatFunction(
-                    final Collection<? extends ComponentElement> components
+                    final Collection<? extends ComponentGroup> components
                     )
     {
         setComponent( components );
@@ -65,7 +65,7 @@ public class ConcatFunction
      * Constructor.
      */
     public ConcatFunction(
-                    final ComponentElement[] components
+                    final ComponentGroup[] components
                     )
     {
         setComponent( Arrays.asList( components ) );
@@ -76,7 +76,7 @@ public class ConcatFunction
     /**
      */
     public void setComponent(
-                    final Collection<? extends ComponentElement> components
+                    final Collection<? extends ComponentGroup> components
                     )
     {
         if (components != _component) {
@@ -89,20 +89,20 @@ public class ConcatFunction
 
 
     public boolean addComponent(
-                    final ComponentElement component
+                    final ComponentGroup component
                     )
     {
         return _component.add( component );
     }
 
 
-    public Collection<ComponentElement> getComponent()
+    public Collection<ComponentGroup> getComponent()
     {
         return _component;
     }
 
 
-    public Iterator<ComponentElement> iterateComponent()
+    public Iterator<ComponentGroup> iterateComponent()
     {
         return _component.iterator();
     }
