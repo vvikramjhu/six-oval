@@ -27,6 +27,9 @@ import jp.go.aist.six.oval.model.common.Operation;
 
 
 /**
+ * The EntityString type is extended by the entities of
+ * an individual OVAL Object.
+ * This specific type describes simple string data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -35,6 +38,10 @@ import jp.go.aist.six.oval.model.common.Operation;
 public class EntityObjectString
     extends EntityObjectBase
 {
+
+    public static final Datatype  FIXED_DATATYPE = Datatype.STRING;
+
+
 
     /**
      * Constructor.
@@ -94,6 +101,31 @@ public class EntityObjectString
 
 
     //**************************************************************
+    //  EntityBase
+    //**************************************************************
+
+    @Override
+    public void setDatatype(
+                    final Datatype datatype
+                    )
+    {
+        if (datatype != null  &&  datatype != FIXED_DATATYPE) {
+            throw new IllegalArgumentException( "invalid datatype: " + datatype);
+        }
+
+        super.setDatatype( datatype );
+    }
+
+
+    @Override
+    public Datatype getDatatype()
+    {
+        return FIXED_DATATYPE;
+    }
+
+
+
+    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
@@ -123,11 +155,11 @@ public class EntityObjectString
 
 
 
-    @Override
-    public String toString()
-    {
-        return "EntityObjectString[" + super.toString() + "]";
-    }
+//    @Override
+//    public String toString()
+//    {
+//        return "EntityObjectString[" + super.toString() + "]";
+//    }
 
 }
 // EntityObjectString

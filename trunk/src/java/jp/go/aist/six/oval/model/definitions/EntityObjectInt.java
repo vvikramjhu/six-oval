@@ -26,6 +26,8 @@ import jp.go.aist.six.oval.model.common.Operation;
 
 
 /**
+ * The EntityInt type is extended by the entities of an individual OVAL Object.
+ * This specific type describes simple integer data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -34,6 +36,10 @@ import jp.go.aist.six.oval.model.common.Operation;
 public class EntityObjectInt
     extends EntityObjectBase
 {
+
+    public static final Datatype  FIXED_DATATYPE = Datatype.INT;
+
+
 
     /**
      * Constructor.
@@ -81,6 +87,31 @@ public class EntityObjectInt
 
 
     //**************************************************************
+    //  EntityBase
+    //**************************************************************
+
+    @Override
+    public void setDatatype(
+                    final Datatype datatype
+                    )
+    {
+        if (datatype != null  &&  datatype != FIXED_DATATYPE) {
+            throw new IllegalArgumentException( "invalid datatype: " + datatype);
+        }
+
+        super.setDatatype( datatype );
+    }
+
+
+    @Override
+    public Datatype getDatatype()
+    {
+        return FIXED_DATATYPE;
+    }
+
+
+
+    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
@@ -110,11 +141,11 @@ public class EntityObjectInt
 
 
 
-    @Override
-    public String toString()
-    {
-        return "EntityObjectInt[" + super.toString() + "]";
-    }
+//    @Override
+//    public String toString()
+//    {
+//        return "EntityObjectInt[" + super.toString() + "]";
+//    }
 
 }
 // EntityObjectInt

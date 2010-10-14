@@ -27,6 +27,11 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 /**
+ * The EntityBase type is an abstract type that defines
+ * the default attributes associated with every entity.
+ * Entities can be found in both OVAL Objects and OVAL States
+ * and represent the individual properties associated with items
+ * found on a system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

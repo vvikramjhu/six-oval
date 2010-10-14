@@ -27,6 +27,8 @@ import jp.go.aist.six.oval.model.common.Operation;
 
 
 /**
+ * The EntityObjectBase type is an abstract type that extends
+ * the EntityBase and is used by the entities within an OVAL Object.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
