@@ -32,7 +32,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class ComponentGroup
+public abstract class Component
     extends AbstractPersistable
 //    implements Dependent<LocalVariable>
 {
@@ -40,7 +40,7 @@ public abstract class ComponentGroup
     /**
      * Constructor.
      */
-    public ComponentGroup()
+    public Component()
     {
     }
 

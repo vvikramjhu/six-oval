@@ -33,7 +33,7 @@ package jp.go.aist.six.oval.model.definitions;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class Function
-    extends ComponentGroup
+    extends Component
 //    implements Dependent<LocalVariable>
 {
 

@@ -33,7 +33,7 @@ public class EscapeRegexFunction
     extends Function
 {
 
-    private ComponentGroup  _component;
+    private Component  _component;
     //{1..1}
 
 
@@ -50,7 +50,7 @@ public class EscapeRegexFunction
      * Constructor.
      */
     public EscapeRegexFunction(
-                    final ComponentGroup component
+                    final Component component
                     )
     {
         setComponent( component );
@@ -61,14 +61,14 @@ public class EscapeRegexFunction
     /**
      */
     public void setComponent(
-                    final ComponentGroup component
+                    final Component component
                     )
     {
         _component = component;
     }
 
 
-    public ComponentGroup getComponent()
+    public Component getComponent()
     {
         return _component;
     }

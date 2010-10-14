@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.xml.OvalXml;
-import jp.go.aist.six.oval.model.definitions.ComponentGroup;
+import jp.go.aist.six.oval.model.definitions.Component;
 import jp.go.aist.six.oval.model.definitions.LocalVariable;
 import jp.go.aist.six.oval.model.definitions.Variable;
 import org.apache.commons.logging.Log;
@@ -77,7 +77,7 @@ public class VariableDao
     {
         if (LocalVariable.class.isInstance( variable )) {
             LocalVariable  lv = LocalVariable.class.cast( variable );
-            ComponentGroup  component = lv.getComponent();
+            Component  component = lv.getComponent();
             if (component != null) {
                 try {
                     OvalXml  mapper = OvalContext.INSTANCE.getXml();

@@ -831,7 +831,7 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="component" 
-            type="jp.go.aist.six.oval.model.definitions.ComponentElement">
+            type="jp.go.aist.six.oval.model.definitions.Component">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
 
@@ -846,10 +846,10 @@
 
 
     <!-- ======================================================= -->
-    <!-- ComponentElement                                        -->
+    <!-- Component                                               -->
     <!-- ======================================================= -->
 <!--
-    <class name ="jp.go.aist.six.oval.model.definitions.ComponentElement"
+    <class name ="jp.go.aist.six.oval.model.definitions.Component"
         verify-constructable="false">
 
     </class>
@@ -914,7 +914,7 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="component" 
-            type="jp.go.aist.six.oval.model.definitions.ComponentElement"
+            type="jp.go.aist.six.oval.model.definitions.Component"
             collection="collection"
             set-method="addComponent"
             get-method="iterateComponent">
@@ -931,7 +931,7 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="component" 
-            type="jp.go.aist.six.oval.model.definitions.ComponentElement">
+            type="jp.go.aist.six.oval.model.definitions.Component">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
     </class>

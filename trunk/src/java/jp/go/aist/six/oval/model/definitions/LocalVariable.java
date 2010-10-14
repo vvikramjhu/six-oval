@@ -35,7 +35,7 @@ public class LocalVariable
     extends Variable
 {
 
-    private ComponentGroup  _component;
+    private Component  _component;
     //{1..1}
 
 
@@ -95,7 +95,7 @@ public class LocalVariable
     /**
      */
     public void setComponent(
-                    final ComponentGroup component
+                    final Component component
                     )
     {
         _component = component;
@@ -103,7 +103,7 @@ public class LocalVariable
 
 
     public LocalVariable component(
-                    final ComponentGroup component
+                    final Component component
                     )
     {
         setComponent( component );
@@ -111,7 +111,7 @@ public class LocalVariable
     }
 
 
-    public ComponentGroup getComponent()
+    public Component getComponent()
     {
         return _component;
     }

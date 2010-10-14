@@ -31,7 +31,7 @@ package jp.go.aist.six.oval.model.definitions;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class ObjectComponent
-    extends ComponentGroup
+    extends Component
 {
 
     private String  _objectRef;

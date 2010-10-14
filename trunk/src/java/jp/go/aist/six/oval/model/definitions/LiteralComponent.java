@@ -32,7 +32,7 @@ import jp.go.aist.six.oval.model.common.Datatype;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class LiteralComponent
-    extends ComponentGroup
+    extends Component
 {
 
     private String  _data;
