@@ -664,6 +664,11 @@
     <class name="jp.go.aist.six.oval.model.definitions.State"
         extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
         verify-constructable="false">
+
+        <field name="operator" 
+            type="jp.go.aist.six.oval.model.common.Operator">
+            <bind-xml name="operator" node="attribute"/>
+        </field>
     </class>
 
 
@@ -2482,7 +2487,7 @@
         </field>
         
         <field name="version" 
-            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimple">
             <bind-xml name="version" node="element"/>
         </field>
 
@@ -2524,7 +2529,7 @@
         </field>
         
         <field name="version" 
-            type="jp.go.aist.six.oval.model.definitions.EntityStateString">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimple">
             <bind-xml name="version" node="element"/>
         </field>
 

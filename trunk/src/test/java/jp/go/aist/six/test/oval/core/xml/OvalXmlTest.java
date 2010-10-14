@@ -57,15 +57,24 @@ public class OvalXmlTest
     public Object[][] provideOvalDefinitionsOvalDefinitions()
     {
         return new Object[][] {
+//                        // Debian 5.0 @ Mitre, all patches, 2010-10-12
+//                        {
+//                            OvalDefinitions.class,
+//                            "test/data/definitions/20101012_patch_debian.gnu.linux.5.0.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_20101012_patch_debian.gnu.linux.5.0.xml"
+//                        }
+//                        ,
                         // Debian 5.0 @ Mitre, all patches, 2010-10-12
                         {
                             OvalDefinitions.class,
-                            "test/data/definitions/20101012_patch_debian.gnu.linux.5.0.xml",
+                            "test/data/definitions/20101012_inventory_debian.gnu.linux.5.0.xml",
                             "/oval_definitions",
                             null,
-                            "marshalled_20101012_patch_debian.gnu.linux.5.0.xml"
+                            "marshalled_20101012_inventory_debian.gnu.linux.5.0.xml"
                         }
-//                        ,
+//                      ,
 //                        // Windows Server 2008 @ Mitre, all the vulnerabilities
 //                        {
 //                            OvalDefinitions.class,
@@ -73,6 +82,15 @@ public class OvalXmlTest
 //                            "/oval_definitions",
 //                            null,
 //                            "marshalled_20101012_vulnerability_microsoft.windows.server.2008.xml"
+//                        }
+//                        ,
+//                        // Windows Server 2008 @ Mitre, all the vulnerabilities
+//                        {
+//                            OvalDefinitions.class,
+//                            "test/data/definitions/20101012_inventory_microsoft.windows.server.2008.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_20101012_inventory_microsoft.windows.server.2008.xml"
 //                        }
 //                        ,
 //                        // Windows XP @ Mitre, all the vulnerabilities
@@ -84,6 +102,15 @@ public class OvalXmlTest
 //                            "marshalled_20101012_vulnerability_microsoft.windows.xp.xml"
 //                        }
 //                        ,
+//                        // Windows XP @ Mitre, inventory
+//                        {
+//                            OvalDefinitions.class,
+//                            "test/data/definitions/20101012_inventory_microsoft.windows.xp.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_20101012_inventory_microsoft.windows.xp.xml"
+//                        }
+//                      ,
 //                        // Windows @ Mitre, CVE-2009-4019
 //                        {
 //                            OvalDefinitions.class,

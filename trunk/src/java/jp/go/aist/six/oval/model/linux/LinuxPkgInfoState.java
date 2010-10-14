@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.linux;
 
+import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definitions.State;
@@ -43,7 +44,7 @@ public abstract class LinuxPkgInfoState
     private EntityStateString  _arch;
     //{0..1}
 
-    private EntityStateString  _version;
+    private EntityStateAnySimple  _version;
     //{0..1}
 
 
@@ -101,14 +102,14 @@ public abstract class LinuxPkgInfoState
 
 
     public void setVersion(
-                    final EntityStateString version
+                    final EntityStateAnySimple version
                     )
     {
         _version = version;
     }
 
 
-    public EntityStateString getVersion()
+    public EntityStateAnySimple getVersion()
     {
         return _version;
     }
@@ -131,7 +132,7 @@ public abstract class LinuxPkgInfoState
         EntityStateString  arch = getArch();
         result = prime * result + ((arch == null) ? 0 : arch.hashCode());
 
-        EntityStateString  version = getVersion();
+        EntityStateAnySimple  version = getVersion();
         result = prime * result + ((version == null) ? 0 : version.hashCode());
 
         return result;
