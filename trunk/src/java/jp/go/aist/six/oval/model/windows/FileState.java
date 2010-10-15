@@ -25,7 +25,6 @@ import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateInt;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.EntityStateVersion;
-import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
 import java.util.Map;
@@ -440,15 +439,7 @@ public class FileState
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  hash = super.hashCode();
-
-        for (FileProperty  p : FileProperty.values()) {
-            EntityStateBase  s = _properties.get( p );
-            hash = prime * hash + (s == null ? 0 : s.hashCode());
-        }
-
-        return hash;
+        return super.hashCode();
     }
 
 
@@ -458,38 +449,11 @@ public class FileState
                     final Object obj
                     )
     {
-        if (this == obj) {
-            return true;
-        }
-
         if (!(obj instanceof FileState)) {
             return false;
         }
 
-        FileState  other = (FileState)obj;
-        if (EntityTypeHelper.equals( getFilepath(), other.getFilepath() )
-                        &&  EntityTypeHelper.equals( getPath(), other.getPath() )
-                        &&  EntityTypeHelper.equals( getFilename(), other.getFilename() )
-                        &&  EntityTypeHelper.equals( getOwner(), other.getOwner() )
-                        &&  EntityTypeHelper.equals( getSize(), other.getSize() )
-                        &&  EntityTypeHelper.equals( getATime(), other.getATime() )
-                        &&  EntityTypeHelper.equals( getCTime(), other.getCTime() )
-                        &&  EntityTypeHelper.equals( getMTime(), other.getMTime() )
-                        &&  EntityTypeHelper.equals( getMSChecksum(), other.getMSChecksum() )
-                        &&  EntityTypeHelper.equals( getVersion(), other.getVersion() )
-                        &&  EntityTypeHelper.equals( getType(), other.getType() )
-                        &&  EntityTypeHelper.equals( getDevelopmentClass(), other.getDevelopmentClass() )
-                        &&  EntityTypeHelper.equals( getCompany(), other.getCompany() )
-                        &&  EntityTypeHelper.equals( getInternalName(), other.getInternalName() )
-                        &&  EntityTypeHelper.equals( getLanguage(), other.getLanguage() )
-                        &&  EntityTypeHelper.equals( getOriginalFilename(), other.getOriginalFilename() )
-                        &&  EntityTypeHelper.equals( getProductName(), other.getProductName() )
-                        &&  EntityTypeHelper.equals( getProductVersion(), other.getProductVersion() )
-        ) {
-            return true;
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 

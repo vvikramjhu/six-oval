@@ -61,10 +61,6 @@ public class FileBehaviors
                     final Object obj
                     )
     {
-        if (this == obj) {
-            return true;
-        }
-
         if (!(obj instanceof FileBehaviors)) {
             return false;
         }

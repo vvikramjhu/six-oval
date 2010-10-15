@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
-import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import java.util.ArrayList;
@@ -305,22 +304,7 @@ public class FileObject
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        FileBehaviors  behaviors = getBehaviors();
-        result = prime * result + ((behaviors == null) ? 0 : behaviors.hashCode());
-
-        EntityObjectString  path = getPath();
-        result = prime * result + ((path == null) ? 0 : path.hashCode());
-
-        EntityObjectString  filename = getFilename();
-        result = prime * result + ((filename == null) ? 0 : filename.hashCode());
-
-        Collection<Filter>  filter = getFilter();
-        result = prime * result + ((filter == null) ? 0 : filter.hashCode());
-
-        return result;
+        return super.hashCode();
     }
 
 
@@ -333,30 +317,7 @@ public class FileObject
             return false;
         }
 
-        if (super.equals( obj )) {
-            FileObject  other = (FileObject)obj;
-            EntityObjectString  other_filename = other.getFilename();
-            EntityObjectString   this_filename =  this.getFilename();
-            if (EntityTypeHelper.equals( this_filename, other_filename )) {
-                EntityObjectString  other_path = other.getPath();
-                EntityObjectString   this_path =  this.getPath();
-                if (EntityTypeHelper.equals( this_path, other_path)) {
-                    FileBehaviors  other_behaviors = other.getBehaviors();
-                    FileBehaviors   this_behaviors =  this.getBehaviors();
-                    if (this_behaviors == other_behaviors
-                                    ||  (this_behaviors != null  &&  this_behaviors.equals( other_behaviors ))) {
-                        Collection<Filter>  otherFilter = other.getFilter();
-                        Collection<Filter>   thisFilter =  this.getFilter();
-                        if (thisFilter == otherFilter
-                                        ||  (thisFilter != null  &&  thisFilter.equals( otherFilter ))) {
-                            return true;
-                        }
-                    }
-                }
-            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 
