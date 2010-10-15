@@ -231,7 +231,7 @@ public class OvalXmlTest
                             SystemObject.class,
                             "test/data/definitions/object-independent-textfilecontent54_oval-obj-15567_1.xml",
                             "/oval_definitions/objects/textfilecontent54_object",
-                            null,
+                            OvalSample.OBJECT_INDEPENDENT_TEXTFILECONTENT54_15567,
                             "marshalled_object-independent-textfilecontent54_oval-obj-15567_1.xml"
                         }
                         ,

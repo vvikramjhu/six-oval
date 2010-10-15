@@ -70,6 +70,15 @@ public class TextFileContent54Behaviors
     }
 
 
+    public TextFileContent54Behaviors ignoreCase(
+                    final boolean ignoreCase
+                    )
+    {
+        setIgnoreCase( ignoreCase );
+        return this;
+    }
+
+
     public boolean isIgnoreCase()
     {
         return _ignoreCase;
@@ -87,6 +96,15 @@ public class TextFileContent54Behaviors
     }
 
 
+    public TextFileContent54Behaviors multiline(
+                    final boolean multiline
+                    )
+    {
+        setMultiline( multiline );
+        return this;
+    }
+
+
     public boolean isMultiline()
     {
         return _multiline;
@@ -101,6 +119,15 @@ public class TextFileContent54Behaviors
                     )
     {
         _singleline = singleline;
+    }
+
+
+    public TextFileContent54Behaviors singleline(
+                    final boolean singleline
+                    )
+    {
+        setSingleline( singleline );
+        return this;
     }
 
 
@@ -141,9 +168,9 @@ public class TextFileContent54Behaviors
 
         if (super.equals( obj )) {
             TextFileContent54Behaviors  other = (TextFileContent54Behaviors)obj;
-            if (isIgnoreCase() && other.isIgnoreCase()) {
-                if (isMultiline() && other.isMultiline()) {
-                    if (isSingleline() && other.isSingleline()) {
+            if (isIgnoreCase() == other.isIgnoreCase()) {
+                if (isMultiline() == other.isMultiline()) {
+                    if (isSingleline() == other.isSingleline()) {
                         return true;
                     }
                 }

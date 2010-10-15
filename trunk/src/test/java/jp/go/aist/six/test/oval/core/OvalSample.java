@@ -32,6 +32,8 @@ import jp.go.aist.six.oval.model.independent.EntityStateFamily;
 import jp.go.aist.six.oval.model.independent.FamilyObject;
 import jp.go.aist.six.oval.model.independent.FamilyState;
 import jp.go.aist.six.oval.model.independent.FamilyTest;
+import jp.go.aist.six.oval.model.independent.TextFileContent54Behaviors;
+import jp.go.aist.six.oval.model.independent.TextFileContent54Object;
 import jp.go.aist.six.oval.model.independent.TextFileContentObject;
 import jp.go.aist.six.oval.model.independent.TextFileContentState;
 import jp.go.aist.six.oval.model.independent.TextFileContentTest;
@@ -241,6 +243,17 @@ public class OvalSample
     .path( new EntityObjectString( "/etc" ) )
     .filename( new EntityObjectString( "debian_version" ) )
     .line( new EntityObjectString( "\\d\\.\\d", Operation.PATTERN_MATCH ) );
+
+
+    public static final TextFileContent54Object  OBJECT_INDEPENDENT_TEXTFILECONTENT54_15567 =
+        new TextFileContent54Object( "oval:org.mitre.oval:obj:15567", 1,
+                        "Object to check content of Google Chrome Preferences file"
+                        )
+    .behaviors( (new TextFileContent54Behaviors()).multiline( true ) )
+    .path( new EntityObjectString( "/etc" ) )
+    .filename( new EntityObjectString( "debian_version" ) )
+    .pattern( new EntityObjectString( "^\\s*\"name\": \"InvisibleHand\"[^}]+}[^p]+path\": \"lghjfnfolmcikomdjmoiemllfnlmmoko\\\\[^s]+state\": [01]$", Operation.PATTERN_MATCH ) )
+    .instance( new EntityObjectInt( "1", Datatype.INT, EntityObjectInt.DEFAULT_OPERATION ) );
 
 
     public static final DpkgInfoObject  OBJECT_LINUX_DPKGINFO_10648 =

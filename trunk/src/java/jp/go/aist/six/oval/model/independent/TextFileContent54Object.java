@@ -98,6 +98,19 @@ public class TextFileContent54Object
     public TextFileContent54Object(
                     final String id,
                     final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public TextFileContent54Object(
+                    final String id,
+                    final int version,
                     final String path,
                     final String filename,
                     final String pattern,
