@@ -55,7 +55,7 @@ public abstract class AbstractFileBehaviors
 
 
     /**
-     * The default recurseDirection: "all".
+     * The default recurseFileSystem: "all".
      */
     public static final RecurseFileSystem  DEFAULT_RECURSE_FILE_SYSTEM = RecurseFileSystem.ALL;
     private RecurseFileSystem  _recurseFileSystem;
