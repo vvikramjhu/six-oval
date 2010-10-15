@@ -1,6 +1,7 @@
 package jp.go.aist.six.test.oval.core.xml;
 
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.results.Content;
 import jp.go.aist.six.oval.model.results.Directive;
@@ -199,7 +200,7 @@ public class OvalXmlTest
 
 
     //==============================================================
-    //  object
+    //  def:object
     //==============================================================
 
     @DataProvider( name="definitions.object" )
@@ -300,6 +301,45 @@ public class OvalXmlTest
                     final String sourceFilepath,
                     final String xpath,
                     final SystemObject expected,
+                    final String resultFilepath
+                    )
+    throws Exception
+    {
+        _testXml( type, sourceFilepath, xpath, expected, resultFilepath );
+    }
+
+
+
+    //==============================================================
+    //  def:state
+    //==============================================================
+
+    @DataProvider( name="definitions.state" )
+    public Object[][] provideOvalDefinitionsState()
+    {
+        return new Object[][] {
+                        // independent family
+                        {
+                            State.class,
+                            "test/data/definitions/state-linux-rpminfo_rhsa-ste-20100061003_301.xml",
+                            "/oval_definitions/objects/rpminfo_state",
+                            null,
+                            "marshalled_state-linux-rpminfo_rhsa-ste-20100061003_301.xml"
+                        }
+        };
+    }
+
+
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "definitions.state"},
+                    dataProvider="definitions.state",
+                    alwaysRun=true
+                    )
+    public void testDefinitionsState(
+                    final Class<State> type,
+                    final String sourceFilepath,
+                    final String xpath,
+                    final State expected,
                     final String resultFilepath
                     )
     throws Exception
