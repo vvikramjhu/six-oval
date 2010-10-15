@@ -31,6 +31,8 @@ import java.util.Map;
 
 
 /**
+ * The registry state defines the different metadata
+ * associate with a Windows registry key.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -42,30 +44,15 @@ public class RegistryState
 
     protected static enum Property
     {
-        HIVE,
-        KEY,
-        NAME,
-        TYPE,
-        VALUE;
+        HIVE,   //EntityStateRegistryHive   {0..1}
+        KEY,    //EntityStateString         {0..1}
+        NAME,   //EntityStateString         {0..1}
+        TYPE,   //EntityStateRegistryType   {0..1}
+        VALUE;  //EntityStateAnySimple      {0..1}
     }
 
     private Map<Property,EntityStateBase>  _properties =
         new EnumMap<Property,EntityStateBase>( Property.class );
-
-//    private EntityStateRegistryHiveType  _hive;
-//    //{0..1}
-//
-//    private EntityStateStringType  _key;
-//    //{0..1}
-//
-//    private EntityStateStringType  _name;
-//    //{0..1}
-//
-//    private EntityStateRegistryType  _type;
-//    //{0..1}
-//
-//    private EntityStateAnySimpleType  _value;
-//    //{0..1}
 
 
 
@@ -99,16 +86,6 @@ public class RegistryState
                     )
     {
         super( id, version, comment );
-    }
-
-
-
-    /**
-     *
-     */
-    protected Map<Property,EntityStateBase> _getProperties()
-    {
-        return _properties;
     }
 
 
@@ -264,19 +241,11 @@ public class RegistryState
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        result = prime * result + _getProperties().hashCode();
-
-        return result;
+        return super.hashCode();
     }
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -286,17 +255,7 @@ public class RegistryState
             return false;
         }
 
-        if (super.equals( obj )) {
-            RegistryState  other = (RegistryState)obj;
-            Map<Property,EntityStateBase>  other_props = other._getProperties();
-            Map<Property,EntityStateBase>   this_props =  this._getProperties();
-            if (this_props == other_props
-                            ||  (this_props != null  &&  this_props.equals( other_props ))) {
-                return true;
-            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 
@@ -304,7 +263,9 @@ public class RegistryState
     @Override
     public String toString()
     {
-        return "RegistryState[" + super.toString() + "]";
+        return "registry_state[" + super.toString()
+                        + ", " + String.valueOf( _properties )
+                        + "]";
     }
 
 }

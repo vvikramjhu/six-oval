@@ -27,6 +27,7 @@ import jp.go.aist.six.oval.model.definitions.Test;
 
 
 /**
+ * The metabase test is used to check information found in the Windows metabase.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -112,7 +113,7 @@ public class MetabaseTest
     @Override
     public String toString()
     {
-        return "MetabaseTest[" + super.toString() + "]";
+        return "metabase_test[" + super.toString() + "]";
     }
 
 }

@@ -25,16 +25,13 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 /**
- * A base class for all the concrete file behaviors.
- * File behaviors defines a number of behaviors
- * that allow a more detailed definition of a set of files
- * or file related items to collect.
+ * A base class for all the concrete behaviors.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class AbstractFileBehaviors
+public abstract class AbstractBehaviors
     extends AbstractPersistable
 {
 
@@ -54,19 +51,11 @@ public abstract class AbstractFileBehaviors
     //{optional, default='none'}
 
 
-    /**
-     * The default recurseFileSystem: "all".
-     */
-    public static final RecurseFileSystem  DEFAULT_RECURSE_FILE_SYSTEM = RecurseFileSystem.ALL;
-    private RecurseFileSystem  _recurseFileSystem;
-    //{optional, default='all'}
-
-
 
     /**
      * Constructor.
      */
-    public AbstractFileBehaviors()
+    public AbstractBehaviors()
     {
     }
 
@@ -112,25 +101,6 @@ public abstract class AbstractFileBehaviors
 
 
 
-    /**
-     */
-    public void setRecurseFileSystem(
-                    final RecurseFileSystem fileSystem
-                    )
-    {
-        _recurseFileSystem = fileSystem;
-    }
-
-
-    public RecurseFileSystem getRecurseFileSystem()
-    {
-        return (_recurseFileSystem == null
-                        ? DEFAULT_RECURSE_FILE_SYSTEM
-                        : _recurseFileSystem);
-    }
-
-
-
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -146,9 +116,6 @@ public abstract class AbstractFileBehaviors
         RecurseDirection  rd = getRecurseDirection();
         result = prime * result + ((rd == null) ? 0 : rd.hashCode());
 
-        RecurseFileSystem  rfs = getRecurseFileSystem();
-        result = prime * result + ((rfs == null) ? 0 : rfs.hashCode());
-
         return result;
     }
 
@@ -163,20 +130,16 @@ public abstract class AbstractFileBehaviors
             return true;
         }
 
-        if (!(obj instanceof AbstractFileBehaviors)) {
+        if (!(obj instanceof AbstractBehaviors)) {
             return false;
         }
 
-        AbstractFileBehaviors  other = (AbstractFileBehaviors)obj;
+        AbstractBehaviors  other = (AbstractBehaviors)obj;
         if (this.getMaxDepth() == other.getMaxDepth()) {
             RecurseDirection  other_rd = other.getRecurseDirection();
             RecurseDirection   this_rd =  this.getRecurseDirection();
             if (this_rd == other_rd) {
-                RecurseFileSystem  other_rfs = other.getRecurseFileSystem();
-                RecurseFileSystem   this_rfs =  this.getRecurseFileSystem();
-                if (this_rfs == other_rfs) {
-                    return true;
-                }
+                return true;
             }
         }
 
@@ -190,9 +153,8 @@ public abstract class AbstractFileBehaviors
     {
         return "max_depth=" + getMaxDepth()
                         + ", recurse_direction=" + getRecurseDirection()
-                        + ", recurse_file_system=" + getRecurseFileSystem()
                         ;
     }
 
 }
-// AbstractFileBehaviors
+// AbstractBehaviors

@@ -27,6 +27,8 @@ import jp.go.aist.six.oval.model.definitions.Test;
 
 
 /**
+ * The registry test is used to check metadata associated
+ * with Windows registry key.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -112,7 +114,7 @@ public class RegistryTest
     @Override
     public String toString()
     {
-        return "RegistryTest[" + super.toString() + "]";
+        return "registry_test[" + super.toString() + "]";
     }
 
 }

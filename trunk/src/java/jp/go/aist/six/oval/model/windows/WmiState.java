@@ -33,6 +33,9 @@ import jp.go.aist.six.oval.model.definitions.State;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.7:
+ *             Replaced by the wmi57 state and
+ *             will be removed in a future version of the language.
  */
 public class WmiState
     extends State
@@ -140,19 +143,7 @@ public class WmiState
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  code = super.hashCode();
-
-        EntityStateString  namespace = getNamespace();
-        code = prime * code + ((namespace == null) ? 0 : namespace.hashCode());
-
-        EntityStateString  wql = getWql();
-        code = prime * code + ((wql == null) ? 0 : wql.hashCode());
-
-        EntityStateAnySimple  result = getResult();
-        code = prime * code + ((result == null) ? 0 : result.hashCode());
-
-        return code;
+        return super.hashCode();
     }
 
 
@@ -166,27 +157,7 @@ public class WmiState
             return false;
         }
 
-        if (super.equals( obj )) {
-            WmiState  other = (WmiState)obj;
-            EntityStateString  other_namespace = other.getNamespace();
-            EntityStateString   this_namespace =  this.getNamespace();
-            if (this_namespace == other_namespace
-                            ||  (this_namespace != null  &&  this_namespace.equals( other_namespace ))) {
-                EntityStateString  other_wql = other.getWql();
-                EntityStateString   this_wql =  this.getWql();
-                if (this_wql == other_wql
-                                ||  (this_wql != null  &&  this_wql.equals( other_wql ))) {
-                    EntityStateAnySimple  other_result = other.getResult();
-                    EntityStateAnySimple   this_result =  this.getResult();
-                    if (this_result == other_result
-                                    ||  (this_result != null  &&  this_result.equals( other_result ))) {
-                        return true;
-                    }
-                }
-            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 
@@ -194,7 +165,11 @@ public class WmiState
     @Override
     public String toString()
     {
-        return "WqlState[" + super.toString() + "]";
+        return "wmi_state[" + super.toString()
+                        + ", namespace=" + getNamespace()
+                        + ", wql=" + getWql()
+                        + ", result=" + getResult()
+                        + "]";
     }
 
 }

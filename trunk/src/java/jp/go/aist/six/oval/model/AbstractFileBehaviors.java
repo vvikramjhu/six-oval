@@ -20,39 +20,18 @@
 
 package jp.go.aist.six.oval.model;
 
-import jp.go.aist.six.util.castor.AbstractPersistable;
-
 
 
 /**
  * A base class for all the concrete file behaviors.
- * File behaviors defines a number of behaviors
- * that allow a more detailed definition of a set of files
- * or file related items to collect.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class AbstractFileBehaviors
-    extends AbstractPersistable
+    extends AbstractBehaviors
 {
-
-    /**
-     * The default maxDepth: -1.
-     */
-    public static final int  DEFAULT_MAX_DEPTH = -1;
-    private int _maxDepth = DEFAULT_MAX_DEPTH;
-    //{optional, default='-1', minInclusive='-1'}
-
-
-    /**
-     * The default recurseDirection: "none".
-     */
-    public static final RecurseDirection  DEFAULT_RECURSE_DIRECTION = RecurseDirection.NONE;
-    private RecurseDirection  _recurseDirection;
-    //{optional, default='none'}
-
 
     /**
      * The default recurseFileSystem: "all".
@@ -68,46 +47,6 @@ public abstract class AbstractFileBehaviors
      */
     public AbstractFileBehaviors()
     {
-    }
-
-
-
-    /**
-     */
-    public void setMaxDepth(
-                    final int maxDepth
-                    )
-    {
-        if (maxDepth < -1) {
-            throw new IllegalArgumentException( "invalid maxDepth: " + maxDepth );
-        }
-
-        _maxDepth = maxDepth;
-    }
-
-
-    public int getMaxDepth()
-    {
-        return _maxDepth;
-    }
-
-
-
-    /**
-     */
-    public void setRecurseDirection(
-                    final RecurseDirection direction
-                    )
-    {
-        _recurseDirection = direction;
-    }
-
-
-    public RecurseDirection getRecurseDirection()
-    {
-        return (_recurseDirection == null
-                        ? DEFAULT_RECURSE_DIRECTION
-                        : _recurseDirection);
     }
 
 
@@ -139,12 +78,7 @@ public abstract class AbstractFileBehaviors
     public int hashCode()
     {
         final int  prime = 37;
-        int  result = 17;
-
-        result = prime * result + getMaxDepth();
-
-        RecurseDirection  rd = getRecurseDirection();
-        result = prime * result + ((rd == null) ? 0 : rd.hashCode());
+        int  result = super.hashCode();
 
         RecurseFileSystem  rfs = getRecurseFileSystem();
         result = prime * result + ((rfs == null) ? 0 : rfs.hashCode());
@@ -159,24 +93,16 @@ public abstract class AbstractFileBehaviors
                     final Object obj
                     )
     {
-        if (this == obj) {
-            return true;
-        }
-
         if (!(obj instanceof AbstractFileBehaviors)) {
             return false;
         }
 
-        AbstractFileBehaviors  other = (AbstractFileBehaviors)obj;
-        if (this.getMaxDepth() == other.getMaxDepth()) {
-            RecurseDirection  other_rd = other.getRecurseDirection();
-            RecurseDirection   this_rd =  this.getRecurseDirection();
-            if (this_rd == other_rd) {
-                RecurseFileSystem  other_rfs = other.getRecurseFileSystem();
-                RecurseFileSystem   this_rfs =  this.getRecurseFileSystem();
-                if (this_rfs == other_rfs) {
-                    return true;
-                }
+        if (super.equals( obj )) {
+            AbstractFileBehaviors  other = (AbstractFileBehaviors)obj;
+            RecurseFileSystem  other_rfs = other.getRecurseFileSystem();
+            RecurseFileSystem   this_rfs =  this.getRecurseFileSystem();
+            if (this_rfs == other_rfs) {
+                return true;
             }
         }
 
@@ -188,8 +114,7 @@ public abstract class AbstractFileBehaviors
     @Override
     public String toString()
     {
-        return "max_depth=" + getMaxDepth()
-                        + ", recurse_direction=" + getRecurseDirection()
+        return super.toString()
                         + ", recurse_file_system=" + getRecurseFileSystem()
                         ;
     }

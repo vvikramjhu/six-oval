@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
-import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 
 
@@ -32,6 +31,9 @@ import jp.go.aist.six.oval.model.definitions.SystemObject;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.7:
+ *             Replaced by the wmi57 object and
+ *             will be removed in a future version of the language.
  */
 public class WmiObject
     extends SystemObject
@@ -149,16 +151,7 @@ public class WmiObject
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        EntityObjectString  namespace = getNamespace();
-        result = prime * result + ((namespace == null) ? 0 : namespace.hashCode());
-
-        EntityObjectString  wql = getWql();
-        result = prime * result + ((wql == null) ? 0 : wql.hashCode());
-
-        return result;
+        return super.hashCode();
     }
 
 
@@ -172,20 +165,7 @@ public class WmiObject
             return false;
         }
 
-        if (super.equals( obj )) {
-            WmiObject  other = (WmiObject)obj;
-            EntityObjectString  other_wql = other.getWql();
-            EntityObjectString   this_wql =  this.getWql();
-            if (EntityTypeHelper.equals( this_wql, other_wql )) {
-                EntityObjectString  other_namespace = other.getNamespace();
-                EntityObjectString   this_namespace =  this.getNamespace();
-                if (EntityTypeHelper.equals( this_namespace, other_namespace )) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 
@@ -193,11 +173,11 @@ public class WmiObject
     @Override
     public String toString()
     {
-        return "WqlObject[" + super.toString()
+        return "wmi_object[" + super.toString()
                         + ", namespace=" + getNamespace()
                         + ", wql=" + getWql()
                         + "]";
     }
 
 }
-// WqlObject
+// WmiObject

@@ -32,6 +32,8 @@ import java.util.Map;
 
 
 /**
+ * The metabase state defines the different metadata
+ * associate with a metabase item.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -43,36 +45,16 @@ public class MetabaseState
 
     protected static enum Property
     {
-        KEY,
-        ID,
-        NAME,
-        USER_TYPE,
-        DATA_TYPE,
-        DATA;
+        KEY,        //EntityStateString     {0..1}
+        ID,         //EntityStateInt        {0..1}
+        NAME,       //EntityStateString     {0..1}
+        USER_TYPE,  //EntityStateString     {0..1}
+        DATA_TYPE,  //EntityStateString     {0..1}
+        DATA;       //EntityStateAnySimple  {0..1}
     }
 
     private Map<Property,EntityStateBase>  _properties =
         new EnumMap<Property,EntityStateBase>( Property.class );
-
-
-
-//    private EntityStateStringType  _key;
-//    //{0..1}
-//
-//    private EntityStateIntType  _id;
-//    //{0..1}
-//
-//    private EntityStateStringType  _name;
-//    //{0..1}
-//
-//    private EntityStateStringType  _userType;
-//    //{0..1}
-//
-//    private EntityStateStringType  _dataType;
-//    //{0..1}
-//
-//    private EntityStateAnyType  _data;
-//    //{0..1}
 
 
 
@@ -93,15 +75,6 @@ public class MetabaseState
                     )
     {
         super( id, version );
-    }
-
-
-
-    /**
-     */
-    protected Map<Property,EntityStateBase> _getProperties()
-    {
-        return _properties;
     }
 
 
@@ -281,37 +254,11 @@ public class MetabaseState
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        result = prime * result + _getProperties().hashCode();
-
-//        EntityStateStringType  key = getKey();
-//        result = prime * result + ((key == null) ? 0 : key.hashCode());
-//
-//        EntityStateIntType  id = getID();
-//        result = prime * result + ((id == null) ? 0 : id.hashCode());
-//
-//        EntityStateStringType  name = getName();
-//        result = prime * result + ((name == null) ? 0 : name.hashCode());
-//
-//        EntityStateStringType  userType = getUserType();
-//        result = prime * result + ((userType == null) ? 0 : userType.hashCode());
-//
-//        EntityStateStringType  dataType = getDataType();
-//        result = prime * result + ((dataType == null) ? 0 : dataType.hashCode());
-//
-//        EntityStateAnyType  data = getData();
-//        result = prime * result + ((data == null) ? 0 : data.hashCode());
-
-        return result;
+        return super.hashCode();
     }
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -321,48 +268,7 @@ public class MetabaseState
             return false;
         }
 
-        if (super.equals( obj )) {
-            MetabaseState  other = (MetabaseState)obj;
-            Map<Property,EntityStateBase>  other_props = other._getProperties();
-            Map<Property,EntityStateBase>   this_props =  this._getProperties();
-            if (this_props == other_props
-                            ||  (this_props != null  &&  this_props.equals( other_props ))) {
-                return true;
-            }
-//            EntityStateStringType  other_key = other.getKey();
-//            EntityStateStringType   this_key =  this.getKey();
-//            if (this_key == other_key
-//                            ||  (this_key != null  &&  this_key.equals( other_key ))) {
-//                EntityStateIntType  other_id = other.getID();
-//                EntityStateIntType   this_id =  this.getID();
-//                if (this_id == other_id
-//                                ||  (this_id != null  &&  this_id.equals( other_id ))) {
-//                    EntityStateStringType  other_name = other.getName();
-//                    EntityStateStringType   this_name =  this.getName();
-//                    if (this_name == other_name
-//                                    ||  (this_name != null  &&  this_name.equals( other_name ))) {
-//                        EntityStateStringType  other_userType = other.getUserType();
-//                        EntityStateStringType   this_userType =  this.getUserType();
-//                        if (this_userType == other_userType
-//                                        ||  (this_userType != null  &&  this_userType.equals( other_userType ))) {
-//                            EntityStateStringType  other_dataType = other.getDataType();
-//                            EntityStateStringType   this_dataType =  this.getDataType();
-//                            if (this_dataType == other_dataType
-//                                            ||  (this_dataType != null  &&  this_dataType.equals( other_dataType ))) {
-//                                EntityStateAnyType  other_data = other.getData();
-//                                EntityStateAnyType   this_data =  this.getData();
-//                                if (this_data == other_data
-//                                                ||  (this_data != null  &&  this_data.equals( other_data ))) {
-//                                    return true;
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 
@@ -370,7 +276,9 @@ public class MetabaseState
     @Override
     public String toString()
     {
-        return "MetabaseState[" + super.toString() + "]";
+        return "metabase_state[" + super.toString()
+                        + ", " + String.valueOf( _properties )
+                        + "]";
     }
 
 }

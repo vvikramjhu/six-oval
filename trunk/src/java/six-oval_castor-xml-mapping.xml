@@ -126,9 +126,9 @@
 
 
     <!-- ======================================================= -->
-    <!-- AbstractFileBehaviors                                   -->
+    <!-- AbstractBehaviors                                       -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.AbstractFileBehaviors"
+    <class name="jp.go.aist.six.oval.model.AbstractBehaviors"
         verify-constructable="false">
 
         <field name="maxDepth" type="int">
@@ -139,6 +139,15 @@
             type="jp.go.aist.six.oval.model.RecurseDirection">
             <bind-xml name="recurse_direction" node="attribute"/>
         </field>
+    </class>
+
+
+    <!-- ======================================================= -->
+    <!-- AbstractFileBehaviors                                   -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.AbstractFileBehaviors"
+        extends="jp.go.aist.six.oval.model.AbstractBehaviors"
+        verify-constructable="false">
 
         <field name="recurseFileSystem"
             type="jp.go.aist.six.oval.model.RecurseFileSystem">
@@ -3212,18 +3221,6 @@
 
 
     <!-- ======================================================= -->
-    <!-- RegistryBehaviors                                       -->
-    <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.windows.RegistryBehaviors"
-        extends="jp.go.aist.six.oval.model.Behaviors">
-        <map-to xml="behaviors"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
-
-    </class>
-
-
-
-    <!-- ======================================================= -->
     <!-- FileState                                               -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.FileState"
@@ -3530,6 +3527,15 @@
             collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
+    </class>
+
+
+
+    <!-- ======================================================= -->
+    <!-- RegistryBehaviors                                       -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.windows.RegistryBehaviors"
+        extends="jp.go.aist.six.oval.model.AbstractBehaviors">
     </class>
 
 

@@ -27,14 +27,17 @@ import jp.go.aist.six.oval.model.definitions.Test;
 
 
 /**
+ * The wmi test is used to check information accessed by WMI.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.7:
+ *             Replaced by the wmi57 test and
+ *             will be removed in a future version of the language.
  */
 public class WmiTest
     extends Test
-//extends SimpleTest
 {
 
     /**
@@ -112,7 +115,7 @@ public class WmiTest
     @Override
     public String toString()
     {
-        return "WmiTest[" + super.toString() + "]";
+        return "wmi_test[" + super.toString() + "]";
     }
 
 }

@@ -20,18 +20,20 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.Behaviors;
+import jp.go.aist.six.oval.model.AbstractBehaviors;
 
 
 
 /**
+ * The RegistryBehaviors type defines a number of behaviors
+ * that allow a more detailed definition of the registry object being specified.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class RegistryBehaviors
-    extends Behaviors
+    extends AbstractBehaviors
 {
 
     /**
@@ -65,14 +67,6 @@ public class RegistryBehaviors
         }
 
         return super.equals( obj );
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return "RegistryBehaviors[" + super.toString() + "]";
     }
 
 }

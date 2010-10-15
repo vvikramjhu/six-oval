@@ -23,12 +23,17 @@ package jp.go.aist.six.oval.model.windows;
 import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectInt;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
-import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
+import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 
 
 /**
+ * The metabase object is used by a metabase test to define
+ * the specific metabase item(s) to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -43,6 +48,10 @@ public class MetabaseObject
 
     private EntityObjectInt  _id;
     //{0..1, nillable="true"}
+
+
+    private Collection<Filter>  _filter = new ArrayList<Filter>();
+    //{0..*}
 
 
 
@@ -161,6 +170,55 @@ public class MetabaseObject
 
 
 
+    /**
+     */
+    public void setFilter(
+                    final Collection<? extends Filter> filters
+                    )
+    {
+        if (_filter != filters) {
+            _filter.clear();
+            if (filters != null  &&  filters.size() > 0) {
+                _filter.addAll( filters );
+            }
+        }
+    }
+
+
+    public boolean addFilter(
+                    final Filter filter
+                    )
+    {
+        if (filter == null) {
+            return false;
+        }
+
+        return _filter.add( filter );
+    }
+
+
+    public MetabaseObject filter(
+                    final Filter filter
+                    )
+    {
+        addFilter( filter );
+        return this;
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return _filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return _filter.iterator();
+    }
+
+
+
     //**************************************************************
     //  SystemObject
     //**************************************************************
@@ -180,23 +238,11 @@ public class MetabaseObject
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        EntityObjectString  key = getKey();
-        result = prime * result + ((key == null) ? 0 : key.hashCode());
-
-        EntityObjectInt  id = getID();
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-
-        return result;
+        return super.hashCode();
     }
 
 
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(
                     final Object obj
@@ -206,20 +252,7 @@ public class MetabaseObject
             return false;
         }
 
-        if (super.equals( obj )) {
-            MetabaseObject  other = (MetabaseObject)obj;
-            EntityObjectInt  other_id = other.getID();
-            EntityObjectInt   this_id =  this.getID();
-            if (EntityTypeHelper.equals( this_id, other_id)) {
-                EntityObjectString  other_key = other.getKey();
-                EntityObjectString   this_key =  this.getKey();
-                if (EntityTypeHelper.equals( this_key, other_key)) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 
@@ -227,9 +260,10 @@ public class MetabaseObject
     @Override
     public String toString()
     {
-        return "MetabaseObject[" + super.toString()
+        return "metabase_object[" + super.toString()
                         + ", key=" + getKey()
                         + ", id=" + getID()
+                        + ", filter=" + getFilter()
                         + "]";
     }
 

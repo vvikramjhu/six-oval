@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
-import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 
 
@@ -248,22 +247,7 @@ public class RegistryObject
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        RegistryBehaviors  behaviors = getBehaviors();
-        result = prime * result + ((behaviors == null) ? 0 : behaviors.hashCode());
-
-        EntityObjectRegistryHive  hive = getHive();
-        result = prime * result + ((hive == null) ? 0 : hive.hashCode());
-
-        EntityObjectString  key = getKey();
-        result = prime * result + ((key == null) ? 0 : key.hashCode());
-
-        EntityObjectString  name = getName();
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-
-        return result;
+        return super.hashCode();
     }
 
 
@@ -277,29 +261,7 @@ public class RegistryObject
             return false;
         }
 
-        if (super.equals( obj )) {
-            RegistryObject  other = (RegistryObject)obj;
-            EntityObjectString  other_name = other.getName();
-            EntityObjectString   this_name =  this.getName();
-            if (EntityTypeHelper.equals( this_name, other_name )) {
-                EntityObjectString  other_key = other.getKey();
-                EntityObjectString   this_key =  this.getKey();
-                if (EntityTypeHelper.equals( this_key, other_key )) {
-                    EntityObjectRegistryHive  other_hive = other.getHive();
-                    EntityObjectRegistryHive   this_hive =  this.getHive();
-                    if (EntityTypeHelper.equals( this_hive, other_hive )) {
-                        RegistryBehaviors  other_behaviors = other.getBehaviors();
-                        RegistryBehaviors   this_behaviors =  this.getBehaviors();
-                        if (this_behaviors == other_behaviors
-                                        ||  (this_behaviors != null  &&  this_behaviors.equals( other_behaviors ))) {
-                            return true;
-                        }
-                    }
-                }
-            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 
@@ -307,11 +269,11 @@ public class RegistryObject
     @Override
     public String toString()
     {
-        return "RegistryObject[" + super.toString()
+        return "registry_object[" + super.toString()
+                        + ", behaviors=" + getBehaviors()
                         + ", hive=" + getHive()
                         + ", key=" + getKey()
                         + ", name=" + getName()
-                        + ", behaviors=" + getBehaviors()
                         + "]";
     }
 
