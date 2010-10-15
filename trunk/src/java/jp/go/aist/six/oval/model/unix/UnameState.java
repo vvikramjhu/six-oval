@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.unix;
 
 import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
-import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
 import java.util.Map;
@@ -198,16 +197,7 @@ public class UnameState
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        Map<UnameProperty, EntityStateString>  properties = _getProperties();
-        for (UnameProperty  p : UnameProperty.values()) {
-            EntityStateString  s = properties.get( p );
-            result = prime * result + ((s == null) ? 0 : s.hashCode());
-        }
-
-        return result;
+        return super.hashCode();
     }
 
 
@@ -221,37 +211,7 @@ public class UnameState
             return false;
         }
 
-        if (!super.equals( obj )) {
-            return false;
-        }
-
-        UnameState  other = (UnameState)obj;
-
-        if (!EntityTypeHelper.equals( getMachineClass(), other.getMachineClass() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getNodeName(), other.getNodeName() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getOsName(), other.getOsName() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getOsRelease(), other.getOsRelease() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getOsVersion(), other.getOsVersion() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getProcessorType(), other.getProcessorType() )) {
-            return false;
-        }
-
-        return true;
+        return super.equals( obj );
     }
 
 
