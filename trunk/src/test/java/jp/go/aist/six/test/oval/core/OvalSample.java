@@ -230,38 +230,38 @@ public class OvalSample
     //  def:object
     //==============================================================
 
-    public static final FamilyObject  OBJECT_FAMILY_99 =
+    public static final FamilyObject  OBJECT_INDEPENDENT_FAMILY_99 =
         new FamilyObject( "oval:org.mitre.oval:obj:99", 1,
                     "This is the default family object. Only one family object should exist."
                     );
 
 
-    public static final TextFileContentObject  OBJECT_TEXTFILECONTENT_7326 =
+    public static final TextFileContentObject  OBJECT_INDEPENDENT_TEXTFILECONTENT_7326 =
         new TextFileContentObject( "oval:org.mitre.oval:obj:7326", 1 )
     .path( new EntityObjectString( "/etc" ) )
     .filename( new EntityObjectString( "debian_version" ) )
     .line( new EntityObjectString( "\\d\\.\\d", Operation.PATTERN_MATCH ) );
 
 
-    public static final DpkgInfoObject  OBJECT_DPKGINFO_10648 =
+    public static final DpkgInfoObject  OBJECT_LINUX_DPKGINFO_10648 =
         new DpkgInfoObject( "oval:org.mitre.oval:obj:10648", 1,
                         "apache2 package information"
         )
     .name( new EntityObjectString( "apache2" ) );
 
 
-    public static final RpmInfoObject  OBJECT_RPMINFO_20100061001 =
+    public static final RpmInfoObject  OBJECT_LINUX_RPMINFO_20100061001 =
         new RpmInfoObject( "oval:com.redhat.rhsa:obj:20100061001", 301 )
     .name( new EntityObjectString( "redhat-release" ) );
 
 
-    public static final UnameObject  OBJECT_UNAME_2759 =
+    public static final UnameObject  OBJECT_UNAME_UNAME_2759 =
         new UnameObject( "oval:org.mitre.oval:obj:2759", 1,
                         "The single uname object."
         );
 
 
-    public static final FileObject  OBJECT_FILE_222 =
+    public static final FileObject  OBJECT_WINDOWS_FILE_222 =
         new FileObject( "oval:org.mitre.oval:obj:222", 1,
                         "The path to the mshtml.dll file in the system root"
         )
@@ -269,13 +269,13 @@ public class OvalSample
     .filename( new EntityObjectString( "mshtml.dll" ) );
 
 
-    public static final MetabaseObject  OBJECT_METABASE_556 =
+    public static final MetabaseObject  OBJECT_WINDOWS_METABASE_556 =
         new MetabaseObject( "oval:org.mitre.oval:obj:556", 2 )
     .key( new EntityObjectString( "LM/W3SVC" ) )
     .ID( new EntityObjectInt( "6032", Datatype.INT, EntityObjectInt.DEFAULT_OPERATION ) );
 
 
-    public static final RegistryObject  OBJECT_REGISTRY_717 =
+    public static final RegistryObject  OBJECT_WINDOWS_REGISTRY_717 =
         new RegistryObject( "oval:org.mitre.oval:obj:717", 1,
                         "This registry key holds the service pack installed on the host if one is present."
         )
@@ -329,7 +329,7 @@ public class OvalSample
     //  def:state
     //==============================================================
 
-    public static final FamilyState  STATE_FAMILY_99 =
+    public static final FamilyState  STATE_INDEPENDENT_FAMILY_99 =
         new FamilyState( "oval:org.mitre.oval:ste:99", 2,
         "Microsoft Windows family" )
     .family( new EntityStateFamily( Family.WINDOWS,
@@ -337,36 +337,14 @@ public class OvalSample
     );
 
 
-    public static final TextFileContentState  STATE_TEXTFILECONTENT_5132 =
+    public static final TextFileContentState  STATE_INDEPENDENT_TEXTFILECONTENT_5132 =
         new TextFileContentState( "oval:org.mitre.oval:ste:5132", 1 )
     .subexpression( new EntityStateAnySimple( "\\brw\\b",
                     Operation.PATTERN_MATCH )
     );
 
 
-    public static final FileState  STATE_FILE_2190 =
-        new FileState( "oval:org.mitre.oval:ste:2190", 1 )
-    .version( new EntityStateVersion( "6.0.2900.2873",
-                    Datatype.VERSION, Operation.LESS_THAN )
-    );
-
-
-    public static final MetabaseState  STATE_METABASE_537 =
-        new MetabaseState( "oval:org.mitre.oval:ste:537", 1 )
-    .data( new EntityStateAnySimple( "^http:*,PERMANENT,*",
-                    Operation.PATTERN_MATCH )
-    );
-
-
-    public static final RegistryState  STATE_REGISTRY_1205 =
-        new RegistryState( "oval:org.mitre.oval:ste:1205", 1 )
-    .value( new EntityStateAnySimple( "1",
-                    Datatype.INT,
-                    Operation.EQUALS )
-    );
-
-
-    public static final DpkgInfoState  STATE_DPKGINFO_5797 =
+    public static final DpkgInfoState  STATE_LINUX_DPKGINFO_5797 =
         new DpkgInfoState( "oval:org.mitre.oval:ste:5797", 1 )
     .evr( new EntityStateEVRString( "0:2.2.6-02-1+lenny2+b2",
                     Datatype.EVR_STRING,
@@ -374,7 +352,7 @@ public class OvalSample
     );
 
 
-    public static final RpmInfoState  STATE_RPMINFO_20100061004 =
+    public static final RpmInfoState  STATE_LINUX_RPMINFO_20100061004 =
         new RpmInfoState( "oval:com.redhat.rhsa:ste:20100061004", 301 )
     .evr( new EntityStateEVRString( "0:1.3.5-11.el5_4.1",
                     Datatype.EVR_STRING,
@@ -382,18 +360,41 @@ public class OvalSample
     );
 
 
-    public static final RpmInfoState  STATE_RPMINFO_20100061003 =
+    public static final RpmInfoState  STATE_LINUX_RPMINFO_20100061003 =
         new RpmInfoState( "oval:com.redhat.rhsa:ste:20100061003", 301 )
     .version( new EntityStateAnySimple( "^5[^[:digit:]]",
                     Operation.PATTERN_MATCH )
     );
 
 
-    public static final RpmInfoState  STATE_RPMINFO_20100061002  =
+    public static final RpmInfoState  STATE_LINUX_RPMINFO_20100061002  =
         new RpmInfoState( "oval:com.redhat.rhsa:ste:20100061002", 301 )
     .signatureKeyID( new EntityStateString( "5326810137017186",
                     Operation.EQUALS )
     );
+
+
+    public static final FileState  STATE_WINDOWS_FILE_2190 =
+        new FileState( "oval:org.mitre.oval:ste:2190", 1 )
+    .version( new EntityStateVersion( "6.0.2900.2873",
+                    Datatype.VERSION, Operation.LESS_THAN )
+    );
+
+
+    public static final MetabaseState  STATE_WINDOWS_METABASE_537 =
+        new MetabaseState( "oval:org.mitre.oval:ste:537", 1 )
+    .data( new EntityStateAnySimple( "^http:*,PERMANENT,*",
+                    Operation.PATTERN_MATCH )
+    );
+
+
+    public static final RegistryState  STATE_WINDOWS_REGISTRY_1205 =
+        new RegistryState( "oval:org.mitre.oval:ste:1205", 1 )
+    .value( new EntityStateAnySimple( "1",
+                    Datatype.INT,
+                    Operation.EQUALS )
+    );
+
 
 
     //**************************************************************

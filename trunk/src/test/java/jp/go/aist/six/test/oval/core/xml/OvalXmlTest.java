@@ -8,6 +8,7 @@ import jp.go.aist.six.oval.model.results.Directive;
 import jp.go.aist.six.oval.model.results.Directives;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
+import jp.go.aist.six.test.oval.core.OvalSample;
 import org.testng.annotations.DataProvider;
 
 
@@ -212,7 +213,7 @@ public class OvalXmlTest
                             SystemObject.class,
                             "test/data/definitions/object-independent-family_oval-obj-99_1.xml",
                             "/oval_definitions/objects/family_object",
-                            null,
+                            OvalSample.OBJECT_INDEPENDENT_FAMILY_99,
                             "marshalled_object-independent-family_oval-obj-99_1.xml"
                         }
                         ,
@@ -221,7 +222,7 @@ public class OvalXmlTest
                             SystemObject.class,
                             "test/data/definitions/object-independent-textfilecontent_oval-obj-7326_1.xml",
                             "/oval_definitions/objects/textfilecontent_object",
-                            null,
+                            OvalSample.OBJECT_INDEPENDENT_TEXTFILECONTENT_7326,
                             "marshalled_object-independent-textfilecontent_oval-obj-7326_1.xml"
                         }
                         ,
@@ -239,7 +240,7 @@ public class OvalXmlTest
                             SystemObject.class,
                             "test/data/definitions/object-linux-dpkginfo_oval-obj-10648_1.xml",
                             "/oval_definitions/objects/dpkginfo_object",
-                            null,
+                            OvalSample.OBJECT_LINUX_DPKGINFO_10648,
                             "marshalled_object-linux-dpkginfo_oval-obj-10648_1.xml"
                         }
                         ,
@@ -248,7 +249,7 @@ public class OvalXmlTest
                             SystemObject.class,
                             "test/data/definitions/object-linux-rpminfo_rhsa-obj-20100061001_301.xml",
                             "/oval_definitions/objects/rpminfo_object",
-                            null,
+                            OvalSample.OBJECT_LINUX_RPMINFO_20100061001,
                             "marshalled_object-linux-rpminfo_rhsa-obj-20100061001_301.xml"
                         }
                         ,
@@ -257,7 +258,7 @@ public class OvalXmlTest
                             SystemObject.class,
                             "test/data/definitions/object-unix-uname_oval-obj-2759_1.xml",
                             "/oval_definitions/objects/uname_object",
-                            null,
+                            OvalSample.OBJECT_UNAME_UNAME_2759,
                             "marshalled_object-unix-uname_oval-obj-2759_1.xml"
                         }
                         ,
@@ -266,7 +267,7 @@ public class OvalXmlTest
                             SystemObject.class,
                             "test/data/definitions/object-windows-file_oval-obj-222_1.xml",
                             "/oval_definitions/objects/file_object",
-                            null,
+                            OvalSample.OBJECT_WINDOWS_FILE_222,
                             "marshalled_object-windows-file_oval-obj-222_1.xml"
                         }
                         ,
@@ -275,7 +276,7 @@ public class OvalXmlTest
                             SystemObject.class,
                             "test/data/definitions/object-windows-metabase_oval-obj-556_2.xml",
                             "/oval_definitions/objects/metabase_object",
-                            null,
+                            OvalSample.OBJECT_WINDOWS_METABASE_556,
                             "marshalled_object-windows-metabase_oval-obj-556_2.xml"
                         }
                         ,
@@ -284,7 +285,7 @@ public class OvalXmlTest
                             SystemObject.class,
                             "test/data/definitions/object-windows-registry_oval-obj-717_1.xml",
                             "/oval_definitions/objects/registry_object",
-                            null,
+                            OvalSample.OBJECT_WINDOWS_REGISTRY_717,
                             "marshalled_object-windows-registry_oval-obj-717_1.xml"
                         }
         };
@@ -318,12 +319,12 @@ public class OvalXmlTest
     public Object[][] provideOvalDefinitionsState()
     {
         return new Object[][] {
-                        // independent family
+                        // linux rpminfo
                         {
                             State.class,
                             "test/data/definitions/state-linux-rpminfo_rhsa-ste-20100061003_301.xml",
                             "/oval_definitions/objects/rpminfo_state",
-                            null,
+                            OvalSample.STATE_LINUX_RPMINFO_20100061003,
                             "marshalled_state-linux-rpminfo_rhsa-ste-20100061003_301.xml"
                         }
         };
