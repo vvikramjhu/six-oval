@@ -206,6 +206,24 @@ public class OvalXmlTest
     public Object[][] provideOvalDefinitionsObject()
     {
         return new Object[][] {
+                        // independent family
+                        {
+                            SystemObject.class,
+                            "test/data/definitions/object-independent-family_oval-obj-99_1.xml",
+                            "/oval_definitions/objects/family_object",
+                            null,
+                            "marshalled_object-independent-family_oval-obj-99_1.xml"
+                        }
+                        ,
+                        // independent textfilecontent
+                        {
+                            SystemObject.class,
+                            "test/data/definitions/object-independent-textfilecontent_oval-obj-7326_1.xml",
+                            "/oval_definitions/objects/textfilecontent_object",
+                            null,
+                            "marshalled_object-independent-textfilecontent_oval-obj-7326_1.xml"
+                        }
+                        ,
                         // independent textfilecontent54
                         {
                             SystemObject.class,
@@ -215,6 +233,33 @@ public class OvalXmlTest
                             "marshalled_object-independent-textfilecontent54_oval-obj-15567_1.xml"
                         }
                         ,
+                        // linux dpkginfo
+                        {
+                            SystemObject.class,
+                            "test/data/definitions/object-linux-dpkginfo_oval-obj-10648_1.xml",
+                            "/oval_definitions/objects/dpkginfo_object",
+                            null,
+                            "marshalled_object-linux-dpkginfo_oval-obj-10648_1.xml"
+                        }
+                        ,
+                        // linux rpminfo
+                        {
+                            SystemObject.class,
+                            "test/data/definitions/object-linux-rpminfo_rhsa-obj-20100061001_301.xml",
+                            "/oval_definitions/objects/rpminfo_object",
+                            null,
+                            "marshalled_object-linux-rpminfo_rhsa-obj-20100061001_301.xml"
+                        }
+                        ,
+                        // unix uname
+                        {
+                            SystemObject.class,
+                            "test/data/definitions/object-unix-uname_oval-obj-2759_1.xml",
+                            "/oval_definitions/objects/uname_object",
+                            null,
+                            "marshalled_object-unix-uname_oval-obj-2759_1.xml"
+                        }
+                        ,
                         // windows file
                         {
                             SystemObject.class,
@@ -222,6 +267,24 @@ public class OvalXmlTest
                             "/oval_definitions/objects/file_object",
                             null,
                             "marshalled_object-windows-file_oval-obj-222_1.xml"
+                        }
+                        ,
+                        // windows metabase
+                        {
+                            SystemObject.class,
+                            "test/data/definitions/object-windows-metabase_oval-obj-556_2.xml",
+                            "/oval_definitions/objects/metabase_object",
+                            null,
+                            "marshalled_object-windows-metabase_oval-obj-556_2.xml"
+                        }
+                        ,
+                        // windows registry
+                        {
+                            SystemObject.class,
+                            "test/data/definitions/object-windows-registry_oval-obj-717_1.xml",
+                            "/oval_definitions/objects/registry_object",
+                            null,
+                            "marshalled_object-windows-registry_oval-obj-717_1.xml"
                         }
         };
     }
