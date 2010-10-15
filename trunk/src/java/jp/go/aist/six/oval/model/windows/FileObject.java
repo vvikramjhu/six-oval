@@ -24,11 +24,17 @@ import jp.go.aist.six.oval.model.Behaviors;
 import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
+import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 
 
 /**
+ * The file object is used by a file test to define the specific file(s)
+ * to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -60,6 +66,10 @@ public class FileObject
 
     private EntityObjectString  _filename;
     //{1..1, nillable="true"}
+
+
+    private Collection<Filter>  _filter = new ArrayList<Filter>();
+    //{0..*}
 
 
 
@@ -130,6 +140,8 @@ public class FileObject
 
 
 
+    /**
+     */
     public void setBehaviors(
                     final FileBehaviors behaviors
                     )
@@ -227,6 +239,54 @@ public class FileObject
 
 
 
+    /**
+     */
+    public void setFilter(
+                    final Collection<? extends Filter> filters
+                    )
+    {
+        if (_filter != filters) {
+            _filter.clear();
+            if (filters != null  &&  filters.size() > 0) {
+                _filter.addAll( filters );
+            }
+        }
+    }
+
+
+    public boolean addFilter(
+                    final Filter filter
+                    )
+    {
+        if (filter == null) {
+            return false;
+        }
+
+        return _filter.add( filter );
+    }
+
+
+    public FileObject filter(
+                    final Filter filter
+                    )
+    {
+        addFilter( filter );
+        return this;
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return _filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return _filter.iterator();
+    }
+
+
     //**************************************************************
     //  SystemObject
     //**************************************************************
@@ -258,6 +318,9 @@ public class FileObject
         EntityObjectString  filename = getFilename();
         result = prime * result + ((filename == null) ? 0 : filename.hashCode());
 
+        Collection<Filter>  filter = getFilter();
+        result = prime * result + ((filter == null) ? 0 : filter.hashCode());
+
         return result;
     }
 
@@ -283,7 +346,12 @@ public class FileObject
                     FileBehaviors   this_behaviors =  this.getBehaviors();
                     if (this_behaviors == other_behaviors
                                     ||  (this_behaviors != null  &&  this_behaviors.equals( other_behaviors ))) {
-                        return true;
+                        Collection<Filter>  otherFilter = other.getFilter();
+                        Collection<Filter>   thisFilter =  this.getFilter();
+                        if (thisFilter == otherFilter
+                                        ||  (thisFilter != null  &&  thisFilter.equals( otherFilter ))) {
+                            return true;
+                        }
                     }
                 }
             }
@@ -297,10 +365,12 @@ public class FileObject
     @Override
     public String toString()
     {
-        return "FileObject[" + super.toString()
+        return "file_object[" + super.toString()
                         + ", behaviors=" + getBehaviors()
+                        + ", filepath=" + getFilepath()
                         + ", path=" + getPath()
                         + ", filename=" + getFilename()
+                        + ", filter=" + getFilter()
                         + "]";
     }
 

@@ -27,6 +27,7 @@ import jp.go.aist.six.oval.model.definitions.Test;
 
 
 /**
+ * The file test is used to check metadata associated with Windows files.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -112,7 +113,7 @@ public class FileTest
     @Override
     public String toString()
     {
-        return "FileTest[" + super.toString() + "]";
+        return "file_test[" + super.toString() + "]";
     }
 
 }
