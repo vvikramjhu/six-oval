@@ -1445,19 +1445,22 @@
             <sql name="PID" type="char"/>
         </field>
 
+<!-- 
+        <field name="behaviors.maxDepth" type="integer">
+            <sql name="behaviors_max_depth" type="integer"/>
+        </field>
+
+        <field name="behaviors.recurseDirection" 
+            type="jp.go.aist.six.oval.model.RecurseDirection">
+            <sql name="behaviors_recurse_direction" type="char"/>
+        </field>
+-->
+
+<!--
         <field name="behaviors.multiline" type="boolean">
             <sql name="behaviors_multiline" type="bit"/>
         </field>
 
-<!-- 
-        <field name="behaviors.maxDepth" type="integer">
-            <sql name="max_depth" type="integer"/>
-        </field>
-
-        <field name="behaviors.recurseDirection" type="jp.go.aist.six.oval.model.windows.RecurseDirection">
-            <sql name="recurse_direction" type="char"/>
-        </field>
--->
         <field name="filepath.data" type="string">
             <sql name="filepath" type="char"/>
         </field>
@@ -1475,9 +1478,15 @@
             type="jp.go.aist.six.oval.model.common.Operation">
             <sql name="filepath_operation" type="char"/>
         </field>
+-->
 
         <field name="path.data" type="string">
             <sql name="path" type="char"/>
+        </field>
+
+        <field name="path.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="path_operation" type="char"/>
         </field>
 
         <field name="path.varRef" type="string">
@@ -1489,11 +1498,6 @@
             <sql name="path_var_check" type="char"/>
         </field>
 
-        <field name="path.operation" 
-            type="jp.go.aist.six.oval.model.common.Operation">
-            <sql name="path_operation" type="char"/>
-        </field>
-
         <field name="filename.data" type="string">
             <sql name="filename" type="char"/>
         </field>
@@ -1502,6 +1506,12 @@
             <sql name="pattern" type="char"/>
         </field>
 
+        <field name="pattern.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="pattern_operation" type="char"/>
+        </field>
+
+<!--
         <field name="pattern.varRef" type="string">
             <sql name="pattern_var_ref" type="char"/>
         </field>
@@ -1510,11 +1520,7 @@
             type="jp.go.aist.six.oval.model.common.Check">
             <sql name="pattern_var_check" type="char"/>
         </field>
-
-        <field name="pattern.operation" 
-            type="jp.go.aist.six.oval.model.common.Operation">
-            <sql name="pattern_operation" type="char"/>
-        </field>
+-->
 
         <field name="instance.data" type="string">
             <sql name="instance" type="char"/>

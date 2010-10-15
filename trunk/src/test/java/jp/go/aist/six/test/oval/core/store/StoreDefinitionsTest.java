@@ -376,7 +376,7 @@ public class StoreDefinitionsTest
                         // independent : family
                         {
                             SystemObject.class,
-                            "test/data/definitions/object-family_oval-obj-99_1.xml",
+                            "test/data/definitions/object-independent-family_oval-obj-99_1.xml",
                             "oval_definitions/objects/independent:family_object",
                             OvalSample.OBJECT_INDEPENDENT_FAMILY_99
                         }
@@ -384,15 +384,23 @@ public class StoreDefinitionsTest
                         // independent : textfilecontent
                         {
                             SystemObject.class,
-                            "test/data/definitions/object-textfilecontent_oval-obj-7326_1.xml",
+                            "test/data/definitions/object-independent-textfilecontent_oval-obj-7326_1.xml",
                             "oval_definitions/objects/independent:textfilecontent_object",
                             OvalSample.OBJECT_INDEPENDENT_TEXTFILECONTENT_7326
+                        }
+                        ,
+                        // independent : textfilecontent54
+                        {
+                            SystemObject.class,
+                            "test/data/definitions/object-independent-textfilecontent54_oval-obj-15567_1.xml",
+                            "oval_definitions/objects/independent:textfilecontent54_object",
+                            OvalSample.OBJECT_INDEPENDENT_TEXTFILECONTENT54_15567
                         }
                         ,
                         // linux : dpkginfo
                         {
                             SystemObject.class,
-                            "test/data/definitions/object-dpkginfo_oval-obj-10648_1.xml",
+                            "test/data/definitions/object-linux-dpkginfo_oval-obj-10648_1.xml",
                             "oval_definitions/objects/linux:dpkginfo_object",
                             OvalSample.OBJECT_LINUX_DPKGINFO_10648
                         }
@@ -400,7 +408,7 @@ public class StoreDefinitionsTest
                         // linux : rpminfo
                         {
                             SystemObject.class,
-                            "test/data/definitions/object-rpminfo_rhsa-obj-20100061001_301.xml",
+                            "test/data/definitions/object-linux-rpminfo_rhsa-obj-20100061001_301.xml",
                             "oval_definitions/objects/linux:rpminfo_object",
                             OvalSample.OBJECT_LINUX_RPMINFO_20100061001
                         }
@@ -408,7 +416,7 @@ public class StoreDefinitionsTest
                         // unux : uname
                         {
                             SystemObject.class,
-                            "test/data/definitions/object-uname_oval-obj-2759_1.xml",
+                            "test/data/definitions/object-unix-uname_oval-obj-2759_1.xml",
                             "oval_definitions/objects/unix:uname_object",
                             OvalSample.OBJECT_UNAME_UNAME_2759
                         }
@@ -416,7 +424,7 @@ public class StoreDefinitionsTest
 //                        // windows : file
                         {
                             SystemObject.class,
-                            "test/data/definitions/object-file_oval-obj-222_1.xml",
+                            "test/data/definitions/object-windows-file_oval-obj-222_1.xml",
                             "oval_definitions/objects/windows:file_object",
                             OvalSample.OBJECT_WINDOWS_FILE_222
                         }
@@ -424,7 +432,7 @@ public class StoreDefinitionsTest
                         // windows : metabase
                         {
                             SystemObject.class,
-                            "test/data/definitions/object-metabase_oval-obj-556_2.xml",
+                            "test/data/definitions/object-windows-metabase_oval-obj-556_2.xml",
                             "oval_definitions/objects/windows:metabase_object",
                             OvalSample.OBJECT_WINDOWS_METABASE_556
                         }
@@ -432,7 +440,7 @@ public class StoreDefinitionsTest
                         // windows : registry
                         {
                             SystemObject.class,
-                            "test/data/definitions/object-registry_oval-obj-717_1.xml",
+                            "test/data/definitions/object-windows-registry_oval-obj-717_1.xml",
                             "oval_definitions/objects/windows:registry_object",
                             OvalSample.OBJECT_WINDOWS_REGISTRY_717
                         }

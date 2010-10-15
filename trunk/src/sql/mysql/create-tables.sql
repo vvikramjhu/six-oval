@@ -17,6 +17,32 @@ use @six.db.database@;
 /* %                                                            % */
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
+/* ============================================================== */
+/* Not implemented yet                                            */
+/* ============================================================== */
+-- [definitions]
+-- EntityBase.mask      BOOLEAN         NOT NULL    DEFAULT false
+
+-- [independent]
+-- TextFileContent54Object.filter
+
+
+/* ============================================================== */
+/* Notes to data types                                            */
+/* ============================================================== */
+-- definitions.EntityObjectInt {datdatype=int}
+--  xxx                 VARCHAR(255),
+--  xxx_operation       VARCHAR(32)     DEFAULT 'equals',
+--  xxx_var_ref         VARCHAR(255),
+--  xxx_var_check       VARCHAR(16)     DEFAULT 'all',
+
+-- definitions.EntityObjectString {datdatype=string}
+--  xxx                 VARCHAR(255),
+--  xxx_operation       VARCHAR(32)     DEFAULT 'equals',
+--  xxx_var_ref         VARCHAR(255),
+--  xxx_var_check       VARCHAR(16)     DEFAULT 'all',
+
+    
 -- * UUID:
 --      xxx                 CHAR(36),
 --
@@ -1282,52 +1308,36 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_object_textfilecontent54
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:obj:419:1 */
 
-    behaviors_multiline BOOLEAN                     DEFAULT true,
+    /* behaviors :TextFileContent54Behaviors {0..1} */
+    behaviors_max_depth             INT,
+    behaviors_recurse               VARCHAR(24),
+    behaviors_recurse_direction     VARCHAR(4),
+    behaviors_recurse_file_system   VARCHAR(8),
+    behaviors_ignore_case           BOOLEAN,
+    behaviors_multiline             BOOLEAN,
+    behaviors_singleline            BOOLEAN,
 
-    /* filepath */
+    /* filepath :EntityObjectString {datdatype=string} */
     filepath            VARCHAR(255),
+    filepath_operation  VARCHAR(32),
     filepath_var_ref    VARCHAR(255),
-    filepath_var_check  VARCHAR(16)     DEFAULT 'all',
-                        /* enum('all', 'at least one',...) */
-/*  filepath_datatype   VARCHAR(16)     NOT NULL    DEFAULT 'string', */
-                        /*** all the datatype may be 'string'. ***/
-    filepath_operation  VARCHAR(32)     DEFAULT 'equals',
-                        /* enum('equals', ..., 'case insensitive not equal', ...) */
-/*  filepath_mask       BOOLEAN         NOT NULL    DEFAULT false,    */
+    filepath_var_check  VARCHAR(16),
 
-    /* path */
+    /* path :EntityObjectString {datdatype=string} */
     path                VARCHAR(255),
+    path_operation      VARCHAR(32),
     path_var_ref        VARCHAR(255),
-    path_var_check      VARCHAR(16)     DEFAULT 'all',
-                        /* enum('all', 'at least one',...) */
-/*  path_datatype       VARCHAR(16)     NOT NULL    DEFAULT 'string', */
-                        /*** all the datatype may be 'string'. ***/
-    path_operation      VARCHAR(32)     DEFAULT 'equals',
-                        /* enum('equals', ..., 'case insensitive not equal', ...) */
-/*  path_mask           BOOLEAN         NOT NULL    DEFAULT false,    */
+    path_var_check      VARCHAR(16),
 
-    /* filename */
+    /* filename :EntityObjectString {datdatype=string} */
     filename            VARCHAR(255),
 
-    /* pattern */
+    /* pattern :EntityObjectString {datdatype=string} */
     pattern             VARCHAR(255),
-    pattern_var_ref     VARCHAR(255),
-    pattern_var_check   VARCHAR(16)     DEFAULT 'all',
-                        /* enum('all', 'at least one',...) */
-/*  pattern_datatype    VARCHAR(16)     NOT NULL    DEFAULT 'string', */
-                        /*** all the datatype may be 'string'. ***/
-    pattern_operation   VARCHAR(32)     DEFAULT 'equals',
-                        /* enum('equals', ..., 'case insensitive not equal', ...) */
-/*  pattern_mask        BOOLEAN         NOT NULL    DEFAULT false,    */
+    pattern_operation   VARCHAR(32),
 
-    /* behaviors */
-/*  max_depth           INT             NOT NULL    DEFAULT -1,      */
-/*  recurse_direction   VARCHAR(8)      NOT NULL    DEFAULT 'none',  */
-                        /* enum('none', 'up', 'down') */
-
-    /* instance */
+    /* instance :EntityObjectString {datdatype=int} */
     instance            VARCHAR(8),
 
     /* (PK) */
