@@ -27,12 +27,15 @@ import jp.go.aist.six.oval.model.definitions.Test;
 
 
 /**
- * The textfilecontent_test element is used to check the contents
+ * The textfilecontent test is used to check the contents
  * of a text file (aka a configuration file) by looking at individual lines.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.4:
+ *             Replaced by the textfilecontent54 test and
+ *             will be removed in version 6.0 of the language.
  */
 public class TextFileContentTest
     extends Test

@@ -33,6 +33,9 @@ import jp.go.aist.six.oval.model.definitions.SystemObject;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.4:
+ *             Replaced by the textfilecontent54 object and
+ *             will be removed in version 6.0 of the language.
  */
 public class TextFileContentObject
     extends SystemObject

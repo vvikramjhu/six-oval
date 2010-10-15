@@ -282,31 +282,7 @@ public class TextFileContent54State
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        EntityStateString  filepath = getFilepath();
-        result = prime * result + ((filepath == null) ? 0 : filepath.hashCode());
-
-        EntityStateString  path = getPath();
-        result = prime * result + ((path == null) ? 0 : path.hashCode());
-
-        EntityStateString  filename = getFilename();
-        result = prime * result + ((filename == null) ? 0 : filename.hashCode());
-
-        EntityStateString  pattern = getPattern();
-        result = prime * result + ((pattern == null) ? 0 : pattern.hashCode());
-
-        EntityStateInt  instance = getInstance();
-        result = prime * result + ((instance == null) ? 0 : instance.hashCode());
-
-        EntityStateAnySimple  text = getText();
-        result = prime * result + ((text == null) ? 0 : text.hashCode());
-
-        EntityStateAnySimple  subexpression = getSubexpression();
-        result = prime * result + ((subexpression == null) ? 0 : subexpression.hashCode());
-
-        return result;
+        return super.hashCode();
     }
 
 
@@ -320,47 +296,7 @@ public class TextFileContent54State
             return false;
         }
 
-        if (super.equals( obj )) {
-            TextFileContent54State  other = (TextFileContent54State)obj;
-            EntityStateString  otherFilepath = other.getFilepath();
-            EntityStateString   thisFilepath =  this.getFilepath();
-            if (thisFilepath == otherFilepath
-                            ||  (thisFilepath != null  &&  thisFilepath.equals( otherFilepath ))) {
-                EntityStateString  otherPath = other.getPath();
-                EntityStateString   thisPath =  this.getPath();
-                if (thisPath == otherPath
-                                ||  (thisPath != null  &&  thisPath.equals( otherPath ))) {
-                    EntityStateString  otherFilename = other.getFilename();
-                    EntityStateString   thisFilename =  this.getFilename();
-                    if (thisFilename == otherFilename
-                                    ||  (thisFilename != null  &&  thisFilename.equals( otherFilename ))) {
-                        EntityStateString  otherPattern = other.getPattern();
-                        EntityStateString   thisPattern =  this.getPattern();
-                        if (thisPattern == otherPattern
-                                        ||  (thisPattern != null  &&  thisPattern.equals( otherPattern ))) {
-                            EntityStateInt  otherInstance = other.getInstance();
-                            EntityStateInt   thisInstance =  this.getInstance();
-                            if (thisInstance == otherInstance
-                                            ||  (thisInstance != null  &&  thisInstance.equals( otherInstance ))) {
-                                EntityStateAnySimple  otherText = other.getText();
-                                EntityStateAnySimple   thisText =  this.getText();
-                                if (thisText == otherText
-                                                ||  (thisText != null  &&  thisText.equals( otherText ))) {
-                                    EntityStateAnySimple  otherSubexpression = other.getSubexpression();
-                                    EntityStateAnySimple   thisSubexpression =  this.getSubexpression();
-                                    if (thisSubexpression == otherSubexpression
-                                                    ||  (thisSubexpression != null  &&  thisSubexpression.equals( otherSubexpression ))) {
-                                        return true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 

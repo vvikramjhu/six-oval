@@ -358,31 +358,7 @@ public class TextFileContent54Object
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        TextFileContent54Behaviors  behaviors = getBehaviors();
-        result = prime * result + ((behaviors == null) ? 0 : behaviors.hashCode());
-
-        EntityObjectString  filepath = getFilepath();
-        result = prime * result + ((filepath == null) ? 0 : filepath.hashCode());
-
-        EntityObjectString  path = getPath();
-        result = prime * result + ((path == null) ? 0 : path.hashCode());
-
-        EntityObjectString  filename = getFilename();
-        result = prime * result + ((filename == null) ? 0 : filename.hashCode());
-
-        EntityObjectString  pattern = getPattern();
-        result = prime * result + ((pattern == null) ? 0 : pattern.hashCode());
-
-        EntityObjectInt  instance = getInstance();
-        result = prime * result + ((instance == null) ? 0 : instance.hashCode());
-
-        Collection<Filter>  filter = getFilter();
-        result = prime * result + ((filter == null) ? 0 : filter.hashCode());
-
-        return result;
+        return super.hashCode();
     }
 
 
@@ -396,47 +372,7 @@ public class TextFileContent54Object
             return false;
         }
 
-        if (super.equals( obj )) {
-            TextFileContent54Object  other = (TextFileContent54Object)obj;
-            TextFileContent54Behaviors  otherBehaviors = other.getBehaviors();
-            TextFileContent54Behaviors   thisBehaviors =  this.getBehaviors();
-            if (thisBehaviors == otherBehaviors
-                            ||  (thisBehaviors != null  &&  thisBehaviors.equals( otherBehaviors ))) {
-                EntityObjectString  otherFilepath = other.getFilepath();
-                EntityObjectString   thisFilepath =  this.getFilepath();
-                if (thisFilepath == otherFilepath
-                                ||  (thisFilepath != null  &&  thisFilepath.equals( otherFilepath ))) {
-                    EntityObjectString  otherPath = other.getPath();
-                    EntityObjectString   thisPath =  this.getPath();
-                    if (thisPath == otherPath
-                                    ||  (thisPath != null  &&  thisPath.equals( otherPath ))) {
-                        EntityObjectString  otherFilename = other.getFilename();
-                        EntityObjectString   thisFilename =  this.getFilename();
-                        if (thisFilename == otherFilename
-                                        ||  (thisFilename != null  &&  thisFilename.equals( otherFilename ))) {
-                            EntityObjectString  otherPattern = other.getPattern();
-                            EntityObjectString   thisPattern =  this.getPattern();
-                            if (thisPattern == otherPattern
-                                            ||  (thisPattern != null  &&  thisPattern.equals( otherPattern ))) {
-                                EntityObjectInt  otherInstance = other.getInstance();
-                                EntityObjectInt   thisInstance =  this.getInstance();
-                                if (thisInstance == otherInstance
-                                                ||  (thisInstance != null  &&  thisInstance.equals( otherInstance ))) {
-                                    Collection<Filter>  otherFilter = other.getFilter();
-                                    Collection<Filter>   thisFilter =  this.getFilter();
-                                    if (thisFilter == otherFilter
-                                                    ||  (thisFilter != null  &&  thisFilter.equals( otherFilter ))) {
-                                        return true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 

@@ -35,6 +35,9 @@ import jp.go.aist.six.oval.model.definitions.State;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.4:
+ *             Replaced by the textfilecontent54 state and
+ *             will be removed in version 6.0 of the language.
  */
 public class TextFileContentState
     extends State
@@ -198,22 +201,7 @@ public class TextFileContentState
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        EntityStateString  path = getPath();
-        result = prime * result + ((path == null) ? 0 : path.hashCode());
-
-        EntityStateString  filename = getFilename();
-        result = prime * result + ((filename == null) ? 0 : filename.hashCode());
-
-        EntityStateString  line = getLine();
-        result = prime * result + ((line == null) ? 0 : line.hashCode());
-
-        EntityStateAnySimple  subexpression = getSubexpression();
-        result = prime * result + ((subexpression == null) ? 0 : subexpression.hashCode());
-
-        return result;
+        return super.hashCode();
     }
 
 
@@ -227,32 +215,7 @@ public class TextFileContentState
             return false;
         }
 
-        if (super.equals( obj )) {
-            TextFileContentState  other = (TextFileContentState)obj;
-            EntityStateString  other_path = other.getPath();
-            EntityStateString   this_path =  this.getPath();
-            if (this_path == other_path
-                            ||  (this_path != null  &&  this_path.equals( other_path ))) {
-                EntityStateString  other_filename = other.getFilename();
-                EntityStateString   this_filename =  this.getFilename();
-                if (this_filename == other_filename
-                                ||  (this_filename != null  &&  this_filename.equals( other_filename ))) {
-                    EntityStateString  other_line = other.getLine();
-                    EntityStateString   this_line =  this.getLine();
-                    if (this_line == other_line
-                                    ||  (this_line != null  &&  this_line.equals( other_line ))) {
-                        EntityStateAnySimple  other_subexpression = other.getSubexpression();
-                        EntityStateAnySimple   this_subexpression =  this.getSubexpression();
-                        if (this_subexpression == other_subexpression
-                                        ||  (this_subexpression != null  &&  this_subexpression.equals( other_subexpression ))) {
-                            return true;
-                        }
-                    }
-                }
-            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 

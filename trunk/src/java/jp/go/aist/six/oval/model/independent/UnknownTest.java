@@ -30,7 +30,7 @@ import java.util.Collection;
 
 
 /**
- * An UnknownTest acts as a placeholder for tests whose implementation is unknown.
+ * An unknown test acts as a placeholder for tests whose implementation is unknown.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
