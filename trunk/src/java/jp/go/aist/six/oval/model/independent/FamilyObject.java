@@ -26,7 +26,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObject;
 
 
 /**
- * The FamilyObject is used by a family test
+ * The family object is used by a family test
  * to define those objects to evaluate based on a specified state.
  *
  * @author  Akihito Nakamura, AIST

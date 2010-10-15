@@ -27,7 +27,7 @@ import jp.go.aist.six.oval.model.definitions.Test;
 
 
 /**
- * The FamilyTest is used to check the family a certain system belongs to.
+ * The family test is used to check the family a certain system belongs to.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

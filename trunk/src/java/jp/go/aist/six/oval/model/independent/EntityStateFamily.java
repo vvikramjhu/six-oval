@@ -27,7 +27,7 @@ import jp.go.aist.six.oval.model.definitions.EntityStateString;
 
 
 /**
- * The EntityStateFamily defines a string entity value that is
+ * The EntityStateFamily type defines a string entity value that is
  * restricted to a set of enumerations.
  * Each valid enumeration is a high-level family of system operating system.
  * The empty string is also allowed to support empty elements
@@ -133,10 +133,6 @@ public class EntityStateFamily
                     final Object obj
                     )
     {
-        if (this == obj) {
-            return true;
-        }
-
         if (!(obj instanceof EntityStateFamily)) {
             return false;
         }

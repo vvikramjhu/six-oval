@@ -26,7 +26,7 @@ import jp.go.aist.six.oval.model.definitions.State;
 
 
 /**
- * The FamilyState contains a single entity that is used
+ * The family state contains a single entity that is used
  * to check the family associated with the system.
  *
  * @author  Akihito Nakamura, AIST
@@ -122,13 +122,7 @@ public class FamilyState
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        EntityStateFamily  family = getFamily();
-        result = prime * result + ((family == null) ? 0 : family.hashCode());
-
-        return result;
+        return super.hashCode();
     }
 
 
@@ -142,17 +136,7 @@ public class FamilyState
             return false;
         }
 
-        if (super.equals( obj )) {
-            FamilyState  other = (FamilyState)obj;
-            EntityStateFamily  other_family = other.getFamily();
-            EntityStateFamily   this_family =  this.getFamily();
-            if (this_family == other_family
-                            ||  (this_family != null  &&  this_family.equals( other_family ))) {
-                return true;
-            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 
