@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<textfilecontent54_object id="oval:org.mitre.oval:obj:15567" version="1" comment="Object to check content of Google Chrome Preferences file" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+      <behaviors multiline="true"/>
+      <path var_ref="oval:org.mitre.oval:var:1173" var_check="all"/>
+      <filename>Preferences</filename>
+      <pattern operation="pattern match">^\s*"name": "InvisibleHand"[^}]+}[^p]+path": "lghjfnfolmcikomdjmoiemllfnlmmoko\\[^s]+state": [01]$</pattern>
+      <instance datatype="int">1</instance>
+</textfilecontent54_object>

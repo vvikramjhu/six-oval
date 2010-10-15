@@ -1,6 +1,7 @@
 package jp.go.aist.six.test.oval.core.xml;
 
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.results.Content;
 import jp.go.aist.six.oval.model.results.Directive;
 import jp.go.aist.six.oval.model.results.Directives;
@@ -188,6 +189,54 @@ public class OvalXmlTest
                     final String sourceFilepath,
                     final String xpath,
                     final OvalDefinitions expected,
+                    final String resultFilepath
+                    )
+    throws Exception
+    {
+        _testXml( type, sourceFilepath, xpath, expected, resultFilepath );
+    }
+
+
+
+    //==============================================================
+    //  object
+    //==============================================================
+
+    @DataProvider( name="definitions.object" )
+    public Object[][] provideOvalDefinitionsObject()
+    {
+        return new Object[][] {
+                        // independent textfilecontent54
+                        {
+                            SystemObject.class,
+                            "test/data/definitions/object-independent-textfilecontent54_oval-obj-15567_1.xml",
+                            "/oval_definitions/objects/textfilecontent54_object",
+                            null,
+                            "marshalled_object-independent-textfilecontent54_oval-obj-15567_1.xml"
+                        }
+                        ,
+                        // windows file
+                        {
+                            SystemObject.class,
+                            "test/data/definitions/object-windows-file_oval-obj-222_1.xml",
+                            "/oval_definitions/objects/file_object",
+                            null,
+                            "marshalled_object-windows-file_oval-obj-222_1.xml"
+                        }
+        };
+    }
+
+
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "definitions.object"},
+                    dataProvider="definitions.object",
+                    alwaysRun=true
+                    )
+    public void testDefinitionsObject(
+                    final Class<SystemObject> type,
+                    final String sourceFilepath,
+                    final String xpath,
+                    final SystemObject expected,
                     final String resultFilepath
                     )
     throws Exception

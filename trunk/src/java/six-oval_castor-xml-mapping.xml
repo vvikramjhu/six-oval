@@ -73,7 +73,6 @@
         <field name="deprecated" type="boolean">
             <bind-xml name="deprecated" node="attribute"/>
         </field>
-
     </class>
 
 
@@ -123,6 +122,29 @@
         </field>
     </class>
     -->
+
+
+
+    <!-- ======================================================= -->
+    <!-- AbstractFileBehaviors                                   -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.AbstractFileBehaviors"
+        verify-constructable="false">
+
+        <field name="maxDepth" type="int">
+            <bind-xml name="max_depth" node="attribute"/>
+        </field>
+
+        <field name="recurseDirection"
+            type="jp.go.aist.six.oval.model.RecurseDirection">
+            <bind-xml name="recurse_direction" node="attribute"/>
+        </field>
+
+        <field name="recurseFileSystem"
+            type="jp.go.aist.six.oval.model.RecurseFileSystem">
+            <bind-xml name="recurse_file_system" node="attribute"/>
+        </field>
+    </class>
 
 
 
@@ -1951,6 +1973,15 @@
     <!-- ======================================================= -->
     <!-- FileBehaviors                                           -->
     <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.independent.FileBehaviors"
+        extends="jp.go.aist.six.oval.model.AbstractFileBehaviors">
+
+        <field name="recurse"
+            type="jp.go.aist.six.oval.model.Recurse">
+            <bind-xml name="recurse" node="attribute"/>
+        </field>
+    </class>
+<!--
     <class name="jp.go.aist.six.oval.model.independent.FileBehaviors">
 
         <field name="maxDepth" type="int">
@@ -1972,6 +2003,7 @@
             <bind-xml name="recurse_file_system" node="attribute"/>
         </field>
     </class>
+-->
 
 
 
@@ -1993,6 +2025,26 @@
             type="jp.go.aist.six.oval.model.definitions.StateRef"
             collection="collection">
             <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+    <!-- ======================================================= -->
+    <!-- TextFileContent54Behaviors                              -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.independent.TextFileContent54Behaviors"
+        extends="jp.go.aist.six.oval.model.independent.FileBehaviors">
+
+        <field name="ignoreCase" type="boolean">
+            <bind-xml name="ignore_case" node="attribute"/>
+        </field>
+
+        <field name="multiline" type="boolean">
+            <bind-xml name="multiline" node="attribute"/>
+        </field>
+
+        <field name="singleline" type="boolean">
+            <bind-xml name="singleline" node="attribute"/>
         </field>
     </class>
 
@@ -3115,6 +3167,19 @@
 
 
     <!-- ======================================================= -->
+    <!-- FileBehaviors                                           -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.windows.FileBehaviors"
+        extends="jp.go.aist.six.oval.model.AbstractFileBehaviors">
+<!--
+        <map-to xml="behaviors"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
+-->
+    </class>
+
+
+
+    <!-- ======================================================= -->
     <!-- FileObject                                              -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.windows.FileObject"
@@ -3141,22 +3206,6 @@
         <field name="filename" 
             type="jp.go.aist.six.oval.model.definitions.EntityObjectString">
             <bind-xml name="filename" node="element"/>
-        </field>
-    </class>
-
-
-
-    <!-- ======================================================= -->
-    <!-- FileBehaviors                                           -->
-    <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.windows.FileBehaviors"
-        extends="jp.go.aist.six.oval.model.Behaviors">
-        <map-to xml="behaviors"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"/>
-
-        <field name="recurseFileSystem"  
-            type="jp.go.aist.six.oval.model.windows.RecurseFileSystem">
-            <bind-xml name="recurse_file_system" node="attribute"/>
         </field>
     </class>
 
