@@ -143,52 +143,6 @@ public abstract class LinuxPkgInfoObject
     //**************************************************************
 
     @Override
-    public int hashCode()
-    {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        EntityObjectString  name = getName();
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-
-        Collection<Filter>  filter = getFilter();
-        result = prime * result + ((filter == null) ? 0 : filter.hashCode());
-
-        return result;
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (!(obj instanceof LinuxPkgInfoObject)) {
-            return false;
-        }
-
-        if (super.equals( obj )) {
-            LinuxPkgInfoObject  other = (LinuxPkgInfoObject)obj;
-            EntityObjectString  other_name = other.getName();
-            EntityObjectString   this_name =  this.getName();
-            if (this_name == other_name
-                            ||  (this_name != null  &&  this_name.equals( other_name ))) {
-                Collection<Filter>  otherFilter = other.getFilter();
-                Collection<Filter>   thisFilter =  this.getFilter();
-                if (thisFilter == otherFilter
-                                ||  (thisFilter != null  &&  thisFilter.equals( otherFilter ))) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
-
-
-    @Override
     public String toString()
     {
         EntityObjectString  name = getName();

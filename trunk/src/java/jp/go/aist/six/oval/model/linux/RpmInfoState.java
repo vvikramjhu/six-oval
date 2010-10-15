@@ -24,7 +24,6 @@ import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateEVRString;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
-import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 
 
 
@@ -129,13 +128,7 @@ public class RpmInfoState
     @Override
     public int hashCode()
     {
-        final int prime = 37;
-        int result = super.hashCode();
-
-        EntityStateString  sig = getSignatureKeyID();
-        result = prime * result + ((sig == null) ? 0 : sig.hashCode());
-
-        return result;
+        return super.hashCode();
     }
 
 
@@ -149,15 +142,7 @@ public class RpmInfoState
             return false;
         }
 
-        if (super.equals( obj )) {
-            RpmInfoState other = (RpmInfoState)obj;
-            if (EntityTypeHelper.equals( this.getSignatureKeyID(),
-                            other.getSignatureKeyID() )) {
-                return true;
-            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 

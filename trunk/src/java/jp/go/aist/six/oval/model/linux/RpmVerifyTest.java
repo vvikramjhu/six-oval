@@ -27,7 +27,7 @@ import jp.go.aist.six.oval.model.definitions.Test;
 
 
 /**
- * The RpmVerifyTest is used to verify the integrity of installed RPMs.
+ * The rpmverify test is used to verify the integrity of installed RPMs.
  * This test aligns with the rpm -V command for verifying RPMs.
  *
  * @author  Akihito Nakamura, AIST

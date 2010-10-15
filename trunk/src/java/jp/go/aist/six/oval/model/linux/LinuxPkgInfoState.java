@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
-import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definitions.State;
 
 
@@ -119,51 +118,6 @@ public abstract class LinuxPkgInfoState
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
-
-    @Override
-    public int hashCode()
-    {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        EntityStateString  name = getName();
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-
-        EntityStateString  arch = getArch();
-        result = prime * result + ((arch == null) ? 0 : arch.hashCode());
-
-        EntityStateAnySimple  version = getVersion();
-        result = prime * result + ((version == null) ? 0 : version.hashCode());
-
-        return result;
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (!(obj instanceof LinuxPkgInfoState)) {
-            return false;
-        }
-
-        if (super.equals( obj )) {
-            LinuxPkgInfoState  other = (LinuxPkgInfoState)obj;
-            if (EntityTypeHelper.equals( this.getVersion(), other.getVersion() )) {
-                if (EntityTypeHelper.equals( this.getName(), other.getName() )) {
-                    if (EntityTypeHelper.equals( this.getArch(), other.getArch() )) {
-                        return true;
-                    }
-                }
-            }
-        }
-
-        return false;
-    }
-
-
 
     @Override
     public String toString()

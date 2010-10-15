@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateEVRString;
-import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 
 
 
@@ -116,51 +115,6 @@ public abstract class LinuxEvrPkgInfoState
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
-
-    @Override
-    public int hashCode()
-    {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        EntityStateAnySimple  epoch = getEpoch();
-        result = prime * result + ((epoch == null) ? 0 : epoch.hashCode());
-
-        EntityStateAnySimple  release = getRelease();
-        result = prime * result + ((release == null) ? 0 : release.hashCode());
-
-        EntityStateEVRString  evr = getEvr();
-        result = prime * result + ((evr == null) ? 0 : evr.hashCode());
-
-        return result;
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (!(obj instanceof LinuxEvrPkgInfoState)) {
-            return false;
-        }
-
-        if (super.equals( obj )) {
-            LinuxEvrPkgInfoState  other = (LinuxEvrPkgInfoState)obj;
-            if (EntityTypeHelper.equals( this.getEvr(), other.getEvr() )) {
-                if (EntityTypeHelper.equals( this.getEpoch(), other.getEpoch() )) {
-                    if (EntityTypeHelper.equals( this.getRelease(), other.getRelease() )) {
-                        return true;
-                    }
-                }
-            }
-        }
-
-        return false;
-    }
-
-
 
     @Override
     public String toString()

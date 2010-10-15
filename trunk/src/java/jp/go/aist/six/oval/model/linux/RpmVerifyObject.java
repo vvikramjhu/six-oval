@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
-import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import java.util.ArrayList;
@@ -32,7 +31,7 @@ import java.util.Iterator;
 
 
 /**
- * The RpmVerifyObject is used by a rpmverity test to define
+ * The rpmverify object is used by a rpmverity test to define
  * a set of files within a set of RPMs to verify.
  *
  * @author  Akihito Nakamura, AIST
@@ -213,22 +212,7 @@ public class RpmVerifyObject
     @Override
     public int hashCode()
     {
-        final int prime = 37;
-        int result = super.hashCode();
-
-        RpmVerifyBehaviors  behaviors = getBehaviors();
-        result = prime * result + ((behaviors == null) ? 0 : behaviors.hashCode());
-
-        EntityObjectString  name = getName();
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-
-        EntityObjectString  filepath = getFilepath();
-        result = prime * result + ((filepath == null) ? 0 : filepath.hashCode());
-
-        Collection<Filter>  filter = getFilter();
-        result = prime * result + ((filter == null) ? 0 : filter.hashCode());
-
-        return result;
+        return super.hashCode();
     }
 
 
@@ -242,30 +226,7 @@ public class RpmVerifyObject
             return false;
         }
 
-        if (super.equals( obj )) {
-            RpmVerifyObject  other = (RpmVerifyObject)obj;
-            EntityObjectString  otherName = other.getName();
-            EntityObjectString   thisName =  this.getName();
-            if (EntityTypeHelper.equals( thisName, otherName )) {
-                EntityObjectString  otherFilepath = other.getFilepath();
-                EntityObjectString   thisFilepath =  this.getFilepath();
-                if (EntityTypeHelper.equals( thisFilepath, otherFilepath )) {
-                    RpmVerifyBehaviors  otherBehaviors = other.getBehaviors();
-                    RpmVerifyBehaviors   thisBehaviors =  this.getBehaviors();
-                    if (thisBehaviors == otherBehaviors
-                                    ||  (thisBehaviors != null  &&  thisBehaviors.equals( otherBehaviors ))) {
-                        Collection<Filter>  otherFilter = other.getFilter();
-                        Collection<Filter>   thisFilter =  this.getFilter();
-                        if (thisFilter == otherFilter
-                                        ||  (thisFilter != null  &&  thisFilter.equals( otherFilter ))) {
-                            return true;
-                        }
-                    }
-                }
-            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 

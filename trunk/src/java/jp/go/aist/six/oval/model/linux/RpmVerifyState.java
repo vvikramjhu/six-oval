@@ -24,7 +24,6 @@ import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateBool;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
-import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
 import java.util.Map;
@@ -32,7 +31,7 @@ import java.util.Map;
 
 
 /**
- * The RpmVerifyState defines the different information
+ * The rpmverify state defines the different information
  * that can be used to evaluate the specified rpm.
  *
  * @author  Akihito Nakamura, AIST
@@ -381,15 +380,7 @@ public class RpmVerifyState
     @Override
     public int hashCode()
     {
-        final int prime = 37;
-        int result = super.hashCode();
-
-        for (Property  p : Property.values()) {
-            EntityStateBase  s = _properties.get( p );
-            result = prime * result + ((s == null) ? 0 : s.hashCode());
-        }
-
-        return result;
+        return super.hashCode();
     }
 
 
@@ -403,33 +394,7 @@ public class RpmVerifyState
             return false;
         }
 
-        if (!super.equals( obj )) {
-            return false;
-        }
-
-        RpmVerifyState  other = (RpmVerifyState)obj;
-
-        if (EntityTypeHelper.equals( getName(), other.getName() )
-                        &&  EntityTypeHelper.equals( getFilepath(), other.getFilepath() )
-                        &&  EntityTypeHelper.equals( getSizeDiffers(), other.getSizeDiffers() )
-                        &&  EntityTypeHelper.equals( getModeDiffers(), other.getModeDiffers() )
-                        &&  EntityTypeHelper.equals( getMd5Differs(), other.getMd5Differs() )
-                        &&  EntityTypeHelper.equals( getDeviceDiffers(), other.getDeviceDiffers() )
-                        &&  EntityTypeHelper.equals( getLinkMismatch(), other.getLinkMismatch() )
-                        &&  EntityTypeHelper.equals( getOwnershipDiffers(), other.getOwnershipDiffers() )
-                        &&  EntityTypeHelper.equals( getGroupDiffers(), other.getGroupDiffers() )
-                        &&  EntityTypeHelper.equals( getMtimeDiffers(), other.getMtimeDiffers() )
-                        &&  EntityTypeHelper.equals( getCapabilitiesDiffers(), other.getCapabilitiesDiffers() )
-                        &&  EntityTypeHelper.equals( getConfigurationFile(), other.getConfigurationFile() )
-                        &&  EntityTypeHelper.equals( getDocumentationFile(), other.getDocumentationFile() )
-                        &&  EntityTypeHelper.equals( getGhostFile(), other.getGhostFile() )
-                        &&  EntityTypeHelper.equals( getLicenseFile(), other.getLicenseFile() )
-                        &&  EntityTypeHelper.equals( getReadmeFile(), other.getReadmeFile() )
-        ) {
-            return true;
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 
