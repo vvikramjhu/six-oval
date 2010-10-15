@@ -409,71 +409,27 @@ public class RpmVerifyState
 
         RpmVerifyState  other = (RpmVerifyState)obj;
 
-        if (!EntityTypeHelper.equals( getName(), other.getName() )) {
-            return false;
+        if (EntityTypeHelper.equals( getName(), other.getName() )
+                        &&  EntityTypeHelper.equals( getFilepath(), other.getFilepath() )
+                        &&  EntityTypeHelper.equals( getSizeDiffers(), other.getSizeDiffers() )
+                        &&  EntityTypeHelper.equals( getModeDiffers(), other.getModeDiffers() )
+                        &&  EntityTypeHelper.equals( getMd5Differs(), other.getMd5Differs() )
+                        &&  EntityTypeHelper.equals( getDeviceDiffers(), other.getDeviceDiffers() )
+                        &&  EntityTypeHelper.equals( getLinkMismatch(), other.getLinkMismatch() )
+                        &&  EntityTypeHelper.equals( getOwnershipDiffers(), other.getOwnershipDiffers() )
+                        &&  EntityTypeHelper.equals( getGroupDiffers(), other.getGroupDiffers() )
+                        &&  EntityTypeHelper.equals( getMtimeDiffers(), other.getMtimeDiffers() )
+                        &&  EntityTypeHelper.equals( getCapabilitiesDiffers(), other.getCapabilitiesDiffers() )
+                        &&  EntityTypeHelper.equals( getConfigurationFile(), other.getConfigurationFile() )
+                        &&  EntityTypeHelper.equals( getDocumentationFile(), other.getDocumentationFile() )
+                        &&  EntityTypeHelper.equals( getGhostFile(), other.getGhostFile() )
+                        &&  EntityTypeHelper.equals( getLicenseFile(), other.getLicenseFile() )
+                        &&  EntityTypeHelper.equals( getReadmeFile(), other.getReadmeFile() )
+        ) {
+            return true;
         }
 
-        if (!EntityTypeHelper.equals( getFilepath(), other.getFilepath() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getSizeDiffers(), other.getSizeDiffers() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getModeDiffers(), other.getModeDiffers() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getMd5Differs(), other.getMd5Differs() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getDeviceDiffers(), other.getDeviceDiffers() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getLinkMismatch(), other.getLinkMismatch() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getOwnershipDiffers(), other.getOwnershipDiffers() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getGroupDiffers(), other.getGroupDiffers() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getMtimeDiffers(), other.getMtimeDiffers() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getCapabilitiesDiffers(), other.getCapabilitiesDiffers() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getConfigurationFile(), other.getConfigurationFile() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getDocumentationFile(), other.getDocumentationFile() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getGhostFile(), other.getGhostFile() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getLicenseFile(), other.getLicenseFile() )) {
-            return false;
-        }
-
-        if (!EntityTypeHelper.equals( getReadmeFile(), other.getReadmeFile() )) {
-            return false;
-        }
-
-        return true;
+        return false;
     }
 
 

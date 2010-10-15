@@ -25,6 +25,7 @@ import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateInt;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.EntityStateVersion;
+import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
 import java.util.Map;
@@ -46,29 +47,6 @@ public class FileState
         new EnumMap<FileProperty, EntityStateBase>( FileProperty.class );
     //EntityStateBase{0..1}
 
-//    private EntityStateStringType  _filepath;
-//    private EntityStateStringType  _path;
-//    private EntityStateStringType  _filename;
-//    private EntityStateStringType  _owner;
-//    private EntityStateIntType  _size;
-//    private EntityStateIntType  _aTime;
-//    private EntityStateIntType  _cTime;
-//    private EntityStateIntType  _mTime;
-//    private EntityStateStringType  _msChecksum;
-
-//    private EntityStateVersionType  _version;
-//    //{0..1}
-
-//    private EntityStateFileType  _type;
-//    private EntityStateStringType  _developmentClass;
-//    private EntityStateStringType  _company;
-//    private EntityStateStringType  _internalName;
-//    private EntityStateStringType  _language;
-//    private EntityStateStringType  _originalFilename;
-//    private EntityStateStringType  _productName;
-//    private EntityStateVersionType  _productVersion;
-
-
 
 
     /**
@@ -88,15 +66,6 @@ public class FileState
                     )
     {
         super( id, version );
-    }
-
-
-
-    /**
-     */
-    protected Map<FileProperty, EntityStateBase> _getProperties()
-    {
-        return _properties;
     }
 
 
@@ -377,7 +346,7 @@ public class FileState
     }
 
 
-    public EntityStateString getInteralName()
+    public EntityStateString getInternalName()
     {
         return (EntityStateString)_properties.get( FileProperty.INTERNAL_NAME );
     }
@@ -411,7 +380,7 @@ public class FileState
     }
 
 
-    public EntityStateString getOrigianlFilename()
+    public EntityStateString getOriginalFilename()
     {
         return (EntityStateString)_properties.get( FileProperty.ORIGINAL_FILENAME );
     }
@@ -474,7 +443,10 @@ public class FileState
         final int  prime = 37;
         int  hash = super.hashCode();
 
-        hash = prime * hash + _getProperties().hashCode();
+        for (FileProperty  p : FileProperty.values()) {
+            EntityStateBase  s = _properties.get( p );
+            hash = prime * hash + (s == null ? 0 : s.hashCode());
+        }
 
         return hash;
     }
@@ -486,18 +458,35 @@ public class FileState
                     final Object obj
                     )
     {
+        if (this == obj) {
+            return true;
+        }
+
         if (!(obj instanceof FileState)) {
             return false;
         }
 
-        if (super.equals( obj )) {
-            FileState  other = (FileState)obj;
-            Map<FileProperty, EntityStateBase>  other_props = other._getProperties();
-            Map<FileProperty, EntityStateBase>   this_props =  this._getProperties();
-            if (this_props == other_props
-                            ||  (this_props != null  &&  this_props.equals( other_props ))) {
-                return true;
-            }
+        FileState  other = (FileState)obj;
+        if (EntityTypeHelper.equals( getFilepath(), other.getFilepath() )
+                        &&  EntityTypeHelper.equals( getPath(), other.getPath() )
+                        &&  EntityTypeHelper.equals( getFilename(), other.getFilename() )
+                        &&  EntityTypeHelper.equals( getOwner(), other.getOwner() )
+                        &&  EntityTypeHelper.equals( getSize(), other.getSize() )
+                        &&  EntityTypeHelper.equals( getATime(), other.getATime() )
+                        &&  EntityTypeHelper.equals( getCTime(), other.getCTime() )
+                        &&  EntityTypeHelper.equals( getMTime(), other.getMTime() )
+                        &&  EntityTypeHelper.equals( getMSChecksum(), other.getMSChecksum() )
+                        &&  EntityTypeHelper.equals( getVersion(), other.getVersion() )
+                        &&  EntityTypeHelper.equals( getType(), other.getType() )
+                        &&  EntityTypeHelper.equals( getDevelopmentClass(), other.getDevelopmentClass() )
+                        &&  EntityTypeHelper.equals( getCompany(), other.getCompany() )
+                        &&  EntityTypeHelper.equals( getInternalName(), other.getInternalName() )
+                        &&  EntityTypeHelper.equals( getLanguage(), other.getLanguage() )
+                        &&  EntityTypeHelper.equals( getOriginalFilename(), other.getOriginalFilename() )
+                        &&  EntityTypeHelper.equals( getProductName(), other.getProductName() )
+                        &&  EntityTypeHelper.equals( getProductVersion(), other.getProductVersion() )
+        ) {
+            return true;
         }
 
         return false;
@@ -509,7 +498,7 @@ public class FileState
     public String toString()
     {
         return "file_state[" + super.toString()
-                        + ", " + _getProperties()
+                        + ", " + String.valueOf( _properties )
                         + "]";
     }
 

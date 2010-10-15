@@ -20,50 +20,26 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.Behaviors;
+import jp.go.aist.six.oval.model.AbstractFileBehaviors;
 
 
 
 /**
+ * The FileBehaviors type defines a number of behaviors
+ * that allow a more detailed definition of the file_object being specified.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class FileBehaviors
-    extends Behaviors
+    extends AbstractFileBehaviors
 {
-
-    public static final RecurseFileSystem  DEFAULT_RECURSE_DIRECTION = RecurseFileSystem.ALL;
-    private RecurseFileSystem  _recurseFileSystem;
-    //{optional, default="all"}
-
-
-
     /**
      * Constructor.
      */
     public FileBehaviors()
     {
-    }
-
-
-
-    /**
-     */
-    public void setRecurseFileSystem(
-                    final RecurseFileSystem recurseFileSystem
-                    )
-    {
-        _recurseFileSystem = recurseFileSystem;
-    }
-
-
-    /**
-     */
-    public RecurseFileSystem getRecurseFileSystem()
-    {
-        return _recurseFileSystem;
     }
 
 
@@ -75,13 +51,7 @@ public class FileBehaviors
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        RecurseFileSystem  r = getRecurseFileSystem();
-        result = prime * result + ((r == null) ? 0 : r.hashCode());
-
-        return result;
+        return super.hashCode();
     }
 
 
@@ -91,30 +61,15 @@ public class FileBehaviors
                     final Object obj
                     )
     {
+        if (this == obj) {
+            return true;
+        }
+
         if (!(obj instanceof FileBehaviors)) {
             return false;
         }
 
-        if (super.equals( obj )) {
-            FileBehaviors  other = (FileBehaviors)obj;
-            RecurseFileSystem  other_r = other.getRecurseFileSystem();  // enum
-            RecurseFileSystem   this_r =  this.getRecurseFileSystem();
-            if (this_r == other_r) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return "FileBehaviors[" + super.toString()
-                        + ", recurse_file_system=" + getRecurseFileSystem()
-                        + "]";
+        return super.equals( obj );
     }
 
 }

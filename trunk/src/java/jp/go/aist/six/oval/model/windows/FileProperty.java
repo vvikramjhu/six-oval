@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.windows;
 
 
 /**
+ * The Windows file properties.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -34,20 +35,20 @@ public enum FileProperty
     PATH,
     FILENAME,
     OWNER,
-    SIZE,
-    A_TIME,
-    C_TIME,
-    M_TIME, // Int
+    SIZE,           // Int
+    A_TIME,         // Int
+    C_TIME,         // Int
+    M_TIME,         // Int
     MS_CHECKSUM,
-    VERSION,
-    TYPE, //FileType
+    VERSION,        // Version
+    TYPE,           // FileType
     DEVELOPMENT_CLASS,
     COMPANY,
     INTERNAL_NAME,
     LANGUAGE,
     ORIGINAL_FILENAME,
     PRODUCT_NAME,
-    PRODUCT_VERSION;
+    PRODUCT_VERSION;    // Version
 
 }
 // FileProperty

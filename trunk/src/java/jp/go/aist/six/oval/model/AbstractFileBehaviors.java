@@ -18,23 +18,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.independent;
+package jp.go.aist.six.oval.model;
 
-import jp.go.aist.six.oval.model.Recurse;
-import jp.go.aist.six.oval.model.RecurseDirection;
-import jp.go.aist.six.oval.model.RecurseFileSystem;
 import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 
 /**
- * A base class for all the concrete Behaviors.
+ * A base class for all the concrete file behaviors.
+ * File behaviors defines a number of behaviors
+ * that allow a more detailed definition of a set of files
+ * or file related items to collect.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class FileBehaviors
+public abstract class AbstractFileBehaviors
     extends AbstractPersistable
 {
 
@@ -44,14 +44,6 @@ public class FileBehaviors
     public static final int  DEFAULT_MAX_DEPTH = -1;
     private int _maxDepth = DEFAULT_MAX_DEPTH;
     //{optional, default='-1', minInclusive='-1'}
-
-
-    /**
-     * The default recurseDirection: "symlinks and directories".
-     */
-    public static final Recurse  DEFAULT_RECURSE = Recurse.SYMLINKS_AND_DIRECTORIES;
-    private Recurse  _recurse;
-    //{optional, default='symlinks and directories'}
 
 
     /**
@@ -74,7 +66,7 @@ public class FileBehaviors
     /**
      * Constructor.
      */
-    public FileBehaviors()
+    public AbstractFileBehaviors()
     {
     }
 
@@ -97,25 +89,6 @@ public class FileBehaviors
     public int getMaxDepth()
     {
         return _maxDepth;
-    }
-
-
-
-    /**
-     */
-    public void setRecurse(
-                    final Recurse recurse
-                    )
-    {
-        _recurse = recurse;
-    }
-
-
-    public Recurse getRecurse()
-    {
-        return (_recurse == null
-                        ? DEFAULT_RECURSE
-                        : _recurse);
     }
 
 
@@ -170,9 +143,6 @@ public class FileBehaviors
 
         result = prime * result + getMaxDepth();
 
-        Recurse  r = getRecurse();
-        result = prime * result + ((r == null) ? 0 : r.hashCode());
-
         RecurseDirection  rd = getRecurseDirection();
         result = prime * result + ((rd == null) ? 0 : rd.hashCode());
 
@@ -193,23 +163,19 @@ public class FileBehaviors
             return true;
         }
 
-        if (!(obj instanceof FileBehaviors)) {
+        if (!(obj instanceof AbstractFileBehaviors)) {
             return false;
         }
 
-        FileBehaviors  other = (FileBehaviors)obj;
+        AbstractFileBehaviors  other = (AbstractFileBehaviors)obj;
         if (this.getMaxDepth() == other.getMaxDepth()) {
-            Recurse  other_r = other.getRecurse();
-            Recurse   this_r =  this.getRecurse();
-            if (this_r == other_r) {
-                RecurseDirection  other_rd = other.getRecurseDirection();
-                RecurseDirection   this_rd =  this.getRecurseDirection();
-                if (this_rd == other_rd) {
-                    RecurseFileSystem  other_rfs = other.getRecurseFileSystem();
-                    RecurseFileSystem   this_rfs =  this.getRecurseFileSystem();
-                    if (this_rfs == other_rfs) {
-                        return true;
-                    }
+            RecurseDirection  other_rd = other.getRecurseDirection();
+            RecurseDirection   this_rd =  this.getRecurseDirection();
+            if (this_rd == other_rd) {
+                RecurseFileSystem  other_rfs = other.getRecurseFileSystem();
+                RecurseFileSystem   this_rfs =  this.getRecurseFileSystem();
+                if (this_rfs == other_rfs) {
+                    return true;
                 }
             }
         }
@@ -223,11 +189,10 @@ public class FileBehaviors
     public String toString()
     {
         return "max_depth=" + getMaxDepth()
-                        + ", recurse=" + getRecurse()
                         + ", recurse_direction=" + getRecurseDirection()
                         + ", recurse_file_system=" + getRecurseFileSystem()
                         ;
     }
 
 }
-// FileBehaviors
+// AbstractFileBehaviors

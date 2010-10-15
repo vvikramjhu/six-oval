@@ -20,31 +20,23 @@
 
 package jp.go.aist.six.oval.model.independent;
 
+import jp.go.aist.six.oval.model.AbstractFileBehaviors;
 import jp.go.aist.six.oval.model.Recurse;
-import jp.go.aist.six.oval.model.RecurseDirection;
-import jp.go.aist.six.oval.model.RecurseFileSystem;
-import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 
 /**
- * A base class for all the concrete Behaviors.
+ * The FileBehaviors type defines a number of behaviors
+ * that allow a more detailed definition of a set of files
+ * or file related items to collect.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class FileBehaviors
-    extends AbstractPersistable
+    extends AbstractFileBehaviors
 {
-
-    /**
-     * The default maxDepth: -1.
-     */
-    public static final int  DEFAULT_MAX_DEPTH = -1;
-    private int _maxDepth = DEFAULT_MAX_DEPTH;
-    //{optional, default='-1', minInclusive='-1'}
-
 
     /**
      * The default recurseDirection: "symlinks and directories".
@@ -54,49 +46,12 @@ public class FileBehaviors
     //{optional, default='symlinks and directories'}
 
 
-    /**
-     * The default recurseDirection: "none".
-     */
-    public static final RecurseDirection  DEFAULT_RECURSE_DIRECTION = RecurseDirection.NONE;
-    private RecurseDirection  _recurseDirection;
-    //{optional, default='none'}
-
-
-    /**
-     * The default recurseDirection: "all".
-     */
-    public static final RecurseFileSystem  DEFAULT_RECURSE_FILE_SYSTEM = RecurseFileSystem.ALL;
-    private RecurseFileSystem  _recurseFileSystem;
-    //{optional, default='all'}
-
-
 
     /**
      * Constructor.
      */
     public FileBehaviors()
     {
-    }
-
-
-
-    /**
-     */
-    public void setMaxDepth(
-                    final int maxDepth
-                    )
-    {
-        if (maxDepth < -1) {
-            throw new IllegalArgumentException( "invalid maxDepth: " + maxDepth );
-        }
-
-        _maxDepth = maxDepth;
-    }
-
-
-    public int getMaxDepth()
-    {
-        return _maxDepth;
     }
 
 
@@ -120,44 +75,6 @@ public class FileBehaviors
 
 
 
-    /**
-     */
-    public void setRecurseDirection(
-                    final RecurseDirection direction
-                    )
-    {
-        _recurseDirection = direction;
-    }
-
-
-    public RecurseDirection getRecurseDirection()
-    {
-        return (_recurseDirection == null
-                        ? DEFAULT_RECURSE_DIRECTION
-                        : _recurseDirection);
-    }
-
-
-
-    /**
-     */
-    public void setRecurseFileSystem(
-                    final RecurseFileSystem fileSystem
-                    )
-    {
-        _recurseFileSystem = fileSystem;
-    }
-
-
-    public RecurseFileSystem getRecurseFileSystem()
-    {
-        return (_recurseFileSystem == null
-                        ? DEFAULT_RECURSE_FILE_SYSTEM
-                        : _recurseFileSystem);
-    }
-
-
-
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -166,18 +83,10 @@ public class FileBehaviors
     public int hashCode()
     {
         final int  prime = 37;
-        int  result = 17;
-
-        result = prime * result + getMaxDepth();
+        int  result = super.hashCode();
 
         Recurse  r = getRecurse();
         result = prime * result + ((r == null) ? 0 : r.hashCode());
-
-        RecurseDirection  rd = getRecurseDirection();
-        result = prime * result + ((rd == null) ? 0 : rd.hashCode());
-
-        RecurseFileSystem  rfs = getRecurseFileSystem();
-        result = prime * result + ((rfs == null) ? 0 : rfs.hashCode());
 
         return result;
     }
@@ -202,15 +111,7 @@ public class FileBehaviors
             Recurse  other_r = other.getRecurse();
             Recurse   this_r =  this.getRecurse();
             if (this_r == other_r) {
-                RecurseDirection  other_rd = other.getRecurseDirection();
-                RecurseDirection   this_rd =  this.getRecurseDirection();
-                if (this_rd == other_rd) {
-                    RecurseFileSystem  other_rfs = other.getRecurseFileSystem();
-                    RecurseFileSystem   this_rfs =  this.getRecurseFileSystem();
-                    if (this_rfs == other_rfs) {
-                        return true;
-                    }
-                }
+                return true;
             }
         }
 
@@ -222,10 +123,8 @@ public class FileBehaviors
     @Override
     public String toString()
     {
-        return "max_depth=" + getMaxDepth()
+        return super.toString()
                         + ", recurse=" + getRecurse()
-                        + ", recurse_direction=" + getRecurseDirection()
-                        + ", recurse_file_system=" + getRecurseFileSystem()
                         ;
     }
 

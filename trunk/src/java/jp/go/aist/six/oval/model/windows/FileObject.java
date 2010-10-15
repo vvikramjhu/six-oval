@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.Behaviors;
 import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.EntityTypeHelper;
@@ -309,7 +308,7 @@ public class FileObject
         final int  prime = 37;
         int  result = super.hashCode();
 
-        Behaviors  behaviors = getBehaviors();
+        FileBehaviors  behaviors = getBehaviors();
         result = prime * result + ((behaviors == null) ? 0 : behaviors.hashCode());
 
         EntityObjectString  path = getPath();
