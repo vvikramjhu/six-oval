@@ -201,27 +201,6 @@
     
     
     
-    <!-- ======================================================= -->
-    <!-- Behaviors                                               -->
-    <!-- ======================================================= -->
-    <!--
-    This is NOT an OVAL Schema element. 
-    -->
-    <class name="jp.go.aist.six.oval.model.Behaviors"
-        verify-constructable="false">
-
-        <field name="maxDepth" type="int">
-            <bind-xml name="max_depth" node="attribute"/>
-        </field>
-
-        <field name="recurseDirection"
-            type="jp.go.aist.six.oval.model.RecurseDirection">
-            <bind-xml name="recurse_direction" node="attribute"/>
-        </field>
-    </class>
-
-
-
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <!-- %                                                     % -->
     <!-- %  xmlns:oval-definitions                             % -->
