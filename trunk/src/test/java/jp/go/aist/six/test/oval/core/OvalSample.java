@@ -34,6 +34,7 @@ import jp.go.aist.six.oval.model.independent.FamilyState;
 import jp.go.aist.six.oval.model.independent.FamilyTest;
 import jp.go.aist.six.oval.model.independent.TextFileContent54Behaviors;
 import jp.go.aist.six.oval.model.independent.TextFileContent54Object;
+import jp.go.aist.six.oval.model.independent.TextFileContent54State;
 import jp.go.aist.six.oval.model.independent.TextFileContentObject;
 import jp.go.aist.six.oval.model.independent.TextFileContentState;
 import jp.go.aist.six.oval.model.independent.TextFileContentTest;
@@ -354,6 +355,13 @@ public class OvalSample
         new TextFileContentState( "oval:org.mitre.oval:ste:5132", 1 )
     .subexpression( new EntityStateAnySimple( "\\brw\\b",
                     Operation.PATTERN_MATCH )
+    );
+
+
+    public static final TextFileContent54State  STATE_INDEPENDENT_TEXTFILECONTENT54_11440 =
+        new TextFileContent54State( "oval:org.mitre.oval:ste:11440", 1,
+                        "State matches if Google Chrome Invisible Hand Extension is enabled" )
+    .text( new EntityStateAnySimple( "^\\s*\"name\": \"InvisibleHand\"[^}]+}[^p]+path\": \"lghjfnfolmcikomdjmoiemllfnlmmoko\\\\[^s]+state\": [01]$", Operation.PATTERN_MATCH )
     );
 
 

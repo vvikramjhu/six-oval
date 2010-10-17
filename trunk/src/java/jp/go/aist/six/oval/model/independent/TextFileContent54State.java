@@ -80,6 +80,19 @@ public class TextFileContent54State
     }
 
 
+    /**
+     * Constructor.
+     */
+    public TextFileContent54State(
+                    final String id,
+                    final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
+    }
+
+
 
     /**
      */

@@ -286,6 +286,14 @@ public class StoreDefinitionsTest
                             OvalSample.STATE_INDEPENDENT_TEXTFILECONTENT_5132
                         }
                         ,
+                        // independent : textfilecontent54
+                        {
+                            State.class,
+                            "test/data/definitions/state-independent-textfilecontent54_11440.xml",
+                            "oval_definitions/states/independent:textfilecontent54_state",
+                            OvalSample.STATE_INDEPENDENT_TEXTFILECONTENT54_11440
+                        }
+                        ,
                         // windows : file
                         {
                             State.class,
@@ -329,7 +337,7 @@ public class StoreDefinitionsTest
                         // linux : rpminfo/version
                         {
                             State.class,
-                            "test/data/definitions/state-rpminfo_rhsa-ste-20100061003_301.xml",
+                            "test/data/definitions/state-linux-rpminfo_rhsa-20100061003.xml",
                             "oval_definitions/states/linux:rpminfo_state",
                             OvalSample.STATE_LINUX_RPMINFO_20100061003
                         }

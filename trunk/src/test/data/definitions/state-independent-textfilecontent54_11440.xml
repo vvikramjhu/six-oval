@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<textfilecontent54_state id="oval:org.mitre.oval:ste:11440" version="1" comment="State matches if Google Chrome Invisible Hand Extension is enabled" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+ xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+      <text operation="pattern match">^\s*"name": "InvisibleHand"[^}]+}[^p]+path": "lghjfnfolmcikomdjmoiemllfnlmmoko\\[^s]+state": 1$</text>
+</textfilecontent54_state>

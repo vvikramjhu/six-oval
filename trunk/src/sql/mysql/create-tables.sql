@@ -1356,10 +1356,9 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_state_textfilecontent54
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:ste:419:1 */
 
     text                VARCHAR(255),
-    text_operation      VARCHAR(32)     DEFAULT 'equals',
+    text_operation      VARCHAR(32),
 
     /* (FK) */
     

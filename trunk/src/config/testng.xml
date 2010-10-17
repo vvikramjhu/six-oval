@@ -24,7 +24,7 @@
     <test name="oval.core.store" enabled="true">
         <groups>
             <run>
-                <include name="definitions.object"/>
+                <include name="definitions.state"/>
             </run>
         </groups>
 <!--
