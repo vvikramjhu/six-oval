@@ -1206,8 +1206,6 @@ CREATE TABLE IF NOT EXISTS oval_d_test_family
 (
     PID                 VARCHAR(64)     NOT NULL,
 
-    /* (FK) */
-    
     /* (PK) */
     PRIMARY KEY (PID)
 
@@ -1246,8 +1244,6 @@ CREATE TABLE IF NOT EXISTS oval_d_state_family
     family              VARCHAR(16),
     family_operation    VARCHAR(32),
 
-    /* (FK) */
-    
     /* (PK) */
     PRIMARY KEY (PID)
 
@@ -1286,8 +1282,6 @@ CREATE TABLE IF NOT EXISTS oval_d_test_textfilecontent54
 (
     PID                 VARCHAR(64)     NOT NULL,
 
-    /* (FK) */
-    
     /* (PK) */
     PRIMARY KEY (PID)
 
@@ -1361,8 +1355,6 @@ CREATE TABLE IF NOT EXISTS oval_d_state_textfilecontent54
     text                VARCHAR(255),
     text_operation      VARCHAR(32),
 
-    /* (FK) */
-    
     /* (PK) */
     PRIMARY KEY (PID)
 
@@ -1380,8 +1372,6 @@ CREATE TABLE IF NOT EXISTS oval_d_test_textfilecontent
 (
     PID                 VARCHAR(64)     NOT NULL,
 
-    /* (FK) */
-    
     /* (PK) */
     PRIMARY KEY (PID)
 
@@ -1442,8 +1432,6 @@ CREATE TABLE IF NOT EXISTS oval_d_state_textfilecontent
     subexpression_datatype  VARCHAR(16),
     subexpression_operation VARCHAR(32),
 
-    /* (FK) */
-    
     /* (PK) */
     PRIMARY KEY (PID)
 
@@ -1485,9 +1473,6 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_test_unknown
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
-
-    /* (FK) */
     
     /* (PK) */
     PRIMARY KEY (PID)
@@ -1511,9 +1496,6 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_test_dpkginfo
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
-
-    /* (FK) */
 
     /* (PK) */
     PRIMARY KEY (PID)
@@ -1531,9 +1513,6 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_test_rpminfo
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
-
-    /* (FK) */
 
     /* (PK) */
     PRIMARY KEY (PID)
@@ -1551,7 +1530,6 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_object_dpkginfo
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:obj:419:1 */
 
     name                VARCHAR(64)     NOT NULL,
 
@@ -1572,7 +1550,6 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_object_rpminfo
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:obj:419:1 */
 
     name                VARCHAR(64)     NOT NULL,
 
@@ -1597,18 +1574,22 @@ CREATE TABLE IF NOT EXISTS oval_d_state_dpkginfo
 
     name                VARCHAR(64),
 
+    /* evr :EntityStateEVRString {datdatype=evr_string} */
     evr                 VARCHAR(128),
     evr_operation       VARCHAR(32),
-    evr_datatype        VARCHAR(16),
 
     arch                VARCHAR(16),
+
+    /* epoch :EntityStateAnySimple */
     epoch               VARCHAR(32),
+
+    /* release :EntityStateAnySimple */
     release1            VARCHAR(64),
-    /* 'release' is a reserved word in MySQL. */
+        /* 'release' is a reserved word in MySQL. */
     
+    /* release :EntityStateAnySimple */
     version             VARCHAR(64),
     version_operation   VARCHAR(32),
-                        /* operation: 'equals', datatype: 'string' */
 
     /* (FK) */
     
