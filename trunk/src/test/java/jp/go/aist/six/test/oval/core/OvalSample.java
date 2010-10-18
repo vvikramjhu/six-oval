@@ -195,7 +195,7 @@ public class OvalSample
     // oval:org.mitre.oval:def:8500 related test
     //**************************************************************
 
-    public static final Test  TEST_REGISTRY_21087 =
+    public static final Test  TEST_WINDOWS_REGISTRY_21087 =
         new RegistryTest( "oval:org.mitre.oval:tst:21087", 1,
                         "MySQL 5.1 is installed",
                         Check.AT_LEAST_ONE )
@@ -204,7 +204,7 @@ public class OvalSample
     .state( "oval:org.mitre.oval:ste:6216" );
 
 
-    public static final Test  TEST_FILE_21031 =
+    public static final Test  TEST_WINDOWS_FILE_21031 =
         new FileTest( "oval:org.mitre.oval:tst:21031", 1,
                         "mysqld.exe or mysqld-nt.exe exists",
                         Check.ALL )
@@ -213,7 +213,7 @@ public class OvalSample
     .object( "oval:org.mitre.oval:obj:11786" );
 
 
-    public static final Test  TEST_REGISTRY_20481 =
+    public static final Test  TEST_WINDOWS_REGISTRY_20481 =
         new RegistryTest( "oval:org.mitre.oval:tst:20481", 1,
                         "MySQL 5.0 is installed",
                         Check.AT_LEAST_ONE )
@@ -222,7 +222,7 @@ public class OvalSample
     .state( "oval:org.mitre.oval:ste:6475" );
 
 
-    public static final Test  TEST_REGISTRY_20859 =
+    public static final Test  TEST_WINDOWS_REGISTRY_20859 =
         new RegistryTest( "oval:org.mitre.oval:tst:20859", 1,
                         "MySQL Server 5.1 version is less than 5.1.41",
                         Check.AT_LEAST_ONE )
@@ -231,7 +231,7 @@ public class OvalSample
     .state( "oval:org.mitre.oval:ste:6693" );
 
 
-    public static final Test  TEST_REGISTRY_20192 =
+    public static final Test  TEST_WINDOWS_REGISTRY_20192 =
         new RegistryTest( "oval:org.mitre.oval:tst:20192", 1,
                         "MySQL Server 5.0 version is less than 5.0.88",
                         Check.AT_LEAST_ONE )
@@ -314,7 +314,7 @@ public class OvalSample
     // oval:org.mitre.oval:def:8500 related object
     //**************************************************************
 
-    public static final FileObject  OBJECT_FILE_11786 =
+    public static final FileObject  OBJECT_WINDOWS_FILE_11786 =
         new FileObject( "oval:org.mitre.oval:obj:11786", 1,
                         "Full path to MySQL executable"
         )
@@ -322,28 +322,28 @@ public class OvalSample
     .filename( new EntityObjectString( "^mysqld(|-nt)\\.exe$", Operation.PATTERN_MATCH ) );
 
 
-    public static final RegistryObject  OBJECT_REGISTRY_11992 =
+    public static final RegistryObject  OBJECT_WINDOWS_REGISTRY_11992 =
         new RegistryObject( "oval:org.mitre.oval:obj:11992", 1 )
     .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )
     .key( new EntityObjectString( "^SOFTWARE\\\\MySQL AB\\\\MySQL Server [0-9]\\.[0-9]$", Operation.PATTERN_MATCH ) )
     .name( new EntityObjectString( "Location" ) );
 
 
-    public static final RegistryObject  OBJECT_REGISTRY_911 =
+    public static final RegistryObject  OBJECT_WINDOWS_REGISTRY_911 =
         new RegistryObject( "oval:org.mitre.oval:obj:911", 1 )
     .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )
     .key( new EntityObjectString( "^Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Uninstall\\\\.*", Operation.PATTERN_MATCH ) )
     .name( new EntityObjectString( "DisplayName" ) );
 
 
-    public static final RegistryObject  OBJECT_REGISTRY_11866 =
+    public static final RegistryObject  OBJECT_WINDOWS_REGISTRY_11866 =
         new RegistryObject( "oval:org.mitre.oval:obj:11866", 1 )
     .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )
     .key( new EntityObjectString( "SOFTWARE\\MySQL AB\\MySQL Server 5.1" ) )
     .name( new EntityObjectString( "Version" ) );
 
 
-    public static final RegistryObject  OBJECT_REGISTRY_11871 =
+    public static final RegistryObject  OBJECT_WINDOWS_REGISTRY_11871 =
         new RegistryObject( "oval:org.mitre.oval:obj:11871", 1 )
     .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )
     .key( new EntityObjectString( "SOFTWARE\\MySQL AB\\MySQL Server 5.0" ) )
@@ -434,7 +434,7 @@ public class OvalSample
     // oval:org.mitre.oval:def:8500 related state
     //**************************************************************
 
-    public static final RegistryState  STATE_REGISTRY_6216 =
+    public static final RegistryState  STATE_WINDOWS_REGISTRY_6216 =
         new RegistryState( "oval:org.mitre.oval:ste:6216", 1,
                         "MySQL 5.1 check"
         )
@@ -442,7 +442,7 @@ public class OvalSample
     );
 
 
-    public static final RegistryState  STATE_REGISTRY_6475 =
+    public static final RegistryState  STATE_WINDOWS_REGISTRY_6475 =
         new RegistryState( "oval:org.mitre.oval:ste:6475", 1,
                         "MySQL 5.0 check"
         )
@@ -450,7 +450,7 @@ public class OvalSample
     );
 
 
-    public static final RegistryState  STATE_REGISTRY_6693 =
+    public static final RegistryState  STATE_WINDOWS_REGISTRY_6693 =
         new RegistryState( "oval:org.mitre.oval:ste:6693", 1,
                         "MySQL Server 5.1 version is less than 5.1.41"
         )
@@ -459,7 +459,7 @@ public class OvalSample
     );
 
 
-    public static final RegistryState  STATE_REGISTRY_6359 =
+    public static final RegistryState  STATE_WINDOWS_REGISTRY_6359 =
         new RegistryState( "oval:org.mitre.oval:ste:6359", 1,
                         "MySQL Server 5.0 version is less than 5.0.88"
         )
@@ -779,20 +779,20 @@ public class OvalSample
     .definition( DEFINITION_8297 )
     .definition( DEFINITION_8500 )
     .definition( DEFINITION_8282 )
-    .test( TEST_REGISTRY_21087 )
-    .test( TEST_FILE_21031 )
-    .test( TEST_REGISTRY_20481 )
-    .test( TEST_REGISTRY_20859 )
-    .test( TEST_REGISTRY_20192 )
-    .object( OBJECT_FILE_11786 )
-    .object( OBJECT_REGISTRY_11992 )
-    .object( OBJECT_REGISTRY_911 )
-    .object( OBJECT_REGISTRY_11866 )
-    .object( OBJECT_REGISTRY_11871 )
-    .state( STATE_REGISTRY_6216 )
-    .state( STATE_REGISTRY_6475 )
-    .state( STATE_REGISTRY_6693 )
-    .state( STATE_REGISTRY_6359 )
+    .test( TEST_WINDOWS_REGISTRY_21087 )
+    .test( TEST_WINDOWS_FILE_21031 )
+    .test( TEST_WINDOWS_REGISTRY_20481 )
+    .test( TEST_WINDOWS_REGISTRY_20859 )
+    .test( TEST_WINDOWS_REGISTRY_20192 )
+    .object( OBJECT_WINDOWS_FILE_11786 )
+    .object( OBJECT_WINDOWS_REGISTRY_11992 )
+    .object( OBJECT_WINDOWS_REGISTRY_911 )
+    .object( OBJECT_WINDOWS_REGISTRY_11866 )
+    .object( OBJECT_WINDOWS_REGISTRY_11871 )
+    .state( STATE_WINDOWS_REGISTRY_6216 )
+    .state( STATE_WINDOWS_REGISTRY_6475 )
+    .state( STATE_WINDOWS_REGISTRY_6693 )
+    .state( STATE_WINDOWS_REGISTRY_6359 )
     .variable( VARIABLE_349 )
     ;
 

@@ -1,5 +1,6 @@
 package jp.go.aist.six.test.oval.core.xml;
 
+import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
@@ -100,14 +101,14 @@ public class OvalXmlTest
 //                            "marshalled_20101012_inventory_microsoft.windows.server.2008.xml"
 //                        }
 //                        ,
-                        // Windows XP @ Mitre, all the vulnerabilities
-                        {
-                            OvalDefinitions.class,
-                            "test/data/definitions/20101012_vulnerability_microsoft.windows.xp.xml",
-                            "/oval_definitions",
-                            null,
-                            "marshalled_20101012_vulnerability_microsoft.windows.xp.xml"
-                        }
+//                        // Windows XP @ Mitre, all the vulnerabilities
+//                        {
+//                            OvalDefinitions.class,
+//                            "test/data/definitions/20101012_vulnerability_microsoft.windows.xp.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_20101012_vulnerability_microsoft.windows.xp.xml"
+//                        }
 //                        ,
 //                        // Windows XP @ Mitre, inventory
 //                        {
@@ -118,14 +119,14 @@ public class OvalXmlTest
 //                            "marshalled_20101012_inventory_microsoft.windows.xp.xml"
 //                        }
 //                      ,
-//                        // Windows @ Mitre, CVE-2009-4019
-//                        {
-//                            OvalDefinitions.class,
-//                            "test/data/definitions/oval-definitions_CVE-2009-4019_MySQL.xml",
-//                            "/oval_definitions",
-//                            null,
-//                            "marshalled_oval-definitions_CVE-2009-4019_MySQL.xml"
-//                        }
+                        // Windows @ Mitre, CVE-2009-4019, MySQL
+                        {
+                            OvalDefinitions.class,
+                            "test/data/definitions/oval-definitions_CVE-2009-4019_MySQL.xml",
+                            "/oval_definitions",
+                            null,
+                            "marshalled_oval-definitions_CVE-2009-4019_MySQL.xml"
+                        }
 //                        ,
 //
 ////                      // Red Hat, CVE-2010-0176, RHSA 20100332
@@ -199,6 +200,51 @@ public class OvalXmlTest
                     )
     throws Exception
     {
+        Reporter.log( "\n////////////////////////////////////////////", true );
+        _testXml( type, sourceFilepath, xpath, expected, resultFilepath );
+    }
+
+
+
+    //==============================================================
+    //  definition
+    //==============================================================
+
+    @DataProvider( name="definitions.definition" )
+    public Object[][] provideOvalDefinitionsDefinition()
+    {
+        return new Object[][] {
+                        // Windows @ Mitre, CVE-2009-4019, MySQL
+                        {
+                            Definition.class,
+                            "test/data/definitions/definition_oval-8500.xml",
+                            "/oval_definitions/definitions/definition",
+                            OvalSample.DEFINITION_8500,
+                            "marshalled_definition_oval-8500.xml"
+                        }
+        };
+
+    }
+
+
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "definitions.definition"},
+                    dataProvider="definitions.definition",
+                    alwaysRun=true
+                    )
+    public void testDefinitionsDefinition(
+                    final Class<Definition> type,
+                    final String sourceFilepath,
+                    final String xpath,
+                    final Definition expected,
+                    final String resultFilepath
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n////////////////////////////////////////////", true );
         _testXml( type, sourceFilepath, xpath, expected, resultFilepath );
     }
 
