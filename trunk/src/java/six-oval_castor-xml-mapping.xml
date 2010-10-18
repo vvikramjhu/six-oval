@@ -235,6 +235,51 @@
 
         <field name="tests" 
             type="jp.go.aist.six.oval.model.definitions.Tests">
+            <bind-xml name="tests" node="element" />
+        </field>
+
+        <field name="objects" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjects"
+            >
+            <bind-xml name="objects" node="element"/>
+        </field>
+
+        <field name="states.state" 
+            type="jp.go.aist.six.oval.model.definitions.State"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element" 
+                location="states"/>
+        </field>
+
+        <field name="variables.variable" 
+            type="jp.go.aist.six.oval.model.definitions.Variable"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element" 
+                location="variables"/>
+        </field>
+
+<!--
+        <field name="definitions.definition" 
+            type="jp.go.aist.six.oval.model.definitions.Definition"
+            collection="collection">
+            <bind-xml name="definition" node="element" 
+                location="definitions"/>
+        </field>
+
+        <field name="definitions" 
+            type="jp.go.aist.six.oval.model.definitions.Definitions">
+            <bind-xml name="definitions" node="element"/>
+        </field>
+
+        <field name="tests.test" 
+            type="jp.go.aist.six.oval.model.definitions.Test"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element" 
+                location="tests"/>
+        </field>
+
+        <field name="tests" 
+            type="jp.go.aist.six.oval.model.definitions.Tests">
             <bind-xml name="tests" node="element"/>
         </field>
 
@@ -251,42 +296,6 @@
         <field name="variables" 
             type="jp.go.aist.six.oval.model.definitions.Variables">
             <bind-xml name="variables" node="element"/>
-        </field>
-
-<!--
-        <field name="definitions.definition" 
-            type="jp.go.aist.six.oval.model.definitions.Definition"
-            collection="collection">
-            <bind-xml name="definition" node="element" 
-                location="definitions"/>
-        </field>
-
-        <field name="tests.test" 
-            type="jp.go.aist.six.oval.model.definitions.Test"
-            collection="collection">
-            <bind-xml auto-naming="deriveByClass" node="element" 
-                location="tests"/>
-        </field>
-
-        <field name="states.state" 
-            type="jp.go.aist.six.oval.model.definitions.State"
-            collection="collection">
-            <bind-xml auto-naming="deriveByClass" node="element" 
-                location="states"/>
-        </field>
-
-        <field name="objects.object" 
-            type="jp.go.aist.six.oval.model.definitions.SystemObject"
-            collection="collection">
-            <bind-xml auto-naming="deriveByClass" node="element" 
-                location="objects"/>
-        </field>
-
-        <field name="variables.variable" 
-            type="jp.go.aist.six.oval.model.definitions.Variable"
-            collection="collection">
-            <bind-xml auto-naming="deriveByClass" node="element" 
-                location="variables"/>
         </field>
 -->
 
@@ -355,11 +364,14 @@
         <field name="definition" 
             type="jp.go.aist.six.oval.model.definitions.Definition"
             collection="collection"
-            set-method="addDefinition"
-            get-method="iterateDefinition">
+            >
             <bind-xml name="definition" node="element"/>
         </field>
     </class>
+<!--
+            set-method="addDefinition"
+            get-method="iterateDefinition"
+-->
 
 
 
@@ -558,6 +570,12 @@
     <!-- ======================================================= -->
     <!-- Test                                                    -->
     <!-- ======================================================= -->
+        <!-- Since the attribute name of the elements are different,
+        the property 'ovalID' should be mapped in the concrete class. 
+        e.g.  'object_ref' attribute in xxx_test/object reference,
+              'state_ref' attribute in xxx_test/state reference.
+        -->
+<!--
     <class name="jp.go.aist.six.oval.model.definitions.Test"
         extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
         verify-constructable="false">
@@ -571,12 +589,6 @@
             type="jp.go.aist.six.oval.model.common.Check">
             <bind-xml name="check" node="attribute"/>
         </field>
-<!--
-        <field name="check" type="string" 
-            handler="jp.go.aist.six.oval.core.xml.CheckHandler">
-            <bind-xml name="check" node="attribute"/>
-        </field>
--->
 
         <field name="checkExistence"
             type="jp.go.aist.six.oval.model.common.Existence">
@@ -587,13 +599,8 @@
             type="jp.go.aist.six.oval.model.common.Operator">
             <bind-xml name="state_operator" node="attribute"/>
         </field>
-
-        <!-- Since the attribute name of the elements are different,
-        the property 'ovalID' should be mapped in the concrete class. 
-        e.g.  'object_ref' attribute in xxx_test/object reference,
-              'state_ref' attribute in xxx_test/state reference.
-        -->
     </class>
+-->
 
 
 
@@ -604,11 +611,14 @@
         <field name="test" 
             type="jp.go.aist.six.oval.model.definitions.Test"
             collection="collection"
-            set-method="addTest"
-            get-method="iterateTest">
+            >
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
     </class>
+<!--
+            set-method="addTest"
+            get-method="iterateTest"
+-->
 
 
 
@@ -649,10 +659,12 @@
     <!-- ======================================================= -->
     <!-- SystemObject                                            -->
     <!-- ======================================================= -->
+<!--
     <class name="jp.go.aist.six.oval.model.definitions.SystemObject"
         extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
         verify-constructable="false">
     </class>
+-->
 
 
 
@@ -663,8 +675,7 @@
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObject"
             collection="collection"
-            set-method="addObject"
-            get-method="iterateObject">
+            >
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
     </class>
@@ -3137,11 +3148,58 @@
     <!-- ======================================================= -->
     <!-- FileTest                                               -->
     <!-- ======================================================= -->
+<!--
+        extends="jp.go.aist.six.oval.model.definitions.Test"
+-->
     <class name="jp.go.aist.six.oval.model.windows.FileTest"
-        extends="jp.go.aist.six.oval.model.definitions.Test">
+        >
         <map-to xml="file_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
+
+<!-- BEGIN OvalElement -->
+        <field name="ovalID" type="string">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+
+        <field name="ovalVersion" type="int">
+            <bind-xml name="version" node="attribute"/>
+        </field>
+
+<!-- BEGIN OvalEntity -->
+        <field name="deprecated" type="boolean">
+            <bind-xml name="deprecated" node="attribute"/>
+        </field>
+
+<!-- BEGIN CommentedOvalEntity -->
+        <field name="comment" type="string">
+            <bind-xml name="comment" node="attribute"/>
+        </field>
+
+<!-- BEGIN Test -->
+        <field name="notes" 
+            type="jp.go.aist.six.oval.model.definitions.Notes">
+            <bind-xml name="notes" node="element"/>
+        </field>
+
+        <field name="check" 
+            type="jp.go.aist.six.oval.model.common.Check">
+            <bind-xml name="check" node="attribute"/>
+        </field>
+
+        <field name="checkExistence"
+            type="jp.go.aist.six.oval.model.common.Existence">
+            <bind-xml name="check_existence" node="attribute"/>
+        </field>
+
+        <field name="stateOperator" 
+            type="jp.go.aist.six.oval.model.common.Operator">
+            <bind-xml name="state_operator" node="attribute"/>
+        </field>
+<!-- END Test -->
+<!-- END CommentedOvalEntity -->
+<!-- END OvalEntity -->
+<!-- END OvalElement -->
 
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRef">
@@ -3173,11 +3231,39 @@
     <!-- ======================================================= -->
     <!-- FileObject                                              -->
     <!-- ======================================================= -->
+<!--
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject"
+-->
     <class name="jp.go.aist.six.oval.model.windows.FileObject"
-        extends="jp.go.aist.six.oval.model.definitions.SystemObject">
+        >
         <map-to xml="file_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
+
+<!-- BEGIN OvalElement -->
+        <field name="ovalID" type="string">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+
+        <field name="ovalVersion" type="int">
+            <bind-xml name="version" node="attribute"/>
+        </field>
+
+<!-- BEGIN OvalEntity -->
+        <field name="deprecated" type="boolean">
+            <bind-xml name="deprecated" node="attribute"/>
+        </field>
+
+<!-- BEGIN CommentedOvalEntity -->
+        <field name="comment" type="string">
+            <bind-xml name="comment" node="attribute"/>
+        </field>
+
+<!-- BEGIN SystemObject -->
+<!-- END SystemObject -->
+<!-- END CommentedOvalEntity -->
+<!-- END OvalEntity -->
+<!-- END OvalElement -->
 
         <field name="behaviors" 
             type="jp.go.aist.six.oval.model.windows.FileBehaviors">
@@ -3493,11 +3579,58 @@
     <!-- ======================================================= -->
     <!-- RegistryTest                                            -->
     <!-- ======================================================= -->
+<!--
+        extends="jp.go.aist.six.oval.model.definitions.Test"
+-->
     <class name="jp.go.aist.six.oval.model.windows.RegistryTest"
-        extends="jp.go.aist.six.oval.model.definitions.Test">
+        >
         <map-to xml="registry_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
+
+<!-- BEGIN OvalElement -->
+        <field name="ovalID" type="string">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+
+        <field name="ovalVersion" type="int">
+            <bind-xml name="version" node="attribute"/>
+        </field>
+
+<!-- BEGIN OvalEntity -->
+        <field name="deprecated" type="boolean">
+            <bind-xml name="deprecated" node="attribute"/>
+        </field>
+
+<!-- BEGIN CommentedOvalEntity -->
+        <field name="comment" type="string">
+            <bind-xml name="comment" node="attribute"/>
+        </field>
+
+<!-- BEGIN Test -->
+        <field name="notes" 
+            type="jp.go.aist.six.oval.model.definitions.Notes">
+            <bind-xml name="notes" node="element"/>
+        </field>
+
+        <field name="check" 
+            type="jp.go.aist.six.oval.model.common.Check">
+            <bind-xml name="check" node="attribute"/>
+        </field>
+
+        <field name="checkExistence"
+            type="jp.go.aist.six.oval.model.common.Existence">
+            <bind-xml name="check_existence" node="attribute"/>
+        </field>
+
+        <field name="stateOperator" 
+            type="jp.go.aist.six.oval.model.common.Operator">
+            <bind-xml name="state_operator" node="attribute"/>
+        </field>
+<!-- END Test -->
+<!-- END CommentedOvalEntity -->
+<!-- END OvalEntity -->
+<!-- END OvalElement -->
 
         <field name="object" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRef">
@@ -3525,11 +3658,39 @@
     <!-- ======================================================= -->
     <!-- RegistryObject                                          -->
     <!-- ======================================================= -->
+<!--
+        extends="jp.go.aist.six.oval.model.definitions.SystemObject"
+-->
     <class name="jp.go.aist.six.oval.model.windows.RegistryObject"
-        extends="jp.go.aist.six.oval.model.definitions.SystemObject">
+        >
         <map-to xml="registry_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
+
+<!-- BEGIN OvalElement -->
+        <field name="ovalID" type="string">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+
+        <field name="ovalVersion" type="int">
+            <bind-xml name="version" node="attribute"/>
+        </field>
+
+<!-- BEGIN OvalEntity -->
+        <field name="deprecated" type="boolean">
+            <bind-xml name="deprecated" node="attribute"/>
+        </field>
+
+<!-- BEGIN CommentedOvalEntity -->
+        <field name="comment" type="string">
+            <bind-xml name="comment" node="attribute"/>
+        </field>
+
+<!-- BEGIN SystemObject -->
+<!-- END SystemObject -->
+<!-- END CommentedOvalEntity -->
+<!-- END OvalEntity -->
+<!-- END OvalElement -->
 
         <field name="behaviors" 
             type="jp.go.aist.six.oval.model.windows.RegistryBehaviors">

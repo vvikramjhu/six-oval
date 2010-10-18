@@ -37,7 +37,8 @@ import java.util.Set;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Container<E>
-    implements Set<E>
+    implements Iterable<E>
+//    implements Set<E>
 {
 
     private final Set<E>  _elements = new HashSet<E>();

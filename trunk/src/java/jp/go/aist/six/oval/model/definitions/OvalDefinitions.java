@@ -337,7 +337,7 @@ public class OvalDefinitions
                         + ", #definitions="
                         + (definitions == null ? 0 : definitions.size())
                         + ", #tests="
-                        + (tests == null ? 0 : tests.size())
+                        + (tests == null ? 0 : tests.getTest().size())
                         + ", objects="
                         + (objects == null ? 0 : objects.size())
                         + ", states="

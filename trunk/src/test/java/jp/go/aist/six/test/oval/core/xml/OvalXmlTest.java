@@ -122,10 +122,10 @@ public class OvalXmlTest
                         // Windows @ Mitre, CVE-2009-4019, MySQL
                         {
                             OvalDefinitions.class,
-                            "test/data/definitions/oval-definitions_CVE-2009-4019_MySQL.xml",
+                            "test/data/definitions/oval-definitions_oval-8500_CVE-2009-4019_MySQL.xml",
                             "/oval_definitions",
                             null,
-                            "marshalled_oval-definitions_CVE-2009-4019_MySQL.xml"
+                            "marshalled_oval-definitions_oval-8500_CVE-2009-4019_MySQL.xml"
                         }
 //                        ,
 //
