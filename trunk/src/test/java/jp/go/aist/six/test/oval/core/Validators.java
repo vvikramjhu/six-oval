@@ -3,14 +3,17 @@ package jp.go.aist.six.test.oval.core;
 import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.OvalElement;
 import jp.go.aist.six.oval.model.OvalEntity;
+import jp.go.aist.six.oval.model.definitions.Component;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Definitions;
+import jp.go.aist.six.oval.model.definitions.LocalVariable;
 import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.StateRef;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.DefinitionResults;
 import jp.go.aist.six.oval.model.results.OvalResults;
@@ -192,6 +195,29 @@ public abstract class Validators
             } else {
                 Assert.assertEquals( actualStates.size(), expectedStates.size() );
                 Assert.assertTrue( actualStates.containsAll( expectedStates ));
+            }
+        }
+    }
+
+
+
+    /**
+     */
+    public static class VariableValidator
+    extends CommentedOvalEntityValidator<Variable>
+    {
+        @Override
+        public void equals(
+                        final Variable actual,
+                        final Variable expected
+                        )
+        {
+            super.equals( actual, expected );
+            if (expected instanceof LocalVariable) {
+                LocalVariable  eLocal = (LocalVariable)expected;
+                LocalVariable  aLocal = (LocalVariable)actual;
+                Component  eComponent = eLocal.getComponent();
+                Component  aComponent = aLocal.getComponent();
             }
         }
     }
@@ -520,6 +546,9 @@ public abstract class Validators
             } else if (SystemObject.class.isAssignableFrom( type )) {
                 v = (Validator<T>)(new SystemObjectValidator());
                 _validators.put( SystemObject.class, v );
+            } else if (Variable.class.isAssignableFrom( type )) {
+                v = (Validator<T>)(new VariableValidator());
+                _validators.put( Variable.class, v );
 
             } else if (OvalSystemCharacteristics.class.isAssignableFrom( type )) {
                 v = (Validator<T>)(new OvalSystemCharacteristicsValidator());

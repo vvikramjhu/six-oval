@@ -46,7 +46,7 @@
     <test name="oval.core.xml" enabled="true">
         <groups>
             <run>
-                <include name="definitions.test"/>
+                <include name="definitions.variable"/>
                 <!-- include name="results.oval_results"/ -->
             </run>
         </groups>

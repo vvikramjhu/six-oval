@@ -20,6 +20,7 @@ import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateEVRString;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.EntityStateVersion;
+import jp.go.aist.six.oval.model.definitions.EscapeRegexFunction;
 import jp.go.aist.six.oval.model.definitions.ExtendDefinition;
 import jp.go.aist.six.oval.model.definitions.LiteralComponent;
 import jp.go.aist.six.oval.model.definitions.LocalVariable;
@@ -27,6 +28,7 @@ import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.ObjectComponent;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.Reference;
+import jp.go.aist.six.oval.model.definitions.RegexCaptureFunction;
 import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.independent.EntityStateFamily;
 import jp.go.aist.six.oval.model.independent.FamilyObject;
@@ -484,6 +486,54 @@ public class OvalSample
                                     }
                     )
     );
+
+
+    public static final LocalVariable  VARIABLE_LOCAL_246 =
+        new LocalVariable( "oval:org.mitre.oval:var:246", 1,
+                        "MSN Messenger directory",
+                        Datatype.STRING
+        )
+    .component(
+                    new ConcatFunction(
+                                    new Component[] {
+                                                    new ObjectComponent( "oval:org.mitre.oval:obj:309", "value" ),
+                                                    new LiteralComponent( "\\MSN Messenger", Datatype.STRING )
+                                    }
+                    )
+    );
+
+
+
+    public static final LocalVariable  VARIABLE_LOCAL_105 =
+        new LocalVariable( "oval:org.mitre.oval:var:105", 1,
+                        "Path to folder containing Winamp.exe",
+                        Datatype.STRING
+        )
+    .component(
+                    new RegexCaptureFunction(
+                                    new ObjectComponent( "oval:org.mitre.oval:obj:7560", "value" ),
+                                    "^\\x22(.*)UninstWA\\.exe\\x22$"
+                    )
+    );
+
+
+    public static final LocalVariable  VARIABLE_LOCAL_489 =
+        new LocalVariable( "oval:org.mitre.oval:var:489", 2,
+                        "VC90 ATL directory",
+                        Datatype.STRING
+        )
+    .component(
+                    new ConcatFunction(
+                                    new Component[] {
+                                                    new LiteralComponent( "^" ),
+                                                    new EscapeRegexFunction(
+                                                                    new ObjectComponent( "oval:org.mitre.oval:obj:219", "value" )
+                                                    ),
+                                                    new LiteralComponent( "\\\\winsxs\\\\(x86|amd64)_microsoft\\.vc90\\.atl_1fc8b3b9a1e18e3b_9\\.0\\.30729\\.4148.*$" )
+                                    }
+                    )
+    );
+
 
 
 

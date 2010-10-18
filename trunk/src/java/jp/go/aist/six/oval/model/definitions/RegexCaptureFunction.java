@@ -61,6 +61,20 @@ public class RegexCaptureFunction
     }
 
 
+    /**
+     * Constructor.
+     */
+    public RegexCaptureFunction(
+                    final Component component,
+                    final String pattern
+                    )
+    {
+        this( component );
+        setPattern( pattern );
+    }
+
+
+
 
     /**
      */

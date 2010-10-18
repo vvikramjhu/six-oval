@@ -4,6 +4,7 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.results.Content;
 import jp.go.aist.six.oval.model.results.Directive;
 import jp.go.aist.six.oval.model.results.Directives;
@@ -215,7 +216,7 @@ public class OvalXmlTest
                         {
                             Test.class,
                             "test/data/definitions/test-independent-family_oval-99.xml",
-                            "/oval_definitions/objects/family_test",
+                            "/oval_definitions/tests/family_test",
                             OvalSample.TEST_INDEPENDENT_FAMILY_99,
                             "marshalled_test-independent-family_oval-99.xml"
                         }
@@ -224,7 +225,7 @@ public class OvalXmlTest
                         {
                             Test.class,
                             "test/data/definitions/test-independent-textfilecontent_oval-11150.xml",
-                            "/oval_definitions/objects/textfilecontent_test",
+                            "/oval_definitions/tests/textfilecontent_test",
                             OvalSample.TEST_INDEPENDENT_TEXTFILECONTENT_11150,
                             "marshalled_test-independent-textfilecontent_oval-11150.xml"
                         }
@@ -233,7 +234,7 @@ public class OvalXmlTest
                         {
                             Test.class,
                             "test/data/definitions/test-independent-textfilecontent54_oval-41853.xml",
-                            "/oval_definitions/objects/textfilecontent54_test",
+                            "/oval_definitions/tests/textfilecontent54_test",
                             OvalSample.TEST_INDEPENDENT_TEXTFILECONTENT54_41853,
                             "marshalled_test-independent-textfilecontent54_oval-41853.xml"
                         }
@@ -242,7 +243,7 @@ public class OvalXmlTest
                         {
                             Test.class,
                             "test/data/definitions/test-independent-unknown_oval-2531.xml",
-                            "/oval_definitions/objects/unknown_test",
+                            "/oval_definitions/tests/unknown_test",
                             OvalSample.TEST_INDEPENDENT_UNKNOWN_2531,
                             "marshalled_test-independent-unknown_oval-2531.xml"
                         }
@@ -251,7 +252,7 @@ public class OvalXmlTest
                         {
                             Test.class,
                             "test/data/definitions/test-linux-dpkginfo_oval-19402.xml",
-                            "/oval_definitions/objects/dpkginfo_test",
+                            "/oval_definitions/tests/dpkginfo_test",
                             OvalSample.TEST_LINUX_DPKGINFO_19402,
                             "marshalled_test-linux-dpkginfo_oval-19402.xml"
                         }
@@ -260,7 +261,7 @@ public class OvalXmlTest
                         {
                             Test.class,
                             "test/data/definitions/test-linux-rpminfo_rhsa-20100061002.xml",
-                            "/oval_definitions/objects/rpminfo_test",
+                            "/oval_definitions/tests/rpminfo_test",
                             OvalSample.TEST_LINUX_RPMINFO_20100061002,
                             "marshalled_test-linux-rpminfo_rhsa-20100061002.xml"
                         }
@@ -269,16 +270,16 @@ public class OvalXmlTest
                         {
                             Test.class,
                             "test/data/definitions/test-unix-uname_oval-11195.xml",
-                            "/oval_definitions/objects/uname_test",
+                            "/oval_definitions/tests/uname_test",
                             OvalSample.TEST_UNIX_UNAME_11195,
                             "marshalled_test-unix-uname_oval-11195.xml"
                         }
                         ,
-                        // windows file
+                        // windows file, with 2 States
                         {
                             Test.class,
                             "test/data/definitions/test-windows-file_oval-10629.xml",
-                            "/oval_definitions/objects/file_test",
+                            "/oval_definitions/tests/file_test",
                             OvalSample.TEST_WINDOWS_FILE_10629,
                             "marshalled_test-windows-file_oval-10629.xml"
                         }
@@ -287,16 +288,16 @@ public class OvalXmlTest
                         {
                             Test.class,
                             "test/data/definitions/test-windows-file_oval-2339.xml",
-                            "/oval_definitions/objects/file_test",
+                            "/oval_definitions/tests/file_test",
                             OvalSample.TEST_WINDOWS_FILE_2339,
                             "marshalled_test-windows-file_oval-2339.xml"
                         }
                         ,
-                        // windows metabase
+                        // windows metabase, without State
                         {
                             Test.class,
                             "test/data/definitions/test-windows-metabase_oval-709.xml",
-                            "/oval_definitions/objects/metabase_test",
+                            "/oval_definitions/tests/metabase_test",
                             OvalSample.TEST_WINDOWS_METABASE_709,
                             "marshalled_test-windows-metabase_oval-709.xml"
                         }
@@ -305,7 +306,7 @@ public class OvalXmlTest
                         {
                             Test.class,
                             "test/data/definitions/test-windows-registry_oval-3019.xml",
-                            "/oval_definitions/objects/registry_test",
+                            "/oval_definitions/tests/registry_test",
                             OvalSample.TEST_WINDOWS_REGISTRY_3019,
                             "marshalled_test-windows-registry_oval-3019.xml"
                         }
@@ -457,7 +458,7 @@ public class OvalXmlTest
                         {
                             State.class,
                             "test/data/definitions/state-independent-family_oval-99.xml",
-                            "/oval_definitions/objects/family_state",
+                            "/oval_definitions/states/family_state",
                             OvalSample.STATE_INDEPENDENT_FAMILY_99,
                             "marshalled_state-independent-family_oval-99.xml"
                         }
@@ -466,7 +467,7 @@ public class OvalXmlTest
                         {
                             State.class,
                             "test/data/definitions/state-independent-textfilecontent_oval-5132.xml",
-                            "/oval_definitions/objects/textfilecontent_state",
+                            "/oval_definitions/states/textfilecontent_state",
                             OvalSample.STATE_INDEPENDENT_TEXTFILECONTENT_5132,
                             "marshalled_state-independent-textfilecontent_oval-5132.xml"
                         }
@@ -475,7 +476,7 @@ public class OvalXmlTest
                         {
                             State.class,
                             "test/data/definitions/state-independent-textfilecontent54_oval-11440.xml",
-                            "/oval_definitions/objects/textfilecontent54_state",
+                            "/oval_definitions/states/textfilecontent54_state",
                             OvalSample.STATE_INDEPENDENT_TEXTFILECONTENT54_11440,
                             "marshalled_state-independent-textfilecontent54_oval-11440.xml"
                         }
@@ -484,7 +485,7 @@ public class OvalXmlTest
                         {
                             State.class,
                             "test/data/definitions/state-linux-dpkginfo_oval-5797.xml",
-                            "/oval_definitions/objects/dpkginfo_state",
+                            "/oval_definitions/states/dpkginfo_state",
                             OvalSample.STATE_LINUX_DPKGINFO_5797,
                             "marshalled_state-linux-dpkginfo_oval-5797.xml"
                         }
@@ -493,7 +494,7 @@ public class OvalXmlTest
                         {
                             State.class,
                             "test/data/definitions/state-linux-rpminfo_rhsa-20100061002.xml",
-                            "/oval_definitions/objects/rpminfo_state",
+                            "/oval_definitions/states/rpminfo_state",
                             OvalSample.STATE_LINUX_RPMINFO_20100061002,
                             "marshalled_state-linux-rpminfo_rhsa-20100061002.xml"
                         }
@@ -502,7 +503,7 @@ public class OvalXmlTest
                         {
                             State.class,
                             "test/data/definitions/state-linux-rpminfo_rhsa-20100061003.xml",
-                            "/oval_definitions/objects/rpminfo_state",
+                            "/oval_definitions/states/rpminfo_state",
                             OvalSample.STATE_LINUX_RPMINFO_20100061003,
                             "marshalled_state-linux-rpminfo_rhsa-20100061003.xml"
                         }
@@ -511,7 +512,7 @@ public class OvalXmlTest
                         {
                             State.class,
                             "test/data/definitions/state-linux-rpminfo_rhsa-20100061004.xml",
-                            "/oval_definitions/objects/rpminfo_state",
+                            "/oval_definitions/states/rpminfo_state",
                             OvalSample.STATE_LINUX_RPMINFO_20100061004,
                             "marshalled_state-linux-rpminfo_rhsa-20100061004.xml"
                         }
@@ -520,7 +521,7 @@ public class OvalXmlTest
                         {
                             State.class,
                             "test/data/definitions/state-windows-file_oval-2190.xml",
-                            "/oval_definitions/objects/file_state",
+                            "/oval_definitions/states/file_state",
                             OvalSample.STATE_WINDOWS_FILE_2190,
                             "marshalled_state-windows-file_oval-2190.xml"
                         }
@@ -529,7 +530,7 @@ public class OvalXmlTest
                         {
                             State.class,
                             "test/data/definitions/state-windows-metabase_oval-537.xml",
-                            "/oval_definitions/objects/metadata_state",
+                            "/oval_definitions/states/metadata_state",
                             OvalSample.STATE_WINDOWS_METABASE_537,
                             "marshalled_state-windows-metabase_oval-537.xml"
                         }
@@ -538,7 +539,7 @@ public class OvalXmlTest
                         {
                             State.class,
                             "test/data/definitions/state-windows-registry_oval-1205.xml",
-                            "/oval_definitions/objects/registry_state",
+                            "/oval_definitions/states/registry_state",
                             OvalSample.STATE_WINDOWS_REGISTRY_1205,
                             "marshalled_state-windows-registry_oval-1205.xml"
                         }
@@ -556,6 +557,64 @@ public class OvalXmlTest
                     final String sourceFilepath,
                     final String xpath,
                     final State expected,
+                    final String resultFilepath
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n////////////////////////////////////////////", true );
+        _testXml( type, sourceFilepath, xpath, expected, resultFilepath );
+    }
+
+
+
+    //==============================================================
+    //  def:variable
+    //==============================================================
+
+    @DataProvider( name="definitions.variable" )
+    public Object[][] provideOvalDefinitionsVariable()
+    {
+        return new Object[][] {
+                        // local, concat
+                        {
+                            Variable.class,
+                            "test/data/definitions/variable-local_oval-246.xml",
+                            "/oval_definitions/variables/local_variable",
+                            OvalSample.VARIABLE_LOCAL_246,
+                            "marshalled_variable-local_oval-246.xml"
+                        }
+                        ,
+                        // local, regex_capture
+                        {
+                            Variable.class,
+                            "test/data/definitions/variable-local_oval-105.xml",
+                            "/oval_definitions/variables/local_variable",
+                            OvalSample.VARIABLE_LOCAL_105,
+                            "marshalled_variable-local_oval-105.xml"
+                        }
+                        ,
+                        // local, concat
+                        {
+                            Variable.class,
+                            "test/data/definitions/variable-local_oval-489.xml",
+                            "/oval_definitions/variables/local_variable",
+                            OvalSample.VARIABLE_LOCAL_489,
+                            "marshalled_variable-local_oval-489.xml"
+                        }
+        };
+    }
+
+
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "definitions.variable"},
+                    dataProvider="definitions.variable",
+                    alwaysRun=true
+                    )
+    public void testDefinitionsVariable(
+                    final Class<Variable> type,
+                    final String sourceFilepath,
+                    final String xpath,
+                    final Variable expected,
                     final String resultFilepath
                     )
     throws Exception

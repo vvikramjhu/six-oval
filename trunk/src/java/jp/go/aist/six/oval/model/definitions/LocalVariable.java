@@ -176,7 +176,7 @@ public class LocalVariable
     @Override
     public String toString()
     {
-        return "LocalVariable[" + super.toString()
+        return "local_variable[" + super.toString()
                         + ", " + getComponent()
                         + "]";
     }
