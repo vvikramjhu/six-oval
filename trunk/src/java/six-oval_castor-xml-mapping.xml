@@ -305,7 +305,10 @@
             collection="collection"
             set-method="addNote"
             get-method="iterateNote">
+            <bind-xml name="note" node="element"/>
+<!--
             <bind-xml name="note" node="text" location="note"/>
+-->
         </field>
     </class>
 
