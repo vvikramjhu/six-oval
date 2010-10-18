@@ -37,7 +37,7 @@ public abstract class StoreTestBase
         Reporter.log( "\n////////////////////////////////////////////////////////////////", true );
         Reporter.log( "  * object type: " + type, true );
 
-        T  actual = _readObjectFromXmlFile( type, filepath, xpath, expected );
+        T  actual = _unmarshalWithValidation( type, filepath, xpath, expected );
         Assert.assertNotNull( actual );
 
         Reporter.log( "sync..." , true );
