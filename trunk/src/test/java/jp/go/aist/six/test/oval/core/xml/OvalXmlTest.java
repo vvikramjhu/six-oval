@@ -325,91 +325,91 @@ public class OvalXmlTest
                         // independent family
                         {
                             State.class,
-                            "test/data/definitions/state-independent-family_oval-99-2.xml",
+                            "test/data/definitions/state-independent-family_oval-99.xml",
                             "/oval_definitions/objects/family_state",
-                            null,
-                            "marshalled_state-independent-family_oval-99-2.xml"
+                            OvalSample.STATE_INDEPENDENT_FAMILY_99,
+                            "marshalled_state-independent-family_oval-99.xml"
                         }
                         ,
                         // independent textfilecontent
                         {
                             State.class,
-                            "test/data/definitions/state-independent-textfilecontent_oval-5132-1.xml",
+                            "test/data/definitions/state-independent-textfilecontent_oval-5132.xml",
                             "/oval_definitions/objects/textfilecontent_state",
-                            null,
-                            "marshalled_state-independent-textfilecontent_oval-5132-1.xml"
+                            OvalSample.STATE_INDEPENDENT_TEXTFILECONTENT_5132,
+                            "marshalled_state-independent-textfilecontent_oval-5132.xml"
                         }
                         ,
                         // independent textfilecontent54
                         {
                             State.class,
-                            "test/data/definitions/state-independent-textfilecontent54_oval-11440-1.xml",
+                            "test/data/definitions/state-independent-textfilecontent54_oval-11440.xml",
                             "/oval_definitions/objects/textfilecontent54_state",
-                            null,
-                            "marshalled_state-independent-textfilecontent54_oval-11440-1.xml"
+                            OvalSample.STATE_INDEPENDENT_TEXTFILECONTENT54_11440,
+                            "marshalled_state-independent-textfilecontent54_oval-11440.xml"
                         }
                         ,
                         // linux dpkginfo
                         {
                             State.class,
-                            "test/data/definitions/state-linux-dpkginfo_oval-5797-1.xml",
+                            "test/data/definitions/state-linux-dpkginfo_oval-5797.xml",
                             "/oval_definitions/objects/dpkginfo_state",
-                            null,
-                            "marshalled_state-linux-dpkginfo_oval-5797-1.xml"
+                            OvalSample.STATE_LINUX_DPKGINFO_5797,
+                            "marshalled_state-linux-dpkginfo_oval-5797.xml"
                         }
                         ,
                         // linux rpminfo
                         {
                             State.class,
-                            "test/data/definitions/state-linux-rpminfo_rhsa-20100061002-301.xml",
+                            "test/data/definitions/state-linux-rpminfo_rhsa-20100061002.xml",
                             "/oval_definitions/objects/rpminfo_state",
-                            null,
-                            "marshalled_state-linux-rpminfo_rhsa-20100061002-301.xml"
+                            OvalSample.STATE_LINUX_RPMINFO_20100061002,
+                            "marshalled_state-linux-rpminfo_rhsa-20100061002.xml"
                         }
                         ,
                         // linux rpminfo
                         {
                             State.class,
-                            "test/data/definitions/state-linux-rpminfo_rhsa-20100061003-301.xml",
+                            "test/data/definitions/state-linux-rpminfo_rhsa-20100061003.xml",
                             "/oval_definitions/objects/rpminfo_state",
                             OvalSample.STATE_LINUX_RPMINFO_20100061003,
-                            "marshalled_state-linux-rpminfo_rhsa-20100061003-301.xml"
+                            "marshalled_state-linux-rpminfo_rhsa-20100061003.xml"
                         }
                         ,
                         // linux rpminfo
                         {
                             State.class,
-                            "test/data/definitions/state-linux-rpminfo_rhsa-20100061004-301.xml",
+                            "test/data/definitions/state-linux-rpminfo_rhsa-20100061004.xml",
                             "/oval_definitions/objects/rpminfo_state",
-                            null,
-                            "marshalled_state-linux-rpminfo_rhsa-20100061004-301.xml"
+                            OvalSample.STATE_LINUX_RPMINFO_20100061004,
+                            "marshalled_state-linux-rpminfo_rhsa-20100061004.xml"
                         }
                         ,
                         // windows file
                         {
                             State.class,
-                            "test/data/definitions/state-windows-file_oval-2190-1.xml",
+                            "test/data/definitions/state-windows-file_oval-2190.xml",
                             "/oval_definitions/objects/file_state",
-                            null,
-                            "marshalled_state-windows-file_oval-2190-1.xml"
+                            OvalSample.STATE_WINDOWS_FILE_2190,
+                            "marshalled_state-windows-file_oval-2190.xml"
                         }
                         ,
                         // windows metadata
                         {
                             State.class,
-                            "test/data/definitions/state-windows-metabase_oval-537-1.xml",
+                            "test/data/definitions/state-windows-metabase_oval-537.xml",
                             "/oval_definitions/objects/metadata_state",
-                            null,
-                            "marshalled_state-windows-metabase_oval-537-1.xml"
+                            OvalSample.STATE_WINDOWS_METABASE_537,
+                            "marshalled_state-windows-metabase_oval-537.xml"
                         }
                         ,
                         // windows registry
                         {
                             State.class,
-                            "test/data/definitions/state-windows-registry_oval-1205-1.xml",
+                            "test/data/definitions/state-windows-registry_oval-1205.xml",
                             "/oval_definitions/objects/registry_state",
-                            null,
-                            "marshalled_state-windows-registry_oval-1205-1.xml"
+                            OvalSample.STATE_WINDOWS_REGISTRY_1205,
+                            "marshalled_state-windows-registry_oval-1205.xml"
                         }
         };
     }
