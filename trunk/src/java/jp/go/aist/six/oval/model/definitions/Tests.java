@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.Container;
+import jp.go.aist.six.oval.model.OvalElementContainer;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
@@ -40,11 +40,8 @@ import java.util.Iterator;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Tests
-    extends Container<Test>  //{1..*}
+    extends OvalElementContainer<Test>  //{1..*}
 {
-
-
-
 
     /**
      * Constructor.

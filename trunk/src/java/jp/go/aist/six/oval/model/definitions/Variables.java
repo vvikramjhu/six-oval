@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.Container;
+import jp.go.aist.six.oval.model.OvalElementContainer;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -39,8 +39,8 @@ import java.util.Iterator;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Variables
-    extends Container<Variable>  //{1..*}
-//extends OvalElementContainer<Variable>  //{1..*}
+    extends OvalElementContainer<Variable>  //{1..*}
+//extends Container<Variable>  //{1..*}
 {
 
     /**
@@ -79,13 +79,6 @@ public class Variables
                     )
     {
         _setElement( variables );
-
-//        if (_getElement() != variables) {
-//            clear();
-//            if (variables != null  &&  variables.size() > 0) {
-//                addAll( variables );
-//            }
-//        }
     }
 
 

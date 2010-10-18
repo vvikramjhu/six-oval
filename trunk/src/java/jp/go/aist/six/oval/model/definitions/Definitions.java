@@ -40,7 +40,6 @@ import java.util.Iterator;
  */
 public class Definitions
     extends OvalElementContainer<Definition>    //{1..*}
-//extends OvalElementContainer<Definition>    //{1..*}
 {
 
     /**
@@ -79,12 +78,6 @@ public class Definitions
                     )
     {
         _setElement( definitions );
-//        if (_getElement() != definitions) {
-//            clear();
-//            if (definitions != null  &&  definitions.size() > 0) {
-//                addAll( definitions );
-//            }
-//        }
     }
 
 
