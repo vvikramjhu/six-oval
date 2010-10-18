@@ -1205,7 +1205,6 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_test_family
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
 
     /* (FK) */
     
@@ -1225,7 +1224,6 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_object_family
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:obj:419:1 */
 
     /* (PK) */
     PRIMARY KEY (PID)
@@ -1243,11 +1241,10 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_state_family
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:ste:419:1 */
 
+    /* family :EntityStateFamily {datdatype=string} */
     family              VARCHAR(16),
-    family_operation    VARCHAR(32)     NOT NULL    DEFAULT 'equals',
-                        /* enum('equals', ..., 'case insensitive not equal', ...) */
+    family_operation    VARCHAR(32),
 
     /* (FK) */
     
@@ -1288,7 +1285,6 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_test_textfilecontent54
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
 
     /* (FK) */
     
@@ -1357,6 +1353,11 @@ CREATE TABLE IF NOT EXISTS oval_d_state_textfilecontent54
 (
     PID                 VARCHAR(64)     NOT NULL,
 
+    /* pattern :EntityStateString {datdatype=string} */
+    pattern             VARCHAR(255),
+    pattern_operation   VARCHAR(32),
+
+    /* text :EntityStateString {datdatype=string} */
     text                VARCHAR(255),
     text_operation      VARCHAR(32),
 
@@ -1378,7 +1379,6 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_test_textfilecontent
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
 
     /* (FK) */
     
@@ -1398,37 +1398,23 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_object_textfilecontent
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:obj:419:1 */
-
-    /* path */
-    path                VARCHAR(255),
-    path_var_ref        VARCHAR(255),
-    path_var_check      VARCHAR(16)     NOT NULL    DEFAULT 'all',
-                        /* enum('all', 'at least one',...) */
-/*  path_datatype       VARCHAR(16)     NOT NULL    DEFAULT 'string', */
-                        /*** all the datatype may be 'string'. ***/
-    path_operation      VARCHAR(32)     NOT NULL    DEFAULT 'equals',
-                        /* enum('equals', ..., 'case insensitive not equal', ...) */
-/*  path_mask           BOOLEAN         NOT NULL    DEFAULT false,    */
-
-    /* filename */
-    filename            VARCHAR(255),
-
-    /* line */
-    line                VARCHAR(255),
-    line_var_ref        VARCHAR(255),
-    line_var_check      VARCHAR(16)     NOT NULL    DEFAULT 'all',
-                        /* enum('all', 'at least one',...) */
-/*  line_datatype       VARCHAR(16)     NOT NULL    DEFAULT 'string', */
-                        /*** all the datatype may be 'string'. ***/
-    line_operation      VARCHAR(32)     NOT NULL    DEFAULT 'equals',
-                        /* enum('equals', ..., 'case insensitive not equal', ...) */
-/*  line_mask           BOOLEAN         NOT NULL    DEFAULT false,    */
 
     /* behaviors */
-/*  max_depth           INT             NOT NULL    DEFAULT -1,      */
-/*  recurse_direction   VARCHAR(8)      NOT NULL    DEFAULT 'none',  */
-                        /* enum('none', 'up', 'down') */
+
+    /* path :EntityObjectString {datdatype=string} */
+    path                VARCHAR(255),
+    path_operation      VARCHAR(32),
+    path_var_ref        VARCHAR(255),
+    path_var_check      VARCHAR(16),
+
+    /* filename :EntityObjectString {datdatype=string} */
+    filename            VARCHAR(255),
+
+    /* line :EntityObjectString {datdatype=string} */
+    line                VARCHAR(255),
+    line_var_ref        VARCHAR(255),
+    line_var_check      VARCHAR(16),
+    line_operation      VARCHAR(32),
 
     /* (PK) */
     PRIMARY KEY (PID)
@@ -1446,14 +1432,15 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_state_textfilecontent
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:ste:419:1 */
 
+    /* line :EntityStateString {datdatype=string} */
     line                VARCHAR(255),
-    line_operation      VARCHAR(32)     DEFAULT 'equals',
+    line_operation      VARCHAR(32),
 
+    /* line :EntityStateAnySimple */
     subexpression       VARCHAR(255),
-    subexpression_operation VARCHAR(32) DEFAULT 'equals',
-                        /* enum('equals', ..., 'case insensitive not equal', ...) */
+    subexpression_datatype  VARCHAR(16),
+    subexpression_operation VARCHAR(32),
 
     /* (FK) */
     
