@@ -3,6 +3,7 @@ package jp.go.aist.six.test.oval.core.xml;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
+import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.results.Content;
 import jp.go.aist.six.oval.model.results.Directive;
 import jp.go.aist.six.oval.model.results.Directives;
@@ -203,6 +204,136 @@ public class OvalXmlTest
 
 
     //==============================================================
+    //  def:test
+    //==============================================================
+
+    @DataProvider( name="definitions.test" )
+    public Object[][] provideOvalDefinitionsTest()
+    {
+        return new Object[][] {
+                        // independent family
+                        {
+                            Test.class,
+                            "test/data/definitions/test-independent-family_oval-99.xml",
+                            "/oval_definitions/objects/family_test",
+                            OvalSample.TEST_INDEPENDENT_FAMILY_99,
+                            "marshalled_test-independent-family_oval-99.xml"
+                        }
+                        ,
+                        // independent textfilecontent
+                        {
+                            Test.class,
+                            "test/data/definitions/test-independent-textfilecontent_oval-11150.xml",
+                            "/oval_definitions/objects/textfilecontent_test",
+                            OvalSample.TEST_INDEPENDENT_TEXTFILECONTENT_11150,
+                            "marshalled_test-independent-textfilecontent_oval-11150.xml"
+                        }
+                        ,
+                        // independent textfilecontent54
+                        {
+                            Test.class,
+                            "test/data/definitions/test-independent-textfilecontent54_oval-41853.xml",
+                            "/oval_definitions/objects/textfilecontent54_test",
+                            OvalSample.TEST_INDEPENDENT_TEXTFILECONTENT54_41853,
+                            "marshalled_test-independent-textfilecontent54_oval-41853.xml"
+                        }
+                        ,
+                        // independent unknown
+                        {
+                            Test.class,
+                            "test/data/definitions/test-independent-unknown_oval-2531.xml",
+                            "/oval_definitions/objects/unknown_test",
+                            OvalSample.TEST_INDEPENDENT_UNKNOWN_2531,
+                            "marshalled_test-independent-unknown_oval-2531.xml"
+                        }
+                        ,
+                        // linux dpkginfo
+                        {
+                            Test.class,
+                            "test/data/definitions/test-linux-dpkginfo_oval-19402.xml",
+                            "/oval_definitions/objects/dpkginfo_test",
+                            OvalSample.TEST_LINUX_DPKGINFO_19402,
+                            "marshalled_test-linux-dpkginfo_oval-19402.xml"
+                        }
+                        ,
+                        // linux rpminfo
+                        {
+                            Test.class,
+                            "test/data/definitions/test-linux-rpminfo_rhsa-20100061002.xml",
+                            "/oval_definitions/objects/rpminfo_test",
+                            OvalSample.TEST_LINUX_RPMINFO_20100061002,
+                            "marshalled_test-linux-rpminfo_rhsa-20100061002.xml"
+                        }
+                        ,
+                        // unix uname
+                        {
+                            Test.class,
+                            "test/data/definitions/test-unix-uname_oval-11195.xml",
+                            "/oval_definitions/objects/uname_test",
+                            OvalSample.TEST_UNIX_UNAME_11195,
+                            "marshalled_test-unix-uname_oval-11195.xml"
+                        }
+                        ,
+                        // windows file
+                        {
+                            Test.class,
+                            "test/data/definitions/test-windows-file_oval-10629.xml",
+                            "/oval_definitions/objects/file_test",
+                            OvalSample.TEST_WINDOWS_FILE_10629,
+                            "marshalled_test-windows-file_oval-10629.xml"
+                        }
+                        ,
+                        // windows file
+                        {
+                            Test.class,
+                            "test/data/definitions/test-windows-file_oval-2339.xml",
+                            "/oval_definitions/objects/file_test",
+                            OvalSample.TEST_WINDOWS_FILE_2339,
+                            "marshalled_test-windows-file_oval-2339.xml"
+                        }
+                        ,
+                        // windows metabase
+                        {
+                            Test.class,
+                            "test/data/definitions/test-windows-metabase_oval-709.xml",
+                            "/oval_definitions/objects/metabase_test",
+                            OvalSample.TEST_WINDOWS_METABASE_709,
+                            "marshalled_test-windows-metabase_oval-709.xml"
+                        }
+                        ,
+                        // windows registry
+                        {
+                            Test.class,
+                            "test/data/definitions/test-windows-registry_oval-3019.xml",
+                            "/oval_definitions/objects/registry_test",
+                            OvalSample.TEST_WINDOWS_REGISTRY_3019,
+                            "marshalled_test-windows-registry_oval-3019.xml"
+                        }
+        };
+    }
+
+
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "definitions.test"},
+                    dataProvider="definitions.test",
+                    alwaysRun=true
+                    )
+    public void testDefinitionsTest(
+                    final Class<Test> type,
+                    final String sourceFilepath,
+                    final String xpath,
+                    final Test expected,
+                    final String resultFilepath
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n////////////////////////////////////////////", true );
+        _testXml( type, sourceFilepath, xpath, expected, resultFilepath );
+    }
+
+
+
+    //==============================================================
     //  def:object
     //==============================================================
 
@@ -213,82 +344,82 @@ public class OvalXmlTest
                         // independent family
                         {
                             SystemObject.class,
-                            "test/data/definitions/object-independent-family_oval-99-1.xml",
+                            "test/data/definitions/object-independent-family_oval-99.xml",
                             "/oval_definitions/objects/family_object",
                             OvalSample.OBJECT_INDEPENDENT_FAMILY_99,
-                            "marshalled_object-independent-family_oval-99-1.xml"
+                            "marshalled_object-independent-family_oval-99.xml"
                         }
                         ,
                         // independent textfilecontent
                         {
                             SystemObject.class,
-                            "test/data/definitions/object-independent-textfilecontent_oval-7326-1.xml",
+                            "test/data/definitions/object-independent-textfilecontent_oval-7326.xml",
                             "/oval_definitions/objects/textfilecontent_object",
                             OvalSample.OBJECT_INDEPENDENT_TEXTFILECONTENT_7326,
-                            "marshalled_object-independent-textfilecontent_oval-7326-1.xml"
+                            "marshalled_object-independent-textfilecontent_oval-7326.xml"
                         }
                         ,
                         // independent textfilecontent54
                         {
                             SystemObject.class,
-                            "test/data/definitions/object-independent-textfilecontent54_oval-15567-1.xml",
+                            "test/data/definitions/object-independent-textfilecontent54_oval-15567.xml",
                             "/oval_definitions/objects/textfilecontent54_object",
                             OvalSample.OBJECT_INDEPENDENT_TEXTFILECONTENT54_15567,
-                            "marshalled_object-independent-textfilecontent54_oval-15567-1.xml"
+                            "marshalled_object-independent-textfilecontent54_oval-15567.xml"
                         }
                         ,
                         // linux dpkginfo
                         {
                             SystemObject.class,
-                            "test/data/definitions/object-linux-dpkginfo_oval-10648-1.xml",
+                            "test/data/definitions/object-linux-dpkginfo_oval-10648.xml",
                             "/oval_definitions/objects/dpkginfo_object",
                             OvalSample.OBJECT_LINUX_DPKGINFO_10648,
-                            "marshalled_object-linux-dpkginfo_oval-10648-1.xml"
+                            "marshalled_object-linux-dpkginfo_oval-10648.xml"
                         }
                         ,
                         // linux rpminfo
                         {
                             SystemObject.class,
-                            "test/data/definitions/object-linux-rpminfo_rhsa-20100061001-301.xml",
+                            "test/data/definitions/object-linux-rpminfo_rhsa-20100061001.xml",
                             "/oval_definitions/objects/rpminfo_object",
                             OvalSample.OBJECT_LINUX_RPMINFO_20100061001,
-                            "marshalled_object-linux-rpminfo_rhsa-20100061001-301.xml"
+                            "marshalled_object-linux-rpminfo_rhsa-20100061001.xml"
                         }
                         ,
                         // unix uname
                         {
                             SystemObject.class,
-                            "test/data/definitions/object-unix-uname_oval-2759-1.xml",
+                            "test/data/definitions/object-unix-uname_oval-2759.xml",
                             "/oval_definitions/objects/uname_object",
                             OvalSample.OBJECT_UNAME_UNAME_2759,
-                            "marshalled_object-unix-uname_oval-2759-1.xml"
+                            "marshalled_object-unix-uname_oval-2759.xml"
                         }
                         ,
                         // windows file
                         {
                             SystemObject.class,
-                            "test/data/definitions/object-windows-file_oval-222-1.xml",
+                            "test/data/definitions/object-windows-file_oval-222.xml",
                             "/oval_definitions/objects/file_object",
                             OvalSample.OBJECT_WINDOWS_FILE_222,
-                            "marshalled_object-windows-file_oval-222-1.xml"
+                            "marshalled_object-windows-file_oval-222.xml"
                         }
                         ,
                         // windows metabase
                         {
                             SystemObject.class,
-                            "test/data/definitions/object-windows-metabase_oval-556-2.xml",
+                            "test/data/definitions/object-windows-metabase_oval-556.xml",
                             "/oval_definitions/objects/metabase_object",
                             OvalSample.OBJECT_WINDOWS_METABASE_556,
-                            "marshalled_object-windows-metabase_oval-556-2.xml"
+                            "marshalled_object-windows-metabase_oval-556.xml"
                         }
                         ,
                         // windows registry
                         {
                             SystemObject.class,
-                            "test/data/definitions/object-windows-registry_oval-717-1.xml",
+                            "test/data/definitions/object-windows-registry_oval-717.xml",
                             "/oval_definitions/objects/registry_object",
                             OvalSample.OBJECT_WINDOWS_REGISTRY_717,
-                            "marshalled_object-windows-registry_oval-717-1.xml"
+                            "marshalled_object-windows-registry_oval-717.xml"
                         }
         };
     }

@@ -35,6 +35,7 @@ import jp.go.aist.six.oval.model.independent.FamilyTest;
 import jp.go.aist.six.oval.model.independent.TextFileContent54Behaviors;
 import jp.go.aist.six.oval.model.independent.TextFileContent54Object;
 import jp.go.aist.six.oval.model.independent.TextFileContent54State;
+import jp.go.aist.six.oval.model.independent.TextFileContent54Test;
 import jp.go.aist.six.oval.model.independent.TextFileContentObject;
 import jp.go.aist.six.oval.model.independent.TextFileContentState;
 import jp.go.aist.six.oval.model.independent.TextFileContentTest;
@@ -91,7 +92,7 @@ public class OvalSample
     //  def:test
     //==============================================================
 
-    public static final Test  TEST_FAMILY_99 =
+    public static final Test  TEST_INDEPENDENT_FAMILY_99 =
         new FamilyTest( "oval:org.mitre.oval:tst:99", 1,
                         "the installed operating system is part of the Microsoft Windows family",
                         Check.ONLY_ONE )
@@ -100,7 +101,7 @@ public class OvalSample
     .state( "oval:org.mitre.oval:ste:99" );
 
 
-    public static final Test  TEST_TEXTFILECONTENT_11150 =
+    public static final Test  TEST_INDEPENDENT_TEXTFILECONTENT_11150 =
         new TextFileContentTest( "oval:org.mitre.oval:tst:11150", 1,
                         "Debian GNU/Linux 5.0 is installed",
                         Check.ALL )
@@ -109,13 +110,22 @@ public class OvalSample
     .state( "oval:org.mitre.oval:ste:5739" );
 
 
-    public static final Test  TEST_UNKNOWN_2531 =
+    public static final Test  TEST_INDEPENDENT_TEXTFILECONTENT54_41853 =
+        new TextFileContent54Test( "oval:org.mitre.oval:tst:41853", 1,
+                        "Check if Google Chrome Invisible Hand Extension is enabled",
+                        Check.ALL )
+    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+    .object( "oval:org.mitre.oval:obj:15567" )
+    .state( "oval:org.mitre.oval:ste:11440" );
+
+
+    public static final Test  TEST_INDEPENDENT_UNKNOWN_2531 =
         new UnknownTest( "oval:org.mitre.oval:tst:2531", 1,
                         "Word 97 is installed",
                         Check.ALL );
 
 
-    public static final Test  TEST_DPKGINFO_19402 =
+    public static final Test  TEST_LINUX_DPKGINFO_19402 =
         new DpkgInfoTest( "oval:org.mitre.oval:tst:19402", 1,
                         "apache2-src is earlier than 2.2.9-10+lenny6",
                         Check.ALL )
@@ -124,7 +134,7 @@ public class OvalSample
     .state( "oval:org.mitre.oval:ste:6372" );
 
 
-    public static final Test  TEST_RPMINFO_20100061002 =
+    public static final Test  TEST_LINUX_RPMINFO_20100061002 =
         new RpmInfoTest( "oval:com.redhat.rhsa:tst:20100061002", 301,
                         "gzip is earlier than 0:1.3.5-11.el5_4.1",
                         Check.AT_LEAST_ONE )
@@ -133,7 +143,7 @@ public class OvalSample
 
 
 
-    public static final Test  TEST_UNAME_11195 =
+    public static final Test  TEST_UNIX_UNAME_11195 =
         new UnameTest( "oval:org.mitre.oval:tst:11195", 1,
                         "Installed architecture is mips",
                         Check.ALL )
@@ -142,7 +152,7 @@ public class OvalSample
     .state( "oval:org.mitre.oval:ste:5601" );
 
 
-    public static final Test  TEST_FILE_2339 =
+    public static final Test  TEST_WINDOWS_FILE_2339 =
         new FileTest( "oval:org.mitre.oval:tst:2339", 1,
                         "the version of mshtml.dll is less than 6.0.2900.2873",
                         Check.AT_LEAST_ONE )
@@ -151,7 +161,7 @@ public class OvalSample
     .state( "oval:org.mitre.oval:ste:2190" );
 
 
-    public static final Test  TEST_FILE_10629 =
+    public static final Test  TEST_WINDOWS_FILE_10629 =
         new FileTest( "oval:org.mitre.oval:tst:10629", 1,
                         "Opera.exe version 9.x to 10.0.x",
                         Check.ALL )
@@ -162,7 +172,7 @@ public class OvalSample
     .state( "oval:org.mitre.oval:ste:5298" );
 
 
-    public static final Test  TEST_METABASE_709 =
+    public static final Test  TEST_WINDOWS_METABASE_709 =
         new MetabaseTest( "oval:org.mitre.oval:tst:709", 2,
                         "Negotiate is enabled",
                         Check.AT_LEAST_ONE )
@@ -170,7 +180,7 @@ public class OvalSample
     .object( "oval:org.mitre.oval:obj:556" );
 
 
-    public static final Test  TEST_REGISTRY_3019 =
+    public static final Test  TEST_WINDOWS_REGISTRY_3019 =
         new RegistryTest( "oval:org.mitre.oval:tst:3019", 2,
                         "Win2K/XP/2003/Vista/2008 service pack 2 is installed",
                         Check.AT_LEAST_ONE )
