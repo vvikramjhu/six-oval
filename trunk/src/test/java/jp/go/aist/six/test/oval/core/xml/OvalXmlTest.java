@@ -65,6 +65,24 @@ public class OvalXmlTest
     public Object[][] provideOvalDefinitionsOvalDefinitions()
     {
         return new Object[][] {
+                        // Debian @Mitre, CVE-2010-0176, DSA-2027
+                        {
+                            OvalDefinitions.class,
+                            "test/data/definitions/oval-definitions_oval-7432_CVE-2010-0176_DSA-2027.xml",
+                            "/oval_definitions",
+                            null,
+                            "marshalled_oval-definitions_oval-7432_CVE-2010-0176_DSA-2027.xml"
+                        }
+//                      ,
+//                        // Windows @ Mitre, CVE-2009-4019, MySQL
+//                        {
+//                            OvalDefinitions.class,
+//                            "test/data/definitions/oval-definitions_oval-8500_CVE-2009-4019_MySQL.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_oval-definitions_oval-8500_CVE-2009-4019_MySQL.xml"
+//                        }
+//                        ,
 //                        // Debian 5.0 @ Mitre, all patches, 2010-10-12
 //                        {
 //                            OvalDefinitions.class,
@@ -119,15 +137,6 @@ public class OvalXmlTest
 //                            "marshalled_20101012_inventory_microsoft.windows.xp.xml"
 //                        }
 //                      ,
-                        // Windows @ Mitre, CVE-2009-4019, MySQL
-                        {
-                            OvalDefinitions.class,
-                            "test/data/definitions/oval-definitions_oval-8500_CVE-2009-4019_MySQL.xml",
-                            "/oval_definitions",
-                            null,
-                            "marshalled_oval-definitions_oval-8500_CVE-2009-4019_MySQL.xml"
-                        }
-//                        ,
 //
 ////                      // Red Hat, CVE-2010-0176, RHSA 20100332
 //                        {
@@ -139,15 +148,6 @@ public class OvalXmlTest
 //                        }
 //                        ,
 //
-////                      // Debian @Mitre, CVE-2010-0176, DSA-2027
-//                        {
-//                            OvalDefinitions.class,
-//                            "/oval_definitions",
-//                            "test/data/definitions/oval-definitions_CVE-2010-0176_mitre7432_DSA-2027.xml",
-//                            null,
-//                            "marshalled_oval-definitions_CVE-2010-0176_mitre7432_DSA-2027.xml"
-//                        }
-//                        ,
 //
 //                        // Windows 7 @ Mitre, all vulnerability, 2010-08-27
 //                        {
