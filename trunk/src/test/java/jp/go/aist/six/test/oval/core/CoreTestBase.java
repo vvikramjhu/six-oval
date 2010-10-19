@@ -7,26 +7,10 @@ import jp.go.aist.six.oval.model.NameEntity;
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.sc.CollectedSystemObject;
 import jp.go.aist.six.oval.model.sc.CollectedSystemObjects;
-import jp.go.aist.six.oval.model.sc.EntityItemAnySimple;
-import jp.go.aist.six.oval.model.sc.EntityItemInt;
-import jp.go.aist.six.oval.model.sc.EntityItemString;
-import jp.go.aist.six.oval.model.sc.EntityItemVersion;
 import jp.go.aist.six.oval.model.sc.Flag;
-import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.ItemReference;
 import jp.go.aist.six.oval.model.sc.NetInterface;
-import jp.go.aist.six.oval.model.sc.Status;
-import jp.go.aist.six.oval.model.sc.SystemData;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
-import jp.go.aist.six.oval.model.unix.UnameItem;
-import jp.go.aist.six.oval.model.windows.EntityItemFileType;
-import jp.go.aist.six.oval.model.windows.EntityItemRegistryHive;
-import jp.go.aist.six.oval.model.windows.EntityItemRegistryType;
-import jp.go.aist.six.oval.model.windows.FileItem;
-import jp.go.aist.six.oval.model.windows.FileType;
-import jp.go.aist.six.oval.model.windows.RegistryHive;
-import jp.go.aist.six.oval.model.windows.RegistryItem;
-import jp.go.aist.six.oval.model.windows.RegistryType;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -322,118 +306,6 @@ public abstract class CoreTestBase
         };
 
     }
-
-
-
-    //==============================================================
-    //  system_data
-    //==============================================================
-
-    @DataProvider( name="oval-sc-system_data" )
-    public Object[][] ovalScSystemDataData()
-    {
-        return new Object[][] {
-                        {
-                            "oval-sc:system_data",
-                            "test/data/sc/oval-sc.system_data.1-windows.xml",
-                            new SystemData(
-                                            new Item[] {
-                                                            REGISTRY_ITEM_83,
-                                                            REGISTRY_ITEM_45,
-                                                            FILE_ITEM_46,
-                                                            REGISTRY_ITEM_103
-                                            }
-
-                            )
-                        }
-        };
-    }
-
-
-
-    //==============================================================
-    //  item
-    //==============================================================
-
-    public static final RegistryItem  REGISTRY_ITEM_83 =
-        new RegistryItem(
-                        83,
-                        Status.DOES_NOT_EXIST,
-                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
-                        new EntityItemString(
-                                        "SOFTWARE\\Microsoft\\Updates\\Visual Studio\\7.0\\S895309",
-                                        Status.DOES_NOT_EXIST
-                                        ),
-                        null,
-                        null,
-                        null
-        );
-
-
-    public static final RegistryItem  REGISTRY_ITEM_45 =
-        new RegistryItem(
-                        45,
-                        RegistryItem.DEFAULT_STATUS,
-                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
-                        new EntityItemString( "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\OUTLOOK.EXE" ),
-                        new EntityItemString( "Path" ),
-                        new EntityItemRegistryType( RegistryType.REG_SZ ),
-                        new EntityItemAnySimple( "C:\\Program Files\\Microsoft Office\\OFFICE11\\" )
-        );
-
-
-    public static final RegistryItem  REGISTRY_ITEM_103 =
-        new RegistryItem(
-                        103,
-                        Status.DOES_NOT_EXIST,
-                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
-                        new EntityItemString(
-                                        "SOFTWARE\\Microsoft\\Office\\9.0\\Publisher\\InstallRoot",
-                                        Status.DOES_NOT_EXIST
-                                        ),
-                        null,
-                        null,
-                        null
-        );
-
-
-    public static final FileItem  FILE_ITEM_46 =
-        new FileItem(
-                        46,
-                        RegistryItem.DEFAULT_STATUS,
-                        new EntityItemString( "C:\\Program Files\\Microsoft Office\\OFFICE11\\outlook.exe" ), //filepath
-                        new EntityItemString( "C:\\Program Files\\Microsoft Office\\OFFICE11\\" ),  //path
-                        new EntityItemString( "outlook.exe" ),  //filename
-                        new EntityItemString( "Administrators" ),  //owner
-                        new EntityItemInt( "196424" ),  //size
-                        new EntityItemInt( "115938124830012212" ),  //a_time
-                        new EntityItemInt( "25257592830077382" ),  //c_time
-                        new EntityItemInt( "115938124830012212" ),  //m_time
-                        new EntityItemString( "212346" ),  //ms_checksum
-                        new EntityItemVersion( "11.0.8312.0" ),  //version
-                        new EntityItemFileType( FileType.FILE_TYPE_DISK ), //type
-                        new EntityItemString( null, Status.DOES_NOT_EXIST ),  //development_class
-                        new EntityItemString( "Microsoft Corporation" ),  //company
-                        new EntityItemString( "Outlook" ),  //internal_name
-                        new EntityItemString( null, Status.NOT_COLLECTED ),  //language
-                        new EntityItemString( "Outlook.exe" ),  //original_filename
-                        new EntityItemString( "Microsoft Office Outlook" ),  //product_name
-                        new EntityItemVersion( "11.0.8312" )  //product_version
-        );
-
-
-    public static final UnameItem  UNAME_ITEM_17  =
-        new UnameItem(
-                        17,
-                        UnameItem.DEFAULT_STATUS,
-                        "i686",
-                        "debian50064",
-                        "Linux",
-                        "2.6.26-2-686",
-                        "#1 SMP Tue Mar 9 17:35:51 UTC 2010",
-                        "i686"
-                        );
-
 
 }
 // CoreTestBase

@@ -40,7 +40,6 @@ import java.util.Iterator;
  */
 public class NetInterfaces
     extends Container<NetInterface> //{0..*}
-//extends Container<NetInterface>
 {
 
     /**

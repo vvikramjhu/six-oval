@@ -61,11 +61,11 @@ public class SystemInfo
     private String  _primaryHostName;
     //{1..1}
 
-    private NetInterfaces  _interfaces = new NetInterfaces();
+    private NetInterfaces  _interfaces;// = new NetInterfaces();
     //{1..1}
 
 
-    //TODO: add property which denotes the OS name.
+    //TODO: add property which denotes the OS family???
     // The domain of the OS names is the same as the affected platforms.
     // XSD namaspace should be, e.g. http://.../six.
 

@@ -8,7 +8,9 @@ import jp.go.aist.six.oval.model.linux.RpmInfoItem;
 import jp.go.aist.six.oval.model.sc.EntityItemInt;
 import jp.go.aist.six.oval.model.sc.EntityItemString;
 import jp.go.aist.six.oval.model.sc.EntityItemVersion;
+import jp.go.aist.six.oval.model.sc.NetInterface;
 import jp.go.aist.six.oval.model.sc.Status;
+import jp.go.aist.six.oval.model.sc.SystemInfo;
 import jp.go.aist.six.oval.model.unix.UnameItem;
 import jp.go.aist.six.oval.model.windows.EntityItemFileType;
 import jp.go.aist.six.oval.model.windows.EntityItemRegistryHive;
@@ -17,6 +19,8 @@ import jp.go.aist.six.oval.model.windows.FileType;
 import jp.go.aist.six.oval.model.windows.RegistryHive;
 import jp.go.aist.six.oval.model.windows.RegistryItem;
 import jp.go.aist.six.oval.model.windows.RegistryType;
+import java.util.Arrays;
+import java.util.Collection;
 
 
 
@@ -28,6 +32,41 @@ import jp.go.aist.six.oval.model.windows.RegistryType;
  */
 public class ScSample
 {
+
+    //==============================================================
+    //  sc:interface
+    //==============================================================
+
+    public static final Collection<NetInterface>  NETWORK_INTERFACES_1 =
+        Arrays.asList( new NetInterface[] {
+                        new NetInterface(
+                                        "VMware Virtual Ethernet Adapter for VMnet1",
+                                        "192.168.158.1",
+                                        "00-50-56-C0-00-01"
+                        ),
+                        new NetInterface(
+                                        "VMware Virtual Ethernet Adapter for VMnet8",
+                                        "192.168.1.1",
+                                        "00-50-56-C0-00-08"
+                        )
+    } );
+
+
+
+    //==============================================================
+    //  sc:system_info
+    //==============================================================
+
+    public static final SystemInfo  SYSTEM_INFO_WINDOWS_1 =
+        new SystemInfo(
+                        "Microsoft Windows XP Professional Service Pack 3",
+                        "5.1.2600",
+                        "INTEL32",
+                        "x60",
+                        NETWORK_INTERFACES_1
+        );
+
+
 
     //==============================================================
     //  sc:item

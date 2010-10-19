@@ -11,6 +11,7 @@ import jp.go.aist.six.oval.model.results.Directive;
 import jp.go.aist.six.oval.model.results.Directives;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.Item;
+import jp.go.aist.six.oval.model.sc.SystemInfo;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.test.oval.core.OvalSample;
 import jp.go.aist.six.test.oval.core.ScSample;
@@ -678,6 +679,46 @@ public class OvalXmlTest
     //  SC
     //
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    //==============================================================
+    //  sc:system_info
+    //==============================================================
+
+    @DataProvider( name="sc.system_info" )
+    public Object[][] provideSCSystemInfo()
+    {
+        return new Object[][] {
+                        {
+                            SystemInfo.class,
+                            "test/data/sc/system-info_windows.xml",
+                            "/oval_system_characteristics/system_info",
+                            ScSample.SYSTEM_INFO_WINDOWS_1,
+                            "marshalled_system-info_windows.xml"
+                        }
+        };
+    }
+
+
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "sc.system_info"},
+                    dataProvider="sc.system_info",
+                    alwaysRun=true
+                    )
+    public void testSCSystemInfo(
+                    final Class<SystemInfo> type,
+                    final String sourceFilepath,
+                    final String xpath,
+                    final SystemInfo expected,
+                    final String resultFilepath
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n////////////////////////////////////////////", true );
+        _testXml( type, sourceFilepath, xpath, expected, resultFilepath );
+    }
+
+
+
 
     //==============================================================
     //  sc:item
