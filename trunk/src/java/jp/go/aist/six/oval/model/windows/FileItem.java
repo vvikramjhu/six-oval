@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.EntityType;
-import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.sc.EntityItemBase;
 import jp.go.aist.six.oval.model.sc.EntityItemInt;
 import jp.go.aist.six.oval.model.sc.EntityItemString;
@@ -135,10 +134,10 @@ public class FileItem
         setPath( new EntityItemString( path ) );
         setFilename( new EntityItemString( filename ) );
         setOwner( new EntityItemString( owner ) );
-        setSize( new EntityItemInt( size, Datatype.INT ) );
-        setATime( new EntityItemInt( atime, Datatype.INT ) );
-        setCTime( new EntityItemInt( ctime, Datatype.INT ) );
-        setMTime( new EntityItemInt( mtime, Datatype.INT ) );
+        setSize( new EntityItemInt( size ) );
+        setATime( new EntityItemInt( atime ) );
+        setCTime( new EntityItemInt( ctime ) );
+        setMTime( new EntityItemInt( mtime ) );
         setMsChecksum( new EntityItemString( checksum ) );
         setVersion( new EntityItemVersion( version ) );
         setType( new EntityItemFileType( type ) );

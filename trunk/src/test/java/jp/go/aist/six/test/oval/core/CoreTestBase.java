@@ -4,7 +4,6 @@ import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.NameEntity;
-import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.sc.CollectedSystemObject;
 import jp.go.aist.six.oval.model.sc.CollectedSystemObjects;
@@ -406,10 +405,10 @@ public abstract class CoreTestBase
                         new EntityItemString( "C:\\Program Files\\Microsoft Office\\OFFICE11\\" ),  //path
                         new EntityItemString( "outlook.exe" ),  //filename
                         new EntityItemString( "Administrators" ),  //owner
-                        new EntityItemInt( "196424", Datatype.INT ),  //size
-                        new EntityItemInt( "115938124830012212", Datatype.INT ),  //a_time
-                        new EntityItemInt( "25257592830077382", Datatype.INT ),  //c_time
-                        new EntityItemInt( "115938124830012212", Datatype.INT ),  //m_time
+                        new EntityItemInt( "196424" ),  //size
+                        new EntityItemInt( "115938124830012212" ),  //a_time
+                        new EntityItemInt( "25257592830077382" ),  //c_time
+                        new EntityItemInt( "115938124830012212" ),  //m_time
                         new EntityItemString( "212346" ),  //ms_checksum
                         new EntityItemVersion( "11.0.8312.0" ),  //version
                         new EntityItemFileType( FileType.FILE_TYPE_DISK ), //type

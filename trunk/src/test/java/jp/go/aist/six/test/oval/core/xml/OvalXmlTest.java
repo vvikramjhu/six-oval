@@ -731,6 +731,15 @@ public class OvalXmlTest
                             ScSample.ITEM_WINDOWS_FILE_46,
                             "marshalled_item-windows-file_46.xml"
                         }
+                        ,
+                        // windows registry
+                        {
+                            Item.class,
+                            "test/data/sc/item-windows-registry_18.xml",
+                            "/oval_system_characteristics/system_data/registry_item",
+                            ScSample.ITEM_WINDOWS_REGISTRY_83,
+                            "marshalled_item-windows-registry_18.xml"
+                        }
         };
     }
 

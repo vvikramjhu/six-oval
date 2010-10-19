@@ -10,8 +10,11 @@ import jp.go.aist.six.oval.model.sc.EntityItemString;
 import jp.go.aist.six.oval.model.sc.EntityItemVersion;
 import jp.go.aist.six.oval.model.sc.Status;
 import jp.go.aist.six.oval.model.windows.EntityItemFileType;
+import jp.go.aist.six.oval.model.windows.EntityItemRegistryHive;
 import jp.go.aist.six.oval.model.windows.FileItem;
 import jp.go.aist.six.oval.model.windows.FileType;
+import jp.go.aist.six.oval.model.windows.RegistryHive;
+import jp.go.aist.six.oval.model.windows.RegistryItem;
 
 
 
@@ -82,6 +85,15 @@ public class ScSample
                         new EntityItemString( "Microsoft Office Outlook" ),
                         new EntityItemVersion( "11.0.8312" )
         );
+
+
+    // windows registry
+    public static final RegistryItem  ITEM_WINDOWS_REGISTRY_83 =
+        new RegistryItem( 83, Status.DOES_NOT_EXIST,
+                        new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
+                        new EntityItemString( "SOFTWARE\\Microsoft\\Updates\\Visual Studio\\7.0\\S895309", Status.DOES_NOT_EXIST )
+                        )
+    ;
 
 
 }

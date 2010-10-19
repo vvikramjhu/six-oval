@@ -29,6 +29,8 @@ import jp.go.aist.six.oval.model.sc.Status;
 
 
 /**
+ * The registry item specifies information that can be collected
+ * about a particular registry key.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -104,6 +106,27 @@ public class RegistryItem
     }
 
 
+    /**
+     * Constructor.
+     */
+    public RegistryItem(
+                    final int id,
+                    final Status status,
+                    final RegistryHive hive,
+                    final String key
+                    )
+    {
+        this( id, status );
+
+        if (hive != null) {
+            setHive( new EntityItemRegistryHive( hive ) );
+        }
+
+        if (key != null) {
+            setKey( new EntityItemString( key ) );
+        }
+    }
+
 
     /**
      * Constructor.
@@ -124,6 +147,34 @@ public class RegistryItem
         setValue( value );
     }
 
+
+    /**
+     * Constructor.
+     */
+    public RegistryItem(
+                    final int id,
+                    final Status status,
+                    final RegistryHive hive,
+                    final String key,
+                    final String name,
+                    final RegistryType type,
+                    final String value
+                    )
+    {
+        this( id, status, hive, key );
+
+        if (name != null) {
+            setName( new EntityItemString( name ) );
+        }
+
+        if (type != null) {
+            setType( new EntityItemRegistryType( type ) );
+        }
+
+        if (value != null) {
+            setValue( new EntityItemAnySimple( value ) );
+        }
+    }
 
 
     public EntityItemRegistryHive getHive()
@@ -216,28 +267,6 @@ public class RegistryItem
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
-
-//    @Override
-//    public int hashCode()
-//    {
-//        return super.hashCode();
-//    }
-//
-//
-//
-//    @Override
-//    public boolean equals(
-//                    final Object obj
-//                    )
-//    {
-//        if (!(obj instanceof RegistryItem)) {
-//            return false;
-//        }
-//
-//        return super.equals( obj );
-//    }
-
-
 
     @Override
     public String toString()
