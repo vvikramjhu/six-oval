@@ -29,6 +29,7 @@ import jp.go.aist.six.oval.model.sc.Status;
 
 
 /**
+ * The dpkginfo item stores DPKG package info.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

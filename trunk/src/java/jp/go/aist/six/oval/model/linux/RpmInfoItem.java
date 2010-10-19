@@ -30,6 +30,7 @@ import jp.go.aist.six.oval.model.sc.Status;
 
 
 /**
+ * The rpminfo item stores rpm info.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

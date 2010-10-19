@@ -28,10 +28,10 @@ public class ItemsSample
                         new EntityItemString( "C:\\Program Files\\MySQL\\MySQL Server 5.1\\bin\\" ),
                         new EntityItemString( "mysqld.exe" ),
                         new EntityItemString( "BUILTIN\\Administrators" ),
-                        new EntityItemInt( 6591104, Datatype.INT ),
-                        new EntityItemInt( 129258204872031250L, Datatype.INT ),
-                        new EntityItemInt( 128919810880000000L, Datatype.INT ),
-                        new EntityItemInt( 128919810880000000L, Datatype.INT ),
+                        new EntityItemInt( 6591104 ),
+                        new EntityItemInt( 129258204872031250L ),
+                        new EntityItemInt( 128919810880000000L ),
+                        new EntityItemInt( 128919810880000000L ),
                         new EntityItemString( "6592576" ),
                         new EntityItemVersion( null, Status.ERROR ),
                         new EntityItemFileType( FileType.FILE_TYPE_DISK ),
@@ -41,7 +41,7 @@ public class ItemsSample
                         new EntityItemString( null, Status.ERROR ),
                         new EntityItemString( null, Status.ERROR ),
                         new EntityItemString( null, Status.ERROR ),
-                        new EntityItemString( null, Status.ERROR )
+                        new EntityItemVersion( null, Status.ERROR )
         )
         ,
         new RegistryItem(
