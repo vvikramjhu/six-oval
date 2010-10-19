@@ -21,6 +21,8 @@
 package jp.go.aist.six.oval.model.common;
 
 import jp.go.aist.six.util.castor.AbstractPersistable;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 /**
@@ -63,6 +65,10 @@ public class Generator
     private String  _timestamp;
 //    private Date  _timestamp;
     //{xsd:dateTime, 1..1}
+
+
+    private Collection<GeneratorInfo>  _additionalInfo = new ArrayList<GeneratorInfo>();
+    //{0..*}
 
 
 
@@ -164,6 +170,28 @@ public class Generator
 
 
 
+    /**
+     */
+    public void setAdditionalInfo(
+                    final Collection<? extends GeneratorInfo> info
+                    )
+    {
+        if (info != _additionalInfo) {
+            _additionalInfo.clear();
+            if (info != null  &&  info.size() > 0) {
+                _additionalInfo.addAll( info );
+            }
+        }
+    }
+
+
+    public Collection<GeneratorInfo> getAdditionalInfo()
+    {
+        return _additionalInfo;
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -235,10 +263,11 @@ public class Generator
     @Override
     public String toString()
     {
-        return "Generator[product_name=" + getProductName()
+        return "generator[product_name=" + getProductName()
                         + ", product_version=" + getProductVersion()
                         + ", schema_version=" + getSchemaVersion()
                         + ", timestamp=" + getTimestamp()
+                        + ", " + getAdditionalInfo()
                         + "]";
     }
 

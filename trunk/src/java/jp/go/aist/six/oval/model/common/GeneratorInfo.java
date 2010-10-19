@@ -18,29 +18,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.common;
 
 import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 
 /**
- * Additional metadata provided by individual organizations.
+ * Additional generator information.
+ * This is not part of the official OVAL Schema.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class MetadataItem
+public abstract class GeneratorInfo
     extends AbstractPersistable
 {
 
     /**
      * Constructor.
      */
-    public MetadataItem()
+    public GeneratorInfo()
     {
     }
 
 }
-// MetadataItem
+// GeneratorInfo

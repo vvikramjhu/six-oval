@@ -41,7 +41,7 @@ public class Message
     private String  _content;
 
     public static final MessageLevel  DEFAULT_LEVEL = MessageLevel.INFO;
-    private MessageLevel  _level = DEFAULT_LEVEL;
+    private MessageLevel  _level;
     //{optional, default="info"}
 
 

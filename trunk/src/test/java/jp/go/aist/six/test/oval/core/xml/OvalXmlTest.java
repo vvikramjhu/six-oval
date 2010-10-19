@@ -11,6 +11,7 @@ import jp.go.aist.six.oval.model.results.Directive;
 import jp.go.aist.six.oval.model.results.Directives;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.Item;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.test.oval.core.OvalSample;
@@ -709,6 +710,45 @@ public class OvalXmlTest
                     final String sourceFilepath,
                     final String xpath,
                     final SystemInfo expected,
+                    final String resultFilepath
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n////////////////////////////////////////////", true );
+        _testXml( type, sourceFilepath, xpath, expected, resultFilepath );
+    }
+
+
+
+    //==============================================================
+    //  sc:oval_system_characteristics
+    //==============================================================
+
+    @DataProvider( name="sc.oval_sc" )
+    public Object[][] provideSCOvalSC()
+    {
+        return new Object[][] {
+                        {
+                            OvalSystemCharacteristics.class,
+                            "test/data/sc/oval-sc-5.8_oval-8500_CVE-2009-4019_MySQL.xml",
+                            "/oval_system_characteristics",
+                            null,
+                            "marshalled_oval-sc-5.8_oval-8500_CVE-2009-4019_MySQL.xml"
+                        }
+        };
+    }
+
+
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "sc.oval_sc"},
+                    dataProvider="sc.oval_sc",
+                    alwaysRun=true
+                    )
+    public void testSCOvalSC(
+                    final Class<OvalSystemCharacteristics> type,
+                    final String sourceFilepath,
+                    final String xpath,
+                    final OvalSystemCharacteristics expected,
                     final String resultFilepath
                     )
     throws Exception

@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.sc;
 
 import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.common.Message;
 import jp.go.aist.six.util.castor.AbstractPersistable;
 import jp.go.aist.six.util.orm.Dependent;
 
@@ -41,8 +42,10 @@ public class Item
     implements Dependent<OvalSystemCharacteristics>
 {
 
-//  private Message  _message;
-    //{0..1}
+    private Message  _message;
+    // TODO: We have never seen any item which has multiple messages.
+    //{0..50}
+
 
     private int  _id;
     //{oval:ItemIDPattern, required}
@@ -103,6 +106,23 @@ public class Item
     public EntityType getEntityType()
     {
         return EntityType.UNKNOWN;
+    }
+
+
+
+    /**
+     */
+    public void setMessage(
+                    final Message message
+                    )
+    {
+        _message = message;
+    }
+
+
+    public Message getMessage()
+    {
+        return _message;
     }
 
 

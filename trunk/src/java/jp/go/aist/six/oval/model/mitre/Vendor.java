@@ -20,25 +20,23 @@
 
 package jp.go.aist.six.oval.model.mitre;
 
-import jp.go.aist.six.util.castor.AbstractPersistable;
+import jp.go.aist.six.oval.model.common.GeneratorInfo;
 
 
 
 /**
+ * An additional generator information from Mitre.
+ * This is not part of the official OVAL Schema.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Contributor
-    extends AbstractPersistable
+public class Vendor
+    extends GeneratorInfo
 {
 
     private String  _name;
-    //{xsd:string?}
-
-
-    private String  _organization;
     //{xsd:string}
 
 
@@ -46,7 +44,7 @@ public class Contributor
     /**
      * Constructor.
      */
-    public Contributor()
+    public Vendor()
     {
     }
 
@@ -69,23 +67,6 @@ public class Contributor
 
 
 
-    /**
-     */
-    public void setOrganization(
-                    final String organization
-                    )
-    {
-        _organization = organization;
-    }
-
-
-    public String getOrganization()
-    {
-        return _organization;
-    }
-
-
-
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -93,10 +74,8 @@ public class Contributor
     @Override
     public String toString()
     {
-        return "Contributor[organization=" + getOrganization()
-                        + ", name=" + getName()
-                        + "]";
+        return "vendor[" + getName() + "]";
     }
 
 }
-// Contributor
+// Vendor
