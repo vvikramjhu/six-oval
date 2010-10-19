@@ -61,7 +61,7 @@ public class TextFileContentItem
     private EntityItemString  _line;
     //{0..1}
 
-    private EntityItemString  _text;
+    private EntityItemAnySimple  _text;
     //{0..1}
 
     private Collection<EntityItemAnySimple>  _subexpression = new ArrayList<EntityItemAnySimple>();
@@ -118,14 +118,6 @@ public class TextFileContentItem
     {
         this( id, status );
 
-        if (subexpression != null) {
-            Collection<EntityItemAnySimple>  subexp = new ArrayList<EntityItemAnySimple>();
-            for (String  s : subexpression) {
-                subexp.add( new EntityItemAnySimple( s ) );
-            }
-            setSubexpression( subexp );
-        }
-
         if (filepath != null) {
             setFilepath( new EntityItemString( filepath ) );
         }
@@ -149,8 +141,17 @@ public class TextFileContentItem
         if (line != null) {
             setLine( new EntityItemString( line ) );
         }
+
         if (text != null) {
-            setText( new EntityItemString( text ) );
+            setText( new EntityItemAnySimple( text ) );
+        }
+
+        if (subexpression != null) {
+            Collection<EntityItemAnySimple>  subexp = new ArrayList<EntityItemAnySimple>();
+            for (String  s : subexpression) {
+                subexp.add( new EntityItemAnySimple( s ) );
+            }
+            setSubexpression( subexp );
         }
     }
 
@@ -167,7 +168,7 @@ public class TextFileContentItem
                     final EntityItemString pattern,
                     final EntityItemInt instance,
                     final EntityItemString line,
-                    final EntityItemString text,
+                    final EntityItemAnySimple text,
                     final Collection<? extends EntityItemAnySimple> subexpression
                     )
     {
@@ -199,6 +200,8 @@ public class TextFileContentItem
 
 
 
+    /**
+     */
     public EntityItemString getPath()
     {
         return _path;
@@ -213,7 +216,18 @@ public class TextFileContentItem
     }
 
 
+    public TextFileContentItem path(
+                    final String path
+                    )
+    {
+        setPath( new EntityItemString( path ) );
+        return this;
+    }
 
+
+
+    /**
+     */
     public EntityItemString getFilename()
     {
         return _filename;
@@ -225,6 +239,15 @@ public class TextFileContentItem
                     )
     {
         _filename = filename;
+    }
+
+
+    public TextFileContentItem filename(
+                    final String filename
+                    )
+    {
+        setFilename( new EntityItemString( filename ) );
+        return this;
     }
 
 
@@ -263,6 +286,8 @@ public class TextFileContentItem
 
 
 
+    /**
+     */
     public EntityItemString getLine()
     {
         return _line;
@@ -277,16 +302,26 @@ public class TextFileContentItem
     }
 
 
+    public TextFileContentItem line(
+                    final String line
+                    )
+    {
+        setLine( new EntityItemString( line ) );
+        return this;
+    }
 
-    public EntityItemString getText()
+
+
+    /**
+     */
+    public EntityItemAnySimple getText()
     {
         return _text;
     }
 
 
-
     public void setText(
-                    final EntityItemString text
+                    final EntityItemAnySimple text
                     )
     {
         _text = text;
@@ -307,8 +342,6 @@ public class TextFileContentItem
     }
 
 
-    /**
-     */
     public Collection<EntityItemAnySimple> getSubexpression()
     {
         return _subexpression;
@@ -335,13 +368,15 @@ public class TextFileContentItem
     @Override
     public String toString()
     {
-        return "TextFileContentItem[" + super.toString()
+        return "textfilecontent_item[" + super.toString()
                         + ", filepath=" + getFilepath()
                         + ", path=" + getPath()
                         + ", filename=" + getFilename()
                         + ", pattern=" + getPattern()
+                        + ", instance=" + getInstance()
                         + ", line=" + getLine()
                         + ", text=" + getText()
+                        + ", subexpression=" + getSubexpression()
                         + "]";
     }
 

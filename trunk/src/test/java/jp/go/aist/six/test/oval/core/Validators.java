@@ -15,6 +15,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.independent.FamilyItem;
+import jp.go.aist.six.oval.model.independent.TextFileContentItem;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.DefinitionResults;
 import jp.go.aist.six.oval.model.results.OvalResults;
@@ -362,9 +363,15 @@ public abstract class Validators
         {
             Assert.assertEquals( actual.getID(), expected.getID() );
             if (expected instanceof FamilyItem) {
-                FamilyItem  af = (FamilyItem)actual;
-                FamilyItem  ef = (FamilyItem)actual;
-                Assert.assertEquals( af.getFamily(), ef.getFamily() );
+                FamilyItem  aitem = (FamilyItem)actual;
+                FamilyItem  eitem = (FamilyItem)actual;
+                Assert.assertEquals( aitem.getFamily(), eitem.getFamily() );
+            } else if (expected instanceof TextFileContentItem) {
+                TextFileContentItem  aitem = (TextFileContentItem)actual;
+                TextFileContentItem  eitem = (TextFileContentItem)actual;
+                Assert.assertEquals( aitem.getPath(), eitem.getPath() );
+                Assert.assertEquals( aitem.getFilename(), eitem.getFilename() );
+                Assert.assertEquals( aitem.getLine(), eitem.getLine() );
             }
         }
     }

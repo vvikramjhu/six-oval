@@ -692,8 +692,17 @@ public class OvalXmlTest
                             Item.class,
                             "test/data/sc/item-independent-family_497.xml",
                             "/oval_system_characteristics/system_data/family_item",
-                            ScSample.ITEM_FAMILY_497,
+                            ScSample.ITEM_INDEPENDENT_FAMILY_497,
                             "marshalled_item-independent-family_497.xml"
+                        }
+                        ,
+                        // independent textfilecontent
+                        {
+                            Item.class,
+                            "test/data/sc/item-independent-textfilecontent_1.xml",
+                            "/oval_system_characteristics/system_data/textfilecontent_item",
+                            ScSample.ITEM_INDEPENDENT_TEXTFILECONTENT_1,
+                            "marshalled_item-independent-textfilecontent_1.xml"
                         }
         };
     }
