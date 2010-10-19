@@ -1300,7 +1300,6 @@
     <!-- ======================================================= -->
     <!-- Item                                                    -->
     <!-- ======================================================= -->
-<!--
     <class name="jp.go.aist.six.oval.model.sc.Item"
         verify-constructable="false">
 
@@ -1312,8 +1311,8 @@
             handler="jp.go.aist.six.oval.core.xml.StatusHandler">
             <bind-xml name="status" node="attribute"/>
         </field>
-
     </class>
+<!--
 -->
 
 
@@ -1935,25 +1934,12 @@
     <!-- ======================================================= -->
     <!-- FamilyItem                                              -->
     <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.independent.FamilyItem">
+    <class name ="jp.go.aist.six.oval.model.independent.FamilyItem"
+        extends="jp.go.aist.six.oval.model.sc.Item">
         <map-to xml="family_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent"
             ns-prefix=""
             />
-
-        <!-- BEGIN: extends="jp.go.aist.six.oval.model.sc.Item" -->
-
-        <field name="ID" type="int">
-            <bind-xml name="id" node="attribute"/>
-        </field>
-
-        <field name="status" 
-            type="jp.go.aist.six.oval.model.sc.Status">
-            <bind-xml name="status" node="attribute"/>
-        </field>
-
-        <!-- END: extends="jp.go.aist.six.oval.model.sc.Item" -->
-
 
         <field name="family" 
             type="jp.go.aist.six.oval.model.independent.EntityItemFamily">
@@ -2221,25 +2207,12 @@
     <!-- ======================================================= -->
     <!-- TextFileContentItem                                     -->
     <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.independent.TextFileContentItem">
+    <class name ="jp.go.aist.six.oval.model.independent.TextFileContentItem"
+        extends="jp.go.aist.six.oval.model.sc.Item">
         <map-to xml="textfilecontent_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent"
             ns-prefix=""
             />
-
-        <!-- BEGIN: extends="jp.go.aist.six.oval.model.sc.Item" -->
-
-        <field name="ID" type="int">
-            <bind-xml name="id" node="attribute"/>
-        </field>
-
-        <field name="status"  
-            type="jp.go.aist.six.oval.model.sc.Status">
-            <bind-xml name="status" node="attribute"/>
-        </field>
-
-        <!-- END: extends="jp.go.aist.six.oval.model.sc.Item" -->
-
 
         <field name="filepath" 
             type="jp.go.aist.six.oval.model.sc.EntityItemString">
