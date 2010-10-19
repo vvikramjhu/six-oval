@@ -90,6 +90,17 @@ public class FamilyItem
     }
 
 
+    /**
+     * Constructor.
+     */
+    public FamilyItem(
+                    final int id,
+                    final Family family
+                    )
+    {
+        this( id, DEFAULT_STATUS, family );
+    }
+
 
     /**
      * Constructor.
@@ -105,6 +116,18 @@ public class FamilyItem
     }
 
 
+    /**
+     * Constructor.
+     */
+    public FamilyItem(
+                    final int id,
+                    final EntityItemFamily family
+                    )
+    {
+        this( id, DEFAULT_STATUS, family );
+    }
+
+
 
     public void setFamily(
                     final EntityItemFamily family
@@ -117,6 +140,24 @@ public class FamilyItem
     public EntityItemFamily getFamily()
     {
         return _family;
+    }
+
+
+    public FamilyItem family(
+                    final Family family
+                    )
+    {
+        setFamily( new EntityItemFamily( family ) );
+        return this;
+    }
+
+
+    public FamilyItem family(
+                    final EntityItemFamily family
+                    )
+    {
+        setFamily( family );
+        return this;
     }
 
 
@@ -140,8 +181,8 @@ public class FamilyItem
     @Override
     public String toString()
     {
-        return "FamilyItem[family=" + getFamily()
-                        + super.toString()
+        return "family_item[family=" + getFamily()
+                        + ", " + super.toString()
                         + "]";
     }
 

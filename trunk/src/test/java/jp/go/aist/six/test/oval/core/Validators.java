@@ -14,6 +14,7 @@ import jp.go.aist.six.oval.model.definitions.StateRef;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.definitions.Variable;
+import jp.go.aist.six.oval.model.independent.FamilyItem;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.DefinitionResults;
 import jp.go.aist.six.oval.model.results.OvalResults;
@@ -348,6 +349,28 @@ public abstract class Validators
 
 
     /**
+     * SystemInfo
+     */
+    public static class ItemValidator
+    extends Validator<Item>
+    {
+        @Override
+        public void equals(
+                        final Item actual,
+                        final Item expected
+                        )
+        {
+            Assert.assertEquals( actual.getID(), expected.getID() );
+            if (expected instanceof FamilyItem) {
+                FamilyItem  af = (FamilyItem)actual;
+                FamilyItem  ef = (FamilyItem)actual;
+                Assert.assertEquals( af.getFamily(), ef.getFamily() );
+            }
+        }
+    }
+
+
+    /**
      * OvalSystemCharacteristics
      */
     public static class OvalSystemCharacteristicsValidator
@@ -556,6 +579,9 @@ public abstract class Validators
             } else if (SystemInfo.class.isAssignableFrom( type )) {
                 v = (Validator<T>)(new SystemInfoValidator());
                 _validators.put( SystemInfo.class, v );
+            } else if (Item.class.isAssignableFrom( type )) {
+                v = (Validator<T>)(new ItemValidator());
+                _validators.put( Item.class, v );
 
             } else if (OvalResults.class.isAssignableFrom( type )) {
                 v = (Validator<T>)(new OvalResultsValidator());

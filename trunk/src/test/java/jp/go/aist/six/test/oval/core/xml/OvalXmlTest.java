@@ -10,8 +10,10 @@ import jp.go.aist.six.oval.model.results.Content;
 import jp.go.aist.six.oval.model.results.Directive;
 import jp.go.aist.six.oval.model.results.Directives;
 import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.test.oval.core.OvalSample;
+import jp.go.aist.six.test.oval.core.ScSample;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
 
@@ -668,6 +670,53 @@ public class OvalXmlTest
         Reporter.log( "\n////////////////////////////////////////////", true );
         _testXml( type, sourceFilepath, xpath, expected, resultFilepath );
     }
+
+
+
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    //
+    //  SC
+    //
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    //==============================================================
+    //  sc:item
+    //==============================================================
+
+    @DataProvider( name="sc.item" )
+    public Object[][] provideSCItem()
+    {
+        return new Object[][] {
+                        // independent family
+                        {
+                            Item.class,
+                            "test/data/sc/item-independent-family_497.xml",
+                            "/oval_system_characteristics/system_data/family_item",
+                            ScSample.ITEM_FAMILY_497,
+                            "marshalled_item-independent-family_497.xml"
+                        }
+        };
+    }
+
+
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "sc.item"},
+                    dataProvider="sc.item",
+                    alwaysRun=true
+                    )
+    public void testSCItem(
+                    final Class<Item> type,
+                    final String sourceFilepath,
+                    final String xpath,
+                    final Item expected,
+                    final String resultFilepath
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n////////////////////////////////////////////", true );
+        _testXml( type, sourceFilepath, xpath, expected, resultFilepath );
+    }
+
 
 
 
