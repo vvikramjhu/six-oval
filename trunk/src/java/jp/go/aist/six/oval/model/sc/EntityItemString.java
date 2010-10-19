@@ -25,6 +25,8 @@ import jp.go.aist.six.oval.model.common.Datatype;
 
 
 /**
+ * The EntityItemString type is extended by the entities of an individual item.
+ * This specific type describes simple string data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

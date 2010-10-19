@@ -26,6 +26,8 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 /**
+ * The EntityItemBase is an abstract type that serves as the base type
+ * for all item entities.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -36,7 +38,7 @@ public abstract class EntityItemBase
 {
 
     private String  _data;
-    //{base="xsd:anySimpleType"}
+    //{base="xsd:anyType"}
 
     public static final Datatype  DEFAULT_DATATYPE = Datatype.STRING;
     private Datatype  _datatype;
@@ -226,11 +228,10 @@ public abstract class EntityItemBase
     @Override
     public String toString()
     {
-        return "[datatype=" + getDatatype()
+        return "datatype=" + getDatatype()
                         + ", status=" + getStatus()
 //                        + ", mask=" + getMask()
-                        + ", data=" + getData()
-                        + "]";
+                        + ", data=" + getData();
     }
 
 }

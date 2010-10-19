@@ -23,6 +23,8 @@ package jp.go.aist.six.oval.model.sc;
 
 
 /**
+ * The EntityItemAnySimple type is extended by the entities of an individual item.
+ * This specific type describes any simple data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -78,14 +80,6 @@ public class EntityItemAnySimple
         }
 
         return super.equals( obj );
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return "EntityItemAnySimple[" + super.toString() + "]";
     }
 
 }

@@ -25,6 +25,8 @@ import jp.go.aist.six.oval.model.common.Datatype;
 
 
 /**
+ * The EntityItemVersion type is extended by the entities of an individual item.
+ * This specific type describes version data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

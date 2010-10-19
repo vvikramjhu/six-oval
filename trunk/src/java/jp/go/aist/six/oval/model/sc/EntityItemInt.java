@@ -25,6 +25,8 @@ import jp.go.aist.six.oval.model.common.Datatype;
 
 
 /**
+ * The EntityItemInt type is extended by the entities of an individual item.
+ * This specific type describes simple integer data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -33,6 +35,10 @@ import jp.go.aist.six.oval.model.common.Datatype;
 public class EntityItemInt
     extends EntityItemBase
 {
+
+    public static final Datatype  FIXED_DATATYPE = Datatype.INT;
+
+
 
     /**
      * Constructor.
@@ -49,7 +55,7 @@ public class EntityItemInt
                     final String data
                     )
     {
-        super( data );
+        super( data, FIXED_DATATYPE );
     }
 
 
@@ -58,23 +64,10 @@ public class EntityItemInt
      */
     public EntityItemInt(
                     final String data,
-                    final Datatype datatype
-                    )
-    {
-        super( data, datatype );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemInt(
-                    final String data,
-                    final Datatype datatype,
                     final Status status
                     )
     {
-        super( data, datatype, status );
+        super( data, FIXED_DATATYPE, status );
     }
 
 
@@ -94,23 +87,35 @@ public class EntityItemInt
      */
     public EntityItemInt(
                     final long data,
-                    final Datatype datatype
-                    )
-    {
-        this( String.valueOf( data ), datatype );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemInt(
-                    final long data,
-                    final Datatype datatype,
                     final Status status
                     )
     {
-        this( String.valueOf( data ), datatype, status );
+        this( String.valueOf( data ), status );
+    }
+
+
+
+    //**************************************************************
+    //  EntityItemBase
+    //**************************************************************
+
+    @Override
+    public void setDatatype(
+                    final Datatype datatype
+                    )
+    {
+        if (datatype != null  &&  datatype != FIXED_DATATYPE) {
+            throw new IllegalArgumentException( "invalid datatype: " + datatype);
+        }
+
+        super.setDatatype( datatype );
+    }
+
+
+    @Override
+    public Datatype getDatatype()
+    {
+        return FIXED_DATATYPE;
     }
 
 
@@ -141,14 +146,6 @@ public class EntityItemInt
         }
 
         return super.equals( obj );
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return "EntityItemInt[" + super.toString() + "]";
     }
 
 }
