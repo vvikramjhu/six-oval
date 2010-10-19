@@ -32,6 +32,7 @@ import java.util.Collection;
 
 
 /**
+ * The metabase item gathers information from the specified metabase keys.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -44,7 +45,7 @@ public class MetabaseItem
     private EntityItemString  _key;
     //{0..1}
 
-    private EntityItemInt  _mbID;
+    private EntityItemInt  _mbID;   //renamed!!!
     //{0..1, nillable="true"}
 
     private EntityItemString  _name;
@@ -202,7 +203,7 @@ public class MetabaseItem
     @Override
     public String toString()
     {
-        return "MtabaseItem[" + super.toString()
+        return "mtabase_item[" + super.toString()
                         + ", key=" + getKey()
                         + ", mb_id=" + getMetabaseID()
                         + ", name=" + getName()

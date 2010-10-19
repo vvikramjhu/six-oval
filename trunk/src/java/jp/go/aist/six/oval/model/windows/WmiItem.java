@@ -30,10 +30,14 @@ import java.util.Collection;
 
 
 /**
+ * The wmi item outlines information to be checked through Microsoft's WMI interface.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.7:
+ *             Replaced by the wmi57 item and
+ *             will be removed in a future version of the language.
  */
 public class WmiItem
     extends Item
@@ -145,7 +149,7 @@ public class WmiItem
     @Override
     public String toString()
     {
-        return "WqlItem[" + super.toString()
+        return "wmi_item[" + super.toString()
                         + ", namespace=" + getNamespace()
                         + ", wql=" + getWql()
                         + ", result=" + getResult()
@@ -153,4 +157,4 @@ public class WmiItem
     }
 
 }
-// WqlItem
+// WmiItem
