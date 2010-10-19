@@ -5,12 +5,7 @@ import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.NameEntity;
 import jp.go.aist.six.oval.model.common.Datatype;
-import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Generator;
-import jp.go.aist.six.oval.model.independent.FamilyItem;
-import jp.go.aist.six.oval.model.independent.TextFileContentItem;
-import jp.go.aist.six.oval.model.linux.DpkgInfoItem;
-import jp.go.aist.six.oval.model.linux.RpmInfoItem;
 import jp.go.aist.six.oval.model.sc.CollectedSystemObject;
 import jp.go.aist.six.oval.model.sc.CollectedSystemObjects;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimple;
@@ -429,29 +424,6 @@ public abstract class CoreTestBase
         );
 
 
-    public static final FamilyItem  FAMILY_ITEM_497 =
-        new FamilyItem(
-                        497,
-                        FamilyItem.DEFAULT_STATUS,
-                        Family.WINDOWS
-                        );
-
-
-    public static final TextFileContentItem  TEXTFILECONTENT_ITEM_1 =
-        new TextFileContentItem(
-                        1,
-                        RegistryItem.DEFAULT_STATUS,
-                        null,   //filepath
-                        new EntityItemString( "/etc" ),   //path
-                        new EntityItemString( "debian_version" ),   //filename
-                        null,   //pattern
-                        null,   //instance
-                        new EntityItemString( "5.0.4" ),    //line
-                        null,   //text
-                        null    //subexpression
-        );
-
-
     public static final UnameItem  UNAME_ITEM_17  =
         new UnameItem(
                         17,
@@ -463,29 +435,6 @@ public abstract class CoreTestBase
                         "#1 SMP Tue Mar 9 17:35:51 UTC 2010",
                         "i686"
                         );
-
-
-    public static final DpkgInfoItem  DPKG_INFO_ITEM_14  =
-        new DpkgInfoItem(
-                        14,
-                        Status.DOES_NOT_EXIST,
-                        new EntityItemString( "apache2", EntityItemString.DEFAULT_DATATYPE, Status.DOES_NOT_EXIST )
-                        );
-
-
-    public static final RpmInfoItem  RPM_INFO_ITEM_2  =
-        new RpmInfoItem(
-                        2,
-                        RpmInfoItem.DEFAULT_STATUS,
-                        new EntityItemString( "i386" ),
-                        new EntityItemString( "gzip" ),
-                        new EntityItemString( "1.3.5" ),
-                        new EntityItemString( "10.el5" ),
-                        new EntityItemString( "(none)" ),
-                        new EntityItemString( "0:1.3.5-10.el5" ),
-                        new EntityItemString( "5326810137017186" )
-                        );
-
 
 
 }

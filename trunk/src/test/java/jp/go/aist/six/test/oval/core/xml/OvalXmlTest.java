@@ -704,6 +704,15 @@ public class OvalXmlTest
                             ScSample.ITEM_INDEPENDENT_TEXTFILECONTENT_1,
                             "marshalled_item-independent-textfilecontent_1.xml"
                         }
+                        ,
+                        // linux rpminfo
+                        {
+                            Item.class,
+                            "test/data/sc/item-linux-rpminfo_2.xml",
+                            "/oval_system_characteristics/system_data/rpminfo_item",
+                            ScSample.ITEM_LINUX_RPMINFO_2,
+                            "marshalled_item-linux-rpminfo_2.xml"
+                        }
         };
     }
 

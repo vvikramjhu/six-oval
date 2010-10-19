@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
+import jp.go.aist.six.oval.model.sc.EntityItemAnySimple;
+import jp.go.aist.six.oval.model.sc.EntityItemBase;
 import jp.go.aist.six.oval.model.sc.EntityItemString;
 import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.Status;
@@ -38,8 +40,8 @@ public abstract class LinuxPkgInfoItem
     extends Item
 {
 
-    protected Map<LinuxPkgProperty,EntityItemString>  _properties =
-        new EnumMap<LinuxPkgProperty,EntityItemString>( LinuxPkgProperty.class );
+    protected Map<LinuxPkgProperty, EntityItemBase>  _properties =
+        new EnumMap<LinuxPkgProperty, EntityItemBase>( LinuxPkgProperty.class );
 
 //    private EntityItemString  _name;
 //    //{0..1}
@@ -105,7 +107,7 @@ public abstract class LinuxPkgInfoItem
                     final EntityItemString name
                     )
     {
-        this( id, status, (EntityItemString)null, name, (EntityItemString)null );
+        this( id, status, (EntityItemString)null, name, (EntityItemAnySimple)null );
     }
 
 
@@ -145,7 +147,7 @@ public abstract class LinuxPkgInfoItem
         }
 
         if (version != null) {
-            setVersion( new EntityItemString( version ) );
+            setVersion( new EntityItemAnySimple( version ) );
         }
     }
 
@@ -158,7 +160,7 @@ public abstract class LinuxPkgInfoItem
                     final Status status,
                     final EntityItemString arch,
                     final EntityItemString name,
-                    final EntityItemString version
+                    final EntityItemAnySimple version
                     )
     {
         super( id, status );
@@ -175,48 +177,44 @@ public abstract class LinuxPkgInfoItem
                     )
     {
         _properties.put( LinuxPkgProperty.ARCH, arch );
-//        _arch = arch;
     }
 
 
     public EntityItemString getArch()
     {
-        return _properties.get( LinuxPkgProperty.ARCH );
-//        return _arch;
+        return (EntityItemString)_properties.get( LinuxPkgProperty.ARCH );
     }
 
 
 
+    /**
+     */
     public void setName(
                     final EntityItemString name
                     )
     {
         _properties.put( LinuxPkgProperty.NAME, name );
-//        _name = name;
     }
 
 
     public EntityItemString getName()
     {
-        return _properties.get( LinuxPkgProperty.NAME );
-//        return _name;
+        return (EntityItemString)_properties.get( LinuxPkgProperty.NAME );
     }
 
 
 
     public void setVersion(
-                    final EntityItemString version
+                    final EntityItemAnySimple version
                     )
     {
         _properties.put( LinuxPkgProperty.VERSION, version );
-//        _version = version;
     }
 
 
-    public EntityItemString getVersion()
+    public EntityItemAnySimple getVersion()
     {
-        return _properties.get( LinuxPkgProperty.VERSION );
-//        return _version;
+        return (EntityItemAnySimple)_properties.get( LinuxPkgProperty.VERSION );
     }
 
 

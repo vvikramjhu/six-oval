@@ -77,19 +77,6 @@ public class EntityStateEVRString
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityStateEVRString(
-                    final String data,
-                    final Datatype datatype,
-                    final Operation operation
-                    )
-    {
-        super( data, datatype, operation );
-    }
-
-
 
     //**************************************************************
     //  EntityBase

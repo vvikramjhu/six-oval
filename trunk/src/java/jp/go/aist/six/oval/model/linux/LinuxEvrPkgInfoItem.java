@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
+import jp.go.aist.six.oval.model.sc.EntityItemAnySimple;
+import jp.go.aist.six.oval.model.sc.EntityItemEVRString;
 import jp.go.aist.six.oval.model.sc.EntityItemString;
 import jp.go.aist.six.oval.model.sc.Status;
 
@@ -139,15 +141,15 @@ public abstract class LinuxEvrPkgInfoItem
         super( id, status, arch, name, version );
 
         if (epoch != null) {
-            setEpoch( new EntityItemString( epoch ) );
+            setEpoch( new EntityItemAnySimple( epoch ) );
         }
 
         if (release != null) {
-            setRelease( new EntityItemString( release ) );
+            setRelease( new EntityItemAnySimple( release ) );
         }
 
         if (evr != null) {
-            setEvr( new EntityItemString( evr ) );
+            setEvr( new EntityItemEVRString( evr ) );
         }
     }
 
@@ -160,10 +162,10 @@ public abstract class LinuxEvrPkgInfoItem
                     final Status status,
                     final EntityItemString arch,
                     final EntityItemString name,
-                    final EntityItemString version,
-                    final EntityItemString release,
-                    final EntityItemString epoch,
-                    final EntityItemString evr
+                    final EntityItemAnySimple version,
+                    final EntityItemAnySimple release,
+                    final EntityItemAnySimple epoch,
+                    final EntityItemEVRString evr
                     )
     {
         super( id, status, arch, name, version );
@@ -176,49 +178,46 @@ public abstract class LinuxEvrPkgInfoItem
 
 
     public void setRelease(
-                    final EntityItemString release
+                    final EntityItemAnySimple release
                     )
     {
         _properties.put( LinuxPkgProperty.RELEASE, release );
-//        _release = release;
     }
 
 
-    public EntityItemString getRelease()
+    public EntityItemAnySimple getRelease()
     {
-        return _properties.get( LinuxPkgProperty.RELEASE );
+        return (EntityItemAnySimple)_properties.get( LinuxPkgProperty.RELEASE );
     }
 
 
 
     public void setEpoch(
-                    final EntityItemString epoch
+                    final EntityItemAnySimple epoch
                     )
     {
         _properties.put( LinuxPkgProperty.EPOCH, epoch );
-//        _epoch = epoch;
     }
 
 
-    public EntityItemString getEpoch()
+    public EntityItemAnySimple getEpoch()
     {
-        return _properties.get( LinuxPkgProperty.EPOCH );
+        return (EntityItemAnySimple)_properties.get( LinuxPkgProperty.EPOCH );
     }
 
 
 
     public void setEvr(
-                    final EntityItemString evr
+                    final EntityItemEVRString evr
                     )
     {
         _properties.put( LinuxPkgProperty.EVR, evr );
-//        _evr = evr;
     }
 
 
-    public EntityItemString getEvr()
+    public EntityItemEVRString getEvr()
     {
-        return _properties.get( LinuxPkgProperty.EVR );
+        return (EntityItemEVRString)_properties.get( LinuxPkgProperty.EVR );
     }
 
 

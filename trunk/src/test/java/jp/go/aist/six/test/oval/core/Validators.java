@@ -16,6 +16,7 @@ import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.independent.FamilyItem;
 import jp.go.aist.six.oval.model.independent.TextFileContentItem;
+import jp.go.aist.six.oval.model.linux.RpmInfoItem;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.DefinitionResults;
 import jp.go.aist.six.oval.model.results.OvalResults;
@@ -372,6 +373,16 @@ public abstract class Validators
                 Assert.assertEquals( aitem.getPath(), eitem.getPath() );
                 Assert.assertEquals( aitem.getFilename(), eitem.getFilename() );
                 Assert.assertEquals( aitem.getLine(), eitem.getLine() );
+            } else if (expected instanceof RpmInfoItem) {
+                RpmInfoItem  aitem = (RpmInfoItem)actual;
+                RpmInfoItem  eitem = (RpmInfoItem)actual;
+                Assert.assertEquals( aitem.getName(), eitem.getName() );
+                Assert.assertEquals( aitem.getArch(), eitem.getArch() );
+                Assert.assertEquals( aitem.getEpoch(), eitem.getEpoch() );
+                Assert.assertEquals( aitem.getRelease(), eitem.getRelease() );
+                Assert.assertEquals( aitem.getVersion(), eitem.getVersion() );
+                Assert.assertEquals( aitem.getEvr(), eitem.getEvr() );
+                Assert.assertEquals( aitem.getSignatureKeyID(), eitem.getSignatureKeyID() );
             }
         }
     }

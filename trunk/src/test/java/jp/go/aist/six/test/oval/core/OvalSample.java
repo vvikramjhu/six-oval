@@ -380,7 +380,6 @@ public class OvalSample
     public static final DpkgInfoState  STATE_LINUX_DPKGINFO_5797 =
         new DpkgInfoState( "oval:org.mitre.oval:ste:5797", 1 )
     .evr( new EntityStateEVRString( "0:2.2.6-02-1+lenny2+b2",
-                    Datatype.EVR_STRING,
                     Operation.LESS_THAN )
     );
 
@@ -388,7 +387,6 @@ public class OvalSample
     public static final RpmInfoState  STATE_LINUX_RPMINFO_20100061004 =
         new RpmInfoState( "oval:com.redhat.rhsa:ste:20100061004", 301 )
     .evr( new EntityStateEVRString( "0:1.3.5-11.el5_4.1",
-                    Datatype.EVR_STRING,
                     Operation.LESS_THAN )
     );
 

@@ -21,6 +21,8 @@
 package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.sc.EntityItemAnySimple;
+import jp.go.aist.six.oval.model.sc.EntityItemEVRString;
 import jp.go.aist.six.oval.model.sc.EntityItemString;
 import jp.go.aist.six.oval.model.sc.Status;
 
@@ -135,10 +137,10 @@ public class RpmInfoItem
                     final Status status,
                     final EntityItemString arch,
                     final EntityItemString name,
-                    final EntityItemString version,
-                    final EntityItemString release,
-                    final EntityItemString epoch,
-                    final EntityItemString evr,
+                    final EntityItemAnySimple version,
+                    final EntityItemAnySimple release,
+                    final EntityItemAnySimple epoch,
+                    final EntityItemEVRString evr,
                     final EntityItemString sigkeyid
                     )
     {
@@ -149,6 +151,8 @@ public class RpmInfoItem
 
 
 
+    /**
+     */
     public void setSignatureKeyID(
                     final EntityItemString signatureKeyID
                     )
@@ -159,7 +163,73 @@ public class RpmInfoItem
 
     public EntityItemString getSignatureKeyID()
     {
-        return _properties.get( LinuxPkgProperty.SIGNATURE_KEYID );
+        return (EntityItemString)_properties.get( LinuxPkgProperty.SIGNATURE_KEYID );
+    }
+
+
+    public RpmInfoItem signatureKeyID(
+                    final String signatureKeyID
+                    )
+    {
+        setSignatureKeyID( new EntityItemString( signatureKeyID ) );
+        return this;
+    }
+
+
+
+    /**
+     */
+    public RpmInfoItem name(
+                    final String name
+                    )
+    {
+        setName( new EntityItemString( name ) );
+        return this;
+    }
+
+
+    public RpmInfoItem arch(
+                    final String arch
+                    )
+    {
+        setArch( new EntityItemString( arch ) );
+        return this;
+    }
+
+
+    public RpmInfoItem epoch(
+                    final String epoch
+                    )
+    {
+        setEpoch( new EntityItemAnySimple( epoch ) );
+        return this;
+    }
+
+
+    public RpmInfoItem release(
+                    final String release
+                    )
+    {
+        setRelease( new EntityItemAnySimple( release ) );
+        return this;
+    }
+
+
+    public RpmInfoItem version(
+                    final String version
+                    )
+    {
+        setVersion( new EntityItemAnySimple( version ) );
+        return this;
+    }
+
+
+    public RpmInfoItem evr(
+                    final String evr
+                    )
+    {
+        setEvr( new EntityItemEVRString( evr ) );
+        return this;
     }
 
 
@@ -183,7 +253,7 @@ public class RpmInfoItem
     @Override
     public String toString()
     {
-        return "RpmInfoItem[" + super.toString()
+        return "rpminfo_item[" + super.toString()
                         + ", sig_keyid=" + getSignatureKeyID()
                         + "]";
     }

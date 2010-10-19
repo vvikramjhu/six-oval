@@ -1063,6 +1063,15 @@
 
 
     <!-- ======================================================= -->
+    <!-- EntityItemEVRString                                     -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.sc.EntityItemEVRString"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemBase">
+    </class>
+
+
+
+    <!-- ======================================================= -->
     <!-- OvalSystemCharacteristics                               -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics">
@@ -2666,22 +2675,22 @@
         </field>
 
         <field name="epoch" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemString">
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimple">
             <bind-xml name="epoch" node="element"/>
         </field>
 
         <field name="release" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemString">
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimple">
             <bind-xml name="release" node="element"/>
         </field>
 
         <field name="version" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemString">
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimple">
             <bind-xml name="version" node="element"/>
         </field>
 
         <field name="evr" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemString">
+            type="jp.go.aist.six.oval.model.sc.EntityItemEVRString">
             <bind-xml name="evr" node="element"/>
         </field>
     </class>
@@ -2721,22 +2730,22 @@
         </field>
 
         <field name="epoch" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemString">
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimple">
             <bind-xml name="epoch" node="element"/>
         </field>
 
         <field name="release" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemString">
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimple">
             <bind-xml name="release" node="element"/>
         </field>
 
         <field name="version" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemString">
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimple">
             <bind-xml name="version" node="element"/>
         </field>
 
         <field name="evr" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemString">
+            type="jp.go.aist.six.oval.model.sc.EntityItemEVRString">
             <bind-xml name="evr" node="element"/>
         </field>
 

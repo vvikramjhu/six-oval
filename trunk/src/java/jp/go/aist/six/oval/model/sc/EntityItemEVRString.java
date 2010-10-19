@@ -25,19 +25,28 @@ import jp.go.aist.six.oval.model.common.Datatype;
 
 
 /**
+ * The EntityItemEVRString type is extended by the entities of
+ * an individual item.
+ * This type represents the epoch, version, and release fields
+ * as a single version string.
+ * It has the form "EPOCH:VERSION-RELEASE".
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemString
+public class EntityItemEVRString
     extends EntityItemBase
 {
 
+    public static final Datatype  FIXED_DATATYPE = Datatype.EVR_STRING;
+
+
+
     /**
      * Constructor.
      */
-    public EntityItemString()
+    public EntityItemEVRString()
     {
     }
 
@@ -45,36 +54,48 @@ public class EntityItemString
     /**
      * Constructor.
      */
-    public EntityItemString(
+    public EntityItemEVRString(
                     final String data
                     )
     {
-        super( data );
+        super( data, FIXED_DATATYPE );
     }
 
 
     /**
      * Constructor.
      */
-    public EntityItemString(
+    public EntityItemEVRString(
                     final String data,
-                    final Datatype datatype
-                    )
-    {
-        super( data, datatype );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemString(
-                    final String data,
-                    final Datatype datatype,
                     final Status status
                     )
     {
-        super( data, datatype, status );
+        super( data, FIXED_DATATYPE, status );
+    }
+
+
+
+    //**************************************************************
+    //  EntityBase
+    //**************************************************************
+
+    @Override
+    public void setDatatype(
+                    final Datatype datatype
+                    )
+    {
+        if (datatype != null  &&  datatype != FIXED_DATATYPE) {
+            throw new IllegalArgumentException( "invalid datatype: " + datatype);
+        }
+
+        super.setDatatype( datatype );
+    }
+
+
+    @Override
+    public Datatype getDatatype()
+    {
+        return FIXED_DATATYPE;
     }
 
 
@@ -100,7 +121,7 @@ public class EntityItemString
             return true;
         }
 
-        if (!(obj instanceof EntityItemString)) {
+        if (!(obj instanceof EntityItemEVRString)) {
             return false;
         }
 
@@ -108,4 +129,4 @@ public class EntityItemString
     }
 
 }
-// EntityItemString
+// EntityItemEVRString

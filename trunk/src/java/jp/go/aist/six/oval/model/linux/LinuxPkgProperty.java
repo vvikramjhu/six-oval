@@ -34,8 +34,8 @@ public enum LinuxPkgProperty
     ARCH,           //Dpkg, RPM
     ARCHITECTURE,   //Slackware
     EPOCH,
-    RELEASE,    //Dpkg, RPM
-    REVISION,   //Slackware
+    RELEASE,        //Dpkg, RPM
+    REVISION,       //Slackware
     VERSION,
     EVR,
     SIGNATURE_KEYID;    //RPM
