@@ -65,14 +65,23 @@ public class OvalXmlTest
     public Object[][] provideOvalDefinitionsOvalDefinitions()
     {
         return new Object[][] {
-                        // Debian @Mitre, CVE-2010-0176, DSA-2027
+                        // Red Hat, CVE-2010-0176, RHSA 20100332
                         {
                             OvalDefinitions.class,
-                            "test/data/definitions/oval-definitions_oval-7432_CVE-2010-0176_DSA-2027.xml",
+                            "test/data/definitions/oval-definitions_rhsa-20100332_CVE-2010-0176.xml",
                             "/oval_definitions",
                             null,
-                            "marshalled_oval-definitions_oval-7432_CVE-2010-0176_DSA-2027.xml"
+                            "marshalled_oval-definitions_rhsa-20100332_CVE-2010-0176.xml"
                         }
+//                      ,
+//                        // Debian @Mitre, CVE-2010-0176, DSA-2027
+//                        {
+//                            OvalDefinitions.class,
+//                            "test/data/definitions/oval-definitions_oval-7432_CVE-2010-0176_DSA-2027.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_oval-definitions_oval-7432_CVE-2010-0176_DSA-2027.xml"
+//                        }
 //                      ,
 //                        // Windows @ Mitre, CVE-2009-4019, MySQL
 //                        {
@@ -138,15 +147,6 @@ public class OvalXmlTest
 //                        }
 //                      ,
 //
-////                      // Red Hat, CVE-2010-0176, RHSA 20100332
-//                        {
-//                            OvalDefinitions.class,
-//                            "/oval_definitions",
-//                            "test/data/definitions/oval-definitions_CVE-2010-0176_rhsa20100332.xml",
-//                            null,
-//                            "marshalled_oval-definitions_CVE-2010-0176_rhsa20100332.xml"
-//                        }
-//                        ,
 //
 //
 //                        // Windows 7 @ Mitre, all vulnerability, 2010-08-27

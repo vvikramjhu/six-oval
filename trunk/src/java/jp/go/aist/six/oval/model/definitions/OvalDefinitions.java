@@ -49,19 +49,19 @@ public class OvalDefinitions
     private Generator  _generator;
     //{1..1}
 
-    private Definitions  _definitions = new Definitions();
+    private Definitions  _definitions;// = new Definitions();
     //{0..1}
 
-    private Tests _tests = new Tests();
+    private Tests _tests;// = new Tests();
     //{0..1}
 
-    private SystemObjects  _objects = new SystemObjects();
+    private SystemObjects  _objects;// = new SystemObjects();
     //{0..1}
 
-    private States  _states = new States();
+    private States  _states;// = new States();
     //{0..1}
 
-    private Variables  _variables = new Variables();
+    private Variables  _variables;// = new Variables();
     //{0..1}
 
     private String  _definitionsDigest;
