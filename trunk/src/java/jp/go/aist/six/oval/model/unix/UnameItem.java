@@ -30,6 +30,8 @@ import java.util.Map;
 
 
 /**
+ * Information about the hardware the machine is running on.
+ * This information is the parsed equivalent of uname -a.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

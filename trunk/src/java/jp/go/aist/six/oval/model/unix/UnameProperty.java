@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.unix;
 
 
 /**
+ * The Unix uname properties.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

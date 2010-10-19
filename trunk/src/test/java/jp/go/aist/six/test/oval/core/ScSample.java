@@ -9,6 +9,7 @@ import jp.go.aist.six.oval.model.sc.EntityItemInt;
 import jp.go.aist.six.oval.model.sc.EntityItemString;
 import jp.go.aist.six.oval.model.sc.EntityItemVersion;
 import jp.go.aist.six.oval.model.sc.Status;
+import jp.go.aist.six.oval.model.unix.UnameItem;
 import jp.go.aist.six.oval.model.windows.EntityItemFileType;
 import jp.go.aist.six.oval.model.windows.EntityItemRegistryHive;
 import jp.go.aist.six.oval.model.windows.FileItem;
@@ -62,6 +63,18 @@ public class ScSample
     .evr( "0:1.3.5-10.el5" )
     .signatureKeyID( "5326810137017186" )
     ;
+
+
+    // unix uname
+    public static final UnameItem  ITEM_UNIX_UNAME_17  =
+        new UnameItem( 17, UnameItem.DEFAULT_STATUS,
+                        "i686",
+                        "debian50064",
+                        "Linux",
+                        "2.6.26-2-686",
+                        "#1 SMP Tue Mar 9 17:35:51 UTC 2010",
+                        "i686"
+                        );
 
 
     // windows file

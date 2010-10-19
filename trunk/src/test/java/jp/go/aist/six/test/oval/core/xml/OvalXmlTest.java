@@ -723,6 +723,15 @@ public class OvalXmlTest
                             "marshalled_item-linux-rpminfo_2.xml"
                         }
                         ,
+                        // unix uname
+                        {
+                            Item.class,
+                            "test/data/sc/item-unix-uname_17.xml",
+                            "/oval_system_characteristics/system_data/uname_item",
+                            ScSample.ITEM_UNIX_UNAME_17,
+                            "marshalled_item-unix-uname_17.xml"
+                        }
+                        ,
                         // windows file
                         {
                             Item.class,
