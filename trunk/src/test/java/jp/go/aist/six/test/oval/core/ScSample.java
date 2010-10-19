@@ -3,7 +3,10 @@ package jp.go.aist.six.test.oval.core;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.independent.FamilyItem;
 import jp.go.aist.six.oval.model.independent.TextFileContentItem;
+import jp.go.aist.six.oval.model.linux.DpkgInfoItem;
 import jp.go.aist.six.oval.model.linux.RpmInfoItem;
+import jp.go.aist.six.oval.model.sc.EntityItemString;
+import jp.go.aist.six.oval.model.sc.Status;
 
 
 
@@ -29,6 +32,11 @@ public class ScSample
     .path( "/etc" )
     .filename( "debian_version" )
     .line( "5.0.4" );
+
+
+    public static final DpkgInfoItem  ITEM_LINUX_DPKGINFO_14 =
+        new DpkgInfoItem( 14, Status.DOES_NOT_EXIST )
+    .name( new EntityItemString( "apache2", Status.DOES_NOT_EXIST ) );
 
 
     public static final RpmInfoItem  ITEM_LINUX_RPMINFO_2 =

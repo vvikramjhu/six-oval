@@ -149,6 +149,72 @@ public class DpkgInfoItem
 
 
 
+    /**
+     */
+    public DpkgInfoItem name(
+                    final String name
+                    )
+    {
+        setName( new EntityItemString( name ) );
+        return this;
+    }
+
+
+    public DpkgInfoItem name(
+                    final EntityItemString name
+                    )
+    {
+        setName( name );
+        return this;
+    }
+
+
+    public DpkgInfoItem arch(
+                    final String arch
+                    )
+    {
+        setArch( new EntityItemString( arch ) );
+        return this;
+    }
+
+
+    public DpkgInfoItem epoch(
+                    final String epoch
+                    )
+    {
+        setEpoch( new EntityItemAnySimple( epoch ) );
+        return this;
+    }
+
+
+    public DpkgInfoItem release(
+                    final String release
+                    )
+    {
+        setRelease( new EntityItemAnySimple( release ) );
+        return this;
+    }
+
+
+    public DpkgInfoItem version(
+                    final String version
+                    )
+    {
+        setVersion( new EntityItemAnySimple( version ) );
+        return this;
+    }
+
+
+    public DpkgInfoItem evr(
+                    final String evr
+                    )
+    {
+        setEvr( new EntityItemEVRString( evr ) );
+        return this;
+    }
+
+
+
     //**************************************************************
     //  Item
     //**************************************************************

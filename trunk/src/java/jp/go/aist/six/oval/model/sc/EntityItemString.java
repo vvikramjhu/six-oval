@@ -34,6 +34,10 @@ public class EntityItemString
     extends EntityItemBase
 {
 
+    public static final Datatype  FIXED_DATATYPE = Datatype.STRING;
+
+
+
     /**
      * Constructor.
      */
@@ -49,7 +53,7 @@ public class EntityItemString
                     final String data
                     )
     {
-        super( data );
+        super( data, FIXED_DATATYPE );
     }
 
 
@@ -58,23 +62,35 @@ public class EntityItemString
      */
     public EntityItemString(
                     final String data,
-                    final Datatype datatype
-                    )
-    {
-        super( data, datatype );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemString(
-                    final String data,
-                    final Datatype datatype,
                     final Status status
                     )
     {
-        super( data, datatype, status );
+        super( data, FIXED_DATATYPE, status );
+    }
+
+
+
+    //**************************************************************
+    //  EntityItemBase
+    //**************************************************************
+
+    @Override
+    public void setDatatype(
+                    final Datatype datatype
+                    )
+    {
+        if (datatype != null  &&  datatype != FIXED_DATATYPE) {
+            throw new IllegalArgumentException( "invalid datatype: " + datatype);
+        }
+
+        super.setDatatype( datatype );
+    }
+
+
+    @Override
+    public Datatype getDatatype()
+    {
+        return FIXED_DATATYPE;
     }
 
 
