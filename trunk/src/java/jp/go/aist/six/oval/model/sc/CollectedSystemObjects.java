@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.sc;
 
-import jp.go.aist.six.oval.model.Container;
+import jp.go.aist.six.oval.model.OvalElementContainer;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -40,7 +40,7 @@ import java.util.Iterator;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class CollectedSystemObjects
-    extends Container<CollectedSystemObject>    //{1..*}
+    extends OvalElementContainer<CollectedSystemObject>    //{1..*}
 {
 
     /**
@@ -111,7 +111,7 @@ public class CollectedSystemObjects
     @Override
     public String toString()
     {
-        return "CollectedSystemObjects["
+        return "collected_objects["
                         + _getElement()
                         + "]";
     }

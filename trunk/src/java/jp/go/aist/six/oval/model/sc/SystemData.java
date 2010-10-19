@@ -111,7 +111,7 @@ public class SystemData
     @Override
     public String toString()
     {
-        return "SystemData["
+        return "system_data["
                         + _getElement()
                         + "]";
     }

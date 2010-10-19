@@ -1195,11 +1195,14 @@
         <field name="object" 
             type="jp.go.aist.six.oval.model.sc.CollectedSystemObject"
             collection="collection"
-            get-method="iterateObject"
-            set-method="addObject">
+            >
             <bind-xml name="object" node="element"/>
         </field>
     </class>
+<!--
+            get-method="iterateObject"
+            set-method="addObject"
+-->
 
 
 
@@ -1283,11 +1286,14 @@
         <field name="item" 
             type="jp.go.aist.six.oval.model.sc.Item"
             collection="collection"
-            get-method="iterateItem"
-            set-method="addItem">
+            >
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
     </class>
+<!--
+            get-method="iterateItem"
+            set-method="addItem"
+-->
 
 
 

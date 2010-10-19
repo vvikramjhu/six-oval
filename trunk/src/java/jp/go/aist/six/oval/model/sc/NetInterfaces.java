@@ -39,7 +39,7 @@ import java.util.Iterator;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class NetInterfaces
-    extends Container<NetInterface>
+    extends Container<NetInterface> //{0..*}
 //extends Container<NetInterface>
 {
 
