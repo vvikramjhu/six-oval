@@ -15,6 +15,7 @@ import jp.go.aist.six.oval.model.windows.FileItem;
 import jp.go.aist.six.oval.model.windows.FileType;
 import jp.go.aist.six.oval.model.windows.RegistryHive;
 import jp.go.aist.six.oval.model.windows.RegistryItem;
+import jp.go.aist.six.oval.model.windows.RegistryType;
 
 
 
@@ -85,6 +86,18 @@ public class ScSample
                         new EntityItemString( "Microsoft Office Outlook" ),
                         new EntityItemVersion( "11.0.8312" )
         );
+
+
+    // windows registry
+    public static final RegistryItem  ITEM_WINDOWS_REGISTRY_45 =
+        new RegistryItem( 45, RegistryItem.DEFAULT_STATUS,
+                        RegistryHive.HKEY_LOCAL_MACHINE,
+                        "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\OUTLOOK.EXE",
+                        "Path",
+                        RegistryType.REG_SZ,
+                        "C:\\Program Files\\Microsoft Office\\OFFICE11\\"
+                        )
+    ;
 
 
     // windows registry
