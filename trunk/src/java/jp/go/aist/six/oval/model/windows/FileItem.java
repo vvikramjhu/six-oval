@@ -34,6 +34,7 @@ import java.util.Map;
 
 
 /**
+ * The file item describes Windows file metadata.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -45,26 +46,6 @@ public class FileItem
 
     private Map<FileProperty, EntityItemBase>  _properties =
         new EnumMap<FileProperty, EntityItemBase>( FileProperty.class );
-
-
-//    private String  _filepath;
-//    private String  _path;
-//    private String  _filename;
-//    private String  _owner;
-//    private long  _size;
-//    private long  _aTime;
-//    private long  _cTime;
-//    private long  _mTime;
-//    private String  _msChecksum;
-//    private String  _version;
-//    private FileType  _type;
-//    private String  _developmentClass;
-//    private String  _company;
-//    private String  _internalName;
-//    private String  _language;
-//    private String  _originalFilename;
-//    private String  _productName;
-//    private String  _productVersion;
 
 
 
@@ -167,7 +148,7 @@ public class FileItem
         setLanguage( new EntityItemString( language ) );
         setOriginalFilename( new EntityItemString( originalFilename ) );
         setProductName( new EntityItemString( productName ) );
-        setProductVersion( new EntityItemString( productVersion ) );
+        setProductVersion( new EntityItemVersion( productVersion ) );
     }
 
 
@@ -194,7 +175,7 @@ public class FileItem
                     final EntityItemString language,
                     final EntityItemString originalFilename,
                     final EntityItemString productName,
-                    final EntityItemString productVersion
+                    final EntityItemVersion productVersion
                     )
     {
         this( id, status );
@@ -220,6 +201,8 @@ public class FileItem
 
 
 
+    /**
+     */
     public EntityItemString getFilepath()
     {
         return (EntityItemString)_properties.get( FileProperty.FILEPATH );
@@ -231,6 +214,15 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.FILEPATH, filepath );
+    }
+
+
+    public FileItem filepath(
+                    final String filepath
+                    )
+    {
+        setFilepath( new EntityItemString( filepath ) );
+        return this;
     }
 
 
@@ -249,6 +241,15 @@ public class FileItem
     }
 
 
+    public FileItem path(
+                    final String path
+                    )
+    {
+        setPath( new EntityItemString( path ) );
+        return this;
+    }
+
+
 
     public EntityItemString getFilename()
     {
@@ -261,6 +262,15 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.FILENAME, filename );
+    }
+
+
+    public FileItem filename(
+                    final String filename
+                    )
+    {
+        setFilename( new EntityItemString( filename ) );
+        return this;
     }
 
 
@@ -279,6 +289,15 @@ public class FileItem
     }
 
 
+    public FileItem owner(
+                    final String owner
+                    )
+    {
+        setOwner( new EntityItemString( owner ) );
+        return this;
+    }
+
+
 
     public EntityItemInt getSize()
     {
@@ -294,6 +313,15 @@ public class FileItem
     }
 
 
+    public FileItem size(
+                    final String size
+                    )
+    {
+        setSize( new EntityItemInt( size ) );
+        return this;
+    }
+
+
 
     public EntityItemInt getATime()
     {
@@ -302,10 +330,19 @@ public class FileItem
 
 
     public void setATime(
-                    final EntityItemInt aTime
+                    final EntityItemInt atime
                     )
     {
-        _properties.put( FileProperty.A_TIME, aTime );
+        _properties.put( FileProperty.A_TIME, atime );
+    }
+
+
+    public FileItem aTime(
+                    final String atime
+                    )
+    {
+        setATime( new EntityItemInt( atime ) );
+        return this;
     }
 
 
@@ -324,6 +361,15 @@ public class FileItem
     }
 
 
+    public FileItem cTime(
+                    final String ctime
+                    )
+    {
+        setCTime( new EntityItemInt( ctime ) );
+        return this;
+    }
+
+
 
     public EntityItemInt getMTime()
     {
@@ -339,6 +385,15 @@ public class FileItem
     }
 
 
+    public FileItem mTime(
+                    final String mtime
+                    )
+    {
+        setMTime( new EntityItemInt( mtime ) );
+        return this;
+    }
+
+
 
     public EntityItemString getMsChecksum()
     {
@@ -347,10 +402,19 @@ public class FileItem
 
 
     public void setMsChecksum(
-                    final EntityItemString msChecksum
+                    final EntityItemString checksum
                     )
     {
-        _properties.put( FileProperty.MS_CHECKSUM, msChecksum );
+        _properties.put( FileProperty.MS_CHECKSUM, checksum );
+    }
+
+
+    public FileItem msChecksum(
+                    final String msChecksum
+                    )
+    {
+        setMsChecksum( new EntityItemString( msChecksum ) );
+        return this;
     }
 
 
@@ -370,6 +434,15 @@ public class FileItem
     }
 
 
+    public FileItem version(
+                    final String version
+                    )
+    {
+        setVersion( new EntityItemVersion( version ) );
+        return this;
+    }
+
+
 
     public EntityItemFileType getType()
     {
@@ -382,6 +455,15 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.TYPE, type );
+    }
+
+
+    public FileItem type(
+                    final FileType type
+                    )
+    {
+        setType( new EntityItemFileType( type ) );
+        return this;
     }
 
 
@@ -400,6 +482,15 @@ public class FileItem
     }
 
 
+    public FileItem developmentClass(
+                    final String developmentClass
+                    )
+    {
+        setDevelopmentClass( new EntityItemString( developmentClass ) );
+        return this;
+    }
+
+
 
     public EntityItemString getCompany()
     {
@@ -415,6 +506,15 @@ public class FileItem
     }
 
 
+    public FileItem company(
+                    final String company
+                    )
+    {
+        setCompany( new EntityItemString( company ) );
+        return this;
+    }
+
+
 
     public EntityItemString getInternalName()
     {
@@ -422,12 +522,20 @@ public class FileItem
     }
 
 
-
     public void setInternalName(
                     final EntityItemString internalName
                     )
     {
         _properties.put( FileProperty.INTERNAL_NAME, internalName );
+    }
+
+
+    public FileItem internalName(
+                    final String internalName
+                    )
+    {
+        setInternalName( new EntityItemString( internalName ) );
+        return this;
     }
 
 
@@ -446,6 +554,15 @@ public class FileItem
     }
 
 
+    public FileItem language(
+                    final String language
+                    )
+    {
+        setLanguage( new EntityItemString( language ) );
+        return this;
+    }
+
+
 
     public EntityItemString getOriginalFilename()
     {
@@ -458,6 +575,15 @@ public class FileItem
                     )
     {
         _properties.put( FileProperty.ORIGINAL_FILENAME, originalFilename );
+    }
+
+
+    public FileItem originalFilename(
+                    final String originalFilename
+                    )
+    {
+        setOriginalFilename( new EntityItemString( originalFilename ) );
+        return this;
     }
 
 
@@ -476,18 +602,36 @@ public class FileItem
     }
 
 
-
-    public EntityItemString getProductVersion()
+    public FileItem productName(
+                    final String productName
+                    )
     {
-        return (EntityItemString)_properties.get( FileProperty.PRODUCT_VERSION );
+        setProductName( new EntityItemString( productName ) );
+        return this;
+    }
+
+
+
+    public EntityItemVersion getProductVersion()
+    {
+        return (EntityItemVersion)_properties.get( FileProperty.PRODUCT_VERSION );
     }
 
 
     public void setProductVersion(
-                    final EntityItemString productVersion
+                    final EntityItemVersion productVersion
                     )
     {
         _properties.put( FileProperty.PRODUCT_VERSION, productVersion );
+    }
+
+
+    public FileItem productVersion(
+                    final String productVersion
+                    )
+    {
+        setProductVersion( new EntityItemVersion( productVersion ) );
+        return this;
     }
 
 

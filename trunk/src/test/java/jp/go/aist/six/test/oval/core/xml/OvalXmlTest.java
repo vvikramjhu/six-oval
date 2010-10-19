@@ -722,6 +722,15 @@ public class OvalXmlTest
                             ScSample.ITEM_LINUX_RPMINFO_2,
                             "marshalled_item-linux-rpminfo_2.xml"
                         }
+                        ,
+                        // windows file
+                        {
+                            Item.class,
+                            "test/data/sc/item-windows-file_46.xml",
+                            "/oval_system_characteristics/system_data/file_item",
+                            ScSample.ITEM_WINDOWS_FILE_46,
+                            "marshalled_item-windows-file_46.xml"
+                        }
         };
     }
 

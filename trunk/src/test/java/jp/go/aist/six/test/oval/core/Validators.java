@@ -29,6 +29,7 @@ import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemData;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
+import jp.go.aist.six.oval.model.windows.FileItem;
 import org.testng.Assert;
 import org.testng.Reporter;
 import java.util.Collection;
@@ -383,6 +384,27 @@ public abstract class Validators
                 Assert.assertEquals( aitem.getVersion(), eitem.getVersion() );
                 Assert.assertEquals( aitem.getEvr(), eitem.getEvr() );
                 Assert.assertEquals( aitem.getSignatureKeyID(), eitem.getSignatureKeyID() );
+            } else if (expected instanceof FileItem) {
+                FileItem  aitem = (FileItem)actual;
+                FileItem  eitem = (FileItem)actual;
+                Assert.assertEquals( aitem.getFilepath(), eitem.getFilepath() );
+                Assert.assertEquals( aitem.getPath(), eitem.getPath() );
+                Assert.assertEquals( aitem.getFilename(), eitem.getFilename() );
+                Assert.assertEquals( aitem.getOwner(), eitem.getOwner() );
+                Assert.assertEquals( aitem.getSize(), eitem.getSize() );
+                Assert.assertEquals( aitem.getATime(), eitem.getATime() );
+                Assert.assertEquals( aitem.getCTime(), eitem.getCTime() );
+                Assert.assertEquals( aitem.getMTime(), eitem.getMTime() );
+                Assert.assertEquals( aitem.getMsChecksum(), eitem.getMsChecksum() );
+                Assert.assertEquals( aitem.getVersion(), eitem.getVersion() );
+                Assert.assertEquals( aitem.getType(), eitem.getType() );
+                Assert.assertEquals( aitem.getDevelopmentClass(), eitem.getDevelopmentClass() );
+                Assert.assertEquals( aitem.getCompany(), eitem.getCompany() );
+                Assert.assertEquals( aitem.getInternalName(), eitem.getInternalName() );
+                Assert.assertEquals( aitem.getLanguage(), eitem.getLanguage() );
+                Assert.assertEquals( aitem.getOriginalFilename(), eitem.getOriginalFilename() );
+                Assert.assertEquals( aitem.getProductName(), eitem.getProductName() );
+                Assert.assertEquals( aitem.getProductVersion(), eitem.getProductVersion() );
             }
         }
     }

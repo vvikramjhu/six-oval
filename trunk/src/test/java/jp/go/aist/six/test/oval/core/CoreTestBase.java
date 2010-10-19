@@ -419,7 +419,7 @@ public abstract class CoreTestBase
                         new EntityItemString( null, Status.NOT_COLLECTED ),  //language
                         new EntityItemString( "Outlook.exe" ),  //original_filename
                         new EntityItemString( "Microsoft Office Outlook" ),  //product_name
-                        new EntityItemString( "11.0.8312" )  //product_version
+                        new EntityItemVersion( "11.0.8312" )  //product_version
         );
 
 

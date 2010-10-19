@@ -3223,25 +3223,12 @@
     <!-- ======================================================= -->
     <!-- FileItem                                                -->
     <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.windows.FileItem">
+    <class name ="jp.go.aist.six.oval.model.windows.FileItem"
+        extends="jp.go.aist.six.oval.model.sc.Item">
         <map-to xml="file_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
             ns-prefix=""
             />
-
-        <!-- BEGIN: extends="jp.go.aist.six.oval.model.sc.Item" -->
-
-        <field name="ID" type="int">
-            <bind-xml name="id" node="attribute"/>
-        </field>
-
-        <field name="status"  
-            type="jp.go.aist.six.oval.model.sc.Status">
-            <bind-xml name="status" node="attribute"/>
-        </field>
-
-        <!-- END: extends="jp.go.aist.six.oval.model.sc.Item" -->
-
 
         <field name="filepath" 
             type="jp.go.aist.six.oval.model.sc.EntityItemString">
@@ -3329,7 +3316,7 @@
         </field>
 
         <field name="productVersion" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemString">
+            type="jp.go.aist.six.oval.model.sc.EntityItemVersion">
             <bind-xml name="product_version" node="element"/>
         </field>
     </class>
