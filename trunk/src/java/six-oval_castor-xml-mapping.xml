@@ -216,11 +216,11 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
             ns-prefix=""/>
 
-<!--
         <field name="schemaLocation" type="string">
             <bind-xml name="xsi:schemaLocation" node="attribute"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
         </field>
+<!--
 -->
 
         <field name="generator" 
