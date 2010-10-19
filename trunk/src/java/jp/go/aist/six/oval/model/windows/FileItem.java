@@ -25,6 +25,7 @@ import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.sc.EntityItemBase;
 import jp.go.aist.six.oval.model.sc.EntityItemInt;
 import jp.go.aist.six.oval.model.sc.EntityItemString;
+import jp.go.aist.six.oval.model.sc.EntityItemVersion;
 import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.Status;
 import java.util.EnumMap;
@@ -158,7 +159,7 @@ public class FileItem
         setCTime( new EntityItemInt( ctime, Datatype.INT ) );
         setMTime( new EntityItemInt( mtime, Datatype.INT ) );
         setMsChecksum( new EntityItemString( checksum ) );
-        setVersion( new EntityItemString( version, Datatype.VERSION ) );
+        setVersion( new EntityItemVersion( version ) );
         setType( new EntityItemFileType( type ) );
         setDevelopmentClass( new EntityItemString( devclass ) );
         setCompany( new EntityItemString( company ) );
@@ -185,7 +186,7 @@ public class FileItem
                     final EntityItemInt ctime,
                     final EntityItemInt mtime,
                     final EntityItemString checksum,
-                    final EntityItemString version,
+                    final EntityItemVersion version,
                     final EntityItemFileType type,
                     final EntityItemString devclass,
                     final EntityItemString company,
@@ -354,15 +355,15 @@ public class FileItem
 
 
 
-    public EntityItemString getVersion()
+    public EntityItemVersion getVersion()
     {
-        return (EntityItemString)_properties.get( FileProperty.VERSION );
+        return (EntityItemVersion)_properties.get( FileProperty.VERSION );
     }
 
 
 
     public void setVersion(
-                    final EntityItemString version
+                    final EntityItemVersion version
                     )
     {
         _properties.put( FileProperty.VERSION, version );

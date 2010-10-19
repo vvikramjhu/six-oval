@@ -705,6 +705,15 @@ public class OvalXmlTest
                             "marshalled_item-independent-textfilecontent_1.xml"
                         }
                         ,
+                        // linux dpkginfo
+                        {
+                            Item.class,
+                            "test/data/sc/item-linux-dpkginfo_14.xml",
+                            "/oval_system_characteristics/system_data/dpkginfo_item",
+                            ScSample.ITEM_LINUX_DPKGINFO_14,
+                            "marshalled_item-linux-dpkginfo_14.xml"
+                        }
+                        ,
                         // linux rpminfo
                         {
                             Item.class,

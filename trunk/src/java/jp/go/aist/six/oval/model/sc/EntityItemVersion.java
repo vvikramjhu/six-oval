@@ -30,18 +30,18 @@ import jp.go.aist.six.oval.model.common.Datatype;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemString
+public class EntityItemVersion
     extends EntityItemBase
 {
 
-    public static final Datatype  FIXED_DATATYPE = Datatype.STRING;
+    public static final Datatype  FIXED_DATATYPE = Datatype.VERSION;
 
 
 
     /**
      * Constructor.
      */
-    public EntityItemString()
+    public EntityItemVersion()
     {
     }
 
@@ -49,7 +49,7 @@ public class EntityItemString
     /**
      * Constructor.
      */
-    public EntityItemString(
+    public EntityItemVersion(
                     final String data
                     )
     {
@@ -60,7 +60,7 @@ public class EntityItemString
     /**
      * Constructor.
      */
-    public EntityItemString(
+    public EntityItemVersion(
                     final String data,
                     final Status status
                     )
@@ -116,7 +116,7 @@ public class EntityItemString
             return true;
         }
 
-        if (!(obj instanceof EntityItemString)) {
+        if (!(obj instanceof EntityItemVersion)) {
             return false;
         }
 
@@ -124,4 +124,4 @@ public class EntityItemString
     }
 
 }
-// EntityItemString
+// EntityItemVersion

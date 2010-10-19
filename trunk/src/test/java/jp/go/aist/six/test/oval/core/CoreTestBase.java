@@ -11,6 +11,7 @@ import jp.go.aist.six.oval.model.sc.CollectedSystemObjects;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimple;
 import jp.go.aist.six.oval.model.sc.EntityItemInt;
 import jp.go.aist.six.oval.model.sc.EntityItemString;
+import jp.go.aist.six.oval.model.sc.EntityItemVersion;
 import jp.go.aist.six.oval.model.sc.Flag;
 import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.ItemReference;
@@ -362,7 +363,6 @@ public abstract class CoreTestBase
                         new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
                         new EntityItemString(
                                         "SOFTWARE\\Microsoft\\Updates\\Visual Studio\\7.0\\S895309",
-                                        EntityItemString.DEFAULT_DATATYPE,
                                         Status.DOES_NOT_EXIST
                                         ),
                         null,
@@ -390,7 +390,6 @@ public abstract class CoreTestBase
                         new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
                         new EntityItemString(
                                         "SOFTWARE\\Microsoft\\Office\\9.0\\Publisher\\InstallRoot",
-                                        EntityItemString.DEFAULT_DATATYPE,
                                         Status.DOES_NOT_EXIST
                                         ),
                         null,
@@ -412,12 +411,12 @@ public abstract class CoreTestBase
                         new EntityItemInt( "25257592830077382", Datatype.INT ),  //c_time
                         new EntityItemInt( "115938124830012212", Datatype.INT ),  //m_time
                         new EntityItemString( "212346" ),  //ms_checksum
-                        new EntityItemString( "11.0.8312.0", Datatype.VERSION ),  //version
+                        new EntityItemVersion( "11.0.8312.0" ),  //version
                         new EntityItemFileType( FileType.FILE_TYPE_DISK ), //type
-                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.DOES_NOT_EXIST ),  //development_class
+                        new EntityItemString( null, Status.DOES_NOT_EXIST ),  //development_class
                         new EntityItemString( "Microsoft Corporation" ),  //company
                         new EntityItemString( "Outlook" ),  //internal_name
-                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.NOT_COLLECTED ),  //language
+                        new EntityItemString( null, Status.NOT_COLLECTED ),  //language
                         new EntityItemString( "Outlook.exe" ),  //original_filename
                         new EntityItemString( "Microsoft Office Outlook" ),  //product_name
                         new EntityItemString( "11.0.8312" )  //product_version

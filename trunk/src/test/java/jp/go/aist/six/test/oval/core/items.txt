@@ -4,6 +4,7 @@ import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimple;
 import jp.go.aist.six.oval.model.sc.EntityItemInt;
 import jp.go.aist.six.oval.model.sc.EntityItemString;
+import jp.go.aist.six.oval.model.sc.EntityItemVersion;
 import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.Status;
 import jp.go.aist.six.oval.model.windows.EntityItemFileType;
@@ -32,15 +33,15 @@ public class ItemsSample
                         new EntityItemInt( 128919810880000000L, Datatype.INT ),
                         new EntityItemInt( 128919810880000000L, Datatype.INT ),
                         new EntityItemString( "6592576" ),
-                        new EntityItemString( null, Datatype.VERSION, Status.ERROR ),
+                        new EntityItemVersion( null, Status.ERROR ),
                         new EntityItemFileType( FileType.FILE_TYPE_DISK ),
-                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
-                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
-                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
-                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
-                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
-                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR ),
-                        new EntityItemString( null, EntityItemString.DEFAULT_DATATYPE, Status.ERROR )
+                        new EntityItemString( null, Status.ERROR ),
+                        new EntityItemString( null, Status.ERROR ),
+                        new EntityItemString( null, Status.ERROR ),
+                        new EntityItemString( null, Status.ERROR ),
+                        new EntityItemString( null, Status.ERROR ),
+                        new EntityItemString( null, Status.ERROR ),
+                        new EntityItemString( null, Status.ERROR )
         )
         ,
         new RegistryItem(
@@ -57,7 +58,7 @@ public class ItemsSample
                         198,
                         Status.DOES_NOT_EXIST,
                         new EntityItemRegistryHive( RegistryHive.HKEY_LOCAL_MACHINE ),
-                        new EntityItemString( "SOFTWARE\\MySQL AB\\MySQL Server 5.0", EntityItemString.DEFAULT_DATATYPE, Status.DOES_NOT_EXIST )
+                        new EntityItemString( "SOFTWARE\\MySQL AB\\MySQL Server 5.0", Status.DOES_NOT_EXIST )
         )
         ,
         new RegistryItem(
