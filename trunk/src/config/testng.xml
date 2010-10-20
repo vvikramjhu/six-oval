@@ -46,9 +46,9 @@
     <test name="oval.core.xml" enabled="true">
         <groups>
             <run>
-                <include name="sc.oval_sc"/>
+                <!-- include name="sc.oval_sc"/ -->
                 <!-- include name="definitions.oval_definitions"/ -->
-                <!-- include name="results.oval_results"/ -->
+                <include name="results.oval_results"/>
             </run>
         </groups>
 
