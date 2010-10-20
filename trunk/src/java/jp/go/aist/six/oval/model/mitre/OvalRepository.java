@@ -82,6 +82,15 @@ public class OvalRepository
     }
 
 
+    public OvalRepository event(
+                    final Event event
+                    )
+    {
+        addEvent( event );
+        return this;
+    }
+
+
     public Collection<Event> getEvent()
     {
         return _event;
@@ -100,6 +109,15 @@ public class OvalRepository
                     )
     {
         _status = status;
+    }
+
+
+    public OvalRepository status(
+                    final DefinitionStatus status
+                    )
+    {
+        setStatus( status );
+        return this;
     }
 
 

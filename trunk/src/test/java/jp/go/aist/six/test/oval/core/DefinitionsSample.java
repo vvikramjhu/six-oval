@@ -48,6 +48,11 @@ import jp.go.aist.six.oval.model.linux.DpkgInfoTest;
 import jp.go.aist.six.oval.model.linux.RpmInfoObject;
 import jp.go.aist.six.oval.model.linux.RpmInfoState;
 import jp.go.aist.six.oval.model.linux.RpmInfoTest;
+import jp.go.aist.six.oval.model.mitre.Contributor;
+import jp.go.aist.six.oval.model.mitre.DefinitionStatus;
+import jp.go.aist.six.oval.model.mitre.OvalRepository;
+import jp.go.aist.six.oval.model.mitre.StatusChange;
+import jp.go.aist.six.oval.model.mitre.Submitted;
 import jp.go.aist.six.oval.model.results.Content;
 import jp.go.aist.six.oval.model.results.CriteriaResult;
 import jp.go.aist.six.oval.model.results.CriterionResult;
@@ -87,7 +92,7 @@ import jp.go.aist.six.oval.model.windows.RegistryTest;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalSample
+public class DefinitionsSample
 {
 
     //==============================================================
@@ -539,31 +544,41 @@ public class OvalSample
     //  def:definition
     //==============================================================
 
-    //**************************************************************
-    // oval:org.mitre.oval:def:8500, MySQL 5.0 and 5.1 SELECT Statement DOS Vulnerability
-    //**************************************************************
-
-    public static final Affected  AFFECTED_8500 = new Affected( Family.WINDOWS )
+    private static final Affected  _AFFECTED_8050_ =
+        new Affected( Family.WINDOWS )
     .platform( "Microsoft Windows 2000" )
     .platform( "Microsoft Windows XP" )
     .platform( "Microsoft Windows Server 2003" )
     .platform( "Microsoft Windows Vista" )
     .platform( "Microsoft Windows 7" )
-    .platform( "Microsoft Windows Server 2008" )
-    .product( "MySQL Server 5.0" )
-    .product( "MySQL Server 5.1" );
+    .product( "Microsoft Office PowerPoint 2002" )
+    .product( "Microsoft Office PowerPoint 2003" )
+    ;
 
 
-    public static final Metadata  METADATA_8500 =
-        new Metadata( "MySQL 5.0 and 5.1 SELECT Statement DOS Vulnerability",
-                        "mysqld in MySQL 5.0.x before 5.0.88 and 5.1.x before 5.1.41"
-                        + " does not (1) properly handle errors during execution of certain SELECT statements with subqueries, and does not"
-                        + " (2) preserve certain null_value flags during execution of statements"
-                        + " that use the GeomFromWKB function, which allows remote authenticated users"
-                        + " to cause a denial of service (daemon crash) via a crafted statement."
-        )
-    .affected( AFFECTED_8500 )
-    .reference( new Reference( "CVE", "CVE-2009-4019", "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4019") );
+    private static final Reference  _REFERENCE_CVE_2010_0030_ =
+        new Reference( "CVE", "CVE-2010-0030", "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0030")
+    ;
+
+
+    private static final OvalRepository  _OVAL_REPOSITORY_8050_ =
+        new OvalRepository()
+    .event( new Submitted( "2010-02-08T13:00:00", new Contributor( "Dragos Prisaca", "Symantec, Inc." )) )
+    .event( new StatusChange( "2010-02-10T13:38:39.224-05:00", DefinitionStatus.DRAFT ) )
+    .event( new StatusChange( "2010-03-01T04:00:14.451-05:00", DefinitionStatus.INTERIM ) )
+    .event( new StatusChange( "2010-03-22T04:00:06.424-04:00", DefinitionStatus.ACCEPTED ) )
+    .status( DefinitionStatus.ACCEPTED )
+    ;
+
+
+    private static final Metadata  _METADATA_8050_ =
+        new Metadata()
+    .title( "PowerPoint LinkedSlideAtom Heap Overflow Vulnerability" )
+    .description( "Heap-based buffer overflow in Microsoft Office PowerPoint 2002 SP3 and 2003 SP3 allows remote attackers to execute arbitrary code via a crafted PowerPoint document, aka \"PowerPoint LinkedSlideAtom Heap Overflow Vulnerability.\"" )
+    .affected( _AFFECTED_8050_ )
+    .reference( _REFERENCE_CVE_2010_0030_ )
+    .additionalMetadata( _OVAL_REPOSITORY_8050_ )
+    ;
 
 
     private static final Criteria  _CRITERIA_8500_ =

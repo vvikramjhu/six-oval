@@ -253,6 +253,15 @@ public class Metadata
     }
 
 
+    public Metadata additionalMetadata(
+                    final MetadataItem item
+                    )
+    {
+        addAdditionalMetadata( item );
+        return this;
+    }
+
+
     public Collection<MetadataItem> getAdditionalMetadata()
     {
         return _additionalMetadata;

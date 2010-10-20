@@ -51,6 +51,19 @@ public class Contributor
     }
 
 
+    /**
+     * Constructor.
+     */
+    public Contributor(
+                    final String name,
+                    final String organization
+                    )
+    {
+        setName( name );
+        setOrganization( organization );
+    }
+
+
 
     /**
      */
@@ -93,7 +106,7 @@ public class Contributor
     @Override
     public String toString()
     {
-        return "Contributor[organization=" + getOrganization()
+        return "contributor[organization=" + getOrganization()
                         + ", name=" + getName()
                         + "]";
     }

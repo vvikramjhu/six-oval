@@ -59,6 +59,20 @@ public class Submitted
 
 
     /**
+     * Constructor.
+     */
+    public Submitted(
+                    final String date,
+                    final Contributor contributor
+                    )
+    {
+        this( date );
+        setContributor( contributor );
+    }
+
+
+
+    /**
      */
     public void setContributor(
                     final Contributor contributor
