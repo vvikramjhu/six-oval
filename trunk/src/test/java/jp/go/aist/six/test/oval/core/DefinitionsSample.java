@@ -1,6 +1,8 @@
 package jp.go.aist.six.test.oval.core;
 
+import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.DefinitionClass;
+import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Operator;
 import jp.go.aist.six.oval.model.definitions.Affected;
@@ -10,12 +12,15 @@ import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.ExtendDefinition;
 import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.Reference;
+import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.mitre.Contributor;
 import jp.go.aist.six.oval.model.mitre.DefinitionStatus;
 import jp.go.aist.six.oval.model.mitre.Modified;
 import jp.go.aist.six.oval.model.mitre.OvalRepository;
 import jp.go.aist.six.oval.model.mitre.StatusChange;
 import jp.go.aist.six.oval.model.mitre.Submitted;
+import jp.go.aist.six.oval.model.windows.FileTest;
+import jp.go.aist.six.oval.model.windows.RegistryTest;
 
 
 
@@ -228,6 +233,48 @@ public class DefinitionsSample
     .criteria( _CRITERIA_305_ )
     ;
 
+
+
+    //==============================================================
+    //  def:test
+    //==============================================================
+
+    public static final Test  TEST_WINDOWS_REGISTRY_1204 =
+        new RegistryTest( "oval:org.mitre.oval:tst:1204", 2,
+                        "Microsoft PowerPoint 2003 is installed",
+                        Check.AT_LEAST_ONE )
+    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+    .object( "oval:org.mitre.oval:obj:850" )
+    ;
+
+
+    public static final Test  TEST_WINDOWS_REGISTRY_704 =
+        new RegistryTest( "oval:org.mitre.oval:tst:704", 2,
+                        "Microsoft PowerPoint 2002 is installed",
+                        Check.AT_LEAST_ONE )
+    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+    .object( "oval:org.mitre.oval:obj:555" )
+    ;
+
+
+    public static final Test  TEST_WINDOWS_FILE_21080 =
+        new FileTest( "oval:org.mitre.oval:tst:21080", 1,
+                        "Powerpnt.exe is less than version 10.0.6858.0",
+                        Check.AT_LEAST_ONE )
+    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+    .object( "oval:org.mitre.oval:obj:553" )
+    .state( "oval:org.mitre.oval:ste:6617" )
+    ;
+
+
+    public static final Test  TEST_WINDOWS_FILE_20855 =
+        new FileTest( "oval:org.mitre.oval:tst:20855", 1,
+                        "Powerpnt.exe is less than version 11.0.8318.0",
+                        Check.AT_LEAST_ONE )
+    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
+    .object( "oval:org.mitre.oval:obj:553" )
+    .state( "oval:org.mitre.oval:ste:6706" )
+    ;
 
 
 
