@@ -162,6 +162,74 @@ public class DefinitionsSample
 
 
 
+    //==============================================================
+    //  def:definition 305
+    //==============================================================
+
+    private static final Affected  _AFFECTED_305_ =
+        new Affected( Family.WINDOWS )
+    .platform( "Microsoft Windows 2000" )
+    .platform( "Microsoft Windows XP" )
+    .platform( "Microsoft Windows Server 2003" )
+    .product( "Microsoft Office PowerPoint 2002" )
+    ;
+
+
+    private static final Reference  _REFERENCE_CPE_POWERPOINT_2002_ =
+        new Reference( "CPE", "cpe:/a:microsoft:powerpoint:2002" )
+    ;
+
+
+    private static final OvalRepository  _OVAL_REPOSITORY_305_ =
+        new OvalRepository()
+    .event( new Submitted( "2006-08-11T12:53:40", new Contributor( "Robert L. Hollis", "ThreatGuard, Inc." ) ) )
+    .event( new StatusChange( "2006-09-08T11:26:00.000-04:00", DefinitionStatus.DRAFT ) )
+    .event( new StatusChange( "2006-09-27T12:29:20.418-04:00", DefinitionStatus.INTERIM ) )
+    .event( new StatusChange( "2006-10-16T15:58:37.787-04:00", DefinitionStatus.ACCEPTED ) )
+    .event( new Modified( "2007-02-12T10:34:00.838-05:00", "Corrected tst:704. Removed reference to ste:631 and deprecated ste:631",
+                    new Contributor( "Jonathan Baker", "The MITRE Corporation" ) )
+    )
+    .event( new StatusChange( "2007-02-12T10:37:25.230-05:00", DefinitionStatus.INTERIM ) )
+    .event( new StatusChange( "2007-03-21T16:17:15.526-04:00", DefinitionStatus.ACCEPTED ) )
+    .event( new Modified( "2009-06-01T16:05:28.035-04:00", "Added Microsoft PowerPoint 2003 product. Removed Microsoft reference",
+                    new Contributor( "Brendan Miles", "The MITRE Corporation" ) )
+    )
+    .event( new StatusChange( "2009-06-08T04:00:38.590-04:00", DefinitionStatus.INTERIM ) )
+    .event( new StatusChange( "2009-06-29T04:00:23.339-04:00", DefinitionStatus.ACCEPTED ) )
+    .status( DefinitionStatus.ACCEPTED )
+    ;
+
+
+    private static final Metadata  _METADATA_305_ =
+        new Metadata()
+    .title( "Microsoft PowerPoint 2002 is installed" )
+    .description( "The application Microsoft PowerPoint 2002 is installed." )
+    .affected( _AFFECTED_305_ )
+    .reference( _REFERENCE_CPE_POWERPOINT_2002_ )
+    .additionalMetadata( _OVAL_REPOSITORY_305_ )
+    ;
+
+
+    private static final Criteria  _CRITERIA_305_ =
+        new Criteria()
+    .element(
+                    new Criterion( "oval:org.mitre.oval:tst:704",
+                                    "Microsoft PowerPoint 2002 is installed"
+                    )
+    )
+    ;
+
+
+    public static final Definition  DEFINITION_305 =
+        new Definition( "oval:org.mitre.oval:def:305", 3,
+                        DefinitionClass.INVENTORY,
+                        _METADATA_305_
+                        )
+    .criteria( _CRITERIA_305_ )
+    ;
+
+
+
 
 }
 // DefinitionsSample
