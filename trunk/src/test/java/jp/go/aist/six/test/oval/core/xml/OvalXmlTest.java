@@ -730,11 +730,19 @@ public class OvalXmlTest
         return new Object[][] {
                         {
                             OvalSystemCharacteristics.class,
-                            "test/data/sc/oval-sc-5.8_oval-8500_CVE-2009-4019_MySQL.xml",
+                            "test/data/sc/oval-sc-5.8-windows-xp_8050.xml",
                             "/oval_system_characteristics",
                             null,
-                            "marshalled_oval-sc-5.8_oval-8500_CVE-2009-4019_MySQL.xml"
+                            "marshalled_oval-sc-5.8-windows-xp_8050.xml"
                         }
+//                        ,
+//                        {
+//                            OvalSystemCharacteristics.class,
+//                            "test/data/sc/oval-sc-5.8_oval-8500_CVE-2009-4019_MySQL.xml",
+//                            "/oval_system_characteristics",
+//                            null,
+//                            "marshalled_oval-sc-5.8_oval-8500_CVE-2009-4019_MySQL.xml"
+//                        }
         };
     }
 

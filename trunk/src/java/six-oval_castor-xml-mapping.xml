@@ -1376,7 +1376,7 @@
         </field>
         
         <field name="directives" 
-            type="jp.go.aist.six.oval.model.results.Directives">
+            type="jp.go.aist.six.oval.model.results.DefaultDirectives">
             <bind-xml name="directives" node="element"/>
         </field>
         
@@ -1410,8 +1410,10 @@
     <!-- Directives                                              -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.results.Directives">
+<!--
         <map-to xml="directives"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
+-->
 
         <field name="definitionTrue" 
             type="jp.go.aist.six.oval.model.results.Directive">
@@ -1447,12 +1449,22 @@
 
 
     <!-- ======================================================= -->
+    <!-- DefaultDirectives                                       -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.model.results.DefaultDirectives"
+        extends="jp.go.aist.six.oval.model.results.Directives">
+
+        <field name="includeSourceDefinitions" type="boolean">
+            <bind-xml name="include_source_definitions" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <!-- ======================================================= -->
     <!-- Directive                                               -->
     <!-- ======================================================= -->
     <class name ="jp.go.aist.six.oval.model.results.Directive">
-        <map-to xml="directive"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
-
         <field name="reported" type="boolean">
             <bind-xml name="reported" node="attribute"/>
         </field>
