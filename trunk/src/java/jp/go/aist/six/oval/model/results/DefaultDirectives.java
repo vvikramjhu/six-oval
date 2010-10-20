@@ -20,70 +20,39 @@
 
 package jp.go.aist.six.oval.model.results;
 
-import jp.go.aist.six.util.castor.AbstractPersistable;
-import java.util.EnumMap;
-import java.util.Map;
-
 
 
 /**
- * The DirectivesType presents a set of flags
+ * The DefaultDirectives presents the default set of flags
  * that describe what information has been included in the results document.
- *
- * <p>Properties:</p>
- * <ul>
- *   <li>definition_true (1..1)</li>
- *   <li>definition_false (1..1)</li>
- *   <li>definition_unknown (1..1)</li>
- *   <li>definition_error (1..1)</li>
- *   <li>definition_not_evaluated (1..1)</li>
- *   <li>definition_not_applicable (1..1)</li>
- * </ul>
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Directives
-    extends AbstractPersistable
+public class DefaultDirectives
+    extends Directives
 {
 
-    protected static enum ResultType
-    {
-        TRUE,
-        FALSE,
-        UNKNOWN,
-        ERROR,
-        NOT_EVALUATED,
-        NOT_APPLICABLE;
-    }
-
-    private Map<ResultType, Directive>  _directives =
-        new EnumMap<ResultType, Directive>( ResultType.class );
-    //{1..1}
+    public static final boolean DEFAULT_INCLUDE_SOURCE_DEFINITIONS = true;
+    private boolean  _includeSourceDefinitions = DEFAULT_INCLUDE_SOURCE_DEFINITIONS;
+    //{optional, default='true'}
 
 
 
     /**
      * Constructor.
      */
-    public Directives()
+    public DefaultDirectives()
     {
-        this(
-                        new Directive(),
-                        new Directive(),
-                        new Directive(),
-                        new Directive(),
-                        new Directive(),
-                        new Directive()
-                        );
     }
 
 
     /**
      * Constructor.
      */
-    public Directives(
+    public DefaultDirectives(
+                    final boolean includeSourceDefinitions,
                     final Directive definitionTrue,
                     final Directive definitionFalse,
                     final Directive definitionUnknown,
@@ -92,114 +61,33 @@ public class Directives
                     final Directive definitionNotApplicable
                     )
     {
-        setDefinitionTrue(          definitionTrue );
-        setDefinitionFalse(         definitionFalse );
-        setDefinitionUnknown(       definitionUnknown );
-        setDefinitionError(         definitionError );
-        setDefinitionNotEvaluated(  definitionNotEvaluated );
-        setDefinitionNotApplicable( definitionNotApplicable );
+        super(
+                        definitionTrue,
+                        definitionFalse,
+                        definitionUnknown,
+                        definitionError,
+                        definitionNotEvaluated,
+                        definitionNotApplicable
+        );
+
+        setIncludeSourceDefinitions( includeSourceDefinitions );
     }
 
 
 
     /**
      */
-    public Directive getDefinitionTrue()
-    {
-        return _directives.get( ResultType.TRUE );
-    }
-
-
-    public void setDefinitionTrue(
-                    final Directive directive
+    public void setIncludeSourceDefinitions(
+                    final boolean includeSourceDefinitions
                     )
     {
-        _directives.put( ResultType.TRUE, directive );
+        _includeSourceDefinitions = includeSourceDefinitions;
     }
 
 
-
-    /**
-     */
-    public Directive getDefinitionFalse()
+    public boolean isIncludeSourceDefinitions()
     {
-        return _directives.get( ResultType.FALSE );
-    }
-
-
-    public void setDefinitionFalse(
-                    final Directive directive
-                    )
-    {
-        _directives.put( ResultType.FALSE, directive );
-    }
-
-
-
-    /**
-     */
-    public Directive getDefinitionUnknown()
-    {
-        return _directives.get( ResultType.UNKNOWN );
-    }
-
-
-    public void setDefinitionUnknown(
-                    final Directive directive
-                    )
-    {
-        _directives.put( ResultType.UNKNOWN, directive );
-    }
-
-
-
-    /**
-     */
-    public Directive getDefinitionError()
-    {
-        return _directives.get( ResultType.ERROR );
-    }
-
-
-    public void setDefinitionError(
-                    final Directive directive
-                    )
-    {
-        _directives.put( ResultType.ERROR, directive );
-    }
-
-
-
-    /**
-     */
-    public Directive getDefinitionNotEvaluated()
-    {
-        return _directives.get( ResultType.NOT_EVALUATED );
-    }
-
-
-    public void setDefinitionNotEvaluated(
-                    final Directive directive
-                    )
-    {
-        _directives.put( ResultType.NOT_EVALUATED, directive );
-    }
-
-
-
-    /**
-     */
-    public Directive getDefinitionNotApplicable()
-    {
-        return _directives.get( ResultType.NOT_APPLICABLE );
-    }
-
-
-    public void setDefinitionNotApplicable(
-                    final Directive directive
-                    )
-    {
-        _directives.put( ResultType.NOT_APPLICABLE, directive );
+        return _includeSourceDefinitions;
     }
 
 
@@ -212,25 +100,9 @@ public class Directives
     public int hashCode()
     {
         final int  prime = 37;
-        int  result = 17;
+        int  result = super.hashCode();
 
-        Directive  defTrue = getDefinitionTrue();
-        result = prime * result + ((defTrue == null) ? 0 : defTrue.hashCode());
-
-        Directive  defFalse= getDefinitionFalse();
-        result = prime * result + ((defFalse == null) ? 0 : defFalse.hashCode());
-
-        Directive  defUnknown = getDefinitionUnknown();
-        result = prime * result + ((defUnknown == null) ? 0 : defUnknown.hashCode());
-
-        Directive  defError = getDefinitionError();
-        result = prime * result + ((defError == null) ? 0 : defError.hashCode());
-
-        Directive  defNotEvaluated = getDefinitionNotEvaluated();
-        result = prime * result + ((defNotEvaluated == null) ? 0 : defNotEvaluated.hashCode());
-
-        Directive  defNotApplicable = getDefinitionNotApplicable();
-        result = prime * result + ((defNotApplicable == null) ? 0 : defNotApplicable.hashCode());
+        result = prime * result + (isIncludeSourceDefinitions() ? 0 : 1);
 
         return result;
     }
@@ -242,62 +114,20 @@ public class Directives
                     final Object obj
                     )
     {
-        if (this == obj) {
-            return true;
-        }
-
-        if (!(obj instanceof Directives)) {
+        if (!(obj instanceof DefaultDirectives)) {
             return false;
         }
 
-        Directives  other = (Directives)obj;
-        Directive  other_false = other.getDefinitionFalse();
-        Directive   this_false =  this.getDefinitionFalse();
-        if (this_false == other_false
-                        ||  (this_false != null  &&  this_false.equals( other_false ))) {
-            Directive  other_unknown = other.getDefinitionUnknown();
-            Directive   this_unknown =  this.getDefinitionUnknown();
-            if (this_unknown == other_unknown
-                            ||  (this_unknown != null  &&  this_unknown.equals( other_unknown ))) {
-                Directive  other_error = other.getDefinitionError();
-                Directive   this_error =  this.getDefinitionError();
-                if (this_error == other_error
-                                ||  (this_error != null  &&  this_error.equals( other_error ))) {
-                    Directive  other_not_eval = other.getDefinitionNotEvaluated();
-                    Directive   this_not_eval =  this.getDefinitionNotEvaluated();
-                    if (this_not_eval == other_not_eval
-                                    ||  (this_not_eval != null  &&  this_not_eval.equals( other_not_eval ))) {
-                        Directive  other_not_app = other.getDefinitionNotApplicable();
-                        Directive   this_not_app =  this.getDefinitionNotApplicable();
-                        if (this_not_app == other_not_app
-                                        ||  (this_not_app != null  &&  this_not_app.equals( other_not_app ))) {
-                            Directive  other_true = other.getDefinitionTrue();
-                            Directive   this_true =  this.getDefinitionTrue();
-                            if (this_true == other_true
-                                            ||  (this_true != null  &&  this_true.equals( other_true ))) {
-                                return true;
-                            }
-                        }
-                    }
-                }
+
+        if (super.equals( obj )) {
+            DefaultDirectives  other = (DefaultDirectives)obj;
+            if (isIncludeSourceDefinitions() == other.isIncludeSourceDefinitions()) {
+                return true;
             }
         }
 
         return false;
     }
 
-
-
-    @Override
-    public String toString()
-    {
-        return "definition_true="             + getDefinitionTrue()
-             + ", definition_false="          + getDefinitionFalse()
-             + ", definition_unknown="        + getDefinitionUnknown()
-             + ", definition_error="          + getDefinitionError()
-             + ", definition_not_evaluated="  + getDefinitionNotEvaluated()
-             + ", definition_not_applicable=" + getDefinitionNotApplicable();
-    }
-
 }
-// Directives
+// DefaultDirectives
