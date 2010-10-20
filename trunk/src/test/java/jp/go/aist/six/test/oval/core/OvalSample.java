@@ -51,9 +51,9 @@ import jp.go.aist.six.oval.model.linux.RpmInfoTest;
 import jp.go.aist.six.oval.model.results.Content;
 import jp.go.aist.six.oval.model.results.CriteriaResult;
 import jp.go.aist.six.oval.model.results.CriterionResult;
+import jp.go.aist.six.oval.model.results.DefaultDirectives;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.Directive;
-import jp.go.aist.six.oval.model.results.Directives;
 import jp.go.aist.six.oval.model.results.ExtendDefinitionResult;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.Result;
@@ -1020,7 +1020,8 @@ public class OvalSample
                                         "OVAL Definition Interpreter",
                                         "5.7 Build: 2"
                         ),
-                        new Directives(
+                        new DefaultDirectives(
+                                        true,
                                         new Directive( true, Content.FULL ),
                                         new Directive( true, Content.FULL ),
                                         new Directive( true, Content.FULL ),

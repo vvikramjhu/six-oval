@@ -886,34 +886,41 @@ public class OvalXmlTest
     public Object[][] provideOvalResultsOvalResults()
     {
         return new Object[][] {
-                      // Windows @Mitre, CVE-2010-0176
+                      // Windows XP, CVE-2010-0030, MS PowerPoint
                       {
                           OvalResults.class,
-                          "test/data/results/oval-results_CVE-2010-0176_mitre7222.xml",
+                          "test/data/results/oval-results-5.8-windows-xp_8050.xml",
                           "/oval_results",
                           null,
-                          "marshalled_oval-results_CVE-2010-0176_mitre7222.xml"
+                          "marshalled_oval-results-5.8-windows-xp_8050.xml"
                       }
-                      ,
-
-                      // Red Hat patch, CVE-2010-0176, RHSA 20100332
-                      {
-                          OvalResults.class,
-                          "test/data/results/oval-results_CVE-2010-0176_rhsa20100332.xml",
-                          "/oval_results",
-                          null,
-                          "marshalled_oval-results_CVE-2010-0176_rhsa20100332.xml"
-                      }
-                      ,
-
-                      // Debian @Mitre, CVE-2010-0176, DSA-2027
-                      {
-                          OvalResults.class,
-                          "test/data/results/oval-results_CVE-2010-0176_mitre7432_DSA-2027.xml",
-                          "/oval_results",
-                          null,
-                          "marshalled_oval-results_CVE-2010-0176_mitre7432_DSA-2027.xml"
-                      }
+//                      ,
+//                      // Windows @Mitre, CVE-2010-0176
+//                      {
+//                          OvalResults.class,
+//                          "test/data/results/oval-results_CVE-2010-0176_mitre7222.xml",
+//                          "/oval_results",
+//                          null,
+//                          "marshalled_oval-results_CVE-2010-0176_mitre7222.xml"
+//                      }
+//                      ,
+//                      // Red Hat patch, CVE-2010-0176, RHSA 20100332
+//                      {
+//                          OvalResults.class,
+//                          "test/data/results/oval-results_CVE-2010-0176_rhsa20100332.xml",
+//                          "/oval_results",
+//                          null,
+//                          "marshalled_oval-results_CVE-2010-0176_rhsa20100332.xml"
+//                      }
+//                      ,
+//                      // Debian @Mitre, CVE-2010-0176, DSA-2027
+//                      {
+//                          OvalResults.class,
+//                          "test/data/results/oval-results_CVE-2010-0176_mitre7432_DSA-2027.xml",
+//                          "/oval_results",
+//                          null,
+//                          "marshalled_oval-results_CVE-2010-0176_mitre7432_DSA-2027.xml"
+//                      }
         };
     }
 
