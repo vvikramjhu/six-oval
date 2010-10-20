@@ -68,12 +68,24 @@ public class Reference
      */
     public Reference(
                     final String source,
-                    final String refID,
-                    final String refURL
+                    final String refID
                     )
     {
         setSource( source );
         setRefID( refID );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public Reference(
+                    final String source,
+                    final String refID,
+                    final String refURL
+                    )
+    {
+        this( source, refID );
         setRefURL( refURL );
     }
 
@@ -190,7 +202,7 @@ public class Reference
     @Override
     public String toString()
     {
-        return "Reference[source=" + getSource()
+        return "reference[source=" + getSource()
                         + ", ref_id=" + getRefID()
                         + ", ref_url=" + getRefURL()
                         + "]";

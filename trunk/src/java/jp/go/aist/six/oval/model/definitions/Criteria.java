@@ -93,6 +93,19 @@ public class Criteria
      */
     public Criteria(
                     final Operator operator,
+                    final String comment
+                    )
+    {
+        this( operator );
+        setComment( comment );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public Criteria(
+                    final Operator operator,
                     final Collection<? extends CriteriaElement> elements
                     )
     {

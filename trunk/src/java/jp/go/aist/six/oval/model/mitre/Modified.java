@@ -60,6 +60,21 @@ public class Modified
     }
 
 
+    /**
+     * Constructor.
+     */
+    public Modified(
+                    final String date,
+                    final String comment,
+                    final Contributor contributor
+                    )
+    {
+        this( date );
+        setComment( comment );
+        setContributor( contributor );
+    }
+
+
 
     /**
      */

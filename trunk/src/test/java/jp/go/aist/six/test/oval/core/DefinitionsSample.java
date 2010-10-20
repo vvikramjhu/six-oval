@@ -12,6 +12,7 @@ import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.Reference;
 import jp.go.aist.six.oval.model.mitre.Contributor;
 import jp.go.aist.six.oval.model.mitre.DefinitionStatus;
+import jp.go.aist.six.oval.model.mitre.Modified;
 import jp.go.aist.six.oval.model.mitre.OvalRepository;
 import jp.go.aist.six.oval.model.mitre.StatusChange;
 import jp.go.aist.six.oval.model.mitre.Submitted;
@@ -26,7 +27,7 @@ public class DefinitionsSample
 {
 
     //==============================================================
-    //  def:definition
+    //  def:definition 8050
     //==============================================================
 
     private static final Affected  _AFFECTED_8050_ =
@@ -42,7 +43,7 @@ public class DefinitionsSample
 
 
     private static final Reference  _REFERENCE_CVE_2010_0030_ =
-        new Reference( "CVE", "CVE-2010-0030", "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0030")
+        new Reference( "CVE", "CVE-2010-0030", "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0030" )
     ;
 
 
@@ -66,24 +67,24 @@ public class DefinitionsSample
     ;
 
 
-    private static final Criteria  _CRITERIA_8500_ =
+    private static final Criteria  _CRITERIA_8050_ =
         new Criteria( Operator.OR )
     .element(
-                    new Criteria( Operator.AND )
-                    .element( new ExtendDefinition( "oval:org.mitre.oval:def:8282",
-                                    "MySQL 5.0 is installed" )
+                    new Criteria( Operator.AND, "PowerPoint 2002" )
+                    .element( new ExtendDefinition( "oval:org.mitre.oval:def:305",
+                                    "Microsoft PowerPoint 2002 is installed" )
                     )
-                    .element( new Criterion( "oval:org.mitre.oval:tst:20192",
-                                    "MySQL Server 5.0 version is less than 5.0.88" )
+                    .element( new Criterion( "oval:org.mitre.oval:tst:21080",
+                                    "Powerpnt.exe is less than version 10.0.6858.0" )
                     )
     )
     .element(
-                    new Criteria( Operator.AND )
-                    .element( new ExtendDefinition( "oval:org.mitre.oval:def:8297",
-                                    "MySQL 5.1 is installed" )
+                    new Criteria( Operator.AND, "PowerPoint 2003" )
+                    .element( new ExtendDefinition( "oval:org.mitre.oval:def:666",
+                                    "Microsoft PowerPoint 2003 is installed" )
                     )
-                    .element( new Criterion( "oval:org.mitre.oval:tst:20859",
-                                    "MySQL Server 5.1 version is less than 5.1.41" )
+                    .element( new Criterion( "oval:org.mitre.oval:tst:20855",
+                                    "Powerpnt.exe is less than version 11.0.8318.0" )
                     )
     );
 
@@ -93,8 +94,72 @@ public class DefinitionsSample
                         DefinitionClass.VULNERABILITY,
                         _METADATA_8050_
                         )
-    .criteria( _CRITERIA_8500_ )
+    .criteria( _CRITERIA_8050_ )
     ;
+
+
+
+    //==============================================================
+    //  def:definition 666
+    //==============================================================
+
+    private static final Affected  _AFFECTED_666_ =
+        new Affected( Family.WINDOWS )
+    .platform( "Microsoft Windows 2000" )
+    .platform( "Microsoft Windows XP" )
+    .platform( "Microsoft Windows Server 2003" )
+    .product( "Microsoft Office PowerPoint 2003" )
+    ;
+
+
+    private static final Reference  _REFERENCE_CPE_POWERPOINT_2003_ =
+        new Reference( "CPE", "cpe:/a:microsoft:powerpoint:2003" )
+    ;
+
+
+    private static final OvalRepository  _OVAL_REPOSITORY_666_ =
+        new OvalRepository()
+    .event( new Submitted( "2006-08-11T12:53:40", new Contributor( "Robert L. Hollis", "ThreatGuard, Inc." ) ) )
+    .event( new StatusChange( "2006-09-08T11:26:00.000-04:00", DefinitionStatus.DRAFT ) )
+    .event( new StatusChange( "2006-09-27T12:29:33.948-04:00", DefinitionStatus.INTERIM ) )
+    .event( new StatusChange( "2006-10-16T15:58:46.477-04:00", DefinitionStatus.ACCEPTED ) )
+    .event( new Modified( "2009-06-01T16:05:28.035-04:00", "Added Microsoft PowerPoint 2003 product. Removed Microsoft reference",
+                    new Contributor( "Brendan Miles", "The MITRE Corporation" ) )
+    )
+    .event( new StatusChange( "2009-06-08T04:01:05.508-04:00", DefinitionStatus.INTERIM ) )
+    .event( new StatusChange( "2009-06-29T04:01:08.748-04:00", DefinitionStatus.ACCEPTED ) )
+    .status( DefinitionStatus.ACCEPTED )
+    ;
+
+
+    private static final Metadata  _METADATA_666_ =
+        new Metadata()
+    .title( "Microsoft PowerPoint 2003 is installed" )
+    .description( "The application Microsoft PowerPoint 2003 is installed." )
+    .affected( _AFFECTED_666_ )
+    .reference( _REFERENCE_CPE_POWERPOINT_2003_ )
+    .additionalMetadata( _OVAL_REPOSITORY_666_ )
+    ;
+
+
+    private static final Criteria  _CRITERIA_666_ =
+        new Criteria()
+    .element(
+                    new Criterion( "oval:org.mitre.oval:tst:1204",
+                                    "Microsoft PowerPoint 2003 is installed"
+                    )
+    )
+    ;
+
+
+    public static final Definition  DEFINITION_666 =
+        new Definition( "oval:org.mitre.oval:def:666", 3,
+                        DefinitionClass.INVENTORY,
+                        _METADATA_666_
+                        )
+    .criteria( _CRITERIA_666_ )
+    ;
+
 
 
 
