@@ -26,6 +26,10 @@ import java.util.HashMap;
 
 
 /**
+ * The ContentEnumeration defines the valid values
+ * for the directives controlling the amount of
+ * expected depth found in the results document.
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

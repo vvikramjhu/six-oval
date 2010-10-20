@@ -27,8 +27,8 @@ import java.util.Map;
 
 
 /**
- * The DirectivesType presents flags describing what information
- * has been included in the results file.
+ * The DirectivesType presents a set of flags
+ * that describe what information has been included in the results document.
  *
  * <p>Properties:</p>
  * <ul>
@@ -291,13 +291,12 @@ public class Directives
     @Override
     public String toString()
     {
-        return "Directives[definition_true="             + getDefinitionTrue()
-                        + ", definition_false="          + getDefinitionFalse()
-                        + ", definition_unknown="        + getDefinitionUnknown()
-                        + ", definition_error="          + getDefinitionError()
-                        + ", definition_not_evaluated="  + getDefinitionNotEvaluated()
-                        + ", definition_not_applicable=" + getDefinitionNotApplicable()
-                        + "]";
+        return "definition_true="             + getDefinitionTrue()
+             + ", definition_false="          + getDefinitionFalse()
+             + ", definition_unknown="        + getDefinitionUnknown()
+             + ", definition_error="          + getDefinitionError()
+             + ", definition_not_evaluated="  + getDefinitionNotEvaluated()
+             + ", definition_not_applicable=" + getDefinitionNotApplicable();
     }
 
 }

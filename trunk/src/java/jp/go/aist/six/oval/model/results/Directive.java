@@ -25,8 +25,8 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 /**
- * Each Directive determines whether or not certain results are included
- * in the results file.
+ * An individual directive element determines whether or not
+ * a specific type of result is included in the results document.
  *
  * <p>Properties:</p>
  * <ul>
@@ -168,7 +168,7 @@ public class Directive
     @Override
     public String toString()
     {
-        return "Directive[reported=" + isReported()
+        return "[reported=" + isReported()
                         + ", content=" + getContent()
                         + "]";
     }
