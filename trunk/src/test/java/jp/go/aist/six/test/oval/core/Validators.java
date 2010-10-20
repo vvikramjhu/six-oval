@@ -25,11 +25,16 @@ import jp.go.aist.six.oval.model.results.SystemResults;
 import jp.go.aist.six.oval.model.results.TestResult;
 import jp.go.aist.six.oval.model.results.TestResults;
 import jp.go.aist.six.oval.model.results.TestedItem;
+import jp.go.aist.six.oval.model.sc.CollectedSystemObject;
+import jp.go.aist.six.oval.model.sc.CollectedSystemObjects;
 import jp.go.aist.six.oval.model.sc.Item;
+import jp.go.aist.six.oval.model.sc.ItemReference;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemData;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
+import jp.go.aist.six.oval.model.sc.VariableValue;
 import jp.go.aist.six.oval.model.windows.FileItem;
+import jp.go.aist.six.oval.model.windows.RegistryItem;
 import org.testng.Assert;
 import org.testng.Reporter;
 import java.util.Collection;
@@ -352,7 +357,67 @@ public abstract class Validators
 
 
     /**
-     * SystemInfo
+     * CollectedSystemObject
+     */
+    public static class CollectedSystemObjectValidator
+    extends Validator<CollectedSystemObject>
+    {
+        @Override
+        public void equals(
+                        final CollectedSystemObject actual,
+                        final CollectedSystemObject expected
+                        )
+        {
+            if (expected == null) {
+                return;
+            }
+
+            Collection<ItemReference>  aReference = actual.getReference();
+            Collection<ItemReference>  eReference = expected.getReference();
+            if (eReference == null  ||  eReference.size() == 0) {
+                Assert.assertTrue( aReference == null  || aReference.size() == 0 );
+            } else {
+                Assert.assertEquals( aReference.size(), eReference.size() );
+                for (ItemReference  er : eReference) {
+                    boolean  contained = false;
+                    for (ItemReference  ar : aReference) {
+                        if (ar.getItemRef() == er.getItemRef()) {
+                            contained = true;
+                            break;
+                        }
+                    }
+                    Assert.assertTrue( contained );
+                }
+            }
+
+            Collection<VariableValue>  aVariableValue = actual.getVariableValue();
+            Collection<VariableValue>  eVariableValue = expected.getVariableValue();
+            if (eVariableValue == null  ||  eVariableValue.size() == 0) {
+                Assert.assertTrue( aVariableValue == null  || aVariableValue.size() == 0 );
+            } else {
+                Assert.assertEquals( aVariableValue.size(), eVariableValue.size() );
+                for (VariableValue  ev : eVariableValue) {
+                    boolean  contained = false;
+                    for (VariableValue  av : aVariableValue) {
+                        if (av.getVariableID().equals( ev.getVariableID() )) {
+                            Assert.assertEquals( av.getValue(), ev.getValue() );
+                            contained = true;
+                            break;
+                        }
+                    }
+                    Assert.assertTrue( contained );
+                }
+            }
+
+            Assert.assertEquals( actual.getVariableInstance(), expected.getVariableInstance() );
+            Assert.assertEquals( actual.getComment(), expected.getComment() );
+            Assert.assertEquals( actual.getFlag(), expected.getFlag() );
+        }
+    }
+
+
+    /**
+     * Item
      */
     public static class ItemValidator
     extends Validator<Item>
@@ -405,6 +470,13 @@ public abstract class Validators
                 Assert.assertEquals( aitem.getOriginalFilename(), eitem.getOriginalFilename() );
                 Assert.assertEquals( aitem.getProductName(), eitem.getProductName() );
                 Assert.assertEquals( aitem.getProductVersion(), eitem.getProductVersion() );
+            } else if (expected instanceof RegistryItem) {
+                RegistryItem  aitem = (RegistryItem)actual;
+                RegistryItem  eitem = (RegistryItem)actual;
+                Assert.assertEquals( aitem.getHive(), eitem.getHive() );
+                Assert.assertEquals( aitem.getKey(), eitem.getKey() );
+                Assert.assertEquals( aitem.getName(), eitem.getName() );
+                Assert.assertEquals( aitem.getType(), eitem.getType() );
             }
         }
     }
@@ -439,8 +511,28 @@ public abstract class Validators
                     boolean  contained = false;
                     for (Item  actualItem : actualItems) {
                         if (actualItem.getID() == expectedItem.getID()) {
-//                            Assert.assertEquals( actualItem.getEntityType(), expectedItem.getEntityType() );
-                            Assert.assertEquals( actualItem.getStatus(), expectedItem.getStatus() );
+                            validator( Item.class ).equals( actualItem, expectedItem );
+//                            Assert.assertEquals( actualItem.getStatus(), expectedItem.getStatus() );
+                            contained = true;
+                            break;
+                        }
+                    }
+                    Assert.assertTrue( contained );
+                }
+            }
+
+            Reporter.log( " - collected_objects", true );
+            CollectedSystemObjects  eObjects = expected.getCollectedObjects();
+            CollectedSystemObjects  aObjects = actual.getCollectedObjects();
+            if (eObjects == null  ||  eObjects.size() == 0) {
+                Assert.assertTrue( aObjects == null  || aObjects.size() == 0 );
+            } else {
+                Assert.assertEquals( aObjects.size(), eObjects.size() );
+                for (CollectedSystemObject  eo : eObjects) {
+                    boolean  contained = false;
+                    for (CollectedSystemObject  ao : aObjects) {
+                        if (ao.getOvalID().equals( eo.getOvalID() )) {
+                            validator( CollectedSystemObject.class ).equals( ao, eo );
                             contained = true;
                             break;
                         }
@@ -619,6 +711,9 @@ public abstract class Validators
             } else if (SystemInfo.class.isAssignableFrom( type )) {
                 v = (Validator<T>)(new SystemInfoValidator());
                 _validators.put( SystemInfo.class, v );
+            } else if (CollectedSystemObject.class.isAssignableFrom( type )) {
+                v = (Validator<T>)(new CollectedSystemObjectValidator());
+                _validators.put( CollectedSystemObject.class, v );
             } else if (Item.class.isAssignableFrom( type )) {
                 v = (Validator<T>)(new ItemValidator());
                 _validators.put( Item.class, v );

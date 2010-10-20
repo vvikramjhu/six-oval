@@ -693,7 +693,7 @@ public class OvalXmlTest
                             SystemInfo.class,
                             "test/data/sc/system-info_windows.xml",
                             "/oval_system_characteristics/system_info",
-                            ScSample.SYSTEM_INFO_WINDOWS_1,
+                            ScSample.SYSTEM_INFO_WINDOWS_FOO60,
                             "marshalled_system-info_windows.xml"
                         }
         };
@@ -732,7 +732,7 @@ public class OvalXmlTest
                             OvalSystemCharacteristics.class,
                             "test/data/sc/oval-sc-5.8-windows-xp_8050.xml",
                             "/oval_system_characteristics",
-                            null,
+                            ScSample.OVAL_SC_DEF8050,
                             "marshalled_oval-sc-5.8-windows-xp_8050.xml"
                         }
 //                        ,

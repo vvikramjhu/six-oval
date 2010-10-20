@@ -142,7 +142,7 @@ public class ItemReference
     @Override
     public String toString()
     {
-        return "ItemReference[item_ref=" + getItemRef()
+        return "[item_ref=" + getItemRef()
                         + "]";
     }
 

@@ -244,6 +244,15 @@ public class CollectedSystemObject
     }
 
 
+    public CollectedSystemObject reference(
+                    final int itemID
+                    )
+    {
+        addReference( new ItemReference( itemID ) );
+        return this;
+    }
+
+
     public Collection<ItemReference> getReference()
     {
         return _reference;
@@ -347,7 +356,7 @@ public class CollectedSystemObject
     @Override
     public String toString()
     {
-        return "CollectedSystemObject[" + super.toString()
+        return "object[" + super.toString()
                         + ", flag=" + getFlag()
                         + ", variable_values=" + getVariableValue()
                         + ", reference=" + getReference()

@@ -16,11 +16,6 @@
     <primary_host_name>foo60</primary_host_name>
     <interfaces>
       <interface>
-        <interface_name>Intel(R) PRO/1000 PL Network Connection - パケット スケジューラ ミニポート</interface_name>
-        <ip_address>0.0.0.0</ip_address>
-        <mac_address>00-16-D3-35-B1-41</mac_address>
-      </interface>
-      <interface>
         <interface_name>VMware Virtual Ethernet Adapter for VMnet1</interface_name>
         <ip_address>192.168.158.1</ip_address>
         <mac_address>00-50-56-C0-00-01</mac_address>
