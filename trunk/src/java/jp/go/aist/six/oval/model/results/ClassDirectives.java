@@ -20,30 +20,32 @@
 
 package jp.go.aist.six.oval.model.results;
 
+import jp.go.aist.six.oval.model.common.DefinitionClass;
+
 
 
 /**
- * The DefaultDirectives presents the default set of flags
- * that describe what information has been included in the results document.
+ * The ClassDirectivesType presents a set of flags that describe
+ * what information has been included in the results document
+ * for a specific OVAL Definition class.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class DefaultDirectives
+public class ClassDirectives
     extends Directives
 {
 
-    public static final boolean DEFAULT_INCLUDE_SOURCE_DEFINITIONS = true;
-    private boolean  _includeSourceDefinitions = DEFAULT_INCLUDE_SOURCE_DEFINITIONS;
-    //{optional, default='true'}
+    private DefinitionClass  _definitionClass;
+    //{required}
 
 
 
     /**
      * Constructor.
      */
-    public DefaultDirectives()
+    public ClassDirectives()
     {
     }
 
@@ -51,8 +53,8 @@ public class DefaultDirectives
     /**
      * Constructor.
      */
-    public DefaultDirectives(
-                    final boolean includeSourceDefinitions,
+    public ClassDirectives(
+                    final DefinitionClass definitionClass,
                     final Directive definitionTrue,
                     final Directive definitionFalse,
                     final Directive definitionUnknown,
@@ -70,24 +72,24 @@ public class DefaultDirectives
                         definitionNotApplicable
         );
 
-        setIncludeSourceDefinitions( includeSourceDefinitions );
+        setDefinitionClass( definitionClass );
     }
 
 
 
     /**
      */
-    public void setIncludeSourceDefinitions(
-                    final boolean includeSourceDefinitions
+    public void setDefinitionClass(
+                    final DefinitionClass definitionClass
                     )
     {
-        _includeSourceDefinitions = includeSourceDefinitions;
+        _definitionClass = definitionClass;
     }
 
 
-    public boolean isIncludeSourceDefinitions()
+    public DefinitionClass getDefinitionClass()
     {
-        return _includeSourceDefinitions;
+        return _definitionClass;
     }
 
 
@@ -102,7 +104,8 @@ public class DefaultDirectives
         final int  prime = 37;
         int  result = super.hashCode();
 
-        result = prime * result + (isIncludeSourceDefinitions() ? 0 : 1);
+        DefinitionClass  definitionClass = getDefinitionClass();
+        result = prime * result + ((definitionClass == null) ? 0 : definitionClass.hashCode());
 
         return result;
     }
@@ -114,14 +117,14 @@ public class DefaultDirectives
                     final Object obj
                     )
     {
-        if (!(obj instanceof DefaultDirectives)) {
+        if (!(obj instanceof ClassDirectives)) {
             return false;
         }
 
 
         if (super.equals( obj )) {
-            DefaultDirectives  other = (DefaultDirectives)obj;
-            if (isIncludeSourceDefinitions() == other.isIncludeSourceDefinitions()) {
+            ClassDirectives  other = (ClassDirectives)obj;
+            if (getDefinitionClass() == other.getDefinitionClass()) {
                 return true;
             }
         }
@@ -130,4 +133,4 @@ public class DefaultDirectives
     }
 
 }
-// DefaultDirectives
+// ClassDirectives

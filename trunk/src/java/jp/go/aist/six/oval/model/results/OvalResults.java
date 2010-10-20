@@ -23,6 +23,8 @@ package jp.go.aist.six.oval.model.results;
 import jp.go.aist.six.oval.model.OvalDocument;
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 
@@ -49,7 +51,10 @@ public class OvalResults
     private Generator  _generator = new Generator();
     //{1..1}
 
-    private Directives  _directives = new Directives();
+    private DefaultDirectives  _directives = new DefaultDirectives();
+    //{1..1}
+
+    private Collection<ClassDirectives>  _classDirectives = new ArrayList<ClassDirectives>();
     //{1..1}
 
     private OvalDefinitions  _definitions;
@@ -73,7 +78,7 @@ public class OvalResults
      */
     public OvalResults(
                     final Generator generator,
-                    final Directives directives,
+                    final DefaultDirectives directives,
                     final SystemResults results
                     )
     {
@@ -105,14 +110,14 @@ public class OvalResults
     /**
      */
     public void setDirectives(
-                    final Directives directives
+                    final DefaultDirectives directives
                     )
     {
         _directives = directives;
     }
 
 
-    public Directives getDirectives()
+    public DefaultDirectives getDirectives()
     {
         return _directives;
     }
