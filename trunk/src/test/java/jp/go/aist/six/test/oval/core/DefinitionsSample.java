@@ -9,6 +9,7 @@ import jp.go.aist.six.oval.model.definitions.Affected;
 import jp.go.aist.six.oval.model.definitions.Criteria;
 import jp.go.aist.six.oval.model.definitions.Criterion;
 import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.ExtendDefinition;
 import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.Reference;
@@ -19,7 +20,9 @@ import jp.go.aist.six.oval.model.mitre.Modified;
 import jp.go.aist.six.oval.model.mitre.OvalRepository;
 import jp.go.aist.six.oval.model.mitre.StatusChange;
 import jp.go.aist.six.oval.model.mitre.Submitted;
+import jp.go.aist.six.oval.model.windows.EntityObjectRegistryHive;
 import jp.go.aist.six.oval.model.windows.FileTest;
+import jp.go.aist.six.oval.model.windows.RegistryObject;
 import jp.go.aist.six.oval.model.windows.RegistryTest;
 
 
@@ -276,6 +279,16 @@ public class DefinitionsSample
     .state( "oval:org.mitre.oval:ste:6706" )
     ;
 
+
+    //==============================================================
+    //  def:object
+    //==============================================================
+
+    public static final RegistryObject  OBJECT_WINDOWS_REGISTRY_850 =
+        new RegistryObject( "oval:org.mitre.oval:obj:850", 2 )
+    .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )
+    .key( new EntityObjectString( "SOFTWARE\\Microsoft\\Office\\11.0\\PowerPoint\\InstallRoot" ) )
+    .name( new EntityObjectString( "Path" ) );
 
 
 }
