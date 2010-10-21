@@ -1445,7 +1445,7 @@
             <sql name="PID" type="char"/>
         </field>
 
-<!-- 
+
         <field name="behaviors.maxDepth" type="integer">
             <sql name="behaviors_max_depth" type="integer"/>
         </field>
@@ -1454,15 +1454,32 @@
             type="jp.go.aist.six.oval.model.RecurseDirection">
             <sql name="behaviors_recurse_direction" type="char"/>
         </field>
--->
 
-<!--
+        <field name="behaviors.recurseFileSystem" 
+            type="jp.go.aist.six.oval.model.RecurseFileSystem">
+            <sql name="behaviors_recurse_file_system" type="char"/>
+        </field>
+
+        <field name="behaviors.ignoreCase" type="boolean">
+            <sql name="behaviors_ignore_case" type="bit"/>
+        </field>
+
         <field name="behaviors.multiline" type="boolean">
             <sql name="behaviors_multiline" type="bit"/>
         </field>
 
+        <field name="behaviors.singleline" type="boolean">
+            <sql name="behaviors_singleline" type="bit"/>
+        </field>
+
+
         <field name="filepath.data" type="string">
             <sql name="filepath" type="char"/>
+        </field>
+
+        <field name="filepath.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="filepath_operation" type="char"/>
         </field>
 
         <field name="filepath.varRef" type="string">
@@ -1473,12 +1490,6 @@
             type="jp.go.aist.six.oval.model.common.Check">
             <sql name="filepath_var_check" type="char"/>
         </field>
-
-        <field name="filepath.operation" 
-            type="jp.go.aist.six.oval.model.common.Operation">
-            <sql name="filepath_operation" type="char"/>
-        </field>
--->
 
         <field name="path.data" type="string">
             <sql name="path" type="char"/>

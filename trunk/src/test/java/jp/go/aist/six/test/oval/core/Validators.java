@@ -13,6 +13,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.independent.FamilyItem;
+import jp.go.aist.six.oval.model.independent.TextFileContent54Object;
 import jp.go.aist.six.oval.model.independent.TextFileContentItem;
 import jp.go.aist.six.oval.model.linux.DpkgInfoObject;
 import jp.go.aist.six.oval.model.linux.RpmInfoItem;
@@ -185,18 +186,29 @@ public abstract class Validators
 
             super.equals( actual, expected );
 
-            if (expected instanceof DpkgInfoObject) {
+            if (expected instanceof TextFileContent54Object) {
+                Assert.assertTrue( actual instanceof TextFileContent54Object );
+                TextFileContent54Object  aobject = (TextFileContent54Object)actual;
+                TextFileContent54Object  eobject = (TextFileContent54Object)expected;
+                Assert.assertEquals( aobject.getBehaviors(), eobject.getBehaviors() );
+                Assert.assertEquals( aobject.getPath(), eobject.getPath() );
+                Assert.assertEquals( aobject.getFilename(), eobject.getFilename() );
+                Assert.assertEquals( aobject.getPattern(), eobject.getPattern() );
+                Assert.assertEquals( aobject.getInstance(), eobject.getInstance() );
+
+            } else if (expected instanceof DpkgInfoObject) {
                 Assert.assertTrue( actual instanceof DpkgInfoObject );
                 DpkgInfoObject  aobject = (DpkgInfoObject)actual;
                 DpkgInfoObject  eobject = (DpkgInfoObject)expected;
                 Assert.assertEquals( aobject.getName(), eobject.getName() );
+
             } else if (expected instanceof FileObject) {
-                    Assert.assertTrue( actual instanceof FileObject );
-                    FileObject  aobject = (FileObject)actual;
-                    FileObject  eobject = (FileObject)expected;
-                    Assert.assertEquals( aobject.getFilepath(), eobject.getFilepath() );
-                    Assert.assertEquals( aobject.getPath(), eobject.getPath() );
-                    Assert.assertEquals( aobject.getFilename(), eobject.getFilename() );
+                Assert.assertTrue( actual instanceof FileObject );
+                FileObject  aobject = (FileObject)actual;
+                FileObject  eobject = (FileObject)expected;
+                Assert.assertEquals( aobject.getFilepath(), eobject.getFilepath() );
+                Assert.assertEquals( aobject.getPath(), eobject.getPath() );
+                Assert.assertEquals( aobject.getFilename(), eobject.getFilename() );
             }
         }
     }

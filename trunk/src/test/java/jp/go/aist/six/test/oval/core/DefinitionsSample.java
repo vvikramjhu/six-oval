@@ -205,10 +205,10 @@ public class DefinitionsSample
                         "Object to check content of Google Chrome Preferences file"
                         )
     .behaviors( (new TextFileContent54Behaviors()).multiline( true ) )
-    .path( new EntityObjectString( "/etc" ) )
-    .filename( new EntityObjectString( "debian_version" ) )
+    .path( new EntityObjectString( "oval:org.mitre.oval:var:1173", Check.ALL ) )
+    .filename( new EntityObjectString( "Preferences" ) )
     .pattern( new EntityObjectString( "^\\s*\"name\": \"InvisibleHand\"[^}]+}[^p]+path\": \"lghjfnfolmcikomdjmoiemllfnlmmoko\\\\[^s]+state\": [01]$", Operation.PATTERN_MATCH ) )
-    .instance( new EntityObjectInt( "1", Datatype.INT, EntityObjectInt.DEFAULT_OPERATION ) );
+    .instance( new EntityObjectInt( "1" ) );
 
 
     public static final DpkgInfoObject  OBJECT_LINUX_DPKGINFO_10648 =
@@ -248,7 +248,7 @@ public class DefinitionsSample
     public static final MetabaseObject  OBJECT_WINDOWS_METABASE_556 =
         new MetabaseObject( "oval:org.mitre.oval:obj:556", 2 )
     .key( new EntityObjectString( "LM/W3SVC" ) )
-    .ID( new EntityObjectInt( "6032", Datatype.INT, EntityObjectInt.DEFAULT_OPERATION ) );
+    .ID( new EntityObjectInt( "6032" ) );
 
 
     public static final RegistryObject  OBJECT_WINDOWS_REGISTRY_717 =
