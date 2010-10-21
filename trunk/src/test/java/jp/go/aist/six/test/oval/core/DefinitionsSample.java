@@ -1,17 +1,24 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.model.common.Check;
+import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.DefinitionClass;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Family;
+import jp.go.aist.six.oval.model.common.Generator;
+import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.common.Operator;
 import jp.go.aist.six.oval.model.definitions.Affected;
 import jp.go.aist.six.oval.model.definitions.Criteria;
 import jp.go.aist.six.oval.model.definitions.Criterion;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
+import jp.go.aist.six.oval.model.definitions.EntityStateVersion;
 import jp.go.aist.six.oval.model.definitions.ExtendDefinition;
+import jp.go.aist.six.oval.model.definitions.LocalVariable;
 import jp.go.aist.six.oval.model.definitions.Metadata;
+import jp.go.aist.six.oval.model.definitions.ObjectComponent;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.Reference;
 import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.mitre.Contributor;
@@ -21,6 +28,8 @@ import jp.go.aist.six.oval.model.mitre.OvalRepository;
 import jp.go.aist.six.oval.model.mitre.StatusChange;
 import jp.go.aist.six.oval.model.mitre.Submitted;
 import jp.go.aist.six.oval.model.windows.EntityObjectRegistryHive;
+import jp.go.aist.six.oval.model.windows.FileObject;
+import jp.go.aist.six.oval.model.windows.FileState;
 import jp.go.aist.six.oval.model.windows.FileTest;
 import jp.go.aist.six.oval.model.windows.RegistryObject;
 import jp.go.aist.six.oval.model.windows.RegistryTest;
@@ -288,8 +297,98 @@ public class DefinitionsSample
         new RegistryObject( "oval:org.mitre.oval:obj:850", 2 )
     .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )
     .key( new EntityObjectString( "SOFTWARE\\Microsoft\\Office\\11.0\\PowerPoint\\InstallRoot" ) )
-    .name( new EntityObjectString( "Path" ) );
+    .name( new EntityObjectString( "Path" ) )
+    ;
 
+
+    public static final RegistryObject  OBJECT_WINDOWS_REGISTRY_555 =
+        new RegistryObject( "oval:org.mitre.oval:obj:555", 1 )
+    .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )
+    .key( new EntityObjectString( "SOFTWARE\\Microsoft\\Office\\10.0\\PowerPoint\\InstallRoot" ) )
+    .name( new EntityObjectString( "Path" ) )
+    ;
+
+
+    public static final FileObject  OBJECT_WINDOWS_FILE_553 =
+        new FileObject( "oval:org.mitre.oval:obj:553", 2 )
+    .path( new EntityObjectString( "oval:org.mitre.oval:var:225", Check.ALL ) )
+    .filename( new EntityObjectString( "powerpnt.exe" ) )
+    ;
+
+
+    public static final RegistryObject  OBJECT_WINDOWS_REGISTRY_554 =
+        new RegistryObject( "oval:org.mitre.oval:obj:554", 1 )
+    .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )
+    .key( new EntityObjectString( "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\powerpnt.exe" ) )
+    .name( new EntityObjectString( "Path" ) )
+    ;
+
+
+    //==============================================================
+    //  def:state
+    //==============================================================
+
+    public static final FileState  STATE_WINDOWS_FILE_6617 =
+        new FileState( "oval:org.mitre.oval:ste:6617", 1 )
+    .version( new EntityStateVersion( "10.0.6858.0",
+                    Datatype.VERSION, Operation.LESS_THAN ) )
+    ;
+
+
+    public static final FileState  STATE_WINDOWS_FILE_6706 =
+        new FileState( "oval:org.mitre.oval:ste:6706", 1 )
+    .version( new EntityStateVersion( "11.0.8318.0",
+                    Datatype.VERSION, Operation.LESS_THAN ) )
+    ;
+
+
+
+    //==============================================================
+    //  def:variable
+    //==============================================================
+
+    public static final LocalVariable  VARIABLE_LOCAL_225 =
+        new LocalVariable( "oval:org.mitre.oval:var:225", 1,
+                        "...",
+                        Datatype.STRING
+        )
+    .component(
+                    new ObjectComponent( "oval:org.mitre.oval:obj:554",
+                                    "value"
+                    )
+    );
+
+
+
+    //==============================================================
+    //  def:oval_definitions
+    //==============================================================
+
+    private static final Generator  _GENERATOR_8050_ =
+        new Generator( "5.8",
+                        "2010-10-19T22:19:10.906-04:00",
+                        "The OVAL Repository",
+                        null
+                        );
+
+
+    public static final OvalDefinitions  OVAL_DEFINITIONS_8050 =
+        new OvalDefinitions( _GENERATOR_8050_ )
+    .definition( DEFINITION_8050 )
+    .definition( DEFINITION_666 )
+    .definition( DEFINITION_305 )
+    .test( TEST_WINDOWS_REGISTRY_1204 )
+    .test( TEST_WINDOWS_REGISTRY_704 )
+    .test( TEST_WINDOWS_FILE_21080 )
+    .test( TEST_WINDOWS_FILE_20855 )
+    .object( OBJECT_WINDOWS_REGISTRY_850 )
+    .object( OBJECT_WINDOWS_REGISTRY_555 )
+    .object( OBJECT_WINDOWS_FILE_553 )
+    .object( OBJECT_WINDOWS_REGISTRY_554 )
+    .state( STATE_WINDOWS_FILE_6617 )
+    .state( STATE_WINDOWS_FILE_6706 )
+    .variable( VARIABLE_LOCAL_225 )
+    ;
 
 }
 // DefinitionsSample

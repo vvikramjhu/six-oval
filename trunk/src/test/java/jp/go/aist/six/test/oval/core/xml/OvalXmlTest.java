@@ -69,14 +69,23 @@ public class OvalXmlTest
     public Object[][] provideOvalDefinitionsOvalDefinitions()
     {
         return new Object[][] {
-                        // Red Hat, CVE-2010-0176, RHSA 20100332
+                        // Windows XP, CVE-2010-0035, PowerPoint
                         {
                             OvalDefinitions.class,
-                            "test/data/definitions/oval-definitions_rhsa-20100332_CVE-2010-0176.xml",
+                            "test/data/definitions/oval-definitions-5.8-windows-xp_8050.xml",
                             "/oval_definitions",
                             null,
-                            "marshalled_oval-definitions_rhsa-20100332_CVE-2010-0176.xml"
+                            "marshalled_oval-definitions-5.8-windows-xp_8050.xml"
                         }
+//                        ,
+//                        // Red Hat, CVE-2010-0176, RHSA 20100332
+//                        {
+//                            OvalDefinitions.class,
+//                            "test/data/definitions/oval-definitions_rhsa-20100332_CVE-2010-0176.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_oval-definitions_rhsa-20100332_CVE-2010-0176.xml"
+//                        }
 //                      ,
 //                        // Debian @Mitre, CVE-2010-0176, DSA-2027
 //                        {
