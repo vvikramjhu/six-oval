@@ -44,8 +44,12 @@ public class DefinitionsSample
 {
 
     //==============================================================
-    //  def:definition 8050
+    //  def:definition
     //==============================================================
+
+    //**************************************************************
+    //  def:definition 8050
+    //**************************************************************
 
     private static final Affected  _AFFECTED_8050_ =
         new Affected( Family.WINDOWS )
@@ -116,9 +120,9 @@ public class DefinitionsSample
 
 
 
-    //==============================================================
+    //**************************************************************
     //  def:definition 666
-    //==============================================================
+    //**************************************************************
 
     private static final Affected  _AFFECTED_666_ =
         new Affected( Family.WINDOWS )
@@ -179,9 +183,9 @@ public class DefinitionsSample
 
 
 
-    //==============================================================
+    //**************************************************************
     //  def:definition 305
-    //==============================================================
+    //**************************************************************
 
     private static final Affected  _AFFECTED_305_ =
         new Affected( Family.WINDOWS )
@@ -289,6 +293,7 @@ public class DefinitionsSample
     ;
 
 
+
     //==============================================================
     //  def:object
     //==============================================================
@@ -322,6 +327,7 @@ public class DefinitionsSample
     .key( new EntityObjectString( "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\powerpnt.exe" ) )
     .name( new EntityObjectString( "Path" ) )
     ;
+
 
 
     //==============================================================
