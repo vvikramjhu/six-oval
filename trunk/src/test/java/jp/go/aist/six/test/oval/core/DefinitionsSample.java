@@ -237,6 +237,14 @@ public class DefinitionsSample
     .filename( new EntityObjectString( "mshtml.dll" ) );
 
 
+    public static final FileObject  OBJECT_WINDOWS_FILE_6982 =
+        new FileObject( "oval:org.mitre.oval:obj:6982", 1,
+                        "Object that holds filepath to Winamp.exe"
+        )
+    .filepath( new EntityObjectString( "oval:org.mitre.oval:var:518", Check.ALL ) )
+    ;
+
+
     public static final MetabaseObject  OBJECT_WINDOWS_METABASE_556 =
         new MetabaseObject( "oval:org.mitre.oval:obj:556", 2 )
     .key( new EntityObjectString( "LM/W3SVC" ) )

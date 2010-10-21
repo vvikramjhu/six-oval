@@ -2179,11 +2179,33 @@
             <sql name="PID" type="char"/>
         </field>
 
+        <!-- filepath -->
+        <field name="filepath.data" type="string">
+            <sql name="filepath" type="char"/>
+        </field>
+
+        <field name="filepath.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="filepath_operation" type="char"/>
+        </field>
+
+        <field name="filepath.varRef" type="string">
+            <sql name="filepath_var_ref" type="char"/>
+        </field>
+
+        <field name="filepath.varCheck" 
+            type="jp.go.aist.six.oval.model.common.Check">
+            <sql name="filepath_var_check" type="char"/>
+        </field>
 
         <!-- path -->
-        
         <field name="path.data" type="string">
             <sql name="path" type="char"/>
+        </field>
+
+        <field name="path.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="path_operation" type="char"/>
         </field>
 
         <field name="path.varRef" type="string">
@@ -2195,32 +2217,12 @@
             <sql name="path_var_check" type="char"/>
         </field>
 
-        <field name="path.operation" 
-            type="jp.go.aist.six.oval.model.common.Operation">
-            <sql name="path_operation" type="char"/>
-        </field>
-
-
         <!-- filename -->
-        
         <field name="filename.data" type="string">
             <sql name="filename" type="char"/>
         </field>
 
-        <field name="filename.operation" 
-            type="jp.go.aist.six.oval.model.common.Operation">
-            <sql name="filename_operation" type="char"/>
-        </field>
-
-<!--No file object has 'behaviors' child element in the definition XML. 
-        <field name="behaviors.maxDepth" type="integer">
-            <sql name="max_depth" type="integer"/>
-        </field>
-
-        <field name="behaviors.recurseDirection" type="jp.go.aist.six.oval.model.windows.RecurseDirection">
-            <sql name="recurse_direction" type="char"/>
-        </field>
--->
+        <!-- behaviors -->
     </class>
 
 

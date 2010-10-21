@@ -14,6 +14,7 @@ import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.independent.FamilyItem;
 import jp.go.aist.six.oval.model.independent.TextFileContentItem;
+import jp.go.aist.six.oval.model.linux.DpkgInfoObject;
 import jp.go.aist.six.oval.model.linux.RpmInfoItem;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.DefinitionResults;
@@ -31,6 +32,7 @@ import jp.go.aist.six.oval.model.sc.SystemData;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
 import jp.go.aist.six.oval.model.sc.VariableValue;
 import jp.go.aist.six.oval.model.windows.FileItem;
+import jp.go.aist.six.oval.model.windows.FileObject;
 import jp.go.aist.six.oval.model.windows.RegistryItem;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -88,6 +90,10 @@ public abstract class Validators
                         final T expected
                         )
         {
+            if (expected == null) {
+                return;
+            }
+
             Reporter.log( " - @ovalID", true );
             Assert.assertEquals( actual.getOvalID(), expected.getOvalID() );
             Reporter.log( " - @ovalVersion", true );
@@ -108,6 +114,10 @@ public abstract class Validators
                         final T expected
                         )
         {
+            if (expected == null) {
+                return;
+            }
+
             super.equals( actual, expected );
             Reporter.log( " - @deprecated", true );
             Assert.assertEquals( actual.isDeprecated(), expected.isDeprecated() );
@@ -127,6 +137,10 @@ public abstract class Validators
                         final T expected
                         )
         {
+            if (expected == null) {
+                return;
+            }
+
             super.equals( actual, expected );
             Reporter.log( " - @comment", true );
             Assert.assertEquals( actual.getComment(), expected.getComment() );
@@ -165,7 +179,25 @@ public abstract class Validators
                         final SystemObject expected
                         )
         {
+            if (expected == null) {
+                return;
+            }
+
             super.equals( actual, expected );
+
+            if (expected instanceof DpkgInfoObject) {
+                Assert.assertTrue( actual instanceof DpkgInfoObject );
+                DpkgInfoObject  aobject = (DpkgInfoObject)actual;
+                DpkgInfoObject  eobject = (DpkgInfoObject)expected;
+                Assert.assertEquals( aobject.getName(), eobject.getName() );
+            } else if (expected instanceof FileObject) {
+                    Assert.assertTrue( actual instanceof FileObject );
+                    FileObject  aobject = (FileObject)actual;
+                    FileObject  eobject = (FileObject)expected;
+                    Assert.assertEquals( aobject.getFilepath(), eobject.getFilepath() );
+                    Assert.assertEquals( aobject.getPath(), eobject.getPath() );
+                    Assert.assertEquals( aobject.getFilename(), eobject.getFilename() );
+            }
         }
     }
 

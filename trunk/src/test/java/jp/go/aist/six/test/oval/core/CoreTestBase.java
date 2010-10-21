@@ -202,7 +202,7 @@ public abstract class CoreTestBase
 
 
     @DataProvider( name="definitions.test" )
-    public Object[][] provideOvalDefinitionsTest()
+    public Object[][] provideDefinitionsTest()
     {
         return new Object[][] {
                         // independent family
@@ -309,7 +309,7 @@ public abstract class CoreTestBase
 
 
     @DataProvider( name="definitions.object" )
-    public Object[][] provideOvalDefinitionsObject()
+    public Object[][] provideDefinitionsObject()
     {
         return new Object[][] {
                         // independent family
@@ -373,6 +373,15 @@ public abstract class CoreTestBase
                             "/oval_definitions/objects/file_object",
                             DefinitionsSample.OBJECT_WINDOWS_FILE_222,
                             "marshalled_object-windows-file_oval-222.xml"
+                        }
+                        ,
+                        // windows file
+                        {
+                            SystemObject.class,
+                            "test/data/definitions/object-windows-file_oval-6982.xml",
+                            "/oval_definitions/objects/file_object",
+                            DefinitionsSample.OBJECT_WINDOWS_FILE_6982,
+                            "marshalled_object-windows-file_oval-6982.xml"
                         }
                         ,
                         // windows metabase

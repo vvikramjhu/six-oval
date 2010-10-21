@@ -33,13 +33,13 @@ use @six.db.database@;
 -- definitions.EntityObjectInt {datdatype=int}
 --  xxx                 VARCHAR(255),
 --  xxx_operation       VARCHAR(32)     DEFAULT 'equals',
---  xxx_var_ref         VARCHAR(255),
+--  xxx_var_ref         VARCHAR(64),
 --  xxx_var_check       VARCHAR(16)     DEFAULT 'all',
 
 -- definitions.EntityObjectString {datdatype=string}
 --  xxx                 VARCHAR(255),
 --  xxx_operation       VARCHAR(32)     DEFAULT 'equals',
---  xxx_var_ref         VARCHAR(255),
+--  xxx_var_ref         VARCHAR(64),
 --  xxx_var_check       VARCHAR(16)     DEFAULT 'all',
 
     
@@ -1311,13 +1311,13 @@ CREATE TABLE IF NOT EXISTS oval_d_object_textfilecontent54
     /* filepath :EntityObjectString {datdatype=string} */
     filepath            VARCHAR(255),
     filepath_operation  VARCHAR(32),
-    filepath_var_ref    VARCHAR(255),
+    filepath_var_ref    VARCHAR(64),
     filepath_var_check  VARCHAR(16),
 
     /* path :EntityObjectString {datdatype=string} */
     path                VARCHAR(255),
     path_operation      VARCHAR(32),
-    path_var_ref        VARCHAR(255),
+    path_var_ref        VARCHAR(64),
     path_var_check      VARCHAR(16),
 
     /* filename :EntityObjectString {datdatype=string} */
@@ -1842,30 +1842,27 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_object_file
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:obj:419:1 */
 
     /* XSD: choice( filepath, sequence(path, filename) ) */
     /* Therefore, 'NOT NULL' can't be specified. */
     
-    /* path */
-    path                VARCHAR(255),
-    path_var_ref        VARCHAR(255),
-    path_var_check      VARCHAR(16)   /*NOT NULL*/    DEFAULT 'all',
-                        /* enum('all', 'at least one',...) */
-/*  path_datatype       VARCHAR(16)     NOT NULL    DEFAULT 'string', */
-                        /*** all the datatype may be 'string'. ***/
-    path_operation      VARCHAR(32)   /*NOT NULL*/  DEFAULT 'equals',
-                        /* enum('equals', ..., 'case insensitive not equal', ...) */
-/*  path_mask           BOOLEAN         NOT NULL    DEFAULT false,    */
+    /* filepath :EntityObjectString {datdatype=string} */
+    filepath            VARCHAR(255),
+    filepath_operation  VARCHAR(32),
+    filepath_var_ref    VARCHAR(64),
+    filepath_var_check  VARCHAR(16),
 
-    /* filename */
+    /* path :EntityObjectString {datdatype=string} */
+    path                VARCHAR(255),
+    path_operation      VARCHAR(32),
+    path_var_ref        VARCHAR(64),
+    path_var_check      VARCHAR(16),
+
+    /* filename :EntityObjectString {datdatype=string} */
     filename            VARCHAR(255),
-    filename_operation  VARCHAR(32)   /*NOT NULL*/  DEFAULT 'equals',
+
 
     /* behaviors */
-/*  max_depth           INT             NOT NULL    DEFAULT -1,      */
-/*  recurse_direction   VARCHAR(8)      NOT NULL    DEFAULT 'none',  */
-                        /* enum('none', 'up', 'down') */
 
     /* (PK) */
     PRIMARY KEY (PID)

@@ -176,6 +176,28 @@ public class StoreDefinitionsTest
 
 
     //==============================================================
+    //  object
+    //==============================================================
+
+    @org.testng.annotations.Test(
+                    groups={"oval.core.store", "definitions.object"},
+                    dataProvider="definitions.object",
+                    alwaysRun=true
+                    )
+    public <T extends SystemObject> void testDefinitionsObject(
+                    final Class<T> type,
+                    final String sourceFilepath,
+                    final String xpath,
+                    final T expected
+                    )
+    throws Exception
+    {
+        _testStoreSync( type, sourceFilepath, xpath, expected );
+    }
+
+
+
+    //==============================================================
     //  state
     //==============================================================
 
@@ -285,106 +307,6 @@ public class StoreDefinitionsTest
     }
 
 
-
-    //==============================================================
-    //  object
-    //==============================================================
-
-    @DataProvider( name="definitions.object" )
-    public Object[][] provideDefinitionsObject()
-    {
-        return new Object[][] {
-                        // independent : family
-                        {
-                            SystemObject.class,
-                            "test/data/definitions/object-independent-family_oval-obj-99_1.xml",
-                            "oval_definitions/objects/independent:family_object",
-                            DefinitionsSample.OBJECT_INDEPENDENT_FAMILY_99
-                        }
-                        ,
-                        // independent : textfilecontent
-                        {
-                            SystemObject.class,
-                            "test/data/definitions/object-independent-textfilecontent_oval-obj-7326_1.xml",
-                            "oval_definitions/objects/independent:textfilecontent_object",
-                            DefinitionsSample.OBJECT_INDEPENDENT_TEXTFILECONTENT_7326
-                        }
-                        ,
-                        // independent : textfilecontent54
-                        {
-                            SystemObject.class,
-                            "test/data/definitions/object-independent-textfilecontent54_oval-obj-15567_1.xml",
-                            "oval_definitions/objects/independent:textfilecontent54_object",
-                            DefinitionsSample.OBJECT_INDEPENDENT_TEXTFILECONTENT54_15567
-                        }
-                        ,
-                        // linux : dpkginfo
-                        {
-                            SystemObject.class,
-                            "test/data/definitions/object-linux-dpkginfo_oval-obj-10648_1.xml",
-                            "oval_definitions/objects/linux:dpkginfo_object",
-                            DefinitionsSample.OBJECT_LINUX_DPKGINFO_10648
-                        }
-                        ,
-                        // linux : rpminfo
-                        {
-                            SystemObject.class,
-                            "test/data/definitions/object-linux-rpminfo_rhsa-obj-20100061001_301.xml",
-                            "oval_definitions/objects/linux:rpminfo_object",
-                            DefinitionsSample.OBJECT_LINUX_RPMINFO_20100061001
-                        }
-                        ,
-                        // unux : uname
-                        {
-                            SystemObject.class,
-                            "test/data/definitions/object-unix-uname_oval-obj-2759_1.xml",
-                            "oval_definitions/objects/unix:uname_object",
-                            DefinitionsSample.OBJECT_UNAME_UNAME_2759
-                        }
-                        ,
-//                        // windows : file
-                        {
-                            SystemObject.class,
-                            "test/data/definitions/object-windows-file_oval-obj-222_1.xml",
-                            "oval_definitions/objects/windows:file_object",
-                            DefinitionsSample.OBJECT_WINDOWS_FILE_222
-                        }
-                        ,
-                        // windows : metabase
-                        {
-                            SystemObject.class,
-                            "test/data/definitions/object-windows-metabase_oval-obj-556_2.xml",
-                            "oval_definitions/objects/windows:metabase_object",
-                            DefinitionsSample.OBJECT_WINDOWS_METABASE_556
-                        }
-                        ,
-                        // windows : registry
-                        {
-                            SystemObject.class,
-                            "test/data/definitions/object-windows-registry_oval-obj-717_1.xml",
-                            "oval_definitions/objects/windows:registry_object",
-                            DefinitionsSample.OBJECT_WINDOWS_REGISTRY_717
-                        }
-        };
-    }
-
-
-
-    @org.testng.annotations.Test(
-                    groups={"oval.core.store", "definitions.object"},
-                    dataProvider="definitions.object",
-                    alwaysRun=true
-                    )
-    public <T extends SystemObject> void testDefinitionsObject(
-                    final Class<T> type,
-                    final String filepath,
-                    final String xpath,
-                    final T expected
-                    )
-    throws Exception
-    {
-        _testStoreSync( type, filepath, xpath, expected );
-    }
 
 }
 // DefinitionsTest
