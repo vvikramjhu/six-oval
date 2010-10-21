@@ -88,9 +88,9 @@ public abstract class Validators
                         final T expected
                         )
         {
-            Reporter.log( " - OVAL ID", true );
+            Reporter.log( " - @ovalID", true );
             Assert.assertEquals( actual.getOvalID(), expected.getOvalID() );
-            Reporter.log( " - OVAL version", true );
+            Reporter.log( " - @ovalVersion", true );
             Assert.assertEquals( actual.getOvalVersion(), expected.getOvalVersion() );
         }
     }
@@ -109,7 +109,7 @@ public abstract class Validators
                         )
         {
             super.equals( actual, expected );
-            Reporter.log( " - deprecated", true );
+            Reporter.log( " - @deprecated", true );
             Assert.assertEquals( actual.isDeprecated(), expected.isDeprecated() );
         }
     }
@@ -128,7 +128,7 @@ public abstract class Validators
                         )
         {
             super.equals( actual, expected );
-            Reporter.log( " - comment", true );
+            Reporter.log( " - @comment", true );
             Assert.assertEquals( actual.getComment(), expected.getComment() );
         }
     }
@@ -182,12 +182,16 @@ public abstract class Validators
                         final Test expected
                         )
         {
+            if (expected == null) {
+                return;
+            }
+
             super.equals( actual, expected );
-            Reporter.log( " - checkExistence", true );
+            Reporter.log( " - @checkExistence", true );
             Assert.assertEquals( actual.getCheckExistence(), expected.getCheckExistence() );
-            Reporter.log( " - check", true );
+            Reporter.log( " - @check", true );
             Assert.assertEquals( actual.getCheck(), expected.getCheck() );
-            Reporter.log( " - stateOperator", true );
+            Reporter.log( " - @stateOperator", true );
             Assert.assertEquals( actual.getStateOperator(), expected.getStateOperator() );
             Reporter.log( " - object", true );
             Assert.assertEquals( actual.getObject(), expected.getObject() );
@@ -684,8 +688,8 @@ public abstract class Validators
                 v = (Validator<T>)(new DefinitionValidator());
                 _validators.put( Definition.class, v );
             } else if (Test.class.isAssignableFrom( type )) {
-                    v = (Validator<T>)(new TestValidator());
-                    _validators.put( Test.class, v );
+                v = (Validator<T>)(new TestValidator());
+                _validators.put( Test.class, v );
             } else if (State.class.isAssignableFrom( type )) {
                 v = (Validator<T>)(new StateValidator());
                 _validators.put( State.class, v );

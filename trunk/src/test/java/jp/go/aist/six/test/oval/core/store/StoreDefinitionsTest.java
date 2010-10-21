@@ -157,94 +157,6 @@ public class StoreDefinitionsTest
     //  test
     //==============================================================
 
-//    @DataProvider( name="definitions.test" )
-//    public Object[][] provideDefinitionsTest()
-//    {
-//        return new Object[][] {
-//                        // independent : family
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-family_oval-tst-99_1.xml",
-//                            "oval_definitions/tests/independent:family_test",
-//                            OvalSample.TEST_INDEPENDENT_FAMILY_99
-//                        }
-//                        ,
-//                        // independent : textfilecontent
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-textfilecontent_oval-tst-11150_1.xml",
-//                            "oval_definitions/tests/independent:textfilecontent_test",
-//                            OvalSample.TEST_INDEPENDENT_TEXTFILECONTENT_11150
-//                        }
-//                        ,
-//                        // independent : unknown
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-unknown_oval-tst-2531_1.xml",
-//                            "oval_definitions/tests/independent:unknown_test",
-//                            OvalSample.TEST_INDEPENDENT_UNKNOWN_2531
-//                        }
-//                        ,
-//                        // linux : DpkgInfo
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-dpkginfo_oval-tst-19402_1.xml",
-//                            "oval_definitions/tests/linux:dpkginfo_test",
-//                            OvalSample.TEST_LINUX_DPKGINFO_19402
-//                        }
-//                        ,
-//                        // linux : RpmInfo
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-rpminfo_rhsa-tst-20100061002_301.xml",
-//                            "oval_definitions/tests/linux:rpminfo_test",
-//                            OvalSample.TEST_LINUX_RPMINFO_20100061002
-//                        }
-//                        ,
-//                        // unix : uname
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-uname_oval-tst-11195_1.xml",
-//                            "oval_definitions/tests/unix:uname_test",
-//                            OvalSample.TEST_UNIX_UNAME_11195
-//                        }
-//                        ,
-//                        // windows : File
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-file_oval-tst-2339_1.xml",
-//                            "oval_definitions/tests/windows:file_test",
-//                            OvalSample.TEST_WINDOWS_FILE_2339
-//                        }
-//                        ,
-//                        // windows : File 2
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-file_oval-tst-10629_1.xml",
-//                            "oval_definitions/tests/windows:file_test",
-//                            OvalSample.TEST_WINDOWS_FILE_10629
-//                        }
-//                        ,
-//                        // windows : Metabase test
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-metabase_oval-tst-709_2.xml",
-//                            "oval_definitions/tests/windows:metabase_test",
-//                            OvalSample.TEST_WINDOWS_METABASE_709
-//                        }
-//                        ,
-//                        // windows : Registry test
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-registry_oval-tst-3019_2.xml",
-//                            "oval_definitions/tests/windows:registry_test",
-//                            OvalSample.TEST_WINDOWS_REGISTRY_3019
-//                        }
-//        };
-//    }
-
-
-
     @org.testng.annotations.Test(
                     groups={"oval.core.store", "definitions.test"},
                     dataProvider="definitions.test",
@@ -254,8 +166,7 @@ public class StoreDefinitionsTest
                     final Class<T> type,
                     final String sourceFilepath,
                     final String xpath,
-                    final T expected,
-                    final String resultFilepath
+                    final T expected
                     )
     throws Exception
     {

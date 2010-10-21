@@ -40,9 +40,9 @@ import java.util.Iterator;
  *   <li>version (required)</li>
  *   <li>check_existence (optional -- default='at_least_one_exists')</li>
  *   <li>check (required)</li>
- *   <li>state_operator (optional-- default='AND')</li>
- *   <li>deprecated (optional -- default='false')</li>
+ *   <li>state_operator (optional -- default='AND')</li>
  *   <li>comment (required)</li>
+ *   <li>deprecated (optional -- default='false')</li>
  *   <li>Signature (0..1): currently NOT supported.</li>
  *   <li>notes (0..1)</li>
  * </ul>
@@ -318,24 +318,6 @@ public class Test
     {
         return EntityType.UNKNOWN;
     }
-
-
-
-
-    //**************************************************************
-    //  Noted
-    //**************************************************************
-
-//    public void setNotes( final Notes notes )
-//    {
-//        _notes = notes;
-//    }
-//
-//
-//    public Notes getNotes()
-//    {
-//        return _notes;
-//    }
 
 
 
