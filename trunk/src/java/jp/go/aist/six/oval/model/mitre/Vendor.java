@@ -49,6 +49,17 @@ public class Vendor
     }
 
 
+    /**
+     * Constructor.
+     */
+    public Vendor(
+                    final String name
+                    )
+    {
+        setName( name );
+    }
+
+
 
     /**
      */

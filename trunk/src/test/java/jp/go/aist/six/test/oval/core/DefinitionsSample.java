@@ -125,7 +125,7 @@ public class DefinitionsSample
     .platform( "Microsoft Windows 2000" )
     .platform( "Microsoft Windows XP" )
     .platform( "Microsoft Windows Server 2003" )
-    .product( "Microsoft Office PowerPoint 2003" )
+    .product( "Microsoft PowerPoint 2003" )
     ;
 
 
@@ -188,7 +188,7 @@ public class DefinitionsSample
     .platform( "Microsoft Windows 2000" )
     .platform( "Microsoft Windows XP" )
     .platform( "Microsoft Windows Server 2003" )
-    .product( "Microsoft Office PowerPoint 2002" )
+    .product( "Microsoft PowerPoint 2002" )
     ;
 
 

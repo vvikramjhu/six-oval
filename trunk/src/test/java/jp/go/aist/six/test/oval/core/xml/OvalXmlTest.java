@@ -14,6 +14,7 @@ import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
+import jp.go.aist.six.test.oval.core.DefinitionsSample;
 import jp.go.aist.six.test.oval.core.OvalSample;
 import jp.go.aist.six.test.oval.core.ScSample;
 import org.testng.Reporter;
@@ -74,7 +75,7 @@ public class OvalXmlTest
                             OvalDefinitions.class,
                             "test/data/definitions/oval-definitions-5.8-windows-xp_8050.xml",
                             "/oval_definitions",
-                            null,
+                            DefinitionsSample.OVAL_DEFINITIONS_8050,
                             "marshalled_oval-definitions-5.8-windows-xp_8050.xml"
                         }
 //                        ,

@@ -106,6 +106,22 @@ public class SystemResult
 
 
     /**
+     * constructor.
+     */
+    public SystemResult(
+                    final OvalSystemCharacteristics sc,
+                    final DefinitionResult[] definitions,
+                    final TestResult[] tests
+                    )
+    {
+        setOvalSystemCharacteristics( sc );
+        setDefinitions( new DefinitionResults( definitions ) );
+        setTests( new TestResults( tests ) );
+    }
+
+
+
+    /**
      */
     public void setDefinitions(
                     final DefinitionResults definitions

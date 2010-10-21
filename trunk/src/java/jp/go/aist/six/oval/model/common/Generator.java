@@ -185,6 +185,23 @@ public class Generator
     }
 
 
+    public boolean addAdditionalInfo(
+                    final GeneratorInfo info
+                    )
+    {
+        return _additionalInfo.add( info );
+    }
+
+
+    public Generator additionalInfo(
+                    final GeneratorInfo info
+                    )
+    {
+        addAdditionalInfo( info );
+        return this;
+    }
+
+
     public Collection<GeneratorInfo> getAdditionalInfo()
     {
         return _additionalInfo;

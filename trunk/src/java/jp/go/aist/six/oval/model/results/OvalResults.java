@@ -88,6 +88,21 @@ public class OvalResults
     }
 
 
+    /**
+     * Constructor.
+     */
+    public OvalResults(
+                    final Generator generator,
+                    final DefaultDirectives directives,
+                    final SystemResult[] results
+                    )
+    {
+        setGenerator( generator );
+        setDirectives( directives );
+        setResults( new SystemResults( results ) );
+    }
+
+
 
 
     /**
