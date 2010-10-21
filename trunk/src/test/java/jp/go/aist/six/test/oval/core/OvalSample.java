@@ -1,7 +1,6 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.model.common.Check;
-import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.DefinitionClass;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Family;
@@ -9,45 +8,16 @@ import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.common.Operator;
 import jp.go.aist.six.oval.model.definitions.Affected;
-import jp.go.aist.six.oval.model.definitions.Component;
-import jp.go.aist.six.oval.model.definitions.ConcatFunction;
 import jp.go.aist.six.oval.model.definitions.Criteria;
 import jp.go.aist.six.oval.model.definitions.Criterion;
 import jp.go.aist.six.oval.model.definitions.Definition;
-import jp.go.aist.six.oval.model.definitions.EntityObjectInt;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
-import jp.go.aist.six.oval.model.definitions.EntityStateEVRString;
-import jp.go.aist.six.oval.model.definitions.EntityStateString;
-import jp.go.aist.six.oval.model.definitions.EntityStateVersion;
-import jp.go.aist.six.oval.model.definitions.EscapeRegexFunction;
 import jp.go.aist.six.oval.model.definitions.ExtendDefinition;
-import jp.go.aist.six.oval.model.definitions.LiteralComponent;
-import jp.go.aist.six.oval.model.definitions.LocalVariable;
 import jp.go.aist.six.oval.model.definitions.Metadata;
-import jp.go.aist.six.oval.model.definitions.ObjectComponent;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.Reference;
-import jp.go.aist.six.oval.model.definitions.RegexCaptureFunction;
 import jp.go.aist.six.oval.model.definitions.Test;
-import jp.go.aist.six.oval.model.independent.EntityStateFamily;
-import jp.go.aist.six.oval.model.independent.FamilyObject;
-import jp.go.aist.six.oval.model.independent.FamilyState;
-import jp.go.aist.six.oval.model.independent.FamilyTest;
-import jp.go.aist.six.oval.model.independent.TextFileContent54Behaviors;
-import jp.go.aist.six.oval.model.independent.TextFileContent54Object;
-import jp.go.aist.six.oval.model.independent.TextFileContent54State;
-import jp.go.aist.six.oval.model.independent.TextFileContent54Test;
-import jp.go.aist.six.oval.model.independent.TextFileContentObject;
-import jp.go.aist.six.oval.model.independent.TextFileContentState;
-import jp.go.aist.six.oval.model.independent.TextFileContentTest;
-import jp.go.aist.six.oval.model.independent.UnknownTest;
-import jp.go.aist.six.oval.model.linux.DpkgInfoObject;
-import jp.go.aist.six.oval.model.linux.DpkgInfoState;
-import jp.go.aist.six.oval.model.linux.DpkgInfoTest;
-import jp.go.aist.six.oval.model.linux.RpmInfoObject;
-import jp.go.aist.six.oval.model.linux.RpmInfoState;
-import jp.go.aist.six.oval.model.linux.RpmInfoTest;
 import jp.go.aist.six.oval.model.results.Content;
 import jp.go.aist.six.oval.model.results.CriteriaResult;
 import jp.go.aist.six.oval.model.results.CriterionResult;
@@ -68,15 +38,9 @@ import jp.go.aist.six.oval.model.sc.ItemReference;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
 import jp.go.aist.six.oval.model.sc.VariableValue;
-import jp.go.aist.six.oval.model.unix.UnameObject;
-import jp.go.aist.six.oval.model.unix.UnameTest;
 import jp.go.aist.six.oval.model.windows.EntityObjectRegistryHive;
 import jp.go.aist.six.oval.model.windows.FileObject;
-import jp.go.aist.six.oval.model.windows.FileState;
 import jp.go.aist.six.oval.model.windows.FileTest;
-import jp.go.aist.six.oval.model.windows.MetabaseObject;
-import jp.go.aist.six.oval.model.windows.MetabaseState;
-import jp.go.aist.six.oval.model.windows.MetabaseTest;
 import jp.go.aist.six.oval.model.windows.RegistryObject;
 import jp.go.aist.six.oval.model.windows.RegistryState;
 import jp.go.aist.six.oval.model.windows.RegistryTest;
@@ -93,102 +57,6 @@ public class OvalSample
     //==============================================================
     //  def:test
     //==============================================================
-
-    public static final Test  TEST_INDEPENDENT_FAMILY_99 =
-        new FamilyTest( "oval:org.mitre.oval:tst:99", 1,
-                        "the installed operating system is part of the Microsoft Windows family",
-                        Check.ONLY_ONE )
-    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
-    .object( "oval:org.mitre.oval:obj:99" )
-    .state( "oval:org.mitre.oval:ste:99" );
-
-
-    public static final Test  TEST_INDEPENDENT_TEXTFILECONTENT_11150 =
-        new TextFileContentTest( "oval:org.mitre.oval:tst:11150", 1,
-                        "Debian GNU/Linux 5.0 is installed",
-                        Check.ALL )
-    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
-    .object( "oval:org.mitre.oval:obj:7326" )
-    .state( "oval:org.mitre.oval:ste:5739" );
-
-
-    public static final Test  TEST_INDEPENDENT_TEXTFILECONTENT54_41853 =
-        new TextFileContent54Test( "oval:org.mitre.oval:tst:41853", 1,
-                        "Check if Google Chrome Invisible Hand Extension is enabled",
-                        Check.ALL )
-    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
-    .object( "oval:org.mitre.oval:obj:15567" )
-    .state( "oval:org.mitre.oval:ste:11440" );
-
-
-    public static final Test  TEST_INDEPENDENT_UNKNOWN_2531 =
-        new UnknownTest( "oval:org.mitre.oval:tst:2531", 1,
-                        "Word 97 is installed",
-                        Check.ALL );
-
-
-    public static final Test  TEST_LINUX_DPKGINFO_19402 =
-        new DpkgInfoTest( "oval:org.mitre.oval:tst:19402", 1,
-                        "apache2-src is earlier than 2.2.9-10+lenny6",
-                        Check.ALL )
-    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
-    .object( "oval:org.mitre.oval:obj:10286" )
-    .state( "oval:org.mitre.oval:ste:6372" );
-
-
-    public static final Test  TEST_LINUX_RPMINFO_20100061002 =
-        new RpmInfoTest( "oval:com.redhat.rhsa:tst:20100061002", 301,
-                        "gzip is earlier than 0:1.3.5-11.el5_4.1",
-                        Check.AT_LEAST_ONE )
-    .object( "oval:com.redhat.rhsa:obj:20100061002" )
-    .state( "oval:com.redhat.rhsa:ste:20100061004" );
-
-
-
-    public static final Test  TEST_UNIX_UNAME_11195 =
-        new UnameTest( "oval:org.mitre.oval:tst:11195", 1,
-                        "Installed architecture is mips",
-                        Check.ALL )
-    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
-    .object( "oval:org.mitre.oval:obj:2759" )
-    .state( "oval:org.mitre.oval:ste:5601" );
-
-
-    public static final Test  TEST_WINDOWS_FILE_2339 =
-        new FileTest( "oval:org.mitre.oval:tst:2339", 1,
-                        "the version of mshtml.dll is less than 6.0.2900.2873",
-                        Check.AT_LEAST_ONE )
-    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
-    .object( "oval:org.mitre.oval:obj:222" )
-    .state( "oval:org.mitre.oval:ste:2190" );
-
-
-    public static final Test  TEST_WINDOWS_FILE_10629 =
-        new FileTest( "oval:org.mitre.oval:tst:10629", 1,
-                        "Opera.exe version 9.x to 10.0.x",
-                        Check.ALL )
-    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
-    .stateOperator( Operator.OR )
-    .object( "oval:org.mitre.oval:obj:6638" )
-    .state( "oval:org.mitre.oval:ste:4847" )
-    .state( "oval:org.mitre.oval:ste:5298" );
-
-
-    public static final Test  TEST_WINDOWS_METABASE_709 =
-        new MetabaseTest( "oval:org.mitre.oval:tst:709", 2,
-                        "Negotiate is enabled",
-                        Check.AT_LEAST_ONE )
-    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
-    .object( "oval:org.mitre.oval:obj:556" );
-
-
-    public static final Test  TEST_WINDOWS_REGISTRY_3019 =
-        new RegistryTest( "oval:org.mitre.oval:tst:3019", 2,
-                        "Win2K/XP/2003/Vista/2008 service pack 2 is installed",
-                        Check.AT_LEAST_ONE )
-    .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
-    .object( "oval:org.mitre.oval:obj:717" )
-    .state( "oval:org.mitre.oval:ste:2827" );
 
 
     //**************************************************************
@@ -245,71 +113,6 @@ public class OvalSample
     //  def:object
     //==============================================================
 
-    public static final FamilyObject  OBJECT_INDEPENDENT_FAMILY_99 =
-        new FamilyObject( "oval:org.mitre.oval:obj:99", 1,
-                    "This is the default family object. Only one family object should exist."
-                    );
-
-
-    public static final TextFileContentObject  OBJECT_INDEPENDENT_TEXTFILECONTENT_7326 =
-        new TextFileContentObject( "oval:org.mitre.oval:obj:7326", 1 )
-    .path( new EntityObjectString( "/etc" ) )
-    .filename( new EntityObjectString( "debian_version" ) )
-    .line( new EntityObjectString( "\\d\\.\\d", Operation.PATTERN_MATCH ) );
-
-
-    public static final TextFileContent54Object  OBJECT_INDEPENDENT_TEXTFILECONTENT54_15567 =
-        new TextFileContent54Object( "oval:org.mitre.oval:obj:15567", 1,
-                        "Object to check content of Google Chrome Preferences file"
-                        )
-    .behaviors( (new TextFileContent54Behaviors()).multiline( true ) )
-    .path( new EntityObjectString( "/etc" ) )
-    .filename( new EntityObjectString( "debian_version" ) )
-    .pattern( new EntityObjectString( "^\\s*\"name\": \"InvisibleHand\"[^}]+}[^p]+path\": \"lghjfnfolmcikomdjmoiemllfnlmmoko\\\\[^s]+state\": [01]$", Operation.PATTERN_MATCH ) )
-    .instance( new EntityObjectInt( "1", Datatype.INT, EntityObjectInt.DEFAULT_OPERATION ) );
-
-
-    public static final DpkgInfoObject  OBJECT_LINUX_DPKGINFO_10648 =
-        new DpkgInfoObject( "oval:org.mitre.oval:obj:10648", 1,
-                        "apache2 package information"
-        )
-    .name( new EntityObjectString( "apache2" ) );
-
-
-    public static final RpmInfoObject  OBJECT_LINUX_RPMINFO_20100061001 =
-        new RpmInfoObject( "oval:com.redhat.rhsa:obj:20100061001", 301 )
-    .name( new EntityObjectString( "redhat-release" ) );
-
-
-    public static final UnameObject  OBJECT_UNAME_UNAME_2759 =
-        new UnameObject( "oval:org.mitre.oval:obj:2759", 1,
-                        "The single uname object."
-        );
-
-
-    public static final FileObject  OBJECT_WINDOWS_FILE_222 =
-        new FileObject( "oval:org.mitre.oval:obj:222", 1,
-                        "The path to the mshtml.dll file in the system root"
-        )
-    .path( new EntityObjectString( "oval:org.mitre.oval:var:200", Check.ALL ) )
-    .filename( new EntityObjectString( "mshtml.dll" ) );
-
-
-    public static final MetabaseObject  OBJECT_WINDOWS_METABASE_556 =
-        new MetabaseObject( "oval:org.mitre.oval:obj:556", 2 )
-    .key( new EntityObjectString( "LM/W3SVC" ) )
-    .ID( new EntityObjectInt( "6032", Datatype.INT, EntityObjectInt.DEFAULT_OPERATION ) );
-
-
-    public static final RegistryObject  OBJECT_WINDOWS_REGISTRY_717 =
-        new RegistryObject( "oval:org.mitre.oval:obj:717", 1,
-                        "This registry key holds the service pack installed on the host if one is present."
-        )
-    .hive( new EntityObjectRegistryHive( "HKEY_LOCAL_MACHINE" ) )
-    .key( new EntityObjectString( "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion" ) )
-    .name( new EntityObjectString( "CSDVersion" ) );
-
-
     //**************************************************************
     // oval:org.mitre.oval:def:8500 related object
     //**************************************************************
@@ -351,82 +154,6 @@ public class OvalSample
 
 
 
-    //==============================================================
-    //  def:state
-    //==============================================================
-
-    public static final FamilyState  STATE_INDEPENDENT_FAMILY_99 =
-        new FamilyState( "oval:org.mitre.oval:ste:99", 2,
-        "Microsoft Windows family" )
-    .family( new EntityStateFamily( Family.WINDOWS,
-                    Operation.CASE_INSENSITIVE_EQUALS )
-    );
-
-
-    public static final TextFileContentState  STATE_INDEPENDENT_TEXTFILECONTENT_5132 =
-        new TextFileContentState( "oval:org.mitre.oval:ste:5132", 1 )
-    .subexpression( new EntityStateAnySimple( "\\brw\\b",
-                    Operation.PATTERN_MATCH )
-    );
-
-
-    public static final TextFileContent54State  STATE_INDEPENDENT_TEXTFILECONTENT54_11440 =
-        new TextFileContent54State( "oval:org.mitre.oval:ste:11440", 1,
-                        "State matches if Google Chrome Invisible Hand Extension is enabled" )
-    .text( new EntityStateAnySimple( "^\\s*\"name\": \"InvisibleHand\"[^}]+}[^p]+path\": \"lghjfnfolmcikomdjmoiemllfnlmmoko\\\\[^s]+state\": [01]$", Operation.PATTERN_MATCH )
-    );
-
-
-    public static final DpkgInfoState  STATE_LINUX_DPKGINFO_5797 =
-        new DpkgInfoState( "oval:org.mitre.oval:ste:5797", 1 )
-    .evr( new EntityStateEVRString( "0:2.2.6-02-1+lenny2+b2",
-                    Operation.LESS_THAN )
-    );
-
-
-    public static final RpmInfoState  STATE_LINUX_RPMINFO_20100061004 =
-        new RpmInfoState( "oval:com.redhat.rhsa:ste:20100061004", 301 )
-    .evr( new EntityStateEVRString( "0:1.3.5-11.el5_4.1",
-                    Operation.LESS_THAN )
-    );
-
-
-    public static final RpmInfoState  STATE_LINUX_RPMINFO_20100061003 =
-        new RpmInfoState( "oval:com.redhat.rhsa:ste:20100061003", 301 )
-    .version( new EntityStateAnySimple( "^5[^[:digit:]]",
-                    Operation.PATTERN_MATCH )
-    );
-
-
-    public static final RpmInfoState  STATE_LINUX_RPMINFO_20100061002  =
-        new RpmInfoState( "oval:com.redhat.rhsa:ste:20100061002", 301 )
-    .signatureKeyID( new EntityStateString( "5326810137017186",
-                    Operation.EQUALS )
-    );
-
-
-    public static final FileState  STATE_WINDOWS_FILE_2190 =
-        new FileState( "oval:org.mitre.oval:ste:2190", 1 )
-    .version( new EntityStateVersion( "6.0.2900.2873",
-                    Datatype.VERSION, Operation.LESS_THAN )
-    );
-
-
-    public static final MetabaseState  STATE_WINDOWS_METABASE_537 =
-        new MetabaseState( "oval:org.mitre.oval:ste:537", 1 )
-    .data( new EntityStateAnySimple( "^http:*,PERMANENT,*",
-                    Operation.PATTERN_MATCH )
-    );
-
-
-    public static final RegistryState  STATE_WINDOWS_REGISTRY_1205 =
-        new RegistryState( "oval:org.mitre.oval:ste:1205", 1 )
-    .value( new EntityStateAnySimple( "1",
-                    Datatype.INT,
-                    Operation.EQUALS )
-    );
-
-
 
     //**************************************************************
     // oval:org.mitre.oval:def:8500 related state
@@ -463,73 +190,6 @@ public class OvalSample
         )
     .value( new EntityStateAnySimple( "5\\.0\\.([0-9]|[1-7][0-9]|8[0-7])?(|[a-z\\_\\-]+|\\..*)$",
                     Operation.PATTERN_MATCH )
-    );
-
-
-
-    //==============================================================
-    //  def:variable
-    //==============================================================
-
-    public static final LocalVariable  VARIABLE_349 =
-        new LocalVariable( "oval:org.mitre.oval:var:349", 1,
-                        "Path to MySQL bin directory",
-                        Datatype.STRING
-        )
-    .component(
-                    new ConcatFunction(
-                                    new Component[] {
-                                                    new ObjectComponent( "oval:org.mitre.oval:obj:11992", "value" ),
-                                                    new LiteralComponent( "bin\\" )
-                                    }
-                    )
-    );
-
-
-    public static final LocalVariable  VARIABLE_LOCAL_246 =
-        new LocalVariable( "oval:org.mitre.oval:var:246", 1,
-                        "MSN Messenger directory",
-                        Datatype.STRING
-        )
-    .component(
-                    new ConcatFunction(
-                                    new Component[] {
-                                                    new ObjectComponent( "oval:org.mitre.oval:obj:309", "value" ),
-                                                    new LiteralComponent( "\\MSN Messenger", Datatype.STRING )
-                                    }
-                    )
-    );
-
-
-
-    public static final LocalVariable  VARIABLE_LOCAL_105 =
-        new LocalVariable( "oval:org.mitre.oval:var:105", 1,
-                        "Path to folder containing Winamp.exe",
-                        Datatype.STRING
-        )
-    .component(
-                    new RegexCaptureFunction(
-                                    new ObjectComponent( "oval:org.mitre.oval:obj:7560", "value" ),
-                                    "^\\x22(.*)UninstWA\\.exe\\x22$"
-                    )
-    );
-
-
-    public static final LocalVariable  VARIABLE_LOCAL_489 =
-        new LocalVariable( "oval:org.mitre.oval:var:489", 2,
-                        "VC90 ATL directory",
-                        Datatype.STRING
-        )
-    .component(
-                    new ConcatFunction(
-                                    new Component[] {
-                                                    new LiteralComponent( "^" ),
-                                                    new EscapeRegexFunction(
-                                                                    new ObjectComponent( "oval:org.mitre.oval:obj:219", "value" )
-                                                    ),
-                                                    new LiteralComponent( "\\\\winsxs\\\\(x86|amd64)_microsoft\\.vc90\\.atl_1fc8b3b9a1e18e3b_9\\.0\\.30729\\.4148.*$" )
-                                    }
-                    )
     );
 
 
@@ -791,7 +451,7 @@ public class OvalSample
     .state( STATE_WINDOWS_REGISTRY_6475 )
     .state( STATE_WINDOWS_REGISTRY_6693 )
     .state( STATE_WINDOWS_REGISTRY_6359 )
-    .variable( VARIABLE_349 )
+    .variable( DefinitionsSample.VARIABLE_LOCAL_349 )
     ;
 
 

@@ -5,6 +5,7 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.test.oval.core.DefinitionsSample;
 import jp.go.aist.six.test.oval.core.OvalSample;
 import org.testng.annotations.DataProvider;
 
@@ -156,91 +157,91 @@ public class StoreDefinitionsTest
     //  test
     //==============================================================
 
-    @DataProvider( name="definitions.test" )
-    public Object[][] provideDefinitionsTest()
-    {
-        return new Object[][] {
-                        // independent : family
-                        {
-                            Test.class,
-                            "test/data/definitions/test-family_oval-tst-99_1.xml",
-                            "oval_definitions/tests/independent:family_test",
-                            OvalSample.TEST_INDEPENDENT_FAMILY_99
-                        }
-                        ,
-                        // independent : textfilecontent
-                        {
-                            Test.class,
-                            "test/data/definitions/test-textfilecontent_oval-tst-11150_1.xml",
-                            "oval_definitions/tests/independent:textfilecontent_test",
-                            OvalSample.TEST_INDEPENDENT_TEXTFILECONTENT_11150
-                        }
-                        ,
-                        // independent : unknown
-                        {
-                            Test.class,
-                            "test/data/definitions/test-unknown_oval-tst-2531_1.xml",
-                            "oval_definitions/tests/independent:unknown_test",
-                            OvalSample.TEST_INDEPENDENT_UNKNOWN_2531
-                        }
-                        ,
-                        // linux : DpkgInfo
-                        {
-                            Test.class,
-                            "test/data/definitions/test-dpkginfo_oval-tst-19402_1.xml",
-                            "oval_definitions/tests/linux:dpkginfo_test",
-                            OvalSample.TEST_LINUX_DPKGINFO_19402
-                        }
-                        ,
-                        // linux : RpmInfo
-                        {
-                            Test.class,
-                            "test/data/definitions/test-rpminfo_rhsa-tst-20100061002_301.xml",
-                            "oval_definitions/tests/linux:rpminfo_test",
-                            OvalSample.TEST_LINUX_RPMINFO_20100061002
-                        }
-                        ,
-                        // unix : uname
-                        {
-                            Test.class,
-                            "test/data/definitions/test-uname_oval-tst-11195_1.xml",
-                            "oval_definitions/tests/unix:uname_test",
-                            OvalSample.TEST_UNIX_UNAME_11195
-                        }
-                        ,
-                        // windows : File
-                        {
-                            Test.class,
-                            "test/data/definitions/test-file_oval-tst-2339_1.xml",
-                            "oval_definitions/tests/windows:file_test",
-                            OvalSample.TEST_WINDOWS_FILE_2339
-                        }
-                        ,
-                        // windows : File 2
-                        {
-                            Test.class,
-                            "test/data/definitions/test-file_oval-tst-10629_1.xml",
-                            "oval_definitions/tests/windows:file_test",
-                            OvalSample.TEST_WINDOWS_FILE_10629
-                        }
-                        ,
-                        // windows : Metabase test
-                        {
-                            Test.class,
-                            "test/data/definitions/test-metabase_oval-tst-709_2.xml",
-                            "oval_definitions/tests/windows:metabase_test",
-                            OvalSample.TEST_WINDOWS_METABASE_709
-                        }
-                        ,
-                        // windows : Registry test
-                        {
-                            Test.class,
-                            "test/data/definitions/test-registry_oval-tst-3019_2.xml",
-                            "oval_definitions/tests/windows:registry_test",
-                            OvalSample.TEST_WINDOWS_REGISTRY_3019
-                        }
-        };
-    }
+//    @DataProvider( name="definitions.test" )
+//    public Object[][] provideDefinitionsTest()
+//    {
+//        return new Object[][] {
+//                        // independent : family
+//                        {
+//                            Test.class,
+//                            "test/data/definitions/test-family_oval-tst-99_1.xml",
+//                            "oval_definitions/tests/independent:family_test",
+//                            OvalSample.TEST_INDEPENDENT_FAMILY_99
+//                        }
+//                        ,
+//                        // independent : textfilecontent
+//                        {
+//                            Test.class,
+//                            "test/data/definitions/test-textfilecontent_oval-tst-11150_1.xml",
+//                            "oval_definitions/tests/independent:textfilecontent_test",
+//                            OvalSample.TEST_INDEPENDENT_TEXTFILECONTENT_11150
+//                        }
+//                        ,
+//                        // independent : unknown
+//                        {
+//                            Test.class,
+//                            "test/data/definitions/test-unknown_oval-tst-2531_1.xml",
+//                            "oval_definitions/tests/independent:unknown_test",
+//                            OvalSample.TEST_INDEPENDENT_UNKNOWN_2531
+//                        }
+//                        ,
+//                        // linux : DpkgInfo
+//                        {
+//                            Test.class,
+//                            "test/data/definitions/test-dpkginfo_oval-tst-19402_1.xml",
+//                            "oval_definitions/tests/linux:dpkginfo_test",
+//                            OvalSample.TEST_LINUX_DPKGINFO_19402
+//                        }
+//                        ,
+//                        // linux : RpmInfo
+//                        {
+//                            Test.class,
+//                            "test/data/definitions/test-rpminfo_rhsa-tst-20100061002_301.xml",
+//                            "oval_definitions/tests/linux:rpminfo_test",
+//                            OvalSample.TEST_LINUX_RPMINFO_20100061002
+//                        }
+//                        ,
+//                        // unix : uname
+//                        {
+//                            Test.class,
+//                            "test/data/definitions/test-uname_oval-tst-11195_1.xml",
+//                            "oval_definitions/tests/unix:uname_test",
+//                            OvalSample.TEST_UNIX_UNAME_11195
+//                        }
+//                        ,
+//                        // windows : File
+//                        {
+//                            Test.class,
+//                            "test/data/definitions/test-file_oval-tst-2339_1.xml",
+//                            "oval_definitions/tests/windows:file_test",
+//                            OvalSample.TEST_WINDOWS_FILE_2339
+//                        }
+//                        ,
+//                        // windows : File 2
+//                        {
+//                            Test.class,
+//                            "test/data/definitions/test-file_oval-tst-10629_1.xml",
+//                            "oval_definitions/tests/windows:file_test",
+//                            OvalSample.TEST_WINDOWS_FILE_10629
+//                        }
+//                        ,
+//                        // windows : Metabase test
+//                        {
+//                            Test.class,
+//                            "test/data/definitions/test-metabase_oval-tst-709_2.xml",
+//                            "oval_definitions/tests/windows:metabase_test",
+//                            OvalSample.TEST_WINDOWS_METABASE_709
+//                        }
+//                        ,
+//                        // windows : Registry test
+//                        {
+//                            Test.class,
+//                            "test/data/definitions/test-registry_oval-tst-3019_2.xml",
+//                            "oval_definitions/tests/windows:registry_test",
+//                            OvalSample.TEST_WINDOWS_REGISTRY_3019
+//                        }
+//        };
+//    }
 
 
 
@@ -249,15 +250,16 @@ public class StoreDefinitionsTest
                     dataProvider="definitions.test",
                     alwaysRun=true
                     )
-    public <T extends Test> void testDefinitionsTest(
+    public <T extends Test> void testStoreDefinitionsTest(
                     final Class<T> type,
-                    final String filepath,
+                    final String sourceFilepath,
                     final String xpath,
-                    final T expected
+                    final T expected,
+                    final String resultFilepath
                     )
     throws Exception
     {
-        _testStoreSync( type, filepath, xpath, expected );
+        _testStoreSync( type, sourceFilepath, xpath, expected );
     }
 
 
@@ -275,7 +277,7 @@ public class StoreDefinitionsTest
                             State.class,
                             "test/data/definitions/state-family_oval-ste-99_2.xml",
                             "oval_definitions/states/independent:family_state",
-                            OvalSample.STATE_INDEPENDENT_FAMILY_99
+                            DefinitionsSample.STATE_INDEPENDENT_FAMILY_99
                         }
                         ,
                         // independent : textfilecontent
@@ -283,7 +285,7 @@ public class StoreDefinitionsTest
                             State.class,
                             "test/data/definitions/state-textfilecontent_oval-ste-5132_1.xml",
                             "oval_definitions/states/independent:textfilecontent_state",
-                            OvalSample.STATE_INDEPENDENT_TEXTFILECONTENT_5132
+                            DefinitionsSample.STATE_INDEPENDENT_TEXTFILECONTENT_5132
                         }
                         ,
                         // independent : textfilecontent54
@@ -291,7 +293,7 @@ public class StoreDefinitionsTest
                             State.class,
                             "test/data/definitions/state-independent-textfilecontent54_11440.xml",
                             "oval_definitions/states/independent:textfilecontent54_state",
-                            OvalSample.STATE_INDEPENDENT_TEXTFILECONTENT54_11440
+                            DefinitionsSample.STATE_INDEPENDENT_TEXTFILECONTENT54_11440
                         }
                         ,
                         // windows : file
@@ -299,7 +301,7 @@ public class StoreDefinitionsTest
                             State.class,
                             "test/data/definitions/state-file_oval-ste-2190_1.xml",
                             "oval_definitions/states/windows:file_state",
-                            OvalSample.STATE_WINDOWS_FILE_2190
+                            DefinitionsSample.STATE_WINDOWS_FILE_2190
                         }
                         ,
                         // windows : metabase
@@ -307,7 +309,7 @@ public class StoreDefinitionsTest
                             State.class,
                             "test/data/definitions/state-metabase_oval-ste-537_1.xml",
                             "oval_definitions/states/windows:metabase_state",
-                            OvalSample.STATE_WINDOWS_METABASE_537
+                            DefinitionsSample.STATE_WINDOWS_METABASE_537
                         }
                         ,
                         // windows : registry
@@ -315,7 +317,7 @@ public class StoreDefinitionsTest
                             State.class,
                             "test/data/definitions/state-registry_oval-ste-1205_1.xml",
                             "oval_definitions/states/windows:registry_state",
-                            OvalSample.STATE_WINDOWS_REGISTRY_1205
+                            DefinitionsSample.STATE_WINDOWS_REGISTRY_1205
                         }
                         ,
                         // linux : dpkginfo
@@ -323,7 +325,7 @@ public class StoreDefinitionsTest
                             State.class,
                             "test/data/definitions/state-dpkginfo_oval-ste-5797_1.xml",
                             "oval_definitions/states/linux:dpkginfo_state",
-                            OvalSample.STATE_LINUX_DPKGINFO_5797
+                            DefinitionsSample.STATE_LINUX_DPKGINFO_5797
                         }
                         ,
                         // linux : rpminfo/evr
@@ -331,7 +333,7 @@ public class StoreDefinitionsTest
                             State.class,
                             "test/data/definitions/state-rpminfo_rhsa-ste-20100061004_301.xml",
                             "oval_definitions/states/linux:rpminfo_state",
-                            OvalSample.STATE_LINUX_RPMINFO_20100061004
+                            DefinitionsSample.STATE_LINUX_RPMINFO_20100061004
                         }
                         ,
                         // linux : rpminfo/version
@@ -339,7 +341,7 @@ public class StoreDefinitionsTest
                             State.class,
                             "test/data/definitions/state-linux-rpminfo_rhsa-20100061003.xml",
                             "oval_definitions/states/linux:rpminfo_state",
-                            OvalSample.STATE_LINUX_RPMINFO_20100061003
+                            DefinitionsSample.STATE_LINUX_RPMINFO_20100061003
                         }
                         ,
                         // linux : rpminfo/signature_keyid
@@ -347,7 +349,7 @@ public class StoreDefinitionsTest
                             State.class,
                             "test/data/definitions/state-rpminfo_rhsa-ste-20100061002_301.xml",
                             "oval_definitions/states/linux:rpminfo_state",
-                            OvalSample.STATE_LINUX_RPMINFO_20100061002
+                            DefinitionsSample.STATE_LINUX_RPMINFO_20100061002
                         }
         };
 
@@ -386,7 +388,7 @@ public class StoreDefinitionsTest
                             SystemObject.class,
                             "test/data/definitions/object-independent-family_oval-obj-99_1.xml",
                             "oval_definitions/objects/independent:family_object",
-                            OvalSample.OBJECT_INDEPENDENT_FAMILY_99
+                            DefinitionsSample.OBJECT_INDEPENDENT_FAMILY_99
                         }
                         ,
                         // independent : textfilecontent
@@ -394,7 +396,7 @@ public class StoreDefinitionsTest
                             SystemObject.class,
                             "test/data/definitions/object-independent-textfilecontent_oval-obj-7326_1.xml",
                             "oval_definitions/objects/independent:textfilecontent_object",
-                            OvalSample.OBJECT_INDEPENDENT_TEXTFILECONTENT_7326
+                            DefinitionsSample.OBJECT_INDEPENDENT_TEXTFILECONTENT_7326
                         }
                         ,
                         // independent : textfilecontent54
@@ -402,7 +404,7 @@ public class StoreDefinitionsTest
                             SystemObject.class,
                             "test/data/definitions/object-independent-textfilecontent54_oval-obj-15567_1.xml",
                             "oval_definitions/objects/independent:textfilecontent54_object",
-                            OvalSample.OBJECT_INDEPENDENT_TEXTFILECONTENT54_15567
+                            DefinitionsSample.OBJECT_INDEPENDENT_TEXTFILECONTENT54_15567
                         }
                         ,
                         // linux : dpkginfo
@@ -410,7 +412,7 @@ public class StoreDefinitionsTest
                             SystemObject.class,
                             "test/data/definitions/object-linux-dpkginfo_oval-obj-10648_1.xml",
                             "oval_definitions/objects/linux:dpkginfo_object",
-                            OvalSample.OBJECT_LINUX_DPKGINFO_10648
+                            DefinitionsSample.OBJECT_LINUX_DPKGINFO_10648
                         }
                         ,
                         // linux : rpminfo
@@ -418,7 +420,7 @@ public class StoreDefinitionsTest
                             SystemObject.class,
                             "test/data/definitions/object-linux-rpminfo_rhsa-obj-20100061001_301.xml",
                             "oval_definitions/objects/linux:rpminfo_object",
-                            OvalSample.OBJECT_LINUX_RPMINFO_20100061001
+                            DefinitionsSample.OBJECT_LINUX_RPMINFO_20100061001
                         }
                         ,
                         // unux : uname
@@ -426,7 +428,7 @@ public class StoreDefinitionsTest
                             SystemObject.class,
                             "test/data/definitions/object-unix-uname_oval-obj-2759_1.xml",
                             "oval_definitions/objects/unix:uname_object",
-                            OvalSample.OBJECT_UNAME_UNAME_2759
+                            DefinitionsSample.OBJECT_UNAME_UNAME_2759
                         }
                         ,
 //                        // windows : file
@@ -434,7 +436,7 @@ public class StoreDefinitionsTest
                             SystemObject.class,
                             "test/data/definitions/object-windows-file_oval-obj-222_1.xml",
                             "oval_definitions/objects/windows:file_object",
-                            OvalSample.OBJECT_WINDOWS_FILE_222
+                            DefinitionsSample.OBJECT_WINDOWS_FILE_222
                         }
                         ,
                         // windows : metabase
@@ -442,7 +444,7 @@ public class StoreDefinitionsTest
                             SystemObject.class,
                             "test/data/definitions/object-windows-metabase_oval-obj-556_2.xml",
                             "oval_definitions/objects/windows:metabase_object",
-                            OvalSample.OBJECT_WINDOWS_METABASE_556
+                            DefinitionsSample.OBJECT_WINDOWS_METABASE_556
                         }
                         ,
                         // windows : registry
@@ -450,7 +452,7 @@ public class StoreDefinitionsTest
                             SystemObject.class,
                             "test/data/definitions/object-windows-registry_oval-obj-717_1.xml",
                             "oval_definitions/objects/windows:registry_object",
-                            OvalSample.OBJECT_WINDOWS_REGISTRY_717
+                            DefinitionsSample.OBJECT_WINDOWS_REGISTRY_717
                         }
         };
     }

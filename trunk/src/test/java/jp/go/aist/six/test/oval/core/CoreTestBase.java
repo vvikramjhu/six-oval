@@ -210,7 +210,7 @@ public abstract class CoreTestBase
                             Test.class,
                             "test/data/definitions/test-independent-family_oval-99.xml",
                             "/oval_definitions/tests/family_test",
-                            OvalSample.TEST_INDEPENDENT_FAMILY_99,
+                            DefinitionsSample.TEST_INDEPENDENT_FAMILY_99,
                             "marshalled_test-independent-family_oval-99.xml"
                         }
                         ,
@@ -219,7 +219,7 @@ public abstract class CoreTestBase
                             Test.class,
                             "test/data/definitions/test-independent-textfilecontent_oval-11150.xml",
                             "/oval_definitions/tests/textfilecontent_test",
-                            OvalSample.TEST_INDEPENDENT_TEXTFILECONTENT_11150,
+                            DefinitionsSample.TEST_INDEPENDENT_TEXTFILECONTENT_11150,
                             "marshalled_test-independent-textfilecontent_oval-11150.xml"
                         }
                         ,
@@ -228,7 +228,7 @@ public abstract class CoreTestBase
                             Test.class,
                             "test/data/definitions/test-independent-textfilecontent54_oval-41853.xml",
                             "/oval_definitions/tests/textfilecontent54_test",
-                            OvalSample.TEST_INDEPENDENT_TEXTFILECONTENT54_41853,
+                            DefinitionsSample.TEST_INDEPENDENT_TEXTFILECONTENT54_41853,
                             "marshalled_test-independent-textfilecontent54_oval-41853.xml"
                         }
                         ,
@@ -237,7 +237,7 @@ public abstract class CoreTestBase
                             Test.class,
                             "test/data/definitions/test-independent-unknown_oval-2531.xml",
                             "/oval_definitions/tests/unknown_test",
-                            OvalSample.TEST_INDEPENDENT_UNKNOWN_2531,
+                            DefinitionsSample.TEST_INDEPENDENT_UNKNOWN_2531,
                             "marshalled_test-independent-unknown_oval-2531.xml"
                         }
                         ,
@@ -246,7 +246,7 @@ public abstract class CoreTestBase
                             Test.class,
                             "test/data/definitions/test-linux-dpkginfo_oval-19402.xml",
                             "/oval_definitions/tests/dpkginfo_test",
-                            OvalSample.TEST_LINUX_DPKGINFO_19402,
+                            DefinitionsSample.TEST_LINUX_DPKGINFO_19402,
                             "marshalled_test-linux-dpkginfo_oval-19402.xml"
                         }
                         ,
@@ -255,7 +255,7 @@ public abstract class CoreTestBase
                             Test.class,
                             "test/data/definitions/test-linux-rpminfo_rhsa-20100061002.xml",
                             "/oval_definitions/tests/rpminfo_test",
-                            OvalSample.TEST_LINUX_RPMINFO_20100061002,
+                            DefinitionsSample.TEST_LINUX_RPMINFO_20100061002,
                             "marshalled_test-linux-rpminfo_rhsa-20100061002.xml"
                         }
                         ,
@@ -264,7 +264,7 @@ public abstract class CoreTestBase
                             Test.class,
                             "test/data/definitions/test-unix-uname_oval-11195.xml",
                             "/oval_definitions/tests/uname_test",
-                            OvalSample.TEST_UNIX_UNAME_11195,
+                            DefinitionsSample.TEST_UNIX_UNAME_11195,
                             "marshalled_test-unix-uname_oval-11195.xml"
                         }
                         ,
@@ -273,7 +273,7 @@ public abstract class CoreTestBase
                             Test.class,
                             "test/data/definitions/test-windows-file_oval-10629.xml",
                             "/oval_definitions/tests/file_test",
-                            OvalSample.TEST_WINDOWS_FILE_10629,
+                            DefinitionsSample.TEST_WINDOWS_FILE_10629,
                             "marshalled_test-windows-file_oval-10629.xml"
                         }
                         ,
@@ -282,7 +282,7 @@ public abstract class CoreTestBase
                             Test.class,
                             "test/data/definitions/test-windows-file_oval-2339.xml",
                             "/oval_definitions/tests/file_test",
-                            OvalSample.TEST_WINDOWS_FILE_2339,
+                            DefinitionsSample.TEST_WINDOWS_FILE_2339,
                             "marshalled_test-windows-file_oval-2339.xml"
                         }
                         ,
@@ -291,7 +291,7 @@ public abstract class CoreTestBase
                             Test.class,
                             "test/data/definitions/test-windows-metabase_oval-709.xml",
                             "/oval_definitions/tests/metabase_test",
-                            OvalSample.TEST_WINDOWS_METABASE_709,
+                            DefinitionsSample.TEST_WINDOWS_METABASE_709,
                             "marshalled_test-windows-metabase_oval-709.xml"
                         }
                         ,
@@ -300,7 +300,7 @@ public abstract class CoreTestBase
                             Test.class,
                             "test/data/definitions/test-windows-registry_oval-3019.xml",
                             "/oval_definitions/tests/registry_test",
-                            OvalSample.TEST_WINDOWS_REGISTRY_3019,
+                            DefinitionsSample.TEST_WINDOWS_REGISTRY_3019,
                             "marshalled_test-windows-registry_oval-3019.xml"
                         }
         };
@@ -317,7 +317,7 @@ public abstract class CoreTestBase
                             SystemObject.class,
                             "test/data/definitions/object-independent-family_oval-99.xml",
                             "/oval_definitions/objects/family_object",
-                            OvalSample.OBJECT_INDEPENDENT_FAMILY_99,
+                            DefinitionsSample.OBJECT_INDEPENDENT_FAMILY_99,
                             "marshalled_object-independent-family_oval-99.xml"
                         }
                         ,
@@ -326,7 +326,7 @@ public abstract class CoreTestBase
                             SystemObject.class,
                             "test/data/definitions/object-independent-textfilecontent_oval-7326.xml",
                             "/oval_definitions/objects/textfilecontent_object",
-                            OvalSample.OBJECT_INDEPENDENT_TEXTFILECONTENT_7326,
+                            DefinitionsSample.OBJECT_INDEPENDENT_TEXTFILECONTENT_7326,
                             "marshalled_object-independent-textfilecontent_oval-7326.xml"
                         }
                         ,
@@ -335,7 +335,7 @@ public abstract class CoreTestBase
                             SystemObject.class,
                             "test/data/definitions/object-independent-textfilecontent54_oval-15567.xml",
                             "/oval_definitions/objects/textfilecontent54_object",
-                            OvalSample.OBJECT_INDEPENDENT_TEXTFILECONTENT54_15567,
+                            DefinitionsSample.OBJECT_INDEPENDENT_TEXTFILECONTENT54_15567,
                             "marshalled_object-independent-textfilecontent54_oval-15567.xml"
                         }
                         ,
@@ -344,7 +344,7 @@ public abstract class CoreTestBase
                             SystemObject.class,
                             "test/data/definitions/object-linux-dpkginfo_oval-10648.xml",
                             "/oval_definitions/objects/dpkginfo_object",
-                            OvalSample.OBJECT_LINUX_DPKGINFO_10648,
+                            DefinitionsSample.OBJECT_LINUX_DPKGINFO_10648,
                             "marshalled_object-linux-dpkginfo_oval-10648.xml"
                         }
                         ,
@@ -353,7 +353,7 @@ public abstract class CoreTestBase
                             SystemObject.class,
                             "test/data/definitions/object-linux-rpminfo_rhsa-20100061001.xml",
                             "/oval_definitions/objects/rpminfo_object",
-                            OvalSample.OBJECT_LINUX_RPMINFO_20100061001,
+                            DefinitionsSample.OBJECT_LINUX_RPMINFO_20100061001,
                             "marshalled_object-linux-rpminfo_rhsa-20100061001.xml"
                         }
                         ,
@@ -362,7 +362,7 @@ public abstract class CoreTestBase
                             SystemObject.class,
                             "test/data/definitions/object-unix-uname_oval-2759.xml",
                             "/oval_definitions/objects/uname_object",
-                            OvalSample.OBJECT_UNAME_UNAME_2759,
+                            DefinitionsSample.OBJECT_UNAME_UNAME_2759,
                             "marshalled_object-unix-uname_oval-2759.xml"
                         }
                         ,
@@ -371,7 +371,7 @@ public abstract class CoreTestBase
                             SystemObject.class,
                             "test/data/definitions/object-windows-file_oval-222.xml",
                             "/oval_definitions/objects/file_object",
-                            OvalSample.OBJECT_WINDOWS_FILE_222,
+                            DefinitionsSample.OBJECT_WINDOWS_FILE_222,
                             "marshalled_object-windows-file_oval-222.xml"
                         }
                         ,
@@ -380,7 +380,7 @@ public abstract class CoreTestBase
                             SystemObject.class,
                             "test/data/definitions/object-windows-metabase_oval-556.xml",
                             "/oval_definitions/objects/metabase_object",
-                            OvalSample.OBJECT_WINDOWS_METABASE_556,
+                            DefinitionsSample.OBJECT_WINDOWS_METABASE_556,
                             "marshalled_object-windows-metabase_oval-556.xml"
                         }
                         ,
@@ -389,7 +389,7 @@ public abstract class CoreTestBase
                             SystemObject.class,
                             "test/data/definitions/object-windows-registry_oval-717.xml",
                             "/oval_definitions/objects/registry_object",
-                            OvalSample.OBJECT_WINDOWS_REGISTRY_717,
+                            DefinitionsSample.OBJECT_WINDOWS_REGISTRY_717,
                             "marshalled_object-windows-registry_oval-717.xml"
                         }
         };
@@ -406,7 +406,7 @@ public abstract class CoreTestBase
                             State.class,
                             "test/data/definitions/state-independent-family_oval-99.xml",
                             "/oval_definitions/states/family_state",
-                            OvalSample.STATE_INDEPENDENT_FAMILY_99,
+                            DefinitionsSample.STATE_INDEPENDENT_FAMILY_99,
                             "marshalled_state-independent-family_oval-99.xml"
                         }
                         ,
@@ -415,7 +415,7 @@ public abstract class CoreTestBase
                             State.class,
                             "test/data/definitions/state-independent-textfilecontent_oval-5132.xml",
                             "/oval_definitions/states/textfilecontent_state",
-                            OvalSample.STATE_INDEPENDENT_TEXTFILECONTENT_5132,
+                            DefinitionsSample.STATE_INDEPENDENT_TEXTFILECONTENT_5132,
                             "marshalled_state-independent-textfilecontent_oval-5132.xml"
                         }
                         ,
@@ -424,7 +424,7 @@ public abstract class CoreTestBase
                             State.class,
                             "test/data/definitions/state-independent-textfilecontent54_oval-11440.xml",
                             "/oval_definitions/states/textfilecontent54_state",
-                            OvalSample.STATE_INDEPENDENT_TEXTFILECONTENT54_11440,
+                            DefinitionsSample.STATE_INDEPENDENT_TEXTFILECONTENT54_11440,
                             "marshalled_state-independent-textfilecontent54_oval-11440.xml"
                         }
                         ,
@@ -433,7 +433,7 @@ public abstract class CoreTestBase
                             State.class,
                             "test/data/definitions/state-linux-dpkginfo_oval-5797.xml",
                             "/oval_definitions/states/dpkginfo_state",
-                            OvalSample.STATE_LINUX_DPKGINFO_5797,
+                            DefinitionsSample.STATE_LINUX_DPKGINFO_5797,
                             "marshalled_state-linux-dpkginfo_oval-5797.xml"
                         }
                         ,
@@ -442,7 +442,7 @@ public abstract class CoreTestBase
                             State.class,
                             "test/data/definitions/state-linux-rpminfo_rhsa-20100061002.xml",
                             "/oval_definitions/states/rpminfo_state",
-                            OvalSample.STATE_LINUX_RPMINFO_20100061002,
+                            DefinitionsSample.STATE_LINUX_RPMINFO_20100061002,
                             "marshalled_state-linux-rpminfo_rhsa-20100061002.xml"
                         }
                         ,
@@ -451,7 +451,7 @@ public abstract class CoreTestBase
                             State.class,
                             "test/data/definitions/state-linux-rpminfo_rhsa-20100061003.xml",
                             "/oval_definitions/states/rpminfo_state",
-                            OvalSample.STATE_LINUX_RPMINFO_20100061003,
+                            DefinitionsSample.STATE_LINUX_RPMINFO_20100061003,
                             "marshalled_state-linux-rpminfo_rhsa-20100061003.xml"
                         }
                         ,
@@ -460,7 +460,7 @@ public abstract class CoreTestBase
                             State.class,
                             "test/data/definitions/state-linux-rpminfo_rhsa-20100061004.xml",
                             "/oval_definitions/states/rpminfo_state",
-                            OvalSample.STATE_LINUX_RPMINFO_20100061004,
+                            DefinitionsSample.STATE_LINUX_RPMINFO_20100061004,
                             "marshalled_state-linux-rpminfo_rhsa-20100061004.xml"
                         }
                         ,
@@ -469,7 +469,7 @@ public abstract class CoreTestBase
                             State.class,
                             "test/data/definitions/state-windows-file_oval-2190.xml",
                             "/oval_definitions/states/file_state",
-                            OvalSample.STATE_WINDOWS_FILE_2190,
+                            DefinitionsSample.STATE_WINDOWS_FILE_2190,
                             "marshalled_state-windows-file_oval-2190.xml"
                         }
                         ,
@@ -478,7 +478,7 @@ public abstract class CoreTestBase
                             State.class,
                             "test/data/definitions/state-windows-metabase_oval-537.xml",
                             "/oval_definitions/states/metadata_state",
-                            OvalSample.STATE_WINDOWS_METABASE_537,
+                            DefinitionsSample.STATE_WINDOWS_METABASE_537,
                             "marshalled_state-windows-metabase_oval-537.xml"
                         }
                         ,
@@ -487,7 +487,7 @@ public abstract class CoreTestBase
                             State.class,
                             "test/data/definitions/state-windows-registry_oval-1205.xml",
                             "/oval_definitions/states/registry_state",
-                            OvalSample.STATE_WINDOWS_REGISTRY_1205,
+                            DefinitionsSample.STATE_WINDOWS_REGISTRY_1205,
                             "marshalled_state-windows-registry_oval-1205.xml"
                         }
         };
@@ -504,7 +504,7 @@ public abstract class CoreTestBase
                             Variable.class,
                             "test/data/definitions/variable-local_oval-246.xml",
                             "/oval_definitions/variables/local_variable",
-                            OvalSample.VARIABLE_LOCAL_246,
+                            DefinitionsSample.VARIABLE_LOCAL_246,
                             "marshalled_variable-local_oval-246.xml"
                         }
                         ,
@@ -513,7 +513,7 @@ public abstract class CoreTestBase
                             Variable.class,
                             "test/data/definitions/variable-local_oval-105.xml",
                             "/oval_definitions/variables/local_variable",
-                            OvalSample.VARIABLE_LOCAL_105,
+                            DefinitionsSample.VARIABLE_LOCAL_105,
                             "marshalled_variable-local_oval-105.xml"
                         }
                         ,
@@ -522,7 +522,7 @@ public abstract class CoreTestBase
                             Variable.class,
                             "test/data/definitions/variable-local_oval-489.xml",
                             "/oval_definitions/variables/local_variable",
-                            OvalSample.VARIABLE_LOCAL_489,
+                            DefinitionsSample.VARIABLE_LOCAL_489,
                             "marshalled_variable-local_oval-489.xml"
                         }
         };
