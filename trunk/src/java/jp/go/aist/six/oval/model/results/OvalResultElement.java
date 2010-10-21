@@ -21,6 +21,9 @@
 package jp.go.aist.six.oval.model.results;
 
 import jp.go.aist.six.oval.model.OvalElement;
+import jp.go.aist.six.oval.model.common.Message;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 
@@ -35,8 +38,17 @@ public abstract class OvalResultElement
 //    extends OvalAnalysisElement
 {
 
+    private Collection<Message>  _message = new ArrayList<Message>();
+    //{0..*}
+
+
+    public static final int  DEFAULT_VARIABLE_INSTANCE = 1;
+    private int  _variableInstance = DEFAULT_VARIABLE_INSTANCE;
+    //{xsd:nonNegativeInteger, optional, default="1"}
+
+
     private Result  _result;
-    //{required} // oval-res:DefinitionType
+    //{required}
 
 
 
@@ -77,6 +89,56 @@ public abstract class OvalResultElement
 
     /**
      */
+    public void setMessage(
+                    final Collection<? extends Message> messages
+                    )
+    {
+        _message.clear();
+        if (messages != null  &&  messages != _message) {
+            _message.addAll( messages );
+        }
+    }
+
+
+    public boolean addMessage(
+                    final Message item
+                    )
+    {
+        return _message.add( item );
+    }
+
+
+    public Collection<Message> getMessage()
+    {
+        return _message;
+    }
+
+
+
+    /**
+     */
+    public void setVariableInstance(
+                    final int variableInstance
+                    )
+    {
+        if (variableInstance < 0) {
+            throw new IllegalArgumentException(
+                            "negative variable instance: " + variableInstance );
+        }
+
+        _variableInstance = variableInstance;
+    }
+
+
+    public int getVariableInstance()
+    {
+        return _variableInstance;
+    }
+
+
+
+    /**
+     */
     public void setResult(
                     final Result result
                     )
@@ -97,10 +159,50 @@ public abstract class OvalResultElement
     //**************************************************************
 
     @Override
+    public int hashCode()
+    {
+        final int  prime = 37;
+        int  hash = super.hashCode();
+
+        hash = prime * hash + getVariableInstance();
+
+        Result  result = getResult();
+        hash = prime * hash + ((result == null) ? 0 : result.hashCode());
+
+        return hash;
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (!(obj instanceof OvalResultElement)) {
+            return false;
+        }
+
+        if (super.equals( obj )) {
+            OvalResultElement  other = (OvalResultElement)obj;
+            if (getResult() == other.getResult()) {
+                if (getVariableInstance() == other.getVariableInstance()) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+
+
+    @Override
     public String toString()
     {
         return super.toString()
-                        + ", result=" + getResult();
+                        + ", result=" + getResult()
+                        + ", variable_instance=" + getVariableInstance();
     }
 
 }

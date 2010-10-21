@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.results;
 
+import jp.go.aist.six.oval.model.common.DefinitionClass;
 import jp.go.aist.six.util.orm.Dependent;
 
 
@@ -32,8 +33,9 @@ import jp.go.aist.six.util.orm.Dependent;
  *   <li>definition_id (required)</li>
  *   <li>version (required)</li>
  *   <li>variable_instance (optional -- default='1')</li>
+ *   <li>definitionClass (optional)</li>
  *   <li>result (required)</li>
- *   <li>message (0..*): currently NOT supported.</li>
+ *   <li>message (0..*)</li>
  *   <li>criteria (0..1)</li>
  * </ul>
  *
@@ -46,15 +48,12 @@ public class DefinitionResult
     implements Dependent<SystemResult>
 {
 
-//  private Collection<Message>  _messages = new ArrayList<Message>();
+    private DefinitionClass  _definitionClass;
+    //{optional}
+
 
     private CriteriaResult  _criteria;
     //{0..1}
-
-
-    public static final int  DEFAULT_VARIABLE_INSTANCE = 1;
-    private int  _variableInstance = DEFAULT_VARIABLE_INSTANCE;
-    //{xsd:nonNegativeInteger, optional, default="1"}
 
 
 
@@ -88,6 +87,23 @@ public class DefinitionResult
                     )
     {
         super( id, version, result );
+    }
+
+
+
+    /**
+     */
+    public void setDefinitionClass(
+                    final DefinitionClass clazz
+                    )
+    {
+        _definitionClass = clazz;
+    }
+
+
+    public DefinitionClass getDefinitionClass()
+    {
+        return _definitionClass;
     }
 
 
@@ -131,28 +147,6 @@ public class DefinitionResult
     public String getDefinitionID()
     {
         return getOvalID();
-    }
-
-
-
-    /**
-     */
-    public void setVariableInstance(
-                    final int variableInstance
-                    )
-    {
-        if (variableInstance < 0) {
-            throw new IllegalArgumentException(
-                            "negative variable instance: " + variableInstance );
-        }
-
-        _variableInstance = variableInstance;
-    }
-
-
-    public int getVariableInstance()
-    {
-        return _variableInstance;
     }
 
 
@@ -213,9 +207,33 @@ public class DefinitionResult
     //**************************************************************
 
     @Override
+    public int hashCode()
+    {
+        return super.hashCode();
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (!(obj instanceof DefinitionResult)) {
+            return false;
+        }
+
+        return super.equals( obj );
+    }
+
+
+
+    @Override
     public String toString()
     {
-        return "DefinitionResult[" + super.toString() + "]";
+        return "definition[" + super.toString()
+                        + ", criteria=" + getCriteria()
+                        + "]";
     }
 
 }

@@ -24,7 +24,6 @@ import jp.go.aist.six.oval.model.results.SystemResult;
 import jp.go.aist.six.oval.model.results.SystemResults;
 import jp.go.aist.six.oval.model.results.TestResult;
 import jp.go.aist.six.oval.model.results.TestResults;
-import jp.go.aist.six.oval.model.results.TestedItem;
 import jp.go.aist.six.oval.model.sc.CollectedSystemObject;
 import jp.go.aist.six.oval.model.sc.CollectedSystemObjects;
 import jp.go.aist.six.oval.model.sc.Item;
@@ -39,7 +38,6 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 
 
@@ -568,21 +566,19 @@ public abstract class Validators
             Reporter.log( " - results/system/definitions", true );
             DefinitionResults  expectedDefinitions = expected.getDefinitions();
             DefinitionResults    actualDefinitions =   actual.getDefinitions();
-            Reporter.log( "  * expected definitions: " + expectedDefinitions, true );
-            Reporter.log( "  *    actualdefinitions: " + actualDefinitions, true );
             if (expectedDefinitions == null  ||  expectedDefinitions.size() == 0) {
                 Assert.assertTrue( actualDefinitions == null  || actualDefinitions.size() == 0 );
             } else {
                 Assert.assertEquals( actualDefinitions.size(), expectedDefinitions.size() );
                 for (DefinitionResult  expectedDef : expectedDefinitions) {
+                    Reporter.log( " - results/system/definitions/definition: "
+                                    + expectedDef.getOvalID(), true );
                     boolean  contained = false;
                     for (DefinitionResult  actualDef: actualDefinitions) {
-                        if (actualDef.getOvalID().equals( expectedDef.getOvalID() )) {
-                            Reporter.log( " - results/system/definitions/definition/@id", true );
-                            Reporter.log( " - results/system/definitions/definition/@version", true );
-                            Assert.assertEquals( actualDef.getOvalVersion(), expectedDef.getOvalVersion() );
-                            Reporter.log( " - results/system/definitions/definition/@result", true );
-                            Assert.assertEquals( actualDef.getResult(), expectedDef.getResult() );
+                        if (actualDef.getOvalID().equals( expectedDef.getOvalID() )
+                                        &&  (actualDef.getOvalVersion() == expectedDef.getOvalVersion())
+                                        &&  (actualDef.getVariableInstance() == expectedDef.getVariableInstance())
+                                        ) {
                             contained = true;
                             break;
                         }
@@ -599,17 +595,14 @@ public abstract class Validators
             } else {
                 Assert.assertEquals( actualTests.size(), expectedTests.size() );
                 for (TestResult  expectedTest : expectedTests) {
-                    Reporter.log( " - results/system/tests/test: " + expectedTest.getOvalID(), true );
+                    Reporter.log( " - results/system/tests/test: "
+                                    + expectedTest.getOvalID(), true );
                     boolean  contained = false;
                     for (TestResult  actualTest: actualTests) {
-                        if (actualTest.getOvalID().equals( expectedTest.getOvalID() )) {
-                            Reporter.log( " - results/system/tests/test/@version", true );
-                            Assert.assertEquals( actualTest.getOvalVersion(), expectedTest.getOvalVersion() );
-                            Reporter.log( " - results/system/tests/test/@result", true );
-                            Assert.assertEquals( actualTest.getResult(), expectedTest.getResult() );
-                            Reporter.log( " - results/system/tests/test/tested_item", true );
-                            Assert.assertEquals( new HashSet<TestedItem>( actualTest.getTestedItem() ),
-                                            new HashSet<TestedItem>( expectedTest.getTestedItem() ) );
+                        if (actualTest.getOvalID().equals( expectedTest.getOvalID() )
+                                        &&  (actualTest.getOvalVersion() == expectedTest.getOvalVersion())
+                                        &&  (actualTest.getVariableInstance() == expectedTest.getVariableInstance())
+                                        ) {
                             contained = true;
                             break;
                         }

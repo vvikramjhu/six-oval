@@ -42,7 +42,7 @@ import java.util.Collection;
  *   <li>check_existence (optional -- default='at_least_one_exists')</li>
  *   <li>check (required)</li>
  *   <li>state_operator (optional -- default='AND')</li>
- *   <li>message (0..*): currently NOT supported.</li>
+ *   <li>message (0..*)</li>
  *   <li>tested_item (0..*)</li>
  *   <li>tested_variable (0..*)</li>
  * </ul>
@@ -56,20 +56,12 @@ public class TestResult
     implements Dependent<SystemResult>
 {
 
-//  private Collection<Message>  _messages = new ArrayList<Message>();
-
-
     private Collection<TestedItem>  _testedItem = new ArrayList<TestedItem>();
     //{0..*}
 
 
     private Collection<TestedVariable>  _testedVariable= new ArrayList<TestedVariable>();
     //{0..*}
-
-
-    public static final int  DEFAULT_VARIABLE_INSTANCE = 1;
-    private int  _variableInstance = DEFAULT_VARIABLE_INSTANCE;
-    //{xsd:nonNegativeInteger, optional, default="1"}
 
 
     public static final Existence  DEFAULT_CHECK_EXISTENCE = Existence.AT_LEAST_ONE_EXISTS;
@@ -212,28 +204,6 @@ public class TestResult
 
     /**
      */
-    public void setVariableInstance(
-                    final int variableInstance
-                    )
-    {
-        if (variableInstance < 0) {
-            throw new IllegalArgumentException(
-                            "negative variable instance: " + variableInstance );
-        }
-
-        _variableInstance = variableInstance;
-    }
-
-
-    public int getVariableInstance()
-    {
-        return _variableInstance;
-    }
-
-
-
-    /**
-     */
     public void setCheckExistence(
                     final Existence existence
                     )
@@ -366,9 +336,33 @@ public class TestResult
     // **************************************************************
 
     @Override
+    public int hashCode()
+    {
+        return super.hashCode();
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (!(obj instanceof TestResult)) {
+            return false;
+        }
+
+        return super.equals( obj );
+    }
+
+
+
+    @Override
     public String toString()
     {
-        return "TestResult[" + super.toString()
+        return "test[" + super.toString()
+                        + ", check_existence=" + getCheckExistence()
+                        + ", check=" + getCheck()
                         + ", tested_item=" + getTestedItem()
                         + ", tested_variable=" + getTestedVariable()
                         + "]";

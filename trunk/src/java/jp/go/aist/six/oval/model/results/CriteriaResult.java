@@ -141,7 +141,7 @@ public class CriteriaResult
     @Override
     public String toString()
     {
-        return "Criteria[" + super.toString()
+        return "criteria[" + super.toString()
                         + ", operator=" + getOperator()
                         + ", " + getElements()
                         + "]";
