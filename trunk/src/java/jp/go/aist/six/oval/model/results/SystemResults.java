@@ -27,7 +27,7 @@ import java.util.Iterator;
 
 
 /**
- * The SystemResult is a container for one or more SystemResult elements.
+ * The SystemResult is a container for one or more SystemResult instances.
  *
  * <p>Properties:</p>
  * <ul>

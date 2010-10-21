@@ -23,6 +23,8 @@ package jp.go.aist.six.oval.model.results;
 
 
 /**
+ * The CriterionResult identifies a specific test that is included
+ * in the definition's criteria.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
@@ -88,7 +90,7 @@ public class CriterionResult
     @Override
     public String toString()
     {
-        return "Criterion[test_ref=" + getTestRef()
+        return "criterion[test_ref=" + getTestRef()
                         + ", " + super.toString()
                         + "]";
     }

@@ -25,7 +25,7 @@ import jp.go.aist.six.oval.model.common.DefinitionClass;
 
 
 /**
- * The ClassDirectivesType presents a set of flags that describe
+ * The ClassDirectives presents a set of flags that describe
  * what information has been included in the results document
  * for a specific OVAL Definition class.
  *

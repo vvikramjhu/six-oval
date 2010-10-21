@@ -26,6 +26,10 @@ import java.util.HashMap;
 
 
 /**
+ * The Result enumeration defines the acceptable result values
+ * for the DefinitionResult, CriteriaResult, CriterionResult,
+ * ExtendDefinitionResult, TestResult, and TestedItem constructs.
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

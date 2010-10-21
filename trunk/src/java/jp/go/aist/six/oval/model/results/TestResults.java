@@ -27,7 +27,7 @@ import java.util.Iterator;
 
 
 /**
- * A collection of TestResult objects.
+ * The TestResults is a container for one or more test instances.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

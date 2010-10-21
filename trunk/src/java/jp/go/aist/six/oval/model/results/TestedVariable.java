@@ -188,7 +188,7 @@ public class TestedVariable
     @Override
     public String toString()
     {
-        return "TestedVariable[variable_id=" + getVariableID()
+        return "tested_variable[variable_id=" + getVariableID()
                         + ", value=" + getValue()
                         + "]";
     }

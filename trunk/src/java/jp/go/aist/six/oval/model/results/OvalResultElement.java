@@ -28,6 +28,7 @@ import java.util.Collection;
 
 
 /**
+ * An abstract base class for types which represent test results.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

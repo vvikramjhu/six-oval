@@ -25,6 +25,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 /**
+ * An abstract base class for the criteria-related types.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

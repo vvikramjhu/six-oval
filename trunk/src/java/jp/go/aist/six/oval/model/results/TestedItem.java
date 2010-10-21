@@ -185,7 +185,7 @@ public class TestedItem
     @Override
     public String toString()
     {
-        return "TestedItem[item_id=" + getItemID()
+        return "tested_item[item_id=" + getItemID()
                         + ", result=" + getResult()
                         + "]";
     }

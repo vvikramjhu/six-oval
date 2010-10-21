@@ -23,6 +23,8 @@ package jp.go.aist.six.oval.model.results;
 
 
 /**
+ * The ExtendDefinitionResult identifies a specific definition
+ * that has been extended by the criteria.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
@@ -88,7 +90,7 @@ public class ExtendDefinitionResult
     @Override
     public String toString()
     {
-        return "Criterion[definition_ref=" + getDefinitionRef()
+        return "extend_definition[definition_ref=" + getDefinitionRef()
                         + ", " + super.toString()
                         + "]";
     }

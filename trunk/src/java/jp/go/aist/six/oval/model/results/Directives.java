@@ -27,7 +27,7 @@ import java.util.Map;
 
 
 /**
- * The DirectivesType presents a set of flags
+ * The Directives presents a set of flags
  * that describe what information has been included in the results document.
  *
  * <p>Properties:</p>

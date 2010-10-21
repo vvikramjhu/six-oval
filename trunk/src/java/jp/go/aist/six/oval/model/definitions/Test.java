@@ -44,7 +44,7 @@ import java.util.Iterator;
  *   <li>deprecated (optional -- default='false')</li>
  *   <li>comment (required)</li>
  *   <li>Signature (0..1): currently NOT supported.</li>
- *   <li>notes (0..1): currently NOT supported.</li>
+ *   <li>notes (0..1)</li>
  * </ul>
  *
  * @author	Akihito Nakamura, AIST

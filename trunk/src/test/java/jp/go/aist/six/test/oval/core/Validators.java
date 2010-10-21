@@ -3,10 +3,8 @@ package jp.go.aist.six.test.oval.core;
 import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.OvalElement;
 import jp.go.aist.six.oval.model.OvalEntity;
-import jp.go.aist.six.oval.model.definitions.Component;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Definitions;
-import jp.go.aist.six.oval.model.definitions.LocalVariable;
 import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
@@ -220,12 +218,12 @@ public abstract class Validators
                         )
         {
             super.equals( actual, expected );
-            if (expected instanceof LocalVariable) {
-                LocalVariable  eLocal = (LocalVariable)expected;
-                LocalVariable  aLocal = (LocalVariable)actual;
-                Component  eComponent = eLocal.getComponent();
-                Component  aComponent = aLocal.getComponent();
-            }
+//            if (expected instanceof LocalVariable) {
+//                LocalVariable  eLocal = (LocalVariable)expected;
+//                LocalVariable  aLocal = (LocalVariable)actual;
+//                Component  eComponent = eLocal.getComponent();
+//                Component  aComponent = aLocal.getComponent();
+//            }
         }
     }
 
@@ -629,7 +627,7 @@ public abstract class Validators
             if (expected.size() == 1) {
                 Assert.assertTrue( actual.size() == 1 );
                 SystemResult  expectedResult = expected.iterator().next();
-                SystemResult  actualResult = actual.iterator().next();
+                SystemResult    actualResult = actual.iterator().next();
                 validator( SystemResult.class ).equals( actualResult, expectedResult );
             }
         }

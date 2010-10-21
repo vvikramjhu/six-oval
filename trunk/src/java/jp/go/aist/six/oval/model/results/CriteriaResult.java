@@ -28,6 +28,8 @@ import java.util.Iterator;
 
 
 /**
+ * The CriteriaResult describes the high level container
+ * for all the tests and represents the meat of the definition.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

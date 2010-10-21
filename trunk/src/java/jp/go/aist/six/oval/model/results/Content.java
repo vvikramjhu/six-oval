@@ -26,7 +26,7 @@ import java.util.HashMap;
 
 
 /**
- * The ContentEnumeration defines the valid values
+ * The Content enumeration defines the valid values
  * for the directives controlling the amount of
  * expected depth found in the results document.
  *

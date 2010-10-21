@@ -23,6 +23,8 @@ package jp.go.aist.six.oval.model.results;
 
 
 /**
+ * An abstract base class for the criteria-related leaf types.
+ *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
