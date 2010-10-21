@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<file_object id="oval:org.mitre.oval:obj:6982" version="1" comment="Object that holds filepath to Winamp.exe" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+ xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+      <filepath var_ref="oval:org.mitre.oval:var:518" var_check="all"/>
+</file_object>
