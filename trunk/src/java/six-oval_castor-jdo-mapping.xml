@@ -1882,6 +1882,7 @@
             <sql name="PID" type="char"/>
         </field>
 
+        <!-- evr -->
         <field name="evr.data" type="string">
             <sql name="evr" type="char"/>
         </field>
@@ -1889,11 +1890,6 @@
         <field name="evr.operation" 
             type="jp.go.aist.six.oval.model.common.Operation">
             <sql name="evr_operation" type="char"/>
-        </field>
-
-        <field name="evr.datatype" 
-            type="jp.go.aist.six.oval.model.common.Datatype">
-            <sql name="evr_datatype" type="char"/>
         </field>
     </class>
 
@@ -1912,6 +1908,7 @@
             <sql name="PID" type="char"/>
         </field>
 
+        <!-- evr -->
         <field name="evr.data" type="string">
             <sql name="evr" type="char"/>
         </field>
@@ -1919,11 +1916,6 @@
         <field name="evr.operation" 
             type="jp.go.aist.six.oval.model.common.Operation">
             <sql name="evr_operation" type="char"/>
-        </field>
-
-        <field name="evr.datatype" 
-            type="jp.go.aist.six.oval.model.common.Datatype">
-            <sql name="evr_datatype" type="char"/>
         </field>
 
         <field name="version.data" type="string">

@@ -17,6 +17,7 @@ import jp.go.aist.six.oval.model.independent.TextFileContent54Object;
 import jp.go.aist.six.oval.model.independent.TextFileContentItem;
 import jp.go.aist.six.oval.model.independent.TextFileContentObject;
 import jp.go.aist.six.oval.model.linux.DpkgInfoObject;
+import jp.go.aist.six.oval.model.linux.DpkgInfoState;
 import jp.go.aist.six.oval.model.linux.RpmInfoItem;
 import jp.go.aist.six.oval.model.linux.RpmInfoObject;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
@@ -166,8 +167,16 @@ public abstract class Validators
                         )
         {
             super.equals( actual, expected );
+
             Reporter.log( " - operator", true );
             Assert.assertEquals( actual.getOperator(), expected.getOperator() );
+
+            if (expected instanceof DpkgInfoState) {
+                Assert.assertTrue( actual instanceof DpkgInfoState);
+                DpkgInfoState  aobject = (DpkgInfoState)actual;
+                DpkgInfoState  eobject = (DpkgInfoState)expected;
+                Assert.assertEquals( aobject.getName(), eobject.getName() );
+            }
         }
     }
 

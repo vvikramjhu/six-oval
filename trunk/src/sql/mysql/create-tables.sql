@@ -1613,9 +1613,10 @@ CREATE TABLE IF NOT EXISTS oval_d_state_rpminfo
 
     name                VARCHAR(64),
 
+    /* evr :EntityStateEVRString {datdatype=evr_string} */
     evr                 VARCHAR(128),
     evr_operation       VARCHAR(32),
-    evr_datatype        VARCHAR(16),
+
 
     arch                VARCHAR(16),
     epoch               VARCHAR(32),
