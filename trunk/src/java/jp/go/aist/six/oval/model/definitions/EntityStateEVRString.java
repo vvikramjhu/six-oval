@@ -61,7 +61,7 @@ public class EntityStateEVRString
                     final String data
                     )
     {
-        super( data );
+        this( data, DEFAULT_OPERATION );
     }
 
 
@@ -74,6 +74,19 @@ public class EntityStateEVRString
                     )
     {
         super( data, FIXED_DATATYPE, operation );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateEVRString(
+                    final String data,
+                    final Datatype datatype,
+                    final Operation operation
+                    )
+    {
+        super( data, datatype, operation );
     }
 
 

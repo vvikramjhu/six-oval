@@ -55,7 +55,7 @@ public class EntityItemVersion
                     final String data
                     )
     {
-        super( data, FIXED_DATATYPE );
+        this( data, DEFAULT_STATUS );
     }
 
 
@@ -67,7 +67,20 @@ public class EntityItemVersion
                     final Status status
                     )
     {
-        super( data, FIXED_DATATYPE, status );
+        this( data, FIXED_DATATYPE, status );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemVersion(
+                    final String data,
+                    final Datatype datatype,
+                    final Status status
+                    )
+    {
+        super( data, datatype, status );
     }
 
 

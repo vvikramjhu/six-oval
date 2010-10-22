@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import jp.go.aist.six.oval.model.common.Datatype;
+import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 
 
@@ -49,7 +51,32 @@ public class EntityStateRegistryType
                     final String data
                     )
     {
-        super( data );
+        this( data, DEFAULT_OPERATION );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateRegistryType(
+                    final String data,
+                    final Operation operation
+                    )
+    {
+        this( data, FIXED_DATATYPE, operation );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateRegistryType(
+                    final String data,
+                    final Datatype datatype,
+                    final Operation operation
+                    )
+    {
+        super( data, datatype, operation );
     }
 
 
@@ -60,9 +87,20 @@ public class EntityStateRegistryType
                     final RegistryType data
                     )
     {
-        super( (data == null ? null : data.getName()) );
+        this( data, DEFAULT_OPERATION );
     }
 
+
+    /**
+     * Constructor.
+     */
+    public EntityStateRegistryType(
+                    final RegistryType data,
+                    final Operation operation
+                    )
+    {
+        this( (data == null ? null : data.getName()), operation );
+    }
 
 
 
@@ -110,14 +148,6 @@ public class EntityStateRegistryType
         }
 
         return super.equals( obj );
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return "EntityStateRegistryType[" + super.toString() + "]";
     }
 
 }

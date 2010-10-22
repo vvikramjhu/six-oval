@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.independent;
 
+import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
@@ -79,9 +80,21 @@ public class EntityStateFamily
                     final Operation operation
                     )
     {
-        this( Family.valueOf( data ), operation );
+        this( data, FIXED_DATATYPE, operation );
     }
 
+
+    /**
+     * Constructor.
+     */
+    public EntityStateFamily(
+                    final String data,
+                    final Datatype datatype,
+                    final Operation operation
+                    )
+    {
+        super( data, datatype, operation );
+    }
 
 
     /**

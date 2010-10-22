@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import jp.go.aist.six.oval.model.common.Datatype;
+import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 
 
@@ -51,7 +53,7 @@ public class EntityStateFileType
                     final String data
                     )
     {
-        super( data );
+        this( data, DEFAULT_OPERATION );
     }
 
 
@@ -59,12 +61,48 @@ public class EntityStateFileType
      * Constructor.
      */
     public EntityStateFileType(
-                    final FileType data
+                    final String data,
+                    final Operation operation
                     )
     {
-        super( (data == null ? null : data.getName()) );
+        this( data, FIXED_DATATYPE, operation );
     }
 
+
+    /**
+     * Constructor.
+     */
+    public EntityStateFileType(
+                    final String data,
+                    final Datatype datatype,
+                    final Operation operation
+                    )
+    {
+        super( data, datatype, operation );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateFileType(
+                    final RegistryType data
+                    )
+    {
+        this( data, DEFAULT_OPERATION );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateFileType(
+                    final RegistryType data,
+                    final Operation operation
+                    )
+    {
+        this( (data == null ? null : data.getName()), operation );
+    }
 
 
 

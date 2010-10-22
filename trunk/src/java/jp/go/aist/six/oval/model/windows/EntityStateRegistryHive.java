@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import jp.go.aist.six.oval.model.common.Datatype;
+import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 
 
@@ -49,7 +51,32 @@ public class EntityStateRegistryHive
                     final String data
                     )
     {
-        super( data );
+        this( data, DEFAULT_OPERATION );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateRegistryHive(
+                    final String data,
+                    final Operation operation
+                    )
+    {
+        this( data, FIXED_DATATYPE, operation );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateRegistryHive(
+                    final String data,
+                    final Datatype datatype,
+                    final Operation operation
+                    )
+    {
+        super( data, datatype, operation );
     }
 
 
@@ -60,7 +87,19 @@ public class EntityStateRegistryHive
                     final RegistryHive data
                     )
     {
-        super( (data == null ? null : data.getName()) );
+        this( data, DEFAULT_OPERATION );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateRegistryHive(
+                    final RegistryHive data,
+                    final Operation operation
+                    )
+    {
+        this( (data == null ? null : data.getName()), operation );
     }
 
 
@@ -110,14 +149,6 @@ public class EntityStateRegistryHive
         }
 
         return super.equals( obj );
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return "EntityStateRegistryHive[" + super.toString() + "]";
     }
 
 }

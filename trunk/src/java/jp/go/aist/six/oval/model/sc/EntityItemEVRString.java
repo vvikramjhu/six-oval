@@ -58,7 +58,7 @@ public class EntityItemEVRString
                     final String data
                     )
     {
-        super( data, FIXED_DATATYPE );
+        this( data, DEFAULT_STATUS );
     }
 
 
@@ -70,7 +70,20 @@ public class EntityItemEVRString
                     final Status status
                     )
     {
-        super( data, FIXED_DATATYPE, status );
+        this( data, FIXED_DATATYPE, status );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemEVRString(
+                    final String data,
+                    final Datatype datatype,
+                    final Status status
+                    )
+    {
+        super( data, datatype, status );
     }
 
 

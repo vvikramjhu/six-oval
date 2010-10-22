@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.sc;
 
+import jp.go.aist.six.oval.model.common.Datatype;
+
 
 
 /**
@@ -49,7 +51,32 @@ public class EntityItemAnySimple
                     final String data
                     )
     {
-        setData( data );
+        this( data, DEFAULT_DATATYPE );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemAnySimple(
+                    final String data,
+                    final Datatype datatype
+                    )
+    {
+        this( data, datatype, DEFAULT_STATUS );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemAnySimple(
+                    final String data,
+                    final Datatype datatype,
+                    final Status status
+                    )
+    {
+        super( data, datatype, status );
     }
 
 

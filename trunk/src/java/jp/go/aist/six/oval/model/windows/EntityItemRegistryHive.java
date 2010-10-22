@@ -20,7 +20,9 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.sc.EntityItemString;
+import jp.go.aist.six.oval.model.sc.Status;
 
 
 
@@ -49,7 +51,32 @@ public class EntityItemRegistryHive
                     final String data
                     )
     {
-        super( data );
+        this( data, DEFAULT_STATUS );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemRegistryHive(
+                    final String data,
+                    final Status status
+                    )
+    {
+        this( data, FIXED_DATATYPE, status );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemRegistryHive(
+                    final String data,
+                    final Datatype datatype,
+                    final Status status
+                    )
+    {
+        super( data, datatype, status );
     }
 
 
@@ -60,9 +87,20 @@ public class EntityItemRegistryHive
                     final RegistryHive data
                     )
     {
-        super( (data == null ? null : data.getName()) );
+        this( data, DEFAULT_STATUS );
     }
 
+
+    /**
+     * Constructor.
+     */
+    public EntityItemRegistryHive(
+                    final RegistryHive data,
+                    final Status status
+                    )
+    {
+        this( (data == null ? null : data.getName()), status );
+    }
 
 
 

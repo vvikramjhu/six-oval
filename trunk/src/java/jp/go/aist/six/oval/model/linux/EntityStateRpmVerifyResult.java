@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.linux;
 
+import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.Operation;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 
@@ -79,7 +80,20 @@ public class EntityStateRpmVerifyResult
                     final Operation operation
                     )
     {
-        this( RpmVerifyResult.valueOf( data ), operation );
+        this( data, FIXED_DATATYPE, operation );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateRpmVerifyResult(
+                    final String data,
+                    final Datatype datatype,
+                    final Operation operation
+                    )
+    {
+        super( data, datatype, operation );
     }
 
 
@@ -92,7 +106,7 @@ public class EntityStateRpmVerifyResult
                     final Operation operation
                     )
     {
-        super( (data == null ? null : data.getName()), operation );
+        this( (data == null ? null : data.getName()), operation );
     }
 
 

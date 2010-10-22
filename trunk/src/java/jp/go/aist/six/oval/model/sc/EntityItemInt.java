@@ -55,7 +55,7 @@ public class EntityItemInt
                     final String data
                     )
     {
-        super( data, FIXED_DATATYPE );
+        this( data, DEFAULT_STATUS );
     }
 
 
@@ -67,7 +67,20 @@ public class EntityItemInt
                     final Status status
                     )
     {
-        super( data, FIXED_DATATYPE, status );
+        this( data, FIXED_DATATYPE, status );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemInt(
+                    final String data,
+                    final Datatype datatype,
+                    final Status status
+                    )
+    {
+        super( data, datatype, status );
     }
 
 
@@ -78,7 +91,7 @@ public class EntityItemInt
                     final long data
                     )
     {
-        this( String.valueOf( data ) );
+        this( data, DEFAULT_STATUS );
     }
 
 
@@ -90,7 +103,20 @@ public class EntityItemInt
                     final Status status
                     )
     {
-        this( String.valueOf( data ), status );
+        this( data, FIXED_DATATYPE, status );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemInt(
+                    final long data,
+                    final Datatype datatype,
+                    final Status status
+                    )
+    {
+        this( String.valueOf( data ), datatype, status );
     }
 
 

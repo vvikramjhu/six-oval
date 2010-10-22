@@ -57,7 +57,7 @@ public class EntityStateString
                     final String data
                     )
     {
-        super( data );
+        this( data, DEFAULT_OPERATION );
     }
 
 
@@ -69,7 +69,7 @@ public class EntityStateString
                     final Operation operation
                     )
     {
-        super( data, operation );
+        this( data, FIXED_DATATYPE, operation );
     }
 
 

@@ -56,7 +56,7 @@ public class EntityObjectInt
                     final String data
                     )
     {
-        super( data, FIXED_DATATYPE, DEFAULT_OPERATION );
+        this( data, DEFAULT_OPERATION );
     }
 
 
@@ -68,7 +68,20 @@ public class EntityObjectInt
                     final Operation operation
                     )
     {
-        super( data, FIXED_DATATYPE, operation );
+        this( data, FIXED_DATATYPE, operation );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityObjectInt(
+                    final String data,
+                    final Datatype datatype,
+                    final Operation operation
+                    )
+    {
+        super( data, datatype, operation );
     }
 
 

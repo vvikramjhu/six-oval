@@ -58,7 +58,7 @@ public class EntityObjectString
                     final String data
                     )
     {
-        super( data );
+        this( data, DEFAULT_OPERATION );
     }
 
 
@@ -70,7 +70,7 @@ public class EntityObjectString
                     final Operation operation
                     )
     {
-        super( data, operation );
+        this( data, FIXED_DATATYPE, operation );
     }
 
 

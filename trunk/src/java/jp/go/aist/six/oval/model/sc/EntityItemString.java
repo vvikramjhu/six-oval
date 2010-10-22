@@ -55,7 +55,7 @@ public class EntityItemString
                     final String data
                     )
     {
-        super( data, FIXED_DATATYPE );
+        this( data, DEFAULT_STATUS );
     }
 
 
@@ -67,7 +67,20 @@ public class EntityItemString
                     final Status status
                     )
     {
-        super( data, FIXED_DATATYPE, status );
+        this( data, FIXED_DATATYPE, status );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemString(
+                    final String data,
+                    final Datatype datatype,
+                    final Status status
+                    )
+    {
+        super( data, datatype, status );
     }
 
 
@@ -123,6 +136,14 @@ public class EntityItemString
         }
 
         return super.equals( obj );
+    }
+
+
+
+    @Override
+    public String toString()
+    {
+        return "[" + super.toString() + "]";
     }
 
 }

@@ -69,7 +69,7 @@ public class EntityStateVersion
                     final Operation operation
                     )
     {
-        super( data, FIXED_DATATYPE, operation );
+        this( data, FIXED_DATATYPE, operation );
     }
 
 

@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.common.Datatype;
+import jp.go.aist.six.oval.model.common.Operation;
 
 
 
@@ -56,7 +57,7 @@ public class EntityStateBool
                     final String data
                     )
     {
-        super( data );
+        this( data, DEFAULT_OPERATION );
     }
 
 
@@ -67,7 +68,32 @@ public class EntityStateBool
                     final boolean data
                     )
     {
-        super( String.valueOf( data ) );
+        this( String.valueOf( data ) );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateBool(
+                    final String data,
+                    final Operation operation
+                    )
+    {
+        this( data, FIXED_DATATYPE, operation );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateBool(
+                    final String data,
+                    final Datatype datatype,
+                    final Operation operation
+                    )
+    {
+        super( data, datatype, operation );
     }
 
 
