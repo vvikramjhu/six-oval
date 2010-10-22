@@ -55,6 +55,7 @@ import jp.go.aist.six.oval.model.mitre.OvalRepository;
 import jp.go.aist.six.oval.model.mitre.StatusChange;
 import jp.go.aist.six.oval.model.mitre.Submitted;
 import jp.go.aist.six.oval.model.unix.UnameObject;
+import jp.go.aist.six.oval.model.unix.UnameState;
 import jp.go.aist.six.oval.model.unix.UnameTest;
 import jp.go.aist.six.oval.model.windows.EntityObjectRegistryHive;
 import jp.go.aist.six.oval.model.windows.FileObject;
@@ -313,6 +314,14 @@ public class DefinitionsSample
     .signatureKeyID( new EntityStateString( "5326810137017186",
                     Operation.EQUALS )
     );
+
+
+    public static final UnameState  STATE_UNIX_UNAME_5377 =
+        new UnameState( "oval:org.mitre.oval:ste:5377", 1,
+                        "processor_type is i686" )
+    .processorType( new EntityStateString( "i686" )
+    )
+    ;
 
 
     public static final FileState  STATE_WINDOWS_FILE_2190 =

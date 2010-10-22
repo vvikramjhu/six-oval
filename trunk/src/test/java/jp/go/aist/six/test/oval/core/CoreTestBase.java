@@ -473,6 +473,15 @@ public abstract class CoreTestBase
                             "marshalled_state-linux-rpminfo_rhsa-20100061004.xml"
                         }
                         ,
+                        // unix uname
+                        {
+                            State.class,
+                            "test/data/definitions/state-unix-uname_oval-5377.xml",
+                            "/oval_definitions/states/uname_state",
+                            DefinitionsSample.STATE_UNIX_UNAME_5377,
+                            "marshalled_state-unix-uname_oval-5377.xml"
+                        }
+                        ,
                         // windows file
                         {
                             State.class,

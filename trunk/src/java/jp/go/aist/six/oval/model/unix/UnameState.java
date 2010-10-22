@@ -65,6 +65,19 @@ public class UnameState
     }
 
 
+    /**
+     * Constructor.
+     */
+    public UnameState(
+                    final String id,
+                    final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
+    }
+
+
 
     /**
      *
@@ -86,6 +99,15 @@ public class UnameState
     }
 
 
+    public UnameState machineClass(
+                    final EntityStateString machineClass
+                    )
+    {
+        setMachineClass( machineClass );
+        return this;
+    }
+
+
     public EntityStateString getMachineClass()
     {
         return _properties.get( UnameProperty.MACHINE_CLASS );
@@ -100,6 +122,15 @@ public class UnameState
                     )
     {
         _properties.put( UnameProperty.NODE_NAME, nodeName );
+    }
+
+
+    public UnameState nodeName(
+                    final EntityStateString nodeName
+                    )
+    {
+        setNodeName( nodeName );
+        return this;
     }
 
 
@@ -120,6 +151,15 @@ public class UnameState
     }
 
 
+    public UnameState osName(
+                    final EntityStateString name
+                    )
+    {
+        setOsName( name );
+        return this;
+    }
+
+
     public EntityStateString getOsName()
     {
         return _properties.get( UnameProperty.OS_NAME );
@@ -134,6 +174,15 @@ public class UnameState
                     )
     {
         _properties.put( UnameProperty.OS_RELEASE, release );
+    }
+
+
+    public UnameState osRelease(
+                    final EntityStateString release
+                    )
+    {
+        setOsRelease( release );
+        return this;
     }
 
 
@@ -154,6 +203,15 @@ public class UnameState
     }
 
 
+    public UnameState osVersion(
+                    final EntityStateString version
+                    )
+    {
+        setOsVersion( version );
+        return this;
+    }
+
+
     public EntityStateString getOsVersion()
     {
         return _properties.get( UnameProperty.OS_VERSION );
@@ -168,6 +226,15 @@ public class UnameState
                     )
     {
         _properties.put( UnameProperty.PROCESSOR_TYPE, type );
+    }
+
+
+    public UnameState processorType(
+                    final EntityStateString type
+                    )
+    {
+        setProcessorType( type );
+        return this;
     }
 
 

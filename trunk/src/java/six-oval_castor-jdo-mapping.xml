@@ -2088,6 +2088,26 @@
             <sql name="PID" type="char"/>
         </field>
 
+        <field name="machineClass.data" type="string">
+            <sql name="machine_class" type="char"/>
+        </field>
+
+        <field name="nodeName.data" type="string">
+            <sql name="node_name" type="char"/>
+        </field>
+
+        <field name="osName.data" type="string">
+            <sql name="os_name" type="char"/>
+        </field>
+
+        <field name="osRelease.data" type="string">
+            <sql name="os_release" type="char"/>
+        </field>
+
+        <field name="osVersion.data" type="string">
+            <sql name="os_version" type="char"/>
+        </field>
+
         <field name="processorType.data" type="string">
             <sql name="processor_type" type="char"/>
         </field>
