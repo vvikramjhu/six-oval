@@ -15,8 +15,10 @@ import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.independent.FamilyItem;
 import jp.go.aist.six.oval.model.independent.FamilyState;
 import jp.go.aist.six.oval.model.independent.TextFileContent54Object;
+import jp.go.aist.six.oval.model.independent.TextFileContent54State;
 import jp.go.aist.six.oval.model.independent.TextFileContentItem;
 import jp.go.aist.six.oval.model.independent.TextFileContentObject;
+import jp.go.aist.six.oval.model.independent.TextFileContentState;
 import jp.go.aist.six.oval.model.linux.DpkgInfoObject;
 import jp.go.aist.six.oval.model.linux.DpkgInfoState;
 import jp.go.aist.six.oval.model.linux.LinuxEvrPkgInfoState;
@@ -204,6 +206,36 @@ public abstract class Validators
                 FamilyState  efamily = (FamilyState)expected;
                 Reporter.log( " - family_state/family", true );
                 Assert.assertEquals( afamily.getFamily(), efamily.getFamily() );
+            } else if (expected instanceof TextFileContentState) {
+                Assert.assertTrue( actual instanceof TextFileContentState);
+                TextFileContentState  atext = (TextFileContentState)actual;
+                TextFileContentState  etext = (TextFileContentState)expected;
+                Reporter.log( " - textfilecontent_state/path", true );
+                Assert.assertEquals( atext.getPath(), etext.getPath() );
+                Reporter.log( " - textfilecontent_state/filename", true );
+                Assert.assertEquals( atext.getFilename(), etext.getFilename() );
+                Reporter.log( " - textfilecontent_state/line", true );
+                Assert.assertEquals( atext.getLine(), etext.getLine() );
+                Reporter.log( " - textfilecontent_state/subexpression", true );
+                Assert.assertEquals( atext.getSubexpression(), etext.getSubexpression() );
+            } else if (expected instanceof TextFileContent54State) {
+                Assert.assertTrue( actual instanceof TextFileContent54State);
+                TextFileContent54State  atext = (TextFileContent54State)actual;
+                TextFileContent54State  etext = (TextFileContent54State)expected;
+                Reporter.log( " - textfilecontent54_state/filepath", true );
+                Assert.assertEquals( atext.getFilepath(), etext.getFilepath() );
+                Reporter.log( " - textfilecontent54_state/path", true );
+                Assert.assertEquals( atext.getPath(), etext.getPath() );
+                Reporter.log( " - textfilecontent54_state/filename", true );
+                Assert.assertEquals( atext.getFilename(), etext.getFilename() );
+                Reporter.log( " - textfilecontent54_state/pattern", true );
+                Assert.assertEquals( atext.getPattern(), etext.getPattern() );
+                Reporter.log( " - textfilecontent54_state/instance", true );
+                Assert.assertEquals( atext.getInstance(), etext.getInstance() );
+                Reporter.log( " - textfilecontent54_state/text", true );
+                Assert.assertEquals( atext.getText(), etext.getText() );
+                Reporter.log( " - textfilecontent54_state/subexpression", true );
+                Assert.assertEquals( atext.getSubexpression(), etext.getSubexpression() );
             }
         }
     }

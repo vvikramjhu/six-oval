@@ -283,7 +283,7 @@ public class DefinitionsSample
     public static final TextFileContent54State  STATE_INDEPENDENT_TEXTFILECONTENT54_11440 =
         new TextFileContent54State( "oval:org.mitre.oval:ste:11440", 1,
                         "State matches if Google Chrome Invisible Hand Extension is enabled" )
-    .text( new EntityStateAnySimple( "^\\s*\"name\": \"InvisibleHand\"[^}]+}[^p]+path\": \"lghjfnfolmcikomdjmoiemllfnlmmoko\\\\[^s]+state\": [01]$", Operation.PATTERN_MATCH )
+    .text( new EntityStateAnySimple( "^\\s*\"name\": \"InvisibleHand\"[^}]+}[^p]+path\": \"lghjfnfolmcikomdjmoiemllfnlmmoko\\\\[^s]+state\": 1$", Operation.PATTERN_MATCH )
     );
 
 

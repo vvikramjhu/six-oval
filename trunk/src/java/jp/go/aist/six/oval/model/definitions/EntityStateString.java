@@ -142,11 +142,11 @@ public class EntityStateString
 
 
 
-//    @Override
-//    public String toString()
-//    {
-//        return "EntityStateString[" + super.toString() + "]";
-//    }
+    @Override
+    public String toString()
+    {
+        return "[" + super.toString() + "]";
+    }
 
 }
 // EntityStateString
