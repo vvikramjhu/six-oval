@@ -20,8 +20,10 @@
 
 package jp.go.aist.six.oval.model.independent;
 
+import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemString;
+import jp.go.aist.six.oval.model.sc.Status;
 
 
 
@@ -52,7 +54,32 @@ public class EntityItemFamily
                     final String data
                     )
     {
-        super( data );
+        this( data, DEFAULT_STATUS );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemFamily(
+                    final String data,
+                    final Status status
+                    )
+    {
+        this( data, FIXED_DATATYPE, status );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemFamily(
+                    final String data,
+                    final Datatype datatype,
+                    final Status status
+                    )
+    {
+        super( data, datatype, status );
     }
 
 
@@ -63,7 +90,19 @@ public class EntityItemFamily
                     final Family data
                     )
     {
-        super( (data == null ? null : data.getName()) );
+        this( data, DEFAULT_STATUS );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemFamily(
+                    final Family data,
+                    final Status status
+                    )
+    {
+        this( (data == null ? null : data.getName()), status );
     }
 
 

@@ -51,7 +51,7 @@ public class EntityItemAnySimple
                     final String data
                     )
     {
-        this( data, DEFAULT_DATATYPE );
+        this( data, DEFAULT_STATUS );
     }
 
 
@@ -64,6 +64,18 @@ public class EntityItemAnySimple
                     )
     {
         this( data, datatype, DEFAULT_STATUS );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemAnySimple(
+                    final String data,
+                    final Status status
+                    )
+    {
+        this( data, DEFAULT_DATATYPE, status );
     }
 
 

@@ -69,7 +69,7 @@ public abstract class EntityItemBase
                     final String data
                     )
     {
-        this( data, DEFAULT_DATATYPE, DEFAULT_STATUS );
+        this( data, DEFAULT_STATUS );
     }
 
 
@@ -82,6 +82,18 @@ public abstract class EntityItemBase
                     )
     {
         this( data, datatype, DEFAULT_STATUS );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityItemBase(
+                    final String data,
+                    final Status status
+                    )
+    {
+        this( data, DEFAULT_DATATYPE, status );
     }
 
 
