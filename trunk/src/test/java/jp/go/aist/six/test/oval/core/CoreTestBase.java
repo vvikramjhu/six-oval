@@ -476,6 +476,15 @@ public abstract class CoreTestBase
                         // unix uname
                         {
                             State.class,
+                            "test/data/definitions/state-unix-uname_oval-3597.xml",
+                            "/oval_definitions/states/uname_state",
+                            DefinitionsSample.STATE_UNIX_UNAME_3597,
+                            "marshalled_state-unix-uname_oval-3597.xml"
+                        }
+                        ,
+                        // unix uname
+                        {
+                            State.class,
                             "test/data/definitions/state-unix-uname_oval-5377.xml",
                             "/oval_definitions/states/uname_state",
                             DefinitionsSample.STATE_UNIX_UNAME_5377,

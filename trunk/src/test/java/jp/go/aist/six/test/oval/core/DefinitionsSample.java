@@ -316,6 +316,14 @@ public class DefinitionsSample
     );
 
 
+    public static final UnameState  STATE_UNIX_UNAME_3597 =
+        new UnameState( "oval:org.mitre.oval:ste:3597", 1,
+                        "os release is 5.10" )
+    .osRelease( new EntityStateString( "5.10" )
+    )
+    ;
+
+
     public static final UnameState  STATE_UNIX_UNAME_5377 =
         new UnameState( "oval:org.mitre.oval:ste:5377", 1,
                         "processor_type is i686" )
