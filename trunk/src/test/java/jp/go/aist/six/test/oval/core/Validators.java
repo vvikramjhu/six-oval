@@ -7,10 +7,14 @@ import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Definitions;
 import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.Reference;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.StateRef;
+import jp.go.aist.six.oval.model.definitions.States;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
+import jp.go.aist.six.oval.model.definitions.SystemObjects;
 import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.definitions.Tests;
 import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.independent.FamilyItem;
 import jp.go.aist.six.oval.model.independent.FamilyState;
@@ -175,6 +179,11 @@ public abstract class Validators
                         final State expected
                         )
         {
+            if (expected == null) {
+                return;
+            }
+
+            Reporter.log( "*** expected: " + expected.getOvalID(), true );
             super.equals( actual, expected );
 
             Reporter.log( " - @operator", true );
@@ -350,6 +359,7 @@ public abstract class Validators
                 return;
             }
 
+            Reporter.log( "*** expected: " + expected.getOvalID(), true );
             super.equals( actual, expected );
 
             if (expected instanceof TextFileContentObject) {
@@ -384,8 +394,11 @@ public abstract class Validators
                 Assert.assertTrue( actual instanceof FileObject );
                 FileObject  aobject = (FileObject)actual;
                 FileObject  eobject = (FileObject)expected;
+                Reporter.log( " - file_object/filepath", true );
                 Assert.assertEquals( aobject.getFilepath(), eobject.getFilepath() );
+                Reporter.log( " - file_object/path", true );
                 Assert.assertEquals( aobject.getPath(), eobject.getPath() );
+                Reporter.log( " - file_object/filename", true );
                 Assert.assertEquals( aobject.getFilename(), eobject.getFilename() );
             } else if (expected instanceof MetabaseObject) {
                 Assert.assertTrue( actual instanceof MetabaseObject );
@@ -397,8 +410,11 @@ public abstract class Validators
                 Assert.assertTrue( actual instanceof RegistryObject );
                 RegistryObject  aobject = (RegistryObject)actual;
                 RegistryObject  eobject = (RegistryObject)expected;
+                Reporter.log( " - registry_object/hive", true );
                 Assert.assertEquals( aobject.getHive(), eobject.getHive() );
+                Reporter.log( " - registry_object/key", true );
                 Assert.assertEquals( aobject.getKey(), eobject.getKey() );
+                Reporter.log( " - registry_object/name", true );
                 Assert.assertEquals( aobject.getName(), eobject.getName() );
             }
         }
@@ -421,7 +437,9 @@ public abstract class Validators
                 return;
             }
 
+            Reporter.log( "*** expected: " + expected.getOvalID(), true );
             super.equals( actual, expected );
+
             Reporter.log( " - @checkExistence", true );
             Assert.assertEquals( actual.getCheckExistence(), expected.getCheckExistence() );
             Reporter.log( " - @check", true );
@@ -480,18 +498,23 @@ public abstract class Validators
                         final Definition expected
                         )
         {
+            if (expected == null) {
+                return;
+            }
+
+            Reporter.log( "*** expected: " + expected.getOvalID(), true );
             super.equals( actual, expected );
 
-            Reporter.log( " - class", true );
+            Reporter.log( " - definition/@class", true );
             Assert.assertEquals( actual.getDefinitionClass(), expected.getDefinitionClass() );
 
-            Reporter.log( " - metadata", true );
+            Reporter.log( " - definition/metadata", true );
             _assertEquals( actual.getMetadata(), expected.getMetadata() );
 
             if (actual.getCriteria() == null) {
-                Reporter.log( " - criteria (SKIP)", true );
+                Reporter.log( " - definition/criteria (SKIP)", true );
             } else {
-                Reporter.log( " - criteria", true );
+                Reporter.log( " - definition/criteria", true );
                 Assert.assertEquals( actual.getCriteria(), expected.getCriteria() );
             }
         }
@@ -502,19 +525,25 @@ public abstract class Validators
                         final Metadata expected
                         )
         {
-            if (actual == null) {
-                Assert.assertNull( expected );
+            if (expected == null) {
+                Assert.assertNull( actual );
                 return;
             }
 
-            Reporter.log( " - metadata.title", true );
+            Reporter.log( " - definition/metadata/title", true );
             Assert.assertEquals( actual.getTitle(), expected.getTitle() );
-            Reporter.log( " - metadata.affected", true );
+            Reporter.log( " - definition/metadata/affected", true );
             Assert.assertEquals( actual.getAffected(), expected.getAffected() );
-            Reporter.log( " - metadata.description", true );
+            Reporter.log( " - definition/metadata/description", true );
             Assert.assertEquals( actual.getDescription(), expected.getDescription() );
-            Reporter.log( " - metadata.reference", true );
-            assertEquals( actual.getReference(), expected.getReference() );
+
+            Reporter.log( " - definition/metadata/reference", true );
+            Collection<Reference>  eref = expected.getReference();
+            if (eref != null) {
+                Collection<Reference>  aref = actual.getReference();
+                Assert.assertEquals( aref.size(), eref.size() );
+                Assert.assertTrue( actual.getReference().containsAll( eref ) );
+            }
         }
     }
 
@@ -535,30 +564,55 @@ public abstract class Validators
                 return;
             }
 
-            Reporter.log( " - generator", true );
+            Reporter.log( " - oval_definitions/generator", true );
             Assert.assertEquals( actual.getGenerator(), expected.getGenerator() );
 
-            Reporter.log( " - definitions", true );
+            Reporter.log( " - oval_definitions/definitions", true );
             Assert.assertEquals( actual.getDefinitions(), expected.getDefinitions() );
             Definitions  expectedDefinitions = expected.getDefinitions();
             if (expectedDefinitions != null) {
                 Definitions  actualDefinitions = actual.getDefinitions();
                 for (Definition  expectedDefinition : expectedDefinitions) {
                     Definition  actualDefinition = actualDefinitions.find( expectedDefinition.getOvalID() );
+                    Assert.assertNotNull( actualDefinition );
                     validator( Definition.class ).equals( actualDefinition, expectedDefinition );
                 }
             }
 
-            Reporter.log( " - tests", true );
-            Assert.assertEquals( actual.getTests(), expected.getTests() );
+            Reporter.log( " - oval_definitions/tests", true );
+            Tests  etests = expected.getTests();
+            if (etests != null) {
+                Tests  atests = actual.getTests();
+                for (Test  etest : etests) {
+                    Test  atest = atests.find( etest.getOvalID() );
+                    Assert.assertNotNull( atest );
+                    validator( Test.class ).equals( atest, etest );
+                }
+            }
 
-            Reporter.log( " - objects", true );
-            Assert.assertEquals( actual.getObjects(), expected.getObjects() );
+            Reporter.log( " - oval_definitions/objects", true );
+            SystemObjects  eobjects = expected.getObjects();
+            if (eobjects != null) {
+                SystemObjects  aobjects = actual.getObjects();
+                for (SystemObject  eobject : eobjects) {
+                    SystemObject  aobject = aobjects.find( eobject.getOvalID() );
+                    Assert.assertNotNull( aobject );
+                    validator( SystemObject.class ).equals( aobject, eobject );
+                }
+            }
 
-            Reporter.log( " - states", true );
-            Assert.assertEquals( actual.getStates(), expected.getStates() );
+            Reporter.log( " - oval_definitions/states", true );
+            States  estates = expected.getStates();
+            if (estates != null) {
+                States  astates = actual.getStates();
+                for (State  estate : estates) {
+                    State  astate = astates.find( estate.getOvalID() );
+                    Assert.assertNotNull( astate );
+                    validator( State.class ).equals( astate, estate );
+                }
+            }
 
-            Reporter.log( " - variables", true );
+            Reporter.log( " - oval_definitions/variables", true );
             Assert.assertEquals( actual.getVariables(), expected.getVariables() );
         }
     }
