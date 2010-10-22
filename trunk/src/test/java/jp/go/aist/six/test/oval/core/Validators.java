@@ -15,8 +15,10 @@ import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.independent.FamilyItem;
 import jp.go.aist.six.oval.model.independent.TextFileContent54Object;
 import jp.go.aist.six.oval.model.independent.TextFileContentItem;
+import jp.go.aist.six.oval.model.independent.TextFileContentObject;
 import jp.go.aist.six.oval.model.linux.DpkgInfoObject;
 import jp.go.aist.six.oval.model.linux.RpmInfoItem;
+import jp.go.aist.six.oval.model.linux.RpmInfoObject;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.DefinitionResults;
 import jp.go.aist.six.oval.model.results.OvalResults;
@@ -34,7 +36,9 @@ import jp.go.aist.six.oval.model.sc.SystemInfo;
 import jp.go.aist.six.oval.model.sc.VariableValue;
 import jp.go.aist.six.oval.model.windows.FileItem;
 import jp.go.aist.six.oval.model.windows.FileObject;
+import jp.go.aist.six.oval.model.windows.MetabaseObject;
 import jp.go.aist.six.oval.model.windows.RegistryItem;
+import jp.go.aist.six.oval.model.windows.RegistryObject;
 import org.testng.Assert;
 import org.testng.Reporter;
 import java.util.Collection;
@@ -186,7 +190,14 @@ public abstract class Validators
 
             super.equals( actual, expected );
 
-            if (expected instanceof TextFileContent54Object) {
+            if (expected instanceof TextFileContentObject) {
+                Assert.assertTrue( actual instanceof TextFileContentObject );
+                TextFileContentObject  aobject = (TextFileContentObject)actual;
+                TextFileContentObject  eobject = (TextFileContentObject)expected;
+                Assert.assertEquals( aobject.getPath(), eobject.getPath() );
+                Assert.assertEquals( aobject.getFilename(), eobject.getFilename() );
+                Assert.assertEquals( aobject.getLine(), eobject.getLine() );
+            } else if (expected instanceof TextFileContent54Object) {
                 Assert.assertTrue( actual instanceof TextFileContent54Object );
                 TextFileContent54Object  aobject = (TextFileContent54Object)actual;
                 TextFileContent54Object  eobject = (TextFileContent54Object)expected;
@@ -201,6 +212,11 @@ public abstract class Validators
                 DpkgInfoObject  aobject = (DpkgInfoObject)actual;
                 DpkgInfoObject  eobject = (DpkgInfoObject)expected;
                 Assert.assertEquals( aobject.getName(), eobject.getName() );
+            } else if (expected instanceof RpmInfoObject) {
+                Assert.assertTrue( actual instanceof RpmInfoObject );
+                RpmInfoObject  aobject = (RpmInfoObject)actual;
+                RpmInfoObject  eobject = (RpmInfoObject)expected;
+                Assert.assertEquals( aobject.getName(), eobject.getName() );
 
             } else if (expected instanceof FileObject) {
                 Assert.assertTrue( actual instanceof FileObject );
@@ -209,6 +225,19 @@ public abstract class Validators
                 Assert.assertEquals( aobject.getFilepath(), eobject.getFilepath() );
                 Assert.assertEquals( aobject.getPath(), eobject.getPath() );
                 Assert.assertEquals( aobject.getFilename(), eobject.getFilename() );
+            } else if (expected instanceof MetabaseObject) {
+                Assert.assertTrue( actual instanceof MetabaseObject );
+                MetabaseObject  aobject = (MetabaseObject)actual;
+                MetabaseObject  eobject = (MetabaseObject)expected;
+                Assert.assertEquals( aobject.getKey(), eobject.getKey() );
+                Assert.assertEquals( aobject.getID(), eobject.getID() );
+            } else if (expected instanceof RegistryObject) {
+                Assert.assertTrue( actual instanceof RegistryObject );
+                RegistryObject  aobject = (RegistryObject)actual;
+                RegistryObject  eobject = (RegistryObject)expected;
+                Assert.assertEquals( aobject.getHive(), eobject.getHive() );
+                Assert.assertEquals( aobject.getKey(), eobject.getKey() );
+                Assert.assertEquals( aobject.getName(), eobject.getName() );
             }
         }
     }
