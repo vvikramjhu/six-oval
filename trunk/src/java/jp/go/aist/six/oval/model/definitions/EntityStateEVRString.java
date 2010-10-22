@@ -73,7 +73,7 @@ public class EntityStateEVRString
                     final Operation operation
                     )
     {
-        super( data, FIXED_DATATYPE, operation );
+        this( data, FIXED_DATATYPE, operation );
     }
 
 

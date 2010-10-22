@@ -27,6 +27,8 @@ import jp.go.aist.six.oval.model.definitions.EntityStateString;
 
 
 /**
+ * The EntityStateRegistryType defines the different values
+ * that are valid for the type entity of a registry state.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

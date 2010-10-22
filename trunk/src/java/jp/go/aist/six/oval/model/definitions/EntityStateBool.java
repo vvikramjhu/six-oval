@@ -65,17 +65,6 @@ public class EntityStateBool
      * Constructor.
      */
     public EntityStateBool(
-                    final boolean data
-                    )
-    {
-        this( String.valueOf( data ) );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateBool(
                     final String data,
                     final Operation operation
                     )
@@ -94,6 +83,17 @@ public class EntityStateBool
                     )
     {
         super( data, datatype, operation );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateBool(
+                    final boolean data
+                    )
+    {
+        this( String.valueOf( data ) );
     }
 
 

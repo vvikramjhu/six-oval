@@ -53,7 +53,7 @@ public class EntityStateAnySimple
                     final String data
                     )
     {
-        super( data );
+        this( data, DEFAULT_OPERATION );
     }
 
 
@@ -65,7 +65,7 @@ public class EntityStateAnySimple
                     final Operation operation
                     )
     {
-        super( data, operation );
+        this( data, DEFAULT_DATATYPE, operation );
     }
 
 

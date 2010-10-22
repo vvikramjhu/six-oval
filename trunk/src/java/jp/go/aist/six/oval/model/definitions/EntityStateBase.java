@@ -180,9 +180,10 @@ public abstract class EntityStateBase
     @Override
     public String toString()
     {
-        return super.toString()
+        return "[" + super.toString()
                         + ", entity_check=" + getEntityCheck()
-                        + ", var_check=" + getVarCheck();
+                        + ", var_check=" + getVarCheck()
+                        + "]";
     }
 
 }

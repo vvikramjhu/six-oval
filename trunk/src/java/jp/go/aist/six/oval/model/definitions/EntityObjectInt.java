@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.Operation;
 
@@ -85,6 +86,18 @@ public class EntityObjectInt
     }
 
 
+    /**
+     * Constructor.
+     */
+    public EntityObjectInt(
+                    final String varRef,
+                    final Check varCheck
+                    )
+    {
+        super( varRef, varCheck );
+    }
+
+
 
     //**************************************************************
     //  EntityBase
@@ -138,14 +151,6 @@ public class EntityObjectInt
 
         return super.equals( obj );
     }
-
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return "EntityObjectInt[" + super.toString() + "]";
-//    }
 
 }
 // EntityObjectInt

@@ -27,6 +27,10 @@ import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 
 
 /**
+ * The EntityObjectRegistryHive type restricts a string value
+ * to a specific set of values:
+ * HKEY_CLASSES_ROOT, HKEY_CURRENT_CONFIG, HKEY_CURRENT_USER,
+ * HKEY_LOCAL_MACHINE, and HKEY_USERS.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

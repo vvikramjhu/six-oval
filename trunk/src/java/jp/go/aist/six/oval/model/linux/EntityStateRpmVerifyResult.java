@@ -65,17 +65,6 @@ public class EntityStateRpmVerifyResult
      * Constructor.
      */
     public EntityStateRpmVerifyResult(
-                    final RpmVerifyResult data
-                    )
-    {
-        this( data, DEFAULT_OPERATION );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateRpmVerifyResult(
                     final String data,
                     final Operation operation
                     )
@@ -96,6 +85,16 @@ public class EntityStateRpmVerifyResult
         super( data, datatype, operation );
     }
 
+
+    /**
+     * Constructor.
+     */
+    public EntityStateRpmVerifyResult(
+                    final RpmVerifyResult data
+                    )
+    {
+        this( data, DEFAULT_OPERATION );
+    }
 
 
     /**

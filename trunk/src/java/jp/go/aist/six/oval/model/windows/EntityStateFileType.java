@@ -27,7 +27,7 @@ import jp.go.aist.six.oval.model.definitions.EntityStateString;
 
 
 /**
- * The EntityStateFileType type restricts a string value to a specific set of values.
+ * The EntityStateFile type restricts a string value to a specific set of values.
  * These values describe the type of file being represented.
  *
  * @author  Akihito Nakamura, AIST

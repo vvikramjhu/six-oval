@@ -65,17 +65,6 @@ public class EntityStateFamily
      * Constructor.
      */
     public EntityStateFamily(
-                    final Family data
-                    )
-    {
-        this( data, DEFAULT_OPERATION );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateFamily(
                     final String data,
                     final Operation operation
                     )
@@ -94,6 +83,17 @@ public class EntityStateFamily
                     )
     {
         super( data, datatype, operation );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public EntityStateFamily(
+                    final Family data
+                    )
+    {
+        this( data, DEFAULT_OPERATION );
     }
 
 

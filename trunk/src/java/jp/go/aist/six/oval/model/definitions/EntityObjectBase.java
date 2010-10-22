@@ -167,8 +167,9 @@ public abstract class EntityObjectBase
     @Override
     public String toString()
     {
-        return super.toString()
-                        + ", var_check=" + getVarCheck();
+        return "[" + super.toString()
+                        + ", var_check=" + getVarCheck()
+                        + "]";
     }
 
 }

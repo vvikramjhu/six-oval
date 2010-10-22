@@ -65,17 +65,6 @@ public class EntityStateInt
      * Constructor.
      */
     public EntityStateInt(
-                    final int data
-                    )
-    {
-        this( String.valueOf( data ) );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateInt(
                     final String data,
                     final Operation operation
                     )
@@ -96,6 +85,16 @@ public class EntityStateInt
         super( data, datatype, operation );
     }
 
+
+    /**
+     * Constructor.
+     */
+    public EntityStateInt(
+                    final int data
+                    )
+    {
+        this( String.valueOf( data ) );
+    }
 
 
 
@@ -157,7 +156,7 @@ public class EntityStateInt
 //    @Override
 //    public String toString()
 //    {
-//        return "EntityStateInt[" + super.toString() + "]";
+//        return "[" + super.toString() + "]";
 //    }
 
 }

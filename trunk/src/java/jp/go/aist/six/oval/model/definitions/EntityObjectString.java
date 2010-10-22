@@ -158,7 +158,7 @@ public class EntityObjectString
 //    @Override
 //    public String toString()
 //    {
-//        return "EntityObjectString[" + super.toString() + "]";
+//        return "[" + super.toString() + "]";
 //    }
 
 }
