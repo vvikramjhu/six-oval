@@ -1888,15 +1888,17 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_state_file
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:ste:419:1 */
 
     version             VARCHAR(64),
-    version_operation   VARCHAR(32)     DEFAULT 'equals',
-                        /* enum('equals', ..., 'case insensitive not equal', ...) */
+    version_operation   VARCHAR(32),
     version_datatype    VARCHAR(16),
-    
+
+    product_version             VARCHAR(64),
+    product_version_operation   VARCHAR(32),
+    product_version_datatype    VARCHAR(16),
+
     /* (FK) */
-    
+
     /* (PK) */
     PRIMARY KEY (PID)
 

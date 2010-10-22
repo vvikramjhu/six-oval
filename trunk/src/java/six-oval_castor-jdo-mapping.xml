@@ -2263,6 +2263,7 @@
             <sql name="PID" type="char"/>
         </field>
 
+        <!-- version -->
         <field name="version.data" type="string">
             <sql name="version" type="char"/>
         </field>
@@ -2275,6 +2276,22 @@
         <field name="version.datatype" 
             type="jp.go.aist.six.oval.model.common.Datatype">
             <sql name="version_datatype" type="char"/>
+        </field>
+
+
+        <!-- productVersion -->
+        <field name="productVersion.data" type="string">
+            <sql name="product_version" type="char"/>
+        </field>
+
+        <field name="productVersion.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="product_version_operation" type="char"/>
+        </field>
+
+        <field name="productVersion.datatype" 
+            type="jp.go.aist.six.oval.model.common.Datatype">
+            <sql name="product_version_datatype" type="char"/>
         </field>
     </class>
 

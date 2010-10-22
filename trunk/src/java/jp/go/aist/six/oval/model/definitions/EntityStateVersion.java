@@ -57,7 +57,7 @@ public class EntityStateVersion
                     final String data
                     )
     {
-        super( data );
+        this( data, DEFAULT_OPERATION );
     }
 
 
@@ -69,7 +69,7 @@ public class EntityStateVersion
                     final Operation operation
                     )
     {
-        super( data, operation );
+        super( data, FIXED_DATATYPE, operation );
     }
 
 
@@ -138,6 +138,14 @@ public class EntityStateVersion
         }
 
         return super.equals( obj );
+    }
+
+
+
+    @Override
+    public String toString()
+    {
+        return "[" + super.toString() + "]";
     }
 
 }

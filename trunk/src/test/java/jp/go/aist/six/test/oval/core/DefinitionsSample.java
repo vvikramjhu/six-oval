@@ -334,9 +334,15 @@ public class DefinitionsSample
 
     public static final FileState  STATE_WINDOWS_FILE_2190 =
         new FileState( "oval:org.mitre.oval:ste:2190", 1 )
-    .version( new EntityStateVersion( "6.0.2900.2873",
-                    Datatype.VERSION, Operation.LESS_THAN )
-    );
+    .version( new EntityStateVersion( "6.0.2900.2873", Operation.LESS_THAN ) )
+    ;
+
+
+    public static final FileState  STATE_WINDOWS_FILE_6503 =
+        new FileState( "oval:org.mitre.oval:ste:6503", 1,
+                        "State matching the file version less than 2.2.8" )
+    .productVersion( new EntityStateVersion( "2.2.8", Operation.LESS_THAN ) )
+    ;
 
 
     public static final MetabaseState  STATE_WINDOWS_METABASE_537 =

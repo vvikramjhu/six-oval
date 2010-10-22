@@ -68,6 +68,19 @@ public class FileState
     }
 
 
+    /**
+     * Constructor.
+     */
+    public FileState(
+                    final String id,
+                    final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
+    }
+
+
 
     /**
      */
@@ -410,6 +423,15 @@ public class FileState
                     )
     {
         _properties.put( FileProperty.PRODUCT_VERSION, version );
+    }
+
+
+    public FileState productVersion(
+                    final EntityStateVersion version
+                    )
+    {
+        setProductVersion( version );
+        return this;
     }
 
 

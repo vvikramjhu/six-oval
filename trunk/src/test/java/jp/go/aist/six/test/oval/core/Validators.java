@@ -43,6 +43,7 @@ import jp.go.aist.six.oval.model.sc.VariableValue;
 import jp.go.aist.six.oval.model.unix.UnameState;
 import jp.go.aist.six.oval.model.windows.FileItem;
 import jp.go.aist.six.oval.model.windows.FileObject;
+import jp.go.aist.six.oval.model.windows.FileState;
 import jp.go.aist.six.oval.model.windows.MetabaseObject;
 import jp.go.aist.six.oval.model.windows.RegistryItem;
 import jp.go.aist.six.oval.model.windows.RegistryObject;
@@ -237,6 +238,7 @@ public abstract class Validators
                 Assert.assertEquals( atext.getText(), etext.getText() );
                 Reporter.log( " - textfilecontent54_state/subexpression", true );
                 Assert.assertEquals( atext.getSubexpression(), etext.getSubexpression() );
+
             } else if (expected instanceof UnameState) {
                 Assert.assertTrue( actual instanceof UnameState );
                 UnameState  auname = (UnameState)actual;
@@ -253,6 +255,47 @@ public abstract class Validators
                 Assert.assertEquals( auname.getOsVersion(), euname.getOsVersion() );
                 Reporter.log( " - uname_state/processor_type", true );
                 Assert.assertEquals( auname.getProcessorType(), euname.getProcessorType() );
+
+            } else if (expected instanceof FileState) {
+                Assert.assertTrue( actual instanceof FileState);
+                FileState  afile = (FileState)actual;
+                FileState  efile = (FileState)expected;
+                Reporter.log( " - file_state/filepath", true );
+                Assert.assertEquals( afile.getFilepath(), efile.getFilepath() );
+                Reporter.log( " - file_state/path", true );
+                Assert.assertEquals( afile.getPath(), efile.getPath() );
+                Reporter.log( " - file_state/filename", true );
+                Assert.assertEquals( afile.getFilename(), efile.getFilename() );
+                Reporter.log( " - file_state/owner", true );
+                Assert.assertEquals( afile.getOwner(), efile.getOwner() );
+                Reporter.log( " - file_state/size", true );
+                Assert.assertEquals( afile.getSize(), efile.getSize() );
+                Reporter.log( " - file_state/a_time", true );
+                Assert.assertEquals( afile.getATime(), efile.getATime() );
+                Reporter.log( " - file_state/c_time", true );
+                Assert.assertEquals( afile.getCTime(), efile.getCTime() );
+                Reporter.log( " - file_state/m_time", true );
+                Assert.assertEquals( afile.getMTime(), efile.getMTime() );
+                Reporter.log( " - file_state/ms_checksum", true );
+                Assert.assertEquals( afile.getMSChecksum(), efile.getMSChecksum() );
+                Reporter.log( " - file_state/version", true );
+                Assert.assertEquals( afile.getVersion(), efile.getVersion() );
+                Reporter.log( " - file_state/type", true );
+                Assert.assertEquals( afile.getType(), efile.getType() );
+                Reporter.log( " - file_state/development_class", true );
+                Assert.assertEquals( afile.getDevelopmentClass(), efile.getDevelopmentClass() );
+                Reporter.log( " - file_state/company", true );
+                Assert.assertEquals( afile.getCompany(), efile.getCompany() );
+                Reporter.log( " - file_state/internal_name", true );
+                Assert.assertEquals( afile.getInternalName(), efile.getInternalName() );
+                Reporter.log( " - file_state/language", true );
+                Assert.assertEquals( afile.getLanguage(), efile.getLanguage() );
+                Reporter.log( " - file_state/original_filename", true );
+                Assert.assertEquals( afile.getOriginalFilename(), efile.getOriginalFilename() );
+                Reporter.log( " - file_state/productName", true );
+                Assert.assertEquals( afile.getProductName(), efile.getProductName() );
+                Reporter.log( " - file_state/productVersion", true );
+                Assert.assertEquals( afile.getProductVersion(), efile.getProductVersion() );
 
             }
         }

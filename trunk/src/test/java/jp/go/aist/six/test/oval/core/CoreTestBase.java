@@ -491,13 +491,22 @@ public abstract class CoreTestBase
                             "marshalled_state-unix-uname_oval-5377.xml"
                         }
                         ,
-                        // windows file
+                        // windows file/version
                         {
                             State.class,
                             "test/data/definitions/state-windows-file_oval-2190.xml",
                             "/oval_definitions/states/file_state",
                             DefinitionsSample.STATE_WINDOWS_FILE_2190,
                             "marshalled_state-windows-file_oval-2190.xml"
+                        }
+                        ,
+                        // windows file/product_version
+                        {
+                            State.class,
+                            "test/data/definitions/state-windows-file_oval-6503.xml",
+                            "/oval_definitions/states/file_state",
+                            DefinitionsSample.STATE_WINDOWS_FILE_6503,
+                            "marshalled_state-windows-file_oval-6503.xml"
                         }
                         ,
                         // windows metadata
