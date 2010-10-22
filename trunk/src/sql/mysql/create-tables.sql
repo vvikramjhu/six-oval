@@ -1394,7 +1394,7 @@ CREATE TABLE IF NOT EXISTS oval_d_object_textfilecontent
     /* path :EntityObjectString {datdatype=string} */
     path                VARCHAR(255),
     path_operation      VARCHAR(32),
-    path_var_ref        VARCHAR(255),
+    path_var_ref        VARCHAR(64),
     path_var_check      VARCHAR(16),
 
     /* filename :EntityObjectString {datdatype=string} */
@@ -1402,9 +1402,9 @@ CREATE TABLE IF NOT EXISTS oval_d_object_textfilecontent
 
     /* line :EntityObjectString {datdatype=string} */
     line                VARCHAR(255),
-    line_var_ref        VARCHAR(255),
-    line_var_check      VARCHAR(16),
     line_operation      VARCHAR(32),
+    line_var_ref        VARCHAR(64),
+    line_var_check      VARCHAR(16),
 
     /* (PK) */
     PRIMARY KEY (PID)
@@ -1978,12 +1978,17 @@ CREATE TABLE IF NOT EXISTS oval_d_object_metabase
     PID                 VARCHAR(64)     NOT NULL,
                         /* id + version, e.g. oval:org.mitre.oval:obj:419:1 */
 
-    /* key */
-    mb_key              VARCHAR(255),
+    /* key :EntityObjectString {datdatype=string} */
+    mbkey               VARCHAR(255),
+    mbkey_operation     VARCHAR(32),
+    mbkey_var_ref       VARCHAR(64),
+    mbkey_var_check     VARCHAR(16),
 
-    /* id */
-    mb_id               VARCHAR(255),
-    mb_id_datatype      VARCHAR(16),
+    /* id :EntityObjectInt {datdatype=int} */
+    mbid                VARCHAR(255),
+    mbid_operation      VARCHAR(32),
+    mbid_var_ref        VARCHAR(64),
+    mbid_var_check      VARCHAR(16),
 
     /* (PK) */
     PRIMARY KEY (PID)
@@ -2045,26 +2050,20 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_object_registry
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:obj:419:1 */
 
     hive                VARCHAR(24)     NOT NULL,
                         /* enum('HKEY_CLASSES_ROOT', 'HKEY_CURRENT_CONFIG',...) */
 
-    /* key */
-    regkey              VARCHAR(255),
-    regkey_var_ref      VARCHAR(255),
-    regkey_var_check    VARCHAR(16)     NOT NULL    DEFAULT 'all',
-/*  regkey_datatype     VARCHAR(16)     NOT NULL    DEFAULT 'string', */
-                        /*** all the datatype may be 'string'. ***/
-    regkey_operation    VARCHAR(32)     NOT NULL    DEFAULT 'equals',
-/*  regkey_mask         BOOLEAN         NOT NULL    DEFAULT false,    */
-
-    /* name */
-    regname             VARCHAR(255),
-
     /* behaviors */
-/*  max_depth           INT             NOT NULL    DEFAULT -1,       */
-/*  recurse_direction   VARCHAR(8)      NOT NULL    DEFAULT 'none',   */
+
+    /* key :EntityObjectString {datdatype=string} */
+    regkey              VARCHAR(255),
+    regkey_operation    VARCHAR(32),
+    regkey_var_ref      VARCHAR(64),
+    regkey_var_check    VARCHAR(16),
+
+    /* name :EntityObjectString {datdatype=string} */
+    regname             VARCHAR(255),
 
     /* (PK) */
     PRIMARY KEY (PID)
@@ -2153,16 +2152,18 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_object_wmi
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:obj:419:1 */
 
-    /* key */
-    namespace           VARCHAR(64),
-    namespace_var_ref   VARCHAR(255),
-    namespace_var_check VARCHAR(16)     DEFAULT 'all',
-    namespace_operation VARCHAR(32)     DEFAULT 'equals',
+    /* namespace :EntityObjectString {datdatype=string} */
+    namespace           VARCHAR(255),
+    namespace_operation VARCHAR(32),
+    namespace_var_ref   VARCHAR(64),
+    namespace_var_check VARCHAR(16),
 
+    /* wql :EntityObjectString {datdatype=string} */
     wql                 VARCHAR(255),
-    wql_operation       VARCHAR(32)     DEFAULT 'equals',
+    wql_operation       VARCHAR(32),
+    wql_var_ref         VARCHAR(64),
+    wql_var_check       VARCHAR(16),
 
     /* (PK) */
     PRIMARY KEY (PID)

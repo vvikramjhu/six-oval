@@ -2391,19 +2391,43 @@
             <sql name="PID" type="char"/>
         </field>
 
+        <!-- key -->
         <field name="key.data" type="string">
-            <sql name="mb_key" type="char"/>
+            <sql name="mbkey" type="char"/>
         </field>
 
+        <field name="key.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="mbkey_operation" type="char"/>
+        </field>
+
+        <field name="key.varRef" type="string">
+            <sql name="mbkey_var_ref" type="char"/>
+        </field>
+
+        <field name="key.varCheck" 
+            type="jp.go.aist.six.oval.model.common.Check">
+            <sql name="mbkey_var_check" type="char"/>
+        </field>
+
+        <!-- ID -->
         <field name="ID.data" type="string">
-            <sql name="mb_id" type="char"/>
+            <sql name="mbid" type="char"/>
         </field>
 
-        <field name="ID.datatype" 
-            type="jp.go.aist.six.oval.model.common.Datatype">
-            <sql name="mb_id_datatype" type="char"/>
+        <field name="ID.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="mbid_operation" type="char"/>
         </field>
 
+        <field name="ID.varRef" type="string">
+            <sql name="mbid_var_ref" type="char"/>
+        </field>
+
+        <field name="ID.varCheck" 
+            type="jp.go.aist.six.oval.model.common.Check">
+            <sql name="mbid_var_check" type="char"/>
+        </field>
     </class>
 
 
@@ -2472,6 +2496,9 @@
             <sql name="PID" type="char"/>
         </field>
 
+        <!-- behaviros -->
+
+        <!-- hive -->
         <field name="hive.data" type="string">
             <sql name="hive" type="char"/>
         </field>
@@ -2482,8 +2509,14 @@
         </field>
 -->
 
+        <!-- key -->
         <field name="key.data" type="string">
             <sql name="regkey" type="char"/>
+        </field>
+
+        <field name="key.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="regkey_operation" type="char"/>
         </field>
 
         <field name="key.varRef" type="string">
@@ -2495,24 +2528,10 @@
             <sql name="regkey_var_check" type="char"/>
         </field>
 
-        <field name="key.operation" 
-            type="jp.go.aist.six.oval.model.common.Operation">
-            <sql name="regkey_operation" type="char"/>
-        </field>
-
+        <!-- name -->
         <field name="name.data" type="string">
             <sql name="regname" type="char"/>
         </field>
-
-<!-- No registry object has 'behaviors' child element in the definition XML. 
-        <field name="behaviors.maxDepth" type="integer">
-            <sql name="max_depth" type="integer"/>
-        </field>
-        <field name="behaviors.recurseDirection" 
-            type="jp.go.aist.six.oval.model.windows.RecurseDirection">
-            <sql name="recurse_direction" type="char"/>
-        </field>
--->
     </class>
 
 
@@ -2631,29 +2650,43 @@
             <sql name="PID" type="char"/>
         </field>
 
+        <!-- namespace -->
         <field name="namespace.data" type="string">
             <sql name="namespace" type="char"/>
         </field>
-<!--
-        <field name="namespace.varRef" type="string">
-            <sql name="regkey_var_ref" type="char"/>
-        </field>
-
-        <field name="namespace.varCheck" 
-            type="jp.go.aist.six.oval.model.common.Check">
-            <sql name="namespace_var_check" type="char"/>
-        </field>
--->
 
         <field name="namespace.operation" 
             type="jp.go.aist.six.oval.model.common.Operation">
             <sql name="namespace_operation" type="char"/>
         </field>
 
+        <field name="namespace.varRef" type="string">
+            <sql name="namespace_var_ref" type="char"/>
+        </field>
+
+        <field name="namespace.varCheck" 
+            type="jp.go.aist.six.oval.model.common.Check">
+            <sql name="namespace_var_check" type="char"/>
+        </field>
+
+        <!-- wql -->
         <field name="wql.data" type="string">
             <sql name="wql" type="char"/>
         </field>
 
+        <field name="wql.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="wql_operation" type="char"/>
+        </field>
+
+        <field name="wql.varRef" type="string">
+            <sql name="wql_var_ref" type="char"/>
+        </field>
+
+        <field name="wql.varCheck" 
+            type="jp.go.aist.six.oval.model.common.Check">
+            <sql name="wql_var_check" type="char"/>
+        </field>
     </class>
 
 

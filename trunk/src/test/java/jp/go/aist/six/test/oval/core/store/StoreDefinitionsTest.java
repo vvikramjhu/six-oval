@@ -5,7 +5,6 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
-import jp.go.aist.six.test.oval.core.DefinitionsSample;
 import jp.go.aist.six.test.oval.core.OvalSample;
 import org.testng.annotations.DataProvider;
 
@@ -201,95 +200,6 @@ public class StoreDefinitionsTest
     //  state
     //==============================================================
 
-    @DataProvider( name="definitions.state" )
-    public Object[][] provideDefinitionsState()
-    {
-        return new Object[][] {
-                        // independent : family
-                        {
-                            State.class,
-                            "test/data/definitions/state-family_oval-ste-99_2.xml",
-                            "oval_definitions/states/independent:family_state",
-                            DefinitionsSample.STATE_INDEPENDENT_FAMILY_99
-                        }
-                        ,
-                        // independent : textfilecontent
-                        {
-                            State.class,
-                            "test/data/definitions/state-textfilecontent_oval-ste-5132_1.xml",
-                            "oval_definitions/states/independent:textfilecontent_state",
-                            DefinitionsSample.STATE_INDEPENDENT_TEXTFILECONTENT_5132
-                        }
-                        ,
-                        // independent : textfilecontent54
-                        {
-                            State.class,
-                            "test/data/definitions/state-independent-textfilecontent54_11440.xml",
-                            "oval_definitions/states/independent:textfilecontent54_state",
-                            DefinitionsSample.STATE_INDEPENDENT_TEXTFILECONTENT54_11440
-                        }
-                        ,
-                        // windows : file
-                        {
-                            State.class,
-                            "test/data/definitions/state-file_oval-ste-2190_1.xml",
-                            "oval_definitions/states/windows:file_state",
-                            DefinitionsSample.STATE_WINDOWS_FILE_2190
-                        }
-                        ,
-                        // windows : metabase
-                        {
-                            State.class,
-                            "test/data/definitions/state-metabase_oval-ste-537_1.xml",
-                            "oval_definitions/states/windows:metabase_state",
-                            DefinitionsSample.STATE_WINDOWS_METABASE_537
-                        }
-                        ,
-                        // windows : registry
-                        {
-                            State.class,
-                            "test/data/definitions/state-registry_oval-ste-1205_1.xml",
-                            "oval_definitions/states/windows:registry_state",
-                            DefinitionsSample.STATE_WINDOWS_REGISTRY_1205
-                        }
-                        ,
-                        // linux : dpkginfo
-                        {
-                            State.class,
-                            "test/data/definitions/state-dpkginfo_oval-ste-5797_1.xml",
-                            "oval_definitions/states/linux:dpkginfo_state",
-                            DefinitionsSample.STATE_LINUX_DPKGINFO_5797
-                        }
-                        ,
-                        // linux : rpminfo/evr
-                        {
-                            State.class,
-                            "test/data/definitions/state-rpminfo_rhsa-ste-20100061004_301.xml",
-                            "oval_definitions/states/linux:rpminfo_state",
-                            DefinitionsSample.STATE_LINUX_RPMINFO_20100061004
-                        }
-                        ,
-                        // linux : rpminfo/version
-                        {
-                            State.class,
-                            "test/data/definitions/state-linux-rpminfo_rhsa-20100061003.xml",
-                            "oval_definitions/states/linux:rpminfo_state",
-                            DefinitionsSample.STATE_LINUX_RPMINFO_20100061003
-                        }
-                        ,
-                        // linux : rpminfo/signature_keyid
-                        {
-                            State.class,
-                            "test/data/definitions/state-rpminfo_rhsa-ste-20100061002_301.xml",
-                            "oval_definitions/states/linux:rpminfo_state",
-                            DefinitionsSample.STATE_LINUX_RPMINFO_20100061002
-                        }
-        };
-
-    }
-
-
-
     @org.testng.annotations.Test(
                     groups={"oval.core.store", "definitions.state"},
                     dataProvider="definitions.state",
@@ -297,13 +207,13 @@ public class StoreDefinitionsTest
                     )
     public <T extends State> void testDefinitionsState(
                     final Class<T> type,
-                    final String filepath,
+                    final String sourceFilepath,
                     final String xpath,
                     final T expected
                     )
     throws Exception
     {
-        _testStoreSync( type, filepath, xpath, expected );
+        _testStoreSync( type, sourceFilepath, xpath, expected );
     }
 
 
