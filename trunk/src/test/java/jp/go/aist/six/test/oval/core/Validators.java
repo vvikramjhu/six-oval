@@ -45,8 +45,10 @@ import jp.go.aist.six.oval.model.windows.FileItem;
 import jp.go.aist.six.oval.model.windows.FileObject;
 import jp.go.aist.six.oval.model.windows.FileState;
 import jp.go.aist.six.oval.model.windows.MetabaseObject;
+import jp.go.aist.six.oval.model.windows.MetabaseState;
 import jp.go.aist.six.oval.model.windows.RegistryItem;
 import jp.go.aist.six.oval.model.windows.RegistryObject;
+import jp.go.aist.six.oval.model.windows.RegistryState;
 import org.testng.Assert;
 import org.testng.Reporter;
 import java.util.Collection;
@@ -257,7 +259,7 @@ public abstract class Validators
                 Assert.assertEquals( auname.getProcessorType(), euname.getProcessorType() );
 
             } else if (expected instanceof FileState) {
-                Assert.assertTrue( actual instanceof FileState);
+                Assert.assertTrue( actual instanceof FileState );
                 FileState  afile = (FileState)actual;
                 FileState  efile = (FileState)expected;
                 Reporter.log( " - file_state/filepath", true );
@@ -296,6 +298,36 @@ public abstract class Validators
                 Assert.assertEquals( afile.getProductName(), efile.getProductName() );
                 Reporter.log( " - file_state/productVersion", true );
                 Assert.assertEquals( afile.getProductVersion(), efile.getProductVersion() );
+            } else if (expected instanceof MetabaseState) {
+                Assert.assertTrue( actual instanceof MetabaseState );
+                MetabaseState  amb = (MetabaseState)actual;
+                MetabaseState  emb = (MetabaseState)expected;
+                Reporter.log( " - metabase_state/key", true );
+                Assert.assertEquals( amb.getKey(), emb.getKey() );
+                Reporter.log( " - metabase_state/id", true );
+                Assert.assertEquals( amb.getID(), emb.getID() );
+                Reporter.log( " - metabase_state/name", true );
+                Assert.assertEquals( amb.getName(), emb.getName() );
+                Reporter.log( " - metabase_state/user_type", true );
+                Assert.assertEquals( amb.getUserType(), emb.getUserType() );
+                Reporter.log( " - metabase_state/data_type", true );
+                Assert.assertEquals( amb.getDataType(), emb.getDataType() );
+                Reporter.log( " - metabase_state/data", true );
+                Assert.assertEquals( amb.getData(), emb.getData() );
+            } else if (expected instanceof RegistryState) {
+                Assert.assertTrue( actual instanceof RegistryState );
+                RegistryState  areg = (RegistryState)actual;
+                RegistryState  ereg = (RegistryState)expected;
+                Reporter.log( " - registry_state/hive", true );
+                Assert.assertEquals( areg.getHive(), ereg.getHive() );
+                Reporter.log( " - registry_state/key", true );
+                Assert.assertEquals( areg.getKey(), ereg.getKey() );
+                Reporter.log( " - registry_state/name", true );
+                Assert.assertEquals( areg.getName(), ereg.getName() );
+                Reporter.log( " - registry_state/type", true );
+                Assert.assertEquals( areg.getType(), ereg.getType() );
+                Reporter.log( " - registry_state/value", true );
+                Assert.assertEquals( areg.getValue(), ereg.getValue() );
 
             }
         }

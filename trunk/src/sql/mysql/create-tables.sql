@@ -1745,7 +1745,6 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_state_uname
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:ste:419:1 */
 
     machine_class       VARCHAR(16),
     node_name           VARCHAR(64),
@@ -1889,13 +1888,13 @@ CREATE TABLE IF NOT EXISTS oval_d_state_file
 (
     PID                 VARCHAR(64)     NOT NULL,
 
+    /* version :EntityStateVersion {datdatype=version} */
     version             VARCHAR(64),
     version_operation   VARCHAR(32),
-    version_datatype    VARCHAR(16),
 
+    /* version :EntityStateVersion {datdatype=version} */
     product_version             VARCHAR(64),
     product_version_operation   VARCHAR(32),
-    product_version_datatype    VARCHAR(16),
 
     /* (FK) */
 
@@ -2016,14 +2015,14 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_state_metabase
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:ste:419:1 */
 
+    /* data :EntityStateAnySimple */
     data                VARCHAR(255),
-    data_operation      VARCHAR(32)     NOT NULL    DEFAULT 'equals',
-                        /* enum('equals', ..., 'case insensitive not equal', ...) */
+    data_operation      VARCHAR(32),
+    data_datatype       VARCHAR(16),
 
     /* (FK) */
-    
+
     /* (PK) */
     PRIMARY KEY (PID)
 
@@ -2040,7 +2039,6 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_test_registry
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
 
     /* (FK) */
 
@@ -2091,14 +2089,16 @@ CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS oval_d_state_registry
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:ste:419:1 */
 
-    value_data          VARCHAR(255),
-    value_datatype      VARCHAR(16)     NOT NULL    DEFAULT 'string',
-    value_operation     VARCHAR(32)     NOT NULL    DEFAULT 'equals',
-                        /* enum('equals', ..., 'case insensitive not equal', ...) */
+    /* key :EntityStateString {datdatype=string} */
+    regkey              VARCHAR(255),
+    regkey_operation    VARCHAR(32),
 
-    type_data           VARCHAR(16),
+    /* value :EntityStateAnySimple */
+    regvalue            VARCHAR(255),
+    regvalue_operation  VARCHAR(32),
+    regvalue_datatype   VARCHAR(16),
+
 
     /* (FK) */
     

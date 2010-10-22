@@ -2273,12 +2273,6 @@
             <sql name="version_operation" type="char"/>
         </field>
 
-        <field name="version.datatype" 
-            type="jp.go.aist.six.oval.model.common.Datatype">
-            <sql name="version_datatype" type="char"/>
-        </field>
-
-
         <!-- productVersion -->
         <field name="productVersion.data" type="string">
             <sql name="product_version" type="char"/>
@@ -2287,11 +2281,6 @@
         <field name="productVersion.operation" 
             type="jp.go.aist.six.oval.model.common.Operation">
             <sql name="product_version_operation" type="char"/>
-        </field>
-
-        <field name="productVersion.datatype" 
-            type="jp.go.aist.six.oval.model.common.Datatype">
-            <sql name="product_version_datatype" type="char"/>
         </field>
     </class>
 
@@ -2473,6 +2462,7 @@
             <sql name="PID" type="char"/>
         </field>
 
+        <!-- data -->
         <field name="data.data" type="string">
             <sql name="data" type="char"/>
         </field>
@@ -2480,6 +2470,11 @@
         <field name="data.operation" 
             type="jp.go.aist.six.oval.model.common.Operation">
             <sql name="data_operation" type="char"/>
+        </field>
+
+        <field name="data.datatype" 
+            type="jp.go.aist.six.oval.model.common.Datatype">
+            <sql name="data_datatype" type="char"/>
         </field>
     </class>
 
@@ -2579,22 +2574,29 @@
             <sql name="PID" type="char"/>
         </field>
 
-        <field name="value.data" type="string">
-            <sql name="value_data" type="char"/>
+        <!-- key -->
+        <field name="key.data" type="string">
+            <sql name="regkey" type="char"/>
         </field>
 
-        <field name="value.datatype" 
-            type="jp.go.aist.six.oval.model.common.Datatype">
-            <sql name="value_datatype" type="char"/>
+        <field name="key.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="regkey_operation" type="char"/>
+        </field>
+
+        <!-- value -->
+        <field name="value.data" type="string">
+            <sql name="regvalue" type="char"/>
         </field>
 
         <field name="value.operation" 
             type="jp.go.aist.six.oval.model.common.Operation">
-            <sql name="value_operation" type="char"/>
+            <sql name="regvalue_operation" type="char"/>
         </field>
 
-        <field name="type.data" type="string">
-            <sql name="type_data" type="char"/>
+        <field name="value.datatype" 
+            type="jp.go.aist.six.oval.model.common.Datatype">
+            <sql name="regvalue_datatype" type="char"/>
         </field>
     </class>
 
