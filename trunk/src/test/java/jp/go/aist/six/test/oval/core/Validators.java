@@ -13,13 +13,16 @@ import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.independent.FamilyItem;
+import jp.go.aist.six.oval.model.independent.FamilyState;
 import jp.go.aist.six.oval.model.independent.TextFileContent54Object;
 import jp.go.aist.six.oval.model.independent.TextFileContentItem;
 import jp.go.aist.six.oval.model.independent.TextFileContentObject;
 import jp.go.aist.six.oval.model.linux.DpkgInfoObject;
 import jp.go.aist.six.oval.model.linux.DpkgInfoState;
+import jp.go.aist.six.oval.model.linux.LinuxEvrPkgInfoState;
 import jp.go.aist.six.oval.model.linux.RpmInfoItem;
 import jp.go.aist.six.oval.model.linux.RpmInfoObject;
+import jp.go.aist.six.oval.model.linux.RpmInfoState;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.DefinitionResults;
 import jp.go.aist.six.oval.model.results.OvalResults;
@@ -168,14 +171,39 @@ public abstract class Validators
         {
             super.equals( actual, expected );
 
-            Reporter.log( " - operator", true );
+            Reporter.log( " - @operator", true );
             Assert.assertEquals( actual.getOperator(), expected.getOperator() );
 
-            if (expected instanceof DpkgInfoState) {
-                Assert.assertTrue( actual instanceof DpkgInfoState);
-                DpkgInfoState  aobject = (DpkgInfoState)actual;
-                DpkgInfoState  eobject = (DpkgInfoState)expected;
-                Assert.assertEquals( aobject.getName(), eobject.getName() );
+            if ((expected instanceof DpkgInfoState)
+                            ||  (expected instanceof RpmInfoState)) {
+                Assert.assertTrue( actual instanceof LinuxEvrPkgInfoState);
+                LinuxEvrPkgInfoState  apkg = (LinuxEvrPkgInfoState)actual;
+                LinuxEvrPkgInfoState  epkg = (LinuxEvrPkgInfoState)expected;
+                Reporter.log( " - [dpkg|rpm]info_state/name", true );
+                Assert.assertEquals( apkg.getName(), epkg.getName() );
+                Reporter.log( " - [dpkg|rpm]info_state/arch", true );
+                Assert.assertEquals( apkg.getArch(), epkg.getArch() );
+                Reporter.log( " - [dpkg|rpm]info_state/epoch", true );
+                Assert.assertEquals( apkg.getEpoch(), epkg.getEpoch() );
+                Reporter.log( " - [dpkg|rpm]info_state/release", true );
+                Assert.assertEquals( apkg.getRelease(), epkg.getRelease() );
+                Reporter.log( " - [dpkg|rpm]info_state/version", true );
+                Assert.assertEquals( apkg.getVersion(), epkg.getVersion() );
+                Reporter.log( " - [dpkg|rpm]info_state/evr", true );
+                Assert.assertEquals( apkg.getEvr(), epkg.getEvr() );
+                if (expected instanceof RpmInfoState) {
+                    Assert.assertTrue( actual instanceof RpmInfoState);
+                    RpmInfoState  arpm = (RpmInfoState)actual;
+                    RpmInfoState  erpm = (RpmInfoState)expected;
+                    Reporter.log( " - rpminfo_state/signature_keyid", true );
+                    Assert.assertEquals( arpm.getSignatureKeyID(), erpm.getSignatureKeyID() );
+                }
+            } else if (expected instanceof FamilyState) {
+                Assert.assertTrue( actual instanceof FamilyState);
+                FamilyState  afamily = (FamilyState)actual;
+                FamilyState  efamily = (FamilyState)expected;
+                Reporter.log( " - family_state/family", true );
+                Assert.assertEquals( afamily.getFamily(), efamily.getFamily() );
             }
         }
     }
