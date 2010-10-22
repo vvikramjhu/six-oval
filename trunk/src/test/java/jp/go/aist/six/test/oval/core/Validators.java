@@ -40,6 +40,7 @@ import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemData;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
 import jp.go.aist.six.oval.model.sc.VariableValue;
+import jp.go.aist.six.oval.model.unix.UnameState;
 import jp.go.aist.six.oval.model.windows.FileItem;
 import jp.go.aist.six.oval.model.windows.FileObject;
 import jp.go.aist.six.oval.model.windows.MetabaseObject;
@@ -236,6 +237,23 @@ public abstract class Validators
                 Assert.assertEquals( atext.getText(), etext.getText() );
                 Reporter.log( " - textfilecontent54_state/subexpression", true );
                 Assert.assertEquals( atext.getSubexpression(), etext.getSubexpression() );
+            } else if (expected instanceof UnameState) {
+                Assert.assertTrue( actual instanceof UnameState );
+                UnameState  auname = (UnameState)actual;
+                UnameState  euname = (UnameState)expected;
+                Reporter.log( " - uname_state/machine_class", true );
+                Assert.assertEquals( auname.getMachineClass(), euname.getMachineClass() );
+                Reporter.log( " - uname_state/node_name", true );
+                Assert.assertEquals( auname.getNodeName(), euname.getNodeName() );
+                Reporter.log( " - uname_state/osName", true );
+                Assert.assertEquals( auname.getOsName(), euname.getOsName() );
+                Reporter.log( " - uname_state/os_release", true );
+                Assert.assertEquals( auname.getOsRelease(), euname.getOsRelease() );
+                Reporter.log( " - uname_state/os_version", true );
+                Assert.assertEquals( auname.getOsVersion(), euname.getOsVersion() );
+                Reporter.log( " - uname_state/processor_type", true );
+                Assert.assertEquals( auname.getProcessorType(), euname.getProcessorType() );
+
             }
         }
     }

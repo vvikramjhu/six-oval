@@ -1747,6 +1747,13 @@ CREATE TABLE IF NOT EXISTS oval_d_state_uname
     PID                 VARCHAR(64)     NOT NULL,
                         /* id + version, e.g. oval:org.mitre.oval:ste:419:1 */
 
+    machine_class       VARCHAR(16),
+    node_name           VARCHAR(64),
+
+    os_name             VARCHAR(32),
+    os_release          VARCHAR(64),
+    os_version          VARCHAR(64),
+
     processor_type      VARCHAR(16),
 
     /* (FK) */
