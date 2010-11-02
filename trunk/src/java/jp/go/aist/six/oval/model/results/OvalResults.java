@@ -25,6 +25,7 @@ import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 
 
@@ -34,9 +35,10 @@ import java.util.Collection;
  * <p>Properties:</p>
  * <ul>
  *   <li>generator (1..1)</li>
- *   <li>directives (0..1)</li>
+ *   <li>directives (1..1)</li>
+ *   <li>class_directives (0..5)</li>
  *   <li>oval_definitions (0..1)</li>
- *   <li>results (0..1)</li>
+ *   <li>results (1..1)</li>
  *   <li>signature (0..1): currently NOT supported.</li>
  * </ul>
  *
@@ -57,7 +59,7 @@ public class OvalResults
     private Collection<ClassDirectives>  _classDirectives = new ArrayList<ClassDirectives>();
     //{0..5}
 
-    private OvalDefinitions  _definitions;
+    private OvalDefinitions  _ovalDefinitions;
     //{0..1}
 
     private SystemResults  _results = new SystemResults();
@@ -139,28 +141,62 @@ public class OvalResults
 
 
 
-    /**
-     */
-    public void setDefinitions(
-                    final OvalDefinitions definitions
+    public void setClassDirectives(
+                    final Collection<? extends ClassDirectives> classDirectives
                     )
     {
-        _definitions = definitions;
+        if (classDirectives != _classDirectives) {
+            _classDirectives.clear();
+            if (classDirectives != null  &&  classDirectives.size() > 0) {
+                _classDirectives.addAll( classDirectives );
+            }
+        }
     }
 
 
-    public OvalResults definitions(
+    public boolean addClassDirectives(
+                    final ClassDirectives classDirectives
+                    )
+    {
+        return _classDirectives.add( classDirectives );
+    }
+
+
+    public Collection<ClassDirectives> getClassDirectives()
+    {
+        return _classDirectives;
+    }
+
+
+    public Iterator<ClassDirectives> iterateClassDirectives()
+    {
+        return _classDirectives.iterator();
+    }
+
+
+
+    /**
+     */
+    public void setOvalDefinitions(
                     final OvalDefinitions definitions
                     )
     {
-        setDefinitions( definitions );
+        _ovalDefinitions = definitions;
+    }
+
+
+    public OvalResults ovalDefinitions(
+                    final OvalDefinitions definitions
+                    )
+    {
+        setOvalDefinitions( definitions );
         return this;
     }
 
 
-    public OvalDefinitions getDefinitions()
+    public OvalDefinitions getOvalDefinitions()
     {
-        return _definitions;
+        return _ovalDefinitions;
     }
 
 
@@ -206,6 +242,7 @@ public class OvalResults
     {
         return "oval_results[generator=" + getGenerator()
                         + ", directives=" + getDirectives()
+                        + ", class_directives=" + getClassDirectives()
                         + ", results=" + getResults()
                         + "]";
     }

@@ -972,7 +972,7 @@ public abstract class Validators
             Assert.assertEquals( actual.getDirectives(), expected.getDirectives() );
 
             Reporter.log( " - oval_definitions", true );
-            validator( OvalDefinitions.class ).equals( actual.getDefinitions(), expected.getDefinitions() );
+            validator( OvalDefinitions.class ).equals( actual.getOvalDefinitions(), expected.getOvalDefinitions() );
 
             Reporter.log( " - results", true );
             validator( SystemResults.class ).equals( actual.getResults(), expected.getResults() );

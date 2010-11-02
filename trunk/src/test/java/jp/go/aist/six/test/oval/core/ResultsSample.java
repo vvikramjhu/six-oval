@@ -179,7 +179,7 @@ public class ResultsSample
                         _DIRECTIVES_,
                         new SystemResult[] { _SYSTEM_RESULT_8050_ }
                         )
-    .definitions( DefinitionsSample.OVAL_DEFINITIONS_8050 )
+    .ovalDefinitions( DefinitionsSample.OVAL_DEFINITIONS_8050 )
     ;
 
 }

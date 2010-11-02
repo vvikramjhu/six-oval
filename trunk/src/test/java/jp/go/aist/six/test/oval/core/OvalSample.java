@@ -691,7 +691,7 @@ public class OvalSample
                                         ),
                         new SystemResults( new SystemResult[] { _SYSTEM_RESULT_8500_ } )
                         )
-    .definitions( OVAL_DEFINITIONS_8500 );
+    .ovalDefinitions( OVAL_DEFINITIONS_8500 );
 
 }
 // OvalSample

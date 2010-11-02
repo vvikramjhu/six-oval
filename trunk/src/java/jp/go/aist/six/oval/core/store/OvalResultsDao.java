@@ -115,10 +115,10 @@ public class OvalResultsDao
             _createSystem( system );
         }
 
-        OvalDefinitions  defs = results.getDefinitions();
+        OvalDefinitions  defs = results.getOvalDefinitions();
         if (defs != null) {
             OvalDefinitions  p_defs = getForwardingDao( OvalDefinitions.class ).sync( defs );
-            results.setDefinitions( p_defs );
+            results.setOvalDefinitions( p_defs );
         }
 
         return super.create( results );

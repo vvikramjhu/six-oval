@@ -1380,7 +1380,7 @@
             <bind-xml name="directives" node="element"/>
         </field>
         
-        <field name="definitions" 
+        <field name="ovalDefinitions" 
             type="jp.go.aist.six.oval.model.definitions.OvalDefinitions">
             <bind-xml name="oval-def:oval_definitions" node="element"
                 xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5"

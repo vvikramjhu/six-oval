@@ -1082,7 +1082,7 @@
             <sql many-key="r_results__PID"/>
         </field>
 
-        <field name="definitions" 
+        <field name="ovalDefinitions" 
             type="jp.go.aist.six.oval.model.definitions.OvalDefinitions">
             <sql name="d_definitions__PID"/>
         </field>
