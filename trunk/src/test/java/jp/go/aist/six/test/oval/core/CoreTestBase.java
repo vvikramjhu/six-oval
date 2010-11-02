@@ -853,10 +853,10 @@ public abstract class CoreTestBase
                       // Windows XP, CVE-2010-0030, MS PowerPoint
                       {
                           OvalResults.class,
-                          "test/data/results/oval-results-5.8-windows-xp_8050.xml",
+                          "test/data/results/oval-results-5.8_windows-xp_8050.xml",
                           "/oval_results",
                           ResultsSample.OVAL_RESULTS_8050,
-                          "marshalled_oval-results-5.8-windows-xp_8050.xml"
+                          "marshalled_oval-results-5.8_windows-xp_8050.xml"
                       }
 //                      ,
 //                      // Windows @Mitre, CVE-2010-0176
