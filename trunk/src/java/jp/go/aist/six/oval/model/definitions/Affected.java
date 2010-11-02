@@ -341,7 +341,7 @@ public class Affected
     @Override
     public String toString()
     {
-        return "Affected[family=" + getFamily()
+        return "[family=" + getFamily()
                         + ", platform=" + getPlatform()
                         + ", product="  + getProduct()
                         + "]";

@@ -202,7 +202,7 @@ public class Reference
     @Override
     public String toString()
     {
-        return "reference[source=" + getSource()
+        return "[source=" + getSource()
                         + ", ref_id=" + getRefID()
                         + ", ref_url=" + getRefURL()
                         + "]";

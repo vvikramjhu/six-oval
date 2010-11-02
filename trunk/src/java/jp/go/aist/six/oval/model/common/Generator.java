@@ -280,7 +280,7 @@ public class Generator
     @Override
     public String toString()
     {
-        return "generator[product_name=" + getProductName()
+        return "[product_name=" + getProductName()
                         + ", product_version=" + getProductVersion()
                         + ", schema_version=" + getSchemaVersion()
                         + ", timestamp=" + getTimestamp()

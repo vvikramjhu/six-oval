@@ -24,9 +24,9 @@
     <test name="oval.core.store" enabled="true">
         <groups>
             <run>
-                <include name="results.oval_results"/>
+                <!-- include name="results.oval_results"/ -->
                 <!-- include name="sc.oval_sc"/ -->
-                <!-- include name="definitions.oval_definitions"/ -->
+                <include name="definitions.oval_definitions"/>
             </run>
         </groups>
 <!--
@@ -35,6 +35,7 @@
         <classes>
             <class name="jp.go.aist.six.test.oval.core.store.StoreSCTest"/>
             <class name="jp.go.aist.six.test.oval.core.store.StoreResultsTest"/>
+            <class name="jp.go.aist.six.test.oval.core.store.StoreDefinitionsTest"/>
 <!--
             <class name="jp.go.aist.six.test.oval.core.store.StoreQueryTest"/>
             <class name="jp.go.aist.six.test.oval.core.store.StoreResultsTest"/>

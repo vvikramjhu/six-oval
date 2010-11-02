@@ -26,7 +26,7 @@ import jp.go.aist.six.oval.model.common.Generator;
 
 
 /**
- * The root of an OVAL Definition Document.
+ * An OVAL Definition Document.
  * <p>Properties:</p>
  * <ul>
  *   <li>generator (1..1)</li>
@@ -333,16 +333,16 @@ public class OvalDefinitions
         States  states = getStates();
         Variables  variables = getVariables();
 
-        return "OvalDefinitions[generator=" + getGenerator()
+        return "oval_definitions[generator=" + getGenerator()
                         + ", #definitions="
                         + (definitions == null ? 0 : definitions.size())
                         + ", #tests="
                         + (tests == null ? 0 : tests.getTest().size())
-                        + ", objects="
+                        + ", #objects="
                         + (objects == null ? 0 : objects.size())
-                        + ", states="
+                        + ", #states="
                         + (states == null ? 0 : states.size())
-                        + ", variables="
+                        + ", #variables="
                         + (variables == null ? 0 : variables.size())
                         + "]";
     }

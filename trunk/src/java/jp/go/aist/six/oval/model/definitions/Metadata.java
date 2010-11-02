@@ -411,10 +411,10 @@ public class Metadata
     @Override
     public String toString()
     {
-        return "Metadata[title=" + getTitle()
+        return "[title=" + getTitle()
                         + ", affected=" + getAffected()
                         + ", description=(omitted)" //+ getDescription()
-                        + ", references" + getReference()
+                        + ", reference=" + getReference()
                         + ", additionalMetadata=" + getAdditionalMetadata()
                         + "]";
     }
