@@ -861,10 +861,16 @@ public abstract class Validators
                         final SystemResult expected
                         )
         {
+            if (expected == null) {
+                return;
+            }
+
             Reporter.log( " - results/system", true );
 
-            validator( OvalSystemCharacteristics.class )
-            .equals( actual.getOvalSystemCharacteristics(), expected.getOvalSystemCharacteristics() );
+            validator( OvalSystemCharacteristics.class ).equals(
+                            actual.getOvalSystemCharacteristics(),
+                            expected.getOvalSystemCharacteristics()
+            );
 
             Reporter.log( " - results/system/definitions", true );
             DefinitionResults  expectedDefinitions = expected.getDefinitions();
@@ -929,6 +935,10 @@ public abstract class Validators
                         final SystemResults expected
                         )
         {
+            if (expected == null) {
+                return;
+            }
+
             if (expected.size() == 1) {
                 Assert.assertTrue( actual.size() == 1 );
                 SystemResult  expectedResult = expected.iterator().next();
@@ -951,6 +961,10 @@ public abstract class Validators
                         final OvalResults expected
                         )
         {
+            if (expected == null) {
+                return;
+            }
+
             Reporter.log( " - generator", true );
             Assert.assertEquals( actual.getGenerator(), expected.getGenerator() );
 
