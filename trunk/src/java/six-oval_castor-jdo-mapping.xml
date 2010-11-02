@@ -939,9 +939,11 @@
     <!-- Item                                                    -->
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.sc.Item"
-        depends="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics"
         identity="persistentID"
         key-generator="IDENTITY">
+<!--
+        depends="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics"
+-->
 
         <!-- cache-type type="unlimited"/ -->
         <map-to table="oval_s_item"/>
@@ -2345,9 +2347,67 @@
             <sql name="size_status" type="char"/>
         </field>
 
-        <field name="size.datatype" 
-            type="jp.go.aist.six.oval.model.common.Datatype">
-            <sql name="size_type" type="char"/>
+        <field name="aTime.data" type="string">
+            <sql name="a_time" type="char"/>
+        </field>
+
+        <field name="aTime.status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
+            <sql name="a_time_status" type="char"/>
+        </field>
+
+        <field name="cTime.data" type="string">
+            <sql name="c_time" type="char"/>
+        </field>
+
+        <field name="cTime.status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
+            <sql name="c_time_status" type="char"/>
+        </field>
+
+        <field name="mTime.data" type="string">
+            <sql name="m_time" type="char"/>
+        </field>
+
+        <field name="mTime.status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
+            <sql name="m_time_status" type="char"/>
+        </field>
+
+        <field name="msChecksum.data" type="string">
+            <sql name="ms_checksum" type="char"/>
+        </field>
+
+        <field name="msChecksum.status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
+            <sql name="ms_checksum_status" type="char"/>
+        </field>
+
+        <field name="version.data" type="string">
+            <sql name="version" type="char"/>
+        </field>
+
+        <field name="version.status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
+            <sql name="version_status" type="char"/>
+        </field>
+
+        <field name="type.data" type="string">
+            <sql name="type1" type="char"/>
+        </field>
+
+        <field name="type.status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
+            <sql name="type1_status" type="char"/>
+        </field>
+
+        <field name="developmentClass.data" type="string">
+            <sql name="development_class" type="char"/>
+        </field>
+
+        <field name="developmentClass.status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
+            <sql name="development_class_status" type="char"/>
         </field>
 
         <field name="company.data" type="string">
@@ -2357,6 +2417,33 @@
         <field name="company.status" 
             type="jp.go.aist.six.oval.model.sc.Status">
             <sql name="company_status" type="char"/>
+        </field>
+
+        <field name="internalName.data" type="string">
+            <sql name="internal_name" type="char"/>
+        </field>
+
+        <field name="internalName.status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
+            <sql name="internal_name_status" type="char"/>
+        </field>
+
+        <field name="language.data" type="string">
+            <sql name="language" type="char"/>
+        </field>
+
+        <field name="language.status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
+            <sql name="language_status" type="char"/>
+        </field>
+
+        <field name="originalFilename.data" type="string">
+            <sql name="original_filename" type="char"/>
+        </field>
+
+        <field name="originalFilename.status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
+            <sql name="original_filename_status" type="char"/>
         </field>
 
         <field name="productName.data" type="string">
@@ -2623,6 +2710,11 @@
 
         <field name="key.data" type="string">
             <sql name="key1" type="char"/>
+        </field>
+
+        <field name="key.status" 
+            type="jp.go.aist.six.oval.model.sc.Status">
+            <sql name="key1_status" type="char"/>
         </field>
 
         <field name="name.data" type="string">

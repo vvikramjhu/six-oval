@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.sc;
 import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.common.Message;
 import jp.go.aist.six.util.castor.AbstractPersistable;
-import jp.go.aist.six.util.orm.Dependent;
 
 
 
@@ -33,13 +32,13 @@ import jp.go.aist.six.util.orm.Dependent;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-// TODO: This class must be abstract.
+// TODO: This class must be abstract and dependent.
 // Castor fails to load polymorphic objects
 // if the common abstract super class is mapped to a super table.
 //public abstract class Item
 public class Item
     extends AbstractPersistable
-    implements Dependent<OvalSystemCharacteristics>
+//    implements Dependent<OvalSystemCharacteristics>
 {
 
     private Message  _message;
