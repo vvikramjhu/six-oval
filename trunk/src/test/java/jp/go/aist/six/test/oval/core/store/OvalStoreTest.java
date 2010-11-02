@@ -5,6 +5,13 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.test.oval.core.CoreTestBase;
+import jp.go.aist.six.test.oval.core.Validators;
+import jp.go.aist.six.util.orm.Persistable;
+import org.testng.Assert;
+import org.testng.Reporter;
 
 
 
@@ -12,14 +19,52 @@ import jp.go.aist.six.oval.model.definitions.Test;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class StoreDefinitionsTest
-    extends OvalStoreTest
+public class OvalStoreTest
+    extends CoreTestBase
 {
 
     /**
      */
-    public StoreDefinitionsTest()
+    public OvalStoreTest()
     {
+    }
+
+
+
+    /**
+     */
+    protected <K, T extends Persistable<K>> void _testStoreSync(
+                    final Class<T> type,
+                    final String filepath,
+                    final String xpath,
+                    final T expected
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n////////////////////////////////////////////////////////////////", true );
+        Reporter.log( "  * object type: " + type, true );
+
+        T  actual = _unmarshalWithValidation( type, filepath, xpath, expected );
+        Assert.assertNotNull( actual );
+
+        Reporter.log( "sync..." , true );
+        long  time = System.currentTimeMillis();
+        T  persistent = _getStore().sync( type, actual );
+        Reporter.log( "...sync done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+
+        K  pid = persistent.getPersistentID();
+        Reporter.log( "  @ pid=" + pid, true );
+
+        Reporter.log( "get...", true );
+        Reporter.log( "  - pid=" + pid, true );
+        time = System.currentTimeMillis();
+        T  persistent2 = _getStore().get( type, pid );
+        Reporter.log( "...get done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+
+        Reporter.log( "  @ get: object=" + persistent2, true );
+        Reporter.log( "validating...", true );
+        Validators.validator( type ).equals( persistent2, expected );
+        Reporter.log( "...validation OK", true );
     }
 
 
@@ -133,8 +178,52 @@ public class StoreDefinitionsTest
         _testStoreSync( type, sourceFilepath, xpath, expected );
     }
 
+
+
+    //==============================================================
+    //  oval_system_characteristics
+    //==============================================================
+
+    @org.testng.annotations.Test(
+                    groups={"oval.core.store", "sc.oval_sc"},
+                    dataProvider="sc.oval_sc",
+                    alwaysRun=true
+                    )
+    public void testSCOvalSC(
+                    final Class<OvalSystemCharacteristics> type,
+                    final String filepath,
+                    final String xpath,
+                    final OvalSystemCharacteristics expected
+                    )
+    throws Exception
+    {
+        _testStoreSync( type, filepath, xpath, expected );
+    }
+
+
+
+    //==============================================================
+    //  oval_results
+    //==============================================================
+
+    @org.testng.annotations.Test(
+                    groups={"oval.core.store", "results.oval_results"},
+                    dataProvider="results.oval_results",
+                    alwaysRun=true
+                    )
+    public void testResultsOvalResults(
+                    final Class<OvalResults> type,
+                    final String filepath,
+                    final String xpath,
+                    final OvalResults expected
+                    )
+    throws Exception
+    {
+        _testStoreSync( type, filepath, xpath, expected );
+    }
+
 }
-// DefinitionsTest
+// OvalStoreTest
 
 /* vim:set tabstop=4:set expandtab:set shiftwidth=4: */
 

@@ -9,7 +9,7 @@ import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
  * @version $Id$
  */
 public class StoreSCTest
-    extends StoreTestBase
+    extends OvalStoreTest
 {
 
     /**

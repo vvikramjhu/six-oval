@@ -17,7 +17,7 @@ import java.util.List;
  * @version $Id$
  */
 public class StoreQueryTest
-    extends StoreTestBase
+    extends OvalStoreTest
 {
 
     /**

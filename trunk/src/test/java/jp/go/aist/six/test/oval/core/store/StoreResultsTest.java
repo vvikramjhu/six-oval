@@ -9,7 +9,7 @@ import jp.go.aist.six.oval.model.results.OvalResults;
  * @version $Id$
  */
 public class StoreResultsTest
-    extends StoreTestBase
+    extends OvalStoreTest
 {
 
     /**
