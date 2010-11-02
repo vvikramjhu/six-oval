@@ -38,7 +38,7 @@ public class StoreDefinitionsTest
                         // [5.8] Mitre, vulnerability, Windows XP, def:8050
                         {
                             OvalDefinitions.class,
-                            "test/data/definitions/oval-definitions-5.8-windows-xp_8050.xml",
+                            "test/data/definitions/oval-definitions-5.8_windows-xp_8050.xml",
                             "/oval_definitions",
                             DefinitionsSample.OVAL_DEFINITIONS_8050
                         }
