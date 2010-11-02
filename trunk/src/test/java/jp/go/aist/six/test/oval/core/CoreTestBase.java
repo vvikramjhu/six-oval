@@ -592,7 +592,7 @@ public abstract class CoreTestBase
                             "test/data/definitions/oval-definitions-5.8_windows-xp_8050.xml",
                             "/oval_definitions",
                             DefinitionsSample.OVAL_DEFINITIONS_8050,
-                            "marshalled_oval-definitions-5.8-windows-xp_8050.xml"
+                            "marshalled_oval-definitions-5.8_windows-xp_8050.xml"
                         }
 //                        ,
 //                        // Red Hat, CVE-2010-0176, RHSA 20100332
@@ -822,10 +822,10 @@ public abstract class CoreTestBase
         return new Object[][] {
                         {
                             OvalSystemCharacteristics.class,
-                            "test/data/sc/oval-sc-5.8-windows-xp_8050.xml",
+                            "test/data/sc/oval-sc-5.8_windows-xp_8050.xml",
                             "/oval_system_characteristics",
                             ScSample.OVAL_SC_DEF8050,
-                            "marshalled_oval-sc-5.8-windows-xp_8050.xml"
+                            "marshalled_oval-sc-5.8_windows-xp_8050.xml"
                         }
 //                        ,
 //                        {

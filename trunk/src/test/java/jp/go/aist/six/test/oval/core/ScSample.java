@@ -228,7 +228,7 @@ public class ScSample
     public static final FileItem  ITEM_WINDOWS_FILE_4 =
         new FileItem( 4, FileItem.DEFAULT_STATUS,
                         new EntityItemString( "C:\\Program Files\\Microsoft Office\\OFFICE11\\powerpnt.exe" ),
-                        new EntityItemString( "C:\\Program Files\\Microsoft Office\\OFFICE11" ),
+                        new EntityItemString( "C:\\Program Files\\Microsoft Office\\OFFICE11\\" ),
                         new EntityItemString( "powerpnt.exe" ),
                         new EntityItemString( "BUILTIN\\Administrators" ),
                         new EntityItemInt( "6418776" ),

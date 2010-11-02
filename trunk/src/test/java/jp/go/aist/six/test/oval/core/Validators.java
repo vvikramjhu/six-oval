@@ -717,20 +717,24 @@ public abstract class Validators
                         final Item expected
                         )
         {
+            if (expected == null) {
+                return;
+            }
+
             Assert.assertEquals( actual.getID(), expected.getID() );
             if (expected instanceof FamilyItem) {
                 FamilyItem  aitem = (FamilyItem)actual;
-                FamilyItem  eitem = (FamilyItem)actual;
+                FamilyItem  eitem = (FamilyItem)expected;
                 Assert.assertEquals( aitem.getFamily(), eitem.getFamily() );
             } else if (expected instanceof TextFileContentItem) {
                 TextFileContentItem  aitem = (TextFileContentItem)actual;
-                TextFileContentItem  eitem = (TextFileContentItem)actual;
+                TextFileContentItem  eitem = (TextFileContentItem)expected;
                 Assert.assertEquals( aitem.getPath(), eitem.getPath() );
                 Assert.assertEquals( aitem.getFilename(), eitem.getFilename() );
                 Assert.assertEquals( aitem.getLine(), eitem.getLine() );
             } else if (expected instanceof RpmInfoItem) {
                 RpmInfoItem  aitem = (RpmInfoItem)actual;
-                RpmInfoItem  eitem = (RpmInfoItem)actual;
+                RpmInfoItem  eitem = (RpmInfoItem)expected;
                 Assert.assertEquals( aitem.getName(), eitem.getName() );
                 Assert.assertEquals( aitem.getArch(), eitem.getArch() );
                 Assert.assertEquals( aitem.getEpoch(), eitem.getEpoch() );
@@ -740,7 +744,7 @@ public abstract class Validators
                 Assert.assertEquals( aitem.getSignatureKeyID(), eitem.getSignatureKeyID() );
             } else if (expected instanceof FileItem) {
                 FileItem  aitem = (FileItem)actual;
-                FileItem  eitem = (FileItem)actual;
+                FileItem  eitem = (FileItem)expected;
                 Assert.assertEquals( aitem.getFilepath(), eitem.getFilepath() );
                 Assert.assertEquals( aitem.getPath(), eitem.getPath() );
                 Assert.assertEquals( aitem.getFilename(), eitem.getFilename() );
@@ -760,8 +764,10 @@ public abstract class Validators
                 Assert.assertEquals( aitem.getProductName(), eitem.getProductName() );
                 Assert.assertEquals( aitem.getProductVersion(), eitem.getProductVersion() );
             } else if (expected instanceof RegistryItem) {
+                Reporter.log( "  * actual item: " + actual.getClass().getName(), true );
+                Assert.assertTrue( actual instanceof RegistryItem );
                 RegistryItem  aitem = (RegistryItem)actual;
-                RegistryItem  eitem = (RegistryItem)actual;
+                RegistryItem  eitem = (RegistryItem)expected;
                 Assert.assertEquals( aitem.getHive(), eitem.getHive() );
                 Assert.assertEquals( aitem.getKey(), eitem.getKey() );
                 Assert.assertEquals( aitem.getName(), eitem.getName() );
@@ -783,6 +789,10 @@ public abstract class Validators
                         final OvalSystemCharacteristics expected
                         )
         {
+            if (expected == null) {
+                return;
+            }
+
             Reporter.log( " - generator", true );
             Assert.assertEquals( actual.getGenerator(), expected.getGenerator() );
 
@@ -791,12 +801,14 @@ public abstract class Validators
 
             Reporter.log( " - system_data", true );
             SystemData  expectedItems = expected.getSystemData();
-            SystemData  actualItems = actual.getSystemData();
+            SystemData    actualItems =   actual.getSystemData();
             if (expectedItems == null  ||  expectedItems.size() == 0) {
                 Assert.assertTrue( actualItems == null  || actualItems.size() == 0 );
             } else {
                 Assert.assertEquals( actualItems.size(), expectedItems.size() );
                 for (Item  expectedItem : expectedItems) {
+                    Reporter.log( " - system_data/item: " + expectedItem.getID()
+                                    + ", " + expectedItem.getEntityType(), true );
                     boolean  contained = false;
                     for (Item  actualItem : actualItems) {
                         if (actualItem.getID() == expectedItem.getID()) {
