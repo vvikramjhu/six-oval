@@ -106,13 +106,11 @@ public class SystemResults
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public String toString()
-    {
-        return "results["
-                        + super.toString()
-                        + "]";
-    }
+//    @Override
+//    public String toString()
+//    {
+//        return "[" + super.toString() + "]";
+//    }
 
 }
 // SystemResults
