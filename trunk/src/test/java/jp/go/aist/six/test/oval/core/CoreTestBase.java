@@ -195,6 +195,22 @@ public abstract class CoreTestBase
                             OvalSample.DEFINITION_8500,
                             "marshalled_definition_oval-8500.xml"
                         }
+//                        ,
+//                      // Mitre, windows, inverntory, MySQL 5.1
+//                      {
+//                          Definition.class,
+//                          "test/data/definitions/definition_oval-def-8297_1.xml",
+//                          "oval_definitions/definitions/definition",
+//                          OvalSample.DEFINITION_8297
+//                      }
+//                      ,
+//                      // Red Hat, unix, patch, firefox
+//                      {
+//                          Definition.class,
+//                          "test/data/definitions/definition_rhsa-def-20100332_301.xml",
+//                          "oval_definitions/definitions/definition",
+//                          OvalSample.DEFINITION_20100332
+//                      }
         };
 
     }
@@ -573,7 +589,7 @@ public abstract class CoreTestBase
                         // Windows XP, CVE-2010-0035, PowerPoint
                         {
                             OvalDefinitions.class,
-                            "test/data/definitions/oval-definitions-5.8-windows-xp_8050.xml",
+                            "test/data/definitions/oval-definitions-5.8_windows-xp_8050.xml",
                             "/oval_definitions",
                             DefinitionsSample.OVAL_DEFINITIONS_8050,
                             "marshalled_oval-definitions-5.8-windows-xp_8050.xml"

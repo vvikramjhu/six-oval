@@ -5,9 +5,6 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
-import jp.go.aist.six.test.oval.core.DefinitionsSample;
-import jp.go.aist.six.test.oval.core.OvalSample;
-import org.testng.annotations.DataProvider;
 
 
 
@@ -31,62 +28,6 @@ public class StoreDefinitionsTest
     //  oval_definitions
     //==============================================================
 
-    @DataProvider( name="definitions.oval_definitions" )
-    public Object[][] provideDefinitionsOvalDefinitions()
-    {
-        return new Object[][] {
-                        // [5.8] Mitre, vulnerability, Windows XP, def:8050
-                        {
-                            OvalDefinitions.class,
-                            "test/data/definitions/oval-definitions-5.8_windows-xp_8050.xml",
-                            "/oval_definitions",
-                            DefinitionsSample.OVAL_DEFINITIONS_8050
-                        }
-//                        ,
-//                        // Mitre, vulnerability, Windows XP, OVAL Schema 5.8 textfilecontent54 entities
-//                        {
-//                            OvalDefinitions.class,
-//                            "test/data/definitions/oval-definitions_windows-def-11757.xml",
-//                            "/oval_definitions",
-//                            null
-//                        }
-//                        // Mitre, CVE-2009-4019, MySQL
-//                        {
-//                            OvalDefinitions.class,
-//                            "test/data/definitions/oval-definitions_CVE-2009-4019_MySQL.xml",
-//                            "/oval_definitions",
-//                            OvalSample.OVAL_DEFINITIONS_8500
-//                        }
-//                        ,
-//                        // Red Hat, CVE-2010-0176, Firefox/xulrunner on RHEL
-//                        {
-//                            OvalDefinitions.class,
-//                            "test/data/definitions/oval-definitions_CVE-2010-0176_rhsa20100332.xml",
-//                            "/oval_definitions",
-//                            null
-//                        }
-//                        ,
-//                        // Mitre, CVE-2010-0176, Firefox/xulrunner on Debian
-//                        {
-//                            OvalDefinitions.class,
-//                            "test/data/definitions/oval-definitions_CVE-2010-0176_DSA-2027.xml",
-//                            "/oval_definitions",
-//                            null
-//                        }
-//                        ,
-//                        // Mitre, vulnerability, Windows XP, OVAL Schema 5.8
-                          // Java OutOfMemoryError!!!
-//                        {
-//                            OvalDefinitions.class,
-//                            "test/data/definitions/20101012_vulnerability_microsoft.windows.xp.xml",
-//                            "/oval_definitions",
-//                            null
-//                        }
-//                        ,
-        };
-    }
-
-
     @org.testng.annotations.Test(
                     groups={"oval.core.store", "definitions.oval_definitions"},
                     dataProvider="definitions.oval_definitions",
@@ -109,38 +50,6 @@ public class StoreDefinitionsTest
     //==============================================================
     //  definition
     //==============================================================
-
-    @DataProvider( name="definitions.definition" )
-    public Object[][] provideDefinitionsDefinition()
-    {
-        return new Object[][] {
-                        // Mitre, windows, vulnerability, MySQL 5.1
-                        {
-                            Definition.class,
-                            "test/data/definitions/definition_oval-def-8500_1.xml",
-                            "oval_definitions/definitions/definition",
-                            OvalSample.DEFINITION_8500
-                        }
-                        ,
-                        // Mitre, windows, inverntory, MySQL 5.1
-                        {
-                            Definition.class,
-                            "test/data/definitions/definition_oval-def-8297_1.xml",
-                            "oval_definitions/definitions/definition",
-                            OvalSample.DEFINITION_8297
-                        }
-                        ,
-                        // Red Hat, unix, patch, firefox
-                        {
-                            Definition.class,
-                            "test/data/definitions/definition_rhsa-def-20100332_301.xml",
-                            "oval_definitions/definitions/definition",
-                            OvalSample.DEFINITION_20100332
-                        }
-        };
-    }
-
-
 
     @org.testng.annotations.Test(
                     groups={"oval.core.store", "definitions.definition"},
