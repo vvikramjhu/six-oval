@@ -21,29 +21,39 @@
 package jp.go.aist.six.oval.model.sc;
 
 import jp.go.aist.six.oval.model.common.Datatype;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 
 
 /**
- * The EntityItemString type is extended by the entities of an individual item.
- * This specific type describes simple string data.
+ * The EntityItemRecord defines an entity that consists
+ * of a number of named fields.
+ * This structure is used for representing a record
+ * from a database query and other similar structures
+ * where multiple related fields must be collected at once.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemString
+public class EntityItemRecord
     extends EntityItemBase
 {
 
-    public static final Datatype  FIXED_DATATYPE = Datatype.STRING;
+    private Collection<EntityItemField>  _field = new ArrayList<EntityItemField>();
+    //{0..*}
+
+
+    public static final Datatype  FIXED_DATATYPE = Datatype.RECORD;
 
 
 
     /**
      * Constructor.
      */
-    public EntityItemString()
+    public EntityItemRecord()
     {
     }
 
@@ -51,7 +61,7 @@ public class EntityItemString
     /**
      * Constructor.
      */
-    public EntityItemString(
+    public EntityItemRecord(
                     final String data
                     )
     {
@@ -62,7 +72,7 @@ public class EntityItemString
     /**
      * Constructor.
      */
-    public EntityItemString(
+    public EntityItemRecord(
                     final String data,
                     final Status status
                     )
@@ -74,13 +84,62 @@ public class EntityItemString
     /**
      * Constructor.
      */
-    public EntityItemString(
+    public EntityItemRecord(
                     final String data,
                     final Datatype datatype,
                     final Status status
                     )
     {
         super( data, datatype, status );
+    }
+
+
+
+    /**
+     */
+    public void setField(
+                    final Collection<? extends EntityItemField> fields
+                    )
+    {
+        if (_field != fields) {
+            _field.clear();
+            if (fields != null  &&  fields.size() > 0) {
+                _field.addAll( fields );
+            }
+        }
+    }
+
+
+    public boolean addField(
+                    final EntityItemField field
+                    )
+    {
+        if (field == null) {
+            return false;
+        }
+
+        return _field.add( field );
+    }
+
+
+    public EntityItemRecord field(
+                    final EntityItemField field
+                    )
+    {
+        addField( field );
+        return this;
+    }
+
+
+    public Collection<EntityItemField> getField()
+    {
+        return _field;
+    }
+
+
+    public Iterator<EntityItemField> iterateField()
+    {
+        return _field.iterator();
     }
 
 
@@ -131,7 +190,7 @@ public class EntityItemString
             return true;
         }
 
-        if (!(obj instanceof EntityItemString)) {
+        if (!(obj instanceof EntityItemRecord)) {
             return false;
         }
 
@@ -140,11 +199,13 @@ public class EntityItemString
 
 
 
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
+    @Override
+    public String toString()
+    {
+        return "[field=" + getField()
+                        + ", " + super.toString()
+                        + "]";
+    }
 
 }
-// EntityItemString
+// EntityItemRecord

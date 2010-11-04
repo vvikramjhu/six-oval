@@ -87,20 +87,6 @@ public class EntityStateField
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityStateField(
-                    final String data,
-                    final Datatype datatype,
-                    final Operation operation,
-                    final String name
-                    )
-    {
-        this( data, datatype, operation );
-    }
-
-
 
     /**
      */
@@ -112,8 +98,15 @@ public class EntityStateField
     }
 
 
-    /**
-     */
+    public EntityStateField name(
+                    final String name
+                    )
+    {
+        setName( name );
+        return this;
+    }
+
+
     public String getName()
     {
         return _name;

@@ -25,25 +25,26 @@ import jp.go.aist.six.oval.model.common.Datatype;
 
 
 /**
- * The EntityItemString type is extended by the entities of an individual item.
- * This specific type describes simple string data.
+ * The EntityItemField defines an element with simple content that represents
+ * a named field in a record that may contain any number of named fields.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemString
+public class EntityItemField
     extends EntityItemBase
 {
 
-    public static final Datatype  FIXED_DATATYPE = Datatype.STRING;
+    private String  _name;
+    //{required}
 
 
 
     /**
      * Constructor.
      */
-    public EntityItemString()
+    public EntityItemField()
     {
     }
 
@@ -51,7 +52,7 @@ public class EntityItemString
     /**
      * Constructor.
      */
-    public EntityItemString(
+    public EntityItemField(
                     final String data
                     )
     {
@@ -62,19 +63,19 @@ public class EntityItemString
     /**
      * Constructor.
      */
-    public EntityItemString(
+    public EntityItemField(
                     final String data,
                     final Status status
                     )
     {
-        this( data, FIXED_DATATYPE, status );
+        this( data, DEFAULT_DATATYPE, status );
     }
 
 
     /**
      * Constructor.
      */
-    public EntityItemString(
+    public EntityItemField(
                     final String data,
                     final Datatype datatype,
                     final Status status
@@ -85,27 +86,28 @@ public class EntityItemString
 
 
 
-    //**************************************************************
-    //  EntityItemBase
-    //**************************************************************
-
-    @Override
-    public void setDatatype(
-                    final Datatype datatype
+    /**
+     */
+    public void setName(
+                    final String name
                     )
     {
-        if (datatype != null  &&  datatype != FIXED_DATATYPE) {
-            throw new IllegalArgumentException( "invalid datatype: " + datatype);
-        }
-
-        super.setDatatype( datatype );
+        _name = name;
     }
 
 
-    @Override
-    public Datatype getDatatype()
+    public EntityItemField name(
+                    final String name
+                    )
     {
-        return FIXED_DATATYPE;
+        setName( name );
+        return this;
+    }
+
+
+    public String getName()
+    {
+        return _name;
     }
 
 
@@ -131,7 +133,7 @@ public class EntityItemString
             return true;
         }
 
-        if (!(obj instanceof EntityItemString)) {
+        if (!(obj instanceof EntityItemField)) {
             return false;
         }
 
@@ -140,11 +142,13 @@ public class EntityItemString
 
 
 
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
+    @Override
+    public String toString()
+    {
+        return "[name=" + getName()
+                        + ", " + super.toString()
+                        + "]";
+    }
 
 }
-// EntityItemString
+// EntityItemField

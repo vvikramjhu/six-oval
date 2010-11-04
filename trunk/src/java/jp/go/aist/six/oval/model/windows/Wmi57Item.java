@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.EntityType;
-import jp.go.aist.six.oval.model.sc.EntityItemAnySimple;
+import jp.go.aist.six.oval.model.sc.EntityItemRecord;
 import jp.go.aist.six.oval.model.sc.EntityItemString;
 import jp.go.aist.six.oval.model.sc.Item;
 import java.util.ArrayList;
@@ -30,16 +30,13 @@ import java.util.Collection;
 
 
 /**
- * The wmi item outlines information to be checked through Microsoft's WMI interface.
+ * The wmi57 item outlines information to be checked through Microsoft's WMI interface.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.7:
- *             Replaced by the wmi57 item and
- *             will be removed in a future version of the language.
  */
-public class WmiItem
+public class Wmi57Item
     extends Item
 {
 
@@ -49,7 +46,7 @@ public class WmiItem
     private EntityItemString  _wql;
     //{0..1}
 
-    private Collection<EntityItemAnySimple>  _result = new ArrayList<EntityItemAnySimple>();
+    private Collection<EntityItemRecord>  _result = new ArrayList<EntityItemRecord>();
     //{0..*}
 
 
@@ -57,7 +54,7 @@ public class WmiItem
     /**
      * Constructor.
      */
-    public WmiItem()
+    public Wmi57Item()
     {
     }
 
@@ -65,7 +62,7 @@ public class WmiItem
     /**
      * Constructor.
      */
-    public WmiItem(
+    public Wmi57Item(
                     final int id
                     )
     {
@@ -111,7 +108,7 @@ public class WmiItem
     /**
      */
     public void setResult(
-                    final Collection<? extends EntityItemAnySimple> results
+                    final Collection<? extends EntityItemRecord> results
                     )
     {
         if (results != _result ) {
@@ -123,7 +120,7 @@ public class WmiItem
     }
 
 
-    public Collection<EntityItemAnySimple> getResult()
+    public Collection<EntityItemRecord> getResult()
     {
         return _result;
     }
@@ -149,7 +146,7 @@ public class WmiItem
     @Override
     public String toString()
     {
-        return "wmi_item[" + super.toString()
+        return "wmi57_item[" + super.toString()
                         + ", namespace=" + getNamespace()
                         + ", wql=" + getWql()
                         + ", result=" + getResult()
@@ -157,4 +154,4 @@ public class WmiItem
     }
 
 }
-// WmiItem
+// Wmi57Item
