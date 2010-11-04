@@ -27,6 +27,8 @@ import jp.go.aist.six.oval.model.sc.Status;
 
 
 /**
+ * The EntityItemRegistryType defines the different values
+ * that are valid for the type entity of a registry item.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

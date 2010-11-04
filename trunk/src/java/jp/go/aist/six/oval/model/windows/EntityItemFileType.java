@@ -27,6 +27,8 @@ import jp.go.aist.six.oval.model.sc.Status;
 
 
 /**
+ * The EntityItemFileType restricts a string value to
+ * a specific set of values that describe the different types of files.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

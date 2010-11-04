@@ -27,6 +27,8 @@ import jp.go.aist.six.oval.model.sc.Status;
 
 
 /**
+ * The EntityItemRegistryHive restricts a string value to
+ * a specific set of values that describe the different registry hives.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

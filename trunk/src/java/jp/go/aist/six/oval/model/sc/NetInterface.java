@@ -30,13 +30,6 @@ import jp.go.aist.six.util.orm.Dependent;
  * The name "interface" in the OVAL Schema is renamed
  * because the name "interface" has the special meaning in Java.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>interace_name (1..1)</li>
- *   <li>ip_address (1..1)</li>
- *   <li>mac_address(1..1)</li>
- * </ul>
- *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

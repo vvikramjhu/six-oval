@@ -26,6 +26,8 @@ import jp.go.aist.six.util.orm.Dependent;
 
 
 /**
+ * The ItemReference specifies an item in the system characteristics.
+ * This reference is used to link global OVAL Objects to specific items.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

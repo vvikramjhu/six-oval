@@ -29,11 +29,6 @@ import java.util.Iterator;
 /**
  * The DefinitionResults is a container for one or more DefinitionResult instances.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>definition (1..*)</li>
- * </ul>
- *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

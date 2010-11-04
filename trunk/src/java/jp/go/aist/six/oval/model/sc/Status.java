@@ -26,6 +26,8 @@ import java.util.HashMap;
 
 
 /**
+ * The Status enumeration defines the valid status messages
+ * associated with collection of specific information associated with an item.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

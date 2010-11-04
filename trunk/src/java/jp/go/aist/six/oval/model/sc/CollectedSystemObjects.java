@@ -30,11 +30,6 @@ import java.util.Iterator;
  * A collection of all the objects that have been collected
  * by the system characteristics file..
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>object (1..*)</li>
- * </ul>
- *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

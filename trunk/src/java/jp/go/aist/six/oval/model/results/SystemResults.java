@@ -29,11 +29,6 @@ import java.util.Iterator;
 /**
  * The SystemResult is a container for one or more SystemResult instances.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>system (1..*)</li>
- * </ul>
- *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

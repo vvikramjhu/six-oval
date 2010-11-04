@@ -28,12 +28,6 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  * An individual directive element determines whether or not
  * a specific type of result is included in the results document.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>reported (required)</li>
- *   <li>content (optional -- default='full')</li>
- * </ul>
- *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

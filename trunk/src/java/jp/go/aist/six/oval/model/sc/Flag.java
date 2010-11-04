@@ -26,7 +26,7 @@ import java.util.HashMap;
 
 
 /**
- * The FlagEnumeration.
+ * The Flag enumeration.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

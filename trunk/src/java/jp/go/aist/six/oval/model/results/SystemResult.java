@@ -31,13 +31,6 @@ import jp.go.aist.six.util.orm.Dependent;
  * as well as a copy of the OVAL System Characteristics
  * used to perform the evaluation.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>definitions (0..1)</li>
- *   <li>tests (0..1)</li>
- *   <li>oval_system_characteristics (1..1)</li>
- * </ul>
- *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

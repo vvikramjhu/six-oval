@@ -32,16 +32,6 @@ import java.util.Iterator;
 /**
  * The OvalResults represents an OVAL Results Document.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>generator (1..1)</li>
- *   <li>directives (1..1)</li>
- *   <li>class_directives (0..5)</li>
- *   <li>oval_definitions (0..1)</li>
- *   <li>results (1..1)</li>
- *   <li>signature (0..1): currently NOT supported.</li>
- * </ul>
- *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

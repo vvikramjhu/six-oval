@@ -27,6 +27,8 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 /**
+ * The abstract Item holds information about a specific item on a system.
+ * An item might be a file, a rpm, a process, etc.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

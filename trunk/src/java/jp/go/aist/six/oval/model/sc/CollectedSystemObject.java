@@ -32,18 +32,6 @@ import java.util.Iterator;
 /**
  * A reference between items collected and a related global OVAL Object.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>id (required)</li>
- *   <li>version (required)</li>
- *   <li>variableInstance (optional -- default='1')</li>
- *   <li>comment (optional)</li>
- *   <li>flag (required)</li>
- *   <li>message (0..1): the original caridinality is (0..*).</li>
- *   <li>variableValue (0..*)</li>
- *   <li>reference (0..*)</li>
- * </ul>
- *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

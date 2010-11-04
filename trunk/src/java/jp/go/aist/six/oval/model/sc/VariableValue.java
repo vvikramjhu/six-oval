@@ -29,12 +29,6 @@ import jp.go.aist.six.util.orm.Dependent;
  * The variableValue holds the value to a variable
  * used during the collection of an object.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>variableID (required)</li>
- *   <li>value (optional)</li>
- * </ul>
- *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

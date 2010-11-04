@@ -26,6 +26,8 @@ import java.util.HashMap;
 
 
 /**
+ * The registry type enumeration.
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

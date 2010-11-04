@@ -27,16 +27,7 @@ import java.util.Collection;
 
 
 /**
- * The root of an OVAL System Characteristics Document.
- *
- * <p>Properties:</p>
- * <ul>
- *   <li>generator (1..1)</li>
- *   <li>systemInfo (1..1)</li>
- *   <li>collectedObjects (0..1)</li>
- *   <li>systemData (0..1)</li>
- *   <li>signature (0..1): currently NOT supported.</li>
- * </ul>
+ * An OVAL System Characteristics Document.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
