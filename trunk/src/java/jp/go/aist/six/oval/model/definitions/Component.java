@@ -45,4 +45,4 @@ public abstract class Component
     }
 
 }
-// ComponentGroup
+// Component

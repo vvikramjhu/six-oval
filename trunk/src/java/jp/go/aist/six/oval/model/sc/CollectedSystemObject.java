@@ -31,6 +31,8 @@ import java.util.Iterator;
 
 /**
  * A reference between items collected and a related global OVAL Object.
+ * The name "object" in the OVAL Schema is renamed
+ * because the name has the special meaning in Java.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

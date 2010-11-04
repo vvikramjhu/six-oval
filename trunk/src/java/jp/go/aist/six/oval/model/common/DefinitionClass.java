@@ -27,7 +27,9 @@ import java.util.HashMap;
 
 /**
  * The DefinitionClass enumeration type defines
- * the different classes of definitions.
+ * the different classes of OVAL Definitions.
+ * The name "class" in the OVAL Schema is renamed
+ * because the name has the special meaning in Java.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

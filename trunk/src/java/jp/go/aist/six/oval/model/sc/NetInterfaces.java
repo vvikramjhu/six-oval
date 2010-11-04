@@ -28,6 +28,8 @@ import java.util.Iterator;
 
 /**
  * A container for one or more NetInterface instances.
+ * The name "interfaces" in the OVAL Schema is renamed
+ * because the name "Object" has the special meaning in Java.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

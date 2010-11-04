@@ -28,6 +28,8 @@ import java.util.Iterator;
 
 /**
  * A container for one or more Object (SystemObject) instances.
+ * The name "objects" in the OVAL Schema is renamed
+ * because the name has the special meaning in Java.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

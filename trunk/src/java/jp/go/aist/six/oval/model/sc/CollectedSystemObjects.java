@@ -28,7 +28,9 @@ import java.util.Iterator;
 
 /**
  * A collection of all the objects that have been collected
- * by the system characteristics file..
+ * by the system characteristics file.
+ * The name "objects" in the OVAL Schema is renamed
+ * because the name has the special meaning in Java.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

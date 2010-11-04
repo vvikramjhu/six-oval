@@ -27,8 +27,8 @@ import jp.go.aist.six.oval.model.EntityType;
 
 /**
  * An OVAL Object describes a set of items to look for on a system.
- * The class name "SystemObject" is used because the name "Object"
- * has the special meaning in Java.
+ * The name "object" in the OVAL Schema is renamed
+ * because the name has the special meaning in Java.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
