@@ -273,48 +273,6 @@
             type="jp.go.aist.six.oval.model.definitions.Variables">
             <bind-xml name="variables" node="element"/>
         </field>
-
-<!--
-        <field name="definitions.definition" 
-            type="jp.go.aist.six.oval.model.definitions.Definition"
-            collection="collection">
-            <bind-xml name="definition" node="element" 
-                location="definitions"/>
-        </field>
-
-        <field name="definitions" 
-            type="jp.go.aist.six.oval.model.definitions.Definitions">
-            <bind-xml name="definitions" node="element"/>
-        </field>
-
-        <field name="tests.test" 
-            type="jp.go.aist.six.oval.model.definitions.Test"
-            collection="collection">
-            <bind-xml auto-naming="deriveByClass" node="element" 
-                location="tests"/>
-        </field>
-
-        <field name="tests" 
-            type="jp.go.aist.six.oval.model.definitions.Tests">
-            <bind-xml name="tests" node="element"/>
-        </field>
-
-        <field name="objects" 
-            type="jp.go.aist.six.oval.model.definitions.SystemObjects">
-            <bind-xml name="objects" node="element"/>
-        </field>
-
-        <field name="states" 
-            type="jp.go.aist.six.oval.model.definitions.States">
-            <bind-xml name="states" node="element"/>
-        </field>
-
-        <field name="variables" 
-            type="jp.go.aist.six.oval.model.definitions.Variables">
-            <bind-xml name="variables" node="element"/>
-        </field>
--->
-
     </class>
 
 
@@ -1446,14 +1404,6 @@
             type="jp.go.aist.six.oval.model.results.SystemResults">
             <bind-xml name="results" node="element"/>
         </field>
-<!--
-        <field name="results.system" 
-            type="jp.go.aist.six.oval.model.results.SystemResult"
-            collection="collection">
-            <bind-xml name="system" node="element" 
-                location="results"/>
-        </field>
--->
     </class>
 
 
@@ -1558,27 +1508,11 @@
             type="jp.go.aist.six.oval.model.results.DefinitionResults">
             <bind-xml name="definitions" node="element"/>
         </field>
-<!--
-        <field name="definitions.definition" 
-            type="jp.go.aist.six.oval.model.results.DefinitionResult"
-            collection="collection">
-            <bind-xml name="definition" node="element" 
-                location="definitions"/>
-        </field>
--->
 
         <field name="tests" 
             type="jp.go.aist.six.oval.model.results.TestResults">
             <bind-xml name="tests" node="element"/>
         </field>
-<!--
-        <field name="tests.test" 
-            type="jp.go.aist.six.oval.model.results.TestResult"
-            collection="collection">
-            <bind-xml name="test" node="element" 
-                location="tests"/>
-        </field>
--->
 
         <field name="ovalSystemCharacteristics" 
             type="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics">
