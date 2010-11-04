@@ -22,7 +22,11 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
+import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 
 
@@ -31,26 +35,28 @@ import jp.go.aist.six.oval.model.definitions.SystemObject;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.7:
- *             Replaced by the wmi57 object and
- *             will be removed in a future version of the language.
  */
-public class WmiObject
+public class Wmi57Object
     extends SystemObject
 {
 
     private EntityObjectString  _namespace;
-    //{0..1}
+    //{1..1}
+
 
     private EntityObjectString  _wql;
-    //{0..1}
+    //{1..1}
+
+
+    private Collection<Filter>  _filter = new ArrayList<Filter>();
+    //{0..*}
 
 
 
     /**
      * Constructor.
      */
-    public WmiObject()
+    public Wmi57Object()
     {
     }
 
@@ -58,7 +64,7 @@ public class WmiObject
     /**
      * Constructor.
      */
-    public WmiObject(
+    public Wmi57Object(
                     final String id,
                     final int version
                     )
@@ -70,7 +76,7 @@ public class WmiObject
     /**
      * Constructor.
      */
-    public WmiObject(
+    public Wmi57Object(
                     final String id,
                     final int version,
                     final String namespace,
@@ -87,7 +93,7 @@ public class WmiObject
     /**
      * Constructor.
      */
-    public WmiObject(
+    public Wmi57Object(
                     final String id,
                     final int version,
                     final EntityObjectString namespace,
@@ -132,6 +138,46 @@ public class WmiObject
 
 
 
+    /**
+     */
+    public void setFilter(
+                    final Collection<? extends Filter> filters
+                    )
+    {
+        if (_filter != filters) {
+            _filter.clear();
+            if (filters != null  &&  filters.size() > 0) {
+                _filter.addAll( filters );
+            }
+        }
+    }
+
+
+    public boolean addFilter(
+                    final Filter filter
+                    )
+    {
+        if (filter == null) {
+            return false;
+        }
+
+        return _filter.add( filter );
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return _filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return _filter.iterator();
+    }
+
+
+
     //**************************************************************
     //  SystemObject
     //**************************************************************
@@ -139,7 +185,7 @@ public class WmiObject
     @Override
     public EntityType getEntityType()
     {
-        return EntityType.WINDOWS_WMI;
+        return EntityType.WINDOWS_WMI57;
     }
 
 
@@ -161,7 +207,7 @@ public class WmiObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof WmiObject)) {
+        if (!(obj instanceof Wmi57Object)) {
             return false;
         }
 
@@ -173,11 +219,12 @@ public class WmiObject
     @Override
     public String toString()
     {
-        return "wmi_object[" + super.toString()
+        return "wmi57_object[" + super.toString()
                         + ", namespace=" + getNamespace()
                         + ", wql=" + getWql()
+                        + ", filter=" + getFilter()
                         + "]";
     }
 
 }
-// WmiObject
+// Wmi57Object

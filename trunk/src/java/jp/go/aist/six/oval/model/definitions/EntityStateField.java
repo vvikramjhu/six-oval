@@ -26,26 +26,27 @@ import jp.go.aist.six.oval.model.common.Operation;
 
 
 /**
- * The EntityStateString type is extended by the entities
- * of an individual OVAL State.
- * This specific type describes simple string data.
+ * The EntityStateField defines an element with simple content
+ * that represents a named field in a record that may contain
+ * any number of named fields.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateString
+public class EntityStateField
     extends EntityStateBase
 {
 
-    public static final Datatype  FIXED_DATATYPE = Datatype.STRING;
+    private String  _name;
+    //{required}
 
 
 
     /**
      * Constructor.
      */
-    public EntityStateString()
+    public EntityStateField()
     {
     }
 
@@ -53,7 +54,7 @@ public class EntityStateString
     /**
      * Constructor.
      */
-    public EntityStateString(
+    public EntityStateField(
                     final String data
                     )
     {
@@ -64,19 +65,19 @@ public class EntityStateString
     /**
      * Constructor.
      */
-    public EntityStateString(
+    public EntityStateField(
                     final String data,
                     final Operation operation
                     )
     {
-        this( data, FIXED_DATATYPE, operation );
+        this( data, DEFAULT_DATATYPE, operation );
     }
 
 
     /**
      * Constructor.
      */
-    public EntityStateString(
+    public EntityStateField(
                     final String data,
                     final Datatype datatype,
                     final Operation operation
@@ -86,28 +87,36 @@ public class EntityStateString
     }
 
 
-
-    //**************************************************************
-    //  EntityBase
-    //**************************************************************
-
-    @Override
-    public void setDatatype(
-                    final Datatype datatype
+    /**
+     * Constructor.
+     */
+    public EntityStateField(
+                    final String data,
+                    final Datatype datatype,
+                    final Operation operation,
+                    final String name
                     )
     {
-        if (datatype != null  &&  datatype != FIXED_DATATYPE) {
-            throw new IllegalArgumentException( "invalid datatype: " + datatype);
-        }
-
-        super.setDatatype( datatype );
+        this( data, datatype, operation );
     }
 
 
-    @Override
-    public Datatype getDatatype()
+
+    /**
+     */
+    public void setName(
+                    final String name
+                    )
     {
-        return FIXED_DATATYPE;
+        _name = name;
+    }
+
+
+    /**
+     */
+    public String getName()
+    {
+        return _name;
     }
 
 
@@ -119,7 +128,13 @@ public class EntityStateString
     @Override
     public int hashCode()
     {
-        return super.hashCode();
+        final int  prime = 37;
+        int  hash = super.hashCode();
+
+        String  name = getName();
+        hash = prime * hash + ((name == null) ? 0 : name.hashCode());
+
+        return hash;
     }
 
 
@@ -129,24 +144,32 @@ public class EntityStateString
                     final Object obj
                     )
     {
-        if (this == obj) {
-            return true;
-        }
-
-        if (!(obj instanceof EntityStateString)) {
+        if (!(obj instanceof EntityStateField)) {
             return false;
         }
 
-        return super.equals( obj );
+        if (super.equals( obj )) {
+            EntityStateField  other = (EntityStateField)obj;
+            String  otherName = other.getName();
+            String   thisName =  this.getName();
+            if (thisName == otherName
+                            ||  (thisName != null  &&  thisName.equals( otherName ))) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 
 
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
+    @Override
+    public String toString()
+    {
+        return "[name=" + getName()
+                        + ", " + super.toString()
+                        + "]";
+    }
 
 }
-// EntityStateString
+// EntityStateField

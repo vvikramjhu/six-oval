@@ -48,6 +48,7 @@ public final class EntityType
     private static final String  _WINDOWS_METABASE_     = "windows.metabase";
     private static final String  _WINDOWS_REGISTRY_     = "windows.registry";
     private static final String  _WINDOWS_WMI_          = "windows.wmi";
+    private static final String  _WINDOWS_WMI57_        = "windows.wmi57";
 
     private static final String  _VARIABLE_LOCAL_       = "variable.local";
     private static final String  _VARIABLE_EXTERNAL_    = "variable.external";
@@ -66,6 +67,7 @@ public final class EntityType
     public static final EntityType  WINDOWS_METABASE      = new EntityType( _WINDOWS_METABASE_ );
     public static final EntityType  WINDOWS_REGISTRY      = new EntityType( _WINDOWS_REGISTRY_ );
     public static final EntityType  WINDOWS_WMI           = new EntityType( _WINDOWS_WMI_ );
+    public static final EntityType  WINDOWS_WMI57         = new EntityType( _WINDOWS_WMI57_ );
 
     public static final EntityType  VARIABLE_LOCAL        = new EntityType( _VARIABLE_LOCAL_ );
     public static final EntityType  VARIABLE_EXTERNAL     = new EntityType( _VARIABLE_EXTERNAL_ );
@@ -87,6 +89,7 @@ public final class EntityType
         map.put( _WINDOWS_METABASE_,    WINDOWS_METABASE    );
         map.put( _WINDOWS_REGISTRY_,    WINDOWS_REGISTRY    );
         map.put( _WINDOWS_WMI_,         WINDOWS_WMI         );
+        map.put( _WINDOWS_WMI57_,       WINDOWS_WMI57       );
 
         map.put( _VARIABLE_LOCAL_,      VARIABLE_LOCAL      );
         map.put( _VARIABLE_EXTERNAL_,   VARIABLE_EXTERNAL   );

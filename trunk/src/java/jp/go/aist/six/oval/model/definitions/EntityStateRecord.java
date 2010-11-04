@@ -22,30 +22,39 @@ package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.Operation;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 
 
 /**
- * The EntityStateString type is extended by the entities
- * of an individual OVAL State.
- * This specific type describes simple string data.
+ * The EntityStateRecord defines an entity that consists of
+ * a number of uniquely named fields.
+ * This structure is used for representing a record
+ * from a database query and other similar structures
+ * where multiple related fields must be collected at once.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateString
+public class EntityStateRecord
     extends EntityStateBase
 {
 
-    public static final Datatype  FIXED_DATATYPE = Datatype.STRING;
+    private Collection<EntityStateField>  _field = new ArrayList<EntityStateField>();
+    //{0..*}
+
+
+    public static final Datatype  FIXED_DATATYPE = Datatype.RECORD;
 
 
 
     /**
      * Constructor.
      */
-    public EntityStateString()
+    public EntityStateRecord()
     {
     }
 
@@ -53,7 +62,7 @@ public class EntityStateString
     /**
      * Constructor.
      */
-    public EntityStateString(
+    public EntityStateRecord(
                     final String data
                     )
     {
@@ -64,7 +73,7 @@ public class EntityStateString
     /**
      * Constructor.
      */
-    public EntityStateString(
+    public EntityStateRecord(
                     final String data,
                     final Operation operation
                     )
@@ -76,13 +85,62 @@ public class EntityStateString
     /**
      * Constructor.
      */
-    public EntityStateString(
+    public EntityStateRecord(
                     final String data,
                     final Datatype datatype,
                     final Operation operation
                     )
     {
         super( data, datatype, operation );
+    }
+
+
+
+    /**
+     */
+    public void setField(
+                    final Collection<? extends EntityStateField> fields
+                    )
+    {
+        if (_field != fields) {
+            _field.clear();
+            if (fields != null  &&  fields.size() > 0) {
+                _field.addAll( fields );
+            }
+        }
+    }
+
+
+    public boolean addField(
+                    final EntityStateField field
+                    )
+    {
+        if (field == null) {
+            return false;
+        }
+
+        return _field.add( field );
+    }
+
+
+    public EntityStateRecord field(
+                    final EntityStateField field
+                    )
+    {
+        addField( field );
+        return this;
+    }
+
+
+    public Collection<EntityStateField> getField()
+    {
+        return _field;
+    }
+
+
+    public Iterator<EntityStateField> iterateField()
+    {
+        return _field.iterator();
     }
 
 
@@ -133,7 +191,7 @@ public class EntityStateString
             return true;
         }
 
-        if (!(obj instanceof EntityStateString)) {
+        if (!(obj instanceof EntityStateRecord)) {
             return false;
         }
 
@@ -142,11 +200,13 @@ public class EntityStateString
 
 
 
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
+    @Override
+    public String toString()
+    {
+        return "[field=" + getField()
+                        + ", " + super.toString()
+                        + "]";
+    }
 
 }
-// EntityStateString
+// EntityStateRecord

@@ -27,23 +27,20 @@ import jp.go.aist.six.oval.model.definitions.Test;
 
 
 /**
- * The wmi test is used to check information accessed by WMI.
+ * The wmi57 test is used to check information accessed by WMI.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.7:
- *             Replaced by the wmi57 test and
- *             will be removed in a future version of the language.
  */
-public class WmiTest
+public class Wmi57Test
     extends Test
 {
 
     /**
      * Constructor.
      */
-    public WmiTest()
+    public Wmi57Test()
     {
     }
 
@@ -51,7 +48,7 @@ public class WmiTest
     /**
      * Constructor.
      */
-    public WmiTest(
+    public Wmi57Test(
                     final String id,
                     final int version
                     )
@@ -63,7 +60,7 @@ public class WmiTest
     /**
      * Constructor.
      */
-    public WmiTest(
+    public Wmi57Test(
                     final String id,
                     final int version,
                     final String comment,
@@ -81,7 +78,7 @@ public class WmiTest
 
     public EntityType getEntityType()
     {
-        return EntityType.WINDOWS_WMI;
+        return EntityType.WINDOWS_WMI57;
     }
 
 
@@ -103,7 +100,7 @@ public class WmiTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof WmiTest)) {
+        if (!(obj instanceof Wmi57Test)) {
             return false;
         }
 
@@ -115,8 +112,8 @@ public class WmiTest
     @Override
     public String toString()
     {
-        return "wmi_test[" + super.toString() + "]";
+        return "wmi57_test[" + super.toString() + "]";
     }
 
 }
-// WmiTest
+// Wmi57Test

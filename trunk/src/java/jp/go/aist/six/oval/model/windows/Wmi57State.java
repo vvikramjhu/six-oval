@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.EntityType;
-import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
+import jp.go.aist.six.oval.model.definitions.EntityStateRecord;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
 
@@ -33,11 +33,8 @@ import jp.go.aist.six.oval.model.definitions.State;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.7:
- *             Replaced by the wmi57 state and
- *             will be removed in a future version of the language.
  */
-public class WmiState
+public class Wmi57State
     extends State
 {
 
@@ -47,7 +44,7 @@ public class WmiState
     private EntityStateString  _wql;
     //{0..1}
 
-    private EntityStateAnySimple  _result;
+    private EntityStateRecord  _result;
     //{0..1}
 
 
@@ -55,7 +52,7 @@ public class WmiState
     /**
      * Constructor.
      */
-    public WmiState()
+    public Wmi57State()
     {
     }
 
@@ -63,7 +60,7 @@ public class WmiState
     /**
      * Constructor.
      */
-    public WmiState(
+    public Wmi57State(
                     final String id,
                     final int version
                     )
@@ -110,14 +107,14 @@ public class WmiState
     /**
      */
     public void setResult(
-                    final EntityStateAnySimple result
+                    final EntityStateRecord result
                     )
     {
         _result = result;
     }
 
 
-    public EntityStateAnySimple getResult()
+    public EntityStateRecord getResult()
     {
         return _result;
     }
@@ -131,7 +128,7 @@ public class WmiState
     @Override
     public EntityType getEntityType()
     {
-        return EntityType.WINDOWS_WMI;
+        return EntityType.WINDOWS_WMI57;
     }
 
 
@@ -153,7 +150,7 @@ public class WmiState
                     final Object obj
                     )
     {
-        if (!(obj instanceof WmiState)) {
+        if (!(obj instanceof Wmi57State)) {
             return false;
         }
 
@@ -165,7 +162,7 @@ public class WmiState
     @Override
     public String toString()
     {
-        return "wmi_state[" + super.toString()
+        return "wmi57_state[" + super.toString()
                         + ", namespace=" + getNamespace()
                         + ", wql=" + getWql()
                         + ", result=" + getResult()
@@ -173,4 +170,4 @@ public class WmiState
     }
 
 }
-// WqlState
+// Wql57State
