@@ -32,8 +32,6 @@ import jp.go.aist.six.oval.model.definitions.Tests;
 import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.definitions.Variables;
 import jp.go.aist.six.util.castor.CastorDao;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
@@ -48,10 +46,10 @@ public class OvalDefinitionsDao
     extends CastorDao<String, OvalDefinitions>
 {
 
-    /**
-     * Logger.
-     */
-    private static Log  _LOG = LogFactory.getLog( OvalDefinitionsDao.class );
+//    /**
+//     * Logger.
+//     */
+//    private static Log  _LOG = LogFactory.getLog( OvalDefinitionsDao.class );
 
 
 
