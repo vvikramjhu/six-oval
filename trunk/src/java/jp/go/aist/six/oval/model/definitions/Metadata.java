@@ -40,15 +40,6 @@ import java.util.Set;
  * Additional metadata is also allowed although it is not
  * part of the official OVAL Schema.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>title (1..1)</li>
- *   <li>affected (0..1): the original cardinality is (0..*).</li>
- *   <li>reference (0..*)</li>
- *   <li>description (1..1)</li>
- *   <li>additionalMetadata (0..*): xsd:any.</li>
- * </ul>
- *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */

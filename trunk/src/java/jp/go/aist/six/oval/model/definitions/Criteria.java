@@ -29,17 +29,9 @@ import java.util.Set;
 
 
 /**
- * A high level container for all the tests.
- *
- * <p>Properties:</p>
- * <ul>
- *   <li>operator (optional -- default='AND')</li>
- *   <li>negate (optional -- default='false')</li>
- *   <li>comment (optional)</li>
- *   <li>criteria (0..*)</li>
- *   <li>criterion (0..*)</li>
- *   <li>extend_definition (0..*)</li>
- * </ul>
+ * The Criteria describes a container for a set of sub Criteria,
+ * Criteria, Criterion, or ExtendDefinition elements
+ * allowing complex logical trees to be constructed.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

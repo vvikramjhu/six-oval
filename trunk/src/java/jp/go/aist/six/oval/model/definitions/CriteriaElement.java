@@ -26,6 +26,7 @@ import jp.go.aist.six.util.orm.Dependent;
 
 
 /**
+ * An abstract base class for Criteria, Criterion, and ExtendDefinition.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

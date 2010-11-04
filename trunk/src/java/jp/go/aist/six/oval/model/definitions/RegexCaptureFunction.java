@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.definitions;
 
 
 /**
- * The regex_capture function captures a single substring from a string component.
+ * The RegexCapture function captures a single substring from a string component.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

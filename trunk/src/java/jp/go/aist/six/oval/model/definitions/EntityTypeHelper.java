@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.definitions;
 
 
 /**
+ * A helper class for EntityBase instances.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id: EntityTypeHelper.java 440 2010-03-23 05:11:44Z akihito $

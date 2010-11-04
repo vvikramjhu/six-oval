@@ -33,17 +33,6 @@ import jp.go.aist.six.oval.model.common.Operator;
  * if a set of items identified on a system meet
  * certain characteristics.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>id (required)</li>
- *   <li>version (required)</li>
- *   <li>state_operator (optional-- default='AND')</li>
- *   <li>comment (optional)</li>
- *   <li>deprecated (optional -- default='false')</li>
- *   <li>Signature (0..1): currently NOT supported.</li>
- *   <li>notes (0..1): currently NOT supported.</li>
- * </ul>
- *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

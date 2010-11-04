@@ -25,6 +25,7 @@ import jp.go.aist.six.oval.model.NameEntity;
 
 
 /**
+ * A platform name.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

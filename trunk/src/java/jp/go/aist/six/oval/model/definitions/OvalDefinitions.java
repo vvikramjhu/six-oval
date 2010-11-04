@@ -27,16 +27,6 @@ import jp.go.aist.six.oval.model.common.Generator;
 
 /**
  * An OVAL Definition Document.
- * <p>Properties:</p>
- * <ul>
- *   <li>generator (1..1)</li>
- *   <li>definitions (0..1)</li>
- *   <li>tests (0..1)</li>
- *   <li>objects(0..1)</li>
- *   <li>states (0..1)</li>
- *   <li>variables (0..1)</li>
- *   <li>signature (0..1): currently NOT supported.</li>
- * </ul>
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

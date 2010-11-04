@@ -26,6 +26,7 @@ import jp.go.aist.six.oval.model.NameEntity;
 
 
 /**
+ * A CVE name.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

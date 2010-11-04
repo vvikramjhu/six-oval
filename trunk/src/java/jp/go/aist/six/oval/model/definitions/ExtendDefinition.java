@@ -26,13 +26,6 @@ package jp.go.aist.six.oval.model.definitions;
  * The ExtendDefinition allows existing definitions
  * to be extended by another definition.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>definition_ref (required)</li>
- *   <li>negate (optional -- default='false')</li>
- *   <li>comment (optional)</li>
- * </ul>
- *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

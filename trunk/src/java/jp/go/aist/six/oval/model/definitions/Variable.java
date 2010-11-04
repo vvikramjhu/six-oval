@@ -32,16 +32,6 @@ import jp.go.aist.six.oval.model.common.Datatype;
  * There are currently three types of variables;
  * local, external, and constant.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>id (required)</li>
- *   <li>version (required)</li>
- *   <li>datatype (required)</li>
- *   <li>comment (required)</li>
- *   <li>deprecated (optional -- default='false')</li>
- *   <li>Signature (0..1): currently NOT supported.</li>
- * </ul>
- *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

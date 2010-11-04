@@ -29,11 +29,6 @@ import java.util.Iterator;
 /**
  * A container for one or more State instances.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>state (1..*)</li>
- * </ul>
- *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

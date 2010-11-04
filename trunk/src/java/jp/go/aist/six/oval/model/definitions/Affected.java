@@ -32,12 +32,6 @@ import java.util.Iterator;
 /**
  * A description of the family, platform(s), and product(s)
  * to be evaluated for an OVAL Definition.
- * <p>Properties:</p>
- * <ul>
- *   <li>family (required)</li>
- *   <li>platform (0..*)</li>
- *   <li>product (0..*)</li>
- * </ul>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
@@ -307,34 +301,6 @@ public class Affected
 
         return false;
     }
-//    {
-//        if (this == obj) {
-//            return true;
-//        }
-//
-//        if (!(obj instanceof Affected)) {
-//            return false;
-//        }
-//
-//        Affected  other = (Affected)obj;
-//        Collection<Product>  other_product = other.getProduct();
-//        Collection<Product>   this_product =  this.getProduct();
-//        if (this_product == other_product
-//                        ||  (this_product != null
-//                                        &&  this_product.equals( other_product ))) {
-//            Collection<Platform>  other_platform = other.getPlatform();
-//            Collection<Platform>   this_platform =  this.getPlatform();
-//            if (this_platform == other_platform
-//                        ||  (this_platform != null
-//                                        &&  this_platform.equals( other_platform ))) {
-//                if (this.getFamily() == other.getFamily()) {
-//                    return true;
-//                }
-//            }
-//        }
-//
-//        return false;
-//    }
 
 
 

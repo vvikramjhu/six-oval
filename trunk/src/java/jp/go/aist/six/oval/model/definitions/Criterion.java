@@ -26,13 +26,6 @@ package jp.go.aist.six.oval.model.definitions;
  * The Criterion identifies a specific test
  * to be included in the definition's criteria.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>test_ref (required)</li>
- *   <li>negate (optional -- default='false')</li>
- *   <li>comment (optional)</li>
- * </ul>
- *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

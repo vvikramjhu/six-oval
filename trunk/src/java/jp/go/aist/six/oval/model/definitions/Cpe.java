@@ -27,6 +27,7 @@ import jp.go.aist.six.oval.model.NameEntity;
 
 
 /**
+ * A CPE name.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

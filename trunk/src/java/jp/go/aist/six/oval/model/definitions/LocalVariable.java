@@ -26,6 +26,8 @@ import jp.go.aist.six.oval.model.common.Datatype;
 
 
 /**
+ * The LocalVariable extends the Variable and defines a variable
+ * with some local source.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

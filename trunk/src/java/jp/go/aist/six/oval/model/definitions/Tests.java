@@ -30,11 +30,6 @@ import java.util.Iterator;
 /**
  * A container for one or more Test instances.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>test (1..*)</li>
- * </ul>
- *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

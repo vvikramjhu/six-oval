@@ -34,19 +34,6 @@ import java.util.Iterator;
 /**
  * The Test is used to compare an object(s) against a defined state.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>id (required)</li>
- *   <li>version (required)</li>
- *   <li>check_existence (optional -- default='at_least_one_exists')</li>
- *   <li>check (required)</li>
- *   <li>state_operator (optional -- default='AND')</li>
- *   <li>comment (required)</li>
- *   <li>deprecated (optional -- default='false')</li>
- *   <li>Signature (0..1): currently NOT supported.</li>
- *   <li>notes (0..1)</li>
- * </ul>
- *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
