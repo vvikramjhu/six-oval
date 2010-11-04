@@ -30,16 +30,6 @@ import java.util.Map;
  * The Directives presents a set of flags
  * that describe what information has been included in the results document.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>definition_true (1..1)</li>
- *   <li>definition_false (1..1)</li>
- *   <li>definition_unknown (1..1)</li>
- *   <li>definition_error (1..1)</li>
- *   <li>definition_not_evaluated (1..1)</li>
- *   <li>definition_not_applicable (1..1)</li>
- * </ul>
- *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>

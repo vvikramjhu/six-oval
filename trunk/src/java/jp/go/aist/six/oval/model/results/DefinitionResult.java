@@ -28,17 +28,6 @@ import jp.go.aist.six.util.orm.Dependent;
 /**
  * The DefinitionResult holds the result of the evaluation of an OVAL Definition.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>definition_id (required)</li>
- *   <li>version (required)</li>
- *   <li>variable_instance (optional -- default='1')</li>
- *   <li>definitionClass (optional)</li>
- *   <li>result (required)</li>
- *   <li>message (0..*)</li>
- *   <li>criteria (0..1)</li>
- * </ul>
- *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
