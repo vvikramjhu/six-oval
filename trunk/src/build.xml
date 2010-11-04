@@ -204,7 +204,6 @@ CONTENTS:
         <testng
             classpathref="java.run.classpath"
             outputdir="${build.test.dir}"
-            sourcedir="${java.test.src.dir}"
             haltonfailure="true"
             >
             <xmlfileset dir="${config.src.dir}" includes="testng.xml"/>
