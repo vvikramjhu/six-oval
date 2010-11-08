@@ -89,10 +89,12 @@ public class OvalRepositoryController
     //==============================================================
 
     @RequestMapping(
-                    method=RequestMethod.GET,
-                    value="/oval_definitions/{id}"
+                    method=RequestMethod.GET
+                    ,value="/oval_definitions/{id}"
+//                    ,headers="Accept=application/xml, text/html"
     )
     public ModelAndView getOvalDefinitions(
+//                                  public @ResponseBody OvalDefinitions getOvalDefinitions(
                     @PathVariable final String id
                     )
     {
@@ -106,7 +108,8 @@ public class OvalRepositoryController
 //            throw new OvalServiceException( ex );
         }
 
-        return new ModelAndView( VIEW_OVAL_DEFINITIONS, "oval_definitions", defs );
+        return new ModelAndView( VIEW_OVAL_DEFINITIONS, "object", defs );
+//        return defs;
     }
 
 
