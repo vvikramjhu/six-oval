@@ -93,12 +93,12 @@ public class OvalRepositoryController
                     value="/oval_definitions/{id}"
     )
     public ModelAndView getOvalDefinitions(
-                    @PathVariable final String pid
+                    @PathVariable final String id
                     )
     {
         OvalDefinitions  defs = null;
         try {
-            defs = _store.get( OvalDefinitions.class, pid );
+            defs = _store.get( OvalDefinitions.class, id );
         } catch (Exception ex) {
             if (_LOG.isErrorEnabled()) {
                 _LOG.error( ex.getMessage() );
@@ -106,7 +106,7 @@ public class OvalRepositoryController
 //            throw new OvalServiceException( ex );
         }
 
-        return new ModelAndView( VIEW_OVAL_DEFINITIONS, "object", defs );
+        return new ModelAndView( VIEW_OVAL_DEFINITIONS, "oval_definitions", defs );
     }
 
 
