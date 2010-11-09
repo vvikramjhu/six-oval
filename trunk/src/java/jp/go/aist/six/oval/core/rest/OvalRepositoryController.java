@@ -28,7 +28,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 
@@ -91,12 +91,12 @@ public class OvalRepositoryController
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/oval_definitions/{id}"
-//                    ,headers="Accept=application/xml, text/html"
+                    ,headers="Accept=application/xml"
     )
-    public ModelAndView getOvalDefinitions(
-//                                  public @ResponseBody OvalDefinitions getOvalDefinitions(
+    public @ResponseBody OvalDefinitions getOvalDefinitions(
                     @PathVariable final String id
                     )
+//  public ModelAndView getOvalDefinitions(
     {
         OvalDefinitions  defs = null;
         try {
@@ -108,8 +108,8 @@ public class OvalRepositoryController
 //            throw new OvalServiceException( ex );
         }
 
-        return new ModelAndView( VIEW_OVAL_DEFINITIONS, "object", defs );
-//        return defs;
+//        return new ModelAndView( VIEW_OVAL_DEFINITIONS, "object", defs );
+        return defs;
     }
 
 

@@ -15,8 +15,19 @@
     <context:component-scan base-package="jp.go.aist.six.oval.core.rest" />
     <!-- To enable @RequestMapping process on type level and method level -->
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
-    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters"> 
+            <list> 
+                <ref bean="marshallingConverter" /> 
+            </list> 
+        </property>
+    </bean>
 
+    <bean id="marshallingConverter" 
+        class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"> 
+        <constructor-arg ref="ovalMarshaller" /> 
+        <property name="supportedMediaTypes" value="application/xml"/> 
+    </bean> 
 
     <bean id="oval_definitions" 
         class="org.springframework.web.servlet.view.xml.MarshallingView">
@@ -24,31 +35,31 @@
     </bean>
 
 
+<!--
     <bean id="viewResolver" 
         class="org.springframework.web.servlet.view.BeanNameViewResolver" />
-<!--
 -->
 
-<!--
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <property name="mediaTypes">
             <map>
                 <entry key="xml" value="application/xml"/>
-                <entry key="html" value="text/html"/>
+                <!-- entry key="html" value="text/html"/ -->
             </map>
         </property>
         <property name="viewResolvers">
             <list>
                 <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
+<!--
                 <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
                     <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
                     <property name="prefix" value="/WEB-INF/jsp/"/>
                     <property name="suffix" value=".jsp"/>
                 </bean>
+-->
             </list>
         </property>
     </bean>
--->
 
 
     <bean id="ovalRepositoryController" 
