@@ -34,8 +34,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.UriTemplate;
+import java.net.URI;
+import javax.servlet.http.HttpServletRequest;
 
 
 
@@ -161,7 +163,7 @@ public class OvalRepositoryController
     )
     public ResponseEntity<String> addOvalResults(
                     @RequestBody final OvalResults results
-                    ,final WebRequest request
+                    ,final HttpServletRequest request
     )
     throws Exception
     {
@@ -175,11 +177,14 @@ public class OvalRepositoryController
 //            throw new OvalServiceException( ex );
         }
 
+        String  requestUrl = request.getRequestURL().toString();
+        URI  uri = new UriTemplate("{requestUrl}/{pid}").expand( requestUrl, pid );
+
         if (_LOG.isDebugEnabled()) {
-            _LOG.debug( "context path: " + request.getContextPath() );
+            _LOG.debug( "Location: " + uri.toASCIIString() );
         }
         HttpHeaders  headers = new HttpHeaders();
-//        headers.setLocation( new URI( pid ) );
+        headers.setLocation( uri );
         return new ResponseEntity<String>( "", headers, HttpStatus.CREATED );
     }
 
