@@ -20,9 +20,6 @@ use @six.db.database@;
 /* ============================================================== */
 /* Not implemented yet                                            */
 /* ============================================================== */
--- [definitions]
--- EntityBase.mask      BOOLEAN         NOT NULL    DEFAULT false
-
 -- [independent]
 -- TextFileContent54Object.filter
 

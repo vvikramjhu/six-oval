@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 
 
@@ -87,6 +88,28 @@ public class OvalRepositoryController
     //==============================================================
     // Definitions
     //==============================================================
+
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/oval_defs/{id}"
+    )
+    public ModelAndView getOvalDefinitionsModelAndView(
+                    @PathVariable final String id
+                    )
+    {
+        OvalDefinitions  defs = null;
+        try {
+            defs = _store.get( OvalDefinitions.class, id );
+        } catch (Exception ex) {
+            if (_LOG.isErrorEnabled()) {
+                _LOG.error( ex.getMessage() );
+            }
+//            throw new OvalServiceException( ex );
+        }
+
+        return new ModelAndView( VIEW_OVAL_DEFINITIONS, "oval_definitions", defs );
+    }
+
 
     @RequestMapping(
                     method=RequestMethod.GET
