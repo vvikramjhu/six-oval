@@ -41,6 +41,7 @@
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
 
+
     <jsp-config>
         <taglib>
             <taglib-uri>http://java.sun.com/jsp/jstl/core</taglib-uri>
@@ -48,8 +49,13 @@
         </taglib>
     </jsp-config>
 
+
+    <!-- 
+    // Disables Servlet Container welcome file handling. 
+    // Needed for compatibility with Servlet 3.0 and Tomcat 7.0 
+    -->
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file></welcome-file>
     </welcome-file-list>
 
 </web-app>

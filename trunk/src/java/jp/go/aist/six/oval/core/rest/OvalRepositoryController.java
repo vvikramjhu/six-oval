@@ -23,12 +23,14 @@ package jp.go.aist.six.oval.core.rest;
 import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.service.OvalServiceException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -103,6 +105,17 @@ public class OvalRepositoryController
     }
 
 
+    @ExceptionHandler
+    public @ResponseBody String handle(
+                    final Exception e
+                    )
+    {
+        return "Exception: " + e.getMessage();
+    }
+    // TODO:
+    // Define OvalRepositoryException, ObjectNotFoundException, ...
+
+
 
     //**************************************************************
     //  OvalRepository
@@ -144,7 +157,7 @@ public class OvalRepositoryController
     public @ResponseBody OvalDefinitions getOvalDefinitions(
                     @PathVariable final String id
                     )
-//  public ModelAndView getOvalDefinitions(
+    throws OvalServiceException
     {
         OvalDefinitions  defs = null;
         try {
@@ -153,7 +166,7 @@ public class OvalRepositoryController
             if (_LOG.isErrorEnabled()) {
                 _LOG.error( ex.getMessage() );
             }
-//            throw new OvalServiceException( ex );
+            throw new OvalServiceException( ex );
         }
 
         return defs;
