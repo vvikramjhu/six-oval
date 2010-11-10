@@ -28,14 +28,14 @@ package jp.go.aist.six.oval.service;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class RepositoryException
+public class OvalRepositoryException
     extends OvalServiceException
 {
 
     /**
      * Constructs an OvalRepositoryException with no detail message.
      */
-    public RepositoryException()
+    public OvalRepositoryException()
     {
         super();
     }
@@ -48,7 +48,7 @@ public class RepositoryException
      * @param  message
      *   the detail message.
      */
-    public RepositoryException(
+    public OvalRepositoryException(
                     final String message
                     )
     {
@@ -63,7 +63,7 @@ public class RepositoryException
      * @param   cause
      *  the cause.
      */
-    public RepositoryException(
+    public OvalRepositoryException(
                     final Throwable cause
                     )
     {
@@ -81,7 +81,7 @@ public class RepositoryException
      * @param   cause
      *  the cause.
      */
-    public RepositoryException(
+    public OvalRepositoryException(
                     final String message,
                     final Throwable cause
                     )
