@@ -88,6 +88,21 @@ public class OvalRepositoryController
 
 
 
+    private URI _buildLocation(
+                    final HttpServletRequest request,
+                    final String id
+                    )
+    {
+        String  requestUrl = request.getRequestURL().toString();
+        URI  uri = new UriTemplate( "{requestUrl}/{id}" ).expand( requestUrl, id );
+
+        if (_LOG.isDebugEnabled()) {
+            _LOG.debug( "Location: " + uri.toASCIIString() );
+        }
+        return uri;
+    }
+
+
 
     //**************************************************************
     //  OvalRepository
@@ -141,8 +156,35 @@ public class OvalRepositoryController
 //            throw new OvalServiceException( ex );
         }
 
-//        return new ModelAndView( VIEW_OVAL_DEFINITIONS, "object", defs );
         return defs;
+    }
+
+
+
+    @RequestMapping(
+                    method=RequestMethod.POST,
+                    value="/oval_definitions"
+    )
+    public ResponseEntity<String> createOvalDefinitions(
+                    @RequestBody final OvalDefinitions definitions,
+                    final HttpServletRequest request
+    )
+    throws Exception
+    {
+        String  pid = null;
+        try {
+             pid = _store.create( OvalDefinitions.class, definitions );
+        } catch (Exception ex) {
+            if (_LOG.isErrorEnabled()) {
+                _LOG.error( ex.getMessage() );
+            }
+//            throw new OvalServiceException( ex );
+        }
+
+        HttpHeaders  headers = new HttpHeaders();
+        headers.setLocation( _buildLocation( request, pid ) );
+
+        return new ResponseEntity<String>( "", headers, HttpStatus.CREATED );
     }
 
 
@@ -177,14 +219,9 @@ public class OvalRepositoryController
 //            throw new OvalServiceException( ex );
         }
 
-        String  requestUrl = request.getRequestURL().toString();
-        URI  uri = new UriTemplate("{requestUrl}/{pid}").expand( requestUrl, pid );
-
-        if (_LOG.isDebugEnabled()) {
-            _LOG.debug( "Location: " + uri.toASCIIString() );
-        }
         HttpHeaders  headers = new HttpHeaders();
-        headers.setLocation( uri );
+        headers.setLocation( _buildLocation( request, pid ) );
+
         return new ResponseEntity<String>( "", headers, HttpStatus.CREATED );
     }
 
