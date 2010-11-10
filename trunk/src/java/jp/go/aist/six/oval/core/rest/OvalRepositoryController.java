@@ -193,7 +193,7 @@ public class OvalRepositoryController
     // Results
     //==============================================================
 
-    // >curl -HContent-Type:application/xml
+    // >curl -X POST -HContent-Type:application/xml
     //  --data-binary @oval\oval-results_CVE-2010-0176_rhsa20100332.xml
     //  http://localhost:8080/six-oval-0.7.0/rest/oval_results
     // <?xml version="1.0" encoding="UTF-8"?>
