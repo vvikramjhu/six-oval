@@ -55,10 +55,15 @@ public class OvalRepositoryClient
     public static void main( final String[] args )
     throws Exception
     {
-        OvalRepositoryClient  client = new OvalRepositoryClient();
-        OvalResults  results = client.getOvalResults( "68ab9c47-61aa-4cb7-acac-5f36401d2d06" );
-        System.out.println( "REST GET results: " + results );
+        OvalContext  context = new OvalContext();
+        OvalRepositoryClient  client = (OvalRepositoryClient)context.getBean( "ovalRepositoryRestClient" );
+        client.getOvalResults( "68ab9c47-61aa-4cb7-acac-5f36401d2d06" );
     }
+//    {
+//        OvalRepositoryClient  client = new OvalRepositoryClient();
+//        OvalResults  results = client.getOvalResults( "68ab9c47-61aa-4cb7-acac-5f36401d2d06" );
+//        System.out.println( "REST GET results: " + results );
+//    }
 
 
 
@@ -84,6 +89,9 @@ public class OvalRepositoryClient
                     )
     {
         _baseUri = uri;
+        if (_LOG.isInfoEnabled()) {
+            _LOG.info( "baseUri: " + _baseUri );
+        }
     }
 
 
@@ -191,27 +199,30 @@ public class OvalRepositoryClient
                     final String pid
     )
     throws OvalServiceException
-//    {
-//        OvalResults  results = _get(
-//                        OvalResults.class,
-//                        new UriTemplate( "{baseUri}/{objectPath}/{id}" ),
-//                        _baseUri,
-//                        ResourcePath.OVAL_RESULTS.name(),
-//                        pid
-//                        );
-//
-//        return results;
-//    }
     {
-        HttpEntity<String>  entity = _prepareGet( MediaType.APPLICATION_XML );
-
-        ResponseEntity<OvalResults>  response = _rest.exchange(
-                "http://localhost:8080/six-oval-0.7.0/rest/oval_results/" + pid,
-                HttpMethod.GET, entity, OvalResults.class);
-        OvalResults  results = response.getBody();
+        OvalResults  results = _get(
+                        OvalResults.class,
+                        new UriTemplate( "{baseUri}/{objectPath}/{id}" ),
+                        _baseUri,
+                        ResourcePath.OVAL_RESULTS.value(),
+                        pid
+                        );
+        if (_LOG.isDebugEnabled()) {
+            _LOG.debug( "GET oval_results: " + results );
+        }
 
         return results;
     }
+//    {
+//        HttpEntity<String>  entity = _prepareGet( MediaType.APPLICATION_XML );
+//
+//        ResponseEntity<OvalResults>  response = _rest.exchange(
+//                "http://localhost:8080/six-oval-0.7.0/rest/oval_results/" + pid,
+//                HttpMethod.GET, entity, OvalResults.class);
+//        OvalResults  results = response.getBody();
+//
+//        return results;
+//    }
 
 }
 // OvalRepositoryClient
