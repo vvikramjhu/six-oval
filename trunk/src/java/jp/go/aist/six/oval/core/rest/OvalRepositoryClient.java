@@ -54,7 +54,8 @@ public class OvalRepositoryClient
     throws Exception
     {
         OvalRepositoryClient  client = new OvalRepositoryClient();
-        client.getOvalResults( "68ab9c47-61aa-4cb7-acac-5f36401d2d06" );
+        OvalResults  results = client.getOvalResults( "68ab9c47-61aa-4cb7-acac-5f36401d2d06" );
+        System.out.println( "REST GET results: " + results );
     }
 
 
