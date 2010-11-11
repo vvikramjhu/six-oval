@@ -21,9 +21,17 @@
 package jp.go.aist.six.oval.core.rest;
 
 import jp.go.aist.six.oval.core.service.OvalContext;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.service.OvalRepository;
+import jp.go.aist.six.oval.service.OvalServiceException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 
@@ -32,8 +40,8 @@ import org.springframework.web.client.RestTemplate;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-@Controller
 public class OvalRepositoryClient
+    implements OvalRepository
 {
 
     /**
@@ -42,21 +50,104 @@ public class OvalRepositoryClient
     private static Log  _LOG = LogFactory.getLog( OvalRepositoryClient.class );
 
 
+    public static void main( final String[] args )
+    throws Exception
+    {
+        OvalRepositoryClient  client = new OvalRepositoryClient();
+        client.getOvalResults( "68ab9c47-61aa-4cb7-acac-5f36401d2d06" );
+    }
+
+
+
     private RestTemplate  _rest;
 
 
+
+    /**
+     * Constructor.
+     */
+    public OvalRepositoryClient()
+    {
+    }
 
 
 
     /**
      */
     private void _setUp()
-    throws Exception
+    throws OvalServiceException
     {
         OvalContext  context = new OvalContext();
-        _rest = (RestTemplate)context.getBean( "restTemplate" );
+        try {
+            _rest = (RestTemplate)context.getBean( "restTemplate" );
+        } catch (Exception ex) {
+            throw new OvalServiceException( ex );
+        }
     }
 
+
+
+    /**
+     */
+    private HttpEntity<String> _prepareGet(
+                    final MediaType type
+    )
+    throws OvalServiceException
+    {
+        if (_rest == null) {
+            _setUp();
+        }
+
+        HttpHeaders  headers = new HttpHeaders();
+        headers.setContentType( type );
+        HttpEntity<String>  entity = new HttpEntity<String>( headers );
+
+        return entity;
+    }
+
+
+
+    //**************************************************************
+    // OvalRepository
+    //**************************************************************
+
+    public String createOvalDefinitions( OvalDefinitions defs )
+    throws OvalServiceException
+    {
+        return null;
+    }
+
+
+    public OvalDefinitions getOvalDefinitions( String pid )
+    throws OvalServiceException
+    {
+        return null;
+    }
+
+
+
+    public String createOvalResults( OvalResults resutls )
+    throws OvalServiceException
+    {
+        return null;
+    }
+
+
+
+    public OvalResults getOvalResults(
+                    final String pid
+    )
+    throws OvalServiceException
+    {
+        HttpEntity<String>  entity = _prepareGet( MediaType.APPLICATION_XML );
+
+        ResponseEntity<OvalResults>  response = _rest.exchange(
+                "http://localhost:8080/six-oval-0.7.0/rest/oval_results/" + pid,
+                HttpMethod.GET, entity, OvalResults.class);
+        OvalResults  results = response.getBody();
+
+        return results;
+    }
 
 }
 // OvalRepositoryClient
