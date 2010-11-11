@@ -173,4 +173,30 @@
         <property name="unmarshaller" ref="ovalMarshaller"/>
     </bean>
 
+
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %  REST                                               % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <bean id="marshallingConverter" 
+        class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"> 
+        <constructor-arg ref="ovalMarshaller" /> 
+        <property name="supportedMediaTypes" value="application/xml"/> 
+    </bean> 
+
+
+    <bean id="restTemplate" 
+        class="org.springframework.web.client.RestTemplate">
+        <property name="messageConverters">
+            <list>
+                <ref bean="marshallingConverter" />
+<!--
+                <ref bean="atomConverter"  />
+                <ref bean="jsonConverter" />
+-->
+            </list>
+        </property>
+    </bean>
+
 </beans>

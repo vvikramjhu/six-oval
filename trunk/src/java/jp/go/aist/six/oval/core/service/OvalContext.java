@@ -141,6 +141,16 @@ public class OvalContext
 
     /**
      */
+    public Object getBean( final String name )
+    throws Exception
+    {
+        return _getContext().getBean( name );
+    }
+
+
+
+    /**
+     */
     public OvalStore getStore()
     throws Exception
     {
