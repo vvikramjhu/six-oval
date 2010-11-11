@@ -24,6 +24,7 @@ import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.service.OvalServiceException;
+import jp.go.aist.six.util.orm.Persistable;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpHeaders;
@@ -90,6 +91,10 @@ public class OvalRepositoryController
 
 
 
+    /**
+     * Builds a location URI from the specified request URL
+     * and the created object ID.
+     */
     private URI _buildLocation(
                     final HttpServletRequest request,
                     final String id
@@ -105,6 +110,49 @@ public class OvalRepositoryController
     }
 
 
+
+    /**
+     * Create the specified object in the repository and
+     * returns the HTTP response.
+     */
+    private <K, T extends Persistable<K>> ResponseEntity<Void> _createObject(
+                    final HttpServletRequest request,
+                    final Class<T> type,
+                    final T object
+    )
+    throws Exception
+    {
+        K  pid = null;
+        try {
+             pid = _store.create( type, object );
+        } catch (Exception ex) {
+            if (_LOG.isErrorEnabled()) {
+                _LOG.error( ex.getMessage() );
+            }
+            throw new OvalServiceException( ex );
+        }
+
+        HttpHeaders  headers = new HttpHeaders();
+        headers.setLocation( _buildLocation( request, String.valueOf( pid ) ) );
+
+        return new ResponseEntity<Void>( headers, HttpStatus.CREATED );
+    }
+
+
+
+    // Returns an HTML document which wrappes the exception messages.
+//    @ExceptionHandler
+//    public ResponseEntity<String> handle(
+//                    final Exception e
+//                    )
+//    {
+//        HttpHeaders  headers = new HttpHeaders();
+//
+//        return new ResponseEntity<String>(
+//                        e.getMessage(), headers, HttpStatus.INTERNAL_SERVER_ERROR );
+//    }
+
+
     @ExceptionHandler
     public @ResponseBody String handle(
                     final Exception e
@@ -114,6 +162,7 @@ public class OvalRepositoryController
     }
     // TODO:
     // Define OvalRepositoryException, ObjectNotFoundException, ...
+
 
 
 
@@ -178,26 +227,28 @@ public class OvalRepositoryController
                     method=RequestMethod.POST,
                     value="/oval_definitions"
     )
-    public ResponseEntity<String> createOvalDefinitions(
+    public ResponseEntity<Void> createOvalDefinitions(
                     @RequestBody final OvalDefinitions definitions,
                     final HttpServletRequest request
     )
     throws Exception
     {
-        String  pid = null;
-        try {
-             pid = _store.create( OvalDefinitions.class, definitions );
-        } catch (Exception ex) {
-            if (_LOG.isErrorEnabled()) {
-                _LOG.error( ex.getMessage() );
-            }
-//            throw new OvalServiceException( ex );
-        }
+        return _createObject( request, OvalDefinitions.class, definitions );
 
-        HttpHeaders  headers = new HttpHeaders();
-        headers.setLocation( _buildLocation( request, pid ) );
-
-        return new ResponseEntity<String>( "", headers, HttpStatus.CREATED );
+//        String  pid = null;
+//        try {
+//             pid = _store.create( OvalDefinitions.class, definitions );
+//        } catch (Exception ex) {
+//            if (_LOG.isErrorEnabled()) {
+//                _LOG.error( ex.getMessage() );
+//            }
+////            throw new OvalServiceException( ex );
+//        }
+//
+//        HttpHeaders  headers = new HttpHeaders();
+//        headers.setLocation( _buildLocation( request, pid ) );
+//
+//        return new ResponseEntity<String>( "", headers, HttpStatus.CREATED );
     }
 
 
@@ -205,6 +256,31 @@ public class OvalRepositoryController
     //==============================================================
     // Results
     //==============================================================
+
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/oval_results/{id}"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody OvalResults getOvalResults(
+                    @PathVariable final String id
+                    )
+    throws OvalServiceException
+    {
+        OvalResults  results = null;
+        try {
+            results = _store.get( OvalResults.class, id );
+        } catch (Exception ex) {
+            if (_LOG.isErrorEnabled()) {
+                _LOG.error( ex.getMessage() );
+            }
+            throw new OvalServiceException( ex );
+        }
+
+        return results;
+    }
+
+
 
     // >curl -X POST -HContent-Type:application/xml
     //  --data-binary @oval\oval-results_CVE-2010-0176_rhsa20100332.xml
@@ -216,28 +292,14 @@ public class OvalRepositoryController
                     method=RequestMethod.POST
                     ,value="/oval_results"
     )
-    public ResponseEntity<String> addOvalResults(
+    public ResponseEntity<Void> createOvalResults(
                     @RequestBody final OvalResults results
                     ,final HttpServletRequest request
     )
     throws Exception
     {
-        String  pid = null;
-        try {
-             pid = _store.create( OvalResults.class, results );
-        } catch (Exception ex) {
-            if (_LOG.isErrorEnabled()) {
-                _LOG.error( ex.getMessage() );
-            }
-//            throw new OvalServiceException( ex );
-        }
-
-        HttpHeaders  headers = new HttpHeaders();
-        headers.setLocation( _buildLocation( request, pid ) );
-
-        return new ResponseEntity<String>( "", headers, HttpStatus.CREATED );
+        return _createObject( request, OvalResults.class, results );
     }
-
 
 }
 // OvalRepositoryController
