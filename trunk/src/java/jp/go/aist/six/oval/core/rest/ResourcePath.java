@@ -18,37 +18,57 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.core.rest;
 
 
 
 /**
- * The Windows file properties.
+ * The RESTful Web Services resource path names for the object types.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
- * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum FileProperty
+public enum ResourcePath
 {
-    FILEPATH,
-    PATH,
-    FILENAME,
-    OWNER,
-    SIZE,           // Int
-    A_TIME,         // Int
-    C_TIME,         // Int
-    M_TIME,         // Int
-    MS_CHECKSUM,
-    VERSION,        // Version
-    TYPE,           // FileType
-    DEVELOPMENT_CLASS,
-    COMPANY,
-    INTERNAL_NAME,
-    LANGUAGE,
-    ORIGINAL_FILENAME,
-    PRODUCT_NAME,
-    PRODUCT_VERSION;    // Version
+    OVAL_DEFINITIONS( "oval_definitions" ),
+    OVAL_RESULTS( "oval_results" );
+
+
+
+    private final String  _value;
+
+
+    ResourcePath(
+                    final String value
+                    )
+    {
+        _value = value;
+    }
+
+
+    public static ResourcePath fromValue(
+                    final String value
+                    )
+    {
+        for (ResourcePath  e : ResourcePath.values()) {
+            if (e._value.equals( value )) {
+                return e;
+            }
+        }
+
+        throw new IllegalArgumentException( value );
+    }
+
+
+
+    public String value() {
+        return _value;
+    }
+
+
+    public String toString() {
+        return _value;
+    }
 
 }
-// FileProperty
+// ResourcePath

@@ -14,6 +14,10 @@
 
 <beans>
 
+    <!-- external configurations -->
+    <!-- context:property-placeholder location="six-oval.properties"/ -->
+
+
 
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <!-- %  OVAL Data Store                                    % -->

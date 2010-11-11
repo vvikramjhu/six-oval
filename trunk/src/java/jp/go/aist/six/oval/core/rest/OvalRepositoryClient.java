@@ -33,6 +33,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriTemplate;
+import java.net.URI;
 
 
 
@@ -60,6 +62,8 @@ public class OvalRepositoryClient
 
 
 
+    private String  _baseUri;
+
     private RestTemplate  _rest;
 
 
@@ -69,6 +73,54 @@ public class OvalRepositoryClient
      */
     public OvalRepositoryClient()
     {
+    }
+
+
+
+    /**
+     */
+    public void setBaseUri(
+                    final String uri
+                    )
+    {
+        _baseUri = uri;
+    }
+
+
+
+    /**
+     */
+    public void setRestTemplate(
+                    final RestTemplate rest
+                    )
+    {
+        _rest = rest;
+    }
+
+
+
+    /**
+     * HTTP GET
+     */
+    private <T> T _get(
+                    final Class<T> objectType,
+                    final UriTemplate uriTemplate,
+                    final Object... uriVariableValues
+                    )
+    throws OvalServiceException
+    {
+        HttpHeaders  headers = new HttpHeaders();
+        headers.setContentType( MediaType.APPLICATION_XML );
+        HttpEntity<String>  entity = new HttpEntity<String>( headers );
+
+        URI  uri = uriTemplate.expand( uriVariableValues );
+
+        ResponseEntity<T>  response = _rest.exchange(
+                        uri.toASCIIString(), HttpMethod.GET, entity, objectType
+                        );
+        T  object = response.getBody();
+
+        return object;
     }
 
 
@@ -92,7 +144,7 @@ public class OvalRepositoryClient
      */
     private HttpEntity<String> _prepareGet(
                     final MediaType type
-    )
+                    )
     throws OvalServiceException
     {
         if (_rest == null) {
@@ -139,6 +191,17 @@ public class OvalRepositoryClient
                     final String pid
     )
     throws OvalServiceException
+//    {
+//        OvalResults  results = _get(
+//                        OvalResults.class,
+//                        new UriTemplate( "{baseUri}/{objectPath}/{id}" ),
+//                        _baseUri,
+//                        ResourcePath.OVAL_RESULTS.name(),
+//                        pid
+//                        );
+//
+//        return results;
+//    }
     {
         HttpEntity<String>  entity = _prepareGet( MediaType.APPLICATION_XML );
 
