@@ -20,10 +20,6 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.core.service.OvalContext;
-import jp.go.aist.six.oval.core.xml.OvalXml;
-import jp.go.aist.six.oval.model.definitions.Component;
-import jp.go.aist.six.oval.model.definitions.LocalVariable;
 import jp.go.aist.six.oval.model.definitions.Variable;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -70,28 +66,28 @@ public class VariableDao
     //  Dao, CastorDao
     //**************************************************************
 
-    @Override
-    public String create(
-                    final Variable variable
-                    )
-    {
-        if (LocalVariable.class.isInstance( variable )) {
-            LocalVariable  lv = LocalVariable.class.cast( variable );
-            Component  component = lv.getComponent();
-            if (component != null) {
-                try {
-                    OvalXml  mapper = OvalContext.INSTANCE.getXml();
-                    String  xml = mapper.marshalToString( component );
-                    lv.xmlSetComponent( xml );
-                } catch (Exception ex) {
-                    // TODO:
-                    _LOG.warn(  "'component' property NOT persisted" );
-                }
-            }
-        }
-
-        return super.create( variable );
-    }
+//    @Override
+//    public String create(
+//                    final Variable variable
+//                    )
+//    {
+//        if (LocalVariable.class.isInstance( variable )) {
+//            LocalVariable  lv = LocalVariable.class.cast( variable );
+//            Component  component = lv.getComponent();
+//            if (component != null) {
+//                try {
+//                    OvalXml  mapper = OvalContext.INSTANCE.getXml();
+//                    String  xml = mapper.marshalToString( component );
+//                    lv.xmlSetComponent( xml );
+//                } catch (Exception ex) {
+//                    // TODO:
+//                    _LOG.warn(  "'component' property NOT persisted" );
+//                }
+//            }
+//        }
+//
+//        return super.create( variable );
+//    }
 
 }
 // VariableDao

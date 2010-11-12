@@ -180,6 +180,9 @@ public class LocalVariable
                     final AccessMode accessMode
                     )
     {
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace( "***** jdoLoad *****" );
+        }
         String  xml = xmlGetComponent();
         if (xml != null) {
             if (_LOG.isTraceEnabled()) {
@@ -206,7 +209,36 @@ public class LocalVariable
     }
 
 
-    public void jdoBeforeCreate( final Database db ) { }
+    public void jdoBeforeCreate(
+                    final Database db
+                    )
+    {
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace( "***** jdoBeforeCreate *****" );
+        }
+        Component  component = getComponent();
+        if (component != null) {
+            if (_LOG.isTraceEnabled()) {
+                _LOG.trace( "component (Object)=" + component );
+            }
+
+            try {
+                if (mapper == null) {
+                    mapper = OvalContext.INSTANCE.getXml();
+                }
+                String  xml = mapper.marshalToString( component );
+                xmlSetComponent( xml );
+                if (_LOG.isTraceEnabled()) {
+                    _LOG.trace( "component (XML)=" + xml );
+                }
+            } catch (Exception ex) {
+                if (_LOG.isErrorEnabled()) {
+                    _LOG.error( ex.getMessage() );
+                }
+            }
+        }
+    }
+
 
     public void jdoAfterCreate() { }
 
