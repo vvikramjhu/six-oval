@@ -666,7 +666,10 @@
             <sql name="PID" type="char"/>
         </field>
 
-        <field name="componentXml" type="string">
+        <field name="component" type="string"
+            set-method="xmlSetComponent"
+            get-method="xmlGetComponent"
+            >
             <sql name="component_xml" type="char"/>
         </field>
     </class>

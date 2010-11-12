@@ -118,7 +118,7 @@ public class PersistentLocalVariable
                     final AccessMode accessMode
                     )
     {
-        String  xml = getComponentXml();
+        String  xml = xmlGetComponent();
         if (xml != null) {
             try {
                 if (mapper == null) {

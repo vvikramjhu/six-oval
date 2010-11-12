@@ -82,7 +82,7 @@ public class VariableDao
                 try {
                     OvalXml  mapper = OvalContext.INSTANCE.getXml();
                     String  xml = mapper.marshalToString( component );
-                    lv.setComponentXml( xml );
+                    lv.xmlSetComponent( xml );
                 } catch (Exception ex) {
                     // TODO:
                     _LOG.warn(  "'component' property NOT persisted" );

@@ -137,7 +137,7 @@ public class LocalVariable
 
     /**
      */
-    public void setComponentXml(
+    public void xmlSetComponent(
                     final String xml
                     )
     {
@@ -145,7 +145,7 @@ public class LocalVariable
     }
 
 
-    public String getComponentXml()
+    public String xmlGetComponent()
     {
         return _contentXml;
     }
@@ -180,7 +180,7 @@ public class LocalVariable
                     final AccessMode accessMode
                     )
     {
-        String  xml = getComponentXml();
+        String  xml = xmlGetComponent();
         if (xml != null) {
             if (_LOG.isTraceEnabled()) {
                 _LOG.trace( "component (XML)=" + xml );
