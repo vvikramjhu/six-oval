@@ -20,8 +20,15 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import jp.go.aist.six.oval.core.service.OvalContext;
+import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.common.Datatype;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.exolab.castor.jdo.Database;
+import org.exolab.castor.jdo.Persistent;
+import org.exolab.castor.mapping.AccessMode;
 
 
 
@@ -35,7 +42,15 @@ import jp.go.aist.six.oval.model.common.Datatype;
  */
 public class LocalVariable
     extends Variable
+    implements Persistent
 {
+
+    /**
+     * Logger.
+     */
+    private static Log  _LOG = LogFactory.getLog( LocalVariable.class );
+
+
 
     private Component  _component;
     //{1..1}
@@ -146,6 +161,62 @@ public class LocalVariable
     {
         return EntityType.VARIABLE_LOCAL;
     }
+
+
+
+    //**************************************************************
+    //  Persistent
+    //**************************************************************
+
+    private OvalXml  mapper = null;
+
+
+    public void jdoPersistent( final Database db ) { }
+
+    public void jdoTransient() { }
+
+
+    public Class<?> jdoLoad(
+                    final AccessMode accessMode
+                    )
+    {
+        String  xml = getComponentXml();
+        if (xml != null) {
+            if (_LOG.isTraceEnabled()) {
+                _LOG.trace( "component (XML)=" + xml );
+            }
+
+            try {
+                if (mapper == null) {
+                    mapper = OvalContext.INSTANCE.getXml();
+                }
+                Component  component = (Component)mapper.unmarshalFromString( xml );
+                setComponent( component );
+                if (_LOG.isTraceEnabled()) {
+                    _LOG.trace( "component (Object)=" + component );
+                }
+            } catch (Exception ex) {
+                if (_LOG.isErrorEnabled()) {
+                    _LOG.error( ex.getMessage() );
+                }
+            }
+        }
+
+        return null;
+    }
+
+
+    public void jdoBeforeCreate( final Database db ) { }
+
+    public void jdoAfterCreate() { }
+
+    public void jdoStore( final boolean modified ) { }
+
+    public void jdoBeforeRemove() { }
+
+    public void jdoAfterRemove() { }
+
+    public void jdoUpdate() { }
 
 
 

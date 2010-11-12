@@ -5,6 +5,7 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
@@ -168,6 +169,28 @@ public class OvalStoreTest
                     alwaysRun=true
                     )
     public <T extends State> void testDefinitionsState(
+                    final Class<T> type,
+                    final String sourceFilepath,
+                    final String xpath,
+                    final T expected
+                    )
+    throws Exception
+    {
+        _testStoreSync( type, sourceFilepath, xpath, expected );
+    }
+
+
+
+    //==============================================================
+    //  variable
+    //==============================================================
+
+    @org.testng.annotations.Test(
+                    groups={"oval.core.store", "definitions.variable"},
+                    dataProvider="definitions.variable",
+                    alwaysRun=true
+                    )
+    public <T extends Variable> void testDefinitionsVariable(
                     final Class<T> type,
                     final String sourceFilepath,
                     final String xpath,
