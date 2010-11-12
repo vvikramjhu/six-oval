@@ -20,9 +20,17 @@
 
 package jp.go.aist.six.oval.core.model.definitions;
 
+import jp.go.aist.six.oval.core.service.OvalContext;
+import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.common.DefinitionClass;
+import jp.go.aist.six.oval.model.definitions.Criteria;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Metadata;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.exolab.castor.jdo.Database;
+import org.exolab.castor.jdo.Persistent;
+import org.exolab.castor.mapping.AccessMode;
 
 
 
@@ -35,7 +43,15 @@ import jp.go.aist.six.oval.model.definitions.Metadata;
  */
 public class PersistentDefinition
     extends Definition
+    implements Persistent
 {
+
+    /**
+     * Logger.
+     */
+    private static Log  _LOG = LogFactory.getLog( PersistentDefinition.class );
+
+
 
     /**
      * Constructor.
@@ -83,6 +99,92 @@ public class PersistentDefinition
         super( id, version, clazz, metadata );
     }
 
+
+    //**************************************************************
+    //  Persistent
+    //**************************************************************
+
+    private OvalXml  mapper = null;
+
+
+    public void jdoPersistent( final Database db ) { }
+
+    public void jdoTransient() { }
+
+
+    public Class<?> jdoLoad(
+                    final AccessMode accessMode
+                    )
+    {
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace( "***** jdoLoad *****" );
+        }
+        String  xml = xmlGetCriteria();
+        if (xml != null) {
+            if (_LOG.isTraceEnabled()) {
+                _LOG.trace( "criteria (XML)=" + xml );
+            }
+
+            try {
+                if (mapper == null) {
+                    mapper = OvalContext.INSTANCE.getXml();
+                }
+                Criteria  criteria = (Criteria)mapper.unmarshalFromString( xml );
+                setCriteria( criteria );
+                if (_LOG.isTraceEnabled()) {
+                    _LOG.trace( "criteria (Object)=" + criteria );
+                }
+            } catch (Exception ex) {
+                if (_LOG.isErrorEnabled()) {
+                    _LOG.error( ex.getMessage() );
+                }
+            }
+        }
+
+        return null;
+    }
+
+
+    public void jdoBeforeCreate(
+                    final Database db
+                    )
+    {
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace( "***** jdoBeforeCreate *****" );
+        }
+        Criteria  criteria = getCriteria();
+        if (criteria != null) {
+            if (_LOG.isTraceEnabled()) {
+                _LOG.trace( "criteria (Object)=" + criteria );
+            }
+
+            try {
+                if (mapper == null) {
+                    mapper = OvalContext.INSTANCE.getXml();
+                }
+                String  xml = mapper.marshalToString( criteria );
+                xmlSetCriteria( xml );
+                if (_LOG.isTraceEnabled()) {
+                    _LOG.trace( "criteria (XML)=" + xml );
+                }
+            } catch (Exception ex) {
+                if (_LOG.isErrorEnabled()) {
+                    _LOG.error( ex.getMessage() );
+                }
+            }
+        }
+    }
+
+
+    public void jdoAfterCreate() { }
+
+    public void jdoStore( final boolean modified ) { }
+
+    public void jdoBeforeRemove() { }
+
+    public void jdoAfterRemove() { }
+
+    public void jdoUpdate() { }
 
 }
 // Definition
