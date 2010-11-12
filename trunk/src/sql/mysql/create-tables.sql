@@ -138,6 +138,11 @@ CREATE TABLE IF NOT EXISTS oval_d_definition
     description         VARCHAR(4095)   NOT NULL,
                         /* max. length = 3960, id = com.redhat.rhsa:def:20090473 */
 
+    /* criteria as string */
+    criteria_xml        MEDIUMTEXT,
+                        /* max. length = 49,152, id = oval:com.redhat.rhsa:def:20100101 */
+
+    
     /* (FK) */
 
     /* (PK) */

@@ -20,11 +20,7 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.core.model.definitions.DefinitionCriteria;
-import jp.go.aist.six.oval.core.service.OvalContext;
-import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.definitions.Affected;
-import jp.go.aist.six.oval.model.definitions.Criteria;
 import jp.go.aist.six.oval.model.definitions.Cve;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Metadata;
@@ -121,34 +117,24 @@ public class DefinitionDao
             def.setRelatedCve( p_cves );
         }
 
-//        Collection<CriteriaElement>  criteriaElements = def.getCriteriaElement();
-//        if (_LOG.isInfoEnabled()) {
-//            _LOG.info( "#criteria Elements: " + criteriaElements.size() );
-//        }
-//        if (criteriaElements != null  &&  criteriaElements.size() > 0) {
-//            for (CriteriaElement  element : criteriaElements) {
-//                element.setMasterObject( def );
+//        // persist the criteria as XML string.
+//        Criteria  criteria = def.getCriteria();
+//        if (criteria != null) {
+//            try {
+//                OvalXml  mapper = OvalContext.INSTANCE.getXml();
+//                String  xml = mapper.marshalToString( criteria );
+//                DefinitionCriteria  dc = new DefinitionCriteria();
+//                dc.setOvalID( def.getOvalID() );
+//                dc.setOvalVersion( def.getOvalVersion() );
+//                dc.setCriteriaXml( xml );
+//                getForwardingDao( DefinitionCriteria.class ).sync( dc );
+//
+////                def.setCriteriaXml( xml );
+//            } catch (Exception ex) {
+//                // TODO:
+//                _LOG.warn(  "'criteria' property NOT persisted" );
 //            }
 //        }
-
-        // persist the criteria as XML string.
-        Criteria  criteria = def.getCriteria();
-        if (criteria != null) {
-            try {
-                OvalXml  mapper = OvalContext.INSTANCE.getXml();
-                String  xml = mapper.marshalToString( criteria );
-                DefinitionCriteria  dc = new DefinitionCriteria();
-                dc.setOvalID( def.getOvalID() );
-                dc.setOvalVersion( def.getOvalVersion() );
-                dc.setCriteriaXml( xml );
-                getForwardingDao( DefinitionCriteria.class ).sync( dc );
-
-//                def.setCriteriaXml( xml );
-            } catch (Exception ex) {
-                // TODO:
-                _LOG.warn(  "'criteria' property NOT persisted" );
-            }
-        }
 
         return super.create( def );
     }
