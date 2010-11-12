@@ -34,6 +34,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriTemplate;
+import java.io.File;
+import java.io.FileInputStream;
 import java.net.URI;
 
 
@@ -57,7 +59,16 @@ public class OvalRepositoryClient
     {
         OvalContext  context = new OvalContext();
         OvalRepositoryClient  client = (OvalRepositoryClient)context.getBean( "ovalRepositoryRestClient" );
-        client.getOvalResults( "68ab9c47-61aa-4cb7-acac-5f36401d2d06" );
+
+        if (args.length < 1) {
+            System.err.println( "No OVAL Definitions file specified." );
+        } else {
+            File  file = new File( args[0] );
+            OvalDefinitions  defs = (OvalDefinitions)context.getXml().unmarshal( new FileInputStream( file ) );
+            client.createOvalDefinitions( defs );
+        }
+
+//        client.getOvalResults( "89018e8d-1887-4e36-914b-e44f58474d0e" );
     }
 //    {
 //        OvalRepositoryClient  client = new OvalRepositoryClient();
@@ -118,6 +129,7 @@ public class OvalRepositoryClient
     throws OvalServiceException
     {
         HttpHeaders  headers = new HttpHeaders();
+        // TODO: Accept???
         headers.setContentType( MediaType.APPLICATION_XML );
         HttpEntity<String>  entity = new HttpEntity<String>( headers );
 
@@ -129,6 +141,34 @@ public class OvalRepositoryClient
         T  object = response.getBody();
 
         return object;
+    }
+
+
+
+    /**
+     * HTTP POST
+     */
+    private String _post(
+//                    final Class<T> objectType,
+                    final Object object,
+                    final UriTemplate uriTemplate,
+                    final Object... uriVariableValues
+                    )
+    throws OvalServiceException
+    {
+//        HttpHeaders  headers = new HttpHeaders();
+//        headers.setContentType( MediaType.APPLICATION_XML );
+//        HttpEntity<String>  entity = new HttpEntity<String>( headers );
+
+        URI  uri = uriTemplate.expand( uriVariableValues );
+
+        URI  locationUri = _rest.postForLocation(
+                        uri.toASCIIString(),
+                        object
+                        );
+//        URI  locationUri = response.getHeaders().getLocation();
+
+        return (locationUri == null ? null : locationUri.toASCIIString());
     }
 
 
@@ -172,10 +212,22 @@ public class OvalRepositoryClient
     // OvalRepository
     //**************************************************************
 
-    public String createOvalDefinitions( OvalDefinitions defs )
+    public String createOvalDefinitions(
+                    final OvalDefinitions defs
+                    )
     throws OvalServiceException
     {
-        return null;
+        String  location = _post(
+                        defs,
+                        new UriTemplate( "{baseUri}/{objectPath}" ),
+                        _baseUri,
+                        ResourcePath.OVAL_DEFINITIONS.value()
+                        );
+        if (_LOG.isDebugEnabled()) {
+            _LOG.debug( "POST oval_definitions: " + location );
+        }
+
+        return location;
     }
 
 

@@ -150,6 +150,7 @@ CONTENTS:
             fork="true"
             maxmemory="256m"
             >
+            <arg line="src/test/data/definitions/oval-definitions_rhsa-20100332_CVE-2010-0176.xml"/>
         </java>
     </target>
 
