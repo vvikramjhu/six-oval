@@ -20,9 +20,9 @@
 
 package jp.go.aist.six.oval.core.store;
 
+import jp.go.aist.six.oval.core.model.definitions.PersistentDefinition;
 import jp.go.aist.six.oval.model.definitions.Affected;
 import jp.go.aist.six.oval.model.definitions.Cve;
-import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.Platform;
 import jp.go.aist.six.oval.model.definitions.Product;
@@ -38,23 +38,23 @@ import java.util.List;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionDao
-    extends OvalEntityDao<Definition>
+public class PersistentDefinitionDao
+    extends OvalEntityDao<PersistentDefinition>
 {
 
     /**
      * Logger.
      */
-    private static Log  _LOG = LogFactory.getLog( DefinitionDao.class );
+    private static Log  _LOG = LogFactory.getLog( PersistentDefinitionDao.class );
 
 
 
     /**
      * Constructor.
      */
-    public DefinitionDao()
+    public PersistentDefinitionDao()
     {
-        super( Definition.class );
+        super( PersistentDefinition.class );
     }
 
 
@@ -81,7 +81,7 @@ public class DefinitionDao
 
     @Override
     public String create(
-                    final Definition def
+                    final PersistentDefinition def
                     )
     {
         Metadata  meta = def.getMetadata();

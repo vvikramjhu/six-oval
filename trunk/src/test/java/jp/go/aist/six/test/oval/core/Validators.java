@@ -503,6 +503,7 @@ public abstract class Validators
             }
 
             Reporter.log( "*** expected: " + expected.getOvalID(), true );
+            Reporter.log( "*** actual type: " + actual.getClass().getName(), true );
             super.equals( actual, expected );
 
             Reporter.log( " - definition/@class", true );

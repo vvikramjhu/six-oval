@@ -59,7 +59,7 @@
 
         <!-- m : n -->
         <field name="definitions.definition"
-            type="jp.go.aist.six.oval.model.definitions.Definition"
+            type="jp.go.aist.six.oval.core.model.definitions.PersistentDefinition"
             collection="collection"
             lazy="true">
             <sql name="d_definition__PID"
@@ -221,6 +221,113 @@
         </field>
     </class>
 
+    <class name="jp.go.aist.six.oval.core.model.definitions.PersistentDefinition"
+        identity="persistentID">
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_definition"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+
+        <field name="ovalID" type="string">
+            <sql name="id" type="char"/>
+        </field>
+
+        <field name="ovalVersion" type="integer">
+            <sql name="version" type="integer"/>
+        </field>
+
+        <field name="definitionClass" 
+            type="jp.go.aist.six.oval.model.common.DefinitionClass">
+            <sql name="class" type="char"/>
+        </field>
+
+        <field name="deprecated" type="boolean">
+            <sql name="deprecated" type="bit"/>
+        </field>
+
+        <field name="criteria" type="string"
+            set-method="xmlSetCriteria"
+            get-method="xmlGetCriteria"
+            >
+            <sql name="criteria_xml" type="char"/>
+        </field>
+
+
+        <!-- // metadata // -->
+        <field name="metadata.title" type="string">
+            <sql name="title" type="char"/>
+        </field>
+
+        <field name="metadata.description" type="string">
+            <sql name="description" type="char"/>
+        </field>
+
+        <!-- Definition : Reference = m : n -->
+        <field name="metadata.reference"
+            type="jp.go.aist.six.oval.model.definitions.Reference"
+            collection="collection"
+            lazy="true">
+            <sql name="reference__PID"
+                many-table="oval_assoc__d_definition__d_reference"
+                many-key="definition__PID"/>
+        </field>
+
+
+        <!-- // metadata/affected // -->
+        
+        <field name="metadata.affected.family" 
+            type="jp.go.aist.six.oval.model.common.Family">
+            <sql name="affected_family" type="char"/>
+        </field>
+
+        <field name="metadata.affected.platform"
+            type="jp.go.aist.six.oval.model.definitions.Platform"
+            collection="collection"
+            lazy="true">
+            <description>Definition : Platform = n : m</description>
+            <sql name="d_platform__PID"
+                many-table="oval_assoc__d_definition__d_platform"
+                many-key="d_definition__PID"/>
+        </field>
+
+        <field name="metadata.affected.product"
+            type="jp.go.aist.six.oval.model.definitions.Product"
+            collection="collection"
+            lazy="true">
+            <description>Definition : Product = n : m</description>
+            <sql name="d_product__PID"
+                many-table="oval_assoc__d_definition__d_product"
+                many-key="d_definition__PID"/>
+        </field>
+
+
+        <!-- SIX: extended properties -->
+<!--
+        <field name="criteriaElement"
+            type="jp.go.aist.six.oval.model.definitions.CriteriaElement"
+            collection="collection">
+            <sql many-key="d_definition__PID"/>
+        </field>
+-->
+
+        <field name="lastModifiedDate" type="string">
+            <sql name="last_modified" type="char"/>
+        </field>
+
+        <!-- N:M -->
+        <field name="relatedCve"
+            type="jp.go.aist.six.oval.model.definitions.Cve"
+            collection="collection"
+            lazy="true"
+            >
+            <sql name="d_cve__PID"
+                many-table="oval_assoc__d_definition__d_cve"
+                many-key="d_definition__PID"
+                />
+        </field>
+    </class>
 
 
     <!-- ******************************************************* -->
