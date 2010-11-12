@@ -173,41 +173,6 @@ public class OvalRepositoryClient
 
 
 
-    /**
-     */
-    private void _setUp()
-    throws OvalServiceException
-    {
-        OvalContext  context = new OvalContext();
-        try {
-            _rest = (RestTemplate)context.getBean( "restTemplate" );
-        } catch (Exception ex) {
-            throw new OvalServiceException( ex );
-        }
-    }
-
-
-
-    /**
-     */
-    private HttpEntity<String> _prepareGet(
-                    final MediaType type
-                    )
-    throws OvalServiceException
-    {
-        if (_rest == null) {
-            _setUp();
-        }
-
-        HttpHeaders  headers = new HttpHeaders();
-        headers.setContentType( type );
-        HttpEntity<String>  entity = new HttpEntity<String>( headers );
-
-        return entity;
-    }
-
-
-
     //**************************************************************
     // OvalRepository
     //**************************************************************
@@ -265,16 +230,6 @@ public class OvalRepositoryClient
 
         return results;
     }
-//    {
-//        HttpEntity<String>  entity = _prepareGet( MediaType.APPLICATION_XML );
-//
-//        ResponseEntity<OvalResults>  response = _rest.exchange(
-//                "http://localhost:8080/six-oval-0.7.0/rest/oval_results/" + pid,
-//                HttpMethod.GET, entity, OvalResults.class);
-//        OvalResults  results = response.getBody();
-//
-//        return results;
-//    }
 
 }
 // OvalRepositoryClient
