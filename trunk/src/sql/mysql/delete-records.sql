@@ -111,7 +111,7 @@ DELETE FROM oval_d_cve;
 DELETE FROM oval_d_platform;
 DELETE FROM oval_d_product;
 DELETE FROM oval_d_reference;
-DELETE FROM oval_d_definition_criteria;
+--DELETE FROM oval_d_definition_criteria;
 DELETE FROM oval_d_definition;
 DELETE FROM oval_d_definitions;
 

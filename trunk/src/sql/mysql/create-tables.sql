@@ -160,29 +160,29 @@ CHARACTER SET utf8;
 /* ============================================================== */
 /* DefinitionCriteria                                             */
 /* ============================================================== */
-CREATE TABLE IF NOT EXISTS oval_d_definition_criteria
-(
-    PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:com.redhat.rhsa:def:20090003:302 */
-
-    id                  VARCHAR(64)     NOT NULL,
-                        /* e.g. oval:com.redhat.rhsa:def:20090003 */
-    version             INT             NOT NULL,
-
-    /* criteria as string */
-    criteria            MEDIUMTEXT,
-                        /* max. length = 49,152, id = oval:com.redhat.rhsa:def:20100101 */
-
-    /* (FK) */
-
-    /* (PK) */
-    PRIMARY KEY (PID),
-
-    /* INDEX */
-    UNIQUE (id, version)
-)
-ENGINE=InnoDB
-CHARACTER SET utf8;
+--CREATE TABLE IF NOT EXISTS oval_d_definition_criteria
+--(
+--    PID                 VARCHAR(64)     NOT NULL,
+--                        /* id + version, e.g. oval:com.redhat.rhsa:def:20090003:302 */
+--
+--    id                  VARCHAR(64)     NOT NULL,
+--                        /* e.g. oval:com.redhat.rhsa:def:20090003 */
+--    version             INT             NOT NULL,
+--
+--    /* criteria as string */
+--    criteria            MEDIUMTEXT,
+--                        /* max. length = 49,152, id = oval:com.redhat.rhsa:def:20100101 */
+--
+--    /* (FK) */
+--
+--    /* (PK) */
+--    PRIMARY KEY (PID),
+--
+--    /* INDEX */
+--    UNIQUE (id, version)
+--)
+--ENGINE=InnoDB
+--CHARACTER SET utf8;
 
 
 
