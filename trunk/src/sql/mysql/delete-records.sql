@@ -102,10 +102,10 @@ DELETE FROM oval_d_state;
 DELETE FROM oval_d_variable_local;
 DELETE FROM oval_d_variable;
 
-DELETE FROM oval_d_criteria_element;
-DELETE FROM oval_d_criteria;
-DELETE FROM oval_d_criterion;
-DELETE FROM oval_d_extend_definition;
+--DELETE FROM oval_d_criteria_element;
+--DELETE FROM oval_d_criteria;
+--DELETE FROM oval_d_criterion;
+--DELETE FROM oval_d_extend_definition;
 
 DELETE FROM oval_d_cve;
 DELETE FROM oval_d_platform;
