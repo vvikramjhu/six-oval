@@ -18,173 +18,247 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.model.definitions;
+package jp.go.aist.six.oval.core.model;
 
+import jp.go.aist.six.oval.core.model.definitions.PersistentDefinition;
 import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.xml.OvalXml;
-import jp.go.aist.six.oval.model.common.DefinitionClass;
 import jp.go.aist.six.oval.model.definitions.Criteria;
-import jp.go.aist.six.oval.model.definitions.Definition;
-import jp.go.aist.six.oval.model.definitions.Metadata;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.exolab.castor.jdo.Database;
 import org.exolab.castor.jdo.Persistent;
-import org.exolab.castor.mapping.AccessMode;
+import java.util.HashMap;
+import java.util.Map;
 
 
 
 /**
- * A single OVAL Definition.
- *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PersistentDefinition
-    extends Definition
-    implements Persistent
+public abstract class JdoCallbackHandler<T extends Persistent>
 {
 
     /**
      * Logger.
      */
-    private static Log  _LOG = LogFactory.getLog( PersistentDefinition.class );
+    private static Log  _LOG = LogFactory.getLog( JdoCallbackHandler.class );
 
 
 
     /**
-     * Constructor.
      */
-    public PersistentDefinition()
+    private static Map<Class<? extends Persistent>, JdoCallbackHandler<?>> _createHandlers()
     {
+        Map<Class<? extends Persistent>, JdoCallbackHandler<?>>  handlers =
+            new HashMap<Class<? extends Persistent>, JdoCallbackHandler<?>>();
+
+        handlers.put( PersistentDefinition.class, new DefinitionCallbackHandler() );
+
+        return handlers;
     }
 
+    private static Map<Class<? extends Persistent>, JdoCallbackHandler<?>>  _handlers =
+        _createHandlers();
 
-    /**
-     * Constructor.
-     */
-    public PersistentDefinition(
-                    final String id,
-                    final int version
+
+    private static <T extends Persistent> JdoCallbackHandler<T> _getHandler(
+                    final Class<T> type
                     )
     {
-        super( id, version );
+        @SuppressWarnings( "unchecked" )
+        JdoCallbackHandler<T>  handler = (JdoCallbackHandler<T>)_handlers.get( type );
+        return handler;
     }
+
+
+
+    private static OvalXml  _mapper = null;
+
+    protected static OvalXml _getMapper()
+    throws Exception
+    {
+        if (_mapper == null) {
+            _mapper = OvalContext.INSTANCE.getXml();
+        }
+
+        return _mapper;
+    }
+
+
+
+
+//    private Class<T>  _type;
+
 
 
     /**
      * Constructor.
      */
-    public PersistentDefinition(
-                    final String id,
-                    final int version,
-                    final DefinitionClass clazz
-                    )
+    protected JdoCallbackHandler()
     {
-        super( id, version, clazz );
     }
 
 
-    /**
-     * Constructor.
-     */
-    public PersistentDefinition(
-                    final String id,
-                    final int version,
-                    final DefinitionClass clazz,
-                    final Metadata metadata
+//    /**
+//     * Constructor.
+//     */
+//    protected JdoCallbackHandler(
+//                    final Class<T> type
+//                    )
+//    {
+//        setType( type );
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public void setType( final Class<T> type )
+//    {
+//        _type = type;
+//    }
+
+
+    public static <T extends Persistent> Class<T> jdoLoad(
+                    final Class<T> type,
+                    final T object
                     )
     {
-        super( id, version, clazz, metadata );
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace( "***** jdoLoad *****" );
+        }
+
+        JdoCallbackHandler<T>  handler = _getHandler( type );
+        if (handler == null) {
+            if (_LOG.isErrorEnabled()) {
+                _LOG.error( "INTERNAL ERROR: handler NOT found, type="
+                                + type.getName()  );
+            }
+            return type;
+        }
+
+        handler.jdoLoad( object );
+
+        return type;
     }
+
+
+
+    public static <T extends Persistent> void jdoBeforeCreate(
+                    final Class<T> type,
+                    final T object
+                    )
+    {
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace( "***** jdoBeforeCreate *****" );
+        }
+
+        JdoCallbackHandler<T>  handler = _getHandler( type );
+        if (handler == null) {
+            if (_LOG.isErrorEnabled()) {
+                _LOG.error( "INTERNAL ERROR: handler NOT found, type="
+                                + type.getName()  );
+            }
+            return;
+        }
+
+        handler.jdoBeforeCreate( object );
+    }
+
 
 
     //**************************************************************
     //  Persistent
     //**************************************************************
 
-    private OvalXml  mapper = null;
+//    public void jdoPersistent( final Database db ) { }
+//
+//    public void jdoTransient() { }
+//
+//    public Class<?> jdoLoad( final AccessMode accessMode ) { return null; }
+//
+//    public void jdoBeforeCreate( final Database db ) { }
+//
+//    public void jdoAfterCreate() { }
+//
+//    public void jdoStore( final boolean modified ) { }
+//
+//    public void jdoBeforeRemove() { }
+//
+//    public void jdoAfterRemove() { }
+//
+//    public void jdoUpdate() { }
 
 
-    public void jdoPersistent( final Database db ) { }
+    public Class<T> jdoLoad( final T object ) { return null; }
 
-    public void jdoTransient() { }
+    public void jdoBeforeCreate( final T object ) { }
 
 
-    public Class<?> jdoLoad(
-                    final AccessMode accessMode
-                    )
+
+    //**************************************************************
+    //  Handlers
+    //**************************************************************
+
+    private static class DefinitionCallbackHandler
+    extends JdoCallbackHandler<PersistentDefinition>
     {
-        if (_LOG.isTraceEnabled()) {
-            _LOG.trace( "***** jdoLoad *****" );
-        }
-        String  xml = xmlGetCriteria();
-        if (xml != null) {
-            if (_LOG.isTraceEnabled()) {
-                _LOG.trace( "criteria (XML)=" + xml );
-            }
 
-            try {
-                if (mapper == null) {
-                    mapper = OvalContext.INSTANCE.getXml();
-                }
-                Criteria  criteria = (Criteria)mapper.unmarshalFromString( xml );
-                setCriteria( criteria );
-                if (_LOG.isTraceEnabled()) {
-                    _LOG.trace( "criteria (Object)=" + criteria );
-                }
-            } catch (Exception ex) {
-                if (_LOG.isErrorEnabled()) {
-                    _LOG.error( ex.getMessage() );
-                }
-            }
-        }
-
-        return null;
-    }
-
-
-    public void jdoBeforeCreate(
-                    final Database db
-                    )
-    {
-        if (_LOG.isTraceEnabled()) {
-            _LOG.trace( "***** jdoBeforeCreate *****" );
-        }
-        Criteria  criteria = getCriteria();
-        if (criteria != null) {
-            if (_LOG.isTraceEnabled()) {
-                _LOG.trace( "criteria (Object)=" + criteria );
-            }
-
-            try {
-                if (mapper == null) {
-                    mapper = OvalContext.INSTANCE.getXml();
-                }
-                String  xml = mapper.marshalToString( criteria );
-                xmlSetCriteria( xml );
+        @Override
+        public Class<PersistentDefinition> jdoLoad(
+                        final PersistentDefinition object
+                        )
+        {
+            String  xml = object.xmlGetCriteria();
+            if (xml != null) {
                 if (_LOG.isTraceEnabled()) {
                     _LOG.trace( "criteria (XML)=" + xml );
                 }
-            } catch (Exception ex) {
-                if (_LOG.isErrorEnabled()) {
-                    _LOG.error( ex.getMessage() );
+
+                try {
+                    Criteria  criteria = (Criteria)_getMapper().unmarshalFromString( xml );
+                    object.setCriteria( criteria );
+                    if (_LOG.isTraceEnabled()) {
+                        _LOG.trace( "criteria (Object)=" + criteria );
+                    }
+                } catch (Exception ex) {
+                    if (_LOG.isErrorEnabled()) {
+                        _LOG.error( ex.getMessage() );
+                    }
+                }
+            }
+
+            return PersistentDefinition.class;
+        }
+
+
+        @Override
+        public void jdoBeforeCreate(
+                        final PersistentDefinition object
+                        )
+        {
+            Criteria  criteria = object.getCriteria();
+            if (criteria != null) {
+                if (_LOG.isTraceEnabled()) {
+                    _LOG.trace( "criteria (Object)=" + criteria );
+                }
+
+                try {
+                    String  xml = _getMapper().marshalToString( criteria );
+                    object.xmlSetCriteria( xml );
+                    if (_LOG.isTraceEnabled()) {
+                        _LOG.trace( "criteria (XML)=" + xml );
+                    }
+                } catch (Exception ex) {
+                    if (_LOG.isErrorEnabled()) {
+                        _LOG.error( ex.getMessage() );
+                    }
                 }
             }
         }
     }
 
-
-    public void jdoAfterCreate() { }
-
-    public void jdoStore( final boolean modified ) { }
-
-    public void jdoBeforeRemove() { }
-
-    public void jdoAfterRemove() { }
-
-    public void jdoUpdate() { }
-
 }
-// Definition
+// JdoCallbackHandler
