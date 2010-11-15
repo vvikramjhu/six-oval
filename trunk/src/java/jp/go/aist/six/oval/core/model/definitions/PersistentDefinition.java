@@ -42,10 +42,7 @@ public class PersistentDefinition
     implements Persistent
 {
 
-//    /**
-//     * Logger.
-//     */
-//    private static Log  _LOG = LogFactory.getLog( PersistentDefinition.class );
+    private String  _criteriaXml;
 
 
 
@@ -96,12 +93,27 @@ public class PersistentDefinition
     }
 
 
+
+    /**
+     */
+    public void xmlSetCriteria(
+                    final String xml
+                    )
+    {
+        _criteriaXml = xml;
+    }
+
+
+    public String xmlGetCriteria()
+    {
+        return _criteriaXml;
+    }
+
+
+
     //**************************************************************
     //  Persistent
     //**************************************************************
-
-//    private OvalXml  mapper = null;
-
 
     public void jdoPersistent( final Database db ) { }
 
@@ -113,34 +125,6 @@ public class PersistentDefinition
                     )
     {
         return JdoCallbackHandler.jdoLoad( PersistentDefinition.class, this );
-
-
-//        if (_LOG.isTraceEnabled()) {
-//            _LOG.trace( "***** jdoLoad *****" );
-//        }
-//        String  xml = xmlGetCriteria();
-//        if (xml != null) {
-//            if (_LOG.isTraceEnabled()) {
-//                _LOG.trace( "criteria (XML)=" + xml );
-//            }
-//
-//            try {
-//                if (mapper == null) {
-//                    mapper = OvalContext.INSTANCE.getXml();
-//                }
-//                Criteria  criteria = (Criteria)mapper.unmarshalFromString( xml );
-//                setCriteria( criteria );
-//                if (_LOG.isTraceEnabled()) {
-//                    _LOG.trace( "criteria (Object)=" + criteria );
-//                }
-//            } catch (Exception ex) {
-//                if (_LOG.isErrorEnabled()) {
-//                    _LOG.error( ex.getMessage() );
-//                }
-//            }
-//        }
-//
-//        return null;
     }
 
 
@@ -149,32 +133,6 @@ public class PersistentDefinition
                     )
     {
         JdoCallbackHandler.jdoBeforeCreate( PersistentDefinition.class, this );
-
-
-//        if (_LOG.isTraceEnabled()) {
-//            _LOG.trace( "***** jdoBeforeCreate *****" );
-//        }
-//        Criteria  criteria = getCriteria();
-//        if (criteria != null) {
-//            if (_LOG.isTraceEnabled()) {
-//                _LOG.trace( "criteria (Object)=" + criteria );
-//            }
-//
-//            try {
-//                if (mapper == null) {
-//                    mapper = OvalContext.INSTANCE.getXml();
-//                }
-//                String  xml = mapper.marshalToString( criteria );
-//                xmlSetCriteria( xml );
-//                if (_LOG.isTraceEnabled()) {
-//                    _LOG.trace( "criteria (XML)=" + xml );
-//                }
-//            } catch (Exception ex) {
-//                if (_LOG.isErrorEnabled()) {
-//                    _LOG.error( ex.getMessage() );
-//                }
-//            }
-//        }
     }
 
 

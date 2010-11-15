@@ -5,6 +5,7 @@ import jp.go.aist.six.oval.model.OvalElement;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Definitions;
+import jp.go.aist.six.oval.model.definitions.LocalVariable;
 import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.Reference;
@@ -16,6 +17,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjects;
 import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.definitions.Tests;
 import jp.go.aist.six.oval.model.definitions.Variable;
+import jp.go.aist.six.oval.model.definitions.Variables;
 import jp.go.aist.six.oval.model.independent.FamilyItem;
 import jp.go.aist.six.oval.model.independent.FamilyState;
 import jp.go.aist.six.oval.model.independent.TextFileContent54Object;
@@ -474,13 +476,20 @@ public abstract class Validators
                         final Variable expected
                         )
         {
+            if (expected == null) {
+                return;
+            }
+
             super.equals( actual, expected );
-//            if (expected instanceof LocalVariable) {
+            Reporter.log( "*** actual type: " + actual.getClass().getName(), true );
+
+            if (expected instanceof LocalVariable) {
+                Assert.assertTrue( actual instanceof LocalVariable );
 //                LocalVariable  eLocal = (LocalVariable)expected;
 //                LocalVariable  aLocal = (LocalVariable)actual;
 //                Component  eComponent = eLocal.getComponent();
 //                Component  aComponent = aLocal.getComponent();
-//            }
+            }
         }
     }
 
@@ -614,7 +623,15 @@ public abstract class Validators
             }
 
             Reporter.log( " - oval_definitions/variables", true );
-            Assert.assertEquals( actual.getVariables(), expected.getVariables() );
+            Variables  evariables = expected.getVariables();
+            if (evariables != null) {
+                Variables  avariables = actual.getVariables();
+                for (Variable  evariable : evariables) {
+                    Variable  avariable = avariables.find( evariable.getOvalID() );
+                    Assert.assertNotNull(  avariable );
+                    validator( Variable.class ).equals( avariable, evariable );
+                }
+            }
         }
     }
 

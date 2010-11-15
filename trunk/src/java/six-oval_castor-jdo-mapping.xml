@@ -139,12 +139,14 @@
             <sql name="deprecated" type="bit"/>
         </field>
 
+<!--
         <field name="criteria" type="string"
             set-method="xmlSetCriteria"
             get-method="xmlGetCriteria"
             >
             <sql name="criteria_xml" type="char"/>
         </field>
+-->
 
 
         <!-- // metadata // -->
