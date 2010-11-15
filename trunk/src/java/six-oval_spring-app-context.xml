@@ -53,7 +53,7 @@
                 <entry key="jp.go.aist.six.oval.model.definitions.Definition"
                     value="jp.go.aist.six.oval.core.store.DefinitionDao"/>
 <!--
-                <entry key="jp.go.aist.six.oval.core.model.definitions.PersistentDefinition"
+                <entry key="jp.go.aist.six.oval.core.store.PersistentDefinition"
                     value="jp.go.aist.six.oval.core.store.PersistentDefinitionDao"/>
 -->
 

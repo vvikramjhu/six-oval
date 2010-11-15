@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.core.model.definitions.PersistentDefinition;
 import jp.go.aist.six.oval.model.definitions.Affected;
 import jp.go.aist.six.oval.model.definitions.Cve;
 import jp.go.aist.six.oval.model.definitions.Metadata;

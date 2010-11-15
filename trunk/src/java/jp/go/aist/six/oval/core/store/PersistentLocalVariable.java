@@ -18,9 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.model.definitions;
+package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.core.model.JdoCallbackHandler;
 import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.definitions.LocalVariable;
 import org.exolab.castor.jdo.Database;

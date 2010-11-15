@@ -18,10 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.model;
+package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.core.model.definitions.PersistentDefinition;
-import jp.go.aist.six.oval.core.model.definitions.PersistentLocalVariable;
 import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.definitions.Component;
