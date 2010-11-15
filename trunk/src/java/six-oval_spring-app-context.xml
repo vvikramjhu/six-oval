@@ -52,13 +52,6 @@
                     
                 <entry key="jp.go.aist.six.oval.model.definitions.Definition"
                     value="jp.go.aist.six.oval.core.store.DefinitionDao"/>
-<!--
-                <entry key="jp.go.aist.six.oval.core.store.PersistentDefinition"
-                    value="jp.go.aist.six.oval.core.store.PersistentDefinitionDao"/>
--->
-
-                <!-- entry key="jp.go.aist.six.oval.core.model.definitions.DefinitionCriteria"
-                    value="jp.go.aist.six.oval.core.store.DefinitionCriteriaDao"/ -->
 
                 <entry key="jp.go.aist.six.oval.model.definitions.Test"
                     value="jp.go.aist.six.oval.core.store.TestDao"/>
@@ -72,8 +65,10 @@
                 <entry key="jp.go.aist.six.oval.model.definitions.Variable"
                     value="jp.go.aist.six.oval.core.store.VariableDao"/>
 
+<!--
                 <entry key="jp.go.aist.six.oval.core.model.definitions.DefinitionTestAssociation"
                     value="jp.go.aist.six.oval.core.store.DefinitionTestAssociationDao"/>
+-->
 
 
             <!-- // System Characteristics // -->

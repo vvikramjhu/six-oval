@@ -549,6 +549,7 @@
     <!-- ******************************************************* -->
     <!-- DefinitionTestAssociation                               -->
     <!-- ******************************************************* -->
+<!--
     <class name="jp.go.aist.six.oval.core.model.definitions.DefinitionTestAssociation"
         identity="persistentID"
         key-generator="IDENTITY"
@@ -568,6 +569,7 @@
             <sql name="test__PID" type="char"/>
         </field>
     </class>
+-->
 
 
 

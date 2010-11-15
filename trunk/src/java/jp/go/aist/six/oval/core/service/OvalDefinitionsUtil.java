@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.model.definitions;
+package jp.go.aist.six.oval.core.service;
 
 import jp.go.aist.six.oval.model.definitions.Criteria;
 import jp.go.aist.six.oval.model.definitions.CriteriaElement;
