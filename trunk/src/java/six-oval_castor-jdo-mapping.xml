@@ -778,7 +778,27 @@
     <!-- ******************************************************* -->
     <!-- LocalVariable                                           -->
     <!-- ******************************************************* -->
+<!--
     <class name="jp.go.aist.six.oval.model.definitions.LocalVariable"
+        extends="jp.go.aist.six.oval.model.definitions.Variable"
+        identity="persistentID">
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_variable_local"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+
+        <field name="component" type="string"
+            set-method="xmlSetComponent"
+            get-method="xmlGetComponent"
+            >
+            <sql name="component_xml" type="char"/>
+        </field>
+    </class>
+-->
+
+    <class name="jp.go.aist.six.oval.core.model.definitions.PersistentLocalVariable"
         extends="jp.go.aist.six.oval.model.definitions.Variable"
         identity="persistentID">
         <cache-type type="unlimited"/>

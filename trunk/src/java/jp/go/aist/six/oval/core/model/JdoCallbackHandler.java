@@ -21,8 +21,10 @@
 package jp.go.aist.six.oval.core.model;
 
 import jp.go.aist.six.oval.core.model.definitions.PersistentDefinition;
+import jp.go.aist.six.oval.core.model.definitions.PersistentLocalVariable;
 import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.xml.OvalXml;
+import jp.go.aist.six.oval.model.definitions.Component;
 import jp.go.aist.six.oval.model.definitions.Criteria;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -48,6 +50,7 @@ public abstract class JdoCallbackHandler<T extends Persistent>
 
 
     /**
+     * Concrete handlers.
      */
     private static Map<Class<? extends Persistent>, JdoCallbackHandler<?>> _createHandlers()
     {
@@ -55,9 +58,11 @@ public abstract class JdoCallbackHandler<T extends Persistent>
             new HashMap<Class<? extends Persistent>, JdoCallbackHandler<?>>();
 
         handlers.put( PersistentDefinition.class, new DefinitionCallbackHandler() );
+        handlers.put( PersistentLocalVariable.class, new LocalVariableCallbackHandler() );
 
         return handlers;
     }
+
 
     private static Map<Class<? extends Persistent>, JdoCallbackHandler<?>>  _handlers =
         _createHandlers();
@@ -250,6 +255,66 @@ public abstract class JdoCallbackHandler<T extends Persistent>
                     object.xmlSetCriteria( xml );
                     if (_LOG.isTraceEnabled()) {
                         _LOG.trace( "criteria (XML)=" + xml );
+                    }
+                } catch (Exception ex) {
+                    if (_LOG.isErrorEnabled()) {
+                        _LOG.error( ex.getMessage() );
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    private static class LocalVariableCallbackHandler
+    extends JdoCallbackHandler<PersistentLocalVariable>
+    {
+
+        @Override
+        public Class<PersistentLocalVariable> jdoLoad(
+                        final PersistentLocalVariable object
+                        )
+        {
+            String  xml = object.xmlGetComponent();
+            if (xml != null) {
+                if (_LOG.isTraceEnabled()) {
+                    _LOG.trace( "component (XML)=" + xml );
+                }
+
+                try {
+                    Component  component = (Component)_getMapper().unmarshalFromString( xml );
+                    object.setComponent( component );
+                    if (_LOG.isTraceEnabled()) {
+                        _LOG.trace( "component (Object)=" + component );
+                    }
+                } catch (Exception ex) {
+                    if (_LOG.isErrorEnabled()) {
+                        _LOG.error( ex.getMessage() );
+                    }
+                }
+            }
+
+            return PersistentLocalVariable.class;
+        }
+
+
+        @Override
+        public void jdoBeforeCreate(
+                        final PersistentLocalVariable object
+                        )
+        {
+            Component  component = object.getComponent();
+            if (component != null) {
+                if (_LOG.isTraceEnabled()) {
+                    _LOG.trace( "component (Object)=" + component );
+                }
+
+                try {
+                    String  xml = _getMapper().marshalToString( component );
+                    object.xmlSetComponent( xml );
+                    if (_LOG.isTraceEnabled()) {
+                        _LOG.trace( "component (XML)=" + xml );
                     }
                 } catch (Exception ex) {
                     if (_LOG.isErrorEnabled()) {

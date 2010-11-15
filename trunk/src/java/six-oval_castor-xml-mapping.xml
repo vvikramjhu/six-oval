@@ -885,6 +885,7 @@
     <!-- ======================================================= -->
     <!-- LocalVariable                                           -->
     <!-- ======================================================= -->
+<!--
     <class name="jp.go.aist.six.oval.model.definitions.LocalVariable"
         extends="jp.go.aist.six.oval.model.definitions.Variable">
         <map-to xml="local_variable"
@@ -894,13 +895,18 @@
             type="jp.go.aist.six.oval.model.definitions.Component">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
-
-<!--
-        <field name="contentXml" type="java.lang.Object" 
-            handler="jp.go.aist.six.oval.core.xml.StringXmlHandler">
-            <bind-xml name="object_component" node="element"/>
-        </field>
+    </class>
 -->
+
+    <class name="jp.go.aist.six.oval.core.model.definitions.PersistentLocalVariable"
+        extends="jp.go.aist.six.oval.model.definitions.Variable">
+        <map-to xml="local_variable"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="component" 
+            type="jp.go.aist.six.oval.model.definitions.Component">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
     </class>
 
 

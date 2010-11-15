@@ -18,14 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.core.model.definitions;
 
-import jp.go.aist.six.oval.core.service.OvalContext;
-import jp.go.aist.six.oval.core.xml.OvalXml;
-import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.core.model.JdoCallbackHandler;
 import jp.go.aist.six.oval.model.common.Datatype;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import jp.go.aist.six.oval.model.definitions.LocalVariable;
 import org.exolab.castor.jdo.Database;
 import org.exolab.castor.jdo.Persistent;
 import org.exolab.castor.mapping.AccessMode;
@@ -40,30 +37,19 @@ import org.exolab.castor.mapping.AccessMode;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class LocalVariable
-    extends Variable
+public class PersistentLocalVariable
+    extends LocalVariable
     implements Persistent
 {
 
-    /**
-     * Logger.
-     */
-    private static Log  _LOG = LogFactory.getLog( LocalVariable.class );
-
-
-
-    private Component  _component;
-    //{1..1}
-
-
-    private String  _contentXml;
+    private String  _componentXml;
 
 
 
     /**
      * Constructor.
      */
-    public LocalVariable()
+    public PersistentLocalVariable()
     {
     }
 
@@ -71,7 +57,7 @@ public class LocalVariable
     /**
      * Constructor.
      */
-    public LocalVariable(
+    public PersistentLocalVariable(
                     final String id,
                     final int version
                     )
@@ -83,7 +69,7 @@ public class LocalVariable
     /**
      * Constructor.
      */
-    public LocalVariable(
+    public PersistentLocalVariable(
                     final String id,
                     final int version,
                     final String comment
@@ -97,7 +83,7 @@ public class LocalVariable
     /**
      * Constructor.
      */
-    public LocalVariable(
+    public PersistentLocalVariable(
                     final String id,
                     final int version,
                     final String comment,
@@ -111,55 +97,17 @@ public class LocalVariable
 
     /**
      */
-    public void setComponent(
-                    final Component component
-                    )
-    {
-        _component = component;
-    }
-
-
-    public LocalVariable component(
-                    final Component component
-                    )
-    {
-        setComponent( component );
-        return this;
-    }
-
-
-    public Component getComponent()
-    {
-        return _component;
-    }
-
-
-
-    /**
-     */
     public void xmlSetComponent(
                     final String xml
                     )
     {
-        _contentXml = xml;
+        _componentXml = xml;
     }
 
 
     public String xmlGetComponent()
     {
-        return _contentXml;
-    }
-
-
-
-    //**************************************************************
-    //  Variable
-    //**************************************************************
-
-    @Override
-    public EntityType getEntityType()
-    {
-        return EntityType.VARIABLE_LOCAL;
+        return _componentXml;
     }
 
 
@@ -168,7 +116,7 @@ public class LocalVariable
     //  Persistent
     //**************************************************************
 
-    private OvalXml  mapper = null;
+//    private OvalXml  mapper = null;
 
 
     public void jdoPersistent( final Database db ) { }
@@ -180,32 +128,7 @@ public class LocalVariable
                     final AccessMode accessMode
                     )
     {
-        if (_LOG.isTraceEnabled()) {
-            _LOG.trace( "***** jdoLoad *****" );
-        }
-        String  xml = xmlGetComponent();
-        if (xml != null) {
-            if (_LOG.isTraceEnabled()) {
-                _LOG.trace( "component (XML)=" + xml );
-            }
-
-            try {
-                if (mapper == null) {
-                    mapper = OvalContext.INSTANCE.getXml();
-                }
-                Component  component = (Component)mapper.unmarshalFromString( xml );
-                setComponent( component );
-                if (_LOG.isTraceEnabled()) {
-                    _LOG.trace( "component (Object)=" + component );
-                }
-            } catch (Exception ex) {
-                if (_LOG.isErrorEnabled()) {
-                    _LOG.error( ex.getMessage() );
-                }
-            }
-        }
-
-        return null;
+        return JdoCallbackHandler.jdoLoad( PersistentLocalVariable.class, this );
     }
 
 
@@ -213,30 +136,7 @@ public class LocalVariable
                     final Database db
                     )
     {
-        if (_LOG.isTraceEnabled()) {
-            _LOG.trace( "***** jdoBeforeCreate *****" );
-        }
-        Component  component = getComponent();
-        if (component != null) {
-            if (_LOG.isTraceEnabled()) {
-                _LOG.trace( "component (Object)=" + component );
-            }
-
-            try {
-                if (mapper == null) {
-                    mapper = OvalContext.INSTANCE.getXml();
-                }
-                String  xml = mapper.marshalToString( component );
-                xmlSetComponent( xml );
-                if (_LOG.isTraceEnabled()) {
-                    _LOG.trace( "component (XML)=" + xml );
-                }
-            } catch (Exception ex) {
-                if (_LOG.isErrorEnabled()) {
-                    _LOG.error( ex.getMessage() );
-                }
-            }
-        }
+        JdoCallbackHandler.jdoBeforeCreate( PersistentLocalVariable.class, this );
     }
 
 
@@ -249,42 +149,6 @@ public class LocalVariable
     public void jdoAfterRemove() { }
 
     public void jdoUpdate() { }
-
-
-
-    //**************************************************************
-    //  java.lang.Object
-    //**************************************************************
-
-    @Override
-    public int hashCode()
-    {
-        return super.hashCode();
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (!(obj instanceof LocalVariable)) {
-            return false;
-        }
-
-        return super.equals( obj );
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return "local_variable[" + super.toString()
-                        + ", " + getComponent()
-                        + "]";
-    }
 
 }
 // LocalVariable
