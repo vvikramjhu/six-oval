@@ -780,7 +780,6 @@
     <!-- ******************************************************* -->
     <!-- LocalVariable                                           -->
     <!-- ******************************************************* -->
-<!--
     <class name="jp.go.aist.six.oval.model.definitions.LocalVariable"
         extends="jp.go.aist.six.oval.model.definitions.Variable"
         identity="persistentID">
@@ -798,6 +797,7 @@
             <sql name="component_xml" type="char"/>
         </field>
     </class>
+<!--
 -->
 
     <class name="jp.go.aist.six.oval.core.store.PersistentLocalVariable"

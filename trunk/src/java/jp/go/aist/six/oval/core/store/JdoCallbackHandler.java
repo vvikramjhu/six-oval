@@ -24,9 +24,11 @@ import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.definitions.Component;
 import jp.go.aist.six.oval.model.definitions.Criteria;
+import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.LocalVariable;
+import jp.go.aist.six.util.orm.Persistable;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.exolab.castor.jdo.Persistent;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,7 +39,7 @@ import java.util.Map;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class JdoCallbackHandler<T extends Persistent>
+public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
 {
 
     /**
@@ -50,28 +52,33 @@ public abstract class JdoCallbackHandler<T extends Persistent>
     /**
      * Concrete handlers.
      */
-    private static Map<Class<? extends Persistent>, JdoCallbackHandler<?>> _createHandlers()
+    private static Map<Class<? extends Persistable<?>>, JdoCallbackHandler<?, ?>> _createHandlers()
     {
-        Map<Class<? extends Persistent>, JdoCallbackHandler<?>>  handlers =
-            new HashMap<Class<? extends Persistent>, JdoCallbackHandler<?>>();
+        Map<Class<? extends Persistable<?>>, JdoCallbackHandler<?, ?>>  handlers =
+            new HashMap<Class<? extends Persistable<?>>, JdoCallbackHandler<?, ?>>();
 
-        handlers.put( PersistentDefinition.class, new DefinitionCallbackHandler() );
-        handlers.put( PersistentLocalVariable.class, new LocalVariableCallbackHandler() );
+        JdoCallbackHandler<String, Definition>  definitionHandler = new DefinitionCallbackHandler();
+        handlers.put( Definition.class, definitionHandler );
+        handlers.put( PersistentDefinition.class, definitionHandler );
+
+        JdoCallbackHandler<String, LocalVariable>  localVariableHandler = new LocalVariableCallbackHandler();
+        handlers.put( LocalVariable.class, localVariableHandler );
+        handlers.put( PersistentLocalVariable.class, localVariableHandler );
 
         return handlers;
     }
 
 
-    private static Map<Class<? extends Persistent>, JdoCallbackHandler<?>>  _handlers =
+    private static Map<Class<? extends Persistable<?>>, JdoCallbackHandler<?, ?>>  _handlers =
         _createHandlers();
 
 
-    private static <T extends Persistent> JdoCallbackHandler<T> _getHandler(
+    private static <K, T extends Persistable<K>> JdoCallbackHandler<K, T> _getHandler(
                     final Class<T> type
                     )
     {
         @SuppressWarnings( "unchecked" )
-        JdoCallbackHandler<T>  handler = (JdoCallbackHandler<T>)_handlers.get( type );
+        JdoCallbackHandler<K, T>  handler = (JdoCallbackHandler<K, T>)_handlers.get( type );
         return handler;
     }
 
@@ -124,7 +131,7 @@ public abstract class JdoCallbackHandler<T extends Persistent>
 //    }
 
 
-    public static <T extends Persistent> Class<T> jdoLoad(
+    public static <K, T extends Persistable<K>> Class<T> jdoLoad(
                     final Class<T> type,
                     final T object
                     )
@@ -133,7 +140,7 @@ public abstract class JdoCallbackHandler<T extends Persistent>
             _LOG.trace( "***** jdoLoad *****" );
         }
 
-        JdoCallbackHandler<T>  handler = _getHandler( type );
+        JdoCallbackHandler<K, T>  handler = _getHandler( type );
         if (handler == null) {
             if (_LOG.isErrorEnabled()) {
                 _LOG.error( "INTERNAL ERROR: handler NOT found, type="
@@ -149,7 +156,7 @@ public abstract class JdoCallbackHandler<T extends Persistent>
 
 
 
-    public static <T extends Persistent> void jdoBeforeCreate(
+    public static <K, T extends Persistable<K>> void jdoBeforeCreate(
                     final Class<T> type,
                     final T object
                     )
@@ -158,7 +165,7 @@ public abstract class JdoCallbackHandler<T extends Persistent>
             _LOG.trace( "***** jdoBeforeCreate *****" );
         }
 
-        JdoCallbackHandler<T>  handler = _getHandler( type );
+        JdoCallbackHandler<K, T>  handler = _getHandler( type );
         if (handler == null) {
             if (_LOG.isErrorEnabled()) {
                 _LOG.error( "INTERNAL ERROR: handler NOT found, type="
@@ -206,12 +213,12 @@ public abstract class JdoCallbackHandler<T extends Persistent>
     //**************************************************************
 
     private static class DefinitionCallbackHandler
-    extends JdoCallbackHandler<PersistentDefinition>
+    extends JdoCallbackHandler<String, Definition>
     {
 
         @Override
-        public Class<PersistentDefinition> jdoLoad(
-                        final PersistentDefinition object
+        public Class<Definition> jdoLoad(
+                        final Definition object
                         )
         {
             String  xml = object.xmlGetCriteria();
@@ -233,13 +240,13 @@ public abstract class JdoCallbackHandler<T extends Persistent>
                 }
             }
 
-            return PersistentDefinition.class;
+            return Definition.class;
         }
 
 
         @Override
         public void jdoBeforeCreate(
-                        final PersistentDefinition object
+                        final Definition object
                         )
         {
             Criteria  criteria = object.getCriteria();
@@ -266,12 +273,12 @@ public abstract class JdoCallbackHandler<T extends Persistent>
 
 
     private static class LocalVariableCallbackHandler
-    extends JdoCallbackHandler<PersistentLocalVariable>
+    extends JdoCallbackHandler<String, LocalVariable>
     {
 
         @Override
-        public Class<PersistentLocalVariable> jdoLoad(
-                        final PersistentLocalVariable object
+        public Class<LocalVariable> jdoLoad(
+                        final LocalVariable object
                         )
         {
             String  xml = object.xmlGetComponent();
@@ -293,13 +300,13 @@ public abstract class JdoCallbackHandler<T extends Persistent>
                 }
             }
 
-            return PersistentLocalVariable.class;
+            return LocalVariable.class;
         }
 
 
         @Override
         public void jdoBeforeCreate(
-                        final PersistentLocalVariable object
+                        final LocalVariable object
                         )
         {
             Component  component = object.getComponent();

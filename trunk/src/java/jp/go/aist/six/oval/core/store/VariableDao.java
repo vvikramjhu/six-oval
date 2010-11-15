@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.core.store;
 
+import jp.go.aist.six.oval.model.definitions.LocalVariable;
 import jp.go.aist.six.oval.model.definitions.Variable;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -66,13 +67,19 @@ public class VariableDao
     //  Dao, CastorDao
     //**************************************************************
 
-//    @Override
-//    public String create(
-//                    final Variable variable
-//                    )
-//    {
-//        if (LocalVariable.class.isInstance( variable )) {
-//            LocalVariable  lv = LocalVariable.class.cast( variable );
+    @Override
+    public String create(
+                    final Variable variable
+                    )
+    {
+        if (LocalVariable.class.isInstance( variable )) {
+            LocalVariable  lv = LocalVariable.class.cast( variable );
+            if (lv instanceof PersistentLocalVariable) {
+                // callback handler
+            } else {
+                JdoCallbackHandler.jdoBeforeCreate( LocalVariable.class, lv );
+            }
+
 //            Component  component = lv.getComponent();
 //            if (component != null) {
 //                try {
@@ -84,10 +91,10 @@ public class VariableDao
 //                    _LOG.warn(  "'component' property NOT persisted" );
 //                }
 //            }
-//        }
-//
-//        return super.create( variable );
-//    }
+        }
+
+        return super.create( variable );
+    }
 
 }
 // VariableDao

@@ -41,9 +41,6 @@ public class PersistentLocalVariable
     implements Persistent
 {
 
-    private String  _componentXml;
-
-
 
     /**
      * Constructor.
@@ -94,29 +91,9 @@ public class PersistentLocalVariable
 
 
 
-    /**
-     */
-    public void xmlSetComponent(
-                    final String xml
-                    )
-    {
-        _componentXml = xml;
-    }
-
-
-    public String xmlGetComponent()
-    {
-        return _componentXml;
-    }
-
-
-
     //**************************************************************
     //  Persistent
     //**************************************************************
-
-//    private OvalXml  mapper = null;
-
 
     public void jdoPersistent( final Database db ) { }
 

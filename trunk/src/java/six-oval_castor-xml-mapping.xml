@@ -888,7 +888,6 @@
     <!-- ======================================================= -->
     <!-- LocalVariable                                           -->
     <!-- ======================================================= -->
-<!--
     <class name="jp.go.aist.six.oval.model.definitions.LocalVariable"
         extends="jp.go.aist.six.oval.model.definitions.Variable">
         <map-to xml="local_variable"
@@ -899,8 +898,7 @@
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
     </class>
--->
-
+<!--
     <class name="jp.go.aist.six.oval.core.store.PersistentLocalVariable"
         extends="jp.go.aist.six.oval.model.definitions.Variable">
         <map-to xml="local_variable"
@@ -911,6 +909,7 @@
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
     </class>
+-->
 
 
 

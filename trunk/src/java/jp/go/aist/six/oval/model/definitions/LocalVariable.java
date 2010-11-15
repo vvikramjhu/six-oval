@@ -40,6 +40,8 @@ public class LocalVariable
     private Component  _component;
     //{1..1}
 
+    private String  _componentXml;
+
 
 
     /**
@@ -113,6 +115,23 @@ public class LocalVariable
     public Component getComponent()
     {
         return _component;
+    }
+
+
+
+    /**
+     */
+    public void xmlSetComponent(
+                    final String xml
+                    )
+    {
+        _componentXml = xml;
+    }
+
+
+    public String xmlGetComponent()
+    {
+        return _componentXml;
     }
 
 
