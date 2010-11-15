@@ -49,6 +49,9 @@ public class Definition
     private Criteria  _criteria;
     //{0..1}
 
+    private String  _criteriaXml;
+
+
 
     private DefinitionClass  _definitionClass;
     //{required}
@@ -180,6 +183,23 @@ public class Definition
     public Criteria getCriteria()
     {
         return _criteria;
+    }
+
+
+
+    /**
+     */
+    public void xmlSetCriteria(
+                    final String xml
+                    )
+    {
+        _criteriaXml = xml;
+    }
+
+
+    public String xmlGetCriteria()
+    {
+        return _criteriaXml;
     }
 
 

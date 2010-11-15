@@ -42,10 +42,6 @@ public class PersistentDefinition
     implements Persistent
 {
 
-    private String  _criteriaXml;
-
-
-
     /**
      * Constructor.
      */
@@ -90,23 +86,6 @@ public class PersistentDefinition
                     )
     {
         super( id, version, clazz, metadata );
-    }
-
-
-
-    /**
-     */
-    public void xmlSetCriteria(
-                    final String xml
-                    )
-    {
-        _criteriaXml = xml;
-    }
-
-
-    public String xmlGetCriteria()
-    {
-        return _criteriaXml;
     }
 
 

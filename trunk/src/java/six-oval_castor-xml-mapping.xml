@@ -326,6 +326,7 @@
         </field>
     </class>
 
+<!--
     <class name="jp.go.aist.six.oval.core.model.definitions.PersistentDefinition"
         extends="jp.go.aist.six.oval.model.OvalEntity">
         <map-to xml="definition"
@@ -351,6 +352,7 @@
             <bind-xml name="criteria" node="element"/>
         </field>
     </class>
+-->
 
 
     <!-- ======================================================= -->
@@ -358,12 +360,13 @@
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.definitions.Definitions">
         <field name="definition" 
-            type="jp.go.aist.six.oval.core.model.definitions.PersistentDefinition"
+            type="jp.go.aist.six.oval.model.definitions.Definition"
             collection="collection">
             <bind-xml name="definition" node="element"/>
         </field>
     </class>
 <!--
+            type="jp.go.aist.six.oval.core.model.definitions.PersistentDefinition"
             set-method="addDefinition"
             get-method="iterateDefinition"
 -->

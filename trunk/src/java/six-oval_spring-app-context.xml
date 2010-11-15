@@ -52,8 +52,10 @@
                     
                 <entry key="jp.go.aist.six.oval.model.definitions.Definition"
                     value="jp.go.aist.six.oval.core.store.DefinitionDao"/>
+<!--
                 <entry key="jp.go.aist.six.oval.core.model.definitions.PersistentDefinition"
                     value="jp.go.aist.six.oval.core.store.PersistentDefinitionDao"/>
+-->
 
                 <!-- entry key="jp.go.aist.six.oval.core.model.definitions.DefinitionCriteria"
                     value="jp.go.aist.six.oval.core.store.DefinitionCriteriaDao"/ -->

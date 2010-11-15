@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.core.store;
 
+import jp.go.aist.six.oval.core.service.OvalContext;
+import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.definitions.Affected;
+import jp.go.aist.six.oval.model.definitions.Criteria;
 import jp.go.aist.six.oval.model.definitions.Cve;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Metadata;
@@ -29,6 +32,7 @@ import jp.go.aist.six.oval.model.definitions.Product;
 import jp.go.aist.six.oval.model.definitions.Reference;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.exolab.castor.jdo.Persistent;
 import java.util.Collection;
 import java.util.List;
 
@@ -46,6 +50,20 @@ public class DefinitionDao
      * Logger.
      */
     private static Log  _LOG = LogFactory.getLog( DefinitionDao.class );
+
+
+
+    private static OvalXml  _mapper = null;
+
+    protected static OvalXml _getMapper()
+    throws Exception
+    {
+        if (_mapper == null) {
+            _mapper = OvalContext.INSTANCE.getXml();
+        }
+
+        return _mapper;
+    }
 
 
 
@@ -117,24 +135,24 @@ public class DefinitionDao
             def.setRelatedCve( p_cves );
         }
 
-//        // persist the criteria as XML string.
-//        Criteria  criteria = def.getCriteria();
-//        if (criteria != null) {
-//            try {
-//                OvalXml  mapper = OvalContext.INSTANCE.getXml();
-//                String  xml = mapper.marshalToString( criteria );
-//                DefinitionCriteria  dc = new DefinitionCriteria();
-//                dc.setOvalID( def.getOvalID() );
-//                dc.setOvalVersion( def.getOvalVersion() );
-//                dc.setCriteriaXml( xml );
-//                getForwardingDao( DefinitionCriteria.class ).sync( dc );
-//
-////                def.setCriteriaXml( xml );
-//            } catch (Exception ex) {
-//                // TODO:
-//                _LOG.warn(  "'criteria' property NOT persisted" );
-//            }
-//        }
+
+        if (def instanceof Persistent) {
+            // callback handler
+        } else {
+            if (_LOG.isDebugEnabled()) {
+                _LOG.debug( "***** criteria Object to XML *****" );
+            }
+            Criteria  criteria = def.getCriteria();
+            if (criteria != null) {
+                try {
+                    String  xml = _getMapper().marshalToString( criteria );
+                    def.xmlSetCriteria( xml );
+                } catch (Exception ex) {
+                    // TODO:
+                    _LOG.warn( ex.getMessage() );
+                }
+            }
+        }
 
         return super.create( def );
     }
