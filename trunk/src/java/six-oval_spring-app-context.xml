@@ -206,7 +206,7 @@
         <property name="messageConverters">
             <list>
                 <ref bean="marshallingConverter" />
-                <ref bean="stringConverter" />
+                <ref bean="resourceConverter" />
 <!--
                 <ref bean="atomConverter"  />
                 <ref bean="jsonConverter" />
