@@ -193,12 +193,20 @@
         <property name="supportedMediaTypes" value="application/xml"/> 
     </bean> 
 
+    <bean id="stringConverter" 
+        class="org.springframework.http.converter.StringHttpMessageConverter"> 
+    </bean> 
+
+    <bean id="resourceConverter" 
+        class="org.springframework.http.converter.ResourceHttpMessageConverter"> 
+    </bean> 
 
     <bean id="restTemplate" 
         class="org.springframework.web.client.RestTemplate">
         <property name="messageConverters">
             <list>
                 <ref bean="marshallingConverter" />
+                <ref bean="stringConverter" />
 <!--
                 <ref bean="atomConverter"  />
                 <ref bean="jsonConverter" />
