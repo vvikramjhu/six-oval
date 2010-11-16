@@ -539,22 +539,22 @@ CHARACTER SET utf8;
 /* ============================================================== */
 /* Definition - Test association                                  */
 /* ============================================================== */
-CREATE TABLE IF NOT EXISTS oval_assoc__d_definition__d_test
-(
-    PID                 INT             NOT NULL    AUTO_INCREMENT,
-
-    /* (FK) */
-    definition__PID     VARCHAR(64)     NOT NULL,
-    test__PID         VARCHAR(64)     NOT NULL,
-
-    /* (PK) */
-    PRIMARY KEY (PID),
-    
-    /* INDEX */
-    UNIQUE (definition__PID, test__PID)
-)
-ENGINE=InnoDB
-CHARACTER SET utf8;
+--CREATE TABLE IF NOT EXISTS oval_assoc__d_definition__d_test
+--(
+--    PID                 INT             NOT NULL    AUTO_INCREMENT,
+--
+--    /* (FK) */
+--    definition__PID     VARCHAR(64)     NOT NULL,
+--    test__PID         VARCHAR(64)     NOT NULL,
+--
+--    /* (PK) */
+--    PRIMARY KEY (PID),
+--    
+--    /* INDEX */
+--    UNIQUE (definition__PID, test__PID)
+--)
+--ENGINE=InnoDB
+--CHARACTER SET utf8;
 
 
 
@@ -614,22 +614,22 @@ CHARACTER SET utf8;
 /* ============================================================== */
 /* Definition - SystemObject association                          */
 /* ============================================================== */
-CREATE TABLE IF NOT EXISTS oval_assoc__d_definition__d_object
-(
-    oid                 INT             NOT NULL    AUTO_INCREMENT,
-
-    /* (FK) */
-    definition__oid     VARCHAR(64)     NOT NULL,
-    object__oid         VARCHAR(64)     NOT NULL,
-
-    /* (PK) */
-    PRIMARY KEY (oid),
-    
-    /* INDEX */
-    UNIQUE (definition__oid, object__oid)
-)
-ENGINE=InnoDB
-CHARACTER SET utf8;
+--CREATE TABLE IF NOT EXISTS oval_assoc__d_definition__d_object
+--(
+--    oid                 INT             NOT NULL    AUTO_INCREMENT,
+--
+--    /* (FK) */
+--    definition__oid     VARCHAR(64)     NOT NULL,
+--    object__oid         VARCHAR(64)     NOT NULL,
+--
+--    /* (PK) */
+--    PRIMARY KEY (oid),
+--    
+--    /* INDEX */
+--    UNIQUE (definition__oid, object__oid)
+--)
+--ENGINE=InnoDB
+--CHARACTER SET utf8;
 
 
 

@@ -48,10 +48,10 @@ DELETE FROM oval_s_sc;
 
 /* definitions */
 
-DELETE FROM oval_assoc__d_definition__d_object;
+--DELETE FROM oval_assoc__d_definition__d_object;
 DELETE FROM oval_assoc__d_definitions__d_object;
 DELETE FROM oval_assoc__d_definitions__d_state;
-DELETE FROM oval_assoc__d_definition__d_test;
+--DELETE FROM oval_assoc__d_definition__d_test;
 DELETE FROM oval_assoc__d_definitions__d_test;
 DELETE FROM oval_assoc__d_definitions__d_variable;
 DELETE FROM oval_assoc__d_definition__d_cve;
@@ -59,6 +59,7 @@ DELETE FROM oval_assoc__d_definition__d_platform;
 DELETE FROM oval_assoc__d_definition__d_product;
 DELETE FROM oval_assoc__d_definition__d_reference;
 DELETE FROM oval_assoc__d_definitions__d_definition;
+DELETE FROM oval_assoc__d_test__d_state_ref;
 
 
 DELETE FROM oval_d_test_family;
