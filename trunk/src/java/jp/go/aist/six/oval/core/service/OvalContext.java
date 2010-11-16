@@ -141,10 +141,22 @@ public class OvalContext
 
     /**
      */
-    public Object getBean( final String name )
+    public Object getBean(
+                    final String name
+                    )
     throws Exception
     {
         return _getContext().getBean( name );
+    }
+
+
+    public <T> T getBean(
+                    final String name,
+                    final Class<T> requiredType
+                    )
+    throws Exception
+    {
+        return _getContext().getBean( name, requiredType );
     }
 
 
@@ -155,7 +167,7 @@ public class OvalContext
     throws Exception
     {
         if (_store == null) {
-            _store = (OvalStore)_getContext().getBean( "ovalStore" );
+            _store = _getContext().getBean( "ovalStore", OvalStore.class );
         }
 
         return _store;
@@ -168,7 +180,7 @@ public class OvalContext
     throws Exception
     {
         if (_xml == null) {
-            _xml = (OvalXml)_getContext().getBean( "ovalXml" );
+            _xml = _getContext().getBean( "ovalXml", OvalXml.class );
         }
 
         return _xml;

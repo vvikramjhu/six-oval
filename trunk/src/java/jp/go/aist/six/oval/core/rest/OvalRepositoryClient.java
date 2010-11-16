@@ -61,7 +61,7 @@ public class OvalRepositoryClient
     throws Exception
     {
         OvalContext  context = new OvalContext();
-        OvalRepositoryClient  client = (OvalRepositoryClient)context.getBean( "ovalRepositoryRestClient" );
+        OvalRepositoryClient  client = context.getBean( "ovalRepositoryRestClient", OvalRepositoryClient.class );
 
         if (args.length < 1) {
             System.err.println( "No OVAL Definitions file specified." );
