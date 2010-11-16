@@ -19,7 +19,7 @@
 
 
     <!-- external configurations -->
-    <context:property-placeholder location="six-oval.properties"/>
+    <context:property-placeholder location="classpath:six-oval.properties"/>
 
 
 

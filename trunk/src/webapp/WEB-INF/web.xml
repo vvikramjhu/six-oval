@@ -18,7 +18,7 @@
     <!-- The context params that read by ContextLoaderListener  -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/rest-context.xml</param-value>
+        <param-value>/WEB-INF/six-oval_spring-app-context.xml</param-value>
     </context-param>
 
     <!-- This listener will load other application context file in addition to springweb-servlet.xml -->
