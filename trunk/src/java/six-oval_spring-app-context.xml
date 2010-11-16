@@ -195,6 +195,7 @@
 
     <bean id="stringConverter" 
         class="org.springframework.http.converter.StringHttpMessageConverter"> 
+        <property name="supportedMediaTypes" value="application/xml"/> 
     </bean> 
 
     <bean id="resourceConverter" 
@@ -206,7 +207,7 @@
         <property name="messageConverters">
             <list>
                 <ref bean="marshallingConverter" />
-                <ref bean="resourceConverter" />
+                <ref bean="stringConverter" />
 <!--
                 <ref bean="atomConverter"  />
                 <ref bean="jsonConverter" />

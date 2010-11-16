@@ -25,10 +25,9 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.service.OvalRepository;
 import jp.go.aist.six.oval.service.OvalServiceException;
+import jp.go.aist.six.util.IoUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -192,17 +191,18 @@ public class OvalRepositoryClient
             _LOG.trace( "POST oval_definitions XML file: " + defsFile );
         }
 
-//        String  xml = null;
-//        try {
-//            xml = IoUtil.readCharacters( defsFile );
-//        } catch (Exception ex) {
-//            throw new OvalServiceException( ex );
-//        }
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType( MediaType.APPLICATION_XML );
-//        HttpEntity<String>  entity = new HttpEntity<String>( xml, headers );
+        String  xml = null;
+        try {
+            xml = IoUtil.readCharacters( defsFile );
+        } catch (Exception ex) {
+            throw new OvalServiceException( ex );
+        }
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType( MediaType.APPLICATION_XML );
+        HttpEntity<String>  entity = new HttpEntity<String>( xml, headers );
+//        HttpEntity<String>  entity = new HttpEntity<String>( xml );
 
-        HttpEntity<Resource>  entity = new HttpEntity<Resource>( new FileSystemResource( defsFile ) );
+//        HttpEntity<Resource>  entity = new HttpEntity<Resource>( new FileSystemResource( defsFile ) );
 
         String  location = null;
         try {
