@@ -1827,21 +1827,21 @@ CHARACTER SET utf8;
 /* ============================================================== */
 /* Test - StateRef association                                    */
 /* ============================================================== */
-CREATE TABLE IF NOT EXISTS oval_assoc__d_test__d_state_ref
-(
-    PID                 INT             NOT NULL    AUTO_INCREMENT,
-
-    test__PID           VARCHAR(64)     NOT NULL,
-    state_ref__PID      VARCHAR(64)     NOT NULL,
-
-    /* (PK) */
-    PRIMARY KEY (PID),
-    
-    /* INDEX */
-    UNIQUE (test__PID, state_ref__PID)
-)
-ENGINE=InnoDB
-CHARACTER SET utf8;
+--CREATE TABLE IF NOT EXISTS oval_assoc__d_test__d_state_ref
+--(
+--    PID                 INT             NOT NULL    AUTO_INCREMENT,
+--
+--    test__PID           VARCHAR(64)     NOT NULL,
+--    state_ref__PID      VARCHAR(64)     NOT NULL,
+--
+--    /* (PK) */
+--    PRIMARY KEY (PID),
+--    
+--    /* INDEX */
+--    UNIQUE (test__PID, state_ref__PID)
+--)
+--ENGINE=InnoDB
+--CHARACTER SET utf8;
 
 
 
