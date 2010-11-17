@@ -87,7 +87,6 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
     private static OvalXml  _mapper = null;
 
     protected static OvalXml _getMapper()
-    throws Exception
     {
         if (_mapper == null) {
             _mapper = OvalContext.INSTANCE.getXml();

@@ -33,27 +33,9 @@ public class VariableDao
     extends OvalEntityDao<Variable>
 {
 
-//    /**
-//     * Logger.
-//     */
-//    private static Log  _LOG = LogFactory.getLog( VariableDao.class );
-
-
-
-//    private OvalXml  _xmlMapper;
-
-
-
     public VariableDao()
     {
         super( Variable.class );
-
-//        try {
-//            _xmlMapper = OvalContext.INSTANCE.getXml();
-//        } catch (Exception ex) {
-//            // TODO:
-//            _LOG.error(  "XmlMapper instantiation failed: " + ex.getMessage() );
-//        }
     }
 
 

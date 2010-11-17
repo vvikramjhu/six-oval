@@ -122,22 +122,6 @@ public class OvalDefinitionsDao
                 defs.setObjects( new SystemObjects( p_object_list ) );
             }
         }
-//        SystemObjects  objects = defs.getObjects();
-//        if (objects != null) {
-//            SystemObjects  p_objects = new SystemObjects();
-//            for (SystemObject  object : objects) {
-//                if (_LOG.isInfoEnabled()) {
-//                    _LOG.info( "creating SystemObject: " + object.getOvalID() );
-//                }
-//                SystemObject  p_object = getForwardingDao( SystemObject.class ).sync( object );
-//                p_objects.addObject( p_object );
-//                OvalDefinitionsObjectAssociation  assoc =
-//                    new OvalDefinitionsObjectAssociation( defs, p_object );
-//                getForwardingDao( OvalDefinitionsObjectAssociation.class ).sync( assoc );
-//            }
-//
-//            defs.setObjects( p_objects );
-//        }
 
 
         States  states = defs.getStates();
@@ -149,18 +133,6 @@ public class OvalDefinitionsDao
                 defs.setStates( new States( p_state_list ) );
             }
         }
-//        if (states != null) {
-//            States  p_objects = new States();
-//            for (State  object : states) {
-//                State  p_object = getForwardingDao( State.class ).sync( object );
-//                p_objects.addState( p_object );
-//                OvalDefinitionsStateAssociation  assoc =
-//                    new OvalDefinitionsStateAssociation( defs, p_object );
-//                getForwardingDao( OvalDefinitionsStateAssociation.class ).sync( assoc );
-//            }
-//
-//            defs.setStates( p_objects );
-//        }
 
 
         Variables  variables = defs.getVariables();
@@ -172,18 +144,6 @@ public class OvalDefinitionsDao
                 defs.setVariables( new Variables( p_variable_list ) );
             }
         }
-//        if (variables != null) {
-//            Variables  p_objects = new Variables();
-//            for (Variable  object : variables) {
-//                Variable  p_object = getForwardingDao( Variable.class ).sync( object );
-//                p_objects.addVariable( p_object );
-//                OvalDefinitionsVariableAssociation  assoc =
-//                    new OvalDefinitionsVariableAssociation( defs, p_object );
-//                getForwardingDao( OvalDefinitionsVariableAssociation.class ).sync( assoc );
-//            }
-//
-//            defs.setVariables( p_objects );
-//        }
 
 
         Definitions  definitions = defs.getDefinitions();
