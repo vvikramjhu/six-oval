@@ -22,8 +22,6 @@ package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.definitions.LocalVariable;
 import jp.go.aist.six.oval.model.definitions.Variable;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 
 
@@ -35,10 +33,10 @@ public class VariableDao
     extends OvalEntityDao<Variable>
 {
 
-    /**
-     * Logger.
-     */
-    private static Log  _LOG = LogFactory.getLog( VariableDao.class );
+//    /**
+//     * Logger.
+//     */
+//    private static Log  _LOG = LogFactory.getLog( VariableDao.class );
 
 
 
@@ -59,9 +57,6 @@ public class VariableDao
     }
 
 
-    //TODO: Store the content model as an XML document,
-    //like as Definition's Criteria.
-
 
     //**************************************************************
     //  Dao, CastorDao
@@ -79,18 +74,6 @@ public class VariableDao
             } else {
                 JdoCallbackHandler.jdoBeforeCreate( LocalVariable.class, lv );
             }
-
-//            Component  component = lv.getComponent();
-//            if (component != null) {
-//                try {
-//                    OvalXml  mapper = OvalContext.INSTANCE.getXml();
-//                    String  xml = mapper.marshalToString( component );
-//                    lv.xmlSetComponent( xml );
-//                } catch (Exception ex) {
-//                    // TODO:
-//                    _LOG.warn(  "'component' property NOT persisted" );
-//                }
-//            }
         }
 
         return super.create( variable );

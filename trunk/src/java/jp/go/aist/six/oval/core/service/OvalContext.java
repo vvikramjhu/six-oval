@@ -127,11 +127,10 @@ public class OvalContext
     /**
      */
     private ApplicationContext _getContext()
-    throws Exception
     {
         if (_springContext == null) {
             _springContext = new ClassPathXmlApplicationContext( _SPRING_APP_CONTEXT_ );
-            //throws BeansException
+            //throws BeansException/runtime
         }
 
         return _springContext;
@@ -144,7 +143,6 @@ public class OvalContext
     public Object getBean(
                     final String name
                     )
-    throws Exception
     {
         return _getContext().getBean( name );
     }
@@ -154,7 +152,6 @@ public class OvalContext
                     final String name,
                     final Class<T> requiredType
                     )
-    throws Exception
     {
         return _getContext().getBean( name, requiredType );
     }
@@ -164,7 +161,6 @@ public class OvalContext
     /**
      */
     public OvalStore getStore()
-    throws Exception
     {
         if (_store == null) {
             _store = _getContext().getBean( "ovalStore", OvalStore.class );
@@ -177,7 +173,6 @@ public class OvalContext
     /**
      */
     public OvalXml getXml()
-    throws Exception
     {
         if (_xml == null) {
             _xml = _getContext().getBean( "ovalXml", OvalXml.class );
@@ -187,7 +182,6 @@ public class OvalContext
     }
 
 }
-// StandardOvalService
+// OvalContext
 
-/* vim:set tabstop=4:set expandtab:set shiftwidth=4: */
 

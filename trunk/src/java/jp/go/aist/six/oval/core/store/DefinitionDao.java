@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.core.service.OvalContext;
-import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.definitions.Affected;
 import jp.go.aist.six.oval.model.definitions.Cve;
 import jp.go.aist.six.oval.model.definitions.Definition;
@@ -29,8 +27,6 @@ import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.Platform;
 import jp.go.aist.six.oval.model.definitions.Product;
 import jp.go.aist.six.oval.model.definitions.Reference;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import java.util.Collection;
 import java.util.List;
 
@@ -44,24 +40,23 @@ public class DefinitionDao
     extends OvalEntityDao<Definition>
 {
 
-    /**
-     * Logger.
-     */
-    private static Log  _LOG = LogFactory.getLog( DefinitionDao.class );
+//    /**
+//     * Logger.
+//     */
+//    private static Log  _LOG = LogFactory.getLog( DefinitionDao.class );
 
 
 
-    private static OvalXml  _mapper = null;
-
-    protected static OvalXml _getMapper()
-    throws Exception
-    {
-        if (_mapper == null) {
-            _mapper = OvalContext.INSTANCE.getXml();
-        }
-
-        return _mapper;
-    }
+//    private static OvalXml  _mapper = null;
+//
+//    protected static OvalXml _getMapper()
+//    {
+//        if (_mapper == null) {
+//            _mapper = OvalContext.INSTANCE.getXml();
+//        }
+//
+//        return _mapper;
+//    }
 
 
 
@@ -138,6 +133,7 @@ public class DefinitionDao
             // callback handler
         } else {
             JdoCallbackHandler.jdoBeforeCreate( Definition.class, def );
+
 //            if (_LOG.isDebugEnabled()) {
 //                _LOG.debug( "***** criteria Object to XML *****" );
 //            }
