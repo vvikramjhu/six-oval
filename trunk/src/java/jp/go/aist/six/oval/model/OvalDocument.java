@@ -40,8 +40,45 @@ public abstract class OvalDocument
     extends AbstractPersistable
 {
 
-    public static final String  SCHEMA_LOCATION
-        = "http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5 oval-system-characteristics-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-results-5 oval-results-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows windows-system-characteristics-schema.xsd";
+    private static final String  _COMMON_SCHEMA_LOCATION_ =
+        "http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd"
+        ;
+
+
+    public static final String  DEFINITIONS_SCHEMA_LOCATION =
+        _COMMON_SCHEMA_LOCATION_
+        + " http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd"
+        + " http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd"
+        + " http://oval.mitre.org/XMLSchema/oval-definitions-5#linux linux-definitions-schema.xsd"
+        + " http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd"
+        + " http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd"
+        ;
+
+
+    private static final String  _SC_SPECIFIC_SCHEMA_LOCATION_ =
+        " http://oval.mitre.org/XMLSchema/oval-system-characteristics-5 oval-system-characteristics-schema.xsd"
+        + " http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent independent-system-characteristics-schema.xsd"
+        + " http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux linux-system-characteristics-schema.xsd"
+        + " http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix unix-system-characteristics-schema.xsd"
+        + " http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows windows-system-characteristics-schema.xsd"
+        ;
+
+    public static final String  SC_SCHEMA_LOCATION =
+        _COMMON_SCHEMA_LOCATION_
+        + _SC_SPECIFIC_SCHEMA_LOCATION_
+        ;
+
+
+    public static final String  RESULTS_SCHEMA_LOCATION =
+        DEFINITIONS_SCHEMA_LOCATION
+        + _SC_SPECIFIC_SCHEMA_LOCATION_
+        + " http://oval.mitre.org/XMLSchema/oval-results-5 oval-results-schema.xsd"
+        ;
+
+
+//    public static final String  SCHEMA_LOCATION
+//    = "http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5 oval-system-characteristics-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-results-5 oval-results-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows windows-system-characteristics-schema.xsd";
+
 
 
     private String  _schemaLocation;
@@ -60,7 +97,7 @@ public abstract class OvalDocument
 
     public String getSchemaLocation()
     {
-        return (_schemaLocation == null ? SCHEMA_LOCATION : _schemaLocation);
+        return (_schemaLocation == null ? RESULTS_SCHEMA_LOCATION : _schemaLocation);
     }
 
 }
