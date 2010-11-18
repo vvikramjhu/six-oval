@@ -198,9 +198,11 @@
         <property name="supportedMediaTypes" value="text/plain"/> 
     </bean> 
 
+<!--
     <bean id="resourceConverter" 
         class="org.springframework.http.converter.ResourceHttpMessageConverter"> 
     </bean> 
+-->
 
     <bean id="restTemplate" 
         class="org.springframework.web.client.RestTemplate">
