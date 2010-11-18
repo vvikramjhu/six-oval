@@ -46,7 +46,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id$
+ * @version $Id: OvalRepositoryController.java 981 2010-11-18 02:56:58Z nakamura5akihito $
  * $LastChangedRevision$, $LastChangedDate$
  */
 @Controller
