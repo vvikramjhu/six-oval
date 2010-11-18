@@ -195,7 +195,7 @@
 
     <bean id="stringConverter" 
         class="org.springframework.http.converter.StringHttpMessageConverter"> 
-        <property name="supportedMediaTypes" value="application/xml"/> 
+        <property name="supportedMediaTypes" value="text/plain"/> 
     </bean> 
 
     <bean id="resourceConverter" 

@@ -272,18 +272,28 @@ public class OvalRepositoryClient
                     )
     throws OvalServiceException
     {
-        String  location = _post(
-                        results,
-                        new UriTemplate( "{baseUri}/{objectPath}" ),
-                        _baseUri,
-                        ResourcePath.OVAL_RESULTS.value()
-                        );
+        UriTemplate  uriTemp = new UriTemplate( "{baseUri}/{objectPath}" );
+        URI  uri = uriTemp.expand( _baseUri, ResourcePath.OVAL_RESULTS.value() );
+        String  id = _rest.postForObject( uri, results, String.class );
         if (_LOG.isDebugEnabled()) {
-            _LOG.debug( "POST oval_results: " + location );
+            _LOG.debug( "POST oval_results: id=" + id );
         }
 
-        return location;
+        return id;
     }
+//    {
+//        String  location = _post(
+//                        results,
+//                        new UriTemplate( "{baseUri}/{objectPath}" ),
+//                        _baseUri,
+//                        ResourcePath.OVAL_RESULTS.value()
+//                        );
+//        if (_LOG.isDebugEnabled()) {
+//            _LOG.debug( "POST oval_results: " + location );
+//        }
+//
+//        return location;
+//    }
 
 
 
