@@ -67,8 +67,8 @@ public class OvalRepositoryClient
             System.err.println( "No OVAL Definitions file specified." );
         } else {
             File  file = new File( args[0] );
-            OvalDefinitions  defs = (OvalDefinitions)context.getXml().unmarshal( new FileInputStream( file ) );
-            client.createOvalDefinitions( defs );
+            OvalResults  results = (OvalResults)context.getXml().unmarshal( new FileInputStream( file ) );
+            client.createOvalResults( results );
 //            client.createOvalDefinitions( file );
         }
 
