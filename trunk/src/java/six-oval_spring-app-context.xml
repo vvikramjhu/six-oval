@@ -206,8 +206,8 @@
         class="org.springframework.web.client.RestTemplate">
         <property name="messageConverters">
             <list>
-                <ref bean="marshallingConverter" />
                 <ref bean="stringConverter" />
+                <ref bean="marshallingConverter" />
 <!--
                 <ref bean="atomConverter"  />
                 <ref bean="jsonConverter" />
