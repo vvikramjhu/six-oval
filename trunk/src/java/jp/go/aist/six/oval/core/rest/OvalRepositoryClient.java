@@ -194,38 +194,6 @@ public class OvalRepositoryClient
 
 
 
-    private URI _postForLocationUri(
-                    final Object object,
-                    final UriTemplate uriTemplate,
-                    final Object... uriVariableValues
-                    )
-    throws OvalServiceException
-    {
-        URI  requestUri = uriTemplate.expand( uriVariableValues );
-        URI  locationUri = _rest.postForLocation( requestUri, object );
-        if (locationUri == null) {
-            throw new OvalServiceException( "no location URI in HTTP response" );
-        }
-
-        return locationUri;
-    }
-
-
-    private String _postForLocation(
-                    final Object object,
-                    final String uriTemplate,
-                    final Object... uriVariableValues
-                    )
-    throws OvalServiceException
-    {
-        String  uriString = _expandUri( uriTemplate, uriVariableValues );
-        URI  locationUri = _rest.postForLocation( uriString, object );
-
-        return (locationUri == null ? null : locationUri.toASCIIString());
-    }
-
-
-
 
     private String _expandUri(
                   final String uriTemplate,
@@ -244,21 +212,34 @@ public class OvalRepositoryClient
 
 
 
+    /**
+     * REST create: Creates an OVAL resource via HTTP POST.
+     *
+     * @return
+     *  the ID of the resource to be used to obtain the resource.
+     */
     private String _createResource(
                     final Object resource,
                     final String resourcePath
                     )
     throws OvalServiceException
     {
+        URI  requestUri = _docBaseUri.expand( resourcePath );
         if (_LOG.isDebugEnabled()) {
-            _LOG.debug( ">>> POST: resource path=" + resourcePath );
-        }
-        URI  location = _postForLocationUri( resource, _docBaseUri, resourcePath );
-        if (_LOG.isDebugEnabled()) {
-            _LOG.debug( "<<< POST: location=" + location );
+            _LOG.debug( ">>> POST: request URI=" + requestUri );
         }
 
-        Map<String, String>  params = _docLocationUri.match( location.toASCIIString() );
+        URI  locationUri = _rest.postForLocation( requestUri, resource );
+        if (_LOG.isDebugEnabled()) {
+            _LOG.debug( "<<< POST: location=" + locationUri );
+        }
+
+        if (locationUri == null) {
+            throw new OvalServiceException( "no location URI in HTTP response" );
+        }
+
+        Map<String, String>  params =
+            _docLocationUri.match( locationUri.toASCIIString() );
         String  id = params.get( "id" );
         if (_LOG.isDebugEnabled()) {
             _LOG.debug( "resource created: id=" + id);
@@ -318,22 +299,13 @@ public class OvalRepositoryClient
     }
 
 
+
     public String createOvalDefinitions(
                     final OvalDefinitions defs
                     )
     throws OvalServiceException
     {
-        String  location = _post(
-                        defs,
-                        new UriTemplate( "{baseUri}/{objectPath}" ),
-                        _baseUri,
-                        ResourcePath.OVAL_DEFINITIONS.value()
-                        );
-        if (_LOG.isDebugEnabled()) {
-            _LOG.debug( "POST oval_definitions: " + location );
-        }
-
-        return location;
+        return _createResource( defs, ResourcePath.OVAL_DEFINITIONS.value() );
     }
 
 
@@ -362,55 +334,8 @@ public class OvalRepositoryClient
                     final OvalResults results
                     )
     throws OvalServiceException
-//    {
-//        UriTemplate  uriTemp = new UriTemplate( "{baseUri}/{objectPath}" );
-//        URI  uri = uriTemp.expand( _baseUri, ResourcePath.OVAL_RESULTS.value() );
-//        String  id = _rest.postForObject( uri, results, String.class );
-//        if (_LOG.isDebugEnabled()) {
-//            _LOG.debug( "POST oval_results: id=" + id );
-//        }
-//
-//        return id;
-//    }
-//    {
-//        String  location = _postForLocation(
-//                        results,
-//                        "{baseUri}/{objectPath}",
-//                        _baseUri,
-//                        ResourcePath.OVAL_RESULTS.value()
-//                        );
-//        if (_LOG.isDebugEnabled()) {
-//            _LOG.debug( "POST oval_results: location=" + location );
-//        }
-//
-//        UriTemplate  uriTemp = new UriTemplate( "{baseUri}/{objectPath}/{id}" );
-//        Map<String, String>  params = uriTemp.match( location );
-//        String  id = params.get( "id" );
-//        if (_LOG.isDebugEnabled()) {
-//            _LOG.debug( "POST oval_results: id=" + id);
-//        }
-//
-//        return location;
-//    }
     {
         return _createResource( results, ResourcePath.OVAL_RESULTS.value() );
-
-//        URI  locationUri = _postForLocationUri(
-//                        results,
-//                        _docBaseUri,
-//                        ResourcePath.OVAL_RESULTS.value()
-//                        );
-//        if (_LOG.isDebugEnabled()) {
-//            _LOG.debug( "<<< POST: location=" + locationUri );
-//        }
-//
-//        Map<String, String>  params = _docLocationUri.match( locationUri.toASCIIString() );
-//        String  id = params.get( "id" );
-//        if (_LOG.isDebugEnabled()) {
-//            _LOG.debug( "oval_results created: id=" + id);
-//        }
-//
-//        return id;
     }
 
 
