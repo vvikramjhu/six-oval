@@ -13,15 +13,20 @@
 
 <suite name="six-oval" verbose="1" parallel="tests">
 
-    <test name="oval.core.service.restlet" enabled="false">
+    <test name="oval.core.rest" enabled="true">
+        <groups>
+            <run>
+                <include name="results.oval_results"/>
+            </run>
+        </groups>
+
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.service.restlet.OvalRestClientTest"/>
+            <class name="jp.go.aist.six.test.oval.core.rest.OvalRestTest"/>
         </classes>
     </test>
 
 
-
-    <test name="oval.core.store" enabled="true">
+    <test name="oval.core.store" enabled="false">
         <groups>
             <run>
                 <include name="results.oval_results"/>
@@ -42,8 +47,6 @@
     </test>
 
 
-
-    <!-- OVAL OXM tests -->
     <test name="oval.core.xml" enabled="false">
         <groups>
             <run>

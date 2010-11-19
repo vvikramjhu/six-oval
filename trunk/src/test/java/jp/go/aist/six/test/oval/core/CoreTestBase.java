@@ -57,6 +57,13 @@ public abstract class CoreTestBase
     }
 
 
+    protected OvalContext _getContext()
+    throws Exception
+    {
+        return _context;
+    }
+
+
     protected OvalXml _getXml()
     throws Exception
     {
