@@ -244,6 +244,31 @@ public class OvalRepositoryClient
 
 
 
+    private String _createResource(
+                    final Object resource,
+                    final String resourcePath
+                    )
+    throws OvalServiceException
+    {
+        if (_LOG.isDebugEnabled()) {
+            _LOG.debug( ">>> POST: resource path=" + resourcePath );
+        }
+        URI  location = _postForLocationUri( resource, _docBaseUri, resourcePath );
+        if (_LOG.isDebugEnabled()) {
+            _LOG.debug( "<<< POST: location=" + location );
+        }
+
+        Map<String, String>  params = _docLocationUri.match( location.toASCIIString() );
+        String  id = params.get( "id" );
+        if (_LOG.isDebugEnabled()) {
+            _LOG.debug( "resource created: id=" + id);
+        }
+
+        return id;
+    }
+
+
+
     //**************************************************************
     // OvalRepository
     //**************************************************************
@@ -368,22 +393,24 @@ public class OvalRepositoryClient
 //        return location;
 //    }
     {
-        URI  locationUri = _postForLocationUri(
-                        results,
-                        _docBaseUri,
-                        ResourcePath.OVAL_RESULTS.value()
-                        );
-        if (_LOG.isDebugEnabled()) {
-            _LOG.debug( "<<< POST: location=" + locationUri );
-        }
+        return _createResource( results, ResourcePath.OVAL_RESULTS.value() );
 
-        Map<String, String>  params = _docLocationUri.match( locationUri.toASCIIString() );
-        String  id = params.get( "id" );
-        if (_LOG.isDebugEnabled()) {
-            _LOG.debug( "oval_results created: id=" + id);
-        }
-
-        return id;
+//        URI  locationUri = _postForLocationUri(
+//                        results,
+//                        _docBaseUri,
+//                        ResourcePath.OVAL_RESULTS.value()
+//                        );
+//        if (_LOG.isDebugEnabled()) {
+//            _LOG.debug( "<<< POST: location=" + locationUri );
+//        }
+//
+//        Map<String, String>  params = _docLocationUri.match( locationUri.toASCIIString() );
+//        String  id = params.get( "id" );
+//        if (_LOG.isDebugEnabled()) {
+//            _LOG.debug( "oval_results created: id=" + id);
+//        }
+//
+//        return id;
     }
 
 
