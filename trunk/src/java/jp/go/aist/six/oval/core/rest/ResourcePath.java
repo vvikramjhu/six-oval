@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.core.rest;
 
 
 /**
- * The RESTful Web Services resource path names for the object types.
+ * The resource path names of the OVAL RESTful Web services.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -31,6 +31,7 @@ package jp.go.aist.six.oval.core.rest;
 public enum ResourcePath
 {
     OVAL_DEFINITIONS( "oval_definitions" ),
+    OVAL_SC( "oval_sc" ),
     OVAL_RESULTS( "oval_results" );
 
 

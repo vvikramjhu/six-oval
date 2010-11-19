@@ -29,7 +29,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -116,7 +115,7 @@ public class OvalRepositoryController
      * Create the specified object in the repository and
      * returns the HTTP response.
      */
-    private <K, T extends Persistable<K>> ResponseEntity<String> _createObject(
+    private <K, T extends Persistable<K>> ResponseEntity<Void> _createObject(
                     final HttpServletRequest request,
                     final Class<T> type,
                     final T object
@@ -135,9 +134,9 @@ public class OvalRepositoryController
 
         HttpHeaders  headers = new HttpHeaders();
         headers.setLocation( _buildLocation( request, String.valueOf( pid ) ) );
-        headers.setContentType( MediaType.TEXT_PLAIN );
+//        headers.setContentType( MediaType.TEXT_PLAIN );
 
-        return new ResponseEntity<String>( String.valueOf( pid ), headers, HttpStatus.CREATED );
+        return new ResponseEntity<Void>( headers, HttpStatus.CREATED );
     }
 
 
@@ -230,7 +229,7 @@ public class OvalRepositoryController
                     method=RequestMethod.POST,
                     value="/oval_definitions"
     )
-    public ResponseEntity<String> createOvalDefinitions(
+    public ResponseEntity<Void> createOvalDefinitions(
                     @RequestBody final OvalDefinitions definitions,
                     final HttpServletRequest request
     )
@@ -295,7 +294,7 @@ public class OvalRepositoryController
                     method=RequestMethod.POST
                     ,value="/oval_results"
     )
-    public ResponseEntity<String> createOvalResults(
+    public ResponseEntity<Void> createOvalResults(
                     @RequestBody final OvalResults results
                     ,final HttpServletRequest request
     )
