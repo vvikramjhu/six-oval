@@ -164,6 +164,31 @@ public class OvalRepositoryClient
     }
 
 
+    private <T> T _getResource(
+                    final Class<T> resourceType,
+                    final String resourcePath,
+                    final String id
+                    )
+    throws OvalServiceException
+    {
+        URI  requestUri = _docLocationUri.expand( resourcePath, id );
+        if (_LOG.isDebugEnabled()) {
+            _LOG.debug( ">>> GET: request URI=" + requestUri );
+        }
+
+        HttpHeaders  headers = new HttpHeaders();
+        headers.setContentType( MediaType.APPLICATION_XML );
+        HttpEntity<String>  entity = new HttpEntity<String>( headers );
+
+        ResponseEntity<T>  response = _rest.exchange(
+                        requestUri.toASCIIString(), HttpMethod.GET, entity, resourceType
+                        );
+        T  resource = response.getBody();
+
+        return resource;
+    }
+
+
 
     /**
      * HTTP POST
@@ -345,19 +370,22 @@ public class OvalRepositoryClient
     )
     throws OvalServiceException
     {
-        OvalResults  results = _get(
-                        OvalResults.class,
-                        new UriTemplate( "{baseUri}/{objectPath}/{id}" ),
-                        _baseUri,
-                        ResourcePath.OVAL_RESULTS.value(),
-                        pid
-                        );
-        if (_LOG.isDebugEnabled()) {
-            _LOG.debug( "GET oval_results: " + results );
-        }
-
-        return results;
+        return _getResource( OvalResults.class, ResourcePath.OVAL_RESULTS.value(), pid );
     }
+//    {
+//        OvalResults  results = _get(
+//                        OvalResults.class,
+//                        new UriTemplate( "{baseUri}/{objectPath}/{id}" ),
+//                        _baseUri,
+//                        ResourcePath.OVAL_RESULTS.value(),
+//                        pid
+//                        );
+//        if (_LOG.isDebugEnabled()) {
+//            _LOG.debug( "GET oval_results: " + results );
+//        }
+//
+//        return results;
+//    }
 
 }
 // OvalRepositoryClient
