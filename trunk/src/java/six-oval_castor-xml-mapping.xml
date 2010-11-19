@@ -340,7 +340,6 @@
         </field>
     </class>
 
-<!--
     <class name="jp.go.aist.six.oval.core.store.PersistentDefinition"
         extends="jp.go.aist.six.oval.model.OvalEntity">
         <map-to xml="definition"
@@ -366,6 +365,7 @@
             <bind-xml name="criteria" node="element"/>
         </field>
     </class>
+<!--
 -->
 
 
@@ -912,7 +912,7 @@
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
     </class>
-<!--
+
     <class name="jp.go.aist.six.oval.core.store.PersistentLocalVariable"
         extends="jp.go.aist.six.oval.model.definitions.Variable">
         <map-to xml="local_variable"
@@ -923,6 +923,7 @@
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
     </class>
+<!--
 -->
 
 
