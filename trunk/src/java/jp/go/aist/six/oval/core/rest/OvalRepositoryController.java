@@ -111,6 +111,26 @@ public class OvalRepositoryController
 
 
 
+    private <K, T extends Persistable<K>> T _getObject(
+                    final Class<T> type,
+                    final K id
+                    )
+    throws OvalServiceException
+    {
+        T  object = null;
+        try {
+            object = _store.get( type, id );
+        } catch (Exception ex) {
+            if (_LOG.isErrorEnabled()) {
+                _LOG.error( ex.getMessage() );
+            }
+            throw new OvalServiceException( ex );
+        }
+
+        return object;
+    }
+
+
     /**
      * Create the specified object in the repository and
      * returns the HTTP response.
@@ -210,17 +230,19 @@ public class OvalRepositoryController
                     )
     throws OvalServiceException
     {
-        OvalDefinitions  defs = null;
-        try {
-            defs = _store.get( OvalDefinitions.class, id );
-        } catch (Exception ex) {
-            if (_LOG.isErrorEnabled()) {
-                _LOG.error( ex.getMessage() );
-            }
-            throw new OvalServiceException( ex );
-        }
+        return _getObject( OvalDefinitions.class, id );
 
-        return defs;
+//        OvalDefinitions  defs = null;
+//        try {
+//            defs = _store.get( OvalDefinitions.class, id );
+//        } catch (Exception ex) {
+//            if (_LOG.isErrorEnabled()) {
+//                _LOG.error( ex.getMessage() );
+//            }
+//            throw new OvalServiceException( ex );
+//        }
+//
+//        return defs;
     }
 
 
@@ -269,17 +291,7 @@ public class OvalRepositoryController
                     )
     throws OvalServiceException
     {
-        OvalResults  results = null;
-        try {
-            results = _store.get( OvalResults.class, id );
-        } catch (Exception ex) {
-            if (_LOG.isErrorEnabled()) {
-                _LOG.error( ex.getMessage() );
-            }
-            throw new OvalServiceException( ex );
-        }
-
-        return results;
+        return _getObject( OvalResults.class, id );
     }
 
 
