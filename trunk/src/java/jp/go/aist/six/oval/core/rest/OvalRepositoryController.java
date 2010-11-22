@@ -180,6 +180,10 @@ public class OvalRepositoryController
                     final Exception e
                     )
     {
+        if (_LOG.isErrorEnabled()) {
+            _LOG.error( "handle exception: " + e.getClass().getName() );
+        }
+
         if (e instanceof OvalServiceException) {
             return OvalServiceException.class.cast( e );
         }
