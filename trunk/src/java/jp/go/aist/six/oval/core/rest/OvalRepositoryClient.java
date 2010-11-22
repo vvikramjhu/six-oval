@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.core.rest;
 import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.service.OvalRepository;
 import jp.go.aist.six.oval.service.OvalServiceException;
 import jp.go.aist.six.util.IoUtil;
@@ -139,31 +140,8 @@ public class OvalRepositoryClient
 
 
     /**
-     * HTTP GET
+     * REST GET:
      */
-    private <T> T _get(
-                    final Class<T> objectType,
-                    final UriTemplate uriTemplate,
-                    final Object... uriVariableValues
-                    )
-    throws OvalServiceException
-    {
-        HttpHeaders  headers = new HttpHeaders();
-        // TODO: Accept???
-        headers.setContentType( MediaType.APPLICATION_XML );
-        HttpEntity<String>  entity = new HttpEntity<String>( headers );
-
-        URI  uri = uriTemplate.expand( uriVariableValues );
-
-        ResponseEntity<T>  response = _rest.exchange(
-                        uri.toASCIIString(), HttpMethod.GET, entity, objectType
-                        );
-        T  object = response.getBody();
-
-        return object;
-    }
-
-
     private <T> T _getResource(
                     final Class<T> resourceType,
                     final String resourcePath,
@@ -181,11 +159,52 @@ public class OvalRepositoryClient
         HttpEntity<String>  entity = new HttpEntity<String>( headers );
 
         ResponseEntity<T>  response = _rest.exchange(
-                        requestUri.toASCIIString(), HttpMethod.GET, entity, resourceType
+                        requestUri.toASCIIString(),
+                        HttpMethod.GET,
+                        entity,
+                        resourceType
                         );
         T  resource = response.getBody();
 
         return resource;
+    }
+
+
+
+    /**
+     * REST POST: Creates an OVAL resource via HTTP POST.
+     *
+     * @return
+     *  the ID of the resource to be used to obtain the resource.
+     */
+    private String _createResource(
+                    final Object resource,
+                    final String resourcePath
+                    )
+    throws OvalServiceException
+    {
+        URI  requestUri = _docBaseUri.expand( resourcePath );
+        if (_LOG.isDebugEnabled()) {
+            _LOG.debug( ">>> POST: request URI=" + requestUri );
+        }
+
+        URI  locationUri = _rest.postForLocation( requestUri, resource );
+        if (_LOG.isDebugEnabled()) {
+            _LOG.debug( "<<< POST: location=" + locationUri );
+        }
+
+        if (locationUri == null) {
+            throw new OvalServiceException( "no location URI in HTTP response" );
+        }
+
+        Map<String, String>  params =
+            _docLocationUri.match( locationUri.toASCIIString() );
+        String  id = params.get( "id" );
+        if (_LOG.isDebugEnabled()) {
+            _LOG.debug( "resource created: id=" + id);
+        }
+
+        return id;
     }
 
 
@@ -233,44 +252,6 @@ public class OvalRepositoryClient
         }
 
         return uriString;
-    }
-
-
-
-    /**
-     * REST create: Creates an OVAL resource via HTTP POST.
-     *
-     * @return
-     *  the ID of the resource to be used to obtain the resource.
-     */
-    private String _createResource(
-                    final Object resource,
-                    final String resourcePath
-                    )
-    throws OvalServiceException
-    {
-        URI  requestUri = _docBaseUri.expand( resourcePath );
-        if (_LOG.isDebugEnabled()) {
-            _LOG.debug( ">>> POST: request URI=" + requestUri );
-        }
-
-        URI  locationUri = _rest.postForLocation( requestUri, resource );
-        if (_LOG.isDebugEnabled()) {
-            _LOG.debug( "<<< POST: location=" + locationUri );
-        }
-
-        if (locationUri == null) {
-            throw new OvalServiceException( "no location URI in HTTP response" );
-        }
-
-        Map<String, String>  params =
-            _docLocationUri.match( locationUri.toASCIIString() );
-        String  id = params.get( "id" );
-        if (_LOG.isDebugEnabled()) {
-            _LOG.debug( "resource created: id=" + id);
-        }
-
-        return id;
     }
 
 
@@ -326,11 +307,14 @@ public class OvalRepositoryClient
 
 
     public String createOvalDefinitions(
-                    final OvalDefinitions defs
+                    final OvalDefinitions definitions
                     )
     throws OvalServiceException
     {
-        return _createResource( defs, ResourcePath.OVAL_DEFINITIONS.value() );
+        return _createResource(
+                        definitions,
+                        ResourcePath.OVAL_DEFINITIONS.value()
+                        );
     }
 
 
@@ -339,18 +323,37 @@ public class OvalRepositoryClient
                     )
     throws OvalServiceException
     {
-        OvalDefinitions  oval_definitions = _get(
+        return _getResource(
                         OvalDefinitions.class,
-                        new UriTemplate( "{baseUri}/{objectPath}/{id}" ),
-                        _baseUri,
                         ResourcePath.OVAL_DEFINITIONS.value(),
                         pid
                         );
-        if (_LOG.isDebugEnabled()) {
-            _LOG.debug( "GET oval_definitions: " + oval_definitions );
-        }
+    }
 
-        return oval_definitions;
+
+
+    public String createOvalSystemCharacteristics(
+                    final OvalSystemCharacteristics definitions
+                    )
+    throws OvalServiceException
+    {
+        return _createResource(
+                        definitions,
+                        ResourcePath.OVAL_SC.value()
+                        );
+    }
+
+
+    public OvalSystemCharacteristics getOvalSystemCharacteristics(
+                    final String pid
+                    )
+    throws OvalServiceException
+    {
+        return _getResource(
+                        OvalSystemCharacteristics.class,
+                        ResourcePath.OVAL_SC.value(),
+                        pid
+                        );
     }
 
 
@@ -360,7 +363,10 @@ public class OvalRepositoryClient
                     )
     throws OvalServiceException
     {
-        return _createResource( results, ResourcePath.OVAL_RESULTS.value() );
+        return _createResource(
+                        results,
+                        ResourcePath.OVAL_RESULTS.value()
+                        );
     }
 
 
@@ -370,7 +376,11 @@ public class OvalRepositoryClient
     )
     throws OvalServiceException
     {
-        return _getResource( OvalResults.class, ResourcePath.OVAL_RESULTS.value(), pid );
+        return _getResource(
+                        OvalResults.class,
+                        ResourcePath.OVAL_RESULTS.value(),
+                        pid
+                        );
     }
 //    {
 //        OvalResults  results = _get(

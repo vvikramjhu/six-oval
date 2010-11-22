@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.core.rest;
 import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.service.OvalServiceException;
 import jp.go.aist.six.util.orm.Persistable;
 import org.apache.commons.logging.Log;
@@ -140,7 +141,7 @@ public class OvalRepositoryController
                     final Class<T> type,
                     final T object
     )
-    throws Exception
+    throws OvalServiceException
     {
         K  pid = null;
         try {
@@ -210,7 +211,6 @@ public class OvalRepositoryController
 
 
 
-
     //**************************************************************
     //  OvalRepository
     //**************************************************************
@@ -219,7 +219,6 @@ public class OvalRepositoryController
     // Definitions
     //==============================================================
 
-    // application/xml
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/oval_definitions/{id}"
@@ -231,18 +230,6 @@ public class OvalRepositoryController
     throws OvalServiceException
     {
         return _getObject( OvalDefinitions.class, id );
-
-//        OvalDefinitions  defs = null;
-//        try {
-//            defs = _store.get( OvalDefinitions.class, id );
-//        } catch (Exception ex) {
-//            if (_LOG.isErrorEnabled()) {
-//                _LOG.error( ex.getMessage() );
-//            }
-//            throw new OvalServiceException( ex );
-//        }
-//
-//        return defs;
     }
 
 
@@ -255,24 +242,43 @@ public class OvalRepositoryController
                     @RequestBody final OvalDefinitions definitions,
                     final HttpServletRequest request
     )
-    throws Exception
+    throws OvalServiceException
     {
         return _createObject( request, OvalDefinitions.class, definitions );
+    }
 
-//        String  pid = null;
-//        try {
-//             pid = _store.create( OvalDefinitions.class, definitions );
-//        } catch (Exception ex) {
-//            if (_LOG.isErrorEnabled()) {
-//                _LOG.error( ex.getMessage() );
-//            }
-////            throw new OvalServiceException( ex );
-//        }
-//
-//        HttpHeaders  headers = new HttpHeaders();
-//        headers.setLocation( _buildLocation( request, pid ) );
-//
-//        return new ResponseEntity<String>( "", headers, HttpStatus.CREATED );
+
+
+    //==============================================================
+    // System Characteristics
+    //==============================================================
+
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/oval_sc/{id}"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody OvalSystemCharacteristics getOvalSystemCharacteristics(
+                    @PathVariable final String id
+                    )
+    throws OvalServiceException
+    {
+        return _getObject( OvalSystemCharacteristics.class, id );
+    }
+
+
+
+    @RequestMapping(
+                    method=RequestMethod.POST,
+                    value="/oval_sc"
+    )
+    public ResponseEntity<Void> createOvalSystemCharacteristics(
+                    @RequestBody final OvalSystemCharacteristics sc,
+                    final HttpServletRequest request
+    )
+    throws OvalServiceException
+    {
+        return _createObject( request, OvalSystemCharacteristics.class, sc );
     }
 
 
@@ -310,7 +316,7 @@ public class OvalRepositoryController
                     @RequestBody final OvalResults results
                     ,final HttpServletRequest request
     )
-    throws Exception
+    throws OvalServiceException
     {
         return _createObject( request, OvalResults.class, results );
     }
