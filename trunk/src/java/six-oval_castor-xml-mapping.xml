@@ -61,6 +61,19 @@
     </class>
 
 
+    <class name="java.lang.Exception">
+        <map-to xml="exception"
+            ns-uri="http://aist.go.jp/six/oval"/>
+
+        <field name="message" type="string"
+            get-method="getMessage"
+            set-method="%1"
+            >
+            <bind-xml name="message" node="attribute"/>
+        </field>
+    </class>
+
+
     
     <!-- ======================================================= -->
     <!-- OvalElement                                             -->

@@ -175,20 +175,39 @@ public class OvalRepositoryController
 //    }
 
 
+
     @ExceptionHandler
-    public @ResponseBody OvalServiceException handleException(
+    public @ResponseBody Exception handleException(
                     final Exception e
                     )
     {
-        if (_LOG.isErrorEnabled()) {
-            _LOG.error( "handle exception: " + e.getClass().getName() );
-        }
+//        HttpHeaders  headers = new HttpHeaders();
+//        headers.setContentType( MediaType.APPLICATION_XML );
 
-        if (e instanceof OvalServiceException) {
-            return OvalServiceException.class.cast( e );
-        }
-        return new OvalServiceException( e );
+        return e;
     }
+//    public @ResponseBody Exception handleException(
+//                    final Exception e
+//                    )
+//    {
+//        if (_LOG.isErrorEnabled()) {
+//            _LOG.error( "handle exception: " + e.getClass().getName() );
+//        }
+//        return e;
+//    }
+//    public @ResponseBody OvalServiceException handleException(
+//                    final Exception e
+//                    )
+//    {
+//        if (_LOG.isErrorEnabled()) {
+//            _LOG.error( "handle exception: " + e.getClass().getName() );
+//        }
+//
+//        if (e instanceof OvalServiceException) {
+//            return OvalServiceException.class.cast( e );
+//        }
+//        return new OvalServiceException( e );
+//    }
     // TODO:
     // Define OvalRepositoryException, ObjectNotFoundException, ...???
 
