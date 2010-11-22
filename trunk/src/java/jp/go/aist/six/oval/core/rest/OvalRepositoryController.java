@@ -112,7 +112,7 @@ public class OvalRepositoryController
 
 
 
-    private <K, T extends Persistable<K>> T _getObject(
+    private <K, T extends Persistable<K>> T _getResource(
                     final Class<T> type,
                     final K id
                     )
@@ -136,7 +136,7 @@ public class OvalRepositoryController
      * Create the specified object in the repository and
      * returns the HTTP response.
      */
-    private <K, T extends Persistable<K>> ResponseEntity<Void> _createObject(
+    private <K, T extends Persistable<K>> ResponseEntity<Void> _createResource(
                     final HttpServletRequest request,
                     final Class<T> type,
                     final T object
@@ -176,11 +176,14 @@ public class OvalRepositoryController
 
 
     @ExceptionHandler
-    public @ResponseBody String handle(
+    public @ResponseBody OvalServiceException handle(
                     final Exception e
                     )
     {
-        return "Exception: " + e.getMessage();
+        if (e instanceof OvalServiceException) {
+            return OvalServiceException.class.cast( e );
+        }
+        return new OvalServiceException( e );
     }
     // TODO:
     // Define OvalRepositoryException, ObjectNotFoundException, ...
@@ -229,7 +232,7 @@ public class OvalRepositoryController
                     )
     throws OvalServiceException
     {
-        return _getObject( OvalDefinitions.class, id );
+        return _getResource( OvalDefinitions.class, id );
     }
 
 
@@ -244,7 +247,7 @@ public class OvalRepositoryController
     )
     throws OvalServiceException
     {
-        return _createObject( request, OvalDefinitions.class, definitions );
+        return _createResource( request, OvalDefinitions.class, definitions );
     }
 
 
@@ -263,7 +266,7 @@ public class OvalRepositoryController
                     )
     throws OvalServiceException
     {
-        return _getObject( OvalSystemCharacteristics.class, id );
+        return _getResource( OvalSystemCharacteristics.class, id );
     }
 
 
@@ -278,7 +281,7 @@ public class OvalRepositoryController
     )
     throws OvalServiceException
     {
-        return _createObject( request, OvalSystemCharacteristics.class, sc );
+        return _createResource( request, OvalSystemCharacteristics.class, sc );
     }
 
 
@@ -297,7 +300,7 @@ public class OvalRepositoryController
                     )
     throws OvalServiceException
     {
-        return _getObject( OvalResults.class, id );
+        return _getResource( OvalResults.class, id );
     }
 
 
@@ -318,7 +321,7 @@ public class OvalRepositoryController
     )
     throws OvalServiceException
     {
-        return _createObject( request, OvalResults.class, results );
+        return _createResource( request, OvalResults.class, results );
     }
 
 }

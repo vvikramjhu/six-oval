@@ -46,6 +46,23 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <!-- ======================================================= -->
+    <!-- OvalServiceException                                    -->
+    <!-- ======================================================= -->
+    <class name="jp.go.aist.six.oval.service.OvalServiceException">
+        <map-to xml="oval_service_exception"
+            ns-uri="http://aist.go.jp/six/oval"/>
+
+        <field name="message" type="string"
+            get-method="getMessage"
+            set-method="%1"
+            >
+            <bind-xml name="message" node="attribute"/>
+        </field>
+    </class>
+
+
+    
+    <!-- ======================================================= -->
     <!-- OvalElement                                             -->
     <!-- ======================================================= -->
     <class name ="jp.go.aist.six.oval.model.OvalElement"

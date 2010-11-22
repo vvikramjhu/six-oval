@@ -10,6 +10,7 @@ import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
+import jp.go.aist.six.oval.service.OvalServiceException;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import org.testng.Reporter;
 
@@ -45,6 +46,34 @@ public class OvalXmlTest
         T  actual = _unmarshalWithValidation( type, sourceFilepath, xpath, expected );
         _marshal( actual, resultFilepath );
         _unmarshalWithValidation( type, resultFilepath, xpath, expected );
+    }
+
+
+
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    //
+    //  SIX OVAL
+    //
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    @org.testng.annotations.Test(
+                    groups={"oval.core.service"},
+                    alwaysRun=true
+                    )
+    public void testServiceException()
+    throws Exception
+    {
+        Reporter.log( "\n////////////////////////////////////////////", true );
+        OvalServiceException  osex = new OvalServiceException( "foo bar baz" );
+
+        String  filepath = "oval-service-exception.xml";
+        _marshal( osex, filepath );
+        _unmarshalWithValidation(
+                        OvalServiceException.class,
+                        filepath,
+                        "oval_service_Exception",
+                        osex
+                        );
     }
 
 
