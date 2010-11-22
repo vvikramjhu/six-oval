@@ -18,77 +18,58 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.service;
+package jp.go.aist.six.oval.core.rest;
 
 
 
 /**
- * An exceptional condition that occurred during the Oval processing.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalServiceException
-    extends Exception
+public class RestStatus
 {
 
+    private String  _message;
+
+
+
     /**
-     * Constructs an OvalProcessException with no detail message.
      */
-    public OvalServiceException()
+    public RestStatus()
     {
-        super();
     }
 
 
 
     /**
-     * Constructs an OvalProcessException with the specified detail message.
-     *
      * @param  message
      *   the detail message.
      */
-    public OvalServiceException(
+    public RestStatus(
                     final String message
                     )
     {
-        super( message );
+        setMessage( message );
     }
 
 
 
     /**
-     * Constructs an OvalProcessException with the specified cause.
-     *
-     * @param   cause
-     *  the cause.
      */
-    public OvalServiceException(
-                    final Throwable cause
+    public void setMessage(
+                    final String message
                     )
     {
-        super( cause );
+        _message = message;
     }
 
 
-
-    /**
-     * Constructs an OvalProcessException with the specified
-     * detail message and cause.
-     *
-     * @param   message
-     *  the detail message.
-     * @param   cause
-     *  the cause.
-     */
-    public OvalServiceException(
-                    final String message,
-                    final Throwable cause
-                    )
+    public String getMessage()
     {
-        super( message, cause );
+        return _message;
     }
 
 }
-// OvalServiceException
+// RestStatus
 

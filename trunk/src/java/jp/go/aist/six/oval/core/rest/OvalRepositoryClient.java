@@ -199,13 +199,13 @@ public class OvalRepositoryClient
         HttpHeaders  headers = new HttpHeaders();
         headers.setAccept( _ACCEPT_MEDIA_TYPES_ );
         HttpEntity<Object>  request = new HttpEntity<Object>( resource, headers );
-        ResponseEntity<Exception>  response = null;
+        ResponseEntity<RestStatus>  response = null;
         try {
             response = _rest.exchange(
                         requestUri,
                         HttpMethod.POST,
                         request,
-                        Exception.class
+                        RestStatus.class
                         );
         } catch (HttpStatusCodeException ex) {
             if (_LOG.isErrorEnabled()) {
@@ -215,12 +215,12 @@ public class OvalRepositoryClient
             throw new OvalServiceException( ex );
         }
 
-        Exception  ex = response.getBody();
-        if (ex != null) {
+        RestStatus  status = response.getBody();
+        if (status != null) {
             if (_LOG.isErrorEnabled()) {
-                _LOG.error( "<<< POST: exception returned=" + ex.getMessage() );
+                _LOG.error( "<<< POST: exception=" + status.getMessage() );
             }
-            throw new OvalServiceException( ex );
+            throw new OvalServiceException( status.getMessage() );
         }
 
         URI  locationUri = response.getHeaders().getLocation();

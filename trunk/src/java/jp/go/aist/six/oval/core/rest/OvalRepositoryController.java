@@ -177,14 +177,11 @@ public class OvalRepositoryController
 
 
     @ExceptionHandler
-    public @ResponseBody Exception handleException(
+    public @ResponseBody RestStatus handleException(
                     final Exception e
                     )
     {
-//        HttpHeaders  headers = new HttpHeaders();
-//        headers.setContentType( MediaType.APPLICATION_XML );
-
-        return e;
+        return new RestStatus( e.getMessage() );
     }
 //    public @ResponseBody Exception handleException(
 //                    final Exception e
