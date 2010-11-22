@@ -34,11 +34,14 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriTemplate;
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.URI;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -171,6 +174,10 @@ public class OvalRepositoryClient
 
 
 
+    private static final List<MediaType>  _ACCEPT_MEDIA_TYPES_ =
+        Arrays.asList( new MediaType[] { MediaType.APPLICATION_XML } );
+
+
     /**
      * REST POST: Creates an OVAL resource via HTTP POST.
      *
@@ -188,7 +195,35 @@ public class OvalRepositoryClient
             _LOG.debug( ">>> POST: request URI=" + requestUri );
         }
 
-        URI  locationUri = _rest.postForLocation( requestUri, resource );
+//        URI  locationUri = _rest.postForLocation( requestUri, resource );
+        HttpHeaders  headers = new HttpHeaders();
+        headers.setAccept( _ACCEPT_MEDIA_TYPES_ );
+        HttpEntity<Object>  request = new HttpEntity<Object>( resource, headers );
+        ResponseEntity<OvalServiceException>  response = null;
+        try {
+            response = _rest.exchange(
+                        requestUri,
+                        HttpMethod.POST,
+                        request,
+                        OvalServiceException.class
+                        );
+        } catch (HttpStatusCodeException ex) {
+            if (_LOG.isErrorEnabled()) {
+                _LOG.error( "<<< POST: error status=" + ex.getStatusCode()
+                                + ", " + ex.getStatusText() );
+            }
+            throw new OvalServiceException( ex );
+        }
+
+        OvalServiceException  ex = response.getBody();
+        if (ex != null) {
+            if (_LOG.isErrorEnabled()) {
+                _LOG.error( "<<< POST: exception returned=" + ex.getMessage() );
+            }
+            throw ex;
+        }
+
+        URI  locationUri = response.getHeaders().getLocation();
         if (_LOG.isDebugEnabled()) {
             _LOG.debug( "<<< POST: location=" + locationUri );
         }
@@ -206,6 +241,30 @@ public class OvalRepositoryClient
 
         return id;
     }
+//    {
+//        URI  requestUri = _docBaseUri.expand( resourcePath );
+//        if (_LOG.isDebugEnabled()) {
+//            _LOG.debug( ">>> POST: request URI=" + requestUri );
+//        }
+//
+//        URI  locationUri = _rest.postForLocation( requestUri, resource );
+//        if (_LOG.isDebugEnabled()) {
+//            _LOG.debug( "<<< POST: location=" + locationUri );
+//        }
+//
+//        if (locationUri == null) {
+//            throw new OvalServiceException( "no location URI in HTTP response" );
+//        }
+//
+//        Map<String, String>  params =
+//            _docLocationUri.match( locationUri.toASCIIString() );
+//        String  id = params.get( "id" );
+//        if (_LOG.isDebugEnabled()) {
+//            _LOG.debug( "resource created: id=" + id);
+//        }
+//
+//        return id;
+//    }
 
 
 
