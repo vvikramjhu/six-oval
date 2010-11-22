@@ -176,7 +176,7 @@ public class OvalRepositoryController
 
 
     @ExceptionHandler
-    public @ResponseBody OvalServiceException handle(
+    public @ResponseBody OvalServiceException handleException(
                     final Exception e
                     )
     {
@@ -186,7 +186,7 @@ public class OvalRepositoryController
         return new OvalServiceException( e );
     }
     // TODO:
-    // Define OvalRepositoryException, ObjectNotFoundException, ...
+    // Define OvalRepositoryException, ObjectNotFoundException, ...???
 
 
 
