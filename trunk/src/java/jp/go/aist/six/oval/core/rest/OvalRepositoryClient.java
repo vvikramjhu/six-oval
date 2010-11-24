@@ -34,6 +34,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriTemplate;
 import java.io.File;
@@ -83,6 +84,10 @@ public class OvalRepositoryClient
 //        OvalResults  results = client.getOvalResults( "68ab9c47-61aa-4cb7-acac-5f36401d2d06" );
 //        System.out.println( "REST GET results: " + results );
 //    }
+
+
+    private static final List<MediaType>  _ACCEPT_MEDIA_TYPES_ =
+        Arrays.asList( new MediaType[] { MediaType.APPLICATION_XML } );
 
 
 
@@ -158,23 +163,54 @@ public class OvalRepositoryClient
 
         HttpHeaders  headers = new HttpHeaders();
         headers.setContentType( MediaType.APPLICATION_XML );
+        headers.setAccept( _ACCEPT_MEDIA_TYPES_ );
         HttpEntity<String>  entity = new HttpEntity<String>( headers );
 
-        ResponseEntity<T>  response = _rest.exchange(
-                        requestUri.toASCIIString(),
-                        HttpMethod.GET,
-                        entity,
-                        resourceType
-                        );
+        ResponseEntity<T>  response = null;
+        try {
+            response = _rest.exchange(
+                            requestUri,
+                            HttpMethod.GET,
+                            entity,
+                            resourceType
+                            );
+        } catch (HttpStatusCodeException ex) {
+            if (_LOG.isErrorEnabled()) {
+                _LOG.error( "<<< GET: error status=" + ex.getStatusCode()
+                                + ", " + ex.getStatusText() );
+            }
+            throw new OvalServiceException( ex );
+        }
+
         T  resource = response.getBody();
+        if (_LOG.isDebugEnabled()) {
+            _LOG.debug( "<<< GET: status=" + response.getStatusCode() );
+        }
 
         return resource;
     }
+//    {
+//        URI  requestUri = _docLocationUri.expand( resourcePath, id );
+//        if (_LOG.isDebugEnabled()) {
+//            _LOG.debug( ">>> GET: request URI=" + requestUri );
+//        }
+//
+//        HttpHeaders  headers = new HttpHeaders();
+//        headers.setContentType( MediaType.APPLICATION_XML );
+//        headers.setAccept( _ACCEPT_MEDIA_TYPES_ );
+//        HttpEntity<String>  entity = new HttpEntity<String>( headers );
+//
+//        ResponseEntity<T>  response = _rest.exchange(
+//                        requestUri.toASCIIString(),
+//                        HttpMethod.GET,
+//                        entity,
+//                        resourceType
+//                        );
+//        T  resource = response.getBody();
+//
+//        return resource;
+//    }
 
-
-
-    private static final List<MediaType>  _ACCEPT_MEDIA_TYPES_ =
-        Arrays.asList( new MediaType[] { MediaType.APPLICATION_XML } );
 
 
     /**
