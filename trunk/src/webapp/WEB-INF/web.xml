@@ -4,7 +4,7 @@
 <!-- // Project SIX: OVAL                                     // -->
 <!-- //                                                       // -->
 <!-- // OVAL Repository                                       // -->
-<!-- // Web App Deployment Descriptor                         // -->
+<!-- // Web Application Deployment Descriptor                 // -->
 <!-- /////////////////////////////////////////////////////////// -->
 
 <web-app version="2.5" 
@@ -15,11 +15,11 @@
 	
     <display-name>SIX OVAL Repository</display-name>
 
+
     <!-- The context params that read by ContextLoaderListener  -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:six-oval_spring-app-context.xml</param-value>
-        <!-- param-value>/WEB-INF/classes/six-oval_spring-app-context.xml</param-value -->
     </context-param>
 
     <!-- This listener will load other application context file in addition to springweb-servlet.xml -->

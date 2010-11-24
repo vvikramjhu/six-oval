@@ -30,6 +30,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -155,7 +156,7 @@ public class OvalRepositoryController
 
         HttpHeaders  headers = new HttpHeaders();
         headers.setLocation( _buildLocation( request, String.valueOf( pid ) ) );
-//        headers.setContentType( MediaType.TEXT_PLAIN );
+        headers.setContentType( MediaType.APPLICATION_XML );
 
         return new ResponseEntity<Void>( headers, HttpStatus.CREATED );
     }
@@ -181,6 +182,10 @@ public class OvalRepositoryController
                     final Exception e
                     )
     {
+        if (_LOG.isErrorEnabled()) {
+            _LOG.error( "handle exception: " + e.getClass().getName()
+                            + ", " + e.getMessage() );
+        }
         return new RestStatus( e.getMessage() );
     }
 //    public @ResponseBody Exception handleException(
