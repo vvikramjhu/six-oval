@@ -34,7 +34,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriTemplate;
 import java.io.File;
@@ -195,35 +194,36 @@ public class OvalRepositoryClient
             _LOG.debug( ">>> POST: request URI=" + requestUri );
         }
 
-//        URI  locationUri = _rest.postForLocation( requestUri, resource );
-        HttpHeaders  headers = new HttpHeaders();
-        headers.setAccept( _ACCEPT_MEDIA_TYPES_ );
-        HttpEntity<Object>  request = new HttpEntity<Object>( resource, headers );
-        ResponseEntity<RestStatus>  response = null;
-        try {
-            response = _rest.exchange(
-                        requestUri,
-                        HttpMethod.POST,
-                        request,
-                        RestStatus.class
-                        );
-        } catch (HttpStatusCodeException ex) {
-            if (_LOG.isErrorEnabled()) {
-                _LOG.error( "<<< POST: error status=" + ex.getStatusCode()
-                                + ", " + ex.getStatusText() );
-            }
-            throw new OvalServiceException( ex );
-        }
+        URI  locationUri = _rest.postForLocation( requestUri, resource );
 
-        RestStatus  status = response.getBody();
-        if (status != null) {
-            if (_LOG.isErrorEnabled()) {
-                _LOG.error( "<<< POST: exception=" + status.getMessage() );
-            }
-            throw new OvalServiceException( status.getMessage() );
-        }
-
-        URI  locationUri = response.getHeaders().getLocation();
+//        HttpHeaders  headers = new HttpHeaders();
+//        headers.setAccept( _ACCEPT_MEDIA_TYPES_ );
+//        HttpEntity<Object>  request = new HttpEntity<Object>( resource, headers );
+//        ResponseEntity<RestStatus>  response = null;
+//        try {
+//            response = _rest.exchange(
+//                        requestUri,
+//                        HttpMethod.POST,
+//                        request,
+//                        RestStatus.class
+//                        );
+//        } catch (HttpStatusCodeException ex) {
+//            if (_LOG.isErrorEnabled()) {
+//                _LOG.error( "<<< POST: error status=" + ex.getStatusCode()
+//                                + ", " + ex.getStatusText() );
+//            }
+//            throw new OvalServiceException( ex );
+//        }
+//
+//        RestStatus  status = response.getBody();
+//        if (status != null) {
+//            if (_LOG.isErrorEnabled()) {
+//                _LOG.error( "<<< POST: exception=" + status.getMessage() );
+//            }
+//            throw new OvalServiceException( status.getMessage() );
+//        }
+//
+//        URI  locationUri = response.getHeaders().getLocation();
         if (_LOG.isDebugEnabled()) {
             _LOG.debug( "<<< POST: location=" + locationUri );
         }
