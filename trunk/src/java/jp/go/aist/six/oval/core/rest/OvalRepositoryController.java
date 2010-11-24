@@ -28,11 +28,12 @@ import jp.go.aist.six.oval.service.OvalServiceException;
 import jp.go.aist.six.util.orm.Persistable;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.castor.spring.orm.CastorObjectRetrievalFailureException;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -115,6 +116,9 @@ public class OvalRepositoryController
 
 
 
+    /**
+     * REST GET resource.
+     */
     private <K, T extends Persistable<K>> T _getResource(
                     final Class<T> type,
                     final K id
@@ -124,10 +128,7 @@ public class OvalRepositoryController
         T  object = null;
         try {
             object = _store.get( type, id );
-        } catch (CastorObjectRetrievalFailureException ex) {
-            if (_LOG.isErrorEnabled()) {
-                _LOG.error( ex.getClass().getName() + ": " + ex.getMessage() );
-            }
+        } catch (ObjectRetrievalFailureException ex) {
             throw ex;
 //            throw new OvalServiceException( ex );
         }
@@ -150,11 +151,12 @@ public class OvalRepositoryController
         K  pid = null;
         try {
              pid = _store.create( type, object );
-        } catch (Exception ex) {
-            if (_LOG.isErrorEnabled()) {
-                _LOG.error( ex.getMessage() );
-            }
-            throw new OvalServiceException( ex );
+        } catch (DataAccessException ex) {
+            throw ex;
+//            if (_LOG.isErrorEnabled()) {
+//                _LOG.error( ex.getMessage() );
+//            }
+//            throw new OvalServiceException( ex );
         }
 
         HttpHeaders  headers = new HttpHeaders();
@@ -166,30 +168,48 @@ public class OvalRepositoryController
 
 
 
-    // Returns an HTML document which wrappes the exception messages.
-//    @ExceptionHandler
-//    public ResponseEntity<String> handle(
-//                    final Exception e
-//                    )
-//    {
-//        HttpHeaders  headers = new HttpHeaders();
-//
-//        return new ResponseEntity<String>(
-//                        e.getMessage(), headers, HttpStatus.INTERNAL_SERVER_ERROR );
-//    }
+    //==============================================================
+    // Exception Handlers
+    //==============================================================
 
-
-    @ExceptionHandler(CastorObjectRetrievalFailureException.class)
+    @ExceptionHandler( ObjectRetrievalFailureException.class )
     @ResponseStatus( HttpStatus.NOT_FOUND )
     public void handleNotFound(
-                    final CastorObjectRetrievalFailureException ex
+                    final ObjectRetrievalFailureException ex
                     )
     {
         if (_LOG.isErrorEnabled()) {
-            _LOG.error( "handle exception: " + ex.getClass().getName() );
+            _LOG.error( "handle exception: " + ex.getClass().getName()
+                            + ": " + ex.getMessage() );
         }
-//        return ClassUtils.getShortName( ex.getClass() );
     }
+
+
+    @ExceptionHandler( DataAccessException.class )
+    @ResponseStatus( HttpStatus.INTERNAL_SERVER_ERROR )
+    public void handleInternalServerError(
+                    final DataAccessException ex
+                    )
+    {
+        if (_LOG.isErrorEnabled()) {
+            _LOG.error( "handle exception: " + ex.getClass().getName()
+                            + ": " + ex.getMessage() );
+        }
+    }
+
+
+
+//    @ExceptionHandler(CastorObjectRetrievalFailureException.class)
+//    @ResponseStatus( HttpStatus.NOT_FOUND )
+//    public void handleNotFound(
+//                    final CastorObjectRetrievalFailureException ex
+//                    )
+//    {
+//        if (_LOG.isErrorEnabled()) {
+//            _LOG.error( "handle exception: " + ex.getClass().getName() );
+//        }
+////        return ClassUtils.getShortName( ex.getClass() );
+//    }
 
 //    @ExceptionHandler
 //    public @ResponseBody RestStatus handleException(
