@@ -28,6 +28,7 @@ import jp.go.aist.six.oval.service.OvalServiceException;
 import jp.go.aist.six.util.orm.Persistable;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.castor.spring.orm.CastorObjectRetrievalFailureException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -39,6 +40,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriTemplate;
 import java.net.URI;
@@ -122,11 +124,12 @@ public class OvalRepositoryController
         T  object = null;
         try {
             object = _store.get( type, id );
-        } catch (Exception ex) {
+        } catch (CastorObjectRetrievalFailureException ex) {
             if (_LOG.isErrorEnabled()) {
-                _LOG.error( ex.getMessage() );
+                _LOG.error( ex.getClass().getName() + ": " + ex.getMessage() );
             }
-            throw new OvalServiceException( ex );
+            throw ex;
+//            throw new OvalServiceException( ex );
         }
 
         return object;
@@ -176,18 +179,29 @@ public class OvalRepositoryController
 //    }
 
 
-
-    @ExceptionHandler
-    public @ResponseBody RestStatus handleException(
-                    final Exception e
+    @ExceptionHandler(CastorObjectRetrievalFailureException.class)
+    @ResponseStatus( HttpStatus.NOT_FOUND )
+    public void handleNotFound(
+                    final CastorObjectRetrievalFailureException ex
                     )
     {
         if (_LOG.isErrorEnabled()) {
-            _LOG.error( "handle exception: " + e.getClass().getName()
-                            + ", " + e.getMessage() );
+            _LOG.error( "handle exception: " + ex.getClass().getName() );
         }
-        return new RestStatus( e.getMessage() );
+//        return ClassUtils.getShortName( ex.getClass() );
     }
+
+//    @ExceptionHandler
+//    public @ResponseBody RestStatus handleException(
+//                    final Exception e
+//                    )
+//    {
+//        if (_LOG.isErrorEnabled()) {
+//            _LOG.error( "handle exception: " + e.getClass().getName()
+//                            + ", " + e.getMessage() );
+//        }
+//        return new RestStatus( e.getMessage() );
+//    }
 //    public @ResponseBody Exception handleException(
 //                    final Exception e
 //                    )
