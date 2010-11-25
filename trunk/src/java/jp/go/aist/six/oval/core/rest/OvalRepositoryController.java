@@ -125,13 +125,8 @@ public class OvalRepositoryController
                     )
     throws OvalServiceException
     {
-        T  object = null;
-        try {
-            object = _store.get( type, id );
-        } catch (ObjectRetrievalFailureException ex) {
-            throw ex;
-//            throw new OvalServiceException( ex );
-        }
+        T  object = _store.get( type, id );
+                           //throws ObjectRetrievalFailureException
 
         return object;
     }
@@ -148,16 +143,8 @@ public class OvalRepositoryController
     )
     throws OvalServiceException
     {
-        K  pid = null;
-        try {
-             pid = _store.create( type, object );
-        } catch (DataAccessException ex) {
-            throw ex;
-//            if (_LOG.isErrorEnabled()) {
-//                _LOG.error( ex.getMessage() );
-//            }
-//            throw new OvalServiceException( ex );
-        }
+        K  pid = _store.create( type, object );
+                        //throws DataAccessException
 
         HttpHeaders  headers = new HttpHeaders();
         headers.setLocation( _buildLocation( request, String.valueOf( pid ) ) );
@@ -171,6 +158,9 @@ public class OvalRepositoryController
     //==============================================================
     // Exception Handlers
     //==============================================================
+
+    // TODO:
+    // Define OvalRepositoryException, ObjectNotFoundException, ...???
 
     @ExceptionHandler( ObjectRetrievalFailureException.class )
     @ResponseStatus( HttpStatus.NOT_FOUND )
@@ -196,56 +186,6 @@ public class OvalRepositoryController
                             + ": " + ex.getMessage() );
         }
     }
-
-
-
-//    @ExceptionHandler(CastorObjectRetrievalFailureException.class)
-//    @ResponseStatus( HttpStatus.NOT_FOUND )
-//    public void handleNotFound(
-//                    final CastorObjectRetrievalFailureException ex
-//                    )
-//    {
-//        if (_LOG.isErrorEnabled()) {
-//            _LOG.error( "handle exception: " + ex.getClass().getName() );
-//        }
-////        return ClassUtils.getShortName( ex.getClass() );
-//    }
-
-//    @ExceptionHandler
-//    public @ResponseBody RestStatus handleException(
-//                    final Exception e
-//                    )
-//    {
-//        if (_LOG.isErrorEnabled()) {
-//            _LOG.error( "handle exception: " + e.getClass().getName()
-//                            + ", " + e.getMessage() );
-//        }
-//        return new RestStatus( e.getMessage() );
-//    }
-//    public @ResponseBody Exception handleException(
-//                    final Exception e
-//                    )
-//    {
-//        if (_LOG.isErrorEnabled()) {
-//            _LOG.error( "handle exception: " + e.getClass().getName() );
-//        }
-//        return e;
-//    }
-//    public @ResponseBody OvalServiceException handleException(
-//                    final Exception e
-//                    )
-//    {
-//        if (_LOG.isErrorEnabled()) {
-//            _LOG.error( "handle exception: " + e.getClass().getName() );
-//        }
-//
-//        if (e instanceof OvalServiceException) {
-//            return OvalServiceException.class.cast( e );
-//        }
-//        return new OvalServiceException( e );
-//    }
-    // TODO:
-    // Define OvalRepositoryException, ObjectNotFoundException, ...???
 
 
 

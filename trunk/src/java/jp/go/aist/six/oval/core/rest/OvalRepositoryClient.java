@@ -189,27 +189,6 @@ public class OvalRepositoryClient
 
         return resource;
     }
-//    {
-//        URI  requestUri = _docLocationUri.expand( resourcePath, id );
-//        if (_LOG.isDebugEnabled()) {
-//            _LOG.debug( ">>> GET: request URI=" + requestUri );
-//        }
-//
-//        HttpHeaders  headers = new HttpHeaders();
-//        headers.setContentType( MediaType.APPLICATION_XML );
-//        headers.setAccept( _ACCEPT_MEDIA_TYPES_ );
-//        HttpEntity<String>  entity = new HttpEntity<String>( headers );
-//
-//        ResponseEntity<T>  response = _rest.exchange(
-//                        requestUri.toASCIIString(),
-//                        HttpMethod.GET,
-//                        entity,
-//                        resourceType
-//                        );
-//        T  resource = response.getBody();
-//
-//        return resource;
-//    }
 
 
 
@@ -230,36 +209,17 @@ public class OvalRepositoryClient
             _LOG.debug( ">>> POST: request URI=" + requestUri );
         }
 
-        URI  locationUri = _rest.postForLocation( requestUri, resource );
+        URI  locationUri = null;
+        try {
+            locationUri = _rest.postForLocation( requestUri, resource );
+        } catch (HttpStatusCodeException ex) {
+            if (_LOG.isErrorEnabled()) {
+                _LOG.error( "<<< POST: error status=" + ex.getStatusCode()
+                                + ", " + ex.getStatusText() );
+            }
+            throw new OvalServiceException( ex );
+        }
 
-//        HttpHeaders  headers = new HttpHeaders();
-//        headers.setAccept( _ACCEPT_MEDIA_TYPES_ );
-//        HttpEntity<Object>  request = new HttpEntity<Object>( resource, headers );
-//        ResponseEntity<RestStatus>  response = null;
-//        try {
-//            response = _rest.exchange(
-//                        requestUri,
-//                        HttpMethod.POST,
-//                        request,
-//                        RestStatus.class
-//                        );
-//        } catch (HttpStatusCodeException ex) {
-//            if (_LOG.isErrorEnabled()) {
-//                _LOG.error( "<<< POST: error status=" + ex.getStatusCode()
-//                                + ", " + ex.getStatusText() );
-//            }
-//            throw new OvalServiceException( ex );
-//        }
-//
-//        RestStatus  status = response.getBody();
-//        if (status != null) {
-//            if (_LOG.isErrorEnabled()) {
-//                _LOG.error( "<<< POST: exception=" + status.getMessage() );
-//            }
-//            throw new OvalServiceException( status.getMessage() );
-//        }
-//
-//        URI  locationUri = response.getHeaders().getLocation();
         if (_LOG.isDebugEnabled()) {
             _LOG.debug( "<<< POST: location=" + locationUri );
         }
@@ -277,30 +237,6 @@ public class OvalRepositoryClient
 
         return id;
     }
-//    {
-//        URI  requestUri = _docBaseUri.expand( resourcePath );
-//        if (_LOG.isDebugEnabled()) {
-//            _LOG.debug( ">>> POST: request URI=" + requestUri );
-//        }
-//
-//        URI  locationUri = _rest.postForLocation( requestUri, resource );
-//        if (_LOG.isDebugEnabled()) {
-//            _LOG.debug( "<<< POST: location=" + locationUri );
-//        }
-//
-//        if (locationUri == null) {
-//            throw new OvalServiceException( "no location URI in HTTP response" );
-//        }
-//
-//        Map<String, String>  params =
-//            _docLocationUri.match( locationUri.toASCIIString() );
-//        String  id = params.get( "id" );
-//        if (_LOG.isDebugEnabled()) {
-//            _LOG.debug( "resource created: id=" + id);
-//        }
-//
-//        return id;
-//    }
 
 
 
@@ -329,24 +265,6 @@ public class OvalRepositoryClient
 //        URI  locationUri = response.getHeaders().getLocation();
 
         return (locationUri == null ? null : locationUri.toASCIIString());
-    }
-
-
-
-
-    private String _expandUri(
-                  final String uriTemplate,
-                  final Object... uriVariableValues
-                  )
-    {
-        UriTemplate  temp = new UriTemplate( uriTemplate );
-        URI  uri = temp.expand( uriVariableValues );
-        String  uriString = uri.toASCIIString();
-        if (_LOG.isTraceEnabled()) {
-            _LOG.debug( "expanded URI: " + uriString );
-        }
-
-        return uriString;
     }
 
 
@@ -477,20 +395,6 @@ public class OvalRepositoryClient
                         pid
                         );
     }
-//    {
-//        OvalResults  results = _get(
-//                        OvalResults.class,
-//                        new UriTemplate( "{baseUri}/{objectPath}/{id}" ),
-//                        _baseUri,
-//                        ResourcePath.OVAL_RESULTS.value(),
-//                        pid
-//                        );
-//        if (_LOG.isDebugEnabled()) {
-//            _LOG.debug( "GET oval_results: " + results );
-//        }
-//
-//        return results;
-//    }
 
 }
 // OvalRepositoryClient
