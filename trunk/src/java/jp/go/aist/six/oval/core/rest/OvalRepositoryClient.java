@@ -24,8 +24,9 @@ import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.service.OvalException;
 import jp.go.aist.six.oval.service.OvalRepository;
-import jp.go.aist.six.oval.service.OvalServiceException;
+import jp.go.aist.six.oval.service.OvalRepositoryException;
 import jp.go.aist.six.util.IoUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -154,7 +155,7 @@ public class OvalRepositoryClient
                     final String resourcePath,
                     final String id
                     )
-    throws OvalServiceException
+    throws OvalRepositoryException
     {
         URI  requestUri = _docLocationUri.expand( resourcePath, id );
         if (_LOG.isDebugEnabled()) {
@@ -179,7 +180,7 @@ public class OvalRepositoryClient
                 _LOG.error( "<<< GET: error status=" + ex.getStatusCode()
                                 + ", " + ex.getStatusText() );
             }
-            throw new OvalServiceException( ex );
+            throw new OvalException( ex );
         }
 
         T  resource = response.getBody();
@@ -202,7 +203,7 @@ public class OvalRepositoryClient
                     final Object resource,
                     final String resourcePath
                     )
-    throws OvalServiceException
+    throws OvalRepositoryException
     {
         URI  requestUri = _docBaseUri.expand( resourcePath );
         if (_LOG.isDebugEnabled()) {
@@ -217,7 +218,7 @@ public class OvalRepositoryClient
                 _LOG.error( "<<< POST: error status=" + ex.getStatusCode()
                                 + ", " + ex.getStatusText() );
             }
-            throw new OvalServiceException( ex );
+            throw new OvalException( ex );
         }
 
         if (_LOG.isDebugEnabled()) {
@@ -225,7 +226,7 @@ public class OvalRepositoryClient
         }
 
         if (locationUri == null) {
-            throw new OvalServiceException( "no location URI in HTTP POST response" );
+            throw new OvalException( "no location URI in HTTP POST response" );
         }
 
         Map<String, String>  params =
@@ -249,7 +250,7 @@ public class OvalRepositoryClient
                     final UriTemplate uriTemplate,
                     final Object... uriVariableValues
                     )
-    throws OvalServiceException
+    throws OvalRepositoryException
     {
 //        HttpHeaders  headers = new HttpHeaders();
 //        headers.setContentType( MediaType.APPLICATION_XML );
@@ -276,7 +277,7 @@ public class OvalRepositoryClient
     public String createOvalDefinitions(
                     final File defsFile
                     )
-    throws OvalServiceException
+    throws OvalRepositoryException
     {
         if (_LOG.isTraceEnabled()) {
             _LOG.trace( "POST oval_definitions XML file: " + defsFile );
@@ -286,7 +287,7 @@ public class OvalRepositoryClient
         try {
             xml = IoUtil.readCharacters( defsFile );
         } catch (Exception ex) {
-            throw new OvalServiceException( ex );
+            throw new OvalException( ex );
         }
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType( MediaType.APPLICATION_XML );
@@ -307,7 +308,7 @@ public class OvalRepositoryClient
             if (_LOG.isErrorEnabled()) {
                 _LOG.error( "POST ERROR: " + ex.getMessage() );
             }
-            throw new OvalServiceException( ex );
+            throw new OvalException( ex );
         }
 
         if (_LOG.isDebugEnabled()) {
@@ -322,7 +323,7 @@ public class OvalRepositoryClient
     public String createOvalDefinitions(
                     final OvalDefinitions definitions
                     )
-    throws OvalServiceException
+    throws OvalRepositoryException
     {
         return _createResource(
                         definitions,
@@ -334,7 +335,7 @@ public class OvalRepositoryClient
     public OvalDefinitions getOvalDefinitions(
                     final String pid
                     )
-    throws OvalServiceException
+    throws OvalRepositoryException
     {
         return _getResource(
                         OvalDefinitions.class,
@@ -348,7 +349,7 @@ public class OvalRepositoryClient
     public String createOvalSystemCharacteristics(
                     final OvalSystemCharacteristics definitions
                     )
-    throws OvalServiceException
+    throws OvalRepositoryException
     {
         return _createResource(
                         definitions,
@@ -360,7 +361,7 @@ public class OvalRepositoryClient
     public OvalSystemCharacteristics getOvalSystemCharacteristics(
                     final String pid
                     )
-    throws OvalServiceException
+    throws OvalRepositoryException
     {
         return _getResource(
                         OvalSystemCharacteristics.class,
@@ -374,7 +375,7 @@ public class OvalRepositoryClient
     public String createOvalResults(
                     final OvalResults results
                     )
-    throws OvalServiceException
+    throws OvalRepositoryException
     {
         return _createResource(
                         results,
@@ -387,7 +388,7 @@ public class OvalRepositoryClient
     public OvalResults getOvalResults(
                     final String pid
     )
-    throws OvalServiceException
+    throws OvalRepositoryException
     {
         return _getResource(
                         OvalResults.class,

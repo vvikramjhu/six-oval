@@ -40,11 +40,11 @@ public interface OvalRepository
     //==============================================================
 
     public String createOvalDefinitions( OvalDefinitions defs )
-    throws OvalServiceException;
+    throws OvalRepositoryException;
 
 
     public OvalDefinitions getOvalDefinitions( String pid )
-    throws OvalServiceException;
+    throws OvalRepositoryException;
 
 
 
@@ -53,11 +53,11 @@ public interface OvalRepository
     //==============================================================
 
     public String createOvalSystemCharacteristics( OvalSystemCharacteristics definitions )
-    throws OvalServiceException;
+    throws OvalRepositoryException;
 
 
     public OvalSystemCharacteristics getOvalSystemCharacteristics( String pid )
-    throws OvalServiceException;
+    throws OvalRepositoryException;
 
 
 
@@ -66,11 +66,11 @@ public interface OvalRepository
     //==============================================================
 
     public String createOvalResults( OvalResults resutls )
-    throws OvalServiceException;
+    throws OvalRepositoryException;
 
 
     public OvalResults getOvalResults( String pid )
-    throws OvalServiceException;
+    throws OvalRepositoryException;
 
 }
 // OvalRepository

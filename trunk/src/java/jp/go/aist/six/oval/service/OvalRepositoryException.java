@@ -29,7 +29,7 @@ package jp.go.aist.six.oval.service;
  * @version $Id$
  */
 public class OvalRepositoryException
-    extends OvalServiceException
+    extends OvalException
 {
 
     /**

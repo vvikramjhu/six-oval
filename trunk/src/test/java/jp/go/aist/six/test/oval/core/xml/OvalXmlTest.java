@@ -10,7 +10,7 @@ import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
-import jp.go.aist.six.oval.service.OvalServiceException;
+import jp.go.aist.six.oval.service.OvalException;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import org.testng.Reporter;
 
@@ -64,12 +64,12 @@ public class OvalXmlTest
     throws Exception
     {
         Reporter.log( "\n////////////////////////////////////////////", true );
-        OvalServiceException  osex = new OvalServiceException( "foo bar baz" );
+        OvalException  osex = new OvalException( "foo bar baz" );
 
         String  filepath = "oval-service-exception.xml";
         _marshal( osex, filepath );
         _unmarshalWithValidation(
-                        OvalServiceException.class,
+                        OvalException.class,
                         filepath,
                         "oval_service_Exception",
                         osex

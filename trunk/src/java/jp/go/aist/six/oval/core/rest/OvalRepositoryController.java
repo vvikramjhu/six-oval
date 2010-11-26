@@ -24,7 +24,7 @@ import jp.go.aist.six.oval.core.store.OvalStore;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.service.OvalServiceException;
+import jp.go.aist.six.oval.service.OvalException;
 import jp.go.aist.six.util.orm.Persistable;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -237,7 +237,7 @@ public class OvalRepositoryController
     public @ResponseBody OvalDefinitions getOvalDefinitions(
                     @PathVariable final String id
                     )
-    throws OvalServiceException
+    throws OvalException
     {
         return _getResource( OvalDefinitions.class, id );
     }
@@ -252,7 +252,7 @@ public class OvalRepositoryController
                     @RequestBody final OvalDefinitions definitions,
                     final HttpServletRequest request
     )
-    throws OvalServiceException
+    throws OvalException
     {
         return _createResource( request, OvalDefinitions.class, definitions );
     }
@@ -271,7 +271,7 @@ public class OvalRepositoryController
     public @ResponseBody OvalSystemCharacteristics getOvalSystemCharacteristics(
                     @PathVariable final String id
                     )
-    throws OvalServiceException
+    throws OvalException
     {
         return _getResource( OvalSystemCharacteristics.class, id );
     }
@@ -286,7 +286,7 @@ public class OvalRepositoryController
                     @RequestBody final OvalSystemCharacteristics sc,
                     final HttpServletRequest request
     )
-    throws OvalServiceException
+    throws OvalException
     {
         return _createResource( request, OvalSystemCharacteristics.class, sc );
     }
@@ -305,7 +305,7 @@ public class OvalRepositoryController
     public @ResponseBody OvalResults getOvalResults(
                     @PathVariable final String id
                     )
-    throws OvalServiceException
+    throws OvalException
     {
         return _getResource( OvalResults.class, id );
     }
@@ -326,7 +326,7 @@ public class OvalRepositoryController
                     @RequestBody final OvalResults results
                     ,final HttpServletRequest request
     )
-    throws OvalServiceException
+    throws OvalException
     {
         return _createResource( request, OvalResults.class, results );
     }

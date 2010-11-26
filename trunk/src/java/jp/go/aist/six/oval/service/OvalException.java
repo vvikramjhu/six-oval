@@ -23,19 +23,19 @@ package jp.go.aist.six.oval.service;
 
 
 /**
- * An exceptional condition that occurred during the Oval processing.
+ * An exceptional condition that occurred during the OVAL processing.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalServiceException
+public class OvalException
     extends RuntimeException
 {
 
     /**
-     * Constructs an OvalProcessException with no detail message.
+     * Constructs an OvalException with no detail message.
      */
-    public OvalServiceException()
+    public OvalException()
     {
         super();
     }
@@ -43,12 +43,12 @@ public class OvalServiceException
 
 
     /**
-     * Constructs an OvalProcessException with the specified detail message.
+     * Constructs an OvalException with the specified detail message.
      *
      * @param  message
      *   the detail message.
      */
-    public OvalServiceException(
+    public OvalException(
                     final String message
                     )
     {
@@ -58,12 +58,12 @@ public class OvalServiceException
 
 
     /**
-     * Constructs an OvalProcessException with the specified cause.
+     * Constructs an OvalException with the specified cause.
      *
      * @param   cause
      *  the cause.
      */
-    public OvalServiceException(
+    public OvalException(
                     final Throwable cause
                     )
     {
@@ -73,7 +73,7 @@ public class OvalServiceException
 
 
     /**
-     * Constructs an OvalProcessException with the specified
+     * Constructs an OvalException with the specified
      * detail message and cause.
      *
      * @param   message
@@ -81,7 +81,7 @@ public class OvalServiceException
      * @param   cause
      *  the cause.
      */
-    public OvalServiceException(
+    public OvalException(
                     final String message,
                     final Throwable cause
                     )
@@ -90,5 +90,5 @@ public class OvalServiceException
     }
 
 }
-// OvalServiceException
+// OvalException
 

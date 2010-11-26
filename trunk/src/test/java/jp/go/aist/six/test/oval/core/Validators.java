@@ -55,7 +55,7 @@ import jp.go.aist.six.oval.model.windows.MetabaseState;
 import jp.go.aist.six.oval.model.windows.RegistryItem;
 import jp.go.aist.six.oval.model.windows.RegistryObject;
 import jp.go.aist.six.oval.model.windows.RegistryState;
-import jp.go.aist.six.oval.service.OvalServiceException;
+import jp.go.aist.six.oval.service.OvalException;
 import org.testng.Assert;
 import org.testng.Reporter;
 import java.util.Collection;
@@ -1003,12 +1003,12 @@ public abstract class Validators
     /**
      */
     public static class OvalServiceExceptionValidator
-    extends Validator<OvalServiceException>
+    extends Validator<OvalException>
     {
         @Override
         public void equals(
-                        final OvalServiceException actual,
-                        final OvalServiceException expected
+                        final OvalException actual,
+                        final OvalException expected
                         )
         {
             if (expected == null) {
@@ -1079,9 +1079,9 @@ public abstract class Validators
                 v = (Validator<T>)(new SystemResultValidator());
                 _validators.put( SystemResult.class, v );
 
-            } else if (OvalServiceException.class.isAssignableFrom( type )) {
+            } else if (OvalException.class.isAssignableFrom( type )) {
                 v = (Validator<T>)(new OvalServiceExceptionValidator());
-                _validators.put( OvalServiceException.class, v );
+                _validators.put( OvalException.class, v );
             }
         }
 
