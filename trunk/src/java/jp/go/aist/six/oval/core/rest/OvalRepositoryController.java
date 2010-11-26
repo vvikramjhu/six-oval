@@ -42,7 +42,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriTemplate;
 import java.net.URI;
 import javax.servlet.http.HttpServletRequest;
@@ -117,13 +116,12 @@ public class OvalRepositoryController
 
 
     /**
-     * REST GET resource.
+     * REST GET:
      */
     private <K, T extends Persistable<K>> T _getResource(
                     final Class<T> type,
                     final K id
                     )
-    throws OvalServiceException
     {
         T  object = _store.get( type, id );
                            //throws ObjectRetrievalFailureException
@@ -133,6 +131,7 @@ public class OvalRepositoryController
 
 
     /**
+     * REST POST:
      * Create the specified object in the repository and
      * returns the HTTP response.
      */
@@ -141,7 +140,6 @@ public class OvalRepositoryController
                     final Class<T> type,
                     final T object
     )
-    throws OvalServiceException
     {
         K  pid = _store.create( type, object );
                         //throws DataAccessException
@@ -155,60 +153,70 @@ public class OvalRepositoryController
 
 
 
+//    // text/html
+//    @RequestMapping(
+//                    method=RequestMethod.GET
+//                    ,value="/oval_defs/{id}"
+//    )
+//    public ModelAndView getOvalDefinitionsModelAndView(
+//                    @PathVariable final String id
+//                    )
+//    throws OvalServiceException
+//    {
+//        OvalDefinitions  defs = null;
+//        try {
+//            defs = _store.get( OvalDefinitions.class, id );
+//        } catch (Exception ex) {
+//            if (_LOG.isErrorEnabled()) {
+//                _LOG.error( ex.getMessage() );
+//            }
+//            throw new OvalServiceException( ex );
+//        }
+//
+//        return new ModelAndView( VIEW_OVAL_DEFINITIONS, "oval_definitions", defs );
+//    }
+
+
+
     //==============================================================
-    // Exception Handlers
+    // Exception Handlers, HTTP Status Code
     //==============================================================
 
-    // TODO:
-    // Define OvalRepositoryException, ObjectNotFoundException, ...???
-
+    // 404: Not Found
     @ExceptionHandler( ObjectRetrievalFailureException.class )
     @ResponseStatus( HttpStatus.NOT_FOUND )
     public void handleNotFound(
                     final ObjectRetrievalFailureException ex
                     )
     {
-        if (_LOG.isErrorEnabled()) {
-            _LOG.error( "handle exception: " + ex.getClass().getName()
-                            + ": " + ex.getMessage() );
-        }
+        _handleException( ex );
     }
 
 
+    // 500: Internal Server Error
     @ExceptionHandler( DataAccessException.class )
     @ResponseStatus( HttpStatus.INTERNAL_SERVER_ERROR )
     public void handleInternalServerError(
                     final DataAccessException ex
                     )
     {
-        if (_LOG.isErrorEnabled()) {
-            _LOG.error( "handle exception: " + ex.getClass().getName()
-                            + ": " + ex.getMessage() );
-        }
+        _handleException( ex );
     }
 
 
-
-    // text/html
-    @RequestMapping(
-                    method=RequestMethod.GET
-                    ,value="/oval_defs/{id}"
-    )
-    public ModelAndView getOvalDefinitionsModelAndView(
-                    @PathVariable final String id
+    private void _handleException(
+                    final Exception ex
                     )
     {
-        OvalDefinitions  defs = null;
-        try {
-            defs = _store.get( OvalDefinitions.class, id );
-        } catch (Exception ex) {
-            if (_LOG.isErrorEnabled()) {
-                _LOG.error( ex.getMessage() );
-            }
-//            throw new OvalServiceException( ex );
-        }
+//        Throwable  rootCause = null;
+//        if (ex instanceof NestedRuntimeException) {
+//            rootCause = NestedRuntimeException.class.cast( ex ).getRootCause();
+//        }
 
-        return new ModelAndView( VIEW_OVAL_DEFINITIONS, "oval_definitions", defs );
+        if (_LOG.isErrorEnabled()) {
+            _LOG.error( "handle exception: " + ex.getClass().getName()
+                            + " --- " + ex.getMessage() );
+        }
     }
 
 

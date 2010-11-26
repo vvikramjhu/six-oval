@@ -225,7 +225,7 @@ public class OvalRepositoryClient
         }
 
         if (locationUri == null) {
-            throw new OvalServiceException( "no location URI in HTTP response" );
+            throw new OvalServiceException( "no location URI in HTTP POST response" );
         }
 
         Map<String, String>  params =

@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.service;
 
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 
 
 
@@ -43,6 +44,19 @@ public interface OvalRepository
 
 
     public OvalDefinitions getOvalDefinitions( String pid )
+    throws OvalServiceException;
+
+
+
+    //==============================================================
+    // System Characteristics
+    //==============================================================
+
+    public String createOvalSystemCharacteristics( OvalSystemCharacteristics definitions )
+    throws OvalServiceException;
+
+
+    public OvalSystemCharacteristics getOvalSystemCharacteristics( String pid )
     throws OvalServiceException;
 
 

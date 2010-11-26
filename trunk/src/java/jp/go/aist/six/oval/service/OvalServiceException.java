@@ -29,7 +29,7 @@ package jp.go.aist.six.oval.service;
  * @version $Id$
  */
 public class OvalServiceException
-    extends Exception
+    extends RuntimeException
 {
 
     /**
