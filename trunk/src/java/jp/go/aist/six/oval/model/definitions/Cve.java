@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.NameEntity;
+import java.util.regex.Pattern;
 
 
 
@@ -52,6 +53,27 @@ public class Cve
                     )
     {
         super( name );
+    }
+
+
+
+    public static final String  PATTERN = "CVE-[12]\\d{3}-\\d{4}";
+
+    private Pattern  _pattern = null;
+
+    public void validate(
+                    final String name
+                    )
+    {
+        if (_pattern == null) {
+            _pattern = Pattern.compile( PATTERN );
+        }
+
+        if (_pattern.matcher( name ).matches()) {
+            //valid
+        } else {
+            throw new IllegalArgumentException( "invalid CVE name: " + name );
+        }
     }
 
 

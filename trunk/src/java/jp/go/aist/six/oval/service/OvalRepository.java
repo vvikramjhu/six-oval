@@ -20,9 +20,11 @@
 
 package jp.go.aist.six.oval.service;
 
+import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import java.util.List;
 
 
 
@@ -44,6 +46,10 @@ public interface OvalRepository
 
 
     public OvalDefinitions getOvalDefinitions( String pid )
+    throws OvalRepositoryException;
+
+
+    public List<Definition> findDefinitionByCve( String cveName )
     throws OvalRepositoryException;
 
 

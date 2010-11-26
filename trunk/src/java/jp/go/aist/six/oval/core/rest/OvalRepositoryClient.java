@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.core.rest;
 
 import jp.go.aist.six.oval.core.service.OvalContext;
+import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
@@ -28,6 +29,7 @@ import jp.go.aist.six.oval.service.OvalException;
 import jp.go.aist.six.oval.service.OvalRepository;
 import jp.go.aist.six.oval.service.OvalRepositoryException;
 import jp.go.aist.six.util.IoUtil;
+import jp.go.aist.six.util.search.SearchResult;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpEntity;
@@ -152,12 +154,12 @@ public class OvalRepositoryClient
      */
     private <T> T _getResource(
                     final Class<T> resourceType,
-                    final String resourcePath,
-                    final String id
+                    final UriTemplate uriTemplate,
+                    final Object... uriVariableValues
                     )
     throws OvalRepositoryException
     {
-        URI  requestUri = _docLocationUri.expand( resourcePath, id );
+        URI  requestUri = uriTemplate.expand( uriVariableValues );
         if (_LOG.isDebugEnabled()) {
             _LOG.debug( ">>> GET: request URI=" + requestUri );
         }
@@ -339,9 +341,27 @@ public class OvalRepositoryClient
     {
         return _getResource(
                         OvalDefinitions.class,
+                        _docLocationUri,
                         ResourcePath.OVAL_DEFINITIONS.value(),
                         pid
                         );
+    }
+
+
+    public List<Definition> findDefinitionByCve(
+                    final String cveName
+                    )
+    throws OvalRepositoryException
+    {
+        @SuppressWarnings( "unchecked" )
+        SearchResult<Definition>  result = _getResource(
+                        SearchResult.class,
+                        new UriTemplate( _baseUri + "/{resourcePath}?cve={cveName}" ),
+                        ResourcePath.DEFINITION.value(),
+                        cveName
+                        );
+
+        return result.getElements();
     }
 
 
@@ -365,6 +385,7 @@ public class OvalRepositoryClient
     {
         return _getResource(
                         OvalSystemCharacteristics.class,
+                        _docLocationUri,
                         ResourcePath.OVAL_SC.value(),
                         pid
                         );
@@ -392,6 +413,7 @@ public class OvalRepositoryClient
     {
         return _getResource(
                         OvalResults.class,
+                        _docLocationUri,
                         ResourcePath.OVAL_RESULTS.value(),
                         pid
                         );

@@ -16,8 +16,9 @@
     <test name="oval.core.rest" enabled="true">
         <groups>
             <run>
+                <include name="definitions.definition"/>
                 <!-- include name="sc.oval_sc"/ -->
-                <include name="results.oval_results"/>
+                <!-- include name="results.oval_results"/ -->
             </run>
         </groups>
 

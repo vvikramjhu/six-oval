@@ -31,6 +31,7 @@ package jp.go.aist.six.oval.core.rest;
 public enum ResourcePath
 {
     OVAL_DEFINITIONS( "oval_definitions" ),
+    DEFINITION( "definition" ),
     OVAL_SC( "oval_sc" ),
     OVAL_RESULTS( "oval_results" );
 

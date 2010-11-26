@@ -1,12 +1,14 @@
 package jp.go.aist.six.test.oval.core.rest;
 
 import jp.go.aist.six.oval.core.rest.OvalRepositoryClient;
+import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.test.oval.core.Validators;
 import org.testng.Assert;
 import org.testng.Reporter;
+import java.util.List;
 
 
 
@@ -22,6 +24,30 @@ public class OvalRestTest
      */
     public OvalRestTest()
     {
+    }
+
+
+
+    //==============================================================
+    //  oval_definitions
+    //==============================================================
+
+    @org.testng.annotations.Test(
+                    groups={"oval.core.rest", "definitions.definition"},
+                    alwaysRun=true
+                    )
+    public void testDefinitionsFindDefinition()
+    throws Exception
+    {
+        OvalRepositoryClient  client = _getContext().getBean( "ovalRepositoryRestClient", OvalRepositoryClient.class );
+
+        String  cveName = "CVE-2010-0030";
+        Reporter.log( "finding Definition...?cve=" + cveName, true );
+        List<Definition>  list = client.findDefinitionByCve( cveName );
+        Reporter.log( "#results=" + list.size(), true );
+        for (Definition  def : list) {
+            Reporter.log( def.toString(), true );
+        }
     }
 
 

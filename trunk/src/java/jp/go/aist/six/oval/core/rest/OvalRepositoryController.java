@@ -21,11 +21,14 @@
 package jp.go.aist.six.oval.core.rest;
 
 import jp.go.aist.six.oval.core.store.OvalStore;
+import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.service.OvalException;
 import jp.go.aist.six.util.orm.Persistable;
+import jp.go.aist.six.util.search.RelationalBinding;
+import jp.go.aist.six.util.search.SearchResult;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.dao.DataAccessException;
@@ -40,10 +43,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.util.UriTemplate;
 import java.net.URI;
+import java.util.Date;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -255,6 +261,30 @@ public class OvalRepositoryController
     throws OvalException
     {
         return _createResource( request, OvalDefinitions.class, definitions );
+    }
+
+
+
+    @RequestMapping(
+                    method=RequestMethod.GET,
+                    value="/definition",
+                    params="cve",
+                    headers="Accept=application/xml"
+    )
+    public @ResponseBody SearchResult<Definition> findDefinitionByCve(
+                    @RequestParam final String cve
+                    )
+    throws OvalException
+    {
+        List<Definition>  list = _store.find(
+                        Definition.class,
+                        RelationalBinding.equalBinding( "metadata.reference.refID", cve )
+//                        RelationalBinding.equalBinding( "relatedCve.name", cve )
+                        );
+
+        SearchResult<Definition>  result = new SearchResult<Definition>( new Date(), list );
+
+        return result;
     }
 
 
