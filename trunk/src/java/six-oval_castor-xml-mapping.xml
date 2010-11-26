@@ -45,6 +45,10 @@
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
+    <!-- ======================================================= -->
+    <!-- Exception                                               -->
+    <!-- ======================================================= -->
+<!--
     <class name="jp.go.aist.six.oval.core.rest.RestStatus">
         <map-to xml="rest_status"
             ns-uri="http://aist.go.jp/six/oval"/>
@@ -54,10 +58,6 @@
         </field>
     </class>
 
-
-    <!-- ======================================================= -->
-    <!-- OvalServiceException                                    -->
-    <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.service.OvalServiceException">
         <map-to xml="oval_service_exception"
             ns-uri="http://aist.go.jp/six/oval"/>
@@ -69,8 +69,6 @@
             <bind-xml name="message" node="attribute"/>
         </field>
     </class>
-
-
     <class name="java.lang.Exception">
         <map-to xml="exception"
             ns-uri="http://aist.go.jp/six/oval"/>
@@ -82,6 +80,7 @@
             <bind-xml name="message" node="attribute"/>
         </field>
     </class>
+-->
 
 
     

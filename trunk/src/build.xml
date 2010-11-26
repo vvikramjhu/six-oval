@@ -39,7 +39,7 @@ CONTENTS:
 
     <!-- webapp -->
     <property name="webapp.src.dir"     location="${src.dir}/webapp"/>
-    <property name="web.xml"            location="${webapp.src.dir}/web.xml"/>
+    <property name="web.xml"            location="${webapp.src.dir}/WEB-INF/web.xml"/>
     <property name="webapp.build.dir"   location="${build.dir}/webapp/${six.webapp.path}"/>
 
     <property name="product.warname"    value="${product.id}.war"/>
@@ -119,21 +119,25 @@ CONTENTS:
     <target name="war" depends="jar">
         <echo message="web.xml path: ${web.xml}"/>
 
+<!--
         <mkdir dir="${build.dir}/WEB-INF/lib"/>
         <copy todir="${build.dir}/WEB-INF/lib" flatten="true">
             <fileset dir="${lib.dir}" includes="**/*.jar" />
         </copy>
-
-        <war
-            destfile="${product.war}"
-            webxml="${web.xml}"
-            >
-            <fileset dir="${webapp.src.dir}"
-                excludes="**/web.xml"/>
-            <classes dir="${build.classes.dir}" includes="*.xml,*.properties"/>
+-->
+        
+        <war destfile="${product.war}" webxml="${web.xml}">
+            <fileset dir="${webapp.src.dir}" 
+                excludes="**/web.xml,log4j.properties"/>
             <classes dir="${webapp.src.dir}" includes="log4j.properties"/>
+            <classes dir="${build.classes.dir}" includes="*.xml,*.properties"/>
+            <classes dir="${src.dir}/config" includes="six-oval.properties,castor.properties"/>
             <lib dir="${build.dir}" includes="*.jar"/>
+            <lib dir="${lib.dir}" includes="**/*.jar" 
+                excludes="servlet-api.jar,testng-*.jar" />
+<!--
             <lib dir="${build.dir}/WEB-INF/lib" includes="*.jar" />
+-->
         </war>
     </target>
 
