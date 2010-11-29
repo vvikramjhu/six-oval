@@ -12,7 +12,12 @@ import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
 import jp.go.aist.six.oval.service.OvalException;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
+import jp.go.aist.six.test.oval.core.DefinitionsSample;
+import jp.go.aist.six.util.search.SearchResult;
 import org.testng.Reporter;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 
 
@@ -73,6 +78,37 @@ public class OvalXmlTest
                         filepath,
                         "oval_service_Exception",
                         osex
+                        );
+    }
+
+
+
+    @org.testng.annotations.Test(
+                    groups={"oval.core.rest.searchresult"},
+                    alwaysRun=true
+                    )
+    public void testSearchResult()
+    throws Exception
+    {
+        Reporter.log( "\n////////////////////////////////////////////", true );
+
+        List<Definition>  list = Arrays.asList(
+                        new Definition[] {
+                                        DefinitionsSample.DEFINITION_8050,
+                                        DefinitionsSample.DEFINITION_305,
+                                        DefinitionsSample.DEFINITION_666
+                        }
+                        );
+
+        SearchResult<Definition>  result = new SearchResult<Definition>( new Date(), list );
+
+        String  filepath = "oval-search-result.xml";
+        _marshal( result, filepath );
+        _unmarshalWithValidation(
+                        SearchResult.class,
+                        filepath,
+                        "search_result",
+                        null
                         );
     }
 
