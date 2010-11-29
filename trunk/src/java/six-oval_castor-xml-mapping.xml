@@ -28,9 +28,9 @@
     <!-- ======================================================= -->
     <!-- SearchResult                                            -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.util.search.SearchResult">
+    <class name="jp.go.aist.six.util.search.SearchResult" auto-complete="true">
         <map-to xml="search_result"
-        />
+            />
 <!--
             ns-uri="http://aist.go.jp/six/util/search"
             ns-prefix=""/>
@@ -44,9 +44,9 @@
 -->
         <field name="elements" 
             type="jp.go.aist.six.oval.model.OvalElement"
-            collection="collection">
+            collection="collection" container="false">
             <bind-xml auto-naming="deriveByClass" node="element"
-                location="elements"/>
+                />
 <!--
             type="java.lang.Object"
             <bind-xml auto-naming="deriveByClass" node="element"

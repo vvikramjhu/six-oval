@@ -104,12 +104,18 @@ public class OvalXmlTest
 
         String  filepath = "oval-search-result.xml";
         _marshal( result, filepath );
-        _unmarshalWithValidation(
+
+        @SuppressWarnings( "unchecked" )
+        SearchResult<Definition>  result2 = _unmarshalWithValidation(
                         SearchResult.class,
                         filepath,
                         "search_result",
                         null
                         );
+
+        for (Definition  d : result2) {
+            Reporter.log( "element: " + d, true );
+        }
     }
 
 
