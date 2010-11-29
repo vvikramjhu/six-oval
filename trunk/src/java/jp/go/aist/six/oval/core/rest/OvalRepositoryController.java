@@ -29,6 +29,7 @@ import jp.go.aist.six.oval.service.OvalException;
 import jp.go.aist.six.util.orm.Persistable;
 import jp.go.aist.six.util.search.AndBinding;
 import jp.go.aist.six.util.search.Binding;
+import jp.go.aist.six.util.search.LikeBinding;
 import jp.go.aist.six.util.search.RelationalBinding;
 import jp.go.aist.six.util.search.SearchResult;
 import org.apache.commons.logging.Log;
@@ -197,17 +198,35 @@ public class OvalRepositoryController
             // empty filter
         } else if (params.size() == 1) {
             String  key = params.keySet().iterator().next();
-            filter = RelationalBinding.equalBinding( key, params.get( key ) );
+            filter = _buildFilter( key, params.get( key ) );
         } else {
             AndBinding  binding = new AndBinding();
             for (String  key : params.keySet()) {
-                binding.addElement( RelationalBinding.equalBinding( key, params.get( key ) ) );
+                binding.addElement( _buildFilter( key, params.get( key ) ) );
             }
             filter = binding;
         }
 
         return filter;
     }
+
+
+    private Binding _buildFilter(
+                    final String key,
+                    final String value
+                    )
+    {
+        if (key == null  ||  value == null) {
+            throw new IllegalArgumentException( "invalid query param" );
+        }
+
+        return (value.contains( "%" )
+                        ? (new LikeBinding( key, value ))
+                        : RelationalBinding.equalBinding( key, value )
+                        );
+    }
+
+
 
 
 
