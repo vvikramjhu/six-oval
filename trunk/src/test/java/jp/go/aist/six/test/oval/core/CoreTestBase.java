@@ -665,6 +665,7 @@ public abstract class CoreTestBase
 //                            "marshalled_20101012_inventory_microsoft.windows.server.2008.xml"
 //                        }
 //                        ,
+
 //                        // Windows XP @ Mitre, all the vulnerabilities
 //                        {
 //                            OvalDefinitions.class,
@@ -673,6 +674,7 @@ public abstract class CoreTestBase
 //                            null,
 //                            "marshalled_20101012_vulnerability_microsoft.windows.xp.xml"
 //                        }
+
 //                        ,
 //                        // Windows XP @ Mitre, inventory
 //                        {

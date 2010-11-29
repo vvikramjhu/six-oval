@@ -222,16 +222,16 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
         {
             String  xml = object.xmlGetCriteria();
             if (xml != null) {
-                if (_LOG.isTraceEnabled()) {
-                    _LOG.trace( "criteria (XML)=" + xml );
-                }
+//                if (_LOG.isTraceEnabled()) {
+//                    _LOG.trace( "criteria (XML)=" + xml );
+//                }
 
                 try {
                     Criteria  criteria = (Criteria)_getMapper().unmarshalFromString( xml );
                     object.setCriteria( criteria );
-                    if (_LOG.isTraceEnabled()) {
-                        _LOG.trace( "criteria (Object)=" + criteria );
-                    }
+//                    if (_LOG.isTraceEnabled()) {
+//                        _LOG.trace( "criteria (Object)=" + criteria );
+//                    }
                 } catch (Exception ex) {
                     if (_LOG.isErrorEnabled()) {
                         _LOG.error( ex.getMessage() );
@@ -250,16 +250,16 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
         {
             Criteria  criteria = object.getCriteria();
             if (criteria != null) {
-                if (_LOG.isTraceEnabled()) {
-                    _LOG.trace( "criteria (Object)=" + criteria );
-                }
+//                if (_LOG.isTraceEnabled()) {
+//                    _LOG.trace( "criteria (Object)=" + criteria );
+//                }
 
                 try {
                     String  xml = _getMapper().marshalToString( criteria );
                     object.xmlSetCriteria( xml );
-                    if (_LOG.isTraceEnabled()) {
-                        _LOG.trace( "criteria (XML)=" + xml );
-                    }
+//                    if (_LOG.isTraceEnabled()) {
+//                        _LOG.trace( "criteria (XML)=" + xml );
+//                    }
                 } catch (Exception ex) {
                     if (_LOG.isErrorEnabled()) {
                         _LOG.error( ex.getMessage() );
@@ -282,16 +282,16 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
         {
             String  xml = object.xmlGetComponent();
             if (xml != null) {
-                if (_LOG.isTraceEnabled()) {
-                    _LOG.trace( "component (XML)=" + xml );
-                }
+//                if (_LOG.isTraceEnabled()) {
+//                    _LOG.trace( "component (XML)=" + xml );
+//                }
 
                 try {
                     Component  component = (Component)_getMapper().unmarshalFromString( xml );
                     object.setComponent( component );
-                    if (_LOG.isTraceEnabled()) {
-                        _LOG.trace( "component (Object)=" + component );
-                    }
+//                    if (_LOG.isTraceEnabled()) {
+//                        _LOG.trace( "component (Object)=" + component );
+//                    }
                 } catch (Exception ex) {
                     if (_LOG.isErrorEnabled()) {
                         _LOG.error( ex.getMessage() );
@@ -310,16 +310,16 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
         {
             Component  component = object.getComponent();
             if (component != null) {
-                if (_LOG.isTraceEnabled()) {
-                    _LOG.trace( "component (Object)=" + component );
-                }
+//                if (_LOG.isTraceEnabled()) {
+//                    _LOG.trace( "component (Object)=" + component );
+//                }
 
                 try {
                     String  xml = _getMapper().marshalToString( component );
                     object.xmlSetComponent( xml );
-                    if (_LOG.isTraceEnabled()) {
-                        _LOG.trace( "component (XML)=" + xml );
-                    }
+//                    if (_LOG.isTraceEnabled()) {
+//                        _LOG.trace( "component (XML)=" + xml );
+//                    }
                 } catch (Exception ex) {
                     if (_LOG.isErrorEnabled()) {
                         _LOG.error( ex.getMessage() );

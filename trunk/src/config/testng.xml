@@ -13,7 +13,7 @@
 
 <suite name="six-oval" verbose="1" parallel="tests">
 
-    <test name="oval.core.rest" enabled="true">
+    <test name="oval.core.rest" enabled="false">
         <groups>
             <run>
                 <include name="definitions.definition"/>
@@ -28,12 +28,14 @@
     </test>
 
 
-    <test name="oval.core.store" enabled="false">
+    <test name="oval.core.store" enabled="true">
         <groups>
             <run>
-                <include name="results.oval_results"/>
+                <!-- include name="oval.core.store.get"/ -->
+
+                <include name="definitions.oval_definitions"/>
+                <!-- include name="results.oval_results"/ -->
                 <!-- include name="sc.oval_sc"/ -->
-                <!-- include name="definitions.oval_definitions"/ -->
                 <!-- include name="definitions.variable"/ -->
             </run>
         </groups>

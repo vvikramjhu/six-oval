@@ -91,6 +91,22 @@ public class OvalStoreTest
     }
 
 
+    @org.testng.annotations.Test(
+                    groups={"oval.core.store.get"},
+                    dataProvider="definitions.oval_definitions",
+                    alwaysRun=true
+                    )
+    public void testStoreGetOvalDefinitions(
+                    )
+    throws Exception
+    {
+        Class<OvalDefinitions>  type = OvalDefinitions.class;
+        Reporter.log( "\n////////////////////////////////////////////////////////////////", true );
+        Reporter.log( "  * object type: " + type, true );
+        OvalDefinitions  persistent = _getStore().get( type, "aaad34e4-2835-4c6e-9397-15deb3ae8bcc" );
+        Reporter.log( "  @ get: object=" + persistent, true );
+    }
+
 
 
     //==============================================================

@@ -50,11 +50,13 @@ public class OvalRestTest
         Map<String, String>  params = new HashMap<String, String>();
 
 //        params.put( "metadata.reference.refID", "CVE-2010-0030" );
+        params.put( "metadata.reference.refID", "CVE-2003-0814" );
 
 //        params.put( "metadata.reference.source", "CPE" );
 //        params.put( "metadata.title", "Microsoft PowerPoint 2002 is installed" );
 
-        params.put( "metadata.title", "Microsoft PowerPoint%" );
+//        params.put( "metadata.title", "Microsoft PowerPoint%" );
+
         List<Definition>  list = client.findDefinition( params );
 
         Reporter.log( "#results=" + list.size(), true );
