@@ -28,7 +28,7 @@
     <!-- ======================================================= -->
     <!-- SearchResult                                            -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.util.search.SearchResult" auto-complete="true">
+    <class name="jp.go.aist.six.util.search.SearchResult">
         <map-to xml="search_result"
             />
 <!--
