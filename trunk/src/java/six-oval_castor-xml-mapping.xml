@@ -30,8 +30,11 @@
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.util.search.SearchResult">
         <map-to xml="search_result"
+        />
+<!--
             ns-uri="http://aist.go.jp/six/util/search"
             ns-prefix=""/>
+-->
 
         <field name="timestamp" type="date">
             <bind-xml name="timestamp" node="element"/>
@@ -43,9 +46,9 @@
             type="jp.go.aist.six.oval.model.OvalElement"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"
-                />
+                location="elements"/>
 <!--
-        type="java.lang.Object"
+            type="java.lang.Object"
             <bind-xml auto-naming="deriveByClass" node="element"
                 location="elements"/>
 -->

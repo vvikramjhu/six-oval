@@ -158,7 +158,7 @@
         <property name="ignoreExtraElements"
                  value="false"/>
         <property name="suppressXsiType"
-                 value="false"/>
+                 value="true"/>
         <property name="encoding"
                  value="UTF-8"/>
 <!-- NO such property!!!
