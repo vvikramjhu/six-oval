@@ -114,7 +114,8 @@ public class OvalXmlTest
                         );
 
         for (Definition  d : result2) {
-            Reporter.log( "element: " + d, true );
+            Reporter.log( "element: " + d.getClass()
+                            + ", " + d, true );
         }
     }
 

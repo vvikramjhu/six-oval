@@ -27,6 +27,8 @@ import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.service.OvalException;
 import jp.go.aist.six.util.orm.Persistable;
+import jp.go.aist.six.util.search.AndBinding;
+import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.RelationalBinding;
 import jp.go.aist.six.util.search.SearchResult;
 import org.apache.commons.logging.Log;
@@ -50,6 +52,7 @@ import org.springframework.web.util.UriTemplate;
 import java.net.URI;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -184,6 +187,30 @@ public class OvalRepositoryController
 
 
 
+    private Binding _buildFilter(
+                    final Map<String, String> params
+                    )
+    {
+        Binding  filter = null;
+
+        if (params.size() == 0) {
+            // empty filter
+        } else if (params.size() == 1) {
+            String  key = params.keySet().iterator().next();
+            filter = RelationalBinding.equalBinding( key, params.get( key ) );
+        } else {
+            AndBinding  binding = new AndBinding();
+            for (String  key : params.keySet()) {
+                binding.addElement( RelationalBinding.equalBinding( key, params.get( key ) ) );
+            }
+            filter = binding;
+        }
+
+        return filter;
+    }
+
+
+
     //==============================================================
     // Exception Handlers, HTTP Status Code
     //==============================================================
@@ -268,24 +295,48 @@ public class OvalRepositoryController
     @RequestMapping(
                     method=RequestMethod.GET,
                     value="/definition",
-                    params="cve",
                     headers="Accept=application/xml"
     )
     public @ResponseBody SearchResult<Definition> findDefinitionByCve(
-                    @RequestParam final String cve
+                    @RequestParam final Map<String, String> params
                     )
     throws OvalException
     {
+        _LOG.debug( "request params=" + params );
+
+        Binding  filter = _buildFilter( params );
         List<Definition>  list = _store.find(
                         Definition.class,
-                        RelationalBinding.equalBinding( "metadata.reference.refID", cve )
-//                        RelationalBinding.equalBinding( "relatedCve.name", cve )
+                        filter
                         );
 
         SearchResult<Definition>  result = new SearchResult<Definition>( new Date(), list );
 
         return result;
     }
+
+
+//    @RequestMapping(
+//                    method=RequestMethod.GET,
+//                    value="/definition",
+//                    params="cve",
+//                    headers="Accept=application/xml"
+//    )
+//    public @ResponseBody SearchResult<Definition> findDefinitionByCve(
+//                    @RequestParam final String cve
+//                    )
+//    throws OvalException
+//    {
+//        List<Definition>  list = _store.find(
+//                        Definition.class,
+//                        RelationalBinding.equalBinding( "metadata.reference.refID", cve )
+////                        RelationalBinding.equalBinding( "relatedCve.name", cve )
+//                        );
+//
+//        SearchResult<Definition>  result = new SearchResult<Definition>( new Date(), list );
+//
+//        return result;
+//    }
 
 
 

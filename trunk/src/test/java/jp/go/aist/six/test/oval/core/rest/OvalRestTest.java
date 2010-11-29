@@ -8,7 +8,9 @@ import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.test.oval.core.Validators;
 import org.testng.Assert;
 import org.testng.Reporter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 
@@ -41,9 +43,16 @@ public class OvalRestTest
     {
         OvalRepositoryClient  client = _getContext().getBean( "ovalRepositoryRestClient", OvalRepositoryClient.class );
 
-        String  cveName = "CVE-2010-0030";
-        Reporter.log( "finding Definition...?cve=" + cveName, true );
-        List<Definition>  list = client.findDefinitionByCve( cveName );
+//        String  cveName = "CVE-2010-0030";
+//        Reporter.log( "finding Definition... cve=" + cveName, true );
+//        List<Definition>  list = client.findDefinitionByCve( cveName );
+
+        Map<String, String>  params = new HashMap<String, String>();
+//        params.put( "metadata.reference.refID", "CVE-2010-0030" );
+        params.put( "metadata.reference.source", "CPE" );
+        params.put( "metadata.title", "Microsoft PowerPoint 2002 is installed" );
+        List<Definition>  list = client.findDefinition( params );
+
         Reporter.log( "#results=" + list.size(), true );
         for (Definition  def : list) {
             Reporter.log( def.toString(), true );

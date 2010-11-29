@@ -43,6 +43,7 @@ import org.springframework.web.util.UriTemplate;
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -356,13 +357,49 @@ public class OvalRepositoryClient
         @SuppressWarnings( "unchecked" )
         SearchResult<Definition>  result = _getResource(
                         SearchResult.class,
-                        new UriTemplate( _baseUri + "/{resourcePath}?cve={cveName}" ),
+                        new UriTemplate( _baseUri + "/{resourcePath}?metadata.reference.refID={cveName}" ),
                         ResourcePath.DEFINITION.value(),
                         cveName
                         );
 
         return result.getElements();
     }
+
+
+
+
+
+    public List<Definition> findDefinition(
+                    final Map<String, String> params
+                    )
+    throws OvalRepositoryException
+    {
+        StringBuilder  s = new StringBuilder( _baseUri + "/{resourcePath}" );
+        List<String>  values = new ArrayList<String>();
+        values.add( ResourcePath.DEFINITION.value() );
+
+        if (params != null) {
+            for (String  key : params.keySet()) {
+                if (values.size() == 1) {
+                    s.append( "?" );
+                } else {
+                    s.append( "&" );
+                }
+                s.append( key ).append( "={" ).append( key ).append( "}" );
+                values.add( params.get( key ) );
+            }
+        }
+
+        @SuppressWarnings( "unchecked" )
+        SearchResult<Definition>  result = _getResource(
+                        SearchResult.class,
+                        new UriTemplate( s.toString() ),
+                        values.toArray()
+                        );
+
+        return result.getElements();
+    }
+
 
 
 

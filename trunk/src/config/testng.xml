@@ -13,7 +13,7 @@
 
 <suite name="six-oval" verbose="1" parallel="tests">
 
-    <test name="oval.core.rest" enabled="false">
+    <test name="oval.core.rest" enabled="true">
         <groups>
             <run>
                 <include name="definitions.definition"/>
@@ -49,7 +49,7 @@
     </test>
 
 
-    <test name="oval.core.xml" enabled="true">
+    <test name="oval.core.xml" enabled="false">
         <groups>
             <run>
                 <include name="oval.core.rest.searchresult"/>
