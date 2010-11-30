@@ -20,9 +20,10 @@
 
 package jp.go.aist.six.oval.model.common;
 
-import jp.go.aist.six.util.castor.AbstractPersistable;
+import jp.go.aist.six.oval.model.AbstractOvalObject;
 import java.util.ArrayList;
 import java.util.Collection;
+
 
 
 /**
@@ -32,20 +33,12 @@ import java.util.Collection;
  * what tool compiled the document, and
  * what version of that tools was used.
  *
- * <p>Properties:</p>
- * <ul>
- *   <li>productName (0..1)</li>
- *   <li>productVersion (0..1)</li>
- *   <li>schemaVersion (1..1)</li>
- *   <li>timestamp (1..1)</li>
- * </ul>
- *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Generator
-    extends AbstractPersistable
+    extends AbstractOvalObject
 {
 
     private String  _productName;

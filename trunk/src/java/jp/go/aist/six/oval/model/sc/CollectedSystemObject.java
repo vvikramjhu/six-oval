@@ -40,7 +40,6 @@ import java.util.Iterator;
  */
 public class CollectedSystemObject
     extends OvalElement
-//    extends OvalAnalysisElement
     implements Dependent<OvalSystemCharacteristics>
 {
 

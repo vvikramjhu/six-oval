@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.sc;
 
-import jp.go.aist.six.util.castor.AbstractPersistable;
+import jp.go.aist.six.oval.model.AbstractOvalObject;
 import jp.go.aist.six.util.orm.Dependent;
 import java.util.Collection;
 
@@ -35,7 +35,7 @@ import java.util.Collection;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class SystemInfo
-    extends AbstractPersistable
+    extends AbstractOvalObject
     implements Dependent<OvalSystemCharacteristics>
 {
 

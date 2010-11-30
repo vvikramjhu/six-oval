@@ -20,13 +20,13 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import jp.go.aist.six.oval.model.AbstractOvalObject;
 import jp.go.aist.six.oval.model.mitre.Event;
 import jp.go.aist.six.oval.model.mitre.Modified;
 import jp.go.aist.six.oval.model.mitre.OvalRepository;
 import jp.go.aist.six.oval.model.mitre.Submitted;
 import jp.go.aist.six.oval.model.redhat.CveReference;
 import jp.go.aist.six.oval.model.redhat.LinuxSecurityAdvisory;
-import jp.go.aist.six.util.castor.AbstractPersistable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -44,7 +44,7 @@ import java.util.Set;
  * @version $Id$
  */
 public class Metadata
-    extends AbstractPersistable
+    extends AbstractOvalObject
 {
 
     private String  _title;

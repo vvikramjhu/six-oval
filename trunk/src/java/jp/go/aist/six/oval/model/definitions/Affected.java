@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import jp.go.aist.six.oval.model.AbstractOvalObject;
 import jp.go.aist.six.oval.model.common.Family;
-import jp.go.aist.six.util.castor.AbstractPersistable;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
@@ -38,7 +38,7 @@ import java.util.Iterator;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Affected
-    extends AbstractPersistable
+    extends AbstractOvalObject
 {
 
     private Collection<Platform>  _platform = new HashSet<Platform>();

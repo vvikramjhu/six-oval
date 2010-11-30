@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.mitre;
 
-import jp.go.aist.six.util.castor.AbstractPersistable;
+import jp.go.aist.six.oval.model.AbstractOvalObject;
 
 
 
@@ -31,7 +31,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Contributor
-    extends AbstractPersistable
+    extends AbstractOvalObject
 {
 
     private String  _name;

@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.results;
 
+import jp.go.aist.six.oval.model.AbstractOvalObject;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
-import jp.go.aist.six.util.castor.AbstractPersistable;
 import jp.go.aist.six.util.orm.Dependent;
 
 
@@ -36,7 +36,7 @@ import jp.go.aist.six.util.orm.Dependent;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class SystemResult
-    extends AbstractPersistable
+    extends AbstractOvalObject
     implements Dependent<OvalResults>
 {
 

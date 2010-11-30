@@ -20,9 +20,9 @@
 
 package jp.go.aist.six.oval.model.sc;
 
+import jp.go.aist.six.oval.model.AbstractOvalObject;
 import jp.go.aist.six.oval.model.EntityType;
 import jp.go.aist.six.oval.model.common.Message;
-import jp.go.aist.six.util.castor.AbstractPersistable;
 
 
 
@@ -39,7 +39,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
 // if the common abstract super class is mapped to a super table.
 //public abstract class Item
 public class Item
-    extends AbstractPersistable
+    extends AbstractOvalObject
 //    implements Dependent<OvalSystemCharacteristics>
 {
 

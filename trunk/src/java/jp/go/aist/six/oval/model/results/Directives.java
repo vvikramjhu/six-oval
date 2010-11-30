@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.results;
 
-import jp.go.aist.six.util.castor.AbstractPersistable;
+import jp.go.aist.six.oval.model.AbstractOvalObject;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -35,7 +35,7 @@ import java.util.Map;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Directives
-    extends AbstractPersistable
+    extends AbstractOvalObject
 {
 
     protected static enum ResultType

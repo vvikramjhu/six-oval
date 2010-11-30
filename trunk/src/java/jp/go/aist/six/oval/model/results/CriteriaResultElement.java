@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.results;
 
-import jp.go.aist.six.util.castor.AbstractPersistable;
+import jp.go.aist.six.oval.model.AbstractOvalObject;
 
 
 
@@ -32,7 +32,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class CriteriaResultElement
-    extends AbstractPersistable
+    extends AbstractOvalObject
 {
 
     public static final boolean  DEFAULT_NEGATE = false;

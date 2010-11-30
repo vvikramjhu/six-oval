@@ -54,8 +54,9 @@
     <test name="oval.core.xml" enabled="true">
         <groups>
             <run>
-                <include name="oval.core.xml.searchresult"/>
+                <include name="results.oval_results"/>
                 <!--
+                <include name="oval.core.xml.searchresult"/>
                 <include name="oval.core.service"/>
                 <include name="definitions.oval_definitions"/>
                 <include name="sc.oval_sc"/>

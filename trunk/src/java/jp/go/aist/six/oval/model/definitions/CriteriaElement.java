@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.util.castor.AbstractPersistable;
+import jp.go.aist.six.oval.model.AbstractOvalObject;
 import jp.go.aist.six.util.orm.Dependent;
 
 
@@ -33,7 +33,7 @@ import jp.go.aist.six.util.orm.Dependent;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class CriteriaElement
-    extends AbstractPersistable
+    extends AbstractOvalObject
     implements Dependent<Definition>
 {
 
