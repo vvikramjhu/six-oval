@@ -84,7 +84,7 @@ public class OvalXmlTest
 
 
     @org.testng.annotations.Test(
-                    groups={"oval.core.rest.searchresult"},
+                    groups={"oval.core.xml.searchresult"},
                     alwaysRun=true
                     )
     public void testSearchResult()

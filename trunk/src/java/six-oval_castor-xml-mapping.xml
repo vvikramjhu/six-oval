@@ -43,7 +43,7 @@
 <!-- TODO: xsi:type="java:..." is required for java.lang.Object???
 -->
         <field name="elements" 
-            type="jp.go.aist.six.oval.model.OvalElement"
+            type="jp.go.aist.six.oval.model.OvalObject"
             collection="collection" container="false">
             <bind-xml auto-naming="deriveByClass" node="element"
                 />

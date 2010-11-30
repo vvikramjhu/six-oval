@@ -33,7 +33,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  */
 public abstract class OvalElement
     extends AbstractPersistable
-    implements Comparable<OvalElement>
+    implements OvalObject, Comparable<OvalElement>
 {
 
     private String  _ovalID;
