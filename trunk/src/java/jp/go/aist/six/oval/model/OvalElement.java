@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.model;
 
-import jp.go.aist.six.util.castor.AbstractPersistable;
-
 
 
 /**
@@ -32,8 +30,8 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class OvalElement
-    extends AbstractPersistable
-    implements OvalObject, Comparable<OvalElement>
+    extends AbstractOvalObject
+    implements Comparable<OvalElement>
 {
 
     private String  _ovalID;
