@@ -37,7 +37,8 @@ import java.util.Set;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Container<E>
-    implements OvalObject, Iterable<E>
+    extends AbstractOvalObject
+    implements Iterable<E>
 //    implements Set<E>
 {
 
