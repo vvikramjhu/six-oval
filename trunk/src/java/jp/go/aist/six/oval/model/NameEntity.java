@@ -32,7 +32,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  */
 public abstract class NameEntity
     extends AbstractPersistable
-    implements Comparable<NameEntity>
+    implements OvalObject, Comparable<NameEntity>
 {
 
     /**

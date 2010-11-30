@@ -33,6 +33,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  */
 public abstract class AbstractBehaviors
     extends AbstractPersistable
+    implements OvalObject
 {
 
     /**

@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model;
 
 
 /**
- * A marker interface for all the OVAL-related types.
+ * A marker interface for all the OVAL domain object except enumerations.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

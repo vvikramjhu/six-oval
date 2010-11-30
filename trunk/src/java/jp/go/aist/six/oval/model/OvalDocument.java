@@ -38,6 +38,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  */
 public abstract class OvalDocument
     extends AbstractPersistable
+    implements OvalObject
 {
 
     private static final String  _COMMON_SCHEMA_LOCATION_ =
