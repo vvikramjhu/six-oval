@@ -31,7 +31,7 @@ import jp.go.aist.six.util.castor.CastorDataStore;
  * @version $Id$
  */
 public class OvalStore
-extends CastorDataStore
+    extends CastorDataStore
 {
 
 //    /**
@@ -49,4 +49,4 @@ extends CastorDataStore
     }
 
 }
-// OvalStoreImpl
+// OvalStore
