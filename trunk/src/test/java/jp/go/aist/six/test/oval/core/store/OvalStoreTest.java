@@ -10,7 +10,7 @@ import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.test.oval.core.Validators;
-import jp.go.aist.six.util.orm.Persistable;
+import jp.go.aist.six.util.persist.Persistable;
 import org.testng.Assert;
 import org.testng.Reporter;
 

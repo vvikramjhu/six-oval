@@ -26,7 +26,7 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.service.OvalException;
-import jp.go.aist.six.util.orm.Persistable;
+import jp.go.aist.six.util.persist.Persistable;
 import jp.go.aist.six.util.search.AndBinding;
 import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.LikeBinding;

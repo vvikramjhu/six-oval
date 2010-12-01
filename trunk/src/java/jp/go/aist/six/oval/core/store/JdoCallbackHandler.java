@@ -26,7 +26,7 @@ import jp.go.aist.six.oval.model.definitions.Component;
 import jp.go.aist.six.oval.model.definitions.Criteria;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.LocalVariable;
-import jp.go.aist.six.util.orm.Persistable;
+import jp.go.aist.six.util.persist.Persistable;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import java.util.HashMap;

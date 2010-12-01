@@ -34,7 +34,7 @@ import jp.go.aist.six.util.castor.DefaultPersistenceHelper;
  * @version $Id$
  */
 public class OvalDefinitionsHelper
-    extends DefaultPersistenceHelper<String, OvalDefinitions>
+    extends DefaultPersistenceHelper<OvalDefinitions>
 {
 
     public OvalDefinitionsHelper()

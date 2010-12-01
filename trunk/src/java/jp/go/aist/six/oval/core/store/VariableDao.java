@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.definitions.LocalVariable;
 import jp.go.aist.six.oval.model.definitions.Variable;
+import jp.go.aist.six.util.persist.PersistenceException;
 
 
 
@@ -48,6 +49,7 @@ public class VariableDao
     public String create(
                     final Variable variable
                     )
+    throws PersistenceException
     {
         if (LocalVariable.class.isInstance( variable )) {
             LocalVariable  lv = LocalVariable.class.cast( variable );

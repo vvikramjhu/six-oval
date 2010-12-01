@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.results;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Operator;
-import jp.go.aist.six.util.orm.Dependent;
+import jp.go.aist.six.util.persist.Dependent;
 import java.util.ArrayList;
 import java.util.Collection;
 

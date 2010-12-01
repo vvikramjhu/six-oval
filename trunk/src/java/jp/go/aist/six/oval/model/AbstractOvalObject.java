@@ -32,7 +32,7 @@ import jp.go.aist.six.util.castor.AbstractPersistable;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class AbstractOvalObject
-    extends AbstractPersistable
+    extends AbstractPersistable<String>
     implements OvalObject
 {
 

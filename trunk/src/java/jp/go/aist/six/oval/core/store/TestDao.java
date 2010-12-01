@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.definitions.StateRef;
 import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.util.persist.PersistenceException;
 import java.util.Collection;
 
 
@@ -49,6 +50,7 @@ public class TestDao
     public String create(
                     final Test test
                     )
+    throws PersistenceException
     {
         Collection<StateRef>  states = test.getState();
         if (states != null  &&  states.size() > 0) {

@@ -27,6 +27,7 @@ import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.Platform;
 import jp.go.aist.six.oval.model.definitions.Product;
 import jp.go.aist.six.oval.model.definitions.Reference;
+import jp.go.aist.six.util.persist.PersistenceException;
 import java.util.Collection;
 import java.util.List;
 
@@ -94,6 +95,7 @@ public class DefinitionDao
     public String create(
                     final Definition def
                     )
+    throws PersistenceException
     {
         Metadata  meta = def.getMetadata();
 

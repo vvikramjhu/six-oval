@@ -31,6 +31,7 @@ import jp.go.aist.six.oval.model.results.TestedItem;
 import jp.go.aist.six.oval.model.results.TestedVariable;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.util.castor.CastorDao;
+import jp.go.aist.six.util.persist.PersistenceException;
 import java.util.Collection;
 import java.util.UUID;
 
@@ -103,6 +104,7 @@ public class OvalResultsDao
     public String create(
                     final OvalResults results
                     )
+    throws PersistenceException
     {
         if (results.getPersistentID() == null) {
             String  uuid = UUID.randomUUID().toString();

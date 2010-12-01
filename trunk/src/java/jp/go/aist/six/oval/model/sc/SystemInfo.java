@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.sc;
 
 import jp.go.aist.six.oval.model.AbstractOvalObject;
-import jp.go.aist.six.util.orm.Dependent;
+import jp.go.aist.six.util.persist.Dependent;
 import java.util.Collection;
 
 

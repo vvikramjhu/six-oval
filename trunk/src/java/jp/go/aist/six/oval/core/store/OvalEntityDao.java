@@ -23,7 +23,8 @@ package jp.go.aist.six.oval.core.store;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.util.castor.CastorDao;
 import jp.go.aist.six.util.castor.DefaultPersistenceHelper;
-import jp.go.aist.six.util.orm.PersistenceHelper;
+import jp.go.aist.six.util.persist.PersistenceException;
+import jp.go.aist.six.util.persist.PersistenceHelper;
 import jp.go.aist.six.util.search.RelationalBinding;
 import java.util.List;
 
@@ -46,14 +47,14 @@ public class OvalEntityDao<T extends OvalEntity>
                     final Class<? extends T> type
                     )
     {
-        this( type, new DefaultPersistenceHelper<String, T>() );
+        this( type, new DefaultPersistenceHelper<T>() );
     }
 
 
 
     public OvalEntityDao(
                     final Class<? extends T> type,
-                    final PersistenceHelper<String, ? super T> helper
+                    final PersistenceHelper<? super T> helper
                     )
     {
         super( type, helper );
@@ -83,7 +84,7 @@ public class OvalEntityDao<T extends OvalEntity>
     //  Dao, CastorDao
     //**************************************************************
 
-    // Polymorphic loading of abstract class, OvalEnrity, State, Test,...
+    // Polymorphic loading of abstract class, OvalEntity, State, Test,...
     // fails with NullPointerException:
     //  at org.castor.persist.ObjectTracker.untrackObject(ObjectTracker.java:443)
 
@@ -92,6 +93,7 @@ public class OvalEntityDao<T extends OvalEntity>
     public T get(
                     final String identity
                     )
+    throws PersistenceException
     {
         List<T>  p_objects = find(
                         RelationalBinding.equalBinding( "persistentID", identity ) );
