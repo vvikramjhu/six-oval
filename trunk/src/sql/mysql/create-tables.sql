@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS oval_d_definition
                         /* ENUM( 'vulnerability', 'patch', 'inventory', ...) */
 
     /* // metadata // */
-    title               VARCHAR(255)    NOT NULL,
+    title               VARCHAR(1024)   NOT NULL,
     affected_family     VARCHAR(16),
                         /* ENUM( 'ios', 'unix', 'windows', ...) */
     last_modified       VARCHAR(10),
