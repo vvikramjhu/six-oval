@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.service;
 
+import jp.go.aist.six.util.NestedRuntimeException;
+
 
 
 /**
@@ -29,7 +31,7 @@ package jp.go.aist.six.oval.service;
  * @version $Id$
  */
 public class OvalException
-    extends RuntimeException
+    extends NestedRuntimeException
 {
 
     /**
