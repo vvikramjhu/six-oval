@@ -67,6 +67,8 @@
                 <entry key="jp.go.aist.six.oval.model.definitions.Variable"
                     value="jp.go.aist.six.oval.core.store.VariableDao"/>
 
+                <entry key="jp.go.aist.six.oval.core.store.OvalDefinitionsDefinitionAssociationEntry"
+                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsDefinitionAssociationEntryDao"/>
 <!--
                 <entry key="jp.go.aist.six.oval.core.model.definitions.DefinitionTestAssociation"
                     value="jp.go.aist.six.oval.core.store.DefinitionTestAssociationDao"/>

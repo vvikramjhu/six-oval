@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.definitions.Definition;
-import jp.go.aist.six.oval.model.definitions.Definitions;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.States;
@@ -148,6 +146,7 @@ public class OvalDefinitionsDao
         }
 
 
+/*** StoreWorker
         Definitions  definitions = defs.getDefinitions();
         if (definitions != null) {
             Collection<Definition>  def_list = definitions.getDefinition();
@@ -157,7 +156,7 @@ public class OvalDefinitionsDao
                 defs.setDefinitions( new Definitions( p_def_list ) );
             }
         }
-
+***/
 
 
 ////        OvalDefinitionsUtil  util = OvalDefinitionsUtil.newInstance( defs );

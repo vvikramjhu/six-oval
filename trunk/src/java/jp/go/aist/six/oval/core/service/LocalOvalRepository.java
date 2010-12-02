@@ -20,8 +20,10 @@
 
 package jp.go.aist.six.oval.core.service;
 
+import jp.go.aist.six.oval.model.AbstractOvalObject;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.Definitions;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
@@ -34,8 +36,6 @@ import jp.go.aist.six.util.persist.Persistable;
 import jp.go.aist.six.util.persist.PersistenceException;
 import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.RelationalBinding;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,10 +50,10 @@ public class LocalOvalRepository
     implements OvalRepository
 {
 
-    /**
-     * Logger.
-     */
-    private static Log  _LOG = LogFactory.getLog( LocalOvalRepository.class );
+//    /**
+//     * Logger.
+//     */
+//    private static Log  _LOG = LogFactory.getLog( LocalOvalRepository.class );
 
 
 
@@ -106,7 +106,7 @@ public class LocalOvalRepository
     throws OvalRepositoryException
     {
         @SuppressWarnings( "unchecked" )
-        StoreWorker<K, T>  worker = (StoreWorker<K, T>)_WORKERS.get( type );
+        StoreWorker<K, T>  worker = (StoreWorker<K, T>)_getWorker( type );
 
         K  pid = worker.create( _store, object );
         return pid;
@@ -122,7 +122,7 @@ public class LocalOvalRepository
     throws OvalRepositoryException
     {
         @SuppressWarnings( "unchecked" )
-        StoreWorker<K, T>  worker = (StoreWorker<K, T>)_WORKERS.get( type );
+        StoreWorker<K, T>  worker = (StoreWorker<K, T>)_getWorker( type );
 
         return worker.get( _store, pid, view );
     }
@@ -262,9 +262,22 @@ public class LocalOvalRepository
 
 
 
+    private static StoreWorker<?, ?> _getWorker(
+                    final OvalObjectType type
+                    )
+    {
+        StoreWorker<?, ?>  worker = _WORKERS.get( type );
+        if (worker == null) {
+            worker = new StoreWorker<String, AbstractOvalObject>( AbstractOvalObject.class );
+        }
+
+        return worker;
+    }
+
+
     /**
      */
-    private static abstract class StoreWorker<K, T extends Persistable<K> & OvalObject>
+    private static class StoreWorker<K, T extends Persistable<K> & OvalObject>
     {
         private Class<T>  _type;
 
@@ -322,8 +335,14 @@ public class LocalOvalRepository
                         )
         throws OvalRepositoryException
         {
-            for (Definition  d : object.getDefinitions()) {
-                store.sync( Definition.class, d );
+            Definitions  definitions = object.getDefinitions();
+            if (definitions != null) {
+                for (Definition  d : definitions) {
+                    store.sync( Definition.class, d );
+                }
+//                    List<Definition>  p_def_list =
+//                        getForwardingDao( Definition.class ).syncAll( def_list );
+//                    defs.setDefinitions( new Definitions( p_def_list ) );
             }
 
             return store.create( getType(), object );
