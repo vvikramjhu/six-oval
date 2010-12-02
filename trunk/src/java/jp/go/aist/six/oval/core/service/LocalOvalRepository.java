@@ -114,6 +114,20 @@ public class LocalOvalRepository
 
 
     public <K, T extends Persistable<K> & OvalObject>
+    T sync(
+                    final OvalObjectType type,
+                    final T object
+                    )
+    throws OvalRepositoryException
+    {
+        @SuppressWarnings( "unchecked" )
+        StoreWorker<K, T>  worker = (StoreWorker<K, T>)_getWorker( type );
+
+        return worker.sync( _store, object );
+    }
+
+
+    public <K, T extends Persistable<K> & OvalObject>
     T get(
                     final OvalObjectType type,
                     final K pid,
@@ -302,6 +316,16 @@ public class LocalOvalRepository
         throws OvalRepositoryException
         {
             return store.create( getType(), object );
+        }
+
+
+        public T sync(
+                        final DataStore store,
+                        final T object
+                        )
+        throws OvalRepositoryException
+        {
+            return store.sync( getType(), object );
         }
 
 

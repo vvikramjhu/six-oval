@@ -28,7 +28,22 @@
     </test>
 
 
-    <test name="oval.core.store" enabled="true">
+    <test name="oval.core.service" enabled="true">
+        <groups>
+            <run>
+                <include name="definitions.oval_definitions"/>
+                <!-- include name="sc.oval_sc"/ -->
+                <!-- include name="results.oval_results"/ -->
+            </run>
+        </groups>
+
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.service.OvalLOcalRepositoryTest"/>
+        </classes>
+    </test>
+
+
+    <test name="oval.core.store" enabled="false">
         <groups>
             <run>
                 <include name="definitions.oval_definitions"/>

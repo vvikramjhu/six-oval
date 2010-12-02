@@ -64,9 +64,27 @@ public enum OvalObjectType
     }
 
 
+    public static OvalObjectType fromJavaType(
+                    final Class<?> type
+                    )
+    {
+        if (type == null) {
+            throw new IllegalArgumentException( "null type" );
+        }
+
+        for (OvalObjectType  e : OvalObjectType.values()) {
+            if (e._javaType == type) {
+                return e;
+            }
+        }
+
+        throw new IllegalArgumentException( type.getName() );
+    }
+
+
 
     private final String  _value;
-    private final Class<? extends Persistable<?>>  _type;
+    private final Class<? extends Persistable<?>>  _javaType;
 
 
     /**
@@ -78,14 +96,14 @@ public enum OvalObjectType
                   )
     {
         _value = value;
-        _type = type;
+        _javaType = type;
     }
 
 
 
-    public Class<? extends Persistable<?>> type()
+    public Class<? extends Persistable<?>> javaType()
     {
-        return _type;
+        return _javaType;
     }
 
 

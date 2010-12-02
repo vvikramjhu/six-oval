@@ -1,5 +1,7 @@
-package jp.go.aist.six.test.oval.core.store;
+package jp.go.aist.six.test.oval.core.service;
 
+import jp.go.aist.six.oval.core.service.LocalOvalRepository;
+import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
@@ -8,6 +10,8 @@ import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.service.OvalObjectType;
+import jp.go.aist.six.oval.service.ViewLevel;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.test.oval.core.Validators;
 import jp.go.aist.six.util.persist.Persistable;
@@ -20,21 +24,37 @@ import org.testng.Reporter;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalStoreTest
+public class LocalOvalRepositoryTest
     extends CoreTestBase
 {
 
+
+    private LocalOvalRepository  _repository = null;
+
+
+
     /**
      */
-    public OvalStoreTest()
+    public LocalOvalRepositoryTest()
     {
+    }
+
+
+
+    private LocalOvalRepository _getRepository()
+    {
+        if (_repository == null) {
+            _repository = new LocalOvalRepository();
+        }
+
+        return _repository;
     }
 
 
 
     /**
      */
-    protected <K, T extends Persistable<K>> void _testStoreSync(
+    protected <K, T extends Persistable<K> & OvalObject> void _testStoreSync(
                     final Class<T> type,
                     final String filepath,
                     final String xpath,
@@ -45,12 +65,14 @@ public class OvalStoreTest
         Reporter.log( "\n////////////////////////////////////////////////////////////////", true );
         Reporter.log( "  * object type: " + type, true );
 
+        OvalObjectType  ovalType = OvalObjectType.fromJavaType( type );
+
         T  actual = _unmarshalWithValidation( type, filepath, xpath, expected );
         Assert.assertNotNull( actual );
 
         Reporter.log( "sync..." , true );
         long  time = System.currentTimeMillis();
-        T  persistent = _getStore().sync( type, actual );
+        T  persistent = _getRepository().sync( ovalType, actual );
         Reporter.log( "...sync done: " + (System.currentTimeMillis() - time) + "(ms)", true );
 
         K  pid = persistent.getPersistentID();
@@ -59,7 +81,7 @@ public class OvalStoreTest
         Reporter.log( "get...", true );
         Reporter.log( "  - pid=" + pid, true );
         time = System.currentTimeMillis();
-        T  persistent2 = _getStore().get( type, pid );
+        T  persistent2 = _getRepository().get( ovalType, pid, ViewLevel.ALL );
         Reporter.log( "...get done: " + (System.currentTimeMillis() - time) + "(ms)", true );
 
         Reporter.log( "  @ get: object=" + persistent2, true );
@@ -75,7 +97,7 @@ public class OvalStoreTest
     //==============================================================
 
     @org.testng.annotations.Test(
-                    groups={"oval.core.store", "definitions.oval_definitions"},
+                    groups={"oval.core.service", "definitions.oval_definitions"},
                     dataProvider="definitions.oval_definitions",
                     alwaysRun=true
                     )
