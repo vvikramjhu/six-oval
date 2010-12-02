@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.rest;
+package jp.go.aist.six.oval.core.service;
 
-import jp.go.aist.six.oval.core.service.OvalContext;
+import jp.go.aist.six.oval.core.rest.ResourcePath;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
@@ -28,7 +28,7 @@ import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.service.OvalException;
 import jp.go.aist.six.oval.service.OvalRepository;
 import jp.go.aist.six.oval.service.OvalRepositoryException;
-import jp.go.aist.six.util.IoUtil;
+import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.search.SearchResult;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -38,13 +38,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpStatusCodeException;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriTemplate;
-import java.io.File;
-import java.io.FileInputStream;
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -54,98 +50,50 @@ import java.util.Map;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalRepositoryClient
+public class LocalOvalRepository
     implements OvalRepository
 {
 
     /**
      * Logger.
      */
-    private static Log  _LOG = LogFactory.getLog( OvalRepositoryClient.class );
-
-
-    public static void main(
-                    final String[] args
-                    )
-    throws Exception
-    {
-        OvalContext  context = new OvalContext();
-        OvalRepositoryClient  client = context.getBean( "ovalRepositoryRestClient", OvalRepositoryClient.class );
-
-        if (args.length < 1) {
-            System.err.println( "No OVAL Definitions file specified." );
-        } else {
-            File  file = new File( args[0] );
-            OvalResults  results = (OvalResults)context.getXml().unmarshal( new FileInputStream( file ) );
-            client.createOvalResults( results );
-//            client.createOvalDefinitions( file );
-        }
-
-//        client.getOvalResults( "89018e8d-1887-4e36-914b-e44f58474d0e" );
-    }
-//    {
-//        OvalRepositoryClient  client = new OvalRepositoryClient();
-//        OvalResults  results = client.getOvalResults( "68ab9c47-61aa-4cb7-acac-5f36401d2d06" );
-//        System.out.println( "REST GET results: " + results );
-//    }
-
-
-    private static final List<MediaType>  _ACCEPT_MEDIA_TYPES_ =
-        Arrays.asList( new MediaType[] { MediaType.APPLICATION_XML } );
+    private static Log  _LOG = LogFactory.getLog( LocalOvalRepository.class );
 
 
 
-    private String  _baseUri;
-    private UriTemplate  _docBaseUri;
-    private UriTemplate  _docLocationUri;
-
-
-    private RestTemplate  _rest;
+    private DataStore  _store;
 
 
 
     /**
      * Constructor.
      */
-    public OvalRepositoryClient()
+    public LocalOvalRepository()
     {
+        _init();
+    }
+
+
+
+    /**
+     *
+     */
+    private void _init()
+    {
+        OvalContext  context = new OvalContext();
+        DataStore  store = context.getBean( "ovalStore", DataStore.class );
+        setStore( store );
     }
 
 
 
     /**
      */
-    public void setBaseUri(
-                    final String uri
+    public void setStore(
+                    final DataStore store
                     )
     {
-        _baseUri = uri;
-        if (_baseUri == null) {
-            _LOG.warn( "null baseUri" );
-        }
-
-        if (_baseUri.endsWith( "/" )) {
-            // remove the last "/"
-            _baseUri = _baseUri.substring( 0, _baseUri.length() - 1 );
-        }
-
-        if (_LOG.isInfoEnabled()) {
-            _LOG.info( "baseUri: " + _baseUri );
-        }
-
-        _docBaseUri     = new UriTemplate( _baseUri + "/{resourcePath}" );
-        _docLocationUri = new UriTemplate( _baseUri + "/{resourcePath}/{id}" );
-    }
-
-
-
-    /**
-     */
-    public void setRestTemplate(
-                    final RestTemplate rest
-                    )
-    {
-        _rest = rest;
+        _store = store;
     }
 
 
@@ -276,52 +224,6 @@ public class OvalRepositoryClient
     //**************************************************************
     // OvalRepository
     //**************************************************************
-
-    public String createOvalDefinitions(
-                    final File defsFile
-                    )
-    throws OvalRepositoryException
-    {
-        if (_LOG.isTraceEnabled()) {
-            _LOG.trace( "POST oval_definitions XML file: " + defsFile );
-        }
-
-        String  xml = null;
-        try {
-            xml = IoUtil.readCharacters( defsFile );
-        } catch (Exception ex) {
-            throw new OvalException( ex );
-        }
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType( MediaType.APPLICATION_XML );
-        HttpEntity<String>  entity = new HttpEntity<String>( xml, headers );
-//        HttpEntity<String>  entity = new HttpEntity<String>( xml );
-
-//        HttpEntity<Resource>  entity = new HttpEntity<Resource>( new FileSystemResource( defsFile ) );
-
-        String  location = null;
-        try {
-            location = _post(
-                            entity,
-                            new UriTemplate( "{baseUri}/{objectPath}" ),
-                            _baseUri,
-                            ResourcePath.OVAL_DEFINITIONS.value()
-                            );
-        } catch (Exception ex) {
-            if (_LOG.isErrorEnabled()) {
-                _LOG.error( "POST ERROR: " + ex.getMessage() );
-            }
-            throw new OvalException( ex );
-        }
-
-        if (_LOG.isDebugEnabled()) {
-            _LOG.debug( "POST oval_definitions: " + location );
-        }
-
-        return location;
-    }
-
-
 
     public String createOvalDefinitions(
                     final OvalDefinitions definitions

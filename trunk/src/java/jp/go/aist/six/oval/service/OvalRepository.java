@@ -24,6 +24,7 @@ import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.util.persist.Persistable;
 import java.util.List;
 
 
@@ -36,6 +37,12 @@ import java.util.List;
  */
 public interface OvalRepository
 {
+
+    public <K, T extends Persistable<K>>
+    K createObject( ResourceType type, T object )
+    throws OvalRepositoryException;
+
+
 
     //==============================================================
     // Definitions

@@ -28,15 +28,10 @@ package jp.go.aist.six.oval.service;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum ResourceType
+public enum ViewLevel
 {
-    OVAL_DEFINITION,
-    DEFINITION,
-    TEST,
-    SYSTEM_OBJECT,
-    STATE,
-    VARIABLE,
-    OVAL_SC,
-    OVAL_RESULTS
+    ALL,
+    SUMMARY,
+    ID
 }
-// ResourceType
+// ViewLevel
