@@ -20,31 +20,26 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.common.DefinitionClass;
 import jp.go.aist.six.oval.model.definitions.Definition;
-import jp.go.aist.six.oval.model.definitions.Metadata;
-import org.exolab.castor.jdo.Database;
-import org.exolab.castor.jdo.Persistent;
-import org.exolab.castor.mapping.AccessMode;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.util.persist.AssociationEntry;
 
 
 
 /**
- * A single OVAL Definition.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PersistentDefinition
-    extends Definition
-    implements Persistent
+public class OvalDefinitionsDefinitionAssociationEntry
+    extends AssociationEntry<Integer, String, OvalDefinitions, String, Definition>
 {
 
     /**
      * Constructor.
      */
-    public PersistentDefinition()
+    public OvalDefinitionsDefinitionAssociationEntry()
     {
     }
 
@@ -52,77 +47,26 @@ public class PersistentDefinition
     /**
      * Constructor.
      */
-    public PersistentDefinition(
-                    final String id,
-                    final int version
+    public OvalDefinitionsDefinitionAssociationEntry(
+                    final OvalDefinitions ovalDefs,
+                    final Definition def
                     )
     {
-        super( id, version );
+        super( ovalDefs, def );
     }
 
 
     /**
      * Constructor.
      */
-    public PersistentDefinition(
-                    final String id,
-                    final int version,
-                    final DefinitionClass clazz
+    public OvalDefinitionsDefinitionAssociationEntry(
+                    final String ovalDefsPID,
+                    final String defPID
                     )
     {
-        super( id, version, clazz );
+        super( ovalDefsPID, defPID );
     }
 
-
-    /**
-     * Constructor.
-     */
-    public PersistentDefinition(
-                    final String id,
-                    final int version,
-                    final DefinitionClass clazz,
-                    final Metadata metadata
-                    )
-    {
-        super( id, version, clazz, metadata );
-    }
-
-
-
-    //**************************************************************
-    //  Persistent
-    //**************************************************************
-
-    public void jdoPersistent( final Database db ) { }
-
-    public void jdoTransient() { }
-
-
-    public Class<?> jdoLoad(
-                    final AccessMode accessMode
-                    )
-    {
-        return JdoCallbackHandler.jdoLoad( PersistentDefinition.class, this );
-    }
-
-
-    public void jdoBeforeCreate(
-                    final Database db
-                    )
-    {
-        JdoCallbackHandler.jdoBeforeCreate( PersistentDefinition.class, this );
-    }
-
-
-    public void jdoAfterCreate() { }
-
-    public void jdoStore( final boolean modified ) { }
-
-    public void jdoBeforeRemove() { }
-
-    public void jdoAfterRemove() { }
-
-    public void jdoUpdate() { }
 
 }
-// Definition
+// OvalDefinitionsDefinitionAssociationEntry
