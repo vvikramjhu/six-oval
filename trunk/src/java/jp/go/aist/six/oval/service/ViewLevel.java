@@ -31,7 +31,8 @@ package jp.go.aist.six.oval.service;
 public enum ViewLevel
 {
     ALL,
-    SUMMARY,
-    ID
+    SUMMARY
+
+//    ,ID
 }
 // ViewLevel

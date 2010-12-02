@@ -21,14 +21,18 @@
 package jp.go.aist.six.oval.core.rest;
 
 import jp.go.aist.six.oval.core.service.OvalContext;
+import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.service.OvalException;
+import jp.go.aist.six.oval.service.OvalObjectType;
 import jp.go.aist.six.oval.service.OvalRepository;
 import jp.go.aist.six.oval.service.OvalRepositoryException;
+import jp.go.aist.six.oval.service.ViewLevel;
 import jp.go.aist.six.util.IoUtil;
+import jp.go.aist.six.util.persist.Persistable;
 import jp.go.aist.six.util.search.SearchResult;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -276,6 +280,26 @@ public class OvalRepositoryClient
     //**************************************************************
     // OvalRepository
     //**************************************************************
+
+    public <K, T extends Persistable<K> & OvalObject>
+    K create(
+                    final OvalObjectType type,
+                    final T object
+                    )
+    throws OvalRepositoryException
+    {
+        throw new OvalRepositoryException();
+    }
+
+
+    public <K, T extends Persistable<K> & OvalObject>
+    T get( OvalObjectType type, K pid, ViewLevel view )
+    throws OvalRepositoryException
+    {
+        throw new OvalRepositoryException();
+    }
+
+
 
     public String createOvalDefinitions(
                     final File defsFile

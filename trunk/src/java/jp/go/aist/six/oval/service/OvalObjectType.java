@@ -28,7 +28,7 @@ package jp.go.aist.six.oval.service;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum ResourceType
+public enum OvalObjectType
 {
     OVAL_DEFINITION,
     DEFINITION,

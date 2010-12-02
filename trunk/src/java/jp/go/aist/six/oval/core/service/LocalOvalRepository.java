@@ -20,27 +20,23 @@
 
 package jp.go.aist.six.oval.core.service;
 
-import jp.go.aist.six.oval.core.rest.ResourcePath;
+import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.service.OvalException;
+import jp.go.aist.six.oval.service.OvalObjectType;
 import jp.go.aist.six.oval.service.OvalRepository;
 import jp.go.aist.six.oval.service.OvalRepositoryException;
+import jp.go.aist.six.oval.service.ViewLevel;
 import jp.go.aist.six.util.persist.DataStore;
-import jp.go.aist.six.util.search.SearchResult;
+import jp.go.aist.six.util.persist.Persistable;
+import jp.go.aist.six.util.persist.PersistenceException;
+import jp.go.aist.six.util.search.Binding;
+import jp.go.aist.six.util.search.RelationalBinding;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.HttpStatusCodeException;
-import org.springframework.web.util.UriTemplate;
-import java.net.URI;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -98,142 +94,54 @@ public class LocalOvalRepository
 
 
 
-    /**
-     * REST GET:
-     */
-    private <T> T _getResource(
-                    final Class<T> resourceType,
-                    final UriTemplate uriTemplate,
-                    final Object... uriVariableValues
-                    )
-    throws OvalRepositoryException
-    {
-        URI  requestUri = uriTemplate.expand( uriVariableValues );
-        if (_LOG.isDebugEnabled()) {
-            _LOG.debug( ">>> GET: request URI=" + requestUri );
-        }
-
-        HttpHeaders  headers = new HttpHeaders();
-        headers.setContentType( MediaType.APPLICATION_XML );
-        headers.setAccept( _ACCEPT_MEDIA_TYPES_ );
-        HttpEntity<String>  entity = new HttpEntity<String>( headers );
-
-        ResponseEntity<T>  response = null;
-        try {
-            response = _rest.exchange(
-                            requestUri,
-                            HttpMethod.GET,
-                            entity,
-                            resourceType
-                            );
-        } catch (HttpStatusCodeException ex) {
-            if (_LOG.isErrorEnabled()) {
-                _LOG.error( "<<< GET: error status=" + ex.getStatusCode()
-                                + ", " + ex.getStatusText() );
-            }
-            throw new OvalException( ex );
-        }
-
-        T  resource = response.getBody();
-        if (_LOG.isDebugEnabled()) {
-            _LOG.debug( "<<< GET: status=" + response.getStatusCode() );
-        }
-
-        return resource;
-    }
-
-
-
-    /**
-     * REST POST: Creates an OVAL resource via HTTP POST.
-     *
-     * @return
-     *  the ID of the resource to be used to obtain the resource.
-     */
-    private String _createResource(
-                    final Object resource,
-                    final String resourcePath
-                    )
-    throws OvalRepositoryException
-    {
-        URI  requestUri = _docBaseUri.expand( resourcePath );
-        if (_LOG.isDebugEnabled()) {
-            _LOG.debug( ">>> POST: request URI=" + requestUri );
-        }
-
-        URI  locationUri = null;
-        try {
-            locationUri = _rest.postForLocation( requestUri, resource );
-        } catch (HttpStatusCodeException ex) {
-            if (_LOG.isErrorEnabled()) {
-                _LOG.error( "<<< POST: error status=" + ex.getStatusCode()
-                                + ", " + ex.getStatusText() );
-            }
-            throw new OvalException( ex );
-        }
-
-        if (_LOG.isDebugEnabled()) {
-            _LOG.debug( "<<< POST: location=" + locationUri );
-        }
-
-        if (locationUri == null) {
-            throw new OvalException( "no location URI in HTTP POST response" );
-        }
-
-        Map<String, String>  params =
-            _docLocationUri.match( locationUri.toASCIIString() );
-        String  id = params.get( "id" );
-        if (_LOG.isDebugEnabled()) {
-            _LOG.debug( "resource created: id=" + id);
-        }
-
-        return id;
-    }
-
-
-
-    /**
-     * HTTP POST
-     */
-    private String _post(
-//                    final Class<T> objectType,
-                    final Object object,
-                    final UriTemplate uriTemplate,
-                    final Object... uriVariableValues
-                    )
-    throws OvalRepositoryException
-    {
-//        HttpHeaders  headers = new HttpHeaders();
-//        headers.setContentType( MediaType.APPLICATION_XML );
-//        HttpEntity<String>  entity = new HttpEntity<String>( headers );
-
-        URI  uri = uriTemplate.expand( uriVariableValues );
-        String  uriString = uri.toASCIIString();
-        if (_LOG.isDebugEnabled()) {
-            _LOG.debug( "POST URI: " + uriString );
-        }
-
-        URI  locationUri = _rest.postForLocation( uriString, object );
-//        URI  locationUri = response.getHeaders().getLocation();
-
-        return (locationUri == null ? null : locationUri.toASCIIString());
-    }
-
-
-
     //**************************************************************
     // OvalRepository
     //**************************************************************
+
+    public <K, T extends Persistable<K> & OvalObject>
+    K create(
+                    final OvalObjectType type,
+                    final T object
+                    )
+    throws OvalRepositoryException
+    {
+        @SuppressWarnings( "unchecked" )
+        StoreWorker<K, T>  worker = (StoreWorker<K, T>)_WORKERS.get( type );
+
+        K  pid = worker.create( _store, object );
+        return pid;
+    }
+
+
+    public <K, T extends Persistable<K> & OvalObject>
+    T get(
+                    final OvalObjectType type,
+                    final K pid,
+                    final ViewLevel view
+                    )
+    throws OvalRepositoryException
+    {
+        @SuppressWarnings( "unchecked" )
+        StoreWorker<K, T>  worker = (StoreWorker<K, T>)_WORKERS.get( type );
+
+        return worker.get( _store, pid, view );
+    }
+
+
 
     public String createOvalDefinitions(
                     final OvalDefinitions definitions
                     )
     throws OvalRepositoryException
     {
-        return _createResource(
-                        definitions,
-                        ResourcePath.OVAL_DEFINITIONS.value()
-                        );
+        String  pid = null;
+        try {
+            pid = _store.create( OvalDefinitions.class, definitions );
+        } catch (PersistenceException ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        return pid;
     }
 
 
@@ -242,12 +150,14 @@ public class LocalOvalRepository
                     )
     throws OvalRepositoryException
     {
-        return _getResource(
-                        OvalDefinitions.class,
-                        _docLocationUri,
-                        ResourcePath.OVAL_DEFINITIONS.value(),
-                        pid
-                        );
+        OvalDefinitions  object = null;
+        try {
+            object = _store.get( OvalDefinitions.class, pid );
+        } catch (PersistenceException ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        return object;
     }
 
 
@@ -256,64 +166,32 @@ public class LocalOvalRepository
                     )
     throws OvalRepositoryException
     {
-        @SuppressWarnings( "unchecked" )
-        SearchResult<Definition>  result = _getResource(
-                        SearchResult.class,
-                        new UriTemplate( _baseUri + "/{resourcePath}?metadata.reference.refID={cveName}" ),
-                        ResourcePath.DEFINITION.value(),
-                        cveName
-                        );
-
-        return result.getElements();
-    }
-
-
-
-
-
-    public List<Definition> findDefinition(
-                    final Map<String, String> params
-                    )
-    throws OvalRepositoryException
-    {
-        StringBuilder  s = new StringBuilder( _baseUri + "/{resourcePath}" );
-        List<String>  values = new ArrayList<String>();
-        values.add( ResourcePath.DEFINITION.value() );
-
-        if (params != null) {
-            for (String  key : params.keySet()) {
-                if (values.size() == 1) {
-                    s.append( "?" );
-                } else {
-                    s.append( "&" );
-                }
-                s.append( key ).append( "={" ).append( key ).append( "}" );
-                values.add( params.get( key ) );
-            }
+        Binding  filter = RelationalBinding.equalBinding( "metadata.reference.refID", cveName );
+        List<Definition>  objects = null;
+        try {
+            objects = _store.find( Definition.class, filter );
+        } catch (PersistenceException ex) {
+            throw new OvalRepositoryException( ex );
         }
 
-        @SuppressWarnings( "unchecked" )
-        SearchResult<Definition>  result = _getResource(
-                        SearchResult.class,
-                        new UriTemplate( s.toString() ),
-                        values.toArray()
-                        );
-
-        return result.getElements();
+        return objects;
     }
-
 
 
 
     public String createOvalSystemCharacteristics(
-                    final OvalSystemCharacteristics definitions
+                    final OvalSystemCharacteristics sc
                     )
     throws OvalRepositoryException
     {
-        return _createResource(
-                        definitions,
-                        ResourcePath.OVAL_SC.value()
-                        );
+        String  pid = null;
+        try {
+            pid = _store.create( OvalSystemCharacteristics.class, sc );
+        } catch (PersistenceException ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        return pid;
     }
 
 
@@ -322,12 +200,14 @@ public class LocalOvalRepository
                     )
     throws OvalRepositoryException
     {
-        return _getResource(
-                        OvalSystemCharacteristics.class,
-                        _docLocationUri,
-                        ResourcePath.OVAL_SC.value(),
-                        pid
-                        );
+        OvalSystemCharacteristics  object = null;
+        try {
+            object = _store.get( OvalSystemCharacteristics.class, pid );
+        } catch (PersistenceException ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        return object;
     }
 
 
@@ -337,10 +217,14 @@ public class LocalOvalRepository
                     )
     throws OvalRepositoryException
     {
-        return _createResource(
-                        results,
-                        ResourcePath.OVAL_RESULTS.value()
-                        );
+        String  pid = null;
+        try {
+            pid = _store.create( OvalResults.class, results );
+        } catch (PersistenceException ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        return pid;
     }
 
 
@@ -350,12 +234,118 @@ public class LocalOvalRepository
     )
     throws OvalRepositoryException
     {
-        return _getResource(
-                        OvalResults.class,
-                        _docLocationUri,
-                        ResourcePath.OVAL_RESULTS.value(),
-                        pid
-                        );
+        OvalResults  object = null;
+        try {
+            object = _store.get( OvalResults.class, pid );
+        } catch (PersistenceException ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        return object;
+    }
+
+
+
+
+    private static Map<OvalObjectType, StoreWorker<?, ?>> _createWorkers()
+    {
+        Map<OvalObjectType, StoreWorker<?, ?>>  map =
+            new HashMap<OvalObjectType, StoreWorker<?, ?>>();
+
+        map.put( OvalObjectType.OVAL_DEFINITION, new OvalDefinitionsStoreWorker() );
+
+        return map;
+    }
+
+    private static final Map<OvalObjectType, StoreWorker<?, ?>>  _WORKERS =
+        _createWorkers();
+
+
+
+    /**
+     */
+    private static abstract class StoreWorker<K, T extends Persistable<K> & OvalObject>
+    {
+        private Class<T>  _type;
+
+        public StoreWorker(
+                        final Class<T> type
+                        )
+        {
+            _type = type;
+        }
+
+
+        public Class<T> getType()
+        {
+            return _type;
+        }
+
+
+        public K create(
+                        final DataStore store,
+                        final T object
+                        )
+        throws OvalRepositoryException
+        {
+            return store.create( getType(), object );
+        }
+
+
+        public T get(
+                        final DataStore store,
+                        final K pid,
+                        final ViewLevel view
+                        )
+        throws OvalRepositoryException
+        {
+            T  object = store.get( getType(), pid );
+            return object;
+        }
+    }
+
+
+
+    private static class OvalDefinitionsStoreWorker
+    extends StoreWorker<String, OvalDefinitions>
+    {
+        public OvalDefinitionsStoreWorker()
+        {
+            super( OvalDefinitions.class );
+        }
+
+
+        @Override
+        public String create(
+                        final DataStore store,
+                        final OvalDefinitions object
+                        )
+        throws OvalRepositoryException
+        {
+            for (Definition  d : object.getDefinitions()) {
+                store.sync( Definition.class, d );
+            }
+
+            return store.create( getType(), object );
+        }
+
+
+        @Override
+        public OvalDefinitions get(
+                        final DataStore store,
+                        final String pid,
+                        final ViewLevel view
+                        )
+        throws OvalRepositoryException
+        {
+            OvalDefinitions  object = store.get( getType(), pid );
+            if (view == ViewLevel.SUMMARY) {
+            } else if (view == ViewLevel.ALL) {
+
+            }
+
+            return object;
+        }
     }
 
 }
