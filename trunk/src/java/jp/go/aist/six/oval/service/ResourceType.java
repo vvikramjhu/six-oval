@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.service;
 
 
 
@@ -28,17 +28,15 @@ package jp.go.aist.six.oval.model.linux;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum LinuxPkgProperty
+public enum ResourceType
 {
-    NAME,
-    ARCH,           //Dpkg, RPM
-    ARCHITECTURE,   //Slackware
-    EPOCH,
-    RELEASE,        //Dpkg, RPM
-    REVISION,       //Slackware
-    VERSION,
-    EVR,
-    SIGNATURE_KEYID;    //RPM
-
+    OVAL_DEFINITION,
+    DEFINITION,
+    TEST,
+    SYSTEM_OBJECT,
+    STATE,
+    VARIABLE,
+    OVAL_SC,
+    OVAL_RESULTS
 }
-// LinuxPkgProperty
+// ResourceType
