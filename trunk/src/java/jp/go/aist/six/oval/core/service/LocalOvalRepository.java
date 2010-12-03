@@ -20,10 +20,8 @@
 
 package jp.go.aist.six.oval.core.service;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.Definition;
-import jp.go.aist.six.oval.model.definitions.Definitions;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
@@ -92,6 +90,49 @@ public class LocalOvalRepository
 
 
 
+    // StoreWorker
+
+    private final Map<Class<? extends OvalObject<?>>, StoreWorker<?, ?>>  _workers =
+        new HashMap<Class<? extends OvalObject<?>>, StoreWorker<?, ?>>();
+
+
+//    @SuppressWarnings( "unchecked" )
+    private <K, T extends OvalObject<K>> StoreWorker<K, T> _getWorker(
+                    final Class<T> type
+                    )
+    {
+        StoreWorker<?, ?>  worker = _workers.get( type );
+        if (worker == null) {
+            if (OvalDefinitions.class.isAssignableFrom( type )) {
+                worker = new OvalDefinitionsStoreWorker();
+                _workers.put( type, worker );
+            }
+        }
+
+        @SuppressWarnings( "unchecked" )
+        StoreWorker<K, T>  w = (StoreWorker<K, T>)worker;
+
+        return w;
+    }
+
+//    @SuppressWarnings( "unchecked" )
+//    private <K, T extends OvalObject<K>> StoreWorker<K, T> _getW(
+//                    final Class<T> type
+//                    )
+//    {
+//        StoreWorker<K, T>  worker = (StoreWorker<K, T>)_workers.get( type );
+//        if (worker == null) {
+//            if (OvalDefinitions.class.isAssignableFrom( type )) {
+//                worker = new OvalDefinitionsStoreWorker();
+//                _workers.put( type, worker );
+//            }
+//        }
+//
+//        return worker;
+//    }
+
+
+
     //**************************************************************
     // OvalRepository
     //**************************************************************
@@ -103,10 +144,14 @@ public class LocalOvalRepository
                     )
     throws OvalRepositoryException
     {
-        @SuppressWarnings( "unchecked" )
-        Worker<K, T>  worker = (Worker<K, T>)_getWorker( type );
+        StoreWorker<K, T>  worker = _getWorker( type );
+        K  pid = null;
+        if (worker == null) {
+            pid = _store.create( type, object );
+        } else {
+            pid = worker.create( _store, object );
+        }
 
-        K  pid = worker.create( _store, object );
         return pid;
     }
 
@@ -118,10 +163,15 @@ public class LocalOvalRepository
                     )
     throws OvalRepositoryException
     {
-        @SuppressWarnings( "unchecked" )
-        Worker<K, T>  worker = (Worker<K, T>)_getWorker( type );
+        StoreWorker<K, T>  worker = _getWorker( type );
+        T  p_object = null;
+        if (worker == null) {
+            p_object = _store.sync( type, object );
+        } else {
+            p_object = worker.sync( _store, object );
+        }
 
-        return worker.sync( _store, object );
+        return p_object;
     }
 
 
@@ -133,10 +183,15 @@ public class LocalOvalRepository
                     )
     throws OvalRepositoryException
     {
-        @SuppressWarnings( "unchecked" )
-        Worker<K, T>  worker = (Worker<K, T>)_getWorker( type );
+        StoreWorker<K, T>  worker = _getWorker( type );
+        T  p_object = null;
+        if (worker == null) {
+            p_object = _store.get( type, pid );
+        } else {
+            p_object = worker.get( _store, pid, view );
+        }
 
-        return worker.get( _store, pid, view );
+        return p_object;
     }
 
 
@@ -254,152 +309,6 @@ public class LocalOvalRepository
         }
 
         return object;
-    }
-
-
-
-    // StoreWorker
-
-
-
-    private static <T extends OvalObject<?>>
-    Map<Class<T>, Worker<?, ? super T>> _createWorkers()
-    {
-        Map<Class<T>, Worker<?, T>>  map =
-            new HashMap<Class<T>, Worker<?, T>>();
-
-        map.put( OvalDefinitions.class, new OvalDefinitionsWorker() );
-
-        return map;
-    }
-
-    private static final
-    Map<Class<? extends OvalObject<?>>, Worker<?, ? extends OvalObject<?>>>  _WORKERS =
-        _createWorkers();
-
-
-
-    private static <T extends OvalObject<?>> Worker<?, T> _getWorker(
-                    final Class<T> type
-                    )
-    {
-        @SuppressWarnings( "unchecked" )
-        Worker<?, T>  worker = (Worker<?, T>)_WORKERS.get( type );
-
-        return worker;
-    }
-
-
-    /**
-     */
-    private static class Worker<K, T extends OvalObject<K>>
-    {
-        private Class<T>  _type;
-
-        public Worker(
-                        final Class<T> type
-                        )
-        {
-            _type = type;
-        }
-
-
-        public Class<T> getType()
-        {
-            return _type;
-        }
-
-
-        public K create(
-                        final DataStore store,
-                        final T object
-                        )
-        throws OvalRepositoryException
-        {
-            return store.create( getType(), object );
-        }
-
-
-        public T sync(
-                        final DataStore store,
-                        final T object
-                        )
-        throws OvalRepositoryException
-        {
-            return store.sync( getType(), object );
-        }
-
-
-        public T get(
-                        final DataStore store,
-                        final K pid,
-                        final ViewLevel view
-                        )
-        throws OvalRepositoryException
-        {
-            T  object = store.get( getType(), pid );
-            return object;
-        }
-    }
-
-
-
-    private static class DefaultWorker
-    extends Worker<String, AbstractOvalObject>
-    {
-        public DefaultWorker()
-        {
-            super( AbstractOvalObject.class );
-        }
-    }
-
-
-    private static class OvalDefinitionsWorker
-    extends Worker<String, OvalDefinitions>
-    {
-        public OvalDefinitionsWorker()
-        {
-            super( OvalDefinitions.class );
-        }
-
-
-        @Override
-        public String create(
-                        final DataStore store,
-                        final OvalDefinitions object
-                        )
-        throws OvalRepositoryException
-        {
-            Definitions  definitions = object.getDefinitions();
-            if (definitions != null) {
-                for (Definition  d : definitions) {
-                    store.sync( Definition.class, d );
-                }
-//                    List<Definition>  p_def_list =
-//                        getForwardingDao( Definition.class ).syncAll( def_list );
-//                    defs.setDefinitions( new Definitions( p_def_list ) );
-            }
-
-            return store.create( getType(), object );
-        }
-
-
-        @Override
-        public OvalDefinitions get(
-                        final DataStore store,
-                        final String pid,
-                        final ViewLevel view
-                        )
-        throws OvalRepositoryException
-        {
-            OvalDefinitions  object = store.get( getType(), pid );
-            if (view == ViewLevel.SUMMARY) {
-            } else if (view == ViewLevel.ALL) {
-
-            }
-
-            return object;
-        }
     }
 
 }

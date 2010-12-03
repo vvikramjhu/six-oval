@@ -593,14 +593,14 @@ public abstract class CoreTestBase
     public Object[][] provideOvalDefinitionsOvalDefinitions()
     {
         return new Object[][] {
-//                        // Windows XP, CVE-2010-0035, PowerPoint
-//                        {
-//                            OvalDefinitions.class,
-//                            "test/data/definitions/oval-definitions-5.8_windows-xp_8050.xml",
-//                            "/oval_definitions",
-//                            DefinitionsSample.OVAL_DEFINITIONS_8050,
-//                            "marshalled_oval-definitions-5.8_windows-xp_8050.xml"
-//                        }
+                        // Windows XP, CVE-2010-0035, PowerPoint
+                        {
+                            OvalDefinitions.class,
+                            "test/data/definitions/oval-definitions-5.8_windows-xp_8050.xml",
+                            "/oval_definitions",
+                            DefinitionsSample.OVAL_DEFINITIONS_8050,
+                            "marshalled_oval-definitions-5.8_windows-xp_8050.xml"
+                        }
 //                        ,
 //                        // Red Hat, CVE-2010-0176, RHSA 20100332
 //                        {
@@ -699,14 +699,14 @@ public abstract class CoreTestBase
 //                        ,
 //
 //
-                        // Red Hat Enterprise Linux 5.0 @ Mitre, all vulnerabilities, 2010-08-30
-                        {
-                            OvalDefinitions.class,
-                            "test/data/definitions/20100830_vulnerability_red.hat.enterprise.linux.5.xml",
-                            "/oval_definitions",
-                            null,
-                            "marshalled_20100830_vulnerability_red.hat.enterprise.linux.5.xml"
-                        }
+//                        // Red Hat Enterprise Linux 5.0 @ Mitre, all vulnerabilities, 2010-08-30
+//                        {
+//                            OvalDefinitions.class,
+//                            "test/data/definitions/20100830_vulnerability_red.hat.enterprise.linux.5.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_20100830_vulnerability_red.hat.enterprise.linux.5.xml"
+//                        }
 //                        ,
 //
 //                        // Red Hat Enterprise Linux @ Red Hat, all , 2010-08-26

@@ -38,7 +38,7 @@
         </groups>
 
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.service.OvalLOcalRepositoryTest"/>
+            <class name="jp.go.aist.six.test.oval.core.service.LocalOvalRepositoryTest"/>
         </classes>
     </test>
 

@@ -10,11 +10,9 @@ import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.service.OvalObjectType;
 import jp.go.aist.six.oval.service.ViewLevel;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.test.oval.core.Validators;
-import jp.go.aist.six.util.persist.Persistable;
 import org.testng.Assert;
 import org.testng.Reporter;
 
@@ -54,7 +52,7 @@ public class LocalOvalRepositoryTest
 
     /**
      */
-    protected <K, T extends Persistable<K> & OvalObject> void _testStoreSync(
+    protected <K, T extends OvalObject<K>> void _testStoreSync(
                     final Class<T> type,
                     final String filepath,
                     final String xpath,
@@ -65,14 +63,12 @@ public class LocalOvalRepositoryTest
         Reporter.log( "\n////////////////////////////////////////////////////////////////", true );
         Reporter.log( "  * object type: " + type, true );
 
-        OvalObjectType  ovalType = OvalObjectType.fromJavaType( type );
-
         T  actual = _unmarshalWithValidation( type, filepath, xpath, expected );
         Assert.assertNotNull( actual );
 
         Reporter.log( "sync..." , true );
         long  time = System.currentTimeMillis();
-        T  persistent = _getRepository().sync( ovalType, actual );
+        T  persistent = _getRepository().sync( type, actual );
         Reporter.log( "...sync done: " + (System.currentTimeMillis() - time) + "(ms)", true );
 
         K  pid = persistent.getPersistentID();
@@ -81,7 +77,7 @@ public class LocalOvalRepositoryTest
         Reporter.log( "get...", true );
         Reporter.log( "  - pid=" + pid, true );
         time = System.currentTimeMillis();
-        T  persistent2 = _getRepository().get( ovalType, pid, ViewLevel.ALL );
+        T  persistent2 = _getRepository().get( type, pid, ViewLevel.ALL );
         Reporter.log( "...get done: " + (System.currentTimeMillis() - time) + "(ms)", true );
 
         Reporter.log( "  @ get: object=" + persistent2, true );

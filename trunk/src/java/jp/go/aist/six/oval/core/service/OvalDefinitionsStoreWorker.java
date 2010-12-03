@@ -20,10 +20,14 @@
 
 package jp.go.aist.six.oval.core.service;
 
-import jp.go.aist.six.oval.model.OvalObject;
+import jp.go.aist.six.oval.core.store.OvalDefinitionsDefinitionAssociationEntry;
+import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.Definitions;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.service.OvalRepositoryException;
 import jp.go.aist.six.oval.service.ViewLevel;
 import jp.go.aist.six.util.persist.DataStore;
+import java.util.UUID;
 
 
 
@@ -31,7 +35,8 @@ import jp.go.aist.six.util.persist.DataStore;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class StoreWorker<K, T extends OvalObject<K>>
+public class OvalDefinitionsStoreWorker
+    extends StoreWorker<String, OvalDefinitions>
 {
 
 //    /**
@@ -40,63 +45,98 @@ public class StoreWorker<K, T extends OvalObject<K>>
 //    private static Log  _LOG = LogFactory.getLog( LocalOvalRepository.class );
 
 
-
-    private Class<T>  _type;
-
-
-
     /**
      * Constructor.
      */
-    public StoreWorker(
-                    final Class<T> type
-    )
+    public OvalDefinitionsStoreWorker()
     {
-        _type = type;
+        super( OvalDefinitions.class );
     }
 
 
 
-    public Class<T> getType()
-    {
-        return _type;
-    }
-
-
-
-    public K create(
+    private void _syncRelated(
                     final DataStore store,
-                    final T object
+                    final OvalDefinitions object
                     )
     throws OvalRepositoryException
     {
+        Definitions  definitions = object.getDefinitions();
+        if (definitions != null) {
+            for (Definition  d : definitions) {
+                store.sync( Definition.class, d );
+
+                // AssociationEntry
+                OvalDefinitionsDefinitionAssociationEntry  assoc =
+                    new OvalDefinitionsDefinitionAssociationEntry( object, d );
+                store.sync( OvalDefinitionsDefinitionAssociationEntry.class, assoc );
+            }
+        }
+    }
+
+
+
+    //**************************************************************
+    // StoreWorker
+    //**************************************************************
+
+    @Override
+    public String create(
+                    final DataStore store,
+                    final OvalDefinitions object
+                    )
+    throws OvalRepositoryException
+    {
+        Definitions  definitions = object.getDefinitions();
+        if (definitions != null) {
+            for (Definition  d : definitions) {
+                store.sync( Definition.class, d );
+
+                // AssociationEntry
+            }
+        }
+
         return store.create( getType(), object );
     }
 
 
 
-    public T sync(
+    @Override
+    public OvalDefinitions sync(
                     final DataStore store,
-                    final T object
+                    final OvalDefinitions object
                     )
     throws OvalRepositoryException
     {
+        if (object.getPersistentID() == null) {
+            String  uuid = UUID.randomUUID().toString();
+            object.setPersistentID( uuid );
+        }
+        _syncRelated( store, object );
+
         return store.sync( getType(), object );
     }
 
 
 
-    public T get(
+    @Override
+    public OvalDefinitions get(
                     final DataStore store,
-                    final K pid,
+                    final String pid,
                     final ViewLevel view
                     )
     throws OvalRepositoryException
     {
-        T  object = store.get( getType(), pid );
+        OvalDefinitions  object = store.get( getType(), pid );
+        if (view == ViewLevel.SUMMARY) {
+            //
+        } else if (view == ViewLevel.ALL) {
+            //
+        }
+
         return object;
     }
 
 }
-// StoreWorker
+// OvalDefinitionsStoreWorker
 
