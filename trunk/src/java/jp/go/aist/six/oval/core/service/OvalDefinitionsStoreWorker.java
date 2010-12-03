@@ -27,7 +27,12 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.service.OvalRepositoryException;
 import jp.go.aist.six.oval.service.ViewLevel;
 import jp.go.aist.six.util.persist.DataStore;
-import java.util.UUID;
+import jp.go.aist.six.util.search.Binding;
+import jp.go.aist.six.util.search.RelationalBinding;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 
@@ -65,13 +70,54 @@ public class OvalDefinitionsStoreWorker
         if (definitions != null) {
             for (Definition  d : definitions) {
                 store.sync( Definition.class, d );
+            }
+        }
+    }
 
+
+    private void _syncAssociation(
+                    final DataStore store,
+                    final OvalDefinitions object
+                    )
+    throws OvalRepositoryException
+    {
+        Definitions  definitions = object.getDefinitions();
+        if (definitions != null) {
+            for (Definition  d : definitions) {
                 // AssociationEntry
                 OvalDefinitionsDefinitionAssociationEntry  assoc =
                     new OvalDefinitionsDefinitionAssociationEntry( object, d );
                 store.sync( OvalDefinitionsDefinitionAssociationEntry.class, assoc );
             }
         }
+    }
+
+
+
+    private void _getRelated(
+                    final DataStore store,
+                    final OvalDefinitions object
+                    )
+    throws OvalRepositoryException
+    {
+        Binding  filter =
+            RelationalBinding.equalBinding( "antecendentPersistentID", object.getPersistentID() );
+        List<OvalDefinitionsDefinitionAssociationEntry>  list =
+            store.find( OvalDefinitionsDefinitionAssociationEntry.class, filter );
+
+        Definitions  defs = new Definitions();
+        if (list.size() > 0) {
+            Set<String>  defPIDs = new HashSet<String>();
+            for (OvalDefinitionsDefinitionAssociationEntry  assoc : list) {
+                String  defPID = assoc.getDependentPersistentID();
+                defPIDs.add( defPID );
+            }
+
+            Collection<Definition>  p_defs = store.getAll( Definition.class, defPIDs );
+            defs.addAll( p_defs );
+        }
+
+        object.setDefinitions( defs );
     }
 
 
@@ -108,14 +154,21 @@ public class OvalDefinitionsStoreWorker
                     )
     throws OvalRepositoryException
     {
-        if (object.getPersistentID() == null) {
-            String  uuid = UUID.randomUUID().toString();
-            object.setPersistentID( uuid );
-        }
         _syncRelated( store, object );
+        OvalDefinitions  p_object = store.sync( getType(), object );
+        _syncAssociation( store, object );
 
-        return store.sync( getType(), object );
+        return p_object;
     }
+//    {
+//        if (object.getPersistentID() == null) {
+//            String  uuid = UUID.randomUUID().toString();
+//            object.setPersistentID( uuid );
+//        }
+//        _syncRelated( store, object );
+//
+//        return store.sync( getType(), object );
+//    }
 
 
 
@@ -127,14 +180,14 @@ public class OvalDefinitionsStoreWorker
                     )
     throws OvalRepositoryException
     {
-        OvalDefinitions  object = store.get( getType(), pid );
+        OvalDefinitions  p_object = store.get( getType(), pid );
         if (view == ViewLevel.SUMMARY) {
             //
         } else if (view == ViewLevel.ALL) {
-            //
+            _getRelated( store, p_object );
         }
 
-        return object;
+        return p_object;
     }
 
 }
