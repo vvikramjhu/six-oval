@@ -27,12 +27,10 @@ import jp.go.aist.six.oval.model.definitions.Definitions;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.service.OvalObjectType;
 import jp.go.aist.six.oval.service.OvalRepository;
 import jp.go.aist.six.oval.service.OvalRepositoryException;
 import jp.go.aist.six.oval.service.ViewLevel;
 import jp.go.aist.six.util.persist.DataStore;
-import jp.go.aist.six.util.persist.Persistable;
 import jp.go.aist.six.util.persist.PersistenceException;
 import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.RelationalBinding;
@@ -98,45 +96,45 @@ public class LocalOvalRepository
     // OvalRepository
     //**************************************************************
 
-    public <K, T extends Persistable<K> & OvalObject>
+    public <K, T extends OvalObject<K>>
     K create(
-                    final OvalObjectType type,
+                    final Class<T> type,
                     final T object
                     )
     throws OvalRepositoryException
     {
         @SuppressWarnings( "unchecked" )
-        StoreWorker<K, T>  worker = (StoreWorker<K, T>)_getWorker( type );
+        Worker<K, T>  worker = (Worker<K, T>)_getWorker( type );
 
         K  pid = worker.create( _store, object );
         return pid;
     }
 
 
-    public <K, T extends Persistable<K> & OvalObject>
+    public <K, T extends OvalObject<K>>
     T sync(
-                    final OvalObjectType type,
+                    final Class<T> type,
                     final T object
                     )
     throws OvalRepositoryException
     {
         @SuppressWarnings( "unchecked" )
-        StoreWorker<K, T>  worker = (StoreWorker<K, T>)_getWorker( type );
+        Worker<K, T>  worker = (Worker<K, T>)_getWorker( type );
 
         return worker.sync( _store, object );
     }
 
 
-    public <K, T extends Persistable<K> & OvalObject>
+    public <K, T extends OvalObject<K>>
     T get(
-                    final OvalObjectType type,
+                    final Class<T> type,
                     final K pid,
                     final ViewLevel view
                     )
     throws OvalRepositoryException
     {
         @SuppressWarnings( "unchecked" )
-        StoreWorker<K, T>  worker = (StoreWorker<K, T>)_getWorker( type );
+        Worker<K, T>  worker = (Worker<K, T>)_getWorker( type );
 
         return worker.get( _store, pid, view );
     }
@@ -260,30 +258,33 @@ public class LocalOvalRepository
 
 
 
+    // StoreWorker
 
-    private static Map<OvalObjectType, StoreWorker<?, ?>> _createWorkers()
+
+
+    private static <T extends OvalObject<?>>
+    Map<Class<T>, Worker<?, ? super T>> _createWorkers()
     {
-        Map<OvalObjectType, StoreWorker<?, ?>>  map =
-            new HashMap<OvalObjectType, StoreWorker<?, ?>>();
+        Map<Class<T>, Worker<?, T>>  map =
+            new HashMap<Class<T>, Worker<?, T>>();
 
-        map.put( OvalObjectType.OVAL_DEFINITION, new OvalDefinitionsStoreWorker() );
+        map.put( OvalDefinitions.class, new OvalDefinitionsWorker() );
 
         return map;
     }
 
-    private static final Map<OvalObjectType, StoreWorker<?, ?>>  _WORKERS =
+    private static final
+    Map<Class<? extends OvalObject<?>>, Worker<?, ? extends OvalObject<?>>>  _WORKERS =
         _createWorkers();
 
 
 
-    private static StoreWorker<?, ?> _getWorker(
-                    final OvalObjectType type
+    private static <T extends OvalObject<?>> Worker<?, T> _getWorker(
+                    final Class<T> type
                     )
     {
-        StoreWorker<?, ?>  worker = _WORKERS.get( type );
-        if (worker == null) {
-            worker = new StoreWorker<String, AbstractOvalObject>( AbstractOvalObject.class );
-        }
+        @SuppressWarnings( "unchecked" )
+        Worker<?, T>  worker = (Worker<?, T>)_WORKERS.get( type );
 
         return worker;
     }
@@ -291,11 +292,11 @@ public class LocalOvalRepository
 
     /**
      */
-    private static class StoreWorker<K, T extends Persistable<K> & OvalObject>
+    private static class Worker<K, T extends OvalObject<K>>
     {
         private Class<T>  _type;
 
-        public StoreWorker(
+        public Worker(
                         final Class<T> type
                         )
         {
@@ -343,10 +344,20 @@ public class LocalOvalRepository
 
 
 
-    private static class OvalDefinitionsStoreWorker
-    extends StoreWorker<String, OvalDefinitions>
+    private static class DefaultWorker
+    extends Worker<String, AbstractOvalObject>
     {
-        public OvalDefinitionsStoreWorker()
+        public DefaultWorker()
+        {
+            super( AbstractOvalObject.class );
+        }
+    }
+
+
+    private static class OvalDefinitionsWorker
+    extends Worker<String, OvalDefinitions>
+    {
+        public OvalDefinitionsWorker()
         {
             super( OvalDefinitions.class );
         }

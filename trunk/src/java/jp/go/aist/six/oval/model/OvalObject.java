@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model;
 
+import jp.go.aist.six.util.persist.Persistable;
+
 
 
 /**
@@ -29,7 +31,8 @@ package jp.go.aist.six.oval.model;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public interface OvalObject
+public interface OvalObject<K>
+    extends Persistable<K>
 {
 
 }

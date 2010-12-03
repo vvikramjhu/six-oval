@@ -58,6 +58,7 @@
         </field>
 
         <!-- m : n -->
+<!--
         <field name="definitions.definition"
             type="jp.go.aist.six.oval.core.store.PersistentDefinition"
             collection="collection"
@@ -66,6 +67,7 @@
                 many-table="oval_assoc__d_definitions__d_definition"
                 many-key="d_definitions__PID"/>
         </field>
+-->
 
         <!-- m : n -->
         <field name="tests.test"

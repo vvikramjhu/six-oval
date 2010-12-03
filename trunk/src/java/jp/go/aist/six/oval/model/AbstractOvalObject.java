@@ -33,7 +33,7 @@ import jp.go.aist.six.util.persist.AbstractPersistable;
  */
 public abstract class AbstractOvalObject
     extends AbstractPersistable<String>
-    implements OvalObject
+    implements OvalObject<String>
 {
 
     /**
