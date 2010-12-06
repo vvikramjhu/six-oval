@@ -341,7 +341,7 @@
         <cache-type type="unlimited"/>
         <map-to table="oval_assoc__d_definitions__d_definition"/>
 
-        <field name="persistentID" type="string">
+        <field name="persistentID" type="integer">
             <sql name="PID" type="integer"/>
         </field>
 

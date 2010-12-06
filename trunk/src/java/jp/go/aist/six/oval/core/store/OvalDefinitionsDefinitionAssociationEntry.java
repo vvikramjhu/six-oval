@@ -33,7 +33,7 @@ import jp.go.aist.six.util.persist.AssociationEntry;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class OvalDefinitionsDefinitionAssociationEntry
-    extends AssociationEntry<Integer, String, OvalDefinitions, String, Definition>
+    extends AssociationEntry<Integer, String, String>
 {
 
     /**

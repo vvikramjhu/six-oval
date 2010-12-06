@@ -56,6 +56,7 @@ import jp.go.aist.six.oval.model.windows.RegistryItem;
 import jp.go.aist.six.oval.model.windows.RegistryObject;
 import jp.go.aist.six.oval.model.windows.RegistryState;
 import jp.go.aist.six.oval.service.OvalException;
+import jp.go.aist.six.util.persist.AssociationEntry;
 import org.testng.Assert;
 import org.testng.Reporter;
 import java.util.Collection;
@@ -1002,6 +1003,37 @@ public abstract class Validators
 
     /**
      */
+    public static class AssociationEntryValidator<K, L, M, T extends AssociationEntry<K, L, M>>
+    extends Validator<AssociationEntry<K, L, M>>
+    {
+        @Override
+        public void equals(
+                        final AssociationEntry<K, L, M> actual,
+                        final AssociationEntry<K, L, M> expected
+                        )
+        {
+            if (expected == null) {
+                return;
+            }
+
+            Reporter.log( " - antecendent PID", true );
+            Assert.assertEquals(
+                            actual.getAntecendentPersistentID(),
+                            expected.getAntecendentPersistentID()
+                            );
+
+            Reporter.log( " - dependent PID", true );
+            Assert.assertEquals(
+                            actual.getDependentPersistentID(),
+                            expected.getDependentPersistentID()
+                            );
+        }
+    }
+
+
+
+    /**
+     */
     public static class OvalServiceExceptionValidator
     extends Validator<OvalException>
     {
@@ -1078,6 +1110,10 @@ public abstract class Validators
             } else if (SystemResult.class.isAssignableFrom( type )) {
                 v = (Validator<T>)(new SystemResultValidator());
                 _validators.put( SystemResult.class, v );
+
+            } else if (AssociationEntry.class.isAssignableFrom( type )) {
+                v = (Validator<T>)(new AssociationEntryValidator());
+                _validators.put( AssociationEntry.class, v );
 
             } else if (OvalException.class.isAssignableFrom( type )) {
                 v = (Validator<T>)(new OvalServiceExceptionValidator());
