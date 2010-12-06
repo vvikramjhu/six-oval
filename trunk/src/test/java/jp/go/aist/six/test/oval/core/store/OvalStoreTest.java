@@ -48,24 +48,30 @@ public class OvalStoreTest
         T  actual = _unmarshalWithValidation( type, filepath, xpath, expected );
         Assert.assertNotNull( actual );
 
-        Reporter.log( "sync..." , true );
+        Reporter.log( "createIfNotExist..." , true );
         long  time = System.currentTimeMillis();
-        T  persistent = _getStore().sync( type, actual );
-        Reporter.log( "...sync done: " + (System.currentTimeMillis() - time) + "(ms)", true );
-
-        K  pid = persistent.getPersistentID();
-        Reporter.log( "  @ pid=" + pid, true );
+        K  p_id = _getStore().createIfNotExist( type, actual );
+        Reporter.log( "...createIfNotExist done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+        Reporter.log( "  @ pid=" + p_id, true );
 
         Reporter.log( "get...", true );
-        Reporter.log( "  - pid=" + pid, true );
+        Reporter.log( "  - pid=" + p_id, true );
         time = System.currentTimeMillis();
-        T  persistent2 = _getStore().get( type, pid );
+        T  p_object = _getStore().get( type, p_id );
         Reporter.log( "...get done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+        Reporter.log( "  @ get: object=" + p_object, true );
 
-        Reporter.log( "  @ get: object=" + persistent2, true );
         Reporter.log( "validating...", true );
-        Validators.validator( type ).equals( persistent2, expected );
+        Validators.validator( type ).equals( p_object, expected );
         Reporter.log( "...validation OK", true );
+
+        Reporter.log( "sync..." , true );
+        time = System.currentTimeMillis();
+        T  p_object2 = _getStore().sync( type, p_object ); //object got in another tx
+        Reporter.log( "...sync done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+        p_id = p_object2.getPersistentID();
+        Reporter.log( "  @ sync: object=" + p_object2, true );
+
     }
 
 
