@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oval_definitions xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+  <generator>
+    <oval:product_name>The OVAL Repository</oval:product_name>
+    <oval:schema_version>5.8</oval:schema_version>
+    <oval:timestamp>2010-10-12T04:33:31.649-04:00</oval:timestamp>
+  </generator>
+
+  <definitions>
+    <definition id="oval:org.mitre.oval:def:11757" version="3" class="vulnerability">
+      <metadata>
+        <title>Cross-site data leakage issue in Google Chrome version less than or equal to 4.1.249.1064</title>
+        <affected family="windows">
+          <platform>Microsoft Windows 2000</platform>
+          <platform>Microsoft Windows 7</platform>
+          <platform>Microsoft Windows Server 2003</platform>
+          <platform>Microsoft Windows Server 2008</platform>
+          <platform>Microsoft Windows Vista</platform>
+          <platform>Microsoft Windows XP</platform>
+          <product>Google Chrome</product>
+        </affected>
+        <reference source="CVE" ref_id="CVE-2010-1851" ref_url="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1851"/>
+        <description>Google Chrome, when the Invisible Hand extension is enabled, uses cookies during background HTTP requests in a possibly unexpected manner, which might allow remote web servers to identify specific persons and their product searches via HTTP request logging, related to a "cross-site data leakage" issue.</description>
+        <oval_repository>
+          <dates>
+            <submitted date="2010-09-02T18:56:09">
+              <contributor organization="SecPod Technologies">Karthik N</contributor>
+            </submitted>
+            <status_change date="2010-09-03T11:01:14.309-04:00">DRAFT</status_change>
+            <modified comment="Added Invisible Hand extension test" date="2010-09-10T14:08:59">
+              <contributor organization="SecPod Technologies">SecPod Team</contributor>
+            </modified>
+            <modified comment="Updated to include check for Invisible Hand extension." date="2010-09-13T17:14:00.245-04:00">
+              <contributor organization="SecPod Technologies">Preeti Subramanian</contributor>
+            </modified>
+            <status_change date="2010-10-04T04:00:12.516-04:00">INTERIM</status_change>
+          </dates>
+          <status>INTERIM</status>
+        </oval_repository>
+      </metadata>
+      <criteria operator="AND">
+        <criterion comment="Check version installed is less than or equal 4.1.249.1064" test_ref="oval:org.mitre.oval:tst:41727"/>
+        <extend_definition comment="Google Chrome is installed" definition_ref="oval:org.mitre.oval:def:11914"/>
+        <criterion comment="Check if Google Chrome Invisible Hand Extension is enabled" test_ref="oval:org.mitre.oval:tst:41853"/>
+      </criteria>
+    </definition>
+
+    <definition id="oval:org.mitre.oval:def:11914" version="3" class="inventory">
+      <metadata>
+        <title>Google Chrome is installed</title>
+        <affected family="windows">
+          <platform>Microsoft Windows 2000</platform>
+          <platform>Microsoft Windows XP</platform>
+          <platform>Microsoft Windows Server 2003</platform>
+          <platform>Microsoft Windows Server 2008</platform>
+          <platform>Microsoft Windows Vista</platform>
+          <platform>Microsoft Windows 7</platform>
+          <product>Google Chrome</product>
+        </affected>
+        <reference source="CPE" ref_id="cpe:/a:google:chrome"/>
+        <description>Google Chrome is installed</description>
+        <oval_repository>
+          <dates>
+            <submitted date="2010-08-25T11:10:59">
+              <contributor organization="SecPod Technologies">Preeti Subramanian</contributor>
+            </submitted>
+            <status_change date="2010-08-25T16:41:55.200-04:00">DRAFT</status_change>
+            <status_change date="2010-09-13T04:00:36.452-04:00">INTERIM</status_change>
+            <status_change date="2010-10-04T04:00:18.842-04:00">ACCEPTED</status_change>
+          </dates>
+          <status>ACCEPTED</status>
+        </oval_repository>
+      </metadata>
+      <criteria operator="AND">
+        <criterion comment="Google Chrome is installed" test_ref="oval:org.mitre.oval:tst:41561"/>
+      </criteria>
+    </definition>
+  </definitions>
+
+  <tests>
+    <textfilecontent54_test id="oval:org.mitre.oval:tst:41853" version="1" comment="Check if Google Chrome Invisible Hand Extension is enabled" check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent">
+      <object object_ref="oval:org.mitre.oval:obj:15567"/>
+      <state state_ref="oval:org.mitre.oval:ste:11440"/>
+    </textfilecontent54_test>
+
+    <registry_test id="oval:org.mitre.oval:tst:41727" version="1" comment="Check version installed is less than or equal 4.1.249.1064" check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval:obj:15257"/>
+      <state state_ref="oval:org.mitre.oval:ste:11668"/>
+    </registry_test>
+
+    <registry_test id="oval:org.mitre.oval:tst:41561" version="1" comment="Google Chrome is installed" check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <object object_ref="oval:org.mitre.oval:obj:15382"/>
+      <state state_ref="oval:org.mitre.oval:ste:11937"/>
+    </registry_test>
+  </tests>
+
+  <objects>
+    <registry_object id="oval:org.mitre.oval:obj:15257" version="1" comment="The registry key holds the version of Google Chrome" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <hive>HKEY_USERS</hive>
+      <key operation="pattern match">^S-.*\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Google Chrome$</key>
+      <name>Version</name>
+    </registry_object>
+
+    <textfilecontent54_object id="oval:org.mitre.oval:obj:15567" version="1" comment="Object to check content of Google Chrome Preferences file" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent">
+      <behaviors multiline="true"/>
+      <path var_ref="oval:org.mitre.oval:var:1173" var_check="all"/>
+      <filename>Preferences</filename>
+      <pattern operation="pattern match">^\s*"name": "InvisibleHand"[^}]+}[^p]+path": "lghjfnfolmcikomdjmoiemllfnlmmoko\\[^s]+state": [01]$</pattern>
+      <instance datatype="int">1</instance>
+    </textfilecontent54_object>
+
+    <registry_object id="oval:org.mitre.oval:obj:15382" version="1" comment="The registry key to check if Google Chrome is installed" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <hive>HKEY_USERS</hive>
+      <key operation="pattern match">^S-.*\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Google Chrome$</key>
+      <name>DisplayName</name>
+    </registry_object>
+
+    <registry_object id="oval:org.mitre.oval:obj:15505" version="1" comment="Object holds Google Chrome Install Location" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <hive>HKEY_USERS</hive>
+      <key operation="pattern match">^S-.*\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Google Chrome$</key>
+      <name>InstallLocation</name>
+    </registry_object>
+  </objects>
+
+  <states>
+    <registry_state id="oval:org.mitre.oval:ste:11668" version="1" comment="Check version installed is less than or equal 4.1.249.1064" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <value datatype="version" operation="less than or equal">4.1.249.1064</value>
+    </registry_state>
+
+    <textfilecontent54_state id="oval:org.mitre.oval:ste:11440" version="1" comment="State matches if Google Chrome Invisible Hand Extension is enabled" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent">
+      <text operation="pattern match">^\s*"name": "InvisibleHand"[^}]+}[^p]+path": "lghjfnfolmcikomdjmoiemllfnlmmoko\\[^s]+state": 1$</text>
+    </textfilecontent54_state>
+
+    <registry_state id="oval:org.mitre.oval:ste:11937" version="1" comment="The registry key matches with any version of Google Chrome" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+      <value operation="pattern match">^Google Chrome.*</value>
+    </registry_state>
+  </states>
+
+  <variables>
+    <local_variable id="oval:org.mitre.oval:var:1173" version="1" comment="Location of Google Chrome User Data Default folder" datatype="string">
+      <concat>
+        <variable_component var_ref="oval:org.mitre.oval:var:1100"/>
+        <literal_component>User Data\Default</literal_component>
+      </concat>
+    </local_variable>
+
+    <local_variable id="oval:org.mitre.oval:var:1100" version="1" comment="Location of Google Chrome Folder" datatype="string">
+      <regex_capture pattern="^(.*)Application$">
+        <object_component object_ref="oval:org.mitre.oval:obj:15505" item_field="value"/>
+      </regex_capture>
+    </local_variable>
+  </variables>
+
+</oval_definitions>

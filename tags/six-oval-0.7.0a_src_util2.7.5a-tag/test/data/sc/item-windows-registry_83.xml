@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<registry_item id="83" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows">
+            <hive>HKEY_LOCAL_MACHINE</hive>
+            <key status="does not exist">SOFTWARE\Microsoft\Updates\Visual Studio\7.0\S895309</key>
+</registry_item>

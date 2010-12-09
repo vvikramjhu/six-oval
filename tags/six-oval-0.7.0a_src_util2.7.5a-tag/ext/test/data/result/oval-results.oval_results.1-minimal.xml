@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<system
+xmlns="http://oval.mitre.org/XMLSchema/oval-results-5" 
+xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" 
+xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5" 
+xmlns:oval-res="http://oval.mitre.org/XMLSchema/oval-results-5" 
+xmlns:oval-sc="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5 oval-system-characteristics-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-results-5 oval-results-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows windows-system-characteristics-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent independent-system-characteristics-schema.xsd">
+
+      <oval_system_characteristics xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5">
+        <generator>
+          <oval:product_name>OVAL Definition Interpreter</oval:product_name>
+          <oval:product_version>5.6 Build: 4</oval:product_version>
+          <oval:schema_version>5.6</oval:schema_version>
+          <oval:timestamp>2010-05-12T20:27:08</oval:timestamp>
+          <vendor>The MITRE Corporation</vendor>
+        </generator>
+        <system_info>
+          <os_name>Microsoft Windows XP Professional Service Pack 3</os_name>
+          <os_version>5.1.2600</os_version>
+          <architecture>INTEL32</architecture>
+          <primary_host_name>x60</primary_host_name>
+          <interfaces>
+            <interface>
+              <interface_name>VMware Virtual Ethernet Adapter for VMnet1</interface_name>
+              <ip_address>192.168.158.1</ip_address>
+              <mac_address>00-50-56-C0-00-01</mac_address>
+            </interface>
+            <interface>
+              <interface_name>VMware Virtual Ethernet Adapter for VMnet8</interface_name>
+              <ip_address>192.168.1.1</ip_address>
+              <mac_address>00-50-56-C0-00-08</mac_address>
+            </interface>
+          </interfaces>
+        </system_info>
+      </oval_system_characteristics>
+</system>

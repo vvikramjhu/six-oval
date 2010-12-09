@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- // Project SIX: OVAL                                     // -->
+<!-- //                                                       // -->
+<!-- // OVAL Repository                                       // -->
+<!-- // Web App MVC/REST Configuration                        // -->
+<!-- /////////////////////////////////////////////////////////// -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="jp.go.aist.six.oval.core.rest" />
+
+
+    <!-- To enable @RequestMapping process on type level and method level -->
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters"> 
+            <list> 
+                <ref bean="marshallingConverter" /> 
+                <ref bean="stringConverter" /> 
+            </list> 
+        </property>
+    </bean>
+
+    <bean id="marshallingConverter" 
+        class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"> 
+        <constructor-arg ref="ovalMarshaller" /> 
+        <property name="supportedMediaTypes" value="application/xml"/> 
+    </bean> 
+    <bean id="stringConverter" 
+        class="org.springframework.http.converter.StringHttpMessageConverter"> 
+        <property name="supportedMediaTypes" value="text/plain"/> 
+    </bean> 
+<!--
+-->
+
+
+<!--
+    <bean id="oval_definitions" 
+        class="org.springframework.web.servlet.view.xml.MarshallingView">
+        <constructor-arg ref="ovalMarshaller" />
+    </bean>
+-->
+
+
+<!--
+    <bean id="viewResolver" 
+        class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+-->
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="mediaTypes">
+            <map>
+                <entry key="xml" value="application/xml"/>
+                <entry key="html" value="text/html"/>
+            </map>
+        </property>
+        <property name="viewResolvers">
+            <list>
+                <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
+                <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+                    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+                    <property name="prefix" value="/WEB-INF/jsp/"/>
+                    <property name="suffix" value=".jsp"/>
+                </bean>
+<!--
+-->
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="ovalRepositoryController" 
+	   class="jp.go.aist.six.oval.core.rest.OvalRepositoryController">
+        <property name="store" ref="ovalStore" />
+    </bean>
+
+</beans>
