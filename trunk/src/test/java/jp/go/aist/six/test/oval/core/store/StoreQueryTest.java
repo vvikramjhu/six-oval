@@ -8,7 +8,7 @@ import jp.go.aist.six.util.search.LikeBinding;
 import jp.go.aist.six.util.search.RelationalBinding;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
-import java.util.List;
+import java.util.Collection;
 
 
 
@@ -42,7 +42,7 @@ public class StoreQueryTest
 
         Reporter.log( "find..." , true );
         long  time = System.currentTimeMillis();
-        List<T>  persistents = _getStore().find( type, filter );
+        Collection<T>  persistents = _getStore().find( type, filter );
         Reporter.log( "...find done: " + (System.currentTimeMillis() - time) + "(ms)", true );
 
         Reporter.log( "results: #objects=" + persistents.size(), true );

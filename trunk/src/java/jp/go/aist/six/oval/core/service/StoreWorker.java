@@ -93,7 +93,7 @@ public class StoreWorker<K, T extends OvalObject<K>>
                     )
     throws OvalRepositoryException
     {
-        T  object = store.get( getType(), pid );
+        T  object = store.load( getType(), pid );
         return object;
     }
 

@@ -57,7 +57,7 @@ public class OvalStoreTest
         Reporter.log( "get...", true );
         Reporter.log( "  - pid=" + p_id, true );
         time = System.currentTimeMillis();
-        T  p_object = _getStore().get( type, p_id );
+        T  p_object = _getStore().load( type, p_id );
         Reporter.log( "...get done: " + (System.currentTimeMillis() - time) + "(ms)", true );
         Reporter.log( "  @ get: object=" + p_object, true );
 
@@ -109,7 +109,7 @@ public class OvalStoreTest
         Class<OvalDefinitions>  type = OvalDefinitions.class;
         Reporter.log( "\n////////////////////////////////////////////////////////////////", true );
         Reporter.log( "  * object type: " + type, true );
-        OvalDefinitions  persistent = _getStore().get( type, "aaad34e4-2835-4c6e-9397-15deb3ae8bcc" );
+        OvalDefinitions  persistent = _getStore().load( type, "aaad34e4-2835-4c6e-9397-15deb3ae8bcc" );
         Reporter.log( "  @ get: object=" + persistent, true );
     }
 

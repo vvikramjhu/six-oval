@@ -121,7 +121,7 @@ public class LocalOvalRepositoryTest
         Class<OvalDefinitions>  type = OvalDefinitions.class;
         Reporter.log( "\n////////////////////////////////////////////////////////////////", true );
         Reporter.log( "  * object type: " + type, true );
-        OvalDefinitions  persistent = _getStore().get( type, "aaad34e4-2835-4c6e-9397-15deb3ae8bcc" );
+        OvalDefinitions  persistent = _getStore().load( type, "aaad34e4-2835-4c6e-9397-15deb3ae8bcc" );
         Reporter.log( "  @ get: object=" + persistent, true );
     }
 

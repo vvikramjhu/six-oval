@@ -43,22 +43,29 @@ public class OvalEntityHelper<T extends OvalEntity>
     //  PersistenceHelper
     //**************************************************************
 
-    public Object getUnique(
-                    final T object
-                    )
-    {
-        return (new Object[] {
-                        object.getOvalID(),
-                        Integer.valueOf( object.getOvalVersion() )
-        });
-    }
-
-
-
-    public String getUniqueFilter()
-    {
-        return "WHERE o.ovalID = $1 AND o.ovalVersion = $2";
-    }
+//    public boolean hasUnique()
+//    {
+//        return true;
+//    }
+//
+//
+//
+//    public Object getUnique(
+//                    final T object
+//                    )
+//    {
+//        return (new Object[] {
+//                        object.getOvalID(),
+//                        Integer.valueOf( object.getOvalVersion() )
+//        });
+//    }
+//
+//
+//
+//    public String getUniqueFilter()
+//    {
+//        return "WHERE o.ovalID = $1 AND o.ovalVersion = $2";
+//    }
 
 }
 // OvalEntityHelper

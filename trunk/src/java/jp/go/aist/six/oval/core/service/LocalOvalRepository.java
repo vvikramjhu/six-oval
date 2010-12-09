@@ -32,8 +32,8 @@ import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.persist.PersistenceException;
 import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.RelationalBinding;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -186,7 +186,7 @@ public class LocalOvalRepository
         StoreWorker<K, T>  worker = _getWorker( type );
         T  p_object = null;
         if (worker == null) {
-            p_object = _store.get( type, pid );
+            p_object = _store.load( type, pid );
         } else {
             p_object = worker.get( _store, pid, view );
         }
@@ -219,7 +219,7 @@ public class LocalOvalRepository
     {
         OvalDefinitions  object = null;
         try {
-            object = _store.get( OvalDefinitions.class, pid );
+            object = _store.load( OvalDefinitions.class, pid );
         } catch (PersistenceException ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -228,13 +228,13 @@ public class LocalOvalRepository
     }
 
 
-    public List<Definition> findDefinitionByCve(
+    public Collection<Definition> findDefinitionByCve(
                     final String cveName
                     )
     throws OvalRepositoryException
     {
         Binding  filter = RelationalBinding.equalBinding( "metadata.reference.refID", cveName );
-        List<Definition>  objects = null;
+        Collection<Definition>  objects = null;
         try {
             objects = _store.find( Definition.class, filter );
         } catch (PersistenceException ex) {
@@ -269,7 +269,7 @@ public class LocalOvalRepository
     {
         OvalSystemCharacteristics  object = null;
         try {
-            object = _store.get( OvalSystemCharacteristics.class, pid );
+            object = _store.load( OvalSystemCharacteristics.class, pid );
         } catch (PersistenceException ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -303,7 +303,7 @@ public class LocalOvalRepository
     {
         OvalResults  object = null;
         try {
-            object = _store.get( OvalResults.class, pid );
+            object = _store.load( OvalResults.class, pid );
         } catch (PersistenceException ex) {
             throw new OvalRepositoryException( ex );
         }

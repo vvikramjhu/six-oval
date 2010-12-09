@@ -171,7 +171,7 @@ public abstract class CoreTestBase
         Reporter.log( "  @ synced: pid=" + pid, true );
 
         Reporter.log( "getting object...", true );
-        T  p2 = _getStore().get( type, pid );
+        T  p2 = _getStore().load( type, pid );
         Reporter.log( "...get done", true );
         Reporter.log( "  @ get: object=" + p2, true );
         Assert.assertEquals( p2, e );

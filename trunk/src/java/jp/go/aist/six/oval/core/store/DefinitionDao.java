@@ -28,7 +28,6 @@ import jp.go.aist.six.oval.model.definitions.Platform;
 import jp.go.aist.six.oval.model.definitions.Product;
 import jp.go.aist.six.oval.model.definitions.Reference;
 import jp.go.aist.six.util.persist.PersistenceException;
-import java.util.ArrayList;
 import java.util.Collection;
 
 
@@ -91,27 +90,27 @@ public class DefinitionDao
     //  Dao, CastorDao
     //**************************************************************
 
-    @Override
-    public void update(
-                    final Definition def
-                    )
-    throws PersistenceException
-    {
-        Metadata  meta = def.getMetadata();
-
-        Collection<Reference>  references = meta.getReference();
-        if (references != null  &&  references.size() > 0) {
-            Collection<Reference>  p_references = new ArrayList<Reference>( references.size() );
-            for (Reference  r : references) {
-                getForwardingDao( Reference.class ).createIfNotExist( r );
-                Reference  p_r = getForwardingDao( Reference.class ).get( r.getPersistentID() );
-                p_references.add( p_r );
-            }
-            meta.setReference( p_references );
-        }
-
-        super.update( def );
-    }
+//    @Override
+//    public void update(
+//                    final Definition def
+//                    )
+//    throws PersistenceException
+//    {
+//        Metadata  meta = def.getMetadata();
+//
+//        Collection<Reference>  references = meta.getReference();
+//        if (references != null  &&  references.size() > 0) {
+//            Collection<Reference>  p_references = new ArrayList<Reference>( references.size() );
+//            for (Reference  r : references) {
+//                getForwardingDao( Reference.class ).createIfNotExist( r );
+//                Reference  p_r = getForwardingDao( Reference.class ).get( r.getPersistentID() );
+//                p_references.add( p_r );
+//            }
+//            meta.setReference( p_references );
+//        }
+//
+//        super.update( def );
+//    }
 
 
     @Override

@@ -51,8 +51,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.util.UriTemplate;
 import java.net.URI;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
@@ -133,7 +133,7 @@ public class OvalRepositoryController
                     final K id
                     )
     {
-        T  object = _store.get( type, id );
+        T  object = _store.load( type, id );
                            //throws ObjectRetrievalFailureException
 
         return object;
@@ -324,12 +324,12 @@ public class OvalRepositoryController
         _LOG.debug( "request params=" + params );
 
         Binding  filter = _buildFilter( params );
-        List<Definition>  list = _store.find(
+        Collection<Definition>  defs = _store.find(
                         Definition.class,
                         filter
                         );
 
-        SearchResult<Definition>  result = new SearchResult<Definition>( new Date(), list );
+        SearchResult<Definition>  result = new SearchResult<Definition>( new Date(), defs );
 
         return result;
     }

@@ -31,6 +31,7 @@ import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.definitions.Variables;
 import jp.go.aist.six.util.castor.CastorDao;
 import jp.go.aist.six.util.persist.PersistenceException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
@@ -93,8 +94,9 @@ public class OvalDefinitionsDao
         if (tests != null) {
             Collection<Test>  test_list = tests.getTest();
             if (test_list != null  &&  test_list.size() > 0) {
+                List<Test>  list = new ArrayList<Test>( test_list );
                 List<Test>  p_test_list =
-                    getForwardingDao( Test.class ).syncAll( test_list );
+                    getForwardingDao( Test.class ).syncAll( list );
                 defs.setTests( new Tests( p_test_list ) );
             }
         }
@@ -117,8 +119,9 @@ public class OvalDefinitionsDao
         if (objects != null) {
             Collection<SystemObject>  object_list = objects.getObject();
             if (object_list != null  &&  object_list.size() > 0) {
+                List<SystemObject>  list = new ArrayList<SystemObject>( object_list );
                 List<SystemObject>  p_object_list =
-                    getForwardingDao( SystemObject.class ).syncAll( object_list );
+                    getForwardingDao( SystemObject.class ).syncAll( list );
                 defs.setObjects( new SystemObjects( p_object_list ) );
             }
         }
@@ -128,8 +131,9 @@ public class OvalDefinitionsDao
         if (states != null) {
             Collection<State>  state_list = states.getState();
             if (state_list != null  &&  state_list.size() > 0) {
+                List<State>  list = new ArrayList<State>( state_list );
                 List<State>  p_state_list =
-                    getForwardingDao( State.class ).syncAll( state_list );
+                    getForwardingDao( State.class ).syncAll( list );
                 defs.setStates( new States( p_state_list ) );
             }
         }
@@ -139,8 +143,9 @@ public class OvalDefinitionsDao
         if (variables != null) {
             Collection<Variable>  variable_list = variables.getVariable();
             if (variable_list != null  &&  variable_list.size() > 0) {
+                List<Variable>  list = new ArrayList<Variable>( variable_list );
                 List<Variable>  p_variable_list =
-                    getForwardingDao( Variable.class ).syncAll( variable_list );
+                    getForwardingDao( Variable.class ).syncAll( list );
                 defs.setVariables( new Variables( p_variable_list ) );
             }
         }

@@ -47,6 +47,13 @@ public class OvalDefinitionsHelper
     //  PersistenceHelper
     //**************************************************************
 
+    public boolean hasUnique()
+    {
+        return true;
+    }
+
+
+
     public Object getUnique(
                     final OvalDefinitions object
                     )

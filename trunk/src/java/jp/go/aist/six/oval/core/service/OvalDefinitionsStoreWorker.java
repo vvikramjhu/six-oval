@@ -29,6 +29,7 @@ import jp.go.aist.six.oval.service.ViewLevel;
 import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.RelationalBinding;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -102,7 +103,7 @@ public class OvalDefinitionsStoreWorker
     {
         Binding  filter =
             RelationalBinding.equalBinding( "antecendentPersistentID", object.getPersistentID() );
-        List<OvalDefinitionsDefinitionAssociationEntry>  list =
+        Collection<OvalDefinitionsDefinitionAssociationEntry>  list =
             store.find( OvalDefinitionsDefinitionAssociationEntry.class, filter );
 
         Definitions  defs = new Definitions();
@@ -113,7 +114,9 @@ public class OvalDefinitionsStoreWorker
                 defPIDs.add( defPID );
             }
 
-            Collection<Definition>  p_defs = store.getAll( Definition.class, defPIDs );
+            List<String>  defPID_list = new ArrayList<String>( defPIDs );
+
+            Collection<Definition>  p_defs = store.loadAll( Definition.class, defPID_list );
             defs.addAll( p_defs );
         }
 
@@ -180,7 +183,7 @@ public class OvalDefinitionsStoreWorker
                     )
     throws OvalRepositoryException
     {
-        OvalDefinitions  p_object = store.get( getType(), pid );
+        OvalDefinitions  p_object = store.load( getType(), pid );
         if (view == ViewLevel.SUMMARY) {
             //
         } else if (view == ViewLevel.ALL) {

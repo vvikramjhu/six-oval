@@ -55,7 +55,7 @@ public class OvalStoreAssociationTest
         Reporter.log( "get...", true );
         Reporter.log( "  - pid=" + pid, true );
         time = System.currentTimeMillis();
-        T  persistent2 = _getStore().get( type, pid );
+        T  persistent2 = _getStore().load( type, pid );
         Reporter.log( "...get done: " + (System.currentTimeMillis() - time) + "(ms)", true );
         Reporter.log( "  @ get: object=" + persistent2, true );
 
