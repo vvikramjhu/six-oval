@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.OvalEntity;
-import jp.go.aist.six.util.castor.DefaultPersistenceHelper;
+import jp.go.aist.six.util.castor.PersistenceHelper;
 
 
 
@@ -30,7 +30,7 @@ import jp.go.aist.six.util.castor.DefaultPersistenceHelper;
  * @version $Id$
  */
 public class OvalEntityHelper<T extends OvalEntity>
-    extends DefaultPersistenceHelper<T>
+    extends PersistenceHelper<T>
 {
 
     public OvalEntityHelper()
@@ -43,29 +43,32 @@ public class OvalEntityHelper<T extends OvalEntity>
     //  PersistenceHelper
     //**************************************************************
 
-//    public boolean hasUnique()
-//    {
-//        return true;
-//    }
-//
-//
-//
-//    public Object getUnique(
-//                    final T object
-//                    )
-//    {
-//        return (new Object[] {
-//                        object.getOvalID(),
-//                        Integer.valueOf( object.getOvalVersion() )
-//        });
-//    }
-//
-//
-//
-//    public String getUniqueFilter()
-//    {
-//        return "WHERE o.ovalID = $1 AND o.ovalVersion = $2";
-//    }
+    @Override
+    public boolean hasUnique()
+    {
+        return true;
+    }
+
+
+
+    @Override
+    public Object getUnique(
+                    final T object
+                    )
+    {
+        return (new Object[] {
+                        object.getOvalID(),
+                        Integer.valueOf( object.getOvalVersion() )
+        });
+    }
+
+
+
+    @Override
+    public String getUniqueFilter()
+    {
+        return "WHERE o.ovalID = $1 AND o.ovalVersion = $2";
+    }
 
 }
 // OvalEntityHelper

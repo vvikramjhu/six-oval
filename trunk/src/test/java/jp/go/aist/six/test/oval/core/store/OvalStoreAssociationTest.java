@@ -40,24 +40,19 @@ public class OvalStoreAssociationTest
 
         Assert.assertNotNull( actual );
 
-        Reporter.log( "createIfNotExist..." , true );
+        Reporter.log( "sync..." , true );
         long  time = System.currentTimeMillis();
-        K  pid = _getStore().createIfNotExist( type, actual );
-        Reporter.log( "...createIfNotExist done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+        T  p_object = _getStore().sync( type, actual );
+        K  pid = p_object.getPersistentID();
+        Reporter.log( "...sync done: " + (System.currentTimeMillis() - time) + "(ms)", true );
         Reporter.log( "  @ pid=" + pid, true );
 
-        Reporter.log( "findEquivalentIdentity...", true );
-        time = System.currentTimeMillis();
-        K  eq_pid = _getStore().findEquivalentIdentity( type, actual );
-        Reporter.log( "...findEquivalentIdentity done: " + (System.currentTimeMillis() - time) + "(ms)", true );
-        Reporter.log( "  @ equivalent pid=" + eq_pid, true );
-
-        Reporter.log( "get...", true );
+        Reporter.log( "load...", true );
         Reporter.log( "  - pid=" + pid, true );
         time = System.currentTimeMillis();
         T  persistent2 = _getStore().load( type, pid );
-        Reporter.log( "...get done: " + (System.currentTimeMillis() - time) + "(ms)", true );
-        Reporter.log( "  @ get: object=" + persistent2, true );
+        Reporter.log( "...load done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+        Reporter.log( "  @ object=" + persistent2, true );
 
         Reporter.log( "sync..." , true );
         time = System.currentTimeMillis();

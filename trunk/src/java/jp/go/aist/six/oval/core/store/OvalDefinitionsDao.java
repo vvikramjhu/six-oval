@@ -32,7 +32,6 @@ import jp.go.aist.six.oval.model.definitions.Variables;
 import jp.go.aist.six.util.castor.CastorDao;
 import jp.go.aist.six.util.persist.PersistenceException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -80,6 +79,62 @@ public class OvalDefinitionsDao
     //**************************************************************
 
     @Override
+    protected void _createRelatedTo(
+                    final OvalDefinitions object
+                    )
+    throws PersistenceException
+    {
+        final OvalDefinitions  defs = object;
+
+        SystemObjects  sysObjects = defs.getObjects();
+        if (sysObjects != null  &&  sysObjects.size() > 0) {
+            List<SystemObject>  list = new ArrayList<SystemObject>( sysObjects.getObject() );
+            List<SystemObject>  p_list =
+                getForwardingDao( SystemObject.class ).syncAll( list );
+            defs.setObjects( new SystemObjects( p_list ) );
+        }
+
+
+        States  states = defs.getStates();
+        if (states != null  &&  states.size() > 0) {
+            List<State>  list = new ArrayList<State>( states.getState() );
+            List<State>  p_list =
+                getForwardingDao( State.class ).syncAll( list );
+            defs.setStates( new States( p_list ) );
+        }
+
+
+        Variables  variables = defs.getVariables();
+        if (variables != null  &&  variables.size() > 0) {
+            List<Variable>  list = new ArrayList<Variable>( variables.getVariable() );
+            List<Variable>  p_list =
+                getForwardingDao( Variable.class ).syncAll( list );
+            defs.setVariables( new Variables( p_list ) );
+        }
+
+
+        Tests  tests = defs.getTests();
+        if (tests != null  &&  tests.size() > 0) {
+            List<Test>  list = new ArrayList<Test>( tests.getTest() );
+            List<Test>  p_list =
+                getForwardingDao( Test.class ).syncAll( list );
+            defs.setTests( new Tests( p_list ) );
+        }
+
+/**
+        Definitions  definitions = defs.getDefinitions();
+        if (definitions != null  &&  definitions.size() > 0) {
+            List<Definition>  list = new ArrayList<Definition>( definitions.getDefinition() );
+            List<Definition>  p_list =
+                getForwardingDao( Definition.class ).syncAll( list );
+            defs.setDefinitions( new Definitions( p_list ) );
+        }
+**/
+    }
+
+
+
+    @Override
     public String create(
                     final OvalDefinitions defs
                     )
@@ -89,80 +144,6 @@ public class OvalDefinitionsDao
             String  uuid = UUID.randomUUID().toString();
             defs.setPersistentID( uuid );
         }
-
-        Tests  tests = defs.getTests();
-        if (tests != null) {
-            Collection<Test>  test_list = tests.getTest();
-            if (test_list != null  &&  test_list.size() > 0) {
-                List<Test>  list = new ArrayList<Test>( test_list );
-                List<Test>  p_test_list =
-                    getForwardingDao( Test.class ).syncAll( list );
-                defs.setTests( new Tests( p_test_list ) );
-            }
-        }
-//        Tests  test_list = defs.getTests();
-//        if (test_list != null) {
-//            Tests  p_tests = new Tests();
-//            for (Test  test : test_list) {
-//                Test  p_test = getForwardingDao( Test.class ).sync( test );
-//                p_tests.addTest( p_test );
-//                OvalDefinitionsTestAssociation  assoc =
-//                    new OvalDefinitionsTestAssociation( defs, p_test );
-//                getForwardingDao( OvalDefinitionsTestAssociation.class ).sync( assoc );
-//            }
-//
-//            defs.setTests( p_tests );
-//        }
-
-
-        SystemObjects  objects = defs.getObjects();
-        if (objects != null) {
-            Collection<SystemObject>  object_list = objects.getObject();
-            if (object_list != null  &&  object_list.size() > 0) {
-                List<SystemObject>  list = new ArrayList<SystemObject>( object_list );
-                List<SystemObject>  p_object_list =
-                    getForwardingDao( SystemObject.class ).syncAll( list );
-                defs.setObjects( new SystemObjects( p_object_list ) );
-            }
-        }
-
-
-        States  states = defs.getStates();
-        if (states != null) {
-            Collection<State>  state_list = states.getState();
-            if (state_list != null  &&  state_list.size() > 0) {
-                List<State>  list = new ArrayList<State>( state_list );
-                List<State>  p_state_list =
-                    getForwardingDao( State.class ).syncAll( list );
-                defs.setStates( new States( p_state_list ) );
-            }
-        }
-
-
-        Variables  variables = defs.getVariables();
-        if (variables != null) {
-            Collection<Variable>  variable_list = variables.getVariable();
-            if (variable_list != null  &&  variable_list.size() > 0) {
-                List<Variable>  list = new ArrayList<Variable>( variable_list );
-                List<Variable>  p_variable_list =
-                    getForwardingDao( Variable.class ).syncAll( list );
-                defs.setVariables( new Variables( p_variable_list ) );
-            }
-        }
-
-
-/*** StoreWorker
-        Definitions  definitions = defs.getDefinitions();
-        if (definitions != null) {
-            Collection<Definition>  def_list = definitions.getDefinition();
-            if (def_list != null  &&  def_list.size() > 0) {
-                List<Definition>  p_def_list =
-                    getForwardingDao( Definition.class ).syncAll( def_list );
-                defs.setDefinitions( new Definitions( p_def_list ) );
-            }
-        }
-***/
-
 
 ////        OvalDefinitionsUtil  util = OvalDefinitionsUtil.newInstance( defs );
 //        Definitions  def_list = defs.getDefinitions();

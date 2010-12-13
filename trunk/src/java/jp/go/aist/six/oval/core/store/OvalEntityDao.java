@@ -22,8 +22,7 @@ package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.util.castor.CastorDao;
-import jp.go.aist.six.util.castor.DefaultPersistenceHelper;
-import jp.go.aist.six.util.persist.PersistenceHelper;
+import jp.go.aist.six.util.castor.PersistenceHelper;
 
 
 
@@ -44,7 +43,7 @@ public class OvalEntityDao<T extends OvalEntity>
                     final Class<? extends T> type
                     )
     {
-        this( type, new DefaultPersistenceHelper<T>() );
+        this( type, new PersistenceHelper<T>() );
     }
 
 

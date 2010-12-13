@@ -22,19 +22,19 @@ package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.util.castor.DefaultPersistenceHelper;
+import jp.go.aist.six.util.castor.PersistenceHelper;
 
 
 
 /**
- * TODO: Change this class as a nested class of OvalDefinitionsDao.
+ * TODO: Change this class as a nested class of OvalDefinitionsDao???
  * Do the same change to other helper classes and Dao classes
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
 public class OvalDefinitionsHelper
-    extends DefaultPersistenceHelper<OvalDefinitions>
+    extends PersistenceHelper<OvalDefinitions>
 {
 
     public OvalDefinitionsHelper()
@@ -47,6 +47,7 @@ public class OvalDefinitionsHelper
     //  PersistenceHelper
     //**************************************************************
 
+    @Override
     public boolean hasUnique()
     {
         return true;
@@ -54,6 +55,7 @@ public class OvalDefinitionsHelper
 
 
 
+    @Override
     public Object getUnique(
                     final OvalDefinitions object
                     )
@@ -71,6 +73,7 @@ public class OvalDefinitionsHelper
 
 
 
+    @Override
     public String getUniqueFilter()
     {
         return "WHERE o.generator.schemaVersion = $1 AND o.generator.timestamp = $2 AND o.generator.productName = $3 AND o.definitionsDigest = $4";

@@ -28,6 +28,7 @@ import jp.go.aist.six.oval.model.definitions.Platform;
 import jp.go.aist.six.oval.model.definitions.Product;
 import jp.go.aist.six.oval.model.definitions.Reference;
 import jp.go.aist.six.util.persist.PersistenceException;
+import java.util.ArrayList;
 import java.util.Collection;
 
 
@@ -44,19 +45,6 @@ public class DefinitionDao
 //     * Logger.
 //     */
 //    private static Log  _LOG = LogFactory.getLog( DefinitionDao.class );
-
-
-
-//    private static OvalXml  _mapper = null;
-//
-//    protected static OvalXml _getMapper()
-//    {
-//        if (_mapper == null) {
-//            _mapper = OvalContext.INSTANCE.getXml();
-//        }
-//
-//        return _mapper;
-//    }
 
 
 
@@ -114,41 +102,70 @@ public class DefinitionDao
 
 
     @Override
-    public String create(
-                    final Definition def
+    protected void _createRelatedTo(
+                    final Definition object
                     )
     throws PersistenceException
     {
+        final Definition  def = object;
         Metadata  meta = def.getMetadata();
 
-        Collection<Reference>  references = meta.getReference();
-        if (references != null  &&  references.size() > 0) {
-            for (Reference  r : references) {
-                getForwardingDao( Reference.class ).createIfNotExist( r );
+        Collection<Reference>  refs = meta.getReference();
+        if (refs != null  &&  refs.size() > 0) {
+            Collection<Reference>  p_refs = new ArrayList<Reference>();
+            for (Reference  ref : refs) {
+                Reference  p_ref = _loadOrCreate( Reference.class, ref );
+                p_refs.add( p_ref );
+//                getForwardingDao( Reference.class ).createIfNotExist( r );
             }
+            meta.setReference( p_refs );
         }
 
         Affected  affected = meta.getAffected();
         if (affected != null) {
             Collection<Platform>  platforms = affected.getPlatform();
-            for (Platform  p : platforms) {
-                getForwardingDao( Platform.class ).createIfNotExist( p );
+            if (platforms != null  &&  platforms.size() > 0) {
+                Collection<Platform>  p_platforms = new ArrayList<Platform>();
+                for (Platform  platform : platforms) {
+                    Platform  p_platform = _loadOrCreate( Platform.class, platform );
+                    p_platforms.add( p_platform );
+//                  getForwardingDao( Platform.class ).createIfNotExist( platform );
+                }
+                affected.setPlatform( p_platforms );
             }
 
             Collection<Product>  products = affected.getProduct();
-            for (Product  p : products) {
-                getForwardingDao( Product.class ).createIfNotExist( p );
+            if (products != null  &&  products.size() > 0) {
+                Collection<Product>  p_products = new ArrayList<Product>();
+                for (Product  product : products) {
+                    Product  p_product = _loadOrCreate( Product.class, product );
+                    p_products.add( p_product );
+//                  getForwardingDao( Product.class ).createIfNotExist( p );
+                }
+                affected.setProduct( p_products );
             }
         }
 
         Collection<Cve>  cves = def.getRelatedCve();
         if (cves != null  &&  cves.size() > 0) {
-            for (Cve  c : cves) {
-                getForwardingDao( Cve.class ).createIfNotExist( c );
+            Collection<Cve>  p_cves = new ArrayList<Cve>();
+            for (Cve  cve : cves) {
+                Cve  p_cve = _loadOrCreate( Cve.class, cve );
+                p_cves.add( p_cve );
+//              getForwardingDao( Cve.class ).createIfNotExist( c );
             }
+            def.setRelatedCve( p_cves );
         }
+    }
 
 
+
+    @Override
+    public String create(
+                    final Definition def
+                    )
+    throws PersistenceException
+    {
         if (def instanceof PersistentDefinition) {
             // callback handler
         } else {
@@ -171,63 +188,6 @@ public class DefinitionDao
 
         return super.create( def );
     }
-//    {
-//        Metadata  meta = def.getMetadata();
-//
-//        Collection<Reference>  references = meta.getReference();
-//        if (references != null  &&  references.size() > 0) {
-//            List<Reference>  p_references =
-//                getForwardingDao( Reference.class ).syncAll( references );
-//            meta.setReference( p_references );
-//        }
-//
-//        Affected  affected = meta.getAffected();
-//        if (affected != null) {
-//            Collection<Platform>  platforms = affected.getPlatform();
-//            if (platforms != null  &&  platforms.size() > 0) {
-//                Collection<Platform>  p_platforms =
-//                    getForwardingDao( Platform.class ).syncAll( platforms );
-//                affected.setPlatform( p_platforms );
-//            }
-//
-//            Collection<Product>  products = affected.getProduct();
-//            if (products != null  &&  products.size() > 0) {
-//                Collection<Product>  p_products =
-//                    getForwardingDao( Product.class ).syncAll( products );
-//                affected.setProduct( p_products );
-//            }
-//        }
-//
-//        Collection<Cve>  cves = def.getRelatedCve();
-//        if (cves != null  &&  cves.size() > 0) {
-//            Collection<Cve>  p_cves =
-//                getForwardingDao( Cve.class ).syncAll( cves );
-//            def.setRelatedCve( p_cves );
-//        }
-//
-//
-//        if (def instanceof PersistentDefinition) {
-//            // callback handler
-//        } else {
-//            JdoCallbackHandler.jdoBeforeCreate( Definition.class, def );
-//
-////            if (_LOG.isDebugEnabled()) {
-////                _LOG.debug( "***** criteria Object to XML *****" );
-////            }
-////            Criteria  criteria = def.getCriteria();
-////            if (criteria != null) {
-////                try {
-////                    String  xml = _getMapper().marshalToString( criteria );
-////                    def.xmlSetCriteria( xml );
-////                } catch (Exception ex) {
-////                    // TODO:
-////                    _LOG.warn( ex.getMessage() );
-////                }
-////            }
-//        }
-//
-//        return super.create( def );
-//    }
 
 }
 // DefinitionDao
