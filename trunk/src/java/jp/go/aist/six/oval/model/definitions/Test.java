@@ -290,6 +290,11 @@ public class Test
     }
 
 
+    public void clearState()
+    {
+        _stateRef.clear();
+    }
+
 
     /**
      */

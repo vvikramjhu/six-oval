@@ -46,8 +46,9 @@
     <test name="oval.core.store" enabled="true">
         <groups>
             <run>
-                <include name="definitions.definition"/>
+                <include name="definitions.test"/>
 <!--
+                <include name="definitions.definition"/>
                 <include name="definitions.oval_definitions"/>
                 <include name="oval.core.store.get"/>
                 <include name="results.oval_results"/>

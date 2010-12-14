@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.definitions.StateRef;
+import jp.go.aist.six.oval.model.definitions.SystemObjectRef;
 import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.util.persist.PersistenceException;
 import java.util.Collection;
@@ -47,11 +48,81 @@ public class TestDao
     //**************************************************************
 
     @Override
-    public String create(
-                    final Test test
+    protected void _createRelatedTo(
+                    final Test object
                     )
     throws PersistenceException
     {
+        final Test  test = object;
+        Collection<StateRef>  states = test.getState();
+        if (states != null  &&  states.size() > 0) {
+            for (StateRef  state : states) {
+                state.setMasterObject( test );
+            }
+        }
+    }
+
+
+
+//    @Override
+//    protected void _updateDeeply(
+//                    final Test object
+//                    )
+//    throws PersistenceException
+//    {
+//        //no related object
+//    }
+
+
+
+    @Override
+    protected void _copySimpleProperties(
+                    final Test object,
+                    final Test p_object
+                    )
+    {
+        if (p_object == null) {
+            return;
+        }
+
+        final Test  test = object;
+        final Test  p_test = p_object;
+
+        p_test.setComment( test.getComment() );
+        p_test.setCheckExistence( test.getCheckExistence() );
+        p_test.setCheck( test.getCheck() );
+        p_test.setStateOperator( test.getStateOperator() );
+
+        SystemObjectRef  objectRef = test.getObject();
+        if (objectRef == null) {
+            if (p_test.getObject() != null) {
+                p_test.setObject( null );
+            }
+        } else {
+            p_test.setObject( objectRef );
+        }
+
+        Collection<StateRef>  states = test.getState();
+        if (states != null  &&  states.size() > 0) {
+            p_test.clearState();
+            for (StateRef  state : states) {
+                p_test.addState( state );
+                state.setMasterObject( p_test );
+            }
+        }
+    }
+
+
+
+    @Override
+    protected void _syncDeeply(
+                    final Test object,
+                    final Test p_object
+                    )
+    throws PersistenceException
+    {
+        final Test  test = object;
+
         Collection<StateRef>  states = test.getState();
         if (states != null  &&  states.size() > 0) {
             for (StateRef  state : states) {
@@ -59,26 +130,9 @@ public class TestDao
             }
         }
 
-
-        return super.create( test );
+        super._syncDeeply( object, p_object );
+        //no related object
     }
-
-    // case: independent implementation
-//    @Override
-//    public String create(
-//                    final Test test
-//                    )
-//    {
-//        Collection<StateRef>  states = test.getState();
-//        if (states != null  &&  states.size() > 0) {
-//            Collection<StateRef>  p_states =
-//                getForwardingDao( StateRef.class ).syncAll( states );
-//            test.setState( p_states );
-//        }
-//
-//
-//        return super.create( test );
-//    }
 
 }
 // TestDao
