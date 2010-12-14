@@ -34,7 +34,8 @@ public class OvalStoreTest
 
     /**
      */
-    protected <K, T extends Persistable<K>> void _testStoreSync(
+    protected <K, T extends Persistable<K>>
+    K _testStoreSync(
                     final Class<T> type,
                     final String filepath,
                     final String xpath,
@@ -45,7 +46,7 @@ public class OvalStoreTest
         Reporter.log( "\n////////////////////////////////////////////////////////////////", true );
         Reporter.log( "  * object type: " + type, true );
 
-        T  actual = _unmarshalWithValidation( type, filepath, xpath, expected );
+        final T  actual = _unmarshalWithValidation( type, filepath, xpath, expected );
         Assert.assertNotNull( actual );
 
         Reporter.log( "sync..." , true );
@@ -73,6 +74,7 @@ public class OvalStoreTest
         p_id = p_object2.getPersistentID();
         Reporter.log( "  @ object=" + p_object2, true );
 
+        return p_id;
     }
 
 
@@ -148,14 +150,32 @@ public class OvalStoreTest
                     alwaysRun=true
                     )
     public <T extends Test> void testStoreDefinitionsTest(
-                    final Class<T> type,
+                    final Class<Test> type,
                     final String sourceFilepath,
                     final String xpath,
                     final T expected
                     )
     throws Exception
     {
-        _testStoreSync( type, sourceFilepath, xpath, expected );
+        String  p_id = _testStoreSync( type, sourceFilepath, xpath, expected );
+
+        Test  p_test = _getStore().load( type, p_id );
+
+        // update
+        p_test.setComment( "modified comment" );
+        Reporter.log( "update..." , true );
+        long  time = System.currentTimeMillis();
+        _getStore().update( type, p_test );
+        p_id = p_test.getPersistentID();
+        Reporter.log( "...update done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+        Reporter.log( "  @ pid=" + p_id, true );
+
+        Reporter.log( "load...", true );
+        Reporter.log( "  - pid=" + p_id, true );
+        time = System.currentTimeMillis();
+        Test  p_object = _getStore().load( type, p_id );
+        Reporter.log( "...load done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+        Reporter.log( "  @ object=" + p_object, true );
     }
 
 
