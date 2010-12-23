@@ -164,20 +164,20 @@ public class OvalStoreTest
 //        // update
 //        p_test.setComment( "modified comment" );
 //        Reporter.log( "update..." , true );
-//        long  time = System.currentTimeMillis();
+        long  time = System.currentTimeMillis();
 //        _getStore().update( type, p_test );
 //        p_id = p_test.getPersistentID();
 //        Reporter.log( "...update done: " + (System.currentTimeMillis() - time) + "(ms)", true );
 //        Reporter.log( "  @ pid=" + p_id, true );
 
-//        Reporter.log( "load...", true );
-//        Reporter.log( "  - pid=" + p_id, true );
-//        time = System.currentTimeMillis();
-//        Test  p_object = _getStore().load( type, p_id );
-//        Reporter.log( "...load done: " + (System.currentTimeMillis() - time) + "(ms)", true );
-//        Reporter.log( "  @ object=" + p_object, true );
-//        Reporter.log( "  @ entity type=" + p_object.getEntityType(), true );
-//        Reporter.log( "  @ object type=" + p_object.getClass().getName(), true );
+        Reporter.log( "load...", true );
+        Reporter.log( "  - pid=" + p_id, true );
+        time = System.currentTimeMillis();
+        Test  p_object = _getStore().load( type, p_id );
+        Reporter.log( "...load done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+        Reporter.log( "  @ object=" + p_object, true );
+        Reporter.log( "  @ entity type=" + p_object.getEntityType(), true );
+        Reporter.log( "  @ object type=" + p_object.getClass().getName(), true );
     }
 
 

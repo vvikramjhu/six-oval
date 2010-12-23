@@ -603,7 +603,7 @@
     <class name="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
 
-        <!-- cache-type type="unlimited"/ -->
+        <cache-type type="none"/>
         <map-to table="oval_d_test"/>
 
         <field name="persistentID" type="string">
