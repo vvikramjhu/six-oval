@@ -9,7 +9,6 @@ import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
-import jp.go.aist.six.test.oval.core.Validators;
 import jp.go.aist.six.util.persist.Persistable;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -56,23 +55,24 @@ public class OvalStoreTest
         Reporter.log( "...sync done: " + (System.currentTimeMillis() - time) + "(ms)", true );
         Reporter.log( "  @ pid=" + p_id, true );
 
-        Reporter.log( "load...", true );
-        Reporter.log( "  - pid=" + p_id, true );
-        time = System.currentTimeMillis();
-        p_object = _getStore().load( type, p_id );
-        Reporter.log( "...load done: " + (System.currentTimeMillis() - time) + "(ms)", true );
-        Reporter.log( "  @ object=" + p_object, true );
+//        Reporter.log( "load...", true );
+//        Reporter.log( "  - pid=" + p_id, true );
+//        time = System.currentTimeMillis();
+//        p_object = _getStore().load( type, p_id );
+//        Reporter.log( "...load done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+//        Reporter.log( "  @ object=" + p_object, true );
+//        Reporter.log( "  @ object type=" + p_object.getClass().getName(), true );
+//
+//        Reporter.log( "validating...", true );
+//        Validators.validator( type ).equals( p_object, expected );
+//        Reporter.log( "...validation OK", true );
 
-        Reporter.log( "validating...", true );
-        Validators.validator( type ).equals( p_object, expected );
-        Reporter.log( "...validation OK", true );
-
-        Reporter.log( "sync..." , true );
-        time = System.currentTimeMillis();
-        T  p_object2 = _getStore().sync( type, p_object ); //object got in another tx
-        Reporter.log( "...sync done: " + (System.currentTimeMillis() - time) + "(ms)", true );
-        p_id = p_object2.getPersistentID();
-        Reporter.log( "  @ object=" + p_object2, true );
+//        Reporter.log( "sync..." , true );
+//        time = System.currentTimeMillis();
+//        T  p_object2 = _getStore().sync( type, p_object ); //object got in another tx
+//        Reporter.log( "...sync done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+//        p_id = p_object2.getPersistentID();
+//        Reporter.log( "  @ object=" + p_object2, true );
 
         return p_id;
     }
@@ -159,23 +159,25 @@ public class OvalStoreTest
     {
         String  p_id = _testStoreSync( type, sourceFilepath, xpath, expected );
 
-        Test  p_test = _getStore().load( type, p_id );
+//        Test  p_test = _getStore().load( type, p_id );
+//
+//        // update
+//        p_test.setComment( "modified comment" );
+//        Reporter.log( "update..." , true );
+//        long  time = System.currentTimeMillis();
+//        _getStore().update( type, p_test );
+//        p_id = p_test.getPersistentID();
+//        Reporter.log( "...update done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+//        Reporter.log( "  @ pid=" + p_id, true );
 
-        // update
-        p_test.setComment( "modified comment" );
-        Reporter.log( "update..." , true );
-        long  time = System.currentTimeMillis();
-        _getStore().update( type, p_test );
-        p_id = p_test.getPersistentID();
-        Reporter.log( "...update done: " + (System.currentTimeMillis() - time) + "(ms)", true );
-        Reporter.log( "  @ pid=" + p_id, true );
-
-        Reporter.log( "load...", true );
-        Reporter.log( "  - pid=" + p_id, true );
-        time = System.currentTimeMillis();
-        Test  p_object = _getStore().load( type, p_id );
-        Reporter.log( "...load done: " + (System.currentTimeMillis() - time) + "(ms)", true );
-        Reporter.log( "  @ object=" + p_object, true );
+//        Reporter.log( "load...", true );
+//        Reporter.log( "  - pid=" + p_id, true );
+//        time = System.currentTimeMillis();
+//        Test  p_object = _getStore().load( type, p_id );
+//        Reporter.log( "...load done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+//        Reporter.log( "  @ object=" + p_object, true );
+//        Reporter.log( "  @ entity type=" + p_object.getEntityType(), true );
+//        Reporter.log( "  @ object type=" + p_object.getClass().getName(), true );
     }
 
 

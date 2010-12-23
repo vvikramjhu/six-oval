@@ -78,6 +78,7 @@ public class RegistryTest
     //  Test
     //**************************************************************
 
+    @Override
     public EntityType getEntityType()
     {
         return EntityType.WINDOWS_REGISTRY;

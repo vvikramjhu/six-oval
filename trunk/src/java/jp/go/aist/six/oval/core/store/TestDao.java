@@ -24,6 +24,8 @@ import jp.go.aist.six.oval.model.definitions.StateRef;
 import jp.go.aist.six.oval.model.definitions.SystemObjectRef;
 import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.util.persist.PersistenceException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import java.util.Collection;
 
 
@@ -35,6 +37,13 @@ import java.util.Collection;
 public class TestDao
     extends OvalEntityDao<Test>
 {
+
+    /**
+     * Logger.
+     */
+    private static Log  _LOG = LogFactory.getLog( TestDao.class );
+
+
 
     public TestDao()
     {
@@ -83,6 +92,10 @@ public class TestDao
     {
         if (p_object == null) {
             return;
+        }
+
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace( "copy simple properties: object=" + object );
         }
 
         final Test  test = object;
