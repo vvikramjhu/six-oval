@@ -21,8 +21,8 @@
 package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.definitions.StateRef;
-import jp.go.aist.six.oval.model.definitions.SystemObjectRef;
 import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.util.BeansUtil;
 import jp.go.aist.six.util.persist.PersistenceException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -85,9 +85,9 @@ public class TestDao
 
 
     @Override
-    protected void _copySimpleProperties(
-                    final Test object,
-                    final Test p_object
+    protected void _copyProperties(
+                    final Test p_object,
+                    final Test object
                     )
     {
         if (p_object == null) {
@@ -95,25 +95,29 @@ public class TestDao
         }
 
         if (_LOG.isTraceEnabled()) {
-            _LOG.trace( "copy simple properties: object=" + object );
+            _LOG.trace( "copy properties: object=" + object );
         }
 
         final Test  test = object;
         final Test  p_test = p_object;
 
-        p_test.setComment( test.getComment() );
-        p_test.setCheckExistence( test.getCheckExistence() );
-        p_test.setCheck( test.getCheck() );
-        p_test.setStateOperator( test.getStateOperator() );
-
-        SystemObjectRef  objectRef = test.getObject();
-        if (objectRef == null) {
-            if (p_test.getObject() != null) {
-                p_test.setObject( null );
-            }
-        } else {
-            p_test.setObject( objectRef );
-        }
+        BeansUtil.copyPropertiesExcept(
+                        p_test, test,
+                        new String[] { "persistentID", "state" }
+        );
+//        p_test.setComment( test.getComment() );
+//        p_test.setCheckExistence( test.getCheckExistence() );
+//        p_test.setCheck( test.getCheck() );
+//        p_test.setStateOperator( test.getStateOperator() );
+//
+//        SystemObjectRef  objectRef = test.getObject();
+//        if (objectRef == null) {
+//            if (p_test.getObject() != null) {
+//                p_test.setObject( null );
+//            }
+//        } else {
+//            p_test.setObject( objectRef );
+//        }
 
         Collection<StateRef>  states = test.getState();
         if (states != null  &&  states.size() > 0) {
