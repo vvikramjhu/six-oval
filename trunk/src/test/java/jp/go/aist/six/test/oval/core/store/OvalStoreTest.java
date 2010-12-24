@@ -62,7 +62,7 @@ public class OvalStoreTest
 //        Reporter.log( "...load done: " + (System.currentTimeMillis() - time) + "(ms)", true );
 //        Reporter.log( "  @ object=" + p_object, true );
 //        Reporter.log( "  @ object type=" + p_object.getClass().getName(), true );
-
+//
 //        Reporter.log( "validating...", true );
 //        Validators.validator( type ).equals( p_object, expected );
 //        Reporter.log( "...validation OK", true );

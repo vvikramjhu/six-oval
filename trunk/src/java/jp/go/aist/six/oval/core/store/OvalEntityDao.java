@@ -43,7 +43,7 @@ public class OvalEntityDao<T extends OvalEntity>
                     final Class<? extends T> type
                     )
     {
-        this( type, new PersistenceHelper<T>() );
+        this( type, new OvalEntityHelper<T>() );
     }
 
 

@@ -87,18 +87,18 @@ public class TestDao
 
 
 
-//    @Override
-//    protected void _updateDeeply(
-//                    final Test object
-//                    )
-//    throws PersistenceException
-//    {
-//        if (_LOG.isTraceEnabled()) {
-//            _LOG.trace( "update deeply: object=" + object );
-//        }
-//
-//        _associateDependents( object );
-//    }
+    @Override
+    protected void _updateDeeply(
+                    final Test object
+                    )
+    throws PersistenceException
+    {
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace( "update deeply: object=" + object );
+        }
+
+        _associateDependents( object );
+    }
 
 
 
