@@ -52,12 +52,7 @@ public class TestDao
 
 
 
-    //**************************************************************
-    //  Dao, CastorDao
-    //**************************************************************
-
-    @Override
-    protected void _createRelatedTo(
+    private void _relateDepends(
                     final Test object
                     )
     throws PersistenceException
@@ -73,14 +68,29 @@ public class TestDao
 
 
 
-//    @Override
-//    protected void _updateDeeply(
-//                    final Test object
-//                    )
-//    throws PersistenceException
-//    {
-//        //no related object
-//    }
+    //**************************************************************
+    //  Dao, CastorDao
+    //**************************************************************
+
+    @Override
+    protected void _createRelatedTo(
+                    final Test object
+                    )
+    throws PersistenceException
+    {
+        _relateDepends( object );
+    }
+
+
+
+    @Override
+    protected void _updateDeeply(
+                    final Test object
+                    )
+    throws PersistenceException
+    {
+        _relateDepends( object );
+    }
 
 
 
@@ -138,14 +148,7 @@ public class TestDao
                     )
     throws PersistenceException
     {
-        final Test  test = object;
-
-        Collection<StateRef>  states = test.getState();
-        if (states != null  &&  states.size() > 0) {
-            for (StateRef  state : states) {
-                state.setMasterObject( test );
-            }
-        }
+        _relateDepends( object );
 
         super._syncDeeply( object, p_object );
         //no related object

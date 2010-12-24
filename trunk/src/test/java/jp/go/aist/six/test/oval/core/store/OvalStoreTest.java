@@ -165,6 +165,7 @@ public class OvalStoreTest
         p_test.setComment( "modified comment" );
         Reporter.log( "update..." , true );
         long  time = System.currentTimeMillis();
+//        _getStore().sync( type, p_test );
         _getStore().update( type, p_test );
         p_id = p_test.getPersistentID();
         Reporter.log( "...update done: " + (System.currentTimeMillis() - time) + "(ms)", true );

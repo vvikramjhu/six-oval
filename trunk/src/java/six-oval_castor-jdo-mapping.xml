@@ -667,7 +667,7 @@
         identity="persistentID"
         key-generator="IDENTITY">
 
-        <cache-type type="unlimited"/>
+        <!-- cache-type type="unlimited"/ -->
         <map-to table="oval_d_test__state_ref"/>
 
         <field name="persistentID" type="string">
