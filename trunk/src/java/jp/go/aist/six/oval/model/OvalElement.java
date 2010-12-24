@@ -163,7 +163,7 @@ public abstract class OvalElement
 
     /**
      */
-    public void setOvalGlobalID(
+    public void ovalSetGlobalID(
                     final String gid
                     )
     {
@@ -171,7 +171,7 @@ public abstract class OvalElement
     }
 
 
-    public String getOvalGlobalID()
+    public String ovalGetGlobalID()
     {
         if (_ovalGlobalID == null) {
             _ovalGlobalID = generateGlobalOvalID( this );

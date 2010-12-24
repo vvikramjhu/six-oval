@@ -55,13 +55,13 @@ public class OvalStoreTest
         Reporter.log( "...sync done: " + (System.currentTimeMillis() - time) + "(ms)", true );
         Reporter.log( "  @ pid=" + p_id, true );
 
-        Reporter.log( "load...", true );
-        Reporter.log( "  - pid=" + p_id, true );
-        time = System.currentTimeMillis();
-        p_object = _getStore().load( type, p_id );
-        Reporter.log( "...load done: " + (System.currentTimeMillis() - time) + "(ms)", true );
-        Reporter.log( "  @ object=" + p_object, true );
-        Reporter.log( "  @ object type=" + p_object.getClass().getName(), true );
+//        Reporter.log( "load...", true );
+//        Reporter.log( "  - pid=" + p_id, true );
+//        time = System.currentTimeMillis();
+//        p_object = _getStore().load( type, p_id );
+//        Reporter.log( "...load done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+//        Reporter.log( "  @ object=" + p_object, true );
+//        Reporter.log( "  @ object type=" + p_object.getClass().getName(), true );
 
 //        Reporter.log( "validating...", true );
 //        Validators.validator( type ).equals( p_object, expected );
@@ -160,6 +160,8 @@ public class OvalStoreTest
         String  p_id = _testStoreSync( type, sourceFilepath, xpath, expected );
 
         Test  p_test = _getStore().load( type, p_id );
+        Reporter.log( "  @ object=" + p_test, true );
+        Reporter.log( "  @ object type=" + p_test.getClass().getName(), true );
 
         // update
         p_test.setComment( "modified comment" );

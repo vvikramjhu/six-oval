@@ -1035,7 +1035,10 @@
         </field>
 
         <!-- (FK) SystemObject -->
-        <field name="ovalGlobalID" type="string">
+        <field name="ovalGlobalID" type="string"
+            get-method="ovalGetGlobalID"
+            set-method="ovalSetGlobalID"
+            >
             <sql name="d_object__PID" type="char"/>
         </field>
 
@@ -1345,7 +1348,10 @@
         </field>
 
         <!-- (FK) Definition -->
-        <field name="ovalGlobalID" type="string">
+        <field name="ovalGlobalID" type="string"
+            get-method="ovalGetGlobalID"
+            set-method="ovalSetGlobalID"
+            >
             <sql name="d_definition__PID" type="char"/>
         </field>
 
@@ -1424,7 +1430,10 @@
         </field>
 
         <!-- (FK) Test -->
-        <field name="ovalGlobalID" type="string">
+        <field name="ovalGlobalID" type="string"
+            get-method="ovalGetGlobalID"
+            set-method="ovalSetGlobalID"
+            >
             <sql name="d_test__PID" type="char"/>
         </field>
     </class>
@@ -2746,7 +2755,7 @@
     <class name="jp.go.aist.six.oval.model.windows.RegistryTest"
         extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
-        <cache-type type="unlimited"/>
+        <!-- cache-type type="unlimited"/ -->
         <map-to table="oval_d_test_registry"/>
 
         <field name="persistentID" type="string">

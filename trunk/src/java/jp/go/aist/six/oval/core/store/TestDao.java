@@ -52,11 +52,15 @@ public class TestDao
 
 
 
-    private void _relateDepends(
+    private void _associateDependents(
                     final Test object
                     )
     throws PersistenceException
     {
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace( "associating dependents: object=" + object );
+        }
+
         final Test  test = object;
         Collection<StateRef>  states = test.getState();
         if (states != null  &&  states.size() > 0) {
@@ -78,19 +82,23 @@ public class TestDao
                     )
     throws PersistenceException
     {
-        _relateDepends( object );
+        _associateDependents( object );
     }
 
 
 
-    @Override
-    protected void _updateDeeply(
-                    final Test object
-                    )
-    throws PersistenceException
-    {
-        _relateDepends( object );
-    }
+//    @Override
+//    protected void _updateDeeply(
+//                    final Test object
+//                    )
+//    throws PersistenceException
+//    {
+//        if (_LOG.isTraceEnabled()) {
+//            _LOG.trace( "update deeply: object=" + object );
+//        }
+//
+//        _associateDependents( object );
+//    }
 
 
 
@@ -148,7 +156,7 @@ public class TestDao
                     )
     throws PersistenceException
     {
-        _relateDepends( object );
+        _associateDependents( object );
 
         super._syncDeeply( object, p_object );
         //no related object
