@@ -68,12 +68,12 @@ public class OvalStoreTest
         Validators.validator( type ).equals( p_object, expected );
         Reporter.log( "...validation OK", true );
 
-//        Reporter.log( "sync..." , true );
-//        time = System.currentTimeMillis();
-//        T  p_object2 = _getStore().sync( type, p_object ); //object got in another tx
-//        Reporter.log( "...sync done: " + (System.currentTimeMillis() - time) + "(ms)", true );
-//        p_id = p_object2.getPersistentID();
-//        Reporter.log( "  @ object=" + p_object2, true );
+        Reporter.log( "sync..." , true );
+        time = System.currentTimeMillis();
+        T  p_object2 = _getStore().sync( type, p_object ); //object got in another tx
+        Reporter.log( "...sync done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+        p_id = p_object2.getPersistentID();
+        Reporter.log( "  @ object=" + p_object2, true );
 
         return p_id;
     }

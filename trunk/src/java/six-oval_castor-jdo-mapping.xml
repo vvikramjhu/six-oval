@@ -1512,6 +1512,7 @@
         extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
         
+        <cache-type type="unlimited"/>
         <map-to table="oval_d_test_family"/>
 
         <field name="persistentID" type="string">
@@ -1600,6 +1601,7 @@
         extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
         
+        <cache-type type="unlimited"/>
         <map-to table="oval_d_test_textfilecontent54"/>
 
         <field name="persistentID" type="string">
@@ -1760,7 +1762,8 @@
     <class name="jp.go.aist.six.oval.model.independent.TextFileContentTest"
         extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
-        
+
+        <cache-type type="unlimited"/>
         <map-to table="oval_d_test_textfilecontent"/>
 
         <field name="persistentID" type="string">
@@ -1939,7 +1942,8 @@
     <class name="jp.go.aist.six.oval.model.independent.UnknownTest"
         extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
-        
+
+        <cache-type type="unlimited"/>
         <map-to table="oval_d_test_unknown"/>
 
         <field name="persistentID" type="string">
@@ -1961,7 +1965,8 @@
     <class name="jp.go.aist.six.oval.model.linux.DpkgInfoTest"
         extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
-        
+
+        <cache-type type="unlimited"/>
         <map-to table="oval_d_test_dpkginfo"/>
 
         <field name="persistentID" type="string">
@@ -1987,7 +1992,8 @@
     <class name="jp.go.aist.six.oval.model.linux.RpmInfoTest"
         extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
-        
+
+        <cache-type type="unlimited"/>
         <map-to table="oval_d_test_rpminfo"/>
 
         <field name="persistentID" type="string">
@@ -2216,7 +2222,8 @@
     <class name="jp.go.aist.six.oval.model.unix.UnameTest"
         extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
-        
+
+        <cache-type type="unlimited"/>
         <map-to table="oval_d_test_uname"/>
 
         <field name="persistentID" type="string">
@@ -2346,7 +2353,8 @@
     <class name="jp.go.aist.six.oval.model.windows.FileTest"
         extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
-        
+
+        <cache-type type="unlimited"/>
         <map-to table="oval_d_test_file"/>
 
         <field name="persistentID" type="string">
@@ -2640,6 +2648,7 @@
         extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
         
+        <cache-type type="unlimited"/>
         <map-to table="oval_d_test_metabase"/>
 
         <field name="persistentID" type="string">
@@ -2749,7 +2758,8 @@
     <class name="jp.go.aist.six.oval.model.windows.RegistryTest"
         extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
-        <!-- cache-type type="unlimited"/ -->
+
+        <cache-type type="unlimited"/>
         <map-to table="oval_d_test_registry"/>
 
         <field name="persistentID" type="string">
@@ -2915,7 +2925,8 @@
     <class name="jp.go.aist.six.oval.model.windows.WmiTest"
         extends="jp.go.aist.six.oval.model.definitions.Test"
         identity="persistentID">
-        
+
+        <cache-type type="unlimited"/>
         <map-to table="oval_d_test_wmi"/>
 
         <field name="persistentID" type="string">

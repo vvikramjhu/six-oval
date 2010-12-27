@@ -121,7 +121,7 @@ public class TestDao
 
         BeansUtil.copyPropertiesExcept(
                         p_test, test,
-                        new String[] { "persistentID", "state" }
+                        new String[] { "persistentID", "ovalID", "ovalVersion", "entityType", "state" }
         );
 //        p_test.setComment( test.getComment() );
 //        p_test.setCheckExistence( test.getCheckExistence() );
