@@ -74,6 +74,12 @@ public class OvalStoreInheritTest
 
 
 
+    private static final StateRef  _STATE_REF_2827_ =
+        new StateRef( "oval:org.mitre.oval:ste:2827" );
+    {
+        _STATE_REF_2827_.setPersistentID( "2827" );
+    }
+
 
     public static final Test  TEST_WINDOWS_REGISTRY_3019_INHERIT =
         new RegistryTest( "oval:org.mitre.oval:tst:3019", 2,
@@ -81,7 +87,9 @@ public class OvalStoreInheritTest
                         Check.AT_LEAST_ONE )
     .checkExistence( Existence.AT_LEAST_ONE_EXISTS )
     .object( "oval:org.mitre.oval:obj:717" )
-    .state( "oval:org.mitre.oval:ste:2827" );
+    .state( _STATE_REF_2827_ )
+//    .state( "oval:org.mitre.oval:ste:2827" )
+    ;
 
 
 

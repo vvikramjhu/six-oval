@@ -75,7 +75,9 @@
 
         <field name="state"
             type="jp.go.aist.six.test.oval.core.store.inherit.StateRef"
-            collection="collection">
+            collection="collection"
+            set-method="addState"
+            get-method="getState">
             <sql many-key="d_test__PID"/>
         </field>
     </class>
@@ -88,9 +90,10 @@
     <class name="jp.go.aist.six.test.oval.core.store.inherit.StateRef"
         depends="jp.go.aist.six.test.oval.core.store.inherit.Test"
         identity="persistentID"
-        key-generator="IDENTITY">
+        key-generator="IDENTITY"
+        >
 
-        <cache-type type="unlimited"/>
+        <!-- cache-type type="unlimited"/ -->
         <map-to table="oval_d_test__state_ref"/>
 
         <field name="persistentID" type="string">
@@ -117,7 +120,7 @@
         extends="jp.go.aist.six.test.oval.core.store.inherit.Test"
         identity="persistentID">
 
-        <cache-type type="unlimited"/>
+        <!-- cache-type type="unlimited"/ -->
         <map-to table="oval_d_test_registry"/>
 
         <field name="persistentID" type="string">

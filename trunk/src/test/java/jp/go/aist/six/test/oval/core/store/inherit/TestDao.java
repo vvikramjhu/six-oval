@@ -55,17 +55,17 @@ public class TestDao
                     )
     throws PersistenceException
     {
-        if (_LOG.isTraceEnabled()) {
-            _LOG.trace( "associating dependents: object=" + object );
-        }
-
-        final Test  test = object;
-        Collection<StateRef>  states = test.getState();
-        if (states != null  &&  states.size() > 0) {
-            for (StateRef  state : states) {
-                state.setMasterObject( test );
-            }
-        }
+//        if (_LOG.isTraceEnabled()) {
+//            _LOG.trace( "associating dependents: object=" + object );
+//        }
+//
+//        final Test  test = object;
+//        Collection<StateRef>  states = test.getState();
+//        if (states != null  &&  states.size() > 0) {
+//            for (StateRef  state : states) {
+//                state.setMasterObject( test );
+//            }
+//        }
     }
 
 
@@ -85,18 +85,18 @@ public class TestDao
 
 
 
-//    @Override
-//    protected void _updateDeeply(
-//                    final Test object
-//                    )
-//    throws PersistenceException
-//    {
-//        if (_LOG.isTraceEnabled()) {
-//            _LOG.trace( "update deeply: object=" + object );
-//        }
-//
+    @Override
+    protected void _updateDeeply(
+                    final Test object
+                    )
+    throws PersistenceException
+    {
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace( "update deeply: object=" + object );
+        }
+
 //        _associateDependents( object );
-//    }
+    }
 
 
 

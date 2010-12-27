@@ -250,19 +250,19 @@ public class Test
     }
 
 
-    public void setState(
-                    final Collection<? extends StateRef> stateRefs
-                    )
-    {
-        if (stateRefs != _stateRef) {
-            _stateRef.clear();
-            if (stateRefs != null  &&  stateRefs.size() > 0) {
-                for (StateRef  s : stateRefs) {
-                    addState( s );
-                }
-            }
-        }
-    }
+//    public void setState(
+//                    final Collection<? extends StateRef> stateRefs
+//                    )
+//    {
+//        if (stateRefs != _stateRef) {
+//            _stateRef.clear();
+//            if (stateRefs != null  &&  stateRefs.size() > 0) {
+//                for (StateRef  s : stateRefs) {
+//                    addState( s );
+//                }
+//            }
+//        }
+//    }
 
 
     public boolean addState(
@@ -272,6 +272,7 @@ public class Test
         if (_stateRef.contains( stateRef )) {
             return false;
         } else {
+            stateRef.setMasterObject( this );
             return _stateRef.add( stateRef );
         }
     }
