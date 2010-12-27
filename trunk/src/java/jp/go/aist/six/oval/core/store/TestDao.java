@@ -44,6 +44,16 @@ public class TestDao
     private static Log  _LOG = LogFactory.getLog( TestDao.class );
 
 
+    private static final String[]  _EXCEPTED_PROPERTIES_ =
+        new String[] {
+        "persistentID",
+        "ovalID",
+        "ovalVersion",
+        "entityType",
+        "state"
+        };
+
+
 
     public TestDao()
     {
@@ -87,18 +97,18 @@ public class TestDao
 
 
 
-//    @Override
-//    protected void _updateDeeply(
-//                    final Test object
-//                    )
-//    throws PersistenceException
-//    {
-//        if (_LOG.isTraceEnabled()) {
-//            _LOG.trace( "update deeply: object=" + object );
-//        }
-//
-//        _associateDependents( object );
-//    }
+    @Override
+    protected void _updateDeeply(
+                    final Test object
+                    )
+    throws PersistenceException
+    {
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace( "update deeply: object=" + object );
+        }
+
+        _associateDependents( object );
+    }
 
 
 
@@ -119,10 +129,13 @@ public class TestDao
         final Test  test = object;
         final Test  p_test = p_object;
 
-        BeansUtil.copyPropertiesExcept(
-                        p_test, test,
-                        new String[] { "persistentID", "ovalID", "ovalVersion", "entityType", "state" }
-        );
+        BeansUtil.copyPropertiesExcept( p_test, test, _EXCEPTED_PROPERTIES_ );
+
+        Collection<StateRef>  states = test.getState();
+        p_test.setState( states );
+        _associateDependents( p_test );
+
+
 //        p_test.setComment( test.getComment() );
 //        p_test.setCheckExistence( test.getCheckExistence() );
 //        p_test.setCheck( test.getCheck() );
@@ -137,14 +150,15 @@ public class TestDao
 //            p_test.setObject( objectRef );
 //        }
 
-        Collection<StateRef>  states = test.getState();
-        if (states != null  &&  states.size() > 0) {
-            p_test.clearState();
-            for (StateRef  state : states) {
-                p_test.addState( state );
-                state.setMasterObject( p_test );
-            }
-        }
+
+//        Collection<StateRef>  states = test.getState();
+//        if (states != null  &&  states.size() > 0) {
+//            p_test.clearState();
+//            for (StateRef  state : states) {
+//                p_test.addState( state );
+//                state.setMasterObject( p_test );
+//            }
+//        }
     }
 
 
