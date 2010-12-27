@@ -43,7 +43,7 @@
     </test>
 
 
-    <test name="oval.core.store.inherit" enabled="true">
+    <test name="oval.core.store.inherit" enabled="false">
         <classes>
             <class name="jp.go.aist.six.test.oval.core.store.inherit.OvalStoreInheritTest"/>
         </classes>
@@ -51,7 +51,7 @@
 
 
 
-    <test name="oval.core.store" enabled="false">
+    <test name="oval.core.store" enabled="true">
         <groups>
             <run>
                 <include name="definitions.test"/>

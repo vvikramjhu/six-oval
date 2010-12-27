@@ -228,96 +228,96 @@ public abstract class CoreTestBase
     public Object[][] provideDefinitionsTest()
     {
         return new Object[][] {
-//                        // independent family
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-independent-family_oval-99.xml",
-//                            "/oval_definitions/tests/family_test",
-//                            DefinitionsSample.TEST_INDEPENDENT_FAMILY_99,
-//                            "marshalled_test-independent-family_oval-99.xml"
-//                        }
-//                        ,
-//                        // independent textfilecontent
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-independent-textfilecontent_oval-11150.xml",
-//                            "/oval_definitions/tests/textfilecontent_test",
-//                            DefinitionsSample.TEST_INDEPENDENT_TEXTFILECONTENT_11150,
-//                            "marshalled_test-independent-textfilecontent_oval-11150.xml"
-//                        }
-//                        ,
-//                        // independent textfilecontent54
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-independent-textfilecontent54_oval-41853.xml",
-//                            "/oval_definitions/tests/textfilecontent54_test",
-//                            DefinitionsSample.TEST_INDEPENDENT_TEXTFILECONTENT54_41853,
-//                            "marshalled_test-independent-textfilecontent54_oval-41853.xml"
-//                        }
-//                        ,
-//                        // independent unknown
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-independent-unknown_oval-2531.xml",
-//                            "/oval_definitions/tests/unknown_test",
-//                            DefinitionsSample.TEST_INDEPENDENT_UNKNOWN_2531,
-//                            "marshalled_test-independent-unknown_oval-2531.xml"
-//                        }
-//                        ,
-//                        // linux dpkginfo
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-linux-dpkginfo_oval-19402.xml",
-//                            "/oval_definitions/tests/dpkginfo_test",
-//                            DefinitionsSample.TEST_LINUX_DPKGINFO_19402,
-//                            "marshalled_test-linux-dpkginfo_oval-19402.xml"
-//                        }
-//                        ,
-//                        // linux rpminfo
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-linux-rpminfo_rhsa-20100061002.xml",
-//                            "/oval_definitions/tests/rpminfo_test",
-//                            DefinitionsSample.TEST_LINUX_RPMINFO_20100061002,
-//                            "marshalled_test-linux-rpminfo_rhsa-20100061002.xml"
-//                        }
-//                        ,
-//                        // unix uname
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-unix-uname_oval-11195.xml",
-//                            "/oval_definitions/tests/uname_test",
-//                            DefinitionsSample.TEST_UNIX_UNAME_11195,
-//                            "marshalled_test-unix-uname_oval-11195.xml"
-//                        }
-//                        ,
-//                        // windows file, with 2 States
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-windows-file_oval-10629.xml",
-//                            "/oval_definitions/tests/file_test",
-//                            DefinitionsSample.TEST_WINDOWS_FILE_10629,
-//                            "marshalled_test-windows-file_oval-10629.xml"
-//                        }
-//                        ,
-//                        // windows file
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-windows-file_oval-2339.xml",
-//                            "/oval_definitions/tests/file_test",
-//                            DefinitionsSample.TEST_WINDOWS_FILE_2339,
-//                            "marshalled_test-windows-file_oval-2339.xml"
-//                        }
-//                        ,
-//                        // windows metabase, without State
-//                        {
-//                            Test.class,
-//                            "test/data/definitions/test-windows-metabase_oval-709.xml",
-//                            "/oval_definitions/tests/metabase_test",
-//                            DefinitionsSample.TEST_WINDOWS_METABASE_709,
-//                            "marshalled_test-windows-metabase_oval-709.xml"
-//                        }
-//                        ,
+                        // independent family
+                        {
+                            Test.class,
+                            "test/data/definitions/test-independent-family_oval-99.xml",
+                            "/oval_definitions/tests/family_test",
+                            DefinitionsSample.TEST_INDEPENDENT_FAMILY_99,
+                            "marshalled_test-independent-family_oval-99.xml"
+                        }
+                        ,
+                        // independent textfilecontent
+                        {
+                            Test.class,
+                            "test/data/definitions/test-independent-textfilecontent_oval-11150.xml",
+                            "/oval_definitions/tests/textfilecontent_test",
+                            DefinitionsSample.TEST_INDEPENDENT_TEXTFILECONTENT_11150,
+                            "marshalled_test-independent-textfilecontent_oval-11150.xml"
+                        }
+                        ,
+                        // independent textfilecontent54
+                        {
+                            Test.class,
+                            "test/data/definitions/test-independent-textfilecontent54_oval-41853.xml",
+                            "/oval_definitions/tests/textfilecontent54_test",
+                            DefinitionsSample.TEST_INDEPENDENT_TEXTFILECONTENT54_41853,
+                            "marshalled_test-independent-textfilecontent54_oval-41853.xml"
+                        }
+                        ,
+                        // independent unknown
+                        {
+                            Test.class,
+                            "test/data/definitions/test-independent-unknown_oval-2531.xml",
+                            "/oval_definitions/tests/unknown_test",
+                            DefinitionsSample.TEST_INDEPENDENT_UNKNOWN_2531,
+                            "marshalled_test-independent-unknown_oval-2531.xml"
+                        }
+                        ,
+                        // linux dpkginfo
+                        {
+                            Test.class,
+                            "test/data/definitions/test-linux-dpkginfo_oval-19402.xml",
+                            "/oval_definitions/tests/dpkginfo_test",
+                            DefinitionsSample.TEST_LINUX_DPKGINFO_19402,
+                            "marshalled_test-linux-dpkginfo_oval-19402.xml"
+                        }
+                        ,
+                        // linux rpminfo
+                        {
+                            Test.class,
+                            "test/data/definitions/test-linux-rpminfo_rhsa-20100061002.xml",
+                            "/oval_definitions/tests/rpminfo_test",
+                            DefinitionsSample.TEST_LINUX_RPMINFO_20100061002,
+                            "marshalled_test-linux-rpminfo_rhsa-20100061002.xml"
+                        }
+                        ,
+                        // unix uname
+                        {
+                            Test.class,
+                            "test/data/definitions/test-unix-uname_oval-11195.xml",
+                            "/oval_definitions/tests/uname_test",
+                            DefinitionsSample.TEST_UNIX_UNAME_11195,
+                            "marshalled_test-unix-uname_oval-11195.xml"
+                        }
+                        ,
+                        // windows file, with 2 States
+                        {
+                            Test.class,
+                            "test/data/definitions/test-windows-file_oval-10629.xml",
+                            "/oval_definitions/tests/file_test",
+                            DefinitionsSample.TEST_WINDOWS_FILE_10629,
+                            "marshalled_test-windows-file_oval-10629.xml"
+                        }
+                        ,
+                        // windows file
+                        {
+                            Test.class,
+                            "test/data/definitions/test-windows-file_oval-2339.xml",
+                            "/oval_definitions/tests/file_test",
+                            DefinitionsSample.TEST_WINDOWS_FILE_2339,
+                            "marshalled_test-windows-file_oval-2339.xml"
+                        }
+                        ,
+                        // windows metabase, without State
+                        {
+                            Test.class,
+                            "test/data/definitions/test-windows-metabase_oval-709.xml",
+                            "/oval_definitions/tests/metabase_test",
+                            DefinitionsSample.TEST_WINDOWS_METABASE_709,
+                            "marshalled_test-windows-metabase_oval-709.xml"
+                        }
+                        ,
                         // windows registry
                         {
                             Test.class,
