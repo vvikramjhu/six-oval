@@ -29,10 +29,9 @@ import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.definitions.Tests;
 import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.definitions.Variables;
+import jp.go.aist.six.util.BeansUtil;
 import jp.go.aist.six.util.castor.CastorDao;
 import jp.go.aist.six.util.persist.PersistenceException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 
@@ -57,8 +56,21 @@ public class OvalDefinitionsDao
      */
     public OvalDefinitionsDao()
     {
-        this( OvalDefinitions.class, new OvalDefinitionsHelper() );
+        this( OvalDefinitions.class );
     }
+
+
+
+    /**
+     * Constructor.
+     */
+    public OvalDefinitionsDao(
+                    final Class<? extends OvalDefinitions> type
+                    )
+    {
+        this( type, new OvalDefinitionsHelper() );
+    }
+
 
 
     /**
@@ -70,6 +82,21 @@ public class OvalDefinitionsDao
                     )
     {
         super( type, helper );
+    }
+
+
+
+    /**
+     */
+    protected void _beforePersist(
+                    final OvalDefinitions defs
+                    )
+    throws PersistenceException
+    {
+        if (defs.getPersistentID() == null) {
+            String  uuid = UUID.randomUUID().toString();
+            defs.setPersistentID( uuid );
+        }
     }
 
 
@@ -86,39 +113,49 @@ public class OvalDefinitionsDao
     {
         final OvalDefinitions  defs = object;
 
-        SystemObjects  sysObjects = defs.getObjects();
-        if (sysObjects != null  &&  sysObjects.size() > 0) {
-            List<SystemObject>  list = new ArrayList<SystemObject>( sysObjects.getObject() );
-            List<SystemObject>  p_list =
-                getForwardingDao( SystemObject.class ).syncAll( list );
-            defs.setObjects( new SystemObjects( p_list ) );
+        _beforePersist( defs );
+
+        SystemObjects  sysobjs = defs.getObjects();
+        if (sysobjs != null  &&  sysobjs.size() > 0) {
+            SystemObjects  p_sysobjs = new SystemObjects();
+            for (SystemObject  sysobj : sysobjs) {
+                SystemObject  p_sysobj = _loadOrCreate( SystemObject.class, sysobj );
+                p_sysobjs.add( p_sysobj );
+            }
+            defs.setObjects( p_sysobjs );
         }
 
 
         States  states = defs.getStates();
         if (states != null  &&  states.size() > 0) {
-            List<State>  list = new ArrayList<State>( states.getState() );
-            List<State>  p_list =
-                getForwardingDao( State.class ).syncAll( list );
-            defs.setStates( new States( p_list ) );
+            States  p_states = new States();
+            for (State  state : states) {
+                State  p_state = _loadOrCreate( State.class, state );
+                p_states.add( p_state );
+            }
+            defs.setStates( p_states );
         }
 
 
-        Variables  variables = defs.getVariables();
-        if (variables != null  &&  variables.size() > 0) {
-            List<Variable>  list = new ArrayList<Variable>( variables.getVariable() );
-            List<Variable>  p_list =
-                getForwardingDao( Variable.class ).syncAll( list );
-            defs.setVariables( new Variables( p_list ) );
+        Variables  vars = defs.getVariables();
+        if (vars != null  &&  vars.size() > 0) {
+            Variables  p_vars = new Variables();
+            for (Variable  var : vars) {
+                Variable  p_var = _loadOrCreate( Variable.class, var );
+                p_vars.add( p_var );
+            }
+            defs.setVariables( p_vars );
         }
 
 
         Tests  tests = defs.getTests();
         if (tests != null  &&  tests.size() > 0) {
-            List<Test>  list = new ArrayList<Test>( tests.getTest() );
-            List<Test>  p_list =
-                getForwardingDao( Test.class ).syncAll( list );
-            defs.setTests( new Tests( p_list ) );
+            Tests  p_tests = new Tests();
+            for (Test  test : tests) {
+                Test  p_test = _loadOrCreate( Test.class, test );
+                p_tests.add( p_test );
+            }
+            defs.setTests( p_tests );
         }
 
 /**
@@ -135,45 +172,144 @@ public class OvalDefinitionsDao
 
 
     @Override
-    public String create(
-                    final OvalDefinitions defs
+    protected void _updateDeeply(
+                    final OvalDefinitions object
                     )
     throws PersistenceException
     {
-        if (defs.getPersistentID() == null) {
-            String  uuid = UUID.randomUUID().toString();
-            defs.setPersistentID( uuid );
+        final OvalDefinitions  defs = object;
+
+        SystemObjects  sysobjs = defs.getObjects();
+        if (sysobjs != null  &&  sysobjs.size() > 0) {
+            for (SystemObject  sysobj : sysobjs) {
+                _update( SystemObject.class, sysobj );
+            }
         }
 
-////        OvalDefinitionsUtil  util = OvalDefinitionsUtil.newInstance( defs );
-//        Definitions  def_list = defs.getDefinitions();
-//        if (def_list != null) {
-//            Definitions  p_def_list = new Definitions();
-//            for (Definition  def : def_list) {
-//                if (_LOG.isInfoEnabled()) {
-//                    _LOG.info( "creating Definition: " + def.getOvalID() );
-//                }
-//                Definition  p_def = getForwardingDao( Definition.class ).sync( def );
-//                p_def_list.addDefinition( p_def );
-//
-//                OvalDefinitionsDefinitionAssociation  assoc =
-//                    new OvalDefinitionsDefinitionAssociation( defs, p_def );
-//                getForwardingDao( OvalDefinitionsDefinitionAssociation.class ).sync( assoc );
-//
-//                //TODO: move this part to DefinitionDao,
-//                // and create 1:N definition-Criteria relation?
-////                final String  defID = def.getOvalID();
-////                Collection<String>  testIDs = util.getRelatedTestIDOfDefinition( defID );
-////                for (String  testID : testIDs) {
-////                    DefinitionTestAssociation  dt_assoc =
-////                        new DefinitionTestAssociation( def, defs.getTest( testID ) );
-////                    getForwardingDao( DefinitionTestAssociation.class ).sync( dt_assoc );
-////                }
-//            }
-//            defs.setDefinitions( p_def_list );
-//        }
+        States  states = defs.getStates();
+        if (states != null  &&  states.size() > 0) {
+            for (State  state : states) {
+                _update( State.class, state );
+            }
+        }
 
-        return super.create( defs );
+        Variables  vars = defs.getVariables();
+        if (vars != null  &&  vars.size() > 0) {
+            for (Variable  var : vars) {
+                _update( Variable.class, var );
+            }
+        }
+
+        Tests  tests = defs.getTests();
+        if (tests != null  &&  tests.size() > 0) {
+            for (Test  test : tests) {
+                _update( Test.class, test );
+            }
+        }
+    }
+
+
+
+    protected static final String[]  _EXCEPTED_PROPERTIES_ =
+        new String[] {
+        "persistentID",
+        "objects",
+        "states",
+        "tests",
+        "variables"
+        };
+
+
+    @Override
+    protected void _copyProperties(
+                    final OvalDefinitions p_object,
+                    final OvalDefinitions object
+                    )
+    {
+        if (p_object == null) {
+            return;
+        }
+
+        BeansUtil.copyPropertiesExcept(
+                        p_object, object, _EXCEPTED_PROPERTIES_ );
+    }
+
+
+
+    @Override
+    protected void _syncDeeply(
+                    final OvalDefinitions object,
+                    final OvalDefinitions p_object
+                    )
+    throws PersistenceException
+    {
+        super._syncDeeply( object, p_object );
+        _beforePersist( object );
+
+        SystemObjects  sysobjs = object.getObjects();
+        SystemObjects  p_sysobjs = new SystemObjects();
+        if (sysobjs != null  &&  sysobjs.size() > 0) {
+            for (SystemObject  sysobj : sysobjs) {
+                SystemObject  p_sysobj = _sync( SystemObject.class, sysobj );
+                if (p_sysobj == null) {
+                    p_sysobjs.add( sysobj );
+                } else {
+                    p_sysobjs.add( p_sysobj );
+                }
+            }
+        }
+
+        States  states = object.getStates();
+        States  p_states = new States();
+        if (states != null  &&  states.size() > 0) {
+            for (State  state : states) {
+                State  p_state = _sync( State.class, state );
+                if (p_state == null) {
+                    p_states.add( state );
+                } else {
+                    p_states.add( p_state );
+                }
+            }
+        }
+
+        Variables  vars = object.getVariables();
+        Variables  p_vars = new Variables();
+        if (vars != null  &&  vars.size() > 0) {
+            for (Variable  var : vars) {
+                Variable  p_var = _sync( Variable.class, var );
+                if (p_var == null) {
+                    p_vars.add( var );
+                } else {
+                    p_vars.add( p_var );
+                }
+            }
+        }
+
+        Tests  tests = object.getTests();
+        Tests  p_tests = new Tests();
+        if (tests != null  &&  tests.size() > 0) {
+            for (Test  test : tests) {
+                Test  p_test = _sync( Test.class, test );
+                if (p_test == null) {
+                    p_tests.add( test );
+                } else {
+                    p_tests.add( p_test );
+                }
+            }
+        }
+
+
+        if (p_object == null) {
+            object.setObjects( p_sysobjs );
+            object.setStates( p_states );
+            object.setVariables( p_vars );
+            object.setTests( p_tests );
+        } else {
+            p_object.setObjects( p_sysobjs );
+            p_object.setStates( p_states );
+            p_object.setVariables( p_vars );
+            p_object.setTests( p_tests );
+        }
     }
 
 }
