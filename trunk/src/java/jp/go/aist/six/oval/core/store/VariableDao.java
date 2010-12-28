@@ -43,7 +43,7 @@ public class VariableDao
 
     /**
      */
-    private void _beforePersist(
+    protected void _beforePersist(
                     final Variable variable
                     )
     throws PersistenceException
