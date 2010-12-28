@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.core.store;
 
+import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.Definitions;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.States;
@@ -158,15 +160,15 @@ public class OvalDefinitionsDao
             defs.setTests( p_tests );
         }
 
-/**
         Definitions  definitions = defs.getDefinitions();
         if (definitions != null  &&  definitions.size() > 0) {
-            List<Definition>  list = new ArrayList<Definition>( definitions.getDefinition() );
-            List<Definition>  p_list =
-                getForwardingDao( Definition.class ).syncAll( list );
-            defs.setDefinitions( new Definitions( p_list ) );
+            Definitions  p_definitions = new Definitions();
+            for (Definition  def : definitions) {
+                Definition  p_def = _loadOrCreate( Definition.class, def );
+                p_definitions.add( p_def );
+            }
+            defs.setDefinitions( p_definitions );
         }
-**/
     }
 
 
