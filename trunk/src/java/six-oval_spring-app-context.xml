@@ -56,13 +56,11 @@
                 <entry key="jp.go.aist.six.oval.model.definitions.Test"
                     value="jp.go.aist.six.oval.core.store.TestDao"/>
 
-<!-- use CastorDao
                 <entry key="jp.go.aist.six.oval.model.definitions.SystemObject"
                     value="jp.go.aist.six.oval.core.store.SystemObjectDao"/>
 
                 <entry key="jp.go.aist.six.oval.model.definitions.State"
                     value="jp.go.aist.six.oval.core.store.StateDao"/>
--->
 
                 <entry key="jp.go.aist.six.oval.model.definitions.Variable"
                     value="jp.go.aist.six.oval.core.store.VariableDao"/>
@@ -73,6 +71,16 @@
                 <entry key="jp.go.aist.six.oval.core.model.definitions.DefinitionTestAssociation"
                     value="jp.go.aist.six.oval.core.store.DefinitionTestAssociationDao"/>
 -->
+
+<!-- NameEntity -->
+                <entry key="jp.go.aist.six.oval.model.definitions.Platform"
+                    value="jp.go.aist.six.oval.core.store.PlatformDao"/>
+                <entry key="jp.go.aist.six.oval.model.definitions.Product"
+                    value="jp.go.aist.six.oval.core.store.ProductDao"/>
+                <entry key="jp.go.aist.six.oval.model.definitions.Cve"
+                    value="jp.go.aist.six.oval.core.store.CveDao"/>
+                <entry key="jp.go.aist.six.oval.model.definitions.Cpe"
+                    value="jp.go.aist.six.oval.core.store.CpeDao"/>
 
 
             <!-- // System Characteristics // -->
@@ -86,19 +94,11 @@
                 <entry key="jp.go.aist.six.oval.model.results.OvalResults"
                     value="jp.go.aist.six.oval.core.store.OvalResultsDao"/>
 
-
-
             <!-- // deprecated // -->
 
 <!-- using pure CastoDao
                 <entry key="jp.go.aist.six.oval.model.definitions.Reference"
                     value="jp.go.aist.six.oval.core.store.ReferenceDao"/>
-                <entry key="jp.go.aist.six.oval.model.definitions.Platform"
-                    value="jp.go.aist.six.oval.core.store.PlatformDao"/>
-                <entry key="jp.go.aist.six.oval.model.definitions.Product"
-                    value="jp.go.aist.six.oval.core.store.ProductDao"/>
-                <entry key="jp.go.aist.six.oval.model.definitions.Cve"
-                    value="jp.go.aist.six.oval.core.store.CveDao"/>
 
                 <entry key="jp.go.aist.six.oval.model.sc.Item"
                     value="jp.go.aist.six.oval.core.store.ItemDao"/>

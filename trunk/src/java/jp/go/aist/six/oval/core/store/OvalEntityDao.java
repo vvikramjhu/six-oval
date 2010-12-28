@@ -30,7 +30,7 @@ import jp.go.aist.six.util.castor.CastorDao;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalEntityDao<T extends OvalEntity>
+public abstract class OvalEntityDao<T extends OvalEntity>
     extends CastorDao<String, T>
 {
 

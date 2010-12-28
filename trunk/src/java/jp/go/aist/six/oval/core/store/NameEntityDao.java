@@ -20,8 +20,9 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.definitions.State;
-
+import jp.go.aist.six.oval.model.NameEntity;
+import jp.go.aist.six.util.castor.CastorDao;
+import jp.go.aist.six.util.castor.PersistenceHelper;
 
 
 
@@ -29,17 +30,53 @@ import jp.go.aist.six.oval.model.definitions.State;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class StateDao
-    extends OvalEntityDao<State>
+public abstract class NameEntityDao<T extends NameEntity>
+    extends CastorDao<String, T>
 {
 
     /**
      * Constructor.
      */
-    public StateDao()
+    public NameEntityDao()
     {
-        super( State.class );
+    }
+
+
+    public NameEntityDao(
+                    final Class<? extends T> type
+                    )
+    {
+        this( type, new PersistenceHelper<T>() );
+    }
+
+
+
+    public NameEntityDao(
+                    final Class<? extends T> type,
+                    final PersistenceHelper<? super T> helper
+                    )
+    {
+        super( type, helper );
+    }
+
+
+
+    //**************************************************************
+    //  Dao, CastorDao
+    //**************************************************************
+
+    @Override
+    protected void _copyProperties(
+                    final T p_object,
+                    final T object
+                    )
+    {
+        if (p_object == null) {
+            return;
+        }
+
+        // nothing to copy
     }
 
 }
-// StateDao
+// NameEntityDao
