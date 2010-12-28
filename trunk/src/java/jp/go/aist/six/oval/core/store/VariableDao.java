@@ -41,12 +41,9 @@ public class VariableDao
 
 
 
-    //**************************************************************
-    //  Dao, CastorDao
-    //**************************************************************
-
-    @Override
-    public String create(
+    /**
+     */
+    private void _beforePersist(
                     final Variable variable
                     )
     throws PersistenceException
@@ -59,8 +56,63 @@ public class VariableDao
                 JdoCallbackHandler.jdoBeforeCreate( LocalVariable.class, lv );
             }
         }
+    }
 
-        return super.create( variable );
+
+
+    //**************************************************************
+    //  Dao, CastorDao
+    //**************************************************************
+
+    @Override
+    protected void _createRelatedTo(
+                    final Variable object
+                    )
+    throws PersistenceException
+    {
+        _beforePersist( object );
+    }
+
+
+
+    @Override
+    protected void _updateDeeply(
+                    final Variable object
+                    )
+    throws PersistenceException
+    {
+        _beforePersist( object );
+    }
+
+
+
+    @Override
+    protected void _copyProperties(
+                    final Variable p_object,
+                    final Variable object
+                    )
+    {
+        if (p_object == null) {
+            return;
+        }
+
+        super._copyProperties( p_object, object );
+        _beforePersist( p_object );
+    }
+
+
+
+    @Override
+    protected void _syncDeeply(
+                    final Variable object,
+                    final Variable p_object
+                    )
+    throws PersistenceException
+    {
+        _beforePersist( object );
+
+        super._syncDeeply( object, p_object );
+        //no related object
     }
 
 }

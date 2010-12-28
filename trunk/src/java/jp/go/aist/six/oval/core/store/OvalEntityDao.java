@@ -21,8 +21,8 @@
 package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.OvalEntity;
+import jp.go.aist.six.util.BeansUtil;
 import jp.go.aist.six.util.castor.CastorDao;
-import jp.go.aist.six.util.castor.PersistenceHelper;
 
 
 
@@ -50,7 +50,8 @@ public class OvalEntityDao<T extends OvalEntity>
 
     public OvalEntityDao(
                     final Class<? extends T> type,
-                    final PersistenceHelper<? super T> helper
+                  final OvalEntityHelper<? super T> helper
+//                    final PersistenceHelper<? super T> helper
                     )
     {
         super( type, helper );
@@ -76,9 +77,41 @@ public class OvalEntityDao<T extends OvalEntity>
 
 
 
+    protected static final String[]  _COPY_EXCEPTED_PROPERTIES_ =
+        new String[] {
+        "persistentID",
+        "ovalID",
+        "ovalVersion",
+        "entityType"
+        };
+
+
+    protected String[] _getCopyExcepts()
+    {
+        return _COPY_EXCEPTED_PROPERTIES_;
+    }
+
+
+
     //**************************************************************
     //  Dao, CastorDao
     //**************************************************************
+
+    @Override
+    protected void _copyProperties(
+                    final T p_object,
+                    final T object
+                    )
+    {
+        if (p_object == null) {
+            return;
+        }
+
+        BeansUtil.copyPropertiesExcept(
+                        p_object, object, _COPY_EXCEPTED_PROPERTIES_ );
+    }
+
+
 
     // Polymorphic loading of abstract class, OvalEntity, State, Test,...
     // fails with NullPointerException:

@@ -33,6 +33,9 @@ public class StateDao
     extends OvalEntityDao<State>
 {
 
+    /**
+     * Constructor.
+     */
     public StateDao()
     {
         super( State.class );

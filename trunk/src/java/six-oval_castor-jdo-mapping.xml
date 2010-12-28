@@ -687,7 +687,7 @@
     <class name="jp.go.aist.six.oval.model.definitions.SystemObject"
         identity="persistentID">
 
-        
+        <cache-type type="none"/>
         <map-to table="oval_d_object"/>
 
         <field name="persistentID" type="string">
@@ -724,7 +724,7 @@
     <class name="jp.go.aist.six.oval.model.definitions.State"
         identity="persistentID">
 
-        
+        <cache-type type="none"/>
         <map-to table="oval_d_state"/>
 
         <field name="persistentID" type="string">
@@ -761,7 +761,7 @@
     <class name="jp.go.aist.six.oval.model.definitions.Variable"
         identity="persistentID">
 
-        
+        <cache-type type="none"/>
         <map-to table="oval_d_variable"/>
 
         <field name="persistentID" type="string">
