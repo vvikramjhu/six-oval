@@ -27,6 +27,8 @@ import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.persist.PersistenceException;
 import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.RelationalBinding;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -43,10 +45,11 @@ public class OvalDefinitionsWorker
     extends Worker<String, OvalDefinitions>
 {
 
-//    /**
-//     * Logger.
-//     */
-//    private static Log  _LOG = LogFactory.getLog( LocalOvalRepository.class );
+    /**
+     * Logger.
+     */
+    private static Log  _LOG = LogFactory.getLog( OvalDefinitionsWorker.class );
+
 
 
     /**
@@ -68,6 +71,10 @@ public class OvalDefinitionsWorker
                     )
     throws PersistenceException
     {
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace( "*** sync related objects ***" );
+        }
+
         Definitions  definitions = object.getDefinitions();
         if (definitions != null) {
             for (Definition  d : definitions) {
