@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.Family;
 import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.Status;
@@ -167,9 +167,9 @@ public class FamilyItem
     //**************************************************************
 
     @Override
-    public EntityType getEntityType()
+    public PlatformEntityType getEntityType()
     {
-        return EntityType.INDEPENDENT_FAMILY;
+        return PlatformEntityType.INDEPENDENT_FAMILY;
     }
 
 

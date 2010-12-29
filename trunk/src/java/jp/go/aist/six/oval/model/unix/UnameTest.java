@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.definitions.Test;
 
@@ -78,9 +78,9 @@ public class UnameTest
     //  Test
     //**************************************************************
 
-    public EntityType getEntityType()
+    public PlatformEntityType getEntityType()
     {
-        return EntityType.UNIX_UNAME;
+        return PlatformEntityType.UNIX_UNAME;
     }
 
 

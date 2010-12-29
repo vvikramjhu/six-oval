@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.definitions.Test;
 
@@ -81,9 +81,9 @@ public class TextFileContentTest
     //  Test
     //**************************************************************
 
-    public EntityType getEntityType()
+    public PlatformEntityType getEntityType()
     {
-        return EntityType.INDEPENDENT_TEXTFILECONTENT;
+        return PlatformEntityType.INDEPENDENT_TEXTFILECONTENT;
     }
 
 

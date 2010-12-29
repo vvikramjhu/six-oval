@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
@@ -198,9 +198,9 @@ public class RpmVerifyObject
     //**************************************************************
 
     @Override
-    public EntityType getEntityType()
+    public PlatformEntityType getEntityType()
     {
-        return EntityType.LINUX_RPMVERIFY;
+        return PlatformEntityType.LINUX_RPMVERIFY;
     }
 
 

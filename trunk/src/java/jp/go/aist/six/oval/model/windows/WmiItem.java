@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimple;
 import jp.go.aist.six.oval.model.sc.EntityItemString;
 import jp.go.aist.six.oval.model.sc.Item;
@@ -135,9 +135,9 @@ public class WmiItem
     //**************************************************************
 
     @Override
-    public EntityType getEntityType()
+    public PlatformEntityType getEntityType()
     {
-        return EntityType.WINDOWS_WMI;
+        return PlatformEntityType.WINDOWS_WMI;
     }
 
 

@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.definitions.StateRef;
 import jp.go.aist.six.oval.model.definitions.SystemObjectRef;
@@ -79,9 +79,9 @@ public class UnknownTest
     //  Test
     //**************************************************************
 
-    public EntityType getEntityType()
+    public PlatformEntityType getEntityType()
     {
-        return EntityType.INDEPENDENT_UNKNOWN;
+        return PlatformEntityType.INDEPENDENT_UNKNOWN;
     }
 
 

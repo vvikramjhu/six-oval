@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateInt;
@@ -281,9 +281,9 @@ public class TextFileContent54State
     //**************************************************************
 
     @Override
-    public EntityType getEntityType()
+    public PlatformEntityType getEntityType()
     {
-        return EntityType.INDEPENDENT_TEXTFILECONTENT54;
+        return PlatformEntityType.INDEPENDENT_TEXTFILECONTENT54;
     }
 
 

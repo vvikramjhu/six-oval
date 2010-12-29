@@ -31,7 +31,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class EntityType
+public final class PlatformEntityType
     implements Serializable
 {
 
@@ -54,28 +54,28 @@ public final class EntityType
     private static final String  _VARIABLE_EXTERNAL_    = "variable.external";
 
 
-    public static final EntityType  UNKNOWN               = new EntityType( _UNKNOWN_ );
-    public static final EntityType  INDEPENDENT_FAMILY    = new EntityType( _INDEPENDENT_FAMILY_ );
-    public static final EntityType  INDEPENDENT_TEXTFILECONTENT = new EntityType( _INDEPENDENT_TEXTFILECONTENT_ );
-    public static final EntityType  INDEPENDENT_TEXTFILECONTENT54 = new EntityType( _INDEPENDENT_TEXTFILECONTENT54_ );
-    public static final EntityType  INDEPENDENT_UNKNOWN   = new EntityType( _INDEPENDENT_UNKNOWN_ );
-    public static final EntityType  LINUX_DPKGINFO        = new EntityType( _LINUX_DPKGINFO_ );
-    public static final EntityType  LINUX_RPMINFO         = new EntityType( _LINUX_RPMINFO_ );
-    public static final EntityType  LINUX_RPMVERIFY       = new EntityType( _LINUX_RPMVERIFY_ );
-    public static final EntityType  UNIX_UNAME            = new EntityType( _UNIX_UNAME_ );
-    public static final EntityType  WINDOWS_FILE          = new EntityType( _WINDOWS_FILE_ );
-    public static final EntityType  WINDOWS_METABASE      = new EntityType( _WINDOWS_METABASE_ );
-    public static final EntityType  WINDOWS_REGISTRY      = new EntityType( _WINDOWS_REGISTRY_ );
-    public static final EntityType  WINDOWS_WMI           = new EntityType( _WINDOWS_WMI_ );
-    public static final EntityType  WINDOWS_WMI57         = new EntityType( _WINDOWS_WMI57_ );
+    public static final PlatformEntityType  UNKNOWN               = new PlatformEntityType( _UNKNOWN_ );
+    public static final PlatformEntityType  INDEPENDENT_FAMILY    = new PlatformEntityType( _INDEPENDENT_FAMILY_ );
+    public static final PlatformEntityType  INDEPENDENT_TEXTFILECONTENT = new PlatformEntityType( _INDEPENDENT_TEXTFILECONTENT_ );
+    public static final PlatformEntityType  INDEPENDENT_TEXTFILECONTENT54 = new PlatformEntityType( _INDEPENDENT_TEXTFILECONTENT54_ );
+    public static final PlatformEntityType  INDEPENDENT_UNKNOWN   = new PlatformEntityType( _INDEPENDENT_UNKNOWN_ );
+    public static final PlatformEntityType  LINUX_DPKGINFO        = new PlatformEntityType( _LINUX_DPKGINFO_ );
+    public static final PlatformEntityType  LINUX_RPMINFO         = new PlatformEntityType( _LINUX_RPMINFO_ );
+    public static final PlatformEntityType  LINUX_RPMVERIFY       = new PlatformEntityType( _LINUX_RPMVERIFY_ );
+    public static final PlatformEntityType  UNIX_UNAME            = new PlatformEntityType( _UNIX_UNAME_ );
+    public static final PlatformEntityType  WINDOWS_FILE          = new PlatformEntityType( _WINDOWS_FILE_ );
+    public static final PlatformEntityType  WINDOWS_METABASE      = new PlatformEntityType( _WINDOWS_METABASE_ );
+    public static final PlatformEntityType  WINDOWS_REGISTRY      = new PlatformEntityType( _WINDOWS_REGISTRY_ );
+    public static final PlatformEntityType  WINDOWS_WMI           = new PlatformEntityType( _WINDOWS_WMI_ );
+    public static final PlatformEntityType  WINDOWS_WMI57         = new PlatformEntityType( _WINDOWS_WMI57_ );
 
-    public static final EntityType  VARIABLE_LOCAL        = new EntityType( _VARIABLE_LOCAL_ );
-    public static final EntityType  VARIABLE_EXTERNAL     = new EntityType( _VARIABLE_EXTERNAL_ );
+    public static final PlatformEntityType  VARIABLE_LOCAL        = new PlatformEntityType( _VARIABLE_LOCAL_ );
+    public static final PlatformEntityType  VARIABLE_EXTERNAL     = new PlatformEntityType( _VARIABLE_EXTERNAL_ );
 
 
-    private static HashMap<String, EntityType> _INIT_()
+    private static HashMap<String, PlatformEntityType> _INIT_()
     {
-        HashMap<String, EntityType>  map = new HashMap<String, EntityType>();
+        HashMap<String, PlatformEntityType>  map = new HashMap<String, PlatformEntityType>();
         map.put( _UNKNOWN_,             UNKNOWN             );
         map.put( _INDEPENDENT_FAMILY_,  INDEPENDENT_FAMILY  );
         map.put( _INDEPENDENT_TEXTFILECONTENT_,   INDEPENDENT_TEXTFILECONTENT    );
@@ -96,18 +96,18 @@ public final class EntityType
         return map;
     }
 
-    private static final HashMap<String, EntityType>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, PlatformEntityType>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static EntityType valueOf(
+    public static PlatformEntityType valueOf(
                     final String name
                     )
     {
-        EntityType  type = null;
+        PlatformEntityType  type = null;
         if (name != null) {
             type = _INSTANCES_.get( name );
         }
@@ -127,7 +127,7 @@ public final class EntityType
 
     /**
      */
-    private EntityType(
+    private PlatformEntityType(
                     final String name
                     )
     {

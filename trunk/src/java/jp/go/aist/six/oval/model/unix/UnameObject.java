@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 
 
@@ -76,9 +76,9 @@ public class UnameObject
     //**************************************************************
 
     @Override
-    public EntityType getEntityType()
+    public PlatformEntityType getEntityType()
     {
-        return EntityType.UNIX_UNAME;
+        return PlatformEntityType.UNIX_UNAME;
     }
 
 

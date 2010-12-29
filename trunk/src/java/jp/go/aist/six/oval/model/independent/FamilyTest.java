@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.definitions.Test;
 
@@ -76,9 +76,9 @@ public class FamilyTest
     //  Test
     //**************************************************************
 
-    public EntityType getEntityType()
+    public PlatformEntityType getEntityType()
     {
-        return EntityType.INDEPENDENT_FAMILY;
+        return PlatformEntityType.INDEPENDENT_FAMILY;
     }
 
 

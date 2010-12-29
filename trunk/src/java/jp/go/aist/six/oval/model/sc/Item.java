@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.sc;
 
 import jp.go.aist.six.oval.model.AbstractOvalObject;
-import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.Message;
 
 
@@ -97,16 +97,16 @@ public class Item
     /**
      */
     public void setEntityType(
-                    final EntityType type
+                    final PlatformEntityType type
                     )
     {
     }
 
 
 //    public abstract EntityType getEntityType();
-    public EntityType getEntityType()
+    public PlatformEntityType getEntityType()
     {
-        return EntityType.UNKNOWN;
+        return PlatformEntityType.UNKNOWN;
     }
 
 

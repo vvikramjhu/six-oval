@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.test.oval.core.store.inherit;
 
-import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.Check;
 
 
@@ -78,9 +78,9 @@ public class RegistryTest
     //**************************************************************
 
     @Override
-    public EntityType getEntityType()
+    public PlatformEntityType getEntityType()
     {
-        return EntityType.WINDOWS_REGISTRY;
+        return PlatformEntityType.WINDOWS_REGISTRY;
     }
 
 

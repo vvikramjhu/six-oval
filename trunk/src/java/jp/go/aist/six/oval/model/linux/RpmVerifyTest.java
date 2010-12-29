@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.definitions.Test;
 
@@ -77,9 +77,9 @@ public class RpmVerifyTest
     //  Test
     //**************************************************************
 
-    public EntityType getEntityType()
+    public PlatformEntityType getEntityType()
     {
-        return EntityType.LINUX_RPMVERIFY;
+        return PlatformEntityType.LINUX_RPMVERIFY;
     }
 
 

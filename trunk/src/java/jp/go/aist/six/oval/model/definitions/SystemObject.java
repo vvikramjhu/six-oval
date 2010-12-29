@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.CommentedOvalEntity;
-import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.PlatformEntityType;
 
 
 
@@ -75,16 +75,16 @@ public class SystemObject
     /**
      */
     public void setEntityType(
-                    final EntityType type
+                    final PlatformEntityType type
                     )
     {
     }
 
 
 //    public abstract EntityType getEntityType();
-    public EntityType getEntityType()
+    public PlatformEntityType getEntityType()
     {
-        return EntityType.UNKNOWN;
+        return PlatformEntityType.UNKNOWN;
     }
 
 

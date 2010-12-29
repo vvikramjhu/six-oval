@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.Datatype;
 
 
@@ -141,9 +141,9 @@ public class LocalVariable
     //**************************************************************
 
     @Override
-    public EntityType getEntityType()
+    public PlatformEntityType getEntityType()
     {
-        return EntityType.VARIABLE_LOCAL;
+        return PlatformEntityType.VARIABLE_LOCAL;
     }
 
 

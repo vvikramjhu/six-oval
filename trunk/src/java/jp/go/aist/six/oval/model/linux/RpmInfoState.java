@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateEVRString;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
@@ -114,9 +114,9 @@ public class RpmInfoState
     //**************************************************************
 
     @Override
-    public EntityType getEntityType()
+    public PlatformEntityType getEntityType()
     {
-        return EntityType.LINUX_RPMINFO;
+        return PlatformEntityType.LINUX_RPMINFO;
     }
 
 

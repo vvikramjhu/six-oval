@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.test.oval.core.store.inherit;
 
-import jp.go.aist.six.oval.model.EntityType;
+import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Existence;
 import jp.go.aist.six.oval.model.common.Operator;
@@ -299,16 +299,16 @@ public class Test
     /**
      */
     public void setEntityType(
-                    final EntityType type
+                    final PlatformEntityType type
                     )
     {
     }
 
 
 //    public abstract EntityType getEntityType();
-    public EntityType getEntityType()
+    public PlatformEntityType getEntityType()
     {
-        return EntityType.UNKNOWN;
+        return PlatformEntityType.UNKNOWN;
     }
 
 
