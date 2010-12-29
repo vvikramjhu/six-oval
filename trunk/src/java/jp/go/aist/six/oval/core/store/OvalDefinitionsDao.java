@@ -160,6 +160,7 @@ public class OvalDefinitionsDao
             defs.setTests( p_tests );
         }
 
+
         Definitions  definitions = defs.getDefinitions();
         if (definitions != null  &&  definitions.size() > 0) {
             Definitions  p_definitions = new Definitions();
@@ -206,6 +207,13 @@ public class OvalDefinitionsDao
         if (tests != null  &&  tests.size() > 0) {
             for (Test  test : tests) {
                 _update( Test.class, test );
+            }
+        }
+
+        Definitions  definitions = defs.getDefinitions();
+        if (definitions != null  &&  definitions.size() > 0) {
+            for (Definition  def : definitions) {
+                _update( Definition.class, def );
             }
         }
     }
@@ -300,17 +308,32 @@ public class OvalDefinitionsDao
             }
         }
 
+        Definitions  definitions = object.getDefinitions();
+        Definitions  p_definitions = new Definitions();
+        if (definitions != null  &&  definitions.size() > 0) {
+            for (Definition  def : definitions) {
+                Definition  p_def = _sync( Definition.class, def );
+                if (p_def == null) {
+                    p_definitions.add( def );
+                } else {
+                    p_definitions.add( p_def );
+                }
+            }
+        }
+
 
         if (p_object == null) {
             object.setObjects( p_sysobjs );
             object.setStates( p_states );
             object.setVariables( p_vars );
             object.setTests( p_tests );
+            object.setDefinitions( p_definitions );
         } else {
             p_object.setObjects( p_sysobjs );
             p_object.setStates( p_states );
             p_object.setVariables( p_vars );
             p_object.setTests( p_tests );
+            p_object.setDefinitions( p_definitions );
         }
     }
 
