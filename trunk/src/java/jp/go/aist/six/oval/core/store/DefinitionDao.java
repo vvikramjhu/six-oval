@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.definitions.Affected;
-import jp.go.aist.six.oval.model.definitions.Cve;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Metadata;
 import jp.go.aist.six.oval.model.definitions.Platform;
@@ -142,16 +141,15 @@ public class DefinitionDao
             }
         }
 
-        Collection<Cve>  cves = def.getRelatedCve();
-        if (cves != null  &&  cves.size() > 0) {
-            Collection<Cve>  p_cves = new ArrayList<Cve>();
-            for (Cve  cve : cves) {
-                Cve  p_cve = _loadOrCreate( Cve.class, cve );
-                p_cves.add( p_cve );
-//              getForwardingDao( Cve.class ).createIfNotExist( c );
-            }
-            def.setRelatedCve( p_cves );
-        }
+//        Collection<Cve>  cves = def.getRelatedCve();
+//        if (cves != null  &&  cves.size() > 0) {
+//            Collection<Cve>  p_cves = new ArrayList<Cve>();
+//            for (Cve  cve : cves) {
+//                Cve  p_cve = _loadOrCreate( Cve.class, cve );
+//                p_cves.add( p_cve );
+//            }
+//            def.setRelatedCve( p_cves );
+//        }
     }
 
 
@@ -192,12 +190,12 @@ public class DefinitionDao
             }
         }
 
-        Collection<Cve>  cves = def.getRelatedCve();
-        if (cves != null  &&  cves.size() > 0) {
-            for (Cve  cve : cves) {
-                _update( Cve.class, cve );
-            }
-        }
+//        Collection<Cve>  cves = def.getRelatedCve();
+//        if (cves != null  &&  cves.size() > 0) {
+//            for (Cve  cve : cves) {
+//                _update( Cve.class, cve );
+//            }
+//        }
     }
 
 
@@ -329,25 +327,25 @@ public class DefinitionDao
             }
         }
 
-        // relatedCve
-        Collection<Cve>  cves = object.getRelatedCve();
-        Collection<Cve>  p_cves = new ArrayList<Cve>();
-        if (cves != null  &&  cves.size() > 0) {
-            for (Cve  cve : cves) {
-                Cve  p_cve = _sync( Cve.class, cve );
-                if (p_cve == null) {
-                    p_cves.add( cve );
-                } else {
-                    p_cves.add( p_cve );
-                }
-            }
-        }
-
-        if (p_object == null) {
-            object.setRelatedCve( p_cves );
-        } else {
-            p_object.setRelatedCve( p_cves );
-        }
+//        // relatedCve
+//        Collection<Cve>  cves = object.getRelatedCve();
+//        Collection<Cve>  p_cves = new ArrayList<Cve>();
+//        if (cves != null  &&  cves.size() > 0) {
+//            for (Cve  cve : cves) {
+//                Cve  p_cve = _sync( Cve.class, cve );
+//                if (p_cve == null) {
+//                    p_cves.add( cve );
+//                } else {
+//                    p_cves.add( p_cve );
+//                }
+//            }
+//        }
+//
+//        if (p_object == null) {
+//            object.setRelatedCve( p_cves );
+//        } else {
+//            p_object.setRelatedCve( p_cves );
+//        }
     }
 
 }

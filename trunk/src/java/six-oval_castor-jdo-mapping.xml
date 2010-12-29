@@ -211,6 +211,7 @@
         </field>
 
         <!-- N:M -->
+<!--
         <field name="relatedCve"
             type="jp.go.aist.six.oval.model.definitions.Cve"
             collection="collection"
@@ -221,6 +222,7 @@
                 many-key="d_definition__PID"
                 />
         </field>
+-->
     </class>
 
     <class name="jp.go.aist.six.oval.core.store.PersistentDefinition"
@@ -318,6 +320,7 @@
         </field>
 
         <!-- N:M -->
+<!--
         <field name="relatedCve"
             type="jp.go.aist.six.oval.model.definitions.Cve"
             collection="collection"
@@ -328,6 +331,7 @@
                 many-key="d_definition__PID"
                 />
         </field>
+-->
     </class>
 
 
