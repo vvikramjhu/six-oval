@@ -20,7 +20,11 @@
 
 package jp.go.aist.six.oval.core.store;
 
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.util.castor.CastorDataStore;
+import jp.go.aist.six.util.persist.Persistable;
+import java.util.HashMap;
+import java.util.Map;
 
 
 
@@ -50,136 +54,39 @@ public class OvalStore
 
 
 
-/***
-    private <T extends AbstractOvalObject> Map<Class<T>, Worker<T>> _createWorkers()
-    {
-        Map<Class<T>, Worker<T>>  map = new HashMap<Class<T>, Worker<T>>();
+    private final Map<Class<? extends Persistable<?>>, Worker<?, ?>>  _workers =
+        _createWorkers();
 
-//        map.put( OvalDefinitions.class, new OvalDefinitionsWorker() );
+
+
+    private Map<Class<? extends Persistable<?>>, Worker<?, ?>> _createWorkers()
+    {
+        Map<Class<? extends Persistable<?>>, Worker<?, ?>>  map
+                        = new HashMap<Class<? extends Persistable<?>>, Worker<?, ?>>();
+
+        map.put( OvalDefinitions.class, new OvalDefinitionsWorker( this ) );
 
         return map;
     }
 
 
 
-    private <T extends AbstractOvalObject> Map<Class<T>, Worker<T>>  _WORKERS =
-        _createWorkers();
-
-
-
-    private <T extends AbstractOvalObject> Worker<T> _getWorker(
-                    final Class<? extends T> type
+    private <K, T extends Persistable<K>>
+    Worker<K, T> _getWorker(
+                    final Class<T> type
                     )
     {
-        Worker<T>  worker = _WORKERS.get( type );
+        Worker<?, ?>  worker = _workers.get( type );
         if (worker == null) {
-//            worker = new Worker<AbstractOvalObject>( AbstractOvalObject.class );
+            worker = new Worker<K, T>( type, this );
+            _workers.put( type, worker );
         }
 
-        return worker;
+        @SuppressWarnings( "unchecked" )
+        Worker<K, T>  w = (Worker<K, T>)worker;
+
+        return w;
     }
-
-
-    private static class Worker<T extends AbstractOvalObject>
-    {
-        private final Class<T>  _type;
-
-        public Worker(
-                        final Class<T> type
-                        )
-        {
-            _type = type;
-        }
-
-
-        public Class<T> getType()
-        {
-            return _type;
-        }
-
-
-        public String create(
-                        final DataStore store,
-                        final T object
-                        )
-        throws OvalRepositoryException
-        {
-            return store.create( getType(), object );
-        }
-
-
-        public T sync(
-                        final DataStore store,
-                        final T object
-                        )
-        throws OvalRepositoryException
-        {
-            return store.sync( getType(), object );
-        }
-
-
-        public T get(
-                        final DataStore store,
-                        final String pid,
-                        final ViewLevel view
-                        )
-        throws OvalRepositoryException
-        {
-            T  object = store.get( getType(), pid );
-            return object;
-        }
-    }
-
-
-
-    private static class OvalDefinitionsWorker
-    extends Worker<OvalDefinitions>
-    {
-        public OvalDefinitionsWorker()
-        {
-            super( OvalDefinitions.class );
-        }
-
-
-        @Override
-        public String create(
-                        final DataStore store,
-                        final OvalDefinitions object
-                        )
-        throws OvalRepositoryException
-        {
-            Definitions  definitions = object.getDefinitions();
-            if (definitions != null) {
-                for (Definition  d : definitions) {
-                    store.sync( Definition.class, d );
-                }
-//                    List<Definition>  p_def_list =
-//                        getForwardingDao( Definition.class ).syncAll( def_list );
-//                    defs.setDefinitions( new Definitions( p_def_list ) );
-            }
-
-            return store.create( getType(), object );
-        }
-
-
-        @Override
-        public OvalDefinitions get(
-                        final DataStore store,
-                        final String pid,
-                        final ViewLevel view
-                        )
-        throws OvalRepositoryException
-        {
-            OvalDefinitions  object = store.get( getType(), pid );
-            if (view == ViewLevel.SUMMARY) {
-            } else if (view == ViewLevel.ALL) {
-
-            }
-
-            return object;
-        }
-    }
-***/
 
 }
 // OvalStore

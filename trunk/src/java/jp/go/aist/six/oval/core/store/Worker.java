@@ -62,9 +62,16 @@ implements Dao<K, T>
 
 
 
-    public Class<T> getType()
+    public final Class<T> getType()
     {
         return _type;
+    }
+
+
+
+    protected final DataStore _getStore()
+    {
+        return _store;
     }
 
 

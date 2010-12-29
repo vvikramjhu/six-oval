@@ -42,7 +42,7 @@ import java.util.UUID;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalDefinitionsDao
+public class OvalDefinitionsSmallDao
     extends CastorDao<String, OvalDefinitions>
 {
 
@@ -56,7 +56,7 @@ public class OvalDefinitionsDao
     /**
      * Constructor.
      */
-    public OvalDefinitionsDao()
+    public OvalDefinitionsSmallDao()
     {
         this( OvalDefinitions.class );
     }
@@ -66,7 +66,7 @@ public class OvalDefinitionsDao
     /**
      * Constructor.
      */
-    public OvalDefinitionsDao(
+    public OvalDefinitionsSmallDao(
                     final Class<? extends OvalDefinitions> type
                     )
     {
@@ -78,7 +78,7 @@ public class OvalDefinitionsDao
     /**
      * Constructor.
      */
-    public OvalDefinitionsDao(
+    public OvalDefinitionsSmallDao(
                     final Class<? extends OvalDefinitions> type,
                     final OvalDefinitionsHelper helper
                     )
@@ -91,14 +91,25 @@ public class OvalDefinitionsDao
     /**
      */
     protected void _beforePersist(
-                    final OvalDefinitions defs
+                    final OvalDefinitions ovalDefs
                     )
     throws PersistenceException
     {
-        if (defs.getPersistentID() == null) {
+        if (ovalDefs.getPersistentID() == null) {
             String  uuid = UUID.randomUUID().toString();
-            defs.setPersistentID( uuid );
+            ovalDefs.setPersistentID( uuid );
         }
+
+
+        Definitions  definitions = ovalDefs.getDefinitions();
+        if (definitions != null  &&  definitions.size() > 0) {
+            for (Definition  def : definitions) {
+                OvalDefinitionsDefinitionAssociationEntry  assoc =
+                    new OvalDefinitionsDefinitionAssociationEntry( ovalDefs, def );
+                _sync( OvalDefinitionsDefinitionAssociationEntry.class, assoc );
+            }
+        }
+
     }
 
 
@@ -113,63 +124,63 @@ public class OvalDefinitionsDao
                     )
     throws PersistenceException
     {
-        final OvalDefinitions  defs = object;
+        final OvalDefinitions  ovalDefs = object;
 
-        _beforePersist( defs );
+        _beforePersist( ovalDefs );
 
-        SystemObjects  sysobjs = defs.getObjects();
+        SystemObjects  sysobjs = ovalDefs.getObjects();
         if (sysobjs != null  &&  sysobjs.size() > 0) {
             SystemObjects  p_sysobjs = new SystemObjects();
             for (SystemObject  sysobj : sysobjs) {
                 SystemObject  p_sysobj = _loadOrCreate( SystemObject.class, sysobj );
                 p_sysobjs.add( p_sysobj );
             }
-            defs.setObjects( p_sysobjs );
+            ovalDefs.setObjects( p_sysobjs );
         }
 
 
-        States  states = defs.getStates();
+        States  states = ovalDefs.getStates();
         if (states != null  &&  states.size() > 0) {
             States  p_states = new States();
             for (State  state : states) {
                 State  p_state = _loadOrCreate( State.class, state );
                 p_states.add( p_state );
             }
-            defs.setStates( p_states );
+            ovalDefs.setStates( p_states );
         }
 
 
-        Variables  vars = defs.getVariables();
+        Variables  vars = ovalDefs.getVariables();
         if (vars != null  &&  vars.size() > 0) {
             Variables  p_vars = new Variables();
             for (Variable  var : vars) {
                 Variable  p_var = _loadOrCreate( Variable.class, var );
                 p_vars.add( p_var );
             }
-            defs.setVariables( p_vars );
+            ovalDefs.setVariables( p_vars );
         }
 
 
-        Tests  tests = defs.getTests();
+        Tests  tests = ovalDefs.getTests();
         if (tests != null  &&  tests.size() > 0) {
             Tests  p_tests = new Tests();
             for (Test  test : tests) {
                 Test  p_test = _loadOrCreate( Test.class, test );
                 p_tests.add( p_test );
             }
-            defs.setTests( p_tests );
+            ovalDefs.setTests( p_tests );
         }
 
 
-        Definitions  definitions = defs.getDefinitions();
-        if (definitions != null  &&  definitions.size() > 0) {
-            Definitions  p_definitions = new Definitions();
-            for (Definition  def : definitions) {
-                Definition  p_def = _loadOrCreate( Definition.class, def );
-                p_definitions.add( p_def );
-            }
-            defs.setDefinitions( p_definitions );
-        }
+//        Definitions  definitions = defs.getDefinitions();
+//        if (definitions != null  &&  definitions.size() > 0) {
+//            Definitions  p_definitions = new Definitions();
+//            for (Definition  def : definitions) {
+//                Definition  p_def = _loadOrCreate( Definition.class, def );
+//                p_definitions.add( p_def );
+//            }
+//            defs.setDefinitions( p_definitions );
+//        }
     }
 
 
@@ -308,18 +319,18 @@ public class OvalDefinitionsDao
             }
         }
 
-        Definitions  definitions = object.getDefinitions();
-        Definitions  p_definitions = new Definitions();
-        if (definitions != null  &&  definitions.size() > 0) {
-            for (Definition  def : definitions) {
-                Definition  p_def = _sync( Definition.class, def );
-                if (p_def == null) {
-                    p_definitions.add( def );
-                } else {
-                    p_definitions.add( p_def );
-                }
-            }
-        }
+//        Definitions  definitions = object.getDefinitions();
+//        Definitions  p_definitions = new Definitions();
+//        if (definitions != null  &&  definitions.size() > 0) {
+//            for (Definition  def : definitions) {
+//                Definition  p_def = _sync( Definition.class, def );
+//                if (p_def == null) {
+//                    p_definitions.add( def );
+//                } else {
+//                    p_definitions.add( p_def );
+//                }
+//            }
+//        }
 
 
         if (p_object == null) {
@@ -327,13 +338,13 @@ public class OvalDefinitionsDao
             object.setStates( p_states );
             object.setVariables( p_vars );
             object.setTests( p_tests );
-            object.setDefinitions( p_definitions );
+//            object.setDefinitions( p_definitions );
         } else {
             p_object.setObjects( p_sysobjs );
             p_object.setStates( p_states );
             p_object.setVariables( p_vars );
             p_object.setTests( p_tests );
-            p_object.setDefinitions( p_definitions );
+//            p_object.setDefinitions( p_definitions );
         }
     }
 
