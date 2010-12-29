@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.util.castor.CastorDataStore;
 import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.persist.Persistable;
 import jp.go.aist.six.util.persist.PersistenceException;
@@ -43,7 +42,7 @@ import java.util.Map;
  * @version $Id$
  */
 public class OvalStore
-    extends CastorDataStore
+    implements DataStore
 {
 
 //    /**
@@ -76,7 +75,7 @@ public class OvalStore
 
 
     private final Map<Class<? extends Persistable<?>>, Worker<?, ?>>  _workers =
-        _createWorkers();
+        new HashMap<Class<? extends Persistable<?>>, Worker<?, ?>>();
 
 
 
@@ -98,10 +97,12 @@ public class OvalStore
                     )
     {
         Worker<?, ?>  worker = _workers.get( type );
-//        if (worker == null) {
-//            worker = new Worker<K, T>( type, this );
-//            _workers.put( type, worker );
-//        }
+        if (worker == null) {
+            if (OvalDefinitions.class.isAssignableFrom( type )) {
+                worker = new OvalDefinitionsWorker( _coreStore );
+                _workers.put( OvalDefinitions.class, worker );
+            }
+        }
 
         @SuppressWarnings( "unchecked" )
         Worker<K, T>  w = (Worker<K, T>)worker;

@@ -48,7 +48,7 @@
         <property name="daoTypeMapping">
             <map>
                 <entry key="jp.go.aist.six.oval.model.definitions.OvalDefinitions"
-                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsDao"/>
+                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsSmallDao"/>
                     
                 <entry key="jp.go.aist.six.oval.model.definitions.Definition"
                     value="jp.go.aist.six.oval.core.store.DefinitionDao"/>
@@ -133,10 +133,16 @@
     </bean>
 
 
-    <bean id="ovalStore" 
-        class="jp.go.aist.six.oval.core.store.OvalStore">
+    <bean id="dataStore" 
+        class="jp.go.aist.six.util.castor.CastorDataStore">
         <property name="transactionManager" ref="txManager"/>
         <property name="daoRegistry" ref="daoRegistry"/>
+    </bean>
+
+
+    <bean id="ovalStore" 
+        class="jp.go.aist.six.oval.core.store.OvalStore">
+        <property name="coreStore" ref="dataStore"/>
     </bean>
 
 
