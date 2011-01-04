@@ -23,7 +23,17 @@ package jp.go.aist.six.oval.core.store;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Definitions;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.State;
+import jp.go.aist.six.oval.model.definitions.States;
+import jp.go.aist.six.oval.model.definitions.SystemObject;
+import jp.go.aist.six.oval.model.definitions.SystemObjects;
+import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.definitions.Tests;
+import jp.go.aist.six.oval.model.definitions.Variable;
+import jp.go.aist.six.oval.model.definitions.Variables;
+import jp.go.aist.six.util.persist.AssociationEntry;
 import jp.go.aist.six.util.persist.DataStore;
+import jp.go.aist.six.util.persist.Persistable;
 import jp.go.aist.six.util.persist.PersistenceException;
 import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.RelationalBinding;
@@ -31,9 +41,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 
 
@@ -75,14 +83,42 @@ public class OvalDefinitionsWorker
             _LOG.trace( "*** sync related objects ***" );
         }
 
+        final OvalDefinitions  ovalDefs = object;
+
+        Variables  variables = ovalDefs.getVariables();
+        if (variables != null) {
+            for (Variable  variable : variables) {
+                _getStore().sync( Variable.class, variable );
+            }
+        }
+
+        SystemObjects  sysobjs = ovalDefs.getObjects();
+        if (sysobjs != null) {
+            for (SystemObject  sysobj : sysobjs) {
+                _getStore().sync( SystemObject.class, sysobj );
+            }
+        }
+
+        States  states = ovalDefs.getStates();
+        if (states != null) {
+            for (State  state : states) {
+                _getStore().sync( State.class, state );
+            }
+        }
+
+        Tests  tests = ovalDefs.getTests();
+        if (tests != null) {
+            for (Test  test : tests) {
+                _getStore().sync( Test.class, test );
+            }
+        }
+
         Definitions  definitions = object.getDefinitions();
         if (definitions != null) {
             for (Definition  d : definitions) {
                 _getStore().sync( Definition.class, d );
             }
         }
-
-        // TODO: Tests, Objects, States, Variables
     }
 
 
@@ -107,31 +143,100 @@ public class OvalDefinitionsWorker
 
     /**
      */
+    private <K, L, M, A extends AssociationEntry<K, L, M>>
+    List<M> _findAssocID(
+                    final Class<A> assocType,
+                    final L anteID
+                    )
+    throws PersistenceException
+    {
+        Binding  filter =
+            RelationalBinding.equalBinding( "antecendentPersistentID", anteID );
+        Collection<A>  list = _getStore().find( assocType, filter );
+
+        List<M>  depIDs = new ArrayList<M>();
+        if (list.size() > 0) {
+            for (A  assoc : list) {
+                if (_LOG.isTraceEnabled()) {
+                    _LOG.trace( "association: " + assoc );
+                }
+                M  depID = assoc.getDependentPersistentID();
+                depIDs.add( depID );
+            }
+        }
+
+        return depIDs;
+    }
+
+
+
+    /**
+     */
+    private <L, T extends Persistable<L>, M, S extends Persistable<M>,
+    K, A extends AssociationEntry<K, L, M>>
+    Collection<S> _loadRelatedEntity(
+                    final L entityID,
+                    final Class<S> relatedType,
+                    final Class<A> assocType
+                    )
+    throws PersistenceException
+    {
+        List<M>  depIDs = _findAssocID( assocType, entityID );
+        List<S>  deps = _getStore().loadAll( relatedType, depIDs );
+        return deps;
+    }
+
+
+
+    /**
+     */
     private void _loadRelated(
                     final OvalDefinitions object
                     )
     throws PersistenceException
     {
-        Binding  filter =
-            RelationalBinding.equalBinding( "antecendentPersistentID", object.getPersistentID() );
-        Collection<OvalDefinitionsDefinitionAssociationEntry>  list =
-            _getStore().find( OvalDefinitionsDefinitionAssociationEntry.class, filter );
+        String  pid = object.getPersistentID();
 
         Definitions  defs = new Definitions();
-        if (list.size() > 0) {
-            Set<String>  defPIDs = new HashSet<String>();
-            for (OvalDefinitionsDefinitionAssociationEntry  assoc : list) {
-                String  defPID = assoc.getDependentPersistentID();
-                defPIDs.add( defPID );
-            }
-
-            List<String>  defPID_list = new ArrayList<String>( defPIDs );
-
-            Collection<Definition>  p_defs = _getStore().loadAll( Definition.class, defPID_list );
+        Collection<Definition>  p_defs = _loadRelatedEntity(
+                        pid, Definition.class, OvalDefinitionsDefinitionAssociationEntry.class );
+        if (p_defs.size() > 0) {
             defs.addAll( p_defs );
         }
 
+        Tests  tests = new Tests();
+        Collection<Test>  p_tests = _loadRelatedEntity(
+                        pid, Test.class, OvalDefinitionsTestAssociationEntry.class );
+        if (p_tests.size() > 0) {
+            tests.addAll( p_tests );
+        }
+
         object.setDefinitions( defs );
+        object.setTests( tests );
+
+//        Binding  filter =
+//            RelationalBinding.equalBinding( "antecendentPersistentID", object.getPersistentID() );
+//        Collection<OvalDefinitionsDefinitionAssociationEntry>  list =
+//            _getStore().find( OvalDefinitionsDefinitionAssociationEntry.class, filter );
+//
+//        Definitions  defs = new Definitions();
+//        if (list.size() > 0) {
+//            Set<String>  defPIDs = new HashSet<String>();
+//            for (OvalDefinitionsDefinitionAssociationEntry  assoc : list) {
+//                if (_LOG.isTraceEnabled()) {
+//                    _LOG.trace( "association: " + assoc );
+//                }
+//                String  defPID = assoc.getDependentPersistentID();
+//                defPIDs.add( defPID );
+//            }
+//
+//            List<String>  defPID_list = new ArrayList<String>( defPIDs );
+//
+//            Collection<Definition>  p_defs = _getStore().loadAll( Definition.class, defPID_list );
+//            defs.addAll( p_defs );
+//        }
+//
+//        object.setDefinitions( defs );
     }
 
 

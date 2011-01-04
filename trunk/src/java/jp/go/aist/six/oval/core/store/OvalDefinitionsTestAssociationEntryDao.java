@@ -28,17 +28,17 @@ import jp.go.aist.six.util.castor.AssociationEntryDao;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalDefinitionsDefinitionAssociationEntryDao
-    extends AssociationEntryDao<Integer, OvalDefinitionsDefinitionAssociationEntry>
+public class OvalDefinitionsTestAssociationEntryDao
+    extends AssociationEntryDao<Integer, OvalDefinitionsTestAssociationEntry>
 {
 
     /**
      * Constructor.
      */
-    public OvalDefinitionsDefinitionAssociationEntryDao()
+    public OvalDefinitionsTestAssociationEntryDao()
     {
-        super( OvalDefinitionsDefinitionAssociationEntry.class );
+        super( OvalDefinitionsTestAssociationEntry.class );
     }
 
 }
-// OvalDefinitionsDefinitionAssociationEntryDao
+// OvalDefinitionsTestAssociationEntryDao
