@@ -29,6 +29,7 @@ import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemData;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
 import jp.go.aist.six.oval.model.sc.VariableValue;
+import jp.go.aist.six.util.BeansUtil;
 import jp.go.aist.six.util.castor.CastorDao;
 import jp.go.aist.six.util.persist.PersistenceException;
 import java.util.Collection;
@@ -44,6 +45,22 @@ public class OvalSystemCharacteristicsDao
     extends CastorDao<String, OvalSystemCharacteristics>
 {
 
+    private static final String[]  _EXCEPTED_PROPERTIES_ =
+        new String[] {
+        "persistentID",
+        "systemInfo",
+        "systemData",
+        "collectedObjects"
+        };
+
+
+    private static final String[]  _EXCEPTED_PROPERTIES_SYSTEMINFO_ =
+        new String[] {
+        "interfaces"
+        };
+
+
+
     /**
      * Constructor.
      */
@@ -54,33 +71,29 @@ public class OvalSystemCharacteristicsDao
 
 
 
-    //**************************************************************
-    //  Dao, CastorDao
-    //**************************************************************
-
-//    // workaround:
-//    @Override
-//    public OvalSystemCharacteristics get(
-//                    final Object identity
-//                    )
-//    {
-//        List<OvalSystemCharacteristics>  p_objects = find(
-//                        RelationalBinding.equalBinding( "persistentID", identity ) );
-//        return (p_objects.size() == 0 ? null : p_objects.get( 0 ) );
-//    }
-
-
-
-    @Override
-    public String create(
-                    final OvalSystemCharacteristics sc
+    /**
+     */
+    protected void _beforePersist(
+                    final OvalSystemCharacteristics ovalSC
                     )
     throws PersistenceException
     {
-        if (sc.getPersistentID() == null) {
+        if (ovalSC.getPersistentID() == null) {
             String  uuid = UUID.randomUUID().toString();
-            sc.setPersistentID( uuid );
+            ovalSC.setPersistentID( uuid );
         }
+    }
+
+
+
+    /**
+     */
+    private void _associateDependents(
+                    final OvalSystemCharacteristics object
+                    )
+    throws PersistenceException
+    {
+        final OvalSystemCharacteristics  sc = object;
 
         SystemInfo  sysinfo = sc.getSystemInfo();
         sysinfo.setMasterObject( sc );
@@ -92,42 +105,115 @@ public class OvalSystemCharacteristicsDao
 
 
         SystemData  sd = sc.getSystemData();
-        if (sd != null  &&  sd.size() > 0) {
+        if (sd != null) {
             for (Item  item : sd) {
                 item.setMasterObject( sc );
-                getForwardingDao( Item.class).create( item );
             }
         }
 
 
-        CollectedSystemObjects  objects = sc.getCollectedObjects();
-        if (objects != null  &&  objects.size() > 0) {
-            for (CollectedSystemObject  object : objects) {
-                object.setMasterObject( sc );
-//                getForwardingDao( CollectedSystemObject.class ).create( object );
+        CollectedSystemObjects  sysobjs = sc.getCollectedObjects();
+        if (sysobjs != null) {
+            for (CollectedSystemObject  sysobj : sysobjs) {
+                sysobj.setMasterObject( sc );
 
-//                OvalSystemCharacteristicsObjectAssociation  sco_assoc =
-//                    new OvalSystemCharacteristicsObjectAssociation( sc, object );
-//                getForwardingDao( OvalSystemCharacteristicsObjectAssociation.class).sync( sco_assoc );
-
-                Collection<VariableValue>  vvs = object.getVariableValue();
-                if (vvs != null  &&  vvs.size() > 0) {
+                Collection<VariableValue>  vvs = sysobj.getVariableValue();
+                if (vvs != null) {
                     for (VariableValue  vv : vvs) {
-                        vv.setMasterObject( object );
+                        vv.setMasterObject( sysobj );
                     }
                 }
 
-                Collection<ItemReference>  references = object.getReference();
-                if (references != null  &&  references.size() > 0) {
+                Collection<ItemReference>  references = sysobj.getReference();
+                if (references != null) {
                     for (ItemReference  reference : references) {
-                        reference.setMasterObject( object );
+                        reference.setMasterObject( sysobj );
                     }
                 }
             }
         }
-
-        return super.create( sc );
     }
+
+
+
+    //**************************************************************
+    //  Dao, CastorDao
+    //**************************************************************
+
+    @Override
+    protected void _createRelatedTo(
+                    final OvalSystemCharacteristics object
+                    )
+    throws PersistenceException
+    {
+        _beforePersist( object );
+        _associateDependents( object );
+    }
+
+
+
+    @Override
+    protected void _updateDeeply(
+                    final OvalSystemCharacteristics object
+                    )
+    throws PersistenceException
+    {
+        _associateDependents( object );
+    }
+
+
+
+    @Override
+    protected void _copyProperties(
+                    final OvalSystemCharacteristics p_object,
+                    final OvalSystemCharacteristics object
+                    )
+    {
+        if (p_object == null) {
+            return;
+        }
+
+        final OvalSystemCharacteristics  sc = object;
+        final OvalSystemCharacteristics  p_sc = p_object;
+        BeansUtil.copyPropertiesExcept( p_sc, sc, _EXCEPTED_PROPERTIES_ );
+
+        final SystemInfo  sysinfo = sc.getSystemInfo();
+        final SystemInfo  p_sysinfo = p_sc.getSystemInfo();
+        BeansUtil.copyPropertiesExcept( p_sysinfo, sysinfo, _EXCEPTED_PROPERTIES_SYSTEMINFO_ );
+        p_sysinfo.setInterfaces( sysinfo.getInterfaces() );
+
+        p_sc.setSystemData( sc.getSystemData() );
+
+        p_sc.setCollectedObjects( sc.getCollectedObjects() );
+
+        _associateDependents( p_sc );
+    }
+
+
+
+    @Override
+    protected void _syncDeeply(
+                    final OvalSystemCharacteristics object,
+                    final OvalSystemCharacteristics p_object
+                    )
+    throws PersistenceException
+    {
+        _associateDependents( object );
+
+        super._syncDeeply( object, p_object );
+        _beforePersist( object );
+    }
+
+//    // workaround:
+//    @Override
+//    public OvalSystemCharacteristics get(
+//                    final Object identity
+//                    )
+//    {
+//        List<OvalSystemCharacteristics>  p_objects = find(
+//                        RelationalBinding.equalBinding( "persistentID", identity ) );
+//        return (p_objects.size() == 0 ? null : p_objects.get( 0 ) );
+//    }
 
 }
 // OvalSystemCharacteristicsDao

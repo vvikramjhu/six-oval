@@ -55,6 +55,9 @@ public class TestDao
 
 
 
+    /**
+     * Constructor.
+     */
     public TestDao()
     {
         super( Test.class );
@@ -62,6 +65,8 @@ public class TestDao
 
 
 
+    /**
+     */
     private void _associateDependents(
                     final Test object
                     )
