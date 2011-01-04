@@ -79,15 +79,15 @@ public class OvalStore
 
 
 
-    private Map<Class<? extends Persistable<?>>, Worker<?, ?>> _createWorkers()
-    {
-        Map<Class<? extends Persistable<?>>, Worker<?, ?>>  map
-                        = new HashMap<Class<? extends Persistable<?>>, Worker<?, ?>>();
-
-        map.put( OvalDefinitions.class, new OvalDefinitionsWorker( this ) );
-
-        return map;
-    }
+//    private Map<Class<? extends Persistable<?>>, Worker<?, ?>> _createWorkers()
+//    {
+//        Map<Class<? extends Persistable<?>>, Worker<?, ?>>  map
+//                        = new HashMap<Class<? extends Persistable<?>>, Worker<?, ?>>();
+//
+//        map.put( OvalDefinitions.class, new OvalDefinitionsWorker( _coreStore ) );
+//
+//        return map;
+//    }
 
 
 

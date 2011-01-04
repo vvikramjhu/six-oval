@@ -225,10 +225,18 @@ public class OvalDefinitionsWorker
             states.addAll( p_states );
         }
 
+        Variables  variables = new Variables();
+        Collection<Variable>  p_variables = _loadRelatedEntity(
+                        pid, Variable.class, OvalDefinitionsVariableAssociationEntry.class );
+        if (p_variables.size() > 0) {
+            variables.addAll( p_variables );
+        }
+
         object.setDefinitions( defs );
         object.setTests( tests );
         object.setObjects( sysobjs );
         object.setStates( states );
+        object.setVariables( variables );
 
 //        Binding  filter =
 //            RelationalBinding.equalBinding( "antecendentPersistentID", object.getPersistentID() );
