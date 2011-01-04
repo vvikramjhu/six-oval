@@ -335,6 +335,7 @@
     </class>
 
 
+
     <class name="jp.go.aist.six.oval.core.store.OvalDefinitionsDefinitionAssociationEntry"
         identity="persistentID"
         key-generator="IDENTITY">
@@ -351,6 +352,66 @@
 
         <field name="dependentPersistentID" type="string">
             <sql name="d_definition__PID" type="char"/>
+        </field>
+    </class>
+
+
+    <class name="jp.go.aist.six.oval.core.store.OvalDefinitionsTestAssociationEntry"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <map-to table="oval_assoc__d_definitions__d_test"/>
+
+        <field name="persistentID" type="integer">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="d_definitions__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="d_test__PID" type="char"/>
+        </field>
+    </class>
+
+
+    <class name="jp.go.aist.six.oval.core.store.OvalDefinitionsSystemObjectAssociationEntry"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <map-to table="oval_assoc__d_definitions__d_object"/>
+
+        <field name="persistentID" type="integer">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="d_definitions__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="d_object__PID" type="char"/>
+        </field>
+    </class>
+
+
+    <class name="jp.go.aist.six.oval.core.store.OvalDefinitionsStateAssociationEntry"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <map-to table="oval_assoc__d_definitions__d_state"/>
+
+        <field name="persistentID" type="integer">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="d_definitions__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="d_state__PID" type="char"/>
         </field>
     </class>
 

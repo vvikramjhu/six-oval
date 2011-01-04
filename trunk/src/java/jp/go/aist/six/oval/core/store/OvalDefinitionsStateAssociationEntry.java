@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.util.persist.AssociationEntry;
 
 
@@ -32,14 +32,14 @@ import jp.go.aist.six.util.persist.AssociationEntry;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class OvalDefinitionsTestAssociationEntry
+public class OvalDefinitionsStateAssociationEntry
     extends AssociationEntry<Integer, String, String>
 {
 
     /**
      * Constructor.
      */
-    public OvalDefinitionsTestAssociationEntry()
+    public OvalDefinitionsStateAssociationEntry()
     {
     }
 
@@ -47,26 +47,26 @@ public class OvalDefinitionsTestAssociationEntry
     /**
      * Constructor.
      */
-    public OvalDefinitionsTestAssociationEntry(
+    public OvalDefinitionsStateAssociationEntry(
                     final OvalDefinitions ovalDefs,
-                    final Test test
+                    final State state
                     )
     {
-        super( ovalDefs, test );
+        super( ovalDefs, state );
     }
 
 
     /**
      * Constructor.
      */
-    public OvalDefinitionsTestAssociationEntry(
+    public OvalDefinitionsStateAssociationEntry(
                     final String ovalDefsPID,
-                    final String testPID
+                    final String statePID
                     )
     {
-        super( ovalDefsPID, testPID );
+        super( ovalDefsPID, statePID );
     }
 
 
 }
-// OvalDefinitionsTestAssociationEntry
+// OvalDefinitionsStateAssociationEntry

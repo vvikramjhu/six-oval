@@ -211,8 +211,24 @@ public class OvalDefinitionsWorker
             tests.addAll( p_tests );
         }
 
+        SystemObjects  sysobjs = new SystemObjects();
+        Collection<SystemObject>  p_sysobjs = _loadRelatedEntity(
+                        pid, SystemObject.class, OvalDefinitionsSystemObjectAssociationEntry.class );
+        if (p_sysobjs.size() > 0) {
+            sysobjs.addAll( p_sysobjs );
+        }
+
+        States  states = new States();
+        Collection<State>  p_states = _loadRelatedEntity(
+                        pid, State.class, OvalDefinitionsStateAssociationEntry.class );
+        if (p_states.size() > 0) {
+            states.addAll( p_states );
+        }
+
         object.setDefinitions( defs );
         object.setTests( tests );
+        object.setObjects( sysobjs );
+        object.setStates( states );
 
 //        Binding  filter =
 //            RelationalBinding.equalBinding( "antecendentPersistentID", object.getPersistentID() );
