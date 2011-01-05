@@ -48,8 +48,7 @@
         <property name="daoTypeMapping">
             <map>
                 <entry key="jp.go.aist.six.oval.model.definitions.OvalDefinitions"
-                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsSmallDao"/> 
-                    <!-- small!!! -->
+                    value="jp.go.aist.six.oval.core.store.OvalDefinitionsDao"/> 
                     
                 <entry key="jp.go.aist.six.oval.model.definitions.Definition"
                     value="jp.go.aist.six.oval.core.store.DefinitionDao"/>
