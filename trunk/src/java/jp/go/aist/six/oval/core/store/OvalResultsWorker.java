@@ -20,17 +20,8 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.definitions.Definition;
-import jp.go.aist.six.oval.model.definitions.Definitions;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.definitions.State;
-import jp.go.aist.six.oval.model.definitions.States;
-import jp.go.aist.six.oval.model.definitions.SystemObject;
-import jp.go.aist.six.oval.model.definitions.SystemObjects;
-import jp.go.aist.six.oval.model.definitions.Test;
-import jp.go.aist.six.oval.model.definitions.Tests;
-import jp.go.aist.six.oval.model.definitions.Variable;
-import jp.go.aist.six.oval.model.definitions.Variables;
+import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.util.persist.AssociationEntry;
 import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.persist.Persistable;
@@ -49,25 +40,25 @@ import java.util.List;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalDefinitionsWorker
-    extends Worker<String, OvalDefinitions>
+public class OvalResultsWorker
+    extends Worker<String, OvalResults>
 {
 
     /**
      * Logger.
      */
-    private static Log  _LOG = LogFactory.getLog( OvalDefinitionsWorker.class );
+    private static Log  _LOG = LogFactory.getLog( OvalResultsWorker.class );
 
 
 
     /**
      * Constructor.
      */
-    public OvalDefinitionsWorker(
+    public OvalResultsWorker(
                     final DataStore store
                     )
     {
-        super( OvalDefinitions.class, store );
+        super( OvalResults.class, store );
     }
 
 
@@ -75,7 +66,7 @@ public class OvalDefinitionsWorker
     /**
      */
     private void _syncRelated(
-                    final OvalDefinitions object
+                    final OvalResults ovalResults
                     )
     throws PersistenceException
     {
@@ -83,42 +74,11 @@ public class OvalDefinitionsWorker
             _LOG.trace( "*** sync related objects ***" );
         }
 
-        final OvalDefinitions  ovalDefs = object;
-
-        Variables  variables = ovalDefs.getVariables();
-        if (variables != null) {
-            for (Variable  variable : variables) {
-                _getStore().sync( Variable.class, variable );
-            }
+        OvalDefinitions  ovalDefs = ovalResults.getOvalDefinitions();
+        if (ovalDefs != null) {
+            _getStore().sync( OvalDefinitions.class, ovalDefs );
         }
 
-        SystemObjects  sysobjs = ovalDefs.getObjects();
-        if (sysobjs != null) {
-            for (SystemObject  sysobj : sysobjs) {
-                _getStore().sync( SystemObject.class, sysobj );
-            }
-        }
-
-        States  states = ovalDefs.getStates();
-        if (states != null) {
-            for (State  state : states) {
-                _getStore().sync( State.class, state );
-            }
-        }
-
-        Tests  tests = ovalDefs.getTests();
-        if (tests != null) {
-            for (Test  test : tests) {
-                _getStore().sync( Test.class, test );
-            }
-        }
-
-        Definitions  definitions = object.getDefinitions();
-        if (definitions != null) {
-            for (Definition  d : definitions) {
-                _getStore().sync( Definition.class, d );
-            }
-        }
     }
 
 
@@ -191,76 +151,58 @@ public class OvalDefinitionsWorker
     /**
      */
     private void _loadRelated(
-                    final OvalDefinitions object
+                    final OvalResults object
                     )
     throws PersistenceException
     {
         String  pid = object.getPersistentID();
 
-        Definitions  defs = new Definitions();
-        Collection<Definition>  p_defs = _loadRelatedEntity(
-                        pid, Definition.class, OvalDefinitionsDefinitionAssociationEntry.class );
-        if (p_defs.size() > 0) {
-            defs.addAll( p_defs );
-        }
-
-        Tests  tests = new Tests();
-        Collection<Test>  p_tests = _loadRelatedEntity(
-                        pid, Test.class, OvalDefinitionsTestAssociationEntry.class );
-        if (p_tests.size() > 0) {
-            tests.addAll( p_tests );
-        }
-
-        SystemObjects  sysobjs = new SystemObjects();
-        Collection<SystemObject>  p_sysobjs = _loadRelatedEntity(
-                        pid, SystemObject.class, OvalDefinitionsSystemObjectAssociationEntry.class );
-        if (p_sysobjs.size() > 0) {
-            sysobjs.addAll( p_sysobjs );
-        }
-
-        States  states = new States();
-        Collection<State>  p_states = _loadRelatedEntity(
-                        pid, State.class, OvalDefinitionsStateAssociationEntry.class );
-        if (p_states.size() > 0) {
-            states.addAll( p_states );
-        }
-
-        Variables  variables = new Variables();
-        Collection<Variable>  p_variables = _loadRelatedEntity(
-                        pid, Variable.class, OvalDefinitionsVariableAssociationEntry.class );
-        if (p_variables.size() > 0) {
-            variables.addAll( p_variables );
-        }
-
-        object.setDefinitions( defs );
-        object.setTests( tests );
-        object.setObjects( sysobjs );
-        object.setStates( states );
-        object.setVariables( variables );
-
-//        Binding  filter =
-//            RelationalBinding.equalBinding( "antecendentPersistentID", object.getPersistentID() );
-//        Collection<OvalDefinitionsDefinitionAssociationEntry>  list =
-//            _getStore().find( OvalDefinitionsDefinitionAssociationEntry.class, filter );
+//        OvalDefinitions  ovalDefs = ovalResults.getOvalDefinitions();
+//        if (ovalDefs != null) {
+//            _getStore().sync( OvalDefinitions.class, ovalDefs );
+//        }
 //
 //        Definitions  defs = new Definitions();
-//        if (list.size() > 0) {
-//            Set<String>  defPIDs = new HashSet<String>();
-//            for (OvalDefinitionsDefinitionAssociationEntry  assoc : list) {
-//                if (_LOG.isTraceEnabled()) {
-//                    _LOG.trace( "association: " + assoc );
-//                }
-//                String  defPID = assoc.getDependentPersistentID();
-//                defPIDs.add( defPID );
-//            }
-//
-//            List<String>  defPID_list = new ArrayList<String>( defPIDs );
-//
-//            Collection<Definition>  p_defs = _getStore().loadAll( Definition.class, defPID_list );
+//        Collection<Definition>  p_defs = _loadRelatedEntity(
+//                        pid, Definition.class, OvalDefinitionsDefinitionAssociationEntry.class );
+//        if (p_defs.size() > 0) {
 //            defs.addAll( p_defs );
 //        }
 //
+//        Tests  tests = new Tests();
+//        Collection<Test>  p_tests = _loadRelatedEntity(
+//                        pid, Test.class, OvalDefinitionsTestAssociationEntry.class );
+//        if (p_tests.size() > 0) {
+//            tests.addAll( p_tests );
+//        }
+//
+//        SystemObjects  sysobjs = new SystemObjects();
+//        Collection<SystemObject>  p_sysobjs = _loadRelatedEntity(
+//                        pid, SystemObject.class, OvalDefinitionsSystemObjectAssociationEntry.class );
+//        if (p_sysobjs.size() > 0) {
+//            sysobjs.addAll( p_sysobjs );
+//        }
+//
+//        States  states = new States();
+//        Collection<State>  p_states = _loadRelatedEntity(
+//                        pid, State.class, OvalDefinitionsStateAssociationEntry.class );
+//        if (p_states.size() > 0) {
+//            states.addAll( p_states );
+//        }
+//
+//        Variables  variables = new Variables();
+//        Collection<Variable>  p_variables = _loadRelatedEntity(
+//                        pid, Variable.class, OvalDefinitionsVariableAssociationEntry.class );
+//        if (p_variables.size() > 0) {
+//            variables.addAll( p_variables );
+//        }
+//
 //        object.setDefinitions( defs );
+//        object.setTests( tests );
+//        object.setObjects( sysobjs );
+//        object.setStates( states );
+//        object.setVariables( variables );
+
     }
 
 
@@ -271,7 +213,7 @@ public class OvalDefinitionsWorker
 
     @Override
     public String create(
-                    final OvalDefinitions object
+                    final OvalResults object
                     )
     throws PersistenceException
     {
@@ -283,8 +225,8 @@ public class OvalDefinitionsWorker
 
 
     @Override
-    public OvalDefinitions sync(
-                    final OvalDefinitions object
+    public OvalResults sync(
+                    final OvalResults object
                     )
     throws PersistenceException
     {
@@ -297,17 +239,17 @@ public class OvalDefinitionsWorker
 
 
     @Override
-    public OvalDefinitions load(
+    public OvalResults load(
                     final String identity
                     )
     throws PersistenceException
     {
-        OvalDefinitions  defs = _getStore().load( getType(), identity );
-        _loadRelated( defs );
+        OvalResults  ovalResults = _getStore().load( getType(), identity );
+        _loadRelated( ovalResults );
 
-        return defs;
+        return ovalResults;
     }
 
 }
-// OvalDefinitionsWorker
+// OvalResultsWorker
 

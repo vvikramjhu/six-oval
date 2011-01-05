@@ -291,30 +291,30 @@ public class TestResult
 
 
 
-    private String _masterPersistentID;
-
-
-
-    public void setMasterPersistentID(
-                    final String id
-                    )
-    {
-        _masterPersistentID = id;
-    }
-
-
-
-    public String getMasterPersistentID()
-    {
-        if (_masterPersistentID == null) {
-            SystemResult  master = getMasterObject();
-            if (master != null) {
-                setMasterPersistentID( master.getPersistentID() );
-            }
-        }
-
-        return _masterPersistentID;
-    }
+//    private String _masterPersistentID;
+//
+//
+//
+//    public void setMasterPersistentID(
+//                    final String id
+//                    )
+//    {
+//        _masterPersistentID = id;
+//    }
+//
+//
+//
+//    public String getMasterPersistentID()
+//    {
+//        if (_masterPersistentID == null) {
+//            SystemResult  master = getMasterObject();
+//            if (master != null) {
+//                setMasterPersistentID( master.getPersistentID() );
+//            }
+//        }
+//
+//        return _masterPersistentID;
+//    }
 
 
 

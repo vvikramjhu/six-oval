@@ -20,19 +20,15 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.DefinitionResults;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.SystemResult;
+import jp.go.aist.six.oval.model.results.SystemResults;
 import jp.go.aist.six.oval.model.results.TestResult;
 import jp.go.aist.six.oval.model.results.TestResults;
-import jp.go.aist.six.oval.model.results.TestedItem;
-import jp.go.aist.six.oval.model.results.TestedVariable;
-import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.util.castor.CastorDao;
 import jp.go.aist.six.util.persist.PersistenceException;
-import java.util.Collection;
 import java.util.UUID;
 
 
@@ -44,6 +40,14 @@ import java.util.UUID;
 public class OvalResultsDao
     extends CastorDao<String, OvalResults>
 {
+
+    private static final String[]  _EXCEPTED_PROPERTIES_ =
+        new String[] {
+        "persistentID",
+        "ovalDefinitions"
+        };
+
+
 
     /**
      * Constructor.
@@ -57,42 +61,87 @@ public class OvalResultsDao
 
     /**
      */
-    private void _createSystem(
-                    final SystemResult system
+    protected void _beforePersist(
+                    final OvalResults ovalResults
                     )
+    throws PersistenceException
     {
-        OvalSystemCharacteristics    sc = system.getOvalSystemCharacteristics();
-        OvalSystemCharacteristics  p_sc = getForwardingDao( OvalSystemCharacteristics.class ).sync( sc );
-        system.setOvalSystemCharacteristics( p_sc );
-
-        DefinitionResults  dr_list = system.getDefinitions();
-        if (dr_list != null  &&  dr_list.size() > 0) {
-            for (DefinitionResult  dr : dr_list) {
-                dr.setMasterObject( system );
-            }
+        if (ovalResults.getPersistentID() == null) {
+            String  uuid = UUID.randomUUID().toString();
+            ovalResults.setPersistentID( uuid );
         }
 
-        TestResults  tests = system.getTests();
-        if (tests != null  &&  tests.size() > 0) {
-            for (TestResult  test : tests) {
-                test.setMasterObject( system );
+    }
 
-                Collection<TestedItem>  items = test.getTestedItem();
-                if (items != null   &&  items.size() > 0) {
-                    for (TestedItem  item : items) {
-                        item.setMasterObject( test );
-                    }
+
+
+    /**
+     */
+    private void _associateDependents(
+                    final OvalResults object
+                    )
+    throws PersistenceException
+    {
+        final OvalResults  ovalResults = object;
+
+        SystemResults  sysResults = ovalResults.getResults();
+        if (sysResults != null) {
+            for (SystemResult  sysResult : sysResults) {
+                sysResult.setMasterObject( ovalResults );
+
+                DefinitionResults  defResults = sysResult.getDefinitions();
+                for (DefinitionResult  defResult : defResults) {
+                    defResult.setMasterObject( sysResult );
                 }
 
-                Collection<TestedVariable>  variables = test.getTestedVariable();
-                if (variables != null   &&  variables.size() > 0) {
-                    for (TestedVariable  variable : variables) {
-                        variable.setMasterObject( test );
-                    }
+                TestResults  testResults = sysResult.getTests();
+                for (TestResult  testResult : testResults) {
+                    testResult.setMasterObject( sysResult );
                 }
             }
         }
     }
+
+
+
+//    /**
+//     */
+//    private void _createSystem(
+//                    final SystemResult system
+//                    )
+//    {
+//        OvalSystemCharacteristics    sc = system.getOvalSystemCharacteristics();
+//        OvalSystemCharacteristics  p_sc = getForwardingDao( OvalSystemCharacteristics.class ).sync( sc );
+//        system.setOvalSystemCharacteristics( p_sc );
+//
+//        DefinitionResults  dr_list = system.getDefinitions();
+//        if (dr_list != null  &&  dr_list.size() > 0) {
+//            for (DefinitionResult  dr : dr_list) {
+//                dr.setMasterObject( system );
+//            }
+//        }
+//
+//        TestResults  tests = system.getTests();
+//        if (tests != null  &&  tests.size() > 0) {
+//            for (TestResult  test : tests) {
+//                test.setMasterObject( system );
+//
+//                Collection<TestedItem>  items = test.getTestedItem();
+//                if (items != null   &&  items.size() > 0) {
+//                    for (TestedItem  item : items) {
+//                        item.setMasterObject( test );
+//                    }
+//                }
+//
+//                Collection<TestedVariable>  variables = test.getTestedVariable();
+//                if (variables != null   &&  variables.size() > 0) {
+//                    for (TestedVariable  variable : variables) {
+//                        variable.setMasterObject( test );
+//                    }
+//                }
+//            }
+//        }
+//    }
 
 
 
@@ -101,30 +150,53 @@ public class OvalResultsDao
     //**************************************************************
 
     @Override
-    public String create(
-                    final OvalResults results
+    protected void _createRelatedTo(
+                    final OvalResults object
                     )
     throws PersistenceException
     {
-        if (results.getPersistentID() == null) {
-            String  uuid = UUID.randomUUID().toString();
-            results.setPersistentID( uuid );
-        }
-
-        for (SystemResult  system : results.getResults()) {
-            system.setMasterObject( results );
-
-            _createSystem( system );
-        }
-
-        OvalDefinitions  defs = results.getOvalDefinitions();
-        if (defs != null) {
-            OvalDefinitions  p_defs = getForwardingDao( OvalDefinitions.class ).sync( defs );
-            results.setOvalDefinitions( p_defs );
-        }
-
-        return super.create( results );
+        _beforePersist( object );
+        _associateDependents( object );
     }
+
+
+
+    @Override
+    protected void _updateDeeply(
+                    final OvalResults object
+                    )
+    throws PersistenceException
+    {
+        _associateDependents( object );
+    }
+
+
+
+//    @Override
+//    public String create(
+//                    final OvalResults results
+//                    )
+//    throws PersistenceException
+//    {
+//        if (results.getPersistentID() == null) {
+//            String  uuid = UUID.randomUUID().toString();
+//            results.setPersistentID( uuid );
+//        }
+//
+//        for (SystemResult  system : results.getResults()) {
+//            system.setMasterObject( results );
+//
+//            _createSystem( system );
+//        }
+//
+//        OvalDefinitions  defs = results.getOvalDefinitions();
+//        if (defs != null) {
+//            OvalDefinitions  p_defs = getForwardingDao( OvalDefinitions.class ).sync( defs );
+//            results.setOvalDefinitions( p_defs );
+//        }
+//
+//        return super.create( results );
+//    }
 
 }
 // OvalResultsDao
