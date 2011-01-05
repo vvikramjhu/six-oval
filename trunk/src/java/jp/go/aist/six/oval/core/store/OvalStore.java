@@ -29,6 +29,7 @@ import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.Limit;
 import jp.go.aist.six.util.search.Order;
 import jp.go.aist.six.util.search.SearchCriteria;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -94,10 +95,12 @@ public class OvalStore
         Worker<?, ?>  worker = _workers.get( type );
         if (worker == null) {
             if (OvalDefinitions.class.isAssignableFrom( type )) {
-                worker = new OvalDefinitionsWorker( _dataStore );
+                worker = new OvalDefinitionsWorker( this );
+//                worker = new OvalDefinitionsWorker( _dataStore );
                 _workers.put( OvalDefinitions.class, worker );
             } else if (OvalResults.class.isAssignableFrom( type )) {
-                worker = new OvalResultsWorker( _dataStore );
+                worker = new OvalResultsWorker( this );
+//                worker = new OvalResultsWorker( _dataStore );
                 _workers.put( OvalResults.class, worker );
             }
         }
@@ -106,6 +109,54 @@ public class OvalStore
         Worker<K, T>  w = (Worker<K, T>)worker;
 
         return w;
+    }
+
+
+
+    /**
+     */
+    protected <K, T extends Persistable<K>>
+    void _syncAssociated(
+                    final Class<T> type,
+                    final T object
+                    )
+    throws PersistenceException
+    {
+        Worker<K, T>  worker = _getWorker( type );
+        if (worker != null) {
+            worker.syncAssociated( object );
+        }
+    }
+
+
+    protected <K, T extends Persistable<K>>
+    void _updateAssociated(
+                    final Class<T> type,
+                    final T object
+                    )
+    throws PersistenceException
+    {
+        //TODO:
+//        Worker<K, T>  worker = _getWorker( type );
+//        if (worker != null) {
+//        }
+    }
+
+
+
+    /**
+     */
+    protected <K, T extends Persistable<K>>
+    void _loadAssociated(
+                    final Class<T> type,
+                    final T p_object
+                    )
+    throws PersistenceException
+    {
+        Worker<K, T>  worker = _getWorker( type );
+        if (worker != null) {
+            worker.loadAssociated( p_object );
+        }
     }
 
 
@@ -121,12 +172,8 @@ public class OvalStore
                     )
     throws PersistenceException
     {
-        K  p_id = null;
-        Worker<K, T>  worker = _getWorker( type );
-        if (worker != null) {
-            worker.create( object );
-        }
-        p_id = _dataStore.create( type, object );
+        _syncAssociated( type, object );
+        K  p_id = _dataStore.create( type, object );
 
         return p_id;
     }
@@ -140,10 +187,7 @@ public class OvalStore
                     )
     throws PersistenceException
     {
-        Worker<K, T>  worker = _getWorker( type );
-        if (worker != null) {
-            worker.update( object );
-        }
+        _updateAssociated( type, object );
         _dataStore.update( type, object );
     }
 
@@ -156,10 +200,6 @@ public class OvalStore
                     )
     throws PersistenceException
     {
-        Worker<K, T>  worker = _getWorker( type );
-        if (worker != null) {
-            worker.remove( object );
-        }
         _dataStore.remove( type, object );
     }
 
@@ -172,12 +212,8 @@ public class OvalStore
                     )
     throws PersistenceException
     {
-        T  p_object = null;
-        Worker<K, T>  worker = _getWorker( type );
-        if (worker != null) {
-            worker.sync( object );
-        }
-        p_object = _dataStore.sync( type, object );
+        _syncAssociated( type, object );
+        T  p_object = _dataStore.sync( type, object );
 
         return p_object;
     }
@@ -191,12 +227,13 @@ public class OvalStore
                     )
     throws PersistenceException
     {
-        List<T>  p_objects = null;
-        Worker<K, T>  worker = _getWorker( type );
-        if (worker != null) {
-            p_objects = worker.syncAll( objects );
+        List<T>  p_objects = new ArrayList<T>();
+        if (objects != null) {
+            for (T  object : objects) {
+                T  p_object = sync( type, object );
+                p_objects.add( p_object );
+            }
         }
-        p_objects = _dataStore.syncAll( type, objects );
 
         return p_objects;
     }
@@ -248,13 +285,8 @@ public class OvalStore
                     )
     throws PersistenceException
     {
-        T  p_object = null;
-        Worker<K, T>  worker = _getWorker( type );
-        if (worker == null) {
-            p_object = _dataStore.load( type, identity );
-        } else {
-            p_object = worker.load( identity );
-        }
+        T  p_object = _dataStore.load( type, identity );
+        _loadAssociated( type, p_object );
 
         return p_object;
     }
@@ -268,12 +300,12 @@ public class OvalStore
                     )
     throws PersistenceException
     {
-        List<T>  p_objects = null;
-        Worker<K, T>  worker = _getWorker( type );
-        if (worker == null) {
-            p_objects = _dataStore.loadAll( type, identities );
-        } else {
-            p_objects = worker.loadAll( identities );
+        List<T>  p_objects = new ArrayList<T>();
+        if (identities != null) {
+            for (K  identity : identities) {
+                T  p_object = load( type, identity );
+                p_objects.add( p_object );
+            }
         }
 
         return p_objects;
@@ -287,15 +319,7 @@ public class OvalStore
                     )
     throws PersistenceException
     {
-        Collection<T>  p_objects = null;
-        Worker<K, T>  worker = _getWorker( type );
-        if (worker == null) {
-            p_objects = _dataStore.find( type );
-        } else {
-            p_objects = worker.find();
-        }
-
-        return p_objects;
+        return find( type, null, null, null );
     }
 
 
@@ -307,15 +331,7 @@ public class OvalStore
                     )
     throws PersistenceException
     {
-        Collection<T>  p_objects = null;
-        Worker<K, T>  worker = _getWorker( type );
-        if (worker == null) {
-            p_objects = _dataStore.find( type, filter );
-        } else {
-            p_objects = worker.find( filter );
-        }
-
-        return p_objects;
+        return find( type, filter, null, null );
     }
 
 
@@ -329,13 +345,8 @@ public class OvalStore
                     )
     throws PersistenceException
     {
-        Collection<T>  p_objects = null;
-        Worker<K, T>  worker = _getWorker( type );
-        if (worker == null) {
-            p_objects = _dataStore.find( type, filter, ordering, limit );
-        } else {
-            p_objects = worker.find( filter, ordering, limit );
-        }
+        Collection<K>  pids = findIdentity( type, filter, ordering, limit );
+        Collection<T>  p_objects = loadAll( type, new ArrayList<K>( pids ) );
 
         return p_objects;
     }
@@ -348,15 +359,7 @@ public class OvalStore
                     )
     throws PersistenceException
     {
-        Collection<K>  p_ids = null;
-        Worker<K, T>  worker = _getWorker( type );
-        if (worker == null) {
-            p_ids = _dataStore.findIdentity( type );
-        } else {
-            p_ids = worker.findIdentity();
-        }
-
-        return p_ids;
+        return findIdentity( type, null, null, null );
     }
 
 
@@ -382,15 +385,7 @@ public class OvalStore
                     )
     throws PersistenceException
     {
-        Collection<K>  p_ids = null;
-        Worker<K, T>  worker = _getWorker( type );
-        if (worker == null) {
-            p_ids = _dataStore.findIdentity( type, filter, ordering, limit );
-        } else {
-            p_ids = worker.findIdentity( filter, ordering, limit );
-        }
-
-        return p_ids;
+        return _dataStore.findIdentity( type, filter, ordering, limit );
     }
 
 
@@ -402,15 +397,18 @@ public class OvalStore
                     )
     throws PersistenceException
     {
-        List<T>  p_objects = null;
-        Worker<K, T>  worker = _getWorker( type );
-        if (worker == null) {
-            p_objects = _dataStore.search( type, criteria );
+        Collection<T>  p_objects = null;
+        if (criteria == null) {
+            p_objects = find( type );
         } else {
-            p_objects = worker.search( criteria );
+            p_objects = find( type,
+                            criteria.getBinding(),
+                            criteria.getOrders(),
+                            criteria.getLimit()
+                            );
         }
 
-        return p_objects;
+        return (new ArrayList<T>( p_objects ));
     }
 
 }
