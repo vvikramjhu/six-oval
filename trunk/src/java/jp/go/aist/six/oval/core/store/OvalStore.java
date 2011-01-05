@@ -123,11 +123,10 @@ public class OvalStore
     {
         K  p_id = null;
         Worker<K, T>  worker = _getWorker( type );
-        if (worker == null) {
-            p_id = _dataStore.create( type, object );
-        } else {
-            p_id = worker.create( object );
+        if (worker != null) {
+            worker.create( object );
         }
+        p_id = _dataStore.create( type, object );
 
         return p_id;
     }
@@ -142,11 +141,10 @@ public class OvalStore
     throws PersistenceException
     {
         Worker<K, T>  worker = _getWorker( type );
-        if (worker == null) {
-            _dataStore.update( type, object );
-        } else {
+        if (worker != null) {
             worker.update( object );
         }
+        _dataStore.update( type, object );
     }
 
 
@@ -159,11 +157,10 @@ public class OvalStore
     throws PersistenceException
     {
         Worker<K, T>  worker = _getWorker( type );
-        if (worker == null) {
-            _dataStore.remove( type, object );
-        } else {
+        if (worker != null) {
             worker.remove( object );
         }
+        _dataStore.remove( type, object );
     }
 
 
@@ -177,11 +174,10 @@ public class OvalStore
     {
         T  p_object = null;
         Worker<K, T>  worker = _getWorker( type );
-        if (worker == null) {
-            p_object = _dataStore.sync( type, object );
-        } else {
-            p_object = worker.sync( object );
+        if (worker != null) {
+            worker.sync( object );
         }
+        p_object = _dataStore.sync( type, object );
 
         return p_object;
     }
@@ -197,11 +193,10 @@ public class OvalStore
     {
         List<T>  p_objects = null;
         Worker<K, T>  worker = _getWorker( type );
-        if (worker == null) {
-            p_objects = _dataStore.syncAll( type, objects );
-        } else {
+        if (worker != null) {
             p_objects = worker.syncAll( objects );
         }
+        p_objects = _dataStore.syncAll( type, objects );
 
         return p_objects;
     }
@@ -214,16 +209,21 @@ public class OvalStore
                     )
     throws PersistenceException
     {
-        int  count = 0;
-        Worker<K, T>  worker = _getWorker( type );
-        if (worker == null) {
-            count = _dataStore.count( type );
-        } else {
-            count = worker.count();
-        }
+        int  count = _dataStore.count( type );
 
         return count;
     }
+//    {
+//        int  count = 0;
+//        Worker<K, T>  worker = _getWorker( type );
+//        if (worker == null) {
+//            count = _dataStore.count( type );
+//        } else {
+//            count = worker.count();
+//        }
+//
+//        return count;
+//    }
 
 
 
@@ -234,13 +234,7 @@ public class OvalStore
                     )
     throws PersistenceException
     {
-        int  count = 0;
-        Worker<K, T>  worker = _getWorker( type );
-        if (worker == null) {
-            count = _dataStore.count( type, filter );
-        } else {
-            count = worker.count( filter );
-        }
+        int  count = _dataStore.count( type, filter );
 
         return count;
     }

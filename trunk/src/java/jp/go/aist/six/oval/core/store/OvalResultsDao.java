@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.core.store;
 
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.DefinitionResult;
 import jp.go.aist.six.oval.model.results.DefinitionResults;
 import jp.go.aist.six.oval.model.results.OvalResults;
@@ -27,6 +28,7 @@ import jp.go.aist.six.oval.model.results.SystemResult;
 import jp.go.aist.six.oval.model.results.SystemResults;
 import jp.go.aist.six.oval.model.results.TestResult;
 import jp.go.aist.six.oval.model.results.TestResults;
+import jp.go.aist.six.util.BeansUtil;
 import jp.go.aist.six.util.castor.CastorDao;
 import jp.go.aist.six.util.persist.PersistenceException;
 import java.util.UUID;
@@ -40,14 +42,6 @@ import java.util.UUID;
 public class OvalResultsDao
     extends CastorDao<String, OvalResults>
 {
-
-    private static final String[]  _EXCEPTED_PROPERTIES_ =
-        new String[] {
-        "persistentID",
-        "ovalDefinitions"
-        };
-
-
 
     /**
      * Constructor.
@@ -66,11 +60,20 @@ public class OvalResultsDao
                     )
     throws PersistenceException
     {
-        if (ovalResults.getPersistentID() == null) {
-            String  uuid = UUID.randomUUID().toString();
-            ovalResults.setPersistentID( uuid );
+        String  ovalResultsPID = ovalResults.getPersistentID();
+        if (ovalResultsPID == null) {
+            ovalResultsPID = UUID.randomUUID().toString();
+            ovalResults.setPersistentID( ovalResultsPID );
         }
 
+
+        OvalDefinitions  ovalDefs = ovalResults.getOvalDefinitions();
+        if (ovalDefs != null) {
+            OvalResultsOvalDefinitionsAssociationEntry  assoc =
+                    new OvalResultsOvalDefinitionsAssociationEntry(
+                                    ovalResultsPID, ovalDefs.getPersistentID() );
+            _sync( OvalResultsOvalDefinitionsAssociationEntry.class, assoc );
+        }
     }
 
 
@@ -78,12 +81,10 @@ public class OvalResultsDao
     /**
      */
     private void _associateDependents(
-                    final OvalResults object
+                    final OvalResults ovalResults
                     )
     throws PersistenceException
     {
-        final OvalResults  ovalResults = object;
-
         SystemResults  sysResults = ovalResults.getResults();
         if (sysResults != null) {
             for (SystemResult  sysResult : sysResults) {
@@ -101,47 +102,6 @@ public class OvalResultsDao
             }
         }
     }
-
-
-
-//    /**
-//     */
-//    private void _createSystem(
-//                    final SystemResult system
-//                    )
-//    {
-//        OvalSystemCharacteristics    sc = system.getOvalSystemCharacteristics();
-//        OvalSystemCharacteristics  p_sc = getForwardingDao( OvalSystemCharacteristics.class ).sync( sc );
-//        system.setOvalSystemCharacteristics( p_sc );
-//
-//        DefinitionResults  dr_list = system.getDefinitions();
-//        if (dr_list != null  &&  dr_list.size() > 0) {
-//            for (DefinitionResult  dr : dr_list) {
-//                dr.setMasterObject( system );
-//            }
-//        }
-//
-//        TestResults  tests = system.getTests();
-//        if (tests != null  &&  tests.size() > 0) {
-//            for (TestResult  test : tests) {
-//                test.setMasterObject( system );
-//
-//                Collection<TestedItem>  items = test.getTestedItem();
-//                if (items != null   &&  items.size() > 0) {
-//                    for (TestedItem  item : items) {
-//                        item.setMasterObject( test );
-//                    }
-//                }
-//
-//                Collection<TestedVariable>  variables = test.getTestedVariable();
-//                if (variables != null   &&  variables.size() > 0) {
-//                    for (TestedVariable  variable : variables) {
-//                        variable.setMasterObject( test );
-//                    }
-//                }
-//            }
-//        }
-//    }
 
 
 
@@ -167,6 +127,43 @@ public class OvalResultsDao
                     )
     throws PersistenceException
     {
+        _associateDependents( object );
+    }
+
+
+
+    private static final String[]  _EXCEPTED_PROPERTIES_ =
+        new String[] {
+        "persistentID",
+        "ovalDefinitions"
+        };
+
+
+    @Override
+    protected void _copyProperties(
+                    final OvalResults p_object,
+                    final OvalResults object
+                    )
+    {
+        if (p_object == null) {
+            return;
+        }
+
+        BeansUtil.copyPropertiesExcept(
+                        p_object, object, _EXCEPTED_PROPERTIES_ );
+    }
+
+
+
+    @Override
+    protected void _syncDeeply(
+                    final OvalResults object,
+                    final OvalResults p_object
+                    )
+    throws PersistenceException
+    {
+        super._syncDeeply( object, p_object );
+        _beforePersist( object );
         _associateDependents( object );
     }
 

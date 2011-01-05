@@ -1343,12 +1343,33 @@
             <sql many-key="r_results__PID"/>
         </field>
 
+<!-- use association table!!!
         <field name="ovalDefinitions" 
             type="jp.go.aist.six.oval.model.definitions.OvalDefinitions">
             <sql name="d_definitions__PID"/>
         </field>
-<!--
 -->
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.core.store.OvalResultsOvalDefinitionsAssociationEntry"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <map-to table="oval_assoc__r_results__d_definitions"/>
+
+        <field name="persistentID" type="integer">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="r_results__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="d_definitions__PID" type="char"/>
+        </field>
     </class>
 
 

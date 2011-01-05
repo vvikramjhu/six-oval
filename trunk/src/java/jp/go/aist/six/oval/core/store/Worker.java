@@ -148,7 +148,8 @@ public class Worker<K, T extends Persistable<K>>
                     )
     throws PersistenceException
     {
-        return _store.create( _objectType, object );
+        return object.getPersistentID();
+//        return _store.create( _objectType, object );
     }
 
 
@@ -158,7 +159,7 @@ public class Worker<K, T extends Persistable<K>>
                     )
     throws PersistenceException
     {
-        _store.update( _objectType, object );
+//        _store.update( _objectType, object );
     }
 
 
@@ -168,7 +169,7 @@ public class Worker<K, T extends Persistable<K>>
                     )
     throws PersistenceException
     {
-        _store.remove( _objectType, object );
+//        _store.remove( _objectType, object );
     }
 
 
@@ -178,7 +179,8 @@ public class Worker<K, T extends Persistable<K>>
                     )
     throws PersistenceException
     {
-        return _store.sync( _objectType, object );
+        return object;
+//        return _store.sync( _objectType, object );
     }
 
 
@@ -214,7 +216,8 @@ public class Worker<K, T extends Persistable<K>>
                     )
     throws PersistenceException
     {
-        return _store.count( _objectType, filter );
+        return 0;
+//        return _store.count( _objectType, filter );
     }
 
 
@@ -224,7 +227,8 @@ public class Worker<K, T extends Persistable<K>>
                     )
     throws PersistenceException
     {
-        return _store.load( _objectType, identity );
+        return null;
+//        return _store.load( _objectType, identity );
     }
 
 
@@ -270,7 +274,8 @@ public class Worker<K, T extends Persistable<K>>
                     )
     throws PersistenceException
     {
-        return _store.find( _objectType, filter, ordering, limit );
+        return null;
+//        return _store.find( _objectType, filter, ordering, limit );
     }
 
 
@@ -299,7 +304,8 @@ public class Worker<K, T extends Persistable<K>>
                     )
     throws PersistenceException
     {
-        return _store.findIdentity( _objectType, filter, ordering, limit );
+        return null;
+//        return _store.findIdentity( _objectType, filter, ordering, limit );
     }
 
 
@@ -309,7 +315,8 @@ public class Worker<K, T extends Persistable<K>>
                     )
     throws PersistenceException
     {
-        return _store.search( _objectType, criteria );
+        return null;
+//        return _store.search( _objectType, criteria );
     }
 
 }

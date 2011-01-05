@@ -1001,13 +1001,13 @@ CREATE TABLE IF NOT EXISTS oval_r_results
     definition_not_applicable_content   VARCHAR(4),
 
     /* (FK) */
-    d_definitions__PID  CHAR(36),
+/*    d_definitions__PID  CHAR(36), */
 
     /* (PK) */
-    PRIMARY KEY (PID),
+    PRIMARY KEY (PID)
     
     /* INDEX */
-    INDEX (d_definitions__PID)
+/*    INDEX (d_definitions__PID) */
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;
@@ -1015,7 +1015,6 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
-/* deprecated:                                                    */
 /* OvalResults - OvalDefinitions association                      */
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_assoc__r_results__d_definitions

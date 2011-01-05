@@ -96,6 +96,10 @@
                 <entry key="jp.go.aist.six.oval.model.results.OvalResults"
                     value="jp.go.aist.six.oval.core.store.OvalResultsDao"/>
 
+                <entry key="jp.go.aist.six.oval.core.store.OvalResultsOvalDefinitionsAssociationEntry"
+                    value="jp.go.aist.six.oval.core.store.OvalResultsOvalDefinitionsAssociationEntryDao"/>
+
+
             <!-- // deprecated // -->
 
 <!-- using pure CastoDao

@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.util.persist.AssociationEntry;
 
 
@@ -32,14 +32,14 @@ import jp.go.aist.six.util.persist.AssociationEntry;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class OvalDefinitionsDefinitionAssociationEntry
+public class OvalResultsOvalDefinitionsAssociationEntry
     extends AssociationEntry<Integer, String, String>
 {
 
     /**
      * Constructor.
      */
-    public OvalDefinitionsDefinitionAssociationEntry()
+    public OvalResultsOvalDefinitionsAssociationEntry()
     {
     }
 
@@ -47,26 +47,26 @@ public class OvalDefinitionsDefinitionAssociationEntry
     /**
      * Constructor.
      */
-    public OvalDefinitionsDefinitionAssociationEntry(
-                    final OvalDefinitions ovalDefs,
-                    final Definition def
+    public OvalResultsOvalDefinitionsAssociationEntry(
+                    final OvalResults ovalResults,
+                    final OvalDefinitions ovalDefs
                     )
     {
-        super( ovalDefs, def );
+        super( ovalResults, ovalDefs );
     }
 
 
     /**
      * Constructor.
      */
-    public OvalDefinitionsDefinitionAssociationEntry(
-                    final String ovalDefsPID,
-                    final String defPID
+    public OvalResultsOvalDefinitionsAssociationEntry(
+                    final String ovalResultsPID,
+                    final String ovalDefsPID
                     )
     {
-        super( ovalDefsPID, defPID );
+        super( ovalResultsPID, ovalDefsPID );
     }
 
 
 }
-// OvalDefinitionsDefinitionAssociationEntry
+// OvalResultsOvalDefinitionsAssociationEntry
