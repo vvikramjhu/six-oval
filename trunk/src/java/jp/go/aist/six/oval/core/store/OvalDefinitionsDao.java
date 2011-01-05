@@ -42,7 +42,7 @@ import java.util.UUID;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalDefinitionsSmallDao
+public class OvalDefinitionsDao
     extends CastorDao<String, OvalDefinitions>
 {
 
@@ -56,7 +56,7 @@ public class OvalDefinitionsSmallDao
     /**
      * Constructor.
      */
-    public OvalDefinitionsSmallDao()
+    public OvalDefinitionsDao()
     {
         this( OvalDefinitions.class );
     }
@@ -66,7 +66,7 @@ public class OvalDefinitionsSmallDao
     /**
      * Constructor.
      */
-    public OvalDefinitionsSmallDao(
+    public OvalDefinitionsDao(
                     final Class<? extends OvalDefinitions> type
                     )
     {
@@ -78,7 +78,7 @@ public class OvalDefinitionsSmallDao
     /**
      * Constructor.
      */
-    public OvalDefinitionsSmallDao(
+    public OvalDefinitionsDao(
                     final Class<? extends OvalDefinitions> type,
                     final OvalDefinitionsHelper helper
                     )
