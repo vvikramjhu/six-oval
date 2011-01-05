@@ -219,7 +219,7 @@ public class OvalResultsWorker
     {
         _syncRelated( object );
 
-        return _getStore().create( getType(), object );
+        return _getStore().create( getObjectType(), object );
     }
 
 
@@ -233,7 +233,7 @@ public class OvalResultsWorker
         _syncRelated( object );
 //        _syncAssociation( store, object );
 
-        return _getStore().sync( getType(), object );
+        return _getStore().sync( getObjectType(), object );
     }
 
 
@@ -244,7 +244,7 @@ public class OvalResultsWorker
                     )
     throws PersistenceException
     {
-        OvalResults  ovalResults = _getStore().load( getType(), identity );
+        OvalResults  ovalResults = _getStore().load( getObjectType(), identity );
         _loadRelated( ovalResults );
 
         return ovalResults;

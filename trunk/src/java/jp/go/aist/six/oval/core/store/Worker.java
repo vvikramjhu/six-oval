@@ -56,9 +56,6 @@ public class Worker<K, T extends Persistable<K>>
     private final Class<T>  _objectType;
 
 
-//    private final Dao<K, T>  _dao;
-
-
     private final DataStore  _store;
 
 
@@ -66,34 +63,28 @@ public class Worker<K, T extends Persistable<K>>
     /**
      * Constructor.
      */
-//    public <D extends Dao<K, T>> Worker(
     public Worker(
                     final Class<T> type,
-//                    final Dao<K, T> dao,
                     final DataStore store
                     )
     {
         _objectType = type;
-//        _dao = dao;
         _store = store;
     }
 
 
 
-    public final Class<T> getType()
+    /**
+     */
+    public final Class<T> getObjectType()
     {
         return _objectType;
     }
 
 
 
-//    protected final Dao<K, T> _getDao()
-//    {
-//        return _dao;
-//    }
-
-
-
+    /**
+     */
     protected final DataStore _getStore()
     {
         return _store;
@@ -197,7 +188,15 @@ public class Worker<K, T extends Persistable<K>>
                     )
     throws PersistenceException
     {
-        return _store.syncAll( _objectType, objects );
+        List<T>  p_objects = new ArrayList<T>();
+        if (objects.size() > 0) {
+            for (T  object : objects) {
+                T  p_object = sync( object );
+                p_objects.add( p_object );
+            }
+        }
+
+        return p_objects;
     }
 
 
@@ -205,7 +204,7 @@ public class Worker<K, T extends Persistable<K>>
     public int count()
     throws PersistenceException
     {
-        return _store.count( _objectType );
+        return count( null );
     }
 
 
@@ -235,7 +234,13 @@ public class Worker<K, T extends Persistable<K>>
                     )
     throws PersistenceException
     {
-        return _store.loadAll( _objectType, identities );
+        List<T>  p_objects = new ArrayList<T>();
+        for (K  identity : identities) {
+            T  p_object = load( identity );
+            p_objects.add( p_object );
+        }
+
+        return p_objects;
     }
 
 
@@ -243,7 +248,7 @@ public class Worker<K, T extends Persistable<K>>
     public Collection<T> find()
     throws PersistenceException
     {
-        return _store.find( _objectType );
+        return find( null, null, null );
     }
 
 
@@ -253,7 +258,7 @@ public class Worker<K, T extends Persistable<K>>
                     )
     throws PersistenceException
     {
-        return _store.find( _objectType, filter );
+        return find( filter, null, null );
     }
 
 
@@ -272,7 +277,7 @@ public class Worker<K, T extends Persistable<K>>
 
     public Collection<K> findIdentity()
     {
-        return _store.findIdentity( _objectType );
+        return findIdentity( null, null, null );
     }
 
 
@@ -282,7 +287,7 @@ public class Worker<K, T extends Persistable<K>>
                     )
     throws PersistenceException
     {
-        return _store.findIdentity( _objectType, filter );
+        return findIdentity( filter, null, null );
     }
 
 

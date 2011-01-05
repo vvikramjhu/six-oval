@@ -95,9 +95,10 @@ public class OvalDefinitionsDao
                     )
     throws PersistenceException
     {
-        if (ovalDefs.getPersistentID() == null) {
-            String  uuid = UUID.randomUUID().toString();
-            ovalDefs.setPersistentID( uuid );
+        String  ovalDefsPID = ovalDefs.getPersistentID();
+        if (ovalDefsPID == null) {
+            ovalDefsPID = UUID.randomUUID().toString();
+            ovalDefs.setPersistentID( ovalDefsPID );
         }
 
 
@@ -105,7 +106,8 @@ public class OvalDefinitionsDao
         if (variables != null) {
             for (Variable  variable : variables) {
                 OvalDefinitionsVariableAssociationEntry  assoc =
-                    new OvalDefinitionsVariableAssociationEntry( ovalDefs, variable );
+                    new OvalDefinitionsVariableAssociationEntry(
+                                    ovalDefsPID, variable.getPersistentID() );
                 _sync( OvalDefinitionsVariableAssociationEntry.class, assoc );
             }
         }
@@ -114,7 +116,8 @@ public class OvalDefinitionsDao
         if (states != null) {
             for (State  state : states) {
                 OvalDefinitionsStateAssociationEntry  assoc =
-                    new OvalDefinitionsStateAssociationEntry( ovalDefs, state );
+                    new OvalDefinitionsStateAssociationEntry(
+                                    ovalDefsPID, state.getPersistentID() );
                 _sync( OvalDefinitionsStateAssociationEntry.class, assoc );
             }
         }
@@ -123,7 +126,8 @@ public class OvalDefinitionsDao
         if (sysobjs != null) {
             for (SystemObject  sysobj : sysobjs) {
                 OvalDefinitionsSystemObjectAssociationEntry  assoc =
-                    new OvalDefinitionsSystemObjectAssociationEntry( ovalDefs, sysobj );
+                    new OvalDefinitionsSystemObjectAssociationEntry(
+                                    ovalDefsPID, sysobj.getPersistentID() );
                 _sync( OvalDefinitionsSystemObjectAssociationEntry.class, assoc );
             }
         }
@@ -132,7 +136,8 @@ public class OvalDefinitionsDao
         if (tests != null) {
             for (Test  test : tests) {
                 OvalDefinitionsTestAssociationEntry  assoc =
-                    new OvalDefinitionsTestAssociationEntry( ovalDefs, test );
+                    new OvalDefinitionsTestAssociationEntry(
+                                    ovalDefsPID, test.getPersistentID() );
                 _sync( OvalDefinitionsTestAssociationEntry.class, assoc );
             }
         }
@@ -141,7 +146,8 @@ public class OvalDefinitionsDao
         if (definitions != null) {
             for (Definition  def : definitions) {
                 OvalDefinitionsDefinitionAssociationEntry  assoc =
-                    new OvalDefinitionsDefinitionAssociationEntry( ovalDefs, def );
+                    new OvalDefinitionsDefinitionAssociationEntry(
+                                    ovalDefsPID, def.getPersistentID() );
                 _sync( OvalDefinitionsDefinitionAssociationEntry.class, assoc );
             }
         }
@@ -159,63 +165,7 @@ public class OvalDefinitionsDao
                     )
     throws PersistenceException
     {
-        final OvalDefinitions  ovalDefs = object;
-
-        _beforePersist( ovalDefs );
-
-//        SystemObjects  sysobjs = ovalDefs.getObjects();
-//        if (sysobjs != null  &&  sysobjs.size() > 0) {
-//            SystemObjects  p_sysobjs = new SystemObjects();
-//            for (SystemObject  sysobj : sysobjs) {
-//                SystemObject  p_sysobj = _loadOrCreate( SystemObject.class, sysobj );
-//                p_sysobjs.add( p_sysobj );
-//            }
-//            ovalDefs.setObjects( p_sysobjs );
-//        }
-//
-//
-//        States  states = ovalDefs.getStates();
-//        if (states != null  &&  states.size() > 0) {
-//            States  p_states = new States();
-//            for (State  state : states) {
-//                State  p_state = _loadOrCreate( State.class, state );
-//                p_states.add( p_state );
-//            }
-//            ovalDefs.setStates( p_states );
-//        }
-//
-//
-//        Variables  vars = ovalDefs.getVariables();
-//        if (vars != null  &&  vars.size() > 0) {
-//            Variables  p_vars = new Variables();
-//            for (Variable  var : vars) {
-//                Variable  p_var = _loadOrCreate( Variable.class, var );
-//                p_vars.add( p_var );
-//            }
-//            ovalDefs.setVariables( p_vars );
-//        }
-//
-//
-//        Tests  tests = ovalDefs.getTests();
-//        if (tests != null  &&  tests.size() > 0) {
-//            Tests  p_tests = new Tests();
-//            for (Test  test : tests) {
-//                Test  p_test = _loadOrCreate( Test.class, test );
-//                p_tests.add( p_test );
-//            }
-//            ovalDefs.setTests( p_tests );
-//        }
-
-
-//        Definitions  definitions = defs.getDefinitions();
-//        if (definitions != null  &&  definitions.size() > 0) {
-//            Definitions  p_definitions = new Definitions();
-//            for (Definition  def : definitions) {
-//                Definition  p_def = _loadOrCreate( Definition.class, def );
-//                p_definitions.add( p_def );
-//            }
-//            defs.setDefinitions( p_definitions );
-//        }
+        _beforePersist( object );
     }
 
 
@@ -304,86 +254,6 @@ public class OvalDefinitionsDao
     {
         super._syncDeeply( object, p_object );
         _beforePersist( object );
-
-//        SystemObjects  sysobjs = object.getObjects();
-//        SystemObjects  p_sysobjs = new SystemObjects();
-//        if (sysobjs != null  &&  sysobjs.size() > 0) {
-//            for (SystemObject  sysobj : sysobjs) {
-//                SystemObject  p_sysobj = _sync( SystemObject.class, sysobj );
-//                if (p_sysobj == null) {
-//                    p_sysobjs.add( sysobj );
-//                } else {
-//                    p_sysobjs.add( p_sysobj );
-//                }
-//            }
-//        }
-//
-//        States  states = object.getStates();
-//        States  p_states = new States();
-//        if (states != null  &&  states.size() > 0) {
-//            for (State  state : states) {
-//                State  p_state = _sync( State.class, state );
-//                if (p_state == null) {
-//                    p_states.add( state );
-//                } else {
-//                    p_states.add( p_state );
-//                }
-//            }
-//        }
-//
-//        Variables  vars = object.getVariables();
-//        Variables  p_vars = new Variables();
-//        if (vars != null  &&  vars.size() > 0) {
-//            for (Variable  var : vars) {
-//                Variable  p_var = _sync( Variable.class, var );
-//                if (p_var == null) {
-//                    p_vars.add( var );
-//                } else {
-//                    p_vars.add( p_var );
-//                }
-//            }
-//        }
-//
-//        Tests  tests = object.getTests();
-//        Tests  p_tests = new Tests();
-//        if (tests != null  &&  tests.size() > 0) {
-//            for (Test  test : tests) {
-//                Test  p_test = _sync( Test.class, test );
-//                if (p_test == null) {
-//                    p_tests.add( test );
-//                } else {
-//                    p_tests.add( p_test );
-//                }
-//            }
-//        }
-
-//        Definitions  definitions = object.getDefinitions();
-//        Definitions  p_definitions = new Definitions();
-//        if (definitions != null  &&  definitions.size() > 0) {
-//            for (Definition  def : definitions) {
-//                Definition  p_def = _sync( Definition.class, def );
-//                if (p_def == null) {
-//                    p_definitions.add( def );
-//                } else {
-//                    p_definitions.add( p_def );
-//                }
-//            }
-//        }
-
-
-//        if (p_object == null) {
-//            object.setObjects( p_sysobjs );
-//            object.setStates( p_states );
-//            object.setVariables( p_vars );
-//            object.setTests( p_tests );
-////            object.setDefinitions( p_definitions );
-//        } else {
-//            p_object.setObjects( p_sysobjs );
-//            p_object.setStates( p_states );
-//            p_object.setVariables( p_vars );
-//            p_object.setTests( p_tests );
-////            p_object.setDefinitions( p_definitions );
-//        }
     }
 
 }

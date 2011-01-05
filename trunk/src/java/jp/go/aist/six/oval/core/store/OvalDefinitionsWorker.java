@@ -33,9 +33,15 @@ import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.definitions.Variables;
 import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.persist.PersistenceException;
+import jp.go.aist.six.util.search.Binding;
+import jp.go.aist.six.util.search.Limit;
+import jp.go.aist.six.util.search.Order;
+import jp.go.aist.six.util.search.SearchCriteria;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 
 
@@ -57,9 +63,7 @@ public class OvalDefinitionsWorker
     /**
      * Constructor.
      */
-    public
-    OvalDefinitionsWorker(
-//                    final Dao<String, OvalDefinitions> dao,
+    public OvalDefinitionsWorker(
                     final DataStore store
                     )
     {
@@ -71,15 +75,13 @@ public class OvalDefinitionsWorker
     /**
      */
     private void _syncRelated(
-                    final OvalDefinitions object
+                    final OvalDefinitions ovalDefs
                     )
     throws PersistenceException
     {
         if (_LOG.isTraceEnabled()) {
             _LOG.trace( "*** sync related objects ***" );
         }
-
-        final OvalDefinitions  ovalDefs = object;
 
         Variables  variables = ovalDefs.getVariables();
         if (variables != null) {
@@ -109,7 +111,7 @@ public class OvalDefinitionsWorker
             }
         }
 
-        Definitions  definitions = object.getDefinitions();
+        Definitions  definitions = ovalDefs.getDefinitions();
         if (definitions != null) {
             for (Definition  d : definitions) {
                 _getStore().sync( Definition.class, d );
@@ -118,80 +120,62 @@ public class OvalDefinitionsWorker
     }
 
 
-//    private void _syncAssociation(
-//                    final DataStore store,
-//                    final OvalDefinitions object
-//                    )
-//    throws OvalRepositoryException
-//    {
-//        Definitions  definitions = object.getDefinitions();
-//        if (definitions != null) {
-//            for (Definition  d : definitions) {
-//                // AssociationEntry
-//                OvalDefinitionsDefinitionAssociationEntry  assoc =
-//                    new OvalDefinitionsDefinitionAssociationEntry( object, d );
-//                store.sync( OvalDefinitionsDefinitionAssociationEntry.class, assoc );
-//            }
-//        }
-//    }
-
-
 
     /**
      */
     private void _loadRelated(
-                    final OvalDefinitions object
+                    final OvalDefinitions ovalDefs
                     )
     throws PersistenceException
     {
-        final String  pid = object.getPersistentID();
+        final String  pid = ovalDefs.getPersistentID();
 
         Definitions  defs = new Definitions();
-        Collection<Definition>  p_defs = _loadAssociated(
-                        pid, Definition.class, OvalDefinitionsDefinitionAssociationEntry.class );
-        if (p_defs.size() > 0) {
+        Collection<Definition>  p_defs = _loadAssociated( pid, Definition.class,
+                            OvalDefinitionsDefinitionAssociationEntry.class );
+        if (p_defs != null) {
             defs.addAll( p_defs );
         }
 
         Tests  tests = new Tests();
-        Collection<Test>  p_tests = _loadAssociated(
-                        pid, Test.class, OvalDefinitionsTestAssociationEntry.class );
-        if (p_tests.size() > 0) {
+        Collection<Test>  p_tests = _loadAssociated( pid, Test.class,
+                        OvalDefinitionsTestAssociationEntry.class );
+        if (p_tests != null) {
             tests.addAll( p_tests );
         }
 
         SystemObjects  sysobjs = new SystemObjects();
-        Collection<SystemObject>  p_sysobjs = _loadAssociated(
-                        pid, SystemObject.class, OvalDefinitionsSystemObjectAssociationEntry.class );
-        if (p_sysobjs.size() > 0) {
+        Collection<SystemObject>  p_sysobjs = _loadAssociated( pid, SystemObject.class,
+                        OvalDefinitionsSystemObjectAssociationEntry.class );
+        if (p_sysobjs != null) {
             sysobjs.addAll( p_sysobjs );
         }
 
         States  states = new States();
-        Collection<State>  p_states = _loadAssociated(
-                        pid, State.class, OvalDefinitionsStateAssociationEntry.class );
-        if (p_states.size() > 0) {
+        Collection<State>  p_states = _loadAssociated( pid, State.class,
+                        OvalDefinitionsStateAssociationEntry.class );
+        if (p_states != null) {
             states.addAll( p_states );
         }
 
         Variables  variables = new Variables();
-        Collection<Variable>  p_variables = _loadAssociated(
-                        pid, Variable.class, OvalDefinitionsVariableAssociationEntry.class );
-        if (p_variables.size() > 0) {
+        Collection<Variable>  p_variables = _loadAssociated( pid, Variable.class,
+                        OvalDefinitionsVariableAssociationEntry.class );
+        if (p_variables != null) {
             variables.addAll( p_variables );
         }
 
-        object.setDefinitions( defs );
-        object.setTests( tests );
-        object.setObjects( sysobjs );
-        object.setStates( states );
-        object.setVariables( variables );
+        ovalDefs.setDefinitions( defs );
+        ovalDefs.setTests( tests );
+        ovalDefs.setObjects( sysobjs );
+        ovalDefs.setStates( states );
+        ovalDefs.setVariables( variables );
     }
 
 
 
     //**************************************************************
-    // StoreWorker
+    // Worker
     //**************************************************************
 
     @Override
@@ -202,7 +186,7 @@ public class OvalDefinitionsWorker
     {
         _syncRelated( object );
 
-        return _getStore().create( getType(), object );
+        return _getStore().create( getObjectType(), object );
     }
 
 
@@ -214,9 +198,8 @@ public class OvalDefinitionsWorker
     throws PersistenceException
     {
         _syncRelated( object );
-//        _syncAssociation( store, object );
 
-        return _getStore().sync( getType(), object );
+        return _getStore().sync( getObjectType(), object );
     }
 
 
@@ -227,10 +210,53 @@ public class OvalDefinitionsWorker
                     )
     throws PersistenceException
     {
-        OvalDefinitions  defs = _getStore().load( getType(), identity );
+        OvalDefinitions  defs = _getStore().load( getObjectType(), identity );
         _loadRelated( defs );
 
         return defs;
+    }
+
+
+
+    @Override
+    public Collection<OvalDefinitions> find(
+                    final Binding filter,
+                    final List<? extends Order> ordering,
+                    final Limit limit
+                    )
+    throws PersistenceException
+    {
+        Collection<String>  ovalDefsPIDs =
+            _getStore().findIdentity( getObjectType(), filter, ordering, limit );
+
+        Collection<OvalDefinitions>  results = new ArrayList<OvalDefinitions>();
+        if (ovalDefsPIDs != null) {
+            for (String  pid : ovalDefsPIDs) {
+                OvalDefinitions  ovalDefs = load( pid );
+                results.add( ovalDefs );
+            }
+        }
+
+        return results;
+    }
+
+
+
+    @Override
+    public List<OvalDefinitions> search(
+                    final SearchCriteria criteria
+                    )
+    throws PersistenceException
+    {
+        if (criteria == null) {
+            return (new ArrayList<OvalDefinitions>( find() ));
+        } else {
+            return (new ArrayList<OvalDefinitions>(
+                            find( criteria.getBinding(),
+                                  criteria.getOrders(),
+                                  criteria.getLimit()))
+                                  );
+        }
     }
 
 }
