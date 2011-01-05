@@ -31,17 +31,11 @@ import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.definitions.Tests;
 import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.definitions.Variables;
-import jp.go.aist.six.util.persist.AssociationEntry;
 import jp.go.aist.six.util.persist.DataStore;
-import jp.go.aist.six.util.persist.Persistable;
 import jp.go.aist.six.util.persist.PersistenceException;
-import jp.go.aist.six.util.search.Binding;
-import jp.go.aist.six.util.search.RelationalBinding;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 
 
@@ -63,7 +57,9 @@ public class OvalDefinitionsWorker
     /**
      * Constructor.
      */
-    public OvalDefinitionsWorker(
+    public
+    OvalDefinitionsWorker(
+//                    final Dao<String, OvalDefinitions> dao,
                     final DataStore store
                     )
     {
@@ -143,90 +139,43 @@ public class OvalDefinitionsWorker
 
     /**
      */
-    private <K, L, M, A extends AssociationEntry<K, L, M>>
-    List<M> _findAssocID(
-                    final Class<A> assocType,
-                    final L anteID
-                    )
-    throws PersistenceException
-    {
-        Binding  filter =
-            RelationalBinding.equalBinding( "antecendentPersistentID", anteID );
-        Collection<A>  list = _getStore().find( assocType, filter );
-
-        List<M>  depIDs = new ArrayList<M>();
-        if (list.size() > 0) {
-            for (A  assoc : list) {
-                if (_LOG.isTraceEnabled()) {
-                    _LOG.trace( "association: " + assoc );
-                }
-                M  depID = assoc.getDependentPersistentID();
-                depIDs.add( depID );
-            }
-        }
-
-        return depIDs;
-    }
-
-
-
-    /**
-     */
-    private <L, T extends Persistable<L>, M, S extends Persistable<M>,
-    K, A extends AssociationEntry<K, L, M>>
-    Collection<S> _loadRelatedEntity(
-                    final L entityID,
-                    final Class<S> relatedType,
-                    final Class<A> assocType
-                    )
-    throws PersistenceException
-    {
-        List<M>  depIDs = _findAssocID( assocType, entityID );
-        List<S>  deps = _getStore().loadAll( relatedType, depIDs );
-        return deps;
-    }
-
-
-
-    /**
-     */
     private void _loadRelated(
                     final OvalDefinitions object
                     )
     throws PersistenceException
     {
-        String  pid = object.getPersistentID();
+        final String  pid = object.getPersistentID();
 
         Definitions  defs = new Definitions();
-        Collection<Definition>  p_defs = _loadRelatedEntity(
+        Collection<Definition>  p_defs = _loadAssociated(
                         pid, Definition.class, OvalDefinitionsDefinitionAssociationEntry.class );
         if (p_defs.size() > 0) {
             defs.addAll( p_defs );
         }
 
         Tests  tests = new Tests();
-        Collection<Test>  p_tests = _loadRelatedEntity(
+        Collection<Test>  p_tests = _loadAssociated(
                         pid, Test.class, OvalDefinitionsTestAssociationEntry.class );
         if (p_tests.size() > 0) {
             tests.addAll( p_tests );
         }
 
         SystemObjects  sysobjs = new SystemObjects();
-        Collection<SystemObject>  p_sysobjs = _loadRelatedEntity(
+        Collection<SystemObject>  p_sysobjs = _loadAssociated(
                         pid, SystemObject.class, OvalDefinitionsSystemObjectAssociationEntry.class );
         if (p_sysobjs.size() > 0) {
             sysobjs.addAll( p_sysobjs );
         }
 
         States  states = new States();
-        Collection<State>  p_states = _loadRelatedEntity(
+        Collection<State>  p_states = _loadAssociated(
                         pid, State.class, OvalDefinitionsStateAssociationEntry.class );
         if (p_states.size() > 0) {
             states.addAll( p_states );
         }
 
         Variables  variables = new Variables();
-        Collection<Variable>  p_variables = _loadRelatedEntity(
+        Collection<Variable>  p_variables = _loadAssociated(
                         pid, Variable.class, OvalDefinitionsVariableAssociationEntry.class );
         if (p_variables.size() > 0) {
             variables.addAll( p_variables );
@@ -237,30 +186,6 @@ public class OvalDefinitionsWorker
         object.setObjects( sysobjs );
         object.setStates( states );
         object.setVariables( variables );
-
-//        Binding  filter =
-//            RelationalBinding.equalBinding( "antecendentPersistentID", object.getPersistentID() );
-//        Collection<OvalDefinitionsDefinitionAssociationEntry>  list =
-//            _getStore().find( OvalDefinitionsDefinitionAssociationEntry.class, filter );
-//
-//        Definitions  defs = new Definitions();
-//        if (list.size() > 0) {
-//            Set<String>  defPIDs = new HashSet<String>();
-//            for (OvalDefinitionsDefinitionAssociationEntry  assoc : list) {
-//                if (_LOG.isTraceEnabled()) {
-//                    _LOG.trace( "association: " + assoc );
-//                }
-//                String  defPID = assoc.getDependentPersistentID();
-//                defPIDs.add( defPID );
-//            }
-//
-//            List<String>  defPID_list = new ArrayList<String>( defPIDs );
-//
-//            Collection<Definition>  p_defs = _getStore().loadAll( Definition.class, defPID_list );
-//            defs.addAll( p_defs );
-//        }
-//
-//        object.setDefinitions( defs );
     }
 
 

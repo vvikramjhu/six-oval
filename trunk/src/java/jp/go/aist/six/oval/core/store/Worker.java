@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.core.store;
 
+import jp.go.aist.six.util.persist.AssociationEntry;
 import jp.go.aist.six.util.persist.Dao;
 import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.persist.Persistable;
@@ -27,7 +28,11 @@ import jp.go.aist.six.util.persist.PersistenceException;
 import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.Limit;
 import jp.go.aist.six.util.search.Order;
+import jp.go.aist.six.util.search.RelationalBinding;
 import jp.go.aist.six.util.search.SearchCriteria;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -38,10 +43,20 @@ import java.util.List;
  * @version $Id$
  */
 public class Worker<K, T extends Persistable<K>>
-implements Dao<K, T>
+    implements Dao<K, T>
 {
 
-    private final Class<T>  _type;
+    /**
+     * Logger.
+     */
+    private static Log  _LOG = LogFactory.getLog( Worker.class );
+
+
+
+    private final Class<T>  _objectType;
+
+
+//    private final Dao<K, T>  _dao;
 
 
     private final DataStore  _store;
@@ -51,12 +66,15 @@ implements Dao<K, T>
     /**
      * Constructor.
      */
+//    public <D extends Dao<K, T>> Worker(
     public Worker(
                     final Class<T> type,
+//                    final Dao<K, T> dao,
                     final DataStore store
-    )
+                    )
     {
-        _type = type;
+        _objectType = type;
+//        _dao = dao;
         _store = store;
     }
 
@@ -64,14 +82,68 @@ implements Dao<K, T>
 
     public final Class<T> getType()
     {
-        return _type;
+        return _objectType;
     }
+
+
+
+//    protected final Dao<K, T> _getDao()
+//    {
+//        return _dao;
+//    }
 
 
 
     protected final DataStore _getStore()
     {
         return _store;
+    }
+
+
+
+    /**
+     */
+    private <J, M, S extends AssociationEntry<J, K, M>>
+    List<M> _findAssociatedPersistentID(
+                    final K antecendentPID,
+                    final Class<S> associationType
+                    )
+    throws PersistenceException
+    {
+        Binding  filter =
+            RelationalBinding.equalBinding( "antecendentPersistentID", antecendentPID );
+        Collection<S>  associations = _getStore().find( associationType, filter );
+
+        List<M>  dependentPIDs = new ArrayList<M>();
+        if (associations.size() > 0) {
+            for (S  assoc : associations) {
+                if (_LOG.isTraceEnabled()) {
+                    _LOG.trace( "association: " + assoc );
+                }
+                M  dependentPID = assoc.getDependentPersistentID();
+                dependentPIDs.add( dependentPID );
+            }
+        }
+
+        return dependentPIDs;
+    }
+
+
+
+    /**
+     */
+    protected <M, D extends Persistable<M>, J, S extends AssociationEntry<J, K, M>>
+    Collection<D> _loadAssociated(
+                    final K antecendentPID,
+                    final Class<D> dependentType,
+                    final Class<S> associationType
+                    )
+    throws PersistenceException
+    {
+        List<M>  depPIDs = _findAssociatedPersistentID( antecendentPID, associationType );
+        List<D>  deps = _getStore().loadAll( dependentType, depPIDs );
+
+        return deps;
     }
 
 
@@ -85,7 +157,7 @@ implements Dao<K, T>
                     )
     throws PersistenceException
     {
-        return _store.create( _type, object );
+        return _store.create( _objectType, object );
     }
 
 
@@ -95,7 +167,7 @@ implements Dao<K, T>
                     )
     throws PersistenceException
     {
-        _store.update( _type, object );
+        _store.update( _objectType, object );
     }
 
 
@@ -105,7 +177,7 @@ implements Dao<K, T>
                     )
     throws PersistenceException
     {
-        _store.remove( _type, object );
+        _store.remove( _objectType, object );
     }
 
 
@@ -115,7 +187,7 @@ implements Dao<K, T>
                     )
     throws PersistenceException
     {
-        return _store.sync( _type, object );
+        return _store.sync( _objectType, object );
     }
 
 
@@ -125,7 +197,7 @@ implements Dao<K, T>
                     )
     throws PersistenceException
     {
-        return _store.syncAll( _type, objects );
+        return _store.syncAll( _objectType, objects );
     }
 
 
@@ -133,7 +205,7 @@ implements Dao<K, T>
     public int count()
     throws PersistenceException
     {
-        return _store.count( _type );
+        return _store.count( _objectType );
     }
 
 
@@ -143,7 +215,7 @@ implements Dao<K, T>
                     )
     throws PersistenceException
     {
-        return _store.count( _type, filter );
+        return _store.count( _objectType, filter );
     }
 
 
@@ -153,7 +225,7 @@ implements Dao<K, T>
                     )
     throws PersistenceException
     {
-        return _store.load( _type, identity );
+        return _store.load( _objectType, identity );
     }
 
 
@@ -163,7 +235,7 @@ implements Dao<K, T>
                     )
     throws PersistenceException
     {
-        return _store.loadAll( _type, identities );
+        return _store.loadAll( _objectType, identities );
     }
 
 
@@ -171,7 +243,7 @@ implements Dao<K, T>
     public Collection<T> find()
     throws PersistenceException
     {
-        return _store.find( _type );
+        return _store.find( _objectType );
     }
 
 
@@ -181,7 +253,7 @@ implements Dao<K, T>
                     )
     throws PersistenceException
     {
-        return _store.find( _type, filter );
+        return _store.find( _objectType, filter );
     }
 
 
@@ -193,14 +265,14 @@ implements Dao<K, T>
                     )
     throws PersistenceException
     {
-        return _store.find( _type, filter, ordering, limit );
+        return _store.find( _objectType, filter, ordering, limit );
     }
 
 
 
     public Collection<K> findIdentity()
     {
-        return _store.findIdentity( _type );
+        return _store.findIdentity( _objectType );
     }
 
 
@@ -210,7 +282,7 @@ implements Dao<K, T>
                     )
     throws PersistenceException
     {
-        return _store.findIdentity( _type, filter );
+        return _store.findIdentity( _objectType, filter );
     }
 
 
@@ -222,7 +294,7 @@ implements Dao<K, T>
                     )
     throws PersistenceException
     {
-        return _store.findIdentity( _type, filter, ordering, limit );
+        return _store.findIdentity( _objectType, filter, ordering, limit );
     }
 
 
@@ -232,7 +304,7 @@ implements Dao<K, T>
                     )
     throws PersistenceException
     {
-        return _store.search( _type, criteria );
+        return _store.search( _objectType, criteria );
     }
 
 }

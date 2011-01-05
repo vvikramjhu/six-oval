@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.persist.Persistable;
 import jp.go.aist.six.util.persist.PersistenceException;
@@ -42,17 +43,18 @@ import java.util.Map;
  * @version $Id$
  */
 public class OvalStore
+//    extends CastorDataStore
     implements DataStore
 {
 
 //    /**
 //     * Logger.
 //     */
-//    private static Log  _LOG = LogFactory.getLog( OvalStoreImpl.class );
+//    private static Log  _LOG = LogFactory.getLog( OvalStore.class );
 
 
 
-    private DataStore  _coreStore;
+    private DataStore  _dataStore;
 
 
 
@@ -65,32 +67,25 @@ public class OvalStore
 
 
 
-    public void setCoreStore(
+    public void setDataStore(
                     final DataStore store
                     )
     {
-        _coreStore = store;
+        _dataStore = store;
     }
 
 
 
+    /**
+     * Worker registry.
+     */
     private final Map<Class<? extends Persistable<?>>, Worker<?, ?>>  _workers =
         new HashMap<Class<? extends Persistable<?>>, Worker<?, ?>>();
 
 
 
-//    private Map<Class<? extends Persistable<?>>, Worker<?, ?>> _createWorkers()
-//    {
-//        Map<Class<? extends Persistable<?>>, Worker<?, ?>>  map
-//                        = new HashMap<Class<? extends Persistable<?>>, Worker<?, ?>>();
-//
-//        map.put( OvalDefinitions.class, new OvalDefinitionsWorker( _coreStore ) );
-//
-//        return map;
-//    }
-
-
-
+    /**
+     */
     private <K, T extends Persistable<K>>
     Worker<K, T> _getWorker(
                     final Class<T> type
@@ -99,8 +94,11 @@ public class OvalStore
         Worker<?, ?>  worker = _workers.get( type );
         if (worker == null) {
             if (OvalDefinitions.class.isAssignableFrom( type )) {
-                worker = new OvalDefinitionsWorker( _coreStore );
+                worker = new OvalDefinitionsWorker( _dataStore );
                 _workers.put( OvalDefinitions.class, worker );
+            } else if (OvalResults.class.isAssignableFrom( type )) {
+                worker = new OvalResultsWorker( _dataStore );
+                _workers.put( OvalResults.class, worker );
             }
         }
 
@@ -126,7 +124,7 @@ public class OvalStore
         K  p_id = null;
         Worker<K, T>  worker = _getWorker( type );
         if (worker == null) {
-            p_id = _coreStore.create( type, object );
+            p_id = _dataStore.create( type, object );
         } else {
             p_id = worker.create( object );
         }
@@ -145,7 +143,7 @@ public class OvalStore
     {
         Worker<K, T>  worker = _getWorker( type );
         if (worker == null) {
-            _coreStore.update( type, object );
+            _dataStore.update( type, object );
         } else {
             worker.update( object );
         }
@@ -162,7 +160,7 @@ public class OvalStore
     {
         Worker<K, T>  worker = _getWorker( type );
         if (worker == null) {
-            _coreStore.remove( type, object );
+            _dataStore.remove( type, object );
         } else {
             worker.remove( object );
         }
@@ -180,7 +178,7 @@ public class OvalStore
         T  p_object = null;
         Worker<K, T>  worker = _getWorker( type );
         if (worker == null) {
-            p_object = _coreStore.sync( type, object );
+            p_object = _dataStore.sync( type, object );
         } else {
             p_object = worker.sync( object );
         }
@@ -200,7 +198,7 @@ public class OvalStore
         List<T>  p_objects = null;
         Worker<K, T>  worker = _getWorker( type );
         if (worker == null) {
-            p_objects = _coreStore.syncAll( type, objects );
+            p_objects = _dataStore.syncAll( type, objects );
         } else {
             p_objects = worker.syncAll( objects );
         }
@@ -219,7 +217,7 @@ public class OvalStore
         int  count = 0;
         Worker<K, T>  worker = _getWorker( type );
         if (worker == null) {
-            count = _coreStore.count( type );
+            count = _dataStore.count( type );
         } else {
             count = worker.count();
         }
@@ -239,7 +237,7 @@ public class OvalStore
         int  count = 0;
         Worker<K, T>  worker = _getWorker( type );
         if (worker == null) {
-            count = _coreStore.count( type, filter );
+            count = _dataStore.count( type, filter );
         } else {
             count = worker.count( filter );
         }
@@ -259,7 +257,7 @@ public class OvalStore
         T  p_object = null;
         Worker<K, T>  worker = _getWorker( type );
         if (worker == null) {
-            p_object = _coreStore.load( type, identity );
+            p_object = _dataStore.load( type, identity );
         } else {
             p_object = worker.load( identity );
         }
@@ -279,7 +277,7 @@ public class OvalStore
         List<T>  p_objects = null;
         Worker<K, T>  worker = _getWorker( type );
         if (worker == null) {
-            p_objects = _coreStore.loadAll( type, identities );
+            p_objects = _dataStore.loadAll( type, identities );
         } else {
             p_objects = worker.loadAll( identities );
         }
@@ -298,7 +296,7 @@ public class OvalStore
         Collection<T>  p_objects = null;
         Worker<K, T>  worker = _getWorker( type );
         if (worker == null) {
-            p_objects = _coreStore.find( type );
+            p_objects = _dataStore.find( type );
         } else {
             p_objects = worker.find();
         }
@@ -318,7 +316,7 @@ public class OvalStore
         Collection<T>  p_objects = null;
         Worker<K, T>  worker = _getWorker( type );
         if (worker == null) {
-            p_objects = _coreStore.find( type, filter );
+            p_objects = _dataStore.find( type, filter );
         } else {
             p_objects = worker.find( filter );
         }
@@ -340,7 +338,7 @@ public class OvalStore
         Collection<T>  p_objects = null;
         Worker<K, T>  worker = _getWorker( type );
         if (worker == null) {
-            p_objects = _coreStore.find( type, filter, ordering, limit );
+            p_objects = _dataStore.find( type, filter, ordering, limit );
         } else {
             p_objects = worker.find( filter, ordering, limit );
         }
@@ -359,7 +357,7 @@ public class OvalStore
         Collection<K>  p_ids = null;
         Worker<K, T>  worker = _getWorker( type );
         if (worker == null) {
-            p_ids = _coreStore.findIdentity( type );
+            p_ids = _dataStore.findIdentity( type );
         } else {
             p_ids = worker.findIdentity();
         }
@@ -393,7 +391,7 @@ public class OvalStore
         Collection<K>  p_ids = null;
         Worker<K, T>  worker = _getWorker( type );
         if (worker == null) {
-            p_ids = _coreStore.findIdentity( type, filter, ordering, limit );
+            p_ids = _dataStore.findIdentity( type, filter, ordering, limit );
         } else {
             p_ids = worker.findIdentity( filter, ordering, limit );
         }
@@ -413,7 +411,7 @@ public class OvalStore
         List<T>  p_objects = null;
         Worker<K, T>  worker = _getWorker( type );
         if (worker == null) {
-            p_objects = _coreStore.search( type, criteria );
+            p_objects = _dataStore.search( type, criteria );
         } else {
             p_objects = worker.search( criteria );
         }

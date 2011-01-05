@@ -142,11 +142,17 @@
         <property name="daoRegistry" ref="daoRegistry"/>
     </bean>
 
-
     <bean id="ovalStore" 
         class="jp.go.aist.six.oval.core.store.OvalStore">
-        <property name="coreStore" ref="dataStore"/>
+        <property name="dataStore" ref="dataStore"/>
     </bean>
+<!--
+    <bean id="ovalStore" 
+        class="jp.go.aist.six.oval.core.store.OvalStore">
+        <property name="transactionManager" ref="txManager"/>
+        <property name="daoRegistry" ref="daoRegistry"/>
+    </bean>
+-->
 
 
 
