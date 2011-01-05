@@ -45,22 +45,6 @@ public class OvalSystemCharacteristicsDao
     extends CastorDao<String, OvalSystemCharacteristics>
 {
 
-    private static final String[]  _EXCEPTED_PROPERTIES_ =
-        new String[] {
-        "persistentID",
-        "systemInfo",
-        "systemData",
-        "collectedObjects"
-        };
-
-
-    private static final String[]  _EXCEPTED_PROPERTIES_SYSTEMINFO_ =
-        new String[] {
-        "interfaces"
-        };
-
-
-
     /**
      * Constructor.
      */
@@ -89,33 +73,30 @@ public class OvalSystemCharacteristicsDao
     /**
      */
     private void _associateDependents(
-                    final OvalSystemCharacteristics object
+                    final OvalSystemCharacteristics ovalSC
                     )
     throws PersistenceException
     {
-        final OvalSystemCharacteristics  sc = object;
-
-        SystemInfo  sysinfo = sc.getSystemInfo();
-        sysinfo.setMasterObject( sc );
+        SystemInfo  sysinfo = ovalSC.getSystemInfo(); //{1..1}
+        sysinfo.setMasterObject( ovalSC );
 
         for (NetInterface  netif : sysinfo.getInterfaces()) {
-            netif.setMasterObject( sc );
-//            netif.setMasterObject( sysinfo );
+            netif.setMasterObject( ovalSC );
         }
 
 
-        SystemData  sd = sc.getSystemData();
+        SystemData  sd = ovalSC.getSystemData();
         if (sd != null) {
             for (Item  item : sd) {
-                item.setMasterObject( sc );
+                item.setMasterObject( ovalSC );
             }
         }
 
 
-        CollectedSystemObjects  sysobjs = sc.getCollectedObjects();
+        CollectedSystemObjects  sysobjs = ovalSC.getCollectedObjects();
         if (sysobjs != null) {
             for (CollectedSystemObject  sysobj : sysobjs) {
-                sysobj.setMasterObject( sc );
+                sysobj.setMasterObject( ovalSC );
 
                 Collection<VariableValue>  vvs = sysobj.getVariableValue();
                 if (vvs != null) {
@@ -163,6 +144,21 @@ public class OvalSystemCharacteristicsDao
 
 
 
+    private static final String[]  _EXCEPTED_PROPERTIES_ =
+        new String[] {
+        "persistentID",
+//        "systemInfo",
+//        "systemData",
+//        "collectedObjects"
+        };
+
+
+//    private static final String[]  _EXCEPTED_PROPERTIES_SYSTEMINFO_ =
+//        new String[] {
+//        "interfaces"
+//        };
+
+
     @Override
     protected void _copyProperties(
                     final OvalSystemCharacteristics p_object,
@@ -177,16 +173,17 @@ public class OvalSystemCharacteristicsDao
         final OvalSystemCharacteristics  p_sc = p_object;
         BeansUtil.copyPropertiesExcept( p_sc, sc, _EXCEPTED_PROPERTIES_ );
 
-        final SystemInfo  sysinfo = sc.getSystemInfo();
-        final SystemInfo  p_sysinfo = p_sc.getSystemInfo();
-        BeansUtil.copyPropertiesExcept( p_sysinfo, sysinfo, _EXCEPTED_PROPERTIES_SYSTEMINFO_ );
-        p_sysinfo.setInterfaces( sysinfo.getInterfaces() );
+//        final SystemInfo  sysinfo = sc.getSystemInfo();
+//        final SystemInfo  p_sysinfo = p_sc.getSystemInfo();
+//        BeansUtil.copyPropertiesExcept( p_sysinfo, sysinfo, _EXCEPTED_PROPERTIES_SYSTEMINFO_ );
+//        p_sysinfo.setInterfaces( sysinfo.getInterfaces() );
+//
+//        p_sc.setSystemData( sc.getSystemData() );
+//
+//        p_sc.setCollectedObjects( sc.getCollectedObjects() );
 
-        p_sc.setSystemData( sc.getSystemData() );
 
-        p_sc.setCollectedObjects( sc.getCollectedObjects() );
-
-        _associateDependents( p_sc );
+//        _associateDependents( p_sc );
     }
 
 
@@ -198,9 +195,8 @@ public class OvalSystemCharacteristicsDao
                     )
     throws PersistenceException
     {
-        _associateDependents( object );
-
         super._syncDeeply( object, p_object );
+        _associateDependents( object );
         _beforePersist( object );
     }
 

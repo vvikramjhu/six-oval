@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.sc;
 import jp.go.aist.six.oval.model.AbstractOvalObject;
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.Message;
+import jp.go.aist.six.util.persist.Dependent;
 
 
 
@@ -40,7 +41,7 @@ import jp.go.aist.six.oval.model.common.Message;
 //public abstract class Item
 public class Item
     extends AbstractOvalObject
-//    implements Dependent<OvalSystemCharacteristics>
+    implements Dependent<OvalSystemCharacteristics>
 {
 
     private Message  _message;
@@ -184,28 +185,28 @@ public class Item
 
 
 
-    private String  _masterPersistentID;
-
-
-    public void setMasterPersistentID(
-                    final String id
-                    )
-    {
-        _masterPersistentID = id;
-    }
-
-
-    public String getMasterPersistentID()
-    {
-        if (_masterPersistentID == null) {
-            OvalSystemCharacteristics  master = getMasterObject();
-            if (master != null) {
-                _masterPersistentID = master.getPersistentID();
-            }
-        }
-
-        return _masterPersistentID;
-    }
+//    private String  _masterPersistentID;
+//
+//
+//    public void setMasterPersistentID(
+//                    final String id
+//                    )
+//    {
+//        _masterPersistentID = id;
+//    }
+//
+//
+//    public String getMasterPersistentID()
+//    {
+//        if (_masterPersistentID == null) {
+//            OvalSystemCharacteristics  master = getMasterObject();
+//            if (master != null) {
+//                _masterPersistentID = master.getPersistentID();
+//            }
+//        }
+//
+//        return _masterPersistentID;
+//    }
 
 
 

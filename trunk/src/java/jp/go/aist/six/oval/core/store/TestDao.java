@@ -44,16 +44,6 @@ public class TestDao
     private static Log  _LOG = LogFactory.getLog( TestDao.class );
 
 
-    private static final String[]  _EXCEPTED_PROPERTIES_ =
-        new String[] {
-        "persistentID",
-        "ovalID",
-        "ovalVersion",
-        "entityType",
-        "state"
-        };
-
-
 
     /**
      * Constructor.
@@ -117,6 +107,16 @@ public class TestDao
 
 
 
+    private static final String[]  _EXCEPTED_PROPERTIES_ =
+        new String[] {
+        "persistentID",
+        "ovalID",
+        "ovalVersion",
+        "entityType"
+//        "state"
+        };
+
+
     @Override
     protected void _copyProperties(
                     final Test p_object,
@@ -127,43 +127,17 @@ public class TestDao
             return;
         }
 
-        if (_LOG.isTraceEnabled()) {
-            _LOG.trace( "copy properties: object=" + object );
-        }
-
-        final Test  test = object;
-        final Test  p_test = p_object;
-
-        BeansUtil.copyPropertiesExcept( p_test, test, _EXCEPTED_PROPERTIES_ );
-
-        Collection<StateRef>  states = test.getState();
-        p_test.setState( states );
-        _associateDependents( p_test );
-
-
-//        p_test.setComment( test.getComment() );
-//        p_test.setCheckExistence( test.getCheckExistence() );
-//        p_test.setCheck( test.getCheck() );
-//        p_test.setStateOperator( test.getStateOperator() );
-//
-//        SystemObjectRef  objectRef = test.getObject();
-//        if (objectRef == null) {
-//            if (p_test.getObject() != null) {
-//                p_test.setObject( null );
-//            }
-//        } else {
-//            p_test.setObject( objectRef );
+//        if (_LOG.isTraceEnabled()) {
+//            _LOG.trace( "copy properties: object=" + object );
 //        }
 
+        BeansUtil.copyPropertiesExcept( p_object, object, _EXCEPTED_PROPERTIES_ );
 
-//        Collection<StateRef>  states = test.getState();
-//        if (states != null  &&  states.size() > 0) {
-//            p_test.clearState();
-//            for (StateRef  state : states) {
-//                p_test.addState( state );
-//                state.setMasterObject( p_test );
-//            }
-//        }
+//        Collection<StateRef>  states = object.getState();
+//        p_object.setState( states );
+
+
+//        _associateDependents( p_object );
     }
 
 
@@ -175,11 +149,17 @@ public class TestDao
                     )
     throws PersistenceException
     {
-        _associateDependents( object );
 
         super._syncDeeply( object, p_object );
+        _associateDependents( object );
         //no related object
     }
+//    {
+//        _associateDependents( object );
+//
+//        super._syncDeeply( object, p_object );
+//        //no related object
+//    }
 
 }
 // TestDao

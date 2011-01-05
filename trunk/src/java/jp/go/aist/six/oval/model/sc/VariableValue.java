@@ -132,7 +132,7 @@ public class VariableValue
     @Override
     public String toString()
     {
-        return "VariableValue[variable_id=" + getVariableID()
+        return "variable_value[variable_id=" + getVariableID()
                         + ", " + getValue()
                         + "]";
     }
