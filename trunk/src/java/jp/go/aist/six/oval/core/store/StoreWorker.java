@@ -21,11 +21,15 @@
 package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.util.persist.AssociationEntry;
+import jp.go.aist.six.util.persist.Dao;
 import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.persist.Persistable;
 import jp.go.aist.six.util.persist.PersistenceException;
 import jp.go.aist.six.util.search.Binding;
+import jp.go.aist.six.util.search.Limit;
+import jp.go.aist.six.util.search.Order;
 import jp.go.aist.six.util.search.RelationalBinding;
+import jp.go.aist.six.util.search.SearchCriteria;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import java.util.ArrayList;
@@ -38,34 +42,67 @@ import java.util.List;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class Worker<K, T extends Persistable<K>>
-//    implements Dao<K, T>
+public class StoreWorker<K, T extends Persistable<K>>
+    implements Dao<K, T>
 {
 
     /**
      * Logger.
      */
-    private static Log  _LOG = LogFactory.getLog( Worker.class );
+    private static Log  _LOG = LogFactory.getLog( StoreWorker.class );
 
 
 
-    private final Class<T>  _objectType;
+    private Class<T>  _objectType;
 
 
-    private final DataStore  _store;
+    private DataStore  _store;
+
+
+    private StoreWorkerRegistry  _registry;
 
 
 
     /**
      * Constructor.
      */
-    public Worker(
+    public StoreWorker()
+    {
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public StoreWorker(
+                    final Class<T> type
+                    )
+    {
+        this( type, null );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public StoreWorker(
                     final Class<T> type,
                     final DataStore store
                     )
     {
+        setObjectType( type );
+        setDataStore( store );
+    }
+
+
+
+    /**
+     */
+    public final void setObjectType(
+                    final Class<T> type
+                    )
+    {
         _objectType = type;
-        _store = store;
     }
 
 
@@ -81,10 +118,39 @@ public class Worker<K, T extends Persistable<K>>
 
     /**
      */
-    protected final DataStore _getStore()
+    public final void setDataStore(
+                    final DataStore store
+                    )
+    {
+        _store = store;
+    }
+
+
+    protected DataStore _getDataStore()
     {
         return _store;
     }
+
+
+
+    public void setRegistry(
+                    final StoreWorkerRegistry registry
+                    )
+    {
+        _registry = registry;
+    }
+
+
+
+    public <L, S extends Persistable<L>>
+    StoreWorker<L, S> getForwardingWorker(
+                    final Class<S> type
+                    )
+    {
+        return _registry.getWorker( type );
+    }
+
+
 
 
 
@@ -99,7 +165,7 @@ public class Worker<K, T extends Persistable<K>>
     {
         Binding  filter =
             RelationalBinding.equalBinding( "antecendentPersistentID", antecendentPID );
-        Collection<S>  associations = _getStore().find( associationType, filter );
+        Collection<S>  associations = _getDataStore().find( associationType, filter );
 
         List<M>  dependentPIDs = new ArrayList<M>();
         if (associations.size() > 0) {
@@ -118,6 +184,7 @@ public class Worker<K, T extends Persistable<K>>
 
 
     /**
+     * Loads all the associated objects of the specified type.
      */
     protected <M, D extends Persistable<M>, J, S extends AssociationEntry<J, K, M>>
     Collection<D> _loadAssociated(
@@ -128,9 +195,71 @@ public class Worker<K, T extends Persistable<K>>
     throws PersistenceException
     {
         List<M>  depPIDs = _findAssociatedPersistentID( antecendentPID, associationType );
-        List<D>  deps = _getStore().loadAll( dependentType, depPIDs );
+        List<D>  deps = _getDataStore().loadAll( dependentType, depPIDs );
 
         return deps;
+    }
+
+
+
+    //**************************************************************
+    //  template methods
+    //**************************************************************
+
+    /**
+     */
+    protected void _beforePersist(
+                    final T object
+                    )
+    throws PersistenceException
+    {
+        // default: Do nothing.
+    }
+
+
+
+    /**
+     */
+    protected <J, S extends Persistable<J>>
+    S _sync(
+                    final Class<S> type,
+                    final S object
+                    )
+    {
+        S  p_object = null;
+        StoreWorker<J, S>  worker = _registry.getWorker( type );
+        if (worker == null) {
+            p_object = _getDataStore().sync( type, object );
+        } else {
+            p_object = worker.sync( object );
+        }
+
+        return p_object;
+    }
+
+
+
+    /**
+     */
+    protected void _beforeUpdate(
+                    final T object
+                    )
+    throws PersistenceException
+    {
+        // default: Do nothing.
+    }
+
+
+
+    /**
+     *
+     */
+    protected void _afterLoad(
+                    final T p_object
+                    )
+    throws PersistenceException
+    {
+        // default: Do nothing.
     }
 
 
@@ -139,54 +268,195 @@ public class Worker<K, T extends Persistable<K>>
     //  implements Dao
     //**************************************************************
 
-    public void createAssociated(
+    public K create(
                     final T object
                     )
     throws PersistenceException
     {
-//        return _store.create( _objectType, object );
+        _beforePersist( object );
+        return _store.create( _objectType, object );
     }
 
 
 
-//    public void updateAssociated(
-//                    final T object
-//                    )
-//    throws PersistenceException
-//    {
-////        _store.update( _objectType, object );
-//    }
-
-
-
-//    public void remove(
-//                    final T object
-//                    )
-//    throws PersistenceException
-//    {
-////        _store.remove( _objectType, object );
-//    }
-
-
-
-    public void syncAssociated(
+    public void update(
                     final T object
                     )
     throws PersistenceException
     {
-//        return _store.sync( _objectType, object );
+        _beforeUpdate( object );
+        _store.update( _objectType, object );
     }
 
 
 
-    public void loadAssociated(
+    public void remove(
                     final T object
                     )
     throws PersistenceException
     {
-//        return _store.load( _objectType, identity );
+        _store.remove( _objectType, object );
+    }
+
+
+
+    public T sync(
+                    final T object
+                    )
+    throws PersistenceException
+    {
+        _beforePersist( object );
+        return _store.sync( _objectType, object );
+    }
+
+
+
+    public List<T> syncAll(
+                    final List<? extends T> objects
+                    )
+    throws PersistenceException
+    {
+        List<T>  p_objects = new ArrayList<T>();
+        if (objects.size() > 0) {
+            for (T  object : objects) {
+                T  p_object = sync( object );
+                p_objects.add( p_object );
+            }
+        }
+
+        return p_objects;
+    }
+
+
+
+    public int count()
+    throws PersistenceException
+    {
+        return count( null );
+    }
+
+
+
+    public int count(
+                    final Binding filter
+                    )
+    throws PersistenceException
+    {
+        return _store.count( _objectType, filter );
+    }
+
+
+
+    public T load(
+                    final K identity
+                    )
+    throws PersistenceException
+    {
+        T  p_object = _store.load( _objectType, identity );
+        _afterLoad( p_object );
+
+        return p_object;
+    }
+
+
+
+    public List<T> loadAll(
+                    final List<? extends K> identities
+                    )
+    throws PersistenceException
+    {
+        List<T>  p_objects = new ArrayList<T>();
+        for (K  identity : identities) {
+            T  p_object = load( identity );
+            p_objects.add( p_object );
+        }
+
+        return p_objects;
+    }
+
+
+
+    public Collection<T> find()
+    throws PersistenceException
+    {
+        return find( null, null, null );
+    }
+
+
+
+    public Collection<T> find(
+                    final Binding filter
+                    )
+    throws PersistenceException
+    {
+        return find( filter, null, null );
+    }
+
+
+
+    public Collection<T> find(
+                    final Binding filter,
+                    final List<? extends Order> ordering,
+                    final Limit limit
+                    )
+    throws PersistenceException
+    {
+        Collection<T>  p_objects = _store.find( _objectType, filter, ordering, limit );
+        if (p_objects != null) {
+            for (T  p_object : p_objects) {
+                _afterLoad( p_object );
+            }
+        }
+
+        return p_objects;
+    }
+
+
+
+    public Collection<K> findIdentity()
+    {
+        return findIdentity( null, null, null );
+    }
+
+
+
+    public Collection<K> findIdentity(
+                    final Binding filter
+                    )
+    throws PersistenceException
+    {
+        return findIdentity( filter, null, null );
+    }
+
+
+
+    public Collection<K> findIdentity(
+                    final Binding filter,
+                    final List<? extends Order> ordering,
+                    final Limit limit
+                    )
+    throws PersistenceException
+    {
+        return _store.findIdentity( _objectType, filter, ordering, limit );
+    }
+
+
+
+    public List<T> search(
+                    final SearchCriteria criteria
+                    )
+    throws PersistenceException
+    {
+        Collection<T>  p_objects = null;
+        if (criteria == null) {
+            p_objects = find();
+        } else {
+            p_objects = find( criteria.getBinding(), criteria.getOrders(), criteria.getLimit() );
+        }
+
+        return (new ArrayList<T>( p_objects ));
     }
 
 }
-// Worker
+// StoreWorker
 

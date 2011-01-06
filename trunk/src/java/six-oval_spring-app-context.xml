@@ -146,10 +146,15 @@
     </bean>
 
     <bean id="ovalStore" 
-        class="jp.go.aist.six.oval.core.store.OvalStore">
+        class="jp.go.aist.six.oval.core.store.OvalDataStore">
         <property name="dataStore" ref="dataStore"/>
     </bean>
 <!--
+    <bean id="ovalStore" 
+        class="jp.go.aist.six.oval.core.store.OvalStore">
+        <property name="dataStore" ref="dataStore"/>
+    </bean>
+
     <bean id="ovalStore" 
         class="jp.go.aist.six.oval.core.store.OvalStore">
         <property name="transactionManager" ref="txManager"/>

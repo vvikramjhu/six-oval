@@ -1,7 +1,7 @@
 package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.core.service.OvalContext;
-import jp.go.aist.six.oval.core.store.OvalStore;
+import jp.go.aist.six.oval.core.store.OvalDataStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.NameEntity;
 import jp.go.aist.six.oval.model.definitions.Definition;
@@ -35,7 +35,7 @@ public abstract class CoreTestBase
     private OvalContext  _context = null;
 
     private OvalXml  _xml = null;
-    private OvalStore  _store = null;
+    private OvalDataStore  _store = null;
 
 
 
@@ -75,7 +75,7 @@ public abstract class CoreTestBase
     }
 
 
-    protected OvalStore _getStore()
+    protected OvalDataStore _getStore()
     throws Exception
     {
         if (_store == null) {

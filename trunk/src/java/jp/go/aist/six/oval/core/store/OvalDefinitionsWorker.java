@@ -33,15 +33,9 @@ import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.definitions.Variables;
 import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.persist.PersistenceException;
-import jp.go.aist.six.util.search.Binding;
-import jp.go.aist.six.util.search.Limit;
-import jp.go.aist.six.util.search.Order;
-import jp.go.aist.six.util.search.SearchCriteria;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 
 
@@ -178,86 +172,6 @@ public class OvalDefinitionsWorker
     // Worker
     //**************************************************************
 
-    @Override
-    public String create(
-                    final OvalDefinitions object
-                    )
-    throws PersistenceException
-    {
-        _syncRelated( object );
-
-        return _getStore().create( getObjectType(), object );
-    }
-
-
-
-    @Override
-    public OvalDefinitions sync(
-                    final OvalDefinitions object
-                    )
-    throws PersistenceException
-    {
-        _syncRelated( object );
-
-        return _getStore().sync( getObjectType(), object );
-    }
-
-
-
-    @Override
-    public OvalDefinitions load(
-                    final String identity
-                    )
-    throws PersistenceException
-    {
-        OvalDefinitions  defs = _getStore().load( getObjectType(), identity );
-        _loadRelated( defs );
-
-        return defs;
-    }
-
-
-
-    @Override
-    public Collection<OvalDefinitions> find(
-                    final Binding filter,
-                    final List<? extends Order> ordering,
-                    final Limit limit
-                    )
-    throws PersistenceException
-    {
-        Collection<String>  ovalDefsPIDs =
-            _getStore().findIdentity( getObjectType(), filter, ordering, limit );
-
-        Collection<OvalDefinitions>  results = new ArrayList<OvalDefinitions>();
-        if (ovalDefsPIDs != null) {
-            for (String  pid : ovalDefsPIDs) {
-                OvalDefinitions  ovalDefs = load( pid );
-                results.add( ovalDefs );
-            }
-        }
-
-        return results;
-    }
-
-
-
-    @Override
-    public List<OvalDefinitions> search(
-                    final SearchCriteria criteria
-                    )
-    throws PersistenceException
-    {
-        if (criteria == null) {
-            return (new ArrayList<OvalDefinitions>( find() ));
-        } else {
-            return (new ArrayList<OvalDefinitions>(
-                            find( criteria.getBinding(),
-                                  criteria.getOrders(),
-                                  criteria.getLimit()))
-                                  );
-        }
-    }
 
 }
 // OvalDefinitionsWorker

@@ -211,45 +211,6 @@ public class OvalResultsWorker
     // StoreWorker
     //**************************************************************
 
-    @Override
-    public String create(
-                    final OvalResults object
-                    )
-    throws PersistenceException
-    {
-        _syncRelated( object );
-
-        return _getStore().create( getObjectType(), object );
-    }
-
-
-
-    @Override
-    public OvalResults sync(
-                    final OvalResults object
-                    )
-    throws PersistenceException
-    {
-        _syncRelated( object );
-//        _syncAssociation( store, object );
-
-        return _getStore().sync( getObjectType(), object );
-    }
-
-
-
-    @Override
-    public OvalResults load(
-                    final String identity
-                    )
-    throws PersistenceException
-    {
-        OvalResults  ovalResults = _getStore().load( getObjectType(), identity );
-        _loadRelated( ovalResults );
-
-        return ovalResults;
-    }
-
 }
 // OvalResultsWorker
 
