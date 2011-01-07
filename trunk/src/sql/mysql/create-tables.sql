@@ -328,14 +328,14 @@ CREATE TABLE IF NOT EXISTS oval_assoc__d_definition__d_reference
 (
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
-    definition__PID     VARCHAR(64)     NOT NULL,
-    reference__PID      INT             NOT NULL,
+    d_definition__PID   VARCHAR(64)     NOT NULL,
+    d_reference__PID    INT             NOT NULL,
 
     /* (PK) */
     PRIMARY KEY (PID),
     
     /* INDEX */
-    UNIQUE (definition__PID, reference__PID)
+    UNIQUE (d_definition__PID, d_reference__PID)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;

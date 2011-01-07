@@ -54,7 +54,7 @@
     <test name="oval.core.store" enabled="true">
         <groups>
             <run>
-                <include name="query.definitions.definition"/>
+                <include name="definitions.oval_definitions"/>
 <!--
                 <include name="definitions.definition"/>
                 <include name="definitions.oval_definitions"/>
@@ -62,6 +62,7 @@
                 <include name="results.oval_results"/>
                 <include name="sc.oval_sc"/>
                 <include name="definitions.variable"/>
+                <include name="query.definitions.definition"/>
 -->
             </run>
         </groups>
@@ -69,7 +70,7 @@
 -->
 
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.store.OvalStoreQueryTest"/>
+            <class name="jp.go.aist.six.test.oval.core.store.OvalStoreTest"/>
 <!--
             <class name="jp.go.aist.six.test.oval.core.store.OvalStoreTest"/>
             <class name="jp.go.aist.six.test.oval.core.store.OvalStoreAssociationTest"/>
