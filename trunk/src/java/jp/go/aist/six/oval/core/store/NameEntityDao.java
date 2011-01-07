@@ -42,6 +42,9 @@ public abstract class NameEntityDao<T extends NameEntity>
     }
 
 
+    /**
+     * Constructor.
+     */
     public NameEntityDao(
                     final Class<? extends T> type
                     )
@@ -50,7 +53,9 @@ public abstract class NameEntityDao<T extends NameEntity>
     }
 
 
-
+    /**
+     * Constructor.
+     */
     public NameEntityDao(
                     final Class<? extends T> type,
                     final PersistenceHelper<? super T> helper
@@ -66,9 +71,9 @@ public abstract class NameEntityDao<T extends NameEntity>
     //**************************************************************
 
     @Override
-    protected void _copyProperties(
-                    final T p_object,
-                    final T object
+    protected void _syncProperties(
+                    final T object,
+                    final T p_object
                     )
     {
         if (p_object == null) {

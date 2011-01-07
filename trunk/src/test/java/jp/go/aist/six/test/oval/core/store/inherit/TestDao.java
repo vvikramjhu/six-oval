@@ -75,7 +75,7 @@ public class TestDao
     //**************************************************************
 
     @Override
-    protected void _createRelatedTo(
+    protected void _createRelated(
                     final Test object
                     )
     throws PersistenceException
@@ -86,13 +86,13 @@ public class TestDao
 
 
     @Override
-    protected void _updateDeeply(
+    protected void _updateRelated(
                     final Test object
                     )
     throws PersistenceException
     {
         if (_LOG.isTraceEnabled()) {
-            _LOG.trace( "update deeply: object=" + object );
+            _LOG.trace( "update related: object=" + object );
         }
 
 //        _associateDependents( object );
@@ -101,9 +101,9 @@ public class TestDao
 
 
     @Override
-    protected void _copyProperties(
-                    final Test p_object,
-                    final Test object
+    protected void _syncProperties(
+                    final Test object,
+                    final Test p_object
                     )
     {
         if (p_object == null) {
@@ -148,7 +148,7 @@ public class TestDao
 
 
     @Override
-    protected void _syncDeeply(
+    protected void _syncRelated(
                     final Test object,
                     final Test p_object
                     )
@@ -156,7 +156,7 @@ public class TestDao
     {
         _associateDependents( object );
 
-        super._syncDeeply( object, p_object );
+//        super._syncDeeply( object, p_object );
         //no related object
     }
 

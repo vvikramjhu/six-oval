@@ -50,7 +50,7 @@ public abstract class OvalEntityDao<T extends OvalEntity>
 
     public OvalEntityDao(
                     final Class<? extends T> type,
-                  final OvalEntityHelper<? super T> helper
+                    final OvalEntityHelper<? super T> helper
 //                    final PersistenceHelper<? super T> helper
                     )
     {
@@ -98,9 +98,9 @@ public abstract class OvalEntityDao<T extends OvalEntity>
     //**************************************************************
 
     @Override
-    protected void _copyProperties(
-                    final T p_object,
-                    final T object
+    protected void _syncProperties(
+                    final T   object,
+                    final T p_object
                     )
     {
         if (p_object == null) {

@@ -95,7 +95,7 @@ public class DefinitionDao
     //**************************************************************
 
     @Override
-    protected void _createRelatedTo(
+    protected void _createRelated(
                     final Definition object
                     )
     throws PersistenceException
@@ -110,8 +110,11 @@ public class DefinitionDao
             Collection<Reference>  p_refs = new ArrayList<Reference>();
             for (Reference  ref : refs) {
                 Reference  p_ref = _loadOrCreate( Reference.class, ref );
-                p_refs.add( p_ref );
-//                getForwardingDao( Reference.class ).createIfNotExist( r );
+                if (p_ref == null) {
+                    p_refs.add( ref );
+                } else {
+                    p_refs.add( p_ref );
+                }
             }
             meta.setReference( p_refs );
         }
@@ -123,8 +126,11 @@ public class DefinitionDao
                 Collection<Platform>  p_platforms = new ArrayList<Platform>();
                 for (Platform  platform : platforms) {
                     Platform  p_platform = _loadOrCreate( Platform.class, platform );
-                    p_platforms.add( p_platform );
-//                  getForwardingDao( Platform.class ).createIfNotExist( platform );
+                    if (p_platform == null) {
+                        p_platforms.add( platform );
+                    } else {
+                        p_platforms.add( p_platform );
+                    }
                 }
                 affected.setPlatform( p_platforms );
             }
@@ -134,8 +140,11 @@ public class DefinitionDao
                 Collection<Product>  p_products = new ArrayList<Product>();
                 for (Product  product : products) {
                     Product  p_product = _loadOrCreate( Product.class, product );
-                    p_products.add( p_product );
-//                  getForwardingDao( Product.class ).createIfNotExist( p );
+                    if (p_product == null) {
+                        p_products.add( product );
+                    } else {
+                        p_products.add( p_product );
+                    }
                 }
                 affected.setProduct( p_products );
             }
@@ -155,7 +164,7 @@ public class DefinitionDao
 
 
     @Override
-    protected void _updateDeeply(
+    protected void _updateRelated(
                     final Definition object
                     )
     throws PersistenceException
@@ -223,9 +232,9 @@ public class DefinitionDao
 
 
     @Override
-    protected void _copyProperties(
-                    final Definition p_object,
-                    final Definition object
+    protected void _syncProperties(
+                    final Definition   object,
+                    final Definition p_object
                     )
     {
         if (p_object == null) {
@@ -258,13 +267,13 @@ public class DefinitionDao
 
 
     @Override
-    protected void _syncDeeply(
+    protected void _syncRelated(
                     final Definition object,
                     final Definition p_object
                     )
     throws PersistenceException
     {
-        super._syncDeeply( object, p_object );
+//        super._syncDeeply( object, p_object );
         _beforePersist( object );
 
         Metadata  meta = object.getMetadata();
@@ -272,7 +281,7 @@ public class DefinitionDao
         // metadata.reference
         Collection<Reference>  refs = meta.getReference();
         Collection<Reference>  p_refs = new ArrayList<Reference>();
-        if (refs != null  &&  refs.size() > 0) {
+        if (refs != null) {
             for (Reference  ref : refs) {
                 Reference  p_ref = _sync( Reference.class, ref );
                 if (p_ref == null) {

@@ -65,7 +65,7 @@ public class VariableDao
     //**************************************************************
 
     @Override
-    protected void _createRelatedTo(
+    protected void _createRelated(
                     final Variable object
                     )
     throws PersistenceException
@@ -76,7 +76,7 @@ public class VariableDao
 
 
     @Override
-    protected void _updateDeeply(
+    protected void _updateRelated(
                     final Variable object
                     )
     throws PersistenceException
@@ -87,23 +87,23 @@ public class VariableDao
 
 
     @Override
-    protected void _copyProperties(
-                    final Variable p_object,
-                    final Variable object
+    protected void _syncProperties(
+                    final Variable object,
+                    final Variable p_object
                     )
     {
         if (p_object == null) {
             return;
         }
 
-        super._copyProperties( p_object, object );
+        super._syncProperties( object, p_object );
         _beforePersist( p_object );
     }
 
 
 
     @Override
-    protected void _syncDeeply(
+    protected void _syncRelated(
                     final Variable object,
                     final Variable p_object
                     )
@@ -111,7 +111,7 @@ public class VariableDao
     {
         _beforePersist( object );
 
-        super._syncDeeply( object, p_object );
+//        super._syncDeeply( object, p_object );
         //no related object
     }
 
