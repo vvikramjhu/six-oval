@@ -16,13 +16,13 @@ import java.util.Collection;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class StoreQueryTest
+public class OvalStoreQueryTest
     extends OvalStoreTest
 {
 
     /**
      */
-    public StoreQueryTest()
+    public OvalStoreQueryTest()
     {
     }
 
@@ -40,16 +40,30 @@ public class StoreQueryTest
         Reporter.log( "  * object type: " + type, true );
         Reporter.log( "  * filter: " + filter, true );
 
-        Reporter.log( "find..." , true );
+        Reporter.log( "count..." , true );
         long  time = System.currentTimeMillis();
-        Collection<T>  persistents = _getStore().find( type, filter );
-        Reporter.log( "...find done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+        int  count = _getStore().count( type, filter );
+        Reporter.log( "...count done: "
+                        + (System.currentTimeMillis() - time) + "(ms)", true );
+        Reporter.log( "results: #objects=" + count, true );
 
-        Reporter.log( "results: #objects=" + persistents.size(), true );
-        for (T  persistent : persistents) {
-            K  pid = persistent.getPersistentID();
+        Reporter.log( "findIdentity..." , true );
+        time = System.currentTimeMillis();
+        Collection<K>  pids = _getStore().findIdentity( type, filter );
+        Reporter.log( "...findIdentity done: "
+                        + (System.currentTimeMillis() - time) + "(ms)", true );
+        Reporter.log( "results: #ids=" + pids.size(), true );
+        Reporter.log( "        @ ids=" + pids, true );
+
+        Reporter.log( "find..." , true );
+        time = System.currentTimeMillis();
+        Collection<T>  pobjects = _getStore().find( type, filter );
+        Reporter.log( "...find done: "
+                        + (System.currentTimeMillis() - time) + "(ms)", true );
+        Reporter.log( "results: #objects=" + pobjects.size(), true );
+        for (T  pobject : pobjects) {
+            K  pid = pobject.getPersistentID();
             Reporter.log( "  @ pid=" + pid, true );
-            Reporter.log( "  @ object=" + persistent, true );
         }
     }
 
@@ -63,7 +77,7 @@ public class StoreQueryTest
     public Object[][] provideDefinitionsDefinitionQuery()
     {
         RelationalBinding  classFilter =
-            RelationalBinding.equalBinding(
+            RelationalBinding.notEqualBinding(
                             "definitionClass",
                             DefinitionClass.VULNERABILITY
             );
@@ -100,6 +114,7 @@ public class StoreQueryTest
     }
 
 
+
     @org.testng.annotations.Test(
                     groups={"oval.core.store", "query.definitions.definition"},
                     dataProvider="query.definitions.definition",
@@ -115,7 +130,5 @@ public class StoreQueryTest
     }
 
 }
-// StoreQueryTest
-
-/* vim:set tabstop=4:set expandtab:set shiftwidth=4: */
+// OvalStoreQueryTest
 
