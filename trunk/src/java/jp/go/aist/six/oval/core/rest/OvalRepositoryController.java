@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.rest;
 
-import jp.go.aist.six.oval.core.store.OvalStore;
+import jp.go.aist.six.oval.core.store.OvalDataStore;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
@@ -81,7 +81,7 @@ public class OvalRepositoryController
     /**
      * The data store sole instance.
      */
-    private OvalStore  _store;
+    private OvalDataStore  _store;
 
 
 
@@ -97,7 +97,7 @@ public class OvalRepositoryController
     /**
      */
     public void setStore(
-                    final OvalStore store
+                    final OvalDataStore store
                     )
     {
         _store = store;

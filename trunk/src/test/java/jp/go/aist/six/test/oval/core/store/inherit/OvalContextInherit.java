@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.test.oval.core.store.inherit;
 
-import jp.go.aist.six.oval.core.store.OvalStore;
+import jp.go.aist.six.oval.core.store.OvalDataStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -70,7 +70,7 @@ public class OvalContextInherit
     /**
      * The data store sole instance.
      */
-    private OvalStore  _store;
+    private OvalDataStore  _store;
 
 
     /**
@@ -160,10 +160,10 @@ public class OvalContextInherit
 
     /**
      */
-    public OvalStore getStore()
+    public OvalDataStore getStore()
     {
         if (_store == null) {
-            _store = _getContext().getBean( "ovalStore", OvalStore.class );
+            _store = _getContext().getBean( "ovalStore", OvalDataStore.class );
         }
 
         return _store;
