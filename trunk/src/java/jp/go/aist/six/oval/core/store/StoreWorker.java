@@ -90,8 +90,22 @@ public class StoreWorker<K, T extends Persistable<K>>
                     final DataStore store
                     )
     {
+        this( type, store, null );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public StoreWorker(
+                    final Class<T> type,
+                    final DataStore store,
+                    final StoreWorkerRegistry registry
+                    )
+    {
         setObjectType( type );
         setDataStore( store );
+        setRegistry( registry );
     }
 
 
@@ -147,7 +161,12 @@ public class StoreWorker<K, T extends Persistable<K>>
                     final Class<S> type
                     )
     {
-        return _registry.getWorker( type );
+        StoreWorker<L, S>  worker = null;
+        if (_registry != null) {
+            worker = _registry.getWorker( type );
+        }
+
+        return worker;
     }
 
 
@@ -227,7 +246,7 @@ public class StoreWorker<K, T extends Persistable<K>>
                     )
     {
         S  p_object = null;
-        StoreWorker<J, S>  worker = _registry.getWorker( type );
+        StoreWorker<J, S>  worker = getForwardingWorker( type );
         if (worker == null) {
             p_object = _getDataStore().sync( type, object );
         } else {

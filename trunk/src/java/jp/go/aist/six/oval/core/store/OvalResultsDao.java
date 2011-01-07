@@ -74,6 +74,18 @@ public class OvalResultsDao
                                     ovalResultsPID, ovalDefs.getPersistentID() );
             _sync( OvalResultsOvalDefinitionsAssociationEntry.class, assoc );
         }
+
+        SystemResults  sysResults = ovalResults.getResults();
+        if (sysResults != null) {
+            for (SystemResult  sysResult : sysResults) {
+                SystemResultOvalSystemCharacteristicsAssociationEntry assoc =
+                    new SystemResultOvalSystemCharacteristicsAssociationEntry(
+                                    sysResult.getPersistentID(),
+                                    sysResult.getOvalSystemCharacteristics().getPersistentID()
+                                    );
+                _sync( SystemResultOvalSystemCharacteristicsAssociationEntry.class, assoc );
+            }
+        }
     }
 
 

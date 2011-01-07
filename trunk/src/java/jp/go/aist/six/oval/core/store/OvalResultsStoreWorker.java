@@ -55,7 +55,19 @@ public class OvalResultsStoreWorker
                     final DataStore store
                     )
     {
-        super( OvalResults.class, store );
+        this( store, null );
+    }
+
+
+    /**
+     * Constructor.
+     */
+    public OvalResultsStoreWorker(
+                    final DataStore store,
+                    final StoreWorkerRegistry registry
+                    )
+    {
+        super( OvalResults.class, store, registry );
     }
 
 
@@ -102,18 +114,30 @@ public class OvalResultsStoreWorker
 
         String  pid = object.getPersistentID();
 
-        Collection<OvalDefinitions>  p_defs = _loadAssociated( pid, OvalDefinitions.class,
-                            OvalResultsOvalDefinitionsAssociationEntry.class );
+        Collection<OvalDefinitions>  p_defs =
+            _loadAssociated(
+                            pid,
+                            OvalDefinitions.class,
+                            OvalResultsOvalDefinitionsAssociationEntry.class
+                            );
         if (p_defs != null  &&  p_defs.size() > 0) {
             object.setOvalDefinitions( p_defs.iterator().next() );
         }
 
         SystemResults  sysResults = object.getResults();
-//        Collection<OvalSystemCharacteristics>  p_scs = _loadAssociated( pid, OvalSystemCharacteristics.class,
-//                        OvalSystemResultsOvalSystemCharacteristicsAssociationEntry.class );
-//        if (p_scs != null  &&  p_scs.size() > 0) {
-//            object.setOvalDefinitions( p_defs.iterator().next() );
-//        }
+        if (sysResults != null) {
+            for (SystemResult  sysResult : sysResults) {
+                Collection<OvalSystemCharacteristics>  p_scs =
+                    _loadAssociated(
+                                    sysResult.getPersistentID(),
+                                    OvalSystemCharacteristics.class,
+                                    SystemResultOvalSystemCharacteristicsAssociationEntry.class
+                                    );
+                if (p_scs != null  &&  p_scs.size() > 0) {
+                    sysResult.setOvalSystemCharacteristics( p_scs.iterator().next() );
+                }
+            }
+        }
     }
 
 }

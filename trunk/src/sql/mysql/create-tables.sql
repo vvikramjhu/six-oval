@@ -1044,14 +1044,14 @@ CREATE TABLE IF NOT EXISTS oval_r_system
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
     /* (FK) */
-    s_sc__PID           CHAR(36)        NOT NULL,
     r_results__PID      CHAR(36)        NOT NULL,
+/*  s_sc__PID           CHAR(36)        NOT NULL, */ /*** assoc table ***/
 
     /* (PK) */
     PRIMARY KEY (PID),
     
     /* INDEX */
-    INDEX (s_sc__PID),
+/*  INDEX (s_sc__PID), */
     INDEX (r_results__PID)
 )
 ENGINE=InnoDB
@@ -1060,22 +1060,21 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
-/* deprecated:                                                    */
-/* OvalResults - SystemResult association                         */
+/* SystemResult - OvalSystemCharacteristics association           */
 /* ============================================================== */
-CREATE TABLE IF NOT EXISTS oval_assoc__r_results__r_system
+CREATE TABLE IF NOT EXISTS oval_assoc__r_system__s_sc
 (
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
     /* (FK) */
-    r_results__PID      CHAR(36)        NOT NULL,
     r_system__PID       INT             NOT NULL,
+    s_sc__PID           CHAR(36)        NOT NULL,
 
     /* (PK) */
     PRIMARY KEY (PID),
     
     /* INDEX */
-    UNIQUE (r_results__PID, r_system__PID)
+    UNIQUE (r_system__PID, s_sc__PID)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;

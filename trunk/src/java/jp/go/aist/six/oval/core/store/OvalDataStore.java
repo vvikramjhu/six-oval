@@ -83,8 +83,8 @@ public class OvalDataStore
                     )
     {
         StoreWorkerRegistry   reg = new StoreWorkerRegistry( datastore );
-        reg.addEntry( OvalDefinitions.class, new OvalDefinitionsStoreWorker( datastore ) );
-        reg.addEntry( OvalResults.class,     new OvalResultsStoreWorker(     datastore ) );
+        reg.addEntry( OvalDefinitions.class, new OvalDefinitionsStoreWorker( datastore, reg ) );
+        reg.addEntry( OvalResults.class,     new OvalResultsStoreWorker(     datastore, reg ) );
 
         return reg;
     }
@@ -97,7 +97,6 @@ public class OvalDataStore
                     )
     {
         StoreWorker<K, T>  worker = _workerRegistry.getWorker( type );
-        worker.setRegistry( _workerRegistry );
 
         return worker;
     }

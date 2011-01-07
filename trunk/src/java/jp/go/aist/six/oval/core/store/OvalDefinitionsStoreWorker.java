@@ -61,7 +61,20 @@ public class OvalDefinitionsStoreWorker
                     final DataStore store
                     )
     {
-        super( OvalDefinitions.class, store );
+        this( store, null );
+    }
+
+
+
+    /**
+     * Constructor.
+     */
+    public OvalDefinitionsStoreWorker(
+                    final DataStore store,
+                    final StoreWorkerRegistry registry
+                    )
+    {
+        super( OvalDefinitions.class, store, registry );
     }
 
 

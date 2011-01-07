@@ -15,7 +15,7 @@ use @six.db.database@;
 /* resutls */
 
 DELETE FROM oval_assoc__r_results__d_definitions;
-DELETE FROM oval_assoc__r_results__r_system;
+DELETE FROM oval_assoc__r_system__s_sc;
 
 DELETE FROM oval_r_tested_variable;
 DELETE FROM oval_r_tested_item;

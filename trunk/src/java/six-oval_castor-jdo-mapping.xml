@@ -1421,6 +1421,27 @@
 
 
 
+    <class name="jp.go.aist.six.oval.core.store.SystemResultOvalSystemCharacteristicsAssociationEntry"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <map-to table="oval_assoc__r_system__s_sc"/>
+
+        <field name="persistentID" type="integer">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="r_system__PID" type="integer"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="s_sc__PID" type="char"/>
+        </field>
+    </class>
+
+
+
     <!-- ******************************************************* -->
     <!-- DefinitionResult                                        -->
     <!-- ******************************************************* -->

@@ -15,7 +15,7 @@ use @six.db.database@;
 /* results */
 
 DROP TABLE IF EXISTS oval_assoc__r_results__d_definitions;
-DROP TABLE IF EXISTS oval_assoc__r_results__r_system;
+DROP TABLE IF EXISTS oval_assoc__r_system__s_sc;
 
 DROP TABLE IF EXISTS oval_r_tested_variable;
 DROP TABLE IF EXISTS oval_r_tested_item;

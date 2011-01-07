@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.model.results.SystemResult;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.util.persist.AssociationEntry;
 
 
@@ -32,14 +32,14 @@ import jp.go.aist.six.util.persist.AssociationEntry;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class OvalResultsOvalDefinitionsAssociationEntry
+public class SystemResultOvalSystemCharacteristicsAssociationEntry
     extends AssociationEntry<Integer, String, String>
 {
 
     /**
      * Constructor.
      */
-    public OvalResultsOvalDefinitionsAssociationEntry()
+    public SystemResultOvalSystemCharacteristicsAssociationEntry()
     {
     }
 
@@ -47,26 +47,26 @@ public class OvalResultsOvalDefinitionsAssociationEntry
     /**
      * Constructor.
      */
-    public OvalResultsOvalDefinitionsAssociationEntry(
-                    final OvalResults ovalResults,
-                    final OvalDefinitions ovalDefs
+    public SystemResultOvalSystemCharacteristicsAssociationEntry(
+                    final SystemResult sysResult,
+                    final OvalSystemCharacteristics ovalSC
                     )
     {
-        super( ovalResults, ovalDefs );
+        super( sysResult, ovalSC);
     }
 
 
     /**
      * Constructor.
      */
-    public OvalResultsOvalDefinitionsAssociationEntry(
-                    final String ovalResultsPID,
-                    final String ovalDefsPID
+    public SystemResultOvalSystemCharacteristicsAssociationEntry(
+                    final String sysResultPID,
+                    final String ovalSCPID
                     )
     {
-        super( ovalResultsPID, ovalDefsPID );
+        super( sysResultPID, ovalSCPID );
     }
 
 
 }
-// OvalResultsOvalDefinitionsAssociationEntry
+// SystemResultOvalSystemCharacteristicsAssociationEntry
