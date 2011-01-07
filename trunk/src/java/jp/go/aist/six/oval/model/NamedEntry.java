@@ -32,7 +32,7 @@ import jp.go.aist.six.util.castor.CastorPersistable;
  */
 public abstract class NamedEntry<K>
     extends CastorPersistable<K>
-    implements Comparable<NamedEntry<K>>
+    implements Comparable<NamedEntry<K>>, OvalObject<K>
 {
 
     private String  _name;
