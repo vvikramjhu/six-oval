@@ -33,8 +33,6 @@ import jp.go.aist.six.util.persist.PersistenceException;
 import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.RelationalBinding;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 
 
@@ -90,49 +88,6 @@ public class LocalOvalRepository
 
 
 
-    // StoreWorker
-
-    private final Map<Class<? extends OvalObject<?>>, StoreWorker<?, ?>>  _workers =
-        new HashMap<Class<? extends OvalObject<?>>, StoreWorker<?, ?>>();
-
-
-//    @SuppressWarnings( "unchecked" )
-    private <K, T extends OvalObject<K>> StoreWorker<K, T> _getWorker(
-                    final Class<T> type
-                    )
-    {
-        StoreWorker<?, ?>  worker = _workers.get( type );
-        if (worker == null) {
-            if (OvalDefinitions.class.isAssignableFrom( type )) {
-                worker = new OvalDefinitionsStoreWorker();
-                _workers.put( type, worker );
-            }
-        }
-
-        @SuppressWarnings( "unchecked" )
-        StoreWorker<K, T>  w = (StoreWorker<K, T>)worker;
-
-        return w;
-    }
-
-//    @SuppressWarnings( "unchecked" )
-//    private <K, T extends OvalObject<K>> StoreWorker<K, T> _getW(
-//                    final Class<T> type
-//                    )
-//    {
-//        StoreWorker<K, T>  worker = (StoreWorker<K, T>)_workers.get( type );
-//        if (worker == null) {
-//            if (OvalDefinitions.class.isAssignableFrom( type )) {
-//                worker = new OvalDefinitionsStoreWorker();
-//                _workers.put( type, worker );
-//            }
-//        }
-//
-//        return worker;
-//    }
-
-
-
     //**************************************************************
     // OvalRepository
     //**************************************************************
@@ -144,15 +99,7 @@ public class LocalOvalRepository
                     )
     throws OvalRepositoryException
     {
-        StoreWorker<K, T>  worker = _getWorker( type );
-        K  pid = null;
-        if (worker == null) {
-            pid = _store.create( type, object );
-        } else {
-            pid = worker.create( _store, object );
-        }
-
-        return pid;
+        return _store.create( type, object );
     }
 
 
@@ -163,15 +110,7 @@ public class LocalOvalRepository
                     )
     throws OvalRepositoryException
     {
-        StoreWorker<K, T>  worker = _getWorker( type );
-        T  p_object = null;
-        if (worker == null) {
-            p_object = _store.sync( type, object );
-        } else {
-            p_object = worker.sync( _store, object );
-        }
-
-        return p_object;
+        return _store.sync( type, object );
     }
 
 
@@ -183,15 +122,7 @@ public class LocalOvalRepository
                     )
     throws OvalRepositoryException
     {
-        StoreWorker<K, T>  worker = _getWorker( type );
-        T  p_object = null;
-        if (worker == null) {
-            p_object = _store.load( type, pid );
-        } else {
-            p_object = worker.get( _store, pid, view );
-        }
-
-        return p_object;
+        return _store.load( type, pid );
     }
 
 

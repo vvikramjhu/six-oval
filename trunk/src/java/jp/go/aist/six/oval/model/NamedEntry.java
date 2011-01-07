@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model;
 
+import jp.go.aist.six.util.castor.CastorPersistable;
+
 
 
 /**
@@ -28,15 +30,19 @@ package jp.go.aist.six.oval.model;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class NameEntity
-    extends AbstractOvalObject
-    implements Comparable<NameEntity>
+public abstract class NamedEntry<K>
+    extends CastorPersistable<K>
+    implements Comparable<NamedEntry<K>>
 {
+
+    private String  _name;
+
+
 
     /**
      * Constructor.
      */
-    public NameEntity()
+    public NamedEntry()
     {
     }
 
@@ -44,7 +50,7 @@ public abstract class NameEntity
     /**
      * Constructor.
      */
-    public NameEntity(
+    public NamedEntry(
                     final String name
                     )
     {
@@ -53,18 +59,17 @@ public abstract class NameEntity
 
 
 
-    // We use the name as the persistent ID.
     public void setName(
                     final String name
                     )
     {
-        setPersistentID( name );
+        _name = name;
     }
 
 
     public String getName()
     {
-        return getPersistentID();
+        return _name;
     }
 
 
@@ -74,7 +79,7 @@ public abstract class NameEntity
     //**************************************************************
 
     public int compareTo(
-                    final NameEntity o
+                    final NamedEntry<K> o
                     )
     {
         return String.CASE_INSENSITIVE_ORDER.compare( getName(), o.getName() );
@@ -112,20 +117,26 @@ public abstract class NameEntity
             return true;
         }
 
-        if (!(obj instanceof NameEntity)) {
+        if (! NameEntity.class.isInstance( obj )) {
             return false;
         }
 
-        NameEntity  other = (NameEntity)obj;
-        String  other_name = other.getName();
-        String   this_name =  this.getName();
-        if (this_name == other_name
-                        ||  (this_name != null
-                                        &&  this_name.equalsIgnoreCase( other_name ))) {
-                return true;
+        boolean  result = false;
+        try {
+            @SuppressWarnings( "unchecked" )
+            NamedEntry<K>  other = (NamedEntry<K>)obj;
+            String  otherName = other.getName();
+            String   thisName =  this.getName();
+            if (thisName == otherName
+                            ||  (thisName != null
+                                            &&  thisName.equalsIgnoreCase( otherName ))) {
+                result = true;
+            }
+        } catch (ClassCastException ex) {
+            result = false;
         }
 
-        return false;
+        return result;
     }
 
 
@@ -137,4 +148,4 @@ public abstract class NameEntity
     }
 
 }
-// NameEntity
+// NamedEntry
