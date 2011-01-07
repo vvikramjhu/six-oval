@@ -22,6 +22,9 @@ package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.model.results.SystemResult;
+import jp.go.aist.six.oval.model.results.SystemResults;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.persist.PersistenceException;
 import org.apache.commons.logging.Log;
@@ -76,6 +79,13 @@ public class OvalResultsStoreWorker
             _sync( OvalDefinitions.class, ovalDefs );
         }
 
+        SystemResults  sysResults = object.getResults();
+        if (sysResults != null) {
+            for (SystemResult  sysResult : sysResults) {
+                OvalSystemCharacteristics  ovalSC = sysResult.getOvalSystemCharacteristics();
+                _sync( OvalSystemCharacteristics.class, ovalSC );
+            }
+        }
     }
 
 
@@ -97,6 +107,13 @@ public class OvalResultsStoreWorker
         if (p_defs != null  &&  p_defs.size() > 0) {
             object.setOvalDefinitions( p_defs.iterator().next() );
         }
+
+        SystemResults  sysResults = object.getResults();
+//        Collection<OvalSystemCharacteristics>  p_scs = _loadAssociated( pid, OvalSystemCharacteristics.class,
+//                        OvalSystemResultsOvalSystemCharacteristicsAssociationEntry.class );
+//        if (p_scs != null  &&  p_scs.size() > 0) {
+//            object.setOvalDefinitions( p_defs.iterator().next() );
+//        }
     }
 
 }
