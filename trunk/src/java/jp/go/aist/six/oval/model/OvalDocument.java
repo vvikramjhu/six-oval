@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model;
 
+import java.util.UUID;
+
 
 
 /**
@@ -84,6 +86,15 @@ public abstract class OvalDocument
 
 
     /**
+     * Constructor.
+     */
+    public OvalDocument()
+    {
+    }
+
+
+
+    /**
      */
     public void getSchemaLocation(
                     final String location
@@ -96,6 +107,24 @@ public abstract class OvalDocument
     public String getSchemaLocation()
     {
         return (_schemaLocation == null ? RESULTS_SCHEMA_LOCATION : _schemaLocation);
+    }
+
+
+
+    //**************************************************************
+    //  Persistable
+    //**************************************************************
+
+    @Override
+    public synchronized String getPersistentID()
+    {
+        String  pid = super.getPersistentID();
+        if (pid == null) {
+            pid = UUID.randomUUID().toString();
+            setPersistentID( pid );
+        }
+
+        return pid;
     }
 
 }

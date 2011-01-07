@@ -28,9 +28,12 @@ import jp.go.aist.six.oval.model.results.SystemResult;
 import jp.go.aist.six.oval.model.results.SystemResults;
 import jp.go.aist.six.oval.model.results.TestResult;
 import jp.go.aist.six.oval.model.results.TestResults;
+import jp.go.aist.six.oval.model.results.TestedItem;
+import jp.go.aist.six.oval.model.results.TestedVariable;
 import jp.go.aist.six.util.BeansUtil;
 import jp.go.aist.six.util.castor.CastorDao;
 import jp.go.aist.six.util.persist.PersistenceException;
+import java.util.Collection;
 import java.util.UUID;
 
 
@@ -110,6 +113,20 @@ public class OvalResultsDao
                 TestResults  testResults = sysResult.getTests();
                 for (TestResult  testResult : testResults) {
                     testResult.setMasterObject( sysResult );
+
+                    Collection<TestedItem>  items = testResult.getTestedItem();
+                    if (items != null) {
+                        for (TestedItem  item : items) {
+                            item.setMasterObject( testResult );
+                        }
+                    }
+
+                    Collection<TestedVariable>  variables = testResult.getTestedVariable();
+                    if (variables != null) {
+                        for (TestedVariable  variable : variables) {
+                            variable.setMasterObject( testResult );
+                        }
+                    }
                 }
             }
         }

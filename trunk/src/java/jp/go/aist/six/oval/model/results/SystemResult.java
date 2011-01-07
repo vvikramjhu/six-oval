@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.results;
 import jp.go.aist.six.oval.model.AbstractOvalObject;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.util.persist.Dependent;
+import java.util.UUID;
 
 
 
@@ -234,6 +235,24 @@ public class SystemResult
     public OvalResults getMasterObject()
     {
         return _master;
+    }
+
+
+
+    //**************************************************************
+    //  Persistable
+    //**************************************************************
+
+    @Override
+    public synchronized String getPersistentID()
+    {
+        String  pid = super.getPersistentID();
+        if (pid == null) {
+            pid = UUID.randomUUID().toString();
+            setPersistentID( pid );
+        }
+
+        return pid;
     }
 
 

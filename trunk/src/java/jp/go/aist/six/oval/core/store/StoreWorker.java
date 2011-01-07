@@ -214,9 +214,30 @@ public class StoreWorker<K, T extends Persistable<K>>
     throws PersistenceException
     {
         List<M>  depPIDs = _findAssociatedPersistentID( antecendentPID, associationType );
-        List<D>  deps = _getDataStore().loadAll( dependentType, depPIDs );
+        List<D>  deps = _loadAll( dependentType, depPIDs );
 
         return deps;
+    }
+
+
+
+    /**
+     */
+    protected <J, S extends Persistable<J>>
+    List<S> _loadAll(
+                    final Class<S> type,
+                    final List<J> pids
+                    )
+    {
+        List<S>  p_objects = null;
+        StoreWorker<J, S>  worker = getForwardingWorker( type );
+        if (worker == null) {
+            p_objects = _getDataStore().loadAll( type, pids );
+        } else {
+            p_objects = worker.loadAll( pids );
+        }
+
+        return p_objects;
     }
 
 
@@ -280,6 +301,7 @@ public class StoreWorker<K, T extends Persistable<K>>
     {
         // default: Do nothing.
     }
+
 
 
 

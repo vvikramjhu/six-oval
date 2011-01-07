@@ -1380,12 +1380,15 @@
     <class name="jp.go.aist.six.oval.model.results.SystemResult"
         depends="jp.go.aist.six.oval.model.results.OvalResults"
         identity="persistentID"
-        key-generator="IDENTITY">
+        >
+<!--
+        key-generator="IDENTITY"
+-->
         
         <map-to table="oval_r_system"/>
 
         <field name="persistentID" type="string">
-            <sql name="PID" type="integer"/>
+            <sql name="PID" type="char"/>
         </field>
 
 <!--
@@ -1406,11 +1409,12 @@
             <sql many-key="r_system__PID"/>
         </field>
 
-        <!-- (FK) -->
+        <!-- (FK) ==> assoc table 
         <field name="ovalSystemCharacteristics" 
             type="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics">
             <sql name="s_sc__PID"/>
         </field>
+        -->
 
         <!-- (FK) -->
         <field name="masterObject" 
@@ -1432,7 +1436,7 @@
         </field>
 
         <field name="antecendentPersistentID" type="string">
-            <sql name="r_system__PID" type="integer"/>
+            <sql name="r_system__PID" type="char"/>
         </field>
 
         <field name="dependentPersistentID" type="string">

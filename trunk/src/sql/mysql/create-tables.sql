@@ -1041,7 +1041,9 @@ CHARACTER SET utf8;
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_r_system
 (
-    PID                 INT             NOT NULL    AUTO_INCREMENT,
+    PID                 CHAR(36)        NOT NULL,
+                        /* UUID */
+/*  PID                 INT             NOT NULL    AUTO_INCREMENT, */
 
     /* (FK) */
     r_results__PID      CHAR(36)        NOT NULL,
@@ -1067,7 +1069,7 @@ CREATE TABLE IF NOT EXISTS oval_assoc__r_system__s_sc
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
     /* (FK) */
-    r_system__PID       INT             NOT NULL,
+    r_system__PID       CHAR(36)        NOT NULL,
     s_sc__PID           CHAR(36)        NOT NULL,
 
     /* (PK) */

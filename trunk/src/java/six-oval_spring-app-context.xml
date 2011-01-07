@@ -99,6 +99,9 @@
                 <entry key="jp.go.aist.six.oval.core.store.OvalResultsOvalDefinitionsAssociationEntry"
                     value="jp.go.aist.six.oval.core.store.OvalResultsOvalDefinitionsAssociationEntryDao"/>
 
+                <entry key="jp.go.aist.six.oval.core.store.SystemResultOvalSystemCharacteristicsAssociationEntry"
+                    value="jp.go.aist.six.oval.core.store.SystemResultOvalSystemCharacteristicsAssociationEntryDao"/>
+
 
             <!-- // deprecated // -->
 
