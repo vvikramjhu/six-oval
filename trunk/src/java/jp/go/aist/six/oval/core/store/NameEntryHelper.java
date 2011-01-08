@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.OvalEntity;
+import jp.go.aist.six.oval.model.NamedEntry;
 import jp.go.aist.six.util.castor.PersistenceHelper;
 
 
@@ -29,11 +29,11 @@ import jp.go.aist.six.util.castor.PersistenceHelper;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalEntityHelper<T extends OvalEntity>
+public class NameEntryHelper<K, T extends NamedEntry<K>>
     extends PersistenceHelper<T>
 {
 
-    public OvalEntityHelper()
+    public NameEntryHelper()
     {
     }
 
@@ -57,8 +57,7 @@ public class OvalEntityHelper<T extends OvalEntity>
                     )
     {
         return (new Object[] {
-                        object.getOvalID(),
-                        Integer.valueOf( object.getOvalVersion() )
+                        object.getName(),
         });
     }
 
@@ -67,9 +66,9 @@ public class OvalEntityHelper<T extends OvalEntity>
     @Override
     public String getUniqueFilter()
     {
-        return "WHERE o.ovalID = $1 AND o.ovalVersion = $2";
+        return "WHERE o.name = $1";
     }
 
 }
-// OvalEntityHelper
+// NamedEntryHelper
 

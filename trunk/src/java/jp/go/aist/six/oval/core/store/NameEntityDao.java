@@ -20,9 +20,8 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.NameEntity;
+import jp.go.aist.six.oval.model.NamedEntry;
 import jp.go.aist.six.util.castor.CastorDao;
-import jp.go.aist.six.util.castor.PersistenceHelper;
 
 
 
@@ -30,8 +29,8 @@ import jp.go.aist.six.util.castor.PersistenceHelper;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class NameEntityDao<T extends NameEntity>
-    extends CastorDao<String, T>
+public abstract class NameEntityDao<K, T extends NamedEntry<K>>
+    extends CastorDao<K, T>
 {
 
     /**
@@ -49,7 +48,7 @@ public abstract class NameEntityDao<T extends NameEntity>
                     final Class<? extends T> type
                     )
     {
-        this( type, new PersistenceHelper<T>() );
+        this( type, new NameEntryHelper<K, T>() );
     }
 
 
@@ -58,7 +57,7 @@ public abstract class NameEntityDao<T extends NameEntity>
      */
     public NameEntityDao(
                     final Class<? extends T> type,
-                    final PersistenceHelper<? super T> helper
+                    final NameEntryHelper<K, ? super T> helper
                     )
     {
         super( type, helper );
