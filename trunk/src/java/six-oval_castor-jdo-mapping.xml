@@ -611,6 +611,7 @@
         key-generator="IDENTITY"
         >
 
+        <cache-type type="unlimited"/>
         <map-to table="oval_d_platform"/>
 
         <field name="persistentID" type="integer">
@@ -631,6 +632,7 @@
         key-generator="IDENTITY"
         >
         
+        <cache-type type="unlimited"/>
         <map-to table="oval_d_product"/>
 
         <field name="persistentID" type="integer">
@@ -652,6 +654,7 @@
         key-generator="IDENTITY"
         >
         
+        <cache-type type="unlimited"/>
         <map-to table="oval_d_cve"/>
 
         <field name="persistentID" type="integer">
