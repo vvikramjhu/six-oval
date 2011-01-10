@@ -117,7 +117,7 @@ public abstract class NamedEntry<K>
             return true;
         }
 
-        if (! NameEntity.class.isInstance( obj )) {
+        if (! NamedEntry.class.isInstance( obj )) {
             return false;
         }
 

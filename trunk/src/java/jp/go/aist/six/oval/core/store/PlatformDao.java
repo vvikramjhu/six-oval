@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.Platform;
  * @version $Id$
  */
 public class PlatformDao
-    extends NameEntityDao<Platform>
+    extends NamedEntryDao<Integer, Platform>
 {
 
     public PlatformDao()

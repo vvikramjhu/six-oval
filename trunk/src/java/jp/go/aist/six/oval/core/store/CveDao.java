@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.Cve;
  * @version $Id$
  */
 public class CveDao
-    extends NameEntityDao<Cve>
+    extends NamedEntryDao<Integer, Cve>
 {
 
     public CveDao()

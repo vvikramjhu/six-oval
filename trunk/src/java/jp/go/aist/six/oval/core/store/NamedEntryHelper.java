@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.NamedEntry;
-import jp.go.aist.six.util.castor.CastorDao;
+import jp.go.aist.six.util.castor.PersistenceHelper;
 
 
 
@@ -29,58 +29,46 @@ import jp.go.aist.six.util.castor.CastorDao;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class NameEntityDao<K, T extends NamedEntry<K>>
-    extends CastorDao<K, T>
+public class NamedEntryHelper<K, T extends NamedEntry<K>>
+    extends PersistenceHelper<T>
 {
 
-    /**
-     * Constructor.
-     */
-    public NameEntityDao()
+    public NamedEntryHelper()
     {
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public NameEntityDao(
-                    final Class<? extends T> type
-                    )
-    {
-        this( type, new NameEntryHelper<K, T>() );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public NameEntityDao(
-                    final Class<? extends T> type,
-                    final NameEntryHelper<K, ? super T> helper
-                    )
-    {
-        super( type, helper );
     }
 
 
 
     //**************************************************************
-    //  Dao, CastorDao
+    //  PersistenceHelper
     //**************************************************************
 
     @Override
-    protected void _syncProperties(
-                    final T object,
-                    final T p_object
+    public boolean hasUnique()
+    {
+        return true;
+    }
+
+
+
+    @Override
+    public Object getUnique(
+                    final T object
                     )
     {
-        if (p_object == null) {
-            return;
-        }
+        return (new Object[] {
+                        object.getName(),
+        });
+    }
 
-        // nothing to copy
+
+
+    @Override
+    public String getUniqueFilter()
+    {
+        return "WHERE o.name = $1";
     }
 
 }
-// NameEntityDao
+// NamedEntryHelper
+

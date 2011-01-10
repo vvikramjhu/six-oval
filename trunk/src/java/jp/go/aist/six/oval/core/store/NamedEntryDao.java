@@ -18,28 +18,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.NamedEntry;
-import java.util.regex.Pattern;
+import jp.go.aist.six.util.BeansUtil;
+import jp.go.aist.six.util.castor.CastorDao;
 
 
 
 /**
- * A CVE name.
- *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
- * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Cve
-    extends NamedEntry<Integer>
+public abstract class NamedEntryDao<K, T extends NamedEntry<K>>
+    extends CastorDao<K, T>
 {
 
     /**
      * Constructor.
      */
-    public Cve()
+    public NamedEntryDao()
     {
     }
 
@@ -47,59 +45,51 @@ public class Cve
     /**
      * Constructor.
      */
-    public Cve(
-                    final String name
+    public NamedEntryDao(
+                    final Class<? extends T> type
                     )
     {
-        super( name );
+        this( type, new NamedEntryHelper<K, T>() );
     }
 
 
-
-    public static final String  PATTERN = "CVE-[12]\\d{3}-\\d{4}";
-
-    private Pattern  _pattern = null;
-
-    public void validate(
-                    final String name
+    /**
+     * Constructor.
+     */
+    public NamedEntryDao(
+                    final Class<? extends T> type,
+                    final NamedEntryHelper<K, ? super T> helper
                     )
     {
-        if (_pattern == null) {
-            _pattern = Pattern.compile( PATTERN );
-        }
-
-        if (_pattern.matcher( name ).matches()) {
-            //valid
-        } else {
-            throw new IllegalArgumentException( "invalid CVE name: " + name );
-        }
+        super( type, helper );
     }
 
 
 
     //**************************************************************
-    //  java.lang.Object
+    //  Dao, CastorDao
     //**************************************************************
 
+    protected static final String[]  _COPY_EXCEPTED_PROPERTIES_ =
+        new String[] {
+        "persistentID",
+        "name"
+        };
+
+
     @Override
-    public int hashCode()
-    {
-        return super.hashCode();
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
+    protected void _syncProperties(
+                    final T   object,
+                    final T p_object
                     )
     {
-        if (!(obj instanceof Cve)) {
-            return false;
+        if (p_object == null) {
+            return;
         }
 
-        return super.equals( obj );
+        BeansUtil.copyPropertiesExcept(
+                        p_object, object, _COPY_EXCEPTED_PROPERTIES_ );
     }
 
 }
-// Cve
+// NamedEntryDao

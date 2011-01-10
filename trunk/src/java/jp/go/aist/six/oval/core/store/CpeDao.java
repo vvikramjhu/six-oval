@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.Cpe;
  * @version $Id$
  */
 public class CpeDao
-    extends NameEntityDao<Cpe>
+    extends NamedEntryDao<Integer, Cpe>
 {
 
     public CpeDao()

@@ -347,12 +347,16 @@ CHARACTER SET utf8;
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_platform
 (
-    PID                 VARCHAR(128)    NOT NULL,
+    PID                 INT             NOT NULL    AUTO_INCREMENT,
+
+    name                VARCHAR(128)    NOT NULL,
                         /* e.g. 'Red Hat Enterprise Linux 5', 'Microsoft Windows XP' */
 
     /* (PK) */
-    PRIMARY KEY (PID)
+    PRIMARY KEY (PID),
 
+    /* INDEX */
+    UNIQUE (name)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;
@@ -367,7 +371,7 @@ CREATE TABLE IF NOT EXISTS oval_assoc__d_definition__d_platform
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
     d_definition__PID   VARCHAR(64)     NOT NULL,
-    d_platform__PID     VARCHAR(128)    NOT NULL,
+    d_platform__PID     INT             NOT NULL,
 
     /* (PK) */
     PRIMARY KEY (PID),
@@ -385,12 +389,16 @@ CHARACTER SET utf8;
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_product
 (
-    PID                 VARCHAR(128)    NOT NULL,
+    PID                 INT             NOT NULL    AUTO_INCREMENT,
+
+    name                VARCHAR(128)    NOT NULL,
                         /* e.g. 'Microsoft Internet Explorer' */
 
     /* (PK) */
-    PRIMARY KEY (PID)
+    PRIMARY KEY (PID),
 
+    /* INDEX */
+    UNIQUE (name)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;
@@ -404,7 +412,7 @@ CREATE TABLE IF NOT EXISTS oval_assoc__d_definition__d_product
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
     d_definition__PID   VARCHAR(64)     NOT NULL,
-    d_product__PID      VARCHAR(128)    NOT NULL,
+    d_product__PID      INT             NOT NULL,
 
     /* (PK) */
     PRIMARY KEY (PID),
@@ -422,11 +430,16 @@ CHARACTER SET utf8;
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_cve
 (
-    PID                 CHAR(13)        NOT NULL,
+    PID                 INT             NOT NULL    AUTO_INCREMENT,
+
+    name                CHAR(13)    NOT NULL,
                         /* e.g. 'CVE-2009-0001' */
 
     /* (PK) */
-    PRIMARY KEY (PID)
+    PRIMARY KEY (PID),
+
+    /* INDEX */
+    UNIQUE (name)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;
@@ -441,7 +454,7 @@ CREATE TABLE IF NOT EXISTS oval_assoc__d_definition__d_cve
     PID                 INT             NOT NULL    AUTO_INCREMENT,
 
     d_definition__PID   VARCHAR(64)     NOT NULL,
-    d_cve__PID          CHAR(13)        NOT NULL,
+    d_cve__PID          INT             NOT NULL,
 
     /* (PK) */
     PRIMARY KEY (PID),

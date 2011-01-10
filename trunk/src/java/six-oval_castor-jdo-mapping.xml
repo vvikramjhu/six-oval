@@ -599,7 +599,6 @@
         <field name="refURL" type="string">
             <sql name="ref_url" type="char"/>
         </field>
-
     </class>
 
 
@@ -609,13 +608,18 @@
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.definitions.Platform"
         identity="persistentID"
+        key-generator="IDENTITY"
         >
+
         <map-to table="oval_d_platform"/>
 
-        <field name="persistentID" type="string">
-            <sql name="PID" type="char"/>
+        <field name="persistentID" type="integer">
+            <sql name="PID" type="integer"/>
         </field>
 
+        <field name="name" type="string">
+            <sql name="name" type="char"/>
+        </field>
     </class>
 
 
@@ -624,14 +628,18 @@
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.definitions.Product"
         identity="persistentID"
+        key-generator="IDENTITY"
         >
         
         <map-to table="oval_d_product"/>
 
-        <field name="persistentID" type="string">
-            <sql name="PID" type="char"/>
+        <field name="persistentID" type="integer">
+            <sql name="PID" type="integer"/>
         </field>
 
+        <field name="name" type="string">
+            <sql name="name" type="char"/>
+        </field>
     </class>
 
 
@@ -641,14 +649,18 @@
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.definitions.Cve"
         identity="persistentID"
+        key-generator="IDENTITY"
         >
         
         <map-to table="oval_d_cve"/>
 
-        <field name="persistentID" type="string">
-            <sql name="PID" type="char"/>
+        <field name="persistentID" type="integer">
+            <sql name="PID" type="integer"/>
         </field>
 
+        <field name="name" type="string">
+            <sql name="name" type="char"/>
+        </field>
     </class>
 
 

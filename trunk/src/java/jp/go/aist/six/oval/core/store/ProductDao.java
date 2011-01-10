@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.Product;
  * @version $Id$
  */
 public class ProductDao
-    extends NameEntityDao<Product>
+    extends NamedEntryDao<Integer, Product>
 {
 
     public ProductDao()
