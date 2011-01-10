@@ -39,6 +39,7 @@ import java.util.Set;
  */
 public class Criteria
     extends CriteriaElement
+    implements Iterable<CriteriaElement>
 {
 
     private Set<CriteriaElement>  _elements = new HashSet<CriteriaElement>();
@@ -209,6 +210,17 @@ public class Criteria
                     )
     {
         return element( new ExtendDefinition( definitionID, comment ) );
+    }
+
+
+
+    //**************************************************************
+    //  Iterable
+    //**************************************************************
+
+    public Iterator<CriteriaElement> iterator()
+    {
+        return iterateElements();
     }
 
 

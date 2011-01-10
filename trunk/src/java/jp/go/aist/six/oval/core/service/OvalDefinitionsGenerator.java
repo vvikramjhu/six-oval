@@ -20,19 +20,33 @@
 
 package jp.go.aist.six.oval.core.service;
 
-import jp.go.aist.six.oval.model.OvalObject;
+import jp.go.aist.six.oval.model.OvalEntity;
+import jp.go.aist.six.oval.model.common.Generator;
+import jp.go.aist.six.oval.model.definitions.Criteria;
+import jp.go.aist.six.oval.model.definitions.CriteriaElement;
+import jp.go.aist.six.oval.model.definitions.Criterion;
 import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.Definitions;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.results.OvalResults;
-import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.service.OvalRepository;
-import jp.go.aist.six.oval.service.OvalRepositoryException;
-import jp.go.aist.six.oval.service.ViewLevel;
+import jp.go.aist.six.oval.model.definitions.State;
+import jp.go.aist.six.oval.model.definitions.StateRef;
+import jp.go.aist.six.oval.model.definitions.States;
+import jp.go.aist.six.oval.model.definitions.SystemObject;
+import jp.go.aist.six.oval.model.definitions.SystemObjectRef;
+import jp.go.aist.six.oval.model.definitions.SystemObjects;
+import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.definitions.Tests;
+import jp.go.aist.six.oval.service.OvalException;
+import jp.go.aist.six.util.IsoDate;
 import jp.go.aist.six.util.persist.DataStore;
-import jp.go.aist.six.util.persist.PersistenceException;
 import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.RelationalBinding;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import java.util.Collection;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 
 
@@ -40,14 +54,19 @@ import java.util.Collection;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class LocalOvalRepository
-    implements OvalRepository
+public class OvalDefinitionsGenerator
 {
 
-//    /**
-//     * Logger.
-//     */
-//    private static Log  _LOG = LogFactory.getLog( LocalOvalRepository.class );
+    /**
+     * Logger.
+     */
+    private static Log  _LOG = LogFactory.getLog( OvalDefinitionsGenerator.class );
+
+
+    public static final String  PRODUCT_NAME    = "SIX OVAL";
+    public static final String  PRODUCT_VERSION = "0.7.0";
+    public static final String  SCHEMA_VERSION  = "5.8";
+
 
 
 
@@ -58,7 +77,7 @@ public class LocalOvalRepository
     /**
      * Constructor.
      */
-    public LocalOvalRepository()
+    public OvalDefinitionsGenerator()
     {
         _init();
     }
@@ -88,160 +107,207 @@ public class LocalOvalRepository
 
 
 
-    //**************************************************************
-    // OvalRepository
-    //**************************************************************
+    /**
+     */
+    private Generator _createGenerator()
+    {
+        Date  timestamp = new Date();
+        Generator  generator = new Generator(
+                        SCHEMA_VERSION,
+                        IsoDate.format( timestamp ),
+                        PRODUCT_NAME,
+                        PRODUCT_VERSION
+                        );
 
-    public <K, T extends OvalObject<K>>
-    K create(
+        return generator;
+    }
+
+
+
+    /**
+     */
+    private void _buildDefinitions(
+                    final OvalDefinitions ovalDefs,
+                    final Set<String> defIDs
+                    )
+    throws OvalException
+    {
+        Definitions  defList = new Definitions();
+        for (String  defID : defIDs) {
+            if (defID == null) {
+                _LOG.warn( "null definition ID specified" );
+                continue;
+            }
+
+            Definition  def = _loadLatestEntity( Definition.class, defID );
+            defList.add( def );
+        }
+
+        ovalDefs.setDefinitions( defList );
+    }
+
+
+
+
+    /**
+     */
+    private void _buildEntitiesForDefinition(
+                    final OvalDefinitions ovalDefs,
+                    final Definition def
+                    )
+    throws OvalException
+    {
+        Criteria  criteria = def.getCriteria();
+        if (criteria == null) {
+            return;
+        }
+
+        Tests  tests = new Tests();
+        ovalDefs.setTests( tests );
+        for (CriteriaElement  element : criteria) {
+            if (Criterion.class.isInstance( element )) {
+                Criterion  criterion = (Criterion)element;
+                String  testID = criterion.getTestRef();
+                Test  test = tests.find( testID );
+                if (test == null) {
+                    test = _loadLatestEntity( Test.class, testID );
+                    tests.add( test );
+
+                    _buildEntitiesForTest( ovalDefs, test );
+                }
+            }
+        }
+    }
+
+
+
+    /**
+     */
+    private void _buildEntitiesForTest(
+                    final OvalDefinitions ovalDefs,
+                    final Test test
+                    )
+    throws OvalException
+    {
+        SystemObjectRef  sysObjRef = test.getObject();
+        if (sysObjRef != null) {
+            SystemObjects  sysObjs = ovalDefs.getObjects();
+            if (sysObjs == null) {
+                sysObjs = new SystemObjects();
+                ovalDefs.setObjects( sysObjs );
+            }
+
+            String  sysObjID = sysObjRef.getObjectRef();
+            SystemObject  sysObj = sysObjs.find( sysObjID );
+            if (sysObj == null) {
+                sysObj = _loadLatestEntity( SystemObject.class, sysObjID );
+                sysObjs.add( sysObj );
+
+                //TODO: load variables!!!
+            }
+        }
+
+
+        Collection<StateRef>  stateRefs = test.getState();
+        if (stateRefs != null  &&  stateRefs.size() > 0) {
+            States  states = ovalDefs.getStates();
+            if (states == null) {
+                states = new States();
+                ovalDefs.setStates( states );
+            }
+
+            for (StateRef  stateRef : stateRefs) {
+                String  stateID = stateRef.getStateRef();
+                State  state = states.find( stateID );
+                if (state == null) {
+                    state = _loadLatestEntity( State.class, stateID );
+                    states.add( state );
+                }
+            }
+        }
+    }
+
+
+
+    /**
+     */
+    private void _buildAllEntities(
+                    final OvalDefinitions ovalDefs,
+                    final Set<String> definitionIDs
+                    )
+    throws OvalException
+    {
+        _buildDefinitions( ovalDefs, definitionIDs );
+
+        for (Definition  def : ovalDefs.getDefinitions()) {
+            _buildEntitiesForDefinition( ovalDefs, def );
+        }
+    }
+
+
+
+    /**
+     */
+    public OvalDefinitions generateIncludingDefinitions(
+                    final Collection<String> definitionIDs
+                    )
+    throws OvalException
+    {
+        if (definitionIDs == null  ||  definitionIDs.size() == 0) {
+            throw new IllegalArgumentException( "no definition ID specified" );
+        }
+
+        OvalDefinitions  ovalDefs = new OvalDefinitions();
+        Set<String>  defIDs = new HashSet<String>( definitionIDs );
+        _buildAllEntities( ovalDefs, defIDs );
+
+        ovalDefs.setGenerator( _createGenerator() );
+        return ovalDefs;
+    }
+
+
+
+    /**
+     */
+    private <T extends OvalEntity> T _loadLatestEntity(
                     final Class<T> type,
-                    final T object
+                    final String ovalID
                     )
-    throws OvalRepositoryException
+    throws OvalException
     {
-        return _store.create( type, object );
-    }
+        Binding  filter = RelationalBinding.equalBinding( "ovalID", ovalID );
+        Collection<T>  entities = _store.find( type, filter );
 
-
-    public <K, T extends OvalObject<K>>
-    T sync(
-                    final Class<T> type,
-                    final T object
-                    )
-    throws OvalRepositoryException
-    {
-        return _store.sync( type, object );
-    }
-
-
-    public <K, T extends OvalObject<K>>
-    T get(
-                    final Class<T> type,
-                    final K pid,
-                    final ViewLevel view
-                    )
-    throws OvalRepositoryException
-    {
-        return _store.load( type, pid );
-    }
-
-
-
-    public String createOvalDefinitions(
-                    final OvalDefinitions definitions
-                    )
-    throws OvalRepositoryException
-    {
-        String  pid = null;
-        try {
-            pid = _store.create( OvalDefinitions.class, definitions );
-        } catch (PersistenceException ex) {
-            throw new OvalRepositoryException( ex );
+        T  latestEntity = null;
+        if (entities.size() == 0) {
+            throw new OvalException( "no such entity: " + ovalID );
+        } else if (entities.size() == 1) {
+            latestEntity = entities.iterator().next();
+        } else {
+            // multiple versions exist.
+            int  maxVersion = 0;
+            T  max = null;
+            for (T  entity : entities) {
+                if (max == null) {
+                    max = entity;
+                    maxVersion = entity.getOvalVersion();
+                } else {
+                    int  version = entity.getOvalVersion();
+                    if (maxVersion < version) {
+                        max = entity;
+                        maxVersion = version;
+                    }
+                }
+                latestEntity = max;
+            }
         }
 
-        return pid;
-    }
-
-
-    public OvalDefinitions getOvalDefinitions(
-                    final String pid
-                    )
-    throws OvalRepositoryException
-    {
-        OvalDefinitions  object = null;
-        try {
-            object = _store.load( OvalDefinitions.class, pid );
-        } catch (PersistenceException ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-        return object;
-    }
-
-
-    public Collection<Definition> findDefinitionByCve(
-                    final String cveName
-                    )
-    throws OvalRepositoryException
-    {
-        Binding  filter = RelationalBinding.equalBinding( "metadata.reference.refID", cveName );
-        Collection<Definition>  objects = null;
-        try {
-            objects = _store.find( Definition.class, filter );
-        } catch (PersistenceException ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-        return objects;
+        return latestEntity;
     }
 
 
 
-    public String createOvalSystemCharacteristics(
-                    final OvalSystemCharacteristics sc
-                    )
-    throws OvalRepositoryException
-    {
-        String  pid = null;
-        try {
-            pid = _store.create( OvalSystemCharacteristics.class, sc );
-        } catch (PersistenceException ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-        return pid;
-    }
-
-
-    public OvalSystemCharacteristics getOvalSystemCharacteristics(
-                    final String pid
-                    )
-    throws OvalRepositoryException
-    {
-        OvalSystemCharacteristics  object = null;
-        try {
-            object = _store.load( OvalSystemCharacteristics.class, pid );
-        } catch (PersistenceException ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-        return object;
-    }
-
-
-
-    public String createOvalResults(
-                    final OvalResults results
-                    )
-    throws OvalRepositoryException
-    {
-        String  pid = null;
-        try {
-            pid = _store.create( OvalResults.class, results );
-        } catch (PersistenceException ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-        return pid;
-    }
-
-
-
-    public OvalResults getOvalResults(
-                    final String pid
-    )
-    throws OvalRepositoryException
-    {
-        OvalResults  object = null;
-        try {
-            object = _store.load( OvalResults.class, pid );
-        } catch (PersistenceException ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-        return object;
-    }
 
 }
-// OvalRepositoryClient
+// OvalDefinitionsGenerator
 
