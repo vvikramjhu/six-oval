@@ -608,19 +608,23 @@
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.definitions.Platform"
         identity="persistentID"
-        key-generator="IDENTITY"
         >
 
         <cache-type type="unlimited"/>
         <map-to table="oval_d_platform"/>
 
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+<!--
+        key-generator="IDENTITY"
         <field name="persistentID" type="integer">
             <sql name="PID" type="integer"/>
         </field>
-
         <field name="name" type="string">
             <sql name="name" type="char"/>
         </field>
+-->
     </class>
 
 
@@ -629,12 +633,16 @@
     <!-- ******************************************************* -->
     <class name="jp.go.aist.six.oval.model.definitions.Product"
         identity="persistentID"
-        key-generator="IDENTITY"
         >
         
         <cache-type type="unlimited"/>
         <map-to table="oval_d_product"/>
 
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+<!--
+        key-generator="IDENTITY"
         <field name="persistentID" type="integer">
             <sql name="PID" type="integer"/>
         </field>
@@ -642,6 +650,7 @@
         <field name="name" type="string">
             <sql name="name" type="char"/>
         </field>
+-->
     </class>
 
 

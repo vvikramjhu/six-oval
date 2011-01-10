@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.NamedEntry;
+import jp.go.aist.six.oval.model.NameEntity;
 
 
 
@@ -32,7 +32,8 @@ import jp.go.aist.six.oval.model.NamedEntry;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Platform
-    extends NamedEntry<Integer>
+    extends NameEntity
+//extends NamedEntry<Integer>
 {
 
     /**

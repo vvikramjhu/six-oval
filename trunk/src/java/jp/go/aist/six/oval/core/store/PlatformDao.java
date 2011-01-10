@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.core.store;
 
 import jp.go.aist.six.oval.model.definitions.Platform;
+import jp.go.aist.six.util.castor.CastorDao;
 
 
 
@@ -29,7 +30,8 @@ import jp.go.aist.six.oval.model.definitions.Platform;
  * @version $Id$
  */
 public class PlatformDao
-    extends NamedEntryDao<Integer, Platform>
+    extends CastorDao<String, Platform>
+//extends NamedEntryDao<Integer, Platform>
 {
 
     public PlatformDao()
