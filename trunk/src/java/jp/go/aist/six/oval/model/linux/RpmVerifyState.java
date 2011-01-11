@@ -26,6 +26,7 @@ import jp.go.aist.six.oval.model.definitions.EntityStateBool;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
+import java.util.Iterator;
 import java.util.Map;
 
 
@@ -95,13 +96,13 @@ public class RpmVerifyState
                     final EntityStateString name
                     )
     {
-        _properties.put( Property.NAME, name );
+        _setStateProperty( Property.NAME, name );
     }
 
 
     public EntityStateString getName()
     {
-        return (EntityStateString)_properties.get( Property.NAME );
+        return _getStateProperty( Property.NAME, EntityStateString.class );
     }
 
 
@@ -112,13 +113,13 @@ public class RpmVerifyState
                     final EntityStateString filepath
                     )
     {
-        _properties.put( Property.FILEPATH, filepath );
+        _setStateProperty( Property.FILEPATH, filepath );
     }
 
 
     public EntityStateString getFilepath()
     {
-        return (EntityStateString)_properties.get( Property.FILEPATH );
+        return _getStateProperty( Property.FILEPATH, EntityStateString.class );
     }
 
 
@@ -129,13 +130,13 @@ public class RpmVerifyState
                     final EntityStateRpmVerifyResult sizeDiffers
                     )
     {
-        _properties.put( Property.SIZE_DIFFERS, sizeDiffers );
+        _setStateProperty( Property.SIZE_DIFFERS, sizeDiffers );
     }
 
 
     public EntityStateRpmVerifyResult getSizeDiffers()
     {
-        return (EntityStateRpmVerifyResult)_properties.get( Property.SIZE_DIFFERS );
+        return _getStateProperty( Property.SIZE_DIFFERS, EntityStateRpmVerifyResult.class );
     }
 
 
@@ -146,13 +147,13 @@ public class RpmVerifyState
                     final EntityStateRpmVerifyResult modeDiffers
                     )
     {
-        _properties.put( Property.MODE_DIFFERS, modeDiffers );
+        _setStateProperty( Property.MODE_DIFFERS, modeDiffers );
     }
 
 
     public EntityStateRpmVerifyResult getModeDiffers()
     {
-        return (EntityStateRpmVerifyResult)_properties.get( Property.MODE_DIFFERS );
+        return _getStateProperty( Property.MODE_DIFFERS, EntityStateRpmVerifyResult.class );
     }
 
 
@@ -163,13 +164,13 @@ public class RpmVerifyState
                     final EntityStateRpmVerifyResult md5Differs
                     )
     {
-        _properties.put( Property.MD5_DIFFERS, md5Differs );
+        _setStateProperty( Property.MD5_DIFFERS, md5Differs );
     }
 
 
     public EntityStateRpmVerifyResult getMd5Differs()
     {
-        return (EntityStateRpmVerifyResult)_properties.get( Property.MD5_DIFFERS );
+        return _getStateProperty( Property.MD5_DIFFERS, EntityStateRpmVerifyResult.class );
     }
 
 
@@ -180,13 +181,13 @@ public class RpmVerifyState
                     final EntityStateRpmVerifyResult deviceDiffers
                     )
     {
-        _properties.put( Property.DEVICE_DIFFERS, deviceDiffers );
+        _setStateProperty( Property.DEVICE_DIFFERS, deviceDiffers );
     }
 
 
     public EntityStateRpmVerifyResult getDeviceDiffers()
     {
-        return (EntityStateRpmVerifyResult)_properties.get( Property.DEVICE_DIFFERS );
+        return _getStateProperty( Property.DEVICE_DIFFERS, EntityStateRpmVerifyResult.class );
     }
 
 
@@ -197,13 +198,13 @@ public class RpmVerifyState
                     final EntityStateRpmVerifyResult linkMismatch
                     )
     {
-        _properties.put( Property.LINK_MISMATCH, linkMismatch );
+        _setStateProperty( Property.LINK_MISMATCH, linkMismatch );
     }
 
 
     public EntityStateRpmVerifyResult getLinkMismatch()
     {
-        return (EntityStateRpmVerifyResult)_properties.get( Property.LINK_MISMATCH );
+        return _getStateProperty( Property.LINK_MISMATCH, EntityStateRpmVerifyResult.class );
     }
 
 
@@ -214,13 +215,13 @@ public class RpmVerifyState
                     final EntityStateRpmVerifyResult ownershipDiffers
                     )
     {
-        _properties.put( Property.OWNERSHIP_DIFFERS, ownershipDiffers );
+        _setStateProperty( Property.OWNERSHIP_DIFFERS, ownershipDiffers );
     }
 
 
     public EntityStateRpmVerifyResult getOwnershipDiffers()
     {
-        return (EntityStateRpmVerifyResult)_properties.get( Property.OWNERSHIP_DIFFERS );
+        return _getStateProperty( Property.OWNERSHIP_DIFFERS, EntityStateRpmVerifyResult.class );
     }
 
 
@@ -231,13 +232,13 @@ public class RpmVerifyState
                     final EntityStateRpmVerifyResult groupDiffers
                     )
     {
-        _properties.put( Property.GROUP_DIFFERS, groupDiffers );
+        _setStateProperty( Property.GROUP_DIFFERS, groupDiffers );
     }
 
 
     public EntityStateRpmVerifyResult getGroupDiffers()
     {
-        return (EntityStateRpmVerifyResult)_properties.get( Property.GROUP_DIFFERS );
+        return _getStateProperty( Property.GROUP_DIFFERS, EntityStateRpmVerifyResult.class );
     }
 
 
@@ -248,13 +249,13 @@ public class RpmVerifyState
                     final EntityStateRpmVerifyResult mtimeDiffers
                     )
     {
-        _properties.put( Property.MTIME_DIFFERS, mtimeDiffers );
+        _setStateProperty( Property.MTIME_DIFFERS, mtimeDiffers );
     }
 
 
     public EntityStateRpmVerifyResult getMtimeDiffers()
     {
-        return (EntityStateRpmVerifyResult)_properties.get( Property.MTIME_DIFFERS );
+        return _getStateProperty( Property.MTIME_DIFFERS, EntityStateRpmVerifyResult.class );
     }
 
 
@@ -265,13 +266,13 @@ public class RpmVerifyState
                     final EntityStateRpmVerifyResult capabilitiesDiffers
                     )
     {
-        _properties.put( Property.CAPABILITIES_DIFFERS, capabilitiesDiffers );
+        _setStateProperty( Property.CAPABILITIES_DIFFERS, capabilitiesDiffers );
     }
 
 
     public EntityStateRpmVerifyResult getCapabilitiesDiffers()
     {
-        return (EntityStateRpmVerifyResult)_properties.get( Property.CAPABILITIES_DIFFERS );
+        return _getStateProperty( Property.CAPABILITIES_DIFFERS, EntityStateRpmVerifyResult.class );
     }
 
 
@@ -282,13 +283,13 @@ public class RpmVerifyState
                     final EntityStateBool configurationFile
                     )
     {
-        _properties.put( Property.CONFIGURATION_FILE, configurationFile );
+        _setStateProperty( Property.CONFIGURATION_FILE, configurationFile );
     }
 
 
     public EntityStateBool getConfigurationFile()
     {
-        return (EntityStateBool)_properties.get( Property.CONFIGURATION_FILE );
+        return _getStateProperty( Property.CONFIGURATION_FILE, EntityStateBool.class );
     }
 
 
@@ -299,13 +300,13 @@ public class RpmVerifyState
                     final EntityStateBool documentationFile
                     )
     {
-        _properties.put( Property.DOCUMENTATION_FILE, documentationFile );
+        _setStateProperty( Property.DOCUMENTATION_FILE, documentationFile );
     }
 
 
     public EntityStateBool getDocumentationFile()
     {
-        return (EntityStateBool)_properties.get( Property.DOCUMENTATION_FILE );
+        return _getStateProperty( Property.DOCUMENTATION_FILE, EntityStateBool.class );
     }
 
 
@@ -316,13 +317,13 @@ public class RpmVerifyState
                     final EntityStateBool ghostFile
                     )
     {
-        _properties.put( Property.GHOST_FILE, ghostFile );
+        _setStateProperty( Property.GHOST_FILE, ghostFile );
     }
 
 
     public EntityStateBool getGhostFile()
     {
-        return (EntityStateBool)_properties.get( Property.GHOST_FILE );
+        return _getStateProperty( Property.GHOST_FILE, EntityStateBool.class );
     }
 
 
@@ -333,13 +334,13 @@ public class RpmVerifyState
                     final EntityStateBool licenseFile
                     )
     {
-        _properties.put( Property.LICENSE_FILE, licenseFile );
+        _setStateProperty( Property.LICENSE_FILE, licenseFile );
     }
 
 
     public EntityStateBool getLicenseFile()
     {
-        return (EntityStateBool)_properties.get( Property.LICENSE_FILE );
+        return _getStateProperty( Property.LICENSE_FILE, EntityStateBool.class );
     }
 
 
@@ -350,13 +351,13 @@ public class RpmVerifyState
                     final EntityStateBool readmeFile
                     )
     {
-        _properties.put( Property.README_FILE, readmeFile );
+        _setStateProperty( Property.README_FILE, readmeFile );
     }
 
 
     public EntityStateBool getReadmeFile()
     {
-        return (EntityStateBool)_properties.get( Property.README_FILE );
+        return _getStateProperty( Property.README_FILE, EntityStateBool.class );
     }
 
 
@@ -373,7 +374,40 @@ public class RpmVerifyState
 
 
 
-    // **************************************************************
+    //**************************************************************
+    //  State
+    //**************************************************************
+
+    @Override
+    public Iterator<EntityStateBase> iterateStateProperties()
+    {
+        return _properties.values().iterator();
+    }
+
+
+
+    protected <T extends EntityStateBase> T _getStateProperty(
+                    final Property key,
+                    final Class<T> type
+                    )
+    {
+        EntityStateBase  p = _properties.get( key );
+        return type.cast( p );
+    }
+
+
+
+    protected void _setStateProperty(
+                    final Property key,
+                    final EntityStateBase value
+                    )
+    {
+        _properties.put( key, value );
+    }
+
+
+
+   // **************************************************************
     // java.lang.Object
     // **************************************************************
 
