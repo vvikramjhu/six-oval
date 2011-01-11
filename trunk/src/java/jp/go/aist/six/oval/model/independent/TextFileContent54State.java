@@ -28,7 +28,6 @@ import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
 import java.util.Iterator;
-import java.util.Map;
 
 
 
@@ -56,7 +55,7 @@ public class TextFileContent54State
         SUBEXPRESSION;  //{EntityStateAnySimple, 0..1}
     }
 
-    private Map<Property, EntityBase>  _properties =
+    private EnumMap<Property, EntityBase>  _properties =
         new EnumMap<Property, EntityBase>( Property.class );
 
 

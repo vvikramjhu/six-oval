@@ -21,14 +21,13 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityStateBase;
+import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateInt;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.EntityStateVersion;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
 import java.util.Iterator;
-import java.util.Map;
 
 
 
@@ -43,8 +42,8 @@ public class FileState
     extends State
 {
 
-    private Map<FileProperty, EntityStateBase>  _properties =
-        new EnumMap<FileProperty, EntityStateBase>( FileProperty.class );
+    private EnumMap<FileProperty, EntityBase>  _properties =
+        new EnumMap<FileProperty, EntityBase>( FileProperty.class );
     //EntityStateBase{0..1}
 
 
@@ -456,19 +455,19 @@ public class FileState
 
 
     @Override
-    public Iterator<EntityStateBase> iterateProperties()
+    public Iterator<EntityBase> iterateProperties()
     {
         return _properties.values().iterator();
     }
 
 
 
-    protected <T extends EntityStateBase> T _getStateProperty(
+    protected <T extends EntityBase> T _getStateProperty(
                     final FileProperty key,
                     final Class<T> type
                     )
     {
-        EntityStateBase  p = _properties.get( key );
+        EntityBase  p = _properties.get( key );
         return type.cast( p );
     }
 
@@ -476,7 +475,7 @@ public class FileState
 
     protected void _setStateProperty(
                     final FileProperty key,
-                    final EntityStateBase value
+                    final EntityBase value
                     )
     {
         _properties.put( key, value );

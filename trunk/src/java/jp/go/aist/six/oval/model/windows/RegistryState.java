@@ -21,13 +21,12 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
-import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
 import java.util.Iterator;
-import java.util.Map;
 
 
 
@@ -52,8 +51,10 @@ public class RegistryState
         VALUE;  //EntityStateAnySimple      {0..1}
     }
 
-    private Map<Property,EntityStateBase>  _properties =
-        new EnumMap<Property,EntityStateBase>( Property.class );
+
+
+    private EnumMap<Property, EntityBase>  _properties =
+        new EnumMap<Property, EntityBase>( Property.class );
 
 
 
@@ -236,19 +237,19 @@ public class RegistryState
 
 
     @Override
-    public Iterator<EntityStateBase> iterateProperties()
+    public Iterator<EntityBase> iterateProperties()
     {
         return _properties.values().iterator();
     }
 
 
 
-    protected <T extends EntityStateBase> T _getStateProperty(
+    protected <T extends EntityBase> T _getStateProperty(
                     final Property key,
                     final Class<T> type
                     )
     {
-        EntityStateBase  p = _properties.get( key );
+        EntityBase  p = _properties.get( key );
         return type.cast( p );
     }
 
@@ -256,7 +257,7 @@ public class RegistryState
 
     protected void _setStateProperty(
                     final Property key,
-                    final EntityStateBase value
+                    final EntityBase value
                     )
     {
         _properties.put( key, value );

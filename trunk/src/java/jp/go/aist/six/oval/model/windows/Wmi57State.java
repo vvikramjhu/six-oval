@@ -21,13 +21,12 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityStateBase;
+import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateRecord;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
 import java.util.Iterator;
-import java.util.Map;
 
 
 
@@ -42,8 +41,8 @@ public class Wmi57State
     extends State
 {
 
-    private Map<WmiProperty, EntityStateBase>  _properties =
-        new EnumMap<WmiProperty, EntityStateBase>( WmiProperty.class );
+    private EnumMap<WmiProperty, EntityBase>  _properties =
+        new EnumMap<WmiProperty, EntityBase>( WmiProperty.class );
 
 
 
@@ -143,19 +142,19 @@ public class Wmi57State
 
 
     @Override
-    public Iterator<EntityStateBase> iterateProperties()
+    public Iterator<EntityBase> iterateProperties()
     {
         return _properties.values().iterator();
     }
 
 
 
-    protected <T extends EntityStateBase> T _getStateProperty(
+    protected <T extends EntityBase> T _getStateProperty(
                     final WmiProperty key,
                     final Class<T> type
                     )
     {
-        EntityStateBase  p = _properties.get( key );
+        EntityBase  p = _properties.get( key );
         return type.cast( p );
     }
 
@@ -163,7 +162,7 @@ public class Wmi57State
 
     protected void _setStateProperty(
                     final WmiProperty key,
-                    final EntityStateBase value
+                    final EntityBase value
                     )
     {
         _properties.put( key, value );

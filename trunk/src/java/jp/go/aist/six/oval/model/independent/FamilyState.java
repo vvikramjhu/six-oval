@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityStateBase;
+import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.Collections;
 import java.util.Iterator;
@@ -119,9 +119,9 @@ public class FamilyState
 
 
     @Override
-    public Iterator<EntityStateBase> iterateProperties()
+    public Iterator<EntityBase> iterateProperties()
     {
-        EntityStateBase  p = getFamily();
+        EntityBase  p = getFamily();
         return Collections.singletonList( p ).iterator();
     }
 

@@ -20,13 +20,13 @@
 
 package jp.go.aist.six.oval.model.linux;
 
+import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
 import java.util.Iterator;
-import java.util.Map;
 
 
 
@@ -40,8 +40,8 @@ public abstract class LinuxPkgInfoState
     extends State
 {
 
-    private Map<LinuxPkgProperty, EntityStateBase>  _properties =
-        new EnumMap<LinuxPkgProperty, EntityStateBase>( LinuxPkgProperty.class );
+    private EnumMap<LinuxPkgProperty, EntityBase>  _properties =
+        new EnumMap<LinuxPkgProperty, EntityBase>( LinuxPkgProperty.class );
     //EntityStateBase{0..1}
 
 
@@ -134,7 +134,7 @@ public abstract class LinuxPkgInfoState
     //**************************************************************
 
     @Override
-    public Iterator<EntityStateBase> iterateProperties()
+    public Iterator<EntityBase> iterateProperties()
     {
         return _properties.values().iterator();
     }
@@ -146,7 +146,7 @@ public abstract class LinuxPkgInfoState
                     final Class<T> type
                     )
     {
-        EntityStateBase  p = _properties.get( key );
+        EntityBase  p = _properties.get( key );
         return type.cast( p );
     }
 

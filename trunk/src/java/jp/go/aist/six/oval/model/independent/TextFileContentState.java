@@ -21,13 +21,12 @@
 package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
-import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
 import java.util.Iterator;
-import java.util.Map;
 
 
 
@@ -55,22 +54,22 @@ public class TextFileContentState
         SUBEXPRESSION;  //{EntityStateAnySimple, 0..1}
     }
 
-    private Map<Property, EntityStateBase>  _properties =
-        new EnumMap<Property, EntityStateBase>( Property.class );
+    private EnumMap<Property, EntityBase>  _properties =
+        new EnumMap<Property, EntityBase>( Property.class );
 
 
 
-    private EntityStateString  _path;
-    //{0..1}
-
-    private EntityStateString  _filename;
-    //{0..1}
-
-    private EntityStateString  _line;
-    //{0..1}
-
-    private EntityStateAnySimple  _subexpression;
-    //{0..1}
+//    private EntityStateString  _path;
+//    //{0..1}
+//
+//    private EntityStateString  _filename;
+//    //{0..1}
+//
+//    private EntityStateString  _line;
+//    //{0..1}
+//
+//    private EntityStateAnySimple  _subexpression;
+//    //{0..1}
 
 
 
@@ -213,7 +212,7 @@ public class TextFileContentState
 
 
     @Override
-    public Iterator<EntityStateBase> iterateProperties()
+    public Iterator<EntityBase> iterateProperties()
     {
         return _properties.values().iterator();
     }

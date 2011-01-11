@@ -21,12 +21,11 @@
 package jp.go.aist.six.oval.model.unix;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityStateBase;
+import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
 import java.util.Iterator;
-import java.util.Map;
 
 
 
@@ -42,8 +41,8 @@ public class UnameState
     extends State
 {
 
-    private Map<UnameProperty, EntityStateBase>  _properties =
-        new EnumMap<UnameProperty, EntityStateBase>( UnameProperty.class );
+    private EnumMap<UnameProperty, EntityBase>  _properties =
+        new EnumMap<UnameProperty, EntityBase>( UnameProperty.class );
 
 
 
@@ -260,19 +259,19 @@ public class UnameState
 
 
     @Override
-    public Iterator<EntityStateBase> iterateProperties()
+    public Iterator<EntityBase> iterateProperties()
     {
         return _properties.values().iterator();
     }
 
 
 
-    protected <T extends EntityStateBase> T _getStateProperty(
+    protected <T extends EntityBase> T _getStateProperty(
                     final UnameProperty key,
                     final Class<T> type
                     )
     {
-        EntityStateBase  p = _properties.get( key );
+        EntityBase  p = _properties.get( key );
         return type.cast( p );
     }
 
@@ -280,7 +279,7 @@ public class UnameState
 
     protected void _setStateProperty(
                     final UnameProperty key,
-                    final EntityStateBase value
+                    final EntityBase value
                     )
     {
         _properties.put( key, value );
