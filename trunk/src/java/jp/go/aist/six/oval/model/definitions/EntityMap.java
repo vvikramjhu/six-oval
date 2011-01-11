@@ -31,14 +31,14 @@ import java.util.Iterator;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PropertyMap<K extends Enum<K>>
+public class EntityMap<K extends Enum<K>>
     extends EnumMap<K, EntityBase>
 {
 
     /**
      * Constructor.
      */
-    public PropertyMap(
+    public EntityMap(
                     final Class<K> keyType
                     )
     {
@@ -94,7 +94,7 @@ public class PropertyMap<K extends Enum<K>>
                     final Object obj
                     )
     {
-        if (!(PropertyMap.class.isInstance( obj ))) {
+        if (!(EntityMap.class.isInstance( obj ))) {
             return false;
         }
 
@@ -102,4 +102,4 @@ public class PropertyMap<K extends Enum<K>>
     }
 
 }
-// PropertyMap
+// EntityMap
