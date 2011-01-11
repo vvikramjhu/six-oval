@@ -27,6 +27,7 @@ import jp.go.aist.six.oval.model.definitions.EntityStateInt;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
+import java.util.Iterator;
 import java.util.Map;
 
 
@@ -284,6 +285,14 @@ public class TextFileContent54State
     public PlatformEntityType getEntityType()
     {
         return PlatformEntityType.INDEPENDENT_TEXTFILECONTENT54;
+    }
+
+
+
+    @Override
+    public Iterator<EntityStateBase> iterateStateProperties()
+    {
+        return _properties.values().iterator();
     }
 
 

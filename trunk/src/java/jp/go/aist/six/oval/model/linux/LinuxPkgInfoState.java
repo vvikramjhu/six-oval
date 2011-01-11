@@ -21,9 +21,12 @@
 package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
+import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
-
+import java.util.EnumMap;
+import java.util.Iterator;
+import java.util.Map;
 
 
 
@@ -37,14 +40,19 @@ public abstract class LinuxPkgInfoState
     extends State
 {
 
-    private EntityStateString  _name;
-    //{0..1}
+    private Map<LinuxPkgProperty, EntityStateBase>  _properties =
+        new EnumMap<LinuxPkgProperty, EntityStateBase>( LinuxPkgProperty.class );
+    //EntityStateBase{0..1}
 
-    private EntityStateString  _arch;
-    //{0..1}
 
-    private EntityStateAnySimple  _version;
-    //{0..1}
+//    private EntityStateString  _name;
+//    //{0..1}
+//
+//    private EntityStateString  _arch;
+//    //{0..1}
+//
+//    private EntityStateAnySimple  _version;
+//    //{0..1}
 
 
 
@@ -74,13 +82,15 @@ public abstract class LinuxPkgInfoState
                     final EntityStateString name
                     )
     {
-        _name = name;
+        _setStateProperty( LinuxPkgProperty.NAME, name );
+//        _name = name;
     }
 
 
     public EntityStateString getName()
     {
-        return _name;
+        return _getStateProperty( LinuxPkgProperty.NAME, EntityStateString.class );
+//        return _name;
     }
 
 
@@ -89,13 +99,15 @@ public abstract class LinuxPkgInfoState
                     final EntityStateString arch
                     )
     {
-        _arch = arch;
+        _setStateProperty( LinuxPkgProperty.ARCH, arch );
+//        _arch = arch;
     }
 
 
     public EntityStateString getArch()
     {
-        return _arch;
+        return _getStateProperty( LinuxPkgProperty.ARCH, EntityStateString.class );
+//        return _arch;
     }
 
 
@@ -104,13 +116,48 @@ public abstract class LinuxPkgInfoState
                     final EntityStateAnySimple version
                     )
     {
-        _version = version;
+        _setStateProperty( LinuxPkgProperty.VERSION, version );
+//        _version = version;
     }
 
 
     public EntityStateAnySimple getVersion()
     {
-        return _version;
+        return _getStateProperty( LinuxPkgProperty.VERSION, EntityStateAnySimple.class );
+//        return _version;
+    }
+
+
+
+    //**************************************************************
+    //  State
+    //**************************************************************
+
+    @Override
+    public Iterator<EntityStateBase> iterateStateProperties()
+    {
+        return _properties.values().iterator();
+    }
+
+
+
+    protected <T extends EntityStateBase> T _getStateProperty(
+                    final LinuxPkgProperty key,
+                    final Class<T> type
+                    )
+    {
+        EntityStateBase  p = _properties.get( key );
+        return type.cast( p );
+    }
+
+
+
+    protected void _setStateProperty(
+                    final LinuxPkgProperty key,
+                    final EntityStateBase value
+                    )
+    {
+        _properties.put( key, value );
     }
 
 

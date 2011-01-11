@@ -22,8 +22,12 @@ package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
+import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
+import java.util.EnumMap;
+import java.util.Iterator;
+import java.util.Map;
 
 
 
@@ -42,6 +46,19 @@ import jp.go.aist.six.oval.model.definitions.State;
 public class TextFileContentState
     extends State
 {
+
+    protected static enum Property
+    {
+        PATH,           //{EntityStateString, 0..1}
+        FILENAME,       //{EntityStateString, 0..1}
+        LINE,        //{EntityStateString, 0..1}
+        SUBEXPRESSION;  //{EntityStateAnySimple, 0..1}
+    }
+
+    private Map<Property, EntityStateBase>  _properties =
+        new EnumMap<Property, EntityStateBase>( Property.class );
+
+
 
     private EntityStateString  _path;
     //{0..1}
@@ -84,8 +101,9 @@ public class TextFileContentState
                     final EntityStateString path
                     )
     {
-        _path = path;
+        _properties.put( Property.PATH, path );
     }
+
 
 
     public TextFileContentState path(
@@ -99,7 +117,7 @@ public class TextFileContentState
 
     public EntityStateString getPath()
     {
-        return _path;
+        return (EntityStateString)_properties.get( Property.PATH );
     }
 
 
@@ -110,7 +128,7 @@ public class TextFileContentState
                     final EntityStateString filename
                     )
     {
-        _filename = filename;
+        _properties.put( Property.FILENAME, filename );
     }
 
 
@@ -125,7 +143,7 @@ public class TextFileContentState
 
     public EntityStateString getFilename()
     {
-        return _filename;
+        return (EntityStateString)_properties.get( Property.FILENAME );
     }
 
 
@@ -136,7 +154,7 @@ public class TextFileContentState
                     final EntityStateString line
                     )
     {
-        _line = line;
+        _properties.put( Property.LINE, line );
     }
 
 
@@ -151,7 +169,7 @@ public class TextFileContentState
 
     public EntityStateString getLine()
     {
-        return _line;
+        return (EntityStateString)_properties.get( Property.LINE );
     }
 
 
@@ -162,7 +180,7 @@ public class TextFileContentState
                     final EntityStateAnySimple subexpression
                     )
     {
-        _subexpression = subexpression;
+        _properties.put( Property.SUBEXPRESSION, subexpression );
     }
 
 
@@ -177,7 +195,7 @@ public class TextFileContentState
 
     public EntityStateAnySimple getSubexpression()
     {
-        return _subexpression;
+        return (EntityStateAnySimple)_properties.get( Property.SUBEXPRESSION );
     }
 
 
@@ -190,6 +208,14 @@ public class TextFileContentState
     public PlatformEntityType getEntityType()
     {
         return PlatformEntityType.INDEPENDENT_TEXTFILECONTENT;
+    }
+
+
+
+    @Override
+    public Iterator<EntityStateBase> iterateStateProperties()
+    {
+        return _properties.values().iterator();
     }
 
 
