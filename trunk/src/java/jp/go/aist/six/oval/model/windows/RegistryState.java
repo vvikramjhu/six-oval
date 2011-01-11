@@ -236,7 +236,7 @@ public class RegistryState
 
 
     @Override
-    public Iterator<EntityStateBase> iterateStateProperties()
+    public Iterator<EntityStateBase> iterateProperties()
     {
         return _properties.values().iterator();
     }

@@ -119,7 +119,7 @@ public class FamilyState
 
 
     @Override
-    public Iterator<EntityStateBase> iterateStateProperties()
+    public Iterator<EntityStateBase> iterateProperties()
     {
         EntityStateBase  p = getFamily();
         return Collections.singletonList( p ).iterator();

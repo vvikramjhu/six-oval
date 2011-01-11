@@ -128,14 +128,13 @@ public class State
 
 
 
-    private static List<EntityStateBase>  _EMPTY_LIST_ =
+    private static List<EntityBase>  _EMPTY_LIST_ =
         Collections.emptyList();
 
 
     /**
-     * Template method:
      */
-    public Iterator<EntityStateBase> iterateStateProperties()
+    public Iterator<EntityBase> iterateProperties()
     {
         return _EMPTY_LIST_.iterator();
     }

@@ -21,8 +21,8 @@
 package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
-import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateInt;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
@@ -56,8 +56,8 @@ public class TextFileContent54State
         SUBEXPRESSION;  //{EntityStateAnySimple, 0..1}
     }
 
-    private Map<Property, EntityStateBase>  _properties =
-        new EnumMap<Property, EntityStateBase>( Property.class );
+    private Map<Property, EntityBase>  _properties =
+        new EnumMap<Property, EntityBase>( Property.class );
 
 
 
@@ -290,7 +290,7 @@ public class TextFileContent54State
 
 
     @Override
-    public Iterator<EntityStateBase> iterateStateProperties()
+    public Iterator<EntityBase> iterateProperties()
     {
         return _properties.values().iterator();
     }
