@@ -18,17 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityStateBase;
-import jp.go.aist.six.oval.model.definitions.EntityStateRecord;
-import jp.go.aist.six.oval.model.definitions.EntityStateString;
-import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
 import java.util.Iterator;
-import java.util.Map;
-
 
 
 
@@ -38,135 +31,48 @@ import java.util.Map;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Wmi57State
-    extends State
+public class PropertyMap<K extends Enum<K>>
+    extends EnumMap<K, EntityBase>
 {
 
-    private Map<WmiProperty, EntityStateBase>  _properties =
-        new EnumMap<WmiProperty, EntityStateBase>( WmiProperty.class );
-
-
-
-//    private EntityStateString  _namespace;
-//    //{0..1}
-//
-//    private EntityStateString  _wql;
-//    //{0..1}
-//
-//    private EntityStateRecord  _result;
-//    //{0..1}
-
-
-
     /**
      * Constructor.
      */
-    public Wmi57State()
-    {
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public Wmi57State(
-                    final String id,
-                    final int version
+    public PropertyMap(
+                    final Class<K> keyType
                     )
     {
-        super( id, version );
+        super( keyType );
     }
 
 
 
     /**
      */
-    public void setNamespace(
-                    final EntityStateString namespace
-                    )
+    public Iterator<EntityBase> iterateProperties()
     {
-        _setStateProperty( WmiProperty.NAMESPACE, namespace );
-    }
-
-
-    public EntityStateString getNamespace()
-    {
-        return _getStateProperty( WmiProperty.NAMESPACE, EntityStateString.class );
+        return values().iterator();
     }
 
 
 
-    /**
-     */
-    public void setWql(
-                    final EntityStateString wql
-                    )
-    {
-        _setStateProperty( WmiProperty.WQL, wql );
-    }
-
-
-    public EntityStateString getWql()
-    {
-        return _getStateProperty( WmiProperty.WQL, EntityStateString.class );
-    }
-
-
-
-    /**
-     */
-    public void setResult(
-                    final EntityStateRecord result
-                    )
-    {
-        _setStateProperty( WmiProperty.RESULT, result );
-    }
-
-
-    public EntityStateRecord getResult()
-    {
-        return _getStateProperty( WmiProperty.RESULT, EntityStateRecord.class );
-    }
-
-
-
-    //**************************************************************
-    //  State
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.WINDOWS_WMI57;
-    }
-
-
-
-    @Override
-    public Iterator<EntityStateBase> iterateStateProperties()
-    {
-        return _properties.values().iterator();
-    }
-
-
-
-    protected <T extends EntityStateBase> T _getStateProperty(
-                    final WmiProperty key,
+    public <T extends EntityBase> T getProperty(
+                    final K key,
                     final Class<T> type
                     )
     {
-        EntityStateBase  p = _properties.get( key );
+        EntityBase  p = get( key );
         return type.cast( p );
     }
 
 
 
-    protected void _setStateProperty(
-                    final WmiProperty key,
-                    final EntityStateBase value
+    public void setProperty(
+                    final K key,
+                    final EntityBase value
                     )
     {
-        _properties.put( key, value );
+        put( key, value );
     }
 
 
@@ -188,22 +94,12 @@ public class Wmi57State
                     final Object obj
                     )
     {
-        if (!(obj instanceof Wmi57State)) {
+        if (!(PropertyMap.class.isInstance( obj ))) {
             return false;
         }
 
         return super.equals( obj );
     }
 
-
-
-    @Override
-    public String toString()
-    {
-        return "wmi57_state[" + super.toString()
-                        + ", " + String.valueOf( _properties )
-                        + "]";
-    }
-
 }
-// Wql57State
+// PropertyMap
