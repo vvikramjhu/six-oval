@@ -21,9 +21,11 @@
 package jp.go.aist.six.oval.model.unix;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
+import java.util.Iterator;
 import java.util.Map;
 
 
@@ -40,8 +42,8 @@ public class UnameState
     extends State
 {
 
-    private Map<UnameProperty, EntityStateString>  _properties =
-        new EnumMap<UnameProperty,EntityStateString>( UnameProperty.class );
+    private Map<UnameProperty, EntityStateBase>  _properties =
+        new EnumMap<UnameProperty, EntityStateBase>( UnameProperty.class );
 
 
 
@@ -79,13 +81,13 @@ public class UnameState
 
 
 
-    /**
-     *
-     */
-    protected Map<UnameProperty, EntityStateString> _getProperties()
-    {
-        return _properties;
-    }
+//    /**
+//     *
+//     */
+//    protected Map<UnameProperty, EntityStateString> _getProperties()
+//    {
+//        return _properties;
+//    }
 
 
 
@@ -95,7 +97,7 @@ public class UnameState
                     final EntityStateString machineClass
                     )
     {
-        _properties.put( UnameProperty.MACHINE_CLASS, machineClass );
+        _setStateProperty( UnameProperty.MACHINE_CLASS, machineClass );
     }
 
 
@@ -110,7 +112,7 @@ public class UnameState
 
     public EntityStateString getMachineClass()
     {
-        return _properties.get( UnameProperty.MACHINE_CLASS );
+        return _getStateProperty( UnameProperty.MACHINE_CLASS, EntityStateString.class );
     }
 
 
@@ -121,7 +123,7 @@ public class UnameState
                     final EntityStateString nodeName
                     )
     {
-        _properties.put( UnameProperty.NODE_NAME, nodeName );
+        _setStateProperty( UnameProperty.NODE_NAME, nodeName );
     }
 
 
@@ -136,7 +138,7 @@ public class UnameState
 
     public EntityStateString getNodeName()
     {
-        return _properties.get( UnameProperty.NODE_NAME );
+        return _getStateProperty( UnameProperty.NODE_NAME, EntityStateString.class );
     }
 
 
@@ -147,7 +149,7 @@ public class UnameState
                     final EntityStateString name
                     )
     {
-        _properties.put( UnameProperty.OS_NAME, name );
+        _setStateProperty( UnameProperty.OS_NAME, name );
     }
 
 
@@ -162,7 +164,7 @@ public class UnameState
 
     public EntityStateString getOsName()
     {
-        return _properties.get( UnameProperty.OS_NAME );
+        return _getStateProperty( UnameProperty.OS_NAME, EntityStateString.class );
     }
 
 
@@ -173,7 +175,7 @@ public class UnameState
                     final EntityStateString release
                     )
     {
-        _properties.put( UnameProperty.OS_RELEASE, release );
+        _setStateProperty( UnameProperty.OS_RELEASE, release );
     }
 
 
@@ -188,7 +190,7 @@ public class UnameState
 
     public EntityStateString getOsRelease()
     {
-        return _properties.get( UnameProperty.OS_RELEASE );
+        return _getStateProperty( UnameProperty.OS_RELEASE, EntityStateString.class );
     }
 
 
@@ -199,7 +201,7 @@ public class UnameState
                     final EntityStateString version
                     )
     {
-        _properties.put( UnameProperty.OS_VERSION, version );
+        _setStateProperty( UnameProperty.OS_VERSION, version );
     }
 
 
@@ -214,7 +216,7 @@ public class UnameState
 
     public EntityStateString getOsVersion()
     {
-        return _properties.get( UnameProperty.OS_VERSION );
+        return _getStateProperty( UnameProperty.OS_VERSION, EntityStateString.class );
     }
 
 
@@ -225,7 +227,7 @@ public class UnameState
                     final EntityStateString type
                     )
     {
-        _properties.put( UnameProperty.PROCESSOR_TYPE, type );
+        _setStateProperty( UnameProperty.PROCESSOR_TYPE, type );
     }
 
 
@@ -240,7 +242,7 @@ public class UnameState
 
     public EntityStateString getProcessorType()
     {
-        return _properties.get( UnameProperty.PROCESSOR_TYPE );
+        return _getStateProperty( UnameProperty.PROCESSOR_TYPE, EntityStateString.class );
     }
 
 
@@ -253,6 +255,35 @@ public class UnameState
     public PlatformEntityType getEntityType()
     {
         return PlatformEntityType.UNIX_UNAME;
+    }
+
+
+
+    @Override
+    public Iterator<EntityStateBase> iterateStateProperties()
+    {
+        return _properties.values().iterator();
+    }
+
+
+
+    protected <T extends EntityStateBase> T _getStateProperty(
+                    final UnameProperty key,
+                    final Class<T> type
+                    )
+    {
+        EntityStateBase  p = _properties.get( key );
+        return type.cast( p );
+    }
+
+
+
+    protected void _setStateProperty(
+                    final UnameProperty key,
+                    final EntityStateBase value
+                    )
+    {
+        _properties.put( key, value );
     }
 
 

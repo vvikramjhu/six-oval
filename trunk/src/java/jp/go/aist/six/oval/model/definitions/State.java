@@ -142,6 +142,32 @@ public class State
 
 
 
+//    private EnumMap<? extends Enum<?>, EntityStateBase>  _properties;
+//    private Class<?>  _propertyKeyType;
+//
+//    protected <K extends Enum<K>>
+//    void _initStateProperties(
+//                    final Class<K> keyType
+//                    )
+//    {
+//        _properties = new EnumMap<K, EntityStateBase>( keyType );
+//        _propertyKeyType = keyType;
+//    }
+//
+//
+//
+//    protected <K extends Enum<K>, T extends EntityStateBase>
+//    T _getStateProperty(
+//                    final K key,
+//                    final Class<T> type
+//                    )
+//    {
+//        EntityStateBase  p = _properties.get( key );
+//        return type.cast( p );
+//    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
