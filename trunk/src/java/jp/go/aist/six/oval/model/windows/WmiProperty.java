@@ -23,32 +23,16 @@ package jp.go.aist.six.oval.model.windows;
 
 
 /**
- * The Windows file properties.
+ * The Windows WMI properties.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum FileProperty
+public enum WmiProperty
 {
-    FILEPATH,
-    PATH,
-    FILENAME,
-    OWNER,
-    SIZE,           // Int
-    A_TIME,         // Int
-    C_TIME,         // Int
-    M_TIME,         // Int
-    MS_CHECKSUM,
-    VERSION,        // Version
-    TYPE,           // FileType
-    DEVELOPMENT_CLASS,
-    COMPANY,
-    INTERNAL_NAME,
-    LANGUAGE,
-    ORIGINAL_FILENAME,
-    PRODUCT_NAME,
-    PRODUCT_VERSION;    // Version
-
+    NAMESPACE,  //EntityStateString
+    WQL,        //EntityStateInt
+    RESULT;     //EntityStateAnySimple/Wmi, EntityStateRecord/Wmi57
 }
-// FileProperty
+// WmiProperty

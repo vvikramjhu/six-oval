@@ -42,15 +42,8 @@ public class Wmi57State
     extends State
 {
 
-    protected static enum Property
-    {
-        NAMESPACE,  //EntityStateString     {0..1}
-        WQL,        //EntityStateInt        {0..1}
-        RESULT;     //EntityStateRecord     {0..1}
-    }
-
-    private Map<Property, EntityStateBase>  _properties =
-        new EnumMap<Property, EntityStateBase>( Property.class );
+    private Map<WmiProperty, EntityStateBase>  _properties =
+        new EnumMap<WmiProperty, EntityStateBase>( WmiProperty.class );
 
 
 
@@ -92,13 +85,13 @@ public class Wmi57State
                     final EntityStateString namespace
                     )
     {
-        _setStateProperty( Property.NAMESPACE, namespace );
+        _setStateProperty( WmiProperty.NAMESPACE, namespace );
     }
 
 
     public EntityStateString getNamespace()
     {
-        return _getStateProperty( Property.NAMESPACE, EntityStateString.class );
+        return _getStateProperty( WmiProperty.NAMESPACE, EntityStateString.class );
     }
 
 
@@ -109,13 +102,13 @@ public class Wmi57State
                     final EntityStateString wql
                     )
     {
-        _setStateProperty( Property.WQL, wql );
+        _setStateProperty( WmiProperty.WQL, wql );
     }
 
 
     public EntityStateString getWql()
     {
-        return _getStateProperty( Property.WQL, EntityStateString.class );
+        return _getStateProperty( WmiProperty.WQL, EntityStateString.class );
     }
 
 
@@ -126,13 +119,13 @@ public class Wmi57State
                     final EntityStateRecord result
                     )
     {
-        _setStateProperty( Property.RESULT, result );
+        _setStateProperty( WmiProperty.RESULT, result );
     }
 
 
     public EntityStateRecord getResult()
     {
-        return _getStateProperty( Property.RESULT, EntityStateRecord.class );
+        return _getStateProperty( WmiProperty.RESULT, EntityStateRecord.class );
     }
 
 
@@ -158,7 +151,7 @@ public class Wmi57State
 
 
     protected <T extends EntityStateBase> T _getStateProperty(
-                    final Property key,
+                    final WmiProperty key,
                     final Class<T> type
                     )
     {
@@ -169,7 +162,7 @@ public class Wmi57State
 
 
     protected void _setStateProperty(
-                    final Property key,
+                    final WmiProperty key,
                     final EntityStateBase value
                     )
     {

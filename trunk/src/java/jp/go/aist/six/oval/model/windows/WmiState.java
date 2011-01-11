@@ -22,8 +22,12 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
+import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
+import java.util.EnumMap;
+import java.util.Iterator;
+import java.util.Map;
 
 
 
@@ -41,14 +45,19 @@ public class WmiState
     extends State
 {
 
-    private EntityStateString  _namespace;
-    //{0..1}
+    private Map<WmiProperty, EntityStateBase>  _properties =
+        new EnumMap<WmiProperty, EntityStateBase>( WmiProperty.class );
 
-    private EntityStateString  _wql;
-    //{0..1}
 
-    private EntityStateAnySimple  _result;
-    //{0..1}
+
+//    private EntityStateString  _namespace;
+//    //{0..1}
+//
+//    private EntityStateString  _wql;
+//    //{0..1}
+//
+//    private EntityStateAnySimple  _result;
+//    //{0..1}
 
 
 
@@ -79,13 +88,13 @@ public class WmiState
                     final EntityStateString namespace
                     )
     {
-        _namespace = namespace;
+        _setStateProperty( WmiProperty.NAMESPACE, namespace );
     }
 
 
     public EntityStateString getNamespace()
     {
-        return _namespace;
+        return _getStateProperty( WmiProperty.NAMESPACE, EntityStateString.class );
     }
 
 
@@ -96,13 +105,13 @@ public class WmiState
                     final EntityStateString wql
                     )
     {
-        _wql = wql;
+        _setStateProperty( WmiProperty.WQL, wql );
     }
 
 
     public EntityStateString getWql()
     {
-        return _wql;
+        return _getStateProperty( WmiProperty.WQL, EntityStateString.class );
     }
 
 
@@ -113,13 +122,13 @@ public class WmiState
                     final EntityStateAnySimple result
                     )
     {
-        _result = result;
+        _setStateProperty( WmiProperty.RESULT, result );
     }
 
 
     public EntityStateAnySimple getResult()
     {
-        return _result;
+        return _getStateProperty( WmiProperty.RESULT, EntityStateAnySimple.class );
     }
 
 
@@ -132,6 +141,35 @@ public class WmiState
     public PlatformEntityType getEntityType()
     {
         return PlatformEntityType.WINDOWS_WMI;
+    }
+
+
+
+    @Override
+    public Iterator<EntityStateBase> iterateStateProperties()
+    {
+        return _properties.values().iterator();
+    }
+
+
+
+    protected <T extends EntityStateBase> T _getStateProperty(
+                    final WmiProperty key,
+                    final Class<T> type
+                    )
+    {
+        EntityStateBase  p = _properties.get( key );
+        return type.cast( p );
+    }
+
+
+
+    protected void _setStateProperty(
+                    final WmiProperty key,
+                    final EntityStateBase value
+                    )
+    {
+        _properties.put( key, value );
     }
 
 
@@ -166,9 +204,7 @@ public class WmiState
     public String toString()
     {
         return "wmi_state[" + super.toString()
-                        + ", namespace=" + getNamespace()
-                        + ", wql=" + getWql()
-                        + ", result=" + getResult()
+                        + ", " + String.valueOf( _properties )
                         + "]";
     }
 
