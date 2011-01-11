@@ -21,9 +21,13 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateRecord;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
+import java.util.EnumMap;
+import java.util.Iterator;
+import java.util.Map;
 
 
 
@@ -38,14 +42,26 @@ public class Wmi57State
     extends State
 {
 
-    private EntityStateString  _namespace;
-    //{0..1}
+    protected static enum Property
+    {
+        NAMESPACE,  //EntityStateString     {0..1}
+        WQL,        //EntityStateInt        {0..1}
+        RESULT;     //EntityStateRecord     {0..1}
+    }
 
-    private EntityStateString  _wql;
-    //{0..1}
+    private Map<Property, EntityStateBase>  _properties =
+        new EnumMap<Property, EntityStateBase>( Property.class );
 
-    private EntityStateRecord  _result;
-    //{0..1}
+
+
+//    private EntityStateString  _namespace;
+//    //{0..1}
+//
+//    private EntityStateString  _wql;
+//    //{0..1}
+//
+//    private EntityStateRecord  _result;
+//    //{0..1}
 
 
 
@@ -76,13 +92,13 @@ public class Wmi57State
                     final EntityStateString namespace
                     )
     {
-        _namespace = namespace;
+        _setStateProperty( Property.NAMESPACE, namespace );
     }
 
 
     public EntityStateString getNamespace()
     {
-        return _namespace;
+        return _getStateProperty( Property.NAMESPACE, EntityStateString.class );
     }
 
 
@@ -93,13 +109,13 @@ public class Wmi57State
                     final EntityStateString wql
                     )
     {
-        _wql = wql;
+        _setStateProperty( Property.WQL, wql );
     }
 
 
     public EntityStateString getWql()
     {
-        return _wql;
+        return _getStateProperty( Property.WQL, EntityStateString.class );
     }
 
 
@@ -110,13 +126,13 @@ public class Wmi57State
                     final EntityStateRecord result
                     )
     {
-        _result = result;
+        _setStateProperty( Property.RESULT, result );
     }
 
 
     public EntityStateRecord getResult()
     {
-        return _result;
+        return _getStateProperty( Property.RESULT, EntityStateRecord.class );
     }
 
 
@@ -129,6 +145,35 @@ public class Wmi57State
     public PlatformEntityType getEntityType()
     {
         return PlatformEntityType.WINDOWS_WMI57;
+    }
+
+
+
+    @Override
+    public Iterator<EntityStateBase> iterateStateProperties()
+    {
+        return _properties.values().iterator();
+    }
+
+
+
+    protected <T extends EntityStateBase> T _getStateProperty(
+                    final Property key,
+                    final Class<T> type
+                    )
+    {
+        EntityStateBase  p = _properties.get( key );
+        return type.cast( p );
+    }
+
+
+
+    protected void _setStateProperty(
+                    final Property key,
+                    final EntityStateBase value
+                    )
+    {
+        _properties.put( key, value );
     }
 
 
@@ -163,9 +208,7 @@ public class Wmi57State
     public String toString()
     {
         return "wmi57_state[" + super.toString()
-                        + ", namespace=" + getNamespace()
-                        + ", wql=" + getWql()
-                        + ", result=" + getResult()
+                        + ", " + String.valueOf( _properties )
                         + "]";
     }
 

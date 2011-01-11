@@ -27,6 +27,7 @@ import jp.go.aist.six.oval.model.definitions.EntityStateInt;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
+import java.util.Iterator;
 import java.util.Map;
 
 
@@ -83,7 +84,7 @@ public class MetabaseState
      */
     public EntityStateString getKey()
     {
-        return (EntityStateString)_properties.get( Property.KEY );
+        return _getStateProperty( Property.KEY, EntityStateString.class );
     }
 
 
@@ -91,7 +92,7 @@ public class MetabaseState
                     final EntityStateString key
                     )
     {
-        _properties.put( Property.KEY, key );
+        _setStateProperty( Property.KEY, key );
     }
 
 
@@ -109,7 +110,7 @@ public class MetabaseState
      */
     public EntityStateInt getID()
     {
-        return (EntityStateInt)_properties.get( Property.ID );
+        return _getStateProperty( Property.ID, EntityStateInt.class );
     }
 
 
@@ -117,7 +118,7 @@ public class MetabaseState
                     final EntityStateInt id
                     )
     {
-        _properties.put( Property.ID, id );
+        _setStateProperty( Property.ID, id );
     }
 
 
@@ -135,7 +136,7 @@ public class MetabaseState
      */
     public EntityStateString getName()
     {
-        return (EntityStateString)_properties.get( Property.NAME );
+        return _getStateProperty( Property.NAME, EntityStateString.class );
     }
 
 
@@ -143,7 +144,7 @@ public class MetabaseState
                     final EntityStateString name
                     )
     {
-        _properties.put( Property.NAME, name );
+        _setStateProperty( Property.NAME, name );
     }
 
 
@@ -161,7 +162,7 @@ public class MetabaseState
      */
     public EntityStateString getUserType()
     {
-        return (EntityStateString)_properties.get( Property.USER_TYPE );
+        return _getStateProperty( Property.USER_TYPE, EntityStateString.class );
     }
 
 
@@ -169,7 +170,7 @@ public class MetabaseState
                     final EntityStateString userType
                     )
     {
-        _properties.put( Property.USER_TYPE, userType );
+        _setStateProperty( Property.USER_TYPE, userType );
     }
 
 
@@ -187,7 +188,7 @@ public class MetabaseState
      */
     public EntityStateString getDataType()
     {
-        return (EntityStateString)_properties.get( Property.DATA_TYPE );
+        return _getStateProperty( Property.DATA_TYPE, EntityStateString.class );
     }
 
 
@@ -195,7 +196,7 @@ public class MetabaseState
                     final EntityStateString dataType
                     )
     {
-        _properties.put( Property.DATA_TYPE, dataType );
+        _setStateProperty( Property.DATA_TYPE, dataType );
     }
 
 
@@ -213,7 +214,7 @@ public class MetabaseState
      */
     public EntityStateAnySimple getData()
     {
-        return (EntityStateAnySimple)_properties.get( Property.DATA );
+        return _getStateProperty( Property.DATA, EntityStateAnySimple.class );
     }
 
 
@@ -221,7 +222,7 @@ public class MetabaseState
                     final EntityStateAnySimple data
                     )
     {
-        _properties.put( Property.DATA, data );
+        _setStateProperty( Property.DATA, data );
     }
 
 
@@ -243,6 +244,35 @@ public class MetabaseState
     public PlatformEntityType getEntityType()
     {
         return PlatformEntityType.WINDOWS_METABASE;
+    }
+
+
+
+    @Override
+    public Iterator<EntityStateBase> iterateStateProperties()
+    {
+        return _properties.values().iterator();
+    }
+
+
+
+    protected <T extends EntityStateBase> T _getStateProperty(
+                    final Property key,
+                    final Class<T> type
+                    )
+    {
+        EntityStateBase  p = _properties.get( key );
+        return type.cast( p );
+    }
+
+
+
+    protected void _setStateProperty(
+                    final Property key,
+                    final EntityStateBase value
+                    )
+    {
+        _properties.put( key, value );
     }
 
 
