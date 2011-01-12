@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.unix;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityBase;
+import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
@@ -266,7 +267,7 @@ public class UnameState
 
 
 
-    protected <T extends EntityBase> T _getStateProperty(
+    protected <T extends EntityStateBase> T _getStateProperty(
                     final UnameProperty key,
                     final Class<T> type
                     )
@@ -279,7 +280,7 @@ public class UnameState
 
     protected void _setStateProperty(
                     final UnameProperty key,
-                    final EntityBase value
+                    final EntityStateBase value
                     )
     {
         _properties.put( key, value );

@@ -82,14 +82,14 @@ public abstract class LinuxPkgInfoState
                     final EntityStateString name
                     )
     {
-        _setStateProperty( LinuxPkgProperty.NAME, name );
+        _setProperty( LinuxPkgProperty.NAME, name );
 //        _name = name;
     }
 
 
     public EntityStateString getName()
     {
-        return _getStateProperty( LinuxPkgProperty.NAME, EntityStateString.class );
+        return _getProperty( LinuxPkgProperty.NAME, EntityStateString.class );
 //        return _name;
     }
 
@@ -99,14 +99,14 @@ public abstract class LinuxPkgInfoState
                     final EntityStateString arch
                     )
     {
-        _setStateProperty( LinuxPkgProperty.ARCH, arch );
+        _setProperty( LinuxPkgProperty.ARCH, arch );
 //        _arch = arch;
     }
 
 
     public EntityStateString getArch()
     {
-        return _getStateProperty( LinuxPkgProperty.ARCH, EntityStateString.class );
+        return _getProperty( LinuxPkgProperty.ARCH, EntityStateString.class );
 //        return _arch;
     }
 
@@ -116,14 +116,14 @@ public abstract class LinuxPkgInfoState
                     final EntityStateAnySimple version
                     )
     {
-        _setStateProperty( LinuxPkgProperty.VERSION, version );
+        _setProperty( LinuxPkgProperty.VERSION, version );
 //        _version = version;
     }
 
 
     public EntityStateAnySimple getVersion()
     {
-        return _getStateProperty( LinuxPkgProperty.VERSION, EntityStateAnySimple.class );
+        return _getProperty( LinuxPkgProperty.VERSION, EntityStateAnySimple.class );
 //        return _version;
     }
 
@@ -141,7 +141,7 @@ public abstract class LinuxPkgInfoState
 
 
 
-    protected <T extends EntityStateBase> T _getStateProperty(
+    protected <T extends EntityStateBase> T _getProperty(
                     final LinuxPkgProperty key,
                     final Class<T> type
                     )
@@ -152,7 +152,7 @@ public abstract class LinuxPkgInfoState
 
 
 
-    protected void _setStateProperty(
+    protected void _setProperty(
                     final LinuxPkgProperty key,
                     final EntityStateBase value
                     )

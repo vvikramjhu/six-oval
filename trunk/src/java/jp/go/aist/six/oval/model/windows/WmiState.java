@@ -88,13 +88,13 @@ public class WmiState
                     final EntityStateString namespace
                     )
     {
-        _setStateProperty( WmiProperty.NAMESPACE, namespace );
+        _setProperty( WmiProperty.NAMESPACE, namespace );
     }
 
 
     public EntityStateString getNamespace()
     {
-        return _getStateProperty( WmiProperty.NAMESPACE, EntityStateString.class );
+        return _getProperty( WmiProperty.NAMESPACE, EntityStateString.class );
     }
 
 
@@ -105,13 +105,13 @@ public class WmiState
                     final EntityStateString wql
                     )
     {
-        _setStateProperty( WmiProperty.WQL, wql );
+        _setProperty( WmiProperty.WQL, wql );
     }
 
 
     public EntityStateString getWql()
     {
-        return _getStateProperty( WmiProperty.WQL, EntityStateString.class );
+        return _getProperty( WmiProperty.WQL, EntityStateString.class );
     }
 
 
@@ -122,13 +122,13 @@ public class WmiState
                     final EntityStateAnySimple result
                     )
     {
-        _setStateProperty( WmiProperty.RESULT, result );
+        _setProperty( WmiProperty.RESULT, result );
     }
 
 
     public EntityStateAnySimple getResult()
     {
-        return _getStateProperty( WmiProperty.RESULT, EntityStateAnySimple.class );
+        return _getProperty( WmiProperty.RESULT, EntityStateAnySimple.class );
     }
 
 
@@ -153,7 +153,7 @@ public class WmiState
 
 
 
-    protected <T extends EntityBase> T _getStateProperty(
+    protected <T extends EntityStateBase> T _getProperty(
                     final WmiProperty key,
                     final Class<T> type
                     )
@@ -164,7 +164,7 @@ public class WmiState
 
 
 
-    protected void _setStateProperty(
+    protected void _setProperty(
                     final WmiProperty key,
                     final EntityStateBase value
                     )

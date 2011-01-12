@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.independent;
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
+import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateInt;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
@@ -100,7 +101,7 @@ public class TextFileContent54State
                     final EntityStateString filepath
                     )
     {
-        _properties.put( Property.FILEPATH, filepath );
+        _setProperty( Property.FILEPATH, filepath );
     }
 
 
@@ -115,7 +116,7 @@ public class TextFileContent54State
 
     public EntityStateString getFilepath()
     {
-        return (EntityStateString)_properties.get( Property.FILEPATH );
+        return _getProperty( Property.FILEPATH, EntityStateString.class );
     }
 
 
@@ -126,7 +127,7 @@ public class TextFileContent54State
                     final EntityStateString path
                     )
     {
-        _properties.put( Property.PATH, path );
+        _setProperty( Property.PATH, path );
     }
 
 
@@ -141,7 +142,7 @@ public class TextFileContent54State
 
     public EntityStateString getPath()
     {
-        return (EntityStateString)_properties.get( Property.PATH );
+        return _getProperty( Property.PATH, EntityStateString.class );
     }
 
 
@@ -152,7 +153,7 @@ public class TextFileContent54State
                     final EntityStateString filename
                     )
     {
-        _properties.put( Property.FILENAME, filename );
+        _setProperty( Property.FILENAME, filename );
     }
 
 
@@ -167,7 +168,7 @@ public class TextFileContent54State
 
     public EntityStateString getFilename()
     {
-        return (EntityStateString)_properties.get( Property.FILENAME );
+        return _getProperty( Property.FILENAME, EntityStateString.class );
     }
 
 
@@ -178,7 +179,7 @@ public class TextFileContent54State
                     final EntityStateString pattern
                     )
     {
-        _properties.put( Property.PATTERN, pattern );
+        _setProperty( Property.PATTERN, pattern );
     }
 
 
@@ -193,7 +194,7 @@ public class TextFileContent54State
 
     public EntityStateString getPattern()
     {
-        return (EntityStateString)_properties.get( Property.PATTERN );
+        return _getProperty( Property.PATTERN, EntityStateString.class );
     }
 
 
@@ -204,7 +205,7 @@ public class TextFileContent54State
                     final EntityStateInt instance
                     )
     {
-        _properties.put( Property.INSTANCE, instance );
+        _setProperty( Property.INSTANCE, instance );
     }
 
 
@@ -219,7 +220,7 @@ public class TextFileContent54State
 
     public EntityStateInt getInstance()
     {
-        return (EntityStateInt)_properties.get( Property.INSTANCE );
+        return _getProperty( Property.INSTANCE, EntityStateInt.class );
     }
 
 
@@ -230,7 +231,7 @@ public class TextFileContent54State
                     final EntityStateAnySimple text
                     )
     {
-        _properties.put( Property.TEXT, text );
+        _setProperty( Property.TEXT, text );
     }
 
 
@@ -245,7 +246,7 @@ public class TextFileContent54State
 
     public EntityStateAnySimple getText()
     {
-        return (EntityStateAnySimple)_properties.get( Property.TEXT );
+        return _getProperty( Property.TEXT, EntityStateAnySimple.class );
     }
 
 
@@ -256,7 +257,7 @@ public class TextFileContent54State
                     final EntityStateAnySimple subexpression
                     )
     {
-        _properties.put( Property.SUBEXPRESSION, subexpression );
+        _setProperty( Property.SUBEXPRESSION, subexpression );
     }
 
 
@@ -271,7 +272,7 @@ public class TextFileContent54State
 
     public EntityStateAnySimple getSubexpression()
     {
-        return (EntityStateAnySimple)_properties.get( Property.SUBEXPRESSION );
+        return _getProperty( Property.SUBEXPRESSION, EntityStateAnySimple.class );
     }
 
 
@@ -292,6 +293,27 @@ public class TextFileContent54State
     public Iterator<EntityBase> iterateProperties()
     {
         return _properties.values().iterator();
+    }
+
+
+
+    protected <T extends EntityStateBase> T _getProperty(
+                    final Property key,
+                    final Class<T> type
+                    )
+    {
+        EntityBase  p = _properties.get( key );
+        return type.cast( p );
+    }
+
+
+
+    protected void _setProperty(
+                    final Property key,
+                    final EntityStateBase value
+                    )
+    {
+        _properties.put( key, value );
     }
 
 

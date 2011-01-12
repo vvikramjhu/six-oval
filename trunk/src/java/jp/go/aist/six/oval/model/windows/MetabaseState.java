@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.windows;
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
+import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateInt;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
@@ -85,7 +86,7 @@ public class MetabaseState
      */
     public EntityStateString getKey()
     {
-        return _getStateProperty( Property.KEY, EntityStateString.class );
+        return _getProperty( Property.KEY, EntityStateString.class );
     }
 
 
@@ -93,7 +94,7 @@ public class MetabaseState
                     final EntityStateString key
                     )
     {
-        _setStateProperty( Property.KEY, key );
+        _setProperty( Property.KEY, key );
     }
 
 
@@ -111,7 +112,7 @@ public class MetabaseState
      */
     public EntityStateInt getID()
     {
-        return _getStateProperty( Property.ID, EntityStateInt.class );
+        return _getProperty( Property.ID, EntityStateInt.class );
     }
 
 
@@ -119,7 +120,7 @@ public class MetabaseState
                     final EntityStateInt id
                     )
     {
-        _setStateProperty( Property.ID, id );
+        _setProperty( Property.ID, id );
     }
 
 
@@ -137,7 +138,7 @@ public class MetabaseState
      */
     public EntityStateString getName()
     {
-        return _getStateProperty( Property.NAME, EntityStateString.class );
+        return _getProperty( Property.NAME, EntityStateString.class );
     }
 
 
@@ -145,7 +146,7 @@ public class MetabaseState
                     final EntityStateString name
                     )
     {
-        _setStateProperty( Property.NAME, name );
+        _setProperty( Property.NAME, name );
     }
 
 
@@ -163,7 +164,7 @@ public class MetabaseState
      */
     public EntityStateString getUserType()
     {
-        return _getStateProperty( Property.USER_TYPE, EntityStateString.class );
+        return _getProperty( Property.USER_TYPE, EntityStateString.class );
     }
 
 
@@ -171,7 +172,7 @@ public class MetabaseState
                     final EntityStateString userType
                     )
     {
-        _setStateProperty( Property.USER_TYPE, userType );
+        _setProperty( Property.USER_TYPE, userType );
     }
 
 
@@ -189,7 +190,7 @@ public class MetabaseState
      */
     public EntityStateString getDataType()
     {
-        return _getStateProperty( Property.DATA_TYPE, EntityStateString.class );
+        return _getProperty( Property.DATA_TYPE, EntityStateString.class );
     }
 
 
@@ -197,7 +198,7 @@ public class MetabaseState
                     final EntityStateString dataType
                     )
     {
-        _setStateProperty( Property.DATA_TYPE, dataType );
+        _setProperty( Property.DATA_TYPE, dataType );
     }
 
 
@@ -215,7 +216,7 @@ public class MetabaseState
      */
     public EntityStateAnySimple getData()
     {
-        return _getStateProperty( Property.DATA, EntityStateAnySimple.class );
+        return _getProperty( Property.DATA, EntityStateAnySimple.class );
     }
 
 
@@ -223,7 +224,7 @@ public class MetabaseState
                     final EntityStateAnySimple data
                     )
     {
-        _setStateProperty( Property.DATA, data );
+        _setProperty( Property.DATA, data );
     }
 
 
@@ -257,7 +258,7 @@ public class MetabaseState
 
 
 
-    protected <T extends EntityBase> T _getStateProperty(
+    protected <T extends EntityStateBase> T _getProperty(
                     final Property key,
                     final Class<T> type
                     )
@@ -268,9 +269,9 @@ public class MetabaseState
 
 
 
-    protected void _setStateProperty(
+    protected void _setProperty(
                     final Property key,
-                    final EntityBase value
+                    final EntityStateBase value
                     )
     {
         _properties.put( key, value );

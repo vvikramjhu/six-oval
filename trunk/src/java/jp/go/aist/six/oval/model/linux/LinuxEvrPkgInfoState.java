@@ -71,14 +71,14 @@ public abstract class LinuxEvrPkgInfoState
                     final EntityStateAnySimple epoch
                     )
     {
-        _setStateProperty( LinuxPkgProperty.EPOCH, epoch );
+        _setProperty( LinuxPkgProperty.EPOCH, epoch );
 //        _epoch = epoch;
     }
 
 
     public EntityStateAnySimple getEpoch()
     {
-        return _getStateProperty( LinuxPkgProperty.EPOCH, EntityStateAnySimple.class );
+        return _getProperty( LinuxPkgProperty.EPOCH, EntityStateAnySimple.class );
 //        return _epoch;
     }
 
@@ -88,14 +88,14 @@ public abstract class LinuxEvrPkgInfoState
                     final EntityStateAnySimple release
                     )
     {
-        _setStateProperty( LinuxPkgProperty.RELEASE, release );
+        _setProperty( LinuxPkgProperty.RELEASE, release );
 //        _release = release;
     }
 
 
     public EntityStateAnySimple getRelease()
     {
-        return _getStateProperty( LinuxPkgProperty.RELEASE, EntityStateAnySimple.class );
+        return _getProperty( LinuxPkgProperty.RELEASE, EntityStateAnySimple.class );
 //        return _release;
     }
 
@@ -105,14 +105,14 @@ public abstract class LinuxEvrPkgInfoState
                     final EntityStateEVRString evr
                     )
     {
-        _setStateProperty( LinuxPkgProperty.EVR, evr );
+        _setProperty( LinuxPkgProperty.EVR, evr );
 //        _evr = evr;
     }
 
 
     public EntityStateEVRString getEvr()
     {
-        return _getStateProperty( LinuxPkgProperty.EVR, EntityStateEVRString.class );
+        return _getProperty( LinuxPkgProperty.EVR, EntityStateEVRString.class );
 //        return _evr;
     }
 

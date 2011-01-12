@@ -26,7 +26,6 @@ import jp.go.aist.six.oval.model.definitions.EntityStateInt;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.EntityStateVersion;
 import jp.go.aist.six.oval.model.definitions.State;
-import java.util.EnumMap;
 import java.util.Iterator;
 
 
@@ -42,9 +41,11 @@ public class FileState
     extends State
 {
 
-    private EnumMap<FileProperty, EntityBase>  _properties =
-        new EnumMap<FileProperty, EntityBase>( FileProperty.class );
-    //EntityStateBase{0..1}
+    private FileProperty.EntityMap  _properties = FileProperty.createEntityMap();
+
+//    private EnumMap<FileProperty, EntityBase>  _properties =
+//        new EnumMap<FileProperty, EntityBase>( FileProperty.class );
+//    //EntityStateBase{0..1}
 
 
 
@@ -88,7 +89,7 @@ public class FileState
                     final EntityStateString filepath
                     )
     {
-        _setStateProperty( FileProperty.FILEPATH, filepath );
+        _properties.setProperty( FileProperty.FILEPATH, filepath );
     }
 
 
@@ -103,7 +104,7 @@ public class FileState
 
     public EntityStateString getFilepath()
     {
-        return _getStateProperty( FileProperty.FILEPATH, EntityStateString.class );
+        return _properties.getProperty( FileProperty.FILEPATH, EntityStateString.class );
     }
 
 
@@ -114,7 +115,7 @@ public class FileState
                     final EntityStateString path
                     )
     {
-        _setStateProperty( FileProperty.PATH, path );
+        _properties.setProperty( FileProperty.PATH, path );
     }
 
 
@@ -129,7 +130,7 @@ public class FileState
 
     public EntityStateString getPath()
     {
-        return _getStateProperty( FileProperty.PATH, EntityStateString.class );
+        return _properties.getProperty( FileProperty.PATH, EntityStateString.class );
     }
 
 
@@ -140,7 +141,7 @@ public class FileState
                     final EntityStateString filename
                     )
     {
-        _setStateProperty( FileProperty.FILENAME, filename );
+        _properties.setProperty( FileProperty.FILENAME, filename );
     }
 
 
@@ -155,7 +156,7 @@ public class FileState
 
     public EntityStateString getFilename()
     {
-        return _getStateProperty( FileProperty.FILENAME, EntityStateString.class );
+        return _properties.getProperty( FileProperty.FILENAME, EntityStateString.class );
     }
 
 
@@ -166,7 +167,7 @@ public class FileState
                     final EntityStateString owner
                     )
     {
-        _setStateProperty( FileProperty.OWNER, owner );
+        _properties.setProperty( FileProperty.OWNER, owner );
     }
 
 
@@ -181,7 +182,7 @@ public class FileState
 
     public EntityStateString getOwner()
     {
-        return _getStateProperty( FileProperty.OWNER, EntityStateString.class );
+        return _properties.getProperty( FileProperty.OWNER, EntityStateString.class );
     }
 
 
@@ -192,13 +193,13 @@ public class FileState
                     final EntityStateInt size
                     )
     {
-        _setStateProperty( FileProperty.SIZE, size );
+        _properties.setProperty( FileProperty.SIZE, size );
     }
 
 
     public EntityStateInt getSize()
     {
-        return _getStateProperty( FileProperty.SIZE, EntityStateInt.class );
+        return _properties.getProperty( FileProperty.SIZE, EntityStateInt.class );
     }
 
 
@@ -209,13 +210,13 @@ public class FileState
                     final EntityStateInt atime
                     )
     {
-        _setStateProperty( FileProperty.A_TIME, atime );
+        _properties.setProperty( FileProperty.A_TIME, atime );
     }
 
 
     public EntityStateInt getATime()
     {
-        return _getStateProperty( FileProperty.A_TIME, EntityStateInt.class );
+        return _properties.getProperty( FileProperty.A_TIME, EntityStateInt.class );
     }
 
 
@@ -226,13 +227,13 @@ public class FileState
                     final EntityStateInt ctime
                     )
     {
-        _setStateProperty( FileProperty.C_TIME, ctime );
+        _properties.setProperty( FileProperty.C_TIME, ctime );
     }
 
 
     public EntityStateInt getCTime()
     {
-        return _getStateProperty( FileProperty.C_TIME, EntityStateInt.class );
+        return _properties.getProperty( FileProperty.C_TIME, EntityStateInt.class );
     }
 
 
@@ -243,13 +244,13 @@ public class FileState
                     final EntityStateInt mtime
                     )
     {
-        _setStateProperty( FileProperty.M_TIME, mtime );
+        _properties.setProperty( FileProperty.M_TIME, mtime );
     }
 
 
     public EntityStateInt getMTime()
     {
-        return _getStateProperty( FileProperty.M_TIME, EntityStateInt.class );
+        return _properties.getProperty( FileProperty.M_TIME, EntityStateInt.class );
     }
 
 
@@ -260,13 +261,13 @@ public class FileState
                     final EntityStateString checksum
                     )
     {
-        _setStateProperty( FileProperty.MS_CHECKSUM, checksum );
+        _properties.setProperty( FileProperty.MS_CHECKSUM, checksum );
     }
 
 
     public EntityStateString getMSChecksum()
     {
-        return _getStateProperty( FileProperty.MS_CHECKSUM, EntityStateString.class );
+        return _properties.getProperty( FileProperty.MS_CHECKSUM, EntityStateString.class );
     }
 
 
@@ -277,7 +278,7 @@ public class FileState
                     final EntityStateVersion version
                     )
     {
-        _setStateProperty( FileProperty.VERSION, version );
+        _properties.setProperty( FileProperty.VERSION, version );
     }
 
 
@@ -292,7 +293,7 @@ public class FileState
 
     public EntityStateVersion getVersion()
     {
-        return _getStateProperty( FileProperty.VERSION, EntityStateVersion.class );
+        return _properties.getProperty( FileProperty.VERSION, EntityStateVersion.class );
     }
 
 
@@ -303,13 +304,13 @@ public class FileState
                     final EntityStateFileType type
                     )
     {
-        _setStateProperty( FileProperty.TYPE, type );
+        _properties.setProperty( FileProperty.TYPE, type );
     }
 
 
     public EntityStateFileType getType()
     {
-        return _getStateProperty( FileProperty.TYPE, EntityStateFileType.class );
+        return _properties.getProperty( FileProperty.TYPE, EntityStateFileType.class );
     }
 
 
@@ -320,13 +321,13 @@ public class FileState
                     final EntityStateString developmentClass
                     )
     {
-        _setStateProperty( FileProperty.DEVELOPMENT_CLASS, developmentClass );
+        _properties.setProperty( FileProperty.DEVELOPMENT_CLASS, developmentClass );
     }
 
 
     public EntityStateString getDevelopmentClass()
     {
-        return _getStateProperty( FileProperty.DEVELOPMENT_CLASS, EntityStateString.class );
+        return _properties.getProperty( FileProperty.DEVELOPMENT_CLASS, EntityStateString.class );
     }
 
 
@@ -337,13 +338,13 @@ public class FileState
                     final EntityStateString company
                     )
     {
-        _setStateProperty( FileProperty.COMPANY, company );
+        _properties.setProperty( FileProperty.COMPANY, company );
     }
 
 
     public EntityStateString getCompany()
     {
-        return _getStateProperty( FileProperty.COMPANY, EntityStateString.class );
+        return _properties.getProperty( FileProperty.COMPANY, EntityStateString.class );
     }
 
 
@@ -354,13 +355,13 @@ public class FileState
                     final EntityStateString internalName
                     )
     {
-        _setStateProperty( FileProperty.INTERNAL_NAME, internalName );
+        _properties.setProperty( FileProperty.INTERNAL_NAME, internalName );
     }
 
 
     public EntityStateString getInternalName()
     {
-        return _getStateProperty( FileProperty.INTERNAL_NAME, EntityStateString.class );
+        return _properties.getProperty( FileProperty.INTERNAL_NAME, EntityStateString.class );
     }
 
 
@@ -371,13 +372,13 @@ public class FileState
                     final EntityStateString language
                     )
     {
-        _setStateProperty( FileProperty.LANGUAGE, language );
+        _properties.setProperty( FileProperty.LANGUAGE, language );
     }
 
 
     public EntityStateString getLanguage()
     {
-        return _getStateProperty( FileProperty.LANGUAGE, EntityStateString.class );
+        return _properties.getProperty( FileProperty.LANGUAGE, EntityStateString.class );
     }
 
 
@@ -388,13 +389,13 @@ public class FileState
                     final EntityStateString filename
                     )
     {
-        _setStateProperty( FileProperty.ORIGINAL_FILENAME, filename );
+        _properties.setProperty( FileProperty.ORIGINAL_FILENAME, filename );
     }
 
 
     public EntityStateString getOriginalFilename()
     {
-        return _getStateProperty( FileProperty.ORIGINAL_FILENAME, EntityStateString.class );
+        return _properties.getProperty( FileProperty.ORIGINAL_FILENAME, EntityStateString.class );
     }
 
 
@@ -405,13 +406,13 @@ public class FileState
                     final EntityStateString name
                     )
     {
-        _setStateProperty( FileProperty.PRODUCT_NAME, name );
+        _properties.setProperty( FileProperty.PRODUCT_NAME, name );
     }
 
 
     public EntityStateString getProductName()
     {
-        return _getStateProperty( FileProperty.PRODUCT_NAME, EntityStateString.class );
+        return _properties.getProperty( FileProperty.PRODUCT_NAME, EntityStateString.class );
     }
 
 
@@ -422,7 +423,7 @@ public class FileState
                     final EntityStateVersion version
                     )
     {
-        _setStateProperty( FileProperty.PRODUCT_VERSION, version );
+        _properties.setProperty( FileProperty.PRODUCT_VERSION, version );
     }
 
 
@@ -437,7 +438,7 @@ public class FileState
 
     public EntityStateVersion getProductVersion()
     {
-        return _getStateProperty( FileProperty.PRODUCT_VERSION, EntityStateVersion.class );
+        return _properties.getProperty( FileProperty.PRODUCT_VERSION, EntityStateVersion.class );
     }
 
 
@@ -457,29 +458,29 @@ public class FileState
     @Override
     public Iterator<EntityBase> iterateProperties()
     {
-        return _properties.values().iterator();
+        return _properties.iterateProperties();
     }
 
 
 
-    protected <T extends EntityBase> T _getStateProperty(
-                    final FileProperty key,
-                    final Class<T> type
-                    )
-    {
-        EntityBase  p = _properties.get( key );
-        return type.cast( p );
-    }
-
-
-
-    protected void _setStateProperty(
-                    final FileProperty key,
-                    final EntityBase value
-                    )
-    {
-        _properties.put( key, value );
-    }
+//    protected <T extends EntityStateBase> T _getProperty(
+//                    final FileProperty key,
+//                    final Class<T> type
+//                    )
+//    {
+//        EntityBase  p = _properties.get( key );
+//        return type.cast( p );
+//    }
+//
+//
+//
+//    protected void _setProperty(
+//                    final FileProperty key,
+//                    final EntityStateBase value
+//                    )
+//    {
+//        _properties.put( key, value );
+//    }
 
 
 

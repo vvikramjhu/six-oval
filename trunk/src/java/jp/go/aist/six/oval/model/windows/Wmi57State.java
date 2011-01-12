@@ -25,7 +25,6 @@ import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateRecord;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
-import java.util.EnumMap;
 import java.util.Iterator;
 
 
@@ -41,8 +40,10 @@ public class Wmi57State
     extends State
 {
 
-    private EnumMap<WmiProperty, EntityBase>  _properties =
-        new EnumMap<WmiProperty, EntityBase>( WmiProperty.class );
+    private WmiProperty.EntityMap  _properties = WmiProperty.createEntityMap();
+
+//    private EnumMap<WmiProperty, EntityBase>  _properties =
+//        new EnumMap<WmiProperty, EntityBase>( WmiProperty.class );
 
 
 
@@ -84,13 +85,15 @@ public class Wmi57State
                     final EntityStateString namespace
                     )
     {
-        _setStateProperty( WmiProperty.NAMESPACE, namespace );
+        _properties.setProperty( WmiProperty.NAMESPACE, namespace );
+//        _setProperty( WmiProperty.NAMESPACE, namespace );
     }
 
 
     public EntityStateString getNamespace()
     {
-        return _getStateProperty( WmiProperty.NAMESPACE, EntityStateString.class );
+        return _properties.getProperty( WmiProperty.NAMESPACE, EntityStateString.class );
+//        return _getProperty( WmiProperty.NAMESPACE, EntityStateString.class );
     }
 
 
@@ -101,13 +104,15 @@ public class Wmi57State
                     final EntityStateString wql
                     )
     {
-        _setStateProperty( WmiProperty.WQL, wql );
+        _properties.setProperty( WmiProperty.WQL, wql );
+//        _setProperty( WmiProperty.WQL, wql );
     }
 
 
     public EntityStateString getWql()
     {
-        return _getStateProperty( WmiProperty.WQL, EntityStateString.class );
+        return _properties.getProperty( WmiProperty.WQL, EntityStateString.class );
+//        return _getProperty( WmiProperty.WQL, EntityStateString.class );
     }
 
 
@@ -118,13 +123,15 @@ public class Wmi57State
                     final EntityStateRecord result
                     )
     {
-        _setStateProperty( WmiProperty.RESULT, result );
+        _properties.setProperty( WmiProperty.RESULT, result );
+//        _setProperty( WmiProperty.RESULT, result );
     }
 
 
     public EntityStateRecord getResult()
     {
-        return _getStateProperty( WmiProperty.RESULT, EntityStateRecord.class );
+        return _properties.getProperty( WmiProperty.RESULT, EntityStateRecord.class );
+//        return _getProperty( WmiProperty.RESULT, EntityStateRecord.class );
     }
 
 
@@ -144,29 +151,30 @@ public class Wmi57State
     @Override
     public Iterator<EntityBase> iterateProperties()
     {
-        return _properties.values().iterator();
+        return _properties.iterateProperties();
+//        return _properties.values().iterator();
     }
 
 
 
-    protected <T extends EntityBase> T _getStateProperty(
-                    final WmiProperty key,
-                    final Class<T> type
-                    )
-    {
-        EntityBase  p = _properties.get( key );
-        return type.cast( p );
-    }
-
-
-
-    protected void _setStateProperty(
-                    final WmiProperty key,
-                    final EntityBase value
-                    )
-    {
-        _properties.put( key, value );
-    }
+//    protected <T extends EntityStateBase> T _getProperty(
+//                    final WmiProperty key,
+//                    final Class<T> type
+//                    )
+//    {
+//        EntityBase  p = _properties.get( key );
+//        return type.cast( p );
+//    }
+//
+//
+//
+//    protected void _setProperty(
+//                    final WmiProperty key,
+//                    final EntityStateBase value
+//                    )
+//    {
+//        _properties.put( key, value );
+//    }
 
 
 

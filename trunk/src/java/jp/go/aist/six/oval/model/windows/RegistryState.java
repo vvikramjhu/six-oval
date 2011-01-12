@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.windows;
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
+import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
 import java.util.EnumMap;
@@ -98,7 +99,7 @@ public class RegistryState
                     final EntityStateRegistryHive hive
                     )
     {
-        _setStateProperty( Property.HIVE, hive );
+        _setProperty( Property.HIVE, hive );
     }
 
 
@@ -113,7 +114,7 @@ public class RegistryState
 
     public EntityStateRegistryHive getHive()
     {
-        return _getStateProperty( Property.HIVE, EntityStateRegistryHive.class );
+        return _getProperty( Property.HIVE, EntityStateRegistryHive.class );
     }
 
 
@@ -124,7 +125,7 @@ public class RegistryState
                     final EntityStateString key
                     )
     {
-        _setStateProperty( Property.KEY, key );
+        _setProperty( Property.KEY, key );
     }
 
 
@@ -139,7 +140,7 @@ public class RegistryState
 
     public EntityStateString getKey()
     {
-        return _getStateProperty( Property.KEY, EntityStateString.class );
+        return _getProperty( Property.KEY, EntityStateString.class );
     }
 
 
@@ -150,7 +151,7 @@ public class RegistryState
                     final EntityStateString name
                     )
     {
-        _setStateProperty( Property.NAME, name );
+        _setProperty( Property.NAME, name );
     }
 
 
@@ -165,7 +166,7 @@ public class RegistryState
 
     public EntityStateString getName()
     {
-        return _getStateProperty( Property.NAME, EntityStateString.class );
+        return _getProperty( Property.NAME, EntityStateString.class );
     }
 
 
@@ -176,7 +177,7 @@ public class RegistryState
                     final EntityStateRegistryType type
                     )
     {
-        _setStateProperty( Property.TYPE, type );
+        _setProperty( Property.TYPE, type );
     }
 
 
@@ -193,7 +194,7 @@ public class RegistryState
      */
     public EntityStateRegistryType getType()
     {
-        return _getStateProperty( Property.TYPE, EntityStateRegistryType.class );
+        return _getProperty( Property.TYPE, EntityStateRegistryType.class );
     }
 
 
@@ -204,7 +205,7 @@ public class RegistryState
                     final EntityStateAnySimple value
                     )
     {
-        _setStateProperty( Property.VALUE, value );
+        _setProperty( Property.VALUE, value );
     }
 
 
@@ -219,7 +220,7 @@ public class RegistryState
 
     public EntityStateAnySimple getValue()
     {
-        return _getStateProperty( Property.VALUE, EntityStateAnySimple.class );
+        return _getProperty( Property.VALUE, EntityStateAnySimple.class );
     }
 
 
@@ -244,7 +245,7 @@ public class RegistryState
 
 
 
-    protected <T extends EntityBase> T _getStateProperty(
+    protected <T extends EntityStateBase> T _getProperty(
                     final Property key,
                     final Class<T> type
                     )
@@ -255,9 +256,9 @@ public class RegistryState
 
 
 
-    protected void _setStateProperty(
+    protected void _setProperty(
                     final Property key,
-                    final EntityBase value
+                    final EntityStateBase value
                     )
     {
         _properties.put( key, value );

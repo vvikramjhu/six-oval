@@ -88,7 +88,7 @@ public class RpmInfoState
                     final EntityStateString keyid
                     )
     {
-        _setStateProperty( LinuxPkgProperty.SIGNATURE_KEYID, keyid );
+        _setProperty( LinuxPkgProperty.SIGNATURE_KEYID, keyid );
 //        _signatureKeyID = keyid;
     }
 
@@ -105,7 +105,7 @@ public class RpmInfoState
 
     public EntityStateString getSignatureKeyID()
     {
-        return _getStateProperty( LinuxPkgProperty.SIGNATURE_KEYID, EntityStateString.class );
+        return _getProperty( LinuxPkgProperty.SIGNATURE_KEYID, EntityStateString.class );
 //        return _signatureKeyID;
     }
 

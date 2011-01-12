@@ -20,6 +20,10 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import jp.go.aist.six.oval.model.definitions.EntityBase;
+import java.util.EnumMap;
+import java.util.Iterator;
+
 
 
 /**
@@ -49,6 +53,59 @@ public enum FileProperty
     ORIGINAL_FILENAME,
     PRODUCT_NAME,
     PRODUCT_VERSION;    // Version
+
+
+
+    /**
+     */
+    public static EntityMap createEntityMap()
+    {
+        return (new EntityMap());
+    }
+
+
+
+    /**
+     */
+    public static class EntityMap
+    extends EnumMap<FileProperty, EntityBase>
+    {
+
+        public EntityMap()
+        {
+            super( FileProperty.class );
+        }
+
+
+
+        public Iterator<EntityBase> iterateProperties()
+        {
+            return values().iterator();
+        }
+
+
+
+        public <T extends EntityBase> T getProperty(
+                        final FileProperty key,
+                        final Class<T> type
+                        )
+        {
+            EntityBase  p = get( key );
+            return type.cast( p );
+        }
+
+
+
+        public void setProperty(
+                        final FileProperty key,
+                        final EntityBase value
+                        )
+        {
+            put( key, value );
+        }
+
+    }
+    //EntityMap
 
 }
 // FileProperty
