@@ -22,12 +22,11 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityBase;
+import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
-import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateInt;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
-import java.util.EnumMap;
 import java.util.Iterator;
 
 
@@ -44,20 +43,8 @@ public class MetabaseState
     extends State
 {
 
-    protected static enum Property
-    {
-        KEY,        //EntityStateString     {0..1}
-        ID,         //EntityStateInt        {0..1}
-        NAME,       //EntityStateString     {0..1}
-        USER_TYPE,  //EntityStateString     {0..1}
-        DATA_TYPE,  //EntityStateString     {0..1}
-        DATA;       //EntityStateAnySimple  {0..1}
-    }
-
-
-
-    private EnumMap<Property, EntityBase>  _properties =
-        new EnumMap<Property, EntityBase>( Property.class );
+    private EntityPropertyMap<MetabaseProperty>  _properties =
+        MetabaseProperty.createPropertyMap();
 
 
 
@@ -86,7 +73,8 @@ public class MetabaseState
      */
     public EntityStateString getKey()
     {
-        return _getProperty( Property.KEY, EntityStateString.class );
+        return _properties.getProperty(
+                        MetabaseProperty.KEY, EntityStateString.class );
     }
 
 
@@ -94,7 +82,7 @@ public class MetabaseState
                     final EntityStateString key
                     )
     {
-        _setProperty( Property.KEY, key );
+        _properties.setProperty( MetabaseProperty.KEY, key );
     }
 
 
@@ -112,7 +100,8 @@ public class MetabaseState
      */
     public EntityStateInt getID()
     {
-        return _getProperty( Property.ID, EntityStateInt.class );
+        return _properties.getProperty(
+                        MetabaseProperty.ID, EntityStateInt.class );
     }
 
 
@@ -120,7 +109,7 @@ public class MetabaseState
                     final EntityStateInt id
                     )
     {
-        _setProperty( Property.ID, id );
+        _properties.setProperty( MetabaseProperty.ID, id );
     }
 
 
@@ -138,7 +127,8 @@ public class MetabaseState
      */
     public EntityStateString getName()
     {
-        return _getProperty( Property.NAME, EntityStateString.class );
+        return _properties.getProperty(
+                        MetabaseProperty.NAME, EntityStateString.class );
     }
 
 
@@ -146,7 +136,7 @@ public class MetabaseState
                     final EntityStateString name
                     )
     {
-        _setProperty( Property.NAME, name );
+        _properties.setProperty( MetabaseProperty.NAME, name );
     }
 
 
@@ -164,7 +154,8 @@ public class MetabaseState
      */
     public EntityStateString getUserType()
     {
-        return _getProperty( Property.USER_TYPE, EntityStateString.class );
+        return _properties.getProperty(
+                        MetabaseProperty.USER_TYPE, EntityStateString.class );
     }
 
 
@@ -172,7 +163,7 @@ public class MetabaseState
                     final EntityStateString userType
                     )
     {
-        _setProperty( Property.USER_TYPE, userType );
+        _properties.setProperty( MetabaseProperty.USER_TYPE, userType );
     }
 
 
@@ -190,7 +181,8 @@ public class MetabaseState
      */
     public EntityStateString getDataType()
     {
-        return _getProperty( Property.DATA_TYPE, EntityStateString.class );
+        return _properties.getProperty(
+                        MetabaseProperty.DATA_TYPE, EntityStateString.class );
     }
 
 
@@ -198,7 +190,7 @@ public class MetabaseState
                     final EntityStateString dataType
                     )
     {
-        _setProperty( Property.DATA_TYPE, dataType );
+        _properties.setProperty( MetabaseProperty.DATA_TYPE, dataType );
     }
 
 
@@ -216,7 +208,8 @@ public class MetabaseState
      */
     public EntityStateAnySimple getData()
     {
-        return _getProperty( Property.DATA, EntityStateAnySimple.class );
+        return _properties.getProperty(
+                        MetabaseProperty.DATA, EntityStateAnySimple.class );
     }
 
 
@@ -224,7 +217,7 @@ public class MetabaseState
                     final EntityStateAnySimple data
                     )
     {
-        _setProperty( Property.DATA, data );
+        _properties.setProperty( MetabaseProperty.DATA, data );
     }
 
 
@@ -253,28 +246,7 @@ public class MetabaseState
     @Override
     public Iterator<EntityBase> iterateProperties()
     {
-        return _properties.values().iterator();
-    }
-
-
-
-    protected <T extends EntityStateBase> T _getProperty(
-                    final Property key,
-                    final Class<T> type
-                    )
-    {
-        EntityBase  p = _properties.get( key );
-        return type.cast( p );
-    }
-
-
-
-    protected void _setProperty(
-                    final Property key,
-                    final EntityStateBase value
-                    )
-    {
-        _properties.put( key, value );
+        return _properties.iterateProperties();
     }
 
 

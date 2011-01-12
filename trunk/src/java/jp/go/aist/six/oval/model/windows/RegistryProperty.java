@@ -25,41 +25,28 @@ import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
 
 
 /**
- * The Windows file properties.
+ * The Windows registry properties.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum FileProperty
+public enum RegistryProperty
 {
-    FILEPATH,
-    PATH,
-    FILENAME,
-    OWNER,
-    SIZE,           // Int
-    A_TIME,         // Int
-    C_TIME,         // Int
-    M_TIME,         // Int
-    MS_CHECKSUM,
-    VERSION,        // Version
-    TYPE,           // FileType
-    DEVELOPMENT_CLASS,
-    COMPANY,
-    INTERNAL_NAME,
-    LANGUAGE,
-    ORIGINAL_FILENAME,
-    PRODUCT_NAME,
-    PRODUCT_VERSION;    // Version
+    HIVE,   //RegistryHive
+    KEY,    //String
+    NAME,   //String
+    TYPE,   //RegistryType
+    VALUE;  //AnySimple
 
 
 
     /**
      */
-    public static EntityPropertyMap<FileProperty> createPropertyMap()
+    public static EntityPropertyMap<RegistryProperty> createPropertyMap()
     {
-        return (new EntityPropertyMap<FileProperty>( FileProperty.class ));
+        return (new EntityPropertyMap<RegistryProperty>( RegistryProperty.class ));
     }
 
 }
-// FileProperty
+// RegistryProperty

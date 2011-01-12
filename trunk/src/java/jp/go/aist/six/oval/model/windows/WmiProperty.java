@@ -20,9 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.definitions.EntityBase;
-import java.util.EnumMap;
-import java.util.Iterator;
+import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
 
 
 
@@ -43,54 +41,10 @@ public enum WmiProperty
 
     /**
      */
-    public static EntityMap createEntityMap()
+    public static EntityPropertyMap<WmiProperty> createPropertyMap()
     {
-        return (new EntityMap());
+        return (new EntityPropertyMap<WmiProperty>( WmiProperty.class ));
     }
-
-
-
-    /**
-     */
-    public static class EntityMap
-    extends EnumMap<WmiProperty, EntityBase>
-    {
-
-        public EntityMap()
-        {
-            super( WmiProperty.class );
-        }
-
-
-
-        public Iterator<EntityBase> iterateProperties()
-        {
-            return values().iterator();
-        }
-
-
-
-        public <T extends EntityBase> T getProperty(
-                        final WmiProperty key,
-                        final Class<T> type
-                        )
-        {
-            EntityBase  p = get( key );
-            return type.cast( p );
-        }
-
-
-
-        public void setProperty(
-                        final WmiProperty key,
-                        final EntityBase value
-                        )
-        {
-            put( key, value );
-        }
-
-    }
-    //EntityMap
 
 }
 // WmiProperty

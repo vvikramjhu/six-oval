@@ -45,10 +45,6 @@ public class FileState
     private EntityPropertyMap<FileProperty>  _properties =
         FileProperty.createPropertyMap();
 
-//    private EnumMap<FileProperty, EntityBase>  _properties =
-//        new EnumMap<FileProperty, EntityBase>( FileProperty.class );
-//    //EntityStateBase{0..1}
-
 
 
     /**

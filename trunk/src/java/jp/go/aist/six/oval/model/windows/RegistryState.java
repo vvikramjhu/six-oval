@@ -22,11 +22,10 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityBase;
+import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
-import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
-import java.util.EnumMap;
 import java.util.Iterator;
 
 
@@ -43,19 +42,8 @@ public class RegistryState
     extends State
 {
 
-    protected static enum Property
-    {
-        HIVE,   //EntityStateRegistryHive   {0..1}
-        KEY,    //EntityStateString         {0..1}
-        NAME,   //EntityStateString         {0..1}
-        TYPE,   //EntityStateRegistryType   {0..1}
-        VALUE;  //EntityStateAnySimple      {0..1}
-    }
-
-
-
-    private EnumMap<Property, EntityBase>  _properties =
-        new EnumMap<Property, EntityBase>( Property.class );
+    private EntityPropertyMap<RegistryProperty>  _properties =
+        RegistryProperty.createPropertyMap();
 
 
 
@@ -99,7 +87,7 @@ public class RegistryState
                     final EntityStateRegistryHive hive
                     )
     {
-        _setProperty( Property.HIVE, hive );
+        _properties.setProperty( RegistryProperty.HIVE, hive );
     }
 
 
@@ -114,7 +102,8 @@ public class RegistryState
 
     public EntityStateRegistryHive getHive()
     {
-        return _getProperty( Property.HIVE, EntityStateRegistryHive.class );
+        return _properties.getProperty(
+                        RegistryProperty.HIVE, EntityStateRegistryHive.class );
     }
 
 
@@ -125,7 +114,7 @@ public class RegistryState
                     final EntityStateString key
                     )
     {
-        _setProperty( Property.KEY, key );
+        _properties.setProperty( RegistryProperty.KEY, key );
     }
 
 
@@ -140,7 +129,8 @@ public class RegistryState
 
     public EntityStateString getKey()
     {
-        return _getProperty( Property.KEY, EntityStateString.class );
+        return _properties.getProperty(
+                        RegistryProperty.KEY, EntityStateString.class );
     }
 
 
@@ -151,7 +141,7 @@ public class RegistryState
                     final EntityStateString name
                     )
     {
-        _setProperty( Property.NAME, name );
+        _properties.setProperty( RegistryProperty.NAME, name );
     }
 
 
@@ -166,7 +156,8 @@ public class RegistryState
 
     public EntityStateString getName()
     {
-        return _getProperty( Property.NAME, EntityStateString.class );
+        return _properties.getProperty(
+                        RegistryProperty.NAME, EntityStateString.class );
     }
 
 
@@ -177,7 +168,7 @@ public class RegistryState
                     final EntityStateRegistryType type
                     )
     {
-        _setProperty( Property.TYPE, type );
+        _properties.setProperty( RegistryProperty.TYPE, type );
     }
 
 
@@ -194,7 +185,8 @@ public class RegistryState
      */
     public EntityStateRegistryType getType()
     {
-        return _getProperty( Property.TYPE, EntityStateRegistryType.class );
+        return _properties.getProperty(
+                        RegistryProperty.TYPE, EntityStateRegistryType.class );
     }
 
 
@@ -205,7 +197,7 @@ public class RegistryState
                     final EntityStateAnySimple value
                     )
     {
-        _setProperty( Property.VALUE, value );
+        _properties.setProperty( RegistryProperty.VALUE, value );
     }
 
 
@@ -220,7 +212,8 @@ public class RegistryState
 
     public EntityStateAnySimple getValue()
     {
-        return _getProperty( Property.VALUE, EntityStateAnySimple.class );
+        return _properties.getProperty(
+                        RegistryProperty.VALUE, EntityStateAnySimple.class );
     }
 
 
@@ -240,28 +233,7 @@ public class RegistryState
     @Override
     public Iterator<EntityBase> iterateProperties()
     {
-        return _properties.values().iterator();
-    }
-
-
-
-    protected <T extends EntityStateBase> T _getProperty(
-                    final Property key,
-                    final Class<T> type
-                    )
-    {
-        EntityBase  p = _properties.get( key );
-        return type.cast( p );
-    }
-
-
-
-    protected void _setProperty(
-                    final Property key,
-                    final EntityStateBase value
-                    )
-    {
-        _properties.put( key, value );
+        return _properties.iterateProperties();
     }
 
 
