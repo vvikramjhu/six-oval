@@ -30,26 +30,34 @@ import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum LinuxPkgProperty
+public enum RpmVerifyProperty
 {
+
     NAME,
-    ARCH,           //Dpkg, RPM
-    ARCHITECTURE,   //Slackware
-    EPOCH,
-    RELEASE,        //Dpkg, RPM
-    REVISION,       //Slackware
-    VERSION,
-    EVR,
-    SIGNATURE_KEYID;    //RPM
+    FILEPATH,
+    SIZE_DIFFERS,
+    MODE_DIFFERS,
+    MD5_DIFFERS,
+    DEVICE_DIFFERS,
+    LINK_MISMATCH,
+    OWNERSHIP_DIFFERS,
+    GROUP_DIFFERS,
+    MTIME_DIFFERS,
+    CAPABILITIES_DIFFERS,
+    CONFIGURATION_FILE,
+    DOCUMENTATION_FILE,
+    GHOST_FILE,
+    LICENSE_FILE,
+    README_FILE;
 
 
 
     /**
      */
-    public static EntityPropertyMap<LinuxPkgProperty> createPropertyMap()
+    public static EntityPropertyMap<RpmVerifyProperty> createPropertyMap()
     {
-        return (new EntityPropertyMap<LinuxPkgProperty>( LinuxPkgProperty.class ));
+        return (new EntityPropertyMap<RpmVerifyProperty>( RpmVerifyProperty.class ));
     }
 
 }
-// LinuxPkgProperty
+// RpmVerifyProperty

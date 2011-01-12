@@ -44,9 +44,6 @@ public class UnameState
     private EntityPropertyMap<UnameProperty>  _properties =
         UnameProperty.createPropertyMap();
 
-//    private EnumMap<UnameProperty, EntityBase>  _properties =
-//        new EnumMap<UnameProperty, EntityBase>( UnameProperty.class );
-
 
 
     /**
@@ -90,7 +87,6 @@ public class UnameState
                     )
     {
         _properties.setProperty( UnameProperty.MACHINE_CLASS, machineClass );
-//        _setStateProperty( UnameProperty.MACHINE_CLASS, machineClass );
     }
 
 
@@ -107,7 +103,6 @@ public class UnameState
     {
         return _properties.getProperty(
                         UnameProperty.MACHINE_CLASS, EntityStateString.class );
-//        return _getStateProperty( UnameProperty.MACHINE_CLASS, EntityStateString.class );
     }
 
 
@@ -264,27 +259,6 @@ public class UnameState
     {
         return _properties.iterateProperties();
     }
-
-
-
-//    protected <T extends EntityStateBase> T _getStateProperty(
-//                    final UnameProperty key,
-//                    final Class<T> type
-//                    )
-//    {
-//        EntityBase  p = _properties.get( key );
-//        return type.cast( p );
-//    }
-//
-//
-//
-//    protected void _setStateProperty(
-//                    final UnameProperty key,
-//                    final EntityStateBase value
-//                    )
-//    {
-//        _properties.put( key, value );
-//    }
 
 
 
