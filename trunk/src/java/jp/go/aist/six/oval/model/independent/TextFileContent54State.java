@@ -359,7 +359,7 @@ public class TextFileContent54State
     public String toString()
     {
         return "textfilecontent54_state[" + super.toString()
-                        + _properties
+                        + ", " + String.valueOf( _properties )
 //                        + ", filepath="      + getFilepath()
 //                        + ", path="          + getPath()
 //                        + ", filename="      + getFilename()

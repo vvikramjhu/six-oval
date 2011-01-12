@@ -318,7 +318,7 @@ public class UnameState
     public String toString()
     {
         return "uname_state[" + super.toString()
-                        + _properties
+                        + ", " + String.valueOf( _properties )
                         + "]";
     }
 

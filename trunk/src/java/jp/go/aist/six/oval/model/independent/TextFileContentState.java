@@ -22,10 +22,10 @@ package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityBase;
+import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
-import java.util.EnumMap;
 import java.util.Iterator;
 
 
@@ -46,16 +46,21 @@ public class TextFileContentState
     extends State
 {
 
-    protected static enum Property
-    {
-        PATH,           //{EntityStateString, 0..1}
-        FILENAME,       //{EntityStateString, 0..1}
-        LINE,        //{EntityStateString, 0..1}
-        SUBEXPRESSION;  //{EntityStateAnySimple, 0..1}
-    }
+    private EntityPropertyMap<TextFileContentProperty>  _properties =
+        TextFileContentProperty.createPropertyMap();
 
-    private EnumMap<Property, EntityBase>  _properties =
-        new EnumMap<Property, EntityBase>( Property.class );
+
+
+//    protected static enum Property
+//    {
+//        PATH,           //{EntityStateString, 0..1}
+//        FILENAME,       //{EntityStateString, 0..1}
+//        LINE,        //{EntityStateString, 0..1}
+//        SUBEXPRESSION;  //{EntityStateAnySimple, 0..1}
+//    }
+//
+//    private EnumMap<Property, EntityBase>  _properties =
+//        new EnumMap<Property, EntityBase>( Property.class );
 
 
 
@@ -100,7 +105,7 @@ public class TextFileContentState
                     final EntityStateString path
                     )
     {
-        _properties.put( Property.PATH, path );
+        _properties.setProperty( TextFileContentProperty.PATH, path );
     }
 
 
@@ -116,7 +121,8 @@ public class TextFileContentState
 
     public EntityStateString getPath()
     {
-        return (EntityStateString)_properties.get( Property.PATH );
+        return _properties.getProperty(
+                        TextFileContentProperty.PATH, EntityStateString.class );
     }
 
 
@@ -127,7 +133,7 @@ public class TextFileContentState
                     final EntityStateString filename
                     )
     {
-        _properties.put( Property.FILENAME, filename );
+        _properties.setProperty( TextFileContentProperty.FILENAME, filename );
     }
 
 
@@ -142,7 +148,8 @@ public class TextFileContentState
 
     public EntityStateString getFilename()
     {
-        return (EntityStateString)_properties.get( Property.FILENAME );
+        return _properties.getProperty(
+                        TextFileContentProperty.FILENAME, EntityStateString.class );
     }
 
 
@@ -153,7 +160,7 @@ public class TextFileContentState
                     final EntityStateString line
                     )
     {
-        _properties.put( Property.LINE, line );
+        _properties.setProperty( TextFileContentProperty.LINE, line );
     }
 
 
@@ -168,7 +175,8 @@ public class TextFileContentState
 
     public EntityStateString getLine()
     {
-        return (EntityStateString)_properties.get( Property.LINE );
+        return _properties.getProperty(
+                        TextFileContentProperty.LINE, EntityStateString.class );
     }
 
 
@@ -179,7 +187,7 @@ public class TextFileContentState
                     final EntityStateAnySimple subexpression
                     )
     {
-        _properties.put( Property.SUBEXPRESSION, subexpression );
+        _properties.setProperty( TextFileContentProperty.SUBEXPRESSION, subexpression );
     }
 
 
@@ -194,7 +202,8 @@ public class TextFileContentState
 
     public EntityStateAnySimple getSubexpression()
     {
-        return (EntityStateAnySimple)_properties.get( Property.SUBEXPRESSION );
+        return _properties.getProperty(
+                        TextFileContentProperty.SUBEXPRESSION, EntityStateAnySimple.class );
     }
 
 
@@ -214,7 +223,7 @@ public class TextFileContentState
     @Override
     public Iterator<EntityBase> iterateProperties()
     {
-        return _properties.values().iterator();
+        return _properties.iterateProperties();
     }
 
 
@@ -248,7 +257,9 @@ public class TextFileContentState
     @Override
     public String toString()
     {
-        return "textfilecontent_state[" + super.toString() + "]";
+        return "textfilecontent_state[" + super.toString()
+                        + ", " + String.valueOf( _properties )
+                        + "]";
     }
 
 }

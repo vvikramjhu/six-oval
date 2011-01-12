@@ -38,6 +38,7 @@ public enum TextFileContentProperty
     PATTERN,
     INSTANCE,
     TEXT,
+    LINE,
     SUBEXPRESSION;
 
 
