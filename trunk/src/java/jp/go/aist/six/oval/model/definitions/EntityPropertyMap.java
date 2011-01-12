@@ -18,36 +18,66 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.unix;
+package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
+import java.util.EnumMap;
+import java.util.Iterator;
 
 
 
 /**
- * The Unix uname properties.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum UnameProperty
+public class EntityPropertyMap<K extends Enum<K>>
+    extends EnumMap<K, EntityBase>
 {
-    MACHINE_CLASS,
-    NODE_NAME,
-    OS_NAME,
-    OS_RELEASE,
-    OS_VERSION,
-    PROCESSOR_TYPE;
+
+    /**
+     * constructor.
+     */
+    public EntityPropertyMap(
+                    final Class<K> keyType
+                    )
+    {
+        super( keyType );
+    }
 
 
 
     /**
      */
-    public static EntityPropertyMap<UnameProperty> createPropertyMap()
+    public Iterator<EntityBase> iterateProperties()
     {
-        return (new EntityPropertyMap<UnameProperty>( UnameProperty.class ));
+        return values().iterator();
+    }
+
+
+
+    /**
+     */
+    public <T extends EntityBase> T getProperty(
+                    final K key,
+                    final Class<T> type
+                    )
+    {
+        EntityBase  p = get( key );
+        return type.cast( p );
+    }
+
+
+
+    /**
+     */
+    public void setProperty(
+                    final K key,
+                    final EntityBase value
+                    )
+    {
+        put( key, value );
     }
 
 }
-// UnameProperty
+// EntityPropertyMap
