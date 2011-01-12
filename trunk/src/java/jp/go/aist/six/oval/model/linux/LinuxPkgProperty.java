@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
+import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
+
 
 
 /**
@@ -39,6 +41,15 @@ public enum LinuxPkgProperty
     VERSION,
     EVR,
     SIGNATURE_KEYID;    //RPM
+
+
+
+    /**
+     */
+    public static EntityPropertyMap<LinuxPkgProperty> createPropertyMap()
+    {
+        return (new EntityPropertyMap<LinuxPkgProperty>( LinuxPkgProperty.class ));
+    }
 
 }
 // LinuxPkgProperty

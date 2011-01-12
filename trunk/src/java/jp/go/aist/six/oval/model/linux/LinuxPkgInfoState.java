@@ -21,11 +21,10 @@
 package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.definitions.EntityBase;
+import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
-import jp.go.aist.six.oval.model.definitions.EntityStateBase;
 import jp.go.aist.six.oval.model.definitions.EntityStateString;
 import jp.go.aist.six.oval.model.definitions.State;
-import java.util.EnumMap;
 import java.util.Iterator;
 
 
@@ -40,9 +39,9 @@ public abstract class LinuxPkgInfoState
     extends State
 {
 
-    private EnumMap<LinuxPkgProperty, EntityBase>  _properties =
-        new EnumMap<LinuxPkgProperty, EntityBase>( LinuxPkgProperty.class );
-    //EntityStateBase{0..1}
+    private EntityPropertyMap<LinuxPkgProperty>  _properties =
+        LinuxPkgProperty.createPropertyMap();
+
 
 
 //    private EntityStateString  _name;
@@ -77,7 +76,17 @@ public abstract class LinuxPkgInfoState
 
 
 
+    /**
+     */
+    protected EntityPropertyMap<LinuxPkgProperty> _getProperties()
+    {
+        return _properties;
+    }
 
+
+
+    /**
+     */
     public void setName(
                     final EntityStateString name
                     )
@@ -89,7 +98,8 @@ public abstract class LinuxPkgInfoState
 
     public EntityStateString getName()
     {
-        return _getProperty( LinuxPkgProperty.NAME, EntityStateString.class );
+        return _getProperty(
+                        LinuxPkgProperty.NAME, EntityStateString.class );
 //        return _name;
     }
 
@@ -100,14 +110,13 @@ public abstract class LinuxPkgInfoState
                     )
     {
         _setProperty( LinuxPkgProperty.ARCH, arch );
-//        _arch = arch;
     }
 
 
     public EntityStateString getArch()
     {
-        return _getProperty( LinuxPkgProperty.ARCH, EntityStateString.class );
-//        return _arch;
+        return _getProperty(
+                        LinuxPkgProperty.ARCH, EntityStateString.class );
     }
 
 
@@ -117,14 +126,13 @@ public abstract class LinuxPkgInfoState
                     )
     {
         _setProperty( LinuxPkgProperty.VERSION, version );
-//        _version = version;
     }
 
 
     public EntityStateAnySimple getVersion()
     {
-        return _getProperty( LinuxPkgProperty.VERSION, EntityStateAnySimple.class );
-//        return _version;
+        return _getProperty(
+                        LinuxPkgProperty.VERSION, EntityStateAnySimple.class );
     }
 
 
@@ -136,28 +144,31 @@ public abstract class LinuxPkgInfoState
     @Override
     public Iterator<EntityBase> iterateProperties()
     {
-        return _properties.values().iterator();
+        return _properties.iterateProperties();
     }
 
 
 
-    protected <T extends EntityStateBase> T _getProperty(
+    /**
+     */
+    protected <T extends EntityBase> T _getProperty(
                     final LinuxPkgProperty key,
                     final Class<T> type
                     )
     {
-        EntityBase  p = _properties.get( key );
-        return type.cast( p );
+        return _properties.getProperty( key, type );
     }
 
 
 
+    /**
+     */
     protected void _setProperty(
                     final LinuxPkgProperty key,
-                    final EntityStateBase value
+                    final EntityBase value
                     )
     {
-        _properties.put( key, value );
+        _properties.setProperty( key, value );
     }
 
 
@@ -165,15 +176,6 @@ public abstract class LinuxPkgInfoState
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
-
-    @Override
-    public String toString()
-    {
-        return super.toString()
-                        + ", arch=" + getArch()
-                        + ", name=" + getName()
-                        + ", version=" + getVersion();
-    }
 
 }
 // LinuxPkgInfoState

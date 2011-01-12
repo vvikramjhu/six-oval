@@ -35,14 +35,14 @@ public abstract class LinuxEvrPkgInfoState
     extends LinuxPkgInfoState
 {
 
-    private EntityStateAnySimple  _epoch;
-    //{0..1}
-
-    private EntityStateAnySimple  _release;
-    //{0..1}
-
-    private EntityStateEVRString  _evr;
-    //{0..1}
+//    private EntityStateAnySimple  _epoch;
+//    //{0..1}
+//
+//    private EntityStateAnySimple  _release;
+//    //{0..1}
+//
+//    private EntityStateEVRString  _evr;
+//    //{0..1}
 
 
 
@@ -72,14 +72,13 @@ public abstract class LinuxEvrPkgInfoState
                     )
     {
         _setProperty( LinuxPkgProperty.EPOCH, epoch );
-//        _epoch = epoch;
     }
 
 
     public EntityStateAnySimple getEpoch()
     {
-        return _getProperty( LinuxPkgProperty.EPOCH, EntityStateAnySimple.class );
-//        return _epoch;
+        return _getProperty(
+                        LinuxPkgProperty.EPOCH, EntityStateAnySimple.class );
     }
 
 
@@ -89,14 +88,13 @@ public abstract class LinuxEvrPkgInfoState
                     )
     {
         _setProperty( LinuxPkgProperty.RELEASE, release );
-//        _release = release;
     }
 
 
     public EntityStateAnySimple getRelease()
     {
-        return _getProperty( LinuxPkgProperty.RELEASE, EntityStateAnySimple.class );
-//        return _release;
+        return _getProperty(
+                        LinuxPkgProperty.RELEASE, EntityStateAnySimple.class );
     }
 
 
@@ -106,14 +104,13 @@ public abstract class LinuxEvrPkgInfoState
                     )
     {
         _setProperty( LinuxPkgProperty.EVR, evr );
-//        _evr = evr;
     }
 
 
     public EntityStateEVRString getEvr()
     {
-        return _getProperty( LinuxPkgProperty.EVR, EntityStateEVRString.class );
-//        return _evr;
+        return _getProperty(
+                        LinuxPkgProperty.EVR, EntityStateEVRString.class );
     }
 
 
@@ -121,15 +118,6 @@ public abstract class LinuxEvrPkgInfoState
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
-
-    @Override
-    public String toString()
-    {
-        return super.toString()
-                        + ", release=" + getRelease()
-                        + ", epoch=" + getEpoch()
-                        + ", evr=" + getEvr();
-    }
 
 }
 // LinuxEvrPkgInfoState

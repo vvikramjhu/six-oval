@@ -109,7 +109,9 @@ public class DpkgInfoState
     @Override
     public String toString()
     {
-        return "dpkginfo_state[" + super.toString() + "]";
+        return "dpkginfo_state[" + super.toString()
+                        + ", " + String.valueOf( _getProperties() )
+                        + "]";
     }
 
 }

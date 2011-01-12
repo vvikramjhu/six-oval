@@ -39,8 +39,9 @@ public class RpmInfoState
     extends LinuxEvrPkgInfoState
 {
 
-    private EntityStateString  _signatureKeyID;
-    //{0..1}
+//    private EntityStateString  _signatureKeyID;
+//    //{0..1}
+
 
 
     /**
@@ -89,7 +90,6 @@ public class RpmInfoState
                     )
     {
         _setProperty( LinuxPkgProperty.SIGNATURE_KEYID, keyid );
-//        _signatureKeyID = keyid;
     }
 
 
@@ -105,8 +105,8 @@ public class RpmInfoState
 
     public EntityStateString getSignatureKeyID()
     {
-        return _getProperty( LinuxPkgProperty.SIGNATURE_KEYID, EntityStateString.class );
-//        return _signatureKeyID;
+        return _getProperty(
+                        LinuxPkgProperty.SIGNATURE_KEYID, EntityStateString.class );
     }
 
 
@@ -153,7 +153,7 @@ public class RpmInfoState
     public String toString()
     {
         return "rpminfo_state[" + super.toString()
-                        + ", signature_keyid=" + getSignatureKeyID()
+                        + ", " + String.valueOf( _getProperties() )
                         + "]";
     }
 
