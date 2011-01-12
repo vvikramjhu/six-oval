@@ -21,8 +21,11 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
+import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
+import java.util.Iterator;
 
 
 
@@ -39,11 +42,15 @@ public class WmiObject
     extends SystemObject
 {
 
-    private EntityObjectString  _namespace;
-    //{0..1}
+    private EntityPropertyMap<WmiProperty>  _properties =
+        WmiProperty.createPropertyMap();
 
-    private EntityObjectString  _wql;
-    //{0..1}
+
+//    private EntityObjectString  _namespace;
+//    //{0..1}
+//
+//    private EntityObjectString  _wql;
+//    //{0..1}
 
 
 
@@ -106,13 +113,14 @@ public class WmiObject
                     final EntityObjectString namespace
                     )
     {
-        _namespace = namespace;
+        _properties.setProperty( WmiProperty.NAMESPACE, namespace );
     }
 
 
     public EntityObjectString getNamespace()
     {
-        return _namespace;
+        return _properties.getProperty(
+                        WmiProperty.NAMESPACE, EntityObjectString.class );
     }
 
 
@@ -121,13 +129,14 @@ public class WmiObject
                     final EntityObjectString wql
                     )
     {
-        _wql = wql;
+        _properties.setProperty( WmiProperty.WQL, wql );
     }
 
 
     public EntityObjectString getWql()
     {
-        return _wql;
+        return _properties.getProperty(
+                        WmiProperty.WQL, EntityObjectString.class );
     }
 
 
@@ -140,6 +149,14 @@ public class WmiObject
     public PlatformEntityType getEntityType()
     {
         return PlatformEntityType.WINDOWS_WMI;
+    }
+
+
+
+    @Override
+    public Iterator<EntityBase> iterateProperties()
+    {
+        return _properties.iterateProperties();
     }
 
 
@@ -174,8 +191,7 @@ public class WmiObject
     public String toString()
     {
         return "wmi_object[" + super.toString()
-                        + ", namespace=" + getNamespace()
-                        + ", wql=" + getWql()
+                        + ", " + String.valueOf( _properties )
                         + "]";
     }
 
