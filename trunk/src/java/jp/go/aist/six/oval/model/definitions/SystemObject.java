@@ -22,6 +22,9 @@ package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.PlatformEntityType;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 
 
@@ -85,6 +88,19 @@ public class SystemObject
     public PlatformEntityType getEntityType()
     {
         return PlatformEntityType.UNKNOWN;
+    }
+
+
+
+    private static List<EntityBase>  _EMPTY_LIST_ =
+        Collections.emptyList();
+
+
+    /**
+     */
+    public Iterator<EntityBase> iterateProperties()
+    {
+        return _EMPTY_LIST_.iterator();
     }
 
 

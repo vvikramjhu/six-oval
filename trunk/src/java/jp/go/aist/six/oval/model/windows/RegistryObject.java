@@ -21,8 +21,11 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
+import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
+import java.util.Iterator;
 
 
 
@@ -39,14 +42,18 @@ public class RegistryObject
     private RegistryBehaviors  _behaviors;
     //{0..1}
 
-    private EntityObjectRegistryHive  _hive;
-    //{1..1}
+    private EntityPropertyMap<RegistryProperty>  _properties =
+        RegistryProperty.createPropertyMap();
 
-    private EntityObjectString  _key;
-    //{1..1, nillable="true"}
 
-    private EntityObjectString  _name;
-    //{1..1, nillable="true"}
+//    private EntityObjectRegistryHive  _hive;
+//    //{1..1}
+//
+//    private EntityObjectString  _key;
+//    //{1..1, nillable="true"}
+//
+//    private EntityObjectString  _name;
+//    //{1..1, nillable="true"}
 
 
 
@@ -149,7 +156,8 @@ public class RegistryObject
                     final EntityObjectRegistryHive hive
                     )
     {
-        _hive = hive;
+        _properties.setProperty( RegistryProperty.HIVE, hive );
+//        _hive = hive;
     }
 
 
@@ -164,7 +172,9 @@ public class RegistryObject
 
     public EntityObjectRegistryHive getHive()
     {
-        return _hive;
+        return _properties.getProperty(
+                        RegistryProperty.HIVE, EntityObjectRegistryHive.class );
+//        return _hive;
     }
 
 
@@ -173,7 +183,7 @@ public class RegistryObject
                     final EntityObjectString key
                     )
     {
-        _key = key;
+        _properties.setProperty( RegistryProperty.KEY, key );
     }
 
 
@@ -188,7 +198,9 @@ public class RegistryObject
 
     public EntityObjectString getKey()
     {
-        return _key;
+        return _properties.getProperty(
+                        RegistryProperty.KEY, EntityObjectString.class );
+//        return _key;
     }
 
 
@@ -198,7 +210,8 @@ public class RegistryObject
                     // nillable ="true"
                     )
     {
-        _name = name;
+        _properties.setProperty( RegistryProperty.NAME, name );
+//        _name = name;
 
 //        EntityObjectString  n = name;
 //        if (name != null) {
@@ -223,7 +236,9 @@ public class RegistryObject
 
     public EntityObjectString getName()
     {
-        return _name;
+        return _properties.getProperty(
+                        RegistryProperty.NAME, EntityObjectString.class );
+//        return _name;
     }
 
 
@@ -236,6 +251,14 @@ public class RegistryObject
     public PlatformEntityType getEntityType()
     {
         return PlatformEntityType.WINDOWS_REGISTRY;
+    }
+
+
+
+    @Override
+    public Iterator<EntityBase> iterateProperties()
+    {
+        return _properties.iterateProperties();
     }
 
 
@@ -270,10 +293,7 @@ public class RegistryObject
     public String toString()
     {
         return "registry_object[" + super.toString()
-                        + ", behaviors=" + getBehaviors()
-                        + ", hive=" + getHive()
-                        + ", key=" + getKey()
-                        + ", name=" + getName()
+                        + ", " + String.valueOf( _properties )
                         + "]";
     }
 
