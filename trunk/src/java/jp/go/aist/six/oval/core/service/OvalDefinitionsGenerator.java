@@ -27,6 +27,7 @@ import jp.go.aist.six.oval.model.definitions.CriteriaElement;
 import jp.go.aist.six.oval.model.definitions.Criterion;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Definitions;
+import jp.go.aist.six.oval.model.definitions.ExtendDefinition;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.StateRef;
@@ -135,7 +136,9 @@ public class OvalDefinitionsGenerator
         Definitions  defList = new Definitions();
         for (String  defID : defIDs) {
             if (defID == null) {
-                _LOG.warn( "null definition ID specified" );
+                if (_LOG.isWarnEnabled()) {
+                    _LOG.warn( "null definition ID specified" );
+                }
                 continue;
             }
 
@@ -157,24 +160,41 @@ public class OvalDefinitionsGenerator
                     )
     throws OvalException
     {
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace( "building entities for Definition: ID=" + def.getOvalID() );
+        }
+
         Criteria  criteria = def.getCriteria();
         if (criteria == null) {
+            if (_LOG.isTraceEnabled()) {
+                _LOG.trace( "NO Definition criteria: ID=" + def.getOvalID() );
+            }
+
             return;
         }
 
-        Tests  tests = new Tests();
-        ovalDefs.setTests( tests );
+        Tests  tests = ovalDefs.getTests();
+        if (tests == null) {
+            tests = new Tests();
+            ovalDefs.setTests( tests );
+        }
+
         for (CriteriaElement  element : criteria) {
             if (Criterion.class.isInstance( element )) {
                 Criterion  criterion = (Criterion)element;
                 String  testID = criterion.getTestRef();
                 Test  test = tests.find( testID );
                 if (test == null) {
+                    // This test have NOT loaded yet.
                     test = _loadLatestEntity( Test.class, testID );
                     tests.add( test );
 
                     _buildEntitiesForTest( ovalDefs, test );
                 }
+            } else if (ExtendDefinition.class.isInstance( element )) {
+                ExtendDefinition  extdef = (ExtendDefinition)element;
+                String  defID = extdef.getDefinitionRef();
+                //TODO: complete this!!!
             }
         }
     }
@@ -275,6 +295,10 @@ public class OvalDefinitionsGenerator
                     )
     throws OvalException
     {
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace( "loading latest entity: ID=" + ovalID );
+        }
+
         Binding  filter = RelationalBinding.equalBinding( "ovalID", ovalID );
         Collection<T>  entities = _store.find( type, filter );
 
@@ -300,6 +324,10 @@ public class OvalDefinitionsGenerator
                 }
                 latestEntity = max;
             }
+        }
+
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace( "latest entity loaded: " + latestEntity );
         }
 
         return latestEntity;
