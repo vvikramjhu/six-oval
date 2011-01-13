@@ -21,7 +21,9 @@
 package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
+import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import java.util.ArrayList;
@@ -46,12 +48,15 @@ public class RpmVerifyObject
     //{0..1}
 
 
-    private EntityObjectString  _name;
-    //{1..1}
+    private EntityPropertyMap<RpmVerifyProperty>  _properties =
+        RpmVerifyProperty.createPropertyMap();
 
-
-    private EntityObjectString  _filepath;
-    //{1..1}
+//    private EntityObjectString  _name;
+//    //{1..1}
+//
+//
+//    private EntityObjectString  _filepath;
+//    //{1..1}
 
 
     private Collection<Filter>  _filter = new ArrayList<Filter>();
@@ -116,13 +121,16 @@ public class RpmVerifyObject
                     final EntityObjectString name
                     )
     {
-        _name = name;
+        _properties.setProperty( RpmVerifyProperty.NAME, name );
+//        _name = name;
     }
 
 
     public EntityObjectString getName()
     {
-        return _name;
+        return _properties.getProperty(
+                        RpmVerifyProperty.NAME, EntityObjectString.class );
+//        return _name;
     }
 
 
@@ -133,13 +141,14 @@ public class RpmVerifyObject
                     final EntityObjectString filepath
                     )
     {
-        _filepath = filepath;
+        _properties.setProperty( RpmVerifyProperty.FILEPATH, filepath );
     }
 
 
     public EntityObjectString getFilepath()
     {
-        return _filepath;
+        return _properties.getProperty(
+                        RpmVerifyProperty.FILEPATH, EntityObjectString.class );
     }
 
 
@@ -201,6 +210,14 @@ public class RpmVerifyObject
     public PlatformEntityType getEntityType()
     {
         return PlatformEntityType.LINUX_RPMVERIFY;
+    }
+
+
+
+    @Override
+    public Iterator<EntityBase> iterateProperties()
+    {
+        return _properties.iterateProperties();
     }
 
 

@@ -20,11 +20,13 @@
 
 package jp.go.aist.six.oval.model.linux;
 
+import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 
 
@@ -134,6 +136,19 @@ public abstract class LinuxPkgInfoObject
     public Iterator<Filter> iterateFilter()
     {
         return _filter.iterator();
+    }
+
+
+
+    //**************************************************************
+    //  State
+    //**************************************************************
+
+    @Override
+    public Iterator<EntityBase> iterateProperties()
+    {
+        EntityBase  p = getName();
+        return Collections.singletonList( p ).iterator();
     }
 
 

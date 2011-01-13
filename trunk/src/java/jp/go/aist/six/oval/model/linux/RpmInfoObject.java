@@ -132,7 +132,9 @@ public class RpmInfoObject
     @Override
     public String toString()
     {
-        return "rpminfo_object[" + super.toString() + "]";
+        return "rpminfo_object[" + super.toString()
+                        + ", name=" + getName()
+                        + "]";
     }
 
 }
