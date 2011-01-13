@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityObjectInt;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
@@ -123,10 +124,10 @@ public class TextFileContent54Object
                     )
     {
         this( id, version,
-                        new EntityObjectString( path ),
-                        new EntityObjectString( filename ),
-                        new EntityObjectString( pattern ),
-                        new EntityObjectInt( instance )
+                        (path == null     ? null : new EntityObjectString( path )),
+                        (filename == null ? null : new EntityObjectString( filename )),
+                        (pattern == null  ? null : new EntityObjectString( pattern )),
+                        (instance == null ? null : new EntityObjectInt( instance ))
                         );
     }
 
@@ -370,6 +371,14 @@ public class TextFileContent54Object
     public PlatformEntityType getEntityType()
     {
         return PlatformEntityType.INDEPENDENT_TEXTFILECONTENT54;
+    }
+
+
+
+    @Override
+    public Iterator<EntityBase> iterateProperties()
+    {
+        return _properties.iterateProperties();
     }
 
 

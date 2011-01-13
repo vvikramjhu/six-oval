@@ -105,8 +105,8 @@ public class MetabaseObject
                     )
     {
         this( id, version,
-                        new EntityObjectString( mbKey ),
-                        new EntityObjectInt( mbID )
+                        (mbKey == null ? null : new EntityObjectString( mbKey )),
+                        (mbID  == null ? null : new EntityObjectInt( mbID ))
         );
     }
 
@@ -133,7 +133,6 @@ public class MetabaseObject
                     )
     {
         _properties.setProperty( MetabaseProperty.KEY, key );
-//        _key = key;
     }
 
 
@@ -150,7 +149,6 @@ public class MetabaseObject
     {
         return _properties.getProperty(
                         MetabaseProperty.KEY, EntityObjectString.class );
-//        return _key;
     }
 
 
@@ -177,7 +175,6 @@ public class MetabaseObject
     {
         return _properties.getProperty(
                         MetabaseProperty.ID, EntityObjectInt.class );
-//        return _id;
     }
 
 

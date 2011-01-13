@@ -21,8 +21,11 @@
 package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
+import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
+import java.util.Iterator;
 
 
 
@@ -45,14 +48,17 @@ public class TextFileContentObject
     //{0..1}
 
 
-    private EntityObjectString  _path;
-    //{1..1}
+    private EntityPropertyMap<TextFileContentProperty>  _properties =
+        TextFileContentProperty.createPropertyMap();
 
-    private EntityObjectString  _filename;
-    //{1..1}
-
-    private EntityObjectString  _line;
-    //{1..1}
+//    private EntityObjectString  _path;
+//    //{1..1}
+//
+//    private EntityObjectString  _filename;
+//    //{1..1}
+//
+//    private EntityObjectString  _line;
+//    //{1..1}
 
 
 
@@ -88,9 +94,9 @@ public class TextFileContentObject
                     )
     {
         this( id, version,
-                        new EntityObjectString( path ),
-                        new EntityObjectString( filename ),
-                        new EntityObjectString( line)
+                        (path == null     ? null : new EntityObjectString( path )),
+                        (filename == null ? null : new EntityObjectString( filename )),
+                        (line == null     ? null : new EntityObjectString( line))
                         );
     }
 
@@ -146,7 +152,7 @@ public class TextFileContentObject
                     final EntityObjectString path
                     )
     {
-        _path = path;
+        _properties.setProperty( TextFileContentProperty.PATH, path );
     }
 
 
@@ -161,7 +167,8 @@ public class TextFileContentObject
 
     public EntityObjectString getPath()
     {
-        return _path;
+        return _properties.getProperty(
+                        TextFileContentProperty.PATH, EntityObjectString.class );
     }
 
 
@@ -172,7 +179,7 @@ public class TextFileContentObject
                     final EntityObjectString filename
                     )
     {
-        _filename = filename;
+        _properties.setProperty( TextFileContentProperty.FILENAME, filename);
     }
 
 
@@ -187,7 +194,8 @@ public class TextFileContentObject
 
     public EntityObjectString getFilename()
     {
-        return _filename;
+        return _properties.getProperty(
+                        TextFileContentProperty.FILENAME, EntityObjectString.class );
     }
 
 
@@ -198,7 +206,7 @@ public class TextFileContentObject
                     final EntityObjectString line
                     )
     {
-        _line = line;
+        _properties.setProperty( TextFileContentProperty.LINE, line );
     }
 
 
@@ -213,7 +221,8 @@ public class TextFileContentObject
 
     public EntityObjectString getLine()
     {
-        return _line;
+        return _properties.getProperty(
+                        TextFileContentProperty.LINE, EntityObjectString.class );
     }
 
 
@@ -226,6 +235,14 @@ public class TextFileContentObject
     public PlatformEntityType getEntityType()
     {
         return PlatformEntityType.INDEPENDENT_TEXTFILECONTENT;
+    }
+
+
+
+    @Override
+    public Iterator<EntityBase> iterateProperties()
+    {
+        return _properties.iterateProperties();
     }
 
 

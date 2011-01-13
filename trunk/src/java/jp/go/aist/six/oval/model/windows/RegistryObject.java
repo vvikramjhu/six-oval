@@ -103,7 +103,7 @@ public class RegistryObject
     {
         this( id, version,
                         (hive == null ? null : (new EntityObjectRegistryHive( hive.getName() ))),
-                        (key == null ? null : (new EntityObjectString( key ))),
+                        (key  == null ? null : (new EntityObjectString( key ))),
                         (name == null ? null : (new EntityObjectString( name )))
         );
     }
@@ -157,7 +157,6 @@ public class RegistryObject
                     )
     {
         _properties.setProperty( RegistryProperty.HIVE, hive );
-//        _hive = hive;
     }
 
 
@@ -174,7 +173,6 @@ public class RegistryObject
     {
         return _properties.getProperty(
                         RegistryProperty.HIVE, EntityObjectRegistryHive.class );
-//        return _hive;
     }
 
 
@@ -200,7 +198,6 @@ public class RegistryObject
     {
         return _properties.getProperty(
                         RegistryProperty.KEY, EntityObjectString.class );
-//        return _key;
     }
 
 
@@ -211,7 +208,6 @@ public class RegistryObject
                     )
     {
         _properties.setProperty( RegistryProperty.NAME, name );
-//        _name = name;
 
 //        EntityObjectString  n = name;
 //        if (name != null) {
@@ -238,7 +234,6 @@ public class RegistryObject
     {
         return _properties.getProperty(
                         RegistryProperty.NAME, EntityObjectString.class );
-//        return _name;
     }
 
 
