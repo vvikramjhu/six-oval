@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.independent;
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectInt;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
+import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import java.util.ArrayList;
@@ -47,24 +48,28 @@ public class TextFileContent54Object
     //{0..1}
 
 
-    // xsd:choice( filepath | path+filename)
-
-    private EntityObjectString  _filepath;
-    //{1..1}
-
-    private EntityObjectString  _path;
-    //{1..1}
-
-    private EntityObjectString  _filename;
-    //{1..1}
+    private EntityPropertyMap<TextFileContentProperty>  _properties =
+        TextFileContentProperty.createPropertyMap();
 
 
-    private EntityObjectString  _pattern;
-    //{1..1}
-
-
-    private EntityObjectInt  _instance;
-    //{1..1}
+//    // xsd:choice( filepath | path+filename)
+//
+//    private EntityObjectString  _filepath;
+//    //{1..1}
+//
+//    private EntityObjectString  _path;
+//    //{1..1}
+//
+//    private EntityObjectString  _filename;
+//    //{1..1}
+//
+//
+//    private EntityObjectString  _pattern;
+//    //{1..1}
+//
+//
+//    private EntityObjectInt  _instance;
+//    //{1..1}
 
 
     private Collection<Filter>  _filter = new ArrayList<Filter>();
@@ -179,7 +184,7 @@ public class TextFileContent54Object
                     final EntityObjectString filepath
                     )
     {
-        _filepath = filepath;
+        _properties.setProperty( TextFileContentProperty.FILEPATH, filepath );
     }
 
 
@@ -194,7 +199,8 @@ public class TextFileContent54Object
 
     public EntityObjectString getFilepath()
     {
-        return _filepath;
+        return _properties.getProperty(
+                        TextFileContentProperty.FILEPATH, EntityObjectString.class );
     }
 
 
@@ -205,7 +211,7 @@ public class TextFileContent54Object
                     final EntityObjectString path
                     )
     {
-        _path = path;
+        _properties.setProperty( TextFileContentProperty.PATH, path );
     }
 
 
@@ -220,7 +226,8 @@ public class TextFileContent54Object
 
     public EntityObjectString getPath()
     {
-        return _path;
+        return _properties.getProperty(
+                        TextFileContentProperty.PATH, EntityObjectString.class );
     }
 
 
@@ -231,7 +238,7 @@ public class TextFileContent54Object
                     final EntityObjectString filename
                     )
     {
-        _filename = filename;
+        _properties.setProperty( TextFileContentProperty.FILENAME, filename );
     }
 
 
@@ -246,7 +253,8 @@ public class TextFileContent54Object
 
     public EntityObjectString getFilename()
     {
-        return _filename;
+        return _properties.getProperty(
+                        TextFileContentProperty.FILENAME, EntityObjectString.class );
     }
 
 
@@ -257,7 +265,7 @@ public class TextFileContent54Object
                     final EntityObjectString pattern
                     )
     {
-        _pattern = pattern;
+        _properties.setProperty( TextFileContentProperty.PATTERN, pattern );
     }
 
 
@@ -272,7 +280,8 @@ public class TextFileContent54Object
 
     public EntityObjectString getPattern()
     {
-        return _pattern;
+        return _properties.getProperty(
+                        TextFileContentProperty.PATTERN, EntityObjectString.class );
     }
 
 
@@ -283,7 +292,7 @@ public class TextFileContent54Object
                     final EntityObjectInt instance
                     )
     {
-        _instance = instance;
+        _properties.setProperty( TextFileContentProperty.INSTANCE, instance );
     }
 
 
@@ -298,7 +307,8 @@ public class TextFileContent54Object
 
     public EntityObjectInt getInstance()
     {
-        return _instance;
+        return _properties.getProperty(
+                        TextFileContentProperty.INSTANCE, EntityObjectInt.class );
     }
 
 
