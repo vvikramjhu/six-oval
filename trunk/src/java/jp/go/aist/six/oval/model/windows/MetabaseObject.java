@@ -21,8 +21,10 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityObjectInt;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
+import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import java.util.ArrayList;
@@ -43,11 +45,15 @@ public class MetabaseObject
     extends SystemObject
 {
 
-    private EntityObjectString  _key;
-    //{0..1}
+    private EntityPropertyMap<MetabaseProperty>  _properties =
+        MetabaseProperty.createPropertyMap();
 
-    private EntityObjectInt  _id;
-    //{0..1, nillable="true"}
+
+//    private EntityObjectString  _key;
+//    //{0..1}
+//
+//    private EntityObjectInt  _id;
+//    //{0..1, nillable="true"}
 
 
     private Collection<Filter>  _filter = new ArrayList<Filter>();
@@ -126,7 +132,8 @@ public class MetabaseObject
                     final EntityObjectString key
                     )
     {
-        _key = key;
+        _properties.setProperty( MetabaseProperty.KEY, key );
+//        _key = key;
     }
 
 
@@ -141,7 +148,9 @@ public class MetabaseObject
 
     public EntityObjectString getKey()
     {
-        return _key;
+        return _properties.getProperty(
+                        MetabaseProperty.KEY, EntityObjectString.class );
+//        return _key;
     }
 
 
@@ -150,7 +159,8 @@ public class MetabaseObject
                     final EntityObjectInt id
                     )
     {
-        _id = id;
+        _properties.setProperty( MetabaseProperty.ID, id );
+//        _id = id;
     }
 
 
@@ -165,7 +175,9 @@ public class MetabaseObject
 
     public EntityObjectInt getID()
     {
-        return _id;
+        return _properties.getProperty(
+                        MetabaseProperty.ID, EntityObjectInt.class );
+//        return _id;
     }
 
 
@@ -227,6 +239,14 @@ public class MetabaseObject
     public PlatformEntityType getEntityType()
     {
         return PlatformEntityType.WINDOWS_METABASE;
+    }
+
+
+
+    @Override
+    public Iterator<EntityBase> iterateProperties()
+    {
+        return _properties.iterateProperties();
     }
 
 

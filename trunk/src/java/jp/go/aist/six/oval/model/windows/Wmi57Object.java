@@ -21,7 +21,9 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
+import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import java.util.ArrayList;
@@ -40,12 +42,16 @@ public class Wmi57Object
     extends SystemObject
 {
 
-    private EntityObjectString  _namespace;
-    //{1..1}
+    private EntityPropertyMap<WmiProperty>  _properties =
+        WmiProperty.createPropertyMap();
 
 
-    private EntityObjectString  _wql;
-    //{1..1}
+//    private EntityObjectString  _namespace;
+//    //{1..1}
+//
+//
+//    private EntityObjectString  _wql;
+//    //{1..1}
 
 
     private Collection<Filter>  _filter = new ArrayList<Filter>();
@@ -112,13 +118,16 @@ public class Wmi57Object
                     final EntityObjectString namespace
                     )
     {
-        _namespace = namespace;
+        _properties.setProperty( WmiProperty.NAMESPACE, namespace );
+//        _namespace = namespace;
     }
 
 
     public EntityObjectString getNamespace()
     {
-        return _namespace;
+        return _properties.getProperty(
+                        WmiProperty.NAMESPACE, EntityObjectString.class );
+//        return _namespace;
     }
 
 
@@ -127,13 +136,14 @@ public class Wmi57Object
                     final EntityObjectString wql
                     )
     {
-        _wql = wql;
+        _properties.setProperty( WmiProperty.NAMESPACE, wql );
     }
 
 
     public EntityObjectString getWql()
     {
-        return _wql;
+        return _properties.getProperty(
+                        WmiProperty.WQL, EntityObjectString.class );
     }
 
 
@@ -186,6 +196,14 @@ public class Wmi57Object
     public PlatformEntityType getEntityType()
     {
         return PlatformEntityType.WINDOWS_WMI57;
+    }
+
+
+
+    @Override
+    public Iterator<EntityBase> iterateProperties()
+    {
+        return _properties.iterateProperties();
     }
 
 

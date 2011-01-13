@@ -21,7 +21,9 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
+import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import java.util.ArrayList;
@@ -56,14 +58,18 @@ public class FileObject
     //                              )
     //                 )
     //         )
-    private EntityObjectString  _filepath;
-    //{1..1}
+//    private EntityObjectString  _filepath;
+//    //{1..1}
+//
+//    private EntityObjectString  _path;
+//    //{1..1}
+//
+//    private EntityObjectString  _filename;
+//    //{1..1, nillable="true"}
 
-    private EntityObjectString  _path;
-    //{1..1}
+    private EntityPropertyMap<FileProperty>  _properties =
+        FileProperty.createPropertyMap();
 
-    private EntityObjectString  _filename;
-    //{1..1, nillable="true"}
 
 
     private Collection<Filter>  _filter = new ArrayList<Filter>();
@@ -169,7 +175,7 @@ public class FileObject
                     final EntityObjectString filepath
                     )
     {
-        _filepath = filepath;
+        _properties.setProperty( FileProperty.FILEPATH, filepath );
     }
 
 
@@ -184,7 +190,8 @@ public class FileObject
 
     public EntityObjectString getFilepath()
     {
-        return _filepath;
+        return _properties.getProperty(
+                        FileProperty.FILEPATH, EntityObjectString.class );
     }
 
 
@@ -193,7 +200,7 @@ public class FileObject
                     final EntityObjectString path
                     )
     {
-        _path = path;
+        _properties.setProperty( FileProperty.PATH, path );
     }
 
 
@@ -208,7 +215,8 @@ public class FileObject
 
     public EntityObjectString getPath()
     {
-        return _path;
+        return _properties.getProperty(
+                        FileProperty.PATH, EntityObjectString.class );
     }
 
 
@@ -217,7 +225,7 @@ public class FileObject
                     final EntityObjectString filename
                     )
     {
-        _filename = filename;
+        _properties.setProperty( FileProperty.FILENAME, filename);
     }
 
 
@@ -232,7 +240,8 @@ public class FileObject
 
     public EntityObjectString getFilename()
     {
-        return _filename;
+        return _properties.getProperty(
+                        FileProperty.FILENAME, EntityObjectString.class );
     }
 
 
@@ -293,6 +302,14 @@ public class FileObject
     public PlatformEntityType getEntityType()
     {
         return PlatformEntityType.WINDOWS_FILE;
+    }
+
+
+
+    @Override
+    public Iterator<EntityBase> iterateProperties()
+    {
+        return _properties.iterateProperties();
     }
 
 
