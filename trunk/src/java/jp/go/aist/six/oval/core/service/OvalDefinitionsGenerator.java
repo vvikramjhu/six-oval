@@ -143,6 +143,7 @@ public class OvalDefinitionsGenerator
             }
 
             Definition  def = _loadLatestEntity( Definition.class, defID );
+            //TODO: PersistentDefinition.class
             defList.add( def );
         }
 

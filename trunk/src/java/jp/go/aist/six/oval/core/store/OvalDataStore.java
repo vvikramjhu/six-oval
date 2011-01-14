@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.core.store;
 
+import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.definitions.LocalVariable;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.util.persist.DataStore;
@@ -78,6 +80,23 @@ public class OvalDataStore
 
 
 
+    @SuppressWarnings( "unchecked" )
+    private <T extends Persistable<?>> Class<T> _getRealType(
+                    final Class<T> type
+                    )
+    {
+        if (Definition.class == type) {
+            return (Class<T>)PersistentDefinition.class;
+        } else if (LocalVariable.class == type) {
+            return (Class<T>)PersistentLocalVariable.class;
+        }
+
+        return type;
+    }
+
+
+    /**
+     */
     private StoreWorkerRegistry _createWorkerRegistry(
                     final DataStore datastore
                     )
@@ -150,10 +169,11 @@ public class OvalDataStore
                     )
     throws PersistenceException
     {
+        Class<T>  realType = _getRealType( type );
         K  p_id = null;
-        StoreWorker<K, T>  worker = _getWorker( type );
+        StoreWorker<K, T>  worker = _getWorker( realType );
         if (worker == null) {
-            p_id = _dataStore.create( type, object );
+            p_id = _dataStore.create( realType, object );
         } else {
             p_id = worker.create( object );
         }
@@ -170,9 +190,10 @@ public class OvalDataStore
                     )
     throws PersistenceException
     {
-        StoreWorker<K, T>  worker = _getWorker( type );
+        Class<T>  realType = _getRealType( type );
+        StoreWorker<K, T>  worker = _getWorker( realType );
         if (worker == null) {
-            _dataStore.update( type, object );
+            _dataStore.update( realType, object );
         } else {
             worker.update( object );
         }
@@ -187,9 +208,10 @@ public class OvalDataStore
                     )
     throws PersistenceException
     {
-        StoreWorker<K, T>  worker = _getWorker( type );
+        Class<T>  realType = _getRealType( type );
+        StoreWorker<K, T>  worker = _getWorker( realType );
         if (worker == null) {
-            _dataStore.remove( type, object );
+            _dataStore.remove( realType, object );
         } else {
             worker.remove( object );
         }
@@ -204,10 +226,11 @@ public class OvalDataStore
                     )
     throws PersistenceException
     {
+        Class<T>  realType = _getRealType( type );
         T  p_object = null;
-        StoreWorker<K, T>  worker = _getWorker( type );
+        StoreWorker<K, T>  worker = _getWorker( realType );
         if (worker == null) {
-            p_object = _dataStore.sync( type, object );
+            p_object = _dataStore.sync( realType, object );
         } else {
             p_object = worker.sync( object );
         }
@@ -266,10 +289,11 @@ public class OvalDataStore
                     )
     throws PersistenceException
     {
+        Class<T>  realType = _getRealType( type );
         int  count = 0;
-        StoreWorker<K, T>  worker = _getWorker( type );
+        StoreWorker<K, T>  worker = _getWorker( realType );
         if (worker == null) {
-            count = _dataStore.count( type, filter );
+            count = _dataStore.count( realType, filter );
         } else {
             count = worker.count( filter );
         }
@@ -286,10 +310,11 @@ public class OvalDataStore
                     )
     throws PersistenceException
     {
+        Class<T>  realType = _getRealType( type );
         T  p_object = null;
-        StoreWorker<K, T>  worker = _getWorker( type );
+        StoreWorker<K, T>  worker = _getWorker( realType );
         if (worker == null) {
-            p_object = _dataStore.load( type, identity );
+            p_object = _dataStore.load( realType, identity );
         } else {
             p_object = worker.load( identity );
         }
@@ -351,8 +376,9 @@ public class OvalDataStore
                     )
     throws PersistenceException
     {
-        Collection<K>  pids = findIdentity( type, filter, ordering, limit );
-        Collection<T>  p_objects = loadAll( type, new ArrayList<K>( pids ) );
+        Class<T>  realType = _getRealType( type );
+        Collection<K>  pids = findIdentity( realType, filter, ordering, limit );
+        Collection<T>  p_objects = loadAll( realType, new ArrayList<K>( pids ) );
 
         return p_objects;
     }
@@ -391,10 +417,11 @@ public class OvalDataStore
                     )
     throws PersistenceException
     {
+        Class<T>  realType = _getRealType( type );
         Collection<K>  pids = null;
-        StoreWorker<K, T>  worker = _getWorker( type );
+        StoreWorker<K, T>  worker = _getWorker( realType );
         if (worker == null) {
-            pids = _dataStore.findIdentity( type, filter, ordering, limit );
+            pids = _dataStore.findIdentity( realType, filter, ordering, limit );
         } else {
             pids = worker.findIdentity( filter, ordering, limit );
         }
@@ -426,4 +453,4 @@ public class OvalDataStore
     }
 
 }
-// OvalStore
+// OvalDataStore

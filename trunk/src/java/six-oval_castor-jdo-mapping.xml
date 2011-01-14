@@ -271,14 +271,13 @@
             <sql name="description" type="char"/>
         </field>
 
-        <!-- Definition : Reference = m : n -->
         <field name="metadata.reference"
             type="jp.go.aist.six.oval.model.definitions.Reference"
             collection="collection"
             lazy="true">
-            <sql name="reference__PID"
+            <sql name="d_reference__PID"
                 many-table="oval_assoc__d_definition__d_reference"
-                many-key="definition__PID"/>
+                many-key="d_definition__PID"/>
         </field>
 
 
