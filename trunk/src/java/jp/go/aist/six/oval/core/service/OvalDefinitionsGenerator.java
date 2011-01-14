@@ -180,6 +180,8 @@ public class OvalDefinitionsGenerator
             ovalDefs.setTests( tests );
         }
 
+        Definitions  defs = ovalDefs.getDefinitions();
+
         for (CriteriaElement  element : criteria) {
             if (Criterion.class.isInstance( element )) {
                 Criterion  criterion = (Criterion)element;
@@ -194,8 +196,14 @@ public class OvalDefinitionsGenerator
                 }
             } else if (ExtendDefinition.class.isInstance( element )) {
                 ExtendDefinition  extdef = (ExtendDefinition)element;
-                String  defID = extdef.getDefinitionRef();
-                //TODO: complete this!!!
+                String  def2ID = extdef.getDefinitionRef();
+                Definition  def2 = defs.find( def2ID );
+                if (def2 == null) {
+                    def2 = _loadLatestEntity( Definition.class, def2ID );
+                    defs.add( def2 );
+
+                    _buildEntitiesForDefinition( ovalDefs, def2 );
+                }
             }
         }
     }

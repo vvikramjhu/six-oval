@@ -58,6 +58,9 @@ public class OvalDefinitionsGeneratorTest
         OvalDefinitions  ovalDefs = generator.generateIncludingDefinitions( defIDs );
         Reporter.log( "...generation done: " + ovalDefs, true );
 
+        long  timestamp = System.currentTimeMillis();
+        String  filename = "generated_" + String.valueOf( timestamp ) + ".xml";
+        _marshal( ovalDefs, filename );
     }
 
 }
