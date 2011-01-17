@@ -94,6 +94,17 @@ public class DefinitionDao
     //  Dao, CastorDao
     //**************************************************************
 
+//    @Override
+//    protected Definition _jdoLoad(
+//                    final String id
+//                    )
+//    throws PersistenceException
+//    {
+//
+//    }
+
+
+
     @Override
     protected void _createRelated(
                     final Definition object

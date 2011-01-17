@@ -375,6 +375,7 @@
             <bind-xml name="criteria" node="element"/>
         </field>
     </class>
+
 <!--
     <class name="jp.go.aist.six.oval.core.store.PersistentDefinition"
         extends="jp.go.aist.six.oval.model.OvalEntity">
