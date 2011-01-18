@@ -106,6 +106,15 @@ public class DefinitionDao
 //    }
 
 
+    @Override
+    protected void _daoAfterLoad(
+                    final Definition object
+                    )
+    {
+        JdoCallbackHandler.jdoLoad( Definition.class, object );
+    }
+
+
 
     @Override
     protected void _daoBeforeCreate(

@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.core.store;
 
-import jp.go.aist.six.oval.model.definitions.Definition;
-import jp.go.aist.six.oval.model.definitions.LocalVariable;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.util.persist.DataStore;
@@ -80,16 +78,16 @@ public class OvalDataStore
 
 
 
-    @SuppressWarnings( "unchecked" )
+//    @SuppressWarnings( "unchecked" )
     private <T extends Persistable<?>> Class<T> _getRealType(
                     final Class<T> type
                     )
     {
-        if (Definition.class == type) {
-            return (Class<T>)PersistentDefinition.class;
-        } else if (LocalVariable.class == type) {
-            return (Class<T>)PersistentLocalVariable.class;
-        }
+//        if (Definition.class == type) {
+//            return (Class<T>)PersistentDefinition.class;
+//        } else if (LocalVariable.class == type) {
+//            return (Class<T>)PersistentLocalVariable.class;
+//        }
 
         return type;
     }
