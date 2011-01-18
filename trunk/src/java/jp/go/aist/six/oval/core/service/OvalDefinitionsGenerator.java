@@ -27,6 +27,7 @@ import jp.go.aist.six.oval.model.definitions.CriteriaElement;
 import jp.go.aist.six.oval.model.definitions.Criterion;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Definitions;
+import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.ExtendDefinition;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
@@ -37,6 +38,8 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectRef;
 import jp.go.aist.six.oval.model.definitions.SystemObjects;
 import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.definitions.Tests;
+import jp.go.aist.six.oval.model.definitions.Variable;
+import jp.go.aist.six.oval.model.definitions.Variables;
 import jp.go.aist.six.oval.service.OvalException;
 import jp.go.aist.six.util.IsoDate;
 import jp.go.aist.six.util.persist.DataStore;
@@ -47,6 +50,7 @@ import org.apache.commons.logging.LogFactory;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 
@@ -295,6 +299,21 @@ public class OvalDefinitionsGenerator
                 sysObjs.add( sysObj );
 
                 //TODO: load variables!!!
+                Variables  vars = ovalDefs.getVariables();
+                if (vars == null) {
+                    vars = new Variables();
+                    ovalDefs.setVariables( vars );
+                }
+
+                Iterator<EntityBase>  itrProps = sysObj.iterateProperties();
+                while (itrProps.hasNext()) {
+                    EntityBase  prop = itrProps.next();
+                    String  varRef = prop.getVarRef();
+                    if (varRef != null) {
+                        Variable  var = _loadLatestEntity( Variable.class, varRef );
+                        vars.add( var );
+                    }
+                }
             }
         }
 

@@ -71,6 +71,19 @@ public class VariableDao
     //**************************************************************
 
     @Override
+    protected void _daoAfterLoad(
+                    final Variable object
+                    )
+    {
+        if (LocalVariable.class.isInstance( object )) {
+            LocalVariable  lv = LocalVariable.class.cast( object );
+            JdoCallbackHandler.jdoLoad( Variable.class, lv );
+        }
+    }
+
+
+
+    @Override
     protected void _daoBeforeCreate(
                     final Variable object
                     )
