@@ -122,7 +122,7 @@ public class OvalSystemCharacteristicsDao
     //**************************************************************
 
     @Override
-    protected void _createRelated(
+    protected void _daoBeforeCreate(
                     final OvalSystemCharacteristics object
                     )
     throws PersistenceException
@@ -134,7 +134,7 @@ public class OvalSystemCharacteristicsDao
 
 
     @Override
-    protected void _updateRelated(
+    protected void _daoBeforeUpdate(
                     final OvalSystemCharacteristics object
                     )
     throws PersistenceException
@@ -189,7 +189,7 @@ public class OvalSystemCharacteristicsDao
 
 
     @Override
-    protected void _syncRelated(
+    protected void _daoBeforeSync(
                     final OvalSystemCharacteristics object,
                     final OvalSystemCharacteristics p_object
                     )

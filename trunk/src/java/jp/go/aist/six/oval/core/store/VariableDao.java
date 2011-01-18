@@ -50,13 +50,19 @@ public class VariableDao
     {
         if (LocalVariable.class.isInstance( variable )) {
             LocalVariable  lv = LocalVariable.class.cast( variable );
-            if (lv instanceof PersistentLocalVariable) {
-                // callback handler
-            } else {
-                JdoCallbackHandler.jdoBeforeCreate( LocalVariable.class, lv );
-            }
+            JdoCallbackHandler.jdoBeforeCreate( LocalVariable.class, lv );
         }
     }
+//    {
+//        if (LocalVariable.class.isInstance( variable )) {
+//            LocalVariable  lv = LocalVariable.class.cast( variable );
+//            if (lv instanceof PersistentLocalVariable) {
+//                // callback handler
+//            } else {
+//                JdoCallbackHandler.jdoBeforeCreate( LocalVariable.class, lv );
+//            }
+//        }
+//    }
 
 
 
@@ -65,7 +71,7 @@ public class VariableDao
     //**************************************************************
 
     @Override
-    protected void _createRelated(
+    protected void _daoBeforeCreate(
                     final Variable object
                     )
     throws PersistenceException
@@ -76,7 +82,7 @@ public class VariableDao
 
 
     @Override
-    protected void _updateRelated(
+    protected void _daoBeforeUpdate(
                     final Variable object
                     )
     throws PersistenceException
@@ -103,7 +109,7 @@ public class VariableDao
 
 
     @Override
-    protected void _syncRelated(
+    protected void _daoBeforeSync(
                     final Variable object,
                     final Variable p_object
                     )

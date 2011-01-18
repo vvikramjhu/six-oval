@@ -139,7 +139,7 @@ public class OvalResultsDao
     //**************************************************************
 
     @Override
-    protected void _createRelated(
+    protected void _daoBeforeCreate(
                     final OvalResults object
                     )
     throws PersistenceException
@@ -151,7 +151,7 @@ public class OvalResultsDao
 
 
     @Override
-    protected void _updateRelated(
+    protected void _daoBeforeUpdate(
                     final OvalResults object
                     )
     throws PersistenceException
@@ -185,7 +185,7 @@ public class OvalResultsDao
 
 
     @Override
-    protected void _syncRelated(
+    protected void _daoBeforeSync(
                     final OvalResults object,
                     final OvalResults p_object
                     )

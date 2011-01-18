@@ -81,13 +81,15 @@ public class DefinitionDao
                     )
     throws PersistenceException
     {
-        if (def instanceof PersistentDefinition) {
-            // callback handler
-        } else {
-            JdoCallbackHandler.jdoBeforeCreate( Definition.class, def );
-        }
+        JdoCallbackHandler.jdoBeforeCreate( Definition.class, def );
     }
-
+//    {
+//        if (def instanceof PersistentDefinition) {
+//            // callback handler
+//        } else {
+//            JdoCallbackHandler.jdoBeforeCreate( Definition.class, def );
+//        }
+//    }
 
 
     //**************************************************************
@@ -106,7 +108,7 @@ public class DefinitionDao
 
 
     @Override
-    protected void _createRelated(
+    protected void _daoBeforeCreate(
                     final Definition object
                     )
     throws PersistenceException
@@ -120,7 +122,7 @@ public class DefinitionDao
         if (refs != null  &&  refs.size() > 0) {
             Collection<Reference>  p_refs = new ArrayList<Reference>();
             for (Reference  ref : refs) {
-                Reference  p_ref = _loadOrCreate( Reference.class, ref );
+                Reference  p_ref = _daoLoadOrCreate( Reference.class, ref );
                 if (p_ref == null) {
                     p_refs.add( ref );
                 } else {
@@ -136,7 +138,7 @@ public class DefinitionDao
             if (platforms != null  &&  platforms.size() > 0) {
                 Collection<Platform>  p_platforms = new ArrayList<Platform>();
                 for (Platform  platform : platforms) {
-                    Platform  p_platform = _loadOrCreate( Platform.class, platform );
+                    Platform  p_platform = _daoLoadOrCreate( Platform.class, platform );
                     if (p_platform == null) {
                         p_platforms.add( platform );
                     } else {
@@ -150,7 +152,7 @@ public class DefinitionDao
             if (products != null  &&  products.size() > 0) {
                 Collection<Product>  p_products = new ArrayList<Product>();
                 for (Product  product : products) {
-                    Product  p_product = _loadOrCreate( Product.class, product );
+                    Product  p_product = _daoLoadOrCreate( Product.class, product );
                     if (p_product == null) {
                         p_products.add( product );
                     } else {
@@ -175,7 +177,7 @@ public class DefinitionDao
 
 
     @Override
-    protected void _updateRelated(
+    protected void _daoBeforeUpdate(
                     final Definition object
                     )
     throws PersistenceException
@@ -278,7 +280,7 @@ public class DefinitionDao
 
 
     @Override
-    protected void _syncRelated(
+    protected void _daoBeforeSync(
                     final Definition object,
                     final Definition p_object
                     )

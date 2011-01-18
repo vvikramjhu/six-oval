@@ -82,7 +82,7 @@ public class TestDao
     //**************************************************************
 
     @Override
-    protected void _createRelated(
+    protected void _daoBeforeCreate(
                     final Test object
                     )
     throws PersistenceException
@@ -93,7 +93,7 @@ public class TestDao
 
 
     @Override
-    protected void _updateRelated(
+    protected void _daoBeforeUpdate(
                     final Test object
                     )
     throws PersistenceException
@@ -139,7 +139,7 @@ public class TestDao
 
 
     @Override
-    protected void _syncRelated(
+    protected void _daoBeforeSync(
                     final Test object,
                     final Test p_object
                     )

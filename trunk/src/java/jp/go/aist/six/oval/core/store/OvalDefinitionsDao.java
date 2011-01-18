@@ -160,7 +160,7 @@ public class OvalDefinitionsDao
     //**************************************************************
 
     @Override
-    protected void _createRelated(
+    protected void _daoBeforeCreate(
                     final OvalDefinitions object
                     )
     throws PersistenceException
@@ -171,7 +171,7 @@ public class OvalDefinitionsDao
 
 
     @Override
-    protected void _updateRelated(
+    protected void _daoBeforeUpdate(
                     final OvalDefinitions object
                     )
     throws PersistenceException
@@ -246,7 +246,7 @@ public class OvalDefinitionsDao
 
 
     @Override
-    protected void _syncRelated(
+    protected void _daoBeforeSync(
                     final OvalDefinitions object,
                     final OvalDefinitions p_object
                     )
