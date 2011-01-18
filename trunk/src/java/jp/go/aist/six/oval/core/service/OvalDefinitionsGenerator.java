@@ -174,6 +174,63 @@ public class OvalDefinitionsGenerator
             return;
         }
 
+        _buildEntitiesForCriteria( ovalDefs, criteria );
+
+//        Tests  tests = ovalDefs.getTests();
+//        if (tests == null) {
+//            tests = new Tests();
+//            ovalDefs.setTests( tests );
+//        }
+//
+//        Definitions  defs = ovalDefs.getDefinitions();
+//
+//        for (CriteriaElement  element : criteria) {
+//            if (Criterion.class.isInstance( element )) {
+//                Criterion  criterion = (Criterion)element;
+//                String  testID = criterion.getTestRef();
+//                Test  test = tests.find( testID );
+//                if (test == null) {
+//                    // This test have NOT loaded yet.
+//                    test = _loadLatestEntity( Test.class, testID );
+//                    tests.add( test );
+//
+//                    _buildEntitiesForTest( ovalDefs, test );
+//                }
+//            } else if (ExtendDefinition.class.isInstance( element )) {
+//                ExtendDefinition  extdef = (ExtendDefinition)element;
+//                String  def2ID = extdef.getDefinitionRef();
+//                Definition  def2 = defs.find( def2ID );
+//                if (def2 == null) {
+//                    def2 = _loadLatestEntity( Definition.class, def2ID );
+//                    defs.add( def2 );
+//
+//                    _buildEntitiesForDefinition( ovalDefs, def2 );
+//                }
+//            }
+//
+//            if (Criteria.class.isInstance( element )) {
+//
+//            }
+//        }
+    }
+
+
+    /**
+     */
+    private void _buildEntitiesForCriteria(
+                    final OvalDefinitions ovalDefs,
+                    final Criteria criteria
+                    )
+    throws OvalException
+    {
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace( "building entities for Criteria" );
+        }
+
+        if (criteria == null) {
+            return;
+        }
+
         Tests  tests = ovalDefs.getTests();
         if (tests == null) {
             tests = new Tests();
@@ -204,6 +261,11 @@ public class OvalDefinitionsGenerator
 
                     _buildEntitiesForDefinition( ovalDefs, def2 );
                 }
+            }
+
+            if (Criteria.class.isInstance( element )) {
+                _buildEntitiesForCriteria(
+                                ovalDefs, Criteria.class.cast( element ) );
             }
         }
     }

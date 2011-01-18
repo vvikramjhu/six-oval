@@ -31,9 +31,22 @@ public class OvalDefinitionsGeneratorTest
     public Object[][] provideOvalDefinitionsDefinition()
     {
         return new Object[][] {
+//                        {
+//                            new String[] {
+//                                            "oval:org.mitre.oval:def:666"
+//                            }
+//                        }
+//                        ,
+//                        {
+//                            new String[] {
+//                                            "oval:org.mitre.oval:def:666",
+//                                            "oval:org.mitre.oval:def:305"
+//                            }
+//                        }
+//                        ,
                         {
                             new String[] {
-                                            "oval:org.mitre.oval:def:666"
+                                            "oval:org.mitre.oval:def:8050"
                             }
                         }
         };
