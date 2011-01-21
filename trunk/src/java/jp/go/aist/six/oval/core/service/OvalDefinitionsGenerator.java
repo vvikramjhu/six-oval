@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.core.service;
 
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.common.Generator;
+import jp.go.aist.six.oval.model.definitions.Component;
 import jp.go.aist.six.oval.model.definitions.Criteria;
 import jp.go.aist.six.oval.model.definitions.CriteriaElement;
 import jp.go.aist.six.oval.model.definitions.Criterion;
@@ -29,6 +30,8 @@ import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.Definitions;
 import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.ExtendDefinition;
+import jp.go.aist.six.oval.model.definitions.LocalVariable;
+import jp.go.aist.six.oval.model.definitions.ObjectComponent;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.StateRef;
@@ -312,6 +315,7 @@ public class OvalDefinitionsGenerator
                     if (varRef != null) {
                         Variable  var = _loadLatestEntity( Variable.class, varRef );
                         vars.add( var );
+                        _buildEntitiesForVariable( ovalDefs, var );
                     }
                 }
             }
@@ -335,6 +339,273 @@ public class OvalDefinitionsGenerator
                 }
             }
         }
+    }
+
+
+
+    /**
+     */
+    private void _buildEntitiesForVariable(
+                    final OvalDefinitions ovalDefs,
+                    final Variable test
+                    )
+    throws OvalException
+    {
+        if (! LocalVariable.class.isInstance( test )) {
+            return;
+        }
+
+        LocalVariable  localVariable = LocalVariable.class.cast( test );
+        Component   component = localVariable.getComponent();
+        if (! ObjectComponent.class.isInstance( component )) {
+            return;
+        }
+
+        ObjectComponent  objectComponent = ObjectComponent.class.cast( component );
+        String  objectRef = objectComponent.getObjectRef(); //{required}
+        SystemObjects  sysObjs = ovalDefs.getObjects();
+        SystemObject  sysObj = sysObjs.find( objectRef );
+        if (sysObj == null) {
+            sysObj = _loadLatestEntity( SystemObject.class, objectRef );
+            sysObjs.add( sysObj );
+
+            Variables  vars = ovalDefs.getVariables();
+            if (vars == null) {
+                vars = new Variables();
+                ovalDefs.setVariables( vars );
+            }
+
+            Iterator<EntityBase>  itrProps = sysObj.iterateProperties();
+            while (itrProps.hasNext()) {
+                EntityBase  prop = itrProps.next();
+                String  varRef = prop.getVarRef();
+                if (varRef != null) {
+                    Variable  var = _loadLatestEntity( Variable.class, varRef );
+                    vars.add( var );
+                }
+            }
+        }
+    }
+
+
+    ////////////////////////////////////////////////////////////////
+
+    /**
+     */
+    private void _buildDefinition(
+                    final OvalDefinitions ovalDefs,
+                    final String defID
+                    )
+    throws OvalException
+    {
+        Definitions  defs = ovalDefs.getDefinitions();
+        Definition  def = null;
+        if (defs == null) {
+            defs = new Definitions();
+            ovalDefs.setDefinitions( defs );
+        } else {
+            def = defs.find( defID );
+            if (def != null) {
+                // The Definition has already loaded.
+                return;
+            }
+        }
+
+
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace( "building entities for Definition: ID=" + defID );
+        }
+
+        def = _loadLatestEntity( Definition.class, defID );
+        defs.add( def );
+
+        Criteria  criteria = def.getCriteria();
+        _buildCriteriaElement( ovalDefs, criteria );
+    }
+
+
+
+    /**
+     */
+    private void _buildCriteriaElement(
+                    final OvalDefinitions ovalDefs,
+                    final CriteriaElement element
+                    )
+    throws OvalException
+    {
+        if (element == null) {
+            return;
+        }
+
+        if (_LOG.isTraceEnabled()) {
+            _LOG.trace( "building entities for Criteria" );
+        }
+
+        if (Criteria.class.isInstance( element )) {
+            Criteria  criteria = Criteria.class.cast( element );
+            for (CriteriaElement  childElement : criteria) {
+                _buildCriteriaElement( ovalDefs, childElement );
+            }
+        } else if (Criterion.class.isInstance( element )) {
+            Criterion  criterion = Criterion.class.cast( element );
+            String  testID = criterion.getTestRef();
+            _buildTest( ovalDefs, testID );
+        } else if (ExtendDefinition.class.isInstance( element )) {
+            ExtendDefinition  extdef = ExtendDefinition.class.cast( element );
+            String  defID = extdef.getDefinitionRef();
+            _buildDefinition( ovalDefs, defID );
+        }
+    }
+
+
+
+    /**
+     */
+    private void _buildTest(
+                    final OvalDefinitions ovalDefs,
+                    final String testID
+                    )
+    throws OvalException
+    {
+        Tests  tests = ovalDefs.getTests();
+        Test  test = null;
+        if (tests == null) {
+            tests = new Tests();
+            ovalDefs.setTests( tests );
+        } else {
+            test = tests.find( testID );
+            if (test != null) {
+                // The Test has already loaded.
+                return;
+            }
+        }
+
+        test = _loadLatestEntity( Test.class, testID );
+        tests.add( test );
+
+
+        SystemObjectRef  sysObjRef = test.getObject();
+        if (sysObjRef != null) {
+            String  sysObjID = sysObjRef.getObjectRef();
+            _buildObject( ovalDefs, sysObjID );
+        }
+
+
+        Collection<StateRef>  stateRefs = test.getState();
+        if (stateRefs != null  &&  stateRefs.size() > 0) {
+            for (StateRef  stateRef : stateRefs) {
+                String  stateID = stateRef.getStateRef();
+                _buildState( ovalDefs, stateID );
+            }
+        }
+    }
+
+
+
+    /**
+     * SystemObject by ovalID
+     */
+    private void _buildObject(
+                    final OvalDefinitions ovalDefs,
+                    final String sysObjID
+                    )
+    throws OvalException
+    {
+        SystemObjects  sysObjs = ovalDefs.getObjects();
+        SystemObject  sysObj = null;
+        if (sysObjs == null) {
+            sysObjs = new SystemObjects();
+            ovalDefs.setObjects( sysObjs );
+        } else {
+            sysObj = sysObjs.find( sysObjID );
+            if (sysObj != null) {
+                // The SystemObject has already loaded.
+                return;
+            }
+        }
+
+        sysObj = _loadLatestEntity( SystemObject.class, sysObjID );
+        sysObjs.add( sysObj );
+
+        Iterator<EntityBase>  itrProps = sysObj.iterateProperties();
+        while (itrProps.hasNext()) {
+            EntityBase  prop = itrProps.next();
+            String  variableID = prop.getVarRef();
+            if (variableID != null) {
+                _buildVariable( ovalDefs, variableID );
+            }
+        }
+    }
+
+
+
+    /**
+     * State by ovalID
+     */
+    private void _buildState(
+                    final OvalDefinitions ovalDefs,
+                    final String sysObjID
+                    )
+    throws OvalException
+    {
+        States  states = ovalDefs.getStates();
+        State  state = null;
+        if (states == null) {
+            states = new States();
+            ovalDefs.setStates( states );
+        } else {
+            state = states.find( sysObjID );
+            if (state != null) {
+                // The State has already loaded.
+                return;
+            }
+        }
+
+        state = _loadLatestEntity( State.class, sysObjID );
+        states.add( state );
+    }
+
+
+
+    /**
+     * Variable by ovalID
+     */
+    private void _buildVariable(
+                    final OvalDefinitions ovalDefs,
+                    final String ovalID
+                    )
+    throws OvalException
+    {
+        Variables  variables = ovalDefs.getVariables();
+        Variable  variable = null;
+        if (variables == null) {
+            variables = new Variables();
+            ovalDefs.setVariables( variables );
+        } else {
+            variable = variables.find( ovalID );
+            if (variable != null) {
+                // The Variable has already loaded.
+                return;
+            }
+        }
+
+        variable = _loadLatestEntity( Variable.class, ovalID );
+        variables.add( variable );
+
+        if (! LocalVariable.class.isInstance( variable )) {
+            return;
+        }
+
+        LocalVariable  localVariable = LocalVariable.class.cast( variable );
+        Component   component = localVariable.getComponent();
+        if (! ObjectComponent.class.isInstance( component )) {
+            return;
+        }
+
+        ObjectComponent  objectComponent = ObjectComponent.class.cast( component );
+        String  sysObjID = objectComponent.getObjectRef(); //{required}
+
+        _buildObject( ovalDefs, sysObjID );
     }
 
 

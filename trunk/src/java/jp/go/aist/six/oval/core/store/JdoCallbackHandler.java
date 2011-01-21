@@ -26,6 +26,7 @@ import jp.go.aist.six.oval.model.definitions.Component;
 import jp.go.aist.six.oval.model.definitions.Criteria;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.LocalVariable;
+import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.util.persist.Persistable;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -62,6 +63,7 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
         handlers.put( PersistentDefinition.class, definitionHandler );
 
         JdoCallbackHandler<String, LocalVariable>  localVariableHandler = new LocalVariableCallbackHandler();
+        handlers.put( Variable.class, localVariableHandler );
         handlers.put( LocalVariable.class, localVariableHandler );
         handlers.put( PersistentLocalVariable.class, localVariableHandler );
 
@@ -280,6 +282,10 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
                         final LocalVariable object
                         )
         {
+            if (! LocalVariable.class.isInstance( object )) {
+                return LocalVariable.class;
+            }
+
             String  xml = object.xmlGetComponent();
             if (xml != null) {
 //                if (_LOG.isTraceEnabled()) {
@@ -308,6 +314,10 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
                         final LocalVariable object
                         )
         {
+            if (! LocalVariable.class.isInstance( object )) {
+                return;
+            }
+
             Component  component = object.getComponent();
             if (component != null) {
 //                if (_LOG.isTraceEnabled()) {
