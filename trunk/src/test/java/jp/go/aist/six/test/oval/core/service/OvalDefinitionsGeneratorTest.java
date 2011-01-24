@@ -44,9 +44,15 @@ public class OvalDefinitionsGeneratorTest
 //                            }
 //                        }
 //                        ,
+//                        {
+//                            new String[] {
+//                                            "oval:org.mitre.oval:def:8050"
+//                            }
+//                        }
+//                        ,
                         {
                             new String[] {
-                                            "oval:org.mitre.oval:def:8050"
+                                            "oval:com.redhat.rhsa:def:20100332"
                             }
                         }
         };
