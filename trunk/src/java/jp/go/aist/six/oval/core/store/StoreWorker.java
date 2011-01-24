@@ -347,7 +347,10 @@ public class StoreWorker<K, T extends Persistable<K>>
     throws PersistenceException
     {
         _beforePersist( object );
-        return _store.sync( _objectType, object );
+        T  p_object = _store.sync( _objectType, object );
+        _afterLoad( p_object );
+
+        return p_object;
     }
 
 
