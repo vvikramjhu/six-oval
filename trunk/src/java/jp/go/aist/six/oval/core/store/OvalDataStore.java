@@ -430,24 +430,22 @@ public class OvalDataStore
 
 
     public <K, T extends Persistable<K>>
-    List<T> search(
+    List<Object> search(
                     final Class<T> type,
                     final SearchCriteria criteria
                     )
     throws PersistenceException
     {
-        Collection<T>  p_objects = null;
-        if (criteria == null) {
-            p_objects = find( type );
+        Class<T>  realType = _getRealType( type );
+        List<Object>  results = null;
+        StoreWorker<K, T>  worker = _getWorker( realType );
+        if (worker == null) {
+            results = _dataStore.search( realType, criteria );
         } else {
-            p_objects = find( type,
-                            criteria.getBinding(),
-                            criteria.getOrders(),
-                            criteria.getLimit()
-                            );
+            results = worker.search( criteria );
         }
 
-        return (new ArrayList<T>( p_objects ));
+        return results;
     }
 
 }

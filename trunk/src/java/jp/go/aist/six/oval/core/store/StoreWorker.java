@@ -486,19 +486,12 @@ public class StoreWorker<K, T extends Persistable<K>>
 
 
 
-    public List<T> search(
+    public List<Object> search(
                     final SearchCriteria criteria
                     )
     throws PersistenceException
     {
-        Collection<T>  p_objects = null;
-        if (criteria == null) {
-            p_objects = find();
-        } else {
-            p_objects = find( criteria.getBinding(), criteria.getOrders(), criteria.getLimit() );
-        }
-
-        return (new ArrayList<T>( p_objects ));
+        return _store.search( _objectType, criteria );
     }
 
 }

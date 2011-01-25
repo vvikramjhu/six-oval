@@ -47,9 +47,12 @@ import jp.go.aist.six.oval.service.OvalException;
 import jp.go.aist.six.util.IsoDate;
 import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.search.Binding;
+import jp.go.aist.six.util.search.PropertyProjection;
 import jp.go.aist.six.util.search.RelationalBinding;
+import jp.go.aist.six.util.search.SearchCriteria;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
@@ -396,12 +399,20 @@ public class OvalDefinitionsGenerator
                     )
     throws OvalException
     {
-        if (filter == null) {
-            throw new IllegalArgumentException( "no filter specified" );
-        }
+//        if (filter == null) {
+//            throw new IllegalArgumentException( "no filter specified" );
+//        }
 
-        //TODO: Find ovalID, NOT persistentID, of the definitions!!!
-        Collection<String>  defIDs = _store.findIdentity( Definition.class, filter );
+        SearchCriteria  criteria = new SearchCriteria( filter );
+        criteria.addProjection( new PropertyProjection( "ovalID" ) );
+
+        Collection<Object>  defIDsTemp = _store.search( Definition.class, criteria );
+
+        Collection<String>  defIDs = new ArrayList<String>();
+        for (Object  obj : defIDsTemp) {
+            String  defID = (String)obj;
+            defIDs.add( defID );
+        }
         if (_LOG.isDebugEnabled()) {
             _LOG.debug( "definition IDs=" + defIDs );
         }
