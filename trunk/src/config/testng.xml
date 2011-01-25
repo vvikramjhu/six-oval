@@ -28,7 +28,15 @@
     </test>
 
 
-    <test name="oval.core.service.OvalDefinitionsGenerator" enabled="false">
+    <test name="oval.core.service.OvalDefinitionsGenerator" enabled="true">
+<!-- 
+        <groups>
+            <run>
+                <include name="OvalDefinitionsGenerator.filter"/>
+            </run>
+        </groups>
+-->
+
         <classes>
             <class name="jp.go.aist.six.test.oval.core.service.OvalDefinitionsGeneratorTest"/>
         </classes>
@@ -58,7 +66,7 @@
 
 
 
-    <test name="oval.core.store" enabled="true">
+    <test name="oval.core.store" enabled="false">
         <groups>
             <run>
                 <include name="definitions.oval_definitions"/>

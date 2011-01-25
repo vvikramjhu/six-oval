@@ -52,9 +52,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
 
 
 
@@ -356,7 +354,7 @@ public class OvalDefinitionsGenerator
      */
     private void _buildAll(
                     final OvalDefinitions ovalDefs,
-                    final Set<String> defIDs
+                    final Collection<String> defIDs
                     )
     throws OvalException
     {
@@ -373,21 +371,42 @@ public class OvalDefinitionsGenerator
 
     /**
      */
-    public OvalDefinitions generateIncludingDefinitions(
-                    final Collection<String> definitionIDs
+    public OvalDefinitions generateFromDefinitionIDs(
+                    final Collection<String> defIDs
                     )
     throws OvalException
     {
-        if (definitionIDs == null  ||  definitionIDs.size() == 0) {
+        if (defIDs == null  ||  defIDs.size() == 0) {
             throw new IllegalArgumentException( "no definition ID specified" );
         }
 
         OvalDefinitions  ovalDefs = new OvalDefinitions();
-        Set<String>  defIDs = new HashSet<String>( definitionIDs );
         _buildAll( ovalDefs, defIDs );
 
         ovalDefs.setGenerator( _createGenerator() );
         return ovalDefs;
+    }
+
+
+
+    /**
+     */
+    public OvalDefinitions generateByDefinitionFilter(
+                    final Binding filter
+                    )
+    throws OvalException
+    {
+        if (filter == null) {
+            throw new IllegalArgumentException( "no filter specified" );
+        }
+
+        //TODO: Find ovalID, NOT persistentID, of the definitions!!!
+        Collection<String>  defIDs = _store.findIdentity( Definition.class, filter );
+        if (_LOG.isDebugEnabled()) {
+            _LOG.debug( "definition IDs=" + defIDs );
+        }
+
+        return generateFromDefinitionIDs( defIDs );
     }
 
 

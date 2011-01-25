@@ -3,6 +3,8 @@ package jp.go.aist.six.test.oval.core.service;
 import jp.go.aist.six.oval.core.service.OvalDefinitionsGenerator;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
+import jp.go.aist.six.util.search.Binding;
+import jp.go.aist.six.util.search.RelationalBinding;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
 import java.util.Arrays;
@@ -27,8 +29,46 @@ public class OvalDefinitionsGeneratorTest
 
 
 
+    @DataProvider( name="definitions.filter" )
+    public Object[][] provideDefinitionFilter()
+    {
+        return new Object[][] {
+                        {
+                            RelationalBinding.equalBinding(
+                                            "metadata.affected.platform.persistentID",
+                                            "Red Hat Enterprise Linux 5"
+                            )
+                        }
+        };
+    }
+
+
+
+    @org.testng.annotations.Test(
+                    groups={"oval.core.service", "OvalDefinitionsGenerator.filter"},
+                    dataProvider="definitions.filter",
+                    alwaysRun=true
+                    )
+    public void testGenerateByDefinitionFilter(
+                    final Binding filter
+                    )
+    throws Exception
+    {
+        OvalDefinitionsGenerator  generator = new OvalDefinitionsGenerator();
+
+        Reporter.log( "generating OvalDefinitions...", true );
+        OvalDefinitions  ovalDefs = generator.generateByDefinitionFilter( filter );
+        Reporter.log( "...generation done: " + ovalDefs, true );
+
+        long  timestamp = System.currentTimeMillis();
+        String  filename = "generated_" + String.valueOf( timestamp ) + ".xml";
+        _marshal( ovalDefs, filename );
+    }
+
+
+
     @DataProvider( name="definitions.definitionIDs" )
-    public Object[][] provideOvalDefinitionsDefinition()
+    public Object[][] provideDefinitionIDs()
     {
         return new Object[][] {
 //                        {
@@ -61,7 +101,7 @@ public class OvalDefinitionsGeneratorTest
 
 
     @org.testng.annotations.Test(
-                    groups={"oval.core.service", "OvalDefinitionsGenerator"},
+                    groups={"oval.core.service", "OvalDefinitionsGenerator.definitionIDs"},
                     dataProvider="definitions.definitionIDs",
                     alwaysRun=true
                     )
@@ -74,7 +114,7 @@ public class OvalDefinitionsGeneratorTest
         OvalDefinitionsGenerator  generator = new OvalDefinitionsGenerator();
 
         Reporter.log( "generating OvalDefinitions...", true );
-        OvalDefinitions  ovalDefs = generator.generateIncludingDefinitions( defIDs );
+        OvalDefinitions  ovalDefs = generator.generateFromDefinitionIDs( defIDs );
         Reporter.log( "...generation done: " + ovalDefs, true );
 
         long  timestamp = System.currentTimeMillis();
