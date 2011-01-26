@@ -392,11 +392,11 @@ public class StoreWorker<K, T extends Persistable<K>>
 
 
     public T load(
-                    final K identity
+                    final K id
                     )
     throws PersistenceException
     {
-        T  p_object = _store.load( _objectType, identity );
+        T  p_object = _store.load( _objectType, id );
         _afterLoad( p_object );
 
         return p_object;
@@ -405,13 +405,13 @@ public class StoreWorker<K, T extends Persistable<K>>
 
 
     public List<T> loadAll(
-                    final List<? extends K> identities
+                    final List<? extends K> ids
                     )
     throws PersistenceException
     {
         List<T>  p_objects = new ArrayList<T>();
-        for (K  identity : identities) {
-            T  p_object = load( identity );
+        for (K  id : ids) {
+            T  p_object = load( id );
             p_objects.add( p_object );
         }
 

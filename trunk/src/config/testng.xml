@@ -31,10 +31,11 @@
     <test name="oval.core.service.OvalDefinitionsGenerator" enabled="true">
         <groups>
             <run>
-                <include name="OvalDefinitionsGenerator.filter"/>
+                <include name="OvalDefinitionsGenerator.definitionIDs"/>
             </run>
         </groups>
 <!-- 
+                <include name="OvalDefinitionsGenerator.filter"/>
 -->
 
         <classes>

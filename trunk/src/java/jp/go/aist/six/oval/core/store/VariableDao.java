@@ -77,7 +77,7 @@ public class VariableDao
     {
         if (LocalVariable.class.isInstance( object )) {
             LocalVariable  lv = LocalVariable.class.cast( object );
-            JdoCallbackHandler.jdoLoad( Variable.class, lv );
+            JdoCallbackHandler.jdoLoad( LocalVariable.class, lv );
         }
     }
 
