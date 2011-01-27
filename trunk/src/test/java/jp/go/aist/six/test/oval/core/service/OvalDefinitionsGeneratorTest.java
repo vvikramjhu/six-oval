@@ -37,7 +37,7 @@ public class OvalDefinitionsGeneratorTest
         return new Object[][] {
 //                        {
 //                            RelationalBinding.equalBinding(
-//                                            "metadata.affected.platform.persistentID",
+//                                            "metadata.affected.platform.name",
 //                                            "Red Hat Enterprise Linux 5"
 //                            )
 //                        }
