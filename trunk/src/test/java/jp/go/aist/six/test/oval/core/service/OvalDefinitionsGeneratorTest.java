@@ -50,7 +50,7 @@ public class OvalDefinitionsGeneratorTest
                             new AndBinding(
                                             new Binding[] {
                                             RelationalBinding.equalBinding(
-                                                            "metadata.affected.platform.persistentID",
+                                                            "metadata.affected.platform.name",
                                                             "Microsoft Windows XP"
                                             ),
                                             RelationalBinding.equalBinding(
