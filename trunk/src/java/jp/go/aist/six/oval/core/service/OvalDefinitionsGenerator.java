@@ -399,13 +399,25 @@ public class OvalDefinitionsGenerator
                     )
     throws OvalException
     {
-//        if (filter == null) {
-//            throw new IllegalArgumentException( "no filter specified" );
-//        }
+        Collection<String>  defIDs = _findDefinitionIDs( filter );
 
-        SearchCriteria  criteria = new SearchCriteria( filter );
+        return generateFromDefinitionIDs( defIDs );
+    }
+
+
+
+    /**
+     */
+    public Collection<String> _findDefinitionIDs(
+                    final Binding filter
+                    )
+    throws OvalException
+    {
+        SearchCriteria  criteria = new SearchCriteria();
+        if (filter != null) {
+            criteria.setBinding( filter );
+        }
         criteria.addProjection( new PropertyProjection( "ovalID" ) );
-
         Collection<Object>  defIDsTemp = _store.search( Definition.class, criteria );
 
         Collection<String>  defIDs = new ArrayList<String>();
@@ -413,11 +425,11 @@ public class OvalDefinitionsGenerator
             String  defID = (String)obj;
             defIDs.add( defID );
         }
+
         if (_LOG.isDebugEnabled()) {
             _LOG.debug( "definition IDs=" + defIDs );
         }
-
-        return generateFromDefinitionIDs( defIDs );
+        return defIDs;
     }
 
 

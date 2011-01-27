@@ -271,6 +271,11 @@ public class Metadata
     //==============================================================
 
     /**
+     * TODO: move these methods to store package,
+     * maybe StoreWorker, JdoCallbackHandler and OvalModelUtil classes.
+     */
+
+    /**
      * Returns the last modified date of this definition.
      * For a definition in Mitre OVAL repository, it is retrieved
      * from the latest "oval_repository/dates/" element.

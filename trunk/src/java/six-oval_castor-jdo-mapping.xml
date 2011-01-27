@@ -507,6 +507,10 @@
         <field name="persistentID" type="string">
             <sql name="PID" type="char"/>
         </field>
+
+        <field name="name" type="string">
+            <sql name="PID" type="char" read-only="true"/>
+        </field>
 <!--
         key-generator="IDENTITY"
         <field name="persistentID" type="integer">

@@ -1,8 +1,10 @@
 package jp.go.aist.six.test.oval.core.service;
 
 import jp.go.aist.six.oval.core.service.OvalDefinitionsGenerator;
+import jp.go.aist.six.oval.model.common.DefinitionClass;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
+import jp.go.aist.six.util.search.AndBinding;
 import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.RelationalBinding;
 import org.testng.Reporter;
@@ -33,10 +35,30 @@ public class OvalDefinitionsGeneratorTest
     public Object[][] provideDefinitionFilter()
     {
         return new Object[][] {
+//                        {
+//                            RelationalBinding.equalBinding(
+//                                            "metadata.affected.platform.persistentID",
+//                                            "Red Hat Enterprise Linux 5"
+//                            )
+//                        }
+//                        ,
+//                        {
+//                            new LikeBinding( "metadata.reference.refID", "CVE-2010-017%" )
+//                        }
+//                        ,
                         {
-                            RelationalBinding.equalBinding(
-                                            "metadata.affected.platform.persistentID",
-                                            "Red Hat Enterprise Linux 5"
+                            new AndBinding(
+                                            new Binding[] {
+                                            RelationalBinding.equalBinding(
+                                                            "metadata.affected.platform.persistentID",
+                                                            "Microsoft Windows XP"
+                                            ),
+                                            RelationalBinding.equalBinding(
+                                                            "definitionClass",
+                                                            DefinitionClass.VULNERABILITY
+                                            ),
+                                            RelationalBinding.equalBinding( "metadata.reference.refID", "CVE-2010-0176" )
+                                            }
                             )
                         }
         };
