@@ -20,9 +20,12 @@
 
 package jp.go.aist.six.oval.process;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import jp.go.aist.six.oval.core.service.OvalContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,44 +52,47 @@ public class OvalInterpreter
 
 
 
-    /**
-     * Logger.
-     */
-    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalInterpreter.class );
-
-
-
     private static enum Property
     {
-        OVAL_DEFINITIONS( "-o", "definitions.xml" ),
-        OVAL_RESULTS( "-r", "results.xml" ),
+        EXECUTABLE(       "six.oval.interpreter.executable", "ovaldi",          null ),
+        WORKING_DIR(      "six.oval.interpreter.dir",        null,              null ),
+        OVAL_DEFINITIONS( null,                              "definitions.xml", "-o" ),
+        OVAL_RESULTS(     null,                              "results.xml",     "-r" )
         ;
 
 
-        final String  option;
+        final String  property;
         final String  defaultValue;
+        final String  commandOption;
 
 
         /**
          * Constructor.
          */
         Property(
-                        final String option
+                        final String property,
+                        final String defaultValue,
+                        final String commandOption
                         )
         {
-            this( option, null );
+            this.property= property;
+            this.defaultValue = defaultValue;
+            this.commandOption = commandOption;
         }
 
 
-        Property(
-                        final String option,
-                        final String defaultValue
-                        )
+        boolean hasProperty()
         {
-            this.option = option;
-            this.defaultValue = defaultValue;
+            return (property == null ? false : true);
         }
     }
+
+
+
+    /**
+     * Logger.
+     */
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalInterpreter.class );
 
 
 
@@ -115,16 +121,16 @@ public class OvalInterpreter
 
 
     // properties
-    private String  _workingDir;
     private String  _tmpDir;
     private String  _ovalScFilepath;
     private String  _ovalDefsUrl;
     private String  _ovalResultsUrl;
 
 
-    private String  _executable;
-    private String  _ovalDefinitions;
-    private String  _ovalResults;
+//    private String  _executable;
+//    private String  _ovalDefinitions;
+//    private String  _ovalResults;
+//    private String  _workingDir;
 
 
 
@@ -140,73 +146,31 @@ public class OvalInterpreter
 
     /**
      */
-    private void _configure(
-                    final List<String> args
-                    )
-    throws OvalInterpreterException
+    private List<String> _createCommand()
     {
-        if (args == null  ||  args.size() < 2) {
-            throw new IllegalArgumentException(
-                            "invalid OVAL Interpreter args: "
-                            + String.valueOf( args ) );
-        }
+        List<String>  command = new ArrayList<String>();
 
-        final String[]  argArray = args.toArray( new String[0] );
+        command.add( getExecutable() );
+        command.add( "-m" );
 
-        OvalContext  context = OvalContext.INSTANCE;
-
-        _tmpDir = _getProperty( context, "java.io.tmpdir", null );
-        _LOG_.debug( "tmp dir=" + _tmpDir );
-
-        _workingDir = _getProperty( context, "six.oval.interpreter.dir", _tmpDir );
-
-        _executable = _getProperty( context, "six.oval.interpreter.executable", "ovaldi" );
+        return command;
     }
-
-
-
-    private String _getProperty(
-                    final OvalContext context,
-                    final String name,
-                    final String defaultValue
-                    )
-    {
-        String  value = context.getProperty( name );
-        return (value == null ? defaultValue : value);
-    }
-
 
 
 
 
     /**
      */
-    private ProcessBuilder _createProcessBuilder(
-                    final List<String> args
-                    )
+    private ProcessBuilder _createProcessBuilder()
     {
-        OvalContext  context = OvalContext.INSTANCE;
-
-        //TODO: build command line
-        List<String>  command = new ArrayList<String>();
-
-        command.add( (_executable == null ? "ovaldi" : _executable) );
-
-        command.add( "-m" );
-
-        _LOG_.debug( "OVAL Interpreter args: " + String.valueOf( args ) );
-
-
+        List<String>  command = _createCommand();
+        _LOG_.debug( "OVAL Interpreter command: " + String.valueOf( command ) );
         ProcessBuilder  builder = new ProcessBuilder( command );
-        //TODO: configure builder
 
-        _tmpDir = _getProperty( context, "java.io.tmpdir", null );
-        _LOG_.debug( "tmp dir=" + _tmpDir );
-
-        _workingDir = _getProperty( context, "six.oval.interpreter.dir", _tmpDir );
-
-        _executable = _getProperty( context, "six.oval.interpreter.executable", "ovaldi" );
-        builder.directory();
+        String  workingDir = getWorkingDir();
+        if (workingDir != null) {
+            builder.directory( new File( workingDir ) );
+        }
 
         return builder;
     }
@@ -219,9 +183,10 @@ public class OvalInterpreter
     public Process execute()
     throws OvalInterpreterException
     {
+        ProcessBuilder  builder = _createProcessBuilder();
         Process  proc = null;
         try {
-            proc = _builder.start();
+            proc = builder.start();
         } catch (IOException ex) {
             throw new OvalInterpreterException( ex );
         }
@@ -234,15 +199,44 @@ public class OvalInterpreter
     // properties
 
 
-//    private final Map<Property, String>  _properties = new HashMap<Property, String>();
-//
-//    private String _getProperty(
-//                    final Property property
-//                    )
-//    {
-//        String  value = _properties.get( property );
-//        return (value == null ? property.defaultValue : value);
-//    }
+    private final Map<Property, String>  _config = new HashMap<Property, String>();
+
+    private String _getConfigValue(
+                    final Property property
+                    )
+    {
+        String  value = _config.get( property );
+        if (value == null  &&  property.hasProperty()) {
+            value = OvalContext.INSTANCE.getProperty( property.property );
+        }
+
+        return (value == null ? property.defaultValue : value);
+    }
+
+
+    private void _setConfigValue(
+                    final Property property,
+                    final String value
+                    )
+    {
+        _config.put( property, value );
+    }
+
+
+    /**
+     */
+    public void setWorkingDir(
+                    final String dir
+                    )
+    {
+        _setConfigValue( Property.WORKING_DIR, dir );
+    }
+
+
+    public String getWorkingDir()
+    {
+        return _getConfigValue( Property.WORKING_DIR );
+    }
 
 
 
@@ -252,13 +246,13 @@ public class OvalInterpreter
                     final String filepath
                     )
     {
-        _executable = filepath;
+        _setConfigValue( Property.EXECUTABLE, filepath );
     }
 
 
     public String getExecutable()
     {
-        return _executable;
+        return _getConfigValue( Property.EXECUTABLE );
     }
 
 
@@ -269,13 +263,13 @@ public class OvalInterpreter
                     final String filepath
                     )
     {
-        _ovalDefinitions = filepath;
+        _setConfigValue( Property.OVAL_DEFINITIONS, filepath );
     }
 
 
     public String getOvalDefinitions()
     {
-        return _ovalDefinitions;
+        return _getConfigValue( Property.OVAL_DEFINITIONS );
     }
 
 
@@ -286,13 +280,13 @@ public class OvalInterpreter
                     final String filepath
                     )
     {
-        _ovalResults = filepath;
+        _setConfigValue( Property.OVAL_RESULTS, filepath );
     }
 
 
     public String getOvalResults()
     {
-        return _ovalResults;
+        return _getConfigValue( Property.OVAL_RESULTS );
     }
 
 }
