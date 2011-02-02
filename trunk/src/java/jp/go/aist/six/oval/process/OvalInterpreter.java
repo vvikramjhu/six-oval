@@ -21,8 +21,10 @@
 package jp.go.aist.six.oval.process;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
-import jp.go.aist.six.oval.OvalException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 
@@ -47,6 +49,13 @@ public class OvalInterpreter
 
 
     /**
+     * Logger.
+     */
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalInterpreter.class );
+
+
+
+    /**
      * A factory method.
      */
     public static OvalInterpreter newInstance(
@@ -61,7 +70,7 @@ public class OvalInterpreter
                     final String[] args
                     )
     {
-        return (new OvalInterpreter());
+        return newInstance( Arrays.asList( args ) );
     }
 
 
@@ -89,7 +98,7 @@ public class OvalInterpreter
 
 
     /**
-     *
+     * Constructor.
      */
     protected OvalInterpreter()
     {
@@ -100,17 +109,9 @@ public class OvalInterpreter
                     final List<String> command
                     )
     {
+        _LOG_.debug( "OVAL Interpreter command: " + String.valueOf( command ) );
         _builder = new ProcessBuilder( command );
     }
-
-
-    protected OvalInterpreter(
-                    final String[] command
-                    )
-    {
-        _builder = new ProcessBuilder( command );
-    }
-
 
 
 //    /**
@@ -136,12 +137,13 @@ public class OvalInterpreter
      * Starts a new OVAL interpreter process.
      */
     public Process start()
+    throws OvalInterpreterException
     {
         Process  proc = null;
         try {
             proc = _builder.start();
         } catch (IOException ex) {
-            throw new OvalException( ex );
+            throw new OvalInterpreterException( ex );
         }
 
         return proc;

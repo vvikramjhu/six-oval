@@ -18,26 +18,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.service;
+package jp.go.aist.six.oval.process;
 
 import jp.go.aist.six.oval.OvalException;
 
 
 
 /**
- * An exceptional condition that occurred during the Oval repository processing.
+ * An exceptional condition that occurred during the OVAL interpreter execution.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalRepositoryException
+public class OvalInterpreterException
     extends OvalException
 {
 
     /**
-     * Constructs an OvalRepositoryException with no detail message.
+     * Constructs an OvalInterpreterException with no detail message.
      */
-    public OvalRepositoryException()
+    public OvalInterpreterException()
     {
         super();
     }
@@ -45,12 +45,12 @@ public class OvalRepositoryException
 
 
     /**
-     * Constructs an OvalRepositoryException with the specified detail message.
+     * Constructs an OvalInterpreterException with the specified detail message.
      *
      * @param  message
      *   the detail message.
      */
-    public OvalRepositoryException(
+    public OvalInterpreterException(
                     final String message
                     )
     {
@@ -60,12 +60,12 @@ public class OvalRepositoryException
 
 
     /**
-     * Constructs an OvalRepositoryException with the specified cause.
+     * Constructs an OvalInterpreterException with the specified cause.
      *
      * @param   cause
      *  the cause.
      */
-    public OvalRepositoryException(
+    public OvalInterpreterException(
                     final Throwable cause
                     )
     {
@@ -75,7 +75,7 @@ public class OvalRepositoryException
 
 
     /**
-     * Constructs an OvalRepositoryException with the specified
+     * Constructs an OvalInterpreterException with the specified
      * detail message and cause.
      *
      * @param   message
@@ -83,7 +83,7 @@ public class OvalRepositoryException
      * @param   cause
      *  the cause.
      */
-    public OvalRepositoryException(
+    public OvalInterpreterException(
                     final String message,
                     final Throwable cause
                     )
@@ -92,5 +92,5 @@ public class OvalRepositoryException
     }
 
 }
-// OvalRepositoryException
+// OvalInterpreterException
 
