@@ -137,7 +137,7 @@ public class OvalInterpreter
     /**
      * Constructor.
      */
-    protected OvalInterpreter()
+    public OvalInterpreter()
     {
     }
 
@@ -172,6 +172,8 @@ public class OvalInterpreter
             builder.directory( new File( workingDir ) );
         }
 
+        builder.redirectErrorStream( true );
+
         return builder;
     }
 
@@ -196,7 +198,7 @@ public class OvalInterpreter
 
 
 
-    // properties
+    // properties //
 
 
     private final Map<Property, String>  _config = new HashMap<Property, String>();

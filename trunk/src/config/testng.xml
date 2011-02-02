@@ -28,7 +28,15 @@
     </test>
 
 
-    <test name="oval.core.service.OvalDefinitionsGenerator" enabled="true">
+    <test name="oval.core.process" enabled="true">
+
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.process.OvalInterpreterTest"/>
+        </classes>
+    </test>
+
+
+    <test name="oval.core.service.OvalDefinitionsGenerator" enabled="false">
         <groups>
             <run>
                 <include name="OvalDefinitionsGenerator.filter"/>
