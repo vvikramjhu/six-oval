@@ -21,8 +21,9 @@
 package jp.go.aist.six.oval.process;
 
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
+import jp.go.aist.six.oval.core.service.OvalContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,28 +56,45 @@ public class OvalInterpreter
 
 
 
-    /**
-     * A factory method.
-     */
-    public static OvalInterpreter newInstance(
-                    final List<String> args
-                    )
+    private static enum Property
     {
-        return (new OvalInterpreter( args ));
+        OVAL_DEFINITIONS( "-o", "definitions.xml" ),
+        OVAL_RESULTS( "-r", "results.xml" ),
+        ;
+
+
+        final String  option;
+        final String  defaultValue;
+
+
+        /**
+         * Constructor.
+         */
+        Property(
+                        final String option
+                        )
+        {
+            this( option, null );
+        }
+
+
+        Property(
+                        final String option,
+                        final String defaultValue
+                        )
+        {
+            this.option = option;
+            this.defaultValue = defaultValue;
+        }
     }
 
 
-    public static OvalInterpreter newInstance(
-                    final String[] args
-                    )
-    {
-        return newInstance( Arrays.asList( args ) );
-    }
+
+    // Definition Evaluation Options:
+    public static final String  OPT_INPUT_DEFINITIONS = "-o";
+    public static final String  OPT_INPUT_DEFINITIONS_URL = "-ourl";
 
 
-
-//    // Definition Evaluation Options:
-//    public static final String  OPT_INPUT_DEFINITIONS = "-o";
 //
 //    // Input Validation Options:
 //    public static final String  OPT_RESOURCE_DIR = "-a";
@@ -96,6 +114,19 @@ public class OvalInterpreter
     private ProcessBuilder  _builder;
 
 
+    // properties
+    private String  _workingDir;
+    private String  _tmpDir;
+    private String  _ovalScFilepath;
+    private String  _ovalDefsUrl;
+    private String  _ovalResultsUrl;
+
+
+    private String  _executable;
+    private String  _ovalDefinitions;
+    private String  _ovalResults;
+
+
 
     /**
      * Constructor.
@@ -105,38 +136,87 @@ public class OvalInterpreter
     }
 
 
-    protected OvalInterpreter(
-                    final List<String> command
+
+
+    /**
+     */
+    private void _configure(
+                    final List<String> args
                     )
+    throws OvalInterpreterException
     {
-        _LOG_.debug( "OVAL Interpreter command: " + String.valueOf( command ) );
-        _builder = new ProcessBuilder( command );
+        if (args == null  ||  args.size() < 2) {
+            throw new IllegalArgumentException(
+                            "invalid OVAL Interpreter args: "
+                            + String.valueOf( args ) );
+        }
+
+        final String[]  argArray = args.toArray( new String[0] );
+
+        OvalContext  context = OvalContext.INSTANCE;
+
+        _tmpDir = _getProperty( context, "java.io.tmpdir", null );
+        _LOG_.debug( "tmp dir=" + _tmpDir );
+
+        _workingDir = _getProperty( context, "six.oval.interpreter.dir", _tmpDir );
+
+        _executable = _getProperty( context, "six.oval.interpreter.executable", "ovaldi" );
     }
 
 
-//    /**
-//     */
-//    private Map<String, String> _buildOptions(
-//                    final String[] args
-//                    )
-//    {
-//        Map<String, String>  map = new HashMap<String, String>();
-//
-//        for (int  i = 0; i < args.length; i++) {
-//            if (args[i].startsWith( "-" )) {
-//
-//            }
-//        }
-//
-//        return map;
-//    }
+
+    private String _getProperty(
+                    final OvalContext context,
+                    final String name,
+                    final String defaultValue
+                    )
+    {
+        String  value = context.getProperty( name );
+        return (value == null ? defaultValue : value);
+    }
+
+
+
+
+
+    /**
+     */
+    private ProcessBuilder _createProcessBuilder(
+                    final List<String> args
+                    )
+    {
+        OvalContext  context = OvalContext.INSTANCE;
+
+        //TODO: build command line
+        List<String>  command = new ArrayList<String>();
+
+        command.add( (_executable == null ? "ovaldi" : _executable) );
+
+        command.add( "-m" );
+
+        _LOG_.debug( "OVAL Interpreter args: " + String.valueOf( args ) );
+
+
+        ProcessBuilder  builder = new ProcessBuilder( command );
+        //TODO: configure builder
+
+        _tmpDir = _getProperty( context, "java.io.tmpdir", null );
+        _LOG_.debug( "tmp dir=" + _tmpDir );
+
+        _workingDir = _getProperty( context, "six.oval.interpreter.dir", _tmpDir );
+
+        _executable = _getProperty( context, "six.oval.interpreter.executable", "ovaldi" );
+        builder.directory();
+
+        return builder;
+    }
 
 
 
     /**
      * Starts a new OVAL interpreter process.
      */
-    public Process start()
+    public Process execute()
     throws OvalInterpreterException
     {
         Process  proc = null;
@@ -150,13 +230,70 @@ public class OvalInterpreter
     }
 
 
-//    /**
-//     * Returns the status of this processor.
-//     *
-//     * @return
-//     *  the status.
-//     */
-//    public OvalProcessStatus getStatus();
+
+    // properties
+
+
+//    private final Map<Property, String>  _properties = new HashMap<Property, String>();
+//
+//    private String _getProperty(
+//                    final Property property
+//                    )
+//    {
+//        String  value = _properties.get( property );
+//        return (value == null ? property.defaultValue : value);
+//    }
+
+
+
+    /**
+     */
+    public void setExecutable(
+                    final String filepath
+                    )
+    {
+        _executable = filepath;
+    }
+
+
+    public String getExecutable()
+    {
+        return _executable;
+    }
+
+
+
+    /**
+     */
+    public void setOvalDefinitions(
+                    final String filepath
+                    )
+    {
+        _ovalDefinitions = filepath;
+    }
+
+
+    public String getOvalDefinitions()
+    {
+        return _ovalDefinitions;
+    }
+
+
+
+    /**
+     */
+    public void setOvalResults(
+                    final String filepath
+                    )
+    {
+        _ovalResults = filepath;
+    }
+
+
+    public String getOvalResults()
+    {
+        return _ovalResults;
+    }
 
 }
 // OvalInterpreter
