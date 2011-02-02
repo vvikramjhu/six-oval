@@ -20,13 +20,13 @@
 
 package jp.go.aist.six.oval.core.rest;
 
+import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.service.OvalException;
 import jp.go.aist.six.oval.service.OvalRepository;
 import jp.go.aist.six.oval.service.OvalRepositoryException;
 import jp.go.aist.six.oval.service.ViewLevel;

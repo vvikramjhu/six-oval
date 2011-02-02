@@ -1,5 +1,6 @@
 package jp.go.aist.six.test.oval.core;
 
+import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.OvalElement;
 import jp.go.aist.six.oval.model.OvalEntity;
@@ -55,7 +56,6 @@ import jp.go.aist.six.oval.model.windows.MetabaseState;
 import jp.go.aist.six.oval.model.windows.RegistryItem;
 import jp.go.aist.six.oval.model.windows.RegistryObject;
 import jp.go.aist.six.oval.model.windows.RegistryState;
-import jp.go.aist.six.oval.service.OvalException;
 import jp.go.aist.six.util.persist.AssociationEntry;
 import org.testng.Assert;
 import org.testng.Reporter;

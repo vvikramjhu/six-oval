@@ -20,9 +20,9 @@
 
 package jp.go.aist.six.oval.process;
 
-import java.util.HashMap;
+import java.io.IOException;
 import java.util.List;
-import java.util.Map;
+import jp.go.aist.six.oval.OvalException;
 
 
 
@@ -33,15 +33,27 @@ import java.util.Map;
  */
 public class OvalInterpreter
 {
+    //TODO:
+    //
+    // Options:
+    // -o filename  = path to the oval-definitions xml file.
+    //                DEFAULT="definitions.xml"
+    // -r filename  = save oval-results to the specified XML file.
+    //                DEFAULT="oval-results.xml"
+    // -a dir name  = path to the directory that contains the OVAL schema and other xml resources.
+    //                On Windows platforms, DEFAULT="xml".
+    //                On *nix platforms, DEFAULT="/usr/share/ovaldi".
+
+
 
     /**
-     *
+     * A factory method.
      */
     public static OvalInterpreter newInstance(
                     final List<String> args
                     )
     {
-        return newInstance( args.toArray( new String[0] ) );
+        return (new OvalInterpreter( args ));
     }
 
 
@@ -49,11 +61,30 @@ public class OvalInterpreter
                     final String[] args
                     )
     {
-        OvalInterpreter  interpreter = new OvalInterpreter();
-
-
-        return interpreter;
+        return (new OvalInterpreter());
     }
+
+
+
+//    // Definition Evaluation Options:
+//    public static final String  OPT_INPUT_DEFINITIONS = "-o";
+//
+//    // Input Validation Options:
+//    public static final String  OPT_RESOURCE_DIR = "-a";
+//    public static final String  OPT_SKIP_INPUT_VERIFICATION = "-m";
+//
+//    //Data Collection Options:
+//    public static final String  OPT_INPUT_SYSTEM_CHARACTERISTICS = "-i";
+//
+//    // Result Output Options:
+//    public static final String  OPT_OUTPUT_SYSTEM_CHARACTERISTICS = "-d";
+//    public static final String  OPT_OUTPUT_RESULTS = "-r";
+//    public static final String  OPT_SKIP_OUTPUT_XSL = "-s";
+//    public static final String  OPT_OUTPUT_RESULTS_HTML = "-x";
+
+
+
+    private ProcessBuilder  _builder;
 
 
 
@@ -65,31 +96,53 @@ public class OvalInterpreter
     }
 
 
-    /**
-     */
-    private Map<String, String> _buildOptions(
-                    final String[] args
+    protected OvalInterpreter(
+                    final List<String> command
                     )
     {
-        Map<String, String>  map = new HashMap<String, String>();
+        _builder = new ProcessBuilder( command );
+    }
 
-        for (int  i = 0; i < args.length; i++) {
-            if (args[i].startsWith( "-" )) {
 
-            }
-        }
-
-        return map;
+    protected OvalInterpreter(
+                    final String[] command
+                    )
+    {
+        _builder = new ProcessBuilder( command );
     }
 
 
 
+//    /**
+//     */
+//    private Map<String, String> _buildOptions(
+//                    final String[] args
+//                    )
+//    {
+//        Map<String, String>  map = new HashMap<String, String>();
+//
+//        for (int  i = 0; i < args.length; i++) {
+//            if (args[i].startsWith( "-" )) {
+//
+//            }
+//        }
+//
+//        return map;
+//    }
+
+
+
     /**
-     * Executes this processor.
+     * Starts a new OVAL interpreter process.
      */
     public Process start()
     {
         Process  proc = null;
+        try {
+            proc = _builder.start();
+        } catch (IOException ex) {
+            throw new OvalException( ex );
+        }
 
         return proc;
     }

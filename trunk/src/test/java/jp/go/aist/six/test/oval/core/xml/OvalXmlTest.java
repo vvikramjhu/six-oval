@@ -1,5 +1,6 @@
 package jp.go.aist.six.test.oval.core.xml;
 
+import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
@@ -10,7 +11,6 @@ import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
-import jp.go.aist.six.oval.service.OvalException;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.test.oval.core.DefinitionsSample;
 import jp.go.aist.six.util.search.SearchResult;

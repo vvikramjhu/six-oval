@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.core.service;
 
+import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.common.Generator;
 import jp.go.aist.six.oval.model.definitions.Component;
@@ -43,7 +44,6 @@ import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.definitions.Tests;
 import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.definitions.Variables;
-import jp.go.aist.six.oval.service.OvalException;
 import jp.go.aist.six.util.IsoDate;
 import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.search.Binding;

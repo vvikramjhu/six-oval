@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.service;
+package jp.go.aist.six.oval;
 
 import jp.go.aist.six.util.NestedRuntimeException;
 

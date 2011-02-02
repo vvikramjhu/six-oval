@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.service;
 
+import jp.go.aist.six.oval.OvalException;
+
 
 
 /**
