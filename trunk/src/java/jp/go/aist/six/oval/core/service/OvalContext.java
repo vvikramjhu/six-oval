@@ -20,12 +20,12 @@
 
 package jp.go.aist.six.oval.core.service;
 
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 import jp.go.aist.six.oval.core.store.OvalDataStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
 
 
 
@@ -116,7 +116,12 @@ public class OvalContext
         }
 
         if (_resourceBundle != null) {
-            value = _resourceBundle.getString( key );
+            try {
+                value = _resourceBundle.getString( key );
+            } catch (MissingResourceException ex) {
+                // if no such object is found.
+                value = null;
+            }
         }
 
         return value;

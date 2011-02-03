@@ -57,7 +57,8 @@ public class OvalInterpreter
         EXECUTABLE(       "six.oval.interpreter.executable", "ovaldi",          null ),
         WORKING_DIR(      "six.oval.interpreter.dir",        null,              null ),
         OVAL_DEFINITIONS( null,                              "definitions.xml", "-o" ),
-        OVAL_RESULTS(     null,                              "results.xml",     "-r" )
+        OVAL_RESULTS(     null,                              "results.xml",     "-r" ),
+        OVAL_XML(         "six.oval.interpreter.xml",        null,              "-a" )
         ;
 
 
@@ -153,6 +154,13 @@ public class OvalInterpreter
         command.add( getExecutable() );
         command.add( "-m" );
 
+        String  xmlDir = getOvalXmlDir();
+        if (xmlDir != null) {
+            command.add( Property.OVAL_XML.commandOption );
+            command.add( xmlDir );
+        }
+
+        _LOG_.debug( "command: " + String.valueOf( command ) );
         return command;
     }
 
@@ -164,13 +172,13 @@ public class OvalInterpreter
     private ProcessBuilder _createProcessBuilder()
     {
         List<String>  command = _createCommand();
-        _LOG_.debug( "OVAL Interpreter command: " + String.valueOf( command ) );
         ProcessBuilder  builder = new ProcessBuilder( command );
 
         String  workingDir = getWorkingDir();
         if (workingDir != null) {
             builder.directory( new File( workingDir ) );
         }
+        _LOG_.debug( "working dir=" + builder.directory() );
 
         builder.redirectErrorStream( true );
 
@@ -289,6 +297,23 @@ public class OvalInterpreter
     public String getOvalResults()
     {
         return _getConfigValue( Property.OVAL_RESULTS );
+    }
+
+
+
+    /**
+     */
+    public void setOvalXmlDir(
+                    final String dirpath
+                    )
+    {
+        _setConfigValue( Property.OVAL_XML, dirpath );
+    }
+
+
+    public String getOvalXmlDir()
+    {
+        return _getConfigValue( Property.OVAL_XML );
     }
 
 }
