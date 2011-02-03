@@ -58,7 +58,9 @@ public class OvalInterpreter
         WORKING_DIR(      "six.oval.interpreter.dir",        null,              null ),
         OVAL_DEFINITIONS( null,                              "definitions.xml", "-o" ),
         OVAL_RESULTS(     null,                              "results.xml",     "-r" ),
-        OVAL_XML(         "six.oval.interpreter.xml",        null,              "-a" )
+        NO_VERIFY(        null,                              null,              "-m" ),
+        OVAL_XML(         "six.oval.interpreter.xml",        null,              "-a" ),
+        LOG_LEVEL(        "six.oval.interpreter.log",        "2",               "-l" )
         ;
 
 
@@ -97,11 +99,6 @@ public class OvalInterpreter
 
 
 
-    // Definition Evaluation Options:
-    public static final String  OPT_INPUT_DEFINITIONS = "-o";
-    public static final String  OPT_INPUT_DEFINITIONS_URL = "-ourl";
-
-
 //
 //    // Input Validation Options:
 //    public static final String  OPT_RESOURCE_DIR = "-a";
@@ -118,30 +115,12 @@ public class OvalInterpreter
 
 
 
-    private ProcessBuilder  _builder;
-
-
-    // properties
-    private String  _tmpDir;
-    private String  _ovalScFilepath;
-    private String  _ovalDefsUrl;
-    private String  _ovalResultsUrl;
-
-
-//    private String  _executable;
-//    private String  _ovalDefinitions;
-//    private String  _ovalResults;
-//    private String  _workingDir;
-
-
-
     /**
      * Constructor.
      */
     public OvalInterpreter()
     {
     }
-
 
 
 
@@ -152,7 +131,13 @@ public class OvalInterpreter
         List<String>  command = new ArrayList<String>();
 
         command.add( getExecutable() );
-        command.add( "-m" );
+        command.add( Property.NO_VERIFY.commandOption );
+
+        String  logLevel = _getConfigValue( Property.LOG_LEVEL );
+        if (logLevel != null) {
+            command.add( Property.LOG_LEVEL.commandOption );
+            command.add( logLevel );
+        }
 
         String  xmlDir = getOvalXmlDir();
         if (xmlDir != null) {
@@ -233,13 +218,14 @@ public class OvalInterpreter
     }
 
 
+
     /**
      */
     public void setWorkingDir(
-                    final String dir
+                    final String dirpath
                     )
     {
-        _setConfigValue( Property.WORKING_DIR, dir );
+        _setConfigValue( Property.WORKING_DIR, dirpath );
     }
 
 
