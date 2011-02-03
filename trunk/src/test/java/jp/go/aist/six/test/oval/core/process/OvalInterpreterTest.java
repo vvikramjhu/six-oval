@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.core.process;
 
-import jp.go.aist.six.oval.process.OvalInterpreter;
+import jp.go.aist.six.oval.core.process.OvalInterpreter;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import org.testng.Reporter;
 

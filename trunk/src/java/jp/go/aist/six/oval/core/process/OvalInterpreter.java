@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.process;
+package jp.go.aist.six.oval.core.process;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import jp.go.aist.six.oval.core.service.OvalContext;
+import jp.go.aist.six.oval.process.OvalInterpreterException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
