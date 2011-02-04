@@ -90,6 +90,19 @@ public class FileResponseExtractor
 
 
 
+    private File _getOutputFile()
+    {
+        String  filepath = getFilepath();
+        if (filepath != null) {
+            return (new File( filepath ));
+        }
+
+        File  tmpFile = File.createTempFile( "definitions", ".xml", new File( _getTmpDir() ) );
+
+    }
+
+
+
     /**
      */
     private void _io(

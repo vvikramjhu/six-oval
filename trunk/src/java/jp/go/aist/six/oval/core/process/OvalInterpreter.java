@@ -22,14 +22,25 @@ package jp.go.aist.six.oval.core.process;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import jp.go.aist.six.oval.core.rest.FileResponseExtractor;
 import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.process.OvalInterpreterException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.client.ClientHttpRequest;
+import org.springframework.web.client.RequestCallback;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
 
 
 
@@ -57,7 +68,9 @@ public class OvalInterpreter
     {
         EXECUTABLE(       "six.oval.interpreter.executable", "ovaldi",          null ),
         WORKING_DIR(      "six.oval.interpreter.dir",        null,              null ),
+        TMP_DIR(          "java.io.tmpdir",                  null,              null ),
         OVAL_DEFINITIONS( null,                              "definitions.xml", "-o" ),
+        OVAL_DEFINITIONS_URL( null,                          null,              null ),
         OVAL_RESULTS(     null,                              "results.xml",     "-r" ),
         NO_VERIFY(        null,                              null,              "-m" ),
         OVAL_XML(         "six.oval.interpreter.xml",        null,              "-a" ),
@@ -115,12 +128,53 @@ public class OvalInterpreter
 //    public static final String  OPT_OUTPUT_RESULTS_HTML = "-x";
 
 
+    private static final List<MediaType>  _ACCEPT_MEDIA_TYPES_ =
+        Arrays.asList( new MediaType[] { MediaType.APPLICATION_XML } );
+
+
 
     /**
      * Constructor.
      */
     public OvalInterpreter()
     {
+    }
+
+
+
+    /**
+     *
+     */
+    protected void _preProcess()
+    {
+        String  definitions = getOvalDefinitions();
+        if (definitions == null) {
+            return;
+        }
+
+        URL  url = null;
+        try {
+            url = new URL( definitions );
+                  //throws MalformedURLException
+        } catch (MalformedURLException ex) {
+            url = null;
+        }
+        if (url == null) {
+            return;
+        }
+
+        _setConfigValue( Property.OVAL_DEFINITIONS_URL, url.toString() );
+
+        // REST GET definitions.xml
+        File  file = null;
+        try {
+            File  tmpFile = File.createTempFile( "definitions", ".xml", new File( _getTmpDir() ) );
+            file = _restGetOvalDefinitions( url, tmpFile.getCanonicalPath() );
+        } catch (IOException ex) {
+            throw new OvalInterpreterException( ex );
+        }
+
+        setOvalDefinitions( file.getAbsolutePath() );
     }
 
 
@@ -149,7 +203,6 @@ public class OvalInterpreter
         _LOG_.debug( "command: " + String.valueOf( command ) );
         return command;
     }
-
 
 
 
@@ -192,6 +245,54 @@ public class OvalInterpreter
 
 
 
+    // REST ////////////////////////////////////////////////////////
+
+
+    protected RestTemplate _getRestTemplate()
+    {
+        return null;
+    }
+
+
+
+    /**
+     * REST: GET
+     */
+    protected File _restGetOvalDefinitions(
+                    final URL location,
+                    final String filepath
+                    )
+    throws OvalInterpreterException
+    {
+        URI  uri = null;
+        try {
+            uri = location.toURI();
+                      //throws URISyntaxException
+        } catch (Exception ex) {
+            throw new OvalInterpreterException( ex );
+        }
+
+        RestTemplate  rest = _getRestTemplate();
+        File  file = null;
+        try {
+            FileResponseExtractor  extractor =
+                new FileResponseExtractor( filepath );
+            AcceptHeaderRequestCallback  callback =
+                new AcceptHeaderRequestCallback( _ACCEPT_MEDIA_TYPES_ );
+            file = rest.execute(
+                            uri,
+                            HttpMethod.GET,
+                            callback,
+                            extractor
+                            );
+        } catch (RestClientException ex) {
+            _LOG_.error( "<<< REST GET error: " + ex );
+            throw new OvalInterpreterException( ex );
+        }
+
+        return file;
+    }
+
     // properties //
 
 
@@ -216,6 +317,16 @@ public class OvalInterpreter
                     )
     {
         _config.put( property, value );
+    }
+
+
+
+    /**
+     *
+     */
+    private String _getTmpDir()
+    {
+        return _getConfigValue( Property.TMP_DIR );
     }
 
 
@@ -302,6 +413,41 @@ public class OvalInterpreter
     {
         return _getConfigValue( Property.OVAL_XML );
     }
+
+
+
+    //
+    //
+    //
+
+
+    private static class AcceptHeaderRequestCallback
+    implements RequestCallback
+    {
+
+        private final List<MediaType>  _accept;
+
+
+
+        private AcceptHeaderRequestCallback(
+                        final List<MediaType> accept
+                        )
+        {
+            _accept = accept;
+        }
+
+
+
+        @Override
+        public void doWithRequest(
+                        final ClientHttpRequest request
+                        )
+        throws IOException
+        {
+            request.getHeaders().setAccept( _accept );
+        }
+    }
+
 
 }
 // OvalInterpreter
