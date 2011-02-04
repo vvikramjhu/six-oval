@@ -37,7 +37,8 @@ public class OvalInterpreterTest
 //                        }
 //                        ,
                         {
-                            "oval-platform.xml"
+                            "oval-platform.xml",
+                            "http://localhost:8080/oval/results"
                         }
 //                        ,
 //                        {
@@ -55,7 +56,8 @@ public class OvalInterpreterTest
                     alwaysRun=true
                     )
     public void testExecute(
-                    final String ovalDefinitions
+                    final String ovalDefinitions,
+                    final String ovalResults
                     )
     throws Exception
     {
@@ -63,6 +65,10 @@ public class OvalInterpreterTest
 
         if (ovalDefinitions != null) {
             interpreter.setOvalDefinitions( ovalDefinitions );
+        }
+
+        if (ovalResults != null) {
+            interpreter.setOvalResults( ovalResults);
         }
 
         Reporter.log( "executing OvalInterpreter...", true );

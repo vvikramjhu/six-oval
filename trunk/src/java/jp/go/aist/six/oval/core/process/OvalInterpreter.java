@@ -20,8 +20,10 @@
 
 package jp.go.aist.six.oval.core.process;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
@@ -72,6 +74,7 @@ public class OvalInterpreter
         OVAL_DEFINITIONS( null,                              null,     "-o" ),
         REAL_OVAL_DEFINITIONS( null,                         null,     null ),
         OVAL_RESULTS(     null,                              null,     "-r" ),
+        TMP_OVAL_RESULTS( null,                              null,     null ),
         NO_VERIFY(        null,                              null,     "-m" ),
         OVAL_XML(         "six.oval.interpreter.xml",        null,     "-a" ),
         LOG_LEVEL(        "six.oval.interpreter.log",        null,     "-l" )
@@ -143,37 +146,80 @@ public class OvalInterpreter
 
 
     /**
-     *
      */
-    protected void _preProcess()
+    private URL _toUrl(
+                    final String value
+                    )
     {
-        String  definitions = getOvalDefinitions();
-        if (definitions == null) {
-            return;
+        if (value == null) {
+            return null;
         }
 
         URL  url = null;
         try {
-            url = new URL( definitions );
+            url = new URL( value );
                   //throws MalformedURLException
         } catch (MalformedURLException ex) {
             // in case of a local file
             url = null;
         }
 
-        if (url == null) {
-            return;
-        }
+        return (url == null ? null : url);
+    }
+
+
+
+    /**
+     *
+     */
+    protected void _preProcess()
+    {
+//        String  definitions = getOvalDefinitions();
+//        if (definitions == null) {
+//            return;
+//        }
+//
+//        URL  url = null;
+//        try {
+//            url = new URL( definitions );
+//                  //throws MalformedURLException
+//        } catch (MalformedURLException ex) {
+//            // in case of a local file
+//            url = null;
+//        }
+//
 
 
         // REST GET definitions.xml
+        URL  url = _toUrl( getOvalDefinitions() );
+        if (url != null) {
+            try {
+                File  tmpFile = File.createTempFile( "oval-definitions", ".xml", new File( _getTmpDir() ) );
+                _restGetOvalDefinitions( url, tmpFile );
+                _setRealOvalDefinitions( tmpFile.getAbsolutePath() );
+            } catch (IOException ex) {
+                throw new OvalInterpreterException( ex );
+            }
+        }
+
+        // tmp results.xml
+        url = _toUrl( getOvalResults() );
         try {
-            File  tmpFile = File.createTempFile( "definitions", ".xml", new File( _getTmpDir() ) );
-            _restGetOvalDefinitions( url, tmpFile );
-            _setRealOvalDefinitions( tmpFile.getAbsolutePath() );
+            File  tmpFile = File.createTempFile( "oval-results", ".xml", new File( _getTmpDir() ) );
+            _setTmpOvalResults( tmpFile.getAbsolutePath() );
         } catch (IOException ex) {
             throw new OvalInterpreterException( ex );
         }
+    }
+
+
+
+    /**
+     *
+     */
+    private void _postProcess()
+    {
+
     }
 
 
@@ -206,6 +252,12 @@ public class OvalInterpreter
         if (ovalDefinitions != null) {
             command.add( Property.OVAL_DEFINITIONS.commandOption );
             command.add( ovalDefinitions );
+        }
+
+        String  ovalResults = _getTmpOvalResults();
+        if (ovalResults != null) {
+            command.add( Property.OVAL_RESULTS.commandOption );
+            command.add( ovalResults );
         }
 
         _LOG_.debug( "command: " + String.valueOf( command ) );
@@ -248,16 +300,61 @@ public class OvalInterpreter
         try {
             proc = builder.start();
                            //throws IOException
-//            exitValue = proc.waitFor();
-                             //throws InterruptedException
         } catch (Exception ex) {
             throw new OvalInterpreterException( ex );
         }
 
-        //TODO: read the log output from the process!!!
-
-//        exitValue = proc.exitValue();
+        exitValue = _handleProcess( proc );
         _LOG_.debug( "exit value=" + exitValue );
+
+        return exitValue;
+    }
+
+
+
+    private int _handleProcess(
+                    final Process process
+                    )
+    throws OvalInterpreterException
+    {
+        int  exitValue = 0;
+        StringBuilder  log = new StringBuilder();
+        String  lineSeparator = System.getProperty( "line.separator" );
+        BufferedReader  reader = new BufferedReader(
+                        new InputStreamReader( process.getInputStream() ) );
+        try {
+            String  line = null;
+            while (true) {
+                if (line != null) {
+                    log.append( lineSeparator );
+                }
+                line = reader.readLine();
+                              //throws IOException
+                if (line == null) {
+                    break;
+                }
+                log.append( line );
+            }
+
+            exitValue = process.waitFor();
+                                //throws InterruptedException
+
+        } catch (Exception ex) {
+           throw new OvalInterpreterException( ex );
+        } finally {
+            try {
+                reader.close();
+                       //throws IOException
+            } catch (Exception ex) {
+                // ignorable.
+                if (_LOG_.isWarnEnabled()) {
+                    _LOG_.warn( ex.getMessage() );
+                }
+            }
+        }
+
+        _LOG_.debug( "==== ovaldi log ====\n" + log.toString() );
+
         return exitValue;
     }
 
@@ -368,6 +465,24 @@ public class OvalInterpreter
     {
         return _getConfigValue( Property.REAL_OVAL_DEFINITIONS );
     }
+
+
+
+    /**
+     *
+     */
+    private void _setTmpOvalResults(
+                    final String value
+                       )
+    {
+        _setConfigValue( Property.TMP_OVAL_RESULTS, value );
+    }
+
+
+   private String _getTmpOvalResults()
+   {
+       return _getConfigValue( Property.TMP_OVAL_RESULTS );
+   }
 
 
 
