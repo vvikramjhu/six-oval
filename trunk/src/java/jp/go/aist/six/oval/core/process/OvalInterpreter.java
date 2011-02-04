@@ -66,20 +66,20 @@ public class OvalInterpreter
 
     private static enum Property
     {
-        EXECUTABLE(       "six.oval.interpreter.executable", "ovaldi",          null ),
-        WORKING_DIR(      "six.oval.interpreter.dir",        null,              null ),
-        TMP_DIR(          "java.io.tmpdir",                  null,              null ),
-        OVAL_DEFINITIONS( null,                              "definitions.xml", "-o" ),
-        OVAL_DEFINITIONS_URL( null,                          null,              null ),
-        OVAL_RESULTS(     null,                              "results.xml",     "-r" ),
-        NO_VERIFY(        null,                              null,              "-m" ),
-        OVAL_XML(         "six.oval.interpreter.xml",        null,              "-a" ),
-        LOG_LEVEL(        "six.oval.interpreter.log",        "2",               "-l" )
+        EXECUTABLE(       "six.oval.interpreter.executable", "ovaldi", null ),
+        WORKING_DIR(      "six.oval.interpreter.dir",        null,     null ),
+        TMP_DIR(          "java.io.tmpdir",                  null,     null ),
+        OVAL_DEFINITIONS( null,                              null,     "-o" ),
+        REAL_OVAL_DEFINITIONS( null,                         null,     null ),
+        OVAL_RESULTS(     null,                              null,     "-r" ),
+        NO_VERIFY(        null,                              null,     "-m" ),
+        OVAL_XML(         "six.oval.interpreter.xml",        null,     "-a" ),
+        LOG_LEVEL(        "six.oval.interpreter.log",        null,     "-l" )
         ;
 
 
         final String  property;
-        final String  defaultValue;
+        final String  defaultValue;  //NOT ovaldi default, but SIX default
         final String  commandOption;
 
 
@@ -157,24 +157,23 @@ public class OvalInterpreter
             url = new URL( definitions );
                   //throws MalformedURLException
         } catch (MalformedURLException ex) {
+            // in case of a local file
             url = null;
         }
+
         if (url == null) {
             return;
         }
 
-        _setConfigValue( Property.OVAL_DEFINITIONS_URL, url.toString() );
 
         // REST GET definitions.xml
-        File  file = null;
         try {
             File  tmpFile = File.createTempFile( "definitions", ".xml", new File( _getTmpDir() ) );
-            file = _restGetOvalDefinitions( url, tmpFile.getCanonicalPath() );
+            _restGetOvalDefinitions( url, tmpFile );
+            _setRealOvalDefinitions( tmpFile.getAbsolutePath() );
         } catch (IOException ex) {
             throw new OvalInterpreterException( ex );
         }
-
-        setOvalDefinitions( file.getAbsolutePath() );
     }
 
 
@@ -188,7 +187,7 @@ public class OvalInterpreter
         command.add( getExecutable() );
         command.add( Property.NO_VERIFY.commandOption );
 
-        String  logLevel = _getConfigValue( Property.LOG_LEVEL );
+        String  logLevel = _getLogLevel();
         if (logLevel != null) {
             command.add( Property.LOG_LEVEL.commandOption );
             command.add( logLevel );
@@ -198,6 +197,15 @@ public class OvalInterpreter
         if (xmlDir != null) {
             command.add( Property.OVAL_XML.commandOption );
             command.add( xmlDir );
+        }
+
+        String  ovalDefinitions = _getRealOvalDefinitions();
+        if (ovalDefinitions == null) {
+            ovalDefinitions = getOvalDefinitions();
+        }
+        if (ovalDefinitions != null) {
+            command.add( Property.OVAL_DEFINITIONS.commandOption );
+            command.add( ovalDefinitions );
         }
 
         _LOG_.debug( "command: " + String.valueOf( command ) );
@@ -229,18 +237,28 @@ public class OvalInterpreter
     /**
      * Starts a new OVAL interpreter process.
      */
-    public Process execute()
+    public int execute()
     throws OvalInterpreterException
     {
+        _preProcess();
+
         ProcessBuilder  builder = _createProcessBuilder();
         Process  proc = null;
+        int  exitValue = 0;
         try {
             proc = builder.start();
-        } catch (IOException ex) {
+                           //throws IOException
+//            exitValue = proc.waitFor();
+                             //throws InterruptedException
+        } catch (Exception ex) {
             throw new OvalInterpreterException( ex );
         }
 
-        return proc;
+        //TODO: read the log output from the process!!!
+
+//        exitValue = proc.exitValue();
+        _LOG_.debug( "exit value=" + exitValue );
+        return exitValue;
     }
 
 
@@ -250,7 +268,7 @@ public class OvalInterpreter
 
     protected RestTemplate _getRestTemplate()
     {
-        return null;
+        return (new RestTemplate());
     }
 
 
@@ -258,9 +276,9 @@ public class OvalInterpreter
     /**
      * REST: GET
      */
-    protected File _restGetOvalDefinitions(
+    protected void _restGetOvalDefinitions(
                     final URL location,
-                    final String filepath
+                    final File file
                     )
     throws OvalInterpreterException
     {
@@ -273,25 +291,23 @@ public class OvalInterpreter
         }
 
         RestTemplate  rest = _getRestTemplate();
-        File  file = null;
         try {
-            FileResponseExtractor  extractor =
-                new FileResponseExtractor( filepath );
+            FileResponseExtractor  extractor = new FileResponseExtractor( file );
             AcceptHeaderRequestCallback  callback =
                 new AcceptHeaderRequestCallback( _ACCEPT_MEDIA_TYPES_ );
-            file = rest.execute(
+            rest.execute(
                             uri,
                             HttpMethod.GET,
                             callback,
                             extractor
                             );
         } catch (RestClientException ex) {
-            _LOG_.error( "<<< REST GET error: " + ex );
+            _LOG_.error( "REST GET error: " + ex );
             throw new OvalInterpreterException( ex );
         }
-
-        return file;
     }
+
+
 
     // properties //
 
@@ -322,11 +338,35 @@ public class OvalInterpreter
 
 
     /**
-     *
      */
     private String _getTmpDir()
     {
         return _getConfigValue( Property.TMP_DIR );
+    }
+
+
+    /**
+     */
+    private String _getLogLevel()
+    {
+        return _getConfigValue( Property.LOG_LEVEL );
+    }
+
+
+    /**
+     *
+     */
+    private void _setRealOvalDefinitions(
+                    final String value
+                    )
+    {
+        _setConfigValue( Property.REAL_OVAL_DEFINITIONS, value );
+    }
+
+
+    private String _getRealOvalDefinitions()
+    {
+        return _getConfigValue( Property.REAL_OVAL_DEFINITIONS );
     }
 
 

@@ -35,7 +35,6 @@ import org.springframework.web.client.ResponseExtractor;
 
 
 
-
 /**
  *
  * @author  Akihito Nakamura, AIST
@@ -48,57 +47,31 @@ public class FileResponseExtractor
     /**
      * Logger.
      */
-    private static final Logger  _LOG_ = LoggerFactory.getLogger( FileResponseExtractor.class );
+    private static final Logger  _LOG_ =
+        LoggerFactory.getLogger( FileResponseExtractor.class );
 
 
 
-    private String  _filepath;
+    /**
+     * The file to which the HTTP response body is written.
+     */
+    private File  _file;
 
 
 
     /**
      * Constructor.
      */
-    public FileResponseExtractor()
+    protected FileResponseExtractor()
     {
     }
 
 
     public FileResponseExtractor(
-                    final String filepath
+                    final File file
                     )
     {
-        setFilepath( filepath );
-    }
-
-
-
-    /**
-     */
-    public void setFilepath(
-                    final String filepath
-                    )
-    {
-        _filepath = filepath;
-    }
-
-
-    public String getFilepath()
-    {
-        return _filepath;
-    }
-
-
-
-    private File _getOutputFile()
-    {
-        String  filepath = getFilepath();
-        if (filepath != null) {
-            return (new File( filepath ));
-        }
-
-        File  tmpFile = File.createTempFile( "definitions", ".xml", new File( _getTmpDir() ) );
-
+        _file = file;
     }
 
 
@@ -148,14 +121,13 @@ public class FileResponseExtractor
                     )
     throws IOException
     {
-        File  file = new File( getFilepath() );
-        _LOG_.debug( "writing response: file=" + file );
+        _LOG_.debug( "writing response: file=" + _file );
 
         Reader  reader = new BufferedReader( new InputStreamReader( response.getBody() ) );
-        Writer  writer = new BufferedWriter( new FileWriter( file ) );
+        Writer  writer = new BufferedWriter( new FileWriter( _file ) );
         _io( reader, writer );
 
-        return file;
+        return _file;
     }
 
 }

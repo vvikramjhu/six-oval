@@ -3,6 +3,7 @@ package jp.go.aist.six.test.oval.core.process;
 import jp.go.aist.six.oval.core.process.OvalInterpreter;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import org.testng.Reporter;
+import org.testng.annotations.DataProvider;
 
 
 
@@ -23,14 +24,46 @@ public class OvalInterpreterTest
 
 
 
+    @DataProvider( name="oval.core.process.OvalInterpreter.ovalDefinitions" )
+    public Object[][] provideOvalDefinitions()
+    {
+        return new Object[][] {
+//                        {
+//                            null    //DEFAULT
+//                        }
+//                        ,
+//                        {
+//                            "definitions.xml"
+//                        }
+//                        ,
+                        {
+                            "oval-platform.xml"
+                        }
+//                        ,
+//                        {
+//                            "http://oval.mitre.org/rep-data/org.mitre.oval/p/platform/microsoft.windows.xp.xml"
+//                        }
+        };
+
+    }
+
+
+
     @org.testng.annotations.Test(
-                    groups={"oval.core.process"},
+                    groups={"oval.core.process.OvalInterpreter"},
+                    dataProvider="oval.core.process.OvalInterpreter.ovalDefinitions",
                     alwaysRun=true
                     )
-    public void testExecute()
+    public void testExecute(
+                    final String ovalDefinitions
+                    )
     throws Exception
     {
         OvalInterpreter  interpreter = new OvalInterpreter();
+
+        if (ovalDefinitions != null) {
+            interpreter.setOvalDefinitions( ovalDefinitions );
+        }
 
         Reporter.log( "executing OvalInterpreter...", true );
         interpreter.execute();
