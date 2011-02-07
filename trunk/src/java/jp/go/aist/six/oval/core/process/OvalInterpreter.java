@@ -204,11 +204,13 @@ public class OvalInterpreter
 
         // tmp results.xml
         url = _toUrl( getOvalResults() );
-        try {
-            File  tmpFile = File.createTempFile( "oval-results", ".xml", new File( _getTmpDir() ) );
-            _setTmpOvalResults( tmpFile.getAbsolutePath() );
-        } catch (IOException ex) {
-            throw new OvalInterpreterException( ex );
+        if (url != null) {
+            try {
+                File  tmpFile = File.createTempFile( "oval-results", ".xml", new File( _getTmpDir() ) );
+                _setTmpOvalResults( tmpFile.getAbsolutePath() );
+            } catch (IOException ex) {
+                throw new OvalInterpreterException( ex );
+            }
         }
     }
 
@@ -245,8 +247,10 @@ public class OvalInterpreter
             command.add( xmlDir );
         }
 
+        // -o URL
         String  ovalDefinitions = _getRealOvalDefinitions();
         if (ovalDefinitions == null) {
+            // -o local_file
             ovalDefinitions = getOvalDefinitions();
         }
         if (ovalDefinitions != null) {
@@ -254,7 +258,12 @@ public class OvalInterpreter
             command.add( ovalDefinitions );
         }
 
+        // -r URL
         String  ovalResults = _getTmpOvalResults();
+        if (ovalResults == null) {
+            // -r local_file
+            ovalResults = getOvalResults();
+        }
         if (ovalResults != null) {
             command.add( Property.OVAL_RESULTS.commandOption );
             command.add( ovalResults );

@@ -72,7 +72,7 @@ public class OvalInterpreterTest
         }
 
         if (ovalResults != null) {
-            interpreter.setOvalResults( ovalResults);
+            interpreter.setOvalResults( ovalResults );
         }
 
         Reporter.log( "executing OvalInterpreter...", true );
