@@ -379,6 +379,9 @@ public class OvalInterpreter
                     )
     throws OvalInterpreterException
     {
+        _LOG_.debug( "download OVAL Definitions: location=" + location
+                        + ", local tmp file=" + file );
+
         URI  uri = null;
         try {
             uri = location.toURI();

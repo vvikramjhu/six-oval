@@ -36,9 +36,13 @@ public class OvalInterpreterTest
 //                            "definitions.xml"
 //                        }
 //                        ,
+//                        {
+//                            "oval-platform.xml"
+//                        }
+//                        ,
                         {
-                            "oval-platform.xml",
-                            "http://localhost:8080/oval/results"
+                            "http://six3.hpcc.jp/oval-platform.xml",
+                            "oval-results.xml"
                         }
 //                        ,
 //                        {
