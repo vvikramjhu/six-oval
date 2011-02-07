@@ -22,8 +22,6 @@ package jp.go.aist.six.oval.core.rest;
 
 import java.io.File;
 import java.io.IOException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.client.ResponseExtractor;
 
@@ -38,11 +36,11 @@ public class XmlFileResponseExtractor
     implements ResponseExtractor<File>
 {
 
-    /**
-     * Logger.
-     */
-    private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( XmlFileResponseExtractor.class );
+//    /**
+//     * Logger.
+//     */
+//    private static final Logger  _LOG_ =
+//        LoggerFactory.getLogger( XmlFileResponseExtractor.class );
 
 
 

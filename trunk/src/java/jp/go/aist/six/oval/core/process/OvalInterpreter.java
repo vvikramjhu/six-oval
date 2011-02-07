@@ -54,18 +54,6 @@ import org.springframework.web.client.RestTemplate;
  */
 public class OvalInterpreter
 {
-    //TODO:
-    //
-    // Options:
-    // -o filename  = path to the oval-definitions xml file.
-    //                DEFAULT="definitions.xml"
-    // -r filename  = save oval-results to the specified XML file.
-    //                DEFAULT="oval-results.xml"
-    // -a dir name  = path to the directory that contains the OVAL schema and other xml resources.
-    //                On Windows platforms, DEFAULT="xml".
-    //                On *nix platforms, DEFAULT="/usr/share/ovaldi".
-
-
 
     private static enum Property
     {
@@ -113,7 +101,8 @@ public class OvalInterpreter
     /**
      * Logger.
      */
-    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalInterpreter.class );
+    private static final Logger  _LOG_ =
+        LoggerFactory.getLogger( OvalInterpreter.class );
 
 
 
@@ -176,23 +165,7 @@ public class OvalInterpreter
     protected void _preProcess()
     throws OvalInterpreterException
     {
-//        String  definitions = getOvalDefinitions();
-//        if (definitions == null) {
-//            return;
-//        }
-//
-//        URL  url = null;
-//        try {
-//            url = new URL( definitions );
-//                  //throws MalformedURLException
-//        } catch (MalformedURLException ex) {
-//            // in case of a local file
-//            url = null;
-//        }
-//
-
-
-        // REST GET definitions.xml
+        // GET definitions.xml
         URL  url = _toUrl( getOvalDefinitions() );
         if (url != null) {
             try {
@@ -400,7 +373,7 @@ public class OvalInterpreter
                     )
     throws OvalInterpreterException
     {
-        _LOG_.debug( "download OVAL Definitions: location=" + location
+        _LOG_.debug( "GET OVAL Definitions: location=" + location
                         + ", local tmp file=" + file );
 
         URI  uri = null;
@@ -432,7 +405,7 @@ public class OvalInterpreter
 
 
     /**
-     * REST: POST OvalResults
+     * REST: POST
      */
     protected void _restPostOvalResults(
                     final URL location,
@@ -440,7 +413,7 @@ public class OvalInterpreter
                     )
     throws OvalInterpreterException
     {
-        _LOG_.debug( "REST POST OVAL Results: location=" + location
+        _LOG_.debug( "POST OVAL Results: location=" + location
                         + ", file=" + file );
 
         URI  uri = null;
