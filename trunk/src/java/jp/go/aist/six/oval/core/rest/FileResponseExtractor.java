@@ -20,14 +20,8 @@
 
 package jp.go.aist.six.oval.core.rest;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.Writer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.client.ClientHttpResponse;
@@ -76,41 +70,6 @@ public class FileResponseExtractor
 
 
 
-    /**
-     */
-    private void _io(
-                    final Reader reader,
-                    final Writer writer
-                    )
-    throws IOException
-    {
-        char[]  buffer = new char[512];
-        try {
-            while (true) {
-                int  n = reader.read( buffer );
-                                //@throws IOException
-                if (n == -1) {
-                    break;
-                }
-                writer.write( buffer, 0, n );
-                       //@throws IOException
-            }
-        } finally {
-            try {
-                reader.close();
-            } catch (Exception ex) {
-                //ignorable
-            }
-            try {
-                writer.close();
-            } catch (Exception ex) {
-                //ignorable
-            }
-        }
-    }
-
-
-
     //**************************************************************
     //  ResponseExtractor<T>
     //**************************************************************
@@ -121,11 +80,7 @@ public class FileResponseExtractor
                     )
     throws IOException
     {
-        _LOG_.debug( "writing response: file=" + _file );
-
-        Reader  reader = new BufferedReader( new InputStreamReader( response.getBody() ) );
-        Writer  writer = new BufferedWriter( new FileWriter( _file ) );
-        _io( reader, writer );
+        XmlFile.write( response.getBody(), _file );
 
         return _file;
     }

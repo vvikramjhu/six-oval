@@ -20,18 +20,18 @@
 
 package jp.go.aist.six.oval.core.rest;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Writer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.client.ClientHttpResponse;
-import org.springframework.web.client.ResponseExtractor;
 
 
 
@@ -40,51 +40,85 @@ import org.springframework.web.client.ResponseExtractor;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class FileResponseExtractor
-    implements ResponseExtractor<File>
+public class XmlFile
 {
 
     /**
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( FileResponseExtractor.class );
-
-
-
-    /**
-     * The file to which the HTTP response body is written.
-     */
-    private File  _file;
+        LoggerFactory.getLogger( XmlFile.class );
 
 
 
     /**
      * Constructor.
      */
-    protected FileResponseExtractor()
+    public XmlFile()
     {
-    }
-
-
-    public FileResponseExtractor(
-                    final File file
-                    )
-    {
-        _file = file;
     }
 
 
 
     /**
+     * @return
      */
-    private void _io(
+    private static int _io(
+                    final InputStream instream,
+                    final OutputStream outstream
+                    )
+    throws IOException
+    {
+        BufferedInputStream  bin = new BufferedInputStream( instream );
+        BufferedOutputStream  bout = new BufferedOutputStream( outstream );
+
+        byte[]  buffer = new byte[512];
+        int  totalSize = 0;
+        try {
+            while (true) {
+                int  n = bin.read( buffer );
+                             //@throws IOException
+                if (n == -1) {
+                    break;
+                }
+                bout.write( buffer, 0, n );
+                     //@throws IOException
+                totalSize += n;
+            }
+        } finally {
+            try {
+                bout.flush();
+            } catch (Exception ex) {
+                //ignorable
+            }
+            try {
+                bout.close();
+            } catch (Exception ex) {
+                //ignorable
+            }
+            try {
+                bin.close();
+            } catch (Exception ex) {
+                //ignorable
+            }
+        }
+
+        return totalSize;
+    }
+
+
+
+    /**
+     * @return
+     */
+    private static int _io(
                     final Reader reader,
                     final Writer writer
                     )
     throws IOException
     {
         char[]  buffer = new char[512];
+        int  totalSize = 0;
         try {
             while (true) {
                 int  n = reader.read( buffer );
@@ -94,6 +128,7 @@ public class FileResponseExtractor
                 }
                 writer.write( buffer, 0, n );
                        //@throws IOException
+                totalSize += n;
             }
         } finally {
             try {
@@ -107,28 +142,53 @@ public class FileResponseExtractor
                 //ignorable
             }
         }
+
+        return totalSize;
     }
 
 
 
-    //**************************************************************
-    //  ResponseExtractor<T>
-    //**************************************************************
-
-    @Override
-    public File extractData(
-                    final ClientHttpResponse response
+    /**
+     */
+    public static int write(
+                    final InputStream instream,
+                    final File file
                     )
     throws IOException
     {
-        _LOG_.debug( "writing response: file=" + _file );
+        _LOG_.debug( "writing response: file=" + file );
 
-        Reader  reader = new BufferedReader( new InputStreamReader( response.getBody() ) );
-        Writer  writer = new BufferedWriter( new FileWriter( _file ) );
-        _io( reader, writer );
-
-        return _file;
+        return _io( instream, (new FileOutputStream( file )) );
     }
+//    {
+//        _LOG_.debug( "writing response: file=" + file );
+//
+//        Reader  reader = new BufferedReader( new InputStreamReader( instream ) );
+//        Writer  writer = new BufferedWriter( new FileWriter( file ) );
+//        _io( reader, writer );
+//    }
+
+
+
+    /**
+     */
+    public static int read(
+                    final File file,
+                    final OutputStream outstream
+                    )
+    throws IOException
+    {
+        _LOG_.debug( "reading request: file=" + file );
+
+        return _io( (new FileInputStream( file )), outstream );
+    }
+//    {
+//        _LOG_.debug( "writing response: file=" + file );
+//
+//        Reader  reader = new BufferedReader( new FileReader( file ) );
+//        Writer  writer = new BufferedWriter( new OutputStreamWriter( outstream ) );
+//        _io( reader, writer );
+//    }
 
 }
 // FileResponseExtractor

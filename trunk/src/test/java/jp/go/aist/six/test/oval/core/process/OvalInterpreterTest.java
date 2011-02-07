@@ -46,6 +46,11 @@ public class OvalInterpreterTest
                         }
 //                        ,
 //                        {
+//                            "http://six3.hpcc.jp/oval-platform.xml",
+//                            "http://localhost:8080/oval/rest/results"
+//                        }
+//                        ,
+//                        {
 //                            "http://oval.mitre.org/rep-data/org.mitre.oval/p/platform/microsoft.windows.xp.xml"
 //                        }
         };
