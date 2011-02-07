@@ -33,6 +33,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import jp.go.aist.six.oval.core.rest.FileResponseExtractor;
+import jp.go.aist.six.oval.core.rest.XmlFileRequestCallback;
 import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.process.OvalInterpreterException;
 import org.slf4j.Logger;
@@ -173,6 +174,7 @@ public class OvalInterpreter
      *
      */
     protected void _preProcess()
+    throws OvalInterpreterException
     {
 //        String  definitions = getOvalDefinitions();
 //        if (definitions == null) {
@@ -220,8 +222,15 @@ public class OvalInterpreter
      *
      */
     private void _postProcess()
+    throws OvalInterpreterException
     {
+        String  tmpOvalResults = _getTmpOvalResults();
+        if (tmpOvalResults == null) {
+            return;
+        }
 
+        URL  postUrl = _toUrl( getOvalResults() );
+        _restPostOvalResults( postUrl, (new File( tmpOvalResults )) );
     }
 
 
@@ -315,6 +324,9 @@ public class OvalInterpreter
 
         exitValue = _handleProcess( proc );
         _LOG_.debug( "exit value=" + exitValue );
+        if (exitValue == 0) {
+            _postProcess();
+        }
 
         return exitValue;
     }
@@ -412,6 +424,43 @@ public class OvalInterpreter
                             );
         } catch (RestClientException ex) {
             _LOG_.error( "REST GET error: " + ex );
+            throw new OvalInterpreterException( ex );
+        }
+    }
+
+
+
+    /**
+     * REST: POST OvalResults
+     */
+    protected void _restPostOvalResults(
+                    final URL location,
+                    final File file
+                    )
+    throws OvalInterpreterException
+    {
+        _LOG_.debug( "REST POST OVAL Results: location=" + location
+                        + ", file=" + file );
+
+        URI  uri = null;
+        try {
+            uri = location.toURI();
+                      //throws URISyntaxException
+        } catch (Exception ex) {
+            throw new OvalInterpreterException( ex );
+        }
+
+        RestTemplate  rest = _getRestTemplate();
+        try {
+            XmlFileRequestCallback  callback = new XmlFileRequestCallback( file );
+            rest.execute(
+                            uri,
+                            HttpMethod.POST,
+                            callback,
+                            null
+                            );
+        } catch (RestClientException ex) {
+            _LOG_.error( "REST POST error: " + ex );
             throw new OvalInterpreterException( ex );
         }
     }

@@ -24,8 +24,10 @@ import java.io.File;
 import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.client.ClientHttpResponse;
-import org.springframework.web.client.ResponseExtractor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.client.ClientHttpRequest;
+import org.springframework.web.client.RequestCallback;
 
 
 
@@ -34,20 +36,20 @@ import org.springframework.web.client.ResponseExtractor;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class FileResponseExtractor
-    implements ResponseExtractor<File>
+public class XmlFileRequestCallback
+    implements RequestCallback
 {
 
     /**
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( FileResponseExtractor.class );
+        LoggerFactory.getLogger( XmlFileRequestCallback.class );
 
 
 
     /**
-     * The file to which the HTTP response body is written.
+     * The file from which the HTTP request body is read.
      */
     private File  _file;
 
@@ -56,12 +58,12 @@ public class FileResponseExtractor
     /**
      * Constructor.
      */
-    protected FileResponseExtractor()
+    protected XmlFileRequestCallback()
     {
     }
 
 
-    public FileResponseExtractor(
+    public XmlFileRequestCallback(
                     final File file
                     )
     {
@@ -71,18 +73,20 @@ public class FileResponseExtractor
 
 
     //**************************************************************
-    //  ResponseExtractor<T>
+    //  RequestCallback
     //**************************************************************
 
     @Override
-    public File extractData(
-                    final ClientHttpResponse response
+    public void doWithRequest(
+                    final ClientHttpRequest request
                     )
     throws IOException
     {
-        XmlFile.write( response.getBody(), _file );
+        HttpHeaders  headers = request.getHeaders();
+        headers.setContentType( MediaType.APPLICATION_XML );
 
-        return _file;
+        long  size = XmlFile.read( _file, request.getBody() );
+        headers.setContentLength( size );
     }
 
 }

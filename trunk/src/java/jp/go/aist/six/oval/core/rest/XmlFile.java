@@ -63,7 +63,7 @@ public class XmlFile
     /**
      * @return
      */
-    private static int _io(
+    private static long _io(
                     final InputStream instream,
                     final OutputStream outstream
                     )
@@ -73,7 +73,7 @@ public class XmlFile
         BufferedOutputStream  bout = new BufferedOutputStream( outstream );
 
         byte[]  buffer = new byte[512];
-        int  totalSize = 0;
+        long  totalSize = 0;
         try {
             while (true) {
                 int  n = bin.read( buffer );
@@ -91,16 +91,16 @@ public class XmlFile
             } catch (Exception ex) {
                 //ignorable
             }
-            try {
-                bout.close();
-            } catch (Exception ex) {
-                //ignorable
-            }
-            try {
-                bin.close();
-            } catch (Exception ex) {
-                //ignorable
-            }
+//            try {
+//                bout.close();
+//            } catch (Exception ex) {
+//                //ignorable
+//            }
+//            try {
+//                bin.close();
+//            } catch (Exception ex) {
+//                //ignorable
+//            }
         }
 
         return totalSize;
@@ -150,7 +150,7 @@ public class XmlFile
 
     /**
      */
-    public static int write(
+    public static long write(
                     final InputStream instream,
                     final File file
                     )
@@ -158,7 +158,20 @@ public class XmlFile
     {
         _LOG_.debug( "writing response: file=" + file );
 
-        return _io( instream, (new FileOutputStream( file )) );
+        long  size = 0L;
+        OutputStream  outstream = null;
+        try {
+            outstream = new FileOutputStream( file );
+            size = _io( instream, outstream );
+        } finally {
+            try {
+                outstream.close();
+            } catch (Exception ex) {
+                //ignorable
+            }
+        }
+
+        return size;
     }
 //    {
 //        _LOG_.debug( "writing response: file=" + file );
@@ -172,7 +185,7 @@ public class XmlFile
 
     /**
      */
-    public static int read(
+    public static long read(
                     final File file,
                     final OutputStream outstream
                     )
@@ -180,7 +193,20 @@ public class XmlFile
     {
         _LOG_.debug( "reading request: file=" + file );
 
-        return _io( (new FileInputStream( file )), outstream );
+        long  size = 0L;
+        InputStream  instream = null;
+        try {
+            instream = new FileInputStream( file );
+            size = _io( instream, outstream );
+        } finally {
+            try {
+                instream.close();
+            } catch (Exception ex) {
+                //ignorable
+            }
+        }
+
+        return size;
     }
 //    {
 //        _LOG_.debug( "writing response: file=" + file );
