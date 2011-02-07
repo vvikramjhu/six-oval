@@ -141,7 +141,7 @@ public class XmlFile
                     )
     throws IOException
     {
-        _LOG_.debug( "writing response: file=" + file );
+        _LOG_.debug( "writing XML: file=" + file );
 
         long  size = 0L;
         OutputStream  outstream = null;
@@ -156,7 +156,7 @@ public class XmlFile
             }
         }
 
-        _LOG_.debug( "writing response finished: size=" + size );
+        _LOG_.debug( "writing XML finished: size=" + size );
         return size;
     }
 
@@ -170,7 +170,7 @@ public class XmlFile
                     )
     throws IOException
     {
-        _LOG_.debug( "reading request: file=" + file );
+        _LOG_.debug( "reading XML: file=" + file );
 
         long  size = 0L;
         InputStream  instream = null;
@@ -185,7 +185,7 @@ public class XmlFile
             }
         }
 
-        _LOG_.debug( "reading request finished: size=" + size );
+        _LOG_.debug( "reading XML finished: size=" + size );
         return size;
     }
 
