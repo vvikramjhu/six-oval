@@ -22,8 +22,6 @@ package jp.go.aist.six.oval.core.rest;
 
 import java.io.File;
 import java.io.IOException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.ClientHttpRequest;
@@ -40,11 +38,11 @@ public class XmlFileRequestCallback
     implements RequestCallback
 {
 
-    /**
-     * Logger.
-     */
-    private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( XmlFileRequestCallback.class );
+//    /**
+//     * Logger.
+//     */
+//    private static final Logger  _LOG_ =
+//        LoggerFactory.getLogger( XmlFileRequestCallback.class );
 
 
 

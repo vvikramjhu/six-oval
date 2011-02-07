@@ -34,7 +34,7 @@ import org.springframework.web.client.ResponseExtractor;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class FileResponseExtractor
+public class XmlFileResponseExtractor
     implements ResponseExtractor<File>
 {
 
@@ -42,7 +42,7 @@ public class FileResponseExtractor
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( FileResponseExtractor.class );
+        LoggerFactory.getLogger( XmlFileResponseExtractor.class );
 
 
 
@@ -56,12 +56,12 @@ public class FileResponseExtractor
     /**
      * Constructor.
      */
-    protected FileResponseExtractor()
+    protected XmlFileResponseExtractor()
     {
     }
 
 
-    public FileResponseExtractor(
+    public XmlFileResponseExtractor(
                     final File file
                     )
     {

@@ -28,8 +28,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.Reader;
-import java.io.Writer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -91,16 +89,6 @@ public class XmlFile
             } catch (Exception ex) {
                 //ignorable
             }
-//            try {
-//                bout.close();
-//            } catch (Exception ex) {
-//                //ignorable
-//            }
-//            try {
-//                bin.close();
-//            } catch (Exception ex) {
-//                //ignorable
-//            }
         }
 
         return totalSize;
@@ -108,43 +96,40 @@ public class XmlFile
 
 
 
-    /**
-     * @return
-     */
-    private static int _io(
-                    final Reader reader,
-                    final Writer writer
-                    )
-    throws IOException
-    {
-        char[]  buffer = new char[512];
-        int  totalSize = 0;
-        try {
-            while (true) {
-                int  n = reader.read( buffer );
-                                //@throws IOException
-                if (n == -1) {
-                    break;
-                }
-                writer.write( buffer, 0, n );
-                       //@throws IOException
-                totalSize += n;
-            }
-        } finally {
-            try {
-                reader.close();
-            } catch (Exception ex) {
-                //ignorable
-            }
-            try {
-                writer.close();
-            } catch (Exception ex) {
-                //ignorable
-            }
-        }
-
-        return totalSize;
-    }
+//    private static int _io(
+//                    final Reader reader,
+//                    final Writer writer
+//                    )
+//    throws IOException
+//    {
+//        char[]  buffer = new char[512];
+//        int  totalSize = 0;
+//        try {
+//            while (true) {
+//                int  n = reader.read( buffer );
+//                                //@throws IOException
+//                if (n == -1) {
+//                    break;
+//                }
+//                writer.write( buffer, 0, n );
+//                       //@throws IOException
+//                totalSize += n;
+//            }
+//        } finally {
+//            try {
+//                reader.close();
+//            } catch (Exception ex) {
+//                //ignorable
+//            }
+//            try {
+//                writer.close();
+//            } catch (Exception ex) {
+//                //ignorable
+//            }
+//        }
+//
+//        return totalSize;
+//    }
 
 
 
@@ -171,15 +156,9 @@ public class XmlFile
             }
         }
 
+        _LOG_.debug( "writing response finished: size=" + size );
         return size;
     }
-//    {
-//        _LOG_.debug( "writing response: file=" + file );
-//
-//        Reader  reader = new BufferedReader( new InputStreamReader( instream ) );
-//        Writer  writer = new BufferedWriter( new FileWriter( file ) );
-//        _io( reader, writer );
-//    }
 
 
 
@@ -206,16 +185,10 @@ public class XmlFile
             }
         }
 
+        _LOG_.debug( "reading request finished: size=" + size );
         return size;
     }
-//    {
-//        _LOG_.debug( "writing response: file=" + file );
-//
-//        Reader  reader = new BufferedReader( new FileReader( file ) );
-//        Writer  writer = new BufferedWriter( new OutputStreamWriter( outstream ) );
-//        _io( reader, writer );
-//    }
 
 }
-// FileResponseExtractor
+// XmlFile
 

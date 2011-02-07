@@ -32,8 +32,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import jp.go.aist.six.oval.core.rest.FileResponseExtractor;
 import jp.go.aist.six.oval.core.rest.XmlFileRequestCallback;
+import jp.go.aist.six.oval.core.rest.XmlFileResponseExtractor;
 import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.process.OvalInterpreterException;
 import org.slf4j.Logger;
@@ -73,7 +73,7 @@ public class OvalInterpreter
         WORKING_DIR(      "six.oval.interpreter.dir",        null,     null ),
         TMP_DIR(          "java.io.tmpdir",                  null,     null ),
         OVAL_DEFINITIONS( null,                              null,     "-o" ),
-        REAL_OVAL_DEFINITIONS( null,                         null,     null ),
+        TMP_OVAL_DEFINITIONS( null,                          null,     null ),
         OVAL_RESULTS(     null,                              null,     "-r" ),
         TMP_OVAL_RESULTS( null,                              null,     null ),
         NO_VERIFY(        null,                              null,     "-m" ),
@@ -198,7 +198,7 @@ public class OvalInterpreter
             try {
                 File  tmpFile = File.createTempFile( "oval-definitions", ".xml", new File( _getTmpDir() ) );
                 _restGetOvalDefinitions( url, tmpFile );
-                _setRealOvalDefinitions( tmpFile.getAbsolutePath() );
+                _setTmpOvalDefinitions( tmpFile.getAbsolutePath() );
             } catch (IOException ex) {
                 throw new OvalInterpreterException( ex );
             }
@@ -257,7 +257,7 @@ public class OvalInterpreter
         }
 
         // -o URL
-        String  ovalDefinitions = _getRealOvalDefinitions();
+        String  ovalDefinitions = _getTmpOvalDefinitions();
         if (ovalDefinitions == null) {
             // -o local_file
             ovalDefinitions = getOvalDefinitions();
@@ -413,7 +413,8 @@ public class OvalInterpreter
 
         RestTemplate  rest = _getRestTemplate();
         try {
-            FileResponseExtractor  extractor = new FileResponseExtractor( file );
+            XmlFileResponseExtractor  extractor =
+                new XmlFileResponseExtractor( file );
             AcceptHeaderRequestCallback  callback =
                 new AcceptHeaderRequestCallback( _ACCEPT_MEDIA_TYPES_ );
             rest.execute(
@@ -514,17 +515,17 @@ public class OvalInterpreter
     /**
      *
      */
-    private void _setRealOvalDefinitions(
+    private void _setTmpOvalDefinitions(
                     final String value
                     )
     {
-        _setConfigValue( Property.REAL_OVAL_DEFINITIONS, value );
+        _setConfigValue( Property.TMP_OVAL_DEFINITIONS, value );
     }
 
 
-    private String _getRealOvalDefinitions()
+    private String _getTmpOvalDefinitions()
     {
-        return _getConfigValue( Property.REAL_OVAL_DEFINITIONS );
+        return _getConfigValue( Property.TMP_OVAL_DEFINITIONS );
     }
 
 
