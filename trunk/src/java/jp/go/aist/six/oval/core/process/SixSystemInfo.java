@@ -18,46 +18,36 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.core.process;
 
-import jp.go.aist.six.oval.model.OvalDocument;
-import jp.go.aist.six.oval.model.common.Generator;
-import java.util.Collection;
+import jp.go.aist.six.oval.model.common.Family;
+import jp.go.aist.six.oval.model.definitions.Platform;
+import jp.go.aist.six.oval.model.sc.SystemInfo;
 
 
 
 /**
- * An OVAL System Characteristics Document.
+ * The system information of the local node.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class OvalSystemCharacteristics
-    extends OvalDocument
+public class SixSystemInfo
 {
 
-    private Generator  _generator;
-    //{1..1}
-
-
     private SystemInfo _systemInfo;
-    //{1..1}
 
 
-    private CollectedSystemObjects  _collectedObjects = new CollectedSystemObjects();
-    //{0..1}
-
-
-    private SystemData  _systemData = new SystemData();
-    //{0..1}
+    private Family  _family;
+    private Platform  _platform;
 
 
 
     /**
      * Constructor.
      */
-    public OvalSystemCharacteristics()
+    public SixSystemInfo()
     {
     }
 
@@ -65,100 +55,15 @@ public class OvalSystemCharacteristics
     /**
      * Constructor.
      */
-    public OvalSystemCharacteristics(
-                    final Generator generator,
+    public SixSystemInfo(
+                    final Family family,
+                    final Platform platform,
                     final SystemInfo system
                     )
     {
-        setGenerator( generator );
+        setFamily( family );
+        setPlatform( platform );
         setSystemInfo( system );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public OvalSystemCharacteristics(
-                    final Generator generator,
-                    final SystemInfo system,
-                    final CollectedSystemObjects collectedObjects,
-                    final SystemData systemData
-                    )
-    {
-        this( generator, system );
-        setCollectedObjects( collectedObjects );
-        setSystemData( systemData );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public OvalSystemCharacteristics(
-                    final Generator generator,
-                    final SystemInfo system,
-                    final Collection<CollectedSystemObject> collectedObjects,
-                    final Collection<Item> systemData
-                    )
-    {
-        this( generator, system );
-        setCollectedObjects( new CollectedSystemObjects( collectedObjects ) );
-        setSystemData( new SystemData( systemData ) );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public OvalSystemCharacteristics(
-                    final Generator generator,
-                    final SystemInfo system,
-                    final CollectedSystemObject[] collectedObjects,
-                    final Item[] systemData
-                    )
-    {
-        this( generator, system );
-        setCollectedObjects( new CollectedSystemObjects( collectedObjects ) );
-        setSystemData( new SystemData( systemData ) );
-    }
-
-
-
-//    public
-//    void setCollectedObjectsDigest( final String digest )
-//    {
-//        _objectsDigest = digest;
-//    }
-//
-//
-//    public
-//    String getCollectedObjectsDigest()
-//    {
-//        if (_objectsDigest == null) {
-//            try {
-//                _objectsDigest = OvalDigest.digestIDs( getCollectedObjects() );
-//            } catch (Exception ex) {
-//                // the digest is undefined.
-//            }
-//        }
-//        return _objectsDigest;
-//    }
-
-
-
-    /**
-     */
-    public void setGenerator(
-                    final Generator generator
-                    )
-    {
-        _generator = generator;
-    }
-
-
-    public Generator getGenerator()
-    {
-        return _generator;
     }
 
 
@@ -182,46 +87,34 @@ public class OvalSystemCharacteristics
 
     /**
      */
-    public void setCollectedObjects(
-                    final CollectedSystemObjects objects
+    public void setFamily(
+                    final Family family
                     )
     {
-        _collectedObjects = objects;
+        _family = family;
     }
 
 
-    public CollectedSystemObjects getCollectedObjects()
+    public Family getFamily()
     {
-        return _collectedObjects;
+        return _family;
     }
 
 
 
     /**
      */
-    public void setSystemData(
-                    final SystemData systemData
+    public void setPlatform(
+                    final Platform platform
                     )
     {
-        _systemData = systemData;
+        _platform = platform;
     }
 
 
-    public SystemData getSystemData()
+    public Platform getPlatform()
     {
-        return _systemData;
-    }
-
-
-
-    //**************************************************************
-    //  OvalDocument
-    //**************************************************************
-
-    @Override
-    public String getSchemaLocation()
-    {
-        return SC_SCHEMA_LOCATION;
+        return _platform;
     }
 
 
@@ -233,17 +126,11 @@ public class OvalSystemCharacteristics
     @Override
     public String toString()
     {
-        CollectedSystemObjects  collectedObjects = getCollectedObjects();
-        SystemData  systemData = getSystemData();
-
-        return "OvalSystemCharacteristics[generator=" + getGenerator()
+        return "[family=" + getFamily()
+                        + ", platform=" + getPlatform()
                         + ", system_info=" + getSystemInfo()
-                        + ", #collected_objects="
-                        + (collectedObjects == null ? 0 : collectedObjects.size())
-                        + ", #items="
-                        + (systemData == null ? 0 : systemData.size())
                         + "]";
     }
 
 }
-// OvalSystemCharacteristics
+// SixSystemInfo
