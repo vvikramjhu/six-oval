@@ -41,8 +41,8 @@ import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.LikeBinding;
 import jp.go.aist.six.util.search.RelationalBinding;
 import jp.go.aist.six.util.search.SearchResult;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -73,7 +73,8 @@ public class OvalRepositoryController
     /**
      * Logger.
      */
-    private static Log  _LOG = LogFactory.getLog( OvalRepositoryController.class );
+    private static final Logger  _LOG =
+        LoggerFactory.getLogger( OvalRepositoryController.class );
 
 
 
@@ -132,13 +133,12 @@ public class OvalRepositoryController
      *
      */
     private String _getPreDefinedOvalDefinitionsPath(
-                    final String definitionClass,
+//                    final String definitionClass,
                     final String family,
                     final String platform
                     )
     {
-        String  path = "oval-" + definitionClass
-        + "_" + family + ".xml";
+        String  path = "oval-definitions" + "_" + family + ".xml";
 
         return path;
     }
@@ -321,20 +321,22 @@ public class OvalRepositoryController
      */
     @RequestMapping(
                     method=RequestMethod.GET
-                    ,value="/oval_definitions/{definitionClass}/{family}/{platform}"
+                    ,value="/oval_definitions/checklist"
+//                    ,params= {"family", "platform"}
                     ,headers="Accept=application/xml"
     )
     public @ResponseBody void getOvalDefinitions(
-                    @PathVariable final String definitionClass,
-                    @PathVariable final String family,
-                    @PathVariable final String platform,
+                    @RequestParam final String family,
+                    @RequestParam final String platform,
                     final HttpServletRequest request,
                     final HttpServletResponse response
                     )
     throws OvalException
     {
-        String  context = request.getContextPath();
-        String  filepath = _getPreDefinedOvalDefinitionsPath( definitionClass, family, platform );
+        _LOG.debug( "family=" + family + ", platform=" + platform );
+
+//        String  context = request.getContextPath();
+        String  filepath = _getPreDefinedOvalDefinitionsPath( family, platform );
         File  file = new File( filepath );
         try {
             OutputStream  outstream = response.getOutputStream();
