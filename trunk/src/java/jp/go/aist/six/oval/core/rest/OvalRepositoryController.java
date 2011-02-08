@@ -20,6 +20,15 @@
 
 package jp.go.aist.six.oval.core.rest;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.URI;
+import java.util.Collection;
+import java.util.Date;
+import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.store.OvalDataStore;
 import jp.go.aist.six.oval.model.definitions.Definition;
@@ -50,11 +59,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.util.UriTemplate;
-import java.net.URI;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
 
 
 
@@ -121,6 +125,22 @@ public class OvalRepositoryController
             _LOG.debug( "Location: " + uri.toASCIIString() );
         }
         return uri;
+    }
+
+
+    /**
+     *
+     */
+    private String _getPreDefinedOvalDefinitionsPath(
+                    final String definitionClass,
+                    final String family,
+                    final String platform
+                    )
+    {
+        String  path = "oval-" + definitionClass
+        + "_" + family + ".xml";
+
+        return path;
     }
 
 
@@ -292,6 +312,34 @@ public class OvalRepositoryController
     throws OvalException
     {
         return _getResource( OvalDefinitions.class, id );
+    }
+
+
+
+    /**
+     * Returns the latest definitions for the specified class, family, and platform.
+     */
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/oval_definitions/{definitionClass}/{family}/{platform}"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody void getOvalDefinitions(
+                    @PathVariable final String definitionClass,
+                    @PathVariable final String family,
+                    @PathVariable final String platform,
+                    final HttpServletResponse response
+                    )
+    throws OvalException
+    {
+        String  filepath = _getPreDefinedOvalDefinitionsPath( definitionClass, family, platform );
+        File  file = new File( filepath );
+        try {
+            OutputStream  outstream = response.getOutputStream();
+            XmlFile.read( file, outstream );
+        } catch (IOException ex) {
+            throw new OvalException( ex );
+        }
     }
 
 
