@@ -48,6 +48,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 /**
+ * An OVAL Interpreter wrapper.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -606,11 +607,9 @@ public class OvalInterpreter
 
 
 
-    //
-    //
-    //
-
-
+    /**
+     * A simple callback for the Spring RestTemplate.
+     */
     private static class AcceptHeaderRequestCallback
     implements RequestCallback
     {
@@ -637,7 +636,6 @@ public class OvalInterpreter
             request.getHeaders().setAccept( _accept );
         }
     }
-
 
 }
 // OvalInterpreter
