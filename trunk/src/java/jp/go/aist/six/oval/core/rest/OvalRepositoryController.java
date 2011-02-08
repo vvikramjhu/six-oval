@@ -328,10 +328,12 @@ public class OvalRepositoryController
                     @PathVariable final String definitionClass,
                     @PathVariable final String family,
                     @PathVariable final String platform,
+                    final HttpServletRequest request,
                     final HttpServletResponse response
                     )
     throws OvalException
     {
+        String  context = request.getContextPath();
         String  filepath = _getPreDefinedOvalDefinitionsPath( definitionClass, family, platform );
         File  file = new File( filepath );
         try {
