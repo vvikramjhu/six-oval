@@ -1,7 +1,7 @@
 package jp.go.aist.six.test.oval.core.process;
 
-import jp.go.aist.six.oval.core.process.OvalInterpreter;
-import jp.go.aist.six.test.oval.core.CoreTestBase;
+import jp.go.aist.six.oval.core.process.SixSystemInfo;
+import jp.go.aist.six.oval.core.process.SystemInfoInspector;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
 
@@ -11,49 +11,25 @@ import org.testng.annotations.DataProvider;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalInterpreterTest
-    extends CoreTestBase
+public class SystemInfoInspectorTest
 {
 
 
     /**
      */
-    public OvalInterpreterTest()
+    public SystemInfoInspectorTest()
     {
     }
 
 
 
-    @DataProvider( name="oval.core.process.OvalInterpreter.ovalDefinitions" )
-    public Object[][] provideOvalDefinitions()
+    @DataProvider( name="oval.core.process.SystemInfoInspector.ovalPlatformDefinitions" )
+    public Object[][] provideOvalPlatformDefinitions()
     {
         return new Object[][] {
-//                        {
-//                            null    //DEFAULT
-//                        }
-//                        ,
-//                        {
-//                            "definitions.xml"
-//                        }
-//                        ,
                         {
-                            "oval-platform.xml",
-                            "ova-platform-results.xml"
+                            "oval-platform.xml"
                         }
-//                        ,
-//                        {
-//                            "http://six3.hpcc.jp/oval-platform.xml",
-//                            "oval-results.xml"
-//                        }
-//                        ,
-//                        {
-//                            "http://six3.hpcc.jp/oval-platform.xml",
-//                            "http://localhost:8080/oval/rest/results"
-//                        }
-//                        ,
-//                        {
-//                            "http://oval.mitre.org/rep-data/org.mitre.oval/p/platform/microsoft.windows.xp.xml"
-//                        }
         };
 
     }
@@ -61,29 +37,23 @@ public class OvalInterpreterTest
 
 
     @org.testng.annotations.Test(
-                    groups={"oval.core.process.OvalInterpreter"},
-                    dataProvider="oval.core.process.OvalInterpreter.ovalDefinitions",
+                    groups={"oval.core.process.SystemInfoInspector"},
+                    dataProvider="oval.core.process.SystemInfoInspector.ovalPlatformDefinitions",
                     alwaysRun=true
                     )
     public void testExecute(
-                    final String ovalDefinitions,
-                    final String ovalResults
+                    final String ovalDefinitions
                     )
     throws Exception
     {
-        OvalInterpreter  interpreter = new OvalInterpreter();
+        SystemInfoInspector  inspector = new SystemInfoInspector();
+        inspector.setOvalPlatformDefinitions( ovalDefinitions );
 
-        if (ovalDefinitions != null) {
-            interpreter.setOvalDefinitions( ovalDefinitions );
-        }
-
-        if (ovalResults != null) {
-            interpreter.setOvalResults( ovalResults );
-        }
-
-        Reporter.log( "executing OvalInterpreter...", true );
-        interpreter.execute();
+        Reporter.log( "executing SystemInfoInspector...", true );
+        SixSystemInfo  info = inspector.execute();
         Reporter.log( "...execution done", true );
+
+        Reporter.log( "system info: " + info, true );
     }
 
 }

@@ -136,18 +136,18 @@ public class SystemInfoInspector
             throw new OvalException( ex );
         }
 
-        Collection<SystemResult>  sysresults = ovalResults.getResults().getSystem();
-        if (sysresults == null  ||  sysresults.size() < 1) {
+        Collection<SystemResult>  systemResults = ovalResults.getResults().getSystem();
+        if (systemResults == null  ||  systemResults.size() < 1) {
             throw new OvalException( "no system_info found in OVAL results");
         }
 
-        SystemResult  sysresult = sysresults.iterator().next();
-        SystemInfo  oval_sysinfo = sysresult.getOvalSystemCharacteristics().getSystemInfo();
+        SystemResult  systemResult = systemResults.iterator().next();
+        SystemInfo  ovalSystemInfo = systemResult.getOvalSystemCharacteristics().getSystemInfo();
 
         String  defID = null;
-        for (DefinitionResult  def : sysresult.getDefinitions()) {
-            if (def.getResult() == Result.TRUE) {
-                defID = def.getDefinitionID();
+        for (DefinitionResult  defResult : systemResult.getDefinitions()) {
+            if (defResult.getResult() == Result.TRUE) {
+                defID = defResult.getDefinitionID();
                 break;
             }
         }
@@ -160,7 +160,8 @@ public class SystemInfoInspector
         Family  family = affected.getFamily();
         Platform  platform = affected.getPlatform().iterator().next();
 
-        SixSystemInfo  sixSysInfo = new SixSystemInfo( family, platform, oval_sysinfo );
+        SixSystemInfo  sixSysInfo = new SixSystemInfo( family, platform, ovalSystemInfo );
+        _LOG_.debug( "system info: " + sixSysInfo );
 
         return sixSysInfo;
     }
