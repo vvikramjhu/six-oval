@@ -20,9 +20,8 @@
 
 package jp.go.aist.six.oval.core.process;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.util.Collection;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.service.OvalContext;
@@ -129,7 +128,7 @@ public class SystemInfoInspector
         OvalXml  xml = OvalContext.INSTANCE.getXml();
         OvalResults  ovalResults = null;
         try {
-            ovalResults = (OvalResults)xml.unmarshal( new BufferedReader( new FileReader( file ) ) );
+            ovalResults = (OvalResults)xml.unmarshal( new FileInputStream( file ) );
                                                   //throws FileNotFoundException
         } catch (Exception ex) {
             _LOG_.error( "XML unmarshal", ex );
