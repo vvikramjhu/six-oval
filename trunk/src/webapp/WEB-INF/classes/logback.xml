@@ -8,6 +8,21 @@
 -->
 
 <configuration debug="true">
+    <appender name="FILE" 
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append>
+        <encoder>
+            <pattern>%date{ISO8601} [%thread] %-5level %logger{0}:%-4line - %msg%n</pattern>
+            <!-- pattern>%date{ISO8601} [%thread] %-5level %logger{36}:%-4line - %msg%n</pattern -->
+        </encoder>
+        <file>six-oval.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> 
+            <!-- daily rollover --> 
+            <fileNamePattern>six-oval.%d{yyyy-MM-dd}.log</fileNamePattern> 
+            <maxHistory>10</maxHistory> 
+        </rollingPolicy>        
+    </appender>
+    
     <appender name="STDOUT" 
         class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -16,7 +31,7 @@
         </encoder>
     </appender>
     
-    <root level="debug">
+    <root level="DEBUG">
         <appender-ref ref="STDOUT" />
     </root>
 </configuration>

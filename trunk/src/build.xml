@@ -129,9 +129,9 @@ CONTENTS:
         <war destfile="${product.war}" webxml="${web.xml}">
             <fileset dir="${webapp.src.dir}" 
                 excludes="**/web.xml,log4j.properties"/>
-            <classes dir="${webapp.src.dir}" includes="log4j.properties"/>
+            <classes dir="${webapp.src.dir}/WEB-INF/classes" includes="*.xml,*.properties"/>
             <classes dir="${build.classes.dir}" includes="*.xml,*.properties"/>
-            <classes dir="${src.dir}/config" excludes="testng.xml,log4j.properties"/>
+            <classes dir="${src.dir}/config" includes="castor.properties,six-oval.properties"/>
             <lib dir="${build.dir}" includes="*.jar"/>
             <lib dir="${lib.dir}" includes="**/*.jar" 
                 excludes="servlet-api.jar,testng-*.jar" />
