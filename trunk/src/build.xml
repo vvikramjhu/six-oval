@@ -40,9 +40,9 @@ CONTENTS:
     <!-- webapp -->
     <property name="webapp.src.dir"     location="${src.dir}/webapp"/>
     <property name="web.xml"            location="${webapp.src.dir}/WEB-INF/web.xml"/>
-    <property name="webapp.build.dir"   location="${build.dir}/webapp/${six.webapp.path}"/>
+    <property name="webapp.build.dir"   location="${build.dir}/webapp/${six.oval.webapp.context}"/>
 
-    <property name="product.warname"    value="${product.id}.war"/>
+    <property name="product.warname"    value="${six.oval.webapp.context}.war"/>
     <property name="product.war"        location="${build.dir}/${product.warname}"/>
 
 
@@ -131,7 +131,7 @@ CONTENTS:
                 excludes="**/web.xml,log4j.properties"/>
             <classes dir="${webapp.src.dir}" includes="log4j.properties"/>
             <classes dir="${build.classes.dir}" includes="*.xml,*.properties"/>
-            <classes dir="${src.dir}/config" includes="six-oval.properties,castor.properties"/>
+            <classes dir="${src.dir}/config" excludes="testng.xml,log4j.properties"/>
             <lib dir="${build.dir}" includes="*.jar"/>
             <lib dir="${lib.dir}" includes="**/*.jar" 
                 excludes="servlet-api.jar,testng-*.jar" />
