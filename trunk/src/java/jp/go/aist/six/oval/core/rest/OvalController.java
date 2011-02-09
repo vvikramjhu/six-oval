@@ -103,6 +103,7 @@ public class OvalController
 
 
     /**
+     * Creates an OVAL resource.
      */
     private <K, T extends Persistable<K>>
     ResponseEntity<Void> _createResource(
@@ -258,11 +259,9 @@ public class OvalController
 
 
 
-    // >curl -X POST -HContent-Type:application/xml
+    // >curl -v -X POST -HContent-Type:application/xml
     //  --data-binary @oval\oval-results_CVE-2010-0176_rhsa20100332.xml
     //  http://localhost:8080/six-oval-0.7.0/rest/oval_results
-    // <?xml version="1.0" encoding="UTF-8"?>
-    // <string xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5"></string>
 
     @RequestMapping(
                     method=RequestMethod.POST

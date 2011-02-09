@@ -63,6 +63,7 @@ public class OvalInterpreter
         TMP_DIR(          "java.io.tmpdir",                  null,     null ),
         OVAL_DEFINITIONS( null,                              null,     "-o" ),
         TMP_OVAL_DEFINITIONS( null,                          null,     null ),
+        EVALUATE_DEFINITIONS( null,                          null,     "-e" ),
         OVAL_RESULTS(     null,                              null,     "-r" ),
         TMP_OVAL_RESULTS( null,                              null,     null ),
         NO_VERIFY(        null,                              null,     "-m" ),
@@ -239,6 +240,12 @@ public class OvalInterpreter
         if (ovalDefinitions != null) {
             command.add( Property.OVAL_DEFINITIONS.commandOption );
             command.add( ovalDefinitions );
+        }
+
+        String  defIDs = getEvaluateDefinitions();
+        if (defIDs != null) {
+            command.add( Property.EVALUATE_DEFINITIONS.commandOption );
+            command.add( defIDs );
         }
 
         // -r URL
@@ -569,6 +576,41 @@ public class OvalInterpreter
     public String getOvalDefinitions()
     {
         return _getConfigValue( Property.OVAL_DEFINITIONS );
+    }
+
+
+
+    /**
+     */
+    public void setEvaluateDefinitions(
+                    final List<String> defIDs
+                    )
+    {
+        if (defIDs != null) {
+            StringBuilder  s = new StringBuilder();
+            for (String  defID : defIDs) {
+                if (s.length() > 0) {
+                    s.append( "," );
+                }
+                s.append( defID );
+            }
+
+            _setConfigValue( Property.EVALUATE_DEFINITIONS, s.toString() );
+        }
+    }
+
+
+    public void setEvaluateDefinitions(
+                    final String defIDs
+                    )
+    {
+        _setConfigValue( Property.EVALUATE_DEFINITIONS, defIDs );
+    }
+
+
+    public String getEvaluateDefinitions()
+    {
+        return _getConfigValue( Property.EVALUATE_DEFINITIONS );
     }
 
 

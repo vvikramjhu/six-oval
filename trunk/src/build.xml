@@ -28,6 +28,8 @@ CONTENTS:
 
     <import file="ant-six.xml"/>
 
+    <property file="src/config/six-oval.properties"/>
+
 
 
 
