@@ -266,7 +266,8 @@
     <bean id="ovalRepositoryRestClient" 
         class="jp.go.aist.six.oval.core.rest.OvalRepositoryClient"> 
         <property name="restTemplate" ref="restTemplate"/> 
-        <property name="baseUri" value="${six.oval.rest.base-uri}"/> 
+        <property name="baseUri" 
+          value="${six.oval.webapp.protocol}://${six.oval.webapp.host}:${six.oval.webapp.port}/${six.oval.webapp.context}"/> 
     </bean> 
 
 </beans>
