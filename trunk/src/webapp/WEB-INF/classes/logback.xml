@@ -15,10 +15,10 @@
             <pattern>%date{ISO8601} [%thread] %-5level %logger{0}:%-4line - %msg%n</pattern>
             <!-- pattern>%date{ISO8601} [%thread] %-5level %logger{36}:%-4line - %msg%n</pattern -->
         </encoder>
-        <file>six-oval.log</file>
+        <file>${catalina.base}/logs/six-oval.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> 
             <!-- daily rollover --> 
-            <fileNamePattern>six-oval.%d{yyyy-MM-dd}.log</fileNamePattern> 
+            <fileNamePattern>${catalina.base}/logs/six-oval.%d{yyyy-MM-dd}.log</fileNamePattern> 
             <maxHistory>10</maxHistory> 
         </rollingPolicy>        
     </appender>

@@ -113,11 +113,11 @@ public class OvalController
     {
         _LOG_.debug( "type=" + type + ", object=" + object );
 
-//        K  pid = _store.create( type, object );
+        K  id = _store.create( type, object );
 
         HttpHeaders  headers = new HttpHeaders();
-        headers.setLocation( _buildLocation( request, "test" ) );
-//      headers.setLocation( _buildLocation( request, String.valueOf( pid ) ) );
+        headers.setLocation( _buildLocation( request, String.valueOf( id ) ) );
+//        headers.setLocation( _buildLocation( request, "test" ) );
 //        headers.setContentType( MediaType.APPLICATION_XML );
 
         _LOG_.debug( "HTTP response headers=" + headers );
