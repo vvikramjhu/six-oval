@@ -77,10 +77,16 @@
     </bean>
 
 
+    <bean id="ovalController" 
+       class="jp.go.aist.six.oval.core.rest.OvalController">
+        <property name="store" ref="ovalStore" />
+    </bean>
+<!-- 
     <bean id="ovalRepositoryController" 
 	   class="jp.go.aist.six.oval.core.rest.OvalRepositoryController">
         <property name="store" ref="ovalStore" />
     </bean>
+-->
 
 
     <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources/ directory -->
