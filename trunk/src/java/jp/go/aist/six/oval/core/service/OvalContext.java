@@ -51,7 +51,7 @@ public class OvalContext
      * The Spring application context specification.
      */
     private static final String _SPRING_APP_CONTEXT_
-        = "six-oval_spring-app-context.xml";
+        = "six-oval_spring-context.xml";
 
 
 
