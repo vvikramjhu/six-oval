@@ -15,6 +15,11 @@
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
+
+    <!-- STATIC resources -->
+    <mvc:resources mapping="/six/**" location="/six/" />
+
+
 <!--
     <context:component-scan base-package="jp.go.aist.six.oval.core.rest" />
 -->
@@ -31,6 +36,7 @@
         </property>
     </bean>
 
+<!--
     <bean id="marshallingConverter" 
         class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"> 
         <constructor-arg ref="ovalMarshaller" /> 
@@ -40,7 +46,6 @@
         class="org.springframework.http.converter.StringHttpMessageConverter"> 
         <property name="supportedMediaTypes" value="text/plain"/> 
     </bean> 
-<!--
 -->
 
 
@@ -88,9 +93,5 @@
         <property name="store" ref="ovalStore" />
     </bean>
 -->
-
-
-    <!-- STATIC resources -->
-    <mvc:resources mapping="/six/**" location="/six/" />
 
 </beans>
