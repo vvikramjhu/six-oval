@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.process;
+package jp.go.aist.six.oval.interpreter;
 
 import jp.go.aist.six.oval.OvalException;
 

@@ -35,7 +35,7 @@ import java.util.Map;
 import jp.go.aist.six.oval.core.rest.XmlFileRequestCallback;
 import jp.go.aist.six.oval.core.rest.XmlFileResponseExtractor;
 import jp.go.aist.six.oval.core.service.OvalContext;
-import jp.go.aist.six.oval.process.OvalInterpreterException;
+import jp.go.aist.six.oval.interpreter.OvalInterpreterException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;
