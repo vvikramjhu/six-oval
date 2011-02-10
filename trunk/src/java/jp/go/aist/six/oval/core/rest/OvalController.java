@@ -26,15 +26,20 @@ import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.store.OvalDataStore;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.util.persist.Persistable;
+import jp.go.aist.six.util.persist.PersistenceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.util.UriTemplate;
 
 
@@ -111,10 +116,16 @@ public class OvalController
                     final Class<T> type,
                     final T object
                     )
+    throws OvalException
     {
         _LOG_.debug( "type=" + type + ", object=" + object );
 
-        K  id = _store.create( type, object );
+        K  id = null;
+        try {
+            id = _store.create( type, object );
+        } catch (PersistenceException ex) {
+            throw new OvalException( ex );
+        }
 
         HttpHeaders  headers = new HttpHeaders();
         headers.setLocation( _buildLocation( request, String.valueOf( id ) ) );
@@ -124,6 +135,48 @@ public class OvalController
         _LOG_.debug( "HTTP response headers=" + headers );
 
         return new ResponseEntity<Void>( headers, HttpStatus.CREATED );
+    }
+
+
+
+    //==============================================================
+    // Exception Handlers, HTTP Status Code
+    //==============================================================
+
+    // 404: Not Found
+    @ExceptionHandler( ObjectRetrievalFailureException.class )
+    @ResponseStatus( HttpStatus.NOT_FOUND )
+    public void handleNotFound(
+                    final ObjectRetrievalFailureException ex
+                    )
+    {
+        _handleException( ex );
+    }
+
+
+    // 500: Internal Server Error
+    @ExceptionHandler( OvalException.class )
+    @ResponseStatus( HttpStatus.INTERNAL_SERVER_ERROR )
+    public @ResponseBody String handleInternalServerError(
+                    final OvalException ex
+                    )
+    {
+        _handleException( ex );
+        return ex.getMessage();
+    }
+
+
+    private void _handleException(
+                    final Exception ex
+                    )
+    {
+//        Throwable  rootCause = null;
+//        if (ex instanceof NestedRuntimeException) {
+//            rootCause = NestedRuntimeException.class.cast( ex ).getRootCause();
+//        }
+
+        _LOG_.error( "handle exception: " + ex.getClass().getName()
+                            + " - " + ex.getMessage() );
     }
 
 
