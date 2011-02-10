@@ -53,7 +53,7 @@ import org.springframework.web.client.RestTemplate;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalInterpreter
+public class NetOvalInterpreter
 {
 
     private static enum Property
@@ -104,7 +104,7 @@ public class OvalInterpreter
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( OvalInterpreter.class );
+        LoggerFactory.getLogger( NetOvalInterpreter.class );
 
 
 
@@ -131,7 +131,7 @@ public class OvalInterpreter
     /**
      * Constructor.
      */
-    public OvalInterpreter()
+    public NetOvalInterpreter()
     {
     }
 

@@ -105,7 +105,7 @@ public class SystemInfoInspector
             throw new OvalException( ex );
         }
 
-        OvalInterpreter  interpreter = new OvalInterpreter();
+        NetOvalInterpreter  interpreter = new NetOvalInterpreter();
         interpreter.setOvalDefinitions( platformDefinitions );
         interpreter.setOvalResults( tmpFile.getAbsolutePath() );
 

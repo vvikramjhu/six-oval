@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.core.rest;
 import java.net.URI;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
-import jp.go.aist.six.oval.core.process.OvalInterpreter;
+import jp.go.aist.six.oval.core.process.NetOvalInterpreter;
 import jp.go.aist.six.oval.core.store.OvalDataStore;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.util.persist.Persistable;
@@ -55,7 +55,7 @@ public class NopOvalRepositoryController
     /**
      * Logger.
      */
-    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalInterpreter.class );
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( NetOvalInterpreter.class );
 
 
 

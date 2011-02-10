@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.core.process;
 
-import jp.go.aist.six.oval.core.process.OvalInterpreter;
+import jp.go.aist.six.oval.core.process.NetOvalInterpreter;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
@@ -71,7 +71,7 @@ public class OvalInterpreterTest
                     )
     throws Exception
     {
-        OvalInterpreter  interpreter = new OvalInterpreter();
+        NetOvalInterpreter  interpreter = new NetOvalInterpreter();
 
         if (ovalDefinitions != null) {
             interpreter.setOvalDefinitions( ovalDefinitions );
