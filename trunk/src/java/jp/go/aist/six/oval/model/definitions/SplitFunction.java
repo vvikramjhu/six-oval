@@ -23,14 +23,14 @@ package jp.go.aist.six.oval.model.definitions;
 
 
 /**
- * The escape_regex function takes a single string component
- * and escapes all of the regular expression characters.
+ * The split function takes a single string component and
+ * turns it into multiple values based on a delimiter string.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EscapeRegexFunction
+public class SplitFunction
     extends Function
 {
 
@@ -38,23 +38,35 @@ public class EscapeRegexFunction
     //{1..1}
 
 
+    private String  _delimiter;
+    //{required}
+
+
 
     /**
      * Constructor.
      */
-    public EscapeRegexFunction()
+    public SplitFunction()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EscapeRegexFunction(
+    public SplitFunction(
                     final Component component
                     )
     {
         setComponent( component );
+    }
+
+
+
+    public SplitFunction(
+                    final Component component,
+                    final String delimiter
+                    )
+    {
+        setComponent( component );
+        setDelimiter( delimiter );
     }
 
 
@@ -76,6 +88,23 @@ public class EscapeRegexFunction
 
 
 
+    /**
+     */
+    public void setDelimiter(
+                    final String delimiter
+                    )
+    {
+        _delimiter = delimiter;
+    }
+
+
+    public String getDelimiter()
+    {
+        return _delimiter;
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -84,8 +113,9 @@ public class EscapeRegexFunction
     public String toString()
     {
         return "escape_regex[" + getComponent()
+                        + ", delimiter=" + getDelimiter()
                         + "]";
     }
 
 }
-// EscapeRegexFunction
+// SplitFunction

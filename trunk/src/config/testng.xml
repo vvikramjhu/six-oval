@@ -28,7 +28,7 @@
     </test>
 
 
-    <test name="oval.core.process" enabled="true">
+    <test name="oval.core.process" enabled="false">
 
         <classes>
             <class name="jp.go.aist.six.test.oval.core.process.SystemInfoInspectorTest"/>
@@ -79,7 +79,7 @@
 
 
 
-    <test name="oval.core.store" enabled="false">
+    <test name="oval.core.store" enabled="true">
         <groups>
             <run>
                 <include name="definitions.oval_definitions"/>
