@@ -32,36 +32,46 @@ package jp.go.aist.six.oval.interpreter;
 public enum Option
 {
     OVAL_DEFINITIONS(
-                    "o", true, "filename", "definitions.xml",
+                    "-o", true, "filename", "definitions.xml",
                     "path to the oval-definitions XML file"
-                    ),
+    ),
+
     EVALUATE_DEFINITIONS(
-                    "e", true, "definition IDs", null,
+                    "-e", true, "definition IDs", null,
                     "evaluate the specified list of definitions \n" +
                     "(supply definition IDs as a comma seperated list)"
-                    ),
+    ),
+
     OVAL_RESULTS(
-                    "r", true, "filename", "results.xml",
+                    "-r", true, "filename", "results.xml",
                     "save oval-results to the specified XML file"
-                    ),
+    ),
+
     NO_VERIFY(
-                    "m", false, null, null,
+                    "-m", false, null, null,
                     "do not verify the oval-definitions file with an MD5 hash"
-                    ),
-    XML_RESOURCE(
-                    "a", true, "dir name", null,
+    ),
+
+    OVAL_XML_DIR(
+                    "-a", true, "dir name", null,
                     "path to the directory that contains the OVAL schema and other xml resources"
-                    ),
+    ),
+
+    MD5_HASH(
+                    null, true, "MD5Hash", null,
+                    "MD5 checksum expected for the current OVAL Definitions document"
+    ),
+
     LOG_LEVEL(
-                    "l", true, "integer", "2",
+                    "-l", true, "integer", "2",
                     "log messages at the specified level \n"
                     + "(DEBUG = 1, INFO = 2, MESSAGE = 3, FATAL = 4)"
-                    )
+    )
     ;
 
 
 
-    public final String  name;
+    public final String  command;
     public final boolean  hasArgument;
     public final String  argumentName;
     public final String  defaultArgument;
@@ -80,7 +90,7 @@ public enum Option
                     final String description
                     )
     {
-        this.name = name;
+        this.command = name;
         this.hasArgument = hasArgument;
         this.argumentName = argumentName;
         this.defaultArgument = defaultArgument;

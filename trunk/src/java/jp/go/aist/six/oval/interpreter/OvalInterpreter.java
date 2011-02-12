@@ -18,32 +18,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.process;
+package jp.go.aist.six.oval.interpreter;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import jp.go.aist.six.oval.core.rest.XmlFileRequestCallback;
-import jp.go.aist.six.oval.core.rest.XmlFileResponseExtractor;
 import jp.go.aist.six.oval.core.service.OvalContext;
-import jp.go.aist.six.oval.interpreter.OvalInterpreterException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.client.ClientHttpRequest;
-import org.springframework.web.client.RequestCallback;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
 
 
 
@@ -53,48 +39,42 @@ import org.springframework.web.client.RestTemplate;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class NetOvalInterpreter
+public class OvalInterpreter
 {
 
     private static enum Property
     {
-        EXECUTABLE(       "six.oval.interpreter.executable", "ovaldi", null ),
-        WORKING_DIR(      "six.oval.interpreter.dir",        null,     null ),
-        TMP_DIR(          "java.io.tmpdir",                  null,     null ),
-        OVAL_DEFINITIONS( null,                              null,     "-o" ),
-        TMP_OVAL_DEFINITIONS( null,                          null,     null ),
-        EVALUATE_DEFINITIONS( null,                          null,     "-e" ),
-        OVAL_RESULTS(     null,                              null,     "-r" ),
-        TMP_OVAL_RESULTS( null,                              null,     null ),
-        NO_VERIFY(        null,                              null,     "-m" ),
-        OVAL_XML(         "six.oval.interpreter.xml",        null,     "-a" ),
-        LOG_LEVEL(        "six.oval.interpreter.log",        null,     "-l" )
+        EXECUTABLE(   "six.oval.interpreter.executable", "ovaldi", null ),
+        OVAL_XML_DIR( "six.oval.interpreter.xml",        null,     Option.OVAL_XML_DIR ),
+        LOG_LEVEL(    "six.oval.interpreter.log",        "1",      Option.LOG_LEVEL ),
+        WORKING_DIR(  "six.oval.interpreter.dir",        null,     null ),
+        TMP_DIR(      "java.io.tmpdir",                  null,     null )
         ;
 
 
-        final String  property;
-        final String  defaultValue;  //NOT ovaldi default, but SIX default
-        final String  commandOption;
+        final String  name;
+        final String  defaultValue;
+        final Option  option;
 
 
         /**
          * Constructor.
          */
         Property(
-                        final String property,
+                        final String name,
                         final String defaultValue,
-                        final String commandOption
+                        final Option option
                         )
         {
-            this.property= property;
+            this.name= name;
             this.defaultValue = defaultValue;
-            this.commandOption = commandOption;
+            this.option = option;
         }
 
 
         boolean hasProperty()
         {
-            return (property == null ? false : true);
+            return (name == null ? false : true);
         }
     }
 
@@ -104,9 +84,15 @@ public class NetOvalInterpreter
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( NetOvalInterpreter.class );
+        LoggerFactory.getLogger( OvalInterpreter.class );
 
 
+    private final Map<Property, String>  _config =
+        new EnumMap<Property, String>( Property.class );
+
+
+    private final EnumMap<Option, String>  _options =
+        new EnumMap<Option, String>( Option.class );
 
 //
 //    // Input Validation Options:
@@ -123,164 +109,12 @@ public class NetOvalInterpreter
 //    public static final String  OPT_OUTPUT_RESULTS_HTML = "-x";
 
 
-    private static final List<MediaType>  _ACCEPT_MEDIA_TYPES_ =
-        Arrays.asList( new MediaType[] { MediaType.APPLICATION_XML } );
-
-
 
     /**
      * Constructor.
      */
-    public NetOvalInterpreter()
+    public OvalInterpreter()
     {
-    }
-
-
-
-    /**
-     */
-    private URL _toUrl(
-                    final String value
-                    )
-    {
-        if (value == null) {
-            return null;
-        }
-
-        URL  url = null;
-        try {
-            url = new URL( value );
-                  //throws MalformedURLException
-        } catch (MalformedURLException ex) {
-            // in case of a local file
-            url = null;
-        }
-
-        return (url == null ? null : url);
-    }
-
-
-
-    /**
-     *
-     */
-    protected void _preProcess()
-    throws OvalInterpreterException
-    {
-        // GET definitions.xml
-        URL  url = _toUrl( getOvalDefinitions() );
-        if (url != null) {
-            try {
-                File  tmpFile = File.createTempFile( "oval-definitions", ".xml", new File( _getTmpDir() ) );
-                _restGetOvalDefinitions( url, tmpFile );
-                _setTmpOvalDefinitions( tmpFile.getAbsolutePath() );
-            } catch (IOException ex) {
-                throw new OvalInterpreterException( ex );
-            }
-        }
-
-        // tmp results.xml
-        url = _toUrl( getOvalResults() );
-        if (url != null) {
-            try {
-                File  tmpFile = File.createTempFile( "oval-results", ".xml", new File( _getTmpDir() ) );
-                _setTmpOvalResults( tmpFile.getAbsolutePath() );
-            } catch (IOException ex) {
-                throw new OvalInterpreterException( ex );
-            }
-        }
-    }
-
-
-
-    /**
-     *
-     */
-    private void _postProcess()
-    throws OvalInterpreterException
-    {
-        String  tmpOvalResults = _getTmpOvalResults();
-        if (tmpOvalResults == null) {
-            return;
-        }
-
-        URL  postUrl = _toUrl( getOvalResults() );
-        _restPostOvalResults( postUrl, (new File( tmpOvalResults )) );
-    }
-
-
-
-    /**
-     */
-    private List<String> _createCommand()
-    {
-        List<String>  command = new ArrayList<String>();
-
-        command.add( getExecutable() );
-        command.add( Property.NO_VERIFY.commandOption );
-
-        String  logLevel = _getLogLevel();
-        if (logLevel != null) {
-            command.add( Property.LOG_LEVEL.commandOption );
-            command.add( logLevel );
-        }
-
-        String  xmlDir = getOvalXmlDir();
-        if (xmlDir != null) {
-            command.add( Property.OVAL_XML.commandOption );
-            command.add( xmlDir );
-        }
-
-        // -o URL
-        String  ovalDefinitions = _getTmpOvalDefinitions();
-        if (ovalDefinitions == null) {
-            // -o local_file
-            ovalDefinitions = getOvalDefinitions();
-        }
-        if (ovalDefinitions != null) {
-            command.add( Property.OVAL_DEFINITIONS.commandOption );
-            command.add( ovalDefinitions );
-        }
-
-        String  defIDs = getEvaluateDefinitions();
-        if (defIDs != null) {
-            command.add( Property.EVALUATE_DEFINITIONS.commandOption );
-            command.add( defIDs );
-        }
-
-        // -r URL
-        String  ovalResults = _getTmpOvalResults();
-        if (ovalResults == null) {
-            // -r local_file
-            ovalResults = getOvalResults();
-        }
-        if (ovalResults != null) {
-            command.add( Property.OVAL_RESULTS.commandOption );
-            command.add( ovalResults );
-        }
-
-        _LOG_.debug( "command: " + String.valueOf( command ) );
-        return command;
-    }
-
-
-
-    /**
-     */
-    private ProcessBuilder _createProcessBuilder()
-    {
-        List<String>  command = _createCommand();
-        ProcessBuilder  builder = new ProcessBuilder( command );
-
-        String  workingDir = getWorkingDir();
-        if (workingDir != null) {
-            builder.directory( new File( workingDir ) );
-        }
-        _LOG_.debug( "working dir=" + builder.directory() );
-
-        builder.redirectErrorStream( true );
-
-        return builder;
     }
 
 
@@ -291,8 +125,6 @@ public class NetOvalInterpreter
     public int execute()
     throws OvalInterpreterException
     {
-        _preProcess();
-
         ProcessBuilder  builder = _createProcessBuilder();
         Process  proc = null;
         int  exitValue = 0;
@@ -305,9 +137,6 @@ public class NetOvalInterpreter
 
         exitValue = _handleProcess( proc );
         _LOG_.debug( "exit value=" + exitValue );
-        if (exitValue == 0) {
-            _postProcess();
-        }
 
         return exitValue;
     }
@@ -362,105 +191,106 @@ public class NetOvalInterpreter
 
 
 
-    // REST ////////////////////////////////////////////////////////
-
-
-    protected RestTemplate _getRestTemplate()
+    /**
+     */
+    private ProcessBuilder _createProcessBuilder()
     {
-        return (new RestTemplate());
+        List<String>  command = _createCommand();
+        ProcessBuilder  builder = new ProcessBuilder( command );
+
+        String  workingDir = getWorkingDir();
+        if (workingDir != null) {
+            builder.directory( new File( workingDir ) );
+        }
+        _LOG_.debug( "working dir=" + builder.directory() );
+
+        builder.redirectErrorStream( true );
+
+        return builder;
+    }
+
+
+
+
+    /**
+     */
+    private List<String> _createCommand()
+    throws OvalInterpreterException
+    {
+        List<String>  command = new ArrayList<String>();
+
+        command.add( getExecutable() );
+//        command.add( Property.NO_VERIFY.commandOption );
+
+        // XML dir
+        String  xmldir = getOvalXmlDir();
+        if (xmldir == null) {
+            xmldir = _getConfigValue( Property.OVAL_XML_DIR );
+        }
+        if (xmldir != null) {
+            command.add( Option.OVAL_XML_DIR.command );
+            command.add( xmldir );
+        }
+
+//        // log level
+//        String  logLevel = getLogLevel();
+//        if (logLevel != null) {
+//            command.add( Property.LOG_LEVEL.commandOption );
+//            command.add( logLevel );
+//        }
+
+        // -o URL
+        String  ovalDefinitions = getOvalDefinitions();
+        if (ovalDefinitions == null) {
+            throw new OvalInterpreterException( "NO oval definitions to evaluate" );
+        }
+        command.add( Option.OVAL_DEFINITIONS.command );
+        command.add( ovalDefinitions );
+
+//        String  defIDs = getEvaluateDefinitions();
+//        if (defIDs != null) {
+//            command.add( Property.EVALUATE_DEFINITIONS.commandOption );
+//            command.add( defIDs );
+//        }
+
+//        // -r URL
+//        String  ovalResults = _getTmpOvalResults();
+//        if (ovalResults == null) {
+//            // -r local_file
+//            ovalResults = getOvalResults();
+//        }
+//        if (ovalResults != null) {
+//            command.add( Property.OVAL_RESULTS.commandOption );
+//            command.add( ovalResults );
+//        }
+
+        // -m or MD5Hash
+        boolean  noVerify = isNoVerify();
+        if (noVerify) {
+            command.add( Option.NO_VERIFY.command );
+        } else {
+            String  hash = getMD5Hash();
+            if (hash == null) {
+                throw new OvalInterpreterException( "NO MD5Hash without -m option" );
+            }
+            command.add( hash );
+        }
+
+        _LOG_.debug( "command: " + String.valueOf( command ) );
+        return command;
     }
 
 
 
     /**
-     * REST: GET
      */
-    protected void _restGetOvalDefinitions(
-                    final URL location,
-                    final File file
-                    )
-    throws OvalInterpreterException
-    {
-        _LOG_.debug( "GET OVAL Definitions: location=" + location
-                        + ", local tmp file=" + file );
-
-        URI  uri = null;
-        try {
-            uri = location.toURI();
-                      //throws URISyntaxException
-        } catch (Exception ex) {
-            throw new OvalInterpreterException( ex );
-        }
-
-        RestTemplate  rest = _getRestTemplate();
-        try {
-            XmlFileResponseExtractor  extractor =
-                new XmlFileResponseExtractor( file );
-            AcceptHeaderRequestCallback  callback =
-                new AcceptHeaderRequestCallback( _ACCEPT_MEDIA_TYPES_ );
-            rest.execute(
-                            uri,
-                            HttpMethod.GET,
-                            callback,
-                            extractor
-                            );
-        } catch (RestClientException ex) {
-            _LOG_.error( "REST GET error: " + ex );
-            throw new OvalInterpreterException( ex );
-        }
-    }
-
-
-
-    /**
-     * REST: POST
-     */
-    protected void _restPostOvalResults(
-                    final URL location,
-                    final File file
-                    )
-    throws OvalInterpreterException
-    {
-        _LOG_.debug( "POST OVAL Results: location=" + location
-                        + ", file=" + file );
-
-        URI  uri = null;
-        try {
-            uri = location.toURI();
-                      //throws URISyntaxException
-        } catch (Exception ex) {
-            throw new OvalInterpreterException( ex );
-        }
-
-        RestTemplate  rest = _getRestTemplate();
-        try {
-            XmlFileRequestCallback  callback = new XmlFileRequestCallback( file );
-            rest.execute(
-                            uri,
-                            HttpMethod.POST,
-                            callback,
-                            null
-                            );
-        } catch (RestClientException ex) {
-            _LOG_.error( "REST POST error: " + ex );
-            throw new OvalInterpreterException( ex );
-        }
-    }
-
-
-
-    // properties //
-
-
-    private final Map<Property, String>  _config = new HashMap<Property, String>();
-
     private String _getConfigValue(
                     final Property property
                     )
     {
         String  value = _config.get( property );
         if (value == null  &&  property.hasProperty()) {
-            value = OvalContext.INSTANCE.getProperty( property.property );
+            value = OvalContext.INSTANCE.getProperty( property.name );
         }
 
         return (value == null ? property.defaultValue : value);
@@ -473,75 +303,6 @@ public class NetOvalInterpreter
                     )
     {
         _config.put( property, value );
-    }
-
-
-
-    /**
-     */
-    private String _getTmpDir()
-    {
-        return _getConfigValue( Property.TMP_DIR );
-    }
-
-
-    /**
-     */
-    private String _getLogLevel()
-    {
-        return _getConfigValue( Property.LOG_LEVEL );
-    }
-
-
-    /**
-     *
-     */
-    private void _setTmpOvalDefinitions(
-                    final String value
-                    )
-    {
-        _setConfigValue( Property.TMP_OVAL_DEFINITIONS, value );
-    }
-
-
-    private String _getTmpOvalDefinitions()
-    {
-        return _getConfigValue( Property.TMP_OVAL_DEFINITIONS );
-    }
-
-
-
-    /**
-     *
-     */
-    private void _setTmpOvalResults(
-                    final String value
-                       )
-    {
-        _setConfigValue( Property.TMP_OVAL_RESULTS, value );
-    }
-
-
-   private String _getTmpOvalResults()
-   {
-       return _getConfigValue( Property.TMP_OVAL_RESULTS );
-   }
-
-
-
-    /**
-     */
-    public void setWorkingDir(
-                    final String dirpath
-                    )
-    {
-        _setConfigValue( Property.WORKING_DIR, dirpath );
-    }
-
-
-    public String getWorkingDir()
-    {
-        return _getConfigValue( Property.WORKING_DIR );
     }
 
 
@@ -565,28 +326,67 @@ public class NetOvalInterpreter
 
     /**
      */
-    public void setOvalDefinitions(
-                    final String filepath
+    public void setWorkingDir(
+                    final String dirpath
                     )
     {
-        _setConfigValue( Property.OVAL_DEFINITIONS, filepath );
+        _setConfigValue( Property.WORKING_DIR, dirpath );
     }
 
 
-    public String getOvalDefinitions()
+    public String getWorkingDir()
     {
-        return _getConfigValue( Property.OVAL_DEFINITIONS );
+        return _getConfigValue( Property.WORKING_DIR );
     }
 
 
 
     /**
      */
+    public String getTmpDir()
+    {
+        String  tmpdir = _getConfigValue( Property.TMP_DIR );
+        if (tmpdir == null) {
+            throw new OvalInterpreterException( "config: tmpDir NOT found" );
+        }
+
+        return tmpdir;
+    }
+
+
+
+    //==============================================================
+    //  interpreter options
+    //==============================================================
+
+    /**
+     * -o
+     */
+    public void setOvalDefinitions(
+                    final String filepath
+                    )
+    {
+        _options.put( Option.OVAL_DEFINITIONS, filepath );
+    }
+
+
+    public String getOvalDefinitions()
+    {
+        return _options.get( Option.OVAL_DEFINITIONS );
+    }
+
+
+
+    /**
+     * -e
+     */
     public void setEvaluateDefinitions(
                     final List<String> defIDs
                     )
     {
-        if (defIDs != null) {
+        if (defIDs == null) {
+            _options.put( Option.EVALUATE_DEFINITIONS, null );
+        } else {
             StringBuilder  s = new StringBuilder();
             for (String  defID : defIDs) {
                 if (s.length() > 0) {
@@ -595,7 +395,7 @@ public class NetOvalInterpreter
                 s.append( defID );
             }
 
-            _setConfigValue( Property.EVALUATE_DEFINITIONS, s.toString() );
+            _options.put( Option.EVALUATE_DEFINITIONS, s.toString() );
         }
     }
 
@@ -604,79 +404,87 @@ public class NetOvalInterpreter
                     final String defIDs
                     )
     {
-        _setConfigValue( Property.EVALUATE_DEFINITIONS, defIDs );
+        _options.put( Option.EVALUATE_DEFINITIONS, defIDs );
     }
 
 
     public String getEvaluateDefinitions()
     {
-        return _getConfigValue( Property.EVALUATE_DEFINITIONS );
+        return _options.get( Option.EVALUATE_DEFINITIONS );
     }
 
 
 
     /**
+     * -r
      */
     public void setOvalResults(
                     final String filepath
                     )
     {
-        _setConfigValue( Property.OVAL_RESULTS, filepath );
+        _options.put( Option.OVAL_RESULTS, filepath );
     }
 
 
     public String getOvalResults()
     {
-        return _getConfigValue( Property.OVAL_RESULTS );
+        return _options.get( Option.OVAL_RESULTS );
     }
 
 
 
     /**
+     * -a
      */
     public void setOvalXmlDir(
                     final String dirpath
                     )
     {
-        _setConfigValue( Property.OVAL_XML, dirpath );
+        _options.put( Option.OVAL_XML_DIR, dirpath );
     }
 
 
     public String getOvalXmlDir()
     {
-        return _getConfigValue( Property.OVAL_XML );
+        return _options.get( Option.OVAL_XML_DIR );
     }
 
 
 
     /**
-     * A simple callback for the Spring RestTemplate.
+     * -m
      */
-    private static class AcceptHeaderRequestCallback
-    implements RequestCallback
+    public void setNoVerify(
+                    final boolean noVerify
+                    )
     {
-
-        private final List<MediaType>  _accept;
-
-
-
-        private AcceptHeaderRequestCallback(
-                        final List<MediaType> accept
-                        )
-        {
-            _accept = accept;
-        }
+        _options.put( Option.NO_VERIFY, String.valueOf( noVerify ) );
+    }
 
 
+    public boolean isNoVerify()
+    {
+        String  noVerify = _options.get( Option.NO_VERIFY );
 
-        @Override
-        public void doWithRequest(
-                        final ClientHttpRequest request
-                        )
-        throws IOException
-        {
-            request.getHeaders().setAccept( _accept );
-        }
+        return (noVerify == null ? false : Boolean.valueOf( noVerify ).booleanValue() );
+    }
+
+
+
+    /**
+     * MD5Hash
+     */
+    public void setMD5Hash(
+                    final String hash
+                    )
+    {
+        _options.put( Option.MD5_HASH, hash );
+    }
+
+
+    public String getMD5Hash()
+    {
+        return _options.get( Option.MD5_HASH );
     }
 
 }
