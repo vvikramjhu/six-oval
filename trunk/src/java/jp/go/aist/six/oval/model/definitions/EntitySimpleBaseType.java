@@ -21,29 +21,29 @@
 package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.AbstractOvalObject;
+import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.Operation;
 
 
 
 /**
- * The EntityBase type is an abstract type that defines
- * the default attributes associated with every entity.
- * Entities can be found in both OVAL Objects and OVAL States
- * and represent the individual properties associated with items
- * found on a system.
+ * The EntitySimpleBaseType complex type is an abstract type
+ * that defines the default attributes associated with every simple entity.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class EntityBase
+public abstract class EntitySimpleBaseType
     extends AbstractOvalObject
 {
 
-    private String  _data;
-    // OVAL Schema 5.7: {complexContent, base="xsd:anyType"}
-    // OVAL Schema 5.6: {simpleContent, base=xsd:anySimpleType}
+    private String  _content;
+    //{simpleContent, base="xsd:anySimpleType"}
+
+
+    // xsd:attributeGroup ref="EntityAttributeGroup" //
 
     public static final Datatype  DEFAULT_DATATYPE = Datatype.STRING;
     private Datatype  _datatype;
@@ -53,79 +53,47 @@ public abstract class EntityBase
     private Operation  _operation;
     //{optional, default="equals"}
 
-    public static final boolean  DEFAULT_MASK = false;
-    private boolean  _mask = DEFAULT_MASK;
+    public static final Boolean  DEFAULT_MASK = false;
+    private Boolean  _mask;
     //{optional, default="false"}
 
     private String  _varRef;
     //{optional, type="oval:VariableIDPattern"}
 
+    public static final Check  DEFAULT_VAR_CHECK = Check.ALL;
+    private Check  _varCheck;
+    //{optional, default="all"}
+
 
 
     /**
      * Constructor.
      */
-    public EntityBase()
+    public EntitySimpleBaseType()
     {
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityBase(
-                    final String data
-                    )
-    {
-        this( data, DEFAULT_OPERATION );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityBase(
-                    final String data,
-                    final Operation operation
-                    )
-    {
-        this( data, DEFAULT_DATATYPE, operation );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityBase(
-                    final String data,
-                    final Datatype datatype,
-                    final Operation operation
-                    )
-    {
-        setData( data );
-        setDatatype( datatype );
-        setOperation( operation );
     }
 
 
 
     /**
      */
-    public void setData(
-                    final String data
+    public void setContent(
+                    final String content
                     )
     {
-        _data = data;
+        _content = content;
     }
 
 
-    public String getData()
+    public String getContent()
     {
-        return _data;
+        return _content;
     }
 
 
 
+    /**
+     */
     public void setDatatype(
                     final Datatype datatype
                     )
@@ -136,11 +104,13 @@ public abstract class EntityBase
 
     public Datatype getDatatype()
     {
-        return (_datatype == null ? DEFAULT_DATATYPE : _datatype);
+        return _datatype;
     }
 
 
 
+    /**
+     */
     public void setOperation(
                     final Operation operation
                     )
@@ -151,26 +121,30 @@ public abstract class EntityBase
 
     public Operation getOperation()
     {
-        return (_operation == null ? DEFAULT_OPERATION : _operation);
+        return _operation;
     }
 
 
 
-    public boolean getMask()
-    {
-        return _mask;
-    }
-
-
+    /**
+     */
     public void setMask(
-                    final boolean mask
+                    final Boolean mask
                     )
     {
         _mask = mask;
     }
 
 
+    public Boolean getMask()
+    {
+        return _mask;
+    }
 
+
+
+    /**
+     */
     public void setVarRef(
                     final String varRef
                     )
@@ -186,85 +160,104 @@ public abstract class EntityBase
 
 
 
-    //**************************************************************
+    /**
+     */
+    public void setVarCheck(
+                    final Check check
+                    )
+    {
+        _varCheck = check;
+    }
+
+
+    public Check getVarCheck()
+    {
+        return _varCheck;
+    }
+
+
+
+   //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public int hashCode()
-    {
-        final int  prime = 37;
-        int  result = 17;
-
-        String  data = getData();
-        result = prime * result + ((data == null) ? 0 : data.hashCode());
-
-        Datatype  datatype = getDatatype();
-        result = prime * result + ((datatype == null) ? 0 : datatype.hashCode());
-
-        Operation  op = getOperation();
-        result = prime * result + ((op == null) ? 0 : op.hashCode());
-
-        result = prime * result + (getMask() ? 0 : 1);
-
-        String  var_ref = getVarRef();
-        result = prime * result + ((var_ref == null) ? 0 : var_ref.hashCode());
-
-        return result;
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (this == obj) {
-            return true;
-        }
-
-        if (!(obj instanceof EntityBase)) {
-            return false;
-        }
-
-        EntityBase  other = (EntityBase)obj;
-        String  other_data = other.getData();
-        String   this_data =  this.getData();
-        if (this_data == other_data
-                        ||  (this_data != null  &&  this_data.equals( other_data ))) {
-            String  other_var_ref = other.getVarRef();
-            String   this_var_ref =  this.getVarRef();
-            if (this_var_ref == other_var_ref
-                        ||  (this_var_ref != null  &&  this_var_ref.equals( other_var_ref ))) {
-                Operation  other_op = other.getOperation();
-                Operation   this_op =  this.getOperation();
-                if (this_op == other_op) {
-                    Datatype  other_type = other.getDatatype();
-                    Datatype   this_type =  this.getDatatype();
-                    if (this_type == other_type) {
-                        if (this.getMask() == other.getMask()) {
-                            return true;
-                        }
-                    }
-                }
-            }
-        }
-
-        return false;
-    }
+//    @Override
+//    public int hashCode()
+//    {
+//        final int  prime = 37;
+//        int  result = 17;
+//
+//        String  data = getContent();
+//        result = prime * result + ((data == null) ? 0 : data.hashCode());
+//
+//        Datatype  datatype = getDatatype();
+//        result = prime * result + ((datatype == null) ? 0 : datatype.hashCode());
+//
+//        Operation  op = getOperation();
+//        result = prime * result + ((op == null) ? 0 : op.hashCode());
+//
+//        result = prime * result + (getMask() ? 0 : 1);
+//
+//        String  var_ref = getVarRef();
+//        result = prime * result + ((var_ref == null) ? 0 : var_ref.hashCode());
+//
+//        return result;
+//    }
+//
+//
+//
+//    @Override
+//    public boolean equals(
+//                    final Object obj
+//                    )
+//    {
+//        if (this == obj) {
+//            return true;
+//        }
+//
+//        if (!(obj instanceof EntitySimpleBaseType)) {
+//            return false;
+//        }
+//
+//        EntitySimpleBaseType  other = (EntitySimpleBaseType)obj;
+//        String  other_data = other.getContent();
+//        String   this_data =  this.getContent();
+//        if (this_data == other_data
+//                        ||  (this_data != null  &&  this_data.equals( other_data ))) {
+//            String  other_var_ref = other.getVarRef();
+//            String   this_var_ref =  this.getVarRef();
+//            if (this_var_ref == other_var_ref
+//                        ||  (this_var_ref != null  &&  this_var_ref.equals( other_var_ref ))) {
+//                Operation  other_op = other.getOperation();
+//                Operation   this_op =  this.getOperation();
+//                if (this_op == other_op) {
+//                    Datatype  other_type = other.getDatatype();
+//                    Datatype   this_type =  this.getDatatype();
+//                    if (this_type == other_type) {
+//                        if (this.getMask() == other.getMask()) {
+//                            return true;
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//
+//        return false;
+//    }
 
 
 
     @Override
     public String toString()
     {
-        return "data=" + getData()
-                        + ", datatype=" + getDatatype()
+        return "" + getContent()
+                        + ", datatype="  + getDatatype()
                         + ", operation=" + getOperation()
-//                        + ", mask=" + getMask()
-                        + ", var_ref=" + getVarRef();
+                        + ", mask="      + getMask()
+                        + ", var_ref="   + getVarRef()
+                        + ", var_check=" + getVarCheck()
+                        ;
     }
 
 }
-// EntityBase
+// EntitySimpleBaseType
