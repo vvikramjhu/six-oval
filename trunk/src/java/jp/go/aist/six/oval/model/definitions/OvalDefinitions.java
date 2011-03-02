@@ -39,19 +39,19 @@ public class OvalDefinitions
     private Generator  _generator;
     //{1..1}
 
-    private Definitions  _definitions;// = new Definitions();
+    private Definitions  _definitions;
     //{0..1}
 
-    private Tests _tests;// = new Tests();
+    private Tests _tests;
     //{0..1}
 
-    private SystemObjects  _objects;// = new SystemObjects();
+    private SystemObjects  _objects;
     //{0..1}
 
-    private States  _states;// = new States();
+    private States  _states;
     //{0..1}
 
-    private Variables  _variables;// = new Variables();
+    private Variables  _variables;
     //{0..1}
 
     private String  _definitionsDigest;
@@ -78,6 +78,8 @@ public class OvalDefinitions
 
 
 
+    /**
+     */
     public void setGenerator(
                     final Generator generator
                     )
@@ -93,6 +95,8 @@ public class OvalDefinitions
 
 
 
+    /**
+     */
     public void setDefinitions(
                     final Definitions definitions
                     )
@@ -123,6 +127,8 @@ public class OvalDefinitions
 
 
 
+    /**
+     */
     public void setTests(
                     final Tests tests
                     )
@@ -152,6 +158,9 @@ public class OvalDefinitions
     }
 
 
+
+    /**
+     */
     public void setObjects(
                     final SystemObjects objects
                     )
@@ -182,6 +191,8 @@ public class OvalDefinitions
 
 
 
+    /**
+     */
     public void setStates(
                     final States states
                     )
@@ -212,6 +223,8 @@ public class OvalDefinitions
 
 
 
+    /**
+     */
     public void setVariables(
                     final Variables variables
                     )

@@ -35,7 +35,7 @@ import jp.go.aist.six.oval.model.common.Operation;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class EntitySimpleBaseType
+public abstract class EntitySimpleBase
     extends AbstractOvalObject
 {
 
@@ -69,7 +69,7 @@ public abstract class EntitySimpleBaseType
     /**
      * Constructor.
      */
-    public EntitySimpleBaseType()
+    public EntitySimpleBase()
     {
     }
 
