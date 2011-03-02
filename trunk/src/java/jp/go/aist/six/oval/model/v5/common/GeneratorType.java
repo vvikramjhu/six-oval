@@ -18,11 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.common;
+package jp.go.aist.six.oval.model.v5.common;
 
 import jp.go.aist.six.oval.model.AbstractOvalObject;
-import java.util.ArrayList;
-import java.util.Collection;
 
 
 
@@ -37,7 +35,7 @@ import java.util.Collection;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Generator
+public class GeneratorType
     extends AbstractOvalObject
 {
 
@@ -60,46 +58,46 @@ public class Generator
     //{xsd:dateTime, 1..1}
 
 
-    private Collection<GeneratorInfo>  _additionalInfo = new ArrayList<GeneratorInfo>();
-    //{0..*}
+//    private Collection<GeneratorInfo>  _additionalInfo = new ArrayList<GeneratorInfo>();
+//    //{0..*}
 
 
 
     /**
      * Constructor.
      */
-    public Generator()
+    public GeneratorType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public Generator(
-                    final String schemaVersion,
-                    final String timestamp
-                    )
-    {
-        setSchemaVersion( schemaVersion );
-        setTimestamp( timestamp );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public Generator(
-                    final String schemaVersion,
-                    final String timestamp,
-                    final String prodName,
-                    final String prodVersion
-                    )
-    {
-        this( schemaVersion, timestamp );
-        setProductName( prodName );
-        setProductVersion( prodVersion );
-    }
+//    /**
+//     * Constructor.
+//     */
+//    public GeneratorType(
+//                    final String schemaVersion,
+//                    final String timestamp
+//                    )
+//    {
+//        setSchemaVersion( schemaVersion );
+//        setTimestamp( timestamp );
+//    }
+//
+//
+//    /**
+//     * Constructor.
+//     */
+//    public GeneratorType(
+//                    final String schemaVersion,
+//                    final String timestamp,
+//                    final String prodName,
+//                    final String prodVersion
+//                    )
+//    {
+//        this( schemaVersion, timestamp );
+//        setProductName( prodName );
+//        setProductVersion( prodVersion );
+//    }
 
 
 
@@ -163,42 +161,42 @@ public class Generator
 
 
 
-    /**
-     */
-    public void setAdditionalInfo(
-                    final Collection<? extends GeneratorInfo> info
-                    )
-    {
-        if (info != _additionalInfo) {
-            _additionalInfo.clear();
-            if (info != null  &&  info.size() > 0) {
-                _additionalInfo.addAll( info );
-            }
-        }
-    }
-
-
-    public boolean addAdditionalInfo(
-                    final GeneratorInfo info
-                    )
-    {
-        return _additionalInfo.add( info );
-    }
-
-
-    public Generator additionalInfo(
-                    final GeneratorInfo info
-                    )
-    {
-        addAdditionalInfo( info );
-        return this;
-    }
-
-
-    public Collection<GeneratorInfo> getAdditionalInfo()
-    {
-        return _additionalInfo;
-    }
+//    /**
+//     */
+//    public void setAdditionalInfo(
+//                    final Collection<? extends GeneratorInfo> info
+//                    )
+//    {
+//        if (info != _additionalInfo) {
+//            _additionalInfo.clear();
+//            if (info != null  &&  info.size() > 0) {
+//                _additionalInfo.addAll( info );
+//            }
+//        }
+//    }
+//
+//
+//    public boolean addAdditionalInfo(
+//                    final GeneratorInfo info
+//                    )
+//    {
+//        return _additionalInfo.add( info );
+//    }
+//
+//
+//    public GeneratorType additionalInfo(
+//                    final GeneratorInfo info
+//                    )
+//    {
+//        addAdditionalInfo( info );
+//        return this;
+//    }
+//
+//
+//    public Collection<GeneratorInfo> getAdditionalInfo()
+//    {
+//        return _additionalInfo;
+//    }
 
 
 
@@ -206,67 +204,67 @@ public class Generator
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public int hashCode()
-    {
-        final int  prime = 37;
-        int  result = 17;
-
-        String  productName = getProductName();
-        result = prime * result + ((productName == null) ? 0 : productName.hashCode());
-
-        String  productVersion = getProductVersion();
-        result = prime * result + ((productVersion == null) ? 0 : productVersion.hashCode());
-
-        String  schemaVersion = getSchemaVersion();
-        result = prime * result + ((schemaVersion == null) ? 0 : schemaVersion.hashCode());
-
-        String  timestamp = getTimestamp();
-        result = prime * result + ((timestamp == null) ? 0 : timestamp.hashCode());
-
-        return result;
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (this == obj) {
-            return true;
-        }
-
-        if (!(obj instanceof Generator)) {
-            return false;
-        }
-
-        Generator  other = (Generator)obj;
-        String  other_ts = other.getTimestamp();
-        String   this_ts =  this.getTimestamp();
-        if (this_ts == other_ts
-                        ||  (this_ts != null  &&  this_ts.equals( other_ts ))) {
-            String  other_sv = other.getSchemaVersion();
-            String   this_sv =  this.getSchemaVersion();
-            if (this_sv == other_sv
-                            ||  (this_sv != null  &&  this_sv.equals( other_sv ))) {
-                String  other_pn = other.getProductName();
-                String   this_pn =  this.getProductName();
-                if (this_pn == other_pn
-                                ||  (this_pn != null  &&  this_pn.equals( other_pn ))) {
-                    String  other_pv = other.getProductVersion();
-                    String   this_pv =  this.getProductVersion();
-                    if (this_pv == other_pv
-                                    ||  (this_pv != null  &&  this_pv.equals( other_pv ))) {
-                        return true;
-                    }
-                }
-            }
-        }
-
-        return false;
-    }
+//    @Override
+//    public int hashCode()
+//    {
+//        final int  prime = 37;
+//        int  result = 17;
+//
+//        String  productName = getProductName();
+//        result = prime * result + ((productName == null) ? 0 : productName.hashCode());
+//
+//        String  productVersion = getProductVersion();
+//        result = prime * result + ((productVersion == null) ? 0 : productVersion.hashCode());
+//
+//        String  schemaVersion = getSchemaVersion();
+//        result = prime * result + ((schemaVersion == null) ? 0 : schemaVersion.hashCode());
+//
+//        String  timestamp = getTimestamp();
+//        result = prime * result + ((timestamp == null) ? 0 : timestamp.hashCode());
+//
+//        return result;
+//    }
+//
+//
+//
+//    @Override
+//    public boolean equals(
+//                    final Object obj
+//                    )
+//    {
+//        if (this == obj) {
+//            return true;
+//        }
+//
+//        if (!(obj instanceof GeneratorType)) {
+//            return false;
+//        }
+//
+//        GeneratorType  other = (GeneratorType)obj;
+//        String  other_ts = other.getTimestamp();
+//        String   this_ts =  this.getTimestamp();
+//        if (this_ts == other_ts
+//                        ||  (this_ts != null  &&  this_ts.equals( other_ts ))) {
+//            String  other_sv = other.getSchemaVersion();
+//            String   this_sv =  this.getSchemaVersion();
+//            if (this_sv == other_sv
+//                            ||  (this_sv != null  &&  this_sv.equals( other_sv ))) {
+//                String  other_pn = other.getProductName();
+//                String   this_pn =  this.getProductName();
+//                if (this_pn == other_pn
+//                                ||  (this_pn != null  &&  this_pn.equals( other_pn ))) {
+//                    String  other_pv = other.getProductVersion();
+//                    String   this_pv =  this.getProductVersion();
+//                    if (this_pv == other_pv
+//                                    ||  (this_pv != null  &&  this_pv.equals( other_pv ))) {
+//                        return true;
+//                    }
+//                }
+//            }
+//        }
+//
+//        return false;
+//    }
 
 
 
@@ -277,9 +275,9 @@ public class Generator
                         + ", product_version=" + getProductVersion()
                         + ", schema_version=" + getSchemaVersion()
                         + ", timestamp=" + getTimestamp()
-                        + ", " + getAdditionalInfo()
+//                        + ", " + getAdditionalInfo()
                         + "]";
     }
 
 }
-// Generator
+// GeneratorType

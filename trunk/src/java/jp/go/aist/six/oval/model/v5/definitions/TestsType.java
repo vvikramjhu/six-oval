@@ -18,12 +18,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.OvalElementContainer;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.OvalElementContainer;
+import jp.go.aist.six.oval.model.definitions.Test;
 
 
 
@@ -34,14 +35,14 @@ import java.util.Iterator;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Tests
+public class TestsType
     extends OvalElementContainer<Test>  //{1..*}
 {
 
     /**
      * Constructor.
      */
-    public Tests()
+    public TestsType()
     {
     }
 
@@ -49,7 +50,7 @@ public class Tests
     /**
      * Constructor.
      */
-    public Tests(
+    public TestsType(
                     final Collection<? extends Test> tests
                     )
     {
@@ -60,7 +61,7 @@ public class Tests
     /**
      * Constructor.
      */
-    public Tests(
+    public TestsType(
                     final Test[] tests
                     )
     {

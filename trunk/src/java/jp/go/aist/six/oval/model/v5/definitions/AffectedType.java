@@ -18,14 +18,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
-import jp.go.aist.six.oval.model.common.Family;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
 
 
 
@@ -37,19 +36,19 @@ import java.util.Iterator;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Affected
+public class AffectedType
     extends AbstractOvalObject
 {
 
-    private Collection<Platform>  _platform = new HashSet<Platform>();
+    private final Collection<Platform>  _platform = new HashSet<Platform>();
     //{0..*}
 
 
-    private Collection<Product>  _product = new HashSet<Product>();
+    private final Collection<Product>  _product = new HashSet<Product>();
     //{0..*}
 
 
-    private Family  _family;
+    private FamilyEnumeration  _family;
     //{required}
 
 
@@ -57,56 +56,56 @@ public class Affected
     /**
      * Constructor.
      */
-    public Affected()
+    public AffectedType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public Affected(
-                    final Family family
-                    )
-    {
-        setFamily( family );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public Affected(
-                    final Family family,
-                    final Collection<? extends Platform> platform,
-                    final Collection<? extends Product> product
-                    )
-    {
-        setFamily( family );
-        setPlatform( platform );
-        setProduct( product );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public Affected(
-                    final Family family,
-                    final Platform[] platform,
-                    final Product[] product
-                    )
-    {
-        setFamily( family );
-
-        if (platform != null) {
-            setPlatform( Arrays.asList( platform ) );
-        }
-
-        if (product != null) {
-            setProduct( Arrays.asList( product ) );
-        }
-    }
+//    /**
+//     * Constructor.
+//     */
+//    public AffectedType(
+//                    final FamilyEnumeration family
+//                    )
+//    {
+//        setFamily( family );
+//    }
+//
+//
+//    /**
+//     * Constructor.
+//     */
+//    public AffectedType(
+//                    final FamilyEnumeration family,
+//                    final Collection<? extends Platform> platform,
+//                    final Collection<? extends Product> product
+//                    )
+//    {
+//        setFamily( family );
+//        setPlatform( platform );
+//        setProduct( product );
+//    }
+//
+//
+//    /**
+//     * Constructor.
+//     */
+//    public AffectedType(
+//                    final FamilyEnumeration family,
+//                    final Platform[] platform,
+//                    final Product[] product
+//                    )
+//    {
+//        setFamily( family );
+//
+//        if (platform != null) {
+//            setPlatform( Arrays.asList( platform ) );
+//        }
+//
+//        if (product != null) {
+//            setProduct( Arrays.asList( product ) );
+//        }
+//    }
 
 
 
@@ -137,7 +136,7 @@ public class Affected
     }
 
 
-    public Affected platform(
+    public AffectedType platform(
                     final Platform platform
                     )
     {
@@ -146,7 +145,7 @@ public class Affected
     }
 
 
-    public Affected platform(
+    public AffectedType platform(
                     final String platform
                     )
     {
@@ -195,7 +194,7 @@ public class Affected
     }
 
 
-    public Affected product(
+    public AffectedType product(
                     final Product product
                     )
     {
@@ -204,7 +203,7 @@ public class Affected
     }
 
 
-    public Affected product(
+    public AffectedType product(
                     final String product
                     )
     {
@@ -229,14 +228,14 @@ public class Affected
     /**
      */
     public void setFamily(
-                    final Family family
+                    final FamilyEnumeration family
                     )
     {
         _family = family;
     }
 
 
-    public Family getFamily()
+    public FamilyEnumeration getFamily()
     {
         return _family;
     }
@@ -259,7 +258,7 @@ public class Affected
         Collection<Product>  product = getProduct();
         result = prime * result + ((product == null) ? 0 : product.hashCode());
 
-        Family  family = getFamily();
+        FamilyEnumeration  family = getFamily();
         result = prime * result + ((family == null) ? 0 : family.hashCode());
 
         return result;
@@ -276,11 +275,11 @@ public class Affected
             return true;
         }
 
-        if (!(obj instanceof Affected)) {
+        if (!(obj instanceof AffectedType)) {
             return false;
         }
 
-        Affected  other = (Affected)obj;
+        AffectedType  other = (AffectedType)obj;
         Collection<Product>  other_product = other.getProduct();
         Collection<Product>   this_product =  this.getProduct();
         if (this_product == other_product
@@ -314,4 +313,4 @@ public class Affected
     }
 
 }
-// Affected
+// AffectedType

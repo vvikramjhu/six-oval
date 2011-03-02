@@ -18,11 +18,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.OvalElementContainer;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.OvalElementContainer;
+import jp.go.aist.six.oval.model.definitions.State;
 
 
 
@@ -33,7 +34,7 @@ import java.util.Iterator;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class States
+public class StatesType
     extends OvalElementContainer<State> //{1..*}
 //extends Container<State> //{1..*}
 {
@@ -41,7 +42,7 @@ public class States
     /**
      * Constructor.
      */
-    public States()
+    public StatesType()
     {
     }
 
@@ -49,7 +50,7 @@ public class States
     /**
      * Constructor.
      */
-    public States(
+    public StatesType(
                     final Collection<? extends State> states
                     )
     {
@@ -60,7 +61,7 @@ public class States
     /**
      * Constructor.
      */
-    public States(
+    public StatesType(
                     final State[] states
                     )
     {

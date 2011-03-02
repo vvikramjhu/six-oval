@@ -18,11 +18,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.OvalElementContainer;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.OvalElementContainer;
+import jp.go.aist.six.oval.model.definitions.SystemObject;
 
 
 
@@ -35,7 +36,7 @@ import java.util.Iterator;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class SystemObjects
+public class SystemObjectsType
     extends OvalElementContainer<SystemObject>  //{1..*}
 //extends Container<SystemObject>  //{1..*}
 {
@@ -43,7 +44,7 @@ public class SystemObjects
     /**
      * Constructor.
      */
-    public SystemObjects()
+    public SystemObjectsType()
     {
     }
 
@@ -51,7 +52,7 @@ public class SystemObjects
     /**
      * Constructor.
      */
-    public SystemObjects(
+    public SystemObjectsType(
                     final Collection<? extends SystemObject> objects
                     )
     {
@@ -62,7 +63,7 @@ public class SystemObjects
     /**
      * Constructor.
      */
-    public SystemObjects(
+    public SystemObjectsType(
                     final SystemObject[] objects
                     )
     {

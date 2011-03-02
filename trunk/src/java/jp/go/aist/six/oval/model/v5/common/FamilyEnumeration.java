@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.common;
+package jp.go.aist.six.oval.model.v5.common;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class Family
+public final class FamilyEnumeration
     implements Serializable
 {
 
@@ -47,20 +47,20 @@ public final class Family
     private static final String  _WINDOWS_   = "windows";
 
 
-    public static final Family  CATOS      = new Family( _CATOS_ );
-    public static final Family  IOS        = new Family( _IOS_ );
-    public static final Family  MACOS      = new Family( _MACOS_ );
-    public static final Family  PIXOS      = new Family( _PIXOS_ );
-    public static final Family  UNDEFINED  = new Family( _UNDEFINED_ );
-    public static final Family  UNIX       = new Family( _UNIX_ );
-    public static final Family  VMWARE_INFRASTRUCTURE = new Family( _VMWARE_INFRASTRUCTURE_ );
-    public static final Family  WINDOWS    = new Family( _WINDOWS_ );
+    public static final FamilyEnumeration  CATOS      = new FamilyEnumeration( _CATOS_ );
+    public static final FamilyEnumeration  IOS        = new FamilyEnumeration( _IOS_ );
+    public static final FamilyEnumeration  MACOS      = new FamilyEnumeration( _MACOS_ );
+    public static final FamilyEnumeration  PIXOS      = new FamilyEnumeration( _PIXOS_ );
+    public static final FamilyEnumeration  UNDEFINED  = new FamilyEnumeration( _UNDEFINED_ );
+    public static final FamilyEnumeration  UNIX       = new FamilyEnumeration( _UNIX_ );
+    public static final FamilyEnumeration  VMWARE_INFRASTRUCTURE = new FamilyEnumeration( _VMWARE_INFRASTRUCTURE_ );
+    public static final FamilyEnumeration  WINDOWS    = new FamilyEnumeration( _WINDOWS_ );
 
 
 
-    private static HashMap<String, Family> _INIT_()
+    private static HashMap<String, FamilyEnumeration> _INIT_()
     {
-        HashMap<String, Family>  map = new HashMap<String, Family>();
+        HashMap<String, FamilyEnumeration>  map = new HashMap<String, FamilyEnumeration>();
         map.put( _CATOS_,      CATOS     );
         map.put( _IOS_,        IOS       );
         map.put( _MACOS_,      MACOS     );
@@ -72,17 +72,17 @@ public final class Family
         return map;
     }
 
-    private static final HashMap<String, Family>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, FamilyEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
     /**
      */
-    public static Family valueOf(
+    public static FamilyEnumeration valueOf(
                     final String name
                     )
     {
-        Family  flag = null;
+        FamilyEnumeration  flag = null;
         if (name != null) {
             flag = _INSTANCES_.get( name );
         }
@@ -103,7 +103,7 @@ public final class Family
     /**
      * Constructor.
      */
-    private Family(
+    private FamilyEnumeration(
                     final String name
                     )
     {
@@ -132,4 +132,4 @@ public final class Family
     }
 
 }
-// Family
+// FamilyEnumeration
