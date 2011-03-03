@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.OvalEntityReference;
+import jp.go.aist.six.oval.model.v5.OvalEntityReference;
 import jp.go.aist.six.util.persist.Dependent;
 
 
@@ -32,15 +32,15 @@ import jp.go.aist.six.util.persist.Dependent;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class SystemObjectRef
+public class SystemObjectRefType
     extends OvalEntityReference
-    implements Dependent<Test>
+    implements Dependent<TestType>
 {
 
     /**
      * Constructor.
      */
-    public SystemObjectRef()
+    public SystemObjectRefType()
     {
     }
 
@@ -48,7 +48,7 @@ public class SystemObjectRef
     /**
      * Constructor.
      */
-    public SystemObjectRef(
+    public SystemObjectRefType(
                     final String objectID
                     )
     {
@@ -78,19 +78,21 @@ public class SystemObjectRef
     //  Dependent
     //**************************************************************
 
-    private Test  _master;
+    private TestType  _master;
 
 
 
+    @Override
     public void setMasterObject(
-                    final Test master
+                    final TestType master
                     )
     {
         _master = master;
     }
 
 
-    public Test getMasterObject()
+    @Override
+    public TestType getMasterObject()
     {
         return _master;
     }
@@ -114,7 +116,7 @@ public class SystemObjectRef
                     final Object obj
                     )
     {
-        if (!(obj instanceof SystemObjectRef)) {
+        if (!(obj instanceof SystemObjectRefType)) {
             return false;
         }
 
@@ -122,4 +124,4 @@ public class SystemObjectRef
     }
 
 }
-// SystemObjectRef
+// SystemObjectRefType

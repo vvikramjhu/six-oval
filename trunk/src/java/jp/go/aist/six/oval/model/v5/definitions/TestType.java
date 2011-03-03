@@ -24,8 +24,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.StateRef;
-import jp.go.aist.six.oval.model.definitions.SystemObjectRef;
 import jp.go.aist.six.oval.model.v5.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration;
@@ -62,12 +60,12 @@ public class TestType
     //{optional, default="AND"}
 
 
-    private SystemObjectRef  _objectRef;
+    private SystemObjectRefType  _objectRef;
     //{1..1}
     //{0/UnknownTest}
 
 
-    private final Collection<StateRef>  _stateRef = new ArrayList<StateRef>();
+    private final Collection<StateRefType>  _stateRef = new ArrayList<StateRefType>();
     // {0..*}
 
 
@@ -200,7 +198,7 @@ public class TestType
 
 
     public TestType object(
-                    final SystemObjectRef objectRef
+                    final SystemObjectRefType objectRef
                     )
     {
         setObject( objectRef );
@@ -212,19 +210,19 @@ public class TestType
                     final String objectRef
                     )
     {
-        return object( new SystemObjectRef( objectRef ) );
+        return object( new SystemObjectRefType( objectRef ) );
     }
 
 
     public void setObject(
-                    final SystemObjectRef objectRef
+                    final SystemObjectRefType objectRef
                     )
     {
         _objectRef = objectRef;
     }
 
 
-    public SystemObjectRef getObject()
+    public SystemObjectRefType getObject()
     {
         return _objectRef;
     }
@@ -232,10 +230,10 @@ public class TestType
 
 
     public TestType state(
-                    final StateRef stateRef
+                    final StateRefType stateRef
                     )
     {
-        addState( stateRef );
+        _stateRef.add( stateRef );
         return this;
     }
 
@@ -244,44 +242,30 @@ public class TestType
                     final String stateRef
                     )
     {
-        return state( new StateRef( stateRef ) );
+        return state( new StateRefType( stateRef ) );
     }
 
 
     public void setState(
-                    final Collection<? extends StateRef> stateRefs
+                    final Collection<? extends StateRefType> stateRefs
                     )
     {
         if (stateRefs != _stateRef) {
             _stateRef.clear();
             if (stateRefs != null  &&  stateRefs.size() > 0) {
-                for (StateRef  s : stateRefs) {
-                    addState( s );
-                }
+                _stateRef.addAll( stateRefs );
             }
         }
     }
 
 
-    public boolean addState(
-                    final StateRef stateRef
-                    )
-    {
-        if (_stateRef.contains( stateRef )) {
-            return false;
-        } else {
-            return _stateRef.add( stateRef );
-        }
-    }
-
-
-    public Collection<StateRef> getState()
+    public Collection<StateRefType> getState()
     {
         return _stateRef;
     }
 
 
-    public Iterator<StateRef> iterateState()
+    public Iterator<StateRefType> iterateState()
     {
         return _stateRef.iterator();
     }
