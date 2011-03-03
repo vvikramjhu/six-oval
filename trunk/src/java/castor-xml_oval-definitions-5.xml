@@ -14,142 +14,16 @@
 
 <mapping>
 
-    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-    <!-- %                                                     % -->
-    <!-- %  original classes in the SIX model                  % -->
-    <!-- %                                                     % -->
-    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-    
-    <!-- ======================================================= -->
-    <!-- OvalObject                                              -->
-    <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.OvalObject"
-        verify-constructable="false">
-    </class>
-
-
-
-    <!-- ======================================================= -->
-    <!-- OvalElement                                             -->
-    <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.OvalElement"
-        verify-constructable="false">
-
-        <field name="ovalID" type="string">
-            <bind-xml name="id" node="attribute"/>
-        </field>
-
-        <field name="ovalVersion" type="int">
-            <bind-xml name="version" node="attribute"/>
-        </field>
-    </class>
-
-
-
-    <!-- ======================================================= -->
-    <!-- OvalEntity                                              -->
-    <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.OvalEntity"
-        extends="jp.go.aist.six.oval.model.OvalElement"
-        verify-constructable="false">
-
-        <field name="deprecated" type="boolean">
-            <bind-xml name="deprecated" node="attribute"/>
-        </field>
-    </class>
-
-
-
-    <!-- ======================================================= -->
-    <!-- CommentedOvalEntity                                     -->
-    <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.CommentedOvalEntity"
-        extends="jp.go.aist.six.oval.model.OvalEntity"
-        verify-constructable="false">
-
-        <field name="comment" type="string">
-            <bind-xml name="comment" node="attribute"/>
-        </field>
-    </class>
-
-
-
-    <!-- ======================================================= -->
-    <!-- NameEntity                                              -->
-    <!-- ======================================================= -->
-    <class name ="jp.go.aist.six.oval.model.NameEntity"
-        verify-constructable="false">
-
-        <field name="name" type="string">
-            <bind-xml name="name" node="attribute"/>
-        </field>
-    </class>
-
-
-
-    <!-- ======================================================= -->
-    <!-- OvalEntityReference                                     -->
-    <!-- ======================================================= -->
-    
-    <!-- Since the attribute name of the elements are different,
-    the property 'ovalID' should be mapped in the concrete class. 
-    e.g.  'object_ref' attribute in xxx_test/object reference,
-          'state_ref' attribute in xxx_test/state reference.
-    -->
-    <!--
-    <class name ="jp.go.aist.six.oval.model.OvalEntityReference"
-        verify-constructable="false">
-
-        <field name="ovalID" type="string">
-            <bind-xml name="id" node="attribute"/>
-        </field>
-    </class>
-    -->
-
-
-
-    <!-- ======================================================= -->
-    <!-- AbstractBehaviors                                       -->
-    <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.AbstractBehaviors"
-        verify-constructable="false">
-
-        <field name="maxDepth" type="int">
-            <bind-xml name="max_depth" node="attribute"/>
-        </field>
-
-        <field name="recurseDirection"
-            type="jp.go.aist.six.oval.model.RecurseDirection">
-            <bind-xml name="recurse_direction" node="attribute"/>
-        </field>
-    </class>
-
-
-    <!-- ======================================================= -->
-    <!-- AbstractFileBehaviors                                   -->
-    <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.AbstractFileBehaviors"
-        extends="jp.go.aist.six.oval.model.AbstractBehaviors"
-        verify-constructable="false">
-
-        <field name="recurseFileSystem"
-            type="jp.go.aist.six.oval.model.RecurseFileSystem">
-            <bind-xml name="recurse_file_system" node="attribute"/>
-        </field>
-    </class>
-
-
-    <!-- ======================================================= -->
-    <!-- OvalDocument                                            -->
-    <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.OvalDocument"
+    <class name="jp.go.aist.six.oval.model.v5.OvalDocument"
         verify-constructable="false">
 
         <field name="schemaLocation" type="string">
             <bind-xml name="xsi:schemaLocation" node="attribute"
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
         </field>
     </class>
+
+
 
 
 
@@ -162,10 +36,18 @@
     <!-- ======================================================= -->
     <!-- Generator                                               -->
     <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.common.Generator">
-        <map-to xml="generator"
+    <class name="jp.go.aist.six.oval.model.v5.common.GeneratorType">
+        <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-common-5"
             ns-prefix=""/>
+
+        <field name="productName" type="string">
+            <bind-xml name="product_name" node="element"/>
+        </field>
+
+        <field name="productVersion" type="string">
+            <bind-xml name="product_version" node="element"/>
+        </field>
 
         <field name="schemaVersion" type="string">
             <bind-xml name="schema_version" node="element"/>
@@ -180,38 +62,18 @@
         </field>
 -->
 
-        <field name="productName" type="string">
-            <bind-xml name="product_name" node="element"/>
-        </field>
 
-        <field name="productVersion" type="string">
-            <bind-xml name="product_version" node="element"/>
-        </field>
-
+<!-- ***** 
         <field name="additionalInfo" 
             type="jp.go.aist.six.oval.model.common.GeneratorInfo"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
+-->
     </class>
     
     
-    <!-- ======================================================= -->
-    <!-- Message                                                 -->
-    <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.common.Message">
-        <field name="content" type="string">
-            <bind-xml node="text"/>
-        </field>
 
-        <field name="level" 
-            type="jp.go.aist.six.oval.model.common.MessageLevel">
-            <bind-xml name="level" node="attribute"/>
-        </field>
-    </class>
-
-
-    
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <!-- %                                                     % -->
     <!-- %  xmlns:oval-definitions-5                           % -->
@@ -222,7 +84,7 @@
     <!-- OvalDefinitions                                         -->
     <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions"
-        extends="jp.go.aist.six.oval.model.OvalDocument">
+        extends="jp.go.aist.six.oval.model.v5.OvalDocument">
         <map-to xml="oval_definitions"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
             ns-prefix=""/>

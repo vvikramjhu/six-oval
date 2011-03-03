@@ -179,20 +179,23 @@
 
     <bean id="ovalMarshaller" 
       class="org.springframework.oxm.castor.CastorMarshaller">
-<!--
         <property name="mappingLocations">
             <list>
-                 <value>classpath:six-oval_castor-xml-mapping.xml</value>
-                 <value>classpath:six-util-search_castor-xml-mapping.xml</value>
+                 <value>classpath:castor-xml_oval-definitions-5.xml</value>
             </list>
         </property>
--->
+<!--
         <property name="mappingLocations"
                  value="classpath:six-oval_castor-xml-mapping.xml"/>
         <property name="ignoreExtraAttributes"
                  value="false"/>
         <property name="ignoreExtraElements"
                  value="false"/>
+-->
+        <property name="ignoreExtraAttributes"
+                 value="true"/>
+        <property name="ignoreExtraElements"
+                 value="true"/>
         <property name="suppressXsiType"
                  value="true"/>
         <property name="encoding"

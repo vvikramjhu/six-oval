@@ -9,7 +9,6 @@ import jp.go.aist.six.oval.core.store.OvalDataStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.NameEntity;
 import jp.go.aist.six.oval.model.definitions.Definition;
-import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
@@ -593,6 +592,14 @@ public abstract class CoreTestBase
     public Object[][] provideOvalDefinitionsOvalDefinitions()
     {
         return new Object[][] {
+                        // windows, CVE-2010-0176, def:7222
+                        {
+                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+                            "test/data/oval-definitins-5/oval-definitions_CVE-2010-0176_mitre7222_v5.9.xml",
+                            "/oval_definitions",
+                            null, //DefinitionsSample.OVAL_DEFINITIONS_8050,
+                            "marshalled_oval-definitions_CVE-2010-0176_mitre7222_v5.9.xml"
+                        }
 //                        // Windows XP, CVE-2010-0035, PowerPoint
 //                        {
 //                            OvalDefinitions.class,
@@ -666,14 +673,14 @@ public abstract class CoreTestBase
 //                        }
 //                        ,
 
-                        // Windows XP @ Mitre, all the vulnerabilities
-                        {
-                            OvalDefinitions.class,
-                            "test/data/definitions/20110209_oval-vulnerability_microsoft.windows.xp.xml",
-                            "/oval_definitions",
-                            null,
-                            "marshalled_20101012_vulnerability_microsoft.windows.xp.xml"
-                        }
+//                        // Windows XP @ Mitre, all the vulnerabilities
+//                        {
+//                            OvalDefinitions.class,
+//                            "test/data/definitions/20110209_oval-vulnerability_microsoft.windows.xp.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_20101012_vulnerability_microsoft.windows.xp.xml"
+//                        }
 
 //                        ,
 //                        // Windows XP @ Mitre, inventory
