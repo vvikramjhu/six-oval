@@ -18,7 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model;
+package jp.go.aist.six.oval.model.v5;
+
 
 
 
@@ -35,10 +36,10 @@ public abstract class OvalElement
 {
 
     private String  _ovalID;
-    //{oval:DefinitionIDPattern, required}
+    //{required, oval:DefinitionIDPattern}
 
     private int  _ovalVersion;
-    //{xsd:nonNegativeInteger, required}
+    //{required, xsd:nonNegativeInteger}
 
 
     /**
@@ -186,6 +187,7 @@ public abstract class OvalElement
     //  Comparable
     //**************************************************************
 
+    @Override
     public int compareTo(
                     final OvalElement o
                     )

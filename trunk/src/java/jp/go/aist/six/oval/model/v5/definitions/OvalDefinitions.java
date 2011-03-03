@@ -39,9 +39,9 @@ public class OvalDefinitions
     private GeneratorType  _generator;
     //{1..1}
 
-//    private DefinitionsType  _definitions;
-//    //{0..1}
-//
+    private DefinitionsType  _definitions;
+    //{0..1}
+
 //    private TestsType _tests;
 //    //{0..1}
 //
@@ -95,38 +95,38 @@ public class OvalDefinitions
 
 
 
-//    /**
-//     */
-//    public void setDefinitions(
-//                    final DefinitionsType definitions
-//                    )
-//    {
-//        _definitions = definitions;
-//    }
-//
-//
-//    public DefinitionsType getDefinitions()
-//    {
-//        return _definitions;
-//    }
-//
-//
-//    public OvalDefinitions definition(
-//                    final DefinitionType definition
-//                    )
-//    {
-//        DefinitionsType  defs = getDefinitions();
-//        if (defs == null) {
-//            defs = new DefinitionsType();
-//            setDefinitions( defs );
-//        }
-//        defs.addDefinition( definition );
-//
-//        return this;
-//    }
-//
-//
-//
+    /**
+     */
+    public void setDefinitions(
+                    final DefinitionsType definitions
+                    )
+    {
+        _definitions = definitions;
+    }
+
+
+    public DefinitionsType getDefinitions()
+    {
+        return _definitions;
+    }
+
+
+    public OvalDefinitions definition(
+                    final DefinitionType definition
+                    )
+    {
+        DefinitionsType  defs = getDefinitions();
+        if (defs == null) {
+            defs = new DefinitionsType();
+            setDefinitions( defs );
+        }
+        defs.addDefinition( definition );
+
+        return this;
+    }
+
+
+
 //    /**
 //     */
 //    public void setTests(
@@ -342,16 +342,15 @@ public class OvalDefinitions
     @Override
     public String toString()
     {
-//        DefinitionsType  definitions = getDefinitions();
+        DefinitionsType  definitions = getDefinitions();
 //        TestsType  tests = getTests();
 //        SystemObjectsType  objects = getObjects();
 //        StatesType  states = getStates();
 //        VariablesType  variables = getVariables();
 
         return "oval_definitions[generator=" + getGenerator()
-                            + ", xsi:schemaLocation=" + getSchemaLocation()
-//                        + ", #definitions="
-//                        + (definitions == null ? 0 : definitions.size())
+                        + ", #definitions="
+                        + (definitions == null ? 0 : definitions.size())
 //                        + ", #tests="
 //                        + (tests == null ? 0 : tests.getTest().size())
 //                        + ", #objects="

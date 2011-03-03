@@ -22,9 +22,9 @@ package jp.go.aist.six.oval.model.v5.definitions;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.definitions.Criteria;
 import jp.go.aist.six.oval.model.definitions.Cve;
+import jp.go.aist.six.oval.model.v5.OvalEntity;
 import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
 
 
@@ -52,7 +52,6 @@ public class DefinitionType
     //{0..1}
 
     private String  _criteriaXml;
-
 
 
     private DefinitionClassEnumeration  _definitionClass;
