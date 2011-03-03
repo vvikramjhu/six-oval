@@ -41,8 +41,7 @@ import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class TestType
-//public abstract class Test
-    extends CommentedOvalEntity //, Noted
+    extends CommentedOvalEntity
 {
 
     private NotesType  _notes;

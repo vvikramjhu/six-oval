@@ -37,7 +37,6 @@ import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class VariableType
-//public abstract class Variable
     extends CommentedOvalEntity
 {
 

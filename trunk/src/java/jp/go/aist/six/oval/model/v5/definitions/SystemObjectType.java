@@ -39,7 +39,6 @@ import jp.go.aist.six.oval.model.v5.CommentedOvalEntity;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class SystemObjectType
-//public abstract class SystemObject
     extends CommentedOvalEntity
 {
 
