@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.mitre;
+package jp.go.aist.six.oval.model.v5.mitre;
 
 
 
@@ -43,31 +43,6 @@ public class Submitted
      */
     public Submitted()
     {
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public Submitted(
-                    final String date
-                    )
-    {
-        super( date );
-    }
-
-
-
-    /**
-     * Constructor.
-     */
-    public Submitted(
-                    final String date,
-                    final Contributor contributor
-                    )
-    {
-        this( date );
-        setContributor( contributor );
     }
 
 

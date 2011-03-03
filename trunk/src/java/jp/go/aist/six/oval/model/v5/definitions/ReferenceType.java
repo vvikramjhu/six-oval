@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
@@ -56,31 +56,25 @@ public class ReferenceType
     }
 
 
-    /**
-     * Constructor.
-     */
-    public ReferenceType(
-                    final String source,
-                    final String refID
-                    )
-    {
-        setSource( source );
-        setRefID( refID );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public ReferenceType(
-                    final String source,
-                    final String refID,
-                    final String refURL
-                    )
-    {
-        this( source, refID );
-        setRefURL( refURL );
-    }
+//    public ReferenceType(
+//                    final String source,
+//                    final String refID
+//                    )
+//    {
+//        setSource( source );
+//        setRefID( refID );
+//    }
+//
+//
+//    public ReferenceType(
+//                    final String source,
+//                    final String refID,
+//                    final String refURL
+//                    )
+//    {
+//        this( source, refID );
+//        setRefURL( refURL );
+//    }
 
 
 

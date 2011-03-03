@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.mitre;
+package jp.go.aist.six.oval.model.v5.mitre;
 
-import jp.go.aist.six.oval.model.common.GeneratorInfo;
+import jp.go.aist.six.oval.model.v5.common.GeneratorItem;
 
 
 
@@ -33,7 +33,7 @@ import jp.go.aist.six.oval.model.common.GeneratorInfo;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Vendor
-    extends GeneratorInfo
+    extends GeneratorItem
 {
 
     private String  _name;
@@ -46,17 +46,6 @@ public class Vendor
      */
     public Vendor()
     {
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public Vendor(
-                    final String name
-                    )
-    {
-        setName( name );
     }
 
 

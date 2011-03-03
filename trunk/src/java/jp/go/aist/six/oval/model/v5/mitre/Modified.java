@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.mitre;
+package jp.go.aist.six.oval.model.v5.mitre;
 
 
 
@@ -46,32 +46,6 @@ public class Modified
      */
     public Modified()
     {
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public Modified(
-                    final String date
-                    )
-    {
-        super( date );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public Modified(
-                    final String date,
-                    final String comment,
-                    final Contributor contributor
-                    )
-    {
-        this( date );
-        setComment( comment );
-        setContributor( contributor );
     }
 
 

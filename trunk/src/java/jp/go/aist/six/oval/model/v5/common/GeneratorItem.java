@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.common;
+package jp.go.aist.six.oval.model.v5.common;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
@@ -32,16 +32,16 @@ import jp.go.aist.six.oval.model.AbstractOvalObject;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class GeneratorInfo
+public abstract class GeneratorItem
     extends AbstractOvalObject
 {
 
     /**
      * Constructor.
      */
-    public GeneratorInfo()
+    public GeneratorItem()
     {
     }
 
 }
-// GeneratorInfo
+// GeneratorItem

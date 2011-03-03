@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.mitre;
+package jp.go.aist.six.oval.model.v5.mitre;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
@@ -44,17 +44,6 @@ public abstract class Event
      */
     public Event()
     {
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public Event(
-                    final String date
-                    )
-    {
-        setDate( date );
     }
 
 

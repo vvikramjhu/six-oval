@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.mitre;
+package jp.go.aist.six.oval.model.v5.mitre;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -31,7 +31,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class DefinitionStatus
+public final class DefinitionStatusEnumeration
     implements Serializable
 {
 
@@ -41,16 +41,16 @@ public final class DefinitionStatus
     private static final String  _DEPRECATED_ = "DEPRECATED";
 
 
-    public static final DefinitionStatus  DRAFT      = new DefinitionStatus( _DRAFT_ );
-    public static final DefinitionStatus  INTERIM    = new DefinitionStatus( _INTERIM_ );
-    public static final DefinitionStatus  ACCEPTED   = new DefinitionStatus( _ACCEPTED_ );
-    public static final DefinitionStatus  DEPRECATED = new DefinitionStatus( _DEPRECATED_ );
+    public static final DefinitionStatusEnumeration  DRAFT      = new DefinitionStatusEnumeration( _DRAFT_ );
+    public static final DefinitionStatusEnumeration  INTERIM    = new DefinitionStatusEnumeration( _INTERIM_ );
+    public static final DefinitionStatusEnumeration  ACCEPTED   = new DefinitionStatusEnumeration( _ACCEPTED_ );
+    public static final DefinitionStatusEnumeration  DEPRECATED = new DefinitionStatusEnumeration( _DEPRECATED_ );
 
 
 
-    private static HashMap<String, DefinitionStatus> _INIT_()
+    private static HashMap<String, DefinitionStatusEnumeration> _INIT_()
     {
-        HashMap<String, DefinitionStatus>  map = new HashMap<String, DefinitionStatus>();
+        HashMap<String, DefinitionStatusEnumeration>  map = new HashMap<String, DefinitionStatusEnumeration>();
         map.put( _DRAFT_,      DRAFT    );
         map.put( _INTERIM_,    INTERIM  );
         map.put( _ACCEPTED_,   ACCEPTED );
@@ -58,18 +58,18 @@ public final class DefinitionStatus
         return map;
     }
 
-    private static final HashMap<String, DefinitionStatus>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, DefinitionStatusEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static DefinitionStatus valueOf(
+    public static DefinitionStatusEnumeration valueOf(
                     final String name
                     )
     {
-        DefinitionStatus  flag = null;
+        DefinitionStatusEnumeration  flag = null;
         if (name != null) {
             flag = _INSTANCES_.get( name );
         }
@@ -89,7 +89,7 @@ public final class DefinitionStatus
 
     /**
      */
-    private DefinitionStatus(
+    private DefinitionStatusEnumeration(
                     final String name
                     )
     {
@@ -107,9 +107,9 @@ public final class DefinitionStatus
 
 
 
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
     //  java.lang.Object
-    ////////////////////////////////////////////////////////////////
+    //**************************************************************
 
     @Override
     public String toString()
@@ -118,4 +118,4 @@ public final class DefinitionStatus
     }
 
 }
-// DefinitionStatus
+// DefinitionStatusEnumeration

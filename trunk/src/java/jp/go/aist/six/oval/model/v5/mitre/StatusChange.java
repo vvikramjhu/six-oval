@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.mitre;
+package jp.go.aist.six.oval.model.v5.mitre;
 
 
 
@@ -33,7 +33,7 @@ public class StatusChange
     extends Event
 {
 
-    private DefinitionStatus  _status;
+    private DefinitionStatusEnumeration  _status;
 
 
 
@@ -45,29 +45,16 @@ public class StatusChange
     }
 
 
-    /**
-     * Constructor.
-     */
-    public StatusChange(
-                    final String date,
-                    final DefinitionStatus status
-                    )
-    {
-        super( date );
-        setStatus( status );
-    }
-
-
 
     public void setStatus(
-                    final DefinitionStatus status
+                    final DefinitionStatusEnumeration status
                     )
     {
         _status = status;
     }
 
 
-    public DefinitionStatus getStatus()
+    public DefinitionStatusEnumeration getStatus()
     {
         return _status;
     }

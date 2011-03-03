@@ -181,7 +181,7 @@
       class="org.springframework.oxm.castor.CastorMarshaller">
         <property name="mappingLocations">
             <list>
-                 <value>classpath:castor-xml_six-oval.xml</value>
+                 <value>classpath:castor-xml_six-oval-5.xml</value>
                  <value>classpath:castor-xml_oval-common-5.xml</value>
                  <value>classpath:castor-xml_oval-definitions-5.xml</value>
             </list>

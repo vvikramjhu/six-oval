@@ -22,18 +22,8 @@ package jp.go.aist.six.oval.model.v5.definitions;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
-import jp.go.aist.six.oval.model.AbstractOvalObject;
-import jp.go.aist.six.oval.model.definitions.Cve;
-import jp.go.aist.six.oval.model.definitions.MetadataItem;
-import jp.go.aist.six.oval.model.mitre.Event;
-import jp.go.aist.six.oval.model.mitre.Modified;
-import jp.go.aist.six.oval.model.mitre.OvalRepository;
-import jp.go.aist.six.oval.model.mitre.Submitted;
-import jp.go.aist.six.oval.model.redhat.CveReference;
-import jp.go.aist.six.oval.model.redhat.LinuxSecurityAdvisory;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
@@ -52,19 +42,24 @@ public class MetadataType
     private String  _title;
     //{1..1}
 
+
 //    private final Collection<Affected>  _affected = new ArrayList<Affected>();
     private AffectedType  _affected;
     //{0..*}
     //NOTE: So far, we found NO definition with multiple 'affected' elements.
 
+
     private final Collection<ReferenceType>  _reference =
         new ArrayList<ReferenceType>();
     //{0..*}
 
+
     private String  _description;
     //{1..1}
 
-    private final Collection<MetadataItem>  _additionalMetadata = new ArrayList<MetadataItem>();
+
+    private final Collection<MetadataItem>  _additionalMetadata =
+        new ArrayList<MetadataItem>();
     //{xsd:any, 0..*}
 
 
@@ -152,22 +147,8 @@ public class MetadataType
         if (references != _reference) {
             _reference.clear();
             if (references != null  &&  references.size() > 0) {
-                for (ReferenceType  r : references) {
-                    addReference( r );
-                }
+                _reference.addAll( references );
             }
-        }
-    }
-
-
-    public boolean addReference(
-                    final ReferenceType reference
-                    )
-    {
-        if (reference == null) {
-            return false;
-        } else {
-            return _reference.add( reference );
         }
     }
 
@@ -176,7 +157,7 @@ public class MetadataType
                     final ReferenceType reference
                     )
     {
-        addReference( reference );
+        _reference.add( reference );
         return this;
     }
 
@@ -235,23 +216,11 @@ public class MetadataType
     }
 
 
-    public boolean addAdditionalMetadata(
-                    final MetadataItem item
-                    )
-    {
-        if (item == null) {
-            return false;
-        }
-
-        return _additionalMetadata.add( item );
-    }
-
-
     public MetadataType additionalMetadata(
                     final MetadataItem item
                     )
     {
-        addAdditionalMetadata( item );
+        _additionalMetadata.add( item );
         return this;
     }
 
@@ -273,71 +242,42 @@ public class MetadataType
     //  SIX: extended properties
     //==============================================================
 
-    /**
-     * TODO: move these methods to store package,
-     * maybe StoreWorker, JdoCallbackHandler and OvalModelUtil classes.
-     */
-
-    /**
-     * Returns the last modified date of this definition.
-     * For a definition in Mitre OVAL repository, it is retrieved
-     * from the latest "oval_repository/dates/" element.
-     * For a Red Hat definition, it is retrieved
-     * from the "advisory/updated" element.
-     */
-    public String getLastModifiedDate()
-    {
-        String  lastModifiedDate = null;
-
-        Collection<MetadataItem>  items = getAdditionalMetadata();
-        if (items != null  &&  items.size() > 0) {
-            for (MetadataItem  item : items) {
-                String  itemDate = _getLastModifiedDate( item );
-                if (lastModifiedDate == null
-                                    ||  lastModifiedDate.compareTo( itemDate ) < 0) {
-                    lastModifiedDate = itemDate;
-                }
-            }
-        }
-
-        return lastModifiedDate;
-    }
-
-
-    private String _getLastModifiedDate(
-                    final MetadataItem item
-                    )
-    {
-        String  lastModifiedDate = null;
-
-        if (item instanceof OvalRepository) {
-            // Mitre OVAL repository
-            OvalRepository  or = OvalRepository.class.cast( item );
-            for (Event  event : or.getEvent()) {
-                if (lastModifiedDate == null  &&  (event instanceof Submitted)) {
-                    lastModifiedDate = event.getDate();
-                } else if (event instanceof Modified) {
-                    String  eventDate = event.getDate();
-                    if (lastModifiedDate == null
-                                    ||  lastModifiedDate.compareTo( eventDate ) < 0) {
-                        lastModifiedDate = eventDate;
-                    }
-                }
-
-            }
-            if (lastModifiedDate != null) {
-                lastModifiedDate = lastModifiedDate.substring( 0, 10 );
-            }
-        } else if (item instanceof LinuxSecurityAdvisory) {
-            // Red Hat definition
-            LinuxSecurityAdvisory  adv = LinuxSecurityAdvisory.class.cast( item );
-            lastModifiedDate = adv.getUpdated();
-        }
-
-        return lastModifiedDate;
-    }
+//    /**
+//     * TODO: move these methods to store package,
+//     * maybe StoreWorker, JdoCallbackHandler and OvalModelUtil classes.
+//     */
+//
+//    /**
+//     * Returns the last modified date of this definition.
+//     * For a definition in Mitre OVAL repository, it is retrieved
+//     * from the latest "oval_repository/dates/" element.
+//     * For a Red Hat definition, it is retrieved
+//     * from the "advisory/updated" element.
+//     */
+//    public String getLastModifiedDate()
 //    {
-//        Date  lastModifiedDate = null;
+//        String  lastModifiedDate = null;
+//
+//        Collection<MetadataItem>  items = getAdditionalMetadata();
+//        if (items != null  &&  items.size() > 0) {
+//            for (MetadataItem  item : items) {
+//                String  itemDate = _getLastModifiedDate( item );
+//                if (lastModifiedDate == null
+//                                    ||  lastModifiedDate.compareTo( itemDate ) < 0) {
+//                    lastModifiedDate = itemDate;
+//                }
+//            }
+//        }
+//
+//        return lastModifiedDate;
+//    }
+//
+//
+//    private String _getLastModifiedDate(
+//                    final MetadataItem item
+//                    )
+//    {
+//        String  lastModifiedDate = null;
 //
 //        if (item instanceof OvalRepository) {
 //            // Mitre OVAL repository
@@ -346,7 +286,7 @@ public class MetadataType
 //                if (lastModifiedDate == null  &&  (event instanceof Submitted)) {
 //                    lastModifiedDate = event.getDate();
 //                } else if (event instanceof Modified) {
-//                    Date  eventDate = event.getDate();
+//                    String  eventDate = event.getDate();
 //                    if (lastModifiedDate == null
 //                                    ||  lastModifiedDate.compareTo( eventDate ) < 0) {
 //                        lastModifiedDate = eventDate;
@@ -354,52 +294,54 @@ public class MetadataType
 //                }
 //
 //            }
+//            if (lastModifiedDate != null) {
+//                lastModifiedDate = lastModifiedDate.substring( 0, 10 );
+//            }
 //        } else if (item instanceof LinuxSecurityAdvisory) {
 //            // Red Hat definition
 //            LinuxSecurityAdvisory  adv = LinuxSecurityAdvisory.class.cast( item );
 //            lastModifiedDate = adv.getUpdated();
 //        }
 //
-//        return (lastModifiedDate == null ? null : IsoDate.formatDate( lastModifiedDate ));
+//        return lastModifiedDate;
 //    }
 
 
 
-    /**
-     */
-    public Collection<Cve> getRelatedCve()
-    {
-        Set<Cve>  cves = new HashSet<Cve>();
-        final String  cveSource = "CVE";
-
-        // Mitre OVAL repository
-        Collection<ReferenceType>  references = getReference();
-        if (references != null  &&  references.size() > 0) {
-            for (ReferenceType  ref : references) {
-                if (cveSource.equals( ref.getSource() )) {
-                    Cve  cve = new Cve( ref.getRefID() );
-                    cves.add( cve );
-                }
-            }
-        }
-
-        // Red Hat definition
-        Collection<MetadataItem>  items = getAdditionalMetadata();
-        if (items != null  &&  items.size() > 0) {
-            for (MetadataItem  item : items) {
-                if (item instanceof LinuxSecurityAdvisory) {
-                    LinuxSecurityAdvisory  advisory = (LinuxSecurityAdvisory)item;
-                    for (CveReference  ref : advisory.getCve()) {
-                        Cve  cve = new Cve( ref.getRefID() );
-                        cves.add( cve );
-                    }
-                }
-            }
-        }
-
-        return cves;
-    }
-
+//    /**
+//     */
+//    public Collection<Cve> getRelatedCve()
+//    {
+//        Set<Cve>  cves = new HashSet<Cve>();
+//        final String  cveSource = "CVE";
+//
+//        // Mitre OVAL repository
+//        Collection<ReferenceType>  references = getReference();
+//        if (references != null  &&  references.size() > 0) {
+//            for (ReferenceType  ref : references) {
+//                if (cveSource.equals( ref.getSource() )) {
+//                    Cve  cve = new Cve( ref.getRefID() );
+//                    cves.add( cve );
+//                }
+//            }
+//        }
+//
+//        // Red Hat definition
+//        Collection<MetadataItem>  items = getAdditionalMetadata();
+//        if (items != null  &&  items.size() > 0) {
+//            for (MetadataItem  item : items) {
+//                if (item instanceof LinuxSecurityAdvisory) {
+//                    LinuxSecurityAdvisory  advisory = (LinuxSecurityAdvisory)item;
+//                    for (CveReference  ref : advisory.getCve()) {
+//                        Cve  cve = new Cve( ref.getRefID() );
+//                        cves.add( cve );
+//                    }
+//                }
+//            }
+//        }
+//
+//        return cves;
+//    }
 
 
 

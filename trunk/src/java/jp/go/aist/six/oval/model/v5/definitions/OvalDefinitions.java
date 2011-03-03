@@ -349,8 +349,9 @@ public class OvalDefinitions
 //        VariablesType  variables = getVariables();
 
         return "oval_definitions[generator=" + getGenerator()
-                        + ", #definitions="
-                        + (definitions == null ? 0 : definitions.size())
+//                        + ", #definitions="
+//                        + (definitions == null ? 0 : definitions.size())
+                        + ", definitions=" + String.valueOf( definitions )
 //                        + ", #tests="
 //                        + (tests == null ? 0 : tests.getTest().size())
 //                        + ", #objects="

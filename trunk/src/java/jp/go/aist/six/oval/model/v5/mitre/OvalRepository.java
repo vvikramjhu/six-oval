@@ -18,12 +18,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.mitre;
+package jp.go.aist.six.oval.model.v5.mitre;
 
-import jp.go.aist.six.oval.model.definitions.MetadataItem;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.v5.definitions.MetadataItem;
 
 
 
@@ -38,9 +38,9 @@ public class OvalRepository
     extends MetadataItem
 {
 
-    private Collection<Event>  _event = new ArrayList<Event>();
+    private final Collection<Event>  _event = new ArrayList<Event>();
 
-    private DefinitionStatus  _status;
+    private DefinitionStatusEnumeration  _status;
 
 
 
@@ -53,32 +53,18 @@ public class OvalRepository
 
 
 
+    /**
+     */
     public void setEvent(
                     final Collection<? extends Event> events
                     )
     {
         if (events != _event) {
             _event.clear();
-            if (events == null  ||  events.size() == 0) {
-                return;
-            }
-
-            for (Event  event : events) {
-                addEvent( event );
+            if (events != null  &&  events.size() > 0) {
+                _event.addAll( events );
             }
         }
-    }
-
-
-    public boolean addEvent(
-                    final Event event
-                    )
-    {
-        if (event == null) {
-            return false;
-        }
-
-        return _event.add( event );
     }
 
 
@@ -86,7 +72,7 @@ public class OvalRepository
                     final Event event
                     )
     {
-        addEvent( event );
+        _event.add( event );
         return this;
     }
 
@@ -105,7 +91,7 @@ public class OvalRepository
 
 
     public void setStatus(
-                    final DefinitionStatus status
+                    final DefinitionStatusEnumeration status
                     )
     {
         _status = status;
@@ -113,7 +99,7 @@ public class OvalRepository
 
 
     public OvalRepository status(
-                    final DefinitionStatus status
+                    final DefinitionStatusEnumeration status
                     )
     {
         setStatus( status );
@@ -121,7 +107,7 @@ public class OvalRepository
     }
 
 
-    public DefinitionStatus getStatus()
+    public DefinitionStatusEnumeration getStatus()
     {
         return _status;
     }

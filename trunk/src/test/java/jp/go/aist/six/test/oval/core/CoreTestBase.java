@@ -595,10 +595,19 @@ public abstract class CoreTestBase
                         // windows, CVE-2010-0176, def:7222
                         {
                             jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                            "test/data/oval-definitions-5/oval-definitions_CVE-2010-0176_mitre7222_v5.9.xml",
+                            "test/data/oval-definitions-5/oval-definitions_CVE-2010-0176_def7222_v5.9.xml",
                             "/oval_definitions",
                             null, //DefinitionsSample.OVAL_DEFINITIONS_8050,
-                            "marshalled_oval-definitions_CVE-2010-0176_mitre7222_v5.9.xml"
+                            "marshalled_oval-definitions_CVE-2010-0176_def7222_v5.9.xml"
+                        }
+                        ,
+                        // windows, CVE-2003-0353, def:962, deprecated
+                        {
+                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+                            "test/data/oval-definitions-5/oval-definitions_CVE-2003-0353_def962_deprecated.xml",
+                            "/oval_definitions",
+                            null,
+                            "marshalled_oval-definitions_CVE-2003-0353_def962_deprecated.xml"
                         }
 //                        // Windows XP, CVE-2010-0035, PowerPoint
 //                        {
