@@ -92,12 +92,12 @@
             <bind-xml name="metadata" node="element"/>
         </field>
 
-<!-- 
-
         <field name="notes" 
-            type="jp.go.aist.six.oval.model.definitions.Notes">
+            type="jp.go.aist.six.oval.model.v5.definitions.NotesType">
             <bind-xml name="notes" node="element"/>
         </field>
+
+<!-- 
 
         <field name="criteria" 
             type="jp.go.aist.six.oval.model.definitions.Criteria">
@@ -204,6 +204,29 @@
             <bind-xml name="ref_url" node="attribute"/>
         </field>
     </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.NotesType">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="note" 
+            type="jp.go.aist.six.oval.model.v5.definitions.Note"
+            collection="collection">
+            <bind-xml name="note" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.Note">
+        <map-to xml="note"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="content" type="string">
+            <bind-xml node="text"/>
+        </field>
+    </class>
+
 
 
 

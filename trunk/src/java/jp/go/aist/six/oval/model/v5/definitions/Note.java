@@ -20,38 +20,47 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.NameEntity;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
 /**
- * A product name.
+ * A note.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Product
-    extends NameEntity
-//extends NamedEntry<Integer>
+public class Note
+    extends AbstractOvalObject
 {
+
+    private String  _content;
+
+
 
     /**
      * Constructor.
      */
-    public Product()
+    public Note()
     {
     }
 
 
+
     /**
-     * Constructor.
      */
-    public Product(
-                    final String name
+    public void setContent(
+                    final String content
                     )
     {
-        super( name );
+        _content = content;
+    }
+
+
+    public String getContent()
+    {
+        return _content;
     }
 
 
@@ -61,35 +70,10 @@ public class Product
     // **************************************************************
 
     @Override
-    public int hashCode()
+    public String toString()
     {
-        return super.hashCode();
+        return "note[" + getContent() + "]";
     }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (!(obj instanceof Product)) {
-            return false;
-        }
-
-        return super.equals( obj );
-    }
-
-
-
-//    /**
-//     * @see java.lang.Object#toString()
-//     */
-//    @Override
-//    public String toString()
-//    {
-//        return "Product[" + getName() + "]";
-//    }
 
 }
-// Product
+// Note

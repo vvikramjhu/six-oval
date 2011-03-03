@@ -217,60 +217,60 @@ public class DefinitionType
     //  SIX: extended properties
     //==============================================================
 
-    /**
-     */
-    public void setLastModifiedDate(
-                    final String date
-                    )
-    {
-        _lastModifiedDate = date;
-    }
-
-
-    public String getLastModifiedDate()
-    {
-        if (_lastModifiedDate == null) {
-            MetadataType  meta = getMetadata();
-            if (meta != null) {
-                _lastModifiedDate = meta.getLastModifiedDate();
-            }
-        }
-
-        return _lastModifiedDate;
-    }
-
-
-
-    /**
-     */
-    public void setRelatedCve(
-                    final Collection<Cve> cves
-                    )
-    {
-        if (cves != _relatedCve) {
-            _relatedCve.clear();
-
-            if (cves != null  &&  cves.size() > 0) {
-                _relatedCve.addAll( cves );
-            }
-        }
-    }
-
-
-    private transient boolean  _relatedCveComputed = false;
-
-    public Collection<Cve> getRelatedCve()
-    {
-        if (! _relatedCveComputed) {
-            MetadataType  meta = getMetadata();
-            if (meta != null) {
-                _relatedCve.addAll( meta.getRelatedCve() );
-            }
-            _relatedCveComputed = true;
-        }
-
-        return _relatedCve;
-    }
+//    /**
+//     */
+//    public void setLastModifiedDate(
+//                    final String date
+//                    )
+//    {
+//        _lastModifiedDate = date;
+//    }
+//
+//
+//    public String getLastModifiedDate()
+//    {
+//        if (_lastModifiedDate == null) {
+//            MetadataType  meta = getMetadata();
+//            if (meta != null) {
+//                _lastModifiedDate = meta.getLastModifiedDate();
+//            }
+//        }
+//
+//        return _lastModifiedDate;
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public void setRelatedCve(
+//                    final Collection<Cve> cves
+//                    )
+//    {
+//        if (cves != _relatedCve) {
+//            _relatedCve.clear();
+//
+//            if (cves != null  &&  cves.size() > 0) {
+//                _relatedCve.addAll( cves );
+//            }
+//        }
+//    }
+//
+//
+//    private transient boolean  _relatedCveComputed = false;
+//
+//    public Collection<Cve> getRelatedCve()
+//    {
+//        if (! _relatedCveComputed) {
+//            MetadataType  meta = getMetadata();
+//            if (meta != null) {
+//                _relatedCve.addAll( meta.getRelatedCve() );
+//            }
+//            _relatedCveComputed = true;
+//        }
+//
+//        return _relatedCve;
+//    }
 
 
 
@@ -307,9 +307,9 @@ public class DefinitionType
                         + ", class=" + getDefinitionClass()
                         + ", metadata=" + getMetadata()
 //                        + ", criteria=" + getCriteria()
-//                        + ", notes=" + getNotes()
+                        + ", notes=" + getNotes()
                         + "]";
     }
 
 }
-// Definition
+// DefinitionType

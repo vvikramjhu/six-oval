@@ -20,10 +20,9 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.Container;
 
 
 
@@ -35,13 +34,8 @@ import jp.go.aist.six.oval.model.AbstractOvalObject;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class NotesType
-    extends AbstractOvalObject
+    extends Container<Note> //{1..*}
 {
-
-    private final Collection<String>  _note = new ArrayList<String>();
-    //{1..*}
-
-
 
     /**
      * Constructor.
@@ -71,47 +65,30 @@ public class NotesType
     /**
      */
     public void setNote(
-                    final Collection<String> notes
+                    final Collection<? extends Note> notes
                     )
     {
-        if (_note != notes) {
-            _note.clear();
-            if (notes != null  &&  notes.size() > 0) {
-                _note.addAll( notes );
-            }
-        }
+        _setElement( notes );
     }
 
 
     public boolean addNote(
-                    final String note
+                    final Note note
                     )
     {
-        return _note.add( note );
+        return add( note );
     }
 
 
-    public Collection<String> getNote()
+    public Collection<Note> getNote()
     {
-        return _note;
+        return _getElement();
     }
 
 
-    public Iterator<String> iterateNote()
+    public Iterator<Note> iterateNote()
     {
-        return _note.iterator();
-    }
-
-
-
-    //**************************************************************
-    //  java.lang.Object
-    //**************************************************************
-
-    @Override
-    public String toString()
-    {
-        return String.valueOf( getNote() );
+        return iterator();
     }
 
 }
