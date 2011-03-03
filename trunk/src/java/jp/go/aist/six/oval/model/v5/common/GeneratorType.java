@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.v5.common;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import jp.go.aist.six.oval.model.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
