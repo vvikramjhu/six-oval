@@ -327,11 +327,11 @@ public class OvalDefinitions
     //  OvalDocument
     //**************************************************************
 
-    @Override
-    public String getSchemaLocation()
-    {
-        return DEFINITIONS_SCHEMA_LOCATION;
-    }
+//    @Override
+//    public String getSchemaLocation()
+//    {
+//        return DEFINITIONS_SCHEMA_LOCATION;
+//    }
 
 
 
@@ -349,6 +349,7 @@ public class OvalDefinitions
 //        VariablesType  variables = getVariables();
 
         return "oval_definitions[generator=" + getGenerator()
+                            + ", xsi:schemaLocation=" + getSchemaLocation()
 //                        + ", #definitions="
 //                        + (definitions == null ? 0 : definitions.size())
 //                        + ", #tests="

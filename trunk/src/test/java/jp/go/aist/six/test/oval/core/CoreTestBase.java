@@ -595,7 +595,7 @@ public abstract class CoreTestBase
                         // windows, CVE-2010-0176, def:7222
                         {
                             jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                            "test/data/oval-definitins-5/oval-definitions_CVE-2010-0176_mitre7222_v5.9.xml",
+                            "test/data/oval-definitions-5/oval-definitions_CVE-2010-0176_mitre7222_v5.9.xml",
                             "/oval_definitions",
                             null, //DefinitionsSample.OVAL_DEFINITIONS_8050,
                             "marshalled_oval-definitions_CVE-2010-0176_mitre7222_v5.9.xml"
