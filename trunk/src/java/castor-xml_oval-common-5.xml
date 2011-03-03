@@ -14,28 +14,12 @@
 
 <mapping>
 
-    <class name="jp.go.aist.six.oval.model.v5.OvalDocument"
-        verify-constructable="false">
-
-        <field name="schemaLocation" type="string">
-            <bind-xml name="xsi:schemaLocation" node="attribute"
-                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-        </field>
-    </class>
-
-
-
-
-
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <!-- %                                                     % -->
     <!-- %  xmlns:oval-common-5                                % -->
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-    <!-- ======================================================= -->
-    <!-- Generator                                               -->
-    <!-- ======================================================= -->
     <class name="jp.go.aist.six.oval.model.v5.common.GeneratorType">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-common-5"
@@ -71,65 +55,6 @@
         </field>
 -->
     </class>
-    
-    
-
-    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-    <!-- %                                                     % -->
-    <!-- %  xmlns:oval-definitions-5                           % -->
-    <!-- %                                                     % -->
-    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-    <!-- ======================================================= -->
-    <!-- OvalDefinitions                                         -->
-    <!-- ======================================================= -->
-    <class name="jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions"
-        extends="jp.go.aist.six.oval.model.v5.OvalDocument">
-        <map-to xml="oval_definitions"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
-            ns-prefix=""/>
-
-<!--
-        <field name="schemaLocation" type="string">
-            <bind-xml name="xsi:schemaLocation" node="attribute"
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-        </field>
--->
-
-        <field name="generator" 
-            type="jp.go.aist.six.oval.model.v5.common.GeneratorType">
-            <bind-xml name="generator" node="element"/>
-        </field>
-
-
-<!-- *****
-        <field name="definitions" 
-            type="jp.go.aist.six.oval.model.v5.definitions.Definitions">
-            <bind-xml name="definitions" node="element"/>
-        </field>
-
-        <field name="tests" 
-            type="jp.go.aist.six.oval.model.v5.definitions.Tests">
-            <bind-xml name="tests" node="element" />
-        </field>
-
-        <field name="objects" 
-            type="jp.go.aist.six.oval.model.definitions.SystemObjects">
-            <bind-xml name="objects" node="element"/>
-        </field>
-
-        <field name="states" 
-            type="jp.go.aist.six.oval.model.definitions.States">
-            <bind-xml name="states" node="element"/>
-        </field>
-
-        <field name="variables" 
-            type="jp.go.aist.six.oval.model.definitions.Variables">
-            <bind-xml name="variables" node="element"/>
-        </field>
--->
-    </class>
-
 
 </mapping>
 
