@@ -18,10 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.common.Datatype;
-import jp.go.aist.six.oval.model.common.Operation;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 
 
 
@@ -34,56 +33,47 @@ import jp.go.aist.six.oval.model.common.Operation;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateString
-    extends EntityStateBase
+public class EntityStateStringType
+    extends EntityStateSimpleBaseType
 {
 
-    public static final Datatype  FIXED_DATATYPE = Datatype.STRING;
+    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.STRING;
 
 
 
     /**
      * Constructor.
      */
-    public EntityStateString()
+    public EntityStateStringType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityStateString(
-                    final String data
-                    )
-    {
-        this( data, DEFAULT_OPERATION );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateString(
-                    final String data,
-                    final Operation operation
-                    )
-    {
-        this( data, FIXED_DATATYPE, operation );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateString(
-                    final String data,
-                    final Datatype datatype,
-                    final Operation operation
-                    )
-    {
-        super( data, datatype, operation );
-    }
+//    public EntityStateStringType(
+//                    final String data
+//                    )
+//    {
+//        this( data, DEFAULT_OPERATION );
+//    }
+//
+//
+//    public EntityStateStringType(
+//                    final String data,
+//                    final Operation operation
+//                    )
+//    {
+//        this( data, FIXED_DATATYPE, operation );
+//    }
+//
+//
+//    public EntityStateStringType(
+//                    final String data,
+//                    final Datatype datatype,
+//                    final Operation operation
+//                    )
+//    {
+//        super( data, datatype, operation );
+//    }
 
 
 
@@ -93,11 +83,12 @@ public class EntityStateString
 
     @Override
     public void setDatatype(
-                    final Datatype datatype
+                    final DatatypeEnumeration datatype
                     )
     {
         if (datatype != null  &&  datatype != FIXED_DATATYPE) {
-            throw new IllegalArgumentException( "invalid datatype: " + datatype);
+            throw new IllegalArgumentException(
+                            "invalid datatype: " + datatype );
         }
 
         super.setDatatype( datatype );
@@ -105,7 +96,7 @@ public class EntityStateString
 
 
     @Override
-    public Datatype getDatatype()
+    public DatatypeEnumeration getDatatype()
     {
         return FIXED_DATATYPE;
     }
@@ -133,7 +124,7 @@ public class EntityStateString
             return true;
         }
 
-        if (!(obj instanceof EntityStateString)) {
+        if (!(obj instanceof EntityStateStringType)) {
             return false;
         }
 
@@ -149,4 +140,4 @@ public class EntityStateString
 //    }
 
 }
-// EntityStateString
+// EntityStateStringType

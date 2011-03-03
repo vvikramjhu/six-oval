@@ -18,11 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
-import jp.go.aist.six.oval.model.common.Datatype;
-import jp.go.aist.six.oval.model.common.Operation;
-import jp.go.aist.six.oval.model.definitions.EntityStateString;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.windows.FileType;
 
 
 
@@ -34,75 +33,60 @@ import jp.go.aist.six.oval.model.definitions.EntityStateString;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateFileType
-    extends EntityStateString
+public class EntityStateFileTypeType
+    extends EntityStateStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityStateFileType()
+    public EntityStateFileTypeType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityStateFileType(
-                    final String data
-                    )
-    {
-        this( data, DEFAULT_OPERATION );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateFileType(
-                    final String data,
-                    final Operation operation
-                    )
-    {
-        this( data, FIXED_DATATYPE, operation );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateFileType(
-                    final String data,
-                    final Datatype datatype,
-                    final Operation operation
-                    )
-    {
-        super( data, datatype, operation );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateFileType(
-                    final RegistryType data
-                    )
-    {
-        this( data, DEFAULT_OPERATION );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateFileType(
-                    final RegistryType data,
-                    final Operation operation
-                    )
-    {
-        this( (data == null ? null : data.getName()), operation );
-    }
+//    public EntityStateFileTypeType(
+//                    final String data
+//                    )
+//    {
+//        this( data, DEFAULT_OPERATION );
+//    }
+//
+//
+//    public EntityStateFileTypeType(
+//                    final String data,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        this( data, FIXED_DATATYPE, operation );
+//    }
+//
+//
+//    public EntityStateFileTypeType(
+//                    final String data,
+//                    final DatatypeEnumeration datatype,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        super( data, datatype, operation );
+//    }
+//
+//
+//    public EntityStateFileTypeType(
+//                    final RegistryType data
+//                    )
+//    {
+//        this( data, DEFAULT_OPERATION );
+//    }
+//
+//
+//    public EntityStateFileTypeType(
+//                    final RegistryType data,
+//                    final Operation operation
+//                    )
+//    {
+//        this( (data == null ? null : data.getName()), operation );
+//    }
 
 
 
@@ -111,7 +95,7 @@ public class EntityStateFileType
     //**************************************************************
 
     @Override
-    public void setData(
+    public void setContent(
                     final String data
                     )
     {
@@ -119,7 +103,7 @@ public class EntityStateFileType
             FileType.valueOf( data );
         }
 
-        super.setData( data );
+        super.setContent( data );
     }
 
 
@@ -145,7 +129,7 @@ public class EntityStateFileType
             return true;
         }
 
-        if (!(obj instanceof EntityStateFileType)) {
+        if (!(obj instanceof EntityStateFileTypeType)) {
             return false;
         }
 
@@ -153,4 +137,4 @@ public class EntityStateFileType
     }
 
 }
-// EntityStateFileType
+// EntityStateFileTypeType

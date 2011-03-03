@@ -18,10 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.common.Datatype;
-import jp.go.aist.six.oval.model.common.Operation;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 
 
 
@@ -34,56 +33,47 @@ import jp.go.aist.six.oval.model.common.Operation;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateVersion
-    extends EntityStateBase
+public class EntityStateVersionType
+    extends EntityStateSimpleBaseType
 {
 
-    public static final Datatype  FIXED_DATATYPE = Datatype.VERSION;
+    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.VERSION;
 
 
 
     /**
      * Constructor.
      */
-    public EntityStateVersion()
+    public EntityStateVersionType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityStateVersion(
-                    final String data
-                    )
-    {
-        this( data, DEFAULT_OPERATION );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateVersion(
-                    final String data,
-                    final Operation operation
-                    )
-    {
-        this( data, FIXED_DATATYPE, operation );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateVersion(
-                    final String data,
-                    final Datatype datatype,
-                    final Operation operation
-                    )
-    {
-        super( data, datatype, operation );
-    }
+//    public EntityStateVersionType(
+//                    final String data
+//                    )
+//    {
+//        this( data, DEFAULT_OPERATION );
+//    }
+//
+//
+//    public EntityStateVersionType(
+//                    final String data,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        this( data, FIXED_DATATYPE, operation );
+//    }
+//
+//
+//    public EntityStateVersionType(
+//                    final String data,
+//                    final DatatypeEnumeration datatype,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        super( data, datatype, operation );
+//    }
 
 
 
@@ -93,7 +83,7 @@ public class EntityStateVersion
 
     @Override
     public void setDatatype(
-                    final Datatype datatype
+                    final DatatypeEnumeration datatype
                     )
     {
         if (datatype != null  &&  datatype != FIXED_DATATYPE) {
@@ -105,7 +95,7 @@ public class EntityStateVersion
 
 
     @Override
-    public Datatype getDatatype()
+    public DatatypeEnumeration getDatatype()
     {
         return FIXED_DATATYPE;
     }
@@ -133,7 +123,7 @@ public class EntityStateVersion
             return true;
         }
 
-        if (!(obj instanceof EntityStateVersion)) {
+        if (!(obj instanceof EntityStateVersionType)) {
             return false;
         }
 
@@ -149,4 +139,4 @@ public class EntityStateVersion
 //    }
 
 }
-// EntityStateVersion
+// EntityStateVersionType

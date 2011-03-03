@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.common;
+package jp.go.aist.six.oval.model.v5.common;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class Operation
+public final class OperationEnumeration
     implements Serializable
 {
 
@@ -42,8 +42,8 @@ public final class Operation
     private static final String  _CASE_INSENSITIVE_EQUALS_     = "case insensitive equals";
     private static final String  _CASE_INSENSITIVE_NOT_EQUAL_  = "case insensitive not equal";
     private static final String  _GREATER_THAN_                = "greater than";
-    private static final String  _GREATER_THAN_OR_EQUAL_       = "greater than or equal";
     private static final String  _LESS_THAN_                   = "less than";
+    private static final String  _GREATER_THAN_OR_EQUAL_       = "greater than or equal";
     private static final String  _LESS_THAN_OR_EQUAL_          = "less than or equal";
     private static final String  _BITWISE_AND_                 = "bitwise and";
     private static final String  _BITWISE_OR_                  = "bitwise or";
@@ -52,32 +52,32 @@ public final class Operation
     private static final String  _SUPERSET_OF_                 = "superset of";
 
 
-    public static final Operation  EQUALS                      = new Operation( _EQUALS_ );
-    public static final Operation  NOT_EQUAL                   = new Operation( _NOT_EQUAL_ );
-    public static final Operation  CASE_INSENSITIVE_EQUALS     = new Operation( _CASE_INSENSITIVE_EQUALS_ );
-    public static final Operation  CASE_INSENSITIVE_NOT_EQUAL  = new Operation( _CASE_INSENSITIVE_NOT_EQUAL_ );
-    public static final Operation  GREATER_THAN                = new Operation( _GREATER_THAN_ );
-    public static final Operation  GREATER_THAN_OR_EQUAL       = new Operation( _GREATER_THAN_OR_EQUAL_ );
-    public static final Operation  LESS_THAN                   = new Operation( _LESS_THAN_ );
-    public static final Operation  LESS_THAN_OR_EQUAL          = new Operation( _LESS_THAN_OR_EQUAL_ );
-    public static final Operation  BITWISE_AND                 = new Operation( _BITWISE_AND_ );
-    public static final Operation  BITWISE_OR                  = new Operation( _BITWISE_OR_ );
-    public static final Operation  PATTERN_MATCH               = new Operation( _PATTERN_MATCH_ );
-    public static final Operation  SUBSET_OF                   = new Operation( _SUBSET_OF_ );
-    public static final Operation  SUPERSET_OF                 = new Operation( _SUPERSET_OF_ );
+    public static final OperationEnumeration  EQUALS                      = new OperationEnumeration( _EQUALS_ );
+    public static final OperationEnumeration  NOT_EQUAL                   = new OperationEnumeration( _NOT_EQUAL_ );
+    public static final OperationEnumeration  CASE_INSENSITIVE_EQUALS     = new OperationEnumeration( _CASE_INSENSITIVE_EQUALS_ );
+    public static final OperationEnumeration  CASE_INSENSITIVE_NOT_EQUAL  = new OperationEnumeration( _CASE_INSENSITIVE_NOT_EQUAL_ );
+    public static final OperationEnumeration  GREATER_THAN                = new OperationEnumeration( _GREATER_THAN_ );
+    public static final OperationEnumeration  LESS_THAN                   = new OperationEnumeration( _LESS_THAN_ );
+    public static final OperationEnumeration  GREATER_THAN_OR_EQUAL       = new OperationEnumeration( _GREATER_THAN_OR_EQUAL_ );
+    public static final OperationEnumeration  LESS_THAN_OR_EQUAL          = new OperationEnumeration( _LESS_THAN_OR_EQUAL_ );
+    public static final OperationEnumeration  BITWISE_AND                 = new OperationEnumeration( _BITWISE_AND_ );
+    public static final OperationEnumeration  BITWISE_OR                  = new OperationEnumeration( _BITWISE_OR_ );
+    public static final OperationEnumeration  PATTERN_MATCH               = new OperationEnumeration( _PATTERN_MATCH_ );
+    public static final OperationEnumeration  SUBSET_OF                   = new OperationEnumeration( _SUBSET_OF_ );
+    public static final OperationEnumeration  SUPERSET_OF                 = new OperationEnumeration( _SUPERSET_OF_ );
 
 
 
-    private static HashMap<String, Operation> _INIT_()
+    private static HashMap<String, OperationEnumeration> _INIT_()
     {
-        HashMap<String, Operation>  map = new HashMap<String, Operation>();
+        HashMap<String, OperationEnumeration>  map = new HashMap<String, OperationEnumeration>();
         map.put( _EQUALS_,                      EQUALS                     );
         map.put( _NOT_EQUAL_,                   NOT_EQUAL                  );
         map.put( _CASE_INSENSITIVE_EQUALS_,     CASE_INSENSITIVE_EQUALS    );
         map.put( _CASE_INSENSITIVE_NOT_EQUAL_,  CASE_INSENSITIVE_NOT_EQUAL );
         map.put( _GREATER_THAN_,                GREATER_THAN               );
-        map.put( _GREATER_THAN_OR_EQUAL_,       GREATER_THAN_OR_EQUAL      );
         map.put( _LESS_THAN_,                   LESS_THAN                  );
+        map.put( _GREATER_THAN_OR_EQUAL_,       GREATER_THAN_OR_EQUAL      );
         map.put( _LESS_THAN_OR_EQUAL_,          LESS_THAN_OR_EQUAL         );
         map.put( _BITWISE_AND_,                 BITWISE_AND                );
         map.put( _BITWISE_OR_,                  BITWISE_OR                 );
@@ -87,18 +87,18 @@ public final class Operation
         return map;
     }
 
-    private static final HashMap<String, Operation>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, OperationEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static Operation valueOf(
+    public static OperationEnumeration valueOf(
                     final String name
                     )
     {
-        Operation  flag = null;
+        OperationEnumeration  flag = null;
         if (name != null) {
             flag = _INSTANCES_.get( name );
         }
@@ -119,7 +119,7 @@ public final class Operation
     /**
      * Constrcutor.
      */
-    private Operation(
+    private OperationEnumeration(
                     final String name
                     )
     {
@@ -148,4 +148,4 @@ public final class Operation
     }
 
 }
-// Operation
+// OperationEnumeration

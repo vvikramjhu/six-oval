@@ -20,10 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.common.Check;
-import jp.go.aist.six.oval.model.common.Datatype;
-import jp.go.aist.six.oval.model.common.Operation;
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
@@ -35,41 +31,19 @@ import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class EntitySimpleBase
-    extends AbstractOvalObject
+public abstract class EntitySimpleBaseType
+    extends EntityAttributeGroup
 {
 
     private String  _content;
     //{simpleContent, base="xsd:anySimpleType"}
 
 
-    // xsd:attributeGroup ref="EntityAttributeGroup" //
-
-    public static final Datatype  DEFAULT_DATATYPE = Datatype.STRING;
-    private Datatype  _datatype;
-    //{optional, default="string"}
-
-    public static final Operation  DEFAULT_OPERATION = Operation.EQUALS;
-    private Operation  _operation;
-    //{optional, default="equals"}
-
-    public static final Boolean  DEFAULT_MASK = false;
-    private Boolean  _mask;
-    //{optional, default="false"}
-
-    private String  _varRef;
-    //{optional, type="oval:VariableIDPattern"}
-
-    public static final Check  DEFAULT_VAR_CHECK = Check.ALL;
-    private Check  _varCheck;
-    //{optional, default="all"}
-
-
 
     /**
      * Constructor.
      */
-    public EntitySimpleBase()
+    public EntitySimpleBaseType()
     {
     }
 
@@ -88,91 +62,6 @@ public abstract class EntitySimpleBase
     public String getContent()
     {
         return _content;
-    }
-
-
-
-    /**
-     */
-    public void setDatatype(
-                    final Datatype datatype
-                    )
-    {
-        _datatype = datatype;
-    }
-
-
-    public Datatype getDatatype()
-    {
-        return _datatype;
-    }
-
-
-
-    /**
-     */
-    public void setOperation(
-                    final Operation operation
-                    )
-    {
-        _operation = operation;
-    }
-
-
-    public Operation getOperation()
-    {
-        return _operation;
-    }
-
-
-
-    /**
-     */
-    public void setMask(
-                    final Boolean mask
-                    )
-    {
-        _mask = mask;
-    }
-
-
-    public Boolean getMask()
-    {
-        return _mask;
-    }
-
-
-
-    /**
-     */
-    public void setVarRef(
-                    final String varRef
-                    )
-    {
-        _varRef= varRef;
-    }
-
-
-    public String getVarRef()
-    {
-        return _varRef;
-    }
-
-
-
-    /**
-     */
-    public void setVarCheck(
-                    final Check check
-                    )
-    {
-        _varCheck = check;
-    }
-
-
-    public Check getVarCheck()
-    {
-        return _varCheck;
     }
 
 
@@ -251,11 +140,7 @@ public abstract class EntitySimpleBase
     public String toString()
     {
         return "" + getContent()
-                        + ", datatype="  + getDatatype()
-                        + ", operation=" + getOperation()
-                        + ", mask="      + getMask()
-                        + ", var_ref="   + getVarRef()
-                        + ", var_check=" + getVarCheck()
+                        + ", " + super.toString()
                         ;
     }
 

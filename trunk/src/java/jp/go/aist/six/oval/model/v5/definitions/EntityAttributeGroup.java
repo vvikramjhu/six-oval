@@ -18,152 +18,115 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
-import jp.go.aist.six.oval.model.common.Datatype;
-import jp.go.aist.six.oval.model.common.Operation;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
+import jp.go.aist.six.oval.model.v5.common.OperationEnumeration;
 
 
 
 /**
- * The EntityBase type is an abstract type that defines
- * the default attributes associated with every entity.
- * Entities can be found in both OVAL Objects and OVAL States
- * and represent the individual properties associated with items
- * found on a system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class EntityBase
+public abstract class EntityAttributeGroup
     extends AbstractOvalObject
 {
 
-    private String  _data;
-    // OVAL Schema 5.7: {complexContent, base="xsd:anyType"}
-    // OVAL Schema 5.6: {simpleContent, base=xsd:anySimpleType}
-
-    public static final Datatype  DEFAULT_DATATYPE = Datatype.STRING;
-    private Datatype  _datatype;
+    public static final DatatypeEnumeration  DEFAULT_DATATYPE = DatatypeEnumeration.STRING;
+    private DatatypeEnumeration  _datatype;
     //{optional, default="string"}
 
-    public static final Operation  DEFAULT_OPERATION = Operation.EQUALS;
-    private Operation  _operation;
+
+    public static final OperationEnumeration  DEFAULT_OPERATION = OperationEnumeration.EQUALS;
+    private OperationEnumeration  _operation;
     //{optional, default="equals"}
 
-    public static final boolean  DEFAULT_MASK = false;
-    private boolean  _mask = DEFAULT_MASK;
+
+    public static final Boolean  DEFAULT_MASK = Boolean.FALSE;
+    private Boolean  _mask;
     //{optional, default="false"}
+
 
     private String  _varRef;
     //{optional, type="oval:VariableIDPattern"}
 
 
+    public static final CheckEnumeration  DEFAULT_VAR_CHECK = CheckEnumeration.ALL;
+    private CheckEnumeration  _varCheck;
+    //{optional, default="all"}
+
+
 
     /**
      * Constructor.
      */
-    public EntityBase()
+    public EntityAttributeGroup()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityBase(
-                    final String data
+    public EntityAttributeGroup(
+                    final OperationEnumeration operation
                     )
     {
-        this( data, DEFAULT_OPERATION );
+        this( DEFAULT_DATATYPE, operation );
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityBase(
-                    final String data,
-                    final Operation operation
+    public EntityAttributeGroup(
+                    final DatatypeEnumeration datatype,
+                    final OperationEnumeration operation
                     )
     {
-        this( data, DEFAULT_DATATYPE, operation );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityBase(
-                    final String data,
-                    final Datatype datatype,
-                    final Operation operation
-                    )
-    {
-        setData( data );
         setDatatype( datatype );
         setOperation( operation );
     }
 
 
 
-    /**
-     */
-    public void setData(
-                    final String data
-                    )
-    {
-        _data = data;
-    }
-
-
-    public String getData()
-    {
-        return _data;
-    }
-
-
-
     public void setDatatype(
-                    final Datatype datatype
+                    final DatatypeEnumeration datatype
                     )
     {
         _datatype = datatype;
     }
 
 
-    public Datatype getDatatype()
+    public DatatypeEnumeration getDatatype()
     {
-        return (_datatype == null ? DEFAULT_DATATYPE : _datatype);
+        return _datatype;
     }
 
 
 
     public void setOperation(
-                    final Operation operation
+                    final OperationEnumeration operation
                     )
     {
         _operation = operation;
     }
 
 
-    public Operation getOperation()
+    public OperationEnumeration getOperation()
     {
-        return (_operation == null ? DEFAULT_OPERATION : _operation);
+        return _operation;
     }
 
 
 
-    public boolean getMask()
+    public Boolean getMask()
     {
         return _mask;
     }
 
 
     public void setMask(
-                    final boolean mask
+                    final Boolean mask
                     )
     {
         _mask = mask;
@@ -186,6 +149,23 @@ public abstract class EntityBase
 
 
 
+    /**
+     */
+    public void setVarCheck(
+                    final CheckEnumeration varCheck
+                    )
+    {
+        _varCheck = varCheck;
+    }
+
+
+    public CheckEnumeration getVarCheck()
+    {
+        return _varCheck;
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -196,19 +176,19 @@ public abstract class EntityBase
         final int  prime = 37;
         int  result = 17;
 
-        String  data = getData();
-        result = prime * result + ((data == null) ? 0 : data.hashCode());
-
-        Datatype  datatype = getDatatype();
+        DatatypeEnumeration  datatype = getDatatype();
         result = prime * result + ((datatype == null) ? 0 : datatype.hashCode());
 
-        Operation  op = getOperation();
+        OperationEnumeration  op = getOperation();
         result = prime * result + ((op == null) ? 0 : op.hashCode());
 
         result = prime * result + (getMask() ? 0 : 1);
 
         String  var_ref = getVarRef();
         result = prime * result + ((var_ref == null) ? 0 : var_ref.hashCode());
+
+        CheckEnumeration  varCheck = getVarCheck();
+        result = prime * result + ((varCheck == null) ? 0 : varCheck.hashCode());
 
         return result;
     }
@@ -224,28 +204,23 @@ public abstract class EntityBase
             return true;
         }
 
-        if (!(obj instanceof EntityBase)) {
+        if (!(obj instanceof EntityAttributeGroup)) {
             return false;
         }
 
-        EntityBase  other = (EntityBase)obj;
-        String  other_data = other.getData();
-        String   this_data =  this.getData();
-        if (this_data == other_data
-                        ||  (this_data != null  &&  this_data.equals( other_data ))) {
-            String  other_var_ref = other.getVarRef();
-            String   this_var_ref =  this.getVarRef();
-            if (this_var_ref == other_var_ref
+        EntityAttributeGroup  other = (EntityAttributeGroup)obj;
+        String  other_var_ref = other.getVarRef();
+        String   this_var_ref =  this.getVarRef();
+        if (this_var_ref == other_var_ref
                         ||  (this_var_ref != null  &&  this_var_ref.equals( other_var_ref ))) {
-                Operation  other_op = other.getOperation();
-                Operation   this_op =  this.getOperation();
-                if (this_op == other_op) {
-                    Datatype  other_type = other.getDatatype();
-                    Datatype   this_type =  this.getDatatype();
-                    if (this_type == other_type) {
-                        if (this.getMask() == other.getMask()) {
-                            return true;
-                        }
+            OperationEnumeration  other_op = other.getOperation();
+            OperationEnumeration   this_op =  this.getOperation();
+            if (this_op == other_op) {
+                DatatypeEnumeration  other_type = other.getDatatype();
+                DatatypeEnumeration   this_type =  this.getDatatype();
+                if (this_type == other_type) {
+                    if (this.getMask() == other.getMask()) {
+                        return true;
                     }
                 }
             }
@@ -259,12 +234,13 @@ public abstract class EntityBase
     @Override
     public String toString()
     {
-        return "data=" + getData()
-                        + ", datatype=" + getDatatype()
+        return "datatype=" + getDatatype()
                         + ", operation=" + getOperation()
-//                        + ", mask=" + getMask()
-                        + ", var_ref=" + getVarRef();
+                        + ", mask=" + getMask()
+                        + ", var_ref=" + getVarRef()
+                        + ", var_check=" + getVarCheck()
+                        ;
     }
 
 }
-// EntityBase
+// EntityAttributeGroup

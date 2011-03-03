@@ -18,17 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.definitions.EntityObjectString;
 import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 
 
 
@@ -67,12 +67,12 @@ public class FileObject
 //    private EntityObjectString  _filename;
 //    //{1..1, nillable="true"}
 
-    private EntityPropertyMap<FileProperty>  _properties =
+    private final EntityPropertyMap<FileProperty>  _properties =
         FileProperty.createPropertyMap();
 
 
 
-    private Collection<Filter>  _filter = new ArrayList<Filter>();
+    private final Collection<Filter>  _filter = new ArrayList<Filter>();
     //{0..*}
 
 

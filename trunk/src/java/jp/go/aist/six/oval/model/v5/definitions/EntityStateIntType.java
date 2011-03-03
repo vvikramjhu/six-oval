@@ -18,10 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.common.Datatype;
-import jp.go.aist.six.oval.model.common.Operation;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 
 
 
@@ -34,66 +33,54 @@ import jp.go.aist.six.oval.model.common.Operation;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateInt
-    extends EntityStateBase
+public class EntityStateIntType
+    extends EntityStateSimpleBaseType
 {
 
-    public static final Datatype  FIXED_DATATYPE = Datatype.INT;
+    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.INT;
 
 
 
     /**
      * Constructor.
      */
-    public  EntityStateInt()
+    public  EntityStateIntType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityStateInt(
-                    final String data
-                    )
-    {
-        this( data, DEFAULT_OPERATION );
-    }
+//    public EntityStateIntType(
+//                    final String data
+//                    )
+//    {
+//        this( data, DEFAULT_OPERATION );
+//    }
+//
+//
+//    public EntityStateIntType(
+//                    final String data,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        this( data, FIXED_DATATYPE, operation );
+//    }
+//
+//
+//    public EntityStateIntType(
+//                    final String data,
+//                    final DatatypeEnumeration datatype,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        super( data, datatype, operation );
+//    }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityStateInt(
-                    final String data,
-                    final Operation operation
-                    )
-    {
-        this( data, FIXED_DATATYPE, operation );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateInt(
-                    final String data,
-                    final Datatype datatype,
-                    final Operation operation
-                    )
-    {
-        super( data, datatype, operation );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateInt(
+    public EntityStateIntType(
                     final int data
                     )
     {
-        this( String.valueOf( data ) );
+        setContent( String.valueOf( data ) );
     }
 
 
@@ -104,7 +91,7 @@ public class EntityStateInt
 
     @Override
     public void setDatatype(
-                    final Datatype datatype
+                    final DatatypeEnumeration datatype
                     )
     {
         if (datatype != null  &&  datatype != FIXED_DATATYPE) {
@@ -116,7 +103,7 @@ public class EntityStateInt
 
 
     @Override
-    public Datatype getDatatype()
+    public DatatypeEnumeration getDatatype()
     {
         return FIXED_DATATYPE;
     }
@@ -144,7 +131,7 @@ public class EntityStateInt
             return true;
         }
 
-        if (!(obj instanceof EntityStateInt)) {
+        if (!(obj instanceof EntityStateIntType)) {
             return false;
         }
 
@@ -160,4 +147,4 @@ public class EntityStateInt
 //    }
 
 }
-// EntityStateInt
+// EntityStateIntType

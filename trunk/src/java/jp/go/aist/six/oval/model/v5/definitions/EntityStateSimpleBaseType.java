@@ -18,11 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.common.Check;
-import jp.go.aist.six.oval.model.common.Datatype;
-import jp.go.aist.six.oval.model.common.Operation;
+import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
 
 
 
@@ -34,16 +32,12 @@ import jp.go.aist.six.oval.model.common.Operation;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class EntityStateBase
-    extends EntityBase
+public abstract class EntityStateSimpleBaseType
+    extends EntitySimpleBaseType
 {
 
-    public static final Check  DEFAULT_ENTITY_CHECK = Check.ALL;
-    private Check  _entityCheck;
-    //{optional, default="all"}
-
-    public static final Check  DEFAULT_VAR_CHECK = Check.ALL;
-    private Check  _varCheck = DEFAULT_VAR_CHECK;
+    public static final CheckEnumeration  DEFAULT_ENTITY_CHECK = CheckEnumeration.ALL;
+    private CheckEnumeration  _entityCheck;
     //{optional, default="all"}
 
 
@@ -51,76 +45,33 @@ public abstract class EntityStateBase
     /**
      * Constructor.
      */
-    public EntityStateBase()
+    public EntityStateSimpleBaseType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityStateBase(
-                    final String data
-                    )
-    {
-        super( data );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateBase(
-                    final String data,
-                    final Operation operation
-                    )
-    {
-        super( data, operation );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateBase(
-                    final String data,
-                    final Datatype datatype,
-                    final Operation operation
-                    )
-    {
-        super( data, datatype, operation );
-    }
+//    public EntityStateSimpleBaseType(
+//                    final String data
+//                    )
+//    {
+//        super( data );
+//    }
 
 
 
     /**
      */
     public void setEntityCheck(
-                    final Check check
+                    final CheckEnumeration check
                     )
     {
         _entityCheck = check;
     }
 
 
-    public Check getEntityCheck()
+    public CheckEnumeration getEntityCheck()
     {
-        return (_entityCheck == null ? DEFAULT_ENTITY_CHECK : _entityCheck);
-    }
-
-
-
-    public void setVarCheck(
-                    final Check check
-                    )
-    {
-        _varCheck = check;
-    }
-
-
-    public Check getVarCheck()
-    {
-        return (_varCheck == null ? DEFAULT_VAR_CHECK : _varCheck);
+        return _entityCheck;
     }
 
 
@@ -135,11 +86,8 @@ public abstract class EntityStateBase
         final int  prime = 37;
         int  result = super.hashCode();
 
-        Check  e_check = getEntityCheck();
+        CheckEnumeration  e_check = getEntityCheck();
         result = prime * result + ((e_check == null) ? 0 : e_check.hashCode());
-
-        Check  v_check = getVarCheck();
-        result = prime * result + ((v_check == null) ? 0 : v_check.hashCode());
 
         return result;
     }
@@ -155,20 +103,16 @@ public abstract class EntityStateBase
             return true;
         }
 
-        if (!(obj instanceof EntityStateBase)) {
+        if (!(obj instanceof EntityStateSimpleBaseType)) {
             return false;
         }
 
         if (super.equals( obj )) {
-            EntityStateBase  other = (EntityStateBase)obj;
-            Check  other_e_check = other.getEntityCheck();
-            Check   this_e_check =  this.getEntityCheck();
+            EntityStateSimpleBaseType  other = (EntityStateSimpleBaseType)obj;
+            CheckEnumeration  other_e_check = other.getEntityCheck();
+            CheckEnumeration   this_e_check =  this.getEntityCheck();
             if (this_e_check == other_e_check) {
-                Check  other_v_check = other.getVarCheck();
-                Check   this_v_check =  this.getVarCheck();
-                if (this_v_check == other_v_check) {
                     return true;
-                }
             }
         }
 
@@ -180,11 +124,10 @@ public abstract class EntityStateBase
     @Override
     public String toString()
     {
-        return "[" + super.toString()
+        return super.toString()
                         + ", entity_check=" + getEntityCheck()
-                        + ", var_check=" + getVarCheck()
-                        + "]";
+                        ;
     }
 
 }
-// EntityStateBase
+// EntityStateSimpleBaseType

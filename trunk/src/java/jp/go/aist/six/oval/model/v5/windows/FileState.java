@@ -18,16 +18,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
-import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityBase;
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
-import jp.go.aist.six.oval.model.definitions.EntityStateInt;
-import jp.go.aist.six.oval.model.definitions.EntityStateString;
-import jp.go.aist.six.oval.model.definitions.EntityStateVersion;
-import jp.go.aist.six.oval.model.definitions.State;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
+import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateIntType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateVersionType;
+import jp.go.aist.six.oval.model.v5.definitions.StateType;
 
 
 
@@ -39,10 +39,10 @@ import java.util.Iterator;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class FileState
-    extends State
+    extends StateType
 {
 
-    private EntityPropertyMap<FileProperty>  _properties =
+    private final EntityPropertyMap<FileProperty>  _properties =
         FileProperty.createPropertyMap();
 
 
@@ -55,9 +55,6 @@ public class FileState
     }
 
 
-    /**
-     * Constructor.
-     */
     public FileState(
                     final String id,
                     final int version
@@ -67,9 +64,6 @@ public class FileState
     }
 
 
-    /**
-     * Constructor.
-     */
     public FileState(
                     final String id,
                     final int version,
@@ -84,7 +78,7 @@ public class FileState
     /**
      */
     public void setFilepath(
-                    final EntityStateString filepath
+                    final EntityStateStringType filepath
                     )
     {
         _properties.setProperty( FileProperty.FILEPATH, filepath );
@@ -92,7 +86,7 @@ public class FileState
 
 
     public FileState filepath(
-                    final EntityStateString filepath
+                    final EntityStateStringType filepath
                     )
     {
         setFilepath( filepath );
@@ -100,10 +94,10 @@ public class FileState
     }
 
 
-    public EntityStateString getFilepath()
+    public EntityStateStringType getFilepath()
     {
         return _properties.getProperty(
-                        FileProperty.FILEPATH, EntityStateString.class );
+                        FileProperty.FILEPATH, EntityStateStringType.class );
     }
 
 
@@ -111,7 +105,7 @@ public class FileState
     /**
      */
     public void setPath(
-                    final EntityStateString path
+                    final EntityStateStringType path
                     )
     {
         _properties.setProperty( FileProperty.PATH, path );
@@ -119,7 +113,7 @@ public class FileState
 
 
     public FileState path(
-                    final EntityStateString path
+                    final EntityStateStringType path
                     )
     {
         setPath( path );
@@ -127,10 +121,10 @@ public class FileState
     }
 
 
-    public EntityStateString getPath()
+    public EntityStateStringType getPath()
     {
         return _properties.getProperty(
-                        FileProperty.PATH, EntityStateString.class );
+                        FileProperty.PATH, EntityStateStringType.class );
     }
 
 
@@ -138,7 +132,7 @@ public class FileState
     /**
      */
     public void setFilename(
-                    final EntityStateString filename
+                    final EntityStateStringType filename
                     )
     {
         _properties.setProperty( FileProperty.FILENAME, filename );
@@ -146,7 +140,7 @@ public class FileState
 
 
     public FileState filename(
-                    final EntityStateString filename
+                    final EntityStateStringType filename
                     )
     {
         setFilename( filename );
@@ -154,10 +148,10 @@ public class FileState
     }
 
 
-    public EntityStateString getFilename()
+    public EntityStateStringType getFilename()
     {
         return _properties.getProperty(
-                        FileProperty.FILENAME, EntityStateString.class );
+                        FileProperty.FILENAME, EntityStateStringType.class );
     }
 
 
@@ -165,7 +159,7 @@ public class FileState
     /**
      */
     public void setOwner(
-                    final EntityStateString owner
+                    final EntityStateStringType owner
                     )
     {
         _properties.setProperty( FileProperty.OWNER, owner );
@@ -173,7 +167,7 @@ public class FileState
 
 
     public FileState owner(
-                    final EntityStateString owner
+                    final EntityStateStringType owner
                     )
     {
         setOwner( owner );
@@ -181,10 +175,10 @@ public class FileState
     }
 
 
-    public EntityStateString getOwner()
+    public EntityStateStringType getOwner()
     {
         return _properties.getProperty(
-                        FileProperty.OWNER, EntityStateString.class );
+                        FileProperty.OWNER, EntityStateStringType.class );
     }
 
 
@@ -192,17 +186,17 @@ public class FileState
     /**
      */
     public void setSize(
-                    final EntityStateInt size
+                    final EntityStateIntType size
                     )
     {
         _properties.setProperty( FileProperty.SIZE, size );
     }
 
 
-    public EntityStateInt getSize()
+    public EntityStateIntType getSize()
     {
         return _properties.getProperty(
-                        FileProperty.SIZE, EntityStateInt.class );
+                        FileProperty.SIZE, EntityStateIntType.class );
     }
 
 
@@ -210,17 +204,17 @@ public class FileState
     /**
      */
     public void setATime(
-                    final EntityStateInt atime
+                    final EntityStateIntType atime
                     )
     {
         _properties.setProperty( FileProperty.A_TIME, atime );
     }
 
 
-    public EntityStateInt getATime()
+    public EntityStateIntType getATime()
     {
         return _properties.getProperty(
-                        FileProperty.A_TIME, EntityStateInt.class );
+                        FileProperty.A_TIME, EntityStateIntType.class );
     }
 
 
@@ -228,17 +222,17 @@ public class FileState
     /**
      */
     public void setCTime(
-                    final EntityStateInt ctime
+                    final EntityStateIntType ctime
                     )
     {
         _properties.setProperty( FileProperty.C_TIME, ctime );
     }
 
 
-    public EntityStateInt getCTime()
+    public EntityStateIntType getCTime()
     {
         return _properties.getProperty(
-                        FileProperty.C_TIME, EntityStateInt.class );
+                        FileProperty.C_TIME, EntityStateIntType.class );
     }
 
 
@@ -246,17 +240,17 @@ public class FileState
     /**
      */
     public void setMTime(
-                    final EntityStateInt mtime
+                    final EntityStateIntType mtime
                     )
     {
         _properties.setProperty( FileProperty.M_TIME, mtime );
     }
 
 
-    public EntityStateInt getMTime()
+    public EntityStateIntType getMTime()
     {
         return _properties.getProperty(
-                        FileProperty.M_TIME, EntityStateInt.class );
+                        FileProperty.M_TIME, EntityStateIntType.class );
     }
 
 
@@ -264,17 +258,17 @@ public class FileState
     /**
      */
     public void setMSChecksum(
-                    final EntityStateString checksum
+                    final EntityStateStringType checksum
                     )
     {
         _properties.setProperty( FileProperty.MS_CHECKSUM, checksum );
     }
 
 
-    public EntityStateString getMSChecksum()
+    public EntityStateStringType getMSChecksum()
     {
         return _properties.getProperty(
-                        FileProperty.MS_CHECKSUM, EntityStateString.class );
+                        FileProperty.MS_CHECKSUM, EntityStateStringType.class );
     }
 
 
@@ -282,7 +276,7 @@ public class FileState
     /**
      */
     public void setVersion(
-                    final EntityStateVersion version
+                    final EntityStateVersionType version
                     )
     {
         _properties.setProperty( FileProperty.VERSION, version );
@@ -290,7 +284,7 @@ public class FileState
 
 
     public FileState version(
-                    final EntityStateVersion version
+                    final EntityStateVersionType version
                     )
     {
         setVersion( version );
@@ -298,10 +292,10 @@ public class FileState
     }
 
 
-    public EntityStateVersion getVersion()
+    public EntityStateVersionType getVersion()
     {
         return _properties.getProperty(
-                        FileProperty.VERSION, EntityStateVersion.class );
+                        FileProperty.VERSION, EntityStateVersionType.class );
     }
 
 
@@ -309,17 +303,17 @@ public class FileState
     /**
      */
     public void setType(
-                    final EntityStateFileType type
+                    final EntityStateFileTypeType type
                     )
     {
         _properties.setProperty( FileProperty.TYPE, type );
     }
 
 
-    public EntityStateFileType getType()
+    public EntityStateFileTypeType getType()
     {
         return _properties.getProperty(
-                        FileProperty.TYPE, EntityStateFileType.class );
+                        FileProperty.TYPE, EntityStateFileTypeType.class );
     }
 
 
@@ -327,17 +321,17 @@ public class FileState
     /**
      */
     public void setDevelopmentClass(
-                    final EntityStateString developmentClass
+                    final EntityStateStringType developmentClass
                     )
     {
         _properties.setProperty( FileProperty.DEVELOPMENT_CLASS, developmentClass );
     }
 
 
-    public EntityStateString getDevelopmentClass()
+    public EntityStateStringType getDevelopmentClass()
     {
         return _properties.getProperty(
-                        FileProperty.DEVELOPMENT_CLASS, EntityStateString.class );
+                        FileProperty.DEVELOPMENT_CLASS, EntityStateStringType.class );
     }
 
 
@@ -345,17 +339,17 @@ public class FileState
     /**
      */
     public void setCompany(
-                    final EntityStateString company
+                    final EntityStateStringType company
                     )
     {
         _properties.setProperty( FileProperty.COMPANY, company );
     }
 
 
-    public EntityStateString getCompany()
+    public EntityStateStringType getCompany()
     {
         return _properties.getProperty(
-                        FileProperty.COMPANY, EntityStateString.class );
+                        FileProperty.COMPANY, EntityStateStringType.class );
     }
 
 
@@ -363,17 +357,17 @@ public class FileState
     /**
      */
     public void setInternalName(
-                    final EntityStateString internalName
+                    final EntityStateStringType internalName
                     )
     {
         _properties.setProperty( FileProperty.INTERNAL_NAME, internalName );
     }
 
 
-    public EntityStateString getInternalName()
+    public EntityStateStringType getInternalName()
     {
         return _properties.getProperty(
-                        FileProperty.INTERNAL_NAME, EntityStateString.class );
+                        FileProperty.INTERNAL_NAME, EntityStateStringType.class );
     }
 
 
@@ -381,17 +375,17 @@ public class FileState
     /**
      */
     public void setLanguage(
-                    final EntityStateString language
+                    final EntityStateStringType language
                     )
     {
         _properties.setProperty( FileProperty.LANGUAGE, language );
     }
 
 
-    public EntityStateString getLanguage()
+    public EntityStateStringType getLanguage()
     {
         return _properties.getProperty(
-                        FileProperty.LANGUAGE, EntityStateString.class );
+                        FileProperty.LANGUAGE, EntityStateStringType.class );
     }
 
 
@@ -399,17 +393,17 @@ public class FileState
     /**
      */
     public void setOriginalFilename(
-                    final EntityStateString filename
+                    final EntityStateStringType filename
                     )
     {
         _properties.setProperty( FileProperty.ORIGINAL_FILENAME, filename );
     }
 
 
-    public EntityStateString getOriginalFilename()
+    public EntityStateStringType getOriginalFilename()
     {
         return _properties.getProperty(
-                        FileProperty.ORIGINAL_FILENAME, EntityStateString.class );
+                        FileProperty.ORIGINAL_FILENAME, EntityStateStringType.class );
     }
 
 
@@ -417,17 +411,17 @@ public class FileState
     /**
      */
     public void setProductName(
-                    final EntityStateString name
+                    final EntityStateStringType name
                     )
     {
         _properties.setProperty( FileProperty.PRODUCT_NAME, name );
     }
 
 
-    public EntityStateString getProductName()
+    public EntityStateStringType getProductName()
     {
         return _properties.getProperty(
-                        FileProperty.PRODUCT_NAME, EntityStateString.class );
+                        FileProperty.PRODUCT_NAME, EntityStateStringType.class );
     }
 
 
@@ -435,7 +429,7 @@ public class FileState
     /**
      */
     public void setProductVersion(
-                    final EntityStateVersion version
+                    final EntityStateVersionType version
                     )
     {
         _properties.setProperty( FileProperty.PRODUCT_VERSION, version );
@@ -443,7 +437,7 @@ public class FileState
 
 
     public FileState productVersion(
-                    final EntityStateVersion version
+                    final EntityStateVersionType version
                     )
     {
         setProductVersion( version );
@@ -451,10 +445,10 @@ public class FileState
     }
 
 
-    public EntityStateVersion getProductVersion()
+    public EntityStateVersionType getProductVersion()
     {
         return _properties.getProperty(
-                        FileProperty.PRODUCT_VERSION, EntityStateVersion.class );
+                        FileProperty.PRODUCT_VERSION, EntityStateVersionType.class );
     }
 
 
@@ -472,7 +466,7 @@ public class FileState
 
 
     @Override
-    public Iterator<EntityBase> iterateProperties()
+    public Iterator<EntityAttributeGroup> iterateProperties()
     {
         return _properties.iterateProperties();
     }

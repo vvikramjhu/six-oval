@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
 import java.util.EnumMap;
 import java.util.Iterator;
@@ -32,7 +32,7 @@ import java.util.Iterator;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class EntityPropertyMap<K extends Enum<K>>
-    extends EnumMap<K, EntityBase>
+    extends EnumMap<K, EntityAttributeGroup>
 {
 
     /**
@@ -49,7 +49,7 @@ public class EntityPropertyMap<K extends Enum<K>>
 
     /**
      */
-    public Iterator<EntityBase> iterateProperties()
+    public Iterator<EntityAttributeGroup> iterateProperties()
     {
         return values().iterator();
     }
@@ -58,12 +58,12 @@ public class EntityPropertyMap<K extends Enum<K>>
 
     /**
      */
-    public <T extends EntityBase> T getProperty(
+    public <T extends EntityAttributeGroup> T getProperty(
                     final K key,
                     final Class<T> type
                     )
     {
-        EntityBase  p = get( key );
+        EntityAttributeGroup  p = get( key );
         return type.cast( p );
     }
 
@@ -73,7 +73,7 @@ public class EntityPropertyMap<K extends Enum<K>>
      */
     public void setProperty(
                     final K key,
-                    final EntityBase value
+                    final EntityAttributeGroup value
                     )
     {
         put( key, value );
