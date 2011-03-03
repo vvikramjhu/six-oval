@@ -18,12 +18,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.OvalEntity;
-import jp.go.aist.six.oval.model.common.DefinitionClass;
 import java.util.ArrayList;
 import java.util.Collection;
+import jp.go.aist.six.oval.model.OvalEntity;
+import jp.go.aist.six.oval.model.definitions.Criteria;
+import jp.go.aist.six.oval.model.definitions.Cve;
+import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
 
 
 
@@ -34,15 +36,15 @@ import java.util.Collection;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Definition
+public class DefinitionType
     extends OvalEntity
 {
 
-    private Metadata  _metadata;
+    private MetadataType  _metadata;
     //{1..1}
 
 
-    private Notes  _notes;
+    private NotesType  _notes;
     //{0..1}
 
 
@@ -53,28 +55,25 @@ public class Definition
 
 
 
-    private DefinitionClass  _definitionClass;
+    private DefinitionClassEnumeration  _definitionClass;
     //{required}
 
 
     // SIX: extended properties //
     private String  _lastModifiedDate;
-    private Collection<Cve>  _relatedCve = new ArrayList<Cve>();
+    private final Collection<Cve>  _relatedCve = new ArrayList<Cve>();
 
 
 
     /**
      * Constructor.
      */
-    public Definition()
+    public DefinitionType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public Definition(
+    public DefinitionType(
                     final String id,
                     final int version
                     )
@@ -83,13 +82,10 @@ public class Definition
     }
 
 
-    /**
-     * Constructor.
-     */
-    public Definition(
+    public DefinitionType(
                     final String id,
                     final int version,
-                    final DefinitionClass clazz
+                    final DefinitionClassEnumeration clazz
                     )
     {
         super( id, version );
@@ -97,14 +93,11 @@ public class Definition
     }
 
 
-    /**
-     * Constructor.
-     */
-    public Definition(
+    public DefinitionType(
                     final String id,
                     final int version,
-                    final DefinitionClass clazz,
-                    final Metadata metadata
+                    final DefinitionClassEnumeration clazz,
+                    final MetadataType metadata
                     )
     {
         this( id, version, clazz );
@@ -116,15 +109,15 @@ public class Definition
     /**
      */
     public void setMetadata(
-                    final Metadata metadata
+                    final MetadataType metadata
                     )
     {
         _metadata = metadata;
     }
 
 
-    public Definition metadata(
-                    final Metadata metadata
+    public DefinitionType metadata(
+                    final MetadataType metadata
                     )
     {
         setMetadata( metadata );
@@ -132,10 +125,10 @@ public class Definition
     }
 
 
-    public Metadata getMetadata()
+    public MetadataType getMetadata()
     {
         if (_metadata == null) {
-            _metadata = new Metadata();
+            _metadata = new MetadataType();
         }
         return _metadata;
     }
@@ -145,7 +138,7 @@ public class Definition
     /**
      */
     public void setNotes(
-                    final Notes notes
+                    final NotesType notes
                     )
     {
         _notes = notes;
@@ -154,7 +147,7 @@ public class Definition
 
     /**
      */
-    public Notes getNotes()
+    public NotesType getNotes()
     {
         return _notes;
     }
@@ -171,7 +164,7 @@ public class Definition
     }
 
 
-    public Definition criteria(
+    public DefinitionType criteria(
                     final Criteria criteria
                     )
     {
@@ -207,14 +200,14 @@ public class Definition
     /**
      */
     public void setDefinitionClass(
-                    final DefinitionClass clazz
+                    final DefinitionClassEnumeration clazz
                     )
     {
         _definitionClass = clazz;
     }
 
 
-    public DefinitionClass getDefinitionClass()
+    public DefinitionClassEnumeration getDefinitionClass()
     {
         return _definitionClass;
     }
@@ -238,7 +231,7 @@ public class Definition
     public String getLastModifiedDate()
     {
         if (_lastModifiedDate == null) {
-            Metadata  meta = getMetadata();
+            MetadataType  meta = getMetadata();
             if (meta != null) {
                 _lastModifiedDate = meta.getLastModifiedDate();
             }
@@ -270,7 +263,7 @@ public class Definition
     public Collection<Cve> getRelatedCve()
     {
         if (! _relatedCveComputed) {
-            Metadata  meta = getMetadata();
+            MetadataType  meta = getMetadata();
             if (meta != null) {
                 _relatedCve.addAll( meta.getRelatedCve() );
             }
@@ -299,7 +292,7 @@ public class Definition
                     final Object obj
                     )
     {
-        if (!(obj instanceof Definition)) {
+        if (!(obj instanceof DefinitionType)) {
             return false;
         }
 
@@ -311,7 +304,7 @@ public class Definition
     @Override
     public String toString()
     {
-        return "definition[" + super.toString()
+        return "[" + super.toString()
                         + ", class=" + getDefinitionClass()
                         + ", metadata=" + getMetadata()
 //                        + ", criteria=" + getCriteria()

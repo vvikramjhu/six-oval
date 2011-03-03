@@ -18,20 +18,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 import jp.go.aist.six.oval.model.AbstractOvalObject;
+import jp.go.aist.six.oval.model.definitions.Cve;
+import jp.go.aist.six.oval.model.definitions.MetadataItem;
 import jp.go.aist.six.oval.model.mitre.Event;
 import jp.go.aist.six.oval.model.mitre.Modified;
 import jp.go.aist.six.oval.model.mitre.OvalRepository;
 import jp.go.aist.six.oval.model.mitre.Submitted;
 import jp.go.aist.six.oval.model.redhat.CveReference;
 import jp.go.aist.six.oval.model.redhat.LinuxSecurityAdvisory;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 
 
 
@@ -43,7 +45,7 @@ import java.util.Set;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class Metadata
+public class MetadataType
     extends AbstractOvalObject
 {
 
@@ -51,11 +53,12 @@ public class Metadata
     //{1..1}
 
 //    private final Collection<Affected>  _affected = new ArrayList<Affected>();
-    private Affected  _affected;
+    private AffectedType  _affected;
     //{0..*}
     //NOTE: So far, we found NO definition with multiple 'affected' elements.
 
-    private final Collection<Reference>  _reference = new ArrayList<Reference>();
+    private final Collection<ReferenceType>  _reference =
+        new ArrayList<ReferenceType>();
     //{0..*}
 
     private String  _description;
@@ -69,22 +72,22 @@ public class Metadata
     /**
      * Constructor.
      */
-    public Metadata()
+    public MetadataType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public Metadata(
-                    final String title,
-                    final String description
-                    )
-    {
-        setTitle( title );
-        setDescription( description );
-    }
+//    /**
+//     * Constructor.
+//     */
+//    public MetadataType(
+//                    final String title,
+//                    final String description
+//                    )
+//    {
+//        setTitle( title );
+//        setDescription( description );
+//    }
 
 
 
@@ -98,7 +101,7 @@ public class Metadata
     }
 
 
-    public Metadata title(
+    public MetadataType title(
                     final String title
                     )
     {
@@ -117,15 +120,15 @@ public class Metadata
     /**
      */
     public void setAffected(
-                    final Affected affected
+                    final AffectedType affected
                     )
     {
         _affected = affected;
     }
 
 
-    public Metadata affected(
-                    final Affected affected
+    public MetadataType affected(
+                    final AffectedType affected
                     )
     {
         setAffected( affected );
@@ -133,7 +136,7 @@ public class Metadata
     }
 
 
-    public Affected getAffected()
+    public AffectedType getAffected()
     {
         return _affected;
     }
@@ -143,13 +146,13 @@ public class Metadata
     /**
      */
     public void setReference(
-                    final Collection<? extends Reference> references
+                    final Collection<? extends ReferenceType> references
                     )
     {
         if (references != _reference) {
             _reference.clear();
             if (references != null  &&  references.size() > 0) {
-                for (Reference r : references) {
+                for (ReferenceType  r : references) {
                     addReference( r );
                 }
             }
@@ -158,7 +161,7 @@ public class Metadata
 
 
     public boolean addReference(
-                    final Reference reference
+                    final ReferenceType reference
                     )
     {
         if (reference == null) {
@@ -169,8 +172,8 @@ public class Metadata
     }
 
 
-    public Metadata reference(
-                    final Reference reference
+    public MetadataType reference(
+                    final ReferenceType reference
                     )
     {
         addReference( reference );
@@ -178,13 +181,13 @@ public class Metadata
     }
 
 
-    public Collection<Reference> getReference()
+    public Collection<ReferenceType> getReference()
     {
         return _reference;
     }
 
 
-    public Iterator<Reference> iterateReference()
+    public Iterator<ReferenceType> iterateReference()
     {
         return _reference.iterator();
     }
@@ -201,7 +204,7 @@ public class Metadata
     }
 
 
-    public Metadata description(
+    public MetadataType description(
                     final String description
                     )
     {
@@ -244,7 +247,7 @@ public class Metadata
     }
 
 
-    public Metadata additionalMetadata(
+    public MetadataType additionalMetadata(
                     final MetadataItem item
                     )
     {
@@ -370,9 +373,9 @@ public class Metadata
         final String  cveSource = "CVE";
 
         // Mitre OVAL repository
-        Collection<Reference>  references = getReference();
+        Collection<ReferenceType>  references = getReference();
         if (references != null  &&  references.size() > 0) {
-            for (Reference  ref : references) {
+            for (ReferenceType  ref : references) {
                 if (cveSource.equals( ref.getSource() )) {
                     Cve  cve = new Cve( ref.getRefID() );
                     cves.add( cve );
@@ -416,4 +419,4 @@ public class Metadata
     }
 
 }
-// Metadata
+// MetadataType

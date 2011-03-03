@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
 import jp.go.aist.six.oval.model.AbstractOvalObject;
 
@@ -31,27 +31,27 @@ import jp.go.aist.six.oval.model.AbstractOvalObject;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Reference
+public class ReferenceType
     extends AbstractOvalObject
 {
 
     private String  _source;
-    //{xsd:string, required}
+    //{required}
 
 
     private String  _refID;
-    //{xsd:string, required}
+    //{required}
 
 
     private String  _refURL;
-    //{xsd:anyURI, optional}
+    //{optional, xsd:anyURI}
 
 
 
     /**
      * Constructor.
      */
-    public Reference()
+    public ReferenceType()
     {
     }
 
@@ -59,7 +59,7 @@ public class Reference
     /**
      * Constructor.
      */
-    public Reference(
+    public ReferenceType(
                     final String source,
                     final String refID
                     )
@@ -72,7 +72,7 @@ public class Reference
     /**
      * Constructor.
      */
-    public Reference(
+    public ReferenceType(
                     final String source,
                     final String refID,
                     final String refURL
@@ -168,11 +168,11 @@ public class Reference
             return true;
         }
 
-        if (!(obj instanceof Reference)) {
+        if (!(obj instanceof ReferenceType)) {
             return false;
         }
 
-        Reference  other = (Reference)obj;
+        ReferenceType  other = (ReferenceType)obj;
         String  other_id = other.getRefID();
         String   this_id =  this.getRefID();
         if (this_id == other_id
@@ -202,4 +202,4 @@ public class Reference
     }
 
 }
-// Reference
+// ReferenceType

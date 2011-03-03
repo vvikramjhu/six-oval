@@ -18,13 +18,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.AbstractOvalObject;
 
 
 
@@ -35,11 +34,11 @@ import java.util.Iterator;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Notes
+public class NotesType
     extends AbstractOvalObject
 {
 
-    private Collection<String>  _note = new ArrayList<String>();
+    private final Collection<String>  _note = new ArrayList<String>();
     //{1..*}
 
 
@@ -47,34 +46,30 @@ public class Notes
     /**
      * Constructor.
      */
-    public Notes()
+    public NotesType()
     {
     }
+
+
+//    public NotesType(
+//                    final Collection<String> notes
+//                    )
+//    {
+//        setNote( notes );
+//    }
+//
+//
+//    public NotesType(
+//                    final String[] notes
+//                    )
+//    {
+//        setNote( Arrays.asList( notes ) );
+//    }
+
 
 
     /**
-     * Constructor.
      */
-    public Notes(
-                    final Collection<String> notes
-                    )
-    {
-        setNote( notes );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public Notes(
-                    final String[] notes
-                    )
-    {
-        setNote( Arrays.asList( notes ) );
-    }
-
-
-
     public void setNote(
                     final Collection<String> notes
                     )
@@ -120,4 +115,4 @@ public class Notes
     }
 
 }
-// Notes
+// NotesType

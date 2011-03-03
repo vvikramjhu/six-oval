@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.v5.definitions;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalElementContainer;
-import jp.go.aist.six.oval.model.definitions.Definition;
 
 
 
@@ -35,7 +34,7 @@ import jp.go.aist.six.oval.model.definitions.Definition;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class DefinitionsType
-    extends OvalElementContainer<Definition>    //{1..*}
+    extends OvalElementContainer<DefinitionType>    //{1..*}
 {
 
     /**
@@ -50,7 +49,7 @@ public class DefinitionsType
      * Constructor.
      */
     public DefinitionsType(
-                    final Collection<? extends Definition> definitions
+                    final Collection<? extends DefinitionType> definitions
                     )
     {
         super( definitions );
@@ -61,7 +60,7 @@ public class DefinitionsType
      * Constructor.
      */
     public DefinitionsType(
-                    final Definition[] definitions
+                    final DefinitionType[] definitions
                     )
     {
         super( definitions );
@@ -70,7 +69,7 @@ public class DefinitionsType
 
 
     public void setDefinition(
-                    final Collection<? extends Definition> definitions
+                    final Collection<? extends DefinitionType> definitions
                     )
     {
         _setElement( definitions );
@@ -78,23 +77,23 @@ public class DefinitionsType
 
 
     public boolean addDefinition(
-                    final Definition definition
+                    final DefinitionType definition
                     )
     {
         return add( definition );
     }
 
 
-    public Collection<Definition> getDefinition()
+    public Collection<DefinitionType> getDefinition()
     {
         return _getElement();
     }
 
 
-    public Iterator<Definition> iterateDefinition()
+    public Iterator<DefinitionType> iterateDefinition()
     {
         return iterator();
     }
 
 }
-// Definitions
+// DefinitionsType

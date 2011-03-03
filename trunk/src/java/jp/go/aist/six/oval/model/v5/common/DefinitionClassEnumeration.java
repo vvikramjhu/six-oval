@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.common;
+package jp.go.aist.six.oval.model.v5.common;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -35,7 +35,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class DefinitionClass
+public final class DefinitionClassEnumeration
     implements Serializable
 {
 
@@ -46,17 +46,17 @@ public final class DefinitionClass
     private static final String  _VULNERABILITY_  = "vulnerability";
 
 
-    public static final DefinitionClass  COMPLIANCE     = new DefinitionClass( _COMPLIANCE_ );
-    public static final DefinitionClass  INVENTORY      = new DefinitionClass( _INVENTORY_ );
-    public static final DefinitionClass  MISCELLANEOUS  = new DefinitionClass( _MISCELLANEOUS_ );
-    public static final DefinitionClass  PATCH          = new DefinitionClass( _PATCH_ );
-    public static final DefinitionClass  VULNERABILITY  = new DefinitionClass( _VULNERABILITY_ );
+    public static final DefinitionClassEnumeration  COMPLIANCE     = new DefinitionClassEnumeration( _COMPLIANCE_ );
+    public static final DefinitionClassEnumeration  INVENTORY      = new DefinitionClassEnumeration( _INVENTORY_ );
+    public static final DefinitionClassEnumeration  MISCELLANEOUS  = new DefinitionClassEnumeration( _MISCELLANEOUS_ );
+    public static final DefinitionClassEnumeration  PATCH          = new DefinitionClassEnumeration( _PATCH_ );
+    public static final DefinitionClassEnumeration  VULNERABILITY  = new DefinitionClassEnumeration( _VULNERABILITY_ );
 
 
 
-    private static HashMap<String, DefinitionClass> _INIT_()
+    private static HashMap<String, DefinitionClassEnumeration> _INIT_()
     {
-        HashMap<String, DefinitionClass>  map = new HashMap<String, DefinitionClass>();
+        HashMap<String, DefinitionClassEnumeration>  map = new HashMap<String, DefinitionClassEnumeration>();
         map.put( _COMPLIANCE_,     COMPLIANCE     );
         map.put( _INVENTORY_,      INVENTORY      );
         map.put( _MISCELLANEOUS_,  MISCELLANEOUS  );
@@ -65,16 +65,17 @@ public final class DefinitionClass
         return map;
     }
 
-    private static final HashMap<String, DefinitionClass>  _INSTANCES_ = _INIT_();
-
+    private static final HashMap<String, DefinitionClassEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
     /**
      */
-    public static DefinitionClass valueOf( final String name )
+    public static DefinitionClassEnumeration valueOf(
+                    final String name
+                    )
     {
-        DefinitionClass  flag = null;
+        DefinitionClassEnumeration  flag = null;
         if (name != null) {
             flag = _INSTANCES_.get( name );
         }
@@ -95,7 +96,7 @@ public final class DefinitionClass
     /**
      * Constructor.
      */
-    private DefinitionClass(
+    private DefinitionClassEnumeration(
                     final String name
                     )
     {
@@ -124,4 +125,4 @@ public final class DefinitionClass
     }
 
 }
-// DefinitionClass
+// DefinitionClassEnumeration
