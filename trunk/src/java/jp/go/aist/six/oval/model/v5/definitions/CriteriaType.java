@@ -18,13 +18,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.common.Operator;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
+import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
 
 
 
@@ -37,16 +36,17 @@ import java.util.Set;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Criteria
+public class CriteriaType
     extends CriteriaElement
     implements Iterable<CriteriaElement>
 {
 
-    private Set<CriteriaElement>  _elements = new HashSet<CriteriaElement>();
+    private final Collection<CriteriaElement>  _elements =
+        new ArrayList<CriteriaElement>();
     //{1..*}
 
-    public static final Operator  DEFAULT_OPERATOR = Operator.AND;
-    private Operator  _operator;
+    public static final OperatorEnumeration  DEFAULT_OPERATOR = OperatorEnumeration.AND;
+    private OperatorEnumeration  _operator;
     //{optional, default="AND"}
 
 
@@ -54,7 +54,7 @@ public class Criteria
     /**
      * Constructor.
      */
-    public Criteria()
+    public CriteriaType()
     {
     }
 
@@ -62,7 +62,7 @@ public class Criteria
     /**
      * Constructor.
      */
-    public Criteria(
+    public CriteriaType(
                     final String comment
                     )
     {
@@ -70,22 +70,16 @@ public class Criteria
     }
 
 
-    /**
-     * Constructor.
-     */
-    public Criteria(
-                    final Operator operator
+    public CriteriaType(
+                    final OperatorEnumeration operator
                     )
     {
         setOperator( operator );
     }
 
 
-    /**
-     * Constructor.
-     */
-    public Criteria(
-                    final Operator operator,
+    public CriteriaType(
+                    final OperatorEnumeration operator,
                     final String comment
                     )
     {
@@ -94,11 +88,8 @@ public class Criteria
     }
 
 
-    /**
-     * Constructor.
-     */
-    public Criteria(
-                    final Operator operator,
+    public CriteriaType(
+                    final OperatorEnumeration operator,
                     final Collection<? extends CriteriaElement> elements
                     )
     {
@@ -108,7 +99,7 @@ public class Criteria
 
 
 
-    public Criteria comment(
+    public CriteriaType comment(
                     final String comment
                     )
     {
@@ -121,14 +112,14 @@ public class Criteria
     /**
      */
     public void setOperator(
-                    final Operator operator
+                    final OperatorEnumeration operator
                     )
     {
         _operator = operator;
     }
 
 
-    public Operator getOperator()
+    public OperatorEnumeration getOperator()
     {
         return (_operator == null ? DEFAULT_OPERATOR : _operator);
     }
@@ -143,30 +134,14 @@ public class Criteria
     {
         if (elements != _elements) {
             _elements.clear();
-            if (elements == null  ||  elements.size() == 0) {
-                return;
-            }
-
-            for (CriteriaElement  e : elements) {
-                addElement( e );
+            if (elements != null  &&  elements.size() > 0) {
+                _elements.addAll( elements );
             }
         }
     }
 
 
-    public boolean addElement(
-                    final CriteriaElement element
-                    )
-    {
-        if (element == null) {
-            return false;
-        }
-
-        return _elements.add( element );
-    }
-
-
-    public Set<CriteriaElement> getElements()
+    public Collection<CriteriaElement> getElements()
     {
         return _elements;
     }
@@ -178,38 +153,38 @@ public class Criteria
     }
 
 
-    public Criteria element(
+    public CriteriaType element(
                     final CriteriaElement element
                     )
     {
-        addElement( element );
+        _elements.add( element );
         return this;
     }
 
 
-    public Criteria criteria(
-                    final Operator operator
+    public CriteriaType criteria(
+                    final OperatorEnumeration operator
                     )
     {
-        return element( new Criteria( operator ) );
+        return element( new CriteriaType( operator ) );
     }
 
 
-    public Criteria criterion(
+    public CriteriaType criterion(
                     final String testID,
                     final String comment
                     )
     {
-        return element( new Criterion( testID, comment ) );
+        return element( new CriterionType( testID, comment ) );
     }
 
 
-    public Criteria extendDefinition(
+    public CriteriaType extendDefinition(
                     final String definitionID,
                     final String comment
                     )
     {
-        return element( new ExtendDefinition( definitionID, comment ) );
+        return element( new ExtendDefinitionType( definitionID, comment ) );
     }
 
 
@@ -218,6 +193,7 @@ public class Criteria
     //  Iterable
     //**************************************************************
 
+    @Override
     public Iterator<CriteriaElement> iterator()
     {
         return iterateElements();
@@ -238,7 +214,7 @@ public class Criteria
         Collection<CriteriaElement>  elements = getElements();
         result = prime * result + ((elements == null) ? 0 : elements.hashCode());
 
-        Operator  operator = getOperator();
+        OperatorEnumeration  operator = getOperator();
         result = prime * result + ((operator == null) ? 0 : operator.hashCode());
 
         return result;
@@ -255,14 +231,14 @@ public class Criteria
             return true;
         }
 
-        if (!(obj instanceof Criteria)) {
+        if (!(obj instanceof CriteriaType)) {
             return false;
         }
 
         if (super.equals( obj )) {
-            Criteria  other = (Criteria)obj;
-            Operator  other_operator = other.getOperator();
-            Operator   this_operator =  this.getOperator();
+            CriteriaType  other = (CriteriaType)obj;
+            OperatorEnumeration  other_operator = other.getOperator();
+            OperatorEnumeration   this_operator =  this.getOperator();
             if (this_operator == other_operator) {
                 Collection<CriteriaElement>  other_elements = other.getElements();
                 Collection<CriteriaElement>   this_elements =  this.getElements();
@@ -289,4 +265,4 @@ public class Criteria
     }
 
 }
-// Criteria
+// CriteriaType

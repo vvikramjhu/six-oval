@@ -1,8 +1,8 @@
 /*
- *  @product.title@
- *  Copyright (C) @product.copyright-year@
- *    @product.vendor@
- *    Registration Number: @product.registration-number@
+ *  @ProductName@
+ *  Copyright (C) @CopyrightYear@
+ *    National Institute of Advanced Industrial Science and Technology (AIST)
+ *    Registration Number: @AISTRegistrationNumber@
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,71 +18,67 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
 
 
 /**
- * The Criterion identifies a specific test
- * to be included in the definition's criteria.
+ * The ExtendDefinition allows existing definitions
+ * to be extended by another definition.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Criterion
+public class ExtendDefinitionType
     extends CriteriaElement
 {
 
-    private String  _testRef;
-    //{oval:TestIDPattern, required}
+    private String  _definitionRef;
+    //{required, oval:DefinitionIDPattern}
 
 
 
     /**
      * Constructor.
      */
-    public Criterion()
+    public ExtendDefinitionType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public Criterion(
-                    final String testID
+    public ExtendDefinitionType(
+                    final String definitionID
                     )
     {
-        this( testID, null );
+        this( definitionID, null );
     }
 
 
-    /**
-     * Constructor.
-     */
-    public Criterion(
-                    final String testID,
+    public ExtendDefinitionType(
+                    final String definitionID,
                     final String comment
                     )
     {
         super( comment );
-        setTestRef( testID );
+        setDefinitionRef( definitionID );
     }
 
 
 
-    public void setTestRef(
-                    final String testID
+    /**
+     */
+    public void setDefinitionRef(
+                    final String definitionID
                     )
     {
-        _testRef = testID;
+        _definitionRef = definitionID;
     }
 
 
-    public String getTestRef()
+    public String getDefinitionRef()
     {
-        return _testRef;
+        return _definitionRef;
     }
 
 
@@ -97,8 +93,8 @@ public class Criterion
         final int  prime = 37;
         int  result = super.hashCode();
 
-        String  testRef = getTestRef();
-        result = prime * result + ((testRef == null) ? 0 : testRef.hashCode());
+        String  defRef = getDefinitionRef();
+        result = prime * result + ((defRef == null) ? 0 : defRef.hashCode());
 
         return result;
     }
@@ -114,17 +110,17 @@ public class Criterion
             return true;
         }
 
-        if (!(obj instanceof Criterion)) {
+        if (!(obj instanceof ExtendDefinitionType)) {
             return false;
         }
 
         if (super.equals( obj )) {
-            Criterion  other = (Criterion)obj;
-            String  other_testRef = other.getTestRef();
-            String   this_testRef =  this.getTestRef();
-            if (this_testRef == other_testRef
-                            ||  (this_testRef != null
-                                            &&  this_testRef.equals( other_testRef ))) {
+            ExtendDefinitionType  other = (ExtendDefinitionType)obj;
+            String  other_defRef = other.getDefinitionRef();
+            String   this_defRef =  this.getDefinitionRef();
+            if (this_defRef == other_defRef
+                            ||  (this_defRef != null
+                                            &&  this_defRef.equals( other_defRef ))) {
                 return true;
             }
         }
@@ -137,11 +133,11 @@ public class Criterion
     @Override
     public String toString()
     {
-        return "criterion[negate=" + isNegate()
-                        + ", test_ref=" + getTestRef()
+        return "extend_definition[negate=" + isNegate()
+                        + ", definition_ref=" + getDefinitionRef()
                         + ", comment=" + getComment()
                         + "]";
     }
 
 }
-// Criterion
+// ExtendDefinitionType

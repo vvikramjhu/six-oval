@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.v5.definitions;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import jp.go.aist.six.oval.model.definitions.Criteria;
 import jp.go.aist.six.oval.model.definitions.Cve;
 import jp.go.aist.six.oval.model.v5.OvalEntity;
 import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
@@ -48,7 +47,7 @@ public class DefinitionType
     //{0..1}
 
 
-    private Criteria  _criteria;
+    private CriteriaType  _criteria;
     //{0..1}
 
     private String  _criteriaXml;
@@ -156,7 +155,7 @@ public class DefinitionType
     /**
      */
     public void setCriteria(
-                    final Criteria criteria
+                    final CriteriaType criteria
                     )
     {
         _criteria = criteria;
@@ -164,7 +163,7 @@ public class DefinitionType
 
 
     public DefinitionType criteria(
-                    final Criteria criteria
+                    final CriteriaType criteria
                     )
     {
         setCriteria( criteria );
@@ -172,7 +171,7 @@ public class DefinitionType
     }
 
 
-    public Criteria getCriteria()
+    public CriteriaType getCriteria()
     {
         return _criteria;
     }
@@ -306,7 +305,7 @@ public class DefinitionType
         return "[" + super.toString()
                         + ", class=" + getDefinitionClass()
                         + ", metadata=" + getMetadata()
-//                        + ", criteria=" + getCriteria()
+                        + ", " + getCriteria()
                         + ", notes=" + getNotes()
                         + "]";
     }

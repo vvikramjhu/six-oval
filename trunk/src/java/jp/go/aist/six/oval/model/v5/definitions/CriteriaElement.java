@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
 import jp.go.aist.six.oval.model.AbstractOvalObject;
 import jp.go.aist.six.util.persist.Dependent;
@@ -34,15 +34,15 @@ import jp.go.aist.six.util.persist.Dependent;
  */
 public class CriteriaElement
     extends AbstractOvalObject
-    implements Dependent<Definition>
+    implements Dependent<DefinitionType>
 {
 
-    public static final boolean  DEFAULT_NEGATE = false;
-    private boolean  _negate = DEFAULT_NEGATE;
-    //{xsd:boolean, optional, default="false"}
+    public static final Boolean  DEFAULT_NEGATE = Boolean.FALSE;
+    private Boolean  _negate;
+    //{optional, xsd:boolean, default="false"}
 
     private String  _comment;
-    //{xsd:string, optional}
+    //{optional}
 
 
 
@@ -69,14 +69,14 @@ public class CriteriaElement
     /**
      */
     public void setNegate(
-                    final boolean negate
+                    final Boolean negate
                     )
     {
         _negate = negate;
     }
 
 
-    public boolean isNegate()
+    public Boolean isNegate()
     {
         return _negate;
     }
@@ -104,19 +104,21 @@ public class CriteriaElement
     //  Dependent
     //**************************************************************
 
-    private Definition  _master;
+    private DefinitionType  _master;
 
 
 
+    @Override
     public void setMasterObject(
-                    final Definition master
+                    final DefinitionType master
                     )
     {
         _master = master;
     }
 
 
-    public Definition getMasterObject()
+    @Override
+    public DefinitionType getMasterObject()
     {
         return _master;
     }

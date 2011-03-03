@@ -82,11 +82,6 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
             ns-prefix=""/>
 
-        <field name="definitionClass" 
-            type="jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration">
-            <bind-xml name="class" node="attribute"/>
-        </field>
-
         <field name="metadata" 
             type="jp.go.aist.six.oval.model.v5.definitions.MetadataType">
             <bind-xml name="metadata" node="element"/>
@@ -97,13 +92,15 @@
             <bind-xml name="notes" node="element"/>
         </field>
 
-<!-- 
-
         <field name="criteria" 
-            type="jp.go.aist.six.oval.model.definitions.Criteria">
+            type="jp.go.aist.six.oval.model.v5.definitions.CriteriaType">
             <bind-xml name="criteria" node="element"/>
         </field>
--->
+
+        <field name="definitionClass" 
+            type="jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration">
+            <bind-xml name="class" node="attribute"/>
+        </field>
     </class>
 
 
@@ -224,6 +221,63 @@
 
         <field name="content" type="string">
             <bind-xml node="text"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.v5.definitions.CriteriaElement"
+        verify-constructable="false">
+
+        <field name="negate" type="boolean">
+            <bind-xml name="negate" node="attribute"/>
+        </field>
+
+        <field name="comment" type="string">
+            <bind-xml name="comment" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.CriteriaType"
+        extends="jp.go.aist.six.oval.model.v5.definitions.CriteriaElement">
+        <map-to xml="criteria"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="operator" 
+            type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration">
+            <bind-xml name="operator" node="attribute"/>
+        </field>
+
+        <field name="elements" 
+            type="jp.go.aist.six.oval.model.v5.definitions.CriteriaElement"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.CriterionType"
+        extends="jp.go.aist.six.oval.model.v5.definitions.CriteriaElement">
+        <map-to xml="criterion"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="testRef" type="string">
+            <bind-xml name="test_ref" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.ExtendDefinitionType"
+        extends="jp.go.aist.six.oval.model.v5.definitions.CriteriaElement">
+        <map-to xml="extend_definition"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="definitionRef" type="string">
+            <bind-xml name="definition_ref" node="attribute"/>
         </field>
     </class>
 

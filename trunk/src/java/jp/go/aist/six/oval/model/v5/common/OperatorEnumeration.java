@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.common;
+package jp.go.aist.six.oval.model.v5.common;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class Operator
+public final class OperatorEnumeration
     implements Serializable
 {
 
@@ -43,16 +43,16 @@ public final class Operator
     private static final String  _XOR_  = "XOR";
 
 
-    public static final Operator  AND = new Operator( _AND_ );
-    public static final Operator  ONE = new Operator( _ONE_ );
-    public static final Operator  OR  = new Operator( _OR_ );
-    public static final Operator  XOR = new Operator( _XOR_ );
+    public static final OperatorEnumeration  AND = new OperatorEnumeration( _AND_ );
+    public static final OperatorEnumeration  ONE = new OperatorEnumeration( _ONE_ );
+    public static final OperatorEnumeration  OR  = new OperatorEnumeration( _OR_ );
+    public static final OperatorEnumeration  XOR = new OperatorEnumeration( _XOR_ );
 
 
 
-    private static HashMap<String, Operator> _INIT_()
+    private static HashMap<String, OperatorEnumeration> _INIT_()
     {
-        HashMap<String, Operator>  map = new HashMap<String, Operator>();
+        HashMap<String, OperatorEnumeration>  map = new HashMap<String, OperatorEnumeration>();
         map.put( _AND_,  AND );
         map.put( _ONE_,  ONE );
         map.put( _OR_,   OR  );
@@ -60,18 +60,18 @@ public final class Operator
         return map;
     }
 
-    private static final HashMap<String, Operator>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, OperatorEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static Operator valueOf(
+    public static OperatorEnumeration valueOf(
                     final String name
                     )
     {
-        Operator  flag = null;
+        OperatorEnumeration  flag = null;
         if (name != null) {
             flag = _INSTANCES_.get( name );
         }
@@ -92,7 +92,7 @@ public final class Operator
     /**
      * Constructor.
      */
-    private Operator(
+    private OperatorEnumeration(
                     final String name
                     )
     {
@@ -121,4 +121,4 @@ public final class Operator
     }
 
 }
-// Operator
+// OperatorEnumeration
