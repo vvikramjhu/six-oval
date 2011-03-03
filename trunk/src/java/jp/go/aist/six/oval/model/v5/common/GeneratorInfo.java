@@ -32,14 +32,14 @@ import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class GeneratorItem
+public abstract class GeneratorInfo
     extends AbstractOvalObject
 {
 
     /**
      * Constructor.
      */
-    public GeneratorItem()
+    public GeneratorInfo()
     {
     }
 

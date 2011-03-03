@@ -46,14 +46,11 @@
         </field>
 -->
 
-
-<!-- ***** 
         <field name="additionalInfo" 
-            type="jp.go.aist.six.oval.model.common.GeneratorInfo"
+            type="jp.go.aist.six.oval.model.v5.common.GeneratorInfo"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
--->
     </class>
 
 </mapping>

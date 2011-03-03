@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5.common;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import jp.go.aist.six.oval.model.AbstractOvalObject;
 
 
@@ -58,8 +60,9 @@ public class GeneratorType
     //{xsd:dateTime, 1..1}
 
 
-//    private Collection<GeneratorInfo>  _additionalInfo = new ArrayList<GeneratorInfo>();
-//    //{0..*}
+    private final Collection<GeneratorInfo>  _additionalInfo =
+        new ArrayList<GeneratorInfo>();
+    //{0..*}
 
 
 
@@ -161,42 +164,34 @@ public class GeneratorType
 
 
 
-//    /**
-//     */
-//    public void setAdditionalInfo(
-//                    final Collection<? extends GeneratorInfo> info
-//                    )
-//    {
-//        if (info != _additionalInfo) {
-//            _additionalInfo.clear();
-//            if (info != null  &&  info.size() > 0) {
-//                _additionalInfo.addAll( info );
-//            }
-//        }
-//    }
-//
-//
-//    public boolean addAdditionalInfo(
-//                    final GeneratorInfo info
-//                    )
-//    {
-//        return _additionalInfo.add( info );
-//    }
-//
-//
-//    public GeneratorType additionalInfo(
-//                    final GeneratorInfo info
-//                    )
-//    {
-//        addAdditionalInfo( info );
-//        return this;
-//    }
-//
-//
-//    public Collection<GeneratorInfo> getAdditionalInfo()
-//    {
-//        return _additionalInfo;
-//    }
+    /**
+     */
+    public void setAdditionalInfo(
+                    final Collection<? extends GeneratorInfo> info
+                    )
+    {
+        if (info != _additionalInfo) {
+            _additionalInfo.clear();
+            if (info != null  &&  info.size() > 0) {
+                _additionalInfo.addAll( info );
+            }
+        }
+    }
+
+
+    public GeneratorType additionalInfo(
+                    final GeneratorInfo info
+                    )
+    {
+        _additionalInfo.add( info );
+        return this;
+    }
+
+
+    public Collection<GeneratorInfo> getAdditionalInfo()
+    {
+        return _additionalInfo;
+    }
 
 
 
@@ -275,7 +270,7 @@ public class GeneratorType
                         + ", product_version=" + getProductVersion()
                         + ", schema_version=" + getSchemaVersion()
                         + ", timestamp=" + getTimestamp()
-//                        + ", " + getAdditionalInfo()
+                        + ", additionalInfo=" + getAdditionalInfo()
                         + "]";
     }
 

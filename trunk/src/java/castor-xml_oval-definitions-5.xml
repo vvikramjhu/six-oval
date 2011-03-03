@@ -214,7 +214,7 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <class name="jp.go.aist.six.oval.model.v5.mitre.Vendor"
-        extends="jp.go.aist.six.oval.model.v5.common.GeneratorItem">
+        extends="jp.go.aist.six.oval.model.v5.common.GeneratorInfo">
         <map-to xml="vendor"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
