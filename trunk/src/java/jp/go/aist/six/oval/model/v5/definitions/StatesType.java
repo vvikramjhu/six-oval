@@ -34,7 +34,7 @@ import jp.go.aist.six.oval.model.v5.OvalElementContainer;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class StatesType
-    extends OvalElementContainer<State> //{1..*}
+    extends OvalElementContainer<StateType> //{1..*}
 //extends Container<State> //{1..*}
 {
 
@@ -50,7 +50,7 @@ public class StatesType
      * Constructor.
      */
     public StatesType(
-                    final Collection<? extends State> states
+                    final Collection<? extends StateType> states
                     )
     {
         super( states );
@@ -61,7 +61,7 @@ public class StatesType
      * Constructor.
      */
     public StatesType(
-                    final State[] states
+                    final StateType[] states
                     )
     {
         super( states );
@@ -70,7 +70,7 @@ public class StatesType
 
 
     public void setState(
-                    final Collection<? extends State> states
+                    final Collection<? extends StateType> states
                     )
     {
         _setElement( states );
@@ -78,20 +78,20 @@ public class StatesType
 
 
     public boolean addState(
-                    final State state
+                    final StateType state
                     )
     {
         return add( state );
     }
 
 
-    public Collection<State> getState()
+    public Collection<StateType> getState()
     {
         return _getElement();
     }
 
 
-    public Iterator<State> iterateState()
+    public Iterator<StateType> iterateState()
     {
         return iterator();
     }

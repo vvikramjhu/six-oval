@@ -36,7 +36,7 @@ import jp.go.aist.six.oval.model.v5.OvalElementContainer;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class SystemObjectsType
-    extends OvalElementContainer<SystemObject>  //{1..*}
+    extends OvalElementContainer<SystemObjectType>  //{1..*}
 //extends Container<SystemObject>  //{1..*}
 {
 
@@ -52,7 +52,7 @@ public class SystemObjectsType
      * Constructor.
      */
     public SystemObjectsType(
-                    final Collection<? extends SystemObject> objects
+                    final Collection<? extends SystemObjectType> objects
                     )
     {
         super( objects );
@@ -63,7 +63,7 @@ public class SystemObjectsType
      * Constructor.
      */
     public SystemObjectsType(
-                    final SystemObject[] objects
+                    final SystemObjectType[] objects
                     )
     {
         super( objects );
@@ -72,7 +72,7 @@ public class SystemObjectsType
 
 
     public void setObject(
-                    final Collection<? extends SystemObject> objects
+                    final Collection<? extends SystemObjectType> objects
                     )
     {
         _setElement( objects );
@@ -80,20 +80,20 @@ public class SystemObjectsType
 
 
     public boolean addObject(
-                    final SystemObject object
+                    final SystemObjectType object
                     )
     {
         return add( object );
     }
 
 
-    public Collection<SystemObject> getObject()
+    public Collection<SystemObjectType> getObject()
     {
         return _getElement();
     }
 
 
-    public Iterator<SystemObject> iterateObject()
+    public Iterator<SystemObjectType> iterateObject()
     {
         return iterator();
     }
