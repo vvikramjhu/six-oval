@@ -18,16 +18,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.CommentedOvalEntity;
-import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.common.Check;
-import jp.go.aist.six.oval.model.common.Existence;
-import jp.go.aist.six.oval.model.common.Operator;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.definitions.StateRef;
+import jp.go.aist.six.oval.model.definitions.SystemObjectRef;
+import jp.go.aist.six.oval.model.v5.CommentedOvalEntity;
+import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
+import jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration;
+import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
 
 
 
@@ -38,26 +40,26 @@ import java.util.Iterator;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Test
+public class TestType
 //public abstract class Test
     extends CommentedOvalEntity //, Noted
 {
 
-    private Notes  _notes;
+    private NotesType  _notes;
     //{0..1}
 
 
-    public static final Existence  DEFAULT_CHECK_EXISTENCE = Existence.AT_LEAST_ONE_EXISTS;
-    private Existence  _checkExistence;
+    public static final ExistenceEnumeration  DEFAULT_CHECK_EXISTENCE = ExistenceEnumeration.AT_LEAST_ONE_EXISTS;
+    private ExistenceEnumeration  _checkExistence;
     //{optional, default="at_least_one_exists"}
 
 
-    private Check  _check;
+    private CheckEnumeration  _check;
     //{required}
 
 
-    public static final Operator  DEFAULT_STATE_OPERATOR = Operator.AND;
-    private Operator  _stateOperator;
+    public static final OperatorEnumeration  DEFAULT_STATE_OPERATOR = OperatorEnumeration.AND;
+    private OperatorEnumeration  _stateOperator;
     //{optional, default="AND"}
 
 
@@ -66,7 +68,7 @@ public class Test
     //{0/UnknownTest}
 
 
-    private Collection<StateRef>  _stateRef = new ArrayList<StateRef>();
+    private final Collection<StateRef>  _stateRef = new ArrayList<StateRef>();
     // {0..*}
 
 
@@ -74,15 +76,12 @@ public class Test
     /**
      * Constructor.
      */
-    public Test()
+    public TestType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public Test(
+    public TestType(
                     final String id,
                     final int version
                     )
@@ -91,14 +90,11 @@ public class Test
     }
 
 
-    /**
-     * Constructor.
-     */
-    public Test(
+    public TestType(
                     final String id,
                     final int version,
                     final String comment,
-                    final Check check
+                    final CheckEnumeration check
                     )
     {
         super( id, version, comment );
@@ -110,24 +106,24 @@ public class Test
     /**
      */
     public void setNotes(
-                    final Notes notes
+                    final NotesType notes
                     )
     {
         _notes = notes;
     }
 
 
-    /**
-     */
-    public Notes getNotes()
+    public NotesType getNotes()
     {
         return _notes;
     }
 
 
 
-    public Test checkExistence(
-                    final Existence existence
+    /**
+     */
+    public TestType checkExistence(
+                    final ExistenceEnumeration existence
                     )
     {
         setCheckExistence( existence );
@@ -136,22 +132,24 @@ public class Test
 
 
     public void setCheckExistence(
-                    final Existence existence
+                    final ExistenceEnumeration existence
                     )
     {
         _checkExistence = existence;
     }
 
 
-    public Existence getCheckExistence()
+    public ExistenceEnumeration getCheckExistence()
     {
-        return (_checkExistence == null ? DEFAULT_CHECK_EXISTENCE : _checkExistence);
+        return _checkExistence;
     }
 
 
 
-    public Test check(
-                    final Check check
+    /**
+     */
+    public TestType check(
+                    final CheckEnumeration check
                     )
     {
         setCheck( check );
@@ -160,14 +158,14 @@ public class Test
 
 
     public void setCheck(
-                    final Check check
+                    final CheckEnumeration check
                     )
     {
         _check = check;
     }
 
 
-    public Check getCheck()
+    public CheckEnumeration getCheck()
     {
         return _check;
     }
@@ -176,8 +174,8 @@ public class Test
 
     /**
      */
-    public Test stateOperator(
-                    final Operator stateOperator
+    public TestType stateOperator(
+                    final OperatorEnumeration stateOperator
                     )
     {
         setStateOperator( stateOperator );
@@ -186,7 +184,7 @@ public class Test
 
 
     public void setStateOperator(
-                    final Operator stateOperator
+                    final OperatorEnumeration stateOperator
                     )
     {
         _stateOperator = stateOperator;
@@ -195,14 +193,14 @@ public class Test
 
     /**
      */
-    public Operator getStateOperator()
+    public OperatorEnumeration getStateOperator()
     {
-        return (_stateOperator == null ? DEFAULT_STATE_OPERATOR : _stateOperator);
+        return _stateOperator;
     }
 
 
 
-    public Test object(
+    public TestType object(
                     final SystemObjectRef objectRef
                     )
     {
@@ -211,7 +209,7 @@ public class Test
     }
 
 
-    public Test object(
+    public TestType object(
                     final String objectRef
                     )
     {
@@ -234,7 +232,7 @@ public class Test
 
 
 
-    public Test state(
+    public TestType state(
                     final StateRef stateRef
                     )
     {
@@ -243,7 +241,7 @@ public class Test
     }
 
 
-    public Test state(
+    public TestType state(
                     final String stateRef
                     )
     {
@@ -330,4 +328,4 @@ public class Test
     }
 
 }
-// Test
+// TestType

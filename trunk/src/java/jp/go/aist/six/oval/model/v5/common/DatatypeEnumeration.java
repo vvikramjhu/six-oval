@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.common;
+package jp.go.aist.six.oval.model.v5.common;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class Datatype
+public final class DatatypeEnumeration
     implements Serializable
 {
 
@@ -52,25 +52,25 @@ public final class Datatype
     private static final String  _RECORD_           = "record";
 
 
-    public static final Datatype  BINARY            = new Datatype( _BINARY_ );
-    public static final Datatype  BOOLEAN           = new Datatype( _BOOLEAN_ );
-    public static final Datatype  EVR_STRING        = new Datatype( _EVR_STRING_ );
-    public static final Datatype  FILESET_REVISION  = new Datatype( _FILESET_REVISION_ );
-    public static final Datatype  FLOAT             = new Datatype( _FLOAT_ );
-    public static final Datatype  IOS_VERSION       = new Datatype( _IOS_VERSION_ );
-    public static final Datatype  INT               = new Datatype( _INT_ );
-    public static final Datatype  IPV4_ADDRESS      = new Datatype( _IPV4_ADDRESS_ );
-    public static final Datatype  IPV6_ADDRESS      = new Datatype( _IPV6_ADDRESS_ );
-    public static final Datatype  STRING            = new Datatype( _STRING_ );
-    public static final Datatype  VERSION           = new Datatype( _VERSION_ );
+    public static final DatatypeEnumeration  BINARY            = new DatatypeEnumeration( _BINARY_ );
+    public static final DatatypeEnumeration  BOOLEAN           = new DatatypeEnumeration( _BOOLEAN_ );
+    public static final DatatypeEnumeration  EVR_STRING        = new DatatypeEnumeration( _EVR_STRING_ );
+    public static final DatatypeEnumeration  FILESET_REVISION  = new DatatypeEnumeration( _FILESET_REVISION_ );
+    public static final DatatypeEnumeration  FLOAT             = new DatatypeEnumeration( _FLOAT_ );
+    public static final DatatypeEnumeration  IOS_VERSION       = new DatatypeEnumeration( _IOS_VERSION_ );
+    public static final DatatypeEnumeration  INT               = new DatatypeEnumeration( _INT_ );
+    public static final DatatypeEnumeration  IPV4_ADDRESS      = new DatatypeEnumeration( _IPV4_ADDRESS_ );
+    public static final DatatypeEnumeration  IPV6_ADDRESS      = new DatatypeEnumeration( _IPV6_ADDRESS_ );
+    public static final DatatypeEnumeration  STRING            = new DatatypeEnumeration( _STRING_ );
+    public static final DatatypeEnumeration  VERSION           = new DatatypeEnumeration( _VERSION_ );
 
-    public static final Datatype  RECORD            = new Datatype( _RECORD_ );
+    public static final DatatypeEnumeration  RECORD            = new DatatypeEnumeration( _RECORD_ );
 
 
 
-    private static HashMap<String, Datatype> _INIT_()
+    private static HashMap<String, DatatypeEnumeration> _INIT_()
     {
-        HashMap<String, Datatype>  map = new HashMap<String, Datatype>();
+        HashMap<String, DatatypeEnumeration>  map = new HashMap<String, DatatypeEnumeration>();
         map.put( _BINARY_,            BINARY           );
         map.put( _BOOLEAN_,           BOOLEAN          );
         map.put( _EVR_STRING_,        EVR_STRING       );
@@ -86,18 +86,18 @@ public final class Datatype
         return map;
     }
 
-    private static final HashMap<String, Datatype>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, DatatypeEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static Datatype valueOf(
+    public static DatatypeEnumeration valueOf(
                     final String name
                     )
     {
-        Datatype  flag = null;
+        DatatypeEnumeration  flag = null;
         if (name != null) {
             flag = _INSTANCES_.get( name );
         }
@@ -118,7 +118,7 @@ public final class Datatype
     /**
      * Constructor.
      */
-    private Datatype(
+    private DatatypeEnumeration(
                     final String name
                     )
     {
@@ -165,4 +165,4 @@ public final class Datatype
     }
 
 }
-// Datatype
+// DatatypeEnumeration

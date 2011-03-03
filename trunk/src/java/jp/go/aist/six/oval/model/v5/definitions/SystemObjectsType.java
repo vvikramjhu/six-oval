@@ -22,8 +22,7 @@ package jp.go.aist.six.oval.model.v5.definitions;
 
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalElementContainer;
-import jp.go.aist.six.oval.model.definitions.SystemObject;
+import jp.go.aist.six.oval.model.v5.OvalElementContainer;
 
 
 
@@ -100,4 +99,4 @@ public class SystemObjectsType
     }
 
 }
-// SystemObjects
+// SystemObjectsType

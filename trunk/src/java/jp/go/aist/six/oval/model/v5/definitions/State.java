@@ -18,14 +18,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.CommentedOvalEntity;
-import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.common.Operator;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.definitions.EntityBase;
+import jp.go.aist.six.oval.model.v5.CommentedOvalEntity;
+import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
 
 
 
@@ -45,8 +46,12 @@ public class State
     extends CommentedOvalEntity //, Noted
 {
 
-    public static final Operator  DEFAULT_OPERATOR = Operator.AND;
-    private Operator  _operator;
+    private NotesType  _notes;
+    //{0..1}
+
+
+    public static final OperatorEnumeration  DEFAULT_OPERATOR = OperatorEnumeration.AND;
+    private OperatorEnumeration  _operator;
     //{optional, default="AND"}
 
 
@@ -59,9 +64,6 @@ public class State
     }
 
 
-    /**
-     * Constructor.
-     */
     public State(
                     final String id,
                     final int version
@@ -71,9 +73,6 @@ public class State
     }
 
 
-    /**
-     * Constructor.
-     */
     public State(
                     final String id,
                     final int version,
@@ -87,8 +86,25 @@ public class State
 
     /**
      */
+    public void setNotes(
+                    final NotesType notes
+                    )
+    {
+        _notes = notes;
+    }
+
+
+    public NotesType getNotes()
+    {
+        return _notes;
+    }
+
+
+
+    /**
+     */
     public State operator(
-                  final Operator operator
+                  final OperatorEnumeration operator
                   )
     {
         setOperator( operator );
@@ -97,16 +113,16 @@ public class State
 
 
     public void setOperator(
-                    final Operator operator
+                    final OperatorEnumeration operator
                     )
     {
         _operator = operator;
     }
 
 
-    public Operator getOperator()
+    public OperatorEnumeration getOperator()
     {
-        return (_operator == null ? DEFAULT_OPERATOR : _operator);
+        return _operator;
     }
 
 
@@ -172,4 +188,4 @@ public class State
     //**************************************************************
 
 }
-// State
+// StateType

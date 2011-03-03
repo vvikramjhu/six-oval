@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.common;
+package jp.go.aist.six.oval.model.v5.common;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -34,7 +34,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class Existence
+public final class ExistenceEnumeration
     implements Serializable
 {
 
@@ -45,17 +45,17 @@ public final class Existence
     private static final String  _ONLY_ONE_EXISTS_      = "only_one_exists";
 
 
-    public static final Existence  ALL_EXIST            = new Existence( _ALL_EXIST_ );
-    public static final Existence  ANY_EXIST            = new Existence( _ANY_EXIST_ );
-    public static final Existence  AT_LEAST_ONE_EXISTS  = new Existence( _AT_LEAST_ONE_EXISTS_ );
-    public static final Existence  NONE_EXIST           = new Existence( _NONE_EXIST_ );
-    public static final Existence  ONLY_ONE_EXISTS      = new Existence( _ONLY_ONE_EXISTS_ );
+    public static final ExistenceEnumeration  ALL_EXIST            = new ExistenceEnumeration( _ALL_EXIST_ );
+    public static final ExistenceEnumeration  ANY_EXIST            = new ExistenceEnumeration( _ANY_EXIST_ );
+    public static final ExistenceEnumeration  AT_LEAST_ONE_EXISTS  = new ExistenceEnumeration( _AT_LEAST_ONE_EXISTS_ );
+    public static final ExistenceEnumeration  NONE_EXIST           = new ExistenceEnumeration( _NONE_EXIST_ );
+    public static final ExistenceEnumeration  ONLY_ONE_EXISTS      = new ExistenceEnumeration( _ONLY_ONE_EXISTS_ );
 
 
 
-    private static HashMap<String, Existence> _INIT_()
+    private static HashMap<String, ExistenceEnumeration> _INIT_()
     {
-        HashMap<String, Existence>  map = new HashMap<String, Existence>();
+        HashMap<String, ExistenceEnumeration>  map = new HashMap<String, ExistenceEnumeration>();
         map.put( _ALL_EXIST_,           ALL_EXIST           );
         map.put( _ANY_EXIST_,           ANY_EXIST           );
         map.put( _AT_LEAST_ONE_EXISTS_, AT_LEAST_ONE_EXISTS );
@@ -64,18 +64,18 @@ public final class Existence
         return map;
     }
 
-    private static final HashMap<String, Existence>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, ExistenceEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static Existence valueOf(
+    public static ExistenceEnumeration valueOf(
                     final String name
                     )
     {
-        Existence  flag = null;
+        ExistenceEnumeration  flag = null;
         if (name != null) {
             flag = _INSTANCES_.get( name );
         }
@@ -96,7 +96,7 @@ public final class Existence
     /**
      * Constructor.
      */
-    private Existence(
+    private ExistenceEnumeration(
                     final String name
                     )
     {
@@ -125,4 +125,4 @@ public final class Existence
     }
 
 }
-// Existence
+// ExistenceEnumeration

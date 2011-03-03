@@ -20,10 +20,10 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
 import jp.go.aist.six.oval.model.common.Check;
 import jp.go.aist.six.oval.model.common.Datatype;
 import jp.go.aist.six.oval.model.common.Operation;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 

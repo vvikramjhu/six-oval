@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.common;
+package jp.go.aist.six.oval.model.v5.common;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -34,7 +34,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class Check
+public final class CheckEnumeration
     implements Serializable
 {
 
@@ -45,17 +45,17 @@ public final class Check
     private static final String  _ONLY_ONE_      = "only one";
 
 
-    public static final Check  ALL           = new Check( _ALL_ );
-    public static final Check  AT_LEAST_ONE  = new Check( _AT_LEAST_ONE_ );
-    public static final Check  NONE_EXIST    = new Check( _NONE_EXIST_ );
-    public static final Check  NONE_SATISFY  = new Check( _NONE_SATISFY_ );
-    public static final Check  ONLY_ONE      = new Check( _ONLY_ONE_ );
+    public static final CheckEnumeration  ALL           = new CheckEnumeration( _ALL_ );
+    public static final CheckEnumeration  AT_LEAST_ONE  = new CheckEnumeration( _AT_LEAST_ONE_ );
+    public static final CheckEnumeration  NONE_EXIST    = new CheckEnumeration( _NONE_EXIST_ );
+    public static final CheckEnumeration  NONE_SATISFY  = new CheckEnumeration( _NONE_SATISFY_ );
+    public static final CheckEnumeration  ONLY_ONE      = new CheckEnumeration( _ONLY_ONE_ );
 
 
 
-    private static HashMap<String, Check> _INIT_()
+    private static HashMap<String, CheckEnumeration> _INIT_()
     {
-        HashMap<String, Check>  map = new HashMap<String, Check>();
+        HashMap<String, CheckEnumeration>  map = new HashMap<String, CheckEnumeration>();
         map.put( _ALL_,          ALL          );
         map.put( _AT_LEAST_ONE_, AT_LEAST_ONE );
         map.put( _NONE_EXIST_,   NONE_EXIST   );
@@ -64,18 +64,18 @@ public final class Check
         return map;
     }
 
-    private static final HashMap<String, Check>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, CheckEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static Check valueOf(
+    public static CheckEnumeration valueOf(
                     final String name
                     )
     {
-        Check  flag = null;
+        CheckEnumeration  flag = null;
         if (name != null) {
             flag = _INSTANCES_.get( name );
         }
@@ -97,7 +97,7 @@ public final class Check
     /**
      * Constructor.
      */
-    private Check(
+    private CheckEnumeration(
                     final String name
                     )
     {
@@ -126,4 +126,4 @@ public final class Check
     }
 
 }
-// Check
+// CheckEnumeration

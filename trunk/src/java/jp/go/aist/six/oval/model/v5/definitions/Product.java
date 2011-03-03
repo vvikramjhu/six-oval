@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.NameEntity;
+import jp.go.aist.six.oval.model.v5.NameEntity;
 
 
 
@@ -44,9 +44,6 @@ public class Product
     }
 
 
-    /**
-     * Constructor.
-     */
     public Product(
                     final String name
                     )

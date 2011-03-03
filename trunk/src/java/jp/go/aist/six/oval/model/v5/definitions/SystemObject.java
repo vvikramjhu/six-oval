@@ -18,13 +18,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.CommentedOvalEntity;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.definitions.EntityBase;
+import jp.go.aist.six.oval.model.v5.CommentedOvalEntity;
 
 
 
@@ -42,6 +43,11 @@ public class SystemObject
     extends CommentedOvalEntity
 {
 
+    private NotesType  _notes;
+    //{0..1}
+
+
+
     /**
      * Constructor.
      */
@@ -50,9 +56,6 @@ public class SystemObject
     }
 
 
-    /**
-     * Constructor.
-     */
     public SystemObject(
                     final String id,
                     final int version
@@ -62,9 +65,6 @@ public class SystemObject
     }
 
 
-    /**
-     * Constructor.
-     */
     public SystemObject(
                     final String id,
                     final int version,
@@ -73,6 +73,24 @@ public class SystemObject
     {
         super( id, version, comment );
     }
+
+
+
+    /**
+     */
+    public void setNotes(
+                    final NotesType notes
+                    )
+    {
+        _notes = notes;
+    }
+
+
+    public NotesType getNotes()
+    {
+        return _notes;
+    }
+
 
 
     /**
@@ -110,4 +128,4 @@ public class SystemObject
     //**************************************************************
 
 }
-// SystemObject
+// SystemObjectType

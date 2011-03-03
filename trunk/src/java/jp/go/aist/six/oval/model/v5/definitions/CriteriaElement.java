@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 import jp.go.aist.six.util.persist.Dependent;
 
 

@@ -23,8 +23,7 @@ package jp.go.aist.six.oval.model.v5.definitions;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalElementContainer;
-import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.v5.OvalElementContainer;
 
 
 
@@ -36,7 +35,7 @@ import jp.go.aist.six.oval.model.definitions.Test;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class TestsType
-    extends OvalElementContainer<Test>  //{1..*}
+    extends OvalElementContainer<TestType>  //{1..*}
 {
 
     /**
@@ -51,7 +50,7 @@ public class TestsType
      * Constructor.
      */
     public TestsType(
-                    final Collection<? extends Test> tests
+                    final Collection<? extends TestType> tests
                     )
     {
         setTest( tests );
@@ -62,7 +61,7 @@ public class TestsType
      * Constructor.
      */
     public TestsType(
-                    final Test[] tests
+                    final TestType[] tests
                     )
     {
         setTest( Arrays.asList( tests ) );
@@ -71,7 +70,7 @@ public class TestsType
 
 
     public void setTest(
-                    final Collection<? extends Test> tests
+                    final Collection<? extends TestType> tests
                     )
     {
         _setElement( tests );
@@ -79,23 +78,23 @@ public class TestsType
 
 
     public boolean addTest(
-                    final Test test
+                    final TestType test
                     )
     {
         return add( test );
     }
 
 
-    public Collection<Test> getTest()
+    public Collection<TestType> getTest()
     {
         return _getElement();
     }
 
 
-    public Iterator<Test> iterateTest()
+    public Iterator<TestType> iterateTest()
     {
         return iterator();
     }
 
 }
-// Tests
+// TestsType

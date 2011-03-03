@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.model.v5;
 
 import java.util.UUID;
-import jp.go.aist.six.oval.model.AbstractOvalObject;
 
 
 

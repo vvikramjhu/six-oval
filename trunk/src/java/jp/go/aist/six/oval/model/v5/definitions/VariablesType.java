@@ -22,8 +22,7 @@ package jp.go.aist.six.oval.model.v5.definitions;
 
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalElementContainer;
-import jp.go.aist.six.oval.model.definitions.Variable;
+import jp.go.aist.six.oval.model.v5.OvalElementContainer;
 
 
 
@@ -35,7 +34,7 @@ import jp.go.aist.six.oval.model.definitions.Variable;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class VariablesType
-    extends OvalElementContainer<Variable>  //{1..*}
+    extends OvalElementContainer<VariableType>  //{1..*}
 //extends Container<Variable>  //{1..*}
 {
 
@@ -51,7 +50,7 @@ public class VariablesType
      * Constructor.
      */
     public VariablesType(
-                    final Collection<? extends Variable> variables
+                    final Collection<? extends VariableType> variables
                     )
     {
         super( variables );
@@ -62,7 +61,7 @@ public class VariablesType
      * Constructor.
      */
     public VariablesType(
-                    final Variable[] variables
+                    final VariableType[] variables
                     )
     {
         super( variables );
@@ -71,7 +70,7 @@ public class VariablesType
 
 
     public void setVariable(
-                    final Collection<? extends Variable> variables
+                    final Collection<? extends VariableType> variables
                     )
     {
         _setElement( variables );
@@ -79,23 +78,23 @@ public class VariablesType
 
 
     public boolean addVariable(
-                    final Variable variable
+                    final VariableType variable
                     )
     {
         return add( variable );
     }
 
 
-    public Collection<Variable> getVariable()
+    public Collection<VariableType> getVariable()
     {
         return _getElement();
     }
 
 
-    public Iterator<Variable> iterateVariable()
+    public Iterator<VariableType> iterateVariable()
     {
         return iterator();
     }
 
 }
-// Variables
+// VariablesType

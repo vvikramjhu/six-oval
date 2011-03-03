@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model;
+package jp.go.aist.six.oval.model.v5;
 
 
 
@@ -71,6 +71,8 @@ public abstract class CommentedOvalEntity
 
 
 
+    /**
+     */
     public CommentedOvalEntity comment(
                     final String comment
                     )

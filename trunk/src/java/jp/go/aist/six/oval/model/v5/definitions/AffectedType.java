@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.v5.definitions;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
 
 

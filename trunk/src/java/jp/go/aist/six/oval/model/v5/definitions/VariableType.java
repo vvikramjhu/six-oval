@@ -18,11 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.common.Datatype;
+import jp.go.aist.six.oval.model.v5.CommentedOvalEntity;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 
 
 
@@ -36,12 +36,12 @@ import jp.go.aist.six.oval.model.common.Datatype;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Variable
+public class VariableType
 //public abstract class Variable
     extends CommentedOvalEntity
 {
 
-    private Datatype  _datatype;
+    private DatatypeEnumeration  _datatype;
     //{required}
 
 
@@ -49,15 +49,12 @@ public class Variable
     /**
      * Constructor.
      */
-    public Variable()
+    public VariableType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public Variable(
+    public VariableType(
                     final String id,
                     final int version
                     )
@@ -66,11 +63,7 @@ public class Variable
     }
 
 
-
-    /**
-     * Constructor.
-     */
-    public Variable(
+    public VariableType(
                     final String id,
                     final int version,
                     final String comment
@@ -80,15 +73,11 @@ public class Variable
     }
 
 
-
-    /**
-     * Constructor.
-     */
-    public Variable(
+    public VariableType(
                     final String id,
                     final int version,
                     final String comment,
-                    final Datatype datatype
+                    final DatatypeEnumeration datatype
                     )
     {
         this( id, version, comment );
@@ -97,16 +86,17 @@ public class Variable
 
 
 
+    /**
+     */
     public void setDatatype(
-                    final Datatype datatype
+                    final DatatypeEnumeration datatype
                     )
     {
         _datatype = datatype;
     }
 
 
-
-    public Datatype getDatatype()
+    public DatatypeEnumeration getDatatype()
     {
         return _datatype;
     }
@@ -142,4 +132,4 @@ public class Variable
     }
 
 }
-// Variable
+// VariableType
