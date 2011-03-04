@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -32,7 +32,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class RegistryHive
+public final class RegistryHiveEnumeration
     implements Serializable
 {
 
@@ -44,18 +44,18 @@ public final class RegistryHive
     private static final String  _NONE_                = "";
 
 
-    public static final RegistryHive  HKEY_CLASSES_ROOT   = new RegistryHive( _HKEY_CLASSES_ROOT_ );
-    public static final RegistryHive  HKEY_CURRENT_CONFIG = new RegistryHive( _HKEY_CURRENT_CONFIG_ );
-    public static final RegistryHive  HKEY_CURRENT_USER   = new RegistryHive( _HKEY_CURRENT_USER_ );
-    public static final RegistryHive  HKEY_LOCAL_MACHINE  = new RegistryHive( _HKEY_LOCAL_MACHINE_ );
-    public static final RegistryHive  HKEY_USERS          = new RegistryHive( _HKEY_USERS_ );
-    public static final RegistryHive  NONE                = new RegistryHive( _NONE_ );
+    public static final RegistryHiveEnumeration  HKEY_CLASSES_ROOT   = new RegistryHiveEnumeration( _HKEY_CLASSES_ROOT_ );
+    public static final RegistryHiveEnumeration  HKEY_CURRENT_CONFIG = new RegistryHiveEnumeration( _HKEY_CURRENT_CONFIG_ );
+    public static final RegistryHiveEnumeration  HKEY_CURRENT_USER   = new RegistryHiveEnumeration( _HKEY_CURRENT_USER_ );
+    public static final RegistryHiveEnumeration  HKEY_LOCAL_MACHINE  = new RegistryHiveEnumeration( _HKEY_LOCAL_MACHINE_ );
+    public static final RegistryHiveEnumeration  HKEY_USERS          = new RegistryHiveEnumeration( _HKEY_USERS_ );
+    public static final RegistryHiveEnumeration  NONE                = new RegistryHiveEnumeration( _NONE_ );
 
 
 
-    private static HashMap<String, RegistryHive> _INIT_()
+    private static HashMap<String, RegistryHiveEnumeration> _INIT_()
     {
-        HashMap<String, RegistryHive>  map = new HashMap<String, RegistryHive>();
+        HashMap<String, RegistryHiveEnumeration>  map = new HashMap<String, RegistryHiveEnumeration>();
         map.put( _HKEY_CLASSES_ROOT_,   HKEY_CLASSES_ROOT );
         map.put( _HKEY_CURRENT_CONFIG_, HKEY_CURRENT_CONFIG );
         map.put( _HKEY_CURRENT_USER_,   HKEY_CURRENT_USER );
@@ -65,18 +65,18 @@ public final class RegistryHive
         return map;
     }
 
-    private static final HashMap<String, RegistryHive>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, RegistryHiveEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static RegistryHive valueOf(
+    public static RegistryHiveEnumeration valueOf(
                     final String name
                     )
     {
-        RegistryHive  e = null;
+        RegistryHiveEnumeration  e = null;
         if (name != null) {
             e = _INSTANCES_.get( name );
         }
@@ -96,7 +96,7 @@ public final class RegistryHive
 
     /**
      */
-    private RegistryHive(
+    private RegistryHiveEnumeration(
                     final String name
                     )
     {
@@ -125,4 +125,4 @@ public final class RegistryHive
     }
 
 }
-// RegistryHive
+// RegistryHiveEnumeration

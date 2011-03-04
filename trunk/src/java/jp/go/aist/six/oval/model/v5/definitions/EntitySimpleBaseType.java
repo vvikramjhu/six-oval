@@ -48,6 +48,14 @@ public abstract class EntitySimpleBaseType
     }
 
 
+    public EntitySimpleBaseType(
+                    final String content
+                    )
+    {
+        setContent( content );
+    }
+
+
 
     /**
      */

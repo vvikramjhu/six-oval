@@ -18,14 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
-import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityBase;
-import jp.go.aist.six.oval.model.definitions.EntityObjectString;
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
-import jp.go.aist.six.oval.model.definitions.SystemObject;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
+import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.v5.definitions.Filter;
+import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 
 
 
@@ -36,24 +39,27 @@ import java.util.Iterator;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class RegistryObject
-    extends SystemObject
+    extends SystemObjectType
 {
 
     private RegistryBehaviors  _behaviors;
     //{0..1}
 
-    private EntityPropertyMap<RegistryProperty>  _properties =
+
+    private final EntityPropertyMap<RegistryProperty>  _properties =
         RegistryProperty.createPropertyMap();
 
-
-//    private EntityObjectRegistryHive  _hive;
+//    private EntityObjectRegistryHiveType  _hive;
 //    //{1..1}
 //
-//    private EntityObjectString  _key;
+//    private EntityObjectStringType  _key;
 //    //{1..1, nillable="true"}
 //
-//    private EntityObjectString  _name;
+//    private EntityObjectStringType  _name;
 //    //{1..1, nillable="true"}
+
+
+    private final Collection<Filter>  _filter = new ArrayList<Filter>();
 
 
 
@@ -65,9 +71,6 @@ public class RegistryObject
     }
 
 
-    /**
-     * Constructor.
-     */
     public RegistryObject(
                     final String id,
                     final int version
@@ -77,9 +80,6 @@ public class RegistryObject
     }
 
 
-    /**
-     * Constructor.
-     */
     public RegistryObject(
                     final String id,
                     final int version,
@@ -90,34 +90,28 @@ public class RegistryObject
     }
 
 
-    /**
-     * Constructor.
-     */
     public RegistryObject(
                     final String id,
                     final int version,
-                    final RegistryHive hive,
+                    final RegistryHiveEnumeration hive,
                     final String key,
                     final String name
                     )
     {
         this( id, version,
-                        (hive == null ? null : (new EntityObjectRegistryHive( hive.getName() ))),
-                        (key  == null ? null : (new EntityObjectString( key ))),
-                        (name == null ? null : (new EntityObjectString( name )))
+                        (hive == null ? null : (new EntityObjectRegistryHiveType( hive.getName() ))),
+                        (key  == null ? null : (new EntityObjectStringType( key ))),
+                        (name == null ? null : (new EntityObjectStringType( name )))
         );
     }
 
 
-    /**
-     * Constructor.
-     */
     public RegistryObject(
                     final String id,
                     final int version,
-                    final EntityObjectRegistryHive hive,
-                    final EntityObjectString key,
-                    final EntityObjectString name
+                    final EntityObjectRegistryHiveType hive,
+                    final EntityObjectStringType key,
+                    final EntityObjectStringType name
                     )
     {
         super( id, version );
@@ -128,6 +122,8 @@ public class RegistryObject
 
 
 
+    /**
+     */
     public void setBehaviors(
                     final RegistryBehaviors behaviors
                     )
@@ -152,8 +148,10 @@ public class RegistryObject
 
 
 
+    /**
+     */
     public void setHive(
-                    final EntityObjectRegistryHive hive
+                    final EntityObjectRegistryHiveType hive
                     )
     {
         _properties.setProperty( RegistryProperty.HIVE, hive );
@@ -161,7 +159,7 @@ public class RegistryObject
 
 
     public RegistryObject hive(
-                    final EntityObjectRegistryHive hive
+                    final EntityObjectRegistryHiveType hive
                     )
     {
         setHive( hive );
@@ -169,16 +167,16 @@ public class RegistryObject
     }
 
 
-    public EntityObjectRegistryHive getHive()
+    public EntityObjectRegistryHiveType getHive()
     {
         return _properties.getProperty(
-                        RegistryProperty.HIVE, EntityObjectRegistryHive.class );
+                        RegistryProperty.HIVE, EntityObjectRegistryHiveType.class );
     }
 
 
 
     public void setKey(
-                    final EntityObjectString key
+                    final EntityObjectStringType key
                     )
     {
         _properties.setProperty( RegistryProperty.KEY, key );
@@ -186,7 +184,7 @@ public class RegistryObject
 
 
     public RegistryObject key(
-                    final EntityObjectString key
+                    final EntityObjectStringType key
                     )
     {
         setKey( key );
@@ -194,16 +192,16 @@ public class RegistryObject
     }
 
 
-    public EntityObjectString getKey()
+    public EntityObjectStringType getKey()
     {
         return _properties.getProperty(
-                        RegistryProperty.KEY, EntityObjectString.class );
+                        RegistryProperty.KEY, EntityObjectStringType.class );
     }
 
 
 
     public void setName(
-                    final EntityObjectString name
+                    final EntityObjectStringType name
                     // nillable ="true"
                     )
     {
@@ -222,7 +220,7 @@ public class RegistryObject
 
 
     public RegistryObject name(
-                    final EntityObjectString name
+                    final EntityObjectStringType name
                     )
     {
         setName( name );
@@ -230,16 +228,44 @@ public class RegistryObject
     }
 
 
-    public EntityObjectString getName()
+    public EntityObjectStringType getName()
     {
         return _properties.getProperty(
-                        RegistryProperty.NAME, EntityObjectString.class );
+                        RegistryProperty.NAME, EntityObjectStringType.class );
+    }
+
+
+
+    /**
+     */
+    public void setFilter(
+                    final Collection<? extends Filter> filters
+                    )
+    {
+        if (filters != _filter) {
+            _filter.clear();
+            if (filters != null  &&  filters.size() > 0) {
+                _filter.addAll( filters );
+            }
+        }
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return _filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return _filter.iterator();
     }
 
 
 
     //**************************************************************
-    //  SystemObject
+    //  SystemObjectType
     //**************************************************************
 
     @Override
@@ -251,7 +277,7 @@ public class RegistryObject
 
 
     @Override
-    public Iterator<EntityBase> iterateProperties()
+    public Iterator<EntityAttributeGroup> iterateProperties()
     {
         return _properties.iterateProperties();
     }
@@ -288,7 +314,9 @@ public class RegistryObject
     public String toString()
     {
         return "registry_object[" + super.toString()
+                        + ", behaviors=" + getBehaviors()
                         + ", " + String.valueOf( _properties )
+                        + ", filter=" + getFilter()
                         + "]";
     }
 

@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class FilterAction
+public final class FilterActionEnumeration
     implements Serializable
 {
 
@@ -41,31 +41,31 @@ public final class FilterAction
     private static final String  _INCLUDE_  = "include";
 
 
-    public static final FilterAction  EXCLUDE = new FilterAction( _EXCLUDE_ );
-    public static final FilterAction  INCLUDE = new FilterAction( _INCLUDE_ );
+    public static final FilterActionEnumeration  EXCLUDE = new FilterActionEnumeration( _EXCLUDE_ );
+    public static final FilterActionEnumeration  INCLUDE = new FilterActionEnumeration( _INCLUDE_ );
 
 
 
-    private static HashMap<String, FilterAction> _INIT_()
+    private static HashMap<String, FilterActionEnumeration> _INIT_()
     {
-        HashMap<String, FilterAction>  map = new HashMap<String, FilterAction>();
+        HashMap<String, FilterActionEnumeration>  map = new HashMap<String, FilterActionEnumeration>();
         map.put( _EXCLUDE_,  EXCLUDE );
         map.put( _INCLUDE_,  INCLUDE );
         return map;
     }
 
-    private static final HashMap<String, FilterAction>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, FilterActionEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static FilterAction valueOf(
+    public static FilterActionEnumeration valueOf(
                     final String name
                     )
     {
-        FilterAction  flag = null;
+        FilterActionEnumeration  flag = null;
         if (name != null) {
             flag = _INSTANCES_.get( name );
         }
@@ -86,7 +86,7 @@ public final class FilterAction
     /**
      * Constructor.
      */
-    private FilterAction(
+    private FilterActionEnumeration(
                     final String name
                     )
     {
@@ -115,4 +115,4 @@ public final class FilterAction
     }
 
 }
-// FilterAction
+// FilterActionEnumeration

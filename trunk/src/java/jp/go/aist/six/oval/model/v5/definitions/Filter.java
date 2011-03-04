@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
@@ -39,12 +39,12 @@ public class Filter
     extends AbstractOvalObject
 {
 
-    private String  _value;
-    //{simpleContent}
+    private String  _content;
+    //{simpleContent, base="oval:StateIDPattern"}
 
 
-    public static final FilterAction  DEFAULT_ACTION = FilterAction.EXCLUDE;
-    private FilterAction  _action;
+    public static final FilterActionEnumeration  DEFAULT_ACTION = FilterActionEnumeration.EXCLUDE;
+    private FilterActionEnumeration  _action;
     //{optional, default='exclude'}
 
 
@@ -57,9 +57,6 @@ public class Filter
     }
 
 
-    /**
-     * Constructor.
-     */
     public Filter(
                     final String value
                     )
@@ -68,12 +65,9 @@ public class Filter
     }
 
 
-    /**
-     * Constructor.
-     */
     public Filter(
                     final String value,
-                    final FilterAction action
+                    final FilterActionEnumeration action
                     )
     {
         setAction( action );
@@ -83,19 +77,17 @@ public class Filter
 
     /**
      */
-    public void setValue(
-                    final String value
+    public void setContent(
+                    final String content
                     )
     {
-        _value = value;
+        _content = content;
     }
 
 
-    /**
-     */
-    public String getValue()
+    public String getContent()
     {
-        return _value;
+        return _content;
     }
 
 
@@ -103,16 +95,16 @@ public class Filter
     /**
      */
     public void setAction(
-                    final FilterAction action
+                    final FilterActionEnumeration action
                     )
     {
         _action = action;
     }
 
 
-    public FilterAction getAction()
+    public FilterActionEnumeration getAction()
     {
-        return (_action == null ? DEFAULT_ACTION : _action);
+        return _action;
     }
 
 
@@ -127,10 +119,10 @@ public class Filter
         final int  prime = 37;
         int  result = 17;
 
-        String  value = getValue();
-        result = prime * result + ((value == null) ? 0 : value.hashCode());
+        String  content = getContent();
+        result = prime * result + ((content == null) ? 0 : content.hashCode());
 
-        FilterAction  action = getAction();
+        FilterActionEnumeration  action = getAction();
         result = prime * result + ((action == null) ? 0 : action.hashCode());
 
         return result;
@@ -152,10 +144,10 @@ public class Filter
         }
 
         Filter  other = (Filter)obj;
-        String  otherValue = other.getValue();
-        String   thisValue =  this.getValue();
-        if (thisValue == otherValue
-                        ||  (thisValue != null  &&  thisValue.equals( otherValue ))) {
+        String  otherContent = other.getContent();
+        String   thisContent =  this.getContent();
+        if (thisContent == otherContent
+                        ||  (thisContent != null  &&  thisContent.equals( otherContent ))) {
             if (this.getAction() == other.getAction()) {
                 return true;
             }
@@ -169,7 +161,7 @@ public class Filter
     @Override
     public String toString()
     {
-        return "filter[" + getValue()
+        return "filter[" + getContent()
                         + ", action=" + getAction()
                         + "]";
     }

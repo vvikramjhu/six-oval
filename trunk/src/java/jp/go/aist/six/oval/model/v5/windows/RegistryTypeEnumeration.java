@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -32,7 +32,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class RegistryType
+public final class RegistryTypeEnumeration
     implements Serializable
 {
 
@@ -45,19 +45,19 @@ public final class RegistryType
     private static final String  _REG_SZ_        = "reg_sz";
 
 
-    public static final RegistryType  REG_BINARY    = new RegistryType( _REG_BINARY_ );
-    public static final RegistryType  REG_DWORD     = new RegistryType( _REG_DWORD_ );
-    public static final RegistryType  REG_EXPAND_SZ = new RegistryType( _REG_EXPAND_SZ_ );
-    public static final RegistryType  REG_MULTI_SZ  = new RegistryType( _REG_MULTI_SZ_ );
-    public static final RegistryType  REG_NONE      = new RegistryType( _REG_NONE_ );
-    public static final RegistryType  REG_QWORD     = new RegistryType( _REG_QWORD_ );
-    public static final RegistryType  REG_SZ        = new RegistryType( _REG_SZ_ );
+    public static final RegistryTypeEnumeration  REG_BINARY    = new RegistryTypeEnumeration( _REG_BINARY_ );
+    public static final RegistryTypeEnumeration  REG_DWORD     = new RegistryTypeEnumeration( _REG_DWORD_ );
+    public static final RegistryTypeEnumeration  REG_EXPAND_SZ = new RegistryTypeEnumeration( _REG_EXPAND_SZ_ );
+    public static final RegistryTypeEnumeration  REG_MULTI_SZ  = new RegistryTypeEnumeration( _REG_MULTI_SZ_ );
+    public static final RegistryTypeEnumeration  REG_NONE      = new RegistryTypeEnumeration( _REG_NONE_ );
+    public static final RegistryTypeEnumeration  REG_QWORD     = new RegistryTypeEnumeration( _REG_QWORD_ );
+    public static final RegistryTypeEnumeration  REG_SZ        = new RegistryTypeEnumeration( _REG_SZ_ );
 
 
 
-    private static HashMap<String, RegistryType> _INIT_()
+    private static HashMap<String, RegistryTypeEnumeration> _INIT_()
     {
-        HashMap<String, RegistryType>  map = new HashMap<String, RegistryType>();
+        HashMap<String, RegistryTypeEnumeration>  map = new HashMap<String, RegistryTypeEnumeration>();
         map.put( _REG_BINARY_,    REG_BINARY );
         map.put( _REG_DWORD_,     REG_DWORD );
         map.put( _REG_EXPAND_SZ_, REG_EXPAND_SZ );
@@ -68,18 +68,18 @@ public final class RegistryType
         return map;
     }
 
-    private static final HashMap<String, RegistryType>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, RegistryTypeEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static RegistryType valueOf(
+    public static RegistryTypeEnumeration valueOf(
                     final String name
                     )
     {
-        RegistryType  e = null;
+        RegistryTypeEnumeration  e = null;
         if (name != null) {
             e = _INSTANCES_.get( name );
         }
@@ -99,7 +99,7 @@ public final class RegistryType
 
     /**
      */
-    private RegistryType(
+    private RegistryTypeEnumeration(
                     final String name
                     )
     {
@@ -128,4 +128,4 @@ public final class RegistryType
     }
 
 }
-// RegistryType
+// RegistryTypeEnumeration

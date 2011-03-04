@@ -18,11 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
-import jp.go.aist.six.oval.model.common.Datatype;
-import jp.go.aist.six.oval.model.common.Operation;
-import jp.go.aist.six.oval.model.definitions.EntityStateString;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
 
 
 
@@ -36,75 +34,60 @@ import jp.go.aist.six.oval.model.definitions.EntityStateString;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateRegistryHive
-    extends EntityStateString
+public class EntityStateRegistryHiveType
+    extends EntityStateStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityStateRegistryHive()
+    public EntityStateRegistryHiveType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityStateRegistryHive(
-                    final String data
-                    )
-    {
-        this( data, DEFAULT_OPERATION );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateRegistryHive(
-                    final String data,
-                    final Operation operation
-                    )
-    {
-        this( data, FIXED_DATATYPE, operation );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateRegistryHive(
-                    final String data,
-                    final Datatype datatype,
-                    final Operation operation
-                    )
-    {
-        super( data, datatype, operation );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateRegistryHive(
-                    final RegistryHive data
-                    )
-    {
-        this( data, DEFAULT_OPERATION );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateRegistryHive(
-                    final RegistryHive data,
-                    final Operation operation
-                    )
-    {
-        this( (data == null ? null : data.getName()), operation );
-    }
+//    public EntityStateRegistryHiveType(
+//                    final String data
+//                    )
+//    {
+//        this( data, DEFAULT_OPERATION );
+//    }
+//
+//
+//    public EntityStateRegistryHiveType(
+//                    final String data,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        this( data, FIXED_DATATYPE, operation );
+//    }
+//
+//
+//    public EntityStateRegistryHiveType(
+//                    final String data,
+//                    final DatatypeEnumeration datatype,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        super( data, datatype, operation );
+//    }
+//
+//
+//    public EntityStateRegistryHiveType(
+//                    final RegistryHiveEnumeration data
+//                    )
+//    {
+//        this( data, DEFAULT_OPERATION );
+//    }
+//
+//
+//    public EntityStateRegistryHiveType(
+//                    final RegistryHiveEnumeration data,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        this( (data == null ? null : data.getName()), operation );
+//    }
 
 
 
@@ -113,16 +96,16 @@ public class EntityStateRegistryHive
     //**************************************************************
 
     @Override
-    public void setData(
-                    final String data
+    public void setContent(
+                    final String content
                     )
     {
-        if (data != null) {
+        if (content != null) {
             //validation
-            RegistryHive.valueOf( data );
+            RegistryHiveEnumeration.valueOf( content );
         }
 
-        super.setData( data );
+        super.setContent( content );
     }
 
 
@@ -148,7 +131,7 @@ public class EntityStateRegistryHive
             return true;
         }
 
-        if (!(obj instanceof EntityStateRegistryHive)) {
+        if (!(obj instanceof EntityStateRegistryHiveType)) {
             return false;
         }
 
@@ -156,4 +139,4 @@ public class EntityStateRegistryHive
     }
 
 }
-// EntityStateRegistryHive
+// EntityStateRegistryHiveType

@@ -18,11 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
-import jp.go.aist.six.oval.model.common.Datatype;
-import jp.go.aist.six.oval.model.common.Operation;
-import jp.go.aist.six.oval.model.definitions.EntityObjectString;
+import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
 
 
 
@@ -36,93 +34,78 @@ import jp.go.aist.six.oval.model.definitions.EntityObjectString;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityObjectRegistryHive
-    extends EntityObjectString
+public class EntityObjectRegistryHiveType
+    extends EntityObjectStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityObjectRegistryHive()
+    public EntityObjectRegistryHiveType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityObjectRegistryHive(
-                    final String data
+    public EntityObjectRegistryHiveType(
+                    final String content
                     )
     {
-        this( data, DEFAULT_OPERATION );
+        super( content );
     }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityObjectRegistryHive(
-                    final String data,
-                    final Operation operation
-                    )
-    {
-        this( data, FIXED_DATATYPE, operation );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityObjectRegistryHive(
-                    final String data,
-                    final Datatype datatype,
-                    final Operation operation
-                    )
-    {
-        super( data, datatype, operation );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityObjectRegistryHive(
-                    final RegistryHive data
-                    )
-    {
-        this( data, DEFAULT_OPERATION );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityObjectRegistryHive(
-                    final RegistryHive data,
-                    final Operation operation
-                    )
-    {
-        this( (data == null ? null : data.getName()), operation );
-    }
+//
+//
+//    public EntityObjectRegistryHiveType(
+//                    final String data,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        this( data, FIXED_DATATYPE, operation );
+//    }
+//
+//
+//    public EntityObjectRegistryHiveType(
+//                    final String data,
+//                    final DatatypeEnumeration datatype,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        super( data, datatype, operation );
+//    }
+//
+//
+//    public EntityObjectRegistryHiveType(
+//                    final RegistryHiveEnumeration data
+//                    )
+//    {
+//        this( data, DEFAULT_OPERATION );
+//    }
+//
+//
+//    public EntityObjectRegistryHiveType(
+//                    final RegistryHiveEnumeration data,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        this( (data == null ? null : data.getName()), operation );
+//    }
 
 
 
     //**************************************************************
-    //  EntityBaseType
+    //  EntitySimpleBaseType
     //**************************************************************
 
     @Override
-    public void setData(
-                    final String data
+    public void setContent(
+                    final String content
                     )
     {
-        if (data != null) {
+        if (content != null) {
             //validation
-            RegistryHive.valueOf( data );
+            RegistryHiveEnumeration.valueOf( content );
         }
 
-        super.setData( data );
+        super.setContent( content );
     }
 
 
@@ -148,7 +131,7 @@ public class EntityObjectRegistryHive
             return true;
         }
 
-        if (!(obj instanceof EntityObjectRegistryHive)) {
+        if (!(obj instanceof EntityObjectRegistryHiveType)) {
             return false;
         }
 
@@ -156,4 +139,4 @@ public class EntityObjectRegistryHive
     }
 
 }
-// EntityObjectRegistryHive
+// EntityObjectRegistryHiveType

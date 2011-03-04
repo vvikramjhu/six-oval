@@ -18,10 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.common.Datatype;
-import jp.go.aist.six.oval.model.common.Operation;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 
 
 
@@ -34,52 +33,43 @@ import jp.go.aist.six.oval.model.common.Operation;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateAnySimple
-    extends EntityStateBase
+public class EntityStateAnySimpleType
+    extends EntityStateSimpleBaseType
 {
 
     /**
      * Constructor.
      */
-    public EntityStateAnySimple()
+    public EntityStateAnySimpleType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityStateAnySimple(
-                    final String data
-                    )
-    {
-        this( data, DEFAULT_OPERATION );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateAnySimple(
-                    final String data,
-                    final Operation operation
-                    )
-    {
-        this( data, DEFAULT_DATATYPE, operation );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateAnySimple(
-                    final String data,
-                    final Datatype datatype,
-                    final Operation operation
-                    )
-    {
-        super( data, datatype, operation );
-    }
+//    public EntityStateAnySimpleType(
+//                    final String data
+//                    )
+//    {
+//        this( data, DEFAULT_OPERATION );
+//    }
+//
+//
+//    public EntityStateAnySimpleType(
+//                    final String data,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        this( data, DEFAULT_DATATYPE, operation );
+//    }
+//
+//
+//    public EntityStateAnySimpleType(
+//                    final String data,
+//                    final DatatypeEnumeration datatype,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        super( data, datatype, operation );
+//    }
 
 
 
@@ -89,7 +79,7 @@ public class EntityStateAnySimple
 
     @Override
     public void setDatatype(
-                    final Datatype datatype
+                    final DatatypeEnumeration datatype
                     )
     {
         if (datatype != null  &&  datatype.isComplex()) {
@@ -122,7 +112,7 @@ public class EntityStateAnySimple
             return true;
         }
 
-        if (!(obj instanceof EntityStateAnySimple)) {
+        if (!(obj instanceof EntityStateAnySimpleType)) {
             return false;
         }
 
@@ -138,4 +128,4 @@ public class EntityStateAnySimple
     }
 
 }
-// EntityStateAnySimple
+// EntityStateAnySimpleType

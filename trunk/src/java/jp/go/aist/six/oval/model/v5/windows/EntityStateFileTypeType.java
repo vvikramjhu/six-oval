@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.model.v5.windows;
 
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
-import jp.go.aist.six.oval.model.windows.FileType;
 
 
 
@@ -100,7 +99,7 @@ public class EntityStateFileTypeType
                     )
     {
         if (data != null) {
-            FileType.valueOf( data );
+            FileTypeEnumeration.valueOf( data );
         }
 
         super.setContent( data );

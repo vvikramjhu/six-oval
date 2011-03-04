@@ -49,12 +49,12 @@ public class EntityObjectStringType
     }
 
 
-//    public EntityObjectStringType(
-//                    final String data
-//                    )
-//    {
-//        this( data, DEFAULT_OPERATION );
-//    }
+    public EntityObjectStringType(
+                    final String data
+                    )
+    {
+        super( data );
+    }
 //
 //
 //    public EntityObjectStringType(
