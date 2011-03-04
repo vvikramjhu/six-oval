@@ -20,7 +20,6 @@
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-<!--
     <class name="jp.go.aist.six.oval.model.v5.windows.FileTest"
         extends="jp.go.aist.six.oval.model.v5.definitions.TestType">
         <map-to xml="file_test"
@@ -38,7 +37,6 @@
             <bind-xml name="state" node="element"/>
         </field>
     </class>
--->
 
 
 
