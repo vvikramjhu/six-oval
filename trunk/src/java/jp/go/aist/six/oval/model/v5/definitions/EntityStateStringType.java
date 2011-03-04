@@ -38,6 +38,7 @@ public class EntityStateStringType
 {
 
     public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.STRING;
+    //{optional, fixed="string"}
 
 
 
@@ -95,11 +96,11 @@ public class EntityStateStringType
     }
 
 
-    @Override
-    public DatatypeEnumeration getDatatype()
-    {
-        return FIXED_DATATYPE;
-    }
+//    @Override
+//    public DatatypeEnumeration getDatatype()
+//    {
+//        return FIXED_DATATYPE;
+//    }
 
 
 

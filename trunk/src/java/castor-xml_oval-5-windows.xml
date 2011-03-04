@@ -77,6 +77,30 @@
 
 
 
+    <class name="jp.go.aist.six.oval.model.v5.windows.FileState"
+        extends="jp.go.aist.six.oval.model.v5.definitions.StateType">
+        <map-to xml="file_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="version" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateVersionType">
+            <bind-xml name="version" node="element"/>
+        </field>
+
+        <field name="productName" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="product_name" node="element"/>
+        </field>
+
+        <field name="productVersion" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateVersionType">
+            <bind-xml name="product_version" node="element"/>
+        </field>
+    </class>
+
+
+
     <class name="jp.go.aist.six.oval.model.v5.windows.FileBehaviors"
         extends="jp.go.aist.six.oval.model.v5.AbstractFileBehaviors">
     </class>
@@ -136,6 +160,40 @@
             type="jp.go.aist.six.oval.model.v5.definitions.Filter"
             collection="collection">
             <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.windows.RegistryState"
+        extends="jp.go.aist.six.oval.model.v5.definitions.StateType">
+        <map-to xml="registry_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="hive" 
+            type="jp.go.aist.six.oval.model.v5.windows.EntityStateRegistryHiveType">
+            <bind-xml name="hive" node="element"/>
+        </field>
+
+        <field name="key" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="key" node="element"/>
+        </field>
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="type" 
+            type="jp.go.aist.six.oval.model.v5.windows.EntityStateRegistryTypeType">
+            <bind-xml name="type" node="element"/>
+        </field>
+
+        <field name="value" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType">
+            <bind-xml name="value" node="element"/>
         </field>
     </class>
 

@@ -38,6 +38,7 @@ public class EntityStateVersionType
 {
 
     public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.VERSION;
+    //{required, fixed="version"}
 
 
 
