@@ -42,17 +42,17 @@
         </field>
 
 
-<!-- *****
         <field name="objects" 
-            type="jp.go.aist.six.oval.model.definitions.SystemObjects">
+            type="jp.go.aist.six.oval.model.v5.definitions.SystemObjectsType">
             <bind-xml name="objects" node="element"/>
         </field>
 
         <field name="states" 
-            type="jp.go.aist.six.oval.model.definitions.States">
+            type="jp.go.aist.six.oval.model.v5.definitions.StatesType">
             <bind-xml name="states" node="element"/>
         </field>
 
+<!-- *****
         <field name="variables" 
             type="jp.go.aist.six.oval.model.definitions.Variables">
             <bind-xml name="variables" node="element"/>
@@ -334,6 +334,118 @@
         </field>
     </class>
 
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.SystemObjectsType">
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.v5.definitions.SystemObjectType"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.SystemObjectType"
+        extends="jp.go.aist.six.oval.model.v5.CommentedOvalEntity"
+        verify-constructable="false">
+
+        <field name="notes" 
+            type="jp.go.aist.six.oval.model.v5.definitions.NotesType">
+            <bind-xml name="notes" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.Filter">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            ns-prefix=""/>
+
+        <field name="content" type="string">
+            <bind-xml node="text"/>
+        </field>
+
+        <field name="action" 
+            type="jp.go.aist.six.oval.model.v5.definitions.FilterActionEnumeration">
+            <bind-xml name="action" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.StatesType">
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.v5.definitions.StateType"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.StateType"
+        extends="jp.go.aist.six.oval.model.v5.CommentedOvalEntity"
+        verify-constructable="false">
+
+        <field name="notes" 
+            type="jp.go.aist.six.oval.model.v5.definitions.NotesType">
+            <bind-xml name="notes" node="element"/>
+        </field>
+
+        <field name="operator" 
+            type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration">
+            <bind-xml name="operator" node="attribute"/>
+        </field>
+    </class>
+
+
+
+<!-- Entity -->
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup"
+        verify-constructable="false">
+
+        <field name="datatype"
+            type="jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration">
+            <bind-xml name="datatype" node="attribute"/>
+        </field>
+
+        <field name="operation"
+            type="jp.go.aist.six.oval.model.v5.common.OperationEnumeration">
+            <bind-xml name="operation" node="attribute"/>
+        </field>
+
+        <field name="mask" type="boolean">
+            <bind-xml name="mask" node="attribute"/>
+        </field>
+
+        <field name="varRef" type="string">
+            <bind-xml name="var_ref" node="attribute"/>
+        </field>
+
+        <field name="varCheck"
+            type="jp.go.aist.six.oval.model.v5.common.CheckEnumeration">
+            <bind-xml name="var_check" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.EntitySimpleBaseType"
+        extends="jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup"
+        verify-constructable="false">
+
+        <field name="content" type="string">
+            <bind-xml node="text"/>
+        </field>
+    </class>
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType"
+        extends="jp.go.aist.six.oval.model.v5.definitions.EntitySimpleBaseType">
+    </class>
 
 
 

@@ -19,6 +19,8 @@
     <!-- %  xmlns:oval-definitions-5#windows                   % -->
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    
+<!-- file -->    
 
     <class name="jp.go.aist.six.oval.model.v5.windows.FileTest"
         extends="jp.go.aist.six.oval.model.v5.definitions.TestType">
@@ -35,6 +37,41 @@
             type="jp.go.aist.six.oval.model.v5.definitions.StateRefType"
             collection="collection">
             <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.windows.FileObject"
+        extends="jp.go.aist.six.oval.model.v5.definitions.SystemObjectType">
+        <map-to xml="file_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="behaviors" 
+            type="jp.go.aist.six.oval.model.v5.windows.FileBehaviors">
+            <bind-xml name="behaviors" node="element"/>
+        </field>
+        
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+        
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType">
+            <bind-xml name="path" node="element"/>
+        </field>
+        
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType">
+            <bind-xml name="filename" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.v5.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
         </field>
     </class>
 
