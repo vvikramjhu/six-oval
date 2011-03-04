@@ -66,8 +66,10 @@ public abstract class AbstractBehaviors
                     final Integer maxDepth
                     )
     {
-        if (maxDepth < -1) {
-            throw new IllegalArgumentException( "invalid maxDepth: " + maxDepth );
+        if (maxDepth != null) {
+            if (maxDepth < -1) {
+                throw new IllegalArgumentException( "invalid maxDepth: " + maxDepth );
+            }
         }
 
         _maxDepth = maxDepth;
@@ -93,9 +95,7 @@ public abstract class AbstractBehaviors
 
     public RecurseDirectionEnumeration getRecurseDirection()
     {
-        return (_recurseDirection == null
-                        ? DEFAULT_RECURSE_DIRECTION
-                        : _recurseDirection);
+        return _recurseDirection;
     }
 
 

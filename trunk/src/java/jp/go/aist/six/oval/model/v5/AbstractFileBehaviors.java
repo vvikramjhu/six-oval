@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5;
 
-import jp.go.aist.six.oval.model.AbstractBehaviors;
 
 
 
@@ -65,9 +64,7 @@ public abstract class AbstractFileBehaviors
 
     public RecurseFileSystemEnumeration getRecurseFileSystem()
     {
-        return (_recurseFileSystem == null
-                        ? DEFAULT_RECURSE_FILE_SYSTEM
-                        : _recurseFileSystem);
+        return _recurseFileSystem;
     }
 
 

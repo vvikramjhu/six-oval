@@ -59,5 +59,33 @@
         </field>
     </class>
 
+
+
+    <class name="jp.go.aist.six.oval.model.v5.AbstractBehaviors"
+        verify-constructable="false">
+
+        <field name="maxDepth" type="int">
+            <bind-xml name="max_depth" node="attribute"/>
+        </field>
+
+        <field name="recurseDirection"
+            type="jp.go.aist.six.oval.model.v5.RecurseDirectionEnumeration">
+            <bind-xml name="recurse_direction" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.AbstractFileBehaviors"
+        extends="jp.go.aist.six.oval.model.v5.AbstractBehaviors"
+        verify-constructable="false">
+
+        <field name="recurseFileSystem"
+            type="jp.go.aist.six.oval.model.v5.RecurseFileSystemEnumeration">
+            <bind-xml name="recurse_file_system" node="attribute"/>
+        </field>
+    </class>
+
+
 </mapping>
 

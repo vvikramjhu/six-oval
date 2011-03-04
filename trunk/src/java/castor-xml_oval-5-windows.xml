@@ -77,6 +77,15 @@
 
 
 
+    <class name="jp.go.aist.six.oval.model.v5.windows.FileBehaviors"
+        extends="jp.go.aist.six.oval.model.v5.AbstractFileBehaviors">
+    </class>
+
+
+
+
+<!-- registry -->
+
     <class name="jp.go.aist.six.oval.model.v5.windows.RegistryTest"
         extends="jp.go.aist.six.oval.model.v5.definitions.TestType">
         <map-to xml="registry_test"
@@ -93,6 +102,55 @@
             collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.windows.RegistryObject"
+        extends="jp.go.aist.six.oval.model.v5.definitions.SystemObjectType">
+        <map-to xml="registry_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="behaviors" 
+            type="jp.go.aist.six.oval.model.v5.windows.RegistryBehaviors">
+            <bind-xml name="behaviors" node="element"/>
+        </field>
+        
+        <field name="hive" 
+            type="jp.go.aist.six.oval.model.v5.windows.EntityObjectRegistryHiveType" >
+            <bind-xml name="hive" node="element"/>
+        </field>
+
+        <field name="key" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType">
+            <bind-xml name="key" node="element"/>
+        </field>
+        
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.v5.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.windows.RegistryBehaviors"
+        extends="jp.go.aist.six.oval.model.v5.AbstractBehaviors">
+    </class>
+
+
+
+<!-- entity -->
+
+    <class name="jp.go.aist.six.oval.model.v5.windows.EntityObjectRegistryHiveType"
+        extends="jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType">
     </class>
 
 
