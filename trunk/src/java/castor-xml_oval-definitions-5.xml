@@ -284,12 +284,6 @@
 
 
     <class name="jp.go.aist.six.oval.model.v5.definitions.TestsType">
-<!--
-        <map-to 
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
-            ns-prefix=""/>
--->
-
         <field name="test" 
             type="jp.go.aist.six.oval.model.v5.definitions.TestType"
             collection="collection">
@@ -327,12 +321,6 @@
 
 
     <class name="jp.go.aist.six.oval.model.v5.definitions.SystemObjectRefType">
-<!--
-        <map-to 
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
-            ns-prefix=""/>
--->
-
         <field name="objectRef" type="string">
             <bind-xml name="object_ref" node="attribute"/>
         </field>
@@ -341,12 +329,6 @@
 
 
     <class name="jp.go.aist.six.oval.model.v5.definitions.StateRefType">
-<!--
-        <map-to 
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
-            ns-prefix=""/>
--->
-
         <field name="stateRef" type="string">
             <bind-xml name="state_ref" node="attribute"/>
         </field>
