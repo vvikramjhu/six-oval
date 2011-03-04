@@ -36,13 +36,13 @@
             <bind-xml name="definitions" node="element"/>
         </field>
 
-
-<!-- *****
         <field name="tests" 
-            type="jp.go.aist.six.oval.model.v5.definitions.Tests">
+            type="jp.go.aist.six.oval.model.v5.definitions.TestsType">
             <bind-xml name="tests" node="element" />
         </field>
 
+
+<!-- *****
         <field name="objects" 
             type="jp.go.aist.six.oval.model.definitions.SystemObjects">
             <bind-xml name="objects" node="element"/>
@@ -278,6 +278,77 @@
 
         <field name="definitionRef" type="string">
             <bind-xml name="definition_ref" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.TestsType">
+<!--
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            ns-prefix=""/>
+-->
+
+        <field name="test" 
+            type="jp.go.aist.six.oval.model.v5.definitions.TestType"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.TestType"
+        extends="jp.go.aist.six.oval.model.v5.CommentedOvalEntity"
+        verify-constructable="false">
+
+        <field name="notes" 
+            type="jp.go.aist.six.oval.model.v5.definitions.NotesType">
+            <bind-xml name="notes" node="element"/>
+        </field>
+
+        <field name="checkExistence"
+            type="jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration">
+            <bind-xml name="check_existence" node="attribute"/>
+        </field>
+
+        <field name="check" 
+            type="jp.go.aist.six.oval.model.v5.common.CheckEnumeration">
+            <bind-xml name="check" node="attribute"/>
+        </field>
+
+        <field name="stateOperator" 
+            type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration">
+            <bind-xml name="state_operator" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.SystemObjectRefType">
+<!--
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            ns-prefix=""/>
+-->
+
+        <field name="objectRef" type="string">
+            <bind-xml name="object_ref" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.StateRefType">
+<!--
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            ns-prefix=""/>
+-->
+
+        <field name="stateRef" type="string">
+            <bind-xml name="state_ref" node="attribute"/>
         </field>
     </class>
 

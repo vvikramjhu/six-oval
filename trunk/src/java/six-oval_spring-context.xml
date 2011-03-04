@@ -184,6 +184,7 @@
                  <value>classpath:castor-xml_six-oval-5.xml</value>
                  <value>classpath:castor-xml_oval-common-5.xml</value>
                  <value>classpath:castor-xml_oval-definitions-5.xml</value>
+                 <value>classpath:castor-xml_oval-windows-5.xml</value>
             </list>
         </property>
         <property name="ignoreExtraAttributes"

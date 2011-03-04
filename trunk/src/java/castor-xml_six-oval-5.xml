@@ -39,6 +39,17 @@
 
 
 
+    <class name ="jp.go.aist.six.oval.model.v5.CommentedOvalEntity"
+        extends="jp.go.aist.six.oval.model.v5.OvalEntity"
+        verify-constructable="false">
+
+        <field name="comment" type="string">
+            <bind-xml name="comment" node="attribute"/>
+        </field>
+    </class>
+
+
+
     <class name="jp.go.aist.six.oval.model.v5.OvalDocument"
         verify-constructable="false">
 

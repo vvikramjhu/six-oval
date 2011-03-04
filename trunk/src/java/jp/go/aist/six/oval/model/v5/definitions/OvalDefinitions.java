@@ -42,9 +42,9 @@ public class OvalDefinitions
     private DefinitionsType  _definitions;
     //{0..1}
 
-//    private TestsType _tests;
-//    //{0..1}
-//
+    private TestsType  _tests;
+    //{0..1}
+
 //    private SystemObjectsType  _objects;
 //    //{0..1}
 //
@@ -127,38 +127,38 @@ public class OvalDefinitions
 
 
 
-//    /**
-//     */
-//    public void setTests(
-//                    final TestsType tests
-//                    )
-//    {
-//        _tests = tests;
-//    }
-//
-//
-//    public TestsType getTests()
-//    {
-//        return _tests;
-//    }
-//
-//
-//    public OvalDefinitions test(
-//                    final TestType test
-//                    )
-//    {
-//        TestsType  tests = getTests();
-//        if (tests == null) {
-//            tests = new TestsType();
-//            setTests( tests );
-//        }
-//        tests.addTest( test );
-//
-//        return this;
-//    }
-//
-//
-//
+    /**
+     */
+    public void setTests(
+                    final TestsType tests
+                    )
+    {
+        _tests = tests;
+    }
+
+
+    public TestsType getTests()
+    {
+        return _tests;
+    }
+
+
+    public OvalDefinitions test(
+                    final TestType test
+                    )
+    {
+        TestsType  tests = getTests();
+        if (tests == null) {
+            tests = new TestsType();
+            setTests( tests );
+        }
+        tests.addTest( test );
+
+        return this;
+    }
+
+
+
 //    /**
 //     */
 //    public void setObjects(
@@ -343,17 +343,18 @@ public class OvalDefinitions
     public String toString()
     {
         DefinitionsType  definitions = getDefinitions();
-//        TestsType  tests = getTests();
+        TestsType  tests = getTests();
 //        SystemObjectsType  objects = getObjects();
 //        StatesType  states = getStates();
 //        VariablesType  variables = getVariables();
 
         return "oval_definitions[generator=" + getGenerator()
-//                        + ", #definitions="
-//                        + (definitions == null ? 0 : definitions.size())
-                        + ", definitions=" + String.valueOf( definitions )
+                        + ", #definitions="
+                        + (definitions == null ? 0 : definitions.size())
+//                        + ", definitions=" + String.valueOf( definitions )
 //                        + ", #tests="
 //                        + (tests == null ? 0 : tests.getTest().size())
+                        + ", tests=" + String.valueOf( tests )
 //                        + ", #objects="
 //                        + (objects == null ? 0 : objects.size())
 //                        + ", #states="
