@@ -610,23 +610,23 @@ public abstract class CoreTestBase
 //                            "marshalled_oval-definitions_CVE-2003-0353_def962_deprecated.xml"
 //                        }
 //                        ,
-                        // windows, CVE-2004-1153, def:2919, notes
-                        {
-                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                            "test/data/oval-definitions-5/oval-definitions_CVE-2004-1153_def2919_notes.xml",
-                            "/oval_definitions",
-                            null,
-                            "marshalled_oval-definitions_CVE-2004-1153_def2919_notes.xml"
-                        }
-//                        ,
-//                        // windows, CVE-2004-0380, def:990, negate
+//                        // windows, CVE-2004-1153, def:2919, notes
 //                        {
 //                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-//                            "test/data/oval-definitions-5/oval-definitions_CVE-2004-0380_def990_negate.xml",
+//                            "test/data/oval-definitions-5/oval-definitions_CVE-2004-1153_def2919_notes.xml",
 //                            "/oval_definitions",
 //                            null,
-//                            "marshalled_oval-definitions_CVE-2004-0380_def990_negate.xml"
+//                            "marshalled_oval-definitions_CVE-2004-1153_def2919_notes.xml"
 //                        }
+//                        ,
+                        // windows, CVE-2004-0380, def:990, negate
+                        {
+                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+                            "test/data/oval-definitions-5/oval-definitions_CVE-2004-0380_def990_negate.xml",
+                            "/oval_definitions",
+                            null,
+                            "marshalled_oval-definitions_CVE-2004-0380_def990_negate.xml"
+                        }
 //                        // Windows XP, CVE-2010-0035, PowerPoint
 //                        {
 //                            OvalDefinitions.class,

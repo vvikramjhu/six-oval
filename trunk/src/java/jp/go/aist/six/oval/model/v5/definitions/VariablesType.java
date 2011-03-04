@@ -46,9 +46,6 @@ public class VariablesType
     }
 
 
-    /**
-     * Constructor.
-     */
     public VariablesType(
                     final Collection<? extends VariableType> variables
                     )
@@ -57,9 +54,6 @@ public class VariablesType
     }
 
 
-    /**
-     * Constructor.
-     */
     public VariablesType(
                     final VariableType[] variables
                     )
@@ -69,6 +63,8 @@ public class VariablesType
 
 
 
+    /**
+     */
     public void setVariable(
                     final Collection<? extends VariableType> variables
                     )

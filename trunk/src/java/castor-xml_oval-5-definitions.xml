@@ -462,6 +462,12 @@
 
 
 
+    <class name="jp.go.aist.six.oval.model.v5.definitions.EntityStateVersionType"
+        extends="jp.go.aist.six.oval.model.v5.definitions.EntityStateSimpleBaseType">
+    </class>
+
+
+
     <class name="jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType"
         extends="jp.go.aist.six.oval.model.v5.definitions.EntitySimpleBaseType">
     </class>
