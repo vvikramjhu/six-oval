@@ -24,11 +24,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityBase;
-import jp.go.aist.six.oval.model.definitions.EntityObjectString;
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.definitions.Filter;
-import jp.go.aist.six.oval.model.definitions.SystemObject;
+import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
+import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 
 
 
@@ -41,7 +41,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObject;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class FileObject
-    extends SystemObject
+    extends SystemObjectType
 {
 
     private FileBehaviors  _behaviors;
@@ -85,9 +85,6 @@ public class FileObject
     }
 
 
-    /**
-     * Constructor.
-     */
     public FileObject(
                     final String id,
                     final int version
@@ -97,50 +94,41 @@ public class FileObject
     }
 
 
-    /**
-     * Constructor.
-     */
-    public FileObject(
-                    final String id,
-                    final int version,
-                    final String comment
-                    )
-    {
-        super( id, version, comment );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public FileObject(
-                    final String id,
-                    final int version,
-                    final String path,
-                    final String filename
-                    )
-    {
-        this( id, version,
-                        new EntityObjectString( path ),
-                        new EntityObjectString( filename )
-        );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public FileObject(
-                    final String id,
-                    final int version,
-                    final EntityObjectString path,
-                    final EntityObjectString filename
-                    )
-    {
-        super( id, version );
-        setPath( path );
-        setFilename( filename );
-    }
+//    public FileObject(
+//                    final String id,
+//                    final int version,
+//                    final String comment
+//                    )
+//    {
+//        super( id, version, comment );
+//    }
+//
+//
+//    public FileObject(
+//                    final String id,
+//                    final int version,
+//                    final String path,
+//                    final String filename
+//                    )
+//    {
+//        this( id, version,
+//                        new EntityObjectStringType( path ),
+//                        new EntityObjectStringType( filename )
+//        );
+//    }
+//
+//
+//    public FileObject(
+//                    final String id,
+//                    final int version,
+//                    final EntityObjectStringType path,
+//                    final EntityObjectStringType filename
+//                    )
+//    {
+//        super( id, version );
+//        setPath( path );
+//        setFilename( filename );
+//    }
 
 
 
@@ -172,7 +160,7 @@ public class FileObject
     /**
      */
     public void setFilepath(
-                    final EntityObjectString filepath
+                    final EntityObjectStringType filepath
                     )
     {
         _properties.setProperty( FileProperty.FILEPATH, filepath );
@@ -180,7 +168,7 @@ public class FileObject
 
 
     public FileObject filepath(
-                    final EntityObjectString filepath
+                    final EntityObjectStringType filepath
                     )
     {
         setFilepath( filepath );
@@ -188,16 +176,16 @@ public class FileObject
     }
 
 
-    public EntityObjectString getFilepath()
+    public EntityObjectStringType getFilepath()
     {
         return _properties.getProperty(
-                        FileProperty.FILEPATH, EntityObjectString.class );
+                        FileProperty.FILEPATH, EntityObjectStringType.class );
     }
 
 
 
     public void setPath(
-                    final EntityObjectString path
+                    final EntityObjectStringType path
                     )
     {
         _properties.setProperty( FileProperty.PATH, path );
@@ -205,7 +193,7 @@ public class FileObject
 
 
     public FileObject path(
-                    final EntityObjectString path
+                    final EntityObjectStringType path
                     )
     {
         setPath( path );
@@ -213,16 +201,16 @@ public class FileObject
     }
 
 
-    public EntityObjectString getPath()
+    public EntityObjectStringType getPath()
     {
         return _properties.getProperty(
-                        FileProperty.PATH, EntityObjectString.class );
+                        FileProperty.PATH, EntityObjectStringType.class );
     }
 
 
 
     public void setFilename(
-                    final EntityObjectString filename
+                    final EntityObjectStringType filename
                     )
     {
         _properties.setProperty( FileProperty.FILENAME, filename);
@@ -230,7 +218,7 @@ public class FileObject
 
 
     public FileObject filename(
-                    final EntityObjectString filename
+                    final EntityObjectStringType filename
                     )
     {
         setFilename( filename );
@@ -238,10 +226,10 @@ public class FileObject
     }
 
 
-    public EntityObjectString getFilename()
+    public EntityObjectStringType getFilename()
     {
         return _properties.getProperty(
-                        FileProperty.FILENAME, EntityObjectString.class );
+                        FileProperty.FILENAME, EntityObjectStringType.class );
     }
 
 
@@ -307,7 +295,7 @@ public class FileObject
 
 
     @Override
-    public Iterator<EntityBase> iterateProperties()
+    public Iterator<EntityAttributeGroup> iterateProperties()
     {
         return _properties.iterateProperties();
     }

@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -32,7 +32,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class FileType
+public final class FileTypeEnumeration
     implements Serializable
 {
 
@@ -45,19 +45,19 @@ public final class FileType
     private static final String  _NONE_                       = "";
 
 
-    public static final FileType  FILE_ATTRIBUTE_DIRECTORY  = new FileType( _FILE_ATTRIBUTE_DIRECTORY_ );
-    public static final FileType  FILE_TYPE_CHAR            = new FileType( _FILE_TYPE_CHAR_ );
-    public static final FileType  FILE_TYPE_DISK            = new FileType( _FILE_TYPE_DISK_ );
-    public static final FileType  FILE_TYPE_PIPE            = new FileType( _FILE_TYPE_PIPE_ );
-    public static final FileType  FILE_TYPE_REMOTE          = new FileType( _FILE_TYPE_REMOTE_ );
-    public static final FileType  FILE_TYPE_UNKNOWN         = new FileType( _FILE_TYPE_UNKNOWN_ );
-    public static final FileType  NONE                      = new FileType( _NONE_ );
+    public static final FileTypeEnumeration  FILE_ATTRIBUTE_DIRECTORY  = new FileTypeEnumeration( _FILE_ATTRIBUTE_DIRECTORY_ );
+    public static final FileTypeEnumeration  FILE_TYPE_CHAR            = new FileTypeEnumeration( _FILE_TYPE_CHAR_ );
+    public static final FileTypeEnumeration  FILE_TYPE_DISK            = new FileTypeEnumeration( _FILE_TYPE_DISK_ );
+    public static final FileTypeEnumeration  FILE_TYPE_PIPE            = new FileTypeEnumeration( _FILE_TYPE_PIPE_ );
+    public static final FileTypeEnumeration  FILE_TYPE_REMOTE          = new FileTypeEnumeration( _FILE_TYPE_REMOTE_ );
+    public static final FileTypeEnumeration  FILE_TYPE_UNKNOWN         = new FileTypeEnumeration( _FILE_TYPE_UNKNOWN_ );
+    public static final FileTypeEnumeration  NONE                      = new FileTypeEnumeration( _NONE_ );
 
 
 
-    private static HashMap<String, FileType> _INIT_()
+    private static HashMap<String, FileTypeEnumeration> _INIT_()
     {
-        HashMap<String, FileType>  map = new HashMap<String, FileType>();
+        HashMap<String, FileTypeEnumeration>  map = new HashMap<String, FileTypeEnumeration>();
         map.put( _FILE_ATTRIBUTE_DIRECTORY_, FILE_ATTRIBUTE_DIRECTORY );
         map.put( _FILE_TYPE_CHAR_,           FILE_TYPE_CHAR );
         map.put( _FILE_TYPE_DISK_,           FILE_TYPE_DISK );
@@ -68,18 +68,18 @@ public final class FileType
         return map;
     }
 
-    private static final HashMap<String, FileType>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, FileTypeEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static FileType valueOf(
+    public static FileTypeEnumeration valueOf(
                     final String name
                     )
     {
-        FileType  flag = null;
+        FileTypeEnumeration  flag = null;
         if (name != null) {
             flag = _INSTANCES_.get( name );
         }
@@ -99,7 +99,7 @@ public final class FileType
 
     /**
      */
-    private FileType(
+    private FileTypeEnumeration(
                     final String name
                     )
     {
@@ -128,4 +128,4 @@ public final class FileType
     }
 
 }
-// FileType
+// FileTypeEnumeration

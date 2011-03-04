@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model;
+package jp.go.aist.six.oval.model.v5;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -36,7 +36,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class RecurseFileSystem
+public final class RecurseFileSystemEnumeration
     implements Serializable
 {
 
@@ -45,32 +45,32 @@ public final class RecurseFileSystem
     private static final String  _DEFINED_  = "defined";
 
 
-    public static final RecurseFileSystem  ALL      = new RecurseFileSystem( _ALL_ );
-    public static final RecurseFileSystem  LOCAL    = new RecurseFileSystem( _LOCAL_ );
-    public static final RecurseFileSystem  DEFINED  = new RecurseFileSystem( _DEFINED_ );
+    public static final RecurseFileSystemEnumeration  ALL      = new RecurseFileSystemEnumeration( _ALL_ );
+    public static final RecurseFileSystemEnumeration  LOCAL    = new RecurseFileSystemEnumeration( _LOCAL_ );
+    public static final RecurseFileSystemEnumeration  DEFINED  = new RecurseFileSystemEnumeration( _DEFINED_ );
 
 
 
-    private static HashMap<String, RecurseFileSystem> _INIT_()
+    private static HashMap<String, RecurseFileSystemEnumeration> _INIT_()
     {
-        HashMap<String, RecurseFileSystem>  map = new HashMap<String, RecurseFileSystem>();
+        HashMap<String, RecurseFileSystemEnumeration>  map = new HashMap<String, RecurseFileSystemEnumeration>();
         map.put( _ALL_,      ALL     );
         map.put( _LOCAL_,    LOCAL   );
         map.put( _DEFINED_,  DEFINED );
         return map;
     }
 
-    private static final HashMap<String, RecurseFileSystem>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, RecurseFileSystemEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
     /**
      */
-    public static RecurseFileSystem valueOf(
+    public static RecurseFileSystemEnumeration valueOf(
                     final String name
                     )
     {
-        RecurseFileSystem  flag = null;
+        RecurseFileSystemEnumeration  flag = null;
         if (name != null) {
             flag = _INSTANCES_.get( name );
         }
@@ -92,7 +92,7 @@ public final class RecurseFileSystem
     /**
      * Constructor.
      */
-    private RecurseFileSystem(
+    private RecurseFileSystemEnumeration(
                     final String name
                     )
     {
@@ -121,4 +121,4 @@ public final class RecurseFileSystem
     }
 
 }
-// RecurseFileSystem
+// RecurseFileSystemEnumeration

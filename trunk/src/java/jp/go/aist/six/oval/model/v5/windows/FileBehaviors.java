@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
-import jp.go.aist.six.oval.model.AbstractFileBehaviors;
+import jp.go.aist.six.oval.model.v5.AbstractFileBehaviors;
 
 
 
@@ -35,6 +35,13 @@ import jp.go.aist.six.oval.model.AbstractFileBehaviors;
 public class FileBehaviors
     extends AbstractFileBehaviors
 {
+
+//    NOTE: AbstractBehaviors & AbstractFileBehaviors are distilled.
+//    private int  _maxDepth;
+//    //{optional, xsd:integer, default="-1"}
+
+
+
     /**
      * Constructor.
      */

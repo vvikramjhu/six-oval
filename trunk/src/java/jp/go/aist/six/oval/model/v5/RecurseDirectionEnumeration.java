@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model;
+package jp.go.aist.six.oval.model.v5;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class RecurseDirection
+public final class RecurseDirectionEnumeration
     implements Serializable
 {
 
@@ -42,32 +42,32 @@ public final class RecurseDirection
     private static final String  _DOWN_  = "down";
 
 
-    public static final RecurseDirection  NONE  = new RecurseDirection( _NONE_ );
-    public static final RecurseDirection  UP    = new RecurseDirection( _UP_ );
-    public static final RecurseDirection  DOWN  = new RecurseDirection( _DOWN_ );
+    public static final RecurseDirectionEnumeration  NONE  = new RecurseDirectionEnumeration( _NONE_ );
+    public static final RecurseDirectionEnumeration  UP    = new RecurseDirectionEnumeration( _UP_ );
+    public static final RecurseDirectionEnumeration  DOWN  = new RecurseDirectionEnumeration( _DOWN_ );
 
 
 
-    private static HashMap<String, RecurseDirection> _INIT_()
+    private static HashMap<String, RecurseDirectionEnumeration> _INIT_()
     {
-        HashMap<String, RecurseDirection>  map = new HashMap<String, RecurseDirection>();
+        HashMap<String, RecurseDirectionEnumeration>  map = new HashMap<String, RecurseDirectionEnumeration>();
         map.put( _NONE_,  NONE );
         map.put( _UP_,    UP   );
         map.put( _DOWN_,  DOWN );
         return map;
     }
 
-    private static final HashMap<String, RecurseDirection>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, RecurseDirectionEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
     /**
      */
-    public static RecurseDirection valueOf(
+    public static RecurseDirectionEnumeration valueOf(
                     final String name
                     )
     {
-        RecurseDirection  flag = null;
+        RecurseDirectionEnumeration  flag = null;
         if (name != null) {
             flag = _INSTANCES_.get( name );
         }
@@ -88,7 +88,7 @@ public final class RecurseDirection
     /**
      * Constructor.
      */
-    private RecurseDirection(
+    private RecurseDirectionEnumeration(
                     final String name
                     )
     {
@@ -117,4 +117,4 @@ public final class RecurseDirection
     }
 
 }
-// RecurseDirection
+// RecurseDirectionEnumeration

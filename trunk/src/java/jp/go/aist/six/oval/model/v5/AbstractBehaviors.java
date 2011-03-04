@@ -18,7 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model;
+package jp.go.aist.six.oval.model.v5;
+
 
 
 
@@ -36,16 +37,16 @@ public abstract class AbstractBehaviors
     /**
      * The default maxDepth: -1.
      */
-    public static final int  DEFAULT_MAX_DEPTH = -1;
-    private int _maxDepth = DEFAULT_MAX_DEPTH;
+    public static final Integer  DEFAULT_MAX_DEPTH = -1;
+    private Integer _maxDepth;
     //{optional, default='-1', minInclusive='-1'}
 
 
     /**
      * The default recurseDirection: "none".
      */
-    public static final RecurseDirection  DEFAULT_RECURSE_DIRECTION = RecurseDirection.NONE;
-    private RecurseDirection  _recurseDirection;
+    public static final RecurseDirectionEnumeration  DEFAULT_RECURSE_DIRECTION = RecurseDirectionEnumeration.NONE;
+    private RecurseDirectionEnumeration  _recurseDirection;
     //{optional, default='none'}
 
 
@@ -62,7 +63,7 @@ public abstract class AbstractBehaviors
     /**
      */
     public void setMaxDepth(
-                    final int maxDepth
+                    final Integer maxDepth
                     )
     {
         if (maxDepth < -1) {
@@ -73,7 +74,7 @@ public abstract class AbstractBehaviors
     }
 
 
-    public int getMaxDepth()
+    public Integer getMaxDepth()
     {
         return _maxDepth;
     }
@@ -83,14 +84,14 @@ public abstract class AbstractBehaviors
     /**
      */
     public void setRecurseDirection(
-                    final RecurseDirection direction
+                    final RecurseDirectionEnumeration direction
                     )
     {
         _recurseDirection = direction;
     }
 
 
-    public RecurseDirection getRecurseDirection()
+    public RecurseDirectionEnumeration getRecurseDirection()
     {
         return (_recurseDirection == null
                         ? DEFAULT_RECURSE_DIRECTION
@@ -111,7 +112,7 @@ public abstract class AbstractBehaviors
 
         result = prime * result + getMaxDepth();
 
-        RecurseDirection  rd = getRecurseDirection();
+        RecurseDirectionEnumeration  rd = getRecurseDirection();
         result = prime * result + ((rd == null) ? 0 : rd.hashCode());
 
         return result;
@@ -134,8 +135,8 @@ public abstract class AbstractBehaviors
 
         AbstractBehaviors  other = (AbstractBehaviors)obj;
         if (this.getMaxDepth() == other.getMaxDepth()) {
-            RecurseDirection  other_rd = other.getRecurseDirection();
-            RecurseDirection   this_rd =  this.getRecurseDirection();
+            RecurseDirectionEnumeration  other_rd = other.getRecurseDirection();
+            RecurseDirectionEnumeration   this_rd =  this.getRecurseDirection();
             if (this_rd == other_rd) {
                 return true;
             }

@@ -18,11 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.common.Check;
-import jp.go.aist.six.oval.model.common.Datatype;
-import jp.go.aist.six.oval.model.common.Operation;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 
 
 
@@ -35,68 +33,56 @@ import jp.go.aist.six.oval.model.common.Operation;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityObjectString
-    extends EntityObjectBase
+public class EntityObjectStringType
+    extends EntitySimpleBaseType
 {
 
-    public static final Datatype  FIXED_DATATYPE = Datatype.STRING;
+    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.STRING;
 
 
 
     /**
      * Constructor.
      */
-    public EntityObjectString()
+    public EntityObjectStringType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityObjectString(
-                    final String data
-                    )
-    {
-        this( data, DEFAULT_OPERATION );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityObjectString(
-                    final String data,
-                    final Operation operation
-                    )
-    {
-        this( data, FIXED_DATATYPE, operation );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityObjectString(
-                    final String data,
-                    final Datatype datatype,
-                    final Operation operation
-                    )
-    {
-        super( data, datatype, operation );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityObjectString(
-                    final String varRef,
-                    final Check varCheck
-                    )
-    {
-        super( varRef, varCheck );
-    }
+//    public EntityObjectStringType(
+//                    final String data
+//                    )
+//    {
+//        this( data, DEFAULT_OPERATION );
+//    }
+//
+//
+//    public EntityObjectStringType(
+//                    final String data,
+//                    final Operation operation
+//                    )
+//    {
+//        this( data, FIXED_DATATYPE, operation );
+//    }
+//
+//
+//    public EntityObjectStringType(
+//                    final String data,
+//                    final Datatype datatype,
+//                    final Operation operation
+//                    )
+//    {
+//        super( data, datatype, operation );
+//    }
+//
+//
+//    public EntityObjectStringType(
+//                    final String varRef,
+//                    final Check varCheck
+//                    )
+//    {
+//        super( varRef, varCheck );
+//    }
 
 
 
@@ -106,7 +92,7 @@ public class EntityObjectString
 
     @Override
     public void setDatatype(
-                    final Datatype datatype
+                    final DatatypeEnumeration datatype
                     )
     {
         if (datatype != null  &&  datatype != FIXED_DATATYPE) {
@@ -118,7 +104,7 @@ public class EntityObjectString
 
 
     @Override
-    public Datatype getDatatype()
+    public DatatypeEnumeration getDatatype()
     {
         return FIXED_DATATYPE;
     }
@@ -146,7 +132,7 @@ public class EntityObjectString
             return true;
         }
 
-        if (!(obj instanceof EntityObjectString)) {
+        if (!(obj instanceof EntityObjectStringType)) {
             return false;
         }
 
@@ -162,4 +148,4 @@ public class EntityObjectString
 //    }
 
 }
-// EntityObjectString
+// EntityObjectStringType

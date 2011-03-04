@@ -24,7 +24,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityBase;
 import jp.go.aist.six.oval.model.v5.CommentedOvalEntity;
 
 
@@ -109,13 +108,13 @@ public class SystemObjectType
 
 
 
-    private static List<EntityBase>  _EMPTY_LIST_ =
+    private static List<EntityAttributeGroup>  _EMPTY_LIST_ =
         Collections.emptyList();
 
 
     /**
      */
-    public Iterator<EntityBase> iterateProperties()
+    public Iterator<EntityAttributeGroup> iterateProperties()
     {
         return _EMPTY_LIST_.iterator();
     }

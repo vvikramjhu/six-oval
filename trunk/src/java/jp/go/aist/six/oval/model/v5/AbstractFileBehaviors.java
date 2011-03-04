@@ -18,7 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model;
+package jp.go.aist.six.oval.model.v5;
+
+import jp.go.aist.six.oval.model.AbstractBehaviors;
 
 
 
@@ -36,8 +38,8 @@ public abstract class AbstractFileBehaviors
     /**
      * The default recurseFileSystem: "all".
      */
-    public static final RecurseFileSystem  DEFAULT_RECURSE_FILE_SYSTEM = RecurseFileSystem.ALL;
-    private RecurseFileSystem  _recurseFileSystem;
+    public static final RecurseFileSystemEnumeration  DEFAULT_RECURSE_FILE_SYSTEM = RecurseFileSystemEnumeration.ALL;
+    private RecurseFileSystemEnumeration  _recurseFileSystem;
     //{optional, default='all'}
 
 
@@ -54,14 +56,14 @@ public abstract class AbstractFileBehaviors
     /**
      */
     public void setRecurseFileSystem(
-                    final RecurseFileSystem fileSystem
+                    final RecurseFileSystemEnumeration fileSystem
                     )
     {
         _recurseFileSystem = fileSystem;
     }
 
 
-    public RecurseFileSystem getRecurseFileSystem()
+    public RecurseFileSystemEnumeration getRecurseFileSystem()
     {
         return (_recurseFileSystem == null
                         ? DEFAULT_RECURSE_FILE_SYSTEM
@@ -80,7 +82,7 @@ public abstract class AbstractFileBehaviors
         final int  prime = 37;
         int  result = super.hashCode();
 
-        RecurseFileSystem  rfs = getRecurseFileSystem();
+        RecurseFileSystemEnumeration  rfs = getRecurseFileSystem();
         result = prime * result + ((rfs == null) ? 0 : rfs.hashCode());
 
         return result;
@@ -99,8 +101,8 @@ public abstract class AbstractFileBehaviors
 
         if (super.equals( obj )) {
             AbstractFileBehaviors  other = (AbstractFileBehaviors)obj;
-            RecurseFileSystem  other_rfs = other.getRecurseFileSystem();
-            RecurseFileSystem   this_rfs =  this.getRecurseFileSystem();
+            RecurseFileSystemEnumeration  other_rfs = other.getRecurseFileSystem();
+            RecurseFileSystemEnumeration   this_rfs =  this.getRecurseFileSystem();
             if (this_rfs == other_rfs) {
                 return true;
             }
