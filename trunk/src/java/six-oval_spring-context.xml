@@ -170,7 +170,7 @@
     </bean>
 
     <bean id="ovalStore" 
-        class="jp.go.aist.six.oval.core.store.OvalDataStore">
+        class="jp.go.aist.six.oval.core.store.v5.OvalDataStore">
         <property name="dataStore" ref="dataStore"/>
     </bean>
 <!--

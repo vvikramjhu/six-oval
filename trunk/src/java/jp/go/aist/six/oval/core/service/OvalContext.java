@@ -22,8 +22,8 @@ package jp.go.aist.six.oval.core.service;
 
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
-import jp.go.aist.six.oval.core.store.OvalDataStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
+import jp.go.aist.six.util.persist.DataStore;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -70,7 +70,7 @@ public class OvalContext
     /**
      * The data store sole instance.
      */
-    private OvalDataStore  _store;
+    private DataStore  _store;
 
 
     /**
@@ -165,10 +165,10 @@ public class OvalContext
 
     /**
      */
-    public OvalDataStore getStore()
+    public DataStore getStore()
     {
         if (_store == null) {
-            _store = _getContext().getBean( "ovalStore", OvalDataStore.class );
+            _store = _getContext().getBean( "ovalStore", DataStore.class );
         }
 
         return _store;

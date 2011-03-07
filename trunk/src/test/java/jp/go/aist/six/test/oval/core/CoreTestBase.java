@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import jp.go.aist.six.oval.core.service.OvalContext;
-import jp.go.aist.six.oval.core.store.OvalDataStore;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.NameEntity;
 import jp.go.aist.six.oval.model.definitions.Definition;
@@ -17,6 +16,7 @@ import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
+import jp.go.aist.six.util.persist.DataStore;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -34,7 +34,7 @@ public abstract class CoreTestBase
     private OvalContext  _context = null;
 
     private OvalXml  _xml = null;
-    private OvalDataStore  _store = null;
+    private DataStore  _store = null;
 
 
 
@@ -74,7 +74,7 @@ public abstract class CoreTestBase
     }
 
 
-    protected OvalDataStore _getStore()
+    protected DataStore _getStore()
     throws Exception
     {
         if (_store == null) {
