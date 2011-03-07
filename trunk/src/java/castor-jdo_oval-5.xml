@@ -213,6 +213,94 @@
 
 
 
+    <class name="jp.go.aist.six.oval.model.v5.definitions.TestType"
+        identity="persistentID">
+
+        <cache-type type="none"/>
+        <map-to table="oval_d_test"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+
+        <field name="ovalID" type="string">
+            <sql name="id" type="char"/>
+        </field>
+
+        <field name="ovalVersion" type="integer">
+            <sql name="version" type="integer"/>
+        </field>
+
+        <field name="comment" type="string">
+            <sql name="comment" type="char"/>
+        </field>
+
+        <field name="deprecated" type="boolean">
+            <sql name="deprecated" type="bit"/>
+        </field>
+
+        <field name="check" 
+            type="jp.go.aist.six.oval.model.v5.common.CheckEnumeration">
+            <sql name="check1" type="char"/>
+        </field>
+
+        <field name="checkExistence" 
+            type="jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration">
+            <sql name="existence" type="char"/>
+        </field>
+
+        <field name="stateOperator" 
+            type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration">
+            <sql name="state_operator" type="char"/>
+        </field>
+
+        <field name="entityType" 
+            type="jp.go.aist.six.oval.model.PlatformEntityType">
+            <sql name="entity_type" type="char"/>
+        </field>
+
+        <field name="object.objectRef" type="string">
+            <sql name="object_ref" type="char"/>
+        </field>
+
+        <field name="state"
+            type="jp.go.aist.six.oval.model.v5.definitions.StateRefType"
+            collection="collection">
+            <sql many-key="d_test__PID"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.StateRefType"
+        depends="jp.go.aist.six.oval.model.v5.definitions.TestType"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <!-- cache-type type="unlimited"/ -->
+        <map-to table="oval_d_test__state_ref"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="stateRef" type="string">
+            <sql name="state_ref" type="char"/>
+        </field>
+
+        <!-- (FK) -->
+        <field name="masterObject" 
+            type="jp.go.aist.six.oval.model.v5.definitions.TestType">
+            <sql name="d_test__PID"/>
+        </field>
+    </class>
+
+
+
+
+    <!-- // associations // -->
+
+
     <class name="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsDefinitionAssociationEntry"
         identity="persistentID"
         key-generator="IDENTITY">
@@ -229,6 +317,61 @@
 
         <field name="dependentPersistentID" type="string">
             <sql name="d_definition__PID" type="char"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsTestAssociationEntry"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <map-to table="oval_assoc__d_definitions__d_test"/>
+
+        <field name="persistentID" type="integer">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="d_definitions__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="d_test__PID" type="char"/>
+        </field>
+    </class>
+
+
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %                                                     % -->
+    <!-- %  #windows                                           % -->
+    <!-- %                                                     % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <class name="jp.go.aist.six.oval.model.v5.windows.FileTest"
+        extends="jp.go.aist.six.oval.model.v5.definitions.TestType"
+        identity="persistentID">
+
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_test_file"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.windows.RegistryTest"
+        extends="jp.go.aist.six.oval.model.v5.definitions.TestType"
+        identity="persistentID">
+
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_test_registry"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
         </field>
     </class>
 

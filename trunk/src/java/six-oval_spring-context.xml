@@ -57,9 +57,13 @@
                     value="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsDao"/> 
                 <entry key="jp.go.aist.six.oval.model.v5.definitions.DefinitionType"
                     value="jp.go.aist.six.oval.core.store.v5.DefinitionTypeDao"/>
-                    
+                <entry key="jp.go.aist.six.oval.model.v5.definitions.TestType"
+                    value="jp.go.aist.six.oval.core.store.v5.TestDao"/>
+
                 <entry key="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsDefinitionAssociationEntry"
                     value="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsDefinitionAssociationEntryDao"/>
+                <entry key="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsTestAssociationEntry"
+                    value="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsTestAssociationEntryDao"/>
             </map>
         </property>
     </bean>

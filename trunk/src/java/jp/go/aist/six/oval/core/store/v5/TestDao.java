@@ -18,15 +18,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.store;
+package jp.go.aist.six.oval.core.store.v5;
 
-import jp.go.aist.six.oval.model.definitions.StateRef;
-import jp.go.aist.six.oval.model.definitions.Test;
+import java.util.Collection;
+import jp.go.aist.six.oval.model.v5.definitions.StateRefType;
+import jp.go.aist.six.oval.model.v5.definitions.TestType;
 import jp.go.aist.six.util.BeansUtil;
 import jp.go.aist.six.util.persist.PersistenceException;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import java.util.Collection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 
@@ -35,13 +35,13 @@ import java.util.Collection;
  * @version $Id$
  */
 public class TestDao
-    extends OvalEntityDao<Test>
+    extends OvalEntityDao<TestType>
 {
 
     /**
      * Logger.
      */
-    private static Log  _LOG = LogFactory.getLog( TestDao.class );
+    private static final Logger  _LOG = LoggerFactory.getLogger( TestDao.class );
 
 
 
@@ -50,7 +50,7 @@ public class TestDao
      */
     public TestDao()
     {
-        super( Test.class );
+        super( TestType.class );
     }
 
 
@@ -58,7 +58,7 @@ public class TestDao
     /**
      */
     private void _associateDependents(
-                    final Test object
+                    final TestType object
                     )
     throws PersistenceException
     {
@@ -66,10 +66,10 @@ public class TestDao
             _LOG.trace( "associating dependents: object=" + object );
         }
 
-        final Test  test = object;
-        Collection<StateRef>  states = test.getState();
+        final TestType  test = object;
+        Collection<StateRefType>  states = test.getState();
         if (states != null  &&  states.size() > 0) {
-            for (StateRef  state : states) {
+            for (StateRefType  state : states) {
                 state.setMasterObject( test );
             }
         }
@@ -83,7 +83,7 @@ public class TestDao
 
     @Override
     protected void _daoBeforeCreate(
-                    final Test object
+                    final TestType object
                     )
     throws PersistenceException
     {
@@ -94,7 +94,7 @@ public class TestDao
 
     @Override
     protected void _daoBeforeUpdate(
-                    final Test object
+                    final TestType object
                     )
     throws PersistenceException
     {
@@ -115,8 +115,8 @@ public class TestDao
 
     @Override
     protected void _syncProperties(
-                    final Test object,
-                    final Test p_object
+                    final TestType object,
+                    final TestType p_object
                     )
     {
         if (p_object == null) {
@@ -129,19 +129,14 @@ public class TestDao
 
         BeansUtil.copyPropertiesExcept( p_object, object, _EXCEPTED_PROPERTIES_ );
 
-//        Collection<StateRef>  states = object.getState();
-//        p_object.setState( states );
-
-
-//        _associateDependents( p_object );
     }
 
 
 
     @Override
     protected void _daoBeforeSync(
-                    final Test object,
-                    final Test p_object
+                    final TestType object,
+                    final TestType p_object
                     )
     throws PersistenceException
     {

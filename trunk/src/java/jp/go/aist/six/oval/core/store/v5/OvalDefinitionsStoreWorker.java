@@ -26,6 +26,8 @@ import jp.go.aist.six.oval.core.store.StoreWorkerRegistry;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.v5.definitions.TestType;
+import jp.go.aist.six.oval.model.v5.definitions.TestsType;
 import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.persist.PersistenceException;
 import org.slf4j.Logger;
@@ -107,14 +109,14 @@ public class OvalDefinitionsStoreWorker
 //                _sync( State.class, state );
 //            }
 //        }
-//
-//        Tests  tests = ovalDefs.getTests();
-//        if (tests != null) {
-//            for (Test  test : tests) {
-//                _sync( Test.class, test );
-//            }
-//        }
-//
+
+        TestsType  tests = ovalDefs.getTests();
+        if (tests != null) {
+            for (TestType  test : tests) {
+                _sync( TestType.class, test );
+            }
+        }
+
         DefinitionsType  definitions = ovalDefs.getDefinitions();
         if (definitions != null) {
             for (DefinitionType  d : definitions) {
@@ -144,13 +146,13 @@ public class OvalDefinitionsStoreWorker
             defs.addAll( p_defs );
         }
 
-//        Tests  tests = new Tests();
-//        Collection<Test>  p_tests = _loadAssociated( pid, Test.class,
-//                        OvalDefinitionsTestAssociationEntry.class );
-//        if (p_tests != null) {
-//            tests.addAll( p_tests );
-//        }
-//
+        TestsType  tests = new TestsType();
+        Collection<TestType>  p_tests = _loadAssociated( pid, TestType.class,
+                        OvalDefinitionsTestAssociationEntry.class );
+        if (p_tests != null) {
+            tests.addAll( p_tests );
+        }
+
 //        SystemObjects  sysobjs = new SystemObjects();
 //        Collection<SystemObject>  p_sysobjs = _loadAssociated( pid, SystemObject.class,
 //                        OvalDefinitionsSystemObjectAssociationEntry.class );
@@ -173,7 +175,7 @@ public class OvalDefinitionsStoreWorker
 //        }
 //
         ovalDefs.setDefinitions( defs );
-//        ovalDefs.setTests( tests );
+        ovalDefs.setTests( tests );
 //        ovalDefs.setObjects( sysobjs );
 //        ovalDefs.setStates( states );
 //        ovalDefs.setVariables( variables );

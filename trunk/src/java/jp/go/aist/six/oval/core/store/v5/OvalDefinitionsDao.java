@@ -25,6 +25,8 @@ import jp.go.aist.six.oval.model.v5.common.GeneratorType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.v5.definitions.TestType;
+import jp.go.aist.six.oval.model.v5.definitions.TestsType;
 import jp.go.aist.six.util.BeansUtil;
 import jp.go.aist.six.util.castor.CastorDao;
 import jp.go.aist.six.util.castor.PersistenceHelper;
@@ -135,16 +137,16 @@ public class OvalDefinitionsDao
 //                _sync( OvalDefinitionsSystemObjectAssociationEntry.class, assoc );
 //            }
 //        }
-//
-//        Tests  tests = ovalDefs.getTests();
-//        if (tests != null) {
-//            for (Test  test : tests) {
-//                OvalDefinitionsTestAssociationEntry  assoc =
-//                    new OvalDefinitionsTestAssociationEntry(
-//                                    ovalDefsPID, test.getPersistentID() );
-//                _sync( OvalDefinitionsTestAssociationEntry.class, assoc );
-//            }
-//        }
+
+        TestsType  tests = ovalDefs.getTests();
+        if (tests != null) {
+            for (TestType  test : tests) {
+                OvalDefinitionsTestAssociationEntry  assoc =
+                    new OvalDefinitionsTestAssociationEntry(
+                                    ovalDefsPID, test.getPersistentID() );
+                _sync( OvalDefinitionsTestAssociationEntry.class, assoc );
+            }
+        }
 
         DefinitionsType  definitions = ovalDefs.getDefinitions();
         if (definitions != null) {
@@ -202,13 +204,13 @@ public class OvalDefinitionsDao
 //                _update( SystemObject.class, sysobj );
 //            }
 //        }
-//
-//        Tests  tests = ovalDefs.getTests();
-//        if (tests != null  &&  tests.size() > 0) {
-//            for (Test  test : tests) {
-//                _update( Test.class, test );
-//            }
-//        }
+
+        TestsType  tests = ovalDefs.getTests();
+        if (tests != null  &&  tests.size() > 0) {
+            for (TestType  test : tests) {
+                _update( TestType.class, test );
+            }
+        }
 
         DefinitionsType  definitions = ovalDefs.getDefinitions();
         if (definitions != null  &&  definitions.size() > 0) {
