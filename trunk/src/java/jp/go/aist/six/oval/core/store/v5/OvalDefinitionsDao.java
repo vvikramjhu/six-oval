@@ -21,11 +21,13 @@
 package jp.go.aist.six.oval.core.store.v5;
 
 import java.util.UUID;
+import jp.go.aist.six.oval.model.v5.common.GeneratorType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import jp.go.aist.six.util.BeansUtil;
 import jp.go.aist.six.util.castor.CastorDao;
+import jp.go.aist.six.util.castor.PersistenceHelper;
 import jp.go.aist.six.util.persist.PersistenceException;
 
 
@@ -144,15 +146,15 @@ public class OvalDefinitionsDao
 //            }
 //        }
 
-        DefinitionsType  definitions = ovalDefs.getDefinitions();
-        if (definitions != null) {
-            for (DefinitionType  def : definitions) {
+//        DefinitionsType  definitions = ovalDefs.getDefinitions();
+//        if (definitions != null) {
+//            for (DefinitionType  def : definitions) {
 //                OvalDefinitionsDefinitionAssociationEntry  assoc =
 //                    new OvalDefinitionsDefinitionAssociationEntry(
 //                                    ovalDefsPID, def.getPersistentID() );
 //                _sync( OvalDefinitionsDefinitionAssociationEntry.class, assoc );
-            }
-        }
+//            }
+//        }
     }
 
 
@@ -257,6 +259,60 @@ public class OvalDefinitionsDao
 //        super._syncDeeply( object, p_object );
         _beforePersist( object );
     }
+
+
+
+
+    /**
+     */
+    public static class OvalDefinitionsHelper
+        extends PersistenceHelper<OvalDefinitions>
+    {
+
+        public OvalDefinitionsHelper()
+        {
+        }
+
+
+
+        //**************************************************************
+        //  PersistenceHelper
+        //**************************************************************
+
+        @Override
+        public boolean hasUnique()
+        {
+            return true;
+        }
+
+
+
+        @Override
+        public Object getUnique(
+                        final OvalDefinitions object
+                        )
+        {
+            GeneratorType  generator = object.getGenerator();
+            String  digest = object.getDefinitionsDigest();
+
+            return (new Object[] {
+                            generator.getSchemaVersion(),
+                            generator.getTimestamp(),
+                            generator.getProductName(),
+                            digest
+            });
+        }
+
+
+
+        @Override
+        public String getUniqueFilter()
+        {
+            return "WHERE o.generator.schemaVersion = $1 AND o.generator.timestamp = $2 AND o.generator.productName = $3 AND o.definitionsDigest = $4";
+        }
+
+    }
+    // OvalDefinitionsHelper
 
 }
 // OvalDefinitionsDao
