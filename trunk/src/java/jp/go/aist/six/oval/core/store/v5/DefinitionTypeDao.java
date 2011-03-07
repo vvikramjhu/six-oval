@@ -18,18 +18,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.store;
+package jp.go.aist.six.oval.core.store.v5;
 
-import jp.go.aist.six.oval.model.definitions.Affected;
-import jp.go.aist.six.oval.model.definitions.Definition;
-import jp.go.aist.six.oval.model.definitions.Metadata;
-import jp.go.aist.six.oval.model.definitions.Platform;
-import jp.go.aist.six.oval.model.definitions.Product;
-import jp.go.aist.six.oval.model.definitions.Reference;
-import jp.go.aist.six.util.BeansUtil;
-import jp.go.aist.six.util.persist.PersistenceException;
 import java.util.ArrayList;
 import java.util.Collection;
+import jp.go.aist.six.oval.model.v5.definitions.AffectedType;
+import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.v5.definitions.MetadataType;
+import jp.go.aist.six.oval.model.v5.definitions.Platform;
+import jp.go.aist.six.oval.model.v5.definitions.Product;
+import jp.go.aist.six.oval.model.v5.definitions.ReferenceType;
+import jp.go.aist.six.util.BeansUtil;
+import jp.go.aist.six.util.persist.PersistenceException;
 
 
 
@@ -37,8 +37,8 @@ import java.util.Collection;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionDao
-    extends OvalEntityDao<Definition>
+public class DefinitionTypeDao
+    extends OvalEntityDao<DefinitionType>
 {
 
 //    /**
@@ -51,9 +51,9 @@ public class DefinitionDao
     /**
      * Constructor.
      */
-    public DefinitionDao()
+    public DefinitionTypeDao()
     {
-        super( Definition.class );
+        super( DefinitionType.class );
     }
 
 
@@ -77,11 +77,11 @@ public class DefinitionDao
     /**
      */
     protected void _beforePersist(
-                    final Definition def
+                    final DefinitionType def
                     )
     throws PersistenceException
     {
-        JdoCallbackHandler.jdoBeforeCreate( Definition.class, def );
+        JdoCallbackHandler.jdoBeforeCreate( DefinitionType.class, def );
     }
 //    {
 //        if (def instanceof PersistentDefinition) {
@@ -108,30 +108,30 @@ public class DefinitionDao
 
     @Override
     protected void _daoAfterLoad(
-                    final Definition object
+                    final DefinitionType object
                     )
     {
-        JdoCallbackHandler.jdoLoad( Definition.class, object );
+        JdoCallbackHandler.jdoLoad( DefinitionType.class, object );
     }
 
 
 
     @Override
     protected void _daoBeforeCreate(
-                    final Definition object
+                    final DefinitionType object
                     )
     throws PersistenceException
     {
-        final Definition  def = object;
+        final DefinitionType  def = object;
         _beforePersist( def );
 
-        Metadata  meta = def.getMetadata();
+        MetadataType  meta = def.getMetadata();
 
-        Collection<Reference>  refs = meta.getReference();
+        Collection<ReferenceType>  refs = meta.getReference();
         if (refs != null  &&  refs.size() > 0) {
-            Collection<Reference>  p_refs = new ArrayList<Reference>();
-            for (Reference  ref : refs) {
-                Reference  p_ref = _daoLoadOrCreate( Reference.class, ref );
+            Collection<ReferenceType>  p_refs = new ArrayList<ReferenceType>();
+            for (ReferenceType  ref : refs) {
+                ReferenceType  p_ref = _daoLoadOrCreate( ReferenceType.class, ref );
                 if (p_ref == null) {
                     p_refs.add( ref );
                 } else {
@@ -141,7 +141,7 @@ public class DefinitionDao
             meta.setReference( p_refs );
         }
 
-        Affected  affected = meta.getAffected();
+        AffectedType  affected = meta.getAffected();
         if (affected != null) {
             Collection<Platform>  platforms = affected.getPlatform();
             if (platforms != null  &&  platforms.size() > 0) {
@@ -187,24 +187,24 @@ public class DefinitionDao
 
     @Override
     protected void _daoBeforeUpdate(
-                    final Definition object
+                    final DefinitionType object
                     )
     throws PersistenceException
     {
-        final Definition  def = object;
+        final DefinitionType  def = object;
 
         _beforePersist( def );
 
-        Metadata  meta = def.getMetadata();
+        MetadataType  meta = def.getMetadata();
 
-        Collection<Reference>  refs = meta.getReference();
+        Collection<ReferenceType>  refs = meta.getReference();
         if (refs != null  &&  refs.size() > 0) {
-            for (Reference  ref : refs) {
-                _update( Reference.class, ref );
+            for (ReferenceType  ref : refs) {
+                _update( ReferenceType.class, ref );
             }
         }
 
-        Affected  affected = meta.getAffected();
+        AffectedType  affected = meta.getAffected();
         if (affected != null) {
             Collection<Platform>  platforms = affected.getPlatform();
             if (platforms != null  &&  platforms.size() > 0) {
@@ -255,8 +255,8 @@ public class DefinitionDao
 
     @Override
     protected void _syncProperties(
-                    final Definition   object,
-                    final Definition p_object
+                    final DefinitionType   object,
+                    final DefinitionType p_object
                     )
     {
         if (p_object == null) {
@@ -266,18 +266,18 @@ public class DefinitionDao
         BeansUtil.copyPropertiesExcept(
                         p_object, object, _EXCEPTED_PROPERTIES_ );
 
-        Metadata  meta = object.getMetadata();
-        Metadata  p_meta = p_object.getMetadata();
+        MetadataType  meta = object.getMetadata();
+        MetadataType  p_meta = p_object.getMetadata();
         BeansUtil.copyPropertiesExcept(
                         p_meta, meta, _EXCEPTED_METADATA_PROPERTIES_ );
 
-        Affected  affected = meta.getAffected();
-        Affected  p_affected = p_meta.getAffected();
+        AffectedType  affected = meta.getAffected();
+        AffectedType  p_affected = p_meta.getAffected();
         if (affected == null) {
             p_meta.setAffected( null );
         } else {
             if (p_affected == null) {
-                p_affected = new Affected();
+                p_affected = new AffectedType();
             }
             BeansUtil.copyPropertiesExcept(
                             p_affected, affected, _EXCEPTED_AFFECTED_PROPERTIES_ );
@@ -290,22 +290,22 @@ public class DefinitionDao
 
     @Override
     protected void _daoBeforeSync(
-                    final Definition object,
-                    final Definition p_object
+                    final DefinitionType object,
+                    final DefinitionType p_object
                     )
     throws PersistenceException
     {
 //        super._syncDeeply( object, p_object );
         _beforePersist( object );
 
-        Metadata  meta = object.getMetadata();
+        MetadataType  meta = object.getMetadata();
 
         // metadata.reference
-        Collection<Reference>  refs = meta.getReference();
-        Collection<Reference>  p_refs = new ArrayList<Reference>();
+        Collection<ReferenceType>  refs = meta.getReference();
+        Collection<ReferenceType>  p_refs = new ArrayList<ReferenceType>();
         if (refs != null) {
-            for (Reference  ref : refs) {
-                Reference  p_ref = _sync( Reference.class, ref );
+            for (ReferenceType  ref : refs) {
+                ReferenceType  p_ref = _sync( ReferenceType.class, ref );
                 if (p_ref == null) {
                     p_refs.add( ref );
                 } else {
@@ -319,7 +319,7 @@ public class DefinitionDao
             p_object.getMetadata().setReference( p_refs );
         }
 
-        Affected  affected = meta.getAffected();
+        AffectedType  affected = meta.getAffected();
         if (affected != null) {
             Collection<Platform>  platforms = affected.getPlatform();
             Collection<Platform>  p_platforms = new ArrayList<Platform>();

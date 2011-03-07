@@ -18,19 +18,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.store;
+package jp.go.aist.six.oval.core.store.v5;
 
+import java.util.HashMap;
+import java.util.Map;
 import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.xml.OvalXml;
 import jp.go.aist.six.oval.model.definitions.Component;
-import jp.go.aist.six.oval.model.definitions.Criteria;
-import jp.go.aist.six.oval.model.definitions.Definition;
 import jp.go.aist.six.oval.model.definitions.LocalVariable;
+import jp.go.aist.six.oval.model.v5.definitions.CriteriaType;
+import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.util.persist.Persistable;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import java.util.HashMap;
-import java.util.Map;
 
 
 
@@ -57,9 +57,8 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
         Map<Class<? extends Persistable<?>>, JdoCallbackHandler<?, ?>>  handlers =
             new HashMap<Class<? extends Persistable<?>>, JdoCallbackHandler<?, ?>>();
 
-        JdoCallbackHandler<String, Definition>  definitionHandler = new DefinitionCallbackHandler();
-        handlers.put( Definition.class, definitionHandler );
-//        handlers.put( PersistentDefinition.class, definitionHandler );
+        JdoCallbackHandler<String, DefinitionType>  definitionHandler = new DefinitionCallbackHandler();
+        handlers.put( DefinitionType.class, definitionHandler );
 
         JdoCallbackHandler<String, LocalVariable>  localVariableHandler = new LocalVariableCallbackHandler();
 //        handlers.put( Variable.class, localVariableHandler );
@@ -213,12 +212,12 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
     //**************************************************************
 
     private static class DefinitionCallbackHandler
-    extends JdoCallbackHandler<String, Definition>
+    extends JdoCallbackHandler<String, DefinitionType>
     {
 
         @Override
-        public Class<Definition> jdoLoad(
-                        final Definition object
+        public Class<DefinitionType> jdoLoad(
+                        final DefinitionType object
                         )
         {
             String  xml = object.xmlGetCriteria();
@@ -228,7 +227,7 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
 //                }
 
                 try {
-                    Criteria  criteria = (Criteria)_getMapper().unmarshalFromString( xml );
+                    CriteriaType  criteria = (CriteriaType)_getMapper().unmarshalFromString( xml );
                     object.setCriteria( criteria );
 //                    if (_LOG.isTraceEnabled()) {
 //                        _LOG.trace( "criteria (Object)=" + criteria );
@@ -240,16 +239,16 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
                 }
             }
 
-            return Definition.class;
+            return DefinitionType.class;
         }
 
 
         @Override
         public void jdoBeforeCreate(
-                        final Definition object
+                        final DefinitionType object
                         )
         {
-            Criteria  criteria = object.getCriteria();
+            CriteriaType  criteria = object.getCriteria();
             if (criteria != null) {
 //                if (_LOG.isTraceEnabled()) {
 //                    _LOG.trace( "criteria (Object)=" + criteria );

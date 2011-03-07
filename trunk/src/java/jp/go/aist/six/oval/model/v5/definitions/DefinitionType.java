@@ -20,9 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import jp.go.aist.six.oval.model.definitions.Cve;
 import jp.go.aist.six.oval.model.v5.OvalEntity;
 import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
 
@@ -58,8 +55,8 @@ public class DefinitionType
 
 
     // SIX: extended properties //
-    private String  _lastModifiedDate;
-    private final Collection<Cve>  _relatedCve = new ArrayList<Cve>();
+//    private String  _lastModifiedDate;
+//    private final Collection<Cve>  _relatedCve = new ArrayList<Cve>();
 
 
 

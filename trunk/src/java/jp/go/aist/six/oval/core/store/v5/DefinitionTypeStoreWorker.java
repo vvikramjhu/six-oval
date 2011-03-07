@@ -18,15 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.store;
+package jp.go.aist.six.oval.core.store.v5;
 
 import jp.go.aist.six.oval.core.service.OvalContext;
+import jp.go.aist.six.oval.core.store.StoreWorker;
+import jp.go.aist.six.oval.core.store.StoreWorkerRegistry;
 import jp.go.aist.six.oval.core.xml.OvalXml;
-import jp.go.aist.six.oval.model.definitions.Definition;
+import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.persist.PersistenceException;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 
@@ -34,21 +36,21 @@ import org.apache.commons.logging.LogFactory;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionStoreWorker
-    extends StoreWorker<String, Definition>
+public class DefinitionTypeStoreWorker
+    extends StoreWorker<String, DefinitionType>
 {
 
     /**
      * Logger.
      */
-    private static Log  _LOG = LogFactory.getLog( DefinitionStoreWorker.class );
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( DefinitionTypeStoreWorker.class );
 
 
 
     /**
      * Constructor.
      */
-    public DefinitionStoreWorker(
+    public DefinitionTypeStoreWorker(
                     final DataStore store
                     )
     {
@@ -60,12 +62,12 @@ public class DefinitionStoreWorker
     /**
      * Constructor.
      */
-    public DefinitionStoreWorker(
+    public DefinitionTypeStoreWorker(
                     final DataStore store,
                     final StoreWorkerRegistry registry
                     )
     {
-        super( Definition.class, store, registry );
+        super( DefinitionType.class, store, registry );
     }
 
 
@@ -89,12 +91,12 @@ public class DefinitionStoreWorker
 
     @Override
     protected void _beforePersist(
-                    final Definition def
+                    final DefinitionType def
                     )
     throws PersistenceException
     {
-        if (_LOG.isTraceEnabled()) {
-            _LOG.trace( "*** beforePersist ***" );
+        if (_LOG_.isTraceEnabled()) {
+            _LOG_.trace( "*** beforePersist ***" );
         }
 
     }
@@ -103,16 +105,16 @@ public class DefinitionStoreWorker
 
     @Override
     protected void _afterLoad(
-                    final Definition def
+                    final DefinitionType def
                     )
     throws PersistenceException
     {
-        if (_LOG.isTraceEnabled()) {
-            _LOG.trace( "*** afterLoad ***" );
+        if (_LOG_.isTraceEnabled()) {
+            _LOG_.trace( "*** afterLoad ***" );
         }
 
     }
 
 }
-// OvalDefinitionsStoreWorker
+// DefinitionTypeStoreWorker
 

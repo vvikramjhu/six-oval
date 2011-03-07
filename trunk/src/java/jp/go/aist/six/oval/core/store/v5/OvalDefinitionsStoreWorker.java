@@ -22,11 +22,13 @@ package jp.go.aist.six.oval.core.store.v5;
 
 import jp.go.aist.six.oval.core.store.StoreWorker;
 import jp.go.aist.six.oval.core.store.StoreWorkerRegistry;
+import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.v5.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.persist.PersistenceException;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 
@@ -41,7 +43,7 @@ public class OvalDefinitionsStoreWorker
     /**
      * Logger.
      */
-    private static Log  _LOG = LogFactory.getLog( OvalDefinitionsStoreWorker.class );
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalDefinitionsStoreWorker.class );
 
 
 
@@ -80,8 +82,8 @@ public class OvalDefinitionsStoreWorker
                     )
     throws PersistenceException
     {
-        if (_LOG.isTraceEnabled()) {
-            _LOG.trace( "*** beforePersist ***" );
+        if (_LOG_.isTraceEnabled()) {
+            _LOG_.trace( "*** beforePersist ***" );
         }
 
 //        Variables  variables = ovalDefs.getVariables();
@@ -112,12 +114,12 @@ public class OvalDefinitionsStoreWorker
 //            }
 //        }
 //
-//        Definitions  definitions = ovalDefs.getDefinitions();
-//        if (definitions != null) {
-//            for (Definition  d : definitions) {
-//                _sync( Definition.class, d );
-//            }
-//        }
+        DefinitionsType  definitions = ovalDefs.getDefinitions();
+        if (definitions != null) {
+            for (DefinitionType  d : definitions) {
+                _sync( DefinitionType.class, d );
+            }
+        }
     }
 
 
@@ -128,11 +130,11 @@ public class OvalDefinitionsStoreWorker
                     )
     throws PersistenceException
     {
-        if (_LOG.isTraceEnabled()) {
-            _LOG.trace( "*** afterLoad ***" );
+        if (_LOG_.isTraceEnabled()) {
+            _LOG_.trace( "*** afterLoad ***" );
         }
 
-        final String  pid = ovalDefs.getPersistentID();
+//        final String  pid = ovalDefs.getPersistentID();
 
 //        Definitions  defs = new Definitions();
 //        Collection<Definition>  p_defs = _loadAssociated( pid, Definition.class,
