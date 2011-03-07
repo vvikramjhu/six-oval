@@ -213,5 +213,25 @@
 
 
 
+    <class name="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsDefinitionAssociationEntry"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <map-to table="oval_assoc__d_definitions__d_definition"/>
+
+        <field name="persistentID" type="integer">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="d_definitions__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="d_definition__PID" type="char"/>
+        </field>
+    </class>
+
+
 
 </mapping>

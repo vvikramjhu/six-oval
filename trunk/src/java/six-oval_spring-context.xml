@@ -58,6 +58,8 @@
                 <entry key="jp.go.aist.six.oval.model.v5.definitions.DefinitionType"
                     value="jp.go.aist.six.oval.core.store.v5.DefinitionTypeDao"/>
                     
+                <entry key="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsDefinitionAssociationEntry"
+                    value="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsDefinitionAssociationEntryDao"/>
             </map>
         </property>
     </bean>

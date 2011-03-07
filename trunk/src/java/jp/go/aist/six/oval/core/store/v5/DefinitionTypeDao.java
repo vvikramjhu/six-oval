@@ -41,13 +41,6 @@ public class DefinitionTypeDao
     extends OvalEntityDao<DefinitionType>
 {
 
-//    /**
-//     * Logger.
-//     */
-//    private static Log  _LOG = LogFactory.getLog( DefinitionDao.class );
-
-
-
     /**
      * Constructor.
      */
@@ -55,22 +48,6 @@ public class DefinitionTypeDao
     {
         super( DefinitionType.class );
     }
-
-
-
-//  private Dao<Product>      _productDao;
-
-//    private synchronized
-//    Dao<Product> _getProductDao()
-//    {
-//        if (_productDao == null) {
-//            ProductDao  dao = new ProductDao();
-//            dao.setJDOManager( this.getJDOManager() );
-//            _productDao = dao;
-//        }
-//
-//        return _productDao;
-//    }
 
 
 
@@ -83,28 +60,12 @@ public class DefinitionTypeDao
     {
         JdoCallbackHandler.jdoBeforeCreate( DefinitionType.class, def );
     }
-//    {
-//        if (def instanceof PersistentDefinition) {
-//            // callback handler
-//        } else {
-//            JdoCallbackHandler.jdoBeforeCreate( Definition.class, def );
-//        }
-//    }
+
 
 
     //**************************************************************
     //  Dao, CastorDao
     //**************************************************************
-
-//    @Override
-//    protected Definition _jdoLoad(
-//                    final String id
-//                    )
-//    throws PersistenceException
-//    {
-//
-//    }
-
 
     @Override
     protected void _daoAfterLoad(
@@ -380,4 +341,4 @@ public class DefinitionTypeDao
     }
 
 }
-// DefinitionDao
+// DefinitionTypeDao

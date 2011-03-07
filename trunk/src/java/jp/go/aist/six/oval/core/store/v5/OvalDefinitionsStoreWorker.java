@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.core.store.v5;
 
+import java.util.Collection;
 import jp.go.aist.six.oval.core.store.StoreWorker;
 import jp.go.aist.six.oval.core.store.StoreWorkerRegistry;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
@@ -134,15 +135,15 @@ public class OvalDefinitionsStoreWorker
             _LOG_.trace( "*** afterLoad ***" );
         }
 
-//        final String  pid = ovalDefs.getPersistentID();
+        final String  pid = ovalDefs.getPersistentID();
 
-//        Definitions  defs = new Definitions();
-//        Collection<Definition>  p_defs = _loadAssociated( pid, Definition.class,
-//                            OvalDefinitionsDefinitionAssociationEntry.class );
-//        if (p_defs != null) {
-//            defs.addAll( p_defs );
-//        }
-//
+        DefinitionsType  defs = new DefinitionsType();
+        Collection<DefinitionType>  p_defs = _loadAssociated( pid, DefinitionType.class,
+                            OvalDefinitionsDefinitionAssociationEntry.class );
+        if (p_defs != null) {
+            defs.addAll( p_defs );
+        }
+
 //        Tests  tests = new Tests();
 //        Collection<Test>  p_tests = _loadAssociated( pid, Test.class,
 //                        OvalDefinitionsTestAssociationEntry.class );
@@ -171,7 +172,7 @@ public class OvalDefinitionsStoreWorker
 //            variables.addAll( p_variables );
 //        }
 //
-//        ovalDefs.setDefinitions( defs );
+        ovalDefs.setDefinitions( defs );
 //        ovalDefs.setTests( tests );
 //        ovalDefs.setObjects( sysobjs );
 //        ovalDefs.setStates( states );

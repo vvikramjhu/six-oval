@@ -146,15 +146,15 @@ public class OvalDefinitionsDao
 //            }
 //        }
 
-//        DefinitionsType  definitions = ovalDefs.getDefinitions();
-//        if (definitions != null) {
-//            for (DefinitionType  def : definitions) {
-//                OvalDefinitionsDefinitionAssociationEntry  assoc =
-//                    new OvalDefinitionsDefinitionAssociationEntry(
-//                                    ovalDefsPID, def.getPersistentID() );
-//                _sync( OvalDefinitionsDefinitionAssociationEntry.class, assoc );
-//            }
-//        }
+        DefinitionsType  definitions = ovalDefs.getDefinitions();
+        if (definitions != null) {
+            for (DefinitionType  def : definitions) {
+                OvalDefinitionsDefinitionAssociationEntry  assoc =
+                    new OvalDefinitionsDefinitionAssociationEntry(
+                                    ovalDefsPID, def.getPersistentID() );
+                _sync( OvalDefinitionsDefinitionAssociationEntry.class, assoc );
+            }
+        }
     }
 
 
