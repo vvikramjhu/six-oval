@@ -53,61 +53,12 @@
             <sql name="definitions_digest" type="char"/>
         </field>
 
-        <!-- m : n -->
-<!--
-        <field name="definitions.definition"
-            type="jp.go.aist.six.oval.core.store.PersistentDefinition"
-            collection="collection"
-            lazy="true">
-            <sql name="d_definition__PID"
-                many-table="oval_assoc__d_definitions__d_definition"
-                many-key="d_definitions__PID"/>
-        </field>
--->
-
-        <!-- m : n 
-        <field name="tests.test"
-            type="jp.go.aist.six.oval.model.definitions.Test"
-            collection="collection"
-            lazy="true">
-            <sql name="d_test__PID"
-                many-table="oval_assoc__d_definitions__d_test"
-                many-key="d_definitions__PID"/>
-        </field>
--->
-
-        <!-- m : n 
-        <field name="objects.object"
-            type="jp.go.aist.six.oval.model.definitions.SystemObject"
-            collection="collection"
-            lazy="true">
-            <sql name="d_object__PID"
-                many-table="oval_assoc__d_definitions__d_object"
-                many-key="d_definitions__PID"/>
-        </field>
--->
-
-        <!-- m : n 
-        <field name="states.state"
-            type="jp.go.aist.six.oval.model.definitions.State"
-            collection="collection"
-            lazy="true">
-            <sql name="d_state__PID"
-                many-table="oval_assoc__d_definitions__d_state"
-                many-key="d_definitions__PID"/>
-        </field>
--->
-
-        <!-- m : n 
-        <field name="variables.variable"
-            type="jp.go.aist.six.oval.model.definitions.Variable"
-            collection="collection"
-            lazy="true">
-            <sql name="d_variable__PID"
-                many-table="oval_assoc__d_definitions__d_variable"
-                many-key="d_definitions__PID"/>
-        </field>
--->
+        
+        <!--
+        NOTE:
+        definitions, tests, objects, states, and variables
+        are manipulated by the StoreWorker. 
+        -->
     </class>
 
 
@@ -143,8 +94,6 @@
             >
             <sql name="criteria_xml" type="char"/>
         </field>
-<!--
--->
 
 
         <!-- // metadata // -->
@@ -174,9 +123,8 @@
             <sql name="affected_family" type="char"/>
         </field>
 
-<!--
         <field name="metadata.affected.platform"
-            type="jp.go.aist.six.oval.model.definitions.Platform"
+            type="jp.go.aist.six.oval.model.v5.definitions.Platform"
             collection="collection"
             lazy="true">
             <description>Definition : Platform = n : m</description>
@@ -186,7 +134,7 @@
         </field>
 
         <field name="metadata.affected.product"
-            type="jp.go.aist.six.oval.model.definitions.Product"
+            type="jp.go.aist.six.oval.model.v5.definitions.Product"
             collection="collection"
             lazy="true">
             <description>Definition : Product = n : m</description>
@@ -194,7 +142,6 @@
                 many-table="oval_assoc__d_definition__d_product"
                 many-key="d_definition__PID"/>
         </field>
--->
 
 
         <!-- SIX: extended properties -->
