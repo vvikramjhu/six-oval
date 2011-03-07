@@ -9,7 +9,7 @@ import jp.go.aist.six.oval.model.definitions.Variable;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
-import jp.go.aist.six.test.oval.core.Validators;
+import jp.go.aist.six.test.oval.core.Validators5;
 import jp.go.aist.six.util.persist.Persistable;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -65,7 +65,7 @@ public class OvalStoreTest
         Reporter.log( "  @ object type=" + p_object.getClass().getName(), true );
 
         Reporter.log( "validating...", true );
-        Validators.validator( type ).equals( p_object, expected );
+        Validators5.validator( type ).equals( p_object, expected );
         Reporter.log( "...validation OK", true );
 
         Reporter.log( "sync..." , true );

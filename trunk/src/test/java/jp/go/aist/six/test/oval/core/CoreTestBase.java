@@ -112,7 +112,7 @@ public abstract class CoreTestBase
 
         if (expected != null) {
             Reporter.log( "validating...", true );
-            Validators.validator( type ).equals( actual, expected );
+            Validators5.validator( type ).equals( actual, expected );
             Reporter.log( "...validation OK", true );
         }
 
