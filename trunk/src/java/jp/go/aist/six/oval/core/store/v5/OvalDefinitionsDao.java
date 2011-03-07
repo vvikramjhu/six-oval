@@ -18,23 +18,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.store;
+package jp.go.aist.six.oval.core.store.v5;
 
-import jp.go.aist.six.oval.model.definitions.Definition;
-import jp.go.aist.six.oval.model.definitions.Definitions;
-import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.definitions.State;
-import jp.go.aist.six.oval.model.definitions.States;
-import jp.go.aist.six.oval.model.definitions.SystemObject;
-import jp.go.aist.six.oval.model.definitions.SystemObjects;
-import jp.go.aist.six.oval.model.definitions.Test;
-import jp.go.aist.six.oval.model.definitions.Tests;
-import jp.go.aist.six.oval.model.definitions.Variable;
-import jp.go.aist.six.oval.model.definitions.Variables;
+import java.util.UUID;
+import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.v5.definitions.DefinitionsType;
+import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import jp.go.aist.six.util.BeansUtil;
 import jp.go.aist.six.util.castor.CastorDao;
 import jp.go.aist.six.util.persist.PersistenceException;
-import java.util.UUID;
 
 
 
@@ -62,10 +54,6 @@ public class OvalDefinitionsDao
     }
 
 
-
-    /**
-     * Constructor.
-     */
     public OvalDefinitionsDao(
                     final Class<? extends OvalDefinitions> type
                     )
@@ -74,16 +62,29 @@ public class OvalDefinitionsDao
     }
 
 
-
-    /**
-     * Constructor.
-     */
     public OvalDefinitionsDao(
                     final Class<? extends OvalDefinitions> type,
                     final OvalDefinitionsHelper helper
                     )
     {
         super( type, helper );
+    }
+
+
+    /**
+     */
+    private void _computeDigests(
+                    final OvalDefinitions ovalDefs
+                    )
+    {
+        String  digest = ovalDefs.getDefinitionsDigest();
+        if (digest == null) {
+            DefinitionsType  defs = ovalDefs.getDefinitions();
+            if (defs != null) {
+                digest = defs.getDigest();
+                ovalDefs.setDefinitionsDigest( digest );
+            }
+        }
     }
 
 
@@ -101,54 +102,55 @@ public class OvalDefinitionsDao
             ovalDefs.setPersistentID( ovalDefsPID );
         }
 
+        _computeDigests( ovalDefs );
 
-        Variables  variables = ovalDefs.getVariables();
-        if (variables != null) {
-            for (Variable  variable : variables) {
-                OvalDefinitionsVariableAssociationEntry  assoc =
-                    new OvalDefinitionsVariableAssociationEntry(
-                                    ovalDefsPID, variable.getPersistentID() );
-                _sync( OvalDefinitionsVariableAssociationEntry.class, assoc );
-            }
-        }
+//        Variables  variables = ovalDefs.getVariables();
+//        if (variables != null) {
+//            for (Variable  variable : variables) {
+//                OvalDefinitionsVariableAssociationEntry  assoc =
+//                    new OvalDefinitionsVariableAssociationEntry(
+//                                    ovalDefsPID, variable.getPersistentID() );
+//                _sync( OvalDefinitionsVariableAssociationEntry.class, assoc );
+//            }
+//        }
+//
+//        States  states = ovalDefs.getStates();
+//        if (states != null) {
+//            for (State  state : states) {
+//                OvalDefinitionsStateAssociationEntry  assoc =
+//                    new OvalDefinitionsStateAssociationEntry(
+//                                    ovalDefsPID, state.getPersistentID() );
+//                _sync( OvalDefinitionsStateAssociationEntry.class, assoc );
+//            }
+//        }
+//
+//        SystemObjects  sysobjs = ovalDefs.getObjects();
+//        if (sysobjs != null) {
+//            for (SystemObject  sysobj : sysobjs) {
+//                OvalDefinitionsSystemObjectAssociationEntry  assoc =
+//                    new OvalDefinitionsSystemObjectAssociationEntry(
+//                                    ovalDefsPID, sysobj.getPersistentID() );
+//                _sync( OvalDefinitionsSystemObjectAssociationEntry.class, assoc );
+//            }
+//        }
+//
+//        Tests  tests = ovalDefs.getTests();
+//        if (tests != null) {
+//            for (Test  test : tests) {
+//                OvalDefinitionsTestAssociationEntry  assoc =
+//                    new OvalDefinitionsTestAssociationEntry(
+//                                    ovalDefsPID, test.getPersistentID() );
+//                _sync( OvalDefinitionsTestAssociationEntry.class, assoc );
+//            }
+//        }
 
-        States  states = ovalDefs.getStates();
-        if (states != null) {
-            for (State  state : states) {
-                OvalDefinitionsStateAssociationEntry  assoc =
-                    new OvalDefinitionsStateAssociationEntry(
-                                    ovalDefsPID, state.getPersistentID() );
-                _sync( OvalDefinitionsStateAssociationEntry.class, assoc );
-            }
-        }
-
-        SystemObjects  sysobjs = ovalDefs.getObjects();
-        if (sysobjs != null) {
-            for (SystemObject  sysobj : sysobjs) {
-                OvalDefinitionsSystemObjectAssociationEntry  assoc =
-                    new OvalDefinitionsSystemObjectAssociationEntry(
-                                    ovalDefsPID, sysobj.getPersistentID() );
-                _sync( OvalDefinitionsSystemObjectAssociationEntry.class, assoc );
-            }
-        }
-
-        Tests  tests = ovalDefs.getTests();
-        if (tests != null) {
-            for (Test  test : tests) {
-                OvalDefinitionsTestAssociationEntry  assoc =
-                    new OvalDefinitionsTestAssociationEntry(
-                                    ovalDefsPID, test.getPersistentID() );
-                _sync( OvalDefinitionsTestAssociationEntry.class, assoc );
-            }
-        }
-
-        Definitions  definitions = ovalDefs.getDefinitions();
+        DefinitionsType  definitions = ovalDefs.getDefinitions();
         if (definitions != null) {
-            for (Definition  def : definitions) {
-                OvalDefinitionsDefinitionAssociationEntry  assoc =
-                    new OvalDefinitionsDefinitionAssociationEntry(
-                                    ovalDefsPID, def.getPersistentID() );
-                _sync( OvalDefinitionsDefinitionAssociationEntry.class, assoc );
+            for (DefinitionType  def : definitions) {
+//                OvalDefinitionsDefinitionAssociationEntry  assoc =
+//                    new OvalDefinitionsDefinitionAssociationEntry(
+//                                    ovalDefsPID, def.getPersistentID() );
+//                _sync( OvalDefinitionsDefinitionAssociationEntry.class, assoc );
             }
         }
     }
@@ -176,40 +178,40 @@ public class OvalDefinitionsDao
                     )
     throws PersistenceException
     {
-        final OvalDefinitions  defs = object;
+        final OvalDefinitions  ovalDefs = object;
 
-        Variables  vars = defs.getVariables();
-        if (vars != null  &&  vars.size() > 0) {
-            for (Variable  var : vars) {
-                _update( Variable.class, var );
-            }
-        }
+//        Variables  vars = ovalDefs.getVariables();
+//        if (vars != null  &&  vars.size() > 0) {
+//            for (Variable  var : vars) {
+//                _update( Variable.class, var );
+//            }
+//        }
+//
+//        States  states = ovalDefs.getStates();
+//        if (states != null  &&  states.size() > 0) {
+//            for (State  state : states) {
+//                _update( State.class, state );
+//            }
+//        }
+//
+//        SystemObjects  sysobjs = ovalDefs.getObjects();
+//        if (sysobjs != null  &&  sysobjs.size() > 0) {
+//            for (SystemObject  sysobj : sysobjs) {
+//                _update( SystemObject.class, sysobj );
+//            }
+//        }
+//
+//        Tests  tests = ovalDefs.getTests();
+//        if (tests != null  &&  tests.size() > 0) {
+//            for (Test  test : tests) {
+//                _update( Test.class, test );
+//            }
+//        }
 
-        States  states = defs.getStates();
-        if (states != null  &&  states.size() > 0) {
-            for (State  state : states) {
-                _update( State.class, state );
-            }
-        }
-
-        SystemObjects  sysobjs = defs.getObjects();
-        if (sysobjs != null  &&  sysobjs.size() > 0) {
-            for (SystemObject  sysobj : sysobjs) {
-                _update( SystemObject.class, sysobj );
-            }
-        }
-
-        Tests  tests = defs.getTests();
-        if (tests != null  &&  tests.size() > 0) {
-            for (Test  test : tests) {
-                _update( Test.class, test );
-            }
-        }
-
-        Definitions  definitions = defs.getDefinitions();
+        DefinitionsType  definitions = ovalDefs.getDefinitions();
         if (definitions != null  &&  definitions.size() > 0) {
-            for (Definition  def : definitions) {
-                _update( Definition.class, def );
+            for (DefinitionType  def : definitions) {
+                _update( DefinitionType.class, def );
             }
         }
     }

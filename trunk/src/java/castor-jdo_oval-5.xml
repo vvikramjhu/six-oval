@@ -22,7 +22,7 @@
     <!-- ******************************************************* -->
     <!-- OvalDefinitions                                         -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.definitions.OvalDefinitions"
+    <class name="jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions"
         identity="persistentID"
         >
         <map-to table="oval_d_definitions"/>
@@ -118,7 +118,7 @@
     <!-- ******************************************************* -->
     <!-- Definition                                              -->
     <!-- ******************************************************* -->
-    <class name="jp.go.aist.six.oval.model.definitions.Definition"
+    <class name="jp.go.aist.six.oval.model.v5.definitions.DefinitionType"
         identity="persistentID">
         <map-to table="oval_d_definition"/>
 

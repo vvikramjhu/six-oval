@@ -18,24 +18,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.store;
+package jp.go.aist.six.oval.core.store.v5;
 
-import jp.go.aist.six.oval.model.definitions.Definition;
-import jp.go.aist.six.oval.model.definitions.Definitions;
-import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.definitions.State;
-import jp.go.aist.six.oval.model.definitions.States;
-import jp.go.aist.six.oval.model.definitions.SystemObject;
-import jp.go.aist.six.oval.model.definitions.SystemObjects;
-import jp.go.aist.six.oval.model.definitions.Test;
-import jp.go.aist.six.oval.model.definitions.Tests;
-import jp.go.aist.six.oval.model.definitions.Variable;
-import jp.go.aist.six.oval.model.definitions.Variables;
+import jp.go.aist.six.oval.core.store.StoreWorker;
+import jp.go.aist.six.oval.core.store.StoreWorkerRegistry;
+import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.persist.PersistenceException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import java.util.Collection;
 
 
 
@@ -93,40 +84,40 @@ public class OvalDefinitionsStoreWorker
             _LOG.trace( "*** beforePersist ***" );
         }
 
-        Variables  variables = ovalDefs.getVariables();
-        if (variables != null) {
-            for (Variable  variable : variables) {
-                _sync( Variable.class, variable );
-            }
-        }
-
-        SystemObjects  sysobjs = ovalDefs.getObjects();
-        if (sysobjs != null) {
-            for (SystemObject  sysobj : sysobjs) {
-                _sync( SystemObject.class, sysobj );
-            }
-        }
-
-        States  states = ovalDefs.getStates();
-        if (states != null) {
-            for (State  state : states) {
-                _sync( State.class, state );
-            }
-        }
-
-        Tests  tests = ovalDefs.getTests();
-        if (tests != null) {
-            for (Test  test : tests) {
-                _sync( Test.class, test );
-            }
-        }
-
-        Definitions  definitions = ovalDefs.getDefinitions();
-        if (definitions != null) {
-            for (Definition  d : definitions) {
-                _sync( Definition.class, d );
-            }
-        }
+//        Variables  variables = ovalDefs.getVariables();
+//        if (variables != null) {
+//            for (Variable  variable : variables) {
+//                _sync( Variable.class, variable );
+//            }
+//        }
+//
+//        SystemObjects  sysobjs = ovalDefs.getObjects();
+//        if (sysobjs != null) {
+//            for (SystemObject  sysobj : sysobjs) {
+//                _sync( SystemObject.class, sysobj );
+//            }
+//        }
+//
+//        States  states = ovalDefs.getStates();
+//        if (states != null) {
+//            for (State  state : states) {
+//                _sync( State.class, state );
+//            }
+//        }
+//
+//        Tests  tests = ovalDefs.getTests();
+//        if (tests != null) {
+//            for (Test  test : tests) {
+//                _sync( Test.class, test );
+//            }
+//        }
+//
+//        Definitions  definitions = ovalDefs.getDefinitions();
+//        if (definitions != null) {
+//            for (Definition  d : definitions) {
+//                _sync( Definition.class, d );
+//            }
+//        }
     }
 
 
@@ -143,46 +134,46 @@ public class OvalDefinitionsStoreWorker
 
         final String  pid = ovalDefs.getPersistentID();
 
-        Definitions  defs = new Definitions();
-        Collection<Definition>  p_defs = _loadAssociated( pid, Definition.class,
-                            OvalDefinitionsDefinitionAssociationEntry.class );
-        if (p_defs != null) {
-            defs.addAll( p_defs );
-        }
-
-        Tests  tests = new Tests();
-        Collection<Test>  p_tests = _loadAssociated( pid, Test.class,
-                        OvalDefinitionsTestAssociationEntry.class );
-        if (p_tests != null) {
-            tests.addAll( p_tests );
-        }
-
-        SystemObjects  sysobjs = new SystemObjects();
-        Collection<SystemObject>  p_sysobjs = _loadAssociated( pid, SystemObject.class,
-                        OvalDefinitionsSystemObjectAssociationEntry.class );
-        if (p_sysobjs != null) {
-            sysobjs.addAll( p_sysobjs );
-        }
-
-        States  states = new States();
-        Collection<State>  p_states = _loadAssociated( pid, State.class,
-                        OvalDefinitionsStateAssociationEntry.class );
-        if (p_states != null) {
-            states.addAll( p_states );
-        }
-
-        Variables  variables = new Variables();
-        Collection<Variable>  p_variables = _loadAssociated( pid, Variable.class,
-                        OvalDefinitionsVariableAssociationEntry.class );
-        if (p_variables != null) {
-            variables.addAll( p_variables );
-        }
-
-        ovalDefs.setDefinitions( defs );
-        ovalDefs.setTests( tests );
-        ovalDefs.setObjects( sysobjs );
-        ovalDefs.setStates( states );
-        ovalDefs.setVariables( variables );
+//        Definitions  defs = new Definitions();
+//        Collection<Definition>  p_defs = _loadAssociated( pid, Definition.class,
+//                            OvalDefinitionsDefinitionAssociationEntry.class );
+//        if (p_defs != null) {
+//            defs.addAll( p_defs );
+//        }
+//
+//        Tests  tests = new Tests();
+//        Collection<Test>  p_tests = _loadAssociated( pid, Test.class,
+//                        OvalDefinitionsTestAssociationEntry.class );
+//        if (p_tests != null) {
+//            tests.addAll( p_tests );
+//        }
+//
+//        SystemObjects  sysobjs = new SystemObjects();
+//        Collection<SystemObject>  p_sysobjs = _loadAssociated( pid, SystemObject.class,
+//                        OvalDefinitionsSystemObjectAssociationEntry.class );
+//        if (p_sysobjs != null) {
+//            sysobjs.addAll( p_sysobjs );
+//        }
+//
+//        States  states = new States();
+//        Collection<State>  p_states = _loadAssociated( pid, State.class,
+//                        OvalDefinitionsStateAssociationEntry.class );
+//        if (p_states != null) {
+//            states.addAll( p_states );
+//        }
+//
+//        Variables  variables = new Variables();
+//        Collection<Variable>  p_variables = _loadAssociated( pid, Variable.class,
+//                        OvalDefinitionsVariableAssociationEntry.class );
+//        if (p_variables != null) {
+//            variables.addAll( p_variables );
+//        }
+//
+//        ovalDefs.setDefinitions( defs );
+//        ovalDefs.setTests( tests );
+//        ovalDefs.setObjects( sysobjs );
+//        ovalDefs.setStates( states );
+//        ovalDefs.setVariables( variables );
     }
 
 }

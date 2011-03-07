@@ -53,6 +53,19 @@
         <property name="JDOManager" ref="jdoManager"/>
         <property name="daoTypeMapping">
             <map>
+                <entry key="jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions"
+                    value="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsDao"/> 
+                    
+            </map>
+        </property>
+    </bean>
+
+
+    <bean id="daoRegistryOld" 
+        class="jp.go.aist.six.util.castor.FactoryDaoRegistry">
+        <property name="JDOManager" ref="jdoManager"/>
+        <property name="daoTypeMapping">
+            <map>
                 <entry key="jp.go.aist.six.oval.model.definitions.OvalDefinitions"
                     value="jp.go.aist.six.oval.core.store.OvalDefinitionsDao"/> 
                     

@@ -18,10 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.store;
+package jp.go.aist.six.oval.core.store.v5;
 
-import jp.go.aist.six.oval.model.common.Generator;
-import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.v5.common.GeneratorType;
+import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import jp.go.aist.six.util.castor.PersistenceHelper;
 
 
@@ -60,7 +60,7 @@ public class OvalDefinitionsHelper
                     final OvalDefinitions object
                     )
     {
-        Generator  generator = object.getGenerator();
+        GeneratorType  generator = object.getGenerator();
         String  digest = object.getDefinitionsDigest();
 
         return (new Object[] {

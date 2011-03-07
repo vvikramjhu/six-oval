@@ -53,8 +53,8 @@ public class OvalDefinitions
 
 //    private VariablesType  _variables;
 //    //{0..1}
-//
-//    private String  _definitionsDigest;
+
+    private String  _definitionsDigest;
 
 
 
@@ -255,20 +255,20 @@ public class OvalDefinitions
 //
 //
 //
-//    /**
-//     */
-//    public void setDefinitionsDigest(
-//                    final String digest
-//                    )
-//    {
-//        _definitionsDigest = digest;
-//    }
-//
-//
-//    /**
-//     */
-//    public String getDefinitionsDigest()
-//    {
+    /**
+     */
+    public void setDefinitionsDigest(
+                    final String digest
+                    )
+    {
+        _definitionsDigest = digest;
+    }
+
+
+    public String getDefinitionsDigest()
+    {
+        return _definitionsDigest;
+
 //        if (_definitionsDigest != null) {
 //            return _definitionsDigest;
 //        }
@@ -279,10 +279,10 @@ public class OvalDefinitions
 //            _definitionsDigest = _definitions.getDigest();
 //            return _definitionsDigest;
 //        }
-//    }
-//
-//
-//
+    }
+
+
+
 //    public Definition getDefinition(
 //                    final String id
 //                    )

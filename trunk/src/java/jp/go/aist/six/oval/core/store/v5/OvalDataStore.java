@@ -18,10 +18,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.store;
+package jp.go.aist.six.oval.core.store.v5;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import jp.go.aist.six.oval.core.store.OvalDefinitionsStoreWorker;
+import jp.go.aist.six.oval.core.store.StoreWorkerRegistry;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.persist.Persistable;
 import jp.go.aist.six.util.persist.PersistenceException;
@@ -29,9 +33,6 @@ import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.Limit;
 import jp.go.aist.six.util.search.Order;
 import jp.go.aist.six.util.search.SearchCriteria;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 
 
@@ -86,7 +87,7 @@ public class OvalDataStore
     {
         StoreWorkerRegistry   reg = new StoreWorkerRegistry( datastore );
         reg.addEntry( OvalDefinitions.class, new OvalDefinitionsStoreWorker( datastore, reg ) );
-        reg.addEntry( OvalResults.class,     new OvalResultsStoreWorker(     datastore, reg ) );
+//        reg.addEntry( OvalResults.class,     new OvalResultsStoreWorker(     datastore, reg ) );
 
         return reg;
     }
@@ -109,6 +110,7 @@ public class OvalDataStore
     //  DataStore
     //**************************************************************
 
+    @Override
     public <K, T extends Persistable<K>>
     K create(
                     final Class<T> type,
@@ -129,6 +131,7 @@ public class OvalDataStore
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     void update(
                     final Class<T> type,
@@ -146,6 +149,7 @@ public class OvalDataStore
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     void remove(
                     final Class<T> type,
@@ -163,6 +167,7 @@ public class OvalDataStore
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     T sync(
                     final Class<T> type,
@@ -183,6 +188,7 @@ public class OvalDataStore
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     List<T> syncAll(
                     final Class<T> type,
@@ -203,6 +209,7 @@ public class OvalDataStore
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     int count(
                     final Class<T> type
@@ -225,6 +232,7 @@ public class OvalDataStore
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     int count(
                     final Class<T> type,
@@ -245,6 +253,7 @@ public class OvalDataStore
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     T load(
                     final Class<T> type,
@@ -265,6 +274,7 @@ public class OvalDataStore
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     List<T> loadAll(
                     final Class<T> type,
@@ -285,6 +295,7 @@ public class OvalDataStore
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     Collection<T> find(
                     final Class<T> type
@@ -296,6 +307,7 @@ public class OvalDataStore
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     Collection<T> find(
                     final Class<T> type,
@@ -308,6 +320,7 @@ public class OvalDataStore
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     Collection<T> find(
                     final Class<T> type,
@@ -325,6 +338,7 @@ public class OvalDataStore
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     Collection<K> findIdentity(
                     final Class<T> type
@@ -336,6 +350,7 @@ public class OvalDataStore
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     Collection<K> findIdentity(
                     final Class<T> type,
@@ -348,6 +363,7 @@ public class OvalDataStore
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     Collection<K> findIdentity(
                     final Class<T> type,
@@ -370,6 +386,7 @@ public class OvalDataStore
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     List<Object> search(
                     final Class<T> type,

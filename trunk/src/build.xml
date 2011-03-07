@@ -54,7 +54,7 @@ CONTENTS:
 
    
     <!-- SQL scripts -->
-    <property name="sql.src.dir"        location="${src.dir}/sql/${six.db.engine}"/>
+    <property name="sql.src.dir"        location="${src.dir}/sql/v5/${six.db.engine}"/>
     <property name="build.sql.dir"      location="${build.dir}/sql"/>
 
 

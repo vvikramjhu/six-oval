@@ -23,7 +23,8 @@
             <param name="password"          value="@six.db.password@"/>
         </data-source>
 
-        <mapping href="six-oval_castor-jdo-mapping.xml"/>
+        <mapping href="castor-jdo_oval-5.xml"/>
+        <!-- mapping href="six-oval_castor-jdo-mapping.xml"/ -->
     </database>
 
 <!--

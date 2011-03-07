@@ -7,6 +7,7 @@
 /* @author  Akihito Nakamura, AIST */
 /* @version $Id$ */
 /* @engine  mysql */
+/* @oval-schema version 5 */
 
 
 use @six.db.database@;
