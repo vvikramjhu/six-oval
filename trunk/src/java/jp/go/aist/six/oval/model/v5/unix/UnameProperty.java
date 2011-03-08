@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.unix;
+package jp.go.aist.six.oval.model.v5.unix;
 
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
 
 
 

@@ -18,11 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.unix;
+package jp.go.aist.six.oval.model.v5.unix;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.common.Check;
-import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
+import jp.go.aist.six.oval.model.v5.definitions.TestType;
 
 
 
@@ -35,8 +35,7 @@ import jp.go.aist.six.oval.model.definitions.Test;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class UnameTest
-    extends Test
-//extends SimpleTest
+    extends TestType
 {
 
     /**
@@ -47,9 +46,6 @@ public class UnameTest
     }
 
 
-    /**
-     * Constructor.
-     */
     public UnameTest(
                     final String id,
                     final int version
@@ -59,14 +55,11 @@ public class UnameTest
     }
 
 
-    /**
-     * Constructor.
-     */
     public UnameTest(
                     final String id,
                     final int version,
                     final String comment,
-                    final Check check
+                    final CheckEnumeration check
                     )
     {
         super( id, version, comment, check );
@@ -78,6 +71,7 @@ public class UnameTest
     //  Test
     //**************************************************************
 
+    @Override
     public PlatformEntityType getEntityType()
     {
         return PlatformEntityType.UNIX_UNAME;

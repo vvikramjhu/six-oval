@@ -18,14 +18,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.unix;
+package jp.go.aist.six.oval.model.v5.unix;
 
-import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityBase;
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
-import jp.go.aist.six.oval.model.definitions.EntityStateString;
-import jp.go.aist.six.oval.model.definitions.State;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
+import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.v5.definitions.StateType;
 
 
 
@@ -38,10 +38,10 @@ import java.util.Iterator;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class UnameState
-    extends State
+    extends StateType
 {
 
-    private EntityPropertyMap<UnameProperty>  _properties =
+    private final EntityPropertyMap<UnameProperty>  _properties =
         UnameProperty.createPropertyMap();
 
 
@@ -54,9 +54,6 @@ public class UnameState
     }
 
 
-    /**
-     * Constructor.
-     */
     public UnameState(
                     final String id,
                     final int version
@@ -66,9 +63,6 @@ public class UnameState
     }
 
 
-    /**
-     * Constructor.
-     */
     public UnameState(
                     final String id,
                     final int version,
@@ -83,7 +77,7 @@ public class UnameState
     /**
      */
     public void setMachineClass(
-                    final EntityStateString machineClass
+                    final EntityStateStringType machineClass
                     )
     {
         _properties.setProperty( UnameProperty.MACHINE_CLASS, machineClass );
@@ -91,7 +85,7 @@ public class UnameState
 
 
     public UnameState machineClass(
-                    final EntityStateString machineClass
+                    final EntityStateStringType machineClass
                     )
     {
         setMachineClass( machineClass );
@@ -99,10 +93,10 @@ public class UnameState
     }
 
 
-    public EntityStateString getMachineClass()
+    public EntityStateStringType getMachineClass()
     {
         return _properties.getProperty(
-                        UnameProperty.MACHINE_CLASS, EntityStateString.class );
+                        UnameProperty.MACHINE_CLASS, EntityStateStringType.class );
     }
 
 
@@ -110,7 +104,7 @@ public class UnameState
     /**
      */
     public void setNodeName(
-                    final EntityStateString nodeName
+                    final EntityStateStringType nodeName
                     )
     {
         _properties.setProperty( UnameProperty.NODE_NAME, nodeName );
@@ -118,7 +112,7 @@ public class UnameState
 
 
     public UnameState nodeName(
-                    final EntityStateString nodeName
+                    final EntityStateStringType nodeName
                     )
     {
         setNodeName( nodeName );
@@ -126,10 +120,10 @@ public class UnameState
     }
 
 
-    public EntityStateString getNodeName()
+    public EntityStateStringType getNodeName()
     {
         return _properties.getProperty(
-                        UnameProperty.NODE_NAME, EntityStateString.class );
+                        UnameProperty.NODE_NAME, EntityStateStringType.class );
     }
 
 
@@ -137,7 +131,7 @@ public class UnameState
     /**
      */
     public void setOsName(
-                    final EntityStateString name
+                    final EntityStateStringType name
                     )
     {
         _properties.setProperty( UnameProperty.OS_NAME, name );
@@ -145,7 +139,7 @@ public class UnameState
 
 
     public UnameState osName(
-                    final EntityStateString name
+                    final EntityStateStringType name
                     )
     {
         setOsName( name );
@@ -153,10 +147,10 @@ public class UnameState
     }
 
 
-    public EntityStateString getOsName()
+    public EntityStateStringType getOsName()
     {
         return _properties.getProperty(
-                        UnameProperty.OS_NAME, EntityStateString.class );
+                        UnameProperty.OS_NAME, EntityStateStringType.class );
     }
 
 
@@ -164,7 +158,7 @@ public class UnameState
     /**
      */
     public void setOsRelease(
-                    final EntityStateString release
+                    final EntityStateStringType release
                     )
     {
         _properties.setProperty( UnameProperty.OS_RELEASE, release );
@@ -172,7 +166,7 @@ public class UnameState
 
 
     public UnameState osRelease(
-                    final EntityStateString release
+                    final EntityStateStringType release
                     )
     {
         setOsRelease( release );
@@ -180,10 +174,10 @@ public class UnameState
     }
 
 
-    public EntityStateString getOsRelease()
+    public EntityStateStringType getOsRelease()
     {
         return _properties.getProperty(
-                        UnameProperty.OS_RELEASE, EntityStateString.class );
+                        UnameProperty.OS_RELEASE, EntityStateStringType.class );
     }
 
 
@@ -191,7 +185,7 @@ public class UnameState
     /**
      */
     public void setOsVersion(
-                    final EntityStateString version
+                    final EntityStateStringType version
                     )
     {
         _properties.setProperty( UnameProperty.OS_VERSION, version );
@@ -199,7 +193,7 @@ public class UnameState
 
 
     public UnameState osVersion(
-                    final EntityStateString version
+                    final EntityStateStringType version
                     )
     {
         setOsVersion( version );
@@ -207,10 +201,10 @@ public class UnameState
     }
 
 
-    public EntityStateString getOsVersion()
+    public EntityStateStringType getOsVersion()
     {
         return _properties.getProperty(
-                        UnameProperty.OS_VERSION, EntityStateString.class );
+                        UnameProperty.OS_VERSION, EntityStateStringType.class );
     }
 
 
@@ -218,7 +212,7 @@ public class UnameState
     /**
      */
     public void setProcessorType(
-                    final EntityStateString type
+                    final EntityStateStringType type
                     )
     {
         _properties.setProperty( UnameProperty.PROCESSOR_TYPE, type );
@@ -226,7 +220,7 @@ public class UnameState
 
 
     public UnameState processorType(
-                    final EntityStateString type
+                    final EntityStateStringType type
                     )
     {
         setProcessorType( type );
@@ -234,10 +228,10 @@ public class UnameState
     }
 
 
-    public EntityStateString getProcessorType()
+    public EntityStateStringType getProcessorType()
     {
         return _properties.getProperty(
-                        UnameProperty.PROCESSOR_TYPE, EntityStateString.class );
+                        UnameProperty.PROCESSOR_TYPE, EntityStateStringType.class );
     }
 
 
@@ -255,7 +249,7 @@ public class UnameState
 
 
     @Override
-    public Iterator<EntityBase> iterateProperties()
+    public Iterator<EntityAttributeGroup> iterateProperties()
     {
         return _properties.iterateProperties();
     }
