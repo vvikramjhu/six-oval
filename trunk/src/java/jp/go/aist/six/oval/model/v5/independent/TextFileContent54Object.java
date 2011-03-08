@@ -18,18 +18,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.independent;
+package jp.go.aist.six.oval.model.v5.independent;
 
-import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityBase;
-import jp.go.aist.six.oval.model.definitions.EntityObjectInt;
-import jp.go.aist.six.oval.model.definitions.EntityObjectString;
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
-import jp.go.aist.six.oval.model.definitions.Filter;
-import jp.go.aist.six.oval.model.definitions.SystemObject;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
+import jp.go.aist.six.oval.model.v5.definitions.EntityObjectIntType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.v5.definitions.Filter;
+import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 
 
 
@@ -42,14 +42,14 @@ import java.util.Iterator;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class TextFileContent54Object
-    extends SystemObject
+    extends SystemObjectType
 {
 
-    private TextFileContent54Behaviors  _behaviors;
+    private Textfilecontent54BehaviorsTmp  _behaviors;
     //{0..1}
 
 
-    private EntityPropertyMap<TextFileContentProperty>  _properties =
+    private final EntityPropertyMap<TextFileContentProperty>  _properties =
         TextFileContentProperty.createPropertyMap();
 
 
@@ -73,7 +73,7 @@ public class TextFileContent54Object
 //    //{1..1}
 
 
-    private Collection<Filter>  _filter = new ArrayList<Filter>();
+    private final Collection<Filter>  _filter = new ArrayList<Filter>();
     //{0..*}
 
 
@@ -86,9 +86,6 @@ public class TextFileContent54Object
     }
 
 
-    /**
-     * Constructor.
-     */
     public TextFileContent54Object(
                     final String id,
                     final int version
@@ -98,9 +95,6 @@ public class TextFileContent54Object
     }
 
 
-    /**
-     * Constructor.
-     */
     public TextFileContent54Object(
                     final String id,
                     final int version,
@@ -111,9 +105,6 @@ public class TextFileContent54Object
     }
 
 
-    /**
-     * Constructor.
-     */
     public TextFileContent54Object(
                     final String id,
                     final int version,
@@ -124,24 +115,21 @@ public class TextFileContent54Object
                     )
     {
         this( id, version,
-                        (path == null     ? null : new EntityObjectString( path )),
-                        (filename == null ? null : new EntityObjectString( filename )),
-                        (pattern == null  ? null : new EntityObjectString( pattern )),
-                        (instance == null ? null : new EntityObjectInt( instance ))
+                        (path == null     ? null : new EntityObjectStringType( path )),
+                        (filename == null ? null : new EntityObjectStringType( filename )),
+                        (pattern == null  ? null : new EntityObjectStringType( pattern )),
+                        (instance == null ? null : new EntityObjectIntType( instance ))
                         );
     }
 
 
-    /**
-     * Constructor.
-     */
     public TextFileContent54Object(
                     final String id,
                     final int version,
-                    final EntityObjectString path,
-                    final EntityObjectString filename,
-                    final EntityObjectString pattern,
-                    final EntityObjectInt instance
+                    final EntityObjectStringType path,
+                    final EntityObjectStringType filename,
+                    final EntityObjectStringType pattern,
+                    final EntityObjectIntType instance
                     )
     {
         super( id, version );
@@ -156,7 +144,7 @@ public class TextFileContent54Object
     /**
      */
     public void setBehaviors(
-                    final TextFileContent54Behaviors behaviors
+                    final Textfilecontent54BehaviorsTmp behaviors
                     )
     {
         _behaviors = behaviors;
@@ -164,7 +152,7 @@ public class TextFileContent54Object
 
 
     public TextFileContent54Object behaviors(
-                    final TextFileContent54Behaviors behaviors
+                    final Textfilecontent54BehaviorsTmp behaviors
                     )
     {
         setBehaviors( behaviors );
@@ -172,7 +160,7 @@ public class TextFileContent54Object
     }
 
 
-    public TextFileContent54Behaviors getBehaviors()
+    public Textfilecontent54BehaviorsTmp getBehaviors()
     {
         return _behaviors;
     }
@@ -182,7 +170,7 @@ public class TextFileContent54Object
     /**
      */
     public void setFilepath(
-                    final EntityObjectString filepath
+                    final EntityObjectStringType filepath
                     )
     {
         _properties.setProperty( TextFileContentProperty.FILEPATH, filepath );
@@ -190,7 +178,7 @@ public class TextFileContent54Object
 
 
     public TextFileContent54Object filepath(
-                    final EntityObjectString filepath
+                    final EntityObjectStringType filepath
                     )
     {
         setFilepath( filepath );
@@ -198,10 +186,10 @@ public class TextFileContent54Object
     }
 
 
-    public EntityObjectString getFilepath()
+    public EntityObjectStringType getFilepath()
     {
         return _properties.getProperty(
-                        TextFileContentProperty.FILEPATH, EntityObjectString.class );
+                        TextFileContentProperty.FILEPATH, EntityObjectStringType.class );
     }
 
 
@@ -209,7 +197,7 @@ public class TextFileContent54Object
     /**
      */
     public void setPath(
-                    final EntityObjectString path
+                    final EntityObjectStringType path
                     )
     {
         _properties.setProperty( TextFileContentProperty.PATH, path );
@@ -217,7 +205,7 @@ public class TextFileContent54Object
 
 
     public TextFileContent54Object path(
-                    final EntityObjectString path
+                    final EntityObjectStringType path
                     )
     {
         setPath( path );
@@ -225,10 +213,10 @@ public class TextFileContent54Object
     }
 
 
-    public EntityObjectString getPath()
+    public EntityObjectStringType getPath()
     {
         return _properties.getProperty(
-                        TextFileContentProperty.PATH, EntityObjectString.class );
+                        TextFileContentProperty.PATH, EntityObjectStringType.class );
     }
 
 
@@ -236,7 +224,7 @@ public class TextFileContent54Object
     /**
      */
     public void setFilename(
-                    final EntityObjectString filename
+                    final EntityObjectStringType filename
                     )
     {
         _properties.setProperty( TextFileContentProperty.FILENAME, filename );
@@ -244,7 +232,7 @@ public class TextFileContent54Object
 
 
     public TextFileContent54Object filename(
-                    final EntityObjectString filename
+                    final EntityObjectStringType filename
                     )
     {
         setFilename( filename );
@@ -252,10 +240,10 @@ public class TextFileContent54Object
     }
 
 
-    public EntityObjectString getFilename()
+    public EntityObjectStringType getFilename()
     {
         return _properties.getProperty(
-                        TextFileContentProperty.FILENAME, EntityObjectString.class );
+                        TextFileContentProperty.FILENAME, EntityObjectStringType.class );
     }
 
 
@@ -263,7 +251,7 @@ public class TextFileContent54Object
     /**
      */
     public void setPattern(
-                    final EntityObjectString pattern
+                    final EntityObjectStringType pattern
                     )
     {
         _properties.setProperty( TextFileContentProperty.PATTERN, pattern );
@@ -271,7 +259,7 @@ public class TextFileContent54Object
 
 
     public TextFileContent54Object pattern(
-                    final EntityObjectString pattern
+                    final EntityObjectStringType pattern
                     )
     {
         setPattern( pattern );
@@ -279,10 +267,10 @@ public class TextFileContent54Object
     }
 
 
-    public EntityObjectString getPattern()
+    public EntityObjectStringType getPattern()
     {
         return _properties.getProperty(
-                        TextFileContentProperty.PATTERN, EntityObjectString.class );
+                        TextFileContentProperty.PATTERN, EntityObjectStringType.class );
     }
 
 
@@ -290,7 +278,7 @@ public class TextFileContent54Object
     /**
      */
     public void setInstance(
-                    final EntityObjectInt instance
+                    final EntityObjectIntType instance
                     )
     {
         _properties.setProperty( TextFileContentProperty.INSTANCE, instance );
@@ -298,7 +286,7 @@ public class TextFileContent54Object
 
 
     public TextFileContent54Object instance(
-                    final EntityObjectInt instance
+                    final EntityObjectIntType instance
                     )
     {
         setInstance( instance );
@@ -306,10 +294,10 @@ public class TextFileContent54Object
     }
 
 
-    public EntityObjectInt getInstance()
+    public EntityObjectIntType getInstance()
     {
         return _properties.getProperty(
-                        TextFileContentProperty.INSTANCE, EntityObjectInt.class );
+                        TextFileContentProperty.INSTANCE, EntityObjectIntType.class );
     }
 
 
@@ -376,7 +364,7 @@ public class TextFileContent54Object
 
 
     @Override
-    public Iterator<EntityBase> iterateProperties()
+    public Iterator<EntityAttributeGroup> iterateProperties()
     {
         return _properties.iterateProperties();
     }

@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.independent;
+package jp.go.aist.six.oval.model.v5.independent;
 
 
 
@@ -31,7 +31,7 @@ package jp.go.aist.six.oval.model.independent;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class TextFileContent54Behaviors
+public class Textfilecontent54BehaviorsTmp
     extends FileBehaviors
 {
 
@@ -54,7 +54,7 @@ public class TextFileContent54Behaviors
     /**
      * Constructor.
      */
-    public TextFileContent54Behaviors()
+    public Textfilecontent54BehaviorsTmp()
     {
     }
 
@@ -70,7 +70,7 @@ public class TextFileContent54Behaviors
     }
 
 
-    public TextFileContent54Behaviors ignoreCase(
+    public Textfilecontent54BehaviorsTmp ignoreCase(
                     final boolean ignoreCase
                     )
     {
@@ -96,7 +96,7 @@ public class TextFileContent54Behaviors
     }
 
 
-    public TextFileContent54Behaviors multiline(
+    public Textfilecontent54BehaviorsTmp multiline(
                     final boolean multiline
                     )
     {
@@ -122,7 +122,7 @@ public class TextFileContent54Behaviors
     }
 
 
-    public TextFileContent54Behaviors singleline(
+    public Textfilecontent54BehaviorsTmp singleline(
                     final boolean singleline
                     )
     {
@@ -162,12 +162,12 @@ public class TextFileContent54Behaviors
                     final Object obj
                     )
     {
-        if (!(obj instanceof TextFileContent54Behaviors)) {
+        if (!(obj instanceof Textfilecontent54BehaviorsTmp)) {
             return false;
         }
 
         if (super.equals( obj )) {
-            TextFileContent54Behaviors  other = (TextFileContent54Behaviors)obj;
+            Textfilecontent54BehaviorsTmp  other = (Textfilecontent54BehaviorsTmp)obj;
             if (isIgnoreCase() == other.isIgnoreCase()) {
                 if (isMultiline() == other.isMultiline()) {
                     if (isSingleline() == other.isSingleline()) {

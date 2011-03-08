@@ -18,10 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.independent;
+package jp.go.aist.six.oval.model.v5.independent;
 
-import jp.go.aist.six.oval.model.AbstractFileBehaviors;
-import jp.go.aist.six.oval.model.Recurse;
+import jp.go.aist.six.oval.model.v5.AbstractFileBehaviors;
+import jp.go.aist.six.oval.model.v5.RecurseEnumeration;
 
 
 
@@ -41,8 +41,8 @@ public class FileBehaviors
     /**
      * The default recurseDirection: "symlinks and directories".
      */
-    public static final Recurse  DEFAULT_RECURSE = Recurse.SYMLINKS_AND_DIRECTORIES;
-    private Recurse  _recurse;
+    public static final RecurseEnumeration  DEFAULT_RECURSE = RecurseEnumeration.SYMLINKS_AND_DIRECTORIES;
+    private RecurseEnumeration  _recurse;
     //{optional, default='symlinks and directories'}
 
 
@@ -59,18 +59,16 @@ public class FileBehaviors
     /**
      */
     public void setRecurse(
-                    final Recurse recurse
+                    final RecurseEnumeration recurse
                     )
     {
         _recurse = recurse;
     }
 
 
-    public Recurse getRecurse()
+    public RecurseEnumeration getRecurse()
     {
-        return (_recurse == null
-                        ? DEFAULT_RECURSE
-                        : _recurse);
+        return _recurse;
     }
 
 
@@ -85,7 +83,7 @@ public class FileBehaviors
         final int  prime = 37;
         int  result = super.hashCode();
 
-        Recurse  r = getRecurse();
+        RecurseEnumeration  r = getRecurse();
         result = prime * result + ((r == null) ? 0 : r.hashCode());
 
         return result;
@@ -108,8 +106,8 @@ public class FileBehaviors
 
         FileBehaviors  other = (FileBehaviors)obj;
         if (this.getMaxDepth() == other.getMaxDepth()) {
-            Recurse  other_r = other.getRecurse();
-            Recurse   this_r =  this.getRecurse();
+            RecurseEnumeration  other_r = other.getRecurse();
+            RecurseEnumeration   this_r =  this.getRecurse();
             if (this_r == other_r) {
                 return true;
             }

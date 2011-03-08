@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model;
+package jp.go.aist.six.oval.model.v5;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class Recurse
+public final class RecurseEnumeration
     implements Serializable
 {
 
@@ -42,32 +42,32 @@ public final class Recurse
     private static final String  _SYMLINKS_AND_DIRECTORIES_  = "symlinks and directories";
 
 
-    public static final Recurse  DIRECTORIES    = new Recurse( _DIRECTORIES_ );
-    public static final Recurse  SYMLINKS       = new Recurse( _SYMLINKS_ );
-    public static final Recurse  SYMLINKS_AND_DIRECTORIES  = new Recurse( _SYMLINKS_AND_DIRECTORIES_ );
+    public static final RecurseEnumeration  DIRECTORIES    = new RecurseEnumeration( _DIRECTORIES_ );
+    public static final RecurseEnumeration  SYMLINKS       = new RecurseEnumeration( _SYMLINKS_ );
+    public static final RecurseEnumeration  SYMLINKS_AND_DIRECTORIES  = new RecurseEnumeration( _SYMLINKS_AND_DIRECTORIES_ );
 
 
 
-    private static HashMap<String, Recurse> _INIT_()
+    private static HashMap<String, RecurseEnumeration> _INIT_()
     {
-        HashMap<String, Recurse>  map = new HashMap<String, Recurse>();
+        HashMap<String, RecurseEnumeration>  map = new HashMap<String, RecurseEnumeration>();
         map.put( _DIRECTORIES_,               DIRECTORIES              );
         map.put( _SYMLINKS_,                  SYMLINKS                 );
         map.put( _SYMLINKS_AND_DIRECTORIES_,  SYMLINKS_AND_DIRECTORIES );
         return map;
     }
 
-    private static final HashMap<String, Recurse>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, RecurseEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
     /**
      */
-    public static Recurse valueOf(
+    public static RecurseEnumeration valueOf(
                     final String name
                     )
     {
-        Recurse  flag = null;
+        RecurseEnumeration  flag = null;
         if (name != null) {
             flag = _INSTANCES_.get( name );
         }
@@ -88,7 +88,7 @@ public final class Recurse
     /**
      * Constructor.
      */
-    private Recurse(
+    private RecurseEnumeration(
                     final String name
                     )
     {
@@ -117,4 +117,4 @@ public final class Recurse
     }
 
 }
-// Recurse
+// RecurseEnumeration

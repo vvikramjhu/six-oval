@@ -25,31 +25,30 @@ import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 
 
 /**
- * The EntityObjectString type is extended by the entities of
- * an individual OVAL Object.
- * This specific type describes simple string data.
+ * The EntityInt type is extended by the entities of an individual OVAL Object.
+ * This specific type describes simple integer data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityObjectStringType
+public class EntityObjectIntType
     extends EntitySimpleBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.STRING;
+    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.INT;
 
 
 
     /**
      * Constructor.
      */
-    public EntityObjectStringType()
+    public EntityObjectIntType()
     {
     }
 
 
-    public EntityObjectStringType(
+    public EntityObjectIntType(
                     final String data
                     )
     {
@@ -132,7 +131,7 @@ public class EntityObjectStringType
             return true;
         }
 
-        if (!(obj instanceof EntityObjectStringType)) {
+        if (!(obj instanceof EntityObjectIntType)) {
             return false;
         }
 
@@ -148,4 +147,4 @@ public class EntityObjectStringType
 //    }
 
 }
-// EntityObjectStringType
+// EntityObjectIntType
