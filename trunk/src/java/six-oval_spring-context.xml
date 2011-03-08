@@ -205,6 +205,9 @@
                  <value>classpath:castor-xml_oval-5-six.xml</value>
                  <value>classpath:castor-xml_oval-5-common.xml</value>
                  <value>classpath:castor-xml_oval-5-definitions.xml</value>
+                 <value>classpath:castor-xml_oval-5-independent.xml</value>
+                 <value>classpath:castor-xml_oval-5-linux.xml</value>
+                 <value>classpath:castor-xml_oval-5-unix.xml</value>
                  <value>classpath:castor-xml_oval-5-windows.xml</value>
             </list>
         </property>

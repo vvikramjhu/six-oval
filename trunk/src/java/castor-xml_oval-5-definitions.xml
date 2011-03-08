@@ -454,19 +454,31 @@
         </field>
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType"
         extends="jp.go.aist.six.oval.model.v5.definitions.EntityStateSimpleBaseType">
     </class>
 
+    <class name="jp.go.aist.six.oval.model.v5.definitions.EntityStateEVRStringType"
+        extends="jp.go.aist.six.oval.model.v5.definitions.EntityStateSimpleBaseType">
+    </class>
 
+    <class name="jp.go.aist.six.oval.model.v5.definitions.EntityStateIntType"
+        extends="jp.go.aist.six.oval.model.v5.definitions.EntityStateSimpleBaseType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType"
+        extends="jp.go.aist.six.oval.model.v5.definitions.EntityStateSimpleBaseType">
+    </class>
 
     <class name="jp.go.aist.six.oval.model.v5.definitions.EntityStateVersionType"
         extends="jp.go.aist.six.oval.model.v5.definitions.EntityStateSimpleBaseType">
     </class>
 
 
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.EntityObjectIntType"
+        extends="jp.go.aist.six.oval.model.v5.definitions.EntitySimpleBaseType">
+    </class>
 
     <class name="jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType"
         extends="jp.go.aist.six.oval.model.v5.definitions.EntitySimpleBaseType">

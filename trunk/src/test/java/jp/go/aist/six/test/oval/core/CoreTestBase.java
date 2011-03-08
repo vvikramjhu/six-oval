@@ -601,6 +601,15 @@ public abstract class CoreTestBase
 //                            "marshalled_oval-definitions_CVE-2010-0176_def7222_v5.9.xml"
 //                        }
 //                        ,
+                        // Debian @Mitre, CVE-2010-0176, DSA-2027
+                        {
+                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+                            "test/data/oval-definitions-5/oval-definitions_CVE-2010-0176_def7432_debian.xml",
+                            "/oval_definitions",
+                            null,
+                            "marshalled_oval-definitions_CVE-2010-0176_def7432_debian.xml"
+                        }
+//                        ,
 //                        // windows, CVE-2003-0353, def:962, deprecated
 //                        {
 //                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
@@ -619,14 +628,14 @@ public abstract class CoreTestBase
 //                            "marshalled_oval-definitions_CVE-2004-1153_def2919_notes.xml"
 //                        }
 //                        ,
-                        // windows, CVE-2004-0380, def:990, negate
-                        {
-                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                            "test/data/oval-definitions-5/oval-definitions_CVE-2004-0380_def990_negate.xml",
-                            "/oval_definitions",
-                            null,
-                            "marshalled_oval-definitions_CVE-2004-0380_def990_negate.xml"
-                        }
+//                        // windows, CVE-2004-0380, def:990, negate
+//                        {
+//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                            "test/data/oval-definitions-5/oval-definitions_CVE-2004-0380_def990_negate.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_oval-definitions_CVE-2004-0380_def990_negate.xml"
+//                        }
 //                        // Windows XP, CVE-2010-0035, PowerPoint
 //                        {
 //                            OvalDefinitions.class,
