@@ -18,10 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.common.Datatype;
-import jp.go.aist.six.oval.model.common.Operation;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 
 
 
@@ -39,10 +38,10 @@ import jp.go.aist.six.oval.model.common.Operation;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class EntityStateEVRString
-    extends EntityStateBase
+    extends EntityStateSimpleBaseType
 {
 
-    public static final Datatype  FIXED_DATATYPE = Datatype.EVR_STRING;
+    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.EVR_STRING;
 
 
 
@@ -54,40 +53,31 @@ public class EntityStateEVRString
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityStateEVRString(
-                    final String data
-                    )
-    {
-        this( data, DEFAULT_OPERATION );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateEVRString(
-                    final String data,
-                    final Operation operation
-                    )
-    {
-        this( data, FIXED_DATATYPE, operation );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityStateEVRString(
-                    final String data,
-                    final Datatype datatype,
-                    final Operation operation
-                    )
-    {
-        super( data, datatype, operation );
-    }
+//    public EntityStateEVRString(
+//                    final String data
+//                    )
+//    {
+//        this( data, DEFAULT_OPERATION );
+//    }
+//
+//
+//    public EntityStateEVRString(
+//                    final String data,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        this( data, FIXED_DATATYPE, operation );
+//    }
+//
+//
+//    public EntityStateEVRString(
+//                    final String data,
+//                    final DatatypeEnumeration datatype,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        super( data, datatype, operation );
+//    }
 
 
 
@@ -97,7 +87,7 @@ public class EntityStateEVRString
 
     @Override
     public void setDatatype(
-                    final Datatype datatype
+                    final DatatypeEnumeration datatype
                     )
     {
         if (datatype != null  &&  datatype != FIXED_DATATYPE) {
@@ -109,7 +99,7 @@ public class EntityStateEVRString
 
 
     @Override
-    public Datatype getDatatype()
+    public DatatypeEnumeration getDatatype()
     {
         return FIXED_DATATYPE;
     }
@@ -145,4 +135,4 @@ public class EntityStateEVRString
     }
 
 }
-// EntityStateEVRString
+// EntityStateEVRStringType
