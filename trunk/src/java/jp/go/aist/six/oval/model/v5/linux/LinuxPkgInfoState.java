@@ -18,14 +18,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.model.v5.linux;
 
-import jp.go.aist.six.oval.model.definitions.EntityBase;
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
-import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
-import jp.go.aist.six.oval.model.definitions.EntityStateString;
-import jp.go.aist.six.oval.model.definitions.State;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
+import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.v5.definitions.StateType;
 
 
 
@@ -36,10 +36,10 @@ import java.util.Iterator;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class LinuxPkgInfoState
-    extends State
+    extends StateType
 {
 
-    private EntityPropertyMap<LinuxPkgProperty>  _properties =
+    private final EntityPropertyMap<LinuxPkgProperty>  _properties =
         LinuxPkgProperty.createPropertyMap();
 
 
@@ -63,9 +63,6 @@ public abstract class LinuxPkgInfoState
     }
 
 
-    /**
-     * Constructor.
-     */
     public LinuxPkgInfoState(
                     final String id,
                     final int version
@@ -88,7 +85,7 @@ public abstract class LinuxPkgInfoState
     /**
      */
     public void setName(
-                    final EntityStateString name
+                    final EntityStateStringType name
                     )
     {
         _setProperty( LinuxPkgProperty.NAME, name );
@@ -96,43 +93,43 @@ public abstract class LinuxPkgInfoState
     }
 
 
-    public EntityStateString getName()
+    public EntityStateStringType getName()
     {
         return _getProperty(
-                        LinuxPkgProperty.NAME, EntityStateString.class );
+                        LinuxPkgProperty.NAME, EntityStateStringType.class );
 //        return _name;
     }
 
 
 
     public void setArch(
-                    final EntityStateString arch
+                    final EntityStateStringType arch
                     )
     {
         _setProperty( LinuxPkgProperty.ARCH, arch );
     }
 
 
-    public EntityStateString getArch()
+    public EntityStateStringType getArch()
     {
         return _getProperty(
-                        LinuxPkgProperty.ARCH, EntityStateString.class );
+                        LinuxPkgProperty.ARCH, EntityStateStringType.class );
     }
 
 
 
     public void setVersion(
-                    final EntityStateAnySimple version
+                    final EntityStateAnySimpleType version
                     )
     {
         _setProperty( LinuxPkgProperty.VERSION, version );
     }
 
 
-    public EntityStateAnySimple getVersion()
+    public EntityStateAnySimpleType getVersion()
     {
         return _getProperty(
-                        LinuxPkgProperty.VERSION, EntityStateAnySimple.class );
+                        LinuxPkgProperty.VERSION, EntityStateAnySimpleType.class );
     }
 
 
@@ -142,7 +139,7 @@ public abstract class LinuxPkgInfoState
     //**************************************************************
 
     @Override
-    public Iterator<EntityBase> iterateProperties()
+    public Iterator<EntityAttributeGroup> iterateProperties()
     {
         return _properties.iterateProperties();
     }
@@ -151,7 +148,7 @@ public abstract class LinuxPkgInfoState
 
     /**
      */
-    protected <T extends EntityBase> T _getProperty(
+    protected <T extends EntityAttributeGroup> T _getProperty(
                     final LinuxPkgProperty key,
                     final Class<T> type
                     )
@@ -165,7 +162,7 @@ public abstract class LinuxPkgInfoState
      */
     protected void _setProperty(
                     final LinuxPkgProperty key,
-                    final EntityBase value
+                    final EntityAttributeGroup value
                     )
     {
         _properties.setProperty( key, value );

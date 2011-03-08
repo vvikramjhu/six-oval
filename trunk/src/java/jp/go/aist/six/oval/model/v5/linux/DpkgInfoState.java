@@ -18,10 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.model.v5.linux;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityStateEVRString;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateEVRStringType;
 
 
 
@@ -45,9 +45,6 @@ public class DpkgInfoState
     }
 
 
-    /**
-     * Constructor.
-     */
     public DpkgInfoState(
                     final String id,
                     final int version
@@ -59,7 +56,7 @@ public class DpkgInfoState
 
 
     public DpkgInfoState evr(
-                    final EntityStateEVRString evr
+                    final EntityStateEVRStringType evr
                     )
     {
         setEvr( evr );

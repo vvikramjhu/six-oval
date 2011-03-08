@@ -18,11 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.model.v5.linux;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.common.Check;
-import jp.go.aist.six.oval.model.definitions.Test;
+import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
+import jp.go.aist.six.oval.model.v5.definitions.TestType;
 
 
 
@@ -34,8 +34,7 @@ import jp.go.aist.six.oval.model.definitions.Test;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class DpkgInfoTest
-    extends Test
-//extends SimpleTest
+    extends TestType
 {
 
     /**
@@ -46,9 +45,6 @@ public class DpkgInfoTest
     }
 
 
-    /**
-     * Constructor.
-     */
     public DpkgInfoTest(
                     final String id,
                     final int version
@@ -58,14 +54,11 @@ public class DpkgInfoTest
     }
 
 
-    /**
-     * Constructor.
-     */
     public DpkgInfoTest(
                     final String id,
                     final int version,
                     final String comment,
-                    final Check check
+                    final CheckEnumeration check
                     )
     {
         super( id, version, comment, check );
@@ -77,6 +70,7 @@ public class DpkgInfoTest
     //  Test
     //**************************************************************
 
+    @Override
     public PlatformEntityType getEntityType()
     {
         return PlatformEntityType.LINUX_DPKGINFO;

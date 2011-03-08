@@ -18,10 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.model.v5.linux;
 
-import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
-import jp.go.aist.six.oval.model.definitions.EntityStateEVRString;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateEVRStringType;
 
 
 
@@ -54,9 +54,6 @@ public abstract class LinuxEvrPkgInfoState
     }
 
 
-    /**
-     * Constructor.
-     */
     public LinuxEvrPkgInfoState(
                     final String id,
                     final int version
@@ -67,50 +64,56 @@ public abstract class LinuxEvrPkgInfoState
 
 
 
+    /**
+     */
     public void setEpoch(
-                    final EntityStateAnySimple epoch
+                    final EntityStateAnySimpleType epoch
                     )
     {
         _setProperty( LinuxPkgProperty.EPOCH, epoch );
     }
 
 
-    public EntityStateAnySimple getEpoch()
+    public EntityStateAnySimpleType getEpoch()
     {
         return _getProperty(
-                        LinuxPkgProperty.EPOCH, EntityStateAnySimple.class );
+                        LinuxPkgProperty.EPOCH, EntityStateAnySimpleType.class );
     }
 
 
 
+    /**
+     */
     public void setRelease(
-                    final EntityStateAnySimple release
+                    final EntityStateAnySimpleType release
                     )
     {
         _setProperty( LinuxPkgProperty.RELEASE, release );
     }
 
 
-    public EntityStateAnySimple getRelease()
+    public EntityStateAnySimpleType getRelease()
     {
         return _getProperty(
-                        LinuxPkgProperty.RELEASE, EntityStateAnySimple.class );
+                        LinuxPkgProperty.RELEASE, EntityStateAnySimpleType.class );
     }
 
 
 
+    /**
+     */
     public void setEvr(
-                    final EntityStateEVRString evr
+                    final EntityStateEVRStringType evr
                     )
     {
         _setProperty( LinuxPkgProperty.EVR, evr );
     }
 
 
-    public EntityStateEVRString getEvr()
+    public EntityStateEVRStringType getEvr()
     {
         return _getProperty(
-                        LinuxPkgProperty.EVR, EntityStateEVRString.class );
+                        LinuxPkgProperty.EVR, EntityStateEVRStringType.class );
     }
 
 

@@ -18,16 +18,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.model.v5.linux;
 
-import jp.go.aist.six.oval.model.definitions.EntityBase;
-import jp.go.aist.six.oval.model.definitions.EntityObjectString;
-import jp.go.aist.six.oval.model.definitions.Filter;
-import jp.go.aist.six.oval.model.definitions.SystemObject;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
+import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.v5.definitions.Filter;
+import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 
 
 
@@ -38,14 +38,14 @@ import java.util.Iterator;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class LinuxPkgInfoObject
-    extends SystemObject
+    extends SystemObjectType
 {
 
-    private EntityObjectString  _name;
+    private EntityObjectStringType  _name;
     //{1..1}
 
 
-    private Collection<Filter>  _filter = new ArrayList<Filter>();
+    private final Collection<Filter>  _filter = new ArrayList<Filter>();
     //{0..*}
 
 
@@ -58,9 +58,6 @@ public abstract class LinuxPkgInfoObject
     }
 
 
-    /**
-     * Constructor.
-     */
     public LinuxPkgInfoObject(
                     final String id,
                     final int version
@@ -70,10 +67,6 @@ public abstract class LinuxPkgInfoObject
     }
 
 
-
-    /**
-     * Constructor.
-     */
     public LinuxPkgInfoObject(
                     final String id,
                     final int version,
@@ -85,15 +78,17 @@ public abstract class LinuxPkgInfoObject
 
 
 
+    /**
+     */
     public void setName(
-                    final EntityObjectString name
+                    final EntityObjectStringType name
                     )
     {
         _name = name;
     }
 
 
-    public EntityObjectString getName()
+    public EntityObjectStringType getName()
     {
         return _name;
     }
@@ -145,9 +140,9 @@ public abstract class LinuxPkgInfoObject
     //**************************************************************
 
     @Override
-    public Iterator<EntityBase> iterateProperties()
+    public Iterator<EntityAttributeGroup> iterateProperties()
     {
-        EntityBase  p = getName();
+        EntityAttributeGroup  p = getName();
         return Collections.singletonList( p ).iterator();
     }
 
@@ -160,9 +155,9 @@ public abstract class LinuxPkgInfoObject
     @Override
     public String toString()
     {
-        EntityObjectString  name = getName();
+        EntityObjectStringType  name = getName();
         Collection<Filter>  filter = getFilter();
-        return "name=" + (name == null ? null : name.getData())
+        return "name=" + (name == null ? null : name.getContent())
                         + ", filter=" + filter
                         + ", " + super.toString();
     }
