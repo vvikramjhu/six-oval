@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
  * @version $Id: TextFileContent54State.java 1168 2011-01-12 02:36:17Z nakamura5akihito $
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum TextFileContentProperty
+public enum TextfilecontentPropertyTmp
 {
     FILEPATH,
     PATH,
@@ -45,9 +45,9 @@ public enum TextFileContentProperty
 
     /**
      */
-    public static EntityPropertyMap<TextFileContentProperty> createPropertyMap()
+    public static EntityPropertyMap<TextfilecontentPropertyTmp> createPropertyMap()
     {
-        return (new EntityPropertyMap<TextFileContentProperty>( TextFileContentProperty.class ));
+        return (new EntityPropertyMap<TextfilecontentPropertyTmp>( TextfilecontentPropertyTmp.class ));
     }
 
 }
