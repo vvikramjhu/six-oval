@@ -37,7 +37,7 @@ import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateEVRString
+public class EntityStateEVRStringType
     extends EntityStateSimpleBaseType
 {
 
@@ -48,7 +48,7 @@ public class EntityStateEVRString
     /**
      * Constructor.
      */
-    public EntityStateEVRString()
+    public EntityStateEVRStringType()
     {
     }
 
@@ -127,7 +127,7 @@ public class EntityStateEVRString
             return true;
         }
 
-        if (!(obj instanceof EntityStateEVRString)) {
+        if (!(obj instanceof EntityStateEVRStringType)) {
             return false;
         }
 
