@@ -18,12 +18,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.model.v5.linux;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
-import jp.go.aist.six.oval.model.definitions.EntityStateEVRString;
-import jp.go.aist.six.oval.model.definitions.EntityStateString;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateEVRStringType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
 
 
 
@@ -52,9 +52,6 @@ public class RpmInfoState
     }
 
 
-    /**
-     * Constructor.
-     */
     public RpmInfoState(
                     final String id,
                     final int version
@@ -66,7 +63,7 @@ public class RpmInfoState
 
 
     public RpmInfoState version(
-                    final EntityStateAnySimple version
+                    final EntityStateAnySimpleType version
                     )
     {
         setVersion( version );
@@ -76,7 +73,7 @@ public class RpmInfoState
 
 
     public RpmInfoState evr(
-                    final EntityStateEVRString evr
+                    final EntityStateEVRStringType evr
                     )
     {
         setEvr( evr );
@@ -86,7 +83,7 @@ public class RpmInfoState
 
 
     public void setSignatureKeyID(
-                    final EntityStateString keyid
+                    final EntityStateStringType keyid
                     )
     {
         _setProperty( LinuxPkgProperty.SIGNATURE_KEYID, keyid );
@@ -94,7 +91,7 @@ public class RpmInfoState
 
 
     public RpmInfoState signatureKeyID(
-                    final EntityStateString keyid
+                    final EntityStateStringType keyid
                     )
     {
         setSignatureKeyID( keyid );
@@ -103,10 +100,10 @@ public class RpmInfoState
 
 
 
-    public EntityStateString getSignatureKeyID()
+    public EntityStateStringType getSignatureKeyID()
     {
         return _getProperty(
-                        LinuxPkgProperty.SIGNATURE_KEYID, EntityStateString.class );
+                        LinuxPkgProperty.SIGNATURE_KEYID, EntityStateStringType.class );
     }
 
 

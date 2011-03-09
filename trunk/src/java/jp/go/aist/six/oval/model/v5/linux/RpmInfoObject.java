@@ -18,10 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.model.v5.linux;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityObjectString;
+import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
 
 
 
@@ -45,9 +45,6 @@ public class RpmInfoObject
     }
 
 
-    /**
-     * Constructor.
-     */
     public RpmInfoObject(
                     final String id,
                     final int version
@@ -57,9 +54,6 @@ public class RpmInfoObject
     }
 
 
-    /**
-     * Constructor.
-     */
     public RpmInfoObject(
                     final String id,
                     final int version,
@@ -74,7 +68,7 @@ public class RpmInfoObject
     /**
      */
     public RpmInfoObject name(
-                    final EntityObjectString name
+                    final EntityObjectStringType name
                     )
     {
         setName( name );
@@ -86,7 +80,7 @@ public class RpmInfoObject
                     final String name
                     )
     {
-        return name( new EntityObjectString( name ) );
+        return name( new EntityObjectStringType( name ) );
     }
 
 

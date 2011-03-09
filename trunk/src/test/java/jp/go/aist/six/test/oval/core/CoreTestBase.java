@@ -594,13 +594,22 @@ public abstract class CoreTestBase
         return new Object[][] {
                         // family-basis //
 
-                        // Debian patch
+//                        // Debian patch
+//                        {
+//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                            "test/data/oval-definitions-5/20110308_oval-patch_debian.gnu.linux.5.0.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_20110308_oval-patch_debian.gnu.linux.5.0.xml"
+//                        }
+//                        ,
+                        // Red Hat EL 5, vulnerability
                         {
                             jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                            "test/data/oval-definitions-5/20110308_oval-patch_debian.gnu.linux.5.0.xml",
+                            "test/data/oval-definitions-5/20110308_oval-vulnerability_red.hat.enterprise.linux.5.xml",
                             "/oval_definitions",
                             null,
-                            "marshalled_20110308_oval-patch_debian.gnu.linux.5.0.xml"
+                            "marshalled_20110308_oval-vulnerability_red.hat.enterprise.linux.5.xml"
                         }
 
 
