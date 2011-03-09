@@ -592,6 +592,18 @@ public abstract class CoreTestBase
     public Object[][] provideOvalDefinitionsOvalDefinitions()
     {
         return new Object[][] {
+                        // family-basis //
+
+                        // Debian patch
+                        {
+                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+                            "test/data/oval-definitions-5/20110308_oval-patch_debian.gnu.linux.5.0.xml",
+                            "/oval_definitions",
+                            null,
+                            "marshalled_20110308_oval-patch_debian.gnu.linux.5.0.xml"
+                        }
+
+
 //                        // windows, CVE-2010-0176, def:7222
 //                        {
 //                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
@@ -601,14 +613,14 @@ public abstract class CoreTestBase
 //                            "marshalled_oval-definitions_CVE-2010-0176_def7222_v5.9.xml"
 //                        }
 //                        ,
-                        // Debian @Mitre, CVE-2010-0176, DSA-2027
-                        {
-                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                            "test/data/oval-definitions-5/oval-definitions_CVE-2010-0176_def7432_debian.xml",
-                            "/oval_definitions",
-                            null,
-                            "marshalled_oval-definitions_CVE-2010-0176_def7432_debian.xml"
-                        }
+//                        // Debian @Mitre, CVE-2010-0176, DSA-2027
+//                        {
+//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                            "test/data/oval-definitions-5/oval-definitions_CVE-2010-0176_def7432_debian.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_oval-definitions_CVE-2010-0176_def7432_debian.xml"
+//                        }
 //                        ,
 //                        // windows, CVE-2003-0353, def:962, deprecated
 //                        {

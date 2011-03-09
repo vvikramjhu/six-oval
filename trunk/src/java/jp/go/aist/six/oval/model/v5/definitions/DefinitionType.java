@@ -302,7 +302,7 @@ public class DefinitionType
         return "[" + super.toString()
                         + ", class=" + getDefinitionClass()
                         + ", metadata=" + getMetadata()
-                        + ", " + getCriteria()
+//                        + ", " + getCriteria()
                         + ", notes=" + getNotes()
                         + "]";
     }

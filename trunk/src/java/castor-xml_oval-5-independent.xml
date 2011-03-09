@@ -179,7 +179,7 @@
 
 
     <class name="jp.go.aist.six.oval.model.v5.independent.Textfilecontent54State"
-        extends="jp.go.aist.six.oval.model.v5.definitions.State">
+        extends="jp.go.aist.six.oval.model.v5.definitions.StateType">
         <map-to xml="textfilecontent54_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
             ns-prefix=""/>
