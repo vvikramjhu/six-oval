@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.common.Datatype;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 
 
 
@@ -31,16 +31,16 @@ import jp.go.aist.six.oval.model.common.Datatype;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class LiteralComponent
-    extends Component
+public class LiteralComponentType
+    extends ComponentGroup
 {
 
-    private String  _data;
+    private String  _content;
     //{xsd:anySimpleType}
 
 
-    public static final Datatype  DEFAULT_DATATYPE = Datatype.STRING;
-    private Datatype  _datatype;
+    public static final DatatypeEnumeration  DEFAULT_DATATYPE = DatatypeEnumeration.STRING;
+    private DatatypeEnumeration  _datatype;
     //{optional, defualt="string"}
 
 
@@ -48,49 +48,25 @@ public class LiteralComponent
     /**
      * Constructor.
      */
-    public LiteralComponent()
+    public LiteralComponentType()
     {
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public LiteralComponent(
-                    final String data
-                    )
-    {
-        this( data, DEFAULT_DATATYPE );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public LiteralComponent(
-                    final String data,
-                    final Datatype datatype
-                    )
-    {
-        setData( data );
-        setDatatype( datatype );
     }
 
 
 
     /**
      */
-    public void setData(
-                    final String data
+    public void setContent(
+                    final String content
                     )
     {
-        _data = data;
+        _content = content;
     }
 
 
-    public String getData()
+    public String getContent()
     {
-        return _data;
+        return _content;
     }
 
 
@@ -98,16 +74,16 @@ public class LiteralComponent
     /**
      */
     public void setDatatype(
-                    final Datatype datatype
+                    final DatatypeEnumeration datatype
                     )
     {
         _datatype = datatype;
     }
 
 
-    public Datatype getDatatype()
+    public DatatypeEnumeration getDatatype()
     {
-        return (_datatype == null ? DEFAULT_DATATYPE : _datatype);
+        return _datatype;
     }
 
 
@@ -119,10 +95,10 @@ public class LiteralComponent
     @Override
     public String toString()
     {
-        return "literal_component[datatype=" + getDatatype()
-                        + ", " + getData()
+        return "[datatype=" + getDatatype()
+                        + ", " + getContent()
                         + "]";
     }
 
 }
-// LiteralComponent
+// LiteralComponentType

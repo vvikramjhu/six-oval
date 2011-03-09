@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
 import jp.go.aist.six.oval.model.AbstractOvalObject;
 
@@ -32,7 +32,7 @@ import jp.go.aist.six.oval.model.AbstractOvalObject;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class Component
+public abstract class ComponentGroup
     extends AbstractOvalObject
 //    implements Dependent<LocalVariable>
 {
@@ -40,9 +40,9 @@ public abstract class Component
     /**
      * Constructor.
      */
-    public Component()
+    public ComponentGroup()
     {
     }
 
 }
-// Component
+// ComponentGroup

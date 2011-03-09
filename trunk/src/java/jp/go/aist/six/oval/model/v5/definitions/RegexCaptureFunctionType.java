@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
 
 
@@ -29,64 +29,39 @@ package jp.go.aist.six.oval.model.definitions;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class RegexCaptureFunction
-    extends Function
+public class RegexCaptureFunctionType
+    extends FunctionGroup
 {
 
-    private Component  _component;
+    private ComponentGroup  _component;
     //{1..1}
 
 
     private String  _pattern;
-    //{option}
+    //{optional}
 
 
 
     /**
      * Constructor.
      */
-    public RegexCaptureFunction()
+    public RegexCaptureFunctionType()
     {
     }
-
-
-    /**
-     * Constructor.
-     */
-    public RegexCaptureFunction(
-                    final Component component
-                    )
-    {
-        setComponent( component );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public RegexCaptureFunction(
-                    final Component component,
-                    final String pattern
-                    )
-    {
-        this( component );
-        setPattern( pattern );
-    }
-
 
 
 
     /**
      */
     public void setComponent(
-                    final Component component
+                    final ComponentGroup component
                     )
     {
         _component = component;
     }
 
 
-    public Component getComponent()
+    public ComponentGroup getComponent()
     {
         return _component;
     }
@@ -123,4 +98,4 @@ public class RegexCaptureFunction
     }
 
 }
-// RegexCaptureFunction
+// RegexCaptureFunctionType

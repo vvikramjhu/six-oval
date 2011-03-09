@@ -18,10 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.independent;
+package jp.go.aist.six.oval.model.v5.independent;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.SystemObject;
+import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 
 
 
@@ -34,7 +34,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObject;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class FamilyObject
-    extends SystemObject
+    extends SystemObjectType
 {
 
     /**
@@ -45,9 +45,6 @@ public class FamilyObject
     }
 
 
-    /**
-     * Constructor.
-     */
     public FamilyObject(
                     final String id,
                     final int version
@@ -57,9 +54,6 @@ public class FamilyObject
     }
 
 
-    /**
-     * Constructor.
-     */
     public FamilyObject(
                     final String id,
                     final int version,

@@ -52,12 +52,10 @@
             <bind-xml name="states" node="element"/>
         </field>
 
-<!-- *****
         <field name="variables" 
-            type="jp.go.aist.six.oval.model.definitions.Variables">
+            type="jp.go.aist.six.oval.model.v5.definitions.VariablesType">
             <bind-xml name="variables" node="element"/>
         </field>
--->
     </class>
 
 
@@ -205,8 +203,10 @@
 
 
     <class name="jp.go.aist.six.oval.model.v5.definitions.NotesType">
-        <map-to 
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        <map-to xml="notes"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            ns-prefix=""
+            />
 
         <field name="note" 
             type="jp.go.aist.six.oval.model.v5.definitions.Note"
@@ -217,7 +217,8 @@
 
     <class name="jp.go.aist.six.oval.model.v5.definitions.Note">
         <map-to xml="note"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            ns-prefix=""/>
 
         <field name="content" type="string">
             <bind-xml node="text"/>
@@ -295,12 +296,25 @@
 
     <class name="jp.go.aist.six.oval.model.v5.definitions.TestType"
         extends="jp.go.aist.six.oval.model.v5.CommentedOvalEntity"
-        verify-constructable="false">
+        >
+<!--
+        <map-to
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            ns-prefix=""/>
+        verify-constructable="false"
+-->
 
         <field name="notes" 
             type="jp.go.aist.six.oval.model.v5.definitions.NotesType">
             <bind-xml name="notes" node="element"/>
         </field>
+<!--
+        <field name="notes" 
+            type="jp.go.aist.six.oval.model.v5.definitions.NotesType">
+            <bind-xml name="oval-def:notes" node="element"
+                xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+-->
 
         <field name="checkExistence"
             type="jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration">
@@ -402,7 +416,160 @@
 
 
 
-<!-- Entity -->
+    <!-- ******************************************************* -->
+    <!-- variables                                               -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.VariablesType">
+        <field name="variable" 
+            type="jp.go.aist.six.oval.model.v5.definitions.VariableType"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.VariableType"
+        extends="jp.go.aist.six.oval.model.v5.CommentedOvalEntity"
+        verify-constructable="false">
+
+        <field name="datatype"  
+            type="jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration">
+            <bind-xml name="datatype" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.LocalVariable"
+        extends="jp.go.aist.six.oval.model.v5.definitions.VariableType">
+        <map-to xml="local_variable"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="component" 
+            type="jp.go.aist.six.oval.model.v5.definitions.ComponentGroup">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.LiteralComponentType">
+        <map-to xml="literal_component"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="content" type="string">
+            <bind-xml node="text"/>
+        </field>
+
+        <field name="datatype"
+            type="jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration">
+            <bind-xml name="datatype" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.ObjectComponentType">
+        <map-to xml="object_component"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="objectRef" type="string">
+            <bind-xml name="object_ref" node="attribute"/>
+        </field>
+
+        <field name="itemField" type="string">
+            <bind-xml name="item_field" node="attribute"/>
+        </field>
+
+        <field name="recordField" type="string">
+            <bind-xml name="record_field" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.VariableComponentType">
+        <map-to xml="variable_component"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="varRef" type="string">
+            <bind-xml name="var_ref" node="attribute"/>
+        </field>
+    </class>
+
+
+
+<!--
+    <class name="jp.go.aist.six.oval.model.v5.definitions.FunctionGroup"
+        verify-constructable="false">
+
+    </class>
+-->
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.ConcatFunctionType">
+        <map-to xml="concat"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="component" 
+            type="jp.go.aist.six.oval.model.v5.definitions.ComponentGroup"
+            collection="collection">
+            <!-- set-method="addComponent" get-method="iterateComponent" -->
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.EscapeRegexFunctionType">
+        <map-to xml="escape_regex"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="component" 
+            type="jp.go.aist.six.oval.model.v5.definitions.ComponentGroup">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.RegexCaptureFunctionType">
+        <map-to xml="regex_capture"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="component" 
+            type="jp.go.aist.six.oval.model.v5.definitions.ComponentGroup">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+
+        <field name="pattern" type="string">
+            <bind-xml name="pattern" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.SplitFunctionType">
+        <map-to xml="split"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="component" 
+            type="jp.go.aist.six.oval.model.v5.definitions.ComponentGroup">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+
+        <field name="delimiter" type="string">
+            <bind-xml name="delimiter" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- entity                                                  -->
+    <!-- ******************************************************* -->
 
     <class name="jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup"
         verify-constructable="false">

@@ -18,16 +18,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
-import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityBase;
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
-import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
-import jp.go.aist.six.oval.model.definitions.EntityStateInt;
-import jp.go.aist.six.oval.model.definitions.EntityStateString;
-import jp.go.aist.six.oval.model.definitions.State;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
+import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateIntType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.v5.definitions.StateType;
 
 
 
@@ -40,10 +40,10 @@ import java.util.Iterator;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class MetabaseState
-    extends State
+    extends StateType
 {
 
-    private EntityPropertyMap<MetabaseProperty>  _properties =
+    private final EntityPropertyMap<MetabaseProperty>  _properties =
         MetabaseProperty.createPropertyMap();
 
 
@@ -56,9 +56,6 @@ public class MetabaseState
     }
 
 
-    /**
-     * Constructor.
-     */
     public MetabaseState(
                     final String id,
                     final int version
@@ -71,15 +68,15 @@ public class MetabaseState
 
     /**
      */
-    public EntityStateString getKey()
+    public EntityStateStringType getKey()
     {
         return _properties.getProperty(
-                        MetabaseProperty.KEY, EntityStateString.class );
+                        MetabaseProperty.KEY, EntityStateStringType.class );
     }
 
 
     public void setKey(
-                    final EntityStateString key
+                    final EntityStateStringType key
                     )
     {
         _properties.setProperty( MetabaseProperty.KEY, key );
@@ -87,7 +84,7 @@ public class MetabaseState
 
 
     public MetabaseState key(
-                    final EntityStateString key
+                    final EntityStateStringType key
                     )
     {
         setKey( key );
@@ -98,15 +95,15 @@ public class MetabaseState
 
     /**
      */
-    public EntityStateInt getID()
+    public EntityStateIntType getID()
     {
         return _properties.getProperty(
-                        MetabaseProperty.ID, EntityStateInt.class );
+                        MetabaseProperty.ID, EntityStateIntType.class );
     }
 
 
     public void setID(
-                    final EntityStateInt id
+                    final EntityStateIntType id
                     )
     {
         _properties.setProperty( MetabaseProperty.ID, id );
@@ -114,7 +111,7 @@ public class MetabaseState
 
 
     public MetabaseState ID(
-                    final EntityStateInt id
+                    final EntityStateIntType id
                     )
     {
         setID( id );
@@ -125,15 +122,15 @@ public class MetabaseState
 
     /**
      */
-    public EntityStateString getName()
+    public EntityStateStringType getName()
     {
         return _properties.getProperty(
-                        MetabaseProperty.NAME, EntityStateString.class );
+                        MetabaseProperty.NAME, EntityStateStringType.class );
     }
 
 
     public void setName(
-                    final EntityStateString name
+                    final EntityStateStringType name
                     )
     {
         _properties.setProperty( MetabaseProperty.NAME, name );
@@ -141,7 +138,7 @@ public class MetabaseState
 
 
     public MetabaseState name(
-                    final EntityStateString name
+                    final EntityStateStringType name
                     )
     {
         setName( name );
@@ -152,15 +149,15 @@ public class MetabaseState
 
     /**
      */
-    public EntityStateString getUserType()
+    public EntityStateStringType getUserType()
     {
         return _properties.getProperty(
-                        MetabaseProperty.USER_TYPE, EntityStateString.class );
+                        MetabaseProperty.USER_TYPE, EntityStateStringType.class );
     }
 
 
     public void setUserType(
-                    final EntityStateString userType
+                    final EntityStateStringType userType
                     )
     {
         _properties.setProperty( MetabaseProperty.USER_TYPE, userType );
@@ -168,7 +165,7 @@ public class MetabaseState
 
 
     public MetabaseState userType(
-                    final EntityStateString userType
+                    final EntityStateStringType userType
                     )
     {
         setUserType( userType );
@@ -179,15 +176,15 @@ public class MetabaseState
 
     /**
      */
-    public EntityStateString getDataType()
+    public EntityStateStringType getDataType()
     {
         return _properties.getProperty(
-                        MetabaseProperty.DATA_TYPE, EntityStateString.class );
+                        MetabaseProperty.DATA_TYPE, EntityStateStringType.class );
     }
 
 
     public void setDataType(
-                    final EntityStateString dataType
+                    final EntityStateStringType dataType
                     )
     {
         _properties.setProperty( MetabaseProperty.DATA_TYPE, dataType );
@@ -195,7 +192,7 @@ public class MetabaseState
 
 
     public MetabaseState dataType(
-                    final EntityStateString dataType
+                    final EntityStateStringType dataType
                     )
     {
         setDataType( dataType );
@@ -206,15 +203,15 @@ public class MetabaseState
 
     /**
      */
-    public EntityStateAnySimple getData()
+    public EntityStateAnySimpleType getData()
     {
         return _properties.getProperty(
-                        MetabaseProperty.DATA, EntityStateAnySimple.class );
+                        MetabaseProperty.DATA, EntityStateAnySimpleType.class );
     }
 
 
     public void setData(
-                    final EntityStateAnySimple data
+                    final EntityStateAnySimpleType data
                     )
     {
         _properties.setProperty( MetabaseProperty.DATA, data );
@@ -222,7 +219,7 @@ public class MetabaseState
 
 
     public MetabaseState data(
-                    final EntityStateAnySimple data
+                    final EntityStateAnySimpleType data
                     )
     {
         setData( data );
@@ -244,7 +241,7 @@ public class MetabaseState
 
 
     @Override
-    public Iterator<EntityBase> iterateProperties()
+    public Iterator<EntityAttributeGroup> iterateProperties()
     {
         return _properties.iterateProperties();
     }

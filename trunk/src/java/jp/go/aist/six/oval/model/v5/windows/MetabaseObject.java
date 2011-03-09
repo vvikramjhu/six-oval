@@ -18,18 +18,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
-import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityBase;
-import jp.go.aist.six.oval.model.definitions.EntityObjectInt;
-import jp.go.aist.six.oval.model.definitions.EntityObjectString;
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
-import jp.go.aist.six.oval.model.definitions.Filter;
-import jp.go.aist.six.oval.model.definitions.SystemObject;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
+import jp.go.aist.six.oval.model.v5.definitions.EntityObjectIntType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.v5.definitions.Filter;
+import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 
 
 
@@ -42,10 +42,10 @@ import java.util.Iterator;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class MetabaseObject
-    extends SystemObject
+    extends SystemObjectType
 {
 
-    private EntityPropertyMap<MetabaseProperty>  _properties =
+    private final EntityPropertyMap<MetabaseProperty>  _properties =
         MetabaseProperty.createPropertyMap();
 
 
@@ -56,7 +56,7 @@ public class MetabaseObject
 //    //{0..1, nillable="true"}
 
 
-    private Collection<Filter>  _filter = new ArrayList<Filter>();
+    private final Collection<Filter>  _filter = new ArrayList<Filter>();
     //{0..*}
 
 
@@ -69,9 +69,6 @@ public class MetabaseObject
     }
 
 
-    /**
-     * Constructor.
-     */
     public MetabaseObject(
                     final String id,
                     final int version
@@ -81,9 +78,6 @@ public class MetabaseObject
     }
 
 
-    /**
-     * Constructor.
-     */
     public MetabaseObject(
                     final String id,
                     final int version,
@@ -94,9 +88,6 @@ public class MetabaseObject
     }
 
 
-    /**
-     * Constructor.
-     */
     public MetabaseObject(
                     final String id,
                     final int version,
@@ -105,20 +96,17 @@ public class MetabaseObject
                     )
     {
         this( id, version,
-                        (mbKey == null ? null : new EntityObjectString( mbKey )),
-                        (mbID  == null ? null : new EntityObjectInt( mbID ))
+                        (mbKey == null ? null : new EntityObjectStringType( mbKey )),
+                        (mbID  == null ? null : new EntityObjectIntType( mbID ))
         );
     }
 
 
-    /**
-     * Constructor.
-     */
     public MetabaseObject(
                     final String id,
                     final int version,
-                    final EntityObjectString mbKey,
-                    final EntityObjectInt mbID
+                    final EntityObjectStringType mbKey,
+                    final EntityObjectIntType mbID
                     )
     {
         super( id, version );
@@ -128,8 +116,10 @@ public class MetabaseObject
 
 
 
+    /**
+     */
     public void setKey(
-                    final EntityObjectString key
+                    final EntityObjectStringType key
                     )
     {
         _properties.setProperty( MetabaseProperty.KEY, key );
@@ -137,7 +127,7 @@ public class MetabaseObject
 
 
     public MetabaseObject key(
-                    final EntityObjectString key
+                    final EntityObjectStringType key
                     )
     {
         setKey( key );
@@ -145,25 +135,26 @@ public class MetabaseObject
     }
 
 
-    public EntityObjectString getKey()
+    public EntityObjectStringType getKey()
     {
         return _properties.getProperty(
-                        MetabaseProperty.KEY, EntityObjectString.class );
+                        MetabaseProperty.KEY, EntityObjectStringType.class );
     }
 
 
 
+    /**
+     */
     public void setID(
-                    final EntityObjectInt id
+                    final EntityObjectIntType id
                     )
     {
         _properties.setProperty( MetabaseProperty.ID, id );
-//        _id = id;
     }
 
 
     public MetabaseObject ID(
-                    final EntityObjectInt id
+                    final EntityObjectIntType id
                     )
     {
         setID( id );
@@ -171,10 +162,10 @@ public class MetabaseObject
     }
 
 
-    public EntityObjectInt getID()
+    public EntityObjectIntType getID()
     {
         return _properties.getProperty(
-                        MetabaseProperty.ID, EntityObjectInt.class );
+                        MetabaseProperty.ID, EntityObjectIntType.class );
     }
 
 
@@ -241,7 +232,7 @@ public class MetabaseObject
 
 
     @Override
-    public Iterator<EntityBase> iterateProperties()
+    public Iterator<EntityAttributeGroup> iterateProperties()
     {
         return _properties.iterateProperties();
     }

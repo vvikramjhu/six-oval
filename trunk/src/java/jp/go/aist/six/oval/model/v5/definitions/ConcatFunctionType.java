@@ -18,10 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -35,11 +34,11 @@ import java.util.Iterator;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class ConcatFunction
-    extends Function
+public class ConcatFunctionType
+    extends FunctionGroup
 {
 
-    private Collection<Component>  _component = new ArrayList<Component>();
+    private final Collection<ComponentGroup>  _component = new ArrayList<ComponentGroup>();
     //{2..*}
 
 
@@ -47,30 +46,8 @@ public class ConcatFunction
     /**
      * Constructor.
      */
-    public ConcatFunction()
+    public ConcatFunctionType()
     {
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public ConcatFunction(
-                    final Collection<? extends Component> components
-                    )
-    {
-        setComponent( components );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public ConcatFunction(
-                    final Component[] components
-                    )
-    {
-        setComponent( Arrays.asList( components ) );
     }
 
 
@@ -78,7 +55,7 @@ public class ConcatFunction
     /**
      */
     public void setComponent(
-                    final Collection<? extends Component> components
+                    final Collection<? extends ComponentGroup> components
                     )
     {
         if (components != _component) {
@@ -91,20 +68,20 @@ public class ConcatFunction
 
 
     public boolean addComponent(
-                    final Component component
+                    final ComponentGroup component
                     )
     {
         return _component.add( component );
     }
 
 
-    public Collection<Component> getComponent()
+    public Collection<ComponentGroup> getComponent()
     {
         return _component;
     }
 
 
-    public Iterator<Component> iterateComponent()
+    public Iterator<ComponentGroup> iterateComponent()
     {
         return _component.iterator();
     }
@@ -123,4 +100,4 @@ public class ConcatFunction
     }
 
 }
-// ConcatFunction
+// ConcatFunctionType

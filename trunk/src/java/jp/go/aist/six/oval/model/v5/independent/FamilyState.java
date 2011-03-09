@@ -18,13 +18,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.independent;
+package jp.go.aist.six.oval.model.v5.independent;
 
-import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityBase;
-import jp.go.aist.six.oval.model.definitions.State;
 import java.util.Collections;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
+import jp.go.aist.six.oval.model.v5.definitions.StateType;
 
 
 
@@ -37,10 +37,10 @@ import java.util.Iterator;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class FamilyState
-    extends State
+    extends StateType
 {
 
-    private EntityStateFamily  _family;
+    private EntityStateFamilyType  _family;
     //{0..1}
 
 
@@ -53,9 +53,6 @@ public class FamilyState
     }
 
 
-    /**
-     * Constructor.
-     */
     public FamilyState(
                     final String id,
                     final int version
@@ -65,9 +62,6 @@ public class FamilyState
     }
 
 
-    /**
-     * Constructor.
-     */
     public FamilyState(
                     final String id,
                     final int version,
@@ -82,14 +76,14 @@ public class FamilyState
 
     /**
      */
-    public EntityStateFamily getFamily()
+    public EntityStateFamilyType getFamily()
     {
         return _family;
     }
 
 
     public void setFamily(
-                    final EntityStateFamily family
+                    final EntityStateFamilyType family
                     )
     {
         _family = family;
@@ -97,7 +91,7 @@ public class FamilyState
 
 
     public FamilyState family(
-                    final EntityStateFamily family
+                    final EntityStateFamilyType family
                     )
     {
         setFamily( family );
@@ -119,9 +113,9 @@ public class FamilyState
 
 
     @Override
-    public Iterator<EntityBase> iterateProperties()
+    public Iterator<EntityAttributeGroup> iterateProperties()
     {
-        EntityBase  p = getFamily();
+        EntityAttributeGroup  p = getFamily();
         return Collections.singletonList( p ).iterator();
     }
 

@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
 
 
@@ -30,8 +30,8 @@ package jp.go.aist.six.oval.model.definitions;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class VariableComponent
-    extends Component
+public class VariableComponentType
+    extends ComponentGroup
 {
 
     private String  _varRef;
@@ -42,19 +42,8 @@ public class VariableComponent
     /**
      * Constructor.
      */
-    public VariableComponent()
+    public VariableComponentType()
     {
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public VariableComponent(
-                    final String varRef
-                    )
-    {
-        setVarRef( varRef );
     }
 
 
@@ -83,9 +72,9 @@ public class VariableComponent
     @Override
     public String toString()
     {
-        return "variable_component[var_ref=" + getVarRef()
+        return "[var_ref=" + getVarRef()
                         + "]";
     }
 
 }
-// VariableComponent
+// VariableComponentType

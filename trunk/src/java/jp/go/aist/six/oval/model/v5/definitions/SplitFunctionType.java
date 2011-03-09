@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
 
 
@@ -30,11 +30,11 @@ package jp.go.aist.six.oval.model.definitions;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class SplitFunction
-    extends Function
+public class SplitFunctionType
+    extends FunctionGroup
 {
 
-    private Component  _component;
+    private ComponentGroup  _component;
     //{1..1}
 
 
@@ -46,27 +46,8 @@ public class SplitFunction
     /**
      * Constructor.
      */
-    public SplitFunction()
+    public SplitFunctionType()
     {
-    }
-
-
-    public SplitFunction(
-                    final Component component
-                    )
-    {
-        setComponent( component );
-    }
-
-
-
-    public SplitFunction(
-                    final Component component,
-                    final String delimiter
-                    )
-    {
-        setComponent( component );
-        setDelimiter( delimiter );
     }
 
 
@@ -74,14 +55,14 @@ public class SplitFunction
     /**
      */
     public void setComponent(
-                    final Component component
+                    final ComponentGroup component
                     )
     {
         _component = component;
     }
 
 
-    public Component getComponent()
+    public ComponentGroup getComponent()
     {
         return _component;
     }
@@ -112,10 +93,10 @@ public class SplitFunction
     @Override
     public String toString()
     {
-        return "escape_regex[" + getComponent()
+        return "split[" + getComponent()
                         + ", delimiter=" + getDelimiter()
                         + "]";
     }
 
 }
-// SplitFunction
+// SplitFunctionType

@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
 
 
@@ -30,11 +30,11 @@ package jp.go.aist.six.oval.model.definitions;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EscapeRegexFunction
-    extends Function
+public class EscapeRegexFunctionType
+    extends FunctionGroup
 {
 
-    private Component  _component;
+    private ComponentGroup  _component;
     //{1..1}
 
 
@@ -42,19 +42,8 @@ public class EscapeRegexFunction
     /**
      * Constructor.
      */
-    public EscapeRegexFunction()
+    public EscapeRegexFunctionType()
     {
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EscapeRegexFunction(
-                    final Component component
-                    )
-    {
-        setComponent( component );
     }
 
 
@@ -62,14 +51,14 @@ public class EscapeRegexFunction
     /**
      */
     public void setComponent(
-                    final Component component
+                    final ComponentGroup component
                     )
     {
         _component = component;
     }
 
 
-    public Component getComponent()
+    public ComponentGroup getComponent()
     {
         return _component;
     }
@@ -88,4 +77,4 @@ public class EscapeRegexFunction
     }
 
 }
-// EscapeRegexFunction
+// EscapeRegexFunctionType

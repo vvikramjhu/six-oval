@@ -18,14 +18,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
-import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityBase;
-import jp.go.aist.six.oval.model.definitions.EntityObjectString;
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
-import jp.go.aist.six.oval.model.definitions.SystemObject;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
+import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 
 
 
@@ -38,19 +38,20 @@ import java.util.Iterator;
  *             Replaced by the wmi57 object and
  *             will be removed in a future version of the language.
  */
+@Deprecated
 public class WmiObject
-    extends SystemObject
+    extends SystemObjectType
 {
 
-    private EntityPropertyMap<WmiProperty>  _properties =
+    private final EntityPropertyMap<WmiProperty>  _properties =
         WmiProperty.createPropertyMap();
 
 
 //    private EntityObjectString  _namespace;
-//    //{0..1}
+//    //{1..1}
 //
 //    private EntityObjectString  _wql;
-//    //{0..1}
+//    //{1..1}
 
 
 
@@ -62,9 +63,6 @@ public class WmiObject
     }
 
 
-    /**
-     * Constructor.
-     */
     public WmiObject(
                     final String id,
                     final int version
@@ -74,9 +72,6 @@ public class WmiObject
     }
 
 
-    /**
-     * Constructor.
-     */
     public WmiObject(
                     final String id,
                     final int version,
@@ -85,20 +80,17 @@ public class WmiObject
                     )
     {
         this( id, version,
-                        (namespace == null ? null : (new EntityObjectString( namespace ))),
-                        (wql == null ? null : (new EntityObjectString( wql )))
+                        (namespace == null ? null : (new EntityObjectStringType( namespace ))),
+                        (wql == null ? null : (new EntityObjectStringType( wql )))
         );
     }
 
 
-    /**
-     * Constructor.
-     */
     public WmiObject(
                     final String id,
                     final int version,
-                    final EntityObjectString namespace,
-                    final EntityObjectString wql
+                    final EntityObjectStringType namespace,
+                    final EntityObjectStringType wql
                     )
     {
         super( id, version );
@@ -110,33 +102,33 @@ public class WmiObject
 
 
     public void setNamespace(
-                    final EntityObjectString namespace
+                    final EntityObjectStringType namespace
                     )
     {
         _properties.setProperty( WmiProperty.NAMESPACE, namespace );
     }
 
 
-    public EntityObjectString getNamespace()
+    public EntityObjectStringType getNamespace()
     {
         return _properties.getProperty(
-                        WmiProperty.NAMESPACE, EntityObjectString.class );
+                        WmiProperty.NAMESPACE, EntityObjectStringType.class );
     }
 
 
 
     public void setWql(
-                    final EntityObjectString wql
+                    final EntityObjectStringType wql
                     )
     {
         _properties.setProperty( WmiProperty.WQL, wql );
     }
 
 
-    public EntityObjectString getWql()
+    public EntityObjectStringType getWql()
     {
         return _properties.getProperty(
-                        WmiProperty.WQL, EntityObjectString.class );
+                        WmiProperty.WQL, EntityObjectStringType.class );
     }
 
 
@@ -154,7 +146,7 @@ public class WmiObject
 
 
     @Override
-    public Iterator<EntityBase> iterateProperties()
+    public Iterator<EntityAttributeGroup> iterateProperties()
     {
         return _properties.iterateProperties();
     }

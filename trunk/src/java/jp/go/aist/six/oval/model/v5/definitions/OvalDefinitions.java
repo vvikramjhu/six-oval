@@ -39,20 +39,26 @@ public class OvalDefinitions
     private GeneratorType  _generator;
     //{1..1}
 
+
     private DefinitionsType  _definitions;
     //{0..1}
+
 
     private TestsType  _tests;
     //{0..1}
 
+
     private SystemObjectsType  _objects;
     //{0..1}
+
 
     private StatesType  _states;
     //{0..1}
 
-//    private VariablesType  _variables;
-//    //{0..1}
+
+    private VariablesType  _variables;
+    //{0..1}
+
 
     private String  _definitionsDigest;
 
@@ -223,38 +229,38 @@ public class OvalDefinitions
 
 
 
-//    /**
-//     */
-//    public void setVariables(
-//                    final VariablesType variables
-//                    )
-//    {
-//        _variables = variables;
-//    }
-//
-//
-//    public VariablesType getVariables()
-//    {
-//        return _variables;
-//    }
-//
-//
-//    public OvalDefinitions variable(
-//                    final Variable variable
-//                    )
-//    {
-//        VariablesType  variables = getVariables();
-//        if (variables == null) {
-//            variables = new VariablesType();
-//            setVariables( variables );
-//        }
-//        variables.addVariable( variable );
-//
-//        return this;
-//    }
-//
-//
-//
+    /**
+     */
+    public void setVariables(
+                    final VariablesType variables
+                    )
+    {
+        _variables = variables;
+    }
+
+
+    public VariablesType getVariables()
+    {
+        return _variables;
+    }
+
+
+    public OvalDefinitions variable(
+                    final VariableType variable
+                    )
+    {
+        VariablesType  variables = getVariables();
+        if (variables == null) {
+            variables = new VariablesType();
+            setVariables( variables );
+        }
+        variables.addVariable( variable );
+
+        return this;
+    }
+
+
+
     /**
      */
     public void setDefinitionsDigest(
@@ -346,7 +352,7 @@ public class OvalDefinitions
         TestsType  tests = getTests();
         SystemObjectsType  objects = getObjects();
         StatesType  states = getStates();
-//        VariablesType  variables = getVariables();
+        VariablesType  variables = getVariables();
 
         return "oval_definitions[generator=" + getGenerator()
                         + ", #definitions="
@@ -359,8 +365,8 @@ public class OvalDefinitions
                         + (objects == null ? 0 : objects.size())
                         + ", #states="
                         + (states == null ? 0 : states.size())
-//                        + ", #variables="
-//                        + (variables == null ? 0 : variables.size())
+                        + ", #variables="
+                        + (variables == null ? 0 : variables.size())
                         + "]";
     }
 

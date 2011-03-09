@@ -20,7 +20,9 @@
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     
-<!-- file -->    
+    <!-- ******************************************************* -->
+    <!-- file                                                    -->
+    <!-- ******************************************************* -->
 
     <class name="jp.go.aist.six.oval.model.v5.windows.FileTest"
         extends="jp.go.aist.six.oval.model.v5.definitions.TestType">
@@ -107,8 +109,93 @@
 
 
 
+    <!-- ******************************************************* -->
+    <!-- metabase                                                -->
+    <!-- ******************************************************* -->
 
-<!-- registry -->
+    <class name="jp.go.aist.six.oval.model.v5.windows.MetabaseTest"
+        extends="jp.go.aist.six.oval.model.v5.definitions.TestType">
+        <map-to xml="metabase_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.v5.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.v5.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.windows.MetabaseObject"
+        extends="jp.go.aist.six.oval.model.v5.definitions.SystemObjectType">
+        <map-to xml="metabase_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="key" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType">
+            <bind-xml name="key" node="element"/>
+        </field>
+        
+        <field name="ID" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityObjectIntType">
+            <bind-xml name="id" node="element"/>
+        </field>
+
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.windows.MetabaseState"
+        extends="jp.go.aist.six.oval.model.v5.definitions.StateType">
+        <map-to xml="metabase_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="key" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="key" node="element"/>
+        </field>
+
+        <field name="ID" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateIntType">
+            <bind-xml name="id" node="element"/>
+        </field>
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="userType" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="user_type" node="element"/>
+        </field>
+
+        <field name="dataType" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="data_type" node="element"/>
+        </field>
+
+        <field name="data" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType">
+            <bind-xml name="data" node="element"/>
+        </field>
+    </class>
+
+
+
+
+    <!-- ******************************************************* -->
+    <!-- registry                                                -->
+    <!-- ******************************************************* -->
 
     <class name="jp.go.aist.six.oval.model.v5.windows.RegistryTest"
         extends="jp.go.aist.six.oval.model.v5.definitions.TestType">
@@ -205,11 +292,94 @@
 
 
 
-<!-- entity -->
-
     <class name="jp.go.aist.six.oval.model.v5.windows.EntityObjectRegistryHiveType"
         extends="jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType">
     </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.windows.EntityStateRegistryHiveType"
+        extends="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.windows.EntityStateRegistryTypeType"
+        extends="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- wmi                                                     -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.v5.windows.WmiTest"
+        extends="jp.go.aist.six.oval.model.v5.definitions.TestType">
+        <map-to xml="wmi_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.v5.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.v5.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.windows.WmiObject"
+        extends="jp.go.aist.six.oval.model.v5.definitions.SystemObjectType">
+        <map-to xml="wmi_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="namespace" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType">
+            <bind-xml name="namespace" node="element"/>
+        </field>
+        
+        <field name="wql" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType">
+            <bind-xml name="wql" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.windows.WmiState"
+        extends="jp.go.aist.six.oval.model.v5.definitions.StateType">
+        <map-to xml="wmi_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="namespace" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="namespace" node="element"/>
+        </field>
+
+        <field name="wql" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="wql" node="element"/>
+        </field>
+
+        <field name="result" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType">
+            <bind-xml name="result" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- entity                                                  -->
+    <!-- ******************************************************* -->
 
 
 </mapping>

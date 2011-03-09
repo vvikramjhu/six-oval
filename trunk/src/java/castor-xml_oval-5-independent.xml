@@ -20,28 +20,32 @@
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-    <!-- ======================================================= 
-    <class name="jp.go.aist.six.oval.model.independent.FamilyTest"
-        extends="jp.go.aist.six.oval.model.definitions.Test">
+    <!-- ******************************************************* -->
+    <!-- family                                                  -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.v5.independent.FamilyTest"
+        extends="jp.go.aist.six.oval.model.v5.definitions.TestType">
         <map-to xml="family_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
             ns-prefix=""/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.definitions.SystemObjectRef">
+            type="jp.go.aist.six.oval.model.v5.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.definitions.StateRef"
+            type="jp.go.aist.six.oval.model.v5.definitions.StateRefType"
             collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
     </class>
 
 
-    <class name="jp.go.aist.six.oval.model.independent.FamilyObject"
-        extends="jp.go.aist.six.oval.model.definitions.SystemObject">
+
+    <class name="jp.go.aist.six.oval.model.v5.independent.FamilyObject"
+        extends="jp.go.aist.six.oval.model.v5.definitions.SystemObjectType">
         <map-to xml="family_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
             ns-prefix=""/>
@@ -49,47 +53,29 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.independent.FamilyState"
-        extends="jp.go.aist.six.oval.model.definitions.State">
+    <class name="jp.go.aist.six.oval.model.v5.independent.FamilyState"
+        extends="jp.go.aist.six.oval.model.v5.definitions.StateType">
         <map-to xml="family_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
             ns-prefix=""/>
 
         <field name="family" 
-            type="jp.go.aist.six.oval.model.independent.EntityStateFamily">
+            type="jp.go.aist.six.oval.model.v5.independent.EntityStateFamilyType">
             <bind-xml name="family" node="element"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.independent.EntityStateFamily"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateString">
+    <class name="jp.go.aist.six.oval.model.v5.independent.EntityStateFamilyType"
+        extends="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.independent.EntityItemFamily"
-        extends="jp.go.aist.six.oval.model.sc.EntityItemString">
-    </class>
-
-
-
-    <class name ="jp.go.aist.six.oval.model.independent.FamilyItem"
-        extends="jp.go.aist.six.oval.model.sc.Item">
-        <map-to xml="family_item"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent"
-            ns-prefix=""
-            />
-
-        <field name="family" 
-            type="jp.go.aist.six.oval.model.independent.EntityItemFamily">
-            <bind-xml name="family" node="element"/>
-        </field>
-    </class>
-
-    -->
-
+    <!-- ******************************************************* -->
+    <!-- textfilecontent54                                       -->
+    <!-- ******************************************************* -->
 
     <class name="jp.go.aist.six.oval.model.v5.independent.FileBehaviors"
         extends="jp.go.aist.six.oval.model.v5.AbstractFileBehaviors">
@@ -219,5 +205,20 @@
             <bind-xml name="subexpression" node="element"/>
         </field>
     </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- unknown                                                 -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.v5.independent.UnknownTest"
+        extends="jp.go.aist.six.oval.model.v5.definitions.TestType">
+        <map-to xml="unknown_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+    </class>
+
+
 
 </mapping>

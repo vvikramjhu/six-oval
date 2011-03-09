@@ -18,15 +18,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
-import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityBase;
-import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
-import jp.go.aist.six.oval.model.definitions.EntityStateAnySimple;
-import jp.go.aist.six.oval.model.definitions.EntityStateString;
-import jp.go.aist.six.oval.model.definitions.State;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
+import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.v5.definitions.StateType;
 
 
 
@@ -39,11 +39,12 @@ import java.util.Iterator;
  *             Replaced by the wmi57 state and
  *             will be removed in a future version of the language.
  */
+@Deprecated
 public class WmiState
-    extends State
+    extends StateType
 {
 
-    private EntityPropertyMap<WmiProperty>  _properties =
+    private final EntityPropertyMap<WmiProperty>  _properties =
         WmiProperty.createPropertyMap();
 
 
@@ -67,9 +68,6 @@ public class WmiState
     }
 
 
-    /**
-     * Constructor.
-     */
     public WmiState(
                     final String id,
                     final int version
@@ -83,17 +81,17 @@ public class WmiState
     /**
      */
     public void setNamespace(
-                    final EntityStateString namespace
+                    final EntityStateStringType namespace
                     )
     {
         _properties.setProperty( WmiProperty.NAMESPACE, namespace );
     }
 
 
-    public EntityStateString getNamespace()
+    public EntityStateStringType getNamespace()
     {
         return _properties.getProperty(
-                        WmiProperty.NAMESPACE, EntityStateString.class );
+                        WmiProperty.NAMESPACE, EntityStateStringType.class );
     }
 
 
@@ -101,17 +99,17 @@ public class WmiState
     /**
      */
     public void setWql(
-                    final EntityStateString wql
+                    final EntityStateStringType wql
                     )
     {
         _properties.setProperty( WmiProperty.WQL, wql );
     }
 
 
-    public EntityStateString getWql()
+    public EntityStateStringType getWql()
     {
         return _properties.getProperty(
-                        WmiProperty.WQL, EntityStateString.class );
+                        WmiProperty.WQL, EntityStateStringType.class );
     }
 
 
@@ -119,17 +117,17 @@ public class WmiState
     /**
      */
     public void setResult(
-                    final EntityStateAnySimple result
+                    final EntityStateAnySimpleType result
                     )
     {
         _properties.setProperty( WmiProperty.RESULT, result );
     }
 
 
-    public EntityStateAnySimple getResult()
+    public EntityStateAnySimpleType getResult()
     {
         return _properties.getProperty(
-                        WmiProperty.RESULT, EntityStateAnySimple.class );
+                        WmiProperty.RESULT, EntityStateAnySimpleType.class );
     }
 
 
@@ -147,7 +145,7 @@ public class WmiState
 
 
     @Override
-    public Iterator<EntityBase> iterateProperties()
+    public Iterator<EntityAttributeGroup> iterateProperties()
     {
         return _properties.iterateProperties();
     }

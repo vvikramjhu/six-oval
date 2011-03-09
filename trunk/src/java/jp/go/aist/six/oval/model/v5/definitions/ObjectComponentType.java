@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
 
 
@@ -30,8 +30,8 @@ package jp.go.aist.six.oval.model.definitions;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class ObjectComponent
-    extends Component
+public class ObjectComponentType
+    extends ComponentGroup
 {
 
     private String  _objectRef;
@@ -50,15 +50,12 @@ public class ObjectComponent
     /**
      * Constructor.
      */
-    public ObjectComponent()
+    public ObjectComponentType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public ObjectComponent(
+    public ObjectComponentType(
                     final String objectRef,
                     final String itemField
                     )
@@ -127,11 +124,11 @@ public class ObjectComponent
     @Override
     public String toString()
     {
-        return "object_component[object_ref=" + getObjectRef()
+        return "[object_ref=" + getObjectRef()
                         + ", item_field=" + getItemField()
                         + ", record_field=" + getRecordField()
                         + "]";
     }
 
 }
-// ObjectComponent
+// ObjectComponentType

@@ -603,15 +603,23 @@ public abstract class CoreTestBase
 //                            "marshalled_20110308_oval-patch_debian.gnu.linux.5.0.xml"
 //                        }
 //                        ,
-                        // Red Hat EL 5, vulnerability
+//                        // Red Hat EL 5, vulnerability
+//                        {
+//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                            "test/data/oval-definitions-5/20110308_oval-vulnerability_red.hat.enterprise.linux.5.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_20110308_oval-vulnerability_red.hat.enterprise.linux.5.xml"
+//                        }
+//                        ,
+                        // Windows XP, vulnerability
                         {
                             jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                            "test/data/oval-definitions-5/20110308_oval-vulnerability_red.hat.enterprise.linux.5.xml",
+                            "test/data/oval-definitions-5/20110308_oval-vulnerability_microsoft.windows.xp.xml",
                             "/oval_definitions",
                             null,
-                            "marshalled_20110308_oval-vulnerability_red.hat.enterprise.linux.5.xml"
+                            "marshalled_20110308_oval-vulnerability_microsoft.windows.xp.xml"
                         }
-
 
 //                        // windows, CVE-2010-0176, def:7222
 //                        {

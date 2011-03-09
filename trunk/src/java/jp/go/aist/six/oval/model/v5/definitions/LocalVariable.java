@@ -18,10 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.common.Datatype;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 
 
 
@@ -34,10 +34,10 @@ import jp.go.aist.six.oval.model.common.Datatype;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class LocalVariable
-    extends Variable
+    extends VariableType
 {
 
-    private Component  _component;
+    private ComponentGroup  _component;
     //{1..1}
 
     private String  _componentXml;
@@ -64,9 +64,6 @@ public class LocalVariable
     }
 
 
-    /**
-     * Constructor.
-     */
     public LocalVariable(
                     final String id,
                     final int version,
@@ -77,15 +74,11 @@ public class LocalVariable
     }
 
 
-
-    /**
-     * Constructor.
-     */
     public LocalVariable(
                     final String id,
                     final int version,
                     final String comment,
-                    final Datatype datatype
+                    final DatatypeEnumeration datatype
                     )
     {
         super( id, version, comment, datatype );
@@ -96,7 +89,7 @@ public class LocalVariable
     /**
      */
     public void setComponent(
-                    final Component component
+                    final ComponentGroup component
                     )
     {
         _component = component;
@@ -104,7 +97,7 @@ public class LocalVariable
 
 
     public LocalVariable component(
-                    final Component component
+                    final ComponentGroup component
                     )
     {
         setComponent( component );
@@ -112,7 +105,7 @@ public class LocalVariable
     }
 
 
-    public Component getComponent()
+    public ComponentGroup getComponent()
     {
         return _component;
     }

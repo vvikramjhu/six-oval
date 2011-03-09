@@ -18,14 +18,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.independent;
+package jp.go.aist.six.oval.model.v5.independent;
 
-import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.common.Check;
-import jp.go.aist.six.oval.model.definitions.StateRef;
-import jp.go.aist.six.oval.model.definitions.SystemObjectRef;
-import jp.go.aist.six.oval.model.definitions.Test;
 import java.util.Collection;
+import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
+import jp.go.aist.six.oval.model.v5.definitions.StateRefType;
+import jp.go.aist.six.oval.model.v5.definitions.SystemObjectRefType;
+import jp.go.aist.six.oval.model.v5.definitions.TestType;
 
 
 
@@ -37,7 +37,7 @@ import java.util.Collection;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class UnknownTest
-    extends Test
+    extends TestType
 {
 
     /**
@@ -48,9 +48,6 @@ public class UnknownTest
     }
 
 
-    /**
-     * Constructor.
-     */
     public UnknownTest(
                     final String id,
                     final int version
@@ -60,14 +57,11 @@ public class UnknownTest
     }
 
 
-    /**
-     * Constructor.
-     */
     public UnknownTest(
                     final String id,
                     final int version,
                     final String comment,
-                    final Check check
+                    final CheckEnumeration check
                     )
     {
         super( id, version, comment, check );
@@ -79,6 +73,7 @@ public class UnknownTest
     //  Test
     //**************************************************************
 
+    @Override
     public PlatformEntityType getEntityType()
     {
         return PlatformEntityType.INDEPENDENT_UNKNOWN;
@@ -87,14 +82,14 @@ public class UnknownTest
 
     @Override
     public void setObject(
-                    final SystemObjectRef ref
+                    final SystemObjectRefType ref
                     )
     {
     }
 
 
     @Override
-    public SystemObjectRef getObject()
+    public SystemObjectRefType getObject()
     {
         return null;
     }
@@ -103,7 +98,7 @@ public class UnknownTest
 
     @Override
     public void setState(
-                    final Collection<? extends StateRef> ref
+                    final Collection<? extends StateRefType> ref
                     )
     {
     }

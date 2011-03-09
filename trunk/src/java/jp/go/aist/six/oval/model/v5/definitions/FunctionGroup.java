@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.v5.definitions;
 
 
 
@@ -32,17 +32,17 @@ package jp.go.aist.six.oval.model.definitions;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class Function
-    extends Component
+public abstract class FunctionGroup
+    extends ComponentGroup
 //    implements Dependent<LocalVariable>
 {
 
     /**
      * Constructor.
      */
-    public Function()
+    public FunctionGroup()
     {
     }
 
 }
-// Function
+// FunctionGroup
