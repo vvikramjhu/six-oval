@@ -112,7 +112,9 @@ public class OvalDefinitionsStoreWorker
 
         TestsType  tests = ovalDefs.getTests();
         if (tests != null) {
+            _LOG_.debug( "#tests=" + tests.size() );
             for (TestType  test : tests) {
+                _LOG_.debug( "test=" + test );
                 _sync( TestType.class, test );
             }
         }

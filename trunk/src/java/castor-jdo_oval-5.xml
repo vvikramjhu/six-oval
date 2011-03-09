@@ -566,7 +566,7 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <class name="jp.go.aist.six.oval.model.v5.unix.UnameTest"
-        extends="jp.go.aist.six.oval.model.v5.definitions.Test"
+        extends="jp.go.aist.six.oval.model.v5.definitions.TestType"
         identity="persistentID">
 
         <cache-type type="unlimited"/>
