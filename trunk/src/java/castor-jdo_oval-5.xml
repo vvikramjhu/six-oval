@@ -345,6 +345,292 @@
 
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <!-- %                                                     % -->
+    <!-- %  #independent                                       % -->
+    <!-- %                                                     % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <class name="jp.go.aist.six.oval.model.v5.independent.Textfilecontent54Test"
+        extends="jp.go.aist.six.oval.model.v5.definitions.TestType"
+        identity="persistentID">
+
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_test_textfilecontent54"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.independent.Textfilecontent54Object"
+        extends="jp.go.aist.six.oval.model.v5.definitions.SystemObjectType"
+        identity="persistentID">
+
+        <map-to table="oval_d_object_textfilecontent54"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+
+        <field name="behaviors.maxDepth" type="integer">
+            <sql name="behaviors_max_depth" type="integer"/>
+        </field>
+
+        <field name="behaviors.recurseDirection" 
+            type="jp.go.aist.six.oval.model.v5.RecurseDirectionEnumeration">
+            <sql name="behaviors_recurse_direction" type="char"/>
+        </field>
+
+        <field name="behaviors.recurseFileSystem" 
+            type="jp.go.aist.six.oval.model.v5.RecurseFileSystemEnumeration">
+            <sql name="behaviors_recurse_file_system" type="char"/>
+        </field>
+
+        <field name="behaviors.ignoreCase" type="boolean">
+            <sql name="behaviors_ignore_case" type="bit"/>
+        </field>
+
+        <field name="behaviors.multiline" type="boolean">
+            <sql name="behaviors_multiline" type="bit"/>
+        </field>
+
+        <field name="behaviors.singleline" type="boolean">
+            <sql name="behaviors_singleline" type="bit"/>
+        </field>
+
+
+        <field name="filepath.content" type="string">
+            <sql name="filepath" type="char"/>
+        </field>
+
+        <field name="filepath.operation" 
+            type="jp.go.aist.six.oval.model.v5.common.OperationEnumeration">
+            <sql name="filepath_operation" type="char"/>
+        </field>
+
+        <field name="filepath.varRef" type="string">
+            <sql name="filepath_var_ref" type="char"/>
+        </field>
+
+        <field name="filepath.varCheck" 
+            type="jp.go.aist.six.oval.model.v5.common.CheckEnumeration">
+            <sql name="filepath_var_check" type="char"/>
+        </field>
+
+        <field name="path.content" type="string">
+            <sql name="path" type="char"/>
+        </field>
+
+        <field name="path.operation" 
+            type="jp.go.aist.six.oval.model.v5.common.OperationEnumeration">
+            <sql name="path_operation" type="char"/>
+        </field>
+
+        <field name="path.varRef" type="string">
+            <sql name="path_var_ref" type="char"/>
+        </field>
+
+        <field name="path.varCheck" 
+            type="jp.go.aist.six.oval.model.v5.common.CheckEnumeration">
+            <sql name="path_var_check" type="char"/>
+        </field>
+
+        <field name="filename.content" type="string">
+            <sql name="filename" type="char"/>
+        </field>
+
+        <field name="pattern.content" type="string">
+            <sql name="pattern" type="char"/>
+        </field>
+
+        <field name="pattern.operation" 
+            type="jp.go.aist.six.oval.model.v5.common.OperationEnumeration">
+            <sql name="pattern_operation" type="char"/>
+        </field>
+
+<!--
+        <field name="pattern.varRef" type="string">
+            <sql name="pattern_var_ref" type="char"/>
+        </field>
+
+        <field name="pattern.varCheck" 
+            type="jp.go.aist.six.oval.model.common.Check">
+            <sql name="pattern_var_check" type="char"/>
+        </field>
+-->
+
+        <field name="instance.content" type="string">
+            <sql name="instance" type="char"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.independent.Textfilecontent54State"
+        extends="jp.go.aist.six.oval.model.v5.definitions.StateType"
+        identity="persistentID">
+        
+        <map-to table="oval_d_state_textfilecontent54"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+
+        <field name="text.content" type="string">
+            <sql name="text" type="char"/>
+        </field>
+
+        <field name="text.operation" 
+            type="jp.go.aist.six.oval.model.v5.common.OperationEnumeration">
+            <sql name="text_operation" type="char"/>
+        </field>
+
+<!-- TODO: other properties.
+        <field name="subexpression.data" type="string">
+            <sql name="subexpression" type="char"/>
+        </field>
+
+        <field name="subexpression.operation" 
+            type="jp.go.aist.six.oval.model.common.Operation">
+            <sql name="subexpression_operation" type="char"/>
+        </field>
+-->
+    </class>
+
+
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %                                                     % -->
+    <!-- %  #linux                                             % -->
+    <!-- %                                                     % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    
+    <class name="jp.go.aist.six.oval.model.v5.linux.DpkgInfoTest"
+        extends="jp.go.aist.six.oval.model.v5.definitions.TestType"
+        identity="persistentID">
+
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_test_dpkginfo"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.linux.DpkgInfoObject"
+        extends="jp.go.aist.six.oval.model.v5.definitions.SystemObjectType"
+        identity="persistentID">
+        
+        <map-to table="oval_d_object_dpkginfo"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+
+        <field name="name.content" type="string">
+            <sql name="name" type="char"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.linux.DpkgInfoState"
+        extends="jp.go.aist.six.oval.model.v5.definitions.StateType"
+        identity="persistentID">
+        
+        <map-to table="oval_d_state_dpkginfo"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+
+        <field name="evr.content" type="string">
+            <sql name="evr" type="char"/>
+        </field>
+
+        <field name="evr.operation" 
+            type="jp.go.aist.six.oval.model.v5.common.OperationEnumeration">
+            <sql name="evr_operation" type="char"/>
+        </field>
+    </class>
+
+
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %                                                     % -->
+    <!-- %  #unix                                              % -->
+    <!-- %                                                     % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <class name="jp.go.aist.six.oval.model.v5.unix.UnameTest"
+        extends="jp.go.aist.six.oval.model.v5.definitions.Test"
+        identity="persistentID">
+
+        <cache-type type="unlimited"/>
+        <map-to table="oval_d_test_uname"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.unix.UnameObject"
+        extends="jp.go.aist.six.oval.model.v5.definitions.SystemObject"
+        identity="persistentID">
+
+        <map-to table="oval_d_object_uname"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.unix.UnameState"
+        extends="jp.go.aist.six.oval.model.v5.definitions.State"
+        identity="persistentID">
+
+        <map-to table="oval_d_state_uname"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+
+        <field name="machineClass.content" type="string">
+            <sql name="machine_class" type="char"/>
+        </field>
+
+        <field name="nodeName.content" type="string">
+            <sql name="node_name" type="char"/>
+        </field>
+
+        <field name="osName.content" type="string">
+            <sql name="os_name" type="char"/>
+        </field>
+
+        <field name="osRelease.content" type="string">
+            <sql name="os_release" type="char"/>
+        </field>
+
+        <field name="osVersion.content" type="string">
+            <sql name="os_version" type="char"/>
+        </field>
+
+        <field name="processorType.content" type="string">
+            <sql name="processor_type" type="char"/>
+        </field>
+    </class>
+
+
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %                                                     % -->
     <!-- %  #windows                                           % -->
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->

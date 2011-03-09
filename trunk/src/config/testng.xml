@@ -81,7 +81,7 @@
 
     <!-- // store // -->
 
-    <test name="oval.core.store" enabled="false">
+    <test name="oval.core.store" enabled="true">
         <groups>
             <run>
                 <include name="definitions.oval_definitions"/>
@@ -113,7 +113,7 @@
 
     <!-- // XML // -->
 
-    <test name="oval.core.xml" enabled="true">
+    <test name="oval.core.xml" enabled="false">
         <groups>
             <run>
                 <include name="definitions.oval_definitions"/>
