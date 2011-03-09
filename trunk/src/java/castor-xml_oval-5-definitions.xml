@@ -311,8 +311,8 @@
 <!--
         <field name="notes" 
             type="jp.go.aist.six.oval.model.v5.definitions.NotesType">
-            <bind-xml name="oval-def:notes" node="element"
-                xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+            <bind-xml name="notes" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
 -->
 
