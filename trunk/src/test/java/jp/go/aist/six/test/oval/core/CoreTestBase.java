@@ -12,7 +12,6 @@ import jp.go.aist.six.oval.model.definitions.State;
 import jp.go.aist.six.oval.model.definitions.SystemObject;
 import jp.go.aist.six.oval.model.definitions.Test;
 import jp.go.aist.six.oval.model.definitions.Variable;
-import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.Item;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemInfo;
@@ -951,12 +950,20 @@ public abstract class CoreTestBase
         return new Object[][] {
                       // Windows XP, CVE-2010-0030, MS PowerPoint
                       {
-                          OvalResults.class,
-                          "test/data/results/oval-results-5.8_windows-xp_8050.xml",
+                          jp.go.aist.six.oval.model.v5.results.OvalResults.class,
+                          "test/data/oval-results-5/oval-results_CVE-2010-0176_def7222_v5.9.xml",
                           "/oval_results",
-                          ResultsSample.OVAL_RESULTS_8050,
-                          "marshalled_oval-results-5.8_windows-xp_8050.xml"
+                          null,
+                          "marshalled_oval-results_CVE-2010-0176_def7222_v5.9.xml"
                       }
+//                      // Windows XP, CVE-2010-0030, MS PowerPoint
+//                      {
+//                          OvalResults.class,
+//                          "test/data/results/oval-results-5.8_windows-xp_8050.xml",
+//                          "/oval_results",
+//                          ResultsSample.OVAL_RESULTS_8050,
+//                          "marshalled_oval-results-5.8_windows-xp_8050.xml"
+//                      }
 //                      ,
 //                      // Windows @Mitre, CVE-2010-0176
 //                      {

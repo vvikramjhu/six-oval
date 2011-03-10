@@ -221,12 +221,13 @@
                  <value>classpath:castor-xml_oval-5-linux.xml</value>
                  <value>classpath:castor-xml_oval-5-unix.xml</value>
                  <value>classpath:castor-xml_oval-5-windows.xml</value>
+                 <value>classpath:castor-xml_oval-5-results.xml</value>
             </list>
         </property>
         <property name="ignoreExtraAttributes"
-                 value="false"/>
+                 value="true"/>
         <property name="ignoreExtraElements"
-                 value="false"/>
+                 value="true"/>
         <property name="suppressXsiType"
                  value="true"/>
         <property name="encoding"
