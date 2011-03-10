@@ -620,6 +620,24 @@ public abstract class CoreTestBase
                             null,
                             "marshalled_20110308_oval-vulnerability_microsoft.windows.xp.xml"
                         }
+//                        ,
+//                        // Windows 7, vulnerability
+//                        {
+//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                            "test/data/oval-definitions-5/20110308_oval-vulnerability_microsoft.windows.7.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_20110308_oval-vulnerability_microsoft.windows.7.xml"
+//                        }
+//                        ,
+//                        // Windows server 2008, vulnerability
+//                        {
+//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                            "test/data/oval-definitions-5/20110308_oval-vulnerability_microsoft.windows.server.2008.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_20110308_oval-vulnerability_microsoft.windows.server.2008.xml"
+//                        }
 
 //                        // windows, CVE-2010-0176, def:7222
 //                        {
