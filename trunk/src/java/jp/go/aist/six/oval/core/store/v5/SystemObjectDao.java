@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.store;
+package jp.go.aist.six.oval.core.store.v5;
 
-import jp.go.aist.six.oval.model.definitions.SystemObject;
+import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 
 
 
@@ -29,12 +29,12 @@ import jp.go.aist.six.oval.model.definitions.SystemObject;
  * @version $Id$
  */
 public class SystemObjectDao
-    extends OvalEntityDao<SystemObject>
+    extends OvalEntityDao<SystemObjectType>
 {
 
     public SystemObjectDao()
     {
-        super( SystemObject.class );
+        super( SystemObjectType.class );
     }
 
 }

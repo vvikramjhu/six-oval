@@ -365,6 +365,64 @@
 
 
 
+    <class name="jp.go.aist.six.oval.model.v5.definitions.VariableType"
+        identity="persistentID">
+
+        <cache-type type="none"/>
+        <map-to table="oval_d_variable"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+
+        <field name="ovalID" type="string">
+            <sql name="id" type="char"/>
+        </field>
+
+        <field name="ovalVersion" type="integer">
+            <sql name="version" type="integer"/>
+        </field>
+
+        <field name="deprecated" type="boolean">
+            <sql name="deprecated" type="bit"/>
+        </field>
+
+        <field name="comment" type="string">
+            <sql name="comment" type="char"/>
+        </field>
+
+        <field name="datatype" 
+            type="jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration">
+            <sql name="datatype" type="char"/>
+        </field>
+
+        <field name="entityType" 
+            type="jp.go.aist.six.oval.model.PlatformEntityType">
+            <sql name="entity_type" type="char"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.LocalVariable"
+        extends="jp.go.aist.six.oval.model.v5.definitions.Variable"
+        identity="persistentID">
+        
+        <map-to table="oval_d_variable_local"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="char"/>
+        </field>
+
+        <field name="component" type="string"
+            set-method="xmlSetComponent"
+            get-method="xmlGetComponent"
+            >
+            <sql name="component_xml" type="char"/>
+        </field>
+    </class>
+
+
 
     <!-- ******************************************************* -->
     <!-- associations                                            -->
@@ -407,6 +465,69 @@
 
         <field name="dependentPersistentID" type="string">
             <sql name="d_test__PID" type="char"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsSystemObjectAssociationEntry"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <map-to table="oval_assoc__d_definitions__d_object"/>
+
+        <field name="persistentID" type="integer">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="d_definitions__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="d_object__PID" type="char"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsStateAssociationEntry"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <map-to table="oval_assoc__d_definitions__d_state"/>
+
+        <field name="persistentID" type="integer">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="d_definitions__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="d_state__PID" type="char"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsVariableAssociationEntry"
+        identity="persistentID"
+        key-generator="IDENTITY">
+
+        <map-to table="oval_assoc__d_definitions__d_variable"/>
+
+        <field name="persistentID" type="integer">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="antecendentPersistentID" type="string">
+            <sql name="d_definitions__PID" type="char"/>
+        </field>
+
+        <field name="dependentPersistentID" type="string">
+            <sql name="d_variable__PID" type="char"/>
         </field>
     </class>
 

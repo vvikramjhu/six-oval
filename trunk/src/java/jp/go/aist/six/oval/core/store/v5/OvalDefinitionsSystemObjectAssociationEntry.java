@@ -18,10 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.store;
+package jp.go.aist.six.oval.core.store.v5;
 
-import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.definitions.SystemObject;
+import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 import jp.go.aist.six.util.persist.AssociationEntry;
 
 
@@ -44,21 +44,15 @@ public class OvalDefinitionsSystemObjectAssociationEntry
     }
 
 
-    /**
-     * Constructor.
-     */
     public OvalDefinitionsSystemObjectAssociationEntry(
                     final OvalDefinitions ovalDefs,
-                    final SystemObject sysobj
+                    final SystemObjectType sysobj
                     )
     {
         super( ovalDefs, sysobj );
     }
 
 
-    /**
-     * Constructor.
-     */
     public OvalDefinitionsSystemObjectAssociationEntry(
                     final String ovalDefsPID,
                     final String sysobjPID

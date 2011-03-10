@@ -24,10 +24,10 @@ import java.util.HashMap;
 import java.util.Map;
 import jp.go.aist.six.oval.core.service.OvalContext;
 import jp.go.aist.six.oval.core.xml.OvalXml;
-import jp.go.aist.six.oval.model.definitions.Component;
-import jp.go.aist.six.oval.model.definitions.LocalVariable;
+import jp.go.aist.six.oval.model.v5.definitions.ComponentGroup;
 import jp.go.aist.six.oval.model.v5.definitions.CriteriaType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.v5.definitions.LocalVariable;
 import jp.go.aist.six.util.persist.Persistable;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -61,9 +61,7 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
         handlers.put( DefinitionType.class, definitionHandler );
 
         JdoCallbackHandler<String, LocalVariable>  localVariableHandler = new LocalVariableCallbackHandler();
-//        handlers.put( Variable.class, localVariableHandler );
         handlers.put( LocalVariable.class, localVariableHandler );
-//        handlers.put( PersistentLocalVariable.class, localVariableHandler );
 
         return handlers;
     }
@@ -291,7 +289,8 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
 //                }
 
                 try {
-                    Component  component = (Component)_getMapper().unmarshalFromString( xml );
+                    ComponentGroup  component =
+                        (ComponentGroup)_getMapper().unmarshalFromString( xml );
                     object.setComponent( component );
 //                    if (_LOG.isTraceEnabled()) {
 //                        _LOG.trace( "component (Object)=" + component );
@@ -316,7 +315,7 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
                 return;
             }
 
-            Component  component = object.getComponent();
+            ComponentGroup  component = object.getComponent();
             if (component != null) {
 //                if (_LOG.isTraceEnabled()) {
 //                    _LOG.trace( "component (Object)=" + component );

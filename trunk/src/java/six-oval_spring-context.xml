@@ -59,11 +59,23 @@
                     value="jp.go.aist.six.oval.core.store.v5.DefinitionTypeDao"/>
                 <entry key="jp.go.aist.six.oval.model.v5.definitions.TestType"
                     value="jp.go.aist.six.oval.core.store.v5.TestDao"/>
+                <entry key="jp.go.aist.six.oval.model.v5.definitions.SystemObjectType"
+                    value="jp.go.aist.six.oval.core.store.v5.SystemObjectDao"/>
+                <entry key="jp.go.aist.six.oval.model.v5.definitions.StateType"
+                    value="jp.go.aist.six.oval.core.store.v5.StateDao"/>
+                <entry key="jp.go.aist.six.oval.model.v5.definitions.VariableType"
+                    value="jp.go.aist.six.oval.core.store.v5.VariableDao"/>
 
                 <entry key="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsDefinitionAssociationEntry"
                     value="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsDefinitionAssociationEntryDao"/>
                 <entry key="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsTestAssociationEntry"
                     value="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsTestAssociationEntryDao"/>
+                <entry key="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsSystemObjectAssociationEntry"
+                    value="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsSystemObjectAssociationEntryDao"/>
+                <entry key="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsStateAssociationEntry"
+                    value="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsStateAssociationEntryDao"/>
+                <entry key="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsVariableAssociationEntry"
+                    value="jp.go.aist.six.oval.core.store.v5.OvalDefinitionsVariableAssociationEntryDao"/>
             </map>
         </property>
     </bean>

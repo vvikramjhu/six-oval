@@ -26,8 +26,14 @@ import jp.go.aist.six.oval.core.store.StoreWorkerRegistry;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.v5.definitions.StateType;
+import jp.go.aist.six.oval.model.v5.definitions.StatesType;
+import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
+import jp.go.aist.six.oval.model.v5.definitions.SystemObjectsType;
 import jp.go.aist.six.oval.model.v5.definitions.TestType;
 import jp.go.aist.six.oval.model.v5.definitions.TestsType;
+import jp.go.aist.six.oval.model.v5.definitions.VariableType;
+import jp.go.aist.six.oval.model.v5.definitions.VariablesType;
 import jp.go.aist.six.util.persist.DataStore;
 import jp.go.aist.six.util.persist.PersistenceException;
 import org.slf4j.Logger;
@@ -89,26 +95,26 @@ public class OvalDefinitionsStoreWorker
             _LOG_.trace( "*** beforePersist ***" );
         }
 
-//        Variables  variables = ovalDefs.getVariables();
-//        if (variables != null) {
-//            for (Variable  variable : variables) {
-//                _sync( Variable.class, variable );
-//            }
-//        }
-//
-//        SystemObjects  sysobjs = ovalDefs.getObjects();
-//        if (sysobjs != null) {
-//            for (SystemObject  sysobj : sysobjs) {
-//                _sync( SystemObject.class, sysobj );
-//            }
-//        }
-//
-//        States  states = ovalDefs.getStates();
-//        if (states != null) {
-//            for (State  state : states) {
-//                _sync( State.class, state );
-//            }
-//        }
+        VariablesType  variables = ovalDefs.getVariables();
+        if (variables != null) {
+            for (VariableType  variable : variables) {
+                _sync( VariableType.class, variable );
+            }
+        }
+
+        SystemObjectsType  sysobjs = ovalDefs.getObjects();
+        if (sysobjs != null) {
+            for (SystemObjectType  sysobj : sysobjs) {
+                _sync( SystemObjectType.class, sysobj );
+            }
+        }
+
+        StatesType  states = ovalDefs.getStates();
+        if (states != null) {
+            for (StateType  state : states) {
+                _sync( StateType.class, state );
+            }
+        }
 
         TestsType  tests = ovalDefs.getTests();
         if (tests != null) {
@@ -155,32 +161,32 @@ public class OvalDefinitionsStoreWorker
             tests.addAll( p_tests );
         }
 
-//        SystemObjects  sysobjs = new SystemObjects();
-//        Collection<SystemObject>  p_sysobjs = _loadAssociated( pid, SystemObject.class,
-//                        OvalDefinitionsSystemObjectAssociationEntry.class );
-//        if (p_sysobjs != null) {
-//            sysobjs.addAll( p_sysobjs );
-//        }
-//
-//        States  states = new States();
-//        Collection<State>  p_states = _loadAssociated( pid, State.class,
-//                        OvalDefinitionsStateAssociationEntry.class );
-//        if (p_states != null) {
-//            states.addAll( p_states );
-//        }
-//
-//        Variables  variables = new Variables();
-//        Collection<Variable>  p_variables = _loadAssociated( pid, Variable.class,
-//                        OvalDefinitionsVariableAssociationEntry.class );
-//        if (p_variables != null) {
-//            variables.addAll( p_variables );
-//        }
-//
+        SystemObjectsType  sysobjs = new SystemObjectsType();
+        Collection<SystemObjectType>  p_sysobjs = _loadAssociated( pid, SystemObjectType.class,
+                        OvalDefinitionsSystemObjectAssociationEntry.class );
+        if (p_sysobjs != null) {
+            sysobjs.addAll( p_sysobjs );
+        }
+
+        StatesType  states = new StatesType();
+        Collection<StateType>  p_states = _loadAssociated( pid, StateType.class,
+                        OvalDefinitionsStateAssociationEntry.class );
+        if (p_states != null) {
+            states.addAll( p_states );
+        }
+
+        VariablesType  variables = new VariablesType();
+        Collection<VariableType>  p_variables = _loadAssociated( pid, VariableType.class,
+                        OvalDefinitionsVariableAssociationEntry.class );
+        if (p_variables != null) {
+            variables.addAll( p_variables );
+        }
+
         ovalDefs.setDefinitions( defs );
         ovalDefs.setTests( tests );
-//        ovalDefs.setObjects( sysobjs );
-//        ovalDefs.setStates( states );
-//        ovalDefs.setVariables( variables );
+        ovalDefs.setObjects( sysobjs );
+        ovalDefs.setStates( states );
+        ovalDefs.setVariables( variables );
     }
 
 }

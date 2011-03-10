@@ -18,10 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.store;
+package jp.go.aist.six.oval.core.store.v5;
 
-import jp.go.aist.six.oval.model.definitions.LocalVariable;
-import jp.go.aist.six.oval.model.definitions.Variable;
+import jp.go.aist.six.oval.model.v5.definitions.LocalVariable;
+import jp.go.aist.six.oval.model.v5.definitions.VariableType;
 import jp.go.aist.six.util.persist.PersistenceException;
 
 
@@ -31,12 +31,12 @@ import jp.go.aist.six.util.persist.PersistenceException;
  * @version $Id$
  */
 public class VariableDao
-    extends OvalEntityDao<Variable>
+    extends OvalEntityDao<VariableType>
 {
 
     public VariableDao()
     {
-        super( Variable.class );
+        super( VariableType.class );
     }
 
 
@@ -44,7 +44,7 @@ public class VariableDao
     /**
      */
     protected void _beforePersist(
-                    final Variable variable
+                    final VariableType variable
                     )
     throws PersistenceException
     {
@@ -72,7 +72,7 @@ public class VariableDao
 
     @Override
     protected void _daoAfterLoad(
-                    final Variable object
+                    final VariableType object
                     )
     {
         if (LocalVariable.class.isInstance( object )) {
@@ -85,7 +85,7 @@ public class VariableDao
 
     @Override
     protected void _daoBeforeCreate(
-                    final Variable object
+                    final VariableType object
                     )
     throws PersistenceException
     {
@@ -96,7 +96,7 @@ public class VariableDao
 
     @Override
     protected void _daoBeforeUpdate(
-                    final Variable object
+                    final VariableType object
                     )
     throws PersistenceException
     {
@@ -107,8 +107,8 @@ public class VariableDao
 
     @Override
     protected void _syncProperties(
-                    final Variable object,
-                    final Variable p_object
+                    final VariableType object,
+                    final VariableType p_object
                     )
     {
         if (p_object == null) {
@@ -123,8 +123,8 @@ public class VariableDao
 
     @Override
     protected void _daoBeforeSync(
-                    final Variable object,
-                    final Variable p_object
+                    final VariableType object,
+                    final VariableType p_object
                     )
     throws PersistenceException
     {

@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.store;
+package jp.go.aist.six.oval.core.store.v5;
 
-import jp.go.aist.six.oval.model.definitions.State;
+import jp.go.aist.six.oval.model.v5.definitions.StateType;
 
 
 
@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.definitions.State;
  * @version $Id$
  */
 public class StateDao
-    extends OvalEntityDao<State>
+    extends OvalEntityDao<StateType>
 {
 
     /**
@@ -38,7 +38,7 @@ public class StateDao
      */
     public StateDao()
     {
-        super( State.class );
+        super( StateType.class );
     }
 
 }

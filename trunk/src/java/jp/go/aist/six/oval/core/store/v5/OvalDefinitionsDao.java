@@ -25,8 +25,14 @@ import jp.go.aist.six.oval.model.v5.common.GeneratorType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.v5.definitions.StateType;
+import jp.go.aist.six.oval.model.v5.definitions.StatesType;
+import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
+import jp.go.aist.six.oval.model.v5.definitions.SystemObjectsType;
 import jp.go.aist.six.oval.model.v5.definitions.TestType;
 import jp.go.aist.six.oval.model.v5.definitions.TestsType;
+import jp.go.aist.six.oval.model.v5.definitions.VariableType;
+import jp.go.aist.six.oval.model.v5.definitions.VariablesType;
 import jp.go.aist.six.util.BeansUtil;
 import jp.go.aist.six.util.castor.CastorDao;
 import jp.go.aist.six.util.castor.PersistenceHelper;
@@ -108,35 +114,35 @@ public class OvalDefinitionsDao
 
         _computeDigests( ovalDefs );
 
-//        Variables  variables = ovalDefs.getVariables();
-//        if (variables != null) {
-//            for (Variable  variable : variables) {
-//                OvalDefinitionsVariableAssociationEntry  assoc =
-//                    new OvalDefinitionsVariableAssociationEntry(
-//                                    ovalDefsPID, variable.getPersistentID() );
-//                _sync( OvalDefinitionsVariableAssociationEntry.class, assoc );
-//            }
-//        }
-//
-//        States  states = ovalDefs.getStates();
-//        if (states != null) {
-//            for (State  state : states) {
-//                OvalDefinitionsStateAssociationEntry  assoc =
-//                    new OvalDefinitionsStateAssociationEntry(
-//                                    ovalDefsPID, state.getPersistentID() );
-//                _sync( OvalDefinitionsStateAssociationEntry.class, assoc );
-//            }
-//        }
-//
-//        SystemObjects  sysobjs = ovalDefs.getObjects();
-//        if (sysobjs != null) {
-//            for (SystemObject  sysobj : sysobjs) {
-//                OvalDefinitionsSystemObjectAssociationEntry  assoc =
-//                    new OvalDefinitionsSystemObjectAssociationEntry(
-//                                    ovalDefsPID, sysobj.getPersistentID() );
-//                _sync( OvalDefinitionsSystemObjectAssociationEntry.class, assoc );
-//            }
-//        }
+        VariablesType  variables = ovalDefs.getVariables();
+        if (variables != null) {
+            for (VariableType  variable : variables) {
+                OvalDefinitionsVariableAssociationEntry  assoc =
+                    new OvalDefinitionsVariableAssociationEntry(
+                                    ovalDefsPID, variable.getPersistentID() );
+                _sync( OvalDefinitionsVariableAssociationEntry.class, assoc );
+            }
+        }
+
+        StatesType  states = ovalDefs.getStates();
+        if (states != null) {
+            for (StateType  state : states) {
+                OvalDefinitionsStateAssociationEntry  assoc =
+                    new OvalDefinitionsStateAssociationEntry(
+                                    ovalDefsPID, state.getPersistentID() );
+                _sync( OvalDefinitionsStateAssociationEntry.class, assoc );
+            }
+        }
+
+        SystemObjectsType  sysobjs = ovalDefs.getObjects();
+        if (sysobjs != null) {
+            for (SystemObjectType  sysobj : sysobjs) {
+                OvalDefinitionsSystemObjectAssociationEntry  assoc =
+                    new OvalDefinitionsSystemObjectAssociationEntry(
+                                    ovalDefsPID, sysobj.getPersistentID() );
+                _sync( OvalDefinitionsSystemObjectAssociationEntry.class, assoc );
+            }
+        }
 
         TestsType  tests = ovalDefs.getTests();
         if (tests != null) {
@@ -184,26 +190,26 @@ public class OvalDefinitionsDao
     {
         final OvalDefinitions  ovalDefs = object;
 
-//        Variables  vars = ovalDefs.getVariables();
-//        if (vars != null  &&  vars.size() > 0) {
-//            for (Variable  var : vars) {
-//                _update( Variable.class, var );
-//            }
-//        }
-//
-//        States  states = ovalDefs.getStates();
-//        if (states != null  &&  states.size() > 0) {
-//            for (State  state : states) {
-//                _update( State.class, state );
-//            }
-//        }
-//
-//        SystemObjects  sysobjs = ovalDefs.getObjects();
-//        if (sysobjs != null  &&  sysobjs.size() > 0) {
-//            for (SystemObject  sysobj : sysobjs) {
-//                _update( SystemObject.class, sysobj );
-//            }
-//        }
+        VariablesType  vars = ovalDefs.getVariables();
+        if (vars != null  &&  vars.size() > 0) {
+            for (VariableType  var : vars) {
+                _update( VariableType.class, var );
+            }
+        }
+
+        StatesType  states = ovalDefs.getStates();
+        if (states != null  &&  states.size() > 0) {
+            for (StateType  state : states) {
+                _update( StateType.class, state );
+            }
+        }
+
+        SystemObjectsType  sysobjs = ovalDefs.getObjects();
+        if (sysobjs != null  &&  sysobjs.size() > 0) {
+            for (SystemObjectType  sysobj : sysobjs) {
+                _update( SystemObjectType.class, sysobj );
+            }
+        }
 
         TestsType  tests = ovalDefs.getTests();
         if (tests != null  &&  tests.size() > 0) {

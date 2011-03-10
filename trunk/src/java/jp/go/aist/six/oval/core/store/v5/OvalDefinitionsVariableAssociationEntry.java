@@ -18,10 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.store;
+package jp.go.aist.six.oval.core.store.v5;
 
-import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.definitions.Variable;
+import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.v5.definitions.VariableType;
 import jp.go.aist.six.util.persist.AssociationEntry;
 
 
@@ -44,21 +44,15 @@ public class OvalDefinitionsVariableAssociationEntry
     }
 
 
-    /**
-     * Constructor.
-     */
     public OvalDefinitionsVariableAssociationEntry(
                     final OvalDefinitions ovalDefs,
-                    final Variable variable
+                    final VariableType variable
                     )
     {
         super( ovalDefs, variable );
     }
 
 
-    /**
-     * Constructor.
-     */
     public OvalDefinitionsVariableAssociationEntry(
                     final String ovalDefsPID,
                     final String variablePID
