@@ -29,8 +29,8 @@ import jp.go.aist.six.oval.model.v5.definitions.CriteriaType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.LocalVariable;
 import jp.go.aist.six.util.persist.Persistable;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 
@@ -45,7 +45,7 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
     /**
      * Logger.
      */
-    private static Log  _LOG = LogFactory.getLog( JdoCallbackHandler.class );
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( JdoCallbackHandler.class );
 
 
 
@@ -133,14 +133,14 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
                     final T object
                     )
     {
-        if (_LOG.isTraceEnabled()) {
-            _LOG.trace( "***** jdoLoad *****" );
+        if (_LOG_.isTraceEnabled()) {
+            _LOG_.trace( "***** jdoLoad *****" );
         }
 
         JdoCallbackHandler<K, T>  handler = _getHandler( type );
         if (handler == null) {
-            if (_LOG.isErrorEnabled()) {
-                _LOG.error( "INTERNAL ERROR: handler NOT found, type="
+            if (_LOG_.isErrorEnabled()) {
+                _LOG_.error( "INTERNAL ERROR: handler NOT found, type="
                                 + type.getName()  );
             }
             return type;
@@ -158,14 +158,14 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
                     final T object
                     )
     {
-        if (_LOG.isTraceEnabled()) {
-            _LOG.trace( "***** jdoBeforeCreate *****" );
+        if (_LOG_.isTraceEnabled()) {
+            _LOG_.trace( "***** jdoBeforeCreate *****" );
         }
 
         JdoCallbackHandler<K, T>  handler = _getHandler( type );
         if (handler == null) {
-            if (_LOG.isErrorEnabled()) {
-                _LOG.error( "INTERNAL ERROR: handler NOT found, type="
+            if (_LOG_.isErrorEnabled()) {
+                _LOG_.error( "INTERNAL ERROR: handler NOT found, type="
                                 + type.getName()  );
             }
             return;
@@ -231,8 +231,8 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
 //                        _LOG.trace( "criteria (Object)=" + criteria );
 //                    }
                 } catch (Exception ex) {
-                    if (_LOG.isErrorEnabled()) {
-                        _LOG.error( ex.getMessage() );
+                    if (_LOG_.isErrorEnabled()) {
+                        _LOG_.error( ex.getMessage() );
                     }
                 }
             }
@@ -259,8 +259,8 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
 //                        _LOG.trace( "criteria (XML)=" + xml );
 //                    }
                 } catch (Exception ex) {
-                    if (_LOG.isErrorEnabled()) {
-                        _LOG.error( ex.getMessage() );
+                    if (_LOG_.isErrorEnabled()) {
+                        _LOG_.error( ex.getMessage() );
                     }
                 }
             }
@@ -296,8 +296,8 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
 //                        _LOG.trace( "component (Object)=" + component );
 //                    }
                 } catch (Exception ex) {
-                    if (_LOG.isErrorEnabled()) {
-                        _LOG.error( ex.getMessage() );
+                    if (_LOG_.isErrorEnabled()) {
+                        _LOG_.error( ex.getMessage() );
                     }
                 }
             }
@@ -328,8 +328,8 @@ public abstract class JdoCallbackHandler<K, T extends Persistable<K>>
 //                        _LOG.trace( "component (XML)=" + xml );
 //                    }
                 } catch (Exception ex) {
-                    if (_LOG.isErrorEnabled()) {
-                        _LOG.error( ex.getMessage() );
+                    if (_LOG_.isErrorEnabled()) {
+                        _LOG_.error( ex.getMessage() );
                     }
                 }
             }

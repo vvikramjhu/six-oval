@@ -405,7 +405,7 @@
 
 
     <class name="jp.go.aist.six.oval.model.v5.definitions.LocalVariable"
-        extends="jp.go.aist.six.oval.model.v5.definitions.Variable"
+        extends="jp.go.aist.six.oval.model.v5.definitions.VariableType"
         identity="persistentID">
         
         <map-to table="oval_d_variable_local"/>
@@ -738,7 +738,7 @@
         </field>
 
         <field name="subexpression.operation" 
-            type="jp.go.aist.six.oval.model.common.Operation">
+            type="jp.go.aist.six.oval.model.v5.common.OperationEnumeration">
             <sql name="subexpression_operation" type="char"/>
         </field>
 -->
@@ -1050,7 +1050,7 @@
 
 
     <class name="jp.go.aist.six.oval.model.v5.windows.FileState"
-        extends="jp.go.aist.six.oval.model.v5.definitions.StateTpe"
+        extends="jp.go.aist.six.oval.model.v5.definitions.StateType"
         identity="persistentID">
         
         <map-to table="oval_d_state_file"/>
@@ -1208,12 +1208,6 @@
         <field name="hive.content" type="string">
             <sql name="hive" type="char"/>
         </field>
-<!--
-        <field name="hive" 
-            type="jp.go.aist.six.oval.model.windows.RegistryHive">
-            <sql name="hive" type="char"/>
-        </field>
--->
 
         <field name="key.content" type="string">
             <sql name="regkey" type="char"/>

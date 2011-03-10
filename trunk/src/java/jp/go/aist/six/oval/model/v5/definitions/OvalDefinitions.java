@@ -214,7 +214,7 @@ public class OvalDefinitions
 
 
     public OvalDefinitions state(
-                    final State state
+                    final StateType state
                     )
     {
         StatesType  states = getStates();

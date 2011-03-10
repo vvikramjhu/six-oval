@@ -112,6 +112,7 @@ public class OvalDefinitionsStoreWorker
         StatesType  states = ovalDefs.getStates();
         if (states != null) {
             for (StateType  state : states) {
+                _LOG_.debug( "state: " + state );
                 _sync( StateType.class, state );
             }
         }
