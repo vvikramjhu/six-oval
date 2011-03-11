@@ -39,9 +39,9 @@ public class OvalResults
     private GeneratorType  _generator = new GeneratorType();
     //{1..1}
 
-//    private DefaultDirectives  _directives = new DefaultDirectives();
-//    //{1..1}
-//
+    private DefaultDirectivesType  _directives = new DefaultDirectivesType();
+    //{1..1}
+
 //    private Collection<ClassDirectives>  _classDirectives = new ArrayList<ClassDirectives>();
 //    //{0..5}
 //
@@ -104,23 +104,23 @@ public class OvalResults
 
 
 
-//    /**
-//     */
-//    public void setDirectives(
-//                    final DefaultDirectives directives
-//                    )
-//    {
-//        _directives = directives;
-//    }
-//
-//
-//    public DefaultDirectives getDirectives()
-//    {
-//        return _directives;
-//    }
-//
-//
-//
+    /**
+     */
+    public void setDirectives(
+                    final DefaultDirectivesType directives
+                    )
+    {
+        _directives = directives;
+    }
+
+
+    public DefaultDirectivesType getDirectives()
+    {
+        return _directives;
+    }
+
+
+
 //    public void setClassDirectives(
 //                    final Collection<? extends ClassDirectives> classDirectives
 //                    )

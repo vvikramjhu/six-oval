@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -34,7 +34,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class Content
+public final class ContentEnumeration
     implements Serializable
 {
 
@@ -42,31 +42,31 @@ public final class Content
     private static final String  _FULL_ = "full";
 
 
-    public static final Content  THIN = new Content( _THIN_ );
-    public static final Content  FULL = new Content( _FULL_ );
+    public static final ContentEnumeration  THIN = new ContentEnumeration( _THIN_ );
+    public static final ContentEnumeration  FULL = new ContentEnumeration( _FULL_ );
 
 
 
-    private static HashMap<String, Content> _INIT_()
+    private static HashMap<String, ContentEnumeration> _INIT_()
     {
-        HashMap<String, Content>  map = new HashMap<String, Content>();
+        HashMap<String, ContentEnumeration>  map = new HashMap<String, ContentEnumeration>();
         map.put( _THIN_, THIN );
         map.put( _FULL_, FULL );
         return map;
     }
 
-    private static final HashMap<String, Content>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, ContentEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static Content valueOf(
+    public static ContentEnumeration valueOf(
                     final String name
                     )
     {
-        Content  e = null;
+        ContentEnumeration  e = null;
         if (name != null) {
             e = _INSTANCES_.get( name );
         }
@@ -86,7 +86,7 @@ public final class Content
 
     /**
      */
-    private Content(
+    private ContentEnumeration(
                     final String name
                     )
     {
@@ -115,4 +115,4 @@ public final class Content
     }
 
 }
-// Content
+// ContentEnumeration

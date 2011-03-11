@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
-import jp.go.aist.six.oval.model.common.DefinitionClass;
+import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
 
 
 
@@ -33,11 +33,11 @@ import jp.go.aist.six.oval.model.common.DefinitionClass;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class ClassDirectives
-    extends Directives
+public class ClassDirectivesType
+    extends DirectivesType
 {
 
-    private DefinitionClass  _definitionClass;
+    private DefinitionClassEnumeration  _definitionClass;
     //{required}
 
 
@@ -45,7 +45,7 @@ public class ClassDirectives
     /**
      * Constructor.
      */
-    public ClassDirectives()
+    public ClassDirectivesType()
     {
     }
 
@@ -53,14 +53,14 @@ public class ClassDirectives
     /**
      * Constructor.
      */
-    public ClassDirectives(
-                    final DefinitionClass definitionClass,
-                    final Directive definitionTrue,
-                    final Directive definitionFalse,
-                    final Directive definitionUnknown,
-                    final Directive definitionError,
-                    final Directive definitionNotEvaluated,
-                    final Directive definitionNotApplicable
+    public ClassDirectivesType(
+                    final DefinitionClassEnumeration definitionClass,
+                    final DirectiveType definitionTrue,
+                    final DirectiveType definitionFalse,
+                    final DirectiveType definitionUnknown,
+                    final DirectiveType definitionError,
+                    final DirectiveType definitionNotEvaluated,
+                    final DirectiveType definitionNotApplicable
                     )
     {
         super(
@@ -80,14 +80,14 @@ public class ClassDirectives
     /**
      */
     public void setDefinitionClass(
-                    final DefinitionClass definitionClass
+                    final DefinitionClassEnumeration definitionClass
                     )
     {
         _definitionClass = definitionClass;
     }
 
 
-    public DefinitionClass getDefinitionClass()
+    public DefinitionClassEnumeration getDefinitionClass()
     {
         return _definitionClass;
     }
@@ -104,7 +104,7 @@ public class ClassDirectives
         final int  prime = 37;
         int  result = super.hashCode();
 
-        DefinitionClass  definitionClass = getDefinitionClass();
+        DefinitionClassEnumeration  definitionClass = getDefinitionClass();
         result = prime * result + ((definitionClass == null) ? 0 : definitionClass.hashCode());
 
         return result;
@@ -117,13 +117,13 @@ public class ClassDirectives
                     final Object obj
                     )
     {
-        if (!(obj instanceof ClassDirectives)) {
+        if (!(obj instanceof ClassDirectivesType)) {
             return false;
         }
 
 
         if (super.equals( obj )) {
-            ClassDirectives  other = (ClassDirectives)obj;
+            ClassDirectivesType  other = (ClassDirectivesType)obj;
             if (getDefinitionClass() == other.getDefinitionClass()) {
                 return true;
             }
@@ -133,4 +133,4 @@ public class ClassDirectives
     }
 
 }
-// ClassDirectives
+// ClassDirectivesType

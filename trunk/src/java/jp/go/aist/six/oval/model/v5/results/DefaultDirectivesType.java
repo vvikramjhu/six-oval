@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
 
 
@@ -30,12 +30,12 @@ package jp.go.aist.six.oval.model.results;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class DefaultDirectives
-    extends Directives
+public class DefaultDirectivesType
+    extends DirectivesType
 {
 
-    public static final boolean DEFAULT_INCLUDE_SOURCE_DEFINITIONS = true;
-    private boolean  _includeSourceDefinitions = DEFAULT_INCLUDE_SOURCE_DEFINITIONS;
+    public static final Boolean DEFAULT_INCLUDE_SOURCE_DEFINITIONS = Boolean.TRUE;
+    private Boolean  _includeSourceDefinitions;
     //{optional, default='true'}
 
 
@@ -43,7 +43,7 @@ public class DefaultDirectives
     /**
      * Constructor.
      */
-    public DefaultDirectives()
+    public DefaultDirectivesType()
     {
     }
 
@@ -51,14 +51,14 @@ public class DefaultDirectives
     /**
      * Constructor.
      */
-    public DefaultDirectives(
+    public DefaultDirectivesType(
                     final boolean includeSourceDefinitions,
-                    final Directive definitionTrue,
-                    final Directive definitionFalse,
-                    final Directive definitionUnknown,
-                    final Directive definitionError,
-                    final Directive definitionNotEvaluated,
-                    final Directive definitionNotApplicable
+                    final DirectiveType definitionTrue,
+                    final DirectiveType definitionFalse,
+                    final DirectiveType definitionUnknown,
+                    final DirectiveType definitionError,
+                    final DirectiveType definitionNotEvaluated,
+                    final DirectiveType definitionNotApplicable
                     )
     {
         super(
@@ -78,14 +78,14 @@ public class DefaultDirectives
     /**
      */
     public void setIncludeSourceDefinitions(
-                    final boolean includeSourceDefinitions
+                    final Boolean includeSourceDefinitions
                     )
     {
         _includeSourceDefinitions = includeSourceDefinitions;
     }
 
 
-    public boolean isIncludeSourceDefinitions()
+    public Boolean isIncludeSourceDefinitions()
     {
         return _includeSourceDefinitions;
     }
@@ -114,13 +114,13 @@ public class DefaultDirectives
                     final Object obj
                     )
     {
-        if (!(obj instanceof DefaultDirectives)) {
+        if (!(obj instanceof DefaultDirectivesType)) {
             return false;
         }
 
 
         if (super.equals( obj )) {
-            DefaultDirectives  other = (DefaultDirectives)obj;
+            DefaultDirectivesType  other = (DefaultDirectivesType)obj;
             if (isIncludeSourceDefinitions() == other.isIncludeSourceDefinitions()) {
                 return true;
             }

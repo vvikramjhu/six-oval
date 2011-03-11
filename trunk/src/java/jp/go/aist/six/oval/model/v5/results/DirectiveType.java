@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
 import jp.go.aist.six.oval.model.AbstractOvalObject;
 
@@ -32,7 +32,7 @@ import jp.go.aist.six.oval.model.AbstractOvalObject;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Directive
+public class DirectiveType
     extends AbstractOvalObject
 //    implements Dependent<SystemResult>
 {
@@ -41,8 +41,8 @@ public class Directive
     //{required}
 
 
-    public static final Content  DEFAULT_CONTENT = Content.FULL;
-    private Content  _content;
+    public static final ContentEnumeration  DEFAULT_CONTENT = ContentEnumeration.FULL;
+    private ContentEnumeration  _content;
     //{optional, default="full"}
 
 
@@ -50,32 +50,16 @@ public class Directive
     /**
      * Constructor.
      */
-    public Directive()
+    public DirectiveType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public Directive(
+    public DirectiveType(
                     final boolean reported
                     )
     {
-        this( reported, DEFAULT_CONTENT );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public Directive(
-                    final boolean reported,
-                    final Content content
-                    )
-    {
         setReported( reported );
-        setContent( content );
     }
 
 
@@ -100,16 +84,16 @@ public class Directive
     /**
      */
     public void setContent(
-                    final Content content
+                    final ContentEnumeration content
                     )
     {
         _content = content;
     }
 
 
-    public Content getContent()
+    public ContentEnumeration getContent()
     {
-        return (_content == null ? DEFAULT_CONTENT : _content);
+        return _content;
     }
 
 
@@ -126,7 +110,7 @@ public class Directive
 
         result = prime * result + (isReported() ? 0 : 1);
 
-        Content  content = getContent();
+        ContentEnumeration  content = getContent();
         result = prime * result + ((content == null) ? 0 : content.hashCode());
 
         return result;
@@ -143,11 +127,11 @@ public class Directive
             return true;
         }
 
-        if (!(obj instanceof Directive)) {
+        if (!(obj instanceof DirectiveType)) {
             return false;
         }
 
-        Directive  other = (Directive)obj;
+        DirectiveType  other = (DirectiveType)obj;
         if (this.getContent() == other.getContent()) {
             if (this.isReported() == other.isReported()) {
                 return true;
@@ -168,4 +152,4 @@ public class Directive
     }
 
 }
-// Direcitive
+// DirecitiveType

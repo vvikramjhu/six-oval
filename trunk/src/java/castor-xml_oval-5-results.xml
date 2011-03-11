@@ -29,7 +29,76 @@
             type="jp.go.aist.six.oval.model.v5.common.GeneratorType">
             <bind-xml name="generator" node="element"/>
         </field>
+
+        <field name="directives" 
+            type="jp.go.aist.six.oval.model.v5.results.DefaultDirectivesType">
+            <bind-xml name="directives" node="element"/>
+        </field>
+        
     </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.results.DirectivesType">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
+
+        <field name="definitionTrue" 
+            type="jp.go.aist.six.oval.model.v5.results.DirectiveType">
+            <bind-xml name="definition_true" node="element"/>
+        </field>
+
+        <field name="definitionFalse" 
+            type="jp.go.aist.six.oval.model.v5.results.DirectiveType">
+            <bind-xml name="definition_false" node="element"/>
+        </field>
+
+        <field name="definitionUnknown" 
+            type="jp.go.aist.six.oval.model.v5.results.DirectiveType">
+            <bind-xml name="definition_unknown" node="element"/>
+        </field>
+
+        <field name="definitionError" 
+            type="jp.go.aist.six.oval.model.v5.results.DirectiveType">
+            <bind-xml name="definition_error" node="element"/>
+        </field>
+
+        <field name="definitionNotEvaluated" 
+            type="jp.go.aist.six.oval.model.v5.results.DirectiveType">
+            <bind-xml name="definition_not_evaluated" node="element"/>
+        </field>
+
+        <field name="definitionNotApplicable" 
+            type="jp.go.aist.six.oval.model.v5.results.DirectiveType">
+            <bind-xml name="definition_not_applicable" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.results.DefaultDirectivesType"
+        extends="jp.go.aist.six.oval.model.v5.results.DirectivesType">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
+
+        <field name="includeSourceDefinitions" type="boolean">
+            <bind-xml name="include_source_definitions" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.v5.results.DirectiveType">
+        <field name="reported" type="boolean">
+            <bind-xml name="reported" node="attribute"/>
+        </field>
+
+        <field name="content" 
+            type="jp.go.aist.six.oval.model.v5.results.ContentEnumeration">
+            <bind-xml name="content" node="attribute"/>
+        </field>
+    </class>
+
 
 
 </mapping>
