@@ -18,11 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
-import jp.go.aist.six.oval.model.Container;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.v5.Container;
 
 
 
@@ -33,34 +33,28 @@ import java.util.Iterator;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class SystemResults
-    extends Container<SystemResult> //{1..*}
+public class ResultsType
+    extends Container<SystemType> //{1..*}
 {
 
     /**
      * Constructor.
      */
-    public SystemResults()
+    public ResultsType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public SystemResults(
-                    final Collection<? extends SystemResult> systems
+    public ResultsType(
+                    final Collection<? extends SystemType> systems
                     )
     {
         super( systems );
     }
 
 
-    /**
-     * Constructor.
-     */
-    public SystemResults(
-                    final SystemResult[] systems
+    public ResultsType(
+                    final SystemType[] systems
                     )
     {
         super( systems );
@@ -68,8 +62,10 @@ public class SystemResults
 
 
 
+    /**
+     */
     public void setSystem(
-                    final Collection<? extends SystemResult> systems
+                    final Collection<? extends SystemType> systems
                     )
     {
         _setElement( systems );
@@ -77,20 +73,20 @@ public class SystemResults
 
 
     public boolean addSystem(
-                    final SystemResult system
+                    final SystemType system
                     )
     {
         return add( system );
     }
 
 
-    public Collection<SystemResult> getSystem()
+    public Collection<SystemType> getSystem()
     {
         return _getElement();
     }
 
 
-    public Iterator<SystemResult> iterateSystem()
+    public Iterator<SystemType> iterateSystem()
     {
         return iterator();
     }
@@ -108,4 +104,4 @@ public class SystemResults
 //    }
 
 }
-// SystemResults
+// ResultsType

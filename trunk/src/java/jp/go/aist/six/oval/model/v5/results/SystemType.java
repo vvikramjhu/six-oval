@@ -18,12 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
-import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
-import jp.go.aist.six.util.persist.Dependent;
 import java.util.UUID;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
+import jp.go.aist.six.util.persist.Dependent;
 
 
 
@@ -36,21 +35,21 @@ import java.util.UUID;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class SystemResult
+public class SystemType
     extends AbstractOvalObject
     implements Dependent<OvalResults>
 {
 
-    private DefinitionResults  _definitions = new DefinitionResults();
+    private DefinitionsType  _definitions = new DefinitionsType();
     //{0..1}
 
 
-    private TestResults  _tests = new TestResults();
-    //{0..1}
-
-
-    private OvalSystemCharacteristics  _ovalSC;
-    //{1..1}
+//    private TestResults  _tests = new TestResults();
+//    //{0..1}
+//
+//
+//    private OvalSystemCharacteristics  _ovalSC;
+//    //{1..1}
 
 
     //TODO:
@@ -66,77 +65,67 @@ public class SystemResult
     /**
      * constructor.
      */
-    public SystemResult()
+    public SystemType()
     {
     }
 
 
-    /**
-     * constructor.
-     */
-    public SystemResult(
-                    final OvalSystemCharacteristics sc
-                    )
-    {
-        setOvalSystemCharacteristics( sc );
-    }
-
-
-    /**
-     * constructor.
-     */
-    public SystemResult(
-                    final OvalSystemCharacteristics sc,
-                    final DefinitionResults definitions,
-                    final TestResults tests
-                    )
-    {
-        setOvalSystemCharacteristics( sc );
-        setDefinitions( definitions );
-        setTests( tests );
-    }
-
-
-
-    /**
-     * constructor.
-     */
-    public SystemResult(
-                    final OvalSystemCharacteristics sc,
-                    final DefinitionResult[] definitions,
-                    final TestResult[] tests
-                    )
-    {
-        setOvalSystemCharacteristics( sc );
-        setDefinitions( new DefinitionResults( definitions ) );
-        setTests( new TestResults( tests ) );
-    }
+//    public SystemType(
+//                    final OvalSystemCharacteristics sc
+//                    )
+//    {
+//        setOvalSystemCharacteristics( sc );
+//    }
+//
+//
+//    public SystemType(
+//                    final OvalSystemCharacteristics sc,
+//                    final DefinitionResults definitions,
+//                    final TestResults tests
+//                    )
+//    {
+//        setOvalSystemCharacteristics( sc );
+//        setDefinitions( definitions );
+//        setTests( tests );
+//    }
+//
+//
+//    public SystemType(
+//                    final OvalSystemCharacteristics sc,
+//                    final DefinitionResult[] definitions,
+//                    final TestResult[] tests
+//                    )
+//    {
+//        setOvalSystemCharacteristics( sc );
+//        setDefinitions( new DefinitionResults( definitions ) );
+//        setTests( new TestResults( tests ) );
+//    }
 
 
 
     /**
      */
     public void setDefinitions(
-                    final DefinitionResults definitions
+                    final DefinitionsType definitions
                     )
     {
         _definitions = definitions;
     }
 
 
-    public DefinitionResults getDefinitions()
+    public DefinitionsType getDefinitions()
     {
         return _definitions;
     }
 
 
-    public SystemResult definition(
-                    final DefinitionResult definition
+    public SystemType definition(
+                    final DefinitionType definition
                     )
     {
-        DefinitionResults  defs = getDefinitions();
+        DefinitionsType  defs = getDefinitions();
         if (defs == null) {
-            defs = new DefinitionResults();
+            defs = new DefinitionsType();
             setDefinitions( defs );
         }
         defs.addDefinition( definition );
@@ -146,52 +135,52 @@ public class SystemResult
 
 
 
-    /**
-     */
-    public void setTests(
-                    final TestResults tests
-                    )
-    {
-        _tests = tests;
-    }
-
-
-    public TestResults getTests()
-    {
-        return _tests;
-    }
-
-
-    public SystemResult test(
-                    final TestResult test
-                    )
-    {
-        TestResults  tests = getTests();
-        if (tests == null) {
-            tests = new TestResults();
-            setTests( tests );
-        }
-        tests.addTest( test );
-
-        return this;
-    }
-
-
-
-    /**
-     */
-    public void setOvalSystemCharacteristics(
-                    final OvalSystemCharacteristics sc
-                    )
-    {
-        _ovalSC = sc;
-    }
-
-
-    public OvalSystemCharacteristics getOvalSystemCharacteristics()
-    {
-        return _ovalSC;
-    }
+//    /**
+//     */
+//    public void setTests(
+//                    final TestResults tests
+//                    )
+//    {
+//        _tests = tests;
+//    }
+//
+//
+//    public TestResults getTests()
+//    {
+//        return _tests;
+//    }
+//
+//
+//    public SystemType test(
+//                    final TestResult test
+//                    )
+//    {
+//        TestResults  tests = getTests();
+//        if (tests == null) {
+//            tests = new TestResults();
+//            setTests( tests );
+//        }
+//        tests.addTest( test );
+//
+//        return this;
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public void setOvalSystemCharacteristics(
+//                    final OvalSystemCharacteristics sc
+//                    )
+//    {
+//        _ovalSC = sc;
+//    }
+//
+//
+//    public OvalSystemCharacteristics getOvalSystemCharacteristics()
+//    {
+//        return _ovalSC;
+//    }
 
 
 
@@ -224,6 +213,7 @@ public class SystemResult
     private OvalResults  _master;
 
 
+    @Override
     public void setMasterObject(
                     final OvalResults master
                     )
@@ -232,6 +222,7 @@ public class SystemResult
     }
 
 
+    @Override
     public OvalResults getMasterObject()
     {
         return _master;
@@ -264,15 +255,17 @@ public class SystemResult
     @Override
     public String toString()
     {
-        DefinitionResults  defs = getDefinitions();
-        TestResults  tests = getTests();
+        DefinitionsType  defs = getDefinitions();
+//        TestResults  tests = getTests();
 
-        return "system[oval_system_characteristics=" + getOvalSystemCharacteristics()
-                        + ", #definitions=" + (defs == null ? 0 : defs.size())
-//                        + ", tests=" + tests
-                        + ", #tests=" + (tests == null ? 0 : tests.size())
+        return "[#definitions=" + (defs == null ? 0 : defs.size())
                         + "]";
+//        "[oval_system_characteristics=" + getOvalSystemCharacteristics()
+//                        + ", #definitions=" + (defs == null ? 0 : defs.size())
+//                        + ", tests=" + tests
+//                        + ", #tests=" + (tests == null ? 0 : tests.size())
+//                        + "]";
     }
 
 }
-// SystemResult
+// SystemType

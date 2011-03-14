@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -34,7 +34,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class Result
+public final class ResultEnumeration
     implements Serializable
 {
 
@@ -46,18 +46,18 @@ public final class Result
     private static final String  _NOT_APPLICABLE_  = "not applicable";
 
 
-    public static final Result  TRUE           = new Result( _TRUE_ );
-    public static final Result  FALSE          = new Result( _FALSE_ );
-    public static final Result  UNKNOWN        = new Result( _UNKNOWN_ );
-    public static final Result  ERROR          = new Result( _ERROR_ );
-    public static final Result  NOT_EVALUATED  = new Result( _NOT_EVALUATED_ );
-    public static final Result  NOT_APPLICABLE = new Result( _NOT_APPLICABLE_ );
+    public static final ResultEnumeration  TRUE           = new ResultEnumeration( _TRUE_ );
+    public static final ResultEnumeration  FALSE          = new ResultEnumeration( _FALSE_ );
+    public static final ResultEnumeration  UNKNOWN        = new ResultEnumeration( _UNKNOWN_ );
+    public static final ResultEnumeration  ERROR          = new ResultEnumeration( _ERROR_ );
+    public static final ResultEnumeration  NOT_EVALUATED  = new ResultEnumeration( _NOT_EVALUATED_ );
+    public static final ResultEnumeration  NOT_APPLICABLE = new ResultEnumeration( _NOT_APPLICABLE_ );
 
 
 
-    private static HashMap<String, Result> _INIT_()
+    private static HashMap<String, ResultEnumeration> _INIT_()
     {
-        HashMap<String, Result>  map = new HashMap<String, Result>();
+        HashMap<String, ResultEnumeration>  map = new HashMap<String, ResultEnumeration>();
         map.put( _TRUE_,           TRUE );
         map.put( _FALSE_,          FALSE );
         map.put( _UNKNOWN_,        UNKNOWN  );
@@ -67,18 +67,18 @@ public final class Result
         return map;
     }
 
-    private static final HashMap<String, Result>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, ResultEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static Result valueOf(
+    public static ResultEnumeration valueOf(
                     final String name
                     )
     {
-        Result  result = null;
+        ResultEnumeration  result = null;
         if (name != null) {
             result = _INSTANCES_.get( name );
         }
@@ -98,7 +98,7 @@ public final class Result
 
     /**
      */
-    private Result(
+    private ResultEnumeration(
                     final String name
                     )
     {
@@ -127,4 +127,4 @@ public final class Result
     }
 
 }
-// Result
+// ResultEnumeration

@@ -47,9 +47,9 @@ public class OvalResults
 //
 //    private OvalDefinitions  _ovalDefinitions;
 //    //{0..1}
-//
-//    private SystemResults  _results = new SystemResults();
-//    //{1..1}
+
+    private ResultsType  _results;
+    //{1..1}
 
 
 
@@ -178,38 +178,38 @@ public class OvalResults
 //    {
 //        return _ovalDefinitions;
 //    }
-//
-//
-//
-//    /**
-//     */
-//    public void setResults(
-//                    final SystemResults results
-//                    )
-//    {
-//        _results = results;
-//    }
-//
-//
-//    public SystemResults getResults()
-//    {
-//        return _results;
-//    }
-//
-//
-//    public OvalResults result(
-//                    final SystemResult result
-//                    )
-//    {
-//        SystemResults  results = getResults();
-//        if (results == null) {
-//            results = new SystemResults();
-//            setResults( results );
-//        }
-//        results.addSystem( result );
-//
-//        return this;
-//    }
+
+
+
+    /**
+     */
+    public void setResults(
+                    final ResultsType results
+                    )
+    {
+        _results = results;
+    }
+
+
+    public ResultsType getResults()
+    {
+        return _results;
+    }
+
+
+    public OvalResults result(
+                    final SystemType system
+                    )
+    {
+        ResultsType  results = getResults();
+        if (results == null) {
+            results = new ResultsType();
+            setResults( results );
+        }
+        results.addSystem( system );
+
+        return this;
+    }
 
 
 
@@ -235,7 +235,7 @@ public class OvalResults
         return "oval_results[generator=" + getGenerator()
 //                        + ", directives=" + getDirectives()
 //                        + ", class_directives=" + getClassDirectives()
-//                        + ", results=" + getResults()
+                        + ", results=" + getResults()
                         + "]";
     }
 

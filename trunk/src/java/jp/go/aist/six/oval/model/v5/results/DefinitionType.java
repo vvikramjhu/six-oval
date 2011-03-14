@@ -18,9 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
 import jp.go.aist.six.oval.model.common.DefinitionClass;
+import jp.go.aist.six.oval.model.results.CriteriaResult;
 import jp.go.aist.six.util.persist.Dependent;
 
 
@@ -32,9 +33,9 @@ import jp.go.aist.six.util.persist.Dependent;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class DefinitionResult
+public class DefinitionType
     extends OvalResultElement
-    implements Dependent<SystemResult>
+    implements Dependent<SystemType>
 {
 
     private DefinitionClass  _definitionClass;
@@ -49,7 +50,7 @@ public class DefinitionResult
     /**
      * Constructor.
      */
-    public DefinitionResult()
+    public DefinitionType()
     {
     }
 
@@ -57,7 +58,7 @@ public class DefinitionResult
     /**
      * Constructor.
      */
-    public DefinitionResult(
+    public DefinitionType(
                     final String id,
                     final int version
                     )
@@ -69,10 +70,10 @@ public class DefinitionResult
     /**
      * Constructor.
      */
-    public DefinitionResult(
+    public DefinitionType(
                     final String id,
                     final int version,
-                    final Result result
+                    final ResultEnumeration result
                     )
     {
         super( id, version, result );
@@ -113,7 +114,7 @@ public class DefinitionResult
     }
 
 
-    public DefinitionResult criteria(
+    public DefinitionType criteria(
                     final CriteriaResult criteria
                     )
     {
@@ -144,12 +145,13 @@ public class DefinitionResult
     //  Dependent
     //**************************************************************
 
-    private SystemResult _master;
+    private SystemType _master;
 
 
 
+    @Override
     public void setMasterObject(
-                    final SystemResult master
+                    final SystemType master
                     )
     {
         _master = master;
@@ -157,7 +159,8 @@ public class DefinitionResult
 
 
 
-    public SystemResult getMasterObject()
+    @Override
+    public SystemType getMasterObject()
     {
         return _master;
     }
@@ -208,7 +211,7 @@ public class DefinitionResult
                     final Object obj
                     )
     {
-        if (!(obj instanceof DefinitionResult)) {
+        if (!(obj instanceof DefinitionType)) {
             return false;
         }
 
@@ -220,10 +223,10 @@ public class DefinitionResult
     @Override
     public String toString()
     {
-        return "definition[" + super.toString()
+        return "[" + super.toString()
                         + ", criteria=" + getCriteria()
                         + "]";
     }
 
 }
-// DefinitionResult
+// DefinitionType

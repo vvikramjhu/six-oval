@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.common;
+package jp.go.aist.six.oval.model.v5.common;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
@@ -34,7 +34,7 @@ import jp.go.aist.six.oval.model.AbstractOvalObject;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Message
+public class MessageType
     extends AbstractOvalObject
 {
 
@@ -49,18 +49,14 @@ public class Message
     /**
      * Constructor.
      */
-    public Message()
+    public MessageType()
     {
     }
 
 
 
-    public String getContent()
-    {
-        return _content;
-    }
-
-
+    /**
+     */
     public void setContent(
                     final String content
                     )
@@ -69,18 +65,26 @@ public class Message
     }
 
 
-
-    public MessageLevel getLevel()
+    public String getContent()
     {
-        return (_level == null ? DEFAULT_LEVEL : _level);
+        return _content;
     }
 
 
+
+    /**
+     */
     public void setLevel(
                     final MessageLevel level
                     )
     {
         _level = level;
+    }
+
+
+    public MessageLevel getLevel()
+    {
+        return _level;
     }
 
 
@@ -98,4 +102,4 @@ public class Message
     }
 
 }
-// Message
+// MessageType

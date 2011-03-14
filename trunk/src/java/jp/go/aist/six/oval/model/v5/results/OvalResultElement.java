@@ -18,12 +18,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
-import jp.go.aist.six.oval.model.OvalElement;
-import jp.go.aist.six.oval.model.common.Message;
 import java.util.ArrayList;
 import java.util.Collection;
+import jp.go.aist.six.oval.model.v5.OvalElement;
+import jp.go.aist.six.oval.model.v5.common.MessageType;
 
 
 
@@ -39,16 +39,16 @@ public abstract class OvalResultElement
 //    extends OvalAnalysisElement
 {
 
-    private Collection<Message>  _message = new ArrayList<Message>();
+    private final Collection<MessageType>  _message = new ArrayList<MessageType>();
     //{0..*}
 
 
-    public static final int  DEFAULT_VARIABLE_INSTANCE = 1;
-    private int  _variableInstance = DEFAULT_VARIABLE_INSTANCE;
+    public static final Integer  DEFAULT_VARIABLE_INSTANCE = 1;
+    private Integer  _variableInstance;
     //{xsd:nonNegativeInteger, optional, default="1"}
 
 
-    private Result  _result;
+    private ResultEnumeration  _result;
     //{required}
 
 
@@ -61,9 +61,6 @@ public abstract class OvalResultElement
     }
 
 
-    /**
-     * Constructor.
-     */
     public OvalResultElement(
                     final String id,
                     final int version
@@ -73,13 +70,10 @@ public abstract class OvalResultElement
     }
 
 
-    /**
-     * Constructor.
-     */
     public OvalResultElement(
                     final String id,
                     final int version,
-                    final Result result
+                    final ResultEnumeration result
                     )
     {
         this( id, version );
@@ -91,25 +85,27 @@ public abstract class OvalResultElement
     /**
      */
     public void setMessage(
-                    final Collection<? extends Message> messages
+                    final Collection<? extends MessageType> messages
                     )
     {
-        _message.clear();
-        if (messages != null  &&  messages != _message) {
-            _message.addAll( messages );
+        if (messages != _message) {
+            _message.clear();
+            if (messages != null  &&  messages != _message) {
+                _message.addAll( messages );
+            }
         }
     }
 
 
     public boolean addMessage(
-                    final Message item
+                    final MessageType item
                     )
     {
         return _message.add( item );
     }
 
 
-    public Collection<Message> getMessage()
+    public Collection<MessageType> getMessage()
     {
         return _message;
     }
@@ -119,7 +115,7 @@ public abstract class OvalResultElement
     /**
      */
     public void setVariableInstance(
-                    final int variableInstance
+                    final Integer variableInstance
                     )
     {
         if (variableInstance < 0) {
@@ -131,7 +127,7 @@ public abstract class OvalResultElement
     }
 
 
-    public int getVariableInstance()
+    public Integer getVariableInstance()
     {
         return _variableInstance;
     }
@@ -141,14 +137,14 @@ public abstract class OvalResultElement
     /**
      */
     public void setResult(
-                    final Result result
+                    final ResultEnumeration result
                     )
     {
         _result= result;
     }
 
 
-    public Result getResult()
+    public ResultEnumeration getResult()
     {
         return _result;
     }
@@ -165,9 +161,10 @@ public abstract class OvalResultElement
         final int  prime = 37;
         int  hash = super.hashCode();
 
-        hash = prime * hash + getVariableInstance();
+        Integer  variableInstance = getVariableInstance();
+        hash = prime * hash + ((variableInstance == null) ? 0 : variableInstance.hashCode());
 
-        Result  result = getResult();
+        ResultEnumeration  result = getResult();
         hash = prime * hash + ((result == null) ? 0 : result.hashCode());
 
         return hash;
@@ -187,7 +184,10 @@ public abstract class OvalResultElement
         if (super.equals( obj )) {
             OvalResultElement  other = (OvalResultElement)obj;
             if (getResult() == other.getResult()) {
-                if (getVariableInstance() == other.getVariableInstance()) {
+                final Integer   this_varins = getVariableInstance();
+                final Integer  other_varins = other.getVariableInstance();
+                if (this_varins == other_varins
+                                ||  (this_varins != null  &&  this_varins.equals( other_varins ))) {
                     return true;
                 }
             }

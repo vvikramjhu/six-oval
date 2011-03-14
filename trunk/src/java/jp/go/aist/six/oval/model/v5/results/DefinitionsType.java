@@ -18,11 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
-import jp.go.aist.six.oval.model.Container;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.v5.Container;
 
 
 
@@ -33,15 +33,15 @@ import java.util.Iterator;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class DefinitionResults
-    extends Container<DefinitionResult>  //{1..*}
+public class DefinitionsType
+    extends Container<DefinitionType>  //{1..*}
 //extends OvalElementContainer<DefinitionResult>  //{1..*}
 {
 
     /**
      * Constructor.
      */
-    public DefinitionResults()
+    public DefinitionsType()
     {
     }
 
@@ -49,8 +49,8 @@ public class DefinitionResults
     /**
      * Constructor.
      */
-    public DefinitionResults(
-                    final Collection<? extends DefinitionResult> definitions
+    public DefinitionsType(
+                    final Collection<? extends DefinitionType> definitions
                     )
     {
         super( definitions );
@@ -60,8 +60,8 @@ public class DefinitionResults
     /**
      * Constructor.
      */
-    public DefinitionResults(
-                    final DefinitionResult[] definitions
+    public DefinitionsType(
+                    final DefinitionType[] definitions
                     )
     {
         super( definitions );
@@ -70,7 +70,7 @@ public class DefinitionResults
 
 
     public void setDefinition(
-                    final Collection<? extends DefinitionResult> definitions
+                    final Collection<? extends DefinitionType> definitions
                     )
     {
         _setElement( definitions );
@@ -78,20 +78,20 @@ public class DefinitionResults
 
 
     public boolean addDefinition(
-                    final DefinitionResult definition
+                    final DefinitionType definition
                     )
     {
         return add( definition );
     }
 
 
-    public Collection<DefinitionResult> getDefinition()
+    public Collection<DefinitionType> getDefinition()
     {
         return _getElement();
     }
 
 
-    public Iterator<DefinitionResult> iterateDefinition()
+    public Iterator<DefinitionType> iterateDefinition()
     {
         return iterator();
     }
@@ -105,8 +105,8 @@ public class DefinitionResults
     @Override
     public String toString()
     {
-        return "definitions[" + getDefinition() + "]";
+        return String.valueOf( getDefinition() );
     }
 
 }
-// DefinitionResults
+// DefinitionsType
