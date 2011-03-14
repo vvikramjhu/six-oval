@@ -44,10 +44,10 @@ public class SystemType
     //{0..1}
 
 
-//    private TestResults  _tests = new TestResults();
-//    //{0..1}
-//
-//
+    private TestsType  _tests = new TestsType();
+    //{0..1}
+
+
 //    private OvalSystemCharacteristics  _ovalSC;
 //    //{1..1}
 
@@ -135,38 +135,38 @@ public class SystemType
 
 
 
-//    /**
-//     */
-//    public void setTests(
-//                    final TestResults tests
-//                    )
-//    {
-//        _tests = tests;
-//    }
-//
-//
-//    public TestResults getTests()
-//    {
-//        return _tests;
-//    }
-//
-//
-//    public SystemType test(
-//                    final TestResult test
-//                    )
-//    {
-//        TestResults  tests = getTests();
-//        if (tests == null) {
-//            tests = new TestResults();
-//            setTests( tests );
-//        }
-//        tests.addTest( test );
-//
-//        return this;
-//    }
-//
-//
-//
+    /**
+     */
+    public void setTests(
+                    final TestsType tests
+                    )
+    {
+        _tests = tests;
+    }
+
+
+    public TestsType getTests()
+    {
+        return _tests;
+    }
+
+
+    public SystemType test(
+                    final TestType test
+                    )
+    {
+        TestsType  tests = getTests();
+        if (tests == null) {
+            tests = new TestsType();
+            setTests( tests );
+        }
+        tests.addTest( test );
+
+        return this;
+    }
+
+
+
 //    /**
 //     */
 //    public void setOvalSystemCharacteristics(
@@ -256,14 +256,14 @@ public class SystemType
     public String toString()
     {
         DefinitionsType  defs = getDefinitions();
-//        TestResults  tests = getTests();
+        TestsType  tests = getTests();
 
         return "[#definitions=" + (defs == null ? 0 : defs.size())
+                        + ", #tests=" + (tests == null ? 0 : tests.size())
                         + "]";
 //        "[oval_system_characteristics=" + getOvalSystemCharacteristics()
 //                        + ", #definitions=" + (defs == null ? 0 : defs.size())
 //                        + ", tests=" + tests
-//                        + ", #tests=" + (tests == null ? 0 : tests.size())
 //                        + "]";
     }
 

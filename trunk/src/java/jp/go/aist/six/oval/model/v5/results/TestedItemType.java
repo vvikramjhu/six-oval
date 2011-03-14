@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
 import jp.go.aist.six.oval.model.AbstractOvalObject;
 import jp.go.aist.six.util.persist.Dependent;
@@ -33,16 +33,16 @@ import jp.go.aist.six.util.persist.Dependent;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class TestedItem
+public class TestedItemType
     extends AbstractOvalObject
-    implements Dependent<TestResult>
+    implements Dependent<TestType>
 {
 
     private int  _itemID;
     //{required}
 
 
-    private Result  _result;
+    private ResultEnumeration  _result;
     //{required}
 
 
@@ -50,17 +50,14 @@ public class TestedItem
     /**
      * Constructor.
      */
-    public TestedItem()
+    public TestedItemType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public TestedItem(
+    public TestedItemType(
                     final int itemID,
-                    final Result result
+                    final ResultEnumeration result
                     )
     {
         setItemID( itemID );
@@ -87,14 +84,14 @@ public class TestedItem
 
 
     public void setResult(
-                    final Result result
+                    final ResultEnumeration result
                     )
     {
         _result = result;
     }
 
 
-    public Result getResult()
+    public ResultEnumeration getResult()
     {
         return _result;
     }
@@ -105,12 +102,13 @@ public class TestedItem
     //  Dependent
     //**************************************************************
 
-    private TestResult  _master;
+    private TestType  _master;
 
 
 
+    @Override
     public void setMasterObject(
-                    final TestResult master
+                    final TestType master
                     )
     {
         _master = master;
@@ -118,7 +116,8 @@ public class TestedItem
 
 
 
-    public TestResult getMasterObject()
+    @Override
+    public TestType getMasterObject()
     {
         return _master;
     }
@@ -138,7 +137,7 @@ public class TestedItem
         int  itemID = getItemID();
         hash = prime * hash + itemID;
 
-        Result  result = getResult();
+        ResultEnumeration  result = getResult();
         hash = prime * hash + ((result == null) ? 0 : result.hashCode());
 
         return hash;
@@ -155,16 +154,16 @@ public class TestedItem
             return true;
         }
 
-        if (!(obj instanceof TestedItem)) {
+        if (!(obj instanceof TestedItemType)) {
             return false;
         }
 
-        TestedItem  other = (TestedItem)obj;
+        TestedItemType  other = (TestedItemType)obj;
         int  other_itemID = other.getItemID();
         int   this_itemID =  this.getItemID();
         if (this_itemID == other_itemID) {
-            Result  other_reault = other.getResult();
-            Result   this_result =  this.getResult();
+            ResultEnumeration  other_reault = other.getResult();
+            ResultEnumeration   this_result =  this.getResult();
             if (this_result == other_reault) {
                 return true;
             }
@@ -184,4 +183,4 @@ public class TestedItem
     }
 
 }
-// TestedItem
+// TestedItemType

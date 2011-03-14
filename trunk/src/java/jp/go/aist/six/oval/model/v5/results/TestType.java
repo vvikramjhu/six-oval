@@ -18,14 +18,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
-import jp.go.aist.six.oval.model.common.Check;
-import jp.go.aist.six.oval.model.common.Existence;
-import jp.go.aist.six.oval.model.common.Operator;
-import jp.go.aist.six.util.persist.Dependent;
 import java.util.ArrayList;
 import java.util.Collection;
+import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
+import jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration;
+import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
+import jp.go.aist.six.util.persist.Dependent;
 
 
 
@@ -38,30 +38,30 @@ import java.util.Collection;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class TestResult
+public class TestType
     extends OvalResultElement
-    implements Dependent<SystemResult>
+    implements Dependent<SystemType>
 {
 
-    private Collection<TestedItem>  _testedItem = new ArrayList<TestedItem>();
+    private final Collection<TestedItemType>  _testedItem = new ArrayList<TestedItemType>();
     //{0..*}
 
 
-    private Collection<TestedVariable>  _testedVariable= new ArrayList<TestedVariable>();
+    private final Collection<TestedVariableType>  _testedVariable= new ArrayList<TestedVariableType>();
     //{0..*}
 
 
-    public static final Existence  DEFAULT_CHECK_EXISTENCE = Existence.AT_LEAST_ONE_EXISTS;
-    private Existence  _checkExistence;
+    public static final ExistenceEnumeration  DEFAULT_CHECK_EXISTENCE = ExistenceEnumeration.AT_LEAST_ONE_EXISTS;
+    private ExistenceEnumeration  _checkExistence;
     //{optional, default="at_least_one_exists"}
 
 
-    private Check  _check;
+    private CheckEnumeration  _check;
     //{required}
 
 
-    public static final Operator  DEFAULT_STATE_OPERATOR = Operator.AND;
-    private Operator  _stateOperator;
+    public static final OperatorEnumeration  DEFAULT_STATE_OPERATOR = OperatorEnumeration.AND;
+    private OperatorEnumeration  _stateOperator;
     //{optional, default="AND"}
 
 
@@ -69,15 +69,12 @@ public class TestResult
     /**
      * Constructor.
      */
-    public TestResult()
+    public TestType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public TestResult(
+    public TestType(
                     final String id,
                     final int version
                     )
@@ -86,13 +83,10 @@ public class TestResult
     }
 
 
-    /**
-     * Constructor.
-     */
-    public TestResult(
+    public TestType(
                     final String id,
                     final int version,
-                    final Result result
+                    final ResultEnumeration result
                     )
     {
         super( id, version, result );
@@ -103,26 +97,28 @@ public class TestResult
     /**
      */
     public void setTestedItem(
-                    final Collection<? extends TestedItem> items
+                    final Collection<? extends TestedItemType> items
                     )
     {
-        _testedItem.clear();
-        if (items != null  &&  items != _testedItem) {
-            _testedItem.addAll( items );
+        if (items != _testedItem) {
+            _testedItem.clear();
+            if (items != null  &&  items != _testedItem) {
+                _testedItem.addAll( items );
+            }
         }
     }
 
 
     public boolean addTestedItem(
-                    final TestedItem item
+                    final TestedItemType item
                     )
     {
         return _testedItem.add( item );
     }
 
 
-    public TestResult testedItem(
-                    final TestedItem item
+    public TestType testedItem(
+                    final TestedItemType item
                     )
     {
         addTestedItem( item );
@@ -130,7 +126,7 @@ public class TestResult
     }
 
 
-    public Collection<TestedItem> getTestedItem()
+    public Collection<TestedItemType> getTestedItem()
     {
         return _testedItem;
     }
@@ -139,26 +135,28 @@ public class TestResult
     /**
      */
     public void setTestedVariable(
-                    final Collection<? extends TestedVariable> variables
+                    final Collection<? extends TestedVariableType> variables
                     )
     {
-        _testedVariable.clear();
-        if (variables != null  &&  variables != _testedVariable) {
-            _testedVariable.addAll( variables );
+        if (variables != _testedVariable) {
+            _testedVariable.clear();
+            if (variables != null  &&  variables != _testedVariable) {
+                _testedVariable.addAll( variables );
+            }
         }
     }
 
 
     public boolean addTestedVariable(
-                    final TestedVariable variable
+                    final TestedVariableType variable
                     )
     {
         return _testedVariable.add( variable );
     }
 
 
-    public TestResult testedVariable(
-                    final TestedVariable variable
+    public TestType testedVariable(
+                    final TestedVariableType variable
                     )
     {
         addTestedVariable( variable );
@@ -166,7 +164,7 @@ public class TestResult
     }
 
 
-    public Collection<TestedVariable> getTestedVariable()
+    public Collection<TestedVariableType> getTestedVariable()
     {
         return _testedVariable;
     }
@@ -192,15 +190,15 @@ public class TestResult
     /**
      */
     public void setCheckExistence(
-                    final Existence existence
+                    final ExistenceEnumeration existence
                     )
     {
         _checkExistence = existence;
     }
 
 
-    public TestResult checkExistence(
-                    final Existence existence
+    public TestType checkExistence(
+                    final ExistenceEnumeration existence
                     )
     {
         setCheckExistence( existence );
@@ -208,9 +206,9 @@ public class TestResult
     }
 
 
-    public Existence getCheckExistence()
+    public ExistenceEnumeration getCheckExistence()
     {
-        return (_checkExistence == null ? DEFAULT_CHECK_EXISTENCE : _checkExistence);
+        return _checkExistence;
     }
 
 
@@ -218,15 +216,15 @@ public class TestResult
     /**
      */
     public void setCheck(
-                    final Check check
+                    final CheckEnumeration check
                     )
     {
         _check = check;
     }
 
 
-    public TestResult check(
-                    final Check check
+    public TestType check(
+                    final CheckEnumeration check
                     )
     {
         setCheck( check );
@@ -234,7 +232,7 @@ public class TestResult
     }
 
 
-    public Check getCheck()
+    public CheckEnumeration getCheck()
     {
         return _check;
     }
@@ -244,15 +242,15 @@ public class TestResult
     /**
      */
     public void setStateOperator(
-                    final Operator operator
+                    final OperatorEnumeration operator
                     )
     {
         _stateOperator = operator;
     }
 
 
-    public TestResult stateOperator(
-                    final Operator operator
+    public TestType stateOperator(
+                    final OperatorEnumeration operator
                     )
     {
         setStateOperator( operator );
@@ -260,9 +258,9 @@ public class TestResult
     }
 
 
-    public Operator getStateOperator()
+    public OperatorEnumeration getStateOperator()
     {
-        return (_stateOperator == null ? DEFAULT_STATE_OPERATOR : _stateOperator);
+        return _stateOperator;
     }
 
 
@@ -271,12 +269,13 @@ public class TestResult
     //  Dependent
     //**************************************************************
 
-    private SystemResult _master;
+    private SystemType _master;
 
 
 
+    @Override
     public void setMasterObject(
-                    final SystemResult master
+                    final SystemType master
                     )
     {
         _master = master;
@@ -284,7 +283,8 @@ public class TestResult
 
 
 
-    public SystemResult getMasterObject()
+    @Override
+    public SystemType getMasterObject()
     {
         return _master;
     }
@@ -335,7 +335,7 @@ public class TestResult
                     final Object obj
                     )
     {
-        if (!(obj instanceof TestResult)) {
+        if (!(obj instanceof TestType)) {
             return false;
         }
 
@@ -356,4 +356,4 @@ public class TestResult
     }
 
 }
-// TestResult
+// TestType

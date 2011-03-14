@@ -18,11 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
-import jp.go.aist.six.oval.model.Container;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.v5.Container;
 
 
 
@@ -33,34 +33,28 @@ import java.util.Iterator;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class TestResults
-    extends Container<TestResult>   //{1..*}
+public class TestsType
+    extends Container<TestType>   //{1..*}
 {
 
     /**
      * Constructor.
      */
-    public TestResults()
+    public TestsType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public TestResults(
-                    final Collection<? extends TestResult> tests
+    public TestsType(
+                    final Collection<? extends TestType> tests
                     )
     {
         super( tests );
     }
 
 
-    /**
-     * Constructor.
-     */
-    public TestResults(
-                    final TestResult[] tests
+    public TestsType(
+                    final TestType[] tests
                     )
     {
         super( tests );
@@ -68,8 +62,10 @@ public class TestResults
 
 
 
+    /**
+     */
     public void setTest(
-                    final Collection<? extends TestResult> tests
+                    final Collection<? extends TestType> tests
                     )
     {
         _setElement( tests );
@@ -77,20 +73,20 @@ public class TestResults
 
 
     public boolean addTest(
-                    final TestResult test
+                    final TestType test
                     )
     {
         return add( test );
     }
 
 
-    public Collection<TestResult> getTest()
+    public Collection<TestType> getTest()
     {
         return _getElement();
     }
 
 
-    public Iterator<TestResult> iterateTest()
+    public Iterator<TestType> iterateTest()
     {
         return iterator();
     }
@@ -104,8 +100,8 @@ public class TestResults
     @Override
     public String toString()
     {
-        return "tests[" + getTest() + "]";
+        return "[" + getTest() + "]";
     }
 
 }
-// TestResults
+// TestsType

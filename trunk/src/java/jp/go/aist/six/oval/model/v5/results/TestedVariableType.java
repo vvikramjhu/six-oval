@@ -18,9 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.definitions.TestType;
 import jp.go.aist.six.util.persist.Dependent;
 
 
@@ -33,9 +34,9 @@ import jp.go.aist.six.util.persist.Dependent;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class TestedVariable
+public class TestedVariableType
     extends AbstractOvalObject
-    implements Dependent<TestResult>
+    implements Dependent<TestType>
 {
 
     private String  _value;
@@ -50,15 +51,12 @@ public class TestedVariable
     /**
      * Constructor.
      */
-    public TestedVariable()
+    public TestedVariableType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public TestedVariable(
+    public TestedVariableType(
                     final String variableID,
                     final String value
                     )
@@ -107,12 +105,13 @@ public class TestedVariable
     //  Dependent
     //**************************************************************
 
-    private TestResult  _master;
+    private TestType  _master;
 
 
 
+    @Override
     public void setMasterObject(
-                    final TestResult master
+                    final TestType master
                     )
     {
         _master = master;
@@ -120,7 +119,8 @@ public class TestedVariable
 
 
 
-    public TestResult getMasterObject()
+    @Override
+    public TestType getMasterObject()
     {
         return _master;
     }
@@ -157,11 +157,11 @@ public class TestedVariable
             return true;
         }
 
-        if (!(obj instanceof TestedVariable)) {
+        if (!(obj instanceof TestedVariableType)) {
             return false;
         }
 
-        TestedVariable  other = (TestedVariable)obj;
+        TestedVariableType  other = (TestedVariableType)obj;
         String  other_value = other.getValue();
         String   this_value =  this.getValue();
         if (this_value == other_value
@@ -188,4 +188,4 @@ public class TestedVariable
     }
 
 }
-// TestedVariable
+// TestedVariableType

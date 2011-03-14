@@ -127,12 +127,12 @@
             <bind-xml name="definitions" node="element"/>
         </field>
 
-<!--
         <field name="tests" 
-            type="jp.go.aist.six.oval.model.results.TestResults">
+            type="jp.go.aist.six.oval.model.v5.results.TestsType">
             <bind-xml name="tests" node="element"/>
         </field>
 
+<!--
         <field name="ovalSystemCharacteristics" 
             type="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics">
             <bind-xml name="oval-sc:oval_system_characteristics" node="element"
@@ -212,6 +212,25 @@
 
 
 
+    <class name="jp.go.aist.six.oval.model.v5.results.CriteriaType"
+        extends="jp.go.aist.six.oval.model.v5.results.CriteriaResultElement">
+        <map-to xml="criteria"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
+
+        <field name="operator" 
+            type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration">
+            <bind-xml name="operator" node="attribute"/>
+        </field>
+
+        <field name="elements" 
+            type="jp.go.aist.six.oval.model.v5.results.CriteriaResultElement"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+    </class>
+
+
+
     <class name="jp.go.aist.six.oval.model.v5.results.CriterionType"
         extends="jp.go.aist.six.oval.model.v5.results.CriteriaResultLeafElement">
         <map-to xml="criterion"
@@ -236,20 +255,92 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.results.CriteriaType"
-        extends="jp.go.aist.six.oval.model.v5.results.CriteriaResultElement">
-        <map-to xml="criteria"
+    <class name="jp.go.aist.six.oval.model.v5.results.TestsType">
+        <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
-        <field name="operator" 
-            type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration">
-            <bind-xml name="operator" node="attribute"/>
+        <field name="test" 
+            type="jp.go.aist.six.oval.model.v5.results.TestType"
+            collection="collection">
+            <bind-xml name="test" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.results.TestType">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
+
+        <field name="ovalID" type="string">
+            <bind-xml name="test_id" node="attribute"/>
         </field>
 
-        <field name="elements" 
-            type="jp.go.aist.six.oval.model.v5.results.CriteriaResultElement"
+        <field name="ovalVersion" type="int">
+            <bind-xml name="version" node="attribute"/>
+        </field>
+
+        <field name="result" 
+            type="jp.go.aist.six.oval.model.v5.results.ResultEnumeration">
+            <bind-xml name="result" node="attribute"/>
+        </field>
+
+        <field name="checkExistence" 
+            type="jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration">
+            <bind-xml name="check_existence" node="attribute"/>
+        </field>
+
+        <field name="check" 
+            type="jp.go.aist.six.oval.model.v5.common.CheckEnumeration">
+            <bind-xml name="check" node="attribute"/>
+        </field>
+
+        <field name="stateOperator" 
+            type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration">
+            <bind-xml name="state_operator" node="attribute"/>
+        </field>
+
+        <field name="testedItem" 
+            type="jp.go.aist.six.oval.model.v5.results.TestedItemType"
             collection="collection">
-            <bind-xml auto-naming="deriveByClass" node="element"/>
+            <bind-xml name="tested_item" node="element"/>
+        </field>
+
+        <field name="testedVariable" 
+            type="jp.go.aist.six.oval.model.v5.results.TestedVariableType"
+            collection="collection">
+            <bind-xml name="tested_variable" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.results.TestedItemType">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
+
+        <field name="itemID" type="int">
+            <bind-xml name="item_id" node="attribute"/>
+        </field>
+
+        <field name="result" 
+            type="jp.go.aist.six.oval.model.v5.results.ResultEnumeration">
+            <bind-xml name="result" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.results.TestedVariableType">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
+
+        <field name="variableID" type="string">
+            <bind-xml name="variable_id" node="attribute"/>
+        </field>
+
+        <field name="value" type="string">
+            <bind-xml node="text"/>
         </field>
     </class>
 
