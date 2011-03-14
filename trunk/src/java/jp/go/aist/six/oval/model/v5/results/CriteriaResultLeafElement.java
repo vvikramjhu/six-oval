@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
 
 
@@ -34,15 +34,16 @@ public abstract class CriteriaResultLeafElement
 {
 
     private String  _entityRef;
-    //{required}
+    //{test_ref, oval:TestIDPattern}
+    //{definition_ref, oval:DefinitionIDPattern}
 
 
     private int  _version;
     //{xsd:nonNegativeInteger, required}
 
 
-    public static final int  DEFAULT_VARIABLE_INSTANCE = 1;
-    private int  _variableInstance = DEFAULT_VARIABLE_INSTANCE;
+    public static final Integer DEFAULT_VARIABLE_INSTANCE = 1;
+    private Integer  _variableInstance;
     //{xsd:nonNegativeInteger, optional, default="1"}
 
 
@@ -55,9 +56,6 @@ public abstract class CriteriaResultLeafElement
     }
 
 
-    /**
-     * Constructor.
-     */
     public CriteriaResultLeafElement(
                     final String id,
                     final int version
@@ -68,13 +66,10 @@ public abstract class CriteriaResultLeafElement
     }
 
 
-    /**
-     * Constructor.
-     */
     public CriteriaResultLeafElement(
                     final String id,
                     final int version,
-                    final Result result
+                    final ResultEnumeration result
                     )
     {
         this( id, version );
@@ -125,19 +120,21 @@ public abstract class CriteriaResultLeafElement
     /**
      */
     public void setVariableInstance(
-                    final int variableInstance
+                    final Integer variableInstance
                     )
     {
-        if (variableInstance < 0) {
-            throw new IllegalArgumentException(
-                            "negative variable instance: " + variableInstance );
+        if (variableInstance != null) {
+            if (variableInstance < 0) {
+                throw new IllegalArgumentException(
+                                "negative variable instance: " + variableInstance );
+            }
         }
 
         _variableInstance = variableInstance;
     }
 
 
-    public int getVariableInstance()
+    public Integer getVariableInstance()
     {
         return _variableInstance;
     }

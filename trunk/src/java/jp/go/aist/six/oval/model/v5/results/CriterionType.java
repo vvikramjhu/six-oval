@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
 
 
@@ -30,22 +30,19 @@ package jp.go.aist.six.oval.model.results;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class CriterionResult
+public class CriterionType
     extends CriteriaResultLeafElement
 {
 
     /**
      * Constructor.
      */
-    public CriterionResult()
+    public CriterionType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public CriterionResult(
+    public CriterionType(
                     final String testID,
                     final int version
                     )
@@ -54,13 +51,10 @@ public class CriterionResult
     }
 
 
-    /**
-     * Constructor.
-     */
-    public CriterionResult(
+    public CriterionType(
                     final String id,
                     final int version,
-                    final Result result
+                    final ResultEnumeration result
                     )
     {
         super( id, version, result );
@@ -68,6 +62,8 @@ public class CriterionResult
 
 
 
+    /**
+     */
     public void setTestRef(
                     final String testID
                     )
@@ -96,4 +92,4 @@ public class CriterionResult
     }
 
 }
-// CriterionResult
+// CriterionType

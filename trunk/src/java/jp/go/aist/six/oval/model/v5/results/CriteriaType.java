@@ -18,12 +18,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
-import jp.go.aist.six.oval.model.common.Operator;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
 
 
 
@@ -35,15 +35,15 @@ import java.util.Iterator;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class CriteriaResult
+public class CriteriaType
     extends CriteriaResultElement
 {
 
-    private Collection<CriteriaResultElement>  _elements = new ArrayList<CriteriaResultElement>();
+    private final Collection<CriteriaResultElement>  _elements = new ArrayList<CriteriaResultElement>();
     //{1..*}
 
 
-    private Operator  _operator;
+    private OperatorEnumeration  _operator;
     //{required}
 
 
@@ -51,17 +51,14 @@ public class CriteriaResult
     /**
      * Constructor.
      */
-    public CriteriaResult()
+    public CriteriaType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public CriteriaResult(
-                    final Operator operator,
-                    final Result result
+    public CriteriaType(
+                    final OperatorEnumeration operator,
+                    final ResultEnumeration result
                     )
     {
         super( result );
@@ -70,15 +67,17 @@ public class CriteriaResult
 
 
 
+    /**
+     */
     public void setOperator(
-                    final Operator operator
+                    final OperatorEnumeration operator
                     )
     {
         _operator = operator;
     }
 
 
-    public Operator getOperator()
+    public OperatorEnumeration getOperator()
     {
         return _operator;
     }
@@ -91,12 +90,8 @@ public class CriteriaResult
     {
         if (elements != _elements) {
             _elements.clear();
-            if (elements == null  ||  elements.size() == 0) {
-                return;
-            }
-
-            for (CriteriaResultElement  e : elements) {
-                addElement( e );
+            if (elements != null  &&  elements.size() > 0) {
+                _elements.addAll( elements );
             }
         }
     }
@@ -114,7 +109,7 @@ public class CriteriaResult
     }
 
 
-    public CriteriaResult element(
+    public CriteriaType element(
                     final CriteriaResultElement element
                     )
     {
@@ -150,4 +145,4 @@ public class CriteriaResult
     }
 
 }
-// CriteriaResult
+// CriteriaType

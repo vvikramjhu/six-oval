@@ -161,12 +161,10 @@
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
-<!--
         <field name="criteria" 
-            type="jp.go.aist.six.oval.model.results.CriteriaResult">
+            type="jp.go.aist.six.oval.model.v5.results.CriteriaType">
             <bind-xml name="criteria" node="element"/>
         </field>
--->
 
         <field name="ovalID" type="string">
             <bind-xml name="definition_id" node="attribute"/>
@@ -179,6 +177,79 @@
         <field name="result" 
             type="jp.go.aist.six.oval.model.v5.results.ResultEnumeration">
             <bind-xml name="result" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.v5.results.CriteriaResultElement"
+        verify-constructable="false">
+
+        <field name="negate" type="boolean">
+            <bind-xml name="negate" node="attribute"/>
+        </field>
+
+        <field name="result" 
+            type="jp.go.aist.six.oval.model.v5.results.ResultEnumeration">
+            <bind-xml name="result" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.results.CriteriaResultLeafElement"
+        extends="jp.go.aist.six.oval.model.v5.results.CriteriaResultElement"
+        verify-constructable="false">
+
+        <field name="version" type="int">
+            <bind-xml name="version" node="attribute"/>
+        </field>
+
+        <field name="variableInstance" type="int">
+            <bind-xml name="variable_instance" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.results.CriterionType"
+        extends="jp.go.aist.six.oval.model.v5.results.CriteriaResultLeafElement">
+        <map-to xml="criterion"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
+
+        <field name="testRef" type="string">
+            <bind-xml name="test_ref" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.results.ExtendDefinitionType"
+        extends="jp.go.aist.six.oval.model.v5.results.CriteriaResultLeafElement">
+        <map-to xml="extend_definition"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
+
+        <field name="definitionRef" type="string">
+            <bind-xml name="definition_ref" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.results.CriteriaType"
+        extends="jp.go.aist.six.oval.model.v5.results.CriteriaResultElement">
+        <map-to xml="criteria"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
+
+        <field name="operator" 
+            type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration">
+            <bind-xml name="operator" node="attribute"/>
+        </field>
+
+        <field name="elements" 
+            type="jp.go.aist.six.oval.model.v5.results.CriteriaResultElement"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
     </class>
 

@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
@@ -35,11 +35,11 @@ public abstract class CriteriaResultElement
     extends AbstractOvalObject
 {
 
-    public static final boolean  DEFAULT_NEGATE = false;
-    private boolean  _negate = DEFAULT_NEGATE;
+    public static final Boolean  DEFAULT_NEGATE = Boolean.FALSE;
+    private Boolean  _negate;
     //{xsd:boolean, optional, default="false"}
 
-    private Result  _result;
+    private ResultEnumeration  _result;
     //{required}
 
 
@@ -52,40 +52,36 @@ public abstract class CriteriaResultElement
     }
 
 
-    /**
-     * Constructor.
-     */
     public CriteriaResultElement(
-                    final Result result
-                    )
-    {
-        this( result, DEFAULT_NEGATE );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public CriteriaResultElement(
-                    final Result result,
-                    final boolean negate
+                    final ResultEnumeration result
                     )
     {
         setResult( result );
-        setNegate( negate );
     }
 
 
+//    public CriteriaResultElement(
+//                    final ResultEnumeration result,
+//                    final boolean negate
+//                    )
+//    {
+//        setResult( result );
+//        setNegate( negate );
+//    }
 
+
+
+    /**
+     */
     public void setNegate(
-                    final boolean negate
+                    final Boolean negate
                     )
     {
         _negate = negate;
     }
 
 
-    public boolean isNegate()
+    public Boolean isNegate()
     {
         return _negate;
     }
@@ -95,14 +91,14 @@ public abstract class CriteriaResultElement
     /**
      */
     public void setResult(
-                    final Result result
+                    final ResultEnumeration result
                     )
     {
         _result= result;
     }
 
 
-    public Result getResult()
+    public ResultEnumeration getResult()
     {
         return _result;
     }

@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.v5.results;
 
 
 
@@ -30,22 +30,19 @@ package jp.go.aist.six.oval.model.results;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class ExtendDefinitionResult
+public class ExtendDefinitionType
     extends CriteriaResultLeafElement
 {
 
     /**
      * Constructor.
      */
-    public ExtendDefinitionResult()
+    public ExtendDefinitionType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public ExtendDefinitionResult(
+    public ExtendDefinitionType(
                     final String testID,
                     final int version
                     )
@@ -54,13 +51,10 @@ public class ExtendDefinitionResult
     }
 
 
-    /**
-     * Constructor.
-     */
-    public ExtendDefinitionResult(
+    public ExtendDefinitionType(
                     final String id,
                     final int version,
-                    final Result result
+                    final ResultEnumeration result
                     )
     {
         super( id, version, result );
@@ -68,6 +62,8 @@ public class ExtendDefinitionResult
 
 
 
+    /**
+     */
     public void setDefinitionRef(
                     final String definitionID
                     )
@@ -96,4 +92,4 @@ public class ExtendDefinitionResult
     }
 
 }
-// ExtendDefinitionResult
+// ExtendDefinitionType

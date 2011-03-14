@@ -20,8 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.results;
 
-import jp.go.aist.six.oval.model.common.DefinitionClass;
-import jp.go.aist.six.oval.model.results.CriteriaResult;
+import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
 import jp.go.aist.six.util.persist.Dependent;
 
 
@@ -38,12 +37,12 @@ public class DefinitionType
     implements Dependent<SystemType>
 {
 
-    private DefinitionClass  _definitionClass;
-    //{optional}
-
-
-    private CriteriaResult  _criteria;
+    private CriteriaType  _criteria;
     //{0..1}
+
+
+    private DefinitionClassEnumeration  _definitionClass;
+    //{optional}
 
 
 
@@ -55,9 +54,6 @@ public class DefinitionType
     }
 
 
-    /**
-     * Constructor.
-     */
     public DefinitionType(
                     final String id,
                     final int version
@@ -67,9 +63,6 @@ public class DefinitionType
     }
 
 
-    /**
-     * Constructor.
-     */
     public DefinitionType(
                     final String id,
                     final int version,
@@ -77,49 +70,6 @@ public class DefinitionType
                     )
     {
         super( id, version, result );
-    }
-
-
-
-    /**
-     */
-    public void setDefinitionClass(
-                    final DefinitionClass clazz
-                    )
-    {
-        _definitionClass = clazz;
-    }
-
-
-    public DefinitionClass getDefinitionClass()
-    {
-        return _definitionClass;
-    }
-
-
-
-    /**
-     */
-    public void setCriteria(
-                    final CriteriaResult criteria
-                    )
-    {
-        _criteria = criteria;
-    }
-
-
-    public CriteriaResult getCriteria()
-    {
-        return _criteria;
-    }
-
-
-    public DefinitionType criteria(
-                    final CriteriaResult criteria
-                    )
-    {
-        setCriteria( criteria );
-        return this;
     }
 
 
@@ -137,6 +87,49 @@ public class DefinitionType
     public String getDefinitionID()
     {
         return getOvalID();
+    }
+
+
+
+    /**
+     */
+    public void setDefinitionClass(
+                    final DefinitionClassEnumeration clazz
+                    )
+    {
+        _definitionClass = clazz;
+    }
+
+
+    public DefinitionClassEnumeration getDefinitionClass()
+    {
+        return _definitionClass;
+    }
+
+
+
+    /**
+     */
+    public void setCriteria(
+                    final CriteriaType criteria
+                    )
+    {
+        _criteria = criteria;
+    }
+
+
+    public CriteriaType getCriteria()
+    {
+        return _criteria;
+    }
+
+
+    public DefinitionType criteria(
+                    final CriteriaType criteria
+                    )
+    {
+        setCriteria( criteria );
+        return this;
     }
 
 
