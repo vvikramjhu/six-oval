@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 import jp.go.aist.six.util.persist.Dependent;
 
 
@@ -33,9 +33,9 @@ import jp.go.aist.six.util.persist.Dependent;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class ItemReference
+public class ReferenceType
     extends AbstractOvalObject
-    implements Dependent<CollectedSystemObject>
+    implements Dependent<SystemObjectType>
 {
 
     private int  _itemRef;
@@ -46,15 +46,12 @@ public class ItemReference
     /**
      * Constructor.
      */
-    public ItemReference()
+    public ReferenceType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public ItemReference(
+    public ReferenceType(
                     final int itemID
                     )
     {
@@ -82,19 +79,21 @@ public class ItemReference
     //  Dependent
     //**************************************************************
 
-    private CollectedSystemObject  _master;
+    private SystemObjectType  _master;
 
 
 
+    @Override
     public void setMasterObject(
-                    final CollectedSystemObject master
+                    final SystemObjectType master
                     )
     {
         _master = master;
     }
 
 
-    public CollectedSystemObject getMasterObject()
+    @Override
+    public SystemObjectType getMasterObject()
     {
         return _master;
     }
@@ -127,11 +126,11 @@ public class ItemReference
             return true;
         }
 
-        if (!(obj instanceof ItemReference)) {
+        if (!(obj instanceof ReferenceType)) {
             return false;
         }
 
-        ItemReference  other = (ItemReference)obj;
+        ReferenceType  other = (ReferenceType)obj;
         if (this.getItemRef() == other.getItemRef()) {
             return true;
         }
@@ -149,4 +148,4 @@ public class ItemReference
     }
 
 }
-// ItemReference
+// ReferenceType

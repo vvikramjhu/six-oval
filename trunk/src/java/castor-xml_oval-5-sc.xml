@@ -38,12 +38,12 @@
             <bind-xml name="system_info" node="element"/>
         </field>
 
-<!--
         <field name="collectedObjects" 
-            type="jp.go.aist.six.oval.model.sc.CollectedSystemObjects">
+            type="jp.go.aist.six.oval.model.v5.sc.CollectedSystemObjectsType">
             <bind-xml name="collected_objects" node="element"/>
         </field>
 
+<!--
         <field name="systemData" 
             type="jp.go.aist.six.oval.model.sc.SystemData">
             <bind-xml name="system_data" node="element"/>
@@ -116,6 +116,82 @@
         <field name="macAddress" type="string"
             required="true">
             <bind-xml name="mac_address" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.sc.CollectedSystemObjectsType">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.v5.sc.SystemObjectType"
+            collection="collection">
+            <bind-xml name="object" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.sc.SystemObjectType"
+        extends="jp.go.aist.six.oval.model.v5.OvalElement">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
+
+        <field name="message" type="string">
+            <bind-xml name="message" node="element"/>
+        </field>
+
+        <field name="variableValue" 
+            type="jp.go.aist.six.oval.model.v5.sc.VariableValueType"
+            collection="collection">
+            <bind-xml name="variable_value" node="element"/>
+        </field>
+
+        <field name="reference" 
+            type="jp.go.aist.six.oval.model.v5.sc.ReferenceType"
+            collection="collection">
+            <bind-xml name="reference" node="element"/>
+        </field>
+
+        <field name="variableInstance" type="int">
+            <bind-xml name="variable_instance" node="attribute"/>
+        </field>
+
+        <field name="comment" type="string">
+            <bind-xml name="comment" node="attribute"/>
+        </field>
+
+        <field name="flag"  
+            type="jp.go.aist.six.oval.model.v5.sc.FlagEnumeration">
+            <bind-xml name="flag" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.v5.sc.VariableValueType">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
+
+        <field name="variableID" type="string">
+            <bind-xml name="variable_id" node="attribute"/>
+        </field>
+
+        <field name="content" type="string">
+            <bind-xml node="text"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.sc.ReferenceType">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
+
+        <field name="itemRef" type="int">
+            <bind-xml name="item_ref" node="attribute"/>
         </field>
     </class>
 

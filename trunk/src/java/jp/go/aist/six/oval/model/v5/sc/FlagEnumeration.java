@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.v5.sc;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -32,7 +32,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class Flag
+public final class FlagEnumeration
     implements Serializable
 {
 
@@ -44,18 +44,18 @@ public final class Flag
     private static final String  _NOT_APPLICABLE_  = "not applicable";
 
 
-    public static final Flag  ERROR          = new Flag( _ERROR_ );
-    public static final Flag  COMPLETE       = new Flag( _COMPLETE_ );
-    public static final Flag  INCOMPLETE     = new Flag( _INCOMPLETE_ );
-    public static final Flag  DOES_NOT_EXIST = new Flag( _DOES_NOT_EXIST_ );
-    public static final Flag  NOT_COLLECTED  = new Flag( _NOT_COLLECTED_ );
-    public static final Flag  NOT_APPLICABLE = new Flag( _NOT_APPLICABLE_ );
+    public static final FlagEnumeration  ERROR          = new FlagEnumeration( _ERROR_ );
+    public static final FlagEnumeration  COMPLETE       = new FlagEnumeration( _COMPLETE_ );
+    public static final FlagEnumeration  INCOMPLETE     = new FlagEnumeration( _INCOMPLETE_ );
+    public static final FlagEnumeration  DOES_NOT_EXIST = new FlagEnumeration( _DOES_NOT_EXIST_ );
+    public static final FlagEnumeration  NOT_COLLECTED  = new FlagEnumeration( _NOT_COLLECTED_ );
+    public static final FlagEnumeration  NOT_APPLICABLE = new FlagEnumeration( _NOT_APPLICABLE_ );
 
 
 
-    private static HashMap<String, Flag> _INIT_()
+    private static HashMap<String, FlagEnumeration> _INIT_()
     {
-        HashMap<String, Flag>  map = new HashMap<String, Flag>();
+        HashMap<String, FlagEnumeration>  map = new HashMap<String, FlagEnumeration>();
         map.put( _ERROR_,           ERROR          );
         map.put( _COMPLETE_,        COMPLETE       );
         map.put( _INCOMPLETE_,      INCOMPLETE     );
@@ -65,18 +65,18 @@ public final class Flag
         return map;
     }
 
-    private static final HashMap<String, Flag>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, FlagEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static Flag valueOf(
+    public static FlagEnumeration valueOf(
                     final String name
                     )
     {
-        Flag  e = null;
+        FlagEnumeration  e = null;
         if (name != null) {
             e = _INSTANCES_.get( name );
         }
@@ -96,7 +96,7 @@ public final class Flag
 
     /**
      */
-    private Flag(
+    private FlagEnumeration(
                     final String name
                     )
     {
@@ -125,4 +125,4 @@ public final class Flag
     }
 
 }
-// Flag
+// FlagEnumeration

@@ -44,10 +44,10 @@ public class OvalSystemCharacteristics
     //{1..1}
 
 
-//    private CollectedSystemObjects  _collectedObjects = new CollectedSystemObjects();
-//    //{0..1}
-//
-//
+    private CollectedSystemObjectsType  _collectedObjects;
+    //{0..1}
+
+
 //    private SystemData  _systemData = new SystemData();
 //    //{0..1}
 
@@ -111,15 +111,13 @@ public class OvalSystemCharacteristics
 
 
 
-//    public
-//    void setCollectedObjectsDigest( final String digest )
+//    public void setCollectedObjectsDigest( final String digest )
 //    {
 //        _objectsDigest = digest;
 //    }
 //
 //
-//    public
-//    String getCollectedObjectsDigest()
+//    public String getCollectedObjectsDigest()
 //    {
 //        if (_objectsDigest == null) {
 //            try {
@@ -167,23 +165,23 @@ public class OvalSystemCharacteristics
 
 
 
-//    /**
-//     */
-//    public void setCollectedObjects(
-//                    final CollectedSystemObjects objects
-//                    )
-//    {
-//        _collectedObjects = objects;
-//    }
-//
-//
-//    public CollectedSystemObjects getCollectedObjects()
-//    {
-//        return _collectedObjects;
-//    }
-//
-//
-//
+    /**
+     */
+    public void setCollectedObjects(
+                    final CollectedSystemObjectsType objects
+                    )
+    {
+        _collectedObjects = objects;
+    }
+
+
+    public CollectedSystemObjectsType getCollectedObjects()
+    {
+        return _collectedObjects;
+    }
+
+
+
 //    /**
 //     */
 //    public void setSystemData(
@@ -220,13 +218,13 @@ public class OvalSystemCharacteristics
     @Override
     public String toString()
     {
-//        CollectedSystemObjects  collectedObjects = getCollectedObjects();
+        CollectedSystemObjectsType  collectedObjects = getCollectedObjects();
 //        SystemData  systemData = getSystemData();
 
         return "OvalSystemCharacteristics[generator=" + getGenerator()
                         + ", system_info=" + getSystemInfo()
-//                        + ", #collected_objects="
-//                        + (collectedObjects == null ? 0 : collectedObjects.size())
+                        + ", #collected_objects="
+                        + (collectedObjects == null ? 0 : collectedObjects.size())
 //                        + ", #items="
 //                        + (systemData == null ? 0 : systemData.size())
                         + "]";

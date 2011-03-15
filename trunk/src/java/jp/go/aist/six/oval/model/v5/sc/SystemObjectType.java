@@ -18,14 +18,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.OvalElement;
-import jp.go.aist.six.util.persist.Dependent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.v5.OvalElement;
+import jp.go.aist.six.util.persist.Dependent;
 
 
 
@@ -38,7 +38,7 @@ import java.util.Iterator;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class CollectedSystemObject
+public class SystemObjectType
     extends OvalElement
     implements Dependent<OvalSystemCharacteristics>
 {
@@ -49,23 +49,24 @@ public class CollectedSystemObject
     private String  _message;
 
 
-    private Collection<VariableValue>  _variableValue = new ArrayList<VariableValue>();
+    private final Collection<VariableValueType>  _variableValue = new ArrayList<VariableValueType>();
     //{0..*}
 
 
-    private Collection<ItemReference>  _reference = new ArrayList<ItemReference>();
+    private final Collection<ReferenceType>  _reference = new ArrayList<ReferenceType>();
     //{0..*}
 
 
-    public static final int  DEFAULT_VARIABLE_INSTANCE = 1;
-    private int  _variableInstance = DEFAULT_VARIABLE_INSTANCE;
+    public static final Integer  DEFAULT_VARIABLE_INSTANCE = 1;
+    private Integer  _variableInstance;
     //{xsd:nonNegativeInteger, optional, default="1"}
 
 
     private String  _comment;
+    //{optional}
 
 
-    private Flag  _flag;
+    private FlagEnumeration  _flag;
     //{required}
 
 
@@ -73,15 +74,12 @@ public class CollectedSystemObject
     /**
      * Constructor.
      */
-    public CollectedSystemObject()
+    public SystemObjectType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public CollectedSystemObject(
+    public SystemObjectType(
                     final String id,
                     final int version
                     )
@@ -90,13 +88,10 @@ public class CollectedSystemObject
     }
 
 
-    /**
-     * Constructor.
-     */
-    public CollectedSystemObject(
+    public SystemObjectType(
                     final String id,
                     final int version,
-                    final Flag flag
+                    final FlagEnumeration flag
                     )
     {
         super( id, version );
@@ -104,28 +99,22 @@ public class CollectedSystemObject
     }
 
 
-    /**
-     * Constructor.
-     */
-    public CollectedSystemObject(
+    public SystemObjectType(
                     final String id,
                     final int version,
-                    final Flag flag,
-                    final ItemReference[] items
+                    final FlagEnumeration flag,
+                    final ReferenceType[] items
                     )
     {
         this( id, version, flag, Arrays.asList( items ) );
     }
 
 
-    /**
-     * Constructor.
-     */
-    public CollectedSystemObject(
+    public SystemObjectType(
                     final String id,
                     final int version,
-                    final Flag flag,
-                    final Collection<? extends ItemReference> items
+                    final FlagEnumeration flag,
+                    final Collection<? extends ReferenceType> items
                     )
     {
         this( id, version, flag );
@@ -152,23 +141,20 @@ public class CollectedSystemObject
 
 
     public void setVariableValue(
-                    final Collection<? extends VariableValue> values
+                    final Collection<? extends VariableValueType> values
                     )
     {
         if (values != _variableValue) {
             _variableValue.clear();
             if (values != null  &&  values.size() > 0) {
-                for (VariableValue  v : values) {
-                    addVariableValue( v );
-                }
-//                _variableValue.addAll( values );
+                _variableValue.addAll( values );
             }
         }
     }
 
 
     public boolean addVariableValue(
-                    final VariableValue value
+                    final VariableValueType value
                     )
     {
         if (value == null) {
@@ -179,8 +165,8 @@ public class CollectedSystemObject
     }
 
 
-    public CollectedSystemObject variableValue(
-                    final VariableValue value
+    public SystemObjectType variableValue(
+                    final VariableValueType value
                     )
     {
         addVariableValue( value );
@@ -188,7 +174,7 @@ public class CollectedSystemObject
     }
 
 
-    public Collection<VariableValue> getVariableValue()
+    public Collection<VariableValueType> getVariableValue()
     {
         return _variableValue;
     }
@@ -196,24 +182,20 @@ public class CollectedSystemObject
 
 
     public void setReference(
-                    final Collection<? extends ItemReference> references
+                    final Collection<? extends ReferenceType> references
                     )
     {
         if (references != _reference) {
             _reference.clear();
-            if (references == null  ||  references.size() == 0) {
-                return;
-            }
-
-            for (ItemReference  reference : references) {
-                addReference( reference );
+            if (references != null  &&  references.size() > 0) {
+                _reference.addAll( references );
             }
         }
     }
 
 
     public boolean addReference(
-                    final ItemReference reference
+                    final ReferenceType reference
                     )
     {
         if (reference == null) {
@@ -224,8 +206,8 @@ public class CollectedSystemObject
     }
 
 
-    public CollectedSystemObject reference(
-                    final ItemReference reference
+    public SystemObjectType reference(
+                    final ReferenceType reference
                     )
     {
         addReference( reference );
@@ -233,22 +215,22 @@ public class CollectedSystemObject
     }
 
 
-    public CollectedSystemObject reference(
+    public SystemObjectType reference(
                     final int itemID
                     )
     {
-        addReference( new ItemReference( itemID ) );
+        addReference( new ReferenceType( itemID ) );
         return this;
     }
 
 
-    public Collection<ItemReference> getReference()
+    public Collection<ReferenceType> getReference()
     {
         return _reference;
     }
 
 
-    public Iterator<ItemReference> iterateReference()
+    public Iterator<ReferenceType> iterateReference()
     {
         return _reference.iterator();
     }
@@ -258,14 +240,14 @@ public class CollectedSystemObject
     /**
      */
     public void setVariableInstance(
-                    final int variableInstance
+                    final Integer variableInstance
                     )
     {
         _variableInstance = variableInstance;
     }
 
 
-    public int getVariableInstance()
+    public Integer getVariableInstance()
     {
         return _variableInstance;
     }
@@ -282,7 +264,7 @@ public class CollectedSystemObject
     }
 
 
-    public CollectedSystemObject comment(
+    public SystemObjectType comment(
                     final String comment
                     )
     {
@@ -301,14 +283,14 @@ public class CollectedSystemObject
     /**
      */
     public void setFlag(
-                    final Flag flag
+                    final FlagEnumeration flag
                     )
     {
         _flag = flag;
     }
 
 
-    public Flag getFlag()
+    public FlagEnumeration getFlag()
     {
         return _flag;
     }
@@ -323,6 +305,7 @@ public class CollectedSystemObject
 
 
 
+    @Override
     public void setMasterObject(
                     final OvalSystemCharacteristics master
                     )
@@ -331,6 +314,7 @@ public class CollectedSystemObject
     }
 
 
+    @Override
     public OvalSystemCharacteristics getMasterObject()
     {
         return _master;

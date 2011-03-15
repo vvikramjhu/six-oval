@@ -18,11 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.OvalElementContainer;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.v5.OvalElementContainer;
 
 
 
@@ -36,34 +36,28 @@ import java.util.Iterator;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class CollectedSystemObjects
-    extends OvalElementContainer<CollectedSystemObject>    //{1..*}
+public class CollectedSystemObjectsType
+    extends OvalElementContainer<SystemObjectType>    //{1..*}
 {
 
     /**
      * Constructor.
      */
-    public CollectedSystemObjects()
+    public CollectedSystemObjectsType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public CollectedSystemObjects(
-                    final Collection<? extends CollectedSystemObject> objects
+    public CollectedSystemObjectsType(
+                    final Collection<? extends SystemObjectType> objects
                     )
     {
         super( objects );
     }
 
 
-    /**
-     * Constructor.
-     */
-    public CollectedSystemObjects(
-                    final CollectedSystemObject[] objects
+    public CollectedSystemObjectsType(
+                    final SystemObjectType[] objects
                     )
     {
         super( objects );
@@ -71,8 +65,10 @@ public class CollectedSystemObjects
 
 
 
+    /**
+     */
     public void setObject(
-                    final Collection<? extends CollectedSystemObject> objects
+                    final Collection<? extends SystemObjectType> objects
                     )
     {
         _setElement( objects );
@@ -80,21 +76,21 @@ public class CollectedSystemObjects
 
 
     public boolean addObject(
-                    final CollectedSystemObject object
+                    final SystemObjectType object
                     )
     {
         return add( object );
     }
 
 
-    public Collection<CollectedSystemObject> getObject()
+    public Collection<SystemObjectType> getObject()
     {
         return _getElement();
     }
 
 
 
-    public Iterator<CollectedSystemObject> iterateObject()
+    public Iterator<SystemObjectType> iterateObject()
     {
         return iterator();
     }
@@ -108,10 +104,10 @@ public class CollectedSystemObjects
     @Override
     public String toString()
     {
-        return "collected_objects["
+        return "["
                         + _getElement()
                         + "]";
     }
 
 }
-// CollectedSystemObjects
+// CollectedSystemObjectsType

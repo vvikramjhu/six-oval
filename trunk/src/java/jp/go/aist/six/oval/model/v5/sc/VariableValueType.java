@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 import jp.go.aist.six.util.persist.Dependent;
 
 
@@ -33,15 +33,16 @@ import jp.go.aist.six.util.persist.Dependent;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class VariableValue
+public class VariableValueType
     extends AbstractOvalObject
-    implements Dependent<CollectedSystemObject>
+    implements Dependent<SystemObjectType>
 {
 
     private String  _variableID;
     //{required}
 
-    private String  _value;
+
+    private String  _content;
     //{xsd:anysimpleType}
 
 
@@ -49,21 +50,18 @@ public class VariableValue
     /**
      * Constructor.
      */
-    public VariableValue()
+    public VariableValueType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public VariableValue(
+    public VariableValueType(
                     final String variableID,
                     final String value
                     )
     {
         setVariableID( variableID );
-        setValue( value );
+        setContent( value );
     }
 
 
@@ -87,17 +85,17 @@ public class VariableValue
 
     /**
      */
-    public void setValue(
-                    final String value
+    public void setContent(
+                    final String content
                     )
     {
-        _value = value;
+        _content = content;
     }
 
 
-    public String getValue()
+    public String getContent()
     {
-        return _value;
+        return _content;
     }
 
 
@@ -106,19 +104,21 @@ public class VariableValue
     //  Dependent
     //**************************************************************
 
-    private CollectedSystemObject  _master;
+    private SystemObjectType  _master;
 
 
 
+    @Override
     public void setMasterObject(
-                    final CollectedSystemObject master
+                    final SystemObjectType master
                     )
     {
         _master = master;
     }
 
 
-    public CollectedSystemObject getMasterObject()
+    @Override
+    public SystemObjectType getMasterObject()
     {
         return _master;
     }
@@ -132,10 +132,10 @@ public class VariableValue
     @Override
     public String toString()
     {
-        return "variable_value[variable_id=" + getVariableID()
-                        + ", " + getValue()
+        return "[variable_id=" + getVariableID()
+                        + ", " + getContent()
                         + "]";
     }
 
 }
-// VariableValue
+// VariableValueType
