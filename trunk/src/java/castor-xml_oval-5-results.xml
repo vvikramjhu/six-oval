@@ -132,14 +132,12 @@
             <bind-xml name="tests" node="element"/>
         </field>
 
-<!--
         <field name="ovalSystemCharacteristics" 
-            type="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics">
+            type="jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics">
             <bind-xml name="oval-sc:oval_system_characteristics" node="element"
                 xmlns:oval-sc="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"
                 />
         </field>
--->
     </class>
 
 

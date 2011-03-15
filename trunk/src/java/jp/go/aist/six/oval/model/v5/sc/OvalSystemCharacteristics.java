@@ -18,11 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.OvalDocument;
-import jp.go.aist.six.oval.model.common.Generator;
-import java.util.Collection;
+import jp.go.aist.six.oval.model.v5.OvalDocument;
+import jp.go.aist.six.oval.model.v5.common.GeneratorType;
 
 
 
@@ -37,20 +36,20 @@ public class OvalSystemCharacteristics
     extends OvalDocument
 {
 
-    private Generator  _generator;
+    private GeneratorType  _generator;
     //{1..1}
 
 
-    private SystemInfo _systemInfo;
-    //{1..1}
-
-
-    private CollectedSystemObjects  _collectedObjects = new CollectedSystemObjects();
-    //{0..1}
-
-
-    private SystemData  _systemData = new SystemData();
-    //{0..1}
+//    private SystemInfo _systemInfo;
+//    //{1..1}
+//
+//
+//    private CollectedSystemObjects  _collectedObjects = new CollectedSystemObjects();
+//    //{0..1}
+//
+//
+//    private SystemData  _systemData = new SystemData();
+//    //{0..1}
 
 
 
@@ -62,65 +61,53 @@ public class OvalSystemCharacteristics
     }
 
 
-    /**
-     * Constructor.
-     */
-    public OvalSystemCharacteristics(
-                    final Generator generator,
-                    final SystemInfo system
-                    )
-    {
-        setGenerator( generator );
-        setSystemInfo( system );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public OvalSystemCharacteristics(
-                    final Generator generator,
-                    final SystemInfo system,
-                    final CollectedSystemObjects collectedObjects,
-                    final SystemData systemData
-                    )
-    {
-        this( generator, system );
-        setCollectedObjects( collectedObjects );
-        setSystemData( systemData );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public OvalSystemCharacteristics(
-                    final Generator generator,
-                    final SystemInfo system,
-                    final Collection<CollectedSystemObject> collectedObjects,
-                    final Collection<Item> systemData
-                    )
-    {
-        this( generator, system );
-        setCollectedObjects( new CollectedSystemObjects( collectedObjects ) );
-        setSystemData( new SystemData( systemData ) );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public OvalSystemCharacteristics(
-                    final Generator generator,
-                    final SystemInfo system,
-                    final CollectedSystemObject[] collectedObjects,
-                    final Item[] systemData
-                    )
-    {
-        this( generator, system );
-        setCollectedObjects( new CollectedSystemObjects( collectedObjects ) );
-        setSystemData( new SystemData( systemData ) );
-    }
+//    public OvalSystemCharacteristics(
+//                    final Generator generator,
+//                    final SystemInfo system
+//                    )
+//    {
+//        setGenerator( generator );
+//        setSystemInfo( system );
+//    }
+//
+//
+//    public OvalSystemCharacteristics(
+//                    final Generator generator,
+//                    final SystemInfo system,
+//                    final CollectedSystemObjects collectedObjects,
+//                    final SystemData systemData
+//                    )
+//    {
+//        this( generator, system );
+//        setCollectedObjects( collectedObjects );
+//        setSystemData( systemData );
+//    }
+//
+//
+//    public OvalSystemCharacteristics(
+//                    final Generator generator,
+//                    final SystemInfo system,
+//                    final Collection<CollectedSystemObject> collectedObjects,
+//                    final Collection<Item> systemData
+//                    )
+//    {
+//        this( generator, system );
+//        setCollectedObjects( new CollectedSystemObjects( collectedObjects ) );
+//        setSystemData( new SystemData( systemData ) );
+//    }
+//
+//
+//    public OvalSystemCharacteristics(
+//                    final Generator generator,
+//                    final SystemInfo system,
+//                    final CollectedSystemObject[] collectedObjects,
+//                    final Item[] systemData
+//                    )
+//    {
+//        this( generator, system );
+//        setCollectedObjects( new CollectedSystemObjects( collectedObjects ) );
+//        setSystemData( new SystemData( systemData ) );
+//    }
 
 
 
@@ -149,68 +136,68 @@ public class OvalSystemCharacteristics
     /**
      */
     public void setGenerator(
-                    final Generator generator
+                    final GeneratorType generator
                     )
     {
         _generator = generator;
     }
 
 
-    public Generator getGenerator()
+    public GeneratorType getGenerator()
     {
         return _generator;
     }
 
 
 
-    /**
-     */
-    public void setSystemInfo(
-                    final SystemInfo systemInfo
-                    )
-    {
-        _systemInfo = systemInfo;
-    }
-
-
-    public SystemInfo getSystemInfo()
-    {
-        return _systemInfo;
-    }
-
-
-
-    /**
-     */
-    public void setCollectedObjects(
-                    final CollectedSystemObjects objects
-                    )
-    {
-        _collectedObjects = objects;
-    }
-
-
-    public CollectedSystemObjects getCollectedObjects()
-    {
-        return _collectedObjects;
-    }
-
-
-
-    /**
-     */
-    public void setSystemData(
-                    final SystemData systemData
-                    )
-    {
-        _systemData = systemData;
-    }
-
-
-    public SystemData getSystemData()
-    {
-        return _systemData;
-    }
+//    /**
+//     */
+//    public void setSystemInfo(
+//                    final SystemInfo systemInfo
+//                    )
+//    {
+//        _systemInfo = systemInfo;
+//    }
+//
+//
+//    public SystemInfo getSystemInfo()
+//    {
+//        return _systemInfo;
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public void setCollectedObjects(
+//                    final CollectedSystemObjects objects
+//                    )
+//    {
+//        _collectedObjects = objects;
+//    }
+//
+//
+//    public CollectedSystemObjects getCollectedObjects()
+//    {
+//        return _collectedObjects;
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public void setSystemData(
+//                    final SystemData systemData
+//                    )
+//    {
+//        _systemData = systemData;
+//    }
+//
+//
+//    public SystemData getSystemData()
+//    {
+//        return _systemData;
+//    }
 
 
 
@@ -218,11 +205,11 @@ public class OvalSystemCharacteristics
     //  OvalDocument
     //**************************************************************
 
-    @Override
-    public String getSchemaLocation()
-    {
-        return SC_SCHEMA_LOCATION;
-    }
+//    @Override
+//    public String getSchemaLocation()
+//    {
+//        return SC_SCHEMA_LOCATION;
+//    }
 
 
 
@@ -233,15 +220,15 @@ public class OvalSystemCharacteristics
     @Override
     public String toString()
     {
-        CollectedSystemObjects  collectedObjects = getCollectedObjects();
-        SystemData  systemData = getSystemData();
+//        CollectedSystemObjects  collectedObjects = getCollectedObjects();
+//        SystemData  systemData = getSystemData();
 
         return "OvalSystemCharacteristics[generator=" + getGenerator()
-                        + ", system_info=" + getSystemInfo()
-                        + ", #collected_objects="
-                        + (collectedObjects == null ? 0 : collectedObjects.size())
-                        + ", #items="
-                        + (systemData == null ? 0 : systemData.size())
+//                        + ", system_info=" + getSystemInfo()
+//                        + ", #collected_objects="
+//                        + (collectedObjects == null ? 0 : collectedObjects.size())
+//                        + ", #items="
+//                        + (systemData == null ? 0 : systemData.size())
                         + "]";
     }
 

@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.v5.results;
 
 import java.util.UUID;
 import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.util.persist.Dependent;
 
 
@@ -48,8 +49,8 @@ public class SystemType
     //{0..1}
 
 
-//    private OvalSystemCharacteristics  _ovalSC;
-//    //{1..1}
+    private OvalSystemCharacteristics  _ovalSC;
+    //{1..1}
 
 
     //TODO:
@@ -167,20 +168,20 @@ public class SystemType
 
 
 
-//    /**
-//     */
-//    public void setOvalSystemCharacteristics(
-//                    final OvalSystemCharacteristics sc
-//                    )
-//    {
-//        _ovalSC = sc;
-//    }
-//
-//
-//    public OvalSystemCharacteristics getOvalSystemCharacteristics()
-//    {
-//        return _ovalSC;
-//    }
+    /**
+     */
+    public void setOvalSystemCharacteristics(
+                    final OvalSystemCharacteristics sc
+                    )
+    {
+        _ovalSC = sc;
+    }
+
+
+    public OvalSystemCharacteristics getOvalSystemCharacteristics()
+    {
+        return _ovalSC;
+    }
 
 
 
@@ -260,8 +261,8 @@ public class SystemType
 
         return "[#definitions=" + (defs == null ? 0 : defs.size())
                         + ", #tests=" + (tests == null ? 0 : tests.size())
+                        + ", oval_system_characteristics=" + getOvalSystemCharacteristics()
                         + "]";
-//        "[oval_system_characteristics=" + getOvalSystemCharacteristics()
 //                        + ", #definitions=" + (defs == null ? 0 : defs.size())
 //                        + ", tests=" + tests
 //                        + "]";

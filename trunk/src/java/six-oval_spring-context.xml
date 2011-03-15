@@ -217,11 +217,12 @@
                  <value>classpath:castor-xml_oval-5-six.xml</value>
                  <value>classpath:castor-xml_oval-5-common.xml</value>
                  <value>classpath:castor-xml_oval-5-definitions.xml</value>
+                 <value>classpath:castor-xml_oval-5-sc.xml</value>
+                 <value>classpath:castor-xml_oval-5-results.xml</value>
                  <value>classpath:castor-xml_oval-5-independent.xml</value>
                  <value>classpath:castor-xml_oval-5-linux.xml</value>
                  <value>classpath:castor-xml_oval-5-unix.xml</value>
                  <value>classpath:castor-xml_oval-5-windows.xml</value>
-                 <value>classpath:castor-xml_oval-5-results.xml</value>
             </list>
         </property>
         <property name="ignoreExtraAttributes"
