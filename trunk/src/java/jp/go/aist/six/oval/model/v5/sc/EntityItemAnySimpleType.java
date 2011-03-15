@@ -18,9 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.common.Datatype;
 
 
 
@@ -32,63 +31,23 @@ import jp.go.aist.six.oval.model.common.Datatype;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemAnySimple
-    extends EntityItemBase
+public class EntityItemAnySimpleType
+    extends EntityItemSimpleBaseType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemAnySimple()
+    public EntityItemAnySimpleType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityItemAnySimple(
-                    final String data
+    public EntityItemAnySimpleType(
+                    final String content
                     )
     {
-        this( data, DEFAULT_STATUS );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemAnySimple(
-                    final String data,
-                    final Datatype datatype
-                    )
-    {
-        this( data, datatype, DEFAULT_STATUS );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemAnySimple(
-                    final String data,
-                    final Status status
-                    )
-    {
-        this( data, DEFAULT_DATATYPE, status );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemAnySimple(
-                    final String data,
-                    final Datatype datatype,
-                    final Status status
-                    )
-    {
-        super( data, datatype, status );
+        super( content );
     }
 
 
@@ -114,7 +73,7 @@ public class EntityItemAnySimple
             return true;
         }
 
-        if (!(obj instanceof EntityItemAnySimple)) {
+        if (!(obj instanceof EntityItemAnySimpleType)) {
             return false;
         }
 
@@ -122,4 +81,4 @@ public class EntityItemAnySimple
     }
 
 }
-// EntityItemAnySimple
+// EntityItemAnySimpleType

@@ -18,11 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.common.Message;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.common.MessageType;
 import jp.go.aist.six.util.persist.Dependent;
 
 
@@ -35,16 +35,16 @@ import jp.go.aist.six.util.persist.Dependent;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-// TODO: This class must be abstract and dependent.
+// NOTE: This class must be abstract and dependent.
 // Castor fails to load polymorphic objects
 // if the common abstract super class is mapped to a super table.
 //public abstract class Item
-public class Item
+public class ItemType
     extends AbstractOvalObject
     implements Dependent<OvalSystemCharacteristics>
 {
 
-    private Message  _message;
+    private MessageType  _message;
     // TODO: We have never seen any item which has multiple messages.
     //{0..50}
 
@@ -56,8 +56,8 @@ public class Item
     /**
      * The default status: "exists".
      */
-    public static final Status  DEFAULT_STATUS = Status.EXISTS;
-    private Status  _status;
+    public static final StatusEnumeration  DEFAULT_STATUS = StatusEnumeration.EXISTS;
+    private StatusEnumeration  _status;
     //{optional, default="exists"}
 
 
@@ -65,28 +65,22 @@ public class Item
     /**
      * Constructor.
      */
-    public Item()
+    public ItemType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public Item(
+    public ItemType(
                     final int id
                     )
     {
-        this( id, DEFAULT_STATUS );
+        this( id, null );
     }
 
 
-    /**
-     * Constructor.
-     */
-    public Item(
+    public ItemType(
                     final int id,
-                    final Status status
+                    final StatusEnumeration status
                     )
     {
         setID( id );
@@ -115,14 +109,14 @@ public class Item
     /**
      */
     public void setMessage(
-                    final Message message
+                    final MessageType message
                     )
     {
         _message = message;
     }
 
 
-    public Message getMessage()
+    public MessageType getMessage()
     {
         return _message;
     }
@@ -149,16 +143,16 @@ public class Item
     /**
      */
     public void setStatus(
-                    final Status status
+                    final StatusEnumeration status
                     )
     {
         _status = status;
     }
 
 
-    public Status getStatus()
+    public StatusEnumeration getStatus()
     {
-        return (_status == null ? DEFAULT_STATUS : _status);
+        return _status;
     }
 
 
@@ -170,6 +164,7 @@ public class Item
     private OvalSystemCharacteristics  _master;
 
 
+    @Override
     public void setMasterObject(
                     final OvalSystemCharacteristics master
                     )
@@ -178,6 +173,7 @@ public class Item
     }
 
 
+    @Override
     public OvalSystemCharacteristics getMasterObject()
     {
         return _master;
@@ -261,4 +257,4 @@ public class Item
     }
 
 }
-// Item
+// ItemType

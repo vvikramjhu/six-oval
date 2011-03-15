@@ -43,12 +43,10 @@
             <bind-xml name="collected_objects" node="element"/>
         </field>
 
-<!--
         <field name="systemData" 
-            type="jp.go.aist.six.oval.model.sc.SystemData">
+            type="jp.go.aist.six.oval.model.v5.sc.SystemDataType">
             <bind-xml name="system_data" node="element"/>
         </field>
--->
     </class>
 
 
@@ -197,6 +195,44 @@
 
 
 
+    <class name="jp.go.aist.six.oval.model.v5.sc.SystemDataType">
+<!--
+If we have this ns-uri, child elements have the same namespace,
+not the family-specific one.
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
+-->
+
+        <field name="item" 
+            type="jp.go.aist.six.oval.model.v5.sc.ItemType"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.sc.ItemType">
+        <field name="message" 
+            type="jp.go.aist.six.oval.model.v5.common.MessageType">
+            <bind-xml name="message" node="element"/>
+            <!--
+                xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"
+            -->
+        </field>
+        
+        <field name="ID" type="int">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+
+        <field name="status" 
+            type="jp.go.aist.six.oval.model.v5.sc.StatusEnumeration">
+            <bind-xml name="status" node="attribute"/>
+        </field>
+    </class>
+
+
+
 <!-- entity -->
 
     <class name="jp.go.aist.six.oval.model.v5.sc.EntityAttributeGroup"
@@ -234,6 +270,17 @@
         extends="jp.go.aist.six.oval.model.v5.sc.EntityItemSimpleBaseType">
     </class>
 
+
+
+    <class name="jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType"
+        extends="jp.go.aist.six.oval.model.v5.sc.EntityItemSimpleBaseType">
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType"
+        extends="jp.go.aist.six.oval.model.v5.sc.EntityItemSimpleBaseType">
+    </class>
 
 
 </mapping>

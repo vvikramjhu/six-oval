@@ -18,11 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
-import jp.go.aist.six.oval.model.common.Datatype;
-import jp.go.aist.six.oval.model.sc.EntityItemString;
-import jp.go.aist.six.oval.model.sc.Status;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
 
 
 
@@ -34,74 +32,23 @@ import jp.go.aist.six.oval.model.sc.Status;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemRegistryType
-    extends EntityItemString
+public class EntityItemRegistryTypeType
+    extends EntityItemStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemRegistryType()
+    public EntityItemRegistryTypeType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityItemRegistryType(
-                    final String data
+    public EntityItemRegistryTypeType(
+                    final String content
                     )
     {
-        this( data, DEFAULT_STATUS );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemRegistryType(
-                    final String data,
-                    final Status status
-                    )
-    {
-        this( data, FIXED_DATATYPE, status );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemRegistryType(
-                    final String data,
-                    final Datatype datatype,
-                    final Status status
-                    )
-    {
-        super( data, datatype, status );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemRegistryType(
-                    final RegistryType data
-                    )
-    {
-        this( data, DEFAULT_STATUS );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemRegistryType(
-                    final RegistryType data,
-                    final Status status
-                    )
-    {
-        this( (data == null ? null : data.getName()), status );
+        super( content );
     }
 
 
@@ -111,16 +58,16 @@ public class EntityItemRegistryType
     //**************************************************************
 
     @Override
-    public void setData(
-                    final String data
+    public void setContent(
+                    final String content
                     )
     {
-        if (data != null) {
+        if (content != null) {
             // validation
-            RegistryType.valueOf( data );
+            RegistryTypeEnumeration.valueOf( content );
         }
 
-        super.setData( data );
+        super.setContent( content );
     }
 
 
@@ -146,7 +93,7 @@ public class EntityItemRegistryType
             return true;
         }
 
-        if (!(obj instanceof EntityItemRegistryType)) {
+        if (!(obj instanceof EntityItemRegistryTypeType)) {
             return false;
         }
 
@@ -154,4 +101,4 @@ public class EntityItemRegistryType
     }
 
 }
-// EntityItemRegistryType
+// EntityItemRegistryTypeType

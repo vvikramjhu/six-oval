@@ -18,13 +18,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.sc.EntityItemAnySimple;
-import jp.go.aist.six.oval.model.sc.EntityItemString;
-import jp.go.aist.six.oval.model.sc.Item;
-import jp.go.aist.six.oval.model.sc.Status;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.v5.sc.ItemType;
 
 
 
@@ -37,22 +36,22 @@ import jp.go.aist.six.oval.model.sc.Status;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class RegistryItem
-    extends Item
+    extends ItemType
 {
 
-    private EntityItemRegistryHive  _hive;
+    private EntityItemRegistryHiveType  _hive;
     //{0..1}
 
-    private EntityItemString  _key;
+    private EntityItemStringType  _key;
     //{0..1, nillable="true"}
 
-    private EntityItemString  _name;
+    private EntityItemStringType  _name;
     //{0..1, nillable="true"}
 
-    private EntityItemRegistryType  _type;
+    private EntityItemRegistryTypeType  _type;
     //{0..1}
 
-    private EntityItemAnySimple  _value;
+    private EntityItemAnySimpleType  _value;
     //{0..*}
     // We have never found a registry item that has more than one value!!! //
 //    private List<EntityItemAnySimple>  _values = new ArrayList<EntityItemAnySimple>();
@@ -67,9 +66,6 @@ public class RegistryItem
     }
 
 
-    /**
-     * Constructor.
-     */
     public RegistryItem(
                     final int id
                     )
@@ -78,113 +74,17 @@ public class RegistryItem
     }
 
 
-    /**
-     * Constructor.
-     */
-    public RegistryItem(
-                    final int id,
-                    final Status status
-                    )
-    {
-        super( id, status );
-    }
-
 
     /**
-     * Constructor.
      */
-    public RegistryItem(
-                    final int id,
-                    final Status status,
-                    final EntityItemRegistryHive hive,
-                    final EntityItemString key
-                    )
-    {
-        this( id, status );
-        setHive( hive );
-        setKey( key );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public RegistryItem(
-                    final int id,
-                    final Status status,
-                    final RegistryHive hive,
-                    final String key
-                    )
-    {
-        this( id, status );
-
-        if (hive != null) {
-            setHive( new EntityItemRegistryHive( hive ) );
-        }
-
-        if (key != null) {
-            setKey( new EntityItemString( key ) );
-        }
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public RegistryItem(
-                    final int id,
-                    final Status status,
-                    final EntityItemRegistryHive hive,
-                    final EntityItemString key,
-                    final EntityItemString name,
-                    final EntityItemRegistryType type,
-                    final EntityItemAnySimple value
-                    )
-    {
-        this( id, status, hive, key );
-        setName( name );
-        setType( type );
-        setValue( value );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public RegistryItem(
-                    final int id,
-                    final Status status,
-                    final RegistryHive hive,
-                    final String key,
-                    final String name,
-                    final RegistryType type,
-                    final String value
-                    )
-    {
-        this( id, status, hive, key );
-
-        if (name != null) {
-            setName( new EntityItemString( name ) );
-        }
-
-        if (type != null) {
-            setType( new EntityItemRegistryType( type ) );
-        }
-
-        if (value != null) {
-            setValue( new EntityItemAnySimple( value ) );
-        }
-    }
-
-
-    public EntityItemRegistryHive getHive()
+    public EntityItemRegistryHiveType getHive()
     {
         return _hive;
     }
 
 
     public void setHive(
-                    final EntityItemRegistryHive hive
+                    final EntityItemRegistryHiveType hive
                     )
     {
         _hive = hive;
@@ -192,14 +92,16 @@ public class RegistryItem
 
 
 
-    public EntityItemString getKey()
+    /**
+     */
+    public EntityItemStringType getKey()
     {
         return _key;
     }
 
 
     public void setKey(
-                    final EntityItemString key
+                    final EntityItemStringType key
                     )
     {
         _key = key;
@@ -207,14 +109,16 @@ public class RegistryItem
 
 
 
-    public EntityItemString getName()
+    /**
+     */
+    public EntityItemStringType getName()
     {
         return _name;
     }
 
 
     public void setName(
-                    final EntityItemString name
+                    final EntityItemStringType name
                     )
     {
         _name = name;
@@ -222,14 +126,16 @@ public class RegistryItem
 
 
 
-    public EntityItemRegistryType getType()
+    /**
+     */
+    public EntityItemRegistryTypeType getType()
     {
         return _type;
     }
 
 
     public void setType(
-                    final EntityItemRegistryType type
+                    final EntityItemRegistryTypeType type
                     )
     {
         _type = type;
@@ -237,15 +143,17 @@ public class RegistryItem
 
 
 
+    /**
+     */
     public void setValue(
-                    final EntityItemAnySimple value
+                    final EntityItemAnySimpleType value
                     )
     {
         _value = value;
     }
 
 
-    public EntityItemAnySimple getValue()
+    public EntityItemAnySimpleType getValue()
     {
         return _value;
     }

@@ -18,11 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.Container;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.v5.Container;
 
 
 
@@ -34,35 +34,28 @@ import java.util.Iterator;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class SystemData
-    extends Container<Item> //{1..*}
-//    extends Container<Item>
+public class SystemDataType
+    extends Container<ItemType> //{1..*}
 {
 
     /**
      * Constructor.
      */
-    public SystemData()
+    public SystemDataType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public SystemData(
-                    final Collection<? extends Item> items
+    public SystemDataType(
+                    final Collection<? extends ItemType> items
                     )
     {
         super( items );
     }
 
 
-    /**
-     * Constructor.
-     */
-    public SystemData(
-                    final Item[] items
+    public SystemDataType(
+                    final ItemType[] items
                     )
     {
         super( items );
@@ -70,8 +63,10 @@ public class SystemData
 
 
 
+    /**
+     */
     public void setItem(
-                    final Collection<? extends Item> items
+                    final Collection<? extends ItemType> items
                     )
     {
         _setElement( items );
@@ -79,20 +74,20 @@ public class SystemData
 
 
     public boolean addItem(
-                    final Item item
+                    final ItemType item
                     )
     {
         return add( item );
     }
 
 
-    public Collection<Item> getItem()
+    public Collection<ItemType> getItem()
     {
         return _getElement();
     }
 
 
-    public Iterator<Item> iterateItem()
+    public Iterator<ItemType> iterateItem()
     {
         return iterator();
     }
@@ -106,10 +101,10 @@ public class SystemData
     @Override
     public String toString()
     {
-        return "system_data["
+        return "["
                         + _getElement()
                         + "]";
     }
 
 }
-// SystemData
+// SystemDataType
