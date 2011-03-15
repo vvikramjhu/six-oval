@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.common.Datatype;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 
 
 
@@ -32,55 +32,23 @@ import jp.go.aist.six.oval.model.common.Datatype;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemString
-    extends EntityItemBase
+public class EntityItemIPAddressStringType
+    extends EntityItemSimpleBaseType
 {
 
-    public static final Datatype  FIXED_DATATYPE = Datatype.STRING;
-
-
-
     /**
      * Constructor.
      */
-    public EntityItemString()
+    public EntityItemIPAddressStringType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityItemString(
-                    final String data
+    public EntityItemIPAddressStringType(
+                    final String content
                     )
     {
-        this( data, DEFAULT_STATUS );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemString(
-                    final String data,
-                    final Status status
-                    )
-    {
-        this( data, FIXED_DATATYPE, status );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemString(
-                    final String data,
-                    final Datatype datatype,
-                    final Status status
-                    )
-    {
-        super( data, datatype, status );
+        super( content );
     }
 
 
@@ -91,21 +59,19 @@ public class EntityItemString
 
     @Override
     public void setDatatype(
-                    final Datatype datatype
+                    final DatatypeEnumeration datatype
                     )
     {
-        if (datatype != null  &&  datatype != FIXED_DATATYPE) {
-            throw new IllegalArgumentException( "invalid datatype: " + datatype);
+        if (datatype != null) {
+            if (datatype != DatatypeEnumeration.IPV4_ADDRESS
+                            &&  datatype != DatatypeEnumeration.IPV6_ADDRESS
+                            &&  datatype != DatatypeEnumeration.STRING
+                            ) {
+                throw new IllegalArgumentException( "invalid datatype: " + datatype);
+            }
         }
 
         super.setDatatype( datatype );
-    }
-
-
-    @Override
-    public Datatype getDatatype()
-    {
-        return FIXED_DATATYPE;
     }
 
 
@@ -131,7 +97,7 @@ public class EntityItemString
             return true;
         }
 
-        if (!(obj instanceof EntityItemString)) {
+        if (!(obj instanceof EntityItemIPAddressStringType)) {
             return false;
         }
 
@@ -147,4 +113,4 @@ public class EntityItemString
 //    }
 
 }
-// EntityItemString
+// EntityItemIPAddressStringType

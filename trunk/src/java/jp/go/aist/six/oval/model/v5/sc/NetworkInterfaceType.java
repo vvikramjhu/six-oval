@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 import jp.go.aist.six.util.persist.Dependent;
 
 
@@ -34,7 +34,7 @@ import jp.go.aist.six.util.persist.Dependent;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class NetInterface
+public class NetworkInterfaceType
     extends AbstractOvalObject
     implements Dependent<OvalSystemCharacteristics>
 //implements Dependent<SystemInfo>
@@ -54,7 +54,7 @@ public class NetInterface
     /**
      * Constructor.
      */
-    public NetInterface()
+    public NetworkInterfaceType()
     {
     }
 
@@ -62,7 +62,7 @@ public class NetInterface
     /**
      * Constructor.
      */
-    public NetInterface(
+    public NetworkInterfaceType(
                     final String name,
                     final String ip,
                     final String mac
@@ -134,6 +134,7 @@ public class NetInterface
 
 
 
+    @Override
     public void setMasterObject(
                     final OvalSystemCharacteristics master
                     )
@@ -142,6 +143,7 @@ public class NetInterface
     }
 
 
+    @Override
     public OvalSystemCharacteristics getMasterObject()
     {
         return _master;
@@ -182,11 +184,11 @@ public class NetInterface
             return true;
         }
 
-        if (!(obj instanceof NetInterface)) {
+        if (!(obj instanceof NetworkInterfaceType)) {
             return false;
         }
 
-        NetInterface  other = (NetInterface)obj;
+        NetworkInterfaceType  other = (NetworkInterfaceType)obj;
         String  other_ip = other.getIpAddress();
         String   this_ip =  this.getIpAddress();
         if (this_ip == other_ip
@@ -219,4 +221,4 @@ public class NetInterface
     }
 
 }
-// NetInterface
+// NetworkInterfaceType

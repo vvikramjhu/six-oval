@@ -32,13 +32,13 @@
             <bind-xml name="generator" node="element"/>
         </field>
 
-<!--
         <field name="systemInfo" 
-            type="jp.go.aist.six.oval.model.sc.SystemInfo"
+            type="jp.go.aist.six.oval.model.v5.sc.SystemInfoType"
             required="true">
             <bind-xml name="system_info" node="element"/>
         </field>
 
+<!--
         <field name="collectedObjects" 
             type="jp.go.aist.six.oval.model.sc.CollectedSystemObjects">
             <bind-xml name="collected_objects" node="element"/>
@@ -50,6 +50,76 @@
         </field>
 -->
     </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.sc.SystemInfoType">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
+
+        <field name="osName" type="string"
+            required="true">
+            <bind-xml name="os_name" node="element"/>
+        </field>
+
+        <field name="osVersion" type="string"
+            required="true">
+            <bind-xml name="os_version" node="element"/>
+        </field>
+
+        <field name="architecture" type="string"
+            required="true">
+            <bind-xml name="architecture" node="element"/>
+        </field>
+
+        <field name="primaryHostName" type="string"
+            required="true">
+            <bind-xml name="primary_host_name" node="element"/>
+        </field>
+
+        <field name="interfaces" 
+            type="jp.go.aist.six.oval.model.v5.sc.NetworkInterfacesType">
+            <bind-xml name="interfaces" node="element"/> 
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.sc.NetworkInterfacesType">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
+
+        <field name="interface" 
+            type="jp.go.aist.six.oval.model.v5.sc.NetworkInterfaceType"
+            collection="collection">
+            <bind-xml name="interface" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.v5.sc.NetworkInterfaceType">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
+
+        <field name="interfaceName" type="string"
+            required="true">
+            <bind-xml name="interface_name" node="element"/>
+        </field>
+
+        <field name="ipAddress" type="string"
+            required="true">
+            <bind-xml name="ip_address" node="element"/>
+        </field>
+
+        <field name="macAddress" type="string"
+            required="true">
+            <bind-xml name="mac_address" node="element"/>
+        </field>
+    </class>
+
+
+
 
 </mapping>
 

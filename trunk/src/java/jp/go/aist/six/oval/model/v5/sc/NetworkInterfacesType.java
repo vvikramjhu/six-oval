@@ -18,11 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.Container;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.v5.Container;
 
 
 
@@ -35,34 +35,28 @@ import java.util.Iterator;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class NetInterfaces
-    extends Container<NetInterface> //{0..*}
+public class NetworkInterfacesType
+    extends Container<NetworkInterfaceType> //{0..*}
 {
 
     /**
      * Constructor.
      */
-    public NetInterfaces()
+    public NetworkInterfacesType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public NetInterfaces(
-                    final Collection<? extends NetInterface> netifs
+    public NetworkInterfacesType(
+                    final Collection<? extends NetworkInterfaceType> netifs
                     )
     {
         super( netifs );
     }
 
 
-    /**
-     * Constructor.
-     */
-    public NetInterfaces(
-                    final NetInterface[] netifs
+    public NetworkInterfacesType(
+                    final NetworkInterfaceType[] netifs
                     )
     {
         super( netifs );
@@ -70,8 +64,10 @@ public class NetInterfaces
 
 
 
+    /**
+     */
     public void setInterface(
-                    final Collection<? extends NetInterface> netifs
+                    final Collection<? extends NetworkInterfaceType> netifs
                     )
     {
         _setElement( netifs );
@@ -79,20 +75,20 @@ public class NetInterfaces
 
 
     public boolean addInterface(
-                    final NetInterface netif
+                    final NetworkInterfaceType netif
                     )
     {
         return add( netif );
     }
 
 
-    public Collection<NetInterface> getInterface()
+    public Collection<NetworkInterfaceType> getInterface()
     {
         return _getElement();
     }
 
 
-    public Iterator<NetInterface> iterateInterface()
+    public Iterator<NetworkInterfaceType> iterateInterface()
     {
         return iterator();
     }
@@ -117,4 +113,4 @@ public class NetInterfaces
     //**************************************************************
 
 }
-// NetInterfaces
+// NetworkInterfacesType

@@ -18,11 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
-import jp.go.aist.six.util.persist.Dependent;
 import java.util.Collection;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
+import jp.go.aist.six.util.persist.Dependent;
 
 
 
@@ -34,7 +34,7 @@ import java.util.Collection;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class SystemInfo
+public class SystemInfoType
     extends AbstractOvalObject
     implements Dependent<OvalSystemCharacteristics>
 {
@@ -51,7 +51,7 @@ public class SystemInfo
     private String  _primaryHostName;
     //{1..1}
 
-    private NetInterfaces  _interfaces;// = new NetInterfaces();
+    private NetworkInterfacesType  _interfaces;// = new NetInterfaces();
     //{1..1}
 
 
@@ -64,15 +64,12 @@ public class SystemInfo
     /**
      * Constructor.
      */
-    public SystemInfo()
+    public SystemInfoType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public SystemInfo(
+    public SystemInfoType(
                     final String osName,
                     final String osVersion,
                     final String arch,
@@ -86,37 +83,30 @@ public class SystemInfo
     }
 
 
-
-    /**
-     * Constructor.
-     */
-    public SystemInfo(
+    public SystemInfoType(
                     final String osName,
                     final String osVersion,
                     final String arch,
                     final String hostName,
-                    Collection<? extends NetInterface> ifs
+                    final Collection<? extends NetworkInterfaceType> ifs
                     )
     {
         this( osName, osVersion, arch, hostName );
-        setInterfaces( new NetInterfaces( ifs ) );
+        setInterfaces( new NetworkInterfacesType( ifs ) );
     }
 
 
 
-    /**
-     * Constructor.
-     */
-    public SystemInfo(
+    public SystemInfoType(
                     final String osName,
                     final String osVersion,
                     final String arch,
                     final String hostName,
-                    NetInterface[] ifs
+                    final NetworkInterfaceType[] ifs
                     )
     {
         this( osName, osVersion, arch, hostName );
-        setInterfaces( new NetInterfaces( ifs ) );
+        setInterfaces( new NetworkInterfacesType( ifs ) );
     }
 
 
@@ -193,14 +183,14 @@ public class SystemInfo
     /**
      */
     public void setInterfaces(
-                    final NetInterfaces interfaces
+                    final NetworkInterfacesType interfaces
                     )
     {
         _interfaces = interfaces;
     }
 
 
-    public NetInterfaces getInterfaces()
+    public NetworkInterfacesType getInterfaces()
     {
         return _interfaces;
     }
@@ -214,6 +204,7 @@ public class SystemInfo
     private OvalSystemCharacteristics  _master;
 
 
+    @Override
     public void setMasterObject(
                     final OvalSystemCharacteristics sc
                     )
@@ -222,6 +213,7 @@ public class SystemInfo
     }
 
 
+    @Override
     public OvalSystemCharacteristics getMasterObject()
     {
         return _master;
@@ -245,4 +237,4 @@ public class SystemInfo
     }
 
 }
-// SystemInfo
+// SystemInfoType

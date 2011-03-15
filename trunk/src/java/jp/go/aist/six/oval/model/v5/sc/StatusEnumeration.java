@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.v5.sc;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class Status
+public final class StatusEnumeration
     implements Serializable
 {
 
@@ -43,15 +43,15 @@ public final class Status
     private static final String  _NOT_COLLECTED_   = "not collected";
 
 
-    public static final Status  ERROR          = new Status( _ERROR_ );
-    public static final Status  EXISTS         = new Status( _EXISTS_ );
-    public static final Status  DOES_NOT_EXIST = new Status( _DOES_NOT_EXIST_ );
-    public static final Status  NOT_COLLECTED  = new Status( _NOT_COLLECTED_ );
+    public static final StatusEnumeration  ERROR          = new StatusEnumeration( _ERROR_ );
+    public static final StatusEnumeration  EXISTS         = new StatusEnumeration( _EXISTS_ );
+    public static final StatusEnumeration  DOES_NOT_EXIST = new StatusEnumeration( _DOES_NOT_EXIST_ );
+    public static final StatusEnumeration  NOT_COLLECTED  = new StatusEnumeration( _NOT_COLLECTED_ );
 
 
-    private static HashMap<String, Status> _INIT_()
+    private static HashMap<String, StatusEnumeration> _INIT_()
     {
-        HashMap<String, Status>  map = new HashMap<String, Status>();
+        HashMap<String, StatusEnumeration>  map = new HashMap<String, StatusEnumeration>();
         map.put( _ERROR_,           ERROR          );
         map.put( _EXISTS_,          EXISTS         );
         map.put( _DOES_NOT_EXIST_,  DOES_NOT_EXIST );
@@ -59,18 +59,18 @@ public final class Status
         return map;
     }
 
-    private static final HashMap<String, Status>  _INSTANCES_ = _INIT_();
+    private static final HashMap<String, StatusEnumeration>  _INSTANCES_ = _INIT_();
 
 
 
 
     /**
      */
-    public static Status valueOf(
+    public static StatusEnumeration valueOf(
                     final String name
                     )
     {
-        Status  status = null;
+        StatusEnumeration  status = null;
         if (name != null) {
             status = _INSTANCES_.get( name );
         }
@@ -90,7 +90,7 @@ public final class Status
 
     /**
      */
-    private Status(
+    private StatusEnumeration(
                     final String name
                     )
     {
@@ -119,7 +119,5 @@ public final class Status
     }
 
 }
-// Status
-
-/* vim:set tabstop=4:set expandtab:set shiftwidth=4: */
+// StatusEnumeration
 

@@ -18,10 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.AbstractOvalObject;
-import jp.go.aist.six.oval.model.common.Datatype;
 
 
 
@@ -33,144 +31,45 @@ import jp.go.aist.six.oval.model.common.Datatype;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class EntityItemBase
-    extends AbstractOvalObject
+public abstract class EntityItemSimpleBaseType
+    extends EntityAttributeGroup
 {
 
-    private String  _data;
-    //{base="xsd:anyType"}
-
-    public static final Datatype  DEFAULT_DATATYPE = Datatype.STRING;
-    private Datatype  _datatype;
-    //{optional, default="string"}
-
-    public static final boolean  DEFAULT_MASK = false;
-    private boolean  _mask = DEFAULT_MASK;
-    //{optional, default="false"}
-
-    public static final Status  DEFAULT_STATUS = Status.EXISTS;
-    private Status  _status;
-    //{optional, default="exists"}
+    private String  _content;
+    //{simpleContent, base="xsd:anySimpleType"}
 
 
 
     /**
      * Constructor.
      */
-    public EntityItemBase()
+    public EntityItemSimpleBaseType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityItemBase(
-                    final String data
+    public EntityItemSimpleBaseType(
+                    final String content
                     )
     {
-        this( data, DEFAULT_STATUS );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemBase(
-                    final String data,
-                    final Datatype datatype
-                    )
-    {
-        this( data, datatype, DEFAULT_STATUS );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemBase(
-                    final String data,
-                    final Status status
-                    )
-    {
-        this( data, DEFAULT_DATATYPE, status );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemBase(
-                    final String data,
-                    final Datatype datatype,
-                    final Status status
-                    )
-    {
-        setData( data );
-        setDatatype( datatype );
-        setStatus( status );
+        setContent( content );
     }
 
 
 
     /**
      */
-    public void setData(
-                    final String data
+    public void setContent(
+                    final String content
                     )
     {
-        _data = data;
+        _content = content;
     }
 
 
-    public String getData()
+    public String getContent()
     {
-        return _data;
-    }
-
-
-
-    public void setDatatype(
-                    final Datatype datatype
-                    )
-    {
-        _datatype = datatype;
-    }
-
-
-    public Datatype getDatatype()
-    {
-        return (_datatype == null ? DEFAULT_DATATYPE : _datatype);
-    }
-
-
-
-    public boolean getMask()
-    {
-        return _mask;
-    }
-
-
-    public void setMask(
-                    final boolean mask
-                    )
-    {
-        _mask = mask;
-    }
-
-
-
-    public void setStatus(
-                    final Status status
-                    )
-    {
-        _status = status;
-    }
-
-
-    public Status getStatus()
-    {
-        return (_status == null ? DEFAULT_STATUS : _status);
+        return _content;
     }
 
 
@@ -183,18 +82,10 @@ public abstract class EntityItemBase
     public int hashCode()
     {
         final int  prime = 37;
-        int  result = 17;
+        int  result = super.hashCode();
 
-        String  data = getData();
+        String  data = getContent();
         result = prime * result + ((data == null) ? 0 : data.hashCode());
-
-        Datatype  datatype = getDatatype();
-        result = prime * result + ((datatype == null) ? 0 : datatype.hashCode());
-
-        result = prime * result + (getMask() ? 0 : 1);
-
-        Status  status = getStatus();
-        result = prime * result + ((status == null) ? 0 : status.hashCode());
 
         return result;
     }
@@ -210,25 +101,17 @@ public abstract class EntityItemBase
             return true;
         }
 
-        if (!(obj instanceof EntityItemBase)) {
+        if (!(obj instanceof EntityItemSimpleBaseType)) {
             return false;
         }
 
-        EntityItemBase  other = (EntityItemBase)obj;
-        String  other_data = other.getData();
-        String   this_data =  this.getData();
-        if (this_data == other_data
-                        ||  (this_data != null  &&  this_data.equals( other_data ))) {
-            Status  other_status = other.getStatus();
-            Status   this_status =  this.getStatus();
-            if (this_status == other_status) {
-                Datatype  other_type = other.getDatatype();
-                Datatype   this_type =  this.getDatatype();
-                if (this_type == other_type) {
-                    if (this.getMask() == other.getMask()) {
-                        return true;
-                    }
-                }
+        if (super.equals( obj )) {
+            EntityItemSimpleBaseType  other = (EntityItemSimpleBaseType)obj;
+            String  other_content = other.getContent();
+            String   this_content =  this.getContent();
+            if (this_content == other_content
+                            ||  (this_content != null  &&  this_content.equals( other_content ))) {
+                return true;
             }
         }
 
@@ -240,11 +123,10 @@ public abstract class EntityItemBase
     @Override
     public String toString()
     {
-        return "datatype=" + getDatatype()
-                        + ", status=" + getStatus()
-//                        + ", mask=" + getMask()
-                        + ", data=" + getData();
+        return "" + getContent()
+                        + super.toString()
+                        ;
     }
 
 }
-// EntityItemBase
+// EntityItemSimpleBaseType

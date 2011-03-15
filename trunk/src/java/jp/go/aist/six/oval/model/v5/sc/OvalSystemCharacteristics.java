@@ -40,10 +40,10 @@ public class OvalSystemCharacteristics
     //{1..1}
 
 
-//    private SystemInfo _systemInfo;
-//    //{1..1}
-//
-//
+    private SystemInfoType  _systemInfo;
+    //{1..1}
+
+
 //    private CollectedSystemObjects  _collectedObjects = new CollectedSystemObjects();
 //    //{0..1}
 //
@@ -150,23 +150,23 @@ public class OvalSystemCharacteristics
 
 
 
-//    /**
-//     */
-//    public void setSystemInfo(
-//                    final SystemInfo systemInfo
-//                    )
-//    {
-//        _systemInfo = systemInfo;
-//    }
-//
-//
-//    public SystemInfo getSystemInfo()
-//    {
-//        return _systemInfo;
-//    }
-//
-//
-//
+    /**
+     */
+    public void setSystemInfo(
+                    final SystemInfoType systemInfo
+                    )
+    {
+        _systemInfo = systemInfo;
+    }
+
+
+    public SystemInfoType getSystemInfo()
+    {
+        return _systemInfo;
+    }
+
+
+
 //    /**
 //     */
 //    public void setCollectedObjects(
@@ -224,7 +224,7 @@ public class OvalSystemCharacteristics
 //        SystemData  systemData = getSystemData();
 
         return "OvalSystemCharacteristics[generator=" + getGenerator()
-//                        + ", system_info=" + getSystemInfo()
+                        + ", system_info=" + getSystemInfo()
 //                        + ", #collected_objects="
 //                        + (collectedObjects == null ? 0 : collectedObjects.size())
 //                        + ", #items="

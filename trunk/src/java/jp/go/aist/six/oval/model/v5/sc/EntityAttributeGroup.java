@@ -18,10 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.v5.sc;
 
 import jp.go.aist.six.oval.model.AbstractOvalObject;
-import jp.go.aist.six.oval.model.common.Datatype;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 
 
 
@@ -33,23 +33,20 @@ import jp.go.aist.six.oval.model.common.Datatype;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class EntityItemBase
+public abstract class EntityAttributeGroup
     extends AbstractOvalObject
 {
 
-    private String  _data;
-    //{base="xsd:anyType"}
-
-    public static final Datatype  DEFAULT_DATATYPE = Datatype.STRING;
-    private Datatype  _datatype;
+    public static final DatatypeEnumeration  DEFAULT_DATATYPE = DatatypeEnumeration.STRING;
+    private DatatypeEnumeration  _datatype;
     //{optional, default="string"}
 
-    public static final boolean  DEFAULT_MASK = false;
-    private boolean  _mask = DEFAULT_MASK;
+    public static final Boolean  DEFAULT_MASK = Boolean.FALSE;
+    private Boolean  _mask;
     //{optional, default="false"}
 
-    public static final Status  DEFAULT_STATUS = Status.EXISTS;
-    private Status  _status;
+    public static final StatusEnumeration  DEFAULT_STATUS = StatusEnumeration.EXISTS;
+    private StatusEnumeration  _status;
     //{optional, default="exists"}
 
 
@@ -57,102 +54,37 @@ public abstract class EntityItemBase
     /**
      * Constructor.
      */
-    public EntityItemBase()
+    public EntityAttributeGroup()
     {
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemBase(
-                    final String data
-                    )
-    {
-        this( data, DEFAULT_STATUS );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemBase(
-                    final String data,
-                    final Datatype datatype
-                    )
-    {
-        this( data, datatype, DEFAULT_STATUS );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemBase(
-                    final String data,
-                    final Status status
-                    )
-    {
-        this( data, DEFAULT_DATATYPE, status );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemBase(
-                    final String data,
-                    final Datatype datatype,
-                    final Status status
-                    )
-    {
-        setData( data );
-        setDatatype( datatype );
-        setStatus( status );
     }
 
 
 
     /**
      */
-    public void setData(
-                    final String data
-                    )
-    {
-        _data = data;
-    }
-
-
-    public String getData()
-    {
-        return _data;
-    }
-
-
-
     public void setDatatype(
-                    final Datatype datatype
+                    final DatatypeEnumeration datatype
                     )
     {
         _datatype = datatype;
     }
 
 
-    public Datatype getDatatype()
+    public DatatypeEnumeration getDatatype()
     {
-        return (_datatype == null ? DEFAULT_DATATYPE : _datatype);
+        return _datatype;
     }
 
 
 
-    public boolean getMask()
+    public Boolean getMask()
     {
         return _mask;
     }
 
 
     public void setMask(
-                    final boolean mask
+                    final Boolean mask
                     )
     {
         _mask = mask;
@@ -161,16 +93,16 @@ public abstract class EntityItemBase
 
 
     public void setStatus(
-                    final Status status
+                    final StatusEnumeration status
                     )
     {
         _status = status;
     }
 
 
-    public Status getStatus()
+    public StatusEnumeration getStatus()
     {
-        return (_status == null ? DEFAULT_STATUS : _status);
+        return _status;
     }
 
 
@@ -185,15 +117,16 @@ public abstract class EntityItemBase
         final int  prime = 37;
         int  result = 17;
 
-        String  data = getData();
-        result = prime * result + ((data == null) ? 0 : data.hashCode());
-
-        Datatype  datatype = getDatatype();
+        DatatypeEnumeration  datatype = getDatatype();
         result = prime * result + ((datatype == null) ? 0 : datatype.hashCode());
 
-        result = prime * result + (getMask() ? 0 : 1);
+        Boolean  mask = getMask();
+        if (mask == null) {
+            mask = DEFAULT_MASK;
+        }
+        result = prime * result + (mask ? 0 : 1);
 
-        Status  status = getStatus();
+        StatusEnumeration  status = getStatus();
         result = prime * result + ((status == null) ? 0 : status.hashCode());
 
         return result;
@@ -210,24 +143,27 @@ public abstract class EntityItemBase
             return true;
         }
 
-        if (!(obj instanceof EntityItemBase)) {
+        if (!(obj instanceof EntityAttributeGroup)) {
             return false;
         }
 
-        EntityItemBase  other = (EntityItemBase)obj;
-        String  other_data = other.getData();
-        String   this_data =  this.getData();
-        if (this_data == other_data
-                        ||  (this_data != null  &&  this_data.equals( other_data ))) {
-            Status  other_status = other.getStatus();
-            Status   this_status =  this.getStatus();
-            if (this_status == other_status) {
-                Datatype  other_type = other.getDatatype();
-                Datatype   this_type =  this.getDatatype();
-                if (this_type == other_type) {
-                    if (this.getMask() == other.getMask()) {
-                        return true;
-                    }
+        EntityAttributeGroup  other = (EntityAttributeGroup)obj;
+        StatusEnumeration  other_status = other.getStatus();
+        StatusEnumeration   this_status =  this.getStatus();
+        if (this_status == other_status) {
+            DatatypeEnumeration  other_type = other.getDatatype();
+            DatatypeEnumeration   this_type =  this.getDatatype();
+            if (this_type == other_type) {
+                Boolean  this_mask = this.getMask();
+                if (this_mask == null) {
+                    this_mask = DEFAULT_MASK;
+                }
+                Boolean  other_mask = other.getMask();
+                if (other_mask == null) {
+                    other_mask = DEFAULT_MASK;
+                }
+                if (this.getMask() == other.getMask()) {
+                    return true;
                 }
             }
         }
@@ -243,8 +179,8 @@ public abstract class EntityItemBase
         return "datatype=" + getDatatype()
                         + ", status=" + getStatus()
 //                        + ", mask=" + getMask()
-                        + ", data=" + getData();
+                        ;
     }
 
 }
-// EntityItemBase
+// EntityAttributeGroup
