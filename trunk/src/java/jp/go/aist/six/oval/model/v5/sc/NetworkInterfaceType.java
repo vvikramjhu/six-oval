@@ -43,7 +43,8 @@ public class NetworkInterfaceType
     private String  _interfaceName;
     //{1..1}
 
-    private String  _ipAddress;
+    private EntityItemIPAddressStringType  _ipAddress;
+//    private String  _ipAddress;
     //{1..1}
 
     private String  _macAddress;
@@ -98,11 +99,19 @@ public class NetworkInterfaceType
                     final String ip
                     )
     {
+        setIpAddress( new EntityItemIPAddressStringType( ip ) );
+    }
+
+
+    public void setIpAddress(
+                    final EntityItemIPAddressStringType ip
+                    )
+    {
         _ipAddress = ip;
     }
 
 
-    public String getIpAddress()
+    public EntityItemIPAddressStringType getIpAddress()
     {
         return _ipAddress;
     }
@@ -164,7 +173,7 @@ public class NetworkInterfaceType
         String  name = getInterfaceName();
         result = prime * result + ((name == null) ? 0 : name.hashCode());
 
-        String  ip = getIpAddress();
+        EntityItemIPAddressStringType  ip = getIpAddress();
         result = prime * result + ((ip == null) ? 0 : ip.hashCode());
 
         String  mac = getMacAddress();
@@ -189,8 +198,8 @@ public class NetworkInterfaceType
         }
 
         NetworkInterfaceType  other = (NetworkInterfaceType)obj;
-        String  other_ip = other.getIpAddress();
-        String   this_ip =  this.getIpAddress();
+        EntityItemIPAddressStringType  other_ip = other.getIpAddress();
+        EntityItemIPAddressStringType   this_ip =  this.getIpAddress();
         if (this_ip == other_ip
                         ||  (this_ip != null  &&  this_ip.equals( other_ip ))) {
             String  other_mac = other.getMacAddress();

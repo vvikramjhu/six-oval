@@ -107,7 +107,8 @@
             <bind-xml name="interface_name" node="element"/>
         </field>
 
-        <field name="ipAddress" type="string"
+        <field name="ipAddress" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemIPAddressStringType"
             required="true">
             <bind-xml name="ip_address" node="element"/>
         </field>
@@ -118,6 +119,44 @@
         </field>
     </class>
 
+
+
+<!-- entity -->
+
+    <class name="jp.go.aist.six.oval.model.v5.sc.EntityAttributeGroup"
+        verify-constructable="false">
+
+        <field name="datatype" 
+            type="jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration">
+            <bind-xml name="datatype" node="attribute"/>
+        </field>
+
+        <field name="mask" type="boolean">
+            <bind-xml name="mask" node="attribute"/>
+        </field>
+
+        <field name="status" 
+            type="jp.go.aist.six.oval.model.v5.sc.StatusEnumeration">
+            <bind-xml name="status" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.sc.EntityItemSimpleBaseType"
+        extends="jp.go.aist.six.oval.model.v5.sc.EntityAttributeGroup"
+        verify-constructable="false">
+
+        <field name="content" type="string">
+            <bind-xml node="text"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.sc.EntityItemIPAddressStringType"
+        extends="jp.go.aist.six.oval.model.v5.sc.EntityItemSimpleBaseType">
+    </class>
 
 
 
