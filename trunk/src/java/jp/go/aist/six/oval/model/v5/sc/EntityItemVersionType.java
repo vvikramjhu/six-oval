@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.common.Datatype;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 
 
 
@@ -32,55 +32,28 @@ import jp.go.aist.six.oval.model.common.Datatype;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemVersion
-    extends EntityItemBase
+public class EntityItemVersionType
+    extends EntityItemSimpleBaseType
 {
 
-    public static final Datatype  FIXED_DATATYPE = Datatype.VERSION;
+    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.VERSION;
+    //{required, fixed="version"}
 
 
 
     /**
      * Constructor.
      */
-    public EntityItemVersion()
+    public EntityItemVersionType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityItemVersion(
-                    final String data
+    public EntityItemVersionType(
+                    final String content
                     )
     {
-        this( data, DEFAULT_STATUS );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemVersion(
-                    final String data,
-                    final Status status
-                    )
-    {
-        this( data, FIXED_DATATYPE, status );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemVersion(
-                    final String data,
-                    final Datatype datatype,
-                    final Status status
-                    )
-    {
-        super( data, datatype, status );
+        super( content );
     }
 
 
@@ -91,7 +64,7 @@ public class EntityItemVersion
 
     @Override
     public void setDatatype(
-                    final Datatype datatype
+                    final DatatypeEnumeration datatype
                     )
     {
         if (datatype != null  &&  datatype != FIXED_DATATYPE) {
@@ -103,7 +76,7 @@ public class EntityItemVersion
 
 
     @Override
-    public Datatype getDatatype()
+    public DatatypeEnumeration getDatatype()
     {
         return FIXED_DATATYPE;
     }
@@ -131,7 +104,7 @@ public class EntityItemVersion
             return true;
         }
 
-        if (!(obj instanceof EntityItemVersion)) {
+        if (!(obj instanceof EntityItemVersionType)) {
             return false;
         }
 
@@ -139,4 +112,4 @@ public class EntityItemVersion
     }
 
 }
-// EntityItemVersion
+// EntityItemVersionType

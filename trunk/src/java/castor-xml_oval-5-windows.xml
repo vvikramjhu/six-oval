@@ -109,6 +109,105 @@
 
 
 
+    <class name ="jp.go.aist.six.oval.model.v5.windows.FileItem"
+        extends="jp.go.aist.six.oval.model.v5.sc.ItemType">
+        <map-to xml="file_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""/>
+
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="path" node="element"/>
+        </field>
+
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="filename" node="element"/>
+        </field>
+
+        <field name="owner" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="owner" node="element"/>
+        </field>
+
+        <field name="size" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemIntType">
+            <bind-xml name="size" node="element"/>
+        </field>
+
+        <field name="aTime" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemIntType">
+            <bind-xml name="a_time" node="element"/>
+        </field>
+
+        <field name="cTime" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemIntType">
+            <bind-xml name="c_time" node="element"/>
+        </field>
+
+        <field name="mTime" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemIntType">
+            <bind-xml name="m_time" node="element"/>
+        </field>
+
+        <field name="msChecksum" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="ms_checksum" node="element"/>
+        </field>
+
+        <field name="version" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemVersionType">
+            <bind-xml name="version" node="element"/>
+        </field>
+
+        <field name="type" 
+            type="jp.go.aist.six.oval.model.v5.windows.EntityItemFileTypeType">
+            <bind-xml name="type" node="element"/>
+        </field>
+
+        <field name="developmentClass" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="development_class" node="element"/>
+        </field>
+
+        <field name="company" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="company" node="element"/>
+        </field>
+
+        <field name="internalName" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="internal_name" node="element"/>
+        </field>
+
+        <field name="language" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="language" node="element"/>
+        </field>
+
+        <field name="originalFilename" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="original_filename" node="element"/>
+        </field>
+
+        <field name="productName" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="product_name" node="element"/>
+        </field>
+
+        <field name="productVersion" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemVersionType">
+            <bind-xml name="product_version" node="element"/>
+        </field>
+    </class>
+
+
+
     <!-- ******************************************************* -->
     <!-- metabase                                                -->
     <!-- ******************************************************* -->
@@ -314,8 +413,7 @@
         extends="jp.go.aist.six.oval.model.v5.sc.ItemType">
         <map-to xml="registry_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
-            ns-prefix=""
-            />
+            ns-prefix=""/>
 
         <field name="hive"
             type="jp.go.aist.six.oval.model.v5.windows.EntityItemRegistryHiveType">
@@ -415,6 +513,12 @@
     <!-- ******************************************************* -->
     <!-- entity                                                  -->
     <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.v5.windows.EntityItemFileTypeType"
+        extends="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+    </class>
+
+
 
     <class name="jp.go.aist.six.oval.model.v5.windows.EntityItemRegistryHiveType"
         extends="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">

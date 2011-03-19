@@ -278,7 +278,19 @@ not the family-specific one.
 
 
 
+    <class name="jp.go.aist.six.oval.model.v5.sc.EntityItemIntType"
+        extends="jp.go.aist.six.oval.model.v5.sc.EntityItemSimpleBaseType">
+    </class>
+
+
+
     <class name="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType"
+        extends="jp.go.aist.six.oval.model.v5.sc.EntityItemSimpleBaseType">
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.sc.EntityItemVersionType"
         extends="jp.go.aist.six.oval.model.v5.sc.EntityItemSimpleBaseType">
     </class>
 

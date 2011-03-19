@@ -948,13 +948,22 @@ public abstract class CoreTestBase
     public Object[][] provideOvalResultsOvalResults()
     {
         return new Object[][] {
-                      // Windows XP, CVE-2010-0030, MS PowerPoint
+//                      // Windows XP, CVE-2010-0030, MS PowerPoint
+//                      {
+//                          jp.go.aist.six.oval.model.v5.results.OvalResults.class,
+//                          "test/data/oval-results-5/oval-results_CVE-2010-0176_def7222_v5.9.xml",
+//                          "/oval_results",
+//                          null,
+//                          "marshalled_oval-results_CVE-2010-0176_def7222_v5.9.xml"
+//                      }
+//                      ,
+                      // Windows XP, CVE-2004-0380, Acrobat
                       {
                           jp.go.aist.six.oval.model.v5.results.OvalResults.class,
-                          "test/data/oval-results-5/oval-results_CVE-2010-0176_def7222_v5.9.xml",
+                          "test/data/oval-results-5/oval-results_CVE-2004-0380_def990_negate.xml",
                           "/oval_results",
                           null,
-                          "marshalled_oval-results_CVE-2010-0176_def7222_v5.9.xml"
+                          "marshalled_oval-results_CVE-2004-0380_def990_negate.xml"
                       }
 //                      // Windows XP, CVE-2010-0030, MS PowerPoint
 //                      {

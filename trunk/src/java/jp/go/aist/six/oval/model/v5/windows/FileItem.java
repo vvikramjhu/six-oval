@@ -18,17 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
-import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.sc.EntityItemBase;
-import jp.go.aist.six.oval.model.sc.EntityItemInt;
-import jp.go.aist.six.oval.model.sc.EntityItemString;
-import jp.go.aist.six.oval.model.sc.EntityItemVersion;
-import jp.go.aist.six.oval.model.sc.Item;
-import jp.go.aist.six.oval.model.sc.Status;
 import java.util.EnumMap;
 import java.util.Map;
+import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.v5.sc.EntityAttributeGroup;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemIntType;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemVersionType;
+import jp.go.aist.six.oval.model.v5.sc.ItemType;
+import jp.go.aist.six.oval.model.v5.sc.StatusEnumeration;
 
 
 
@@ -40,11 +40,11 @@ import java.util.Map;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class FileItem
-    extends Item
+    extends ItemType
 {
 
-    private Map<FileProperty, EntityItemBase>  _properties =
-        new EnumMap<FileProperty, EntityItemBase>( FileProperty.class );
+    private final Map<FileProperty, EntityAttributeGroup>  _properties =
+        new EnumMap<FileProperty, EntityAttributeGroup>( FileProperty.class );
 
 
 
@@ -56,9 +56,6 @@ public class FileItem
     }
 
 
-    /**
-     * Constructor.
-     */
     public FileItem(
                     final int id
                     )
@@ -67,21 +64,15 @@ public class FileItem
     }
 
 
-    /**
-     * Constructor.
-     */
     public FileItem(
                     final int id,
-                    final Status status
+                    final StatusEnumeration status
                     )
     {
         super( id, status );
     }
 
 
-//    /**
-//     * Constructor.
-//     */
 //    public FileItem(
 //                    final int id,
 //                    final Status status,
@@ -103,12 +94,9 @@ public class FileItem
 //    }
 
 
-    /**
-     * Constructor.
-     */
     public FileItem(
                     final int id,
-                    final Status status,
+                    final StatusEnumeration status,
                     final String filepath,
                     final String path,
                     final String filename,
@@ -119,7 +107,7 @@ public class FileItem
                     final long mtime,
                     final String checksum,
                     final String version,
-                    final FileType type,
+                    final FileTypeEnumeration type,
                     final String devclass,
                     final String company,
                     final String internalname,
@@ -130,51 +118,48 @@ public class FileItem
                     )
     {
         this( id, status );
-        setFilepath( new EntityItemString( filepath ) );
-        setPath( new EntityItemString( path ) );
-        setFilename( new EntityItemString( filename ) );
-        setOwner( new EntityItemString( owner ) );
-        setSize( new EntityItemInt( size ) );
-        setATime( new EntityItemInt( atime ) );
-        setCTime( new EntityItemInt( ctime ) );
-        setMTime( new EntityItemInt( mtime ) );
-        setMsChecksum( new EntityItemString( checksum ) );
-        setVersion( new EntityItemVersion( version ) );
-        setType( new EntityItemFileType( type ) );
-        setDevelopmentClass( new EntityItemString( devclass ) );
-        setCompany( new EntityItemString( company ) );
-        setInternalName( new EntityItemString( internalname ) );
-        setLanguage( new EntityItemString( language ) );
-        setOriginalFilename( new EntityItemString( originalFilename ) );
-        setProductName( new EntityItemString( productName ) );
-        setProductVersion( new EntityItemVersion( productVersion ) );
+        setFilepath( new EntityItemStringType( filepath ) );
+        setPath( new EntityItemStringType( path ) );
+        setFilename( new EntityItemStringType( filename ) );
+        setOwner( new EntityItemStringType( owner ) );
+        setSize( new EntityItemIntType( size ) );
+        setATime( new EntityItemIntType( atime ) );
+        setCTime( new EntityItemIntType( ctime ) );
+        setMTime( new EntityItemIntType( mtime ) );
+        setMsChecksum( new EntityItemStringType( checksum ) );
+        setVersion( new EntityItemVersionType( version ) );
+        setType( new EntityItemFileTypeType( type ) );
+        setDevelopmentClass( new EntityItemStringType( devclass ) );
+        setCompany( new EntityItemStringType( company ) );
+        setInternalName( new EntityItemStringType( internalname ) );
+        setLanguage( new EntityItemStringType( language ) );
+        setOriginalFilename( new EntityItemStringType( originalFilename ) );
+        setProductName( new EntityItemStringType( productName ) );
+        setProductVersion( new EntityItemVersionType( productVersion ) );
     }
 
 
-    /**
-     * Constructor.
-     */
     public FileItem(
                     final int id,
-                    final Status status,
-                    final EntityItemString filepath,
-                    final EntityItemString path,
-                    final EntityItemString filename,
-                    final EntityItemString owner,
-                    final EntityItemInt size,
-                    final EntityItemInt atime,
-                    final EntityItemInt ctime,
-                    final EntityItemInt mtime,
-                    final EntityItemString checksum,
-                    final EntityItemVersion version,
-                    final EntityItemFileType type,
-                    final EntityItemString devclass,
-                    final EntityItemString company,
-                    final EntityItemString internalname,
-                    final EntityItemString language,
-                    final EntityItemString originalFilename,
-                    final EntityItemString productName,
-                    final EntityItemVersion productVersion
+                    final StatusEnumeration status,
+                    final EntityItemStringType filepath,
+                    final EntityItemStringType path,
+                    final EntityItemStringType filename,
+                    final EntityItemStringType owner,
+                    final EntityItemIntType size,
+                    final EntityItemIntType atime,
+                    final EntityItemIntType ctime,
+                    final EntityItemIntType mtime,
+                    final EntityItemStringType checksum,
+                    final EntityItemVersionType version,
+                    final EntityItemFileTypeType type,
+                    final EntityItemStringType devclass,
+                    final EntityItemStringType company,
+                    final EntityItemStringType internalname,
+                    final EntityItemStringType language,
+                    final EntityItemStringType originalFilename,
+                    final EntityItemStringType productName,
+                    final EntityItemVersionType productVersion
                     )
     {
         this( id, status );
@@ -202,14 +187,14 @@ public class FileItem
 
     /**
      */
-    public EntityItemString getFilepath()
+    public EntityItemStringType getFilepath()
     {
-        return (EntityItemString)_properties.get( FileProperty.FILEPATH );
+        return (EntityItemStringType)_properties.get( FileProperty.FILEPATH );
     }
 
 
     public void setFilepath(
-                    final EntityItemString filepath
+                    final EntityItemStringType filepath
                     )
     {
         _properties.put( FileProperty.FILEPATH, filepath );
@@ -220,20 +205,22 @@ public class FileItem
                     final String filepath
                     )
     {
-        setFilepath( new EntityItemString( filepath ) );
+        setFilepath( new EntityItemStringType( filepath ) );
         return this;
     }
 
 
 
-    public EntityItemString getPath()
+    /**
+     */
+    public EntityItemStringType getPath()
     {
-        return (EntityItemString)_properties.get( FileProperty.PATH );
+        return (EntityItemStringType)_properties.get( FileProperty.PATH );
     }
 
 
     public void setPath(
-                    final EntityItemString path
+                    final EntityItemStringType path
                     )
     {
         _properties.put( FileProperty.PATH, path );
@@ -244,20 +231,22 @@ public class FileItem
                     final String path
                     )
     {
-        setPath( new EntityItemString( path ) );
+        setPath( new EntityItemStringType( path ) );
         return this;
     }
 
 
 
-    public EntityItemString getFilename()
+    /**
+     */
+    public EntityItemStringType getFilename()
     {
-        return (EntityItemString)_properties.get( FileProperty.FILENAME );
+        return (EntityItemStringType)_properties.get( FileProperty.FILENAME );
     }
 
 
     public void setFilename(
-                    final EntityItemString filename
+                    final EntityItemStringType filename
                     )
     {
         _properties.put( FileProperty.FILENAME, filename );
@@ -268,20 +257,22 @@ public class FileItem
                     final String filename
                     )
     {
-        setFilename( new EntityItemString( filename ) );
+        setFilename( new EntityItemStringType( filename ) );
         return this;
     }
 
 
 
-    public EntityItemString getOwner()
+    /**
+     */
+    public EntityItemStringType getOwner()
     {
-        return (EntityItemString)_properties.get( FileProperty.OWNER );
+        return (EntityItemStringType)_properties.get( FileProperty.OWNER );
     }
 
 
     public void setOwner(
-                    final EntityItemString owner
+                    final EntityItemStringType owner
                     )
     {
         _properties.put( FileProperty.OWNER, owner );
@@ -292,20 +283,22 @@ public class FileItem
                     final String owner
                     )
     {
-        setOwner( new EntityItemString( owner ) );
+        setOwner( new EntityItemStringType( owner ) );
         return this;
     }
 
 
 
-    public EntityItemInt getSize()
+    /**
+     */
+    public EntityItemIntType getSize()
     {
-        return (EntityItemInt)_properties.get( FileProperty.SIZE );
+        return (EntityItemIntType)_properties.get( FileProperty.SIZE );
     }
 
 
     public void setSize(
-                    final EntityItemInt size
+                    final EntityItemIntType size
                     )
     {
         _properties.put( FileProperty.SIZE, size );
@@ -316,20 +309,20 @@ public class FileItem
                     final String size
                     )
     {
-        setSize( new EntityItemInt( size ) );
+        setSize( new EntityItemIntType( size ) );
         return this;
     }
 
 
 
-    public EntityItemInt getATime()
+    public EntityItemIntType getATime()
     {
-        return (EntityItemInt)_properties.get( FileProperty.A_TIME );
+        return (EntityItemIntType)_properties.get( FileProperty.A_TIME );
     }
 
 
     public void setATime(
-                    final EntityItemInt atime
+                    final EntityItemIntType atime
                     )
     {
         _properties.put( FileProperty.A_TIME, atime );
@@ -340,20 +333,20 @@ public class FileItem
                     final String atime
                     )
     {
-        setATime( new EntityItemInt( atime ) );
+        setATime( new EntityItemIntType( atime ) );
         return this;
     }
 
 
 
-    public EntityItemInt getCTime()
+    public EntityItemIntType getCTime()
     {
-        return (EntityItemInt)_properties.get( FileProperty.C_TIME );
+        return (EntityItemIntType)_properties.get( FileProperty.C_TIME );
     }
 
 
     public void setCTime(
-                    final EntityItemInt cTime
+                    final EntityItemIntType cTime
                     )
     {
         _properties.put( FileProperty.C_TIME, cTime );
@@ -364,20 +357,20 @@ public class FileItem
                     final String ctime
                     )
     {
-        setCTime( new EntityItemInt( ctime ) );
+        setCTime( new EntityItemIntType( ctime ) );
         return this;
     }
 
 
 
-    public EntityItemInt getMTime()
+    public EntityItemIntType getMTime()
     {
-        return (EntityItemInt)_properties.get( FileProperty.M_TIME );
+        return (EntityItemIntType)_properties.get( FileProperty.M_TIME );
     }
 
 
     public void setMTime(
-                    final EntityItemInt mTime
+                    final EntityItemIntType mTime
                     )
     {
         _properties.put( FileProperty.M_TIME, mTime );
@@ -388,20 +381,20 @@ public class FileItem
                     final String mtime
                     )
     {
-        setMTime( new EntityItemInt( mtime ) );
+        setMTime( new EntityItemIntType( mtime ) );
         return this;
     }
 
 
 
-    public EntityItemString getMsChecksum()
+    public EntityItemStringType getMsChecksum()
     {
-        return (EntityItemString)_properties.get( FileProperty.MS_CHECKSUM );
+        return (EntityItemStringType)_properties.get( FileProperty.MS_CHECKSUM );
     }
 
 
     public void setMsChecksum(
-                    final EntityItemString checksum
+                    final EntityItemStringType checksum
                     )
     {
         _properties.put( FileProperty.MS_CHECKSUM, checksum );
@@ -412,21 +405,21 @@ public class FileItem
                     final String msChecksum
                     )
     {
-        setMsChecksum( new EntityItemString( msChecksum ) );
+        setMsChecksum( new EntityItemStringType( msChecksum ) );
         return this;
     }
 
 
 
-    public EntityItemVersion getVersion()
+    public EntityItemVersionType getVersion()
     {
-        return (EntityItemVersion)_properties.get( FileProperty.VERSION );
+        return (EntityItemVersionType)_properties.get( FileProperty.VERSION );
     }
 
 
 
     public void setVersion(
-                    final EntityItemVersion version
+                    final EntityItemVersionType version
                     )
     {
         _properties.put( FileProperty.VERSION, version );
@@ -437,20 +430,20 @@ public class FileItem
                     final String version
                     )
     {
-        setVersion( new EntityItemVersion( version ) );
+        setVersion( new EntityItemVersionType( version ) );
         return this;
     }
 
 
 
-    public EntityItemFileType getType()
+    public EntityItemFileTypeType getType()
     {
-        return (EntityItemFileType)_properties.get( FileProperty.TYPE );
+        return (EntityItemFileTypeType)_properties.get( FileProperty.TYPE );
     }
 
 
     public void setType(
-                    final EntityItemFileType type
+                    final EntityItemFileTypeType type
                     )
     {
         _properties.put( FileProperty.TYPE, type );
@@ -458,23 +451,23 @@ public class FileItem
 
 
     public FileItem type(
-                    final FileType type
+                    final FileTypeEnumeration type
                     )
     {
-        setType( new EntityItemFileType( type ) );
+        setType( new EntityItemFileTypeType( type ) );
         return this;
     }
 
 
 
-    public EntityItemString getDevelopmentClass()
+    public EntityItemStringType getDevelopmentClass()
     {
-        return (EntityItemString)_properties.get( FileProperty.DEVELOPMENT_CLASS );
+        return (EntityItemStringType)_properties.get( FileProperty.DEVELOPMENT_CLASS );
     }
 
 
     public void setDevelopmentClass(
-                    final EntityItemString developmentClass
+                    final EntityItemStringType developmentClass
                     )
     {
         _properties.put( FileProperty.DEVELOPMENT_CLASS, developmentClass );
@@ -485,20 +478,20 @@ public class FileItem
                     final String developmentClass
                     )
     {
-        setDevelopmentClass( new EntityItemString( developmentClass ) );
+        setDevelopmentClass( new EntityItemStringType( developmentClass ) );
         return this;
     }
 
 
 
-    public EntityItemString getCompany()
+    public EntityItemStringType getCompany()
     {
-        return (EntityItemString)_properties.get( FileProperty.COMPANY );
+        return (EntityItemStringType)_properties.get( FileProperty.COMPANY );
     }
 
 
     public void setCompany(
-                    final EntityItemString company
+                    final EntityItemStringType company
                     )
     {
         _properties.put( FileProperty.COMPANY, company );
@@ -509,20 +502,20 @@ public class FileItem
                     final String company
                     )
     {
-        setCompany( new EntityItemString( company ) );
+        setCompany( new EntityItemStringType( company ) );
         return this;
     }
 
 
 
-    public EntityItemString getInternalName()
+    public EntityItemStringType getInternalName()
     {
-        return (EntityItemString)_properties.get( FileProperty.INTERNAL_NAME );
+        return (EntityItemStringType)_properties.get( FileProperty.INTERNAL_NAME );
     }
 
 
     public void setInternalName(
-                    final EntityItemString internalName
+                    final EntityItemStringType internalName
                     )
     {
         _properties.put( FileProperty.INTERNAL_NAME, internalName );
@@ -533,20 +526,20 @@ public class FileItem
                     final String internalName
                     )
     {
-        setInternalName( new EntityItemString( internalName ) );
+        setInternalName( new EntityItemStringType( internalName ) );
         return this;
     }
 
 
 
-    public EntityItemString getLanguage()
+    public EntityItemStringType getLanguage()
     {
-        return (EntityItemString)_properties.get( FileProperty.LANGUAGE );
+        return (EntityItemStringType)_properties.get( FileProperty.LANGUAGE );
     }
 
 
     public void setLanguage(
-                    final EntityItemString language
+                    final EntityItemStringType language
                     )
     {
         _properties.put( FileProperty.LANGUAGE, language );
@@ -557,20 +550,20 @@ public class FileItem
                     final String language
                     )
     {
-        setLanguage( new EntityItemString( language ) );
+        setLanguage( new EntityItemStringType( language ) );
         return this;
     }
 
 
 
-    public EntityItemString getOriginalFilename()
+    public EntityItemStringType getOriginalFilename()
     {
-        return (EntityItemString)_properties.get( FileProperty.ORIGINAL_FILENAME );
+        return (EntityItemStringType)_properties.get( FileProperty.ORIGINAL_FILENAME );
     }
 
 
     public void setOriginalFilename(
-                    final EntityItemString originalFilename
+                    final EntityItemStringType originalFilename
                     )
     {
         _properties.put( FileProperty.ORIGINAL_FILENAME, originalFilename );
@@ -581,20 +574,20 @@ public class FileItem
                     final String originalFilename
                     )
     {
-        setOriginalFilename( new EntityItemString( originalFilename ) );
+        setOriginalFilename( new EntityItemStringType( originalFilename ) );
         return this;
     }
 
 
 
-    public EntityItemString getProductName()
+    public EntityItemStringType getProductName()
     {
-        return (EntityItemString)_properties.get( FileProperty.PRODUCT_NAME );
+        return (EntityItemStringType)_properties.get( FileProperty.PRODUCT_NAME );
     }
 
 
     public void setProductName(
-                    final EntityItemString productName
+                    final EntityItemStringType productName
                     )
     {
         _properties.put( FileProperty.PRODUCT_NAME, productName );
@@ -605,20 +598,20 @@ public class FileItem
                     final String productName
                     )
     {
-        setProductName( new EntityItemString( productName ) );
+        setProductName( new EntityItemStringType( productName ) );
         return this;
     }
 
 
 
-    public EntityItemVersion getProductVersion()
+    public EntityItemVersionType getProductVersion()
     {
-        return (EntityItemVersion)_properties.get( FileProperty.PRODUCT_VERSION );
+        return (EntityItemVersionType)_properties.get( FileProperty.PRODUCT_VERSION );
     }
 
 
     public void setProductVersion(
-                    final EntityItemVersion productVersion
+                    final EntityItemVersionType productVersion
                     )
     {
         _properties.put( FileProperty.PRODUCT_VERSION, productVersion );
@@ -629,7 +622,7 @@ public class FileItem
                     final String productVersion
                     )
     {
-        setProductVersion( new EntityItemVersion( productVersion ) );
+        setProductVersion( new EntityItemVersionType( productVersion ) );
         return this;
     }
 

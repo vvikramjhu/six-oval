@@ -25,35 +25,43 @@ import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 
 
 /**
- * The EntityItemString type is extended by the entities of an individual item.
- * This specific type describes simple string data.
+ * The EntityItemInt type is extended by the entities of an individual item.
+ * This specific type describes simple integer data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemStringType
+public class EntityItemIntType
     extends EntityItemSimpleBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.STRING;
-    //{optional, fixed="string"}
+    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.INT;
+    //{required, fixed="int"}
 
 
 
     /**
      * Constructor.
      */
-    public EntityItemStringType()
+    public EntityItemIntType()
     {
     }
 
 
-    public EntityItemStringType(
+    public EntityItemIntType(
                     final String content
                     )
     {
         super( content );
+    }
+
+
+    public EntityItemIntType(
+                    final long content
+                    )
+    {
+        super( String.valueOf( content ) );
     }
 
 
@@ -97,7 +105,7 @@ public class EntityItemStringType
             return true;
         }
 
-        if (!(obj instanceof EntityItemStringType)) {
+        if (!(obj instanceof EntityItemIntType)) {
             return false;
         }
 
@@ -113,4 +121,4 @@ public class EntityItemStringType
 //    }
 
 }
-// EntityItemStringType
+// EntityItemIntType
