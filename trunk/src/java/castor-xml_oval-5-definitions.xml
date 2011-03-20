@@ -687,6 +687,11 @@
             <bind-xml auto-naming="deriveByClass" node="element"
                 location="dates"/>
         </field>
+
+        <field name="affectedCpeList" 
+            type="jp.go.aist.six.oval.model.v5.mitre.AffectedCpeList">
+            <bind-xml name="affected_cpe_list" node="element"/>
+        </field>
     </class>
 
 
@@ -768,6 +773,28 @@
     </class>
 
 
+
+    <class name="jp.go.aist.six.oval.model.v5.mitre.AffectedCpeList">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="cpe" 
+            type="jp.go.aist.six.oval.model.v5.mitre.Cpe"
+            collection="collection">
+            <bind-xml name="cpe" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.mitre.Cpe">
+        <map-to xml="cpe"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="name" type="string">
+            <bind-xml node="text"/>
+        </field>
+    </class>
 
 </mapping>
 

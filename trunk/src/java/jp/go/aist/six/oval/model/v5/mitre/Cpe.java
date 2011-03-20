@@ -18,33 +18,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.definitions;
+package jp.go.aist.six.oval.model.v5.mitre;
 
 import jp.go.aist.six.oval.model.v5.NameEntity;
 
 
 
 /**
- * A platform name.
+ * A CPE name.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Platform
+public class Cpe
     extends NameEntity
-//extends NamedEntry<Integer>
 {
 
     /**
      * Constructor.
      */
-    public Platform()
+    public Cpe()
     {
     }
 
 
-    public Platform(
+    public Cpe(
                     final String name
                     )
     {
@@ -70,85 +69,12 @@ public class Platform
                     final Object obj
                     )
     {
-        if (!(obj instanceof Platform)) {
+        if (!(obj instanceof Cpe)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
-
-
-//    /**
-//     * @see java.lang.Object#toString()
-//     */
-//    @Override
-//    public String toString()
-//    {
-//        return "Platform[" + getName()
-//                    + "]";
-//    }
-
 }
-//public class Platform
-//extends NameEntity
-//{
-//
-///**
-// * Constructor.
-// */
-//public Platform()
-//{
-//}
-//
-//
-///**
-// * Constructor.
-// */
-//public Platform(
-//                final String name
-//                )
-//{
-//    super( name );
-//}
-//
-//
-//
-////**************************************************************
-////  java.lang.Object
-////**************************************************************
-//
-//@Override
-//public int hashCode()
-//{
-//    return super.hashCode();
-//}
-//
-//
-//
-//@Override
-//public boolean equals(
-//                final Object obj
-//                )
-//{
-//    if (!(obj instanceof Platform)) {
-//        return false;
-//    }
-//
-//    return super.equals( obj );
-//}
-//
-//
-//
-/////**
-//// * @see java.lang.Object#toString()
-//// */
-////@Override
-////public String toString()
-////{
-////    return "Platform[" + getName()
-////                + "]";
-////}
-//
-//}
-// Platform
+// Cpe

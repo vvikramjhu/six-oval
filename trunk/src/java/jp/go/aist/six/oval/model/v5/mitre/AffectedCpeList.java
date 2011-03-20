@@ -20,7 +20,9 @@
 
 package jp.go.aist.six.oval.model.v5.mitre;
 
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
+import java.util.Collection;
+import java.util.Iterator;
+import jp.go.aist.six.oval.model.v5.Container;
 
 
 
@@ -30,71 +32,62 @@ import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Contributor
-    extends AbstractOvalObject
+public class AffectedCpeList
+    extends Container<Cpe> //{0..* ?}
 {
 
-    private String  _name;
-    //{xsd:string?}
-
-
-    private String  _organization;
-    //{xsd:string}
-
-
-
     /**
      * Constructor.
      */
-    public Contributor()
+    public AffectedCpeList()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public Contributor(
-                    final String name,
-                    final String organization
+    public AffectedCpeList(
+                    final Collection<? extends Cpe> cpes
                     )
     {
-        setName( name );
-        setOrganization( organization );
+        super( cpes );
     }
 
 
-
-    /**
-     */
-    public void setName(
-                    final String name
+    public AffectedCpeList(
+                    final Cpe[] cpes
                     )
     {
-        _name = name;
-    }
-
-
-    public String getName()
-    {
-        return _name;
+        super( cpes );
     }
 
 
 
     /**
      */
-    public void setOrganization(
-                    final String organization
+    public void setCpe(
+                    final Collection<? extends Cpe> cpes
                     )
     {
-        _organization = organization;
+        _setElement( cpes );
     }
 
 
-    public String getOrganization()
+    public boolean addCpe(
+                    final Cpe cpe
+                    )
     {
-        return _organization;
+        return add( cpe );
+    }
+
+
+    public Collection<Cpe> getCpe()
+    {
+        return _getElement();
+    }
+
+
+    public Iterator<Cpe> iterateCpe()
+    {
+        return iterator();
     }
 
 
@@ -103,13 +96,5 @@ public class Contributor
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public String toString()
-    {
-        return "contributor[organization=" + getOrganization()
-                        + ", name=" + getName()
-                        + "]";
-    }
-
 }
-// Contributor
+// AffectedCpeList

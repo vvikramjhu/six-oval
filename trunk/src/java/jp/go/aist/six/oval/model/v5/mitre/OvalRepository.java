@@ -43,6 +43,9 @@ public class OvalRepository
     private DefinitionStatusEnumeration  _status;
 
 
+    private AffectedCpeList  _affectedCpeList;
+
+
 
     /**
      * Constructor.
@@ -110,6 +113,24 @@ public class OvalRepository
     public DefinitionStatusEnumeration getStatus()
     {
         return _status;
+    }
+
+
+
+    /**
+     */
+    public void setAffectedCpeList(
+                    final AffectedCpeList affectedCpeList
+                    )
+    {
+        _affectedCpeList = affectedCpeList;
+    }
+
+
+
+    public AffectedCpeList getAffectedCpeList()
+    {
+        return _affectedCpeList;
     }
 
 

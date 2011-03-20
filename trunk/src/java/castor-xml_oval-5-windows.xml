@@ -85,9 +85,84 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
 
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="path" node="element"/>
+        </field>
+
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="filename" node="element"/>
+        </field>
+
+        <field name="owner" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="owner" node="element"/>
+        </field>
+
+        <field name="size" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateIntType">
+            <bind-xml name="size" node="element"/>
+        </field>
+
+        <field name="aTime" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateIntType">
+            <bind-xml name="a_time" node="element"/>
+        </field>
+
+        <field name="cTime" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateIntType">
+            <bind-xml name="c_time" node="element"/>
+        </field>
+
+        <field name="mTime" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateIntType">
+            <bind-xml name="m_time" node="element"/>
+        </field>
+
+        <field name="MSChecksum" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="ms_checksum" node="element"/>
+        </field>
+
         <field name="version" 
             type="jp.go.aist.six.oval.model.v5.definitions.EntityStateVersionType">
             <bind-xml name="version" node="element"/>
+        </field>
+
+        <field name="type" 
+            type="jp.go.aist.six.oval.model.v5.windows.EntityStateFileTypeType">
+            <bind-xml name="type" node="element"/>
+        </field>
+
+        <field name="developmentClass" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="development_class" node="element"/>
+        </field>
+
+        <field name="company" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="company" node="element"/>
+        </field>
+
+        <field name="internalName" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="internal_name" node="element"/>
+        </field>
+
+        <field name="language" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="language" node="element"/>
+        </field>
+
+        <field name="originalFilename" 
+            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            <bind-xml name="original_filename" node="element"/>
         </field>
 
         <field name="productName" 
