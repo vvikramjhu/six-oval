@@ -595,7 +595,7 @@
     <!-- textfilecontent54                                       -->
     <!-- ******************************************************* -->
 
-    <class name="jp.go.aist.six.oval.model.v5.independent.Textfilecontent54Test"
+    <class name="jp.go.aist.six.oval.model.v5.independent.TextfileContent54Test"
         extends="jp.go.aist.six.oval.model.v5.definitions.TestType"
         identity="persistentID">
 
@@ -609,7 +609,7 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.independent.Textfilecontent54Object"
+    <class name="jp.go.aist.six.oval.model.v5.independent.TextfileContent54Object"
         extends="jp.go.aist.six.oval.model.v5.definitions.SystemObjectType"
         identity="persistentID">
 
@@ -713,7 +713,7 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.independent.Textfilecontent54State"
+    <class name="jp.go.aist.six.oval.model.v5.independent.TextfileContent54State"
         extends="jp.go.aist.six.oval.model.v5.definitions.StateType"
         identity="persistentID">
         

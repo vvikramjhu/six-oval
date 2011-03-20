@@ -593,6 +593,24 @@ public abstract class CoreTestBase
         return new Object[][] {
                         // family-basis //
 
+//                        // Windows, inventory
+//                        {
+//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                            "test/data/oval-definitions-5/20110320_oval-definitions_inventory_windows.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_20110320_oval-definitions_inventory_windows.xml"
+//                        }
+//                        ,
+                        // Windows, vulnerability
+                        {
+                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+                            "test/data/oval-definitions-5/20110320_oval-definitions_vulnerability_windows.xml",
+                            "/oval_definitions",
+                            null,
+                            "marshalled_20110320_oval-definitions_vulnerability_windows.xml"
+                        }
+//                        ,
 //                        // Debian patch
 //                        {
 //                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
@@ -611,14 +629,14 @@ public abstract class CoreTestBase
 //                            "marshalled_20110308_oval-vulnerability_red.hat.enterprise.linux.5.xml"
 //                        }
 //                        ,
-                        // Windows XP, vulnerability
-                        {
-                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                            "test/data/oval-definitions-5/20110308_oval-vulnerability_microsoft.windows.xp.xml",
-                            "/oval_definitions",
-                            null,
-                            "marshalled_20110308_oval-vulnerability_microsoft.windows.xp.xml"
-                        }
+//                        // Windows XP, vulnerability
+//                        {
+//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                            "test/data/oval-definitions-5/20110308_oval-vulnerability_microsoft.windows.xp.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_20110308_oval-vulnerability_microsoft.windows.xp.xml"
+//                        }
 //                        ,
 //                        // Windows 7, vulnerability
 //                        {

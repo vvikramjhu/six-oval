@@ -40,12 +40,12 @@ import jp.go.aist.six.oval.model.v5.definitions.StateType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class TextfileContent54StateX
+public class TextfileContent54State
     extends StateType
 {
 
-    private final EntityPropertyMap<TextfileContentPropertyX>  _properties =
-        TextfileContentPropertyX.createPropertyMap();
+    private final EntityPropertyMap<TextfileContentProperty>  _properties =
+        TextfileContentProperty.createPropertyMap();
 
 
 
@@ -65,12 +65,12 @@ public class TextfileContent54StateX
     /**
      * Constructor.
      */
-    public TextfileContent54StateX()
+    public TextfileContent54State()
     {
     }
 
 
-    public TextfileContent54StateX(
+    public TextfileContent54State(
                     final String id,
                     final int version
                     )
@@ -79,7 +79,7 @@ public class TextfileContent54StateX
     }
 
 
-    public TextfileContent54StateX(
+    public TextfileContent54State(
                     final String id,
                     final int version,
                     final String comment
@@ -96,11 +96,11 @@ public class TextfileContent54StateX
                     final EntityStateStringType filepath
                     )
     {
-        _properties.setProperty( TextfileContentPropertyX.FILEPATH, filepath );
+        _properties.setProperty( TextfileContentProperty.FILEPATH, filepath );
     }
 
 
-    public TextfileContent54StateX filepath(
+    public TextfileContent54State filepath(
                     final EntityStateStringType filepath
                     )
     {
@@ -112,7 +112,7 @@ public class TextfileContent54StateX
     public EntityStateStringType getFilepath()
     {
         return _properties.getProperty(
-                        TextfileContentPropertyX.FILEPATH, EntityStateStringType.class );
+                        TextfileContentProperty.FILEPATH, EntityStateStringType.class );
     }
 
 
@@ -123,11 +123,11 @@ public class TextfileContent54StateX
                     final EntityStateStringType path
                     )
     {
-        _properties.setProperty( TextfileContentPropertyX.PATH, path );
+        _properties.setProperty( TextfileContentProperty.PATH, path );
     }
 
 
-    public TextfileContent54StateX path(
+    public TextfileContent54State path(
                     final EntityStateStringType path
                     )
     {
@@ -139,7 +139,7 @@ public class TextfileContent54StateX
     public EntityStateStringType getPath()
     {
         return _properties.getProperty(
-                        TextfileContentPropertyX.PATH, EntityStateStringType.class );
+                        TextfileContentProperty.PATH, EntityStateStringType.class );
     }
 
 
@@ -150,11 +150,11 @@ public class TextfileContent54StateX
                     final EntityStateStringType filename
                     )
     {
-        _properties.setProperty( TextfileContentPropertyX.FILENAME, filename );
+        _properties.setProperty( TextfileContentProperty.FILENAME, filename );
     }
 
 
-    public TextfileContent54StateX filename(
+    public TextfileContent54State filename(
                     final EntityStateStringType filename
                     )
     {
@@ -166,7 +166,7 @@ public class TextfileContent54StateX
     public EntityStateStringType getFilename()
     {
         return _properties.getProperty(
-                        TextfileContentPropertyX.FILENAME, EntityStateStringType.class );
+                        TextfileContentProperty.FILENAME, EntityStateStringType.class );
     }
 
 
@@ -177,11 +177,11 @@ public class TextfileContent54StateX
                     final EntityStateStringType pattern
                     )
     {
-        _properties.setProperty( TextfileContentPropertyX.PATTERN, pattern );
+        _properties.setProperty( TextfileContentProperty.PATTERN, pattern );
     }
 
 
-    public TextfileContent54StateX pattern(
+    public TextfileContent54State pattern(
                     final EntityStateStringType pattern
                     )
     {
@@ -193,7 +193,7 @@ public class TextfileContent54StateX
     public EntityStateStringType getPattern()
     {
         return _properties.getProperty(
-                        TextfileContentPropertyX.PATTERN, EntityStateStringType.class );
+                        TextfileContentProperty.PATTERN, EntityStateStringType.class );
     }
 
 
@@ -204,11 +204,11 @@ public class TextfileContent54StateX
                     final EntityStateIntType instance
                     )
     {
-        _properties.setProperty( TextfileContentPropertyX.INSTANCE, instance );
+        _properties.setProperty( TextfileContentProperty.INSTANCE, instance );
     }
 
 
-    public TextfileContent54StateX instance(
+    public TextfileContent54State instance(
                     final EntityStateIntType instance
                     )
     {
@@ -220,7 +220,7 @@ public class TextfileContent54StateX
     public EntityStateIntType getInstance()
     {
         return _properties.getProperty(
-                        TextfileContentPropertyX.INSTANCE, EntityStateIntType.class );
+                        TextfileContentProperty.INSTANCE, EntityStateIntType.class );
     }
 
 
@@ -231,11 +231,11 @@ public class TextfileContent54StateX
                     final EntityStateAnySimpleType text
                     )
     {
-        _properties.setProperty( TextfileContentPropertyX.TEXT, text );
+        _properties.setProperty( TextfileContentProperty.TEXT, text );
     }
 
 
-    public TextfileContent54StateX text(
+    public TextfileContent54State text(
                     final EntityStateAnySimpleType text
                     )
     {
@@ -247,7 +247,7 @@ public class TextfileContent54StateX
     public EntityStateAnySimpleType getText()
     {
         return _properties.getProperty(
-                        TextfileContentPropertyX.TEXT, EntityStateAnySimpleType.class );
+                        TextfileContentProperty.TEXT, EntityStateAnySimpleType.class );
     }
 
 
@@ -258,11 +258,11 @@ public class TextfileContent54StateX
                     final EntityStateAnySimpleType subexpression
                     )
     {
-        _properties.setProperty( TextfileContentPropertyX.SUBEXPRESSION, subexpression );
+        _properties.setProperty( TextfileContentProperty.SUBEXPRESSION, subexpression );
     }
 
 
-    public TextfileContent54StateX subexpression(
+    public TextfileContent54State subexpression(
                     final EntityStateAnySimpleType subexpression
                     )
     {
@@ -274,7 +274,7 @@ public class TextfileContent54StateX
     public EntityStateAnySimpleType getSubexpression()
     {
         return _properties.getProperty(
-                        TextfileContentPropertyX.SUBEXPRESSION, EntityStateAnySimpleType.class );
+                        TextfileContentProperty.SUBEXPRESSION, EntityStateAnySimpleType.class );
     }
 
 
@@ -337,7 +337,7 @@ public class TextfileContent54StateX
                     final Object obj
                     )
     {
-        if (!(obj instanceof TextfileContent54StateX)) {
+        if (!(obj instanceof TextfileContent54State)) {
             return false;
         }
 

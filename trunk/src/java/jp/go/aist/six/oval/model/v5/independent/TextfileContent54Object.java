@@ -41,16 +41,16 @@ import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class TextfileContent54ObjectX
+public class TextfileContent54Object
     extends SystemObjectType
 {
 
-    private TextfileContent54BehaviorsX  _behaviors;
+    private TextfileContent54Behaviors  _behaviors;
     //{0..1}
 
 
-    private final EntityPropertyMap<TextfileContentPropertyX>  _properties =
-        TextfileContentPropertyX.createPropertyMap();
+    private final EntityPropertyMap<TextfileContentProperty>  _properties =
+        TextfileContentProperty.createPropertyMap();
 
 
 //    // xsd:choice( filepath | path+filename)
@@ -81,12 +81,12 @@ public class TextfileContent54ObjectX
     /**
      * Constructor.
      */
-    public TextfileContent54ObjectX()
+    public TextfileContent54Object()
     {
     }
 
 
-    public TextfileContent54ObjectX(
+    public TextfileContent54Object(
                     final String id,
                     final int version
                     )
@@ -95,7 +95,7 @@ public class TextfileContent54ObjectX
     }
 
 
-    public TextfileContent54ObjectX(
+    public TextfileContent54Object(
                     final String id,
                     final int version,
                     final String comment
@@ -105,7 +105,7 @@ public class TextfileContent54ObjectX
     }
 
 
-    public TextfileContent54ObjectX(
+    public TextfileContent54Object(
                     final String id,
                     final int version,
                     final String path,
@@ -123,7 +123,7 @@ public class TextfileContent54ObjectX
     }
 
 
-    public TextfileContent54ObjectX(
+    public TextfileContent54Object(
                     final String id,
                     final int version,
                     final EntityObjectStringType path,
@@ -144,15 +144,15 @@ public class TextfileContent54ObjectX
     /**
      */
     public void setBehaviors(
-                    final TextfileContent54BehaviorsX behaviors
+                    final TextfileContent54Behaviors behaviors
                     )
     {
         _behaviors = behaviors;
     }
 
 
-    public TextfileContent54ObjectX behaviors(
-                    final TextfileContent54BehaviorsX behaviors
+    public TextfileContent54Object behaviors(
+                    final TextfileContent54Behaviors behaviors
                     )
     {
         setBehaviors( behaviors );
@@ -160,7 +160,7 @@ public class TextfileContent54ObjectX
     }
 
 
-    public TextfileContent54BehaviorsX getBehaviors()
+    public TextfileContent54Behaviors getBehaviors()
     {
         return _behaviors;
     }
@@ -173,11 +173,11 @@ public class TextfileContent54ObjectX
                     final EntityObjectStringType filepath
                     )
     {
-        _properties.setProperty( TextfileContentPropertyX.FILEPATH, filepath );
+        _properties.setProperty( TextfileContentProperty.FILEPATH, filepath );
     }
 
 
-    public TextfileContent54ObjectX filepath(
+    public TextfileContent54Object filepath(
                     final EntityObjectStringType filepath
                     )
     {
@@ -189,7 +189,7 @@ public class TextfileContent54ObjectX
     public EntityObjectStringType getFilepath()
     {
         return _properties.getProperty(
-                        TextfileContentPropertyX.FILEPATH, EntityObjectStringType.class );
+                        TextfileContentProperty.FILEPATH, EntityObjectStringType.class );
     }
 
 
@@ -200,11 +200,11 @@ public class TextfileContent54ObjectX
                     final EntityObjectStringType path
                     )
     {
-        _properties.setProperty( TextfileContentPropertyX.PATH, path );
+        _properties.setProperty( TextfileContentProperty.PATH, path );
     }
 
 
-    public TextfileContent54ObjectX path(
+    public TextfileContent54Object path(
                     final EntityObjectStringType path
                     )
     {
@@ -216,7 +216,7 @@ public class TextfileContent54ObjectX
     public EntityObjectStringType getPath()
     {
         return _properties.getProperty(
-                        TextfileContentPropertyX.PATH, EntityObjectStringType.class );
+                        TextfileContentProperty.PATH, EntityObjectStringType.class );
     }
 
 
@@ -227,11 +227,11 @@ public class TextfileContent54ObjectX
                     final EntityObjectStringType filename
                     )
     {
-        _properties.setProperty( TextfileContentPropertyX.FILENAME, filename );
+        _properties.setProperty( TextfileContentProperty.FILENAME, filename );
     }
 
 
-    public TextfileContent54ObjectX filename(
+    public TextfileContent54Object filename(
                     final EntityObjectStringType filename
                     )
     {
@@ -243,7 +243,7 @@ public class TextfileContent54ObjectX
     public EntityObjectStringType getFilename()
     {
         return _properties.getProperty(
-                        TextfileContentPropertyX.FILENAME, EntityObjectStringType.class );
+                        TextfileContentProperty.FILENAME, EntityObjectStringType.class );
     }
 
 
@@ -254,11 +254,11 @@ public class TextfileContent54ObjectX
                     final EntityObjectStringType pattern
                     )
     {
-        _properties.setProperty( TextfileContentPropertyX.PATTERN, pattern );
+        _properties.setProperty( TextfileContentProperty.PATTERN, pattern );
     }
 
 
-    public TextfileContent54ObjectX pattern(
+    public TextfileContent54Object pattern(
                     final EntityObjectStringType pattern
                     )
     {
@@ -270,7 +270,7 @@ public class TextfileContent54ObjectX
     public EntityObjectStringType getPattern()
     {
         return _properties.getProperty(
-                        TextfileContentPropertyX.PATTERN, EntityObjectStringType.class );
+                        TextfileContentProperty.PATTERN, EntityObjectStringType.class );
     }
 
 
@@ -281,11 +281,11 @@ public class TextfileContent54ObjectX
                     final EntityObjectIntType instance
                     )
     {
-        _properties.setProperty( TextfileContentPropertyX.INSTANCE, instance );
+        _properties.setProperty( TextfileContentProperty.INSTANCE, instance );
     }
 
 
-    public TextfileContent54ObjectX instance(
+    public TextfileContent54Object instance(
                     final EntityObjectIntType instance
                     )
     {
@@ -297,7 +297,7 @@ public class TextfileContent54ObjectX
     public EntityObjectIntType getInstance()
     {
         return _properties.getProperty(
-                        TextfileContentPropertyX.INSTANCE, EntityObjectIntType.class );
+                        TextfileContentProperty.INSTANCE, EntityObjectIntType.class );
     }
 
 
@@ -329,7 +329,7 @@ public class TextfileContent54ObjectX
     }
 
 
-    public TextfileContent54ObjectX filter(
+    public TextfileContent54Object filter(
                     final Filter filter
                     )
     {
@@ -388,7 +388,7 @@ public class TextfileContent54ObjectX
                     final Object obj
                     )
     {
-        if (!(obj instanceof TextfileContent54ObjectX)) {
+        if (!(obj instanceof TextfileContent54Object)) {
             return false;
         }
 

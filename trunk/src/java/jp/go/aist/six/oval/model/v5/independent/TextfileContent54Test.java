@@ -34,19 +34,19 @@ import jp.go.aist.six.oval.model.v5.definitions.TestType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class TextfileContent54TestX
+public class TextfileContent54Test
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public TextfileContent54TestX()
+    public TextfileContent54Test()
     {
     }
 
 
-    public TextfileContent54TestX(
+    public TextfileContent54Test(
                     final String id,
                     final int version
                     )
@@ -55,7 +55,7 @@ public class TextfileContent54TestX
     }
 
 
-    public TextfileContent54TestX(
+    public TextfileContent54Test(
                     final String id,
                     final int version,
                     final String comment,
@@ -97,7 +97,7 @@ public class TextfileContent54TestX
                     final Object obj
                     )
     {
-        if (!(obj instanceof TextfileContent54TestX)) {
+        if (!(obj instanceof TextfileContent54Test)) {
             return false;
         }
 

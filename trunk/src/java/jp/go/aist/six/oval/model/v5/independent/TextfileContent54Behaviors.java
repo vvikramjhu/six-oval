@@ -31,7 +31,7 @@ package jp.go.aist.six.oval.model.v5.independent;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class TextfileContent54BehaviorsX
+public class TextfileContent54Behaviors
     extends FileBehaviors
 {
 
@@ -54,7 +54,7 @@ public class TextfileContent54BehaviorsX
     /**
      * Constructor.
      */
-    public TextfileContent54BehaviorsX()
+    public TextfileContent54Behaviors()
     {
     }
 
@@ -70,7 +70,7 @@ public class TextfileContent54BehaviorsX
     }
 
 
-    public TextfileContent54BehaviorsX ignoreCase(
+    public TextfileContent54Behaviors ignoreCase(
                     final boolean ignoreCase
                     )
     {
@@ -96,7 +96,7 @@ public class TextfileContent54BehaviorsX
     }
 
 
-    public TextfileContent54BehaviorsX multiline(
+    public TextfileContent54Behaviors multiline(
                     final boolean multiline
                     )
     {
@@ -122,7 +122,7 @@ public class TextfileContent54BehaviorsX
     }
 
 
-    public TextfileContent54BehaviorsX singleline(
+    public TextfileContent54Behaviors singleline(
                     final boolean singleline
                     )
     {
@@ -162,12 +162,12 @@ public class TextfileContent54BehaviorsX
                     final Object obj
                     )
     {
-        if (!(obj instanceof TextfileContent54BehaviorsX)) {
+        if (!(obj instanceof TextfileContent54Behaviors)) {
             return false;
         }
 
         if (super.equals( obj )) {
-            TextfileContent54BehaviorsX  other = (TextfileContent54BehaviorsX)obj;
+            TextfileContent54Behaviors  other = (TextfileContent54Behaviors)obj;
             if (isIgnoreCase() == other.isIgnoreCase()) {
                 if (isMultiline() == other.isMultiline()) {
                     if (isSingleline() == other.isSingleline()) {

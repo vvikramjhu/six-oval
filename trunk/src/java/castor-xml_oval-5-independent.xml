@@ -107,7 +107,8 @@
     </class>
 
 
-    <class name="jp.go.aist.six.oval.model.v5.independent.Textfilecontent54Behaviors"
+
+    <class name="jp.go.aist.six.oval.model.v5.independent.TextfileContent54Behaviors"
         extends="jp.go.aist.six.oval.model.v5.independent.FileBehaviors">
 
         <field name="ignoreCase" type="boolean">
@@ -125,7 +126,7 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.independent.Textfilecontent54Test"
+    <class name="jp.go.aist.six.oval.model.v5.independent.TextfileContent54Test"
         extends="jp.go.aist.six.oval.model.v5.definitions.TestType">
         <map-to xml="textfilecontent54_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
@@ -145,14 +146,14 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.independent.Textfilecontent54Object"
+    <class name="jp.go.aist.six.oval.model.v5.independent.TextfileContent54Object"
         extends="jp.go.aist.six.oval.model.v5.definitions.SystemObjectType">
         <map-to xml="textfilecontent54_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
             ns-prefix=""/>
 
         <field name="behaviors" 
-            type="jp.go.aist.six.oval.model.v5.independent.Textfilecontent54Behaviors">
+            type="jp.go.aist.six.oval.model.v5.independent.TextfileContent54Behaviors">
             <bind-xml name="behaviors" node="element"/>
         </field>
         
@@ -184,7 +185,7 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.independent.Textfilecontent54State"
+    <class name="jp.go.aist.six.oval.model.v5.independent.TextfileContent54State"
         extends="jp.go.aist.six.oval.model.v5.definitions.StateType">
         <map-to xml="textfilecontent54_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
