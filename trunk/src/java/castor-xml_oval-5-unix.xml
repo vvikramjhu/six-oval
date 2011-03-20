@@ -87,5 +87,46 @@
         </field>
     </class>
 
+
+
+    <class name ="jp.go.aist.six.oval.model.v5.unix.UnameItem"
+        extends="jp.go.aist.six.oval.model.v5.sc.ItemType">
+        <map-to xml="uname_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"
+            ns-prefix=""/>
+
+        <field name="machineClass" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="machine_class" node="element"/>
+        </field>
+
+        <field name="nodeName" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="node_name" node="element"/>
+        </field>
+
+        <field name="osName" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="os_name" node="element"/>
+        </field>
+
+        <field name="osRelease" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="os_release" node="element"/>
+        </field>
+
+        <field name="osVersion" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="os_version" node="element"/>
+        </field>
+
+        <field name="processorType" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="processor_type" node="element"/>
+        </field>
+    </class>
+
+
+
 </mapping>
 

@@ -18,14 +18,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.unix;
+package jp.go.aist.six.oval.model.v5.unix;
 
-import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.sc.EntityItemString;
-import jp.go.aist.six.oval.model.sc.Item;
-import jp.go.aist.six.oval.model.sc.Status;
 import java.util.EnumMap;
 import java.util.Map;
+import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.v5.sc.ItemType;
+import jp.go.aist.six.oval.model.v5.sc.StatusEnumeration;
 
 
 
@@ -38,11 +38,11 @@ import java.util.Map;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class UnameItem
-    extends Item
+    extends ItemType
 {
 
-    private Map<UnameProperty,EntityItemString>  _properties =
-        new EnumMap<UnameProperty,EntityItemString>( UnameProperty.class );
+    private final Map<UnameProperty,EntityItemStringType>  _properties =
+        new EnumMap<UnameProperty,EntityItemStringType>( UnameProperty.class );
 
 //   private EntityItemString  _machineClass;
 //    //{0..1}
@@ -72,9 +72,6 @@ public class UnameItem
     }
 
 
-    /**
-     * Constructor.
-     */
     public UnameItem(
                     final int id
                     )
@@ -83,25 +80,18 @@ public class UnameItem
     }
 
 
-    /**
-     * Constructor.
-     */
     public UnameItem(
                     final int id,
-                    final Status status
+                    final StatusEnumeration status
                     )
     {
         super( id, status );
     }
 
 
-
-    /**
-     * Constructor.
-     */
     public UnameItem(
                     final int id,
-                    final Status status,
+                    final StatusEnumeration status,
                     final String machineClass,
                     final String nodeName,
                     final String osName,
@@ -113,43 +103,40 @@ public class UnameItem
         this( id, status );
 
         if (machineClass != null) {
-            setMachineClass( new EntityItemString( machineClass ) );
+            setMachineClass( new EntityItemStringType( machineClass ) );
         }
 
         if (nodeName != null) {
-            setNodeName( new EntityItemString( nodeName ) );
+            setNodeName( new EntityItemStringType( nodeName ) );
         }
 
         if (osName != null) {
-            setOsName( new EntityItemString( osName ) );
+            setOsName( new EntityItemStringType( osName ) );
         }
 
         if (osRelease != null) {
-            setOsRelease( new EntityItemString( osRelease ) );
+            setOsRelease( new EntityItemStringType( osRelease ) );
         }
 
         if (osVersion != null) {
-            setOsVersion( new EntityItemString( osVersion ) );
+            setOsVersion( new EntityItemStringType( osVersion ) );
         }
 
         if (processorType != null) {
-            setProcessorType( new EntityItemString( processorType ) );
+            setProcessorType( new EntityItemStringType( processorType ) );
         }
     }
 
 
-    /**
-     * Constructor.
-     */
     public UnameItem(
                     final int id,
-                    final Status status,
-                    final EntityItemString machineClass,
-                    final EntityItemString nodeName,
-                    final EntityItemString osName,
-                    final EntityItemString osRelease,
-                    final EntityItemString osVersion,
-                    final EntityItemString processorType
+                    final StatusEnumeration status,
+                    final EntityItemStringType machineClass,
+                    final EntityItemStringType nodeName,
+                    final EntityItemStringType osName,
+                    final EntityItemStringType osRelease,
+                    final EntityItemStringType osVersion,
+                    final EntityItemStringType processorType
                     )
     {
         this( id, status );
@@ -163,14 +150,16 @@ public class UnameItem
 
 
 
-    public EntityItemString getMachineClass()
+    /**
+     */
+    public EntityItemStringType getMachineClass()
     {
         return _properties.get( UnameProperty.MACHINE_CLASS );
     }
 
 
     public void setMachineClass(
-                    final EntityItemString machineClass
+                    final EntityItemStringType machineClass
                     )
     {
         _properties.put( UnameProperty.MACHINE_CLASS, machineClass );
@@ -178,7 +167,7 @@ public class UnameItem
 
 
 
-    public EntityItemString getNodeName()
+    public EntityItemStringType getNodeName()
     {
         return _properties.get( UnameProperty.NODE_NAME );
     }
@@ -186,7 +175,7 @@ public class UnameItem
 
 
     public void setNodeName(
-                    final EntityItemString nodeName
+                    final EntityItemStringType nodeName
                     )
     {
         _properties.put( UnameProperty.NODE_NAME, nodeName );
@@ -194,14 +183,16 @@ public class UnameItem
 
 
 
-    public EntityItemString getOsName()
+    /**
+     */
+    public EntityItemStringType getOsName()
     {
         return _properties.get( UnameProperty.OS_NAME );
     }
 
 
     public void setOsName(
-                    final EntityItemString osName
+                    final EntityItemStringType osName
                     )
     {
         _properties.put( UnameProperty.OS_NAME, osName );
@@ -209,14 +200,16 @@ public class UnameItem
 
 
 
-    public EntityItemString getOsRelease()
+    /**
+     */
+    public EntityItemStringType getOsRelease()
     {
         return _properties.get( UnameProperty.OS_RELEASE );
     }
 
 
     public void setOsRelease(
-                    final EntityItemString osRelease
+                    final EntityItemStringType osRelease
                     )
     {
         _properties.put( UnameProperty.OS_RELEASE, osRelease );
@@ -224,14 +217,16 @@ public class UnameItem
 
 
 
-    public EntityItemString getOsVersion()
+    /**
+     */
+    public EntityItemStringType getOsVersion()
     {
         return _properties.get( UnameProperty.OS_VERSION );
     }
 
 
     public void setOsVersion(
-                    final EntityItemString osVersion
+                    final EntityItemStringType osVersion
                     )
     {
         _properties.put( UnameProperty.OS_VERSION, osVersion );
@@ -239,7 +234,9 @@ public class UnameItem
 
 
 
-    public EntityItemString getProcessorType()
+    /**
+     */
+    public EntityItemStringType getProcessorType()
     {
         return _properties.get( UnameProperty.PROCESSOR_TYPE );
     }
@@ -247,7 +244,7 @@ public class UnameItem
 
 
     public void setProcessorType(
-                    final EntityItemString processorType
+                    final EntityItemStringType processorType
                     )
     {
         _properties.put( UnameProperty.PROCESSOR_TYPE, processorType );
