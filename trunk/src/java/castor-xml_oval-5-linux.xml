@@ -237,4 +237,19 @@
     </class>
 
 
+
+    <class name="jp.go.aist.six.oval.model.v5.linux.RpmInfoItem"
+        extends="jp.go.aist.six.oval.model.v5.linux.LinuxEvrPkgInfoItem">
+        <map-to xml="rpminfo_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux"
+            ns-prefix=""/>
+
+        <field name="signatureKeyID" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="signature_keyid" node="element"/>
+        </field>
+    </class>
+
+
+    
 </mapping>

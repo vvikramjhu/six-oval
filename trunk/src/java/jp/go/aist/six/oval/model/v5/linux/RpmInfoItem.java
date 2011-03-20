@@ -18,13 +18,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.model.v5.linux;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.sc.EntityItemAnySimple;
-import jp.go.aist.six.oval.model.sc.EntityItemEVRString;
-import jp.go.aist.six.oval.model.sc.EntityItemString;
-import jp.go.aist.six.oval.model.sc.Status;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemEVRStringType;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
 
 
 
@@ -40,7 +39,7 @@ public class RpmInfoItem
     extends LinuxEvrPkgInfoItem
 {
 
-//    private EntityItemString  _signatureKeyID;
+//    private EntityItemStringType  _signatureKeyID;
 //    //{0..1}
 
 
@@ -53,9 +52,6 @@ public class RpmInfoItem
     }
 
 
-    /**
-     * Constructor.
-     */
     public RpmInfoItem(
                     final int id
                     )
@@ -64,34 +60,7 @@ public class RpmInfoItem
     }
 
 
-    /**
-     * Constructor.
-     */
-    public RpmInfoItem(
-                    final int id,
-                    final Status status
-                    )
-    {
-        super( id, status );
-    }
 
-
-    /**
-     * Constructor.
-     */
-    public RpmInfoItem(
-                    final int id,
-                    final Status status,
-                    final String name
-                    )
-    {
-        super( id, status, name );
-    }
-
-
-    /**
-     * Constructor.
-     */
     public RpmInfoItem(
                     final int id,
                     final String arch,
@@ -103,68 +72,69 @@ public class RpmInfoItem
                     final String sigkeyid
                     )
     {
-        this( id, DEFAULT_STATUS, arch, name, version, release, epoch, evr, sigkeyid );
-    }
+        this( id );
 
+        if (arch != null) {
+            setArch( new EntityItemStringType( arch ) );
+        }
 
-    /**
-     * Constructor.
-     */
-    public RpmInfoItem(
-                    final int id,
-                    final Status status,
-                    final String arch,
-                    final String name,
-                    final String version,
-                    final String release,
-                    final String epoch,
-                    final String evr,
-                    final String sigkeyid
-                    )
-    {
-        super( id, status, arch, name, version, release, epoch, evr );
+        if (name != null) {
+            setName( new EntityItemStringType( name ) );
+        }
+
+        if (version != null) {
+            setVersion( new EntityItemAnySimpleType( version ) );
+        }
+
+        if (release != null) {
+            setRelease( new EntityItemAnySimpleType( name ) );
+        }
+
+        if (epoch != null) {
+            setEpoch( new EntityItemAnySimpleType( epoch ) );
+        }
+
+        if (evr != null) {
+            setEvr( new EntityItemEVRStringType( evr ) );
+        }
 
         if (sigkeyid != null) {
-            setSignatureKeyID( new EntityItemString( sigkeyid ) );
+            setName( new EntityItemStringType( sigkeyid ) );
         }
     }
 
 
-    /**
-     * Constructor.
-     */
-    public RpmInfoItem(
-                    final int id,
-                    final Status status,
-                    final EntityItemString arch,
-                    final EntityItemString name,
-                    final EntityItemAnySimple version,
-                    final EntityItemAnySimple release,
-                    final EntityItemAnySimple epoch,
-                    final EntityItemEVRString evr,
-                    final EntityItemString sigkeyid
-                    )
-    {
-        super( id, status, arch, name, version, release, epoch, evr );
-
-        setSignatureKeyID( sigkeyid );
-    }
+//    public RpmInfoItem(
+//                    final int id,
+//                    final EntityItemStringType arch,
+//                    final EntityItemStringType name,
+//                    final EntityItemAnySimpleType version,
+//                    final EntityItemAnySimpleType release,
+//                    final EntityItemAnySimpleType epoch,
+//                    final EntityItemEVRStringType evr,
+//                    final EntityItemStringType sigkeyid
+//                    )
+//    {
+//        super( id, arch, name, version, release, epoch, evr );
+//
+//        setSignatureKeyID( sigkeyid );
+//    }
 
 
 
     /**
      */
     public void setSignatureKeyID(
-                    final EntityItemString signatureKeyID
+                    final EntityItemStringType signatureKeyID
                     )
     {
         _properties.put( LinuxPkgProperty.SIGNATURE_KEYID, signatureKeyID);
     }
 
 
-    public EntityItemString getSignatureKeyID()
+    public EntityItemStringType getSignatureKeyID()
     {
-        return (EntityItemString)_properties.get( LinuxPkgProperty.SIGNATURE_KEYID );
+        return (EntityItemStringType)_properties.get( LinuxPkgProperty.SIGNATURE_KEYID );
     }
 
 
@@ -172,7 +142,7 @@ public class RpmInfoItem
                     final String signatureKeyID
                     )
     {
-        setSignatureKeyID( new EntityItemString( signatureKeyID ) );
+        setSignatureKeyID( new EntityItemStringType( signatureKeyID ) );
         return this;
     }
 
@@ -184,7 +154,7 @@ public class RpmInfoItem
                     final String name
                     )
     {
-        setName( new EntityItemString( name ) );
+        setName( new EntityItemStringType( name ) );
         return this;
     }
 
@@ -193,7 +163,7 @@ public class RpmInfoItem
                     final String arch
                     )
     {
-        setArch( new EntityItemString( arch ) );
+        setArch( new EntityItemStringType( arch ) );
         return this;
     }
 
@@ -202,7 +172,7 @@ public class RpmInfoItem
                     final String epoch
                     )
     {
-        setEpoch( new EntityItemAnySimple( epoch ) );
+        setEpoch( new EntityItemAnySimpleType( epoch ) );
         return this;
     }
 
@@ -211,7 +181,7 @@ public class RpmInfoItem
                     final String release
                     )
     {
-        setRelease( new EntityItemAnySimple( release ) );
+        setRelease( new EntityItemAnySimpleType( release ) );
         return this;
     }
 
@@ -220,7 +190,7 @@ public class RpmInfoItem
                     final String version
                     )
     {
-        setVersion( new EntityItemAnySimple( version ) );
+        setVersion( new EntityItemAnySimpleType( version ) );
         return this;
     }
 
@@ -229,7 +199,7 @@ public class RpmInfoItem
                     final String evr
                     )
     {
-        setEvr( new EntityItemEVRString( evr ) );
+        setEvr( new EntityItemEVRStringType( evr ) );
         return this;
     }
 
