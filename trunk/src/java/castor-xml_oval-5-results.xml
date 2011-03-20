@@ -34,7 +34,20 @@
             type="jp.go.aist.six.oval.model.v5.results.DefaultDirectivesType">
             <bind-xml name="directives" node="element"/>
         </field>
-        
+
+        <field name="classDirectives" 
+            type="jp.go.aist.six.oval.model.v5.results.ClassDirectivesType"
+            collection="collection">
+            <bind-xml name="class_directives" node="element"/>
+        </field>
+
+        <field name="ovalDefinitions" 
+            type="jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions">
+            <bind-xml name="oval-def:oval_definitions" node="element"
+                xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+                />
+        </field>
+
         <field name="results" 
             type="jp.go.aist.six.oval.model.v5.results.ResultsType">
             <bind-xml name="results" node="element"/>
@@ -87,6 +100,19 @@
 
         <field name="includeSourceDefinitions" type="boolean">
             <bind-xml name="include_source_definitions" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.results.ClassDirectivesType"
+        extends="jp.go.aist.six.oval.model.v5.results.DirectivesType">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
+
+        <field name="definitionClass" 
+            type="jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration">
+            <bind-xml name="class" node="attribute"/>
         </field>
     </class>
 

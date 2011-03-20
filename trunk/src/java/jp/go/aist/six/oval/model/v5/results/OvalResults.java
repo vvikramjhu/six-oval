@@ -20,8 +20,12 @@
 
 package jp.go.aist.six.oval.model.v5.results;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.OvalDocument;
 import jp.go.aist.six.oval.model.v5.common.GeneratorType;
+import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 
 
 
@@ -39,14 +43,18 @@ public class OvalResults
     private GeneratorType  _generator = new GeneratorType();
     //{1..1}
 
+
     private DefaultDirectivesType  _directives = new DefaultDirectivesType();
     //{1..1}
 
-//    private Collection<ClassDirectives>  _classDirectives = new ArrayList<ClassDirectives>();
-//    //{0..5}
-//
-//    private OvalDefinitions  _ovalDefinitions;
-//    //{0..1}
+
+    private final Collection<ClassDirectivesType>  _classDirectives = new ArrayList<ClassDirectivesType>();
+    //{0..5}
+
+
+    private OvalDefinitions  _ovalDefinitions;
+    //{0..1}
+
 
     private ResultsType  _results;
     //{1..1}
@@ -121,63 +129,63 @@ public class OvalResults
 
 
 
-//    public void setClassDirectives(
-//                    final Collection<? extends ClassDirectives> classDirectives
-//                    )
-//    {
-//        if (classDirectives != _classDirectives) {
-//            _classDirectives.clear();
-//            if (classDirectives != null  &&  classDirectives.size() > 0) {
-//                _classDirectives.addAll( classDirectives );
-//            }
-//        }
-//    }
-//
-//
-//    public boolean addClassDirectives(
-//                    final ClassDirectives classDirectives
-//                    )
-//    {
-//        return _classDirectives.add( classDirectives );
-//    }
-//
-//
-//    public Collection<ClassDirectives> getClassDirectives()
-//    {
-//        return _classDirectives;
-//    }
-//
-//
-//    public Iterator<ClassDirectives> iterateClassDirectives()
-//    {
-//        return _classDirectives.iterator();
-//    }
-//
-//
-//
-//    /**
-//     */
-//    public void setOvalDefinitions(
-//                    final OvalDefinitions definitions
-//                    )
-//    {
-//        _ovalDefinitions = definitions;
-//    }
-//
-//
-//    public OvalResults ovalDefinitions(
-//                    final OvalDefinitions definitions
-//                    )
-//    {
-//        setOvalDefinitions( definitions );
-//        return this;
-//    }
-//
-//
-//    public OvalDefinitions getOvalDefinitions()
-//    {
-//        return _ovalDefinitions;
-//    }
+    public void setClassDirectives(
+                    final Collection<? extends ClassDirectivesType> classDirectives
+                    )
+    {
+        if (classDirectives != _classDirectives) {
+            _classDirectives.clear();
+            if (classDirectives != null  &&  classDirectives.size() > 0) {
+                _classDirectives.addAll( classDirectives );
+            }
+        }
+    }
+
+
+    public boolean addClassDirectives(
+                    final ClassDirectivesType classDirectives
+                    )
+    {
+        return _classDirectives.add( classDirectives );
+    }
+
+
+    public Collection<ClassDirectivesType> getClassDirectives()
+    {
+        return _classDirectives;
+    }
+
+
+    public Iterator<ClassDirectivesType> iterateClassDirectives()
+    {
+        return _classDirectives.iterator();
+    }
+
+
+
+    /**
+     */
+    public void setOvalDefinitions(
+                    final OvalDefinitions definitions
+                    )
+    {
+        _ovalDefinitions = definitions;
+    }
+
+
+    public OvalResults ovalDefinitions(
+                    final OvalDefinitions definitions
+                    )
+    {
+        setOvalDefinitions( definitions );
+        return this;
+    }
+
+
+    public OvalDefinitions getOvalDefinitions()
+    {
+        return _ovalDefinitions;
+    }
 
 
 
@@ -233,8 +241,8 @@ public class OvalResults
     public String toString()
     {
         return "oval_results[generator=" + getGenerator()
-//                        + ", directives=" + getDirectives()
-//                        + ", class_directives=" + getClassDirectives()
+                        + ", directives=" + getDirectives()
+                        + ", class_directives=" + getClassDirectives()
                         + ", results=" + getResults()
                         + "]";
     }
