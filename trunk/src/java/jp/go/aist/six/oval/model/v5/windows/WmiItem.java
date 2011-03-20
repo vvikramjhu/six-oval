@@ -18,14 +18,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
-import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.sc.EntityItemAnySimple;
-import jp.go.aist.six.oval.model.sc.EntityItemString;
-import jp.go.aist.six.oval.model.sc.Item;
 import java.util.ArrayList;
 import java.util.Collection;
+import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.v5.sc.ItemType;
 
 
 
@@ -39,17 +39,18 @@ import java.util.Collection;
  *             Replaced by the wmi57 item and
  *             will be removed in a future version of the language.
  */
+@Deprecated
 public class WmiItem
-    extends Item
+    extends ItemType
 {
 
-    private EntityItemString  _namespace;
+    private EntityItemStringType  _namespace;
     //{0..1}
 
-    private EntityItemString  _wql;
+    private EntityItemStringType  _wql;
     //{0..1}
 
-    private Collection<EntityItemAnySimple>  _result = new ArrayList<EntityItemAnySimple>();
+    private final Collection<EntityItemAnySimpleType>  _result = new ArrayList<EntityItemAnySimpleType>();
     //{0..*}
 
 
@@ -62,9 +63,6 @@ public class WmiItem
     }
 
 
-    /**
-     * Constructor.
-     */
     public WmiItem(
                     final int id
                     )
@@ -77,14 +75,14 @@ public class WmiItem
     /**
      */
     public void setNamespace(
-                    final EntityItemString namespace
+                    final EntityItemStringType namespace
                     )
     {
         _namespace = namespace;
     }
 
 
-    public EntityItemString getNamespace()
+    public EntityItemStringType getNamespace()
     {
         return _namespace;
     }
@@ -94,14 +92,14 @@ public class WmiItem
     /**
      */
     public void setWql(
-                    final EntityItemString wql
+                    final EntityItemStringType wql
                     )
     {
         _wql = wql;
     }
 
 
-    public EntityItemString getWql()
+    public EntityItemStringType getWql()
     {
         return _wql;
     }
@@ -111,7 +109,7 @@ public class WmiItem
     /**
      */
     public void setResult(
-                    final Collection<? extends EntityItemAnySimple> results
+                    final Collection<? extends EntityItemAnySimpleType> results
                     )
     {
         if (results != _result ) {
@@ -123,7 +121,7 @@ public class WmiItem
     }
 
 
-    public Collection<EntityItemAnySimple> getResult()
+    public Collection<EntityItemAnySimpleType> getResult()
     {
         return _result;
     }

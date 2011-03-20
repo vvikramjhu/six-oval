@@ -510,6 +510,31 @@
 
 
 
+    <class name ="jp.go.aist.six.oval.model.v5.windows.WmiItem"
+        extends="jp.go.aist.six.oval.model.v5.sc.ItemType">
+        <map-to xml="wmi_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""/>
+
+        <field name="namespace"
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="namespace" node="element"/>
+        </field>
+
+        <field name="wql" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="wql" node="element"/>
+        </field>
+
+        <field name="result" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType"
+            collection="collection">
+            <bind-xml name="result" node="element"/>
+        </field>
+    </class>
+
+
+
     <!-- ******************************************************* -->
     <!-- entity                                                  -->
     <!-- ******************************************************* -->

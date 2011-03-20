@@ -966,13 +966,22 @@ public abstract class CoreTestBase
 //                          "marshalled_oval-results_CVE-2004-0380_def990_negate.xml"
 //                      }
 //                        ,
-                      // Debian, CVE-2010-0176, DSA-2027
+//                      // Debian, CVE-2010-0176, DSA-2027
+//                      {
+//                          jp.go.aist.six.oval.model.v5.results.OvalResults.class,
+//                          "test/data/oval-results-5/oval-results_CVE-2010-0176_def7432_debian.xml",
+//                          "/oval_results",
+//                          null,
+//                          "marshalled_oval-results_CVE-2010-0176_def7432_debian.xml"
+//                      }
+//                      ,
+                      // def:7120, Windows, vulnerability
                       {
                           jp.go.aist.six.oval.model.v5.results.OvalResults.class,
-                          "test/data/oval-results-5/oval-results_CVE-2010-0176_def7432_debian.xml",
+                          "test/data/oval-results-5/oval-results_vulnerability_windows_def7120.xml",
                           "/oval_results",
                           null,
-                          "marshalled_oval-results_CVE-2010-0176_def7432_debian.xml"
+                          "marshalled_oval-results_vulnerability_windows_def7120.xml"
                       }
 //                      // Windows XP, CVE-2010-0030, MS PowerPoint
 //                      {

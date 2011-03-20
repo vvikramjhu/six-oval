@@ -45,6 +45,7 @@ public final class FamilyEnumeration
     private static final String  _UNIX_      = "unix";
     private static final String  _VMWARE_INFRASTRUCTURE_ = "vmware_infrastructure";
     private static final String  _WINDOWS_   = "windows";
+    private static final String  _NONE_      = "";
 
 
     public static final FamilyEnumeration  CATOS      = new FamilyEnumeration( _CATOS_ );
@@ -55,6 +56,7 @@ public final class FamilyEnumeration
     public static final FamilyEnumeration  UNIX       = new FamilyEnumeration( _UNIX_ );
     public static final FamilyEnumeration  VMWARE_INFRASTRUCTURE = new FamilyEnumeration( _VMWARE_INFRASTRUCTURE_ );
     public static final FamilyEnumeration  WINDOWS    = new FamilyEnumeration( _WINDOWS_ );
+    public static final FamilyEnumeration  NONE       = new FamilyEnumeration( _NONE_ );
 
 
 
@@ -69,6 +71,7 @@ public final class FamilyEnumeration
         map.put( _UNIX_,       UNIX      );
         map.put( _VMWARE_INFRASTRUCTURE_, VMWARE_INFRASTRUCTURE );
         map.put( _WINDOWS_,    WINDOWS   );
+        map.put( _NONE_,       NONE      );
         return map;
     }
 

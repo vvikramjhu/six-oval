@@ -18,12 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.independent;
+package jp.go.aist.six.oval.model.v5.independent;
 
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.common.Family;
-import jp.go.aist.six.oval.model.sc.Item;
-import jp.go.aist.six.oval.model.sc.Status;
+import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
+import jp.go.aist.six.oval.model.v5.sc.ItemType;
 
 
 
@@ -36,10 +35,10 @@ import jp.go.aist.six.oval.model.sc.Status;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class FamilyItem
-    extends Item
+    extends ItemType
 {
 
-    private EntityItemFamily  _family;
+    private EntityItemFamilyType  _family;
     //{0..1}
 
 
@@ -52,9 +51,6 @@ public class FamilyItem
     }
 
 
-    /**
-     * Constructor.
-     */
     public FamilyItem(
                     final int id
                     )
@@ -63,97 +59,34 @@ public class FamilyItem
     }
 
 
-    /**
-     * Constructor.
-     */
-    public FamilyItem(
-                    final int id,
-                    final Status status
-                    )
-    {
-        super( id, status );
-    }
-
 
     /**
-     * Constructor.
      */
-    public FamilyItem(
-                    final int id,
-                    final Status status,
-                    final Family family
-                    )
-    {
-        this( id, status,
-                        (family == null ? null : (new EntityItemFamily( family )))
-                        );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public FamilyItem(
-                    final int id,
-                    final Family family
-                    )
-    {
-        this( id, DEFAULT_STATUS, family );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public FamilyItem(
-                    final int id,
-                    final Status status,
-                    final EntityItemFamily family
-                    )
-    {
-        super( id, status );
-        setFamily( family );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public FamilyItem(
-                    final int id,
-                    final EntityItemFamily family
-                    )
-    {
-        this( id, DEFAULT_STATUS, family );
-    }
-
-
-
     public void setFamily(
-                    final EntityItemFamily family
+                    final EntityItemFamilyType family
                     )
     {
         _family = family;
     }
 
 
-    public EntityItemFamily getFamily()
+    public EntityItemFamilyType getFamily()
     {
         return _family;
     }
 
 
     public FamilyItem family(
-                    final Family family
+                    final FamilyEnumeration family
                     )
     {
-        setFamily( new EntityItemFamily( family ) );
+        setFamily( new EntityItemFamilyType( family ) );
         return this;
     }
 
 
     public FamilyItem family(
-                    final EntityItemFamily family
+                    final EntityItemFamilyType family
                     )
     {
         setFamily( family );

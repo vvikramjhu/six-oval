@@ -18,12 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.independent;
+package jp.go.aist.six.oval.model.v5.independent;
 
-import jp.go.aist.six.oval.model.common.Datatype;
-import jp.go.aist.six.oval.model.common.Family;
-import jp.go.aist.six.oval.model.sc.EntityItemString;
-import jp.go.aist.six.oval.model.sc.Status;
+import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
 
 
 
@@ -35,74 +33,32 @@ import jp.go.aist.six.oval.model.sc.Status;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemFamily
-    extends EntityItemString
+public class EntityItemFamilyType
+    extends EntityItemStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemFamily()
+    public EntityItemFamilyType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityItemFamily(
-                    final String data
+    public EntityItemFamilyType(
+                    final String content
                     )
     {
-        this( data, DEFAULT_STATUS );
+        super( content );
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityItemFamily(
-                    final String data,
-                    final Status status
+
+    public EntityItemFamilyType(
+                    final FamilyEnumeration content
                     )
     {
-        this( data, FIXED_DATATYPE, status );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemFamily(
-                    final String data,
-                    final Datatype datatype,
-                    final Status status
-                    )
-    {
-        super( data, datatype, status );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemFamily(
-                    final Family data
-                    )
-    {
-        this( data, DEFAULT_STATUS );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemFamily(
-                    final Family data,
-                    final Status status
-                    )
-    {
-        this( (data == null ? null : data.getName()), status );
+        super( (content == null ? null : content.getName()) );
     }
 
 
@@ -112,16 +68,16 @@ public class EntityItemFamily
     //**************************************************************
 
     @Override
-    public void setData(
-                    final String data
+    public void setContent(
+                    final String content
                     )
     {
-        if (data != null) {
+        if (content != null) {
             //validation
-            Family.valueOf( data );
+            FamilyEnumeration.valueOf( content );
         }
 
-        super.setData( data );
+        super.setContent( content );
     }
 
 
@@ -147,7 +103,7 @@ public class EntityItemFamily
             return true;
         }
 
-        if (!(obj instanceof EntityItemFamily)) {
+        if (!(obj instanceof EntityItemFamilyType)) {
             return false;
         }
 
@@ -155,4 +111,4 @@ public class EntityItemFamily
     }
 
 }
-// EntityItemFamily
+// EntityItemFamilyType

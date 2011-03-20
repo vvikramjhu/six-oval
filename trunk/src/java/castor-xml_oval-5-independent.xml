@@ -73,6 +73,26 @@
 
 
 
+    <class name ="jp.go.aist.six.oval.model.v5.independent.FamilyItem"
+        extends="jp.go.aist.six.oval.model.v5.sc.ItemType">
+        <map-to xml="family_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent"
+            ns-prefix=""/>
+
+        <field name="family" 
+            type="jp.go.aist.six.oval.model.v5.independent.EntityItemFamilyType">
+            <bind-xml name="family" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.independent.EntityItemFamilyType"
+        extends="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+    </class>
+
+
+
     <!-- ******************************************************* -->
     <!-- textfilecontent54                                       -->
     <!-- ******************************************************* -->
