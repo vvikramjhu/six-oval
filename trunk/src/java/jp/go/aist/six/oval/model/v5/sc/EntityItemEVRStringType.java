@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.common.Datatype;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 
 
 
@@ -35,56 +35,48 @@ import jp.go.aist.six.oval.model.common.Datatype;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemEVRString
-    extends EntityItemBase
+public class EntityItemEVRStringType
+    extends EntityItemSimpleBaseType
 {
 
-    public static final Datatype  FIXED_DATATYPE = Datatype.EVR_STRING;
+    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.EVR_STRING;
+    //{required, fixed="evr_string"}
 
 
 
     /**
      * Constructor.
      */
-    public EntityItemEVRString()
+    public EntityItemEVRStringType()
     {
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityItemEVRString(
-                    final String data
+    public EntityItemEVRStringType(
+                    final String content
                     )
     {
-        this( data, DEFAULT_STATUS );
+        super( content );
     }
 
 
-    /**
-     * Constructor.
-     */
-    public EntityItemEVRString(
-                    final String data,
-                    final Status status
-                    )
-    {
-        this( data, FIXED_DATATYPE, status );
-    }
-
-
-    /**
-     * Constructor.
-     */
-    public EntityItemEVRString(
-                    final String data,
-                    final Datatype datatype,
-                    final Status status
-                    )
-    {
-        super( data, datatype, status );
-    }
+//    public EntityItemEVRStringType(
+//                    final String content,
+//                    final StatusEnumeration status
+//                    )
+//    {
+//        super( content, status );
+//    }
+//
+//
+//    public EntityItemEVRStringType(
+//                    final String content,
+//                    final DatatypeEnumeration datatype,
+//                    final StatusEnumeration status
+//                    )
+//    {
+//        super( content, datatype, status );
+//    }
 
 
 
@@ -94,7 +86,7 @@ public class EntityItemEVRString
 
     @Override
     public void setDatatype(
-                    final Datatype datatype
+                    final DatatypeEnumeration datatype
                     )
     {
         if (datatype != null  &&  datatype != FIXED_DATATYPE) {
@@ -106,7 +98,7 @@ public class EntityItemEVRString
 
 
     @Override
-    public Datatype getDatatype()
+    public DatatypeEnumeration getDatatype()
     {
         return FIXED_DATATYPE;
     }
@@ -134,7 +126,7 @@ public class EntityItemEVRString
             return true;
         }
 
-        if (!(obj instanceof EntityItemEVRString)) {
+        if (!(obj instanceof EntityItemEVRStringType)) {
             return false;
         }
 
@@ -142,4 +134,4 @@ public class EntityItemEVRString
     }
 
 }
-// EntityItemEVRString
+// EntityItemEVRStringType

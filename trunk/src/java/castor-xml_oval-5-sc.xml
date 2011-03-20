@@ -295,5 +295,11 @@ not the family-specific one.
     </class>
 
 
+
+    <class name="jp.go.aist.six.oval.model.v5.sc.EntityItemEVRStringType"
+        extends="jp.go.aist.six.oval.model.v5.sc.EntityItemSimpleBaseType">
+    </class>
+
+
 </mapping>
 

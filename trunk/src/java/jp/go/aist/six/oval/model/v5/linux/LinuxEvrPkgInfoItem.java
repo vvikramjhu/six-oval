@@ -18,12 +18,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.model.v5.linux;
 
-import jp.go.aist.six.oval.model.sc.EntityItemAnySimple;
-import jp.go.aist.six.oval.model.sc.EntityItemEVRString;
-import jp.go.aist.six.oval.model.sc.EntityItemString;
-import jp.go.aist.six.oval.model.sc.Status;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemEVRStringType;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.v5.sc.StatusEnumeration;
 
 
 
@@ -38,13 +38,13 @@ public abstract class LinuxEvrPkgInfoItem
     extends LinuxPkgInfoItem
 {
 
-//    private EntityItemString  _release;
+//    private EntityItemStringType  _release;
 //    //{0..1}
 //
-//    private EntityItemString  _epoch;
+//    private EntityItemStringType  _epoch;
 //    //{0..1}
 //
-//    private EntityItemString  _evr;
+//    private EntityItemStringType  _evr;
 //    //{0..1}
 
 
@@ -57,9 +57,6 @@ public abstract class LinuxEvrPkgInfoItem
     }
 
 
-    /**
-     * Constructor.
-     */
     public LinuxEvrPkgInfoItem(
                     final int id
                     )
@@ -68,24 +65,18 @@ public abstract class LinuxEvrPkgInfoItem
     }
 
 
-    /**
-     * Constructor.
-     */
     public LinuxEvrPkgInfoItem(
                     final int id,
-                    final Status status
+                    final StatusEnumeration status
                     )
     {
         super( id, status );
     }
 
 
-    /**
-     * Constructor.
-     */
     public LinuxEvrPkgInfoItem(
                     final int id,
-                    final Status status,
+                    final StatusEnumeration status,
                     final String name
                     )
     {
@@ -93,13 +84,10 @@ public abstract class LinuxEvrPkgInfoItem
     }
 
 
-    /**
-     * Constructor.
-     */
     public LinuxEvrPkgInfoItem(
                     final int id,
-                    final Status status,
-                    final EntityItemString name
+                    final StatusEnumeration status,
+                    final EntityItemStringType name
                     )
     {
         super( id, status, name );
@@ -107,9 +95,6 @@ public abstract class LinuxEvrPkgInfoItem
 
 
 
-    /**
-     * Constructor.
-     */
     public LinuxEvrPkgInfoItem(
                     final int id,
                     final String arch,
@@ -124,12 +109,9 @@ public abstract class LinuxEvrPkgInfoItem
     }
 
 
-    /**
-     * Constructor.
-     */
     public LinuxEvrPkgInfoItem(
                     final int id,
-                    final Status status,
+                    final StatusEnumeration status,
                     final String arch,
                     final String name,
                     final String version,
@@ -141,31 +123,28 @@ public abstract class LinuxEvrPkgInfoItem
         super( id, status, arch, name, version );
 
         if (epoch != null) {
-            setEpoch( new EntityItemAnySimple( epoch ) );
+            setEpoch( new EntityItemAnySimpleType( epoch ) );
         }
 
         if (release != null) {
-            setRelease( new EntityItemAnySimple( release ) );
+            setRelease( new EntityItemAnySimpleType( release ) );
         }
 
         if (evr != null) {
-            setEvr( new EntityItemEVRString( evr ) );
+            setEvr( new EntityItemEVRStringType( evr ) );
         }
     }
 
 
-    /**
-     * Constructor.
-     */
     public LinuxEvrPkgInfoItem(
                     final int id,
-                    final Status status,
-                    final EntityItemString arch,
-                    final EntityItemString name,
-                    final EntityItemAnySimple version,
-                    final EntityItemAnySimple release,
-                    final EntityItemAnySimple epoch,
-                    final EntityItemEVRString evr
+                    final StatusEnumeration status,
+                    final EntityItemStringType arch,
+                    final EntityItemStringType name,
+                    final EntityItemAnySimpleType version,
+                    final EntityItemAnySimpleType release,
+                    final EntityItemAnySimpleType epoch,
+                    final EntityItemEVRStringType evr
                     )
     {
         super( id, status, arch, name, version );
@@ -177,47 +156,53 @@ public abstract class LinuxEvrPkgInfoItem
 
 
 
+    /**
+     */
     public void setRelease(
-                    final EntityItemAnySimple release
+                    final EntityItemAnySimpleType release
                     )
     {
         _properties.put( LinuxPkgProperty.RELEASE, release );
     }
 
 
-    public EntityItemAnySimple getRelease()
+    public EntityItemAnySimpleType getRelease()
     {
-        return (EntityItemAnySimple)_properties.get( LinuxPkgProperty.RELEASE );
+        return (EntityItemAnySimpleType)_properties.get( LinuxPkgProperty.RELEASE );
     }
 
 
 
+    /**
+     */
     public void setEpoch(
-                    final EntityItemAnySimple epoch
+                    final EntityItemAnySimpleType epoch
                     )
     {
         _properties.put( LinuxPkgProperty.EPOCH, epoch );
     }
 
 
-    public EntityItemAnySimple getEpoch()
+    public EntityItemAnySimpleType getEpoch()
     {
-        return (EntityItemAnySimple)_properties.get( LinuxPkgProperty.EPOCH );
+        return (EntityItemAnySimpleType)_properties.get( LinuxPkgProperty.EPOCH );
     }
 
 
 
+    /**
+     */
     public void setEvr(
-                    final EntityItemEVRString evr
+                    final EntityItemEVRStringType evr
                     )
     {
         _properties.put( LinuxPkgProperty.EVR, evr );
     }
 
 
-    public EntityItemEVRString getEvr()
+    public EntityItemEVRStringType getEvr()
     {
-        return (EntityItemEVRString)_properties.get( LinuxPkgProperty.EVR );
+        return (EntityItemEVRStringType)_properties.get( LinuxPkgProperty.EVR );
     }
 
 

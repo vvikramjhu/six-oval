@@ -18,15 +18,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
+package jp.go.aist.six.oval.model.v5.linux;
 
-import jp.go.aist.six.oval.model.sc.EntityItemAnySimple;
-import jp.go.aist.six.oval.model.sc.EntityItemBase;
-import jp.go.aist.six.oval.model.sc.EntityItemString;
-import jp.go.aist.six.oval.model.sc.Item;
-import jp.go.aist.six.oval.model.sc.Status;
 import java.util.EnumMap;
 import java.util.Map;
+import jp.go.aist.six.oval.model.v5.sc.EntityAttributeGroup;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.v5.sc.ItemType;
+import jp.go.aist.six.oval.model.v5.sc.StatusEnumeration;
 
 
 
@@ -37,19 +37,19 @@ import java.util.Map;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class LinuxPkgInfoItem
-    extends Item
+    extends ItemType
 {
 
-    protected Map<LinuxPkgProperty, EntityItemBase>  _properties =
-        new EnumMap<LinuxPkgProperty, EntityItemBase>( LinuxPkgProperty.class );
+    protected Map<LinuxPkgProperty, EntityAttributeGroup>  _properties =
+        new EnumMap<LinuxPkgProperty, EntityAttributeGroup>( LinuxPkgProperty.class );
 
-//    private EntityItemString  _name;
+//    private EntityItemStringType  _name;
 //    //{0..1}
 //
-//    private EntityItemString  _arch;
+//    private EntityItemStringType  _arch;
 //    //{0..1}
 //
-//    private EntityItemString  _version;
+//    private EntityItemVersionType  _version;
 //    //{0..1}
 
 
@@ -62,9 +62,6 @@ public abstract class LinuxPkgInfoItem
     }
 
 
-    /**
-     * Constructor.
-     */
     public LinuxPkgInfoItem(
                     final int id
                     )
@@ -73,24 +70,18 @@ public abstract class LinuxPkgInfoItem
     }
 
 
-    /**
-     * Constructor.
-     */
     public LinuxPkgInfoItem(
                     final int id,
-                    final Status status
+                    final StatusEnumeration status
                     )
     {
         super( id, status );
     }
 
 
-    /**
-     * Constructor.
-     */
     public LinuxPkgInfoItem(
                     final int id,
-                    final Status status,
+                    final StatusEnumeration status,
                     final String name
                     )
     {
@@ -98,22 +89,16 @@ public abstract class LinuxPkgInfoItem
     }
 
 
-    /**
-     * Constructor.
-     */
     public LinuxPkgInfoItem(
                     final int id,
-                    final Status status,
-                    final EntityItemString name
+                    final StatusEnumeration status,
+                    final EntityItemStringType name
                     )
     {
-        this( id, status, (EntityItemString)null, name, (EntityItemAnySimple)null );
+        this( id, status, (EntityItemStringType)null, name, (EntityItemAnySimpleType)null );
     }
 
 
-    /**
-     * Constructor.
-     */
     public LinuxPkgInfoItem(
                     final int id,
                     final String arch,
@@ -125,12 +110,9 @@ public abstract class LinuxPkgInfoItem
     }
 
 
-    /**
-     * Constructor.
-     */
     public LinuxPkgInfoItem(
                     final int id,
-                    final Status status,
+                    final StatusEnumeration status,
                     final String arch,
                     final String name,
                     final String version
@@ -139,28 +121,25 @@ public abstract class LinuxPkgInfoItem
         super( id, status );
 
         if (arch != null) {
-            setArch( new EntityItemString( arch ) );
+            setArch( new EntityItemStringType( arch ) );
         }
 
         if (name != null) {
-            setName( new EntityItemString( name ) );
+            setName( new EntityItemStringType( name ) );
         }
 
         if (version != null) {
-            setVersion( new EntityItemAnySimple( version ) );
+            setVersion( new EntityItemAnySimpleType( version ) );
         }
     }
 
 
-    /**
-     * Constructor.
-     */
     public LinuxPkgInfoItem(
                     final int id,
-                    final Status status,
-                    final EntityItemString arch,
-                    final EntityItemString name,
-                    final EntityItemAnySimple version
+                    final StatusEnumeration status,
+                    final EntityItemStringType arch,
+                    final EntityItemStringType name,
+                    final EntityItemAnySimpleType version
                     )
     {
         super( id, status );
@@ -172,17 +151,19 @@ public abstract class LinuxPkgInfoItem
 
 
 
+    /**
+     */
     public void setArch(
-                    final EntityItemString arch
+                    final EntityItemStringType arch
                     )
     {
         _properties.put( LinuxPkgProperty.ARCH, arch );
     }
 
 
-    public EntityItemString getArch()
+    public EntityItemStringType getArch()
     {
-        return (EntityItemString)_properties.get( LinuxPkgProperty.ARCH );
+        return (EntityItemStringType)_properties.get( LinuxPkgProperty.ARCH );
     }
 
 
@@ -190,31 +171,33 @@ public abstract class LinuxPkgInfoItem
     /**
      */
     public void setName(
-                    final EntityItemString name
+                    final EntityItemStringType name
                     )
     {
         _properties.put( LinuxPkgProperty.NAME, name );
     }
 
 
-    public EntityItemString getName()
+    public EntityItemStringType getName()
     {
-        return (EntityItemString)_properties.get( LinuxPkgProperty.NAME );
+        return (EntityItemStringType)_properties.get( LinuxPkgProperty.NAME );
     }
 
 
 
+    /**
+     */
     public void setVersion(
-                    final EntityItemAnySimple version
+                    final EntityItemAnySimpleType version
                     )
     {
         _properties.put( LinuxPkgProperty.VERSION, version );
     }
 
 
-    public EntityItemAnySimple getVersion()
+    public EntityItemAnySimpleType getVersion()
     {
-        return (EntityItemAnySimple)_properties.get( LinuxPkgProperty.VERSION );
+        return (EntityItemAnySimpleType)_properties.get( LinuxPkgProperty.VERSION );
     }
 
 

@@ -20,6 +20,56 @@
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
+    <class name="jp.go.aist.six.oval.model.v5.linux.LinuxPkgInfoItem"
+        extends="jp.go.aist.six.oval.model.v5.sc.ItemType"
+        verify-constructable="false">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux"
+            />
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="arch" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="arch" node="element"/>
+        </field>
+
+        <field name="version" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType">
+            <bind-xml name="version" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.linux.LinuxEvrPkgInfoItem"
+        extends="jp.go.aist.six.oval.model.v5.linux.LinuxPkgInfoItem"
+        verify-constructable="false">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux"
+            />
+
+        <field name="release" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType">
+            <bind-xml name="release" node="element"/>
+        </field>
+
+        <field name="epoch" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType">
+            <bind-xml name="epoch" node="element"/>
+        </field>
+
+        <field name="evr" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemEVRStringType">
+            <bind-xml name="evr" node="element"/>
+        </field>
+    </class>
+
+
+
     <!-- ******************************************************* -->
     <!-- DpkgInfo                                                -->
     <!-- ******************************************************* -->
@@ -93,6 +143,15 @@
             type="jp.go.aist.six.oval.model.v5.definitions.EntityStateEVRStringType">
             <bind-xml name="evr" node="element"/>
         </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.v5.linux.DpkgInfoItem"
+        extends="jp.go.aist.six.oval.model.v5.linux.LinuxEvrPkgInfoItem">
+        <map-to xml="dpkginfo_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux"
+            ns-prefix=""/>
     </class>
 
 
