@@ -1242,26 +1242,26 @@
         </field>
 
         <field name="key.content" type="string">
-            <sql name="regkey" type="char"/>
+            <sql name="key_content" type="char"/>
         </field>
 
         <field name="key.operation" 
             type="jp.go.aist.six.oval.model.v5.common.OperationEnumeration">
-            <sql name="regkey_operation" type="char"/>
+            <sql name="key_operation" type="char"/>
         </field>
 
         <field name="value.content" type="string">
-            <sql name="regvalue" type="char"/>
+            <sql name="value_content" type="char"/>
         </field>
 
         <field name="value.operation" 
             type="jp.go.aist.six.oval.model.v5.common.OperationEnumeration">
-            <sql name="regvalue_operation" type="char"/>
+            <sql name="value_operation" type="char"/>
         </field>
 
         <field name="value.datatype" 
             type="jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration">
-            <sql name="regvalue_datatype" type="char"/>
+            <sql name="value_datatype" type="char"/>
         </field>
     </class>
 

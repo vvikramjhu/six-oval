@@ -2110,13 +2110,13 @@ CREATE TABLE IF NOT EXISTS oval_d_state_registry
     PID                 VARCHAR(64)     NOT NULL,
 
     /* key :EntityStateStringType */
-    regkey              VARCHAR(255),
-    regkey_operation    VARCHAR(32),
+    key_content         VARCHAR(255),
+    key_operation       VARCHAR(32),
 
     /* value :EntityStateAnySimpleType */
-    regvalue            VARCHAR(255),
-    regvalue_operation  VARCHAR(32),
-    regvalue_datatype   VARCHAR(16),
+    value_content       VARCHAR(255),
+    value_operation     VARCHAR(32),
+    value_datatype      VARCHAR(16),
 
 
     /* (FK) */
