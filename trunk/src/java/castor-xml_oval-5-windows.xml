@@ -366,6 +366,45 @@
 
 
 
+    <class name ="jp.go.aist.six.oval.model.v5.windows.MetabaseItem"
+        extends="jp.go.aist.six.oval.model.v5.sc.ItemType">
+        <map-to xml="metabase_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""/>
+
+        <field name="key" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="key" node="element"/>
+        </field>
+
+        <field name="metabaseID" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemIntType">
+            <bind-xml name="id" node="element"/>
+        </field>
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="userType"  
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="user_type" node="element"/>
+        </field>
+
+        <field name="dataType"  
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="data_type" node="element"/>
+        </field>
+
+        <field name="data" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType"
+            collection="collection">
+            <bind-xml name="data" node="element"/>
+        </field>
+    </class>
+
+
 
     <!-- ******************************************************* -->
     <!-- registry                                                -->

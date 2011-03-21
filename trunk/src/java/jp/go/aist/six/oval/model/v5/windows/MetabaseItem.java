@@ -18,16 +18,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.v5.windows;
 
-import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.sc.EntityItemAnySimple;
-import jp.go.aist.six.oval.model.sc.EntityItemInt;
-import jp.go.aist.six.oval.model.sc.EntityItemString;
-import jp.go.aist.six.oval.model.sc.Item;
-import jp.go.aist.six.oval.model.sc.Status;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.EnumMap;
+import java.util.Iterator;
+import java.util.Map;
+import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.v5.sc.EntityAttributeGroup;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemIntType;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.v5.sc.ItemType;
 
 
 
@@ -39,25 +42,28 @@ import java.util.Collection;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class MetabaseItem
-    extends Item
+    extends ItemType
 {
 
-    private EntityItemString  _key;
-    //{0..1}
+    private final Map<MetabaseProperty, EntityAttributeGroup>  _properties =
+        new EnumMap<MetabaseProperty, EntityAttributeGroup>( MetabaseProperty.class );
 
-    private EntityItemInt  _mbID;   //renamed!!!
-    //{0..1, nillable="true"}
+//    private EntityItemString  _key;
+//    //{0..1}
+//
+//    private EntityItemInt  _mbID;   //renamed!!!
+//    //{0..1, nillable="true"}
+//
+//    private EntityItemString  _name;
+//    //{0..1}
+//
+//    private EntityItemString  _userType;
+//    //{0..1}
+//
+//    private EntityItemString  _dataType;
+//    //{0..1}
 
-    private EntityItemString  _name;
-    //{0..1}
-
-    private EntityItemString  _userType;
-    //{0..1}
-
-    private EntityItemString  _dataType;
-    //{0..1}
-
-    private Collection<EntityItemAnySimple>  _data = new ArrayList<EntityItemAnySimple>();
+    private final Collection<EntityItemAnySimpleType>  _data = new ArrayList<EntityItemAnySimpleType>();
     //{0..*}
 
 
@@ -70,9 +76,6 @@ public class MetabaseItem
     }
 
 
-    /**
-     * Constructor.
-     */
     public MetabaseItem(
                     final int id
                     )
@@ -81,105 +84,114 @@ public class MetabaseItem
     }
 
 
+
     /**
-     * Constructor.
      */
-    public MetabaseItem(
-                    final int id,
-                    final Status status
-                    )
+    public EntityItemStringType getKey()
     {
-        super( id, status );
-    }
-
-
-    public EntityItemString getKey()
-    {
-        return _key;
+        return (EntityItemStringType)_properties.get( MetabaseProperty.KEY );
     }
 
 
     public void setKey(
-                    final EntityItemString key
+                    final EntityItemStringType key
                     )
     {
-        _key = key;
+        _properties.put( MetabaseProperty.KEY, key );
     }
 
 
 
-    public EntityItemInt getMetabaseID()
+    /**
+     */
+    public EntityItemIntType getMetabaseID()
     {
-        return _mbID;
+        return (EntityItemIntType)_properties.get( MetabaseProperty.ID );
     }
 
 
     public void setMetabaseID(
-                    final EntityItemInt id
+                    final EntityItemIntType id
                     )
     {
-        _mbID = id;
+        _properties.put( MetabaseProperty.ID, id );
     }
 
 
 
-    public EntityItemString getName()
+    /**
+     */
+    public EntityItemStringType getName()
     {
-        return _name;
+        return (EntityItemStringType)_properties.get( MetabaseProperty.NAME );
     }
 
 
     public void setName(
-                    final EntityItemString name
+                    final EntityItemStringType name
                     )
     {
-        _name = name;
+        _properties.put( MetabaseProperty.NAME, name );
     }
 
 
 
-    public EntityItemString getUserType()
+    public EntityItemStringType getUserType()
     {
-        return _userType;
+        return (EntityItemStringType)_properties.get( MetabaseProperty.USER_TYPE );
     }
 
 
     public void setUserType(
-                    final EntityItemString type
+                    final EntityItemStringType type
                     )
     {
-        _userType = type;
+        _properties.put( MetabaseProperty.USER_TYPE, type );
     }
 
 
 
-    public EntityItemString getDataType()
+    /**
+     */
+    public EntityItemStringType getDataType()
     {
-        return _dataType;
+        return (EntityItemStringType)_properties.get( MetabaseProperty.DATA_TYPE );
     }
 
 
     public void setDataType(
-                    final EntityItemString type
+                    final EntityItemStringType type
                     )
     {
-        _dataType = type;
+        _properties.put( MetabaseProperty.DATA_TYPE, type );
     }
 
 
 
+    /**
+     */
     public void setData(
-                    final Collection<? extends EntityItemAnySimple> data
+                    final Collection<? extends EntityItemAnySimpleType> dataSequence
                     )
     {
-        _data.clear();
-        _data.addAll( data );
+        if (dataSequence != _data) {
+            _data.clear();
+            if (dataSequence != null  &&  dataSequence.size() > 0) {
+                _data.addAll( dataSequence );
+            }
+        }
     }
 
 
-    public Collection<EntityItemAnySimple> getData()
+    public Collection<EntityItemAnySimpleType> getData()
     {
         return _data;
+    }
+
+
+    public Iterator<EntityItemAnySimpleType> iterateData()
+    {
+        return _data.iterator();
     }
 
 
@@ -205,7 +217,7 @@ public class MetabaseItem
     {
         return "mtabase_item[" + super.toString()
                         + ", key=" + getKey()
-                        + ", mb_id=" + getMetabaseID()
+                        + ", id=" + getMetabaseID()
                         + ", name=" + getName()
                         + ", user_type=" + getUserType()
                         + ", data_type=" + getDataType()
