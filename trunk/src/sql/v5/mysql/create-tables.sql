@@ -1216,8 +1216,9 @@ CHARACTER SET utf8;
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 /* ============================================================== */
-/* FamilyTest                                                     */
+/* family                                                         */
 /* ============================================================== */
+
 CREATE TABLE IF NOT EXISTS oval_d_test_family
 (
     PID                 VARCHAR(64)     NOT NULL,
@@ -1232,9 +1233,6 @@ CHARACTER SET utf8;
 
 
 
-/* ============================================================== */
-/* FamilyObject                                                   */
-/* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_object_family
 (
     PID                 VARCHAR(64)     NOT NULL,
@@ -1249,9 +1247,6 @@ CHARACTER SET utf8;
 
 
 
-/* ============================================================== */
-/* FamilyState                                                    */
-/* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_state_family
 (
     PID                 VARCHAR(64)     NOT NULL,
@@ -1270,9 +1265,6 @@ CHARACTER SET utf8;
 
 
 
-/* ============================================================== */
-/* FamilyItem                                                     */
-/* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_s_item_family
 (
     PID                 INT             NOT NULL,
@@ -1292,8 +1284,9 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
-/* TextFileContent54Test                                          */
+/* textfilecontent54                                              */
 /* ============================================================== */
+
 CREATE TABLE IF NOT EXISTS oval_d_test_textfilecontent54
 (
     PID                 VARCHAR(64)     NOT NULL,
@@ -1308,9 +1301,6 @@ CHARACTER SET utf8;
 
 
 
-/* ============================================================== */
-/* TextFileContent54Object                                        */
-/* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_object_textfilecontent54
 (
     PID                 VARCHAR(64)     NOT NULL,
@@ -1324,27 +1314,27 @@ CREATE TABLE IF NOT EXISTS oval_d_object_textfilecontent54
     behaviors_multiline             BOOLEAN,
     behaviors_singleline            BOOLEAN,
 
-    /* filepath :EntityObjectString {datdatype=string} */
-    filepath            VARCHAR(255),
+    /* filepath :EntityObjectStringType */
+    filepath_content    VARCHAR(255),
     filepath_operation  VARCHAR(32),
     filepath_var_ref    VARCHAR(64),
     filepath_var_check  VARCHAR(16),
 
-    /* path :EntityObjectString {datdatype=string} */
-    path                VARCHAR(255),
+    /* path :EntityObjectStringType */
+    path_content        VARCHAR(255),
     path_operation      VARCHAR(32),
     path_var_ref        VARCHAR(64),
     path_var_check      VARCHAR(16),
 
-    /* filename :EntityObjectString {datdatype=string} */
-    filename            VARCHAR(255),
+    /* filename :EntityObjectStringType */
+    filename_content    VARCHAR(255),
 
-    /* pattern :EntityObjectString {datdatype=string} */
-    pattern             VARCHAR(255),
+    /* pattern :EntityObjectStringType */
+    pattern_content     VARCHAR(255),
     pattern_operation   VARCHAR(32),
 
-    /* instance :EntityObjectString {datdatype=int} */
-    instance            VARCHAR(8),
+    /* instance :EntityObjectIntType */
+    instance_content    VARCHAR(8),
 
     /* (PK) */
     PRIMARY KEY (PID)
@@ -1356,19 +1346,16 @@ CHARACTER SET utf8;
 
 
 
-/* ============================================================== */
-/* TextFileContent54State                                         */
-/* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_state_textfilecontent54
 (
     PID                 VARCHAR(64)     NOT NULL,
 
-    /* pattern :EntityStateString {datdatype=string} */
-    pattern             VARCHAR(255),
+    /* pattern :EntityStateStringType */
+    pattern_content     VARCHAR(255),
     pattern_operation   VARCHAR(32),
 
-    /* text :EntityStateString {datdatype=string} */
-    text                VARCHAR(255),
+    /* text :EntityStateAnySimpleType */
+    text_content        VARCHAR(255),
     text_operation      VARCHAR(32),
 
     /* (PK) */
@@ -1382,8 +1369,9 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
-/* TextFileContentTest                                            */
+/* textfilecontent                                                */
 /* ============================================================== */
+
 CREATE TABLE IF NOT EXISTS oval_d_test_textfilecontent
 (
     PID                 VARCHAR(64)     NOT NULL,
@@ -1507,8 +1495,9 @@ CHARACTER SET utf8;
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 /* ============================================================== */
-/* DpkgInfoTest                                                   */
+/* dpkginfo                                                       */
 /* ============================================================== */
+
 CREATE TABLE IF NOT EXISTS oval_d_test_dpkginfo
 (
     PID                 VARCHAR(64)     NOT NULL,
@@ -1523,9 +1512,99 @@ CHARACTER SET utf8;
 
 
 
+CREATE TABLE IF NOT EXISTS oval_d_object_dpkginfo
+(
+    PID                 VARCHAR(64)     NOT NULL,
+
+    /* EntityObjectStringType */
+    name_content        VARCHAR(64)     NOT NULL,
+
+    /* (PK) */
+    PRIMARY KEY (PID),
+
+    /* INDEX */
+    INDEX (name_content)
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+CREATE TABLE IF NOT EXISTS oval_d_state_dpkginfo
+(
+    PID                 VARCHAR(64)     NOT NULL,
+
+    /* name: EntityStateStringType */
+    name_content        VARCHAR(64),
+
+    /* arch: EntityStateStringType */
+    arch_content        VARCHAR(16),
+
+    /* epoch :EntityStateAnySimpleType */
+    epoch_content       VARCHAR(32),
+    epoch_datatype      VARCHAR(16),
+
+    /* release :EntityStateAnySimpleType */
+    release_content     VARCHAR(64),
+    release_datatype    VARCHAR(16),
+    
+    /* version :EntityStateAnySimpleType */
+    version_content     VARCHAR(64),
+    version_operation   VARCHAR(32),
+
+    /* evr :EntityStateEVRStringType */
+    evr_content         VARCHAR(128),
+    evr_operation       VARCHAR(32),
+
+    /* (FK) */
+    
+    /* (PK) */
+    PRIMARY KEY (PID)
+
+    /* INDEX */
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
+CREATE TABLE IF NOT EXISTS oval_s_item_dpkginfo
+(
+    PID                 INT             NOT NULL,
+
+    /* name: EntityItemStringType */
+    name_content        VARCHAR(64),
+
+    /* arch: EntityItemStringType */
+    arch_content        VARCHAR(16),
+
+    /* epoch: EntityItemAnySimpleType */
+    epoch_content       VARCHAR(32),
+
+    /* release: EntityItemAnySimpleType */
+    release_content     VARCHAR(64),
+
+    /* version: EntityItemAnySimpleType */
+    version_content     VARCHAR(64),
+
+    /* evr: EntityItemEVRStringType */
+    evr_content         VARCHAR(128),
+
+    /* (PK) */
+    PRIMARY KEY (PID),
+
+    /* INDEX */
+    INDEX (name_content)
+)
+ENGINE=InnoDB
+CHARACTER SET utf8;
+
+
+
 /* ============================================================== */
-/* RpmInfoTest                                                    */
+/* rpminfo                                                        */
 /* ============================================================== */
+
 CREATE TABLE IF NOT EXISTS oval_d_test_rpminfo
 (
     PID                 VARCHAR(64)     NOT NULL,
@@ -1540,29 +1619,6 @@ CHARACTER SET utf8;
 
 
 
-/* ============================================================== */
-/* DpkgInfoObject                                                 */
-/* ============================================================== */
-CREATE TABLE IF NOT EXISTS oval_d_object_dpkginfo
-(
-    PID                 VARCHAR(64)     NOT NULL,
-
-    name                VARCHAR(64)     NOT NULL,
-
-    /* (PK) */
-    PRIMARY KEY (PID),
-
-    /* INDEX */
-    INDEX (name)
-)
-ENGINE=InnoDB
-CHARACTER SET utf8;
-
-
-
-/* ============================================================== */
-/* RpmInfoObject                                                  */
-/* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_object_rpminfo
 (
     PID                 VARCHAR(64)     NOT NULL,
@@ -1580,48 +1636,6 @@ CHARACTER SET utf8;
 
 
 
-/* ============================================================== */
-/* DpkgInfoState                                                  */
-/* ============================================================== */
-CREATE TABLE IF NOT EXISTS oval_d_state_dpkginfo
-(
-    PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:ste:419:1 */
-
-    name                VARCHAR(64),
-
-    /* evr :EntityStateEVRString {datdatype=evr_string} */
-    evr                 VARCHAR(128),
-    evr_operation       VARCHAR(32),
-
-    arch                VARCHAR(16),
-
-    /* epoch :EntityStateAnySimple */
-    epoch               VARCHAR(32),
-
-    /* release :EntityStateAnySimple */
-    release1            VARCHAR(64),
-        /* 'release' is a reserved word in MySQL. */
-    
-    /* release :EntityStateAnySimple */
-    version             VARCHAR(64),
-    version_operation   VARCHAR(32),
-
-    /* (FK) */
-    
-    /* (PK) */
-    PRIMARY KEY (PID)
-
-    /* INDEX */
-)
-ENGINE=InnoDB
-CHARACTER SET utf8;
-
-
-
-/* ============================================================== */
-/* RpmInfoState                                                   */
-/* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_state_rpminfo
 (
     PID                 VARCHAR(64)     NOT NULL,
@@ -1652,32 +1666,6 @@ CREATE TABLE IF NOT EXISTS oval_d_state_rpminfo
     PRIMARY KEY (PID)
 
     /* INDEX */
-)
-ENGINE=InnoDB
-CHARACTER SET utf8;
-
-
-
-/* ============================================================== */
-/* DpkgInfoItem                                                   */
-/* ============================================================== */
-CREATE TABLE IF NOT EXISTS oval_s_item_dpkginfo
-(
-    PID                 INT             NOT NULL,
-
-    name                VARCHAR(64),
-    arch                VARCHAR(16),
-    epoch               VARCHAR(32),
-    release1            VARCHAR(64),
-    /* 'release' is a reserved word in MySQL. */
-    version             VARCHAR(64),
-    evr                 VARCHAR(128),
-
-    /* (PK) */
-    PRIMARY KEY (PID),
-
-    /* INDEX */
-    INDEX (name)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;
@@ -1718,12 +1706,12 @@ CHARACTER SET utf8;
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 /* ============================================================== */
-/* UnameTest                                                      */
+/* uname                                                          */
 /* ============================================================== */
+
 CREATE TABLE IF NOT EXISTS oval_d_test_uname
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
 
     /* (FK) */
 
@@ -1737,13 +1725,9 @@ CHARACTER SET utf8;
 
 
 
-/* ============================================================== */
-/* UnameObject                                                    */
-/* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_object_uname
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:obj:419:1 */
 
     /* (PK) */
     PRIMARY KEY (PID)
@@ -1755,21 +1739,16 @@ CHARACTER SET utf8;
 
 
 
-/* ============================================================== */
-/* UnameState                                                     */
-/* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_state_uname
 (
     PID                 VARCHAR(64)     NOT NULL,
 
-    machine_class       VARCHAR(16),
-    node_name           VARCHAR(64),
-
-    os_name             VARCHAR(32),
-    os_release          VARCHAR(64),
-    os_version          VARCHAR(64),
-
-    processor_type      VARCHAR(16),
+    machine_class_content   VARCHAR(16),
+    node_name_content       VARCHAR(64),
+    os_name_content         VARCHAR(32),
+    os_release_content      VARCHAR(64),
+    os_version_content      VARCHAR(64),
+    processor_type_content  VARCHAR(16),
 
     /* (FK) */
     
@@ -1783,21 +1762,18 @@ CHARACTER SET utf8;
 
 
 
-/* ============================================================== */
-/* UnameItem                                                      */
-/* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_s_item_uname
 (
     PID                 INT             NOT NULL,
 
-    machine_class       VARCHAR(16),
-                        /* e.g. i686 */
-    node_name           VARCHAR(64),
-    os_name             VARCHAR(64),
-    os_release          VARCHAR(64),
-    os_version          VARCHAR(64),
-    processor_type      VARCHAR(16),
-                        /* e.g. i686 */
+    machine_class_content   VARCHAR(16),
+                            /* e.g. i686 */
+    node_name_content   VARCHAR(64),
+    os_name_content     VARCHAR(64),
+    os_release_content  VARCHAR(64),
+    os_version_content  VARCHAR(64),
+    processor_type_content  VARCHAR(16),
+                            /* e.g. i686 */
 
     /* (PK) */
     PRIMARY KEY (PID)

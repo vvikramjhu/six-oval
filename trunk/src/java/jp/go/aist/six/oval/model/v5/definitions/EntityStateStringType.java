@@ -50,14 +50,14 @@ public class EntityStateStringType
     }
 
 
-//    public EntityStateStringType(
-//                    final String data
-//                    )
-//    {
-//        this( data, DEFAULT_OPERATION );
-//    }
-//
-//
+    public EntityStateStringType(
+                    final String content
+                    )
+    {
+        super( content );
+    }
+
+
 //    public EntityStateStringType(
 //                    final String data,
 //                    final Operation operation
@@ -96,6 +96,7 @@ public class EntityStateStringType
     }
 
 
+    //{optional}
 //    @Override
 //    public DatatypeEnumeration getDatatype()
 //    {

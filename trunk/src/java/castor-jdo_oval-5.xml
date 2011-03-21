@@ -644,7 +644,7 @@
 
 
         <field name="filepath.content" type="string">
-            <sql name="filepath" type="char"/>
+            <sql name="filepath_content" type="char"/>
         </field>
 
         <field name="filepath.operation" 
@@ -662,7 +662,7 @@
         </field>
 
         <field name="path.content" type="string">
-            <sql name="path" type="char"/>
+            <sql name="path_content" type="char"/>
         </field>
 
         <field name="path.operation" 
@@ -680,11 +680,11 @@
         </field>
 
         <field name="filename.content" type="string">
-            <sql name="filename" type="char"/>
+            <sql name="filename_content" type="char"/>
         </field>
 
         <field name="pattern.content" type="string">
-            <sql name="pattern" type="char"/>
+            <sql name="pattern_content" type="char"/>
         </field>
 
         <field name="pattern.operation" 
@@ -704,7 +704,7 @@
 -->
 
         <field name="instance.content" type="string">
-            <sql name="instance" type="char"/>
+            <sql name="instance_content" type="char"/>
         </field>
     </class>
 
@@ -721,7 +721,7 @@
         </field>
 
         <field name="text.content" type="string">
-            <sql name="text" type="char"/>
+            <sql name="text_content" type="char"/>
         </field>
 
         <field name="text.operation" 
@@ -767,6 +767,10 @@
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     
+    <!-- ******************************************************* -->
+    <!-- dpkginfo                                                -->
+    <!-- ******************************************************* -->
+
     <class name="jp.go.aist.six.oval.model.v5.linux.DpkgInfoTest"
         extends="jp.go.aist.six.oval.model.v5.definitions.TestType"
         identity="persistentID">
@@ -792,7 +796,7 @@
         </field>
 
         <field name="name.content" type="string">
-            <sql name="name" type="char"/>
+            <sql name="name_content" type="char"/>
         </field>
     </class>
 
@@ -809,7 +813,7 @@
         </field>
 
         <field name="evr.content" type="string">
-            <sql name="evr" type="char"/>
+            <sql name="evr_content" type="char"/>
         </field>
 
         <field name="evr.operation" 
@@ -821,7 +825,7 @@
 
 
     <!-- ******************************************************* -->
-    <!-- rpmInfo                                                 -->
+    <!-- rpminfo                                                 -->
     <!-- ******************************************************* -->
 
     <class name="jp.go.aist.six.oval.model.v5.linux.RpmInfoTest"
@@ -901,6 +905,10 @@
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
+    <!-- ******************************************************* -->
+    <!-- uname                                                   -->
+    <!-- ******************************************************* -->
+
     <class name="jp.go.aist.six.oval.model.v5.unix.UnameTest"
         extends="jp.go.aist.six.oval.model.v5.definitions.TestType"
         identity="persistentID">
@@ -939,27 +947,27 @@
         </field>
 
         <field name="machineClass.content" type="string">
-            <sql name="machine_class" type="char"/>
+            <sql name="machine_class_content" type="char"/>
         </field>
 
         <field name="nodeName.content" type="string">
-            <sql name="node_name" type="char"/>
+            <sql name="node_name_content" type="char"/>
         </field>
 
         <field name="osName.content" type="string">
-            <sql name="os_name" type="char"/>
+            <sql name="os_name_content" type="char"/>
         </field>
 
         <field name="osRelease.content" type="string">
-            <sql name="os_release" type="char"/>
+            <sql name="os_release_content" type="char"/>
         </field>
 
         <field name="osVersion.content" type="string">
-            <sql name="os_version" type="char"/>
+            <sql name="os_version_content" type="char"/>
         </field>
 
         <field name="processorType.content" type="string">
-            <sql name="processor_type" type="char"/>
+            <sql name="processor_type_content" type="char"/>
         </field>
     </class>
 

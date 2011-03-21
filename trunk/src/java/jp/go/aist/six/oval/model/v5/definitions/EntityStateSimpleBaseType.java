@@ -50,12 +50,12 @@ public abstract class EntityStateSimpleBaseType
     }
 
 
-//    public EntityStateSimpleBaseType(
-//                    final String data
-//                    )
-//    {
-//        super( data );
-//    }
+    public EntityStateSimpleBaseType(
+                    final String content
+                    )
+    {
+        super( content );
+    }
 
 
 
@@ -111,6 +111,12 @@ public abstract class EntityStateSimpleBaseType
             EntityStateSimpleBaseType  other = (EntityStateSimpleBaseType)obj;
             CheckEnumeration  other_e_check = other.getEntityCheck();
             CheckEnumeration   this_e_check =  this.getEntityCheck();
+            if (this_e_check == null) {
+                this_e_check = DEFAULT_ENTITY_CHECK;
+            }
+            if (other_e_check == null) {
+                other_e_check = DEFAULT_ENTITY_CHECK;
+            }
             if (this_e_check == other_e_check) {
                     return true;
             }

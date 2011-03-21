@@ -656,23 +656,23 @@ public abstract class CoreTestBase
 //                            "marshalled_20110308_oval-vulnerability_microsoft.windows.server.2008.xml"
 //                        }
 
-                        // windows, vulnerability, def:7222, CVE-2010-0176
-                        {
-                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                            "test/data/oval-definitions-5/oval_vulnerability_windows_def7222_definitions-5.xml",
-                            "/oval_definitions",
-                            null, //DefinitionsSample.OVAL_DEFINITIONS_8050,
-                            "marshalled_oval_vulnerability_windows_def7222_definitions-5.xml"
-                        }
-//                        ,
-//                        // Debian @Mitre, CVE-2010-0176, DSA-2027
+//                        // windows, vulnerability, def:7222, CVE-2010-0176
 //                        {
 //                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-//                            "test/data/oval-definitions-5/oval-definitions_CVE-2010-0176_def7432_debian.xml",
+//                            "test/data/oval-definitions-5/oval_vulnerability_windows_def7222_definitions-5.xml",
 //                            "/oval_definitions",
-//                            null,
-//                            "marshalled_oval-definitions_CVE-2010-0176_def7432_debian.xml"
+//                            null, //DefinitionsSample.OVAL_DEFINITIONS_8050,
+//                            "marshalled_oval_vulnerability_windows_def7222_definitions-5.xml"
 //                        }
+//                        ,
+                        // debian, patch, def:7432, CVE-2010-0176, DSA-2027
+                        {
+                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+                            "test/data/oval-definitions-5/oval_patch_debian_def7432_definitions-5.xml",
+                            "/oval_definitions",
+                            null,
+                            "marshalled_oval_patch_debian_def7432_definitions-5.xml"
+                        }
 //                        ,
 //                        // windows, CVE-2003-0353, def:962, deprecated
 //                        {

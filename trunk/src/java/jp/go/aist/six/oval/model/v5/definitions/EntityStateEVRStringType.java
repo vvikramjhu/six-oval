@@ -42,6 +42,7 @@ public class EntityStateEVRStringType
 {
 
     public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.EVR_STRING;
+    //{optional, fixed="evr_string"}
 
 
 
@@ -53,14 +54,14 @@ public class EntityStateEVRStringType
     }
 
 
-//    public EntityStateEVRString(
-//                    final String data
-//                    )
-//    {
-//        this( data, DEFAULT_OPERATION );
-//    }
-//
-//
+    public EntityStateEVRStringType(
+                    final String content
+                    )
+    {
+        super( content );
+    }
+
+
 //    public EntityStateEVRString(
 //                    final String data,
 //                    final OperationEnumeration operation
@@ -98,11 +99,12 @@ public class EntityStateEVRStringType
     }
 
 
-    @Override
-    public DatatypeEnumeration getDatatype()
-    {
-        return FIXED_DATATYPE;
-    }
+    //{optional}
+//    @Override
+//    public DatatypeEnumeration getDatatype()
+//    {
+//        return FIXED_DATATYPE;
+//    }
 
 
 

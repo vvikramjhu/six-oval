@@ -97,6 +97,7 @@ public class EntityItemEVRStringType
     }
 
 
+    //{required}
     @Override
     public DatatypeEnumeration getDatatype()
     {

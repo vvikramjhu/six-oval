@@ -38,6 +38,7 @@ public class EntityObjectStringType
 {
 
     public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.STRING;
+    //{optional, fixed="string"}
 
 
 
@@ -50,10 +51,10 @@ public class EntityObjectStringType
 
 
     public EntityObjectStringType(
-                    final String data
+                    final String content
                     )
     {
-        super( data );
+        super( content );
     }
 //
 //
@@ -103,6 +104,7 @@ public class EntityObjectStringType
     }
 
 
+    //{optional}
 //    @Override
 //    public DatatypeEnumeration getDatatype()
 //    {
