@@ -50,14 +50,14 @@ public class EntityStateVersionType
     }
 
 
-//    public EntityStateVersionType(
-//                    final String data
-//                    )
-//    {
-//        this( data, DEFAULT_OPERATION );
-//    }
-//
-//
+    public EntityStateVersionType(
+                    final String content
+                    )
+    {
+        super( content );
+    }
+
+
 //    public EntityStateVersionType(
 //                    final String data,
 //                    final OperationEnumeration operation
@@ -95,6 +95,7 @@ public class EntityStateVersionType
     }
 
 
+    //{required}
     @Override
     public DatatypeEnumeration getDatatype()
     {

@@ -48,6 +48,14 @@ public class EntityStateFamilyType
     }
 
 
+    public EntityStateFamilyType(
+                    final String content
+                    )
+    {
+        super( content );
+    }
+
+
 
     //**************************************************************
     //  EntityBaseType

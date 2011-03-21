@@ -78,6 +78,9 @@ use @six.db.database@;
 -- * windows:FileType:
 --      filetype            VARCHAR(24),
 --                          /* max. length = 24, 'FILE_ATTRIBUTE_DIRECTORY' */
+-- * windows:RegistryHiveEnumeration:
+--      hive                VARCHAR(20),
+--                          /* max. length = 19, 'HKEY_CURRENT_CONFIG' */
 
 
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
@@ -1251,8 +1254,8 @@ CREATE TABLE IF NOT EXISTS oval_d_state_family
 (
     PID                 VARCHAR(64)     NOT NULL,
 
-    /* family :EntityStateFamily {datdatype=string} */
-    family              VARCHAR(16),
+    /* family :EntityStateFamilyType */
+    family_content      VARCHAR(16),
     family_operation    VARCHAR(32),
 
     /* (PK) */
@@ -1269,14 +1272,13 @@ CREATE TABLE IF NOT EXISTS oval_s_item_family
 (
     PID                 INT             NOT NULL,
 
-    family              VARCHAR(16)     NOT NULL,
+    family_content      VARCHAR(16)     NOT NULL,
                         /* ENUM( 'ios', 'unix', 'windows', ...) */
 
     /* (PK) */
-    PRIMARY KEY (PID),
+    PRIMARY KEY (PID)
 
     /* INDEX */
-    INDEX (family)
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;
@@ -1792,16 +1794,12 @@ CHARACTER SET utf8;
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 /* ============================================================== */
-/* FileTest                                                       */
+/* file                                                           */
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_test_file
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
 
-/*    object__id          VARCHAR(64)     NOT NULL, */
-/*    state__id           VARCHAR(64), */
-    
     /* (FK) */
 
     /* (PK) */
@@ -1814,54 +1812,29 @@ CHARACTER SET utf8;
 
 
 
-/* ============================================================== */
-/* Test - StateRef association                                    */
-/* ============================================================== */
---CREATE TABLE IF NOT EXISTS oval_assoc__d_test__d_state_ref
---(
---    PID                 INT             NOT NULL    AUTO_INCREMENT,
---
---    test__PID           VARCHAR(64)     NOT NULL,
---    state_ref__PID      VARCHAR(64)     NOT NULL,
---
---    /* (PK) */
---    PRIMARY KEY (PID),
---    
---    /* INDEX */
---    UNIQUE (test__PID, state_ref__PID)
---)
---ENGINE=InnoDB
---CHARACTER SET utf8;
-
-
-
-/* ============================================================== */
-/* FileObject                                                     */
-/* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_object_file
 (
     PID                 VARCHAR(64)     NOT NULL,
 
+    /* TODO: behaviors, filter */
+
     /* XSD: choice( filepath, sequence(path, filename) ) */
     /* Therefore, 'NOT NULL' can't be specified. */
     
-    /* filepath :EntityObjectString {datdatype=string} */
-    filepath            VARCHAR(255),
+    /* filepath :EntityObjectStringType */
+    filepath_content    VARCHAR(255),
     filepath_operation  VARCHAR(32),
     filepath_var_ref    VARCHAR(64),
     filepath_var_check  VARCHAR(16),
 
-    /* path :EntityObjectString {datdatype=string} */
-    path                VARCHAR(255),
+    /* path :EntityObjectStringType */
+    path_content        VARCHAR(255),
     path_operation      VARCHAR(32),
     path_var_ref        VARCHAR(64),
     path_var_check      VARCHAR(16),
 
-    /* filename :EntityObjectString {datdatype=string} */
-    filename            VARCHAR(255),
-
-
-    /* behaviors */
+    /* filename :EntityObjectStringType */
+    filename_content    VARCHAR(255),
 
     /* (PK) */
     PRIMARY KEY (PID)
@@ -1873,19 +1846,16 @@ CHARACTER SET utf8;
 
 
 
-/* ============================================================== */
-/* FileState                                                      */
-/* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_state_file
 (
     PID                 VARCHAR(64)     NOT NULL,
 
-    /* version :EntityStateVersion {datdatype=version} */
-    version             VARCHAR(64),
+    /* version :EntityStateVersionType */
+    version_content     VARCHAR(64),
     version_operation   VARCHAR(32),
 
-    /* version :EntityStateVersion {datdatype=version} */
-    product_version             VARCHAR(64),
+    /* product_version :EntityStateVersionType */
+    product_version_content     VARCHAR(64),
     product_version_operation   VARCHAR(32),
 
     /* (FK) */
@@ -2029,8 +1999,9 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
-/* RegistryTest                                                   */
+/* registry                                                       */
 /* ============================================================== */
+
 CREATE TABLE IF NOT EXISTS oval_d_test_registry
 (
     PID                 VARCHAR(64)     NOT NULL,
@@ -2047,26 +2018,24 @@ CHARACTER SET utf8;
 
 
 
-/* ============================================================== */
-/* RegistryObject                                                 */
-/* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_object_registry
 (
     PID                 VARCHAR(64)     NOT NULL,
 
-    hive                VARCHAR(24)     NOT NULL,
-                        /* enum('HKEY_CLASSES_ROOT', 'HKEY_CURRENT_CONFIG',...) */
+    /* TODO: behaviors, filter */
 
-    /* behaviors */
+    /* hive :EntityObjectRegistryHiveType */
+    hive_content        VARCHAR(20),
+                        /* RegistryHiveEnumeration */
 
-    /* key :EntityObjectStringType {datdatype=string} */
-    regkey              VARCHAR(255),
-    regkey_operation    VARCHAR(32),
-    regkey_var_ref      VARCHAR(64),
-    regkey_var_check    VARCHAR(16),
+    /* key :EntityObjectStringType */
+    key_content         VARCHAR(255),
+    key_operation       VARCHAR(32),
+    key_var_ref         VARCHAR(64),
+    key_var_check       VARCHAR(16),
 
-    /* name :EntityObjectStringType {datdatype=string} */
-    name                VARCHAR(255),
+    /* name :EntityObjectStringType */
+    name_content        VARCHAR(255),
 
     /* (PK) */
     PRIMARY KEY (PID)
@@ -2078,12 +2047,11 @@ CHARACTER SET utf8;
 
 
 
-/* ============================================================== */
-/* RegistryState                                                  */
-/* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_state_registry
 (
     PID                 VARCHAR(64)     NOT NULL,
+    
+    /* TODO: hive, name, type */
 
     /* key :EntityStateStringType */
     key_content         VARCHAR(255),
@@ -2133,12 +2101,11 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
-/* WmiTest                                                        */
+/* wmi                                                            */
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_test_wmi
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:tst:419:1 */
 
     /* (FK) */
 
@@ -2152,21 +2119,18 @@ CHARACTER SET utf8;
 
 
 
-/* ============================================================== */
-/* WmiObject                                                      */
-/* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_object_wmi
 (
     PID                 VARCHAR(64)     NOT NULL,
 
-    /* namespace :EntityObjectString {datdatype=string} */
-    namespace           VARCHAR(255),
+    /* namespace :EntityObjectStringType */
+    namespace_content   VARCHAR(255),
     namespace_operation VARCHAR(32),
     namespace_var_ref   VARCHAR(64),
     namespace_var_check VARCHAR(16),
 
-    /* wql :EntityObjectString {datdatype=string} */
-    wql                 VARCHAR(255),
+    /* wql :EntityObjectStringType */
+    wql_content         VARCHAR(255),
     wql_operation       VARCHAR(32),
     wql_var_ref         VARCHAR(64),
     wql_var_check       VARCHAR(16),
@@ -2181,23 +2145,21 @@ CHARACTER SET utf8;
 
 
 
-/* ============================================================== */
-/* WmiState                                                       */
-/* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_state_wmi
 (
     PID                 VARCHAR(64)     NOT NULL,
-                        /* id + version, e.g. oval:org.mitre.oval:ste:419:1 */
 
-    namespace           VARCHAR(64),
-    namespace_datatype  VARCHAR(16)     DEFAULT 'string',
-    namespace_operation VARCHAR(32)     DEFAULT 'equals',
-                        /* enum('equals', ..., 'case insensitive not equal', ...) */
+    /* namespace :EntityStateStringType */
+    namespace_content   VARCHAR(64),
+    namespace_datatype  VARCHAR(16),
+    namespace_operation VARCHAR(32),
 
-    wql                 VARCHAR(255),
+    /* wql :EntityStateStringType */
+    wql_content         VARCHAR(255),
 
-    result              VARCHAR(255),
-    result_operation    VARCHAR(32)     DEFAULT 'equals',
+    /* wql :EntityStateAnySimpleType */
+    result_content      VARCHAR(255),
+    result_operation    VARCHAR(32),
 
     /* (FK) */
     

@@ -49,13 +49,13 @@ public class WmiState
 
 
 
-//    private EntityStateString  _namespace;
+//    private EntityStateStringType  _namespace;
 //    //{0..1}
 //
-//    private EntityStateString  _wql;
+//    private EntityStateStringType  _wql;
 //    //{0..1}
 //
-//    private EntityStateAnySimple  _result;
+//    private EntityStateAnySimpleType  _result;
 //    //{0..1}
 
 

@@ -542,7 +542,7 @@
     <class name="jp.go.aist.six.oval.model.v5.independent.FamilyTest"
         extends="jp.go.aist.six.oval.model.v5.definitions.TestType"
         identity="persistentID">
-        
+
         <cache-type type="unlimited"/>
         <map-to table="oval_d_test_family"/>
 
@@ -556,7 +556,7 @@
     <class name="jp.go.aist.six.oval.model.v5.independent.FamilyObject"
         extends="jp.go.aist.six.oval.model.v5.definitions.SystemObjectType"
         identity="persistentID">
-        
+
         <map-to table="oval_d_object_family"/>
 
         <field name="persistentID" type="string">
@@ -569,7 +569,7 @@
     <class name="jp.go.aist.six.oval.model.v5.independent.FamilyState"
         extends="jp.go.aist.six.oval.model.v5.definitions.StateType"
         identity="persistentID">
-        
+
         <map-to table="oval_d_state_family"/>
 
         <field name="persistentID" type="string">
@@ -577,12 +577,30 @@
         </field>
 
         <field name="family.content" type="string">
-            <sql name="family" type="char"/>
+            <sql name="family_content" type="char"/>
         </field>
 
         <field name="family.operation" 
             type="jp.go.aist.six.oval.model.v5.common.OperationEnumeration">
             <sql name="family_operation" type="char"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.independent.FamilyItem"
+        extends="jp.go.aist.six.oval.model.v5.sc.ItemType"
+        identity="persistentID">
+
+        <!-- cache-type type="unlimited"/ -->
+        <map-to table="oval_s_item_family"/>
+
+        <field name="persistentID" type="string">
+            <sql name="PID" type="integer"/>
+        </field>
+
+        <field name="family.content" type="string">
+            <sql name="family_content" type="char"/>
         </field>
     </class>
 
@@ -1003,12 +1021,14 @@
         
         <map-to table="oval_d_object_file"/>
 
+        <!-- TODO: behaviors, filter -->
+
         <field name="persistentID" type="string">
             <sql name="PID" type="char"/>
         </field>
 
         <field name="filepath.content" type="string">
-            <sql name="filepath" type="char"/>
+            <sql name="filepath_content" type="char"/>
         </field>
 
         <field name="filepath.operation" 
@@ -1025,9 +1045,8 @@
             <sql name="filepath_var_check" type="char"/>
         </field>
 
-        <!-- path -->
         <field name="path.content" type="string">
-            <sql name="path" type="char"/>
+            <sql name="path_content" type="char"/>
         </field>
 
         <field name="path.operation" 
@@ -1044,12 +1063,9 @@
             <sql name="path_var_check" type="char"/>
         </field>
 
-        <!-- filename -->
         <field name="filename.content" type="string">
-            <sql name="filename" type="char"/>
+            <sql name="filename_content" type="char"/>
         </field>
-
-        <!-- behaviors -->
     </class>
 
 
@@ -1057,7 +1073,7 @@
     <class name="jp.go.aist.six.oval.model.v5.windows.FileState"
         extends="jp.go.aist.six.oval.model.v5.definitions.StateType"
         identity="persistentID">
-        
+
         <map-to table="oval_d_state_file"/>
 
         <field name="persistentID" type="string">
@@ -1065,7 +1081,7 @@
         </field>
 
         <field name="version.content" type="string">
-            <sql name="version" type="char"/>
+            <sql name="version_content" type="char"/>
         </field>
 
         <field name="version.operation" 
@@ -1074,7 +1090,7 @@
         </field>
 
         <field name="productVersion.content" type="string">
-            <sql name="product_version" type="char"/>
+            <sql name="product_version_content" type="char"/>
         </field>
 
         <field name="productVersion.operation" 
@@ -1211,29 +1227,29 @@
         <!-- behaviros -->
 
         <field name="hive.content" type="string">
-            <sql name="hive" type="char"/>
+            <sql name="hive_content" type="char"/>
         </field>
 
         <field name="key.content" type="string">
-            <sql name="regkey" type="char"/>
+            <sql name="key_content" type="char"/>
         </field>
 
         <field name="key.operation" 
             type="jp.go.aist.six.oval.model.v5.common.OperationEnumeration">
-            <sql name="regkey_operation" type="char"/>
+            <sql name="key_operation" type="char"/>
         </field>
 
         <field name="key.varRef" type="string">
-            <sql name="regkey_var_ref" type="char"/>
+            <sql name="key_var_ref" type="char"/>
         </field>
 
         <field name="key.varCheck" 
             type="jp.go.aist.six.oval.model.v5.common.CheckEnumeration">
-            <sql name="regkey_var_check" type="char"/>
+            <sql name="key_var_check" type="char"/>
         </field>
 
         <field name="name.content" type="string">
-            <sql name="name" type="char"/>
+            <sql name="name_content" type="char"/>
         </field>
     </class>
 
@@ -1304,7 +1320,7 @@
         </field>
 
         <field name="namespace.content" type="string">
-            <sql name="namespace" type="char"/>
+            <sql name="namespace_content" type="char"/>
         </field>
 
         <field name="namespace.operation" 
@@ -1322,7 +1338,7 @@
         </field>
 
         <field name="wql.content" type="string">
-            <sql name="wql" type="char"/>
+            <sql name="wql_content" type="char"/>
         </field>
 
         <field name="wql.operation" 
@@ -1353,7 +1369,7 @@
         </field>
 
         <field name="namespace.content" type="string">
-            <sql name="namespace" type="char"/>
+            <sql name="namespace_content" type="char"/>
         </field>
 
         <field name="namespace.datatype" 
@@ -1367,11 +1383,11 @@
         </field>
 
         <field name="wql.content" type="string">
-            <sql name="wql" type="char"/>
+            <sql name="wql_content" type="char"/>
         </field>
 
         <field name="result.content" type="string">
-            <sql name="result" type="char"/>
+            <sql name="result_content" type="char"/>
         </field>
 
         <field name="result.operation"

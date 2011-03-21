@@ -47,10 +47,10 @@ public class WmiObject
         WmiProperty.createPropertyMap();
 
 
-//    private EntityObjectString  _namespace;
+//    private EntityObjectStringType  _namespace;
 //    //{1..1}
 //
-//    private EntityObjectString  _wql;
+//    private EntityObjectStringType  _wql;
 //    //{1..1}
 
 
@@ -101,6 +101,8 @@ public class WmiObject
 
 
 
+    /**
+     */
     public void setNamespace(
                     final EntityObjectStringType namespace
                     )
@@ -117,6 +119,8 @@ public class WmiObject
 
 
 
+    /**
+     */
     public void setWql(
                     final EntityObjectStringType wql
                     )
