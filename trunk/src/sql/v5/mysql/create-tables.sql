@@ -473,7 +473,7 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
-/* Test                                                           */
+/* TestType                                                       */
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_test
 (
@@ -481,16 +481,13 @@ CREATE TABLE IF NOT EXISTS oval_d_test
                         /* id + version, e.g. oval:org.mitre.oval:obj:419:1 */
 
     id                  VARCHAR(64)     NOT NULL,
-                        /* e.g. oval:org.mitre.oval:obj:419 */
+                        /* e.g. oval:org.mitre.oval:tst:419 */
     version             INT             NOT NULL,
-
-    deprecated          BOOLEAN                     DEFAULT false,
-    comment             VARCHAR(255)    NOT NULL,
-
+    check_existence     VARCHAR(20)                 /*DEFAULT 'at_least_one_exists'*/,
     check1              VARCHAR(16)     NOT NULL,
-    existence           VARCHAR(20)                 DEFAULT 'at_least_one_exists',
-
-    state_operator      VARCHAR(4)                  DEFAULT 'AND',
+    state_operator      VARCHAR(4)                  /*DEFAULT 'AND'*/,
+    comment             VARCHAR(255)    NOT NULL,
+    deprecated          BOOLEAN                     /*DEFAULT false*/,
     
     object_ref          VARCHAR(64),
 
@@ -503,7 +500,6 @@ CREATE TABLE IF NOT EXISTS oval_d_test
 
     /* INDEX */
     UNIQUE (id, version)
-
 )
 ENGINE=InnoDB
 CHARACTER SET utf8;
@@ -2087,14 +2083,14 @@ CREATE TABLE IF NOT EXISTS oval_d_object_registry
 
     /* behaviors */
 
-    /* key :EntityObjectString {datdatype=string} */
+    /* key :EntityObjectStringType {datdatype=string} */
     regkey              VARCHAR(255),
     regkey_operation    VARCHAR(32),
     regkey_var_ref      VARCHAR(64),
     regkey_var_check    VARCHAR(16),
 
-    /* name :EntityObjectString {datdatype=string} */
-    regname             VARCHAR(255),
+    /* name :EntityObjectStringType {datdatype=string} */
+    name                VARCHAR(255),
 
     /* (PK) */
     PRIMARY KEY (PID)
@@ -2113,11 +2109,11 @@ CREATE TABLE IF NOT EXISTS oval_d_state_registry
 (
     PID                 VARCHAR(64)     NOT NULL,
 
-    /* key :EntityStateString {datdatype=string} */
+    /* key :EntityStateStringType */
     regkey              VARCHAR(255),
     regkey_operation    VARCHAR(32),
 
-    /* value :EntityStateAnySimple */
+    /* value :EntityStateAnySimpleType */
     regvalue            VARCHAR(255),
     regvalue_operation  VARCHAR(32),
     regvalue_datatype   VARCHAR(16),

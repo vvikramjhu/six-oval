@@ -48,19 +48,19 @@ public class MetabaseItem
     private final Map<MetabaseProperty, EntityAttributeGroup>  _properties =
         new EnumMap<MetabaseProperty, EntityAttributeGroup>( MetabaseProperty.class );
 
-//    private EntityItemString  _key;
+//    private EntityItemStringType  _key;
 //    //{0..1}
 //
-//    private EntityItemInt  _mbID;   //renamed!!!
+//    private EntityItemIntType  _metabaseID;   //renamed!!!
 //    //{0..1, nillable="true"}
 //
-//    private EntityItemString  _name;
+//    private EntityItemStringType  _name;
 //    //{0..1}
 //
-//    private EntityItemString  _userType;
+//    private EntityItemStringType  _userType;
 //    //{0..1}
 //
-//    private EntityItemString  _dataType;
+//    private EntityItemStringType  _dataType;
 //    //{0..1}
 
     private final Collection<EntityItemAnySimpleType>  _data = new ArrayList<EntityItemAnySimpleType>();

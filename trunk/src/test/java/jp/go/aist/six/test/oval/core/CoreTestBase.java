@@ -602,14 +602,14 @@ public abstract class CoreTestBase
 //                            "marshalled_20110320_oval-definitions_inventory_windows.xml"
 //                        }
 //                        ,
-                        // Windows, vulnerability
-                        {
-                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                            "test/data/oval-definitions-5/20110320_oval-definitions_vulnerability_windows.xml",
-                            "/oval_definitions",
-                            null,
-                            "marshalled_20110320_oval-definitions_vulnerability_windows.xml"
-                        }
+//                        // Windows, vulnerability
+//                        {
+//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                            "test/data/oval-definitions-5/20110320_oval-definitions_vulnerability_windows.xml",
+//                            "/oval_definitions",
+//                            null,
+//                            "marshalled_20110320_oval-definitions_vulnerability_windows.xml"
+//                        }
 //                        ,
 //                        // Debian patch
 //                        {
@@ -656,14 +656,14 @@ public abstract class CoreTestBase
 //                            "marshalled_20110308_oval-vulnerability_microsoft.windows.server.2008.xml"
 //                        }
 
-//                        // windows, CVE-2010-0176, def:7222
-//                        {
-//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-//                            "test/data/oval-definitions-5/oval-definitions_CVE-2010-0176_def7222_v5.9.xml",
-//                            "/oval_definitions",
-//                            null, //DefinitionsSample.OVAL_DEFINITIONS_8050,
-//                            "marshalled_oval-definitions_CVE-2010-0176_def7222_v5.9.xml"
-//                        }
+                        // windows, vulnerability, def:7222, CVE-2010-0176
+                        {
+                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+                            "test/data/oval-definitions-5/oval_vulnerability_windows_def7222_definitions-5.xml",
+                            "/oval_definitions",
+                            null, //DefinitionsSample.OVAL_DEFINITIONS_8050,
+                            "marshalled_oval_vulnerability_windows_def7222_definitions-5.xml"
+                        }
 //                        ,
 //                        // Debian @Mitre, CVE-2010-0176, DSA-2027
 //                        {

@@ -16,7 +16,7 @@
 
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <!-- %                                                     % -->
-    <!-- %  OVAL definitions                                   % -->
+    <!-- %  oval-definitions-5                                 % -->
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     
@@ -153,8 +153,6 @@
 
     </class>
 
-
-
     <class name="jp.go.aist.six.oval.model.v5.definitions.Platform"
         identity="persistentID">
 
@@ -169,8 +167,6 @@
             <sql name="PID" type="char" read-only="true"/>
         </field>
     </class>
-
-
 
     <class name="jp.go.aist.six.oval.model.v5.definitions.Product"
         identity="persistentID">
@@ -231,12 +227,9 @@
             <sql name="version" type="integer"/>
         </field>
 
-        <field name="comment" type="string">
-            <sql name="comment" type="char"/>
-        </field>
-
-        <field name="deprecated" type="boolean">
-            <sql name="deprecated" type="bit"/>
+        <field name="checkExistence" 
+            type="jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration">
+            <sql name="check_existence" type="char"/>
         </field>
 
         <field name="check" 
@@ -244,19 +237,17 @@
             <sql name="check1" type="char"/>
         </field>
 
-        <field name="checkExistence" 
-            type="jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration">
-            <sql name="existence" type="char"/>
-        </field>
-
         <field name="stateOperator" 
             type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration">
             <sql name="state_operator" type="char"/>
         </field>
 
-        <field name="entityType" 
-            type="jp.go.aist.six.oval.model.PlatformEntityType">
-            <sql name="entity_type" type="char"/>
+        <field name="comment" type="string">
+            <sql name="comment" type="char"/>
+        </field>
+
+        <field name="deprecated" type="boolean">
+            <sql name="deprecated" type="bit"/>
         </field>
 
         <field name="object.objectRef" type="string">
@@ -267,6 +258,11 @@
             type="jp.go.aist.six.oval.model.v5.definitions.StateRefType"
             collection="collection">
             <sql many-key="d_test__PID"/>
+        </field>
+
+        <field name="entityType" 
+            type="jp.go.aist.six.oval.model.PlatformEntityType">
+            <sql name="entity_type" type="char"/>
         </field>
     </class>
 
@@ -540,8 +536,9 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <!-- ******************************************************* -->
-    <!-- FamilyTest                                              -->
+    <!-- family                                                  -->
     <!-- ******************************************************* -->
+
     <class name="jp.go.aist.six.oval.model.v5.independent.FamilyTest"
         extends="jp.go.aist.six.oval.model.v5.definitions.TestType"
         identity="persistentID">
@@ -1228,7 +1225,7 @@
         </field>
 
         <field name="name.content" type="string">
-            <sql name="regname" type="char"/>
+            <sql name="name" type="char"/>
         </field>
     </class>
 
