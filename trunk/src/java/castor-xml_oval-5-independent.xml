@@ -110,6 +110,9 @@
 
     <class name="jp.go.aist.six.oval.model.v5.independent.TextfileContent54Behaviors"
         extends="jp.go.aist.six.oval.model.v5.independent.FileBehaviors">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
 
         <field name="ignoreCase" type="boolean">
             <bind-xml name="ignore_case" node="attribute"/>

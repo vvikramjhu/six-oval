@@ -35,18 +35,18 @@ public class TextfileContent54Behaviors
     extends FileBehaviors
 {
 
-    public static final boolean  DEFAULT_IGNORE_CASE = false;
-    private boolean  _ignoreCase = DEFAULT_IGNORE_CASE;
+    public static final Boolean  DEFAULT_IGNORE_CASE = Boolean.FALSE;
+    private Boolean  _ignoreCase;
     //{optional, default='false'}
 
 
-    public static final boolean  DEFAULT_MULTILINE = true;
-    private boolean  _multiline = DEFAULT_MULTILINE;
+    public static final Boolean  DEFAULT_MULTILINE = Boolean.TRUE;
+    private Boolean  _multiline;
     //{optional, default='true'}
 
 
-    public static final boolean  DEFAULT_SINGLELINE = false;
-    private boolean  _singleline = DEFAULT_SINGLELINE;
+    public static final Boolean  DEFAULT_SINGLELINE = Boolean.FALSE;
+    private Boolean  _singleline;
     //{optional, default='false'}
 
 
@@ -63,7 +63,7 @@ public class TextfileContent54Behaviors
     /**
      */
     public void setIgnoreCase(
-                    final boolean ignoreCase
+                    final Boolean ignoreCase
                     )
     {
         _ignoreCase = ignoreCase;
@@ -71,7 +71,7 @@ public class TextfileContent54Behaviors
 
 
     public TextfileContent54Behaviors ignoreCase(
-                    final boolean ignoreCase
+                    final Boolean ignoreCase
                     )
     {
         setIgnoreCase( ignoreCase );
@@ -79,9 +79,16 @@ public class TextfileContent54Behaviors
     }
 
 
-    public boolean isIgnoreCase()
+    public Boolean getIgnoreCase()
     {
         return _ignoreCase;
+    }
+
+
+    protected final boolean _ignoreCase()
+    {
+        Boolean  ignoreCase = getIgnoreCase();
+        return (ignoreCase == null ? DEFAULT_IGNORE_CASE.booleanValue() : ignoreCase.booleanValue());
     }
 
 
@@ -89,7 +96,7 @@ public class TextfileContent54Behaviors
     /**
      */
     public void setMultiline(
-                    final boolean multiline
+                    final Boolean multiline
                     )
     {
         _multiline = multiline;
@@ -97,7 +104,7 @@ public class TextfileContent54Behaviors
 
 
     public TextfileContent54Behaviors multiline(
-                    final boolean multiline
+                    final Boolean multiline
                     )
     {
         setMultiline( multiline );
@@ -105,9 +112,16 @@ public class TextfileContent54Behaviors
     }
 
 
-    public boolean isMultiline()
+    public Boolean getMultiline()
     {
         return _multiline;
+    }
+
+
+    protected final boolean _multiline()
+    {
+        Boolean  multiline = getMultiline();
+        return (multiline == null ? DEFAULT_MULTILINE.booleanValue() : multiline.booleanValue());
     }
 
 
@@ -115,7 +129,7 @@ public class TextfileContent54Behaviors
     /**
      */
     public void setSingleline(
-                    final boolean singleline
+                    final Boolean singleline
                     )
     {
         _singleline = singleline;
@@ -123,7 +137,7 @@ public class TextfileContent54Behaviors
 
 
     public TextfileContent54Behaviors singleline(
-                    final boolean singleline
+                    final Boolean singleline
                     )
     {
         setSingleline( singleline );
@@ -131,9 +145,16 @@ public class TextfileContent54Behaviors
     }
 
 
-    public boolean isSingleline()
+    public Boolean getSingleline()
     {
         return _singleline;
+    }
+
+
+    protected final boolean _singleline()
+    {
+        Boolean  singleline = getSingleline();
+        return (singleline == null ? DEFAULT_SINGLELINE.booleanValue() : singleline.booleanValue());
     }
 
 
@@ -148,9 +169,9 @@ public class TextfileContent54Behaviors
         final int  prime = 37;
         int  result = 17;
 
-        result = prime * result + (isIgnoreCase() ? 0 : 1);
-        result = prime * result + (isMultiline()  ? 0 : 1);
-        result = prime * result + (isSingleline() ? 0 : 1);
+        result = prime * result + (_ignoreCase() ? 0 : 1);
+        result = prime * result + (_multiline()  ? 0 : 1);
+        result = prime * result + (_singleline() ? 0 : 1);
 
         return result;
     }
@@ -162,15 +183,19 @@ public class TextfileContent54Behaviors
                     final Object obj
                     )
     {
+        if (this == obj) {
+            return true;
+        }
+
         if (!(obj instanceof TextfileContent54Behaviors)) {
             return false;
         }
 
         if (super.equals( obj )) {
             TextfileContent54Behaviors  other = (TextfileContent54Behaviors)obj;
-            if (isIgnoreCase() == other.isIgnoreCase()) {
-                if (isMultiline() == other.isMultiline()) {
-                    if (isSingleline() == other.isSingleline()) {
+            if (this._ignoreCase() == other._ignoreCase()) {
+                if (this._multiline() == other._multiline()) {
+                    if (this._singleline() == other._singleline()) {
                         return true;
                     }
                 }
@@ -186,9 +211,9 @@ public class TextfileContent54Behaviors
     public String toString()
     {
         return super.toString()
-                        + ", ignore_case=" + isIgnoreCase()
-                        + ", multiline=" + isMultiline()
-                        + ", singleline=" + isSingleline()
+                        + ", ignore_case=" + getIgnoreCase()
+                        + ", multiline=" + getMultiline()
+                        + ", singleline=" + getSingleline()
                         ;
     }
 

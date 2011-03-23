@@ -648,15 +648,15 @@
             <sql name="behaviors_recurse_file_system" type="char"/>
         </field>
 
-        <field name="behaviors.ignoreCase" type="boolean">
+        <field name="behaviors.ignoreCase" type="java.lang.Boolean">
             <sql name="behaviors_ignore_case" type="bit"/>
         </field>
 
-        <field name="behaviors.multiline" type="boolean">
+        <field name="behaviors.multiline" type="java.lang.Boolean">
             <sql name="behaviors_multiline" type="bit"/>
         </field>
 
-        <field name="behaviors.singleline" type="boolean">
+        <field name="behaviors.singleline" type="java.lang.Boolean">
             <sql name="behaviors_singleline" type="bit"/>
         </field>
 

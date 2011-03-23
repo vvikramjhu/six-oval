@@ -82,6 +82,13 @@ public abstract class AbstractBehaviors
     }
 
 
+    protected final int _maxDepth()
+    {
+        Integer  maxDepth = getMaxDepth();
+        return (maxDepth == null ? DEFAULT_MAX_DEPTH.intValue() : maxDepth.intValue());
+    }
+
+
 
     /**
      */
@@ -99,6 +106,13 @@ public abstract class AbstractBehaviors
     }
 
 
+    protected final RecurseDirectionEnumeration _recurseDirection()
+    {
+        RecurseDirectionEnumeration  recurseDirection = getRecurseDirection();
+        return (recurseDirection == null ? DEFAULT_RECURSE_DIRECTION : recurseDirection);
+    }
+
+
 
     //**************************************************************
     //  java.lang.Object
@@ -110,10 +124,9 @@ public abstract class AbstractBehaviors
         final int  prime = 37;
         int  result = 17;
 
-        result = prime * result + getMaxDepth();
+        result = prime * result + _maxDepth();
 
-        RecurseDirectionEnumeration  rd = getRecurseDirection();
-        result = prime * result + ((rd == null) ? 0 : rd.hashCode());
+        result = prime * result + _recurseDirection().hashCode();
 
         return result;
     }
@@ -134,10 +147,8 @@ public abstract class AbstractBehaviors
         }
 
         AbstractBehaviors  other = (AbstractBehaviors)obj;
-        if (this.getMaxDepth() == other.getMaxDepth()) {
-            RecurseDirectionEnumeration  other_rd = other.getRecurseDirection();
-            RecurseDirectionEnumeration   this_rd =  this.getRecurseDirection();
-            if (this_rd == other_rd) {
+        if (this._maxDepth() == other._maxDepth()) {
+            if (this.getRecurseDirection() == other.getRecurseDirection()) {
                 return true;
             }
         }

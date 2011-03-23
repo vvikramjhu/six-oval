@@ -1474,8 +1474,9 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
-/* UnknownTest                                                    */
+/* unknown                                                        */
 /* ============================================================== */
+
 CREATE TABLE IF NOT EXISTS oval_d_test_unknown
 (
     PID                 VARCHAR(64)     NOT NULL,
@@ -1796,6 +1797,7 @@ CHARACTER SET utf8;
 /* ============================================================== */
 /* file                                                           */
 /* ============================================================== */
+
 CREATE TABLE IF NOT EXISTS oval_d_test_file
 (
     PID                 VARCHAR(64)     NOT NULL,

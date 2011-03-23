@@ -72,6 +72,13 @@ public class FileBehaviors
     }
 
 
+    protected final RecurseEnumeration _recurse()
+    {
+        RecurseEnumeration  recurse = getRecurse();
+        return (recurse == null ? DEFAULT_RECURSE : recurse);
+    }
+
+
 
     //**************************************************************
     //  java.lang.Object
@@ -83,8 +90,7 @@ public class FileBehaviors
         final int  prime = 37;
         int  result = super.hashCode();
 
-        RecurseEnumeration  r = getRecurse();
-        result = prime * result + ((r == null) ? 0 : r.hashCode());
+        result = prime * result + _recurse().hashCode();
 
         return result;
     }
@@ -104,11 +110,9 @@ public class FileBehaviors
             return false;
         }
 
-        FileBehaviors  other = (FileBehaviors)obj;
-        if (this.getMaxDepth() == other.getMaxDepth()) {
-            RecurseEnumeration  other_r = other.getRecurse();
-            RecurseEnumeration   this_r =  this.getRecurse();
-            if (this_r == other_r) {
+        if (super.equals( obj )) {
+            FileBehaviors  other = (FileBehaviors)obj;
+            if (this._recurse() == other._recurse()) {
                 return true;
             }
         }
