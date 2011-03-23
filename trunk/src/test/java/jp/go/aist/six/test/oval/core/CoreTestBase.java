@@ -605,10 +605,10 @@ public abstract class CoreTestBase
 //                        // Windows, vulnerability
 //                        {
 //                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-//                            "test/data/oval-definitions-5/20110320_oval-definitions_vulnerability_windows.xml",
+//                            "test/data/oval-definitions-5/oval_vulnerability_windows.xp_definitions-5.9.xml",
 //                            "/oval_definitions",
 //                            null,
-//                            "marshalled_20110320_oval-definitions_vulnerability_windows.xml"
+//                            "marshalled_oval_vulnerability_windows.xp_definitions-5.9.xml"
 //                        }
 //                        ,
 //                        // Debian patch
@@ -629,15 +629,6 @@ public abstract class CoreTestBase
 //                            "marshalled_20110308_oval-vulnerability_red.hat.enterprise.linux.5.xml"
 //                        }
 //                        ,
-//                        // Windows XP, vulnerability
-//                        {
-//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-//                            "test/data/oval-definitions-5/20110308_oval-vulnerability_microsoft.windows.xp.xml",
-//                            "/oval_definitions",
-//                            null,
-//                            "marshalled_20110308_oval-vulnerability_microsoft.windows.xp.xml"
-//                        }
-//                        ,
 //                        // Windows 7, vulnerability
 //                        {
 //                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
@@ -656,23 +647,23 @@ public abstract class CoreTestBase
 //                            "marshalled_20110308_oval-vulnerability_microsoft.windows.server.2008.xml"
 //                        }
 
-                        // windows, vulnerability, def:7120, CVE-2010-0820
-                        {
-                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                            "test/data/oval-definitions-5/oval_vulnerability_windows_def7120_definitions-5.xml",
-                            "/oval_definitions",
-                            null,
-                            "marshalled_oval_vulnerability_windows_def7120_definitions-5.xml"
-                        }
-//                      ,
-//                        // windows, vulnerability, def:7222, CVE-2010-0176
+//                        // windows, vulnerability, def:7120, CVE-2010-0820
 //                        {
 //                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-//                            "test/data/oval-definitions-5/oval_vulnerability_windows_def7222_definitions-5.xml",
+//                            "test/data/oval-definitions-5/oval_vulnerability_windows_def7120_definitions-5.xml",
 //                            "/oval_definitions",
-//                            null, //DefinitionsSample.OVAL_DEFINITIONS_8050,
-//                            "marshalled_oval_vulnerability_windows_def7222_definitions-5.xml"
+//                            null,
+//                            "marshalled_oval_vulnerability_windows_def7120_definitions-5.xml"
 //                        }
+//                      ,
+                        // windows, vulnerability, def:7222, CVE-2010-0176
+                        {
+                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+                            "test/data/oval-definitions-5/oval_vulnerability_windows_def7222_definitions-5.xml",
+                            "/oval_definitions",
+                            null, //DefinitionsSample.OVAL_DEFINITIONS_8050,
+                            "marshalled_oval_vulnerability_windows_def7222_definitions-5.xml"
+                        }
 //                        ,
 //                        // debian, patch, def:7432, CVE-2010-0176, DSA-2027
 //                        {
