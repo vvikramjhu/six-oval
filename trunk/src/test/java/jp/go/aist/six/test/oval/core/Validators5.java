@@ -140,7 +140,7 @@ public abstract class Validators5
 
             super.equals( actual, expected );
             Reporter.log( " - @deprecated", true );
-            Assert.assertEquals( actual.isDeprecated(), expected.isDeprecated() );
+            Assert.assertEquals( actual.getDeprecated(), expected.getDeprecated() );
         }
     }
 

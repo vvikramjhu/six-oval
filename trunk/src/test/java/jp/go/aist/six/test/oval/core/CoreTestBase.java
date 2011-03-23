@@ -647,14 +647,23 @@ public abstract class CoreTestBase
 //                            "marshalled_20110308_oval-vulnerability_microsoft.windows.server.2008.xml"
 //                        }
 
-                      // windows, vulnerability, def:11757, textfilecontent54_object/behaviors/@multiline
+                      // windows, vulnerability, def:6113, definition/@deprecated
                       {
                           jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                          "test/data/oval-definitions-5/oval_vulnerability_windows_def11757_definitions-5.9.xml",
+                          "test/data/oval-definitions-5/oval_vulnerability_windows_def6113_deprecated_definitions-5.9.xml",
                           "/oval_definitions",
                           null,
-                          "marshalled_oval_vulnerability_windows_def11757_definitions-5.9.xml"
+                          "marshalled_oval_vulnerability_windows_def6113_deprecated_definitions-5.9.xml"
                       }
+//                      ,
+//                      // windows, vulnerability, def:11757, textfilecontent54_object/behaviors/@multiline
+//                      {
+//                          jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                          "test/data/oval-definitions-5/oval_vulnerability_windows_def11757_definitions-5.9.xml",
+//                          "/oval_definitions",
+//                          null,
+//                          "marshalled_oval_vulnerability_windows_def11757_definitions-5.9.xml"
+//                      }
 //                        // windows, vulnerability, def:7120, CVE-2010-0820
 //                        {
 //                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,

@@ -63,6 +63,8 @@ public abstract class OvalEntity
 
 
 
+    /**
+     */
     public void setDeprecated(
                     final Boolean deprecated
                     )
@@ -71,7 +73,7 @@ public abstract class OvalEntity
     }
 
 
-    public Boolean isDeprecated()
+    public Boolean getDeprecated()
     {
         return _deprecated;
     }

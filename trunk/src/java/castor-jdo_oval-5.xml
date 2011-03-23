@@ -84,7 +84,7 @@
             <sql name="class" type="char"/>
         </field>
 
-        <field name="deprecated" type="boolean">
+        <field name="deprecated" type="java.lang.Boolean">
             <sql name="deprecated" type="bit"/>
         </field>
 
@@ -246,7 +246,7 @@
             <sql name="comment" type="char"/>
         </field>
 
-        <field name="deprecated" type="boolean">
+        <field name="deprecated" type="java.lang.Boolean">
             <sql name="deprecated" type="bit"/>
         </field>
 
@@ -311,7 +311,7 @@
             <sql name="version" type="integer"/>
         </field>
 
-        <field name="deprecated" type="boolean">
+        <field name="deprecated" type="java.lang.Boolean">
             <sql name="deprecated" type="bit"/>
         </field>
 
@@ -345,7 +345,7 @@
             <sql name="version" type="integer"/>
         </field>
 
-        <field name="deprecated" type="boolean">
+        <field name="deprecated" type="java.lang.Boolean">
             <sql name="deprecated" type="bit"/>
         </field>
 
@@ -379,7 +379,7 @@
             <sql name="version" type="integer"/>
         </field>
 
-        <field name="deprecated" type="boolean">
+        <field name="deprecated" type="java.lang.Boolean">
             <sql name="deprecated" type="bit"/>
         </field>
 

@@ -36,8 +36,8 @@ public abstract class OvalEntity
     extends OvalElement
 {
 
-    public static final boolean  DEFAULT_DEPRECATED = false;
-    private boolean  _deprecated = DEFAULT_DEPRECATED;
+    public static final Boolean  DEFAULT_DEPRECATED = Boolean.FALSE;
+    private Boolean  _deprecated;
     //{optional, default="false"}
 
 
@@ -63,17 +63,26 @@ public abstract class OvalEntity
 
 
 
+    /**
+     */
     public void setDeprecated(
-                    final boolean deprecated
+                    final Boolean deprecated
                     )
     {
         _deprecated = deprecated;
     }
 
 
-    public boolean isDeprecated()
+    public Boolean getDeprecated()
     {
         return _deprecated;
+    }
+
+
+    protected final boolean _deprecated()
+    {
+        final Boolean  deprecated = getDeprecated();
+        return (deprecated == null ? DEFAULT_DEPRECATED.booleanValue() : deprecated.booleanValue());
     }
 
 

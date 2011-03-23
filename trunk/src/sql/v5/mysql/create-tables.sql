@@ -118,7 +118,7 @@ CHARACTER SET utf8;
 
 
 /* ============================================================== */
-/* Definition                                                     */
+/* definition                                                     */
 /* ============================================================== */
 CREATE TABLE IF NOT EXISTS oval_d_definition
 (
@@ -128,10 +128,10 @@ CREATE TABLE IF NOT EXISTS oval_d_definition
     id                  VARCHAR(64)     NOT NULL,
                         /* e.g. oval:org.mitre.oval:def:8500 */
     version             INT             NOT NULL,
-    deprecated          BOOLEAN                     DEFAULT false,
+    deprecated          BOOLEAN,
 
     class               VARCHAR(16)     NOT NULL,
-                        /* ENUM( 'vulnerability', 'patch', 'inventory', ...) */
+                        /* DefinitionClassEnumeration */
 
     /* // metadata // */
     title               VARCHAR(1024)   NOT NULL,
