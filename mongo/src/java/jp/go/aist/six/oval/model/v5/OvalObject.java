@@ -25,7 +25,7 @@ import jp.go.aist.six.util.persist.Persistable;
 
 
 /**
- * A marker interface for all the OVAL domain object except enumerations.
+ * A marker for all the OVAL domain object except enumerations.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

@@ -20,6 +20,9 @@
 
 package jp.go.aist.six.oval.model.v5;
 
+import com.google.code.morphia.annotations.Id;
+import com.google.code.morphia.annotations.Property;
+
 
 
 
@@ -33,10 +36,19 @@ package jp.go.aist.six.oval.model.v5;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class OvalEntity
-    extends OvalElement
+    extends OvalElement<String>
 {
 
+    /**
+     * ovalID + ":" + ovalVersion
+     */
+    @Id
+    private String  _ovalGlobalID;
+
+
     public static final Boolean  DEFAULT_DEPRECATED = Boolean.FALSE;
+
+    @Property( "deprecated" )
     private Boolean  _deprecated;
     //{optional, default="false"}
 
@@ -80,9 +92,37 @@ public abstract class OvalEntity
 
 
 
+    /**
+     */
+    public void ovalSetGlobalID(
+                    final String gid
+                    )
+    {
+        _ovalGlobalID = gid;
+    }
+
+
+    public String ovalGetGlobalID()
+    {
+        if (_ovalGlobalID == null) {
+            _ovalGlobalID = _ovalGlobalID();
+        }
+
+        return _ovalGlobalID;
+    }
+
+
+
     //**************************************************************
     //  Persistable
     //**************************************************************
+
+    @Override
+    public void setPersistentID( final String pid )
+    {
+        ovalSetGlobalID( pid );
+    }
+
 
     @Override
     public String getPersistentID()

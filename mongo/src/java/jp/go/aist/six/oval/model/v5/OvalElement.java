@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5;
 
+import com.google.code.morphia.annotations.Property;
+
 
 
 
@@ -34,17 +36,14 @@ public abstract class OvalElement<K>
     implements OvalObject<K>
 {
 
+    @Property( "id" )
     private String  _ovalID;
     //{required, oval:DefinitionIDPattern}
 
+
+    @Property( "version" )
     private int  _ovalVersion;
     //{required, xsd:nonNegativeInteger}
-
-
-    /**
-     * ovalID + ":" + ovalVersion
-     */
-    private transient String  _ovalGlobalID;
 
 
 
@@ -161,31 +160,51 @@ public abstract class OvalElement<K>
 
 
 
-    /**
-     */
-    public void ovalSetGlobalID(
-                    final String gid
-                    )
+//    /**
+//     * ovalID + ":" + ovalVersion
+//     */
+//    private transient String  _ovalGlobalID;
+//
+//
+//    /**
+//     */
+//    public void ovalSetGlobalID(
+//                    final String gid
+//                    )
+//    {
+//        _ovalGlobalID = gid;
+//    }
+//
+//
+//    public String ovalGetGlobalID()
+//    {
+//        if (_ovalGlobalID == null) {
+//            String  id = getOvalID();
+//            int  version = getOvalVersion();
+//            if (id == null  ||  id.length() == 0) {
+//                throw new IllegalArgumentException( "null or empty ovalID" );
+//            }
+//
+//
+//            _ovalGlobalID = id + ":" + version;
+//        }
+//
+//        return _ovalGlobalID;
+//    }
+
+
+
+    protected String _ovalGlobalID()
     {
-        _ovalGlobalID = gid;
-    }
-
-
-    public String ovalGetGlobalID()
-    {
-        if (_ovalGlobalID == null) {
-            String  id = getOvalID();
-            int  version = getOvalVersion();
-            if (id == null  ||  id.length() == 0) {
-                throw new IllegalArgumentException( "null or empty ovalID" );
-            }
-
-
-            _ovalGlobalID = id + ":" + version;
+        String  id = getOvalID();
+        int  version = getOvalVersion();
+        if (id == null  ||  id.length() == 0) {
+            throw new IllegalStateException( "null or empty ovalID" );
         }
 
-        return _ovalGlobalID;
+        return id + ":" + version;
     }
+
 
 
 

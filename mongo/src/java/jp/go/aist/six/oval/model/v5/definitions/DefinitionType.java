@@ -20,10 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import org.bson.types.ObjectId;
+import jp.go.aist.six.oval.model.v5.OvalEntity;
 import com.google.code.morphia.annotations.Entity;
-import com.google.code.morphia.annotations.Id;
-import com.google.code.morphia.annotations.Property;
 
 
 
@@ -36,23 +34,8 @@ import com.google.code.morphia.annotations.Property;
  */
 @Entity( "definition" )
 public class DefinitionType
+    extends OvalEntity
 {
-
-    @Id
-    private ObjectId  _objectID;
-
-    @Property( "id" )
-    private String  _ovalID;
-    //{required, oval:DefinitionIDPattern}
-
-    @Property( "version" )
-    private int  _ovalVersion;
-    //{required, xsd:nonNegativeInteger}
-
-
-//    private DefinitionClassEnumeration  _definitionClass;
-//    //{required}
-
 
     /**
      * Constructor.
@@ -62,15 +45,15 @@ public class DefinitionType
     }
 
 
-//    public DefinitionType(
-//                    final String id,
-//                    final int version
-//                    )
-//    {
-//        super( id, version );
-//    }
-//
-//
+    public DefinitionType(
+                    final String id,
+                    final int version
+                    )
+    {
+        super( id, version );
+    }
+
+
 //    public DefinitionType(
 //                    final String id,
 //                    final int version,
@@ -92,82 +75,6 @@ public class DefinitionType
 //        this( id, version, clazz );
 //        setMetadata( metadata );
 //    }
-
-
-
-
-    /**
-     */
-    public void setObejctDI(
-                    final ObjectId oid
-                    )
-    {
-        _objectID = oid;
-    }
-
-
-    public ObjectId getObjectID()
-    {
-        return _objectID;
-    }
-
-
-    /**
-     * Sets the OVAL-ID.
-     *
-     * @param   id
-     *  the OVAL-ID.
-     */
-    public void setOvalID(
-                    final String id
-                    )
-    {
-        _ovalID = id;
-    }
-
-
-    /**
-     * Retuens the OVAL-ID.
-     *
-     * @return
-     *  the OVAL-ID.
-     */
-    public String getOvalID()
-    {
-        return _ovalID;
-    }
-
-
-
-    /**
-     * Sets the version.
-     *
-     * @param   version
-     *  the version.
-     */
-    public void setOvalVersion(
-                    final int version
-                    )
-    {
-        if (version < 0) {
-            throw new IllegalArgumentException(
-                            "negative version: " + version );
-        }
-        _ovalVersion = version;
-    }
-
-
-    /**
-     * Returns the version.
-     *
-     * @return
-     *  the version.
-     */
-    public int getOvalVersion()
-    {
-        return _ovalVersion;
-    }
-
 
 
 
@@ -201,8 +108,7 @@ public class DefinitionType
     @Override
     public String toString()
     {
-        return "[" + "id=" + getOvalID()
-                   + ", version=" + getOvalVersion()
+        return "definition[" + super.toString()
                    + "]";
 //                        + ", class=" + getDefinitionClass()
 //                        + ", metadata=" + getMetadata()
