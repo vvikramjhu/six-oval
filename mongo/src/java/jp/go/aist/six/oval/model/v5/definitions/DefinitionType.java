@@ -20,8 +20,10 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.v5.OvalEntity;
-import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
+import org.bson.types.ObjectId;
+import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Id;
+import com.google.code.morphia.annotations.Property;
 
 
 
@@ -32,32 +34,24 @@ import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
+@Entity( "definition" )
 public class DefinitionType
-    extends OvalEntity
 {
 
-    private MetadataType  _metadata;
-    //{1..1}
+    @Id
+    private ObjectId  _objectID;
+
+    @Property( "id" )
+    private String  _ovalID;
+    //{required, oval:DefinitionIDPattern}
+
+    @Property( "version" )
+    private int  _ovalVersion;
+    //{required, xsd:nonNegativeInteger}
 
 
-    private NotesType  _notes;
-    //{0..1}
-
-
-    private CriteriaType  _criteria;
-    //{0..1}
-
-    private String  _criteriaXml;
-
-
-    private DefinitionClassEnumeration  _definitionClass;
-    //{required}
-
-
-    // SIX: extended properties //
-//    private String  _lastModifiedDate;
-//    private final Collection<Cve>  _relatedCve = new ArrayList<Cve>();
-
+//    private DefinitionClassEnumeration  _definitionClass;
+//    //{required}
 
 
     /**
@@ -68,205 +62,113 @@ public class DefinitionType
     }
 
 
-    public DefinitionType(
-                    final String id,
+//    public DefinitionType(
+//                    final String id,
+//                    final int version
+//                    )
+//    {
+//        super( id, version );
+//    }
+//
+//
+//    public DefinitionType(
+//                    final String id,
+//                    final int version,
+//                    final DefinitionClassEnumeration clazz
+//                    )
+//    {
+//        super( id, version );
+//        setDefinitionClass( clazz );
+//    }
+//
+//
+//    public DefinitionType(
+//                    final String id,
+//                    final int version,
+//                    final DefinitionClassEnumeration clazz,
+//                    final MetadataType metadata
+//                    )
+//    {
+//        this( id, version, clazz );
+//        setMetadata( metadata );
+//    }
+
+
+
+
+    /**
+     */
+    public void setObejctDI(
+                    final ObjectId oid
+                    )
+    {
+        _objectID = oid;
+    }
+
+
+    public ObjectId getObjectID()
+    {
+        return _objectID;
+    }
+
+
+    /**
+     * Sets the OVAL-ID.
+     *
+     * @param   id
+     *  the OVAL-ID.
+     */
+    public void setOvalID(
+                    final String id
+                    )
+    {
+        _ovalID = id;
+    }
+
+
+    /**
+     * Retuens the OVAL-ID.
+     *
+     * @return
+     *  the OVAL-ID.
+     */
+    public String getOvalID()
+    {
+        return _ovalID;
+    }
+
+
+
+    /**
+     * Sets the version.
+     *
+     * @param   version
+     *  the version.
+     */
+    public void setOvalVersion(
                     final int version
                     )
     {
-        super( id, version );
-    }
-
-
-    public DefinitionType(
-                    final String id,
-                    final int version,
-                    final DefinitionClassEnumeration clazz
-                    )
-    {
-        super( id, version );
-        setDefinitionClass( clazz );
-    }
-
-
-    public DefinitionType(
-                    final String id,
-                    final int version,
-                    final DefinitionClassEnumeration clazz,
-                    final MetadataType metadata
-                    )
-    {
-        this( id, version, clazz );
-        setMetadata( metadata );
-    }
-
-
-
-    /**
-     */
-    public void setMetadata(
-                    final MetadataType metadata
-                    )
-    {
-        _metadata = metadata;
-    }
-
-
-    public DefinitionType metadata(
-                    final MetadataType metadata
-                    )
-    {
-        setMetadata( metadata );
-        return this;
-    }
-
-
-    public MetadataType getMetadata()
-    {
-        if (_metadata == null) {
-            _metadata = new MetadataType();
+        if (version < 0) {
+            throw new IllegalArgumentException(
+                            "negative version: " + version );
         }
-        return _metadata;
-    }
-
-
-
-    /**
-     */
-    public void setNotes(
-                    final NotesType notes
-                    )
-    {
-        _notes = notes;
+        _ovalVersion = version;
     }
 
 
     /**
+     * Returns the version.
+     *
+     * @return
+     *  the version.
      */
-    public NotesType getNotes()
+    public int getOvalVersion()
     {
-        return _notes;
+        return _ovalVersion;
     }
 
 
-
-    /**
-     */
-    public void setCriteria(
-                    final CriteriaType criteria
-                    )
-    {
-        _criteria = criteria;
-    }
-
-
-    public DefinitionType criteria(
-                    final CriteriaType criteria
-                    )
-    {
-        setCriteria( criteria );
-        return this;
-    }
-
-
-    public CriteriaType getCriteria()
-    {
-        return _criteria;
-    }
-
-
-
-    /**
-     */
-    public void xmlSetCriteria(
-                    final String xml
-                    )
-    {
-        _criteriaXml = xml;
-    }
-
-
-    public String xmlGetCriteria()
-    {
-        return _criteriaXml;
-    }
-
-
-
-    /**
-     */
-    public void setDefinitionClass(
-                    final DefinitionClassEnumeration clazz
-                    )
-    {
-        _definitionClass = clazz;
-    }
-
-
-    public DefinitionClassEnumeration getDefinitionClass()
-    {
-        return _definitionClass;
-    }
-
-
-
-    //==============================================================
-    //  SIX: extended properties
-    //==============================================================
-
-//    /**
-//     */
-//    public void setLastModifiedDate(
-//                    final String date
-//                    )
-//    {
-//        _lastModifiedDate = date;
-//    }
-//
-//
-//    public String getLastModifiedDate()
-//    {
-//        if (_lastModifiedDate == null) {
-//            MetadataType  meta = getMetadata();
-//            if (meta != null) {
-//                _lastModifiedDate = meta.getLastModifiedDate();
-//            }
-//        }
-//
-//        return _lastModifiedDate;
-//    }
-//
-//
-//
-//    /**
-//     */
-//    public void setRelatedCve(
-//                    final Collection<Cve> cves
-//                    )
-//    {
-//        if (cves != _relatedCve) {
-//            _relatedCve.clear();
-//
-//            if (cves != null  &&  cves.size() > 0) {
-//                _relatedCve.addAll( cves );
-//            }
-//        }
-//    }
-//
-//
-//    private transient boolean  _relatedCveComputed = false;
-//
-//    public Collection<Cve> getRelatedCve()
-//    {
-//        if (! _relatedCveComputed) {
-//            MetadataType  meta = getMetadata();
-//            if (meta != null) {
-//                _relatedCve.addAll( meta.getRelatedCve() );
-//            }
-//            _relatedCveComputed = true;
-//        }
-//
-//        return _relatedCve;
-//    }
 
 
 
@@ -274,37 +176,39 @@ public class DefinitionType
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public int hashCode()
-    {
-        return super.hashCode();
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (!(obj instanceof DefinitionType)) {
-            return false;
-        }
-
-        return super.equals( obj );
-    }
+//    @Override
+//    public int hashCode()
+//    {
+//        return super.hashCode();
+//    }
+//
+//
+//
+//    @Override
+//    public boolean equals(
+//                    final Object obj
+//                    )
+//    {
+//        if (!(obj instanceof DefinitionType)) {
+//            return false;
+//        }
+//
+//        return super.equals( obj );
+//    }
 
 
 
     @Override
     public String toString()
     {
-        return "[" + super.toString()
-                        + ", class=" + getDefinitionClass()
-                        + ", metadata=" + getMetadata()
-//                        + ", " + getCriteria()
-                        + ", notes=" + getNotes()
-                        + "]";
+        return "[" + "id=" + getOvalID()
+                   + ", version=" + getOvalVersion()
+                   + "]";
+//                        + ", class=" + getDefinitionClass()
+//                        + ", metadata=" + getMetadata()
+////                        + ", " + getCriteria()
+//                        + ", notes=" + getNotes()
+//                        + "]";
     }
 
 }

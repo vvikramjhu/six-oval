@@ -30,9 +30,8 @@ package jp.go.aist.six.oval.model.v5;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class OvalElement
-    extends AbstractOvalObject
-    implements Comparable<OvalElement>
+public abstract class OvalElement<K>
+    implements OvalObject<K>
 {
 
     private String  _ovalID;
@@ -134,31 +133,31 @@ public abstract class OvalElement
 
 
 
-    /**
-     */
-    public static final String generateGlobalOvalID(
-                    final OvalElement e
-                    )
-    {
-        if (e == null) {
-            throw new IllegalArgumentException( "null element" );
-        }
-
-        return generateGlobalOvalID( e.getOvalID(), e.getOvalVersion() );
-    }
-
-
-    public static final String generateGlobalOvalID(
-                    final String id,
-                    final int version
-                    )
-    {
-        if (id == null || id.length() == 0) {
-            throw new IllegalArgumentException( "null or empty ovalID" );
-        }
-
-        return id + ":" + version;
-    }
+//    /**
+//     */
+//    public static final String generateGlobalOvalID(
+//                    final OvalElement e
+//                    )
+//    {
+//        if (e == null) {
+//            throw new IllegalArgumentException( "null element" );
+//        }
+//
+//        return generateGlobalOvalID( e.getOvalID(), e.getOvalVersion() );
+//    }
+//
+//
+//    public static final String generateGlobalOvalID(
+//                    final String id,
+//                    final int version
+//                    )
+//    {
+//        if (id == null || id.length() == 0) {
+//            throw new IllegalArgumentException( "null or empty ovalID" );
+//        }
+//
+//        return id + ":" + version;
+//    }
 
 
 
@@ -175,7 +174,14 @@ public abstract class OvalElement
     public String ovalGetGlobalID()
     {
         if (_ovalGlobalID == null) {
-            _ovalGlobalID = generateGlobalOvalID( this );
+            String  id = getOvalID();
+            int  version = getOvalVersion();
+            if (id == null  ||  id.length() == 0) {
+                throw new IllegalArgumentException( "null or empty ovalID" );
+            }
+
+
+            _ovalGlobalID = id + ":" + version;
         }
 
         return _ovalGlobalID;
@@ -183,26 +189,26 @@ public abstract class OvalElement
 
 
 
-    //**************************************************************
-    //  Comparable
-    //**************************************************************
-
-    @Override
-    public int compareTo(
-                    final OvalElement o
-                    )
-    {
-        String  id1 = getOvalID();
-        String  id2 = o.getOvalID();
-        int  order = id1.compareTo( id2 );
-        if (order != 0) {
-            return order;
-        }
-
-        int  version1 = getOvalVersion();
-        int  version2 = o.getOvalVersion();
-        return (version1 - version2);
-    }
+//    //**************************************************************
+//    //  Comparable
+//    //**************************************************************
+//
+//    @Override
+//    public int compareTo(
+//                    final OvalElement<K> o
+//                    )
+//    {
+//        String  id1 = getOvalID();
+//        String  id2 = o.getOvalID();
+//        int  order = id1.compareTo( id2 );
+//        if (order != 0) {
+//            return order;
+//        }
+//
+//        int  version1 = getOvalVersion();
+//        int  version2 = o.getOvalVersion();
+//        return (version1 - version2);
+//    }
 
 
 
@@ -239,7 +245,8 @@ public abstract class OvalElement
             return false;
         }
 
-        OvalElement  other = (OvalElement)obj;
+        @SuppressWarnings( "unchecked" )
+        OvalElement<K>  other = (OvalElement<K>)obj;
         String  other_id = other.getOvalID();
         String   this_id =  this.getOvalID();
         if (this_id == other_id
