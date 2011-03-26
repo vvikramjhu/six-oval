@@ -21,7 +21,9 @@
 package jp.go.aist.six.oval.model.v5.definitions;
 
 import jp.go.aist.six.oval.model.v5.OvalEntity;
+import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
 import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Property;
 
 
 
@@ -36,6 +38,12 @@ import com.google.code.morphia.annotations.Entity;
 public class DefinitionType
     extends OvalEntity
 {
+
+    @Property( "class" )
+    private DefinitionClassEnumeration  _definitionClass;
+    //{required}
+
+
 
     /**
      * Constructor.
@@ -76,6 +84,22 @@ public class DefinitionType
 //        setMetadata( metadata );
 //    }
 
+
+
+    /**
+     */
+    public void setDefinitionClass(
+                    final DefinitionClassEnumeration clazz
+                    )
+    {
+        _definitionClass = clazz;
+    }
+
+
+    public DefinitionClassEnumeration getDefinitionClass()
+    {
+        return _definitionClass;
+    }
 
 
 

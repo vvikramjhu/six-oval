@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.common;
 
-import java.io.Serializable;
-import java.util.HashMap;
 
 
 
@@ -35,61 +33,33 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class DefinitionClassEnumeration
-    implements Serializable
+public enum DefinitionClassEnumeration
 {
 
-    private static final String  _COMPLIANCE_     = "compliance";
-    private static final String  _INVENTORY_      = "inventory";
-    private static final String  _MISCELLANEOUS_  = "miscellaneous";
-    private static final String  _PATCH_          = "patch";
-    private static final String  _VULNERABILITY_  = "vulnerability";
-
-
-    public static final DefinitionClassEnumeration  COMPLIANCE     = new DefinitionClassEnumeration( _COMPLIANCE_ );
-    public static final DefinitionClassEnumeration  INVENTORY      = new DefinitionClassEnumeration( _INVENTORY_ );
-    public static final DefinitionClassEnumeration  MISCELLANEOUS  = new DefinitionClassEnumeration( _MISCELLANEOUS_ );
-    public static final DefinitionClassEnumeration  PATCH          = new DefinitionClassEnumeration( _PATCH_ );
-    public static final DefinitionClassEnumeration  VULNERABILITY  = new DefinitionClassEnumeration( _VULNERABILITY_ );
+    COMPLIANCE( "compliance" ),
+    INVENTORY(  "inventory" ),
+    MISCELLANEOUS( "miscellaneous" ),
+    PATCH( "patch" ),
+    VULNERABILITY( "vulnerability" );
 
 
 
-    private static HashMap<String, DefinitionClassEnumeration> _INIT_()
-    {
-        HashMap<String, DefinitionClassEnumeration>  map = new HashMap<String, DefinitionClassEnumeration>();
-        map.put( _COMPLIANCE_,     COMPLIANCE     );
-        map.put( _INVENTORY_,      INVENTORY      );
-        map.put( _MISCELLANEOUS_,  MISCELLANEOUS  );
-        map.put( _PATCH_,          PATCH          );
-        map.put( _VULNERABILITY_,  VULNERABILITY  );
-        return map;
-    }
-
-    private static final HashMap<String, DefinitionClassEnumeration>  _INSTANCES_ = _INIT_();
-
-
-
-    /**
-     */
-    public static DefinitionClassEnumeration valueOf(
-                    final String name
+    public static DefinitionClassEnumeration fromValue(
+                    final String value
                     )
     {
-        DefinitionClassEnumeration  flag = null;
-        if (name != null) {
-            flag = _INSTANCES_.get( name );
+        for (DefinitionClassEnumeration  e : DefinitionClassEnumeration.values()) {
+            if (e._value.equals( value )) {
+                return e;
+            }
         }
 
-        if (flag == null) {
-            throw new IllegalArgumentException( "invalid definition class: " + name );
-        }
-
-        return flag;
+        throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
+    private String  _value;
 
 
 
@@ -97,20 +67,12 @@ public final class DefinitionClassEnumeration
      * Constructor.
      */
     private DefinitionClassEnumeration(
-                    final String name
+                    final String value
                     )
     {
-        _name = name;
+        _value = value;
     }
 
-
-
-    /**
-     */
-    public String getName()
-    {
-        return _name;
-    }
 
 
 
@@ -121,7 +83,7 @@ public final class DefinitionClassEnumeration
     @Override
     public String toString()
     {
-        return getName();
+        return _value;
     }
 
 }
