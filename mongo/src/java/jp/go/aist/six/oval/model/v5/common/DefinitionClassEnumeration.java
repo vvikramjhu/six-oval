@@ -49,7 +49,7 @@ public enum DefinitionClassEnumeration
                     )
     {
         for (DefinitionClassEnumeration  e : DefinitionClassEnumeration.values()) {
-            if (e._value.equals( value )) {
+            if (e.name.equals( value )) {
                 return e;
             }
         }
@@ -59,18 +59,18 @@ public enum DefinitionClassEnumeration
 
 
 
-    private String  _value;
+    private final String  name;
 
 
 
     /**
      * Constructor.
      */
-    private DefinitionClassEnumeration(
-                    final String value
+    DefinitionClassEnumeration(
+                    final String name
                     )
     {
-        _value = value;
+        this.name = name;
     }
 
 
@@ -83,7 +83,7 @@ public enum DefinitionClassEnumeration
     @Override
     public String toString()
     {
-        return _value;
+        return name;
     }
 
 }

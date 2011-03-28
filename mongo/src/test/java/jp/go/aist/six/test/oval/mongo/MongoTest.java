@@ -1,6 +1,7 @@
 package jp.go.aist.six.test.oval.mongo;
 
 import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
+import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import org.testng.Reporter;
 import com.google.code.morphia.Datastore;
@@ -38,6 +39,7 @@ public class MongoTest
 
         DefinitionType  def = new DefinitionType( "oval:org.mitre.oval:def:7222", 5 );
         def.setDefinitionClass( DefinitionClassEnumeration.VULNERABILITY );
+        def.setFamily( FamilyEnumeration.WINDOWS );
         Key<DefinitionType>  defKey = db.save( def );
         Reporter.log( "  @definition _id=" + defKey, true );
 
