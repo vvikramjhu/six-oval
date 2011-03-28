@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.common;
 
-import java.io.Serializable;
-import java.util.HashMap;
 
 
 
@@ -33,73 +31,84 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class FamilyEnumeration
-    implements Serializable
+public enum FamilyEnumeration
+//    implements Serializable
+//    extends OvalEnumeration
 {
+    CATOS( "catos" ),
+    IOS( "ios" ),
+    MACOS( "macos" ),
+    PIXOS( "posix" ),
+    UNDEFINED( "undefined" ),
+    UNIX( "unix" ),
+    VMWARE_INFRASTRUCTURE( "vmware_infrastructure" ),
+    WINDOWS( "windows" ),
+    NONE( "" );
 
-    private static final String  _CATOS_     = "catos";
-    private static final String  _IOS_       = "ios";
-    private static final String  _MACOS_     = "macos";
-    private static final String  _PIXOS_     = "pixos";
-    private static final String  _UNDEFINED_ = "undefined";
-    private static final String  _UNIX_      = "unix";
-    private static final String  _VMWARE_INFRASTRUCTURE_ = "vmware_infrastructure";
-    private static final String  _WINDOWS_   = "windows";
-    private static final String  _NONE_      = "";
-
-
-    public static final FamilyEnumeration  CATOS      = new FamilyEnumeration( _CATOS_ );
-    public static final FamilyEnumeration  IOS        = new FamilyEnumeration( _IOS_ );
-    public static final FamilyEnumeration  MACOS      = new FamilyEnumeration( _MACOS_ );
-    public static final FamilyEnumeration  PIXOS      = new FamilyEnumeration( _PIXOS_ );
-    public static final FamilyEnumeration  UNDEFINED  = new FamilyEnumeration( _UNDEFINED_ );
-    public static final FamilyEnumeration  UNIX       = new FamilyEnumeration( _UNIX_ );
-    public static final FamilyEnumeration  VMWARE_INFRASTRUCTURE = new FamilyEnumeration( _VMWARE_INFRASTRUCTURE_ );
-    public static final FamilyEnumeration  WINDOWS    = new FamilyEnumeration( _WINDOWS_ );
-    public static final FamilyEnumeration  NONE       = new FamilyEnumeration( _NONE_ );
-
-
-
-    private static HashMap<String, FamilyEnumeration> _INIT_()
-    {
-        HashMap<String, FamilyEnumeration>  map = new HashMap<String, FamilyEnumeration>();
-        map.put( _CATOS_,      CATOS     );
-        map.put( _IOS_,        IOS       );
-        map.put( _MACOS_,      MACOS     );
-        map.put( _PIXOS_,      PIXOS     );
-        map.put( _UNDEFINED_,  UNDEFINED );
-        map.put( _UNIX_,       UNIX      );
-        map.put( _VMWARE_INFRASTRUCTURE_, VMWARE_INFRASTRUCTURE );
-        map.put( _WINDOWS_,    WINDOWS   );
-        map.put( _NONE_,       NONE      );
-        return map;
-    }
-
-    private static final HashMap<String, FamilyEnumeration>  _INSTANCES_ = _INIT_();
+//    private static final String  _CATOS_     = "catos";
+//    private static final String  _IOS_       = "ios";
+//    private static final String  _MACOS_     = "macos";
+//    private static final String  _PIXOS_     = "pixos";
+//    private static final String  _UNDEFINED_ = "undefined";
+//    private static final String  _UNIX_      = "unix";
+//    private static final String  _VMWARE_INFRASTRUCTURE_ = "vmware_infrastructure";
+//    private static final String  _WINDOWS_   = "windows";
+//    private static final String  _NONE_      = "";
+//
+//
+//    public static final FamilyEnumeration  CATOS      = new FamilyEnumeration( _CATOS_ );
+//    public static final FamilyEnumeration  IOS        = new FamilyEnumeration( _IOS_ );
+//    public static final FamilyEnumeration  MACOS      = new FamilyEnumeration( _MACOS_ );
+//    public static final FamilyEnumeration  PIXOS      = new FamilyEnumeration( _PIXOS_ );
+//    public static final FamilyEnumeration  UNDEFINED  = new FamilyEnumeration( _UNDEFINED_ );
+//    public static final FamilyEnumeration  UNIX       = new FamilyEnumeration( _UNIX_ );
+//    public static final FamilyEnumeration  VMWARE_INFRASTRUCTURE = new FamilyEnumeration( _VMWARE_INFRASTRUCTURE_ );
+//    public static final FamilyEnumeration  WINDOWS    = new FamilyEnumeration( _WINDOWS_ );
+//    public static final FamilyEnumeration  NONE       = new FamilyEnumeration( _NONE_ );
+//
+//
+//    private static final HashMap<String, FamilyEnumeration>  _INSTANCES_ = new HashMap<String, FamilyEnumeration>();
 
 
-
-    /**
-     */
-    public static FamilyEnumeration valueOf(
-                    final String name
-                    )
-    {
-        FamilyEnumeration  flag = null;
-        if (name != null) {
-            flag = _INSTANCES_.get( name );
-        }
-
-        if (flag == null) {
-            throw new IllegalArgumentException( "invalid family: " + name );
-        }
-
-        return flag;
-    }
+//    private static HashMap<String, FamilyEnumeration> _INIT_()
+//    {
+//        HashMap<String, FamilyEnumeration>  map = new HashMap<String, FamilyEnumeration>();
+//        map.put( _CATOS_,      CATOS     );
+//        map.put( _IOS_,        IOS       );
+//        map.put( _MACOS_,      MACOS     );
+//        map.put( _PIXOS_,      PIXOS     );
+//        map.put( _UNDEFINED_,  UNDEFINED );
+//        map.put( _UNIX_,       UNIX      );
+//        map.put( _VMWARE_INFRASTRUCTURE_, VMWARE_INFRASTRUCTURE );
+//        map.put( _WINDOWS_,    WINDOWS   );
+//        map.put( _NONE_,       NONE      );
+//        return map;
+//    }
+//
+//    private static final HashMap<String, FamilyEnumeration>  _INSTANCES_ = _INIT_();
 
 
+//    /**
+//     */
+//    public static FamilyEnumeration valueOf(
+//                    final String value
+//                    )
+//    {
+//        FamilyEnumeration  family = null;
+//        if (value != null) {
+//            family = _INSTANCES_.get( value );
+//        }
+//
+//        if (family == null) {
+//            throw new IllegalArgumentException( "invalid family: " + value );
+//        }
+//
+//        return family;
+//    }
 
-    private String  _name = null;
+
+
+    private String  _value;
 
 
 
@@ -107,19 +116,41 @@ public final class FamilyEnumeration
      * Constructor.
      */
     private FamilyEnumeration(
-                    final String name
+                    final String value
                     )
     {
-        _name = name;
+//        super( value );
+        _value = value;
+//        _INSTANCES_.put( value, this );
     }
 
 
 
-    /**
-     */
-    public String getName()
+    public String value()
     {
-        return _name;
+        return _value;
+    }
+
+
+//    /**
+//     */
+//    public String getName()
+//    {
+//        return _value;
+//    }
+
+
+
+    public static FamilyEnumeration fromValue(
+                    final String value
+                    )
+    {
+        for (FamilyEnumeration  e: FamilyEnumeration.values()) {
+            if (e._value.equals( value )) {
+                return e;
+            }
+        }
+        throw new IllegalArgumentException( value );
     }
 
 
@@ -131,7 +162,7 @@ public final class FamilyEnumeration
     @Override
     public String toString()
     {
-        return getName();
+        return _value;
     }
 
 }

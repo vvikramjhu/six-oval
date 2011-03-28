@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.model.v5.definitions;
 
 import jp.go.aist.six.oval.model.v5.OvalEntity;
-import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
 import jp.go.aist.six.oval.model.v5.common.EnumerationConverter;
 import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
 import com.google.code.morphia.annotations.Converters;
@@ -37,15 +36,16 @@ import com.google.code.morphia.annotations.Property;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
+//@Converters( OvalEnumerationConverter.class )
 @Converters( EnumerationConverter.class )
 @Entity( "definition" )
 public class DefinitionType
     extends OvalEntity
 {
 
-    @Property( "class" )
-    private DefinitionClassEnumeration  _definitionClass;
-    //{required}
+//    @Property( "class" )
+//    private DefinitionClassEnumeration  _definitionClass;
+//    //{required}
 
 
     @Property( "family" )
@@ -95,20 +95,20 @@ public class DefinitionType
 
 
 
-    /**
-     */
-    public void setDefinitionClass(
-                    final DefinitionClassEnumeration clazz
-                    )
-    {
-        _definitionClass = clazz;
-    }
-
-
-    public DefinitionClassEnumeration getDefinitionClass()
-    {
-        return _definitionClass;
-    }
+//    /**
+//     */
+//    public void setDefinitionClass(
+//                    final DefinitionClassEnumeration clazz
+//                    )
+//    {
+//        _definitionClass = clazz;
+//    }
+//
+//
+//    public DefinitionClassEnumeration getDefinitionClass()
+//    {
+//        return _definitionClass;
+//    }
 
 
 

@@ -3,7 +3,6 @@ package jp.go.aist.six.oval.model.v5.common;
 import java.lang.reflect.Method;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.google.code.morphia.converters.SimpleValueConverter;
 import com.google.code.morphia.converters.TypeConverter;
 import com.google.code.morphia.mapping.MappedField;
 import com.google.code.morphia.mapping.MappingException;
@@ -16,7 +15,7 @@ import com.google.code.morphia.mapping.MappingException;
  */
 public class EnumerationConverter
     extends TypeConverter
-    implements SimpleValueConverter
+//    implements SimpleValueConverter
 {
 
     /**
@@ -53,7 +52,7 @@ public class EnumerationConverter
             //reflection
             try {
                 @SuppressWarnings( "unchecked" )
-                Method  method = targetClass.getMethod( "valueOf", String.class );
+                Method  method = targetClass.getMethod( "fromValue", String.class );
                 obj = method.invoke( null, fromDBObject.toString() );
             } catch (Exception ex) {
                 throw new MappingException( ex.getMessage() );
@@ -79,7 +78,7 @@ public class EnumerationConverter
         if (value == null)
             return null;
 
-        return ((FamilyEnumeration)value).getName();
+        return ((FamilyEnumeration)value).value();
     }
 
 }

@@ -20,6 +20,9 @@
 
 package jp.go.aist.six.oval.model.v5.common;
 
+import java.util.HashMap;
+import jp.go.aist.six.oval.model.v5.OvalEnumeration;
+
 
 
 
@@ -33,58 +36,77 @@ package jp.go.aist.six.oval.model.v5.common;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum DefinitionClassEnumeration
+public final class DefinitionClassEnumeration
+    extends OvalEnumeration
 {
 
-    COMPLIANCE( "compliance" ),
-    INVENTORY(  "inventory" ),
-    MISCELLANEOUS( "miscellaneous" ),
-    PATCH( "patch" ),
-    VULNERABILITY( "vulnerability" );
+    private static final String  _COMPLIANCE_     = "compliance";
+    private static final String  _INVENTORY_      = "inventory";
+    private static final String  _MISCELLANEOUS_  = "miscellaneous";
+    private static final String  _PATCH_          = "patch";
+    private static final String  _VULNERABILITY_  = "vulnerability";
+
+
+    public static final DefinitionClassEnumeration  COMPLIANCE     = new DefinitionClassEnumeration( _COMPLIANCE_ );
+    public static final DefinitionClassEnumeration  INVENTORY      = new DefinitionClassEnumeration( _INVENTORY_ );
+    public static final DefinitionClassEnumeration  MISCELLANEOUS  = new DefinitionClassEnumeration( _MISCELLANEOUS_ );
+    public static final DefinitionClassEnumeration  PATCH          = new DefinitionClassEnumeration( _PATCH_ );
+    public static final DefinitionClassEnumeration  VULNERABILITY  = new DefinitionClassEnumeration( _VULNERABILITY_ );
 
 
 
-    public static DefinitionClassEnumeration fromValue(
+//    private static HashMap<String, DefinitionClassEnumeration> _INIT_()
+//    {
+//        HashMap<String, DefinitionClassEnumeration>  map = new HashMap<String, DefinitionClassEnumeration>();
+//        map.put( _COMPLIANCE_,     COMPLIANCE     );
+//        map.put( _INVENTORY_,      INVENTORY      );
+//        map.put( _MISCELLANEOUS_,  MISCELLANEOUS  );
+//        map.put( _PATCH_,          PATCH          );
+//        map.put( _VULNERABILITY_,  VULNERABILITY  );
+//        return map;
+//    }
+
+    private static final HashMap<String, DefinitionClassEnumeration>  _INSTANCES_ = new HashMap<String, DefinitionClassEnumeration>();;
+
+
+
+    /**
+     */
+    public static DefinitionClassEnumeration valueOf(
                     final String value
                     )
     {
-        for (DefinitionClassEnumeration  e : DefinitionClassEnumeration.values()) {
-            if (e.name.equals( value )) {
-                return e;
-            }
+        DefinitionClassEnumeration  definitionClass = null;
+        if (value != null) {
+            definitionClass = _INSTANCES_.get( value );
         }
 
-        throw new IllegalArgumentException( value );
+        if (definitionClass == null) {
+            throw new IllegalArgumentException( "invalid definition class: " + value );
+        }
+
+        return definitionClass;
     }
-
-
-
-    private final String  name;
 
 
 
     /**
      * Constructor.
      */
-    DefinitionClassEnumeration(
-                    final String name
+    private DefinitionClassEnumeration(
+                    final String value
                     )
     {
-        this.name = name;
-    }
+        super( value );
 
+        _INSTANCES_.put(  value, this );
+    }
 
 
 
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
-
-    @Override
-    public String toString()
-    {
-        return name;
-    }
 
 }
 // DefinitionClassEnumeration

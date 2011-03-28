@@ -20,7 +20,10 @@
 
 package jp.go.aist.six.oval.model.v5;
 
-import com.google.code.morphia.annotations.Property;
+import java.io.Serializable;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import com.google.code.morphia.mapping.MappingException;
 
 
 
@@ -32,178 +35,74 @@ import com.google.code.morphia.annotations.Property;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class OvalElement<K>
-    implements OvalObject<K>
+public abstract class OvalEnumeration
+    implements Serializable
 {
 
-    @Property( "id" )
-    private String  _ovalID;
-    //{required, oval:DefinitionIDPattern}
+    private static final HashMap<Class<?>, Method>  _VALUE_OF_METHODS_ = new HashMap<Class<?>, Method>();
 
 
-    @Property( "version" )
-    private int  _ovalVersion;
-    //{required, xsd:nonNegativeInteger}
+    /**
+     */
+    public static Object valueOf(
+                    final Class<?> targetClass,
+                    final String value
+                    )
+    {
+//        if (OvalEnumeration.class.isAssignableFrom( targetClass )) {
+            Object  obj = null;
+
+            Method  method = _VALUE_OF_METHODS_.get( targetClass );
+            try {
+                if (method == null) {
+                    //reflection
+                    method = targetClass.getMethod( "valueOf", String.class );
+                    _VALUE_OF_METHODS_.put( targetClass, method );
+                }
+                obj = method.invoke( null, value );
+            } catch (Exception ex) {
+                throw new MappingException( ex.getMessage() );
+            }
+
+            return obj;
+//        }
+
+//        throw new MappingException( "unsupported type: " + String.valueOf( targetClass ) );
+    }
+
+
+
+
+    private final String  _value;
 
 
 
     /**
      * Constructor.
      */
-    public OvalElement()
+    protected OvalEnumeration()
     {
+        this( null );
     }
 
 
-    /**
-     * Constructor.
-     *
-     * @param   id
-     *  the OVAL-ID of the entity.
-     * @param   version
-     *  the version of the entity.
-     */
-    public OvalElement(
-                    final String id,
-                    final int version
+    public OvalEnumeration(
+                    final String value
                     )
     {
-        setOvalID( id );
-        setOvalVersion( version );
+        _value = value;
+//        _instances.put( value, this );
     }
 
 
 
     /**
-     * Sets the OVAL-ID.
-     *
-     * @param   id
-     *  the OVAL-ID.
      */
-    public void setOvalID(
-                    final String id
-                    )
+    public final String value()
     {
-        _ovalID = id;
+        return _value;
     }
 
-
-    /**
-     * Retuens the OVAL-ID.
-     *
-     * @return
-     *  the OVAL-ID.
-     */
-    public String getOvalID()
-    {
-        return _ovalID;
-    }
-
-
-
-    /**
-     * Sets the version.
-     *
-     * @param   version
-     *  the version.
-     */
-    public void setOvalVersion(
-                    final int version
-                    )
-    {
-        if (version < 0) {
-            throw new IllegalArgumentException(
-                            "negative version: " + version );
-        }
-        _ovalVersion = version;
-    }
-
-
-    /**
-     * Returns the version.
-     *
-     * @return
-     *  the version.
-     */
-    public int getOvalVersion()
-    {
-        return _ovalVersion;
-    }
-
-
-
-//    /**
-//     */
-//    public static final String generateGlobalOvalID(
-//                    final OvalElement e
-//                    )
-//    {
-//        if (e == null) {
-//            throw new IllegalArgumentException( "null element" );
-//        }
-//
-//        return generateGlobalOvalID( e.getOvalID(), e.getOvalVersion() );
-//    }
-//
-//
-//    public static final String generateGlobalOvalID(
-//                    final String id,
-//                    final int version
-//                    )
-//    {
-//        if (id == null || id.length() == 0) {
-//            throw new IllegalArgumentException( "null or empty ovalID" );
-//        }
-//
-//        return id + ":" + version;
-//    }
-
-
-
-//    /**
-//     * ovalID + ":" + ovalVersion
-//     */
-//    private transient String  _ovalGlobalID;
-//
-//
-//    /**
-//     */
-//    public void ovalSetGlobalID(
-//                    final String gid
-//                    )
-//    {
-//        _ovalGlobalID = gid;
-//    }
-//
-//
-//    public String ovalGetGlobalID()
-//    {
-//        if (_ovalGlobalID == null) {
-//            String  id = getOvalID();
-//            int  version = getOvalVersion();
-//            if (id == null  ||  id.length() == 0) {
-//                throw new IllegalArgumentException( "null or empty ovalID" );
-//            }
-//
-//
-//            _ovalGlobalID = id + ":" + version;
-//        }
-//
-//        return _ovalGlobalID;
-//    }
-
-
-
-    protected String _ovalGlobalID()
-    {
-        String  id = getOvalID();
-        int  version = getOvalVersion();
-        if (id == null  ||  id.length() == 0) {
-            throw new IllegalStateException( "null or empty ovalID" );
-        }
-
-        return id + ":" + version;
-    }
 
 
 
@@ -235,57 +134,56 @@ public abstract class OvalElement<K>
     //  java.lang.Object
     //**************************************************************
 
+//    @Override
+//    public int hashCode()
+//    {
+//        final int  prime = 37;
+//        int  result = 17;
+//
+//        String  id = getOvalID();
+//        result = prime * result + ((id == null) ? 0 : id.hashCode());
+//
+//        result = prime * result + getOvalVersion();
+//
+//        return result;
+//    }
+//
+//
+//
+//    @Override
+//    public boolean equals(
+//                    final Object obj
+//                    )
+//    {
+//        if (this == obj) {
+//            return true;
+//        }
+//
+//        if (!(obj instanceof OvalEnumeration)) {
+//            return false;
+//        }
+//
+//        @SuppressWarnings( "unchecked" )
+//        OvalEnumeration<K>  other = (OvalEnumeration<K>)obj;
+//        String  other_id = other.getOvalID();
+//        String   this_id =  this.getOvalID();
+//        if (this_id == other_id
+//                        ||  (this_id != null  &&  this_id.equals( other_id ))) {
+//            if (this.getOvalVersion() == other.getOvalVersion()) {
+//                return true;
+//            }
+//        }
+//
+//        return false;
+//    }
+
+
+
     @Override
-    public int hashCode()
+    public final String toString()
     {
-        final int  prime = 37;
-        int  result = 17;
-
-        String  id = getOvalID();
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-
-        result = prime * result + getOvalVersion();
-
-        return result;
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (this == obj) {
-            return true;
-        }
-
-        if (!(obj instanceof OvalElement)) {
-            return false;
-        }
-
-        @SuppressWarnings( "unchecked" )
-        OvalElement<K>  other = (OvalElement<K>)obj;
-        String  other_id = other.getOvalID();
-        String   this_id =  this.getOvalID();
-        if (this_id == other_id
-                        ||  (this_id != null  &&  this_id.equals( other_id ))) {
-            if (this.getOvalVersion() == other.getOvalVersion()) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return "id=" + getOvalID()
-                + ", version=" + getOvalVersion();
+        return _value;
     }
 
 }
-// OvalElement
+// OvalEnumeration

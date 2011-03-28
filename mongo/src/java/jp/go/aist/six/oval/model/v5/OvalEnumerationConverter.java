@@ -1,6 +1,6 @@
-package jp.go.aist.six.oval.model.v5.common;
+package jp.go.aist.six.oval.model.v5;
 
-import java.lang.reflect.Method;
+import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.google.code.morphia.converters.SimpleValueConverter;
@@ -14,7 +14,7 @@ import com.google.code.morphia.mapping.MappingException;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class EnumerationConverter
+public class OvalEnumerationConverter
     extends TypeConverter
     implements SimpleValueConverter
 {
@@ -22,15 +22,18 @@ public class EnumerationConverter
     /**
      * Logger.
      */
-    private static final Logger  _LOG_ = LoggerFactory.getLogger( EnumerationConverter.class );
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalEnumerationConverter.class );
 
 
 
     /**
      */
-    public EnumerationConverter()
+    public OvalEnumerationConverter()
     {
-        super( new Class[] { FamilyEnumeration.class } );
+        super( new Class[] {
+//                        DefinitionClassEnumeration.class,
+                        FamilyEnumeration.class
+                        } );
     }
 
 
@@ -47,25 +50,12 @@ public class EnumerationConverter
         _LOG_.info( "target class: " + targetClass );
         if (fromDBObject == null) return null;
 
-        if (targetClass == FamilyEnumeration.class) {
-            Object  obj = null;
-
-            //reflection
-            try {
-                @SuppressWarnings( "unchecked" )
-                Method  method = targetClass.getMethod( "valueOf", String.class );
-                obj = method.invoke( null, fromDBObject.toString() );
-            } catch (Exception ex) {
-                throw new MappingException( ex.getMessage() );
-            }
-
+//        if (OvalEnumeration.class.isAssignableFrom( targetClass )) {
+            Object  obj = OvalEnumeration.valueOf( targetClass, fromDBObject.toString() );
             return obj;
-        }
+//        }
 
-        throw new MappingException( "unsupported type: " + String.valueOf( targetClass ) );
-
-
-//        return FamilyEnumeration.valueOf( fromDBObject.toString() );
+//        throw new MappingException( "unsupported type: " + String.valueOf( targetClass ) );
     }
 
 
@@ -79,9 +69,9 @@ public class EnumerationConverter
         if (value == null)
             return null;
 
-        return ((FamilyEnumeration)value).getName();
+        return ((OvalEnumeration)value).value();
     }
 
 }
-//
+// OvalEnumerationConverter
 
