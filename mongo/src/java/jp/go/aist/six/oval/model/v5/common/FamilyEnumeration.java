@@ -108,7 +108,7 @@ public enum FamilyEnumeration
 
 
 
-    private String  _value;
+    private final String  _value;
 
 
 
@@ -119,7 +119,6 @@ public enum FamilyEnumeration
                     final String value
                     )
     {
-//        super( value );
         _value = value;
 //        _INSTANCES_.put( value, this );
     }
@@ -141,6 +140,8 @@ public enum FamilyEnumeration
 
 
 
+    /**
+     */
     public static FamilyEnumeration fromValue(
                     final String value
                     )

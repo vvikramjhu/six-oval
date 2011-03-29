@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.common;
 
-import java.util.HashMap;
-import jp.go.aist.six.oval.model.v5.OvalEnumeration;
 
 
 
@@ -36,22 +34,28 @@ import jp.go.aist.six.oval.model.v5.OvalEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class DefinitionClassEnumeration
-    extends OvalEnumeration
+public enum DefinitionClassEnumeration
 {
 
-    private static final String  _COMPLIANCE_     = "compliance";
-    private static final String  _INVENTORY_      = "inventory";
-    private static final String  _MISCELLANEOUS_  = "miscellaneous";
-    private static final String  _PATCH_          = "patch";
-    private static final String  _VULNERABILITY_  = "vulnerability";
+    COMPLIANCE(     "compliance"     ),
+    INVENTORY(      "inventory"      ),
+    MISCELLANEOUS(  "miscellaneous"  ),
+    PATCH(          "patch"          ),
+    VULNERABILITY(  "vulnerability"  );
 
 
-    public static final DefinitionClassEnumeration  COMPLIANCE     = new DefinitionClassEnumeration( _COMPLIANCE_ );
-    public static final DefinitionClassEnumeration  INVENTORY      = new DefinitionClassEnumeration( _INVENTORY_ );
-    public static final DefinitionClassEnumeration  MISCELLANEOUS  = new DefinitionClassEnumeration( _MISCELLANEOUS_ );
-    public static final DefinitionClassEnumeration  PATCH          = new DefinitionClassEnumeration( _PATCH_ );
-    public static final DefinitionClassEnumeration  VULNERABILITY  = new DefinitionClassEnumeration( _VULNERABILITY_ );
+//    private static final String  _COMPLIANCE_     = "compliance";
+//    private static final String  _INVENTORY_      = "inventory";
+//    private static final String  _MISCELLANEOUS_  = "miscellaneous";
+//    private static final String  _PATCH_          = "patch";
+//    private static final String  _VULNERABILITY_  = "vulnerability";
+//
+//
+//    public static final DefinitionClassEnumeration  COMPLIANCE     = new DefinitionClassEnumeration( _COMPLIANCE_ );
+//    public static final DefinitionClassEnumeration  INVENTORY      = new DefinitionClassEnumeration( _INVENTORY_ );
+//    public static final DefinitionClassEnumeration  MISCELLANEOUS  = new DefinitionClassEnumeration( _MISCELLANEOUS_ );
+//    public static final DefinitionClassEnumeration  PATCH          = new DefinitionClassEnumeration( _PATCH_ );
+//    public static final DefinitionClassEnumeration  VULNERABILITY  = new DefinitionClassEnumeration( _VULNERABILITY_ );
 
 
 
@@ -66,27 +70,24 @@ public final class DefinitionClassEnumeration
 //        return map;
 //    }
 
-    private static final HashMap<String, DefinitionClassEnumeration>  _INSTANCES_ = new HashMap<String, DefinitionClassEnumeration>();;
-
-
 
     /**
      */
-    public static DefinitionClassEnumeration valueOf(
+    public static DefinitionClassEnumeration fromValue(
                     final String value
                     )
     {
-        DefinitionClassEnumeration  definitionClass = null;
-        if (value != null) {
-            definitionClass = _INSTANCES_.get( value );
+        for (DefinitionClassEnumeration  e: DefinitionClassEnumeration.values()) {
+            if (e._value.equals( value )) {
+                return e;
+            }
         }
-
-        if (definitionClass == null) {
-            throw new IllegalArgumentException( "invalid definition class: " + value );
-        }
-
-        return definitionClass;
+        throw new IllegalArgumentException( value );
     }
+
+
+
+    private final String  _value;
 
 
 
@@ -97,9 +98,16 @@ public final class DefinitionClassEnumeration
                     final String value
                     )
     {
-        super( value );
+        _value = value;
+    }
 
-        _INSTANCES_.put(  value, this );
+
+
+    /**
+     */
+    public String value()
+    {
+        return _value;
     }
 
 
@@ -107,6 +115,12 @@ public final class DefinitionClassEnumeration
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
+
+    @Override
+    public String toString()
+    {
+        return _value;
+    }
 
 }
 // DefinitionClassEnumeration
