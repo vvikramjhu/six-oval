@@ -29,6 +29,7 @@ public class EnumerationConverter
 
 
     private static final Class<?>[]  _SUPPORTED_CLASSES_ = new Class[] {
+        OperationEnumeration.class,
         DefinitionClassEnumeration.class,
         FamilyEnumeration.class
         };
