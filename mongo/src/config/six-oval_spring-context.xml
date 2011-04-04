@@ -37,8 +37,8 @@
       class="org.springframework.oxm.castor.CastorMarshaller">
         <property name="mappingLocations">
             <list>
-                 <value>classpath:castor-xml_oval-5-six.xml</value>
-                 <value>classpath:castor-xml_oval-5-definitions.xml</value>
+                 <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-six.xml</value>
+                 <value>classpath:jp/go/aist/six/oval/core/xml/castor-xml_oval-5-definitions.xml</value>
 <!--
                  <value>classpath:castor-xml_oval-5-common.xml</value>
 
