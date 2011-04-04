@@ -40,8 +40,8 @@ public class MessageType
 
     private String  _content;
 
-    public static final MessageLevel  DEFAULT_LEVEL = MessageLevel.INFO;
-    private MessageLevel  _level;
+    public static final MessageLevelEnumeration  DEFAULT_LEVEL = MessageLevelEnumeration.INFO;
+    private MessageLevelEnumeration  _level;
     //{optional, default="info"}
 
 
@@ -75,14 +75,14 @@ public class MessageType
     /**
      */
     public void setLevel(
-                    final MessageLevel level
+                    final MessageLevelEnumeration level
                     )
     {
         _level = level;
     }
 
 
-    public MessageLevel getLevel()
+    public MessageLevelEnumeration getLevel()
     {
         return _level;
     }

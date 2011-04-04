@@ -24,22 +24,20 @@ package jp.go.aist.six.oval.model.v5.common;
 
 
 /**
- * The Existence enumeration type defines acceptable existence values,
- * which are used to determine a result based on the existence
- * of individual components.
+ * The MessageLevel enumeration type defines the different levels
+ * associated with a message.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum ExistenceEnumeration
+public enum MessageLevelEnumeration
 {
-
-    ALL_EXIST( "all_exist" ),
-    ANY_EXIST( "any_exist" ),
-    AT_LEAST_ONE_EXISTS( "at_least_one_exists" ),
-    NONE_EXIST( "none_exist" ),
-    ONLY_ONE_EXISTS( "only_one_exists" );
+    DEBUG( "debug" ),
+    ERROR( "error" ),
+    FATAL( "fatal" ),
+    INFO( "info" ),
+    WARNING( "warning" );
 
 
 
@@ -47,7 +45,7 @@ public enum ExistenceEnumeration
 
 
 
-    ExistenceEnumeration(
+    MessageLevelEnumeration(
                     final String value
                     )
     {
@@ -65,11 +63,11 @@ public enum ExistenceEnumeration
 
     /**
      */
-    public static ExistenceEnumeration fromValue(
+    public static MessageLevelEnumeration fromValue(
                     final String value
                     )
     {
-        for (ExistenceEnumeration  e: ExistenceEnumeration.values()) {
+        for (MessageLevelEnumeration  e: MessageLevelEnumeration.values()) {
             if (e._value.equals( value )) {
                 return e;
             }
@@ -90,50 +88,52 @@ public enum ExistenceEnumeration
     }
 
 
-//    private static final String  _ALL_EXIST_            = "all_exist";
-//    private static final String  _ANY_EXIST_            = "any_exist";
-//    private static final String  _AT_LEAST_ONE_EXISTS_  = "at_least_one_exists";
-//    private static final String  _NONE_EXIST_           = "none_exist";
-//    private static final String  _ONLY_ONE_EXISTS_      = "only_one_exists";
+
+
+//    private static final String  _DEBUG_    = "debug";
+//    private static final String  _ERROR_    = "error";
+//    private static final String  _FATAL_    = "fatal";
+//    private static final String  _INFO_     = "info";
+//    private static final String  _WARNING_  = "warning";
 //
 //
-//    public static final ExistenceEnumeration  ALL_EXIST            = new ExistenceEnumeration( _ALL_EXIST_ );
-//    public static final ExistenceEnumeration  ANY_EXIST            = new ExistenceEnumeration( _ANY_EXIST_ );
-//    public static final ExistenceEnumeration  AT_LEAST_ONE_EXISTS  = new ExistenceEnumeration( _AT_LEAST_ONE_EXISTS_ );
-//    public static final ExistenceEnumeration  NONE_EXIST           = new ExistenceEnumeration( _NONE_EXIST_ );
-//    public static final ExistenceEnumeration  ONLY_ONE_EXISTS      = new ExistenceEnumeration( _ONLY_ONE_EXISTS_ );
+//    public static final MessageLevel  DEBUG    = new MessageLevel( _DEBUG_ );
+//    public static final MessageLevel  ERROR    = new MessageLevel( _ERROR_ );
+//    public static final MessageLevel  FATAL    = new MessageLevel( _FATAL_ );
+//    public static final MessageLevel  INFO     = new MessageLevel( _INFO_ );
+//    public static final MessageLevel  WARNING  = new MessageLevel( _WARNING_ );
 //
 //
 //
-//    private static HashMap<String, ExistenceEnumeration> _INIT_()
+//    private static HashMap<String, MessageLevel> _INIT_()
 //    {
-//        HashMap<String, ExistenceEnumeration>  map = new HashMap<String, ExistenceEnumeration>();
-//        map.put( _ALL_EXIST_,           ALL_EXIST           );
-//        map.put( _ANY_EXIST_,           ANY_EXIST           );
-//        map.put( _AT_LEAST_ONE_EXISTS_, AT_LEAST_ONE_EXISTS );
-//        map.put( _NONE_EXIST_,          NONE_EXIST          );
-//        map.put( _ONLY_ONE_EXISTS_,     ONLY_ONE_EXISTS     );
+//        HashMap<String, MessageLevel>  map = new HashMap<String, MessageLevel>();
+//        map.put( _DEBUG_,   DEBUG );
+//        map.put( _ERROR_,   ERROR );
+//        map.put( _FATAL_,   FATAL );
+//        map.put( _INFO_,    INFO );
+//        map.put( _WARNING_, WARNING );
 //        return map;
 //    }
 //
-//    private static final HashMap<String, ExistenceEnumeration>  _INSTANCES_ = _INIT_();
+//    private static final HashMap<String, MessageLevel>  _INSTANCES_ = _INIT_();
 //
 //
 //
 //
 //    /**
 //     */
-//    public static ExistenceEnumeration valueOf(
+//    public static MessageLevel valueOf(
 //                    final String name
 //                    )
 //    {
-//        ExistenceEnumeration  flag = null;
+//        MessageLevel  flag = null;
 //        if (name != null) {
 //            flag = _INSTANCES_.get( name );
 //        }
 //
 //        if (flag == null) {
-//            throw new IllegalArgumentException( "invalid existence: " + name );
+//            throw new IllegalArgumentException( "invalid message level: " + name );
 //        }
 //
 //        return flag;
@@ -148,7 +148,7 @@ public enum ExistenceEnumeration
 //    /**
 //     * Constructor.
 //     */
-//    private ExistenceEnumeration(
+//    private MessageLevel(
 //                    final String name
 //                    )
 //    {
@@ -177,4 +177,4 @@ public enum ExistenceEnumeration
 //    }
 
 }
-// ExistenceEnumeration
+// MessageLevel

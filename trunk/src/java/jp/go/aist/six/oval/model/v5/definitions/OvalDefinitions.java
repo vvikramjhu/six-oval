@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.model.v5.definitions;
 
 import jp.go.aist.six.oval.model.v5.OvalDocument;
-import jp.go.aist.six.oval.model.v5.common.GeneratorType;
 
 
 
@@ -36,30 +35,30 @@ public class OvalDefinitions
     extends OvalDocument
 {
 
-    private GeneratorType  _generator;
-    //{1..1}
+//    private GeneratorType  _generator;
+//    //{1..1}
+//
 
-
-    private DefinitionsType  _definitions;
-    //{0..1}
-
-
-    private TestsType  _tests;
-    //{0..1}
-
-
-    private SystemObjectsType  _objects;
-    //{0..1}
-
-
-    private StatesType  _states;
-    //{0..1}
-
-
-    private VariablesType  _variables;
-    //{0..1}
-
-
+//    private DefinitionsType  _definitions;
+//    //{0..1}
+//
+//
+//    private TestsType  _tests;
+//    //{0..1}
+//
+//
+//    private SystemObjectsType  _objects;
+//    //{0..1}
+//
+//
+//    private StatesType  _states;
+//    //{0..1}
+//
+//
+//    private VariablesType  _variables;
+//    //{0..1}
+//
+//
     private String  _definitionsDigest;
 
 
@@ -84,180 +83,180 @@ public class OvalDefinitions
 
 
 
-    /**
-     */
-    public void setGenerator(
-                    final GeneratorType generator
-                    )
-    {
-        _generator = generator;
-    }
-
-
-    public GeneratorType getGenerator()
-    {
-        return _generator;
-    }
-
-
-
-    /**
-     */
-    public void setDefinitions(
-                    final DefinitionsType definitions
-                    )
-    {
-        _definitions = definitions;
-    }
-
-
-    public DefinitionsType getDefinitions()
-    {
-        return _definitions;
-    }
-
-
-    public OvalDefinitions definition(
-                    final DefinitionType definition
-                    )
-    {
-        DefinitionsType  defs = getDefinitions();
-        if (defs == null) {
-            defs = new DefinitionsType();
-            setDefinitions( defs );
-        }
-        defs.addDefinition( definition );
-
-        return this;
-    }
-
-
-
-    /**
-     */
-    public void setTests(
-                    final TestsType tests
-                    )
-    {
-        _tests = tests;
-    }
-
-
-    public TestsType getTests()
-    {
-        return _tests;
-    }
-
-
-    public OvalDefinitions test(
-                    final TestType test
-                    )
-    {
-        TestsType  tests = getTests();
-        if (tests == null) {
-            tests = new TestsType();
-            setTests( tests );
-        }
-        tests.addTest( test );
-
-        return this;
-    }
-
-
-
-    /**
-     */
-    public void setObjects(
-                    final SystemObjectsType objects
-                    )
-    {
-        _objects = objects;
-    }
-
-
-    public SystemObjectsType getObjects()
-    {
-        return _objects;
-    }
-
-
-    public OvalDefinitions object(
-                    final SystemObjectType object
-                    )
-    {
-        SystemObjectsType  objects = getObjects();
-        if (objects == null) {
-            objects = new SystemObjectsType();
-            setObjects( objects );
-        }
-        objects.addObject( object );
-
-        return this;
-    }
-
-
-
-    /**
-     */
-    public void setStates(
-                    final StatesType states
-                    )
-    {
-        _states = states;
-    }
-
-
-    public StatesType getStates()
-    {
-        return _states;
-    }
-
-
-    public OvalDefinitions state(
-                    final StateType state
-                    )
-    {
-        StatesType  states = getStates();
-        if (states == null) {
-            states = new StatesType();
-            setStates( states );
-        }
-        states.addState( state );
-
-        return this;
-    }
-
-
-
-    /**
-     */
-    public void setVariables(
-                    final VariablesType variables
-                    )
-    {
-        _variables = variables;
-    }
-
-
-    public VariablesType getVariables()
-    {
-        return _variables;
-    }
-
-
-    public OvalDefinitions variable(
-                    final VariableType variable
-                    )
-    {
-        VariablesType  variables = getVariables();
-        if (variables == null) {
-            variables = new VariablesType();
-            setVariables( variables );
-        }
-        variables.addVariable( variable );
-
-        return this;
-    }
+//    /**
+//     */
+//    public void setGenerator(
+//                    final GeneratorType generator
+//                    )
+//    {
+//        _generator = generator;
+//    }
+//
+//
+//    public GeneratorType getGenerator()
+//    {
+//        return _generator;
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public void setDefinitions(
+//                    final DefinitionsType definitions
+//                    )
+//    {
+//        _definitions = definitions;
+//    }
+//
+//
+//    public DefinitionsType getDefinitions()
+//    {
+//        return _definitions;
+//    }
+//
+//
+//    public OvalDefinitions definition(
+//                    final DefinitionType definition
+//                    )
+//    {
+//        DefinitionsType  defs = getDefinitions();
+//        if (defs == null) {
+//            defs = new DefinitionsType();
+//            setDefinitions( defs );
+//        }
+//        defs.addDefinition( definition );
+//
+//        return this;
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public void setTests(
+//                    final TestsType tests
+//                    )
+//    {
+//        _tests = tests;
+//    }
+//
+//
+//    public TestsType getTests()
+//    {
+//        return _tests;
+//    }
+//
+//
+//    public OvalDefinitions test(
+//                    final TestType test
+//                    )
+//    {
+//        TestsType  tests = getTests();
+//        if (tests == null) {
+//            tests = new TestsType();
+//            setTests( tests );
+//        }
+//        tests.addTest( test );
+//
+//        return this;
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public void setObjects(
+//                    final SystemObjectsType objects
+//                    )
+//    {
+//        _objects = objects;
+//    }
+//
+//
+//    public SystemObjectsType getObjects()
+//    {
+//        return _objects;
+//    }
+//
+//
+//    public OvalDefinitions object(
+//                    final SystemObjectType object
+//                    )
+//    {
+//        SystemObjectsType  objects = getObjects();
+//        if (objects == null) {
+//            objects = new SystemObjectsType();
+//            setObjects( objects );
+//        }
+//        objects.addObject( object );
+//
+//        return this;
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public void setStates(
+//                    final StatesType states
+//                    )
+//    {
+//        _states = states;
+//    }
+//
+//
+//    public StatesType getStates()
+//    {
+//        return _states;
+//    }
+//
+//
+//    public OvalDefinitions state(
+//                    final StateType state
+//                    )
+//    {
+//        StatesType  states = getStates();
+//        if (states == null) {
+//            states = new StatesType();
+//            setStates( states );
+//        }
+//        states.addState( state );
+//
+//        return this;
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public void setVariables(
+//                    final VariablesType variables
+//                    )
+//    {
+//        _variables = variables;
+//    }
+//
+//
+//    public VariablesType getVariables()
+//    {
+//        return _variables;
+//    }
+//
+//
+//    public OvalDefinitions variable(
+//                    final VariableType variable
+//                    )
+//    {
+//        VariablesType  variables = getVariables();
+//        if (variables == null) {
+//            variables = new VariablesType();
+//            setVariables( variables );
+//        }
+//        variables.addVariable( variable );
+//
+//        return this;
+//    }
 
 
 
@@ -348,26 +347,27 @@ public class OvalDefinitions
     @Override
     public String toString()
     {
-        DefinitionsType  definitions = getDefinitions();
-        TestsType  tests = getTests();
-        SystemObjectsType  objects = getObjects();
-        StatesType  states = getStates();
-        VariablesType  variables = getVariables();
+//        DefinitionsType  definitions = getDefinitions();
+//        TestsType  tests = getTests();
+//        SystemObjectsType  objects = getObjects();
+//        StatesType  states = getStates();
+//        VariablesType  variables = getVariables();
 
-        return "oval_definitions[generator=" + getGenerator()
-                        + ", #definitions="
-                        + (definitions == null ? 0 : definitions.size())
-//                        + ", definitions=" + String.valueOf( definitions )
-                        + ", #tests="
-                        + (tests == null ? 0 : tests.getTest().size())
-//                        + ", tests=" + String.valueOf( tests )
-                        + ", #objects="
-                        + (objects == null ? 0 : objects.size())
-                        + ", #states="
-                        + (states == null ? 0 : states.size())
-                        + ", #variables="
-                        + (variables == null ? 0 : variables.size())
-                        + "]";
+        return "oval_definitions[]";
+//        return "oval_definitions[generator=" + getGenerator()
+//                        + ", #definitions="
+//                        + (definitions == null ? 0 : definitions.size())
+////                        + ", definitions=" + String.valueOf( definitions )
+//                        + ", #tests="
+//                        + (tests == null ? 0 : tests.getTest().size())
+////                        + ", tests=" + String.valueOf( tests )
+//                        + ", #objects="
+//                        + (objects == null ? 0 : objects.size())
+//                        + ", #states="
+//                        + (states == null ? 0 : states.size())
+//                        + ", #variables="
+//                        + (variables == null ? 0 : variables.size())
+//                        + "]";
     }
 
 }

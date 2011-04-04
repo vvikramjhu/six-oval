@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5;
 
-import java.util.UUID;
 
 
 
@@ -40,6 +39,12 @@ public abstract class OvalDocument
     extends AbstractOvalObject
 {
 
+//    @Id
+//    private String  _objectID;
+
+
+
+    //xsi:schemaLocation
     private String  _schemaLocation;
 
 
@@ -71,21 +76,28 @@ public abstract class OvalDocument
 
 
 
-    //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    @Override
-    public synchronized String getPersistentID()
-    {
-        String  pid = super.getPersistentID();
-        if (pid == null) {
-            pid = UUID.randomUUID().toString();
-            setPersistentID( pid );
-        }
-
-        return pid;
-    }
+//    //**************************************************************
+//    //  Persistable
+//    //**************************************************************
+//
+//    @Override
+//    public final void setPersistentID(
+//                    final String pid
+//                    )
+//    {
+//        _objectID = pid;
+//    }
+//
+//
+//    @Override
+//    public final synchronized String getPersistentID()
+//    {
+//        if (_objectID == null) {
+//            _objectID = UUID.randomUUID().toString();
+//        }
+//
+//        return _objectID;
+//    }
 
 }
 // OvalDocument

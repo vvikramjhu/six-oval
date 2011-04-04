@@ -20,7 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5;
 
-import jp.go.aist.six.util.castor.CastorPersistable;
+import java.util.UUID;
+import com.google.code.morphia.annotations.Id;
 
 
 
@@ -32,16 +33,44 @@ import jp.go.aist.six.util.castor.CastorPersistable;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class AbstractOvalObject
-//    extends AbstractPersistable<String>
-    extends CastorPersistable<String>
     implements OvalObject<String>
 {
+
+    @Id
+    private String  _objectID;
+
+
 
     /**
      * Constructor.
      */
     public AbstractOvalObject()
     {
+    }
+
+
+
+    //**************************************************************
+    //  Persistable
+    //**************************************************************
+
+    @Override
+    public final void setPersistentID(
+                    final String pid
+                    )
+    {
+        _objectID = pid;
+    }
+
+
+    @Override
+    public final synchronized String getPersistentID()
+    {
+        if (_objectID == null) {
+            _objectID = UUID.randomUUID().toString();
+        }
+
+        return _objectID;
     }
 
 }

@@ -118,14 +118,14 @@ public abstract class OvalEntity
     //**************************************************************
 
     @Override
-    public void setPersistentID( final String pid )
+    public final void setPersistentID( final String pid )
     {
         ovalSetGlobalID( pid );
     }
 
 
     @Override
-    public String getPersistentID()
+    public final String getPersistentID()
     {
         return ovalGetGlobalID();
 

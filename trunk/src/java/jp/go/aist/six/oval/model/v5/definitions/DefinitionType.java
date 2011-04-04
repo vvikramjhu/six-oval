@@ -22,8 +22,6 @@ package jp.go.aist.six.oval.model.v5.definitions;
 
 import jp.go.aist.six.oval.model.v5.OvalEntity;
 import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
-import jp.go.aist.six.oval.model.v5.common.EnumerationConverter;
-import com.google.code.morphia.annotations.Converters;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Property;
 
@@ -36,8 +34,7 @@ import com.google.code.morphia.annotations.Property;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-//@Converters( OvalEnumerationConverter.class )
-@Converters( EnumerationConverter.class )
+//@Converters( EnumerationConverter.class )
 @Entity( "definition" )
 public class DefinitionType
     extends OvalEntity
