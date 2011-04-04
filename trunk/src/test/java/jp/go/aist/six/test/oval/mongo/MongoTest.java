@@ -1,5 +1,6 @@
 package jp.go.aist.six.test.oval.mongo;
 
+import jp.go.aist.six.oval.core.datastore.mongo.PlatformConverter;
 import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
 import jp.go.aist.six.oval.model.v5.common.EnumerationConverter;
 import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
@@ -44,6 +45,7 @@ public class MongoTest
 //        morphia.map( DefinitionClassEnumeration.class );
 //        morphia.map( FamilyEnumeration.class );
         morphia.getMapper().getConverters().addConverter( EnumerationConverter.class );
+        morphia.getMapper().getConverters().addConverter( PlatformConverter.class );
         Datastore  db = morphia.createDatastore( (new Mongo()), "oval" );
 
         DefinitionType  def = new DefinitionType( "oval:org.mitre.oval:def:8500", 1 );
