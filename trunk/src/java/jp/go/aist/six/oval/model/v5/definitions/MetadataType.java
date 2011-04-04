@@ -44,7 +44,7 @@ public class MetadataType
 
 
 //    private final Collection<Affected>  _affected = new ArrayList<Affected>();
-//    private AffectedType  _affected;
+    private AffectedType  affected;
     //{0..*}
     //NOTE: So far, we found NO definition with multiple 'affected' elements.
 
@@ -112,29 +112,29 @@ public class MetadataType
 
 
 
-//    /**
-//     */
-//    public void setAffected(
-//                    final AffectedType affected
-//                    )
-//    {
-//        _affected = affected;
-//    }
-//
-//
-//    public MetadataType affected(
-//                    final AffectedType affected
-//                    )
-//    {
-//        setAffected( affected );
-//        return this;
-//    }
-//
-//
-//    public AffectedType getAffected()
-//    {
-//        return _affected;
-//    }
+    /**
+     */
+    public void setAffected(
+                    final AffectedType affected
+                    )
+    {
+        this.affected = affected;
+    }
+
+
+    public MetadataType affected(
+                    final AffectedType affected
+                    )
+    {
+        setAffected( affected );
+        return this;
+    }
+
+
+    public AffectedType getAffected()
+    {
+        return this.affected;
+    }
 
 
 
@@ -353,7 +353,7 @@ public class MetadataType
     public String toString()
     {
         return "[title=" + getTitle()
-//                        + ", affected=" + getAffected()
+                        + ", affected=" + getAffected()
 //                        + ", description=(omitted)" //+ getDescription()
                         + ", reference=" + getReference()
 //                        + ", additionalMetadata=" + getAdditionalMetadata()

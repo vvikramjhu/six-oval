@@ -40,11 +40,11 @@ public class AffectedType
     extends AbstractOvalObject
 {
 
-    private final Collection<Platform>  _platform = new HashSet<Platform>();
+    private final Collection<Platform>  platform = new HashSet<Platform>();
     //{0..*}
 
 
-    private final Collection<Product>  _product = new HashSet<Product>();
+    private final Collection<Product>  product = new HashSet<Product>();
     //{0..*}
 
 
@@ -115,10 +115,10 @@ public class AffectedType
                     final Collection<? extends Platform> platforms
                     )
     {
-        if (_platform != platforms) {
-            _platform.clear();
+        if (this.platform != platforms) {
+            this.platform.clear();
             if (platforms != null  &&  platforms.size() > 0) {
-                _platform.addAll( platforms );
+                this.platform.addAll( platforms );
             }
         }
     }
@@ -132,7 +132,7 @@ public class AffectedType
             return false;
         }
 
-        return _platform.add( platform );
+        return this.platform.add( platform );
     }
 
 
@@ -156,13 +156,13 @@ public class AffectedType
 
     public Collection<Platform> getPlatform()
     {
-        return _platform;
+        return this.platform;
     }
 
 
     public Iterator<Platform> iteratePlatform()
     {
-        return _platform.iterator();
+        return platform.iterator();
     }
 
 
@@ -173,10 +173,10 @@ public class AffectedType
                     final Collection<? extends Product> products
                     )
     {
-        if (_product != products) {
-            _product.clear();
+        if (this.product != products) {
+            this.product.clear();
             if (products != null  &&  products.size() > 0) {
-                _product.addAll( products );
+                this.product.addAll( products );
             }
         }
     }
@@ -190,7 +190,7 @@ public class AffectedType
             return false;
         }
 
-        return _product.add( product );
+        return this.product.add( product );
     }
 
 
@@ -214,13 +214,13 @@ public class AffectedType
 
     public Collection<Product> getProduct()
     {
-        return _product;
+        return this.product;
     }
 
 
     public Iterator<Product> iterateProduct()
     {
-        return _product.iterator();
+        return this.product.iterator();
     }
 
 
