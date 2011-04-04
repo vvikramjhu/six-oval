@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.v5.definitions;
 import jp.go.aist.six.oval.model.v5.OvalEntity;
 import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
 import jp.go.aist.six.oval.model.v5.common.EnumerationConverter;
-import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
 import com.google.code.morphia.annotations.Converters;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Property;
@@ -49,9 +48,9 @@ public class DefinitionType
     //{required}
 
 
-    @Property( "family" )
-    private FamilyEnumeration  _family;
-    //{required}
+//    @Property( "family" )
+//    private FamilyEnumeration  _family;
+//    //{required}
 
 
 
@@ -113,18 +112,18 @@ public class DefinitionType
 
 
 
-    public void setFamily(
-                    final FamilyEnumeration family
-                    )
-    {
-        _family = family;
-    }
-
-
-    public FamilyEnumeration getFamily()
-    {
-        return _family;
-    }
+//    public void setFamily(
+//                    final FamilyEnumeration family
+//                    )
+//    {
+//        _family = family;
+//    }
+//
+//
+//    public FamilyEnumeration getFamily()
+//    {
+//        return _family;
+//    }
 
 
     //**************************************************************
@@ -157,8 +156,8 @@ public class DefinitionType
     public String toString()
     {
         return "definition[" + super.toString()
-                   + "]";
-//                        + ", class=" + getDefinitionClass()
+                        + ", class=" + getDefinitionClass()
+                        + "]";
 //                        + ", metadata=" + getMetadata()
 ////                        + ", " + getCriteria()
 //                        + ", notes=" + getNotes()
