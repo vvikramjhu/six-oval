@@ -20,9 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
@@ -39,28 +36,28 @@ public class MetadataType
     extends AbstractOvalObject
 {
 
-    private String  _title;
+    private String  title;
     //{1..1}
 
 
 //    private final Collection<Affected>  _affected = new ArrayList<Affected>();
-    private AffectedType  _affected;
+//    private AffectedType  _affected;
     //{0..*}
     //NOTE: So far, we found NO definition with multiple 'affected' elements.
 
 
-    private final Collection<ReferenceType>  _reference =
-        new ArrayList<ReferenceType>();
-    //{0..*}
+//    private final Collection<ReferenceType>  _reference =
+//        new ArrayList<ReferenceType>();
+//    //{0..*}
 
 
     private String  _description;
     //{1..1}
 
 
-    private final Collection<MetadataItem>  _additionalMetadata =
-        new ArrayList<MetadataItem>();
-    //{xsd:any, 0..*}
+//    private final Collection<MetadataItem>  _additionalMetadata =
+//        new ArrayList<MetadataItem>();
+//    //{xsd:any, 0..*}
 
 
 
@@ -92,7 +89,7 @@ public class MetadataType
                     final String title
                     )
     {
-        _title = title;
+        this.title = title;
     }
 
 
@@ -107,71 +104,71 @@ public class MetadataType
 
     public String getTitle()
     {
-        return _title;
+        return title;
     }
 
 
 
-    /**
-     */
-    public void setAffected(
-                    final AffectedType affected
-                    )
-    {
-        _affected = affected;
-    }
+//    /**
+//     */
+//    public void setAffected(
+//                    final AffectedType affected
+//                    )
+//    {
+//        _affected = affected;
+//    }
+//
+//
+//    public MetadataType affected(
+//                    final AffectedType affected
+//                    )
+//    {
+//        setAffected( affected );
+//        return this;
+//    }
+//
+//
+//    public AffectedType getAffected()
+//    {
+//        return _affected;
+//    }
 
 
-    public MetadataType affected(
-                    final AffectedType affected
-                    )
-    {
-        setAffected( affected );
-        return this;
-    }
 
-
-    public AffectedType getAffected()
-    {
-        return _affected;
-    }
-
-
-
-    /**
-     */
-    public void setReference(
-                    final Collection<? extends ReferenceType> references
-                    )
-    {
-        if (references != _reference) {
-            _reference.clear();
-            if (references != null  &&  references.size() > 0) {
-                _reference.addAll( references );
-            }
-        }
-    }
-
-
-    public MetadataType reference(
-                    final ReferenceType reference
-                    )
-    {
-        _reference.add( reference );
-        return this;
-    }
-
-
-    public Collection<ReferenceType> getReference()
-    {
-        return _reference;
-    }
-
-
-    public Iterator<ReferenceType> iterateReference()
-    {
-        return _reference.iterator();
-    }
+//    /**
+//     */
+//    public void setReference(
+//                    final Collection<? extends ReferenceType> references
+//                    )
+//    {
+//        if (references != _reference) {
+//            _reference.clear();
+//            if (references != null  &&  references.size() > 0) {
+//                _reference.addAll( references );
+//            }
+//        }
+//    }
+//
+//
+//    public MetadataType reference(
+//                    final ReferenceType reference
+//                    )
+//    {
+//        _reference.add( reference );
+//        return this;
+//    }
+//
+//
+//    public Collection<ReferenceType> getReference()
+//    {
+//        return _reference;
+//    }
+//
+//
+//    public Iterator<ReferenceType> iterateReference()
+//    {
+//        return _reference.iterator();
+//    }
 
 
 
@@ -201,40 +198,40 @@ public class MetadataType
 
 
 
-    /**
-     */
-    public void setAdditionalMetadata(
-                    final Collection<? extends MetadataItem> items
-                    )
-    {
-        if (items != _additionalMetadata) {
-            _additionalMetadata.clear();
-            if (items != null  &&  items.size() > 0) {
-                _additionalMetadata.addAll( items );
-            }
-        }
-    }
-
-
-    public MetadataType additionalMetadata(
-                    final MetadataItem item
-                    )
-    {
-        _additionalMetadata.add( item );
-        return this;
-    }
-
-
-    public Collection<MetadataItem> getAdditionalMetadata()
-    {
-        return _additionalMetadata;
-    }
-
-
-    public Iterator<MetadataItem> iterateAdditionalMetadata()
-    {
-        return _additionalMetadata.iterator();
-    }
+//    /**
+//     */
+//    public void setAdditionalMetadata(
+//                    final Collection<? extends MetadataItem> items
+//                    )
+//    {
+//        if (items != _additionalMetadata) {
+//            _additionalMetadata.clear();
+//            if (items != null  &&  items.size() > 0) {
+//                _additionalMetadata.addAll( items );
+//            }
+//        }
+//    }
+//
+//
+//    public MetadataType additionalMetadata(
+//                    final MetadataItem item
+//                    )
+//    {
+//        _additionalMetadata.add( item );
+//        return this;
+//    }
+//
+//
+//    public Collection<MetadataItem> getAdditionalMetadata()
+//    {
+//        return _additionalMetadata;
+//    }
+//
+//
+//    public Iterator<MetadataItem> iterateAdditionalMetadata()
+//    {
+//        return _additionalMetadata.iterator();
+//    }
 
 
 
@@ -353,10 +350,10 @@ public class MetadataType
     public String toString()
     {
         return "[title=" + getTitle()
-                        + ", affected=" + getAffected()
-                        + ", description=(omitted)" //+ getDescription()
-                        + ", reference=" + getReference()
-                        + ", additionalMetadata=" + getAdditionalMetadata()
+//                        + ", affected=" + getAffected()
+//                        + ", description=(omitted)" //+ getDescription()
+//                        + ", reference=" + getReference()
+//                        + ", additionalMetadata=" + getAdditionalMetadata()
                         + "]";
     }
 

@@ -40,6 +40,10 @@ public class DefinitionType
     extends OvalEntity
 {
 
+    private MetadataType  metadata;
+    //{1..1}
+
+
     @Property( "class" )
     private DefinitionClassEnumeration  _definitionClass;
     //{required}
@@ -89,6 +93,35 @@ public class DefinitionType
 //        this( id, version, clazz );
 //        setMetadata( metadata );
 //    }
+
+
+
+    /**
+     */
+    public void setMetadata(
+                    final MetadataType metadata
+                    )
+    {
+        this.metadata = metadata;
+    }
+
+
+    public DefinitionType metadata(
+                    final MetadataType metadata
+                    )
+    {
+        setMetadata( metadata );
+        return this;
+    }
+
+
+    public MetadataType getMetadata()
+    {
+        if (metadata == null) {
+            metadata = new MetadataType();
+        }
+        return metadata;
+    }
 
 
 
@@ -154,11 +187,10 @@ public class DefinitionType
     {
         return "definition[" + super.toString()
                         + ", class=" + getDefinitionClass()
-                        + "]";
-//                        + ", metadata=" + getMetadata()
+                        + ", metadata=" + getMetadata()
 ////                        + ", " + getCriteria()
 //                        + ", notes=" + getNotes()
-//                        + "]";
+                        + "]";
     }
 
 }
