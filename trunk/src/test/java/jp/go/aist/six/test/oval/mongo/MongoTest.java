@@ -4,6 +4,7 @@ import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
 import jp.go.aist.six.oval.model.v5.common.EnumerationConverter;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.MetadataType;
+import jp.go.aist.six.oval.model.v5.definitions.ReferenceType;
 import org.testng.Reporter;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Key;
@@ -41,12 +42,15 @@ public class MongoTest
         morphia.getMapper().getConverters().addConverter( EnumerationConverter.class );
         Datastore  db = morphia.createDatastore( (new Mongo()), "oval" );
 
-        DefinitionType  def = new DefinitionType( "oval:org.mitre.oval:def:7222", 5 );
+        DefinitionType  def = new DefinitionType( "oval:org.mitre.oval:def:8500", 1 );
         def.setDefinitionClass( DefinitionClassEnumeration.VULNERABILITY );
 //        def.setFamily( FamilyEnumeration.WINDOWS );
         MetadataType  metadata = new MetadataType();
-        metadata.setTitle( "this is a title" );
+        metadata.setTitle( "MySQL 5.0 and 5.1 SELECT Statement DOS Vulnerability" );
+        metadata.reference( new ReferenceType( "CVE", "CVE-2009-4019", "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-4019") );
+        metadata.reference( new ReferenceType( "foo", "bar", "http://foo.bar/baz") );
         def.setMetadata( metadata );
+
         Key<DefinitionType>  defKey = db.save( def );
         Reporter.log( "  @definition _id=" + defKey, true );
 

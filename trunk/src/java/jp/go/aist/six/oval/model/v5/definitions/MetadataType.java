@@ -20,6 +20,9 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
@@ -46,9 +49,9 @@ public class MetadataType
     //NOTE: So far, we found NO definition with multiple 'affected' elements.
 
 
-//    private final Collection<ReferenceType>  _reference =
-//        new ArrayList<ReferenceType>();
-//    //{0..*}
+    private final Collection<ReferenceType>  reference =
+        new ArrayList<ReferenceType>();
+    //{0..*}
 
 
     private String  _description;
@@ -135,40 +138,40 @@ public class MetadataType
 
 
 
-//    /**
-//     */
-//    public void setReference(
-//                    final Collection<? extends ReferenceType> references
-//                    )
-//    {
-//        if (references != _reference) {
-//            _reference.clear();
-//            if (references != null  &&  references.size() > 0) {
-//                _reference.addAll( references );
-//            }
-//        }
-//    }
-//
-//
-//    public MetadataType reference(
-//                    final ReferenceType reference
-//                    )
-//    {
-//        _reference.add( reference );
-//        return this;
-//    }
-//
-//
-//    public Collection<ReferenceType> getReference()
-//    {
-//        return _reference;
-//    }
-//
-//
-//    public Iterator<ReferenceType> iterateReference()
-//    {
-//        return _reference.iterator();
-//    }
+    /**
+     */
+    public void setReference(
+                    final Collection<? extends ReferenceType> references
+                    )
+    {
+        if (references != this.reference) {
+            this.reference.clear();
+            if (references != null  &&  references.size() > 0) {
+                this.reference.addAll( references );
+            }
+        }
+    }
+
+
+    public MetadataType reference(
+                    final ReferenceType reference
+                    )
+    {
+        this.reference.add( reference );
+        return this;
+    }
+
+
+    public Collection<ReferenceType> getReference()
+    {
+        return this.reference;
+    }
+
+
+    public Iterator<ReferenceType> iterateReference()
+    {
+        return this.reference.iterator();
+    }
 
 
 
@@ -352,7 +355,7 @@ public class MetadataType
         return "[title=" + getTitle()
 //                        + ", affected=" + getAffected()
 //                        + ", description=(omitted)" //+ getDescription()
-//                        + ", reference=" + getReference()
+                        + ", reference=" + getReference()
 //                        + ", additionalMetadata=" + getAdditionalMetadata()
                         + "]";
     }
