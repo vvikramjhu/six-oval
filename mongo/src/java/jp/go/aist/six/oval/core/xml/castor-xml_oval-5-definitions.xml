@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN"
+                         "http://castor.org/mapping.dtd">
+
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- // Project SIX: OVAL                                     // -->
+<!-- //                                                       // -->
+<!-- // Castor XML Mapping Specification                      // -->
+<!-- /////////////////////////////////////////////////////////// -->
+
+<!-- @author    Akihito Nakamura, AIST -->
+<!-- @version   $Id$ -->
+
+<mapping>
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %                                                     % -->
+    <!-- %  xmlns:oval-definitions-5                           % -->
+    <!-- %                                                     % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<!--
+    <class name="jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions"
+        extends="jp.go.aist.six.oval.model.v5.OvalDocument">
+        <map-to xml="oval_definitions"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            ns-prefix=""/>
+
+        <field name="generator" 
+            type="jp.go.aist.six.oval.model.v5.common.GeneratorType">
+            <bind-xml name="generator" node="element"/>
+        </field>
+
+        <field name="definitions" 
+            type="jp.go.aist.six.oval.model.v5.definitions.DefinitionsType">
+            <bind-xml name="definitions" node="element"/>
+        </field>
+
+        <field name="tests" 
+            type="jp.go.aist.six.oval.model.v5.definitions.TestsType">
+            <bind-xml name="tests" node="element" />
+        </field>
+
+
+        <field name="objects" 
+            type="jp.go.aist.six.oval.model.v5.definitions.SystemObjectsType">
+            <bind-xml name="objects" node="element"/>
+        </field>
+
+        <field name="states" 
+            type="jp.go.aist.six.oval.model.v5.definitions.StatesType">
+            <bind-xml name="states" node="element"/>
+        </field>
+
+        <field name="variables" 
+            type="jp.go.aist.six.oval.model.v5.definitions.VariablesType">
+            <bind-xml name="variables" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.DefinitionsType">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            ns-prefix=""/>
+
+        <field name="definition" 
+            type="jp.go.aist.six.oval.model.v5.definitions.DefinitionType"
+            collection="collection">
+            <bind-xml name="definition" node="element"/>
+        </field>
+    </class>
+-->
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.DefinitionType"
+        extends="jp.go.aist.six.oval.model.v5.OvalEntity">
+        <map-to xml="definition"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            ns-prefix=""/>
+
+<!--
+        <field name="metadata" 
+            type="jp.go.aist.six.oval.model.v5.definitions.MetadataType">
+            <bind-xml name="metadata" node="element"/>
+        </field>
+
+        <field name="notes" 
+            type="jp.go.aist.six.oval.model.v5.definitions.NotesType">
+            <bind-xml name="notes" node="element"/>
+        </field>
+
+        <field name="criteria" 
+            type="jp.go.aist.six.oval.model.v5.definitions.CriteriaType">
+            <bind-xml name="criteria" node="element"/>
+        </field>
+-->
+
+        <field name="definitionClass" type="string"
+            handler="jp.go.aist.six.oval.core.xml.DefinitionClassEnumerationHandler">
+<!--
+            type="jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration"
+-->
+            <bind-xml name="class" node="attribute"/>
+        </field>
+    </class>
+
+
+
+
+</mapping>
+
