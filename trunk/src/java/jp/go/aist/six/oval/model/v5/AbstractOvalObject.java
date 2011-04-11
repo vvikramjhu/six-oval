@@ -46,6 +46,7 @@ public abstract class AbstractOvalObject
      */
     public AbstractOvalObject()
     {
+        _objectID = UUID.randomUUID().toString();
     }
 
 
