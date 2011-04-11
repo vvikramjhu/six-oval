@@ -25,6 +25,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
+import com.google.code.morphia.annotations.Embedded;
 
 
 
@@ -40,11 +41,13 @@ public class AffectedType
     extends AbstractOvalObject
 {
 
+    @Embedded
     private final Collection<Platform>  platform = new HashSet<Platform>();
     //{0..*}
 
 
-    private final Collection<Product>  product = new HashSet<Product>();
+    private final Collection<String>  product = new HashSet<String>();
+//    private final Collection<Product>  product = new HashSet<Product>();
     //{0..*}
 
 
@@ -170,7 +173,7 @@ public class AffectedType
     /**
      */
     public void setProduct(
-                    final Collection<? extends Product> products
+                    final Collection<String> products
                     )
     {
         if (this.product != products) {
@@ -183,7 +186,7 @@ public class AffectedType
 
 
     public boolean addProduct(
-                    final Product product
+                    final String product
                     )
     {
         if (product == null) {
@@ -195,7 +198,7 @@ public class AffectedType
 
 
     public AffectedType product(
-                    final Product product
+                    final String product
                     )
     {
         addProduct( product );
@@ -203,26 +206,72 @@ public class AffectedType
     }
 
 
-    public AffectedType product(
-                    final String product
-                    )
-    {
-        addProduct( new Product( product ) );
-        return this;
-    }
-
-
-    public Collection<Product> getProduct()
+    public Collection<String> getProduct()
     {
         return this.product;
     }
 
 
-    public Iterator<Product> iterateProduct()
+    public Iterator<String> iterateProduct()
     {
         return this.product.iterator();
     }
 
+//    /**
+//     */
+//    public void setProduct(
+//                    final Collection<? extends Product> products
+//                    )
+//    {
+//        if (this.product != products) {
+//            this.product.clear();
+//            if (products != null  &&  products.size() > 0) {
+//                this.product.addAll( products );
+//            }
+//        }
+//    }
+//
+//
+//    public boolean addProduct(
+//                    final Product product
+//                    )
+//    {
+//        if (product == null) {
+//            return false;
+//        }
+//
+//        return this.product.add( product );
+//    }
+//
+//
+//    public AffectedType product(
+//                    final Product product
+//                    )
+//    {
+//        addProduct( product );
+//        return this;
+//    }
+//
+//
+//    public AffectedType product(
+//                    final String product
+//                    )
+//    {
+//        addProduct( new Product( product ) );
+//        return this;
+//    }
+//
+//
+//    public Collection<Product> getProduct()
+//    {
+//        return this.product;
+//    }
+//
+//
+//    public Iterator<Product> iterateProduct()
+//    {
+//        return this.product.iterator();
+//    }
 
 
     /**
@@ -255,7 +304,7 @@ public class AffectedType
         Collection<Platform>  platform = getPlatform();
         result = prime * result + ((platform == null) ? 0 : platform.hashCode());
 
-        Collection<Product>  product = getProduct();
+        Collection<String>  product = getProduct();
         result = prime * result + ((product == null) ? 0 : product.hashCode());
 
         FamilyEnumeration  family = getFamily();
@@ -280,8 +329,8 @@ public class AffectedType
         }
 
         AffectedType  other = (AffectedType)obj;
-        Collection<Product>  other_product = other.getProduct();
-        Collection<Product>   this_product =  this.getProduct();
+        Collection<String>  other_product = other.getProduct();
+        Collection<String>   this_product =  this.getProduct();
         if (this_product == other_product
                         ||  (this_product != null  &&  other_product != null
                                         &&  this_product.size() == other_product.size()

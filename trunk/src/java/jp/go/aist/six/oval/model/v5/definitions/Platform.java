@@ -20,7 +20,9 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.v5.NameEntity;
+import jp.go.aist.six.oval.model.v5.OvalObject;
+import com.google.code.morphia.annotations.Embedded;
+import com.google.code.morphia.annotations.Transient;
 
 
 
@@ -31,10 +33,16 @@ import jp.go.aist.six.oval.model.v5.NameEntity;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
+@Embedded
 public class Platform
-    extends NameEntity
+    implements OvalObject<String>
+//    extends NameEntity
 //extends NamedEntry<Integer>
 {
+
+    private String  name;
+
+
 
     /**
      * Constructor.
@@ -48,7 +56,49 @@ public class Platform
                     final String name
                     )
     {
-        super( name );
+        setName( name );
+//        super( name );
+    }
+
+
+
+    // We use the name as the persistent ID.
+    public void setName(
+                    final String name
+                    )
+    {
+        this.name = name;
+    }
+
+
+    public String getName()
+    {
+        return this.name;
+    }
+
+
+
+    //**************************************************************
+    //  Persistable
+    //**************************************************************
+
+    @Transient
+    private String  _objectID;
+
+
+    @Override
+    public final void setPersistentID(
+                    final String pid
+                    )
+    {
+        _objectID = pid;
+    }
+
+
+    @Override
+    public synchronized String getPersistentID()
+    {
+        return this._objectID;
     }
 
 

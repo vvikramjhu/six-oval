@@ -8,7 +8,6 @@ import jp.go.aist.six.oval.model.v5.definitions.AffectedType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.MetadataType;
 import jp.go.aist.six.oval.model.v5.definitions.Platform;
-import jp.go.aist.six.oval.model.v5.definitions.Product;
 import jp.go.aist.six.oval.model.v5.definitions.ReferenceType;
 import org.testng.Reporter;
 import com.google.code.morphia.Datastore;
@@ -62,8 +61,11 @@ public class MongoTest
         affected.platform( new Platform( "Microsoft Windows 2000" ) );
         affected.platform( new Platform( "Microsoft Windows XP" ) );
         affected.platform( new Platform( "Microsoft Windows Server 2003" ) );
-        affected.product( new Product( "MySQL Server 5.0" ) );
-        affected.product( new Product( "MySQL Server 5.1" ) );
+
+        affected.product( "MySQL Server 5.0" );
+        affected.product( "MySQL Server 5.1" );
+//        affected.product( new Product( "MySQL Server 5.0" ) );
+//        affected.product( new Product( "MySQL Server 5.1" ) );
 
         Key<DefinitionType>  defKey = db.save( def );
         Reporter.log( "  @definition _id=" + defKey, true );
