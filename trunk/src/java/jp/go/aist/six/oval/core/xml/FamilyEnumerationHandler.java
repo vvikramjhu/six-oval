@@ -20,15 +20,15 @@
 
 package jp.go.aist.six.oval.core.xml;
 
-import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
+import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class DefinitionClassEnumerationHandler
+public class FamilyEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public DefinitionClassEnumerationHandler()
+    public FamilyEnumerationHandler()
     {
         super();
     }
@@ -40,7 +40,7 @@ public class DefinitionClassEnumerationHandler
                     )
     {
         if (value == null) return null;
-        DefinitionClassEnumeration  type = (DefinitionClassEnumeration)value;
+        FamilyEnumeration  type = (FamilyEnumeration)value;
         return type.value();
     }
 
@@ -51,7 +51,7 @@ public class DefinitionClassEnumerationHandler
                     final Object value
                     )
     {
-        return DefinitionClassEnumeration.fromValue( (String)value );
+        return FamilyEnumeration.fromValue( (String)value );
     }
 
 
@@ -59,7 +59,7 @@ public class DefinitionClassEnumerationHandler
     @Override
     public Class<?> getFieldType()
     {
-        return DefinitionClassEnumeration.class;
+        return FamilyEnumeration.class;
     }
 
 
@@ -75,4 +75,4 @@ public class DefinitionClassEnumerationHandler
     }
 
 }
-// DefinitionClassEnumerationHandler
+// FamilyEnumerationHandler

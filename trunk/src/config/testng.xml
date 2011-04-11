@@ -16,7 +16,7 @@
 
     <!-- // XML // -->
 
-    <test name="oval.core.xml" enabled="false">
+    <test name="oval.core.xml" enabled="true">
         <groups>
             <run>
                 <include name="definitions.definition"/>
@@ -39,7 +39,7 @@
 
     <!-- // store // -->
 
-    <test name="oval.core.store" enabled="true">
+    <test name="oval.core.store" enabled="false">
         <groups>
             <run>
                 <include name="definitions.definition"/>

@@ -82,12 +82,12 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
             ns-prefix=""/>
 
-<!--
         <field name="metadata" 
             type="jp.go.aist.six.oval.model.v5.definitions.MetadataType">
             <bind-xml name="metadata" node="element"/>
         </field>
 
+<!--
         <field name="notes" 
             type="jp.go.aist.six.oval.model.v5.definitions.NotesType">
             <bind-xml name="notes" node="element"/>
@@ -105,6 +105,115 @@
             type="jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration"
 -->
             <bind-xml name="class" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.MetadataType">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            ns-prefix=""/>
+
+        <field name="title" type="string">
+            <bind-xml name="title" node="element"/>
+        </field>
+
+        <field name="affected" 
+            type="jp.go.aist.six.oval.model.v5.definitions.AffectedType">
+            <!-- collection="collection" -->
+            <bind-xml name="affected" node="element"/>
+        </field>
+
+        <field name="reference" 
+            type="jp.go.aist.six.oval.model.v5.definitions.ReferenceType"
+            collection="collection">
+            <bind-xml name="reference" node="element"/>
+        </field>
+
+        <field name="description" type="string">
+            <bind-xml name="description" node="element"/>
+        </field>
+
+<!--
+        <field name="additionalMetadata" 
+            type="jp.go.aist.six.oval.model.v5.definitions.MetadataItem"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+-->
+    </class>
+
+    <class name ="jp.go.aist.six.oval.model.v5.definitions.MetadataItem"
+        verify-constructable="false">
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.AffectedType">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="family" type="string" 
+            handler="jp.go.aist.six.oval.core.xml.FamilyEnumerationHandler">
+<!--        type="jp.go.aist.six.oval.model.v5.common.FamilyEnumeration" -->
+            <bind-xml name="family" node="attribute"/>
+        </field>
+
+        <field name="product" 
+            type="string"
+            collection="collection">
+            <bind-xml name="product" node="element"/>
+        </field>
+<!--
+        <field name="platform" 
+            type="jp.go.aist.six.oval.model.v5.definitions.Platform"
+            collection="collection">
+            <bind-xml name="platform" node="element"/>
+        </field>
+
+        <field name="product" 
+            type="jp.go.aist.six.oval.model.v5.definitions.Product"
+            collection="collection">
+            <bind-xml name="product" node="element"/>
+        </field>
+-->
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.Platform">
+        <map-to xml="platform"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="name" type="string">
+            <bind-xml node="text"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.Product">
+        <map-to xml="product"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="name" type="string">
+            <bind-xml node="text"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.definitions.ReferenceType">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="source" type="string">
+            <bind-xml name="source" node="attribute"/>
+        </field>
+
+        <field name="refID" type="string">
+            <bind-xml name="ref_id" node="attribute"/>
+        </field>
+
+        <field name="refURL" type="string">
+            <bind-xml name="ref_url" node="attribute"/>
         </field>
     </class>
 
