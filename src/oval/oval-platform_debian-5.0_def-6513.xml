@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oval_definitions xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+  <generator>
+    <oval:product_name>The OVAL Repository</oval:product_name>
+    <oval:schema_version>5.8</oval:schema_version>
+    <oval:timestamp>2011-02-01T06:56:03.788-05:00</oval:timestamp>
+  </generator>
+  <definitions>
+    <definition id="oval:org.mitre.oval:def:6513" version="2" class="inventory">
+      <metadata>
+        <title>Debian 5.0 is installed</title>
+        <affected family="unix">
+          <platform>Debian GNU/Linux 5.0</platform>
+        </affected>
+        <reference source="CPE" ref_id="cpe:/o:debian:debian_linux:5.0"/>
+        <description>Debian 5.0 is installed</description>
+        <oval_repository>
+          <dates>
+            <submitted date="2009-12-04T16:44:51-05:00">
+              <contributor organization="SecPod Technologies">SecPod Team</contributor>
+            </submitted>
+            <status_change date="2009-12-06T20:14:46.813-05:00">DRAFT</status_change>
+            <status_change date="2010-01-04T04:01:52.112-05:00">INTERIM</status_change>
+            <status_change date="2010-01-25T04:00:22.163-05:00">ACCEPTED</status_change>
+            <modified comment="EDITED oval:org.mitre.oval:def:6513 - Update textfilecontent_test to textfilecontent54_test" date="2011-01-20T13:45:00.069-05:00">
+              <contributor organization="SecPod Technologies">Preeti Subramanian</contributor>
+            </modified>
+            <status_change date="2011-01-20T13:46:58.156-05:00">INTERIM</status_change>
+          </dates>
+          <status>INTERIM</status>
+        </oval_repository>
+      </metadata>
+      <criteria>
+        <criterion comment="Debian GNU/Linux 5.0 is installed" test_ref="oval:org.mitre.oval:tst:42061"/>
+      </criteria>
+    </definition>
+  </definitions>
+  <tests>
+    <textfilecontent54_test id="oval:org.mitre.oval:tst:42061" version="1" comment="Debian GNU/Linux 5.0 is installed" check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent">
+      <object object_ref="oval:org.mitre.oval:obj:15583"/>
+      <state state_ref="oval:org.mitre.oval:ste:12238"/>
+    </textfilecontent54_test>
+  </tests>
+  <objects>
+    <textfilecontent54_object id="oval:org.mitre.oval:obj:15583" version="1" comment="Object holds Debian version" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent">
+      <path>/etc</path>
+      <filename>debian_version</filename>
+      <pattern operation="pattern match">^\d\.\d$</pattern>
+      <instance datatype="int">1</instance>
+    </textfilecontent54_object>
+  </objects>
+  <states>
+    <textfilecontent54_state id="oval:org.mitre.oval:ste:12238" version="1" comment="State matches if version is 5.0" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent">
+      <text>5.0</text>
+    </textfilecontent54_state>
+  </states>
+</oval_definitions>

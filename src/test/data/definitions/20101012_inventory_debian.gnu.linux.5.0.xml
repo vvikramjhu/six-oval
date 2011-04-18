@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oval_definitions xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#linux linux-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+  <generator>
+    <oval:product_name>The OVAL Repository</oval:product_name>
+    <oval:schema_version>5.8</oval:schema_version>
+    <oval:timestamp>2010-10-12T04:31:24.672-04:00</oval:timestamp>
+  </generator>
+  <definitions>
+    <definition id="oval:org.mitre.oval:def:2269" version="1" class="inventory">
+      <metadata>
+        <title>Red Hat Enterprise Linux 4</title>
+        <affected family="unix"/>
+        <reference source="CPE" ref_id="cpe:/o:redhat:enterprise_linux:4"/>
+        <description>The operating system installed on the system is Red Hat Enterprise Linux 4.</description>
+        <oval_repository>
+          <dates>
+            <submitted date="2007-10-05T00:00:00.000">
+              <contributor organization="The MITRE Corporation">Andrew Buttner</contributor>
+            </submitted>
+            <status_change date="2007-10-08T21:37:56.703-04:00">DRAFT</status_change>
+            <status_change date="2007-10-24T17:10:53.649-04:00">INTERIM</status_change>
+            <status_change date="2007-11-12T04:00:27.480-05:00">ACCEPTED</status_change>
+          </dates>
+          <status>ACCEPTED</status>
+        </oval_repository>
+      </metadata>
+      <criteria operator="AND">
+        <criterion comment="the installed operating system is part of the Unix family" test_ref="oval:org.mitre.oval:tst:4424"/>
+        <criterion comment="Red Hat Enterprise 4 is installed" test_ref="oval:org.mitre.oval:tst:2652"/>
+      </criteria>
+    </definition>
+    <definition id="oval:org.mitre.oval:def:2233" version="1" class="inventory">
+      <metadata>
+        <title>Sun Microsystems Solaris 10</title>
+        <affected family="unix"/>
+        <reference source="CPE" ref_id="cpe:/o:sun:sunos:5.10"/>
+        <description>The operating system installed on the system is Sun Solaris 10.</description>
+        <oval_repository>
+          <dates>
+            <submitted date="2007-10-05T00:00:00.000">
+              <contributor organization="The MITRE Corporation">Andrew Buttner</contributor>
+            </submitted>
+            <status_change date="2007-10-08T21:38:06.808-04:00">DRAFT</status_change>
+            <status_change date="2007-10-24T17:10:53.504-04:00">INTERIM</status_change>
+            <status_change date="2007-11-12T04:00:27.270-05:00">ACCEPTED</status_change>
+          </dates>
+          <status>ACCEPTED</status>
+        </oval_repository>
+      </metadata>
+      <criteria operator="AND">
+        <criterion comment="the installed operating system is part of the Unix family" test_ref="oval:org.mitre.oval:tst:4424"/>
+        <criterion comment="Solaris 10 Installed" test_ref="oval:org.mitre.oval:tst:3680"/>
+      </criteria>
+    </definition>
+    <definition id="oval:org.mitre.oval:def:2189" version="1" class="inventory">
+      <metadata>
+        <title>Sun Microsystems Solaris 8</title>
+        <affected family="unix"/>
+        <reference source="CPE" ref_id="cpe:/o:sun:sunos:5.8"/>
+        <description>The operating system installed on the system is Sun Solaris 8.</description>
+        <oval_repository>
+          <dates>
+            <submitted date="2007-10-05T00:00:00.000">
+              <contributor organization="The MITRE Corporation">Andrew Buttner</contributor>
+            </submitted>
+            <status_change date="2007-10-08T21:38:06.988-04:00">DRAFT</status_change>
+            <status_change date="2007-10-24T17:10:53.360-04:00">INTERIM</status_change>
+            <status_change date="2007-11-12T04:00:26.121-05:00">ACCEPTED</status_change>
+          </dates>
+          <status>ACCEPTED</status>
+        </oval_repository>
+      </metadata>
+      <criteria operator="AND">
+        <criterion comment="the installed operating system is part of the Unix family" test_ref="oval:org.mitre.oval:tst:4424"/>
+        <criterion comment="Solaris 8 Installed" test_ref="oval:org.mitre.oval:tst:3437"/>
+      </criteria>
+    </definition>
+    <definition id="oval:org.mitre.oval:def:2174" version="1" class="inventory">
+      <metadata>
+        <title>Sun Microsystems Solaris 9</title>
+        <affected family="unix"/>
+        <reference source="CPE" ref_id="cpe:/o:sun:sunos:5.9"/>
+        <description>The operating system installed on the system is Sun Solaris 9.</description>
+        <oval_repository>
+          <dates>
+            <submitted date="2007-10-05T00:00:00.000">
+              <contributor organization="The MITRE Corporation">Andrew Buttner</contributor>
+            </submitted>
+            <status_change date="2007-10-08T21:38:06.925-04:00">DRAFT</status_change>
+            <status_change date="2007-10-24T17:10:53.213-04:00">INTERIM</status_change>
+            <status_change date="2007-11-12T04:00:25.803-05:00">ACCEPTED</status_change>
+          </dates>
+          <status>ACCEPTED</status>
+        </oval_repository>
+      </metadata>
+      <criteria operator="AND">
+        <criterion comment="the installed operating system is part of the Unix family" test_ref="oval:org.mitre.oval:tst:4424"/>
+        <criterion comment="Solaris 9 Installed" test_ref="oval:org.mitre.oval:tst:3172"/>
+      </criteria>
+    </definition>
+    <definition id="oval:org.mitre.oval:def:2157" version="2" class="inventory">
+      <metadata>
+        <title>SUSE Linux 10.1 is installed</title>
+        <affected family="unix"/>
+        <reference source="CPE" ref_id="cpe:/o:novell:suse_linux:10.1"/>
+        <description>SUSE Linux 10.1 is installed.</description>
+        <oval_repository>
+          <dates>
+            <submitted date="2007-06-28T06:18:50">
+              <contributor organization="Maitreya Security">Thomas R. Jones</contributor>
+            </submitted>
+            <status_change date="2007-07-10T21:08:30.381-04:00">DRAFT</status_change>
+            <modified comment="Removed unneeded platform information from the affected element and affected cpe list." date="2007-07-25T12:36:00.918-04:00">
+              <contributor organization="The MITRE Corporation">Jonathan Baker</contributor>
+            </modified>
+            <status_change date="2007-08-10T13:33:41.076-04:00">INTERIM</status_change>
+            <status_change date="2007-09-06T09:13:31.539-04:00">ACCEPTED</status_change>
+            <modified comment="Set datatype to version on version element of ste:3286" date="2007-11-14T19:58:00.803-05:00">
+              <contributor organization="Hewlett-Packard">Nicholas Hansen</contributor>
+            </modified>
+            <status_change date="2007-11-14T20:00:08.214-05:00">INTERIM</status_change>
+            <status_change date="2007-12-03T04:00:07.896-05:00">ACCEPTED</status_change>
+          </dates>
+          <status>ACCEPTED</status>
+        </oval_repository>
+      </metadata>
+      <criteria operator="AND">
+        <criterion comment="SUSE Linux 10.1 is installed" test_ref="oval:org.mitre.oval:tst:3940"/>
+      </criteria>
+    </definition>
+    <definition id="oval:org.mitre.oval:def:2106" version="2" class="inventory">
+      <metadata>
+        <title>SUSE Linux Enterprise Desktop 10 is installed</title>
+        <affected family="unix"/>
+        <reference source="CPE" ref_id="cpe:/o:novell:suse_linux:10::desktop"/>
+        <description>SUSE Linux Enterprise Desktop 10 is installed.</description>
+        <oval_repository>
+          <dates>
+            <submitted date="2007-07-11T16:29:48">
+              <contributor organization="Maitreya Security">Thomas R. Jones</contributor>
+            </submitted>
+            <status_change date="2007-07-12T07:09:37.834-04:00">DRAFT</status_change>
+            <modified comment="Removed unneeded platform information from the affected element and affected cpe list." date="2007-07-25T12:36:00.029-04:00">
+              <contributor organization="The MITRE Corporation">Jonathan Baker</contributor>
+            </modified>
+            <status_change date="2007-08-10T13:33:41.021-04:00">INTERIM</status_change>
+            <status_change date="2007-09-06T09:13:30.742-04:00">ACCEPTED</status_change>
+            <modified comment="Set datatype to version on version element of ste:3857" date="2007-11-14T19:58:00.649-05:00">
+              <contributor organization="Hewlett-Packard">Nicholas Hansen</contributor>
+            </modified>
+            <status_change date="2007-11-14T20:00:29.988-05:00">INTERIM</status_change>
+            <status_change date="2007-12-03T04:00:06.107-05:00">ACCEPTED</status_change>
+          </dates>
+          <status>ACCEPTED</status>
+        </oval_repository>
+      </metadata>
+      <criteria operator="AND">
+        <criterion comment="SUSE Linux Enterprise Desktop 10 is installed" test_ref="oval:org.mitre.oval:tst:3588"/>
+      </criteria>
+    </definition>
+    <definition id="oval:org.mitre.oval:def:2090" version="1" class="inventory">
+      <metadata>
+        <title>Novell Linux Desktop 9 is installed</title>
+        <affected family="unix"/>
+        <reference source="CPE" ref_id="cpe:/o:novell:linux_desktop:9"/>
+        <description>Novell Linux Desktop 9 is installed.</description>
+        <oval_repository>
+          <dates>
+            <submitted date="2007-07-11T16:29:48">
+              <contributor organization="Maitreya Security">Thomas R. Jones</contributor>
+            </submitted>
+            <status_change date="2007-07-12T07:09:37.446-04:00">DRAFT</status_change>
+            <modified comment="Removed unneeded platform information from the affected element and affected cpe list." date="2007-07-25T12:36:00.664-04:00">
+              <contributor organization="The MITRE Corporation">Jonathan Baker</contributor>
+            </modified>
+            <modified comment="Changed version value to 9" date="2007-07-25T12:58:00.106-04:00">
+              <contributor organization="Maitreya Security">Thomas R. Jones</contributor>
+            </modified>
+            <status_change date="2007-08-10T13:33:40.954-04:00">INTERIM</status_change>
+            <status_change date="2007-09-06T09:13:30.062-04:00">ACCEPTED</status_change>
+          </dates>
+          <status>ACCEPTED</status>
+        </oval_repository>
+      </metadata>
+      <criteria operator="AND">
+        <criterion comment="Novell Linux Desktop 9 is installed" test_ref="oval:org.mitre.oval:tst:4075"/>
+      </criteria>
+    </definition>
+    <definition id="oval:org.mitre.oval:def:2044" version="1" class="inventory">
+      <metadata>
+        <title>SUSE Linux Professional 9.3 is installed</title>
+        <affected family="unix"/>
+        <reference source="CPE" ref_id="cpe:/o:novell:suse_linux:9.3::pro"/>
+        <description>SUSE Linux Professional 9.3 is installed.</description>
+        <oval_repository>
+          <dates>
+            <submitted date="2007-07-11T16:29:48">
+              <contributor organization="Maitreya Security">Thomas R. Jones</contributor>
+            </submitted>
+            <status_change date="2007-07-12T07:09:38.537-04:00">DRAFT</status_change>
+            <modified comment="Removed unneeded platform information from the affected element and affected cpe list." date="2007-07-25T12:36:00.045-04:00">
+              <contributor organization="The MITRE Corporation">Jonathan Baker</contributor>
+            </modified>
+            <status_change date="2007-08-10T13:33:40.898-04:00">INTERIM</status_change>
+            <status_change date="2007-09-06T09:13:29.867-04:00">ACCEPTED</status_change>
+          </dates>
+          <status>ACCEPTED</status>
+        </oval_repository>
+      </metadata>
+      <criteria operator="AND">
+        <criterion comment="SUSE Linux Professional 9.3 is installed" test_ref="oval:org.mitre.oval:tst:3212"/>
+      </criteria>
+    </definition>
+    <definition id="oval:org.mitre.oval:def:2027" version="1" class="inventory">
+      <metadata>
+        <title>SUSE Linux 10.0 is installed</title>
+        <affected family="unix"/>
+        <reference source="CPE" ref_id="cpe:/o:novell:suse_linux:10.0"/>
+        <description>SUSE Linux 10.0 is installed.</description>
+        <oval_repository>
+          <dates>
+            <submitted date="2007-06-28T06:18:50">
+              <contributor organization="Maitreya Security">Thomas R. Jones</contributor>
+            </submitted>
+            <status_change date="2007-07-10T21:08:30.126-04:00">DRAFT</status_change>
+            <modified comment="Removed unneeded platform information from the affected element and affected cpe list." date="2007-07-25T13:03:00.573-04:00">
+              <contributor organization="The MITRE Corporation">Jonathan Baker</contributor>
+            </modified>
+            <status_change date="2007-08-10T13:33:40.841-04:00">INTERIM</status_change>
+            <status_change date="2007-09-06T09:13:29.546-04:00">ACCEPTED</status_change>
+          </dates>
+          <status>ACCEPTED</status>
+        </oval_repository>
+      </metadata>
+      <criteria operator="AND">
+        <criterion comment="SUSE Linux 10.0 is installed" test_ref="oval:org.mitre.oval:tst:3693"/>
+      </criteria>
+    </definition>
+    <definition id="oval:org.mitre.oval:def:1373" version="1" class="inventory">
+      <metadata>
+        <title>Red Hat Enterprise Linux 5</title>
+        <affected family="unix"/>
+        <reference source="CPE" ref_id="cpe:/o:redhat:enterprise_linux:5"/>
+        <description>The operating system installed on the system is Red Hat Enterprise Linux 5.</description>
+        <oval_repository>
+          <dates>
+            <submitted date="2007-10-05T00:00:00.000">
+              <contributor organization="The MITRE Corporation">Andrew Buttner</contributor>
+            </submitted>
+            <status_change date="2007-10-08T21:37:56.820-04:00">DRAFT</status_change>
+            <status_change date="2007-10-24T17:10:52.899-04:00">INTERIM</status_change>
+            <status_change date="2007-11-12T04:00:15.736-05:00">ACCEPTED</status_change>
+          </dates>
+          <status>ACCEPTED</status>
+        </oval_repository>
+      </metadata>
+      <criteria operator="AND">
+        <criterion comment="the installed operating system is part of the Unix family" test_ref="oval:org.mitre.oval:tst:4424"/>
+        <criterion comment="Red Hat Enterprise 5 is installed" test_ref="oval:org.mitre.oval:tst:3846"/>
+      </criteria>
+    </definition>
+    <definition id="oval:org.mitre.oval:def:1366" version="1" class="inventory">
+      <metadata>
+        <title>SUSE Linux Desktop 1.0 is installed</title>
+        <affected family="unix"/>
+        <reference source="CPE" ref_id="cpe:/o:novell:suse_linux:1.0::desktop"/>
+        <description>SUSE Linux Desktop 1.0 is installed.</description>
+        <oval_repository>
+          <dates>
+            <submitted date="2007-07-11T16:29:48">
+              <contributor organization="Maitreya Security">Thomas R. Jones</contributor>
+            </submitted>
+            <status_change date="2007-07-12T07:09:38.919-04:00">DRAFT</status_change>
+            <modified comment="Removed unneeded platform information from the affected element and affected cpe list." date="2007-07-25T12:36:00.746-04:00">
+              <contributor organization="The MITRE Corporation">Jonathan Baker</contributor>
+            </modified>
+            <status_change date="2007-08-10T13:33:40.780-04:00">INTERIM</status_change>
+            <status_change date="2007-09-06T09:13:26.876-04:00">ACCEPTED</status_change>
+          </dates>
+          <status>ACCEPTED</status>
+        </oval_repository>
+      </metadata>
+      <criteria operator="AND">
+        <criterion comment="SUSE Linux Desktop 1.0 is installed" test_ref="oval:org.mitre.oval:tst:3465"/>
+      </criteria>
+    </definition>
+    <definition id="oval:org.mitre.oval:def:6513" version="1" class="inventory">
+      <metadata>
+        <title>Debian 5.0 is installed</title>
+        <affected family="unix">
+          <platform>Debian GNU/Linux 5.0</platform>
+        </affected>
+        <reference source="CPE" ref_id="cpe:/o:debian:debian_linux:5.0"/>
+        <description>Debian 5.0 is installed</description>
+        <oval_repository>
+          <dates>
+            <submitted date="2009-12-04T16:44:51-05:00">
+              <contributor organization="SecPod Technologies">SecPod Team</contributor>
+            </submitted>
+            <status_change date="2009-12-06T20:14:46.813-05:00">DRAFT</status_change>
+            <status_change date="2010-01-04T04:01:52.112-05:00">INTERIM</status_change>
+            <status_change date="2010-01-25T04:00:22.163-05:00">ACCEPTED</status_change>
+          </dates>
+          <status>ACCEPTED</status>
+        </oval_repository>
+      </metadata>
+      <criteria>
+        <criterion comment="Debian GNU/Linux 5.0 is installed" test_ref="oval:org.mitre.oval:tst:11150"/>
+      </criteria>
+    </definition>
+  </definitions>
+  <tests>
+    <rpminfo_test id="oval:org.mitre.oval:tst:2652" version="1" comment="Red Hat Enterprise 4 is installed" check_existence="at_least_one_exists" check="at least one" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <object object_ref="oval:org.mitre.oval:obj:1414"/>
+      <state state_ref="oval:org.mitre.oval:ste:11366"/>
+    </rpminfo_test>
+    <uname_test id="oval:org.mitre.oval:tst:3680" version="1" comment="Solaris 10 Installed" check_existence="at_least_one_exists" check="at least one" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <object object_ref="oval:org.mitre.oval:obj:2759"/>
+      <state state_ref="oval:org.mitre.oval:ste:3597"/>
+    </uname_test>
+    <uname_test id="oval:org.mitre.oval:tst:3437" version="1" comment="Solaris 8 Installed" check_existence="at_least_one_exists" check="at least one" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <object object_ref="oval:org.mitre.oval:obj:2759"/>
+      <state state_ref="oval:org.mitre.oval:ste:3700"/>
+    </uname_test>
+    <uname_test id="oval:org.mitre.oval:tst:3172" version="1" comment="Solaris 9 Installed" check_existence="at_least_one_exists" check="at least one" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <object object_ref="oval:org.mitre.oval:obj:2759"/>
+      <state state_ref="oval:org.mitre.oval:ste:3891"/>
+    </uname_test>
+    <rpminfo_test id="oval:org.mitre.oval:tst:3940" version="2" comment="SUSE Linux 10.1 is installed" check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <object object_ref="oval:org.mitre.oval:obj:1798"/>
+      <state state_ref="oval:org.mitre.oval:ste:3286"/>
+    </rpminfo_test>
+    <rpminfo_test id="oval:org.mitre.oval:tst:3588" version="2" comment="SUSE Linux Enterprise Desktop 10 is installed" check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <object object_ref="oval:org.mitre.oval:obj:1903"/>
+      <state state_ref="oval:org.mitre.oval:ste:3857"/>
+    </rpminfo_test>
+    <rpminfo_test id="oval:org.mitre.oval:tst:4075" version="2" comment="Novell Linux Desktop 9 is installed" check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <object object_ref="oval:org.mitre.oval:obj:2182"/>
+      <state state_ref="oval:org.mitre.oval:ste:3769"/>
+    </rpminfo_test>
+    <rpminfo_test id="oval:org.mitre.oval:tst:3212" version="1" comment="SUSE Linux Professional 9.3 is installed" check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <object object_ref="oval:org.mitre.oval:obj:1798"/>
+      <state state_ref="oval:org.mitre.oval:ste:3186"/>
+    </rpminfo_test>
+    <rpminfo_test id="oval:org.mitre.oval:tst:3693" version="1" comment="SUSE Linux 10.0 is installed" check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <object object_ref="oval:org.mitre.oval:obj:1798"/>
+      <state state_ref="oval:org.mitre.oval:ste:3307"/>
+    </rpminfo_test>
+    <family_test id="oval:org.mitre.oval:tst:4424" version="1" comment="the installed operating system is part of the Unix family" check_existence="at_least_one_exists" check="only one" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent">
+      <object object_ref="oval:org.mitre.oval:obj:99"/>
+      <state state_ref="oval:org.mitre.oval:ste:3907"/>
+    </family_test>
+    <rpminfo_test id="oval:org.mitre.oval:tst:3846" version="1" comment="Red Hat Enterprise 5 is installed" check_existence="at_least_one_exists" check="at least one" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <object object_ref="oval:org.mitre.oval:obj:1414"/>
+      <state state_ref="oval:org.mitre.oval:ste:11314"/>
+    </rpminfo_test>
+    <rpminfo_test id="oval:org.mitre.oval:tst:3465" version="1" comment="SUSE Linux Desktop 1.0 is installed" check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <object object_ref="oval:org.mitre.oval:obj:2182"/>
+      <state state_ref="oval:org.mitre.oval:ste:3516"/>
+    </rpminfo_test>
+    <textfilecontent_test id="oval:org.mitre.oval:tst:11150" version="1" comment="Debian GNU/Linux 5.0 is installed" check_existence="at_least_one_exists" check="all" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent">
+      <object object_ref="oval:org.mitre.oval:obj:7326"/>
+      <state state_ref="oval:org.mitre.oval:ste:5739"/>
+    </textfilecontent_test>
+  </tests>
+  <objects>
+    <uname_object id="oval:org.mitre.oval:obj:2759" version="1" comment="The single uname object." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"/>
+    <rpminfo_object id="oval:org.mitre.oval:obj:1903" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <name>sled-release</name>
+    </rpminfo_object>
+    <rpminfo_object id="oval:org.mitre.oval:obj:1798" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <name>suse-release</name>
+    </rpminfo_object>
+    <family_object id="oval:org.mitre.oval:obj:99" version="1" comment="This is the default family object. Only one family object should exist." xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"/>
+    <rpminfo_object id="oval:org.mitre.oval:obj:1414" version="1" comment="the redhat-release rpm" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <name>redhat-release</name>
+    </rpminfo_object>
+    <rpminfo_object id="oval:org.mitre.oval:obj:2182" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <name>sld-release</name>
+    </rpminfo_object>
+    <textfilecontent_object id="oval:org.mitre.oval:obj:7326" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent">
+      <path>/etc</path>
+      <filename>debian_version</filename>
+      <line operation="pattern match">\d\.\d</line>
+    </textfilecontent_object>
+  </objects>
+  <states>
+    <rpminfo_state id="oval:org.mitre.oval:ste:11366" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <version operation="pattern match">^.*4.</version>
+    </rpminfo_state>
+    <uname_state id="oval:org.mitre.oval:ste:3597" version="1" comment="os release is 5.10" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <os_release>5.10</os_release>
+    </uname_state>
+    <uname_state id="oval:org.mitre.oval:ste:3700" version="1" comment="os release is 5.8" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <os_release>5.8</os_release>
+    </uname_state>
+    <uname_state id="oval:org.mitre.oval:ste:3891" version="1" comment="os release is 5.9" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <os_release>5.9</os_release>
+    </uname_state>
+    <rpminfo_state id="oval:org.mitre.oval:ste:3286" version="2" operator="AND" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <arch operation="pattern match">(^i586$)|(^x86_64$)|(^ppc$)</arch>
+      <epoch>(none)</epoch>
+      <version datatype="version">10.1</version>
+      <signature_keyid>a84edae89c800aca</signature_keyid>
+    </rpminfo_state>
+    <rpminfo_state id="oval:org.mitre.oval:ste:3857" version="2" operator="AND" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <arch operation="pattern match">(^i586$)|(^x86_64$)</arch>
+      <epoch>(none)</epoch>
+      <version datatype="version">10</version>
+      <signature_keyid>a84edae89c800aca</signature_keyid>
+    </rpminfo_state>
+    <rpminfo_state id="oval:org.mitre.oval:ste:3769" version="2" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <arch operation="pattern match">i586</arch>
+      <epoch>(none)</epoch>
+      <version>9</version>
+      <signature_keyid>a84edae89c800aca</signature_keyid>
+    </rpminfo_state>
+    <rpminfo_state id="oval:org.mitre.oval:ste:3186" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <arch operation="pattern match">i586</arch>
+      <epoch>(none)</epoch>
+      <version>9.3</version>
+      <signature_keyid>a84edae89c800aca</signature_keyid>
+    </rpminfo_state>
+    <rpminfo_state id="oval:org.mitre.oval:ste:3307" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <arch operation="pattern match">(^i586$)|(^x86_64$)|(^ppc$)</arch>
+      <epoch>(none)</epoch>
+      <version>10.0</version>
+      <signature_keyid>a84edae89c800aca</signature_keyid>
+    </rpminfo_state>
+    <family_state id="oval:org.mitre.oval:ste:3907" version="1" comment="Unix family" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent">
+      <family>unix</family>
+    </family_state>
+    <rpminfo_state id="oval:org.mitre.oval:ste:11314" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <version operation="pattern match">^.*5.</version>
+    </rpminfo_state>
+    <rpminfo_state id="oval:org.mitre.oval:ste:3516" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <arch operation="pattern match">i586</arch>
+      <epoch>(none)</epoch>
+      <version>1.0</version>
+      <signature_keyid>a84edae89c800aca</signature_keyid>
+    </rpminfo_state>
+    <textfilecontent_state id="oval:org.mitre.oval:ste:5739" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent">
+      <line>5.0</line>
+    </textfilecontent_state>
+  </states>
+</oval_definitions>

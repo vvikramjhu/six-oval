@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<oval_results xmlns="http://oval.mitre.org/XMLSchema/oval-results-5" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:oval-res="http://oval.mitre.org/XMLSchema/oval-results-5" xmlns:oval-sc="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5 oval-system-characteristics-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-results-5 oval-results-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows windows-system-characteristics-schema.xsd">
+
+  <generator>
+    <oval:product_name>OVAL Definition Interpreter</oval:product_name>
+    <oval:product_version>5.8 Build: 2</oval:product_version>
+    <oval:schema_version>5.8</oval:schema_version>
+    <oval:timestamp>2010-10-20T11:21:33</oval:timestamp>
+    <vendor>The MITRE Corporation</vendor>
+  </generator>
+
+  <directives include_source_definitions="true">
+    <definition_true content="full" reported="true"/>
+    <definition_false content="full" reported="true"/>
+    <definition_unknown content="full" reported="true"/>
+    <definition_error content="full" reported="true"/>
+    <definition_not_evaluated content="full" reported="true"/>
+    <definition_not_applicable content="full" reported="true"/>
+  </directives>
+
+  <oval_definitions xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+    <generator>
+      <oval:product_name xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5">The OVAL Repository</oval:product_name>
+      <oval:schema_version xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5">5.8</oval:schema_version>
+      <oval:timestamp xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5">2010-10-19T22:19:10.906-04:00</oval:timestamp>
+  </generator>
+    <definitions>
+      <definition class="vulnerability" id="oval:org.mitre.oval:def:8050" version="1">
+        <metadata>
+          <title>PowerPoint LinkedSlideAtom Heap Overflow Vulnerability</title>
+          <affected family="windows">
+            <platform>Microsoft Windows 2000</platform>
+            <platform>Microsoft Windows XP</platform>
+            <platform>Microsoft Windows Server 2003</platform>
+            <platform>Microsoft Windows Vista</platform>
+            <platform>Microsoft Windows 7</platform>
+            <product>Microsoft Office PowerPoint 2002</product>
+            <product>Microsoft Office PowerPoint 2003</product>
+        </affected>
+          <reference ref_id="CVE-2010-0030" ref_url="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0030" source="CVE"/>
+          <description>Heap-based buffer overflow in Microsoft Office PowerPoint 2002 SP3 and 2003 SP3 allows remote attackers to execute arbitrary code via a crafted PowerPoint document, aka "PowerPoint LinkedSlideAtom Heap Overflow Vulnerability."</description>
+          <oval_repository>
+            <dates>
+              <submitted date="2010-02-08T13:00:00">
+                <contributor organization="Symantec, Inc.">Dragos Prisaca</contributor>
+            </submitted>
+              <status_change date="2010-02-10T13:38:39.224-05:00">DRAFT</status_change>
+              <status_change date="2010-03-01T04:00:14.451-05:00">INTERIM</status_change>
+              <status_change date="2010-03-22T04:00:06.424-04:00">ACCEPTED</status_change>
+          </dates>
+            <status>ACCEPTED</status>
+        </oval_repository>
+      </metadata>
+        <criteria operator="OR">
+          <criteria comment="PowerPoint 2002" operator="AND">
+            <extend_definition comment="Microsoft PowerPoint 2002 is installed" definition_ref="oval:org.mitre.oval:def:305"/>
+            <criterion comment="Powerpnt.exe is less than version 10.0.6858.0" test_ref="oval:org.mitre.oval:tst:21080"/>
+        </criteria>
+          <criteria comment="PowerPoint 2003" operator="AND">
+            <extend_definition comment="Microsoft PowerPoint 2003 is installed" definition_ref="oval:org.mitre.oval:def:666"/>
+            <criterion comment="Powerpnt.exe is less than version 11.0.8318.0" test_ref="oval:org.mitre.oval:tst:20855"/>
+        </criteria>
+      </criteria>
+    </definition>
+      <definition class="inventory" id="oval:org.mitre.oval:def:666" version="3">
+        <metadata>
+          <title>Microsoft PowerPoint 2003 is installed</title>
+          <affected family="windows">
+            <platform>Microsoft Windows 2000</platform>
+            <platform>Microsoft Windows XP</platform>
+            <platform>Microsoft Windows Server 2003</platform>
+            <product>Microsoft PowerPoint 2003</product>
+        </affected>
+          <reference ref_id="cpe:/a:microsoft:powerpoint:2003" source="CPE"/>
+          <description>The application Microsoft PowerPoint 2003 is installed.</description>
+          <oval_repository>
+            <dates>
+              <submitted date="2006-08-11T12:53:40">
+                <contributor organization="ThreatGuard, Inc.">Robert L. Hollis</contributor>
+            </submitted>
+              <status_change date="2006-09-08T11:26:00.000-04:00">DRAFT</status_change>
+              <status_change date="2006-09-27T12:29:33.948-04:00">INTERIM</status_change>
+              <status_change date="2006-10-16T15:58:46.477-04:00">ACCEPTED</status_change>
+              <modified comment="Added CPE reference" date="2007-05-01T10:21:00.518-04:00">
+                <contributor organization="The MITRE Corporation">Jonathan Baker</contributor>
+            </modified>
+              <status_change date="2007-05-01T10:23:24.572-04:00">INTERIM</status_change>
+              <status_change date="2007-05-23T15:05:50.172-04:00">ACCEPTED</status_change>
+              <modified comment="Added Microsoft PowerPoint 2003 product. Removed Microsoft reference" date="2009-06-01T16:05:28.035-04:00">
+                <contributor organization="The MITRE Corporation">Brendan Miles</contributor>
+            </modified>
+              <status_change date="2009-06-08T04:01:05.508-04:00">INTERIM</status_change>
+              <status_change date="2009-06-29T04:01:08.748-04:00">ACCEPTED</status_change>
+          </dates>
+            <status>ACCEPTED</status>
+        </oval_repository>
+      </metadata>
+        <criteria>
+          <criterion comment="Microsoft PowerPoint 2003 is installed" test_ref="oval:org.mitre.oval:tst:1204"/>
+      </criteria>
+    </definition>
+      <definition class="inventory" id="oval:org.mitre.oval:def:305" version="3">
+        <metadata>
+          <title>Microsoft PowerPoint 2002 is installed</title>
+          <affected family="windows">
+            <platform>Microsoft Windows 2000</platform>
+            <platform>Microsoft Windows XP</platform>
+            <platform>Microsoft Windows Server 2003</platform>
+            <product>Microsoft PowerPoint 2002</product>
+        </affected>
+          <reference ref_id="cpe:/a:microsoft:powerpoint:2002" source="CPE"/>
+          <description>The application Microsoft PowerPoint 2002 is installed.</description>
+          <oval_repository>
+            <dates>
+              <submitted date="2006-08-11T12:53:40">
+                <contributor organization="ThreatGuard, Inc.">Robert L. Hollis</contributor>
+            </submitted>
+              <status_change date="2006-09-08T11:26:00.000-04:00">DRAFT</status_change>
+              <status_change date="2006-09-27T12:29:20.418-04:00">INTERIM</status_change>
+              <status_change date="2006-10-16T15:58:37.787-04:00">ACCEPTED</status_change>
+              <modified comment="Corrected tst:704. Removed reference to ste:631 and deprecated ste:631" date="2007-02-12T10:34:00.838-05:00">
+                <contributor organization="The MITRE Corporation">Jonathan Baker</contributor>
+            </modified>
+              <status_change date="2007-02-12T10:37:25.230-05:00">INTERIM</status_change>
+              <status_change date="2007-03-21T16:17:15.526-04:00">ACCEPTED</status_change>
+              <modified comment="Added Microsoft PowerPoint 2003 product. Removed Microsoft reference" date="2009-06-01T16:05:28.035-04:00">
+                <contributor organization="The MITRE Corporation">Brendan Miles</contributor>
+            </modified>
+              <status_change date="2009-06-08T04:00:38.590-04:00">INTERIM</status_change>
+              <status_change date="2009-06-29T04:00:23.339-04:00">ACCEPTED</status_change>
+          </dates>
+            <status>ACCEPTED</status>
+        </oval_repository>
+      </metadata>
+        <criteria>
+          <criterion comment="Microsoft PowerPoint 2002 is installed" test_ref="oval:org.mitre.oval:tst:704"/>
+      </criteria>
+    </definition>
+  </definitions>
+    <tests>
+      <registry_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows" check="at least one" check_existence="at_least_one_exists" comment="Microsoft PowerPoint 2003 is installed" id="oval:org.mitre.oval:tst:1204" version="2">
+        <object object_ref="oval:org.mitre.oval:obj:850"/>
+    </registry_test>
+      <registry_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows" check="at least one" check_existence="at_least_one_exists" comment="Microsoft PowerPoint 2002 is installed" id="oval:org.mitre.oval:tst:704" version="2">
+        <object object_ref="oval:org.mitre.oval:obj:555"/>
+    </registry_test>
+      <file_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows" check="at least one" check_existence="at_least_one_exists" comment="Powerpnt.exe is less than version 10.0.6858.0" id="oval:org.mitre.oval:tst:21080" version="1">
+        <object object_ref="oval:org.mitre.oval:obj:553"/>
+        <state state_ref="oval:org.mitre.oval:ste:6617"/>
+    </file_test>
+      <file_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows" check="at least one" check_existence="at_least_one_exists" comment="Powerpnt.exe is less than version 11.0.8318.0" id="oval:org.mitre.oval:tst:20855" version="1">
+        <object object_ref="oval:org.mitre.oval:obj:553"/>
+        <state state_ref="oval:org.mitre.oval:ste:6706"/>
+    </file_test>
+  </tests>
+    <objects>
+      <registry_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows" id="oval:org.mitre.oval:obj:850" version="2">
+        <hive>HKEY_LOCAL_MACHINE</hive>
+        <key>SOFTWARE\Microsoft\Office\11.0\PowerPoint\InstallRoot</key>
+        <name>Path</name>
+    </registry_object>
+      <registry_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows" id="oval:org.mitre.oval:obj:555" version="1">
+        <hive>HKEY_LOCAL_MACHINE</hive>
+        <key>SOFTWARE\Microsoft\Office\10.0\PowerPoint\InstallRoot</key>
+        <name>Path</name>
+    </registry_object>
+      <file_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows" id="oval:org.mitre.oval:obj:553" version="2">
+        <path var_check="all" var_ref="oval:org.mitre.oval:var:225"/>
+        <filename>powerpnt.exe</filename>
+    </file_object>
+      <registry_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows" id="oval:org.mitre.oval:obj:554" version="1">
+        <hive>HKEY_LOCAL_MACHINE</hive>
+        <key>SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\powerpnt.exe</key>
+        <name>Path</name>
+    </registry_object>
+  </objects>
+    <states>
+      <file_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows" id="oval:org.mitre.oval:ste:6617" version="1">
+        <version datatype="version" operation="less than">10.0.6858.0</version>
+    </file_state>
+      <file_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows" id="oval:org.mitre.oval:ste:6706" version="1">
+        <version datatype="version" operation="less than">11.0.8318.0</version>
+    </file_state>
+  </states>
+    <variables>
+      <local_variable comment="..." datatype="string" id="oval:org.mitre.oval:var:225" version="1">
+        <object_component item_field="value" object_ref="oval:org.mitre.oval:obj:554"/>
+    </local_variable>
+  </variables>
+</oval_definitions>  <results>
+    <system>
+      <definitions>
+        <definition definition_id="oval:org.mitre.oval:def:8050" result="false" version="1">
+          <criteria operator="OR" result="false">
+            <criteria operator="AND" result="false">
+              <extend_definition definition_ref="oval:org.mitre.oval:def:305" result="false" version="3"/>
+              <criterion result="false" test_ref="oval:org.mitre.oval:tst:21080" version="1"/>
+            </criteria>
+            <criteria operator="AND" result="false">
+              <extend_definition definition_ref="oval:org.mitre.oval:def:666" result="true" version="3"/>
+              <criterion result="false" test_ref="oval:org.mitre.oval:tst:20855" version="1"/>
+            </criteria>
+          </criteria>
+        </definition>
+        <definition definition_id="oval:org.mitre.oval:def:305" result="false" version="3">
+          <criteria operator="AND" result="false">
+            <criterion result="false" test_ref="oval:org.mitre.oval:tst:704" version="2"/>
+          </criteria>
+        </definition>
+        <definition definition_id="oval:org.mitre.oval:def:666" result="true" version="3">
+          <criteria operator="AND" result="true">
+            <criterion result="true" test_ref="oval:org.mitre.oval:tst:1204" version="2"/>
+          </criteria>
+        </definition>
+      </definitions>
+      <tests>
+        <test check="at least one" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:704" version="2">
+          <tested_item item_id="2" result="not evaluated"/>
+        </test>
+        <test check="at least one" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:21080" version="1">
+          <tested_item item_id="4" result="false"/>
+          <tested_variable variable_id="oval:org.mitre.oval:var:225">C:\Program Files\Microsoft Office\OFFICE11\</tested_variable>
+        </test>
+        <test check="at least one" check_existence="at_least_one_exists" result="true" state_operator="AND" test_id="oval:org.mitre.oval:tst:1204" version="2">
+          <tested_item item_id="1" result="not evaluated"/>
+        </test>
+        <test check="at least one" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:20855" version="1">
+          <tested_item item_id="4" result="false"/>
+          <tested_variable variable_id="oval:org.mitre.oval:var:225">C:\Program Files\Microsoft Office\OFFICE11\</tested_variable>
+        </test>
+      </tests>
+      <oval_system_characteristics xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5">
+        <generator>
+          <oval:product_name>OVAL Definition Interpreter</oval:product_name>
+          <oval:product_version>5.8 Build: 2</oval:product_version>
+          <oval:schema_version>5.8</oval:schema_version>
+          <oval:timestamp>2010-10-20T11:21:32</oval:timestamp>
+          <vendor>The MITRE Corporation</vendor>
+        </generator>
+        <system_info>
+          <os_name>Microsoft Windows XP Professional Service Pack 3</os_name>
+          <os_version>5.1.2600</os_version>
+          <architecture>INTEL32</architecture>
+          <primary_host_name>foo60</primary_host_name>
+          <interfaces>
+            <interface>
+              <interface_name>VMware Virtual Ethernet Adapter for VMnet1</interface_name>
+              <ip_address>192.168.158.1</ip_address>
+              <mac_address>00-50-56-C0-00-01</mac_address>
+            </interface>
+            <interface>
+              <interface_name>VMware Virtual Ethernet Adapter for VMnet8</interface_name>
+              <ip_address>192.168.1.1</ip_address>
+              <mac_address>00-50-56-C0-00-08</mac_address>
+            </interface>
+          </interfaces>
+        </system_info>
+        <collected_objects>
+          <object flag="complete" id="oval:org.mitre.oval:obj:553" version="2">
+            <variable_value variable_id="oval:org.mitre.oval:var:225">C:\Program Files\Microsoft Office\OFFICE11\</variable_value>
+            <reference item_ref="4"/>
+          </object>
+          <object flag="complete" id="oval:org.mitre.oval:obj:554" version="1">
+            <reference item_ref="3"/>
+          </object>
+          <object flag="does not exist" id="oval:org.mitre.oval:obj:555" version="1">
+            <reference item_ref="2"/>
+          </object>
+          <object flag="complete" id="oval:org.mitre.oval:obj:850" version="2">
+            <reference item_ref="1"/>
+          </object>
+        </collected_objects>
+        <system_data>
+          <file_item id="4" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows">
+            <filepath>C:\Program Files\Microsoft Office\OFFICE11\powerpnt.exe</filepath>
+            <path>C:\Program Files\Microsoft Office\OFFICE11\</path>
+            <filename>powerpnt.exe</filename>
+            <owner>BUILTIN\Administrators</owner>
+            <size datatype="int">6418776</size>
+            <a_time datatype="int">129320148929838537</a_time>
+            <c_time datatype="int">129159044540000000</c_time>
+            <m_time datatype="int">129159044540000000</m_time>
+            <ms_checksum>6460221</ms_checksum>
+            <version datatype="version">11.0.8324.0</version>
+            <type>FILE_TYPE_DISK</type>
+            <development_class status="does not exist"/>
+            <company>Microsoft Corporation</company>
+            <internal_name>POWERPNT</internal_name>
+            <language status="not collected"/>
+            <original_filename>POWERPNT.EXE</original_filename>
+            <product_name>Microsoft Office 2003</product_name>
+            <product_version datatype="version">11.0.8324</product_version>
+          </file_item>
+          <registry_item id="3" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows">
+            <hive>HKEY_LOCAL_MACHINE</hive>
+            <key>SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\powerpnt.exe</key>
+            <name>Path</name>
+            <type>reg_sz</type>
+            <value>C:\Program Files\Microsoft Office\OFFICE11\</value>
+          </registry_item>
+          <registry_item id="2" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows">
+            <hive>HKEY_LOCAL_MACHINE</hive>
+            <key status="does not exist">SOFTWARE\Microsoft\Office\10.0\PowerPoint\InstallRoot</key>
+          </registry_item>
+          <registry_item id="1" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows">
+            <hive>HKEY_LOCAL_MACHINE</hive>
+            <key>SOFTWARE\Microsoft\Office\11.0\PowerPoint\InstallRoot</key>
+            <name>Path</name>
+            <type>reg_sz</type>
+            <value>C:\Program Files\Microsoft Office\OFFICE11\</value>
+          </registry_item>
+        </system_data>
+      </oval_system_characteristics>
+    </system>
+  </results>
+
+</oval_results>
