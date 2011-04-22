@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<registry_item id="45" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows">
-            <hive>HKEY_LOCAL_MACHINE</hive>
-            <key>SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\OUTLOOK.EXE</key>
-            <name>Path</name>
-            <type>reg_sz</type>
-            <value>C:\Program Files\Microsoft Office\OFFICE11\</value>
-</registry_item>

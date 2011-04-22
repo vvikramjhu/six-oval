@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<textfilecontent_item id="1" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent">
-            <path>/etc</path>
-            <filename>debian_version</filename>
-            <line>5.0.4</line>
-</textfilecontent_item>
