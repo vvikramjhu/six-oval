@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN"
+                         "http://castor.org/mapping.dtd">
+
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- // Project SIX: OVAL                                     // -->
+<!-- //                                                       // -->
+<!-- // Castor XML Mapping Specification                      // -->
+<!-- /////////////////////////////////////////////////////////// -->
+
+<!-- @author    Akihito Nakamura, AIST -->
+<!-- @version   $Id$ -->
+
+<mapping>
+
+    <class name ="jp.go.aist.six.oval.model.v5.OvalElement"
+        verify-constructable="false">
+
+        <field name="ovalID" type="string">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+
+        <field name="ovalVersion" type="int">
+            <bind-xml name="version" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.v5.OvalEntity"
+        extends="jp.go.aist.six.oval.model.v5.OvalElement"
+        verify-constructable="false">
+
+        <field name="deprecated" type="boolean">
+            <bind-xml name="deprecated" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.v5.CommentedOvalEntity"
+        extends="jp.go.aist.six.oval.model.v5.OvalEntity"
+        verify-constructable="false">
+
+        <field name="comment" type="string">
+            <bind-xml name="comment" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.OvalDocument"
+        verify-constructable="false">
+
+        <field name="schemaLocation" type="string">
+            <bind-xml name="xsi:schemaLocation" node="attribute"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.AbstractBehaviors"
+        verify-constructable="false">
+
+        <field name="maxDepth" type="int">
+            <bind-xml name="max_depth" node="attribute"/>
+        </field>
+
+        <field name="recurseDirection"
+            type="jp.go.aist.six.oval.model.v5.RecurseDirectionEnumeration">
+            <bind-xml name="recurse_direction" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.v5.AbstractFileBehaviors"
+        extends="jp.go.aist.six.oval.model.v5.AbstractBehaviors"
+        verify-constructable="false">
+
+        <field name="recurseFileSystem"
+            type="jp.go.aist.six.oval.model.v5.RecurseFileSystemEnumeration">
+            <bind-xml name="recurse_file_system" node="attribute"/>
+        </field>
+    </class>
+
+
+</mapping>
+
