@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<local_variable id="oval:org.mitre.oval:var:105" version="1" comment="Path to folder containing Winamp.exe" datatype="string"
- xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-      <regex_capture pattern="^\x22(.*)UninstWA\.exe\x22$">
-        <object_component object_ref="oval:org.mitre.oval:obj:7560" item_field="value"/>
-      </regex_capture>
-</local_variable>
