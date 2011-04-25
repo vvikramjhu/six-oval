@@ -18,12 +18,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.service;
+package jp.go.aist.six.oval.core;
 
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
-import jp.go.aist.six.oval.core.xml.OvalXml;
-import jp.go.aist.six.util.persist.DataStore;
+import jp.go.aist.six.util.xml.XmlMapper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -67,16 +66,16 @@ public class OvalContext
     private ApplicationContext  _springContext;
 
 
-    /**
-     * The data store sole instance.
-     */
-    private DataStore  _store;
+//    /**
+//     * The data store sole instance.
+//     */
+//    private DataStore  _store;
 
 
     /**
-     * The XML processor sole instance.
+     * The XML mapper sole instance.
      */
-    private OvalXml  _xml;
+    private XmlMapper  _xml;
 
 
 
@@ -94,12 +93,13 @@ public class OvalContext
     /**
      */
     private void _initResourceBundle()
+//    throws MissingResourceException
     {
-        try {
+//        try {
             _resourceBundle = ResourceBundle.getBundle( _RESOURCE_BUNDLE_ );
-        } catch (MissingResourceException ex) {
-            //negligible
-        }
+//        } catch (MissingResourceException ex) {
+//            //negligible
+//        }
     }
 
 
@@ -163,24 +163,24 @@ public class OvalContext
 
 
 
+//    /**
+//     */
+//    public DataStore getStore()
+//    {
+//        if (_store == null) {
+//            _store = _getContext().getBean( "ovalStore", DataStore.class );
+//        }
+//
+//        return _store;
+//    }
+
+
     /**
      */
-    public DataStore getStore()
-    {
-        if (_store == null) {
-            _store = _getContext().getBean( "ovalStore", DataStore.class );
-        }
-
-        return _store;
-    }
-
-
-    /**
-     */
-    public OvalXml getXml()
+    public XmlMapper getXml()
     {
         if (_xml == null) {
-            _xml = _getContext().getBean( "ovalXml", OvalXml.class );
+            _xml = _getContext().getBean( "ovalXml", XmlMapper.class );
         }
 
         return _xml;
@@ -188,5 +188,4 @@ public class OvalContext
 
 }
 // OvalContext
-
 
