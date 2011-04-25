@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.v5.definitions;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.CommentedOvalEntity;
+import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
 
 

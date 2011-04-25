@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.v5.independent;
 
 import java.util.Collection;
-import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.v5.definitions.StateRefType;
 import jp.go.aist.six.oval.model.v5.definitions.SystemObjectRefType;

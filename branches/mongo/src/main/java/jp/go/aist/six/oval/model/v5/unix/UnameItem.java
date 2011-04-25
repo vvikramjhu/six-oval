@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.v5.unix;
 
 import java.util.EnumMap;
 import java.util.Map;
-import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.v5.sc.ItemType;
 import jp.go.aist.six.oval.model.v5.sc.StatusEnumeration;

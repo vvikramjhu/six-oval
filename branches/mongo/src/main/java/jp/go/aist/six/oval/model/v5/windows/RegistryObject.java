@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.v5.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
 import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
