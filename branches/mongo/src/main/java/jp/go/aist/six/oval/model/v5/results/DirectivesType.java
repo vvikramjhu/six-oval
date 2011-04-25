@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.v5.results;
 
 import java.util.EnumMap;
 import java.util.Map;
-import jp.go.aist.six.oval.model.AbstractOvalObject;
+import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 

@@ -24,10 +24,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
 import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.v5.definitions.Filter;
 import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 
 
