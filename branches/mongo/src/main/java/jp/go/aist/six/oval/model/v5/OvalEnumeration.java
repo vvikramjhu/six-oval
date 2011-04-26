@@ -20,20 +20,17 @@
 
 package jp.go.aist.six.oval.model.v5;
 
-import jp.go.aist.six.util.persist.Persistable;
-
 
 
 /**
- * A marker interface for all the OVAL domain object except enumerations.
+ * A marker interface for all the OVAL enumeration types.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public interface OvalObject<K>
-    extends Persistable<K>
+public interface OvalEnumeration
 {
 
 }
-// OvalObject
+// OvalEnumeration

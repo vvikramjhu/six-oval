@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 import jp.go.aist.six.util.persist.Dependent;
 
 
@@ -33,15 +32,15 @@ import jp.go.aist.six.util.persist.Dependent;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class CriteriaElement
-    extends AbstractOvalObject
+//    extends AbstractOvalObject
     implements Dependent<DefinitionType>
 {
 
     public static final Boolean  DEFAULT_NEGATE = Boolean.FALSE;
-    private Boolean  _negate;
+    private Boolean  negate;
     //{optional, xsd:boolean, default="false"}
 
-    private String  _comment;
+    private String  comment;
     //{optional}
 
 
@@ -72,13 +71,13 @@ public class CriteriaElement
                     final Boolean negate
                     )
     {
-        _negate = negate;
+        this.negate = negate;
     }
 
 
-    public Boolean isNegate()
+    public Boolean getNegate()
     {
-        return _negate;
+        return this.negate;
     }
 
 
@@ -89,13 +88,13 @@ public class CriteriaElement
                     final String comment
                     )
     {
-        _comment = comment;
+        this.comment = comment;
     }
 
 
     public String getComment()
     {
-        return _comment;
+        return this.comment;
     }
 
 
@@ -135,7 +134,11 @@ public class CriteriaElement
         final int  prime = 37;
         int  result = 17;
 
-        result = prime * result + (isNegate() ? 0 : 1);
+        Boolean  negate = getNegate();
+        if (negate == null) {
+            negate = DEFAULT_NEGATE;
+        }
+        result = prime * result + (negate ? 0 : 1);
 
         return result;
     }
@@ -156,7 +159,15 @@ public class CriteriaElement
         }
 
         CriteriaElement  other = (CriteriaElement)obj;
-        if (this.isNegate() == other.isNegate()) {
+        Boolean  otherNegate = other.getNegate();
+        if (otherNegate == null) {
+            otherNegate = DEFAULT_NEGATE;
+        }
+        Boolean  thisNegate = this.getNegate();
+        if (thisNegate == null) {
+            thisNegate = DEFAULT_NEGATE;
+        }
+        if (thisNegate.booleanValue() == otherNegate.booleanValue()) {
             return true;
         }
 

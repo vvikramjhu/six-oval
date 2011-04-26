@@ -20,8 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.common;
 
-import java.io.Serializable;
-import java.util.HashMap;
+import jp.go.aist.six.oval.model.v5.OvalEnumeration;
 
 
 
@@ -33,91 +32,68 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class OperatorEnumeration
-    implements Serializable
+public enum OperatorEnumeration
+    implements OvalEnumeration
 {
 
-    private static final String  _AND_  = "AND";
-    private static final String  _ONE_  = "ONE";
-    private static final String  _OR_   = "OR";
-    private static final String  _XOR_  = "XOR";
-
-
-    public static final OperatorEnumeration  AND = new OperatorEnumeration( _AND_ );
-    public static final OperatorEnumeration  ONE = new OperatorEnumeration( _ONE_ );
-    public static final OperatorEnumeration  OR  = new OperatorEnumeration( _OR_ );
-    public static final OperatorEnumeration  XOR = new OperatorEnumeration( _XOR_ );
-
-
-
-    private static HashMap<String, OperatorEnumeration> _INIT_()
-    {
-        HashMap<String, OperatorEnumeration>  map = new HashMap<String, OperatorEnumeration>();
-        map.put( _AND_,  AND );
-        map.put( _ONE_,  ONE );
-        map.put( _OR_,   OR  );
-        map.put( _XOR_,  XOR );
-        return map;
-    }
-
-    private static final HashMap<String, OperatorEnumeration>  _INSTANCES_ = _INIT_();
-
+    AND ( "AND" ),
+    ONE ( "ONE" ),
+    OR  ( "OR" ),
+    XOR ( "XOR" );
 
 
 
     /**
+     * A factory method.
      */
-    public static OperatorEnumeration valueOf(
-                    final String name
+    public static OperatorEnumeration fromValue(
+                    final String value
                     )
     {
-        OperatorEnumeration  flag = null;
-        if (name != null) {
-            flag = _INSTANCES_.get( name );
+        for (OperatorEnumeration  e : OperatorEnumeration.values()) {
+            if (e.value.equals( value )) {
+                return e;
+            }
         }
 
-        if (flag == null) {
-            throw new IllegalArgumentException( "invalid operator: " + name );
-        }
-
-        return flag;
+        throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
+    private String  value = null;
 
 
 
     /**
      * Constructor.
      */
-    private OperatorEnumeration(
-                    final String name
+    OperatorEnumeration(
+                    final String value
                     )
     {
-        _name = name;
+        this.value = value;
     }
 
 
 
     /**
      */
-    public String getName()
+    public String value()
     {
-        return _name;
+        return this.value;
     }
 
 
 
     //**************************************************************
-    //  extends Object
+    //  java.lang.Object
     //**************************************************************
 
     @Override
     public String toString()
     {
-        return getName();
+        return this.value;
     }
 
 }

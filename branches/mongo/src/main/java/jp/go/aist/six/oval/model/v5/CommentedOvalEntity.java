@@ -32,7 +32,7 @@ public abstract class CommentedOvalEntity
     extends OvalEntity
 {
 
-    private String  _comment;
+    private String  comment;
 
 
 
@@ -86,13 +86,13 @@ public abstract class CommentedOvalEntity
                     final String comment
                     )
     {
-        _comment = comment;
+        this.comment = comment;
     }
 
 
     public String getComment()
     {
-        return _comment;
+        return this.comment;
     }
 
 }

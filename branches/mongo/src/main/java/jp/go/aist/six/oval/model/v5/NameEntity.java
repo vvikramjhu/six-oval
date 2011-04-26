@@ -29,9 +29,13 @@ package jp.go.aist.six.oval.model.v5;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class NameEntity
-    extends AbstractOvalObject
+//    extends AbstractOvalObject
     implements Comparable<NameEntity>
 {
+
+    private String  name;
+
+
 
     /**
      * Constructor.
@@ -55,13 +59,13 @@ public abstract class NameEntity
                     final String name
                     )
     {
-        setPersistentID( name );
+        this.name = name;
     }
 
 
     public String getName()
     {
-        return getPersistentID();
+        return this.name;
     }
 
 

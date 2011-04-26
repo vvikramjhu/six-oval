@@ -58,7 +58,7 @@ public class EntityItemFamilyType
                     final FamilyEnumeration content
                     )
     {
-        super( (content == null ? null : content.getName()) );
+        super( (content == null ? null : content.value()) );
     }
 
 

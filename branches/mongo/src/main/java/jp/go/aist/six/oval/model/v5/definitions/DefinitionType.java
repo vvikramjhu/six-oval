@@ -22,6 +22,8 @@ package jp.go.aist.six.oval.model.v5.definitions;
 
 import jp.go.aist.six.oval.model.v5.OvalEntity;
 import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
+import com.google.code.morphia.annotations.Property;
+import com.google.code.morphia.annotations.Transient;
 
 
 
@@ -36,21 +38,23 @@ public class DefinitionType
     extends OvalEntity
 {
 
-    private MetadataType  _metadata;
+    private MetadataType  metadata;
     //{1..1}
 
 
-    private NotesType  _notes;
+    private NotesType  notes;
     //{0..1}
 
 
-    private CriteriaType  _criteria;
+    private CriteriaType  criteria;
     //{0..1}
 
+    @Transient
     private String  _criteriaXml;
 
 
-    private DefinitionClassEnumeration  _definitionClass;
+    @Property( "class" )
+    private DefinitionClassEnumeration  definitionClass;
     //{required}
 
 
@@ -107,7 +111,16 @@ public class DefinitionType
                     final MetadataType metadata
                     )
     {
-        _metadata = metadata;
+        this.metadata = metadata;
+    }
+
+
+    public MetadataType getMetadata()
+    {
+        if (this.metadata == null) {
+            this.metadata = new MetadataType();
+        }
+        return this.metadata;
     }
 
 
@@ -120,15 +133,6 @@ public class DefinitionType
     }
 
 
-    public MetadataType getMetadata()
-    {
-        if (_metadata == null) {
-            _metadata = new MetadataType();
-        }
-        return _metadata;
-    }
-
-
 
     /**
      */
@@ -136,7 +140,7 @@ public class DefinitionType
                     final NotesType notes
                     )
     {
-        _notes = notes;
+        this.notes = notes;
     }
 
 
@@ -144,7 +148,7 @@ public class DefinitionType
      */
     public NotesType getNotes()
     {
-        return _notes;
+        return this.notes;
     }
 
 
@@ -155,7 +159,13 @@ public class DefinitionType
                     final CriteriaType criteria
                     )
     {
-        _criteria = criteria;
+        this.criteria = criteria;
+    }
+
+
+    public CriteriaType getCriteria()
+    {
+        return this.criteria;
     }
 
 
@@ -165,12 +175,6 @@ public class DefinitionType
     {
         setCriteria( criteria );
         return this;
-    }
-
-
-    public CriteriaType getCriteria()
-    {
-        return _criteria;
     }
 
 
@@ -198,13 +202,13 @@ public class DefinitionType
                     final DefinitionClassEnumeration clazz
                     )
     {
-        _definitionClass = clazz;
+        this.definitionClass = clazz;
     }
 
 
     public DefinitionClassEnumeration getDefinitionClass()
     {
-        return _definitionClass;
+        return this.definitionClass;
     }
 
 

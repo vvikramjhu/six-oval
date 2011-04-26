@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5;
 
+import com.google.code.morphia.annotations.Transient;
+
 
 
 
@@ -31,20 +33,21 @@ package jp.go.aist.six.oval.model.v5;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class OvalElement
-    extends AbstractOvalObject
+//    extends AbstractOvalObject
     implements Comparable<OvalElement>
 {
 
-    private String  _ovalID;
+    private String  id;
     //{required, oval:DefinitionIDPattern}
 
-    private int  _ovalVersion;
+    private int  version;
     //{required, xsd:nonNegativeInteger}
 
 
     /**
      * ovalID + ":" + ovalVersion
      */
+    @Transient
     private transient String  _ovalGlobalID;
 
 
@@ -86,7 +89,7 @@ public abstract class OvalElement
                     final String id
                     )
     {
-        _ovalID = id;
+        this.id = id;
     }
 
 
@@ -98,7 +101,7 @@ public abstract class OvalElement
      */
     public String getOvalID()
     {
-        return _ovalID;
+        return this.id;
     }
 
 
@@ -117,7 +120,7 @@ public abstract class OvalElement
             throw new IllegalArgumentException(
                             "negative version: " + version );
         }
-        _ovalVersion = version;
+        this.version = version;
     }
 
 
@@ -129,7 +132,7 @@ public abstract class OvalElement
      */
     public int getOvalVersion()
     {
-        return _ovalVersion;
+        return this.version;
     }
 
 

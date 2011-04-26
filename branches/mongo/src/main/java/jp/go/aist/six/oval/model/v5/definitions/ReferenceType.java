@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
@@ -32,18 +31,18 @@ import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class ReferenceType
-    extends AbstractOvalObject
+//    extends AbstractOvalObject
 {
 
-    private String  _source;
+    private String  source;
     //{required}
 
 
-    private String  _refID;
+    private String  ref_id;
     //{required}
 
 
-    private String  _refURL;
+    private String  ref_url;
     //{optional, xsd:anyURI}
 
 
@@ -84,13 +83,13 @@ public class ReferenceType
                     final String source
                     )
     {
-        _source = source;
+        this.source = source;
     }
 
 
     public String getSource()
     {
-        return _source;
+        return this.source;
     }
 
 
@@ -98,16 +97,16 @@ public class ReferenceType
     /**
      */
     public void setRefID(
-                    final String id
+                    final String refid
                     )
     {
-        _refID = id;
+        this.ref_id = refid;
     }
 
 
     public String getRefID()
     {
-        return _refID;
+        return this.ref_id;
     }
 
 
@@ -118,13 +117,13 @@ public class ReferenceType
                     final String url
                     )
     {
-        _refURL = url;
+        this.ref_url = url;
     }
 
 
     public String getRefURL()
     {
-        return _refURL;
+        return this.ref_url;
     }
 
 

@@ -34,7 +34,7 @@ public class CriterionType
     extends CriteriaElement
 {
 
-    private String  _testRef;
+    private String  test_ref;
     //{required, oval:TestIDPattern}
 
 
@@ -72,13 +72,13 @@ public class CriterionType
                     final String testID
                     )
     {
-        _testRef = testID;
+        this.test_ref = testID;
     }
 
 
     public String getTestRef()
     {
-        return _testRef;
+        return this.test_ref;
     }
 
 
@@ -133,7 +133,7 @@ public class CriterionType
     @Override
     public String toString()
     {
-        return "criterion[negate=" + isNegate()
+        return "criterion[negate=" + getNegate()
                         + ", test_ref=" + getTestRef()
                         + ", comment=" + getComment()
                         + "]";

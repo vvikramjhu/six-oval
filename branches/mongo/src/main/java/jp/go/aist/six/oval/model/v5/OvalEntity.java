@@ -37,7 +37,7 @@ public abstract class OvalEntity
 {
 
     public static final Boolean  DEFAULT_DEPRECATED = Boolean.FALSE;
-    private Boolean  _deprecated;
+    private Boolean  deprecated;
     //{optional, default="false"}
 
 
@@ -69,34 +69,34 @@ public abstract class OvalEntity
                     final Boolean deprecated
                     )
     {
-        _deprecated = deprecated;
+        this.deprecated = deprecated;
     }
 
 
     public Boolean getDeprecated()
     {
-        return _deprecated;
+        return this.deprecated;
     }
 
 
 
-    //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    @Override
-    public String getPersistentID()
-    {
-        return ovalGetGlobalID();
-
-//        String  pid = super.getPersistentID();
-//        if (pid == null) {
-//            pid = getOvalGlobalID();
-//            super.setPersistentID( pid );
-//        }
+//    //**************************************************************
+//    //  Persistable
+//    //**************************************************************
 //
-//        return pid;
-    }
+//    @Override
+//    public String getPersistentID()
+//    {
+//        return ovalGetGlobalID();
+//
+////        String  pid = super.getPersistentID();
+////        if (pid == null) {
+////            pid = getOvalGlobalID();
+////            super.setPersistentID( pid );
+////        }
+////
+////        return pid;
+//    }
 
 
 

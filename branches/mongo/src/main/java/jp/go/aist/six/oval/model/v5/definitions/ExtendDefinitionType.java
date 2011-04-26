@@ -34,7 +34,7 @@ public class ExtendDefinitionType
     extends CriteriaElement
 {
 
-    private String  _definitionRef;
+    private String  definition_ref;
     //{required, oval:DefinitionIDPattern}
 
 
@@ -72,13 +72,13 @@ public class ExtendDefinitionType
                     final String definitionID
                     )
     {
-        _definitionRef = definitionID;
+        this.definition_ref = definitionID;
     }
 
 
     public String getDefinitionRef()
     {
-        return _definitionRef;
+        return this.definition_ref;
     }
 
 
@@ -133,7 +133,7 @@ public class ExtendDefinitionType
     @Override
     public String toString()
     {
-        return "extend_definition[negate=" + isNegate()
+        return "extend_definition[negate=" + getNegate()
                         + ", definition_ref=" + getDefinitionRef()
                         + ", comment=" + getComment()
                         + "]";

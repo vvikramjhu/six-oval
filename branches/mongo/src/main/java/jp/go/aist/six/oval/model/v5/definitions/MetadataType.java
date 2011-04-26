@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.v5.definitions;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
+import com.google.code.morphia.annotations.Transient;
 
 
 
@@ -36,28 +36,29 @@ import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
  * @version $Id$
  */
 public class MetadataType
-    extends AbstractOvalObject
+//    extends AbstractOvalObject
 {
 
-    private String  _title;
+    private String  title;
     //{1..1}
 
 
 //    private final Collection<Affected>  _affected = new ArrayList<Affected>();
-    private AffectedType  _affected;
+    private AffectedType  affected;
     //{0..*}
     //NOTE: So far, we found NO definition with multiple 'affected' elements.
 
 
-    private final Collection<ReferenceType>  _reference =
+    private final Collection<ReferenceType>  reference =
         new ArrayList<ReferenceType>();
     //{0..*}
 
 
-    private String  _description;
+    private String  description;
     //{1..1}
 
 
+    @Transient
     private final Collection<MetadataItem>  _additionalMetadata =
         new ArrayList<MetadataItem>();
     //{xsd:any, 0..*}
@@ -92,7 +93,13 @@ public class MetadataType
                     final String title
                     )
     {
-        _title = title;
+        this.title = title;
+    }
+
+
+    public String getTitle()
+    {
+        return this.title;
     }
 
 
@@ -105,12 +112,6 @@ public class MetadataType
     }
 
 
-    public String getTitle()
-    {
-        return _title;
-    }
-
-
 
     /**
      */
@@ -118,7 +119,13 @@ public class MetadataType
                     final AffectedType affected
                     )
     {
-        _affected = affected;
+        this.affected = affected;
+    }
+
+
+    public AffectedType getAffected()
+    {
+        return this.affected;
     }
 
 
@@ -131,12 +138,6 @@ public class MetadataType
     }
 
 
-    public AffectedType getAffected()
-    {
-        return _affected;
-    }
-
-
 
     /**
      */
@@ -144,12 +145,18 @@ public class MetadataType
                     final Collection<? extends ReferenceType> references
                     )
     {
-        if (references != _reference) {
-            _reference.clear();
+        if (references != this.reference) {
+            this.reference.clear();
             if (references != null  &&  references.size() > 0) {
-                _reference.addAll( references );
+                this.reference.addAll( references );
             }
         }
+    }
+
+
+    public Collection<ReferenceType> getReference()
+    {
+        return this.reference;
     }
 
 
@@ -157,20 +164,14 @@ public class MetadataType
                     final ReferenceType reference
                     )
     {
-        _reference.add( reference );
+        this.reference.add( reference );
         return this;
-    }
-
-
-    public Collection<ReferenceType> getReference()
-    {
-        return _reference;
     }
 
 
     public Iterator<ReferenceType> iterateReference()
     {
-        return _reference.iterator();
+        return this.reference.iterator();
     }
 
 
@@ -181,7 +182,13 @@ public class MetadataType
                     final String description
                     )
     {
-        _description= description;
+        this.description= description;
+    }
+
+
+    public String getDescription()
+    {
+        return this.description;
     }
 
 
@@ -191,12 +198,6 @@ public class MetadataType
     {
         setDescription( description );
         return this;
-    }
-
-
-    public String getDescription()
-    {
-        return _description;
     }
 
 

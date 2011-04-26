@@ -41,12 +41,12 @@ public class CriteriaType
     implements Iterable<CriteriaElement>
 {
 
-    private final Collection<CriteriaElement>  _elements =
+    private final Collection<CriteriaElement>  elements =
         new ArrayList<CriteriaElement>();
     //{1..*}
 
     public static final OperatorEnumeration  DEFAULT_OPERATOR = OperatorEnumeration.AND;
-    private OperatorEnumeration  _operator;
+    private OperatorEnumeration  operator;
     //{optional, default="AND"}
 
 
@@ -115,13 +115,13 @@ public class CriteriaType
                     final OperatorEnumeration operator
                     )
     {
-        _operator = operator;
+        this.operator = operator;
     }
 
 
     public OperatorEnumeration getOperator()
     {
-        return (_operator == null ? DEFAULT_OPERATOR : _operator);
+        return this.operator;
     }
 
 
@@ -129,13 +129,13 @@ public class CriteriaType
     /**
      */
     public void setElements(
-                    final Collection<? extends CriteriaElement> elements
+                    final Collection<? extends CriteriaElement> elementSequence
                     )
     {
-        if (elements != _elements) {
-            _elements.clear();
-            if (elements != null  &&  elements.size() > 0) {
-                _elements.addAll( elements );
+        if (elementSequence != this.elements) {
+            this.elements.clear();
+            if (elementSequence != null  &&  elementSequence.size() > 0) {
+                this.elements.addAll( elementSequence );
             }
         }
     }
@@ -143,13 +143,13 @@ public class CriteriaType
 
     public Collection<CriteriaElement> getElements()
     {
-        return _elements;
+        return this.elements;
     }
 
 
     public Iterator<CriteriaElement> iterateElements()
     {
-        return _elements.iterator();
+        return this.elements.iterator();
     }
 
 
@@ -157,7 +157,7 @@ public class CriteriaType
                     final CriteriaElement element
                     )
     {
-        _elements.add( element );
+        this.elements.add( element );
         return this;
     }
 
@@ -258,7 +258,7 @@ public class CriteriaType
     @Override
     public String toString()
     {
-        return "criteria[negate=" + isNegate()
+        return "criteria[negate=" + getNegate()
                         + ", operator=" + getOperator()
                         + ", " + getElements()
                         + "]";
