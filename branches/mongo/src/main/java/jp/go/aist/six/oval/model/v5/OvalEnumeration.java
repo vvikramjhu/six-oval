@@ -32,5 +32,7 @@ package jp.go.aist.six.oval.model.v5;
 public interface OvalEnumeration
 {
 
+    public String value();
+
 }
 // OvalEnumeration

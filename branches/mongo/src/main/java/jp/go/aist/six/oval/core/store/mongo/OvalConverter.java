@@ -1,6 +1,9 @@
 package jp.go.aist.six.oval.core.store.mongo;
 
+import java.lang.reflect.Method;
+import java.util.HashMap;
 import jp.go.aist.six.oval.model.v5.NameEntity;
+import jp.go.aist.six.oval.model.v5.OvalEnumeration;
 import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
 import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
 import jp.go.aist.six.oval.model.v5.definitions.Platform;
@@ -40,6 +43,69 @@ public class OvalConverter
 //    public static final Collection<Class<?>>  SUPPORTED_CLASSES = Arrays.asList( _SUPPORTED_CLASSES_ );
 
 
+    //**************************************************************
+    //  supporting OvalEnumeration
+    //**************************************************************
+
+    private static final HashMap<Class<? extends OvalEnumeration>, Method>
+    _VALUE_OF_METHODS_ = new HashMap<Class<? extends OvalEnumeration>, Method>();
+
+//    private static final HashMap<Class<? extends OvalEnumeration>, Method>
+//    _VALUE_METHODS_ = new HashMap<Class<? extends OvalEnumeration>, Method>();
+
+    /**
+     */
+    public static Object enumerationFromValue(
+                    final Class<? extends OvalEnumeration> targetClass,
+                    final String value
+                    )
+    {
+        Object  obj = null;
+
+        Method  method = _VALUE_OF_METHODS_.get( targetClass );
+        try {
+            if (method == null) {
+                //reflection
+                method = targetClass.getMethod( "fromValue", String.class );
+                _VALUE_OF_METHODS_.put( targetClass, method );
+            }
+            obj = method.invoke( null, value );
+        } catch (Exception ex) {
+            _LOG_.error( ex.getMessage() );
+            throw new MappingException( ex.getMessage() );
+        }
+
+        return obj;
+    }
+
+
+
+    /**
+     */
+    public static Object enumerationValue(
+                    final Object object
+                    )
+    {
+        if (object == null)
+            return null;
+
+        Class<?>  targetClass = object.getClass();
+        if (OvalEnumeration.class.isAssignableFrom( targetClass )) {
+            throw new MappingException( "unsupported type: " + String.valueOf( targetClass ) );
+        }
+
+        Object  value = null;
+        try {
+            OvalEnumeration  e = OvalEnumeration.class.cast( object );
+            value = e.value();
+        } catch (ClassCastException ex) {
+            throw new MappingException( ex.getMessage() );
+        }
+
+        return value;
+    }
+
+
 
     /**
      */
@@ -50,6 +116,7 @@ public class OvalConverter
 
 
 
+    // Object (Java) --> simple value (Mongo)
     @Override
     public Object encode(
                     final Object object,
@@ -57,13 +124,12 @@ public class OvalConverter
                     )
     throws MappingException
     {
-        if (object == null)
+        if (object == null) {
             return null;
+        }
 
-        if (object instanceof DefinitionClassEnumeration) {
-            return DefinitionClassEnumeration.class.cast( object ).getName();
-        } else if (object instanceof FamilyEnumeration) {
-            return FamilyEnumeration.class.cast( object ).value();
+        if (object instanceof OvalEnumeration) {
+            return enumerationValue( object );
         } else if (object instanceof NameEntity) {
             return NameEntity.class.cast( object ).getName();
         }
@@ -73,6 +139,7 @@ public class OvalConverter
 
 
 
+    // simple value (Mongo) --> Object (Java)
     @SuppressWarnings( "rawtypes" )
     @Override
     public Object decode(
@@ -87,10 +154,11 @@ public class OvalConverter
             return null;
         }
 
-        if (DefinitionClassEnumeration.class == targetClass ) {
-            return DefinitionClassEnumeration.valueOf( fromDBObject.toString() );
-        } else if (FamilyEnumeration.class == targetClass ) {
-            return FamilyEnumeration.fromValue( fromDBObject.toString() );
+        if (OvalEnumeration.class.isAssignableFrom( targetClass )) {
+            @SuppressWarnings( "unchecked" )
+            Class<? extends OvalEnumeration>  enumClass =
+                targetClass.asSubclass( OvalEnumeration.class );
+            return enumerationFromValue( enumClass, fromDBObject.toString() );
         } else if (Platform.class == targetClass ) {
             return new Platform( fromDBObject.toString() );
         } else if (Product.class == targetClass ) {
