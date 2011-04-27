@@ -6,6 +6,7 @@ import jp.go.aist.six.oval.model.v5.NameEntity;
 import jp.go.aist.six.oval.model.v5.OvalEnumeration;
 import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
 import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
+import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
 import jp.go.aist.six.oval.model.v5.definitions.Platform;
 import jp.go.aist.six.oval.model.v5.definitions.Product;
 import org.slf4j.Logger;
@@ -36,11 +37,14 @@ public class OvalConverter
     private static final Class<?>[]  _SUPPORTED_CLASSES_ = new Class[] {
         DefinitionClassEnumeration.class,
         FamilyEnumeration.class,
+        OperatorEnumeration.class,
         Platform.class,
         Product.class
         };
 
-//    public static final Collection<Class<?>>  SUPPORTED_CLASSES = Arrays.asList( _SUPPORTED_CLASSES_ );
+//    public static final Collection<Class<?>>  SUPPORTED_CLASSES =
+//    Arrays.asList( _SUPPORTED_CLASSES_ );
+
 
 
     //**************************************************************
@@ -90,7 +94,7 @@ public class OvalConverter
             return null;
 
         Class<?>  targetClass = object.getClass();
-        if (OvalEnumeration.class.isAssignableFrom( targetClass )) {
+        if (! OvalEnumeration.class.isAssignableFrom( targetClass )) {
             throw new MappingException( "unsupported type: " + String.valueOf( targetClass ) );
         }
 
@@ -108,6 +112,7 @@ public class OvalConverter
 
 
     /**
+     * Constructor.
      */
     public OvalConverter()
     {

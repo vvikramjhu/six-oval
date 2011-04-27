@@ -24,6 +24,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
+import org.bson.types.ObjectId;
+import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Id;
 
 
 
@@ -36,10 +39,27 @@ import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
+@Entity( "definitions.criteria" )
 public class CriteriaType
     extends CriteriaElement
-    implements Iterable<CriteriaElement>
+//    implements Iterable<CriteriaElement>
 {
+
+    // temp. property
+    @Id
+    private ObjectId  _id;
+
+    public void setObjectId( final ObjectId id )
+    {
+        this._id = id;
+    }
+
+    public ObjectId getObjectId()
+    {
+        return _id;
+    }
+
+
 
     private final Collection<CriteriaElement>  elements =
         new ArrayList<CriteriaElement>();
@@ -193,7 +213,7 @@ public class CriteriaType
     //  Iterable
     //**************************************************************
 
-    @Override
+//    @Override
     public Iterator<CriteriaElement> iterator()
     {
         return iterateElements();

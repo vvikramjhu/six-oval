@@ -82,8 +82,7 @@ public enum FamilyEnumeration
 
 
 
-    /**
-     */
+    @Override
     public String value()
     {
         return this.value;

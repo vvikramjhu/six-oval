@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc" 
+    xsi:schemaLocation="
+      http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context 
+      http://www.springframework.org/schema/context/spring-context.xsd
+      http://www.springframework.org/schema/mvc
+      http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+
+    <bean id="mongo" 
+        class="com.mongodb.Mongo">
+        <constructor-arg type="java.lang.String" value="localhost"/>
+        <constructor-arg type="int" value="27017"/>
+    </bean> 
+
+
+    <bean id="morphia" 
+        class="jp.go.aist.six.oval.core.store.mongo.MorphiaFactory" 
+        factory-method="create"> 
+        <constructor-arg>
+            <set>
+                <value>#{ T(jp.go.aist.six.oval.model.v5.definitions.CriteriaType) }</value>
+            </set>
+        </constructor-arg>
+        <constructor-arg>
+            <set>
+                <value>#{ T(jp.go.aist.six.oval.core.store.mongo.OvalConverter) }</value>
+            </set>
+        </constructor-arg>
+    </bean>
+
+
+    <bean id="datastore" 
+        factory-bean="morphia" factory-method="createDatastore"> 
+        <constructor-arg ref="mongo"/> 
+        <constructor-arg value="test"/> 
+    </bean>
+
+
+    <bean id="criteriaDAO" 
+        class="jp.go.aist.six.test.oval.core.store.mongo.CriteriaDAO">
+        <constructor-arg ref="datastore"/> 
+    </bean> 
+
+</beans>

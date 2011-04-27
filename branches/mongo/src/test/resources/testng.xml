@@ -13,8 +13,21 @@
 
 <suite name="six-oval" verbose="1" parallel="tests">
 
-    <!-- // XML // -->
-    <test name="oval.core.xml" enabled="true">
+    <!-- 
+    // store // 
+    -->
+    <test name="oval.core.store.mongo" enabled="true">
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.store.mongo.CriteriaTest"/>
+        </classes>
+    </test>
+
+
+
+    <!-- 
+    // XML // 
+    -->
+    <test name="oval.core.xml" enabled="false">
         <groups>
             <run>
                 <include name="definitions.oval_definitions"/>

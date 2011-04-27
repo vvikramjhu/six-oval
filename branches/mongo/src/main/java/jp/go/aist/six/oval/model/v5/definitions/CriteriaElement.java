@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.util.persist.Dependent;
 
 
 
@@ -33,7 +32,7 @@ import jp.go.aist.six.util.persist.Dependent;
  */
 public class CriteriaElement
 //    extends AbstractOvalObject
-    implements Dependent<DefinitionType>
+//    implements Dependent<DefinitionType>
 {
 
     public static final Boolean  DEFAULT_NEGATE = Boolean.FALSE;
@@ -99,28 +98,28 @@ public class CriteriaElement
 
 
 
-    //**************************************************************
-    //  Dependent
-    //**************************************************************
-
-    private DefinitionType  _master;
-
-
-
-    @Override
-    public void setMasterObject(
-                    final DefinitionType master
-                    )
-    {
-        _master = master;
-    }
-
-
-    @Override
-    public DefinitionType getMasterObject()
-    {
-        return _master;
-    }
+//    //**************************************************************
+//    //  Dependent
+//    //**************************************************************
+//
+//    private DefinitionType  _master;
+//
+//
+//
+//    @Override
+//    public void setMasterObject(
+//                    final DefinitionType master
+//                    )
+//    {
+//        _master = master;
+//    }
+//
+//
+//    @Override
+//    public DefinitionType getMasterObject()
+//    {
+//        return _master;
+//    }
 
 
 
