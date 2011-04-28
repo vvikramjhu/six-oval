@@ -25,7 +25,7 @@ import jp.go.aist.six.oval.model.v5.OvalEnumeration;
 
 
 /**
- * The DefinitionClass enumeration type defines
+ * The Class enumeration type defines
  * the different classes of OVAL Definitions.
  * The name "class" in the OVAL Schema is renamed
  * because the name has the special meaning in Java.
@@ -34,7 +34,7 @@ import jp.go.aist.six.oval.model.v5.OvalEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum DefinitionClassEnumeration
+public enum ClassEnumeration
     implements OvalEnumeration
 {
 
@@ -49,11 +49,11 @@ public enum DefinitionClassEnumeration
     /**
      * A factory method.
      */
-    public static DefinitionClassEnumeration fromValue(
+    public static ClassEnumeration fromValue(
                     final String value
                     )
     {
-        for (DefinitionClassEnumeration  e : DefinitionClassEnumeration.values()) {
+        for (ClassEnumeration  e : ClassEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -71,7 +71,7 @@ public enum DefinitionClassEnumeration
     /**
      * Constructor.
      */
-    DefinitionClassEnumeration(
+    ClassEnumeration(
                     final String value
                     )
     {

@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.results;
 
-import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
+import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
 import jp.go.aist.six.util.persist.Dependent;
 
 
@@ -41,7 +41,7 @@ public class DefinitionType
     //{0..1}
 
 
-    private DefinitionClassEnumeration  _definitionClass;
+    private ClassEnumeration  _definitionClass;
     //{optional}
 
 
@@ -94,14 +94,14 @@ public class DefinitionType
     /**
      */
     public void setDefinitionClass(
-                    final DefinitionClassEnumeration clazz
+                    final ClassEnumeration clazz
                     )
     {
         _definitionClass = clazz;
     }
 
 
-    public DefinitionClassEnumeration getDefinitionClass()
+    public ClassEnumeration getDefinitionClass()
     {
         return _definitionClass;
     }

@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.v5.definitions;
 
 import jp.go.aist.six.oval.model.v5.OvalEntity;
-import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
+import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
 import com.google.code.morphia.annotations.Property;
 import com.google.code.morphia.annotations.Transient;
 
@@ -54,7 +54,7 @@ public class DefinitionType
 
 
     @Property( "class" )
-    private DefinitionClassEnumeration  definitionClass;
+    private ClassEnumeration  definitionClass;
     //{required}
 
 
@@ -84,7 +84,7 @@ public class DefinitionType
     public DefinitionType(
                     final String id,
                     final int version,
-                    final DefinitionClassEnumeration clazz
+                    final ClassEnumeration clazz
                     )
     {
         super( id, version );
@@ -95,7 +95,7 @@ public class DefinitionType
     public DefinitionType(
                     final String id,
                     final int version,
-                    final DefinitionClassEnumeration clazz,
+                    final ClassEnumeration clazz,
                     final MetadataType metadata
                     )
     {
@@ -199,14 +199,14 @@ public class DefinitionType
     /**
      */
     public void setDefinitionClass(
-                    final DefinitionClassEnumeration clazz
+                    final ClassEnumeration clazz
                     )
     {
         this.definitionClass = clazz;
     }
 
 
-    public DefinitionClassEnumeration getDefinitionClass()
+    public ClassEnumeration getDefinitionClass()
     {
         return this.definitionClass;
     }

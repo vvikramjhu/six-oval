@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import jp.go.aist.six.oval.model.v5.NameEntity;
 import jp.go.aist.six.oval.model.v5.OvalEnumeration;
-import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
+import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
 import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
 import jp.go.aist.six.oval.model.v5.definitions.Platform;
@@ -35,7 +35,7 @@ public class OvalConverter
 
 
     private static final Class<?>[]  _SUPPORTED_CLASSES_ = new Class[] {
-        DefinitionClassEnumeration.class,
+        ClassEnumeration.class,
         FamilyEnumeration.class,
         OperatorEnumeration.class,
         Platform.class,
@@ -112,6 +112,28 @@ public class OvalConverter
 
 
     /**
+     */
+    public static Object nameFromValue(
+                    final Class<? extends NameEntity> targetClass,
+                    final String name
+                    )
+    {
+        NameEntity  obj = null;
+
+        try {
+            obj = targetClass.newInstance();
+        } catch (Exception ex) {
+            _LOG_.error( ex.getMessage() );
+            throw new MappingException( ex.getMessage() );
+        }
+
+        obj.setName( name );
+        return obj;
+    }
+
+
+
+    /**
      * Constructor.
      */
     public OvalConverter()
@@ -139,7 +161,8 @@ public class OvalConverter
             return NameEntity.class.cast( object ).getName();
         }
 
-        throw new MappingException( "unsupported type: " + String.valueOf( object ) );
+        throw new MappingException( "unsupported type: "
+                        + String.valueOf( object ) );
     }
 
 
@@ -164,13 +187,20 @@ public class OvalConverter
             Class<? extends OvalEnumeration>  enumClass =
                 targetClass.asSubclass( OvalEnumeration.class );
             return enumerationFromValue( enumClass, fromDBObject.toString() );
-        } else if (Platform.class == targetClass ) {
-            return new Platform( fromDBObject.toString() );
-        } else if (Product.class == targetClass ) {
-            return new Product( fromDBObject.toString() );
+
+        } else if (NameEntity.class.isAssignableFrom( targetClass )) {
+            @SuppressWarnings( "unchecked" )
+            Class<? extends NameEntity>  nameClass =
+                targetClass.asSubclass( NameEntity.class );
+            return nameFromValue( nameClass, fromDBObject.toString() );
+//        } else if (Platform.class == targetClass ) {
+//            return new Platform( fromDBObject.toString() );
+//        } else if (Product.class == targetClass ) {
+//            return new Product( fromDBObject.toString() );
         }
 
-        throw new MappingException( "unsupported type: " + String.valueOf( targetClass ) );
+        throw new MappingException( "unsupported type: "
+                        + String.valueOf( targetClass ) );
     }
 
 }

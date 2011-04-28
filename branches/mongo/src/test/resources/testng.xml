@@ -18,7 +18,7 @@
     -->
     <test name="oval.core.store.mongo" enabled="true">
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.store.mongo.CriteriaTest"/>
+            <class name="jp.go.aist.six.test.oval.core.store.mongo.MongoTest"/>
         </classes>
     </test>
 

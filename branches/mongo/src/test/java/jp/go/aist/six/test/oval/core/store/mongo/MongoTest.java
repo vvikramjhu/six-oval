@@ -16,7 +16,7 @@ import com.google.code.morphia.dao.DAO;
 
 
 
-public class CriteriaTest
+public class MongoTest
 {
 
     private static final String _SPRING_APP_CONTEXT_

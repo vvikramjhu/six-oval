@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.results;
 
-import jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration;
+import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
 
 
 
@@ -37,7 +37,7 @@ public class ClassDirectivesType
     extends DirectivesType
 {
 
-    private DefinitionClassEnumeration  _definitionClass;
+    private ClassEnumeration  _definitionClass;
     //{required}
 
 
@@ -54,7 +54,7 @@ public class ClassDirectivesType
      * Constructor.
      */
     public ClassDirectivesType(
-                    final DefinitionClassEnumeration definitionClass,
+                    final ClassEnumeration definitionClass,
                     final DirectiveType definitionTrue,
                     final DirectiveType definitionFalse,
                     final DirectiveType definitionUnknown,
@@ -80,14 +80,14 @@ public class ClassDirectivesType
     /**
      */
     public void setDefinitionClass(
-                    final DefinitionClassEnumeration definitionClass
+                    final ClassEnumeration definitionClass
                     )
     {
         _definitionClass = definitionClass;
     }
 
 
-    public DefinitionClassEnumeration getDefinitionClass()
+    public ClassEnumeration getDefinitionClass()
     {
         return _definitionClass;
     }
@@ -104,7 +104,7 @@ public class ClassDirectivesType
         final int  prime = 37;
         int  result = super.hashCode();
 
-        DefinitionClassEnumeration  definitionClass = getDefinitionClass();
+        ClassEnumeration  definitionClass = getDefinitionClass();
         result = prime * result + ((definitionClass == null) ? 0 : definitionClass.hashCode());
 
         return result;
