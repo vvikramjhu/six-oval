@@ -39,7 +39,7 @@ import com.google.code.morphia.annotations.Id;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-@Entity( "definitions.criteria" )
+@Entity( "oval.definitions.criteria" )
 public class CriteriaType
     extends CriteriaElement
 //    implements Iterable<CriteriaElement>

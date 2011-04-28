@@ -3,8 +3,10 @@ package jp.go.aist.six.test.oval.core.store.mongo;
 import java.util.Arrays;
 import java.util.List;
 import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
+import jp.go.aist.six.oval.model.v5.definitions.CriteriaElement;
 import jp.go.aist.six.oval.model.v5.definitions.CriteriaType;
 import jp.go.aist.six.oval.model.v5.definitions.CriterionType;
+import jp.go.aist.six.oval.model.v5.definitions.ExtendDefinitionType;
 import org.bson.types.ObjectId;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -64,15 +66,23 @@ public class CriteriaTest
                         "Mozilla Seamonkey version 2.x and less than 2.0.4"
                         );
 
-        CriteriaType  criteria = new CriteriaType( OperatorEnumeration.OR,
-                        Arrays.asList( new CriterionType[] { criterion1, criterion2 } ) );
+        CriteriaType  criteria1 = new CriteriaType( OperatorEnumeration.OR,
+                        Arrays.asList( new CriteriaElement[] { criterion1, criterion2 } ) );
+
+        ExtendDefinitionType  extdef1 = new ExtendDefinitionType(
+                        "oval:org.mitre.oval:def:6372",
+                        "Mozilla Seamonkey is installed"
+                        );
+
+        CriteriaType  criteria2 = new CriteriaType( OperatorEnumeration.AND,
+                        Arrays.asList( new CriteriaElement[] { extdef1, criteria1 } ) );
 
         Reporter.log( "save..." , true );
-        Reporter.log( "  * object: " + criteria, true );
-        criteriaDAO.save( criteria );
+        Reporter.log( "  * object: " + criteria2, true );
+        criteriaDAO.save( criteria2 );
 
         Reporter.log( "load each object by concrete class...", true );
-        CriteriaType  criteriap = criteriaDAO.get( criteria.getObjectId() );
+        CriteriaType  criteriap = criteriaDAO.get( criteria2.getObjectId() );
         Reporter.log( "  @ object: " + criteriap, true );
 
         Reporter.log( "load objects...", true );
