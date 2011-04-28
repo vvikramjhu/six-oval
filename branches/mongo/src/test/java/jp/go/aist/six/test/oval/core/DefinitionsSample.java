@@ -15,7 +15,7 @@ import jp.go.aist.six.oval.model.v5.definitions.Product;
 
 
 
-public class SampleDefinition
+public class DefinitionsSample
 {
 
     /**
