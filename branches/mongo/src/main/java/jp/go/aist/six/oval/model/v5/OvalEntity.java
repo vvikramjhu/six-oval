@@ -20,6 +20,9 @@
 
 package jp.go.aist.six.oval.model.v5;
 
+import org.bson.types.ObjectId;
+import com.google.code.morphia.annotations.Id;
+
 
 
 
@@ -35,6 +38,10 @@ package jp.go.aist.six.oval.model.v5;
 public abstract class OvalEntity
     extends OvalElement
 {
+
+    @Id
+    private ObjectId  _id;
+
 
     public static final Boolean  DEFAULT_DEPRECATED = Boolean.FALSE;
     private Boolean  deprecated;
@@ -97,6 +104,23 @@ public abstract class OvalEntity
 ////
 ////        return pid;
 //    }
+
+
+
+    public void setObjectId(
+                    final ObjectId oid
+                    )
+    {
+        this._id = oid;
+    }
+
+
+
+    public ObjectId getObjectId()
+    {
+        return this._id;
+    }
+
 
 
 

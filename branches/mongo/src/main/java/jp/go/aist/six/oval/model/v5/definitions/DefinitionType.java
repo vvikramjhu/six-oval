@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.v5.definitions;
 
 import jp.go.aist.six.oval.model.v5.OvalEntity;
 import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
+import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Property;
 import com.google.code.morphia.annotations.Transient;
 
@@ -34,6 +35,7 @@ import com.google.code.morphia.annotations.Transient;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
+@Entity( "oval.definitions.definition" )
 public class DefinitionType
     extends OvalEntity
 {

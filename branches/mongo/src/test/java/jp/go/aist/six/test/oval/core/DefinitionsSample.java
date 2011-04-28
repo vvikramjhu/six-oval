@@ -69,17 +69,17 @@ public class DefinitionsSample
         AffectedType  affected = new AffectedType(
                         FamilyEnumeration.WINDOWS,
                         new Platform[] {
-                                        new Platform( "Microsoft Windows 2000" ),
-                                        new Platform( "Microsoft Windows XP" ),
-                                        new Platform( "Microsoft Windows Server 2003" ),
-                                        new Platform( "Microsoft Windows Server 2008" ),
-                                        new Platform( "Microsoft Windows Vista" ),
-                                        new Platform( "Microsoft Windows 7" )
+//                                        new Platform( "Microsoft Windows 2000" ),
+//                                        new Platform( "Microsoft Windows XP" ),
+//                                        new Platform( "Microsoft Windows Server 2003" ),
+//                                        new Platform( "Microsoft Windows Server 2008" ),
+//                                        new Platform( "Microsoft Windows Vista" ),
+//                                        new Platform( "Microsoft Windows 7" )
                         },
                         new Product[] {
-                                        new Product( "Mozilla Firefox" ),
-                                        new Product( "Mozilla Thunderbird" ),
-                                        new Product( "Mozilla SeaMonkey" )
+//                                        new Product( "Mozilla Firefox" ),
+//                                        new Product( "Mozilla Thunderbird" ),
+//                                        new Product( "Mozilla SeaMonkey" )
                         }
         );
 

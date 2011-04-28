@@ -25,7 +25,7 @@
         factory-method="create"> 
         <constructor-arg>
             <set>
-                <value>#{ T(jp.go.aist.six.oval.model.v5.definitions.CriteriaType) }</value>
+                <value>#{ T(jp.go.aist.six.oval.model.v5.definitions.DefinitionType) }</value>
             </set>
         </constructor-arg>
         <constructor-arg>
@@ -43,8 +43,8 @@
     </bean>
 
 
-    <bean id="criteriaDAO" 
-        class="jp.go.aist.six.test.oval.core.store.mongo.CriteriaDAO">
+    <bean id="definitionDAO" 
+        class="jp.go.aist.six.oval.core.store.mongo.DefinitionDAO">
         <constructor-arg ref="datastore"/> 
     </bean> 
 

@@ -111,6 +111,10 @@ public class OvalConverter
 
 
 
+    //**************************************************************
+    //  supporting NameEntity
+    //**************************************************************
+
     /**
      */
     public static Object nameFromValue(
