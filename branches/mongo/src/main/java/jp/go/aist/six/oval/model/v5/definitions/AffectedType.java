@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -60,17 +61,14 @@ public class AffectedType
     }
 
 
-//    /**
-//     * Constructor.
-//     */
-//    public AffectedType(
-//                    final FamilyEnumeration family
-//                    )
-//    {
-//        setFamily( family );
-//    }
-//
-//
+    public AffectedType(
+                    final FamilyEnumeration family
+                    )
+    {
+        setFamily( family );
+    }
+
+
 //    /**
 //     * Constructor.
 //     */
@@ -86,25 +84,23 @@ public class AffectedType
 //    }
 //
 //
-//    /**
-//     * Constructor.
-//     */
-//    public AffectedType(
-//                    final FamilyEnumeration family,
-//                    final Platform[] platform,
-//                    final Product[] product
-//                    )
-//    {
-//        setFamily( family );
-//
-//        if (platform != null) {
-//            setPlatform( Arrays.asList( platform ) );
-//        }
-//
-//        if (product != null) {
-//            setProduct( Arrays.asList( product ) );
-//        }
-//    }
+
+    public AffectedType(
+                    final FamilyEnumeration family,
+                    final Platform[] platform,
+                    final Product[] product
+                    )
+    {
+        setFamily( family );
+
+        if (platform != null) {
+            setPlatform( Arrays.asList( platform ) );
+        }
+
+        if (product != null) {
+            setProduct( Arrays.asList( product ) );
+        }
+    }
 
 
 

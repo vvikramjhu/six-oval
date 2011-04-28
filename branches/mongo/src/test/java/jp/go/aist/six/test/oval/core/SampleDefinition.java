@@ -1,94 +1,108 @@
-package jp.go.aist.six.test.oval.core.store.mongo;
+package jp.go.aist.six.test.oval.core;
 
-import java.util.Arrays;
-import java.util.List;
+import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
+import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
 import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
+import jp.go.aist.six.oval.model.v5.definitions.AffectedType;
 import jp.go.aist.six.oval.model.v5.definitions.CriteriaElement;
 import jp.go.aist.six.oval.model.v5.definitions.CriteriaType;
 import jp.go.aist.six.oval.model.v5.definitions.CriterionType;
+import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.ExtendDefinitionType;
-import org.bson.types.ObjectId;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.testng.Reporter;
-import org.testng.annotations.BeforeClass;
-import com.google.code.morphia.dao.DAO;
+import jp.go.aist.six.oval.model.v5.definitions.MetadataType;
+import jp.go.aist.six.oval.model.v5.definitions.Platform;
+import jp.go.aist.six.oval.model.v5.definitions.Product;
 
 
 
-public class MongoTest
+public class SampleDefinition
 {
 
-    private static final String _SPRING_APP_CONTEXT_
-    = "jp/go/aist/six/test/oval/core/store/mongo/mongo-context.xml";
-
-
-    private ApplicationContext  _springContext;
-
-
-
-    @BeforeClass( alwaysRun=true )
-	public void setUp()
-    throws Exception
-	{
-        _springContext = new ClassPathXmlApplicationContext( _SPRING_APP_CONTEXT_ );
-	}
-
-
-
     /**
+     * def:7222
      */
-    @org.testng.annotations.Test(
-                    groups={ "store.mongo" },
-                    alwaysRun=true
-                    )
-    public void testSaveAndLoad()
-    throws Exception
+    public static final DefinitionType  DEF_7222 = _createDefinition7222();
+
+    private static DefinitionType _createDefinition7222()
     {
-        Reporter.log( "\n//// TEST: group=store.mongo"
-                        + ", method=testSaveAndLoad",
-                        true );
+        CriteriaType  criteria = new CriteriaType( OperatorEnumeration.OR, new CriteriaElement[] {
+                        new CriteriaType( OperatorEnumeration.AND, new CriteriaElement[] {
+                                        new ExtendDefinitionType(
+                                                        "oval:org.mitre.oval:def:6562",
+                                                        "Mozilla Firefox is installed"
+                                        ),
+                                        new CriterionType(
+                                                        "oval:org.mitre.oval:tst:11112",
+                                                        "Mozilla Firefox before 3.0.19, 3.5.x before 3.5.9 and 3.6.x before 3.6.2"
+                                        )
+                        } ),
+                        new CriteriaType( OperatorEnumeration.AND, new CriteriaElement[] {
+                                        new ExtendDefinitionType(
+                                                        "oval:org.mitre.oval:def:6372",
+                                                        "Mozilla Seamonkey is installed"
+                                        ),
+                                        new CriteriaType( OperatorEnumeration.OR, new CriteriaElement[] {
+                                                        new CriterionType(
+                                                                        "oval:org.mitre.oval:tst:10688",
+                                                                        "Mozilla Seamonkey version less than 2.0"
+                                                        ),
+                                                        new CriterionType(
+                                                                        "oval:org.mitre.oval:tst:11460",
+                                                                        "Mozilla Seamonkey version 2.x and less than 2.0.4"
+                                                        )
+                                        } )
 
-        // drop collection
-//        DB  db = _mongo.getDB(  );
-//        db.getCollection( "spring" ).drop();
+                        } ),
+                        new CriteriaType( OperatorEnumeration.AND, new CriteriaElement[] {
+                                        new ExtendDefinitionType(
+                                                        "oval:org.mitre.oval:def:6504",
+                                                        "Mozilla Thunderbird is installed"
+                                        ),
+                                        new CriterionType(
+                                                        "oval:org.mitre.oval:tst:11666",
+                                                        "Mozilla Thunderbird version less than 3.0.4"
+                                        )
+                        } )
+        } );
 
-        DAO<CriteriaType, ObjectId>  criteriaDAO = _springContext.getBean( "criteriaDAO", CriteriaDAO.class );
-        criteriaDAO.getDatastore().getDB().getCollection( "test.criteria" ).drop();
 
-        CriterionType  criterion1 = new CriterionType(
-                        "oval:org.mitre.oval:tst:10688",
-                        "Mozilla Seamonkey version less than 2.0"
-                        );
+        AffectedType  affected = new AffectedType(
+                        FamilyEnumeration.WINDOWS,
+                        new Platform[] {
+                                        new Platform( "Microsoft Windows 2000" ),
+                                        new Platform( "Microsoft Windows XP" ),
+                                        new Platform( "Microsoft Windows Server 2003" ),
+                                        new Platform( "Microsoft Windows Server 2008" ),
+                                        new Platform( "Microsoft Windows Vista" ),
+                                        new Platform( "Microsoft Windows 7" )
+                        },
+                        new Product[] {
+                                        new Product( "Mozilla Firefox" ),
+                                        new Product( "Mozilla Thunderbird" ),
+                                        new Product( "Mozilla SeaMonkey" )
+                        }
+        );
 
-        CriterionType  criterion2 = new CriterionType(
-                        "oval:org.mitre.oval:tst:11460",
-                        "Mozilla Seamonkey version 2.x and less than 2.0.4"
-                        );
+        MetadataType  meta = new MetadataType(
+                        "Mozilla Firefox/Thunderbird/SeaMonkey XUL Tree Optgroup Dangling Pointer Vulnerability",
+                        "Mozilla Firefox before 3.0.19, 3.5.x before 3.5.9, and 3.6.x before 3.6.2; "
+                        + "Thunderbird before 3.0.4; and SeaMonkey before 2.0.4 do not properly manage "
+                        + "reference counts for option elements in a XUL tree optgroup, "
+                        + "which might allow remote attackers to execute arbitrary code "
+                        + "via unspecified vectors that trigger access to deleted elements, "
+                        + "related to a \"dangling pointer vulnerability.\""
+        );
+        meta.setAffected( affected );
 
-        CriteriaType  criteria1 = new CriteriaType( OperatorEnumeration.OR,
-                        Arrays.asList( new CriteriaElement[] { criterion1, criterion2 } ) );
 
-        ExtendDefinitionType  extdef1 = new ExtendDefinitionType(
-                        "oval:org.mitre.oval:def:6372",
-                        "Mozilla Seamonkey is installed"
-                        );
+        DefinitionType  def = new DefinitionType(
+                        "oval:org.mitre.oval:def:7222", 5,
+                        ClassEnumeration.VULNERABILITY
+        );
+        def.setMetadata( meta );
+        def.setCriteria( criteria );
 
-        CriteriaType  criteria2 = new CriteriaType( OperatorEnumeration.AND,
-                        Arrays.asList( new CriteriaElement[] { extdef1, criteria1 } ) );
-
-        Reporter.log( "save..." , true );
-        Reporter.log( "  * object: " + criteria2, true );
-        criteriaDAO.save( criteria2 );
-
-        Reporter.log( "load each object by concrete class...", true );
-        CriteriaType  criteriap = criteriaDAO.get( criteria2.getObjectId() );
-        Reporter.log( "  @ object: " + criteriap, true );
-
-        Reporter.log( "load objects...", true );
-        List<CriteriaType>  list = criteriaDAO.find().asList();
-        Reporter.log( "  @ #objects: " + list.size(), true );
-        Reporter.log( "  @ objects: " + list, true );
+        return def;
     }
 
 }

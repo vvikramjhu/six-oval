@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.v5.definitions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
@@ -98,14 +99,24 @@ public class CriteriaType
     }
 
 
+//    public CriteriaType(
+//                    final OperatorEnumeration operator,
+//                    final String comment
+//                    )
+//    {
+//        this( operator );
+//        setComment( comment );
+//    }
+
+
     public CriteriaType(
                     final OperatorEnumeration operator,
-                    final String comment
+                    final CriteriaElement[] elements
                     )
     {
-        this( operator );
-        setComment( comment );
+        this( operator, (elements == null ? null : Arrays.asList( elements )) );
     }
+
 
 
     public CriteriaType(

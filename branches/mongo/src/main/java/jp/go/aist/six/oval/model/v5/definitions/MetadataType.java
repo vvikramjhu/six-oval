@@ -73,17 +73,14 @@ public class MetadataType
     }
 
 
-//    /**
-//     * Constructor.
-//     */
-//    public MetadataType(
-//                    final String title,
-//                    final String description
-//                    )
-//    {
-//        setTitle( title );
-//        setDescription( description );
-//    }
+    public MetadataType(
+                    final String title,
+                    final String description
+                    )
+    {
+        setTitle( title );
+        setDescription( description );
+    }
 
 
 
