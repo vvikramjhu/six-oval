@@ -20,9 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.mitre;
 
-import java.io.Serializable;
-import java.util.HashMap;
-
+import jp.go.aist.six.oval.model.v5.OvalEnumeration;
 
 
 
@@ -31,78 +29,55 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class DefinitionStatusEnumeration
-    implements Serializable
+public enum DefinitionStatusEnumeration
+    implements OvalEnumeration
 {
 
-    private static final String  _DRAFT_      = "DRAFT";
-    private static final String  _INTERIM_    = "INTERIM";
-    private static final String  _ACCEPTED_   = "ACCEPTED";
-    private static final String  _DEPRECATED_ = "DEPRECATED";
-
-
-    public static final DefinitionStatusEnumeration  DRAFT      = new DefinitionStatusEnumeration( _DRAFT_ );
-    public static final DefinitionStatusEnumeration  INTERIM    = new DefinitionStatusEnumeration( _INTERIM_ );
-    public static final DefinitionStatusEnumeration  ACCEPTED   = new DefinitionStatusEnumeration( _ACCEPTED_ );
-    public static final DefinitionStatusEnumeration  DEPRECATED = new DefinitionStatusEnumeration( _DEPRECATED_ );
-
-
-
-    private static HashMap<String, DefinitionStatusEnumeration> _INIT_()
-    {
-        HashMap<String, DefinitionStatusEnumeration>  map = new HashMap<String, DefinitionStatusEnumeration>();
-        map.put( _DRAFT_,      DRAFT    );
-        map.put( _INTERIM_,    INTERIM  );
-        map.put( _ACCEPTED_,   ACCEPTED );
-        map.put( _DEPRECATED_, DEPRECATED );
-        return map;
-    }
-
-    private static final HashMap<String, DefinitionStatusEnumeration>  _INSTANCES_ = _INIT_();
-
+    DRAFT( "DRAFT" ),
+    INTERIM( "INTERIM" ),
+    ACCEPTED( "ACCEPTED" ),
+    DEPRECATED( "DEPRECATED" );
 
 
 
     /**
+     * A factory method.
      */
-    public static DefinitionStatusEnumeration valueOf(
-                    final String name
+    public static DefinitionStatusEnumeration fromValue(
+                    final String value
                     )
     {
-        DefinitionStatusEnumeration  flag = null;
-        if (name != null) {
-            flag = _INSTANCES_.get( name );
+        for (DefinitionStatusEnumeration  e : DefinitionStatusEnumeration.values()) {
+            if (e.value.equals( value )) {
+                return e;
+            }
         }
 
-        if (flag == null) {
-            throw new IllegalArgumentException( "invalid definition status: " + name );
-        }
-
-        return flag;
+        throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
+    private String  value = null;
 
 
 
     /**
+     * Constructor.
      */
-    private DefinitionStatusEnumeration(
-                    final String name
+    DefinitionStatusEnumeration(
+                    final String value
                     )
     {
-        _name = name;
+        this.value = value;
     }
 
 
 
-    /**
-     */
-    public String getName()
+    @Override
+    public String value()
     {
-        return _name;
+        return this.value;
     }
 
 
@@ -114,7 +89,7 @@ public final class DefinitionStatusEnumeration
     @Override
     public String toString()
     {
-        return getName();
+        return this.value;
     }
 
 }

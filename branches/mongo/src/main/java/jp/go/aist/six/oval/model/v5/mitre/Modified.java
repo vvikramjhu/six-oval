@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.v5.mitre;
 
 
 
-
 /**
  *
  * @author	Akihito Nakamura, AIST
@@ -33,10 +32,10 @@ public class Modified
     extends Event
 {
 
-    private String  _comment;
+    private String  comment;
 
 
-    private Contributor  _contributor;
+    private Contributor  contributor;
     //{0..1}
 
 
@@ -49,6 +48,28 @@ public class Modified
     }
 
 
+    public Modified(
+                    final String date,
+                    final String comment
+                    )
+    {
+        super( date );
+        setComment( comment );
+    }
+
+
+    public Modified(
+                    final String date,
+                    final String comment,
+                    final Contributor contributor
+                    )
+    {
+        super( date );
+        setComment( comment );
+        setContributor( contributor );
+    }
+
+
 
     /**
      */
@@ -56,13 +77,13 @@ public class Modified
                     final String comment
                     )
     {
-        _comment = comment;
+        this.comment = comment;
     }
 
 
     public String getComment()
     {
-        return _comment;
+        return this.comment;
     }
 
 
@@ -73,13 +94,13 @@ public class Modified
                     final Contributor contributor
                     )
     {
-        _contributor = contributor;
+        this.contributor = contributor;
     }
 
 
     public Contributor getContributor()
     {
-        return _contributor;
+        return this.contributor;
     }
 
 

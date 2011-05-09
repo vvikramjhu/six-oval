@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.definitions.MetadataItem;
+import com.google.code.morphia.annotations.Transient;
 
 
 
@@ -38,11 +39,12 @@ public class OvalRepository
     extends MetadataItem
 {
 
-    private final Collection<Event>  _event = new ArrayList<Event>();
+    private final Collection<Event>  dates = new ArrayList<Event>();
 
-    private DefinitionStatusEnumeration  _status;
+    private DefinitionStatusEnumeration  status;
 
 
+    @Transient
     private AffectedCpeList  _affectedCpeList;
 
 
@@ -58,46 +60,54 @@ public class OvalRepository
 
     /**
      */
-    public void setEvent(
+    public void setDates(
                     final Collection<? extends Event> events
                     )
     {
-        if (events != _event) {
-            _event.clear();
+        if (events != this.dates) {
+            dates.clear();
             if (events != null  &&  events.size() > 0) {
-                _event.addAll( events );
+                this.dates.addAll( events );
             }
         }
     }
 
 
-    public OvalRepository event(
+    public Collection<Event> getDates()
+    {
+        return this.dates;
+    }
+
+
+    public Iterator<Event> iterateDates()
+    {
+        return this.dates.iterator();
+    }
+
+
+    public OvalRepository date(
                     final Event event
                     )
     {
-        _event.add( event );
+        this.dates.add( event );
         return this;
     }
 
 
-    public Collection<Event> getEvent()
-    {
-        return _event;
-    }
 
-
-    public Iterator<Event> iterateEvent()
-    {
-        return _event.iterator();
-    }
-
-
-
+    /**
+     */
     public void setStatus(
                     final DefinitionStatusEnumeration status
                     )
     {
-        _status = status;
+        this.status = status;
+    }
+
+
+    public DefinitionStatusEnumeration getStatus()
+    {
+        return this.status;
     }
 
 
@@ -107,12 +117,6 @@ public class OvalRepository
     {
         setStatus( status );
         return this;
-    }
-
-
-    public DefinitionStatusEnumeration getStatus()
-    {
-        return _status;
     }
 
 
@@ -143,7 +147,7 @@ public class OvalRepository
     public String toString()
     {
         return "oval_repository[status=" + getStatus()
-                        + ", dates=" + getEvent()
+                        + ", dates=" + getDates()
                         + "]";
     }
 

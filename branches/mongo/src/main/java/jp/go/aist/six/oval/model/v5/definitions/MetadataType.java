@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.v5.definitions;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import com.google.code.morphia.annotations.Transient;
 
 
 
@@ -58,8 +57,7 @@ public class MetadataType
     //{1..1}
 
 
-    @Transient
-    private final Collection<MetadataItem>  _additionalMetadata =
+    private final Collection<MetadataItem>  additionalMetadata =
         new ArrayList<MetadataItem>();
     //{xsd:any, 0..*}
 
@@ -205,12 +203,24 @@ public class MetadataType
                     final Collection<? extends MetadataItem> items
                     )
     {
-        if (items != _additionalMetadata) {
-            _additionalMetadata.clear();
+        if (items != this.additionalMetadata) {
+            this.additionalMetadata.clear();
             if (items != null  &&  items.size() > 0) {
-                _additionalMetadata.addAll( items );
+                this.additionalMetadata.addAll( items );
             }
         }
+    }
+
+
+    public Collection<MetadataItem> getAdditionalMetadata()
+    {
+        return this.additionalMetadata;
+    }
+
+
+    public Iterator<MetadataItem> iterateAdditionalMetadata()
+    {
+        return this.additionalMetadata.iterator();
     }
 
 
@@ -218,20 +228,8 @@ public class MetadataType
                     final MetadataItem item
                     )
     {
-        _additionalMetadata.add( item );
+        this.additionalMetadata.add( item );
         return this;
-    }
-
-
-    public Collection<MetadataItem> getAdditionalMetadata()
-    {
-        return _additionalMetadata;
-    }
-
-
-    public Iterator<MetadataItem> iterateAdditionalMetadata()
-    {
-        return _additionalMetadata.iterator();
     }
 
 

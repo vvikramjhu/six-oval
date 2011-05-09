@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.mitre;
 
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
@@ -31,14 +30,14 @@ import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Contributor
-    extends AbstractOvalObject
+//    extends AbstractOvalObject
 {
 
-    private String  _name;
+    private String  name;
     //{xsd:string?}
 
 
-    private String  _organization;
+    private String  organization;
     //{xsd:string}
 
 
@@ -51,9 +50,6 @@ public class Contributor
     }
 
 
-    /**
-     * Constructor.
-     */
     public Contributor(
                     final String name,
                     final String organization
@@ -71,13 +67,13 @@ public class Contributor
                     final String name
                     )
     {
-        _name = name;
+        this.name = name;
     }
 
 
     public String getName()
     {
-        return _name;
+        return this.name;
     }
 
 
@@ -88,13 +84,13 @@ public class Contributor
                     final String organization
                     )
     {
-        _organization = organization;
+        this.organization = organization;
     }
 
 
     public String getOrganization()
     {
-        return _organization;
+        return this.organization;
     }
 
 

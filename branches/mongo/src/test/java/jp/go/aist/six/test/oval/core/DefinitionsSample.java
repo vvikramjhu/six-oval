@@ -12,6 +12,12 @@ import jp.go.aist.six.oval.model.v5.definitions.ExtendDefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.MetadataType;
 import jp.go.aist.six.oval.model.v5.definitions.Platform;
 import jp.go.aist.six.oval.model.v5.definitions.Product;
+import jp.go.aist.six.oval.model.v5.mitre.Contributor;
+import jp.go.aist.six.oval.model.v5.mitre.DefinitionStatusEnumeration;
+import jp.go.aist.six.oval.model.v5.mitre.Modified;
+import jp.go.aist.six.oval.model.v5.mitre.OvalRepository;
+import jp.go.aist.six.oval.model.v5.mitre.StatusChange;
+import jp.go.aist.six.oval.model.v5.mitre.Submitted;
 
 
 
@@ -83,6 +89,31 @@ public class DefinitionsSample
                         }
         );
 
+        OvalRepository  ovalRepo = new OvalRepository();
+        ovalRepo.date( new Submitted(
+                        "2010-04-05T10:30:00.000-05:00",
+                        new Contributor( "J. Daniel Brown", "DTCC" )) );
+        ovalRepo.date( new StatusChange(
+                        "2010-04-07T15:53:02.494-04:00",
+                        DefinitionStatusEnumeration.DRAFT ) );
+        ovalRepo.date( new StatusChange(
+                        "2010-05-17T04:00:48.082-04:00",
+                        DefinitionStatusEnumeration.INTERIM ) );
+        ovalRepo.date( new StatusChange(
+                        "2010-06-07T04:00:33.800-04:00",
+                        DefinitionStatusEnumeration.ACCEPTED ) );
+        ovalRepo.date( new Modified(
+                        "2010-08-11T13:18:00.931-04:00",
+                        "Changed [03] to [0-3] in the regex pattern for oval:org.mitre.oval:ste:5296.",
+                        new Contributor( "J. Daniel Brown", "DTCC" )) );
+        ovalRepo.date( new StatusChange(
+                        "2010-08-11T13:18:53.431-04:00",
+                        DefinitionStatusEnumeration.INTERIM ) );
+        ovalRepo.date( new StatusChange(
+                        "2010-08-30T04:00:13.544-04:00",
+                        DefinitionStatusEnumeration.ACCEPTED ) );
+        ovalRepo.setStatus( DefinitionStatusEnumeration.ACCEPTED );
+
         MetadataType  meta = new MetadataType(
                         "Mozilla Firefox/Thunderbird/SeaMonkey XUL Tree Optgroup Dangling Pointer Vulnerability",
                         "Mozilla Firefox before 3.0.19, 3.5.x before 3.5.9, and 3.6.x before 3.6.2; "
@@ -93,6 +124,7 @@ public class DefinitionsSample
                         + "related to a \"dangling pointer vulnerability.\""
         );
         meta.setAffected( affected );
+        meta.additionalMetadata( ovalRepo );
 
 
         DefinitionType  def = new DefinitionType(

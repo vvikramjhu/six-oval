@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.mitre;
 
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
@@ -31,10 +30,10 @@ import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class Event
-    extends AbstractOvalObject
+//    extends AbstractOvalObject
 {
 
-    private String  _date;
+    private String  date;
 //    private Date  _date;
 
 
@@ -47,18 +46,28 @@ public abstract class Event
     }
 
 
+    public Event(
+                    final String date
+                    )
+    {
+        setDate( date );
+    }
 
+
+
+    /**
+     */
     public void setDate(
                     final String date
                     )
     {
-        _date = date;
+        this.date = date;
     }
 
 
     public String getDate()
     {
-        return _date;
+        return this.date;
     }
 
 }

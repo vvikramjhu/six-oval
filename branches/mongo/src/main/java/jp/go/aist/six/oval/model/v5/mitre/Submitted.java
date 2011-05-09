@@ -33,7 +33,7 @@ public class Submitted
     extends Event
 {
 
-    private Contributor  _contributor;
+    private Contributor  contributor;
     //{0..1}
 
 
@@ -46,6 +46,16 @@ public class Submitted
     }
 
 
+    public Submitted(
+                    final String date,
+                    final Contributor contributor
+                    )
+    {
+        super( date );
+        setContributor( contributor );
+    }
+
+
 
     /**
      */
@@ -53,13 +63,13 @@ public class Submitted
                     final Contributor contributor
                     )
     {
-        _contributor = contributor;
+        this.contributor = contributor;
     }
 
 
     public Contributor getContributor()
     {
-        return _contributor;
+        return this.contributor;
     }
 
 

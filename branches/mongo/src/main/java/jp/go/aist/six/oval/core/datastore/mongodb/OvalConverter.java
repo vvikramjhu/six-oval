@@ -6,6 +6,7 @@ import jp.go.aist.six.oval.model.v5.OvalEnumeration;
 import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
 import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
+import jp.go.aist.six.oval.model.v5.mitre.DefinitionStatusEnumeration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.google.code.morphia.converters.SimpleValueConverter;
@@ -32,9 +33,14 @@ public class OvalConverter
 
 
     private static final Class<?>[]  _SUPPORTED_CLASSES_ = new Class[] {
+        //commons
         ClassEnumeration.class,
         FamilyEnumeration.class,
-        OperatorEnumeration.class
+        OperatorEnumeration.class,
+
+        //mitre
+        DefinitionStatusEnumeration.class
+
 //        Platform.class,
 //        Product.class
         };

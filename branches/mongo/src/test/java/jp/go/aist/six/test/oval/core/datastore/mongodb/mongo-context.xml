@@ -25,7 +25,7 @@
         factory-method="create"> 
         <constructor-arg>
             <set>
-                <value>#{ T(jp.go.aist.six.oval.model.v5.definitions.DefinitionType) }</value>
+                <!-- value>#{ T(jp.go.aist.six.oval.model.v5.definitions.DefinitionType) }</value -->
             </set>
         </constructor-arg>
         <constructor-arg>

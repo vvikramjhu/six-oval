@@ -33,7 +33,7 @@ public class StatusChange
     extends Event
 {
 
-    private DefinitionStatusEnumeration  _status;
+    private DefinitionStatusEnumeration  status;
 
 
 
@@ -45,18 +45,30 @@ public class StatusChange
     }
 
 
+    public StatusChange(
+                    final String date,
+                    final DefinitionStatusEnumeration status
+                    )
+    {
+        super( date );
+        setStatus( status );
+    }
 
+
+
+    /**
+     */
     public void setStatus(
                     final DefinitionStatusEnumeration status
                     )
     {
-        _status = status;
+        this.status = status;
     }
 
 
     public DefinitionStatusEnumeration getStatus()
     {
-        return _status;
+        return this.status;
     }
 
 
