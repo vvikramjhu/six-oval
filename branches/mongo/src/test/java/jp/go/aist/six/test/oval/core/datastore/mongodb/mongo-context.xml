@@ -21,7 +21,7 @@
 
 
     <bean id="morphia" 
-        class="jp.go.aist.six.oval.core.store.mongo.MorphiaFactory" 
+        class="jp.go.aist.six.oval.core.datastore.mongodb.MorphiaFactory" 
         factory-method="create"> 
         <constructor-arg>
             <set>
@@ -30,7 +30,7 @@
         </constructor-arg>
         <constructor-arg>
             <set>
-                <value>#{ T(jp.go.aist.six.oval.core.store.mongo.OvalConverter) }</value>
+                <value>#{ T(jp.go.aist.six.oval.core.datastore.mongodb.OvalConverter) }</value>
             </set>
         </constructor-arg>
     </bean>
@@ -44,7 +44,7 @@
 
 
     <bean id="definitionDAO" 
-        class="jp.go.aist.six.oval.core.store.mongo.DefinitionDAO">
+        class="jp.go.aist.six.oval.core.datastore.mongodb.DefinitionDAO">
         <constructor-arg ref="datastore"/> 
     </bean> 
 

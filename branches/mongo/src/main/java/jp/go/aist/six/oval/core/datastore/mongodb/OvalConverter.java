@@ -1,4 +1,4 @@
-package jp.go.aist.six.oval.core.store.mongo;
+package jp.go.aist.six.oval.core.datastore.mongodb;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;

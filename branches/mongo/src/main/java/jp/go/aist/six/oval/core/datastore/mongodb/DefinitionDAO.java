@@ -1,4 +1,4 @@
-package jp.go.aist.six.oval.core.store.mongo;
+package jp.go.aist.six.oval.core.datastore.mongodb;
 
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import org.bson.types.ObjectId;

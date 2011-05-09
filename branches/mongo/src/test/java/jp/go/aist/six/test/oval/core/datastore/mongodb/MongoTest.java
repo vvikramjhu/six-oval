@@ -1,7 +1,7 @@
-package jp.go.aist.six.test.oval.core.store.mongo;
+package jp.go.aist.six.test.oval.core.datastore.mongodb;
 
 import java.util.List;
-import jp.go.aist.six.oval.core.store.mongo.DefinitionDAO;
+import jp.go.aist.six.oval.core.datastore.mongodb.DefinitionDAO;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.test.oval.core.DefinitionsSample;
 import org.bson.types.ObjectId;
@@ -17,7 +17,7 @@ public class MongoTest
 {
 
     private static final String _SPRING_APP_CONTEXT_
-    = "jp/go/aist/six/test/oval/core/store/mongo/mongo-context.xml";
+    = "jp/go/aist/six/test/oval/core/datastore/mongodb/mongo-context.xml";
 
 
     private ApplicationContext  _springContext;
@@ -38,14 +38,14 @@ public class MongoTest
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "store.mongo", "oval.definitions.definition" },
+                    groups={ "oval.core.datastore.mongodb", "oval.definitions.definition" },
                     alwaysRun=true
                     )
     public void testSaveAndLoadDefinition()
     throws Exception
     {
-        Reporter.log( "\n//// TEST: group=store.mongo, oval.definitions.definition"
-                        + ", method=testSaveAndLoad",
+        Reporter.log( "\n//// TEST: group=oval.core.datastore.mongodb, oval.definitions.definition"
+                        + ", method=testSaveAndLoadDefinition",
                         true );
 
         DAO<DefinitionType, ObjectId>  definitionDAO = _springContext.getBean( DefinitionDAO.class );
