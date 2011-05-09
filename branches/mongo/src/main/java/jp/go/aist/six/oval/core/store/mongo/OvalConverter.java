@@ -2,13 +2,10 @@ package jp.go.aist.six.oval.core.store.mongo;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
-import jp.go.aist.six.oval.model.v5.NameEntity;
 import jp.go.aist.six.oval.model.v5.OvalEnumeration;
 import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
 import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
-import jp.go.aist.six.oval.model.v5.definitions.Platform;
-import jp.go.aist.six.oval.model.v5.definitions.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.google.code.morphia.converters.SimpleValueConverter;
@@ -37,9 +34,9 @@ public class OvalConverter
     private static final Class<?>[]  _SUPPORTED_CLASSES_ = new Class[] {
         ClassEnumeration.class,
         FamilyEnumeration.class,
-        OperatorEnumeration.class,
-        Platform.class,
-        Product.class
+        OperatorEnumeration.class
+//        Platform.class,
+//        Product.class
         };
 
 //    public static final Collection<Class<?>>  SUPPORTED_CLASSES =
@@ -111,29 +108,29 @@ public class OvalConverter
 
 
 
-    //**************************************************************
-    //  supporting NameEntity
-    //**************************************************************
-
-    /**
-     */
-    public static Object nameFromValue(
-                    final Class<? extends NameEntity> targetClass,
-                    final String name
-                    )
-    {
-        NameEntity  obj = null;
-
-        try {
-            obj = targetClass.newInstance();
-        } catch (Exception ex) {
-            _LOG_.error( ex.getMessage() );
-            throw new MappingException( ex.getMessage() );
-        }
-
-        obj.setName( name );
-        return obj;
-    }
+//    //**************************************************************
+//    //  supporting NameEntity
+//    //**************************************************************
+//
+//    /**
+//     */
+//    public static Object nameFromValue(
+//                    final Class<? extends NameEntity> targetClass,
+//                    final String name
+//                    )
+//    {
+//        NameEntity  obj = null;
+//
+//        try {
+//            obj = targetClass.newInstance();
+//        } catch (Exception ex) {
+//            _LOG_.error( ex.getMessage() );
+//            throw new MappingException( ex.getMessage() );
+//        }
+//
+//        obj.setName( name );
+//        return obj;
+//    }
 
 
 
@@ -161,8 +158,8 @@ public class OvalConverter
 
         if (object instanceof OvalEnumeration) {
             return enumerationValue( object );
-        } else if (object instanceof NameEntity) {
-            return NameEntity.class.cast( object ).getName();
+//        } else if (object instanceof NameEntity) {
+//            return NameEntity.class.cast( object ).getName();
         }
 
         throw new MappingException( "unsupported type: "
@@ -192,15 +189,11 @@ public class OvalConverter
                 targetClass.asSubclass( OvalEnumeration.class );
             return enumerationFromValue( enumClass, fromDBObject.toString() );
 
-        } else if (NameEntity.class.isAssignableFrom( targetClass )) {
-            @SuppressWarnings( "unchecked" )
-            Class<? extends NameEntity>  nameClass =
-                targetClass.asSubclass( NameEntity.class );
-            return nameFromValue( nameClass, fromDBObject.toString() );
-//        } else if (Platform.class == targetClass ) {
-//            return new Platform( fromDBObject.toString() );
-//        } else if (Product.class == targetClass ) {
-//            return new Product( fromDBObject.toString() );
+//        } else if (NameEntity.class.isAssignableFrom( targetClass )) {
+//            @SuppressWarnings( "unchecked" )
+//            Class<? extends NameEntity>  nameClass =
+//                targetClass.asSubclass( NameEntity.class );
+//            return nameFromValue( nameClass, fromDBObject.toString() );
         }
 
         throw new MappingException( "unsupported type: "

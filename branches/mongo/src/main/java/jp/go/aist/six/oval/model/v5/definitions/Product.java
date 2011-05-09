@@ -33,8 +33,14 @@ import jp.go.aist.six.oval.model.v5.NameEntity;
  */
 public class Product
     extends NameEntity
+    implements Comparable<Product>
 //extends NamedEntry<Integer>
 {
+
+//    @Property( "product" )
+//    private String  name;
+
+
 
     /**
      * Constructor.
@@ -49,6 +55,20 @@ public class Product
                     )
     {
         super( name );
+    }
+
+
+
+    //**************************************************************
+    //  Comparable
+    //**************************************************************
+
+    @Override
+    public int compareTo(
+                    final Product o
+                    )
+    {
+        return String.CASE_INSENSITIVE_ORDER.compare( getName(), o.getName() );
     }
 
 
@@ -76,17 +96,6 @@ public class Product
 
         return super.equals( obj );
     }
-
-
-
-//    /**
-//     * @see java.lang.Object#toString()
-//     */
-//    @Override
-//    public String toString()
-//    {
-//        return "Product[" + getName() + "]";
-//    }
 
 }
 // Product

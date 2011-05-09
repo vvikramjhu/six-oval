@@ -39,7 +39,7 @@
     <bean id="datastore" 
         factory-bean="morphia" factory-method="createDatastore"> 
         <constructor-arg ref="mongo"/> 
-        <constructor-arg value="test"/> 
+        <constructor-arg value="six"/> 
     </bean>
 
 

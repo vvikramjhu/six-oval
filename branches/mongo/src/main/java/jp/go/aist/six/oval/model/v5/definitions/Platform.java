@@ -33,8 +33,13 @@ import jp.go.aist.six.oval.model.v5.NameEntity;
  */
 public class Platform
     extends NameEntity
-//extends NamedEntry<Integer>
+    implements Comparable<Platform>
 {
+
+//    @Property( "platform" )
+//    private String  name;
+
+
 
     /**
      * Constructor.
@@ -49,6 +54,20 @@ public class Platform
                     )
     {
         super( name );
+    }
+
+
+
+    //**************************************************************
+    //  Comparable
+    //**************************************************************
+
+    @Override
+    public int compareTo(
+                    final Platform o
+                    )
+    {
+        return String.CASE_INSENSITIVE_ORDER.compare( getName(), o.getName() );
     }
 
 

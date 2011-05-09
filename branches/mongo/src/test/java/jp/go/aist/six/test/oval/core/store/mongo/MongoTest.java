@@ -24,6 +24,8 @@ public class MongoTest
 
 
 
+    /**
+     */
     @BeforeClass( alwaysRun=true )
 	public void setUp()
     throws Exception
@@ -39,7 +41,7 @@ public class MongoTest
                     groups={ "store.mongo", "oval.definitions.definition" },
                     alwaysRun=true
                     )
-    public void testSaveAndLoadOvalDefinitions()
+    public void testSaveAndLoadDefinition()
     throws Exception
     {
         Reporter.log( "\n//// TEST: group=store.mongo, oval.definitions.definition"

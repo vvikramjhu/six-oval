@@ -30,7 +30,7 @@ package jp.go.aist.six.oval.model.v5;
  */
 public abstract class NameEntity
 //    extends AbstractOvalObject
-    implements Comparable<NameEntity>
+//    implements Comparable<NameEntity>
 {
 
     private String  name;
@@ -54,7 +54,8 @@ public abstract class NameEntity
 
 
 
-    // We use the name as the persistent ID.
+    /**
+     */
     public void setName(
                     final String name
                     )
@@ -70,17 +71,17 @@ public abstract class NameEntity
 
 
 
-    //**************************************************************
-    //  Comparable
-    //**************************************************************
-
-    @Override
-    public int compareTo(
-                    final NameEntity o
-                    )
-    {
-        return String.CASE_INSENSITIVE_ORDER.compare( getName(), o.getName() );
-    }
+//    //**************************************************************
+//    //  Comparable
+//    //**************************************************************
+//
+//    @Override
+//    public int compareTo(
+//                    final NameEntity o
+//                    )
+//    {
+//        return String.CASE_INSENSITIVE_ORDER.compare( getName(), o.getName() );
+//    }
 
 
 

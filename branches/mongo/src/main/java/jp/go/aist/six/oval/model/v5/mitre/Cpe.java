@@ -33,7 +33,13 @@ import jp.go.aist.six.oval.model.v5.NameEntity;
  */
 public class Cpe
     extends NameEntity
+    implements Comparable<Cpe>
 {
+
+//    @Property( "cpe" )
+//    private String  name;
+
+
 
     /**
      * Constructor.
@@ -48,6 +54,20 @@ public class Cpe
                     )
     {
         super( name );
+    }
+
+
+
+    //**************************************************************
+    //  Comparable
+    //**************************************************************
+
+    @Override
+    public int compareTo(
+                    final Cpe o
+                    )
+    {
+        return String.CASE_INSENSITIVE_ORDER.compare( getName(), o.getName() );
     }
 
 
