@@ -39,8 +39,11 @@ public abstract class OvalEntity
     extends OvalElement
 {
 
+    /**
+     * MongoDB object ID.
+     */
     @Id
-    private ObjectId  _id;
+    private ObjectId  _objectId;
 
 
     public static final Boolean  DEFAULT_DEPRECATED = Boolean.FALSE;
@@ -111,14 +114,14 @@ public abstract class OvalEntity
                     final ObjectId oid
                     )
     {
-        this._id = oid;
+        this._objectId = oid;
     }
 
 
 
     public ObjectId getObjectId()
     {
-        return this._id;
+        return this._objectId;
     }
 
 

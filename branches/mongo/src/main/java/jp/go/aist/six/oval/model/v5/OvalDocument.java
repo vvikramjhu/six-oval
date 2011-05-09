@@ -20,7 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5;
 
-import java.util.UUID;
+import org.bson.types.ObjectId;
+import com.google.code.morphia.annotations.Id;
 
 
 
@@ -37,10 +38,17 @@ import java.util.UUID;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class OvalDocument
-    extends AbstractOvalObject
+//    extends AbstractOvalObject
 {
 
-    private String  _schemaLocation;
+    /**
+     * MongoDB object ID.
+     */
+    @Id
+    private ObjectId  _objectId;
+
+
+    private String  schemaLocation;
 
 
 
@@ -59,13 +67,13 @@ public abstract class OvalDocument
                     final String location
                     )
     {
-        _schemaLocation = location;
+        this.schemaLocation = location;
     }
 
 
     public String getSchemaLocation()
     {
-        return _schemaLocation;
+        return this.schemaLocation;
 //        return (_schemaLocation == null ? RESULTS_SCHEMA_LOCATION : _schemaLocation);
     }
 
@@ -75,16 +83,30 @@ public abstract class OvalDocument
     //  Persistable
     //**************************************************************
 
-    @Override
-    public synchronized String getPersistentID()
-    {
-        String  pid = super.getPersistentID();
-        if (pid == null) {
-            pid = UUID.randomUUID().toString();
-            setPersistentID( pid );
-        }
+//    @Override
+//    public synchronized String getPersistentID()
+//    {
+//        String  pid = super.getPersistentID();
+//        if (pid == null) {
+//            pid = UUID.randomUUID().toString();
+//            setPersistentID( pid );
+//        }
+//
+//        return pid;
+//    }
 
-        return pid;
+
+    public void setObjectId(
+                    final ObjectId oid
+                    )
+    {
+        this._objectId = oid;
+    }
+
+
+    public ObjectId getObjectId()
+    {
+        return this._objectId;
     }
 
 }
