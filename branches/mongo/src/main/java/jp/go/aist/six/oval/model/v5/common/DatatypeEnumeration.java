@@ -20,8 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.common;
 
-import java.io.Serializable;
-import java.util.HashMap;
+import jp.go.aist.six.oval.model.v5.OvalEnumeration;
 
 
 
@@ -33,114 +32,75 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class DatatypeEnumeration
-    implements Serializable
+public enum DatatypeEnumeration
+    implements OvalEnumeration
 {
 
-    private static final String  _BINARY_           = "binary";
-    private static final String  _BOOLEAN_          = "boolean";
-    private static final String  _EVR_STRING_       = "evr_string";
-    private static final String  _FILESET_REVISION_ = "fileset_revision";
-    private static final String  _FLOAT_            = "float";
-    private static final String  _IOS_VERSION_      = "ios_version";
-    private static final String  _INT_              = "int";
-    private static final String  _IPV4_ADDRESS_     = "ipv4_address";
-    private static final String  _IPV6_ADDRESS_     = "ipv6_address";
-    private static final String  _STRING_           = "string";
-    private static final String  _VERSION_          = "version";
+    BINARY            ( "binary" ),
+    BOOLEAN           ( "boolean" ),
+    EVR_STRING        ( "evr_string" ),
+    FILESET_REVISION  ( "fileset_revision" ),
+    FLOAT             ( "float" ),
+    IOS_VERSION       ( "ios_version" ),
+    INT               ( "int" ),
+    IPV4_ADDRESS      ( "ipv4_address" ),
+    IPV6_ADDRESS      ( "ipv6_address" ),
+    STRING            ( "string" ),
+    VERSION           ( "version" ),
 
-    private static final String  _RECORD_           = "record";
-
-
-    public static final DatatypeEnumeration  BINARY            = new DatatypeEnumeration( _BINARY_ );
-    public static final DatatypeEnumeration  BOOLEAN           = new DatatypeEnumeration( _BOOLEAN_ );
-    public static final DatatypeEnumeration  EVR_STRING        = new DatatypeEnumeration( _EVR_STRING_ );
-    public static final DatatypeEnumeration  FILESET_REVISION  = new DatatypeEnumeration( _FILESET_REVISION_ );
-    public static final DatatypeEnumeration  FLOAT             = new DatatypeEnumeration( _FLOAT_ );
-    public static final DatatypeEnumeration  IOS_VERSION       = new DatatypeEnumeration( _IOS_VERSION_ );
-    public static final DatatypeEnumeration  INT               = new DatatypeEnumeration( _INT_ );
-    public static final DatatypeEnumeration  IPV4_ADDRESS      = new DatatypeEnumeration( _IPV4_ADDRESS_ );
-    public static final DatatypeEnumeration  IPV6_ADDRESS      = new DatatypeEnumeration( _IPV6_ADDRESS_ );
-    public static final DatatypeEnumeration  STRING            = new DatatypeEnumeration( _STRING_ );
-    public static final DatatypeEnumeration  VERSION           = new DatatypeEnumeration( _VERSION_ );
-
-    public static final DatatypeEnumeration  RECORD            = new DatatypeEnumeration( _RECORD_ );
-
-
-
-    private static HashMap<String, DatatypeEnumeration> _INIT_()
-    {
-        HashMap<String, DatatypeEnumeration>  map = new HashMap<String, DatatypeEnumeration>();
-        map.put( _BINARY_,            BINARY           );
-        map.put( _BOOLEAN_,           BOOLEAN          );
-        map.put( _EVR_STRING_,        EVR_STRING       );
-        map.put( _FILESET_REVISION_,  FILESET_REVISION );
-        map.put( _FLOAT_,             FLOAT            );
-        map.put( _IOS_VERSION_,       IOS_VERSION      );
-        map.put( _INT_,               INT              );
-        map.put( _IPV4_ADDRESS_,      IPV4_ADDRESS     );
-        map.put( _IPV6_ADDRESS_,      IPV6_ADDRESS     );
-        map.put( _STRING_,            STRING           );
-        map.put( _VERSION_,           VERSION          );
-        map.put( _RECORD_,            RECORD           );
-        return map;
-    }
-
-    private static final HashMap<String, DatatypeEnumeration>  _INSTANCES_ = _INIT_();
-
+    RECORD            ( "record", true );
 
 
 
     /**
+     * A factory method.
      */
-    public static DatatypeEnumeration valueOf(
-                    final String name
+    public static DatatypeEnumeration fromValue(
+                    final String value
                     )
     {
-        DatatypeEnumeration  flag = null;
-        if (name != null) {
-            flag = _INSTANCES_.get( name );
+        for (DatatypeEnumeration  e : DatatypeEnumeration.values()) {
+            if (e.value.equals( value )) {
+                return e;
+            }
         }
 
-        if (flag == null) {
-            throw new IllegalArgumentException( "invalid datatype: " + name );
-        }
-
-        return flag;
+        throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
+    private String  value = null;
+    private boolean  complex = false;
 
 
 
     /**
      * Constructor.
      */
-    private DatatypeEnumeration(
-                    final String name
+    DatatypeEnumeration(
+                    final String value
                     )
     {
-        _name = name;
+        this( value, false );
+    }
+
+
+    DatatypeEnumeration(
+                    final String value,
+                    final boolean complex
+                    )
+    {
+        this.value = value;
+        this.complex = complex;
     }
 
 
 
-    /**
-     */
-    public String getName()
+    @Override
+    public String value()
     {
-        return _name;
-    }
-
-
-
-    /**
-     */
-    public boolean isSimple()
-    {
-        return ((this == RECORD) ? false : true);
+        return this.value;
     }
 
 
@@ -149,7 +109,7 @@ public final class DatatypeEnumeration
      */
     public boolean isComplex()
     {
-        return !isSimple();
+        return complex;
     }
 
 
@@ -161,7 +121,7 @@ public final class DatatypeEnumeration
     @Override
     public String toString()
     {
-        return getName();
+        return this.value;
     }
 
 }

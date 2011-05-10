@@ -45,8 +45,8 @@ public class OvalXmlTest
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     @org.testng.annotations.Test(
-                    groups={"oval.core.xml", "definitions.oval_definitions"},
-                    dataProvider="definitions.oval_definitions",
+                    groups={"oval.core.xml", "oval.definitions.oval_definitions"},
+                    dataProvider="oval.definitions.oval_definitions",
                     alwaysRun=true
                     )
     public void testDefinitionsOvalDefinitions(

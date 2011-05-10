@@ -14,7 +14,7 @@
 <suite name="six-oval" verbose="1" parallel="tests">
 
     <!-- // data store // -->
-    <test name="oval.core.datastore.mongodb" enabled="true">
+    <test name="oval.core.datastore.mongodb" enabled="false">
         <classes>
             <class name="jp.go.aist.six.test.oval.core.datastore.mongodb.MongoTest"/>
         </classes>
@@ -22,13 +22,11 @@
 
 
 
-    <!-- 
-    // XML // 
-    -->
-    <test name="oval.core.xml" enabled="false">
+    <!-- // XML // -->
+    <test name="oval.core.xml" enabled="true">
         <groups>
             <run>
-                <include name="definitions.oval_definitions"/>
+                <include name="oval.definitions.oval_definitions"/>
                 <!--
                 <include name="oval.core.xml.searchresult"/>
                 <include name="oval.core.service"/>

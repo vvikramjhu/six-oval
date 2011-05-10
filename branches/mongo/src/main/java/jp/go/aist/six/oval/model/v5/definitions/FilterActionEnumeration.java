@@ -20,8 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import java.io.Serializable;
-import java.util.HashMap;
+import jp.go.aist.six.oval.model.v5.OvalEnumeration;
 
 
 
@@ -33,73 +32,52 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class FilterActionEnumeration
-    implements Serializable
+public enum FilterActionEnumeration
+    implements OvalEnumeration
 {
 
-    private static final String  _EXCLUDE_  = "exclude";
-    private static final String  _INCLUDE_  = "include";
-
-
-    public static final FilterActionEnumeration  EXCLUDE = new FilterActionEnumeration( _EXCLUDE_ );
-    public static final FilterActionEnumeration  INCLUDE = new FilterActionEnumeration( _INCLUDE_ );
-
-
-
-    private static HashMap<String, FilterActionEnumeration> _INIT_()
-    {
-        HashMap<String, FilterActionEnumeration>  map = new HashMap<String, FilterActionEnumeration>();
-        map.put( _EXCLUDE_,  EXCLUDE );
-        map.put( _INCLUDE_,  INCLUDE );
-        return map;
-    }
-
-    private static final HashMap<String, FilterActionEnumeration>  _INSTANCES_ = _INIT_();
-
-
+    EXCLUDE ( "exclude" ),
+    INCLUDE ( "include" );
 
 
     /**
+     * A factory method.
      */
-    public static FilterActionEnumeration valueOf(
-                    final String name
+    public static FilterActionEnumeration fromValue(
+                    final String value
                     )
     {
-        FilterActionEnumeration  flag = null;
-        if (name != null) {
-            flag = _INSTANCES_.get( name );
+        for (FilterActionEnumeration  e : FilterActionEnumeration.values()) {
+            if (e.value.equals( value )) {
+                return e;
+            }
         }
 
-        if (flag == null) {
-            throw new IllegalArgumentException( "invalid filter action: " + name );
-        }
-
-        return flag;
+        throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
+    private String  value = null;
 
 
 
     /**
      * Constructor.
      */
-    private FilterActionEnumeration(
-                    final String name
+    FilterActionEnumeration(
+                    final String value
                     )
     {
-        _name = name;
+        this.value = value;
     }
 
 
 
-    /**
-     */
-    public String getName()
+    @Override
+    public String value()
     {
-        return _name;
+        return this.value;
     }
 
 
@@ -111,7 +89,7 @@ public final class FilterActionEnumeration
     @Override
     public String toString()
     {
-        return getName();
+        return this.value;
     }
 
 }

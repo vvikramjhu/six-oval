@@ -20,8 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.common;
 
-import java.io.Serializable;
-import java.util.HashMap;
+import jp.go.aist.six.oval.model.v5.OvalEnumeration;
 
 
 
@@ -34,83 +33,56 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class CheckEnumeration
-    implements Serializable
+public enum CheckEnumeration
+    implements OvalEnumeration
 {
 
-    private static final String  _ALL_           = "all";
-    private static final String  _AT_LEAST_ONE_  = "at least one";
-    private static final String  _NONE_EXIST_    = "none exist";
-    private static final String  _NONE_SATISFY_  = "none satisfy";
-    private static final String  _ONLY_ONE_      = "only one";
-
-
-    public static final CheckEnumeration  ALL           = new CheckEnumeration( _ALL_ );
-    public static final CheckEnumeration  AT_LEAST_ONE  = new CheckEnumeration( _AT_LEAST_ONE_ );
-    public static final CheckEnumeration  NONE_EXIST    = new CheckEnumeration( _NONE_EXIST_ );
-    public static final CheckEnumeration  NONE_SATISFY  = new CheckEnumeration( _NONE_SATISFY_ );
-    public static final CheckEnumeration  ONLY_ONE      = new CheckEnumeration( _ONLY_ONE_ );
-
-
-
-    private static HashMap<String, CheckEnumeration> _INIT_()
-    {
-        HashMap<String, CheckEnumeration>  map = new HashMap<String, CheckEnumeration>();
-        map.put( _ALL_,          ALL          );
-        map.put( _AT_LEAST_ONE_, AT_LEAST_ONE );
-        map.put( _NONE_EXIST_,   NONE_EXIST   );
-        map.put( _NONE_SATISFY_, NONE_SATISFY );
-        map.put( _ONLY_ONE_,     ONLY_ONE     );
-        return map;
-    }
-
-    private static final HashMap<String, CheckEnumeration>  _INSTANCES_ = _INIT_();
-
+    ALL           ( "all" ),
+    AT_LEAST_ONE  ( "at least one" ),
+    NONE_EXIST    ( "none exist" ),
+    NONE_SATISFY  ( "none satisfy" ),
+    ONLY_ONE      ( "only one" );
 
 
 
     /**
+     * A factory method.
      */
-    public static CheckEnumeration valueOf(
-                    final String name
+    public static CheckEnumeration fromValue(
+                    final String value
                     )
     {
-        CheckEnumeration  flag = null;
-        if (name != null) {
-            flag = _INSTANCES_.get( name );
+        for (CheckEnumeration  e : CheckEnumeration.values()) {
+            if (e.value.equals( value )) {
+                return e;
+            }
         }
 
-        if (flag == null) {
-            throw new IllegalArgumentException( "invalid check: " + name );
-        }
-
-        return flag;
+        throw new IllegalArgumentException( value );
     }
 
 
 
-
-    private String  _name = null;
+    private String  value = null;
 
 
 
     /**
      * Constructor.
      */
-    private CheckEnumeration(
-                    final String name
+    CheckEnumeration(
+                    final String value
                     )
     {
-        _name = name;
+        this.value = value;
     }
 
 
 
-    /**
-     */
-    public String getName()
+    @Override
+    public String value()
     {
-        return _name;
+        return this.value;
     }
 
 
@@ -122,7 +94,7 @@ public final class CheckEnumeration
     @Override
     public String toString()
     {
-        return getName();
+        return this.value;
     }
 
 }

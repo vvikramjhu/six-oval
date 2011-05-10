@@ -33,10 +33,10 @@ public enum DefinitionStatusEnumeration
     implements OvalEnumeration
 {
 
-    DRAFT( "DRAFT" ),
-    INTERIM( "INTERIM" ),
-    ACCEPTED( "ACCEPTED" ),
-    DEPRECATED( "DEPRECATED" );
+    DRAFT      ( "DRAFT" ),
+    INTERIM    ( "INTERIM" ),
+    ACCEPTED   ( "ACCEPTED" ),
+    DEPRECATED ( "DEPRECATED" );
 
 
 

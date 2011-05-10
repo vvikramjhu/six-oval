@@ -74,6 +74,7 @@
 
 
 
+    <!-- definition -->
     <class name="jp.go.aist.six.oval.model.v5.definitions.DefinitionType"
         extends="jp.go.aist.six.oval.model.v5.OvalEntity">
         <map-to 
@@ -96,13 +97,15 @@
         </field>
 
         <field name="definitionClass" 
-            type="jp.go.aist.six.oval.model.v5.common.DefinitionClassEnumeration">
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.v5.ClassEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.v5.common.ClassEnumeration" -->
             <bind-xml name="class" node="attribute"/>
         </field>
     </class>
 
 
-
+    <!-- metadata -->
     <class name="jp.go.aist.six.oval.model.v5.definitions.MetadataType">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
@@ -113,8 +116,8 @@
         </field>
 
         <field name="affected" 
-            type="jp.go.aist.six.oval.model.v5.definitions.AffectedType">
-            <!-- collection="collection" -->
+            type="jp.go.aist.six.oval.model.v5.definitions.AffectedType"
+            collection="collection">
             <bind-xml name="affected" node="element"/>
         </field>
 
@@ -141,12 +144,15 @@
 
 
 
+    <!-- affected -->
     <class name="jp.go.aist.six.oval.model.v5.definitions.AffectedType">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="family" 
-            type="jp.go.aist.six.oval.model.v5.common.FamilyEnumeration">
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.v5.FamilyEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.v5.common.FamilyEnumeration" -->
             <bind-xml name="family" node="attribute"/>
         </field>
 
@@ -183,6 +189,7 @@
 
 
 
+    <!-- reference -->
     <class name="jp.go.aist.six.oval.model.v5.definitions.ReferenceType">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
@@ -205,8 +212,7 @@
     <class name="jp.go.aist.six.oval.model.v5.definitions.NotesType">
         <map-to xml="notes"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
-            ns-prefix=""
-            />
+            ns-prefix=""/>
 
         <field name="note" 
             type="jp.go.aist.six.oval.model.v5.definitions.Note"
@@ -247,7 +253,9 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="operator" 
-            type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration">
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.v5.OperatorEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration" -->
             <bind-xml name="operator" node="attribute"/>
         </field>
 
@@ -317,17 +325,23 @@
 -->
 
         <field name="checkExistence"
-            type="jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration">
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.v5.ExistenceEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration" -->
             <bind-xml name="check_existence" node="attribute"/>
         </field>
 
         <field name="check" 
-            type="jp.go.aist.six.oval.model.v5.common.CheckEnumeration">
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.v5.CheckEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.v5.common.CheckEnumeration" -->
             <bind-xml name="check" node="attribute"/>
         </field>
 
         <field name="stateOperator" 
-            type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration">
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.v5.OperatorEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration" -->
             <bind-xml name="state_operator" node="attribute"/>
         </field>
     </class>
@@ -382,7 +396,9 @@
         </field>
 
         <field name="action" 
-            type="jp.go.aist.six.oval.model.v5.definitions.FilterActionEnumeration">
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.v5.FilterActionEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.v5.definitions.FilterActionEnumeration" -->
             <bind-xml name="action" node="attribute"/>
         </field>
     </class>
@@ -409,7 +425,9 @@
         </field>
 
         <field name="operator" 
-            type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration">
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.v5.OperatorEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration" -->
             <bind-xml name="operator" node="attribute"/>
         </field>
     </class>
@@ -434,8 +452,10 @@
         extends="jp.go.aist.six.oval.model.v5.CommentedOvalEntity"
         verify-constructable="false">
 
-        <field name="datatype"  
-            type="jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration">
+        <field name="datatype" 
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.v5.DatatypeEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration" -->
             <bind-xml name="datatype" node="attribute"/>
         </field>
     </class>
@@ -464,7 +484,9 @@
         </field>
 
         <field name="datatype"
-            type="jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration">
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.v5.DatatypeEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration" -->
             <bind-xml name="datatype" node="attribute"/>
         </field>
     </class>
@@ -575,12 +597,16 @@
         verify-constructable="false">
 
         <field name="datatype"
-            type="jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration">
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.v5.DatatypeEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration" -->
             <bind-xml name="datatype" node="attribute"/>
         </field>
 
         <field name="operation"
-            type="jp.go.aist.six.oval.model.v5.common.OperationEnumeration">
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.v5.OperationEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.v5.common.OperationEnumeration" -->
             <bind-xml name="operation" node="attribute"/>
         </field>
 
@@ -593,7 +619,9 @@
         </field>
 
         <field name="varCheck"
-            type="jp.go.aist.six.oval.model.v5.common.CheckEnumeration">
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.v5.CheckEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.v5.common.CheckEnumeration" -->
             <bind-xml name="var_check" node="attribute"/>
         </field>
     </class>
@@ -616,7 +644,9 @@
         verify-constructable="false">
 
         <field name="entityCheck"
-            type="jp.go.aist.six.oval.model.v5.common.CheckEnumeration">
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.v5.CheckEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.v5.common.CheckEnumeration" -->
             <bind-xml name="entity_check" node="attribute"/>
         </field>
     </class>
@@ -677,11 +707,13 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="status" 
-            type="jp.go.aist.six.oval.model.v5.mitre.DefinitionStatusEnumeration">
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.v5.DefinitionStatusEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.v5.mitre.DefinitionStatusEnumeration" -->
             <bind-xml name="status" node="element"/>
         </field>
 
-        <field name="event" 
+        <field name="dates" 
             type="jp.go.aist.six.oval.model.v5.mitre.Event"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"
@@ -767,7 +799,9 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="status" 
-            type="jp.go.aist.six.oval.model.v5.mitre.DefinitionStatusEnumeration">
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.v5.DefinitionStatusEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.v5.mitre.DefinitionStatusEnumeration" -->
             <bind-xml node="text"/>
         </field>
     </class>

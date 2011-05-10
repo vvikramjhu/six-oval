@@ -144,7 +144,7 @@ public abstract class CoreTestBase
     //
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    @DataProvider( name="definitions.oval_definitions" )
+    @DataProvider( name="oval.definitions.oval_definitions" )
     public Object[][] provideOvalDefinitionsOvalDefinitions()
     {
         return new Object[][] {

@@ -20,8 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.common;
 
-import java.io.Serializable;
-import java.util.HashMap;
+import jp.go.aist.six.oval.model.v5.OvalEnumeration;
 
 
 
@@ -34,82 +33,56 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class ExistenceEnumeration
-    implements Serializable
+public enum ExistenceEnumeration
+    implements OvalEnumeration
 {
 
-    private static final String  _ALL_EXIST_            = "all_exist";
-    private static final String  _ANY_EXIST_            = "any_exist";
-    private static final String  _AT_LEAST_ONE_EXISTS_  = "at_least_one_exists";
-    private static final String  _NONE_EXIST_           = "none_exist";
-    private static final String  _ONLY_ONE_EXISTS_      = "only_one_exists";
-
-
-    public static final ExistenceEnumeration  ALL_EXIST            = new ExistenceEnumeration( _ALL_EXIST_ );
-    public static final ExistenceEnumeration  ANY_EXIST            = new ExistenceEnumeration( _ANY_EXIST_ );
-    public static final ExistenceEnumeration  AT_LEAST_ONE_EXISTS  = new ExistenceEnumeration( _AT_LEAST_ONE_EXISTS_ );
-    public static final ExistenceEnumeration  NONE_EXIST           = new ExistenceEnumeration( _NONE_EXIST_ );
-    public static final ExistenceEnumeration  ONLY_ONE_EXISTS      = new ExistenceEnumeration( _ONLY_ONE_EXISTS_ );
-
-
-
-    private static HashMap<String, ExistenceEnumeration> _INIT_()
-    {
-        HashMap<String, ExistenceEnumeration>  map = new HashMap<String, ExistenceEnumeration>();
-        map.put( _ALL_EXIST_,           ALL_EXIST           );
-        map.put( _ANY_EXIST_,           ANY_EXIST           );
-        map.put( _AT_LEAST_ONE_EXISTS_, AT_LEAST_ONE_EXISTS );
-        map.put( _NONE_EXIST_,          NONE_EXIST          );
-        map.put( _ONLY_ONE_EXISTS_,     ONLY_ONE_EXISTS     );
-        return map;
-    }
-
-    private static final HashMap<String, ExistenceEnumeration>  _INSTANCES_ = _INIT_();
-
+    ALL_EXIST            ( "all_exist" ),
+    ANY_EXIST            ( "any_exist" ),
+    AT_LEAST_ONE_EXISTS  ( "at_least_one_exists" ),
+    NONE_EXIST           ( "none_exist" ),
+    ONLY_ONE_EXISTS      ( "only_one_exists" );
 
 
 
     /**
+     * A factory method.
      */
-    public static ExistenceEnumeration valueOf(
-                    final String name
+    public static ExistenceEnumeration fromValue(
+                    final String value
                     )
     {
-        ExistenceEnumeration  flag = null;
-        if (name != null) {
-            flag = _INSTANCES_.get( name );
+        for (ExistenceEnumeration  e : ExistenceEnumeration.values()) {
+            if (e.value.equals( value )) {
+                return e;
+            }
         }
 
-        if (flag == null) {
-            throw new IllegalArgumentException( "invalid existence: " + name );
-        }
-
-        return flag;
+        throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
+    private String  value = null;
 
 
 
     /**
      * Constructor.
      */
-    private ExistenceEnumeration(
-                    final String name
+    ExistenceEnumeration(
+                    final String value
                     )
     {
-        _name = name;
+        this.value = value;
     }
 
 
 
-    /**
-     */
-    public String getName()
+    @Override
+    public String value()
     {
-        return _name;
+        return this.value;
     }
 
 
@@ -121,7 +94,7 @@ public final class ExistenceEnumeration
     @Override
     public String toString()
     {
-        return getName();
+        return this.value;
     }
 
 }
