@@ -12,6 +12,7 @@ import jp.go.aist.six.oval.model.v5.definitions.ExtendDefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.MetadataType;
 import jp.go.aist.six.oval.model.v5.definitions.Platform;
 import jp.go.aist.six.oval.model.v5.definitions.Product;
+import jp.go.aist.six.oval.model.v5.definitions.ReferenceType;
 import jp.go.aist.six.oval.model.v5.mitre.Contributor;
 import jp.go.aist.six.oval.model.v5.mitre.DefinitionStatusEnumeration;
 import jp.go.aist.six.oval.model.v5.mitre.Modified;
@@ -114,6 +115,9 @@ public class DefinitionsSample
                         DefinitionStatusEnumeration.ACCEPTED ) );
         ovalRepo.setStatus( DefinitionStatusEnumeration.ACCEPTED );
 
+        ReferenceType  ref = new ReferenceType( "CVE", "CVE-2010-0176",
+                        "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-0176" );
+
         MetadataType  meta = new MetadataType(
                         "Mozilla Firefox/Thunderbird/SeaMonkey XUL Tree Optgroup Dangling Pointer Vulnerability",
                         "Mozilla Firefox before 3.0.19, 3.5.x before 3.5.9, and 3.6.x before 3.6.2; "
@@ -124,8 +128,8 @@ public class DefinitionsSample
                         + "related to a \"dangling pointer vulnerability.\""
         );
         meta.addAffected( affected );
-        meta.additionalMetadata( ovalRepo );
-
+        meta.addAdditionalMetadata( ovalRepo );
+        meta.addReference( ref );
 
         DefinitionType  def = new DefinitionType(
                         "oval:org.mitre.oval:def:7222", 5,

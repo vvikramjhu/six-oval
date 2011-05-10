@@ -198,18 +198,26 @@ public class MetadataType
     }
 
 
+    public Iterator<ReferenceType> iterateReference()
+    {
+        return this.reference.iterator();
+    }
+
+
+    public boolean addReference(
+                    final ReferenceType reference
+                    )
+    {
+        return this.reference.add( reference );
+    }
+
+
     public MetadataType reference(
                     final ReferenceType reference
                     )
     {
         this.reference.add( reference );
         return this;
-    }
-
-
-    public Iterator<ReferenceType> iterateReference()
-    {
-        return this.reference.iterator();
     }
 
 
@@ -264,6 +272,14 @@ public class MetadataType
     public Iterator<MetadataItem> iterateAdditionalMetadata()
     {
         return this.additionalMetadata.iterator();
+    }
+
+
+    public boolean addAdditionalMetadata(
+                    final MetadataItem item
+                    )
+    {
+        return this.additionalMetadata.add( item );
     }
 
 

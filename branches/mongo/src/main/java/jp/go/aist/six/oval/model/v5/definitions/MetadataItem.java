@@ -20,19 +20,18 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
 /**
- * Additional metadata provided by individual organizations.
+ * Additional metadata provided by individual organisations.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class MetadataItem
-    extends AbstractOvalObject
+//    extends AbstractOvalObject
 {
 
     /**

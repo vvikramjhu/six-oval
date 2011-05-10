@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.v5.definitions;
 
 
 
-
 /**
  * A link from the OVAL Definition to a definitive external reference.
  *
@@ -55,25 +54,25 @@ public class ReferenceType
     }
 
 
-//    public ReferenceType(
-//                    final String source,
-//                    final String refID
-//                    )
-//    {
-//        setSource( source );
-//        setRefID( refID );
-//    }
-//
-//
-//    public ReferenceType(
-//                    final String source,
-//                    final String refID,
-//                    final String refURL
-//                    )
-//    {
-//        this( source, refID );
-//        setRefURL( refURL );
-//    }
+    public ReferenceType(
+                    final String source,
+                    final String ref_id
+                    )
+    {
+        this( source, ref_id, null );
+    }
+
+
+    public ReferenceType(
+                    final String source,
+                    final String ref_id,
+                    final String ref_url
+                    )
+    {
+        setSource( source );
+        setRefID( ref_id );
+        setRefURL( ref_url );
+    }
 
 
 
@@ -97,10 +96,10 @@ public class ReferenceType
     /**
      */
     public void setRefID(
-                    final String refid
+                    final String ref_id
                     )
     {
-        this.ref_id = refid;
+        this.ref_id = ref_id;
     }
 
 
@@ -114,10 +113,10 @@ public class ReferenceType
     /**
      */
     public void setRefURL(
-                    final String url
+                    final String ref_url
                     )
     {
-        this.ref_url = url;
+        this.ref_url = ref_url;
     }
 
 
