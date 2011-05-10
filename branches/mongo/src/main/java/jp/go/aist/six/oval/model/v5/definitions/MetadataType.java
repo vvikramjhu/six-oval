@@ -42,9 +42,9 @@ public class MetadataType
     //{1..1}
 
 
-//    private final Collection<Affected>  _affected = new ArrayList<Affected>();
-    private AffectedType  affected;
+    private final Collection<AffectedType>  affected = new ArrayList<AffectedType>();
     //{0..*}
+//    private AffectedType  affected;
     //NOTE: So far, we found NO definition with multiple 'affected' elements.
 
 
@@ -111,26 +111,69 @@ public class MetadataType
     /**
      */
     public void setAffected(
-                    final AffectedType affected
+                    final Collection<? extends AffectedType> affectedSequence
                     )
     {
-        this.affected = affected;
+        if (affectedSequence != this.affected) {
+            this.affected.clear();
+            if (affectedSequence != null  &&  affectedSequence.size() > 0) {
+                this.affected.addAll( affectedSequence );
+            }
+        }
     }
 
 
-    public AffectedType getAffected()
+    public Collection<AffectedType> getAffected()
     {
         return this.affected;
     }
 
 
-    public MetadataType affected(
+    public boolean addAffected(
                     final AffectedType affected
                     )
     {
-        setAffected( affected );
+        return this.affected.add( affected );
+    }
+
+
+    public Iterator<AffectedType> iterateAffected()
+    {
+        return this.affected.iterator();
+    }
+
+
+    public MetadataType affected(
+                    final AffectedType reference
+                    )
+    {
+        this.affected.add( reference );
         return this;
     }
+
+//    /**
+//     */
+//    public void setAffected(
+//                    final AffectedType affected
+//                    )
+//    {
+//        this.affected = affected;
+//    }
+//
+//
+//    public AffectedType getAffected()
+//    {
+//        return this.affected;
+//    }
+//
+//
+//    public MetadataType affected(
+//                    final AffectedType affected
+//                    )
+//    {
+//        setAffected( affected );
+//        return this;
+//    }
 
 
 

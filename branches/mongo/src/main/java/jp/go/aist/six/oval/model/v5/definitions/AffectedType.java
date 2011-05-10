@@ -41,11 +41,11 @@ public class AffectedType
 {
 
     private final Collection<Platform>  platform = new HashSet<Platform>();
-    //{0..*}
+    //{0..*, unique}
 
 
     private final Collection<Product>  product = new HashSet<Product>();
-    //{0..*}
+    //{0..*, unique}
 
 
     private FamilyEnumeration  family;

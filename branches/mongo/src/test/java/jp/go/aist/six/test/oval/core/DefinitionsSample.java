@@ -123,7 +123,7 @@ public class DefinitionsSample
                         + "via unspecified vectors that trigger access to deleted elements, "
                         + "related to a \"dangling pointer vulnerability.\""
         );
-        meta.setAffected( affected );
+        meta.addAffected( affected );
         meta.additionalMetadata( ovalRepo );
 
 

@@ -24,7 +24,6 @@ import jp.go.aist.six.oval.model.v5.OvalEntity;
 import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Property;
-import com.google.code.morphia.annotations.Transient;
 
 
 
@@ -51,8 +50,8 @@ public class DefinitionType
     private CriteriaType  criteria;
     //{0..1}
 
-    @Transient
-    private String  _criteriaXml;
+//    @Transient
+//    private String  _criteriaXml;
 
 
     @Property( "class" )
@@ -181,20 +180,20 @@ public class DefinitionType
 
 
 
-    /**
-     */
-    public void xmlSetCriteria(
-                    final String xml
-                    )
-    {
-        _criteriaXml = xml;
-    }
-
-
-    public String xmlGetCriteria()
-    {
-        return _criteriaXml;
-    }
+//    /**
+//     */
+//    public void xmlSetCriteria(
+//                    final String xml
+//                    )
+//    {
+//        _criteriaXml = xml;
+//    }
+//
+//
+//    public String xmlGetCriteria()
+//    {
+//        return _criteriaXml;
+//    }
 
 
 
