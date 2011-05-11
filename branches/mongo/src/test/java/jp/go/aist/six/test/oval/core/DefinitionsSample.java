@@ -4,12 +4,14 @@ import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration;
 import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
+import jp.go.aist.six.oval.model.v5.common.OperationEnumeration;
 import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
 import jp.go.aist.six.oval.model.v5.definitions.AffectedType;
 import jp.go.aist.six.oval.model.v5.definitions.CriteriaElement;
 import jp.go.aist.six.oval.model.v5.definitions.CriteriaType;
 import jp.go.aist.six.oval.model.v5.definitions.CriterionType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.v5.definitions.ExtendDefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.MetadataType;
 import jp.go.aist.six.oval.model.v5.definitions.Platform;
@@ -25,6 +27,7 @@ import jp.go.aist.six.oval.model.v5.mitre.StatusChange;
 import jp.go.aist.six.oval.model.v5.mitre.Submitted;
 import jp.go.aist.six.oval.model.v5.windows.RegistryHiveEnumeration;
 import jp.go.aist.six.oval.model.v5.windows.RegistryObject;
+import jp.go.aist.six.oval.model.v5.windows.RegistryState;
 import jp.go.aist.six.oval.model.v5.windows.RegistryTest;
 
 
@@ -35,6 +38,29 @@ public class DefinitionsSample
     //**************************************************************
     // oval-definitions-5
     //**************************************************************
+
+    /**
+     * ste:5310
+     */
+    public static final RegistryState  STE_5310 = _createState5310();
+
+    private static RegistryState _createState5310()
+    {
+        RegistryState  ste5310 =
+            new RegistryState(
+                            "oval:org.mitre.oval:ste:5310", 1,
+                            "The registry key matches with Mozilla Firefox, Mozilla SeaMonkey and Mozilla Thunderbird installed"
+            );
+
+        EntityStateAnySimpleType  value = new EntityStateAnySimpleType( "^[0-9]\\..*" );
+        value.setOperation( OperationEnumeration.PATTERN_MATCH );
+
+        ste5310.setValue( value );
+
+        return ste5310;
+    }
+
+
 
     /**
      * obj:6886
@@ -54,6 +80,7 @@ public class DefinitionsSample
 
         return obj6886;
     }
+
 
 
 

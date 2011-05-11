@@ -2,9 +2,11 @@ package jp.go.aist.six.test.oval.core.datastore.mongodb;
 
 import java.util.List;
 import jp.go.aist.six.oval.core.datastore.mongodb.DefinitionDAO;
+import jp.go.aist.six.oval.core.datastore.mongodb.StateDAO;
 import jp.go.aist.six.oval.core.datastore.mongodb.SystemObjectDAO;
 import jp.go.aist.six.oval.core.datastore.mongodb.TestDAO;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.v5.definitions.StateType;
 import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.v5.definitions.TestType;
 import jp.go.aist.six.test.oval.core.DefinitionsSample;
@@ -36,6 +38,40 @@ public class MongoTest
 	{
         _springContext = new ClassPathXmlApplicationContext( _SPRING_APP_CONTEXT_ );
 	}
+
+
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={ "oval.core.datastore.mongodb", "oval.definitions.state" },
+                    alwaysRun=true
+                    )
+    public void testOvalDefinitionsState()
+    throws Exception
+    {
+        Reporter.log( "\n//// TEST: group=oval.core.datastore.mongodb, oval.definitions.state"
+                        + ", method=testOvalDefinitionsState",
+                        true );
+
+        DAO<StateType, ObjectId>  dao = _springContext.getBean( StateDAO.class );
+        dao.getCollection().drop();
+
+        StateType  entity = DefinitionsSample.STE_5310;
+
+        Reporter.log( "save..." , true );
+        Reporter.log( "  * object: " + entity, true );
+        dao.save( entity );
+
+        Reporter.log( "load each object by concrete class...", true );
+        StateType  p_entity = dao.get( entity.getObjectId() );
+        Reporter.log( "  @ object: " + p_entity, true );
+
+        Reporter.log( "load objects...", true );
+        List<StateType>  list = dao.find().asList();
+        Reporter.log( "  @ #objects: " + list.size(), true );
+        Reporter.log( "  @ objects: " + list, true );
+    }
 
 
 
