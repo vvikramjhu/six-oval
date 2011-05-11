@@ -20,7 +20,9 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
+import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
+import jp.go.aist.six.oval.model.v5.common.OperationEnumeration;
 
 
 
@@ -45,31 +47,38 @@ public class EntityStateAnySimpleType
     }
 
 
-//    public EntityStateAnySimpleType(
-//                    final String data
-//                    )
-//    {
-//        this( data, DEFAULT_OPERATION );
-//    }
-//
-//
-//    public EntityStateAnySimpleType(
-//                    final String data,
-//                    final OperationEnumeration operation
-//                    )
-//    {
-//        this( data, DEFAULT_DATATYPE, operation );
-//    }
-//
-//
-//    public EntityStateAnySimpleType(
-//                    final String data,
-//                    final DatatypeEnumeration datatype,
-//                    final OperationEnumeration operation
-//                    )
-//    {
-//        super( data, datatype, operation );
-//    }
+    public EntityStateAnySimpleType(
+                    final String content
+                    )
+    {
+        super( content );
+    }
+
+
+    public EntityStateAnySimpleType(
+                    final DatatypeEnumeration datatype,
+                    final OperationEnumeration operation,
+                    final Boolean mask,
+                    final String var_ref,
+                    final CheckEnumeration var_check,
+                    final String content
+                    )
+    {
+        super( datatype, operation, mask, var_ref, var_check, content );
+    }
+
+
+    public EntityStateAnySimpleType(
+                    final String datatype,
+                    final String operation,
+                    final Boolean mask,
+                    final String var_ref,
+                    final String var_check,
+                    final String content
+                    )
+    {
+        super( datatype, operation, mask, var_ref, var_check, content );
+    }
 
 
 

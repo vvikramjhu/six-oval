@@ -21,6 +21,8 @@
 package jp.go.aist.six.oval.model.v5.definitions;
 
 import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
+import jp.go.aist.six.oval.model.v5.common.OperationEnumeration;
 
 
 
@@ -36,8 +38,10 @@ public abstract class EntityStateSimpleBaseType
     extends EntitySimpleBaseType
 {
 
-    public static final CheckEnumeration  DEFAULT_ENTITY_CHECK = CheckEnumeration.ALL;
-    private CheckEnumeration  _entityCheck;
+    public static final CheckEnumeration  DEFAULT_ENTITY_CHECK =
+        CheckEnumeration.ALL;
+
+    private CheckEnumeration  entity_check;
     //{optional, default="all"}
 
 
@@ -58,21 +62,65 @@ public abstract class EntityStateSimpleBaseType
     }
 
 
+    public EntityStateSimpleBaseType(
+                    final DatatypeEnumeration datatype,
+                    final OperationEnumeration operation,
+                    final Boolean mask,
+                    final String var_ref,
+                    final CheckEnumeration var_check,
+                    final String content
+                    )
+    {
+        super( datatype, operation, mask, var_ref, var_check, content );
+    }
+
+
+    public EntityStateSimpleBaseType(
+                    final String datatype,
+                    final String operation,
+                    final Boolean mask,
+                    final String var_ref,
+                    final String var_check,
+                    final String content
+                    )
+    {
+        super( datatype, operation, mask, var_ref, var_check, content );
+    }
+
+
 
     /**
      */
     public void setEntityCheck(
-                    final CheckEnumeration check
+                    final CheckEnumeration entity_check
                     )
     {
-        _entityCheck = check;
+        this.entity_check = entity_check;
     }
 
 
     public CheckEnumeration getEntityCheck()
     {
-        return _entityCheck;
+        return this.entity_check;
     }
+
+
+    public static final CheckEnumeration entityCheck(
+                    final EntityStateSimpleBaseType essbt
+                    )
+    {
+        if (essbt == null) {
+            throw new IllegalArgumentException( "null EntityStateSimpleBaseType" );
+        }
+
+        CheckEnumeration  entity_check = essbt.getEntityCheck();
+        if (entity_check == null) {
+            entity_check = DEFAULT_ENTITY_CHECK;
+        }
+
+        return entity_check;
+    }
+
 
 
 
@@ -86,8 +134,7 @@ public abstract class EntityStateSimpleBaseType
         final int  prime = 37;
         int  result = super.hashCode();
 
-        CheckEnumeration  e_check = getEntityCheck();
-        result = prime * result + ((e_check == null) ? 0 : e_check.hashCode());
+        result = prime * result + entityCheck( this ).hashCode();
 
         return result;
     }
@@ -109,16 +156,8 @@ public abstract class EntityStateSimpleBaseType
 
         if (super.equals( obj )) {
             EntityStateSimpleBaseType  other = (EntityStateSimpleBaseType)obj;
-            CheckEnumeration  other_e_check = other.getEntityCheck();
-            CheckEnumeration   this_e_check =  this.getEntityCheck();
-            if (this_e_check == null) {
-                this_e_check = DEFAULT_ENTITY_CHECK;
-            }
-            if (other_e_check == null) {
-                other_e_check = DEFAULT_ENTITY_CHECK;
-            }
-            if (this_e_check == other_e_check) {
-                    return true;
+            if (entityCheck( this ) == entityCheck( other )) {
+                return true;
             }
         }
 

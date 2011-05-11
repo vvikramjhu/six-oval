@@ -46,14 +46,14 @@ public class EntityStateRegistryHiveType
     }
 
 
-//    public EntityStateRegistryHiveType(
-//                    final String data
-//                    )
-//    {
-//        this( data, DEFAULT_OPERATION );
-//    }
-//
-//
+    public EntityStateRegistryHiveType(
+                    final String content
+                    )
+    {
+        super( content );
+    }
+
+
 //    public EntityStateRegistryHiveType(
 //                    final String data,
 //                    final OperationEnumeration operation
@@ -102,7 +102,7 @@ public class EntityStateRegistryHiveType
     {
         if (content != null) {
             //validation
-            RegistryHiveEnumeration.valueOf( content );
+            RegistryHiveEnumeration.fromValue( content );
         }
 
         super.setContent( content );

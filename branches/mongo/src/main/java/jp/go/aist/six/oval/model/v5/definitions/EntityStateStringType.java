@@ -20,7 +20,9 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
+import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
+import jp.go.aist.six.oval.model.v5.common.OperationEnumeration;
 
 
 
@@ -37,7 +39,8 @@ public class EntityStateStringType
     extends EntityStateSimpleBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.STRING;
+    public static final DatatypeEnumeration  FIXED_DATATYPE =
+        DatatypeEnumeration.STRING;
     //{optional, fixed="string"}
 
 
@@ -58,23 +61,30 @@ public class EntityStateStringType
     }
 
 
-//    public EntityStateStringType(
-//                    final String data,
-//                    final Operation operation
-//                    )
-//    {
-//        this( data, FIXED_DATATYPE, operation );
-//    }
-//
-//
-//    public EntityStateStringType(
-//                    final String data,
-//                    final Datatype datatype,
-//                    final Operation operation
-//                    )
-//    {
-//        super( data, datatype, operation );
-//    }
+    public EntityStateStringType(
+                    final DatatypeEnumeration datatype,
+                    final OperationEnumeration operation,
+                    final Boolean mask,
+                    final String var_ref,
+                    final CheckEnumeration var_check,
+                    final String content
+                    )
+    {
+        super( datatype, operation, mask, var_ref, var_check, content );
+    }
+
+
+    public EntityStateStringType(
+                    final String datatype,
+                    final String operation,
+                    final Boolean mask,
+                    final String var_ref,
+                    final String var_check,
+                    final String content
+                    )
+    {
+        super( datatype, operation, mask, var_ref, var_check, content );
+    }
 
 
 

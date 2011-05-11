@@ -20,9 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.windows;
 
-import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
 import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
@@ -465,11 +463,11 @@ public class FileState
 
 
 
-    @Override
-    public Iterator<EntityAttributeGroup> iterateProperties()
-    {
-        return _properties.iterateProperties();
-    }
+//    @Override
+//    public Iterator<EntityAttributeGroup> iterateProperties()
+//    {
+//        return _properties.iterateProperties();
+//    }
 
 
 

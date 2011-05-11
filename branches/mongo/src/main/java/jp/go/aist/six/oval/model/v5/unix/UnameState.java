@@ -20,9 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.unix;
 
-import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
 import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.v5.definitions.StateType;
@@ -248,11 +246,11 @@ public class UnameState
 
 
 
-    @Override
-    public Iterator<EntityAttributeGroup> iterateProperties()
-    {
-        return _properties.iterateProperties();
-    }
+//    @Override
+//    public Iterator<EntityAttributeGroup> iterateProperties()
+//    {
+//        return _properties.iterateProperties();
+//    }
 
 
 

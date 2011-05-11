@@ -20,9 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.independent;
 
-import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
 import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateIntType;
@@ -291,11 +289,11 @@ public class TextfileContent54State
 
 
 
-    @Override
-    public Iterator<EntityAttributeGroup> iterateProperties()
-    {
-        return _properties.iterateProperties();
-    }
+//    @Override
+//    public Iterator<EntityAttributeGroup> iterateProperties()
+//    {
+//        return _properties.iterateProperties();
+//    }
 
 
 

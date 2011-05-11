@@ -20,10 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.independent;
 
-import java.util.Collections;
-import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
 import jp.go.aist.six.oval.model.v5.definitions.StateType;
 
 
@@ -112,12 +109,12 @@ public class FamilyState
 
 
 
-    @Override
-    public Iterator<EntityAttributeGroup> iterateProperties()
-    {
-        EntityAttributeGroup  p = getFamily();
-        return Collections.singletonList( p ).iterator();
-    }
+//    @Override
+//    public Iterator<EntityAttributeGroup> iterateProperties()
+//    {
+//        EntityAttributeGroup  p = getFamily();
+//        return Collections.singletonList( p ).iterator();
+//    }
 
 
 

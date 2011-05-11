@@ -20,10 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.windows;
 
-import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
-import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.v5.definitions.StateType;
@@ -42,25 +39,25 @@ public class RegistryState
     extends StateType
 {
 
-//    private EntityStateRegistryHiveType  _hive;
-//    //{0..1}
-//
-//    private EntityStateStringType  _key;
-//    //{0..1}
-//
-//    private EntityStateStringType  _name;
-//    //{0..1}
-//
-//    private EntityStateRegistryTypeType  _type;
-//    //{0..1}
-//
-//    private EntityStateAnySimpleType  _value;
-//    //{0..1}
+    private EntityStateRegistryHiveType  hive;
+    //{0..1}
+
+    private EntityStateStringType  key;
+    //{0..1}
+
+    private EntityStateStringType  name;
+    //{0..1}
+
+    private EntityStateRegistryTypeType  type;
+    //{0..1}
+
+    private EntityStateAnySimpleType  value;
+    //{0..1}
 
 
 
-    private final EntityPropertyMap<RegistryProperty>  _properties =
-        RegistryProperty.createPropertyMap();
+//    private final EntityPropertyMap<RegistryProperty>  _properties =
+//        RegistryProperty.createPropertyMap();
 
 
 
@@ -98,7 +95,16 @@ public class RegistryState
                     final EntityStateRegistryHiveType hive
                     )
     {
-        _properties.setProperty( RegistryProperty.HIVE, hive );
+        this.hive = hive;
+//        _properties.setProperty( RegistryProperty.HIVE, hive );
+    }
+
+
+    public EntityStateRegistryHiveType getHive()
+    {
+        return this.hive;
+//        return _properties.getProperty(
+//                        RegistryProperty.HIVE, EntityStateRegistryHiveType.class );
     }
 
 
@@ -111,13 +117,6 @@ public class RegistryState
     }
 
 
-    public EntityStateRegistryHiveType getHive()
-    {
-        return _properties.getProperty(
-                        RegistryProperty.HIVE, EntityStateRegistryHiveType.class );
-    }
-
-
 
     /**
      */
@@ -125,7 +124,16 @@ public class RegistryState
                     final EntityStateStringType key
                     )
     {
-        _properties.setProperty( RegistryProperty.KEY, key );
+        this.key = key;
+//        _properties.setProperty( RegistryProperty.KEY, key );
+    }
+
+
+    public EntityStateStringType getKey()
+    {
+        return this.key;
+//        return _properties.getProperty(
+//                        RegistryProperty.KEY, EntityStateStringType.class );
     }
 
 
@@ -138,13 +146,6 @@ public class RegistryState
     }
 
 
-    public EntityStateStringType getKey()
-    {
-        return _properties.getProperty(
-                        RegistryProperty.KEY, EntityStateStringType.class );
-    }
-
-
 
     /**
      */
@@ -152,7 +153,16 @@ public class RegistryState
                     final EntityStateStringType name
                     )
     {
-        _properties.setProperty( RegistryProperty.NAME, name );
+        this.name = name;
+//        _properties.setProperty( RegistryProperty.NAME, name );
+    }
+
+
+    public EntityStateStringType getName()
+    {
+        return this.name;
+//        return _properties.getProperty(
+//                        RegistryProperty.NAME, EntityStateStringType.class );
     }
 
 
@@ -165,13 +175,6 @@ public class RegistryState
     }
 
 
-    public EntityStateStringType getName()
-    {
-        return _properties.getProperty(
-                        RegistryProperty.NAME, EntityStateStringType.class );
-    }
-
-
 
     /**
      */
@@ -179,7 +182,16 @@ public class RegistryState
                     final EntityStateRegistryTypeType type
                     )
     {
-        _properties.setProperty( RegistryProperty.TYPE, type );
+        this.type = type;
+//        _properties.setProperty( RegistryProperty.TYPE, type );
+    }
+
+
+    public EntityStateRegistryTypeType getType()
+    {
+        return this.type;
+//        return _properties.getProperty(
+//                        RegistryProperty.TYPE, EntityStateRegistryTypeType.class );
     }
 
 
@@ -192,13 +204,6 @@ public class RegistryState
     }
 
 
-    public EntityStateRegistryTypeType getType()
-    {
-        return _properties.getProperty(
-                        RegistryProperty.TYPE, EntityStateRegistryTypeType.class );
-    }
-
-
 
     /**
      */
@@ -206,7 +211,16 @@ public class RegistryState
                     final EntityStateAnySimpleType value
                     )
     {
-        _properties.setProperty( RegistryProperty.VALUE, value );
+        this.value = value;
+//        _properties.setProperty( RegistryProperty.VALUE, value );
+    }
+
+
+    public EntityStateAnySimpleType getValue()
+    {
+        return this.value;
+//        return _properties.getProperty(
+//                        RegistryProperty.VALUE, EntityStateAnySimpleType.class );
     }
 
 
@@ -216,13 +230,6 @@ public class RegistryState
     {
         setValue( value );
         return this;
-    }
-
-
-    public EntityStateAnySimpleType getValue()
-    {
-        return _properties.getProperty(
-                        RegistryProperty.VALUE, EntityStateAnySimpleType.class );
     }
 
 
@@ -239,11 +246,11 @@ public class RegistryState
 
 
 
-    @Override
-    public Iterator<EntityAttributeGroup> iterateProperties()
-    {
-        return _properties.iterateProperties();
-    }
+//    @Override
+//    public Iterator<EntityAttributeGroup> iterateProperties()
+//    {
+//        return _properties.iterateProperties();
+//    }
 
 
 
@@ -277,7 +284,12 @@ public class RegistryState
     public String toString()
     {
         return "registry_state[" + super.toString()
-                        + ", " + String.valueOf( _properties )
+                        + ", hive=" + getHive()
+                        + ", key=" + getKey()
+                        + ", name=" + getName()
+                        + ", type=" + getType()
+                        + ", value=" + getValue()
+//                        + ", " + String.valueOf( _properties )
                         + "]";
     }
 

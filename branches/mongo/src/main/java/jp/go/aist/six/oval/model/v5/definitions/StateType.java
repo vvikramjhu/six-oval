@@ -20,12 +20,10 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
 import jp.go.aist.six.oval.model.v5.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
+import com.google.code.morphia.annotations.Entity;
 
 
 
@@ -40,16 +38,19 @@ import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
+@Entity( "oval.definitions.state" )
 public class StateType
     extends CommentedOvalEntity
 {
 
-    private NotesType  _notes;
+    private NotesType  notes;
     //{0..1}
 
 
-    public static final OperatorEnumeration  DEFAULT_OPERATOR = OperatorEnumeration.AND;
-    private OperatorEnumeration  _operator;
+    public static final OperatorEnumeration  DEFAULT_OPERATOR =
+        OperatorEnumeration.AND;
+
+    private OperatorEnumeration  operator;
     //{optional, default="AND"}
 
 
@@ -88,39 +89,56 @@ public class StateType
                     final NotesType notes
                     )
     {
-        _notes = notes;
+        this.notes = notes;
     }
 
 
     public NotesType getNotes()
     {
-        return _notes;
+        return this.notes;
     }
 
 
 
     /**
      */
+    public void setOperator(
+                    final OperatorEnumeration operator
+                    )
+    {
+        this.operator = operator;
+    }
+
+
+    public OperatorEnumeration getOperator()
+    {
+        return this.operator;
+    }
+
+
     public StateType operator(
-                  final OperatorEnumeration operator
-                  )
+                    final OperatorEnumeration operator
+                    )
     {
         setOperator( operator );
         return this;
     }
 
 
-    public void setOperator(
-                    final OperatorEnumeration operator
+    public static final OperatorEnumeration operator(
+                    final StateType state
                     )
     {
-        _operator = operator;
-    }
+        if (state == null) {
+            throw new IllegalArgumentException( "null StateType" );
+        }
 
+        OperatorEnumeration  operator = state.getOperator();
+        if (operator == null) {
+            operator = DEFAULT_OPERATOR;
+        }
 
-    public OperatorEnumeration getOperator()
-    {
-        return _operator;
+        return operator;
     }
 
 
@@ -142,16 +160,16 @@ public class StateType
 
 
 
-    private static List<EntityAttributeGroup>  _EMPTY_LIST_ =
-        Collections.emptyList();
-
-
-    /**
-     */
-    public Iterator<EntityAttributeGroup> iterateProperties()
-    {
-        return _EMPTY_LIST_.iterator();
-    }
+//    private static List<EntityAttributeGroup>  _EMPTY_LIST_ =
+//        Collections.emptyList();
+//
+//
+//    /**
+//     */
+//    public Iterator<EntityAttributeGroup> iterateProperties()
+//    {
+//        return _EMPTY_LIST_.iterator();
+//    }
 
 
 

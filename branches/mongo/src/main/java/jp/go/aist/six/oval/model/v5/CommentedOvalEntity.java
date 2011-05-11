@@ -35,6 +35,7 @@ public abstract class CommentedOvalEntity
     private String  comment;
     //{required:TestType}
     //{optional:ObjectType}
+    //{optional:StateType}
 
 
 

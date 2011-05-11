@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.linux;
 
-import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
 import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType;
@@ -138,11 +137,11 @@ public abstract class LinuxPkgInfoState
     //  State
     //**************************************************************
 
-    @Override
-    public Iterator<EntityAttributeGroup> iterateProperties()
-    {
-        return _properties.iterateProperties();
-    }
+//    @Override
+//    public Iterator<EntityAttributeGroup> iterateProperties()
+//    {
+//        return _properties.iterateProperties();
+//    }
 
 
 
