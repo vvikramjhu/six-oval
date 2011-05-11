@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
@@ -36,15 +35,17 @@ import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Filter
-    extends AbstractOvalObject
+//    extends AbstractOvalObject
 {
 
-    private String  _content;
+    private String  content;
     //{simpleContent, base="oval:StateIDPattern"}
 
 
-    public static final FilterActionEnumeration  DEFAULT_ACTION = FilterActionEnumeration.EXCLUDE;
-    private FilterActionEnumeration  _action;
+    public static final FilterActionEnumeration  DEFAULT_ACTION =
+        FilterActionEnumeration.EXCLUDE;
+
+    private FilterActionEnumeration  action;
     //{optional, default='exclude'}
 
 
@@ -58,18 +59,19 @@ public class Filter
 
 
     public Filter(
-                    final String value
+                    final String content
                     )
     {
-        this( value, DEFAULT_ACTION );
+        this( content, DEFAULT_ACTION );
     }
 
 
     public Filter(
-                    final String value,
+                    final String content,
                     final FilterActionEnumeration action
                     )
     {
+        setContent( content );
         setAction( action );
     }
 
@@ -81,13 +83,13 @@ public class Filter
                     final String content
                     )
     {
-        _content = content;
+        this.content = content;
     }
 
 
     public String getContent()
     {
-        return _content;
+        return this.content;
     }
 
 
@@ -98,13 +100,20 @@ public class Filter
                     final FilterActionEnumeration action
                     )
     {
-        _action = action;
+        this.action = action;
     }
 
 
     public FilterActionEnumeration getAction()
     {
-        return _action;
+        return this.action;
+    }
+
+
+    public FilterActionEnumeration action()
+    {
+        FilterActionEnumeration  action = getAction();
+        return (action == null ? DEFAULT_ACTION : action);
     }
 
 
@@ -148,7 +157,7 @@ public class Filter
         String   thisContent =  this.getContent();
         if (thisContent == otherContent
                         ||  (thisContent != null  &&  thisContent.equals( otherContent ))) {
-            if (this.getAction() == other.getAction()) {
+            if (this.action() == other.action()) {
                 return true;
             }
         }

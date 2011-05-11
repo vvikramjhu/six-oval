@@ -22,9 +22,7 @@ package jp.go.aist.six.oval.model.v5.linux;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
 import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.v5.definitions.Filter;
 import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
@@ -136,15 +134,15 @@ public abstract class LinuxPkgInfoObject
 
 
     //**************************************************************
-    //  State
+    //  SystemObjectType
     //**************************************************************
 
-    @Override
-    public Iterator<EntityAttributeGroup> iterateProperties()
-    {
-        EntityAttributeGroup  p = getName();
-        return Collections.singletonList( p ).iterator();
-    }
+//    @Override
+//    public Iterator<EntityAttributeGroup> iterateProperties()
+//    {
+//        EntityAttributeGroup  p = getName();
+//        return Collections.singletonList( p ).iterator();
+//    }
 
 
 

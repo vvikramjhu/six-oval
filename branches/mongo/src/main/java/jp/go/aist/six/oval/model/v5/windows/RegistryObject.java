@@ -24,9 +24,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
 import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.v5.definitions.Filter;
 import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 
@@ -42,24 +40,24 @@ public class RegistryObject
     extends SystemObjectType
 {
 
-    private RegistryBehaviors  _behaviors;
+    private RegistryBehaviors  behaviors;
     //{0..1}
 
 
-    private final EntityPropertyMap<RegistryProperty>  _properties =
-        RegistryProperty.createPropertyMap();
+//    private final EntityPropertyMap<RegistryProperty>  _properties =
+//        RegistryProperty.createPropertyMap();
 
-//    private EntityObjectRegistryHiveType  _hive;
-//    //{1..1}
-//
-//    private EntityObjectStringType  _key;
-//    //{1..1, nillable="true"}
-//
-//    private EntityObjectStringType  _name;
-//    //{1..1, nillable="true"}
+    private EntityObjectRegistryHiveType  hive;
+    //{1..1}
+
+    private EntityObjectStringType  key;
+    //{1..1, nillable="true"}
+
+    private EntityObjectStringType  name;
+    //{1..1, nillable="true"}
 
 
-    private final Collection<Filter>  _filter = new ArrayList<Filter>();
+    private final Collection<Filter>  filter = new ArrayList<Filter>();
 
 
 
@@ -93,13 +91,14 @@ public class RegistryObject
     public RegistryObject(
                     final String id,
                     final int version,
+                    final String comment,
                     final RegistryHiveEnumeration hive,
                     final String key,
                     final String name
                     )
     {
-        this( id, version,
-                        (hive == null ? null : (new EntityObjectRegistryHiveType( hive.getName() ))),
+        this( id, version, comment,
+                        (hive == null ? null : (new EntityObjectRegistryHiveType( hive.value() ))),
                         (key  == null ? null : (new EntityObjectStringType( key ))),
                         (name == null ? null : (new EntityObjectStringType( name )))
         );
@@ -109,12 +108,13 @@ public class RegistryObject
     public RegistryObject(
                     final String id,
                     final int version,
+                    final String comment,
                     final EntityObjectRegistryHiveType hive,
                     final EntityObjectStringType key,
                     final EntityObjectStringType name
                     )
     {
-        super( id, version );
+        super( id, version, comment );
         setHive( hive );
         setKey( key );
         setName( name );
@@ -128,7 +128,13 @@ public class RegistryObject
                     final RegistryBehaviors behaviors
                     )
     {
-        _behaviors = behaviors;
+        this.behaviors = behaviors;
+    }
+
+
+    public RegistryBehaviors getBehaviors()
+    {
+        return this.behaviors;
     }
 
 
@@ -141,12 +147,6 @@ public class RegistryObject
     }
 
 
-    public RegistryBehaviors getBehaviors()
-    {
-        return _behaviors;
-    }
-
-
 
     /**
      */
@@ -154,7 +154,16 @@ public class RegistryObject
                     final EntityObjectRegistryHiveType hive
                     )
     {
-        _properties.setProperty( RegistryProperty.HIVE, hive );
+        this.hive = hive;
+//        _properties.setProperty( RegistryProperty.HIVE, hive );
+    }
+
+
+    public EntityObjectRegistryHiveType getHive()
+    {
+        return this.hive;
+//        return _properties.getProperty(
+//                        RegistryProperty.HIVE, EntityObjectRegistryHiveType.class );
     }
 
 
@@ -167,19 +176,21 @@ public class RegistryObject
     }
 
 
-    public EntityObjectRegistryHiveType getHive()
-    {
-        return _properties.getProperty(
-                        RegistryProperty.HIVE, EntityObjectRegistryHiveType.class );
-    }
-
-
 
     public void setKey(
                     final EntityObjectStringType key
                     )
     {
-        _properties.setProperty( RegistryProperty.KEY, key );
+        this.key = key;
+//        _properties.setProperty( RegistryProperty.KEY, key );
+    }
+
+
+    public EntityObjectStringType getKey()
+    {
+        return this.key;
+//        return _properties.getProperty(
+//                        RegistryProperty.KEY, EntityObjectStringType.class );
     }
 
 
@@ -192,20 +203,14 @@ public class RegistryObject
     }
 
 
-    public EntityObjectStringType getKey()
-    {
-        return _properties.getProperty(
-                        RegistryProperty.KEY, EntityObjectStringType.class );
-    }
-
-
 
     public void setName(
                     final EntityObjectStringType name
                     // nillable ="true"
                     )
     {
-        _properties.setProperty( RegistryProperty.NAME, name );
+        this.name = name;
+//        _properties.setProperty( RegistryProperty.NAME, name );
 
 //        EntityObjectString  n = name;
 //        if (name != null) {
@@ -219,6 +224,14 @@ public class RegistryObject
     }
 
 
+    public EntityObjectStringType getName()
+    {
+        return this.name;
+//        return _properties.getProperty(
+//                        RegistryProperty.NAME, EntityObjectStringType.class );
+    }
+
+
     public RegistryObject name(
                     final EntityObjectStringType name
                     )
@@ -228,24 +241,17 @@ public class RegistryObject
     }
 
 
-    public EntityObjectStringType getName()
-    {
-        return _properties.getProperty(
-                        RegistryProperty.NAME, EntityObjectStringType.class );
-    }
-
-
 
     /**
      */
     public void setFilter(
-                    final Collection<? extends Filter> filters
+                    final Collection<? extends Filter> filterList
                     )
     {
-        if (filters != _filter) {
-            _filter.clear();
-            if (filters != null  &&  filters.size() > 0) {
-                _filter.addAll( filters );
+        if (filterList != this.filter) {
+            this.filter.clear();
+            if (filterList != null  &&  filterList.size() > 0) {
+                this.filter.addAll( filterList );
             }
         }
     }
@@ -253,13 +259,13 @@ public class RegistryObject
 
     public Collection<Filter> getFilter()
     {
-        return _filter;
+        return this.filter;
     }
 
 
     public Iterator<Filter> iterateFilter()
     {
-        return _filter.iterator();
+        return this.filter.iterator();
     }
 
 
@@ -276,11 +282,11 @@ public class RegistryObject
 
 
 
-    @Override
-    public Iterator<EntityAttributeGroup> iterateProperties()
-    {
-        return _properties.iterateProperties();
-    }
+//    @Override
+//    public Iterator<EntityAttributeGroup> iterateProperties()
+//    {
+//        return _properties.iterateProperties();
+//    }
 
 
 
@@ -315,7 +321,10 @@ public class RegistryObject
     {
         return "registry_object[" + super.toString()
                         + ", behaviors=" + getBehaviors()
-                        + ", " + String.valueOf( _properties )
+                        + ", hive=" + getHive()
+                        + ", key=" + getKey()
+                        + ", name=" + getName()
+//                        + ", " + String.valueOf( _properties )
                         + ", filter=" + getFilter()
                         + "]";
     }

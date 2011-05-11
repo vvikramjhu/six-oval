@@ -20,6 +20,10 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
+import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
+import jp.go.aist.six.oval.model.v5.common.OperationEnumeration;
+
 
 
 
@@ -35,7 +39,7 @@ public abstract class EntitySimpleBaseType
     extends EntityAttributeGroup
 {
 
-    private String  _content;
+    private String  content;
     //{simpleContent, base="xsd:anySimpleType"}
 
 
@@ -56,6 +60,34 @@ public abstract class EntitySimpleBaseType
     }
 
 
+    public EntitySimpleBaseType(
+                    final DatatypeEnumeration datatype,
+                    final OperationEnumeration operation,
+                    final Boolean mask,
+                    final String var_ref,
+                    final CheckEnumeration var_check,
+                    final String content
+                    )
+    {
+        super( datatype, operation, mask, var_ref, var_check );
+        setContent( content );
+    }
+
+
+    public EntitySimpleBaseType(
+                    final String datatype,
+                    final String operation,
+                    final Boolean mask,
+                    final String var_ref,
+                    final String var_check,
+                    final String content
+                    )
+    {
+        super( datatype, operation, mask, var_ref, var_check );
+        setContent( content );
+    }
+
+
 
     /**
      */
@@ -63,13 +95,13 @@ public abstract class EntitySimpleBaseType
                     final String content
                     )
     {
-        _content = content;
+        this.content = content;
     }
 
 
     public String getContent()
     {
-        return _content;
+        return this.content;
     }
 
 
@@ -78,69 +110,46 @@ public abstract class EntitySimpleBaseType
     //  java.lang.Object
     //**************************************************************
 
-//    @Override
-//    public int hashCode()
-//    {
-//        final int  prime = 37;
-//        int  result = 17;
-//
-//        String  data = getContent();
-//        result = prime * result + ((data == null) ? 0 : data.hashCode());
-//
-//        Datatype  datatype = getDatatype();
-//        result = prime * result + ((datatype == null) ? 0 : datatype.hashCode());
-//
-//        Operation  op = getOperation();
-//        result = prime * result + ((op == null) ? 0 : op.hashCode());
-//
-//        result = prime * result + (getMask() ? 0 : 1);
-//
-//        String  var_ref = getVarRef();
-//        result = prime * result + ((var_ref == null) ? 0 : var_ref.hashCode());
-//
-//        return result;
-//    }
-//
-//
-//
-//    @Override
-//    public boolean equals(
-//                    final Object obj
-//                    )
-//    {
-//        if (this == obj) {
-//            return true;
-//        }
-//
-//        if (!(obj instanceof EntitySimpleBaseType)) {
-//            return false;
-//        }
-//
-//        EntitySimpleBaseType  other = (EntitySimpleBaseType)obj;
-//        String  other_data = other.getContent();
-//        String   this_data =  this.getContent();
-//        if (this_data == other_data
-//                        ||  (this_data != null  &&  this_data.equals( other_data ))) {
-//            String  other_var_ref = other.getVarRef();
-//            String   this_var_ref =  this.getVarRef();
-//            if (this_var_ref == other_var_ref
-//                        ||  (this_var_ref != null  &&  this_var_ref.equals( other_var_ref ))) {
-//                Operation  other_op = other.getOperation();
-//                Operation   this_op =  this.getOperation();
-//                if (this_op == other_op) {
-//                    Datatype  other_type = other.getDatatype();
-//                    Datatype   this_type =  this.getDatatype();
-//                    if (this_type == other_type) {
-//                        if (this.getMask() == other.getMask()) {
-//                            return true;
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//
-//        return false;
-//    }
+    @Override
+    public int hashCode()
+    {
+        final int  prime = 37;
+        int  result = super.hashCode();
+
+        String  content = getContent();
+        result = prime * result + ((content == null) ? 0 : content.hashCode());
+
+        return result;
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof EntitySimpleBaseType)) {
+            return false;
+        }
+
+        EntitySimpleBaseType  other = (EntitySimpleBaseType)obj;
+        if (super.equals( obj )) {
+            final String  other_content = other.getContent();
+            final String   this_content =  this.getContent();
+            if (this_content == other_content
+                            ||  (this_content != null
+                                        &&  this_content.equals( other_content ))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 
 

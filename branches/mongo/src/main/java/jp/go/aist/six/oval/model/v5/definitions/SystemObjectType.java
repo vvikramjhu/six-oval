@@ -20,11 +20,9 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
 import jp.go.aist.six.oval.model.v5.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
+import com.google.code.morphia.annotations.Entity;
 
 
 
@@ -37,11 +35,12 @@ import jp.go.aist.six.oval.model.v5.PlatformEntityType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
+@Entity( "oval.definitions.object" )
 public class SystemObjectType
     extends CommentedOvalEntity
 {
 
-    private NotesType  _notes;
+    private NotesType  notes;
     //{0..1}
 
 
@@ -80,13 +79,13 @@ public class SystemObjectType
                     final NotesType notes
                     )
     {
-        _notes = notes;
+        this.notes = notes;
     }
 
 
     public NotesType getNotes()
     {
-        return _notes;
+        return this.notes;
     }
 
 
@@ -108,16 +107,16 @@ public class SystemObjectType
 
 
 
-    private static List<EntityAttributeGroup>  _EMPTY_LIST_ =
-        Collections.emptyList();
+//    private static List<EntityAttributeGroup>  _EMPTY_LIST_ =
+//        Collections.emptyList();
+//
 
-
-    /**
-     */
-    public Iterator<EntityAttributeGroup> iterateProperties()
-    {
-        return _EMPTY_LIST_.iterator();
-    }
+//    /**
+//     */
+//    public Iterator<EntityAttributeGroup> iterateProperties()
+//    {
+//        return _EMPTY_LIST_.iterator();
+//    }
 
 
 

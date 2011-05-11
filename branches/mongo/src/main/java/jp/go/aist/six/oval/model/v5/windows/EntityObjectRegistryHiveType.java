@@ -102,7 +102,7 @@ public class EntityObjectRegistryHiveType
     {
         if (content != null) {
             //validation
-            RegistryHiveEnumeration.valueOf( content );
+            RegistryHiveEnumeration.fromValue( content );
         }
 
         super.setContent( content );

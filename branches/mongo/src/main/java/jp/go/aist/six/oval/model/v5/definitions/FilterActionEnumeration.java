@@ -40,6 +40,7 @@ public enum FilterActionEnumeration
     INCLUDE ( "include" );
 
 
+
     /**
      * A factory method.
      */

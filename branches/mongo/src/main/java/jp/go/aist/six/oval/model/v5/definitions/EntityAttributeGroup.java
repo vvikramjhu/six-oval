@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 import jp.go.aist.six.oval.model.v5.common.OperationEnumeration;
@@ -34,30 +33,37 @@ import jp.go.aist.six.oval.model.v5.common.OperationEnumeration;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class EntityAttributeGroup
-    extends AbstractOvalObject
+//    extends AbstractOvalObject
 {
 
-    public static final DatatypeEnumeration  DEFAULT_DATATYPE = DatatypeEnumeration.STRING;
-    private DatatypeEnumeration  _datatype;
+    public static final DatatypeEnumeration  DEFAULT_DATATYPE =
+        DatatypeEnumeration.STRING;
+
+    private DatatypeEnumeration  datatype;
     //{optional, default="string"}
 
 
-    public static final OperationEnumeration  DEFAULT_OPERATION = OperationEnumeration.EQUALS;
-    private OperationEnumeration  _operation;
+    public static final OperationEnumeration  DEFAULT_OPERATION =
+        OperationEnumeration.EQUALS;
+
+    private OperationEnumeration  operation;
     //{optional, default="equals"}
 
 
     public static final Boolean  DEFAULT_MASK = Boolean.FALSE;
-    private Boolean  _mask;
+
+    private Boolean  mask;
     //{optional, default="false"}
 
 
-    private String  _varRef;
+    private String  var_ref;
     //{optional, type="oval:VariableIDPattern"}
 
 
-    public static final CheckEnumeration  DEFAULT_VAR_CHECK = CheckEnumeration.ALL;
-    private CheckEnumeration  _varCheck;
+    public static final CheckEnumeration  DEFAULT_VAR_CHECK =
+        CheckEnumeration.ALL;
+
+    private CheckEnumeration  var_check;
     //{optional, default="all"}
 
 
@@ -70,81 +76,174 @@ public abstract class EntityAttributeGroup
     }
 
 
-    public EntityAttributeGroup(
-                    final OperationEnumeration operation
-                    )
-    {
-        this( DEFAULT_DATATYPE, operation );
-    }
+//    public EntityAttributeGroup(
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        this( DEFAULT_DATATYPE, operation );
+//    }
+//
+//
+//    public EntityAttributeGroup(
+//                    final DatatypeEnumeration datatype,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        setDatatype( datatype );
+//        setOperation( operation );
+//    }
 
 
     public EntityAttributeGroup(
                     final DatatypeEnumeration datatype,
-                    final OperationEnumeration operation
+                    final OperationEnumeration operation,
+                    final Boolean mask,
+                    final String var_ref,
+                    final CheckEnumeration var_check
                     )
     {
         setDatatype( datatype );
         setOperation( operation );
+        setMask( mask );
+        setVarRef( var_ref );
+        setVarCheck( var_check );
+    }
+
+
+    public EntityAttributeGroup(
+                    final String datatype,
+                    final String operation,
+                    final Boolean mask,
+                    final String var_ref,
+                    final String var_check
+                    )
+    {
+        this(
+                        (datatype == null ? null : DatatypeEnumeration.fromValue( datatype )),
+                        (operation == null ? null : OperationEnumeration.fromValue( operation )),
+                        mask,
+                        var_ref,
+                        (var_check == null ? null : CheckEnumeration.fromValue( var_check ))
+        );
     }
 
 
 
+    /**
+     */
     public void setDatatype(
                     final DatatypeEnumeration datatype
                     )
     {
-        _datatype = datatype;
+        this.datatype = datatype;
     }
 
 
     public DatatypeEnumeration getDatatype()
     {
-        return _datatype;
+        return this.datatype;
+    }
+
+
+    public static final DatatypeEnumeration datatype(
+                    final EntityAttributeGroup eag
+                    )
+    {
+        if (eag == null) {
+            throw new IllegalArgumentException( "null EntityAttributeGroup" );
+        }
+
+        DatatypeEnumeration  datatype = eag.getDatatype();
+        if (datatype == null) {
+            datatype = DEFAULT_DATATYPE;
+        }
+
+        return datatype;
     }
 
 
 
+    /**
+     */
     public void setOperation(
                     final OperationEnumeration operation
                     )
     {
-        _operation = operation;
+        this.operation = operation;
     }
 
 
     public OperationEnumeration getOperation()
     {
-        return _operation;
+        return this.operation;
     }
 
 
-
-    public Boolean getMask()
+    public static final OperationEnumeration operation(
+                    final EntityAttributeGroup eag
+                    )
     {
-        return _mask;
+        if (eag == null) {
+            throw new IllegalArgumentException( "null EntityAttributeGroup" );
+        }
+
+        OperationEnumeration  operation = eag.getOperation();
+        if (operation == null) {
+            operation = DEFAULT_OPERATION;
+        }
+
+        return operation;
     }
 
 
+
+    /**
+     */
     public void setMask(
                     final Boolean mask
                     )
     {
-        _mask = mask;
+        this.mask = mask;
+    }
+
+
+    public Boolean getMask()
+    {
+        return this.mask;
+    }
+
+
+    public static final Boolean mask(
+                    final EntityAttributeGroup eag
+                    )
+    {
+        if (eag == null) {
+            throw new IllegalArgumentException( "null EntityAttributeGroup" );
+        }
+
+        Boolean  mask = eag.getMask();
+        if (mask == null) {
+            mask = DEFAULT_MASK;
+        }
+
+        return mask;
     }
 
 
 
+    /**
+     */
     public void setVarRef(
-                    final String varRef
+                    final String var_ref
                     )
     {
-        _varRef= varRef;
+        this.var_ref= var_ref;
     }
 
 
     public String getVarRef()
     {
-        return _varRef;
+        return this.var_ref;
     }
 
 
@@ -152,16 +251,33 @@ public abstract class EntityAttributeGroup
     /**
      */
     public void setVarCheck(
-                    final CheckEnumeration varCheck
+                    final CheckEnumeration var_check
                     )
     {
-        _varCheck = varCheck;
+        this.var_check = var_check;
     }
 
 
     public CheckEnumeration getVarCheck()
     {
-        return _varCheck;
+        return this.var_check;
+    }
+
+
+    public static final CheckEnumeration varCheck(
+                    final EntityAttributeGroup eag
+                    )
+    {
+        if (eag == null) {
+            throw new IllegalArgumentException( "null EntityAttributeGroup" );
+        }
+
+        CheckEnumeration  var_check = eag.getVarCheck();
+        if (var_check == null) {
+            var_check = DEFAULT_VAR_CHECK;
+        }
+
+        return var_check;
     }
 
 
@@ -176,19 +292,16 @@ public abstract class EntityAttributeGroup
         final int  prime = 37;
         int  result = 17;
 
-        DatatypeEnumeration  datatype = getDatatype();
-        result = prime * result + ((datatype == null) ? 0 : datatype.hashCode());
+        result = prime * result + datatype( this ).hashCode();
 
-        OperationEnumeration  op = getOperation();
-        result = prime * result + ((op == null) ? 0 : op.hashCode());
+        result = prime * result + operation( this ).hashCode();
 
-        result = prime * result + (getMask() ? 0 : 1);
+        result = prime * result + mask( this ).hashCode();
 
         String  var_ref = getVarRef();
         result = prime * result + ((var_ref == null) ? 0 : var_ref.hashCode());
 
-        CheckEnumeration  varCheck = getVarCheck();
-        result = prime * result + ((varCheck == null) ? 0 : varCheck.hashCode());
+        result = prime * result + varCheck( this ).hashCode();
 
         return result;
     }
@@ -209,18 +322,17 @@ public abstract class EntityAttributeGroup
         }
 
         EntityAttributeGroup  other = (EntityAttributeGroup)obj;
-        String  other_var_ref = other.getVarRef();
-        String   this_var_ref =  this.getVarRef();
-        if (this_var_ref == other_var_ref
-                        ||  (this_var_ref != null  &&  this_var_ref.equals( other_var_ref ))) {
-            OperationEnumeration  other_op = other.getOperation();
-            OperationEnumeration   this_op =  this.getOperation();
-            if (this_op == other_op) {
-                DatatypeEnumeration  other_type = other.getDatatype();
-                DatatypeEnumeration   this_type =  this.getDatatype();
-                if (this_type == other_type) {
-                    if (this.getMask() == other.getMask()) {
-                        return true;
+        if (datatype( this ) == datatype( other )) {
+            if (operation( this ) == operation( other )) {
+                if (varCheck( this ) == varCheck( other )) {
+                    final String  other_var_ref = other.getVarRef();
+                    final String   this_var_ref =  this.getVarRef();
+                    if (this_var_ref == other_var_ref
+                                    ||  (this_var_ref != null
+                                                    &&  this_var_ref.equals( other_var_ref ))) {
+                        if (mask( this ) == mask( other )) {
+                            return true;
+                        }
                     }
                 }
             }

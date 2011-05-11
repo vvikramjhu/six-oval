@@ -53,4 +53,9 @@
         <constructor-arg ref="datastore"/> 
     </bean> 
 
+    <bean id="systemObjectDAO" 
+        class="jp.go.aist.six.oval.core.datastore.mongodb.SystemObjectDAO">
+        <constructor-arg ref="datastore"/> 
+    </bean> 
+
 </beans>

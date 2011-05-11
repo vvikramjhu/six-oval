@@ -23,6 +23,8 @@ import jp.go.aist.six.oval.model.v5.mitre.Modified;
 import jp.go.aist.six.oval.model.v5.mitre.OvalRepository;
 import jp.go.aist.six.oval.model.v5.mitre.StatusChange;
 import jp.go.aist.six.oval.model.v5.mitre.Submitted;
+import jp.go.aist.six.oval.model.v5.windows.RegistryHiveEnumeration;
+import jp.go.aist.six.oval.model.v5.windows.RegistryObject;
 import jp.go.aist.six.oval.model.v5.windows.RegistryTest;
 
 
@@ -33,6 +35,27 @@ public class DefinitionsSample
     //**************************************************************
     // oval-definitions-5
     //**************************************************************
+
+    /**
+     * obj:6886
+     */
+    public static final RegistryObject  OBJ_6886 = _createObject6886();
+
+    private static RegistryObject _createObject6886()
+    {
+        RegistryObject  obj6886 =
+            new RegistryObject(
+                            "oval:org.mitre.oval:obj:6886", 1,
+                            "The registry key that holds the version of the Firefox",
+                            RegistryHiveEnumeration.HKEY_LOCAL_MACHINE,
+                            "SOFTWARE\\Mozilla\\Mozilla Firefox",
+                            "CurrentVersion"
+            );
+
+        return obj6886;
+    }
+
+
 
     /**
      * tst:11127
@@ -50,7 +73,7 @@ public class DefinitionsSample
                             new StateRefType[] {
                                 new StateRefType( "oval:org.mitre.oval:ste:5310" )
                             }
-                        );
+            );
 
         tst11127.setCheckExistence( ExistenceEnumeration.AT_LEAST_ONE_EXISTS );
 
