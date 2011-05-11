@@ -2,7 +2,9 @@ package jp.go.aist.six.test.oval.core.datastore.mongodb;
 
 import java.util.List;
 import jp.go.aist.six.oval.core.datastore.mongodb.DefinitionDAO;
+import jp.go.aist.six.oval.core.datastore.mongodb.TestDAO;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.v5.definitions.TestType;
 import jp.go.aist.six.test.oval.core.DefinitionsSample;
 import org.bson.types.ObjectId;
 import org.springframework.context.ApplicationContext;
@@ -38,10 +40,44 @@ public class MongoTest
     /**
      */
     @org.testng.annotations.Test(
+                    groups={ "oval.core.datastore.mongodb", "oval.definitions.test" },
+                    alwaysRun=true
+                    )
+    public void testOvalDefinitionsTest()
+    throws Exception
+    {
+        Reporter.log( "\n//// TEST: group=oval.core.datastore.mongodb, oval.definitions.test"
+                        + ", method=testOvalDefinitionsTest",
+                        true );
+
+        DAO<TestType, ObjectId>  dao = _springContext.getBean( TestDAO.class );
+        dao.getCollection().drop();
+
+        TestType  entity = DefinitionsSample.TST_11127;
+
+        Reporter.log( "save..." , true );
+        Reporter.log( "  * object: " + entity, true );
+        dao.save( entity );
+
+        Reporter.log( "load each object by concrete class...", true );
+        TestType  p_entity = dao.get( entity.getObjectId() );
+        Reporter.log( "  @ object: " + p_entity, true );
+
+        Reporter.log( "load objects...", true );
+        List<TestType>  list = dao.find().asList();
+        Reporter.log( "  @ #objects: " + list.size(), true );
+        Reporter.log( "  @ objects: " + list, true );
+    }
+
+
+
+    /**
+     */
+    @org.testng.annotations.Test(
                     groups={ "oval.core.datastore.mongodb", "oval.definitions.definition" },
                     alwaysRun=true
                     )
-    public void testSaveAndLoadDefinition()
+    public void testOvalDefinitionsDefinition()
     throws Exception
     {
         Reporter.log( "\n//// TEST: group=oval.core.datastore.mongodb, oval.definitions.definition"
@@ -67,7 +103,6 @@ public class MongoTest
         Reporter.log( "  @ #objects: " + list.size(), true );
         Reporter.log( "  @ objects: " + list, true );
     }
-
 //    /**
 //     */
 //    @org.testng.annotations.Test(

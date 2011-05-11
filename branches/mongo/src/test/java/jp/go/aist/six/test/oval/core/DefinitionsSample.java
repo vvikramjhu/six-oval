@@ -1,6 +1,8 @@
 package jp.go.aist.six.test.oval.core;
 
+import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
+import jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration;
 import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
 import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
 import jp.go.aist.six.oval.model.v5.definitions.AffectedType;
@@ -13,17 +15,49 @@ import jp.go.aist.six.oval.model.v5.definitions.MetadataType;
 import jp.go.aist.six.oval.model.v5.definitions.Platform;
 import jp.go.aist.six.oval.model.v5.definitions.Product;
 import jp.go.aist.six.oval.model.v5.definitions.ReferenceType;
+import jp.go.aist.six.oval.model.v5.definitions.StateRefType;
+import jp.go.aist.six.oval.model.v5.definitions.SystemObjectRefType;
 import jp.go.aist.six.oval.model.v5.mitre.Contributor;
 import jp.go.aist.six.oval.model.v5.mitre.DefinitionStatusEnumeration;
 import jp.go.aist.six.oval.model.v5.mitre.Modified;
 import jp.go.aist.six.oval.model.v5.mitre.OvalRepository;
 import jp.go.aist.six.oval.model.v5.mitre.StatusChange;
 import jp.go.aist.six.oval.model.v5.mitre.Submitted;
+import jp.go.aist.six.oval.model.v5.windows.RegistryTest;
 
 
 
 public class DefinitionsSample
 {
+
+    //**************************************************************
+    // oval-definitions-5
+    //**************************************************************
+
+    /**
+     * tst:11127
+     */
+    public static final RegistryTest  TST_11127 = _createTest11127();
+
+    private static RegistryTest _createTest11127()
+    {
+        RegistryTest  tst11127 =
+            new RegistryTest(
+                            "oval:org.mitre.oval:tst:11127", 1,
+                            "Mozilla Firefox is installed",
+                            CheckEnumeration.ALL,
+                            new SystemObjectRefType( "oval:org.mitre.oval:obj:6886" ),
+                            new StateRefType[] {
+                                new StateRefType( "oval:org.mitre.oval:ste:5310" )
+                            }
+                        );
+
+        tst11127.setCheckExistence( ExistenceEnumeration.AT_LEAST_ONE_EXISTS );
+
+        return tst11127;
+    }
+
+
 
     /**
      * def:7222

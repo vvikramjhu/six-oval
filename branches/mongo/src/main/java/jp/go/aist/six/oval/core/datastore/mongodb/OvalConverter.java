@@ -3,8 +3,12 @@ package jp.go.aist.six.oval.core.datastore.mongodb;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import jp.go.aist.six.oval.model.v5.OvalEnumeration;
+import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
+import jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration;
 import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
+import jp.go.aist.six.oval.model.v5.common.OperationEnumeration;
 import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
 import jp.go.aist.six.oval.model.v5.mitre.DefinitionStatusEnumeration;
 import org.slf4j.Logger;
@@ -34,8 +38,12 @@ public class OvalConverter
 
     private static final Class<?>[]  _SUPPORTED_CLASSES_ = new Class[] {
         //commons
+        CheckEnumeration.class,
         ClassEnumeration.class,
+        DatatypeEnumeration.class,
+        ExistenceEnumeration.class,
         FamilyEnumeration.class,
+        OperationEnumeration.class,
         OperatorEnumeration.class,
 
         //mitre

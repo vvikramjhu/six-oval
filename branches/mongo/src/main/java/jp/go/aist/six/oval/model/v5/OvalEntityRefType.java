@@ -29,44 +29,34 @@ package jp.go.aist.six.oval.model.v5;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class OvalEntityReference
-    extends AbstractOvalObject
+public abstract class OvalEntityRefType
+//    extends AbstractOvalObject
 {
 
-    private String  _ovalID;
+//    private String  _ovalID;
 
 
     /**
      * Constructor.
      */
-    public OvalEntityReference()
+    public OvalEntityRefType()
     {
     }
 
 
-    public OvalEntityReference(
-                    final String ovalID
-                    )
-    {
-        setOvalID( ovalID );
-    }
+//    public OvalEntityRef(
+//                    final String ref
+//                    )
+//    {
+//        _setRef( ref );
+//    }
 
 
 
     /**
      */
-    public void setOvalID(
-                    final String id
-                    )
-    {
-        _ovalID = id;
-    }
-
-
-    public String getOvalID()
-    {
-        return _ovalID;
-    }
+    protected abstract void _setRef( String id );
+    protected abstract String _getRef();
 
 
 
@@ -80,7 +70,7 @@ public abstract class OvalEntityReference
         final int  prime = 37;
         int  result = 17;
 
-        String  id = getOvalID();
+        String  id = _getRef();
         result = prime * result + ((id == null) ? 0 : id.hashCode());
 
         return result;
@@ -97,13 +87,13 @@ public abstract class OvalEntityReference
             return true;
         }
 
-        if (!(obj instanceof OvalEntityReference)) {
+        if (!(obj instanceof OvalEntityRefType)) {
             return false;
         }
 
-        OvalEntityReference  other = (OvalEntityReference)obj;
-        String  other_id = other.getOvalID();
-        String   this_id =  this.getOvalID();
+        OvalEntityRefType  other = (OvalEntityRefType)obj;
+        String  other_id = other._getRef();
+        String   this_id =  this._getRef();
         if (this_id == other_id
                         ||  (this_id != null  &&  this_id.equals( other_id ))) {
             return true;
@@ -117,9 +107,9 @@ public abstract class OvalEntityReference
     @Override
     public String toString()
     {
-        return getOvalID();
+        return _getRef();
     }
 
 }
-// OvalEntityReference
+// OvalEntityRef
 

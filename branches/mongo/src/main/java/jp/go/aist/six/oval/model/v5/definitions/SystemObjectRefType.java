@@ -20,8 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.v5.OvalEntityReference;
-import jp.go.aist.six.util.persist.Dependent;
+import jp.go.aist.six.oval.model.v5.OvalEntityRefType;
 
 
 
@@ -33,9 +32,14 @@ import jp.go.aist.six.util.persist.Dependent;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class SystemObjectRefType
-    extends OvalEntityReference
-    implements Dependent<TestType>
+    extends OvalEntityRefType
+//    implements Dependent<TestType>
 {
+
+    private String  object_ref;
+    //{required}
+
+
 
     /**
      * Constructor.
@@ -49,10 +53,10 @@ public class SystemObjectRefType
      * Constructor.
      */
     public SystemObjectRefType(
-                    final String objectID
+                    final String object_ref
                     )
     {
-        super( objectID );
+        setObjectRef( object_ref );
     }
 
 
@@ -60,42 +64,63 @@ public class SystemObjectRefType
     /**
      */
     public void setObjectRef(
-                    final String objectID
+                    final String object_ref
                     )
     {
-        setOvalID( objectID );
+        this.object_ref = object_ref;
     }
 
 
     public String getObjectRef()
     {
-        return getOvalID();
+        return this.object_ref;
     }
 
 
 
     //**************************************************************
-    //  Dependent
+    //  OvalEntityRef
     //**************************************************************
 
-    private TestType  _master;
-
-
-
     @Override
-    public void setMasterObject(
-                    final TestType master
+    protected void _setRef(
+                    final String id
                     )
     {
-        _master = master;
+        setObjectRef( id );
     }
 
 
     @Override
-    public TestType getMasterObject()
+    protected String _getRef()
     {
-        return _master;
+        return getObjectRef();
     }
+
+
+
+//    //**************************************************************
+//    //  Dependent
+//    //**************************************************************
+//
+//    private TestType  _master;
+//
+//
+//
+//    @Override
+//    public void setMasterObject(
+//                    final TestType master
+//                    )
+//    {
+//        _master = master;
+//    }
+//
+//
+//    @Override
+//    public TestType getMasterObject()
+//    {
+//        return _master;
+//    }
 
 
 

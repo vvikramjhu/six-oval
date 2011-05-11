@@ -28,6 +28,7 @@ import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration;
 import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
+import com.google.code.morphia.annotations.Entity;
 
 
 
@@ -38,34 +39,39 @@ import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
+@Entity( "oval.definitions.test" )
 public class TestType
     extends CommentedOvalEntity
 {
 
-    private NotesType  _notes;
+    private NotesType  notes;
     //{0..1}
 
 
-    public static final ExistenceEnumeration  DEFAULT_CHECK_EXISTENCE = ExistenceEnumeration.AT_LEAST_ONE_EXISTS;
-    private ExistenceEnumeration  _checkExistence;
+    public static final ExistenceEnumeration  DEFAULT_CHECK_EXISTENCE =
+        ExistenceEnumeration.AT_LEAST_ONE_EXISTS;
+
+    private ExistenceEnumeration  check_existence;
     //{optional, default="at_least_one_exists"}
 
 
-    private CheckEnumeration  _check;
+    private CheckEnumeration  check;
     //{required}
 
 
-    public static final OperatorEnumeration  DEFAULT_STATE_OPERATOR = OperatorEnumeration.AND;
-    private OperatorEnumeration  _stateOperator;
+    public static final OperatorEnumeration  DEFAULT_STATE_OPERATOR =
+        OperatorEnumeration.AND;
+
+    private OperatorEnumeration  state_operator;
     //{optional, default="AND"}
 
 
-    private SystemObjectRefType  _objectRef;
+    private SystemObjectRefType  object;
     //{1..1}
     //{0/UnknownTest}
 
 
-    private final Collection<StateRefType>  _stateRef = new ArrayList<StateRefType>();
+    private final Collection<StateRefType>  state = new ArrayList<StateRefType>();
     // {0..*}
 
 
@@ -99,6 +105,43 @@ public class TestType
     }
 
 
+    public TestType(
+                    final String id,
+                    final int version,
+                    final String comment,
+                    final CheckEnumeration check,
+                    final SystemObjectRefType object,
+                    final StateRefType[] stateList
+                    )
+    {
+        this( id, version, comment, check );
+
+        setObject( object );
+        setState( stateList );
+    }
+
+
+//    public TestType(
+//                    final String id,
+//                    final int version,
+//                    final ExistenceEnumeration check_existence,
+//                    final CheckEnumeration check,
+//                    final OperatorEnumeration state_operator,
+//                    final String comment,
+//                    final Boolean deprecated,
+//                    final NotesType notes
+//                    )
+//    {
+//        super( id, version, comment );
+//        setCheckExistence( check_existence );
+//        setCheck( check );
+//        setStateOperator( state_operator );
+//        setDeprecated( deprecated );
+//        setNotes( notes );
+//    }
+
+
+
 
     /**
      */
@@ -106,45 +149,59 @@ public class TestType
                     final NotesType notes
                     )
     {
-        _notes = notes;
+        this.notes = notes;
     }
 
 
     public NotesType getNotes()
     {
-        return _notes;
+        return this.notes;
     }
 
 
 
     /**
      */
-    public TestType checkExistence(
-                    final ExistenceEnumeration existence
-                    )
-    {
-        setCheckExistence( existence );
-        return this;
-    }
-
-
     public void setCheckExistence(
-                    final ExistenceEnumeration existence
+                    final ExistenceEnumeration check_existence
                     )
     {
-        _checkExistence = existence;
+        this.check_existence = check_existence;
     }
 
 
     public ExistenceEnumeration getCheckExistence()
     {
-        return _checkExistence;
+        return this.check_existence;
+    }
+
+
+    public TestType checkExistence(
+                    final ExistenceEnumeration check_existence
+                    )
+    {
+        setCheckExistence( check_existence );
+        return this;
     }
 
 
 
     /**
      */
+    public void setCheck(
+                    final CheckEnumeration check
+                    )
+    {
+        this.check = check;
+    }
+
+
+    public CheckEnumeration getCheck()
+    {
+        return this.check;
+    }
+
+
     public TestType check(
                     final CheckEnumeration check
                     )
@@ -154,47 +211,47 @@ public class TestType
     }
 
 
-    public void setCheck(
-                    final CheckEnumeration check
-                    )
-    {
-        _check = check;
-    }
-
-
-    public CheckEnumeration getCheck()
-    {
-        return _check;
-    }
-
-
 
     /**
      */
-    public TestType stateOperator(
-                    final OperatorEnumeration stateOperator
-                    )
-    {
-        setStateOperator( stateOperator );
-        return this;
-    }
-
-
     public void setStateOperator(
                     final OperatorEnumeration stateOperator
                     )
     {
-        _stateOperator = stateOperator;
+        this.state_operator = stateOperator;
     }
+
+
+    public OperatorEnumeration getStateOperator()
+    {
+        return this.state_operator;
+    }
+
+
+    public TestType stateOperator(
+                    final OperatorEnumeration state_operator
+                    )
+    {
+        setStateOperator( state_operator );
+        return this;
+    }
+
 
 
     /**
      */
-    public OperatorEnumeration getStateOperator()
+    public void setObject(
+                    final SystemObjectRefType object
+                    )
     {
-        return _stateOperator;
+        this.object = object;
     }
 
+
+    public SystemObjectRefType getObject()
+    {
+        return this.object;
+    }
 
 
     public TestType object(
@@ -214,26 +271,59 @@ public class TestType
     }
 
 
-    public void setObject(
-                    final SystemObjectRefType objectRef
+
+    /**
+     */
+    public void setState(
+                    final Collection<? extends StateRefType> stateList
                     )
     {
-        _objectRef = objectRef;
+        if (stateList != this.state) {
+            this.state.clear();
+            if (stateList != null  &&  stateList.size() > 0) {
+                this.state.addAll( stateList );
+            }
+        }
     }
 
 
-    public SystemObjectRefType getObject()
+    public void setState(
+                    final StateRefType[] stateList
+                    )
     {
-        return _objectRef;
+        if (stateList != null  &&  stateList.length > 0) {
+            for (StateRefType  state : stateList) {
+                if (state != null) {
+                    this.state.add( state );
+                }
+            }
+        }
     }
 
+
+    public Collection<StateRefType> getState()
+    {
+        return this.state;
+    }
+
+
+    public Iterator<StateRefType> iterateState()
+    {
+        return this.state.iterator();
+    }
+
+
+    public void clearState()
+    {
+        this.state.clear();
+    }
 
 
     public TestType state(
                     final StateRefType stateRef
                     )
     {
-        _stateRef.add( stateRef );
+        state.add( stateRef );
         return this;
     }
 
@@ -245,36 +335,6 @@ public class TestType
         return state( new StateRefType( stateRef ) );
     }
 
-
-    public void setState(
-                    final Collection<? extends StateRefType> stateRefs
-                    )
-    {
-        if (stateRefs != _stateRef) {
-            _stateRef.clear();
-            if (stateRefs != null  &&  stateRefs.size() > 0) {
-                _stateRef.addAll( stateRefs );
-            }
-        }
-    }
-
-
-    public Collection<StateRefType> getState()
-    {
-        return _stateRef;
-    }
-
-
-    public Iterator<StateRefType> iterateState()
-    {
-        return _stateRef.iterator();
-    }
-
-
-    public void clearState()
-    {
-        _stateRef.clear();
-    }
 
 
     /**
