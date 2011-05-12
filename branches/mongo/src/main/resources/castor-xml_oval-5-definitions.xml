@@ -31,17 +31,17 @@
             <bind-xml name="generator" node="element"/>
         </field>
 
+<!--
         <field name="definitions" 
             type="jp.go.aist.six.oval.model.v5.definitions.DefinitionType"
             collection="collection">
             <bind-xml name="definition" node="element" location="definitions"/>
         </field>
-<!--
+-->
         <field name="definitions" 
             type="jp.go.aist.six.oval.model.v5.definitions.DefinitionsType">
             <bind-xml name="definitions" node="element"/>
         </field>
--->
 
         <field name="tests" 
             type="jp.go.aist.six.oval.model.v5.definitions.TestsType">

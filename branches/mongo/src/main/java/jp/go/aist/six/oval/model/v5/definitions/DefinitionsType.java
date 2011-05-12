@@ -37,7 +37,7 @@ import com.google.code.morphia.annotations.Reference;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class DefinitionsType
-    implements Iterable<DefinitionType>
+//    implements Iterable<DefinitionType>
 //    extends OvalElementContainer<DefinitionType>    //{1..*}
 {
 
@@ -135,13 +135,17 @@ public class DefinitionsType
     //  Iterable
     //**************************************************************
 
-    @Override
-    public Iterator<DefinitionType> iterator()
+//    @Override
+//    public Iterator<DefinitionType> iterator()
+//    {
+//        return this.definition.iterator();
+//    }
+
+
+    public Iterable<DefinitionType> it()
     {
-        return this.definition.iterator();
+        return this.definition;
     }
-
-
 
 }
 // DefinitionsType
