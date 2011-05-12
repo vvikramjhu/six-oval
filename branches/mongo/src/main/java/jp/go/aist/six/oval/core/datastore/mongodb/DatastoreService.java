@@ -1,42 +1,66 @@
 package jp.go.aist.six.oval.core.datastore.mongodb;
 
-import java.util.Set;
-import com.google.code.morphia.Morphia;
-import com.google.code.morphia.converters.DefaultConverters;
-import com.google.code.morphia.converters.TypeConverter;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.google.code.morphia.dao.DAO;
 
 
 
-public class MorphiaFactory
+public class DatastoreService
 {
 
-    @SuppressWarnings( "rawtypes" )
-    public static Morphia create(
-                    final Set<Class> classesToMap
-                    )
+    /**
+     * Logger.
+     */
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( DatastoreService.class );
+
+
+
+    private final Map<Class<?>, DAO<?, ?>>  _daoMapping =
+        new HashMap<Class<?>, DAO<?, ?>>();
+
+
+
+    /**
+     */
+    public void setDAO( final Collection<? extends DAO<?, ?>> daoList )
     {
-        return create( classesToMap, null );
+        for (DAO<?, ?> dao : daoList) {
+            if (dao == null) {
+                continue;
+            }
+
+            Class<?>  entityClass = dao.getEntityClass();
+            _LOG_.debug( "adding DAO: " + entityClass );
+            _daoMapping.put( entityClass, dao );
+        }
     }
 
 
 
-	@SuppressWarnings( "rawtypes" )
-    public static Morphia create(
-	                final Set<Class> classesToMap,
-	                final Set<Class<? extends TypeConverter>> converters
-	                )
-	{
-        Morphia  morphia = new Morphia( classesToMap );
-
-        if (converters != null  &&  converters.size() > 0) {
-            DefaultConverters  defaultConverters = morphia.getMapper().getConverters();
-            for (Class<? extends TypeConverter>  converter : converters) {
-                defaultConverters.addConverter( converter );
-            }
+    /**
+     */
+    public <T, K> DAO<T, K> getDAO(
+                    final Class<T> entityClass
+                    )
+    {
+        if (entityClass == null) {
+            throw new IllegalArgumentException( "null entity class" );
         }
 
-        return morphia;
-	}
+        @SuppressWarnings( "unchecked" )
+        DAO<T, K>  dao = (DAO<T, K>)_daoMapping.get( entityClass );
+
+        if (dao == null) {
+            throw new IllegalArgumentException(
+                            "unknown entity class: " + entityClass );
+        }
+
+        return dao;
+    }
 
 }
-// MorphiaFactory
+// DatastoreService
