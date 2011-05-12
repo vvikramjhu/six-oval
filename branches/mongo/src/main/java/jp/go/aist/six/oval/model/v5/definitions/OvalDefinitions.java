@@ -20,9 +20,14 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 import jp.go.aist.six.oval.model.v5.OvalDocument;
 import jp.go.aist.six.oval.model.v5.common.GeneratorType;
 import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Reference;
 import com.google.code.morphia.annotations.Transient;
 
 
@@ -43,8 +48,10 @@ public class OvalDefinitions
     //{1..1}
 
 
-    private DefinitionsType  definitions;
-    //{0..1}
+    @Reference
+    private final Set<DefinitionType>  definitions = new HashSet<DefinitionType>();
+//    private DefinitionsType  definitions;
+//    //{0..1}
 
 
     @Transient
@@ -109,32 +116,58 @@ public class OvalDefinitions
     /**
      */
     public void setDefinitions(
-                    final DefinitionsType definitions
+                    final Collection<? extends DefinitionType> definitionList
                     )
     {
-        this.definitions = definitions;
+        if (this.definitions != definitionList) {
+            this.definitions.clear();
+            if (definitionList != null  &&  definitionList.size() > 0) {
+                this.definitions.addAll( definitionList );
+            }
+        }
     }
 
 
-    public DefinitionsType getDefinitions()
+    public Collection<DefinitionType> getDefinitions()
     {
         return this.definitions;
     }
 
 
-    public OvalDefinitions definition(
-                    final DefinitionType definition
-                    )
+    public Iterator<DefinitionType> iterateDefinitions()
     {
-        DefinitionsType  defs = getDefinitions();
-        if (defs == null) {
-            defs = new DefinitionsType();
-            setDefinitions( defs );
-        }
-        defs.addDefinition( definition );
-
-        return this;
+        return this.definitions.iterator();
     }
+
+//    /**
+//     */
+//    public void setDefinitions(
+//                    final DefinitionsType definitions
+//                    )
+//    {
+//        this.definitions = definitions;
+//    }
+//
+//
+//    public DefinitionsType getDefinitions()
+//    {
+//        return this.definitions;
+//    }
+//
+//
+//    public OvalDefinitions definition(
+//                    final DefinitionType definition
+//                    )
+//    {
+//        DefinitionsType  defs = getDefinitions();
+//        if (defs == null) {
+//            defs = new DefinitionsType();
+//            setDefinitions( defs );
+//        }
+//        defs.addDefinition( definition );
+//
+//        return this;
+//    }
 
 
 
@@ -353,7 +386,7 @@ public class OvalDefinitions
     @Override
     public String toString()
     {
-        DefinitionsType  definitions = getDefinitions();
+//        DefinitionsType  definitions = getDefinitions();
         TestsType  tests = getTests();
         SystemObjectsType  objects = getObjects();
         StatesType  states = getStates();

@@ -100,7 +100,7 @@ public class MongoTest
                         + ", method=testSaveAndLoadEntity",
                         true );
 
-        OvalDefinitions  object = _readObjectFromXml( type, xmlFilepath, expectedObject );
+        OvalDefinitions  object = _readObjectFromXml( OvalDefinitions.class, xmlFilepath, expectedObject );
 
         MongoService  mongo = _mongoContext.getBean( MongoService.class );
 
@@ -110,12 +110,15 @@ public class MongoTest
         for (DefinitionType  def : object.getDefinitions()) {
             mongo.getDAO( DefinitionType.class ).save( def );
         }
-        mongo.getDAO( type ).save( object );
+        mongo.getDAO( OvalDefinitions.class ).save( object );
 
 
         Reporter.log( "load each object by concrete class...", true );
-        OvalDefinitions  p_object = mongo.getDAO( type ).get( object.getObjectId() );
+        OvalDefinitions  p_object = mongo.getDAO( OvalDefinitions.class ).get( object.getObjectId() );
         Reporter.log( "  @ object: " + p_object, true );
+        for (DefinitionType  p_def : p_object.getDefinitions()) {
+            Reporter.log( "  @ definition: " + p_def, true );
+        }
 
 //        Reporter.log( "load objects...", true );
 //        List<StateType>  list = dao.find().asList();
