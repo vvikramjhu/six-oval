@@ -2,6 +2,7 @@ package jp.go.aist.six.test.oval.core.datastore.mongodb;
 
 import java.util.List;
 import jp.go.aist.six.oval.core.datastore.mongodb.DefinitionDAO;
+import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
 import jp.go.aist.six.oval.core.datastore.mongodb.StateDAO;
 import jp.go.aist.six.oval.core.datastore.mongodb.SystemObjectDAO;
 import jp.go.aist.six.oval.core.datastore.mongodb.TestDAO;
@@ -16,6 +17,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import com.google.code.morphia.dao.DAO;
 
 
@@ -100,6 +102,44 @@ public class MongoTest
 //        Reporter.log( "  @ objects: " + list, true );
     }
 
+
+    @Override
+    @DataProvider( name="oval.entity" )
+    public Object[][] provideOvalDefinitionsOvalDefinitions()
+    {
+        return new Object[][] {
+                        {
+                            DefinitionType.class,
+                            DefinitionsSample.DEF_7222
+                        }
+        };
+    }
+
+
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={ "oval.core.datastore.mongodb.datastore" },
+                    dataProvider="oval.entity",
+                    alwaysRun=true
+                    )
+    public <T> void testSaveAndLoadEntityUsingDatastoreService(
+                    final Class<T> entityType,
+                    final T entity
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n//// TEST: group=oval.core.datastore.mongodb.datastore"
+                        + ", method=testSaveAndLoadEntityUsingDatastoreService",
+                        true );
+
+        MongoDatastore  datastore = _springContext.getBean( MongoDatastore.class );
+
+        Reporter.log( "save..." , true );
+        Reporter.log( "  * object: " + entity, true );
+        datastore.save( entityType, entity );
+    }
 
 
 
