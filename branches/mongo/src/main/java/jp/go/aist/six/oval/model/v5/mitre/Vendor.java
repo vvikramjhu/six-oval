@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.mitre;
 
-import jp.go.aist.six.oval.model.v5.common.GeneratorInfo;
+import jp.go.aist.six.oval.model.v5.common.GeneratorInformation;
 
 
 
@@ -33,7 +33,7 @@ import jp.go.aist.six.oval.model.v5.common.GeneratorInfo;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Vendor
-    extends GeneratorInfo
+    extends GeneratorInformation
 {
 
     private String  _name;

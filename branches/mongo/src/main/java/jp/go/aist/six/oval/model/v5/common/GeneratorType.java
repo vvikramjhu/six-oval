@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.v5.common;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
+import java.util.Iterator;
 
 
 
@@ -38,16 +38,16 @@ import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class GeneratorType
-    extends AbstractOvalObject
+//    extends AbstractOvalObject
 {
 
-    private String  _productName;
+    private String  product_name;
     //{xsd:string, 0..1}
 
-    private String  _productVersion;
+    private String  product_version;
     //{xsd:string, 0..1}
 
-    private String  _schemaVersion;
+    private String  schema_version;
     //{xsd:decimal, 1..1}
 
     /**
@@ -55,13 +55,13 @@ public class GeneratorType
      * OVAL document was compiled.
      * The format for the timestamp is yyyy-mm-ddThh:mm:ss.
      */
-    private String  _timestamp;
+    private String  timestamp;
 //    private Date  _timestamp;
     //{xsd:dateTime, 1..1}
 
 
-    private final Collection<GeneratorInfo>  _additionalInfo =
-        new ArrayList<GeneratorInfo>();
+    private final Collection<GeneratorInformation>  additional_information =
+        new ArrayList<GeneratorInformation>();
     //{0..*}
 
 
@@ -74,77 +74,77 @@ public class GeneratorType
     }
 
 
-//    /**
-//     * Constructor.
-//     */
-//    public GeneratorType(
-//                    final String schemaVersion,
-//                    final String timestamp
-//                    )
-//    {
-//        setSchemaVersion( schemaVersion );
-//        setTimestamp( timestamp );
-//    }
-//
-//
-//    /**
-//     * Constructor.
-//     */
-//    public GeneratorType(
-//                    final String schemaVersion,
-//                    final String timestamp,
-//                    final String prodName,
-//                    final String prodVersion
-//                    )
-//    {
-//        this( schemaVersion, timestamp );
-//        setProductName( prodName );
-//        setProductVersion( prodVersion );
-//    }
-
-
-
-    public void setProductName(
-                    final String name
+    public GeneratorType(
+                    final String schema_version,
+                    final String timestamp
                     )
     {
-        _productName = name;
+        setSchemaVersion( schema_version );
+        setTimestamp( timestamp );
+    }
+
+
+    public GeneratorType(
+                    final String schema_ersion,
+                    final String timestamp,
+                    final String prod_name,
+                    final String prod_version
+                    )
+    {
+        this( schema_ersion, timestamp );
+        setProductName( prod_name );
+        setProductVersion( prod_version );
+    }
+
+
+
+    /**
+     */
+    public void setProductName(
+                    final String product_name
+                    )
+    {
+        this.product_name = product_name;
     }
 
 
     public String getProductName()
     {
-        return _productName;
+        return this.product_name;
     }
 
 
 
+    /**
+     */
     public void setProductVersion(
-                    final String version
+                    final String product_version
                     )
     {
-        _productVersion = version;
+        this.product_version = product_version;
     }
 
 
     public String getProductVersion()
     {
-        return _productVersion;
+        return this.product_version;
     }
 
 
 
+    /**
+     */
     public void setSchemaVersion(
-                    final String version
+                    final String schema_version
                     )
     {
-        _schemaVersion = version;
+        this.schema_version = schema_version;
     }
 
 
     public String getSchemaVersion()
     {
-        return _schemaVersion;
+        return this.schema_version;
     }
 
 
@@ -153,44 +153,50 @@ public class GeneratorType
                     final String timestamp
                     )
     {
-        _timestamp = timestamp;
+        this.timestamp = timestamp;
     }
 
 
     public String getTimestamp()
     {
-        return _timestamp;
+        return this.timestamp;
     }
 
 
 
     /**
      */
-    public void setAdditionalInfo(
-                    final Collection<? extends GeneratorInfo> info
+    public void setAdditionalInformation(
+                    final Collection<? extends GeneratorInformation> info
                     )
     {
-        if (info != _additionalInfo) {
-            _additionalInfo.clear();
+        if (info != this.additional_information) {
+            this.additional_information.clear();
             if (info != null  &&  info.size() > 0) {
-                _additionalInfo.addAll( info );
+                this.additional_information.addAll( info );
             }
         }
     }
 
 
-    public GeneratorType additionalInfo(
-                    final GeneratorInfo info
-                    )
+    public Collection<GeneratorInformation> getAdditionalInformation()
     {
-        _additionalInfo.add( info );
-        return this;
+        return this.additional_information;
     }
 
 
-    public Collection<GeneratorInfo> getAdditionalInfo()
+    public Iterator<GeneratorInformation> iterateAdditionalInformation()
     {
-        return _additionalInfo;
+        return this.additional_information.iterator();
+    }
+
+
+    public GeneratorType additionalInformation(
+                    final GeneratorInformation info
+                    )
+    {
+        this.additional_information.add( info );
+        return this;
     }
 
 
@@ -270,7 +276,7 @@ public class GeneratorType
                         + ", product_version=" + getProductVersion()
                         + ", schema_version=" + getSchemaVersion()
                         + ", timestamp=" + getTimestamp()
-                        + ", additionalInfo=" + getAdditionalInfo()
+                        + ", additional_information=" + getAdditionalInformation()
                         + "]";
     }
 
