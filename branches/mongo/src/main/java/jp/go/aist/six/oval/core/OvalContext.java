@@ -180,7 +180,7 @@ public class OvalContext
     public XmlMapper getXml()
     {
         if (_xml == null) {
-            _xml = _getContext().getBean( "ovalXml", XmlMapper.class );
+            _xml = _getContext().getBean( XmlMapper.class );
         }
 
         return _xml;

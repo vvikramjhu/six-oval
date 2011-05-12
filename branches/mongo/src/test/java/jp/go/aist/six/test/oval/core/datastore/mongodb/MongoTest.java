@@ -2,11 +2,12 @@ package jp.go.aist.six.test.oval.core.datastore.mongodb;
 
 import java.util.List;
 import jp.go.aist.six.oval.core.datastore.mongodb.DefinitionDAO;
-import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
+import jp.go.aist.six.oval.core.datastore.mongodb.MongoService;
 import jp.go.aist.six.oval.core.datastore.mongodb.StateDAO;
 import jp.go.aist.six.oval.core.datastore.mongodb.SystemObjectDAO;
 import jp.go.aist.six.oval.core.datastore.mongodb.TestDAO;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.v5.definitions.StateType;
 import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.v5.definitions.TestType;
@@ -26,11 +27,11 @@ public class MongoTest
     extends CoreTestBase
 {
 
-    private static final String _SPRING_APP_CONTEXT_
+    private static final String _SPRING_MONGO_CONTEXT_
     = "jp/go/aist/six/test/oval/core/datastore/mongodb/mongo-context.xml";
 
 
-    private ApplicationContext  _springContext;
+    private ApplicationContext  _mongoContext;
 
 
 
@@ -41,14 +42,14 @@ public class MongoTest
 	public void setUp()
     throws Exception
 	{
-        _springContext = new ClassPathXmlApplicationContext( _SPRING_APP_CONTEXT_ );
+        super.setUp();
+
+        _mongoContext = new ClassPathXmlApplicationContext( _SPRING_MONGO_CONTEXT_ );
 	}
 
 
 
-    /**
-     */
-    protected <T> T _readEntityFromXml(
+    protected <T> T _readObjectFromXml(
                     final Class<T> type,
                     final String sourceFilepath,
                     final T expected
@@ -65,37 +66,57 @@ public class MongoTest
     // objected are read from XML
     //**************************************************************
 
+    @DataProvider( name="oval.definitions.oval_definitions.xml" )
+    public Object[][] provideOvalObjectXml()
+    {
+        return new Object[][] {
+                        // def:7222, windows, vulnerability, CVE-2010-0176
+                        {
+                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+                            "test/resources/data/oval-definitions-5/oval_vulnerability_windows_def7222_definitions-5.xml",
+                            null
+                        }
+        };
+
+    }
+
+
+
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.datastore.mongodb.xml" },
-                    dataProvider="oval.entity.xml",
+                    groups={ "oval.core.datastore.mongodb", "oval.definitions.oval_definitions" },
+                    dataProvider="oval.definitions.oval_definitions.xml",
                     alwaysRun=true
                     )
-    public <T> void testSaveAndLoadEntity(
-                    final Class<T> entityType,
+    public void testSaveAndLoadObject(
+                    final Class<OvalDefinitions> type,
                     final String xmlFilepath,
-                    final T expectedEntity
+                    final OvalDefinitions expectedObject
                     )
     throws Exception
     {
-        Reporter.log( "\n//// TEST: group=oval.core.datastore.mongodb.xml"
+        Reporter.log( "\n//// TEST: group=oval.core.datastore.mongodb oval.definitions.oval_definitions"
                         + ", method=testSaveAndLoadEntity",
                         true );
 
-//        DAO<StateType, ObjectId>  dao = _springContext.getBean( StateDAO.class );
-//        dao.getCollection().drop();
-//
-//        StateType  entity = DefinitionsSample.STE_5310;
-//
-//        Reporter.log( "save..." , true );
-//        Reporter.log( "  * object: " + entity, true );
-//        dao.save( entity );
-//
-//        Reporter.log( "load each object by concrete class...", true );
-//        StateType  p_entity = dao.get( entity.getObjectId() );
-//        Reporter.log( "  @ object: " + p_entity, true );
-//
+        OvalDefinitions  object = _readObjectFromXml( type, xmlFilepath, expectedObject );
+
+        MongoService  mongo = _mongoContext.getBean( MongoService.class );
+
+        Reporter.log( "save..." , true );
+        Reporter.log( "  * object: " + object, true );
+
+        for (DefinitionType  def : object.getDefinitions()) {
+            mongo.getDAO( DefinitionType.class ).save( def );
+        }
+        mongo.getDAO( type ).save( object );
+
+
+        Reporter.log( "load each object by concrete class...", true );
+        OvalDefinitions  p_object = mongo.getDAO( type ).get( object.getObjectId() );
+        Reporter.log( "  @ object: " + p_object, true );
+
 //        Reporter.log( "load objects...", true );
 //        List<StateType>  list = dao.find().asList();
 //        Reporter.log( "  @ #objects: " + list.size(), true );
@@ -134,11 +155,11 @@ public class MongoTest
                         + ", method=testSaveAndLoadEntityUsingDatastoreService",
                         true );
 
-        MongoDatastore  datastore = _springContext.getBean( MongoDatastore.class );
+        MongoService  mongo = _mongoContext.getBean( MongoService.class );
 
         Reporter.log( "save..." , true );
         Reporter.log( "  * object: " + entity, true );
-        datastore.save( entityType, entity );
+        mongo.getDAO( entityType ).save( entity );
     }
 
 
@@ -159,7 +180,7 @@ public class MongoTest
                         + ", method=testOvalDefinitionsState",
                         true );
 
-        DAO<StateType, ObjectId>  dao = _springContext.getBean( StateDAO.class );
+        DAO<StateType, ObjectId>  dao = _mongoContext.getBean( StateDAO.class );
         dao.getCollection().drop();
 
         StateType  entity = DefinitionsSample.STE_5310;
@@ -193,7 +214,7 @@ public class MongoTest
                         + ", method=testOvalDefinitionsObject",
                         true );
 
-        DAO<SystemObjectType, ObjectId>  dao = _springContext.getBean( SystemObjectDAO.class );
+        DAO<SystemObjectType, ObjectId>  dao = _mongoContext.getBean( SystemObjectDAO.class );
         dao.getCollection().drop();
 
         SystemObjectType  entity = DefinitionsSample.OBJ_6886;
@@ -227,7 +248,7 @@ public class MongoTest
                         + ", method=testOvalDefinitionsTest",
                         true );
 
-        DAO<TestType, ObjectId>  dao = _springContext.getBean( TestDAO.class );
+        DAO<TestType, ObjectId>  dao = _mongoContext.getBean( TestDAO.class );
         dao.getCollection().drop();
 
         TestType  entity = DefinitionsSample.TST_11127;
@@ -261,7 +282,7 @@ public class MongoTest
                         + ", method=testSaveAndLoadDefinition",
                         true );
 
-        DAO<DefinitionType, ObjectId>  definitionDAO = _springContext.getBean( DefinitionDAO.class );
+        DAO<DefinitionType, ObjectId>  definitionDAO = _mongoContext.getBean( DefinitionDAO.class );
         definitionDAO.getCollection().drop();
 //        definitionDAO.getDatastore().getDB().getCollection( "oval.definitions.definition" ).drop();
 

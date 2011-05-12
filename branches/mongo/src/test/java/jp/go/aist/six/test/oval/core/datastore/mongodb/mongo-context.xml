@@ -43,6 +43,11 @@
     </bean>
 
 
+    <bean id="ovalDefinitionsDAO" 
+        class="jp.go.aist.six.oval.core.datastore.mongodb.OvalDefinitionsDAO">
+        <constructor-arg ref="datastore"/> 
+    </bean> 
+
     <bean id="definitionDAO" 
         class="jp.go.aist.six.oval.core.datastore.mongodb.DefinitionDAO">
         <constructor-arg ref="datastore"/> 
@@ -65,9 +70,10 @@
 
 
     <bean id="datastoreService" 
-        class="jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore"> 
+        class="jp.go.aist.six.oval.core.datastore.mongodb.MongoService"> 
         <property name="DAO">
             <set>
+                <ref bean="ovalDefinitionsDAO"/>
                 <ref bean="definitionDAO"/>
                 <ref bean="testDAO"/>
                 <ref bean="systemObjectDAO"/>

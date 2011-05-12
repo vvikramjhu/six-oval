@@ -5,25 +5,24 @@ import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.google.code.morphia.Key;
 import com.google.code.morphia.dao.DAO;
 
 
 
-public class MongoDatastore
+public class MongoService
 {
 
     /**
      * Logger.
      */
-    private static final Logger  _LOG_ = LoggerFactory.getLogger( MongoDatastore.class );
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( MongoService.class );
 
 
 
     /**
      * Class - DAO
      */
-    private final Map<Class<?>, DAO<?, ?>>  _daoMapping =
+    private final Map<Class<?>, DAO<?, ?>>  _daoMap =
         new HashMap<Class<?>, DAO<?, ?>>();
 
 
@@ -31,7 +30,7 @@ public class MongoDatastore
     /**
      * Constructor.
      */
-    public MongoDatastore()
+    public MongoService()
     {
     }
 
@@ -50,7 +49,7 @@ public class MongoDatastore
 
             Class<?>  entityClass = dao.getEntityClass();
             _LOG_.debug( "adding DAO: " + entityClass );
-            _daoMapping.put( entityClass, dao );
+            _daoMap.put( entityClass, dao );
         }
     }
 
@@ -67,7 +66,7 @@ public class MongoDatastore
         }
 
         @SuppressWarnings( "unchecked" )
-        DAO<T, K>  dao = (DAO<T, K>)_daoMapping.get( entityClass );
+        DAO<T, K>  dao = (DAO<T, K>)_daoMap.get( entityClass );
 
         if (dao == null) {
             throw new IllegalArgumentException(
@@ -79,21 +78,6 @@ public class MongoDatastore
 
 
 
-    //**************************************************************
-    //  Datastore
-    //**************************************************************
-
-    public <T, K> Key<T> save(
-                    final Class<T> type,
-                    final T object
-                    )
-    {
-        Key<T>  key = getDAO( type ).save( object );
-
-        return key;
-    }
-
-
 
 }
-// MongoDatastore
+// MongoService

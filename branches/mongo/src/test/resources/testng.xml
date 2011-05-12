@@ -17,7 +17,7 @@
     <test name="oval.core.datastore.mongodb" enabled="true">
         <groups>
             <run>
-                <include name="oval.core.datastore.mongodb.datastore"/>
+                <include name="oval.definitions.oval_definitions"/>
                 <!--
                 <include name="oval.definitions.state"/>
                 -->

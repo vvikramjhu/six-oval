@@ -22,6 +22,8 @@ package jp.go.aist.six.oval.model.v5.definitions;
 
 import jp.go.aist.six.oval.model.v5.OvalDocument;
 import jp.go.aist.six.oval.model.v5.common.GeneratorType;
+import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Transient;
 
 
 
@@ -32,34 +34,40 @@ import jp.go.aist.six.oval.model.v5.common.GeneratorType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
+@Entity( "oval.definitions.oval_definitions" )
 public class OvalDefinitions
     extends OvalDocument
 {
 
-    private GeneratorType  _generator;
+    private GeneratorType  generator;
     //{1..1}
 
 
-    private DefinitionsType  _definitions;
+    private DefinitionsType  definitions;
     //{0..1}
 
 
+    @Transient
     private TestsType  _tests;
     //{0..1}
 
 
+    @Transient
     private SystemObjectsType  _objects;
     //{0..1}
 
 
+    @Transient
     private StatesType  _states;
     //{0..1}
 
 
+    @Transient
     private VariablesType  _variables;
     //{0..1}
 
 
+    @Transient
     private String  _definitionsDigest;
 
 
@@ -72,15 +80,12 @@ public class OvalDefinitions
     }
 
 
-//    /**
-//     * Constructor.
-//     */
-//    public OvalDefinitions(
-//                    final GeneratorType generator
-//                    )
-//    {
-//        setGenerator( generator );
-//    }
+    public OvalDefinitions(
+                    final GeneratorType generator
+                    )
+    {
+        setGenerator( generator );
+    }
 
 
 
@@ -90,13 +95,13 @@ public class OvalDefinitions
                     final GeneratorType generator
                     )
     {
-        _generator = generator;
+        this.generator = generator;
     }
 
 
     public GeneratorType getGenerator()
     {
-        return _generator;
+        return this.generator;
     }
 
 
@@ -107,13 +112,13 @@ public class OvalDefinitions
                     final DefinitionsType definitions
                     )
     {
-        _definitions = definitions;
+        this.definitions = definitions;
     }
 
 
     public DefinitionsType getDefinitions()
     {
-        return _definitions;
+        return this.definitions;
     }
 
 
@@ -139,13 +144,13 @@ public class OvalDefinitions
                     final TestsType tests
                     )
     {
-        _tests = tests;
+        this._tests = tests;
     }
 
 
     public TestsType getTests()
     {
-        return _tests;
+        return this._tests;
     }
 
 
@@ -171,13 +176,13 @@ public class OvalDefinitions
                     final SystemObjectsType objects
                     )
     {
-        _objects = objects;
+        this._objects = objects;
     }
 
 
     public SystemObjectsType getObjects()
     {
-        return _objects;
+        return this._objects;
     }
 
 
@@ -203,13 +208,13 @@ public class OvalDefinitions
                     final StatesType states
                     )
     {
-        _states = states;
+        this._states = states;
     }
 
 
     public StatesType getStates()
     {
-        return _states;
+        return this._states;
     }
 
 
@@ -235,13 +240,13 @@ public class OvalDefinitions
                     final VariablesType variables
                     )
     {
-        _variables = variables;
+        this._variables = variables;
     }
 
 
     public VariablesType getVariables()
     {
-        return _variables;
+        return this._variables;
     }
 
 
@@ -267,13 +272,13 @@ public class OvalDefinitions
                     final String digest
                     )
     {
-        _definitionsDigest = digest;
+        this._definitionsDigest = digest;
     }
 
 
     public String getDefinitionsDigest()
     {
-        return _definitionsDigest;
+        return this._definitionsDigest;
 
 //        if (_definitionsDigest != null) {
 //            return _definitionsDigest;

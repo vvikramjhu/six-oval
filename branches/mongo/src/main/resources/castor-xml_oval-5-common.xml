@@ -46,8 +46,8 @@
         </field>
 -->
 
-        <field name="additionalInfo" 
-            type="jp.go.aist.six.oval.model.v5.common.GeneratorInfo"
+        <field name="additionalInformation" 
+            type="jp.go.aist.six.oval.model.v5.common.GeneratorInformation"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
