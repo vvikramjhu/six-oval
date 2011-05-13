@@ -37,7 +37,7 @@ import java.util.Set;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class OvalElementContainer<E extends OvalElement>
+public abstract class OvalElementContainer<E extends OvalElement>
     extends Container<E>
 {
 
@@ -49,9 +49,6 @@ public class OvalElementContainer<E extends OvalElement>
     }
 
 
-    /**
-     * Constructor.
-     */
     public OvalElementContainer(
                     final Collection<? extends E> elements
                     )
@@ -60,9 +57,6 @@ public class OvalElementContainer<E extends OvalElement>
     }
 
 
-    /**
-     * Constructor.
-     */
     public OvalElementContainer(
                     final E[] elements
                     )
@@ -82,7 +76,7 @@ public class OvalElementContainer<E extends OvalElement>
             throw new IllegalArgumentException();
         }
 
-        for (E  e : _getElement()) {
+        for (E  e : _getElements()) {
             if (id.equals( e.getOvalID() )) {
                 return e;
             }
@@ -95,28 +89,15 @@ public class OvalElementContainer<E extends OvalElement>
 
     /**
      */
-    private Set<String> _keySet()
+    private Set<String> _ovalIDSet()
     {
         Set<String>  set = new HashSet<String>();
-        for (OvalElement  e : _getElement()) {
+        for (OvalElement  e : _getElements()) {
             set.add( e.getOvalID() );
         }
 
         return set;
     }
-
-
-
-//    //**************************************************************
-//    //  Container
-//    //**************************************************************
-//
-//    protected String _getKey(
-//                    final OvalElement element
-//                    )
-//    {
-//        return element.getOvalID();
-//    }
 
 
 
@@ -128,11 +109,6 @@ public class OvalElementContainer<E extends OvalElement>
      * The default digest algorithm.
      */
     public static final String  DIGEST_ALGORITHM = "MD5";
-
-
-//    private static final OvalElementComparator  _ELEMENT_COMPARATOR_ =
-//        new OvalElementComparator();
-
 
     private String  _digest;
 
@@ -154,8 +130,8 @@ public class OvalElementContainer<E extends OvalElement>
     {
         int  thisHash = hashCode();
         if (_digest == null  ||  thisHash != _hashOnDigest) {
-            Set<String>  keys = _keySet();
-            int  keysHash = keys.hashCode();
+            Set<String>  ovalIDs = _ovalIDSet();
+            int  ovalIDsHash = ovalIDs.hashCode();
             MessageDigest  digest = null;
             try {
                 digest = MessageDigest.getInstance( DIGEST_ALGORITHM );
@@ -164,7 +140,7 @@ public class OvalElementContainer<E extends OvalElement>
                 return null;
             }
 
-            _update( digest, String.valueOf( keysHash ) );
+            _update( digest, String.valueOf( ovalIDsHash ) );
 
             _digest = _byteArrayToHexString( digest.digest() );
             _hashOnDigest = thisHash;
@@ -172,28 +148,11 @@ public class OvalElementContainer<E extends OvalElement>
 
         return _digest;
     }
-    // keyedContainer implementation
-//    {
-//        Set<String>  keys = _keySet();
-//        final int  currentHash = (keys == null ? 0 : keys.hashCode());
-//        if (currentHash != _hashOnDigest) {
-//            MessageDigest  digest = null;
-//            try {
-//                digest = MessageDigest.getInstance( DIGEST_ALGORITHM );
-//                                                  //@throws NoSuchAlgorithmException
-//            } catch (NoSuchAlgorithmException ex) {
-//                return null;
-//            }
-//
-//            String  currentHashString = (currentHash == 0 ? "" : String.valueOf( currentHash ));
-//            _update( digest, currentHashString );
-//
-//            _digest = _byteArrayToHexString( digest.digest() );
-//            _hashOnDigest = currentHash;
-//        }
-//
-//        return _digest;
-//    }
+
+
+
+//  private static final OvalElementComparator  _ELEMENT_COMPARATOR_ =
+//  new OvalElementComparator();
 
 
     /**

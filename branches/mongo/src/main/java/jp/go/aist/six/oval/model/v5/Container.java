@@ -20,11 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5;
 
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
 
 
 
@@ -36,15 +33,8 @@ import java.util.Set;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Container<E>
-    extends AbstractOvalObject
-    implements Iterable<E>
-//    implements Set<E>
+public abstract class Container<E>
 {
-
-    private final Set<E>  _elements = new HashSet<E>();
-
-
 
     /**
      * Constructor.
@@ -61,7 +51,7 @@ public class Container<E>
                     final Collection<? extends E> elements
                     )
     {
-        _setElement( elements );
+        _setElements( elements );
     }
 
 
@@ -72,180 +62,66 @@ public class Container<E>
                     final E[] elements
                     )
     {
-        _setElement( Arrays.asList( elements ) );
+        _setElements( elements );
     }
 
 
 
     /**
      */
-    protected Set<E> _getElement()
-    {
-        return _elements;
-    }
-
-
-
-    /**
-     */
-    protected void _setElement(
-                    final Collection<? extends E> c
+    protected void _setElements(
+                    final Collection<? extends E> elements
                     )
     {
-        if (c != _elements) {
-            _elements.clear();
-            if (c != null  &&  c.size() > 0) {
-                addAll( c );
+        if (_getElements() != elements) {
+            _getElements().clear();
+            if (elements != null  &&  elements.size() > 1) {
+                for (E  e : elements) {
+                    _addElement( e );
+                }
             }
         }
     }
 
 
-
-    //**************************************************************
-    //  Set I/F
-    //**************************************************************
-
-    public int size()
-    {
-        return _elements.size();
-    }
-
-
-
-    public boolean isEmpty()
-    {
-        return _elements.isEmpty();
-    }
-
-
-
-    public boolean contains(
-                    final Object o
+    protected void _setElements(
+                    final E[] elements
                     )
     {
-        if (o == null) {
-            throw new NullPointerException( "contains: null argument" );
+        _getElements().clear();
+        if (elements != null  &&  elements.length > 1) {
+            for (E  e : elements) {
+                _addElement( e );
+            }
         }
-
-        return _elements.contains( o );
     }
 
 
-
-    public Object[] toArray()
-    {
-        return _elements.toArray();
-    }
+    protected abstract Collection<E> _getElements();
 
 
-
-    public <T> T[] toArray(
-                    final T[] a
-                    )
-    {
-        return _elements.toArray( a );
-    }
-
-
-
-    public boolean add(
+    protected boolean _addElement(
                     final E e
                     )
     {
         if (e == null) {
-            throw new NullPointerException( "add: null argument" );
+            throw new NullPointerException( "adding null element" );
         }
 
-        return _elements.add( e );
+        return _getElements().add( e );
+    }
+
+
+    protected Iterator<E> _iterateElements()
+    {
+        return _getElements().iterator();
     }
 
 
 
-    public boolean remove(
-                    final Object o
-                    )
+    public int size()
     {
-        if (o == null) {
-            throw new NullPointerException( "remove: null argument" );
-        }
-
-        return _elements.remove( o );
-    }
-
-
-
-    public boolean containsAll(
-                    final Collection<?> c
-                    )
-    {
-        if (c == null) {
-            throw new NullPointerException( "containsAll: null argument collection" );
-        }
-
-        return _elements.containsAll( c );
-    }
-
-
-
-    public boolean addAll(
-                    final Collection<? extends E> c
-                    )
-    {
-        if (c == null) {
-            throw new NullPointerException( "addAll: null argument collection" );
-        }
-
-        if (c == _elements) {
-            return false;
-        }
-
-        return _elements.addAll( c );
-    }
-
-
-
-    public boolean removeAll(
-                    final Collection<?> c
-                    )
-    {
-        if (c == null) {
-            throw new NullPointerException( "removeAll: null argument collection" );
-        }
-
-        return _elements.removeAll( c );
-    }
-
-
-
-    public boolean retainAll(
-                    final Collection<?> c
-                    )
-    {
-        if (c == null) {
-            throw new NullPointerException( "retainAll: null argument collection" );
-        }
-
-        return _elements.retainAll( c );
-    }
-
-
-
-    public void clear()
-    {
-        _elements.clear();
-    }
-
-
-
-    //**************************************************************
-    //  Iterable
-    //**************************************************************
-
-    @Override
-    public Iterator<E> iterator()
-    {
-        return _elements.iterator();
+        return _getElements().size();
     }
 
 
@@ -257,7 +133,7 @@ public class Container<E>
     @Override
     public int hashCode()
     {
-        return _elements.hashCode();
+        return _getElements().hashCode();
     }
 
 
@@ -277,19 +153,15 @@ public class Container<E>
 
         @SuppressWarnings( "unchecked" )
         Container<E>  other = (Container<E>)obj;
-        if (this.size() == other.size()) {
-            return this._getElement().equals( other._getElement() );
+        Collection<E>  other_elements = other._getElements();
+        Collection<E>   this_elements =  this._getElements();
+        if (this_elements == other_elements
+                        ||  (this_elements != null
+                                        &&  this_elements.equals( other_elements ))) {
+            return true;
         }
 
         return false;
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return String.valueOf( _getElement() );
     }
 
 }

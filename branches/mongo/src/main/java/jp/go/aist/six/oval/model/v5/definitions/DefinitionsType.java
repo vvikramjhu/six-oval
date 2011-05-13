@@ -20,11 +20,11 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import jp.go.aist.six.oval.model.v5.OvalElementContainer;
 import com.google.code.morphia.annotations.Reference;
 
 
@@ -37,8 +37,8 @@ import com.google.code.morphia.annotations.Reference;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class DefinitionsType
-//    implements Iterable<DefinitionType>
-//    extends OvalElementContainer<DefinitionType>    //{1..*}
+//extends HashSet<DefinitionType>
+    extends OvalElementContainer<DefinitionType>    //{1..*}
 {
 
     @Reference
@@ -58,18 +58,15 @@ public class DefinitionsType
                     final Collection<? extends DefinitionType> definitionList
                     )
     {
-        setDefinition( definitionList );
+        super( definitionList );
     }
 
 
-    /**
-     * Constructor.
-     */
     public DefinitionsType(
                     final DefinitionType[] definitions
                     )
     {
-        setDefinition( definitions );
+        super( definitions );
     }
 
 
@@ -80,12 +77,7 @@ public class DefinitionsType
                     final Collection<? extends DefinitionType> definitionList
                     )
     {
-        if (this.definition != definitionList) {
-            this.definition.clear();
-            if (definitionList != null  &&  definitionList.size() > 0) {
-                this.definition.addAll( definitionList );
-            }
-        }
+        _setElements( definitionList );
     }
 
 
@@ -93,21 +85,19 @@ public class DefinitionsType
                     final DefinitionType[] definitionList
                     )
     {
-        if (definitionList != null) {
-            setDefinition( Arrays.asList( definitionList ) );
-        }
+        _setElements( definitionList );
     }
 
 
     public Collection<DefinitionType> getDefinition()
     {
-        return this.definition;
+        return _getElements();
     }
 
 
     public Iterator<DefinitionType> iterateDefinition()
     {
-        return this.definition.iterator();
+        return _iterateElements();
     }
 
 
@@ -115,18 +105,19 @@ public class DefinitionsType
                     final DefinitionType definition
                     )
     {
-        return this.definition.add( definition );
+        return _addElement( definition );
     }
 
 
 
     //**************************************************************
-    //  Set I/F
+    //  Container
     //**************************************************************
 
-    public int size()
+    @Override
+    protected Collection<DefinitionType> _getElements()
     {
-        return this.definition.size();
+        return this.definition;
     }
 
 
@@ -142,10 +133,122 @@ public class DefinitionsType
 //    }
 
 
-    public Iterable<DefinitionType> it()
-    {
-        return this.definition;
-    }
+//    public Iterable<DefinitionType> it()
+//    {
+//        return this.definition;
+//    }
 
 }
+//public class DefinitionsType
+////implements Iterable<DefinitionType>
+////extends OvalElementContainer<DefinitionType>    //{1..*}
+//{
+//
+//@Reference
+//private final Set<DefinitionType>  definition = new HashSet<DefinitionType>();
+//
+//
+//
+///**
+//* Constructor.
+//*/
+//public DefinitionsType()
+//{
+//}
+//
+//
+//public DefinitionsType(
+//              final Collection<? extends DefinitionType> definitionList
+//              )
+//{
+//  setDefinition( definitionList );
+//}
+//
+//
+///**
+//* Constructor.
+//*/
+//public DefinitionsType(
+//              final DefinitionType[] definitions
+//              )
+//{
+//  setDefinition( definitions );
+//}
+//
+//
+//
+///**
+//*/
+//public void setDefinition(
+//              final Collection<? extends DefinitionType> definitionList
+//              )
+//{
+//  if (this.definition != definitionList) {
+//      this.definition.clear();
+//      if (definitionList != null  &&  definitionList.size() > 0) {
+//          this.definition.addAll( definitionList );
+//      }
+//  }
+//}
+//
+//
+//public void setDefinition(
+//              final DefinitionType[] definitionList
+//              )
+//{
+//  if (definitionList != null) {
+//      setDefinition( Arrays.asList( definitionList ) );
+//  }
+//}
+//
+//
+//public Collection<DefinitionType> getDefinition()
+//{
+//  return this.definition;
+//}
+//
+//
+//public Iterator<DefinitionType> iterateDefinition()
+//{
+//  return this.definition.iterator();
+//}
+//
+//
+//public boolean addDefinition(
+//              final DefinitionType definition
+//              )
+//{
+//  return this.definition.add( definition );
+//}
+//
+//
+//
+////**************************************************************
+////  Set I/F
+////**************************************************************
+//
+//public int size()
+//{
+//  return this.definition.size();
+//}
+//
+//
+//
+////**************************************************************
+////  Iterable
+////**************************************************************
+//
+////@Override
+////public Iterator<DefinitionType> iterator()
+////{
+////  return this.definition.iterator();
+////}
+//
+//
+//public Iterable<DefinitionType> it()
+//{
+//  return this.definition;
+//}
+//
+//}
 // DefinitionsType
