@@ -21,8 +21,11 @@
 package jp.go.aist.six.oval.model.v5.sc;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 import jp.go.aist.six.oval.model.v5.Container;
+import com.google.code.morphia.annotations.Embedded;
 
 
 
@@ -38,6 +41,11 @@ import jp.go.aist.six.oval.model.v5.Container;
 public class NetworkInterfacesType
     extends Container<NetworkInterfaceType> //{0..*}
 {
+
+    @Embedded( "interface" )
+    private final Set<NetworkInterfaceType>  netIf = new HashSet<NetworkInterfaceType>();
+
+
 
     /**
      * Constructor.
@@ -70,7 +78,7 @@ public class NetworkInterfacesType
                     final Collection<? extends NetworkInterfaceType> netifs
                     )
     {
-        _setElement( netifs );
+        _setElements( netifs );
     }
 
 
@@ -78,19 +86,19 @@ public class NetworkInterfacesType
                     final NetworkInterfaceType netif
                     )
     {
-        return add( netif );
+        return _addElement( netif );
     }
 
 
     public Collection<NetworkInterfaceType> getInterface()
     {
-        return _getElement();
+        return _getElements();
     }
 
 
     public Iterator<NetworkInterfaceType> iterateInterface()
     {
-        return iterator();
+        return _iterateElements();
     }
 
 
@@ -99,12 +107,11 @@ public class NetworkInterfacesType
     //  Container
     //**************************************************************
 
-//    protected String _getKey(
-//                    final NetInterface netif
-//                    )
-//    {
-//        return netif.getInterfaceName();
-//    }
+    @Override
+    protected Collection<NetworkInterfaceType> _getElements()
+    {
+        return this.netIf;
+    }
 
 
 

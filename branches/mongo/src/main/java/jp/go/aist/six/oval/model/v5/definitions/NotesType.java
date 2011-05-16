@@ -21,7 +21,9 @@
 package jp.go.aist.six.oval.model.v5.definitions;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 import jp.go.aist.six.oval.model.v5.Container;
 
 
@@ -36,6 +38,10 @@ import jp.go.aist.six.oval.model.v5.Container;
 public class NotesType
     extends Container<Note> //{1..*}
 {
+
+    private final Set<Note>  note = new HashSet<Note>();
+
+
 
     /**
      * Constructor.
@@ -68,7 +74,7 @@ public class NotesType
                     final Collection<? extends Note> notes
                     )
     {
-        _setElement( notes );
+        _setElements( notes );
     }
 
 
@@ -76,19 +82,31 @@ public class NotesType
                     final Note note
                     )
     {
-        return add( note );
+        return _addElement( note );
     }
 
 
     public Collection<Note> getNote()
     {
-        return _getElement();
+        return _getElements();
     }
 
 
     public Iterator<Note> iterateNote()
     {
-        return iterator();
+        return _iterateElements();
+    }
+
+
+
+    //**************************************************************
+    //  Container
+    //**************************************************************
+
+    @Override
+    protected Collection<Note> _getElements()
+    {
+        return this.note;
     }
 
 }

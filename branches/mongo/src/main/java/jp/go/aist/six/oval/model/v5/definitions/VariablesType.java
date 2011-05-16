@@ -21,8 +21,11 @@
 package jp.go.aist.six.oval.model.v5.definitions;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 import jp.go.aist.six.oval.model.v5.OvalElementContainer;
+import com.google.code.morphia.annotations.Reference;
 
 
 
@@ -37,6 +40,11 @@ public class VariablesType
     extends OvalElementContainer<VariableType>  //{1..*}
 //extends Container<Variable>  //{1..*}
 {
+
+    @Reference
+    private final Set<VariableType>  variable = new HashSet<VariableType>();
+
+
 
     /**
      * Constructor.
@@ -69,7 +77,7 @@ public class VariablesType
                     final Collection<? extends VariableType> variables
                     )
     {
-        _setElement( variables );
+        _setElements( variables );
     }
 
 
@@ -77,19 +85,31 @@ public class VariablesType
                     final VariableType variable
                     )
     {
-        return add( variable );
+        return _addElement( variable );
     }
 
 
     public Collection<VariableType> getVariable()
     {
-        return _getElement();
+        return _getElements();
     }
 
 
     public Iterator<VariableType> iterateVariable()
     {
-        return iterator();
+        return _iterateElements();
+    }
+
+
+
+    //**************************************************************
+    //  Container
+    //**************************************************************
+
+    @Override
+    protected Collection<VariableType> _getElements()
+    {
+        return this.variable;
     }
 
 }

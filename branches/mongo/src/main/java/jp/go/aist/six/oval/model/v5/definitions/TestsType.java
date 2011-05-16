@@ -20,10 +20,12 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 import jp.go.aist.six.oval.model.v5.OvalElementContainer;
+import com.google.code.morphia.annotations.Reference;
 
 
 
@@ -38,6 +40,11 @@ public class TestsType
     extends OvalElementContainer<TestType>  //{1..*}
 {
 
+    @Reference
+    private final Set<TestType>  test = new HashSet<TestType>();
+
+
+
     /**
      * Constructor.
      */
@@ -46,25 +53,19 @@ public class TestsType
     }
 
 
-    /**
-     * Constructor.
-     */
     public TestsType(
                     final Collection<? extends TestType> tests
                     )
     {
-        setTest( tests );
+        super( tests );
     }
 
 
-    /**
-     * Constructor.
-     */
     public TestsType(
                     final TestType[] tests
                     )
     {
-        setTest( Arrays.asList( tests ) );
+        super( tests );
     }
 
 
@@ -73,7 +74,7 @@ public class TestsType
                     final Collection<? extends TestType> tests
                     )
     {
-        _setElement( tests );
+        _setElements( tests );
     }
 
 
@@ -81,19 +82,30 @@ public class TestsType
                     final TestType test
                     )
     {
-        return add( test );
+        return _addElement( test );
     }
 
 
     public Collection<TestType> getTest()
     {
-        return _getElement();
+        return _getElements();
     }
 
 
     public Iterator<TestType> iterateTest()
     {
-        return iterator();
+        return _iterateElements();
+    }
+
+
+    //**************************************************************
+    //  Container
+    //**************************************************************
+
+    @Override
+    protected Collection<TestType> _getElements()
+    {
+        return this.test;
     }
 
 }

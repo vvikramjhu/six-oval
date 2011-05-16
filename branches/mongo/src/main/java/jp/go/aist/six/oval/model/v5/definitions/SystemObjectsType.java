@@ -21,8 +21,11 @@
 package jp.go.aist.six.oval.model.v5.definitions;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 import jp.go.aist.six.oval.model.v5.OvalElementContainer;
+import com.google.code.morphia.annotations.Reference;
 
 
 
@@ -40,6 +43,11 @@ public class SystemObjectsType
 //extends Container<SystemObject>  //{1..*}
 {
 
+    @Reference
+    private final Set<SystemObjectType>  object = new HashSet<SystemObjectType>();
+
+
+
     /**
      * Constructor.
      */
@@ -48,9 +56,6 @@ public class SystemObjectsType
     }
 
 
-    /**
-     * Constructor.
-     */
     public SystemObjectsType(
                     final Collection<? extends SystemObjectType> objects
                     )
@@ -59,9 +64,6 @@ public class SystemObjectsType
     }
 
 
-    /**
-     * Constructor.
-     */
     public SystemObjectsType(
                     final SystemObjectType[] objects
                     )
@@ -75,7 +77,7 @@ public class SystemObjectsType
                     final Collection<? extends SystemObjectType> objects
                     )
     {
-        _setElement( objects );
+        _setElements( objects );
     }
 
 
@@ -83,19 +85,31 @@ public class SystemObjectsType
                     final SystemObjectType object
                     )
     {
-        return add( object );
+        return _addElement( object );
     }
 
 
     public Collection<SystemObjectType> getObject()
     {
-        return _getElement();
+        return _getElements();
     }
 
 
     public Iterator<SystemObjectType> iterateObject()
     {
-        return iterator();
+        return _iterateElements();
+    }
+
+
+
+    //**************************************************************
+    //  Container
+    //**************************************************************
+
+    @Override
+    protected Collection<SystemObjectType> _getElements()
+    {
+        return this.object;
     }
 
 }

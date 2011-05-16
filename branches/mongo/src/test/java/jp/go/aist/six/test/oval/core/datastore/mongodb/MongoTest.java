@@ -107,7 +107,7 @@ public class MongoTest
         Reporter.log( "save..." , true );
         Reporter.log( "  * object: " + object, true );
 
-        for (DefinitionType  def : object.getDefinitions().it()) {
+        for (DefinitionType  def : object.getDefinitions().getDefinition()) {
             mongo.getDAO( DefinitionType.class ).save( def );
         }
         mongo.getDAO( OvalDefinitions.class ).save( object );
@@ -116,7 +116,7 @@ public class MongoTest
         Reporter.log( "load each object by concrete class...", true );
         OvalDefinitions  p_object = mongo.getDAO( OvalDefinitions.class ).get( object.getObjectId() );
         Reporter.log( "  @ object: " + p_object, true );
-        for (DefinitionType  p_def : p_object.getDefinitions().it()) {
+        for (DefinitionType  p_def : p_object.getDefinitions().getDefinition()) {
             Reporter.log( "  @ definition: " + p_def, true );
         }
 

@@ -21,7 +21,9 @@
 package jp.go.aist.six.oval.model.v5.results;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 import jp.go.aist.six.oval.model.v5.Container;
 
 
@@ -38,6 +40,10 @@ public class DefinitionsType
 //extends OvalElementContainer<DefinitionResult>  //{1..*}
 {
 
+    private final Set<DefinitionType>  definition = new HashSet<DefinitionType>();
+
+
+
     /**
      * Constructor.
      */
@@ -46,9 +52,6 @@ public class DefinitionsType
     }
 
 
-    /**
-     * Constructor.
-     */
     public DefinitionsType(
                     final Collection<? extends DefinitionType> definitions
                     )
@@ -57,9 +60,6 @@ public class DefinitionsType
     }
 
 
-    /**
-     * Constructor.
-     */
     public DefinitionsType(
                     final DefinitionType[] definitions
                     )
@@ -73,7 +73,7 @@ public class DefinitionsType
                     final Collection<? extends DefinitionType> definitions
                     )
     {
-        _setElement( definitions );
+        _setElements( definitions );
     }
 
 
@@ -81,19 +81,31 @@ public class DefinitionsType
                     final DefinitionType definition
                     )
     {
-        return add( definition );
+        return _addElement( definition );
     }
 
 
     public Collection<DefinitionType> getDefinition()
     {
-        return _getElement();
+        return _getElements();
     }
 
 
     public Iterator<DefinitionType> iterateDefinition()
     {
-        return iterator();
+        return _iterateElements();
+    }
+
+
+
+    //**************************************************************
+    //  Container
+    //**************************************************************
+
+    @Override
+    protected Collection<DefinitionType> _getElements()
+    {
+        return this.definition;
     }
 
 

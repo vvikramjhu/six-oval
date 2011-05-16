@@ -21,8 +21,11 @@
 package jp.go.aist.six.oval.model.v5.definitions;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 import jp.go.aist.six.oval.model.v5.OvalElementContainer;
+import com.google.code.morphia.annotations.Reference;
 
 
 
@@ -38,6 +41,11 @@ public class StatesType
 //extends Container<State> //{1..*}
 {
 
+    @Reference
+    private final Set<StateType>  state = new HashSet<StateType>();
+
+
+
     /**
      * Constructor.
      */
@@ -46,9 +54,6 @@ public class StatesType
     }
 
 
-    /**
-     * Constructor.
-     */
     public StatesType(
                     final Collection<? extends StateType> states
                     )
@@ -57,9 +62,6 @@ public class StatesType
     }
 
 
-    /**
-     * Constructor.
-     */
     public StatesType(
                     final StateType[] states
                     )
@@ -73,7 +75,7 @@ public class StatesType
                     final Collection<? extends StateType> states
                     )
     {
-        _setElement( states );
+        _setElements( states );
     }
 
 
@@ -81,19 +83,31 @@ public class StatesType
                     final StateType state
                     )
     {
-        return add( state );
+        return _addElement( state );
     }
 
 
     public Collection<StateType> getState()
     {
-        return _getElement();
+        return _getElements();
     }
 
 
     public Iterator<StateType> iterateState()
     {
-        return iterator();
+        return _iterateElements();
+    }
+
+
+
+    //**************************************************************
+    //  Container
+    //**************************************************************
+
+    @Override
+    protected Collection<StateType> _getElements()
+    {
+        return this.state;
     }
 
 }

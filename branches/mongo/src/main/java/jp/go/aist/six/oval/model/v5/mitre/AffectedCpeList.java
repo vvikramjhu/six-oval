@@ -21,7 +21,9 @@
 package jp.go.aist.six.oval.model.v5.mitre;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 import jp.go.aist.six.oval.model.v5.Container;
 
 
@@ -35,6 +37,9 @@ import jp.go.aist.six.oval.model.v5.Container;
 public class AffectedCpeList
     extends Container<Cpe> //{0..* ?}
 {
+
+    private final Set<Cpe>  cpe = new HashSet<Cpe>();
+
 
     /**
      * Constructor.
@@ -67,7 +72,7 @@ public class AffectedCpeList
                     final Collection<? extends Cpe> cpes
                     )
     {
-        _setElement( cpes );
+        _setElements( cpes );
     }
 
 
@@ -75,19 +80,31 @@ public class AffectedCpeList
                     final Cpe cpe
                     )
     {
-        return add( cpe );
+        return _addElement( cpe );
     }
 
 
     public Collection<Cpe> getCpe()
     {
-        return _getElement();
+        return _getElements();
     }
 
 
     public Iterator<Cpe> iterateCpe()
     {
-        return iterator();
+        return _iterateElements();
+    }
+
+
+
+    //**************************************************************
+    //  Container
+    //**************************************************************
+
+    @Override
+    protected Collection<Cpe> _getElements()
+    {
+        return this.cpe;
     }
 
 

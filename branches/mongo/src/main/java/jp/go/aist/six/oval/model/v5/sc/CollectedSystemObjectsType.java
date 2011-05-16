@@ -21,7 +21,9 @@
 package jp.go.aist.six.oval.model.v5.sc;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 import jp.go.aist.six.oval.model.v5.OvalElementContainer;
 
 
@@ -39,6 +41,10 @@ import jp.go.aist.six.oval.model.v5.OvalElementContainer;
 public class CollectedSystemObjectsType
     extends OvalElementContainer<SystemObjectType>    //{1..*}
 {
+
+    private final Set<SystemObjectType>  object = new HashSet<SystemObjectType>();
+
+
 
     /**
      * Constructor.
@@ -71,7 +77,7 @@ public class CollectedSystemObjectsType
                     final Collection<? extends SystemObjectType> objects
                     )
     {
-        _setElement( objects );
+        _setElements( objects );
     }
 
 
@@ -79,20 +85,32 @@ public class CollectedSystemObjectsType
                     final SystemObjectType object
                     )
     {
-        return add( object );
+        return _addElement( object );
     }
 
 
     public Collection<SystemObjectType> getObject()
     {
-        return _getElement();
+        return _getElements();
     }
 
 
 
     public Iterator<SystemObjectType> iterateObject()
     {
-        return iterator();
+        return _iterateElements();
+    }
+
+
+
+    //**************************************************************
+    //  Container
+    //**************************************************************
+
+    @Override
+    protected Collection<SystemObjectType> _getElements()
+    {
+        return this.object;
     }
 
 
@@ -105,7 +123,7 @@ public class CollectedSystemObjectsType
     public String toString()
     {
         return "["
-                        + _getElement()
+                        + _getElements()
                         + "]";
     }
 

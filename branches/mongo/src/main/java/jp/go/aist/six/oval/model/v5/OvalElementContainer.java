@@ -27,6 +27,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import com.google.code.morphia.annotations.Transient;
 
 
 
@@ -112,6 +113,7 @@ public abstract class OvalElementContainer<E extends OvalElement>
 
     private String  _digest;
 
+    @Transient
     private transient int  _hashOnDigest = 0;
 
 
