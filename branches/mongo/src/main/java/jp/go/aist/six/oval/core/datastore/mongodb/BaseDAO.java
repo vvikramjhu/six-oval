@@ -12,7 +12,7 @@ import com.mongodb.Mongo;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class BaseDaoDAO<T, K>
+public abstract class BaseDAO<T, K>
     extends BasicDAO<T, K>
 {
 
@@ -22,7 +22,7 @@ public abstract class BaseDaoDAO<T, K>
     /**
      * Constructor.
      */
-    public BaseDaoDAO(
+    public BaseDAO(
                     final Class<T> entityClass,
                     final Datastore ds
                     )
@@ -31,7 +31,7 @@ public abstract class BaseDaoDAO<T, K>
     }
 
 
-    public BaseDaoDAO(
+    public BaseDAO(
                     final Class<T> entityClass,
                     final Mongo mongo,
                     final Morphia morphia,
