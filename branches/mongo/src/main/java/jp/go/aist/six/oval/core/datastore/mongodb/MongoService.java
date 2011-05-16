@@ -10,6 +10,7 @@ import com.google.code.morphia.dao.DAO;
 
 
 public class MongoService
+    implements DAORegistry
 {
 
     /**
@@ -55,8 +56,11 @@ public class MongoService
 
 
 
-    /**
-     */
+    //**************************************************************
+    //  DAORegistry
+    //**************************************************************
+
+    @Override
     public <T, K> DAO<T, K> getDAO(
                     final Class<T> entityClass
                     )
@@ -67,7 +71,6 @@ public class MongoService
 
         @SuppressWarnings( "unchecked" )
         DAO<T, K>  dao = (DAO<T, K>)_daoMap.get( entityClass );
-
         if (dao == null) {
             throw new IllegalArgumentException(
                             "unknown entity class: " + entityClass );
@@ -75,6 +78,24 @@ public class MongoService
 
         return dao;
     }
+
+
+
+    //**************************************************************
+
+//    @PrePersist
+//    public void prePersist(
+//                    final OvalDefinitions oval_definitions
+//                    )
+//    {
+//        DAO<TestType, ObjectId>  testDAO = getDAO( TestType.class );
+//        TestsType  tests = oval_definitions.getTests();
+//        if (tests != null) {
+//            for (TestType  test : tests.getTest()) {
+//                testDAO.save( test );
+//            }
+//        }
+//    }
 
 
 

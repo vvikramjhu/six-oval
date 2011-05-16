@@ -51,7 +51,7 @@ public abstract class Container<E>
                     final Collection<? extends E> elements
                     )
     {
-        _setElements( elements );
+        _setElement( elements );
     }
 
 
@@ -62,19 +62,19 @@ public abstract class Container<E>
                     final E[] elements
                     )
     {
-        _setElements( elements );
+        _setElement( elements );
     }
 
 
 
     /**
      */
-    protected void _setElements(
+    protected void _setElement(
                     final Collection<? extends E> elements
                     )
     {
-        if (_getElements() != elements) {
-            _getElements().clear();
+        if (_getElement() != elements) {
+            _getElement().clear();
             if (elements != null  &&  elements.size() > 1) {
                 for (E  e : elements) {
                     _addElement( e );
@@ -84,11 +84,11 @@ public abstract class Container<E>
     }
 
 
-    protected void _setElements(
+    protected void _setElement(
                     final E[] elements
                     )
     {
-        _getElements().clear();
+        _getElement().clear();
         if (elements != null  &&  elements.length > 1) {
             for (E  e : elements) {
                 _addElement( e );
@@ -97,7 +97,7 @@ public abstract class Container<E>
     }
 
 
-    protected abstract Collection<E> _getElements();
+    protected abstract Collection<E> _getElement();
 
 
     protected boolean _addElement(
@@ -108,20 +108,20 @@ public abstract class Container<E>
             throw new NullPointerException( "adding null element" );
         }
 
-        return _getElements().add( e );
+        return _getElement().add( e );
     }
 
 
-    protected Iterator<E> _iterateElements()
+    protected Iterator<E> _iterateElement()
     {
-        return _getElements().iterator();
+        return _getElement().iterator();
     }
 
 
 
     public int size()
     {
-        return _getElements().size();
+        return _getElement().size();
     }
 
 
@@ -133,7 +133,7 @@ public abstract class Container<E>
     @Override
     public int hashCode()
     {
-        return _getElements().hashCode();
+        return _getElement().hashCode();
     }
 
 
@@ -153,8 +153,8 @@ public abstract class Container<E>
 
         @SuppressWarnings( "unchecked" )
         Container<E>  other = (Container<E>)obj;
-        Collection<E>  other_elements = other._getElements();
-        Collection<E>   this_elements =  this._getElements();
+        Collection<E>  other_elements = other._getElement();
+        Collection<E>   this_elements =  this._getElement();
         if (this_elements == other_elements
                         ||  (this_elements != null
                                         &&  this_elements.equals( other_elements ))) {

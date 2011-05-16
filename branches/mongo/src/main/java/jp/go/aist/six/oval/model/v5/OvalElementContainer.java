@@ -77,7 +77,7 @@ public abstract class OvalElementContainer<E extends OvalElement>
             throw new IllegalArgumentException();
         }
 
-        for (E  e : _getElements()) {
+        for (E  e : _getElement()) {
             if (id.equals( e.getOvalID() )) {
                 return e;
             }
@@ -93,7 +93,7 @@ public abstract class OvalElementContainer<E extends OvalElement>
     private Set<String> _ovalIDSet()
     {
         Set<String>  set = new HashSet<String>();
-        for (OvalElement  e : _getElements()) {
+        for (OvalElement  e : _getElement()) {
             set.add( e.getOvalID() );
         }
 

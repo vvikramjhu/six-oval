@@ -75,7 +75,7 @@ public class SystemDataType
                     final Collection<? extends ItemType> items
                     )
     {
-        _setElements( items );
+        _setElement( items );
     }
 
 
@@ -89,13 +89,13 @@ public class SystemDataType
 
     public Collection<ItemType> getItem()
     {
-        return _getElements();
+        return _getElement();
     }
 
 
     public Iterator<ItemType> iterateItem()
     {
-        return _iterateElements();
+        return _iterateElement();
     }
 
 
@@ -105,7 +105,7 @@ public class SystemDataType
     //**************************************************************
 
     @Override
-    protected Collection<ItemType> _getElements()
+    protected Collection<ItemType> _getElement()
     {
         return this.item;
     }
@@ -120,7 +120,7 @@ public class SystemDataType
     public String toString()
     {
         return "["
-                        + _getElements()
+                        + _getElement()
                         + "]";
     }
 

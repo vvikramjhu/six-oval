@@ -78,7 +78,7 @@ public class NetworkInterfacesType
                     final Collection<? extends NetworkInterfaceType> netifs
                     )
     {
-        _setElements( netifs );
+        _setElement( netifs );
     }
 
 
@@ -92,13 +92,13 @@ public class NetworkInterfacesType
 
     public Collection<NetworkInterfaceType> getInterface()
     {
-        return _getElements();
+        return _getElement();
     }
 
 
     public Iterator<NetworkInterfaceType> iterateInterface()
     {
-        return _iterateElements();
+        return _iterateElement();
     }
 
 
@@ -108,7 +108,7 @@ public class NetworkInterfacesType
     //**************************************************************
 
     @Override
-    protected Collection<NetworkInterfaceType> _getElements()
+    protected Collection<NetworkInterfaceType> _getElement()
     {
         return this.netIf;
     }

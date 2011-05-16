@@ -49,17 +49,14 @@ public class OvalDefinitions
     //{0..1}
 
 
-    @Transient
     private TestsType  _tests;
     //{0..1}
 
 
-    @Transient
     private SystemObjectsType  _objects;
     //{0..1}
 
 
-    @Transient
     private StatesType  _states;
     //{0..1}
 

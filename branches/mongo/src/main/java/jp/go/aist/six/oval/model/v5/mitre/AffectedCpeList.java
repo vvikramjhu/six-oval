@@ -72,7 +72,7 @@ public class AffectedCpeList
                     final Collection<? extends Cpe> cpes
                     )
     {
-        _setElements( cpes );
+        _setElement( cpes );
     }
 
 
@@ -86,13 +86,13 @@ public class AffectedCpeList
 
     public Collection<Cpe> getCpe()
     {
-        return _getElements();
+        return _getElement();
     }
 
 
     public Iterator<Cpe> iterateCpe()
     {
-        return _iterateElements();
+        return _iterateElement();
     }
 
 
@@ -102,7 +102,7 @@ public class AffectedCpeList
     //**************************************************************
 
     @Override
-    protected Collection<Cpe> _getElements()
+    protected Collection<Cpe> _getElement()
     {
         return this.cpe;
     }

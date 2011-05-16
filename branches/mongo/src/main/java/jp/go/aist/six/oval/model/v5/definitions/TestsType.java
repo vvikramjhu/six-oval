@@ -74,7 +74,7 @@ public class TestsType
                     final Collection<? extends TestType> tests
                     )
     {
-        _setElements( tests );
+        _setElement( tests );
     }
 
 
@@ -88,13 +88,13 @@ public class TestsType
 
     public Collection<TestType> getTest()
     {
-        return _getElements();
+        return _getElement();
     }
 
 
     public Iterator<TestType> iterateTest()
     {
-        return _iterateElements();
+        return _iterateElement();
     }
 
 
@@ -103,7 +103,7 @@ public class TestsType
     //**************************************************************
 
     @Override
-    protected Collection<TestType> _getElements()
+    protected Collection<TestType> _getElement()
     {
         return this.test;
     }

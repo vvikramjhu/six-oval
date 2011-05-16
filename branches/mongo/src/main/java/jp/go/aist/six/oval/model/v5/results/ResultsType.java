@@ -74,7 +74,7 @@ public class ResultsType
                     final Collection<? extends SystemType> systems
                     )
     {
-        _setElements( systems );
+        _setElement( systems );
     }
 
 
@@ -88,13 +88,13 @@ public class ResultsType
 
     public Collection<SystemType> getSystem()
     {
-        return _getElements();
+        return _getElement();
     }
 
 
     public Iterator<SystemType> iterateSystem()
     {
-        return _iterateElements();
+        return _iterateElement();
     }
 
 
@@ -104,7 +104,7 @@ public class ResultsType
     //**************************************************************
 
     @Override
-    protected Collection<SystemType> _getElements()
+    protected Collection<SystemType> _getElement()
     {
         return this.system;
     }

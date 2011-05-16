@@ -77,7 +77,7 @@ public class DefinitionsType
                     final Collection<? extends DefinitionType> definitionList
                     )
     {
-        _setElements( definitionList );
+        _setElement( definitionList );
     }
 
 
@@ -85,19 +85,19 @@ public class DefinitionsType
                     final DefinitionType[] definitionList
                     )
     {
-        _setElements( definitionList );
+        _setElement( definitionList );
     }
 
 
     public Collection<DefinitionType> getDefinition()
     {
-        return _getElements();
+        return _getElement();
     }
 
 
     public Iterator<DefinitionType> iterateDefinition()
     {
-        return _iterateElements();
+        return _iterateElement();
     }
 
 
@@ -115,7 +115,7 @@ public class DefinitionsType
     //**************************************************************
 
     @Override
-    protected Collection<DefinitionType> _getElements()
+    protected Collection<DefinitionType> _getElement()
     {
         return this.definition;
     }

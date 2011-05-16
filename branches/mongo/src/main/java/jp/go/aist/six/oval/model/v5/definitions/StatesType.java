@@ -75,7 +75,7 @@ public class StatesType
                     final Collection<? extends StateType> states
                     )
     {
-        _setElements( states );
+        _setElement( states );
     }
 
 
@@ -89,13 +89,13 @@ public class StatesType
 
     public Collection<StateType> getState()
     {
-        return _getElements();
+        return _getElement();
     }
 
 
     public Iterator<StateType> iterateState()
     {
-        return _iterateElements();
+        return _iterateElement();
     }
 
 
@@ -105,7 +105,7 @@ public class StatesType
     //**************************************************************
 
     @Override
-    protected Collection<StateType> _getElements()
+    protected Collection<StateType> _getElement()
     {
         return this.state;
     }

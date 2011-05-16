@@ -77,7 +77,7 @@ public class CollectedSystemObjectsType
                     final Collection<? extends SystemObjectType> objects
                     )
     {
-        _setElements( objects );
+        _setElement( objects );
     }
 
 
@@ -91,14 +91,14 @@ public class CollectedSystemObjectsType
 
     public Collection<SystemObjectType> getObject()
     {
-        return _getElements();
+        return _getElement();
     }
 
 
 
     public Iterator<SystemObjectType> iterateObject()
     {
-        return _iterateElements();
+        return _iterateElement();
     }
 
 
@@ -108,7 +108,7 @@ public class CollectedSystemObjectsType
     //**************************************************************
 
     @Override
-    protected Collection<SystemObjectType> _getElements()
+    protected Collection<SystemObjectType> _getElement()
     {
         return this.object;
     }
@@ -123,7 +123,7 @@ public class CollectedSystemObjectsType
     public String toString()
     {
         return "["
-                        + _getElements()
+                        + _getElement()
                         + "]";
     }
 

@@ -74,7 +74,7 @@ public class NotesType
                     final Collection<? extends Note> notes
                     )
     {
-        _setElements( notes );
+        _setElement( notes );
     }
 
 
@@ -88,13 +88,13 @@ public class NotesType
 
     public Collection<Note> getNote()
     {
-        return _getElements();
+        return _getElement();
     }
 
 
     public Iterator<Note> iterateNote()
     {
-        return _iterateElements();
+        return _iterateElement();
     }
 
 
@@ -104,7 +104,7 @@ public class NotesType
     //**************************************************************
 
     @Override
-    protected Collection<Note> _getElements()
+    protected Collection<Note> _getElement()
     {
         return this.note;
     }

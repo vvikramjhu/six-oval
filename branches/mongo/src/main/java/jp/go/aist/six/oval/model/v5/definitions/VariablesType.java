@@ -77,7 +77,7 @@ public class VariablesType
                     final Collection<? extends VariableType> variables
                     )
     {
-        _setElements( variables );
+        _setElement( variables );
     }
 
 
@@ -91,13 +91,13 @@ public class VariablesType
 
     public Collection<VariableType> getVariable()
     {
-        return _getElements();
+        return _getElement();
     }
 
 
     public Iterator<VariableType> iterateVariable()
     {
-        return _iterateElements();
+        return _iterateElement();
     }
 
 
@@ -107,7 +107,7 @@ public class VariablesType
     //**************************************************************
 
     @Override
-    protected Collection<VariableType> _getElements()
+    protected Collection<VariableType> _getElement()
     {
         return this.variable;
     }
