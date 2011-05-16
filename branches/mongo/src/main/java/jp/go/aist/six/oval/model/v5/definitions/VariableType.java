@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.v5.definitions;
 import jp.go.aist.six.oval.model.v5.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
+import com.google.code.morphia.annotations.Entity;
 
 
 
@@ -36,11 +37,12 @@ import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
+@Entity( "oval.definitions.variable" )
 public class VariableType
     extends CommentedOvalEntity
 {
 
-    private DatatypeEnumeration  _datatype;
+    private DatatypeEnumeration  datatype;
     //{required}
 
 
@@ -91,13 +93,13 @@ public class VariableType
                     final DatatypeEnumeration datatype
                     )
     {
-        _datatype = datatype;
+        this.datatype = datatype;
     }
 
 
     public DatatypeEnumeration getDatatype()
     {
-        return _datatype;
+        return this.datatype;
     }
 
 

@@ -61,7 +61,6 @@ public class OvalDefinitions
     //{0..1}
 
 
-    @Transient
     private VariablesType  _variables;
     //{0..1}
 

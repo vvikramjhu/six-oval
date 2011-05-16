@@ -38,7 +38,6 @@ import com.google.code.morphia.annotations.Reference;
  */
 public class VariablesType
     extends OvalElementContainer<VariableType>  //{1..*}
-//extends Container<Variable>  //{1..*}
 {
 
     @Reference
