@@ -107,9 +107,9 @@ public class MongoTest
         Reporter.log( "save..." , true );
         Reporter.log( "  * object: " + object, true );
 
-        for (DefinitionType  def : object.getDefinitions().getDefinition()) {
-            mongo.getDAO( DefinitionType.class ).save( def );
-        }
+//        for (DefinitionType  def : object.getDefinitions().getDefinition()) {
+//            mongo.getDAO( DefinitionType.class ).save( def );
+//        }
         mongo.getDAO( OvalDefinitions.class ).save( object );
 
 

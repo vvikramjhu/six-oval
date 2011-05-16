@@ -51,6 +51,10 @@ public class MongoService
             Class<?>  entityClass = dao.getEntityClass();
             _LOG_.debug( "adding DAO: " + entityClass );
             _daoMap.put( entityClass, dao );
+
+            if (dao instanceof BaseDAO) {
+                BaseDAO.class.cast( dao ).setDAORegistry( this );
+            }
         }
     }
 
