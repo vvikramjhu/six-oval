@@ -27,15 +27,15 @@ public class OvalXmlTest
     protected <T> void _testXml(
                     final Class<T> type,
                     final String sourceFilepath,
-                    final String xpath,
+//                    final String xpath,
                     final T expected,
                     final String resultFilepath
                     )
     throws Exception
     {
-        T  actual = _unmarshalWithValidation( type, sourceFilepath, xpath, expected );
+        T  actual = _unmarshalWithValidation( type, sourceFilepath, /* xpath, */ expected );
         _marshal( actual, resultFilepath );
-        _unmarshalWithValidation( type, resultFilepath, xpath, expected );
+        _unmarshalWithValidation( type, resultFilepath, /* xpath, */ expected );
     }
 
 
@@ -46,20 +46,20 @@ public class OvalXmlTest
 
     @org.testng.annotations.Test(
                     groups={"oval.core.xml", "oval.definitions.oval_definitions"},
-                    dataProvider="oval.definitions.oval_definitions",
+                    dataProvider="oval.definitions.xml",
                     alwaysRun=true
                     )
     public void testDefinitionsOvalDefinitions(
                     final Class<OvalDefinitions> type,
                     final String sourceFilepath,
-                    final String xpath,
+//                  final String xpath,
                     final OvalDefinitions expected,
                     final String resultFilepath
                     )
     throws Exception
     {
         Reporter.log( "\n////////////////////////////////////////////", true );
-        _testXml( type, sourceFilepath, xpath, expected, resultFilepath );
+        _testXml( type, sourceFilepath, /* xpath, */ expected, resultFilepath );
     }
 
 }

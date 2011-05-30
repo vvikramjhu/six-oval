@@ -80,12 +80,12 @@ public abstract class CoreTestBase
     protected <T> T _unmarshalWithValidation(
                     final Class<T> type,
                     final String filepath,
-                    final String xpath,
+//                    final String xpath,
                     final T expected
                     )
     throws Exception
     {
-        Reporter.log( "  * XPath: " + xpath, true );
+        Reporter.log( "  * type: " + type, true );
         Reporter.log( "  * XML file: " + filepath, true );
 
         File  file = new File( filepath );
@@ -144,10 +144,38 @@ public abstract class CoreTestBase
     //
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    @DataProvider( name="oval.definitions.oval_definitions" )
-    public Object[][] provideOvalDefinitionsOvalDefinitions()
+    @DataProvider( name="oval.definitions.xml" )
+    public Object[][] provideOvalDefinitionsXml()
     {
         return new Object[][] {
+//                        // obj:222, windows, file
+//                        {
+//                            jp.go.aist.six.oval.model.v5.windows.FileObject.class,
+//                            "test/resources/data/oval-definitions-5/obj222_windows_file_oval5.9.xml",
+//                            null,
+//                            "marshalled_obj222_windows_file_oval5.9.xml"
+//                        }
+//                        ,
+//
+//                        // def:7222, windows, vulnerability, CVE-2010-0176
+//                        {
+//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval-definitions-5/oval_vulnerability_windows_def7222_definitions-5.xml",
+//                            null,
+//                            "marshalled_oval_vulnerability_windows_def7222_definitions-5.xml"
+//                        }
+//                        ,
+
+                        // def:*, Windows XP, vulnerability
+                        {
+                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+                            "test/resources/data/oval-definitions-5/oval_vulnerability_windows.xp_definitions-5.9.xml",
+                            null,
+                            "marshalled_oval_vulnerability_windows.xp_definitions-5.9.xml"
+                        }
+
+
+
                         // family-basis //
 
 //                        // Windows, inventory
@@ -230,14 +258,6 @@ public abstract class CoreTestBase
 //                            "marshalled_oval_vulnerability_windows_def7120_definitions-5.xml"
 //                        }
 //                      ,
-                        // windows, vulnerability, def:7222, CVE-2010-0176
-                        {
-                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                            "test/resources/data/oval-definitions-5/oval_vulnerability_windows_def7222_definitions-5.xml",
-                            "/oval_definitions",
-                            null,
-                            "marshalled_oval_vulnerability_windows_def7222_definitions-5.xml"
-                        }
 //                        ,
 //                        // debian, patch, def:7432, CVE-2010-0176, DSA-2027
 //                        {

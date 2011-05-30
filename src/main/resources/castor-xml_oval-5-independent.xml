@@ -69,6 +69,14 @@
 
     <class name="jp.go.aist.six.oval.model.v5.independent.EntityStateFamilyType"
         extends="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+
+<!--
+        <field name="content"
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.v5.FamilyEnumerationHandler">
+            <bind-xml node="text"/>
+        </field>
+-->
     </class>
 
 
