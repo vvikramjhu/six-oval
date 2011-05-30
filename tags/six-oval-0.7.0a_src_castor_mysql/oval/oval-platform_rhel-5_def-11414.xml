@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oval_definitions xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#linux linux-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+  <generator>
+    <oval:product_name>The OVAL Repository</oval:product_name>
+    <oval:schema_version>5.8</oval:schema_version>
+    <oval:timestamp>2011-02-01T06:59:58.716-05:00</oval:timestamp>
+  </generator>
+  <definitions>
+    <definition id="oval:org.mitre.oval:def:11414" version="3" class="inventory">
+      <metadata>
+        <title>The operating system installed on the system is Red Hat Enterprise Linux 5</title>
+        <affected family="unix">
+          <platform>Red Hat Enterprise Linux 5</platform>
+        </affected>
+        <reference source="CPE" ref_id="cpe:/o:redhat:enterprise_linux:5::"/>
+        <description>The operating system installed on the system is Red Hat Enterprise Linux 5.</description>
+        <oval_repository>
+          <dates>
+            <submitted date="2010-07-06T12:00:00.000-06:00">
+              <contributor organization="SCAP.com, LLC">Aharon Chernin</contributor>
+            </submitted>
+            <status_change date="2010-07-28T14:09:29.872-04:00">DRAFT</status_change>
+            <status_change date="2010-08-16T04:09:16.744-04:00">INTERIM</status_change>
+            <status_change date="2010-09-06T04:10:00.824-04:00">ACCEPTED</status_change>
+          </dates>
+          <status>ACCEPTED</status>
+        </oval_repository>
+      </metadata>
+      <criteria>
+        <criterion comment="Red Hat Enterprise 5 is installed" test_ref="oval:org.mitre.oval:tst:3846"/>
+      </criteria>
+    </definition>
+  </definitions>
+  <tests>
+    <rpminfo_test id="oval:org.mitre.oval:tst:3846" version="1" comment="Red Hat Enterprise 5 is installed" check_existence="at_least_one_exists" check="at least one" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <object object_ref="oval:org.mitre.oval:obj:1414"/>
+      <state state_ref="oval:org.mitre.oval:ste:11314"/>
+    </rpminfo_test>
+  </tests>
+  <objects>
+    <rpminfo_object id="oval:org.mitre.oval:obj:1414" version="1" comment="the redhat-release rpm" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <name>redhat-release</name>
+    </rpminfo_object>
+  </objects>
+  <states>
+    <rpminfo_state id="oval:org.mitre.oval:ste:11314" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
+      <version operation="pattern match">^.*5.</version>
+    </rpminfo_state>
+  </states>
+</oval_definitions>
