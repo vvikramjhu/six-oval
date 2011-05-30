@@ -68,7 +68,7 @@ public class EntityStateFamilyType
     {
         if (content != null) {
             //validation
-            FamilyEnumeration.valueOf( content );
+            FamilyEnumeration.fromValue( content );
         }
 
         super.setContent( content );

@@ -37,7 +37,7 @@ public class FamilyState
     extends StateType
 {
 
-    private EntityStateFamilyType  _family;
+    private EntityStateFamilyType  family;
     //{0..1}
 
 
@@ -73,17 +73,17 @@ public class FamilyState
 
     /**
      */
-    public EntityStateFamilyType getFamily()
-    {
-        return _family;
-    }
-
-
     public void setFamily(
                     final EntityStateFamilyType family
                     )
     {
-        _family = family;
+        this.family = family;
+    }
+
+
+    public EntityStateFamilyType getFamily()
+    {
+        return this.family;
     }
 
 
