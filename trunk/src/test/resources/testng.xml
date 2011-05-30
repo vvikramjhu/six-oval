@@ -1,0 +1,56 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- // Project SIX: OVAL                                     // -->
+<!-- //                                                       // -->
+<!-- // TestNG Test Suite                                     // -->
+<!-- /////////////////////////////////////////////////////////// -->
+
+<!--
+@author     Akihito Nakamura, AIST
+@version    $Id$
+-->
+
+<suite name="six-oval" verbose="1" parallel="tests">
+
+    <!-- // data store // -->
+    <test name="oval.core.datastore.mongodb" enabled="true">
+        <groups>
+            <run>
+                <include name="oval.definitions.oval_definitions"/>
+                <!--
+                <include name="oval.definitions.state"/>
+                -->
+            </run>
+        </groups>
+
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.datastore.mongodb.MongoTest"/>
+        </classes>
+    </test>
+
+
+
+    <!-- // XML // -->
+    <test name="oval.core.xml" enabled="false">
+        <groups>
+            <run>
+                <include name="oval.definitions.oval_definitions"/>
+                <!--
+                <include name="oval.core.xml.searchresult"/>
+                <include name="oval.core.service"/>
+                <include name="definitions.oval_definitions"/>
+                <include name="sc.oval_sc"/>
+                <include name="results.oval_results"/>
+                -->
+            </run>
+        </groups>
+
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlTest"/>
+        </classes>
+    </test>
+
+</suite>
+
+
