@@ -226,7 +226,8 @@ CONTENTS:
             outputdir="${build.test.dir}"
             haltonfailure="true"
             >
-            <xmlfileset dir="${config.src.dir}" includes="testng.xml"/>
+            <xmlfileset dir="${java.test.res.dir}" includes="testng.xml"/>
+            <!-- xmlfileset dir="${config.src.dir}" includes="testng.xml"/ -->
             <jvmarg value="-Xms512m"/>
             <jvmarg value="-Xmx512m"/>
             <!-- sysproperty key="six.oval.debian.dsc" value="test/data/debian/dsc"/ -->
