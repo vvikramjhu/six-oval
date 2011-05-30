@@ -42,8 +42,11 @@
     <property name="config.src.dir"     location="${src.dir}/config"/>
     <property name="test.src.dir"       location="${src.dir}/test"/>
 
-    <property name="java.src.dir"       location="${src.dir}/java"/>
+    <property name="java.src.dir"       location="${src.dir}/main/java"/>
+    <property name="java.res.dir"       location="${src.dir}/main/resources"/>
+
     <property name="java.test.src.dir"  location="${test.src.dir}/java"/>
+    <property name="java.test.res.dir"  location="${test.src.dir}/resources"/>
 
 
     <!-- ******************************************************* -->
@@ -128,7 +131,8 @@
     <!-- compilation classpath -->
     <path id="java.compile.classpath">
         <path refid="java.lib.classpath"/>
-        <pathelement location="${config.src.dir}"/>
+        <pathelement location="${java.res.dir}"/>
+        <!-- pathelement location="${config.src.dir}"/ -->
     </path>
 
 
