@@ -95,14 +95,14 @@ public class EntityStateFileTypeType
 
     @Override
     public void setContent(
-                    final String data
+                    final String content
                     )
     {
-        if (data != null) {
-            FileTypeEnumeration.valueOf( data );
+        if (content != null) {
+            FileTypeEnumeration.fromValue( content );
         }
 
-        super.setContent( data );
+        super.setContent( content );
     }
 
 

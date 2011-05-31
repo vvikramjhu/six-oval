@@ -26,7 +26,6 @@ import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityObjectIntType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.v5.definitions.Filter;
 import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 
@@ -44,18 +43,28 @@ public class MetabaseObject
     extends SystemObjectType
 {
 
-    private final EntityPropertyMap<MetabaseProperty>  _properties =
-        MetabaseProperty.createPropertyMap();
+    // XSD model:
+    // choice(
+    //          oval-def:set
+    //          sequence(
+    //                    key
+    //                    id
+    //                    filter
+    //          )
+    // )
+
+    private EntityObjectStringType  key;
+    //{1..1}
+
+    private EntityObjectIntType  id;
+    //{1..1, nillable="true"}
 
 
-//    private EntityObjectString  _key;
-//    //{0..1}
-//
-//    private EntityObjectInt  _id;
-//    //{0..1, nillable="true"}
+//    private final EntityPropertyMap<MetabaseProperty>  _properties =
+//        MetabaseProperty.createPropertyMap();
 
 
-    private final Collection<Filter>  _filter = new ArrayList<Filter>();
+    private final Collection<Filter>  filter = new ArrayList<Filter>();
     //{0..*}
 
 
@@ -121,7 +130,16 @@ public class MetabaseObject
                     final EntityObjectStringType key
                     )
     {
-        _properties.setProperty( MetabaseProperty.KEY, key );
+        this.key = key;
+//        _properties.setProperty( MetabaseProperty.KEY, key );
+    }
+
+
+    public EntityObjectStringType getKey()
+    {
+        return this.key;
+//        return _properties.getProperty(
+//                        MetabaseProperty.KEY, EntityObjectStringType.class );
     }
 
 
@@ -134,13 +152,6 @@ public class MetabaseObject
     }
 
 
-    public EntityObjectStringType getKey()
-    {
-        return _properties.getProperty(
-                        MetabaseProperty.KEY, EntityObjectStringType.class );
-    }
-
-
 
     /**
      */
@@ -148,7 +159,16 @@ public class MetabaseObject
                     final EntityObjectIntType id
                     )
     {
-        _properties.setProperty( MetabaseProperty.ID, id );
+        this.id = id;
+//        _properties.setProperty( MetabaseProperty.ID, id );
+    }
+
+
+    public EntityObjectIntType getID()
+    {
+        return this.id;
+//        return _properties.getProperty(
+//                        MetabaseProperty.ID, EntityObjectIntType.class );
     }
 
 
@@ -161,13 +181,6 @@ public class MetabaseObject
     }
 
 
-    public EntityObjectIntType getID()
-    {
-        return _properties.getProperty(
-                        MetabaseProperty.ID, EntityObjectIntType.class );
-    }
-
-
 
     /**
      */
@@ -175,10 +188,10 @@ public class MetabaseObject
                     final Collection<? extends Filter> filters
                     )
     {
-        if (_filter != filters) {
-            _filter.clear();
+        if (this.filter != filters) {
+            this.filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                _filter.addAll( filters );
+                this.filter.addAll( filters );
             }
         }
     }
@@ -192,7 +205,19 @@ public class MetabaseObject
             return false;
         }
 
-        return _filter.add( filter );
+        return this.filter.add( filter );
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return this.filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return this.filter.iterator();
     }
 
 
@@ -202,18 +227,6 @@ public class MetabaseObject
     {
         addFilter( filter );
         return this;
-    }
-
-
-    public Collection<Filter> getFilter()
-    {
-        return _filter;
-    }
-
-
-    public Iterator<Filter> iterateFilter()
-    {
-        return _filter.iterator();
     }
 
 

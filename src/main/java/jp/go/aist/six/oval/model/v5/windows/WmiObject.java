@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.v5.windows;
 
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 
 
@@ -41,15 +40,24 @@ public class WmiObject
     extends SystemObjectType
 {
 
-    private final EntityPropertyMap<WmiProperty>  _properties =
-        WmiProperty.createPropertyMap();
+    // XSD model:
+    // choice(
+    //         oval-def:set
+    //         sequence(
+    //                   namespace
+    //                   wql
+    //         )
+    // )
+
+    private EntityObjectStringType  namespace;
+    //{1..1}
+
+    private EntityObjectStringType  wql;
+    //{1..1}
 
 
-//    private EntityObjectStringType  _namespace;
-//    //{1..1}
-//
-//    private EntityObjectStringType  _wql;
-//    //{1..1}
+//    private final EntityPropertyMap<WmiProperty>  _properties =
+//        WmiProperty.createPropertyMap();
 
 
 
@@ -105,14 +113,16 @@ public class WmiObject
                     final EntityObjectStringType namespace
                     )
     {
-        _properties.setProperty( WmiProperty.NAMESPACE, namespace );
+        this.namespace = namespace;
+//        _properties.setProperty( WmiProperty.NAMESPACE, namespace );
     }
 
 
     public EntityObjectStringType getNamespace()
     {
-        return _properties.getProperty(
-                        WmiProperty.NAMESPACE, EntityObjectStringType.class );
+        return this.namespace;
+//        return _properties.getProperty(
+//                        WmiProperty.NAMESPACE, EntityObjectStringType.class );
     }
 
 
@@ -123,14 +133,16 @@ public class WmiObject
                     final EntityObjectStringType wql
                     )
     {
-        _properties.setProperty( WmiProperty.WQL, wql );
+        this.wql = wql;
+//        _properties.setProperty( WmiProperty.WQL, wql );
     }
 
 
     public EntityObjectStringType getWql()
     {
-        return _properties.getProperty(
-                        WmiProperty.WQL, EntityObjectStringType.class );
+        return this.wql;
+//        return _properties.getProperty(
+//                        WmiProperty.WQL, EntityObjectStringType.class );
     }
 
 
@@ -185,7 +197,9 @@ public class WmiObject
     public String toString()
     {
         return "wmi_object[" + super.toString()
-                        + ", " + String.valueOf( _properties )
+                        + ", " + getNamespace()
+                        + ", " + getWql()
+//                        + ", " + String.valueOf( _properties )
                         + "]";
     }
 
