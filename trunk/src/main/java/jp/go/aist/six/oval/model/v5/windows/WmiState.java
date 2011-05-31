@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.model.v5.windows;
 
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.v5.definitions.StateType;
@@ -42,19 +41,19 @@ public class WmiState
     extends StateType
 {
 
-    private final EntityPropertyMap<WmiProperty>  _properties =
-        WmiProperty.createPropertyMap();
+    private EntityStateStringType  namespace;
+    //{0..1}
+
+    private EntityStateStringType  wql;
+    //{0..1}
+
+    private EntityStateAnySimpleType  result;
+    //{0..1}
 
 
+//    private final EntityPropertyMap<WmiProperty>  _properties =
+//        WmiProperty.createPropertyMap();
 
-//    private EntityStateStringType  _namespace;
-//    //{0..1}
-//
-//    private EntityStateStringType  _wql;
-//    //{0..1}
-//
-//    private EntityStateAnySimpleType  _result;
-//    //{0..1}
 
 
 
@@ -82,14 +81,16 @@ public class WmiState
                     final EntityStateStringType namespace
                     )
     {
-        _properties.setProperty( WmiProperty.NAMESPACE, namespace );
+        this.namespace = namespace;
+//        _properties.setProperty( WmiProperty.NAMESPACE, namespace );
     }
 
 
     public EntityStateStringType getNamespace()
     {
-        return _properties.getProperty(
-                        WmiProperty.NAMESPACE, EntityStateStringType.class );
+        return this.namespace;
+//        return _properties.getProperty(
+//                        WmiProperty.NAMESPACE, EntityStateStringType.class );
     }
 
 
@@ -100,14 +101,16 @@ public class WmiState
                     final EntityStateStringType wql
                     )
     {
-        _properties.setProperty( WmiProperty.WQL, wql );
+        this.wql = wql;
+//        _properties.setProperty( WmiProperty.WQL, wql );
     }
 
 
     public EntityStateStringType getWql()
     {
-        return _properties.getProperty(
-                        WmiProperty.WQL, EntityStateStringType.class );
+        return this.wql;
+//        return _properties.getProperty(
+//                        WmiProperty.WQL, EntityStateStringType.class );
     }
 
 
@@ -118,14 +121,16 @@ public class WmiState
                     final EntityStateAnySimpleType result
                     )
     {
-        _properties.setProperty( WmiProperty.RESULT, result );
+        this.result = result;
+//        _properties.setProperty( WmiProperty.RESULT, result );
     }
 
 
     public EntityStateAnySimpleType getResult()
     {
-        return _properties.getProperty(
-                        WmiProperty.RESULT, EntityStateAnySimpleType.class );
+        return this.result;
+//        return _properties.getProperty(
+//                        WmiProperty.RESULT, EntityStateAnySimpleType.class );
     }
 
 
@@ -180,7 +185,10 @@ public class WmiState
     public String toString()
     {
         return "wmi_state[" + super.toString()
-                        + ", " + String.valueOf( _properties )
+                        + ", " + getNamespace()
+                        + ", " + getWql()
+                        + ", " + getResult()
+//                        + ", " + String.valueOf( _properties )
                         + "]";
     }
 

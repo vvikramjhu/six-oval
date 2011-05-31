@@ -45,16 +45,17 @@ public class FileObject
     private FileBehaviors  behaviors;
     //{0..1}
 
-    //TODO: schema 5.7 changes the content model.
+    //TODO: XSD model.
     // sequence(
-    //           behaviors,
+    //           behaviors
     //           choice(
-    //                      filepath,
+    //                      filepath
     //                      sequence(
-    //                                 path,
+    //                                 path
     //                                 filename
     //                              )
     //                 )
+    //           filter
     //         )
 
     private EntityObjectStringType  filepath;

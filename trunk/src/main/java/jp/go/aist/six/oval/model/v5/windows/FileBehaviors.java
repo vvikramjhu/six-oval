@@ -37,8 +37,6 @@ public class FileBehaviors
 {
 
 //    NOTE: AbstractBehaviors & AbstractFileBehaviors are distilled.
-//    private int  _maxDepth;
-//    //{optional, xsd:integer, default="-1"}
 
 
 

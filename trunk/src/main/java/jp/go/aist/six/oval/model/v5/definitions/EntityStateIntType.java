@@ -37,7 +37,9 @@ public class EntityStateIntType
     extends EntityStateSimpleBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.INT;
+    public static final DatatypeEnumeration  FIXED_DATATYPE =
+        DatatypeEnumeration.INT;
+    //{required, fixed="int"}
 
 
 

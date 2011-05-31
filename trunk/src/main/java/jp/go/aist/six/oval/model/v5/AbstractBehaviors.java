@@ -31,23 +31,26 @@ package jp.go.aist.six.oval.model.v5;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class AbstractBehaviors
-    extends AbstractOvalObject
+//    extends AbstractOvalObject
 {
 
     /**
      * The default maxDepth: -1.
      */
     public static final Integer  DEFAULT_MAX_DEPTH = -1;
-    private Integer _maxDepth;
+
+    private Integer  max_depth;
     //{optional, default='-1', minInclusive='-1'}
 
 
     /**
      * The default recurseDirection: "none".
      */
-    public static final RecurseDirectionEnumeration  DEFAULT_RECURSE_DIRECTION = RecurseDirectionEnumeration.NONE;
-    private RecurseDirectionEnumeration  _recurseDirection;
-    //{optional, default='none'}
+    public static final RecurseDirectionEnumeration  DEFAULT_RECURSE_DIRECTION =
+        RecurseDirectionEnumeration.NONE;
+
+    private RecurseDirectionEnumeration  recurse_direction;
+    //{optional, default="none"}
 
 
 
@@ -63,22 +66,22 @@ public abstract class AbstractBehaviors
     /**
      */
     public void setMaxDepth(
-                    final Integer maxDepth
+                    final Integer max_depth
                     )
     {
-        if (maxDepth != null) {
-            if (maxDepth < -1) {
-                throw new IllegalArgumentException( "invalid maxDepth: " + maxDepth );
+        if (max_depth != null) {
+            if (max_depth < -1) {
+                throw new IllegalArgumentException( "invalid maxDepth: " + max_depth );
             }
         }
 
-        _maxDepth = maxDepth;
+        this.max_depth = max_depth;
     }
 
 
     public Integer getMaxDepth()
     {
-        return _maxDepth;
+        return this.max_depth;
     }
 
 
@@ -93,16 +96,16 @@ public abstract class AbstractBehaviors
     /**
      */
     public void setRecurseDirection(
-                    final RecurseDirectionEnumeration direction
+                    final RecurseDirectionEnumeration recurse_direction
                     )
     {
-        _recurseDirection = direction;
+        this.recurse_direction = recurse_direction;
     }
 
 
     public RecurseDirectionEnumeration getRecurseDirection()
     {
-        return _recurseDirection;
+        return this.recurse_direction;
     }
 
 
