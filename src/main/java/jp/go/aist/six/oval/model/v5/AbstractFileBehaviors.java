@@ -37,9 +37,11 @@ public abstract class AbstractFileBehaviors
     /**
      * The default recurseFileSystem: "all".
      */
-    public static final RecurseFileSystemEnumeration  DEFAULT_RECURSE_FILE_SYSTEM = RecurseFileSystemEnumeration.ALL;
-    private RecurseFileSystemEnumeration  _recurseFileSystem;
-    //{optional, default='all'}
+    public static final RecurseFileSystemEnumeration  DEFAULT_RECURSE_FILE_SYSTEM =
+        RecurseFileSystemEnumeration.ALL;
+
+    private RecurseFileSystemEnumeration  recurse_file_system;
+    //{optional, default="all"}
 
 
 
@@ -55,16 +57,16 @@ public abstract class AbstractFileBehaviors
     /**
      */
     public void setRecurseFileSystem(
-                    final RecurseFileSystemEnumeration fileSystem
+                    final RecurseFileSystemEnumeration recurse_file_system
                     )
     {
-        _recurseFileSystem = fileSystem;
+        this.recurse_file_system = recurse_file_system;
     }
 
 
     public RecurseFileSystemEnumeration getRecurseFileSystem()
     {
-        return _recurseFileSystem;
+        return this.recurse_file_system;
     }
 
 

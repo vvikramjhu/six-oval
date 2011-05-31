@@ -25,7 +25,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.v5.definitions.Filter;
 import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 
@@ -43,7 +42,7 @@ public class FileObject
     extends SystemObjectType
 {
 
-    private FileBehaviors  _behaviors;
+    private FileBehaviors  behaviors;
     //{0..1}
 
     //TODO: schema 5.7 changes the content model.
@@ -57,21 +56,21 @@ public class FileObject
     //                              )
     //                 )
     //         )
-//    private EntityObjectString  _filepath;
-//    //{1..1}
-//
-//    private EntityObjectString  _path;
-//    //{1..1}
-//
-//    private EntityObjectString  _filename;
-//    //{1..1, nillable="true"}
 
-    private final EntityPropertyMap<FileProperty>  _properties =
-        FileProperty.createPropertyMap();
+    private EntityObjectStringType  filepath;
+    //{1..1}
+
+    private EntityObjectStringType  path;
+    //{1..1}
+
+    private EntityObjectStringType  filename;
+    //{1..1, nillable="true"}
+
+//    private final EntityPropertyMap<FileProperty>  _properties =
+//        FileProperty.createPropertyMap();
 
 
-
-    private final Collection<Filter>  _filter = new ArrayList<Filter>();
+    private final Collection<Filter>  filter = new ArrayList<Filter>();
     //{0..*}
 
 
@@ -137,7 +136,13 @@ public class FileObject
                     final FileBehaviors behaviors
                     )
     {
-        _behaviors = behaviors;
+        this.behaviors = behaviors;
+    }
+
+
+    public FileBehaviors getBehaviors()
+    {
+        return this.behaviors;
     }
 
 
@@ -150,19 +155,22 @@ public class FileObject
     }
 
 
-    public FileBehaviors getBehaviors()
-    {
-        return _behaviors;
-    }
-
-
     /**
      */
     public void setFilepath(
                     final EntityObjectStringType filepath
                     )
     {
-        _properties.setProperty( FileProperty.FILEPATH, filepath );
+        this.filepath = filepath;
+//        _properties.setProperty( FileProperty.FILEPATH, filepath );
+    }
+
+
+    public EntityObjectStringType getFilepath()
+    {
+        return this.filepath;
+//        return _properties.getProperty(
+//                        FileProperty.FILEPATH, EntityObjectStringType.class );
     }
 
 
@@ -175,19 +183,23 @@ public class FileObject
     }
 
 
-    public EntityObjectStringType getFilepath()
-    {
-        return _properties.getProperty(
-                        FileProperty.FILEPATH, EntityObjectStringType.class );
-    }
 
-
-
+    /**
+     */
     public void setPath(
                     final EntityObjectStringType path
                     )
     {
-        _properties.setProperty( FileProperty.PATH, path );
+        this.path = path;
+//        _properties.setProperty( FileProperty.PATH, path );
+    }
+
+
+    public EntityObjectStringType getPath()
+    {
+        return this.path;
+//        return _properties.getProperty(
+//                        FileProperty.PATH, EntityObjectStringType.class );
     }
 
 
@@ -200,19 +212,23 @@ public class FileObject
     }
 
 
-    public EntityObjectStringType getPath()
-    {
-        return _properties.getProperty(
-                        FileProperty.PATH, EntityObjectStringType.class );
-    }
 
-
-
+    /**
+     */
     public void setFilename(
                     final EntityObjectStringType filename
                     )
     {
-        _properties.setProperty( FileProperty.FILENAME, filename);
+        this.filename = filename;
+//        _properties.setProperty( FileProperty.FILENAME, filename);
+    }
+
+
+    public EntityObjectStringType getFilename()
+    {
+        return this.filename;
+//        return _properties.getProperty(
+//                        FileProperty.FILENAME, EntityObjectStringType.class );
     }
 
 
@@ -225,24 +241,17 @@ public class FileObject
     }
 
 
-    public EntityObjectStringType getFilename()
-    {
-        return _properties.getProperty(
-                        FileProperty.FILENAME, EntityObjectStringType.class );
-    }
-
-
 
     /**
      */
     public void setFilter(
-                    final Collection<? extends Filter> filters
+                    final Collection<? extends Filter> filterList
                     )
     {
-        if (_filter != filters) {
-            _filter.clear();
-            if (filters != null  &&  filters.size() > 0) {
-                _filter.addAll( filters );
+        if (this.filter != filterList) {
+            this.filter.clear();
+            if (filterList != null  &&  filterList.size() > 0) {
+                this.filter.addAll( filterList );
             }
         }
     }
@@ -256,7 +265,19 @@ public class FileObject
             return false;
         }
 
-        return _filter.add( filter );
+        return this.filter.add( filter );
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return this.filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return filter.iterator();
     }
 
 
@@ -266,18 +287,6 @@ public class FileObject
     {
         addFilter( filter );
         return this;
-    }
-
-
-    public Collection<Filter> getFilter()
-    {
-        return _filter;
-    }
-
-
-    public Iterator<Filter> iterateFilter()
-    {
-        return _filter.iterator();
     }
 
 
