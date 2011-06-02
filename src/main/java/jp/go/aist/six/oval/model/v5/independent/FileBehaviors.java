@@ -41,8 +41,10 @@ public class FileBehaviors
     /**
      * The default recurseDirection: "symlinks and directories".
      */
-    public static final RecurseEnumeration  DEFAULT_RECURSE = RecurseEnumeration.SYMLINKS_AND_DIRECTORIES;
-    private RecurseEnumeration  _recurse;
+    public static final RecurseEnumeration  DEFAULT_RECURSE =
+        RecurseEnumeration.SYMLINKS_AND_DIRECTORIES;
+
+    private RecurseEnumeration  recurse;
     //{optional, default='symlinks and directories'}
 
 
@@ -62,13 +64,13 @@ public class FileBehaviors
                     final RecurseEnumeration recurse
                     )
     {
-        _recurse = recurse;
+        this.recurse = recurse;
     }
 
 
     public RecurseEnumeration getRecurse()
     {
-        return _recurse;
+        return this.recurse;
     }
 
 
