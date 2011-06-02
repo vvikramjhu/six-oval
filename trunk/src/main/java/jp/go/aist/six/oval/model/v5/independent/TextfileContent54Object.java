@@ -26,7 +26,6 @@ import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityObjectIntType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.v5.definitions.Filter;
 import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 
@@ -43,36 +42,49 @@ import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 public class TextfileContent54Object
     extends SystemObjectType
 {
+    // XSD model:
+    // choice(
+    //         set
+    //         sequence(
+    //                   behaviors
+    //                   choice(
+    //                           filepath
+    //                           sequence( path filename )
+    //                   )
+    //                   pattern
+    //                   instance
+    //                   filter
+    //          )
+    // )
 
-    private TextfileContent54Behaviors  _behaviors;
+    private TextfileContent54Behaviors  behaviors;
     //{0..1}
 
 
-    private final EntityPropertyMap<TextfileContentProperty>  _properties =
-        TextfileContentProperty.createPropertyMap();
+    private EntityObjectStringType  filepath;
+    //{1..1}
+
+    private EntityObjectStringType  path;
+    //{1..1}
+
+    private EntityObjectStringType  filename;
+    //{1..1}
 
 
-//    // xsd:choice( filepath | path+filename)
-//
-//    private EntityObjectString  _filepath;
-//    //{1..1}
-//
-//    private EntityObjectString  _path;
-//    //{1..1}
-//
-//    private EntityObjectString  _filename;
-//    //{1..1}
-//
-//
-//    private EntityObjectString  _pattern;
-//    //{1..1}
-//
-//
-//    private EntityObjectInt  _instance;
-//    //{1..1}
+    private EntityObjectStringType  pattern;
+    //{1..1}
 
 
-    private final Collection<Filter>  _filter = new ArrayList<Filter>();
+    private EntityObjectIntType  instance;
+    //{1..1}
+
+
+//    private final EntityPropertyMap<TextfileContentProperty>  _properties =
+//        TextfileContentProperty.createPropertyMap();
+
+
+
+    private final Collection<Filter>  filter = new ArrayList<Filter>();
     //{0..*}
 
 
@@ -146,7 +158,13 @@ public class TextfileContent54Object
                     final TextfileContent54Behaviors behaviors
                     )
     {
-        _behaviors = behaviors;
+        this.behaviors = behaviors;
+    }
+
+
+    public TextfileContent54Behaviors getBehaviors()
+    {
+        return this.behaviors;
     }
 
 
@@ -159,12 +177,6 @@ public class TextfileContent54Object
     }
 
 
-    public TextfileContent54Behaviors getBehaviors()
-    {
-        return _behaviors;
-    }
-
-
 
     /**
      */
@@ -172,7 +184,16 @@ public class TextfileContent54Object
                     final EntityObjectStringType filepath
                     )
     {
-        _properties.setProperty( TextfileContentProperty.FILEPATH, filepath );
+        this.filepath = filepath;
+//        _properties.setProperty( TextfileContentProperty.FILEPATH, filepath );
+    }
+
+
+    public EntityObjectStringType getFilepath()
+    {
+        return this.filepath;
+//        return _properties.getProperty(
+//                        TextfileContentProperty.FILEPATH, EntityObjectStringType.class );
     }
 
 
@@ -185,13 +206,6 @@ public class TextfileContent54Object
     }
 
 
-    public EntityObjectStringType getFilepath()
-    {
-        return _properties.getProperty(
-                        TextfileContentProperty.FILEPATH, EntityObjectStringType.class );
-    }
-
-
 
     /**
      */
@@ -199,7 +213,16 @@ public class TextfileContent54Object
                     final EntityObjectStringType path
                     )
     {
-        _properties.setProperty( TextfileContentProperty.PATH, path );
+        this.path = path;
+//        _properties.setProperty( TextfileContentProperty.PATH, path );
+    }
+
+
+    public EntityObjectStringType getPath()
+    {
+        return path;
+//        return _properties.getProperty(
+//                        TextfileContentProperty.PATH, EntityObjectStringType.class );
     }
 
 
@@ -212,13 +235,6 @@ public class TextfileContent54Object
     }
 
 
-    public EntityObjectStringType getPath()
-    {
-        return _properties.getProperty(
-                        TextfileContentProperty.PATH, EntityObjectStringType.class );
-    }
-
-
 
     /**
      */
@@ -226,7 +242,16 @@ public class TextfileContent54Object
                     final EntityObjectStringType filename
                     )
     {
-        _properties.setProperty( TextfileContentProperty.FILENAME, filename );
+        this.filename = filename;
+//        _properties.setProperty( TextfileContentProperty.FILENAME, filename );
+    }
+
+
+    public EntityObjectStringType getFilename()
+    {
+        return this.filename;
+//        return _properties.getProperty(
+//                        TextfileContentProperty.FILENAME, EntityObjectStringType.class );
     }
 
 
@@ -239,13 +264,6 @@ public class TextfileContent54Object
     }
 
 
-    public EntityObjectStringType getFilename()
-    {
-        return _properties.getProperty(
-                        TextfileContentProperty.FILENAME, EntityObjectStringType.class );
-    }
-
-
 
     /**
      */
@@ -253,7 +271,16 @@ public class TextfileContent54Object
                     final EntityObjectStringType pattern
                     )
     {
-        _properties.setProperty( TextfileContentProperty.PATTERN, pattern );
+        this.pattern = pattern;
+//        _properties.setProperty( TextfileContentProperty.PATTERN, pattern );
+    }
+
+
+    public EntityObjectStringType getPattern()
+    {
+        return this.pattern;
+//        return _properties.getProperty(
+//                        TextfileContentProperty.PATTERN, EntityObjectStringType.class );
     }
 
 
@@ -266,13 +293,6 @@ public class TextfileContent54Object
     }
 
 
-    public EntityObjectStringType getPattern()
-    {
-        return _properties.getProperty(
-                        TextfileContentProperty.PATTERN, EntityObjectStringType.class );
-    }
-
-
 
     /**
      */
@@ -280,7 +300,16 @@ public class TextfileContent54Object
                     final EntityObjectIntType instance
                     )
     {
-        _properties.setProperty( TextfileContentProperty.INSTANCE, instance );
+        this.instance = instance;
+//        _properties.setProperty( TextfileContentProperty.INSTANCE, instance );
+    }
+
+
+    public EntityObjectIntType getInstance()
+    {
+        return this.instance;
+//        return _properties.getProperty(
+//                        TextfileContentProperty.INSTANCE, EntityObjectIntType.class );
     }
 
 
@@ -293,24 +322,17 @@ public class TextfileContent54Object
     }
 
 
-    public EntityObjectIntType getInstance()
-    {
-        return _properties.getProperty(
-                        TextfileContentProperty.INSTANCE, EntityObjectIntType.class );
-    }
-
-
 
     /**
      */
     public void setFilter(
-                    final Collection<? extends Filter> filters
+                    final Collection<? extends Filter> filterList
                     )
     {
-        if (_filter != filters) {
-            _filter.clear();
-            if (filters != null  &&  filters.size() > 0) {
-                _filter.addAll( filters );
+        if (this.filter != filterList) {
+            this.filter.clear();
+            if (filterList != null  &&  filterList.size() > 0) {
+                this.filter.addAll( filterList );
             }
         }
     }
@@ -324,7 +346,19 @@ public class TextfileContent54Object
             return false;
         }
 
-        return _filter.add( filter );
+        return this.filter.add( filter );
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return this.filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return this.filter.iterator();
     }
 
 
@@ -334,18 +368,6 @@ public class TextfileContent54Object
     {
         addFilter( filter );
         return this;
-    }
-
-
-    public Collection<Filter> getFilter()
-    {
-        return _filter;
-    }
-
-
-    public Iterator<Filter> iterateFilter()
-    {
-        return _filter.iterator();
     }
 
 

@@ -36,17 +36,20 @@ public class TextfileContent54Behaviors
 {
 
     public static final Boolean  DEFAULT_IGNORE_CASE = Boolean.FALSE;
-    private Boolean  _ignoreCase;
+
+    private Boolean  ignore_case;
     //{optional, default='false'}
 
 
     public static final Boolean  DEFAULT_MULTILINE = Boolean.TRUE;
-    private Boolean  _multiline;
+
+    private Boolean  multiline;
     //{optional, default='true'}
 
 
     public static final Boolean  DEFAULT_SINGLELINE = Boolean.FALSE;
-    private Boolean  _singleline;
+
+    private Boolean  singleline;
     //{optional, default='false'}
 
 
@@ -63,10 +66,16 @@ public class TextfileContent54Behaviors
     /**
      */
     public void setIgnoreCase(
-                    final Boolean ignoreCase
+                    final Boolean ignore_case
                     )
     {
-        _ignoreCase = ignoreCase;
+        this.ignore_case = ignore_case;
+    }
+
+
+    public Boolean getIgnoreCase()
+    {
+        return this.ignore_case;
     }
 
 
@@ -79,16 +88,10 @@ public class TextfileContent54Behaviors
     }
 
 
-    public Boolean getIgnoreCase()
-    {
-        return _ignoreCase;
-    }
-
-
     protected final boolean _ignoreCase()
     {
-        Boolean  ignoreCase = getIgnoreCase();
-        return (ignoreCase == null ? DEFAULT_IGNORE_CASE.booleanValue() : ignoreCase.booleanValue());
+        Boolean  ignore_case = getIgnoreCase();
+        return (ignore_case == null ? DEFAULT_IGNORE_CASE.booleanValue() : ignore_case.booleanValue());
     }
 
 
@@ -99,7 +102,13 @@ public class TextfileContent54Behaviors
                     final Boolean multiline
                     )
     {
-        _multiline = multiline;
+        this.multiline = multiline;
+    }
+
+
+    public Boolean getMultiline()
+    {
+        return this.multiline;
     }
 
 
@@ -109,12 +118,6 @@ public class TextfileContent54Behaviors
     {
         setMultiline( multiline );
         return this;
-    }
-
-
-    public Boolean getMultiline()
-    {
-        return _multiline;
     }
 
 
@@ -132,7 +135,13 @@ public class TextfileContent54Behaviors
                     final Boolean singleline
                     )
     {
-        _singleline = singleline;
+        this.singleline = singleline;
+    }
+
+
+    public Boolean getSingleline()
+    {
+        return this.singleline;
     }
 
 
@@ -142,12 +151,6 @@ public class TextfileContent54Behaviors
     {
         setSingleline( singleline );
         return this;
-    }
-
-
-    public Boolean getSingleline()
-    {
-        return _singleline;
     }
 
 
