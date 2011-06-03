@@ -39,11 +39,11 @@ public abstract class LinuxPkgInfoObject
     extends SystemObjectType
 {
 
-    private EntityObjectStringType  _name;
+    private EntityObjectStringType  name;
     //{1..1}
 
 
-    private final Collection<Filter>  _filter = new ArrayList<Filter>();
+    private final Collection<Filter>  filter = new ArrayList<Filter>();
     //{0..*}
 
 
@@ -82,13 +82,13 @@ public abstract class LinuxPkgInfoObject
                     final EntityObjectStringType name
                     )
     {
-        _name = name;
+        this.name = name;
     }
 
 
     public EntityObjectStringType getName()
     {
-        return _name;
+        return this.name;
     }
 
 
@@ -96,13 +96,13 @@ public abstract class LinuxPkgInfoObject
     /**
      */
     public void setFilter(
-                    final Collection<? extends Filter> filters
+                    final Collection<? extends Filter> filterList
                     )
     {
-        if (_filter != filters) {
-            _filter.clear();
-            if (filters != null  &&  filters.size() > 0) {
-                _filter.addAll( filters );
+        if (this.filter != filterList) {
+            this.filter.clear();
+            if (filterList != null  &&  filterList.size() > 0) {
+                this.filter.addAll( filterList );
             }
         }
     }
@@ -116,19 +116,19 @@ public abstract class LinuxPkgInfoObject
             return false;
         }
 
-        return _filter.add( filter );
+        return this.filter.add( filter );
     }
 
 
     public Collection<Filter> getFilter()
     {
-        return _filter;
+        return this.filter;
     }
 
 
     public Iterator<Filter> iterateFilter()
     {
-        return _filter.iterator();
+        return this.filter.iterator();
     }
 
 

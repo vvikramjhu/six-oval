@@ -22,6 +22,8 @@ package jp.go.aist.six.oval.model.v5.unix;
 
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
+import jp.go.aist.six.oval.model.v5.definitions.StateRefType;
+import jp.go.aist.six.oval.model.v5.definitions.SystemObjectRefType;
 import jp.go.aist.six.oval.model.v5.definitions.TestType;
 
 
@@ -63,6 +65,19 @@ public class UnameTest
                     )
     {
         super( id, version, comment, check );
+    }
+
+
+    public UnameTest(
+                    final String id,
+                    final int version,
+                    final String comment,
+                    final CheckEnumeration check,
+                    final SystemObjectRefType object,
+                    final StateRefType[] stateList
+                    )
+    {
+        super( id, version, comment, check, object, stateList );
     }
 
 

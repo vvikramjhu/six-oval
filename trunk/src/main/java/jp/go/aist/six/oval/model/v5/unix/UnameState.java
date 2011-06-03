@@ -39,6 +39,26 @@ public class UnameState
     extends StateType
 {
 
+    private EntityStateStringType  machine_class;
+    //{0..1}
+
+    private EntityStateStringType  node_name;
+    //{0..1}
+
+    private EntityStateStringType  os_name;
+    //{0..1}
+
+    private EntityStateStringType  os_release;
+    //{0..1}
+
+    private EntityStateStringType  os_version;
+    //{0..1}
+
+    private EntityStateStringType  processor_type;
+    //{0..1}
+
+
+
     private final EntityPropertyMap<UnameProperty>  _properties =
         UnameProperty.createPropertyMap();
 
@@ -75,26 +95,28 @@ public class UnameState
     /**
      */
     public void setMachineClass(
-                    final EntityStateStringType machineClass
+                    final EntityStateStringType machine_class
                     )
     {
-        _properties.setProperty( UnameProperty.MACHINE_CLASS, machineClass );
-    }
-
-
-    public UnameState machineClass(
-                    final EntityStateStringType machineClass
-                    )
-    {
-        setMachineClass( machineClass );
-        return this;
+        this.machine_class = machine_class;
+//        _properties.setProperty( UnameProperty.MACHINE_CLASS, machineClass );
     }
 
 
     public EntityStateStringType getMachineClass()
     {
-        return _properties.getProperty(
-                        UnameProperty.MACHINE_CLASS, EntityStateStringType.class );
+        return this.machine_class;
+//        return _properties.getProperty(
+//                        UnameProperty.MACHINE_CLASS, EntityStateStringType.class );
+    }
+
+
+    public UnameState machineClass(
+                    final EntityStateStringType machine_class
+                    )
+    {
+        setMachineClass( machine_class );
+        return this;
     }
 
 
@@ -102,10 +124,11 @@ public class UnameState
     /**
      */
     public void setNodeName(
-                    final EntityStateStringType nodeName
+                    final EntityStateStringType node_name
                     )
     {
-        _properties.setProperty( UnameProperty.NODE_NAME, nodeName );
+        this.node_name = node_name;
+//        _properties.setProperty( UnameProperty.NODE_NAME, nodeName );
     }
 
 
@@ -120,8 +143,9 @@ public class UnameState
 
     public EntityStateStringType getNodeName()
     {
-        return _properties.getProperty(
-                        UnameProperty.NODE_NAME, EntityStateStringType.class );
+        return this.node_name;
+//        return _properties.getProperty(
+//                        UnameProperty.NODE_NAME, EntityStateStringType.class );
     }
 
 
@@ -129,26 +153,28 @@ public class UnameState
     /**
      */
     public void setOsName(
-                    final EntityStateStringType name
+                    final EntityStateStringType os_name
                     )
     {
-        _properties.setProperty( UnameProperty.OS_NAME, name );
-    }
-
-
-    public UnameState osName(
-                    final EntityStateStringType name
-                    )
-    {
-        setOsName( name );
-        return this;
+        this.os_name = os_name;
+//        _properties.setProperty( UnameProperty.OS_NAME, name );
     }
 
 
     public EntityStateStringType getOsName()
     {
-        return _properties.getProperty(
-                        UnameProperty.OS_NAME, EntityStateStringType.class );
+        return this.os_name;
+//        return _properties.getProperty(
+//                        UnameProperty.OS_NAME, EntityStateStringType.class );
+    }
+
+
+    public UnameState osName(
+                    final EntityStateStringType os_name
+                    )
+    {
+        setOsName( os_name );
+        return this;
     }
 
 
@@ -156,10 +182,19 @@ public class UnameState
     /**
      */
     public void setOsRelease(
-                    final EntityStateStringType release
+                    final EntityStateStringType os_release
                     )
     {
-        _properties.setProperty( UnameProperty.OS_RELEASE, release );
+        this.os_release = os_release;
+//        _properties.setProperty( UnameProperty.OS_RELEASE, release );
+    }
+
+
+    public EntityStateStringType getOsRelease()
+    {
+        return this.os_release;
+//        return _properties.getProperty(
+//                        UnameProperty.OS_RELEASE, EntityStateStringType.class );
     }
 
 
@@ -172,37 +207,32 @@ public class UnameState
     }
 
 
-    public EntityStateStringType getOsRelease()
-    {
-        return _properties.getProperty(
-                        UnameProperty.OS_RELEASE, EntityStateStringType.class );
-    }
-
-
 
     /**
      */
     public void setOsVersion(
-                    final EntityStateStringType version
+                    final EntityStateStringType os_version
                     )
     {
-        _properties.setProperty( UnameProperty.OS_VERSION, version );
-    }
-
-
-    public UnameState osVersion(
-                    final EntityStateStringType version
-                    )
-    {
-        setOsVersion( version );
-        return this;
+        this.os_version = os_version;
+//        _properties.setProperty( UnameProperty.OS_VERSION, version );
     }
 
 
     public EntityStateStringType getOsVersion()
     {
-        return _properties.getProperty(
-                        UnameProperty.OS_VERSION, EntityStateStringType.class );
+        return this.os_version;
+//        return _properties.getProperty(
+//                        UnameProperty.OS_VERSION, EntityStateStringType.class );
+    }
+
+
+    public UnameState osVersion(
+                    final EntityStateStringType os_version
+                    )
+    {
+        setOsVersion( os_version );
+        return this;
     }
 
 
@@ -213,7 +243,8 @@ public class UnameState
                     final EntityStateStringType type
                     )
     {
-        _properties.setProperty( UnameProperty.PROCESSOR_TYPE, type );
+        this.processor_type = type;
+//        _properties.setProperty( UnameProperty.PROCESSOR_TYPE, type );
     }
 
 
