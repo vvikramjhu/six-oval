@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.linux;
 
-import jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup;
-import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.v5.definitions.StateType;
@@ -38,19 +36,18 @@ public abstract class LinuxPkgInfoState
     extends StateType
 {
 
-    private final EntityPropertyMap<LinuxPkgProperty>  _properties =
-        LinuxPkgProperty.createPropertyMap();
+    private EntityStateStringType  name;
+    //{0..1}
+
+    private EntityStateStringType  arch;
+    //{0..1}
+
+    private EntityStateAnySimpleType  version;
+    //{0..1}
 
 
-
-//    private EntityStateString  _name;
-//    //{0..1}
-//
-//    private EntityStateString  _arch;
-//    //{0..1}
-//
-//    private EntityStateAnySimple  _version;
-//    //{0..1}
+//    private final EntityPropertyMap<LinuxPkgProperty>  _properties =
+//        LinuxPkgProperty.createPropertyMap();
 
 
 
@@ -72,12 +69,12 @@ public abstract class LinuxPkgInfoState
 
 
 
-    /**
-     */
-    protected EntityPropertyMap<LinuxPkgProperty> _getProperties()
-    {
-        return _properties;
-    }
+//    /**
+//     */
+//    protected EntityPropertyMap<LinuxPkgProperty> _getProperties()
+//    {
+//        return _properties;
+//    }
 
 
 
@@ -87,48 +84,56 @@ public abstract class LinuxPkgInfoState
                     final EntityStateStringType name
                     )
     {
-        _setProperty( LinuxPkgProperty.NAME, name );
-//        _name = name;
+        this.name = name;
+//        _setProperty( LinuxPkgProperty.NAME, name );
     }
 
 
     public EntityStateStringType getName()
     {
-        return _getProperty(
-                        LinuxPkgProperty.NAME, EntityStateStringType.class );
-//        return _name;
+        return this.name;
+//        return _getProperty(
+//                        LinuxPkgProperty.NAME, EntityStateStringType.class );
     }
 
 
 
+    /**
+     */
     public void setArch(
                     final EntityStateStringType arch
                     )
     {
-        _setProperty( LinuxPkgProperty.ARCH, arch );
+        this.arch = arch;
+//        _setProperty( LinuxPkgProperty.ARCH, arch );
     }
 
 
     public EntityStateStringType getArch()
     {
-        return _getProperty(
-                        LinuxPkgProperty.ARCH, EntityStateStringType.class );
+        return this.arch;
+//        return _getProperty(
+//                        LinuxPkgProperty.ARCH, EntityStateStringType.class );
     }
 
 
 
+    /**
+     */
     public void setVersion(
                     final EntityStateAnySimpleType version
                     )
     {
-        _setProperty( LinuxPkgProperty.VERSION, version );
+        this.version = version;
+//        _setProperty( LinuxPkgProperty.VERSION, version );
     }
 
 
     public EntityStateAnySimpleType getVersion()
     {
-        return _getProperty(
-                        LinuxPkgProperty.VERSION, EntityStateAnySimpleType.class );
+        return this.version;
+//        return _getProperty(
+//                        LinuxPkgProperty.VERSION, EntityStateAnySimpleType.class );
     }
 
 
@@ -145,33 +150,43 @@ public abstract class LinuxPkgInfoState
 
 
 
-    /**
-     */
-    protected <T extends EntityAttributeGroup> T _getProperty(
-                    final LinuxPkgProperty key,
-                    final Class<T> type
-                    )
-    {
-        return _properties.getProperty( key, type );
-    }
-
-
-
-    /**
-     */
-    protected void _setProperty(
-                    final LinuxPkgProperty key,
-                    final EntityAttributeGroup value
-                    )
-    {
-        _properties.setProperty( key, value );
-    }
+//    /**
+//     */
+//    protected <T extends EntityAttributeGroup> T _getProperty(
+//                    final LinuxPkgProperty key,
+//                    final Class<T> type
+//                    )
+//    {
+//        return _properties.getProperty( key, type );
+//    }
+//
+//
+//
+//    /**
+//     */
+//    protected void _setProperty(
+//                    final LinuxPkgProperty key,
+//                    final EntityAttributeGroup value
+//                    )
+//    {
+//        _properties.setProperty( key, value );
+//    }
 
 
 
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
+
+    @Override
+    public String toString()
+    {
+        return super.toString()
+                        + ", name=" + getName()
+                        + ", arch=" + getArch()
+                        + ", version=" + getVersion()
+                        ;
+    }
 
 }
 // LinuxPkgInfoState

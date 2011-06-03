@@ -35,14 +35,14 @@ public abstract class LinuxEvrPkgInfoState
     extends LinuxPkgInfoState
 {
 
-//    private EntityStateAnySimple  _epoch;
-//    //{0..1}
-//
-//    private EntityStateAnySimple  _release;
-//    //{0..1}
-//
-//    private EntityStateEVRString  _evr;
-//    //{0..1}
+    private EntityStateAnySimpleType  epoch;
+    //{0..1}
+
+    private EntityStateAnySimpleType  release;
+    //{0..1}
+
+    private EntityStateEVRStringType  evr;
+    //{0..1}
 
 
 
@@ -70,14 +70,16 @@ public abstract class LinuxEvrPkgInfoState
                     final EntityStateAnySimpleType epoch
                     )
     {
-        _setProperty( LinuxPkgProperty.EPOCH, epoch );
+        this.epoch = epoch;
+//        _setProperty( LinuxPkgProperty.EPOCH, epoch );
     }
 
 
     public EntityStateAnySimpleType getEpoch()
     {
-        return _getProperty(
-                        LinuxPkgProperty.EPOCH, EntityStateAnySimpleType.class );
+        return this.epoch;
+//        return _getProperty(
+//                        LinuxPkgProperty.EPOCH, EntityStateAnySimpleType.class );
     }
 
 
@@ -88,14 +90,16 @@ public abstract class LinuxEvrPkgInfoState
                     final EntityStateAnySimpleType release
                     )
     {
-        _setProperty( LinuxPkgProperty.RELEASE, release );
+        this.release = release;
+//        _setProperty( LinuxPkgProperty.RELEASE, release );
     }
 
 
     public EntityStateAnySimpleType getRelease()
     {
-        return _getProperty(
-                        LinuxPkgProperty.RELEASE, EntityStateAnySimpleType.class );
+        return this.release;
+//        return _getProperty(
+//                        LinuxPkgProperty.RELEASE, EntityStateAnySimpleType.class );
     }
 
 
@@ -106,14 +110,16 @@ public abstract class LinuxEvrPkgInfoState
                     final EntityStateEVRStringType evr
                     )
     {
-        _setProperty( LinuxPkgProperty.EVR, evr );
+        this.evr = evr;
+//        _setProperty( LinuxPkgProperty.EVR, evr );
     }
 
 
     public EntityStateEVRStringType getEvr()
     {
-        return _getProperty(
-                        LinuxPkgProperty.EVR, EntityStateEVRStringType.class );
+        return this.evr;
+//        return _getProperty(
+//                        LinuxPkgProperty.EVR, EntityStateEVRStringType.class );
     }
 
 
@@ -121,6 +127,16 @@ public abstract class LinuxEvrPkgInfoState
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
+
+    @Override
+    public String toString()
+    {
+        return super.toString()
+                        + ", epoch=" + getEpoch()
+                        + ", release=" + getRelease()
+                        + ", evr=" + getEvr()
+                        ;
+    }
 
 }
 // LinuxEvrPkgInfoState

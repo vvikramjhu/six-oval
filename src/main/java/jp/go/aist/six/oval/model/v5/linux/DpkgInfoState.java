@@ -107,7 +107,7 @@ public class DpkgInfoState
     public String toString()
     {
         return "dpkginfo_state[" + super.toString()
-                        + ", " + String.valueOf( _getProperties() )
+//                        + ", " + String.valueOf( _getProperties() )
                         + "]";
     }
 
