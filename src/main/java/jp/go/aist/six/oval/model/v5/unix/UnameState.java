@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.model.v5.unix;
 
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.v5.definitions.StateType;
 
@@ -59,8 +58,8 @@ public class UnameState
 
 
 
-    private final EntityPropertyMap<UnameProperty>  _properties =
-        UnameProperty.createPropertyMap();
+//    private final EntityPropertyMap<UnameProperty>  _properties =
+//        UnameProperty.createPropertyMap();
 
 
 
@@ -248,19 +247,20 @@ public class UnameState
     }
 
 
+    public EntityStateStringType getProcessorType()
+    {
+        return this.processor_type;
+//        return _properties.getProperty(
+//                        UnameProperty.PROCESSOR_TYPE, EntityStateStringType.class );
+    }
+
+
     public UnameState processorType(
                     final EntityStateStringType type
                     )
     {
         setProcessorType( type );
         return this;
-    }
-
-
-    public EntityStateStringType getProcessorType()
-    {
-        return _properties.getProperty(
-                        UnameProperty.PROCESSOR_TYPE, EntityStateStringType.class );
     }
 
 
@@ -315,7 +315,13 @@ public class UnameState
     public String toString()
     {
         return "uname_state[" + super.toString()
-                        + ", " + String.valueOf( _properties )
+                        + ", machine_class=" + getMachineClass()
+                        + ", node_name=" + getNodeName()
+                        + ", os_name=" + getOsName()
+                        + ", os_release=" + getOsRelease()
+                        + ", os_version=" + getOsVersion()
+                        + ", processor_type=" + getProcessorType()
+//                        + ", " + String.valueOf( _properties )
                         + "]";
     }
 
