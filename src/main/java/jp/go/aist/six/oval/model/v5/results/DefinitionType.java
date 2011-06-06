@@ -20,11 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.results;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
-import jp.go.aist.six.oval.model.v5.common.MessageType;
 
 
 
@@ -40,8 +36,9 @@ public class DefinitionType
 //    implements Dependent<SystemType>
 {
 
-    private final Collection<MessageType>  message = new ArrayList<MessageType>();
-    //{0..*}
+    //TODO: Move "id" from OvalElement to here.
+//    private String  definition_id;
+//    //{oval:DefinitionIDPattern, required}
 
 
     private CriteriaType  criteria;
@@ -83,36 +80,6 @@ public class DefinitionType
 
     /**
      */
-    @Override
-    public void setMessage(
-                    final Collection<? extends MessageType> messageList
-                    )
-    {
-        if (this.message != messageList) {
-            this.message.clear();
-            if (messageList != null  &&  messageList.size() > 0) {
-                this.message.addAll( messageList );
-            }
-        }
-    }
-
-
-    @Override
-    public Collection<MessageType> getMessage()
-    {
-        return this.message;
-    }
-
-
-    public Iterator<MessageType> iterateMessage()
-    {
-        return this.message.iterator();
-    }
-
-
-
-    /**
-     */
     public void setCriteria(
                     final CriteriaType criteria
                     )
@@ -140,10 +107,10 @@ public class DefinitionType
     /**
      */
     public void setDefinitionID(
-                    final String id
+                    final String definition_id
                     )
     {
-        setOvalID( id );
+        setOvalID( definition_id );
     }
 
 

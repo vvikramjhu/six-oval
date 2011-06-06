@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.results;
 
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
@@ -33,16 +32,18 @@ import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class DirectiveType
-    extends AbstractOvalObject
+//    extends AbstractOvalObject
 //    implements Dependent<SystemResult>
 {
 
-    private boolean  _reported;
+    private boolean  reported;
     //{required}
 
 
-    public static final ContentEnumeration  DEFAULT_CONTENT = ContentEnumeration.FULL;
-    private ContentEnumeration  _content;
+    public static final ContentEnumeration  DEFAULT_CONTENT =
+        ContentEnumeration.FULL;
+
+    private ContentEnumeration  content;
     //{optional, default="full"}
 
 
@@ -70,13 +71,13 @@ public class DirectiveType
                     final boolean reported
                     )
     {
-        _reported = reported;
+        this.reported = reported;
     }
 
 
     public boolean isReported()
     {
-        return _reported;
+        return this.reported;
     }
 
 
@@ -87,13 +88,13 @@ public class DirectiveType
                     final ContentEnumeration content
                     )
     {
-        _content = content;
+        this.content = content;
     }
 
 
     public ContentEnumeration getContent()
     {
-        return _content;
+        return this.content;
     }
 
 

@@ -20,8 +20,10 @@
 
 package jp.go.aist.six.oval.model.v5.results;
 
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
-import jp.go.aist.six.util.persist.Dependent;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import jp.go.aist.six.oval.model.v5.common.MessageType;
 
 
 
@@ -34,15 +36,19 @@ import jp.go.aist.six.util.persist.Dependent;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class TestedItemType
-    extends AbstractOvalObject
-    implements Dependent<TestType>
+//    extends AbstractOvalObject
+//    implements Dependent<TestType>
 {
 
-    private int  _itemID;
+    private final Collection<MessageType>  message = new ArrayList<MessageType>();
+    //{0..*}
+
+
+    private int  item_id;
     //{required}
 
 
-    private ResultEnumeration  _result;
+    private ResultEnumeration  result;
     //{required}
 
 
@@ -56,11 +62,11 @@ public class TestedItemType
 
 
     public TestedItemType(
-                    final int itemID,
+                    final int item_id,
                     final ResultEnumeration result
                     )
     {
-        setItemID( itemID );
+        setItemID( item_id );
         setResult( result );
     }
 
@@ -68,17 +74,45 @@ public class TestedItemType
 
     /**
      */
-    public void setItemID(
-                    final int id
+    public void setMessage(
+                    final Collection<? extends MessageType> message
                     )
     {
-        _itemID = id;
+        if (this.message != message) {
+            this.message.clear();
+            if (message != null  &&  message.size() > 0) {
+                this.message.addAll( message );
+            }
+        }
+    }
+
+
+    public Collection<MessageType> getMessage()
+    {
+        return this.message;
+    }
+
+
+    public Iterator<MessageType> iterateMessage()
+    {
+        return this.message.iterator();
+    }
+
+
+
+    /**
+     */
+    public void setItemID(
+                    final int item_id
+                    )
+    {
+        this.item_id = item_id;
     }
 
 
     public int getItemID()
     {
-        return _itemID;
+        return this.item_id;
     }
 
 
@@ -87,40 +121,40 @@ public class TestedItemType
                     final ResultEnumeration result
                     )
     {
-        _result = result;
+        this.result = result;
     }
 
 
     public ResultEnumeration getResult()
     {
-        return _result;
+        return this.result;
     }
 
 
 
-    //**************************************************************
-    //  Dependent
-    //**************************************************************
-
-    private TestType  _master;
-
-
-
-    @Override
-    public void setMasterObject(
-                    final TestType master
-                    )
-    {
-        _master = master;
-    }
-
-
-
-    @Override
-    public TestType getMasterObject()
-    {
-        return _master;
-    }
+//    //**************************************************************
+//    //  Dependent
+//    //**************************************************************
+//
+//    private TestType  _master;
+//
+//
+//
+//    @Override
+//    public void setMasterObject(
+//                    final TestType master
+//                    )
+//    {
+//        _master = master;
+//    }
+//
+//
+//
+//    @Override
+//    public TestType getMasterObject()
+//    {
+//        return _master;
+//    }
 
 
 
@@ -134,8 +168,8 @@ public class TestedItemType
         final int  prime = 37;
         int  hash = 17;
 
-        int  itemID = getItemID();
-        hash = prime * hash + itemID;
+        int  item_id = getItemID();
+        hash = prime * hash + item_id;
 
         ResultEnumeration  result = getResult();
         hash = prime * hash + ((result == null) ? 0 : result.hashCode());
@@ -159,9 +193,9 @@ public class TestedItemType
         }
 
         TestedItemType  other = (TestedItemType)obj;
-        int  other_itemID = other.getItemID();
-        int   this_itemID =  this.getItemID();
-        if (this_itemID == other_itemID) {
+        int  other_item_id = other.getItemID();
+        int   this_item_id =  this.getItemID();
+        if (this_item_id == other_item_id) {
             ResultEnumeration  other_reault = other.getResult();
             ResultEnumeration   this_result =  this.getResult();
             if (this_result == other_reault) {
