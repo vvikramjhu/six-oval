@@ -34,6 +34,11 @@ public class CriterionType
     extends CriteriaResultLeafElement
 {
 
+    private String  test_ref;
+    //{oval:TestIDPattern, required}
+
+
+
     /**
      * Constructor.
      */
@@ -65,16 +70,37 @@ public class CriterionType
     /**
      */
     public void setTestRef(
-                    final String testID
+                    final String test_ref
                     )
     {
-        _setEntityRef( testID );
+        _setEntityRef( test_ref );
     }
 
 
     public String getTestRef()
     {
         return _getEntityRef();
+    }
+
+
+
+    //**************************************************************
+    //  CriteriaResultElement
+    //**************************************************************
+
+    @Override
+    protected void _setEntityRef(
+                    final String test_ref
+    )
+    {
+        this.test_ref = test_ref;
+    }
+
+
+    @Override
+    protected String _getEntityRef()
+    {
+        return this.test_ref;
     }
 
 

@@ -20,8 +20,11 @@
 
 package jp.go.aist.six.oval.model.v5.results;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
-import jp.go.aist.six.util.persist.Dependent;
+import jp.go.aist.six.oval.model.v5.common.MessageType;
 
 
 
@@ -34,14 +37,18 @@ import jp.go.aist.six.util.persist.Dependent;
  */
 public class DefinitionType
     extends OvalResultElement
-    implements Dependent<SystemType>
+//    implements Dependent<SystemType>
 {
 
-    private CriteriaType  _criteria;
+    private final Collection<MessageType>  message = new ArrayList<MessageType>();
+    //{0..*}
+
+
+    private CriteriaType  criteria;
     //{0..1}
 
 
-    private ClassEnumeration  _definitionClass;
+    private ClassEnumeration  definition_class;
     //{optional}
 
 
@@ -76,6 +83,62 @@ public class DefinitionType
 
     /**
      */
+    @Override
+    public void setMessage(
+                    final Collection<? extends MessageType> messageList
+                    )
+    {
+        if (this.message != messageList) {
+            this.message.clear();
+            if (messageList != null  &&  messageList.size() > 0) {
+                this.message.addAll( messageList );
+            }
+        }
+    }
+
+
+    @Override
+    public Collection<MessageType> getMessage()
+    {
+        return this.message;
+    }
+
+
+    public Iterator<MessageType> iterateMessage()
+    {
+        return this.message.iterator();
+    }
+
+
+
+    /**
+     */
+    public void setCriteria(
+                    final CriteriaType criteria
+                    )
+    {
+        this.criteria = criteria;
+    }
+
+
+    public CriteriaType getCriteria()
+    {
+        return this.criteria;
+    }
+
+
+    public DefinitionType criteria(
+                    final CriteriaType criteria
+                    )
+    {
+        setCriteria( criteria );
+        return this;
+    }
+
+
+
+    /**
+     */
     public void setDefinitionID(
                     final String id
                     )
@@ -94,69 +157,44 @@ public class DefinitionType
     /**
      */
     public void setDefinitionClass(
-                    final ClassEnumeration clazz
+                    final ClassEnumeration definition_class
                     )
     {
-        _definitionClass = clazz;
+        this.definition_class = definition_class;
     }
 
 
     public ClassEnumeration getDefinitionClass()
     {
-        return _definitionClass;
+        return this.definition_class;
     }
 
 
 
-    /**
-     */
-    public void setCriteria(
-                    final CriteriaType criteria
-                    )
-    {
-        _criteria = criteria;
-    }
 
-
-    public CriteriaType getCriteria()
-    {
-        return _criteria;
-    }
-
-
-    public DefinitionType criteria(
-                    final CriteriaType criteria
-                    )
-    {
-        setCriteria( criteria );
-        return this;
-    }
-
-
-
-    //**************************************************************
-    //  Dependent
-    //**************************************************************
-
-    private SystemType _master;
-
-
-
-    @Override
-    public void setMasterObject(
-                    final SystemType master
-                    )
-    {
-        _master = master;
-    }
-
-
-
-    @Override
-    public SystemType getMasterObject()
-    {
-        return _master;
-    }
+//    //**************************************************************
+//    //  Dependent
+//    //**************************************************************
+//
+//    private SystemType _master;
+//
+//
+//
+//    @Override
+//    public void setMasterObject(
+//                    final SystemType master
+//                    )
+//    {
+//        _master = master;
+//    }
+//
+//
+//
+//    @Override
+//    public SystemType getMasterObject()
+//    {
+//        return _master;
+//    }
 
 
 

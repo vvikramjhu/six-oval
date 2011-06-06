@@ -34,6 +34,11 @@ public class ExtendDefinitionType
     extends CriteriaResultLeafElement
 {
 
+    private String  definition_ref;
+    //{oval:DefinitionIDPattern, required}
+
+
+
     /**
      * Constructor.
      */
@@ -65,16 +70,37 @@ public class ExtendDefinitionType
     /**
      */
     public void setDefinitionRef(
-                    final String definitionID
+                    final String definition_ref
                     )
     {
-        _setEntityRef( definitionID );
+        _setEntityRef( definition_ref );
     }
 
 
     public String getDefinitionRef()
     {
         return _getEntityRef();
+    }
+
+
+
+    //**************************************************************
+    //  CriteriaResultElement
+    //**************************************************************
+
+    @Override
+    protected void _setEntityRef(
+                    final String definition_ref
+    )
+    {
+        this.definition_ref = definition_ref;
+    }
+
+
+    @Override
+    protected String _getEntityRef()
+    {
+        return this.definition_ref;
     }
 
 

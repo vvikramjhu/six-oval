@@ -20,9 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.results;
 
-import java.util.EnumMap;
-import java.util.Map;
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
@@ -35,22 +32,41 @@ import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class DirectivesType
-    extends AbstractOvalObject
+//    extends AbstractOvalObject
 {
 
-    protected static enum ResultType
-    {
-        TRUE,
-        FALSE,
-        UNKNOWN,
-        ERROR,
-        NOT_EVALUATED,
-        NOT_APPLICABLE;
-    }
-
-    private final Map<ResultType, DirectiveType>  _directives =
-        new EnumMap<ResultType, DirectiveType>( ResultType.class );
+    private DirectiveType  definition_true;
     //{1..1}
+
+    private DirectiveType  definition_false;
+    //{1..1}
+
+    private DirectiveType  definition_unknown;
+    //{1..1}
+
+    private DirectiveType  definition_error;
+    //{1..1}
+
+    private DirectiveType  definition_not_evaluated;
+    //{1..1}
+
+    private DirectiveType  definition_not_applicable;
+    //{1..1}
+
+
+//    protected static enum ResultType
+//    {
+//        TRUE,
+//        FALSE,
+//        UNKNOWN,
+//        ERROR,
+//        NOT_EVALUATED,
+//        NOT_APPLICABLE;
+//    }
+//
+//    private final Map<ResultType, DirectiveType>  _directives =
+//        new EnumMap<ResultType, DirectiveType>( ResultType.class );
+//    //{1..1}
 
 
 
@@ -91,102 +107,114 @@ public class DirectivesType
 
     /**
      */
+    public void setDefinitionTrue(
+                    final DirectiveType definition_true
+                    )
+    {
+        this.definition_true = definition_true;
+//        _directives.put( ResultType.TRUE, directive );
+    }
+
+
     public DirectiveType getDefinitionTrue()
     {
-        return _directives.get( ResultType.TRUE );
-    }
-
-
-    public void setDefinitionTrue(
-                    final DirectiveType directive
-                    )
-    {
-        _directives.put( ResultType.TRUE, directive );
+        return this.definition_true;
+//        return _directives.get( ResultType.TRUE );
     }
 
 
 
     /**
      */
+    public void setDefinitionFalse(
+                    final DirectiveType definition_false
+                    )
+    {
+        this.definition_false = definition_false;
+//        _directives.put( ResultType.FALSE, directive );
+    }
+
+
     public DirectiveType getDefinitionFalse()
     {
-        return _directives.get( ResultType.FALSE );
-    }
-
-
-    public void setDefinitionFalse(
-                    final DirectiveType directive
-                    )
-    {
-        _directives.put( ResultType.FALSE, directive );
+        return this.definition_false;
+//        return _directives.get( ResultType.FALSE );
     }
 
 
 
     /**
      */
+    public void setDefinitionUnknown(
+                    final DirectiveType definition_unknown
+                    )
+    {
+        this.definition_unknown = definition_unknown;
+//        _directives.put( ResultType.UNKNOWN, directive );
+    }
+
+
     public DirectiveType getDefinitionUnknown()
     {
-        return _directives.get( ResultType.UNKNOWN );
-    }
-
-
-    public void setDefinitionUnknown(
-                    final DirectiveType directive
-                    )
-    {
-        _directives.put( ResultType.UNKNOWN, directive );
+        return this.definition_unknown;
+//        return _directives.get( ResultType.UNKNOWN );
     }
 
 
 
     /**
      */
+    public void setDefinitionError(
+                    final DirectiveType definition_error
+                    )
+    {
+        this.definition_error = definition_error;
+//        _directives.put( ResultType.ERROR, directive );
+    }
+
+
     public DirectiveType getDefinitionError()
     {
-        return _directives.get( ResultType.ERROR );
-    }
-
-
-    public void setDefinitionError(
-                    final DirectiveType directive
-                    )
-    {
-        _directives.put( ResultType.ERROR, directive );
+        return this.definition_error;
+//        return _directives.get( ResultType.ERROR );
     }
 
 
 
     /**
      */
+    public void setDefinitionNotEvaluated(
+                    final DirectiveType definition_not_evaluated
+                    )
+    {
+        this.definition_not_evaluated = definition_not_evaluated;
+//        _directives.put( ResultType.NOT_EVALUATED, directive );
+    }
+
+
     public DirectiveType getDefinitionNotEvaluated()
     {
-        return _directives.get( ResultType.NOT_EVALUATED );
-    }
-
-
-    public void setDefinitionNotEvaluated(
-                    final DirectiveType directive
-                    )
-    {
-        _directives.put( ResultType.NOT_EVALUATED, directive );
+        return this.definition_not_evaluated;
+//        return _directives.get( ResultType.NOT_EVALUATED );
     }
 
 
 
     /**
      */
-    public DirectiveType getDefinitionNotApplicable()
+    public void setDefinitionNotApplicable(
+                    final DirectiveType definition_not_applicable
+                    )
     {
-        return _directives.get( ResultType.NOT_APPLICABLE );
+        this.definition_not_applicable = definition_not_applicable;
+//        _directives.put( ResultType.NOT_APPLICABLE, directive );
     }
 
 
-    public void setDefinitionNotApplicable(
-                    final DirectiveType directive
-                    )
+    public DirectiveType getDefinitionNotApplicable()
     {
-        _directives.put( ResultType.NOT_APPLICABLE, directive );
+        return this.definition_not_applicable;
+//        return _directives.get( ResultType.NOT_APPLICABLE );
     }
 
 
@@ -278,7 +306,7 @@ public class DirectivesType
     @Override
     public String toString()
     {
-        return "definition_true="             + getDefinitionTrue()
+        return   "definition_true="           + getDefinitionTrue()
              + ", definition_false="          + getDefinitionFalse()
              + ", definition_unknown="        + getDefinitionUnknown()
              + ", definition_error="          + getDefinitionError()

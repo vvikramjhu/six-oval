@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.v5.results;
 
 import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
+import com.google.code.morphia.annotations.Property;
 
 
 
@@ -37,7 +38,8 @@ public class ClassDirectivesType
     extends DirectivesType
 {
 
-    private ClassEnumeration  _definitionClass;
+    @Property( "class" )
+    private ClassEnumeration  definition_class;
     //{required}
 
 
@@ -80,16 +82,16 @@ public class ClassDirectivesType
     /**
      */
     public void setDefinitionClass(
-                    final ClassEnumeration definitionClass
+                    final ClassEnumeration definition_class
                     )
     {
-        _definitionClass = definitionClass;
+        this.definition_class = definition_class;
     }
 
 
     public ClassEnumeration getDefinitionClass()
     {
-        return _definitionClass;
+        return this.definition_class;
     }
 
 

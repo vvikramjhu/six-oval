@@ -39,6 +39,7 @@ public class ResultsType
     extends Container<SystemType> //{1..*}
 {
 
+//    @Reference
     private final Set<SystemType>  system = new HashSet<SystemType>();
 
 
@@ -71,10 +72,18 @@ public class ResultsType
     /**
      */
     public void setSystem(
-                    final Collection<? extends SystemType> systems
+                    final Collection<? extends SystemType> systemList
                     )
     {
-        _setElement( systems );
+        _setElement( systemList );
+    }
+
+
+    public void setSystem(
+                    final SystemType[] systemList
+                    )
+    {
+        _setElement( systemList );
     }
 
 
