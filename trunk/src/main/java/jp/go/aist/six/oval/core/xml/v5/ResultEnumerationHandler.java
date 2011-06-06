@@ -20,15 +20,15 @@
 
 package jp.go.aist.six.oval.core.xml.v5;
 
-import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
+import jp.go.aist.six.oval.model.v5.results.ResultEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class CheckEnumerationHandler
+public class ResultEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public CheckEnumerationHandler()
+    public ResultEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class CheckEnumerationHandler
         if (value == null) {
             return null;
         }
-        CheckEnumeration  e = CheckEnumeration.class.cast( value );
+        ResultEnumeration  e = ResultEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class CheckEnumerationHandler
         if (value == null) {
             return null;
         }
-        return CheckEnumeration.fromValue( value.toString() );
+        return ResultEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<CheckEnumeration> getFieldType()
+    public Class<ResultEnumeration> getFieldType()
     {
-        return CheckEnumeration.class;
+        return ResultEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class CheckEnumerationHandler
 //    }
 
 }
-// CheckEnumerationHandler
+// ResultEnumerationHandler

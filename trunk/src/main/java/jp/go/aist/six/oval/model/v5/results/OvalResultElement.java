@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.v5.results;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.OvalElement;
 import jp.go.aist.six.oval.model.v5.common.MessageType;
 
@@ -39,16 +40,17 @@ public abstract class OvalResultElement
 //    extends OvalAnalysisElement
 {
 
-    private final Collection<MessageType>  _message = new ArrayList<MessageType>();
+    private final Collection<MessageType>  message = new ArrayList<MessageType>();
     //{0..*}
 
 
     public static final Integer  DEFAULT_VARIABLE_INSTANCE = 1;
-    private Integer  _variableInstance;
+
+    private Integer  variable_instance;
     //{xsd:nonNegativeInteger, optional, default="1"}
 
 
-    private ResultEnumeration  _result;
+    private ResultEnumeration  result;
     //{required}
 
 
@@ -85,29 +87,27 @@ public abstract class OvalResultElement
     /**
      */
     public void setMessage(
-                    final Collection<? extends MessageType> messages
+                    final Collection<? extends MessageType> messageList
                     )
     {
-        if (messages != _message) {
-            _message.clear();
-            if (messages != null  &&  messages != _message) {
-                _message.addAll( messages );
+        if (this.message != messageList) {
+            this.message.clear();
+            if (messageList != null  &&  messageList.size() > 0) {
+                this.message.addAll( messageList );
             }
         }
     }
 
 
-    public boolean addMessage(
-                    final MessageType item
-                    )
+    public Collection<MessageType> getMessage()
     {
-        return _message.add( item );
+        return this.message;
     }
 
 
-    public Collection<MessageType> getMessage()
+    public Iterator<MessageType> iterateMessage()
     {
-        return _message;
+        return this.message.iterator();
     }
 
 
@@ -115,21 +115,21 @@ public abstract class OvalResultElement
     /**
      */
     public void setVariableInstance(
-                    final Integer variableInstance
+                    final Integer variable_instance
                     )
     {
-        if (variableInstance < 0) {
+        if (variable_instance != null  &&  variable_instance < 0) {
             throw new IllegalArgumentException(
-                            "negative variable instance: " + variableInstance );
+                            "negative variable instance: " + variable_instance );
         }
 
-        _variableInstance = variableInstance;
+        this.variable_instance = variable_instance;
     }
 
 
     public Integer getVariableInstance()
     {
-        return _variableInstance;
+        return this.variable_instance;
     }
 
 
@@ -140,13 +140,13 @@ public abstract class OvalResultElement
                     final ResultEnumeration result
                     )
     {
-        _result= result;
+        this.result= result;
     }
 
 
     public ResultEnumeration getResult()
     {
-        return _result;
+        return this.result;
     }
 
 

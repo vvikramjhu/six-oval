@@ -25,7 +25,6 @@ import java.util.Collection;
 import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration;
 import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
-import jp.go.aist.six.util.persist.Dependent;
 
 
 
@@ -40,28 +39,34 @@ import jp.go.aist.six.util.persist.Dependent;
  */
 public class TestType
     extends OvalResultElement
-    implements Dependent<SystemType>
+//    implements Dependent<SystemType>
 {
 
-    private final Collection<TestedItemType>  _testedItem = new ArrayList<TestedItemType>();
+    private final Collection<TestedItemType>  tested_item =
+        new ArrayList<TestedItemType>();
     //{0..*}
 
 
-    private final Collection<TestedVariableType>  _testedVariable= new ArrayList<TestedVariableType>();
+    private final Collection<TestedVariableType>  tested_variable=
+        new ArrayList<TestedVariableType>();
     //{0..*}
 
 
-    public static final ExistenceEnumeration  DEFAULT_CHECK_EXISTENCE = ExistenceEnumeration.AT_LEAST_ONE_EXISTS;
-    private ExistenceEnumeration  _checkExistence;
+    public static final ExistenceEnumeration  DEFAULT_CHECK_EXISTENCE =
+        ExistenceEnumeration.AT_LEAST_ONE_EXISTS;
+
+    private ExistenceEnumeration  check_existence;
     //{optional, default="at_least_one_exists"}
 
 
-    private CheckEnumeration  _check;
+    private CheckEnumeration  check;
     //{required}
 
 
-    public static final OperatorEnumeration  DEFAULT_STATE_OPERATOR = OperatorEnumeration.AND;
-    private OperatorEnumeration  _stateOperator;
+    public static final OperatorEnumeration  DEFAULT_STATE_OPERATOR =
+        OperatorEnumeration.AND;
+
+    private OperatorEnumeration  state_operator;
     //{optional, default="AND"}
 
 
@@ -97,23 +102,29 @@ public class TestType
     /**
      */
     public void setTestedItem(
-                    final Collection<? extends TestedItemType> items
+                    final Collection<? extends TestedItemType> tested_item
                     )
     {
-        if (items != _testedItem) {
-            _testedItem.clear();
-            if (items != null  &&  items != _testedItem) {
-                _testedItem.addAll( items );
+        if (tested_item != this.tested_item) {
+            this.tested_item.clear();
+            if (tested_item != null  &&  tested_item.size() > 0) {
+                this.tested_item.addAll( tested_item );
             }
         }
     }
 
 
     public boolean addTestedItem(
-                    final TestedItemType item
+                    final TestedItemType tested_item
                     )
     {
-        return _testedItem.add( item );
+        return this.tested_item.add( tested_item );
+    }
+
+
+    public Collection<TestedItemType> getTestedItem()
+    {
+        return this.tested_item;
     }
 
 
@@ -126,32 +137,33 @@ public class TestType
     }
 
 
-    public Collection<TestedItemType> getTestedItem()
-    {
-        return _testedItem;
-    }
-
 
     /**
      */
     public void setTestedVariable(
-                    final Collection<? extends TestedVariableType> variables
+                    final Collection<? extends TestedVariableType> variableList
                     )
     {
-        if (variables != _testedVariable) {
-            _testedVariable.clear();
-            if (variables != null  &&  variables != _testedVariable) {
-                _testedVariable.addAll( variables );
+        if (variableList != this.tested_variable) {
+            this.tested_variable.clear();
+            if (variableList != null  &&  variableList.size() > 0) {
+                this.tested_variable.addAll( variableList );
             }
         }
     }
 
 
     public boolean addTestedVariable(
-                    final TestedVariableType variable
+                    final TestedVariableType tested_variable
                     )
     {
-        return _testedVariable.add( variable );
+        return this.tested_variable.add( tested_variable );
+    }
+
+
+    public Collection<TestedVariableType> getTestedVariable()
+    {
+        return this.tested_variable;
     }
 
 
@@ -164,19 +176,14 @@ public class TestType
     }
 
 
-    public Collection<TestedVariableType> getTestedVariable()
-    {
-        return _testedVariable;
-    }
-
 
     /**
      */
     public void setTestID(
-                    final String id
+                    final String test_id
                     )
     {
-        setOvalID( id );
+        setOvalID( test_id );
     }
 
 
@@ -190,25 +197,25 @@ public class TestType
     /**
      */
     public void setCheckExistence(
-                    final ExistenceEnumeration existence
+                    final ExistenceEnumeration check_existence
                     )
     {
-        _checkExistence = existence;
-    }
-
-
-    public TestType checkExistence(
-                    final ExistenceEnumeration existence
-                    )
-    {
-        setCheckExistence( existence );
-        return this;
+        this.check_existence = check_existence;
     }
 
 
     public ExistenceEnumeration getCheckExistence()
     {
-        return _checkExistence;
+        return this.check_existence;
+    }
+
+
+    public TestType checkExistence(
+                    final ExistenceEnumeration check_existence
+                    )
+    {
+        setCheckExistence( check_existence );
+        return this;
     }
 
 
@@ -219,7 +226,13 @@ public class TestType
                     final CheckEnumeration check
                     )
     {
-        _check = check;
+        this.check = check;
+    }
+
+
+    public CheckEnumeration getCheck()
+    {
+        return this.check;
     }
 
 
@@ -232,62 +245,56 @@ public class TestType
     }
 
 
-    public CheckEnumeration getCheck()
-    {
-        return _check;
-    }
-
-
 
     /**
      */
     public void setStateOperator(
-                    final OperatorEnumeration operator
+                    final OperatorEnumeration state_operator
                     )
     {
-        _stateOperator = operator;
+        this.state_operator = state_operator;
     }
 
 
     public TestType stateOperator(
-                    final OperatorEnumeration operator
+                    final OperatorEnumeration state_operator
                     )
     {
-        setStateOperator( operator );
+        setStateOperator( state_operator );
         return this;
     }
 
 
     public OperatorEnumeration getStateOperator()
     {
-        return _stateOperator;
+        return this.state_operator;
     }
 
 
 
-    //**************************************************************
-    //  Dependent
-    //**************************************************************
-
-    private SystemType _master;
-
-
-
-    @Override
-    public void setMasterObject(
-                    final SystemType master
-                    )
-    {
-        _master = master;
-    }
-
-
-
-    @Override
-    public SystemType getMasterObject()
-    {
-        return _master;
-    }
+//    //**************************************************************
+//    //  Dependent
+//    //**************************************************************
+//
+//    private SystemType _master;
+//
+//
+//
+//    @Override
+//    public void setMasterObject(
+//                    final SystemType master
+//                    )
+//    {
+//        _master = master;
+//    }
+//
+//
+//
+//    @Override
+//    public SystemType getMasterObject()
+//    {
+//        return _master;
+//    }
 
 
 

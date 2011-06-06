@@ -20,8 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.results;
 
-import java.io.Serializable;
-import java.util.HashMap;
+import jp.go.aist.six.oval.model.v5.OvalEnumeration;
 
 
 
@@ -34,72 +33,53 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class ContentEnumeration
-    implements Serializable
+public enum ContentEnumeration
+    implements OvalEnumeration
 {
 
-    private static final String  _THIN_ = "thin";
-    private static final String  _FULL_ = "full";
-
-
-    public static final ContentEnumeration  THIN = new ContentEnumeration( _THIN_ );
-    public static final ContentEnumeration  FULL = new ContentEnumeration( _FULL_ );
-
-
-
-    private static HashMap<String, ContentEnumeration> _INIT_()
-    {
-        HashMap<String, ContentEnumeration>  map = new HashMap<String, ContentEnumeration>();
-        map.put( _THIN_, THIN );
-        map.put( _FULL_, FULL );
-        return map;
-    }
-
-    private static final HashMap<String, ContentEnumeration>  _INSTANCES_ = _INIT_();
-
+    THIN ( "thin" ),
+    FULL ( "full" );
 
 
 
     /**
+     * A factory method.
      */
-    public static ContentEnumeration valueOf(
-                    final String name
+    public static ContentEnumeration fromValue(
+                    final String value
                     )
     {
-        ContentEnumeration  e = null;
-        if (name != null) {
-            e = _INSTANCES_.get( name );
+        for (ContentEnumeration  e : ContentEnumeration.values()) {
+            if (e.value.equals( value )) {
+                return e;
+            }
         }
 
-        if (e == null) {
-            throw new IllegalArgumentException( "invalid result: " + name );
-        }
-
-        return e;
+        throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
+    private String  value = null;
 
 
 
     /**
+     * Constructor.
      */
-    private ContentEnumeration(
-                    final String name
+    ContentEnumeration(
+                    final String value
                     )
     {
-        _name = name;
+        this.value = value;
     }
 
 
 
-    /**
-     */
-    public String getName()
+    @Override
+    public String value()
     {
-        return _name;
+        return this.value;
     }
 
 
@@ -111,7 +91,7 @@ public final class ContentEnumeration
     @Override
     public String toString()
     {
-        return getName();
+        return this.value;
     }
 
 }

@@ -20,9 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.results;
 
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
-import jp.go.aist.six.oval.model.v5.definitions.TestType;
-import jp.go.aist.six.util.persist.Dependent;
 
 
 
@@ -35,15 +32,15 @@ import jp.go.aist.six.util.persist.Dependent;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class TestedVariableType
-    extends AbstractOvalObject
-    implements Dependent<TestType>
+//    extends AbstractOvalObject
+//    implements Dependent<TestType>
 {
 
-    private String  _value;
+    private String  content;
     //{simpleContent, base=xsd:anySimpleType}
 
 
-    private String  _variableID;
+    private String  variable_id;
     //{required, type="oval:VariableIDPattern"}
 
 
@@ -57,29 +54,29 @@ public class TestedVariableType
 
 
     public TestedVariableType(
-                    final String variableID,
-                    final String value
+                    final String variable_id,
+                    final String content
                     )
     {
-        setVariableID( variableID );
-        setValue( value );
+        setVariableID( variable_id );
+        setContent( content );
     }
 
 
 
     /**
      */
-    public void setValue(
-                    final String value
+    public void setContent(
+                    final String content
                     )
     {
-        _value = value;
+        this.content = content;
     }
 
 
-    public String getValue()
+    public String getContent()
     {
-        return _value;
+        return this.content;
     }
 
 
@@ -87,43 +84,43 @@ public class TestedVariableType
     /**
      */
     public void setVariableID(
-                    final String id
+                    final String variable_id
                     )
     {
-        _variableID = id;
+        this.variable_id = variable_id;
     }
 
 
     public String getVariableID()
     {
-        return _variableID;
+        return this.variable_id;
     }
 
 
 
-    //**************************************************************
-    //  Dependent
-    //**************************************************************
-
-    private TestType  _master;
-
-
-
-    @Override
-    public void setMasterObject(
-                    final TestType master
-                    )
-    {
-        _master = master;
-    }
-
-
-
-    @Override
-    public TestType getMasterObject()
-    {
-        return _master;
-    }
+//    //**************************************************************
+//    //  Dependent
+//    //**************************************************************
+//
+//    private TestType  _master;
+//
+//
+//
+//    @Override
+//    public void setMasterObject(
+//                    final TestType master
+//                    )
+//    {
+//        _master = master;
+//    }
+//
+//
+//
+//    @Override
+//    public TestType getMasterObject()
+//    {
+//        return _master;
+//    }
 
 
 
@@ -137,11 +134,11 @@ public class TestedVariableType
         final int  prime = 37;
         int  result = 17;
 
-        String  value = getValue();
-        result = prime * result + ((value == null) ? 0 : value.hashCode());
+        String  content = getContent();
+        result = prime * result + ((content == null) ? 0 : content.hashCode());
 
-        String  varID = getVariableID();
-        result = prime * result + ((varID == null) ? 0 : varID.hashCode());
+        String  variable_id = getVariableID();
+        result = prime * result + ((variable_id == null) ? 0 : variable_id.hashCode());
 
         return result;
     }
@@ -162,14 +159,14 @@ public class TestedVariableType
         }
 
         TestedVariableType  other = (TestedVariableType)obj;
-        String  other_value = other.getValue();
-        String   this_value =  this.getValue();
-        if (this_value == other_value
-                        ||  (this_value != null  &&  this_value.equals( other_value ))) {
-            String  other_varID = other.getVariableID();
-            String   this_varID =  this.getVariableID();
-            if (this_varID == other_varID
-                            ||  (this_varID != null  &&  this_varID.equals( other_varID ))) {
+        String  other_content = other.getContent();
+        String   this_content =  this.getContent();
+        if (this_content == other_content
+                        ||  (this_content != null  &&  this_content.equals( other_content ))) {
+            String  other_variable_id = other.getVariableID();
+            String   this_variable_id =  this.getVariableID();
+            if (this_variable_id == other_variable_id
+                            ||  (this_variable_id != null  &&  this_variable_id.equals( other_variable_id ))) {
                 return true;
             }
         }
@@ -183,7 +180,7 @@ public class TestedVariableType
     public String toString()
     {
         return "tested_variable[variable_id=" + getVariableID()
-                        + ", value=" + getValue()
+                        + ", content=" + getContent()
                         + "]";
     }
 
