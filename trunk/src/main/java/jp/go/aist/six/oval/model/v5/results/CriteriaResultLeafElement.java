@@ -33,17 +33,19 @@ public abstract class CriteriaResultLeafElement
     extends CriteriaResultElement
 {
 
-    private String  _entityRef;
+    /* moved to the subclasses */
+//    private String  _entityRef;
     //{test_ref, oval:TestIDPattern}
     //{definition_ref, oval:DefinitionIDPattern}
 
 
-    private int  _version;
+    private int  version;
     //{xsd:nonNegativeInteger, required}
 
 
     public static final Integer DEFAULT_VARIABLE_INSTANCE = 1;
-    private Integer  _variableInstance;
+
+    private Integer  variable_instance;
     //{xsd:nonNegativeInteger, optional, default="1"}
 
 
@@ -80,18 +82,21 @@ public abstract class CriteriaResultLeafElement
 
     /**
      */
-    protected void _setEntityRef(
-                    final String entityID
-                    )
-    {
-        _entityRef = entityID;
-    }
+    protected abstract void _setEntityRef( String entityID );
+    protected abstract String _getEntityRef();
 
-
-    protected String _getEntityRef()
-    {
-        return _entityRef;
-    }
+//    protected void _setEntityRef(
+//                    final String entityID
+//                    )
+//    {
+//        _entityRef = entityID;
+//    }
+//
+//
+//    protected String _getEntityRef()
+//    {
+//        return _entityRef;
+//    }
 
 
 
@@ -106,13 +111,13 @@ public abstract class CriteriaResultLeafElement
                             "negative version: " + version );
         }
 
-        _version = version;
+        this.version = version;
     }
 
 
     public int getVersion()
     {
-        return _version;
+        return this.version;
     }
 
 
@@ -120,23 +125,23 @@ public abstract class CriteriaResultLeafElement
     /**
      */
     public void setVariableInstance(
-                    final Integer variableInstance
+                    final Integer variable_instance
                     )
     {
-        if (variableInstance != null) {
-            if (variableInstance < 0) {
+        if (variable_instance != null) {
+            if (variable_instance < 0) {
                 throw new IllegalArgumentException(
-                                "negative variable instance: " + variableInstance );
+                                "negative variable instance: " + variable_instance );
             }
         }
 
-        _variableInstance = variableInstance;
+        this.variable_instance = variable_instance;
     }
 
 
     public Integer getVariableInstance()
     {
-        return _variableInstance;
+        return this.variable_instance;
     }
 
 

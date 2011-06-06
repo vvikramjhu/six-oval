@@ -26,6 +26,8 @@ import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.OvalDocument;
 import jp.go.aist.six.oval.model.v5.common.GeneratorType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
+import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Reference;
 
 
 
@@ -36,27 +38,29 @@ import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
+@Entity( "oval.results.oval_results" )
 public class OvalResults
     extends OvalDocument
 {
 
-    private GeneratorType  _generator = new GeneratorType();
+    private GeneratorType  generator = new GeneratorType();
     //{1..1}
 
 
-    private DefaultDirectivesType  _directives = new DefaultDirectivesType();
+    private DefaultDirectivesType  directives = new DefaultDirectivesType();
     //{1..1}
 
 
-    private final Collection<ClassDirectivesType>  _classDirectives = new ArrayList<ClassDirectivesType>();
+    private final Collection<ClassDirectivesType>  class_directives = new ArrayList<ClassDirectivesType>();
     //{0..5}
 
 
-    private OvalDefinitions  _ovalDefinitions;
+    @Reference
+    private OvalDefinitions  oval_definitions;
     //{0..1}
 
 
-    private ResultsType  _results;
+    private ResultsType  results;
     //{1..1}
 
 
@@ -101,13 +105,13 @@ public class OvalResults
                     final GeneratorType generator
                     )
     {
-        _generator = generator;
+        this.generator = generator;
     }
 
 
     public GeneratorType getGenerator()
     {
-        return _generator;
+        return this.generator;
     }
 
 
@@ -118,13 +122,13 @@ public class OvalResults
                     final DefaultDirectivesType directives
                     )
     {
-        _directives = directives;
+        this.directives = directives;
     }
 
 
     public DefaultDirectivesType getDirectives()
     {
-        return _directives;
+        return this.directives;
     }
 
 
@@ -133,10 +137,10 @@ public class OvalResults
                     final Collection<? extends ClassDirectivesType> classDirectives
                     )
     {
-        if (classDirectives != _classDirectives) {
-            _classDirectives.clear();
+        if (classDirectives != this.class_directives) {
+            this.class_directives.clear();
             if (classDirectives != null  &&  classDirectives.size() > 0) {
-                _classDirectives.addAll( classDirectives );
+                this.class_directives.addAll( classDirectives );
             }
         }
     }
@@ -146,19 +150,19 @@ public class OvalResults
                     final ClassDirectivesType classDirectives
                     )
     {
-        return _classDirectives.add( classDirectives );
+        return this.class_directives.add( classDirectives );
     }
 
 
     public Collection<ClassDirectivesType> getClassDirectives()
     {
-        return _classDirectives;
+        return this.class_directives;
     }
 
 
     public Iterator<ClassDirectivesType> iterateClassDirectives()
     {
-        return _classDirectives.iterator();
+        return this.class_directives.iterator();
     }
 
 
@@ -169,7 +173,13 @@ public class OvalResults
                     final OvalDefinitions definitions
                     )
     {
-        _ovalDefinitions = definitions;
+        this.oval_definitions = definitions;
+    }
+
+
+    public OvalDefinitions getOvalDefinitions()
+    {
+        return this.oval_definitions;
     }
 
 
@@ -182,12 +192,6 @@ public class OvalResults
     }
 
 
-    public OvalDefinitions getOvalDefinitions()
-    {
-        return _ovalDefinitions;
-    }
-
-
 
     /**
      */
@@ -195,13 +199,13 @@ public class OvalResults
                     final ResultsType results
                     )
     {
-        _results = results;
+        this.results = results;
     }
 
 
     public ResultsType getResults()
     {
-        return _results;
+        return this.results;
     }
 
 
@@ -243,6 +247,7 @@ public class OvalResults
         return "oval_results[generator=" + getGenerator()
                         + ", directives=" + getDirectives()
                         + ", class_directives=" + getClassDirectives()
+                        + ", oval_definitions=" + getOvalDefinitions()
                         + ", results=" + getResults()
                         + "]";
     }

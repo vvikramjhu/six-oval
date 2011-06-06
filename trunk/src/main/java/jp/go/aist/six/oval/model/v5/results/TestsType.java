@@ -71,10 +71,18 @@ public class TestsType
     /**
      */
     public void setTest(
-                    final Collection<? extends TestType> tests
+                    final Collection<? extends TestType> testList
                     )
     {
-        _setElement( tests );
+        _setElement( testList );
+    }
+
+
+    public void setTest(
+                    final TestType[] testList
+                    )
+    {
+        _setElement( testList );
     }
 
 

@@ -69,11 +69,21 @@ public class DefinitionsType
 
 
 
+    /**
+     */
     public void setDefinition(
-                    final Collection<? extends DefinitionType> definitions
+                    final Collection<? extends DefinitionType> definitionList
                     )
     {
-        _setElement( definitions );
+        _setElement( definitionList );
+    }
+
+
+    public void setDefinition(
+                    final DefinitionType[] definitionList
+                    )
+    {
+        _setElement( definitionList );
     }
 
 

@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.results;
 
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
@@ -32,14 +31,17 @@ import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class CriteriaResultElement
-    extends AbstractOvalObject
+//    extends AbstractOvalObject
 {
 
-    public static final Boolean  DEFAULT_NEGATE = Boolean.FALSE;
-    private Boolean  _negate;
+    public static final Boolean  DEFAULT_NEGATE =
+        Boolean.FALSE;
+
+    private Boolean  negate;
     //{xsd:boolean, optional, default="false"}
 
-    private ResultEnumeration  _result;
+
+    private ResultEnumeration  result;
     //{required}
 
 
@@ -77,13 +79,13 @@ public abstract class CriteriaResultElement
                     final Boolean negate
                     )
     {
-        _negate = negate;
+        this.negate = negate;
     }
 
 
     public Boolean isNegate()
     {
-        return _negate;
+        return this.negate;
     }
 
 
@@ -94,13 +96,13 @@ public abstract class CriteriaResultElement
                     final ResultEnumeration result
                     )
     {
-        _result= result;
+        this.result = result;
     }
 
 
     public ResultEnumeration getResult()
     {
-        return _result;
+        return this.result;
     }
 
 
@@ -112,8 +114,9 @@ public abstract class CriteriaResultElement
     @Override
     public String toString()
     {
-        return "result=" + getResult()
-                        + ", negate=" + isNegate();
+        return "negate=" + isNegate()
+                        + ", result=" + getResult()
+                        ;
     }
 
 }

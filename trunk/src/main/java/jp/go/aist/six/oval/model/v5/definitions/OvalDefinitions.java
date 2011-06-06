@@ -39,7 +39,7 @@ public class OvalDefinitions
     extends OvalDocument
 {
 
-    private GeneratorType  generator;
+    private GeneratorType  generator = new GeneratorType();
     //{1..1}
 
 
@@ -49,19 +49,19 @@ public class OvalDefinitions
     //{0..1}
 
 
-    private TestsType  _tests;
+    private TestsType  tests;
     //{0..1}
 
 
-    private SystemObjectsType  _objects;
+    private SystemObjectsType  objects;
     //{0..1}
 
 
-    private StatesType  _states;
+    private StatesType  states;
     //{0..1}
 
 
-    private VariablesType  _variables;
+    private VariablesType  variables;
     //{0..1}
 
 
@@ -168,13 +168,13 @@ public class OvalDefinitions
                     final TestsType tests
                     )
     {
-        this._tests = tests;
+        this.tests = tests;
     }
 
 
     public TestsType getTests()
     {
-        return this._tests;
+        return this.tests;
     }
 
 
@@ -200,13 +200,13 @@ public class OvalDefinitions
                     final SystemObjectsType objects
                     )
     {
-        this._objects = objects;
+        this.objects = objects;
     }
 
 
     public SystemObjectsType getObjects()
     {
-        return this._objects;
+        return this.objects;
     }
 
 
@@ -232,13 +232,13 @@ public class OvalDefinitions
                     final StatesType states
                     )
     {
-        this._states = states;
+        this.states = states;
     }
 
 
     public StatesType getStates()
     {
-        return this._states;
+        return this.states;
     }
 
 
@@ -264,13 +264,13 @@ public class OvalDefinitions
                     final VariablesType variables
                     )
     {
-        this._variables = variables;
+        this.variables = variables;
     }
 
 
     public VariablesType getVariables()
     {
-        return this._variables;
+        return this.variables;
     }
 
 

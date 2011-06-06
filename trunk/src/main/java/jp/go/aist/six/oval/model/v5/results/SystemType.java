@@ -20,10 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.results;
 
-import java.util.UUID;
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
-import jp.go.aist.six.util.persist.Dependent;
 
 
 
@@ -37,19 +34,19 @@ import jp.go.aist.six.util.persist.Dependent;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class SystemType
-    extends AbstractOvalObject
-    implements Dependent<OvalResults>
+//    extends AbstractOvalObject
+//    implements Dependent<OvalResults>
 {
 
-    private DefinitionsType  _definitions = new DefinitionsType();
+    private DefinitionsType  definitions;
     //{0..1}
 
 
-    private TestsType  _tests = new TestsType();
+    private TestsType  tests;
     //{0..1}
 
 
-    private OvalSystemCharacteristics  _ovalSC;
+    private OvalSystemCharacteristics  oval_system_characteristics;
     //{1..1}
 
 
@@ -110,13 +107,13 @@ public class SystemType
                     final DefinitionsType definitions
                     )
     {
-        _definitions = definitions;
+        this.definitions = definitions;
     }
 
 
     public DefinitionsType getDefinitions()
     {
-        return _definitions;
+        return this.definitions;
     }
 
 
@@ -142,13 +139,13 @@ public class SystemType
                     final TestsType tests
                     )
     {
-        _tests = tests;
+        this.tests = tests;
     }
 
 
     public TestsType getTests()
     {
-        return _tests;
+        return this.tests;
     }
 
 
@@ -174,13 +171,13 @@ public class SystemType
                     final OvalSystemCharacteristics sc
                     )
     {
-        _ovalSC = sc;
+        this.oval_system_characteristics = sc;
     }
 
 
     public OvalSystemCharacteristics getOvalSystemCharacteristics()
     {
-        return _ovalSC;
+        return this.oval_system_characteristics;
     }
 
 
@@ -207,45 +204,45 @@ public class SystemType
 
 
 
-    //**************************************************************
-    //  Dependent
-    //**************************************************************
+//    //**************************************************************
+//    //  Dependent
+//    //**************************************************************
+//
+//    private OvalResults  _master;
+//
+//
+//    @Override
+//    public void setMasterObject(
+//                    final OvalResults master
+//                    )
+//    {
+//        _master = master;
+//    }
+//
+//
+//    @Override
+//    public OvalResults getMasterObject()
+//    {
+//        return _master;
+//    }
 
-    private OvalResults  _master;
 
 
-    @Override
-    public void setMasterObject(
-                    final OvalResults master
-                    )
-    {
-        _master = master;
-    }
-
-
-    @Override
-    public OvalResults getMasterObject()
-    {
-        return _master;
-    }
-
-
-
-    //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-    @Override
-    public synchronized String getPersistentID()
-    {
-        String  pid = super.getPersistentID();
-        if (pid == null) {
-            pid = UUID.randomUUID().toString();
-            setPersistentID( pid );
-        }
-
-        return pid;
-    }
+//    //**************************************************************
+//    //  Persistable
+//    //**************************************************************
+//
+//    @Override
+//    public synchronized String getPersistentID()
+//    {
+//        String  pid = super.getPersistentID();
+//        if (pid == null) {
+//            pid = UUID.randomUUID().toString();
+//            setPersistentID( pid );
+//        }
+//
+//        return pid;
+//    }
 
 
 
@@ -260,10 +257,10 @@ public class SystemType
         TestsType  tests = getTests();
 
         return "[#definitions=" + (defs == null ? 0 : defs.size())
+                        + ", #definitions=" + (defs == null ? 0 : defs.size())
                         + ", #tests=" + (tests == null ? 0 : tests.size())
                         + ", oval_system_characteristics=" + getOvalSystemCharacteristics()
                         + "]";
-//                        + ", #definitions=" + (defs == null ? 0 : defs.size())
 //                        + ", tests=" + tests
 //                        + "]";
     }

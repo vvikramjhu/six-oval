@@ -39,11 +39,12 @@ public class CriteriaType
     extends CriteriaResultElement
 {
 
-    private final Collection<CriteriaResultElement>  _elements = new ArrayList<CriteriaResultElement>();
+    private final Collection<CriteriaResultElement>  elements =
+        new ArrayList<CriteriaResultElement>();
     //{1..*}
 
 
-    private OperatorEnumeration  _operator;
+    private OperatorEnumeration  operator;
     //{required}
 
 
@@ -73,25 +74,25 @@ public class CriteriaType
                     final OperatorEnumeration operator
                     )
     {
-        _operator = operator;
+        this.operator = operator;
     }
 
 
     public OperatorEnumeration getOperator()
     {
-        return _operator;
+        return this.operator;
     }
 
 
 
     public void setElements(
-                    final Collection<? extends CriteriaResultElement> elements
+                    final Collection<? extends CriteriaResultElement> elementList
                     )
     {
-        if (elements != _elements) {
-            _elements.clear();
-            if (elements != null  &&  elements.size() > 0) {
-                _elements.addAll( elements );
+        if (elementList != this.elements) {
+            this.elements.clear();
+            if (elementList != null  &&  elementList.size() > 0) {
+                this.elements.addAll( elementList );
             }
         }
     }
@@ -105,7 +106,19 @@ public class CriteriaType
             return false;
         }
 
-        return _elements.add( element );
+        return this.elements.add( element );
+    }
+
+
+    public Collection<CriteriaResultElement> getElements()
+    {
+        return this.elements;
+    }
+
+
+    public Iterator<CriteriaResultElement> iterateElements()
+    {
+        return this.elements.iterator();
     }
 
 
@@ -115,18 +128,6 @@ public class CriteriaType
     {
         addElement( element );
         return this;
-    }
-
-
-    public Collection<CriteriaResultElement> getElements()
-    {
-        return _elements;
-    }
-
-
-    public Iterator<CriteriaResultElement> iterateElements()
-    {
-        return _elements.iterator();
     }
 
 

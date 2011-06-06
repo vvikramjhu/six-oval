@@ -166,22 +166,31 @@ public abstract class CoreTestBase
 //                        }
 //                        ,
 
-//                        // def:*, Windows XP, vulnerability
-//                        {
-//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-//                            "test/resources/data/oval-definitions-5/oval_vulnerability_windows.xp_definitions-5.9.xml",
-//                            null,
-//                            "marshalled_oval_vulnerability_windows.xp_definitions-5.9.xml"
-//                        }
-//                        ,
-
-                        // def:*, Debian, patch
+                        // def:*, Windows XP, vulnerability
                         {
                             jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                            "test/resources/data/oval-definitions-5/20110308_oval-patch_debian.gnu.linux.5.0.xml",
+                            "test/resources/data/oval-definitions-5/oval_vulnerability_windows.xp_definitions-5.9.xml",
                             null,
-                            "marshalled_20110308_oval-patch_debian.gnu.linux.5.0.xml"
+                            "marshalled_oval_vulnerability_windows.xp_definitions-5.9.xml"
                         }
+//                        ,
+//
+//                        // def:*, Debian, patch
+//                        {
+//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval-definitions-5/20110308_oval-patch_debian.gnu.linux.5.0.xml",
+//                            null,
+//                            "marshalled_20110308_oval-patch_debian.gnu.linux.5.0.xml"
+//                        }
+//                        ,
+//
+//                        // Red Hat Enterprise Linux @ Red Hat, all , 2010-08-26
+//                        {
+//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval-definitions-5/20110308_oval-vulnerability_red.hat.enterprise.linux.5.xml",
+//                            null,
+//                            "marshalled_20110308_oval-vulnerability_red.hat.enterprise.linux.5.xml"
+//                        }
 
 
 

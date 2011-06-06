@@ -34,8 +34,10 @@ public class DefaultDirectivesType
     extends DirectivesType
 {
 
-    public static final Boolean DEFAULT_INCLUDE_SOURCE_DEFINITIONS = Boolean.TRUE;
-    private Boolean  _includeSourceDefinitions;
+    public static final Boolean DEFAULT_INCLUDE_SOURCE_DEFINITIONS =
+        Boolean.TRUE;
+
+    private Boolean  include_source_definitions;
     //{optional, default='true'}
 
 
@@ -78,16 +80,24 @@ public class DefaultDirectivesType
     /**
      */
     public void setIncludeSourceDefinitions(
-                    final Boolean includeSourceDefinitions
+                    final Boolean include_source_definitions
                     )
     {
-        _includeSourceDefinitions = includeSourceDefinitions;
+        this.include_source_definitions = include_source_definitions;
     }
 
 
     public Boolean isIncludeSourceDefinitions()
     {
-        return _includeSourceDefinitions;
+        return this.include_source_definitions;
+    }
+
+
+    protected Boolean _includeSourceDefinitions()
+    {
+        return (this.include_source_definitions == null
+                        ? DEFAULT_INCLUDE_SOURCE_DEFINITIONS
+                        : this.include_source_definitions);
     }
 
 
@@ -102,7 +112,7 @@ public class DefaultDirectivesType
         final int  prime = 37;
         int  result = super.hashCode();
 
-        result = prime * result + (isIncludeSourceDefinitions() ? 0 : 1);
+        result = prime * result + (_includeSourceDefinitions() ? 0 : 1);
 
         return result;
     }
