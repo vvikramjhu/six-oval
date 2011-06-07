@@ -20,15 +20,15 @@
 
 package jp.go.aist.six.oval.core.xml.v5;
 
-import jp.go.aist.six.oval.model.v5.results.ContentEnumeration;
+import jp.go.aist.six.oval.model.v5.sc.FlagEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class ContentEnumerationHandler
+public class FlagEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public ContentEnumerationHandler()
+    public FlagEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class ContentEnumerationHandler
         if (value == null) {
             return null;
         }
-        ContentEnumeration  e = ContentEnumeration.class.cast( value );
+        FlagEnumeration  e = FlagEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class ContentEnumerationHandler
         if (value == null) {
             return null;
         }
-        return ContentEnumeration.fromValue( value.toString() );
+        return FlagEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<ContentEnumeration> getFieldType()
+    public Class<FlagEnumeration> getFieldType()
     {
-        return ContentEnumeration.class;
+        return FlagEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class ContentEnumerationHandler
 //    }
 
 }
-// ContentEnumerationHandler
+// FlagEnumerationHandler

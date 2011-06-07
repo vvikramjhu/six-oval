@@ -40,7 +40,8 @@ public abstract class OvalResultElement
 //    extends OvalAnalysisElement
 {
 
-    private final Collection<MessageType>  message = new ArrayList<MessageType>();
+    private final Collection<MessageType>  message =
+        new ArrayList<MessageType>();
     //{0..*}
 
 

@@ -63,10 +63,12 @@ public class EntityItemIPAddressStringType
                     )
     {
         if (datatype != null) {
-            if (datatype != DatatypeEnumeration.IPV4_ADDRESS
-                            &&  datatype != DatatypeEnumeration.IPV6_ADDRESS
-                            &&  datatype != DatatypeEnumeration.STRING
+            if (datatype == DatatypeEnumeration.IPV4_ADDRESS
+                            ||  datatype == DatatypeEnumeration.IPV6_ADDRESS
+                            ||  datatype == DatatypeEnumeration.STRING
                             ) {
+                // xsd:restriction satisfied.
+            } else {
                 throw new IllegalArgumentException( "invalid datatype: " + datatype);
             }
         }

@@ -21,8 +21,6 @@
 package jp.go.aist.six.oval.model.v5.sc;
 
 import java.util.Collection;
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
-import jp.go.aist.six.util.persist.Dependent;
 
 
 
@@ -35,23 +33,23 @@ import jp.go.aist.six.util.persist.Dependent;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class SystemInfoType
-    extends AbstractOvalObject
-    implements Dependent<OvalSystemCharacteristics>
+//    extends AbstractOvalObject
+//    implements Dependent<OvalSystemCharacteristics>
 {
 
-    private String  _osName;
+    private String  os_name;
     //{1..1}
 
-    private String  _osVersion;
+    private String  os_version;
     //{1..1}
 
-    private String  _architecture;
+    private String  architecture;
     //{1..1}
 
-    private String  _primaryHostName;
+    private String  primary_host_name;
     //{1..1}
 
-    private NetworkInterfacesType  _interfaces;// = new NetInterfaces();
+    private NetworkInterfacesType  interfaces;// = new NetInterfaces();
     //{1..1}
 
 
@@ -114,16 +112,16 @@ public class SystemInfoType
     /**
      */
     public void setOsName(
-                    final String name
+                    final String os_name
                     )
     {
-        _osName = name;
+        this.os_name = os_name;
     }
 
 
     public String getOsName()
     {
-        return _osName;
+        return this.os_name;
     }
 
 
@@ -131,16 +129,16 @@ public class SystemInfoType
     /**
      */
     public void setOsVersion(
-                    final String version
+                    final String os_version
                     )
     {
-        _osVersion = version;
+        this.os_version = os_version;
     }
 
 
     public String getOsVersion()
     {
-        return _osVersion;
+        return this.os_version;
     }
 
 
@@ -151,13 +149,13 @@ public class SystemInfoType
                     final String architecture
                     )
     {
-        _architecture = architecture;
+        this.architecture = architecture;
     }
 
 
     public String getArchitecture()
     {
-        return _architecture;
+        return this.architecture;
     }
 
 
@@ -165,17 +163,17 @@ public class SystemInfoType
     /**
      */
     public void setPrimaryHostName(
-                    final String hostName
+                    final String primary_host_name
                     )
     {
-        _primaryHostName = hostName;
+        this.primary_host_name = primary_host_name;
     }
 
 
 
     public String getPrimaryHostName()
     {
-        return _primaryHostName;
+        return this.primary_host_name;
     }
 
 
@@ -186,38 +184,38 @@ public class SystemInfoType
                     final NetworkInterfacesType interfaces
                     )
     {
-        _interfaces = interfaces;
+        this.interfaces = interfaces;
     }
 
 
     public NetworkInterfacesType getInterfaces()
     {
-        return _interfaces;
+        return this.interfaces;
     }
 
 
 
-    //**************************************************************
-    //  Dependent
-    //**************************************************************
-
-    private OvalSystemCharacteristics  _master;
-
-
-    @Override
-    public void setMasterObject(
-                    final OvalSystemCharacteristics sc
-                    )
-    {
-        _master = sc;
-    }
-
-
-    @Override
-    public OvalSystemCharacteristics getMasterObject()
-    {
-        return _master;
-    }
+//    //**************************************************************
+//    //  Dependent
+//    //**************************************************************
+//
+//    private OvalSystemCharacteristics  _master;
+//
+//
+//    @Override
+//    public void setMasterObject(
+//                    final OvalSystemCharacteristics sc
+//                    )
+//    {
+//        _master = sc;
+//    }
+//
+//
+//    @Override
+//    public OvalSystemCharacteristics getMasterObject()
+//    {
+//        return _master;
+//    }
 
 
 
@@ -228,7 +226,7 @@ public class SystemInfoType
     @Override
     public String toString()
     {
-        return "system_info[os_name=" + getOsName()
+        return "[os_name=" + getOsName()
                     + ", os_version=" + getOsVersion()
                     + ", architecture=" + getArchitecture()
                     + ", primary_host_name=" + getPrimaryHostName()

@@ -25,7 +25,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.OvalElement;
-import jp.go.aist.six.util.persist.Dependent;
+import jp.go.aist.six.oval.model.v5.common.MessageType;
 
 
 
@@ -40,33 +40,36 @@ import jp.go.aist.six.util.persist.Dependent;
  */
 public class SystemObjectType
     extends OvalElement
-    implements Dependent<OvalSystemCharacteristics>
+//    implements Dependent<OvalSystemCharacteristics>
 {
 
-//  private Collection<Message>  _messages = new ArrayList<Message>();
+    private final Collection<MessageType>  message = new ArrayList<MessageType>();
     //{0..*}
-    /*** We have never seen a result which has multiple messages. ***/
-    private String  _message;
+//    /*** We have never seen a result which has multiple messages. ***/
+//    private String  _message;
 
 
-    private final Collection<VariableValueType>  _variableValue = new ArrayList<VariableValueType>();
+    private final Collection<VariableValueType>  variable_value =
+        new ArrayList<VariableValueType>();
     //{0..*}
 
 
-    private final Collection<ReferenceType>  _reference = new ArrayList<ReferenceType>();
+    private final Collection<ReferenceType>  reference =
+        new ArrayList<ReferenceType>();
     //{0..*}
 
 
     public static final Integer  DEFAULT_VARIABLE_INSTANCE = 1;
-    private Integer  _variableInstance;
+
+    private Integer  variable_instance;
     //{xsd:nonNegativeInteger, optional, default="1"}
 
 
-    private String  _comment;
+    private String  comment;
     //{optional}
 
 
-    private FlagEnumeration  _flag;
+    private FlagEnumeration  flag;
     //{required}
 
 
@@ -126,69 +129,99 @@ public class SystemObjectType
     /**
      */
     public void setMessage(
-                    final String message
+                    final Collection<? extends MessageType> messageList
                     )
     {
-        _message = message;
+        if (this.message != messageList) {
+            this.message.clear();
+            if (messageList != null  &&  messageList.size() > 0) {
+                this.message.addAll( messageList );
+            }
+        }
     }
 
 
-    public String getMessage()
+    public Collection<MessageType> getMessage()
     {
-        return _message;
+        return this.message;
     }
 
 
+    public Iterator<MessageType> iterateMessage()
+    {
+        return this.message.iterator();
+    }
 
+//    /**
+//     */
+//    public void setMessage(
+//                    final String message
+//                    )
+//    {
+//        _message = message;
+//    }
+//
+//
+//    public String getMessage()
+//    {
+//        return _message;
+//    }
+
+
+
+    /**
+     */
     public void setVariableValue(
-                    final Collection<? extends VariableValueType> values
+                    final Collection<? extends VariableValueType> variable_value
                     )
     {
-        if (values != _variableValue) {
-            _variableValue.clear();
-            if (values != null  &&  values.size() > 0) {
-                _variableValue.addAll( values );
+        if (variable_value != this.variable_value) {
+            this.variable_value.clear();
+            if (variable_value != null  &&  variable_value.size() > 0) {
+                this.variable_value.addAll( variable_value );
             }
         }
     }
 
 
     public boolean addVariableValue(
-                    final VariableValueType value
+                    final VariableValueType variable_value
                     )
     {
-        if (value == null) {
+        if (variable_value == null) {
             return false;
         }
 
-        return _variableValue.add( value );
-    }
-
-
-    public SystemObjectType variableValue(
-                    final VariableValueType value
-                    )
-    {
-        addVariableValue( value );
-        return this;
+        return this.variable_value.add( variable_value );
     }
 
 
     public Collection<VariableValueType> getVariableValue()
     {
-        return _variableValue;
+        return this.variable_value;
+    }
+
+
+    public SystemObjectType variableValue(
+                    final VariableValueType variable_value
+                    )
+    {
+        addVariableValue( variable_value );
+        return this;
     }
 
 
 
+    /**
+     */
     public void setReference(
-                    final Collection<? extends ReferenceType> references
+                    final Collection<? extends ReferenceType> reference
                     )
     {
-        if (references != _reference) {
-            _reference.clear();
-            if (references != null  &&  references.size() > 0) {
-                _reference.addAll( references );
+        if (reference != this.reference) {
+            this.reference.clear();
+            if (reference != null  &&  reference.size() > 0) {
+                this.reference.addAll( reference );
             }
         }
     }
@@ -202,7 +235,19 @@ public class SystemObjectType
             return false;
         }
 
-        return _reference.add( reference );
+        return this.reference.add( reference );
+    }
+
+
+    public Collection<ReferenceType> getReference()
+    {
+        return this.reference;
+    }
+
+
+    public Iterator<ReferenceType> iterateReference()
+    {
+        return this.reference.iterator();
     }
 
 
@@ -216,23 +261,11 @@ public class SystemObjectType
 
 
     public SystemObjectType reference(
-                    final int itemID
+                    final int item_ref
                     )
     {
-        addReference( new ReferenceType( itemID ) );
+        addReference( new ReferenceType( item_ref ) );
         return this;
-    }
-
-
-    public Collection<ReferenceType> getReference()
-    {
-        return _reference;
-    }
-
-
-    public Iterator<ReferenceType> iterateReference()
-    {
-        return _reference.iterator();
     }
 
 
@@ -240,16 +273,16 @@ public class SystemObjectType
     /**
      */
     public void setVariableInstance(
-                    final Integer variableInstance
+                    final Integer variable_instance
                     )
     {
-        _variableInstance = variableInstance;
+        this.variable_instance = variable_instance;
     }
 
 
     public Integer getVariableInstance()
     {
-        return _variableInstance;
+        return this.variable_instance;
     }
 
 
@@ -260,7 +293,13 @@ public class SystemObjectType
                     final String comment
                     )
     {
-        _comment = comment;
+        this.comment = comment;
+    }
+
+
+    public String getComment()
+    {
+        return this.comment;
     }
 
 
@@ -273,12 +312,6 @@ public class SystemObjectType
     }
 
 
-    public String getComment()
-    {
-        return _comment;
-    }
-
-
 
     /**
      */
@@ -286,39 +319,39 @@ public class SystemObjectType
                     final FlagEnumeration flag
                     )
     {
-        _flag = flag;
+        this.flag = flag;
     }
 
 
     public FlagEnumeration getFlag()
     {
-        return _flag;
+        return this.flag;
     }
 
 
 
-    //**************************************************************
-    //  Dependent
-    //**************************************************************
-
-    private OvalSystemCharacteristics  _master;
-
-
-
-    @Override
-    public void setMasterObject(
-                    final OvalSystemCharacteristics master
-                    )
-    {
-        _master = master;
-    }
-
-
-    @Override
-    public OvalSystemCharacteristics getMasterObject()
-    {
-        return _master;
-    }
+//    //**************************************************************
+//    //  Dependent
+//    //**************************************************************
+//
+//    private OvalSystemCharacteristics  _master;
+//
+//
+//
+//    @Override
+//    public void setMasterObject(
+//                    final OvalSystemCharacteristics master
+//                    )
+//    {
+//        _master = master;
+//    }
+//
+//
+//    @Override
+//    public OvalSystemCharacteristics getMasterObject()
+//    {
+//        return _master;
+//    }
 
 
 
@@ -333,7 +366,7 @@ public class SystemObjectType
                         + ", flag=" + getFlag()
                         + ", variable_values=" + getVariableValue()
                         + ", reference=" + getReference()
-//                        + ", variable_instance=" + getVariableInstance()
+                        + ", variable_instance=" + getVariableInstance()
                         + ", message=" + getMessage()
                         + "]";
     }

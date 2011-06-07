@@ -43,7 +43,8 @@ public class NetworkInterfacesType
 {
 
     @Embedded( "interface" )
-    private final Set<NetworkInterfaceType>  netIf = new HashSet<NetworkInterfaceType>();
+    private final Set<NetworkInterfaceType>  network_interface =
+        new HashSet<NetworkInterfaceType>();
 
 
 
@@ -75,18 +76,26 @@ public class NetworkInterfacesType
     /**
      */
     public void setInterface(
-                    final Collection<? extends NetworkInterfaceType> netifs
+                    final Collection<? extends NetworkInterfaceType> network_interface
                     )
     {
-        _setElement( netifs );
+        _setElement( network_interface );
+    }
+
+
+    public void setInterface(
+                    final NetworkInterfaceType[] network_interface
+                    )
+    {
+        _setElement( network_interface );
     }
 
 
     public boolean addInterface(
-                    final NetworkInterfaceType netif
+                    final NetworkInterfaceType network_interface
                     )
     {
-        return _addElement( netif );
+        return _addElement( network_interface );
     }
 
 
@@ -110,7 +119,7 @@ public class NetworkInterfacesType
     @Override
     protected Collection<NetworkInterfaceType> _getElement()
     {
-        return this.netIf;
+        return this.network_interface;
     }
 
 

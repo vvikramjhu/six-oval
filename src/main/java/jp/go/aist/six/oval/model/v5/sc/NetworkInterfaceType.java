@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
-import jp.go.aist.six.util.persist.Dependent;
 
 
 
@@ -35,19 +33,19 @@ import jp.go.aist.six.util.persist.Dependent;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class NetworkInterfaceType
-    extends AbstractOvalObject
-    implements Dependent<OvalSystemCharacteristics>
+//    extends AbstractOvalObject
+//    implements Dependent<OvalSystemCharacteristics>
 //implements Dependent<SystemInfo>
 {
 
-    private String  _interfaceName;
+    private String  interface_name;
     //{1..1}
 
-    private EntityItemIPAddressStringType  _ipAddress;
+    private EntityItemIPAddressStringType  ip_address;
 //    private String  _ipAddress;
     //{1..1}
 
-    private String  _macAddress;
+    private String  mac_address;
     //{1..1}
 
 
@@ -79,16 +77,16 @@ public class NetworkInterfaceType
     /**
      */
     public void setInterfaceName(
-                    final String name
+                    final String interface_name
                     )
     {
-        _interfaceName = name;
+        this.interface_name = interface_name;
     }
 
 
     public String getInterfaceName()
     {
-        return _interfaceName;
+        return this.interface_name;
     }
 
 
@@ -96,24 +94,24 @@ public class NetworkInterfaceType
     /**
      */
     public void setIpAddress(
-                    final String ip
+                    final String ip_address
                     )
     {
-        setIpAddress( new EntityItemIPAddressStringType( ip ) );
+        setIpAddress( new EntityItemIPAddressStringType( ip_address ) );
     }
 
 
     public void setIpAddress(
-                    final EntityItemIPAddressStringType ip
+                    final EntityItemIPAddressStringType ip_address
                     )
     {
-        _ipAddress = ip;
+        this.ip_address = ip_address;
     }
 
 
     public EntityItemIPAddressStringType getIpAddress()
     {
-        return _ipAddress;
+        return this.ip_address;
     }
 
 
@@ -121,42 +119,42 @@ public class NetworkInterfaceType
     /**
      */
     public void setMacAddress(
-                    final String mac
+                    final String mac_address
                     )
     {
-        _macAddress = mac;
+        this.mac_address = mac_address;
     }
 
 
     public String getMacAddress()
     {
-        return _macAddress;
+        return this.mac_address;
     }
 
 
 
-    //**************************************************************
-    //  Dependent
-    //**************************************************************
-
-    private OvalSystemCharacteristics  _master;
-
-
-
-    @Override
-    public void setMasterObject(
-                    final OvalSystemCharacteristics master
-                    )
-    {
-        _master = master;
-    }
-
-
-    @Override
-    public OvalSystemCharacteristics getMasterObject()
-    {
-        return _master;
-    }
+//    //**************************************************************
+//    //  Dependent
+//    //**************************************************************
+//
+//    private OvalSystemCharacteristics  _master;
+//
+//
+//
+//    @Override
+//    public void setMasterObject(
+//                    final OvalSystemCharacteristics master
+//                    )
+//    {
+//        _master = master;
+//    }
+//
+//
+//    @Override
+//    public OvalSystemCharacteristics getMasterObject()
+//    {
+//        return _master;
+//    }
 
 
 
@@ -170,14 +168,14 @@ public class NetworkInterfaceType
         final int  prime = 37;
         int  result = 17;
 
-        String  name = getInterfaceName();
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        String  interface_name = getInterfaceName();
+        result = prime * result + ((interface_name == null) ? 0 : interface_name.hashCode());
 
-        EntityItemIPAddressStringType  ip = getIpAddress();
-        result = prime * result + ((ip == null) ? 0 : ip.hashCode());
+        EntityItemIPAddressStringType  ip_address = getIpAddress();
+        result = prime * result + ((ip_address == null) ? 0 : ip_address.hashCode());
 
-        String  mac = getMacAddress();
-        result = prime * result + ((mac == null) ? 0 : mac.hashCode());
+        String  mac_address = getMacAddress();
+        result = prime * result + ((mac_address == null) ? 0 : mac_address.hashCode());
 
         return result;
     }
@@ -223,7 +221,7 @@ public class NetworkInterfaceType
     @Override
     public String toString()
     {
-        return "interface[interface_name=" + getInterfaceName()
+        return "[interface_name=" + getInterfaceName()
                         + ", ip_address=" + getIpAddress()
                         + ", mac_address=" + getMacAddress()
                         + "]";

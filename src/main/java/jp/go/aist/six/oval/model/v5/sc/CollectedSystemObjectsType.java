@@ -43,6 +43,7 @@ public class CollectedSystemObjectsType
 {
 
     private final Set<SystemObjectType>  object = new HashSet<SystemObjectType>();
+    //{1..*}
 
 
 
@@ -74,10 +75,18 @@ public class CollectedSystemObjectsType
     /**
      */
     public void setObject(
-                    final Collection<? extends SystemObjectType> objects
+                    final Collection<? extends SystemObjectType> object
                     )
     {
-        _setElement( objects );
+        _setElement( object );
+    }
+
+
+    public void setObject(
+                    final SystemObjectType[] object
+                    )
+    {
+        _setElement( object );
     }
 
 

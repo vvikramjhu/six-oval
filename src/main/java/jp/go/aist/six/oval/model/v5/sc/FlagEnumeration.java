@@ -20,8 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.sc;
 
-import java.io.Serializable;
-import java.util.HashMap;
+import jp.go.aist.six.oval.model.v5.OvalEnumeration;
 
 
 
@@ -32,84 +31,57 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class FlagEnumeration
-    implements Serializable
+public enum FlagEnumeration
+    implements OvalEnumeration
 {
 
-    private static final String  _ERROR_           = "error";
-    private static final String  _COMPLETE_        = "complete";
-    private static final String  _INCOMPLETE_      = "incomplete";
-    private static final String  _DOES_NOT_EXIST_  = "does not exist";
-    private static final String  _NOT_COLLECTED_   = "not collected";
-    private static final String  _NOT_APPLICABLE_  = "not applicable";
-
-
-    public static final FlagEnumeration  ERROR          = new FlagEnumeration( _ERROR_ );
-    public static final FlagEnumeration  COMPLETE       = new FlagEnumeration( _COMPLETE_ );
-    public static final FlagEnumeration  INCOMPLETE     = new FlagEnumeration( _INCOMPLETE_ );
-    public static final FlagEnumeration  DOES_NOT_EXIST = new FlagEnumeration( _DOES_NOT_EXIST_ );
-    public static final FlagEnumeration  NOT_COLLECTED  = new FlagEnumeration( _NOT_COLLECTED_ );
-    public static final FlagEnumeration  NOT_APPLICABLE = new FlagEnumeration( _NOT_APPLICABLE_ );
-
-
-
-    private static HashMap<String, FlagEnumeration> _INIT_()
-    {
-        HashMap<String, FlagEnumeration>  map = new HashMap<String, FlagEnumeration>();
-        map.put( _ERROR_,           ERROR          );
-        map.put( _COMPLETE_,        COMPLETE       );
-        map.put( _INCOMPLETE_,      INCOMPLETE     );
-        map.put( _DOES_NOT_EXIST_,  DOES_NOT_EXIST );
-        map.put( _NOT_COLLECTED_,   NOT_COLLECTED  );
-        map.put( _NOT_APPLICABLE_,  NOT_APPLICABLE );
-        return map;
-    }
-
-    private static final HashMap<String, FlagEnumeration>  _INSTANCES_ = _INIT_();
-
+    ERROR          ( "error" ),
+    COMPLETE       ( "complete" ),
+    INCOMPLETE     ( "incomplete" ),
+    DOES_NOT_EXIST ( "does not exist" ),
+    NOT_COLLECTED  ( "not collected" ),
+    NOT_APPLICABLE ( "not applicable" );
 
 
 
     /**
+     * A factory method.
      */
-    public static FlagEnumeration valueOf(
-                    final String name
+    public static FlagEnumeration fromValue(
+                    final String value
                     )
     {
-        FlagEnumeration  e = null;
-        if (name != null) {
-            e = _INSTANCES_.get( name );
+        for (FlagEnumeration  e : FlagEnumeration.values()) {
+            if (e.value.equals( value )) {
+                return e;
+            }
         }
 
-        if (e == null) {
-            throw new IllegalArgumentException( "invalid flag: " + name );
-        }
-
-        return e;
+        throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
+    private String  value = null;
 
 
 
     /**
+     * Constructor.
      */
-    private FlagEnumeration(
-                    final String name
+    FlagEnumeration(
+                    final String value
                     )
     {
-        _name = name;
+        this.value = value;
     }
 
 
 
-    /**
-     */
-    public String getName()
+    @Override
+    public String value()
     {
-        return _name;
+        return this.value;
     }
 
 
@@ -121,7 +93,7 @@ public final class FlagEnumeration
     @Override
     public String toString()
     {
-        return getName();
+        return this.value;
     }
 
 }
