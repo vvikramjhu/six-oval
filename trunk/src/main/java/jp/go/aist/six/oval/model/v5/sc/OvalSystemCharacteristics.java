@@ -36,19 +36,19 @@ public class OvalSystemCharacteristics
     extends OvalDocument
 {
 
-    private GeneratorType  _generator;
+    private GeneratorType  generator;
     //{1..1}
 
 
-    private SystemInfoType  _systemInfo;
+    private SystemInfoType  system_info;
     //{1..1}
 
 
-    private CollectedSystemObjectsType  _collectedObjects;
+    private CollectedSystemObjectsType  collected_objects;
     //{0..1}
 
 
-    private SystemDataType  _systemData;
+    private SystemDataType  system_data;
     //{0..1}
 
 
@@ -137,13 +137,13 @@ public class OvalSystemCharacteristics
                     final GeneratorType generator
                     )
     {
-        _generator = generator;
+        this.generator = generator;
     }
 
 
     public GeneratorType getGenerator()
     {
-        return _generator;
+        return this.generator;
     }
 
 
@@ -151,16 +151,16 @@ public class OvalSystemCharacteristics
     /**
      */
     public void setSystemInfo(
-                    final SystemInfoType systemInfo
+                    final SystemInfoType system_info
                     )
     {
-        _systemInfo = systemInfo;
+        this.system_info = system_info;
     }
 
 
     public SystemInfoType getSystemInfo()
     {
-        return _systemInfo;
+        return this.system_info;
     }
 
 
@@ -168,16 +168,16 @@ public class OvalSystemCharacteristics
     /**
      */
     public void setCollectedObjects(
-                    final CollectedSystemObjectsType objects
+                    final CollectedSystemObjectsType collected_objects
                     )
     {
-        _collectedObjects = objects;
+        this.collected_objects = collected_objects;
     }
 
 
     public CollectedSystemObjectsType getCollectedObjects()
     {
-        return _collectedObjects;
+        return this.collected_objects;
     }
 
 
@@ -185,16 +185,16 @@ public class OvalSystemCharacteristics
     /**
      */
     public void setSystemData(
-                    final SystemDataType systemData
+                    final SystemDataType system_data
                     )
     {
-        _systemData = systemData;
+        this.system_data = system_data;
     }
 
 
     public SystemDataType getSystemData()
     {
-        return _systemData;
+        return this.system_data;
     }
 
 
@@ -218,15 +218,15 @@ public class OvalSystemCharacteristics
     @Override
     public String toString()
     {
-        CollectedSystemObjectsType  collectedObjects = getCollectedObjects();
-        SystemDataType  systemData = getSystemData();
+//        CollectedSystemObjectsType  collectedObjects = getCollectedObjects();
+//        SystemDataType  systemData = getSystemData();
 
-        return "OvalSystemCharacteristics[generator=" + getGenerator()
+        return "oval_system_characteristics[generator=" + getGenerator()
                         + ", system_info=" + getSystemInfo()
-                        + ", #collected_objects="
-                        + (collectedObjects == null ? 0 : collectedObjects.size())
-                        + ", #items="
-                        + (systemData == null ? 0 : systemData.size())
+                        + ", collected_objects=" + getCollectedObjects()
+//                        + (collectedObjects == null ? 0 : collectedObjects.size())
+                        + ", system_data=" + getSystemData()
+//                        + (systemData == null ? 0 : systemData.size())
                         + "]";
     }
 
