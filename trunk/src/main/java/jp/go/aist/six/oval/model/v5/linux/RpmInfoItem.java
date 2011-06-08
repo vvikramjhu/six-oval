@@ -39,8 +39,8 @@ public class RpmInfoItem
     extends LinuxEvrPkgInfoItem
 {
 
-//    private EntityItemStringType  _signatureKeyID;
-//    //{0..1}
+    private EntityItemStringType  signature_keyid;
+    //{0..1}
 
 
 
@@ -125,24 +125,26 @@ public class RpmInfoItem
     /**
      */
     public void setSignatureKeyID(
-                    final EntityItemStringType signatureKeyID
+                    final EntityItemStringType signature_keyid
                     )
     {
-        _properties.put( LinuxPkgProperty.SIGNATURE_KEYID, signatureKeyID);
+        this.signature_keyid = signature_keyid;
+//        _properties.put( LinuxPkgProperty.SIGNATURE_KEYID, signatureKeyID);
     }
 
 
     public EntityItemStringType getSignatureKeyID()
     {
-        return (EntityItemStringType)_properties.get( LinuxPkgProperty.SIGNATURE_KEYID );
+        return this.signature_keyid;
+//        return (EntityItemStringType)_properties.get( LinuxPkgProperty.SIGNATURE_KEYID );
     }
 
 
     public RpmInfoItem signatureKeyID(
-                    final String signatureKeyID
+                    final String signature_keyid
                     )
     {
-        setSignatureKeyID( new EntityItemStringType( signatureKeyID ) );
+        setSignatureKeyID( new EntityItemStringType( signature_keyid ) );
         return this;
     }
 
@@ -225,8 +227,8 @@ public class RpmInfoItem
     public String toString()
     {
         return "rpminfo_item[" + super.toString()
-                        + ", sig_keyid=" + getSignatureKeyID()
-                        + "]";
+             + ", sig_keyid=" + getSignatureKeyID()
+             + "]";
     }
 
 }
