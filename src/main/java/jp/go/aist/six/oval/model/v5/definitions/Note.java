@@ -34,7 +34,7 @@ public class Note
 //    extends AbstractOvalObject
 {
 
-    private String  _content;
+    private String  content;
 
 
 
@@ -53,13 +53,13 @@ public class Note
                     final String content
                     )
     {
-        _content = content;
+        this.content = content;
     }
 
 
     public String getContent()
     {
-        return _content;
+        return this.content;
     }
 
 

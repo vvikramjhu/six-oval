@@ -37,8 +37,9 @@ public class LocalVariable
     extends VariableType
 {
 
-    private ComponentGroup  _component;
+    private ComponentGroup  component;
     //{1..1}
+
 
     private String  _componentXml;
 
@@ -92,7 +93,13 @@ public class LocalVariable
                     final ComponentGroup component
                     )
     {
-        _component = component;
+        this.component = component;
+    }
+
+
+    public ComponentGroup getComponent()
+    {
+        return this.component;
     }
 
 
@@ -102,12 +109,6 @@ public class LocalVariable
     {
         setComponent( component );
         return this;
-    }
-
-
-    public ComponentGroup getComponent()
-    {
-        return _component;
     }
 
 
@@ -171,8 +172,8 @@ public class LocalVariable
     public String toString()
     {
         return "local_variable[" + super.toString()
-                        + ", " + getComponent()
-                        + "]";
+             + ", " + getComponent()
+             + "]";
     }
 
 }

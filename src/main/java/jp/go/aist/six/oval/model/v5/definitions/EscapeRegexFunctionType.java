@@ -34,7 +34,7 @@ public class EscapeRegexFunctionType
     extends FunctionGroup
 {
 
-    private ComponentGroup  _component;
+    private ComponentGroup  component;
     //{1..1}
 
 
@@ -54,13 +54,13 @@ public class EscapeRegexFunctionType
                     final ComponentGroup component
                     )
     {
-        _component = component;
+        this.component = component;
     }
 
 
     public ComponentGroup getComponent()
     {
-        return _component;
+        return this.component;
     }
 
 
@@ -73,7 +73,7 @@ public class EscapeRegexFunctionType
     public String toString()
     {
         return "escape_regex[" + getComponent()
-                        + "]";
+             + "]";
     }
 
 }

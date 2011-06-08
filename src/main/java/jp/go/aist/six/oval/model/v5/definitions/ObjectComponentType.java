@@ -34,15 +34,15 @@ public class ObjectComponentType
     extends ComponentGroup
 {
 
-    private String  _objectRef;
+    private String  object_ref;
     //{required, oval:ObjectIDPattern}
 
 
-    private String  _itemField;
+    private String  item_field;
     //{required, oval:NonEmptyStringType}
 
 
-    private String  _recordField;
+    private String  record_field;
     //{optional, oval:NonEmptyStringType}
 
 
@@ -68,51 +68,51 @@ public class ObjectComponentType
 
     /**
      */
+    public void setObjectRef(
+                    final String object_ref
+                    )
+    {
+        this.object_ref = object_ref;
+    }
+
+
     public String getObjectRef()
     {
-        return _objectRef;
-    }
-
-
-    public void setObjectRef(
-                    final String objectRef
-                    )
-    {
-        _objectRef = objectRef;
+        return this.object_ref;
     }
 
 
 
     /**
      */
+    public void setItemField(
+                    final String item_field
+                    )
+    {
+        this.item_field = item_field;
+    }
+
+
     public String getItemField()
     {
-        return _itemField;
-    }
-
-
-    public void setItemField(
-                    final String itemField
-                    )
-    {
-        _itemField = itemField;
+        return this.item_field;
     }
 
 
 
     /**
      */
-    public String getRecordField()
+    public void setRecordField(
+                    final String record_field
+                    )
     {
-        return _recordField;
+        this.record_field = record_field;
     }
 
 
-    public void setRecordField(
-                    final String recordField
-                    )
+    public String getRecordField()
     {
-        _recordField = recordField;
+        return this.record_field;
     }
 
 
@@ -124,10 +124,10 @@ public class ObjectComponentType
     @Override
     public String toString()
     {
-        return "[object_ref=" + getObjectRef()
-                        + ", item_field=" + getItemField()
-                        + ", record_field=" + getRecordField()
-                        + "]";
+        return "[object_ref="       + getObjectRef()
+             + ", item_field="      + getItemField()
+             + ", record_field="    + getRecordField()
+             + "]";
     }
 
 }

@@ -34,7 +34,7 @@ public class VariableComponentType
     extends ComponentGroup
 {
 
-    private String  _varRef;
+    private String  var_ref;
     //{required, oval:VariableIDPattern}
 
 
@@ -50,17 +50,17 @@ public class VariableComponentType
 
     /**
      */
-    public String getVarRef()
+    public void setVarRef(
+                    final String var_ref
+                    )
     {
-        return _varRef;
+        this.var_ref = var_ref;
     }
 
 
-    public void setVarRef(
-                    final String varRef
-                    )
+    public String getVarRef()
     {
-        _varRef = varRef;
+        return this.var_ref;
     }
 
 
@@ -73,7 +73,7 @@ public class VariableComponentType
     public String toString()
     {
         return "[var_ref=" + getVarRef()
-                        + "]";
+             + "]";
     }
 
 }
