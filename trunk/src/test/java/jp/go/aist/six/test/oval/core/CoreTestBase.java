@@ -144,6 +144,10 @@ public abstract class CoreTestBase
     //
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    //**************************************************************
+    //  OVAL definitions
+    //**************************************************************
+
     @DataProvider( name="oval.definitions.xml" )
     public Object[][] provideOvalDefinitionsXml()
     {
@@ -444,15 +448,28 @@ public abstract class CoreTestBase
 
 
     //**************************************************************
-    //  system characteristics
+    //  OVAL system characteristics
     //**************************************************************
 
 
 
     //**************************************************************
-    //  results
+    //  OVAL results
     //**************************************************************
 
+    @DataProvider( name="oval.results.xml" )
+    public Object[][] provideOvalResultsXml()
+    {
+        return new Object[][] {
+                        // def:7222, Windows XP, vulnerability
+                        {
+                            jp.go.aist.six.oval.model.v5.results.OvalResults.class,
+                            "test/resources/data/oval-results-5/oval-results_CVE-2010-0176_def7222_v5.9.xml",
+                            null,
+                            "marshalled_oval-results_CVE-2010-0176_def7222_v5.9.xml"
+                        }
+        };
+    }
 
 }
 // CoreTestBase

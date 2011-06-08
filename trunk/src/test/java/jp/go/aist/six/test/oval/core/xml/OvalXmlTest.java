@@ -1,6 +1,7 @@
 package jp.go.aist.six.test.oval.core.xml;
 
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.v5.results.OvalResults;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import org.testng.Reporter;
 
@@ -40,9 +41,9 @@ public class OvalXmlTest
 
 
 
-    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    //  Definitions
-    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    //**************************************************************
+    //  OVAL definitions
+    //**************************************************************
 
     @org.testng.annotations.Test(
                     groups={"oval.core.xml", "oval.definitions.oval_definitions"},
@@ -60,6 +61,29 @@ public class OvalXmlTest
     {
         Reporter.log( "\n////////////////////////////////////////////", true );
         _testXml( type, sourceFilepath, /* xpath, */ expected, resultFilepath );
+    }
+
+
+
+    //**************************************************************
+    //  OVAL results
+    //**************************************************************
+
+    @org.testng.annotations.Test(
+                    groups={"oval.core.xml", "oval.results.oval_results"},
+                    dataProvider="oval.results.xml",
+                    alwaysRun=true
+                    )
+    public void testResutlsOvalResults(
+                    final Class<OvalResults> type,
+                    final String sourceFilepath,
+                    final OvalResults expected,
+                    final String resultFilepath
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n////////////////////////////////////////////", true );
+        _testXml( type, sourceFilepath, expected, resultFilepath );
     }
 
 }

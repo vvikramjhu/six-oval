@@ -164,5 +164,13 @@ public abstract class Container<E>
         return false;
     }
 
+
+
+    @Override
+    public String toString()
+    {
+        return String.valueOf( _getElement() );
+    }
+
 }
 // Container

@@ -20,6 +20,9 @@
 
 package jp.go.aist.six.oval.model.v5.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
@@ -39,22 +42,24 @@ public class RegistryItem
     extends ItemType
 {
 
-    private EntityItemRegistryHiveType  _hive;
+    private EntityItemRegistryHiveType  hive;
     //{0..1}
 
-    private EntityItemStringType  _key;
+    private EntityItemStringType  key;
     //{0..1, nillable="true"}
 
-    private EntityItemStringType  _name;
+    private EntityItemStringType  name;
     //{0..1, nillable="true"}
 
-    private EntityItemRegistryTypeType  _type;
+    private EntityItemRegistryTypeType  type;
     //{0..1}
 
-    private EntityItemAnySimpleType  _value;
+
+    private final Collection<EntityItemAnySimpleType>  value =
+        new ArrayList<EntityItemAnySimpleType>();
     //{0..*}
+//    private EntityItemAnySimpleType  _value;
     // We have never found a registry item that has more than one value!!! //
-//    private List<EntityItemAnySimple>  _values = new ArrayList<EntityItemAnySimple>();
 
 
 
@@ -77,17 +82,17 @@ public class RegistryItem
 
     /**
      */
-    public EntityItemRegistryHiveType getHive()
-    {
-        return _hive;
-    }
-
-
     public void setHive(
                     final EntityItemRegistryHiveType hive
                     )
     {
-        _hive = hive;
+        this.hive = hive;
+    }
+
+
+    public EntityItemRegistryHiveType getHive()
+    {
+        return this.hive;
     }
 
 
@@ -96,7 +101,7 @@ public class RegistryItem
      */
     public EntityItemStringType getKey()
     {
-        return _key;
+        return this.key;
     }
 
 
@@ -104,7 +109,7 @@ public class RegistryItem
                     final EntityItemStringType key
                     )
     {
-        _key = key;
+        this.key = key;
     }
 
 
@@ -113,7 +118,7 @@ public class RegistryItem
      */
     public EntityItemStringType getName()
     {
-        return _name;
+        return this.name;
     }
 
 
@@ -121,7 +126,7 @@ public class RegistryItem
                     final EntityItemStringType name
                     )
     {
-        _name = name;
+        this.name = name;
     }
 
 
@@ -130,7 +135,7 @@ public class RegistryItem
      */
     public EntityItemRegistryTypeType getType()
     {
-        return _type;
+        return this.type;
     }
 
 
@@ -138,7 +143,7 @@ public class RegistryItem
                     final EntityItemRegistryTypeType type
                     )
     {
-        _type = type;
+        this.type = type;
     }
 
 
@@ -146,17 +151,44 @@ public class RegistryItem
     /**
      */
     public void setValue(
-                    final EntityItemAnySimpleType value
+                    final Collection<? extends EntityItemAnySimpleType> value
                     )
     {
-        _value = value;
+        if (this.value != value) {
+            this.value.clear();
+            if (value != null  &&  value.size() > 0) {
+                this.value.addAll( value );
+            }
+        }
     }
 
 
-    public EntityItemAnySimpleType getValue()
+    public Collection<EntityItemAnySimpleType> getValue()
     {
-        return _value;
+        return this.value;
     }
+
+
+    public Iterator<EntityItemAnySimpleType> iterateValue()
+    {
+        return this.value.iterator();
+    }
+
+
+//    /**
+//     */
+//    public void setValue(
+//                    final EntityItemAnySimpleType value
+//                    )
+//    {
+//        _value = value;
+//    }
+//
+//
+//    public EntityItemAnySimpleType getValue()
+//    {
+//        return _value;
+//    }
 
 
 
@@ -185,7 +217,6 @@ public class RegistryItem
                         + ", name=" + getName()
                         + ", type=" + getType()
                         + ", value=" + getValue()
-//                        + ", values=" + getValues()
                         + "]";
     }
 
