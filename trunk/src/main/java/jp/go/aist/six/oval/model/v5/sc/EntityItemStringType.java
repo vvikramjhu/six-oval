@@ -36,7 +36,8 @@ public class EntityItemStringType
     extends EntityItemSimpleBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.STRING;
+    public static final DatatypeEnumeration  FIXED_DATATYPE =
+        DatatypeEnumeration.STRING;
     //{optional, fixed="string"}
 
 

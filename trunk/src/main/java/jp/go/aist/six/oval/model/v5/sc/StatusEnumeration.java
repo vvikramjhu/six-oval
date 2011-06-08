@@ -20,8 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.sc;
 
-import java.io.Serializable;
-import java.util.HashMap;
+import jp.go.aist.six.oval.model.v5.OvalEnumeration;
 
 
 
@@ -33,77 +32,55 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class StatusEnumeration
-    implements Serializable
+public enum StatusEnumeration
+    implements OvalEnumeration
 {
 
-    private static final String  _ERROR_           = "error";
-    private static final String  _EXISTS_          = "exists";
-    private static final String  _DOES_NOT_EXIST_  = "does not exist";
-    private static final String  _NOT_COLLECTED_   = "not collected";
-
-
-    public static final StatusEnumeration  ERROR          = new StatusEnumeration( _ERROR_ );
-    public static final StatusEnumeration  EXISTS         = new StatusEnumeration( _EXISTS_ );
-    public static final StatusEnumeration  DOES_NOT_EXIST = new StatusEnumeration( _DOES_NOT_EXIST_ );
-    public static final StatusEnumeration  NOT_COLLECTED  = new StatusEnumeration( _NOT_COLLECTED_ );
-
-
-    private static HashMap<String, StatusEnumeration> _INIT_()
-    {
-        HashMap<String, StatusEnumeration>  map = new HashMap<String, StatusEnumeration>();
-        map.put( _ERROR_,           ERROR          );
-        map.put( _EXISTS_,          EXISTS         );
-        map.put( _DOES_NOT_EXIST_,  DOES_NOT_EXIST );
-        map.put( _NOT_COLLECTED_,   NOT_COLLECTED  );
-        return map;
-    }
-
-    private static final HashMap<String, StatusEnumeration>  _INSTANCES_ = _INIT_();
-
+    ERROR          ( "error" ),
+    EXISTS         ( "exists" ),
+    DOES_NOT_EXIST ( "does not exist" ),
+    NOT_COLLECTED  ( "not collected" );
 
 
 
     /**
+     * A factory method.
      */
-    public static StatusEnumeration valueOf(
-                    final String name
+    public static StatusEnumeration fromValue(
+                    final String value
                     )
     {
-        StatusEnumeration  status = null;
-        if (name != null) {
-            status = _INSTANCES_.get( name );
+        for (StatusEnumeration  e : StatusEnumeration.values()) {
+            if (e.value.equals( value )) {
+                return e;
+            }
         }
 
-        if (status == null) {
-            throw new IllegalArgumentException( "invalid item status: " + name );
-        }
-
-        return status;
+        throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
+    private String  value = null;
 
 
 
     /**
+     * Constructor.
      */
-    private StatusEnumeration(
-                    final String name
+    StatusEnumeration(
+                    final String value
                     )
     {
-        _name = name;
+        this.value = value;
     }
 
 
 
-    /**
-     */
-    public String getName()
+    @Override
+    public String value()
     {
-        return _name;
+        return this.value;
     }
 
 
@@ -115,7 +92,7 @@ public final class StatusEnumeration
     @Override
     public String toString()
     {
-        return getName();
+        return this.value;
     }
 
 }

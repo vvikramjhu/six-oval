@@ -36,7 +36,8 @@ public class EntityItemIntType
     extends EntityItemSimpleBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.INT;
+    public static final DatatypeEnumeration  FIXED_DATATYPE =
+        DatatypeEnumeration.INT;
     //{required, fixed="int"}
 
 
@@ -80,6 +81,13 @@ public class EntityItemIntType
         }
 
         super.setDatatype( datatype );
+    }
+
+
+    @Override
+    public DatatypeEnumeration getDatatype()
+    {
+        return FIXED_DATATYPE;
     }
 
 

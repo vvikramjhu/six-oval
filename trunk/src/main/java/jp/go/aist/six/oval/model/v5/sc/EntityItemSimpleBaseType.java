@@ -35,7 +35,7 @@ public abstract class EntityItemSimpleBaseType
     extends EntityAttributeGroup
 {
 
-    private String  _content;
+    private String  content;
     //{simpleContent, base="xsd:anySimpleType"}
 
 
@@ -63,13 +63,13 @@ public abstract class EntityItemSimpleBaseType
                     final String content
                     )
     {
-        _content = content;
+        this.content = content;
     }
 
 
     public String getContent()
     {
-        return _content;
+        return this.content;
     }
 
 
@@ -84,8 +84,8 @@ public abstract class EntityItemSimpleBaseType
         final int  prime = 37;
         int  result = super.hashCode();
 
-        String  data = getContent();
-        result = prime * result + ((data == null) ? 0 : data.hashCode());
+        String  content = getContent();
+        result = prime * result + ((content == null) ? 0 : content.hashCode());
 
         return result;
     }
@@ -124,8 +124,8 @@ public abstract class EntityItemSimpleBaseType
     public String toString()
     {
         return "" + getContent()
-                        + super.toString()
-                        ;
+                  + super.toString()
+                  ;
     }
 
 }
