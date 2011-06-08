@@ -291,7 +291,7 @@ public class FileState
 
     /**
      */
-    public void setMSChecksum(
+    public void setMsChecksum(
                     final EntityStateStringType ms_checksum
                     )
     {
@@ -300,7 +300,7 @@ public class FileState
     }
 
 
-    public EntityStateStringType getMSChecksum()
+    public EntityStateStringType getMsChecksum()
     {
         return this.ms_checksum;
 //        return _properties.getProperty(
@@ -578,26 +578,26 @@ public class FileState
     public String toString()
     {
         return "file_state[" + super.toString()
-                        + ", filepath=" + getFilepath()
-                        + ", filepath=" + getPath()
-                        + ", filepath=" + getFilename()
-                        + ", filepath=" + getOwner()
-                        + ", filepath=" + getSize()
-                        + ", filepath=" + getATime()
-                        + ", filepath=" + getCTime()
-                        + ", filepath=" + getMTime()
-                        + ", filepath=" + getMSChecksum()
-                        + ", filepath=" + getVersion()
-                        + ", filepath=" + getType()
-                        + ", filepath=" + getDevelopmentClass()
-                        + ", filepath=" + getCompany()
-                        + ", filepath=" + getInternalName()
-                        + ", filepath=" + getLanguage()
-                        + ", filepath=" + getOriginalFilename()
-                        + ", filepath=" + getProductName()
-                        + ", filepath=" + getProductVersion()
-//                        + ", " + String.valueOf( _properties )
-                        + "]";
+             + ", filepath="            + getFilepath()
+             + ", path="                + getPath()
+             + ", filename="            + getFilename()
+             + ", owner="               + getOwner()
+             + ", size="                + getSize()
+             + ", a_time="              + getATime()
+             + ", c_time="              + getCTime()
+             + ", m_time="              + getMTime()
+             + ", ms_checksum="         + getMsChecksum()
+             + ", version="             + getVersion()
+             + ", type="                + getType()
+             + ", development_class="   + getDevelopmentClass()
+             + ", company="             + getCompany()
+             + ", internal_name="       + getInternalName()
+             + ", language="            + getLanguage()
+             + ", original_filename="   + getOriginalFilename()
+             + ", product_name="        + getProductName()
+             + ", product_version="     + getProductVersion()
+//           + ", " + String.valueOf( _properties )
+             + "]";
     }
 
 }

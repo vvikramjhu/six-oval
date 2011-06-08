@@ -125,7 +125,7 @@
             <bind-xml name="m_time" node="element"/>
         </field>
 
-        <field name="MSChecksum" 
+        <field name="msChecksum" 
             type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
             <bind-xml name="ms_checksum" node="element"/>
         </field>

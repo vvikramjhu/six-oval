@@ -72,7 +72,7 @@ public class EntityItemFileTypeType
     {
         if (content != null) {
             //validation
-            FileTypeEnumeration.valueOf( content );
+            FileTypeEnumeration.fromValue( content );
         }
 
         super.setContent( content );
