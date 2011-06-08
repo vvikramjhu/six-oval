@@ -20,11 +20,14 @@
 
 package jp.go.aist.six.oval.model.v5.independent;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityStateIntType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
-import jp.go.aist.six.oval.model.v5.definitions.StateType;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemIntType;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.v5.sc.ItemType;
 
 
 
@@ -37,61 +40,50 @@ import jp.go.aist.six.oval.model.v5.definitions.StateType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class TextfileContent54State
-    extends StateType
+public class TextfileContentItem
+    extends ItemType
 {
 
-    private EntityStateStringType  filepath;
+    private EntityItemStringType  filepath;
     //{0..1}
 
-    private EntityStateStringType  path;
+    private EntityItemStringType  path;
     //{0..1}
 
-    private EntityStateStringType  filename;
+    private EntityItemStringType  filename;
     //{0..1}
 
-    private EntityStateStringType  pattern;
+    private EntityItemStringType  pattern;
     //{0..1}
 
-    private EntityStateIntType  instance;
+    private EntityItemIntType  instance;
     //{0..1}
 
-    private EntityStateAnySimpleType  text;
+    private EntityItemStringType  line;
     //{0..1}
 
-    private EntityStateAnySimpleType  subexpression;
+    private EntityItemAnySimpleType  text;
     //{0..1}
 
-
-//    private final EntityPropertyMap<TextfileContentProperty>  _properties =
-//        TextfileContentProperty.createPropertyMap();
+    private final Collection<EntityItemAnySimpleType>  subexpression =
+        new ArrayList<EntityItemAnySimpleType>();
+    //{0..1}
 
 
 
     /**
      * Constructor.
      */
-    public TextfileContent54State()
+    public TextfileContentItem()
     {
     }
 
 
-    public TextfileContent54State(
-                    final String id,
-                    final int version
+    public TextfileContentItem(
+                    final int id
                     )
     {
-        super( id, version );
-    }
-
-
-    public TextfileContent54State(
-                    final String id,
-                    final int version,
-                    final String comment
-                    )
-    {
-        super( id, version, comment );
+        super( id );
     }
 
 
@@ -99,24 +91,21 @@ public class TextfileContent54State
     /**
      */
     public void setFilepath(
-                    final EntityStateStringType filepath
+                    final EntityItemStringType filepath
                     )
     {
         this.filepath = filepath;
-//        _properties.setProperty( TextfileContentProperty.FILEPATH, filepath );
     }
 
 
-    public EntityStateStringType getFilepath()
+    public EntityItemStringType getFilepath()
     {
         return this.filepath;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.FILEPATH, EntityStateStringType.class );
     }
 
 
-    public TextfileContent54State filepath(
-                    final EntityStateStringType filepath
+    public TextfileContentItem filepath(
+                    final EntityItemStringType filepath
                     )
     {
         setFilepath( filepath );
@@ -128,24 +117,21 @@ public class TextfileContent54State
     /**
      */
     public void setPath(
-                    final EntityStateStringType path
+                    final EntityItemStringType path
                     )
     {
         this.path = path;
-//        _properties.setProperty( TextfileContentProperty.PATH, path );
     }
 
 
-    public EntityStateStringType getPath()
+    public EntityItemStringType getPath()
     {
         return this.path;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.PATH, EntityStateStringType.class );
     }
 
 
-    public TextfileContent54State path(
-                    final EntityStateStringType path
+    public TextfileContentItem path(
+                    final EntityItemStringType path
                     )
     {
         setPath( path );
@@ -157,24 +143,21 @@ public class TextfileContent54State
     /**
      */
     public void setFilename(
-                    final EntityStateStringType filename
+                    final EntityItemStringType filename
                     )
     {
         this.filename = filename;
-//        _properties.setProperty( TextfileContentProperty.FILENAME, filename );
     }
 
 
-    public EntityStateStringType getFilename()
+    public EntityItemStringType getFilename()
     {
         return this.filename;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.FILENAME, EntityStateStringType.class );
     }
 
 
-    public TextfileContent54State filename(
-                    final EntityStateStringType filename
+    public TextfileContentItem filename(
+                    final EntityItemStringType filename
                     )
     {
         setFilename( filename );
@@ -186,24 +169,21 @@ public class TextfileContent54State
     /**
      */
     public void setPattern(
-                    final EntityStateStringType pattern
+                    final EntityItemStringType pattern
                     )
     {
         this.pattern = pattern;
-//        _properties.setProperty( TextfileContentProperty.PATTERN, pattern );
     }
 
 
-    public EntityStateStringType getPattern()
+    public EntityItemStringType getPattern()
     {
         return this.pattern;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.PATTERN, EntityStateStringType.class );
     }
 
 
-    public TextfileContent54State pattern(
-                    final EntityStateStringType pattern
+    public TextfileContentItem pattern(
+                    final EntityItemStringType pattern
                     )
     {
         setPattern( pattern );
@@ -215,24 +195,21 @@ public class TextfileContent54State
     /**
      */
     public void setInstance(
-                    final EntityStateIntType instance
+                    final EntityItemIntType instance
                     )
     {
         this.instance = instance;
-//        _properties.setProperty( TextfileContentProperty.INSTANCE, instance );
     }
 
 
-    public EntityStateIntType getInstance()
+    public EntityItemIntType getInstance()
     {
         return this.instance;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.INSTANCE, EntityStateIntType.class );
     }
 
 
-    public TextfileContent54State instance(
-                    final EntityStateIntType instance
+    public TextfileContentItem instance(
+                    final EntityItemIntType instance
                     )
     {
         setInstance( instance );
@@ -243,25 +220,48 @@ public class TextfileContent54State
 
     /**
      */
+    public void setLine(
+                    final EntityItemStringType line
+                    )
+    {
+        this.line = line;
+    }
+
+
+    public EntityItemStringType getLine()
+    {
+        return this.line;
+    }
+
+
+    public TextfileContentItem line(
+                    final EntityItemStringType line
+                    )
+    {
+        setLine( line );
+        return this;
+    }
+
+
+
+    /**
+     */
     public void setText(
-                    final EntityStateAnySimpleType text
+                    final EntityItemAnySimpleType text
                     )
     {
         this.text = text;
-//        _properties.setProperty( TextfileContentProperty.TEXT, text );
     }
 
 
-    public EntityStateAnySimpleType getText()
+    public EntityItemAnySimpleType getText()
     {
         return this.text;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.TEXT, EntityStateAnySimpleType.class );
     }
 
 
-    public TextfileContent54State text(
-                    final EntityStateAnySimpleType text
+    public TextfileContentItem text(
+                    final EntityItemAnySimpleType text
                     )
     {
         setText( text );
@@ -273,34 +273,33 @@ public class TextfileContent54State
     /**
      */
     public void setSubexpression(
-                    final EntityStateAnySimpleType subexpression
+                    final Collection<? extends EntityItemAnySimpleType> subexpression
                     )
     {
-        this.subexpression = subexpression;
-//        _properties.setProperty( TextfileContentProperty.SUBEXPRESSION, subexpression );
+        if (this.subexpression != subexpression) {
+            this.subexpression.clear();
+            if (subexpression != null  &&  subexpression.size() > 0) {
+                this.subexpression.addAll( subexpression );
+            }
+        }
     }
 
 
-    public EntityStateAnySimpleType getSubexpression()
+    public Collection<EntityItemAnySimpleType> getSubexpression()
     {
         return this.subexpression;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.SUBEXPRESSION, EntityStateAnySimpleType.class );
     }
 
 
-    public TextfileContent54State subexpression(
-                    final EntityStateAnySimpleType subexpression
-                    )
+    public Iterator<EntityItemAnySimpleType> iterateSubexpression()
     {
-        setSubexpression( subexpression );
-        return this;
+        return this.subexpression.iterator();
     }
 
 
 
     //**************************************************************
-    //  State
+    //  Item
     //**************************************************************
 
     @Override
@@ -311,75 +310,25 @@ public class TextfileContent54State
 
 
 
-//    @Override
-//    public Iterator<EntityAttributeGroup> iterateProperties()
-//    {
-//        return _properties.iterateProperties();
-//    }
-
-
-
-//    protected <T extends EntityStateBase> T _getProperty(
-//                    final Property key,
-//                    final Class<T> type
-//                    )
-//    {
-//        EntityBase  p = _properties.get( key );
-//        return type.cast( p );
-//    }
-//
-//
-//
-//    protected void _setProperty(
-//                    final Property key,
-//                    final EntityStateBase value
-//                    )
-//    {
-//        _properties.put( key, value );
-//    }
-
-
-
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
     @Override
-    public int hashCode()
-    {
-        return super.hashCode();
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (!(obj instanceof TextfileContent54State)) {
-            return false;
-        }
-
-        return super.equals( obj );
-    }
-
-
-
-    @Override
     public String toString()
     {
-        return "textfilecontent54_state[" + super.toString()
-                        + ", filepath="      + getFilepath()
-                        + ", path="          + getPath()
-                        + ", filename="      + getFilename()
-                        + ", pattern="       + getPattern()
-                        + ", instance="      + getInstance()
-                        + ", text="          + getText()
-                        + ", subexpression=" + getSubexpression()
-//                        + ", " + String.valueOf( _properties )
-                        + "]";
+        return "textfilecontent_item[" + super.toString()
+             + ", filepath="        + getFilepath()
+             + ", path="            + getPath()
+             + ", filename="        + getFilename()
+             + ", pattern="         + getPattern()
+             + ", instance="        + getInstance()
+             + ", line="            + getLine()
+             + ", text="            + getText()
+             + ", subexpression="   + getSubexpression()
+//           + ", " + String.valueOf( _properties )
+             + "]";
     }
 
 }
-// TextFileContent54State
+// TextFileContentItem

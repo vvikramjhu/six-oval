@@ -44,7 +44,7 @@ public enum FamilyEnumeration
     UNIX                  ( "unix" ),
     VMWARE_INFRASTRUCTURE ( "vmware_infrastructure" ),
     WINDOWS               ( "windows" ),
-    NONE                  ( "" );
+    EMPTY                 ( "" );
 
 
 

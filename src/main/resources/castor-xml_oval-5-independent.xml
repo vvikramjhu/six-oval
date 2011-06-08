@@ -239,6 +239,55 @@
     </class>
 
 
+    <class name ="jp.go.aist.six.oval.model.v5.independent.TextfileContentItem"
+        extends="jp.go.aist.six.oval.model.v5.sc.ItemType">
+        <map-to xml="textfilecontent_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent"
+            ns-prefix=""/>
+
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="path" node="element"/>
+        </field>
+
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="filename" node="element"/>
+        </field>
+
+        <field name="pattern" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="pattern" node="element"/>
+        </field>
+
+        <field name="instance" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemIntType">
+            <bind-xml name="instance" node="element"/>
+        </field>
+
+        <field name="line" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            <bind-xml name="line" node="element"/>
+        </field>
+
+        <field name="text" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType">
+            <bind-xml name="text" node="element"/>
+        </field>
+
+        <field name="subexpression" 
+            type="jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType"
+            collection="collection">
+            <bind-xml name="subexpression" node="element"/>
+        </field>
+    </class>
+
+
 
     <!-- ******************************************************* -->
     <!-- unknown                                                 -->
