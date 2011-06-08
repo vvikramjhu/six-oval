@@ -20,10 +20,11 @@
 
 package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.MessageType;
-import jp.go.aist.six.util.persist.Dependent;
 
 
 
@@ -40,24 +41,29 @@ import jp.go.aist.six.util.persist.Dependent;
 // if the common abstract super class is mapped to a super table.
 //public abstract class Item
 public class ItemType
-    extends AbstractOvalObject
-    implements Dependent<OvalSystemCharacteristics>
+//    extends AbstractOvalObject
+//    implements Dependent<OvalSystemCharacteristics>
 {
 
-    private MessageType  _message;
-    // TODO: We have never seen any item which has multiple messages.
+    private final Collection<MessageType>  message =
+        new ArrayList<MessageType>();
     //{0..50}
+//
+//    private MessageType  _message;
+//    // TODO: We have never seen any item which has multiple messages.
 
 
-    private int  _id;
+    private int  id;
     //{oval:ItemIDPattern, required}
 
 
     /**
      * The default status: "exists".
      */
-    public static final StatusEnumeration  DEFAULT_STATUS = StatusEnumeration.EXISTS;
-    private StatusEnumeration  _status;
+    public static final StatusEnumeration  DEFAULT_STATUS =
+        StatusEnumeration.EXISTS;
+
+    private StatusEnumeration  status;
     //{optional, default="exists"}
 
 
@@ -109,17 +115,43 @@ public class ItemType
     /**
      */
     public void setMessage(
-                    final MessageType message
+                    final Collection<? extends MessageType> messageList
                     )
     {
-        _message = message;
+        if (this.message != messageList) {
+            this.message.clear();
+            if (messageList != null  &&  messageList.size() > 0) {
+                this.message.addAll( messageList );
+            }
+        }
     }
 
 
-    public MessageType getMessage()
+    public Collection<MessageType> getMessage()
     {
-        return _message;
+        return this.message;
     }
+
+
+    public Iterator<MessageType> iterateMessage()
+    {
+        return this.message.iterator();
+    }
+
+//    /**
+//     */
+//    public void setMessage(
+//                    final MessageType message
+//                    )
+//    {
+//        _message = message;
+//    }
+//
+//
+//    public MessageType getMessage()
+//    {
+//        return _message;
+//    }
 
 
 
@@ -129,13 +161,13 @@ public class ItemType
                     final int id
                     )
     {
-        _id = id;
+        this.id = id;
     }
 
 
     public int getID()
     {
-        return _id;
+        return this.id;
     }
 
 
@@ -146,38 +178,38 @@ public class ItemType
                     final StatusEnumeration status
                     )
     {
-        _status = status;
+        this.status = status;
     }
 
 
     public StatusEnumeration getStatus()
     {
-        return _status;
+        return this.status;
     }
 
 
 
-    //**************************************************************
-    //  Dependent
-    //**************************************************************
-
-    private OvalSystemCharacteristics  _master;
-
-
-    @Override
-    public void setMasterObject(
-                    final OvalSystemCharacteristics master
-                    )
-    {
-        _master = master;
-    }
-
-
-    @Override
-    public OvalSystemCharacteristics getMasterObject()
-    {
-        return _master;
-    }
+//    //**************************************************************
+//    //  Dependent
+//    //**************************************************************
+//
+//    private OvalSystemCharacteristics  _master;
+//
+//
+//    @Override
+//    public void setMasterObject(
+//                    final OvalSystemCharacteristics master
+//                    )
+//    {
+//        _master = master;
+//    }
+//
+//
+//    @Override
+//    public OvalSystemCharacteristics getMasterObject()
+//    {
+//        return _master;
+//    }
 
 
 

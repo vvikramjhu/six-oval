@@ -39,7 +39,8 @@ public class EntityItemEVRStringType
     extends EntityItemSimpleBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.EVR_STRING;
+    public static final DatatypeEnumeration  FIXED_DATATYPE =
+        DatatypeEnumeration.EVR_STRING;
     //{required, fixed="evr_string"}
 
 

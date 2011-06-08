@@ -20,15 +20,15 @@
 
 package jp.go.aist.six.oval.core.xml.v5;
 
-import jp.go.aist.six.oval.model.v5.sc.FlagEnumeration;
+import jp.go.aist.six.oval.model.v5.sc.StatusEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class FlagEnumerationHandler
+public class StatusEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public FlagEnumerationHandler()
+    public StatusEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class FlagEnumerationHandler
         if (value == null) {
             return null;
         }
-        FlagEnumeration  e = FlagEnumeration.class.cast( value );
+        StatusEnumeration  e = StatusEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class FlagEnumerationHandler
         if (value == null) {
             return null;
         }
-        return FlagEnumeration.fromValue( value.toString() );
+        return StatusEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<FlagEnumeration> getFieldType()
+    public Class<StatusEnumeration> getFieldType()
     {
-        return FlagEnumeration.class;
+        return StatusEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class FlagEnumerationHandler
 //    }
 
 }
-// FlagEnumerationHandler
+// StatusEnumerationHandler

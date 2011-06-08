@@ -255,7 +255,7 @@ not the family-specific one.
 
         <field name="status" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.DatatypeEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.v5.StatusEnumerationHandler">
             <!-- type="jp.go.aist.six.oval.model.v5.sc.StatusEnumeration" -->
             <bind-xml name="status" node="attribute"/>
         </field>

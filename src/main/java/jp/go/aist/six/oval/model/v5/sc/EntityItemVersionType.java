@@ -36,7 +36,8 @@ public class EntityItemVersionType
     extends EntityItemSimpleBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.VERSION;
+    public static final DatatypeEnumeration  FIXED_DATATYPE =
+        DatatypeEnumeration.VERSION;
     //{required, fixed="version"}
 
 

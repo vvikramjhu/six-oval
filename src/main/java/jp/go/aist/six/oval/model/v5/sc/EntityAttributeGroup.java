@@ -1,5 +1,5 @@
 /*
- *  @product.title@
+*  @product.title@
  *  Copyright (C) @product.copyright-year@
  *    @product.vendor@
  *    Registration Number: @product.registration-number@
@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 
 
@@ -34,19 +33,25 @@ import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class EntityAttributeGroup
-    extends AbstractOvalObject
+//    extends AbstractOvalObject
 {
 
-    public static final DatatypeEnumeration  DEFAULT_DATATYPE = DatatypeEnumeration.STRING;
-    private DatatypeEnumeration  _datatype;
+    public static final DatatypeEnumeration  DEFAULT_DATATYPE =
+        DatatypeEnumeration.STRING;
+
+    private DatatypeEnumeration  datatype;
     //{optional, default="string"}
 
+
     public static final Boolean  DEFAULT_MASK = Boolean.FALSE;
-    private Boolean  _mask;
+
+    private Boolean  mask;
     //{optional, default="false"}
 
-    public static final StatusEnumeration  DEFAULT_STATUS = StatusEnumeration.EXISTS;
-    private StatusEnumeration  _status;
+    public static final StatusEnumeration  DEFAULT_STATUS =
+        StatusEnumeration.EXISTS;
+
+    private StatusEnumeration  status;
     //{optional, default="exists"}
 
 
@@ -66,28 +71,42 @@ public abstract class EntityAttributeGroup
                     final DatatypeEnumeration datatype
                     )
     {
-        _datatype = datatype;
+        this.datatype = datatype;
     }
 
 
     public DatatypeEnumeration getDatatype()
     {
-        return _datatype;
+        return this.datatype;
     }
 
 
-
-    public Boolean getMask()
+    protected final DatatypeEnumeration _datatype()
     {
-        return _mask;
+        DatatypeEnumeration  datatype = getDatatype();
+        return (datatype == null ? DEFAULT_DATATYPE : datatype);
     }
+
 
 
     public void setMask(
                     final Boolean mask
                     )
     {
-        _mask = mask;
+        this.mask = mask;
+    }
+
+
+    public Boolean getMask()
+    {
+        return this.mask;
+    }
+
+
+    protected final Boolean _mask()
+    {
+        Boolean  mask = getMask();
+        return (mask == null ? DEFAULT_MASK : mask);
     }
 
 
@@ -96,13 +115,20 @@ public abstract class EntityAttributeGroup
                     final StatusEnumeration status
                     )
     {
-        _status = status;
+        this.status = status;
     }
 
 
     public StatusEnumeration getStatus()
     {
-        return _status;
+        return this.status;
+    }
+
+
+    protected final StatusEnumeration _status()
+    {
+        StatusEnumeration  status = getStatus();
+        return (status == null ? DEFAULT_STATUS : status);
     }
 
 
@@ -117,16 +143,13 @@ public abstract class EntityAttributeGroup
         final int  prime = 37;
         int  result = 17;
 
-        DatatypeEnumeration  datatype = getDatatype();
+        DatatypeEnumeration  datatype = _datatype();
         result = prime * result + ((datatype == null) ? 0 : datatype.hashCode());
 
-        Boolean  mask = getMask();
-        if (mask == null) {
-            mask = DEFAULT_MASK;
-        }
+        Boolean  mask = _mask();
         result = prime * result + (mask ? 0 : 1);
 
-        StatusEnumeration  status = getStatus();
+        StatusEnumeration  status = _status();
         result = prime * result + ((status == null) ? 0 : status.hashCode());
 
         return result;
@@ -148,21 +171,9 @@ public abstract class EntityAttributeGroup
         }
 
         EntityAttributeGroup  other = (EntityAttributeGroup)obj;
-        StatusEnumeration  other_status = other.getStatus();
-        StatusEnumeration   this_status =  this.getStatus();
-        if (this_status == other_status) {
-            DatatypeEnumeration  other_type = other.getDatatype();
-            DatatypeEnumeration   this_type =  this.getDatatype();
-            if (this_type == other_type) {
-                Boolean  this_mask = this.getMask();
-                if (this_mask == null) {
-                    this_mask = DEFAULT_MASK;
-                }
-                Boolean  other_mask = other.getMask();
-                if (other_mask == null) {
-                    other_mask = DEFAULT_MASK;
-                }
-                if (this.getMask() == other.getMask()) {
+        if (this._status() == other._status()) {
+            if (this._datatype() == other._datatype()) {
+                if (this._mask() == other._mask()) {
                     return true;
                 }
             }
@@ -177,9 +188,9 @@ public abstract class EntityAttributeGroup
     public String toString()
     {
         return "datatype=" + getDatatype()
-                        + ", status=" + getStatus()
-//                        + ", mask=" + getMask()
-                        ;
+             + ", mask=" + getMask()
+             + ", status=" + getStatus()
+             ;
     }
 
 }
