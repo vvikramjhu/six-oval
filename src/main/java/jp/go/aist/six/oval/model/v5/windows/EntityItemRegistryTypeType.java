@@ -64,7 +64,7 @@ public class EntityItemRegistryTypeType
     {
         if (content != null) {
             // validation
-            RegistryTypeEnumeration.valueOf( content );
+            RegistryTypeEnumeration.fromValue( content );
         }
 
         super.setContent( content );

@@ -20,8 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.windows;
 
-import java.io.Serializable;
-import java.util.HashMap;
+import jp.go.aist.six.oval.model.v5.OvalEnumeration;
 
 
 
@@ -32,87 +31,60 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class RegistryTypeEnumeration
-    implements Serializable
+public enum RegistryTypeEnumeration
+    implements OvalEnumeration
 {
 
-    private static final String  _REG_BINARY_    = "reg_binary";
-    private static final String  _REG_DWORD_     = "reg_dword";
-    private static final String  _REG_EXPAND_SZ_ = "reg_expand_sz";
-    private static final String  _REG_MULTI_SZ_  = "reg_multi_sz";
-    private static final String  _REG_NONE_      = "reg_none";
-    private static final String  _REG_QWORD_     = "reg_qword";
-    private static final String  _REG_SZ_        = "reg_sz";
-
-
-    public static final RegistryTypeEnumeration  REG_BINARY    = new RegistryTypeEnumeration( _REG_BINARY_ );
-    public static final RegistryTypeEnumeration  REG_DWORD     = new RegistryTypeEnumeration( _REG_DWORD_ );
-    public static final RegistryTypeEnumeration  REG_EXPAND_SZ = new RegistryTypeEnumeration( _REG_EXPAND_SZ_ );
-    public static final RegistryTypeEnumeration  REG_MULTI_SZ  = new RegistryTypeEnumeration( _REG_MULTI_SZ_ );
-    public static final RegistryTypeEnumeration  REG_NONE      = new RegistryTypeEnumeration( _REG_NONE_ );
-    public static final RegistryTypeEnumeration  REG_QWORD     = new RegistryTypeEnumeration( _REG_QWORD_ );
-    public static final RegistryTypeEnumeration  REG_SZ        = new RegistryTypeEnumeration( _REG_SZ_ );
-
-
-
-    private static HashMap<String, RegistryTypeEnumeration> _INIT_()
-    {
-        HashMap<String, RegistryTypeEnumeration>  map = new HashMap<String, RegistryTypeEnumeration>();
-        map.put( _REG_BINARY_,    REG_BINARY );
-        map.put( _REG_DWORD_,     REG_DWORD );
-        map.put( _REG_EXPAND_SZ_, REG_EXPAND_SZ );
-        map.put( _REG_MULTI_SZ_,  REG_MULTI_SZ );
-        map.put( _REG_NONE_,      REG_NONE );
-        map.put( _REG_QWORD_,     REG_QWORD );
-        map.put( _REG_SZ_,        REG_SZ );
-        return map;
-    }
-
-    private static final HashMap<String, RegistryTypeEnumeration>  _INSTANCES_ = _INIT_();
-
+    REG_BINARY    ( "reg_binary" ),
+    REG_DWORD     ( "reg_dword" ),
+    REG_EXPAND_SZ ( "reg_expand_sz" ),
+    REG_MULTI_SZ  ( "reg_multi_sz" ),
+    REG_NONE      ( "reg_none" ),
+    REG_QWORD     ( "reg_qword" ),
+    REG_SZ        ( "reg_sz" ),
+    EMPTY         ( "" )
+    ;
 
 
 
     /**
+     * A factory method.
      */
-    public static RegistryTypeEnumeration valueOf(
-                    final String name
+    public static RegistryTypeEnumeration fromValue(
+                    final String value
                     )
     {
-        RegistryTypeEnumeration  e = null;
-        if (name != null) {
-            e = _INSTANCES_.get( name );
+        for (RegistryTypeEnumeration  e : RegistryTypeEnumeration.values()) {
+            if (e.value.equals( value )) {
+                return e;
+            }
         }
 
-        if (e == null) {
-            throw new IllegalArgumentException( "invalid registry type: " + name );
-        }
-
-        return e;
+        throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
+    private String  value = null;
 
 
 
     /**
+     * Constructor.
      */
-    private RegistryTypeEnumeration(
-                    final String name
+    RegistryTypeEnumeration(
+                    final String value
                     )
     {
-        _name = name;
+        this.value = value;
     }
 
 
 
-    /**
-     */
-    public String getName()
+    @Override
+    public String value()
     {
-        return _name;
+        return this.value;
     }
 
 
@@ -124,7 +96,7 @@ public final class RegistryTypeEnumeration
     @Override
     public String toString()
     {
-        return getName();
+        return this.value;
     }
 
 }

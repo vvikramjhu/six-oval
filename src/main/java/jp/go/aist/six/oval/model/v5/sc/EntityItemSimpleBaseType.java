@@ -124,7 +124,7 @@ public abstract class EntityItemSimpleBaseType
     public String toString()
     {
         return "" + getContent()
-                  + super.toString()
+                  + ", " + super.toString()
                   ;
     }
 
