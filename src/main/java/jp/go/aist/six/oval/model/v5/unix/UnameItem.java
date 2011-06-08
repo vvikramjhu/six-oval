@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.unix;
 
-import java.util.EnumMap;
-import java.util.Map;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.v5.sc.ItemType;
@@ -41,26 +39,26 @@ public class UnameItem
     extends ItemType
 {
 
-    private final Map<UnameProperty,EntityItemStringType>  _properties =
-        new EnumMap<UnameProperty,EntityItemStringType>( UnameProperty.class );
+    private EntityItemStringType  machine_class;
+    //{0..1}
 
-//   private EntityItemString  _machineClass;
-//    //{0..1}
-//
-//    private EntityItemString  _nodeName;
-//    //{0..1}
-//
-//    private EntityItemString  _osName;
-//    //{0..1}
-//
-//    private EntityItemString  _osRelease;
-//    //{0..1}
-//
-//    private EntityItemString  _osVersion;
-//    //{0..1}
-//
-//    private EntityItemString  _processorType;
-//    //{0..1}
+    private EntityItemStringType  node_name;
+    //{0..1}
+
+    private EntityItemStringType  os_name;
+    //{0..1}
+
+    private EntityItemStringType  os_release;
+    //{0..1}
+
+    private EntityItemStringType  os_version;
+    //{0..1}
+
+    private EntityItemStringType  processor_type;
+    //{0..1}
+
+//    private final Map<UnameProperty,EntityItemStringType>  _properties =
+//        new EnumMap<UnameProperty,EntityItemStringType>( UnameProperty.class );
 
 
 
@@ -152,102 +150,114 @@ public class UnameItem
 
     /**
      */
-    public EntityItemStringType getMachineClass()
-    {
-        return _properties.get( UnameProperty.MACHINE_CLASS );
-    }
-
-
     public void setMachineClass(
-                    final EntityItemStringType machineClass
+                    final EntityItemStringType machine_class
                     )
     {
-        _properties.put( UnameProperty.MACHINE_CLASS, machineClass );
+        this.machine_class = machine_class;
+//        _properties.put( UnameProperty.MACHINE_CLASS, machineClass );
     }
 
+
+    public EntityItemStringType getMachineClass()
+    {
+        return this.machine_class;
+//        return _properties.get( UnameProperty.MACHINE_CLASS );
+    }
+
+
+
+    /**
+     */
+    public void setNodeName(
+                    final EntityItemStringType node_name
+                    )
+    {
+        this.node_name = node_name;
+//        _properties.put( UnameProperty.NODE_NAME, node_name );
+    }
 
 
     public EntityItemStringType getNodeName()
     {
-        return _properties.get( UnameProperty.NODE_NAME );
-    }
-
-
-
-    public void setNodeName(
-                    final EntityItemStringType nodeName
-                    )
-    {
-        _properties.put( UnameProperty.NODE_NAME, nodeName );
+        return this.node_name;
+//        return _properties.get( UnameProperty.NODE_NAME );
     }
 
 
 
     /**
      */
+    public void setOsName(
+                    final EntityItemStringType os_name
+                    )
+    {
+        this.os_name = os_name;
+//        _properties.put( UnameProperty.OS_NAME, os_name );
+    }
+
+
     public EntityItemStringType getOsName()
     {
-        return _properties.get( UnameProperty.OS_NAME );
-    }
-
-
-    public void setOsName(
-                    final EntityItemStringType osName
-                    )
-    {
-        _properties.put( UnameProperty.OS_NAME, osName );
+        return this.os_name;
+//        return _properties.get( UnameProperty.OS_NAME );
     }
 
 
 
     /**
      */
+    public void setOsRelease(
+                    final EntityItemStringType os_release
+                    )
+    {
+        this.os_release = os_release;
+//        _properties.put( UnameProperty.OS_RELEASE, os_release );
+    }
+
+
     public EntityItemStringType getOsRelease()
     {
-        return _properties.get( UnameProperty.OS_RELEASE );
-    }
-
-
-    public void setOsRelease(
-                    final EntityItemStringType osRelease
-                    )
-    {
-        _properties.put( UnameProperty.OS_RELEASE, osRelease );
+        return this.os_release;
+//        return _properties.get( UnameProperty.OS_RELEASE );
     }
 
 
 
     /**
      */
+    public void setOsVersion(
+                    final EntityItemStringType os_version
+                    )
+    {
+        this.os_version = os_version;
+//        _properties.put( UnameProperty.OS_VERSION, os_version );
+    }
+
+
     public EntityItemStringType getOsVersion()
     {
-        return _properties.get( UnameProperty.OS_VERSION );
-    }
-
-
-    public void setOsVersion(
-                    final EntityItemStringType osVersion
-                    )
-    {
-        _properties.put( UnameProperty.OS_VERSION, osVersion );
+        return this.os_version;
+//        return _properties.get( UnameProperty.OS_VERSION );
     }
 
 
 
     /**
      */
-    public EntityItemStringType getProcessorType()
+    public void setProcessorType(
+                    final EntityItemStringType processor_type
+                    )
     {
-        return _properties.get( UnameProperty.PROCESSOR_TYPE );
+        this.processor_type = processor_type;
+//        _properties.put( UnameProperty.PROCESSOR_TYPE, processor_type );
     }
 
 
-
-    public void setProcessorType(
-                    final EntityItemStringType processorType
-                    )
+    public EntityItemStringType getProcessorType()
     {
-        _properties.put( UnameProperty.PROCESSOR_TYPE, processorType );
+        return this.processor_type;
+//        return _properties.get( UnameProperty.PROCESSOR_TYPE );
     }
 
 
@@ -272,13 +282,13 @@ public class UnameItem
     public String toString()
     {
         return "uname_item[" + super.toString()
-                        + ", machine_class=" + getMachineClass()
-                        + ", node_name=" + getNodeName()
-                        + ", os_name=" + getOsName()
-                        + ", os_release=" + getOsRelease()
-                        + ", os_version=" + getOsVersion()
-                        + ", processor_type=" + getProcessorType()
-                        + "]";
+             + ", machine_class="   + getMachineClass()
+             + ", node_name="       + getNodeName()
+             + ", os_name="         + getOsName()
+             + ", os_release="      + getOsRelease()
+             + ", os_version="      + getOsVersion()
+             + ", processor_type="  + getProcessorType()
+             + "]";
     }
 
 }

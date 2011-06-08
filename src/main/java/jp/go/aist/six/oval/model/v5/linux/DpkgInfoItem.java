@@ -224,7 +224,7 @@ public class DpkgInfoItem
     public String toString()
     {
         return "dpkginfo_item[" + super.toString()
-                        + "]";
+             + "]";
     }
 
 }

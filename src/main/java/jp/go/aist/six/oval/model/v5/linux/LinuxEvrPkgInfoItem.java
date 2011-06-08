@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.linux;
 
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemEVRStringType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
@@ -38,14 +39,14 @@ public abstract class LinuxEvrPkgInfoItem
     extends LinuxPkgInfoItem
 {
 
-//    private EntityItemStringType  _release;
-//    //{0..1}
-//
-//    private EntityItemStringType  _epoch;
-//    //{0..1}
-//
-//    private EntityItemStringType  _evr;
-//    //{0..1}
+    private EntityItemAnySimpleType  epoch;
+    //{0..1}
+
+    private EntityItemAnySimpleType  release;
+    //{0..1}
+
+    private EntityItemEVRStringType  evr;
+    //{0..1}
 
 
 
@@ -158,34 +159,64 @@ public abstract class LinuxEvrPkgInfoItem
 
     /**
      */
-    public void setRelease(
-                    final EntityItemAnySimpleType release
+    public void setEpoch(
+                    final EntityItemAnySimpleType epoch
                     )
     {
-        _properties.put( LinuxPkgProperty.RELEASE, release );
+        if (epoch != null) {
+            DatatypeEnumeration  datatype = epoch.getDatatype();
+            if (datatype != null) {
+                if (datatype == DatatypeEnumeration.STRING
+                                ||  datatype == DatatypeEnumeration.INT) {
+                    // xsd:restriction satisfied.
+                } else {
+                    throw new IllegalArgumentException(
+                                    "invalid epoch: datatype=" + datatype );
+                }
+            }
+        }
+
+        this.epoch = epoch;
+//        _properties.put( LinuxPkgProperty.EPOCH, epoch );
     }
 
 
-    public EntityItemAnySimpleType getRelease()
+    public EntityItemAnySimpleType getEpoch()
     {
-        return (EntityItemAnySimpleType)_properties.get( LinuxPkgProperty.RELEASE );
+        return this.epoch;
+//        return (EntityItemAnySimpleType)_properties.get( LinuxPkgProperty.EPOCH );
     }
 
 
 
     /**
      */
-    public void setEpoch(
-                    final EntityItemAnySimpleType epoch
+    public void setRelease(
+                    final EntityItemAnySimpleType release
                     )
     {
-        _properties.put( LinuxPkgProperty.EPOCH, epoch );
+        if (release != null) {
+            DatatypeEnumeration  datatype = release.getDatatype();
+            if (datatype != null) {
+                if (datatype == DatatypeEnumeration.STRING
+                                ||  datatype == DatatypeEnumeration.VERSION) {
+                    // xsd:restriction satisfied.
+                } else {
+                    throw new IllegalArgumentException(
+                                    "invalid release: datatype=" + datatype );
+                }
+            }
+        }
+
+        this.release = release;
+//        _properties.put( LinuxPkgProperty.RELEASE, release );
     }
 
 
-    public EntityItemAnySimpleType getEpoch()
+    public EntityItemAnySimpleType getRelease()
     {
-        return (EntityItemAnySimpleType)_properties.get( LinuxPkgProperty.EPOCH );
+        return this.release;
+//        return (EntityItemAnySimpleType)_properties.get( LinuxPkgProperty.RELEASE );
     }
 
 
@@ -196,13 +227,15 @@ public abstract class LinuxEvrPkgInfoItem
                     final EntityItemEVRStringType evr
                     )
     {
-        _properties.put( LinuxPkgProperty.EVR, evr );
+        this.evr = evr;
+//        _properties.put( LinuxPkgProperty.EVR, evr );
     }
 
 
     public EntityItemEVRStringType getEvr()
     {
-        return (EntityItemEVRStringType)_properties.get( LinuxPkgProperty.EVR );
+        return this.evr;
+//        return (EntityItemEVRStringType)_properties.get( LinuxPkgProperty.EVR );
     }
 
 
@@ -215,7 +248,10 @@ public abstract class LinuxEvrPkgInfoItem
     public String toString()
     {
         return super.toString()
-                        + ", evr=" + getEvr();
+             + ", epoch="   + getEpoch()
+             + ", release=" + getRelease()
+             + ", evr="     + getEvr()
+             ;
     }
 
 }

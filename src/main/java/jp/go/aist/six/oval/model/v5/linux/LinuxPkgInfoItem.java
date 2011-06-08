@@ -20,9 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.linux;
 
-import java.util.EnumMap;
-import java.util.Map;
-import jp.go.aist.six.oval.model.v5.sc.EntityAttributeGroup;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.v5.sc.ItemType;
@@ -40,18 +38,18 @@ public abstract class LinuxPkgInfoItem
     extends ItemType
 {
 
-    protected Map<LinuxPkgProperty, EntityAttributeGroup>  _properties =
-        new EnumMap<LinuxPkgProperty, EntityAttributeGroup>( LinuxPkgProperty.class );
+    private EntityItemStringType  name;
+    //{0..1}
 
-//    private EntityItemStringType  _name;
-//    //{0..1}
-//
-//    private EntityItemStringType  _arch;
-//    //{0..1}
-//
-//    private EntityItemVersionType  _version;
-//    //{0..1}
+    private EntityItemStringType  arch;
+    //{0..1}
 
+    private EntityItemAnySimpleType  version;
+    //{0..1}
+
+
+//    protected Map<LinuxPkgProperty, EntityAttributeGroup>  _properties =
+//        new EnumMap<LinuxPkgProperty, EntityAttributeGroup>( LinuxPkgProperty.class );
 
 
     /**
@@ -153,34 +151,38 @@ public abstract class LinuxPkgInfoItem
 
     /**
      */
-    public void setArch(
-                    final EntityItemStringType arch
+    public void setName(
+                    final EntityItemStringType name
                     )
     {
-        _properties.put( LinuxPkgProperty.ARCH, arch );
+        this.name = name;
+//        _properties.put( LinuxPkgProperty.NAME, name );
     }
 
 
-    public EntityItemStringType getArch()
+    public EntityItemStringType getName()
     {
-        return (EntityItemStringType)_properties.get( LinuxPkgProperty.ARCH );
+        return this.name;
+//        return (EntityItemStringType)_properties.get( LinuxPkgProperty.NAME );
     }
 
 
 
     /**
      */
-    public void setName(
-                    final EntityItemStringType name
+    public void setArch(
+                    final EntityItemStringType arch
                     )
     {
-        _properties.put( LinuxPkgProperty.NAME, name );
+        this.arch = arch;
+//        _properties.put( LinuxPkgProperty.ARCH, arch );
     }
 
 
-    public EntityItemStringType getName()
+    public EntityItemStringType getArch()
     {
-        return (EntityItemStringType)_properties.get( LinuxPkgProperty.NAME );
+        return this.arch;
+//        return (EntityItemStringType)_properties.get( LinuxPkgProperty.ARCH );
     }
 
 
@@ -191,13 +193,28 @@ public abstract class LinuxPkgInfoItem
                     final EntityItemAnySimpleType version
                     )
     {
-        _properties.put( LinuxPkgProperty.VERSION, version );
+        if (version != null) {
+            DatatypeEnumeration  datatype = version.getDatatype();
+            if (datatype != null) {
+                if (datatype == DatatypeEnumeration.STRING
+                                ||  datatype == DatatypeEnumeration.VERSION) {
+                    // xsd:restriction satisfied.
+                } else {
+                    throw new IllegalArgumentException(
+                                    "invalid version: datatype=" + datatype );
+                }
+            }
+        }
+
+        this.version = version;
+//        _properties.put( LinuxPkgProperty.VERSION, version );
     }
 
 
     public EntityItemAnySimpleType getVersion()
     {
-        return (EntityItemAnySimpleType)_properties.get( LinuxPkgProperty.VERSION );
+        return this.version;
+//        return (EntityItemAnySimpleType)_properties.get( LinuxPkgProperty.VERSION );
     }
 
 
@@ -210,9 +227,10 @@ public abstract class LinuxPkgInfoItem
     public String toString()
     {
         return super.toString()
-                        + ", arch=" + getArch()
-                        + ", name=" + getName()
-                        + ", version=" + getVersion();
+             + ", name="    + getName()
+             + ", arch="    + getArch()
+             + ", version=" + getVersion()
+             ;
     }
 
 }
