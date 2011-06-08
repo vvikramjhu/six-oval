@@ -38,7 +38,7 @@ public class FamilyItem
     extends ItemType
 {
 
-    private EntityItemFamilyType  _family;
+    private EntityItemFamilyType  family;
     //{0..1}
 
 
@@ -66,13 +66,13 @@ public class FamilyItem
                     final EntityItemFamilyType family
                     )
     {
-        _family = family;
+        this.family = family;
     }
 
 
     public EntityItemFamilyType getFamily()
     {
-        return _family;
+        return this.family;
     }
 
 
@@ -115,8 +115,8 @@ public class FamilyItem
     public String toString()
     {
         return "family_item[family=" + getFamily()
-                        + ", " + super.toString()
-                        + "]";
+             + ", " + super.toString()
+             + "]";
     }
 
 }
