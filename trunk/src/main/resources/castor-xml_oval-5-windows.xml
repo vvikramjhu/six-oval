@@ -377,12 +377,12 @@
             <bind-xml name="key" node="element"/>
         </field>
 
-        <field name="metabaseID" 
+        <field name="objectID" 
             type="jp.go.aist.six.oval.model.v5.sc.EntityItemIntType">
             <bind-xml name="id" node="element"/>
         </field>
 
-        <field name="name" 
+        <field name="objectName" 
             type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
             <bind-xml name="name" node="element"/>
         </field>

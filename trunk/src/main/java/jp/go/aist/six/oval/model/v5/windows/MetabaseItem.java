@@ -22,11 +22,8 @@ package jp.go.aist.six.oval.model.v5.windows;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.EnumMap;
 import java.util.Iterator;
-import java.util.Map;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
-import jp.go.aist.six.oval.model.v5.sc.EntityAttributeGroup;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
@@ -45,25 +42,32 @@ public class MetabaseItem
     extends ItemType
 {
 
-    private final Map<MetabaseProperty, EntityAttributeGroup>  _properties =
-        new EnumMap<MetabaseProperty, EntityAttributeGroup>( MetabaseProperty.class );
+    private EntityItemStringType  key;
+    //{0..1}
 
-//    private EntityItemStringType  _key;
-//    //{0..1}
-//
-//    private EntityItemIntType  _metabaseID;   //renamed!!!
-//    //{0..1, nillable="true"}
-//
-//    private EntityItemStringType  _name;
-//    //{0..1}
-//
-//    private EntityItemStringType  _userType;
-//    //{0..1}
-//
-//    private EntityItemStringType  _dataType;
-//    //{0..1}
 
-    private final Collection<EntityItemAnySimpleType>  _data = new ArrayList<EntityItemAnySimpleType>();
+    private EntityItemIntType  id;
+    //{0..1, nillable="true"}
+
+
+    private EntityItemStringType  name;
+    //{0..1}
+
+
+    private EntityItemStringType  user_type;
+    //{0..1}
+
+
+    private EntityItemStringType  data_type;
+    //{0..1}
+
+
+//    private final Map<MetabaseProperty, EntityAttributeGroup>  _properties =
+//        new EnumMap<MetabaseProperty, EntityAttributeGroup>( MetabaseProperty.class );
+
+
+    private final Collection<EntityItemAnySimpleType>  data =
+        new ArrayList<EntityItemAnySimpleType>();
     //{0..*}
 
 
@@ -87,83 +91,97 @@ public class MetabaseItem
 
     /**
      */
-    public EntityItemStringType getKey()
-    {
-        return (EntityItemStringType)_properties.get( MetabaseProperty.KEY );
-    }
-
-
     public void setKey(
                     final EntityItemStringType key
                     )
     {
-        _properties.put( MetabaseProperty.KEY, key );
+        this.key = key;
+//        _properties.put( MetabaseProperty.KEY, key );
+    }
+
+
+    public EntityItemStringType getKey()
+    {
+        return this.key;
+//        return (EntityItemStringType)_properties.get( MetabaseProperty.KEY );
     }
 
 
 
     /**
+     * This property is renamed from "id" to "objectID"
+     * because the super class ItemType has the property of the same name.
      */
-    public EntityItemIntType getMetabaseID()
-    {
-        return (EntityItemIntType)_properties.get( MetabaseProperty.ID );
-    }
-
-
-    public void setMetabaseID(
+    public void setObjectID(
                     final EntityItemIntType id
                     )
     {
-        _properties.put( MetabaseProperty.ID, id );
+        this.id = id;
+//        _properties.put( MetabaseProperty.ID, id );
+    }
+
+
+    public EntityItemIntType getObjectID()
+    {
+        return this.id;
+//        return (EntityItemIntType)_properties.get( MetabaseProperty.ID );
     }
 
 
 
     /**
      */
-    public EntityItemStringType getName()
-    {
-        return (EntityItemStringType)_properties.get( MetabaseProperty.NAME );
-    }
-
-
-    public void setName(
+    public void setObjectName(
                     final EntityItemStringType name
                     )
     {
-        _properties.put( MetabaseProperty.NAME, name );
+        this.name = name;
+//        _properties.put( MetabaseProperty.NAME, name );
     }
 
+
+    public EntityItemStringType getObjectName()
+    {
+        return this.name;
+//        return (EntityItemStringType)_properties.get( MetabaseProperty.NAME );
+    }
+
+
+
+    /**
+     */
+    public void setUserType(
+                    final EntityItemStringType user_type
+                    )
+    {
+        this.user_type = user_type;
+//        _properties.put( MetabaseProperty.USER_TYPE, type );
+    }
 
 
     public EntityItemStringType getUserType()
     {
-        return (EntityItemStringType)_properties.get( MetabaseProperty.USER_TYPE );
-    }
-
-
-    public void setUserType(
-                    final EntityItemStringType type
-                    )
-    {
-        _properties.put( MetabaseProperty.USER_TYPE, type );
+        return this.user_type;
+//        return (EntityItemStringType)_properties.get( MetabaseProperty.USER_TYPE );
     }
 
 
 
     /**
      */
-    public EntityItemStringType getDataType()
+    public void setDataType(
+                    final EntityItemStringType data_type
+                    )
     {
-        return (EntityItemStringType)_properties.get( MetabaseProperty.DATA_TYPE );
+        this.data_type = data_type;
+//        _properties.put( MetabaseProperty.DATA_TYPE, type );
     }
 
 
-    public void setDataType(
-                    final EntityItemStringType type
-                    )
+    public EntityItemStringType getDataType()
     {
-        _properties.put( MetabaseProperty.DATA_TYPE, type );
+        return this.data_type;
+//        return (EntityItemStringType)_properties.get( MetabaseProperty.DATA_TYPE );
     }
 
 
@@ -171,13 +189,13 @@ public class MetabaseItem
     /**
      */
     public void setData(
-                    final Collection<? extends EntityItemAnySimpleType> dataSequence
+                    final Collection<? extends EntityItemAnySimpleType> data
                     )
     {
-        if (dataSequence != _data) {
-            _data.clear();
-            if (dataSequence != null  &&  dataSequence.size() > 0) {
-                _data.addAll( dataSequence );
+        if (data != this.data) {
+            this.data.clear();
+            if (data != null  &&  data.size() > 0) {
+                this.data.addAll( data );
             }
         }
     }
@@ -185,13 +203,13 @@ public class MetabaseItem
 
     public Collection<EntityItemAnySimpleType> getData()
     {
-        return _data;
+        return this.data;
     }
 
 
     public Iterator<EntityItemAnySimpleType> iterateData()
     {
-        return _data.iterator();
+        return this.data.iterator();
     }
 
 
@@ -216,13 +234,13 @@ public class MetabaseItem
     public String toString()
     {
         return "mtabase_item[" + super.toString()
-                        + ", key=" + getKey()
-                        + ", id=" + getMetabaseID()
-                        + ", name=" + getName()
-                        + ", user_type=" + getUserType()
-                        + ", data_type=" + getDataType()
-                        + ", data=" + getData()
-                        + "]";
+             + ", key="         + getKey()
+             + ", id="          + getObjectID()
+             + ", name="        + getObjectName()
+             + ", user_type="   + getUserType()
+             + ", data_type="   + getDataType()
+             + ", data="        + getData()
+             + "]";
     }
 
 }

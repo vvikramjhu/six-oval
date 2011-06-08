@@ -212,12 +212,12 @@ public class RegistryItem
     public String toString()
     {
         return "registry_item[" + super.toString()
-                        + ", hive=" + getHive()
-                        + ", key=" + getKey()
-                        + ", name=" + getName()
-                        + ", type=" + getType()
-                        + ", value=" + getValue()
-                        + "]";
+             + ", hive="    + getHive()
+             + ", key="     + getKey()
+             + ", name="    + getName()
+             + ", type="    + getType()
+             + ", value="   + getValue()
+             + "]";
     }
 
 }

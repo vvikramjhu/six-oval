@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.v5.windows;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
@@ -44,13 +45,14 @@ public class WmiItem
     extends ItemType
 {
 
-    private EntityItemStringType  _namespace;
+    private EntityItemStringType  namespace;
     //{0..1}
 
-    private EntityItemStringType  _wql;
+    private EntityItemStringType  wql;
     //{0..1}
 
-    private final Collection<EntityItemAnySimpleType>  _result = new ArrayList<EntityItemAnySimpleType>();
+    private final Collection<EntityItemAnySimpleType>  result =
+        new ArrayList<EntityItemAnySimpleType>();
     //{0..*}
 
 
@@ -78,13 +80,13 @@ public class WmiItem
                     final EntityItemStringType namespace
                     )
     {
-        _namespace = namespace;
+        this.namespace = namespace;
     }
 
 
     public EntityItemStringType getNamespace()
     {
-        return _namespace;
+        return this.namespace;
     }
 
 
@@ -95,13 +97,13 @@ public class WmiItem
                     final EntityItemStringType wql
                     )
     {
-        _wql = wql;
+        this.wql = wql;
     }
 
 
     public EntityItemStringType getWql()
     {
-        return _wql;
+        return this.wql;
     }
 
 
@@ -112,10 +114,10 @@ public class WmiItem
                     final Collection<? extends EntityItemAnySimpleType> results
                     )
     {
-        if (results != _result ) {
-            _result.clear();
+        if (results != this.result ) {
+            this.result.clear();
             if (results != null  &&  results.size() > 0) {
-                _result.addAll( results );
+                this.result.addAll( results );
             }
         }
     }
@@ -123,7 +125,13 @@ public class WmiItem
 
     public Collection<EntityItemAnySimpleType> getResult()
     {
-        return _result;
+        return this.result;
+    }
+
+
+    public Iterator<EntityItemAnySimpleType> iterateResult()
+    {
+        return this.result.iterator();
     }
 
 
@@ -148,10 +156,10 @@ public class WmiItem
     public String toString()
     {
         return "wmi_item[" + super.toString()
-                        + ", namespace=" + getNamespace()
-                        + ", wql=" + getWql()
-                        + ", result=" + getResult()
-                        + "]";
+             + ", namespace="   + getNamespace()
+             + ", wql="         + getWql()
+             + ", result="      + getResult()
+             + "]";
     }
 
 }
