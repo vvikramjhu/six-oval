@@ -43,6 +43,27 @@ public class FileItem
     extends ItemType
 {
 
+    //{0..1}
+    private EntityItemStringType    filepath;
+    private EntityItemStringType    path;
+    private EntityItemStringType    filename;
+    private EntityItemStringType    owner;
+    private EntityItemIntType       size;
+    private EntityItemIntType       a_time;
+    private EntityItemIntType       c_time;
+    private EntityItemIntType       m_time;
+    private EntityItemStringType    ms_checksum;
+    private EntityItemVersionType   version;
+    private EntityItemFileTypeType  type;
+    private EntityItemStringType    development_class;
+    private EntityItemStringType    company;
+    private EntityItemStringType    internal_name;
+    private EntityItemStringType    language;
+    private EntityItemStringType    original_filename;
+    private EntityItemStringType    product_name;
+    private EntityItemVersionType   product_version;
+
+
     private final Map<FileProperty, EntityAttributeGroup>  _properties =
         new EnumMap<FileProperty, EntityAttributeGroup>( FileProperty.class );
 
@@ -187,17 +208,19 @@ public class FileItem
 
     /**
      */
-    public EntityItemStringType getFilepath()
-    {
-        return (EntityItemStringType)_properties.get( FileProperty.FILEPATH );
-    }
-
-
     public void setFilepath(
                     final EntityItemStringType filepath
                     )
     {
-        _properties.put( FileProperty.FILEPATH, filepath );
+        this.filepath = filepath;
+//        _properties.put( FileProperty.FILEPATH, filepath );
+    }
+
+
+    public EntityItemStringType getFilepath()
+    {
+        return this.filepath;
+//        return (EntityItemStringType)_properties.get( FileProperty.FILEPATH );
     }
 
 
@@ -213,17 +236,19 @@ public class FileItem
 
     /**
      */
-    public EntityItemStringType getPath()
-    {
-        return (EntityItemStringType)_properties.get( FileProperty.PATH );
-    }
-
-
     public void setPath(
                     final EntityItemStringType path
                     )
     {
-        _properties.put( FileProperty.PATH, path );
+        this.path = path;
+//        _properties.put( FileProperty.PATH, path );
+    }
+
+
+    public EntityItemStringType getPath()
+    {
+        return this.path;
+//        return (EntityItemStringType)_properties.get( FileProperty.PATH );
     }
 
 
@@ -239,17 +264,19 @@ public class FileItem
 
     /**
      */
-    public EntityItemStringType getFilename()
-    {
-        return (EntityItemStringType)_properties.get( FileProperty.FILENAME );
-    }
-
-
     public void setFilename(
                     final EntityItemStringType filename
                     )
     {
-        _properties.put( FileProperty.FILENAME, filename );
+        this.filename = filename;
+//        _properties.put( FileProperty.FILENAME, filename );
+    }
+
+
+    public EntityItemStringType getFilename()
+    {
+        return this.filename;
+//        return (EntityItemStringType)_properties.get( FileProperty.FILENAME );
     }
 
 
@@ -265,17 +292,19 @@ public class FileItem
 
     /**
      */
-    public EntityItemStringType getOwner()
-    {
-        return (EntityItemStringType)_properties.get( FileProperty.OWNER );
-    }
-
-
     public void setOwner(
                     final EntityItemStringType owner
                     )
     {
-        _properties.put( FileProperty.OWNER, owner );
+        this.owner = owner;
+//        _properties.put( FileProperty.OWNER, owner );
+    }
+
+
+    public EntityItemStringType getOwner()
+    {
+        return this.owner;
+//        return (EntityItemStringType)_properties.get( FileProperty.OWNER );
     }
 
 
@@ -291,17 +320,19 @@ public class FileItem
 
     /**
      */
-    public EntityItemIntType getSize()
-    {
-        return (EntityItemIntType)_properties.get( FileProperty.SIZE );
-    }
-
-
     public void setSize(
                     final EntityItemIntType size
                     )
     {
-        _properties.put( FileProperty.SIZE, size );
+        this.size = size;
+//        _properties.put( FileProperty.SIZE, size );
+    }
+
+
+    public EntityItemIntType getSize()
+    {
+        return this.size;
+//        return (EntityItemIntType)_properties.get( FileProperty.SIZE );
     }
 
 
@@ -315,114 +346,133 @@ public class FileItem
 
 
 
-    public EntityItemIntType getATime()
+    /**
+     */
+    public void setATime(
+                    final EntityItemIntType a_time
+                    )
     {
-        return (EntityItemIntType)_properties.get( FileProperty.A_TIME );
+        this.a_time = a_time;
+//        _properties.put( FileProperty.A_TIME, atime );
     }
 
 
-    public void setATime(
-                    final EntityItemIntType atime
-                    )
+    public EntityItemIntType getATime()
     {
-        _properties.put( FileProperty.A_TIME, atime );
+        return this.a_time;
+//        return (EntityItemIntType)_properties.get( FileProperty.A_TIME );
     }
 
 
     public FileItem aTime(
-                    final String atime
+                    final String a_time
                     )
     {
-        setATime( new EntityItemIntType( atime ) );
+        setATime( new EntityItemIntType( a_time ) );
         return this;
     }
 
+
+
+    /**
+     */
+    public void setCTime(
+                    final EntityItemIntType c_time
+                    )
+    {
+        this.c_time = c_time;
+//        _properties.put( FileProperty.C_TIME, cTime );
+    }
 
 
     public EntityItemIntType getCTime()
     {
-        return (EntityItemIntType)_properties.get( FileProperty.C_TIME );
-    }
-
-
-    public void setCTime(
-                    final EntityItemIntType cTime
-                    )
-    {
-        _properties.put( FileProperty.C_TIME, cTime );
+        return this.c_time;
+//        return (EntityItemIntType)_properties.get( FileProperty.C_TIME );
     }
 
 
     public FileItem cTime(
-                    final String ctime
+                    final String c_time
                     )
     {
-        setCTime( new EntityItemIntType( ctime ) );
+        setCTime( new EntityItemIntType( c_time ) );
         return this;
     }
 
+
+
+    /**
+     */
+    public void setMTime(
+                    final EntityItemIntType m_time
+                    )
+    {
+        this.m_time = m_time;
+//        _properties.put( FileProperty.M_TIME, m_time );
+    }
 
 
     public EntityItemIntType getMTime()
     {
-        return (EntityItemIntType)_properties.get( FileProperty.M_TIME );
-    }
-
-
-    public void setMTime(
-                    final EntityItemIntType mTime
-                    )
-    {
-        _properties.put( FileProperty.M_TIME, mTime );
+        return this.m_time;
+//        return (EntityItemIntType)_properties.get( FileProperty.M_TIME );
     }
 
 
     public FileItem mTime(
-                    final String mtime
+                    final String m_time
                     )
     {
-        setMTime( new EntityItemIntType( mtime ) );
+        setMTime( new EntityItemIntType( m_time ) );
         return this;
     }
 
+
+
+    /**
+     */
+    public void setMsChecksum(
+                    final EntityItemStringType ms_checksum
+                    )
+    {
+        this.ms_checksum = ms_checksum;
+//        _properties.put( FileProperty.MS_CHECKSUM, ms_checksum );
+    }
 
 
     public EntityItemStringType getMsChecksum()
     {
-        return (EntityItemStringType)_properties.get( FileProperty.MS_CHECKSUM );
-    }
-
-
-    public void setMsChecksum(
-                    final EntityItemStringType checksum
-                    )
-    {
-        _properties.put( FileProperty.MS_CHECKSUM, checksum );
+        return this.ms_checksum;
+//        return (EntityItemStringType)_properties.get( FileProperty.MS_CHECKSUM );
     }
 
 
     public FileItem msChecksum(
-                    final String msChecksum
+                    final String ms_checksum
                     )
     {
-        setMsChecksum( new EntityItemStringType( msChecksum ) );
+        setMsChecksum( new EntityItemStringType( ms_checksum ) );
         return this;
     }
 
 
 
-    public EntityItemVersionType getVersion()
-    {
-        return (EntityItemVersionType)_properties.get( FileProperty.VERSION );
-    }
-
-
-
+    /**
+     */
     public void setVersion(
                     final EntityItemVersionType version
                     )
     {
-        _properties.put( FileProperty.VERSION, version );
+        this.version = version;
+//        _properties.put( FileProperty.VERSION, version );
+    }
+
+
+    public EntityItemVersionType getVersion()
+    {
+        return this.version;
+//        return (EntityItemVersionType)_properties.get( FileProperty.VERSION );
     }
 
 
@@ -436,17 +486,21 @@ public class FileItem
 
 
 
-    public EntityItemFileTypeType getType()
-    {
-        return (EntityItemFileTypeType)_properties.get( FileProperty.TYPE );
-    }
-
-
+    /**
+     */
     public void setType(
                     final EntityItemFileTypeType type
                     )
     {
-        _properties.put( FileProperty.TYPE, type );
+        this.type = type;
+//        _properties.put( FileProperty.TYPE, type );
+    }
+
+
+    public EntityItemFileTypeType getType()
+    {
+        return this.type;
+//        return (EntityItemFileTypeType)_properties.get( FileProperty.TYPE );
     }
 
 
@@ -460,41 +514,49 @@ public class FileItem
 
 
 
-    public EntityItemStringType getDevelopmentClass()
+    /**
+     */
+    public void setDevelopmentClass(
+                    final EntityItemStringType development_class
+                    )
     {
-        return (EntityItemStringType)_properties.get( FileProperty.DEVELOPMENT_CLASS );
+        this.development_class = development_class;
+//        _properties.put( FileProperty.DEVELOPMENT_CLASS, developmentClass );
     }
 
 
-    public void setDevelopmentClass(
-                    final EntityItemStringType developmentClass
-                    )
+    public EntityItemStringType getDevelopmentClass()
     {
-        _properties.put( FileProperty.DEVELOPMENT_CLASS, developmentClass );
+        return this.development_class;
+//        return (EntityItemStringType)_properties.get( FileProperty.DEVELOPMENT_CLASS );
     }
 
 
     public FileItem developmentClass(
-                    final String developmentClass
+                    final String development_class
                     )
     {
-        setDevelopmentClass( new EntityItemStringType( developmentClass ) );
+        setDevelopmentClass( new EntityItemStringType( development_class ) );
         return this;
     }
 
 
 
-    public EntityItemStringType getCompany()
-    {
-        return (EntityItemStringType)_properties.get( FileProperty.COMPANY );
-    }
-
-
+    /**
+     */
     public void setCompany(
                     final EntityItemStringType company
                     )
     {
-        _properties.put( FileProperty.COMPANY, company );
+        this.company = company;
+//        _properties.put( FileProperty.COMPANY, company );
+    }
+
+
+    public EntityItemStringType getCompany()
+    {
+        return this.company;
+//        return (EntityItemStringType)_properties.get( FileProperty.COMPANY );
     }
 
 
@@ -508,41 +570,49 @@ public class FileItem
 
 
 
-    public EntityItemStringType getInternalName()
+    /**
+     */
+    public void setInternalName(
+                    final EntityItemStringType internal_name
+                    )
     {
-        return (EntityItemStringType)_properties.get( FileProperty.INTERNAL_NAME );
+        this.internal_name = internal_name;
+//        _properties.put( FileProperty.INTERNAL_NAME, internalName );
     }
 
 
-    public void setInternalName(
-                    final EntityItemStringType internalName
-                    )
+    public EntityItemStringType getInternalName()
     {
-        _properties.put( FileProperty.INTERNAL_NAME, internalName );
+        return this.internal_name;
+//        return (EntityItemStringType)_properties.get( FileProperty.INTERNAL_NAME );
     }
 
 
     public FileItem internalName(
-                    final String internalName
+                    final String internal_name
                     )
     {
-        setInternalName( new EntityItemStringType( internalName ) );
+        setInternalName( new EntityItemStringType( internal_name ) );
         return this;
     }
 
 
 
-    public EntityItemStringType getLanguage()
-    {
-        return (EntityItemStringType)_properties.get( FileProperty.LANGUAGE );
-    }
-
-
+    /**
+     */
     public void setLanguage(
                     final EntityItemStringType language
                     )
     {
-        _properties.put( FileProperty.LANGUAGE, language );
+        this.language = language;
+//        _properties.put( FileProperty.LANGUAGE, language );
+    }
+
+
+    public EntityItemStringType getLanguage()
+    {
+        return this.language;
+//        return (EntityItemStringType)_properties.get( FileProperty.LANGUAGE );
     }
 
 
@@ -556,73 +626,85 @@ public class FileItem
 
 
 
-    public EntityItemStringType getOriginalFilename()
+    /**
+     */
+    public void setOriginalFilename(
+                    final EntityItemStringType original_filename
+                    )
     {
-        return (EntityItemStringType)_properties.get( FileProperty.ORIGINAL_FILENAME );
+        this.original_filename = original_filename;
+//        _properties.put( FileProperty.ORIGINAL_FILENAME, originalFilename );
     }
 
 
-    public void setOriginalFilename(
-                    final EntityItemStringType originalFilename
-                    )
+    public EntityItemStringType getOriginalFilename()
     {
-        _properties.put( FileProperty.ORIGINAL_FILENAME, originalFilename );
+        return this.original_filename;
+//        return (EntityItemStringType)_properties.get( FileProperty.ORIGINAL_FILENAME );
     }
 
 
     public FileItem originalFilename(
-                    final String originalFilename
+                    final String original_filename
                     )
     {
-        setOriginalFilename( new EntityItemStringType( originalFilename ) );
+        setOriginalFilename( new EntityItemStringType( original_filename ) );
         return this;
     }
 
+
+
+    /**
+     */
+    public void setProductName(
+                    final EntityItemStringType product_name
+                    )
+    {
+        this.product_name = product_name;
+//        _properties.put( FileProperty.PRODUCT_NAME, productName );
+    }
 
 
     public EntityItemStringType getProductName()
     {
-        return (EntityItemStringType)_properties.get( FileProperty.PRODUCT_NAME );
-    }
-
-
-    public void setProductName(
-                    final EntityItemStringType productName
-                    )
-    {
-        _properties.put( FileProperty.PRODUCT_NAME, productName );
+        return this.product_name;
+//        return (EntityItemStringType)_properties.get( FileProperty.PRODUCT_NAME );
     }
 
 
     public FileItem productName(
-                    final String productName
+                    final String product_name
                     )
     {
-        setProductName( new EntityItemStringType( productName ) );
+        setProductName( new EntityItemStringType( product_name ) );
         return this;
     }
 
 
 
-    public EntityItemVersionType getProductVersion()
+    /**
+     */
+    public void setProductVersion(
+                    final EntityItemVersionType product_version
+                    )
     {
-        return (EntityItemVersionType)_properties.get( FileProperty.PRODUCT_VERSION );
+        this.product_version = product_version;
+//        _properties.put( FileProperty.PRODUCT_VERSION, productVersion );
     }
 
 
-    public void setProductVersion(
-                    final EntityItemVersionType productVersion
-                    )
+    public EntityItemVersionType getProductVersion()
     {
-        _properties.put( FileProperty.PRODUCT_VERSION, productVersion );
+        return this.product_version;
+//        return (EntityItemVersionType)_properties.get( FileProperty.PRODUCT_VERSION );
     }
 
 
     public FileItem productVersion(
-                    final String productVersion
+                    final String product_version
                     )
     {
-        setProductVersion( new EntityItemVersionType( productVersion ) );
+        setProductVersion( new EntityItemVersionType( product_version ) );
         return this;
     }
 
@@ -648,8 +730,26 @@ public class FileItem
     public String toString()
     {
         return "file_item[" + super.toString()
-                        + ", " + _properties
-                        + "]";
+             + ", filepath="            + getFilepath()
+             + ", path="                + getPath()
+             + ", filename="            + getFilename()
+             + ", owner="               + getOwner()
+             + ", size="                + getSize()
+             + ", a_time="              + getATime()
+             + ", c_time="              + getCTime()
+             + ", m_time="              + getMTime()
+             + ", ms_checksum="         + getMsChecksum()
+             + ", version="             + getVersion()
+             + ", type="                + getType()
+             + ", development_class="   + getDevelopmentClass()
+             + ", company="             + getCompany()
+             + ", internal_name="       + getInternalName()
+             + ", language="            + getLanguage()
+             + ", original_filename="   + getOriginalFilename()
+             + ", product_name="        + getProductName()
+             + ", product_version="     + getProductVersion()
+//                        + ", " + _properties
+             + "]";
     }
 
 }
