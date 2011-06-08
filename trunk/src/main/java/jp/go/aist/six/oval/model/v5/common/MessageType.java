@@ -37,9 +37,12 @@ public class MessageType
 //    extends AbstractOvalObject
 {
 
-    private String  _content;
+    private String  content;
 
-    public static final MessageLevelEnumeration  DEFAULT_LEVEL = MessageLevelEnumeration.INFO;
+
+    public static final MessageLevelEnumeration  DEFAULT_LEVEL =
+        MessageLevelEnumeration.INFO;
+
     private MessageLevelEnumeration  level;
     //{optional, default="info"}
 
@@ -60,13 +63,13 @@ public class MessageType
                     final String content
                     )
     {
-        _content = content;
+        this.content = content;
     }
 
 
     public String getContent()
     {
-        return _content;
+        return this.content;
     }
 
 
@@ -96,8 +99,8 @@ public class MessageType
     public String toString()
     {
         return "[level=" + getLevel()
-                        + ", " + getContent()
-                        + "]";
+             + ", " + getContent()
+             + "]";
     }
 
 }

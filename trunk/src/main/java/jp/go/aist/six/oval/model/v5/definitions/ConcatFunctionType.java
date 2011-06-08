@@ -38,7 +38,8 @@ public class ConcatFunctionType
     extends FunctionGroup
 {
 
-    private final Collection<ComponentGroup>  _component = new ArrayList<ComponentGroup>();
+    private final Collection<ComponentGroup>  component =
+        new ArrayList<ComponentGroup>();
     //{2..*}
 
 
@@ -55,13 +56,13 @@ public class ConcatFunctionType
     /**
      */
     public void setComponent(
-                    final Collection<? extends ComponentGroup> components
+                    final Collection<? extends ComponentGroup> component
                     )
     {
-        if (components != _component) {
-            _component.clear();
-            if (components != null  &&  components.size() > 0) {
-                _component.addAll( components );
+        if (component != this.component) {
+            this.component.clear();
+            if (component != null  &&  component.size() > 0) {
+                this.component.addAll( component );
             }
         }
     }
@@ -71,19 +72,19 @@ public class ConcatFunctionType
                     final ComponentGroup component
                     )
     {
-        return _component.add( component );
+        return this.component.add( component );
     }
 
 
     public Collection<ComponentGroup> getComponent()
     {
-        return _component;
+        return this.component;
     }
 
 
     public Iterator<ComponentGroup> iterateComponent()
     {
-        return _component.iterator();
+        return this.component.iterator();
     }
 
 
@@ -96,7 +97,7 @@ public class ConcatFunctionType
     public String toString()
     {
         return "concat[" + getComponent()
-                        + "]";
+             + "]";
     }
 
 }

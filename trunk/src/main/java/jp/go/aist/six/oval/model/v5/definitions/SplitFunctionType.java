@@ -34,11 +34,11 @@ public class SplitFunctionType
     extends FunctionGroup
 {
 
-    private ComponentGroup  _component;
+    private ComponentGroup  component;
     //{1..1}
 
 
-    private String  _delimiter;
+    private String  delimiter;
     //{required}
 
 
@@ -58,13 +58,13 @@ public class SplitFunctionType
                     final ComponentGroup component
                     )
     {
-        _component = component;
+        this.component = component;
     }
 
 
     public ComponentGroup getComponent()
     {
-        return _component;
+        return this.component;
     }
 
 
@@ -75,13 +75,13 @@ public class SplitFunctionType
                     final String delimiter
                     )
     {
-        _delimiter = delimiter;
+        this.delimiter = delimiter;
     }
 
 
     public String getDelimiter()
     {
-        return _delimiter;
+        return this.delimiter;
     }
 
 
@@ -94,8 +94,8 @@ public class SplitFunctionType
     public String toString()
     {
         return "split[" + getComponent()
-                        + ", delimiter=" + getDelimiter()
-                        + "]";
+             + ", delimiter=" + getDelimiter()
+             + "]";
     }
 
 }

@@ -33,11 +33,11 @@ public class RegexCaptureFunctionType
     extends FunctionGroup
 {
 
-    private ComponentGroup  _component;
+    private ComponentGroup  component;
     //{1..1}
 
 
-    private String  _pattern;
+    private String  pattern;
     //{optional}
 
 
@@ -57,13 +57,13 @@ public class RegexCaptureFunctionType
                     final ComponentGroup component
                     )
     {
-        _component = component;
+        this.component = component;
     }
 
 
     public ComponentGroup getComponent()
     {
-        return _component;
+        return this.component;
     }
 
 
@@ -74,13 +74,13 @@ public class RegexCaptureFunctionType
                     final String pattern
                     )
     {
-        _pattern = pattern;
+        this.pattern = pattern;
     }
 
 
     public String getPattern()
     {
-        return _pattern;
+        return this.pattern;
     }
 
 
@@ -93,8 +93,8 @@ public class RegexCaptureFunctionType
     public String toString()
     {
         return "regex_capture[pattern=" + getPattern()
-                        + ", " + getComponent()
-                        + "]";
+             + ", " + getComponent()
+             + "]";
     }
 
 }

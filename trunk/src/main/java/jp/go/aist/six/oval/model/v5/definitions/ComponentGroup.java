@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
 
 
 
@@ -33,7 +32,7 @@ import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class ComponentGroup
-    extends AbstractOvalObject
+//    extends AbstractOvalObject
 //    implements Dependent<LocalVariable>
 {
 

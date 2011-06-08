@@ -35,13 +35,15 @@ public class LiteralComponentType
     extends ComponentGroup
 {
 
-    private String  _content;
+    private String  content;
     //{xsd:anySimpleType}
 
 
-    public static final DatatypeEnumeration  DEFAULT_DATATYPE = DatatypeEnumeration.STRING;
-    private DatatypeEnumeration  _datatype;
-    //{optional, defualt="string"}
+    public static final DatatypeEnumeration  DEFAULT_DATATYPE =
+        DatatypeEnumeration.STRING;
+
+    private DatatypeEnumeration  datatype;
+    //{optional, default="string"}
 
 
 
@@ -60,13 +62,13 @@ public class LiteralComponentType
                     final String content
                     )
     {
-        _content = content;
+        this.content = content;
     }
 
 
     public String getContent()
     {
-        return _content;
+        return this.content;
     }
 
 
@@ -77,13 +79,13 @@ public class LiteralComponentType
                     final DatatypeEnumeration datatype
                     )
     {
-        _datatype = datatype;
+        this.datatype = datatype;
     }
 
 
     public DatatypeEnumeration getDatatype()
     {
-        return _datatype;
+        return this.datatype;
     }
 
 
@@ -96,8 +98,8 @@ public class LiteralComponentType
     public String toString()
     {
         return "[datatype=" + getDatatype()
-                        + ", " + getContent()
-                        + "]";
+             + ", " + getContent()
+             + "]";
     }
 
 }
