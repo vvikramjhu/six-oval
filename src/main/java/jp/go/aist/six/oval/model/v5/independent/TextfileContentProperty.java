@@ -27,7 +27,7 @@ import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
 /**
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: TextFileContent54State.java 1168 2011-01-12 02:36:17Z nakamura5akihito $
+ * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public enum TextfileContentProperty
