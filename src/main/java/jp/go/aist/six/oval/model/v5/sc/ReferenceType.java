@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
-import jp.go.aist.six.util.persist.Dependent;
 
 
 
@@ -34,12 +32,12 @@ import jp.go.aist.six.util.persist.Dependent;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class ReferenceType
-    extends AbstractOvalObject
-    implements Dependent<SystemObjectType>
+//    extends AbstractOvalObject
+//    implements Dependent<SystemObjectType>
 {
 
-    private int  _itemRef;
-    //{required}
+    private int  item_ref;
+    //{required, oval:ItemIDPattern}
 
 
 
@@ -52,51 +50,53 @@ public class ReferenceType
 
 
     public ReferenceType(
-                    final int itemID
+                    final int item_ref
                     )
     {
-        setItemRef( itemID );
+        setItemRef( item_ref );
     }
 
 
 
+    /**
+     */
     public void setItemRef(
-                    final int itemID
+                    final int item_ref
                     )
     {
-        _itemRef = itemID;
+        this.item_ref = item_ref;
     }
 
 
     public int getItemRef()
     {
-        return _itemRef;
+        return this.item_ref;
     }
 
 
 
-    //**************************************************************
-    //  Dependent
-    //**************************************************************
-
-    private SystemObjectType  _master;
-
-
-
-    @Override
-    public void setMasterObject(
-                    final SystemObjectType master
-                    )
-    {
-        _master = master;
-    }
-
-
-    @Override
-    public SystemObjectType getMasterObject()
-    {
-        return _master;
-    }
+//    //**************************************************************
+//    //  Dependent
+//    //**************************************************************
+//
+//    private SystemObjectType  _master;
+//
+//
+//
+//    @Override
+//    public void setMasterObject(
+//                    final SystemObjectType master
+//                    )
+//    {
+//        _master = master;
+//    }
+//
+//
+//    @Override
+//    public SystemObjectType getMasterObject()
+//    {
+//        return _master;
+//    }
 
 
 
