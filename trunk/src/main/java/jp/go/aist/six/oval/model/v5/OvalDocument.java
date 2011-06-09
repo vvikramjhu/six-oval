@@ -81,7 +81,7 @@ public abstract class OvalDocument
 
 
     //**************************************************************
-    //  MongoDB Lyfecycle
+    //  MongoDB/Morphia Lifecycle
     //**************************************************************
 
     @SuppressWarnings( "unused" )
