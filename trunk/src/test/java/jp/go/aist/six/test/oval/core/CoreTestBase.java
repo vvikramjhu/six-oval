@@ -169,7 +169,25 @@ public abstract class CoreTestBase
 //                            "marshalled_oval_vulnerability_windows_def7222_definitions-5.xml"
 //                        }
 //                        ,
-
+//
+//                        // def:*, windows server 2008, vulnerability
+//                        {
+//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval-definitions-5/oval_vulnerability_windows.server.2008_definitions-5.9.xml",
+//                            null,
+//                            "marshalled_oval_vulnerability_windows.server.2008_definitions-5.9.xml"
+//                        }
+//                        ,
+//
+//                        // def:*, Windows 7, vulnerability
+//                        {
+//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval-definitions-5/oval_vulnerability_windows.7_definitions-5.9.xml",
+//                            null,
+//                            "marshalled_oval_vulnerability_windows.7_definitions-5.9.xml"
+//                        }
+//                        ,
+//
                         // def:*, Windows XP, vulnerability
                         {
                             jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
@@ -209,15 +227,6 @@ public abstract class CoreTestBase
 //                            "marshalled_20110320_oval-definitions_inventory_windows.xml"
 //                        }
 //                        ,
-//                        // Windows, vulnerability
-//                        {
-//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-//                            "test/data/oval-definitions-5/oval_vulnerability_windows.xp_definitions-5.9.xml",
-//                            "/oval_definitions",
-//                            null,
-//                            "marshalled_oval_vulnerability_windows.xp_definitions-5.9.xml"
-//                        }
-//                        ,
 //                        // Debian patch
 //                        {
 //                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
@@ -236,23 +245,6 @@ public abstract class CoreTestBase
 //                            "marshalled_20110308_oval-vulnerability_red.hat.enterprise.linux.5.xml"
 //                        }
 //                        ,
-//                        // Windows 7, vulnerability
-//                        {
-//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-//                            "test/data/oval-definitions-5/20110308_oval-vulnerability_microsoft.windows.7.xml",
-//                            "/oval_definitions",
-//                            null,
-//                            "marshalled_20110308_oval-vulnerability_microsoft.windows.7.xml"
-//                        }
-//                        ,
-//                        // Windows server 2008, vulnerability
-//                        {
-//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-//                            "test/data/oval-definitions-5/20110308_oval-vulnerability_microsoft.windows.server.2008.xml",
-//                            "/oval_definitions",
-//                            null,
-//                            "marshalled_20110308_oval-vulnerability_microsoft.windows.server.2008.xml"
-//                        }
 //
 //                      // windows, vulnerability, def:6113, definition/@deprecated
 //                      {
@@ -409,17 +401,6 @@ public abstract class CoreTestBase
 //                        }
 //                      ,
 //
-//
-//
-//                        // Windows 7 @ Mitre, all vulnerability, 2010-08-27
-//                        {
-//                            OvalDefinitions.class,
-//                            "/oval_definitions",
-//                            "test/data/definitions/20100827_vulnerability_microsoft.windows.7.xml",
-//                            null,
-//                            "marshalled_20100827_vulnerability_microsoft.windows.7.xml"
-//                        }
-//                        ,
 //
 //
 //                        // Red Hat Enterprise Linux 5.0 @ Mitre, all vulnerabilities, 2010-08-30
