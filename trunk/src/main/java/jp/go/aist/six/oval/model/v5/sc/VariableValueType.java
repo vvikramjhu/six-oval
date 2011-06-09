@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.v5.AbstractOvalObject;
-import jp.go.aist.six.util.persist.Dependent;
 
 
 
@@ -34,16 +32,16 @@ import jp.go.aist.six.util.persist.Dependent;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class VariableValueType
-    extends AbstractOvalObject
-    implements Dependent<SystemObjectType>
+//    extends AbstractOvalObject
+//    implements Dependent<SystemObjectType>
 {
 
-    private String  _variableID;
-    //{required}
+    private String  variable_id;
+    //{required, oval:VariableIDPattern}
 
 
-    private String  _content;
-    //{xsd:anysimpleType}
+    private String  content;
+    //{xsd:anySimpleType}
 
 
 
@@ -56,12 +54,12 @@ public class VariableValueType
 
 
     public VariableValueType(
-                    final String variableID,
-                    final String value
+                    final String variable_id,
+                    final String content
                     )
     {
-        setVariableID( variableID );
-        setContent( value );
+        setVariableID( variable_id );
+        setContent( content );
     }
 
 
@@ -72,13 +70,13 @@ public class VariableValueType
                     final String id
                     )
     {
-        _variableID = id;
+        this.variable_id = id;
     }
 
 
     public String getVariableID()
     {
-        return _variableID;
+        return this.variable_id;
     }
 
 
@@ -89,39 +87,39 @@ public class VariableValueType
                     final String content
                     )
     {
-        _content = content;
+        this.content = content;
     }
 
 
     public String getContent()
     {
-        return _content;
+        return this.content;
     }
 
 
 
-    //**************************************************************
-    //  Dependent
-    //**************************************************************
-
-    private SystemObjectType  _master;
-
-
-
-    @Override
-    public void setMasterObject(
-                    final SystemObjectType master
-                    )
-    {
-        _master = master;
-    }
-
-
-    @Override
-    public SystemObjectType getMasterObject()
-    {
-        return _master;
-    }
+//    //**************************************************************
+//    //  Dependent
+//    //**************************************************************
+//
+//    private SystemObjectType  _master;
+//
+//
+//
+//    @Override
+//    public void setMasterObject(
+//                    final SystemObjectType master
+//                    )
+//    {
+//        _master = master;
+//    }
+//
+//
+//    @Override
+//    public SystemObjectType getMasterObject()
+//    {
+//        return _master;
+//    }
 
 
 
