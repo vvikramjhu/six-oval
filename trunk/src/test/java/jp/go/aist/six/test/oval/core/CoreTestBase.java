@@ -442,13 +442,23 @@ public abstract class CoreTestBase
     public Object[][] provideOvalResultsXml()
     {
         return new Object[][] {
-                        // def:7222, Windows XP, vulnerability
+                        // def:7120, Windows XP, vulnerability
+                        // targets: wmi, file, registry, family
                         {
                             jp.go.aist.six.oval.model.v5.results.OvalResults.class,
-                            "test/resources/data/oval-results-5/oval-results_CVE-2010-0176_def7222_v5.9.xml",
+                            "test/resources/data/oval-results-5/oval_windows_vulnerability_def7120_results5.9.xml",
                             null,
-                            "marshalled_oval-results_CVE-2010-0176_def7222_v5.9.xml"
+                            "marshalled_oval_windows_vulnerability_def7120_results5.9.xml"
                         }
+//                        ,
+//
+//                        // def:7222, Windows XP, vulnerability
+//                        {
+//                            jp.go.aist.six.oval.model.v5.results.OvalResults.class,
+//                            "test/resources/data/oval-results-5/oval-results_CVE-2010-0176_def7222_v5.9.xml",
+//                            null,
+//                            "marshalled_oval-results_CVE-2010-0176_def7222_v5.9.xml"
+//                        }
         };
     }
 
