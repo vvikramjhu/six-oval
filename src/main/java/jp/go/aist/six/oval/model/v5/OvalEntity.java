@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.v5;
 
 import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.annotations.Id;
+import com.google.code.morphia.annotations.PrePersist;
 
 
 
@@ -86,6 +87,23 @@ public abstract class OvalEntity
     public Boolean getDeprecated()
     {
         return this.deprecated;
+    }
+
+
+
+    //**************************************************************
+    //  MongoDB/Morphia Lifecycle
+    //**************************************************************
+
+    @SuppressWarnings( "unused" )
+    @PrePersist
+    private void _assignPersistentID()
+    {
+        String  pid = getPersistentID();
+        if (pid == null) {
+            pid = globalRefOf( this );
+            setPersistentID( pid );
+        }
     }
 
 
