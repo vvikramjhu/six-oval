@@ -99,7 +99,7 @@ public class EntityStateRegistryTypeType
                     )
     {
         if (content != null) {
-            RegistryTypeEnumeration.valueOf( content );
+            RegistryTypeEnumeration.fromValue( content );
         }
 
         super.setContent( content );
