@@ -48,7 +48,7 @@ public abstract class OvalElement
      * ovalID + ":" + ovalVersion
      */
     @Transient
-    private transient String  _ovalGlobalID;
+    private transient String  _ovalGlobalRef;
 
 
 
@@ -139,7 +139,7 @@ public abstract class OvalElement
 
     /**
      */
-    public static final String globalOvalIDOf(
+    public static final String globalRefOf(
                     final OvalElement e
                     )
     {
@@ -147,11 +147,11 @@ public abstract class OvalElement
             throw new IllegalArgumentException( "null element" );
         }
 
-        return globalOvalIDOf( e.getOvalID(), e.getOvalVersion() );
+        return globalRefOf( e.getOvalID(), e.getOvalVersion() );
     }
 
 
-    public static final String globalOvalIDOf(
+    public static final String globalRefOf(
                     final String id,
                     final int version
                     )
@@ -167,21 +167,21 @@ public abstract class OvalElement
 
     /**
      */
-    public void ovalSetGlobalID(
+    public final void ovalSetGlobalRef(
                     final String gid
                     )
     {
-        _ovalGlobalID = gid;
+        _ovalGlobalRef = gid;
     }
 
 
-    public String ovalGetGlobalID()
+    public final String ovalGetGlobalRef()
     {
-        if (_ovalGlobalID == null) {
-            _ovalGlobalID = globalOvalIDOf( this );
+        if (_ovalGlobalRef == null) {
+            _ovalGlobalRef = globalRefOf( this );
         }
 
-        return _ovalGlobalID;
+        return _ovalGlobalRef;
     }
 
 

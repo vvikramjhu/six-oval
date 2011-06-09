@@ -1,7 +1,6 @@
 package jp.go.aist.six.oval.core.datastore.mongodb;
 
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
-import org.bson.types.ObjectId;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.dao.BasicDAO;
 
@@ -12,7 +11,7 @@ import com.google.code.morphia.dao.BasicDAO;
  * @version $Id$
  */
 public class DefinitionDAO
-    extends BasicDAO<DefinitionType, ObjectId>
+    extends BasicDAO<DefinitionType, String>
 {
 
     /**

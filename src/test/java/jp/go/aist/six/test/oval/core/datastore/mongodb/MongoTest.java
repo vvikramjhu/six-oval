@@ -13,7 +13,6 @@ import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.v5.definitions.TestType;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.test.oval.core.DefinitionsSample;
-import org.bson.types.ObjectId;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.testng.Reporter;
@@ -114,7 +113,7 @@ public class MongoTest
 
 
         Reporter.log( "load each object by concrete class...", true );
-        OvalDefinitions  p_object = mongo.getDAO( OvalDefinitions.class ).get( object.getObjectId() );
+        OvalDefinitions  p_object = mongo.getDAO( OvalDefinitions.class ).get( object.getPersistentID() );
         Reporter.log( "  @ object: " + p_object, true );
         for (DefinitionType  p_def : p_object.getDefinitions().getDefinition()) {
             Reporter.log( "  @ definition: " + p_def, true );
@@ -182,7 +181,7 @@ public class MongoTest
                         + ", method=testOvalDefinitionsState",
                         true );
 
-        DAO<StateType, ObjectId>  dao = _mongoContext.getBean( StateDAO.class );
+        DAO<StateType, String>  dao = _mongoContext.getBean( StateDAO.class );
         dao.getCollection().drop();
 
         StateType  entity = DefinitionsSample.STE_5310;
@@ -192,7 +191,7 @@ public class MongoTest
         dao.save( entity );
 
         Reporter.log( "load each object by concrete class...", true );
-        StateType  p_entity = dao.get( entity.getObjectId() );
+        StateType  p_entity = dao.get( entity.getPersistentID() );
         Reporter.log( "  @ object: " + p_entity, true );
 
         Reporter.log( "load objects...", true );
@@ -216,7 +215,7 @@ public class MongoTest
                         + ", method=testOvalDefinitionsObject",
                         true );
 
-        DAO<SystemObjectType, ObjectId>  dao = _mongoContext.getBean( SystemObjectDAO.class );
+        DAO<SystemObjectType, String>  dao = _mongoContext.getBean( SystemObjectDAO.class );
         dao.getCollection().drop();
 
         SystemObjectType  entity = DefinitionsSample.OBJ_6886;
@@ -226,7 +225,7 @@ public class MongoTest
         dao.save( entity );
 
         Reporter.log( "load each object by concrete class...", true );
-        SystemObjectType  p_entity = dao.get( entity.getObjectId() );
+        SystemObjectType  p_entity = dao.get( entity.getPersistentID() );
         Reporter.log( "  @ object: " + p_entity, true );
 
         Reporter.log( "load objects...", true );
@@ -250,7 +249,7 @@ public class MongoTest
                         + ", method=testOvalDefinitionsTest",
                         true );
 
-        DAO<TestType, ObjectId>  dao = _mongoContext.getBean( TestDAO.class );
+        DAO<TestType, String>  dao = _mongoContext.getBean( TestDAO.class );
         dao.getCollection().drop();
 
         TestType  entity = DefinitionsSample.TST_11127;
@@ -260,7 +259,7 @@ public class MongoTest
         dao.save( entity );
 
         Reporter.log( "load each object by concrete class...", true );
-        TestType  p_entity = dao.get( entity.getObjectId() );
+        TestType  p_entity = dao.get( entity.getPersistentID() );
         Reporter.log( "  @ object: " + p_entity, true );
 
         Reporter.log( "load objects...", true );
@@ -284,7 +283,7 @@ public class MongoTest
                         + ", method=testSaveAndLoadDefinition",
                         true );
 
-        DAO<DefinitionType, ObjectId>  definitionDAO = _mongoContext.getBean( DefinitionDAO.class );
+        DAO<DefinitionType, String>  definitionDAO = _mongoContext.getBean( DefinitionDAO.class );
         definitionDAO.getCollection().drop();
 //        definitionDAO.getDatastore().getDB().getCollection( "oval.definitions.definition" ).drop();
 
@@ -295,7 +294,7 @@ public class MongoTest
         definitionDAO.save( def );
 
         Reporter.log( "load each object by concrete class...", true );
-        DefinitionType  p_def = definitionDAO.get( def.getObjectId() );
+        DefinitionType  p_def = definitionDAO.get( def.getPersistentID() );
         Reporter.log( "  @ object: " + p_def, true );
 
         Reporter.log( "load objects...", true );

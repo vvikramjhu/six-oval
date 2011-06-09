@@ -21,7 +21,7 @@ import com.google.code.morphia.dao.DAO;
  * @version $Id$
  */
 public class OvalDefinitionsDAO
-    extends BaseDAO<OvalDefinitions, ObjectId>
+    extends BaseDAO<OvalDefinitions, String>
 {
 
     /**
