@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5;
 
-import org.bson.types.ObjectId;
+import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.annotations.Id;
 
 
@@ -37,16 +37,16 @@ import com.google.code.morphia.annotations.Id;
  */
 public abstract class OvalEntity
     extends OvalElement
+    implements Persistable<String>
 {
 
-    /**
-     * MongoDB object ID.
-     */
+    // MongoDB
     @Id
-    private ObjectId  _objectId;
+    private String  _id;
 
 
     public static final Boolean  DEFAULT_DEPRECATED = Boolean.FALSE;
+
     private Boolean  deprecated;
     //{optional, default="false"}
 
@@ -90,10 +90,10 @@ public abstract class OvalEntity
 
 
 
-//    //**************************************************************
-//    //  Persistable
-//    //**************************************************************
-//
+    //**************************************************************
+    //  Persistable
+    //**************************************************************
+
 //    @Override
 //    public String getPersistentID()
 //    {
@@ -110,20 +110,20 @@ public abstract class OvalEntity
 
 
 
-    public void setObjectId(
-                    final ObjectId oid
+    @Override
+    public void setPersistentID(
+                    final String pid
                     )
     {
-        this._objectId = oid;
+        this._id = pid;
     }
 
 
-
-    public ObjectId getObjectId()
+    @Override
+    public String getPersistentID()
     {
-        return this._objectId;
+        return this._id;
     }
-
 
 
 

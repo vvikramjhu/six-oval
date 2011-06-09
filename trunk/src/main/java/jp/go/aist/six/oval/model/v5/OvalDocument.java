@@ -20,8 +20,10 @@
 
 package jp.go.aist.six.oval.model.v5;
 
-import org.bson.types.ObjectId;
+import java.util.UUID;
+import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.annotations.Id;
+import com.google.code.morphia.annotations.PrePersist;
 
 
 
@@ -38,14 +40,13 @@ import com.google.code.morphia.annotations.Id;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class OvalDocument
+    implements Persistable<String>
 //    extends AbstractOvalObject
 {
 
-    /**
-     * MongoDB object ID.
-     */
+    //MongoDB
     @Id
-    private ObjectId  _objectId;
+    private String  _id;
 
 
     private String  schemaLocation;
@@ -64,10 +65,10 @@ public abstract class OvalDocument
     /**
      */
     public void setSchemaLocation(
-                    final String location
+                    final String schemaLocation
                     )
     {
-        this.schemaLocation = location;
+        this.schemaLocation = schemaLocation;
     }
 
 
@@ -75,6 +76,23 @@ public abstract class OvalDocument
     {
         return this.schemaLocation;
 //        return (_schemaLocation == null ? RESULTS_SCHEMA_LOCATION : _schemaLocation);
+    }
+
+
+
+    //**************************************************************
+    //  MongoDB Lyfecycle
+    //**************************************************************
+
+    @SuppressWarnings( "unused" )
+    @PrePersist
+    private void _assignPersistentID()
+    {
+        String  pid = getPersistentID();
+        if (pid == null) {
+            pid = UUID.randomUUID().toString();
+            setPersistentID( pid );
+        }
     }
 
 
@@ -96,17 +114,19 @@ public abstract class OvalDocument
 //    }
 
 
-    public void setObjectId(
-                    final ObjectId oid
+    @Override
+    public void setPersistentID(
+                    final String pid
                     )
     {
-        this._objectId = oid;
+        this._id = pid;
     }
 
 
-    public ObjectId getObjectId()
+    @Override
+    public String getPersistentID()
     {
-        return this._objectId;
+        return this._id;
     }
 
 }
