@@ -40,8 +40,12 @@ public class AffectedType
 //    extends AbstractOvalObject
 {
 
-    private final Collection<Platform>  platform = new HashSet<Platform>();
+    private final Collection<String>  platform = new HashSet<String>();
     //{0..*, unique}
+
+//    private final Collection<Platform>  platform = new HashSet<Platform>();
+//    //{0..*, unique}
+
 
 
     private final Collection<Product>  product = new HashSet<Product>();
@@ -110,10 +114,10 @@ public class AffectedType
                     final Collection<? extends Platform> platforms
                     )
     {
-        if (this.platform != platforms) {
-            this.platform.clear();
-            if (platforms != null  &&  platforms.size() > 0) {
-                this.platform.addAll( platforms );
+        this.platform.clear();
+        if (platforms != null  &&  platforms.size() > 0) {
+            for (Platform  p : platforms) {
+                addPlatform( p );
             }
         }
     }
@@ -124,7 +128,19 @@ public class AffectedType
                     )
     {
         if (platform == null) {
-            return false;
+            throw new IllegalArgumentException( "empty platform" );
+        }
+
+        return addPlatform( platform.getName() );
+    }
+
+
+    public boolean addPlatform(
+                    final String platform
+                    )
+    {
+        if (platform == null) {
+            throw new IllegalArgumentException( "empty platform name" );
         }
 
         return this.platform.add( platform );
@@ -144,22 +160,80 @@ public class AffectedType
                     final String platform
                     )
     {
-        addPlatform( new Platform( platform ) );
+        addPlatform( platform );
         return this;
     }
 
 
     public Collection<Platform> getPlatform()
     {
-        return this.platform;
+        Collection<Platform>  c = new HashSet<Platform>();
+        for (String  platform : this.platform) {
+            c.add( new Platform( platform ) );
+        }
+
+        return c;
     }
 
 
     public Iterator<Platform> iteratePlatform()
     {
-        return this.platform.iterator();
+        return getPlatform().iterator();
     }
 
+//    public void setPlatform(
+//                    final Collection<? extends Platform> platforms
+//                    )
+//    {
+//        if (this.platform != platforms) {
+//            this.platform.clear();
+//            if (platforms != null  &&  platforms.size() > 0) {
+//                this.platform.addAll( platforms );
+//            }
+//        }
+//    }
+//
+//
+//    public boolean addPlatform(
+//                    final Platform platform
+//                    )
+//    {
+//        if (platform == null) {
+//            return false;
+//        }
+//
+//        return this.platform.add( platform );
+//    }
+//
+//
+//    public AffectedType platform(
+//                    final Platform platform
+//                    )
+//    {
+//        addPlatform( platform );
+//        return this;
+//    }
+//
+//
+//    public AffectedType platform(
+//                    final String platform
+//                    )
+//    {
+//        addPlatform( new Platform( platform ) );
+//        return this;
+//    }
+//
+//
+//    public Collection<Platform> getPlatform()
+//    {
+//        return this.platform;
+//    }
+//
+//
+//    public Iterator<Platform> iteratePlatform()
+//    {
+//        return this.platform.iterator();
+//    }
 
 
     /**
