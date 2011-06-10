@@ -30,8 +30,78 @@
 
 
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-    <!-- %  OVAL Data Store                                    % -->
+    <!-- %  OVAL Datastore                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <bean id="mongo" 
+        class="com.mongodb.Mongo">
+        <constructor-arg type="java.lang.String" value="localhost"/>
+        <constructor-arg type="int" value="27017"/>
+    </bean> 
+
+
+    <bean id="morphia" 
+        class="jp.go.aist.six.oval.core.datastore.mongodb.MorphiaFactory" 
+        factory-method="create"> 
+        <constructor-arg>
+            <set>
+                <!-- value>#{ T(jp.go.aist.six.oval.model.v5.definitions.DefinitionType) }</value -->
+            </set>
+        </constructor-arg>
+        <constructor-arg>
+            <set>
+                <value>#{ T(jp.go.aist.six.oval.core.datastore.mongodb.OvalConverter) }</value>
+            </set>
+        </constructor-arg>
+    </bean>
+
+
+    <bean id="datastore" 
+        factory-bean="morphia" 
+        factory-method="createDatastore"> 
+        <constructor-arg ref="mongo"/> 
+        <constructor-arg value="six"/> <!-- String: database name -->
+    </bean>
+
+
+    <bean id="ovalDefinitionsDAO" 
+        class="jp.go.aist.six.oval.core.datastore.mongodb.OvalDefinitionsDAO">
+        <constructor-arg ref="datastore"/> 
+    </bean> 
+
+    <bean id="definitionDAO" 
+        class="jp.go.aist.six.oval.core.datastore.mongodb.DefinitionDAO">
+        <constructor-arg ref="datastore"/> 
+    </bean> 
+
+    <bean id="testDAO" 
+        class="jp.go.aist.six.oval.core.datastore.mongodb.TestDAO">
+        <constructor-arg ref="datastore"/> 
+    </bean> 
+
+    <bean id="systemObjectDAO" 
+        class="jp.go.aist.six.oval.core.datastore.mongodb.SystemObjectDAO">
+        <constructor-arg ref="datastore"/> 
+    </bean> 
+
+    <bean id="stateDAO" 
+        class="jp.go.aist.six.oval.core.datastore.mongodb.StateDAO">
+        <constructor-arg ref="datastore"/> 
+    </bean> 
+
+
+    <bean id="datastoreService" 
+        class="jp.go.aist.six.oval.core.datastore.mongodb.MongoService"> 
+        <property name="DAO">
+            <set>
+                <ref bean="ovalDefinitionsDAO"/>
+                <ref bean="definitionDAO"/>
+                <ref bean="testDAO"/>
+                <ref bean="systemObjectDAO"/>
+                <ref bean="stateDAO"/>
+            </set>
+        </property>
+    </bean>
 
 
 

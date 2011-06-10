@@ -9,6 +9,10 @@ import com.google.code.morphia.dao.DAO;
 
 
 
+/**
+ * @author  Akihito Nakamura, AIST
+ * @version $Id$
+ */
 public class MongoService
     implements DAORegistry
 {
