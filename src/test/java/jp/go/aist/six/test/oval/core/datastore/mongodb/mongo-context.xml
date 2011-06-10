@@ -37,9 +37,10 @@
 
 
     <bean id="datastore" 
-        factory-bean="morphia" factory-method="createDatastore"> 
+        factory-bean="morphia" 
+        factory-method="createDatastore"> 
         <constructor-arg ref="mongo"/> 
-        <constructor-arg value="six"/> 
+        <constructor-arg value="six"/> <!-- String: database name -->
     </bean>
 
 
