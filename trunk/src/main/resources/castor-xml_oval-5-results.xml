@@ -112,7 +112,7 @@
 
         <field name="definitionClass" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.ClassEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.v5.common.ClassEnumerationHandler">
             <!-- type="jp.go.aist.six.oval.model.v5.common.ClassEnumeration" -->
             <bind-xml name="class" node="attribute"/>
         </field>
@@ -127,7 +127,7 @@
 
         <field name="content" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.ContentEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.v5.results.ContentEnumerationHandler">
             <!-- type="jp.go.aist.six.oval.model.v5.results.ContentEnumeration" -->
             <bind-xml name="content" node="attribute"/>
         </field>
@@ -204,7 +204,7 @@
 
         <field name="result" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.ResultEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.v5.results.ResultEnumerationHandler">
             <!-- type="jp.go.aist.six.oval.model.v5.results.ResultEnumeration" -->
             <bind-xml name="result" node="attribute"/>
         </field>
@@ -221,7 +221,7 @@
 
         <field name="result" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.ResultEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.v5.results.ResultEnumerationHandler">
             <!-- type="jp.go.aist.six.oval.model.v5.results.ResultEnumeration" -->
             <bind-xml name="result" node="attribute"/>
         </field>
@@ -251,7 +251,7 @@
 
         <field name="operator" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.OperatorEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.v5.common.OperatorEnumerationHandler">
             <!-- type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration" -->
             <bind-xml name="operator" node="attribute"/>
         </field>
@@ -316,28 +316,28 @@
 
         <field name="result" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.ResultEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.v5.results.ResultEnumerationHandler">
             <!-- type="jp.go.aist.six.oval.model.v5.results.ResultEnumeration" -->
             <bind-xml name="result" node="attribute"/>
         </field>
 
         <field name="checkExistence" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.ExistenceEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.v5.common.ExistenceEnumerationHandler">
             <!-- type="jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration" -->
             <bind-xml name="check_existence" node="attribute"/>
         </field>
 
         <field name="check" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.CheckEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.v5.common.CheckEnumerationHandler">
             <!-- type="jp.go.aist.six.oval.model.v5.common.CheckEnumeration" -->
             <bind-xml name="check" node="attribute"/>
         </field>
 
         <field name="stateOperator" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.OperatorEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.v5.common.OperatorEnumerationHandler">
             <!-- type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration" -->
             <bind-xml name="state_operator" node="attribute"/>
         </field>
@@ -367,7 +367,7 @@
 
         <field name="result" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.ResultEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.v5.results.ResultEnumerationHandler">
             <!-- type="jp.go.aist.six.oval.model.v5.results.ResultEnumeration" -->
             <bind-xml name="result" node="attribute"/>
         </field>

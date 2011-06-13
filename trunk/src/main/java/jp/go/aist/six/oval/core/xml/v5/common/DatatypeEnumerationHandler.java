@@ -18,17 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.xml.v5;
+package jp.go.aist.six.oval.core.xml.v5.common;
 
-import jp.go.aist.six.oval.model.v5.windows.FileTypeEnumeration;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class FileTypeEnumerationHandler
+public class DatatypeEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public FileTypeEnumerationHandler()
+    public DatatypeEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class FileTypeEnumerationHandler
         if (value == null) {
             return null;
         }
-        FileTypeEnumeration  e = FileTypeEnumeration.class.cast( value );
+        DatatypeEnumeration  e = DatatypeEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class FileTypeEnumerationHandler
         if (value == null) {
             return null;
         }
-        return FileTypeEnumeration.fromValue( value.toString() );
+        return DatatypeEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<FileTypeEnumeration> getFieldType()
+    public Class<DatatypeEnumeration> getFieldType()
     {
-        return FileTypeEnumeration.class;
+        return DatatypeEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class FileTypeEnumerationHandler
 //    }
 
 }
-// FileTypeEnumerationHandler
+// DatatypeEnumerationHandler
