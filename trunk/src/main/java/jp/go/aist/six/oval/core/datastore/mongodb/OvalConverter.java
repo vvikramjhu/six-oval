@@ -8,9 +8,17 @@ import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 import jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration;
 import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
+import jp.go.aist.six.oval.model.v5.common.MessageLevelEnumeration;
 import jp.go.aist.six.oval.model.v5.common.OperationEnumeration;
 import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
+import jp.go.aist.six.oval.model.v5.definitions.FilterActionEnumeration;
 import jp.go.aist.six.oval.model.v5.mitre.DefinitionStatusEnumeration;
+import jp.go.aist.six.oval.model.v5.results.ContentEnumeration;
+import jp.go.aist.six.oval.model.v5.results.ResultEnumeration;
+import jp.go.aist.six.oval.model.v5.sc.FlagEnumeration;
+import jp.go.aist.six.oval.model.v5.sc.StatusEnumeration;
+import jp.go.aist.six.oval.model.v5.windows.FileTypeEnumeration;
+import jp.go.aist.six.oval.model.v5.windows.RegistryTypeEnumeration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.google.code.morphia.converters.SimpleValueConverter;
@@ -40,14 +48,22 @@ public class OvalConverter
         //commons
         CheckEnumeration.class,
         ClassEnumeration.class,
+        ContentEnumeration.class,
         DatatypeEnumeration.class,
+        DefinitionStatusEnumeration.class,
         ExistenceEnumeration.class,
         FamilyEnumeration.class,
+        FileTypeEnumeration.class,
+        FilterActionEnumeration.class,
+        FlagEnumeration.class,
+        MessageLevelEnumeration.class,
         OperationEnumeration.class,
         OperatorEnumeration.class,
+        RegistryTypeEnumeration.class,
+        ResultEnumeration.class,
+        StatusEnumeration.class
 
         //mitre
-        DefinitionStatusEnumeration.class
 
 //        Platform.class,
 //        Product.class
@@ -192,7 +208,7 @@ public class OvalConverter
                     )
     throws MappingException
     {
-        _LOG_.info( "target class: " + targetClass );
+        _LOG_.debug( "target class: " + targetClass );
         if (fromDBObject == null) {
             return null;
         }

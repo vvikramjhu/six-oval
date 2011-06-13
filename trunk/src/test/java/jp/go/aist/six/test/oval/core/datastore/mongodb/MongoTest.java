@@ -6,11 +6,13 @@ import jp.go.aist.six.oval.core.datastore.mongodb.MongoService;
 import jp.go.aist.six.oval.core.datastore.mongodb.StateDAO;
 import jp.go.aist.six.oval.core.datastore.mongodb.SystemObjectDAO;
 import jp.go.aist.six.oval.core.datastore.mongodb.TestDAO;
+import jp.go.aist.six.oval.core.datastore.mongodb.VariableDAO;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.v5.definitions.StateType;
 import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.v5.definitions.TestType;
+import jp.go.aist.six.oval.model.v5.definitions.VariableType;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.test.oval.core.DefinitionsSample;
 import org.springframework.context.ApplicationContext;
@@ -73,7 +75,7 @@ public class MongoTest
                         // def:7222, windows, vulnerability, CVE-2010-0176
                         {
                             jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                            "test/resources/data/oval-definitions-5/oval_vulnerability_windows_def7222_definitions-5.xml",
+                            "test/resources/data/oval-definitions-5/oval_windows_vulnerability_def7120_definitions5.9.xml",
                             null
                         }
         };
@@ -168,6 +170,40 @@ public class MongoTest
 
     //**************************************************************
     //
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={ "oval.core.datastore.mongodb", "oval.definitions.variable" },
+                    alwaysRun=true
+                    )
+    public void testOvalDefinitionsVariable()
+    throws Exception
+    {
+        Reporter.log( "\n//// TEST: group=oval.core.datastore.mongodb, oval.definitions.variable"
+                        + ", method=testOvalDefinitionsVariable",
+                        true );
+
+        DAO<VariableType, String>  dao = _mongoContext.getBean( VariableDAO.class );
+        dao.getCollection().drop();
+
+        VariableType  entity = DefinitionsSample.VAR_200;
+
+        Reporter.log( "save..." , true );
+        Reporter.log( "  * object: " + entity, true );
+        dao.save( entity );
+
+        Reporter.log( "load each object by concrete class...", true );
+        VariableType  p_entity = dao.get( entity.getPersistentID() );
+        Reporter.log( "  @ object: " + p_entity, true );
+
+        Reporter.log( "load objects...", true );
+        List<VariableType>  list = dao.find().asList();
+        Reporter.log( "  @ #objects: " + list.size(), true );
+        Reporter.log( "  @ objects: " + list, true );
+    }
+
+
 
     /**
      */

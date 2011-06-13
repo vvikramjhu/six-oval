@@ -56,12 +56,12 @@ public class ObjectComponentType
 
 
     public ObjectComponentType(
-                    final String objectRef,
-                    final String itemField
+                    final String object_ref,
+                    final String item_field
                     )
     {
-        setObjectRef( objectRef );
-        setItemField( itemField );
+        setObjectRef( object_ref );
+        setItemField( item_field );
     }
 
 

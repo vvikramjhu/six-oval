@@ -2,18 +2,23 @@ package jp.go.aist.six.test.oval.core;
 
 import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
+import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
 import jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration;
 import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
 import jp.go.aist.six.oval.model.v5.common.OperationEnumeration;
 import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
 import jp.go.aist.six.oval.model.v5.definitions.AffectedType;
+import jp.go.aist.six.oval.model.v5.definitions.ConcatFunctionType;
 import jp.go.aist.six.oval.model.v5.definitions.CriteriaElement;
 import jp.go.aist.six.oval.model.v5.definitions.CriteriaType;
 import jp.go.aist.six.oval.model.v5.definitions.CriterionType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.v5.definitions.ExtendDefinitionType;
+import jp.go.aist.six.oval.model.v5.definitions.LiteralComponentType;
+import jp.go.aist.six.oval.model.v5.definitions.LocalVariable;
 import jp.go.aist.six.oval.model.v5.definitions.MetadataType;
+import jp.go.aist.six.oval.model.v5.definitions.ObjectComponentType;
 import jp.go.aist.six.oval.model.v5.definitions.Platform;
 import jp.go.aist.six.oval.model.v5.definitions.Product;
 import jp.go.aist.six.oval.model.v5.definitions.ReferenceType;
@@ -38,6 +43,41 @@ public class DefinitionsSample
     //**************************************************************
     // oval-definitions-5
     //**************************************************************
+
+    /**
+     * var:200
+     */
+    public static final LocalVariable  VAR_200 = _createVariable200();
+
+    private static LocalVariable _createVariable200()
+    {
+        LocalVariable  var200 =
+            new LocalVariable(
+                            "oval:org.mitre.oval:var:200", 1,
+                            "Windows System32 directory",
+                            DatatypeEnumeration.STRING
+
+            );
+
+        ConcatFunctionType  concat = new ConcatFunctionType();
+        concat.addComponent(
+                        new ObjectComponentType(
+                                        "oval:org.mitre.oval:obj:219",
+                                        "value"
+                        )
+        );
+        concat.addComponent(
+                        new LiteralComponentType(
+                                        "\\System32"
+                        )
+        );
+
+        var200.setComponent( concat );
+
+        return var200;
+    }
+
+
 
     /**
      * ste:5310

@@ -9,6 +9,8 @@ import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.v5.definitions.SystemObjectsType;
 import jp.go.aist.six.oval.model.v5.definitions.TestType;
 import jp.go.aist.six.oval.model.v5.definitions.TestsType;
+import jp.go.aist.six.oval.model.v5.definitions.VariableType;
+import jp.go.aist.six.oval.model.v5.definitions.VariablesType;
 import org.bson.types.ObjectId;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Key;
@@ -44,11 +46,19 @@ public class OvalDefinitionsDAO
                     final OvalDefinitions oval_definitions
                     )
     {
+        VariablesType  variables = oval_definitions.getVariables();
+        if (variables != null) {
+            DAO<VariableType, ObjectId>  dao = _getForwardingDAO( VariableType.class );
+            for (VariableType  variable : variables.getVariable()) {
+                dao.save( variable );
+            }
+        }
+
         StatesType  states = oval_definitions.getStates();
         if (states != null) {
             DAO<StateType, ObjectId>  dao = _getForwardingDAO( StateType.class );
-            for (StateType  test : states.getState()) {
-                dao.save( test );
+            for (StateType  state : states.getState()) {
+                dao.save( state );
             }
         }
 

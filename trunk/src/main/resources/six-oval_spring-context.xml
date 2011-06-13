@@ -89,6 +89,11 @@
         <constructor-arg ref="datastore"/> 
     </bean> 
 
+    <bean id="variableDAO" 
+        class="jp.go.aist.six.oval.core.datastore.mongodb.VariableDAO">
+        <constructor-arg ref="datastore"/> 
+    </bean> 
+
 
     <bean id="datastoreService" 
         class="jp.go.aist.six.oval.core.datastore.mongodb.MongoService"> 
@@ -99,6 +104,7 @@
                 <ref bean="testDAO"/>
                 <ref bean="systemObjectDAO"/>
                 <ref bean="stateDAO"/>
+                <ref bean="variableDAO"/>
             </set>
         </property>
     </bean>
