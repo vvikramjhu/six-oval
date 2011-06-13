@@ -18,17 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.xml.v5;
+package jp.go.aist.six.oval.core.xml.v5.common;
 
-import jp.go.aist.six.oval.model.v5.results.ContentEnumeration;
+import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class ContentEnumerationHandler
+public class OperatorEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public ContentEnumerationHandler()
+    public OperatorEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class ContentEnumerationHandler
         if (value == null) {
             return null;
         }
-        ContentEnumeration  e = ContentEnumeration.class.cast( value );
+        OperatorEnumeration  e = OperatorEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class ContentEnumerationHandler
         if (value == null) {
             return null;
         }
-        return ContentEnumeration.fromValue( value.toString() );
+        return OperatorEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<ContentEnumeration> getFieldType()
+    public Class<OperatorEnumeration> getFieldType()
     {
-        return ContentEnumeration.class;
+        return OperatorEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class ContentEnumerationHandler
 //    }
 
 }
-// ContentEnumerationHandler
+// OperatorEnumerationHandler

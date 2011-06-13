@@ -170,7 +170,7 @@
 
         <field name="flag"  
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.FlagEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.v5.sc.FlagEnumerationHandler">
             <!-- type="jp.go.aist.six.oval.model.v5.sc.FlagEnumeration" -->
             <bind-xml name="flag" node="attribute"/>
         </field>
@@ -237,7 +237,7 @@ not the family-specific one.
 
         <field name="status" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.StatusEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.v5.sc.StatusEnumerationHandler">
             <!-- type="jp.go.aist.six.oval.model.v5.sc.StatusEnumeration" -->
             <bind-xml name="status" node="attribute"/>
         </field>
@@ -252,7 +252,7 @@ not the family-specific one.
 
         <field name="datatype" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.DatatypeEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.v5.common.DatatypeEnumerationHandler">
             <!-- type="jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration" -->
             <bind-xml name="datatype" node="attribute"/>
         </field>
@@ -263,7 +263,7 @@ not the family-specific one.
 
         <field name="status" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.StatusEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.v5.sc.StatusEnumerationHandler">
             <!-- type="jp.go.aist.six.oval.model.v5.sc.StatusEnumeration" -->
             <bind-xml name="status" node="attribute"/>
         </field>

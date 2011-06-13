@@ -18,17 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.xml.v5;
+package jp.go.aist.six.oval.core.xml.v5.mitre;
 
-import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
+import jp.go.aist.six.oval.model.v5.mitre.DefinitionStatusEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class ClassEnumerationHandler
+public class DefinitionStatusEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public ClassEnumerationHandler()
+    public DefinitionStatusEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class ClassEnumerationHandler
         if (value == null) {
             return null;
         }
-        ClassEnumeration  e = ClassEnumeration.class.cast( value );
+        DefinitionStatusEnumeration  e = DefinitionStatusEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class ClassEnumerationHandler
         if (value == null) {
             return null;
         }
-        return ClassEnumeration.fromValue( value.toString() );
+        return DefinitionStatusEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<ClassEnumeration> getFieldType()
+    public Class<DefinitionStatusEnumeration> getFieldType()
     {
-        return ClassEnumeration.class;
+        return DefinitionStatusEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class ClassEnumerationHandler
 //    }
 
 }
-// ClassEnumerationHandler
+// DefinitionStatusEnumerationHandler

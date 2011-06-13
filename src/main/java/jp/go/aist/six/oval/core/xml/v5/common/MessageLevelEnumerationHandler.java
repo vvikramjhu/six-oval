@@ -18,17 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.xml.v5;
+package jp.go.aist.six.oval.core.xml.v5.common;
 
-import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
+import jp.go.aist.six.oval.model.v5.common.MessageLevelEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class DatatypeEnumerationHandler
+public class MessageLevelEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public DatatypeEnumerationHandler()
+    public MessageLevelEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class DatatypeEnumerationHandler
         if (value == null) {
             return null;
         }
-        DatatypeEnumeration  e = DatatypeEnumeration.class.cast( value );
+        MessageLevelEnumeration  e = MessageLevelEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class DatatypeEnumerationHandler
         if (value == null) {
             return null;
         }
-        return DatatypeEnumeration.fromValue( value.toString() );
+        return MessageLevelEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<DatatypeEnumeration> getFieldType()
+    public Class<MessageLevelEnumeration> getFieldType()
     {
-        return DatatypeEnumeration.class;
+        return MessageLevelEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class DatatypeEnumerationHandler
 //    }
 
 }
-// DatatypeEnumerationHandler
+// MessageLevelEnumerationHandler

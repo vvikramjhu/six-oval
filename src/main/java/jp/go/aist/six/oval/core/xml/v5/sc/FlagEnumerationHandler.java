@@ -18,17 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.xml.v5;
+package jp.go.aist.six.oval.core.xml.v5.sc;
 
-import jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration;
+import jp.go.aist.six.oval.model.v5.sc.FlagEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class ExistenceEnumerationHandler
+public class FlagEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public ExistenceEnumerationHandler()
+    public FlagEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class ExistenceEnumerationHandler
         if (value == null) {
             return null;
         }
-        ExistenceEnumeration  e = ExistenceEnumeration.class.cast( value );
+        FlagEnumeration  e = FlagEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class ExistenceEnumerationHandler
         if (value == null) {
             return null;
         }
-        return ExistenceEnumeration.fromValue( value.toString() );
+        return FlagEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<ExistenceEnumeration> getFieldType()
+    public Class<FlagEnumeration> getFieldType()
     {
-        return ExistenceEnumeration.class;
+        return FlagEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class ExistenceEnumerationHandler
 //    }
 
 }
-// ExistenceEnumerationHandler
+// FlagEnumerationHandler

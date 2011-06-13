@@ -18,17 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.xml.v5;
+package jp.go.aist.six.oval.core.xml.v5.windows;
 
-import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
+import jp.go.aist.six.oval.model.v5.windows.RegistryTypeEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class OperatorEnumerationHandler
+public class RegistryTypeEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public OperatorEnumerationHandler()
+    public RegistryTypeEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class OperatorEnumerationHandler
         if (value == null) {
             return null;
         }
-        OperatorEnumeration  e = OperatorEnumeration.class.cast( value );
+        RegistryTypeEnumeration  e = RegistryTypeEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class OperatorEnumerationHandler
         if (value == null) {
             return null;
         }
-        return OperatorEnumeration.fromValue( value.toString() );
+        return RegistryTypeEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<OperatorEnumeration> getFieldType()
+    public Class<RegistryTypeEnumeration> getFieldType()
     {
-        return OperatorEnumeration.class;
+        return RegistryTypeEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class OperatorEnumerationHandler
 //    }
 
 }
-// OperatorEnumerationHandler
+// CheckEnumerationHandler

@@ -18,17 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.xml.v5;
+package jp.go.aist.six.oval.core.xml.v5.results;
 
-import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
+import jp.go.aist.six.oval.model.v5.results.ResultEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class FamilyEnumerationHandler
+public class ResultEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public FamilyEnumerationHandler()
+    public ResultEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class FamilyEnumerationHandler
         if (value == null) {
             return null;
         }
-        FamilyEnumeration  e = FamilyEnumeration.class.cast( value );
+        ResultEnumeration  e = ResultEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class FamilyEnumerationHandler
         if (value == null) {
             return null;
         }
-        return FamilyEnumeration.fromValue( value.toString() );
+        return ResultEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<FamilyEnumeration> getFieldType()
+    public Class<ResultEnumeration> getFieldType()
     {
-        return FamilyEnumeration.class;
+        return ResultEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class FamilyEnumerationHandler
 //    }
 
 }
-// FamilyEnumerationHandler
+// ResultEnumerationHandler
