@@ -20,10 +20,12 @@
     <test name="oval.core.datastore.mongodb" enabled="true">
         <groups>
             <run>
-                <include name="oval.definitions.definition"/>
+                <include name="oval.definitions.oval_definitions"/>
                 <!--
                 <include name="oval.definitions.oval_definitions"/>
+                <include name="oval.definitions.definition"/>
                 <include name="oval.definitions.state"/>
+                <include name="oval.definitions.variable"/>
                 -->
             </run>
         </groups>

@@ -41,14 +41,12 @@ public class AffectedType
 {
 
     private final Collection<String>  platform = new HashSet<String>();
+//  private final Collection<Platform>  platform = new HashSet<Platform>();
     //{0..*, unique}
 
-//    private final Collection<Platform>  platform = new HashSet<Platform>();
-//    //{0..*, unique}
 
-
-
-    private final Collection<Product>  product = new HashSet<Product>();
+    private final Collection<String>  product = new HashSet<String>();
+//  private final Collection<Product>  product = new HashSet<Product>();
     //{0..*, unique}
 
 
@@ -236,16 +234,17 @@ public class AffectedType
 //    }
 
 
+
     /**
      */
     public void setProduct(
                     final Collection<? extends Product> products
                     )
     {
-        if (this.product != products) {
-            this.product.clear();
-            if (products != null  &&  products.size() > 0) {
-                this.product.addAll( products );
+        this.product.clear();
+        if (products != null  &&  products.size() > 0) {
+            for (Product  p : products) {
+                addProduct( p );
             }
         }
     }
@@ -253,6 +252,18 @@ public class AffectedType
 
     public boolean addProduct(
                     final Product product
+                    )
+    {
+        if (product == null) {
+            throw new IllegalArgumentException( "empty product" );
+        }
+
+        return addProduct( product.getName() );
+    }
+
+
+    public boolean addProduct(
+                    final String product
                     )
     {
         if (product == null) {
@@ -276,21 +287,82 @@ public class AffectedType
                     final String product
                     )
     {
-        addProduct( new Product( product ) );
+        addProduct( product );
         return this;
     }
 
 
     public Collection<Product> getProduct()
     {
-        return this.product;
+        Collection<Product>  c = new HashSet<Product>();
+        for (String  product : this.product) {
+            c.add( new Product( product ) );
+        }
+
+        return c;
     }
 
 
     public Iterator<Product> iterateProduct()
     {
-        return this.product.iterator();
+        return getProduct().iterator();
     }
+
+
+    /* using Product class */
+//    public void setProduct(
+//                    final Collection<? extends Product> products
+//                    )
+//    {
+//        if (this.product != products) {
+//            this.product.clear();
+//            if (products != null  &&  products.size() > 0) {
+//                this.product.addAll( products );
+//            }
+//        }
+//    }
+//
+//
+//    public boolean addProduct(
+//                    final Product product
+//                    )
+//    {
+//        if (product == null) {
+//            return false;
+//        }
+//
+//        return this.product.add( product );
+//    }
+//
+//
+//    public AffectedType product(
+//                    final Product product
+//                    )
+//    {
+//        addProduct( product );
+//        return this;
+//    }
+//
+//
+//    public AffectedType product(
+//                    final String product
+//                    )
+//    {
+//        addProduct( new Product( product ) );
+//        return this;
+//    }
+//
+//
+//    public Collection<Product> getProduct()
+//    {
+//        return this.product;
+//    }
+//
+//
+//    public Iterator<Product> iterateProduct()
+//    {
+//        return this.product.iterator();
+//    }
 
 
 

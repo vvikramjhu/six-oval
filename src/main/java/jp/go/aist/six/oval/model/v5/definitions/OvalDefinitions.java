@@ -43,8 +43,6 @@ public class OvalDefinitions
     //{1..1}
 
 
-//    @Reference
-//    private final Set<DefinitionType>  definitions = new HashSet<DefinitionType>();
     private DefinitionsType  definitions;
     //{0..1}
 

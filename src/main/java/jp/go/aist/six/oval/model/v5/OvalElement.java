@@ -37,10 +37,10 @@ public abstract class OvalElement
     implements Comparable<OvalElement>
 {
 
-    private String  id;
+    private String  oval_id;
     //{required, oval:DefinitionIDPattern}
 
-    private int  version;
+    private int  oval_version;
     //{required, xsd:nonNegativeInteger}
 
 
@@ -89,7 +89,7 @@ public abstract class OvalElement
                     final String id
                     )
     {
-        this.id = id;
+        this.oval_id = id;
     }
 
 
@@ -101,7 +101,7 @@ public abstract class OvalElement
      */
     public String getOvalID()
     {
-        return this.id;
+        return this.oval_id;
     }
 
 
@@ -120,7 +120,7 @@ public abstract class OvalElement
             throw new IllegalArgumentException(
                             "negative version: " + version );
         }
-        this.version = version;
+        this.oval_version = version;
     }
 
 
@@ -132,7 +132,7 @@ public abstract class OvalElement
      */
     public int getOvalVersion()
     {
-        return this.version;
+        return this.oval_version;
     }
 
 

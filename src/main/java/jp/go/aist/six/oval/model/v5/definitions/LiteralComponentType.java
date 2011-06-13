@@ -55,6 +55,14 @@ public class LiteralComponentType
     }
 
 
+    public LiteralComponentType(
+                    final String content
+                    )
+    {
+        setContent( content );
+    }
+
+
 
     /**
      */
