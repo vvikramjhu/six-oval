@@ -15,6 +15,7 @@ import jp.go.aist.six.oval.model.v5.definitions.TestType;
 import jp.go.aist.six.oval.model.v5.definitions.VariableType;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.test.oval.core.DefinitionsSample;
+import jp.go.aist.six.util.persist.Persistable;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.testng.Reporter;
@@ -68,11 +69,74 @@ public class MongoTest
     // objected are read from XML
     //**************************************************************
 
-    @DataProvider( name="oval.definitions.oval_definitions.xml" )
-    public Object[][] provideOvalObjectXml()
+    @Override
+    @DataProvider( name="oval.xml" )
+    public Object[][] provideOvalResultsXml()
     {
         return new Object[][] {
-                        // def:7222, windows, vulnerability, CVE-2010-0176
+                        // def:7120, windows, vulnerability, CVE-2010-0820
+                        {
+                            jp.go.aist.six.oval.model.v5.results.OvalResults.class,
+                            "test/resources/data/oval-results-5/oval_windows_vulnerability_def7120_results5.9.xml",
+                            null
+                        }
+        };
+
+    }
+
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={ "oval.core.datastore.mongodb.saveAndLoad" },
+                    dataProvider="oval.xml",
+                    alwaysRun=true
+                    )
+    public <K, T extends Persistable<K>> void testSaveAndLoad(
+                    final Class<T> type,
+                    final String xmlFilepath,
+                    final T expectedObject
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n//// TEST: group=oval.core.datastore.mongodb oval.results.oval_results"
+                        + ", method=testSaveAndLoad",
+                        true );
+
+        Reporter.log( "type: " + type, true );
+
+        T  object = _readObjectFromXml( type, xmlFilepath, expectedObject );
+
+        MongoService  mongo = _mongoContext.getBean( MongoService.class );
+
+        Reporter.log( "save..." , true );
+        Reporter.log( "  * object: " + object, true );
+
+//        for (DefinitionType  def : object.getDefinitions().getDefinition()) {
+//            mongo.getDAO( DefinitionType.class ).save( def );
+//        }
+        mongo.getDAO( type ).save( object );
+
+
+        Reporter.log( "load each object by concrete class...", true );
+        T  p_object = mongo.getDAO( type ).get( object.getPersistentID() );
+        Reporter.log( "  @ object: " + p_object, true );
+        if (p_object instanceof OvalDefinitions) {
+            OvalDefinitions  p_oval_defs = (OvalDefinitions)p_object;
+            for (DefinitionType  p_def : p_oval_defs.getDefinitions().getDefinition()) {
+                Reporter.log( "  @ definition: " + p_def, true );
+            }
+        }
+    }
+
+
+
+    @Override
+    @DataProvider( name="oval.definitions.oval_definitions.xml" )
+    public Object[][] provideOvalDefinitionsXml()
+    {
+        return new Object[][] {
+                        // def:7120, windows, vulnerability, CVE-2010-0820
                         {
                             jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
                             "test/resources/data/oval-definitions-5/oval_windows_vulnerability_def7120_definitions5.9.xml",
