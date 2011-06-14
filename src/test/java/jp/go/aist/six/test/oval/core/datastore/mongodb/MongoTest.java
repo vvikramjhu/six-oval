@@ -74,12 +74,20 @@ public class MongoTest
     public Object[][] provideOvalResultsXml()
     {
         return new Object[][] {
-                        // def:7120, windows, vulnerability, CVE-2010-0820
+                        // def:7222, windows, vulnerability, CVE-2010-0176
                         {
                             jp.go.aist.six.oval.model.v5.results.OvalResults.class,
-                            "test/resources/data/oval-results-5/oval_windows_vulnerability_def7120_results5.9.xml",
+                            "test/resources/data/oval-results-5/oval-5.9_def7222_vulnerability_windows_results.xml",
                             null
                         }
+//                        ,
+//
+//                        // def:7120, windows, vulnerability, CVE-2010-0820
+//                        {
+//                            jp.go.aist.six.oval.model.v5.results.OvalResults.class,
+//                            "test/resources/data/oval-results-5/oval_windows_vulnerability_def7120_results5.9.xml",
+//                            null
+//                        }
         };
 
     }
@@ -99,11 +107,10 @@ public class MongoTest
                     )
     throws Exception
     {
-        Reporter.log( "\n//// TEST: group=oval.core.datastore.mongodb oval.results.oval_results"
-                        + ", method=testSaveAndLoad",
+        Reporter.log( "\n//////////////////////////////////////////////////////////",
                         true );
 
-        Reporter.log( "type: " + type, true );
+        Reporter.log( "target object type: " + type, true );
 
         T  object = _readObjectFromXml( type, xmlFilepath, expectedObject );
 
