@@ -48,22 +48,30 @@ public class OvalConverter
         //commons
         CheckEnumeration.class,
         ClassEnumeration.class,
-        ContentEnumeration.class,
         DatatypeEnumeration.class,
-        DefinitionStatusEnumeration.class,
         ExistenceEnumeration.class,
         FamilyEnumeration.class,
-        FileTypeEnumeration.class,
-        FilterActionEnumeration.class,
-        FlagEnumeration.class,
         MessageLevelEnumeration.class,
         OperationEnumeration.class,
         OperatorEnumeration.class,
-        RegistryTypeEnumeration.class,
-        ResultEnumeration.class,
-        StatusEnumeration.class
+
+        //definitions
+        FilterActionEnumeration.class,
 
         //mitre
+        DefinitionStatusEnumeration.class,
+
+        // results
+        ContentEnumeration.class,
+        ResultEnumeration.class,
+
+        // sc
+        FlagEnumeration.class,
+        StatusEnumeration.class,
+
+        //windows
+        FileTypeEnumeration.class,
+        RegistryTypeEnumeration.class
 
 //        Platform.class,
 //        Product.class
@@ -208,7 +216,7 @@ public class OvalConverter
                     )
     throws MappingException
     {
-        _LOG_.debug( "target class: " + targetClass );
+        _LOG_.trace( "target class: " + targetClass );
         if (fromDBObject == null) {
             return null;
         }

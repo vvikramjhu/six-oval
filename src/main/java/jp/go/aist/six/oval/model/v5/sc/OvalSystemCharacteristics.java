@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.v5.sc;
 
 import jp.go.aist.six.oval.model.v5.OvalDocument;
 import jp.go.aist.six.oval.model.v5.common.GeneratorType;
+import com.google.code.morphia.annotations.Entity;
 
 
 
@@ -32,6 +33,7 @@ import jp.go.aist.six.oval.model.v5.common.GeneratorType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
+@Entity( "oval.sc.oval_system_characteristics" )
 public class OvalSystemCharacteristics
     extends OvalDocument
 {

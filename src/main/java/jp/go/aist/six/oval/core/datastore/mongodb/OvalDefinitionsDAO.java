@@ -11,7 +11,6 @@ import jp.go.aist.six.oval.model.v5.definitions.TestType;
 import jp.go.aist.six.oval.model.v5.definitions.TestsType;
 import jp.go.aist.six.oval.model.v5.definitions.VariableType;
 import jp.go.aist.six.oval.model.v5.definitions.VariablesType;
-import org.bson.types.ObjectId;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Key;
 import com.google.code.morphia.dao.DAO;
@@ -48,7 +47,7 @@ public class OvalDefinitionsDAO
     {
         VariablesType  variables = oval_definitions.getVariables();
         if (variables != null) {
-            DAO<VariableType, ObjectId>  dao = _getForwardingDAO( VariableType.class );
+            DAO<VariableType, String>  dao = _getForwardingDAO( VariableType.class );
             for (VariableType  variable : variables.getVariable()) {
                 dao.save( variable );
             }
@@ -56,7 +55,7 @@ public class OvalDefinitionsDAO
 
         StatesType  states = oval_definitions.getStates();
         if (states != null) {
-            DAO<StateType, ObjectId>  dao = _getForwardingDAO( StateType.class );
+            DAO<StateType, String>  dao = _getForwardingDAO( StateType.class );
             for (StateType  state : states.getState()) {
                 dao.save( state );
             }
@@ -64,7 +63,7 @@ public class OvalDefinitionsDAO
 
         SystemObjectsType  objects = oval_definitions.getObjects();
         if (objects != null) {
-            DAO<SystemObjectType, ObjectId>  dao = _getForwardingDAO( SystemObjectType.class );
+            DAO<SystemObjectType, String>  dao = _getForwardingDAO( SystemObjectType.class );
             for (SystemObjectType  object : objects.getObject()) {
                 dao.save( object );
             }
@@ -72,7 +71,7 @@ public class OvalDefinitionsDAO
 
         TestsType  tests = oval_definitions.getTests();
         if (tests != null) {
-            DAO<TestType, ObjectId>  dao = _getForwardingDAO( TestType.class );
+            DAO<TestType, String>  dao = _getForwardingDAO( TestType.class );
             for (TestType  test : tests.getTest()) {
                 dao.save( test );
             }
@@ -80,7 +79,7 @@ public class OvalDefinitionsDAO
 
         DefinitionsType  definitions = oval_definitions.getDefinitions();
         if (definitions != null) {
-            DAO<DefinitionType, ObjectId>  dao = _getForwardingDAO( DefinitionType.class );
+            DAO<DefinitionType, String>  dao = _getForwardingDAO( DefinitionType.class );
             for (DefinitionType  definition : definitions.getDefinition()) {
                 dao.save( definition );
             }
