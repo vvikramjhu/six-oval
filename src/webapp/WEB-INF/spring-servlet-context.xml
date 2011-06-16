@@ -84,8 +84,8 @@
 
 
     <bean id="ovalController" 
-       class="jp.go.aist.six.oval.core.rest.OvalController">
-        <property name="store" ref="ovalStore" />
+       class="jp.go.aist.six.oval.core.ws.OvalController">
+        <property name="datastore" ref="datastoreService" />
     </bean>
 <!-- 
     <bean id="ovalRepositoryController" 
