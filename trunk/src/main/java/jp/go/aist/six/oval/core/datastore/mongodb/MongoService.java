@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import jp.go.aist.six.util.persist.Datastore;
 import jp.go.aist.six.util.persist.Persistable;
 import jp.go.aist.six.util.persist.PersistenceException;
 import jp.go.aist.six.util.search.Binding;
@@ -21,7 +22,7 @@ import com.google.code.morphia.dao.DAO;
  * @version $Id$
  */
 public class MongoService
-    implements DAORegistry
+    implements DAORegistry, Datastore
 {
 
     /**
@@ -118,6 +119,7 @@ public class MongoService
     //  Datastore
     //**************************************************************
 
+    @Override
     public <K, T extends Persistable<K>>
     K create( final Class<T> type, final T object )
     throws PersistenceException
@@ -128,6 +130,7 @@ public class MongoService
     }
 
 
+    @Override
     public <K, T extends Persistable<K>>
     void update( final Class<T> type, final T object )
     throws PersistenceException
@@ -136,6 +139,7 @@ public class MongoService
     }
 
 
+    @Override
     public <K, T extends Persistable<K>>
     void remove( final Class<T> type, final T object )
     throws PersistenceException
@@ -144,6 +148,7 @@ public class MongoService
     }
 
 
+    @Override
     public <K, T extends Persistable<K>>
     T sync( final Class<T> type, final T object )
     throws PersistenceException
@@ -152,6 +157,7 @@ public class MongoService
     }
 
 
+    @Override
     public <K, T extends Persistable<K>>
     List<T> syncAll( final Class<T> type, final List<? extends T> objects )
     throws PersistenceException
@@ -160,6 +166,7 @@ public class MongoService
     }
 
 
+    @Override
     public <K, T extends Persistable<K>>
     int count( final Class<T> type )
     throws PersistenceException
@@ -169,6 +176,7 @@ public class MongoService
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     int count( final Class<T> type, final Binding filter )
     throws PersistenceException
@@ -177,6 +185,7 @@ public class MongoService
     }
 
 
+    @Override
     public <K, T extends Persistable<K>>
     T load( final Class<T> type, final K id )
     throws PersistenceException
@@ -187,6 +196,7 @@ public class MongoService
     }
 
 
+    @Override
     public <K, T extends Persistable<K>>
     List<T> loadAll( final Class<T> type, final List<? extends K> ids )
     throws PersistenceException
@@ -196,6 +206,7 @@ public class MongoService
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     Collection<T> find( final Class<T> type )
     throws PersistenceException
@@ -205,6 +216,7 @@ public class MongoService
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     Collection<T> find( final Class<T> type, final Binding filter )
     throws PersistenceException
@@ -213,6 +225,7 @@ public class MongoService
     }
 
 
+    @Override
     public <K, T extends Persistable<K>>
     Collection<T> find( final Class<T> type, final Binding filter, final List<? extends Order> ordering, final Limit limit )
     throws PersistenceException
@@ -221,6 +234,7 @@ public class MongoService
     }
 
 
+    @Override
     public <K, T extends Persistable<K>>
     Collection<K> findIdentity( final Class<T> type )
     throws PersistenceException
@@ -230,6 +244,7 @@ public class MongoService
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     Collection<K> findIdentity( final Class<T> type, final Binding filter )
     throws PersistenceException
@@ -239,6 +254,7 @@ public class MongoService
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     Collection<K> findIdentity( final Class<T> type, final Binding filter, final List<? extends Order> ordering, final Limit limit )
     throws PersistenceException
@@ -248,13 +264,13 @@ public class MongoService
 
 
 
+    @Override
     public <K, T extends Persistable<K>>
     List<Object> search( final Class<T> type, final SearchCriteria criteria )
     throws PersistenceException
     {
         throw new UnsupportedOperationException();
     }
-
 
 }
 // MongoService

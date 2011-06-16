@@ -187,4 +187,16 @@
     <!-- %  REST                                               % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
+    <bean id="marshallingConverter" 
+        class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"> 
+        <constructor-arg ref="ovalMarshaller" /> 
+        <property name="supportedMediaTypes" value="application/xml"/> 
+    </bean> 
+
+
+    <bean id="stringConverter" 
+        class="org.springframework.http.converter.StringHttpMessageConverter"> 
+        <property name="supportedMediaTypes" value="text/plain"/> 
+    </bean> 
+
 </beans>
