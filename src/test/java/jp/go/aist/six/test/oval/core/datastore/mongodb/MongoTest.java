@@ -122,12 +122,14 @@ public class MongoTest
 //        for (DefinitionType  def : object.getDefinitions().getDefinition()) {
 //            mongo.getDAO( DefinitionType.class ).save( def );
 //        }
-        mongo.getDAO( type ).save( object );
 
+        K  pid = mongo.create( type, object );
+        Reporter.log( "  >>> object created: pid=" + pid, true );
 
         Reporter.log( "load each object by concrete class...", true );
-        T  p_object = mongo.getDAO( type ).get( object.getPersistentID() );
+        T  p_object = mongo.load( type, object.getPersistentID() );
         Reporter.log( "  @ object: " + p_object, true );
+
         if (p_object instanceof OvalDefinitions) {
             OvalDefinitions  p_oval_defs = (OvalDefinitions)p_object;
             for (DefinitionType  p_def : p_oval_defs.getDefinitions().getDefinition()) {
@@ -135,7 +137,35 @@ public class MongoTest
             }
         }
     }
-
+//    {
+//        Reporter.log( "\n//////////////////////////////////////////////////////////",
+//                        true );
+//
+//        Reporter.log( "target object type: " + type, true );
+//
+//        T  object = _readObjectFromXml( type, xmlFilepath, expectedObject );
+//
+//        MongoService  mongo = _mongoContext.getBean( MongoService.class );
+//
+//        Reporter.log( "save..." , true );
+//        Reporter.log( "  * object: " + object, true );
+//
+////        for (DefinitionType  def : object.getDefinitions().getDefinition()) {
+////            mongo.getDAO( DefinitionType.class ).save( def );
+////        }
+//        mongo.getDAO( type ).save( object );
+//
+//
+//        Reporter.log( "load each object by concrete class...", true );
+//        T  p_object = mongo.getDAO( type ).get( object.getPersistentID() );
+//        Reporter.log( "  @ object: " + p_object, true );
+//        if (p_object instanceof OvalDefinitions) {
+//            OvalDefinitions  p_oval_defs = (OvalDefinitions)p_object;
+//            for (DefinitionType  p_def : p_oval_defs.getDefinitions().getDefinition()) {
+//                Reporter.log( "  @ definition: " + p_def, true );
+//            }
+//        }
+//    }
 
 
     @Override

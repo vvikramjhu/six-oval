@@ -64,7 +64,7 @@ public class OvalDefinitions
 
 
     @Transient
-    private String  _definitionsDigest;
+    private String  _definitions_digest;
 
 
 
@@ -294,13 +294,13 @@ public class OvalDefinitions
                     final String digest
                     )
     {
-        this._definitionsDigest = digest;
+        this._definitions_digest = digest;
     }
 
 
     public String getDefinitionsDigest()
     {
-        return this._definitionsDigest;
+        return this._definitions_digest;
 
 //        if (_definitionsDigest != null) {
 //            return _definitionsDigest;
