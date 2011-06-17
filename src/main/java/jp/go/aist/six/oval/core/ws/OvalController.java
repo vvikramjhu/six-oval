@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.core.ws;
 import java.net.URI;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
+import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.v5.results.OvalResults;
 import jp.go.aist.six.util.persist.Datastore;
 import jp.go.aist.six.util.persist.Persistable;
@@ -35,6 +36,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -103,6 +105,32 @@ public class OvalController
             _LOG_.debug( "Location: " + uri.toASCIIString() );
         }
         return uri;
+    }
+
+
+    /**
+     * Find the OVAL resource.
+     */
+    private <K, T extends Persistable<K>>
+    T _getResource(
+                    final Class<T> type,
+                    final K id
+                    )
+    throws OvalException
+    {
+        _LOG_.debug( "type=" + type + ", id=" + id );
+
+        T  p_object = null;
+        try {
+            p_object = _datastore.load( type, id );
+        } catch (PersistenceException ex) {
+            throw new OvalException( ex );
+        }
+
+//        HttpHeaders  headers = new HttpHeaders();
+//        _LOG_.debug( "HTTP response headers=" + headers );
+
+        return p_object;
     }
 
 
@@ -185,18 +213,21 @@ public class OvalController
     // Definitions
     //==============================================================
 
-//    @RequestMapping(
-//                    method=RequestMethod.GET
-//                    ,value="/oval_definitions/{id}"
-//                    ,headers="Accept=application/xml"
-//    )
-//    public @ResponseBody OvalDefinitions getOvalDefinitions(
-//                    @PathVariable final String id
-//                    )
-//    throws OvalException
-//    {
-//        return _getResource( OvalDefinitions.class, id );
-//    }
+    // Example:
+    // curl -v -X GET -HAccept:application/xml
+    //   http://localhost:8080/oval_repo/oval_definitions/eeba40c8-d92b-4095-8b12-dd65585bc55f
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/oval_definitions/{id}"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody OvalDefinitions getOvalDefinitions(
+                    @PathVariable final String id
+                    )
+    throws OvalException
+    {
+        return _getResource( OvalDefinitions.class, id );
+    }
 
 
 
@@ -312,6 +343,7 @@ public class OvalController
 
 
 
+    // Example:
     // >curl -v -X POST -HContent-Type:application/xml
     //  --data-binary @oval-results.xml
     //  http://localhost:8080/oval_repo/oval_results
