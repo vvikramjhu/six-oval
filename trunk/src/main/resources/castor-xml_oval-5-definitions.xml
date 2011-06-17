@@ -165,13 +165,19 @@
 
         <field name="platform" 
             type="jp.go.aist.six.oval.model.v5.definitions.Platform"
-            collection="collection">
+            collection="collection"
+            get-method="iteratePlatform"
+            set-method="addPlatform"
+            >
             <bind-xml name="platform" node="element"/>
         </field>
 
         <field name="product" 
             type="jp.go.aist.six.oval.model.v5.definitions.Product"
-            collection="collection">
+            collection="collection"
+            get-method="iterateProduct"
+            set-method="addProduct"
+            >
             <bind-xml name="product" node="element"/>
         </field>
     </class>
