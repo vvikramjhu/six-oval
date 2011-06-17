@@ -21,14 +21,14 @@ import com.google.code.morphia.dao.DAO;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class MongoService
+public class MongoDatastore
     implements DAORegistry, Datastore
 {
 
     /**
      * Logger.
      */
-    private static final Logger  _LOG_ = LoggerFactory.getLogger( MongoService.class );
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( MongoDatastore.class );
 
 
 
@@ -43,7 +43,7 @@ public class MongoService
     /**
      * Constructor.
      */
-    public MongoService()
+    public MongoDatastore()
     {
     }
 
@@ -273,4 +273,4 @@ public class MongoService
     }
 
 }
-// MongoService
+// MongoDatastore
