@@ -107,7 +107,7 @@
 
 
     <bean id="datastoreService" 
-        class="jp.go.aist.six.oval.core.datastore.mongodb.MongoService"> 
+        class="jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore"> 
         <property name="DAO">
             <set>
                 <ref bean="ovalDefinitionsDAO"/>

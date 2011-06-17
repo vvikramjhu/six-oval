@@ -2,7 +2,7 @@ package jp.go.aist.six.test.oval.core.datastore.mongodb;
 
 import java.util.List;
 import jp.go.aist.six.oval.core.datastore.mongodb.DefinitionDAO;
-import jp.go.aist.six.oval.core.datastore.mongodb.MongoService;
+import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
 import jp.go.aist.six.oval.core.datastore.mongodb.StateDAO;
 import jp.go.aist.six.oval.core.datastore.mongodb.SystemObjectDAO;
 import jp.go.aist.six.oval.core.datastore.mongodb.TestDAO;
@@ -114,7 +114,7 @@ public class MongoTest
 
         T  object = _readObjectFromXml( type, xmlFilepath, expectedObject );
 
-        MongoService  mongo = _mongoContext.getBean( MongoService.class );
+        MongoDatastore  datastore = _mongoContext.getBean( MongoDatastore.class );
 
         Reporter.log( "save..." , true );
         Reporter.log( "  * object: " + object, true );
@@ -123,11 +123,11 @@ public class MongoTest
 //            mongo.getDAO( DefinitionType.class ).save( def );
 //        }
 
-        K  pid = mongo.create( type, object );
+        K  pid = datastore.create( type, object );
         Reporter.log( "  >>> object created: pid=" + pid, true );
 
         Reporter.log( "load each object by concrete class...", true );
-        T  p_object = mongo.load( type, object.getPersistentID() );
+        T  p_object = datastore.load( type, object.getPersistentID() );
         Reporter.log( "  @ object: " + p_object, true );
 
         if (p_object instanceof OvalDefinitions) {
@@ -205,7 +205,7 @@ public class MongoTest
 
         OvalDefinitions  object = _readObjectFromXml( OvalDefinitions.class, xmlFilepath, expectedObject );
 
-        MongoService  mongo = _mongoContext.getBean( MongoService.class );
+        MongoDatastore  mongo = _mongoContext.getBean( MongoDatastore.class );
 
         Reporter.log( "save..." , true );
         Reporter.log( "  * object: " + object, true );
@@ -260,7 +260,7 @@ public class MongoTest
                         + ", method=testSaveAndLoadEntityUsingDatastoreService",
                         true );
 
-        MongoService  mongo = _mongoContext.getBean( MongoService.class );
+        MongoDatastore  mongo = _mongoContext.getBean( MongoDatastore.class );
 
         Reporter.log( "save..." , true );
         Reporter.log( "  * object: " + entity, true );

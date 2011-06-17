@@ -75,38 +75,6 @@ public class OvalResultsDAO
         return super.save( oval_results );
     }
 
-//    {
-//        //oval_definitions
-//        OvalDefinitions  oval_definitions = oval_results.getOvalDefinitions();
-//        if (oval_definitions != null) {
-//            String  digest = oval_definitions.getDefinitionsDigest();
-//
-//            //Test if the OvalDefinitions instance is already persisted.
-//            DAO<OvalDefinitions, String>  dao = _getForwardingDAO( OvalDefinitions.class );
-//            OvalDefinitions  p_oval_definitions = dao.findOne( "definitions_digest", digest );
-//
-//            if (p_oval_definitions == null) {
-//                dao.save( oval_definitions );
-//            } else {
-//                oval_results.setOvalDefinitions( p_oval_definitions );
-//            }
-//        }
-//
-//        //oval_system_characteristics
-//        ResultsType  results = oval_results.getResults();
-//        if (results != null) {
-//            Collection<SystemType> systems = results.getSystem();
-//            if (systems != null) {
-//                for (SystemType  s : systems) {
-//                    OvalSystemCharacteristics  oval_sc = s.getOvalSystemCharacteristics();
-//                    DAO<OvalSystemCharacteristics, String>  dao = _getForwardingDAO( OvalSystemCharacteristics.class );
-//                    dao.save( oval_sc );
-//                }
-//            }
-//        }
-//
-//        return super.save( oval_results );
-//    }
 }
 // OvalResultsDAO
 
