@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.v5.definitions;
 import jp.go.aist.six.oval.model.v5.OvalDocument;
 import jp.go.aist.six.oval.model.v5.common.GeneratorType;
 import com.google.code.morphia.annotations.Entity;
-import com.google.code.morphia.annotations.Transient;
 
 
 
@@ -63,8 +62,7 @@ public class OvalDefinitions
     //{0..1}
 
 
-    @Transient
-    private String  _definitions_digest;
+    private String  definitions_digest;
 
 
 
@@ -294,24 +292,18 @@ public class OvalDefinitions
                     final String digest
                     )
     {
-        this._definitions_digest = digest;
+        // Do nothing!!! - the value is computed and cached in OvalElementContainer.
+//        this._definitions_digest = digest;
     }
 
 
     public String getDefinitionsDigest()
     {
-        return this._definitions_digest;
+        //Morphia
+        this.definitions_digest =
+            (this.definitions == null ? null : this.definitions.getDigest());
 
-//        if (_definitionsDigest != null) {
-//            return _definitionsDigest;
-//        }
-//
-//        if (_definitions == null) {
-//            return null;
-//        } else {
-//            _definitionsDigest = _definitions.getDigest();
-//            return _definitionsDigest;
-//        }
+        return this.definitions_digest;
     }
 
 

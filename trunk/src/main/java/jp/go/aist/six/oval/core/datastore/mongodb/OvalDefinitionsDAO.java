@@ -85,6 +85,9 @@ public class OvalDefinitionsDAO
             }
         }
 
+        //compute the digest!!!
+        oval_definitions.getDefinitionsDigest();
+
         return super.save( oval_definitions );
     }
 
