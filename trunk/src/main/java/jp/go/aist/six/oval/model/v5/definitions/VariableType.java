@@ -37,7 +37,7 @@ import com.google.code.morphia.annotations.Entity;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-@Entity( "oval.definitions.variable" )
+@Entity( "oval.d.variable" )
 public class VariableType
     extends CommentedOvalEntity
 {

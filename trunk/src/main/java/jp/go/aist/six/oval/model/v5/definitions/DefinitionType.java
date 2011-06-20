@@ -34,7 +34,7 @@ import com.google.code.morphia.annotations.Property;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-@Entity( "oval.definitions.definition" )
+@Entity( "oval.d.definition" )
 public class DefinitionType
     extends OvalEntity
 {

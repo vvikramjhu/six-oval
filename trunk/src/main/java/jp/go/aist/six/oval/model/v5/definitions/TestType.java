@@ -39,7 +39,7 @@ import com.google.code.morphia.annotations.Entity;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-@Entity( "oval.definitions.test" )
+@Entity( "oval.d.test" )
 public class TestType
     extends CommentedOvalEntity
 {
