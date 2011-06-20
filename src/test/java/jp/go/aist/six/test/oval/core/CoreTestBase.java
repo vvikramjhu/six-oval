@@ -159,6 +159,15 @@ public abstract class CoreTestBase
 //                            null,
 //                            "marshalled_obj222_windows_file_oval5.9.xml"
 //                        }
+//                      ,
+
+                        // def:7432, Debian, patch, DSA-2027
+                        {
+                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+                            "test/resources/data/oval-definitions-5/oval-5.9_def7432_patch_debian.xml",
+                            null,
+                            "marshalled_oval-5.9_def7432_patch_debian.xml"
+                        }
 //                        ,
 //
 //                        // def:7222, windows, vulnerability, CVE-2010-0176
@@ -188,13 +197,13 @@ public abstract class CoreTestBase
 //                        }
 //                        ,
 //
-                        // def:*, Windows XP, vulnerability
-                        {
-                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                            "test/resources/data/oval-definitions-5/oval_vulnerability_windows.xp_definitions-5.9.xml",
-                            null,
-                            "marshalled_oval_vulnerability_windows.xp_definitions-5.9.xml"
-                        }
+//                        // def:*, Windows XP, vulnerability
+//                        {
+//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval-definitions-5/oval_vulnerability_windows.xp_definitions-5.9.xml",
+//                            null,
+//                            "marshalled_oval_vulnerability_windows.xp_definitions-5.9.xml"
+//                        }
 //                        ,
 //
 //                        // def:*, Debian, patch
@@ -442,13 +451,23 @@ public abstract class CoreTestBase
     public Object[][] provideOvalResultsXml()
     {
         return new Object[][] {
-                        // def:7120, Windows XP, vulnerability
-                        // targets: wmi, file, registry, family
+//                        // def:7120, Windows XP, vulnerability
+//                        // wmi, file, registry, family
+//                        {
+//                            jp.go.aist.six.oval.model.v5.results.OvalResults.class,
+//                            "test/resources/data/oval-results-5/oval_windows_vulnerability_def7120_results5.9.xml",
+//                            null,
+//                            "marshalled_oval_windows_vulnerability_def7120_results5.9.xml"
+//                        }
+//                        ,
+
+                        // def:7432, Debian, patch
+                        // textfilecontent54, dpkginfo, uname
                         {
                             jp.go.aist.six.oval.model.v5.results.OvalResults.class,
-                            "test/resources/data/oval-results-5/oval_windows_vulnerability_def7120_results5.9.xml",
+                            "test/resources/data/oval-results-5/oval-5.9_def7432_patch_debian_results.xml",
                             null,
-                            "marshalled_oval_windows_vulnerability_def7120_results5.9.xml"
+                            "marshalled_oval-5.9_def7432_patch_debian_results.xml"
                         }
 //                        ,
 //

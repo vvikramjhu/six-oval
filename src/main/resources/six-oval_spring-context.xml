@@ -194,9 +194,12 @@
     </bean> 
 
 
+    <!-- the default set of converters registered automatically, 
+    e.g. 
     <bean id="stringConverter" 
         class="org.springframework.http.converter.StringHttpMessageConverter"> 
         <property name="supportedMediaTypes" value="text/plain"/> 
     </bean> 
+    --> 
 
 </beans>
