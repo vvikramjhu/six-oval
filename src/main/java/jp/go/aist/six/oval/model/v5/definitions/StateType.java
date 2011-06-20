@@ -38,7 +38,7 @@ import com.google.code.morphia.annotations.Entity;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-@Entity( "oval.definitions.state" )
+@Entity( "oval.d.state" )
 public class StateType
     extends CommentedOvalEntity
 {
