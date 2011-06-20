@@ -3,13 +3,13 @@
 
   <generator>
     <oval:product_name>OVAL Definition Interpreter</oval:product_name>
-    <oval:product_version>5.4 Build: 2</oval:product_version>
-    <oval:schema_version>5.4</oval:schema_version>
-    <oval:timestamp>2011-03-20T15:39:20</oval:timestamp>
+    <oval:product_version>5.9 Build: 1</oval:product_version>
+    <oval:schema_version>5.9</oval:schema_version>
+    <oval:timestamp>2011-06-20T17:26:22</oval:timestamp>
     <vendor>The MITRE Corporation</vendor>
   </generator>
 
-  <directives>
+  <directives include_source_definitions="true">
     <definition_true content="full" reported="true"/>
     <definition_false content="full" reported="true"/>
     <definition_unknown content="full" reported="true"/>
@@ -21,8 +21,8 @@
   <oval_definitions xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5">
     <generator>
       <oval:product_name xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5">The OVAL Repository</oval:product_name>
-      <oval:schema_version xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5">5.4</oval:schema_version>
-      <oval:timestamp xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5">2011-03-04T07:00:26.805-05:00</oval:timestamp>
+      <oval:schema_version xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5">5.9</oval:schema_version>
+      <oval:timestamp xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5">2011-06-20T02:56:35.401-04:00</oval:timestamp>
   </generator>
     <definitions>
       <definition class="patch" id="oval:org.mitre.oval:def:7432" version="3">
@@ -272,15 +272,15 @@
 </oval_definitions>  <results>
     <system>
       <definitions>
-        <definition definition_id="oval:org.mitre.oval:def:7432" result="unknown" version="3">
-          <criteria operator="AND" result="unknown">
-            <extend_definition definition_ref="oval:org.mitre.oval:def:6513" result="unknown" version="3"/>
-            <criteria operator="OR" result="true">
+        <definition definition_id="oval:org.mitre.oval:def:7432" result="false" version="3">
+          <criteria operator="AND" result="false">
+            <extend_definition definition_ref="oval:org.mitre.oval:def:6513" result="false" version="3"/>
+            <criteria operator="OR" result="false">
               <criteria operator="AND" result="false">
                 <criterion result="true" test_ref="oval:org.mitre.oval:tst:10881" version="1"/>
                 <criterion result="false" test_ref="oval:org.mitre.oval:tst:26724" version="1"/>
               </criteria>
-              <criteria operator="AND" result="true">
+              <criteria operator="AND" result="false">
                 <criteria operator="OR" result="true">
                   <criterion result="false" test_ref="oval:org.mitre.oval:tst:10392" version="1"/>
                   <criterion result="false" test_ref="oval:org.mitre.oval:tst:2465" version="1"/>
@@ -292,13 +292,13 @@
                   <criterion result="false" test_ref="oval:org.mitre.oval:tst:11168" version="1"/>
                   <criterion result="false" test_ref="oval:org.mitre.oval:tst:11164" version="1"/>
                 </criteria>
-                <criteria operator="OR" result="true">
+                <criteria operator="OR" result="false">
                   <criterion result="false" test_ref="oval:org.mitre.oval:tst:26795" version="1"/>
                   <criterion result="false" test_ref="oval:org.mitre.oval:tst:26718" version="1"/>
-                  <criterion result="true" test_ref="oval:org.mitre.oval:tst:26858" version="1"/>
-                  <criterion result="true" test_ref="oval:org.mitre.oval:tst:26825" version="1"/>
+                  <criterion result="false" test_ref="oval:org.mitre.oval:tst:26858" version="1"/>
+                  <criterion result="false" test_ref="oval:org.mitre.oval:tst:26825" version="1"/>
                   <criterion result="false" test_ref="oval:org.mitre.oval:tst:26847" version="1"/>
-                  <criterion result="true" test_ref="oval:org.mitre.oval:tst:26716" version="1"/>
+                  <criterion result="false" test_ref="oval:org.mitre.oval:tst:26716" version="1"/>
                   <criterion result="false" test_ref="oval:org.mitre.oval:tst:26168" version="1"/>
                   <criterion result="false" test_ref="oval:org.mitre.oval:tst:26841" version="1"/>
                   <criterion result="false" test_ref="oval:org.mitre.oval:tst:26691" version="1"/>
@@ -307,100 +307,98 @@
             </criteria>
           </criteria>
         </definition>
-        <definition definition_id="oval:org.mitre.oval:def:6513" result="unknown" version="3">
-          <criteria operator="AND" result="unknown">
-            <criterion result="unknown" test_ref="oval:org.mitre.oval:tst:42061" version="1"/>
+        <definition definition_id="oval:org.mitre.oval:def:6513" result="false" version="3">
+          <criteria operator="AND" result="false">
+            <criterion result="false" test_ref="oval:org.mitre.oval:tst:42061" version="1"/>
           </criteria>
         </definition>
       </definitions>
       <tests>
-        <test check="all" check_existence="at_least_one_exists" result="unknown" test_id="oval:org.mitre.oval:tst:42061" version="1"/>
-        <test check="all" check_existence="at_least_one_exists" result="true" test_id="oval:org.mitre.oval:tst:10881" version="1">
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:42061" version="1"/>
+        <test check="all" check_existence="at_least_one_exists" result="true" state_operator="AND" test_id="oval:org.mitre.oval:tst:10881" version="1">
           <tested_item item_id="11" result="not evaluated"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="false" test_id="oval:org.mitre.oval:tst:26724" version="1">
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:26724" version="1">
           <tested_item item_id="6" result="not evaluated"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="false" test_id="oval:org.mitre.oval:tst:10392" version="1">
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:10392" version="1">
           <tested_item item_id="11" result="false"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="false" test_id="oval:org.mitre.oval:tst:2465" version="1">
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:2465" version="1">
           <tested_item item_id="11" result="false"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="false" test_id="oval:org.mitre.oval:tst:10933" version="1">
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:10933" version="1">
           <tested_item item_id="11" result="false"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="true" test_id="oval:org.mitre.oval:tst:10864" version="1">
+        <test check="all" check_existence="at_least_one_exists" result="true" state_operator="AND" test_id="oval:org.mitre.oval:tst:10864" version="1">
           <tested_item item_id="11" result="true"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="false" test_id="oval:org.mitre.oval:tst:11101" version="1">
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:11101" version="1">
           <tested_item item_id="11" result="false"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="false" test_id="oval:org.mitre.oval:tst:10830" version="1">
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:10830" version="1">
           <tested_item item_id="11" result="false"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="false" test_id="oval:org.mitre.oval:tst:10654" version="1">
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:10654" version="1">
           <tested_item item_id="11" result="false"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="false" test_id="oval:org.mitre.oval:tst:11168" version="1">
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:11168" version="1">
           <tested_item item_id="11" result="false"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="false" test_id="oval:org.mitre.oval:tst:11164" version="1">
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:11164" version="1">
           <tested_item item_id="11" result="false"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="false" test_id="oval:org.mitre.oval:tst:26795" version="1">
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:26795" version="1">
           <tested_item item_id="5" result="not evaluated"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="false" test_id="oval:org.mitre.oval:tst:26718" version="1">
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:26718" version="1">
           <tested_item item_id="7" result="not evaluated"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="true" test_id="oval:org.mitre.oval:tst:26858" version="1">
-          <tested_item item_id="1" result="true"/>
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:26858" version="1">
+          <tested_item item_id="1" result="not evaluated"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="true" test_id="oval:org.mitre.oval:tst:26825" version="1">
-          <tested_item item_id="4" result="true"/>
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:26825" version="1">
+          <tested_item item_id="4" result="not evaluated"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="false" test_id="oval:org.mitre.oval:tst:26847" version="1">
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:26847" version="1">
           <tested_item item_id="2" result="not evaluated"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="true" test_id="oval:org.mitre.oval:tst:26716" version="1">
-          <tested_item item_id="8" result="true"/>
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:26716" version="1">
+          <tested_item item_id="8" result="not evaluated"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="false" test_id="oval:org.mitre.oval:tst:26168" version="1">
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:26168" version="1">
           <tested_item item_id="10" result="not evaluated"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="false" test_id="oval:org.mitre.oval:tst:26841" version="1">
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:26841" version="1">
           <tested_item item_id="3" result="not evaluated"/>
         </test>
-        <test check="all" check_existence="at_least_one_exists" result="false" test_id="oval:org.mitre.oval:tst:26691" version="1">
+        <test check="all" check_existence="at_least_one_exists" result="false" state_operator="AND" test_id="oval:org.mitre.oval:tst:26691" version="1">
           <tested_item item_id="9" result="not evaluated"/>
         </test>
       </tests>
       <oval_system_characteristics xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5">
         <generator>
           <oval:product_name>OVAL Definition Interpreter</oval:product_name>
-          <oval:product_version>5.4 Build: 2</oval:product_version>
-          <oval:schema_version>5.4</oval:schema_version>
-          <oval:timestamp>2011-03-20T15:39:19</oval:timestamp>
+          <oval:product_version>5.9 Build: 1</oval:product_version>
+          <oval:schema_version>5.9</oval:schema_version>
+          <oval:timestamp>2011-06-20T17:26:22</oval:timestamp>
           <vendor>The MITRE Corporation</vendor>
         </generator>
         <system_info>
           <os_name>Linux</os_name>
-          <os_version>#1 SMP Tue Mar 9 17:35:51 UTC 2010</os_version>
+          <os_version>#1 SMP Wed May 18 07:08:50 UTC 2011</os_version>
           <architecture>i686</architecture>
-          <primary_host_name>debian50064</primary_host_name>
+          <primary_host_name>dhcp149198.a01.aist.go.jp</primary_host_name>
           <interfaces>
             <interface>
               <interface_name>eth0</interface_name>
-              <ip_address>192.168.1.64</ip_address>
-              <mac_address>00.0c.29.a1.33.34</mac_address>
+              <ip_address>150.29.149.23</ip_address>
+              <mac_address>00-0C-29-32-EC-28</mac_address>
             </interface>
           </interfaces>
         </system_info>
         <collected_objects>
-          <object comment="Object holds Debian version" flag="not collected" id="oval:org.mitre.oval:obj:15583" version="1">
-            <oval-sc:message>This type of object (textfilecontent54_object) is not currently supported by this OVAL Definition Interpreter data collector.</oval-sc:message>
-          </object>
+          <object comment="Object holds Debian version" flag="does not exist" id="oval:org.mitre.oval:obj:15583" version="1"/>
           <object comment="The single uname object." flag="complete" id="oval:org.mitre.oval:obj:2759" version="1">
             <reference item_ref="11"/>
           </object>
@@ -410,13 +408,13 @@
           <object comment="libmozillainterfaces-java package information" flag="does not exist" id="oval:org.mitre.oval:obj:7345" version="1">
             <reference item_ref="6"/>
           </object>
-          <object comment="xulrunner-1.9-gnome-support package information" flag="complete" id="oval:org.mitre.oval:obj:7607" version="1">
+          <object comment="xulrunner-1.9-gnome-support package information" flag="does not exist" id="oval:org.mitre.oval:obj:7607" version="1">
             <reference item_ref="1"/>
           </object>
           <object comment="libmozjs1d-dbg package information" flag="does not exist" id="oval:org.mitre.oval:obj:7652" version="1">
             <reference item_ref="2"/>
           </object>
-          <object comment="xulrunner-1.9 package information" flag="complete" id="oval:org.mitre.oval:obj:7759" version="1">
+          <object comment="xulrunner-1.9 package information" flag="does not exist" id="oval:org.mitre.oval:obj:7759" version="1">
             <reference item_ref="4"/>
           </object>
           <object comment="python-xpcom package information" flag="does not exist" id="oval:org.mitre.oval:obj:7786" version="1">
@@ -425,7 +423,7 @@
           <object comment="spidermonkey-bin package information" flag="does not exist" id="oval:org.mitre.oval:obj:7891" version="1">
             <reference item_ref="7"/>
           </object>
-          <object comment="libmozjs1d package information" flag="complete" id="oval:org.mitre.oval:obj:7900" version="1">
+          <object comment="libmozjs1d package information" flag="does not exist" id="oval:org.mitre.oval:obj:7900" version="1">
             <reference item_ref="8"/>
           </object>
           <object comment="xulrunner-dev package information" flag="does not exist" id="oval:org.mitre.oval:obj:7903" version="1">
@@ -438,10 +436,10 @@
         <system_data>
           <uname_item id="11" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
             <machine_class>i686</machine_class>
-            <node_name>debian50064</node_name>
+            <node_name>dhcp149198</node_name>
             <os_name>Linux</os_name>
-            <os_release>2.6.26-2-686</os_release>
-            <os_version>#1 SMP Tue Mar 9 17:35:51 UTC 2010</os_version>
+            <os_release>2.6.32-5-686</os_release>
+            <os_version>#1 SMP Wed May 18 07:08:50 UTC 2011</os_version>
             <processor_type>i686</processor_type>
           </uname_item>
           <dpkginfo_item id="3" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
@@ -450,24 +448,14 @@
           <dpkginfo_item id="6" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
             <name status="does not exist">libmozillainterfaces-java</name>
           </dpkginfo_item>
-          <dpkginfo_item id="1" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
-            <name>xulrunner-1.9-gnome-support</name>
-            <arch>i386</arch>
-            <epoch>0</epoch>
-            <release>1</release>
-            <version>1.9.0.18</version>
-            <evr>0:1.9.0.18-1</evr>
+          <dpkginfo_item id="1" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+            <name status="does not exist">xulrunner-1.9-gnome-support</name>
           </dpkginfo_item>
           <dpkginfo_item id="2" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
             <name status="does not exist">libmozjs1d-dbg</name>
           </dpkginfo_item>
-          <dpkginfo_item id="4" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
-            <name>xulrunner-1.9</name>
-            <arch>i386</arch>
-            <epoch>0</epoch>
-            <release>1</release>
-            <version>1.9.0.18</version>
-            <evr>0:1.9.0.18-1</evr>
+          <dpkginfo_item id="4" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+            <name status="does not exist">xulrunner-1.9</name>
           </dpkginfo_item>
           <dpkginfo_item id="10" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
             <name status="does not exist">python-xpcom</name>
@@ -475,13 +463,8 @@
           <dpkginfo_item id="7" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
             <name status="does not exist">spidermonkey-bin</name>
           </dpkginfo_item>
-          <dpkginfo_item id="8" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
-            <name>libmozjs1d</name>
-            <arch>i386</arch>
-            <epoch>0</epoch>
-            <release>1</release>
-            <version>1.9.0.18</version>
-            <evr>0:1.9.0.18-1</evr>
+          <dpkginfo_item id="8" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
+            <name status="does not exist">libmozjs1d</name>
           </dpkginfo_item>
           <dpkginfo_item id="9" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux">
             <name status="does not exist">xulrunner-dev</name>

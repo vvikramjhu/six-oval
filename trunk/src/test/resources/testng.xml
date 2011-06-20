@@ -17,7 +17,7 @@
     <!-- *  datastore                                          * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.datastore.mongodb" enabled="true">
+    <test name="oval.core.datastore.mongodb" enabled="false">
         <groups>
             <run>
                 <include name="oval.core.datastore.mongodb.saveAndLoad"/>
@@ -41,7 +41,7 @@
     <!-- *  XML                                                * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.xml" enabled="false">
+    <test name="oval.core.xml" enabled="true">
         <groups>
             <run>
                 <include name="oval.results.oval_results"/>
