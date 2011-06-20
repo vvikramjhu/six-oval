@@ -111,6 +111,7 @@ public abstract class OvalElementContainer<E extends OvalElement>
      */
     public static final String  DIGEST_ALGORITHM = "MD5";
 
+    @Transient
     private String  _digest;
 
     @Transient
