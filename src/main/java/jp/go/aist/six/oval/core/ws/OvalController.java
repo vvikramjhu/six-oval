@@ -21,11 +21,15 @@
 package jp.go.aist.six.oval.core.ws;
 
 import java.net.URI;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
+import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.v5.results.OvalResults;
-import jp.go.aist.six.util.persist.Datastore;
+import jp.go.aist.six.oval.model.v5.results.ResultsType;
+import jp.go.aist.six.oval.model.v5.results.SystemType;
+import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.util.persist.Persistable;
 import jp.go.aist.six.util.persist.PersistenceException;
 import org.slf4j.Logger;
@@ -40,9 +44,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.util.UriTemplate;
+import com.google.code.morphia.Key;
+import com.google.code.morphia.dao.DAO;
+import com.google.code.morphia.query.Query;
 
 
 
@@ -65,7 +73,7 @@ public class OvalController
     /**
      * The data store sole instance.
      */
-    private Datastore  _datastore;
+    private MongoDatastore  _datastore;
 
 
 
@@ -81,7 +89,7 @@ public class OvalController
     /**
      */
     public void setDatastore(
-                    final Datastore datastore
+                    final MongoDatastore datastore
                     )
     {
         _datastore = datastore;
@@ -361,6 +369,111 @@ public class OvalController
     {
         return _createResource( request, OvalResults.class, ovalResults );
     }
+
+
+    //
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/oval_results/results"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody ResultsType getResults(
+                    @RequestParam final String primary_host_name
+                    )
+    throws OvalException
+    {
+        return _searchResults( primary_host_name );
+    }
+
+
+
+    private ResultsType _searchResults(
+                    final String primary_host_name
+                    )
+    throws OvalException
+    {
+        _LOG_.debug( "primary_host_name=" + primary_host_name );
+
+        // (1) searches SC keys
+        List<Key<OvalSystemCharacteristics>>  sc_keys = null;
+        try {
+            DAO<OvalSystemCharacteristics, String>  dao = _datastore.getDAO( OvalSystemCharacteristics.class );
+            Query<OvalSystemCharacteristics>  q = dao.createQuery()
+            .filter( "system_info.primary_host_name", primary_host_name );
+
+            sc_keys = dao.find( q ).asKeyList();
+        } catch (Exception ex) {
+            throw new OvalException( ex );
+        }
+        _LOG_.debug( "SC keys: " + sc_keys );
+
+        ResultsType  results = new ResultsType();
+        try {
+            DAO<OvalResults, String>  dao = _datastore.getDAO( OvalResults.class );
+            List<OvalResults>  qr = dao.createQuery()
+            .field( "results.system.oval_system_characteristics" ).hasAnyOf( sc_keys ).asList();
+            for (OvalResults  r : qr) {
+                _LOG_.debug( "OvalResults: pid=" + r.getPersistentID() );
+                ResultsType  rs = r.getResults();
+                if (rs != null  &&  rs.size() > 0) {
+                    for (SystemType  s : rs.getSystem()) {
+                        _LOG_.debug( "  system: " + s.getOvalSystemCharacteristics().getSystemInfo() );
+                        results.addSystem( s );
+                    }
+                }
+            }
+
+
+//            for (Key<OvalSystemCharacteristics>  sc_key : sc_keys) {
+//                List<OvalResults>  qr = dao.createQuery()
+//                .filter( "results.system.oval_system_characteristics", sc_key ).retrievedFields( true, "reults.system" ).asList();
+//
+//                for (OvalResults  r : qr) {
+//                    _LOG_.debug( "OvalResults: pid=" + r.getPersistentID() );
+//                    ResultsType  rs = r.getResults();
+//                    if (rs != null  &&  rs.size() > 0) {
+//                        for (SystemType  s : rs.getSystem()) {
+//                            _LOG_.debug( "  system: " + s.getOvalSystemCharacteristics().getSystemInfo() );
+//                            results.addSystem( s );
+//                        }
+//                    }
+//                }
+//            }
+
+        } catch (PersistenceException ex) {
+            throw new OvalException( ex );
+        }
+
+//        HttpHeaders  headers = new HttpHeaders();
+//        _LOG_.debug( "HTTP response headers=" + headers );
+
+        return results;
+    }
+
+
+
+
+    private static class SystemProperties
+    {
+        private String  _priary_host_name;
+
+
+
+        public void setPrimaryHostName(
+                        final String primary_host_name
+                        )
+        {
+            _priary_host_name = primary_host_name;
+        }
+
+
+        public String getPrimaryHostName()
+        {
+            return _priary_host_name;
+        }
+
+    }
+
 
 }
 // OvalController
