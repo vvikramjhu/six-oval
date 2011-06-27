@@ -25,6 +25,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
+import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.v5.results.OvalResults;
 import jp.go.aist.six.oval.model.v5.results.ResultsType;
@@ -218,7 +219,7 @@ public class OvalController
 
 
     //==============================================================
-    // Definitions
+    // definitions
     //==============================================================
 
     // Example:
@@ -236,6 +237,23 @@ public class OvalController
     {
         return _getResource( OvalDefinitions.class, id );
     }
+
+
+
+    // @see http://forum.springsource.org/showthread.php?78085-Problems-with-RequestMapping&p=263563
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/oval_definitions/definitions/{id:.*}"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody DefinitionType getDefinition(
+                    @PathVariable final String id
+                    )
+    throws OvalException
+    {
+        return _getResource( DefinitionType.class, id );
+    }
+
 
 
 
