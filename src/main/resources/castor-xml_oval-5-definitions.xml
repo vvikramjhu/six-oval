@@ -84,7 +84,7 @@
     <!-- definition -->
     <class name="jp.go.aist.six.oval.model.v5.definitions.DefinitionType"
         extends="jp.go.aist.six.oval.model.v5.OvalEntity">
-        <map-to 
+        <map-to xml="definition" 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
             ns-prefix=""/>
 
