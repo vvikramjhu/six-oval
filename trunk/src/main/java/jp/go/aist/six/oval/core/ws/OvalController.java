@@ -371,6 +371,23 @@ public class OvalController
     }
 
 
+
+    // GET oval_results by ID
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/oval_results/{id}"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody OvalResults getOvalResults(
+                    @PathVariable final String id
+                    )
+    throws OvalException
+    {
+        return _getResource( OvalResults.class, id );
+    }
+
+
+
     // curl -v -o query_primary_host_name.xml -X GET -HAccept:application/xml
     //   http://localhost:8080/oval_repo/oval_results/results?primary_host_name=host1
     @RequestMapping(
