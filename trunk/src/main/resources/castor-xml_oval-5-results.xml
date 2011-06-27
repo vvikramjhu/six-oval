@@ -136,7 +136,7 @@
 
 
     <class name="jp.go.aist.six.oval.model.v5.results.ResultsType">
-        <map-to 
+        <map-to xml="results" 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 
         <field name="system" 
