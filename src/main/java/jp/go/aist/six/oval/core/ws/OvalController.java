@@ -371,7 +371,8 @@ public class OvalController
     }
 
 
-    //
+    // curl -v -o query_primary_host_name.xml -X GET -HAccept:application/xml
+    //   http://localhost:8080/oval_repo/oval_results/results?primary_host_name=host1
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/oval_results/results"
