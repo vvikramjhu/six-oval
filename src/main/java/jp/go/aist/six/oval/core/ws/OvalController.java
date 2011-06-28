@@ -21,7 +21,10 @@
 package jp.go.aist.six.oval.core.ws;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
@@ -52,6 +55,8 @@ import org.springframework.web.util.UriTemplate;
 import com.google.code.morphia.Key;
 import com.google.code.morphia.dao.DAO;
 import com.google.code.morphia.query.Query;
+import com.sun.syndication.feed.atom.Feed;
+import com.sun.syndication.feed.atom.Link;
 
 
 
@@ -141,6 +146,36 @@ public class OvalController
 
         return p_object;
     }
+
+
+
+    /**
+     * Find the OVAL resource IDs.
+     */
+    private <K, T extends Persistable<K>>
+    List<Key<T>> _getResourceIds(
+                    final Class<T> type
+                    )
+    throws OvalException
+    {
+        _LOG_.debug( "type=" + type );
+
+        List<Key<T>>  ids = null;
+        try {
+            DAO<T, K>  dao = _datastore.getDAO( type );
+            ids = dao.findIds();
+        } catch (PersistenceException ex) {
+            throw new OvalException( ex );
+        }
+
+
+//        HttpHeaders  headers = new HttpHeaders();
+//        _LOG_.debug( "HTTP response headers=" + headers );
+
+        return ids;
+    }
+
+
 
 
 
@@ -236,6 +271,60 @@ public class OvalController
     {
         return _createResource( request, OvalDefinitions.class, oval_definitions );
     }
+
+
+
+    // GET (read) oval_definitions
+    //
+    // test: curl -v -X GET -HAccept:application/atom+xml
+    //   http://localhost:8080/oval_repo/oval_definitions
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/oval_definitions"
+                    ,headers="Accept=application/atom+xml"
+    )
+    public @ResponseBody Feed getOvalDefinitions(
+                    final HttpServletRequest request
+                    )
+    throws OvalException
+    {
+        DAO<OvalDefinitions, String>  dao = _datastore.getDAO( OvalDefinitions.class );
+        List<Key<OvalDefinitions>>  ids = dao.find().asKeyList(); //dao.findIds();
+//        List<Key<OvalDefinitions>>  ids = _getResourceIds( OvalDefinitions.class );
+        if (ids == null) {
+            _LOG_.debug( "oval_definitions: #ids=0" );
+        } else {
+            _LOG_.debug( "oval_definitions: #ids=" + ids.size() );
+        }
+
+        Feed  feed = new Feed( "atom_1.0" );
+        feed.setId( "urn:guid:" + UUID.randomUUID().toString() );
+        feed.setTitle( "oval_definitions" );
+        feed.setUpdated( new Date() );
+
+        if (ids != null  &&  ids.size() > 0) {
+            String  rel = "http://six.org/rels/oval_definitions";
+
+            List<Link>  links = new ArrayList<Link>();
+//          for (Key<OvalDefinitions>  id : ids) {
+            for (int  i = 0; i < ids.size(); i++) {
+                Key<OvalDefinitions>  id = ids.get( i );
+                _LOG_.debug( "oval_definitions: id=" + id );
+
+                URI  uri = _buildLocation( request, String.valueOf( id.getId() ) );
+                Link  link = new Link();
+                link.setRel( rel );
+                link.setHref( uri.toASCIIString() );
+
+                links.add( link );
+            }
+
+            feed.setOtherLinks( links );
+        };
+
+        return feed;
+    }
+
 
 
 

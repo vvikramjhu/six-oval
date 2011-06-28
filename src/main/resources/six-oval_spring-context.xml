@@ -193,6 +193,10 @@
         <property name="supportedMediaTypes" value="application/xml"/> 
     </bean> 
 
+    <bean id="atomConverter" 
+        class="org.springframework.http.converter.feed.AtomFeedHttpMessageConverter"> 
+        <property name="supportedMediaTypes" value="application/atom+xml"/> 
+    </bean> 
 
     <!-- the default set of converters registered automatically, 
     e.g. 
