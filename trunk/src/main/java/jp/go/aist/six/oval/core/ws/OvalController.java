@@ -222,6 +222,24 @@ public class OvalController
     // definitions
     //==============================================================
 
+    // POST (create) oval_definitions
+    @RequestMapping(
+                    method=RequestMethod.POST
+                    ,value="/oval_definitions"
+                    ,headers="Content-Type=application/xml"
+    )
+    public ResponseEntity<Void> createOvalDefinitions(
+                    @RequestBody final OvalDefinitions oval_definitions,
+                    final HttpServletRequest request
+    )
+    throws OvalException
+    {
+        return _createResource( request, OvalDefinitions.class, oval_definitions );
+    }
+
+
+
+    // GET (read) oval_definitions
     // Example:
     // curl -v -X GET -HAccept:application/xml
     //   http://localhost:8080/oval_repo/oval_definitions/eeba40c8-d92b-4095-8b12-dd65585bc55f
