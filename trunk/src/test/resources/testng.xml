@@ -14,10 +14,30 @@
 <suite name="six-oval" verbose="1" parallel="tests">
 
     <!-- ******************************************************* -->
+    <!-- *  ws                                                 * -->
+    <!-- ******************************************************* -->
+
+    <test name="oval.core.ws" enabled="true">
+        <groups>
+            <run>
+                <include name="oval.core.ws.atom"/>
+                <!--
+                -->
+            </run>
+        </groups>
+
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.ws.AtomTest"/>
+        </classes>
+    </test>
+
+
+
+    <!-- ******************************************************* -->
     <!-- *  datastore                                          * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.datastore.mongodb" enabled="true">
+    <test name="oval.core.datastore.mongodb" enabled="false">
         <groups>
             <run>
                 <include name="oval.core.datastore.mongodb.saveAndLoad"/>
