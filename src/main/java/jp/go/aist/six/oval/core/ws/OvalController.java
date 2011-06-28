@@ -219,7 +219,7 @@ public class OvalController
 
 
     //==============================================================
-    // definitions
+    // /oval_definitions
     //==============================================================
 
     // POST (create) oval_definitions
@@ -240,9 +240,9 @@ public class OvalController
 
 
     // GET (read) oval_definitions
-    // Example:
-    // curl -v -X GET -HAccept:application/xml
-    //   http://localhost:8080/oval_repo/oval_definitions/eeba40c8-d92b-4095-8b12-dd65585bc55f
+    //
+    // test: curl -v -X GET -HAccept:application/xml
+    //   http://localhost:8080/oval_repo/oval_definitions/{id}
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/oval_definitions/{id}"
@@ -257,6 +257,10 @@ public class OvalController
     }
 
 
+
+    //==============================================================
+    // /oval_definitions/definitions
+    //==============================================================
 
     // @see http://forum.springsource.org/showthread.php?78085-Problems-with-RequestMapping&p=263563
     @RequestMapping(
