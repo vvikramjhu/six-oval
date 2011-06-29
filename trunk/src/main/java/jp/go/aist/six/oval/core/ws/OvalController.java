@@ -163,7 +163,8 @@ public class OvalController
         List<Key<T>>  ids = null;
         try {
             DAO<T, K>  dao = _datastore.getDAO( type );
-            ids = dao.findIds();
+            ids = dao.find().asKeyList(); //dao.findIds();
+//            ids = dao.findIds();
         } catch (PersistenceException ex) {
             throw new OvalException( ex );
         }
@@ -276,8 +277,7 @@ public class OvalController
 
     // GET (read) oval_definitions
     //
-    // test: curl -v -X GET -HAccept:application/atom+xml
-    //   http://localhost:8080/oval_repo/oval_definitions
+    // test: curl -v -X GET -HAccept:application/atom+xml http://localhost:8080/oval_repo/oval_definitions
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/oval_definitions"
@@ -288,9 +288,9 @@ public class OvalController
                     )
     throws OvalException
     {
-        DAO<OvalDefinitions, String>  dao = _datastore.getDAO( OvalDefinitions.class );
-        List<Key<OvalDefinitions>>  ids = dao.find().asKeyList(); //dao.findIds();
-//        List<Key<OvalDefinitions>>  ids = _getResourceIds( OvalDefinitions.class );
+//        DAO<OvalDefinitions, String>  dao = _datastore.getDAO( OvalDefinitions.class );
+//        List<Key<OvalDefinitions>>  ids = dao.find().asKeyList(); //dao.findIds();
+        List<Key<OvalDefinitions>>  ids = _getResourceIds( OvalDefinitions.class );
         if (ids == null) {
             _LOG_.debug( "oval_definitions: #ids=0" );
         } else {
