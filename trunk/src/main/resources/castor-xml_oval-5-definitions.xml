@@ -68,13 +68,15 @@
 
 
     <class name="jp.go.aist.six.oval.model.v5.definitions.DefinitionsType">
-        <map-to 
+        <map-to  xml="definitions"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
             ns-prefix=""/>
 
         <field name="definition" 
             type="jp.go.aist.six.oval.model.v5.definitions.DefinitionType"
-            collection="collection">
+            collection="collection"
+            set-method="addDefinition"
+            get-method="iterateDefinition">
             <bind-xml name="definition" node="element"/>
         </field>
     </class>
