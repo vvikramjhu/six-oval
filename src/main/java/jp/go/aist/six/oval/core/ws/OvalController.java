@@ -28,7 +28,10 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
+import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
+import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.v5.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.v5.results.OvalResults;
 import jp.go.aist.six.oval.model.v5.results.ResultsType;
@@ -255,6 +258,12 @@ public class OvalController
 
 
     //==============================================================
+    // /build_oval_definitions
+    //==============================================================
+
+
+
+    //==============================================================
     // /oval_definitions
     //==============================================================
 
@@ -351,6 +360,7 @@ public class OvalController
     // /oval_definitions/definitions
     //==============================================================
 
+    // about path variables including ".",
     // @see http://forum.springsource.org/showthread.php?78085-Problems-with-RequestMapping&p=263563
     @RequestMapping(
                     method=RequestMethod.GET
@@ -363,6 +373,66 @@ public class OvalController
     throws OvalException
     {
         return _getResource( DefinitionType.class, id );
+    }
+
+
+
+    // GET (query) /oval_definitions/definitions
+    //
+    // test: curl -v -X GET -HAccept:application/xml
+    //   http://localhost:8080/oval_repo/oval_definitions/definitions?platform=Debian%20GNU%2fLinux%205%2e0
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/oval_definitions/definitions"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody DefinitionsType findDefinition(
+                    final DefinitionQueryParams params
+                    )
+    throws OvalException
+    {
+        _LOG_.debug( "query params: " + params );
+
+        List<DefinitionType>  def_list = null;
+        try {
+            DAO<DefinitionType, String>  dao = _datastore.getDAO( DefinitionType.class );
+            Query<DefinitionType>  q = dao.createQuery();
+
+            String  definitionClass = params.getDefinitionClass();
+            if (definitionClass != null) {
+                q.filter( "class", ClassEnumeration.fromValue( definitionClass ) );
+            }
+
+            String  family = params.getFamily();
+            if (family != null) {
+                q.filter( "metadata.affected.family", FamilyEnumeration.fromValue( family ) );
+            }
+
+            String  platform = params.getPlatform();
+            if (platform != null) {
+                q.filter( "metadata.affected.platform", platform );
+            }
+
+            String  product = params.getProduct();
+            if (product != null) {
+                q.filter( "metadata.affected.product", product );
+            }
+
+            def_list = dao.find( q ).asList();
+            _LOG_.debug( "#definitions found: " + def_list.size() );
+        } catch (Exception ex) {
+            throw new OvalException( ex );
+        }
+
+        DefinitionsType  defs = new DefinitionsType();
+        if (def_list != null  &&  def_list.size() >0) {
+            for (DefinitionType  d : def_list) {
+                defs.addDefinition( d );
+            }
+        }
+        _LOG_.debug( "#definitions in response: " + defs.size() );
+
+        return defs;
     }
 
 
@@ -597,6 +667,90 @@ public class OvalController
         return results;
     }
 
+
+
+
+    // oval_definitions/definition
+    private static final class DefinitionQueryParams
+    {
+        private String  _definitionClass;
+        private String  _family;
+        private String  _platform;
+        private String  _product;
+
+
+        public DefinitionQueryParams()
+        {
+        }
+
+
+        public void setDefinitionClass(
+                        final String primary_host_name
+                        )
+        {
+            _definitionClass = primary_host_name;
+        }
+
+
+        public String getDefinitionClass()
+        {
+            return _definitionClass;
+        }
+
+
+        public void setFamily(
+                        final String family
+                        )
+        {
+            this._family = family;
+        }
+
+
+        public String getFamily()
+        {
+            return _family;
+        }
+
+
+        public void setPlatform(
+                        final String platform
+                        )
+        {
+            this._platform = platform;
+        }
+
+
+        public String getPlatform()
+        {
+            return _platform;
+        }
+
+
+        public void setProduct(
+                        final String product
+                        )
+        {
+            this._product = product;
+        }
+
+
+        public String getProduct()
+        {
+            return _product;
+        }
+
+
+        @Override
+        public String toString()
+        {
+            return "definitionClass=" + _definitionClass
+                 + ", family=" + _family
+                 + ", platform=" + _platform
+                 + ", product=" + _product
+            ;
+        }
+    }
+    //DefinitionQueryParams
 
 
 
