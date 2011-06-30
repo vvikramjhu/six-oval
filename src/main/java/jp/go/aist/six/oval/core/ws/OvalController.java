@@ -400,6 +400,7 @@ public class OvalController
 
             String  definitionClass = params.getDefinitionClass();
             if (definitionClass != null) {
+//                q.filter( "class", definitionClass );
                 q.filter( "class", ClassEnumeration.fromValue( definitionClass ) );
             }
 
