@@ -71,6 +71,11 @@ public class OvalController
     public static final String  RESULTS_REL     = "http://aist.go.jp/six/oval/rels/oval_results";
 
 
+    // " " space = %20
+    // "/" slash = %2f
+    // "." dot   = %2e
+    // "&" ampa  = %26
+
 
     /**
      * The data store sole instance.
@@ -123,6 +128,7 @@ public class OvalController
         }
         return uri;
     }
+
 
 
     /**
