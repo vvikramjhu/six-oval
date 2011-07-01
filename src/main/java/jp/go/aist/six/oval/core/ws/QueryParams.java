@@ -20,9 +20,7 @@
 
 package jp.go.aist.six.oval.core.ws;
 
-import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
-import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
-import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
+import java.util.Properties;
 import com.google.code.morphia.query.Query;
 
 
@@ -32,17 +30,38 @@ import com.google.code.morphia.query.Query;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionQueryParams
+public class QueryParams<T>
+extends Properties
 {
 
-    private String  _definitionClass;
-    private String  _family;
-    private String  _platform;
-    private String  _product;
+    public static final String  LIMIT = "limit";
+    public static final String  OFFSET = "offset";
+    public static final String  ORDER = "order";
+
+    public static final int  DEFAULT_LIMIT = 10;
+    public static final int  DEFAULT_OFFSET = 0;
 
 
-    public DefinitionQueryParams()
+    private static Properties _createDefaults()
     {
+        Properties  defaults = new Properties();
+        defaults.setProperty( LIMIT, String.valueOf( DEFAULT_LIMIT ) );
+        defaults.setProperty( OFFSET, String.valueOf( DEFAULT_OFFSET ) );
+
+        return defaults;
+    }
+
+    private static final Properties  _DEFAULTS_ = _createDefaults();
+
+
+
+
+    /**
+     * Constructor.
+     */
+    public QueryParams()
+    {
+        super( _DEFAULTS_ );
     }
 
 
@@ -50,99 +69,134 @@ public class DefinitionQueryParams
     /**
      */
     public void buildQuery(
-                    final Query<DefinitionType> query
+                    final Query<T> query
                     )
     {
-        String  definitionClass = getDefinitionClass();
-        if (definitionClass != null) {
-            query.filter( "class", ClassEnumeration.fromValue( definitionClass ) );
+        _buildDefaultQueryParams( query );
+    }
+
+
+
+    /**
+     */
+    protected void _buildDefaultQueryParams(
+                    final Query<T> query
+                    )
+    {
+        int  limit = _asInt( getLimit() );
+        query.limit( limit );
+
+        int  offset = _asInt( getOffset() );
+        if (offset != DEFAULT_OFFSET) {
+            query.offset( offset );
         }
 
-        String  family = getFamily();
-        if (family != null) {
-            query.filter( "metadata.affected.family", FamilyEnumeration.fromValue( family ) );
-        }
-
-        String  platform = getPlatform();
-        if (platform != null) {
-            query.filter( "metadata.affected.platform", platform );
-        }
-
-        String  product = getProduct();
-        if (product != null) {
-            query.filter( "metadata.affected.product", product );
+        String  order = getOrder();
+        if (order != null) {
+            query.order( order );
         }
     }
 
 
 
-    public void setDefinitionClass(
-                    final String primary_host_name
+    /**
+     */
+    protected void _buildFilterQueryParam(
+                    final Query<T> query,
+                    final String param
     )
     {
-        _definitionClass = primary_host_name;
+        String  value = getProperty( param );
+        if (value != null) {
+            query.filter( param, value );
+        }
     }
 
 
-    public String getDefinitionClass()
+
+    /**
+     */
+    protected int _asInt( final String value )
     {
-        return _definitionClass;
+        return Integer.valueOf( value ).intValue();
     }
 
 
-    public void setFamily(
-                    final String family
+
+    /**
+     * @param   limit
+     *  a maximum number of results to return.
+     */
+    public void setLimit(
+                    final String limit
     )
     {
-        this._family = family;
+        if (limit == null) {
+            //nothing
+        } else {
+            int  int_limit = Integer.valueOf( limit );
+            if (int_limit < 1) {
+                throw new IllegalArgumentException( "negative or zero limit" );
+            }
+        }
+
+        setProperty( LIMIT, limit );
     }
 
 
-    public String getFamily()
+    public String getLimit()
     {
-        return _family;
+        return getProperty( LIMIT );
     }
 
 
-    public void setPlatform(
-                    final String platform
+
+    /**
+     * @param   offset
+     *  at which object the service should begin returning results.
+     */
+    public void setOffset(
+                    final String offset
     )
     {
-        this._platform = platform;
+        if (offset == null) {
+            //nothing
+        } else {
+            int  int_offset = Integer.valueOf( offset );
+            if (int_offset < 0) {
+                throw new IllegalArgumentException( "negative offset" );
+            }
+        }
+
+        setProperty( OFFSET, offset );
     }
 
 
-    public String getPlatform()
+    public String getOffset()
     {
-        return _platform;
+        return getProperty( OFFSET );
     }
 
 
-    public void setProduct(
-                    final String product
+
+    /**
+     * @param   order
+     *  items be returned in a particular order.
+     *  The content must be comma-separated, e.g. "age,-date"
+     */
+    public void setOrder(
+                    final String order
     )
     {
-        this._product = product;
+        setProperty( ORDER, order );
     }
 
 
-    public String getProduct()
+    public String getOrder()
     {
-        return _product;
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return "definitionClass=" + _definitionClass
-           + ", family=" + _family
-           + ", platform=" + _platform
-           + ", product=" + _product
-           ;
+        return getProperty( ORDER );
     }
 
 }
-//DefinitionQueryParams
+// QueryParams
 
