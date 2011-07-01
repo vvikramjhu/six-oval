@@ -23,8 +23,6 @@ package jp.go.aist.six.oval.core.ws;
 import java.util.List;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
-import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
-import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.v5.results.OvalResults;
@@ -186,26 +184,27 @@ public class MongoOvalService
         try {
             DAO<DefinitionType, String>  dao = _datastore.getDAO( DefinitionType.class );
             Query<DefinitionType>  q = dao.createQuery();
+            params.buildQuery( q );
 
-            String  definitionClass = params.getDefinitionClass();
-            if (definitionClass != null) {
-                q.filter( "class", ClassEnumeration.fromValue( definitionClass ) );
-            }
-
-            String  family = params.getFamily();
-            if (family != null) {
-                q.filter( "metadata.affected.family", FamilyEnumeration.fromValue( family ) );
-            }
-
-            String  platform = params.getPlatform();
-            if (platform != null) {
-                q.filter( "metadata.affected.platform", platform );
-            }
-
-            String  product = params.getProduct();
-            if (product != null) {
-                q.filter( "metadata.affected.product", product );
-            }
+//            String  definitionClass = params.getDefinitionClass();
+//            if (definitionClass != null) {
+//                q.filter( "class", ClassEnumeration.fromValue( definitionClass ) );
+//            }
+//
+//            String  family = params.getFamily();
+//            if (family != null) {
+//                q.filter( "metadata.affected.family", FamilyEnumeration.fromValue( family ) );
+//            }
+//
+//            String  platform = params.getPlatform();
+//            if (platform != null) {
+//                q.filter( "metadata.affected.platform", platform );
+//            }
+//
+//            String  product = params.getProduct();
+//            if (product != null) {
+//                q.filter( "metadata.affected.product", product );
+//            }
 
             def_list = dao.find( q ).asList();
             _LOG_.debug( "#definitions found: " + def_list.size() );

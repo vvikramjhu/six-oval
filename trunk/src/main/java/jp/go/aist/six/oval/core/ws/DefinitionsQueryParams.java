@@ -20,6 +20,11 @@
 
 package jp.go.aist.six.oval.core.ws;
 
+import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
+import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
+import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
+import com.google.code.morphia.query.Query;
+
 
 
 
@@ -39,6 +44,36 @@ public class DefinitionsQueryParams
     public DefinitionsQueryParams()
     {
     }
+
+
+
+    /**
+     */
+    public void buildQuery(
+                    final Query<DefinitionType> query
+                    )
+    {
+        String  definitionClass = getDefinitionClass();
+        if (definitionClass != null) {
+            query.filter( "class", ClassEnumeration.fromValue( definitionClass ) );
+        }
+
+        String  family = getFamily();
+        if (family != null) {
+            query.filter( "metadata.affected.family", FamilyEnumeration.fromValue( family ) );
+        }
+
+        String  platform = getPlatform();
+        if (platform != null) {
+            query.filter( "metadata.affected.platform", platform );
+        }
+
+        String  product = getProduct();
+        if (product != null) {
+            query.filter( "metadata.affected.product", product );
+        }
+    }
+
 
 
     public void setDefinitionClass(
