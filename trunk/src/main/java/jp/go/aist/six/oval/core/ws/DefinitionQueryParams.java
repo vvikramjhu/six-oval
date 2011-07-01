@@ -32,7 +32,7 @@ import com.google.code.morphia.query.Query;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionsQueryParams
+public class DefinitionQueryParams
 {
 
     private String  _definitionClass;
@@ -41,7 +41,7 @@ public class DefinitionsQueryParams
     private String  _product;
 
 
-    public DefinitionsQueryParams()
+    public DefinitionQueryParams()
     {
     }
 

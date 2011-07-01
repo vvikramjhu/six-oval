@@ -173,8 +173,8 @@ public class MongoOvalService
     //==============================================================
 
     // GET (query) /oval_definitions/definitions
-    public DefinitionsType findDefinitions(
-                    final DefinitionsQueryParams params
+    public DefinitionsType findDefinition(
+                    final DefinitionQueryParams params
                     )
     throws OvalException
     {
