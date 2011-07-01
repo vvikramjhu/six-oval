@@ -21,24 +21,16 @@
 package jp.go.aist.six.oval.core.ws;
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
-import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
-import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.v5.results.OvalResults;
 import jp.go.aist.six.oval.model.v5.results.ResultsType;
-import jp.go.aist.six.oval.model.v5.results.SystemType;
-import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.util.persist.Persistable;
-import jp.go.aist.six.util.persist.PersistenceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -56,10 +48,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.util.UriTemplate;
 import com.google.code.morphia.Key;
-import com.google.code.morphia.dao.DAO;
-import com.google.code.morphia.query.Query;
 import com.sun.syndication.feed.atom.Feed;
-import com.sun.syndication.feed.atom.Link;
 
 
 
@@ -78,11 +67,19 @@ public class OvalController
         LoggerFactory.getLogger( OvalController.class );
 
 
+    public static final String  DEFINITIONS_REL = "http://aist.go.jp/six/oval/rels/oval_definitions";
+    public static final String  RESULTS_REL     = "http://aist.go.jp/six/oval/rels/oval_results";
+
+
 
     /**
      * The data store sole instance.
      */
     private MongoDatastore  _datastore;
+
+
+    private MongoOvalService  _service;
+
 
 
 
@@ -102,6 +99,9 @@ public class OvalController
                     )
     {
         _datastore = datastore;
+
+        _service = new MongoOvalService();
+        _service.setDatastore( _datastore );
     }
 
 
@@ -137,49 +137,13 @@ public class OvalController
     {
         _LOG_.debug( "type=" + type + ", id=" + id );
 
-        T  p_object = null;
-        try {
-            p_object = _datastore.load( type, id );
-        } catch (PersistenceException ex) {
-            throw new OvalException( ex );
-        }
+        T  resource = _service.getObject( type, id );
 
 //        HttpHeaders  headers = new HttpHeaders();
 //        _LOG_.debug( "HTTP response headers=" + headers );
 
-        return p_object;
+        return resource;
     }
-
-
-
-    /**
-     * Find the OVAL resource IDs.
-     */
-    private <K, T extends Persistable<K>>
-    List<Key<T>> _getResourceIds(
-                    final Class<T> type
-                    )
-    throws OvalException
-    {
-        _LOG_.debug( "type=" + type );
-
-        List<Key<T>>  ids = null;
-        try {
-            DAO<T, K>  dao = _datastore.getDAO( type );
-            ids = dao.find().asKeyList(); //dao.findIds();
-//            ids = dao.findIds();
-        } catch (PersistenceException ex) {
-            throw new OvalException( ex );
-        }
-
-
-//        HttpHeaders  headers = new HttpHeaders();
-//        _LOG_.debug( "HTTP response headers=" + headers );
-
-        return ids;
-    }
-
-
 
 
 
@@ -194,14 +158,7 @@ public class OvalController
                     )
     throws OvalException
     {
-        _LOG_.debug( "type=" + type + ", object=" + object );
-
-        K  id = null;
-        try {
-            id = _datastore.create( type, object );
-        } catch (PersistenceException ex) {
-            throw new OvalException( ex );
-        }
+        K  id = _service.createObject( type, object );
 
         HttpHeaders  headers = new HttpHeaders();
         headers.setLocation( _buildLocation( request, String.valueOf( id ) ) );
@@ -297,43 +254,22 @@ public class OvalController
                     )
     throws OvalException
     {
-//        DAO<OvalDefinitions, String>  dao = _datastore.getDAO( OvalDefinitions.class );
-//        List<Key<OvalDefinitions>>  ids = dao.find().asKeyList(); //dao.findIds();
-        List<Key<OvalDefinitions>>  ids = _getResourceIds( OvalDefinitions.class );
+        List<Key<OvalDefinitions>>  ids = _service.getObjectIDs( OvalDefinitions.class );
         if (ids == null) {
             _LOG_.debug( "oval_definitions: #ids=0" );
         } else {
             _LOG_.debug( "oval_definitions: #ids=" + ids.size() );
         }
 
-        Feed  feed = new Feed( "atom_1.0" );
-        feed.setId( "urn:guid:" + UUID.randomUUID().toString() );
-        feed.setTitle( "oval_definitions" );
-        feed.setUpdated( new Date() );
-
-        if (ids != null  &&  ids.size() > 0) {
-            String  rel = "http://six.org/rels/oval_definitions";
-
-            List<Link>  links = new ArrayList<Link>();
-//          for (Key<OvalDefinitions>  id : ids) {
-            for (int  i = 0; i < ids.size(); i++) {
-                Key<OvalDefinitions>  id = ids.get( i );
-                _LOG_.debug( "oval_definitions: id=" + id );
-
-                URI  uri = _buildLocation( request, String.valueOf( id.getId() ) );
-                Link  link = new Link();
-                link.setRel( rel );
-                link.setHref( uri.toASCIIString() );
-
-                links.add( link );
-            }
-
-            feed.setOtherLinks( links );
-        };
+        Feed  feed = FeedHelper.buildAtomFeed(
+                        "oval_definitions",
+                        request.getRequestURL().toString(),
+                        DEFINITIONS_REL,
+                        ids
+                        );
 
         return feed;
     }
-
 
 
 
@@ -387,53 +323,11 @@ public class OvalController
                     ,headers="Accept=application/xml"
     )
     public @ResponseBody DefinitionsType findDefinition(
-                    final DefinitionQueryParams params
+                    final DefinitionsQueryParams params
                     )
     throws OvalException
     {
-        _LOG_.debug( "query params: " + params );
-
-        List<DefinitionType>  def_list = null;
-        try {
-            DAO<DefinitionType, String>  dao = _datastore.getDAO( DefinitionType.class );
-            Query<DefinitionType>  q = dao.createQuery();
-
-            String  definitionClass = params.getDefinitionClass();
-            if (definitionClass != null) {
-//                q.filter( "class", definitionClass );
-                q.filter( "class", ClassEnumeration.fromValue( definitionClass ) );
-            }
-
-            String  family = params.getFamily();
-            if (family != null) {
-                q.filter( "metadata.affected.family", FamilyEnumeration.fromValue( family ) );
-            }
-
-            String  platform = params.getPlatform();
-            if (platform != null) {
-                q.filter( "metadata.affected.platform", platform );
-            }
-
-            String  product = params.getProduct();
-            if (product != null) {
-                q.filter( "metadata.affected.product", product );
-            }
-
-            def_list = dao.find( q ).asList();
-            _LOG_.debug( "#definitions found: " + def_list.size() );
-        } catch (Exception ex) {
-            throw new OvalException( ex );
-        }
-
-        DefinitionsType  defs = new DefinitionsType();
-        if (def_list != null  &&  def_list.size() >0) {
-            for (DefinitionType  d : def_list) {
-                defs.addDefinition( d );
-            }
-        }
-        _LOG_.debug( "#definitions in response: " + defs.size() );
-
-        return defs;
+        return _service.findDefinitions( params );
     }
 
 
@@ -600,182 +494,8 @@ public class OvalController
                     )
     throws OvalException
     {
-        return _searchResults( primary_host_name );
+        return _service.findResults( primary_host_name );
     }
-
-
-
-    private ResultsType _searchResults(
-                    final String primary_host_name
-                    )
-    throws OvalException
-    {
-        _LOG_.debug( "primary_host_name=" + primary_host_name );
-
-        // (1) searches SC keys
-        List<Key<OvalSystemCharacteristics>>  sc_keys = null;
-        try {
-            DAO<OvalSystemCharacteristics, String>  dao = _datastore.getDAO( OvalSystemCharacteristics.class );
-            Query<OvalSystemCharacteristics>  q = dao.createQuery()
-            .filter( "system_info.primary_host_name", primary_host_name );
-
-            sc_keys = dao.find( q ).asKeyList();
-        } catch (Exception ex) {
-            throw new OvalException( ex );
-        }
-        _LOG_.debug( "SC keys: " + sc_keys );
-
-        ResultsType  results = new ResultsType();
-        try {
-            DAO<OvalResults, String>  dao = _datastore.getDAO( OvalResults.class );
-            List<OvalResults>  qr = dao.createQuery()
-            .field( "results.system.oval_system_characteristics" ).hasAnyOf( sc_keys ).asList();
-            for (OvalResults  r : qr) {
-                _LOG_.debug( "OvalResults: pid=" + r.getPersistentID() );
-                ResultsType  rs = r.getResults();
-                if (rs != null  &&  rs.size() > 0) {
-                    for (SystemType  s : rs.getSystem()) {
-                        _LOG_.debug( "  system: " + s.getOvalSystemCharacteristics().getSystemInfo() );
-                        results.addSystem( s );
-                    }
-                }
-            }
-
-
-//            for (Key<OvalSystemCharacteristics>  sc_key : sc_keys) {
-//                List<OvalResults>  qr = dao.createQuery()
-//                .filter( "results.system.oval_system_characteristics", sc_key ).retrievedFields( true, "reults.system" ).asList();
-//
-//                for (OvalResults  r : qr) {
-//                    _LOG_.debug( "OvalResults: pid=" + r.getPersistentID() );
-//                    ResultsType  rs = r.getResults();
-//                    if (rs != null  &&  rs.size() > 0) {
-//                        for (SystemType  s : rs.getSystem()) {
-//                            _LOG_.debug( "  system: " + s.getOvalSystemCharacteristics().getSystemInfo() );
-//                            results.addSystem( s );
-//                        }
-//                    }
-//                }
-//            }
-
-        } catch (PersistenceException ex) {
-            throw new OvalException( ex );
-        }
-
-//        HttpHeaders  headers = new HttpHeaders();
-//        _LOG_.debug( "HTTP response headers=" + headers );
-
-        return results;
-    }
-
-
-
-
-    // oval_definitions/definition
-    private static final class DefinitionQueryParams
-    {
-        private String  _definitionClass;
-        private String  _family;
-        private String  _platform;
-        private String  _product;
-
-
-        public DefinitionQueryParams()
-        {
-        }
-
-
-        public void setDefinitionClass(
-                        final String primary_host_name
-                        )
-        {
-            _definitionClass = primary_host_name;
-        }
-
-
-        public String getDefinitionClass()
-        {
-            return _definitionClass;
-        }
-
-
-        public void setFamily(
-                        final String family
-                        )
-        {
-            this._family = family;
-        }
-
-
-        public String getFamily()
-        {
-            return _family;
-        }
-
-
-        public void setPlatform(
-                        final String platform
-                        )
-        {
-            this._platform = platform;
-        }
-
-
-        public String getPlatform()
-        {
-            return _platform;
-        }
-
-
-        public void setProduct(
-                        final String product
-                        )
-        {
-            this._product = product;
-        }
-
-
-        public String getProduct()
-        {
-            return _product;
-        }
-
-
-        @Override
-        public String toString()
-        {
-            return "definitionClass=" + _definitionClass
-                 + ", family=" + _family
-                 + ", platform=" + _platform
-                 + ", product=" + _product
-            ;
-        }
-    }
-    //DefinitionQueryParams
-
-
-
-    private static class SystemProperties
-    {
-        private String  _priary_host_name;
-
-
-
-        public void setPrimaryHostName(
-                        final String primary_host_name
-                        )
-        {
-            _priary_host_name = primary_host_name;
-        }
-
-
-        public String getPrimaryHostName()
-        {
-            return _priary_host_name;
-        }
-
-    }
-
 
 }
 // OvalController
