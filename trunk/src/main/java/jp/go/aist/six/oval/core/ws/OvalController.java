@@ -255,7 +255,7 @@ public class OvalController
                     ,value="/oval_definitions"
                     ,headers="Accept=application/atom+xml"
     )
-    public @ResponseBody Feed getOvalDefinitions(
+    public @ResponseBody Feed listOvalDefinitions(
                     final HttpServletRequest request
                     )
     throws OvalException

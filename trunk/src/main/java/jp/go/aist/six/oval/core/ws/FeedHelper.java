@@ -26,7 +26,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import jp.go.aist.six.oval.OvalException;
-import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.util.UriTemplate;
@@ -76,11 +75,11 @@ public class FeedHelper
 
     /**
      */
-    public static Feed buildAtomFeed(
+    public static <T> Feed buildAtomFeed(
                     final String title,
                     final String baseUri,
                     final String rel,
-                    final List<Key<OvalDefinitions>> ids
+                    final List<Key<T>> ids
                     )
     throws OvalException
     {
@@ -88,12 +87,10 @@ public class FeedHelper
 
         if (ids != null  &&  ids.size() > 0) {
             List<Link>  links = new ArrayList<Link>();
-//          for (Key<OvalDefinitions>  id : ids) {  //TODO: doesn't work????
-            for (int  i = 0; i < ids.size(); i++) {
-                Key<?>  id = ids.get( i );
+          for (Key<T>  id : ids) {
                 _LOG_.debug( "link: id=" + id );
 
-                URI  uri = new UriTemplate( "{baseUri}/{id}" ).expand( baseUri, id );
+                URI  uri = new UriTemplate( "{baseUri}/{id}" ).expand( baseUri, id.getId() );
                 Link  link = new Link();
                 link.setRel( rel );
                 link.setHref( uri.toASCIIString() );
