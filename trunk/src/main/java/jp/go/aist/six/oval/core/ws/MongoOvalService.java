@@ -322,6 +322,37 @@ public class MongoOvalService
 
 
 
+    // GET (query) /oval_results/results
+    public ResultsType findResults(
+                    final ResultsQueryParams params
+                    )
+    throws OvalException
+    {
+        _LOG_.debug( "query params: " + params );
+
+        List<SystemType>  result_list = null;
+        try {
+            DAO<SystemType, String>  dao = _datastore.getDAO( SystemType.class );
+            Query<SystemType>  q = dao.createQuery();
+            params.buildQuery( q );
+
+            result_list = dao.find( q ).asList();
+            _LOG_.debug( "#results found: " + result_list.size() );
+        } catch (Exception ex) {
+            throw new OvalException( ex );
+        }
+
+        ResultsType  results = new ResultsType();
+        if (result_list != null  &&  result_list.size() > 0) {
+            for (SystemType  d : result_list) {
+                results.addSystem( d );
+            }
+        }
+        _LOG_.debug( "#results in results: " + results.size() );
+
+        return results;
+    }
+
 }
 // MongoOvalService
 
