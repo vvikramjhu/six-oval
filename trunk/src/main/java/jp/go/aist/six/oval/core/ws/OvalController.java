@@ -247,7 +247,7 @@ public class OvalController
 
 
 
-    // GET (read) oval_definitions
+    // GET (list) oval_definitions
     //
     // test: curl -v -X GET -HAccept:application/atom+xml http://localhost:8080/oval_repo/oval_definitions
     @RequestMapping(
@@ -255,7 +255,7 @@ public class OvalController
                     ,value="/oval_definitions"
                     ,headers="Accept=application/atom+xml"
     )
-    public @ResponseBody Feed listOvalDefinitions(
+    public @ResponseBody Feed findOvalDefinitions(
                     final HttpServletRequest request
                     )
     throws OvalException
@@ -278,6 +278,10 @@ public class OvalController
     }
 
 
+
+    //==============================================================
+    // /oval_definitions/{id}
+    //==============================================================
 
     // GET (read) oval_definitions
     //
@@ -302,6 +306,31 @@ public class OvalController
     // /oval_definitions/definitions
     //==============================================================
 
+    // GET (query) /oval_definitions/definitions
+    //
+    // test: curl -v -X GET -HAccept:application/xml http://localhost:8080/oval_repo/oval_definitions/definitions?platform=Debian%20GNU%2fLinux%205%2e0
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/oval_definitions/definitions"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody DefinitionsType findDefinitions(
+                    final DefinitionQueryParams params
+                    )
+    throws OvalException
+    {
+        return _service.findDefinition( params );
+    }
+
+
+
+    //==============================================================
+    // /oval_definitions/definitions/{id}
+    //==============================================================
+
+
+    // GET /oval_definitions/definitions/{id}
+    //
     // about path variables including ".",
     // @see http://forum.springsource.org/showthread.php?78085-Problems-with-RequestMapping&p=263563
     @RequestMapping(
@@ -316,25 +345,6 @@ public class OvalController
     {
         return _getResource( DefinitionType.class, id );
     }
-
-
-
-    // GET (query) /oval_definitions/definitions
-    //
-    // test: curl -v -X GET -HAccept:application/xml http://localhost:8080/oval_repo/oval_definitions/definitions?platform=Debian%20GNU%2fLinux%205%2e0
-    @RequestMapping(
-                    method=RequestMethod.GET
-                    ,value="/oval_definitions/definitions"
-                    ,headers="Accept=application/xml"
-    )
-    public @ResponseBody DefinitionsType findDefinition(
-                    final DefinitionQueryParams params
-                    )
-    throws OvalException
-    {
-        return _service.findDefinition( params );
-    }
-
 
 
 
@@ -432,29 +442,15 @@ public class OvalController
 
 
     //==============================================================
-    // Results
+    // /oval_results
     //==============================================================
 
-//    @RequestMapping(
-//                    method=RequestMethod.GET
-//                    ,value="/oval_results/{id}"
-//                    ,headers="Accept=application/xml"
-//    )
-//    public @ResponseBody OvalResults getOvalResults(
-//                    @PathVariable final String id
-//                    )
-//    throws OvalException
-//    {
-//        return _getResource( OvalResults.class, id );
-//    }
-
-
-
+    // POST /oval_results
+    //
     // Example:
     // >curl -v -X POST -HContent-Type:application/xml
     //  --data-binary @oval-results.xml
     //  http://localhost:8080/oval_repo/oval_results
-
     @RequestMapping(
                     method=RequestMethod.POST
                     ,value="/oval_results"
@@ -471,7 +467,43 @@ public class OvalController
 
 
 
-    // GET oval_results by ID
+    // GET (list) /oval_results
+    //
+    // test: curl -v -X GET -HAccept:application/atom+xml http://localhost:8080/oval_repo/oval_results
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/oval_results"
+                    ,headers="Accept=application/atom+xml"
+    )
+    public @ResponseBody Feed findOvalResults(
+                    final HttpServletRequest request
+                    )
+    throws OvalException
+    {
+        List<Key<OvalResults>>  ids = _service.getObjectIDs( OvalResults.class );
+        if (ids == null) {
+            _LOG_.debug( "oval_results: #ids=0" );
+        } else {
+            _LOG_.debug( "oval_results: #ids=" + ids.size() );
+        }
+
+        Feed  feed = FeedHelper.buildAtomFeed(
+                        "oval_results",
+                        request.getRequestURL().toString(),
+                        RESULTS_REL,
+                        ids
+                        );
+
+        return feed;
+    }
+
+
+
+
+    //==============================================================
+    // /oval_results/{id}
+    //==============================================================
+
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/oval_results/{id}"
