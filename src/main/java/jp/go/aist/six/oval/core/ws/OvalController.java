@@ -43,7 +43,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.util.UriTemplate;
@@ -527,12 +526,19 @@ public class OvalController
                     ,headers="Accept=application/xml"
     )
     public @ResponseBody ResultsType getResults(
-                    @RequestParam final String primary_host_name
+                    final ResultsQueryParams params
                     )
     throws OvalException
     {
-        return _service.findResults( primary_host_name );
+        return _service.findResults( params );
     }
+//    public @ResponseBody ResultsType getResults(
+//                    @RequestParam final String primary_host_name
+//                    )
+//    throws OvalException
+//    {
+//        return _service.findResults( primary_host_name );
+//    }
 
 }
 // OvalController

@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.ws;
 
-import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.v5.results.SystemType;
 import com.google.code.morphia.query.Query;
 
 
@@ -51,7 +51,7 @@ public class ResultsQueryParams
 
 
     public void buildQuery(
-                    final Query<DefinitionType> query
+                    final Query<SystemType> query
                     )
     {
         _params.buildQuery( query );
@@ -76,6 +76,23 @@ public class ResultsQueryParams
 
 
 
+    /**
+     */
+    public void setOsName(
+                    final String os_name
+    )
+    {
+        _params.setProperty( OS_NAME, os_name );
+    }
+
+
+    public String getOsName()
+    {
+        return _params.getProperty( OS_NAME );
+    }
+
+
+
     @Override
     public String toString()
     {
@@ -89,7 +106,7 @@ public class ResultsQueryParams
     //==============================================================
 
     private static class Params
-    extends QueryParams<DefinitionType>
+    extends QueryParams<SystemType>
     {
 
         //**********************************************************
@@ -98,7 +115,7 @@ public class ResultsQueryParams
 
         @Override
         public void buildQuery(
-                        final Query<DefinitionType> query
+                        final Query<SystemType> query
                         )
         {
             _buildFilterQueryParam( query, PRIMARY_HOST_NAME );
