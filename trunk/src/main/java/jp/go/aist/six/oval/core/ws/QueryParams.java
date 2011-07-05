@@ -30,29 +30,32 @@ import com.google.code.morphia.query.Query;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class QueryParams<T>
-extends Properties
+public abstract class QueryParams<T>
+//extends Properties
 {
 
-    public static final String  LIMIT = "limit";
+    public static final String  LIMIT  = "limit";
     public static final String  OFFSET = "offset";
-    public static final String  ORDER = "order";
+    public static final String  ORDER  = "order";
 
-    public static final int  DEFAULT_LIMIT = 10;
-    public static final int  DEFAULT_OFFSET = 0;
+    public static final String  DEFAULT_LIMIT = "10";
+//    public static final String  DEFAULT_OFFSET = "0";
 
 
-    private static Properties _createDefaults()
-    {
-        Properties  defaults = new Properties();
-        defaults.setProperty( LIMIT, String.valueOf( DEFAULT_LIMIT ) );
-        defaults.setProperty( OFFSET, String.valueOf( DEFAULT_OFFSET ) );
+//    protected static Properties _createDefaults()
+//    {
+//        Properties  defaults = new Properties();
+//        defaults.setProperty( LIMIT, DEFAULT_LIMIT );
+////        defaults.setProperty( OFFSET, DEFAULT_OFFSET );
+//
+//        return defaults;
+//    }
 
-        return defaults;
-    }
+//    private static final Properties  _DEFAULTS_ = _createDefaults();
 
-    private static final Properties  _DEFAULTS_ = _createDefaults();
 
+
+    private final Properties  _params = new Properties();
 
 
 
@@ -61,10 +64,72 @@ extends Properties
      */
     public QueryParams()
     {
-        super( _DEFAULTS_ );
     }
 
 
+
+    //==============================================================
+    //  key-value handling
+    //==============================================================
+
+    /**
+     */
+    protected void _setParam(
+                    final String key,
+                    final String value
+                    )
+    {
+        _params.setProperty( key, value );
+    }
+
+
+    protected String _getParam(
+                    final String key
+                    )
+    {
+        return _params.getProperty( key );
+    }
+
+
+    protected String _getParam(
+                    final String key,
+                    final String defaultValue
+                    )
+    {
+        return _params.getProperty( key, defaultValue );
+    }
+
+
+//    protected int _getIntParam(
+//                    final String key
+//                    )
+//    {
+//        String  value = _getParam( key );
+//        if (value == null) {
+//            throw new IllegalArgumentException( "no such param: " + key );
+//        }
+//
+//        return Integer.valueOf( value ).intValue();
+//    }
+
+
+
+    /**
+     */
+    protected int _asInt(
+                    final String value
+                    )
+    {
+        return Integer.valueOf( value ).intValue();
+                       //throws NumberFormatException (runtime)
+    }
+
+
+
+
+    //==============================================================
+    //  Query building
+    //==============================================================
 
     /**
      */
@@ -72,29 +137,9 @@ extends Properties
                     final Query<T> query
                     )
     {
-        _buildDefaultQueryParams( query );
-    }
-
-
-
-    /**
-     */
-    protected void _buildDefaultQueryParams(
-                    final Query<T> query
-                    )
-    {
-        int  limit = _asInt( getLimit() );
-        query.limit( limit );
-
-        int  offset = _asInt( getOffset() );
-        if (offset != DEFAULT_OFFSET) {
-            query.offset( offset );
-        }
-
-        String  order = getOrder();
-        if (order != null) {
-            query.order( order );
-        }
+        _buildLimit( query );
+        _buildOffset( query );
+        _buildOrder( query );
     }
 
 
@@ -106,7 +151,7 @@ extends Properties
                     final String param
     )
     {
-        String  value = getProperty( param );
+        String  value = _getParam( param );
         if (value != null) {
             query.filter( param, value );
         }
@@ -114,14 +159,9 @@ extends Properties
 
 
 
-    /**
-     */
-    protected int _asInt( final String value )
-    {
-        return Integer.valueOf( value ).intValue();
-    }
-
-
+    //==============================================================
+    //  common params
+    //==============================================================
 
     /**
      * @param   limit
@@ -131,22 +171,27 @@ extends Properties
                     final String limit
     )
     {
-        if (limit == null) {
-            //nothing
-        } else {
-            int  int_limit = Integer.valueOf( limit );
-            if (int_limit < 1) {
-                throw new IllegalArgumentException( "negative or zero limit" );
+        if (limit != null) {
+            if (_asInt( limit ) < 1) {
+                throw new IllegalArgumentException( "negative or zero limit: " + limit );
             }
+            _setParam( LIMIT, limit );
         }
-
-        setProperty( LIMIT, limit );
     }
 
 
     public String getLimit()
     {
-        return getProperty( LIMIT );
+        return _getParam( LIMIT, DEFAULT_LIMIT );
+    }
+
+
+    protected void _buildLimit(
+                    final Query<T> query
+                    )
+    {
+        int  limit = _asInt( getLimit() );
+        query.limit( limit );
     }
 
 
@@ -159,22 +204,30 @@ extends Properties
                     final String offset
     )
     {
-        if (offset == null) {
-            //nothing
-        } else {
-            int  int_offset = Integer.valueOf( offset );
-            if (int_offset < 0) {
-                throw new IllegalArgumentException( "negative offset" );
+        if (offset != null) {
+            if (_asInt( offset ) < 0) {
+                throw new IllegalArgumentException( "negative offset: " + offset );
             }
+            _setParam( OFFSET, offset );
         }
 
-        setProperty( OFFSET, offset );
     }
 
 
     public String getOffset()
     {
-        return getProperty( OFFSET );
+        return _getParam( OFFSET );
+    }
+
+
+    protected void _buildOffset(
+                    final Query<T> query
+                    )
+    {
+        String  offset = getOffset();
+        if (offset != null) {
+            query.offset( _asInt( offset ) );
+        }
     }
 
 
@@ -188,13 +241,36 @@ extends Properties
                     final String order
     )
     {
-        setProperty( ORDER, order );
+        _setParam( ORDER, order );
     }
 
 
     public String getOrder()
     {
-        return getProperty( ORDER );
+        return _getParam( ORDER );
+    }
+
+
+    protected void _buildOrder(
+                    final Query<T> query
+                    )
+    {
+        String  order = getOrder();
+        if (order != null) {
+            query.order( order );
+        }
+    }
+
+
+
+    //**************************************************************
+    //  java.lang.Object
+    //**************************************************************
+
+    @Override
+    public String toString()
+    {
+        return _params.toString();
     }
 
 }
