@@ -205,6 +205,34 @@ public class MongoOvalService
 
 
 
+    //==============================================================
+    // /oval_system_characteristics
+    //==============================================================
+
+    // GET (query) /oval_system_characteristics
+    public List<Key<OvalSystemCharacteristics>> findOvalSystemCharacteristics(
+                    final OvalSystemCharacteristicsQueryParams params
+                    )
+    throws OvalException
+    {
+        _LOG_.debug( "query params: " + params );
+
+        List<Key<OvalSystemCharacteristics>>  list = null;
+        try {
+            DAO<OvalSystemCharacteristics, String>  dao = _datastore.getDAO( OvalSystemCharacteristics.class );
+            Query<OvalSystemCharacteristics>  q = dao.createQuery();
+            params.buildQuery( q );
+
+            list = dao.find( q ).asKeyList();
+            _LOG_.debug( "#oval_system_characteristics found: " + list.size() );
+        } catch (Exception ex) {
+            throw new OvalException( ex );
+        }
+
+        return list;
+    }
+
+
 
     //==============================================================
     // Results

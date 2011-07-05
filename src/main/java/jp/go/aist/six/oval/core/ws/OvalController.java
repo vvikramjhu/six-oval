@@ -30,6 +30,7 @@ import jp.go.aist.six.oval.model.v5.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.v5.results.OvalResults;
 import jp.go.aist.six.oval.model.v5.results.ResultsType;
+import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.util.persist.Persistable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,6 +68,7 @@ public class OvalController
 
 
     public static final String  DEFINITIONS_REL = "http://aist.go.jp/six/oval/rels/oval_definitions";
+    public static final String  SC_REL          = "http://aist.go.jp/six/oval/rels/oval_system_characteristics";
     public static final String  RESULTS_REL     = "http://aist.go.jp/six/oval/rels/oval_results";
 
 
@@ -406,9 +408,42 @@ public class OvalController
 
 
 
-//    //==============================================================
-//    // System Characteristics
-//    //==============================================================
+    //==============================================================
+    // System Characteristics
+    //==============================================================
+
+    // GET (list) oval_system_characteristics
+    //
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/oval_system_characteristics"
+                    ,headers="Accept=application/atom+xml"
+    )
+    public @ResponseBody Feed findOvalSystemCharacteristics(
+                    final HttpServletRequest request,
+                    final OvalSystemCharacteristicsQueryParams params
+                    )
+    throws OvalException
+    {
+        List<Key<OvalSystemCharacteristics>>  ids = _service.findOvalSystemCharacteristics( params );
+        if (ids == null) {
+            _LOG_.debug( "oval_sc: #ids=0" );
+        } else {
+            _LOG_.debug( "oval_sc: #ids=" + ids.size() );
+        }
+
+        Feed  feed = FeedHelper.buildAtomFeed(
+                        "oval_system_characteristics",
+                        request.getRequestURL().toString(),
+                        SC_REL,
+                        ids
+                        );
+
+        return feed;
+    }
+
+
+
 //
 //    @RequestMapping(
 //                    method=RequestMethod.GET
