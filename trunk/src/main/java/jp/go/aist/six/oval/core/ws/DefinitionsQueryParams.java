@@ -31,7 +31,7 @@ import com.google.code.morphia.query.Query;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionQueryParams
+public class DefinitionsQueryParams
 {
 
     public static final String  DEFINITION_CLASS    = "class";
@@ -51,7 +51,7 @@ public class DefinitionQueryParams
     /**
      * Constructor.
      */
-    public DefinitionQueryParams()
+    public DefinitionsQueryParams()
     {
     }
 
