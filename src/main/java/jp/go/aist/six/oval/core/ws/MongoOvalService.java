@@ -173,8 +173,8 @@ public class MongoOvalService
     //==============================================================
 
     // GET (query) /oval_definitions/definitions
-    public DefinitionsType findDefinition(
-                    final DefinitionQueryParams params
+    public DefinitionsType findDefinitions(
+                    final DefinitionsQueryParams params
                     )
     throws OvalException
     {
@@ -185,26 +185,6 @@ public class MongoOvalService
             DAO<DefinitionType, String>  dao = _datastore.getDAO( DefinitionType.class );
             Query<DefinitionType>  q = dao.createQuery();
             params.buildQuery( q );
-
-//            String  definitionClass = params.getDefinitionClass();
-//            if (definitionClass != null) {
-//                q.filter( "class", ClassEnumeration.fromValue( definitionClass ) );
-//            }
-//
-//            String  family = params.getFamily();
-//            if (family != null) {
-//                q.filter( "metadata.affected.family", FamilyEnumeration.fromValue( family ) );
-//            }
-//
-//            String  platform = params.getPlatform();
-//            if (platform != null) {
-//                q.filter( "metadata.affected.platform", platform );
-//            }
-//
-//            String  product = params.getProduct();
-//            if (product != null) {
-//                q.filter( "metadata.affected.product", product );
-//            }
 
             def_list = dao.find( q ).asList();
             _LOG_.debug( "#definitions found: " + def_list.size() );

@@ -314,11 +314,11 @@ public class OvalController
                     ,headers="Accept=application/xml"
     )
     public @ResponseBody DefinitionsType findDefinitions(
-                    final DefinitionQueryParams params
+                    final DefinitionsQueryParams params
                     )
     throws OvalException
     {
-        return _service.findDefinition( params );
+        return _service.findDefinitions( params );
     }
 
 
