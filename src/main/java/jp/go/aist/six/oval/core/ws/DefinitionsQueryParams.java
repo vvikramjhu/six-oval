@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.core.ws;
 
-import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import com.google.code.morphia.query.Query;
 
@@ -32,6 +31,7 @@ import com.google.code.morphia.query.Query;
  * @version $Id$
  */
 public class DefinitionsQueryParams
+extends QueryParams<DefinitionType>
 {
 
     public static final String  DEFINITION_CLASS    = "class";
@@ -39,7 +39,7 @@ public class DefinitionsQueryParams
     public static final String  PLATFORM            = "metadata.affected.platform";
     public static final String  PRODUCT             = "metadata.affected.product";
 
-    private final Params  _params = new Params();
+//    private final Params  _params = new Params();
 
 //    private String  _definitionClass;
 //    private String  _family;
@@ -57,28 +57,27 @@ public class DefinitionsQueryParams
 
 
 
-    public void buildQuery(
-                    final Query<DefinitionType> query
-                    )
-    {
-        _params.buildQuery( query );
-    }
-
-
-
     /**
      */
     public void setDefinitionClass(
                     final String definitionClass
     )
     {
-        _params.setProperty( DEFINITION_CLASS, definitionClass );
+        _setParam( DEFINITION_CLASS, definitionClass );
     }
 
 
     public String getDefinitionClass()
     {
-        return _params.getProperty( DEFINITION_CLASS );
+        return _getParam( DEFINITION_CLASS );
+    }
+
+
+    protected void _buildDefinitionClass(
+                    final Query<DefinitionType> query
+                    )
+    {
+        _buildFilterQueryParam( query, DEFINITION_CLASS );
     }
 
 
@@ -89,13 +88,21 @@ public class DefinitionsQueryParams
                     final String family
     )
     {
-        _params.setProperty( FAMILY, family );
+        _setParam( FAMILY, family );
     }
 
 
     public String getFamily()
     {
-        return _params.getProperty( FAMILY );
+        return _getParam( FAMILY );
+    }
+
+
+    protected void _buildFamily(
+                    final Query<DefinitionType> query
+                    )
+    {
+        _buildFilterQueryParam( query, FAMILY );
     }
 
 
@@ -106,13 +113,21 @@ public class DefinitionsQueryParams
                     final String platform
     )
     {
-        _params.setProperty( PLATFORM, platform );
+        _setParam( PLATFORM, platform );
     }
 
 
     public String getPlatform()
     {
-        return _params.getProperty( PLATFORM );
+        return _getParam( PLATFORM );
+    }
+
+
+    protected void _buildPlatform(
+                    final Query<DefinitionType> query
+                    )
+    {
+        _buildFilterQueryParam( query, PLATFORM );
     }
 
 
@@ -123,55 +138,76 @@ public class DefinitionsQueryParams
                     final String product
     )
     {
-        _params.setProperty( PRODUCT, product );
+        _setParam( PRODUCT, product );
     }
 
 
     public String getProduct()
     {
-        return _params.getProperty( PRODUCT );
+        return _getParam( PRODUCT );
     }
 
 
+    protected void _buildProduct(
+                    final Query<DefinitionType> query
+                    )
+    {
+        _buildFilterQueryParam( query, PRODUCT );
+    }
+
+
+
+    //**************************************************************
+    //  extends QueryParams
+    //**************************************************************
 
     @Override
-    public String toString()
+    public void buildQuery(
+                    final Query<DefinitionType> query
+                    )
     {
-        return _params.toString();
+        _buildDefinitionClass( query );
+        _buildFamily( query );
+        _buildPlatform( query );
+        _buildProduct( query );
+
+        super.buildQuery( query );
     }
 
 
 
-    //==============================================================
-    //  nested classes
-    //==============================================================
 
-    private static class Params
-    extends QueryParams<DefinitionType>
-    {
 
-        //**********************************************************
-        //  extends QueryParams
-        //**********************************************************
-
-        @Override
-        public void buildQuery(
-                        final Query<DefinitionType> query
-                        )
-        {
-            String  definitionClass = getProperty( DEFINITION_CLASS );
-            if (definitionClass != null) {
-                query.filter( DEFINITION_CLASS,
-                                ClassEnumeration.fromValue( definitionClass ) );
-            }
-
-            _buildFilterQueryParam( query, FAMILY );
-            _buildFilterQueryParam( query, PLATFORM );
-            _buildFilterQueryParam( query, PRODUCT );
-
-            _buildDefaultQueryParams( query );
-        }
-    }
+//    //==============================================================
+//    //  nested classes
+//    //==============================================================
+//
+//    private static class Params
+//    extends QueryParams<DefinitionType>
+//    {
+//
+//        //**********************************************************
+//        //  extends QueryParams
+//        //**********************************************************
+//
+//        @Override
+//        public void buildQuery(
+//                        final Query<DefinitionType> query
+//                        )
+//        {
+//            String  definitionClass = getProperty( DEFINITION_CLASS );
+//            if (definitionClass != null) {
+//                query.filter( DEFINITION_CLASS,
+//                                ClassEnumeration.fromValue( definitionClass ) );
+//            }
+//
+//            _buildFilterQueryParam( query, FAMILY );
+//            _buildFilterQueryParam( query, PLATFORM );
+//            _buildFilterQueryParam( query, PRODUCT );
+//
+//            _buildDefaultQueryParams( query );
+//        }
+//    }
 
 }
 //DefinitionQueryParams

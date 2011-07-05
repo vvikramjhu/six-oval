@@ -31,12 +31,13 @@ import com.google.code.morphia.query.Query;
  * @version $Id$
  */
 public class ResultsQueryParams
+extends QueryParams<SystemType>
 {
 
-    public static final String  PRIMARY_HOST_NAME   = "results.system.oval_system_characteristics.system_info.primary_host_nmae";
-    public static final String  OS_NAME             = "results.system.oval_system_characteristics.system_info.os_name";
+//    public static final String  PRIMARY_HOST_NAME   = "results.system.oval_system_characteristics.system_info.primary_host_nmae";
+//    public static final String  OS_NAME             = "results.system.oval_system_characteristics.system_info.os_name";
 
-    private final Params  _params = new Params();
+//    private final Params  _params = new Params();
 
 
 
@@ -50,79 +51,78 @@ public class ResultsQueryParams
 
 
 
+
+//    /**
+//     */
+//    public void setPrimaryHostName(
+//                    final String primary_host_name
+//    )
+//    {
+//        _params.setProperty( PRIMARY_HOST_NAME, primary_host_name );
+//    }
+//
+//
+//    public String getPrimaryHostName()
+//    {
+//        return _params.getProperty( PRIMARY_HOST_NAME );
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public void setOsName(
+//                    final String os_name
+//    )
+//    {
+//        _params.setProperty( OS_NAME, os_name );
+//    }
+//
+//
+//    public String getOsName()
+//    {
+//        return _params.getProperty( OS_NAME );
+//    }
+
+
+
+    //**************************************************************
+    //  extends QueryParams
+    //**************************************************************
+
+    @Override
     public void buildQuery(
                     final Query<SystemType> query
                     )
     {
-        _params.buildQuery( query );
+        super.buildQuery( query );
     }
 
 
 
-    /**
-     */
-    public void setPrimaryHostName(
-                    final String primary_host_name
-    )
-    {
-        _params.setProperty( PRIMARY_HOST_NAME, primary_host_name );
-    }
 
-
-    public String getPrimaryHostName()
-    {
-        return _params.getProperty( PRIMARY_HOST_NAME );
-    }
-
-
-
-    /**
-     */
-    public void setOsName(
-                    final String os_name
-    )
-    {
-        _params.setProperty( OS_NAME, os_name );
-    }
-
-
-    public String getOsName()
-    {
-        return _params.getProperty( OS_NAME );
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return _params.toString();
-    }
-
-
-
-    //==============================================================
-    //  nested classes
-    //==============================================================
-
-    private static class Params
-    extends QueryParams<SystemType>
-    {
-
-        //**********************************************************
-        //  extends QueryParams
-        //**********************************************************
-
-        @Override
-        public void buildQuery(
-                        final Query<SystemType> query
-                        )
-        {
-            _buildFilterQueryParam( query, PRIMARY_HOST_NAME );
-
-            _buildDefaultQueryParams( query );
-        }
-    }
+//    //==============================================================
+//    //  nested classes
+//    //==============================================================
+//
+//    private static class Params
+//    extends QueryParams<SystemType>
+//    {
+//
+//        //**********************************************************
+//        //  extends QueryParams
+//        //**********************************************************
+//
+//        @Override
+//        public void buildQuery(
+//                        final Query<SystemType> query
+//                        )
+//        {
+//            _buildFilterQueryParam( query, PRIMARY_HOST_NAME );
+//
+//            _buildQueryParams( query );
+//        }
+//    }
 
 }
 // ResultsQueryParams

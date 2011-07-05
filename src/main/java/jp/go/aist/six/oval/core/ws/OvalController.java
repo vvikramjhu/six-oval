@@ -307,7 +307,7 @@ public class OvalController
 
     // GET (query) /oval_definitions/definitions
     //
-    // test: curl -v -X GET -HAccept:application/xml http://localhost:8080/oval_repo/oval_definitions/definitions?platform=Debian%20GNU%2fLinux%205%2e0
+    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval_repo/oval_definitions/definitions?platform=Debian%20GNU%2fLinux%205%2e0&limit=1"
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/oval_definitions/definitions"
