@@ -420,8 +420,8 @@ public class OvalController
                     ,headers="Accept=application/atom+xml"
     )
     public @ResponseBody Feed findOvalSystemCharacteristics(
-                    final HttpServletRequest request,
-                    final OvalSystemCharacteristicsQueryParams params
+                    final OvalSystemCharacteristicsQueryParams params,
+                    final HttpServletRequest request
                     )
     throws OvalException
     {
