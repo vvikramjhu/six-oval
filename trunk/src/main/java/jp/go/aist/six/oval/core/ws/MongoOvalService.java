@@ -222,6 +222,7 @@ public class MongoOvalService
             DAO<OvalSystemCharacteristics, String>  dao = _datastore.getDAO( OvalSystemCharacteristics.class );
             Query<OvalSystemCharacteristics>  q = dao.createQuery();
             params.buildQuery( q );
+            _LOG_.debug( "MongoDB query: " + q );
 
             list = dao.find( q ).asKeyList();
             _LOG_.debug( "#oval_system_characteristics found: " + list.size() );

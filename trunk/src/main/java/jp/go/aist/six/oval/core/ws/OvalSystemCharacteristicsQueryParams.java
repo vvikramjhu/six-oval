@@ -90,7 +90,7 @@ extends QueryParams<OvalSystemCharacteristics>
     {
         String  os_name = getOsName();
         if (os_name != null) {
-            Pattern  pat = Pattern.compile( ".*" + os_name + ".*" );
+            Pattern  pat = Pattern.compile( ".*" + os_name + ".*", Pattern.CASE_INSENSITIVE );
             query.filter( OS_NAME, pat );
         }
     }
@@ -106,6 +106,8 @@ extends QueryParams<OvalSystemCharacteristics>
                     final Query<OvalSystemCharacteristics> query
                     )
     {
+        _buildOsName( query );
+
         super.buildQuery( query );
     }
 
