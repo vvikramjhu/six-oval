@@ -35,7 +35,7 @@ public class OvalSystemCharacteristicsQueryParams
 extends QueryParams<OvalSystemCharacteristics>
 {
 
-    public static final String  PRIMARY_HOST_NAME   = "system_info.primary_host_nmae";
+    public static final String  PRIMARY_HOST_NAME   = "system_info.primary_host_name";
     public static final String  OS_NAME             = "system_info.os_name";
 
 
@@ -51,20 +51,33 @@ extends QueryParams<OvalSystemCharacteristics>
 
 
 
-//    /**
-//     */
-//    public void setPrimaryHostName(
-//                    final String primary_host_name
-//    )
-//    {
-//        _params.setProperty( PRIMARY_HOST_NAME, primary_host_name );
-//    }
-//
-//
-//    public String getPrimaryHostName()
-//    {
-//        return _params.getProperty( PRIMARY_HOST_NAME );
-//    }
+    /**
+     */
+    public void setPrimary_host_name(
+                    final String primary_host_name
+    )
+    {
+        _setParam( PRIMARY_HOST_NAME, primary_host_name );
+    }
+
+
+    public String getPrimary_host_name()
+    {
+        return _getParam( PRIMARY_HOST_NAME );
+    }
+
+
+    protected void _buildPrimary_host_name(
+                    final Query<OvalSystemCharacteristics> query
+                    )
+    {
+        String  primary_host_name = getPrimary_host_name();
+        if (primary_host_name != null) {
+            Pattern  pat = Pattern.compile( ".*" + primary_host_name + ".*", Pattern.CASE_INSENSITIVE );
+            query.filter( PRIMARY_HOST_NAME, pat );
+        }
+    }
+
 
 
 
@@ -106,6 +119,7 @@ extends QueryParams<OvalSystemCharacteristics>
                     final Query<OvalSystemCharacteristics> query
                     )
     {
+        _buildPrimary_host_name( query );
         _buildOsName( query );
 
         super.buildQuery( query );
