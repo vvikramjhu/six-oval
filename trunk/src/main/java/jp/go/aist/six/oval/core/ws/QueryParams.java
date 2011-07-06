@@ -20,7 +20,9 @@
 
 package jp.go.aist.six.oval.core.ws;
 
-import java.util.Properties;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Pattern;
 import com.google.code.morphia.query.Query;
 
 
@@ -42,20 +44,9 @@ public abstract class QueryParams<T>
 //    public static final String  DEFAULT_OFFSET = "0";
 
 
-//    protected static Properties _createDefaults()
-//    {
-//        Properties  defaults = new Properties();
-//        defaults.setProperty( LIMIT, DEFAULT_LIMIT );
-////        defaults.setProperty( OFFSET, DEFAULT_OFFSET );
-//
-//        return defaults;
-//    }
-
-//    private static final Properties  _DEFAULTS_ = _createDefaults();
 
 
-
-    private final Properties  _params = new Properties();
+//    private final Properties  _params = new Properties();
 
 
 
@@ -64,6 +55,66 @@ public abstract class QueryParams<T>
      */
     public QueryParams()
     {
+        Handler  offsetHandler = new Handler( "offset", null )
+        {
+            @Override
+            public void buildQuery(
+                            final Query<?> query
+                            )
+            {
+                String  offset = getValue();
+                if (offset != null) {
+                    query.offset( _asInt( offset ) );
+                }
+            }
+        };
+
+        Handler  limitHandler = new Handler( "limit", null )
+        {
+            @Override
+            public void buildQuery(
+                            final Query<?> query
+                            )
+            {
+                String  limit = getValue();
+                if (limit != null) {
+                    query.limit( _asInt( limit ) );
+                }
+            }
+        };
+
+        _addHandler( offsetHandler );
+        _addHandler( limitHandler );
+        _addHandler( new OrderHandler( this ) );
+    }
+
+
+
+    private final Map<String, Handler>  _handlers = new HashMap<String, Handler>();
+
+
+    protected final void _addHandler(
+                    final Handler handler
+                    )
+    {
+        if (handler == null) {
+            throw new IllegalArgumentException( "null handler" );
+        }
+
+        _handlers.put( handler.queryKey, handler );
+    }
+
+
+    protected final String _toField(
+                    final String queryKey
+                    )
+    {
+        Handler  handler = _handlers.get( queryKey );
+        if (handler == null) {
+            throw new IllegalArgumentException( "unknown query key: " + queryKey );
+        }
+
+        return handler.field;
     }
 
 
@@ -79,7 +130,15 @@ public abstract class QueryParams<T>
                     final String value
                     )
     {
-        _params.setProperty( key, value );
+        Handler  handler = _handlers.get( key );
+        if (handler == null) {
+            throw new IllegalArgumentException( "unknown query param: " + key );
+        }
+
+        handler.setValue( value );
+
+
+//        _params.setProperty( key, value );
     }
 
 
@@ -87,7 +146,14 @@ public abstract class QueryParams<T>
                     final String key
                     )
     {
-        return _params.getProperty( key );
+        Handler  handler = _handlers.get( key );
+        if (handler == null) {
+            throw new IllegalArgumentException( "unknown query param: " + key );
+        }
+
+        return handler.getValue();
+
+//        return _params.getProperty( key );
     }
 
 
@@ -96,7 +162,10 @@ public abstract class QueryParams<T>
                     final String defaultValue
                     )
     {
-        return _params.getProperty( key, defaultValue );
+        String  value = _getParam( key );
+        return (value == null ? defaultValue : value);
+
+//        return _params.getProperty( key, defaultValue );
     }
 
 
@@ -137,9 +206,13 @@ public abstract class QueryParams<T>
                     final Query<T> query
                     )
     {
-        _buildLimit( query );
-        _buildOffset( query );
-        _buildOrder( query );
+        for (Handler  handler : _handlers.values()) {
+            handler.buildQuery( query );
+        }
+
+//        _buildLimit( query );
+//        _buildOffset( query );
+//        _buildOrder( query );
     }
 
 
@@ -251,6 +324,18 @@ public abstract class QueryParams<T>
     }
 
 
+//    protected List<String> _orderAsList()
+//    {
+//        String  order = getOrder();
+//        if (order == null) {
+//            return Collections.emptyList();
+//        } else {
+//            String[]  array = order.split( "," );
+//            return Arrays.asList( array );
+//        }
+//    }
+
+
     protected void _buildOrder(
                     final Query<T> query
                     )
@@ -270,8 +355,156 @@ public abstract class QueryParams<T>
     @Override
     public String toString()
     {
-        return _params.toString();
+        return _handlers.toString();
+
+//        return _params.toString();
     }
+
+
+
+    //**************************************************************
+    //  nested classes
+    //**************************************************************
+
+
+    protected static class Handler
+    {
+        public final String  queryKey;
+        public final String  field;
+        public String  _value;
+
+
+        public Handler(
+                        final String queryKey,
+                        final String field
+                        )
+        {
+            if (queryKey == null) {
+                throw new IllegalArgumentException( "null query key" );
+            }
+
+            this.queryKey = queryKey;
+            this.field = field;
+        }
+
+
+        public final void setValue(
+                        final String value
+                        )
+        {
+            _value = value;
+        }
+
+
+        public final String getValue()
+        {
+            return _value;
+        }
+
+
+        public void buildQuery(
+                        final Query<?> query
+                        )
+        {
+            String  value = getValue();
+            if (value != null) {
+                query.filter( field, value );
+            }
+        }
+
+
+
+        //**************************************************************
+        //  java.lang.Object
+        //**************************************************************
+
+        @Override
+        public String toString()
+        {
+            return String.valueOf( field ) + "=" + getValue();
+        }
+
+    }
+    // Handler
+
+
+
+    protected static class OrderHandler
+    extends Handler
+    {
+        private final QueryParams<?>  _params;
+
+
+        public OrderHandler(
+                        final QueryParams<?> queryParams
+                        )
+        {
+            super( "order", null );
+            _params = queryParams;
+        }
+
+
+        @Override
+        public void buildQuery(
+                        final Query<?> query
+                        )
+        {
+            String  order = getValue();
+            if (order == null) {
+                return;
+            }
+
+            StringBuilder  s = new StringBuilder();
+            String[]  keys = order.split( "," );
+            for (String  key : keys) {
+                if (s.length() > 0) {
+                    s.append( "," );
+                }
+
+                if (key.startsWith( "-" )) {
+                    key = key.substring( 1 );
+                    s.append( "-" );
+                }
+                s.append( _params._toField( key ) );
+            }
+
+            query.order( s.toString() );
+        }
+
+    }
+    // OrderHandler
+
+
+
+    protected static class PatternHandler
+    extends Handler
+    {
+
+        public PatternHandler(
+                        final String queryKey,
+                        final String field
+                        )
+        {
+            super( queryKey, field );
+        }
+
+
+        @Override
+        public void buildQuery(
+                        final Query<?> query
+                        )
+        {
+            String  value = getValue();
+            if (value == null) {
+                return;
+            }
+
+            Pattern  pat = Pattern.compile( ".*" + value + ".*", Pattern.CASE_INSENSITIVE );
+            query.filter( field, pat );
+        }
+
+    }
+    // PatternHandler
 
 }
 // QueryParams

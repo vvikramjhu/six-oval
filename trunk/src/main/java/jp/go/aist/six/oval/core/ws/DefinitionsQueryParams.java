@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.core.ws;
 
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
-import com.google.code.morphia.query.Query;
 
 
 
@@ -34,10 +33,10 @@ public class DefinitionsQueryParams
 extends QueryParams<DefinitionType>
 {
 
-    public static final String  DEFINITION_CLASS    = "class";
-    public static final String  FAMILY              = "metadata.affected.family";
-    public static final String  PLATFORM            = "metadata.affected.platform";
-    public static final String  PRODUCT             = "metadata.affected.product";
+    public static final String  DEFINITION_CLASS    = "definition_class";
+    public static final String  FAMILY              = "family";
+    public static final String  PLATFORM            = "platform";
+    public static final String  PRODUCT             = "product";
 
 //    private final Params  _params = new Params();
 
@@ -53,6 +52,11 @@ extends QueryParams<DefinitionType>
      */
     public DefinitionsQueryParams()
     {
+        _addHandler( new Handler( DEFINITION_CLASS, "class"                      ) );
+        _addHandler( new Handler( FAMILY,           "metadata.affected.family"   ) );
+        _addHandler( new Handler( PLATFORM,         "metadata.affected.platform" ) );
+        _addHandler( new Handler( PRODUCT,          "metadata.affected.product"  ) );
+
     }
 
 
@@ -73,12 +77,12 @@ extends QueryParams<DefinitionType>
     }
 
 
-    protected void _buildDefinitionClass(
-                    final Query<DefinitionType> query
-                    )
-    {
-        _buildFilterQueryParam( query, DEFINITION_CLASS );
-    }
+//    protected void _buildDefinitionClass(
+//                    final Query<DefinitionType> query
+//                    )
+//    {
+//        _buildFilterQueryParam( query, DEFINITION_CLASS );
+//    }
 
 
 
@@ -98,12 +102,12 @@ extends QueryParams<DefinitionType>
     }
 
 
-    protected void _buildFamily(
-                    final Query<DefinitionType> query
-                    )
-    {
-        _buildFilterQueryParam( query, FAMILY );
-    }
+//    protected void _buildFamily(
+//                    final Query<DefinitionType> query
+//                    )
+//    {
+//        _buildFilterQueryParam( query, FAMILY );
+//    }
 
 
 
@@ -123,12 +127,12 @@ extends QueryParams<DefinitionType>
     }
 
 
-    protected void _buildPlatform(
-                    final Query<DefinitionType> query
-                    )
-    {
-        _buildFilterQueryParam( query, PLATFORM );
-    }
+//    protected void _buildPlatform(
+//                    final Query<DefinitionType> query
+//                    )
+//    {
+//        _buildFilterQueryParam( query, PLATFORM );
+//    }
 
 
 
@@ -148,12 +152,12 @@ extends QueryParams<DefinitionType>
     }
 
 
-    protected void _buildProduct(
-                    final Query<DefinitionType> query
-                    )
-    {
-        _buildFilterQueryParam( query, PRODUCT );
-    }
+//    protected void _buildProduct(
+//                    final Query<DefinitionType> query
+//                    )
+//    {
+//        _buildFilterQueryParam( query, PRODUCT );
+//    }
 
 
 
@@ -161,18 +165,18 @@ extends QueryParams<DefinitionType>
     //  extends QueryParams
     //**************************************************************
 
-    @Override
-    public void buildQuery(
-                    final Query<DefinitionType> query
-                    )
-    {
-        _buildDefinitionClass( query );
-        _buildFamily( query );
-        _buildPlatform( query );
-        _buildProduct( query );
-
-        super.buildQuery( query );
-    }
+//    @Override
+//    public void buildQuery(
+//                    final Query<DefinitionType> query
+//                    )
+//    {
+//        _buildDefinitionClass( query );
+//        _buildFamily( query );
+//        _buildPlatform( query );
+//        _buildProduct( query );
+//
+//        super.buildQuery( query );
+//    }
 
 
 
