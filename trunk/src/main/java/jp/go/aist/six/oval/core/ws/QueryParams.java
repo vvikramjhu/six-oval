@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.core.ws;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -33,7 +35,6 @@ import com.google.code.morphia.query.Query;
  * @version $Id$
  */
 public abstract class QueryParams<T>
-//extends Properties
 {
 
     public static final String  LIMIT  = "limit";
@@ -45,8 +46,11 @@ public abstract class QueryParams<T>
 
 
 
-
-//    private final Properties  _params = new Properties();
+    /**
+     * Registered handlers.
+     * Map keys are URI query param keys.
+     */
+    private final Map<String, Handler>  _handlers = new HashMap<String, Handler>();
 
 
 
@@ -55,7 +59,7 @@ public abstract class QueryParams<T>
      */
     public QueryParams()
     {
-        Handler  offsetHandler = new Handler( "offset", null )
+        Handler  offsetHandler = new Handler( OFFSET, null )
         {
             @Override
             public void buildQuery(
@@ -69,7 +73,7 @@ public abstract class QueryParams<T>
             }
         };
 
-        Handler  limitHandler = new Handler( "limit", null )
+        Handler  limitHandler = new Handler( LIMIT, null )
         {
             @Override
             public void buildQuery(
@@ -90,8 +94,9 @@ public abstract class QueryParams<T>
 
 
 
-    private final Map<String, Handler>  _handlers = new HashMap<String, Handler>();
-
+    //==============================================================
+    //  Handler
+    //==============================================================
 
     protected final void _addHandler(
                     final Handler handler
@@ -120,7 +125,7 @@ public abstract class QueryParams<T>
 
 
     //==============================================================
-    //  key-value handling
+    //  URI query params
     //==============================================================
 
     /**
@@ -136,9 +141,6 @@ public abstract class QueryParams<T>
         }
 
         handler.setValue( value );
-
-
-//        _params.setProperty( key, value );
     }
 
 
@@ -152,8 +154,6 @@ public abstract class QueryParams<T>
         }
 
         return handler.getValue();
-
-//        return _params.getProperty( key );
     }
 
 
@@ -163,9 +163,8 @@ public abstract class QueryParams<T>
                     )
     {
         String  value = _getParam( key );
-        return (value == null ? defaultValue : value);
 
-//        return _params.getProperty( key, defaultValue );
+        return (value == null ? defaultValue : value);
     }
 
 
@@ -195,9 +194,8 @@ public abstract class QueryParams<T>
 
 
 
-
     //==============================================================
-    //  Query building
+    //  Morphia Query
     //==============================================================
 
     /**
@@ -209,26 +207,22 @@ public abstract class QueryParams<T>
         for (Handler  handler : _handlers.values()) {
             handler.buildQuery( query );
         }
-
-//        _buildLimit( query );
-//        _buildOffset( query );
-//        _buildOrder( query );
     }
 
 
 
-    /**
-     */
-    protected void _buildFilterQueryParam(
-                    final Query<T> query,
-                    final String param
-    )
-    {
-        String  value = _getParam( param );
-        if (value != null) {
-            query.filter( param, value );
-        }
-    }
+//    /**
+//     */
+//    protected void _buildFilterQueryParam(
+//                    final Query<T> query,
+//                    final String param
+//    )
+//    {
+//        String  value = _getParam( param );
+//        if (value != null) {
+//            query.filter( param, value );
+//        }
+//    }
 
 
 
@@ -259,15 +253,6 @@ public abstract class QueryParams<T>
     }
 
 
-    protected void _buildLimit(
-                    final Query<T> query
-                    )
-    {
-        int  limit = _asInt( getLimit() );
-        query.limit( limit );
-    }
-
-
 
     /**
      * @param   offset
@@ -293,17 +278,6 @@ public abstract class QueryParams<T>
     }
 
 
-    protected void _buildOffset(
-                    final Query<T> query
-                    )
-    {
-        String  offset = getOffset();
-        if (offset != null) {
-            query.offset( _asInt( offset ) );
-        }
-    }
-
-
 
     /**
      * @param   order
@@ -324,29 +298,6 @@ public abstract class QueryParams<T>
     }
 
 
-//    protected List<String> _orderAsList()
-//    {
-//        String  order = getOrder();
-//        if (order == null) {
-//            return Collections.emptyList();
-//        } else {
-//            String[]  array = order.split( "," );
-//            return Arrays.asList( array );
-//        }
-//    }
-
-
-    protected void _buildOrder(
-                    final Query<T> query
-                    )
-    {
-        String  order = getOrder();
-        if (order != null) {
-            query.order( order );
-        }
-    }
-
-
 
     //**************************************************************
     //  java.lang.Object
@@ -356,8 +307,6 @@ public abstract class QueryParams<T>
     public String toString()
     {
         return _handlers.toString();
-
-//        return _params.toString();
     }
 
 
@@ -366,7 +315,12 @@ public abstract class QueryParams<T>
     //  nested classes
     //**************************************************************
 
-
+    /**
+     * A query param handler.
+     * It holds key-value pair in an URI query param and
+     * the correspondent field name in the MongoDB document object.
+     * This handler generates "=" filter in the query.
+     */
     protected static class Handler
     {
         public final String  queryKey;
@@ -429,6 +383,9 @@ public abstract class QueryParams<T>
 
 
 
+    /**
+     * A query param handler for result ordering.
+     */
     protected static class OrderHandler
     extends Handler
     {
@@ -439,7 +396,7 @@ public abstract class QueryParams<T>
                         final QueryParams<?> queryParams
                         )
         {
-            super( "order", null );
+            super( ORDER, null );
             _params = queryParams;
         }
 
@@ -476,6 +433,10 @@ public abstract class QueryParams<T>
 
 
 
+    /**
+     * A query param handler generating string pattern match filter in the query.
+     * e.g. {name:/Joe/} in MongoDB, name like ''%Joe%' in SQL
+     */
     protected static class PatternHandler
     extends Handler
     {
@@ -501,6 +462,75 @@ public abstract class QueryParams<T>
 
             Pattern  pat = Pattern.compile( ".*" + value + ".*", Pattern.CASE_INSENSITIVE );
             query.filter( field, pat );
+        }
+
+    }
+    // PatternHandler
+
+
+
+    public static class DateHandler
+    extends Handler
+    {
+        public static final String  AFTER  = "after";
+        public static final String  BEFORE = "before";
+
+
+
+        public static DateHandler newAfterHandler(
+                        final String field
+                        )
+        {
+            return new DateHandler( AFTER, field );
+        }
+
+
+        public static DateHandler newBeforeHandler(
+                        final String field
+                        )
+        {
+            return new DateHandler( BEFORE, field );
+        }
+
+
+
+        private static SimpleDateFormat  _DATE_FORMATTER_ =
+            new SimpleDateFormat( "yyyy-MM-dd" );
+
+
+
+        public DateHandler(
+                        final String queryKey,
+                        final String field
+                        )
+        {
+            super( queryKey, field );
+        }
+
+
+        @Override
+        public void buildQuery(
+                        final Query<?> query
+                        )
+        {
+            String  value = getValue();
+            if (value == null) {
+                return;
+            }
+
+            try {
+                _DATE_FORMATTER_.parse( value );
+            } catch (ParseException ex) {
+                throw new RuntimeException( ex.getMessage() );
+            }
+
+            if (AFTER.equalsIgnoreCase( queryKey )) {
+                query.field( field ).greaterThanOrEq( value );
+            } else if (BEFORE.equalsIgnoreCase( queryKey )) {
+                query.field( field ).lessThan( value );
+            } else {
+                query.filter( field, value );
+            }
         }
 
     }

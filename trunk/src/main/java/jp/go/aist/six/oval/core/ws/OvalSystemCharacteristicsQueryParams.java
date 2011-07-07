@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
  * @version $Id$
  */
 public class OvalSystemCharacteristicsQueryParams
-extends QueryParams<OvalSystemCharacteristics>
+    extends QueryParams<OvalSystemCharacteristics>
 {
 
     public static final String  PRIMARY_HOST_NAME   = "primary_host_name";
@@ -43,10 +43,27 @@ extends QueryParams<OvalSystemCharacteristics>
      */
     public OvalSystemCharacteristicsQueryParams()
     {
+        _addHandler( DateHandler.newAfterHandler( "generator.timestamp" ) );
         _addHandler( new PatternHandler( PRIMARY_HOST_NAME, "system_info.primary_host_name" ) );
         _addHandler( new PatternHandler( OS_NAME,           "system_info.os_name"           ) );
     }
 
+
+
+    /**
+     */
+    public void setAfter(
+                    final String after
+    )
+    {
+        _setParam( DateHandler.AFTER, after );
+    }
+
+
+    public String getAfter()
+    {
+        return _getParam( DateHandler.AFTER );
+    }
 
 
 
@@ -66,18 +83,6 @@ extends QueryParams<OvalSystemCharacteristics>
     }
 
 
-//    protected void _buildPrimary_host_name(
-//                    final Query<OvalSystemCharacteristics> query
-//                    )
-//    {
-//        String  primary_host_name = getPrimary_host_name();
-//        if (primary_host_name != null) {
-//            Pattern  pat = Pattern.compile( ".*" + primary_host_name + ".*", Pattern.CASE_INSENSITIVE );
-//            query.filter( PRIMARY_HOST_NAME, pat );
-//        }
-//    }
-
-
 
     /**
      */
@@ -93,35 +98,6 @@ extends QueryParams<OvalSystemCharacteristics>
     {
         return _getParam( OS_NAME );
     }
-
-
-//    protected void _buildOs_name(
-//                    final Query<OvalSystemCharacteristics> query
-//                    )
-//    {
-//        String  os_name = getOs_name();
-//        if (os_name != null) {
-//            Pattern  pat = Pattern.compile( ".*" + os_name + ".*", Pattern.CASE_INSENSITIVE );
-//            query.filter( OS_NAME, pat );
-//        }
-//    }
-
-
-
-//    //**************************************************************
-//    //  extends QueryParams
-//    //**************************************************************
-//
-//    @Override
-//    public void buildQuery(
-//                    final Query<OvalSystemCharacteristics> query
-//                    )
-//    {
-//        _buildPrimary_host_name( query );
-//        _buildOs_name( query );
-//
-//        super.buildQuery( query );
-//    }
 
 }
 // OvalSystemCharacteristicsQueryParams

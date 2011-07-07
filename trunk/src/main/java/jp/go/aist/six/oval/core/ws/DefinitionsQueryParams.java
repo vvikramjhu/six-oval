@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
  * @version $Id$
  */
 public class DefinitionsQueryParams
-extends QueryParams<DefinitionType>
+    extends QueryParams<DefinitionType>
 {
 
     public static final String  DEFINITION_CLASS    = "definition_class";
@@ -38,12 +38,6 @@ extends QueryParams<DefinitionType>
     public static final String  PLATFORM            = "platform";
     public static final String  PRODUCT             = "product";
 
-//    private final Params  _params = new Params();
-
-//    private String  _definitionClass;
-//    private String  _family;
-//    private String  _platform;
-//    private String  _product;
 
 
 
@@ -56,14 +50,13 @@ extends QueryParams<DefinitionType>
         _addHandler( new Handler( FAMILY,           "metadata.affected.family"   ) );
         _addHandler( new Handler( PLATFORM,         "metadata.affected.platform" ) );
         _addHandler( new Handler( PRODUCT,          "metadata.affected.product"  ) );
-
     }
 
 
 
     /**
      */
-    public void setDefinitionClass(
+    public void setDefinition_class(
                     final String definitionClass
     )
     {
@@ -71,18 +64,10 @@ extends QueryParams<DefinitionType>
     }
 
 
-    public String getDefinitionClass()
+    public String getDefinition_class()
     {
         return _getParam( DEFINITION_CLASS );
     }
-
-
-//    protected void _buildDefinitionClass(
-//                    final Query<DefinitionType> query
-//                    )
-//    {
-//        _buildFilterQueryParam( query, DEFINITION_CLASS );
-//    }
 
 
 
@@ -102,14 +87,6 @@ extends QueryParams<DefinitionType>
     }
 
 
-//    protected void _buildFamily(
-//                    final Query<DefinitionType> query
-//                    )
-//    {
-//        _buildFilterQueryParam( query, FAMILY );
-//    }
-
-
 
     /**
      */
@@ -127,14 +104,6 @@ extends QueryParams<DefinitionType>
     }
 
 
-//    protected void _buildPlatform(
-//                    final Query<DefinitionType> query
-//                    )
-//    {
-//        _buildFilterQueryParam( query, PLATFORM );
-//    }
-
-
 
     /**
      */
@@ -150,68 +119,6 @@ extends QueryParams<DefinitionType>
     {
         return _getParam( PRODUCT );
     }
-
-
-//    protected void _buildProduct(
-//                    final Query<DefinitionType> query
-//                    )
-//    {
-//        _buildFilterQueryParam( query, PRODUCT );
-//    }
-
-
-
-    //**************************************************************
-    //  extends QueryParams
-    //**************************************************************
-
-//    @Override
-//    public void buildQuery(
-//                    final Query<DefinitionType> query
-//                    )
-//    {
-//        _buildDefinitionClass( query );
-//        _buildFamily( query );
-//        _buildPlatform( query );
-//        _buildProduct( query );
-//
-//        super.buildQuery( query );
-//    }
-
-
-
-
-
-//    //==============================================================
-//    //  nested classes
-//    //==============================================================
-//
-//    private static class Params
-//    extends QueryParams<DefinitionType>
-//    {
-//
-//        //**********************************************************
-//        //  extends QueryParams
-//        //**********************************************************
-//
-//        @Override
-//        public void buildQuery(
-//                        final Query<DefinitionType> query
-//                        )
-//        {
-//            String  definitionClass = getProperty( DEFINITION_CLASS );
-//            if (definitionClass != null) {
-//                query.filter( DEFINITION_CLASS,
-//                                ClassEnumeration.fromValue( definitionClass ) );
-//            }
-//
-//            _buildFilterQueryParam( query, FAMILY );
-//            _buildFilterQueryParam( query, PLATFORM );
-//            _buildFilterQueryParam( query, PRODUCT );
-//
-//            _buildDefaultQueryParams( query );
-//        }
-//    }
 
 }
 //DefinitionQueryParams
