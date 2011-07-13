@@ -35,9 +35,16 @@ public class AtomLink
 {
 
     private String  _href;
+    //attribute {1..1, atomUri}
+
     private String  _rel;
+    //attribute {0..1}
+
     private String  _type;
+    //{0..1, MIME media type}
+
     private String  _title;
+    //{0..1}
 
 
 
@@ -114,6 +121,23 @@ public class AtomLink
     public String getTitle()
     {
         return _title;
+    }
+
+
+
+    //**************************************************************
+    //  java.lang.Object
+    //**************************************************************
+
+    @Override
+    public String toString()
+    {
+        return "AtomLink[href=" + getHref()
+             + ", rel=" + getRel()
+             + ", type=" + getType()
+             + ", title=" + getTitle()
+             + "]"
+             ;
     }
 
 }

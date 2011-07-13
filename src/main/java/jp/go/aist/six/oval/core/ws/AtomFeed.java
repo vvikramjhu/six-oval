@@ -43,9 +43,20 @@ public class AtomFeed
 
 
     private String  _id;
+    //{1..1}
+
     private String  _title;
+    //{1..1}
+
     private Date  _updated;
+    //{1..1}
+
     private final List<AtomLink>  _link = new ArrayList<AtomLink>();
+    //{0..*}
+
+    private final List<Object>  _extensionElement = new ArrayList<Object>();
+    //{0..*}
+
 
 
 
@@ -141,6 +152,60 @@ public class AtomFeed
     public Iterator<AtomLink> iterateLink()
     {
         return this._link.iterator();
+    }
+
+
+
+    /**
+     */
+    public void setExtensionElement(
+                    final Collection<?> extensionElements
+                    )
+    {
+        if (extensionElements != this._extensionElement) {
+            this._extensionElement.clear();
+            if (extensionElements != null  &&  extensionElements.size() > 0) {
+                this._extensionElement.addAll( extensionElements );
+            }
+        }
+    }
+
+
+    public boolean addExtensionElement(
+                    final Object extensionElement
+                    )
+    {
+        return this._extensionElement.add( extensionElement );
+    }
+
+
+    public Collection<Object> getExtensionElement()
+    {
+        return this._extensionElement;
+    }
+
+
+    public Iterator<Object> iterateExtensionElement()
+    {
+        return this._extensionElement.iterator();
+    }
+
+
+
+    //**************************************************************
+    //  java.lang.Object
+    //**************************************************************
+
+    @Override
+    public String toString()
+    {
+        return "AtomFeed[id=" + getId()
+             + ", title=" + getTitle()
+             + ", updated=" + getUpdated()
+             + ", link=" + getLink()
+             + ", extensionElement=" + getExtensionElement()
+             + "]"
+             ;
     }
 
 }
