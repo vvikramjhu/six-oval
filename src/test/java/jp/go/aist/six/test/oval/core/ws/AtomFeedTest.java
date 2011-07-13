@@ -66,6 +66,19 @@ public class AtomFeedTest
         AtomFeed  feed2 = (AtomFeed)_xmlmapper.unmarshalFromString( xml );
         Reporter.log( "<<< unmarshalling done.", true );
         Reporter.log( "Atom feed object: " + feed2, true );
+
+        //TODO: throws SAXException!!!
+//        feed.addExtensionElement( DefinitionsSample.DEF_7222 );
+//        Reporter.log( "\nAtom feed object: " + feed, true );
+//        Reporter.log( ">>> marshalling...", true );
+//        xml = _xmlmapper.marshalToString( feed );
+//        Reporter.log( "<<< marshalling done.", true );
+//        Reporter.log( "Atom feed XML: \n" + xml, true );
+//
+//        Reporter.log( ">>> unmarshalling...", true );
+//        feed2 = (AtomFeed)_xmlmapper.unmarshalFromString( xml );
+//        Reporter.log( "<<< unmarshalling done.", true );
+//        Reporter.log( "Atom feed object: " + feed2, true );
     }
 
 
