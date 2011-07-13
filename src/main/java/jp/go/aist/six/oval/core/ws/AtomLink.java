@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.core.ws;
 
 import java.io.Serializable;
-import java.util.Date;
 
 
 
@@ -31,23 +30,21 @@ import java.util.Date;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class AtomFeed
+public class AtomLink
     implements Serializable
 {
 
-    public static final String  NAMESPACE = "http://www.w3.org/2005/Atom";
-
-
-    private String  _id;
+    private String  _href;
+    private String  _rel;
+    private String  _type;
     private String  _title;
-    private Date  _updated;
 
 
 
     /**
      * Constructor.
      */
-    public AtomFeed()
+    public AtomLink()
     {
     }
 
@@ -55,17 +52,51 @@ public class AtomFeed
 
     /**
      */
-    public void setId(
-                    final String id
+    public void setHref(
+                    final String href
                     )
     {
-        this._id = id;
+        this._href = href;
     }
 
 
-    public String getId()
+    public String getHref()
     {
-        return _id;
+        return _href;
+    }
+
+
+
+    /**
+     */
+    public void setRel(
+                    final String rel
+                    )
+    {
+        this._rel = rel;
+    }
+
+
+    public String getRel()
+    {
+        return _rel;
+    }
+
+
+
+    /**
+     */
+    public void setType(
+                    final String type
+                    )
+    {
+        this._type = type;
+    }
+
+
+    public String getType()
+    {
+        return _type;
     }
 
 
@@ -83,23 +114,6 @@ public class AtomFeed
     public String getTitle()
     {
         return _title;
-    }
-
-
-
-    /**
-     */
-    public void setUpdated(
-                    final Date updated
-                    )
-    {
-        this._updated = updated;
-    }
-
-
-    public Date getUpdated()
-    {
-        return _updated;
     }
 
 }
