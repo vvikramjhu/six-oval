@@ -21,7 +21,11 @@
 package jp.go.aist.six.oval.core.ws;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 
 
@@ -41,6 +45,7 @@ public class AtomFeed
     private String  _id;
     private String  _title;
     private Date  _updated;
+    private final List<AtomLink>  _link = new ArrayList<AtomLink>();
 
 
 
@@ -100,6 +105,42 @@ public class AtomFeed
     public Date getUpdated()
     {
         return _updated;
+    }
+
+
+    /**
+     *
+     */
+    public void setLink(
+                    final Collection<? extends AtomLink> links
+                    )
+    {
+        if (links != this._link) {
+            this._link.clear();
+            if (links != null  &&  links.size() > 0) {
+                this._link.addAll( links );
+            }
+        }
+    }
+
+
+    public boolean addLink(
+                    final AtomLink link
+                    )
+    {
+        return this._link.add( link );
+    }
+
+
+    public Collection<AtomLink> getLink()
+    {
+        return this._link;
+    }
+
+
+    public Iterator<AtomLink> iterateLink()
+    {
+        return this._link.iterator();
     }
 
 }
