@@ -38,6 +38,16 @@
             get-method="iterateLink">
             <bind-xml name="link" node="element"/>
         </field>
+
+        <field name="extensionElement" 
+            type="java.lang.Object"
+            collection="collection">
+            <!--
+            set-method="addExtensionElement"
+            get-method="iterateExtensionElement"
+            -->
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
     </class>
 
 
