@@ -14,7 +14,15 @@
 
 <mapping>
 
+    <class name ="jp.go.aist.six.oval.model.v5.OvalObject"
+        verify-constructable="false">
+
+    </class>
+
+
+
     <class name ="jp.go.aist.six.oval.model.v5.OvalElement"
+        extends="jp.go.aist.six.oval.model.v5.OvalObject"
         verify-constructable="false">
 
         <field name="ovalID" type="string">

@@ -21,6 +21,11 @@
 package jp.go.aist.six.oval.core.ws;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import jp.go.aist.six.oval.model.v5.OvalObject;
 
 
 
@@ -30,28 +35,20 @@ import java.io.Serializable;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class AtomLink
+public class AtomExtensionElements
     implements Serializable
 {
 
-    private String  _href;
-    //attribute {1..1, atomUri}
+    private final List<OvalObject>  _extensionElement = new ArrayList<OvalObject>();
+    //{0..*}
 
-    private String  _rel;
-    //attribute {0..1}
-
-    private String  _type;
-    //{0..1, MIME media type}
-
-    private String  _title;
-    //{0..1}
 
 
 
     /**
      * Constructor.
      */
-    public AtomLink()
+    public AtomExtensionElements()
     {
     }
 
@@ -59,68 +56,36 @@ public class AtomLink
 
     /**
      */
-    public void setHref(
-                    final String href
+    public void setExtensionElement(
+                    final Collection<? extends OvalObject> extensionElements
                     )
     {
-        this._href = href;
+        if (extensionElements != this._extensionElement) {
+            this._extensionElement.clear();
+            if (extensionElements != null  &&  extensionElements.size() > 0) {
+                this._extensionElement.addAll( extensionElements );
+            }
+        }
     }
 
 
-    public String getHref()
-    {
-        return _href;
-    }
-
-
-
-    /**
-     */
-    public void setRel(
-                    final String rel
+    public boolean addExtensionElement(
+                    final OvalObject extensionElement
                     )
     {
-        this._rel = rel;
+        return this._extensionElement.add( extensionElement );
     }
 
 
-    public String getRel()
+    public Collection<OvalObject> getExtensionElement()
     {
-        return _rel;
+        return this._extensionElement;
     }
 
 
-
-    /**
-     */
-    public void setType(
-                    final String type
-                    )
+    public Iterator<OvalObject> iterateExtensionElement()
     {
-        this._type = type;
-    }
-
-
-    public String getType()
-    {
-        return _type;
-    }
-
-
-
-    /**
-     */
-    public void setTitle(
-                    final String title
-                    )
-    {
-        this._title = title;
-    }
-
-
-    public String getTitle()
-    {
-        return _title;
+        return this._extensionElement.iterator();
     }
 
 
@@ -132,13 +97,9 @@ public class AtomLink
     @Override
     public String toString()
     {
-        return "AtomLink[href=" + getHref()
-             + ", rel=" + getRel()
-             + ", type=" + getType()
-             + ", title=" + getTitle()
-             + "]"
+        return String.valueOf( getExtensionElement() )
              ;
     }
 
 }
-// AtomFeed
+// AtomExtensionElements

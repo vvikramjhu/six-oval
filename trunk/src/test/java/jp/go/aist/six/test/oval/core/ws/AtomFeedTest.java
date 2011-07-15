@@ -3,8 +3,10 @@ package jp.go.aist.six.test.oval.core.ws;
 import java.util.Arrays;
 import java.util.Date;
 import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.core.ws.AtomExtensionElements;
 import jp.go.aist.six.oval.core.ws.AtomFeed;
 import jp.go.aist.six.oval.core.ws.AtomLink;
+import jp.go.aist.six.test.oval.core.DefinitionsSample;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -67,7 +69,21 @@ public class AtomFeedTest
         Reporter.log( "<<< unmarshalling done.", true );
         Reporter.log( "Atom feed object: " + feed2, true );
 
-        //TODO: throws SAXException!!!
+        AtomExtensionElements  extensionElements = new AtomExtensionElements();
+        extensionElements.addExtensionElement( DefinitionsSample.DEF_7222 );
+        feed.setExtensionElements( extensionElements );
+        Reporter.log( "\nAtom feed object: " + feed, true );
+        Reporter.log( ">>> marshalling...", true );
+        xml = _xmlmapper.marshalToString( feed );
+        Reporter.log( "<<< marshalling done.", true );
+        Reporter.log( "Atom feed XML: \n" + xml, true );
+
+        Reporter.log( ">>> unmarshalling...", true );
+        feed2 = (AtomFeed)_xmlmapper.unmarshalFromString( xml );
+        Reporter.log( "<<< unmarshalling done.", true );
+        Reporter.log( "Atom feed object: " + feed2, true );
+
+//        //TODO: throws SAXException!!!
 //        feed.addExtensionElement( DefinitionsSample.DEF_7222 );
 //        Reporter.log( "\nAtom feed object: " + feed, true );
 //        Reporter.log( ">>> marshalling...", true );

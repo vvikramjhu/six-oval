@@ -116,7 +116,7 @@
 
     <!-- metadata -->
     <class name="jp.go.aist.six.oval.model.v5.definitions.MetadataType">
-        <map-to 
+        <map-to xml="metadata"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
             ns-prefix=""/>
 

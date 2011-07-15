@@ -34,7 +34,7 @@ import jp.go.aist.six.util.castor.CastorPersistable;
 public abstract class AbstractOvalObject
 //    extends AbstractPersistable<String>
     extends CastorPersistable<String>
-    implements OvalObject<String>
+//    implements OvalObject<String>
 {
 
     /**

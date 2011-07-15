@@ -26,6 +26,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import jp.go.aist.six.oval.model.v5.OvalObject;
 
 
 
@@ -54,7 +55,10 @@ public class AtomFeed
     private final List<AtomLink>  _link = new ArrayList<AtomLink>();
     //{0..*}
 
-    private final List<Object>  _extensionElement = new ArrayList<Object>();
+    private AtomExtensionElements  _extensionElements;
+
+    private final List<OvalObject>  _extensionElement = new ArrayList<OvalObject>();
+//    private final List<DefinitionType>  _extensionElement = new ArrayList<DefinitionType>();
     //{0..*}
 
 
@@ -158,8 +162,25 @@ public class AtomFeed
 
     /**
      */
+    public void setExtensionElements(
+                    final AtomExtensionElements extensionElements
+                    )
+    {
+        this._extensionElements = extensionElements;
+    }
+
+
+    public AtomExtensionElements getExtensionElements()
+    {
+        return this._extensionElements;
+    }
+
+
+
+    /**
+     */
     public void setExtensionElement(
-                    final Collection<?> extensionElements
+                    final Collection<? extends OvalObject> extensionElements
                     )
     {
         if (extensionElements != this._extensionElement) {
@@ -172,20 +193,20 @@ public class AtomFeed
 
 
     public boolean addExtensionElement(
-                    final Object extensionElement
+                    final OvalObject extensionElement
                     )
     {
         return this._extensionElement.add( extensionElement );
     }
 
 
-    public Collection<Object> getExtensionElement()
+    public Collection<OvalObject> getExtensionElement()
     {
         return this._extensionElement;
     }
 
 
-    public Iterator<Object> iterateExtensionElement()
+    public Iterator<OvalObject> iterateExtensionElement()
     {
         return this._extensionElement.iterator();
     }
@@ -203,6 +224,7 @@ public class AtomFeed
              + ", title=" + getTitle()
              + ", updated=" + getUpdated()
              + ", link=" + getLink()
+             + ", extensionElements=" + getExtensionElements()
              + ", extensionElement=" + getExtensionElement()
              + "]"
              ;
