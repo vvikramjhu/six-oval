@@ -34,7 +34,7 @@ import com.google.code.morphia.annotations.Transient;
  */
 public abstract class OvalElement
 //    extends AbstractOvalObject
-    implements Comparable<OvalElement>
+    implements OvalObject, Comparable<OvalElement>
 {
 
     private String  oval_id;

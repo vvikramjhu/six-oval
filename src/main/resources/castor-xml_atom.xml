@@ -17,7 +17,7 @@
     <class name="jp.go.aist.six.oval.core.ws.AtomFeed">
         <map-to xml="feed"
             ns-uri="http://www.w3.org/2005/Atom"
-            ns-prefix=""/>
+            ns-prefix="atom"/>
 
         <field name="id" type="string">
             <bind-xml name="id" node="element"/>
@@ -39,15 +39,40 @@
             <bind-xml name="link" node="element"/>
         </field>
 
+        <field name="extensionElements" 
+            type="jp.go.aist.six.oval.core.ws.AtomExtensionElements"
+            container="false"
+            >
+            <bind-xml name="extensionElements" node="element"/>
+        </field>
+<!--
+-->
+
+<!--
         <field name="extensionElement" 
-            type="java.lang.Object"
+            type="jp.go.aist.six.oval.model.v5.OvalObject"
             collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element" location="elements"/>
+        </field>
+
+        <field name="extensionElement" 
+            type="jp.go.aist.six.oval.model.v5.OvalObject"
+            collection="collection" container="false">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+
+        <field name="extensionElement" 
+            type="jp.go.aist.six.oval.model.v5.definitions.DefinitionType"
+            collection="collection">
+            <bind-xml name="definition" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+-->
             <!--
+            type="java.lang.Object"
             set-method="addExtensionElement"
             get-method="iterateExtensionElement"
             -->
-            <bind-xml auto-naming="deriveByClass" node="element"/>
-        </field>
     </class>
 
 
@@ -55,7 +80,7 @@
     <class name="jp.go.aist.six.oval.core.ws.AtomLink">
         <map-to xml="link"
             ns-uri="http://www.w3.org/2005/Atom"
-            ns-prefix=""/>
+            ns-prefix="atom"/>
 
         <field name="href" type="string">
             <bind-xml name="href" node="attribute"/>
@@ -73,6 +98,25 @@
             <bind-xml name="title" node="attribute"/>
         </field>
     </class>
+
+
+
+    <class name="jp.go.aist.six.oval.core.ws.AtomExtensionElements">
+        <map-to xml="extensionElement"
+            />
+<!--
+            ns-uri="http://www.w3.org/2005/Atom"
+            ns-prefix="atom"
+-->
+
+        <field name="extensionElement" 
+            type="jp.go.aist.six.oval.model.v5.OvalObject"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+    </class>
+
+
 
 </mapping>
 
