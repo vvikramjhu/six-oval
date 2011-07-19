@@ -162,6 +162,8 @@
                     value="http://www.w3.org/2001/XMLSchema-instance"/>
                 <entry key="oval"
                     value="http://oval.mitre.org/XMLSchema/oval-common-5"/>
+                <entry key="opensearch"
+                    value="http://a9.com/-/spec/opensearch/1.1/"/>
 <!-- *****
 -->
 <!--

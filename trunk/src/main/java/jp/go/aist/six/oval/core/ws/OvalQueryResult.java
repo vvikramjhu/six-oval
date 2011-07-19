@@ -21,38 +21,39 @@
 package jp.go.aist.six.oval.core.ws;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 
 /**
- * A set of OpenSearch response elements.
+ * A helper class for feeds.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OpenSearchResponse
+public class OvalQueryResult
     implements Serializable
 {
 
-    public static final String  NAMESPACE = "http://a9.com/-/spec/opensearch/1.1/";
+    private Date  _timestamp;
+    //{1..1}
+
+    private OvalQueryResultElements  _elements;
 
 
+    private OpenSearchResponse  _openSearchResponse;
 
-    private Integer  _totalResults;
-    //{0..1}
 
-    private Integer  _startIndex;
-    //{0..1}
+//    private final List<AtomLink>  _link = new ArrayList<AtomLink>();
+//    //{0..*}
 
-    private Integer  _itemsPerPage;
-    //{0..1}
 
 
 
     /**
      * Constructor.
      */
-    public OpenSearchResponse()
+    public OvalQueryResult()
     {
     }
 
@@ -60,51 +61,51 @@ public class OpenSearchResponse
 
     /**
      */
-    public void setTotalResults(
-                    final Integer totalResults
+    public void setTimestamp(
+                    final Date timestamp
                     )
     {
-        this._totalResults = totalResults;
+        this._timestamp = timestamp;
     }
 
 
-    public Integer getTotalResults()
+    public Date getTimestamp()
     {
-        return _totalResults;
+        return _timestamp;
     }
 
 
 
     /**
      */
-    public void setStartIndex(
-                    final Integer startIndex
+    public void setElements(
+                    final OvalQueryResultElements elements
                     )
     {
-        this._startIndex = startIndex;
+        this._elements = elements;
     }
 
 
-    public Integer getStartIndex()
+    public OvalQueryResultElements getElements()
     {
-        return _startIndex;
+        return this._elements;
     }
 
 
 
     /**
      */
-    public void setItemsPerPage(
-                    final Integer itemsPerPage
+    public void setOpenSearchResponse(
+                    final OpenSearchResponse osResponse
                     )
     {
-        this._itemsPerPage = itemsPerPage;
+        this._openSearchResponse = osResponse;
     }
 
 
-    public Integer getItemsPerPage()
+    public OpenSearchResponse getOpenSearchResponse()
     {
-        return _itemsPerPage;
+        return this._openSearchResponse;
     }
 
 
@@ -116,12 +117,12 @@ public class OpenSearchResponse
     @Override
     public String toString()
     {
-        return "OpenSearchResponse[totalResults=" + getTotalResults()
-             + ", startIndex=" + getStartIndex()
-             + ", itemsPerPage=" + getItemsPerPage()
+        return "OvalQueryResult[timestamp=" + getTimestamp()
+             + ", " + getOpenSearchResponse()
+             + ", elements=" + getElements()
              + "]"
              ;
     }
 
 }
-// OpenSearchResponse
+// OvalQueryResult

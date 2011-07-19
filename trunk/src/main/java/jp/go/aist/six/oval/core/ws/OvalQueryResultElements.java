@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import jp.go.aist.six.oval.model.v5.OvalObject;
 
 
 
@@ -35,11 +34,11 @@ import jp.go.aist.six.oval.model.v5.OvalObject;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class AtomExtensionElements
+public class OvalQueryResultElements
     implements Serializable
 {
 
-    private final List<OvalObject>  _extensionElement = new ArrayList<OvalObject>();
+    private final List<Object>  _elements = new ArrayList<Object>();
     //{0..*}
 
 
@@ -48,7 +47,7 @@ public class AtomExtensionElements
     /**
      * Constructor.
      */
-    public AtomExtensionElements()
+    public OvalQueryResultElements()
     {
     }
 
@@ -56,36 +55,36 @@ public class AtomExtensionElements
 
     /**
      */
-    public void setExtensionElement(
-                    final Collection<? extends OvalObject> extensionElements
+    public void setElements(
+                    final Collection<? extends Object> elements
                     )
     {
-        if (extensionElements != this._extensionElement) {
-            this._extensionElement.clear();
-            if (extensionElements != null  &&  extensionElements.size() > 0) {
-                this._extensionElement.addAll( extensionElements );
+        if (elements != this._elements) {
+            this._elements.clear();
+            if (elements != null  &&  elements.size() > 0) {
+                this._elements.addAll( elements );
             }
         }
     }
 
 
-    public boolean addExtensionElement(
-                    final OvalObject extensionElement
+    public boolean addElement(
+                    final Object element
                     )
     {
-        return this._extensionElement.add( extensionElement );
+        return this._elements.add( element );
     }
 
 
-    public Collection<OvalObject> getExtensionElement()
+    public Collection<Object> getElements()
     {
-        return this._extensionElement;
+        return this._elements;
     }
 
 
-    public Iterator<OvalObject> iterateExtensionElement()
+    public Iterator<Object> iterateElements()
     {
-        return this._extensionElement.iterator();
+        return this._elements.iterator();
     }
 
 
@@ -97,9 +96,8 @@ public class AtomExtensionElements
     @Override
     public String toString()
     {
-        return String.valueOf( getExtensionElement() )
-             ;
+        return String.valueOf( getElements() );
     }
 
 }
-// AtomExtensionElements
+// OvalQueryResultElements

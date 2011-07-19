@@ -20,14 +20,14 @@
     <test name="oval.core.ws" enabled="true">
         <groups>
             <run>
-                <include name="oval.core.ws.atom"/>
+                <include name="oval.core.ws.query"/>
                 <!--
                 -->
             </run>
         </groups>
 
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.ws.AtomFeedTest"/>
+            <class name="jp.go.aist.six.test.oval.core.ws.OvalQueryResultTest"/>
             <!--
             <class name="jp.go.aist.six.test.oval.core.ws.AtomTest"/>
             -->
