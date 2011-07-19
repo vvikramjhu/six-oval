@@ -469,7 +469,7 @@ public abstract class QueryParams<T>
 
 
 
-    public static class DateHandler
+    public static class DatetimeHandler
     extends Handler
     {
         public static final String  AFTER  = "after";
@@ -477,19 +477,19 @@ public abstract class QueryParams<T>
 
 
 
-        public static DateHandler newAfterHandler(
+        public static DatetimeHandler newAfterHandler(
                         final String field
                         )
         {
-            return new DateHandler( AFTER, field );
+            return new DatetimeHandler( AFTER, field );
         }
 
 
-        public static DateHandler newBeforeHandler(
+        public static DatetimeHandler newBeforeHandler(
                         final String field
                         )
         {
-            return new DateHandler( BEFORE, field );
+            return new DatetimeHandler( BEFORE, field );
         }
 
 
@@ -499,7 +499,7 @@ public abstract class QueryParams<T>
 
 
 
-        public DateHandler(
+        public DatetimeHandler(
                         final String queryKey,
                         final String field
                         )

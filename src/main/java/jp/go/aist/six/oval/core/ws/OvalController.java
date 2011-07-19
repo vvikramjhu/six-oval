@@ -26,7 +26,6 @@ import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
-import jp.go.aist.six.oval.model.v5.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.v5.results.OvalResults;
 import jp.go.aist.six.oval.model.v5.results.ResultsType;
@@ -304,23 +303,30 @@ public class OvalController
 
 
     //==============================================================
-    // /oval_definitions/definitions
+    // /d/definitions
     //==============================================================
 
-    // GET (query) /oval_definitions/definitions
+    // GET (query) Definitions
     //
-    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval_repo/oval_definitions/definitions?platform=Debian%20GNU%2fLinux%205%2e0&limit=1"
+    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval/d/definitions?platform=Debian%20GNU%2fLinux%205%2e0&limit=1"
+    //TODO: change return type to OvalQueryResult.
     @RequestMapping(
                     method=RequestMethod.GET
-                    ,value="/oval_definitions/definitions"
+                    ,value="/d/definitions"
                     ,headers="Accept=application/xml"
     )
-    public @ResponseBody DefinitionsType findDefinitions(
+    public @ResponseBody OvalQueryResult findDefinitions(
                     final DefinitionsQueryParams params
                     )
     throws OvalException
     {
-        return _service.findDefinitions( params );
+        List<DefinitionType>  defs = _service.findDefinitions( params );
+
+        OvalQueryResultElements  elements = new OvalQueryResultElements( defs );
+        OvalQueryResult  result = new OvalQueryResult();
+        result.setElements( elements );
+
+        return result;
     }
 
 
