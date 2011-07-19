@@ -40,7 +40,7 @@ import com.google.code.morphia.annotations.PrePersist;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class OvalDocument
-    implements Persistable<String>
+    implements OvalObject, Persistable<String>
 //    extends AbstractOvalObject
 {
 
