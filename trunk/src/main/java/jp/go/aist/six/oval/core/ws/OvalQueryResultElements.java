@@ -22,9 +22,11 @@ package jp.go.aist.six.oval.core.ws;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import jp.go.aist.six.oval.model.v5.OvalObject;
 
 
 
@@ -38,7 +40,7 @@ public class OvalQueryResultElements
     implements Serializable
 {
 
-    private final List<Object>  _elements = new ArrayList<Object>();
+    private final List<OvalObject>  _elements = new ArrayList<OvalObject>();
     //{0..*}
 
 
@@ -52,11 +54,29 @@ public class OvalQueryResultElements
     }
 
 
+    public OvalQueryResultElements(
+                    final Collection<? extends OvalObject> elements
+                    )
+    {
+        setElements( elements );
+    }
+
+
+    public OvalQueryResultElements(
+                    final OvalObject[] elements
+                    )
+    {
+        if (elements != null) {
+            setElements( Arrays.asList( elements ) );
+        }
+    }
+
+
 
     /**
      */
     public void setElements(
-                    final Collection<? extends Object> elements
+                    final Collection<? extends OvalObject> elements
                     )
     {
         if (elements != this._elements) {
@@ -69,20 +89,20 @@ public class OvalQueryResultElements
 
 
     public boolean addElement(
-                    final Object element
+                    final OvalObject element
                     )
     {
         return this._elements.add( element );
     }
 
 
-    public Collection<Object> getElements()
+    public Collection<OvalObject> getElements()
     {
         return this._elements;
     }
 
 
-    public Iterator<Object> iterateElements()
+    public Iterator<OvalObject> iterateElements()
     {
         return this._elements.iterator();
     }

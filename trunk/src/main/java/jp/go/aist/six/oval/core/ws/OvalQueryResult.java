@@ -55,6 +55,7 @@ public class OvalQueryResult
      */
     public OvalQueryResult()
     {
+        _timestamp = new Date();
     }
 
 

@@ -43,7 +43,8 @@ public class OvalSystemCharacteristicsQueryParams
      */
     public OvalSystemCharacteristicsQueryParams()
     {
-        _addHandler( DateHandler.newAfterHandler( "generator.timestamp" ) );
+        _addHandler( DatetimeHandler.newAfterHandler(  "generator.timestamp" ) );
+        _addHandler( DatetimeHandler.newBeforeHandler( "generator.timestamp" ) );
         _addHandler( new PatternHandler( PRIMARY_HOST_NAME, "system_info.primary_host_name" ) );
         _addHandler( new PatternHandler( OS_NAME,           "system_info.os_name"           ) );
     }
@@ -56,13 +57,30 @@ public class OvalSystemCharacteristicsQueryParams
                     final String after
     )
     {
-        _setParam( DateHandler.AFTER, after );
+        _setParam( DatetimeHandler.AFTER, after );
     }
 
 
     public String getAfter()
     {
-        return _getParam( DateHandler.AFTER );
+        return _getParam( DatetimeHandler.AFTER );
+    }
+
+
+
+    /**
+     */
+    public void setBefore(
+                    final String before
+    )
+    {
+        _setParam( DatetimeHandler.BEFORE, before );
+    }
+
+
+    public String getBefore()
+    {
+        return _getParam( DatetimeHandler.BEFORE );
     }
 
 

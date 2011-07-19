@@ -24,7 +24,6 @@ import java.util.List;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
-import jp.go.aist.six.oval.model.v5.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.v5.results.OvalResults;
 import jp.go.aist.six.oval.model.v5.results.ResultsType;
 import jp.go.aist.six.oval.model.v5.results.SystemType;
@@ -169,11 +168,12 @@ public class MongoOvalService
 
 
     //==============================================================
-    // /oval_definitions/definitions
+    // /d/definitions
     //==============================================================
 
-    // GET (query) /oval_definitions/definitions
-    public DefinitionsType findDefinitions(
+    // GET (query)
+    // TODO: change the return type to List<DefinitionType>.
+    public List<DefinitionType> findDefinitions(
                     final DefinitionsQueryParams params
                     )
     throws OvalException
@@ -192,15 +192,17 @@ public class MongoOvalService
             throw new OvalException( ex );
         }
 
-        DefinitionsType  defs = new DefinitionsType();
-        if (def_list != null  &&  def_list.size() > 0) {
-            for (DefinitionType  d : def_list) {
-                defs.addDefinition( d );
-            }
-        }
-        _LOG_.debug( "#definitions in results: " + defs.size() );
+        return def_list;
 
-        return defs;
+//        DefinitionsType  defs = new DefinitionsType();
+//        if (def_list != null  &&  def_list.size() > 0) {
+//            for (DefinitionType  d : def_list) {
+//                defs.addDefinition( d );
+//            }
+//        }
+//        _LOG_.debug( "#definitions in results: " + defs.size() );
+//
+//        return defs;
     }
 
 
