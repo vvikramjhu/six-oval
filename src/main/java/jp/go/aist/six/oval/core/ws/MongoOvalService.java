@@ -172,7 +172,6 @@ public class MongoOvalService
     //==============================================================
 
     // GET (query)
-    // TODO: change the return type to List<DefinitionType>.
     public List<DefinitionType> findDefinitions(
                     final DefinitionsQueryParams params
                     )
@@ -206,6 +205,32 @@ public class MongoOvalService
     }
 
 
+
+    public DefinitionType getLatestDefinition(
+                    final String oval_id
+                    )
+    throws OvalException
+    {
+        _LOG_.debug( "oval id: " + oval_id );
+
+        DefinitionType  def = null;
+        try {
+            DAO<DefinitionType, String>  dao = _datastore.getDAO( DefinitionType.class );
+            Query<DefinitionType>  q = dao.createQuery().filter( "oval_id", oval_id ).order( "-oval_version" );
+
+            def = dao.findOne( q );
+            if (def == null) {
+                _LOG_.debug( "no definition found: oval id=" + oval_id );
+            } else {
+                _LOG_.debug( "definition found: persistent id=" + def.getPersistentID() );
+            }
+        } catch (Exception ex) {
+            throw new OvalException( ex );
+        }
+
+        return def;
+
+    }
 
     //==============================================================
     // /oval_system_characteristics
