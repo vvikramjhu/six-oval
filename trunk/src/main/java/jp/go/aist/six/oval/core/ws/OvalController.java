@@ -306,7 +306,7 @@ public class OvalController
     // /d/definitions
     //==============================================================
 
-    // GET (query) Definitions
+    // GET (query) definitions
     //
     // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval/d/definitions?platform=Debian%20GNU%2fLinux%205%2e0&limit=1"
     //TODO: change return type to OvalQueryResult.
@@ -332,17 +332,20 @@ public class OvalController
 
 
     //==============================================================
-    // /oval_definitions/definitions/{id}
+    // /d/definitions/{id}
     //==============================================================
 
 
-    // GET /oval_definitions/definitions/{id}
+    // GET /d/definitions/{id}
     //
-    // about path variables including ".",
+    // NOTE: OVAL IDs contain "." (dot) characters.
+    //       The character has special meaning for the Spring framework.
+    // about path variables including ".":
     // @see http://forum.springsource.org/showthread.php?78085-Problems-with-RequestMapping&p=263563
+    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval_rep/d/definitions/oval:org%2emitre%2eoval:def:7222"
     @RequestMapping(
                     method=RequestMethod.GET
-                    ,value="/oval_definitions/definitions/{id:.*}"
+                    ,value="/d/definitions/{id:.*}"
                     ,headers="Accept=application/xml"
     )
     public @ResponseBody DefinitionType getDefinition(
@@ -350,7 +353,8 @@ public class OvalController
                     )
     throws OvalException
     {
-        return _getResource( DefinitionType.class, id );
+        return _service.getLatestDefinition( id );
+//        return _getResource( DefinitionType.class, id );
     }
 
 
