@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.core.ws;
 import java.util.List;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
+import jp.go.aist.six.oval.model.v5.OvalObject;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.results.OvalResults;
 import jp.go.aist.six.oval.model.v5.results.ResultsType;
@@ -155,6 +156,36 @@ public class MongoOvalService
 
 
 
+    /**
+     * Generic query API.
+     *
+     */
+    public <T extends OvalObject> OvalQueryResult find(
+                    final Class<T> type,
+                    final QueryParams<T> params
+                    )
+    throws OvalException
+    {
+        _LOG_.debug( "query: type=" + type + ", params: " + params );
+
+        List<T>  list = null;
+        try {
+            DAO<T, String>  dao = _datastore.getDAO( type );
+            Query<T>  q = dao.createQuery();
+            if (params != null) {
+                params.buildQuery( q );
+            }
+
+            list = dao.find( q ).asList();
+            _LOG_.debug( "#objects found: " + list.size() );
+        } catch (Exception ex) {
+            throw new OvalException( ex );
+        }
+
+        OvalQueryResult  result = new OvalQueryResult( list );
+        return result;
+    }
+
 
     //==============================================================
     // /build_oval_definitions
@@ -172,40 +203,39 @@ public class MongoOvalService
     //==============================================================
 
     // GET (query)
-    public List<DefinitionType> findDefinitions(
+    public OvalQueryResult findDefinitions(
                     final DefinitionsQueryParams params
                     )
     throws OvalException
     {
-        _LOG_.debug( "query params: " + params );
-
-        List<DefinitionType>  def_list = null;
-        try {
-            DAO<DefinitionType, String>  dao = _datastore.getDAO( DefinitionType.class );
-            Query<DefinitionType>  q = dao.createQuery();
-            params.buildQuery( q );
-
-            def_list = dao.find( q ).asList();
-            _LOG_.debug( "#definitions found: " + def_list.size() );
-        } catch (Exception ex) {
-            throw new OvalException( ex );
-        }
-
-        return def_list;
-
-//        DefinitionsType  defs = new DefinitionsType();
-//        if (def_list != null  &&  def_list.size() > 0) {
-//            for (DefinitionType  d : def_list) {
-//                defs.addDefinition( d );
-//            }
-//        }
-//        _LOG_.debug( "#definitions in results: " + defs.size() );
-//
-//        return defs;
+        return find( DefinitionType.class, params );
     }
+//    public List<DefinitionType> findDefinitions(
+//                    final DefinitionsQueryParams params
+//                    )
+//    throws OvalException
+//    {
+//        _LOG_.debug( "query params: " + params );
+//
+//        List<DefinitionType>  def_list = null;
+//        try {
+//            DAO<DefinitionType, String>  dao = _datastore.getDAO( DefinitionType.class );
+//            Query<DefinitionType>  q = dao.createQuery();
+//            params.buildQuery( q );
+//
+//            def_list = dao.find( q ).asList();
+//            _LOG_.debug( "#definitions found: " + def_list.size() );
+//        } catch (Exception ex) {
+//            throw new OvalException( ex );
+//        }
+//
+//        return def_list;
+//    }
 
 
 
+    /**
+     */
     public DefinitionType getLatestDefinition(
                     final String oval_id
                     )

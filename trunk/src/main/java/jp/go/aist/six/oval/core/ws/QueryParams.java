@@ -86,6 +86,7 @@ public abstract class QueryParams<T>
                 }
             }
         };
+        limitHandler.setValue( DEFAULT_LIMIT );
 
         _addHandler( offsetHandler );
         _addHandler( limitHandler );
@@ -116,7 +117,8 @@ public abstract class QueryParams<T>
     {
         Handler  handler = _handlers.get( queryKey );
         if (handler == null) {
-            throw new IllegalArgumentException( "unknown query key: " + queryKey );
+            return queryKey;
+//            throw new IllegalArgumentException( "unknown query key: " + queryKey );
         }
 
         return handler.field;
