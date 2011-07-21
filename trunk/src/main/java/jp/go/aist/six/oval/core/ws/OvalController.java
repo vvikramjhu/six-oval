@@ -356,6 +356,7 @@ public class OvalController
     throws OvalException
     {
         return _service.getLatestDefinition( id );
+
 //        return _getResource( DefinitionType.class, id );
     }
 

@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.core.ws;
 
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
+import com.google.code.morphia.query.Query;
 
 
 
@@ -33,6 +34,8 @@ public class DefinitionsQueryParams
     extends QueryParams<DefinitionType>
 {
 
+    public static final String  ID                  = "id";
+    public static final String  VERSION             = "version";
     public static final String  DEFINITION_CLASS    = "definition_class";
     public static final String  FAMILY              = "family";
     public static final String  PLATFORM            = "platform";
@@ -46,12 +49,62 @@ public class DefinitionsQueryParams
      */
     public DefinitionsQueryParams()
     {
+        _addHandler( new Handler( ID,               "oval_id"                    ) );
         _addHandler( new Handler( DEFINITION_CLASS, "class"                      ) );
         _addHandler( new Handler( FAMILY,           "metadata.affected.family"   ) );
         _addHandler( new Handler( PLATFORM,         "metadata.affected.platform" ) );
         _addHandler( new Handler( PRODUCT,          "metadata.affected.product"  ) );
 
+        Handler  versionHandler = new Handler( VERSION, "oval_version" )
+        {
+            @Override
+            public void buildQuery(
+                            final Query<?> query
+                            )
+            {
+                String  version = getValue();
+                if (version != null) {
+                    query.filter( field, _asInt( version ) );
+                }
+            }
+        };
+        _addHandler( versionHandler );
+
         setOrder( "oval_id" );
+    }
+
+
+
+    /**
+     */
+    public void setId(
+                    final String id
+    )
+    {
+        _setParam( ID, id );
+    }
+
+
+    public String getId()
+    {
+        return _getParam( ID );
+    }
+
+
+
+    /**
+     */
+    public void setVersion(
+                    final String version
+    )
+    {
+        _setParam( VERSION, version );
+    }
+
+
+    public String getVersion()
+    {
+        return _getParam( VERSION );
     }
 
 
