@@ -22,6 +22,8 @@ package jp.go.aist.six.oval.core.ws;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import jp.go.aist.six.oval.model.v5.OvalObject;
 
 
 
@@ -56,6 +58,15 @@ public class OvalQueryResult
     public OvalQueryResult()
     {
         _timestamp = new Date();
+    }
+
+
+    public OvalQueryResult(
+                    final List<? extends OvalObject> elements
+                    )
+    {
+        _timestamp = new Date();
+        setElements( new OvalQueryResultElements( elements ) );
     }
 
 

@@ -308,7 +308,7 @@ public class OvalController
 
     // GET (query) definitions
     //
-    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval/d/definitions?platform=Debian%20GNU%2fLinux%205%2e0&limit=1"
+    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval_rep/d/definitions?platform=Debian%20GNU%2fLinux%205%2e0&limit=1"
     //TODO: change return type to OvalQueryResult.
     @RequestMapping(
                     method=RequestMethod.GET
@@ -320,13 +320,15 @@ public class OvalController
                     )
     throws OvalException
     {
-        List<DefinitionType>  defs = _service.findDefinitions( params );
+        return _service.findDefinitions( params );
 
-        OvalQueryResultElements  elements = new OvalQueryResultElements( defs );
-        OvalQueryResult  result = new OvalQueryResult();
-        result.setElements( elements );
-
-        return result;
+//        List<DefinitionType>  defs = _service.findDefinitions( params );
+//
+//        OvalQueryResultElements  elements = new OvalQueryResultElements( defs );
+//        OvalQueryResult  result = new OvalQueryResult();
+//        result.setElements( elements );
+//
+//        return result;
     }
 
 

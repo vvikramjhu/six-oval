@@ -50,6 +50,8 @@ public class DefinitionsQueryParams
         _addHandler( new Handler( FAMILY,           "metadata.affected.family"   ) );
         _addHandler( new Handler( PLATFORM,         "metadata.affected.platform" ) );
         _addHandler( new Handler( PRODUCT,          "metadata.affected.product"  ) );
+
+        setOrder( "oval_id" );
     }
 
 
