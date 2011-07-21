@@ -236,6 +236,41 @@ public class MongoOvalService
 
     /**
      */
+    public DefinitionType getDefinition(
+                    final String oval_id,
+                    final String oval_version
+                    )
+    throws OvalException
+    {
+        _LOG_.debug( "oval id=" + oval_id + ", version=" + oval_version );
+
+        DefinitionType  def = null;
+        try {
+            DAO<DefinitionType, String>  dao = _datastore.getDAO( DefinitionType.class );
+            Query<DefinitionType>  q = dao.createQuery().filter( "oval_id", oval_id );
+
+            if (oval_version == null  ||  "latest".equalsIgnoreCase( oval_version )) {
+                q.order( "-oval_version" );
+            } else {
+                q.filter( "oval_version", Integer.valueOf( oval_version ) );
+            }
+
+            def = dao.findOne( q );
+            if (def == null) {
+                _LOG_.debug( "no definition found: oval id=" + oval_id );
+            } else {
+                _LOG_.debug( "definition found: persistent id=" + def.getPersistentID() );
+            }
+        } catch (Exception ex) {
+            throw new OvalException( ex );
+        }
+
+        return def;
+
+    }
+
+
+
     public DefinitionType getLatestDefinition(
                     final String oval_id
                     )
