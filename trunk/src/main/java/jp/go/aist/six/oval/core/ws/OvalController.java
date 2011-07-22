@@ -25,6 +25,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
+import jp.go.aist.six.oval.model.v5.OvalObject;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.v5.results.OvalResults;
@@ -132,7 +133,7 @@ public class OvalController
 
 
     /**
-     * Find the OVAL resource.
+     * Gets the OVAL resource.
      */
     private <K, T extends Persistable<K>>
     T _getResource(
@@ -174,6 +175,21 @@ public class OvalController
         _LOG_.debug( "HTTP response headers=" + headers );
 
         return new ResponseEntity<Void>( headers, HttpStatus.CREATED );
+    }
+
+
+
+    /**
+     * Retrieves the resources.
+     */
+    public <T extends OvalObject>
+    OvalQueryResult _findResource(
+                    final Class<T> type,
+                    final QueryParams<T> params
+                    )
+    throws OvalException
+    {
+        return _service.find( type, params );
     }
 
 
@@ -280,16 +296,16 @@ public class OvalController
 
 
     //==============================================================
-    // /oval_definitions/{id}
+    // /d/oval_definitions/{id}
     //==============================================================
 
     // GET (read) oval_definitions
     //
     // test: curl -v -X GET -HAccept:application/xml
-    //   http://localhost:8080/oval_repo/oval_definitions/{id}
+    //   http://localhost:8080/oval_rep/d/oval_definitions/{id}
     @RequestMapping(
                     method=RequestMethod.GET
-                    ,value="/oval_definitions/{id}"
+                    ,value="/d/oval_definitions/{id}"
                     ,headers="Accept=application/xml"
     )
     public @ResponseBody OvalDefinitions getOvalDefinitions(
@@ -306,10 +322,12 @@ public class OvalController
     // /d/definitions
     //==============================================================
 
+    // POST (create) definition --- not supported.
+
+
     // GET (query) definitions
     //
     // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval_rep/d/definitions?platform=Debian%20GNU%2fLinux%205%2e0&limit=1"
-    //TODO: change return type to OvalQueryResult.
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/d/definitions"
@@ -320,15 +338,9 @@ public class OvalController
                     )
     throws OvalException
     {
-        return _service.findDefinitions( params );
+        return _findResource( DefinitionType.class, params );
 
-//        List<DefinitionType>  defs = _service.findDefinitions( params );
-//
-//        OvalQueryResultElements  elements = new OvalQueryResultElements( defs );
-//        OvalQueryResult  result = new OvalQueryResult();
-//        result.setElements( elements );
-//
-//        return result;
+//        return _service.findDefinitions( params );
     }
 
 
@@ -336,6 +348,8 @@ public class OvalController
     //==============================================================
     // /d/definitions/{id}
     //==============================================================
+
+    // POST (create) definition --- error.
 
 
     // GET /d/definitions/{id}
@@ -356,8 +370,6 @@ public class OvalController
     throws OvalException
     {
         return _service.getLatestDefinition( id );
-
-//        return _getResource( DefinitionType.class, id );
     }
 
 
