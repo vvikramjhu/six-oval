@@ -27,7 +27,6 @@ import jp.go.aist.six.oval.model.v5.OvalDocument;
 import jp.go.aist.six.oval.model.v5.common.GeneratorType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import com.google.code.morphia.annotations.Entity;
-import com.google.code.morphia.annotations.Reference;
 
 
 
@@ -55,7 +54,7 @@ public class OvalResults
     //{0..5}
 
 
-    @Reference
+//    @Reference
     private OvalDefinitions  oval_definitions;
     //{0..1}
 

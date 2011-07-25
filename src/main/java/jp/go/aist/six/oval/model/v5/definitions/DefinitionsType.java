@@ -25,7 +25,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import jp.go.aist.six.oval.model.v5.OvalElementContainer;
-import com.google.code.morphia.annotations.Reference;
 
 
 
@@ -41,7 +40,7 @@ public class DefinitionsType
     extends OvalElementContainer<DefinitionType>    //{1..*}
 {
 
-    @Reference
+//    @Reference
     private final Set<DefinitionType>  definition = new HashSet<DefinitionType>();
 
 

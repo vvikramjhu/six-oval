@@ -25,8 +25,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Comparator;
 import com.google.code.morphia.annotations.Transient;
 
 
@@ -88,17 +87,17 @@ public abstract class OvalElementContainer<E extends OvalElement>
 
 
 
-    /**
-     */
-    private Set<String> _ovalIDSet()
-    {
-        Set<String>  set = new HashSet<String>();
-        for (OvalElement  e : _getElement()) {
-            set.add( e.getOvalID() );
-        }
-
-        return set;
-    }
+//    /**
+//     */
+//    private Set<String> _ovalIDSet()
+//    {
+//        Set<String>  set = new HashSet<String>();
+//        for (OvalElement  e : _getElement()) {
+//            set.add( e.getOvalID() );
+//        }
+//
+//        return set;
+//    }
 
 
 
@@ -133,29 +132,40 @@ public abstract class OvalElementContainer<E extends OvalElement>
     {
         int  thisHash = hashCode();
         if (_digest == null  ||  thisHash != _hashOnDigest) {
-            Set<String>  ovalIDs = _ovalIDSet();
-            int  ovalIDsHash = ovalIDs.hashCode();
-            MessageDigest  digest = null;
-            try {
-                digest = MessageDigest.getInstance( DIGEST_ALGORITHM );
-                                                  //@throws NoSuchAlgorithmException
-            } catch (NoSuchAlgorithmException ex) {
-                return null;
-            }
-
-            _update( digest, String.valueOf( ovalIDsHash ) );
-
-            _digest = _byteArrayToHexString( digest.digest() );
+            _digest = _computeDigest( _getElement() );
             _hashOnDigest = thisHash;
         }
 
         return _digest;
     }
+//    {
+//        int  thisHash = hashCode();
+//        if (_digest == null  ||  thisHash != _hashOnDigest) {
+//            Set<String>  ovalIDs = _ovalIDSet();
+//            int  ovalIDsHash = ovalIDs.hashCode();
+//            MessageDigest  digest = null;
+//            try {
+//                digest = MessageDigest.getInstance( DIGEST_ALGORITHM );
+//                                                  //@throws NoSuchAlgorithmException
+//            } catch (NoSuchAlgorithmException ex) {
+//                return null;
+//            }
+//
+//            _updateDigest( digest, String.valueOf( ovalIDsHash ) );
+//
+//            _digest = _byteArrayToHexString( digest.digest() );
+//            _hashOnDigest = thisHash;
+//        }
+//
+//        return _digest;
+//    }
 
 
 
 //  private static final OvalElementComparator  _ELEMENT_COMPARATOR_ =
 //  new OvalElementComparator();
+
+
 
 
     /**
@@ -172,15 +182,16 @@ public abstract class OvalElementContainer<E extends OvalElement>
             return null;
         }
 
+//        Collection<E>  elements = _getElement();
         if (elements == null  ||  elements.size() == 0) {
-            _update( digest, "" );
+            _updateDigest( digest, "" );
         } else {
             ArrayList<E>  list = new ArrayList<E>( elements );
-            Collections.sort( list );
-//            Collections.sort( list, _ELEMENT_COMPARATOR_ );
+            Collections.sort( list, new OvalElementComparator() );
+            // OvalElement is Comparable
 
             for (OvalElement  element : list) {
-                _update( digest, element );
+                _updateDigest( digest, element );
             }
         }
 
@@ -191,20 +202,21 @@ public abstract class OvalElementContainer<E extends OvalElement>
 
     /**
      */
-    private void _update(
+    private static void _updateDigest(
                     final MessageDigest digest,
                     final OvalElement element
                     )
     {
-        _update( digest, element.getOvalID() );
-//        _update( digest, element.getOvalVersion() );
+        _updateDigest( digest, element.ovalGetGlobalRef() );
+//        _updateDigest( digest, element.getOvalID() );
+//        _updateDigest( digest, String.valueOf( element.getOvalVersion() ) );
     }
 
 
 
     /**
      */
-    private static void _update(
+    private static void _updateDigest(
                     final MessageDigest digest,
                     final String s
                     )
@@ -254,6 +266,47 @@ public abstract class OvalElementContainer<E extends OvalElement>
         }
 
         return s.toString();
+    }
+
+
+
+    private static class OvalElementComparator
+    implements Comparator<OvalElement>
+    {
+
+        public OvalElementComparator()
+        {
+        }
+
+
+
+        @Override
+        public int compare(
+                        final OvalElement e1,
+                        final OvalElement e2
+                        )
+        {
+            String  id1 = e1.getOvalID();
+            String  id2 = e2.getOvalID();
+            int  order = id1.compareTo( id2 );
+            if (order != 0) {
+                return order;
+            }
+
+            int  version1 = e1.getOvalVersion();
+            int  version2 = e2.getOvalVersion();
+            return (version1 - version2);
+        }
+
+
+
+        @Override
+        public boolean equals(
+                        final Object obj
+                        )
+        {
+            return (obj instanceof OvalElementComparator);
+        }
     }
 
 }
