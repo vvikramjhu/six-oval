@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5.common;
 
+import jp.go.aist.six.oval.model.v5.Oval5Object;
+
 
 
 
@@ -32,6 +34,7 @@ package jp.go.aist.six.oval.model.v5.common;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class GeneratorInformation
+    implements Oval5Object
 //    extends AbstractOvalObject
 {
 

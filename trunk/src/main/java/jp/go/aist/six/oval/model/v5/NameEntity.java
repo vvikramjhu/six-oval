@@ -29,7 +29,7 @@ package jp.go.aist.six.oval.model.v5;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class NameEntity
-//    extends AbstractOvalObject
+    implements Oval5Object
 //    implements Comparable<NameEntity>
 {
 

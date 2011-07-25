@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5;
 
-import java.io.Serializable;
-import java.util.HashMap;
 
 
 
@@ -36,76 +34,54 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class RecurseFileSystemEnumeration
-    implements Serializable
+public enum RecurseFileSystemEnumeration
+    implements Oval5Enumeration
 {
 
-    private static final String  _ALL_      = "all";
-    private static final String  _LOCAL_    = "local";
-    private static final String  _DEFINED_  = "defined";
-
-
-    public static final RecurseFileSystemEnumeration  ALL      = new RecurseFileSystemEnumeration( _ALL_ );
-    public static final RecurseFileSystemEnumeration  LOCAL    = new RecurseFileSystemEnumeration( _LOCAL_ );
-    public static final RecurseFileSystemEnumeration  DEFINED  = new RecurseFileSystemEnumeration( _DEFINED_ );
-
-
-
-    private static HashMap<String, RecurseFileSystemEnumeration> _INIT_()
-    {
-        HashMap<String, RecurseFileSystemEnumeration>  map = new HashMap<String, RecurseFileSystemEnumeration>();
-        map.put( _ALL_,      ALL     );
-        map.put( _LOCAL_,    LOCAL   );
-        map.put( _DEFINED_,  DEFINED );
-        return map;
-    }
-
-    private static final HashMap<String, RecurseFileSystemEnumeration>  _INSTANCES_ = _INIT_();
+    ALL       ( "all" ),
+    LOCAL_    ( "local" ),
+    DEFINED_  ( "defined" );
 
 
 
     /**
+     * A factory method.
      */
-    public static RecurseFileSystemEnumeration valueOf(
-                    final String name
+    public static RecurseFileSystemEnumeration fromValue(
+                    final String value
                     )
     {
-        RecurseFileSystemEnumeration  flag = null;
-        if (name != null) {
-            flag = _INSTANCES_.get( name );
+        for (RecurseFileSystemEnumeration  e : RecurseFileSystemEnumeration.values()) {
+            if (e.value.equals( value )) {
+                return e;
+            }
         }
 
-        if (flag == null) {
-            throw new IllegalArgumentException(
-                            "invalid recurse file system: " + name );
-        }
-
-        return flag;
+        throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
+    private String  value = null;
 
 
 
     /**
      * Constructor.
      */
-    private RecurseFileSystemEnumeration(
-                    final String name
+    RecurseFileSystemEnumeration(
+                    final String value
                     )
     {
-        _name = name;
+        this.value = value;
     }
 
 
 
-    /**
-     */
-    public String getName()
+    @Override
+    public String value()
     {
-        return _name;
+        return this.value;
     }
 
 
@@ -117,7 +93,7 @@ public final class RecurseFileSystemEnumeration
     @Override
     public String toString()
     {
-        return getName();
+        return this.value;
     }
 
 }

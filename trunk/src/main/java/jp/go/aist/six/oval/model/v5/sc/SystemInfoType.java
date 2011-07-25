@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.v5.sc;
 
 import java.util.Collection;
+import jp.go.aist.six.oval.model.v5.Oval5Object;
 
 
 
@@ -33,7 +34,7 @@ import java.util.Collection;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class SystemInfoType
-//    extends AbstractOvalObject
+    implements Oval5Object
 //    implements Dependent<OvalSystemCharacteristics>
 {
 

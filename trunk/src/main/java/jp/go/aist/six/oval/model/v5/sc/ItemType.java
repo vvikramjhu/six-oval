@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.v5.sc;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.v5.Oval5Object;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.MessageType;
 
@@ -41,7 +42,7 @@ import jp.go.aist.six.oval.model.v5.common.MessageType;
 // if the common abstract super class is mapped to a super table.
 //public abstract class Item
 public class ItemType
-//    extends AbstractOvalObject
+    implements Oval5Object
 //    implements Dependent<OvalSystemCharacteristics>
 {
 

@@ -34,6 +34,7 @@ import java.util.Iterator;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class Container<E>
+    implements Oval5Object
 {
 
     /**

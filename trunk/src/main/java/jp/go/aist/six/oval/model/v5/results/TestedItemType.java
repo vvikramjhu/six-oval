@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.v5.results;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.v5.Oval5Object;
 import jp.go.aist.six.oval.model.v5.common.MessageType;
 
 
@@ -36,7 +37,7 @@ import jp.go.aist.six.oval.model.v5.common.MessageType;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class TestedItemType
-//    extends AbstractOvalObject
+    implements Oval5Object
 //    implements Dependent<TestType>
 {
 

@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5.mitre;
 
+import jp.go.aist.six.oval.model.v5.Oval5Object;
+
 
 
 
@@ -30,7 +32,7 @@ package jp.go.aist.six.oval.model.v5.mitre;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Contributor
-//    extends AbstractOvalObject
+    implements Oval5Object
 {
 
     private String  name;

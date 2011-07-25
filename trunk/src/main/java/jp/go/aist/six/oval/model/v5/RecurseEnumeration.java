@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5;
 
-import java.io.Serializable;
-import java.util.HashMap;
 
 
 
@@ -33,75 +31,54 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class RecurseEnumeration
-    implements Serializable
+public enum RecurseEnumeration
+    implements Oval5Enumeration
 {
 
-    private static final String  _DIRECTORIES_  = "directories";
-    private static final String  _SYMLINKS_     = "symlinks";
-    private static final String  _SYMLINKS_AND_DIRECTORIES_  = "symlinks and directories";
-
-
-    public static final RecurseEnumeration  DIRECTORIES    = new RecurseEnumeration( _DIRECTORIES_ );
-    public static final RecurseEnumeration  SYMLINKS       = new RecurseEnumeration( _SYMLINKS_ );
-    public static final RecurseEnumeration  SYMLINKS_AND_DIRECTORIES  = new RecurseEnumeration( _SYMLINKS_AND_DIRECTORIES_ );
-
-
-
-    private static HashMap<String, RecurseEnumeration> _INIT_()
-    {
-        HashMap<String, RecurseEnumeration>  map = new HashMap<String, RecurseEnumeration>();
-        map.put( _DIRECTORIES_,               DIRECTORIES              );
-        map.put( _SYMLINKS_,                  SYMLINKS                 );
-        map.put( _SYMLINKS_AND_DIRECTORIES_,  SYMLINKS_AND_DIRECTORIES );
-        return map;
-    }
-
-    private static final HashMap<String, RecurseEnumeration>  _INSTANCES_ = _INIT_();
+    DIRECTORIES              ( "directories" ),
+    SYMLINKS                 ( "symlinks" ),
+    SYMLINKS_AND_DIRECTORIES ( "symlinks and directories" );
 
 
 
     /**
+     * A factory method.
      */
-    public static RecurseEnumeration valueOf(
-                    final String name
+    public static RecurseEnumeration fromValue(
+                    final String value
                     )
     {
-        RecurseEnumeration  flag = null;
-        if (name != null) {
-            flag = _INSTANCES_.get( name );
+        for (RecurseEnumeration  e : RecurseEnumeration.values()) {
+            if (e.value.equals( value )) {
+                return e;
+            }
         }
 
-        if (flag == null) {
-            throw new IllegalArgumentException( "invalid recurse: " + name );
-        }
-
-        return flag;
+        throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
+    private String  value = null;
 
 
 
     /**
      * Constructor.
      */
-    private RecurseEnumeration(
-                    final String name
+    RecurseEnumeration(
+                    final String value
                     )
     {
-        _name = name;
+        this.value = value;
     }
 
 
 
-    /**
-     */
-    public String getName()
+    @Override
+    public String value()
     {
-        return _name;
+        return this.value;
     }
 
 
@@ -113,7 +90,7 @@ public final class RecurseEnumeration
     @Override
     public String toString()
     {
-        return getName();
+        return this.value;
     }
 
 }

@@ -25,7 +25,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
-import jp.go.aist.six.oval.model.v5.OvalObject;
+import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.v5.results.OvalResults;
@@ -269,7 +269,7 @@ public class OvalController
 
     // GET (list) oval_definitions
     //
-    // test: curl -v -X GET -HAccept:application/atom+xml http://localhost:8080/oval_repo/oval_definitions
+    // test: curl -v -X GET -HAccept:application/atom+xml http://localhost:8080/oval_rep/d/oval_definitions
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/oval_definitions"
@@ -446,7 +446,7 @@ public class OvalController
     //
     @RequestMapping(
                     method=RequestMethod.GET
-                    ,value="/oval_system_characteristics"
+                    ,value="/s/oval_system_characteristics"
                     ,headers="Accept=application/atom+xml"
     )
     public @ResponseBody Feed findOvalSystemCharacteristics(
@@ -536,7 +536,7 @@ public class OvalController
     // test: curl -v -X GET -HAccept:application/atom+xml http://localhost:8080/oval_repo/oval_results
     @RequestMapping(
                     method=RequestMethod.GET
-                    ,value="/oval_results"
+                    ,value="/r/oval_results"
                     ,headers="Accept=application/atom+xml"
     )
     public @ResponseBody Feed findOvalResults(
@@ -570,7 +570,7 @@ public class OvalController
 
     @RequestMapping(
                     method=RequestMethod.GET
-                    ,value="/oval_results/{id}"
+                    ,value="/r/oval_results/{id}"
                     ,headers="Accept=application/xml"
     )
     public @ResponseBody OvalResults getOvalResults(
@@ -587,7 +587,7 @@ public class OvalController
     //   http://localhost:8080/oval_repo/oval_results/results?primary_host_name=host1
     @RequestMapping(
                     method=RequestMethod.GET
-                    ,value="/oval_results/results"
+                    ,value="/r/oval_results/results"
                     ,headers="Accept=application/xml"
     )
     public @ResponseBody ResultsType getResults(
