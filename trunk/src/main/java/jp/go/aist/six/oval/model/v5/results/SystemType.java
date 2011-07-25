@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.model.v5.results;
 
 import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
-import com.google.code.morphia.annotations.Reference;
 
 
 
@@ -47,7 +46,7 @@ public class SystemType
     //{0..1}
 
 
-    @Reference
+//    @Reference
     private OvalSystemCharacteristics  oval_system_characteristics;
     //{1..1}
 

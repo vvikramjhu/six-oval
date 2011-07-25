@@ -1,5 +1,6 @@
 package jp.go.aist.six.oval.core.datastore.mongodb;
 
+import jp.go.aist.six.oval.model.v5.common.GeneratorType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
@@ -11,9 +12,12 @@ import jp.go.aist.six.oval.model.v5.definitions.TestType;
 import jp.go.aist.six.oval.model.v5.definitions.TestsType;
 import jp.go.aist.six.oval.model.v5.definitions.VariableType;
 import jp.go.aist.six.oval.model.v5.definitions.VariablesType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Key;
 import com.google.code.morphia.dao.DAO;
+import com.google.code.morphia.query.Query;
 
 
 
@@ -26,12 +30,42 @@ public class OvalDefinitionsDAO
 {
 
     /**
+     * Logger.
+     */
+    private static final Logger  _LOG_ =
+        LoggerFactory.getLogger( OvalDefinitionsDAO.class );
+
+
+
+    /**
      */
     public OvalDefinitionsDAO(
                     final Datastore ds
                     )
     {
         super( OvalDefinitions.class, ds );
+    }
+
+
+
+    protected Key<OvalDefinitions> _findUniqueKey(
+                    final OvalDefinitions oval_definitions
+                    )
+    {
+        Query<OvalDefinitions>  q = createQuery();
+
+        GeneratorType  generator = oval_definitions.getGenerator();
+        q.filter( "generator.timestamp", generator.getTimestamp() );
+        q.filter( "generator.schema_version", generator.getSchemaVersion() );
+
+        String  digest = oval_definitions.getDefinitionsDigest();
+        q.filter( "definitions_digest", digest );
+
+        _LOG_.debug( "find unique: query=" + q );
+        Key<OvalDefinitions>  id = find( q ).getKey();
+        _LOG_.debug( "find unique: id=" + id );
+
+        return id;
     }
 
 
@@ -45,6 +79,12 @@ public class OvalDefinitionsDAO
                     final OvalDefinitions oval_definitions
                     )
     {
+        Key<OvalDefinitions>  key = _findUniqueKey( oval_definitions );
+        if (key != null) {
+            oval_definitions.setPersistentID( String.valueOf( key.getId() ) );
+            return key;
+        }
+
         VariablesType  variables = oval_definitions.getVariables();
         if (variables != null) {
             DAO<VariableType, String>  dao = _getForwardingDAO( VariableType.class );
