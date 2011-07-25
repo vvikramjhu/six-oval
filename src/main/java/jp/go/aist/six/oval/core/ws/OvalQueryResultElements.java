@@ -26,7 +26,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import jp.go.aist.six.oval.model.v5.OvalObject;
+import jp.go.aist.six.oval.model.OvalObject;
 
 
 

@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5.results;
 
+import jp.go.aist.six.oval.model.v5.Oval5Object;
+
 
 
 
@@ -32,7 +34,7 @@ package jp.go.aist.six.oval.model.v5.results;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class DirectivesType
-//    extends AbstractOvalObject
+    implements Oval5Object
 {
 
     private DirectiveType  definition_true;

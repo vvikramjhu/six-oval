@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.mitre;
 
-import jp.go.aist.six.oval.model.v5.OvalEnumeration;
+import jp.go.aist.six.oval.model.v5.Oval5Enumeration;
 
 
 
@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.v5.OvalEnumeration;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public enum DefinitionStatusEnumeration
-    implements OvalEnumeration
+    implements Oval5Enumeration
 {
 
     DRAFT      ( "DRAFT" ),

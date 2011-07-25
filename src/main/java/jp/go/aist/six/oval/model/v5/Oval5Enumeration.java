@@ -18,59 +18,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.mitre;
-
-import jp.go.aist.six.oval.model.v5.Oval5Object;
-
+package jp.go.aist.six.oval.model.v5;
 
 
 
 /**
+ * A marker interface for all the OVAL enumeration types.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class Event
-    implements Oval5Object
+public interface Oval5Enumeration
+    extends Oval5Object
 {
 
-    private String  date;
-//    private Date  _date;
-
-
-
-    /**
-     * Constructor.
-     */
-    public Event()
-    {
-    }
-
-
-    public Event(
-                    final String date
-                    )
-    {
-        setDate( date );
-    }
-
-
-
-    /**
-     */
-    public void setDate(
-                    final String date
-                    )
-    {
-        this.date = date;
-    }
-
-
-    public String getDate()
-    {
-        return this.date;
-    }
+    public String value();
 
 }
-// Event
+// Oval5Enumeration

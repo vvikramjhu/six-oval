@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.results;
 
-import jp.go.aist.six.oval.model.v5.OvalEnumeration;
+import jp.go.aist.six.oval.model.v5.Oval5Enumeration;
 
 
 
@@ -34,7 +34,7 @@ import jp.go.aist.six.oval.model.v5.OvalEnumeration;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public enum ResultEnumeration
-    implements OvalEnumeration
+    implements Oval5Enumeration
 {
 
     TRUE           ( "true" ),

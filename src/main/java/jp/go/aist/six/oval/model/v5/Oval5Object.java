@@ -20,19 +20,21 @@
 
 package jp.go.aist.six.oval.model.v5;
 
+import jp.go.aist.six.oval.model.OvalObject;
+
+
 
 
 /**
- * A marker interface for all the OVAL enumeration types.
+ * A marker interface for all the OVAL version 5 domain objects.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public interface OvalEnumeration
+public interface Oval5Object
+    extends OvalObject
 {
 
-    public String value();
-
 }
-// OvalEnumeration
+// Oval5Object

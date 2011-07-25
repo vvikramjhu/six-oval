@@ -18,13 +18,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5;
+package jp.go.aist.six.oval.model;
 
 
 
 
 /**
- * A marker interface for all the OVAL domain object except enumerations.
+ * A marker interface for all the OVAL domain objects except enumerations.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
@@ -34,8 +34,4 @@ public interface OvalObject
 {
 
 }
-//public interface OvalObject<K>
-//extends Persistable<K>
-//{
-//}
 // OvalObject

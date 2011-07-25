@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.results;
 
+import jp.go.aist.six.oval.model.v5.Oval5Object;
 import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
 
 
@@ -34,7 +35,7 @@ import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class SystemType
-//    extends AbstractOvalObject
+    implements Oval5Object
 //    implements Dependent<OvalResults>
 {
 

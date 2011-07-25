@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.model.v5;
 
-import java.io.Serializable;
-import java.util.HashMap;
 
 
 
@@ -33,75 +31,54 @@ import java.util.HashMap;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class RecurseDirectionEnumeration
-    implements Serializable
+public enum RecurseDirectionEnumeration
+    implements Oval5Enumeration
 {
 
-    private static final String  _NONE_  = "none";
-    private static final String  _UP_    = "up";
-    private static final String  _DOWN_  = "down";
-
-
-    public static final RecurseDirectionEnumeration  NONE  = new RecurseDirectionEnumeration( _NONE_ );
-    public static final RecurseDirectionEnumeration  UP    = new RecurseDirectionEnumeration( _UP_ );
-    public static final RecurseDirectionEnumeration  DOWN  = new RecurseDirectionEnumeration( _DOWN_ );
-
-
-
-    private static HashMap<String, RecurseDirectionEnumeration> _INIT_()
-    {
-        HashMap<String, RecurseDirectionEnumeration>  map = new HashMap<String, RecurseDirectionEnumeration>();
-        map.put( _NONE_,  NONE );
-        map.put( _UP_,    UP   );
-        map.put( _DOWN_,  DOWN );
-        return map;
-    }
-
-    private static final HashMap<String, RecurseDirectionEnumeration>  _INSTANCES_ = _INIT_();
+    NONE  ( "none" ),
+    UP    ( "up" ),
+    DOWN  ( "down" );
 
 
 
     /**
+     * A factory method.
      */
-    public static RecurseDirectionEnumeration valueOf(
-                    final String name
+    public static RecurseDirectionEnumeration fromValue(
+                    final String value
                     )
     {
-        RecurseDirectionEnumeration  flag = null;
-        if (name != null) {
-            flag = _INSTANCES_.get( name );
+        for (RecurseDirectionEnumeration  e : RecurseDirectionEnumeration.values()) {
+            if (e.value.equals( value )) {
+                return e;
+            }
         }
 
-        if (flag == null) {
-            throw new IllegalArgumentException( "invalid recurse direction: " + name );
-        }
-
-        return flag;
+        throw new IllegalArgumentException( value );
     }
 
 
 
-    private String  _name = null;
+    private String  value = null;
 
 
 
     /**
      * Constructor.
      */
-    private RecurseDirectionEnumeration(
-                    final String name
+    RecurseDirectionEnumeration(
+                    final String value
                     )
     {
-        _name = name;
+        this.value = value;
     }
 
 
 
-    /**
-     */
-    public String getName()
+    @Override
+    public String value()
     {
-        return _name;
+        return this.value;
     }
 
 
@@ -113,7 +90,7 @@ public final class RecurseDirectionEnumeration
     @Override
     public String toString()
     {
-        return getName();
+        return this.value;
     }
 
 }

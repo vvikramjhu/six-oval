@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.core.ws;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import jp.go.aist.six.oval.model.v5.OvalObject;
+import jp.go.aist.six.oval.model.OvalObject;
 
 
 
