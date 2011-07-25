@@ -116,17 +116,15 @@ public class OvalController
      * Builds a location URI from the specified request URL
      * and the created object ID.
      */
-    private URI _buildLocation(
+    private URI _buildResourceLocation(
                     final HttpServletRequest request,
                     final String id
                     )
     {
         String  requestUrl = request.getRequestURL().toString();
         URI  uri = new UriTemplate( "{requestUrl}/{id}" ).expand( requestUrl, id );
+//        _LOG_.debug( "Location: " + uri.toASCIIString() );
 
-        if (_LOG_.isDebugEnabled()) {
-            _LOG_.debug( "Location: " + uri.toASCIIString() );
-        }
         return uri;
     }
 
@@ -165,12 +163,14 @@ public class OvalController
                     )
     throws OvalException
     {
+        _LOG_.debug( "type=" + type + ", object=" + object );
+
         K  id = _service.createObject( type, object );
+        URI  locationUri = _buildResourceLocation( request, String.valueOf( id ) );
+//        _LOG_.debug( "resource created: location=" + locationUri.toASCIIString() );
 
         HttpHeaders  headers = new HttpHeaders();
-        headers.setLocation( _buildLocation( request, String.valueOf( id ) ) );
-//        headers.setLocation( _buildLocation( request, "test" ) );
-//        headers.setContentType( MediaType.APPLICATION_XML );
+        headers.setLocation( locationUri );
 
         _LOG_.debug( "HTTP response headers=" + headers );
 
@@ -189,6 +189,8 @@ public class OvalController
                     )
     throws OvalException
     {
+        _LOG_.debug( "type=" + type + ", params=" + params );
+
         return _service.find( type, params );
     }
 
@@ -243,13 +245,15 @@ public class OvalController
 
 
     //==============================================================
-    // /oval_definitions
+    // /d/oval_definitions
     //==============================================================
 
     // POST (create) oval_definitions
+    //
+    // test: curl -v -X POST -HContent-Type:application/xml --data-binary @definitions.xml http://localhost:8080/oval_rep/d/oval_definitions
     @RequestMapping(
                     method=RequestMethod.POST
-                    ,value="/oval_definitions"
+                    ,value="/d/oval_definitions"
                     ,headers="Content-Type=application/xml"
     )
     public ResponseEntity<Void> createOvalDefinitions(
@@ -303,6 +307,7 @@ public class OvalController
     //
     // test: curl -v -X GET -HAccept:application/xml
     //   http://localhost:8080/oval_rep/d/oval_definitions/{id}
+    // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval_rep/d/oval_definitions/60a24882-7f30-40d8-a77e-9f61b8c2bd48"
     @RequestMapping(
                     method=RequestMethod.GET
                     ,value="/d/oval_definitions/{id}"
