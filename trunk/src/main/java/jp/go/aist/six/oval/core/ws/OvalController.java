@@ -506,7 +506,7 @@ public class OvalController
 
 
     //==============================================================
-    // /oval_results
+    // /r/oval_results
     //==============================================================
 
     // POST /oval_results
@@ -517,7 +517,7 @@ public class OvalController
     //  http://localhost:8080/oval_repo/oval_results
     @RequestMapping(
                     method=RequestMethod.POST
-                    ,value="/oval_results"
+                    ,value="/r/oval_results"
                     ,headers="Content-Type=application/xml"
     )
     public ResponseEntity<Void> createOvalResults(
