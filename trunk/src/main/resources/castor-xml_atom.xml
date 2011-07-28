@@ -55,7 +55,7 @@
             />
 
         <field name="elements" 
-            type="jp.go.aist.six.oval.model.v5.OvalObject"
+            type="jp.go.aist.six.oval.model.OvalObject"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>

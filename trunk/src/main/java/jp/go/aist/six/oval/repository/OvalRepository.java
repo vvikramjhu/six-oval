@@ -55,7 +55,7 @@ public interface OvalRepository
     /**
      */
     public <T extends OvalObject>
-    OvalQueryResult find( Class<T> type, QueryParams<T> params )
+    OvalQueryResult find( Class<T> type, QueryParams params )
     throws OvalException;
 
 

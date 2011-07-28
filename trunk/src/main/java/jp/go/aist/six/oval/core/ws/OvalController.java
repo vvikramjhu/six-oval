@@ -185,7 +185,7 @@ public class OvalController
     public <T extends OvalObject>
     OvalQueryResult _findResource(
                     final Class<T> type,
-                    final QueryParams<T> params
+                    final DefaultQueryParams params
                     )
     throws OvalException
     {

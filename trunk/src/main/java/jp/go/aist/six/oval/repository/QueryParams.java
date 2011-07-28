@@ -23,8 +23,6 @@ package jp.go.aist.six.oval.repository;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import jp.go.aist.six.oval.model.OvalObject;
-
 
 
 
@@ -32,19 +30,19 @@ import jp.go.aist.six.oval.model.OvalObject;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class QueryParams<T extends OvalObject>
+public class QueryParams
 {
 
-    public static final String  LIMIT  = "limit";
-    public static final String  OFFSET = "offset";
-    public static final String  ORDER  = "order";
+//    public static final String  LIMIT  = "limit";
+//    public static final String  OFFSET = "offset";
+//    public static final String  ORDER  = "order";
+//
+//    // OpenSearch Time
+//    public static final String  DT_START = "dtstart";
+//    public static final String  DT_END   = "dtend";
 
-    // OpenSearch Time
-    public static final String  DT_START = "dtstart";
-    public static final String  DT_END   = "dtend";
 
-
-    public static final int DEFAULT_LIMIT = 10;
+//    public static final int DEFAULT_LIMIT = 10;
 
 
 
@@ -102,93 +100,93 @@ public class QueryParams<T extends OvalObject>
 
 
 
-    /**
-     */
-    public void setLimit(
-                    final Integer limit
-                    )
-    {
-        set( LIMIT, limit );
-    }
-
-
-    public int getLimit()
-    {
-        return Integer.class.cast( get( LIMIT, DEFAULT_LIMIT ) );
-    }
-
-
-
-    /**
-     * @param   offset
-     *  at which object the service should begin returning results.
-     */
-    public void setOffset(
-                    final Integer offset
-                    )
-    {
-        set( OFFSET, offset );
-    }
-
-
-    public Integer getOffset()
-    {
-        return Integer.class.cast( get( OFFSET ) );
-    }
-
-
-
-    /**
-     * @param   order
-     *  items be returned in a particular order.
-     *  The content must be comma-separated, e.g. "age,-date"
-     */
-    public void setOrder(
-                    final String order
-    )
-    {
-        set( ORDER, order );
-    }
-
-
-    public String getOrder()
-    {
-        return String.class.cast( get( ORDER ) );
-    }
-
-
-
-    /**
-     */
-    public void setDtstart(
-                    final String dtstart
-    )
-    {
-        set( DT_START, dtstart );
-    }
-
-
-    public String getDtstart()
-    {
-        return String.class.cast( get( DT_START ) );
-    }
-
-
-
-    /**
-     */
-    public void setDtend(
-                    final String dtend
-    )
-    {
-        set( DT_END, dtend );
-    }
-
-
-    public String getDtend()
-    {
-        return String.class.cast( get( DT_END ) );
-    }
+//    /**
+//     */
+//    public void setLimit(
+//                    final Integer limit
+//                    )
+//    {
+//        set( LIMIT, limit );
+//    }
+//
+//
+//    public int getLimit()
+//    {
+//        return Integer.class.cast( get( LIMIT, DEFAULT_LIMIT ) );
+//    }
+//
+//
+//
+//    /**
+//     * @param   offset
+//     *  at which object the service should begin returning results.
+//     */
+//    public void setOffset(
+//                    final Integer offset
+//                    )
+//    {
+//        set( OFFSET, offset );
+//    }
+//
+//
+//    public Integer getOffset()
+//    {
+//        return Integer.class.cast( get( OFFSET ) );
+//    }
+//
+//
+//
+//    /**
+//     * @param   order
+//     *  items be returned in a particular order.
+//     *  The content must be comma-separated, e.g. "age,-date"
+//     */
+//    public void setOrder(
+//                    final String order
+//    )
+//    {
+//        set( ORDER, order );
+//    }
+//
+//
+//    public String getOrder()
+//    {
+//        return String.class.cast( get( ORDER ) );
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public void setDtstart(
+//                    final String dtstart
+//    )
+//    {
+//        set( DT_START, dtstart );
+//    }
+//
+//
+//    public String getDtstart()
+//    {
+//        return String.class.cast( get( DT_START ) );
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public void setDtend(
+//                    final String dtend
+//    )
+//    {
+//        set( DT_END, dtend );
+//    }
+//
+//
+//    public String getDtend()
+//    {
+//        return String.class.cast( get( DT_END ) );
+//    }
 
 
 
