@@ -20,8 +20,7 @@
 
 package jp.go.aist.six.oval.core.ws;
 
-import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
-import com.google.code.morphia.query.Query;
+import jp.go.aist.six.oval.repository.DefinitionQueryKey;
 
 
 
@@ -31,45 +30,14 @@ import com.google.code.morphia.query.Query;
  * @version $Id$
  */
 public class DefinitionsQueryParams
-    extends QueryParams<DefinitionType>
+    extends DefaultQueryParams
 {
-
-    public static final String  ID                  = "id";
-    public static final String  VERSION             = "version";
-    public static final String  DEFINITION_CLASS    = "definition_class";
-    public static final String  FAMILY              = "family";
-    public static final String  PLATFORM            = "platform";
-    public static final String  PRODUCT             = "product";
-
-
-
 
     /**
      * Constructor.
      */
     public DefinitionsQueryParams()
     {
-        _addHandler( new Handler( ID,               "oval_id"                    ) );
-        _addHandler( new Handler( DEFINITION_CLASS, "class"                      ) );
-        _addHandler( new Handler( FAMILY,           "metadata.affected.family"   ) );
-        _addHandler( new Handler( PLATFORM,         "metadata.affected.platform" ) );
-        _addHandler( new Handler( PRODUCT,          "metadata.affected.product"  ) );
-
-        Handler  versionHandler = new Handler( VERSION, "oval_version" )
-        {
-            @Override
-            public void buildQuery(
-                            final Query<?> query
-                            )
-            {
-                String  version = getValue();
-                if (version != null) {
-                    query.filter( field, _asInt( version ) );
-                }
-            }
-        };
-        _addHandler( versionHandler );
-
         setOrder( "oval_id" );
     }
 
@@ -81,13 +49,13 @@ public class DefinitionsQueryParams
                     final String id
     )
     {
-        _setParam( ID, id );
+        set( DefinitionQueryKey.ID, id );
     }
 
 
     public String getId()
     {
-        return _getParam( ID );
+        return String.class.cast( get( DefinitionQueryKey.ID ) );
     }
 
 
@@ -98,13 +66,13 @@ public class DefinitionsQueryParams
                     final String version
     )
     {
-        _setParam( VERSION, version );
+        set( DefinitionQueryKey.VERSION, version );
     }
 
 
     public String getVersion()
     {
-        return _getParam( VERSION );
+        return String.class.cast( get( DefinitionQueryKey.VERSION ) );
     }
 
 
@@ -115,13 +83,13 @@ public class DefinitionsQueryParams
                     final String definitionClass
     )
     {
-        _setParam( DEFINITION_CLASS, definitionClass );
+        set( DefinitionQueryKey.DEFINITION_CLASS, definitionClass );
     }
 
 
     public String getDefinition_class()
     {
-        return _getParam( DEFINITION_CLASS );
+        return String.class.cast( get( DefinitionQueryKey.DEFINITION_CLASS ) );
     }
 
 
@@ -132,13 +100,13 @@ public class DefinitionsQueryParams
                     final String family
     )
     {
-        _setParam( FAMILY, family );
+        set( DefinitionQueryKey.FAMILY, family );
     }
 
 
     public String getFamily()
     {
-        return _getParam( FAMILY );
+        return String.class.cast( get( DefinitionQueryKey.FAMILY ) );
     }
 
 
@@ -149,13 +117,13 @@ public class DefinitionsQueryParams
                     final String platform
     )
     {
-        _setParam( PLATFORM, platform );
+        set( DefinitionQueryKey.PLATFORM, platform );
     }
 
 
     public String getPlatform()
     {
-        return _getParam( PLATFORM );
+        return String.class.cast( get( DefinitionQueryKey.PLATFORM ) );
     }
 
 
@@ -166,13 +134,13 @@ public class DefinitionsQueryParams
                     final String product
     )
     {
-        _setParam( PRODUCT, product );
+        set( DefinitionQueryKey.PRODUCT, product );
     }
 
 
     public String getProduct()
     {
-        return _getParam( PRODUCT );
+        return String.class.cast( get( DefinitionQueryKey.PRODUCT ) );
     }
 
 }

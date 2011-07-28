@@ -18,7 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.ws;
+package jp.go.aist.six.oval.repository;
+
 
 
 
@@ -27,17 +28,16 @@ package jp.go.aist.six.oval.core.ws;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class ResultsQueryParams
-    extends DefaultQueryParams
+public class DefinitionQueryKey
 {
 
-    /**
-     * Constructor.
-     */
-    public ResultsQueryParams()
-    {
-    }
+    public static final String  ID                  = "id";
+    public static final String  VERSION             = "version";
+    public static final String  DEFINITION_CLASS    = "definition_class";
+    public static final String  FAMILY              = "family";
+    public static final String  PLATFORM            = "platform";
+    public static final String  PRODUCT             = "product";
 
 }
-// ResultsQueryParams
+//DefinitionQueryKey
 

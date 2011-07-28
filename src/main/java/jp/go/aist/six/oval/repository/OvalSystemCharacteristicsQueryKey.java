@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.repository;
 
-import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
 
 
 
@@ -29,56 +28,12 @@ import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalSystemCharacteristicsQueryParams
-    extends QueryParams<OvalSystemCharacteristics>
+public class OvalSystemCharacteristicsQueryKey
 {
 
     public static final String  PRIMARY_HOST_NAME   = "primary_host_name";
     public static final String  OS_NAME             = "os_name";
 
-
-
-    /**
-     * Constructor.
-     */
-    public OvalSystemCharacteristicsQueryParams()
-    {
-    }
-
-
-
-    /**
-     */
-    public void setPrimary_host_name(
-                    final String primary_host_name
-    )
-    {
-        set( PRIMARY_HOST_NAME, primary_host_name );
-    }
-
-
-    public String getPrimary_host_name()
-    {
-        return String.class.cast( get( PRIMARY_HOST_NAME ) );
-    }
-
-
-
-    /**
-     */
-    public void setOs_name(
-                    final String os_name
-    )
-    {
-        set( OS_NAME, os_name );
-    }
-
-
-    public String getOs_name()
-    {
-        return String.class.cast( get( OS_NAME ) );
-    }
-
 }
-// OvalSystemCharacteristicsQueryParams
+// OvalSystemCharacteristicsQueryKey
 

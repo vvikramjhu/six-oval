@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.core.ws;
 import java.util.List;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
+import jp.go.aist.six.oval.core.repository.MongoQueryBuilder;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.results.OvalResults;
@@ -60,6 +61,10 @@ public class MongoOvalService
      * The data store sole instance.
      */
     private MongoDatastore  _datastore;
+
+
+
+    private final MongoQueryBuilder  _queryBuilder = new MongoQueryBuilder();
 
 
 
@@ -162,7 +167,7 @@ public class MongoOvalService
      */
     public <T extends OvalObject> OvalQueryResult find(
                     final Class<T> type,
-                    final QueryParams<T> params
+                    final DefaultQueryParams params
                     )
     throws OvalException
     {
@@ -172,9 +177,11 @@ public class MongoOvalService
         try {
             DAO<T, String>  dao = _datastore.getDAO( type );
             Query<T>  q = dao.createQuery();
-            if (params != null) {
-                params.buildQuery( q );
-            }
+            _queryBuilder.buildQuery( q, params );
+
+//            if (params != null) {
+//                params.buildQuery( q );
+//            }
 
             list = dao.find( q ).asList();
             _LOG_.debug( "#objects found: " + list.size() );
@@ -313,7 +320,10 @@ public class MongoOvalService
         try {
             DAO<OvalSystemCharacteristics, String>  dao = _datastore.getDAO( OvalSystemCharacteristics.class );
             Query<OvalSystemCharacteristics>  q = dao.createQuery();
-            params.buildQuery( q );
+            _queryBuilder.buildQuery( q, params );
+
+//            params.buildQuery( q );
+
             _LOG_.debug( "MongoDB query: " + q );
 
             list = dao.find( q ).asKeyList();
@@ -435,7 +445,9 @@ public class MongoOvalService
         try {
             DAO<SystemType, String>  dao = _datastore.getDAO( SystemType.class );
             Query<SystemType>  q = dao.createQuery();
-            params.buildQuery( q );
+            _queryBuilder.buildQuery( q, params );
+
+//            params.buildQuery( q );
 
             result_list = dao.find( q ).asList();
             _LOG_.debug( "#results found: " + result_list.size() );

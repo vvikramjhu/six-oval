@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.ws;
 
-import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryKey;
 
 
 
@@ -30,11 +30,11 @@ import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
  * @version $Id$
  */
 public class OvalSystemCharacteristicsQueryParams
-    extends QueryParams<OvalSystemCharacteristics>
+    extends DefaultQueryParams
 {
 
-    public static final String  PRIMARY_HOST_NAME   = "primary_host_name";
-    public static final String  OS_NAME             = "os_name";
+//    public static final String  PRIMARY_HOST_NAME   = "primary_host_name";
+//    public static final String  OS_NAME             = "os_name";
 
 
 
@@ -43,44 +43,6 @@ public class OvalSystemCharacteristicsQueryParams
      */
     public OvalSystemCharacteristicsQueryParams()
     {
-        _addHandler( DatetimeHandler.newAfterHandler(  "generator.timestamp" ) );
-        _addHandler( DatetimeHandler.newBeforeHandler( "generator.timestamp" ) );
-        _addHandler( new PatternHandler( PRIMARY_HOST_NAME, "system_info.primary_host_name" ) );
-        _addHandler( new PatternHandler( OS_NAME,           "system_info.os_name"           ) );
-    }
-
-
-
-    /**
-     */
-    public void setAfter(
-                    final String after
-    )
-    {
-        _setParam( DatetimeHandler.AFTER, after );
-    }
-
-
-    public String getAfter()
-    {
-        return _getParam( DatetimeHandler.AFTER );
-    }
-
-
-
-    /**
-     */
-    public void setBefore(
-                    final String before
-    )
-    {
-        _setParam( DatetimeHandler.BEFORE, before );
-    }
-
-
-    public String getBefore()
-    {
-        return _getParam( DatetimeHandler.BEFORE );
     }
 
 
@@ -89,15 +51,15 @@ public class OvalSystemCharacteristicsQueryParams
      */
     public void setPrimary_host_name(
                     final String primary_host_name
-    )
+                    )
     {
-        _setParam( PRIMARY_HOST_NAME, primary_host_name );
+        set( OvalSystemCharacteristicsQueryKey.PRIMARY_HOST_NAME, primary_host_name );
     }
 
 
     public String getPrimary_host_name()
     {
-        return _getParam( PRIMARY_HOST_NAME );
+        return String.class.cast( get( OvalSystemCharacteristicsQueryKey.PRIMARY_HOST_NAME ) );
     }
 
 
@@ -108,13 +70,13 @@ public class OvalSystemCharacteristicsQueryParams
                     final String os_name
     )
     {
-        _setParam( OS_NAME, os_name );
+        set( OvalSystemCharacteristicsQueryKey.OS_NAME, os_name );
     }
 
 
     public String getOs_name()
     {
-        return _getParam( OS_NAME );
+        return String.class.cast( get( OvalSystemCharacteristicsQueryKey.OS_NAME ) );
     }
 
 }
