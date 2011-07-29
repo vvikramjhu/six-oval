@@ -25,7 +25,7 @@ package jp.go.aist.six.oval.repository;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: QueryParams.java 1915 2011-07-26 01:56:41Z nakamura5akihito $
+ * @version $Id$
  */
 public class CommonQueryKey
 {

@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.core.ws;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
@@ -115,21 +117,28 @@ public class MongoOvalService
     /**
      * Returns the OVAL resource IDs.
      */
-    public <K, T extends Persistable<K>>
-    List<Key<T>> getObjectIDs(
+    public <K, T extends OvalObject & Persistable<K>>
+    Collection<K> getObjectIDs(
                     final Class<T> type
                     )
     throws OvalException
     {
         _LOG_.debug( "type=" + type );
 
-        List<Key<T>>  ids = null;
+        List<Key<T>>  keys = null;
         try {
             DAO<T, K>  dao = _datastore.getDAO( type );
-            ids = dao.find().asKeyList(); //dao.findIds();
-//            ids = dao.findIds();
+            keys = dao.find().asKeyList(); //dao.findIds();
+//            keys = dao.findIds();
         } catch (PersistenceException ex) {
             throw new OvalException( ex );
+        }
+
+        Collection<K>  ids = new ArrayList<K>();
+        for (Key<T>  key : keys) {
+            @SuppressWarnings( "unchecked" )
+            K  id = (K)key.getId();
+            ids.add( id );
         }
 
         return ids;
@@ -309,7 +318,7 @@ public class MongoOvalService
     //==============================================================
 
     // GET (query) /oval_system_characteristics
-    public List<Key<OvalSystemCharacteristics>> findOvalSystemCharacteristics(
+    public Collection<String> findOvalSystemCharacteristics(
                     final OvalSystemCharacteristicsQueryParams params
                     )
     throws OvalException
@@ -332,7 +341,13 @@ public class MongoOvalService
             throw new OvalException( ex );
         }
 
-        return list;
+        Collection<String>  ids = new ArrayList<String>();
+        for (Key<OvalSystemCharacteristics>  key : list) {
+            String  id = (String)key.getId();
+            ids.add( id );
+        }
+
+        return ids;
     }
 
 

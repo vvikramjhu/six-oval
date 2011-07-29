@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.core.ws;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -90,12 +91,14 @@ public class FeedHelper
           for (Key<T>  id : ids) {
                 _LOG_.debug( "link: id=" + id );
 
-                URI  uri = new UriTemplate( "{baseUri}/{id}" ).expand( baseUri, id.getId() );
-                Link  link = new Link();
-                link.setRel( rel );
-                link.setHref( uri.toASCIIString() );
-                _LOG_.debug( "atom:link: " + link );
+                Link  link = buildLink( baseUri, rel, id.getId());
 
+//                URI  uri = new UriTemplate( "{baseUri}/{id}" ).expand( baseUri, id.getId() );
+//                Link  link = new Link();
+//                link.setRel( rel );
+//                link.setHref( uri.toASCIIString() );
+
+                _LOG_.debug( "atom:link: " + link );
                 links.add( link );
             }
 
@@ -103,6 +106,62 @@ public class FeedHelper
         };
 
         return feed;
+    }
+
+
+
+    /**
+     */
+    public static Feed buildAtomFeed(
+                    final String title,
+                    final String baseUri,
+                    final String rel,
+                    final Collection<?> ids
+                    )
+    throws OvalException
+    {
+        Feed  feed = _createAtomFeedSkeleton( title );
+
+        if (ids != null  &&  ids.size() > 0) {
+            List<Link>  links = new ArrayList<Link>();
+          for (Object  id : ids) {
+                _LOG_.debug( "link: id=" + id );
+
+                Link  link = buildLink( baseUri, rel, id );
+
+//                URI  uri = new UriTemplate( "{baseUri}/{id}" ).expand( baseUri, id.getId() );
+//                Link  link = new Link();
+//                link.setRel( rel );
+//                link.setHref( uri.toASCIIString() );
+
+                _LOG_.debug( "atom:link: " + link );
+                links.add( link );
+            }
+
+            feed.setOtherLinks( links );
+        };
+
+        return feed;
+    }
+
+
+
+    /**
+     */
+    public static Link buildLink(
+                    final String baseUri,
+                    final String rel,
+                    final Object id
+                    )
+    throws OvalException
+    {
+        URI  uri = new UriTemplate( "{baseUri}/{id}" ).expand( baseUri, id );
+        Link  link = new Link();
+        link.setRel( rel );
+        link.setHref( uri.toASCIIString() );
+        _LOG_.debug( "atom:link: " + link );
+
+        return link;
     }
 
 }
