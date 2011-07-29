@@ -21,16 +21,18 @@
 package jp.go.aist.six.oval.core.ws;
 
 import java.net.URI;
-import java.util.List;
+import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
+import jp.go.aist.six.oval.core.repository.MongoOvalRepository;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.v5.results.OvalResults;
-import jp.go.aist.six.oval.model.v5.results.ResultsType;
 import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.repository.QueryParams;
+import jp.go.aist.six.oval.repository.QueryResult;
 import jp.go.aist.six.util.persist.Persistable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,7 +49,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.util.UriTemplate;
-import com.google.code.morphia.Key;
 import com.sun.syndication.feed.atom.Feed;
 
 
@@ -84,8 +85,9 @@ public class OvalController
     private MongoDatastore  _datastore;
 
 
-    private MongoOvalService  _service;
+//    private MongoOvalService  _service;
 
+    private MongoOvalRepository  _repository;
 
 
 
@@ -106,8 +108,11 @@ public class OvalController
     {
         _datastore = datastore;
 
-        _service = new MongoOvalService();
-        _service.setDatastore( _datastore );
+//        _service = new MongoOvalService();
+//        _service.setDatastore( _datastore );
+
+        _repository = new MongoOvalRepository();
+        _repository.setDatastore( _datastore );
     }
 
 
@@ -133,7 +138,7 @@ public class OvalController
     /**
      * Gets the OVAL resource.
      */
-    private <K, T extends Persistable<K>>
+    private <K, T extends OvalObject & Persistable<K>>
     T _getResource(
                     final Class<T> type,
                     final K id
@@ -142,10 +147,8 @@ public class OvalController
     {
         _LOG_.debug( "type=" + type + ", id=" + id );
 
-        T  resource = _service.getObject( type, id );
-
-//        HttpHeaders  headers = new HttpHeaders();
-//        _LOG_.debug( "HTTP response headers=" + headers );
+        T  resource = _repository.get( type, id );
+//        T  resource = _service.getObject( type, id );
 
         return resource;
     }
@@ -155,7 +158,7 @@ public class OvalController
     /**
      * Creates an OVAL resource.
      */
-    private <K, T extends Persistable<K>>
+    private <K, T extends OvalObject & Persistable<K>>
     ResponseEntity<Void> _createResource(
                     final HttpServletRequest request,
                     final Class<T> type,
@@ -165,7 +168,9 @@ public class OvalController
     {
         _LOG_.debug( "type=" + type + ", object=" + object );
 
-        K  id = _service.createObject( type, object );
+        K  id = _repository.create( type, object );
+//        K  id = _service.createObject( type, object );
+
         URI  locationUri = _buildResourceLocation( request, String.valueOf( id ) );
 //        _LOG_.debug( "resource created: location=" + locationUri.toASCIIString() );
 
@@ -182,16 +187,19 @@ public class OvalController
     /**
      * Retrieves the resources.
      */
-    public <T extends OvalObject>
-    OvalQueryResult _findResource(
+    public <K, T extends OvalObject & Persistable<K>>
+    QueryResult<T> _findResource(
                     final Class<T> type,
-                    final DefaultQueryParams params
+                    final QueryParams params
                     )
     throws OvalException
     {
         _LOG_.debug( "type=" + type + ", params=" + params );
 
-        return _service.find( type, params );
+        QueryResult<T>  result = _repository.find( type, params );
+        return result;
+
+//        return _service.find( type, params );
     }
 
 
@@ -280,7 +288,9 @@ public class OvalController
                     )
     throws OvalException
     {
-        List<Key<OvalDefinitions>>  ids = _service.getObjectIDs( OvalDefinitions.class );
+        Collection<String>  ids = _repository.findIDs( OvalDefinitions.class );
+//        Collection<String>  ids = _service.getObjectIDs( OvalDefinitions.class );
+////        List<Key<OvalDefinitions>>  ids = _service.getObjectIDs( OvalDefinitions.class );
         if (ids == null) {
             _LOG_.debug( "oval_definitions: #ids=0" );
         } else {
@@ -338,7 +348,7 @@ public class OvalController
                     ,value="/d/definitions"
                     ,headers="Accept=application/xml"
     )
-    public @ResponseBody OvalQueryResult findDefinitions(
+    public @ResponseBody QueryResult<DefinitionType> findDefinitions(
                     final DefinitionsQueryParams params
                     )
     throws OvalException
@@ -374,7 +384,8 @@ public class OvalController
                     )
     throws OvalException
     {
-        return _service.getLatestDefinition( id );
+        return _repository.getLatestDefinition( id );
+//        return _service.getLatestDefinition( id );
     }
 
 
@@ -455,7 +466,9 @@ public class OvalController
                     )
     throws OvalException
     {
-        List<Key<OvalSystemCharacteristics>>  ids = _service.findOvalSystemCharacteristics( params );
+        Collection<String>  ids = _repository.findIDs( OvalSystemCharacteristics.class, params );
+//        Collection<String>  ids = _service.findOvalSystemCharacteristics( params );
+////        List<Key<OvalSystemCharacteristics>>  ids = _service.findOvalSystemCharacteristics( params );
         if (ids == null) {
             _LOG_.debug( "oval_sc: #ids=0" );
         } else {
@@ -544,7 +557,9 @@ public class OvalController
                     )
     throws OvalException
     {
-        List<Key<OvalResults>>  ids = _service.getObjectIDs( OvalResults.class );
+        Collection<String>  ids = _repository.findIDs( OvalResults.class );
+//        Collection<String>  ids = _service.getObjectIDs( OvalResults.class );
+////        List<Key<OvalResults>>  ids = _service.getObjectIDs( OvalResults.class );
         if (ids == null) {
             _LOG_.debug( "oval_results: #ids=0" );
         } else {
@@ -590,12 +605,13 @@ public class OvalController
                     ,value="/r/oval_results/results"
                     ,headers="Accept=application/xml"
     )
-    public @ResponseBody ResultsType getResults(
+    public @ResponseBody QueryResult<OvalResults> getResults(
                     final ResultsQueryParams params
                     )
     throws OvalException
     {
-        return _service.findResults( params );
+        return _repository.find( OvalResults.class, params );
+//        return _service.findResults( params );
     }
 //    public @ResponseBody ResultsType getResults(
 //                    @RequestParam final String primary_host_name

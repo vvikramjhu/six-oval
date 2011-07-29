@@ -69,6 +69,16 @@ public class QueryParams
 
 
     /**
+     *
+     */
+    public boolean isEmpty()
+    {
+        return _values.isEmpty();
+    }
+
+
+
+    /**
      */
     public void set(
                     final String key,

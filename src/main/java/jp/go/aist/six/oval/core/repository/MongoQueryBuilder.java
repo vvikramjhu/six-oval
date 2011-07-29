@@ -37,7 +37,7 @@ import com.google.code.morphia.query.Query;
 
 /**
  * @author  Akihito Nakamura, AIST
- * @version $Id: QueryParams.java 1906 2011-07-21 02:41:01Z nakamura5akihito $
+ * @version $Id$
  */
 public class MongoQueryBuilder
 {
