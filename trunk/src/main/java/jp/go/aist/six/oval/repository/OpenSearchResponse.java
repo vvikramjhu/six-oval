@@ -57,6 +57,21 @@ public class OpenSearchResponse
     }
 
 
+    /**
+     * Constructor.
+     */
+    public OpenSearchResponse(
+                    final int totalResults,
+                    final int startIndex,
+                    final int itemsPerPage
+                    )
+    {
+        setTotalResults( totalResults );
+        setStartIndex( startIndex );
+        setItemsPerPage( itemsPerPage );
+    }
+
+
 
     /**
      */
