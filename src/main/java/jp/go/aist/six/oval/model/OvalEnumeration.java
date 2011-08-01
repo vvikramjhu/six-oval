@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5;
+package jp.go.aist.six.oval.model;
 
 
 
@@ -29,11 +29,11 @@ package jp.go.aist.six.oval.model.v5;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public interface Oval5Enumeration
-    extends Oval5Object
+public interface OvalEnumeration
+    extends OvalObject
 {
 
     public String value();
 
 }
-// Oval5Enumeration
+// OvalEnumeration

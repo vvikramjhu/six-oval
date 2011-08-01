@@ -132,6 +132,13 @@ public class MongoOvalRepository
         K  id = null;
         try {
             DAO<T, K>  dao = _datastore.getDAO( type );
+            K  pid = object.getPersistentID();
+            if (pid != null) {
+                boolean  exists = dao.exists( "_id", pid );
+                if (exists) {
+                    throw new OvalException( "object already persistent: ID=" + pid );
+                }
+            }
             dao.save( object );
             id = object.getPersistentID();
         } catch (PersistenceException ex) {
@@ -139,6 +146,33 @@ public class MongoOvalRepository
         }
 
         return id;
+    }
+
+
+
+    @Override
+    public <K, T extends OvalObject & Persistable<K>>
+    T save(
+                    final Class<T> type,
+                    final T object
+                    )
+    throws OvalException
+    {
+        _LOG_.debug( "type=" + type + ", object=" + object );
+
+        if (object instanceof Persistable) {
+        } else {
+            throw new OvalException( "object is not Persistable type: " + object.getClass() );
+        }
+
+        try {
+            DAO<T, K>  dao = _datastore.getDAO( type );
+            dao.save( object );
+        } catch (PersistenceException ex) {
+            throw new OvalException( ex );
+        }
+
+        return object;
     }
 
 

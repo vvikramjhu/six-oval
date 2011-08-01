@@ -64,67 +64,103 @@ public class MongoQueryBuilder
      */
     public MongoQueryBuilder()
     {
-        Handler  offsetHandler = new Handler( CommonQueryKey.OFFSET, null )
+        Handler  offsetHandler = new Handler( this, CommonQueryKey.OFFSET, null )
         {
             @Override
             public <S extends OvalObject>
-            void buildQuery(
+            void build(
                             final Query<S> query,
-                            final QueryParams params,
-                            final Map<String, Handler> handlers
+                            final String key,
+                            final Object value
                             )
             {
-                Object  value = params.get( this.key );
-                if (value != null) {
-                    query.offset( Integer.valueOf( String.valueOf( value ) ).intValue() );
-                }
+                query.offset( Integer.valueOf( String.valueOf( value ) ).intValue() );
             }
+
+
+//            @Override
+//            public <S extends OvalObject>
+//            void build(
+//                            final Query<S> query,
+//                            final String key,
+//                            final Map<String, Handler> handlers
+//                            )
+//            {
+//                Object  value = params.get( this.key );
+//                if (value != null) {
+//                    query.offset( Integer.valueOf( String.valueOf( value ) ).intValue() );
+//                }
+//            }
         };
 
-        Handler  limitHandler = new Handler( CommonQueryKey.LIMIT, null )
+        Handler  limitHandler = new Handler( this, CommonQueryKey.LIMIT, null )
         {
             @Override
             public <S extends OvalObject>
-            void buildQuery(
+            void build(
                             final Query<S> query,
-                            final QueryParams params,
-                            final Map<String, Handler> handlers
+                            final String key,
+                            final Object value
                             )
             {
-                Object  value = params.get( this.key, DEFAULT_LIMIT );
-                if (value != null) {
-                    query.limit( Integer.valueOf( String.valueOf( value ) ).intValue() );
-                }
+                query.limit( Integer.valueOf( String.valueOf( value ) ).intValue() );
             }
+
+
+//            @Override
+//            public <S extends OvalObject>
+//            void buildQuery(
+//                            final Query<S> query,
+//                            final QueryParams params,
+//                            final Map<String, Handler> handlers
+//                            )
+//            {
+//                Object  value = params.get( this.key, DEFAULT_LIMIT );
+//                if (value != null) {
+//                    query.limit( Integer.valueOf( String.valueOf( value ) ).intValue() );
+//                }
+//            }
         };
 
         _addHandler( offsetHandler );
         _addHandler( limitHandler );
-        _addHandler( new OrderHandler() );
+        _addHandler( new OrderHandler( this ) );
 
 
         // definition
-        _addHandler( new Handler( DefinitionQueryKey.ID,               "oval_id"                    ) );
-        _addHandler( new Handler( DefinitionQueryKey.DEFINITION_CLASS, "class"                      ) );
-        _addHandler( new Handler( DefinitionQueryKey.FAMILY,           "metadata.affected.family"   ) );
-        _addHandler( new Handler( DefinitionQueryKey.PLATFORM,         "metadata.affected.platform" ) );
-        _addHandler( new Handler( DefinitionQueryKey.PRODUCT,          "metadata.affected.product"  ) );
+        _addHandler( new Handler( this, DefinitionQueryKey.ID,               "oval_id"                    ) );
+        _addHandler( new Handler( this, DefinitionQueryKey.DEFINITION_CLASS, "class"                      ) );
+        _addHandler( new Handler( this, DefinitionQueryKey.FAMILY,           "metadata.affected.family"   ) );
+        _addHandler( new Handler( this, DefinitionQueryKey.PLATFORM,         "metadata.affected.platform" ) );
+        _addHandler( new Handler( this, DefinitionQueryKey.PRODUCT,          "metadata.affected.product"  ) );
 
-        Handler  versionHandler = new Handler( DefinitionQueryKey.VERSION, "oval_version" )
+        Handler  versionHandler = new Handler( this, DefinitionQueryKey.VERSION, "oval_version" )
         {
             @Override
             public <S extends OvalObject>
-            void buildQuery(
+            void build(
                             final Query<S> query,
-                            final QueryParams params,
-                            final Map<String, Handler> handlers
+                            final String key,
+                            final Object value
                             )
             {
-                Object  value = params.get( this.key );
-                if (value != null) {
-                    query.filter( this.field, Integer.valueOf( String.valueOf( value ) ).intValue() );
-                }
+                query.filter( toField( key ), Integer.valueOf( String.valueOf( value ) ).intValue() );
             }
+
+
+//            @Override
+//            public <S extends OvalObject>
+//            void buildQuery(
+//                            final Query<S> query,
+//                            final QueryParams params,
+//                            final Map<String, Handler> handlers
+//                            )
+//            {
+//                Object  value = params.get( this.key );
+//                if (value != null) {
+//                    query.filter( this.field, Integer.valueOf( String.valueOf( value ) ).intValue() );
+//                }
+//            }
         };
         _addHandler( versionHandler );
 
@@ -133,10 +169,10 @@ public class MongoQueryBuilder
 
 
         // SC
-        _addHandler( DatetimeHandler.newStartHandler(  "generator.timestamp" ) );
-        _addHandler( DatetimeHandler.newEndHandler(    "generator.timestamp" ) );
-        _addHandler( new PatternHandler( OvalSystemCharacteristicsQueryKey.PRIMARY_HOST_NAME, "system_info.primary_host_name" ) );
-        _addHandler( new PatternHandler( OvalSystemCharacteristicsQueryKey.OS_NAME,           "system_info.os_name"           ) );
+        _addHandler( DatetimeHandler.newStartHandler(  this, "generator.timestamp" ) );
+        _addHandler( DatetimeHandler.newEndHandler(    this, "generator.timestamp" ) );
+        _addHandler( new PatternHandler( this, OvalSystemCharacteristicsQueryKey.PRIMARY_HOST_NAME, "system_info.primary_host_name" ) );
+        _addHandler( new PatternHandler( this, OvalSystemCharacteristicsQueryKey.OS_NAME,           "system_info.os_name"           ) );
 
     }
 
@@ -158,6 +194,17 @@ public class MongoQueryBuilder
     }
 
 
+
+    protected final Handler _getHandler(
+                    final String key
+                    )
+    {
+        Handler  handler = _handlers.get( key );
+        return handler;
+    }
+
+
+
     protected final String _toField(
                     final String queryKey
                     )
@@ -169,6 +216,75 @@ public class MongoQueryBuilder
         }
 
         return handler.field;
+    }
+
+
+
+    //==============================================================
+    //  building query
+    //==============================================================
+
+    public <T extends OvalObject>
+    void buildFilter(
+                    final Query<T> query,
+                    final String field,
+                    final Object value
+                    )
+    {
+        query.filter( field, value );
+    }
+
+
+
+    public <T extends OvalObject>
+    void buildFilter(
+                    final Query<T> query,
+                    final String field,
+                    final String operator,
+                    final Object value
+                    )
+    {
+        query.filter( field + " " + operator, value );
+    }
+
+
+
+    public <T extends OvalObject>
+    void buildPatternFilter(
+                    final Query<T> query,
+                    final String field,
+                    final Object value
+                    )
+    {
+        String  pattern = String.valueOf( value );
+        Pattern  pat = Pattern.compile( ".*" + pattern + ".*", Pattern.CASE_INSENSITIVE );
+        query.filter( field, pat );
+    }
+
+
+
+    public <T extends OvalObject>
+    void buildOrder(
+                    final Query<T> query,
+                    final String order
+                    )
+    {
+        StringBuilder  s = new StringBuilder();
+        String[]  orderKeys = order.split( "," );
+        for (String  orderKey : orderKeys) {
+            if (s.length() > 0) {
+                s.append( "," );
+            }
+
+            if (orderKey.startsWith( "-" )) {
+                orderKey = orderKey.substring( 1 );
+                s.append( "-" );
+            }
+            Handler  handler = _getHandler( orderKey );
+            s.append( (handler == null ? orderKey : handler.getField()) );
+        }
+
+        query.order( s.toString() );
     }
 
 
@@ -247,6 +363,10 @@ public class MongoQueryBuilder
     //  Morphia Query
     //==============================================================
 
+    private final Handler  DEFAULT_HANDLER = new Handler( this, null, null );
+
+
+
     /**
      */
     public <T extends OvalObject>
@@ -255,10 +375,20 @@ public class MongoQueryBuilder
                     final QueryParams params
                     )
     {
-        for (Handler  handler : _handlers.values()) {
-            handler.buildQuery( query, params, _handlers );
+        for (String  key : params.keys()) {
+            Handler  handler = _getHandler( key );
+            if (handler == null) {
+                handler = DEFAULT_HANDLER;
+            }
+
+            handler.build( query, key, params.get( key ) );
         }
     }
+//    {
+//        for (Handler  handler : _handlers.values()) {
+//            handler.buildQuery( query, params, _handlers );
+//        }
+//    }
 
 
 
@@ -374,51 +504,83 @@ public class MongoQueryBuilder
      */
     protected static class Handler
     {
+
+        private final MongoQueryBuilder  _builder;
         public final String  key;
         public final String  field;
 //        public String  _value;
 
 
         public Handler(
-                        final String queryKey,
+                        final MongoQueryBuilder builder,
+                        final String key,
                         final String field
                         )
         {
-            if (queryKey == null) {
-                throw new IllegalArgumentException( "null query key" );
-            }
+//            if (queryKey == null) {
+//                throw new IllegalArgumentException( "null query key" );
+//            }
 
-            this.key = queryKey;
+            this._builder = builder;
+            this.key = key;
             this.field = field;
         }
 
 
-//        public final void setValue(
-//                        final String value
-//                        )
-//        {
-//            _value = value;
-//        }
-//
-//
-//        public final String getValue()
-//        {
-//            return _value;
-//        }
+
+        protected final MongoQueryBuilder getBuilder()
+        {
+            return _builder;
+        }
+
+
+
+        public final String getKey()
+        {
+            return this.key;
+        }
+
+
+        public final String getField()
+        {
+            return (this.field == null ? this.key : this.field);
+        }
+
+
+        public final String toField(
+                        final String key
+                        )
+        {
+            String  field = getField();
+            return (field == null ? key : field);
+        }
+
 
 
         public <T extends OvalObject>
-        void buildQuery(
+        void build(
                         final Query<T> query,
-                        final QueryParams params,
-                        final Map<String, Handler> handlers
+                        final String key,
+                        final Object value
                         )
         {
-            Object  value = params.get( this.key );
-            if (value != null) {
-                query.filter( field, value );
-            }
+            getBuilder().buildFilter( query, toField( key ), value );
         }
+
+
+
+//        public <T extends OvalObject>
+//        void buildQuery(
+//                        final Query<T> query,
+//                        final QueryParams params,
+//                        final Map<String, Handler> handlers
+//                        )
+//        {
+//            Object  value = params.get( this.key );
+//            if (value != null) {
+//                query.filter( field, value );
+//            }
+//        }
 
 
 
@@ -443,48 +605,61 @@ public class MongoQueryBuilder
     protected static class OrderHandler
     extends Handler
     {
-//        private final MongoQueryBuilder<?>  _params;
 
-
-        public OrderHandler()
+        public OrderHandler(
+                        final MongoQueryBuilder builder
+                        )
         {
-            super( CommonQueryKey.ORDER, null );
+            super( builder, CommonQueryKey.ORDER, null );
 //            _params = queryParams;
         }
 
 
         @Override
         public <T extends OvalObject>
-        void buildQuery(
+        void build(
                         final Query<T> query,
-                        final QueryParams params,
-                        final Map<String, Handler> handlers
+                        final String key,
+                        final Object value
                         )
         {
-            Object  value = params.get( this.key );
-            if (value == null) {
-                return;
-            }
-
-            String  order = String.valueOf( value );
-
-            StringBuilder  s = new StringBuilder();
-            String[]  orderKeys = order.split( "," );
-            for (String  orderKey : orderKeys) {
-                if (s.length() > 0) {
-                    s.append( "," );
-                }
-
-                if (orderKey.startsWith( "-" )) {
-                    orderKey = orderKey.substring( 1 );
-                    s.append( "-" );
-                }
-                Handler  handler = handlers.get( orderKey );
-                s.append( (handler == null ? orderKey : handler.field) );
-            }
-
-            query.order( s.toString() );
+            getBuilder().buildOrder( query, String.valueOf( value ) );
         }
+
+
+
+//        @Override
+//        public <T extends OvalObject>
+//        void buildQuery(
+//                        final Query<T> query,
+//                        final QueryParams params,
+//                        final Map<String, Handler> handlers
+//                        )
+//        {
+//            Object  value = params.get( this.key );
+//            if (value == null) {
+//                return;
+//            }
+//
+//            String  order = String.valueOf( value );
+//
+//            StringBuilder  s = new StringBuilder();
+//            String[]  orderKeys = order.split( "," );
+//            for (String  orderKey : orderKeys) {
+//                if (s.length() > 0) {
+//                    s.append( "," );
+//                }
+//
+//                if (orderKey.startsWith( "-" )) {
+//                    orderKey = orderKey.substring( 1 );
+//                    s.append( "-" );
+//                }
+//                Handler  handler = handlers.get( orderKey );
+//                s.append( (handler == null ? orderKey : handler.field) );
+//            }
+//
+//            query.order( s.toString() );
+//        }
 
     }
     // OrderHandler
@@ -495,43 +670,58 @@ public class MongoQueryBuilder
      * A query param handler generating string pattern match filter in the query.
      * e.g. {name:/Joe/} in MongoDB, name like ''%Joe%' in SQL
      */
-    protected static class PatternHandler
+    protected class PatternHandler
     extends Handler
     {
 
         public PatternHandler(
-                        final String queryKey,
+                        final MongoQueryBuilder builder,
+                        final String key,
                         final String field
                         )
         {
-            super( queryKey, field );
+            super( builder, key, field );
         }
+
 
 
         @Override
         public <T extends OvalObject>
-        void buildQuery(
+        void build(
                         final Query<T> query,
-                        final QueryParams params,
-                        final Map<String, Handler> handlers
+                        final String key,
+                        final Object value
                         )
         {
-            Object  value = params.get( this.key );
-            if (value == null) {
-                return;
-            }
-
-            String  pattern = String.valueOf( value );
-            Pattern  pat = Pattern.compile( ".*" + pattern + ".*", Pattern.CASE_INSENSITIVE );
-            query.filter( field, pat );
+            getBuilder().buildPatternFilter( query, toField( key ), value );
         }
+
+
+
+//        @Override
+//        public <T extends OvalObject>
+//        void buildQuery(
+//                        final Query<T> query,
+//                        final QueryParams params,
+//                        final Map<String, Handler> handlers
+//                        )
+//        {
+//            Object  value = params.get( this.key );
+//            if (value == null) {
+//                return;
+//            }
+//
+//            String  pattern = String.valueOf( value );
+//            Pattern  pat = Pattern.compile( ".*" + pattern + ".*", Pattern.CASE_INSENSITIVE );
+//            query.filter( field, pat );
+//        }
 
     }
     // PatternHandler
 
 
 
-    public static class DatetimeHandler
+    protected static class DatetimeHandler
     extends Handler
     {
 //        public static final String  AFTER  = "after";
@@ -540,18 +730,20 @@ public class MongoQueryBuilder
 
 
         public static DatetimeHandler newStartHandler(
+                        final MongoQueryBuilder builder,
                         final String field
                         )
         {
-            return new DatetimeHandler( CommonQueryKey.DT_START, field );
+            return new DatetimeHandler( builder, CommonQueryKey.DT_START, field, ">=" );
         }
 
 
         public static DatetimeHandler newEndHandler(
+                        final MongoQueryBuilder builder,
                         final String field
                         )
         {
-            return new DatetimeHandler( CommonQueryKey.DT_END, field );
+            return new DatetimeHandler( builder, CommonQueryKey.DT_END, field, "<" );
         }
 
 
@@ -560,46 +752,81 @@ public class MongoQueryBuilder
             new SimpleDateFormat( "yyyy-MM-dd" );
 
 
+        private final String  _operator;
+
 
         public DatetimeHandler(
-                        final String queryKey,
+                        final MongoQueryBuilder builder,
+                        final String key,
                         final String field
                         )
         {
-            super( queryKey, field );
+            this( builder, key, "=", field );
         }
+
+
+        public DatetimeHandler(
+                        final MongoQueryBuilder builder,
+                        final String key,
+                        final String field,
+                        final String operator
+                        )
+        {
+            super( builder, key, field );
+            this._operator = operator;
+        }
+
 
 
         @Override
         public <T extends OvalObject>
-        void buildQuery(
+        void build(
                         final Query<T> query,
-                        final QueryParams params,
-                        final Map<String, Handler> handlers
+                        final String key,
+                        final Object value
                         )
         {
-            Object  value = params.get( this.key );
-            if (value == null) {
-                return;
-            }
-
             try {
                 _DATE_FORMATTER_.parse( String.valueOf( value ) );
             } catch (ParseException ex) {
                 throw new RuntimeException( ex.getMessage() );
             }
 
-            if (CommonQueryKey.DT_START.equalsIgnoreCase( this.key )) {
-                query.field( this.field ).greaterThanOrEq( value );
-            } else if (CommonQueryKey.DT_END.equalsIgnoreCase( this.key )) {
-                query.field( this.field ).lessThan( value );
-            } else {
-                query.filter( this.field, value );
-            }
+            getBuilder().buildFilter( query, toField( key ), _operator, value );
         }
 
+
+
+//        @Override
+//        public <T extends OvalObject>
+//        void buildQuery(
+//                        final Query<T> query,
+//                        final QueryParams params,
+//                        final Map<String, Handler> handlers
+//                        )
+//        {
+//            Object  value = params.get( this.key );
+//            if (value == null) {
+//                return;
+//            }
+//
+//            try {
+//                _DATE_FORMATTER_.parse( String.valueOf( value ) );
+//            } catch (ParseException ex) {
+//                throw new RuntimeException( ex.getMessage() );
+//            }
+//
+//            if (CommonQueryKey.DT_START.equalsIgnoreCase( this.key )) {
+//                query.field( this.field ).greaterThanOrEq( value );
+//            } else if (CommonQueryKey.DT_END.equalsIgnoreCase( this.key )) {
+//                query.field( this.field ).lessThan( value );
+//            } else {
+//                query.filter( this.field, value );
+//            }
+//        }
+
     }
-    // PatternHandler
+    // DatetimeHandler
 
 }
 // MongoQueryBuilder

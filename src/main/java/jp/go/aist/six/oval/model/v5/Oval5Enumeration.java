@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5;
 
+import jp.go.aist.six.oval.model.OvalEnumeration;
+
 
 
 /**
@@ -30,10 +32,8 @@ package jp.go.aist.six.oval.model.v5;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public interface Oval5Enumeration
-    extends Oval5Object
+    extends OvalEnumeration, Oval5Object
 {
-
-    public String value();
 
 }
 // Oval5Enumeration

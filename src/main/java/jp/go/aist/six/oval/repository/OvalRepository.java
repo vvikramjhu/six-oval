@@ -62,6 +62,17 @@ public interface OvalRepository
     /**
      */
     public <K, T extends OvalObject & Persistable<K>>
+    T save(
+                    Class<T> type,
+                    T object
+                    )
+    throws OvalException;
+
+
+
+    /**
+     */
+    public <K, T extends OvalObject & Persistable<K>>
     QueryResult<T> find(
                     Class<T> type,
                     QueryParams params
