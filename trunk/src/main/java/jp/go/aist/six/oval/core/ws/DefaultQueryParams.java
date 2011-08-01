@@ -46,16 +46,17 @@ public class DefaultQueryParams
     /**
      */
     public void setLimit(
-                    final Integer limit
+                    final String limit
                     )
     {
         set( CommonQueryKey.LIMIT, limit );
     }
 
 
-    public int getLimit()
+    public String getLimit()
     {
-        return Integer.class.cast( get( CommonQueryKey.LIMIT ) );
+        return String.class.cast( get( CommonQueryKey.LIMIT ) );
+//        return Integer.class.cast( get( CommonQueryKey.LIMIT ) );
     }
 
 
