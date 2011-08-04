@@ -34,11 +34,18 @@ public class DefinitionsQueryParams
 {
 
     /**
+     * The default sorting order.
+     */
+    public static final String  DEFAULT_ORDER = "oval_id";
+
+
+
+    /**
      * Constructor.
      */
     public DefinitionsQueryParams()
     {
-        setOrder( "oval_id" );
+        setOrder( DEFAULT_ORDER );
     }
 
 

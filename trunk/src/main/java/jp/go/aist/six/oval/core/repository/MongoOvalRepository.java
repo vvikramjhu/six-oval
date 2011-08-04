@@ -41,6 +41,8 @@ import com.google.code.morphia.query.Query;
 
 
 /**
+ * An implementation of OvalRepository using MongoDB.
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */

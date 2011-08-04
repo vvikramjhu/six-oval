@@ -25,12 +25,12 @@ import java.io.Serializable;
 
 
 /**
- * A set of OpenSearch response elements.
+ * Metadata of query results.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OpenSearchResponse
+public class QueryResultMetadata
     implements Serializable
 {
 
@@ -52,7 +52,7 @@ public class OpenSearchResponse
     /**
      * Constructor.
      */
-    public OpenSearchResponse()
+    public QueryResultMetadata()
     {
     }
 
@@ -60,7 +60,7 @@ public class OpenSearchResponse
     /**
      * Constructor.
      */
-    public OpenSearchResponse(
+    public QueryResultMetadata(
                     final int totalResults,
                     final int startIndex,
                     final int itemsPerPage
@@ -131,7 +131,7 @@ public class OpenSearchResponse
     @Override
     public String toString()
     {
-        return "OpenSearchResponse[totalResults=" + getTotalResults()
+        return "QueryResultMetadata[totalResults=" + getTotalResults()
              + ", startIndex=" + getStartIndex()
              + ", itemsPerPage=" + getItemsPerPage()
              + "]"
@@ -139,4 +139,4 @@ public class OpenSearchResponse
     }
 
 }
-// OpenSearchResponse
+// QueryResultMetadata

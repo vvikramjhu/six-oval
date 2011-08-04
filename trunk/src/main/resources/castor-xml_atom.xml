@@ -33,8 +33,8 @@
         </field>
 -->
 
-        <field name="openSearchResponse" 
-            type="jp.go.aist.six.oval.repository.OpenSearchResponse"
+        <field name="metadata" 
+            type="jp.go.aist.six.oval.repository.QueryResultMetadata"
             container="true"
             >
             <bind-xml name="opensearch" node="element"/>
@@ -62,10 +62,14 @@
     </class>
 
 
-    <class name="jp.go.aist.six.oval.repository.OpenSearchResponse">
-        <map-to xml="opensearch_response"
+
+    <class name="jp.go.aist.six.oval.repository.QueryResultMetadata">
+        <map-to xml="query_result_metadata"
             ns-uri="http://a9.com/-/spec/opensearch/1.1/"
             ns-prefix="opensearch"/>
+<!--
+            xml="opensearch_response"
+-->
 
         <field name="totalResults" type="integer">
             <bind-xml name="totalResults" node="element"/>
