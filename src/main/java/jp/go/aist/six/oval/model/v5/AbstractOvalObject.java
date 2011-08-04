@@ -24,6 +24,8 @@ import jp.go.aist.six.util.castor.CastorPersistable;
 
 
 
+// TODO: Remove this class! This is not used.
+
 /**
  * A skeletal implementation of the OvalObject interface.
  *

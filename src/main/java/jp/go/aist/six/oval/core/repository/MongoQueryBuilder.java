@@ -114,9 +114,6 @@ public class MongoQueryBuilder
         };
         _addHandler( versionHandler );
 
-        //TODO:
-//        setOrder( "oval_id" );
-
 
         // SC
         _addHandler( DatetimeHandler.newStartHandler(  this, "generator.timestamp" ) );

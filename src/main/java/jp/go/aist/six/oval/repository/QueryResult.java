@@ -43,7 +43,7 @@ public class QueryResult<T extends OvalObject>
     private QueryResultElements<T>  _elements;
 
 
-    private OpenSearchResponse  _openSearchResponse;
+    private QueryResultMetadata  _metadata;
 
 
 //    private final List<AtomLink>  _link = new ArrayList<AtomLink>();
@@ -107,17 +107,17 @@ public class QueryResult<T extends OvalObject>
 
     /**
      */
-    public void setOpenSearchResponse(
-                    final OpenSearchResponse osResponse
+    public void setMetadata(
+                    final QueryResultMetadata metadata
                     )
     {
-        this._openSearchResponse = osResponse;
+        this._metadata = metadata;
     }
 
 
-    public OpenSearchResponse getOpenSearchResponse()
+    public QueryResultMetadata getMetadata()
     {
-        return this._openSearchResponse;
+        return this._metadata;
     }
 
 
@@ -130,7 +130,7 @@ public class QueryResult<T extends OvalObject>
     public String toString()
     {
         return "OvalQueryResult[timestamp=" + getTimestamp()
-             + ", " + getOpenSearchResponse()
+             + ", " + getMetadata()
              + ", elements=" + getElements()
              + "]"
              ;
