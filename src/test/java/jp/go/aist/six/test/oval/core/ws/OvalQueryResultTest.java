@@ -2,9 +2,10 @@ package jp.go.aist.six.test.oval.core.ws;
 
 import java.util.Date;
 import jp.go.aist.six.oval.core.OvalContext;
-import jp.go.aist.six.oval.core.ws.OpenSearchResponse;
-import jp.go.aist.six.oval.core.ws.OvalQueryResult;
-import jp.go.aist.six.oval.core.ws.OvalQueryResultElements;
+import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
+import jp.go.aist.six.oval.repository.QueryResult;
+import jp.go.aist.six.oval.repository.QueryResultElements;
+import jp.go.aist.six.oval.repository.QueryResultMetadata;
 import jp.go.aist.six.test.oval.core.DefinitionsSample;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.testng.Reporter;
@@ -41,7 +42,7 @@ public class OvalQueryResultTest
         Reporter.log( "\n//////////////////////////////////////////////////////////",
                         true );
 
-        OvalQueryResult  result = new OvalQueryResult();
+        QueryResult<DefinitionType>  result = new QueryResult<DefinitionType>();
         result.setTimestamp( new Date() );
 
 //        String  rel = "http://six.org/rels/oval_results";
@@ -61,11 +62,12 @@ public class OvalQueryResultTest
         Reporter.log( "XML: \n" + xml, true );
 
         Reporter.log( ">>> unmarshalling...", true );
-        OvalQueryResult  result2 = (OvalQueryResult)_xmlmapper.unmarshalFromString( xml );
+        @SuppressWarnings( "unchecked" )
+        QueryResult<DefinitionType>  result2 = (QueryResult<DefinitionType>)_xmlmapper.unmarshalFromString( xml );
         Reporter.log( "<<< unmarshalling done.", true );
         Reporter.log( "object: " + result2, true );
 
-        OvalQueryResultElements  elements = new OvalQueryResultElements();
+        QueryResultElements<DefinitionType>  elements = new QueryResultElements<DefinitionType>();
         elements.addElement( DefinitionsSample.DEF_7222 );
         result.setElements( elements );
         Reporter.log( "\nobject: " + result, true );
@@ -75,16 +77,17 @@ public class OvalQueryResultTest
         Reporter.log( "XML: \n" + xml, true );
 
         Reporter.log( ">>> unmarshalling...", true );
-        result2 = (OvalQueryResult)_xmlmapper.unmarshalFromString( xml );
+        @SuppressWarnings( "unchecked" )
+        QueryResult<DefinitionType>  result3 = (QueryResult<DefinitionType>)_xmlmapper.unmarshalFromString( xml );
         Reporter.log( "<<< unmarshalling done.", true );
-        Reporter.log( "object: " + result2, true );
+        Reporter.log( "object: " + result3, true );
 
 
-        OpenSearchResponse  os = new OpenSearchResponse();
+        QueryResultMetadata  os = new QueryResultMetadata();
         os.setTotalResults( 222 );
         os.setStartIndex( 55 );
         os.setItemsPerPage( 1 );
-        result.setOpenSearchResponse( os );
+        result.setMetadata( os );
 
         Reporter.log( "\nobject: " + result, true );
         Reporter.log( ">>> marshalling...", true );
@@ -93,9 +96,10 @@ public class OvalQueryResultTest
         Reporter.log( "XML: \n" + xml, true );
 
         Reporter.log( ">>> unmarshalling...", true );
-        result2 = (OvalQueryResult)_xmlmapper.unmarshalFromString( xml );
+        @SuppressWarnings( "unchecked" )
+        QueryResult<DefinitionType>  result4 = (QueryResult<DefinitionType>)_xmlmapper.unmarshalFromString( xml );
         Reporter.log( "<<< unmarshalling done.", true );
-        Reporter.log( "object: " + result2, true );
+        Reporter.log( "object: " + result4, true );
 
 //        //TODO: throws SAXException!!!
 //        feed.addExtensionElement( DefinitionsSample.DEF_7222 );
