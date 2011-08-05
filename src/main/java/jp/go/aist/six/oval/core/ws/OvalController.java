@@ -246,6 +246,10 @@ public class OvalController
 
 
 
+    //**************************************************************
+    //  REST WS API
+    //**************************************************************
+
     //==============================================================
     // /build_oval_definitions
     //==============================================================
@@ -280,7 +284,7 @@ public class OvalController
     // test: curl -v -X GET -HAccept:application/atom+xml http://localhost:8080/oval_rep/d/oval_definitions
     @RequestMapping(
                     method=RequestMethod.GET
-                    ,value="/oval_definitions"
+                    ,value="/d/oval_definitions"
                     ,headers="Accept=application/atom+xml"
     )
     public @ResponseBody Feed findOvalDefinitions(
