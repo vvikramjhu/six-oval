@@ -136,7 +136,7 @@ public class OvalController
 
 
     /**
-     * Gets the OVAL resource.
+     * Gets the resource.
      */
     private <K, T extends OvalObject & Persistable<K>>
     T _getResource(
@@ -145,7 +145,7 @@ public class OvalController
                     )
     throws OvalException
     {
-        _LOG_.debug( "type=" + type + ", id=" + id );
+        _LOG_.debug( "GET: type=" + type + ", id=" + id );
 
         T  resource = _repository.get( type, id );
 //        T  resource = _service.getObject( type, id );
@@ -166,7 +166,7 @@ public class OvalController
                     )
     throws OvalException
     {
-        _LOG_.debug( "type=" + type + ", object=" + object );
+        _LOG_.debug( "POST: type=" + type + ", object=" + object );
 
         K  id = _repository.create( type, object );
 //        K  id = _service.createObject( type, object );
@@ -194,7 +194,7 @@ public class OvalController
                     )
     throws OvalException
     {
-        _LOG_.debug( "type=" + type + ", params=" + params );
+        _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
 
         QueryResult<T>  result = _repository.find( type, params );
         return result;
