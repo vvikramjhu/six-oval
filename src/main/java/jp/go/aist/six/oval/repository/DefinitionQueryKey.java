@@ -37,6 +37,7 @@ public class DefinitionQueryKey
     public static final String  FAMILY              = "family";
     public static final String  PLATFORM            = "platform";
     public static final String  PRODUCT             = "product";
+    public static final String  REF_ID              = "ref_id";
 
 }
 //DefinitionQueryKey

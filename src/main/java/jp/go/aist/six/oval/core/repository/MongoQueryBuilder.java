@@ -115,6 +115,7 @@ public class MongoQueryBuilder
         _addHandler( new FilterHandler( DefinitionQueryKey.FAMILY,           "metadata.affected.family"   ) );
         _addHandler( new FilterHandler( DefinitionQueryKey.PLATFORM,         "metadata.affected.platform" ) );
         _addHandler( new FilterHandler( DefinitionQueryKey.PRODUCT,          "metadata.affected.product"  ) );
+        _addHandler( new FilterHandler( DefinitionQueryKey.REF_ID,           "metadata.reference.ref_id"  ) );
 
         Handler  versionHandler = new Handler( DefinitionQueryKey.VERSION, "oval_version" )
         {

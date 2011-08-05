@@ -150,6 +150,23 @@ public class DefinitionsQueryParams
         return String.class.cast( get( DefinitionQueryKey.PRODUCT ) );
     }
 
+
+
+    /**
+     */
+    public void setRef_id(
+                    final String ref_id
+    )
+    {
+        set( DefinitionQueryKey.REF_ID, ref_id );
+    }
+
+
+    public String getRef_id()
+    {
+        return String.class.cast( get( DefinitionQueryKey.REF_ID ) );
+    }
+
 }
 //DefinitionQueryParams
 
