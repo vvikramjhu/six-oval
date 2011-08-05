@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 import jp.go.aist.six.oval.model.OvalObject;
+import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
 import jp.go.aist.six.oval.repository.CommonQueryKey;
 import jp.go.aist.six.oval.repository.DefinitionQueryKey;
 import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryKey;
@@ -93,8 +94,24 @@ public class MongoQueryBuilder
 
 
         // definition
+
+        Handler  definitionClassHandler = new FilterHandler( DefinitionQueryKey.DEFINITION_CLASS, "class" )
+        {
+            @Override
+            public <S extends OvalObject>
+            void build(
+                            final Query<S> query,
+                            final String key,
+                            final Object value
+                            )
+            {
+                ClassEnumeration  clazz = ClassEnumeration.fromValue( String.valueOf( value ) );
+                super.build( query, key, clazz );
+            }
+        };
+
         _addHandler( new FilterHandler( DefinitionQueryKey.ID,               "oval_id"                    ) );
-        _addHandler( new FilterHandler( DefinitionQueryKey.DEFINITION_CLASS, "class"                      ) );
+        _addHandler( definitionClassHandler );
         _addHandler( new FilterHandler( DefinitionQueryKey.FAMILY,           "metadata.affected.family"   ) );
         _addHandler( new FilterHandler( DefinitionQueryKey.PLATFORM,         "metadata.affected.platform" ) );
         _addHandler( new FilterHandler( DefinitionQueryKey.PRODUCT,          "metadata.affected.product"  ) );

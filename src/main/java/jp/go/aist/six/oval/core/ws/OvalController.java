@@ -69,6 +69,7 @@ public class OvalController
 
 
     public static final String  DEFINITIONS_REL = "http://aist.go.jp/six/oval/rels/oval_definitions";
+    public static final String  DEFINITION_REL  = "http://aist.go.jp/six/oval/rels/d/definition";
     public static final String  SC_REL          = "http://aist.go.jp/six/oval/rels/oval_system_characteristics";
     public static final String  RESULTS_REL     = "http://aist.go.jp/six/oval/rels/oval_results";
 
@@ -345,6 +346,8 @@ public class OvalController
 
 
     // GET (query) definitions
+    //   params:
+    //     version={number|"latest"}, default: "latest"
     //
     // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval_rep/d/definitions?platform=Debian%20GNU%2fLinux%205%2e0&limit=1"
     @RequestMapping(
@@ -361,6 +364,39 @@ public class OvalController
 
 //        return _service.findDefinitions( params );
     }
+
+
+
+    // GET (list) definition
+    //
+    // test: curl -v -X GET -HAccept:application/atom+xml http://localhost:8080/oval_rep/d/definitions
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/d/definitions"
+                    ,headers="Accept=application/atom+xml"
+    )
+    public @ResponseBody Feed findDefinitionIDs(
+                    final HttpServletRequest request
+                    )
+    throws OvalException
+    {
+        Collection<String>  ids = _repository.findIDs( DefinitionType.class );
+        if (ids == null) {
+            _LOG_.debug( "definitions: #ids=0" );
+        } else {
+            _LOG_.debug( "definitions: #ids=" + ids.size() );
+        }
+
+        Feed  feed = FeedHelper.buildAtomFeed(
+                        "definition",
+                        request.getRequestURL().toString(),
+                        DEFINITION_REL,
+                        ids
+                        );
+
+        return feed;
+    }
+
 
 
 
@@ -388,8 +424,9 @@ public class OvalController
                     )
     throws OvalException
     {
-        return _repository.getLatestDefinition( id );
-//        return _service.getLatestDefinition( id );
+        return _getResource( DefinitionType.class, id );
+
+//        return _repository.getLatestDefinition( id );
     }
 
 
