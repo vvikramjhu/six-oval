@@ -38,8 +38,8 @@ public class OvalSystemCharacteristics
     extends OvalDocument
 {
 
-    private GeneratorType  generator;
-    //{1..1}
+//    private GeneratorType  generator;
+//    //{1..1}
 
 
     private SystemInfoType  system_info;
@@ -60,6 +60,14 @@ public class OvalSystemCharacteristics
      */
     public OvalSystemCharacteristics()
     {
+    }
+
+
+    public OvalSystemCharacteristics(
+                    final GeneratorType generator
+                    )
+    {
+        super( generator );
     }
 
 
@@ -133,20 +141,20 @@ public class OvalSystemCharacteristics
 
 
 
-    /**
-     */
-    public void setGenerator(
-                    final GeneratorType generator
-                    )
-    {
-        this.generator = generator;
-    }
-
-
-    public GeneratorType getGenerator()
-    {
-        return this.generator;
-    }
+//    /**
+//     */
+//    public void setGenerator(
+//                    final GeneratorType generator
+//                    )
+//    {
+//        this.generator = generator;
+//    }
+//
+//
+//    public GeneratorType getGenerator()
+//    {
+//        return this.generator;
+//    }
 
 
 

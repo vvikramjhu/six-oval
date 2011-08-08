@@ -82,13 +82,19 @@ public class MongoTest
 //                        }
 //                        ,
 //
-                        // def:7222, windows, vulnerability, CVE-2010-0176
+//                        // def:7222, windows, vulnerability, CVE-2010-0176
+//                        {
+//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval5/oval5.9_def7222-5_v_windows_CVE-2010-0176.xml",
+//                            null
+//                        }
+//                        ,
+                        // results, def:7222, windows, vulnerability, CVE-2010-0176
                         {
-                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                            "test/resources/data/oval5/oval5.9_def7222-5_v_windows_CVE-2010-0176.xml",
+                            jp.go.aist.six.oval.model.v5.results.OvalResults.class,
+                            "test/resources/data/oval5/oval5.9_def7222-5_v_windows_CVE-2010-0176_results.xml",
                             null
                         }
-//                        ,
 //
 //                        // def:7432, debian, patch, DSA-2027
 //                        {

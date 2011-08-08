@@ -42,8 +42,8 @@ public class OvalResults
     extends OvalDocument
 {
 
-    private GeneratorType  generator = new GeneratorType();
-    //{1..1}
+//    private GeneratorType  generator = new GeneratorType();
+//    //{1..1}
 
 
     private DefaultDirectivesType  directives = new DefaultDirectivesType();
@@ -69,6 +69,14 @@ public class OvalResults
      */
     public OvalResults()
     {
+    }
+
+
+    public OvalResults(
+                    final GeneratorType generator
+                    )
+    {
+        super( generator );
     }
 
 
@@ -98,20 +106,20 @@ public class OvalResults
 
 
 
-    /**
-     */
-    public void setGenerator(
-                    final GeneratorType generator
-                    )
-    {
-        this.generator = generator;
-    }
-
-
-    public GeneratorType getGenerator()
-    {
-        return this.generator;
-    }
+//    /**
+//     */
+//    public void setGenerator(
+//                    final GeneratorType generator
+//                    )
+//    {
+//        this.generator = generator;
+//    }
+//
+//
+//    public GeneratorType getGenerator()
+//    {
+//        return this.generator;
+//    }
 
 
 
