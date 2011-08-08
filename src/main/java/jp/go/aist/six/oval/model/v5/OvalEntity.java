@@ -101,7 +101,8 @@ public abstract class OvalEntity
     {
         String  pid = getPersistentID();
         if (pid == null) {
-            pid = globalRefOf( this );
+            pid = getOvalID();
+//            pid = globalRefOf( this );
             setPersistentID( pid );
         }
     }
