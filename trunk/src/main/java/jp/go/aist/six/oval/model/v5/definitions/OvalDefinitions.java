@@ -38,8 +38,8 @@ public class OvalDefinitions
     extends OvalDocument
 {
 
-    private GeneratorType  generator = new GeneratorType();
-    //{1..1}
+//    private GeneratorType  generator = new GeneratorType();
+//    //{1..1}
 
 
     private DefinitionsType  definitions;
@@ -78,25 +78,26 @@ public class OvalDefinitions
                     final GeneratorType generator
                     )
     {
-        setGenerator( generator );
+        super( generator );
+//        setGenerator( generator );
     }
 
 
 
-    /**
-     */
-    public void setGenerator(
-                    final GeneratorType generator
-                    )
-    {
-        this.generator = generator;
-    }
-
-
-    public GeneratorType getGenerator()
-    {
-        return this.generator;
-    }
+//    /**
+//     */
+//    public void setGenerator(
+//                    final GeneratorType generator
+//                    )
+//    {
+//        this.generator = generator;
+//    }
+//
+//
+//    public GeneratorType getGenerator()
+//    {
+//        return this.generator;
+//    }
 
 
 

@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.v5;
 
 import java.util.UUID;
+import jp.go.aist.six.oval.model.v5.common.GeneratorType;
 import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.PrePersist;
@@ -52,12 +53,25 @@ public abstract class OvalDocument
     private String  schemaLocation;
 
 
+    private GeneratorType  generator = new GeneratorType();
+    //{1..1} / OvalDefinitions, OvalSystemCharacteristics, OvalResults
+
+
 
     /**
      * Constructor.
      */
     public OvalDocument()
     {
+    }
+
+
+
+    public OvalDocument(
+                    final GeneratorType generator
+                    )
+    {
+        setGenerator( generator );
     }
 
 
@@ -76,6 +90,23 @@ public abstract class OvalDocument
     {
         return this.schemaLocation;
 //        return (_schemaLocation == null ? RESULTS_SCHEMA_LOCATION : _schemaLocation);
+    }
+
+
+
+    /**
+     */
+    public void setGenerator(
+                    final GeneratorType generator
+                    )
+    {
+        this.generator = generator;
+    }
+
+
+    public GeneratorType getGenerator()
+    {
+        return this.generator;
     }
 
 

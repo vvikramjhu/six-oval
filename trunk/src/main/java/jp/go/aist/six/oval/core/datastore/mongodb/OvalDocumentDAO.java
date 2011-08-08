@@ -1,22 +1,10 @@
 package jp.go.aist.six.oval.core.datastore.mongodb;
 
-import jp.go.aist.six.oval.model.v5.common.GeneratorType;
-import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
-import jp.go.aist.six.oval.model.v5.definitions.DefinitionsType;
-import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.v5.definitions.StateType;
-import jp.go.aist.six.oval.model.v5.definitions.StatesType;
-import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
-import jp.go.aist.six.oval.model.v5.definitions.SystemObjectsType;
-import jp.go.aist.six.oval.model.v5.definitions.TestType;
-import jp.go.aist.six.oval.model.v5.definitions.TestsType;
-import jp.go.aist.six.oval.model.v5.definitions.VariableType;
-import jp.go.aist.six.oval.model.v5.definitions.VariablesType;
+import jp.go.aist.six.oval.model.v5.OvalDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Key;
-import com.google.code.morphia.dao.DAO;
 import com.google.code.morphia.query.Query;
 
 
@@ -25,44 +13,49 @@ import com.google.code.morphia.query.Query;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalDefinitionsDAO
-    extends BaseDAO<OvalDefinitions, String>
+public abstract class OvalDocumentDAO<T extends OvalDocument>
+    extends BaseDAO<T, String>
 {
 
     /**
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( OvalDefinitionsDAO.class );
+        LoggerFactory.getLogger( OvalDocumentDAO.class );
 
 
 
     /**
      */
-    public OvalDefinitionsDAO(
+    public OvalDocumentDAO(
+                    final Class<T> type,
                     final Datastore ds
                     )
     {
-        super( OvalDefinitions.class, ds );
+        super( type, ds );
     }
 
 
 
-    protected Key<OvalDefinitions> _findUniqueKey(
-                    final OvalDefinitions oval_definitions
+
+    /**
+     */
+    protected abstract Query<T> _createUniqueQuery(
+                    T oval_document
+                    );
+//    {
+//        Query<T>  q = createQuery();
+//    }
+
+
+    protected Key<T> _findUniqueKey(
+                    final T oval_document
                     )
     {
-        Query<OvalDefinitions>  q = createQuery();
-
-        GeneratorType  generator = oval_definitions.getGenerator();
-        q.filter( "generator.timestamp", generator.getTimestamp() );
-        q.filter( "generator.schema_version", generator.getSchemaVersion() );
-
-        String  digest = oval_definitions.getDefinitionsDigest();
-        q.filter( "definitions_digest", digest );
+        Query<T>  q = _createUniqueQuery( oval_document );
 
         _LOG_.debug( "find unique: query=" + q );
-        Key<OvalDefinitions>  id = find( q ).getKey();
+        Key<T>  id = find( q ).getKey();
         _LOG_.debug( "find unique: id=" + id );
 
         return id;
@@ -75,60 +68,22 @@ public class OvalDefinitionsDAO
     //**************************************************************
 
     @Override
-    public Key<OvalDefinitions> save(
-                    final OvalDefinitions oval_definitions
+    public Key<T> save(
+                    final T oval_document
                     )
     {
-        Key<OvalDefinitions>  key = _findUniqueKey( oval_definitions );
-        if (key != null) {
-            oval_definitions.setPersistentID( String.valueOf( key.getId() ) );
-            return key;
+        Key<T>  key = _findUniqueKey( oval_document );
+        if (key == null) {
+            key = super.save( oval_document );
+        } else {
+            oval_document.setPersistentID( String.valueOf( key.getId() ) );
         }
 
-        VariablesType  variables = oval_definitions.getVariables();
-        if (variables != null) {
-            DAO<VariableType, String>  dao = _getForwardingDAO( VariableType.class );
-            for (VariableType  variable : variables.getVariable()) {
-                dao.save( variable );
-            }
-        }
+//        //compute the digest!!!
+//        oval_definitions.getDefinitionsDigest();
 
-        StatesType  states = oval_definitions.getStates();
-        if (states != null) {
-            DAO<StateType, String>  dao = _getForwardingDAO( StateType.class );
-            for (StateType  state : states.getState()) {
-                dao.save( state );
-            }
-        }
+        return key;
 
-        SystemObjectsType  objects = oval_definitions.getObjects();
-        if (objects != null) {
-            DAO<SystemObjectType, String>  dao = _getForwardingDAO( SystemObjectType.class );
-            for (SystemObjectType  object : objects.getObject()) {
-                dao.save( object );
-            }
-        }
-
-        TestsType  tests = oval_definitions.getTests();
-        if (tests != null) {
-            DAO<TestType, String>  dao = _getForwardingDAO( TestType.class );
-            for (TestType  test : tests.getTest()) {
-                dao.save( test );
-            }
-        }
-
-        DefinitionsType  definitions = oval_definitions.getDefinitions();
-        if (definitions != null) {
-            DAO<DefinitionType, String>  dao = _getForwardingDAO( DefinitionType.class );
-            for (DefinitionType  definition : definitions.getDefinition()) {
-                dao.save( definition );
-            }
-        }
-
-        //compute the digest!!!
-        oval_definitions.getDefinitionsDigest();
-
-        return super.save( oval_definitions );
     }
 
 }
