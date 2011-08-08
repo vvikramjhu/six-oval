@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.repository;
 
 import java.util.Collection;
-import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.util.persist.Persistable;
@@ -44,7 +43,7 @@ public interface OvalRepository
                     Class<T> type,
                     K id
                     )
-    throws OvalException;
+    throws OvalRepositoryException;
 
 
 
@@ -55,7 +54,7 @@ public interface OvalRepository
                     Class<T> type,
                     T object
                     )
-    throws OvalException;
+    throws OvalRepositoryException;
 
 
 
@@ -66,7 +65,7 @@ public interface OvalRepository
                     Class<T> type,
                     T object
                     )
-    throws OvalException;
+    throws OvalRepositoryException;
 
 
 
@@ -77,7 +76,7 @@ public interface OvalRepository
                     Class<T> type,
                     QueryParams params
                     )
-    throws OvalException;
+    throws OvalRepositoryException;
 
 
 
@@ -85,7 +84,7 @@ public interface OvalRepository
     Collection<K> findIDs(
                     Class<T> type
                     )
-    throws OvalException;
+    throws OvalRepositoryException;
 
 
 
@@ -94,7 +93,7 @@ public interface OvalRepository
                     Class<T> type,
                     QueryParams params
                     )
-    throws OvalException;
+    throws OvalRepositoryException;
 
 
 
@@ -114,14 +113,14 @@ public interface OvalRepository
                     String oval_id,
                     String oval_version
                     )
-    throws OvalException;
+    throws OvalRepositoryException;
 
 
 
     public DefinitionType getLatestDefinition(
                     String oval_id
                     )
-    throws OvalException;
+    throws OvalRepositoryException;
 
 
 
