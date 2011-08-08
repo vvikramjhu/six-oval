@@ -23,11 +23,11 @@ package jp.go.aist.six.oval.core.repository;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.repository.OvalRepository;
+import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.oval.repository.QueryResult;
 import jp.go.aist.six.util.persist.Persistable;
@@ -99,7 +99,7 @@ public class MongoOvalRepository
                     final Class<T> type,
                     final K id
                     )
-    throws OvalException
+    throws OvalRepositoryException
     {
         _LOG_.debug( "type=" + type + ", id=" + id );
 
@@ -108,7 +108,7 @@ public class MongoOvalRepository
             DAO<T, K>  dao = _datastore.getDAO( type );
             p_object = dao.get( id );
         } catch (PersistenceException ex) {
-            throw new OvalException( ex );
+            throw new OvalRepositoryException( ex );
         }
 
         return p_object;
@@ -122,13 +122,13 @@ public class MongoOvalRepository
                     final Class<T> type,
                     final T object
                     )
-    throws OvalException
+    throws OvalRepositoryException
     {
         _LOG_.debug( "type=" + type + ", object=" + object );
 
         if (object instanceof Persistable) {
         } else {
-            throw new OvalException( "object is not Persistable type: " + object.getClass() );
+            throw new OvalRepositoryException( "object is not Persistable type: " + object.getClass() );
         }
 
         K  id = null;
@@ -138,13 +138,13 @@ public class MongoOvalRepository
             if (pid != null) {
                 boolean  exists = dao.exists( "_id", pid );
                 if (exists) {
-                    throw new OvalException( "object already persistent: ID=" + pid );
+                    throw new OvalRepositoryException( "object already persistent: ID=" + pid );
                 }
             }
             dao.save( object );
             id = object.getPersistentID();
         } catch (PersistenceException ex) {
-            throw new OvalException( ex );
+            throw new OvalRepositoryException( ex );
         }
 
         return id;
@@ -158,20 +158,20 @@ public class MongoOvalRepository
                     final Class<T> type,
                     final T object
                     )
-    throws OvalException
+    throws OvalRepositoryException
     {
         _LOG_.debug( "type=" + type + ", object=" + object );
 
         if (object instanceof Persistable) {
         } else {
-            throw new OvalException( "object is not Persistable type: " + object.getClass() );
+            throw new OvalRepositoryException( "object is not Persistable type: " + object.getClass() );
         }
 
         try {
             DAO<T, K>  dao = _datastore.getDAO( type );
             dao.save( object );
         } catch (PersistenceException ex) {
-            throw new OvalException( ex );
+            throw new OvalRepositoryException( ex );
         }
 
         return object;
@@ -185,7 +185,7 @@ public class MongoOvalRepository
                     final Class<T> type,
                     final QueryParams params
                     )
-    throws OvalException
+    throws OvalRepositoryException
     {
         _LOG_.debug( "type=" + type + ", params: " + params );
 
@@ -201,7 +201,7 @@ public class MongoOvalRepository
 
             list = dao.find( q ).asList();
         } catch (Exception ex) {
-            throw new OvalException( ex );
+            throw new OvalRepositoryException( ex );
         }
 
         _LOG_.debug( "#objects found: " + (list == null ? 0 : list.size()) );
@@ -217,7 +217,7 @@ public class MongoOvalRepository
     Collection<K> findIDs(
                     final Class<T> type
                     )
-    throws OvalException
+    throws OvalRepositoryException
     {
         _LOG_.debug( "type=" + type );
 
@@ -227,7 +227,7 @@ public class MongoOvalRepository
             keys = dao.find().asKeyList(); //dao.findIds();
 //            keys = dao.findIds();
         } catch (PersistenceException ex) {
-            throw new OvalException( ex );
+            throw new OvalRepositoryException( ex );
         }
 
         Collection<K>  ids = _keys2IDs( keys );
@@ -244,7 +244,7 @@ public class MongoOvalRepository
                     final Class<T> type,
                     final QueryParams params
                     )
-    throws OvalException
+    throws OvalRepositoryException
     {
         _LOG_.debug( "type=" + type + ", params: " + params );
 
@@ -260,7 +260,7 @@ public class MongoOvalRepository
 
             keys = dao.find( q ).asKeyList();
         } catch (Exception ex) {
-            throw new OvalException( ex );
+            throw new OvalRepositoryException( ex );
         }
 
         Collection<K>  ids = _keys2IDs( keys );
@@ -275,7 +275,7 @@ public class MongoOvalRepository
     Collection<K> _keys2IDs(
                     final Collection<Key<T>> keys
                     )
-    throws OvalException
+    throws OvalRepositoryException
     {
         Collection<K>  ids = new ArrayList<K>();
         if (keys != null ) {
@@ -308,7 +308,7 @@ public class MongoOvalRepository
                     final String oval_id,
                     final String oval_version
                     )
-    throws OvalException
+    throws OvalRepositoryException
     {
         _LOG_.debug( "oval id=" + oval_id + ", version=" + oval_version );
 
@@ -330,7 +330,7 @@ public class MongoOvalRepository
                 _LOG_.debug( "definition found: persistent id=" + def.getPersistentID() );
             }
         } catch (Exception ex) {
-            throw new OvalException( ex );
+            throw new OvalRepositoryException( ex );
         }
 
         return def;
@@ -342,7 +342,7 @@ public class MongoOvalRepository
     public DefinitionType getLatestDefinition(
                     final String oval_id
                     )
-    throws OvalException
+    throws OvalRepositoryException
     {
         _LOG_.debug( "oval id: " + oval_id );
 
@@ -358,7 +358,7 @@ public class MongoOvalRepository
                 _LOG_.debug( "definition found: persistent id=" + def.getPersistentID() );
             }
         } catch (Exception ex) {
-            throw new OvalException( ex );
+            throw new OvalRepositoryException( ex );
         }
 
         return def;

@@ -18,26 +18,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval;
+package jp.go.aist.six.oval.repository;
 
-import jp.go.aist.six.util.NestedRuntimeException;
+import jp.go.aist.six.oval.OvalException;
 
 
 
 /**
- * An exceptional condition that occurred during the OVAL processing.
+ * An exceptional condition that occurred during the OVAL repository processing.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalException
-    extends NestedRuntimeException
+public class OvalRepositoryException
+    extends OvalException
 {
 
     /**
-     * Constructs an OvalException with no detail message.
+     * Constructs an OvalRepositoryException with no detail message.
      */
-    public OvalException()
+    public OvalRepositoryException()
     {
         super();
     }
@@ -45,12 +45,12 @@ public class OvalException
 
 
     /**
-     * Constructs an OvalException with the specified detail message.
+     * Constructs an OvalRepositoryException with the specified detail message.
      *
      * @param  message
      *   the detail message.
      */
-    public OvalException(
+    public OvalRepositoryException(
                     final String message
                     )
     {
@@ -60,12 +60,12 @@ public class OvalException
 
 
     /**
-     * Constructs an OvalException with the specified cause.
+     * Constructs an OvalRepositoryException with the specified cause.
      *
      * @param   cause
      *  the cause.
      */
-    public OvalException(
+    public OvalRepositoryException(
                     final Throwable cause
                     )
     {
@@ -75,7 +75,7 @@ public class OvalException
 
 
     /**
-     * Constructs an OvalException with the specified
+     * Constructs an OvalRepositoryException with the specified
      * detail message and cause.
      *
      * @param   message
@@ -83,7 +83,7 @@ public class OvalException
      * @param   cause
      *  the cause.
      */
-    public OvalException(
+    public OvalRepositoryException(
                     final String message,
                     final Throwable cause
                     )
@@ -92,5 +92,5 @@ public class OvalException
     }
 
 }
-// OvalException
+// OvalRepositoryException
 
