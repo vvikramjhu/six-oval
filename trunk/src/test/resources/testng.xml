@@ -17,7 +17,7 @@
     <!-- *  ws                                                 * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.ws" enabled="true">
+    <test name="oval.core.ws" enabled="false">
         <groups>
             <run>
                 <include name="oval.core.ws.query"/>
@@ -40,7 +40,7 @@
     <!-- *  datastore                                          * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.datastore.mongodb" enabled="false">
+    <test name="oval.core.datastore.mongodb" enabled="true">
         <groups>
             <run>
                 <include name="oval.core.datastore.mongodb.saveAndLoad"/>

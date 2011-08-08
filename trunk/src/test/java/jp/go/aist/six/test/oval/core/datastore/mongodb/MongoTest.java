@@ -74,10 +74,18 @@ public class MongoTest
     public Object[][] provideOvalResultsXml()
     {
         return new Object[][] {
-                        // def:7222 version=3, windows, vulnerability, CVE-2010-0176
+//                        // def:7222 version=3, windows, vulnerability, CVE-2010-0176
+//                        {
+//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval5/oval5.7_def7222-3_v_windows_CVE-2010-0176.xml",
+//                            null
+//                        }
+//                        ,
+//
+                        // def:7222, windows, vulnerability, CVE-2010-0176
                         {
                             jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                            "test/resources/data/oval5/oval5.7_def7222-3_v_windows_CVE-2010-0176.xml",
+                            "test/resources/data/oval5/oval5.9_def7222-5_v_windows_CVE-2010-0176.xml",
                             null
                         }
 //                        ,
@@ -86,14 +94,6 @@ public class MongoTest
 //                        {
 //                            jp.go.aist.six.oval.model.v5.results.OvalResults.class,
 //                            "test/resources/data/oval-results-5/oval-5.9_def7432_patch_debian_results.xml",
-//                            null
-//                        }
-//                        ,
-//
-//                        // def:7222, windows, vulnerability, CVE-2010-0176
-//                        {
-//                            jp.go.aist.six.oval.model.v5.results.OvalResults.class,
-//                            "test/resources/data/oval-results-5/oval-5.9_def7222_vulnerability_windows_results.xml",
 //                            null
 //                        }
 //                        ,

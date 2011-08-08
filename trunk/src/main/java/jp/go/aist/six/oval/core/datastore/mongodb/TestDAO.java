@@ -2,7 +2,6 @@ package jp.go.aist.six.oval.core.datastore.mongodb;
 
 import jp.go.aist.six.oval.model.v5.definitions.TestType;
 import com.google.code.morphia.Datastore;
-import com.google.code.morphia.dao.BasicDAO;
 
 
 
@@ -11,7 +10,8 @@ import com.google.code.morphia.dao.BasicDAO;
  * @version $Id$
  */
 public class TestDAO
-    extends BasicDAO<TestType, String>
+    extends OvalEntityDAO<TestType>
+//    extends BasicDAO<TestType, String>
 {
 
     /**
