@@ -37,7 +37,7 @@ import com.google.code.morphia.query.Query;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class MongoQueryBuilder
+public abstract class QueryBuilder
 {
 
     /**
@@ -51,7 +51,7 @@ public abstract class MongoQueryBuilder
     /**
      * Constructor.
      */
-    public MongoQueryBuilder()
+    public QueryBuilder()
     {
 //        Handler  offsetHandler = new Handler( CommonQueryKey.OFFSET, null )
 //        {
@@ -472,7 +472,7 @@ public abstract class MongoQueryBuilder
     {
 
         public static DatetimeHandler newStartHandler(
-                        final MongoQueryBuilder builder,
+                        final QueryBuilder builder,
                         final String field
                         )
         {
@@ -481,7 +481,7 @@ public abstract class MongoQueryBuilder
 
 
         public static DatetimeHandler newEndHandler(
-                        final MongoQueryBuilder builder,
+                        final QueryBuilder builder,
                         final String field
                         )
         {
