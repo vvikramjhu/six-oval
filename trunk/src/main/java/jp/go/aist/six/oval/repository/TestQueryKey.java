@@ -28,17 +28,15 @@ package jp.go.aist.six.oval.repository;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionQueryKey
+public class TestQueryKey
 {
 
     public static final String  ID                  = "id";
     public static final String  VERSION             = "version";
-    public static final String  DEFINITION_CLASS    = "definition_class";
-    public static final String  FAMILY              = "family";
-    public static final String  PLATFORM            = "platform";
-    public static final String  PRODUCT             = "product";
-    public static final String  REF_ID              = "ref_id";
+    public static final String  OBJECT_REF          = "object_ref";
+    public static final String  STATE_REF           = "state_ref";
+    public static final String  TYPE                = "type";
 
 }
-//DefinitionQueryKey
+// TestQueryKey
 

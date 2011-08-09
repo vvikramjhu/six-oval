@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.core.ws;
 
 import jp.go.aist.six.oval.repository.DefinitionQueryKey;
+import jp.go.aist.six.oval.repository.TestQueryKey;
 
 
 
@@ -29,7 +30,7 @@ import jp.go.aist.six.oval.repository.DefinitionQueryKey;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionsQueryParams
+public class TestQueryParams
     extends DefaultQueryParams
 {
 
@@ -43,7 +44,7 @@ public class DefinitionsQueryParams
     /**
      * Constructor.
      */
-    public DefinitionsQueryParams()
+    public TestQueryParams()
     {
         setOrder( DEFAULT_ORDER );
     }
@@ -86,87 +87,53 @@ public class DefinitionsQueryParams
 
     /**
      */
-    public void setDefinition_class(
-                    final String definitionClass
+    public void setObject_ref(
+                    final String object_ref
     )
     {
-        set( DefinitionQueryKey.DEFINITION_CLASS, definitionClass );
+        set( TestQueryKey.OBJECT_REF, object_ref );
     }
 
 
-    public String getDefinition_class()
+    public String getObject_ref()
     {
-        return String.class.cast( get( DefinitionQueryKey.DEFINITION_CLASS ) );
+        return String.class.cast( get( TestQueryKey.OBJECT_REF ) );
     }
 
 
 
     /**
      */
-    public void setFamily(
-                    final String family
+    public void setState_ref(
+                    final String state_ref
     )
     {
-        set( DefinitionQueryKey.FAMILY, family );
+        set( TestQueryKey.STATE_REF, state_ref );
     }
 
 
-    public String getFamily()
+    public String getState_ref()
     {
-        return String.class.cast( get( DefinitionQueryKey.FAMILY ) );
+        return String.class.cast( get( TestQueryKey.STATE_REF ) );
     }
 
 
 
     /**
      */
-    public void setPlatform(
-                    final String platform
+    public void setType(
+                    final String type
     )
     {
-        set( DefinitionQueryKey.PLATFORM, platform );
+        set( TestQueryKey.TYPE, type );
     }
 
 
-    public String getPlatform()
+    public String getType()
     {
-        return String.class.cast( get( DefinitionQueryKey.PLATFORM ) );
-    }
-
-
-
-    /**
-     */
-    public void setProduct(
-                    final String product
-    )
-    {
-        set( DefinitionQueryKey.PRODUCT, product );
-    }
-
-
-    public String getProduct()
-    {
-        return String.class.cast( get( DefinitionQueryKey.PRODUCT ) );
-    }
-
-
-
-    /**
-     */
-    public void setRef_id(
-                    final String ref_id
-    )
-    {
-        set( DefinitionQueryKey.REF_ID, ref_id );
-    }
-
-
-    public String getRef_id()
-    {
-        return String.class.cast( get( DefinitionQueryKey.REF_ID ) );
+        return String.class.cast( get( TestQueryKey.TYPE ) );
     }
 
 }
-//DefinitionQueryParams
+// TestQueryParams
 
