@@ -22,7 +22,9 @@ package jp.go.aist.six.oval.core.repository;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
@@ -64,8 +66,10 @@ public class MongoOvalRepository
     private MongoDatastore  _datastore;
 
 
+    private final Map<Class<?>, MongoQueryBuilder>  _builders = new HashMap<Class<?>, MongoQueryBuilder>();
+    private final BasicQueryBuilder  _DEFAULT_QUERY_BUILDER_ = new BasicQueryBuilder();
 
-    private final MongoQueryBuilder  _queryBuilder = new MongoQueryBuilder();
+//    private final MongoQueryBuilder  _queryBuilder = new MongoQueryBuilder();
 
 
 
@@ -85,6 +89,24 @@ public class MongoOvalRepository
                     )
     {
         _datastore = datastore;
+    }
+
+
+
+    private <K, T extends OvalObject & Persistable<K>>
+    void _buildQuery(
+                    final Class<T> type,
+                    final QueryParams params,
+                    final Query<T> query
+                    )
+    throws OvalRepositoryException
+    {
+        MongoQueryBuilder  builder = _builders.get( type );
+        if (builder == null) {
+            builder = _DEFAULT_QUERY_BUILDER_;
+        }
+
+        builder.buildQuery( query, params );
     }
 
 
@@ -193,7 +215,9 @@ public class MongoOvalRepository
         try {
             DAO<T, String>  dao = _datastore.getDAO( type );
             Query<T>  q = dao.createQuery();
-            _queryBuilder.buildQuery( q, params );
+
+            _buildQuery( type, params, q );
+//            _queryBuilder.buildQuery( q, params );
 
 //            if (params != null) {
 //                params.buildQuery( q );
@@ -252,7 +276,8 @@ public class MongoOvalRepository
         try {
             DAO<T, String>  dao = _datastore.getDAO( type );
             Query<T>  q = dao.createQuery();
-            _queryBuilder.buildQuery( q, params );
+            _buildQuery( type, params, q );
+//            _queryBuilder.buildQuery( q, params );
 
 //            if (params != null) {
 //                params.buildQuery( q );

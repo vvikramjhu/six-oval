@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.repository.TestQueryKey;
  * @version $Id$
  */
 public class TestQueryParams
-    extends DefaultQueryParams
+    extends BasicQueryParams
 {
 
     /**

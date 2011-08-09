@@ -26,12 +26,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 import jp.go.aist.six.oval.model.OvalObject;
-import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
 import jp.go.aist.six.oval.repository.CommonQueryKey;
-import jp.go.aist.six.oval.repository.DefinitionQueryKey;
-import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryKey;
 import jp.go.aist.six.oval.repository.QueryParams;
-import jp.go.aist.six.oval.repository.TestQueryKey;
 import com.google.code.morphia.query.Query;
 
 
@@ -41,12 +37,8 @@ import com.google.code.morphia.query.Query;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class MongoQueryBuilder
+public abstract class MongoQueryBuilder
 {
-
-    public static final String  DEFAULT_LIMIT = "10";
-
-
 
     /**
      * Registered handlers.
@@ -61,89 +53,89 @@ public class MongoQueryBuilder
      */
     public MongoQueryBuilder()
     {
-        Handler  offsetHandler = new Handler( CommonQueryKey.OFFSET, null )
-        {
-            @Override
-            public <S extends OvalObject>
-            void build(
-                            final Query<S> query,
-                            final String key,
-                            final Object value
-                            )
-            {
-                query.offset( Integer.valueOf( String.valueOf( value ) ).intValue() );
-            }
-        };
-
-        Handler  limitHandler = new Handler( CommonQueryKey.LIMIT, null )
-        {
-            @Override
-            public <S extends OvalObject>
-            void build(
-                            final Query<S> query,
-                            final String key,
-                            final Object value
-                            )
-            {
-                query.limit( Integer.valueOf( String.valueOf( value ) ).intValue() );
-            }
-        };
-
-        _addHandler( offsetHandler );
-        _addHandler( limitHandler );
-        _addHandler( new OrderHandler( _handlers ) );
-
-
-        // definition
-
-        Handler  definitionClassHandler = new FilterHandler( DefinitionQueryKey.DEFINITION_CLASS, "class" )
-        {
-            @Override
-            public <S extends OvalObject>
-            void build(
-                            final Query<S> query,
-                            final String key,
-                            final Object value
-                            )
-            {
-                ClassEnumeration  clazz = ClassEnumeration.fromValue( String.valueOf( value ) );
-                super.build( query, key, clazz );
-            }
-        };
-
-        _addHandler( new FilterHandler( DefinitionQueryKey.ID,               "oval_id"                    ) );
-        _addHandler( definitionClassHandler );
-        _addHandler( new FilterHandler( DefinitionQueryKey.FAMILY,           "metadata.affected.family"   ) );
-        _addHandler( new FilterHandler( DefinitionQueryKey.PLATFORM,         "metadata.affected.platform" ) );
-        _addHandler( new FilterHandler( DefinitionQueryKey.PRODUCT,          "metadata.affected.product"  ) );
-        _addHandler( new FilterHandler( DefinitionQueryKey.REF_ID,           "metadata.reference.ref_id"  ) );
-
-        Handler  versionHandler = new Handler( DefinitionQueryKey.VERSION, "oval_version" )
-        {
-            @Override
-            public <S extends OvalObject>
-            void build(
-                            final Query<S> query,
-                            final String key,
-                            final Object value
-                            )
-            {
-                query.filter( toField( key ), Integer.valueOf( String.valueOf( value ) ).intValue() );
-            }
-        };
-        _addHandler( versionHandler );
-
-
-        // test
-        _addHandler( new FilterHandler( TestQueryKey.OBJECT_REF,  "object.object_ref"  ) );
-        _addHandler( new FilterHandler( TestQueryKey.STATE_REF,   "state.state_ref"  ) );
-
-
-        // SC
-        _addHandler( DatetimeHandler.newStartHandler(  this, "generator.timestamp" ) );
-        _addHandler( DatetimeHandler.newEndHandler(    this, "generator.timestamp" ) );
-        _addHandler( new PatternHandler( OvalSystemCharacteristicsQueryKey.PRIMARY_HOST_NAME, "system_info.primary_host_name" ) );
-        _addHandler( new PatternHandler( OvalSystemCharacteristicsQueryKey.OS_NAME,           "system_info.os_name"           ) );
+//        Handler  offsetHandler = new Handler( CommonQueryKey.OFFSET, null )
+//        {
+//            @Override
+//            public <S extends OvalObject>
+//            void build(
+//                            final Query<S> query,
+//                            final String key,
+//                            final Object value
+//                            )
+//            {
+//                query.offset( Integer.valueOf( String.valueOf( value ) ).intValue() );
+//            }
+//        };
+//
+//        Handler  limitHandler = new Handler( CommonQueryKey.LIMIT, null )
+//        {
+//            @Override
+//            public <S extends OvalObject>
+//            void build(
+//                            final Query<S> query,
+//                            final String key,
+//                            final Object value
+//                            )
+//            {
+//                query.limit( Integer.valueOf( String.valueOf( value ) ).intValue() );
+//            }
+//        };
+//
+//        _addHandler( offsetHandler );
+//        _addHandler( limitHandler );
+//        _addHandler( new OrderHandler( _handlers ) );
+//
+//
+//        // definition
+//
+//        Handler  definitionClassHandler = new FilterHandler( DefinitionQueryKey.DEFINITION_CLASS, "class" )
+//        {
+//            @Override
+//            public <S extends OvalObject>
+//            void build(
+//                            final Query<S> query,
+//                            final String key,
+//                            final Object value
+//                            )
+//            {
+//                ClassEnumeration  clazz = ClassEnumeration.fromValue( String.valueOf( value ) );
+//                super.build( query, key, clazz );
+//            }
+//        };
+//
+//        _addHandler( new FilterHandler( DefinitionQueryKey.ID,               "oval_id"                    ) );
+//        _addHandler( definitionClassHandler );
+//        _addHandler( new FilterHandler( DefinitionQueryKey.FAMILY,           "metadata.affected.family"   ) );
+//        _addHandler( new FilterHandler( DefinitionQueryKey.PLATFORM,         "metadata.affected.platform" ) );
+//        _addHandler( new FilterHandler( DefinitionQueryKey.PRODUCT,          "metadata.affected.product"  ) );
+//        _addHandler( new FilterHandler( DefinitionQueryKey.REF_ID,           "metadata.reference.ref_id"  ) );
+//
+//        Handler  versionHandler = new Handler( DefinitionQueryKey.VERSION, "oval_version" )
+//        {
+//            @Override
+//            public <S extends OvalObject>
+//            void build(
+//                            final Query<S> query,
+//                            final String key,
+//                            final Object value
+//                            )
+//            {
+//                query.filter( toField( key ), Integer.valueOf( String.valueOf( value ) ).intValue() );
+//            }
+//        };
+//        _addHandler( versionHandler );
+//
+//
+//        // test
+//        _addHandler( new FilterHandler( TestQueryKey.OBJECT_REF,  "object.object_ref"  ) );
+//        _addHandler( new FilterHandler( TestQueryKey.STATE_REF,   "state.state_ref"  ) );
+//
+//
+//        // SC
+//        _addHandler( DatetimeHandler.newStartHandler(  this, "generator.timestamp" ) );
+//        _addHandler( DatetimeHandler.newEndHandler(    this, "generator.timestamp" ) );
+//        _addHandler( new PatternHandler( OvalSystemCharacteristicsQueryKey.PRIMARY_HOST_NAME, "system_info.primary_host_name" ) );
+//        _addHandler( new PatternHandler( OvalSystemCharacteristicsQueryKey.OS_NAME,           "system_info.os_name"           ) );
 
     }
 
@@ -152,6 +144,14 @@ public class MongoQueryBuilder
     //==============================================================
     //  Handler
     //==============================================================
+
+
+    protected final Map<String, Handler> _getHandlers()
+    {
+        return _handlers;
+    }
+
+
 
     protected final void _addHandler(
                     final Handler handler
@@ -196,7 +196,7 @@ public class MongoQueryBuilder
     //  Morphia Query
     //==============================================================
 
-    private final Handler  DEFAULT_HANDLER = new FilterHandler( null );
+    private static final Handler  DEFAULT_HANDLER = new FilterHandler( null );
 
 
 
