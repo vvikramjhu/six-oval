@@ -55,7 +55,7 @@ public class OvalDefinitionsDAO
         Query<OvalDefinitions>  q = createQuery();
 
         GeneratorType  generator = oval_definitions.getGenerator();
-        q.filter( "generator.timestamp", generator.getTimestamp() );
+        q.filter( "generator.timestamp",      generator.getTimestamp() );
         q.filter( "generator.schema_version", generator.getSchemaVersion() );
 
         String  digest = oval_definitions.getDefinitionsDigest();

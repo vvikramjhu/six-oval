@@ -29,6 +29,10 @@ import jp.go.aist.six.oval.core.repository.MongoOvalRepository;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.v5.definitions.StateType;
+import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
+import jp.go.aist.six.oval.model.v5.definitions.TestType;
+import jp.go.aist.six.oval.model.v5.definitions.VariableType;
 import jp.go.aist.six.oval.model.v5.results.OvalResults;
 import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.repository.QueryParams;
@@ -431,62 +435,83 @@ public class OvalController
 
 
 
-//    /**
-//     */
-//    @RequestMapping(
-//                    method=RequestMethod.GET
-//                    ,value="/oval_definitions"
-//                    ,headers="Accept=application/xml"
-//    )
-//    public @ResponseBody OvalDefinitions getOvalDefinitions(
-//                    @RequestParam final Map<String, String> params
-//                    )
-//    throws OvalException
-//    {
-//        return null;
-//    }
+    //==============================================================
+    // /d/tests/{id}
+    //==============================================================
+
+    // GET
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/d/tests/{id:.*}"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody TestType getTest(
+                    @PathVariable final String id
+                    )
+    throws OvalException
+    {
+        return _getResource( TestType.class, id );
+    }
 
 
 
-//    @RequestMapping(
-//                    method=RequestMethod.POST,
-//                    value="/oval_definitions"
-//    )
-//    public ResponseEntity<Void> createOvalDefinitions(
-//                    @RequestBody final OvalDefinitions definitions,
-//                    final HttpServletRequest request
-//    )
-//    throws OvalException
-//    {
-//        return _createResource( request, OvalDefinitions.class, definitions );
-//    }
+    //==============================================================
+    // /d/objects/{id}
+    //==============================================================
+
+    // GET
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/d/objects/{id:.*}"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody SystemObjectType getObject(
+                    @PathVariable final String id
+                    )
+    throws OvalException
+    {
+        return _getResource( SystemObjectType.class, id );
+    }
 
 
 
-//    @RequestMapping(
-//                    method=RequestMethod.GET,
-//                    value="/definition",
-//                    headers="Accept=application/xml"
-//    )
-//    public @ResponseBody SearchResult<Definition> findDefinitionByCve(
-//                    @RequestParam final Map<String, String> params
-//                    )
-//    throws OvalException
-//    {
-//        _LOG.debug( "request params=" + params );
-//
-//        Binding  filter = _buildFilter( params );
-//        Collection<Definition>  defs = _store.find(
-//                        Definition.class,
-//                        filter
-//                        );
-//
-//        SearchResult<Definition>  result = new SearchResult<Definition>( new Date(), defs );
-//
-//        return result;
-//    }
+    //==============================================================
+    // /d/states/{id}
+    //==============================================================
+
+    // GET
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/d/states/{id:.*}"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody StateType getState(
+                    @PathVariable final String id
+                    )
+    throws OvalException
+    {
+        return _getResource( StateType.class, id );
+    }
 
 
+
+    //==============================================================
+    // /d/variables/{id}
+    //==============================================================
+
+    // GET
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/d/variables/{id:.*}"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody VariableType getVariable(
+                    @PathVariable final String id
+                    )
+    throws OvalException
+    {
+        return _getResource( VariableType.class, id );
+    }
 
 
 
