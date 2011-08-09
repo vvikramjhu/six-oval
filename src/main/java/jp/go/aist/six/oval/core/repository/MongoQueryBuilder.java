@@ -31,6 +31,7 @@ import jp.go.aist.six.oval.repository.CommonQueryKey;
 import jp.go.aist.six.oval.repository.DefinitionQueryKey;
 import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryKey;
 import jp.go.aist.six.oval.repository.QueryParams;
+import jp.go.aist.six.oval.repository.TestQueryKey;
 import com.google.code.morphia.query.Query;
 
 
@@ -131,6 +132,11 @@ public class MongoQueryBuilder
             }
         };
         _addHandler( versionHandler );
+
+
+        // test
+        _addHandler( new FilterHandler( TestQueryKey.OBJECT_REF,  "object.object_ref"  ) );
+        _addHandler( new FilterHandler( TestQueryKey.STATE_REF,   "state.state_ref"  ) );
 
 
         // SC

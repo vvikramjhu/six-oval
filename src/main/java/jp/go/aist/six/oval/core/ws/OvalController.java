@@ -346,13 +346,10 @@ public class OvalController
     // /d/definitions
     //==============================================================
 
-    // POST (create) definition --- not supported.
+    // POST (create) --- NOT supported.
 
 
-    // GET (query) definitions
-    //   params:
-    //     version={number|"latest"}, default: "latest"
-    //
+    // GET (query)
     // test: curl -v -X GET -HAccept:application/xml "http://localhost:8080/oval_rep/d/definitions?platform=Debian%20GNU%2fLinux%205%2e0&limit=1"
     @RequestMapping(
                     method=RequestMethod.GET
@@ -438,6 +435,22 @@ public class OvalController
     //==============================================================
     // /d/tests/{id}
     //==============================================================
+
+    // GET (query)
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/d/tests"
+                    ,headers="Accept=application/xml"
+    )
+    public @ResponseBody QueryResult<TestType> findTests(
+                    final TestQueryParams params
+                    )
+    throws OvalException
+    {
+        return _findResource( TestType.class, params );
+    }
+
+
 
     // GET
     @RequestMapping(
