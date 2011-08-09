@@ -66,7 +66,7 @@ public class MongoOvalRepository
     private MongoDatastore  _datastore;
 
 
-    private final Map<Class<?>, MongoQueryBuilder>  _builders = new HashMap<Class<?>, MongoQueryBuilder>();
+    private final Map<Class<?>, QueryBuilder>  _builders = new HashMap<Class<?>, QueryBuilder>();
     private final BasicQueryBuilder  _DEFAULT_QUERY_BUILDER_ = new BasicQueryBuilder();
 
 //    private final MongoQueryBuilder  _queryBuilder = new MongoQueryBuilder();
@@ -101,7 +101,7 @@ public class MongoOvalRepository
                     )
     throws OvalRepositoryException
     {
-        MongoQueryBuilder  builder = _builders.get( type );
+        QueryBuilder  builder = _builders.get( type );
         if (builder == null) {
             builder = _DEFAULT_QUERY_BUILDER_;
         }

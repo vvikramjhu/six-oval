@@ -32,7 +32,7 @@ import com.google.code.morphia.query.Query;
  * @version $Id$
  */
 public class BasicQueryBuilder
-    extends MongoQueryBuilder
+    extends QueryBuilder
 {
 
     public static final String  DEFAULT_LIMIT = "10";
