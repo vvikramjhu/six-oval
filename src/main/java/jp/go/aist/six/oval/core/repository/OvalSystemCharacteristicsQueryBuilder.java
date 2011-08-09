@@ -18,7 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.ws;
+package jp.go.aist.six.oval.core.repository;
+
+import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryKey;
 
 
 
@@ -27,17 +29,22 @@ package jp.go.aist.six.oval.core.ws;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class ResultsQueryParams
-    extends BasicQueryParams
+public class OvalSystemCharacteristicsQueryBuilder
+    extends BasicQueryBuilder
 {
 
     /**
      * Constructor.
      */
-    public ResultsQueryParams()
+    public OvalSystemCharacteristicsQueryBuilder()
     {
+        // SC
+        _addHandler( DatetimeHandler.newStartHandler(  this, "generator.timestamp" ) );
+        _addHandler( DatetimeHandler.newEndHandler(    this, "generator.timestamp" ) );
+        _addHandler( new PatternHandler( OvalSystemCharacteristicsQueryKey.PRIMARY_HOST_NAME, "system_info.primary_host_name" ) );
+        _addHandler( new PatternHandler( OvalSystemCharacteristicsQueryKey.OS_NAME,           "system_info.os_name"           ) );
     }
 
 }
-// ResultsQueryParams
+// OvalSystemCharacteristicsQueryBuilder
 

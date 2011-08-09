@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryKey;
  * @version $Id$
  */
 public class OvalSystemCharacteristicsQueryParams
-    extends DefaultQueryParams
+    extends BasicQueryParams
 {
 
 //    public static final String  PRIMARY_HOST_NAME   = "primary_host_name";

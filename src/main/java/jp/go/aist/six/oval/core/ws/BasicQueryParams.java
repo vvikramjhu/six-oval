@@ -30,14 +30,14 @@ import jp.go.aist.six.oval.repository.QueryParams;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefaultQueryParams
+public class BasicQueryParams
     extends QueryParams
 {
 
     /**
      * Constructor.
      */
-    public DefaultQueryParams()
+    public BasicQueryParams()
     {
     }
 

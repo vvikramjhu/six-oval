@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.repository.DefinitionQueryKey;
  * @version $Id$
  */
 public class DefinitionsQueryParams
-    extends DefaultQueryParams
+    extends BasicQueryParams
 {
 
     /**
