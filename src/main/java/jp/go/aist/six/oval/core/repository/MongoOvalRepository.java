@@ -22,9 +22,7 @@ package jp.go.aist.six.oval.core.repository;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
@@ -66,10 +64,10 @@ public class MongoOvalRepository
     private MongoDatastore  _datastore;
 
 
-    private final Map<Class<?>, QueryBuilder>  _builders = new HashMap<Class<?>, QueryBuilder>();
-    private final BasicQueryBuilder  _DEFAULT_QUERY_BUILDER_ = new BasicQueryBuilder();
+//    private final Map<Class<?>, QueryBuilder>  _builders = new HashMap<Class<?>, QueryBuilder>();
+//    private final BasicQueryBuilder  _DEFAULT_QUERY_BUILDER_ = new BasicQueryBuilder();
 
-//    private final MongoQueryBuilder  _queryBuilder = new MongoQueryBuilder();
+    private final MongoQueryBuilder  _queryBuilder = new MongoQueryBuilder();
 
 
 
@@ -101,13 +99,16 @@ public class MongoOvalRepository
                     )
     throws OvalRepositoryException
     {
-        QueryBuilder  builder = _builders.get( type );
-        if (builder == null) {
-            builder = _DEFAULT_QUERY_BUILDER_;
-        }
-
-        builder.buildQuery( query, params );
+        _queryBuilder.buildQuery( query, params );
     }
+//    {
+//        QueryBuilder  builder = _builders.get( type );
+//        if (builder == null) {
+//            builder = _DEFAULT_QUERY_BUILDER_;
+//        }
+//
+//        builder.buildQuery( query, params );
+//    }
 
 
 
