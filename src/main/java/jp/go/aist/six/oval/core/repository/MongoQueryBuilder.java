@@ -33,6 +33,7 @@ import jp.go.aist.six.oval.repository.CommonQueryKey;
 import jp.go.aist.six.oval.repository.DefinitionQueryKey;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.QueryParams;
+import jp.go.aist.six.oval.repository.TestQueryKey;
 import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.query.Query;
 
@@ -607,17 +608,25 @@ public class MongoQueryBuilder
 
         Collection<Entry>  entries = new ArrayList<Entry>();
 
+        // common
         entries.add( new Entry( CommonQueryKey.OFFSET, null, offsetHandler ) );
         entries.add( new Entry( CommonQueryKey.LIMIT,  null, limitHandler ) );
         entries.add( new Entry( CommonQueryKey.ORDER,  null, new OrderHandler() ) );
 
-        entries.add( new Entry( DefinitionQueryKey.ID,               "oval_id",       DEFAULT_HANDLER ) );
+        // entity
+        entries.add( new Entry( DefinitionQueryKey.ID,               "oval_id" ) );
         entries.add( new Entry( DefinitionQueryKey.VERSION,          "oval_version",  versionHandler ) );
+
+        // definition
         entries.add( new Entry( DefinitionQueryKey.DEFINITION_CLASS, "class",         definitionClassHandler ) );
-        entries.add( new Entry( DefinitionQueryKey.FAMILY,           "metadata.affected.family",   DEFAULT_HANDLER ) );
-        entries.add( new Entry( DefinitionQueryKey.PLATFORM,         "metadata.affected.platform", DEFAULT_HANDLER ) );
-        entries.add( new Entry( DefinitionQueryKey.PRODUCT,          "metadata.affected.product",  DEFAULT_HANDLER  ) );
-        entries.add( new Entry( DefinitionQueryKey.REF_ID,           "metadata.reference.ref_id",  DEFAULT_HANDLER  ) );
+        entries.add( new Entry( DefinitionQueryKey.FAMILY,           "metadata.affected.family"   ) );
+        entries.add( new Entry( DefinitionQueryKey.PLATFORM,         "metadata.affected.platform" ) );
+        entries.add( new Entry( DefinitionQueryKey.PRODUCT,          "metadata.affected.product"  ) );
+        entries.add( new Entry( DefinitionQueryKey.REF_ID,           "metadata.reference.ref_id"  ) );
+
+        // test
+        entries.add( new Entry( TestQueryKey.OBJECT_REF,  "object.object_ref"  ) );
+        entries.add( new Entry( TestQueryKey.STATE_REF,   "state.state_ref"  ) );
 
         return entries;
     }
