@@ -18,23 +18,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.repository;
+package jp.go.aist.six.oval.core.datastore.mongodb;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 import java.util.regex.Pattern;
-import jp.go.aist.six.oval.model.OvalObject;
-import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
-import jp.go.aist.six.oval.repository.CommonQueryKey;
-import jp.go.aist.six.oval.repository.DefinitionQueryKey;
-import jp.go.aist.six.oval.repository.OvalRepositoryException;
-import jp.go.aist.six.oval.repository.QueryParams;
-import jp.go.aist.six.oval.repository.TestQueryKey;
-import jp.go.aist.six.util.persist.Persistable;
+import jp.go.aist.six.util.search.AndBinding;
+import jp.go.aist.six.util.search.Binding;
+import jp.go.aist.six.util.search.InBinding;
+import jp.go.aist.six.util.search.LikeBinding;
+import jp.go.aist.six.util.search.Limit;
+import jp.go.aist.six.util.search.LogicalBinding;
+import jp.go.aist.six.util.search.NotBinding;
+import jp.go.aist.six.util.search.NullBinding;
+import jp.go.aist.six.util.search.Order;
+import jp.go.aist.six.util.search.PropertyBinding;
+import jp.go.aist.six.util.search.RelationalBinding;
+import com.google.code.morphia.query.Criteria;
 import com.google.code.morphia.query.Query;
 
 
@@ -44,707 +43,369 @@ import com.google.code.morphia.query.Query;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class MongoQueryBuilder
+public class MorphiaQueryBuilder<T>
 {
 
+//    private final Class<T>  _type;
+    private final Binding  _filter;
+
+    private final Query<T>  _query;
+
+
+    private boolean  _compiled = false;
+
+
+
     /**
-     * Query key - database field mapping.
+     * Usage:
+     * MorphiaQueryBuilder  b = new MorphiaQueryBuilder( dao.createQuery(), filter );
+     * Query<T>  q = b.build();
+     * Limit  limit = new Limit( 10, 0 );
+     * QueryResults<T>  results = dao.find( q, orders, limit );
+     * limit.next();
+     * results = dao.find( q, orders, limit );
+     * ...
      */
-    private final Map<String, String>  _fields = new HashMap<String, String>();
-
-
-    /**
-     * Registered handlers.
-     * Map keys are URI query param keys.
-     */
-    private final Map<String, Handler>  _handlers = new HashMap<String, Handler>();
-
-
-    private static final Handler  DEFAULT_HANDLER = new FilterHandler();
-
-
 
 
     /**
      * Constructor.
      */
-    public MongoQueryBuilder()
-    {
-        this( _entries() );
-    }
-
-
-    public MongoQueryBuilder(
-                    final Map<String, String> fieldMapping,
-                    final Map<String, Handler> handlerMapping
-                    )
-    {
-        setFieldMapping( fieldMapping );
-        setHandlerMapping( handlerMapping );
-    }
-
-
-    public MongoQueryBuilder(
-                    final Collection<Entry> entries
-                    )
-    {
-        _addEntries( entries );
-    }
-
-
-
-    /**
-     */
-    protected void _addEntries(
-                    final Collection<Entry> entries
-                    )
-    {
-        if (entries != null) {
-            for (Entry  entry : entries) {
-                _addEntry( entry );
-            }
-        }
-    }
-
-
-    protected void _addEntry(
-                    final Entry entry
-                    )
-    {
-        if (entry != null) {
-            _addField( entry.key, entry.field );
-            _addHandler( entry.key, entry.handler );
-        }
-    }
-
-
-
-
-    /**
-     */
-    public final void setFieldMapping(
-                    final Map<String, String> mapping
-                    )
-    {
-        if (mapping != null) {
-            _fields.putAll( mapping );
-        }
-    }
-
-
-    protected final void _addField(
-                    final String key,
-                    final String field
-                    )
-    {
-        if (key == null) {
-            throw new IllegalArgumentException( "no key specified" );
-        }
-
-        _fields.put( key, field );
-    }
-
-
-
-    /**
-     */
-    public final void setHandlerMapping(
-                    final Map<String, Handler> mapping
-                    )
-    {
-        if (mapping != null) {
-            for (String  key : mapping.keySet()) {
-                _addHandler( key, mapping.get( key ) );
-            }
-        }
-    }
-
-
-    protected final Map<String, Handler> _getHandlers()
-    {
-        return _handlers;
-    }
-
-
-
-    protected final void _addHandler(
-                    final String key,
-                    final Handler handler
-                    )
-    {
-        if (handler == null) {
-            throw new IllegalArgumentException( "null handler" );
-        }
-
-        handler.setBuilder( this );
-        _handlers.put( key, handler );
-    }
-
-
-
-    protected final Handler _getHandler(
-                    final String key
-                    )
-    {
-        Handler  handler = _handlers.get( key );
-        if (handler == null) {
-            handler = DEFAULT_HANDLER;
-        }
-
-        return handler;
-    }
-
-
-
-    public final String getField(
-                    final String key
-                    )
-    {
-        String  field = _fields.get( key );
-        if (field == null) {
-            field = key;
-        }
-
-        return field;
-    }
-
-
-
-    //==============================================================
-    //  Query
-    //==============================================================
-
-
-    /**
-     */
-    public <K, T extends OvalObject & Persistable<K>>
-    void buildQuery(
-//                    final Class<T> type,
+    public MorphiaQueryBuilder(
                     final Query<T> query,
-                    final QueryParams params
+                    final Binding filter
                     )
     {
-        for (String  key : params.keys()) {
-            Handler  handler = _getHandler( key );
-            String  field = getField( key );
-            Object  value = params.get( key );
-
-            handler.build( query, field, value );
-        }
+        _query = query;
+        _filter = filter;
     }
 
 
 
-    //**************************************************************
-    //  java.lang.Object
-    //**************************************************************
+    private synchronized Query<T> _compile()
+    {
+        if (_compiled) {
 
-//    @Override
-//    public String toString()
-//    {
-//        return _fields.toString();
-//    }
+        } else {
+            build( _query, _filter );
+            _compiled = true;
+        }
+
+        return _query;
+    }
 
 
 
-    //**************************************************************
-    //  nested classes
-    //**************************************************************
+    public Query<T> build()
+    {
+        return _compile();
+    }
+
+
+    public Query<T> build(
+                    final List<? extends Order> orders,
+                    final Limit limit
+                    )
+    {
+        Query<T>  q = _compile();
+
+        // Keep the original!!!
+        q = build( q.clone(), null, orders, limit );
+
+        return q;
+    }
+
 
     /**
-     * A query param handler.
-     * It holds key-value pair in an URI query param and
-     * the correspondent field name in the MongoDB document object.
-     * This handler generates "=" filter in the query.
+     *
      */
-    protected static abstract class Handler
+    public static <S> Query<S> build(
+                    final Query<S> query,
+                    final Binding filter
+                    )
     {
+        _buildBinding( query, filter );
 
-        private MongoQueryBuilder  _builder;
-
-
-        public Handler()
-        {
-        }
-
-
-        public Handler(
-                        final MongoQueryBuilder builder
-                        )
-        {
-            setBuilder( builder );
-        }
-
-
-
-        /**
-         */
-        public final void setBuilder(
-                        final MongoQueryBuilder builder
-                        )
-        {
-            _builder = builder;
-        }
-
-
-        public final MongoQueryBuilder getBuilder()
-        {
-            return _builder;
-        }
-
-
-
-        /**
-         */
-        public abstract // <K, T extends OvalObject & Persistable<K>>
-        void build( Query<?> query, String field, Object value );
-
-
-
-        //**************************************************************
-        //  java.lang.Object
-        //**************************************************************
-
+        return query;
     }
-    // Handler
 
 
-
-    protected static class FilterHandler
-    extends Handler
+    public static <S> Query<S> build(
+                    final Query<S> query,
+                    final Binding filter,
+                    final List<? extends Order> orders,
+                    final Limit limit
+                    )
     {
+        _buildBinding( query, filter );
+        _buildOrder( query, orders );
+        _buildLimit( query, limit );
 
-        public static final String  DEFAULT_OPERATOR = "=";
-
-        public FilterHandler()
-        {
-        }
-
-
-        public FilterHandler(
-                        final MongoQueryBuilder builder
-                        )
-        {
-            super( builder );
-        }
-
-
-
-        @Override
-        public //<K, T extends OvalObject & Persistable<K>>
-        void build(
-                        final Query<?> query,
-                        final String field,
-                        final Object value
-                        )
-        {
-            query.filter( field, value );
-        }
-
-
-
-//        public <K, T extends OvalObject & Persistable<K>>
-//        void build(
-//                        final Query<T> query,
-//                        final String field,
-//                        final Object value,
-//                        final String operator
-//                        )
-//        {
-//            query.filter( field + " " + operator, value );
-//        }
-
+        return query;
     }
-    // FilterHandler
 
 
 
     /**
-     * A query param handler for result ordering.
      */
-    protected static class OrderHandler
-    extends Handler
+    private static void _buildOrder(
+                    final Query<?> query,
+                    final List<? extends Order> orders
+                    )
     {
-
-//        private final Map<String, String>  _fieldMapping;
-
-
-        public OrderHandler()
-        {
+        if (orders == null) {
+            return;
         }
 
-
-        public OrderHandler(
-                        final MongoQueryBuilder builder
-                        )
-        {
-            super( builder );
-        }
-
-
-//        public OrderHandler(
-//                        final Map<String, String> fieldMapping
-//                        )
-//        {
-//            _fieldMapping = fieldMapping;
-//        }
-
-
-
-        @Override
-        public //<K, T extends OvalObject & Persistable<K>>
-        void build(
-                        final Query<?> query,
-                        final String field,
-                        final Object value
-                        )
-        {
-            String  order = String.valueOf( value );
-            if (value == null  ||  order.length() == 0) {
-                return;
+        boolean  empty = true;
+        StringBuilder  s = new StringBuilder();
+        for (Order  order : orders) {
+            if (empty) {
+                empty = false;
+            } else {
+                s.append( "," );
             }
-
-            StringBuilder  s = new StringBuilder();
-            String[]  orderKeys = order.split( "," );
-            for (String  orderKey : orderKeys) {
-                if (s.length() > 0) {
-                    s.append( "," );
-                }
-
-                if (orderKey.startsWith( "-" )) {
-                    orderKey = orderKey.substring( 1 );
-                    s.append( "-" );
-                }
-                String  orderingField = getBuilder().getField( orderKey );
-                s.append( (orderingField == null ? orderKey : orderingField) );
+            if (order.isDescending()) {
+                s.append( "-" );
             }
+            s.append( order.getProperty() );
+        }
+    }
 
-            query.order( s.toString() );
+
+
+    private static void _buildLimit(
+                    final Query<?> query,
+                    final Limit limit
+                    )
+    {
+        if (limit == null) {
+            return;
         }
 
+        query.offset( limit.getOffset() );
+        query.limit( limit.getCount() );
     }
-    // OrderHandler
+
+
+
+    private static void _buildBinding(
+                    final Query<?> query,
+                    final Binding binding
+                    )
+    {
+        if (binding == null) {
+            return;
+        }
+
+        if (binding instanceof PropertyBinding) {
+            _buildPropertyBinding( query, (PropertyBinding)binding );
+
+        } else if (binding instanceof LogicalBinding) {
+            _buildLogicalBinding( query, (LogicalBinding)binding );
+
+//        } else if (binding instanceof NotBinding) {
+            // TODO:
+
+        } else {
+            throw new IllegalArgumentException( "unsupported Binding: "
+                            + String.valueOf( binding ) );
+        }
+    }
 
 
 
     /**
-     * A query param handler generating string pattern match filter in the query.
-     * e.g. {name:/Joe/} in MongoDB, name like ''%Joe%' in SQL
+     * PropertyBinding
      */
-    protected static class PatternHandler
-    extends Handler
+    private static void _buildPropertyBinding(
+                    final Query<?> query,
+                    final PropertyBinding binding
+                    )
     {
+        if (binding instanceof RelationalBinding) {
+            RelationalBinding  rel = (RelationalBinding)binding;
+            query.filter( rel.getProperty() + " " + rel.getRelation().toString(), rel.getValue() );
 
-        public PatternHandler()
-        {
-        }
+        } else if (binding instanceof InBinding) {
+            InBinding  in = (InBinding)binding;
+            query.filter( in.getProperty() + " in", in.getValues() );
 
-
-        public PatternHandler(
-                        final MongoQueryBuilder builder
-                        )
-        {
-            super( builder );
-        }
-
-
-
-        @Override
-        public //<K, T extends OvalObject & Persistable<K>>
-        void build(
-                        final Query<?> query,
-                        final String field,
-                        final Object value
-                        )
-        {
-            String  string = String.valueOf( value );
+        } else if (binding instanceof LikeBinding) {
+            LikeBinding  rel = (LikeBinding)binding;
+            String  string = rel.getPattern();
             Pattern  pattern = Pattern.compile( ".*" + string + ".*", Pattern.CASE_INSENSITIVE );
-            query.filter( field, pattern );
+            query.filter( rel.getProperty(), pattern );
+
+//        } else if (binding instanceof TextMatchBinding) {
+            //TODO:
+
+//        } else if (binding instanceof NullBinding) {
+            //TODO:
+
+        } else {
+            throw new IllegalArgumentException( "unsupported PropertyBinding: "
+                            + String.valueOf( binding ) );
         }
-
     }
-    // PatternHandler
 
 
 
-    protected static class DatetimeHandler
-    extends Handler
+    /**
+     * LogicalBinding
+     *      (b_1 AND b_2 AND ... AND b_n)
+     *      (b_1 OR  b_2 OR  ... OR  b_n)
+     */
+    private static void _buildLogicalBinding(
+                    final Query<?> query,
+                    final LogicalBinding binding
+                    )
     {
+        final int  size = binding.size();
 
-        public DatetimeHandler()
-        {
+        if (size < 2) {
+            throw new IllegalArgumentException(
+                            "LogicalBinding with less than two element bindings" );
         }
 
-
-        public DatetimeHandler(
-                        final MongoQueryBuilder builder
-                        )
-        {
-            super( builder );
+        Criteria[]  elements = new Criteria[size];
+        for (int  i = 0; i < size ; i++) {
+            elements[i] = _createCriteria( query, binding.getElementAt( i ) );
         }
 
-
-
-        private static SimpleDateFormat  _DATE_FORMATTER_ =
-            new SimpleDateFormat( "yyyy-MM-dd" );
-
-
-        @Override
-        public //<K, T extends OvalObject & Persistable<K>>
-        void build(
-                        final Query<?> query,
-                        final String field,
-                        final Object value
-                        )
-        {
-            String  datetimeString = String.valueOf( value );
-
-            // validation
-            try {
-                _DATE_FORMATTER_.parse( datetimeString );
-            } catch (ParseException ex) {
-                throw new OvalRepositoryException( ex );
-            }
-
-            query.filter( field, datetimeString );
+        if (binding instanceof AndBinding) {
+            query.and( elements );
+        } else {
+            query.or( elements );
         }
-
     }
-    // DatetimeHandler
 
 
 
-    //==============================================================
-    //
-    //==============================================================
-
-    protected static class Entry
+    private static Criteria _createCriteria(
+                    final Query<?> query,
+                    final Binding binding
+                    )
     {
-        private final String   key;
-        private final String   field;
-        private final Handler  handler;
-
-
-        public Entry(
-                        final String key,
-                        final String field
-                        )
-        {
-            this( key, field, DEFAULT_HANDLER );
+        Criteria  criteria = null;
+        if (binding instanceof PropertyBinding) {
+            if (binding instanceof RelationalBinding) {
+                criteria = _createRelationalCriteria( query, (RelationalBinding)binding );
+            } else if (binding instanceof InBinding) {
+                criteria = _createInCriteria( query, (InBinding)binding );
+            } else if (binding instanceof LikeBinding) {
+                criteria = _createLikeCriteria( query, (LikeBinding)binding );
+            } else if (binding instanceof NullBinding) {
+                criteria = _createNullCriteria( query, (NullBinding)binding );
+            }
+        } else if (binding instanceof LogicalBinding) {
+            criteria = _createLogicalCriteria( query, (LogicalBinding)binding );
+        } else if (binding instanceof NotBinding) {
+            // TODO: Unsupported???
         }
 
-
-        public Entry(
-                        final String key,
-                        final String field,
-                        final Handler handler
-                        )
-        {
-            this.key = key;
-            this.field = field;
-            this.handler = handler;
+        if (criteria == null) {
+            throw new IllegalArgumentException(
+                            "unknown Binding to create Morphia Criteria: "
+                            + String.valueOf( binding ) );
         }
 
+        return criteria;
     }
-    // Entry
 
 
-    private static Collection<Entry> _entries()
+
+    private static Criteria _createLogicalCriteria(
+                    final Query<?> query,
+                    final LogicalBinding binding
+                    )
     {
-        Handler  offsetHandler = new Handler()
-        {
-            @Override
-            public void build(
-                        final Query<?> query,
-                        final String field,
-                        final Object value
-                        )
-            {
-                query.offset( Integer.valueOf( String.valueOf( value ) ).intValue() );
-            }
-        };
+        final int  size = binding.size();
 
-        Handler  limitHandler = new Handler()
-        {
-            @Override
-            public void build(
-                            final Query<?> query,
-                            final String field,
-                            final Object value
-                            )
-            {
-                query.limit( Integer.valueOf( String.valueOf( value ) ).intValue() );
-            }
-        };
+        if (size < 2) {
+            throw new IllegalArgumentException(
+                            "LogicalBinding contains less than two element bindings" );
+        }
 
-        Handler  definitionClassHandler = new FilterHandler()
-        {
-            @Override
-            public void build(
-                            final Query<?> query,
-                            final String field,
-                            final Object value
-                            )
-            {
-                ClassEnumeration  clazzValue = ClassEnumeration.fromValue( String.valueOf( value ) );
-                super.build( query, field, clazzValue );
-            }
-        };
+        Criteria  criteria = null;
+        Criteria[]  elements = new Criteria[size];
+        for (int  i = 0; i < size ; i++) {
+            elements[i] = _createCriteria( query, binding.getElementAt( i ) );
+        }
 
-        Handler  versionHandler = new FilterHandler()
-        {
-            @Override
-            public void build(
-                            final Query<?> query,
-                            final String key,
-                            final Object value
-                            )
-            {
-                int  intValue = Integer.valueOf( String.valueOf( value ) ).intValue();
-                super.build( query, key, intValue );
-            }
-        };
+        if (binding instanceof AndBinding) {
+            criteria = query.and( elements );
+        } else {
+            criteria = query.or( elements );
+        }
 
-
-        Collection<Entry>  entries = new ArrayList<Entry>();
-
-        // common
-        entries.add( new Entry( CommonQueryKey.OFFSET, null, offsetHandler ) );
-        entries.add( new Entry( CommonQueryKey.LIMIT,  null, limitHandler ) );
-        entries.add( new Entry( CommonQueryKey.ORDER,  null, new OrderHandler() ) );
-
-        // entity
-        entries.add( new Entry( DefinitionQueryKey.ID,               "oval_id" ) );
-        entries.add( new Entry( DefinitionQueryKey.VERSION,          "oval_version",  versionHandler ) );
-
-        // definition
-        entries.add( new Entry( DefinitionQueryKey.DEFINITION_CLASS, "class",         definitionClassHandler ) );
-        entries.add( new Entry( DefinitionQueryKey.FAMILY,           "metadata.affected.family"   ) );
-        entries.add( new Entry( DefinitionQueryKey.PLATFORM,         "metadata.affected.platform" ) );
-        entries.add( new Entry( DefinitionQueryKey.PRODUCT,          "metadata.affected.product"  ) );
-        entries.add( new Entry( DefinitionQueryKey.REF_ID,           "metadata.reference.ref_id"  ) );
-
-        // test
-        entries.add( new Entry( TestQueryKey.OBJECT_REF,  "object.object_ref"  ) );
-        entries.add( new Entry( TestQueryKey.STATE_REF,   "state.state_ref"  ) );
-
-        return entries;
+        return criteria;
     }
 
 
 
-//    //==============================================================
-//    //  builders
-//    //==============================================================
-//
-//    public static class BasicQueryBuilder
-//    extends MongoQueryBuilder
-//    {
-//
-//        private static Collection<Entry> _entries()
-//        {
-//            Handler  offsetHandler = new Handler()
-//            {
-//                @Override
-//                public void build(
-//                            final Query<?> query,
-//                            final String field,
-//                            final Object value
-//                            )
-//                {
-//                    query.offset( Integer.valueOf( String.valueOf( value ) ).intValue() );
-//                }
-//            };
-//
-//            Handler  limitHandler = new Handler()
-//            {
-//                @Override
-//                public void build(
-//                                final Query<?> query,
-//                                final String field,
-//                                final Object value
-//                                )
-//                {
-//                    query.limit( Integer.valueOf( String.valueOf( value ) ).intValue() );
-//                }
-//            };
-//
-//            Collection<Entry>  entries = new ArrayList<Entry>();
-//            entries.add( new Entry( CommonQueryKey.OFFSET, null, offsetHandler ) );
-//            entries.add( new Entry( CommonQueryKey.LIMIT,  null, limitHandler ) );
-//            entries.add( new Entry( CommonQueryKey.ORDER,  null, new OrderHandler() ) );
-//
-//            return entries;
-//        }
-//
-//
-//
-//        public BasicQueryBuilder()
-//        {
-//            _addEntries( _entries() );
-//        }
-//
-//    }
-//    // BasicQueryBuilder
-//
-//
-//
-//    public static class DefinitionQueryBuilder
-//    extends BasicQueryBuilder
-//    {
-//
-//        private static Collection<Entry> _entries()
-//        {
-//            Handler  definitionClassHandler = new FilterHandler()
-//            {
-//                @Override
-//                public void build(
-//                                final Query<?> query,
-//                                final String field,
-//                                final Object value
-//                                )
-//                {
-//                    ClassEnumeration  clazzValue = ClassEnumeration.fromValue( String.valueOf( value ) );
-//                    super.build( query, field, clazzValue );
-//                }
-//            };
-//
-//            Handler  versionHandler = new FilterHandler()
-//            {
-//                @Override
-//                public void build(
-//                                final Query<?> query,
-//                                final String key,
-//                                final Object value
-//                                )
-//                {
-//                    int  intValue = Integer.valueOf( String.valueOf( value ) ).intValue();
-//                    super.build( query, key, intValue );
-//                }
-//            };
-//
-//            Collection<Entry>  entries = new ArrayList<Entry>();
-//            entries.add( new Entry( DefinitionQueryKey.ID,               "oval_id",       DEFAULT_HANDLER ) );
-//            entries.add( new Entry( DefinitionQueryKey.VERSION,          "oval_version",  versionHandler ) );
-//            entries.add( new Entry( DefinitionQueryKey.DEFINITION_CLASS, "class",         definitionClassHandler ) );
-//            entries.add( new Entry( DefinitionQueryKey.FAMILY,           "metadata.affected.family",   DEFAULT_HANDLER ) );
-//            entries.add( new Entry( DefinitionQueryKey.PLATFORM,         "metadata.affected.platform", DEFAULT_HANDLER ) );
-//            entries.add( new Entry( DefinitionQueryKey.PRODUCT,          "metadata.affected.product",  DEFAULT_HANDLER  ) );
-//            entries.add( new Entry( DefinitionQueryKey.REF_ID,           "metadata.reference.ref_id",  DEFAULT_HANDLER  ) );
-//
-//            return entries;
-//        }
-//
-//
-//
-//        public DefinitionQueryBuilder()
-//        {
-//            _addEntries( _entries() );
-//        }
-//
-//    }
-//    // DefinitionQueryBuilder
+    private static Criteria _createRelationalCriteria(
+                    final Query<?> query,
+                    final RelationalBinding binding
+                    )
+    {
+        Criteria  criteria = null;
+        String  property = binding.getProperty();
+        Object  value = binding.getValue();
+
+        switch (binding.getRelation()) {
+        case EQUAL:
+            criteria = query.criteria( property ).equal( value );
+        case NOT_EQUAL:
+            criteria = query.criteria( property ).notEqual( value );
+        case LESS_THAN:
+            criteria = query.criteria( property ).lessThan( value );
+        case LESS_EQUAL:
+            criteria = query.criteria( property ).lessThanOrEq( value );
+        case GREATER_THAN:
+            criteria = query.criteria( property ).greaterThan( value );
+        case GREATER_EQUAL:
+            criteria = query.criteria( property ).greaterThanOrEq( value );
+        }
+
+        if (criteria == null) {
+            throw new IllegalArgumentException(
+                            "unknown RelationalBinding: " + String.valueOf( binding ) );
+        }
+
+        return criteria;
+    }
+
+
+
+    private static Criteria _createInCriteria(
+                    final Query<?> query,
+                    final InBinding binding
+                    )
+    {
+        return query.criteria( binding.getProperty() ).in( binding.getValues() );
+    }
+
+
+
+    private static Criteria _createLikeCriteria(
+                    final Query<?> query,
+                    final LikeBinding binding
+                    )
+    {
+        return query.criteria( binding.getProperty() ).containsIgnoreCase( binding.getPattern() );
+    }
+
+
+
+    private static Criteria _createNullCriteria(
+                    final Query<?> query,
+                    final NullBinding binding
+                    )
+    {
+        return query.criteria( binding.getProperty() ).equal( null );
+    }
 
 }
-// MongoQueryBuilder
+// MorphiaQueryBuilder
 
