@@ -544,7 +544,7 @@ public class OvalController
                     )
     throws OvalException
     {
-        Collection<String>  ids = _repository.findIDs( OvalSystemCharacteristics.class, params );
+        QueryResult<String>  ids = _repository.findIDs( OvalSystemCharacteristics.class, params );
 //        Collection<String>  ids = _service.findOvalSystemCharacteristics( params );
 ////        List<Key<OvalSystemCharacteristics>>  ids = _service.findOvalSystemCharacteristics( params );
         if (ids == null) {
@@ -557,7 +557,7 @@ public class OvalController
                         "oval_system_characteristics",
                         request.getRequestURL().toString(),
                         SC_REL,
-                        ids
+                        ids.getElements().getElements()
                         );
 
         return feed;
