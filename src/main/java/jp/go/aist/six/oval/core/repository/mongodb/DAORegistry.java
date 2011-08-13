@@ -1,4 +1,4 @@
-package jp.go.aist.six.oval.core.datastore.mongodb;
+package jp.go.aist.six.oval.core.repository.mongodb;
 
 import com.google.code.morphia.dao.DAO;
 

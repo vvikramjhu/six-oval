@@ -1,4 +1,4 @@
-package jp.go.aist.six.oval.core.datastore.mongodb;
+package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.util.Set;
 import com.google.code.morphia.Morphia;

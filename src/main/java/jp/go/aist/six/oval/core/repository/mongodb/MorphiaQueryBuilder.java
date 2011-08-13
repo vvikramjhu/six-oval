@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.datastore.mongodb;
+package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.util.List;
 import java.util.regex.Pattern;
