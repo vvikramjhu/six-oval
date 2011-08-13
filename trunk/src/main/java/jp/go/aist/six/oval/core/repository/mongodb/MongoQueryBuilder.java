@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.repository;
+package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
