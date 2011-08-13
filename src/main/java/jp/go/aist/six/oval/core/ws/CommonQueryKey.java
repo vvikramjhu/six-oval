@@ -18,8 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.repository;
-
+package jp.go.aist.six.oval.core.ws;
 
 
 
@@ -28,17 +27,17 @@ package jp.go.aist.six.oval.repository;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionQueryKey
+public class CommonQueryKey
 {
 
-    public static final String  ID                  = "id";
-    public static final String  VERSION             = "version";
-    public static final String  DEFINITION_CLASS    = "definition_class";
-    public static final String  FAMILY              = "family";
-    public static final String  PLATFORM            = "platform";
-    public static final String  PRODUCT             = "product";
-    public static final String  REF_ID              = "ref_id";
+    public static final String  LIMIT  = "limit";
+    public static final String  OFFSET = "offset";
+    public static final String  ORDER  = "order";
+
+    // OpenSearch Time
+    public static final String  DT_START = "dtstart";
+    public static final String  DT_END   = "dtend";
 
 }
-//DefinitionQueryKey
+// CommonQueryKey
 

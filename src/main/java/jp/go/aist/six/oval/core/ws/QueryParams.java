@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.repository;
+package jp.go.aist.six.oval.core.ws;
 
 import java.util.HashMap;
 import java.util.Map;

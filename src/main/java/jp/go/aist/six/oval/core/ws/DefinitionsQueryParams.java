@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.core.ws;
 
-import jp.go.aist.six.oval.repository.DefinitionQueryKey;
 
 
 

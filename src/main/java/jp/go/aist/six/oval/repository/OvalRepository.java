@@ -24,6 +24,7 @@ import java.util.Collection;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.util.persist.Persistable;
+import jp.go.aist.six.util.search.Binding;
 
 
 
@@ -74,9 +75,15 @@ public interface OvalRepository
     public <K, T extends OvalObject & Persistable<K>>
     QueryResult<T> find(
                     Class<T> type,
-                    QueryParams params
+                    Binding filter
                     )
     throws OvalRepositoryException;
+//    public <K, T extends OvalObject & Persistable<K>>
+//    QueryResult<T> find(
+//                    Class<T> type,
+//                    QueryParams params
+//                    )
+//    throws OvalRepositoryException;
 
 
 
@@ -91,9 +98,15 @@ public interface OvalRepository
     public <K, T extends OvalObject & Persistable<K>>
     Collection<K> findIDs(
                     Class<T> type,
-                    QueryParams params
+                    Binding filter
                     )
     throws OvalRepositoryException;
+//    public <K, T extends OvalObject & Persistable<K>>
+//    Collection<K> findIDs(
+//                    Class<T> type,
+//                    QueryParams params
+//                    )
+//    throws OvalRepositoryException;
 
 
 

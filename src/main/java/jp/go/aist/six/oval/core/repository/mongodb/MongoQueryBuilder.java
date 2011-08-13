@@ -27,13 +27,13 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
+import jp.go.aist.six.oval.core.ws.CommonQueryKey;
+import jp.go.aist.six.oval.core.ws.DefinitionQueryKey;
+import jp.go.aist.six.oval.core.ws.QueryParams;
+import jp.go.aist.six.oval.core.ws.TestQueryKey;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
-import jp.go.aist.six.oval.repository.CommonQueryKey;
-import jp.go.aist.six.oval.repository.DefinitionQueryKey;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
-import jp.go.aist.six.oval.repository.QueryParams;
-import jp.go.aist.six.oval.repository.TestQueryKey;
 import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.query.Query;
 
