@@ -26,7 +26,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import jp.go.aist.six.oval.model.OvalObject;
 
 
 
@@ -36,7 +35,7 @@ import jp.go.aist.six.oval.model.OvalObject;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class QueryResultElements<T extends OvalObject>
+public class QueryResultElements<T>
     implements Serializable
 {
 
@@ -106,6 +105,12 @@ public class QueryResultElements<T extends OvalObject>
         return this._elements.iterator();
     }
 
+
+
+    public int size()
+    {
+        return getElements().size();
+    }
 
 
     //**************************************************************

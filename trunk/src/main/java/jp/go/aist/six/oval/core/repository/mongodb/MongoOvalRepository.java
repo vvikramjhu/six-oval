@@ -319,7 +319,7 @@ public class MongoOvalRepository
 
 
     public <K, T extends OvalObject & Persistable<K>>
-    Collection<K> findIDs(
+    QueryResult<K> findIDs(
                     final Class<T> type,
                     final QueryParams params
                     )
@@ -338,21 +338,23 @@ public class MongoOvalRepository
             throw new OvalRepositoryException( ex );
         }
 
-        Collection<K>  ids = _keys2IDs( keys );
+        List<K>  ids = _keys2IDs( keys );
         _LOG_.debug( "#IDs found: " + ids.size() );
 
-        return ids;
+        QueryResult<K>  result = new QueryResult<K>( ids );
+
+        return result;
     }
 
 
 
     private <K, T extends OvalObject & Persistable<K>>
-    Collection<K> _keys2IDs(
+    List<K> _keys2IDs(
                     final Collection<Key<T>> keys
                     )
     throws OvalRepositoryException
     {
-        Collection<K>  ids = new ArrayList<K>();
+        List<K>  ids = new ArrayList<K>();
         if (keys != null ) {
             for (Key<T>  key : keys) {
                 @SuppressWarnings( "unchecked" )

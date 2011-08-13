@@ -14,6 +14,15 @@
 
 <mapping>
 
+    <class name ="jp.go.aist.six.oval.model.OvalID">
+
+        <field name="value" type="string">
+            <bind-xml node="text"/>
+        </field>
+    </class>
+
+
+
     <class name ="jp.go.aist.six.oval.model.OvalObject"
         verify-constructable="false">
 

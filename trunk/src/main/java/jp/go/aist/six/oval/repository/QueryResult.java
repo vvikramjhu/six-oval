@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.repository;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import jp.go.aist.six.oval.model.OvalObject;
 
 
 
@@ -33,7 +32,7 @@ import jp.go.aist.six.oval.model.OvalObject;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class QueryResult<T extends OvalObject>
+public class QueryResult<T>
     implements Serializable
 {
 
@@ -118,6 +117,14 @@ public class QueryResult<T extends OvalObject>
     public QueryResultMetadata getMetadata()
     {
         return this._metadata;
+    }
+
+
+
+    public int size()
+    {
+        QueryResultElements<T>  elements = getElements();
+        return (elements == null ? 0 : elements.size());
     }
 
 
