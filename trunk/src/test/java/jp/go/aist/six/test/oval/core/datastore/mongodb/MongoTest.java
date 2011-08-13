@@ -1,12 +1,12 @@
 package jp.go.aist.six.test.oval.core.datastore.mongodb;
 
 import java.util.List;
-import jp.go.aist.six.oval.core.datastore.mongodb.DefinitionDAO;
-import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
-import jp.go.aist.six.oval.core.datastore.mongodb.StateDAO;
-import jp.go.aist.six.oval.core.datastore.mongodb.SystemObjectDAO;
-import jp.go.aist.six.oval.core.datastore.mongodb.TestDAO;
-import jp.go.aist.six.oval.core.datastore.mongodb.VariableDAO;
+import jp.go.aist.six.oval.core.repository.mongodb.DefinitionDAO;
+import jp.go.aist.six.oval.core.repository.mongodb.MongoDatastore;
+import jp.go.aist.six.oval.core.repository.mongodb.StateDAO;
+import jp.go.aist.six.oval.core.repository.mongodb.SystemObjectDAO;
+import jp.go.aist.six.oval.core.repository.mongodb.TestDAO;
+import jp.go.aist.six.oval.core.repository.mongodb.VariableDAO;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.v5.definitions.StateType;

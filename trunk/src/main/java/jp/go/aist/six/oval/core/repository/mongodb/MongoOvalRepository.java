@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.core.repository.mongodb;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.repository.OvalRepository;

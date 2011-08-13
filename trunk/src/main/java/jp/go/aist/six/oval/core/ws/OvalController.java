@@ -24,7 +24,7 @@ import java.net.URI;
 import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
-import jp.go.aist.six.oval.core.datastore.mongodb.MongoDatastore;
+import jp.go.aist.six.oval.core.repository.mongodb.MongoDatastore;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalRepository;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
