@@ -33,6 +33,8 @@ import jp.go.aist.six.util.search.NullBinding;
 import jp.go.aist.six.util.search.Order;
 import jp.go.aist.six.util.search.PropertyBinding;
 import jp.go.aist.six.util.search.RelationalBinding;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.google.code.morphia.query.Criteria;
 import com.google.code.morphia.query.Query;
 
@@ -45,6 +47,13 @@ import com.google.code.morphia.query.Query;
  */
 public class MorphiaQueryBuilder<T>
 {
+
+    /**
+     * Logger.
+     */
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( MorphiaQueryBuilder.class );
+
+
 
 //    private final Class<T>  _type;
     private final Binding  _filter;
@@ -85,10 +94,12 @@ public class MorphiaQueryBuilder<T>
     private synchronized Query<T> _compile()
     {
         if (_compiled) {
-
+            // do nothing.
         } else {
+            _LOG_.debug( "compiling filter..." );
             build( _query, _filter );
             _compiled = true;
+            _LOG_.debug( "filter compiled." );
         }
 
         return _query;
@@ -157,6 +168,7 @@ public class MorphiaQueryBuilder<T>
             return;
         }
 
+        _LOG_.debug( "building orders: " + orders );
         boolean  empty = true;
         StringBuilder  s = new StringBuilder();
         for (Order  order : orders) {
@@ -183,6 +195,7 @@ public class MorphiaQueryBuilder<T>
             return;
         }
 
+        _LOG_.debug( "building limit: " + limit );
         query.offset( limit.getOffset() );
         query.limit( limit.getCount() );
     }
@@ -225,7 +238,7 @@ public class MorphiaQueryBuilder<T>
     {
         if (binding instanceof RelationalBinding) {
             RelationalBinding  rel = (RelationalBinding)binding;
-            query.filter( rel.getProperty() + " " + rel.getRelation().toString(), rel.getValue() );
+            query.filter( rel.getProperty() + " " + rel.getRelation().operator(), rel.getValue() );
 
         } else if (binding instanceof InBinding) {
             InBinding  in = (InBinding)binding;
