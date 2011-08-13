@@ -23,14 +23,15 @@ package jp.go.aist.six.oval.core.repository.mongodb;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import jp.go.aist.six.oval.core.ws.QueryParams;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.repository.OvalRepository;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
-import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.oval.repository.QueryResult;
 import jp.go.aist.six.util.persist.Persistable;
 import jp.go.aist.six.util.persist.PersistenceException;
+import jp.go.aist.six.util.search.Binding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.google.code.morphia.Key;
@@ -205,6 +206,33 @@ public class MongoOvalRepository
     public <K, T extends OvalObject & Persistable<K>>
     QueryResult<T> find(
                     final Class<T> type,
+                    final Binding filter
+                    )
+    throws OvalRepositoryException
+    {
+        _LOG_.debug( "type=" + type + ", filter: " + filter );
+
+        List<T>  list = null;
+        try {
+            DAO<T, String>  dao = _datastore.getDAO( type );
+            Query<T>  query = dao.createQuery();
+            query = MorphiaQueryBuilder.build( query, filter );
+            list = dao.find( query ).asList();
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        _LOG_.debug( "#objects found: " + (list == null ? 0 : list.size()) );
+        QueryResult<T>  result = new QueryResult<T>( list );
+
+        return result;
+    }
+
+
+
+    public <K, T extends OvalObject & Persistable<K>>
+    QueryResult<T> find(
+                    final Class<T> type,
                     final QueryParams params
                     )
     throws OvalRepositoryException
@@ -266,6 +294,33 @@ public class MongoOvalRepository
     public <K, T extends OvalObject & Persistable<K>>
     Collection<K> findIDs(
                     final Class<T> type,
+                    final Binding filter
+                    )
+    throws OvalRepositoryException
+    {
+        _LOG_.debug( "type=" + type + ", filter: " + filter );
+
+        List<Key<T>>  keys = null;
+        try {
+            DAO<T, String>  dao = _datastore.getDAO( type );
+            Query<T>  query = dao.createQuery();
+            query = MorphiaQueryBuilder.build( query, filter );
+            keys = dao.find( query ).asKeyList();
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        Collection<K>  ids = _keys2IDs( keys );
+        _LOG_.debug( "#IDs found: " + ids.size() );
+
+        return ids;
+    }
+
+
+
+    public <K, T extends OvalObject & Persistable<K>>
+    Collection<K> findIDs(
+                    final Class<T> type,
                     final QueryParams params
                     )
     throws OvalRepositoryException
@@ -277,11 +332,6 @@ public class MongoOvalRepository
             DAO<T, String>  dao = _datastore.getDAO( type );
             Query<T>  q = dao.createQuery();
             _buildQuery( type, params, q );
-//            _queryBuilder.buildQuery( q, params );
-
-//            if (params != null) {
-//                params.buildQuery( q );
-//            }
 
             keys = dao.find( q ).asKeyList();
         } catch (Exception ex) {

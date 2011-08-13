@@ -35,7 +35,6 @@ import jp.go.aist.six.oval.model.v5.definitions.TestType;
 import jp.go.aist.six.oval.model.v5.definitions.VariableType;
 import jp.go.aist.six.oval.model.v5.results.OvalResults;
 import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.oval.repository.QueryResult;
 import jp.go.aist.six.util.persist.Persistable;
 import org.slf4j.Logger;
