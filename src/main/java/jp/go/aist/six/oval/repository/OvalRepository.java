@@ -20,11 +20,13 @@
 
 package jp.go.aist.six.oval.repository;
 
-import java.util.Collection;
+import java.util.List;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.util.persist.Persistable;
 import jp.go.aist.six.util.search.Binding;
+import jp.go.aist.six.util.search.Limit;
+import jp.go.aist.six.util.search.Order;
 
 
 
@@ -60,9 +62,10 @@ public interface OvalRepository
 
 
     /**
+     * Updates the object, or inserts it to the data store if it does NOT exist.
      */
     public <K, T extends OvalObject & Persistable<K>>
-    T save(
+    T persist(
                     Class<T> type,
                     T object
                     )
@@ -74,10 +77,18 @@ public interface OvalRepository
      */
     public <K, T extends OvalObject & Persistable<K>>
     QueryResult<T> find(
+                    Class<T> type
+                    )
+    throws OvalRepositoryException;
+
+
+    public <K, T extends OvalObject & Persistable<K>>
+    QueryResult<T> find(
                     Class<T> type,
                     Binding filter
                     )
     throws OvalRepositoryException;
+
 //    public <K, T extends OvalObject & Persistable<K>>
 //    QueryResult<T> find(
 //                    Class<T> type,
@@ -86,9 +97,21 @@ public interface OvalRepository
 //    throws OvalRepositoryException;
 
 
-
     public <K, T extends OvalObject & Persistable<K>>
-    Collection<K> findIDs(
+    QueryResult<T> find(
+                    Class<T> type,
+                    Binding filter,
+                    List<? extends Order> ordering,
+                    Limit limit
+                    )
+    throws OvalRepositoryException;
+
+
+
+    /**
+     */
+    public <K, T extends OvalObject & Persistable<K>>
+    QueryResult<K> findIDs(
                     Class<T> type
                     )
     throws OvalRepositoryException;
@@ -96,11 +119,12 @@ public interface OvalRepository
 
 
     public <K, T extends OvalObject & Persistable<K>>
-    Collection<K> findIDs(
+    QueryResult<K> findIDs(
                     Class<T> type,
                     Binding filter
                     )
     throws OvalRepositoryException;
+
 //    public <K, T extends OvalObject & Persistable<K>>
 //    Collection<K> findIDs(
 //                    Class<T> type,
@@ -109,43 +133,53 @@ public interface OvalRepository
 //    throws OvalRepositoryException;
 
 
+    public <K, T extends OvalObject & Persistable<K>>
+    QueryResult<K> findIDs(
+                    Class<T> type,
+                    Binding filter,
+                    List<? extends Order> ordering,
+                    Limit limit
+                    )
+    throws OvalRepositoryException;
+
+
+
+    /**
+     */
+    public <K, T extends OvalObject & Persistable<K>>
+    long count(
+                    Class<T> type
+                    )
+    throws OvalRepositoryException;
+
+
+    public <K, T extends OvalObject & Persistable<K>>
+    long count(
+                    Class<T> type,
+                    Binding filter
+                    )
+    throws OvalRepositoryException;
+
+
 
     //==============================================================
-    // /oval_definitions
-    //==============================================================
-
-
-
-    //==============================================================
-    // /d/definitions
+    // oval-def:definition
     //==============================================================
 
     /**
      */
     public DefinitionType getDefinition(
                     String oval_id,
-                    String oval_version
+                    int oval_version
                     )
     throws OvalRepositoryException;
 
 
 
-    public DefinitionType getLatestDefinition(
+    public DefinitionType getDefinition(
                     String oval_id
                     )
     throws OvalRepositoryException;
-
-
-
-    //==============================================================
-    // /oval_system_characteristics
-    //==============================================================
-
-
-
-    //==============================================================
-    // Results
-    //==============================================================
 
 }
 // OvalRepository

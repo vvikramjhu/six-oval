@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.core.ws;
 
 import java.net.URI;
-import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoDatastore;
@@ -296,7 +295,7 @@ public class OvalController
                     )
     throws OvalException
     {
-        Collection<String>  ids = _repository.findIDs( OvalDefinitions.class );
+        QueryResult<String>  ids = _repository.findIDs( OvalDefinitions.class );
 //        Collection<String>  ids = _service.getObjectIDs( OvalDefinitions.class );
 ////        List<Key<OvalDefinitions>>  ids = _service.getObjectIDs( OvalDefinitions.class );
         if (ids == null) {
@@ -309,7 +308,7 @@ public class OvalController
                         "oval_definitions",
                         request.getRequestURL().toString(),
                         DEFINITIONS_REL,
-                        ids
+                        ids.getElements().getElements()
                         );
 
         return feed;
@@ -380,7 +379,7 @@ public class OvalController
                     )
     throws OvalException
     {
-        Collection<String>  ids = _repository.findIDs( DefinitionType.class );
+        QueryResult<String>  ids = _repository.findIDs( DefinitionType.class );
         if (ids == null) {
             _LOG_.debug( "definitions: #ids=0" );
         } else {
@@ -391,7 +390,7 @@ public class OvalController
                         "definition",
                         request.getRequestURL().toString(),
                         DEFINITION_REL,
-                        ids
+                        ids.getElements().getElements()
                         );
 
         return feed;
@@ -635,7 +634,7 @@ public class OvalController
                     )
     throws OvalException
     {
-        Collection<String>  ids = _repository.findIDs( OvalResults.class );
+        QueryResult<String>  ids = _repository.findIDs( OvalResults.class );
 //        Collection<String>  ids = _service.getObjectIDs( OvalResults.class );
 ////        List<Key<OvalResults>>  ids = _service.getObjectIDs( OvalResults.class );
         if (ids == null) {
@@ -648,7 +647,7 @@ public class OvalController
                         "oval_results",
                         request.getRequestURL().toString(),
                         RESULTS_REL,
-                        ids
+                        ids.getElements().getElements()
                         );
 
         return feed;
