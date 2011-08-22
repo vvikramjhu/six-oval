@@ -29,7 +29,7 @@ package jp.go.aist.six.oval.model;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class OvalComponent
+public final class OvalPlatformType
 {
 
 //    public static final String  DEF  = "oval-def";
