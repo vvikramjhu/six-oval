@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.v5.independent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.OvalComponent;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityObjectIntType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
@@ -94,6 +95,7 @@ public class TextfileContent54Object
      */
     public TextfileContent54Object()
     {
+        this( null, 0 );
     }
 
 
@@ -102,7 +104,7 @@ public class TextfileContent54Object
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null );
     }
 
 
@@ -113,42 +115,45 @@ public class TextfileContent54Object
                     )
     {
         super( id, version, comment );
+
+        oval_element_name = "textfilecontent54_object";
+        oval_platform = OvalComponent.INDEPENDENT;
     }
 
 
-    public TextfileContent54Object(
-                    final String id,
-                    final int version,
-                    final String path,
-                    final String filename,
-                    final String pattern,
-                    final String instance
-                    )
-    {
-        this( id, version,
-                        (path == null     ? null : new EntityObjectStringType( path )),
-                        (filename == null ? null : new EntityObjectStringType( filename )),
-                        (pattern == null  ? null : new EntityObjectStringType( pattern )),
-                        (instance == null ? null : new EntityObjectIntType( instance ))
-                        );
-    }
-
-
-    public TextfileContent54Object(
-                    final String id,
-                    final int version,
-                    final EntityObjectStringType path,
-                    final EntityObjectStringType filename,
-                    final EntityObjectStringType pattern,
-                    final EntityObjectIntType instance
-                    )
-    {
-        super( id, version );
-        setPath( path );
-        setFilename( filename );
-        setPattern( pattern );
-        setInstance( instance );
-    }
+//    public TextfileContent54Object(
+//                    final String id,
+//                    final int version,
+//                    final String path,
+//                    final String filename,
+//                    final String pattern,
+//                    final String instance
+//                    )
+//    {
+//        this( id, version,
+//                        (path == null     ? null : new EntityObjectStringType( path )),
+//                        (filename == null ? null : new EntityObjectStringType( filename )),
+//                        (pattern == null  ? null : new EntityObjectStringType( pattern )),
+//                        (instance == null ? null : new EntityObjectIntType( instance ))
+//                        );
+//    }
+//
+//
+//    public TextfileContent54Object(
+//                    final String id,
+//                    final int version,
+//                    final EntityObjectStringType path,
+//                    final EntityObjectStringType filename,
+//                    final EntityObjectStringType pattern,
+//                    final EntityObjectIntType instance
+//                    )
+//    {
+//        super( id, version );
+//        setPath( path );
+//        setFilename( filename );
+//        setPattern( pattern );
+//        setInstance( instance );
+//    }
 
 
 

@@ -52,6 +52,11 @@ public abstract class OvalEntity
     //{optional, default="false"}
 
 
+    protected String  oval_schema_version;
+    protected String  oval_element_name;
+    protected String  oval_platform;
+
+
 
     /**
      * Constructor.
