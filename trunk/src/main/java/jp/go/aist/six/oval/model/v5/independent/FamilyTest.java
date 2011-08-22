@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.independent;
 
+import jp.go.aist.six.oval.model.OvalComponent;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.v5.definitions.TestType;
@@ -42,6 +43,7 @@ public class FamilyTest
      */
     public FamilyTest()
     {
+        this( null, 0 );
     }
 
 
@@ -50,7 +52,7 @@ public class FamilyTest
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null, null );
     }
 
 
@@ -62,6 +64,9 @@ public class FamilyTest
                     )
     {
         super( id, version, comment, check );
+
+        oval_element_name = "family_test";
+        oval_platform = OvalComponent.INDEPENDENT;
     }
 
 

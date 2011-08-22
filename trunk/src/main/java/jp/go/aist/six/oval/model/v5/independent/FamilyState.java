@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.independent;
 
+import jp.go.aist.six.oval.model.OvalComponent;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.definitions.StateType;
 
@@ -47,6 +48,7 @@ public class FamilyState
      */
     public FamilyState()
     {
+        this( null, 0 );
     }
 
 
@@ -55,7 +57,7 @@ public class FamilyState
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null );
     }
 
 
@@ -66,6 +68,9 @@ public class FamilyState
                     )
     {
         super( id, version, comment );
+
+        oval_element_name = "family_state";
+        oval_platform = OvalComponent.INDEPENDENT;
     }
 
 
