@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.independent;
 
+import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType;
@@ -95,8 +96,8 @@ public class TextfileContent54State
     {
         super( id, version, comment );
 
-        oval_element_name = "textfilecontent54_state";
-        oval_platform = OvalPlatformType.INDEPENDENT;
+        oval_platform_type = OvalPlatformType.independent;
+        oval_component_type = OvalComponentType.textfilecontent54;
     }
 
 

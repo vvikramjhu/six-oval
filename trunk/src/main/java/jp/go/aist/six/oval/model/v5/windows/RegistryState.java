@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5.windows;
 
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
@@ -66,6 +68,7 @@ public class RegistryState
      */
     public RegistryState()
     {
+        this( null, 0 );
     }
 
 
@@ -74,7 +77,7 @@ public class RegistryState
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null );
     }
 
 
@@ -85,6 +88,9 @@ public class RegistryState
                     )
     {
         super( id, version, comment );
+
+        oval_platform_type = OvalPlatformType.windows;
+        oval_component_type = OvalComponentType.registry;
     }
 
 

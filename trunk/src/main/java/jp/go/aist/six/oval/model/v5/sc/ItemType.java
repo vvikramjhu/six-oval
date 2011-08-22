@@ -23,6 +23,8 @@ package jp.go.aist.six.oval.model.v5.sc;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.Oval5Object;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.MessageType;
@@ -66,6 +68,10 @@ public class ItemType
 
     private StatusEnumeration  status;
     //{optional, default="exists"}
+
+
+    protected OvalPlatformType   oval_platform_type;
+    protected OvalComponentType  oval_component_type;
 
 
 

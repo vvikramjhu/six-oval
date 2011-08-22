@@ -56,6 +56,7 @@ public abstract class LinuxPkgInfoState
      */
     public LinuxPkgInfoState()
     {
+        this( null, 0 );
     }
 
 

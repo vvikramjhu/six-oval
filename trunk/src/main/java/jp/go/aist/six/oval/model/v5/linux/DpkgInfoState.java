@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5.linux;
 
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateEVRStringType;
 
@@ -42,6 +44,7 @@ public class DpkgInfoState
      */
     public DpkgInfoState()
     {
+        this( null, 0 );
     }
 
 
@@ -51,6 +54,9 @@ public class DpkgInfoState
                     )
     {
         super( id, version );
+
+        oval_platform_type = OvalPlatformType.linux;
+        oval_component_type = OvalComponentType.dpkginfo;
     }
 
 

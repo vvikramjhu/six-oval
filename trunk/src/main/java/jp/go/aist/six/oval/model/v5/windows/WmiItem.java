@@ -23,6 +23,8 @@ package jp.go.aist.six.oval.model.v5.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
@@ -62,6 +64,7 @@ public class WmiItem
      */
     public WmiItem()
     {
+        this( 0 );
     }
 
 
@@ -70,6 +73,9 @@ public class WmiItem
                     )
     {
         super( id );
+
+        oval_platform_type = OvalPlatformType.windows;
+        oval_component_type = OvalComponentType.wmi;
     }
 
 

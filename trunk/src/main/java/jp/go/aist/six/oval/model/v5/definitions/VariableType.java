@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
+import jp.go.aist.six.oval.model.OvalEntityType;
 import jp.go.aist.six.oval.model.v5.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
@@ -52,6 +53,7 @@ public class VariableType
      */
     public VariableType()
     {
+        this( null, 0 );
     }
 
 
@@ -60,7 +62,7 @@ public class VariableType
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null );
     }
 
 
@@ -70,7 +72,7 @@ public class VariableType
                     final String comment
                     )
     {
-        super( id, version, comment );
+        this( id, version, comment, null );
     }
 
 
@@ -81,8 +83,10 @@ public class VariableType
                     final DatatypeEnumeration datatype
                     )
     {
-        this( id, version, comment );
+        super( id, version, comment );
         setDatatype( datatype );
+
+        oval_entity_type = OvalEntityType.variable;
     }
 
 

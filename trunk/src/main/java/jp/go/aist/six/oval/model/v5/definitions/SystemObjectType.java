@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
+import jp.go.aist.six.oval.model.OvalEntityType;
 import jp.go.aist.six.oval.model.v5.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import com.google.code.morphia.annotations.Entity;
@@ -50,6 +51,7 @@ public class SystemObjectType
      */
     public SystemObjectType()
     {
+        this( null, 0 );
     }
 
 
@@ -58,7 +60,7 @@ public class SystemObjectType
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null );
     }
 
 
@@ -69,6 +71,8 @@ public class SystemObjectType
                     )
     {
         super( id, version, comment );
+
+        oval_entity_type = OvalEntityType.object;
     }
 
 

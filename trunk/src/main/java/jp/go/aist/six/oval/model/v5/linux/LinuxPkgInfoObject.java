@@ -53,6 +53,7 @@ public abstract class LinuxPkgInfoObject
      */
     public LinuxPkgInfoObject()
     {
+        this( null, 0 );
     }
 
 
@@ -61,7 +62,7 @@ public abstract class LinuxPkgInfoObject
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null );
     }
 
 

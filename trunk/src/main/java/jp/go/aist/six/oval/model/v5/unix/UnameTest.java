@@ -20,10 +20,10 @@
 
 package jp.go.aist.six.oval.model.v5.unix;
 
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
-import jp.go.aist.six.oval.model.v5.definitions.StateRefType;
-import jp.go.aist.six.oval.model.v5.definitions.SystemObjectRefType;
 import jp.go.aist.six.oval.model.v5.definitions.TestType;
 
 
@@ -45,6 +45,7 @@ public class UnameTest
      */
     public UnameTest()
     {
+        this( null, 0 );
     }
 
 
@@ -53,7 +54,7 @@ public class UnameTest
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null, null );
     }
 
 
@@ -65,20 +66,23 @@ public class UnameTest
                     )
     {
         super( id, version, comment, check );
+
+        oval_platform_type = OvalPlatformType.unix;
+        oval_component_type = OvalComponentType.uname;
     }
 
 
-    public UnameTest(
-                    final String id,
-                    final int version,
-                    final String comment,
-                    final CheckEnumeration check,
-                    final SystemObjectRefType object,
-                    final StateRefType[] stateList
-                    )
-    {
-        super( id, version, comment, check, object, stateList );
-    }
+//    public UnameTest(
+//                    final String id,
+//                    final int version,
+//                    final String comment,
+//                    final CheckEnumeration check,
+//                    final SystemObjectRefType object,
+//                    final StateRefType[] stateList
+//                    )
+//    {
+//        super( id, version, comment, check, object, stateList );
+//    }
 
 
 

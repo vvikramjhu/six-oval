@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.independent;
 
+import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
@@ -66,8 +67,8 @@ public class TextfileContent54Test
     {
         super( id, version, comment, check );
 
-        oval_element_name = "textfilecontent54_test";
-        oval_platform = OvalPlatformType.INDEPENDENT;
+        oval_platform_type = OvalPlatformType.independent;
+        oval_component_type = OvalComponentType.textfilecontent54;
     }
 
 

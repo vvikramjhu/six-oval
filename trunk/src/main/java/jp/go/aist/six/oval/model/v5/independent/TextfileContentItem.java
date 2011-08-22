@@ -23,6 +23,8 @@ package jp.go.aist.six.oval.model.v5.independent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemIntType;
@@ -76,6 +78,7 @@ public class TextfileContentItem
      */
     public TextfileContentItem()
     {
+        this( 0 );
     }
 
 
@@ -84,6 +87,9 @@ public class TextfileContentItem
                     )
     {
         super( id );
+
+        oval_platform_type = OvalPlatformType.independent;
+        oval_component_type = OvalComponentType.textfilecontent54;
     }
 
 

@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5.windows;
 
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateIntType;
@@ -69,6 +71,7 @@ public class MetabaseState
      */
     public MetabaseState()
     {
+        this( null, 0 );
     }
 
 
@@ -78,6 +81,9 @@ public class MetabaseState
                     )
     {
         super( id, version );
+
+        oval_platform_type = OvalPlatformType.windows;
+        oval_component_type = OvalComponentType.metabase;
     }
 
 

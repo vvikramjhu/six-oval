@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5.unix;
 
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.v5.sc.ItemType;
@@ -74,7 +76,7 @@ public class UnameItem
                     final int id
                     )
     {
-        super( id );
+        this( id, null );
     }
 
 
@@ -83,7 +85,14 @@ public class UnameItem
                     final StatusEnumeration status
                     )
     {
-        super( id, status );
+        this( id, status,
+                        (EntityItemStringType)null,
+                        (EntityItemStringType)null,
+                        (EntityItemStringType)null,
+                        (EntityItemStringType)null,
+                        (EntityItemStringType)null,
+                        (EntityItemStringType)null
+                        );
     }
 
 
@@ -98,31 +107,14 @@ public class UnameItem
                     final String processorType
                     )
     {
-        this( id, status );
-
-        if (machineClass != null) {
-            setMachineClass( new EntityItemStringType( machineClass ) );
-        }
-
-        if (nodeName != null) {
-            setNodeName( new EntityItemStringType( nodeName ) );
-        }
-
-        if (osName != null) {
-            setOsName( new EntityItemStringType( osName ) );
-        }
-
-        if (osRelease != null) {
-            setOsRelease( new EntityItemStringType( osRelease ) );
-        }
-
-        if (osVersion != null) {
-            setOsVersion( new EntityItemStringType( osVersion ) );
-        }
-
-        if (processorType != null) {
-            setProcessorType( new EntityItemStringType( processorType ) );
-        }
+        this( id, status,
+                        (machineClass == null ? null : new EntityItemStringType( machineClass )),
+                        (nodeName == null ? null : new EntityItemStringType( nodeName )),
+                        (osName == null ? null : new EntityItemStringType( osName )),
+                        (osRelease == null ? null : new EntityItemStringType( osRelease )),
+                        (osVersion == null ? null : new EntityItemStringType( osVersion )),
+                        (processorType == null ? null : new EntityItemStringType( processorType ))
+                        );
     }
 
 
@@ -137,13 +129,16 @@ public class UnameItem
                     final EntityItemStringType processorType
                     )
     {
-        this( id, status );
+        super( id, status );
         setMachineClass( machineClass );
         setNodeName( nodeName );
         setOsName( osName );
         setOsRelease( osRelease );
         setOsVersion( osVersion );
         setProcessorType( processorType );
+
+        oval_platform_type = OvalPlatformType.unix;
+        oval_component_type = OvalComponentType.uname;
     }
 
 

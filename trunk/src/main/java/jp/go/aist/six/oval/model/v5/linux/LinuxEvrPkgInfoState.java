@@ -51,6 +51,7 @@ public abstract class LinuxEvrPkgInfoState
      */
     public LinuxEvrPkgInfoState()
     {
+        this( null, 0 );
     }
 
 

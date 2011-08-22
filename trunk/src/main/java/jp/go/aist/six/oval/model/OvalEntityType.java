@@ -31,54 +31,11 @@ package jp.go.aist.six.oval.model;
  */
 public enum OvalEntityType
 {
-    unspecified         ( "" ),
-
-    family              ( "independent" ),
-    textfilecontent     ( "independent" ),
-    textfilecontent54   ( "independent" ),
-    unknown             ( "independent" ),
-
-    dpkginfo            ( "linux" ),
-    rpminfo             ( "linux" ),
-//    rpmverify       ( "linux" ),
-
-    uname               ( "unix" ),
-
-    file                ( "windows" ),
-    metabase            ( "windows" ),
-    registry            ( "windows" ),
-    wmi                 ( "windows" ),
-    wmi57               ( "windows" ),
-
-    local_variable      ( "definitions" )
-    ;
-
-
-
-
-    private final String  namespace;
-
-
-
-    /**
-     * Constructor.
-     */
-    OvalEntityType(
-                    final String namespace
-                    )
-    {
-        this.namespace = namespace;
-    }
-
-
-
-    /**
-     */
-    public String getNamespace()
-    {
-        return this.namespace;
-    }
-
+    definition,
+    test,
+    object,
+    state,
+    variable;
 
 }
 // OvalEntityType

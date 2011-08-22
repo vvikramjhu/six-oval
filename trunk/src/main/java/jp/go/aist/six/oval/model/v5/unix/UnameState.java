@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5.unix;
 
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.v5.definitions.StateType;
@@ -68,6 +70,7 @@ public class UnameState
      */
     public UnameState()
     {
+        this( null, 0 );
     }
 
 
@@ -76,7 +79,7 @@ public class UnameState
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null );
     }
 
 
@@ -87,6 +90,9 @@ public class UnameState
                     )
     {
         super( id, version, comment );
+
+        oval_platform_type = OvalPlatformType.unix;
+        oval_component_type = OvalComponentType.uname;
     }
 
 
