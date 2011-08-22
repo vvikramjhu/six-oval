@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5.windows;
 
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
@@ -71,6 +73,7 @@ public class FileItem
      */
     public FileItem()
     {
+        this( 0 );
     }
 
 
@@ -78,7 +81,7 @@ public class FileItem
                     final int id
                     )
     {
-        super( id );
+        this( id, null );
     }
 
 
@@ -87,7 +90,26 @@ public class FileItem
                     final StatusEnumeration status
                     )
     {
-        super( id, status );
+        this( id, status,
+                        (EntityItemStringType)null,
+                        (EntityItemStringType)null,
+                        (EntityItemStringType)null,
+                        (EntityItemStringType)null,
+                        (EntityItemIntType)null,
+                        (EntityItemIntType)null,
+                        (EntityItemIntType)null,
+                        (EntityItemIntType)null,
+                        (EntityItemStringType)null,
+                        (EntityItemVersionType)null,
+                        (EntityItemFileTypeType)null,
+                        (EntityItemStringType)null,
+                        (EntityItemStringType)null,
+                        (EntityItemStringType)null,
+                        (EntityItemStringType)null,
+                        (EntityItemStringType)null,
+                        (EntityItemStringType)null,
+                        (EntityItemVersionType)null
+                        );
     }
 
 
@@ -136,6 +158,7 @@ public class FileItem
                     )
     {
         this( id, status );
+
         setFilepath( new EntityItemStringType( filepath ) );
         setPath( new EntityItemStringType( path ) );
         setFilename( new EntityItemStringType( filename ) );
@@ -154,6 +177,9 @@ public class FileItem
         setOriginalFilename( new EntityItemStringType( originalFilename ) );
         setProductName( new EntityItemStringType( productName ) );
         setProductVersion( new EntityItemVersionType( productVersion ) );
+
+        oval_platform_type = OvalPlatformType.windows;
+        oval_component_type = OvalComponentType.file;
     }
 
 
@@ -180,7 +206,8 @@ public class FileItem
                     final EntityItemVersionType productVersion
                     )
     {
-        this( id, status );
+        super( id, status );
+
         setFilepath( filepath );
         setPath( path );
         setFilename( filename );
@@ -199,6 +226,9 @@ public class FileItem
         setOriginalFilename( originalFilename );
         setProductName( productName );
         setProductVersion( productVersion );
+
+        oval_platform_type = OvalPlatformType.windows;
+        oval_component_type = OvalComponentType.file;
     }
 
 

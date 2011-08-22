@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5.linux;
 
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemEVRStringType;
@@ -44,6 +46,7 @@ public class DpkgInfoItem
      */
     public DpkgInfoItem()
     {
+        this( 0 );
     }
 
 
@@ -51,7 +54,7 @@ public class DpkgInfoItem
                     final int id
                     )
     {
-        super( id );
+        this( id, DEFAULT_STATUS );
     }
 
 
@@ -60,7 +63,7 @@ public class DpkgInfoItem
                     final StatusEnumeration status
                     )
     {
-        super( id, status );
+        this( id, status, (EntityItemStringType)null );
     }
 
 
@@ -70,7 +73,9 @@ public class DpkgInfoItem
                     final String name
                     )
     {
-        super( id, status, name );
+        this( id, status,
+                        (name == null ? null : new EntityItemStringType( name ))
+                        );
     }
 
 
@@ -80,7 +85,14 @@ public class DpkgInfoItem
                     final EntityItemStringType name
                     )
     {
-        super( id, status, name );
+        this( id, status,
+                        (EntityItemStringType)null,
+                        name,
+                        (EntityItemAnySimpleType)null,
+                        (EntityItemAnySimpleType)null,
+                        (EntityItemAnySimpleType)null,
+                        (EntityItemEVRStringType)null
+                        );
     }
 
 
@@ -94,7 +106,7 @@ public class DpkgInfoItem
                     final String evr
                     )
     {
-        super( id, name, arch, epoch, release, version, evr );
+        this( id, DEFAULT_STATUS, arch, name, version, release, epoch, evr );
     }
 
 
@@ -109,7 +121,14 @@ public class DpkgInfoItem
                     final String evr
                     )
     {
-        super( id, status, arch, name, version, release, epoch, evr );
+        this( id, status,
+                        (arch == null ? null : new EntityItemStringType( arch )),
+                        (name == null ? null : new EntityItemStringType( name )),
+                        (version == null ? null : new EntityItemAnySimpleType( version )),
+                        (release == null ? null : new EntityItemAnySimpleType( release )),
+                        (epoch == null ? null : new EntityItemAnySimpleType( epoch )),
+                        (evr == null ? null : new EntityItemEVRStringType( evr ))
+                        );
     }
 
 
@@ -125,6 +144,9 @@ public class DpkgInfoItem
                     )
     {
         super( id, status, arch, name, version, release, epoch, evr );
+
+        oval_platform_type = OvalPlatformType.linux;
+        oval_component_type = OvalComponentType.dpkginfo;
     }
 
 

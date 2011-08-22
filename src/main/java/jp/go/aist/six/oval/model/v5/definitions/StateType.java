@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.definitions;
 
+import jp.go.aist.six.oval.model.OvalEntityType;
 import jp.go.aist.six.oval.model.v5.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
@@ -60,6 +61,7 @@ public class StateType
      */
     public StateType()
     {
+        this( null, 0 );
     }
 
 
@@ -68,7 +70,7 @@ public class StateType
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null );
     }
 
 
@@ -79,6 +81,8 @@ public class StateType
                     )
     {
         super( id, version, comment );
+
+        oval_entity_type = OvalEntityType.state;
     }
 
 

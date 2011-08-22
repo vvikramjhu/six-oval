@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5.windows;
 
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.v5.definitions.StateRefType;
@@ -46,6 +48,7 @@ public class RegistryTest
      */
     public RegistryTest()
     {
+        this( null, 0 );
     }
 
 
@@ -54,7 +57,7 @@ public class RegistryTest
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null, null );
     }
 
 
@@ -65,7 +68,7 @@ public class RegistryTest
                     final CheckEnumeration check
                     )
     {
-        super( id, version, comment, check );
+        this( id, version, comment, check, null, null );
     }
 
 
@@ -79,6 +82,9 @@ public class RegistryTest
                     )
     {
         super( id, version, comment, check, object, stateList );
+
+        oval_platform_type = OvalPlatformType.windows;
+        oval_component_type = OvalComponentType.registry;
     }
 
 

@@ -20,10 +20,10 @@
 
 package jp.go.aist.six.oval.model.v5.windows;
 
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
-import jp.go.aist.six.oval.model.v5.definitions.StateRefType;
-import jp.go.aist.six.oval.model.v5.definitions.SystemObjectRefType;
 import jp.go.aist.six.oval.model.v5.definitions.TestType;
 
 
@@ -44,6 +44,7 @@ public class FileTest
      */
     public FileTest()
     {
+        this( null, 0 );
     }
 
 
@@ -52,7 +53,7 @@ public class FileTest
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null, null );
     }
 
 
@@ -64,20 +65,23 @@ public class FileTest
                     )
     {
         super( id, version, comment, check );
+
+        oval_platform_type = OvalPlatformType.windows;
+        oval_component_type = OvalComponentType.file;
     }
 
 
-    public FileTest(
-                    final String id,
-                    final int version,
-                    final String comment,
-                    final CheckEnumeration check,
-                    final SystemObjectRefType object,
-                    final StateRefType[] stateList
-                    )
-    {
-        super( id, version, comment, check, object, stateList );
-    }
+//    public FileTest(
+//                    final String id,
+//                    final int version,
+//                    final String comment,
+//                    final CheckEnumeration check,
+//                    final SystemObjectRefType object,
+//                    final StateRefType[] stateList
+//                    )
+//    {
+//        super( id, version, comment, check, object, stateList );
+//    }
 
 
 

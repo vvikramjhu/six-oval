@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5.linux;
 
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemEVRStringType;
@@ -49,6 +51,7 @@ public class RpmInfoItem
      */
     public RpmInfoItem()
     {
+        this( 0 );
     }
 
 
@@ -56,7 +59,15 @@ public class RpmInfoItem
                     final int id
                     )
     {
-        super( id );
+        this( id,
+                        (String)null,
+                        (String)null,
+                        (String)null,
+                        (String)null,
+                        (String)null,
+                        (String)null,
+                        (String)null
+                        );
     }
 
 
@@ -72,35 +83,14 @@ public class RpmInfoItem
                     final String sigkeyid
                     )
     {
-        this( id );
-
-        if (arch != null) {
-            setArch( new EntityItemStringType( arch ) );
-        }
-
-        if (name != null) {
-            setName( new EntityItemStringType( name ) );
-        }
-
-        if (version != null) {
-            setVersion( new EntityItemAnySimpleType( version ) );
-        }
-
-        if (release != null) {
-            setRelease( new EntityItemAnySimpleType( name ) );
-        }
-
-        if (epoch != null) {
-            setEpoch( new EntityItemAnySimpleType( epoch ) );
-        }
-
-        if (evr != null) {
-            setEvr( new EntityItemEVRStringType( evr ) );
-        }
+        super( id, arch, name, version, release, epoch, evr );
 
         if (sigkeyid != null) {
-            setName( new EntityItemStringType( sigkeyid ) );
+            setSignatureKeyID( new EntityItemStringType( sigkeyid ) );
         }
+
+        oval_platform_type = OvalPlatformType.linux;
+        oval_component_type = OvalComponentType.rpminfo;
     }
 
 

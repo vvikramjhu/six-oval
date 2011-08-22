@@ -55,6 +55,7 @@ public abstract class LinuxEvrPkgInfoItem
      */
     public LinuxEvrPkgInfoItem()
     {
+        this( 0 );
     }
 
 
@@ -62,7 +63,7 @@ public abstract class LinuxEvrPkgInfoItem
                     final int id
                     )
     {
-        super( id );
+        this( id, DEFAULT_STATUS );
     }
 
 
@@ -71,7 +72,7 @@ public abstract class LinuxEvrPkgInfoItem
                     final StatusEnumeration status
                     )
     {
-        super( id, status );
+        this( id, status, (EntityItemStringType)null );
     }
 
 
@@ -81,7 +82,9 @@ public abstract class LinuxEvrPkgInfoItem
                     final String name
                     )
     {
-        super( id, status, name );
+        this( id, status,
+                        (name == null ? null : new EntityItemStringType( name ))
+                        );
     }
 
 
@@ -91,7 +94,14 @@ public abstract class LinuxEvrPkgInfoItem
                     final EntityItemStringType name
                     )
     {
-        super( id, status, name );
+        this( id, status,
+                        (EntityItemStringType)null,
+                        name,
+                        (EntityItemAnySimpleType)null,
+                        (EntityItemAnySimpleType)null,
+                        (EntityItemAnySimpleType)null,
+                        (EntityItemEVRStringType)null
+                        );
     }
 
 
@@ -121,19 +131,14 @@ public abstract class LinuxEvrPkgInfoItem
                     final String evr
                     )
     {
-        super( id, status, arch, name, version );
-
-        if (epoch != null) {
-            setEpoch( new EntityItemAnySimpleType( epoch ) );
-        }
-
-        if (release != null) {
-            setRelease( new EntityItemAnySimpleType( release ) );
-        }
-
-        if (evr != null) {
-            setEvr( new EntityItemEVRStringType( evr ) );
-        }
+        this( id, status,
+                        (arch == null ? null : new EntityItemStringType( arch )),
+                        (name == null ? null : new EntityItemStringType( name )),
+                        (version == null ? null : new EntityItemAnySimpleType( version )),
+                        (release == null ? null : new EntityItemAnySimpleType( release )),
+                        (epoch == null ? null : new EntityItemAnySimpleType( epoch )),
+                        (evr == null ? null : new EntityItemEVRStringType( evr ))
+                        );
     }
 
 

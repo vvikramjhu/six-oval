@@ -23,6 +23,8 @@ package jp.go.aist.six.oval.model.v5.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.v5.definitions.Filter;
@@ -81,6 +83,7 @@ public class FileObject
      */
     public FileObject()
     {
+        this( null, 0 );
     }
 
 
@@ -90,6 +93,9 @@ public class FileObject
                     )
     {
         super( id, version );
+
+        oval_platform_type = OvalPlatformType.windows;
+        oval_component_type = OvalComponentType.file;
     }
 
 

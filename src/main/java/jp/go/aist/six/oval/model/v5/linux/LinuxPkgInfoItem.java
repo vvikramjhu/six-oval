@@ -57,6 +57,7 @@ public abstract class LinuxPkgInfoItem
      */
     public LinuxPkgInfoItem()
     {
+        this( 0 );
     }
 
 
@@ -64,7 +65,7 @@ public abstract class LinuxPkgInfoItem
                     final int id
                     )
     {
-        super( id );
+        this( id, null );
     }
 
 
@@ -73,7 +74,7 @@ public abstract class LinuxPkgInfoItem
                     final StatusEnumeration status
                     )
     {
-        super( id, status );
+        this( id, status, (EntityItemStringType)null );
     }
 
 
@@ -116,19 +117,11 @@ public abstract class LinuxPkgInfoItem
                     final String version
                     )
     {
-        super( id, status );
-
-        if (arch != null) {
-            setArch( new EntityItemStringType( arch ) );
-        }
-
-        if (name != null) {
-            setName( new EntityItemStringType( name ) );
-        }
-
-        if (version != null) {
-            setVersion( new EntityItemAnySimpleType( version ) );
-        }
+        this( id, status,
+                        (arch == null ? null : new EntityItemStringType( arch )),
+                        (name == null ? null : new EntityItemStringType( name )),
+                        (version == null ? null : new EntityItemAnySimpleType( version ))
+                        );
     }
 
 

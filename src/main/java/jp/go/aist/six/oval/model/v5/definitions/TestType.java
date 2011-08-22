@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.v5.definitions;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.OvalEntityType;
 import jp.go.aist.six.oval.model.v5.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
@@ -81,6 +82,7 @@ public class TestType
      */
     public TestType()
     {
+        this( null, 0 );
     }
 
 
@@ -89,7 +91,17 @@ public class TestType
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null );
+    }
+
+
+    public TestType(
+                    final String id,
+                    final int version,
+                    final String comment
+                    )
+    {
+        this( id, version, comment, null );
     }
 
 
@@ -102,6 +114,7 @@ public class TestType
     {
         super( id, version, comment );
         setCheck( check );
+        oval_entity_type = OvalEntityType.test;
     }
 
 

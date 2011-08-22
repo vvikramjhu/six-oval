@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5.windows;
 
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
@@ -66,6 +68,7 @@ public class WmiObject
      */
     public WmiObject()
     {
+        this( null, 0 );
     }
 
 
@@ -74,7 +77,10 @@ public class WmiObject
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version,
+                        (EntityObjectStringType)null,
+                        (EntityObjectStringType)null
+                        );
     }
 
 
@@ -103,6 +109,9 @@ public class WmiObject
 
         setNamespace( namespace );
         setWql( wql );
+
+        oval_platform_type = OvalPlatformType.windows;
+        oval_component_type = OvalComponentType.wmi;
     }
 
 

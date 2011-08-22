@@ -20,6 +20,9 @@
 
 package jp.go.aist.six.oval.model.v5;
 
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalEntityType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.PrePersist;
@@ -52,9 +55,10 @@ public abstract class OvalEntity
     //{optional, default="false"}
 
 
-    protected String  oval_schema_version;
-    protected String  oval_element_name;
-    protected String  oval_platform;
+    protected String             oval_schema_version;
+    protected OvalEntityType     oval_entity_type;
+    protected OvalPlatformType   oval_platform_type;
+    protected OvalComponentType  oval_component_type;
 
 
 

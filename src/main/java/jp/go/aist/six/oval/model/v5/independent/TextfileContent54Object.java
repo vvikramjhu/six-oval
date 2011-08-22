@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.v5.independent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityObjectIntType;
@@ -116,8 +117,8 @@ public class TextfileContent54Object
     {
         super( id, version, comment );
 
-        oval_element_name = "textfilecontent54_object";
-        oval_platform = OvalPlatformType.INDEPENDENT;
+        oval_platform_type = OvalPlatformType.independent;
+        oval_component_type = OvalComponentType.textfilecontent54;
     }
 
 

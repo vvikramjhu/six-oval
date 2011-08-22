@@ -29,33 +29,30 @@ package jp.go.aist.six.oval.model;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class OvalPlatformType
+public enum OvalComponentType
 {
 
-//    public static final String  DEF  = "oval-def";
-//    public static final String  SC   = "oval-sc";
-//    public static final String  RES  = "oval-res";
+    // independent //
+    family,
+    textfilecontent,
+    textfilecontent54,
+    unknown,
 
-    public static final String  INDEPENDENT = "independent";
-    public static final String  LINUX       = "linux";
-    public static final String  UNIX        = "unix";
-    public static final String  WINDOWS     = "windows";
+    // linux //
+    dpkginfo,
+    rpminfo,
+//    rpmverify,
 
+    // unix //
+    uname,
 
-    public static final String  INDEPENDENT_FAMILY              = "family";
-    public static final String  INDEPENDENT_TEXTFILECONTENT     = "textfilecontent";
-    public static final String  INDEPENDENT_TEXTFILECONTENT54   = "textfilecontent54";
-    public static final String  INDEPENDENT_UNKNOWN             = "unknown";
-    public static final String  LINUX_DPKGINFO                  = "dpkginfo";
-    public static final String  LINUX_RPMINFO                   = "rpminfo";
-    public static final String  LINUX_RPMVERIFY                 = "rpmverify";
-    public static final String  UNIX_UNAME                      = "uname";
-    public static final String  WINDOWS_FILE                    = "file";
-    public static final String  WINDOWS_METABASE                = "metabase";
-    public static final String  WINDOWS_REGISTRY                = "registry";
-    public static final String  WINDOWS_WMI                     = "wmi";
-    public static final String  WINDOWS_WMI57                   = "wmi57";
+    // windows //
+    file,
+    metabase,
+    registry,
+    wmi,
+    wmi57;
 
 }
-// OvalNamespace
+// OvalComponentType
 

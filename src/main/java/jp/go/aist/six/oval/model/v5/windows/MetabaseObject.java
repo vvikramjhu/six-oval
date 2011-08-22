@@ -23,6 +23,8 @@ package jp.go.aist.six.oval.model.v5.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityObjectIntType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
@@ -74,6 +76,7 @@ public class MetabaseObject
      */
     public MetabaseObject()
     {
+        this( null, 0 );
     }
 
 
@@ -82,7 +85,7 @@ public class MetabaseObject
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, (EntityObjectStringType)null, (EntityObjectIntType)null );
     }
 
 
@@ -92,7 +95,8 @@ public class MetabaseObject
                     final String comment
                     )
     {
-        super( id, version, comment );
+        this( id, version );
+        setComment( comment );
     }
 
 
@@ -120,6 +124,9 @@ public class MetabaseObject
         super( id, version );
         setKey( mbKey );
         setID( mbID );
+
+        oval_platform_type = OvalPlatformType.windows;
+        oval_component_type = OvalComponentType.metabase;
     }
 
 

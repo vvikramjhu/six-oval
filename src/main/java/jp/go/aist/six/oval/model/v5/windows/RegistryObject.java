@@ -23,6 +23,8 @@ package jp.go.aist.six.oval.model.v5.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.v5.definitions.Filter;
@@ -66,6 +68,7 @@ public class RegistryObject
      */
     public RegistryObject()
     {
+        this( null, 0 );
     }
 
 
@@ -74,7 +77,7 @@ public class RegistryObject
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null );
     }
 
 
@@ -84,7 +87,11 @@ public class RegistryObject
                     final String comment
                     )
     {
-        super( id, version, comment );
+        this( id, version, comment,
+                        (EntityObjectRegistryHiveType)null,
+                        (EntityObjectStringType)null,
+                        (EntityObjectStringType)null
+                        );
     }
 
 
@@ -118,6 +125,9 @@ public class RegistryObject
         setHive( hive );
         setKey( key );
         setName( name );
+
+        oval_platform_type = OvalPlatformType.windows;
+        oval_component_type = OvalComponentType.registry;
     }
 
 

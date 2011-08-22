@@ -20,10 +20,10 @@
 
 package jp.go.aist.six.oval.model.v5.windows;
 
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
-import jp.go.aist.six.oval.model.v5.definitions.StateRefType;
-import jp.go.aist.six.oval.model.v5.definitions.SystemObjectRefType;
 import jp.go.aist.six.oval.model.v5.definitions.TestType;
 
 
@@ -48,6 +48,7 @@ public class WmiTest
      */
     public WmiTest()
     {
+        this( null, 0 );
     }
 
 
@@ -56,7 +57,7 @@ public class WmiTest
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null, null );
     }
 
 
@@ -68,20 +69,23 @@ public class WmiTest
                     )
     {
         super( id, version, comment, check );
+
+        oval_platform_type = OvalPlatformType.windows;
+        oval_component_type = OvalComponentType.wmi;
     }
 
 
-    public WmiTest(
-                    final String id,
-                    final int version,
-                    final String comment,
-                    final CheckEnumeration check,
-                    final SystemObjectRefType object,
-                    final StateRefType[] stateList
-                    )
-    {
-        super( id, version, comment, check, object, stateList );
-    }
+//    public WmiTest(
+//                    final String id,
+//                    final int version,
+//                    final String comment,
+//                    final CheckEnumeration check,
+//                    final SystemObjectRefType object,
+//                    final StateRefType[] stateList
+//                    )
+//    {
+//        super( id, version, comment, check, object, stateList );
+//    }
 
 
 
