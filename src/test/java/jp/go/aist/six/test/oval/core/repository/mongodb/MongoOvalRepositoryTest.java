@@ -83,19 +83,19 @@ public class MongoOvalRepositoryTest
 //                        }
 //                        ,
 //
-                        // def:7222 version=5, windows, vulnerability, CVE-2010-0176
-                        {
-                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-                            "test/resources/data/oval5/oval5.9_def7222-5_v_windows_CVE-2010-0176.xml",
-                            null
-                        }
+//                        // def:7222 version=5, windows, vulnerability, CVE-2010-0176
+//                        {
+//                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval5/oval5.9_def7222-5_v_windows_CVE-2010-0176.xml",
+//                            null
+//                        }
 //                      ,
 //                      // ---> results
-//                      {
-//                          jp.go.aist.six.oval.model.v5.results.OvalResults.class,
-//                          "test/resources/data/oval5/oval5.9_def7222-5_v_windows_CVE-2010-0176_results.xml",
-//                          null
-//                      }
+//                        {
+//                            jp.go.aist.six.oval.model.v5.results.OvalResults.class,
+//                            "test/resources/data/oval5/oval5.9_def7222-5_v_windows_CVE-2010-0176_results.xml",
+//                            null
+//                        }
 //                        ,
 //                        // def:12313, windows, vulnerability, CVE-2011-0031
 //                      {
@@ -119,9 +119,11 @@ public class MongoOvalRepositoryTest
 //                            "test/resources/data/oval5/oval5.9_def7432-3_p_debian5_DSA2027.xml",
 //                            null
 //                        }
+//                      ,
+//                      // ---> results
 //                        {
 //                            jp.go.aist.six.oval.model.v5.results.OvalResults.class,
-//                            "test/resources/data/oval-results-5/oval-5.9_def7432_patch_debian_results.xml",
+//                            "test/resources/data/oval5/oval5.9_def7432-3_p_debian5_DSA2027_results.xml",
 //                            null
 //                        }
         };

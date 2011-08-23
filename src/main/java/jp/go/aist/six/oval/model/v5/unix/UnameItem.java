@@ -69,6 +69,7 @@ public class UnameItem
      */
     public UnameItem()
     {
+        this( 0 );
     }
 
 
@@ -137,8 +138,8 @@ public class UnameItem
         setOsVersion( osVersion );
         setProcessorType( processorType );
 
-        oval_platform_type = OvalPlatformType.unix;
-        oval_component_type = OvalComponentType.uname;
+        _oval_platform_type = OvalPlatformType.unix;
+        _oval_component_type = OvalComponentType.uname;
     }
 
 

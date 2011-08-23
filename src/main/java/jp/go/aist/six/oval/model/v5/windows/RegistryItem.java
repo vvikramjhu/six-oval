@@ -80,8 +80,8 @@ public class RegistryItem
     {
         super( id );
 
-        oval_platform_type = OvalPlatformType.windows;
-        oval_component_type = OvalComponentType.registry;
+        _oval_platform_type = OvalPlatformType.windows;
+        _oval_component_type = OvalComponentType.registry;
     }
 
 

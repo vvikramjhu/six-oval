@@ -89,8 +89,8 @@ public class MetabaseItem
     {
         super( id );
 
-        oval_platform_type = OvalPlatformType.windows;
-        oval_component_type = OvalComponentType.metabase;
+        _oval_platform_type = OvalPlatformType.windows;
+        _oval_component_type = OvalComponentType.metabase;
     }
 
 
