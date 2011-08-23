@@ -55,8 +55,8 @@ public class DpkgInfoState
     {
         super( id, version );
 
-        oval_platform_type = OvalPlatformType.linux;
-        oval_component_type = OvalComponentType.dpkginfo;
+        _oval_platform_type = OvalPlatformType.linux;
+        _oval_component_type = OvalComponentType.dpkginfo;
     }
 
 

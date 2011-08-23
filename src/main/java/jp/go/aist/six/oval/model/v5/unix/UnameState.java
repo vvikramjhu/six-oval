@@ -91,8 +91,8 @@ public class UnameState
     {
         super( id, version, comment );
 
-        oval_platform_type = OvalPlatformType.unix;
-        oval_component_type = OvalComponentType.uname;
+        _oval_platform_type = OvalPlatformType.unix;
+        _oval_component_type = OvalComponentType.uname;
     }
 
 

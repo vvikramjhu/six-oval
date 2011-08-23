@@ -86,7 +86,7 @@ public class VariableType
         super( id, version, comment );
         setDatatype( datatype );
 
-        oval_entity_type = OvalEntityType.variable;
+        _oval_entity_type = OvalEntityType.variable;
     }
 
 

@@ -67,8 +67,8 @@ public class UnameTest
     {
         super( id, version, comment, check );
 
-        oval_platform_type = OvalPlatformType.unix;
-        oval_component_type = OvalComponentType.uname;
+        _oval_platform_type = OvalPlatformType.unix;
+        _oval_component_type = OvalComponentType.uname;
     }
 
 

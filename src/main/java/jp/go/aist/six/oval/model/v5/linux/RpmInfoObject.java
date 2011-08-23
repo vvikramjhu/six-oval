@@ -65,8 +65,8 @@ public class RpmInfoObject
     {
         super( id, version, comment );
 
-        oval_platform_type = OvalPlatformType.linux;
-        oval_component_type = OvalComponentType.rpminfo;
+        _oval_platform_type = OvalPlatformType.linux;
+        _oval_component_type = OvalComponentType.rpminfo;
     }
 
 

@@ -110,8 +110,8 @@ public class WmiObject
         setNamespace( namespace );
         setWql( wql );
 
-        oval_platform_type = OvalPlatformType.windows;
-        oval_component_type = OvalComponentType.wmi;
+        _oval_platform_type = OvalPlatformType.windows;
+        _oval_component_type = OvalComponentType.wmi;
     }
 
 

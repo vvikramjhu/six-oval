@@ -69,8 +69,8 @@ public class UnknownTest
     {
         super( id, version, comment, check );
 
-        oval_platform_type = OvalPlatformType.independent;
-        oval_component_type = OvalComponentType.unknown;
+        _oval_platform_type = OvalPlatformType.independent;
+        _oval_component_type = OvalComponentType.unknown;
     }
 
 

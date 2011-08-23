@@ -114,7 +114,7 @@ public class TestType
     {
         super( id, version, comment );
         setCheck( check );
-        oval_entity_type = OvalEntityType.test;
+        _oval_entity_type = OvalEntityType.test;
     }
 
 

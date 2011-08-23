@@ -125,8 +125,8 @@ public class MetabaseObject
         setKey( mbKey );
         setID( mbID );
 
-        oval_platform_type = OvalPlatformType.windows;
-        oval_component_type = OvalComponentType.metabase;
+        _oval_platform_type = OvalPlatformType.windows;
+        _oval_component_type = OvalComponentType.metabase;
     }
 
 

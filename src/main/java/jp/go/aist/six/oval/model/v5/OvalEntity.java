@@ -55,10 +55,11 @@ public abstract class OvalEntity
     //{optional, default="false"}
 
 
-    protected String             oval_schema_version;
-    protected OvalEntityType     oval_entity_type;
-    protected OvalPlatformType   oval_platform_type;
-    protected OvalComponentType  oval_component_type;
+    // SIX extension
+    protected String             _oval_schema_version;
+    protected OvalEntityType     _oval_entity_type;
+    protected OvalPlatformType   _oval_platform_type;
+    protected OvalComponentType  _oval_component_type;
 
 
 

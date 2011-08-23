@@ -66,8 +66,8 @@ public class FileTest
     {
         super( id, version, comment, check );
 
-        oval_platform_type = OvalPlatformType.windows;
-        oval_component_type = OvalComponentType.file;
+        _oval_platform_type = OvalPlatformType.windows;
+        _oval_component_type = OvalComponentType.file;
     }
 
 
