@@ -70,8 +70,9 @@ public class ItemType
     //{optional, default="exists"}
 
 
-    protected OvalPlatformType   oval_platform_type;
-    protected OvalComponentType  oval_component_type;
+    // SIX extension
+    protected OvalPlatformType   _oval_platform_type;
+    protected OvalComponentType  _oval_component_type;
 
 
 

@@ -60,8 +60,8 @@ public class FamilyItem
     {
         super( id );
 
-        oval_platform_type = OvalPlatformType.independent;
-        oval_component_type = OvalComponentType.family;
+        _oval_platform_type = OvalPlatformType.independent;
+        _oval_component_type = OvalComponentType.family;
     }
 
 

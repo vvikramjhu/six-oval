@@ -145,8 +145,8 @@ public class DpkgInfoItem
     {
         super( id, status, arch, name, version, release, epoch, evr );
 
-        oval_platform_type = OvalPlatformType.linux;
-        oval_component_type = OvalComponentType.dpkginfo;
+        _oval_platform_type = OvalPlatformType.linux;
+        _oval_component_type = OvalComponentType.dpkginfo;
     }
 
 

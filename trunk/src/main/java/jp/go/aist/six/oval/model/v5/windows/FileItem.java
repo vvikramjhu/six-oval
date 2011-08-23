@@ -178,8 +178,8 @@ public class FileItem
         setProductName( new EntityItemStringType( productName ) );
         setProductVersion( new EntityItemVersionType( productVersion ) );
 
-        oval_platform_type = OvalPlatformType.windows;
-        oval_component_type = OvalComponentType.file;
+        _oval_platform_type = OvalPlatformType.windows;
+        _oval_component_type = OvalComponentType.file;
     }
 
 
@@ -227,8 +227,8 @@ public class FileItem
         setProductName( productName );
         setProductVersion( productVersion );
 
-        oval_platform_type = OvalPlatformType.windows;
-        oval_component_type = OvalComponentType.file;
+        _oval_platform_type = OvalPlatformType.windows;
+        _oval_component_type = OvalComponentType.file;
     }
 
 

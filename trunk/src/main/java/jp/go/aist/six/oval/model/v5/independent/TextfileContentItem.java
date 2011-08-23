@@ -88,8 +88,8 @@ public class TextfileContentItem
     {
         super( id );
 
-        oval_platform_type = OvalPlatformType.independent;
-        oval_component_type = OvalComponentType.textfilecontent54;
+        _oval_platform_type = OvalPlatformType.independent;
+        _oval_component_type = OvalComponentType.textfilecontent;
     }
 
 
