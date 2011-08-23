@@ -315,31 +315,31 @@ public class MongoOvalRepository
 
 
 
-    public <K, T extends OvalObject & Persistable<K>>
-    QueryResult<T> find(
-                    final Class<T> type,
-                    final QueryParams params
-                    )
-    throws OvalRepositoryException
-    {
-        _LOG_.debug( "type=" + type + ", params: " + params );
-
-        List<T>  list = null;
-        try {
-            DAO<T, K>  dao = _getDAO( type );
-            Query<T>  query = dao.createQuery();
-            _buildQuery( type, params, query );
-
-            list = dao.find( query ).asList();
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-        _LOG_.debug( "#objects found: " + (list == null ? 0 : list.size()) );
-        QueryResult<T>  result = new QueryResult<T>( list );
-
-        return result;
-    }
+//    public <K, T extends OvalObject & Persistable<K>>
+//    QueryResult<T> find(
+//                    final Class<T> type,
+//                    final QueryParams params
+//                    )
+//    throws OvalRepositoryException
+//    {
+//        _LOG_.debug( "type=" + type + ", params: " + params );
+//
+//        List<T>  list = null;
+//        try {
+//            DAO<T, K>  dao = _getDAO( type );
+//            Query<T>  query = dao.createQuery();
+//            _buildQuery( type, params, query );
+//
+//            list = dao.find( query ).asList();
+//        } catch (Exception ex) {
+//            throw new OvalRepositoryException( ex );
+//        }
+//
+//        _LOG_.debug( "#objects found: " + (list == null ? 0 : list.size()) );
+//        QueryResult<T>  result = new QueryResult<T>( list );
+//
+//        return result;
+//    }
 
 
     //////
@@ -459,17 +459,17 @@ public class MongoOvalRepository
     public <K, T extends OvalObject & Persistable<K>>
     QueryResult<K> findIDs(
                     final Class<T> type,
-                    final QueryParams params
+                    final QueryBuilder builder
                     )
     throws OvalRepositoryException
     {
-        _LOG_.debug( "type=" + type + ", params: " + params );
+        _LOG_.debug( "type=" + type );
 
         List<Key<T>>  keys = null;
         try {
             DAO<T, K>  dao = _getDAO( type );
             Query<T>  q = dao.createQuery();
-            _buildQuery( type, params, q );
+            q = builder.build( q );
 
             keys = dao.find( q ).asKeyList();
         } catch (Exception ex) {

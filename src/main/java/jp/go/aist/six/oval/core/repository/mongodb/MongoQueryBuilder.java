@@ -43,7 +43,6 @@ import com.google.code.morphia.query.Query;
  * @version $Id$
  */
 public class MongoQueryBuilder
-implements QueryBuilder
 {
 
     /**
@@ -62,10 +61,6 @@ implements QueryBuilder
     private static final Handler  DEFAULT_HANDLER = new FilterHandler();
 
 
-    private QueryParams  _params;
-
-
-
 
     /**
      * Constructor.
@@ -75,14 +70,6 @@ implements QueryBuilder
         _addEntries( _entries() );
     }
 
-
-    public MongoQueryBuilder(
-                    final QueryParams params
-                    )
-    {
-        this();
-        this._params = params;
-    }
 
 
 //    public MongoQueryBuilder(
@@ -216,20 +203,6 @@ implements QueryBuilder
     //==============================================================
     //  Query
     //==============================================================
-
-    @Override
-    public <T>
-    Query<T> build(
-                    final Query<T> query
-                    )
-    throws OvalRepositoryException
-    {
-        buildQuery( query, _params );
-
-        return query;
-    }
-
-
 
     /**
      */

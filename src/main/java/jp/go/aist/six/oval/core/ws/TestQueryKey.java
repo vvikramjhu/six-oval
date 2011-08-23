@@ -35,7 +35,10 @@ public class TestQueryKey
     public static final String  VERSION             = "version";
     public static final String  OBJECT_REF          = "object_ref";
     public static final String  STATE_REF           = "state_ref";
-    public static final String  TYPE                = "type";
+//    public static final String  TYPE                = "type";
+
+    public static final String  PLATFORM            = "platform";
+    public static final String  COMPONENT           = "component";
 
 }
 // TestQueryKey

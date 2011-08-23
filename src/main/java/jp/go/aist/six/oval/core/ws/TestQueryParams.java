@@ -119,17 +119,34 @@ public class TestQueryParams
 
     /**
      */
-    public void setType(
-                    final String type
+    public void setPlatform(
+                    final String platform
     )
     {
-        set( TestQueryKey.TYPE, type );
+        set( TestQueryKey.PLATFORM, platform );
     }
 
 
-    public String getType()
+    public String getPlatform()
     {
-        return String.class.cast( get( TestQueryKey.TYPE ) );
+        return String.class.cast( get( TestQueryKey.PLATFORM ) );
+    }
+
+
+
+    /**
+     */
+    public void setComponent(
+                    final String component
+    )
+    {
+        set( TestQueryKey.COMPONENT, component );
+    }
+
+
+    public String getComponent()
+    {
+        return String.class.cast( get( TestQueryKey.COMPONENT ) );
     }
 
 }
