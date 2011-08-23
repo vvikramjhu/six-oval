@@ -94,8 +94,8 @@ public class FileObject
     {
         super( id, version );
 
-        oval_platform_type = OvalPlatformType.windows;
-        oval_component_type = OvalComponentType.file;
+        _oval_platform_type = OvalPlatformType.windows;
+        _oval_component_type = OvalComponentType.file;
     }
 
 

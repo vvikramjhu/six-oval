@@ -117,8 +117,8 @@ public class TextfileContent54Object
     {
         super( id, version, comment );
 
-        oval_platform_type = OvalPlatformType.independent;
-        oval_component_type = OvalComponentType.textfilecontent54;
+        _oval_platform_type = OvalPlatformType.independent;
+        _oval_component_type = OvalComponentType.textfilecontent54;
     }
 
 

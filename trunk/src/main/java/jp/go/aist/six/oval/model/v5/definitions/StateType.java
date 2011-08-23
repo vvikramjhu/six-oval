@@ -82,7 +82,7 @@ public class StateType
     {
         super( id, version, comment );
 
-        oval_entity_type = OvalEntityType.state;
+        _oval_entity_type = OvalEntityType.state;
     }
 
 

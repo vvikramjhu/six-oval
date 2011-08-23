@@ -72,7 +72,7 @@ public class SystemObjectType
     {
         super( id, version, comment );
 
-        oval_entity_type = OvalEntityType.object;
+        _oval_entity_type = OvalEntityType.object;
     }
 
 
