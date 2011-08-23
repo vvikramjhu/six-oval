@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.repository.mongodb;
+package jp.go.aist.six.oval.core.ws;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,10 +27,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
-import jp.go.aist.six.oval.core.ws.CommonQueryKey;
-import jp.go.aist.six.oval.core.ws.DefinitionQueryKey;
-import jp.go.aist.six.oval.core.ws.QueryParams;
-import jp.go.aist.six.oval.core.ws.TestQueryKey;
+import jp.go.aist.six.oval.core.repository.mongodb.QueryBuilder;
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import com.google.code.morphia.query.Query;
@@ -42,24 +41,43 @@ import com.google.code.morphia.query.Query;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class MongoQueryBuilder
+public class MongoWebQueryBuilder
 implements QueryBuilder
 {
 
     /**
      * Query key - database field mapping.
      */
-    private final Map<String, String>  _fields = new HashMap<String, String>();
+    private static final Map<String, String>  _fields = new HashMap<String, String>();
 
 
     /**
      * Registered handlers.
      * Map keys are URI query param keys.
      */
-    private final Map<String, Handler>  _handlers = new HashMap<String, Handler>();
+    private static final Map<String, Handler>  _handlers = new HashMap<String, Handler>();
 
 
     private static final Handler  DEFAULT_HANDLER = new FilterHandler();
+
+
+
+    static
+    {
+        Collection<Entry>  entries = _createDefaultEntries();
+        if (entries != null) {
+            for (Entry  entry : entries) {
+                if (entry != null) {
+                    _fields.put( entry.key, entry.field );
+
+//                    entry.handler.setBuilder( this );
+                    _handlers.put( entry.key, entry.handler );
+                }
+            }
+        }
+
+    }
+
 
 
     private QueryParams  _params;
@@ -70,118 +88,118 @@ implements QueryBuilder
     /**
      * Constructor.
      */
-    public MongoQueryBuilder()
+    public MongoWebQueryBuilder()
     {
-        _addEntries( _entries() );
     }
 
 
-    public MongoQueryBuilder(
+    public MongoWebQueryBuilder(
                     final QueryParams params
                     )
     {
-        this();
+        setParams( params );
+    }
+
+
+
+    /**
+     */
+    public void setParams(
+                    final QueryParams params
+                    )
+    {
         this._params = params;
     }
 
 
-//    public MongoQueryBuilder(
-//                    final Map<String, String> fieldMapping,
-//                    final Map<String, Handler> handlerMapping
+//
+//
+//    /**
+//     */
+//    protected void _addEntries(
+//                    final Collection<Entry> entries
 //                    )
 //    {
-//        setFieldMapping( fieldMapping );
-//        setHandlerMapping( handlerMapping );
+//        if (entries != null) {
+//            for (Entry  entry : entries) {
+//                _addEntry( entry );
+//            }
+//        }
 //    }
-
-
-
-    /**
-     */
-    protected void _addEntries(
-                    final Collection<Entry> entries
-                    )
-    {
-        if (entries != null) {
-            for (Entry  entry : entries) {
-                _addEntry( entry );
-            }
-        }
-    }
-
-
-    protected void _addEntry(
-                    final Entry entry
-                    )
-    {
-        if (entry != null) {
-            _addField( entry.key, entry.field );
-            _addHandler( entry.key, entry.handler );
-        }
-    }
-
-
-
-
-    /**
-     */
-    public final void setFieldMapping(
-                    final Map<String, String> mapping
-                    )
-    {
-        if (mapping != null) {
-            _fields.putAll( mapping );
-        }
-    }
-
-
-    protected final void _addField(
-                    final String key,
-                    final String field
-                    )
-    {
-        if (key == null) {
-            throw new IllegalArgumentException( "no key specified" );
-        }
-
-        _fields.put( key, field );
-    }
-
-
-
-    /**
-     */
-    public final void setHandlerMapping(
-                    final Map<String, Handler> mapping
-                    )
-    {
-        if (mapping != null) {
-            for (String  key : mapping.keySet()) {
-                _addHandler( key, mapping.get( key ) );
-            }
-        }
-    }
-
-
-    protected final Map<String, Handler> _getHandlers()
-    {
-        return _handlers;
-    }
-
-
-
-    protected final void _addHandler(
-                    final String key,
-                    final Handler handler
-                    )
-    {
-        if (handler == null) {
-            throw new IllegalArgumentException( "null handler" );
-        }
-
-        handler.setBuilder( this );
-        _handlers.put( key, handler );
-    }
+//
+//
+//    protected void _addEntry(
+//                    final Entry entry
+//                    )
+//    {
+//        if (entry != null) {
+//            _addField( entry.key, entry.field );
+//            _addHandler( entry.key, entry.handler );
+//        }
+//    }
+//
+//
+//
+//
+//    /**
+//     */
+//    public final void setFieldMapping(
+//                    final Map<String, String> mapping
+//                    )
+//    {
+//        if (mapping != null) {
+//            _fields.putAll( mapping );
+//        }
+//    }
+//
+//
+//    protected final void _addField(
+//                    final String key,
+//                    final String field
+//                    )
+//    {
+//        if (key == null) {
+//            throw new IllegalArgumentException( "no key specified" );
+//        }
+//
+//        _fields.put( key, field );
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public final void setHandlerMapping(
+//                    final Map<String, Handler> mapping
+//                    )
+//    {
+//        if (mapping != null) {
+//            for (String  key : mapping.keySet()) {
+//                _addHandler( key, mapping.get( key ) );
+//            }
+//        }
+//    }
+//
+//
+//    protected final Map<String, Handler> _getHandlers()
+//    {
+//        return _handlers;
+//    }
+//
+//
+//
+//    protected final void _addHandler(
+//                    final String key,
+//                    final Handler handler
+//                    )
+//    {
+//        if (handler == null) {
+//            throw new IllegalArgumentException( "null handler" );
+//        }
+//
+//        handler.setBuilder( this );
+//        _handlers.put( key, handler );
+//    }
 
 
 
@@ -199,7 +217,7 @@ implements QueryBuilder
 
 
 
-    public final String getField(
+    public static final String getField(
                     final String key
                     )
     {
@@ -236,7 +254,6 @@ implements QueryBuilder
 //    public <K, T extends OvalObject & Persistable<K>>
     public <T>
     void buildQuery(
-//                    final Class<T> type,
                     final Query<T> query,
                     final QueryParams params
                     )
@@ -277,7 +294,7 @@ implements QueryBuilder
     protected static abstract class Handler
     {
 
-        private MongoQueryBuilder  _builder;
+//        private MongoWebQueryBuilder  _builder;
 
 
         public Handler()
@@ -285,29 +302,29 @@ implements QueryBuilder
         }
 
 
-        public Handler(
-                        final MongoQueryBuilder builder
-                        )
-        {
-            setBuilder( builder );
-        }
-
-
-
-        /**
-         */
-        public final void setBuilder(
-                        final MongoQueryBuilder builder
-                        )
-        {
-            _builder = builder;
-        }
-
-
-        public final MongoQueryBuilder getBuilder()
-        {
-            return _builder;
-        }
+//        public Handler(
+//                        final MongoWebQueryBuilder builder
+//                        )
+//        {
+//            setBuilder( builder );
+//        }
+//
+//
+//
+//        /**
+//         */
+//        public final void setBuilder(
+//                        final MongoWebQueryBuilder builder
+//                        )
+//        {
+//            _builder = builder;
+//        }
+//
+//
+//        public final MongoWebQueryBuilder getBuilder()
+//        {
+//            return _builder;
+//        }
 
 
 
@@ -338,12 +355,12 @@ implements QueryBuilder
         }
 
 
-        public FilterHandler(
-                        final MongoQueryBuilder builder
-                        )
-        {
-            super( builder );
-        }
+//        public FilterHandler(
+//                        final MongoWebQueryBuilder builder
+//                        )
+//        {
+//            super( builder );
+//        }
 
 
 
@@ -391,12 +408,12 @@ implements QueryBuilder
         }
 
 
-        public OrderHandler(
-                        final MongoQueryBuilder builder
-                        )
-        {
-            super( builder );
-        }
+//        public OrderHandler(
+//                        final MongoWebQueryBuilder builder
+//                        )
+//        {
+//            super( builder );
+//        }
 
 
 //        public OrderHandler(
@@ -432,7 +449,8 @@ implements QueryBuilder
                     orderKey = orderKey.substring( 1 );
                     s.append( "-" );
                 }
-                String  orderingField = getBuilder().getField( orderKey );
+                String  orderingField = getField( orderKey );
+//                String  orderingField = getBuilder().getField( orderKey );
                 s.append( (orderingField == null ? orderKey : orderingField) );
             }
 
@@ -457,12 +475,12 @@ implements QueryBuilder
         }
 
 
-        public PatternHandler(
-                        final MongoQueryBuilder builder
-                        )
-        {
-            super( builder );
-        }
+//        public PatternHandler(
+//                        final MongoWebQueryBuilder builder
+//                        )
+//        {
+//            super( builder );
+//        }
 
 
 
@@ -493,12 +511,12 @@ implements QueryBuilder
         }
 
 
-        public DatetimeHandler(
-                        final MongoQueryBuilder builder
-                        )
-        {
-            super( builder );
-        }
+//        public DatetimeHandler(
+//                        final MongoWebQueryBuilder builder
+//                        )
+//        {
+//            super( builder );
+//        }
 
 
 
@@ -566,7 +584,7 @@ implements QueryBuilder
     // Entry
 
 
-    private static Collection<Entry> _entries()
+    private static Collection<Entry> _createDefaultEntries()
     {
         Handler  offsetHandler = new Handler()
         {
@@ -623,6 +641,35 @@ implements QueryBuilder
         };
 
 
+        Handler  ovalComponentTypeHandler = new FilterHandler()
+        {
+            @Override
+            public void build(
+                            final Query<?> query,
+                            final String field,
+                            final Object value
+                            )
+            {
+                OvalComponentType  component = OvalComponentType.valueOf( String.valueOf( value ) );
+                super.build( query, field, component );
+            }
+        };
+
+        Handler  ovalPlatformTypeHandler = new FilterHandler()
+        {
+            @Override
+            public void build(
+                            final Query<?> query,
+                            final String field,
+                            final Object value
+                            )
+            {
+                OvalPlatformType  component = OvalPlatformType.valueOf( String.valueOf( value ) );
+                super.build( query, field, component );
+            }
+        };
+
+
         Collection<Entry>  entries = new ArrayList<Entry>();
 
         // common
@@ -644,6 +691,8 @@ implements QueryBuilder
         // test
         entries.add( new Entry( TestQueryKey.OBJECT_REF,  "object.object_ref"  ) );
         entries.add( new Entry( TestQueryKey.STATE_REF,   "state.state_ref"  ) );
+        entries.add( new Entry( TestQueryKey.PLATFORM,    "_oval_platform_type",  ovalPlatformTypeHandler   ) );
+        entries.add( new Entry( TestQueryKey.COMPONENT,   "_oval_component_type", ovalComponentTypeHandler  ) );
 
         return entries;
     }

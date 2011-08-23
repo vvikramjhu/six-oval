@@ -25,7 +25,6 @@ import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoDatastore;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalRepository;
-import jp.go.aist.six.oval.core.repository.mongodb.MongoQueryBuilder;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
@@ -200,7 +199,7 @@ public class OvalController
     {
         _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
 
-        MongoQueryBuilder  builder = new MongoQueryBuilder( params );
+        MongoWebQueryBuilder  builder = new MongoWebQueryBuilder( params );
         QueryResult<T>  result = _repository.find( type, builder );
         return result;
     }
@@ -210,6 +209,38 @@ public class OvalController
 //        QueryResult<T>  result = _repository.find( type, params );
 //        return result;
 //    }
+
+
+
+    /**
+     * Retrieves the resources.
+     */
+    public <K, T extends OvalObject & Persistable<K>>
+    QueryResult<K> _findResourceIDs(
+                    final Class<T> type
+                    )
+    throws OvalException
+    {
+        _LOG_.debug( "GET (find): type=" + type );
+
+        QueryResult<K>  result = _repository.findIDs( type );
+        return result;
+    }
+
+
+    public <K, T extends OvalObject & Persistable<K>>
+    QueryResult<K> _findResourceIDs(
+                    final Class<T> type,
+                    final QueryParams params
+                    )
+    throws OvalException
+    {
+        _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
+
+        MongoWebQueryBuilder  builder = new MongoWebQueryBuilder( params );
+        QueryResult<K>  result = _repository.findIDs( type, builder );
+        return result;
+    }
 
 
 
@@ -301,7 +332,7 @@ public class OvalController
                     )
     throws OvalException
     {
-        QueryResult<String>  ids = _repository.findIDs( OvalDefinitions.class );
+        QueryResult<String>  ids = _findResourceIDs( OvalDefinitions.class );
 //        Collection<String>  ids = _service.getObjectIDs( OvalDefinitions.class );
 ////        List<Key<OvalDefinitions>>  ids = _service.getObjectIDs( OvalDefinitions.class );
         if (ids == null) {
@@ -385,7 +416,7 @@ public class OvalController
                     )
     throws OvalException
     {
-        QueryResult<String>  ids = _repository.findIDs( DefinitionType.class );
+        QueryResult<String>  ids = _findResourceIDs( DefinitionType.class );
         if (ids == null) {
             _LOG_.debug( "definitions: #ids=0" );
         } else {
@@ -549,7 +580,7 @@ public class OvalController
                     )
     throws OvalException
     {
-        QueryResult<String>  ids = _repository.findIDs( OvalSystemCharacteristics.class, params );
+        QueryResult<String>  ids = _findResourceIDs( OvalSystemCharacteristics.class, params );
 //        Collection<String>  ids = _service.findOvalSystemCharacteristics( params );
 ////        List<Key<OvalSystemCharacteristics>>  ids = _service.findOvalSystemCharacteristics( params );
         if (ids == null) {
@@ -640,7 +671,7 @@ public class OvalController
                     )
     throws OvalException
     {
-        QueryResult<String>  ids = _repository.findIDs( OvalResults.class );
+        QueryResult<String>  ids = _findResourceIDs( OvalResults.class );
 //        Collection<String>  ids = _service.getObjectIDs( OvalResults.class );
 ////        List<Key<OvalResults>>  ids = _service.getObjectIDs( OvalResults.class );
         if (ids == null) {
@@ -693,16 +724,8 @@ public class OvalController
                     )
     throws OvalException
     {
-        return _repository.find( OvalResults.class, params );
-//        return _service.findResults( params );
+        return _findResource( OvalResults.class, params );
     }
-//    public @ResponseBody ResultsType getResults(
-//                    @RequestParam final String primary_host_name
-//                    )
-//    throws OvalException
-//    {
-//        return _service.findResults( primary_host_name );
-//    }
 
 }
 // OvalController
