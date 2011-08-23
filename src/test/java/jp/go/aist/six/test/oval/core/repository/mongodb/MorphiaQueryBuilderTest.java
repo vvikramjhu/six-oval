@@ -1,4 +1,4 @@
-package jp.go.aist.six.test.oval.core.datastore.mongodb;
+package jp.go.aist.six.test.oval.core.repository.mongodb;
 
 import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoDatastore;

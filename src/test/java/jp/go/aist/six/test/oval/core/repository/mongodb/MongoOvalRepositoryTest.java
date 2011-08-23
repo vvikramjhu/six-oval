@@ -1,4 +1,4 @@
-package jp.go.aist.six.test.oval.core.datastore.mongodb;
+package jp.go.aist.six.test.oval.core.repository.mongodb;
 
 import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.DefinitionDAO;
@@ -125,7 +125,7 @@ public class MongoOvalRepositoryTest
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.datastore.mongodb.saveAndLoad" },
+                    groups={ "oval.core.repository.mongodb.saveAndLoad" },
                     dataProvider="oval.xml",
                     alwaysRun=true
                     )
@@ -217,7 +217,7 @@ public class MongoOvalRepositoryTest
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.datastore.mongodb", "oval.definitions.oval_definitions" },
+                    groups={ "oval.core.repository.mongodb", "oval.definitions.oval_definitions" },
                     dataProvider="oval.definitions.oval_definitions.xml",
                     alwaysRun=true
                     )
@@ -275,7 +275,7 @@ public class MongoOvalRepositoryTest
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.datastore.mongodb.datastore" },
+                    groups={ "oval.core.repository.mongodb.datastore" },
                     dataProvider="oval.entity",
                     alwaysRun=true
                     )
@@ -285,7 +285,7 @@ public class MongoOvalRepositoryTest
                     )
     throws Exception
     {
-        Reporter.log( "\n//// TEST: group=oval.core.datastore.mongodb.datastore"
+        Reporter.log( "\n//// TEST: group=oval.core.repository.mongodb.datastore"
                         + ", method=testSaveAndLoadEntityUsingDatastoreService",
                         true );
 
@@ -304,13 +304,13 @@ public class MongoOvalRepositoryTest
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.datastore.mongodb", "oval.definitions.variable" },
+                    groups={ "oval.core.repository.mongodb", "oval.definitions.variable" },
                     alwaysRun=true
                     )
     public void testOvalDefinitionsVariable()
     throws Exception
     {
-        Reporter.log( "\n//// TEST: group=oval.core.datastore.mongodb, oval.definitions.variable"
+        Reporter.log( "\n//// TEST: group=oval.core.repository.mongodb, oval.definitions.variable"
                         + ", method=testOvalDefinitionsVariable",
                         true );
 
@@ -338,13 +338,13 @@ public class MongoOvalRepositoryTest
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.datastore.mongodb", "oval.definitions.state" },
+                    groups={ "oval.core.repository.mongodb", "oval.definitions.state" },
                     alwaysRun=true
                     )
     public void testOvalDefinitionsState()
     throws Exception
     {
-        Reporter.log( "\n//// TEST: group=oval.core.datastore.mongodb, oval.definitions.state"
+        Reporter.log( "\n//// TEST: group=oval.core.repository.mongodb, oval.definitions.state"
                         + ", method=testOvalDefinitionsState",
                         true );
 
@@ -372,13 +372,13 @@ public class MongoOvalRepositoryTest
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.datastore.mongodb", "oval.definitions.object" },
+                    groups={ "oval.core.repository.mongodb", "oval.definitions.object" },
                     alwaysRun=true
                     )
     public void testOvalDefinitionsObject()
     throws Exception
     {
-        Reporter.log( "\n//// TEST: group=oval.core.datastore.mongodb, oval.definitions.object"
+        Reporter.log( "\n//// TEST: group=oval.core.repository.mongodb, oval.definitions.object"
                         + ", method=testOvalDefinitionsObject",
                         true );
 
@@ -406,13 +406,13 @@ public class MongoOvalRepositoryTest
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.datastore.mongodb", "oval.definitions.test" },
+                    groups={ "oval.core.repository.mongodb", "oval.definitions.test" },
                     alwaysRun=true
                     )
     public void testOvalDefinitionsTest()
     throws Exception
     {
-        Reporter.log( "\n//// TEST: group=oval.core.datastore.mongodb, oval.definitions.test"
+        Reporter.log( "\n//// TEST: group=oval.core.repository.mongodb, oval.definitions.test"
                         + ", method=testOvalDefinitionsTest",
                         true );
 
@@ -440,13 +440,13 @@ public class MongoOvalRepositoryTest
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.datastore.mongodb", "oval.definitions.definition" },
+                    groups={ "oval.core.repository.mongodb", "oval.definitions.definition" },
                     alwaysRun=true
                     )
     public void testOvalDefinitionsDefinition()
     throws Exception
     {
-        Reporter.log( "\n//// TEST: group=oval.core.datastore.mongodb, oval.definitions.definition"
+        Reporter.log( "\n//// TEST: group=oval.core.repository.mongodb, oval.definitions.definition"
                         + ", method=testSaveAndLoadDefinition",
                         true );
 
