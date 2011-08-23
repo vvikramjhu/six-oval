@@ -40,17 +40,17 @@
     <!-- *  repository                                         * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.datastore.mongodb.query" enabled="false">
+    <test name="oval.core.repository.mongodb.query" enabled="false">
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.datastore.mongodb.MorphiaQueryBuilderTest"/>
+            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MorphiaQueryBuilderTest"/>
         </classes>
     </test>
 
 
-    <test name="oval.core.datastore.mongodb.dao" enabled="true">
+    <test name="oval.core.repository.mongodb.dao" enabled="true">
         <groups>
             <run>
-                <include name="oval.core.datastore.mongodb.saveAndLoad"/>
+                <include name="oval.core.repository.mongodb.saveAndLoad"/>
                 <!--
                 <include name="oval.definitions.oval_definitions"/>
                 <include name="oval.definitions.definition"/>
@@ -61,7 +61,7 @@
         </groups>
 
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.datastore.mongodb.MongoTest"/>
+            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalRepositoryTest"/>
         </classes>
     </test>
 
