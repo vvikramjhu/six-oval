@@ -25,7 +25,7 @@ import com.google.code.morphia.dao.DAO;
 
 
 
-public class MongoTest
+public class MongoOvalRepositoryTest
     extends CoreTestBase
 {
 
