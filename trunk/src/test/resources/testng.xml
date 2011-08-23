@@ -37,17 +37,17 @@
 
 
     <!-- ******************************************************* -->
-    <!-- *  datastore                                          * -->
+    <!-- *  repository                                         * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.datastore.mongodb.query" enabled="true">
+    <test name="oval.core.datastore.mongodb.query" enabled="false">
         <classes>
             <class name="jp.go.aist.six.test.oval.core.datastore.mongodb.MorphiaQueryBuilderTest"/>
         </classes>
     </test>
 
 
-    <test name="oval.core.datastore.mongodb.dao" enabled="false">
+    <test name="oval.core.datastore.mongodb.dao" enabled="true">
         <groups>
             <run>
                 <include name="oval.core.datastore.mongodb.saveAndLoad"/>
