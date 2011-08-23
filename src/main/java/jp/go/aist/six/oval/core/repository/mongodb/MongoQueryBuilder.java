@@ -31,10 +31,8 @@ import jp.go.aist.six.oval.core.ws.CommonQueryKey;
 import jp.go.aist.six.oval.core.ws.DefinitionQueryKey;
 import jp.go.aist.six.oval.core.ws.QueryParams;
 import jp.go.aist.six.oval.core.ws.TestQueryKey;
-import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
-import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.query.Query;
 
 
@@ -45,6 +43,7 @@ import com.google.code.morphia.query.Query;
  * @version $Id$
  */
 public class MongoQueryBuilder
+implements QueryBuilder
 {
 
     /**
@@ -63,6 +62,9 @@ public class MongoQueryBuilder
     private static final Handler  DEFAULT_HANDLER = new FilterHandler();
 
 
+    private QueryParams  _params;
+
+
 
 
     /**
@@ -70,26 +72,27 @@ public class MongoQueryBuilder
      */
     public MongoQueryBuilder()
     {
-        this( _entries() );
+        _addEntries( _entries() );
     }
 
 
     public MongoQueryBuilder(
-                    final Map<String, String> fieldMapping,
-                    final Map<String, Handler> handlerMapping
+                    final QueryParams params
                     )
     {
-        setFieldMapping( fieldMapping );
-        setHandlerMapping( handlerMapping );
+        this();
+        this._params = params;
     }
 
 
-    public MongoQueryBuilder(
-                    final Collection<Entry> entries
-                    )
-    {
-        _addEntries( entries );
-    }
+//    public MongoQueryBuilder(
+//                    final Map<String, String> fieldMapping,
+//                    final Map<String, Handler> handlerMapping
+//                    )
+//    {
+//        setFieldMapping( fieldMapping );
+//        setHandlerMapping( handlerMapping );
+//    }
 
 
 
@@ -214,10 +217,24 @@ public class MongoQueryBuilder
     //  Query
     //==============================================================
 
+    @Override
+    public <T>
+    Query<T> build(
+                    final Query<T> query
+                    )
+    throws OvalRepositoryException
+    {
+        buildQuery( query, _params );
+
+        return query;
+    }
+
+
 
     /**
      */
-    public <K, T extends OvalObject & Persistable<K>>
+//    public <K, T extends OvalObject & Persistable<K>>
+    public <T>
     void buildQuery(
 //                    final Class<T> type,
                     final Query<T> query,
