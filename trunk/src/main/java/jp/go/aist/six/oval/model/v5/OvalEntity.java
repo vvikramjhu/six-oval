@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.v5;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalEntityType;
+import jp.go.aist.six.oval.model.OvalGenerator;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.annotations.Id;
@@ -56,7 +57,7 @@ public abstract class OvalEntity
 
 
     // SIX extension
-    protected String             _oval_schema_version;
+    protected OvalGenerator      _oval_generator;
     protected OvalEntityType     _oval_entity_type;
     protected OvalPlatformType   _oval_platform_type;
     protected OvalComponentType  _oval_component_type;
@@ -97,6 +98,19 @@ public abstract class OvalEntity
     public Boolean getDeprecated()
     {
         return this.deprecated;
+    }
+
+
+
+    //**************************************************************
+    //  SIX extension
+    //**************************************************************
+
+    public void generator(
+                    final OvalGenerator generator
+                    )
+    {
+        this._oval_generator = generator;
     }
 
 

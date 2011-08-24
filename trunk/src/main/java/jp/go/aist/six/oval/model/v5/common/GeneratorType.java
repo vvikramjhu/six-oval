@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.v5.common;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.OvalGenerator;
 import jp.go.aist.six.oval.model.v5.Oval5Object;
 
 
@@ -39,26 +40,27 @@ import jp.go.aist.six.oval.model.v5.Oval5Object;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class GeneratorType
+    extends OvalGenerator
     implements Oval5Object
 {
 
-    private String  product_name;
-    //{xsd:string, 0..1}
-
-    private String  product_version;
-    //{xsd:string, 0..1}
-
-    private String  schema_version;
-    //{xsd:decimal, 1..1}
-
-    /**
-     * The required timestamp specifies when the particular
-     * OVAL document was compiled.
-     * The format for the timestamp is yyyy-mm-ddThh:mm:ss.
-     */
-    private String  timestamp;
-//    private Date  _timestamp;
-    //{xsd:dateTime, 1..1}
+//    private String  product_name;
+//    //{xsd:string, 0..1}
+//
+//    private String  product_version;
+//    //{xsd:string, 0..1}
+//
+//    private String  schema_version;
+//    //{xsd:decimal, 1..1}
+//
+//    /**
+//     * The required timestamp specifies when the particular
+//     * OVAL document was compiled.
+//     * The format for the timestamp is yyyy-mm-ddThh:mm:ss.
+//     */
+//    private String  timestamp;
+////    private Date  _timestamp;
+//    //{xsd:dateTime, 1..1}
 
 
     private final Collection<GeneratorInformation>  additional_information =
@@ -80,88 +82,88 @@ public class GeneratorType
                     final String timestamp
                     )
     {
-        setSchemaVersion( schema_version );
-        setTimestamp( timestamp );
+        this( schema_version, timestamp, null, null );
     }
 
 
     public GeneratorType(
-                    final String schema_ersion,
+                    final String schema_version,
                     final String timestamp,
                     final String prod_name,
                     final String prod_version
                     )
     {
-        this( schema_ersion, timestamp );
+        setSchemaVersion( schema_version );
+        setTimestamp( timestamp );
         setProductName( prod_name );
         setProductVersion( prod_version );
     }
 
 
 
-    /**
-     */
-    public void setProductName(
-                    final String product_name
-                    )
-    {
-        this.product_name = product_name;
-    }
-
-
-    public String getProductName()
-    {
-        return this.product_name;
-    }
-
-
-
-    /**
-     */
-    public void setProductVersion(
-                    final String product_version
-                    )
-    {
-        this.product_version = product_version;
-    }
-
-
-    public String getProductVersion()
-    {
-        return this.product_version;
-    }
-
-
-
-    /**
-     */
-    public void setSchemaVersion(
-                    final String schema_version
-                    )
-    {
-        this.schema_version = schema_version;
-    }
-
-
-    public String getSchemaVersion()
-    {
-        return this.schema_version;
-    }
-
-
-
-    public void setTimestamp(
-                    final String timestamp
-                    )
-    {
-        this.timestamp = timestamp;
-    }
-
-
-    public String getTimestamp()
-    {
-        return this.timestamp;
-    }
+//    /**
+//     */
+//    public void setProductName(
+//                    final String product_name
+//                    )
+//    {
+//        this.product_name = product_name;
+//    }
+//
+//
+//    public String getProductName()
+//    {
+//        return this.product_name;
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public void setProductVersion(
+//                    final String product_version
+//                    )
+//    {
+//        this.product_version = product_version;
+//    }
+//
+//
+//    public String getProductVersion()
+//    {
+//        return this.product_version;
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public void setSchemaVersion(
+//                    final String schema_version
+//                    )
+//    {
+//        this.schema_version = schema_version;
+//    }
+//
+//
+//    public String getSchemaVersion()
+//    {
+//        return this.schema_version;
+//    }
+//
+//
+//
+//    public void setTimestamp(
+//                    final String timestamp
+//                    )
+//    {
+//        this.timestamp = timestamp;
+//    }
+//
+//
+//    public String getTimestamp()
+//    {
+//        return this.timestamp;
+//    }
 
 
 
@@ -270,16 +272,16 @@ public class GeneratorType
 
 
 
-    @Override
-    public String toString()
-    {
-        return "[product_name=" + getProductName()
-                        + ", product_version=" + getProductVersion()
-                        + ", schema_version=" + getSchemaVersion()
-                        + ", timestamp=" + getTimestamp()
-                        + ", additional_information=" + getAdditionalInformation()
-                        + "]";
-    }
+//    @Override
+//    public String toString()
+//    {
+//        return "[product_name=" + getProductName()
+//                        + ", product_version=" + getProductVersion()
+//                        + ", schema_version=" + getSchemaVersion()
+//                        + ", timestamp=" + getTimestamp()
+//                        + ", additional_information=" + getAdditionalInformation()
+//                        + "]";
+//    }
 
 }
 // GeneratorType

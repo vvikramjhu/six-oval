@@ -18,28 +18,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.common;
+package jp.go.aist.six.oval.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import jp.go.aist.six.oval.model.v5.Oval5Object;
+import java.io.Serializable;
 
 
 
 /**
- * The Generator type defines an element that is used to hold
+ * The OvalGenerator defines an element that is used to hold
  * information about when a particular OVAL document was compiled,
  * what version of the schema was used,
  * what tool compiled the document, and
  * what version of that tools was used.
  *
+ * This type is extracted from GeneratorType defined in the OVAL Common schema
+ * to refer from the OVAL entities.
+ *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class GeneratorType
-    implements Oval5Object
+public class OvalGenerator
+    implements Serializable
 {
 
     private String  product_name;
@@ -61,38 +61,33 @@ public class GeneratorType
     //{xsd:dateTime, 1..1}
 
 
-    private final Collection<GeneratorInformation>  additional_information =
-        new ArrayList<GeneratorInformation>();
-    //{0..*}
-
-
 
     /**
      * Constructor.
      */
-    public GeneratorType()
+    public OvalGenerator()
     {
     }
 
 
-    public GeneratorType(
+    public OvalGenerator(
                     final String schema_version,
                     final String timestamp
                     )
     {
-        setSchemaVersion( schema_version );
-        setTimestamp( timestamp );
+        this( schema_version, timestamp, null, null );
     }
 
 
-    public GeneratorType(
-                    final String schema_ersion,
+    public OvalGenerator(
+                    final String schema_version,
                     final String timestamp,
                     final String prod_name,
                     final String prod_version
                     )
     {
-        this( schema_ersion, timestamp );
+        setSchemaVersion( schema_version );
+        setTimestamp( timestamp );
         setProductName( prod_name );
         setProductVersion( prod_version );
     }
@@ -165,108 +160,73 @@ public class GeneratorType
 
 
 
-    /**
-     */
-    public void setAdditionalInformation(
-                    final Collection<? extends GeneratorInformation> info
-                    )
-    {
-        if (info != this.additional_information) {
-            this.additional_information.clear();
-            if (info != null  &&  info.size() > 0) {
-                this.additional_information.addAll( info );
-            }
-        }
-    }
-
-
-    public Collection<GeneratorInformation> getAdditionalInformation()
-    {
-        return this.additional_information;
-    }
-
-
-    public Iterator<GeneratorInformation> iterateAdditionalInformation()
-    {
-        return this.additional_information.iterator();
-    }
-
-
-    public GeneratorType additionalInformation(
-                    final GeneratorInformation info
-                    )
-    {
-        this.additional_information.add( info );
-        return this;
-    }
-
 
 
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
-//    @Override
-//    public int hashCode()
-//    {
-//        final int  prime = 37;
-//        int  result = 17;
-//
-//        String  productName = getProductName();
-//        result = prime * result + ((productName == null) ? 0 : productName.hashCode());
-//
-//        String  productVersion = getProductVersion();
-//        result = prime * result + ((productVersion == null) ? 0 : productVersion.hashCode());
-//
-//        String  schemaVersion = getSchemaVersion();
-//        result = prime * result + ((schemaVersion == null) ? 0 : schemaVersion.hashCode());
-//
-//        String  timestamp = getTimestamp();
-//        result = prime * result + ((timestamp == null) ? 0 : timestamp.hashCode());
-//
-//        return result;
-//    }
-//
-//
-//
-//    @Override
-//    public boolean equals(
-//                    final Object obj
-//                    )
-//    {
-//        if (this == obj) {
-//            return true;
-//        }
-//
-//        if (!(obj instanceof GeneratorType)) {
-//            return false;
-//        }
-//
-//        GeneratorType  other = (GeneratorType)obj;
-//        String  other_ts = other.getTimestamp();
-//        String   this_ts =  this.getTimestamp();
-//        if (this_ts == other_ts
-//                        ||  (this_ts != null  &&  this_ts.equals( other_ts ))) {
-//            String  other_sv = other.getSchemaVersion();
-//            String   this_sv =  this.getSchemaVersion();
-//            if (this_sv == other_sv
-//                            ||  (this_sv != null  &&  this_sv.equals( other_sv ))) {
-//                String  other_pn = other.getProductName();
-//                String   this_pn =  this.getProductName();
-//                if (this_pn == other_pn
-//                                ||  (this_pn != null  &&  this_pn.equals( other_pn ))) {
-//                    String  other_pv = other.getProductVersion();
-//                    String   this_pv =  this.getProductVersion();
-//                    if (this_pv == other_pv
-//                                    ||  (this_pv != null  &&  this_pv.equals( other_pv ))) {
-//                        return true;
-//                    }
-//                }
-//            }
-//        }
-//
-//        return false;
-//    }
+    @Override
+    public int hashCode()
+    {
+        final int  prime = 37;
+        int  result = 17;
+
+        String  productName = getProductName();
+        result = prime * result + ((productName == null) ? 0 : productName.hashCode());
+
+        String  productVersion = getProductVersion();
+        result = prime * result + ((productVersion == null) ? 0 : productVersion.hashCode());
+
+        String  schemaVersion = getSchemaVersion();
+        result = prime * result + ((schemaVersion == null) ? 0 : schemaVersion.hashCode());
+
+        String  timestamp = getTimestamp();
+        result = prime * result + ((timestamp == null) ? 0 : timestamp.hashCode());
+
+        return result;
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof OvalGenerator)) {
+            return false;
+        }
+
+        OvalGenerator  other = (OvalGenerator)obj;
+        String  other_ts = other.getTimestamp();
+        String   this_ts =  this.getTimestamp();
+        if (this_ts == other_ts
+                        ||  (this_ts != null  &&  this_ts.equals( other_ts ))) {
+            String  other_sv = other.getSchemaVersion();
+            String   this_sv =  this.getSchemaVersion();
+            if (this_sv == other_sv
+                            ||  (this_sv != null  &&  this_sv.equals( other_sv ))) {
+                String  other_pn = other.getProductName();
+                String   this_pn =  this.getProductName();
+                if (this_pn == other_pn
+                                ||  (this_pn != null  &&  this_pn.equals( other_pn ))) {
+                    String  other_pv = other.getProductVersion();
+                    String   this_pv =  this.getProductVersion();
+                    if (this_pv == other_pv
+                                    ||  (this_pv != null  &&  this_pv.equals( other_pv ))) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
 
 
 
@@ -277,9 +237,8 @@ public class GeneratorType
                         + ", product_version=" + getProductVersion()
                         + ", schema_version=" + getSchemaVersion()
                         + ", timestamp=" + getTimestamp()
-                        + ", additional_information=" + getAdditionalInformation()
                         + "]";
     }
 
 }
-// GeneratorType
+// OvalGenerator
