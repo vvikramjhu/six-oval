@@ -75,7 +75,7 @@ public class OvalEntityQueryParams
 
     public String getId()
     {
-        return get( DefinitionQueryKey.ID );
+        return get( Key.ID );
     }
 
 

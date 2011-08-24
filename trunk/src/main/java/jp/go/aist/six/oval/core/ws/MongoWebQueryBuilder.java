@@ -681,8 +681,9 @@ implements QueryBuilder
         entries.add( new Entry( OvalEntityQueryParams.Key.ID,      "oval_id" ) );
         entries.add( new Entry( OvalEntityQueryParams.Key.VERSION, "oval_version",  versionHandler ) );
 
-        entries.add( new Entry( TestQueryParams.Key.PLATFORM,    "_oval_platform_type",  ovalPlatformTypeHandler   ) );
-        entries.add( new Entry( TestQueryParams.Key.COMPONENT,   "_oval_component_type", ovalComponentTypeHandler  ) );
+        entries.add( new Entry( OvalEntityQueryParams.Key.SCHEMA_VERSION,  "_oval_generator.schema_version" ) );
+        entries.add( new Entry( OvalEntityQueryParams.Key.PLATFORM,    "_oval_platform_type",  ovalPlatformTypeHandler   ) );
+        entries.add( new Entry( OvalEntityQueryParams.Key.COMPONENT,   "_oval_component_type", ovalComponentTypeHandler  ) );
 
 
         // definition
