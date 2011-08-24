@@ -27,10 +27,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
-import jp.go.aist.six.oval.core.ws.CommonQueryKey;
-import jp.go.aist.six.oval.core.ws.DefinitionQueryKey;
+import jp.go.aist.six.oval.core.ws.CommonQueryParams;
+import jp.go.aist.six.oval.core.ws.DefinitionsQueryParams;
+import jp.go.aist.six.oval.core.ws.OvalEntityQueryParams;
 import jp.go.aist.six.oval.core.ws.QueryParams;
-import jp.go.aist.six.oval.core.ws.TestQueryKey;
+import jp.go.aist.six.oval.core.ws.TestQueryParams;
 import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import com.google.code.morphia.query.Query;
@@ -599,24 +600,24 @@ public class MongoQueryBuilder
         Collection<Entry>  entries = new ArrayList<Entry>();
 
         // common
-        entries.add( new Entry( CommonQueryKey.OFFSET, null, offsetHandler ) );
-        entries.add( new Entry( CommonQueryKey.LIMIT,  null, limitHandler ) );
-        entries.add( new Entry( CommonQueryKey.ORDER,  null, new OrderHandler() ) );
+        entries.add( new Entry( CommonQueryParams.Key.OFFSET, null, offsetHandler ) );
+        entries.add( new Entry( CommonQueryParams.Key.LIMIT,  null, limitHandler ) );
+        entries.add( new Entry( CommonQueryParams.Key.ORDER,  null, new OrderHandler() ) );
 
         // entity
-        entries.add( new Entry( DefinitionQueryKey.ID,               "oval_id" ) );
-        entries.add( new Entry( DefinitionQueryKey.VERSION,          "oval_version",  versionHandler ) );
+        entries.add( new Entry( OvalEntityQueryParams.Key.ID,               "oval_id" ) );
+        entries.add( new Entry( OvalEntityQueryParams.Key.VERSION,          "oval_version",  versionHandler ) );
 
         // definition
-        entries.add( new Entry( DefinitionQueryKey.DEFINITION_CLASS, "class",         definitionClassHandler ) );
-        entries.add( new Entry( DefinitionQueryKey.FAMILY,           "metadata.affected.family"   ) );
-        entries.add( new Entry( DefinitionQueryKey.PLATFORM,         "metadata.affected.platform" ) );
-        entries.add( new Entry( DefinitionQueryKey.PRODUCT,          "metadata.affected.product"  ) );
-        entries.add( new Entry( DefinitionQueryKey.REF_ID,           "metadata.reference.ref_id"  ) );
+        entries.add( new Entry( DefinitionsQueryParams.Key.DEFINITION_CLASS, "class",         definitionClassHandler ) );
+        entries.add( new Entry( DefinitionsQueryParams.Key.FAMILY,           "metadata.affected.family"   ) );
+        entries.add( new Entry( DefinitionsQueryParams.Key.PLATFORM,         "metadata.affected.platform" ) );
+        entries.add( new Entry( DefinitionsQueryParams.Key.PRODUCT,          "metadata.affected.product"  ) );
+        entries.add( new Entry( DefinitionsQueryParams.Key.REF_ID,           "metadata.reference.ref_id"  ) );
 
         // test
-        entries.add( new Entry( TestQueryKey.OBJECT_REF,  "object.object_ref"  ) );
-        entries.add( new Entry( TestQueryKey.STATE_REF,   "state.state_ref"  ) );
+        entries.add( new Entry( TestQueryParams.Key.OBJECT_REF,  "object.object_ref"  ) );
+        entries.add( new Entry( TestQueryParams.Key.STATE_REF,   "state.state_ref"  ) );
 
         return entries;
     }

@@ -29,17 +29,15 @@ package jp.go.aist.six.oval.core.ws;
  * @version $Id$
  */
 public class DefinitionsQueryParams
-    extends CommonQueryParams
+    extends OvalEntityQueryParams
 {
 
     public static class Key
-    extends CommonQueryParams.Key
+    extends OvalEntityQueryParams.Key
     {
-        public static final String  ID                  = "id";
-        public static final String  VERSION             = "version";
         public static final String  DEFINITION_CLASS    = "definition_class";
         public static final String  FAMILY              = "family";
-        public static final String  PLATFORM            = "platform";
+//        public static final String  PLATFORM            = "platform"; //defined in OvalEntityQueryParams
         public static final String  PRODUCT             = "product";
         public static final String  REF_ID              = "ref_id";
     }
@@ -48,52 +46,10 @@ public class DefinitionsQueryParams
 
 
     /**
-     * The default sorting order.
-     */
-    public static final String  DEFAULT_ORDER = "oval_id";
-
-
-
-    /**
      * Constructor.
      */
     public DefinitionsQueryParams()
     {
-        setOrder( DEFAULT_ORDER );
-    }
-
-
-
-    /**
-     */
-    public void setId(
-                    final String id
-    )
-    {
-        set( DefinitionQueryKey.ID, id );
-    }
-
-
-    public String getId()
-    {
-        return String.class.cast( get( DefinitionQueryKey.ID ) );
-    }
-
-
-
-    /**
-     */
-    public void setVersion(
-                    final String version
-    )
-    {
-        set( DefinitionQueryKey.VERSION, version );
-    }
-
-
-    public String getVersion()
-    {
-        return String.class.cast( get( DefinitionQueryKey.VERSION ) );
     }
 
 
@@ -101,16 +57,16 @@ public class DefinitionsQueryParams
     /**
      */
     public void setDefinition_class(
-                    final String definitionClass
-    )
+                    final String definition_class
+                    )
     {
-        set( DefinitionQueryKey.DEFINITION_CLASS, definitionClass );
+        set( Key.DEFINITION_CLASS, definition_class );
     }
 
 
     public String getDefinition_class()
     {
-        return String.class.cast( get( DefinitionQueryKey.DEFINITION_CLASS ) );
+        return get( Key.DEFINITION_CLASS );
     }
 
 
@@ -121,30 +77,13 @@ public class DefinitionsQueryParams
                     final String family
     )
     {
-        set( DefinitionQueryKey.FAMILY, family );
+        set( Key.FAMILY, family );
     }
 
 
     public String getFamily()
     {
-        return String.class.cast( get( DefinitionQueryKey.FAMILY ) );
-    }
-
-
-
-    /**
-     */
-    public void setPlatform(
-                    final String platform
-    )
-    {
-        set( DefinitionQueryKey.PLATFORM, platform );
-    }
-
-
-    public String getPlatform()
-    {
-        return String.class.cast( get( DefinitionQueryKey.PLATFORM ) );
+        return get( Key.FAMILY );
     }
 
 
@@ -155,13 +94,13 @@ public class DefinitionsQueryParams
                     final String product
     )
     {
-        set( DefinitionQueryKey.PRODUCT, product );
+        set( Key.PRODUCT, product );
     }
 
 
     public String getProduct()
     {
-        return String.class.cast( get( DefinitionQueryKey.PRODUCT ) );
+        return get( Key.PRODUCT );
     }
 
 
@@ -172,13 +111,13 @@ public class DefinitionsQueryParams
                     final String ref_id
     )
     {
-        set( DefinitionQueryKey.REF_ID, ref_id );
+        set( Key.REF_ID, ref_id );
     }
 
 
     public String getRef_id()
     {
-        return String.class.cast( get( DefinitionQueryKey.REF_ID ) );
+        return get( Key.REF_ID );
     }
 
 }

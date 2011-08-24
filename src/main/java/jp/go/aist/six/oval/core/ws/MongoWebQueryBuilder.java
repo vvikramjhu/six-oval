@@ -261,7 +261,7 @@ implements QueryBuilder
         for (String  key : params.keys()) {
             Handler  handler = _getHandler( key );
             String  field = getField( key );
-            Object  value = params.get( key );
+            String  value = params.get( key );
 
             handler.build( query, field, value );
         }
@@ -673,26 +673,31 @@ implements QueryBuilder
         Collection<Entry>  entries = new ArrayList<Entry>();
 
         // common
-        entries.add( new Entry( CommonQueryKey.OFFSET, null, offsetHandler ) );
-        entries.add( new Entry( CommonQueryKey.LIMIT,  null, limitHandler ) );
-        entries.add( new Entry( CommonQueryKey.ORDER,  null, new OrderHandler() ) );
+        entries.add( new Entry( CommonQueryParams.Key.OFFSET, null, offsetHandler ) );
+        entries.add( new Entry( CommonQueryParams.Key.LIMIT,  null, limitHandler ) );
+        entries.add( new Entry( CommonQueryParams.Key.ORDER,  null, new OrderHandler() ) );
 
         // entity
-        entries.add( new Entry( DefinitionQueryKey.ID,               "oval_id" ) );
-        entries.add( new Entry( DefinitionQueryKey.VERSION,          "oval_version",  versionHandler ) );
+        entries.add( new Entry( OvalEntityQueryParams.Key.ID,      "oval_id" ) );
+        entries.add( new Entry( OvalEntityQueryParams.Key.VERSION, "oval_version",  versionHandler ) );
+
+        entries.add( new Entry( TestQueryParams.Key.PLATFORM,    "_oval_platform_type",  ovalPlatformTypeHandler   ) );
+        entries.add( new Entry( TestQueryParams.Key.COMPONENT,   "_oval_component_type", ovalComponentTypeHandler  ) );
+
 
         // definition
-        entries.add( new Entry( DefinitionQueryKey.DEFINITION_CLASS, "class",         definitionClassHandler ) );
-        entries.add( new Entry( DefinitionQueryKey.FAMILY,           "metadata.affected.family"   ) );
-        entries.add( new Entry( DefinitionQueryKey.PLATFORM,         "metadata.affected.platform" ) );
-        entries.add( new Entry( DefinitionQueryKey.PRODUCT,          "metadata.affected.product"  ) );
-        entries.add( new Entry( DefinitionQueryKey.REF_ID,           "metadata.reference.ref_id"  ) );
+        entries.add( new Entry( DefinitionsQueryParams.Key.DEFINITION_CLASS, "class",         definitionClassHandler ) );
+        entries.add( new Entry( DefinitionsQueryParams.Key.FAMILY,           "metadata.affected.family"   ) );
+        //TODO: vs. OvalEntityQueryParams.Key.PLATFORM, different field mapping!!!
+        //      Add prefix "affected"???
+        //      Move field mappings to concrete QueryParams classes???
+//        entries.add( new Entry( DefinitionsQueryParams.Key.PLATFORM,         "metadata.affected.platform" ) );
+        entries.add( new Entry( DefinitionsQueryParams.Key.PRODUCT,          "metadata.affected.product"  ) );
+        entries.add( new Entry( DefinitionsQueryParams.Key.REF_ID,           "metadata.reference.ref_id"  ) );
 
         // test
-        entries.add( new Entry( TestQueryKey.OBJECT_REF,  "object.object_ref"  ) );
-        entries.add( new Entry( TestQueryKey.STATE_REF,   "state.state_ref"  ) );
-        entries.add( new Entry( TestQueryKey.PLATFORM,    "_oval_platform_type",  ovalPlatformTypeHandler   ) );
-        entries.add( new Entry( TestQueryKey.COMPONENT,   "_oval_component_type", ovalComponentTypeHandler  ) );
+        entries.add( new Entry( TestQueryParams.Key.OBJECT_REF,  "object.object_ref"  ) );
+        entries.add( new Entry( TestQueryParams.Key.STATE_REF,   "state.state_ref"  ) );
 
         return entries;
     }

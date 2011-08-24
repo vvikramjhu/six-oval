@@ -28,7 +28,7 @@ package jp.go.aist.six.oval.core.ws;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionsQueryParams
+public class OvalEntityQueryParams
     extends CommonQueryParams
 {
 
@@ -37,11 +37,10 @@ public class DefinitionsQueryParams
     {
         public static final String  ID                  = "id";
         public static final String  VERSION             = "version";
-        public static final String  DEFINITION_CLASS    = "definition_class";
-        public static final String  FAMILY              = "family";
+
+        public static final String  SCHEMA_VERSION      = "schema_version";
         public static final String  PLATFORM            = "platform";
-        public static final String  PRODUCT             = "product";
-        public static final String  REF_ID              = "ref_id";
+        public static final String  COMPONENT           = "component";
     }
     // Key
 
@@ -57,7 +56,7 @@ public class DefinitionsQueryParams
     /**
      * Constructor.
      */
-    public DefinitionsQueryParams()
+    public OvalEntityQueryParams()
     {
         setOrder( DEFAULT_ORDER );
     }
@@ -70,13 +69,13 @@ public class DefinitionsQueryParams
                     final String id
     )
     {
-        set( DefinitionQueryKey.ID, id );
+        set( Key.ID, id );
     }
 
 
     public String getId()
     {
-        return String.class.cast( get( DefinitionQueryKey.ID ) );
+        return get( DefinitionQueryKey.ID );
     }
 
 
@@ -87,47 +86,30 @@ public class DefinitionsQueryParams
                     final String version
     )
     {
-        set( DefinitionQueryKey.VERSION, version );
+        set( Key.VERSION, version );
     }
 
 
     public String getVersion()
     {
-        return String.class.cast( get( DefinitionQueryKey.VERSION ) );
+        return get( Key.VERSION );
     }
 
 
 
     /**
      */
-    public void setDefinition_class(
-                    final String definitionClass
+    public void setSchema_version(
+                    final String schema_version
     )
     {
-        set( DefinitionQueryKey.DEFINITION_CLASS, definitionClass );
+        set( Key.SCHEMA_VERSION, schema_version );
     }
 
 
-    public String getDefinition_class()
+    public String getSchema_version()
     {
-        return String.class.cast( get( DefinitionQueryKey.DEFINITION_CLASS ) );
-    }
-
-
-
-    /**
-     */
-    public void setFamily(
-                    final String family
-    )
-    {
-        set( DefinitionQueryKey.FAMILY, family );
-    }
-
-
-    public String getFamily()
-    {
-        return String.class.cast( get( DefinitionQueryKey.FAMILY ) );
+        return get( Key.SCHEMA_VERSION );
     }
 
 
@@ -138,49 +120,32 @@ public class DefinitionsQueryParams
                     final String platform
     )
     {
-        set( DefinitionQueryKey.PLATFORM, platform );
+        set( Key.PLATFORM, platform );
     }
 
 
     public String getPlatform()
     {
-        return String.class.cast( get( DefinitionQueryKey.PLATFORM ) );
+        return get( Key.PLATFORM );
     }
 
 
 
     /**
      */
-    public void setProduct(
-                    final String product
+    public void setComponent(
+                    final String component
     )
     {
-        set( DefinitionQueryKey.PRODUCT, product );
+        set( Key.COMPONENT, component );
     }
 
 
-    public String getProduct()
+    public String getComponent()
     {
-        return String.class.cast( get( DefinitionQueryKey.PRODUCT ) );
-    }
-
-
-
-    /**
-     */
-    public void setRef_id(
-                    final String ref_id
-    )
-    {
-        set( DefinitionQueryKey.REF_ID, ref_id );
-    }
-
-
-    public String getRef_id()
-    {
-        return String.class.cast( get( DefinitionQueryKey.REF_ID ) );
+        return get( Key.COMPONENT );
     }
 
 }
-//DefinitionQueryParams
+// OvalEntityQueryParams
 
