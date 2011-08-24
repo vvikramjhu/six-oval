@@ -28,7 +28,7 @@ package jp.go.aist.six.oval.core.ws;
  * @version $Id$
  */
 public class ResultsQueryParams
-    extends BasicQueryParams
+    extends CommonQueryParams
 {
 
     /**
