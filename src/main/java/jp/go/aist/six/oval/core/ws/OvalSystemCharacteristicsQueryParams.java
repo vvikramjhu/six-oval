@@ -29,7 +29,7 @@ package jp.go.aist.six.oval.core.ws;
  * @version $Id$
  */
 public class OvalSystemCharacteristicsQueryParams
-    extends BasicQueryParams
+    extends CommonQueryParams
 {
 
 //    public static final String  PRIMARY_HOST_NAME   = "primary_host_name";

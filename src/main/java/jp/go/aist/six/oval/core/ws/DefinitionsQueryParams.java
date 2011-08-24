@@ -29,8 +29,23 @@ package jp.go.aist.six.oval.core.ws;
  * @version $Id$
  */
 public class DefinitionsQueryParams
-    extends BasicQueryParams
+    extends CommonQueryParams
 {
+
+    public static class Key
+    extends CommonQueryParams.Key
+    {
+        public static final String  ID                  = "id";
+        public static final String  VERSION             = "version";
+        public static final String  DEFINITION_CLASS    = "definition_class";
+        public static final String  FAMILY              = "family";
+        public static final String  PLATFORM            = "platform";
+        public static final String  PRODUCT             = "product";
+        public static final String  REF_ID              = "ref_id";
+    }
+    // Key
+
+
 
     /**
      * The default sorting order.

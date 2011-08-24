@@ -28,14 +28,30 @@ package jp.go.aist.six.oval.core.ws;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class BasicQueryParams
+public class CommonQueryParams
     extends QueryParams
 {
+
+    public static class Key
+    {
+        // TODO: adopt to OpenSearch ??? --- count, startIndex
+        public static final String  LIMIT  = "limit";
+        public static final String  OFFSET = "offset";
+
+        public static final String  ORDER  = "order";
+
+        // OpenSearch Time
+        public static final String  DT_START = "dtstart";
+        public static final String  DT_END   = "dtend";
+    }
+    // Key
+
+
 
     /**
      * Constructor.
      */
-    public BasicQueryParams()
+    public CommonQueryParams()
     {
     }
 
@@ -137,5 +153,5 @@ public class BasicQueryParams
     //**************************************************************
 
 }
-// DefaultQueryParams
+// CommonQueryParams
 
