@@ -98,11 +98,11 @@ public class MongoOvalRepositoryTest
 //                        }
 //                        ,
 //                        // def:12313, windows, vulnerability, CVE-2011-0031
-//                      {
-//                          jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
-//                          "test/resources/data/oval5/oval5.9_def12313-5_v_windows_CVE-2011-0031.xml",
-//                          null
-//                      }
+                      {
+                          jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+                          "test/resources/data/oval5/oval5.9_def12313-5_v_windows_CVE-2011-0031.xml",
+                          null
+                      }
 //                      ,
 //
 //                      // def:7120, windows, vulnerability, CVE-2010-0820

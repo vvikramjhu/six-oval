@@ -89,6 +89,7 @@ public class OvalDefinitionsDAO
         if (variables != null) {
             DAO<VariableType, String>  dao = _getForwardingDAO( VariableType.class );
             for (VariableType  variable : variables.getVariable()) {
+                variable.generator( oval_definitions.getGenerator() );
                 dao.save( variable );
             }
         }
@@ -97,6 +98,7 @@ public class OvalDefinitionsDAO
         if (states != null) {
             DAO<StateType, String>  dao = _getForwardingDAO( StateType.class );
             for (StateType  state : states.getState()) {
+                state.generator( oval_definitions.getGenerator() );
                 dao.save( state );
             }
         }
@@ -105,6 +107,7 @@ public class OvalDefinitionsDAO
         if (objects != null) {
             DAO<SystemObjectType, String>  dao = _getForwardingDAO( SystemObjectType.class );
             for (SystemObjectType  object : objects.getObject()) {
+                object.generator( oval_definitions.getGenerator() );
                 dao.save( object );
             }
         }
@@ -113,6 +116,7 @@ public class OvalDefinitionsDAO
         if (tests != null) {
             DAO<TestType, String>  dao = _getForwardingDAO( TestType.class );
             for (TestType  test : tests.getTest()) {
+                test.generator( oval_definitions.getGenerator() );
                 dao.save( test );
             }
         }
@@ -121,6 +125,7 @@ public class OvalDefinitionsDAO
         if (definitions != null) {
             DAO<DefinitionType, String>  dao = _getForwardingDAO( DefinitionType.class );
             for (DefinitionType  definition : definitions.getDefinition()) {
+                definition.generator( oval_definitions.getGenerator() );
                 dao.save( definition );
             }
         }
