@@ -27,13 +27,15 @@ import java.util.Set;
 
 
 /**
+ * A set of URL query parameters.
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
 public class QueryParams
 {
 
-    private final Map<String, Object>  _values = new HashMap<String, Object>();
+    private final Map<String, String>  _params = new HashMap<String, String>();
 
 
 
@@ -50,7 +52,7 @@ public class QueryParams
      */
     public Set<String> keys()
     {
-        return _values.keySet();
+        return _params.keySet();
     }
 
 
@@ -60,7 +62,7 @@ public class QueryParams
      */
     public boolean isEmpty()
     {
-        return _values.isEmpty();
+        return _params.isEmpty();
     }
 
 
@@ -69,29 +71,29 @@ public class QueryParams
      */
     public void set(
                     final String key,
-                    final Object value
+                    final String value
                     )
     {
-        _values.put( key, value );
+        _params.put( key, value );
     }
 
 
 
-    public Object get(
+    public String get(
                     final String key
                     )
     {
-        return _values.get( key );
+        return _params.get( key );
     }
 
 
 
-    public Object get(
+    public String get(
                     final String key,
-                    final Object defaultValue
+                    final String defaultValue
                     )
     {
-        Object  value = get( key );
+        String  value = get( key );
         return (value == null ? defaultValue : value);
     }
 
@@ -104,7 +106,7 @@ public class QueryParams
     @Override
     public String toString()
     {
-        return _values.toString();
+        return _params.toString();
     }
 
 }

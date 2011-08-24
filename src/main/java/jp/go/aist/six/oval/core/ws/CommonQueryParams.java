@@ -63,14 +63,13 @@ public class CommonQueryParams
                     final String limit
                     )
     {
-        set( CommonQueryKey.LIMIT, limit );
+        set( Key.LIMIT, limit );
     }
 
 
     public String getLimit()
     {
-        return String.class.cast( get( CommonQueryKey.LIMIT ) );
-//        return Integer.class.cast( get( CommonQueryKey.LIMIT ) );
+        return get( Key.LIMIT );
     }
 
 
@@ -80,16 +79,16 @@ public class CommonQueryParams
      *  at which object the service should begin returning results.
      */
     public void setOffset(
-                    final Integer offset
+                    final String offset
                     )
     {
-        set( CommonQueryKey.OFFSET, offset );
+        set( Key.OFFSET, offset );
     }
 
 
-    public Integer getOffset()
+    public String getOffset()
     {
-        return Integer.class.cast( get( CommonQueryKey.OFFSET ) );
+        return get( Key.OFFSET );
     }
 
 
@@ -103,13 +102,13 @@ public class CommonQueryParams
                     final String order
     )
     {
-        set( CommonQueryKey.ORDER, order );
+        set( Key.ORDER, order );
     }
 
 
     public String getOrder()
     {
-        return String.class.cast( get( CommonQueryKey.ORDER ) );
+        return get( Key.ORDER );
     }
 
 
@@ -120,13 +119,13 @@ public class CommonQueryParams
                     final String dtstart
     )
     {
-        set( CommonQueryKey.DT_START, dtstart );
+        set( Key.DT_START, dtstart );
     }
 
 
     public String getDtstart()
     {
-        return String.class.cast( get( CommonQueryKey.DT_START ) );
+        return get( Key.DT_START );
     }
 
 
@@ -137,13 +136,13 @@ public class CommonQueryParams
                     final String dtend
     )
     {
-        set( CommonQueryKey.DT_END, dtend );
+        set( Key.DT_END, dtend );
     }
 
 
     public String getDtend()
     {
-        return String.class.cast( get( CommonQueryKey.DT_END ) );
+        return get( Key.DT_END );
     }
 
 
