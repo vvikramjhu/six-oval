@@ -32,8 +32,13 @@ public class OvalSystemCharacteristicsQueryParams
     extends CommonQueryParams
 {
 
-//    public static final String  PRIMARY_HOST_NAME   = "primary_host_name";
-//    public static final String  OS_NAME             = "os_name";
+    public static class Key
+    extends CommonQueryParams.Key
+    {
+        public static final String  PRIMARY_HOST_NAME   = "primary_host_name";
+        public static final String  OS_NAME             = "os_name";
+    }
+    // Key
 
 
 
@@ -52,13 +57,13 @@ public class OvalSystemCharacteristicsQueryParams
                     final String primary_host_name
                     )
     {
-        set( OvalSystemCharacteristicsQueryKey.PRIMARY_HOST_NAME, primary_host_name );
+        set( Key.PRIMARY_HOST_NAME, primary_host_name );
     }
 
 
     public String getPrimary_host_name()
     {
-        return String.class.cast( get( OvalSystemCharacteristicsQueryKey.PRIMARY_HOST_NAME ) );
+        return get( Key.PRIMARY_HOST_NAME );
     }
 
 
@@ -69,13 +74,13 @@ public class OvalSystemCharacteristicsQueryParams
                     final String os_name
     )
     {
-        set( OvalSystemCharacteristicsQueryKey.OS_NAME, os_name );
+        set( Key.OS_NAME, os_name );
     }
 
 
     public String getOs_name()
     {
-        return String.class.cast( get( OvalSystemCharacteristicsQueryKey.OS_NAME ) );
+        return get( Key.OS_NAME );
     }
 
 }

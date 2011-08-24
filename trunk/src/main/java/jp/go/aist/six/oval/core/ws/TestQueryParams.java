@@ -29,31 +29,16 @@ package jp.go.aist.six.oval.core.ws;
  * @version $Id$
  */
 public class TestQueryParams
-    extends CommonQueryParams
+    extends OvalEntityQueryParams
 {
 
-    public static class TestQueryKey
-    extends CommonQueryParams.Key
+    public static class Key
+    extends OvalEntityQueryParams.Key
     {
-
-        public static final String  ID                  = "id";
-        public static final String  VERSION             = "version";
-        public static final String  OBJECT_REF          = "object_ref";
-        public static final String  STATE_REF           = "state_ref";
-//        public static final String  TYPE                = "type";
-
-        public static final String  PLATFORM            = "platform";
-        public static final String  COMPONENT           = "component";
-
+        public static final String  OBJECT_REF  = "object_ref";
+        public static final String  STATE_REF   = "state_ref";
     }
     // Key
-
-
-
-    /**
-     * The default sorting order.
-     */
-    public static final String  DEFAULT_ORDER = "oval_id";
 
 
 
@@ -62,41 +47,6 @@ public class TestQueryParams
      */
     public TestQueryParams()
     {
-        setOrder( DEFAULT_ORDER );
-    }
-
-
-
-    /**
-     */
-    public void setId(
-                    final String id
-    )
-    {
-        set( DefinitionQueryKey.ID, id );
-    }
-
-
-    public String getId()
-    {
-        return String.class.cast( get( DefinitionQueryKey.ID ) );
-    }
-
-
-
-    /**
-     */
-    public void setVersion(
-                    final String version
-    )
-    {
-        set( DefinitionQueryKey.VERSION, version );
-    }
-
-
-    public String getVersion()
-    {
-        return String.class.cast( get( DefinitionQueryKey.VERSION ) );
     }
 
 
@@ -107,13 +57,13 @@ public class TestQueryParams
                     final String object_ref
     )
     {
-        set( TestQueryKey.OBJECT_REF, object_ref );
+        set( Key.OBJECT_REF, object_ref );
     }
 
 
     public String getObject_ref()
     {
-        return String.class.cast( get( TestQueryKey.OBJECT_REF ) );
+        return get( Key.OBJECT_REF );
     }
 
 
@@ -124,47 +74,13 @@ public class TestQueryParams
                     final String state_ref
     )
     {
-        set( TestQueryKey.STATE_REF, state_ref );
+        set( Key.STATE_REF, state_ref );
     }
 
 
     public String getState_ref()
     {
-        return String.class.cast( get( TestQueryKey.STATE_REF ) );
-    }
-
-
-
-    /**
-     */
-    public void setPlatform(
-                    final String platform
-    )
-    {
-        set( TestQueryKey.PLATFORM, platform );
-    }
-
-
-    public String getPlatform()
-    {
-        return String.class.cast( get( TestQueryKey.PLATFORM ) );
-    }
-
-
-
-    /**
-     */
-    public void setComponent(
-                    final String component
-    )
-    {
-        set( TestQueryKey.COMPONENT, component );
-    }
-
-
-    public String getComponent()
-    {
-        return String.class.cast( get( TestQueryKey.COMPONENT ) );
+        return get( Key.STATE_REF );
     }
 
 }
