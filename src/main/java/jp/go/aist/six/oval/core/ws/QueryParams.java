@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.core.ws;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -35,6 +36,9 @@ import java.util.Set;
 public class QueryParams
 {
 
+    private static final Map<String, String>  _FIELDS_ = Collections.emptyMap();
+
+
     private final Map<String, String>  _params = new HashMap<String, String>();
 
 
@@ -44,6 +48,25 @@ public class QueryParams
      */
     public QueryParams()
     {
+    }
+
+
+
+    /**
+     * Subclasses may override this to define own key-field mapping.
+     */
+    protected Map<String, String> _fieldMapping()
+    {
+        return _FIELDS_;
+    }
+
+
+    public String field(
+                    final String key
+                    )
+    {
+        String  field = _fieldMapping().get( key );
+        return (field == null ? key : field);
     }
 
 
