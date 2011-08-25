@@ -20,6 +20,9 @@
 
 package jp.go.aist.six.oval.core.ws;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 
 
@@ -43,6 +46,33 @@ public class OvalEntityQueryParams
         public static final String  COMPONENT           = "component";
     }
     // Key
+
+
+
+    protected static Map<String, String> _createFieldMapping()
+    {
+        Map<String, String>  mapping = new HashMap<String, String>();
+
+        mapping.put( Key.ID,                "oval_id" );
+        mapping.put( Key.VERSION,           "oval_version" );
+
+        mapping.put( Key.SCHEMA_VERSION,    "_oval_generator.schema_version" );
+        mapping.put( Key.PLATFORM,          "_oval_platform_type" );
+        mapping.put( Key.COMPONENT,         "_oval_component_type" );
+
+        return mapping;
+    }
+
+
+    private static final Map<String, String>  _FIELDS_ = _createFieldMapping();
+
+
+    @Override
+    protected Map<String, String> _fieldMapping()
+    {
+        return _FIELDS_;
+    }
+
 
 
 

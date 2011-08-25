@@ -112,96 +112,6 @@ implements QueryBuilder
     }
 
 
-//
-//
-//    /**
-//     */
-//    protected void _addEntries(
-//                    final Collection<Entry> entries
-//                    )
-//    {
-//        if (entries != null) {
-//            for (Entry  entry : entries) {
-//                _addEntry( entry );
-//            }
-//        }
-//    }
-//
-//
-//    protected void _addEntry(
-//                    final Entry entry
-//                    )
-//    {
-//        if (entry != null) {
-//            _addField( entry.key, entry.field );
-//            _addHandler( entry.key, entry.handler );
-//        }
-//    }
-//
-//
-//
-//
-//    /**
-//     */
-//    public final void setFieldMapping(
-//                    final Map<String, String> mapping
-//                    )
-//    {
-//        if (mapping != null) {
-//            _fields.putAll( mapping );
-//        }
-//    }
-//
-//
-//    protected final void _addField(
-//                    final String key,
-//                    final String field
-//                    )
-//    {
-//        if (key == null) {
-//            throw new IllegalArgumentException( "no key specified" );
-//        }
-//
-//        _fields.put( key, field );
-//    }
-//
-//
-//
-//    /**
-//     */
-//    public final void setHandlerMapping(
-//                    final Map<String, Handler> mapping
-//                    )
-//    {
-//        if (mapping != null) {
-//            for (String  key : mapping.keySet()) {
-//                _addHandler( key, mapping.get( key ) );
-//            }
-//        }
-//    }
-//
-//
-//    protected final Map<String, Handler> _getHandlers()
-//    {
-//        return _handlers;
-//    }
-//
-//
-//
-//    protected final void _addHandler(
-//                    final String key,
-//                    final Handler handler
-//                    )
-//    {
-//        if (handler == null) {
-//            throw new IllegalArgumentException( "null handler" );
-//        }
-//
-//        handler.setBuilder( this );
-//        _handlers.put( key, handler );
-//    }
-
-
 
     protected final Handler _getHandler(
                     final String key
@@ -251,7 +161,6 @@ implements QueryBuilder
 
     /**
      */
-//    public <K, T extends OvalObject & Persistable<K>>
     public <T>
     void buildQuery(
                     final Query<T> query,
@@ -260,12 +169,18 @@ implements QueryBuilder
     {
         for (String  key : params.keys()) {
             Handler  handler = _getHandler( key );
-            String  field = getField( key );
-            String  value = params.get( key );
-
-            handler.build( query, field, value );
+            handler.build( query, params, key );
         }
     }
+//    {
+//        for (String  key : params.keys()) {
+//            Handler  handler = _getHandler( key );
+//            String  field = getField( key );
+//            String  value = params.get( key );
+//
+//            handler.build( query, field, value );
+//        }
+//    }
 
 
 
@@ -294,50 +209,14 @@ implements QueryBuilder
     protected static abstract class Handler
     {
 
-//        private MongoWebQueryBuilder  _builder;
-
-
         public Handler()
         {
         }
 
 
-//        public Handler(
-//                        final MongoWebQueryBuilder builder
-//                        )
-//        {
-//            setBuilder( builder );
-//        }
-//
-//
-//
-//        /**
-//         */
-//        public final void setBuilder(
-//                        final MongoWebQueryBuilder builder
-//                        )
-//        {
-//            _builder = builder;
-//        }
-//
-//
-//        public final MongoWebQueryBuilder getBuilder()
-//        {
-//            return _builder;
-//        }
-
-
-
         /**
          */
-        public abstract // <K, T extends OvalObject & Persistable<K>>
-        void build( Query<?> query, String field, Object value );
-
-
-
-        //**************************************************************
-        //  java.lang.Object
-        //**************************************************************
+        public abstract void build( Query<?> query, QueryParams params, String key );
 
     }
     // Handler
@@ -355,38 +234,21 @@ implements QueryBuilder
         }
 
 
-//        public FilterHandler(
-//                        final MongoWebQueryBuilder builder
-//                        )
-//        {
-//            super( builder );
-//        }
-
-
-
         @Override
-        public //<K, T extends OvalObject & Persistable<K>>
-        void build(
+        public void build(
                         final Query<?> query,
-                        final String field,
-                        final Object value
+                        final QueryParams params,
+                        final String key
                         )
         {
+            String  value = params.get( key );
+            if (value == null  ||  value.length() == 0) {
+                return;
+            }
+
+            String  field = params.field( key );
             query.filter( field, value );
         }
-
-
-
-//        public <K, T extends OvalObject & Persistable<K>>
-//        void build(
-//                        final Query<T> query,
-//                        final String field,
-//                        final Object value,
-//                        final String operator
-//                        )
-//        {
-//            query.filter( field + " " + operator, value );
-//        }
 
     }
     // FilterHandler
@@ -400,61 +262,49 @@ implements QueryBuilder
     extends Handler
     {
 
-//        private final Map<String, String>  _fieldMapping;
-
-
         public OrderHandler()
         {
         }
 
 
-//        public OrderHandler(
-//                        final MongoWebQueryBuilder builder
-//                        )
-//        {
-//            super( builder );
-//        }
-
-
-//        public OrderHandler(
-//                        final Map<String, String> fieldMapping
-//                        )
-//        {
-//            _fieldMapping = fieldMapping;
-//        }
-
-
-
-        @Override
-        public //<K, T extends OvalObject & Persistable<K>>
-        void build(
-                        final Query<?> query,
-                        final String field,
-                        final Object value
+        private String _convertFields(
+                        final String ordering,
+                        final QueryParams params
                         )
         {
-            String  order = String.valueOf( value );
-            if (value == null  ||  order.length() == 0) {
-                return;
-            }
-
             StringBuilder  s = new StringBuilder();
-            String[]  orderKeys = order.split( "," );
-            for (String  orderKey : orderKeys) {
+            String[]  keys = ordering.split( "," );
+            for (String  key : keys) {
                 if (s.length() > 0) {
                     s.append( "," );
                 }
 
-                if (orderKey.startsWith( "-" )) {
-                    orderKey = orderKey.substring( 1 );
+                if (key.startsWith( "-" )) {
+                    key = key.substring( 1 );
                     s.append( "-" );
                 }
-                String  orderingField = getField( orderKey );
-//                String  orderingField = getBuilder().getField( orderKey );
-                s.append( (orderingField == null ? orderKey : orderingField) );
+                String  field = params.field( key );
+                s.append( field );
             }
 
-            query.order( s.toString() );
+            return s.toString();
+        }
+
+
+        @Override
+        public void build(
+                        final Query<?> query,
+                        final QueryParams params,
+                        final String key
+                        )
+        {
+            String  value = params.get( key );
+            if (value == null  ||  value.length() == 0) {
+                return;
+            }
+
+            String  fields = _convertFields( key, params );
+            query.order( fields );
         }
 
     }
@@ -475,25 +325,20 @@ implements QueryBuilder
         }
 
 
-//        public PatternHandler(
-//                        final MongoWebQueryBuilder builder
-//                        )
-//        {
-//            super( builder );
-//        }
-
-
-
         @Override
-        public //<K, T extends OvalObject & Persistable<K>>
-        void build(
+        public void build(
                         final Query<?> query,
-                        final String field,
-                        final Object value
+                        final QueryParams params,
+                        final String key
                         )
         {
-            String  string = String.valueOf( value );
-            Pattern  pattern = Pattern.compile( ".*" + string + ".*", Pattern.CASE_INSENSITIVE );
+            String  value = params.get( key );
+            if (value == null  ||  value.length() == 0) {
+                return;
+            }
+
+            String  field = params.field( key );
+            Pattern  pattern = Pattern.compile( ".*" + value + ".*", Pattern.CASE_INSENSITIVE );
             query.filter( field, pattern );
         }
 
@@ -511,39 +356,32 @@ implements QueryBuilder
         }
 
 
-//        public DatetimeHandler(
-//                        final MongoWebQueryBuilder builder
-//                        )
-//        {
-//            super( builder );
-//        }
-
-
-
         private static SimpleDateFormat  _DATE_FORMATTER_ =
             new SimpleDateFormat( "yyyy-MM-dd" );
 
 
         @Override
-        public //<K, T extends OvalObject & Persistable<K>>
-        void build(
+        public void build(
                         final Query<?> query,
-                        final String field,
-                        final Object value
+                        final QueryParams params,
+                        final String key
                         )
         {
-            String  datetimeString = String.valueOf( value );
+            String  value = params.get( key );
+            if (value == null  ||  value.length() == 0) {
+                return;
+            }
 
             // validation
             try {
-                _DATE_FORMATTER_.parse( datetimeString );
+                _DATE_FORMATTER_.parse( value );
             } catch (ParseException ex) {
                 throw new OvalRepositoryException( ex );
             }
 
-            query.filter( field, datetimeString );
+            String  field = params.field( key );
+            query.filter( field, value );
         }
-
     }
     // DatetimeHandler
 
@@ -590,68 +428,101 @@ implements QueryBuilder
         {
             @Override
             public void build(
-                        final Query<?> query,
-                        final String field,
-                        final Object value
-                        )
+                            final Query<?> query,
+                            final QueryParams params,
+                            final String key
+                            )
             {
-                query.offset( Integer.valueOf( String.valueOf( value ) ).intValue() );
+                String  value = params.get( key );
+                if (value == null  ||  value.length() == 0) {
+                    return;
+                }
+
+                int  offset = Integer.valueOf( value ).intValue();
+                query.offset( offset );
             }
         };
+
 
         Handler  limitHandler = new Handler()
         {
             @Override
             public void build(
                             final Query<?> query,
-                            final String field,
-                            final Object value
+                            final QueryParams params,
+                            final String key
                             )
             {
-                query.limit( Integer.valueOf( String.valueOf( value ) ).intValue() );
-            }
-        };
+                String  value = params.get( key );
+                if (value == null  ||  value.length() == 0) {
+                    return;
+                }
 
-        Handler  definitionClassHandler = new FilterHandler()
-        {
-            @Override
-            public void build(
-                            final Query<?> query,
-                            final String field,
-                            final Object value
-                            )
-            {
-                ClassEnumeration  clazzValue = ClassEnumeration.fromValue( String.valueOf( value ) );
-                super.build( query, field, clazzValue );
-            }
-        };
-
-        Handler  versionHandler = new FilterHandler()
-        {
-            @Override
-            public void build(
-                            final Query<?> query,
-                            final String key,
-                            final Object value
-                            )
-            {
-                int  intValue = Integer.valueOf( String.valueOf( value ) ).intValue();
-                super.build( query, key, intValue );
+                int  limit = Integer.valueOf( value ).intValue();
+                query.limit( limit );
             }
         };
 
 
-        Handler  ovalComponentTypeHandler = new FilterHandler()
+        Handler  definitionClassHandler = new Handler()
         {
             @Override
             public void build(
                             final Query<?> query,
-                            final String field,
-                            final Object value
+                            final QueryParams params,
+                            final String key
                             )
             {
-                OvalComponentType  component = OvalComponentType.valueOf( String.valueOf( value ) );
-                super.build( query, field, component );
+                String  value = params.get( key );
+                if (value == null  ||  value.length() == 0) {
+                    return;
+                }
+
+                ClassEnumeration  clazz = ClassEnumeration.fromValue( value );
+                String  field = params.field( key );
+                query.filter( field, clazz );
+            }
+        };
+
+
+        Handler  versionHandler = new Handler()
+        {
+            @Override
+            public void build(
+                            final Query<?> query,
+                            final QueryParams params,
+                            final String key
+                            )
+            {
+                String  value = params.get( key );
+                if (value == null  ||  value.length() == 0) {
+                    return;
+                }
+
+                Integer  version = Integer.valueOf( value );
+                String  field = params.field( key );
+                query.filter( field, version );
+            }
+        };
+
+
+        Handler  ovalComponentTypeHandler = new Handler()
+        {
+            @Override
+            public void build(
+                            final Query<?> query,
+                            final QueryParams params,
+                            final String key
+                            )
+            {
+                String  value = params.get( key );
+                if (value == null  ||  value.length() == 0) {
+                    return;
+                }
+
+                OvalComponentType  component = OvalComponentType.valueOf( value );
+                String  field = params.field( key );
+                query.filter( field, component );
             }
         };
 
@@ -660,12 +531,18 @@ implements QueryBuilder
             @Override
             public void build(
                             final Query<?> query,
-                            final String field,
-                            final Object value
+                            final QueryParams params,
+                            final String key
                             )
             {
-                OvalPlatformType  component = OvalPlatformType.valueOf( String.valueOf( value ) );
-                super.build( query, field, component );
+                String  value = params.get( key );
+                if (value == null  ||  value.length() == 0) {
+                    return;
+                }
+
+                OvalPlatformType  platform = OvalPlatformType.valueOf( value );
+                String  field = params.field( key );
+                query.filter( field, platform );
             }
         };
 

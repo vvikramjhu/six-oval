@@ -20,6 +20,9 @@
 
 package jp.go.aist.six.oval.core.ws;
 
+import java.util.Map;
+
+
 
 
 
@@ -37,11 +40,37 @@ public class DefinitionsQueryParams
     {
         public static final String  DEFINITION_CLASS    = "definition_class";
         public static final String  FAMILY              = "family";
-//        public static final String  PLATFORM            = "platform"; //defined in OvalEntityQueryParams
+        public static final String  PLATFORM            = "platform"; //override
         public static final String  PRODUCT             = "product";
         public static final String  REF_ID              = "ref_id";
     }
     // Key
+
+
+
+    protected static Map<String, String> _createFieldMapping()
+    {
+        Map<String, String>  mapping = OvalEntityQueryParams._createFieldMapping();
+
+        mapping.put( Key.DEFINITION_CLASS,  "class" );
+        mapping.put( Key.FAMILY,            "metadata.affected.family" );
+
+        mapping.put( Key.PLATFORM,          "metadata.affected.platform" );
+        mapping.put( Key.PRODUCT,           "metadata.affected.product" );  //override
+        mapping.put( Key.REF_ID,            "metadata.reference.ref_id" );
+
+        return mapping;
+    }
+
+
+    private static final Map<String, String>  _FIELDS_ = _createFieldMapping();
+
+
+    @Override
+    protected Map<String, String> _fieldMapping()
+    {
+        return _FIELDS_;
+    }
 
 
 
@@ -101,6 +130,25 @@ public class DefinitionsQueryParams
     public String getProduct()
     {
         return get( Key.PRODUCT );
+    }
+
+
+
+    /**
+     */
+    @Override
+    public void setPlatform(
+                    final String platform
+    )
+    {
+        set( Key.PLATFORM, platform );
+    }
+
+
+    @Override
+    public String getPlatform()
+    {
+        return get( Key.PLATFORM );
     }
 
 
