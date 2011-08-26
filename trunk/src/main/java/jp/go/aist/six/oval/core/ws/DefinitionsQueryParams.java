@@ -55,8 +55,8 @@ public class DefinitionsQueryParams
         mapping.put( Key.DEFINITION_CLASS,  "class" );
         mapping.put( Key.FAMILY,            "metadata.affected.family" );
 
-        mapping.put( Key.PLATFORM,          "metadata.affected.platform" );
-        mapping.put( Key.PRODUCT,           "metadata.affected.product" );  //override
+        mapping.put( Key.PLATFORM,          "metadata.affected.platform" );  //override
+        mapping.put( Key.PRODUCT,           "metadata.affected.product" );
         mapping.put( Key.REF_ID,            "metadata.reference.ref_id" );
 
         return mapping;
