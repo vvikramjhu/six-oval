@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoDatastore;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalRepository;
+import jp.go.aist.six.oval.core.repository.mongodb.QueryBuilder;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
@@ -199,10 +200,17 @@ public class OvalController
     {
         _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
 
-        MongoWebQueryBuilder  builder = new MongoWebQueryBuilder( params );
+        QueryBuilder  builder = MongoWebQBuilder.createInstance( type, params );
         QueryResult<T>  result = _repository.find( type, builder );
         return result;
     }
+//    {
+//        _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
+//
+//        MongoWebQueryBuilder  builder = new MongoWebQueryBuilder( params );
+//        QueryResult<T>  result = _repository.find( type, builder );
+//        return result;
+//    }
 //    {
 //        _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
 //
