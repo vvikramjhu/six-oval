@@ -20,8 +20,6 @@
 
 package jp.go.aist.six.oval.core.ws;
 
-import java.util.HashMap;
-import java.util.Map;
 
 
 
@@ -42,29 +40,6 @@ public class OvalSystemCharacteristicsQueryParams
         public static final String  OS_NAME             = "os_name";
     }
     // Key
-
-
-
-    protected static Map<String, String> _createFieldMapping()
-    {
-        Map<String, String>  mapping = new HashMap<String, String>();
-
-        mapping.put( Key.PRIMARY_HOST_NAME, "system_info.os_name" );
-        mapping.put( Key.OS_NAME,           "system_info.primaary_host_name" );
-
-        return mapping;
-    }
-
-
-
-    private static final Map<String, String>  _FIELDS_ = _createFieldMapping();
-
-
-    @Override
-    protected Map<String, String> _fieldMapping()
-    {
-        return _FIELDS_;
-    }
 
 
 

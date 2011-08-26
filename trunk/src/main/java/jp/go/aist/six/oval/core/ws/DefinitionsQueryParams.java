@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.core.ws;
 
-import java.util.Map;
 
 
 
@@ -45,32 +44,6 @@ public class DefinitionsQueryParams
         public static final String  REF_ID              = "ref_id";
     }
     // Key
-
-
-
-    protected static Map<String, String> _createFieldMapping()
-    {
-        Map<String, String>  mapping = OvalEntityQueryParams._createFieldMapping();
-
-        mapping.put( Key.DEFINITION_CLASS,  "class" );
-        mapping.put( Key.FAMILY,            "metadata.affected.family" );
-
-        mapping.put( Key.PLATFORM,          "metadata.affected.platform" );  //override
-        mapping.put( Key.PRODUCT,           "metadata.affected.product" );
-        mapping.put( Key.REF_ID,            "metadata.reference.ref_id" );
-
-        return mapping;
-    }
-
-
-    private static final Map<String, String>  _FIELDS_ = _createFieldMapping();
-
-
-    @Override
-    protected Map<String, String> _fieldMapping()
-    {
-        return _FIELDS_;
-    }
 
 
 

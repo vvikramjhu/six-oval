@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.core.ws;
 
-import java.util.Map;
 
 
 
@@ -41,28 +40,6 @@ public class TestQueryParams
         public static final String  STATE_REF   = "state_ref";
     }
     // Key
-
-
-
-    protected static Map<String, String> _createFieldMapping()
-    {
-        Map<String, String>  mapping = OvalEntityQueryParams._createFieldMapping();
-
-        mapping.put( Key.OBJECT_REF,    "object.object_ref" );
-        mapping.put( Key.STATE_REF,     "state.state_ref" );
-
-        return mapping;
-    }
-
-
-    private static final Map<String, String>  _FIELDS_ = _createFieldMapping();
-
-
-    @Override
-    protected Map<String, String> _fieldMapping()
-    {
-        return _FIELDS_;
-    }
 
 
 
