@@ -27,7 +27,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 import jp.go.aist.six.oval.core.repository.mongodb.QueryBuilder;
-import jp.go.aist.six.oval.core.ws.OvalEntityQueryParams.Key;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.v5.OvalEntity;
@@ -36,6 +35,8 @@ import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.TestType;
 import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.google.code.morphia.query.Query;
 
 
@@ -48,6 +49,14 @@ import com.google.code.morphia.query.Query;
 public abstract class MongoWebQBuilder
 implements QueryBuilder
 {
+
+    /**
+     * Logger.
+     */
+    private static final Logger  _LOG_ =
+        LoggerFactory.getLogger( MongoWebQBuilder.class );
+
+
 
     /**
      * A factory method.
@@ -168,6 +177,8 @@ implements QueryBuilder
                     )
     {
         String  field = _fieldMapping().get( key );
+        _LOG_.debug( "field mapping: " + key + " --> " + field );
+
         return (field == null ? key : field);
     }
 
@@ -484,9 +495,9 @@ implements QueryBuilder
 
 
             Map<String, Handler>  mapping = new HashMap<String, Handler>();
-            mapping.put( Key.OFFSET,  offsetHandler );
-            mapping.put( Key.LIMIT,   limitHandler );
-            mapping.put( Key.ORDER,   new OrderHandler());
+            mapping.put( CommonQueryParams.Key.OFFSET,  offsetHandler );
+            mapping.put( CommonQueryParams.Key.LIMIT,   limitHandler );
+            mapping.put( CommonQueryParams.Key.ORDER,   new OrderHandler());
 
             return mapping;
         }
@@ -534,12 +545,12 @@ implements QueryBuilder
         {
             Map<String, String>  mapping = new HashMap<String, String>();
 
-            mapping.put( Key.ID,                "oval_id" );
-            mapping.put( Key.VERSION,           "oval_version" );
+            mapping.put( OvalEntityQueryParams.Key.ID,                "oval_id" );
+            mapping.put( OvalEntityQueryParams.Key.VERSION,           "oval_version" );
 
-            mapping.put( Key.SCHEMA_VERSION,    "_oval_generator.schema_version" );
-            mapping.put( Key.PLATFORM,          "_oval_platform_type" );
-            mapping.put( Key.COMPONENT,         "_oval_component_type" );
+            mapping.put( OvalEntityQueryParams.Key.SCHEMA_VERSION,    "_oval_generator.schema_version" );
+            mapping.put( OvalEntityQueryParams.Key.PLATFORM,          "_oval_platform_type" );
+            mapping.put( OvalEntityQueryParams.Key.COMPONENT,         "_oval_component_type" );
 
             return mapping;
         }
