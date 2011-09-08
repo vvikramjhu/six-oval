@@ -179,7 +179,7 @@ public class MongoOvalRepository
 
     @Override
     public <K, T extends OvalObject & Persistable<K>>
-    T persist(
+    T save(
                     final Class<T> type,
                     final T object
                     )

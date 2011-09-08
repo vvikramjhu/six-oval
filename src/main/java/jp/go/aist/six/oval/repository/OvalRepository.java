@@ -65,7 +65,7 @@ public interface OvalRepository
      * Updates the object, or inserts it to the data store if it does NOT exist.
      */
     public <K, T extends OvalObject & Persistable<K>>
-    T persist(
+    T save(
                     Class<T> type,
                     T object
                     )
