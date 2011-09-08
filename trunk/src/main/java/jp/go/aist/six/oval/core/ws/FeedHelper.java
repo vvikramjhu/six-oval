@@ -155,10 +155,15 @@ public class FeedHelper
                     )
     throws OvalException
     {
+        if (id == null) {
+            throw new OvalException( new IllegalArgumentException( "null id for Atom Link") );
+        }
+
         URI  uri = new UriTemplate( "{baseUri}/{id}" ).expand( baseUri, id );
         Link  link = new Link();
         link.setRel( rel );
         link.setHref( uri.toASCIIString() );
+        link.setTitle( String.valueOf( id ) );
         _LOG_.debug( "atom:link: " + link );
 
         return link;

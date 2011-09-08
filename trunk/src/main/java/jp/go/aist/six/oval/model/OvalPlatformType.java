@@ -24,6 +24,10 @@ package jp.go.aist.six.oval.model;
 
 
 /**
+ * The OVAL Platform Type enumeration is a listing of platforms
+ * that OVAL supports at this time.
+ * This list is not same as the Family enumeration defined in the "common" schema,
+ * but all the platform-dependent namespaces.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -32,8 +36,19 @@ package jp.go.aist.six.oval.model;
 public enum OvalPlatformType
 {
 
+    aix,
+    apache,
+    catos,      //Cisco
+    esx,        //VMware
+    freebsd,
+    hpux,
+    ios,
     independent,
     linux,
+    macos,
+    pixos,
+    sharepoint,
+    solaris,
     unix,
     windows;
 

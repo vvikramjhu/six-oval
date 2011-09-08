@@ -24,6 +24,7 @@ package jp.go.aist.six.oval.model;
 
 
 /**
+ * The OVAL Entity Type enumeration is a listing of OVAL entity types.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -31,6 +32,7 @@ package jp.go.aist.six.oval.model;
  */
 public enum OvalEntityType
 {
+
     definition,
     test,
     object,
