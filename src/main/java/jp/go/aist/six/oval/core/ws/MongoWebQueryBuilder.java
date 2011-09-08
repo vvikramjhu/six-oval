@@ -46,7 +46,7 @@ import com.google.code.morphia.query.Query;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class MongoWebQBuilder
+public abstract class MongoWebQueryBuilder
 implements QueryBuilder
 {
 
@@ -54,7 +54,7 @@ implements QueryBuilder
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( MongoWebQBuilder.class );
+        LoggerFactory.getLogger( MongoWebQueryBuilder.class );
 
 
 
@@ -92,13 +92,13 @@ implements QueryBuilder
     /**
      * Constructor.
      */
-    protected MongoWebQBuilder()
+    protected MongoWebQueryBuilder()
     {
 
     }
 
 
-    public MongoWebQBuilder(
+    public MongoWebQueryBuilder(
                     final QueryParams params
                     )
     {
@@ -442,7 +442,7 @@ implements QueryBuilder
 
 
     public static class BasicBuilder
-    extends MongoWebQBuilder
+    extends MongoWebQueryBuilder
     {
 
         /**

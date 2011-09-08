@@ -201,7 +201,7 @@ public class OvalController
     {
         _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
 
-        QueryBuilder  builder = MongoWebQBuilder.createInstance( type, params );
+        QueryBuilder  builder = MongoWebQueryBuilder.createInstance( type, params );
         QueryResult<T>  result = _repository.find( type, builder );
         return result;
     }
@@ -233,7 +233,7 @@ public class OvalController
     {
         _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
 
-        QueryBuilder  builder = MongoWebQBuilder.createInstance( type, params );
+        QueryBuilder  builder = MongoWebQueryBuilder.createInstance( type, params );
         QueryResult<K>  result = _repository.findIDs( type, builder );
         return result;
     }
