@@ -73,6 +73,7 @@ public class OvalController
 
     public static final String  DEFINITIONS_REL = "http://aist.go.jp/six/oval/rels/oval_definitions";
     public static final String  DEFINITION_REL  = "http://aist.go.jp/six/oval/rels/d/definition";
+    public static final String  TEST_REL        = "http://aist.go.jp/six/oval/rels/d/test";
     public static final String  SC_REL          = "http://aist.go.jp/six/oval/rels/oval_system_characteristics";
     public static final String  RESULTS_REL     = "http://aist.go.jp/six/oval/rels/oval_results";
 
@@ -204,19 +205,6 @@ public class OvalController
         QueryResult<T>  result = _repository.find( type, builder );
         return result;
     }
-//    {
-//        _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
-//
-//        MongoWebQueryBuilder  builder = new MongoWebQueryBuilder( params );
-//        QueryResult<T>  result = _repository.find( type, builder );
-//        return result;
-//    }
-//    {
-//        _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
-//
-//        QueryResult<T>  result = _repository.find( type, params );
-//        return result;
-//    }
 
 
 
@@ -245,7 +233,7 @@ public class OvalController
     {
         _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
 
-        MongoWebQueryBuilder  builder = new MongoWebQueryBuilder( params );
+        QueryBuilder  builder = MongoWebQBuilder.createInstance( type, params );
         QueryResult<K>  result = _repository.findIDs( type, builder );
         return result;
     }
@@ -405,8 +393,6 @@ public class OvalController
     throws OvalException
     {
         return _findResource( DefinitionType.class, params );
-
-//        return _service.findDefinitions( params );
     }
 
 
@@ -432,7 +418,7 @@ public class OvalController
         }
 
         Feed  feed = FeedHelper.buildAtomFeed(
-                        "definition",
+                        "OVAL Definitions",
                         request.getRequestURL().toString(),
                         DEFINITION_REL,
                         ids.getElements().getElements()
@@ -469,8 +455,6 @@ public class OvalController
     throws OvalException
     {
         return _getResource( DefinitionType.class, id );
-
-//        return _repository.getLatestDefinition( id );
     }
 
 
@@ -492,6 +476,40 @@ public class OvalController
     {
         return _findResource( TestType.class, params );
     }
+
+
+
+    // GET (list)
+    //
+    // test: curl -v -X GET -HAccept:application/atom+xml http://localhost:8080/oval_rep/d/tests
+    @RequestMapping(
+                    method=RequestMethod.GET
+                    ,value="/d/tests"
+                    ,headers="Accept=application/atom+xml"
+    )
+    public @ResponseBody Feed findTestIDs(
+                    final HttpServletRequest request,
+                    final TestQueryParams params
+                    )
+    throws OvalException
+    {
+        QueryResult<String>  ids = _findResourceIDs( TestType.class, params );
+        if (ids == null) {
+            _LOG_.debug( "tests: #ids=0" );
+        } else {
+            _LOG_.debug( "tests: #ids=" + ids.size() );
+        }
+
+        Feed  feed = FeedHelper.buildAtomFeed(
+                        "OVAL Tests",
+                        request.getRequestURL().toString(),
+                        TEST_REL,
+                        ids.getElements().getElements()
+                        );
+
+        return feed;
+    }
+
 
 
 
