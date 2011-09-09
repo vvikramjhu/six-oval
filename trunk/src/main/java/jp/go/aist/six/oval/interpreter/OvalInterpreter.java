@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.interpreter;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -34,6 +33,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * An OVAL Interpreter wrapper.
+ * We assume the reference implementation: ovaldi.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -41,13 +41,21 @@ import org.slf4j.LoggerFactory;
 public class OvalInterpreter
 {
 
+    /**
+     * TODO:
+     * Read the configuration properties from Java properties file!!!
+     *
+     * In Spring configuration:
+     * < key="#{ T(xxx.Property).EXECUTABLE}" value="/usr/bin/ovaldi" />
+     */
+
     private static enum Property
     {
         EXECUTABLE(   "six.oval.interpreter.executable", "ovaldi", null ),
-        OVAL_XML_DIR( "six.oval.interpreter.xml",        null,     Option.OVAL_XML_DIR ),
-        LOG_LEVEL(    "six.oval.interpreter.log",        "1",      Option.LOG_LEVEL ),
-        WORKING_DIR(  "six.oval.interpreter.dir",        null,     null ),
-        TMP_DIR(      "java.io.tmpdir",                  null,     null )
+//        OVAL_XML_DIR( "six.oval.interpreter.xml",        null,     Option.OVAL_XML_DIR ),
+//        LOG_LEVEL(    "six.oval.interpreter.log",        "1",      Option.LOG_LEVEL ),
+//        WORKING_DIR(  "six.oval.interpreter.dir",        null,     null ),
+//        TMP_DIR(      "java.io.tmpdir",                  null,     null )
         ;
 
 
@@ -127,16 +135,16 @@ public class OvalInterpreter
     throws OvalInterpreterException
     {
         ProcessBuilder  builder = _createProcessBuilder();
-        Process  proc = null;
+        Process  process = null;
         int  exitValue = 0;
         try {
-            proc = builder.start();
-                           //throws IOException
+            process = builder.start();
+                           //throws IOException, SecurityException
         } catch (Exception ex) {
             throw new OvalInterpreterException( ex );
         }
 
-        exitValue = _handleProcess( proc );
+        exitValue = _waitFor( process );
         _LOG_.debug( "exit value=" + exitValue );
 
         return exitValue;
@@ -144,22 +152,30 @@ public class OvalInterpreter
 
 
 
-    private int _handleProcess(
+    /**
+     * Reads the output from the process and waits until the process has terminated.
+     *
+     * @return
+     *  the exit value of the process.
+     */
+    private int _waitFor(
                     final Process process
                     )
     throws OvalInterpreterException
     {
-        int  exitValue = 0;
-        StringBuilder  log = new StringBuilder();
         String  lineSeparator = System.getProperty( "line.separator" );
         BufferedReader  reader = new BufferedReader(
                         new InputStreamReader( process.getInputStream() ) );
+
+        int  exitValue = 0;
+        StringBuilder  log = new StringBuilder();
         try {
             String  line = null;
             while (true) {
                 if (line != null) {
                     log.append( lineSeparator );
                 }
+
                 line = reader.readLine();
                               //throws IOException
                 if (line == null) {
@@ -179,9 +195,7 @@ public class OvalInterpreter
                        //throws IOException
             } catch (Exception ex) {
                 // ignorable.
-                if (_LOG_.isWarnEnabled()) {
-                    _LOG_.warn( ex.getMessage() );
-                }
+                _LOG_.warn( ex.getMessage() );
             }
         }
 
@@ -193,18 +207,23 @@ public class OvalInterpreter
 
 
     /**
+     * Creates a process builder.
+     * The standard error and standard output are merged,
+     * so that both can be read using the Process.getInputStream() method.
      */
     private ProcessBuilder _createProcessBuilder()
     {
         List<String>  command = _createCommand();
         ProcessBuilder  builder = new ProcessBuilder( command );
 
-        String  workingDir = getWorkingDir();
-        if (workingDir != null) {
-            builder.directory( new File( workingDir ) );
-        }
-        _LOG_.debug( "working dir=" + builder.directory() );
+//        String  workingDir = getWorkingDir();
+//        if (workingDir != null) {
+//            builder.directory( new File( workingDir ) );
+//        }
+//        _LOG_.debug( "working dir=" + builder.directory() );
 
+        /* Merging standard error and standard output!!!
+         */
         builder.redirectErrorStream( true );
 
         return builder;
@@ -214,6 +233,8 @@ public class OvalInterpreter
 
 
     /**
+     * Creates a command line: the program and its arguments.
+     * E.g. ovaldi -m -o definitions.xml
      */
     private List<String> _createCommand()
     throws OvalInterpreterException
@@ -236,20 +257,21 @@ public class OvalInterpreter
 
     /**
      */
-    private String _getConfigValue(
+    private String _getConfigProperty(
                     final Property property
                     )
     {
         String  value = _config.get( property );
         if (value == null  &&  property.hasProperty()) {
-            value = OvalInterpreterContext.INSTANCE.getProperty( property.name );
+            value = System.getProperty( property.name );
+//            value = OvalContext.INSTANCE.getProperty( property.name );
         }
 
         return (value == null ? property.defaultValue : value);
     }
 
 
-    private void _setConfigValue(
+    private void _setConfigProperty(
                     final Property property,
                     final String value
                     )
@@ -265,47 +287,45 @@ public class OvalInterpreter
                     final String filepath
                     )
     {
-        _setConfigValue( Property.EXECUTABLE, filepath );
+        _setConfigProperty( Property.EXECUTABLE, filepath );
     }
 
 
     public String getExecutable()
     {
-        return _getConfigValue( Property.EXECUTABLE );
+        return _getConfigProperty( Property.EXECUTABLE );
     }
 
 
 
-    /**
-     */
-    public void setWorkingDir(
-                    final String dirpath
-                    )
-    {
-        _setConfigValue( Property.WORKING_DIR, dirpath );
-    }
-
-
-    public String getWorkingDir()
-    {
-        return _getConfigValue( Property.WORKING_DIR );
-    }
-
-
-
-    /**
-     */
-    public String getTmpDir()
-    {
-        String  tmpdir = _getConfigValue( Property.TMP_DIR );
-        if (tmpdir == null) {
-            throw new OvalInterpreterException( "config: tmpDir NOT found" );
-        }
-
-        return tmpdir;
-    }
-
-
+//    /**
+//     */
+//    public void setWorkingDir(
+//                    final String dirpath
+//                    )
+//    {
+//        _setConfigValue( Property.WORKING_DIR, dirpath );
+//    }
+//
+//
+//    public String getWorkingDir()
+//    {
+//        return _getConfigValue( Property.WORKING_DIR );
+//    }
+//
+//
+//
+//    /**
+//     */
+//    public String getTmpDir()
+//    {
+//        String  tmpdir = _getConfigValue( Property.TMP_DIR );
+//        if (tmpdir == null) {
+//            throw new OvalInterpreterException( "config: tmpDir NOT found" );
+//        }
+//
+//        return tmpdir;
+//    }
 
 }
 // OvalInterpreter
