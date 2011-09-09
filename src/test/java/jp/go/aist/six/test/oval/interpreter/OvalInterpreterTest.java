@@ -1,63 +1,71 @@
-package jp.go.aist.six.test.oval.core.ws;
+package jp.go.aist.six.test.oval.interpreter;
 
-import java.util.Arrays;
-import java.util.Date;
+import jp.go.aist.six.oval.interpreter.Option;
+import jp.go.aist.six.oval.interpreter.Options;
+import jp.go.aist.six.oval.interpreter.OvalInterpreter;
 import org.testng.Reporter;
-import com.sun.syndication.feed.atom.Feed;
-import com.sun.syndication.feed.atom.Link;
-import com.sun.syndication.io.WireFeedOutput;
+import org.testng.annotations.DataProvider;
 
 
 
-public class AtomTest
+/**
+ * OvalInterpreter
+ *
+ * @author	Akihito Nakamura, AIST
+ * @version $Id$
+ */
+public class OvalInterpreterTest
 {
+
+
+    @DataProvider( name="oval.interpreter.options" )
+    public Object[][] provideOvalInterpreterOptions()
+    {
+        Options  options1 = new Options();
+        options1.set( Option.NO_VERIFY )
+                .set( Option.OVAL_XML_DIR, "C:\\app\\ovaldi-5.9.2-x64\\xml" )
+                .set( Option.OVAL_DEFINITIONS,
+                                "test/resources/data/oval5/oval5.9_def12313-5_v_windows_CVE-2011-0031.xml" );
+
+        return new Object[][] {
+                        {
+                            "C:\\app\\ovaldi-5.9.2-x64\\ovaldi.exe",
+                            options1
+                        }
+        };
+
+    }
+
+
 
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.ws.atom" },
+                    groups={ "oval.interpreter" },
+                    dataProvider="oval.interpreter.options",
                     alwaysRun=true
                     )
-    public void testLinks()
+    public void testOvalInterpreter(
+                    final String executable,
+                    final Options options
+                    )
     throws Exception
     {
         Reporter.log( "\n//////////////////////////////////////////////////////////",
                         true );
 
+        Reporter.log( "* executable: " + executable, true );
+        Reporter.log( "* options: " + options, true );
 
-        Feed  feed = new Feed( "atom_1.0" );
-        feed.setId( "urn:guid:550e8400-e29b-41d4-a716-446655440000" );
-        feed.setTitle( "oval_results" );
-        feed.setUpdated( new Date() );
+        OvalInterpreter  ovaldi = new OvalInterpreter();
+        if (executable != null) {
+            ovaldi.setExecutable( executable );
+        }
+        ovaldi.setOptions( options );
 
-        String  rel = "http://six.org/rels/oval_results";
-        String  baseUri = "http://six.org/oval/oval_results/";
-        Link[]  links = new Link[] {
-                        _buildLink( rel, baseUri + "01234" ),
-                        _buildLink( rel, baseUri + "12345" ),
-                        _buildLink( rel, baseUri + "23456" )
-        };
-        feed.setOtherLinks( Arrays.asList( links ) );
-
-        Reporter.log( "Atom feed: " + feed, true );
-
-        WireFeedOutput  output = new WireFeedOutput();
-        String  xml = output.outputString( feed, true );
-        Reporter.log( "Atom feed: \n" + xml, true );
-    }
-
-
-    private Link _buildLink(
-                    final String rel,
-                    final String href
-                    )
-    {
-        Link  link = new Link();
-        link.setRel( rel );
-        link.setHref( href );
-
-        return link;
+        int  exitValue = ovaldi.execute();
+        Reporter.log( "@ exit value: " + exitValue, true );
     }
 
 }
-// AtomTest
+// OvalInterpreterTest

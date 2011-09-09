@@ -326,6 +326,18 @@ public class Options
 //        return get( Option.MD5_HASH );
 //    }
 
+
+
+    //**************************************************************
+    //  java.lang.Object
+    //**************************************************************
+
+    @Override
+    public String toString()
+    {
+        return "Options" + String.valueOf( _options );
+    }
+
 }
-// OvalInterpreter
+// Options
 
