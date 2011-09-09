@@ -90,22 +90,7 @@ public class OvalInterpreter
         new EnumMap<Property, String>( Property.class );
 
 
-    private final EnumMap<Option, String>  _options =
-        new EnumMap<Option, String>( Option.class );
-
-//
-//    // Input Validation Options:
-//    public static final String  OPT_RESOURCE_DIR = "-a";
-//    public static final String  OPT_SKIP_INPUT_VERIFICATION = "-m";
-//
-//    //Data Collection Options:
-//    public static final String  OPT_INPUT_SYSTEM_CHARACTERISTICS = "-i";
-//
-//    // Result Output Options:
-//    public static final String  OPT_OUTPUT_SYSTEM_CHARACTERISTICS = "-d";
-//    public static final String  OPT_OUTPUT_RESULTS = "-r";
-//    public static final String  OPT_SKIP_OUTPUT_XSL = "-s";
-//    public static final String  OPT_OUTPUT_RESULTS_HTML = "-x";
+    private Options  _options;
 
 
 
@@ -114,6 +99,23 @@ public class OvalInterpreter
      */
     public OvalInterpreter()
     {
+    }
+
+
+
+    /**
+     */
+    public void setOptions(
+                    final Options options
+                    )
+    {
+        _options = options;
+    }
+
+
+    public Options getOptions()
+    {
+        return _options;
     }
 
 
@@ -219,61 +221,12 @@ public class OvalInterpreter
         List<String>  command = new ArrayList<String>();
 
         command.add( getExecutable() );
-//        command.add( Property.NO_VERIFY.commandOption );
 
-        // XML dir
-        String  xmldir = getOvalXmlDir();
-        if (xmldir == null) {
-            xmldir = _getConfigValue( Property.OVAL_XML_DIR );
+        Options  options = getOptions();
+        if (options == null) {
+            options = new Options();
         }
-        if (xmldir != null) {
-            command.add( Option.OVAL_XML_DIR.command );
-            command.add( xmldir );
-        }
-
-//        // log level
-//        String  logLevel = getLogLevel();
-//        if (logLevel != null) {
-//            command.add( Property.LOG_LEVEL.commandOption );
-//            command.add( logLevel );
-//        }
-
-        // -o URL
-        String  ovalDefinitions = getOvalDefinitions();
-        if (ovalDefinitions == null) {
-            throw new OvalInterpreterException( "NO oval definitions to evaluate" );
-        }
-        command.add( Option.OVAL_DEFINITIONS.command );
-        command.add( ovalDefinitions );
-
-//        String  defIDs = getEvaluateDefinitions();
-//        if (defIDs != null) {
-//            command.add( Property.EVALUATE_DEFINITIONS.commandOption );
-//            command.add( defIDs );
-//        }
-
-//        // -r URL
-//        String  ovalResults = _getTmpOvalResults();
-//        if (ovalResults == null) {
-//            // -r local_file
-//            ovalResults = getOvalResults();
-//        }
-//        if (ovalResults != null) {
-//            command.add( Property.OVAL_RESULTS.commandOption );
-//            command.add( ovalResults );
-//        }
-
-        // -m or MD5Hash
-        boolean  noVerify = isNoVerify();
-        if (noVerify) {
-            command.add( Option.NO_VERIFY.command );
-        } else {
-            String  hash = getMD5Hash();
-            if (hash == null) {
-                throw new OvalInterpreterException( "NO MD5Hash without -m option" );
-            }
-            command.add( hash );
-        }
+        command.addAll( options.toCommand() );
 
         _LOG_.debug( "command: " + String.valueOf( command ) );
         return command;
@@ -353,138 +306,6 @@ public class OvalInterpreter
     }
 
 
-
-    //==============================================================
-    //  interpreter options
-    //==============================================================
-
-    /**
-     * -o
-     */
-    public void setOvalDefinitions(
-                    final String filepath
-                    )
-    {
-        _options.put( Option.OVAL_DEFINITIONS, filepath );
-    }
-
-
-    public String getOvalDefinitions()
-    {
-        return _options.get( Option.OVAL_DEFINITIONS );
-    }
-
-
-
-    /**
-     * -e
-     */
-    public void setEvaluateDefinitions(
-                    final List<String> defIDs
-                    )
-    {
-        if (defIDs == null) {
-            _options.put( Option.EVALUATE_DEFINITIONS, null );
-        } else {
-            StringBuilder  s = new StringBuilder();
-            for (String  defID : defIDs) {
-                if (s.length() > 0) {
-                    s.append( "," );
-                }
-                s.append( defID );
-            }
-
-            _options.put( Option.EVALUATE_DEFINITIONS, s.toString() );
-        }
-    }
-
-
-    public void setEvaluateDefinitions(
-                    final String defIDs
-                    )
-    {
-        _options.put( Option.EVALUATE_DEFINITIONS, defIDs );
-    }
-
-
-    public String getEvaluateDefinitions()
-    {
-        return _options.get( Option.EVALUATE_DEFINITIONS );
-    }
-
-
-
-    /**
-     * -r
-     */
-    public void setOvalResults(
-                    final String filepath
-                    )
-    {
-        _options.put( Option.OVAL_RESULTS, filepath );
-    }
-
-
-    public String getOvalResults()
-    {
-        return _options.get( Option.OVAL_RESULTS );
-    }
-
-
-
-    /**
-     * -a
-     */
-    public void setOvalXmlDir(
-                    final String dirpath
-                    )
-    {
-        _options.put( Option.OVAL_XML_DIR, dirpath );
-    }
-
-
-    public String getOvalXmlDir()
-    {
-        return _options.get( Option.OVAL_XML_DIR );
-    }
-
-
-
-    /**
-     * -m
-     */
-    public void setNoVerify(
-                    final boolean noVerify
-                    )
-    {
-        _options.put( Option.NO_VERIFY, String.valueOf( noVerify ) );
-    }
-
-
-    public boolean isNoVerify()
-    {
-        String  noVerify = _options.get( Option.NO_VERIFY );
-
-        return (noVerify == null ? false : Boolean.valueOf( noVerify ).booleanValue() );
-    }
-
-
-
-    /**
-     * MD5Hash
-     */
-    public void setMD5Hash(
-                    final String hash
-                    )
-    {
-        _options.put( Option.MD5_HASH, hash );
-    }
-
-
-    public String getMD5Hash()
-    {
-        return _options.get( Option.MD5_HASH );
-    }
 
 }
 // OvalInterpreter
