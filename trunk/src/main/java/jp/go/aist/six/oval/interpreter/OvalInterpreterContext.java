@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core;
+package jp.go.aist.six.oval.interpreter;
 
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -32,10 +32,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalContext
+public class OvalInterpreterContext
 {
 
-    public static final OvalContext  INSTANCE = new OvalContext();
+    public static final OvalInterpreterContext  INSTANCE = new OvalInterpreterContext();
 
 
 
@@ -83,7 +83,7 @@ public class OvalContext
     /**
      * Constructor.
      */
-    public OvalContext()
+    public OvalInterpreterContext()
     {
         _initResourceBundle();
     }
@@ -161,31 +161,6 @@ public class OvalContext
         return _getContext().getBean( name, requiredType );
     }
 
-
-
-//    /**
-//     */
-//    public DataStore getStore()
-//    {
-//        if (_store == null) {
-//            _store = _getContext().getBean( "ovalStore", DataStore.class );
-//        }
-//
-//        return _store;
-//    }
-
-
-    /**
-     */
-    public XmlMapper getXml()
-    {
-        if (_xml == null) {
-            _xml = _getContext().getBean( XmlMapper.class );
-        }
-
-        return _xml;
-    }
-
 }
-// OvalContext
+// OvalInterpreterContext
 

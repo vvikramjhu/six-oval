@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import jp.go.aist.six.oval.core.service.OvalContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -290,7 +289,7 @@ public class OvalInterpreter
     {
         String  value = _config.get( property );
         if (value == null  &&  property.hasProperty()) {
-            value = OvalContext.INSTANCE.getProperty( property.name );
+            value = OvalInterpreterContext.INSTANCE.getProperty( property.name );
         }
 
         return (value == null ? property.defaultValue : value);
