@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.interpreter;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +41,36 @@ import org.slf4j.LoggerFactory;
  */
 public class OvalInterpreter
 {
+
+    /**
+     * Command line entry point.
+     *
+     * @param args
+     *  the OVAL Interpreter program and its arguments.
+     */
+    public static void main(
+                    final String[] args
+                    )
+    throws OvalInterpreterException
+    {
+        if (args.length < 1) {
+            System.err.println( "no program and arguments specified" );
+            System.exit( 1 );
+        }
+
+        List<String>  strings = Arrays.asList( args );
+        strings.remove( 0 );
+        Options  options = Options.fromCommandLine( strings );
+
+        OvalInterpreter  ovaldi = new OvalInterpreter();
+        ovaldi.setExecutable( args[0] );
+        ovaldi.setOptions( options );
+
+        int  exit_value = ovaldi.execute();
+        System.exit( exit_value );
+    }
+
+
 
     /**
      * TODO:
@@ -247,7 +278,7 @@ public class OvalInterpreter
         if (options == null) {
             options = new Options();
         }
-        command.addAll( options.toCommand() );
+        command.addAll( options.toCommandLine() );
 
         _LOG_.debug( "command: " + String.valueOf( command ) );
         return command;
