@@ -154,6 +154,10 @@ public class OvalInterpreter
 
     public Options getOptions()
     {
+        if (_options == null) {
+            _options = new Options();
+        }
+
         return _options;
     }
 

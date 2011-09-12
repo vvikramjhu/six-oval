@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.interpreter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,13 +31,13 @@ import org.slf4j.LoggerFactory;
 
 
 /**
- * An OVAL Interpreter wrapper.
+ * A collection of OVAL Interpreter options.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
 public class Options
-    implements Serializable
+    implements Cloneable, Serializable
 {
 
     /**
@@ -108,8 +107,7 @@ public class Options
 
 
 
-    private final EnumMap<Option, String>  _options =
-        new EnumMap<Option, String>( Option.class );
+    private final Map<Option, String>  _options = new HashMap<Option, String>();
 
 
 
@@ -387,6 +385,25 @@ public class Options
 //    {
 //        return get( Option.MD5_HASH );
 //    }
+
+
+
+    //**************************************************************
+    //  java.lang.Cloneable
+    //**************************************************************
+
+    @Override
+    public Options clone()
+    {
+        Options  clone = null;
+        try {
+            clone = (Options)super.clone();
+        } catch (CloneNotSupportedException ex) {
+            throw new AssertionError();
+        }
+
+        return clone;
+    }
 
 
 
