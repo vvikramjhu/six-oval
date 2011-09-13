@@ -34,7 +34,7 @@ import org.springframework.web.client.RequestCallback;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class XmlFileRequestCallback
+public class FileRequestCallback
     implements RequestCallback
 {
 
@@ -42,7 +42,7 @@ public class XmlFileRequestCallback
 //     * Logger.
 //     */
 //    private static final Logger  _LOG_ =
-//        LoggerFactory.getLogger( XmlFileRequestCallback.class );
+//        LoggerFactory.getLogger( FileRequestCallback.class );
 
 
 
@@ -62,12 +62,12 @@ public class XmlFileRequestCallback
     /**
      * Constructor.
      */
-    protected XmlFileRequestCallback()
+    protected FileRequestCallback()
     {
     }
 
 
-    public XmlFileRequestCallback(
+    public FileRequestCallback(
                     final File file,
                     final MediaType contentType
                     )

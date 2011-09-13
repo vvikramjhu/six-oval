@@ -488,8 +488,8 @@ public class NetOvalInterpreter
         RestTemplate  rest = _getRestTemplate();
         MediaType  mediaType = MediaType.valueOf( contentType );
         try {
-            XmlFileRequestCallback  callback =
-                new XmlFileRequestCallback( file, mediaType );
+            FileRequestCallback  callback =
+                new FileRequestCallback( file, mediaType );
             rest.execute(
                             uri,
                             HttpMethod.POST,
