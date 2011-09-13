@@ -141,6 +141,14 @@ public class OvalInterpreter
     }
 
 
+    public OvalInterpreter(
+                    final Options options
+                    )
+    {
+        setOptions( options );
+    }
+
+
 
     /**
      */

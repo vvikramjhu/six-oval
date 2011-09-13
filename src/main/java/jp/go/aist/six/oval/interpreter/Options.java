@@ -107,7 +107,16 @@ public class Options
 
 
 
-    private final Map<Option, String>  _options = new HashMap<Option, String>();
+    /**
+     * NOTE: This "field" is NOT "final"
+     * because it has to be created whenever this object is cloned.
+     * Since this "class" is NOT "final", and {@link #clone()} method
+     * must return the same class as this object,
+     * the copy constructor {@link #Options(Map)} can't be used.
+     *
+     * @see #clone()
+     */
+    private Map<Option, String>  _options = new HashMap<Option, String>();
 
 
 
@@ -394,10 +403,13 @@ public class Options
 
     @Override
     public Options clone()
+    throws CloneNotSupportedException
     {
         Options  clone = null;
         try {
             clone = (Options)super.clone();
+            clone._options = new HashMap<Option, String>( _options );
+            //Copy all the mapping to a new Map object.
         } catch (CloneNotSupportedException ex) {
             throw new AssertionError();
         }

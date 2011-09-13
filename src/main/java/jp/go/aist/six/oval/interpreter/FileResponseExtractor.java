@@ -28,11 +28,12 @@ import org.springframework.web.client.ResponseExtractor;
 
 
 /**
+ * This utility writes an HTTP response body to a file.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class XmlFileResponseExtractor
+public class FileResponseExtractor
     implements ResponseExtractor<File>
 {
 
@@ -54,12 +55,12 @@ public class XmlFileResponseExtractor
     /**
      * Constructor.
      */
-    protected XmlFileResponseExtractor()
+    protected FileResponseExtractor()
     {
     }
 
 
-    public XmlFileResponseExtractor(
+    public FileResponseExtractor(
                     final File file
                     )
     {
