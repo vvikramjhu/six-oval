@@ -55,6 +55,7 @@ public class NetOvalInterpreter
     {
         public static final NetOption WORK_DIR = new NetOption(
                         "-workdir", true, "dir name", null,
+                        null,
                         "path to the directory in which the temporary file resources are stored\n"
                         + "(default is the Java temporary directory specified by 'java.io.tmpdir' system property)"
         );
@@ -68,10 +69,11 @@ public class NetOvalInterpreter
                         final boolean hasArgument,
                         final String argumentName,
                         final String defaultArgument,
+                        final String contentType,
                         final String description
                         )
         {
-            super( name, hasArgument, argumentName, defaultArgument, description );
+            super( name, hasArgument, argumentName, defaultArgument, contentType, description );
         }
 
     }
@@ -88,7 +90,7 @@ public class NetOvalInterpreter
 
 
 
-    private static final List<MediaType>  _ACCEPT_MEDIA_TYPES_ =
+    private static final List<MediaType>  _OVAL_FILE_MEDIA_TYPES_ =
         Arrays.asList( new MediaType[] { MediaType.APPLICATION_XML } );
 
 
@@ -104,8 +106,8 @@ public class NetOvalInterpreter
 
 
 
-    private final String  _filePrefix;
-    private final File  _workingDir;
+    private String  _filePrefix;
+    private File  _workingDir;
 
 
 
@@ -114,6 +116,16 @@ public class NetOvalInterpreter
      * Constructor.
      */
     public NetOvalInterpreter()
+    {
+
+    }
+
+
+
+    /**
+     *
+     */
+    private void _init()
     {
         _filePrefix = _createFilePrefix();
         _workingDir = _getWorkingDir();
@@ -177,27 +189,46 @@ public class NetOvalInterpreter
 
 
     /**
+     * For each input resources, if its location is given as an URL,
+     * it is read and saved into a local temporary file.
      */
-    protected void _prepareInputFiles()
+    protected void _prepareInputFiles(
+                    final Options localOptions
+                    )
     {
         Options  options = getOptions();
         for (Option  option : _NET_RCV_OPTIONS_) {
+            if (option.hasArgument
+                            &&  option.defaultArgument != null
+                            &&  option.contentType != null) {
+                //valid option
+            } else {
+                throw new IllegalStateException(
+                                "INTERNAL ERROR: option not configured for remote resource: "
+                                + option );
+            }
+
             String  value = options.get( option );
-            if (option.hasArgument  &&  value != null) {
+            if (value != null) {
                 URL  url = null;
                 try {
                     url = new URL( value );
                 } catch (MalformedURLException ex) {
                     //ignorable
+                    url = null;
                 }
+
                 if (url == null) {
                     // local filepath
                 } else {
-                    // option argument is an URL
-                    File  file = _createWorkingFile( _filePrefix, option );
-                    _restGetOvalDefinitions( url, file );
+                    /** This option argument is an URL.
+                     * Download the resource and save it to a local file.
+                     * Then, replace the argument for local execution.
+                     */
+                    File  file = _createWorkingFile( _workingDir, _filePrefix, option );
+                    _restGetFile( url, file, option.contentType );
 
-                    options.set( option, file.getAbsolutePath() );
+                    localOptions.set( option, file.getAbsolutePath() );
                 }
             }
         }
@@ -206,19 +237,27 @@ public class NetOvalInterpreter
 
 
     /**
+     * Creates a temporary working file in the specified directory.
      */
     private File _createWorkingFile(
+                    final File dir,
                     final String prefix,
                     final Option option
                     )
     {
+        _LOG_.debug( "creating a working file: dir=" + dir
+                        + ", prefix=" + prefix
+                        + ", option=" + option );
+
         String  defaultFilename = option.defaultArgument;
         if (defaultFilename == null) {
-            throw new IllegalArgumentException( "option not for file: " + option );
+            throw new IllegalArgumentException(
+                            "option has no default value (filename): " + option );
         }
 
         String  filename = prefix + defaultFilename;
-        File  file = new File( _workingDir, filename );
+        File  file = new File( dir, filename );
+        _LOG_.debug( "a working file created: file=" + file );
 
         return file;
     }
@@ -229,9 +268,44 @@ public class NetOvalInterpreter
      * If an output file location is an URL,
      * the output from the interpreter is written to a local working file.
      */
-    private void _prepareOutputFiles()
+    private void _prepareOutputFiles(
+                    final Options localOptions
+                    )
     {
+        Options  options = getOptions();
+        for (Option  option : _NET_SND_OPTIONS_) {
+            if (option.hasArgument
+                            &&  option.defaultArgument != null
+                            &&  option.contentType != null) {
+                //valid option
+            } else {
+                throw new IllegalStateException(
+                                "INTERNAL ERROR: option not configured for remote resource: "
+                                + option );
+            }
 
+            String  value = options.get( option );
+            if (value != null) {
+                URL  url = null;
+                try {
+                    url = new URL( value );
+                } catch (MalformedURLException ex) {
+                    //ignorable
+                    url = null;
+                }
+
+                if (url == null) {
+                    // local filepath
+                } else {
+                    /** This option argument is an URL.
+                     * Decide the local filename, and
+                     * replace the argument for local execution.
+                     */
+                    File  file = _createWorkingFile( _workingDir, _filePrefix, option );
+                    localOptions.set( option, file.getAbsolutePath() );
+                }
+            }
+        }
     }
 
 
@@ -239,11 +313,13 @@ public class NetOvalInterpreter
     /**
      *
      */
-    private void _preProcess()
+    private void _preProcess(
+                    final Options localOptions
+                    )
     throws OvalInterpreterException
     {
-        _prepareInputFiles();
-        _prepareOutputFiles();
+        _prepareInputFiles( localOptions );
+        _prepareOutputFiles( localOptions );
     }
 
 
@@ -252,10 +328,34 @@ public class NetOvalInterpreter
      * TODO: Send all the output files to the given locations.
      */
     private void _postProcess(
-                    final Options netOptions
+                    final Options localOptions
                     )
     throws OvalInterpreterException
     {
+        Options  options = getOptions();
+        for (Option  option : _NET_SND_OPTIONS_) {
+            String  value = options.get( option );
+            if (value != null) {
+                URL  url = null;
+                try {
+                    url = new URL( value );
+                } catch (MalformedURLException ex) {
+                    //ignorable
+                    url = null;
+                }
+
+                if (url == null) {
+                    // local filepath
+                } else {
+                    /** This option argument is an URL.
+                     * Obtain the local filepath, and
+                     * send the file to the remote execution.
+                     */
+                    String  filepath = localOptions.get( option );
+                    _restPostFile( url, new File( filepath ), option.contentType );
+                }
+            }
+        }
     }
 
 
@@ -264,9 +364,7 @@ public class NetOvalInterpreter
      * TODO: Send all the error results to the given locations.
      * @param netOptions
      */
-    private void _postErrorProcess(
-                    final Options netOptions
-                    )
+    private void _postErrorProcess()
     {
     }
 
@@ -279,14 +377,28 @@ public class NetOvalInterpreter
     public int execute()
     throws OvalInterpreterException
     {
-        Options  netOptions = getOptions().clone();
-        _preProcess();
+        /**
+         * NOTE: Copy the options as a backup.
+         * The original options are re-configured to invoke local OvalInterpreter.
+         * The backup is used in the post process to send the results
+         * to the given locations, if required.
+         */
+        Options  localOptions = null;
+        try {
+            localOptions = getOptions().clone();
+        } catch (CloneNotSupportedException ex) {
+            throw new OvalInterpreterException( ex );
+        }
 
-        int  exitValue = super.execute();
+        _preProcess( localOptions );
+
+        OvalInterpreter  ovaldi = new OvalInterpreter( localOptions );
+        int  exitValue = ovaldi.execute();
+
         if (exitValue == 0) {
-            _postProcess( netOptions );
+            _postProcess( localOptions );
         } else {
-            _postErrorProcess( netOptions );
+            _postErrorProcess();
         }
 
         return exitValue;
@@ -295,10 +407,12 @@ public class NetOvalInterpreter
 
 
 
+    //==============================================================
+    // REST
+    //==============================================================
 
-    // REST ////////////////////////////////////////////////////////
-
-
+    /**
+     */
     protected RestTemplate _getRestTemplate()
     {
         return (new RestTemplate());
@@ -307,16 +421,18 @@ public class NetOvalInterpreter
 
 
     /**
-     * REST: GET
+     * REST: GET file
      */
-    protected void _restGetOvalDefinitions(
+    protected void _restGetFile(
                     final URL location,
-                    final File file
+                    final File file,
+                    final String contentType
                     )
     throws OvalInterpreterException
     {
-        _LOG_.debug( "GET OVAL Definitions: location=" + location
-                        + ", local tmp file=" + file );
+        _LOG_.debug( "GET: location=" + location
+                        + ", file=" + file
+                        + ", content-type=" + contentType );
 
         URI  uri = null;
         try {
@@ -328,10 +444,11 @@ public class NetOvalInterpreter
 
         RestTemplate  rest = _getRestTemplate();
         try {
-            XmlFileResponseExtractor  extractor =
-                new XmlFileResponseExtractor( file );
+            FileResponseExtractor  extractor = new FileResponseExtractor( file );
+            MediaType  mediaType = MediaType.valueOf( contentType );
+            List<MediaType>  mediaTypes = Arrays.asList( new MediaType[] { mediaType} );
             AcceptHeaderRequestCallback  callback =
-                new AcceptHeaderRequestCallback( _ACCEPT_MEDIA_TYPES_ );
+                new AcceptHeaderRequestCallback( mediaTypes );
             rest.execute(
                             uri,
                             HttpMethod.GET,
@@ -347,16 +464,18 @@ public class NetOvalInterpreter
 
 
     /**
-     * REST: POST
+     * REST: POST file
      */
-    protected void _restPostOvalResults(
+    protected void _restPostFile(
                     final URL location,
-                    final File file
+                    final File file,
+                    final String contentType
                     )
     throws OvalInterpreterException
     {
-        _LOG_.debug( "POST OVAL Results: location=" + location
-                        + ", file=" + file );
+        _LOG_.debug( "POST: location=" + location
+                        + ", file=" + file
+                        + ", content-type=" + contentType );
 
         URI  uri = null;
         try {
@@ -367,8 +486,10 @@ public class NetOvalInterpreter
         }
 
         RestTemplate  rest = _getRestTemplate();
+        MediaType  mediaType = MediaType.valueOf( contentType );
         try {
-            XmlFileRequestCallback  callback = new XmlFileRequestCallback( file );
+            XmlFileRequestCallback  callback =
+                new XmlFileRequestCallback( file, mediaType );
             rest.execute(
                             uri,
                             HttpMethod.POST,
@@ -383,6 +504,10 @@ public class NetOvalInterpreter
 
 
 
+    //**************************************************************
+    //  nested classes
+    //**************************************************************
+
     /**
      * A simple callback for the Spring RestTemplate.
      */
@@ -390,15 +515,15 @@ public class NetOvalInterpreter
     implements RequestCallback
     {
 
-        private final List<MediaType>  _accept;
+        private final List<MediaType>  _acceptableMediaTypes;
 
 
 
         private AcceptHeaderRequestCallback(
-                        final List<MediaType> accept
+                        final List<MediaType> mediaTypes
                         )
         {
-            _accept = accept;
+            _acceptableMediaTypes = mediaTypes;
         }
 
 
@@ -409,10 +534,11 @@ public class NetOvalInterpreter
                         )
         throws IOException
         {
-            request.getHeaders().setAccept( _accept );
+            request.getHeaders().setAccept( _acceptableMediaTypes );
         }
     }
+    //AcceptHeaderRequestCallback
 
 }
-// OvalInterpreter
+//NetOvalInterpreter
 

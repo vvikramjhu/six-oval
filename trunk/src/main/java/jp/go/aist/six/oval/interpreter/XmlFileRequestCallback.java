@@ -52,6 +52,12 @@ public class XmlFileRequestCallback
     private File  _file;
 
 
+    /**
+     * The media type of the file.
+     */
+    private MediaType  _contentType;
+
+
 
     /**
      * Constructor.
@@ -62,10 +68,12 @@ public class XmlFileRequestCallback
 
 
     public XmlFileRequestCallback(
-                    final File file
+                    final File file,
+                    final MediaType contentType
                     )
     {
         _file = file;
+        _contentType = contentType;
     }
 
 
@@ -81,12 +89,13 @@ public class XmlFileRequestCallback
     throws IOException
     {
         HttpHeaders  headers = request.getHeaders();
-        headers.setContentType( MediaType.APPLICATION_XML );
+        headers.setContentType( _contentType );
+//        headers.setContentType( MediaType.APPLICATION_XML );
 
         long  size = FileIOHelper.read( _file, request.getBody() );
         headers.setContentLength( size );
     }
 
 }
-// FileResponseExtractor
+//FileRequestCallback
 

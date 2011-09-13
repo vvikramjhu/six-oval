@@ -36,39 +36,61 @@ import java.util.Collection;
 public class Option
     implements Serializable
 {
+
+    //==============================================================
+    // input resources
+    //==============================================================
+
     public static final Option OVAL_DEFINITIONS = new Option(
                     "-o", true, "filename", "definitions.xml",
-                    "path to the oval-definitions XML file"
+                    "application/xml",
+                    "path to the oval definitions XML file"
     );
 
     public static final Option EVALUATE_DEFINITIONS = new Option(
                     "-e", true, "definition IDs", null,
+                    "text/plain",
                     "evaluate the specified list of definitions \n" +
                     "(supply definition IDs as a comma seperated list)"
     );
 
-    public static final Option OVAL_RESULTS = new Option(
-                    "-r", true, "filename", "results.xml",
-                    "save oval-results to the specified XML file"
-    );
-
-    public static final Option NO_VERIFY = new Option(
-                    "-m", false, null, null,
-                    "do not verify the oval-definitions file with an MD5 hash"
-    );
-
     public static final Option OVAL_XML_DIR = new Option(
                     "-a", true, "dir name", null,
+                    null,
                     "path to the directory that contains the OVAL schema and other xml resources"
     );
 
     public static final Option MD5_HASH = new Option(
                     null, true, "MD5Hash", null,
+                    null,
                     "MD5 checksum expected for the current OVAL Definitions document"
+    );
+
+
+    //==============================================================
+    // input resources
+    //==============================================================
+
+    public static final Option OVAL_RESULTS = new Option(
+                    "-r", true, "filename", "results.xml",
+                    "application/xml",
+                    "save oval-results to the specified XML file"
+    );
+
+
+    //==============================================================
+    // control
+    //==============================================================
+
+    public static final Option NO_VERIFY = new Option(
+                    "-m", false, null, null,
+                    null,
+                    "do not verify the oval-definitions file with an MD5 hash"
     );
 
     public static final Option LOG_LEVEL = new Option(
                     "-l", true, "integer", "2",
+                    null,
                     "log messages at the specified level \n"
                     + "(DEBUG = 1, INFO = 2, MESSAGE = 3, FATAL = 4)"
     );
@@ -95,6 +117,7 @@ public class Option
     public final boolean  hasArgument;
     public final String  argumentName;
     public final String  defaultArgument;
+    public final String  contentType;
     public final String  description;
 
 
@@ -107,6 +130,7 @@ public class Option
                     final boolean hasArgument,
                     final String argumentName,
                     final String defaultArgument,
+                    final String contentType,
                     final String description
                     )
     {
@@ -114,6 +138,7 @@ public class Option
         this.hasArgument = hasArgument;
         this.argumentName = argumentName;
         this.defaultArgument = defaultArgument;
+        this.contentType = contentType;
         this.description = description;
     }
 
