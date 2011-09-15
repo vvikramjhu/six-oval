@@ -19,7 +19,10 @@
 
     <test name="oval.interpreter" enabled="true">
         <classes>
+            <!--
             <class name="jp.go.aist.six.test.oval.interpreter.OvalInterpreterTest"/>
+            -->
+            <class name="jp.go.aist.six.test.oval.interpreter.NetOvalInterpreterTest"/>
         </classes>
     </test>
 

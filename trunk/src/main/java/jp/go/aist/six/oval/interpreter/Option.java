@@ -152,6 +152,24 @@ public class Option
         return _VALUES_;
     }
 
+
+
+    //**************************************************************
+    //  java.lang.Object
+    //**************************************************************
+
+    @Override
+    public String toString()
+    {
+        return "Option["
+                + (command != null ? command : "")
+                + (hasArgument ? (" " + argumentName) : "")
+//                + " = " + description
+//                + " (default: " + defaultArgument
+                + (contentType != null ? ("(" + contentType + ")") : "")
+                + "]";
+    }
+
 }
 // Option
 

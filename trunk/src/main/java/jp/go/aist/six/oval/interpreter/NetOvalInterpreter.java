@@ -25,10 +25,10 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import jp.go.aist.six.util.IsoDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;
@@ -106,7 +106,7 @@ public class NetOvalInterpreter
 
 
 
-    private String  _filePrefix;
+    private String  _workingFilePrefix;
     private File  _workingDir;
 
 
@@ -127,17 +127,24 @@ public class NetOvalInterpreter
      */
     private void _init()
     {
-        _filePrefix = _createFilePrefix();
+        _workingFilePrefix = _createFilePrefix();
         _workingDir = _getWorkingDir();
+
+        _LOG_.debug( "working file prefix: " + _workingFilePrefix );
+        _LOG_.debug( "working dir: " + _workingDir );
     }
 
+
+
+    private static SimpleDateFormat  _DATETIME_FORMATTER_ =
+        new SimpleDateFormat( "yyyyMMdd'T'HHmmss" );
 
 
     /**
      */
     private String _createFilePrefix()
     {
-        String  prefix = IsoDate.format( new Date() );
+        String  prefix = _DATETIME_FORMATTER_.format( new Date() );
         prefix = prefix + "_oval_";
 
         return prefix;
@@ -225,7 +232,7 @@ public class NetOvalInterpreter
                      * Download the resource and save it to a local file.
                      * Then, replace the argument for local execution.
                      */
-                    File  file = _createWorkingFile( _workingDir, _filePrefix, option );
+                    File  file = _createWorkingFile( _workingDir, _workingFilePrefix, option );
                     _restGetFile( url, file, option.contentType );
 
                     localOptions.set( option, file.getAbsolutePath() );
@@ -301,7 +308,7 @@ public class NetOvalInterpreter
                      * Decide the local filename, and
                      * replace the argument for local execution.
                      */
-                    File  file = _createWorkingFile( _workingDir, _filePrefix, option );
+                    File  file = _createWorkingFile( _workingDir, _workingFilePrefix, option );
                     localOptions.set( option, file.getAbsolutePath() );
                 }
             }
@@ -367,43 +374,6 @@ public class NetOvalInterpreter
     private void _postErrorProcess()
     {
     }
-
-
-
-    /**
-     * Starts a new OVAL interpreter process.
-     */
-    @Override
-    public int execute()
-    throws OvalInterpreterException
-    {
-        /**
-         * NOTE: Copy the options as a backup.
-         * The original options are re-configured to invoke local OvalInterpreter.
-         * The backup is used in the post process to send the results
-         * to the given locations, if required.
-         */
-        Options  localOptions = null;
-        try {
-            localOptions = getOptions().clone();
-        } catch (CloneNotSupportedException ex) {
-            throw new OvalInterpreterException( ex );
-        }
-
-        _preProcess( localOptions );
-
-        OvalInterpreter  ovaldi = new OvalInterpreter( localOptions );
-        int  exitValue = ovaldi.execute();
-
-        if (exitValue == 0) {
-            _postProcess( localOptions );
-        } else {
-            _postErrorProcess();
-        }
-
-        return exitValue;
-    }
-
 
 
 
@@ -501,6 +471,47 @@ public class NetOvalInterpreter
             throw new OvalInterpreterException( ex );
         }
     }
+
+
+
+    //**************************************************************
+    //  OvalInterpreter
+    //**************************************************************
+
+    @Override
+    public int execute()
+    throws OvalInterpreterException
+    {
+        _init();
+
+        /**
+         * NOTE: Copy the options as a backup.
+         * The original options are re-configured to invoke local OvalInterpreter.
+         * The backup is used in the post process to send the results
+         * to the given locations, if required.
+         */
+        Options  localOptions = null;
+        try {
+            localOptions = getOptions().clone();
+        } catch (CloneNotSupportedException ex) {
+            throw new OvalInterpreterException( ex );
+        }
+
+        _preProcess( localOptions );
+
+        OvalInterpreter  ovaldi = new OvalInterpreter( localOptions );
+        ovaldi.setExecutable( getExecutable() );
+        int  exitValue = ovaldi.execute();
+
+        if (exitValue == 0) {
+            _postProcess( localOptions );
+        } else {
+            _postErrorProcess();
+        }
+
+        return exitValue;
+    }
+
 
 
 
