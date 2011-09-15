@@ -1,31 +1,33 @@
 package jp.go.aist.six.test.oval.interpreter;
 
+import jp.go.aist.six.oval.interpreter.NetOvalInterpreter;
 import jp.go.aist.six.oval.interpreter.Option;
 import jp.go.aist.six.oval.interpreter.Options;
-import jp.go.aist.six.oval.interpreter.OvalInterpreter;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
 
 
 
 /**
- * OvalInterpreter
+ * NetOvalInterpreter
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalInterpreterTest
+public class NetOvalInterpreterTest
 {
 
 
     @DataProvider( name="oval.interpreter.options" )
-    public Object[][] provideOvalInterpreterOptions()
+    public Object[][] provideNetOvalInterpreterOptions()
     {
         Options  options1 = new Options();
         options1.set( Option.NO_VERIFY )
                 .set( Option.OVAL_XML_DIR, "C:\\app\\ovaldi-5.9.2-x64\\xml" )
                 .set( Option.OVAL_DEFINITIONS,
-                                "test/resources/data/oval5/oval5.9_def12313-5_v_windows_CVE-2011-0031.xml" );
+                                "http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a2545&type=view"
+//                                "test/resources/data/oval5/oval5.9_def12313-5_v_windows_CVE-2011-0031.xml"
+                                );
 
         return new Object[][] {
                         {
@@ -45,7 +47,7 @@ public class OvalInterpreterTest
                     dataProvider="oval.interpreter.options",
                     alwaysRun=true
                     )
-    public void testOvalInterpreter(
+    public void testNetOvalInterpreter(
                     final String executable,
                     final Options options
                     )
@@ -57,7 +59,7 @@ public class OvalInterpreterTest
         Reporter.log( "* executable: " + executable, true );
         Reporter.log( "* options: " + options, true );
 
-        OvalInterpreter  ovaldi = new OvalInterpreter();
+        NetOvalInterpreter  ovaldi = new NetOvalInterpreter();
         if (executable != null) {
             ovaldi.setExecutable( executable );
         }
@@ -68,4 +70,4 @@ public class OvalInterpreterTest
     }
 
 }
-// OvalInterpreterTest
+// NetOvalInterpreterTest

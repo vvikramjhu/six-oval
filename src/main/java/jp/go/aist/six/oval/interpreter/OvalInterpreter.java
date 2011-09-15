@@ -177,6 +177,8 @@ public class OvalInterpreter
     public int execute()
     throws OvalInterpreterException
     {
+        _LOG_.debug( "current options: " + getOptions() );
+
         ProcessBuilder  builder = _createProcessBuilder();
         Process  process = null;
         int  exitValue = 0;
