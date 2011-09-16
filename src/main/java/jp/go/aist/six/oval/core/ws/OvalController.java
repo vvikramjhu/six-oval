@@ -667,7 +667,7 @@ public class OvalController
     // Example:
     // >curl -v -X POST -HContent-Type:application/xml
     //  --data-binary @oval-results.xml
-    //  http://localhost:8080/oval_repo/oval_results
+    //  http://localhost:8080/oval_repo/r/oval_results
     @RequestMapping(
                     method=RequestMethod.POST
                     ,value="/r/oval_results"
