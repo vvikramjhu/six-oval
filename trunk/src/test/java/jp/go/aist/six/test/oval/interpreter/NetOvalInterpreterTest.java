@@ -27,12 +27,25 @@ public class NetOvalInterpreterTest
                 .set( Option.OVAL_DEFINITIONS,
                                 "http://oval.mitre.org/repository/data/DownloadDefinition?id=oval%3aorg.mitre.oval%3adef%3a2545&type=view"
 //                                "test/resources/data/oval5/oval5.9_def12313-5_v_windows_CVE-2011-0031.xml"
-                                );
+                                )
+                                ;
+
+        Options  options2 = new Options();
+        options2.set( Option.NO_VERIFY )
+                .set( Option.OVAL_XML_DIR, "C:\\app\\ovaldi-5.9.2-x64\\xml" )
+                .set( Option.OVAL_DEFINITIONS,
+                                "test/resources/data/oval5/oval5.9_def12313-5_v_windows_CVE-2011-0031.xml"
+                                )
+                .set( Option.OVAL_RESULTS,
+                                "http://localhost:8080/oval_rep/r/oval_results"
+                                )
+                                ;
 
         return new Object[][] {
                         {
                             "C:\\app\\ovaldi-5.9.2-x64\\ovaldi.exe",
-                            options1
+//                            options1,
+                            options2
                         }
         };
 
