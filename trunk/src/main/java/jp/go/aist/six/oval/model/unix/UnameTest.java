@@ -18,61 +18,76 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.unix;
+package jp.go.aist.six.oval.model.unix;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.SystemObjectType;
+import jp.go.aist.six.oval.model.common.CheckEnumeration;
+import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 
 /**
- * The uname object is used by an uname test to define those objects
- * to evaluated based on a specified state.
+ * The uname test reveals information about the hardware
+ * the machine is running on.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class UnameObject
-    extends SystemObjectType
+public class UnameTest
+    extends TestType
 {
 
     /**
      * Constructor.
      */
-    public UnameObject()
+    public UnameTest()
     {
         this( null, 0 );
     }
 
 
-    public UnameObject(
+    public UnameTest(
                     final String id,
                     final int version
                     )
     {
-        this( id, version, null );
+        this( id, version, null, null );
     }
 
 
-    public UnameObject(
+    public UnameTest(
                     final String id,
                     final int version,
-                    final String comment
+                    final String comment,
+                    final CheckEnumeration check
                     )
     {
-        super( id, version, comment );
+        super( id, version, comment, check );
 
         _oval_platform_type = OvalPlatformType.unix;
         _oval_component_type = OvalComponentType.uname;
     }
 
 
+//    public UnameTest(
+//                    final String id,
+//                    final int version,
+//                    final String comment,
+//                    final CheckEnumeration check,
+//                    final SystemObjectRefType object,
+//                    final StateRefType[] stateList
+//                    )
+//    {
+//        super( id, version, comment, check, object, stateList );
+//    }
+
+
 
     //**************************************************************
-    //  SystemObject
+    //  Test
     //**************************************************************
 
     @Override
@@ -100,7 +115,7 @@ public class UnameObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof UnameObject)) {
+        if (!(obj instanceof UnameTest)) {
             return false;
         }
 
@@ -112,8 +127,8 @@ public class UnameObject
     @Override
     public String toString()
     {
-        return "uname_object[" + super.toString() + "]";
+        return "uname_test[" + super.toString() + "]";
     }
 
 }
-// UnameObject
+// UnameTest
