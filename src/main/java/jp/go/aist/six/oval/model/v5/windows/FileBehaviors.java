@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.windows;
 
-import jp.go.aist.six.oval.model.v5.AbstractFileBehaviors;
+import jp.go.aist.six.oval.model.AbstractFileBehaviors;
 
 
 

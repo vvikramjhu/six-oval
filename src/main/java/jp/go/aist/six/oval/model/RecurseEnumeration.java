@@ -18,40 +18,37 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5;
+package jp.go.aist.six.oval.model;
 
 
 
 
 /**
- * The RecurseFileSystem defines the file system limitation of any recursion,
- * either 'local' limiting data collection to local file systems
- * (as opposed to file systems mounted from an external system),
- * or 'defined' to keep any recursion within the file system
- * that the file_object (path+filename) has specified.
+ * The Recurse defines how to recurse into the path entity,
+ * in other words what to follow during recursion.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum RecurseFileSystemEnumeration
+public enum RecurseEnumeration
     implements Oval5Enumeration
 {
 
-    ALL       ( "all" ),
-    LOCAL_    ( "local" ),
-    DEFINED_  ( "defined" );
+    DIRECTORIES              ( "directories" ),
+    SYMLINKS                 ( "symlinks" ),
+    SYMLINKS_AND_DIRECTORIES ( "symlinks and directories" );
 
 
 
     /**
      * A factory method.
      */
-    public static RecurseFileSystemEnumeration fromValue(
+    public static RecurseEnumeration fromValue(
                     final String value
                     )
     {
-        for (RecurseFileSystemEnumeration  e : RecurseFileSystemEnumeration.values()) {
+        for (RecurseEnumeration  e : RecurseEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -69,7 +66,7 @@ public enum RecurseFileSystemEnumeration
     /**
      * Constructor.
      */
-    RecurseFileSystemEnumeration(
+    RecurseEnumeration(
                     final String value
                     )
     {
@@ -97,4 +94,4 @@ public enum RecurseFileSystemEnumeration
     }
 
 }
-// RecurseFileSystemEnumeration
+// RecurseEnumeration

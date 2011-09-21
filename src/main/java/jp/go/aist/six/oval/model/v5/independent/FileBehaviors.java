@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.v5.independent;
 
-import jp.go.aist.six.oval.model.v5.AbstractFileBehaviors;
-import jp.go.aist.six.oval.model.v5.RecurseEnumeration;
+import jp.go.aist.six.oval.model.AbstractFileBehaviors;
+import jp.go.aist.six.oval.model.RecurseEnumeration;
 
 
 

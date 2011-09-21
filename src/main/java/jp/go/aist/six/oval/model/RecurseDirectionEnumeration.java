@@ -18,37 +18,37 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5;
+package jp.go.aist.six.oval.model;
 
 
 
 
 /**
- * The Recurse defines how to recurse into the path entity,
- * in other words what to follow during recursion.
+ * The RecurseDirection defines the direction to recurse,
+ * either 'up' to parent directories, or 'down' into child directories.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum RecurseEnumeration
+public enum RecurseDirectionEnumeration
     implements Oval5Enumeration
 {
 
-    DIRECTORIES              ( "directories" ),
-    SYMLINKS                 ( "symlinks" ),
-    SYMLINKS_AND_DIRECTORIES ( "symlinks and directories" );
+    NONE  ( "none" ),
+    UP    ( "up" ),
+    DOWN  ( "down" );
 
 
 
     /**
      * A factory method.
      */
-    public static RecurseEnumeration fromValue(
+    public static RecurseDirectionEnumeration fromValue(
                     final String value
                     )
     {
-        for (RecurseEnumeration  e : RecurseEnumeration.values()) {
+        for (RecurseDirectionEnumeration  e : RecurseDirectionEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -66,7 +66,7 @@ public enum RecurseEnumeration
     /**
      * Constructor.
      */
-    RecurseEnumeration(
+    RecurseDirectionEnumeration(
                     final String value
                     )
     {
@@ -94,4 +94,4 @@ public enum RecurseEnumeration
     }
 
 }
-// RecurseEnumeration
+// RecurseDirectionEnumeration

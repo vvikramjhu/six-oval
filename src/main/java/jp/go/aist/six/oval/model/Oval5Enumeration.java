@@ -18,23 +18,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5;
-
-import jp.go.aist.six.oval.model.OvalObject;
+package jp.go.aist.six.oval.model;
 
 
 
 
 /**
- * A marker interface for all the OVAL version 5 domain objects.
+ * A marker interface for all the OVAL enumeration types.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public interface Oval5Object
-    extends OvalObject
+public interface Oval5Enumeration
+    extends OvalEnumeration, Oval5Object
 {
 
 }
-// Oval5Object
+// Oval5Enumeration

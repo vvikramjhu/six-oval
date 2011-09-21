@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.xml.v5;
 
-import jp.go.aist.six.oval.model.v5.RecurseEnumeration;
+import jp.go.aist.six.oval.model.RecurseEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 

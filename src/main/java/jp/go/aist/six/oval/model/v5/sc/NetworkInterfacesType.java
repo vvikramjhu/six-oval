@@ -24,7 +24,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import jp.go.aist.six.oval.model.v5.Container;
+import jp.go.aist.six.oval.model.Container;
 import com.google.code.morphia.annotations.Embedded;
 
 
