@@ -18,40 +18,48 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.common;
+package jp.go.aist.six.oval.model.common;
 
 import jp.go.aist.six.oval.model.Oval5Enumeration;
 
 
 
 /**
- * The MessageLevel enumeration type defines the different levels
- * associated with a message.
+ * The Datatype enumeration type defines the legal datatypes
+ * that are used to describe the values of individual entities.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum MessageLevelEnumeration
+public enum DatatypeEnumeration
     implements Oval5Enumeration
 {
 
-    DEBUG    ( "debug" ),
-    ERROR    ( "error" ),
-    FATAL    ( "fatal" ),
-    INFO     ( "info" ),
-    WARNING  ( "warning" );
+    BINARY            ( "binary" ),
+    BOOLEAN           ( "boolean" ),
+    EVR_STRING        ( "evr_string" ),
+    FILESET_REVISION  ( "fileset_revision" ),
+    FLOAT             ( "float" ),
+    IOS_VERSION       ( "ios_version" ),
+    INT               ( "int" ),
+    IPV4_ADDRESS      ( "ipv4_address" ),
+    IPV6_ADDRESS      ( "ipv6_address" ),
+    STRING            ( "string" ),
+    VERSION           ( "version" ),
+
+    RECORD            ( "record", true );
 
 
 
     /**
      * A factory method.
      */
-    public static MessageLevelEnumeration fromValue(
+    public static DatatypeEnumeration fromValue(
                     final String value
                     )
     {
-        for (MessageLevelEnumeration  e : MessageLevelEnumeration.values()) {
+        for (DatatypeEnumeration  e : DatatypeEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -63,17 +71,28 @@ public enum MessageLevelEnumeration
 
 
     private String  value = null;
+    private boolean  complex = false;
 
 
 
     /**
      * Constructor.
      */
-    MessageLevelEnumeration(
+    DatatypeEnumeration(
                     final String value
                     )
     {
+        this( value, false );
+    }
+
+
+    DatatypeEnumeration(
+                    final String value,
+                    final boolean complex
+                    )
+    {
         this.value = value;
+        this.complex = complex;
     }
 
 
@@ -82,6 +101,15 @@ public enum MessageLevelEnumeration
     public String value()
     {
         return this.value;
+    }
+
+
+
+    /**
+     */
+    public boolean isComplex()
+    {
+        return complex;
     }
 
 
@@ -97,4 +125,4 @@ public enum MessageLevelEnumeration
     }
 
 }
-// MessageLevelEnumeration
+// DatatypeEnumeration

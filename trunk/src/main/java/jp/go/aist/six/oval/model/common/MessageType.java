@@ -18,72 +18,77 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.common;
+package jp.go.aist.six.oval.model.common;
 
-import jp.go.aist.six.oval.model.Oval5Enumeration;
+import jp.go.aist.six.oval.model.Oval5Object;
+
 
 
 
 /**
- * The Class enumeration type defines
- * the different classes of OVAL Definitions.
- * The name "class" in the OVAL Schema is renamed
- * because the name has the special meaning in Java.
+ * The Message type defines the structure for which messages
+ * are relayed from the data collection engine.
+ * Each message is a text string that has an associated
+ * level attribute identifying the type of message being sent.
  *
- * @author  Akihito Nakamura, AIST
+ * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum ClassEnumeration
-    implements Oval5Enumeration
+public class MessageType
+    implements Oval5Object
 {
 
-    COMPLIANCE     ( "compliance" ),
-    INVENTORY      ( "inventory" ),
-    MISCELLANEOUS  ( "miscellaneous" ),
-    PATCH          ( "patch" ),
-    VULNERABILITY  ( "vulnerability" );
+    private String  content;
 
 
+    public static final MessageLevelEnumeration  DEFAULT_LEVEL =
+        MessageLevelEnumeration.INFO;
 
-    /**
-     * A factory method.
-     */
-    public static ClassEnumeration fromValue(
-                    final String value
-                    )
-    {
-        for (ClassEnumeration  e : ClassEnumeration.values()) {
-            if (e.value.equals( value )) {
-                return e;
-            }
-        }
-
-        throw new IllegalArgumentException( value );
-    }
-
-
-
-    private String  value = null;
+    private MessageLevelEnumeration  level;
+    //{optional, default="info"}
 
 
 
     /**
      * Constructor.
      */
-    ClassEnumeration(
-                    final String value
-                    )
+    public MessageType()
     {
-        this.value = value;
     }
 
 
 
-    @Override
-    public String value()
+    /**
+     */
+    public void setContent(
+                    final String content
+                    )
     {
-        return this.value;
+        this.content = content;
+    }
+
+
+    public String getContent()
+    {
+        return this.content;
+    }
+
+
+
+    /**
+     */
+    public void setLevel(
+                    final MessageLevelEnumeration level
+                    )
+    {
+        this.level = level;
+    }
+
+
+    public MessageLevelEnumeration getLevel()
+    {
+        return this.level;
     }
 
 
@@ -95,8 +100,10 @@ public enum ClassEnumeration
     @Override
     public String toString()
     {
-        return this.value;
+        return "[level=" + getLevel()
+             + ", " + getContent()
+             + "]";
     }
 
 }
-// DefinitionClassEnumeration
+// MessageType

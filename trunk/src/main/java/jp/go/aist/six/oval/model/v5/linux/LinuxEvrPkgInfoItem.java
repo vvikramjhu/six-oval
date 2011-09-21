@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.linux;
 
-import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
+import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemEVRStringType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;

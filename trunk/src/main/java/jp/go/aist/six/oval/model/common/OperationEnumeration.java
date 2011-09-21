@@ -18,44 +18,47 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.common;
+package jp.go.aist.six.oval.model.common;
 
 import jp.go.aist.six.oval.model.Oval5Enumeration;
 
 
 
 /**
- * The Family enumeration type is a listing of families
- * that OVAL supports at this time.
+ * The Operation enumeration type defines acceptable operations.
+ * Each operation defines how to compare entities against their actual values.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum FamilyEnumeration
+public enum OperationEnumeration
     implements Oval5Enumeration
 {
 
-    CATOS                 ( "catos" ),
-    IOS                   ( "ios" ),
-    MACOS                 ( "macos" ),
-    PIXOS                 ( "pixos" ),
-    UNDEFINED             ( "undefined" ),
-    UNIX                  ( "unix" ),
-    VMWARE_INFRASTRUCTURE ( "vmware_infrastructure" ),
-    WINDOWS               ( "windows" ),
-    EMPTY                 ( "" );
-
+    EQUALS                      ( "equals" ),
+    NOT_EQUAL                   ( "not equal" ),
+    CASE_INSENSITIVE_EQUALS     ( "case insensitive equals" ),
+    CASE_INSENSITIVE_NOT_EQUAL  ( "case insensitive not equal" ),
+    GREATER_THAN                ( "greater than" ),
+    LESS_THAN                   ( "less than" ),
+    GREATER_THAN_OR_EQUAL       ( "greater than or equal" ),
+    LESS_THAN_OR_EQUAL          ( "less than or equal" ),
+    BITWISE_AND                 ( "bitwise and" ),
+    BITWISE_OR                  ( "bitwise or" ),
+    PATTERN_MATCH               ( "pattern match" ),
+    SUBSET_OF                   ( "subset of" ),
+    SUPERSET_OF                 ( "superset of" );
 
 
     /**
      * A factory method.
      */
-    public static FamilyEnumeration fromValue(
+    public static OperationEnumeration fromValue(
                     final String value
                     )
     {
-        for (FamilyEnumeration  e : FamilyEnumeration.values()) {
+        for (OperationEnumeration  e : OperationEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -73,7 +76,7 @@ public enum FamilyEnumeration
     /**
      * Constructor.
      */
-    FamilyEnumeration(
+    OperationEnumeration(
                     final String value
                     )
     {
@@ -101,4 +104,4 @@ public enum FamilyEnumeration
     }
 
 }
-// FamilyEnumeration
+// OperationEnumeration

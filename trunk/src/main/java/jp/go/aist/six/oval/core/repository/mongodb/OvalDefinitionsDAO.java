@@ -1,6 +1,6 @@
 package jp.go.aist.six.oval.core.repository.mongodb;
 
-import jp.go.aist.six.oval.model.v5.common.GeneratorType;
+import jp.go.aist.six.oval.model.common.GeneratorType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.v5.definitions.DefinitionsType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;

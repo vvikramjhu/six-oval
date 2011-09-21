@@ -18,39 +18,41 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.common;
+package jp.go.aist.six.oval.model.common;
 
 import jp.go.aist.six.oval.model.Oval5Enumeration;
 
 
 
 /**
- * The Operator enumeration type defines acceptable operators.
- * Each operator defines how to evaluate multiple arguments.
+ * The Check enumeration type defines acceptable check values,
+ * which are used to determine the final result of something
+ * based on the results of individual components.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum OperatorEnumeration
+public enum CheckEnumeration
     implements Oval5Enumeration
 {
 
-    AND ( "AND" ),
-    ONE ( "ONE" ),
-    OR  ( "OR" ),
-    XOR ( "XOR" );
+    ALL           ( "all" ),
+    AT_LEAST_ONE  ( "at least one" ),
+    NONE_EXIST    ( "none exist" ),
+    NONE_SATISFY  ( "none satisfy" ),
+    ONLY_ONE      ( "only one" );
 
 
 
     /**
      * A factory method.
      */
-    public static OperatorEnumeration fromValue(
+    public static CheckEnumeration fromValue(
                     final String value
                     )
     {
-        for (OperatorEnumeration  e : OperatorEnumeration.values()) {
+        for (CheckEnumeration  e : CheckEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -68,7 +70,7 @@ public enum OperatorEnumeration
     /**
      * Constructor.
      */
-    OperatorEnumeration(
+    CheckEnumeration(
                     final String value
                     )
     {
@@ -96,4 +98,4 @@ public enum OperatorEnumeration
     }
 
 }
-// OperatorEnumeration
+// CheckEnumeration

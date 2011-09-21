@@ -18,47 +18,42 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.common;
+package jp.go.aist.six.oval.model.common;
 
 import jp.go.aist.six.oval.model.Oval5Enumeration;
 
 
 
 /**
- * The Operation enumeration type defines acceptable operations.
- * Each operation defines how to compare entities against their actual values.
+ * The Class enumeration type defines
+ * the different classes of OVAL Definitions.
+ * The name "class" in the OVAL Schema is renamed
+ * because the name has the special meaning in Java.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum OperationEnumeration
+public enum ClassEnumeration
     implements Oval5Enumeration
 {
 
-    EQUALS                      ( "equals" ),
-    NOT_EQUAL                   ( "not equal" ),
-    CASE_INSENSITIVE_EQUALS     ( "case insensitive equals" ),
-    CASE_INSENSITIVE_NOT_EQUAL  ( "case insensitive not equal" ),
-    GREATER_THAN                ( "greater than" ),
-    LESS_THAN                   ( "less than" ),
-    GREATER_THAN_OR_EQUAL       ( "greater than or equal" ),
-    LESS_THAN_OR_EQUAL          ( "less than or equal" ),
-    BITWISE_AND                 ( "bitwise and" ),
-    BITWISE_OR                  ( "bitwise or" ),
-    PATTERN_MATCH               ( "pattern match" ),
-    SUBSET_OF                   ( "subset of" ),
-    SUPERSET_OF                 ( "superset of" );
+    COMPLIANCE     ( "compliance" ),
+    INVENTORY      ( "inventory" ),
+    MISCELLANEOUS  ( "miscellaneous" ),
+    PATCH          ( "patch" ),
+    VULNERABILITY  ( "vulnerability" );
+
 
 
     /**
      * A factory method.
      */
-    public static OperationEnumeration fromValue(
+    public static ClassEnumeration fromValue(
                     final String value
                     )
     {
-        for (OperationEnumeration  e : OperationEnumeration.values()) {
+        for (ClassEnumeration  e : ClassEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -76,7 +71,7 @@ public enum OperationEnumeration
     /**
      * Constructor.
      */
-    OperationEnumeration(
+    ClassEnumeration(
                     final String value
                     )
     {
@@ -104,4 +99,4 @@ public enum OperationEnumeration
     }
 
 }
-// OperationEnumeration
+// DefinitionClassEnumeration

@@ -18,48 +18,44 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.common;
+package jp.go.aist.six.oval.model.common;
 
 import jp.go.aist.six.oval.model.Oval5Enumeration;
 
 
 
 /**
- * The Datatype enumeration type defines the legal datatypes
- * that are used to describe the values of individual entities.
+ * The Family enumeration type is a listing of families
+ * that OVAL supports at this time.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum DatatypeEnumeration
+public enum FamilyEnumeration
     implements Oval5Enumeration
 {
 
-    BINARY            ( "binary" ),
-    BOOLEAN           ( "boolean" ),
-    EVR_STRING        ( "evr_string" ),
-    FILESET_REVISION  ( "fileset_revision" ),
-    FLOAT             ( "float" ),
-    IOS_VERSION       ( "ios_version" ),
-    INT               ( "int" ),
-    IPV4_ADDRESS      ( "ipv4_address" ),
-    IPV6_ADDRESS      ( "ipv6_address" ),
-    STRING            ( "string" ),
-    VERSION           ( "version" ),
-
-    RECORD            ( "record", true );
+    CATOS                 ( "catos" ),
+    IOS                   ( "ios" ),
+    MACOS                 ( "macos" ),
+    PIXOS                 ( "pixos" ),
+    UNDEFINED             ( "undefined" ),
+    UNIX                  ( "unix" ),
+    VMWARE_INFRASTRUCTURE ( "vmware_infrastructure" ),
+    WINDOWS               ( "windows" ),
+    EMPTY                 ( "" );
 
 
 
     /**
      * A factory method.
      */
-    public static DatatypeEnumeration fromValue(
+    public static FamilyEnumeration fromValue(
                     final String value
                     )
     {
-        for (DatatypeEnumeration  e : DatatypeEnumeration.values()) {
+        for (FamilyEnumeration  e : FamilyEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -71,28 +67,17 @@ public enum DatatypeEnumeration
 
 
     private String  value = null;
-    private boolean  complex = false;
 
 
 
     /**
      * Constructor.
      */
-    DatatypeEnumeration(
+    FamilyEnumeration(
                     final String value
                     )
     {
-        this( value, false );
-    }
-
-
-    DatatypeEnumeration(
-                    final String value,
-                    final boolean complex
-                    )
-    {
         this.value = value;
-        this.complex = complex;
     }
 
 
@@ -101,15 +86,6 @@ public enum DatatypeEnumeration
     public String value()
     {
         return this.value;
-    }
-
-
-
-    /**
-     */
-    public boolean isComplex()
-    {
-        return complex;
     }
 
 
@@ -125,4 +101,4 @@ public enum DatatypeEnumeration
     }
 
 }
-// DatatypeEnumeration
+// FamilyEnumeration

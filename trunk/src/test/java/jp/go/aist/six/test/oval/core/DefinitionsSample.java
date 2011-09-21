@@ -1,12 +1,12 @@
 package jp.go.aist.six.test.oval.core;
 
-import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
-import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
-import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
-import jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration;
-import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
-import jp.go.aist.six.oval.model.v5.common.OperationEnumeration;
-import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
+import jp.go.aist.six.oval.model.common.CheckEnumeration;
+import jp.go.aist.six.oval.model.common.ClassEnumeration;
+import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
+import jp.go.aist.six.oval.model.common.ExistenceEnumeration;
+import jp.go.aist.six.oval.model.common.FamilyEnumeration;
+import jp.go.aist.six.oval.model.common.OperationEnumeration;
+import jp.go.aist.six.oval.model.common.OperatorEnumeration;
 import jp.go.aist.six.oval.model.v5.definitions.AffectedType;
 import jp.go.aist.six.oval.model.v5.definitions.ConcatFunctionType;
 import jp.go.aist.six.oval.model.v5.definitions.CriteriaElement;

@@ -18,41 +18,41 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.common;
+package jp.go.aist.six.oval.model.common;
 
 import jp.go.aist.six.oval.model.Oval5Enumeration;
 
 
 
 /**
- * The Check enumeration type defines acceptable check values,
- * which are used to determine the final result of something
- * based on the results of individual components.
+ * The Existence enumeration type defines acceptable existence values,
+ * which are used to determine a result based on the existence
+ * of individual components.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum CheckEnumeration
+public enum ExistenceEnumeration
     implements Oval5Enumeration
 {
 
-    ALL           ( "all" ),
-    AT_LEAST_ONE  ( "at least one" ),
-    NONE_EXIST    ( "none exist" ),
-    NONE_SATISFY  ( "none satisfy" ),
-    ONLY_ONE      ( "only one" );
+    ALL_EXIST            ( "all_exist" ),
+    ANY_EXIST            ( "any_exist" ),
+    AT_LEAST_ONE_EXISTS  ( "at_least_one_exists" ),
+    NONE_EXIST           ( "none_exist" ),
+    ONLY_ONE_EXISTS      ( "only_one_exists" );
 
 
 
     /**
      * A factory method.
      */
-    public static CheckEnumeration fromValue(
+    public static ExistenceEnumeration fromValue(
                     final String value
                     )
     {
-        for (CheckEnumeration  e : CheckEnumeration.values()) {
+        for (ExistenceEnumeration  e : ExistenceEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -70,7 +70,7 @@ public enum CheckEnumeration
     /**
      * Constructor.
      */
-    CheckEnumeration(
+    ExistenceEnumeration(
                     final String value
                     )
     {
@@ -98,4 +98,4 @@ public enum CheckEnumeration
     }
 
 }
-// CheckEnumeration
+// ExistenceEnumeration

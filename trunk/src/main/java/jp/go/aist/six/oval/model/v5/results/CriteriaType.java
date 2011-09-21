@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.v5.results;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
+import jp.go.aist.six.oval.model.common.OperatorEnumeration;
 
 
 

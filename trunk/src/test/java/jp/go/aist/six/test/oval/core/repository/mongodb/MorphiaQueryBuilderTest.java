@@ -4,7 +4,7 @@ import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoDatastore;
 import jp.go.aist.six.oval.core.repository.mongodb.MorphiaQueryBuilder;
 import jp.go.aist.six.oval.model.OvalObject;
-import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
+import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.util.persist.Persistable;
 import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.Limit;
