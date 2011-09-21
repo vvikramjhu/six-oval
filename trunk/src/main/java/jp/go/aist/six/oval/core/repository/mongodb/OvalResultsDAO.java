@@ -5,7 +5,7 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.ResultsType;
 import jp.go.aist.six.oval.model.results.SystemType;
-import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Key;
 import com.google.code.morphia.dao.DAO;

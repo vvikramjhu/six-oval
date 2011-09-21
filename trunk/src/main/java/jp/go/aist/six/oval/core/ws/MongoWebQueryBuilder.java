@@ -33,7 +33,7 @@ import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.TestType;
-import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

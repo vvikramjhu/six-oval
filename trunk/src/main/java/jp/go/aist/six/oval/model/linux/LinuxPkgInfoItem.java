@@ -21,10 +21,10 @@
 package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
-import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
-import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
-import jp.go.aist.six.oval.model.v5.sc.ItemType;
-import jp.go.aist.six.oval.model.v5.sc.StatusEnumeration;
+import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
+import jp.go.aist.six.oval.model.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.sc.ItemType;
+import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 

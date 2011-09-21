@@ -18,36 +18,68 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.sc;
+package jp.go.aist.six.oval.model.sc;
 
+import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 
 /**
- * The EntityItemAnySimple type is extended by the entities of an individual item.
- * This specific type describes any simple data.
+ * The EntityItemVersion type is extended by the entities of an individual item.
+ * This specific type describes version data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemAnySimpleType
+public class EntityItemVersionType
     extends EntityItemSimpleBaseType
 {
+
+    public static final DatatypeEnumeration  FIXED_DATATYPE =
+        DatatypeEnumeration.VERSION;
+    //{required, fixed="version"}
+
+
 
     /**
      * Constructor.
      */
-    public EntityItemAnySimpleType()
+    public EntityItemVersionType()
     {
     }
 
 
-    public EntityItemAnySimpleType(
+    public EntityItemVersionType(
                     final String content
                     )
     {
         super( content );
+    }
+
+
+
+    //**************************************************************
+    //  EntityItemBase
+    //**************************************************************
+
+    @Override
+    public void setDatatype(
+                    final DatatypeEnumeration datatype
+                    )
+    {
+        if (datatype != null  &&  datatype != FIXED_DATATYPE) {
+            throw new IllegalArgumentException( "invalid datatype: " + datatype);
+        }
+
+        super.setDatatype( datatype );
+    }
+
+
+    @Override
+    public DatatypeEnumeration getDatatype()
+    {
+        return FIXED_DATATYPE;
     }
 
 
@@ -73,7 +105,7 @@ public class EntityItemAnySimpleType
             return true;
         }
 
-        if (!(obj instanceof EntityItemAnySimpleType)) {
+        if (!(obj instanceof EntityItemVersionType)) {
             return false;
         }
 
@@ -81,4 +113,4 @@ public class EntityItemAnySimpleType
     }
 
 }
-// EntityItemAnySimpleType
+// EntityItemVersionType
