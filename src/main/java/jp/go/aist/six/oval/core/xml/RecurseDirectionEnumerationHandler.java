@@ -18,17 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.xml.v5;
+package jp.go.aist.six.oval.core.xml;
 
-import jp.go.aist.six.oval.model.RecurseFileSystemEnumeration;
+import jp.go.aist.six.oval.model.RecurseDirectionEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class RecurseFileSystemEnumerationHandler
+public class RecurseDirectionEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public RecurseFileSystemEnumerationHandler()
+    public RecurseDirectionEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class RecurseFileSystemEnumerationHandler
         if (value == null) {
             return null;
         }
-        RecurseFileSystemEnumeration  e = RecurseFileSystemEnumeration.class.cast( value );
+        RecurseDirectionEnumeration  e = RecurseDirectionEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class RecurseFileSystemEnumerationHandler
         if (value == null) {
             return null;
         }
-        return RecurseFileSystemEnumeration.fromValue( value.toString() );
+        return RecurseDirectionEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<RecurseFileSystemEnumeration> getFieldType()
+    public Class<RecurseDirectionEnumeration> getFieldType()
     {
-        return RecurseFileSystemEnumeration.class;
+        return RecurseDirectionEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class RecurseFileSystemEnumerationHandler
 //    }
 
 }
-// CheckEnumerationHandler
+// RecurseDirectionEnumerationHandler
