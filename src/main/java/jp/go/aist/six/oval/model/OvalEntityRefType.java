@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model;
 
-import jp.go.aist.six.oval.model.v5.Oval5Object;
 
 
 
@@ -32,7 +31,7 @@ import jp.go.aist.six.oval.model.v5.Oval5Object;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class OvalEntityRefType
-    implements Oval5Object
+    implements OvalObject
 {
 
 //    private String  _ovalID;

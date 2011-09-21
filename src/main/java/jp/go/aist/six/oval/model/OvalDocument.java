@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model;
 
 import java.util.UUID;
 import jp.go.aist.six.oval.model.common.GeneratorType;
-import jp.go.aist.six.oval.model.v5.Oval5Object;
 import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.PrePersist;
@@ -42,8 +41,7 @@ import com.google.code.morphia.annotations.PrePersist;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class OvalDocument
-    implements Oval5Object, Persistable<String>
-//    extends AbstractOvalObject
+    implements OvalObject, Persistable<String>
 {
 
     //MongoDB

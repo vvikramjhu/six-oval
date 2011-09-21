@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model;
 
-import jp.go.aist.six.oval.model.v5.Oval5Object;
 import com.google.code.morphia.annotations.Transient;
 
 
@@ -34,8 +33,7 @@ import com.google.code.morphia.annotations.Transient;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class OvalElement
-//    extends AbstractOvalObject
-    implements Oval5Object, Comparable<OvalElement>
+    implements OvalObject, Comparable<OvalElement>
 {
 
     private String  oval_id;
