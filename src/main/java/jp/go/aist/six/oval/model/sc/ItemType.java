@@ -23,11 +23,11 @@ package jp.go.aist.six.oval.model.sc;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.Oval5Object;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.MessageType;
+import jp.go.aist.six.oval.model.v5.Oval5Object;
 
 
 

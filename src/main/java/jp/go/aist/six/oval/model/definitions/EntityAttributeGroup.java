@@ -20,10 +20,10 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.Oval5Object;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 import jp.go.aist.six.oval.model.common.OperationEnumeration;
+import jp.go.aist.six.oval.model.v5.Oval5Object;
 
 
 

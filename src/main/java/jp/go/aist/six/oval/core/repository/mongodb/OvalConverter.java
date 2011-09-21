@@ -2,7 +2,6 @@ package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
-import jp.go.aist.six.oval.model.Oval5Enumeration;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
@@ -17,6 +16,7 @@ import jp.go.aist.six.oval.model.results.ContentEnumeration;
 import jp.go.aist.six.oval.model.results.ResultEnumeration;
 import jp.go.aist.six.oval.model.sc.FlagEnumeration;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
+import jp.go.aist.six.oval.model.v5.Oval5Enumeration;
 import jp.go.aist.six.oval.model.windows.FileTypeEnumeration;
 import jp.go.aist.six.oval.model.windows.RegistryTypeEnumeration;
 import org.slf4j.Logger;

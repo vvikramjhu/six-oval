@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.results;
 
-import jp.go.aist.six.oval.model.Oval5Enumeration;
+import jp.go.aist.six.oval.model.v5.Oval5Enumeration;
 
 
 
