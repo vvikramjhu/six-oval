@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.xml.v5.definitions;
 
-import jp.go.aist.six.oval.model.v5.definitions.FilterActionEnumeration;
+import jp.go.aist.six.oval.model.definitions.FilterActionEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 

@@ -11,7 +11,7 @@ import jp.go.aist.six.oval.model.common.FamilyEnumeration;
 import jp.go.aist.six.oval.model.common.MessageLevelEnumeration;
 import jp.go.aist.six.oval.model.common.OperationEnumeration;
 import jp.go.aist.six.oval.model.common.OperatorEnumeration;
-import jp.go.aist.six.oval.model.v5.definitions.FilterActionEnumeration;
+import jp.go.aist.six.oval.model.definitions.FilterActionEnumeration;
 import jp.go.aist.six.oval.model.v5.mitre.DefinitionStatusEnumeration;
 import jp.go.aist.six.oval.model.v5.results.ContentEnumeration;
 import jp.go.aist.six.oval.model.v5.results.ResultEnumeration;

@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.v5.mitre;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.v5.definitions.MetadataItem;
+import jp.go.aist.six.oval.model.definitions.MetadataItem;
 import com.google.code.morphia.annotations.Transient;
 
 

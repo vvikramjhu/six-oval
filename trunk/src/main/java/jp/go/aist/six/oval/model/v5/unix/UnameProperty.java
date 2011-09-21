@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.unix;
 
-import jp.go.aist.six.oval.model.v5.definitions.EntityPropertyMap;
+import jp.go.aist.six.oval.model.definitions.EntityPropertyMap;
 
 
 

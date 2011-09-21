@@ -2,7 +2,7 @@ package jp.go.aist.six.test.oval.core.ws;
 
 import java.util.Date;
 import jp.go.aist.six.oval.core.OvalContext;
-import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.repository.QueryResult;
 import jp.go.aist.six.oval.repository.QueryResultElements;
 import jp.go.aist.six.oval.repository.QueryResultMetadata;

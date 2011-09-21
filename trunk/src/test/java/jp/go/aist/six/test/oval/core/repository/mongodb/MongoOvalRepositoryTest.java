@@ -7,12 +7,12 @@ import jp.go.aist.six.oval.core.repository.mongodb.StateDAO;
 import jp.go.aist.six.oval.core.repository.mongodb.SystemObjectDAO;
 import jp.go.aist.six.oval.core.repository.mongodb.TestDAO;
 import jp.go.aist.six.oval.core.repository.mongodb.VariableDAO;
-import jp.go.aist.six.oval.model.v5.definitions.DefinitionType;
-import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.v5.definitions.StateType;
-import jp.go.aist.six.oval.model.v5.definitions.SystemObjectType;
-import jp.go.aist.six.oval.model.v5.definitions.TestType;
-import jp.go.aist.six.oval.model.v5.definitions.VariableType;
+import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.StateType;
+import jp.go.aist.six.oval.model.definitions.SystemObjectType;
+import jp.go.aist.six.oval.model.definitions.TestType;
+import jp.go.aist.six.oval.model.definitions.VariableType;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.test.oval.core.DefinitionsSample;
 import jp.go.aist.six.util.persist.Persistable;
@@ -99,7 +99,7 @@ public class MongoOvalRepositoryTest
 //                        ,
 //                        // def:12313, windows, vulnerability, CVE-2011-0031
                       {
-                          jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+                          jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
                           "test/resources/data/oval5/oval5.9_def12313-5_v_windows_CVE-2011-0031.xml",
                           null
                       }
@@ -213,7 +213,7 @@ public class MongoOvalRepositoryTest
         return new Object[][] {
                         // def:7120, windows, vulnerability, CVE-2010-0820
                         {
-                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
                             "test/resources/data/oval-definitions-5/oval_windows_vulnerability_def7120_definitions5.9.xml",
                             null
                         }

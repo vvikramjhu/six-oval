@@ -48,7 +48,7 @@ public class MorphiaQueryBuilderTest
     {
         return new Object[][] {
                       {
-                          jp.go.aist.six.oval.model.v5.definitions.DefinitionType.class,
+                          jp.go.aist.six.oval.model.definitions.DefinitionType.class,
                           new RelationalBinding( "class", ClassEnumeration.VULNERABILITY ),
                           null,
                           new Limit( 10, 0 )

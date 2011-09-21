@@ -23,10 +23,10 @@ package jp.go.aist.six.oval.model.v5.windows;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityStateIntType;
-import jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType;
-import jp.go.aist.six.oval.model.v5.definitions.StateType;
+import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
+import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
+import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 

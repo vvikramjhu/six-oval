@@ -1,7 +1,7 @@
 package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.util.Collection;
-import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.v5.results.OvalResults;
 import jp.go.aist.six.oval.model.v5.results.ResultsType;
 import jp.go.aist.six.oval.model.v5.results.SystemType;

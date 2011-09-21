@@ -1,6 +1,6 @@
 package jp.go.aist.six.oval.core.repository.mongodb;
 
-import jp.go.aist.six.oval.model.v5.definitions.StateType;
+import jp.go.aist.six.oval.model.definitions.StateType;
 import com.google.code.morphia.Datastore;
 
 
