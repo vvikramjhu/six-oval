@@ -18,68 +18,66 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.independent;
+package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.common.CheckEnumeration;
-import jp.go.aist.six.oval.model.definitions.TestType;
+import jp.go.aist.six.oval.model.common.FamilyEnumeration;
+import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
 
 
 
 /**
- * The family test is used to check the family a certain system belongs to.
+ * The EntityItemFamily defines a string entity value
+ * that is restricted to a set of enumerations.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class FamilyTest
-    extends TestType
+public class EntityItemFamilyType
+    extends EntityItemStringType
 {
 
     /**
      * Constructor.
      */
-    public FamilyTest()
+    public EntityItemFamilyType()
     {
-        this( null, 0 );
     }
 
 
-    public FamilyTest(
-                    final String id,
-                    final int version
+    public EntityItemFamilyType(
+                    final String content
                     )
     {
-        this( id, version, null, null );
+        super( content );
     }
 
 
-    public FamilyTest(
-                    final String id,
-                    final int version,
-                    final String comment,
-                    final CheckEnumeration check
+
+    public EntityItemFamilyType(
+                    final FamilyEnumeration content
                     )
     {
-        super( id, version, comment, check );
-
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.family;
+        super( (content == null ? null : content.value()) );
     }
 
 
 
     //**************************************************************
-    //  Test
+    //  EntityItemBase
     //**************************************************************
 
     @Override
-    public PlatformEntityType getEntityType()
+    public void setContent(
+                    final String content
+                    )
     {
-        return PlatformEntityType.INDEPENDENT_FAMILY;
+        if (content != null) {
+            //validation
+            FamilyEnumeration.fromValue( content );
+        }
+
+        super.setContent( content );
     }
 
 
@@ -101,20 +99,16 @@ public class FamilyTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof FamilyTest)) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof EntityItemFamilyType)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
-
-
-    @Override
-    public String toString()
-    {
-        return "family_test[" + super.toString() + "]";
-    }
-
 }
-// FamilyTest
+// EntityItemFamilyType

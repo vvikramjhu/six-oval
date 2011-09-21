@@ -18,67 +18,95 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.independent;
+package jp.go.aist.six.oval.model.independent;
 
+import java.util.Collection;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.SystemObjectType;
+import jp.go.aist.six.oval.model.common.CheckEnumeration;
+import jp.go.aist.six.oval.model.definitions.StateRefType;
+import jp.go.aist.six.oval.model.definitions.SystemObjectRefType;
+import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 
 /**
- * The family object is used by a family test
- * to define those objects to evaluate based on a specified state.
+ * An unknown test acts as a placeholder for tests whose implementation is unknown.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class FamilyObject
-    extends SystemObjectType
+public class UnknownTest
+    extends TestType
 {
 
     /**
      * Constructor.
      */
-    public FamilyObject()
+    public UnknownTest()
     {
         this( null, 0 );
     }
 
 
-    public FamilyObject(
+    public UnknownTest(
                     final String id,
                     final int version
                     )
     {
-        this( id, version, null );
+        this( id, version, null, null );
     }
 
 
-    public FamilyObject(
+    public UnknownTest(
                     final String id,
                     final int version,
-                    final String comment
+                    final String comment,
+                    final CheckEnumeration check
                     )
     {
-        super( id, version, comment );
+        super( id, version, comment, check );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.family;
+        _oval_component_type = OvalComponentType.unknown;
     }
 
 
 
     //**************************************************************
-    //  SystemObject
+    //  Test
     //**************************************************************
 
     @Override
     public PlatformEntityType getEntityType()
     {
-        return PlatformEntityType.INDEPENDENT_FAMILY;
+        return PlatformEntityType.INDEPENDENT_UNKNOWN;
+    }
+
+
+    @Override
+    public void setObject(
+                    final SystemObjectRefType ref
+                    )
+    {
+    }
+
+
+    @Override
+    public SystemObjectRefType getObject()
+    {
+        return null;
+    }
+
+
+
+    @Override
+    public void setState(
+                    final Collection<? extends StateRefType> ref
+                    )
+    {
     }
 
 
@@ -100,7 +128,7 @@ public class FamilyObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof FamilyObject)) {
+        if (!(obj instanceof UnknownTest)) {
             return false;
         }
 
@@ -112,8 +140,8 @@ public class FamilyObject
     @Override
     public String toString()
     {
-        return "family_object[" + super.toString() + "]";
+        return "unknown_test[" + super.toString() + "]";
     }
 
 }
-// FamilyObject
+// UnknownTest

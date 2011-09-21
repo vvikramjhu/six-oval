@@ -18,29 +18,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.independent;
+package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.common.FamilyEnumeration;
-import jp.go.aist.six.oval.model.v5.sc.ItemType;
+import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * This element stores high level system OS type,
- * otherwise known as the family.
+ * The family state contains a single entity that is used
+ * to check the family associated with the system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class FamilyItem
-    extends ItemType
+public class FamilyState
+    extends StateType
 {
 
-    private EntityItemFamilyType  family;
+    private EntityStateFamilyType  family;
     //{0..1}
 
 
@@ -48,17 +47,28 @@ public class FamilyItem
     /**
      * Constructor.
      */
-    public FamilyItem()
+    public FamilyState()
     {
-        this( 0 );
+        this( null, 0 );
     }
 
 
-    public FamilyItem(
-                    final int id
+    public FamilyState(
+                    final String id,
+                    final int version
                     )
     {
-        super( id );
+        this( id, version, null );
+    }
+
+
+    public FamilyState(
+                    final String id,
+                    final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
 
         _oval_platform_type = OvalPlatformType.independent;
         _oval_component_type = OvalComponentType.family;
@@ -66,33 +76,25 @@ public class FamilyItem
 
 
 
+
     /**
      */
     public void setFamily(
-                    final EntityItemFamilyType family
+                    final EntityStateFamilyType family
                     )
     {
         this.family = family;
     }
 
 
-    public EntityItemFamilyType getFamily()
+    public EntityStateFamilyType getFamily()
     {
         return this.family;
     }
 
 
-    public FamilyItem family(
-                    final FamilyEnumeration family
-                    )
-    {
-        setFamily( new EntityItemFamilyType( family ) );
-        return this;
-    }
-
-
-    public FamilyItem family(
-                    final EntityItemFamilyType family
+    public FamilyState family(
+                    final EntityStateFamilyType family
                     )
     {
         setFamily( family );
@@ -102,7 +104,7 @@ public class FamilyItem
 
 
     //**************************************************************
-    //  Item
+    //  State
     //**************************************************************
 
     @Override
@@ -113,17 +115,48 @@ public class FamilyItem
 
 
 
+//    @Override
+//    public Iterator<EntityAttributeGroup> iterateProperties()
+//    {
+//        EntityAttributeGroup  p = getFamily();
+//        return Collections.singletonList( p ).iterator();
+//    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
     @Override
+    public int hashCode()
+    {
+        return super.hashCode();
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (!(obj instanceof FamilyState)) {
+            return false;
+        }
+
+        return super.equals( obj );
+    }
+
+
+
+    @Override
     public String toString()
     {
-        return "family_item[family=" + getFamily()
-             + ", " + super.toString()
-             + "]";
+        return "family_state[" + super.toString()
+                        + ", family=" + getFamily()
+                        + "]";
     }
 
 }
-// FamilyItem
+// FamilyState

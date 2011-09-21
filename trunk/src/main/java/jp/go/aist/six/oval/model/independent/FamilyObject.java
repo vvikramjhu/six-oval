@@ -18,83 +18,67 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.independent;
+package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.common.CheckEnumeration;
-import jp.go.aist.six.oval.model.definitions.TestType;
+import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 
 /**
- * The textfilecontent54 test is used to check the contents of a text file
- * (aka a configuration file) by looking at individual blocks of text.
+ * The family object is used by a family test
+ * to define those objects to evaluate based on a specified state.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class TextfileContent54Test
-    extends TestType
+public class FamilyObject
+    extends SystemObjectType
 {
 
     /**
      * Constructor.
      */
-    public TextfileContent54Test()
+    public FamilyObject()
     {
         this( null, 0 );
     }
 
 
-    public TextfileContent54Test(
+    public FamilyObject(
                     final String id,
                     final int version
                     )
     {
-        this( id, version, null, null );
+        this( id, version, null );
     }
 
 
-    public TextfileContent54Test(
+    public FamilyObject(
                     final String id,
                     final int version,
-                    final String comment,
-                    final CheckEnumeration check
+                    final String comment
                     )
     {
-        super( id, version, comment, check );
+        super( id, version, comment );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.textfilecontent54;
+        _oval_component_type = OvalComponentType.family;
     }
-
-
-//    public TextfileContent54Test(
-//                    final String id,
-//                    final int version,
-//                    final String comment,
-//                    final CheckEnumeration check,
-//                    final SystemObjectRefType object,
-//                    final StateRefType[] stateList
-//                    )
-//    {
-//        super( id, version, comment, check, object, stateList );
-//    }
-
 
 
 
     //**************************************************************
-    //  Test
+    //  SystemObject
     //**************************************************************
 
     @Override
     public PlatformEntityType getEntityType()
     {
-        return PlatformEntityType.INDEPENDENT_TEXTFILECONTENT54;
+        return PlatformEntityType.INDEPENDENT_FAMILY;
     }
 
 
@@ -116,7 +100,7 @@ public class TextfileContent54Test
                     final Object obj
                     )
     {
-        if (!(obj instanceof TextfileContent54Test)) {
+        if (!(obj instanceof FamilyObject)) {
             return false;
         }
 
@@ -128,8 +112,8 @@ public class TextfileContent54Test
     @Override
     public String toString()
     {
-        return "textfilecontent54_test[" + super.toString() + "]";
+        return "family_object[" + super.toString() + "]";
     }
 
 }
-// TextFileContent54Test
+// FamilyObject
