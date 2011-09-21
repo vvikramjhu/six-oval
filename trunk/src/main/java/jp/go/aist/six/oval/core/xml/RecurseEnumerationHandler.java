@@ -18,17 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.xml.v5;
+package jp.go.aist.six.oval.core.xml;
 
-import jp.go.aist.six.oval.model.RecurseDirectionEnumeration;
+import jp.go.aist.six.oval.model.RecurseEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class RecurseDirectionEnumerationHandler
+public class RecurseEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public RecurseDirectionEnumerationHandler()
+    public RecurseEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class RecurseDirectionEnumerationHandler
         if (value == null) {
             return null;
         }
-        RecurseDirectionEnumeration  e = RecurseDirectionEnumeration.class.cast( value );
+        RecurseEnumeration  e = RecurseEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class RecurseDirectionEnumerationHandler
         if (value == null) {
             return null;
         }
-        return RecurseDirectionEnumeration.fromValue( value.toString() );
+        return RecurseEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<RecurseDirectionEnumeration> getFieldType()
+    public Class<RecurseEnumeration> getFieldType()
     {
-        return RecurseDirectionEnumeration.class;
+        return RecurseEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class RecurseDirectionEnumerationHandler
 //    }
 
 }
-// RecurseDirectionEnumerationHandler
+// RecurseEnumerationHandler
