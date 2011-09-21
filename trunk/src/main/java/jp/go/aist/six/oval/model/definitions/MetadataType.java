@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.definitions;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.v5.Oval5Object;
+import jp.go.aist.six.oval.model.OvalObject;
 
 
 
@@ -36,7 +36,7 @@ import jp.go.aist.six.oval.model.v5.Oval5Object;
  * @version $Id$
  */
 public class MetadataType
-    implements Oval5Object
+    implements OvalObject
 {
 
     private String  title;
