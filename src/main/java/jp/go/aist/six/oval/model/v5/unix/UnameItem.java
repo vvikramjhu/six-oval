@@ -23,9 +23,9 @@ package jp.go.aist.six.oval.model.v5.unix;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
-import jp.go.aist.six.oval.model.v5.sc.ItemType;
-import jp.go.aist.six.oval.model.v5.sc.StatusEnumeration;
+import jp.go.aist.six.oval.model.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.sc.ItemType;
+import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 

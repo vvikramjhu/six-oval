@@ -18,62 +18,36 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.sc;
+package jp.go.aist.six.oval.model.sc;
 
-import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 
 /**
- * The EntityItemString type is extended by the entities of an individual item.
- * This specific type describes simple string data.
+ * The EntityItemAnySimple type is extended by the entities of an individual item.
+ * This specific type describes any simple data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemIPAddressStringType
+public class EntityItemAnySimpleType
     extends EntityItemSimpleBaseType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemIPAddressStringType()
+    public EntityItemAnySimpleType()
     {
     }
 
 
-    public EntityItemIPAddressStringType(
+    public EntityItemAnySimpleType(
                     final String content
                     )
     {
         super( content );
-    }
-
-
-
-    //**************************************************************
-    //  EntityItemBase
-    //**************************************************************
-
-    @Override
-    public void setDatatype(
-                    final DatatypeEnumeration datatype
-                    )
-    {
-        if (datatype != null) {
-            if (datatype == DatatypeEnumeration.IPV4_ADDRESS
-                            ||  datatype == DatatypeEnumeration.IPV6_ADDRESS
-                            ||  datatype == DatatypeEnumeration.STRING
-                            ) {
-                // xsd:restriction satisfied.
-            } else {
-                throw new IllegalArgumentException( "invalid datatype: " + datatype);
-            }
-        }
-
-        super.setDatatype( datatype );
     }
 
 
@@ -99,20 +73,12 @@ public class EntityItemIPAddressStringType
             return true;
         }
 
-        if (!(obj instanceof EntityItemIPAddressStringType)) {
+        if (!(obj instanceof EntityItemAnySimpleType)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
-
 }
-// EntityItemIPAddressStringType
+// EntityItemAnySimpleType

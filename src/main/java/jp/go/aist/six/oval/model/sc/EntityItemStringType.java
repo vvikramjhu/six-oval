@@ -18,66 +18,44 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.sc;
+package jp.go.aist.six.oval.model.sc;
 
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 
 /**
- * The EntityItemEVRString type is extended by the entities of
- * an individual item.
- * This type represents the epoch, version, and release fields
- * as a single version string.
- * It has the form "EPOCH:VERSION-RELEASE".
+ * The EntityItemString type is extended by the entities of an individual item.
+ * This specific type describes simple string data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemEVRStringType
+public class EntityItemStringType
     extends EntityItemSimpleBaseType
 {
 
     public static final DatatypeEnumeration  FIXED_DATATYPE =
-        DatatypeEnumeration.EVR_STRING;
-    //{required, fixed="evr_string"}
+        DatatypeEnumeration.STRING;
+    //{optional, fixed="string"}
 
 
 
     /**
      * Constructor.
      */
-    public EntityItemEVRStringType()
+    public EntityItemStringType()
     {
     }
 
 
-    public EntityItemEVRStringType(
+    public EntityItemStringType(
                     final String content
                     )
     {
         super( content );
     }
-
-
-//    public EntityItemEVRStringType(
-//                    final String content,
-//                    final StatusEnumeration status
-//                    )
-//    {
-//        super( content, status );
-//    }
-//
-//
-//    public EntityItemEVRStringType(
-//                    final String content,
-//                    final DatatypeEnumeration datatype,
-//                    final StatusEnumeration status
-//                    )
-//    {
-//        super( content, datatype, status );
-//    }
 
 
 
@@ -95,14 +73,6 @@ public class EntityItemEVRStringType
         }
 
         super.setDatatype( datatype );
-    }
-
-
-    //{required}
-    @Override
-    public DatatypeEnumeration getDatatype()
-    {
-        return FIXED_DATATYPE;
     }
 
 
@@ -128,12 +98,20 @@ public class EntityItemEVRStringType
             return true;
         }
 
-        if (!(obj instanceof EntityItemEVRStringType)) {
+        if (!(obj instanceof EntityItemStringType)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
+
+
+//    @Override
+//    public String toString()
+//    {
+//        return "[" + super.toString() + "]";
+//    }
+
 }
-// EntityItemEVRStringType
+// EntityItemStringType

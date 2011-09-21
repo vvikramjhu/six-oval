@@ -18,58 +18,76 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.sc;
+package jp.go.aist.six.oval.model.sc;
 
+import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 
 /**
- * The EntityItemBase is an abstract type that serves as the base type
- * for all item entities.
+ * The EntityItemInt type is extended by the entities of an individual item.
+ * This specific type describes simple integer data.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class EntityItemSimpleBaseType
-    extends EntityAttributeGroup
+public class EntityItemIntType
+    extends EntityItemSimpleBaseType
 {
 
-    private String  content;
-    //{simpleContent, base="xsd:anySimpleType"}
+    public static final DatatypeEnumeration  FIXED_DATATYPE =
+        DatatypeEnumeration.INT;
+    //{required, fixed="int"}
 
 
 
     /**
      * Constructor.
      */
-    public EntityItemSimpleBaseType()
+    public EntityItemIntType()
     {
     }
 
 
-    public EntityItemSimpleBaseType(
+    public EntityItemIntType(
                     final String content
                     )
     {
-        setContent( content );
+        super( content );
     }
 
 
-
-    /**
-     */
-    public void setContent(
-                    final String content
+    public EntityItemIntType(
+                    final long content
                     )
     {
-        this.content = content;
+        super( String.valueOf( content ) );
     }
 
 
-    public String getContent()
+
+    //**************************************************************
+    //  EntityItemBase
+    //**************************************************************
+
+    @Override
+    public void setDatatype(
+                    final DatatypeEnumeration datatype
+                    )
     {
-        return this.content;
+        if (datatype != null  &&  datatype != FIXED_DATATYPE) {
+            throw new IllegalArgumentException( "invalid datatype: " + datatype);
+        }
+
+        super.setDatatype( datatype );
+    }
+
+
+    @Override
+    public DatatypeEnumeration getDatatype()
+    {
+        return FIXED_DATATYPE;
     }
 
 
@@ -81,13 +99,7 @@ public abstract class EntityItemSimpleBaseType
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        String  content = getContent();
-        result = prime * result + ((content == null) ? 0 : content.hashCode());
-
-        return result;
+        return super.hashCode();
     }
 
 
@@ -101,32 +113,20 @@ public abstract class EntityItemSimpleBaseType
             return true;
         }
 
-        if (!(obj instanceof EntityItemSimpleBaseType)) {
+        if (!(obj instanceof EntityItemIntType)) {
             return false;
         }
 
-        if (super.equals( obj )) {
-            EntityItemSimpleBaseType  other = (EntityItemSimpleBaseType)obj;
-            String  other_content = other.getContent();
-            String   this_content =  this.getContent();
-            if (this_content == other_content
-                            ||  (this_content != null  &&  this_content.equals( other_content ))) {
-                return true;
-            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
 
 
 
-    @Override
-    public String toString()
-    {
-        return "" + getContent()
-                  + ", " + super.toString()
-                  ;
-    }
+//    @Override
+//    public String toString()
+//    {
+//        return "[" + super.toString() + "]";
+//    }
 
 }
-// EntityItemSimpleBaseType
+// EntityItemIntType

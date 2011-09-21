@@ -26,9 +26,9 @@ import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
-import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
-import jp.go.aist.six.oval.model.v5.sc.ItemType;
+import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
+import jp.go.aist.six.oval.model.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.sc.ItemType;
 
 
 

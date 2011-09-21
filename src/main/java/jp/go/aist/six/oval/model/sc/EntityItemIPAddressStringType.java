@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.sc;
+package jp.go.aist.six.oval.model.sc;
 
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
@@ -32,25 +32,19 @@ import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemStringType
+public class EntityItemIPAddressStringType
     extends EntityItemSimpleBaseType
 {
-
-    public static final DatatypeEnumeration  FIXED_DATATYPE =
-        DatatypeEnumeration.STRING;
-    //{optional, fixed="string"}
-
-
 
     /**
      * Constructor.
      */
-    public EntityItemStringType()
+    public EntityItemIPAddressStringType()
     {
     }
 
 
-    public EntityItemStringType(
+    public EntityItemIPAddressStringType(
                     final String content
                     )
     {
@@ -68,8 +62,15 @@ public class EntityItemStringType
                     final DatatypeEnumeration datatype
                     )
     {
-        if (datatype != null  &&  datatype != FIXED_DATATYPE) {
-            throw new IllegalArgumentException( "invalid datatype: " + datatype);
+        if (datatype != null) {
+            if (datatype == DatatypeEnumeration.IPV4_ADDRESS
+                            ||  datatype == DatatypeEnumeration.IPV6_ADDRESS
+                            ||  datatype == DatatypeEnumeration.STRING
+                            ) {
+                // xsd:restriction satisfied.
+            } else {
+                throw new IllegalArgumentException( "invalid datatype: " + datatype);
+            }
         }
 
         super.setDatatype( datatype );
@@ -98,7 +99,7 @@ public class EntityItemStringType
             return true;
         }
 
-        if (!(obj instanceof EntityItemStringType)) {
+        if (!(obj instanceof EntityItemIPAddressStringType)) {
             return false;
         }
 
@@ -114,4 +115,4 @@ public class EntityItemStringType
 //    }
 
 }
-// EntityItemStringType
+// EntityItemIPAddressStringType

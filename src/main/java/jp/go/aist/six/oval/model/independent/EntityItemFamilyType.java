@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.common.FamilyEnumeration;
-import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 
 
 

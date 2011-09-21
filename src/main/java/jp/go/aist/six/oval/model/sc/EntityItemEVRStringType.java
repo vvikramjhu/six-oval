@@ -18,44 +18,66 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.sc;
+package jp.go.aist.six.oval.model.sc;
 
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 
 /**
- * The EntityItemVersion type is extended by the entities of an individual item.
- * This specific type describes version data.
+ * The EntityItemEVRString type is extended by the entities of
+ * an individual item.
+ * This type represents the epoch, version, and release fields
+ * as a single version string.
+ * It has the form "EPOCH:VERSION-RELEASE".
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemVersionType
+public class EntityItemEVRStringType
     extends EntityItemSimpleBaseType
 {
 
     public static final DatatypeEnumeration  FIXED_DATATYPE =
-        DatatypeEnumeration.VERSION;
-    //{required, fixed="version"}
+        DatatypeEnumeration.EVR_STRING;
+    //{required, fixed="evr_string"}
 
 
 
     /**
      * Constructor.
      */
-    public EntityItemVersionType()
+    public EntityItemEVRStringType()
     {
     }
 
 
-    public EntityItemVersionType(
+    public EntityItemEVRStringType(
                     final String content
                     )
     {
         super( content );
     }
+
+
+//    public EntityItemEVRStringType(
+//                    final String content,
+//                    final StatusEnumeration status
+//                    )
+//    {
+//        super( content, status );
+//    }
+//
+//
+//    public EntityItemEVRStringType(
+//                    final String content,
+//                    final DatatypeEnumeration datatype,
+//                    final StatusEnumeration status
+//                    )
+//    {
+//        super( content, datatype, status );
+//    }
 
 
 
@@ -76,6 +98,7 @@ public class EntityItemVersionType
     }
 
 
+    //{required}
     @Override
     public DatatypeEnumeration getDatatype()
     {
@@ -105,7 +128,7 @@ public class EntityItemVersionType
             return true;
         }
 
-        if (!(obj instanceof EntityItemVersionType)) {
+        if (!(obj instanceof EntityItemEVRStringType)) {
             return false;
         }
 
@@ -113,4 +136,4 @@ public class EntityItemVersionType
     }
 
 }
-// EntityItemVersionType
+// EntityItemEVRStringType

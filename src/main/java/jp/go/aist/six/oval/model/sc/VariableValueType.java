@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.sc;
+package jp.go.aist.six.oval.model.sc;
 
 import jp.go.aist.six.oval.model.Oval5Object;
 
@@ -26,53 +26,76 @@ import jp.go.aist.six.oval.model.Oval5Object;
 
 
 /**
- * The ItemReference specifies an item in the system characteristics.
- * This reference is used to link global OVAL Objects to specific items.
+ * The variableValue holds the value to a variable
+ * used during the collection of an object.
  *
- * @author	Akihito Nakamura, AIST
+ * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class ReferenceType
+public class VariableValueType
     implements Oval5Object
 //    implements Dependent<SystemObjectType>
 {
 
-    private int  item_ref;
-    //{required, oval:ItemIDPattern}
+    private String  variable_id;
+    //{required, oval:VariableIDPattern}
+
+
+    private String  content;
+    //{xsd:anySimpleType}
 
 
 
     /**
      * Constructor.
      */
-    public ReferenceType()
+    public VariableValueType()
     {
     }
 
 
-    public ReferenceType(
-                    final int item_ref
+    public VariableValueType(
+                    final String variable_id,
+                    final String content
                     )
     {
-        setItemRef( item_ref );
+        setVariableID( variable_id );
+        setContent( content );
     }
 
 
 
     /**
      */
-    public void setItemRef(
-                    final int item_ref
+    public void setVariableID(
+                    final String id
                     )
     {
-        this.item_ref = item_ref;
+        this.variable_id = id;
     }
 
 
-    public int getItemRef()
+    public String getVariableID()
     {
-        return this.item_ref;
+        return this.variable_id;
+    }
+
+
+
+    /**
+     */
+    public void setContent(
+                    final String content
+                    )
+    {
+        this.content = content;
+    }
+
+
+    public String getContent()
+    {
+        return this.content;
     }
 
 
@@ -107,47 +130,12 @@ public class ReferenceType
     //**************************************************************
 
     @Override
-    public int hashCode()
-    {
-        final int  prime = 37;
-        int  result = 17;
-
-        result = prime * result + getItemRef();
-
-        return result;
-    }
-
-
-
-    @Override
-    public boolean equals(
-                    final Object obj
-                    )
-    {
-        if (this == obj) {
-            return true;
-        }
-
-        if (!(obj instanceof ReferenceType)) {
-            return false;
-        }
-
-        ReferenceType  other = (ReferenceType)obj;
-        if (this.getItemRef() == other.getItemRef()) {
-            return true;
-        }
-
-        return false;
-    }
-
-
-
-    @Override
     public String toString()
     {
-        return "[item_ref=" + getItemRef()
+        return "[variable_id=" + getVariableID()
+                        + ", " + getContent()
                         + "]";
     }
 
 }
-// ReferenceType
+// VariableValueType
