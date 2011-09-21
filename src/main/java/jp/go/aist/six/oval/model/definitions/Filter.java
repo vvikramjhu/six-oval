@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.v5.Oval5Object;
+import jp.go.aist.six.oval.model.OvalObject;
 
 
 
@@ -37,7 +37,7 @@ import jp.go.aist.six.oval.model.v5.Oval5Object;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Filter
-    implements Oval5Object
+    implements OvalObject
 {
 
     private String  content;

@@ -24,8 +24,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.common.FamilyEnumeration;
-import jp.go.aist.six.oval.model.v5.Oval5Object;
 
 
 
@@ -38,7 +38,7 @@ import jp.go.aist.six.oval.model.v5.Oval5Object;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class AffectedType
-    implements Oval5Object
+    implements OvalObject
 {
 
     private final Collection<String>  platform = new HashSet<String>();
