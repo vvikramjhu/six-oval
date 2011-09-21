@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model;
 
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.v5.Oval5Object;
 
 
 
@@ -35,7 +34,7 @@ import jp.go.aist.six.oval.model.v5.Oval5Object;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class Container<E>
-    implements Oval5Object
+    implements OvalObject
 {
 
     /**
