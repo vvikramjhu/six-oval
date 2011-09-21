@@ -18,17 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.xml.v5.common;
+package jp.go.aist.six.oval.core.xml.sc;
 
-import jp.go.aist.six.oval.model.common.FamilyEnumeration;
+import jp.go.aist.six.oval.model.sc.FlagEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class FamilyEnumerationHandler
+public class FlagEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public FamilyEnumerationHandler()
+    public FlagEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class FamilyEnumerationHandler
         if (value == null) {
             return null;
         }
-        FamilyEnumeration  e = FamilyEnumeration.class.cast( value );
+        FlagEnumeration  e = FlagEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class FamilyEnumerationHandler
         if (value == null) {
             return null;
         }
-        return FamilyEnumeration.fromValue( value.toString() );
+        return FlagEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<FamilyEnumeration> getFieldType()
+    public Class<FlagEnumeration> getFieldType()
     {
-        return FamilyEnumeration.class;
+        return FlagEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class FamilyEnumerationHandler
 //    }
 
 }
-// FamilyEnumerationHandler
+// FlagEnumerationHandler

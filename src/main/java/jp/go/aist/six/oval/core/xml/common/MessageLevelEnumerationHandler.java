@@ -18,17 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.xml.v5.sc;
+package jp.go.aist.six.oval.core.xml.common;
 
-import jp.go.aist.six.oval.model.sc.FlagEnumeration;
+import jp.go.aist.six.oval.model.common.MessageLevelEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class FlagEnumerationHandler
+public class MessageLevelEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public FlagEnumerationHandler()
+    public MessageLevelEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class FlagEnumerationHandler
         if (value == null) {
             return null;
         }
-        FlagEnumeration  e = FlagEnumeration.class.cast( value );
+        MessageLevelEnumeration  e = MessageLevelEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class FlagEnumerationHandler
         if (value == null) {
             return null;
         }
-        return FlagEnumeration.fromValue( value.toString() );
+        return MessageLevelEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<FlagEnumeration> getFieldType()
+    public Class<MessageLevelEnumeration> getFieldType()
     {
-        return FlagEnumeration.class;
+        return MessageLevelEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class FlagEnumerationHandler
 //    }
 
 }
-// FlagEnumerationHandler
+// MessageLevelEnumerationHandler

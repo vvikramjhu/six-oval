@@ -18,17 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.xml.v5.common;
+package jp.go.aist.six.oval.core.xml.common;
 
-import jp.go.aist.six.oval.model.common.OperationEnumeration;
+import jp.go.aist.six.oval.model.common.ExistenceEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class OperationEnumerationHandler
+public class ExistenceEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public OperationEnumerationHandler()
+    public ExistenceEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class OperationEnumerationHandler
         if (value == null) {
             return null;
         }
-        OperationEnumeration  e = OperationEnumeration.class.cast( value );
+        ExistenceEnumeration  e = ExistenceEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class OperationEnumerationHandler
         if (value == null) {
             return null;
         }
-        return OperationEnumeration.fromValue( value.toString() );
+        return ExistenceEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<OperationEnumeration> getFieldType()
+    public Class<ExistenceEnumeration> getFieldType()
     {
-        return OperationEnumeration.class;
+        return ExistenceEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class OperationEnumerationHandler
 //    }
 
 }
-// OperationEnumerationHandler
+// ExistenceEnumerationHandler

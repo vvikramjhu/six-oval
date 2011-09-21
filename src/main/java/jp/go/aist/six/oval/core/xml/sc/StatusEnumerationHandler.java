@@ -18,17 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.xml.v5.results;
+package jp.go.aist.six.oval.core.xml.sc;
 
-import jp.go.aist.six.oval.model.results.ContentEnumeration;
+import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class ContentEnumerationHandler
+public class StatusEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public ContentEnumerationHandler()
+    public StatusEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class ContentEnumerationHandler
         if (value == null) {
             return null;
         }
-        ContentEnumeration  e = ContentEnumeration.class.cast( value );
+        StatusEnumeration  e = StatusEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class ContentEnumerationHandler
         if (value == null) {
             return null;
         }
-        return ContentEnumeration.fromValue( value.toString() );
+        return StatusEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<ContentEnumeration> getFieldType()
+    public Class<StatusEnumeration> getFieldType()
     {
-        return ContentEnumeration.class;
+        return StatusEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class ContentEnumerationHandler
 //    }
 
 }
-// ContentEnumerationHandler
+// StatusEnumerationHandler
