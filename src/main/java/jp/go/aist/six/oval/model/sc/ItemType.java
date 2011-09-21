@@ -24,10 +24,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.MessageType;
-import jp.go.aist.six.oval.model.v5.Oval5Object;
 
 
 
@@ -44,7 +44,7 @@ import jp.go.aist.six.oval.model.v5.Oval5Object;
 // if the common abstract super class is mapped to a super table.
 //public abstract class Item
 public class ItemType
-    implements Oval5Object
+    implements OvalObject
 //    implements Dependent<OvalSystemCharacteristics>
 {
 
