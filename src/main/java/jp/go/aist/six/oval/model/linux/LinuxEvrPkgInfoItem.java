@@ -18,11 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.linux;
+package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemEVRStringType;
 import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
@@ -30,27 +28,38 @@ import jp.go.aist.six.oval.model.v5.sc.StatusEnumeration;
 
 
 
+
 /**
- * The dpkginfo item stores DPKG package info.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class DpkgInfoItem
-    extends LinuxEvrPkgInfoItem
+public abstract class LinuxEvrPkgInfoItem
+    extends LinuxPkgInfoItem
 {
+
+    private EntityItemAnySimpleType  epoch;
+    //{0..1}
+
+    private EntityItemAnySimpleType  release;
+    //{0..1}
+
+    private EntityItemEVRStringType  evr;
+    //{0..1}
+
+
 
     /**
      * Constructor.
      */
-    public DpkgInfoItem()
+    public LinuxEvrPkgInfoItem()
     {
         this( 0 );
     }
 
 
-    public DpkgInfoItem(
+    public LinuxEvrPkgInfoItem(
                     final int id
                     )
     {
@@ -58,7 +67,7 @@ public class DpkgInfoItem
     }
 
 
-    public DpkgInfoItem(
+    public LinuxEvrPkgInfoItem(
                     final int id,
                     final StatusEnumeration status
                     )
@@ -67,7 +76,7 @@ public class DpkgInfoItem
     }
 
 
-    public DpkgInfoItem(
+    public LinuxEvrPkgInfoItem(
                     final int id,
                     final StatusEnumeration status,
                     final String name
@@ -79,7 +88,7 @@ public class DpkgInfoItem
     }
 
 
-    public DpkgInfoItem(
+    public LinuxEvrPkgInfoItem(
                     final int id,
                     final StatusEnumeration status,
                     final EntityItemStringType name
@@ -96,7 +105,8 @@ public class DpkgInfoItem
     }
 
 
-    public DpkgInfoItem(
+
+    public LinuxEvrPkgInfoItem(
                     final int id,
                     final String arch,
                     final String name,
@@ -110,7 +120,7 @@ public class DpkgInfoItem
     }
 
 
-    public DpkgInfoItem(
+    public LinuxEvrPkgInfoItem(
                     final int id,
                     final StatusEnumeration status,
                     final String arch,
@@ -132,7 +142,7 @@ public class DpkgInfoItem
     }
 
 
-    public DpkgInfoItem(
+    public LinuxEvrPkgInfoItem(
                     final int id,
                     final StatusEnumeration status,
                     final EntityItemStringType arch,
@@ -143,97 +153,94 @@ public class DpkgInfoItem
                     final EntityItemEVRStringType evr
                     )
     {
-        super( id, status, arch, name, version, release, epoch, evr );
+        super( id, status, arch, name, version );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.dpkginfo;
+        setEpoch( epoch );
+        setRelease( release );
+        setEvr( evr );
     }
 
 
 
     /**
      */
-    public DpkgInfoItem name(
-                    final String name
+    public void setEpoch(
+                    final EntityItemAnySimpleType epoch
                     )
     {
-        setName( new EntityItemStringType( name ) );
-        return this;
+        if (epoch != null) {
+            DatatypeEnumeration  datatype = epoch.getDatatype();
+            if (datatype != null) {
+                if (datatype == DatatypeEnumeration.STRING
+                                ||  datatype == DatatypeEnumeration.INT) {
+                    // xsd:restriction satisfied.
+                } else {
+                    throw new IllegalArgumentException(
+                                    "invalid epoch: datatype=" + datatype );
+                }
+            }
+        }
+
+        this.epoch = epoch;
+//        _properties.put( LinuxPkgProperty.EPOCH, epoch );
     }
 
 
-    public DpkgInfoItem name(
-                    final EntityItemStringType name
-                    )
+    public EntityItemAnySimpleType getEpoch()
     {
-        setName( name );
-        return this;
-    }
-
-
-
-    /**
-     */
-    public DpkgInfoItem arch(
-                    final String arch
-                    )
-    {
-        setArch( new EntityItemStringType( arch ) );
-        return this;
-    }
-
-
-    public DpkgInfoItem epoch(
-                    final String epoch
-                    )
-    {
-        setEpoch( new EntityItemAnySimpleType( epoch ) );
-        return this;
+        return this.epoch;
+//        return (EntityItemAnySimpleType)_properties.get( LinuxPkgProperty.EPOCH );
     }
 
 
 
     /**
      */
-    public DpkgInfoItem release(
-                    final String release
+    public void setRelease(
+                    final EntityItemAnySimpleType release
                     )
     {
-        setRelease( new EntityItemAnySimpleType( release ) );
-        return this;
+        if (release != null) {
+            DatatypeEnumeration  datatype = release.getDatatype();
+            if (datatype != null) {
+                if (datatype == DatatypeEnumeration.STRING
+                                ||  datatype == DatatypeEnumeration.VERSION) {
+                    // xsd:restriction satisfied.
+                } else {
+                    throw new IllegalArgumentException(
+                                    "invalid release: datatype=" + datatype );
+                }
+            }
+        }
+
+        this.release = release;
+//        _properties.put( LinuxPkgProperty.RELEASE, release );
     }
 
 
-    public DpkgInfoItem version(
-                    final String version
-                    )
+    public EntityItemAnySimpleType getRelease()
     {
-        setVersion( new EntityItemAnySimpleType( version ) );
-        return this;
+        return this.release;
+//        return (EntityItemAnySimpleType)_properties.get( LinuxPkgProperty.RELEASE );
     }
 
 
 
     /**
      */
-    public DpkgInfoItem evr(
-                    final String evr
+    public void setEvr(
+                    final EntityItemEVRStringType evr
                     )
     {
-        setEvr( new EntityItemEVRStringType( evr ) );
-        return this;
+        this.evr = evr;
+//        _properties.put( LinuxPkgProperty.EVR, evr );
     }
 
 
-
-    //**************************************************************
-    //  Item
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
+    public EntityItemEVRStringType getEvr()
     {
-        return PlatformEntityType.LINUX_DPKGINFO;
+        return this.evr;
+//        return (EntityItemEVRStringType)_properties.get( LinuxPkgProperty.EVR );
     }
 
 
@@ -245,9 +252,12 @@ public class DpkgInfoItem
     @Override
     public String toString()
     {
-        return "dpkginfo_item[" + super.toString()
-             + "]";
+        return super.toString()
+             + ", epoch="   + getEpoch()
+             + ", release=" + getRelease()
+             + ", evr="     + getEvr()
+             ;
     }
 
 }
-// DpkgInfoItem
+// LinuxEvrPkgInfoItem

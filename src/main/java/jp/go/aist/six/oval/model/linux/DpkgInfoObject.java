@@ -18,53 +18,52 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.linux;
+package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.common.CheckEnumeration;
-import jp.go.aist.six.oval.model.definitions.TestType;
+import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 
 
 
 /**
- * The dpkginfo test is used to check information for a given DPKG package.
+ * The dpkginfo object is used by a dpkginfo test to define
+ * the object to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class DpkgInfoTest
-    extends TestType
+public class DpkgInfoObject
+    extends LinuxPkgInfoObject
 {
 
     /**
      * Constructor.
      */
-    public DpkgInfoTest()
+    public DpkgInfoObject()
     {
         this( null, 0 );
     }
 
 
-    public DpkgInfoTest(
+    public DpkgInfoObject(
                     final String id,
                     final int version
                     )
     {
-        this( id, version, null, null );
+        this( id, version, null );
     }
 
 
-    public DpkgInfoTest(
+    public DpkgInfoObject(
                     final String id,
                     final int version,
-                    final String comment,
-                    final CheckEnumeration check
+                    final String comment
                     )
     {
-        super( id, version, comment, check );
+        super( id, version, comment );
 
         _oval_platform_type = OvalPlatformType.linux;
         _oval_component_type = OvalComponentType.dpkginfo;
@@ -72,8 +71,29 @@ public class DpkgInfoTest
 
 
 
+    /**
+     */
+    public DpkgInfoObject name(
+                    final EntityObjectStringType name
+                    )
+    {
+        setName( name );
+        return this;
+    }
+
+
+    public DpkgInfoObject name(
+                    final String name
+                    )
+    {
+        return name( new EntityObjectStringType( name ) );
+    }
+
+
+
+
     //**************************************************************
-    //  Test
+    //  SystemObject
     //**************************************************************
 
     @Override
@@ -101,7 +121,7 @@ public class DpkgInfoTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof DpkgInfoTest)) {
+        if (!(obj instanceof DpkgInfoObject)) {
             return false;
         }
 
@@ -113,8 +133,8 @@ public class DpkgInfoTest
     @Override
     public String toString()
     {
-        return "dpkginfo_test[" + super.toString() + "]";
+        return "dpkginfo_object[" + super.toString() + "]";
     }
 
 }
-// DpkgInfoTest
+// DpkgInfoObject
