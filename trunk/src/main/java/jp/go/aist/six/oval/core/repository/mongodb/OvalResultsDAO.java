@@ -2,9 +2,9 @@ package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.util.Collection;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.v5.results.OvalResults;
-import jp.go.aist.six.oval.model.v5.results.ResultsType;
-import jp.go.aist.six.oval.model.v5.results.SystemType;
+import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.model.results.ResultsType;
+import jp.go.aist.six.oval.model.results.SystemType;
 import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Key;

@@ -1,7 +1,7 @@
 package jp.go.aist.six.test.oval.core.xml;
 
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.v5.results.OvalResults;
+import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import org.testng.Reporter;
 

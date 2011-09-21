@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.results;
+package jp.go.aist.six.oval.model.results;
 
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import com.google.code.morphia.annotations.Property;

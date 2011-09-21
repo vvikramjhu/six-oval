@@ -33,7 +33,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.definitions.VariableType;
-import jp.go.aist.six.oval.model.v5.results.OvalResults;
+import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.repository.QueryResult;
 import jp.go.aist.six.util.persist.Persistable;
