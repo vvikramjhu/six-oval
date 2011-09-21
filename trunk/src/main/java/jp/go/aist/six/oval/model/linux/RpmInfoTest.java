@@ -18,88 +18,84 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.linux;
+package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.common.CheckEnumeration;
+import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 
 /**
- * The dpkginfo object is used by a dpkginfo test to define
- * the object to be evaluated.
+ * The rpminfo test is used to check the RPM header information
+ * for a given RPM package.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class DpkgInfoObject
-    extends LinuxPkgInfoObject
+public class RpmInfoTest
+    extends TestType
 {
 
     /**
      * Constructor.
      */
-    public DpkgInfoObject()
+    public RpmInfoTest()
     {
         this( null, 0 );
     }
 
 
-    public DpkgInfoObject(
+    public RpmInfoTest(
                     final String id,
                     final int version
                     )
     {
-        this( id, version, null );
+        this( id, version, null, null );
     }
 
 
-    public DpkgInfoObject(
+    public RpmInfoTest(
                     final String id,
                     final int version,
-                    final String comment
+                    final String comment,
+                    final CheckEnumeration check
                     )
     {
-        super( id, version, comment );
+        super( id, version, comment, check );
 
         _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.dpkginfo;
+        _oval_component_type = OvalComponentType.rpminfo;
     }
 
 
 
-    /**
-     */
-    public DpkgInfoObject name(
-                    final EntityObjectStringType name
-                    )
-    {
-        setName( name );
-        return this;
-    }
 
-
-    public DpkgInfoObject name(
-                    final String name
-                    )
-    {
-        return name( new EntityObjectStringType( name ) );
-    }
-
+//    public RpmInfoTest(
+//                    final String id,
+//                    final int version,
+//                    final String comment,
+//                    final CheckEnumeration check,
+//                    final SystemObjectRefType object,
+//                    final StateRefType[] stateList
+//                    )
+//    {
+//        super( id, version, comment, check, object, stateList );
+//    }
 
 
 
     //**************************************************************
-    //  SystemObject
+    //  Test
     //**************************************************************
 
     @Override
     public PlatformEntityType getEntityType()
     {
-        return PlatformEntityType.LINUX_DPKGINFO;
+        return PlatformEntityType.LINUX_RPMINFO;
     }
 
 
@@ -121,7 +117,7 @@ public class DpkgInfoObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof DpkgInfoObject)) {
+        if (!(obj instanceof RpmInfoTest)) {
             return false;
         }
 
@@ -133,8 +129,8 @@ public class DpkgInfoObject
     @Override
     public String toString()
     {
-        return "dpkginfo_object[" + super.toString() + "]";
+        return "rpminfo_test[" + super.toString() + "]";
     }
 
 }
-// DpkgInfoObject
+// RpmInfoTest

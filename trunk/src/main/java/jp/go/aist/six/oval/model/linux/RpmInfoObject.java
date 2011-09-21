@@ -18,49 +18,52 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.linux;
+package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
-import jp.go.aist.six.oval.model.definitions.EntityStateEVRStringType;
-import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 
 
 
 /**
- * The rpminfo state defines the different information
- * that can be used to evaluate the specified rpm.
+ * The rpminfo object is used by a rpminfo test to define
+ * the object to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class RpmInfoState
-    extends LinuxEvrPkgInfoState
+public class RpmInfoObject
+    extends LinuxPkgInfoObject
 {
-
-    private EntityStateStringType  signature_keyid;
-    //{0..1}
-
-
 
     /**
      * Constructor.
      */
-    public RpmInfoState()
+    public RpmInfoObject()
     {
         this( null, 0 );
     }
 
 
-    public RpmInfoState(
+    public RpmInfoObject(
                     final String id,
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null );
+    }
+
+
+    public RpmInfoObject(
+                    final String id,
+                    final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
 
         _oval_platform_type = OvalPlatformType.linux;
         _oval_component_type = OvalComponentType.rpminfo;
@@ -68,57 +71,28 @@ public class RpmInfoState
 
 
 
-    public RpmInfoState version(
-                    final EntityStateAnySimpleType version
-                    )
-    {
-        setVersion( version );
-        return this;
-    }
-
-
-
-    public RpmInfoState evr(
-                    final EntityStateEVRStringType evr
-                    )
-    {
-        setEvr( evr );
-        return this;
-    }
-
-
-
     /**
      */
-    public void setSignatureKeyID(
-                    final EntityStateStringType keyid
+    public RpmInfoObject name(
+                    final EntityObjectStringType name
                     )
     {
-        this.signature_keyid = keyid;
-//        _setProperty( LinuxPkgProperty.SIGNATURE_KEYID, keyid );
-    }
-
-
-    public EntityStateStringType getSignatureKeyID()
-    {
-        return this.signature_keyid;
-//        return _getProperty(
-//                        LinuxPkgProperty.SIGNATURE_KEYID, EntityStateStringType.class );
-    }
-
-
-    public RpmInfoState signatureKeyID(
-                    final EntityStateStringType keyid
-                    )
-    {
-        setSignatureKeyID( keyid );
+        setName( name );
         return this;
+    }
+
+
+    public RpmInfoObject name(
+                    final String name
+                    )
+    {
+        return name( new EntityObjectStringType( name ) );
     }
 
 
 
     //**************************************************************
-    //  State
+    //  SystemObject
     //**************************************************************
 
     @Override
@@ -129,9 +103,9 @@ public class RpmInfoState
 
 
 
-    // **************************************************************
-    // java.lang.Object
-    // **************************************************************
+    //**************************************************************
+    //  java.lang.Object
+    //**************************************************************
 
     @Override
     public int hashCode()
@@ -146,7 +120,7 @@ public class RpmInfoState
                     final Object obj
                     )
     {
-        if (!(obj instanceof RpmInfoState)) {
+        if (!(obj instanceof RpmInfoObject)) {
             return false;
         }
 
@@ -158,11 +132,10 @@ public class RpmInfoState
     @Override
     public String toString()
     {
-        return "rpminfo_state[" + super.toString()
-                        + ", signature_keyid=" + getSignatureKeyID()
-//                        + ", " + String.valueOf( _getProperties() )
+        return "rpminfo_object[" + super.toString()
+                        + ", name=" + getName()
                         + "]";
     }
 
 }
-// RpmInfoState
+// RpmInfoObject

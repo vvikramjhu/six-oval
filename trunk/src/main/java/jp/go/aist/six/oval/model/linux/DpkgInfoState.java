@@ -18,87 +18,67 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.linux;
+package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.definitions.EntityStateEVRStringType;
 
 
 
 /**
- * The rpminfo object is used by a rpminfo test to define
- * the object to be evaluated.
+ * The dpkginfo state defines the different information
+ * that can be used to evaluate the specified DPKG package.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class RpmInfoObject
-    extends LinuxPkgInfoObject
+public class DpkgInfoState
+    extends LinuxEvrPkgInfoState
 {
 
     /**
      * Constructor.
      */
-    public RpmInfoObject()
+    public DpkgInfoState()
     {
         this( null, 0 );
     }
 
 
-    public RpmInfoObject(
+    public DpkgInfoState(
                     final String id,
                     final int version
                     )
     {
-        this( id, version, null );
-    }
-
-
-    public RpmInfoObject(
-                    final String id,
-                    final int version,
-                    final String comment
-                    )
-    {
-        super( id, version, comment );
+        super( id, version );
 
         _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.rpminfo;
+        _oval_component_type = OvalComponentType.dpkginfo;
     }
 
 
 
-    /**
-     */
-    public RpmInfoObject name(
-                    final EntityObjectStringType name
+    public DpkgInfoState evr(
+                    final EntityStateEVRStringType evr
                     )
     {
-        setName( name );
+        setEvr( evr );
         return this;
-    }
-
-
-    public RpmInfoObject name(
-                    final String name
-                    )
-    {
-        return name( new EntityObjectStringType( name ) );
     }
 
 
 
     //**************************************************************
-    //  SystemObject
+    //  State
     //**************************************************************
 
     @Override
     public PlatformEntityType getEntityType()
     {
-        return PlatformEntityType.LINUX_RPMINFO;
+        return PlatformEntityType.LINUX_DPKGINFO;
     }
 
 
@@ -120,7 +100,7 @@ public class RpmInfoObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof RpmInfoObject)) {
+        if (!(obj instanceof DpkgInfoState)) {
             return false;
         }
 
@@ -132,10 +112,10 @@ public class RpmInfoObject
     @Override
     public String toString()
     {
-        return "rpminfo_object[" + super.toString()
-                        + ", name=" + getName()
+        return "dpkginfo_state[" + super.toString()
+//                        + ", " + String.valueOf( _getProperties() )
                         + "]";
     }
 
 }
-// RpmInfoObject
+// DpkgInfoState

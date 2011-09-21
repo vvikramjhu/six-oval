@@ -18,37 +18,44 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.linux;
+package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateEVRStringType;
+import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 
 /**
- * The dpkginfo state defines the different information
- * that can be used to evaluate the specified DPKG package.
+ * The rpminfo state defines the different information
+ * that can be used to evaluate the specified rpm.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class DpkgInfoState
+public class RpmInfoState
     extends LinuxEvrPkgInfoState
 {
+
+    private EntityStateStringType  signature_keyid;
+    //{0..1}
+
+
 
     /**
      * Constructor.
      */
-    public DpkgInfoState()
+    public RpmInfoState()
     {
         this( null, 0 );
     }
 
 
-    public DpkgInfoState(
+    public RpmInfoState(
                     final String id,
                     final int version
                     )
@@ -56,16 +63,55 @@ public class DpkgInfoState
         super( id, version );
 
         _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.dpkginfo;
+        _oval_component_type = OvalComponentType.rpminfo;
     }
 
 
 
-    public DpkgInfoState evr(
+    public RpmInfoState version(
+                    final EntityStateAnySimpleType version
+                    )
+    {
+        setVersion( version );
+        return this;
+    }
+
+
+
+    public RpmInfoState evr(
                     final EntityStateEVRStringType evr
                     )
     {
         setEvr( evr );
+        return this;
+    }
+
+
+
+    /**
+     */
+    public void setSignatureKeyID(
+                    final EntityStateStringType keyid
+                    )
+    {
+        this.signature_keyid = keyid;
+//        _setProperty( LinuxPkgProperty.SIGNATURE_KEYID, keyid );
+    }
+
+
+    public EntityStateStringType getSignatureKeyID()
+    {
+        return this.signature_keyid;
+//        return _getProperty(
+//                        LinuxPkgProperty.SIGNATURE_KEYID, EntityStateStringType.class );
+    }
+
+
+    public RpmInfoState signatureKeyID(
+                    final EntityStateStringType keyid
+                    )
+    {
+        setSignatureKeyID( keyid );
         return this;
     }
 
@@ -78,14 +124,14 @@ public class DpkgInfoState
     @Override
     public PlatformEntityType getEntityType()
     {
-        return PlatformEntityType.LINUX_DPKGINFO;
+        return PlatformEntityType.LINUX_RPMINFO;
     }
 
 
 
-    //**************************************************************
-    //  java.lang.Object
-    //**************************************************************
+    // **************************************************************
+    // java.lang.Object
+    // **************************************************************
 
     @Override
     public int hashCode()
@@ -100,7 +146,7 @@ public class DpkgInfoState
                     final Object obj
                     )
     {
-        if (!(obj instanceof DpkgInfoState)) {
+        if (!(obj instanceof RpmInfoState)) {
             return false;
         }
 
@@ -112,10 +158,11 @@ public class DpkgInfoState
     @Override
     public String toString()
     {
-        return "dpkginfo_state[" + super.toString()
+        return "rpminfo_state[" + super.toString()
+                        + ", signature_keyid=" + getSignatureKeyID()
 //                        + ", " + String.valueOf( _getProperties() )
                         + "]";
     }
 
 }
-// DpkgInfoState
+// RpmInfoState

@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.linux;
+package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
@@ -29,27 +29,26 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
- * The rpminfo test is used to check the RPM header information
- * for a given RPM package.
+ * The dpkginfo test is used to check information for a given DPKG package.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class RpmInfoTest
+public class DpkgInfoTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public RpmInfoTest()
+    public DpkgInfoTest()
     {
         this( null, 0 );
     }
 
 
-    public RpmInfoTest(
+    public DpkgInfoTest(
                     final String id,
                     final int version
                     )
@@ -58,7 +57,7 @@ public class RpmInfoTest
     }
 
 
-    public RpmInfoTest(
+    public DpkgInfoTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -68,23 +67,8 @@ public class RpmInfoTest
         super( id, version, comment, check );
 
         _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.rpminfo;
+        _oval_component_type = OvalComponentType.dpkginfo;
     }
-
-
-
-
-//    public RpmInfoTest(
-//                    final String id,
-//                    final int version,
-//                    final String comment,
-//                    final CheckEnumeration check,
-//                    final SystemObjectRefType object,
-//                    final StateRefType[] stateList
-//                    )
-//    {
-//        super( id, version, comment, check, object, stateList );
-//    }
 
 
 
@@ -95,7 +79,7 @@ public class RpmInfoTest
     @Override
     public PlatformEntityType getEntityType()
     {
-        return PlatformEntityType.LINUX_RPMINFO;
+        return PlatformEntityType.LINUX_DPKGINFO;
     }
 
 
@@ -117,7 +101,7 @@ public class RpmInfoTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof RpmInfoTest)) {
+        if (!(obj instanceof DpkgInfoTest)) {
             return false;
         }
 
@@ -129,8 +113,8 @@ public class RpmInfoTest
     @Override
     public String toString()
     {
-        return "rpminfo_test[" + super.toString() + "]";
+        return "dpkginfo_test[" + super.toString() + "]";
     }
 
 }
-// RpmInfoTest
+// DpkgInfoTest
