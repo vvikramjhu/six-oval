@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.v5.definitions;
 import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.OvalEntityType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;
+import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 import com.google.code.morphia.annotations.Entity;
 
 

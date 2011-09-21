@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.Oval5Object;
-import jp.go.aist.six.oval.model.v5.common.FamilyEnumeration;
+import jp.go.aist.six.oval.model.common.FamilyEnumeration;
 
 
 

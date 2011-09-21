@@ -22,9 +22,9 @@ package jp.go.aist.six.oval.model.v5.results;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
-import jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration;
-import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
+import jp.go.aist.six.oval.model.common.CheckEnumeration;
+import jp.go.aist.six.oval.model.common.ExistenceEnumeration;
+import jp.go.aist.six.oval.model.common.OperatorEnumeration;
 
 
 

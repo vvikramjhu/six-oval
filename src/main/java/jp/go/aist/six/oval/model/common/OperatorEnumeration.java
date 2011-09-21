@@ -18,41 +18,39 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.common;
+package jp.go.aist.six.oval.model.common;
 
 import jp.go.aist.six.oval.model.Oval5Enumeration;
 
 
 
 /**
- * The Existence enumeration type defines acceptable existence values,
- * which are used to determine a result based on the existence
- * of individual components.
+ * The Operator enumeration type defines acceptable operators.
+ * Each operator defines how to evaluate multiple arguments.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum ExistenceEnumeration
+public enum OperatorEnumeration
     implements Oval5Enumeration
 {
 
-    ALL_EXIST            ( "all_exist" ),
-    ANY_EXIST            ( "any_exist" ),
-    AT_LEAST_ONE_EXISTS  ( "at_least_one_exists" ),
-    NONE_EXIST           ( "none_exist" ),
-    ONLY_ONE_EXISTS      ( "only_one_exists" );
+    AND ( "AND" ),
+    ONE ( "ONE" ),
+    OR  ( "OR" ),
+    XOR ( "XOR" );
 
 
 
     /**
      * A factory method.
      */
-    public static ExistenceEnumeration fromValue(
+    public static OperatorEnumeration fromValue(
                     final String value
                     )
     {
-        for (ExistenceEnumeration  e : ExistenceEnumeration.values()) {
+        for (OperatorEnumeration  e : OperatorEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -70,7 +68,7 @@ public enum ExistenceEnumeration
     /**
      * Constructor.
      */
-    ExistenceEnumeration(
+    OperatorEnumeration(
                     final String value
                     )
     {
@@ -98,4 +96,4 @@ public enum ExistenceEnumeration
     }
 
 }
-// ExistenceEnumeration
+// OperatorEnumeration

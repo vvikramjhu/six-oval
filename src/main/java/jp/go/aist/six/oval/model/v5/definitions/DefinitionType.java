@@ -21,7 +21,7 @@
 package jp.go.aist.six.oval.model.v5.definitions;
 
 import jp.go.aist.six.oval.model.OvalEntity;
-import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
+import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Property;
 

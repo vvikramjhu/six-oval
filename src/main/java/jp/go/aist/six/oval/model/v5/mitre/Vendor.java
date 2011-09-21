@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.mitre;
 
-import jp.go.aist.six.oval.model.v5.common.GeneratorInformation;
+import jp.go.aist.six.oval.model.common.GeneratorInformation;
 
 
 

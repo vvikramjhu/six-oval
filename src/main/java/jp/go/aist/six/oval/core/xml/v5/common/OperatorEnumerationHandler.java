@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.xml.v5.common;
 
-import jp.go.aist.six.oval.model.v5.common.OperatorEnumeration;
+import jp.go.aist.six.oval.model.common.OperatorEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalDocument;
-import jp.go.aist.six.oval.model.v5.common.GeneratorType;
+import jp.go.aist.six.oval.model.common.GeneratorType;
 import jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions;
 import com.google.code.morphia.annotations.Entity;
 
