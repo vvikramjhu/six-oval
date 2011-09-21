@@ -163,7 +163,7 @@ public abstract class CoreTestBase
 
                         // def:7432, Debian, patch, DSA-2027
                         {
-                            jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions.class,
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
                             "test/resources/data/oval-definitions-5/oval-5.9_def7432_patch_debian.xml",
                             null,
                             "marshalled_oval-5.9_def7432_patch_debian.xml"
