@@ -1,6 +1,6 @@
 package jp.go.aist.six.oval.core.repository.mongodb;
 
-import jp.go.aist.six.oval.model.v5.OvalEntity;
+import jp.go.aist.six.oval.model.OvalEntity;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Key;
 import com.google.code.morphia.dao.BasicDAO;

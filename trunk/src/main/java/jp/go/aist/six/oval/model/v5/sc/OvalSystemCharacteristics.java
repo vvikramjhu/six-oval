@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.v5.sc;
 
-import jp.go.aist.six.oval.model.v5.OvalDocument;
+import jp.go.aist.six.oval.model.OvalDocument;
 import jp.go.aist.six.oval.model.v5.common.GeneratorType;
 import com.google.code.morphia.annotations.Entity;
 

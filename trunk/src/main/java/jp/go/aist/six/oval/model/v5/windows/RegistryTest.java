@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.v5.windows;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.v5.PlatformEntityType;
+import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.v5.definitions.StateRefType;
 import jp.go.aist.six.oval.model.v5.definitions.SystemObjectRefType;

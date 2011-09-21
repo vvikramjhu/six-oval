@@ -2,7 +2,7 @@ package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
-import jp.go.aist.six.oval.model.v5.Oval5Enumeration;
+import jp.go.aist.six.oval.model.Oval5Enumeration;
 import jp.go.aist.six.oval.model.v5.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.v5.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration;

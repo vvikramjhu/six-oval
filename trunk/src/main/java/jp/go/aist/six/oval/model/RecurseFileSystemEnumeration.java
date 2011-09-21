@@ -18,37 +18,40 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5;
+package jp.go.aist.six.oval.model;
 
 
 
 
 /**
- * The RecurseDirection defines the direction to recurse,
- * either 'up' to parent directories, or 'down' into child directories.
+ * The RecurseFileSystem defines the file system limitation of any recursion,
+ * either 'local' limiting data collection to local file systems
+ * (as opposed to file systems mounted from an external system),
+ * or 'defined' to keep any recursion within the file system
+ * that the file_object (path+filename) has specified.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum RecurseDirectionEnumeration
+public enum RecurseFileSystemEnumeration
     implements Oval5Enumeration
 {
 
-    NONE  ( "none" ),
-    UP    ( "up" ),
-    DOWN  ( "down" );
+    ALL       ( "all" ),
+    LOCAL_    ( "local" ),
+    DEFINED_  ( "defined" );
 
 
 
     /**
      * A factory method.
      */
-    public static RecurseDirectionEnumeration fromValue(
+    public static RecurseFileSystemEnumeration fromValue(
                     final String value
                     )
     {
-        for (RecurseDirectionEnumeration  e : RecurseDirectionEnumeration.values()) {
+        for (RecurseFileSystemEnumeration  e : RecurseFileSystemEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -66,7 +69,7 @@ public enum RecurseDirectionEnumeration
     /**
      * Constructor.
      */
-    RecurseDirectionEnumeration(
+    RecurseFileSystemEnumeration(
                     final String value
                     )
     {
@@ -94,4 +97,4 @@ public enum RecurseDirectionEnumeration
     }
 
 }
-// RecurseDirectionEnumeration
+// RecurseFileSystemEnumeration

@@ -18,63 +18,70 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5;
-
+package jp.go.aist.six.oval.model;
 
 
 
 /**
- * A base class for all the concrete file behaviors.
  *
- * @author  Akihito Nakamura, AIST
+ * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class AbstractFileBehaviors
-    extends AbstractBehaviors
+public abstract class NameEntity
+    implements Oval5Object
+//    implements Comparable<NameEntity>
 {
 
-    /**
-     * The default recurseFileSystem: "all".
-     */
-    public static final RecurseFileSystemEnumeration  DEFAULT_RECURSE_FILE_SYSTEM =
-        RecurseFileSystemEnumeration.ALL;
-
-    private RecurseFileSystemEnumeration  recurse_file_system;
-    //{optional, default="all"}
+    private String  name;
 
 
 
     /**
      * Constructor.
      */
-    public AbstractFileBehaviors()
+    public NameEntity()
     {
+    }
+
+
+    public NameEntity(
+                    final String name
+                    )
+    {
+        setName( name );
     }
 
 
 
     /**
      */
-    public void setRecurseFileSystem(
-                    final RecurseFileSystemEnumeration recurse_file_system
+    public void setName(
+                    final String name
                     )
     {
-        this.recurse_file_system = recurse_file_system;
+        this.name = name;
     }
 
 
-    public RecurseFileSystemEnumeration getRecurseFileSystem()
+    public String getName()
     {
-        return this.recurse_file_system;
+        return this.name;
     }
 
 
-    protected final RecurseFileSystemEnumeration _recurseFileSystem()
-    {
-        RecurseFileSystemEnumeration  recurseFileSystem = getRecurseFileSystem();
-        return (recurseFileSystem == null ? DEFAULT_RECURSE_FILE_SYSTEM : recurseFileSystem);
-    }
+
+//    //**************************************************************
+//    //  Comparable
+//    //**************************************************************
+//
+//    @Override
+//    public int compareTo(
+//                    final NameEntity o
+//                    )
+//    {
+//        return String.CASE_INSENSITIVE_ORDER.compare( getName(), o.getName() );
+//    }
 
 
 
@@ -86,9 +93,13 @@ public abstract class AbstractFileBehaviors
     public int hashCode()
     {
         final int  prime = 37;
-        int  result = super.hashCode();
+        int  result = 17;
 
-        result = prime * result + _recurseFileSystem().hashCode();
+        String  name = getName();
+        if (name != null) {
+            name = name.toLowerCase();
+        }
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
 
         return result;
     }
@@ -100,15 +111,21 @@ public abstract class AbstractFileBehaviors
                     final Object obj
                     )
     {
-        if (!(obj instanceof AbstractFileBehaviors)) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof NameEntity)) {
             return false;
         }
 
-        if (super.equals( obj )) {
-            AbstractFileBehaviors  other = (AbstractFileBehaviors)obj;
-            if (this.getRecurseFileSystem() == other.getRecurseFileSystem()) {
+        NameEntity  other = (NameEntity)obj;
+        String  other_name = other.getName();
+        String   this_name =  this.getName();
+        if (this_name == other_name
+                        ||  (this_name != null
+                                        &&  this_name.equalsIgnoreCase( other_name ))) {
                 return true;
-            }
         }
 
         return false;
@@ -119,10 +136,8 @@ public abstract class AbstractFileBehaviors
     @Override
     public String toString()
     {
-        return super.toString()
-                        + ", recurse_file_system=" + getRecurseFileSystem()
-                        ;
+        return getName();
     }
 
 }
-// AbstractFileBehaviors
+// NameEntity
