@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.common;
 
-import jp.go.aist.six.oval.model.v5.Oval5Enumeration;
+import jp.go.aist.six.oval.model.OvalEnumeration;
 
 
 
@@ -35,7 +35,7 @@ import jp.go.aist.six.oval.model.v5.Oval5Enumeration;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public enum ClassEnumeration
-    implements Oval5Enumeration
+    implements OvalEnumeration
 {
 
     COMPLIANCE     ( "compliance" ),

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalGenerator;
-import jp.go.aist.six.oval.model.v5.Oval5Object;
+import jp.go.aist.six.oval.model.OvalObject;
 
 
 
@@ -41,7 +41,7 @@ import jp.go.aist.six.oval.model.v5.Oval5Object;
  */
 public class GeneratorType
     extends OvalGenerator
-    implements Oval5Object
+    implements OvalObject
 {
 
 //    private String  product_name;

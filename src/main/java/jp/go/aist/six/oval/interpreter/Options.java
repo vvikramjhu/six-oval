@@ -49,10 +49,6 @@ public class Options
 
     /**
      * A factory method.
-     *
-     * @param strings
-     * @return
-     * @throws OvalInterpreterException
      */
     public static Options fromCommandLine(
                     final List<String> strings
