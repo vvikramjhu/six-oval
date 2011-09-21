@@ -18,25 +18,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.mitre;
+package jp.go.aist.six.oval.model.mitre;
 
-import jp.go.aist.six.oval.model.common.GeneratorInformation;
+import jp.go.aist.six.oval.model.Oval5Object;
+
 
 
 
 /**
- * An additional generator information from Mitre.
- * This is not part of the official OVAL Schema.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Vendor
-    extends GeneratorInformation
+public class Contributor
+    implements Oval5Object
 {
 
-    private String  _name;
+    private String  name;
+    //{xsd:string?}
+
+
+    private String  organization;
     //{xsd:string}
 
 
@@ -44,8 +47,18 @@ public class Vendor
     /**
      * Constructor.
      */
-    public Vendor()
+    public Contributor()
     {
+    }
+
+
+    public Contributor(
+                    final String name,
+                    final String organization
+                    )
+    {
+        setName( name );
+        setOrganization( organization );
     }
 
 
@@ -56,13 +69,30 @@ public class Vendor
                     final String name
                     )
     {
-        _name = name;
+        this.name = name;
     }
 
 
     public String getName()
     {
-        return _name;
+        return this.name;
+    }
+
+
+
+    /**
+     */
+    public void setOrganization(
+                    final String organization
+                    )
+    {
+        this.organization = organization;
+    }
+
+
+    public String getOrganization()
+    {
+        return this.organization;
     }
 
 
@@ -74,8 +104,10 @@ public class Vendor
     @Override
     public String toString()
     {
-        return "vendor[" + getName() + "]";
+        return "contributor[organization=" + getOrganization()
+                        + ", name=" + getName()
+                        + "]";
     }
 
 }
-// Vendor
+// Contributor

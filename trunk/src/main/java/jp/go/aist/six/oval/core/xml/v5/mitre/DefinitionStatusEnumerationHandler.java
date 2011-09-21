@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.xml.v5.mitre;
 
-import jp.go.aist.six.oval.model.v5.mitre.DefinitionStatusEnumeration;
+import jp.go.aist.six.oval.model.mitre.DefinitionStatusEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 

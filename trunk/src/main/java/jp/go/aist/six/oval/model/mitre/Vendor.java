@@ -18,57 +18,51 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.mitre;
+package jp.go.aist.six.oval.model.mitre;
 
+import jp.go.aist.six.oval.model.common.GeneratorInformation;
 
 
 
 /**
+ * An additional generator information from Mitre.
+ * This is not part of the official OVAL Schema.
  *
- * @author	Akihito Nakamura, AIST
+ * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class StatusChange
-    extends Event
+public class Vendor
+    extends GeneratorInformation
 {
 
-    private DefinitionStatusEnumeration  status;
+    private String  _name;
+    //{xsd:string}
 
 
 
     /**
      * Constructor.
      */
-    public StatusChange()
+    public Vendor()
     {
-    }
-
-
-    public StatusChange(
-                    final String date,
-                    final DefinitionStatusEnumeration status
-                    )
-    {
-        super( date );
-        setStatus( status );
     }
 
 
 
     /**
      */
-    public void setStatus(
-                    final DefinitionStatusEnumeration status
+    public void setName(
+                    final String name
                     )
     {
-        this.status = status;
+        _name = name;
     }
 
 
-    public DefinitionStatusEnumeration getStatus()
+    public String getName()
     {
-        return this.status;
+        return _name;
     }
 
 
@@ -80,10 +74,8 @@ public class StatusChange
     @Override
     public String toString()
     {
-        return "status_change[date=" + getDate()
-                        + ", status=" + getStatus()
-                        + "]";
+        return "vendor[" + getName() + "]";
     }
 
 }
-// StatusChange
+// Vendor

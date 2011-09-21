@@ -12,7 +12,7 @@ import jp.go.aist.six.oval.model.common.MessageLevelEnumeration;
 import jp.go.aist.six.oval.model.common.OperationEnumeration;
 import jp.go.aist.six.oval.model.common.OperatorEnumeration;
 import jp.go.aist.six.oval.model.definitions.FilterActionEnumeration;
-import jp.go.aist.six.oval.model.v5.mitre.DefinitionStatusEnumeration;
+import jp.go.aist.six.oval.model.mitre.DefinitionStatusEnumeration;
 import jp.go.aist.six.oval.model.v5.results.ContentEnumeration;
 import jp.go.aist.six.oval.model.v5.results.ResultEnumeration;
 import jp.go.aist.six.oval.model.v5.sc.FlagEnumeration;
