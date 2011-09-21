@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model;
 
 import java.util.UUID;
 import jp.go.aist.six.oval.model.common.GeneratorType;
+import jp.go.aist.six.oval.model.v5.Oval5Object;
 import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.PrePersist;

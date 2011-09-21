@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.mitre;
 
-import jp.go.aist.six.oval.model.Oval5Object;
+import jp.go.aist.six.oval.model.v5.Oval5Object;
 
 
 

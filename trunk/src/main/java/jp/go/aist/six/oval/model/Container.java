@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model;
 
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.v5.Oval5Object;
 
 
 

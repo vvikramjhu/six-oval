@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model;
 
+import jp.go.aist.six.oval.model.v5.Oval5Object;
 import com.google.code.morphia.annotations.Transient;
 
 

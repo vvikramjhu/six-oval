@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.sc;
 
-import jp.go.aist.six.oval.model.Oval5Object;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
+import jp.go.aist.six.oval.model.v5.Oval5Object;
 
 
 
