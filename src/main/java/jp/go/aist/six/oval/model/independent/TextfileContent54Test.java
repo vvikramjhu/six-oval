@@ -18,40 +18,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.independent;
+package jp.go.aist.six.oval.model.independent;
 
-import java.util.Collection;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
-import jp.go.aist.six.oval.model.definitions.StateRefType;
-import jp.go.aist.six.oval.model.definitions.SystemObjectRefType;
 import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 
 /**
- * An unknown test acts as a placeholder for tests whose implementation is unknown.
+ * The textfilecontent54 test is used to check the contents of a text file
+ * (aka a configuration file) by looking at individual blocks of text.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class UnknownTest
+public class TextfileContent54Test
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public UnknownTest()
+    public TextfileContent54Test()
     {
         this( null, 0 );
     }
 
 
-    public UnknownTest(
+    public TextfileContent54Test(
                     final String id,
                     final int version
                     )
@@ -60,7 +58,7 @@ public class UnknownTest
     }
 
 
-    public UnknownTest(
+    public TextfileContent54Test(
                     final String id,
                     final int version,
                     final String comment,
@@ -70,8 +68,22 @@ public class UnknownTest
         super( id, version, comment, check );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.unknown;
+        _oval_component_type = OvalComponentType.textfilecontent54;
     }
+
+
+//    public TextfileContent54Test(
+//                    final String id,
+//                    final int version,
+//                    final String comment,
+//                    final CheckEnumeration check,
+//                    final SystemObjectRefType object,
+//                    final StateRefType[] stateList
+//                    )
+//    {
+//        super( id, version, comment, check, object, stateList );
+//    }
+
 
 
 
@@ -82,31 +94,7 @@ public class UnknownTest
     @Override
     public PlatformEntityType getEntityType()
     {
-        return PlatformEntityType.INDEPENDENT_UNKNOWN;
-    }
-
-
-    @Override
-    public void setObject(
-                    final SystemObjectRefType ref
-                    )
-    {
-    }
-
-
-    @Override
-    public SystemObjectRefType getObject()
-    {
-        return null;
-    }
-
-
-
-    @Override
-    public void setState(
-                    final Collection<? extends StateRefType> ref
-                    )
-    {
+        return PlatformEntityType.INDEPENDENT_TEXTFILECONTENT54;
     }
 
 
@@ -128,7 +116,7 @@ public class UnknownTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof UnknownTest)) {
+        if (!(obj instanceof TextfileContent54Test)) {
             return false;
         }
 
@@ -140,8 +128,8 @@ public class UnknownTest
     @Override
     public String toString()
     {
-        return "unknown_test[" + super.toString() + "]";
+        return "textfilecontent54_test[" + super.toString() + "]";
     }
 
 }
-// UnknownTest
+// TextFileContent54Test

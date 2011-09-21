@@ -18,60 +18,68 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.independent;
+package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.common.FamilyEnumeration;
-import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.common.CheckEnumeration;
+import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 
 /**
- * The EntityStateFamily type defines a string entity value that is
- * restricted to a set of enumerations.
- * Each valid enumeration is a high-level family of system operating system.
- * The empty string is also allowed to support empty elements
- * associated with variable references.
+ * The family test is used to check the family a certain system belongs to.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateFamilyType
-    extends EntityStateStringType
+public class FamilyTest
+    extends TestType
 {
 
     /**
      * Constructor.
      */
-    public EntityStateFamilyType()
+    public FamilyTest()
     {
+        this( null, 0 );
     }
 
 
-    public EntityStateFamilyType(
-                    final String content
+    public FamilyTest(
+                    final String id,
+                    final int version
                     )
     {
-        super( content );
+        this( id, version, null, null );
+    }
+
+
+    public FamilyTest(
+                    final String id,
+                    final int version,
+                    final String comment,
+                    final CheckEnumeration check
+                    )
+    {
+        super( id, version, comment, check );
+
+        _oval_platform_type = OvalPlatformType.independent;
+        _oval_component_type = OvalComponentType.family;
     }
 
 
 
     //**************************************************************
-    //  EntityBaseType
+    //  Test
     //**************************************************************
 
     @Override
-    public void setContent(
-                    final String content
-                    )
+    public PlatformEntityType getEntityType()
     {
-        if (content != null) {
-            //validation
-            FamilyEnumeration.fromValue( content );
-        }
-
-        super.setContent( content );
+        return PlatformEntityType.INDEPENDENT_FAMILY;
     }
 
 
@@ -93,12 +101,20 @@ public class EntityStateFamilyType
                     final Object obj
                     )
     {
-        if (!(obj instanceof EntityStateFamilyType)) {
+        if (!(obj instanceof FamilyTest)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
+
+
+    @Override
+    public String toString()
+    {
+        return "family_test[" + super.toString() + "]";
+    }
+
 }
-// EntityStateFamilyType
+// FamilyTest

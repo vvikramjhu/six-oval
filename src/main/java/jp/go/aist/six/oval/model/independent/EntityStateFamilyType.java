@@ -18,34 +18,37 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.independent;
+package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.common.FamilyEnumeration;
-import jp.go.aist.six.oval.model.v5.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 
 /**
- * The EntityItemFamily defines a string entity value
- * that is restricted to a set of enumerations.
+ * The EntityStateFamily type defines a string entity value that is
+ * restricted to a set of enumerations.
+ * Each valid enumeration is a high-level family of system operating system.
+ * The empty string is also allowed to support empty elements
+ * associated with variable references.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemFamilyType
-    extends EntityItemStringType
+public class EntityStateFamilyType
+    extends EntityStateStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemFamilyType()
+    public EntityStateFamilyType()
     {
     }
 
 
-    public EntityItemFamilyType(
+    public EntityStateFamilyType(
                     final String content
                     )
     {
@@ -54,17 +57,8 @@ public class EntityItemFamilyType
 
 
 
-    public EntityItemFamilyType(
-                    final FamilyEnumeration content
-                    )
-    {
-        super( (content == null ? null : content.value()) );
-    }
-
-
-
     //**************************************************************
-    //  EntityItemBase
+    //  EntityBaseType
     //**************************************************************
 
     @Override
@@ -99,11 +93,7 @@ public class EntityItemFamilyType
                     final Object obj
                     )
     {
-        if (this == obj) {
-            return true;
-        }
-
-        if (!(obj instanceof EntityItemFamilyType)) {
+        if (!(obj instanceof EntityStateFamilyType)) {
             return false;
         }
 
@@ -111,4 +101,4 @@ public class EntityItemFamilyType
     }
 
 }
-// EntityItemFamilyType
+// EntityStateFamilyType
