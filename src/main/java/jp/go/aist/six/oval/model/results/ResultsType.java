@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.results;
+package jp.go.aist.six.oval.model.results;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -29,78 +29,79 @@ import jp.go.aist.six.oval.model.Container;
 
 
 /**
- * The TestResults is a container for one or more test instances.
+ * The SystemResult is a container for one or more SystemResult instances.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class TestsType
-    extends Container<TestType>   //{1..*}
+public class ResultsType
+    extends Container<SystemType> //{1..*}
 {
 
-    private final Set<TestType>  test = new HashSet<TestType>();
+//    @Reference
+    private final Set<SystemType>  system = new HashSet<SystemType>();
 
 
 
     /**
      * Constructor.
      */
-    public TestsType()
+    public ResultsType()
     {
     }
 
 
-    public TestsType(
-                    final Collection<? extends TestType> tests
+    public ResultsType(
+                    final Collection<? extends SystemType> systems
                     )
     {
-        super( tests );
+        super( systems );
     }
 
 
-    public TestsType(
-                    final TestType[] tests
+    public ResultsType(
+                    final SystemType[] systems
                     )
     {
-        super( tests );
+        super( systems );
     }
 
 
 
     /**
      */
-    public void setTest(
-                    final Collection<? extends TestType> testList
+    public void setSystem(
+                    final Collection<? extends SystemType> systemList
                     )
     {
-        _setElement( testList );
+        _setElement( systemList );
     }
 
 
-    public void setTest(
-                    final TestType[] testList
+    public void setSystem(
+                    final SystemType[] systemList
                     )
     {
-        _setElement( testList );
+        _setElement( systemList );
     }
 
 
-    public boolean addTest(
-                    final TestType test
+    public boolean addSystem(
+                    final SystemType system
                     )
     {
-        return _addElement( test );
+        return _addElement( system );
     }
 
 
-    public Collection<TestType> getTest()
+    public Collection<SystemType> getSystem()
     {
         return _getElement();
     }
 
 
-    public Iterator<TestType> iterateTest()
+    public Iterator<SystemType> iterateSystem()
     {
         return _iterateElement();
     }
@@ -112,9 +113,9 @@ public class TestsType
     //**************************************************************
 
     @Override
-    protected Collection<TestType> _getElement()
+    protected Collection<SystemType> _getElement()
     {
-        return this.test;
+        return this.system;
     }
 
 
@@ -123,11 +124,11 @@ public class TestsType
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public String toString()
-    {
-        return "[" + getTest() + "]";
-    }
+//    @Override
+//    public String toString()
+//    {
+//        return "[" + super.toString() + "]";
+//    }
 
 }
-// TestsType
+// ResultsType

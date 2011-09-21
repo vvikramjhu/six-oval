@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.xml.v5.results;
 
-import jp.go.aist.six.oval.model.v5.results.ResultEnumeration;
+import jp.go.aist.six.oval.model.results.ResultEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 

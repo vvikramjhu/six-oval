@@ -464,7 +464,7 @@ public abstract class CoreTestBase
                         // def:7432, Debian, patch
                         // textfilecontent54, dpkginfo, uname
                         {
-                            jp.go.aist.six.oval.model.v5.results.OvalResults.class,
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
                             "test/resources/data/oval-results-5/oval-5.9_def7432_patch_debian_results.xml",
                             null,
                             "marshalled_oval-5.9_def7432_patch_debian_results.xml"
