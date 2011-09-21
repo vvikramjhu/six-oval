@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.results;
 
-import jp.go.aist.six.oval.model.v5.Oval5Object;
+import jp.go.aist.six.oval.model.OvalObject;
 
 
 
@@ -33,7 +33,7 @@ import jp.go.aist.six.oval.model.v5.Oval5Object;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class CriteriaResultElement
-    implements Oval5Object
+    implements OvalObject
 {
 
     public static final Boolean  DEFAULT_NEGATE = Boolean.FALSE;
