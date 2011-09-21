@@ -20,7 +20,7 @@
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-    <class name="jp.go.aist.six.oval.model.v5.common.GeneratorType">
+    <class name="jp.go.aist.six.oval.model.common.GeneratorType">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-common-5"
             ns-prefix=""/>
@@ -47,7 +47,7 @@
 -->
 
         <field name="additionalInformation" 
-            type="jp.go.aist.six.oval.model.v5.common.GeneratorInformation"
+            type="jp.go.aist.six.oval.model.common.GeneratorInformation"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
@@ -55,7 +55,7 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.common.MessageType">
+    <class name="jp.go.aist.six.oval.model.common.MessageType">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-common-5"
             ns-prefix=""/>
@@ -66,7 +66,7 @@
 
         <field name="level"  
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.common.MessageLevelEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.common.MessageLevelEnumerationHandler">
             <bind-xml name="level" node="attribute"/>
         </field>
     </class>

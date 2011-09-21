@@ -20,38 +20,38 @@
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-    <class name="jp.go.aist.six.oval.model.v5.sc.OvalSystemCharacteristics"
-        extends="jp.go.aist.six.oval.model.v5.OvalDocument">
+    <class name="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics"
+        extends="jp.go.aist.six.oval.model.OvalDocument">
     
         <map-to xml="oval_system_characteristics"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"
             ns-prefix=""/>
 
         <field name="generator" 
-            type="jp.go.aist.six.oval.model.v5.common.GeneratorType">
+            type="jp.go.aist.six.oval.model.common.GeneratorType">
             <bind-xml name="generator" node="element"/>
         </field>
 
         <field name="systemInfo" 
-            type="jp.go.aist.six.oval.model.v5.sc.SystemInfoType"
+            type="jp.go.aist.six.oval.model.sc.SystemInfoType"
             required="true">
             <bind-xml name="system_info" node="element"/>
         </field>
 
         <field name="collectedObjects" 
-            type="jp.go.aist.six.oval.model.v5.sc.CollectedSystemObjectsType">
+            type="jp.go.aist.six.oval.model.sc.CollectedSystemObjectsType">
             <bind-xml name="collected_objects" node="element"/>
         </field>
 
         <field name="systemData" 
-            type="jp.go.aist.six.oval.model.v5.sc.SystemDataType">
+            type="jp.go.aist.six.oval.model.sc.SystemDataType">
             <bind-xml name="system_data" node="element"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.sc.SystemInfoType">
+    <class name="jp.go.aist.six.oval.model.sc.SystemInfoType">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
 
@@ -76,19 +76,19 @@
         </field>
 
         <field name="interfaces" 
-            type="jp.go.aist.six.oval.model.v5.sc.NetworkInterfacesType">
+            type="jp.go.aist.six.oval.model.sc.NetworkInterfacesType">
             <bind-xml name="interfaces" node="element"/> 
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.sc.NetworkInterfacesType">
+    <class name="jp.go.aist.six.oval.model.sc.NetworkInterfacesType">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
 
         <field name="interface" 
-            type="jp.go.aist.six.oval.model.v5.sc.NetworkInterfaceType"
+            type="jp.go.aist.six.oval.model.sc.NetworkInterfaceType"
             collection="collection">
             <bind-xml name="interface" node="element"/>
         </field>
@@ -96,7 +96,7 @@
 
 
 
-    <class name ="jp.go.aist.six.oval.model.v5.sc.NetworkInterfaceType">
+    <class name ="jp.go.aist.six.oval.model.sc.NetworkInterfaceType">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
 
@@ -106,7 +106,7 @@
         </field>
 
         <field name="ipAddress" 
-            type="jp.go.aist.six.oval.model.v5.sc.EntityItemIPAddressStringType"
+            type="jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType"
             required="true">
             <bind-xml name="ip_address" node="element"/>
         </field>
@@ -119,12 +119,12 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.sc.CollectedSystemObjectsType">
+    <class name="jp.go.aist.six.oval.model.sc.CollectedSystemObjectsType">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.v5.sc.SystemObjectType"
+            type="jp.go.aist.six.oval.model.sc.SystemObjectType"
             collection="collection">
             <bind-xml name="object" node="element"/>
         </field>
@@ -132,13 +132,13 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.sc.SystemObjectType"
-        extends="jp.go.aist.six.oval.model.v5.OvalElement">
+    <class name="jp.go.aist.six.oval.model.sc.SystemObjectType"
+        extends="jp.go.aist.six.oval.model.OvalElement">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
 
         <field name="message" 
-            type="jp.go.aist.six.oval.model.v5.common.MessageType"
+            type="jp.go.aist.six.oval.model.common.MessageType"
             collection="collection">
             <bind-xml name="message" node="element"/>
         </field>
@@ -149,13 +149,13 @@
 -->
 
         <field name="variableValue" 
-            type="jp.go.aist.six.oval.model.v5.sc.VariableValueType"
+            type="jp.go.aist.six.oval.model.sc.VariableValueType"
             collection="collection">
             <bind-xml name="variable_value" node="element"/>
         </field>
 
         <field name="reference" 
-            type="jp.go.aist.six.oval.model.v5.sc.ReferenceType"
+            type="jp.go.aist.six.oval.model.sc.ReferenceType"
             collection="collection">
             <bind-xml name="reference" node="element"/>
         </field>
@@ -170,15 +170,15 @@
 
         <field name="flag"  
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.sc.FlagEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.sc.FlagEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.sc.FlagEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.sc.FlagEnumeration" -->
             <bind-xml name="flag" node="attribute"/>
         </field>
     </class>
 
 
 
-    <class name ="jp.go.aist.six.oval.model.v5.sc.VariableValueType">
+    <class name ="jp.go.aist.six.oval.model.sc.VariableValueType">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
 
@@ -193,7 +193,7 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.sc.ReferenceType">
+    <class name="jp.go.aist.six.oval.model.sc.ReferenceType">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
 
@@ -204,7 +204,7 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.sc.SystemDataType">
+    <class name="jp.go.aist.six.oval.model.sc.SystemDataType">
 <!--
 If we have this ns-uri, child elements have the same namespace,
 not the family-specific one.
@@ -213,7 +213,7 @@ not the family-specific one.
 -->
 
         <field name="item" 
-            type="jp.go.aist.six.oval.model.v5.sc.ItemType"
+            type="jp.go.aist.six.oval.model.sc.ItemType"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
@@ -221,9 +221,9 @@ not the family-specific one.
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.sc.ItemType">
+    <class name="jp.go.aist.six.oval.model.sc.ItemType">
         <field name="message" 
-            type="jp.go.aist.six.oval.model.v5.common.MessageType"
+            type="jp.go.aist.six.oval.model.common.MessageType"
             collection="collection">
             <bind-xml name="message" node="element"/>
             <!--
@@ -237,8 +237,8 @@ not the family-specific one.
 
         <field name="status" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.sc.StatusEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.sc.StatusEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.sc.StatusEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.sc.StatusEnumeration" -->
             <bind-xml name="status" node="attribute"/>
         </field>
     </class>
@@ -247,13 +247,13 @@ not the family-specific one.
 
 <!-- entity -->
 
-    <class name="jp.go.aist.six.oval.model.v5.sc.EntityAttributeGroup"
+    <class name="jp.go.aist.six.oval.model.sc.EntityAttributeGroup"
         verify-constructable="false">
 
         <field name="datatype" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.common.DatatypeEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.common.DatatypeEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.common.DatatypeEnumeration" -->
             <bind-xml name="datatype" node="attribute"/>
         </field>
 
@@ -263,16 +263,16 @@ not the family-specific one.
 
         <field name="status" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.sc.StatusEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.sc.StatusEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.sc.StatusEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.sc.StatusEnumeration" -->
             <bind-xml name="status" node="attribute"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.sc.EntityItemSimpleBaseType"
-        extends="jp.go.aist.six.oval.model.v5.sc.EntityAttributeGroup"
+    <class name="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType"
+        extends="jp.go.aist.six.oval.model.sc.EntityAttributeGroup"
         verify-constructable="false">
 
         <field name="content" type="string">
@@ -282,38 +282,38 @@ not the family-specific one.
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.sc.EntityItemIPAddressStringType"
-        extends="jp.go.aist.six.oval.model.v5.sc.EntityItemSimpleBaseType">
+    <class name="jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType"
-        extends="jp.go.aist.six.oval.model.v5.sc.EntityItemSimpleBaseType">
+    <class name="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.sc.EntityItemIntType"
-        extends="jp.go.aist.six.oval.model.v5.sc.EntityItemSimpleBaseType">
+    <class name="jp.go.aist.six.oval.model.sc.EntityItemIntType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType"
-        extends="jp.go.aist.six.oval.model.v5.sc.EntityItemSimpleBaseType">
+    <class name="jp.go.aist.six.oval.model.sc.EntityItemStringType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.sc.EntityItemVersionType"
-        extends="jp.go.aist.six.oval.model.v5.sc.EntityItemSimpleBaseType">
+    <class name="jp.go.aist.six.oval.model.sc.EntityItemVersionType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.sc.EntityItemEVRStringType"
-        extends="jp.go.aist.six.oval.model.v5.sc.EntityItemSimpleBaseType">
+    <class name="jp.go.aist.six.oval.model.sc.EntityItemEVRStringType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
     </class>
 
 

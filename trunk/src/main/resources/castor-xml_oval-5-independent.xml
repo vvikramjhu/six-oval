@@ -24,19 +24,19 @@
     <!-- family                                                  -->
     <!-- ******************************************************* -->
 
-    <class name="jp.go.aist.six.oval.model.v5.independent.FamilyTest"
-        extends="jp.go.aist.six.oval.model.v5.definitions.TestType">
+    <class name="jp.go.aist.six.oval.model.independent.FamilyTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="family_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
             ns-prefix=""/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.v5.definitions.SystemObjectRefType">
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.v5.definitions.StateRefType"
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
@@ -44,8 +44,8 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.independent.FamilyObject"
-        extends="jp.go.aist.six.oval.model.v5.definitions.SystemObjectType">
+    <class name="jp.go.aist.six.oval.model.independent.FamilyObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
         <map-to xml="family_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
             ns-prefix=""/>
@@ -53,27 +53,27 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.independent.FamilyState"
-        extends="jp.go.aist.six.oval.model.v5.definitions.StateType">
+    <class name="jp.go.aist.six.oval.model.independent.FamilyState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
         <map-to xml="family_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
             ns-prefix=""/>
 
         <field name="family" 
-            type="jp.go.aist.six.oval.model.v5.independent.EntityStateFamilyType">
+            type="jp.go.aist.six.oval.model.independent.EntityStateFamilyType">
             <bind-xml name="family" node="element"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.independent.EntityStateFamilyType"
-        extends="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+    <class name="jp.go.aist.six.oval.model.independent.EntityStateFamilyType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
 
 <!--
         <field name="content"
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.FamilyEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.FamilyEnumerationHandler">
             <bind-xml node="text"/>
         </field>
 -->
@@ -81,22 +81,22 @@
 
 
 
-    <class name ="jp.go.aist.six.oval.model.v5.independent.FamilyItem"
-        extends="jp.go.aist.six.oval.model.v5.sc.ItemType">
+    <class name ="jp.go.aist.six.oval.model.independent.FamilyItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
         <map-to xml="family_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent"
             ns-prefix=""/>
 
         <field name="family" 
-            type="jp.go.aist.six.oval.model.v5.independent.EntityItemFamilyType">
+            type="jp.go.aist.six.oval.model.independent.EntityItemFamilyType">
             <bind-xml name="family" node="element"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.independent.EntityItemFamilyType"
-        extends="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+    <class name="jp.go.aist.six.oval.model.independent.EntityItemFamilyType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
 
 
@@ -105,19 +105,19 @@
     <!-- textfilecontent54                                       -->
     <!-- ******************************************************* -->
 
-    <class name="jp.go.aist.six.oval.model.v5.independent.FileBehaviors"
-        extends="jp.go.aist.six.oval.model.v5.AbstractFileBehaviors">
+    <class name="jp.go.aist.six.oval.model.independent.FileBehaviors"
+        extends="jp.go.aist.six.oval.model.AbstractFileBehaviors">
 
         <field name="recurse"
-            type="jp.go.aist.six.oval.model.v5.RecurseEnumeration">
+            type="jp.go.aist.six.oval.model.RecurseEnumeration">
             <bind-xml name="recurse" node="attribute"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.independent.TextfileContent54Behaviors"
-        extends="jp.go.aist.six.oval.model.v5.independent.FileBehaviors">
+    <class name="jp.go.aist.six.oval.model.independent.TextfileContent54Behaviors"
+        extends="jp.go.aist.six.oval.model.independent.FileBehaviors">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
             ns-prefix=""/>
@@ -137,19 +137,19 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.independent.TextfileContent54Test"
-        extends="jp.go.aist.six.oval.model.v5.definitions.TestType">
+    <class name="jp.go.aist.six.oval.model.independent.TextfileContent54Test"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="textfilecontent54_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
             ns-prefix=""/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.v5.definitions.SystemObjectRefType">
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.v5.definitions.StateRefType"
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
@@ -157,131 +157,131 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.independent.TextfileContent54Object"
-        extends="jp.go.aist.six.oval.model.v5.definitions.SystemObjectType">
+    <class name="jp.go.aist.six.oval.model.independent.TextfileContent54Object"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
         <map-to xml="textfilecontent54_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
             ns-prefix=""/>
 
         <field name="behaviors" 
-            type="jp.go.aist.six.oval.model.v5.independent.TextfileContent54Behaviors">
+            type="jp.go.aist.six.oval.model.independent.TextfileContent54Behaviors">
             <bind-xml name="behaviors" node="element"/>
         </field>
         
         <field name="filepath" 
-            type="jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="filepath" node="element"/>
         </field>
         
         <field name="path" 
-            type="jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="path" node="element"/>
         </field>
         
         <field name="filename" 
-            type="jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="filename" node="element"/>
         </field>
 
         <field name="pattern" 
-            type="jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="pattern" node="element"/>
         </field>
 
         <field name="instance" 
-            type="jp.go.aist.six.oval.model.v5.definitions.EntityObjectIntType">
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectIntType">
             <bind-xml name="instance" node="element"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.independent.TextfileContent54State"
-        extends="jp.go.aist.six.oval.model.v5.definitions.StateType">
+    <class name="jp.go.aist.six.oval.model.independent.TextfileContent54State"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
         <map-to xml="textfilecontent54_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
             ns-prefix=""/>
 
         <field name="filepath" 
-            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="filepath" node="element"/>
         </field>
 
         <field name="path" 
-            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="path" node="element"/>
         </field>
 
         <field name="filename" 
-            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="filename" node="element"/>
         </field>
 
         <field name="pattern" 
-            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="pattern" node="element"/>
         </field>
 
         <field name="instance" 
-            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateIntType">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
             <bind-xml name="instance" node="element"/>
         </field>
 
         <field name="text" 
-            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
             <bind-xml name="text" node="element"/>
         </field>
 
         <field name="subexpression" 
-            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
             <bind-xml name="subexpression" node="element"/>
         </field>
     </class>
 
 
-    <class name ="jp.go.aist.six.oval.model.v5.independent.TextfileContentItem"
-        extends="jp.go.aist.six.oval.model.v5.sc.ItemType">
+    <class name ="jp.go.aist.six.oval.model.independent.TextfileContentItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
         <map-to xml="textfilecontent_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent"
             ns-prefix=""/>
 
         <field name="filepath" 
-            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="filepath" node="element"/>
         </field>
 
         <field name="path" 
-            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="path" node="element"/>
         </field>
 
         <field name="filename" 
-            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="filename" node="element"/>
         </field>
 
         <field name="pattern" 
-            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="pattern" node="element"/>
         </field>
 
         <field name="instance" 
-            type="jp.go.aist.six.oval.model.v5.sc.EntityItemIntType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="instance" node="element"/>
         </field>
 
         <field name="line" 
-            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="line" node="element"/>
         </field>
 
         <field name="text" 
-            type="jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType">
             <bind-xml name="text" node="element"/>
         </field>
 
         <field name="subexpression" 
-            type="jp.go.aist.six.oval.model.v5.sc.EntityItemAnySimpleType"
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType"
             collection="collection">
             <bind-xml name="subexpression" node="element"/>
         </field>
@@ -293,8 +293,8 @@
     <!-- unknown                                                 -->
     <!-- ******************************************************* -->
 
-    <class name="jp.go.aist.six.oval.model.v5.independent.UnknownTest"
-        extends="jp.go.aist.six.oval.model.v5.definitions.TestType">
+    <class name="jp.go.aist.six.oval.model.independent.UnknownTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="unknown_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
             ns-prefix=""/>

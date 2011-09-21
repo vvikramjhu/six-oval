@@ -20,60 +20,60 @@
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.OvalDefinitions"
-        extends="jp.go.aist.six.oval.model.v5.OvalDocument">
+    <class name="jp.go.aist.six.oval.model.definitions.OvalDefinitions"
+        extends="jp.go.aist.six.oval.model.OvalDocument">
         <map-to xml="oval_definitions"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
             ns-prefix=""/>
 
         <field name="generator" 
-            type="jp.go.aist.six.oval.model.v5.common.GeneratorType">
+            type="jp.go.aist.six.oval.model.common.GeneratorType">
             <bind-xml name="generator" node="element"/>
         </field>
 
 <!--
         <field name="definitions" 
-            type="jp.go.aist.six.oval.model.v5.definitions.DefinitionType"
+            type="jp.go.aist.six.oval.model.definitions.DefinitionType"
             collection="collection">
             <bind-xml name="definition" node="element" location="definitions"/>
         </field>
 -->
         <field name="definitions" 
-            type="jp.go.aist.six.oval.model.v5.definitions.DefinitionsType">
+            type="jp.go.aist.six.oval.model.definitions.DefinitionsType">
             <bind-xml name="definitions" node="element"/>
         </field>
 
         <field name="tests" 
-            type="jp.go.aist.six.oval.model.v5.definitions.TestsType">
+            type="jp.go.aist.six.oval.model.definitions.TestsType">
             <bind-xml name="tests" node="element" />
         </field>
 
 
         <field name="objects" 
-            type="jp.go.aist.six.oval.model.v5.definitions.SystemObjectsType">
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectsType">
             <bind-xml name="objects" node="element"/>
         </field>
 
         <field name="states" 
-            type="jp.go.aist.six.oval.model.v5.definitions.StatesType">
+            type="jp.go.aist.six.oval.model.definitions.StatesType">
             <bind-xml name="states" node="element"/>
         </field>
 
         <field name="variables" 
-            type="jp.go.aist.six.oval.model.v5.definitions.VariablesType">
+            type="jp.go.aist.six.oval.model.definitions.VariablesType">
             <bind-xml name="variables" node="element"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.DefinitionsType">
+    <class name="jp.go.aist.six.oval.model.definitions.DefinitionsType">
         <map-to  xml="definitions"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
             ns-prefix=""/>
 
         <field name="definition" 
-            type="jp.go.aist.six.oval.model.v5.definitions.DefinitionType"
+            type="jp.go.aist.six.oval.model.definitions.DefinitionType"
             collection="collection"
             set-method="addDefinition"
             get-method="iterateDefinition">
@@ -84,38 +84,38 @@
 
 
     <!-- definition -->
-    <class name="jp.go.aist.six.oval.model.v5.definitions.DefinitionType"
-        extends="jp.go.aist.six.oval.model.v5.OvalEntity">
+    <class name="jp.go.aist.six.oval.model.definitions.DefinitionType"
+        extends="jp.go.aist.six.oval.model.OvalEntity">
         <map-to xml="definition" 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
             ns-prefix=""/>
 
         <field name="metadata" 
-            type="jp.go.aist.six.oval.model.v5.definitions.MetadataType">
+            type="jp.go.aist.six.oval.model.definitions.MetadataType">
             <bind-xml name="metadata" node="element"/>
         </field>
 
         <field name="notes" 
-            type="jp.go.aist.six.oval.model.v5.definitions.NotesType">
+            type="jp.go.aist.six.oval.model.definitions.NotesType">
             <bind-xml name="notes" node="element"/>
         </field>
 
         <field name="criteria" 
-            type="jp.go.aist.six.oval.model.v5.definitions.CriteriaType">
+            type="jp.go.aist.six.oval.model.definitions.CriteriaType">
             <bind-xml name="criteria" node="element"/>
         </field>
 
         <field name="definitionClass" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.common.ClassEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.common.ClassEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.common.ClassEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.common.ClassEnumeration" -->
             <bind-xml name="class" node="attribute"/>
         </field>
     </class>
 
 
     <!-- metadata -->
-    <class name="jp.go.aist.six.oval.model.v5.definitions.MetadataType">
+    <class name="jp.go.aist.six.oval.model.definitions.MetadataType">
         <map-to xml="metadata"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
             ns-prefix=""/>
@@ -125,13 +125,13 @@
         </field>
 
         <field name="affected" 
-            type="jp.go.aist.six.oval.model.v5.definitions.AffectedType"
+            type="jp.go.aist.six.oval.model.definitions.AffectedType"
             collection="collection">
             <bind-xml name="affected" node="element"/>
         </field>
 
         <field name="reference" 
-            type="jp.go.aist.six.oval.model.v5.definitions.ReferenceType"
+            type="jp.go.aist.six.oval.model.definitions.ReferenceType"
             collection="collection">
             <bind-xml name="reference" node="element"/>
         </field>
@@ -141,32 +141,32 @@
         </field>
 
         <field name="additionalMetadata" 
-            type="jp.go.aist.six.oval.model.v5.definitions.MetadataItem"
+            type="jp.go.aist.six.oval.model.definitions.MetadataItem"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
     </class>
 
-    <class name ="jp.go.aist.six.oval.model.v5.definitions.MetadataItem"
+    <class name ="jp.go.aist.six.oval.model.definitions.MetadataItem"
         verify-constructable="false">
     </class>
 
 
 
     <!-- affected -->
-    <class name="jp.go.aist.six.oval.model.v5.definitions.AffectedType">
+    <class name="jp.go.aist.six.oval.model.definitions.AffectedType">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="family" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.common.FamilyEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.common.FamilyEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.common.FamilyEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.common.FamilyEnumeration" -->
             <bind-xml name="family" node="attribute"/>
         </field>
 
         <field name="platform" 
-            type="jp.go.aist.six.oval.model.v5.definitions.Platform"
+            type="jp.go.aist.six.oval.model.definitions.Platform"
             collection="collection"
             get-method="iteratePlatform"
             set-method="addPlatform"
@@ -175,7 +175,7 @@
         </field>
 
         <field name="product" 
-            type="jp.go.aist.six.oval.model.v5.definitions.Product"
+            type="jp.go.aist.six.oval.model.definitions.Product"
             collection="collection"
             get-method="iterateProduct"
             set-method="addProduct"
@@ -184,7 +184,7 @@
         </field>
     </class>
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.Platform">
+    <class name="jp.go.aist.six.oval.model.definitions.Platform">
         <map-to xml="platform"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -193,7 +193,7 @@
         </field>
     </class>
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.Product">
+    <class name="jp.go.aist.six.oval.model.definitions.Product">
         <map-to xml="product"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -205,7 +205,7 @@
 
 
     <!-- reference -->
-    <class name="jp.go.aist.six.oval.model.v5.definitions.ReferenceType">
+    <class name="jp.go.aist.six.oval.model.definitions.ReferenceType">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -224,19 +224,19 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.NotesType">
+    <class name="jp.go.aist.six.oval.model.definitions.NotesType">
         <map-to xml="notes"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
             ns-prefix=""/>
 
         <field name="note" 
-            type="jp.go.aist.six.oval.model.v5.definitions.Note"
+            type="jp.go.aist.six.oval.model.definitions.Note"
             collection="collection">
             <bind-xml name="note" node="element"/>
         </field>
     </class>
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.Note">
+    <class name="jp.go.aist.six.oval.model.definitions.Note">
         <map-to xml="note"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
             ns-prefix=""/>
@@ -248,7 +248,7 @@
 
 
 
-    <class name ="jp.go.aist.six.oval.model.v5.definitions.CriteriaElement"
+    <class name ="jp.go.aist.six.oval.model.definitions.CriteriaElement"
         verify-constructable="false">
 
         <field name="negate" type="boolean">
@@ -262,20 +262,20 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.CriteriaType"
-        extends="jp.go.aist.six.oval.model.v5.definitions.CriteriaElement">
+    <class name="jp.go.aist.six.oval.model.definitions.CriteriaType"
+        extends="jp.go.aist.six.oval.model.definitions.CriteriaElement">
         <map-to xml="criteria"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="operator" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.common.OperatorEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.common.OperatorEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.common.OperatorEnumeration" -->
             <bind-xml name="operator" node="attribute"/>
         </field>
 
         <field name="elements" 
-            type="jp.go.aist.six.oval.model.v5.definitions.CriteriaElement"
+            type="jp.go.aist.six.oval.model.definitions.CriteriaElement"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
@@ -283,8 +283,8 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.CriterionType"
-        extends="jp.go.aist.six.oval.model.v5.definitions.CriteriaElement">
+    <class name="jp.go.aist.six.oval.model.definitions.CriterionType"
+        extends="jp.go.aist.six.oval.model.definitions.CriteriaElement">
         <map-to xml="criterion"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -295,8 +295,8 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.ExtendDefinitionType"
-        extends="jp.go.aist.six.oval.model.v5.definitions.CriteriaElement">
+    <class name="jp.go.aist.six.oval.model.definitions.ExtendDefinitionType"
+        extends="jp.go.aist.six.oval.model.definitions.CriteriaElement">
         <map-to xml="extend_definition"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -307,9 +307,9 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.TestsType">
+    <class name="jp.go.aist.six.oval.model.definitions.TestsType">
         <field name="test" 
-            type="jp.go.aist.six.oval.model.v5.definitions.TestType"
+            type="jp.go.aist.six.oval.model.definitions.TestType"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
@@ -317,8 +317,8 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.TestType"
-        extends="jp.go.aist.six.oval.model.v5.CommentedOvalEntity"
+    <class name="jp.go.aist.six.oval.model.definitions.TestType"
+        extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
         >
 <!--
         <map-to
@@ -328,12 +328,12 @@
 -->
 
         <field name="notes" 
-            type="jp.go.aist.six.oval.model.v5.definitions.NotesType">
+            type="jp.go.aist.six.oval.model.definitions.NotesType">
             <bind-xml name="notes" node="element"/>
         </field>
 <!--
         <field name="notes" 
-            type="jp.go.aist.six.oval.model.v5.definitions.NotesType">
+            type="jp.go.aist.six.oval.model.definitions.NotesType">
             <bind-xml name="notes" node="element"
                 xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
@@ -341,29 +341,29 @@
 
         <field name="checkExistence"
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.common.ExistenceEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.common.ExistenceEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.common.ExistenceEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.common.ExistenceEnumeration" -->
             <bind-xml name="check_existence" node="attribute"/>
         </field>
 
         <field name="check" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.common.CheckEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.common.CheckEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.common.CheckEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.common.CheckEnumeration" -->
             <bind-xml name="check" node="attribute"/>
         </field>
 
         <field name="stateOperator" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.common.OperatorEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.common.OperatorEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.common.OperatorEnumeration" -->
             <bind-xml name="state_operator" node="attribute"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.SystemObjectRefType">
+    <class name="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
         <field name="objectRef" type="string">
             <bind-xml name="object_ref" node="attribute"/>
         </field>
@@ -371,7 +371,7 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.StateRefType">
+    <class name="jp.go.aist.six.oval.model.definitions.StateRefType">
         <field name="stateRef" type="string">
             <bind-xml name="state_ref" node="attribute"/>
         </field>
@@ -379,9 +379,9 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.SystemObjectsType">
+    <class name="jp.go.aist.six.oval.model.definitions.SystemObjectsType">
         <field name="object" 
-            type="jp.go.aist.six.oval.model.v5.definitions.SystemObjectType"
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectType"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
@@ -389,19 +389,19 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.SystemObjectType"
-        extends="jp.go.aist.six.oval.model.v5.CommentedOvalEntity"
+    <class name="jp.go.aist.six.oval.model.definitions.SystemObjectType"
+        extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
         verify-constructable="false">
 
         <field name="notes" 
-            type="jp.go.aist.six.oval.model.v5.definitions.NotesType">
+            type="jp.go.aist.six.oval.model.definitions.NotesType">
             <bind-xml name="notes" node="element"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.Filter">
+    <class name="jp.go.aist.six.oval.model.definitions.Filter">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
             ns-prefix=""/>
@@ -412,17 +412,17 @@
 
         <field name="action" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.definitions.FilterActionEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.definitions.FilterActionEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.definitions.FilterActionEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.definitions.FilterActionEnumeration" -->
             <bind-xml name="action" node="attribute"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.StatesType">
+    <class name="jp.go.aist.six.oval.model.definitions.StatesType">
         <field name="state" 
-            type="jp.go.aist.six.oval.model.v5.definitions.StateType"
+            type="jp.go.aist.six.oval.model.definitions.StateType"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
@@ -430,19 +430,19 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.StateType"
-        extends="jp.go.aist.six.oval.model.v5.CommentedOvalEntity"
+    <class name="jp.go.aist.six.oval.model.definitions.StateType"
+        extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
         verify-constructable="false">
 
         <field name="notes" 
-            type="jp.go.aist.six.oval.model.v5.definitions.NotesType">
+            type="jp.go.aist.six.oval.model.definitions.NotesType">
             <bind-xml name="notes" node="element"/>
         </field>
 
         <field name="operator" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.common.OperatorEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.common.OperatorEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.common.OperatorEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.common.OperatorEnumeration" -->
             <bind-xml name="operator" node="attribute"/>
         </field>
     </class>
@@ -453,9 +453,9 @@
     <!-- variables                                               -->
     <!-- ******************************************************* -->
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.VariablesType">
+    <class name="jp.go.aist.six.oval.model.definitions.VariablesType">
         <field name="variable" 
-            type="jp.go.aist.six.oval.model.v5.definitions.VariableType"
+            type="jp.go.aist.six.oval.model.definitions.VariableType"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
@@ -463,34 +463,34 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.VariableType"
-        extends="jp.go.aist.six.oval.model.v5.CommentedOvalEntity"
+    <class name="jp.go.aist.six.oval.model.definitions.VariableType"
+        extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
         verify-constructable="false">
 
         <field name="datatype" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.common.DatatypeEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.common.DatatypeEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.common.DatatypeEnumeration" -->
             <bind-xml name="datatype" node="attribute"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.LocalVariable"
-        extends="jp.go.aist.six.oval.model.v5.definitions.VariableType">
+    <class name="jp.go.aist.six.oval.model.definitions.LocalVariable"
+        extends="jp.go.aist.six.oval.model.definitions.VariableType">
         <map-to xml="local_variable"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="component" 
-            type="jp.go.aist.six.oval.model.v5.definitions.ComponentGroup">
+            type="jp.go.aist.six.oval.model.definitions.ComponentGroup">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.LiteralComponentType">
+    <class name="jp.go.aist.six.oval.model.definitions.LiteralComponentType">
         <map-to xml="literal_component"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -500,15 +500,15 @@
 
         <field name="datatype"
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.common.DatatypeEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.common.DatatypeEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.common.DatatypeEnumeration" -->
             <bind-xml name="datatype" node="attribute"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.ObjectComponentType">
+    <class name="jp.go.aist.six.oval.model.definitions.ObjectComponentType">
         <map-to xml="object_component"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -527,7 +527,7 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.VariableComponentType">
+    <class name="jp.go.aist.six.oval.model.definitions.VariableComponentType">
         <map-to xml="variable_component"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -539,19 +539,19 @@
 
 
 <!--
-    <class name="jp.go.aist.six.oval.model.v5.definitions.FunctionGroup"
+    <class name="jp.go.aist.six.oval.model.definitions.FunctionGroup"
         verify-constructable="false">
 
     </class>
 -->
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.ConcatFunctionType">
+    <class name="jp.go.aist.six.oval.model.definitions.ConcatFunctionType">
         <map-to xml="concat"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="component" 
-            type="jp.go.aist.six.oval.model.v5.definitions.ComponentGroup"
+            type="jp.go.aist.six.oval.model.definitions.ComponentGroup"
             collection="collection">
             <!-- set-method="addComponent" get-method="iterateComponent" -->
             <bind-xml auto-naming="deriveByClass" node="element"/>
@@ -560,24 +560,24 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.EscapeRegexFunctionType">
+    <class name="jp.go.aist.six.oval.model.definitions.EscapeRegexFunctionType">
         <map-to xml="escape_regex"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="component" 
-            type="jp.go.aist.six.oval.model.v5.definitions.ComponentGroup">
+            type="jp.go.aist.six.oval.model.definitions.ComponentGroup">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.RegexCaptureFunctionType">
+    <class name="jp.go.aist.six.oval.model.definitions.RegexCaptureFunctionType">
         <map-to xml="regex_capture"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="component" 
-            type="jp.go.aist.six.oval.model.v5.definitions.ComponentGroup">
+            type="jp.go.aist.six.oval.model.definitions.ComponentGroup">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
 
@@ -588,12 +588,12 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.SplitFunctionType">
+    <class name="jp.go.aist.six.oval.model.definitions.SplitFunctionType">
         <map-to xml="split"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="component" 
-            type="jp.go.aist.six.oval.model.v5.definitions.ComponentGroup">
+            type="jp.go.aist.six.oval.model.definitions.ComponentGroup">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
 
@@ -608,20 +608,20 @@
     <!-- entity                                                  -->
     <!-- ******************************************************* -->
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup"
+    <class name="jp.go.aist.six.oval.model.definitions.EntityAttributeGroup"
         verify-constructable="false">
 
         <field name="datatype"
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.common.DatatypeEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.common.DatatypeEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.common.DatatypeEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.common.DatatypeEnumeration" -->
             <bind-xml name="datatype" node="attribute"/>
         </field>
 
         <field name="operation"
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.common.OperationEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.common.OperationEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.common.OperationEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.common.OperationEnumeration" -->
             <bind-xml name="operation" node="attribute"/>
         </field>
 
@@ -635,16 +635,16 @@
 
         <field name="varCheck"
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.common.CheckEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.common.CheckEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.common.CheckEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.common.CheckEnumeration" -->
             <bind-xml name="var_check" node="attribute"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.EntitySimpleBaseType"
-        extends="jp.go.aist.six.oval.model.v5.definitions.EntityAttributeGroup"
+    <class name="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityAttributeGroup"
         verify-constructable="false">
 
         <field name="content" type="string">
@@ -654,46 +654,46 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.EntityStateSimpleBaseType"
-        extends="jp.go.aist.six.oval.model.v5.definitions.EntitySimpleBaseType"
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType"
+        extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType"
         verify-constructable="false">
 
         <field name="entityCheck"
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.common.CheckEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.common.CheckEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.common.CheckEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.common.CheckEnumeration" -->
             <bind-xml name="entity_check" node="attribute"/>
         </field>
     </class>
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.EntityStateAnySimpleType"
-        extends="jp.go.aist.six.oval.model.v5.definitions.EntityStateSimpleBaseType">
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
     </class>
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.EntityStateEVRStringType"
-        extends="jp.go.aist.six.oval.model.v5.definitions.EntityStateSimpleBaseType">
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateEVRStringType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
     </class>
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.EntityStateIntType"
-        extends="jp.go.aist.six.oval.model.v5.definitions.EntityStateSimpleBaseType">
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateIntType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
     </class>
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType"
-        extends="jp.go.aist.six.oval.model.v5.definitions.EntityStateSimpleBaseType">
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateStringType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
     </class>
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.EntityStateVersionType"
-        extends="jp.go.aist.six.oval.model.v5.definitions.EntityStateSimpleBaseType">
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateVersionType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.EntityObjectIntType"
-        extends="jp.go.aist.six.oval.model.v5.definitions.EntitySimpleBaseType">
+    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectIntType"
+        extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType">
     </class>
 
-    <class name="jp.go.aist.six.oval.model.v5.definitions.EntityObjectStringType"
-        extends="jp.go.aist.six.oval.model.v5.definitions.EntitySimpleBaseType">
+    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectStringType"
+        extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType">
     </class>
 
 
@@ -704,8 +704,8 @@
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-    <class name="jp.go.aist.six.oval.model.v5.mitre.Vendor"
-        extends="jp.go.aist.six.oval.model.v5.common.GeneratorInfo">
+    <class name="jp.go.aist.six.oval.model.mitre.Vendor"
+        extends="jp.go.aist.six.oval.model.common.GeneratorInfo">
         <map-to xml="vendor"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -716,34 +716,34 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.mitre.OvalRepository"
-        extends="jp.go.aist.six.oval.model.v5.definitions.MetadataItem">
+    <class name="jp.go.aist.six.oval.model.mitre.OvalRepository"
+        extends="jp.go.aist.six.oval.model.definitions.MetadataItem">
         <map-to xml="oval_repository"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="status" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.mitre.DefinitionStatusEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.mitre.DefinitionStatusEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.mitre.DefinitionStatusEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.mitre.DefinitionStatusEnumeration" -->
             <bind-xml name="status" node="element"/>
         </field>
 
         <field name="dates" 
-            type="jp.go.aist.six.oval.model.v5.mitre.Event"
+            type="jp.go.aist.six.oval.model.mitre.Event"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"
                 location="dates"/>
         </field>
 
         <field name="affectedCpeList" 
-            type="jp.go.aist.six.oval.model.v5.mitre.AffectedCpeList">
+            type="jp.go.aist.six.oval.model.mitre.AffectedCpeList">
             <bind-xml name="affected_cpe_list" node="element"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.mitre.Contributor">
+    <class name="jp.go.aist.six.oval.model.mitre.Contributor">
         <map-to xml="contributor"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -758,7 +758,7 @@
 
 
 
-    <class name ="jp.go.aist.six.oval.model.v5.mitre.Event"
+    <class name ="jp.go.aist.six.oval.model.mitre.Event"
         verify-constructable="false">
 
         <field name="date" type="string">
@@ -778,21 +778,21 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.mitre.Submitted"
-        extends="jp.go.aist.six.oval.model.v5.mitre.Event">
+    <class name="jp.go.aist.six.oval.model.mitre.Submitted"
+        extends="jp.go.aist.six.oval.model.mitre.Event">
         <map-to xml="submitted"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="contributor" 
-            type="jp.go.aist.six.oval.model.v5.mitre.Contributor">
+            type="jp.go.aist.six.oval.model.mitre.Contributor">
             <bind-xml name="contributor" node="element"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.mitre.Modified"
-        extends="jp.go.aist.six.oval.model.v5.mitre.Event">
+    <class name="jp.go.aist.six.oval.model.mitre.Modified"
+        extends="jp.go.aist.six.oval.model.mitre.Event">
         <map-to xml="modified"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -801,34 +801,34 @@
         </field>
 
         <field name="contributor" 
-            type="jp.go.aist.six.oval.model.v5.mitre.Contributor">
+            type="jp.go.aist.six.oval.model.mitre.Contributor">
             <bind-xml name="contributor" node="element"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.mitre.StatusChange"
-        extends="jp.go.aist.six.oval.model.v5.mitre.Event">
+    <class name="jp.go.aist.six.oval.model.mitre.StatusChange"
+        extends="jp.go.aist.six.oval.model.mitre.Event">
         <map-to xml="status_change"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="status" 
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.v5.mitre.DefinitionStatusEnumerationHandler">
-            <!-- type="jp.go.aist.six.oval.model.v5.mitre.DefinitionStatusEnumeration" -->
+            handler="jp.go.aist.six.oval.core.xml.mitre.DefinitionStatusEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.mitre.DefinitionStatusEnumeration" -->
             <bind-xml node="text"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.mitre.AffectedCpeList">
+    <class name="jp.go.aist.six.oval.model.mitre.AffectedCpeList">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="cpe" 
-            type="jp.go.aist.six.oval.model.v5.mitre.Cpe"
+            type="jp.go.aist.six.oval.model.mitre.Cpe"
             collection="collection">
             <bind-xml name="cpe" node="element"/>
         </field>
@@ -836,7 +836,7 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.mitre.Cpe">
+    <class name="jp.go.aist.six.oval.model.mitre.Cpe">
         <map-to xml="cpe"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 

@@ -21,19 +21,19 @@
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-    <class name="jp.go.aist.six.oval.model.v5.unix.UnameTest"
-        extends="jp.go.aist.six.oval.model.v5.definitions.TestType">
+    <class name="jp.go.aist.six.oval.model.unix.UnameTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="uname_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
             ns-prefix=""/>
 
         <field name="object" 
-            type="jp.go.aist.six.oval.model.v5.definitions.SystemObjectRefType">
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"/>
         </field>
         
         <field name="state" 
-            type="jp.go.aist.six.oval.model.v5.definitions.StateRefType"
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
             <bind-xml name="state" node="element"/>
         </field>
@@ -41,8 +41,8 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.unix.UnameObject"
-        extends="jp.go.aist.six.oval.model.v5.definitions.SystemObjectType">
+    <class name="jp.go.aist.six.oval.model.unix.UnameObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
         <map-to xml="uname_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
             ns-prefix=""/>
@@ -50,78 +50,78 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.unix.UnameState"
-        extends="jp.go.aist.six.oval.model.v5.definitions.StateType">
+    <class name="jp.go.aist.six.oval.model.unix.UnameState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
         <map-to xml="uname_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
             ns-prefix=""/>
 
         <field name="machineClass" 
-            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="machine_class" node="element"/>
         </field>
 
         <field name="nodeName" 
-            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="node_name" node="element"/>
         </field>
 
         <field name="osName" 
-            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="os_name" node="element"/>
         </field>
 
         <field name="osRelease" 
-            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="os_release" node="element"/>
         </field>
 
         <field name="osVersion" 
-            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="os_version" node="element"/>
         </field>
 
         <field name="processorType" 
-            type="jp.go.aist.six.oval.model.v5.definitions.EntityStateStringType">
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
             <bind-xml name="processor_type" node="element"/>
         </field>
     </class>
 
 
 
-    <class name ="jp.go.aist.six.oval.model.v5.unix.UnameItem"
-        extends="jp.go.aist.six.oval.model.v5.sc.ItemType">
+    <class name ="jp.go.aist.six.oval.model.unix.UnameItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
         <map-to xml="uname_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"
             ns-prefix=""/>
 
         <field name="machineClass" 
-            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="machine_class" node="element"/>
         </field>
 
         <field name="nodeName" 
-            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="node_name" node="element"/>
         </field>
 
         <field name="osName" 
-            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="os_name" node="element"/>
         </field>
 
         <field name="osRelease" 
-            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="os_release" node="element"/>
         </field>
 
         <field name="osVersion" 
-            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="os_version" node="element"/>
         </field>
 
         <field name="processorType" 
-            type="jp.go.aist.six.oval.model.v5.sc.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
             <bind-xml name="processor_type" node="element"/>
         </field>
     </class>
