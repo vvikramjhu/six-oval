@@ -18,17 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.xml.v5.mitre;
+package jp.go.aist.six.oval.core.xml.windows;
 
-import jp.go.aist.six.oval.model.mitre.DefinitionStatusEnumeration;
+import jp.go.aist.six.oval.model.windows.RegistryTypeEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class DefinitionStatusEnumerationHandler
+public class RegistryTypeEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public DefinitionStatusEnumerationHandler()
+    public RegistryTypeEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class DefinitionStatusEnumerationHandler
         if (value == null) {
             return null;
         }
-        DefinitionStatusEnumeration  e = DefinitionStatusEnumeration.class.cast( value );
+        RegistryTypeEnumeration  e = RegistryTypeEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class DefinitionStatusEnumerationHandler
         if (value == null) {
             return null;
         }
-        return DefinitionStatusEnumeration.fromValue( value.toString() );
+        return RegistryTypeEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<DefinitionStatusEnumeration> getFieldType()
+    public Class<RegistryTypeEnumeration> getFieldType()
     {
-        return DefinitionStatusEnumeration.class;
+        return RegistryTypeEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class DefinitionStatusEnumerationHandler
 //    }
 
 }
-// DefinitionStatusEnumerationHandler
+// CheckEnumerationHandler
