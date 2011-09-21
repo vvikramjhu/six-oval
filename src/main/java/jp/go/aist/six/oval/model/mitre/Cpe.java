@@ -18,66 +18,56 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.mitre;
+package jp.go.aist.six.oval.model.mitre;
 
-import jp.go.aist.six.oval.model.Oval5Enumeration;
+import jp.go.aist.six.oval.model.NameEntity;
 
 
 
 /**
- * @author  Akihito Nakamura, AIST
+ * A CPE name.
+ *
+ * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum DefinitionStatusEnumeration
-    implements Oval5Enumeration
+public class Cpe
+    extends NameEntity
+    implements Comparable<Cpe>
 {
 
-    DRAFT      ( "DRAFT" ),
-    INTERIM    ( "INTERIM" ),
-    ACCEPTED   ( "ACCEPTED" ),
-    DEPRECATED ( "DEPRECATED" );
-
-
-
-    /**
-     * A factory method.
-     */
-    public static DefinitionStatusEnumeration fromValue(
-                    final String value
-                    )
-    {
-        for (DefinitionStatusEnumeration  e : DefinitionStatusEnumeration.values()) {
-            if (e.value.equals( value )) {
-                return e;
-            }
-        }
-
-        throw new IllegalArgumentException( value );
-    }
-
-
-
-    private String  value = null;
+//    @Property( "cpe" )
+//    private String  name;
 
 
 
     /**
      * Constructor.
      */
-    DefinitionStatusEnumeration(
-                    final String value
+    public Cpe()
+    {
+    }
+
+
+    public Cpe(
+                    final String name
                     )
     {
-        this.value = value;
+        super( name );
     }
 
 
 
+    //**************************************************************
+    //  Comparable
+    //**************************************************************
+
     @Override
-    public String value()
+    public int compareTo(
+                    final Cpe o
+                    )
     {
-        return this.value;
+        return String.CASE_INSENSITIVE_ORDER.compare( getName(), o.getName() );
     }
 
 
@@ -87,10 +77,24 @@ public enum DefinitionStatusEnumeration
     //**************************************************************
 
     @Override
-    public String toString()
+    public int hashCode()
     {
-        return this.value;
+        return super.hashCode();
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (!(obj instanceof Cpe)) {
+            return false;
+        }
+
+        return super.equals( obj );
     }
 
 }
-// DefinitionStatusEnumeration
+// Cpe

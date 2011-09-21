@@ -18,81 +18,57 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.v5.mitre;
-
-import jp.go.aist.six.oval.model.Oval5Object;
+package jp.go.aist.six.oval.model.mitre;
 
 
 
 
 /**
  *
- * @author  Akihito Nakamura, AIST
+ * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Contributor
-    implements Oval5Object
+public class StatusChange
+    extends Event
 {
 
-    private String  name;
-    //{xsd:string?}
-
-
-    private String  organization;
-    //{xsd:string}
+    private DefinitionStatusEnumeration  status;
 
 
 
     /**
      * Constructor.
      */
-    public Contributor()
+    public StatusChange()
     {
     }
 
 
-    public Contributor(
-                    final String name,
-                    final String organization
+    public StatusChange(
+                    final String date,
+                    final DefinitionStatusEnumeration status
                     )
     {
-        setName( name );
-        setOrganization( organization );
+        super( date );
+        setStatus( status );
     }
 
 
 
     /**
      */
-    public void setName(
-                    final String name
+    public void setStatus(
+                    final DefinitionStatusEnumeration status
                     )
     {
-        this.name = name;
+        this.status = status;
     }
 
 
-    public String getName()
+    public DefinitionStatusEnumeration getStatus()
     {
-        return this.name;
-    }
-
-
-
-    /**
-     */
-    public void setOrganization(
-                    final String organization
-                    )
-    {
-        this.organization = organization;
-    }
-
-
-    public String getOrganization()
-    {
-        return this.organization;
+        return this.status;
     }
 
 
@@ -104,10 +80,10 @@ public class Contributor
     @Override
     public String toString()
     {
-        return "contributor[organization=" + getOrganization()
-                        + ", name=" + getName()
+        return "status_change[date=" + getDate()
+                        + ", status=" + getStatus()
                         + "]";
     }
 
 }
-// Contributor
+// StatusChange
