@@ -30,10 +30,10 @@ import jp.go.aist.six.oval.model.mitre.Modified;
 import jp.go.aist.six.oval.model.mitre.OvalRepository;
 import jp.go.aist.six.oval.model.mitre.StatusChange;
 import jp.go.aist.six.oval.model.mitre.Submitted;
-import jp.go.aist.six.oval.model.v5.windows.RegistryHiveEnumeration;
-import jp.go.aist.six.oval.model.v5.windows.RegistryObject;
-import jp.go.aist.six.oval.model.v5.windows.RegistryState;
-import jp.go.aist.six.oval.model.v5.windows.RegistryTest;
+import jp.go.aist.six.oval.model.windows.RegistryHiveEnumeration;
+import jp.go.aist.six.oval.model.windows.RegistryObject;
+import jp.go.aist.six.oval.model.windows.RegistryState;
+import jp.go.aist.six.oval.model.windows.RegistryTest;
 
 
 

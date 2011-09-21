@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.core.xml.v5.windows;
 
-import jp.go.aist.six.oval.model.v5.windows.FileTypeEnumeration;
+import jp.go.aist.six.oval.model.windows.FileTypeEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
