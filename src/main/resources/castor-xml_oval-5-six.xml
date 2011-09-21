@@ -30,7 +30,7 @@
 
 
 
-    <class name ="jp.go.aist.six.oval.model.v5.OvalElement"
+    <class name ="jp.go.aist.six.oval.model.OvalElement"
         extends="jp.go.aist.six.oval.model.OvalObject"
         verify-constructable="false">
 
@@ -45,8 +45,8 @@
 
 
 
-    <class name ="jp.go.aist.six.oval.model.v5.OvalEntity"
-        extends="jp.go.aist.six.oval.model.v5.OvalElement"
+    <class name ="jp.go.aist.six.oval.model.OvalEntity"
+        extends="jp.go.aist.six.oval.model.OvalElement"
         verify-constructable="false">
 
         <field name="deprecated" type="boolean">
@@ -56,8 +56,8 @@
 
 
 
-    <class name ="jp.go.aist.six.oval.model.v5.CommentedOvalEntity"
-        extends="jp.go.aist.six.oval.model.v5.OvalEntity"
+    <class name ="jp.go.aist.six.oval.model.CommentedOvalEntity"
+        extends="jp.go.aist.six.oval.model.OvalEntity"
         verify-constructable="false">
 
         <field name="comment" type="string">
@@ -67,7 +67,7 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.OvalDocument"
+    <class name="jp.go.aist.six.oval.model.OvalDocument"
         verify-constructable="false">
 
         <field name="schemaLocation" type="string">
@@ -78,7 +78,7 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.AbstractBehaviors"
+    <class name="jp.go.aist.six.oval.model.AbstractBehaviors"
         verify-constructable="false">
 
         <field name="maxDepth" type="int">
@@ -86,19 +86,19 @@
         </field>
 
         <field name="recurseDirection"
-            type="jp.go.aist.six.oval.model.v5.RecurseDirectionEnumeration">
+            type="jp.go.aist.six.oval.model.RecurseDirectionEnumeration">
             <bind-xml name="recurse_direction" node="attribute"/>
         </field>
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.v5.AbstractFileBehaviors"
-        extends="jp.go.aist.six.oval.model.v5.AbstractBehaviors"
+    <class name="jp.go.aist.six.oval.model.AbstractFileBehaviors"
+        extends="jp.go.aist.six.oval.model.AbstractBehaviors"
         verify-constructable="false">
 
         <field name="recurseFileSystem"
-            type="jp.go.aist.six.oval.model.v5.RecurseFileSystemEnumeration">
+            type="jp.go.aist.six.oval.model.RecurseFileSystemEnumeration">
             <bind-xml name="recurse_file_system" node="attribute"/>
         </field>
     </class>
