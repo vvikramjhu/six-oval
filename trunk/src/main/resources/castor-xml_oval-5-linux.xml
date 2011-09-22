@@ -100,6 +100,12 @@
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
             ns-prefix=""/>
 
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
         <field name="name"
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
             <bind-xml name="name" node="element"/>
@@ -185,6 +191,12 @@
         <map-to xml="rpminfo_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
             ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
 
         <field name="name"
             type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">

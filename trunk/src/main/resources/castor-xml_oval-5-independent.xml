@@ -133,7 +133,8 @@
 
         <field name="set" 
             type="jp.go.aist.six.oval.model.definitions.Set">
-            <bind-xml name="set" node="element"/>
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
         </field>
 
         <field name="pid" 
@@ -263,6 +264,12 @@
         <map-to xml="textfilecontent54_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
             ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
 
         <field name="behaviors" 
             type="jp.go.aist.six.oval.model.independent.TextfileContent54Behaviors">

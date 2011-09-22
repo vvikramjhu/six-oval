@@ -43,9 +43,7 @@ public class RegistryObject
     extends SystemObjectType
 {
 
-    /*
-     * xsd:choice
-     */
+    // xsd:choice
 
     private Set  set;
 

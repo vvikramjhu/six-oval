@@ -24,6 +24,7 @@ import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
@@ -50,6 +51,10 @@ public class WmiObject
     //                   wql
     //         )
     // )
+
+    private Set  set;
+    //{1..1}
+
 
     private EntityObjectStringType  namespace;
     //{1..1}
@@ -112,6 +117,23 @@ public class WmiObject
 
         _oval_platform_type = OvalPlatformType.windows;
         _oval_component_type = OvalComponentType.wmi;
+    }
+
+
+
+    /**
+     */
+    public void setSet(
+                    final Set set
+                    )
+    {
+        this.set = set;
+    }
+
+
+    public Set getSet()
+    {
+        return this.set;
     }
 
 
@@ -206,6 +228,7 @@ public class WmiObject
     public String toString()
     {
         return "wmi_object[" + super.toString()
+                        + ", set=" + getSet()
                         + ", " + getNamespace()
                         + ", " + getWql()
 //                        + ", " + String.valueOf( _properties )
