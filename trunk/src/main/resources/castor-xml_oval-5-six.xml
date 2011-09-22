@@ -38,7 +38,7 @@
             <bind-xml name="id" node="attribute"/>
         </field>
 
-        <field name="ovalVersion" type="int">
+        <field name="ovalVersion" type="integer">
             <bind-xml name="version" node="attribute"/>
         </field>
     </class>
@@ -81,7 +81,7 @@
     <class name="jp.go.aist.six.oval.model.AbstractBehaviors"
         verify-constructable="false">
 
-        <field name="maxDepth" type="int">
+        <field name="maxDepth" type="integer">
             <bind-xml name="max_depth" node="attribute"/>
         </field>
 
