@@ -25,30 +25,30 @@ import jp.go.aist.six.oval.model.OvalEnumeration;
 
 
 /**
- * The FilterAction enumeration defines the different options
- * for filtering sets of items.
+ * The SetOperatorEnumeration type defines acceptable set operations.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum FilterActionEnumeration
+public enum SetOperatorEnumeration
     implements OvalEnumeration
 {
 
-    EXCLUDE ( "exclude" ),
-    INCLUDE ( "include" );
+    COMPLEMENT   ( "COMPLEMENT" ),
+    INTERSECTION ( "INTERSECTION" ),
+    UNION        ( "UNION" );
 
 
 
     /**
      * A factory method.
      */
-    public static FilterActionEnumeration fromValue(
+    public static SetOperatorEnumeration fromValue(
                     final String value
                     )
     {
-        for (FilterActionEnumeration  e : FilterActionEnumeration.values()) {
+        for (SetOperatorEnumeration  e : SetOperatorEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -66,7 +66,7 @@ public enum FilterActionEnumeration
     /**
      * Constructor.
      */
-    FilterActionEnumeration(
+    SetOperatorEnumeration(
                     final String value
                     )
     {
@@ -94,4 +94,4 @@ public enum FilterActionEnumeration
     }
 
 }
-// FilterActionEnumeration
+//SetOperatorEnumeration
