@@ -23,14 +23,14 @@ package jp.go.aist.six.oval.model.definitions;
 
 
 /**
- * The split function takes a single string component and
- * turns it into multiple values based on a delimiter string.
+ * The substring function takes a single string component and
+ * produces a single value that contains a portion of the original string.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class SplitFunctionType
+public class SubstringFunctionType
     extends FunctionGroup
 {
 
@@ -38,7 +38,11 @@ public class SplitFunctionType
     //{1..1}
 
 
-    private String  delimiter;
+    private int  substring_start;
+    //{required}
+
+
+    private int  substring_length;
     //{required}
 
 
@@ -46,7 +50,7 @@ public class SplitFunctionType
     /**
      * Constructor.
      */
-    public SplitFunctionType()
+    public SubstringFunctionType()
     {
     }
 
@@ -71,17 +75,34 @@ public class SplitFunctionType
 
     /**
      */
-    public void setDelimiter(
-                    final String delimiter
+    public void setSubstringStart(
+                    final int substring_start
                     )
     {
-        this.delimiter = delimiter;
+        this.substring_start = substring_start;
     }
 
 
-    public String getDelimiter()
+    public int getSubstringStart()
     {
-        return this.delimiter;
+        return this.substring_start;
+    }
+
+
+
+    /**
+     */
+    public void setSubstringLength(
+                    final int substring_length
+                    )
+    {
+        this.substring_length = substring_length;
+    }
+
+
+    public int getSubstringLength()
+    {
+        return this.substring_length;
     }
 
 
@@ -93,10 +114,11 @@ public class SplitFunctionType
     @Override
     public String toString()
     {
-        return "split[" + getComponent()
-             + ", delimiter=" + getDelimiter()
+        return "substring[" + getComponent()
+             + ", substring_start=" + getSubstringStart()
+             + ", substring_length=" + getSubstringLength()
              + "]";
     }
 
 }
-// SplitFunctionType
+// SubstringFunctionType

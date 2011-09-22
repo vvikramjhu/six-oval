@@ -604,6 +604,26 @@
 
 
 
+    <class name="jp.go.aist.six.oval.model.definitions.SubstringFunctionType">
+        <map-to xml="substring"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="component" 
+            type="jp.go.aist.six.oval.model.definitions.ComponentGroup">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+
+        <field name="substringStart" type="integer">
+            <bind-xml name="substring_start" node="attribute"/>
+        </field>
+
+        <field name="substringLength" type="integer">
+            <bind-xml name="substring_length" node="attribute"/>
+        </field>
+    </class>
+
+
+
     <!-- ******************************************************* -->
     <!-- entity                                                  -->
     <!-- ******************************************************* -->
