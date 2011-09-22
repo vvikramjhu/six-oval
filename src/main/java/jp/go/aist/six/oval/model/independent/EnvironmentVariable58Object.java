@@ -29,6 +29,7 @@ import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectIntType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
+import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
@@ -51,6 +52,9 @@ public class EnvironmentVariable58Object
     //              .....
     //          )
     // )
+
+    private Set  set;
+
 
     private EntityObjectIntType  pid;
     //{1..1, nillable="true"}
@@ -93,6 +97,23 @@ public class EnvironmentVariable58Object
 
         _oval_platform_type = OvalPlatformType.independent;
         _oval_component_type = OvalComponentType.textfilecontent54;
+    }
+
+
+
+    /**
+     */
+    public void setSet(
+                    final Set set
+                    )
+    {
+        this.set = set;
+    }
+
+
+    public Set getSet()
+    {
+        return this.set;
     }
 
 
@@ -230,6 +251,7 @@ public class EnvironmentVariable58Object
     public String toString()
     {
         return "environmentvariable58_object[" + super.toString()
+                        + ", set=" + getSet()
                         + ", pid=" + getPid()
                         + ", name=" + getName()
                         + ", filter=" + getFilter()
