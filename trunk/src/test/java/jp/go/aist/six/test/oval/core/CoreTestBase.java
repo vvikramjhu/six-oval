@@ -152,6 +152,14 @@ public abstract class CoreTestBase
     public Object[][] provideOvalDefinitionsXml()
     {
         return new Object[][] {
+
+                        // def, Windows 7, vulnerability, all
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "test/resources/data/oval5/oval-5.10_v_windows.7.xml",
+                            null,
+                            "marshalled_oval-5.10_v_windows.7.xml"
+                        }
 //                        // obj:222, windows, file
 //                        {
 //                            jp.go.aist.six.oval.model.v5.windows.FileObject.class,
@@ -160,14 +168,14 @@ public abstract class CoreTestBase
 //                            "marshalled_obj222_windows_file_oval5.9.xml"
 //                        }
 //                      ,
-
-                        // def:7432, Debian, patch, DSA-2027
-                        {
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "test/resources/data/oval-definitions-5/oval-5.9_def7432_patch_debian.xml",
-                            null,
-                            "marshalled_oval-5.9_def7432_patch_debian.xml"
-                        }
+//
+//                        // def:7432, Debian, patch, DSA-2027
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval-definitions-5/oval-5.9_def7432_patch_debian.xml",
+//                            null,
+//                            "marshalled_oval-5.9_def7432_patch_debian.xml"
+//                        }
 //                        ,
 //
 //                        // def:7222, windows, vulnerability, CVE-2010-0176
