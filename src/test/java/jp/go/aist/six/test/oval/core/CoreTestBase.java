@@ -152,13 +152,31 @@ public abstract class CoreTestBase
     public Object[][] provideOvalDefinitionsXml()
     {
         return new Object[][] {
+//
+//                        // def, Windows 7, vulnerability, all
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval5/oval-5.10_v_windows.7.xml",
+//                            null,
+//                            "marshalled_oval-5.10_v_windows.7.xml"
+//                        }
+//                        ,
+//
+//                        // def, Windows 7, inventory, all
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval5/oval-5.10_i_windows.7.xml",
+//                            null,
+//                            "marshalled_oval-5.10_i_windows.7.xml"
+//                        }
+//                        ,
 
-                        // def, Windows 7, vulnerability, all
+                        // def, Debian 5.0, patch, all
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "test/resources/data/oval5/oval-5.10_v_windows.7.xml",
+                            "test/resources/data/oval5/oval-5.10_p_debian.5.0.xml",
                             null,
-                            "marshalled_oval-5.10_v_windows.7.xml"
+                            "marshalled_oval-5.10_p_debian.5.0.xml"
                         }
 //                        // obj:222, windows, file
 //                        {
