@@ -61,11 +61,12 @@ public abstract class EntityAttributeGroup
     //{optional, type="oval:VariableIDPattern"}
 
 
-    public static final CheckEnumeration  DEFAULT_VAR_CHECK =
-        CheckEnumeration.ALL;
+//    public static final CheckEnumeration  DEFAULT_VAR_CHECK =
+//        CheckEnumeration.ALL;
 
     private CheckEnumeration  var_check;
-    //{optional, default="all"}
+    //{optional}: 5.10 (30358)
+    //{optional, default="all"}: 5.9
 
 
 
@@ -265,21 +266,21 @@ public abstract class EntityAttributeGroup
     }
 
 
-    public static final CheckEnumeration varCheck(
-                    final EntityAttributeGroup eag
-                    )
-    {
-        if (eag == null) {
-            throw new IllegalArgumentException( "null EntityAttributeGroup" );
-        }
-
-        CheckEnumeration  var_check = eag.getVarCheck();
-        if (var_check == null) {
-            var_check = DEFAULT_VAR_CHECK;
-        }
-
-        return var_check;
-    }
+//    public static final CheckEnumeration varCheck(
+//                    final EntityAttributeGroup eag
+//                    )
+//    {
+//        if (eag == null) {
+//            throw new IllegalArgumentException( "null EntityAttributeGroup" );
+//        }
+//
+//        CheckEnumeration  var_check = eag.getVarCheck();
+//        if (var_check == null) {
+//            var_check = DEFAULT_VAR_CHECK;
+//        }
+//
+//        return var_check;
+//    }
 
 
 
@@ -302,7 +303,8 @@ public abstract class EntityAttributeGroup
         String  var_ref = getVarRef();
         result = prime * result + ((var_ref == null) ? 0 : var_ref.hashCode());
 
-        result = prime * result + varCheck( this ).hashCode();
+        CheckEnumeration  var_check = getVarCheck();
+        result = prime * result + ((var_check == null) ? 0 : var_check.hashCode());
 
         return result;
     }
@@ -325,7 +327,7 @@ public abstract class EntityAttributeGroup
         EntityAttributeGroup  other = (EntityAttributeGroup)obj;
         if (datatype( this ) == datatype( other )) {
             if (operation( this ) == operation( other )) {
-                if (varCheck( this ) == varCheck( other )) {
+                if (this.getVarCheck() == other.getVarCheck()) {
                     final String  other_var_ref = other.getVarRef();
                     final String   this_var_ref =  this.getVarRef();
                     if (this_var_ref == other_var_ref
