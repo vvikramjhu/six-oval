@@ -401,6 +401,37 @@
 
 
 
+    <class name="jp.go.aist.six.oval.model.definitions.Set">
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            ns-prefix="oval-def"/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set"
+            collection="collection">
+            <bind-xml name="set" node="element"/>
+        </field>
+
+        <field name="objectReference" type="string"
+            collection="collection">
+            <bind-xml name="object_reference" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+
+        <field name="setOperator" 
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.definitions.SetOperatorEnumerationHandler">
+            <bind-xml name="set_operator" node="attribute"/>
+        </field>
+    </class>
+
+
+
     <class name="jp.go.aist.six.oval.model.definitions.Filter">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"

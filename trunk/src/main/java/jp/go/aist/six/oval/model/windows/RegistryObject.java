@@ -28,6 +28,7 @@ import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
+import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
@@ -41,6 +42,13 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 public class RegistryObject
     extends SystemObjectType
 {
+
+    /*
+     * xsd:choice
+     */
+
+    private Set  set;
+
 
     private RegistryBehaviors  behaviors;
     //{0..1}
@@ -128,6 +136,23 @@ public class RegistryObject
 
         _oval_platform_type = OvalPlatformType.windows;
         _oval_component_type = OvalComponentType.registry;
+    }
+
+
+
+    /**
+     */
+    public void setSet(
+                    final Set set
+                    )
+    {
+        this.set = set;
+    }
+
+
+    public Set getSet()
+    {
+        return this.set;
     }
 
 
@@ -330,6 +355,7 @@ public class RegistryObject
     public String toString()
     {
         return "registry_object[" + super.toString()
+                        + ", set=" + getSet()
                         + ", behaviors=" + getBehaviors()
                         + ", hive=" + getHive()
                         + ", key=" + getKey()
