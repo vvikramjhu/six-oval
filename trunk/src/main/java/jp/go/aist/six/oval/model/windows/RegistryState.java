@@ -24,6 +24,7 @@ import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
+import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
@@ -49,6 +50,9 @@ public class RegistryState
 
     private EntityStateStringType  name;
     //{0..1}
+
+    private EntityStateIntType  last_write_time;
+    //{0..1}: 5.10
 
     private EntityStateRegistryTypeType  type;
     //{0..1}
@@ -184,6 +188,23 @@ public class RegistryState
 
     /**
      */
+    public void setLastWriteTime(
+                    final EntityStateIntType last_write_time
+                    )
+    {
+        this.last_write_time = last_write_time;
+    }
+
+
+    public EntityStateIntType getLastWriteTime()
+    {
+        return this.last_write_time;
+    }
+
+
+
+    /**
+     */
     public void setType(
                     final EntityStateRegistryTypeType type
                     )
@@ -293,6 +314,7 @@ public class RegistryState
                         + ", hive=" + getHive()
                         + ", key=" + getKey()
                         + ", name=" + getName()
+                        + ", last_write_time=" + getLastWriteTime()
                         + ", type=" + getType()
                         + ", value=" + getValue()
 //                        + ", " + String.valueOf( _properties )

@@ -42,7 +42,7 @@ public class EntityStateEVRStringType
 {
 
     public static final DatatypeEnumeration  FIXED_DATATYPE = DatatypeEnumeration.EVR_STRING;
-    //{optional, fixed="evr_string"}
+    //{required, fixed="evr_string"}
 
 
 

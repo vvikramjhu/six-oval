@@ -27,6 +27,7 @@ import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
+import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 
@@ -52,6 +53,9 @@ public class RegistryItem
 
     private EntityItemStringType  name;
     //{0..1, nillable="true"}
+
+    private EntityItemIntType  last_write_time;
+    //{0..1}: 5.10
 
     private EntityItemRegistryTypeType  type;
     //{0..1}
@@ -133,6 +137,23 @@ public class RegistryItem
                     )
     {
         this.name = name;
+    }
+
+
+
+    /**
+     */
+    public void setLastWriteTime(
+                    final EntityItemIntType last_write_time
+                    )
+    {
+        this.last_write_time = last_write_time;
+    }
+
+
+    public EntityItemIntType getLastWriteTime()
+    {
+        return this.last_write_time;
     }
 
 
@@ -221,6 +242,7 @@ public class RegistryItem
              + ", hive="    + getHive()
              + ", key="     + getKey()
              + ", name="    + getName()
+             + ", last_write_time="    + getLastWriteTime()
              + ", type="    + getType()
              + ", value="   + getValue()
              + "]";
