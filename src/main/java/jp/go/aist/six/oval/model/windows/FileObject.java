@@ -28,6 +28,7 @@ import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
+import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
@@ -59,6 +60,10 @@ public class FileObject
     //                 )
     //           filter
     //         )
+
+    private Set  set;
+    //{1..1}
+
 
     private EntityObjectStringType  filepath;
     //{1..1}
@@ -134,6 +139,23 @@ public class FileObject
 //        setPath( path );
 //        setFilename( filename );
 //    }
+
+
+
+    /**
+     */
+    public void setSet(
+                    final Set set
+                    )
+    {
+        this.set = set;
+    }
+
+
+    public Set getSet()
+    {
+        return this.set;
+    }
 
 
 

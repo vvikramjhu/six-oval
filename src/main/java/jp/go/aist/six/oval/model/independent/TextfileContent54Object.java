@@ -29,6 +29,7 @@ import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectIntType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
+import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
@@ -58,6 +59,10 @@ public class TextfileContent54Object
     //                   filter
     //          )
     // )
+
+    private Set  set;
+    //{1..1}
+
 
     private TextfileContent54Behaviors  behaviors;
     //{0..1}
@@ -155,6 +160,23 @@ public class TextfileContent54Object
 //        setPattern( pattern );
 //        setInstance( instance );
 //    }
+
+
+
+    /**
+     */
+    public void setSet(
+                    final Set set
+                    )
+    {
+        this.set = set;
+    }
+
+
+    public Set getSet()
+    {
+        return this.set;
+    }
 
 
 
@@ -428,6 +450,7 @@ public class TextfileContent54Object
     public String toString()
     {
         return "textfilecontent54_object[" + super.toString()
+                        + ", set=" + getSet()
                         + ", behaviors=" + getBehaviors()
                         + ", filepath=" + getFilepath()
                         + ", path=" + getPath()

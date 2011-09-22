@@ -25,6 +25,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
+import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
@@ -38,6 +39,13 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 public abstract class LinuxPkgInfoObject
     extends SystemObjectType
 {
+
+    // xsd:choice
+
+
+    private Set  set;
+    //{1..1}
+
 
     private EntityObjectStringType  name;
     //{1..1}
@@ -73,6 +81,23 @@ public abstract class LinuxPkgInfoObject
                     )
     {
         super( id, version, comment );
+    }
+
+
+
+    /**
+     */
+    public void setSet(
+                    final Set set
+                    )
+    {
+        this.set = set;
+    }
+
+
+    public Set getSet()
+    {
+        return this.set;
     }
 
 

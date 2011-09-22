@@ -29,6 +29,7 @@ import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectIntType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
+import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
@@ -54,6 +55,10 @@ public class MetabaseObject
     //                    filter
     //          )
     // )
+
+    private Set  set;
+    //{1..1}
+
 
     private EntityObjectStringType  key;
     //{1..1}
@@ -127,6 +132,23 @@ public class MetabaseObject
 
         _oval_platform_type = OvalPlatformType.windows;
         _oval_component_type = OvalComponentType.metabase;
+    }
+
+
+
+    /**
+     */
+    public void setSet(
+                    final Set set
+                    )
+    {
+        this.set = set;
+    }
+
+
+    public Set getSet()
+    {
+        return this.set;
     }
 
 
@@ -288,6 +310,7 @@ public class MetabaseObject
     public String toString()
     {
         return "metabase_object[" + super.toString()
+                        + ", set=" + getSet()
                         + ", key=" + getKey()
                         + ", id=" + getID()
                         + ", filter=" + getFilter()
