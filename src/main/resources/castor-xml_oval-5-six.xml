@@ -85,10 +85,17 @@
             <bind-xml name="max_depth" node="attribute"/>
         </field>
 
+        <field name="recurseDirection" 
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.RecurseDirectionEnumerationHandler">
+            <bind-xml name="recurse_direction" node="attribute"/>
+        </field>
+<!--
         <field name="recurseDirection"
             type="jp.go.aist.six.oval.model.RecurseDirectionEnumeration">
             <bind-xml name="recurse_direction" node="attribute"/>
         </field>
+-->
     </class>
 
 

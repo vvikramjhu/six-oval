@@ -36,6 +36,7 @@ public final class PlatformEntityType
 {
 
     private static final String  _UNKNOWN_              = "unknown";
+    private static final String  _INDEPENDENT_ENVIRONMENTVARIABLE58_ = "independent.environmentvariable58";
     private static final String  _INDEPENDENT_FAMILY_   = "independent.family";
     private static final String  _INDEPENDENT_TEXTFILECONTENT_   = "independent.textfilecontent";
     private static final String  _INDEPENDENT_TEXTFILECONTENT54_ = "independent.textfilecontent54";
@@ -55,6 +56,7 @@ public final class PlatformEntityType
 
 
     public static final PlatformEntityType  UNKNOWN               = new PlatformEntityType( _UNKNOWN_ );
+    public static final PlatformEntityType  INDEPENDENT_ENVIRONMENTVARIABLE58 = new PlatformEntityType( _INDEPENDENT_ENVIRONMENTVARIABLE58_ );
     public static final PlatformEntityType  INDEPENDENT_FAMILY    = new PlatformEntityType( _INDEPENDENT_FAMILY_ );
     public static final PlatformEntityType  INDEPENDENT_TEXTFILECONTENT = new PlatformEntityType( _INDEPENDENT_TEXTFILECONTENT_ );
     public static final PlatformEntityType  INDEPENDENT_TEXTFILECONTENT54 = new PlatformEntityType( _INDEPENDENT_TEXTFILECONTENT54_ );
@@ -77,6 +79,7 @@ public final class PlatformEntityType
     {
         HashMap<String, PlatformEntityType>  map = new HashMap<String, PlatformEntityType>();
         map.put( _UNKNOWN_,             UNKNOWN             );
+        map.put( _INDEPENDENT_ENVIRONMENTVARIABLE58_,  INDEPENDENT_ENVIRONMENTVARIABLE58  );
         map.put( _INDEPENDENT_FAMILY_,  INDEPENDENT_FAMILY  );
         map.put( _INDEPENDENT_TEXTFILECONTENT_,   INDEPENDENT_TEXTFILECONTENT    );
         map.put( _INDEPENDENT_TEXTFILECONTENT54_, INDEPENDENT_TEXTFILECONTENT54  );

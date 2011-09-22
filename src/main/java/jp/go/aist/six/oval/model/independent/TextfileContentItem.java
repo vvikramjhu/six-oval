@@ -34,9 +34,8 @@ import jp.go.aist.six.oval.model.sc.ItemType;
 
 
 /**
- * The textfilecontent54 state contains entities that are used to check
- * the file path and name, as well as the text block in question
- * and the value of the subexpressions.
+ * The textfilecontent item looks at the contents of a text file
+ * (aka a configuration file) by looking at individual lines.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
