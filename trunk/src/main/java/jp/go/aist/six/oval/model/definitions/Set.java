@@ -20,102 +20,232 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalObject;
 
 
 
 
 /**
- * The Filter provides a reference to an existing OVAL State
- * and includes an optional action property.
- * The action property is used to specify whether items
- * that match the referenced OVAL State will be included in the resulting set
- * or excluded from the resulting set.
+ * The Set enables complex objects to be described.
+ * It is a recursive element in that each set element can contain
+ * additional set elements as children.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Filter
+public class Set
     implements OvalObject
 {
+    /*
+     * <choice>
+     *   <sequence>
+     *     <element ref="set" 1..2 />
+     *   </sequence>
+     *   <sequence>
+     *     <element name="object_reference" 1..2 />
+     *     <element ref="filter" 0..* />
+     *   </sequence>
+     * </choice>
+     */
 
-    private String  content;
-    //{simpleContent, base="oval:StateIDPattern"}
+    private final Collection<Set>  set = new ArrayList<Set>( 2 );
+    //{1..2}
 
 
-    public static final FilterActionEnumeration  DEFAULT_ACTION =
-        FilterActionEnumeration.EXCLUDE;
+    private final Collection<String>  object_reference = new ArrayList<String>( 2 );
+    //{1..2}
 
-    private FilterActionEnumeration  action;
-    //{optional, default='exclude'}
+
+    private final Collection<Filter>  filter = new ArrayList<Filter>();
+    //{0..*}
+
+
+    public static final SetOperatorEnumeration  DEFAULT_SET_OPERATOR =
+        SetOperatorEnumeration.UNION;
+
+    private SetOperatorEnumeration  set_operator;
+    //{optional, default='UNION'}
 
 
 
     /**
      * Constructor.
      */
-    public Filter()
+    public Set()
     {
     }
 
 
-    public Filter(
-                    final String content
+
+
+    /**
+     */
+    public void setSet(
+                    final Collection<? extends Set> filters
                     )
     {
-        this( content, DEFAULT_ACTION );
+        if (this.set != filters) {
+            int  size = (filters == null ? 0 : filters.size());
+            if (filters != null  &&  size > 2) {
+                throw new IllegalArgumentException(
+                                "invalid number of child 'set' (maxOccurs=2): "
+                                + size );
+            }
+
+            this.filter.clear();
+            if (size > 0) {
+                this.set.addAll( filters );
+            }
+        }
     }
 
 
-    public Filter(
-                    final String content,
-                    final FilterActionEnumeration action
+    public boolean addSet(
+                    final Set set
                     )
     {
-        setContent( content );
-        setAction( action );
+        if (set == null) {
+            return false;
+        }
+
+        if (this.set.size() >= 2) {
+            throw new IllegalStateException(
+                            "no more child 'set' can't be added (maxOccurs=2)");
+        }
+
+        return this.set.add( set );
+    }
+
+
+    public Collection<Set> getSet()
+    {
+        return this.set;
+    }
+
+
+    public Iterator<Set> iterateSet()
+    {
+        return this.set.iterator();
     }
 
 
 
     /**
      */
-    public void setContent(
-                    final String content
+    public void setObjectReference(
+                    final Collection<String> object_references
                     )
     {
-        this.content = content;
+        if (this.object_reference != object_references) {
+            int  size = (object_references == null ? 0 : object_references.size());
+            if (object_references != null  &&  size > 2) {
+                throw new IllegalArgumentException(
+                                "invalid number of child 'object_reference' (maxOccurs=2): "
+                                + size );
+            }
+
+            this.object_reference.clear();
+            if (size > 0) {
+                this.object_reference.addAll( object_references );
+            }
+        }
     }
 
 
-    public String getContent()
+    public boolean addObjectReference(
+                    final String object_reference
+                    )
     {
-        return this.content;
+        if (object_reference == null) {
+            return false;
+        }
+
+        if (this.object_reference.size() >= 2) {
+            throw new IllegalStateException(
+                            "no more child 'object_reference' can't be added (maxOccurs=2)");
+        }
+
+        return this.object_reference.add( object_reference );
+    }
+
+
+    public Collection<String> getObjectReference()
+    {
+        return this.object_reference;
+    }
+
+
+    public Iterator<String> iterateObjectReference()
+    {
+        return this.object_reference.iterator();
     }
 
 
 
     /**
      */
-    public void setAction(
-                    final FilterActionEnumeration action
+    public void setFilter(
+                    final Collection<? extends Filter> filterSeq
                     )
     {
-        this.action = action;
+        if (this.filter != filterSeq) {
+            this.filter.clear();
+            if (filterSeq != null  &&  filterSeq.size() > 0) {
+                this.filter.addAll( filterSeq );
+            }
+        }
     }
 
 
-    public FilterActionEnumeration getAction()
+    public boolean addFilter(
+                    final Filter filter
+                    )
     {
-        return this.action;
+        if (filter == null) {
+            return false;
+        }
+
+        return this.filter.add( filter );
     }
 
 
-    protected FilterActionEnumeration _action()
+    public Collection<Filter> getFilter()
     {
-        FilterActionEnumeration  action = getAction();
-        return (action == null ? DEFAULT_ACTION : action);
+        return this.filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return this.filter.iterator();
+    }
+
+
+
+    /**
+     */
+    public void setSetOperator(
+                    final SetOperatorEnumeration action
+                    )
+    {
+        this.set_operator = action;
+    }
+
+
+    public SetOperatorEnumeration getSetOperator()
+    {
+        return this.set_operator;
+    }
+
+
+    protected SetOperatorEnumeration _setOperator()
+    {
+        SetOperatorEnumeration  set_operator = getSetOperator();
+        return (set_operator == null ? DEFAULT_SET_OPERATOR : set_operator);
     }
 
 
@@ -130,11 +260,8 @@ public class Filter
         final int  prime = 37;
         int  result = 17;
 
-        String  content = getContent();
-        result = prime * result + ((content == null) ? 0 : content.hashCode());
-
-        FilterActionEnumeration  action = _action();
-        result = prime * result + ((action == null) ? 0 : action.hashCode());
+        SetOperatorEnumeration  set_operator = _setOperator();
+        result = prime * result + ((set_operator == null) ? 0 : set_operator.hashCode());
 
         return result;
     }
@@ -150,18 +277,13 @@ public class Filter
             return true;
         }
 
-        if (!(obj instanceof Filter)) {
+        if (!(obj instanceof Set)) {
             return false;
         }
 
-        Filter  other = (Filter)obj;
-        String  otherContent = other.getContent();
-        String   thisContent =  this.getContent();
-        if (thisContent == otherContent
-                        ||  (thisContent != null  &&  thisContent.equals( otherContent ))) {
-            if (this._action() == other._action()) {
-                return true;
-            }
+        Set  other = (Set)obj;
+        if (this._setOperator() == other._setOperator()) {
+            return true;
         }
 
         return false;
@@ -172,10 +294,12 @@ public class Filter
     @Override
     public String toString()
     {
-        return "filter[" + getContent()
-             + ", action=" + getAction()
+        return "set[set=" + getSet()
+             + ", object_reference=" + getObjectReference()
+             + ", filter=" + getFilter()
+             + ", set_operator=" + getSetOperator()
              + "]";
     }
 
 }
-// Filter
+//Set

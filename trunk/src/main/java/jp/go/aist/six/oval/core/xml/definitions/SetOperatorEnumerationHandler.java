@@ -20,15 +20,15 @@
 
 package jp.go.aist.six.oval.core.xml.definitions;
 
-import jp.go.aist.six.oval.model.definitions.FilterActionEnumeration;
+import jp.go.aist.six.oval.model.definitions.SetOperatorEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class FilterActionEnumerationHandler
+public class SetOperatorEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public FilterActionEnumerationHandler()
+    public SetOperatorEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class FilterActionEnumerationHandler
         if (value == null) {
             return null;
         }
-        FilterActionEnumeration  e = FilterActionEnumeration.class.cast( value );
+        SetOperatorEnumeration  e = SetOperatorEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class FilterActionEnumerationHandler
         if (value == null) {
             return null;
         }
-        return FilterActionEnumeration.fromValue( value.toString() );
+        return SetOperatorEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<FilterActionEnumeration> getFieldType()
+    public Class<SetOperatorEnumeration> getFieldType()
     {
-        return FilterActionEnumeration.class;
+        return SetOperatorEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class FilterActionEnumerationHandler
 //    }
 
 }
-// FilterActionEnumerationHandler
+//SetOperatorEnumerationHandler
