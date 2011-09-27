@@ -272,12 +272,20 @@ public abstract class CoreTestBase
                         }
                         ,
 
-                        // debian, patch, def:7432, CVE-2010-0176, DSA-2027
+                        // debian, patch, def:7432 / OVAL 5.7, CVE-2010-0176, DSA-2027
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "test/resources/data/oval5/oval5.7_def7432_patch_debian5_DSA2027.xml",
+                            "test/resources/data/oval5/oval5.7_def7432-3_p_debian5_DSA2027.xml",
                             null,
-                            "marshalled_oval5.7_def7432_patch_debian5_DSA2027.xml"
+                            "marshalled_oval5.7_def7432-3_p_debian5_DSA2027.xml"
+                        }
+                        ,
+                        // debian, patch, def:7432 / OVAL 5.9, CVE-2010-0176, DSA-2027
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "test/resources/data/oval5/oval5.9_def7432-3_p_debian5_DSA2027.xml",
+                            null,
+                            "marshalled_oval5.9_def7432-3_p_debian5_DSA2027.xml"
                         }
 //                      ,
 
