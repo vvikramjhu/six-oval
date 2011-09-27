@@ -18,74 +18,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 
 /**
- * The EntityStateRegistryType defines the different values
- * that are valid for the type entity of a registry state.
+ * The EntityStateWindowsViewType restricts a string value
+ * to a specific set of values: 32-bit and 64-bit.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateRegistryTypeType
+public class EntityStateWindowsViewType
     extends EntityStateStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityStateRegistryTypeType()
+    public EntityStateWindowsViewType()
     {
     }
-
-
-//    public EntityStateRegistryTypeType(
-//                    final String data
-//                    )
-//    {
-//        this( data, DEFAULT_OPERATION );
-//    }
-//
-//
-//    public EntityStateRegistryTypeType(
-//                    final String data,
-//                    final OperationEnumeration operation
-//                    )
-//    {
-//        this( data, FIXED_DATATYPE, operation );
-//    }
-//
-//
-//    public EntityStateRegistryTypeType(
-//                    final String data,
-//                    final DatatypeEnumeration datatype,
-//                    final OperationEnumeration operation
-//                    )
-//    {
-//        super( data, datatype, operation );
-//    }
-//
-//
-//    public EntityStateRegistryTypeType(
-//                    final RegistryTypeEnumeration data
-//                    )
-//    {
-//        this( data, DEFAULT_OPERATION );
-//    }
-//
-//
-//    public EntityStateRegistryTypeType(
-//                    final RegistryTypeEnumeration data,
-//                    final Operation operation
-//                    )
-//    {
-//        this( (data == null ? null : data.getName()), operation );
-//    }
 
 
 
@@ -99,7 +55,7 @@ public class EntityStateRegistryTypeType
                     )
     {
         if (content != null) {
-            RegistryTypeEnumeration.fromValue( content );
+            WindowsViewTypeEnumeration.fromValue( content );
         }
 
         super.setContent( content );
@@ -128,7 +84,7 @@ public class EntityStateRegistryTypeType
             return true;
         }
 
-        if (!(obj instanceof EntityStateRegistryTypeType)) {
+        if (!(obj instanceof EntityStateWindowsViewType)) {
             return false;
         }
 
@@ -136,4 +92,4 @@ public class EntityStateRegistryTypeType
     }
 
 }
-// EntityStateRegistryTypeType
+// EntityStateWindowsViewType

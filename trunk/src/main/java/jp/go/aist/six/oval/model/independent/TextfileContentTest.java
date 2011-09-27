@@ -29,27 +29,31 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
- * The textfilecontent54 test is used to check the contents of a text file
- * (aka a configuration file) by looking at individual blocks of text.
+ * The textfilecontent test is used to check the contents of a text file
+ * (aka a configuration file) by looking at individual lines.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.4:
+ *             Replaced by the textfilecontent54 test and
+ *             will be removed in a future version of the language.
  */
-public class TextfileContent54Test
+@Deprecated
+public class TextfileContentTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public TextfileContent54Test()
+    public TextfileContentTest()
     {
         this( null, 0 );
     }
 
 
-    public TextfileContent54Test(
+    public TextfileContentTest(
                     final String id,
                     final int version
                     )
@@ -58,7 +62,7 @@ public class TextfileContent54Test
     }
 
 
-    public TextfileContent54Test(
+    public TextfileContentTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -68,7 +72,7 @@ public class TextfileContent54Test
         super( id, version, comment, check );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.textfilecontent54;
+        _oval_component_type = OvalComponentType.textfilecontent;
     }
 
 
@@ -94,7 +98,7 @@ public class TextfileContent54Test
     @Override
     public PlatformEntityType getEntityType()
     {
-        return PlatformEntityType.INDEPENDENT_TEXTFILECONTENT54;
+        return PlatformEntityType.INDEPENDENT_TEXTFILECONTENT;
     }
 
 
@@ -116,7 +120,7 @@ public class TextfileContent54Test
                     final Object obj
                     )
     {
-        if (!(obj instanceof TextfileContent54Test)) {
+        if (!(obj instanceof TextfileContentTest)) {
             return false;
         }
 
@@ -128,8 +132,8 @@ public class TextfileContent54Test
     @Override
     public String toString()
     {
-        return "textfilecontent54_test[" + super.toString() + "]";
+        return "textfilecontent_test[" + super.toString() + "]";
     }
 
 }
-// TextFileContent54Test
+// TextfileContentTest

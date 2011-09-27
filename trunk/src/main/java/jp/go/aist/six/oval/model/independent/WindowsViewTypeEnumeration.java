@@ -18,31 +18,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.OvalEnumeration;
 
 
 
 /**
- * The registry type enumeration.
+ * The Windows view type enumeration.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum RegistryTypeEnumeration
+public enum WindowsViewTypeEnumeration
     implements OvalEnumeration
 {
 
-    REG_BINARY    ( "reg_binary" ),
-    REG_DWORD     ( "reg_dword" ),
-    REG_EXPAND_SZ ( "reg_expand_sz" ),
-    REG_MULTI_SZ  ( "reg_multi_sz" ),
-    REG_NONE      ( "reg_none" ),
-    REG_QWORD     ( "reg_qword" ),
-    REG_SZ        ( "reg_sz" ),
-    EMPTY         ( "" )
+    WINDOWS_32_BIT    ( "32_bit" ),
+    WINDOWS_64_BIT    ( "64_bit" ),
+    EMPTY             ( "" )
     ;
 
 
@@ -50,11 +45,11 @@ public enum RegistryTypeEnumeration
     /**
      * A factory method.
      */
-    public static RegistryTypeEnumeration fromValue(
+    public static WindowsViewTypeEnumeration fromValue(
                     final String value
                     )
     {
-        for (RegistryTypeEnumeration  e : RegistryTypeEnumeration.values()) {
+        for (WindowsViewTypeEnumeration  e : WindowsViewTypeEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -72,7 +67,7 @@ public enum RegistryTypeEnumeration
     /**
      * Constructor.
      */
-    RegistryTypeEnumeration(
+    WindowsViewTypeEnumeration(
                     final String value
                     )
     {
@@ -100,4 +95,4 @@ public enum RegistryTypeEnumeration
     }
 
 }
-// RegistryTypeEnumeration
+// WindowsViewTypeEnumeration
