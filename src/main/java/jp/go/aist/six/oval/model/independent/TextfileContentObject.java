@@ -20,29 +20,28 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.PlatformEntityType;
-import jp.go.aist.six.oval.model.definitions.EntityObjectIntType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
-import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 
 /**
- * The textfilecontent54 object is used by a textfilecontent test
- * to define the specific block(s) of text of a file(s) to be evaluated.
+ * The textfilecontent object is used by a text file content test
+ * to define the specific line(s) of a file(s) to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.4:
+ *             Replaced by the textfilecontent54 object and
+ *             will be removed in a future version of the language.
  */
-public class TextfileContent54Object
+@Deprecated
+public class TextfileContentObject
     extends SystemObjectType
 {
     // XSD model:
@@ -50,13 +49,9 @@ public class TextfileContent54Object
     //         set
     //         sequence(
     //                   behaviors
-    //                   choice(
-    //                           filepath
-    //                           sequence( path filename )
-    //                   )
-    //                   pattern
-    //                   instance
-    //                   filter
+    //                   path
+    //                   filename
+    //                   line
     //          )
     // )
 
@@ -64,12 +59,9 @@ public class TextfileContent54Object
     //{1..1}
 
 
-    private TextfileContent54Behaviors  behaviors;
+    private FileBehaviors  behaviors;
     //{0..1}
 
-
-    private EntityObjectStringType  filepath;
-    //{1..1}
 
     private EntityObjectStringType  path;
     //{1..1}
@@ -78,34 +70,21 @@ public class TextfileContent54Object
     //{1..1}
 
 
-    private EntityObjectStringType  pattern;
+    private EntityObjectStringType  line;
     //{1..1}
-
-
-    private EntityObjectIntType  instance;
-    //{1..1}
-
-
-//    private final EntityPropertyMap<TextfileContentProperty>  _properties =
-//        TextfileContentProperty.createPropertyMap();
-
-
-
-    private final Collection<Filter>  filter = new ArrayList<Filter>();
-    //{0..*}
 
 
 
     /**
      * Constructor.
      */
-    public TextfileContent54Object()
+    public TextfileContentObject()
     {
         this( null, 0 );
     }
 
 
-    public TextfileContent54Object(
+    public TextfileContentObject(
                     final String id,
                     final int version
                     )
@@ -114,7 +93,7 @@ public class TextfileContent54Object
     }
 
 
-    public TextfileContent54Object(
+    public TextfileContentObject(
                     final String id,
                     final int version,
                     final String comment
@@ -123,7 +102,7 @@ public class TextfileContent54Object
         super( id, version, comment );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.textfilecontent54;
+        _oval_component_type = OvalComponentType.textfilecontent;
     }
 
 
@@ -183,54 +162,16 @@ public class TextfileContent54Object
     /**
      */
     public void setBehaviors(
-                    final TextfileContent54Behaviors behaviors
+                    final FileBehaviors behaviors
                     )
     {
         this.behaviors = behaviors;
     }
 
 
-    public TextfileContent54Behaviors getBehaviors()
+    public FileBehaviors getBehaviors()
     {
         return this.behaviors;
-    }
-
-
-    public TextfileContent54Object behaviors(
-                    final TextfileContent54Behaviors behaviors
-                    )
-    {
-        setBehaviors( behaviors );
-        return this;
-    }
-
-
-
-    /**
-     */
-    public void setFilepath(
-                    final EntityObjectStringType filepath
-                    )
-    {
-        this.filepath = filepath;
-//        _properties.setProperty( TextfileContentProperty.FILEPATH, filepath );
-    }
-
-
-    public EntityObjectStringType getFilepath()
-    {
-        return this.filepath;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.FILEPATH, EntityObjectStringType.class );
-    }
-
-
-    public TextfileContent54Object filepath(
-                    final EntityObjectStringType filepath
-                    )
-    {
-        setFilepath( filepath );
-        return this;
     }
 
 
@@ -242,24 +183,12 @@ public class TextfileContent54Object
                     )
     {
         this.path = path;
-//        _properties.setProperty( TextfileContentProperty.PATH, path );
     }
 
 
     public EntityObjectStringType getPath()
     {
         return path;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.PATH, EntityObjectStringType.class );
-    }
-
-
-    public TextfileContent54Object path(
-                    final EntityObjectStringType path
-                    )
-    {
-        setPath( path );
-        return this;
     }
 
 
@@ -271,131 +200,29 @@ public class TextfileContent54Object
                     )
     {
         this.filename = filename;
-//        _properties.setProperty( TextfileContentProperty.FILENAME, filename );
     }
 
 
     public EntityObjectStringType getFilename()
     {
         return this.filename;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.FILENAME, EntityObjectStringType.class );
-    }
-
-
-    public TextfileContent54Object filename(
-                    final EntityObjectStringType filename
-                    )
-    {
-        setFilename( filename );
-        return this;
     }
 
 
 
     /**
      */
-    public void setPattern(
-                    final EntityObjectStringType pattern
+    public void setLine(
+                    final EntityObjectStringType line
                     )
     {
-        this.pattern = pattern;
-//        _properties.setProperty( TextfileContentProperty.PATTERN, pattern );
+        this.line = line;
     }
 
 
-    public EntityObjectStringType getPattern()
+    public EntityObjectStringType getLine()
     {
-        return this.pattern;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.PATTERN, EntityObjectStringType.class );
-    }
-
-
-    public TextfileContent54Object pattern(
-                    final EntityObjectStringType pattern
-                    )
-    {
-        setPattern( pattern );
-        return this;
-    }
-
-
-
-    /**
-     */
-    public void setInstance(
-                    final EntityObjectIntType instance
-                    )
-    {
-        this.instance = instance;
-//        _properties.setProperty( TextfileContentProperty.INSTANCE, instance );
-    }
-
-
-    public EntityObjectIntType getInstance()
-    {
-        return this.instance;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.INSTANCE, EntityObjectIntType.class );
-    }
-
-
-    public TextfileContent54Object instance(
-                    final EntityObjectIntType instance
-                    )
-    {
-        setInstance( instance );
-        return this;
-    }
-
-
-
-    /**
-     */
-    public void setFilter(
-                    final Collection<? extends Filter> filterList
-                    )
-    {
-        if (this.filter != filterList) {
-            this.filter.clear();
-            if (filterList != null  &&  filterList.size() > 0) {
-                this.filter.addAll( filterList );
-            }
-        }
-    }
-
-
-    public boolean addFilter(
-                    final Filter filter
-                    )
-    {
-        if (filter == null) {
-            return false;
-        }
-
-        return this.filter.add( filter );
-    }
-
-
-    public Collection<Filter> getFilter()
-    {
-        return this.filter;
-    }
-
-
-    public Iterator<Filter> iterateFilter()
-    {
-        return this.filter.iterator();
-    }
-
-
-    public TextfileContent54Object filter(
-                    final Filter filter
-                    )
-    {
-        addFilter( filter );
-        return this;
+        return this.line;
     }
 
 
@@ -407,16 +234,8 @@ public class TextfileContent54Object
     @Override
     public PlatformEntityType getEntityType()
     {
-        return PlatformEntityType.INDEPENDENT_TEXTFILECONTENT54;
+        return PlatformEntityType.INDEPENDENT_TEXTFILECONTENT;
     }
-
-
-
-//    @Override
-//    public Iterator<EntityAttributeGroup> iterateProperties()
-//    {
-//        return _properties.iterateProperties();
-//    }
 
 
 
@@ -437,7 +256,7 @@ public class TextfileContent54Object
                     final Object obj
                     )
     {
-        if (!(obj instanceof TextfileContent54Object)) {
+        if (!(obj instanceof TextfileContentObject)) {
             return false;
         }
 
@@ -449,17 +268,14 @@ public class TextfileContent54Object
     @Override
     public String toString()
     {
-        return "textfilecontent54_object[" + super.toString()
+        return "textfilecontent_object[" + super.toString()
                         + ", set=" + getSet()
                         + ", behaviors=" + getBehaviors()
-                        + ", filepath=" + getFilepath()
                         + ", path=" + getPath()
                         + ", filename=" + getFilename()
-                        + ", pattern=" + getPattern()
-                        + ", instance=" + getInstance()
-                        + ", filter=" + getFilter()
+                        + ", line=" + getLine()
                         + "]";
     }
 
 }
-// TextFileContent54Object
+// TextfileContentObject
