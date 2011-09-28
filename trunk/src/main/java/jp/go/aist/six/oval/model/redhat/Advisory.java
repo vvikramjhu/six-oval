@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.redhat;
 import java.util.ArrayList;
 import java.util.Collection;
 import jp.go.aist.six.oval.model.definitions.MetadataItem;
-import jp.go.aist.six.oval.model.mitre.AffectedCpeList;
 
 
 

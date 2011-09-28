@@ -937,7 +937,7 @@
         </field>
 
         <field name="affectedCpeList" 
-            type="jp.go.aist.six.oval.model.mitre.AffectedCpeList">
+            type="jp.go.aist.six.oval.model.redhat.AffectedCpeList">
             <bind-xml name="affected_cpe_list" node="element"/>
         </field>
     </class>
@@ -977,12 +977,12 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.mitre.AffectedCpeList">
+    <class name="jp.go.aist.six.oval.model.redhat.AffectedCpeList">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
         <field name="cpe" 
-            type="jp.go.aist.six.oval.model.mitre.Cpe"
+            type="jp.go.aist.six.oval.model.redhat.Cpe"
             collection="collection">
             <bind-xml name="cpe" node="element"/>
         </field>
@@ -990,7 +990,7 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.mitre.Cpe">
+    <class name="jp.go.aist.six.oval.model.redhat.Cpe">
         <map-to xml="cpe"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
@@ -998,8 +998,6 @@
             <bind-xml node="text"/>
         </field>
     </class>
-
-
 
 </mapping>
 

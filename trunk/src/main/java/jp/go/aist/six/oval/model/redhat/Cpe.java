@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.mitre;
+package jp.go.aist.six.oval.model.redhat;
 
 import jp.go.aist.six.oval.model.NameEntity;
 
