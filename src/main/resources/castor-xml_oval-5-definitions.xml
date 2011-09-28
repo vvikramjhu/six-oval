@@ -785,11 +785,6 @@
             <bind-xml auto-naming="deriveByClass" node="element"
                 location="dates"/>
         </field>
-
-        <field name="affectedCpeList" 
-            type="jp.go.aist.six.oval.model.mitre.AffectedCpeList">
-            <bind-xml name="affected_cpe_list" node="element"/>
-        </field>
     </class>
 
 
@@ -874,6 +869,114 @@
 
 
 
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- %                                                     % -->
+    <!-- %  Red Hat                                            % -->
+    <!-- %                                                     % -->
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <class name ="jp.go.aist.six.oval.model.redhat.Issued">
+        <map-to xml="issued"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="date" type="string">
+            <bind-xml name="date" node="attribute"/>
+        </field>
+    </class>
+
+
+    <class name ="jp.go.aist.six.oval.model.redhat.Updated">
+        <map-to xml="updated"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="date" type="string">
+            <bind-xml name="date" node="attribute"/>
+        </field>
+    </class>
+
+
+    <class name="jp.go.aist.six.oval.model.redhat.Advisory"
+        extends="jp.go.aist.six.oval.model.definitions.MetadataItem">
+        <map-to xml="advisory"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="from" type="string">
+            <bind-xml name="from" node="attribute"/>
+        </field>
+
+        <field name="severity" 
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.redhat.SeverityEnumerationHandler">
+            <bind-xml name="severity" node="element"/>
+        </field>
+
+        <field name="rights" type="string">
+            <bind-xml name="rights" node="element"/>
+        </field>
+
+        <field name="issued" 
+            type="jp.go.aist.six.oval.model.redhat.Issued">
+            <bind-xml name="issued" node="element"/>
+        </field>
+
+        <field name="updated" 
+            type="jp.go.aist.six.oval.model.redhat.Updated">
+            <bind-xml name="updated" node="element"/>
+        </field>
+
+        <field name="cve" 
+            type="jp.go.aist.six.oval.model.redhat.Cve"
+            collection="collection">
+            <bind-xml name="cve" node="element"/>
+        </field>
+
+        <field name="bugzilla" 
+            type="jp.go.aist.six.oval.model.redhat.Bugzilla"
+            collection="collection">
+            <bind-xml name="bugzilla" node="element"/>
+        </field>
+
+        <field name="affectedCpeList" 
+            type="jp.go.aist.six.oval.model.mitre.AffectedCpeList">
+            <bind-xml name="affected_cpe_list" node="element"/>
+        </field>
+    </class>
+
+
+    <class name="jp.go.aist.six.oval.model.redhat.Cve">
+        <map-to xml="cve"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="ID" type="string">
+            <bind-xml node="text"/>
+        </field>
+
+        <field name="href" type="string">
+            <bind-xml name="href" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.redhat.Bugzilla">
+        <map-to xml="bugzilla"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="ID" type="string">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+
+        <field name="href" type="string">
+            <bind-xml name="href" node="attribute"/>
+        </field>
+
+        <field name="title" type="string">
+            <bind-xml node="text"/>
+        </field>
+    </class>
+
+
+
     <class name="jp.go.aist.six.oval.model.mitre.AffectedCpeList">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
@@ -895,6 +998,8 @@
             <bind-xml node="text"/>
         </field>
     </class>
+
+
 
 </mapping>
 

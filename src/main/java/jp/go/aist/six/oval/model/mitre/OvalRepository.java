@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.definitions.MetadataItem;
-import com.google.code.morphia.annotations.Transient;
 
 
 
@@ -44,8 +43,8 @@ public class OvalRepository
     private DefinitionStatusEnumeration  status;
 
 
-    @Transient
-    private AffectedCpeList  _affectedCpeList;
+//    @Transient
+//    private AffectedCpeList  _affectedCpeList;
 
 
 
@@ -121,21 +120,21 @@ public class OvalRepository
 
 
 
-    /**
-     */
-    public void setAffectedCpeList(
-                    final AffectedCpeList affectedCpeList
-                    )
-    {
-        _affectedCpeList = affectedCpeList;
-    }
-
-
-
-    public AffectedCpeList getAffectedCpeList()
-    {
-        return _affectedCpeList;
-    }
+//    /**
+//     */
+//    public void setAffectedCpeList(
+//                    final AffectedCpeList affectedCpeList
+//                    )
+//    {
+//        _affectedCpeList = affectedCpeList;
+//    }
+//
+//
+//
+//    public AffectedCpeList getAffectedCpeList()
+//    {
+//        return _affectedCpeList;
+//    }
 
 
 

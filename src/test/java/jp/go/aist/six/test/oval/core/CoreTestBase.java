@@ -275,7 +275,7 @@ public abstract class CoreTestBase
                         // debian, patch, def:7432 / OVAL 5.7, CVE-2010-0176, DSA-2027
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "test/resources/data/oval5/oval5.7_def7432-3_p_debian5_DSA2027.xml",
+                            "test/resources/data/oval5/oval5.7_def7432-3_p_debian5_DSA-2027.xml",
                             null,
                             "marshalled_oval5.7_def7432-3_p_debian5_DSA2027.xml"
                         }
@@ -283,11 +283,20 @@ public abstract class CoreTestBase
                         // debian, patch, def:7432 / OVAL 5.9, CVE-2010-0176, DSA-2027
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "test/resources/data/oval5/oval5.9_def7432-3_p_debian5_DSA2027.xml",
+                            "test/resources/data/oval5/oval5.9_def7432-3_p_debian5_DSA-2027.xml",
                             null,
                             "marshalled_oval5.9_def7432-3_p_debian5_DSA2027.xml"
                         }
-//                      ,
+                        ,
+
+                        // OVAL5.3, def:20100332-301, patch, Red Hat Enterprise Linux
+                        // rpminfo
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "test/resources/data/oval5/oval5.3_def20100332-301_p_rhel5_RHSA-2010-0332_CVE-2010-0176.xml",
+                            null,
+                            "marshalled_oval5.3_def20100332-301_p_rhel5_RHSA-2010-0332_CVE-2010-0176.xml"
+                        }
 
 
 //                        // def, Windows 7, vulnerability, all
@@ -596,33 +605,54 @@ public abstract class CoreTestBase
     public Object[][] provideOvalResultsXml()
     {
         return new Object[][] {
-//                        // def:7120, Windows XP, vulnerability
-//                        // wmi, file, registry, family
-//                        {
-//                            jp.go.aist.six.oval.model.v5.results.OvalResults.class,
-//                            "test/resources/data/oval-results-5/oval_windows_vulnerability_def7120_results5.9.xml",
-//                            null,
-//                            "marshalled_oval_windows_vulnerability_def7120_results5.9.xml"
-//                        }
-//                        ,
+                        // OVAL 5.7, def:7432-3, patch, Debian 5
+                        // textfilecontent, dpkginfo, uname
+                        {
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            "test/resources/data/oval5/oval5.7_def7432-3_p_debian5_DSA-2027_results.xml",
+                            null,
+                            "marshalled_oval5.7_def7432-3_p_debian5_DSA-2027_results.xml"
+                        }
+                        ,
 
-                        // def:7432, Debian, patch
+                        // OVAL 5.9, def:7432-3, patch, Debian 5
                         // textfilecontent54, dpkginfo, uname
                         {
                             jp.go.aist.six.oval.model.results.OvalResults.class,
-                            "test/resources/data/oval-results-5/oval-5.9_def7432_patch_debian_results.xml",
+                            "test/resources/data/oval5/oval5.9_def7432-3_p_debian5_DSA-2027_results.xml",
                             null,
-                            "marshalled_oval-5.9_def7432_patch_debian_results.xml"
+                            "marshalled_oval5.9_def7432-3_p_debian5_DSA-2027_results.xml"
                         }
-//                        ,
-//
-//                        // def:7222, Windows XP, vulnerability
-//                        {
-//                            jp.go.aist.six.oval.model.v5.results.OvalResults.class,
-//                            "test/resources/data/oval-results-5/oval-results_CVE-2010-0176_def7222_v5.9.xml",
-//                            null,
-//                            "marshalled_oval-results_CVE-2010-0176_def7222_v5.9.xml"
-//                        }
+                        ,
+
+                        // OVAL5.9, def:7222-5, vulnerability, Windows
+                        // registry
+                        {
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            "test/resources/data/oval5/oval5.9_def7222-5_v_windows_CVE-2010-0176_results.xml",
+                            null,
+                            "marshalled_oval5.9_def7222-5_v_windows_CVE-2010-0176_results.xml"
+                        }
+                        ,
+
+                        // OVAL5.9, def:12313-5, vulnerability, Windows
+                        // file, family, registry
+                        {
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            "test/resources/data/oval5/oval5.9_def12313-5_v_windows_CVE-2011-0031_results.xml",
+                            null,
+                            "marshalled_oval5.9_def12313-5_v_windows_CVE-2011-0031_results.xml"
+                        }
+                        ,
+
+                        // OVAL5.3, def:20100332-301, patch, Red Hat Enterprise Linux
+                        // rpminfo
+                        {
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            "test/resources/data/oval5/oval5.3_def20100332-301_p_rhel5_RHSA-2010-0332_CVE-2010-0176_results.xml",
+                            null,
+                            "marshalled_oval5.3_def20100332-301_p_rhel5_RHSA-2010-0332_CVE-2010-0176_results.xml"
+                        }
         };
     }
 
