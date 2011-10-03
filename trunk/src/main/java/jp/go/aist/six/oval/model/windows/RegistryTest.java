@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.definitions.StateRefType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectRefType;
@@ -85,18 +84,6 @@ public class RegistryTest
 
         _oval_platform_type = OvalPlatformType.windows;
         _oval_component_type = OvalComponentType.registry;
-    }
-
-
-
-    //**************************************************************
-    //  TestType
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.WINDOWS_REGISTRY;
     }
 
 

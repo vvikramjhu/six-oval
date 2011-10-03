@@ -25,7 +25,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.OvalEntityType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.ExistenceEnumeration;
 import jp.go.aist.six.oval.model.common.OperatorEnumeration;
@@ -346,23 +345,6 @@ public class TestType
                     )
     {
         return state( new StateRefType( stateRef ) );
-    }
-
-
-
-    /**
-     */
-    public void setEntityType(
-                    final PlatformEntityType type
-                    )
-    {
-    }
-
-
-//    public abstract EntityType getEntityType();
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.UNKNOWN;
     }
 
 
