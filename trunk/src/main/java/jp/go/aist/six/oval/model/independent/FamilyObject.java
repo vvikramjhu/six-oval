@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
@@ -67,18 +66,6 @@ public class FamilyObject
 
         _oval_platform_type = OvalPlatformType.independent;
         _oval_component_type = OvalComponentType.family;
-    }
-
-
-
-    //**************************************************************
-    //  SystemObject
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.INDEPENDENT_FAMILY;
     }
 
 

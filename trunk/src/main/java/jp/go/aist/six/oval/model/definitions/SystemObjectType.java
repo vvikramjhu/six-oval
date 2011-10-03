@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.OvalEntityType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import com.google.code.morphia.annotations.Entity;
 
 
@@ -90,23 +89,6 @@ public class SystemObjectType
     public NotesType getNotes()
     {
         return this.notes;
-    }
-
-
-
-    /**
-     */
-    public void setEntityType(
-                    final PlatformEntityType type
-                    )
-    {
-    }
-
-
-//    public abstract EntityType getEntityType();
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.UNKNOWN;
     }
 
 
