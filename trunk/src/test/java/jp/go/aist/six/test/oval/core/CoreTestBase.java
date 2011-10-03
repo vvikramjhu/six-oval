@@ -261,7 +261,7 @@ public abstract class CoreTestBase
 
 
 
-                        /*** OLD ***/
+                        /***  ***/
 
                         // def:7222, windows, vulnerability, CVE-2010-0176
                         {
@@ -269,6 +269,15 @@ public abstract class CoreTestBase
                             "test/resources/data/oval5/oval5.9_def7222-5_v_windows_CVE-2010-0176.xml",
                             null,
                             "marshalled_oval5.9_def7222-5_v_windows_CVE-2010-0176.xml"
+                        }
+                        ,
+
+                        // def:7222, windows, vulnerability, CVE-2010-0176
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "test/resources/data/oval5/oval5.10_def7222-5_v_windows_CVE-2010-0176.xml",
+                            null,
+                            "marshalled_oval5.10_def7222-5_v_windows_CVE-2010-0176.xml"
                         }
                         ,
 
@@ -632,6 +641,16 @@ public abstract class CoreTestBase
                             "test/resources/data/oval5/oval5.9_def7222-5_v_windows_CVE-2010-0176_results.xml",
                             null,
                             "marshalled_oval5.9_def7222-5_v_windows_CVE-2010-0176_results.xml"
+                        }
+                        ,
+
+                        // OVAL5.10, def:7222-5, vulnerability, Windows
+                        // registry
+                        {
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            "test/resources/data/oval5/oval5.10_def7222-5_v_windows_CVE-2010-0176_results.xml",
+                            null,
+                            "marshalled_oval5.10_def7222-5_v_windows_CVE-2010-0176_results.xml"
                         }
                         ,
 

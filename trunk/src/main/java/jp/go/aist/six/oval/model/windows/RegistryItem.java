@@ -54,7 +54,7 @@ public class RegistryItem
     //{0..1, nillable="true"}
 
     private EntityItemIntType  last_write_time;
-    //{0..1}: 5.10
+    //{0..1}: 5.10, 30891
 
     private EntityItemRegistryTypeType  type;
     //{0..1}
