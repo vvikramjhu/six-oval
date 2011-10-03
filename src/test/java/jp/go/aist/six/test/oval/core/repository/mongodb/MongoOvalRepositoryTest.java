@@ -97,12 +97,18 @@ public class MongoOvalRepositoryTest
 //                            null
 //                        }
 //                        ,
+                        {
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            "test/resources/data/oval5/oval5.10_def7222-5_v_windows_CVE-2010-0176_results.xml",
+                            null
+                        }
+//                  ,
 //                        // def:12313, windows, vulnerability, CVE-2011-0031
-                      {
-                          jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                          "test/resources/data/oval5/oval5.9_def12313-5_v_windows_CVE-2011-0031.xml",
-                          null
-                      }
+//                      {
+//                          jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                          "test/resources/data/oval5/oval5.9_def12313-5_v_windows_CVE-2011-0031.xml",
+//                          null
+//                      }
 //                      ,
 //
 //                      // def:7120, windows, vulnerability, CVE-2010-0820
@@ -122,8 +128,8 @@ public class MongoOvalRepositoryTest
 //                      ,
 //                      // ---> results
 //                        {
-//                            jp.go.aist.six.oval.model.v5.results.OvalResults.class,
-//                            "test/resources/data/oval5/oval5.9_def7432-3_p_debian5_DSA2027_results.xml",
+//                            jp.go.aist.six.oval.model.results.OvalResults.class,
+//                            "test/resources/data/oval5/oval5.9_def7432-3_p_debian5_DSA-2027_results.xml",
 //                            null
 //                        }
         };

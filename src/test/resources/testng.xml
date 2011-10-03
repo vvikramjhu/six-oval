@@ -62,7 +62,7 @@
     </test>
 
 
-    <test name="oval.core.repository.mongodb.dao" enabled="false">
+    <test name="oval.core.repository.mongodb.dao" enabled="true">
         <groups>
             <run>
                 <include name="oval.core.repository.mongodb.saveAndLoad"/>
@@ -86,7 +86,7 @@
     <!-- *  XML                                                * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.xml" enabled="true">
+    <test name="oval.core.xml" enabled="false">
         <groups>
             <run>
                 <include name="oval.results.oval_results"/>
