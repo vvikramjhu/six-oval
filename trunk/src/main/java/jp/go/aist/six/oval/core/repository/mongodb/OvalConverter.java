@@ -3,6 +3,9 @@ package jp.go.aist.six.oval.core.repository.mongodb;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import jp.go.aist.six.oval.model.OvalEnumeration;
+import jp.go.aist.six.oval.model.RecurseDirectionEnumeration;
+import jp.go.aist.six.oval.model.RecurseEnumeration;
+import jp.go.aist.six.oval.model.RecurseFileSystemEnumeration;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
@@ -49,6 +52,11 @@ public class OvalConverter
 
 
     private static final Class<?>[]  _SUPPORTED_CLASSES_ = new Class[] {
+        // six //
+        RecurseDirectionEnumeration.class,
+        RecurseEnumeration.class,
+        RecurseFileSystemEnumeration.class,
+
         // commons //
         CheckEnumeration.class,
         ClassEnumeration.class,

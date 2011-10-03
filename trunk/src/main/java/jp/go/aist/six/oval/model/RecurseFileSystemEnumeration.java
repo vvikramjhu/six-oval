@@ -40,8 +40,8 @@ public enum RecurseFileSystemEnumeration
 {
 
     ALL       ( "all" ),
-    LOCAL_    ( "local" ),
-    DEFINED_  ( "defined" );
+    LOCAL     ( "local" ),
+    DEFINED   ( "defined" );
 
 
 
