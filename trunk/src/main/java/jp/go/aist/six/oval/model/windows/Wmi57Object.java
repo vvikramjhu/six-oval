@@ -20,9 +20,13 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
@@ -33,12 +37,8 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.7:
- *             Replaced by the wmi57 object and
- *             will be removed in a future version of the language.
  */
-@Deprecated
-public class WmiObject
+public class Wmi57Object
     extends SystemObjectType
 {
 
@@ -48,6 +48,7 @@ public class WmiObject
     //         sequence(
     //                   namespace
     //                   wql
+    //                   filter
     //         )
     // )
 
@@ -62,21 +63,21 @@ public class WmiObject
     //{1..1}
 
 
-//    private final EntityPropertyMap<WmiProperty>  _properties =
-//        WmiProperty.createPropertyMap();
+    private final Collection<Filter>  filter = new ArrayList<Filter>();
+    //{0..*}
 
 
 
     /**
      * Constructor.
      */
-    public WmiObject()
+    public Wmi57Object()
     {
         this( null, 0 );
     }
 
 
-    public WmiObject(
+    public Wmi57Object(
                     final String id,
                     final int version
                     )
@@ -88,7 +89,7 @@ public class WmiObject
     }
 
 
-    public WmiObject(
+    public Wmi57Object(
                     final String id,
                     final int version,
                     final String namespace,
@@ -102,7 +103,7 @@ public class WmiObject
     }
 
 
-    public WmiObject(
+    public Wmi57Object(
                     final String id,
                     final int version,
                     final EntityObjectStringType namespace,
@@ -115,7 +116,7 @@ public class WmiObject
         setWql( wql );
 
         _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.wmi;
+        _oval_component_type = OvalComponentType.wmi57;
     }
 
 
@@ -177,6 +178,34 @@ public class WmiObject
 
 
 
+    /**
+     */
+    public void setFilter(
+                    final Collection<? extends Filter> filterList
+                    )
+    {
+        if (filterList != this.filter) {
+            this.filter.clear();
+            if (filterList != null  &&  filterList.size() > 0) {
+                this.filter.addAll( filterList );
+            }
+        }
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return this.filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return this.filter.iterator();
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -194,7 +223,7 @@ public class WmiObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof WmiObject)) {
+        if (!(obj instanceof Wmi57Object)) {
             return false;
         }
 
@@ -206,13 +235,13 @@ public class WmiObject
     @Override
     public String toString()
     {
-        return "wmi_object[" + super.toString()
+        return "wmi57_object[" + super.toString()
                         + ", set=" + getSet()
                         + ", " + getNamespace()
                         + ", " + getWql()
-//                        + ", " + String.valueOf( _properties )
+                        + ", " + getFilter()
                         + "]";
     }
 
 }
-// WmiObject
+//Wmi57Object

@@ -27,15 +27,15 @@ import jp.go.aist.six.oval.model.common.OperationEnumeration;
 
 
 /**
- * The EntityStateBase type is an abstract type that extends
- * the EntityBase and is used by the entities within an OVAL State.
+ * The EntityStateComplexBaseType complex type is an abstract type
+ * that extends the EntityComplexBaseType and is used by some entities within an OVAL State.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class EntityStateSimpleBaseType
-    extends EntitySimpleBaseType
+public abstract class EntityStateComplexBaseType
+    extends EntityComplexBaseType
 {
 
     public static final CheckEnumeration  DEFAULT_ENTITY_CHECK =
@@ -49,42 +49,32 @@ public abstract class EntityStateSimpleBaseType
     /**
      * Constructor.
      */
-    public EntityStateSimpleBaseType()
+    public EntityStateComplexBaseType()
     {
     }
 
 
-    public EntityStateSimpleBaseType(
-                    final String content
-                    )
-    {
-        super( content );
-    }
-
-
-    public EntityStateSimpleBaseType(
+    public EntityStateComplexBaseType(
                     final DatatypeEnumeration datatype,
                     final OperationEnumeration operation,
                     final Boolean mask,
                     final String var_ref,
-                    final CheckEnumeration var_check,
-                    final String content
+                    final CheckEnumeration var_check
                     )
     {
-        super( datatype, operation, mask, var_ref, var_check, content );
+        super( datatype, operation, mask, var_ref, var_check );
     }
 
 
-    public EntityStateSimpleBaseType(
+    public EntityStateComplexBaseType(
                     final String datatype,
                     final String operation,
                     final Boolean mask,
                     final String var_ref,
-                    final String var_check,
-                    final String content
+                    final String var_check
                     )
     {
-        super( datatype, operation, mask, var_ref, var_check, content );
+        super( datatype, operation, mask, var_ref, var_check );
     }
 
 
@@ -106,14 +96,14 @@ public abstract class EntityStateSimpleBaseType
 
 
     public static final CheckEnumeration entityCheck(
-                    final EntityStateSimpleBaseType essbt
+                    final EntityStateComplexBaseType escbt
                     )
     {
-        if (essbt == null) {
-            throw new IllegalArgumentException( "null EntityStateSimpleBaseType" );
+        if (escbt == null) {
+            throw new IllegalArgumentException( "null EntityStateComplexBaseType" );
         }
 
-        CheckEnumeration  entity_check = essbt.getEntityCheck();
+        CheckEnumeration  entity_check = escbt.getEntityCheck();
         if (entity_check == null) {
             entity_check = DEFAULT_ENTITY_CHECK;
         }
@@ -150,12 +140,12 @@ public abstract class EntityStateSimpleBaseType
             return true;
         }
 
-        if (!(obj instanceof EntityStateSimpleBaseType)) {
+        if (!(obj instanceof EntityStateComplexBaseType)) {
             return false;
         }
 
         if (super.equals( obj )) {
-            EntityStateSimpleBaseType  other = (EntityStateSimpleBaseType)obj;
+            EntityStateComplexBaseType  other = (EntityStateComplexBaseType)obj;
             if (entityCheck( this ) == entityCheck( other )) {
                 return true;
             }
@@ -175,4 +165,4 @@ public abstract class EntityStateSimpleBaseType
     }
 
 }
-// EntityStateSimpleBaseType
+//EntityStateComplexBaseType

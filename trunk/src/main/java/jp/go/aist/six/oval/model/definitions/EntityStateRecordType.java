@@ -20,6 +20,9 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 import jp.go.aist.six.oval.model.common.OperationEnumeration;
@@ -27,91 +30,94 @@ import jp.go.aist.six.oval.model.common.OperationEnumeration;
 
 
 /**
- * The EntityStateString type is extended by the entities
- * of an individual OVAL State.
- * This specific type describes simple string data.
+ * The EntityStateRecordType defines an entity that
+ * consists of a number of uniquely named fields.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateStringType
-    extends EntityStateSimpleBaseType
+public class EntityStateRecordType
+    extends EntityStateComplexBaseType
 {
 
-    public static final DatatypeEnumeration  FIXED_DATATYPE =
-        DatatypeEnumeration.STRING;
-    //{optional, fixed="string"}
+    private final Collection<EntityStateFieldType>  field =
+        new ArrayList<EntityStateFieldType>();
 
 
 
     /**
      * Constructor.
      */
-    public EntityStateStringType()
+    public EntityStateRecordType()
     {
     }
 
 
-    public EntityStateStringType(
-                    final String content
-                    )
-    {
-        super( content );
-    }
-
-
-    public EntityStateStringType(
+    public EntityStateRecordType(
                     final DatatypeEnumeration datatype,
                     final OperationEnumeration operation,
                     final Boolean mask,
                     final String var_ref,
-                    final CheckEnumeration var_check,
-                    final String content
+                    final CheckEnumeration var_check
                     )
     {
-        super( datatype, operation, mask, var_ref, var_check, content );
+        super( datatype, operation, mask, var_ref, var_check );
     }
 
 
-    public EntityStateStringType(
+    public EntityStateRecordType(
                     final String datatype,
                     final String operation,
                     final Boolean mask,
                     final String var_ref,
-                    final String var_check,
-                    final String content
+                    final String var_check
                     )
     {
-        super( datatype, operation, mask, var_ref, var_check, content );
+        super( datatype, operation, mask, var_ref, var_check );
     }
 
 
 
-    //**************************************************************
-    //  EntityBase
-    //**************************************************************
-
-    @Override
-    public void setDatatype(
-                    final DatatypeEnumeration datatype
+    /**
+     */
+    public void setField(
+                    final Collection<? extends EntityStateFieldType> fieldList
                     )
     {
-        if (datatype != null  &&  datatype != FIXED_DATATYPE) {
-            throw new IllegalArgumentException(
-                            "invalid datatype: " + datatype );
+        if (this.field != fieldList) {
+            this.field.clear();
+            if (fieldList != null  &&  fieldList.size() > 0) {
+                for (EntityStateFieldType  p : fieldList) {
+                    addField( p );
+                }
+            }
+        }
+    }
+
+
+    public boolean addField(
+                    final EntityStateFieldType field
+                    )
+    {
+        if (field == null) {
+            throw new IllegalArgumentException( "empty field" );
         }
 
-        super.setDatatype( datatype );
+        return this.field.add( field );
     }
 
 
-    //{optional}
-//    @Override
-//    public DatatypeEnumeration getDatatype()
-//    {
-//        return FIXED_DATATYPE;
-//    }
+    public Collection<EntityStateFieldType> getField()
+    {
+        return this.field;
+    }
+
+
+    public Iterator<EntityStateFieldType> iterateField()
+    {
+        return getField().iterator();
+    }
 
 
 
@@ -122,6 +128,12 @@ public class EntityStateStringType
     @Override
     public int hashCode()
     {
+        final int  prime = 37;
+        int  result = 17;
+
+        Collection<EntityStateFieldType>  field = getField();
+        result = prime * result + ((field == null) ? 0 : field.hashCode());
+
         return super.hashCode();
     }
 
@@ -136,8 +148,18 @@ public class EntityStateStringType
             return true;
         }
 
-        if (!(obj instanceof EntityStateStringType)) {
+        if (!(obj instanceof EntityStateRecordType)) {
             return false;
+        }
+
+        EntityStateRecordType  other = (EntityStateRecordType)obj;
+        Collection<EntityStateFieldType>  other_field = other.getField();
+        Collection<EntityStateFieldType>   this_field =  this.getField();
+        if (this_field == other_field
+                        ||  (this_field != null  &&  other_field != null
+                                        &&  this_field.size() == other_field.size()
+                                        &&  this_field.containsAll( other_field ))) {
+            return true;
         }
 
         return super.equals( obj );
@@ -145,11 +167,13 @@ public class EntityStateStringType
 
 
 
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
+    @Override
+    public String toString()
+    {
+        return super.toString()
+                        + ", field=" + getField()
+                        ;
+    }
 
 }
-// EntityStateStringType
+//EntityStateRecordType
