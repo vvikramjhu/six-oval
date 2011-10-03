@@ -260,10 +260,12 @@
             <sql many-key="d_test__PID"/>
         </field>
 
+<!-- @deprecated
         <field name="entityType" 
             type="jp.go.aist.six.oval.model.PlatformEntityType">
             <sql name="entity_type" type="char"/>
         </field>
+-->
     </class>
 
 
@@ -319,10 +321,12 @@
             <sql name="comment" type="char"/>
         </field>
 
+<!-- @deprecated
         <field name="entityType" 
             type="jp.go.aist.six.oval.model.PlatformEntityType">
             <sql name="entity_type" type="char"/>
         </field>
+-->
     </class>
 
 
@@ -353,10 +357,12 @@
             <sql name="comment" type="char"/>
         </field>
 
+<!-- @deprecated
         <field name="entityType" 
             type="jp.go.aist.six.oval.model.PlatformEntityType">
             <sql name="entity_type" type="char"/>
         </field>
+-->
     </class>
 
 
@@ -392,10 +398,12 @@
             <sql name="datatype" type="char"/>
         </field>
 
+<!-- @deprecated
         <field name="entityType" 
             type="jp.go.aist.six.oval.model.PlatformEntityType">
             <sql name="entity_type" type="char"/>
         </field>
+-->
     </class>
 
 

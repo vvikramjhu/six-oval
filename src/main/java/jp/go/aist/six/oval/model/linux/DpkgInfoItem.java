@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemEVRStringType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
@@ -222,18 +221,6 @@ public class DpkgInfoItem
     {
         setEvr( new EntityItemEVRStringType( evr ) );
         return this;
-    }
-
-
-
-    //**************************************************************
-    //  Item
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.LINUX_DPKGINFO;
     }
 
 

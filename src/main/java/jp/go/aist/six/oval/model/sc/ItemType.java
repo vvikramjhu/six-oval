@@ -26,7 +26,6 @@ import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.MessageType;
 
 
@@ -99,23 +98,6 @@ public class ItemType
     {
         setID( id );
         setStatus( status );
-    }
-
-
-
-    /**
-     */
-    public void setEntityType(
-                    final PlatformEntityType type
-                    )
-    {
-    }
-
-
-//    public abstract EntityType getEntityType();
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.UNKNOWN;
     }
 
 
