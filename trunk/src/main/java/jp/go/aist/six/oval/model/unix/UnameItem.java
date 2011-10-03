@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.unix;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
@@ -254,18 +253,6 @@ public class UnameItem
     {
         return this.processor_type;
 //        return _properties.get( UnameProperty.PROCESSOR_TYPE );
-    }
-
-
-
-    //**************************************************************
-    //  Item
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.UNIX_UNAME;
     }
 
 

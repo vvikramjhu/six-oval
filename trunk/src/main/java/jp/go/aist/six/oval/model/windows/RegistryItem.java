@@ -25,7 +25,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
@@ -216,18 +215,6 @@ public class RegistryItem
 //    {
 //        return _value;
 //    }
-
-
-
-    //**************************************************************
-    //  Item
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.WINDOWS_REGISTRY;
-    }
 
 
 

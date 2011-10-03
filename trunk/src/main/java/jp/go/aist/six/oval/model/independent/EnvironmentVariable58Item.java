@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
@@ -70,7 +69,7 @@ public class EnvironmentVariable58Item
         super( id );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.textfilecontent;
+        _oval_component_type = OvalComponentType.environmentvariable58;
     }
 
 
@@ -122,18 +121,6 @@ public class EnvironmentVariable58Item
     public EntityItemAnySimpleType getValue()
     {
         return this.value;
-    }
-
-
-
-    //**************************************************************
-    //  Item
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.INDEPENDENT_ENVIRONMENTVARIABLE58;
     }
 
 
