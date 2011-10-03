@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateEVRStringType;
 
 
@@ -67,18 +66,6 @@ public class DpkgInfoState
     {
         setEvr( evr );
         return this;
-    }
-
-
-
-    //**************************************************************
-    //  State
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.LINUX_DPKGINFO;
     }
 
 

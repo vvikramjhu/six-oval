@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
@@ -100,27 +99,6 @@ public class FamilyState
         setFamily( family );
         return this;
     }
-
-
-
-    //**************************************************************
-    //  State
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.INDEPENDENT_FAMILY;
-    }
-
-
-
-//    @Override
-//    public Iterator<EntityAttributeGroup> iterateProperties()
-//    {
-//        EntityAttributeGroup  p = getFamily();
-//        return Collections.singletonList( p ).iterator();
-//    }
 
 
 

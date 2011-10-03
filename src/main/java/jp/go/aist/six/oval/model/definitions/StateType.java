@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.OvalEntityType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.OperatorEnumeration;
 import com.google.code.morphia.annotations.Entity;
 
@@ -144,62 +143,6 @@ public class StateType
 
         return operator;
     }
-
-
-
-    /**
-     */
-    public void setEntityType(
-                    final PlatformEntityType type
-                    )
-    {
-    }
-
-
-//    public abstract EntityType getEntityType();
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.UNKNOWN;
-    }
-
-
-
-//    private static List<EntityAttributeGroup>  _EMPTY_LIST_ =
-//        Collections.emptyList();
-//
-//
-//    /**
-//     */
-//    public Iterator<EntityAttributeGroup> iterateProperties()
-//    {
-//        return _EMPTY_LIST_.iterator();
-//    }
-
-
-
-//    private EnumMap<? extends Enum<?>, EntityStateBase>  _properties;
-//    private Class<?>  _propertyKeyType;
-//
-//    protected <K extends Enum<K>>
-//    void _initStateProperties(
-//                    final Class<K> keyType
-//                    )
-//    {
-//        _properties = new EnumMap<K, EntityStateBase>( keyType );
-//        _propertyKeyType = keyType;
-//    }
-//
-//
-//
-//    protected <K extends Enum<K>, T extends EntityStateBase>
-//    T _getStateProperty(
-//                    final K key,
-//                    final Class<T> type
-//                    )
-//    {
-//        EntityStateBase  p = _properties.get( key );
-//        return type.cast( p );
-//    }
 
 
 
