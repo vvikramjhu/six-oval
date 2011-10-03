@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.PlatformEntityType;
+import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
@@ -50,18 +50,16 @@ public class LocalVariable
      */
     public LocalVariable()
     {
+        this( null, 0 );
     }
 
 
-    /**
-     * Constructor.
-     */
     public LocalVariable(
                     final String id,
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null );
     }
 
 
@@ -71,7 +69,7 @@ public class LocalVariable
                     final String comment
                     )
     {
-        super( id, version, comment );
+        this( id, version, comment, null );
     }
 
 
@@ -83,6 +81,7 @@ public class LocalVariable
                     )
     {
         super( id, version, comment, datatype );
+        _oval_component_type = OvalComponentType.local;
     }
 
 
@@ -126,18 +125,6 @@ public class LocalVariable
     public String xmlGetComponent()
     {
         return _componentXml;
-    }
-
-
-
-    //**************************************************************
-    //  Variable
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.VARIABLE_LOCAL;
     }
 
 

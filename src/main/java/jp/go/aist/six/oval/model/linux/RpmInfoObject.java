@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 
 
@@ -87,18 +86,6 @@ public class RpmInfoObject
                     )
     {
         return name( new EntityObjectStringType( name ) );
-    }
-
-
-
-    //**************************************************************
-    //  SystemObject
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.LINUX_RPMINFO;
     }
 
 
