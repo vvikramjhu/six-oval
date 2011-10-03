@@ -28,96 +28,58 @@ import jp.go.aist.six.oval.model.common.OperationEnumeration;
 
 
 /**
- * The EntitySimpleBaseType complex type is an abstract type
- * that defines the default attributes associated with every simple entity.
+ * The EntityComplexBaseType complex type is an abstract type
+ * that defines the default attributes associated with every complex entity.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class EntitySimpleBaseType
+public abstract class EntityComplexBaseType
     extends EntityAttributeGroup
 {
-
-    private String  content;
-    //{simpleContent, base="xsd:anySimpleType"}
-
-
 
     /**
      * Constructor.
      */
-    public EntitySimpleBaseType()
+    public EntityComplexBaseType()
     {
     }
 
 
-    public EntitySimpleBaseType(
-                    final String content
-                    )
-    {
-        setContent( content );
-    }
-
-
-    public EntitySimpleBaseType(
+    public EntityComplexBaseType(
                     final DatatypeEnumeration datatype,
                     final OperationEnumeration operation,
                     final Boolean mask,
                     final String var_ref,
-                    final CheckEnumeration var_check,
-                    final String content
+                    final CheckEnumeration var_check
                     )
     {
         super( datatype, operation, mask, var_ref, var_check );
-        setContent( content );
     }
 
 
-    public EntitySimpleBaseType(
+    public EntityComplexBaseType(
                     final String datatype,
                     final String operation,
                     final Boolean mask,
                     final String var_ref,
-                    final String var_check,
-                    final String content
+                    final String var_check
                     )
     {
         super( datatype, operation, mask, var_ref, var_check );
-        setContent( content );
     }
 
 
 
-    /**
-     */
-    public void setContent(
-                    final String content
-                    )
-    {
-        this.content = content;
-    }
-
-
-    public String getContent()
-    {
-        return this.content;
-    }
-
-
-
-   //**************************************************************
+    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
     @Override
     public int hashCode()
     {
-        final int  prime = 37;
         int  result = super.hashCode();
-
-        String  content = getContent();
-        result = prime * result + ((content == null) ? 0 : content.hashCode());
 
         return result;
     }
@@ -133,33 +95,12 @@ public abstract class EntitySimpleBaseType
             return true;
         }
 
-        if (!(obj instanceof EntitySimpleBaseType)) {
+        if (!(obj instanceof EntityComplexBaseType)) {
             return false;
         }
 
-        EntitySimpleBaseType  other = (EntitySimpleBaseType)obj;
-        if (super.equals( obj )) {
-            final String  other_content = other.getContent();
-            final String   this_content =  this.getContent();
-            if (this_content == other_content
-                            ||  (this_content != null
-                                        &&  this_content.equals( other_content ))) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-
-
-    @Override
-    public String toString()
-    {
-        return "" + getContent()
-                        + ", " + super.toString()
-                        ;
+        return super.equals( obj );
     }
 
 }
-// EntitySimpleBaseType
+//EntityComplexBaseType

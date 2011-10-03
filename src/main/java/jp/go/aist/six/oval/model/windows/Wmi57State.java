@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
+import jp.go.aist.six.oval.model.definitions.EntityStateRecordType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
@@ -33,12 +33,8 @@ import jp.go.aist.six.oval.model.definitions.StateType;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.7:
- *             Replaced by the wmi57 state and
- *             will be removed in a future version of the language.
  */
-@Deprecated
-public class WmiState
+public class Wmi57State
     extends StateType
 {
 
@@ -48,26 +44,21 @@ public class WmiState
     private EntityStateStringType  wql;
     //{0..1}
 
-    private EntityStateAnySimpleType  result;
-    //{0..1}
-
-
-//    private final EntityPropertyMap<WmiProperty>  _properties =
-//        WmiProperty.createPropertyMap();
-
+    private EntityStateRecordType  result;
+    //{0..1, unique="field/@name"}
 
 
 
     /**
      * Constructor.
      */
-    public WmiState()
+    public Wmi57State()
     {
         this( null, 0 );
     }
 
 
-    public WmiState(
+    public Wmi57State(
                     final String id,
                     final int version
                     )
@@ -75,7 +66,7 @@ public class WmiState
         super( id, version );
 
         _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.wmi;
+        _oval_component_type = OvalComponentType.wmi57;
     }
 
 
@@ -87,15 +78,12 @@ public class WmiState
                     )
     {
         this.namespace = namespace;
-//        _properties.setProperty( WmiProperty.NAMESPACE, namespace );
     }
 
 
     public EntityStateStringType getNamespace()
     {
         return this.namespace;
-//        return _properties.getProperty(
-//                        WmiProperty.NAMESPACE, EntityStateStringType.class );
     }
 
 
@@ -107,15 +95,12 @@ public class WmiState
                     )
     {
         this.wql = wql;
-//        _properties.setProperty( WmiProperty.WQL, wql );
     }
 
 
     public EntityStateStringType getWql()
     {
         return this.wql;
-//        return _properties.getProperty(
-//                        WmiProperty.WQL, EntityStateStringType.class );
     }
 
 
@@ -123,19 +108,16 @@ public class WmiState
     /**
      */
     public void setResult(
-                    final EntityStateAnySimpleType result
+                    final EntityStateRecordType result
                     )
     {
         this.result = result;
-//        _properties.setProperty( WmiProperty.RESULT, result );
     }
 
 
-    public EntityStateAnySimpleType getResult()
+    public EntityStateRecordType getResult()
     {
         return this.result;
-//        return _properties.getProperty(
-//                        WmiProperty.RESULT, EntityStateAnySimpleType.class );
     }
 
 
@@ -157,7 +139,7 @@ public class WmiState
                     final Object obj
                     )
     {
-        if (!(obj instanceof WmiState)) {
+        if (!(obj instanceof Wmi57State)) {
             return false;
         }
 
@@ -169,13 +151,12 @@ public class WmiState
     @Override
     public String toString()
     {
-        return "wmi_state[" + super.toString()
+        return "wmi57_state[" + super.toString()
                         + ", " + getNamespace()
                         + ", " + getWql()
                         + ", " + getResult()
-//                        + ", " + String.valueOf( _properties )
                         + "]";
     }
 
 }
-// WqlState
+//Wmi57State

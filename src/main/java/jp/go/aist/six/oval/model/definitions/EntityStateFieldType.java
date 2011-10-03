@@ -28,16 +28,29 @@ import jp.go.aist.six.oval.model.common.OperationEnumeration;
 
 
 /**
- * The EntitySimpleBaseType complex type is an abstract type
- * that defines the default attributes associated with every simple entity.
+ * The EntityStateFieldType defines an element with simple content
+ * that represents a named field in a record that may contain
+ * any number of named fields.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class EntitySimpleBaseType
+public abstract class EntityStateFieldType
     extends EntityAttributeGroup
 {
+
+    private String  name;
+    //{required, pattern="[^A-Z]+"}
+
+
+    public static final CheckEnumeration  DEFAULT_ENTITY_CHECK =
+        CheckEnumeration.ALL;
+
+    private CheckEnumeration  entity_check;
+    //{optional, default="all"}
+
+
 
     private String  content;
     //{simpleContent, base="xsd:anySimpleType"}
@@ -47,12 +60,12 @@ public abstract class EntitySimpleBaseType
     /**
      * Constructor.
      */
-    public EntitySimpleBaseType()
+    public EntityStateFieldType()
     {
     }
 
 
-    public EntitySimpleBaseType(
+    public EntityStateFieldType(
                     final String content
                     )
     {
@@ -60,7 +73,8 @@ public abstract class EntitySimpleBaseType
     }
 
 
-    public EntitySimpleBaseType(
+    public EntityStateFieldType(
+                    final String name,
                     final DatatypeEnumeration datatype,
                     final OperationEnumeration operation,
                     final Boolean mask,
@@ -70,11 +84,13 @@ public abstract class EntitySimpleBaseType
                     )
     {
         super( datatype, operation, mask, var_ref, var_check );
+        setName( name );
         setContent( content );
     }
 
 
-    public EntitySimpleBaseType(
+    public EntityStateFieldType(
+                    final String name,
                     final String datatype,
                     final String operation,
                     final Boolean mask,
@@ -84,7 +100,59 @@ public abstract class EntitySimpleBaseType
                     )
     {
         super( datatype, operation, mask, var_ref, var_check );
+        setName( name );
         setContent( content );
+    }
+
+
+
+    /**
+     */
+    public void setName(
+                    final String name
+                    )
+    {
+        this.name = name;
+    }
+
+
+    public String getName()
+    {
+        return this.name;
+    }
+
+
+
+    /**
+     */
+    public void setEntityCheck(
+                    final CheckEnumeration entity_check
+                    )
+    {
+        this.entity_check = entity_check;
+    }
+
+
+    public CheckEnumeration getEntityCheck()
+    {
+        return this.entity_check;
+    }
+
+
+    public static final CheckEnumeration entityCheck(
+                    final EntityStateFieldType esft
+                    )
+    {
+        if (esft == null) {
+            throw new IllegalArgumentException( "null EntityStateFieldType" );
+        }
+
+        CheckEnumeration  entity_check = esft.getEntityCheck();
+        if (entity_check == null) {
+            entity_check = DEFAULT_ENTITY_CHECK;
+        }
+
+        return entity_check;
     }
 
 
@@ -116,6 +184,9 @@ public abstract class EntitySimpleBaseType
         final int  prime = 37;
         int  result = super.hashCode();
 
+        String  name = getName();
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+
         String  content = getContent();
         result = prime * result + ((content == null) ? 0 : content.hashCode());
 
@@ -133,18 +204,24 @@ public abstract class EntitySimpleBaseType
             return true;
         }
 
-        if (!(obj instanceof EntitySimpleBaseType)) {
+        if (!(obj instanceof EntityStateFieldType)) {
             return false;
         }
 
-        EntitySimpleBaseType  other = (EntitySimpleBaseType)obj;
+        EntityStateFieldType  other = (EntityStateFieldType)obj;
         if (super.equals( obj )) {
-            final String  other_content = other.getContent();
-            final String   this_content =  this.getContent();
-            if (this_content == other_content
-                            ||  (this_content != null
-                                        &&  this_content.equals( other_content ))) {
-                return true;
+            final String  other_name = other.getName();
+            final String   this_name =  this.getName();
+            if (this_name == other_name
+                            ||  (this_name != null
+                                        &&  this_name.equals( other_name ))) {
+                final String  other_content = other.getContent();
+                final String   this_content =  this.getContent();
+                if (this_content == other_content
+                                ||  (this_content != null
+                                                &&  this_content.equals( other_content ))) {
+                    return true;
+                }
             }
         }
 
@@ -157,9 +234,10 @@ public abstract class EntitySimpleBaseType
     public String toString()
     {
         return "" + getContent()
+                        + ", name=" + getName()
                         + ", " + super.toString()
                         ;
     }
 
 }
-// EntitySimpleBaseType
+//EntityStateFieldType

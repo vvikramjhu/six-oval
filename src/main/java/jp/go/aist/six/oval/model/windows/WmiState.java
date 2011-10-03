@@ -178,4 +178,4 @@ public class WmiState
     }
 
 }
-// WqlState
+//WmiState
