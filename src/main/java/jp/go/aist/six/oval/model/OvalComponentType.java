@@ -33,6 +33,7 @@ public enum OvalComponentType
 {
 
     // independent //
+    environmentvariable58,
     family,
     textfilecontent,
     textfilecontent54,
@@ -51,7 +52,11 @@ public enum OvalComponentType
     metabase,
     registry,
     wmi,
-    wmi57;
+    wmi57,
+
+    // variable //
+    local,
+    external;
 
 }
 // OvalComponentType

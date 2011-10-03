@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.definitions.TestType;
 
@@ -88,18 +87,6 @@ public class TextfileContent54Test
 
 
     //**************************************************************
-    //  Test
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.INDEPENDENT_TEXTFILECONTENT54;
-    }
-
-
-
-    //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
@@ -132,4 +119,4 @@ public class TextfileContent54Test
     }
 
 }
-// TextFileContent54Test
+// TextfileContent54Test

@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.independent;
 import java.util.Collection;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.definitions.StateRefType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectRefType;
@@ -78,13 +77,6 @@ public class UnknownTest
     //**************************************************************
     //  Test
     //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.INDEPENDENT_UNKNOWN;
-    }
-
 
     @Override
     public void setObject(

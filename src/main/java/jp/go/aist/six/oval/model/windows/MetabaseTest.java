@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.definitions.TestType;
 
@@ -82,18 +81,6 @@ public class MetabaseTest
 //    {
 //        super( id, version, comment, check, object, stateList );
 //    }
-
-
-
-    //**************************************************************
-    //  Test
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.WINDOWS_METABASE;
-    }
 
 
 
