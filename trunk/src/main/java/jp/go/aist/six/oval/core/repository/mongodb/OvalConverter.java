@@ -2,6 +2,7 @@ package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
+import jp.go.aist.six.oval.model.OvalEnumeration;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
@@ -11,13 +12,16 @@ import jp.go.aist.six.oval.model.common.MessageLevelEnumeration;
 import jp.go.aist.six.oval.model.common.OperationEnumeration;
 import jp.go.aist.six.oval.model.common.OperatorEnumeration;
 import jp.go.aist.six.oval.model.definitions.FilterActionEnumeration;
+import jp.go.aist.six.oval.model.definitions.SetOperatorEnumeration;
+import jp.go.aist.six.oval.model.independent.WindowsViewTypeEnumeration;
 import jp.go.aist.six.oval.model.mitre.DefinitionStatusEnumeration;
+import jp.go.aist.six.oval.model.redhat.SeverityEnumeration;
 import jp.go.aist.six.oval.model.results.ContentEnumeration;
 import jp.go.aist.six.oval.model.results.ResultEnumeration;
 import jp.go.aist.six.oval.model.sc.FlagEnumeration;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
-import jp.go.aist.six.oval.model.v5.Oval5Enumeration;
 import jp.go.aist.six.oval.model.windows.FileTypeEnumeration;
+import jp.go.aist.six.oval.model.windows.RegistryHiveEnumeration;
 import jp.go.aist.six.oval.model.windows.RegistryTypeEnumeration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +49,7 @@ public class OvalConverter
 
 
     private static final Class<?>[]  _SUPPORTED_CLASSES_ = new Class[] {
-        //commons
+        // commons //
         CheckEnumeration.class,
         ClassEnumeration.class,
         DatatypeEnumeration.class,
@@ -55,11 +59,18 @@ public class OvalConverter
         OperationEnumeration.class,
         OperatorEnumeration.class,
 
-        //definitions
+        // definitions //
         FilterActionEnumeration.class,
+        SetOperatorEnumeration.class,
 
-        //mitre
+        // independent //
+        WindowsViewTypeEnumeration.class,
+
+        // mitre //
         DefinitionStatusEnumeration.class,
+
+        // redhat //
+        SeverityEnumeration.class,
 
         // results
         ContentEnumeration.class,
@@ -71,6 +82,7 @@ public class OvalConverter
 
         //windows
         FileTypeEnumeration.class,
+        RegistryHiveEnumeration.class,
         RegistryTypeEnumeration.class
 
 //        Platform.class,
@@ -86,8 +98,8 @@ public class OvalConverter
     //  supporting OvalEnumeration
     //**************************************************************
 
-    private static final HashMap<Class<? extends Oval5Enumeration>, Method>
-    _VALUE_OF_METHODS_ = new HashMap<Class<? extends Oval5Enumeration>, Method>();
+    private static final HashMap<Class<? extends OvalEnumeration>, Method>
+    _VALUE_OF_METHODS_ = new HashMap<Class<? extends OvalEnumeration>, Method>();
 
 //    private static final HashMap<Class<? extends OvalEnumeration>, Method>
 //    _VALUE_METHODS_ = new HashMap<Class<? extends OvalEnumeration>, Method>();
@@ -95,7 +107,7 @@ public class OvalConverter
     /**
      */
     public static Object enumerationFromValue(
-                    final Class<? extends Oval5Enumeration> targetClass,
+                    final Class<? extends OvalEnumeration> targetClass,
                     final String value
                     )
     {
@@ -129,13 +141,13 @@ public class OvalConverter
             return null;
 
         Class<?>  targetClass = object.getClass();
-        if (! Oval5Enumeration.class.isAssignableFrom( targetClass )) {
+        if (! OvalEnumeration.class.isAssignableFrom( targetClass )) {
             throw new MappingException( "unsupported type: " + String.valueOf( targetClass ) );
         }
 
         Object  value = null;
         try {
-            Oval5Enumeration  e = Oval5Enumeration.class.cast( object );
+            OvalEnumeration  e = OvalEnumeration.class.cast( object );
             value = e.value();
         } catch (ClassCastException ex) {
             throw new MappingException( ex.getMessage() );
@@ -194,7 +206,7 @@ public class OvalConverter
             return null;
         }
 
-        if (object instanceof Oval5Enumeration) {
+        if (object instanceof OvalEnumeration) {
             return enumerationValue( object );
 //        } else if (object instanceof NameEntity) {
 //            return NameEntity.class.cast( object ).getName();
@@ -221,10 +233,10 @@ public class OvalConverter
             return null;
         }
 
-        if (Oval5Enumeration.class.isAssignableFrom( targetClass )) {
+        if (OvalEnumeration.class.isAssignableFrom( targetClass )) {
             @SuppressWarnings( "unchecked" )
-            Class<? extends Oval5Enumeration>  enumClass =
-                targetClass.asSubclass( Oval5Enumeration.class );
+            Class<? extends OvalEnumeration>  enumClass =
+                targetClass.asSubclass( OvalEnumeration.class );
             return enumerationFromValue( enumClass, fromDBObject.toString() );
 
 //        } else if (NameEntity.class.isAssignableFrom( targetClass )) {
