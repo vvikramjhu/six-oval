@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -138,26 +137,6 @@ public class WmiState
 //        return _properties.getProperty(
 //                        WmiProperty.RESULT, EntityStateAnySimpleType.class );
     }
-
-
-
-    //**************************************************************
-    //  State
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.WINDOWS_WMI;
-    }
-
-
-
-//    @Override
-//    public Iterator<EntityAttributeGroup> iterateProperties()
-//    {
-//        return _properties.iterateProperties();
-//    }
 
 
 

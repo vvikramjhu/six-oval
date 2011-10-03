@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.EntityStateVersionType;
@@ -510,47 +509,6 @@ public class FileState
         setProductVersion( product_version );
         return this;
     }
-
-
-
-    //**************************************************************
-    //  State
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.WINDOWS_FILE;
-    }
-
-
-
-//    @Override
-//    public Iterator<EntityAttributeGroup> iterateProperties()
-//    {
-//        return _properties.iterateProperties();
-//    }
-
-
-
-//    protected <T extends EntityStateBase> T _getProperty(
-//                    final FileProperty key,
-//                    final Class<T> type
-//                    )
-//    {
-//        EntityBase  p = _properties.get( key );
-//        return type.cast( p );
-//    }
-//
-//
-//
-//    protected void _setProperty(
-//                    final FileProperty key,
-//                    final EntityStateBase value
-//                    )
-//    {
-//        _properties.put( key, value );
-//    }
 
 
 

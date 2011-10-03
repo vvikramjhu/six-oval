@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -259,26 +258,6 @@ public class MetabaseState
         setData( data );
         return this;
     }
-
-
-
-    //**************************************************************
-    //  State
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.WINDOWS_METABASE;
-    }
-
-
-
-//    @Override
-//    public Iterator<EntityAttributeGroup> iterateProperties()
-//    {
-//        return _properties.iterateProperties();
-//    }
 
 
 

@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -302,47 +301,6 @@ public class TextfileContent54State
         setSubexpression( subexpression );
         return this;
     }
-
-
-
-    //**************************************************************
-    //  State
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.INDEPENDENT_TEXTFILECONTENT54;
-    }
-
-
-
-//    @Override
-//    public Iterator<EntityAttributeGroup> iterateProperties()
-//    {
-//        return _properties.iterateProperties();
-//    }
-
-
-
-//    protected <T extends EntityStateBase> T _getProperty(
-//                    final Property key,
-//                    final Class<T> type
-//                    )
-//    {
-//        EntityBase  p = _properties.get( key );
-//        return type.cast( p );
-//    }
-//
-//
-//
-//    protected void _setProperty(
-//                    final Property key,
-//                    final EntityStateBase value
-//                    )
-//    {
-//        _properties.put( key, value );
-//    }
 
 
 

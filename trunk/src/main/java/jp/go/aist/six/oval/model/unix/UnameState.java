@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model.unix;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.PlatformEntityType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
@@ -268,26 +267,6 @@ public class UnameState
         setProcessorType( type );
         return this;
     }
-
-
-
-    //**************************************************************
-    //  State
-    //**************************************************************
-
-    @Override
-    public PlatformEntityType getEntityType()
-    {
-        return PlatformEntityType.UNIX_UNAME;
-    }
-
-
-
-//    @Override
-//    public Iterator<EntityAttributeGroup> iterateProperties()
-//    {
-//        return _properties.iterateProperties();
-//    }
 
 
 
