@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.repository;
 
 import java.util.List;
 import jp.go.aist.six.oval.model.OvalObject;
-import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.util.persist.Persistable;
 import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.Limit;
@@ -31,7 +30,7 @@ import jp.go.aist.six.util.search.Order;
 
 
 /**
- * A pre-description of the OVAL repository operations.
+ * A prescription of the OVAL repository basic operations.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -40,6 +39,13 @@ public interface OvalRepository
 {
 
     /**
+     * Returns the object of the specified identifier.
+     * If no such object exists, this method returns null.
+     *
+     * @param   type
+     *  the type of the object.
+     * @param   id
+     *  the identifier of the object.
      */
     public <K, T extends OvalObject & Persistable<K>>
     T get(
@@ -51,6 +57,16 @@ public interface OvalRepository
 
 
     /**
+     * Creates a new object in the repository.
+     * If an object which has the same identifier already exists in the repository,
+     * an exception is thrown.
+     *
+     * @param   type
+     *  the type of the object.
+     * @param   object
+     *  the object to create.
+     * @return
+     *  the identifier of the created object.
      */
     public <K, T extends OvalObject & Persistable<K>>
     K create(
@@ -62,7 +78,14 @@ public interface OvalRepository
 
 
     /**
-     * Updates the object, or inserts it to the data store if it does NOT exist.
+     * Updates the object, or inserts it to the repository if it does NOT exist.
+     *
+     * @param   type
+     *  the type of the object.
+     * @param   object
+     *  the object to save.
+     * @return
+     *  the object.
      */
     public <K, T extends OvalObject & Persistable<K>>
     T save(
@@ -74,6 +97,12 @@ public interface OvalRepository
 
 
     /**
+     * Searches for the objects that are the specified type.
+     *
+     * @param   type
+     *  the type of the object.
+     * @return
+     *  the objects.
      */
     public <K, T extends OvalObject & Persistable<K>>
     QueryResult<T> find(
@@ -82,6 +111,17 @@ public interface OvalRepository
     throws OvalRepositoryException;
 
 
+
+    /**
+     * Searches for the objects that match the specified filter.
+     *
+     * @param   type
+     *  the type of the object.
+     * @param   filter
+     *  the filter.
+     * @return
+     *  the objects.
+     */
     public <K, T extends OvalObject & Persistable<K>>
     QueryResult<T> find(
                     Class<T> type,
@@ -97,6 +137,20 @@ public interface OvalRepository
 //    throws OvalRepositoryException;
 
 
+    /**
+     * Searches for the objects that match the specified filter.
+     *
+     * @param   type
+     *  the type of the object.
+     * @param   filter
+     *  the filter.
+     * @param   ordering
+     *  the ordering of the result objects.
+     * @param   limit
+     *  the number of objects and offset of the first object.
+     * @return
+     *  the objects.
+     */
     public <K, T extends OvalObject & Persistable<K>>
     QueryResult<T> find(
                     Class<T> type,
@@ -109,6 +163,12 @@ public interface OvalRepository
 
 
     /**
+     * Returns the identifiers of all the objects that are the specified type.
+     *
+     * @param   type
+     *  the type of the object.
+     * @return
+     *  the identifiers.
      */
     public <K, T extends OvalObject & Persistable<K>>
     QueryResult<K> findIDs(
@@ -118,6 +178,17 @@ public interface OvalRepository
 
 
 
+    /**
+     * Searches for the objects that match the specified filter and
+     * returns the identifiers of them.
+     *
+     * @param   type
+     *  the type of the object.
+     * @param   filter
+     *  the filter.
+     * @return
+     *  the identifiers.
+     */
     public <K, T extends OvalObject & Persistable<K>>
     QueryResult<K> findIDs(
                     Class<T> type,
@@ -133,6 +204,21 @@ public interface OvalRepository
 //    throws OvalRepositoryException;
 
 
+    /**
+     * Searches for the objects that match the specified filter and
+     * returns the identifiers of them.
+     *
+     * @param   type
+     *  the type of the object.
+     * @param   filter
+     *  the filter.
+     * @param   ordering
+     *  the ordering of the result objects.
+     * @param   limit
+     *  the number of objects and offset of the first object.
+     * @return
+     *  the identifiers.
+     */
     public <K, T extends OvalObject & Persistable<K>>
     QueryResult<K> findIDs(
                     Class<T> type,
@@ -145,6 +231,12 @@ public interface OvalRepository
 
 
     /**
+     * Counts the number of all the objects that are the specified type.
+     *
+     * @param   type
+     *  the type of the object.
+     * @return
+     *  the number of the objects.
      */
     public <K, T extends OvalObject & Persistable<K>>
     long count(
@@ -153,6 +245,15 @@ public interface OvalRepository
     throws OvalRepositoryException;
 
 
+
+    /**
+     * Counts the number of the objects that match the specified filter.
+     *
+     * @param   type
+     *  the type of the object.
+     * @return
+     *  the number of the objects.
+     */
     public <K, T extends OvalObject & Persistable<K>>
     long count(
                     Class<T> type,
@@ -162,25 +263,25 @@ public interface OvalRepository
 
 
 
-    //==============================================================
-    // oval-def:definition
-    //==============================================================
-
-    /**
-     */
-    public DefinitionType getDefinition(
-                    String oval_id,
-                    int oval_version
-                    )
-    throws OvalRepositoryException;
-
-
-
-    public DefinitionType getDefinition(
-                    String oval_id
-                    )
-    throws OvalRepositoryException;
+//    //==============================================================
+//    // oval-def:definition
+//    //==============================================================
+//
+//    /**
+//     */
+//    public DefinitionType getDefinition(
+//                    String oval_id,
+//                    int oval_version
+//                    )
+//    throws OvalRepositoryException;
+//
+//
+//
+//    public DefinitionType getDefinition(
+//                    String oval_id
+//                    )
+//    throws OvalRepositoryException;
 
 }
-// OvalRepository
+//OvalRepository
 

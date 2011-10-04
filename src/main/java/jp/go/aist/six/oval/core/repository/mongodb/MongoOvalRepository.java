@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import jp.go.aist.six.oval.model.OvalObject;
-import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.repository.OvalRepository;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.QueryResult;
@@ -504,65 +503,65 @@ public class MongoOvalRepository
 
 
 
-    //==============================================================
-    // oval-def:definition
-    //==============================================================
-
-    /**
-     */
-    @Override
-    public DefinitionType getDefinition(
-                    final String oval_id,
-                    final int oval_version
-                    )
-    throws OvalRepositoryException
-    {
-        _LOG_.debug( "oval id=" + oval_id + ", version=" + oval_version );
-
-        DefinitionType  def = null;
-        try {
-            DAO<DefinitionType, String>  dao = _getDAO( DefinitionType.class );
-            Query<DefinitionType>  query = dao.createQuery();
-            query.filter( "oval_id", oval_id );
-            query.filter( "oval_version", oval_version );
-
-            def = dao.findOne( query );
-            if (def == null) {
-                _LOG_.debug( "no definition found: oval id=" + oval_id
-                                + ", version=" + oval_version);
-            }
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-        return def;
-    }
-
-
-
-    @Override
-    public DefinitionType getDefinition(
-                    final String oval_id
-                    )
-    throws OvalRepositoryException
-    {
-        _LOG_.debug( "oval ID: " + oval_id );
-
-        DefinitionType  def = null;
-        try {
-            DAO<DefinitionType, String>  dao = _getDAO( DefinitionType.class );
-            Query<DefinitionType>  query = dao.createQuery().filter( "oval_id", oval_id );
-            def = dao.findOne( query );
-
-            if (def == null) {
-                _LOG_.debug( "no definition found: oval ID=" + oval_id );
-            }
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-        return def;
-    }
+//    //==============================================================
+//    // oval-def:definition
+//    //==============================================================
+//
+//    /**
+//     */
+//    @Override
+//    public DefinitionType getDefinition(
+//                    final String oval_id,
+//                    final int oval_version
+//                    )
+//    throws OvalRepositoryException
+//    {
+//        _LOG_.debug( "oval id=" + oval_id + ", version=" + oval_version );
+//
+//        DefinitionType  def = null;
+//        try {
+//            DAO<DefinitionType, String>  dao = _getDAO( DefinitionType.class );
+//            Query<DefinitionType>  query = dao.createQuery();
+//            query.filter( "oval_id", oval_id );
+//            query.filter( "oval_version", oval_version );
+//
+//            def = dao.findOne( query );
+//            if (def == null) {
+//                _LOG_.debug( "no definition found: oval id=" + oval_id
+//                                + ", version=" + oval_version);
+//            }
+//        } catch (Exception ex) {
+//            throw new OvalRepositoryException( ex );
+//        }
+//
+//        return def;
+//    }
+//
+//
+//
+//    @Override
+//    public DefinitionType getDefinition(
+//                    final String oval_id
+//                    )
+//    throws OvalRepositoryException
+//    {
+//        _LOG_.debug( "oval ID: " + oval_id );
+//
+//        DefinitionType  def = null;
+//        try {
+//            DAO<DefinitionType, String>  dao = _getDAO( DefinitionType.class );
+//            Query<DefinitionType>  query = dao.createQuery().filter( "oval_id", oval_id );
+//            def = dao.findOne( query );
+//
+//            if (def == null) {
+//                _LOG_.debug( "no definition found: oval ID=" + oval_id );
+//            }
+//        } catch (Exception ex) {
+//            throw new OvalRepositoryException( ex );
+//        }
+//
+//        return def;
+//    }
 
 }
 // MongoOvalRepository
