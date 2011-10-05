@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.sc;
 
-import jp.go.aist.six.oval.model.OvalDocument;
+import jp.go.aist.six.oval.model.common.AbstractOvalDocument;
 import jp.go.aist.six.oval.model.common.GeneratorType;
 import com.google.code.morphia.annotations.Entity;
 
@@ -35,7 +35,7 @@ import com.google.code.morphia.annotations.Entity;
  */
 @Entity( "oval.s.oval_system_characteristics" )
 public class OvalSystemCharacteristics
-    extends OvalDocument
+    extends AbstractOvalDocument
 {
 
 //    private GeneratorType  generator;
@@ -241,4 +241,4 @@ public class OvalSystemCharacteristics
     }
 
 }
-// OvalSystemCharacteristics
+//OvalSystemCharacteristics

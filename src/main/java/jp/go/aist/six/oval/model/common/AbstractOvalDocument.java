@@ -18,39 +18,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model;
+package jp.go.aist.six.oval.model.common;
 
-import java.util.UUID;
-import jp.go.aist.six.oval.model.common.GeneratorType;
-import jp.go.aist.six.util.persist.Persistable;
-import com.google.code.morphia.annotations.Id;
-import com.google.code.morphia.annotations.PrePersist;
+import jp.go.aist.six.oval.model.OvalDocument;
 
 
 
 /**
- * A marker for all the OVAL Documents.
- *
- * <p>
- * This implementation of the schemaLocation property is a dirty hack.
- * Because the Spring OXM support for Castor does NOT provide the property.
- * </p>
+ * A base class for all the OVAL Document types.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class OvalDocument
-    implements OvalObject, Persistable<String>
+public abstract class AbstractOvalDocument
+    extends OvalDocument
 {
-
-    //MongoDB
-    @Id
-    private String  _id;
-
-
-    private String  schemaLocation;
-
 
     private GeneratorType  generator = new GeneratorType();
     //{1..1} / OvalDefinitions, OvalSystemCharacteristics, OvalResults
@@ -60,35 +43,17 @@ public abstract class OvalDocument
     /**
      * Constructor.
      */
-    public OvalDocument()
+    public AbstractOvalDocument()
     {
     }
 
 
 
-    public OvalDocument(
+    public AbstractOvalDocument(
                     final GeneratorType generator
                     )
     {
         setGenerator( generator );
-    }
-
-
-
-    /**
-     */
-    public void setSchemaLocation(
-                    final String schemaLocation
-                    )
-    {
-        this.schemaLocation = schemaLocation;
-    }
-
-
-    public String getSchemaLocation()
-    {
-        return this.schemaLocation;
-//        return (_schemaLocation == null ? RESULTS_SCHEMA_LOCATION : _schemaLocation);
     }
 
 
@@ -108,56 +73,5 @@ public abstract class OvalDocument
         return this.generator;
     }
 
-
-
-    //**************************************************************
-    //  MongoDB/Morphia Lifecycle
-    //**************************************************************
-
-    @SuppressWarnings( "unused" )
-    @PrePersist
-    private void _assignPersistentID()
-    {
-        String  pid = getPersistentID();
-        if (pid == null) {
-            pid = UUID.randomUUID().toString();
-            setPersistentID( pid );
-        }
-    }
-
-
-
-    //**************************************************************
-    //  Persistable
-    //**************************************************************
-
-//    @Override
-//    public synchronized String getPersistentID()
-//    {
-//        String  pid = super.getPersistentID();
-//        if (pid == null) {
-//            pid = UUID.randomUUID().toString();
-//            setPersistentID( pid );
-//        }
-//
-//        return pid;
-//    }
-
-
-    @Override
-    public void setPersistentID(
-                    final String pid
-                    )
-    {
-        this._id = pid;
-    }
-
-
-    @Override
-    public String getPersistentID()
-    {
-        return this._id;
-    }
-
 }
-// OvalDocument
+//AbstractOvalDocument
