@@ -261,8 +261,8 @@ public abstract class CoreTestBase
 
 
 
-                        /***  ***/
-
+//                        /***  ***/
+//
                         // def:7222, windows, vulnerability, CVE-2010-0176
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
@@ -270,42 +270,118 @@ public abstract class CoreTestBase
                             null,
                             "marshalled_oval5.9_def7222-5_v_windows_CVE-2010-0176.xml"
                         }
-                        ,
+//                        ,
+//
+//                        // def:7222, windows, vulnerability, CVE-2010-0176
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval5/oval5.10_def7222-5_v_windows_CVE-2010-0176.xml",
+//                            null,
+//                            "marshalled_oval5.10_def7222-5_v_windows_CVE-2010-0176.xml"
+//                        }
+//                        ,
+//
+//                        // debian, patch, def:7432 / OVAL 5.7, CVE-2010-0176, DSA-2027
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval5/oval5.7_def7432-3_p_debian5_DSA-2027.xml",
+//                            null,
+//                            "marshalled_oval5.7_def7432-3_p_debian5_DSA2027.xml"
+//                        }
+//                        ,
+//                        // debian, patch, def:7432 / OVAL 5.9, CVE-2010-0176, DSA-2027
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval5/oval5.9_def7432-3_p_debian5_DSA-2027.xml",
+//                            null,
+//                            "marshalled_oval5.9_def7432-3_p_debian5_DSA2027.xml"
+//                        }
+//                        ,
 
-                        // def:7222, windows, vulnerability, CVE-2010-0176
-                        {
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "test/resources/data/oval5/oval5.10_def7222-5_v_windows_CVE-2010-0176.xml",
-                            null,
-                            "marshalled_oval5.10_def7222-5_v_windows_CVE-2010-0176.xml"
-                        }
-                        ,
 
-                        // debian, patch, def:7432 / OVAL 5.7, CVE-2010-0176, DSA-2027
-                        {
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "test/resources/data/oval5/oval5.7_def7432-3_p_debian5_DSA-2027.xml",
-                            null,
-                            "marshalled_oval5.7_def7432-3_p_debian5_DSA2027.xml"
-                        }
-                        ,
-                        // debian, patch, def:7432 / OVAL 5.9, CVE-2010-0176, DSA-2027
-                        {
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "test/resources/data/oval5/oval5.9_def7432-3_p_debian5_DSA-2027.xml",
-                            null,
-                            "marshalled_oval5.9_def7432-3_p_debian5_DSA2027.xml"
-                        }
-                        ,
+                        /** Red Hat Errata System **/
 
-                        // OVAL5.3, def:20100332-301, patch, Red Hat Enterprise Linux
-                        // rpminfo
-                        {
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "test/resources/data/oval5/oval5.3_def20100332-301_p_rhel5_RHSA-2010-0332_CVE-2010-0176.xml",
-                            null,
-                            "marshalled_oval5.3_def20100332-301_p_rhel5_RHSA-2010-0332_CVE-2010-0176.xml"
-                        }
+//                        // OVAL5.3, def:20100332-301, patch, Red Hat Enterprise Linux
+//                        // rpminfo
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval5/oval5.3_def20100332-301_p_rhel5_RHSA-2010-0332_CVE-2010-0176.xml",
+//                            null,
+//                            "marshalled_oval5.3_def20100332-301_p_rhel5_RHSA-2010-0332_CVE-2010-0176.xml"
+//                        }
+//                        ,
+
+//                        // OVAL5.3, RHSA-2003, patch, Red Hat Enterprise Linux
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval5/com.redhat.rhsa-2003.xml",
+//                            null,
+//                            "marshalled_com.redhat.rhsa-2003.xml"
+//                        }
+//                        ,
+//                        // OVAL5.3, RHSA-2004, patch, Red Hat Enterprise Linux
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval5/com.redhat.rhsa-2004.xml",
+//                            null,
+//                            "marshalled_com.redhat.rhsa-2004.xml"
+//                        }
+//                        ,
+//                        // OVAL5.3, RHSA-2005, patch, Red Hat Enterprise Linux
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval5/com.redhat.rhsa-2005.xml",
+//                            null,
+//                            "marshalled_com.redhat.rhsa-2005.xml"
+//                        }
+//                        ,
+//                        // OVAL5.3, RHSA-2006, patch, Red Hat Enterprise Linux
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval5/com.redhat.rhsa-2006.xml",
+//                            null,
+//                            "marshalled_com.redhat.rhsa-2006.xml"
+//                        }
+//                        ,
+//                        // OVAL5.3, RHSA-2007, patch, Red Hat Enterprise Linux
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval5/com.redhat.rhsa-2007.xml",
+//                            null,
+//                            "marshalled_com.redhat.rhsa-2007.xml"
+//                        }
+//                        ,
+//                        // OVAL5.3, RHSA-2008, patch, Red Hat Enterprise Linux
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval5/com.redhat.rhsa-2008.xml",
+//                            null,
+//                            "marshalled_com.redhat.rhsa-2008.xml"
+//                        }
+//                        ,
+//                        // OVAL5.3, RHSA-2009, patch, Red Hat Enterprise Linux
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval5/com.redhat.rhsa-2009.xml",
+//                            null,
+//                            "marshalled_com.redhat.rhsa-2009.xml"
+//                        }
+//                        ,
+//                        // OVAL5.3, RHSA-2010, patch, Red Hat Enterprise Linux
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval5/com.redhat.rhsa-2010.xml",
+//                            null,
+//                            "marshalled_com.redhat.rhsa-2010.xml"
+//                        }
+//                        ,
+//                        // OVAL5.3, RHSA-2011, patch, Red Hat Enterprise Linux
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/data/oval5/com.redhat.rhsa-2011.xml",
+//                            null,
+//                            "marshalled_com.redhat.rhsa-2011.xml"
+//                        }
 
 
 //                        // def, Windows 7, vulnerability, all
