@@ -18,27 +18,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.results;
+package jp.go.aist.six.oval.model.variables;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import jp.go.aist.six.oval.model.common.AbstractOvalDocument;
 import jp.go.aist.six.oval.model.common.GeneratorType;
-import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import com.google.code.morphia.annotations.Entity;
 
 
 
 /**
- * The OvalResults represents an OVAL Results Document.
+ * The OvalVariables is an OVAL Variable Document.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-@Entity( "oval.r.oval_results" )
-public class OvalResults
+@Entity( "oval.v.oval_variables" )
+public class OvalVariables
     extends AbstractOvalDocument
 {
 
@@ -46,33 +42,20 @@ public class OvalResults
 //    //{1..1}
 
 
-    private DefaultDirectivesType  directives = new DefaultDirectivesType();
-    //{1..1}
-
-
-    private final Collection<ClassDirectivesType>  class_directives = new ArrayList<ClassDirectivesType>();
-    //{0..5}
-
-
-//    @Reference
-    private OvalDefinitions  oval_definitions;
+    private VariablesType  variables;
     //{0..1}
-
-
-    private ResultsType  results;
-    //{1..1}
 
 
 
     /**
      * Constructor.
      */
-    public OvalResults()
+    public OvalVariables()
     {
     }
 
 
-    public OvalResults(
+    public OvalVariables(
                     final GeneratorType generator
                     )
     {
@@ -80,167 +63,21 @@ public class OvalResults
     }
 
 
-//    public OvalResults(
-//                    final Generator generator,
-//                    final DefaultDirectives directives,
-//                    final SystemResults results
-//                    )
-//    {
-//        setGenerator( generator );
-//        setDirectives( directives );
-//        setResults( results );
-//    }
-//
-//
-//    public OvalResults(
-//                    final Generator generator,
-//                    final DefaultDirectives directives,
-//                    final SystemResult[] results
-//                    )
-//    {
-//        setGenerator( generator );
-//        setDirectives( directives );
-//        setResults( new SystemResults( results ) );
-//    }
-
-
-
-
-//    /**
-//     */
-//    public void setGenerator(
-//                    final GeneratorType generator
-//                    )
-//    {
-//        this.generator = generator;
-//    }
-//
-//
-//    public GeneratorType getGenerator()
-//    {
-//        return this.generator;
-//    }
-
-
 
     /**
      */
-    public void setDirectives(
-                    final DefaultDirectivesType directives
+    public void setVariables(
+                    final VariablesType variables
                     )
     {
-        this.directives = directives;
+        this.variables = variables;
     }
 
 
-    public DefaultDirectivesType getDirectives()
+    public VariablesType getVariables()
     {
-        return this.directives;
+        return this.variables;
     }
-
-
-
-    public void setClassDirectives(
-                    final Collection<? extends ClassDirectivesType> classDirectives
-                    )
-    {
-        if (classDirectives != this.class_directives) {
-            this.class_directives.clear();
-            if (classDirectives != null  &&  classDirectives.size() > 0) {
-                this.class_directives.addAll( classDirectives );
-            }
-        }
-    }
-
-
-    public boolean addClassDirectives(
-                    final ClassDirectivesType classDirectives
-                    )
-    {
-        return this.class_directives.add( classDirectives );
-    }
-
-
-    public Collection<ClassDirectivesType> getClassDirectives()
-    {
-        return this.class_directives;
-    }
-
-
-    public Iterator<ClassDirectivesType> iterateClassDirectives()
-    {
-        return this.class_directives.iterator();
-    }
-
-
-
-    /**
-     */
-    public void setOvalDefinitions(
-                    final OvalDefinitions definitions
-                    )
-    {
-        this.oval_definitions = definitions;
-    }
-
-
-    public OvalDefinitions getOvalDefinitions()
-    {
-        return this.oval_definitions;
-    }
-
-
-    public OvalResults ovalDefinitions(
-                    final OvalDefinitions definitions
-                    )
-    {
-        setOvalDefinitions( definitions );
-        return this;
-    }
-
-
-
-    /**
-     */
-    public void setResults(
-                    final ResultsType results
-                    )
-    {
-        this.results = results;
-    }
-
-
-    public ResultsType getResults()
-    {
-        return this.results;
-    }
-
-
-    public OvalResults result(
-                    final SystemType system
-                    )
-    {
-        ResultsType  results = getResults();
-        if (results == null) {
-            results = new ResultsType();
-            setResults( results );
-        }
-        results.addSystem( system );
-
-        return this;
-    }
-
-
-
-    //**************************************************************
-    //  OvalDocument
-    //**************************************************************
-
-//    @Override
-//    public String getSchemaLocation()
-//    {
-//        return RESULTS_SCHEMA_LOCATION;
-//    }
 
 
 
@@ -251,13 +88,10 @@ public class OvalResults
     @Override
     public String toString()
     {
-        return "oval_results[generator=" + getGenerator()
-                        + ", directives=" + getDirectives()
-                        + ", class_directives=" + getClassDirectives()
-                        + ", oval_definitions=" + getOvalDefinitions()
-                        + ", results=" + getResults()
+        return "oval_variables[generator=" + getGenerator()
+                        + ", variables=" + getVariables()
                         + "]";
     }
 
 }
-//OvalResults
+//OvalVariables
