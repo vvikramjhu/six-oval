@@ -98,12 +98,12 @@ public class EntityItemEVRStringType
     }
 
 
-    //{required}
-    @Override
-    public DatatypeEnumeration getDatatype()
-    {
-        return FIXED_DATATYPE;
-    }
+//    //{required}
+//    @Override
+//    public DatatypeEnumeration getDatatype()
+//    {
+//        return FIXED_DATATYPE;
+//    }
 
 
 

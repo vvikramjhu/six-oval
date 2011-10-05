@@ -24,6 +24,7 @@ package jp.go.aist.six.oval.model;
 
 
 /**
+ * An OVAL platform component type.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

@@ -104,11 +104,11 @@ public class EntityStateIntType
     }
 
 
-    @Override
-    public DatatypeEnumeration getDatatype()
-    {
-        return FIXED_DATATYPE;
-    }
+//    @Override
+//    public DatatypeEnumeration getDatatype()
+//    {
+//        return FIXED_DATATYPE;
+//    }
 
 
 

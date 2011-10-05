@@ -112,5 +112,5 @@ public abstract class OvalEntityRefType
     }
 
 }
-// OvalEntityRef
+//OvalEntityRefType
 

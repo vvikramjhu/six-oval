@@ -25,7 +25,7 @@ package jp.go.aist.six.oval.model;
 
 
 /**
- * The RecurseDirection defines the direction to recurse,
+ * The RecurseDirectionEnumeration defines the direction to recurse,
  * either 'up' to parent directories, or 'down' into child directories.
  *
  * @author  Akihito Nakamura, AIST

@@ -24,10 +24,10 @@ package jp.go.aist.six.oval.model;
 
 
 /**
- * The OVAL Platform Type enumeration is a listing of platforms
+ * The OvalPlatformType enumeration is a listing of platforms
  * that OVAL supports at this time.
- * This list is not same as the Family enumeration defined in the "common" schema,
- * but all the platform-dependent namespaces.
+ * This list corresponds to the OVAL platform-dependent namespaces,
+ * but not to the Family enumeration defined in the "common" schema.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

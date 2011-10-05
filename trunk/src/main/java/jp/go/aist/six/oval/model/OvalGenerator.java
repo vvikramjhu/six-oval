@@ -31,8 +31,10 @@ import java.io.Serializable;
  * what tool compiled the document, and
  * what version of that tools was used.
  *
+ *<p>
  * This type is extracted from GeneratorType defined in the OVAL Common schema
  * to refer from the OVAL entities.
+ * </p>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$

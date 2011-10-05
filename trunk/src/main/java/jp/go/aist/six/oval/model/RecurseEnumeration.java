@@ -25,7 +25,7 @@ package jp.go.aist.six.oval.model;
 
 
 /**
- * The Recurse defines how to recurse into the path entity,
+ * The RecurseEnumeration defines how to recurse into the path entity,
  * in other words what to follow during recursion.
  *
  * @author  Akihito Nakamura, AIST

@@ -96,12 +96,12 @@ public class EntityStateVersionType
     }
 
 
-    //{required}
-    @Override
-    public DatatypeEnumeration getDatatype()
-    {
-        return FIXED_DATATYPE;
-    }
+//    //{required}
+//    @Override
+//    public DatatypeEnumeration getDatatype()
+//    {
+//        return FIXED_DATATYPE;
+//    }
 
 
 

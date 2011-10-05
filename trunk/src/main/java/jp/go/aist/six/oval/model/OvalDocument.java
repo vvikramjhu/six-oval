@@ -28,7 +28,7 @@ import com.google.code.morphia.annotations.PrePersist;
 
 
 /**
- * A marker class for all the OVAL Documents.
+ * A marker class for all the OVAL documents.
  *
  * <p>
  * IMPLEMENTATION NOTE:
