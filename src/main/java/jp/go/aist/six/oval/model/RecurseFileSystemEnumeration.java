@@ -25,7 +25,7 @@ package jp.go.aist.six.oval.model;
 
 
 /**
- * The RecurseFileSystem defines the file system limitation of any recursion,
+ * The RecurseFileSystemEnumeration defines the file system limitation of any recursion,
  * either 'local' limiting data collection to local file systems
  * (as opposed to file systems mounted from an external system),
  * or 'defined' to keep any recursion within the file system

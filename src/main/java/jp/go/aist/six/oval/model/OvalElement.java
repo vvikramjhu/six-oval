@@ -26,7 +26,7 @@ import com.google.code.morphia.annotations.Transient;
 
 
 /**
- * An OVAL entity or an object to refer an entity.
+ * An OVAL entity or an entity reference.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
