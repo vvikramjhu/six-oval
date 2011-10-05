@@ -18,81 +18,81 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.variables;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
 import jp.go.aist.six.oval.model.Container;
 
 
 
 /**
- * The Notes is a container for one or more note child elements.
+ * The VariablesType is a container for one or more variables.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class NotesType
-    extends Container<Note> //{1..*}
+public class VariablesType
+    extends Container<VariableType> //{1..*}
 {
 
-    private final Set<Note>  note = new HashSet<Note>();
+    private final Collection<VariableType>  variable = new ArrayList<VariableType>();
 
 
 
     /**
      * Constructor.
      */
-    public NotesType()
+    public VariablesType()
     {
     }
 
 
-//    public NotesType(
-//                    final Collection<String> notes
-//                    )
-//    {
-//        setNote( notes );
-//    }
-//
-//
-//    public NotesType(
-//                    final String[] notes
-//                    )
-//    {
-//        setNote( Arrays.asList( notes ) );
-//    }
+    public VariablesType(
+                    final Collection<VariableType> variableList
+                    )
+    {
+        setVariable( variableList );
+    }
+
+
+    public VariablesType(
+                    final VariableType[] variableList
+                    )
+    {
+        setVariable( Arrays.asList( variableList ) );
+    }
 
 
 
     /**
      */
-    public void setNote(
-                    final Collection<? extends Note> notes
+    public void setVariable(
+                    final Collection<? extends VariableType> variableList
                     )
     {
-        _setElement( notes );
+        _setElement( variableList );
     }
 
 
-    public boolean addNote(
-                    final Note note
+    public boolean addVariable(
+                    final VariableType variable
                     )
     {
-        return _addElement( note );
+        return _addElement( variable );
     }
 
 
-    public Collection<Note> getNote()
+    public Collection<VariableType> getVariable()
     {
         return _getElement();
     }
 
 
-    public Iterator<Note> iterateNote()
+    public Iterator<VariableType> iterateVariable()
     {
         return _iterateElement();
     }
@@ -104,10 +104,10 @@ public class NotesType
     //**************************************************************
 
     @Override
-    protected Collection<Note> _getElement()
+    protected Collection<VariableType> _getElement()
     {
-        return this.note;
+        return this.variable;
     }
 
 }
-// NotesType
+//VariablesType

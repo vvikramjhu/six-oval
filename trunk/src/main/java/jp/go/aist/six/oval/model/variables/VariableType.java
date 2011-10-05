@@ -18,32 +18,43 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.definitions;
+package jp.go.aist.six.oval.model.variables;
 
-import jp.go.aist.six.oval.model.CommentedOvalEntity;
-import jp.go.aist.six.oval.model.OvalEntityType;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
-import com.google.code.morphia.annotations.Entity;
 
 
 
 /**
- * The OVAL Variable describes different sources
- * for obtaining a value(s) for the variable.
- * There are currently three types of variables;
- * local, external, and constant.
+ * Each Variable object contains the associated datatype and value
+ * which will be substituted into the OVAL Definition
+ * that is referencing this specific variable.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-@Entity( "oval.d.variable" )
 public class VariableType
-    extends CommentedOvalEntity
+    implements OvalObject
 {
+
+    private String  id;
+    //{required}
+
 
     private DatatypeEnumeration  datatype;
     //{required}
+
+
+    private String  comment;
+    //{required}
+
+
+    private final Collection<String>  value = new ArrayList<String>();
+    //{1..*}
 
 
 
@@ -52,40 +63,33 @@ public class VariableType
      */
     public VariableType()
     {
-        this( null, 0 );
     }
 
 
     public VariableType(
                     final String id,
-                    final int version
-                    )
-    {
-        this( id, version, null );
-    }
-
-
-    public VariableType(
-                    final String id,
-                    final int version,
+                    final DatatypeEnumeration datatype,
                     final String comment
                     )
     {
-        this( id, version, comment, null );
+        setDatatype( datatype );
     }
 
 
-    public VariableType(
-                    final String id,
-                    final int version,
-                    final String comment,
-                    final DatatypeEnumeration datatype
+
+    /**
+     */
+    public void setID(
+                    final String id
                     )
     {
-        super( id, version, comment );
-        setDatatype( datatype );
+        this.id = id;
+    }
 
-        _oval_entity_type = OvalEntityType.variable;
+
+    public String getID()
+    {
+        return this.id;
     }
 
 
@@ -107,6 +111,51 @@ public class VariableType
 
 
 
+    /**
+     */
+    public void setComment(
+                    final String comment
+                    )
+    {
+        this.comment = comment;
+    }
+
+
+    public String getComment()
+    {
+        return this.comment;
+    }
+
+
+
+    /**
+     */
+    public void setValue(
+                    final Collection<String> valueList
+                    )
+    {
+        if (valueList != this.value) {
+            this.value.clear();
+            if (valueList != null  &&  valueList.size() > 0) {
+                this.value.addAll( valueList );
+            }
+        }
+    }
+
+
+    public Collection<String> getValue()
+    {
+        return this.value;
+    }
+
+
+    public Iterator<String> iterateValue()
+    {
+        return this.value.iterator();
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -114,9 +163,12 @@ public class VariableType
     @Override
     public String toString()
     {
-        return super.toString()
-                        + ", datatype=" + getDatatype();
+        return "[id=" + getID()
+                        + ", datatype=" + getDatatype()
+                        + ", comment=" + getComment()
+                        + ", valeu=" + getValue()
+                        ;
     }
 
 }
-// VariableType
+//VariableType
