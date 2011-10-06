@@ -18,9 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.unix;
 
 import jp.go.aist.six.oval.model.AbstractFileBehaviors;
+import jp.go.aist.six.oval.model.RecurseEnumeration;
 
 
 
@@ -39,12 +40,34 @@ public class FileBehaviors
 //    NOTE: AbstractBehaviors & AbstractFileBehaviors are distilled.
 
 
+    private RecurseEnumeration  recurse;
+    //{optional, default="symlinks and directories"}
+
+
+
 
     /**
      * Constructor.
      */
     public FileBehaviors()
     {
+    }
+
+
+
+    /**
+     */
+    public void setRecurse(
+                    final RecurseEnumeration recurse
+                    )
+    {
+        this.recurse = recurse;
+    }
+
+
+    public RecurseEnumeration getRecurse()
+    {
+        return this.recurse;
     }
 
 
@@ -73,5 +96,15 @@ public class FileBehaviors
         return super.equals( obj );
     }
 
+
+
+    @Override
+    public String toString()
+    {
+        return super.toString()
+                        + ", recurse=" + getRecurse()
+                        ;
+    }
+
 }
-// FileBehaviors
+//FileBehaviors

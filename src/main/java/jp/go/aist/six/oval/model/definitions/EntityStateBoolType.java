@@ -25,28 +25,26 @@ import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 /**
- * The EntityStateInt type is extended by the entities
- * of an individual OVAL State.
- * This specific type describes simple integer data.
+ * The EntityStateBoolType is extended by the entities of an individual OVAL State.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateIntType
+public class EntityStateBoolType
     extends EntityStateSimpleBaseType
 {
 
     public static final DatatypeEnumeration  FIXED_DATATYPE =
-        DatatypeEnumeration.INT;
-    //{required, fixed="int"}
+        DatatypeEnumeration.BOOLEAN;
+    //{required, fixed="boolean"}
 
 
 
     /**
      * Constructor.
      */
-    public  EntityStateIntType()
+    public  EntityStateBoolType()
     {
     }
 
@@ -78,7 +76,7 @@ public class EntityStateIntType
 //    }
 
 
-    public EntityStateIntType(
+    public EntityStateBoolType(
                     final int data
                     )
     {
@@ -133,7 +131,7 @@ public class EntityStateIntType
             return true;
         }
 
-        if (!(obj instanceof EntityStateIntType)) {
+        if (!(obj instanceof EntityStateBoolType)) {
             return false;
         }
 
@@ -149,4 +147,4 @@ public class EntityStateIntType
 //    }
 
 }
-// EntityStateIntType
+// EntityStateBoolType
