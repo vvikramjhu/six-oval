@@ -140,6 +140,8 @@ public class OvalResults
 
 
 
+    /**
+     */
     public void setClassDirectives(
                     final Collection<? extends ClassDirectivesType> classDirectives
                     )
