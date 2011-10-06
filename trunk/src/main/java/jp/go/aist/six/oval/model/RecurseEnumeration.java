@@ -22,8 +22,6 @@ package jp.go.aist.six.oval.model;
 
 
 
-
-
 /**
  * The RecurseEnumeration defines how to recurse into the path entity,
  * in other words what to follow during recursion.
@@ -36,7 +34,10 @@ public enum RecurseEnumeration
     implements OvalEnumeration
 {
 
+    NONE                     ( "none" ),
+    FILES                    ( "files" ),
     DIRECTORIES              ( "directories" ),
+    FILES_AND_DIRECTORIES    ( "files and directories" ),
     SYMLINKS                 ( "symlinks" ),
     SYMLINKS_AND_DIRECTORIES ( "symlinks and directories" );
 
