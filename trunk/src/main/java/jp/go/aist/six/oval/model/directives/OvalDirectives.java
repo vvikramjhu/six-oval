@@ -18,44 +18,50 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.variables;
+package jp.go.aist.six.oval.model.directives;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.common.AbstractOvalDocument;
 import jp.go.aist.six.oval.model.common.GeneratorType;
+import jp.go.aist.six.oval.model.results.ClassDirectivesType;
+import jp.go.aist.six.oval.model.results.DefaultDirectivesType;
 import com.google.code.morphia.annotations.Entity;
 
 
 
 /**
- * The OvalVariables is an OVAL Variable Document.
+ * The OvalDirectives is an OVAL Directive Document.
+ * Its purpose is to bind together the generator and the set of directives contained in the document.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-@Entity( "oval.v.oval_variables" )
-public class OvalVariables
+@Entity( "oval.directives.oval_directives" )
+public class OvalDirectives
     extends AbstractOvalDocument
 {
 
-//    private GeneratorType  generator = new GeneratorType();
-//    //{1..1}
+    private DefaultDirectivesType  directives;
+    //{1..1}
 
 
-    private VariablesType  variables;
-    //{0..1}
+    private final Collection<ClassDirectivesType>  class_directives = new ArrayList<ClassDirectivesType>();
+    //{1..5}
 
 
 
     /**
      * Constructor.
      */
-    public OvalVariables()
+    public OvalDirectives()
     {
     }
 
 
-    public OvalVariables(
+    public OvalDirectives(
                     final GeneratorType generator
                     )
     {
@@ -66,17 +72,45 @@ public class OvalVariables
 
     /**
      */
-    public void setVariables(
-                    final VariablesType variables
+    public void setDirectives(
+                    final DefaultDirectivesType variables
                     )
     {
-        this.variables = variables;
+        this.directives = variables;
     }
 
 
-    public VariablesType getVariables()
+    public DefaultDirectivesType getDirectives()
     {
-        return this.variables;
+        return this.directives;
+    }
+
+
+
+    /**
+     */
+    public void setClassDirectives(
+                    final Collection<? extends ClassDirectivesType> classDirectives
+                    )
+    {
+        if (classDirectives != this.class_directives) {
+            this.class_directives.clear();
+            if (classDirectives != null  &&  classDirectives.size() > 0) {
+                this.class_directives.addAll( classDirectives );
+            }
+        }
+    }
+
+
+    public Collection<ClassDirectivesType> getClassDirectives()
+    {
+        return this.class_directives;
+    }
+
+
+    public Iterator<ClassDirectivesType> iterateClassDirectives()
+    {
+        return this.class_directives.iterator();
     }
 
 
@@ -88,10 +122,11 @@ public class OvalVariables
     @Override
     public String toString()
     {
-        return "oval_variables[generator=" + getGenerator()
-                        + ", variables=" + getVariables()
+        return "oval_directives[generator=" + getGenerator()
+                        + ", directives=" + getDirectives()
+                        + ", class_directives=" + getDirectives()
                         + "]";
     }
 
 }
-//OvalVariables
+//OvalDirectives
