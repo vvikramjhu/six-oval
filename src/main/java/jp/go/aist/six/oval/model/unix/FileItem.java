@@ -22,77 +22,76 @@ package jp.go.aist.six.oval.model.unix;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
-import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
-import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
-import jp.go.aist.six.oval.model.definitions.StateType;
+import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
+import jp.go.aist.six.oval.model.sc.EntityItemIntType;
+import jp.go.aist.six.oval.model.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.sc.ItemType;
+import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 
 /**
- * The file state defines the different metadata associate with a UNIX file.
+ * The file item holds information about the individual files found on a system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class FileState
-    extends StateType
+public class FileItem
+    extends ItemType
 {
 
     //{0..1}
-    private EntityStateStringType    filepath;
-    private EntityStateStringType    path;
-    private EntityStateStringType    filename;
-    private EntityStateStringType    type;
-    private EntityStateIntType       group_id;
-    private EntityStateIntType       user_id;
-    private EntityStateIntType       a_time;
-    private EntityStateIntType       c_time;
-    private EntityStateIntType       m_time;
-    private EntityStateIntType       size;
+    private EntityItemStringType    filepath;
+    private EntityItemStringType    path;
+    private EntityItemStringType    filename;
+    private EntityItemStringType    type;
+    private EntityItemIntType       group_id;
+    private EntityItemIntType       user_id;
+    private EntityItemIntType       a_time;
+    private EntityItemIntType       c_time;
+    private EntityItemIntType       m_time;
+    private EntityItemIntType       size;
 
-    private EntityStateBoolType       suid;
-    private EntityStateBoolType       sgid;
-    private EntityStateBoolType       sticky;
-    private EntityStateBoolType       uread;
-    private EntityStateBoolType       uwrite;
-    private EntityStateBoolType       uexec;
-    private EntityStateBoolType       gread;
-    private EntityStateBoolType       gwrite;
-    private EntityStateBoolType       gexec;
-    private EntityStateBoolType       oread;
-    private EntityStateBoolType       owrite;
-    private EntityStateBoolType       oexec;
-    private EntityStateBoolType       has_extended_acl;
+    private EntityItemBoolType       suid;
+    private EntityItemBoolType       sgid;
+    private EntityItemBoolType       sticky;
+    private EntityItemBoolType       uread;
+    private EntityItemBoolType       uwrite;
+    private EntityItemBoolType       uexec;
+    private EntityItemBoolType       gread;
+    private EntityItemBoolType       gwrite;
+    private EntityItemBoolType       gexec;
+    private EntityItemBoolType       oread;
+    private EntityItemBoolType       owrite;
+    private EntityItemBoolType       oexec;
+    private EntityItemBoolType       has_extended_acl;
 
 
 
     /**
      * Constructor.
      */
-    public FileState()
+    public FileItem()
     {
-        this( null, 0 );
+        this( 0 );
     }
 
 
-    public FileState(
-                    final String id,
-                    final int version
+    public FileItem(
+                    final int id
                     )
     {
-        this( id, version, null );
+        this( id, null );
     }
 
 
-    public FileState(
-                    final String id,
-                    final int version,
-                    final String comment
+    public FileItem(
+                    final int id,
+                    final StatusEnumeration status
                     )
     {
-        super( id, version, comment );
+        super( id, status );
 
         _oval_platform_type = OvalPlatformType.unix;
         _oval_component_type = OvalComponentType.file;
@@ -103,25 +102,16 @@ public class FileState
     /**
      */
     public void setFilepath(
-                    final EntityStateStringType filepath
+                    final EntityItemStringType filepath
                     )
     {
         this.filepath = filepath;
     }
 
 
-    public EntityStateStringType getFilepath()
+    public EntityItemStringType getFilepath()
     {
         return this.filepath;
-    }
-
-
-    public FileState filepath(
-                    final EntityStateStringType filepath
-                    )
-    {
-        setFilepath( filepath );
-        return this;
     }
 
 
@@ -129,25 +119,16 @@ public class FileState
     /**
      */
     public void setPath(
-                    final EntityStateStringType path
+                    final EntityItemStringType path
                     )
     {
         this.path = path;
     }
 
 
-    public EntityStateStringType getPath()
+    public EntityItemStringType getPath()
     {
         return this.path;
-    }
-
-
-    public FileState path(
-                    final EntityStateStringType path
-                    )
-    {
-        setPath( path );
-        return this;
     }
 
 
@@ -155,25 +136,16 @@ public class FileState
     /**
      */
     public void setFilename(
-                    final EntityStateStringType filename
+                    final EntityItemStringType filename
                     )
     {
         this.filename = filename;
     }
 
 
-    public EntityStateStringType getFilename()
+    public EntityItemStringType getFilename()
     {
         return this.filename;
-    }
-
-
-    public FileState filename(
-                    final EntityStateStringType filename
-                    )
-    {
-        setFilename( filename );
-        return this;
     }
 
 
@@ -181,14 +153,14 @@ public class FileState
     /**
      */
     public void setType(
-                    final EntityStateStringType type
+                    final EntityItemStringType type
                     )
     {
         this.type = type;
     }
 
 
-    public EntityStateStringType getType()
+    public EntityItemStringType getType()
     {
         return this.type;
     }
@@ -198,21 +170,21 @@ public class FileState
     /**
      */
     public void setGroupID(
-                    final EntityStateIntType group_id
+                    final EntityItemIntType group_id
                     )
     {
         this.group_id = group_id;
     }
 
 
-    public EntityStateIntType getGroupID()
+    public EntityItemIntType getGroupID()
     {
         return this.group_id;
     }
 
 
-    public FileState groupID(
-                    final EntityStateIntType group_id
+    public FileItem groupID(
+                    final EntityItemIntType group_id
                     )
     {
         setGroupID( group_id );
@@ -224,25 +196,16 @@ public class FileState
     /**
      */
     public void setUserID(
-                    final EntityStateIntType user_id
+                    final EntityItemIntType user_id
                     )
     {
         this.user_id = user_id;
     }
 
 
-    public EntityStateIntType getUserID()
+    public EntityItemIntType getUserID()
     {
         return this.user_id;
-    }
-
-
-    public FileState userID(
-                    final EntityStateIntType user_id
-                    )
-    {
-        setUserID( user_id );
-        return this;
     }
 
 
@@ -250,14 +213,14 @@ public class FileState
     /**
      */
     public void setATime(
-                    final EntityStateIntType a_time
+                    final EntityItemIntType a_time
                     )
     {
         this.a_time = a_time;
     }
 
 
-    public EntityStateIntType getATime()
+    public EntityItemIntType getATime()
     {
         return this.a_time;
     }
@@ -267,14 +230,14 @@ public class FileState
     /**
      */
     public void setCTime(
-                    final EntityStateIntType c_time
+                    final EntityItemIntType c_time
                     )
     {
         this.c_time = c_time;
     }
 
 
-    public EntityStateIntType getCTime()
+    public EntityItemIntType getCTime()
     {
         return this.c_time;
     }
@@ -284,14 +247,14 @@ public class FileState
     /**
      */
     public void setMTime(
-                    final EntityStateIntType m_time
+                    final EntityItemIntType m_time
                     )
     {
         this.m_time = m_time;
     }
 
 
-    public EntityStateIntType getMTime()
+    public EntityItemIntType getMTime()
     {
         return this.m_time;
     }
@@ -301,14 +264,14 @@ public class FileState
     /**
      */
     public void setSize(
-                    final EntityStateIntType size
+                    final EntityItemIntType size
                     )
     {
         this.size = size;
     }
 
 
-    public EntityStateIntType getSize()
+    public EntityItemIntType getSize()
     {
         return this.size;
     }
@@ -318,14 +281,14 @@ public class FileState
     /**
      */
     public void setSuID(
-                    final EntityStateBoolType suid
+                    final EntityItemBoolType suid
                     )
     {
         this.suid= suid;
     }
 
 
-    public EntityStateBoolType getSuID()
+    public EntityItemBoolType getSuID()
     {
         return this.suid;
     }
@@ -335,14 +298,14 @@ public class FileState
     /**
      */
     public void setSgID(
-                    final EntityStateBoolType sgid
+                    final EntityItemBoolType sgid
                     )
     {
         this.sgid= sgid;
     }
 
 
-    public EntityStateBoolType getSgID()
+    public EntityItemBoolType getSgID()
     {
         return this.sgid;
     }
@@ -352,14 +315,14 @@ public class FileState
     /**
      */
     public void setSticky(
-                    final EntityStateBoolType sticky
+                    final EntityItemBoolType sticky
                     )
     {
         this.sticky = sticky;
     }
 
 
-    public EntityStateBoolType getSticky()
+    public EntityItemBoolType getSticky()
     {
         return this.sticky;
     }
@@ -369,14 +332,14 @@ public class FileState
     /**
      */
     public void setURead(
-                    final EntityStateBoolType uread
+                    final EntityItemBoolType uread
                     )
     {
         this.uread = uread;
     }
 
 
-    public EntityStateBoolType getURead()
+    public EntityItemBoolType getURead()
     {
         return this.uread;
     }
@@ -385,14 +348,14 @@ public class FileState
     /**
      */
     public void setUWrite(
-                    final EntityStateBoolType uwrite
+                    final EntityItemBoolType uwrite
                     )
     {
         this.uwrite = uwrite;
     }
 
 
-    public EntityStateBoolType getUWrite()
+    public EntityItemBoolType getUWrite()
     {
         return this.uwrite;
     }
@@ -402,14 +365,14 @@ public class FileState
     /**
      */
     public void setUExec(
-                    final EntityStateBoolType uexec
+                    final EntityItemBoolType uexec
                     )
     {
         this.uexec = uexec;
     }
 
 
-    public EntityStateBoolType getUExec()
+    public EntityItemBoolType getUExec()
     {
         return this.uexec;
     }
@@ -419,14 +382,14 @@ public class FileState
     /**
      */
     public void setGRead(
-                    final EntityStateBoolType gread
+                    final EntityItemBoolType gread
                     )
     {
         this.gread = gread;
     }
 
 
-    public EntityStateBoolType getGRead()
+    public EntityItemBoolType getGRead()
     {
         return this.gread;
     }
@@ -435,14 +398,14 @@ public class FileState
     /**
      */
     public void setGWrite(
-                    final EntityStateBoolType gwrite
+                    final EntityItemBoolType gwrite
                     )
     {
         this.uwrite = gwrite;
     }
 
 
-    public EntityStateBoolType getGWrite()
+    public EntityItemBoolType getGWrite()
     {
         return this.gwrite;
     }
@@ -452,14 +415,14 @@ public class FileState
     /**
      */
     public void setGExec(
-                    final EntityStateBoolType gexec
+                    final EntityItemBoolType gexec
                     )
     {
         this.gexec = gexec;
     }
 
 
-    public EntityStateBoolType getGExec()
+    public EntityItemBoolType getGExec()
     {
         return this.gexec;
     }
@@ -469,14 +432,14 @@ public class FileState
     /**
      */
     public void setORead(
-                    final EntityStateBoolType oread
+                    final EntityItemBoolType oread
                     )
     {
         this.oread = oread;
     }
 
 
-    public EntityStateBoolType getORead()
+    public EntityItemBoolType getORead()
     {
         return this.oread;
     }
@@ -485,14 +448,14 @@ public class FileState
     /**
      */
     public void setOWrite(
-                    final EntityStateBoolType owrite
+                    final EntityItemBoolType owrite
                     )
     {
         this.owrite = owrite;
     }
 
 
-    public EntityStateBoolType getOWrite()
+    public EntityItemBoolType getOWrite()
     {
         return this.owrite;
     }
@@ -502,14 +465,14 @@ public class FileState
     /**
      */
     public void setOExec(
-                    final EntityStateBoolType oexec
+                    final EntityItemBoolType oexec
                     )
     {
         this.oexec = oexec;
     }
 
 
-    public EntityStateBoolType getOExec()
+    public EntityItemBoolType getOExec()
     {
         return this.oexec;
     }
@@ -519,14 +482,14 @@ public class FileState
     /**
      */
     public void setHasExtendedAcl(
-                    final EntityStateBoolType has_extended_acl
+                    final EntityItemBoolType has_extended_acl
                     )
     {
         this.has_extended_acl = has_extended_acl;
     }
 
 
-    public EntityStateBoolType getHasExtendedAcl()
+    public EntityItemBoolType getHasExtendedAcl()
     {
         return this.has_extended_acl;
     }
@@ -551,7 +514,7 @@ public class FileState
                     final Object obj
                     )
     {
-        if (!(obj instanceof FileState)) {
+        if (!(obj instanceof FileItem)) {
             return false;
         }
 
@@ -563,7 +526,7 @@ public class FileState
     @Override
     public String toString()
     {
-        return "file_state[" + super.toString()
+        return "file_item[" + super.toString()
              + ", filepath="            + getFilepath()
              + ", path="                + getPath()
              + ", filename="            + getFilename()
@@ -591,4 +554,4 @@ public class FileState
     }
 
 }
-//FileState
+//FileItem
