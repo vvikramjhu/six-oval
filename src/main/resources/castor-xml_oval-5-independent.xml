@@ -21,87 +21,6 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <!-- ******************************************************* -->
-    <!-- family                                                  -->
-    <!-- ******************************************************* -->
-
-    <class name="jp.go.aist.six.oval.model.independent.FamilyTest"
-        extends="jp.go.aist.six.oval.model.definitions.TestType">
-        <map-to xml="family_test"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
-            ns-prefix=""/>
-
-        <field name="object" 
-            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
-            <bind-xml name="object" node="element"/>
-        </field>
-        
-        <field name="state" 
-            type="jp.go.aist.six.oval.model.definitions.StateRefType"
-            collection="collection">
-            <bind-xml name="state" node="element"/>
-        </field>
-    </class>
-
-
-
-    <class name="jp.go.aist.six.oval.model.independent.FamilyObject"
-        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
-        <map-to xml="family_object"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
-            ns-prefix=""/>
-    </class>
-
-
-
-    <class name="jp.go.aist.six.oval.model.independent.FamilyState"
-        extends="jp.go.aist.six.oval.model.definitions.StateType">
-        <map-to xml="family_state"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
-            ns-prefix=""/>
-
-        <field name="family" 
-            type="jp.go.aist.six.oval.model.independent.EntityStateFamilyType">
-            <bind-xml name="family" node="element"/>
-        </field>
-    </class>
-
-
-
-    <class name="jp.go.aist.six.oval.model.independent.EntityStateFamilyType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
-
-<!--
-        <field name="content"
-            type="string"
-            handler="jp.go.aist.six.oval.core.xml.FamilyEnumerationHandler">
-            <bind-xml node="text"/>
-        </field>
--->
-    </class>
-
-
-
-    <class name ="jp.go.aist.six.oval.model.independent.FamilyItem"
-        extends="jp.go.aist.six.oval.model.sc.ItemType">
-        <map-to xml="family_item"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent"
-            ns-prefix=""/>
-
-        <field name="family" 
-            type="jp.go.aist.six.oval.model.independent.EntityItemFamilyType">
-            <bind-xml name="family" node="element"/>
-        </field>
-    </class>
-
-
-
-    <class name="jp.go.aist.six.oval.model.independent.EntityItemFamilyType"
-        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
-    </class>
-
-
-
-    <!-- ******************************************************* -->
     <!-- environmentvariable58                                   -->
     <!-- ******************************************************* -->
 
@@ -199,6 +118,87 @@
             type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType">
             <bind-xml name="value" node="element"/>
         </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- family                                                  -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.independent.FamilyTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="family_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.independent.FamilyObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="family_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.independent.FamilyState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="family_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="family" 
+            type="jp.go.aist.six.oval.model.independent.EntityStateFamilyType">
+            <bind-xml name="family" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.independent.EntityStateFamilyType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+
+<!--
+        <field name="content"
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.FamilyEnumerationHandler">
+            <bind-xml node="text"/>
+        </field>
+-->
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.independent.FamilyItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="family_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent"
+            ns-prefix=""/>
+
+        <field name="family" 
+            type="jp.go.aist.six.oval.model.independent.EntityItemFamilyType">
+            <bind-xml name="family" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.independent.EntityItemFamilyType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
 
 
