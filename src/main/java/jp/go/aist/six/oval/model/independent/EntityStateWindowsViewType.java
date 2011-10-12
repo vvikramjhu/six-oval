@@ -55,7 +55,7 @@ public class EntityStateWindowsViewType
                     )
     {
         if (content != null) {
-            WindowsViewTypeEnumeration.fromValue( content );
+            WindowsViewEnumeration.fromValue( content );
         }
 
         super.setContent( content );

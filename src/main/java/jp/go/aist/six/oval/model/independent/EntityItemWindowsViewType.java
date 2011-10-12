@@ -20,32 +20,31 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.common.FamilyEnumeration;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 
 
 
 /**
- * The EntityItemFamily defines a string entity value
- * that is restricted to a set of enumerations.
+ * The EntityItemWindowsViewType restricts a string value
+ * to a specific set of values: 32-bit and 64-bit.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemFamilyType
+public class EntityItemWindowsViewType
     extends EntityItemStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemFamilyType()
+    public EntityItemWindowsViewType()
     {
     }
 
 
-    public EntityItemFamilyType(
+    public EntityItemWindowsViewType(
                     final String content
                     )
     {
@@ -54,8 +53,8 @@ public class EntityItemFamilyType
 
 
 
-    public EntityItemFamilyType(
-                    final FamilyEnumeration content
+    public EntityItemWindowsViewType(
+                    final WindowsViewEnumeration content
                     )
     {
         super( (content == null ? null : content.value()) );
@@ -74,7 +73,7 @@ public class EntityItemFamilyType
     {
         if (content != null) {
             //validation
-            FamilyEnumeration.fromValue( content );
+            WindowsViewEnumeration.fromValue( content );
         }
 
         super.setContent( content );
@@ -103,7 +102,7 @@ public class EntityItemFamilyType
             return true;
         }
 
-        if (!(obj instanceof EntityItemFamilyType)) {
+        if (!(obj instanceof EntityItemWindowsViewType)) {
             return false;
         }
 
@@ -111,4 +110,4 @@ public class EntityItemFamilyType
     }
 
 }
-// EntityItemFamilyType
+//EntityItemWindowsViewType
