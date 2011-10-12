@@ -36,6 +36,7 @@ public enum OvalComponentType
     // independent //
     environmentvariable58,
     family,
+    filehash,
     textfilecontent,
     textfilecontent54,
     unknown,

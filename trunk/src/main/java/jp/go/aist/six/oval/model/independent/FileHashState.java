@@ -22,28 +22,29 @@ package jp.go.aist.six.oval.model.independent;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The textfilecontent state contains entities that are used to check
- * the file path and name, as well as the line in question and
- * the value of the specific subexpression.
+ * The filehash state contains entities that are used to check the file path,
+ * name, and the different hashes associated with a specific file.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.4:
- *             Replaced by the textfilecontent54 state and
+ * @deprecated Deprecated as of version 5.8:
+ *             Replaced by the filehash58 state and
  *             will be removed in a future version of the language.
  */
 @Deprecated
-public class TextfileContentState
+public class FileHashState
     extends StateType
 {
+
+    private EntityStateStringType  filepath;
+    //{0..1}
 
     private EntityStateStringType  path;
     //{0..1}
@@ -51,10 +52,10 @@ public class TextfileContentState
     private EntityStateStringType  filename;
     //{0..1}
 
-    private EntityStateStringType  line;
+    private EntityStateStringType  md5;
     //{0..1}
 
-    private EntityStateAnySimpleType  subexpression;
+    private EntityStateStringType  sha1;
     //{0..1}
 
 
@@ -66,13 +67,13 @@ public class TextfileContentState
     /**
      * Constructor.
      */
-    public TextfileContentState()
+    public FileHashState()
     {
         this( null, 0 );
     }
 
 
-    public TextfileContentState(
+    public FileHashState(
                     final String id,
                     final int version
                     )
@@ -81,7 +82,7 @@ public class TextfileContentState
     }
 
 
-    public TextfileContentState(
+    public FileHashState(
                     final String id,
                     final int version,
                     final String comment
@@ -90,7 +91,24 @@ public class TextfileContentState
         super( id, version, comment );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.textfilecontent;
+        _oval_component_type = OvalComponentType.filehash;
+    }
+
+
+
+    /**
+     */
+    public void setFilepath(
+                    final EntityStateStringType filepath
+                    )
+    {
+        this.filepath = filepath;
+    }
+
+
+    public EntityStateStringType getFilepath()
+    {
+        return this.filepath;
     }
 
 
@@ -131,34 +149,34 @@ public class TextfileContentState
 
     /**
      */
-    public void setLine(
-                    final EntityStateStringType line
+    public void setMd5(
+                    final EntityStateStringType md5
                     )
     {
-        this.line = line;
+        this.md5 = md5;
     }
 
 
-    public EntityStateStringType getLine()
+    public EntityStateStringType getMd5()
     {
-        return this.line;
+        return this.md5;
     }
 
 
 
     /**
      */
-    public void setSubexpression(
-                    final EntityStateAnySimpleType subexpression
+    public void setCha1(
+                    final EntityStateStringType sha1
                     )
     {
-        this.subexpression = subexpression;
+        this.sha1 = sha1;
     }
 
 
-    public EntityStateAnySimpleType getSubexpression()
+    public EntityStateStringType getSha1()
     {
-        return this.subexpression;
+        return this.sha1;
     }
 
 
@@ -197,7 +215,7 @@ public class TextfileContentState
                     final Object obj
                     )
     {
-        if (!(obj instanceof TextfileContentState)) {
+        if (!(obj instanceof FileHashState)) {
             return false;
         }
 
@@ -209,14 +227,15 @@ public class TextfileContentState
     @Override
     public String toString()
     {
-        return "textfilecontent_state[" + super.toString()
+        return "filehash_state[" + super.toString()
+                        + ", filepath="     + getFilepath()
                         + ", path="         + getPath()
                         + ", filename="     + getFilename()
-                        + ", line="         + getLine()
-                        + ", subexpression=" + getSubexpression()
+                        + ", md5="          + getMd5()
+                        + ", sha1="         + getSha1()
                         + ", windows_view=" + getWindowsView()
                         + "]";
     }
 
 }
-// TextFileContentState
+// FileHashState

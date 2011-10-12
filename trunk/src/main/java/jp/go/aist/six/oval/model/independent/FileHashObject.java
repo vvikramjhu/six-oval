@@ -29,18 +29,18 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The textfilecontent object is used by a text file content test
- * to define the specific line(s) of a file(s) to be evaluated.
+ * The filehash object is used by a file hash test to define
+ * the specific file(s) to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.4:
- *             Replaced by the textfilecontent54 object and
+ * @deprecated Deprecated as of version 5.8:
+ *             Replaced by the filehash58 object and
  *             will be removed in a future version of the language.
  */
 @Deprecated
-public class TextfileContentObject
+public class FileHashObject
     extends SystemObjectType
 {
     // XSD model:
@@ -48,42 +48,38 @@ public class TextfileContentObject
     //         set
     //         sequence(
     //                   behaviors
-    //                   path
-    //                   filename
-    //                   line
+    //                   choice(
+    //                           filepath
+    //                           sequence(
+    //                                     path
+    //                                     filename
+    //                           )
+    //                   )
     //          )
     // )
 
     private Set  set;
-    //{1..1}
-
 
     private FileBehaviors  behaviors;
-    //{0..1}
 
+    private EntityObjectStringType  filepath;
 
     private EntityObjectStringType  path;
-    //{1..1}
 
     private EntityObjectStringType  filename;
-    //{1..1}
-
-
-    private EntityObjectStringType  line;
-    //{1..1}
 
 
 
     /**
      * Constructor.
      */
-    public TextfileContentObject()
+    public FileHashObject()
     {
         this( null, 0 );
     }
 
 
-    public TextfileContentObject(
+    public FileHashObject(
                     final String id,
                     final int version
                     )
@@ -92,7 +88,7 @@ public class TextfileContentObject
     }
 
 
-    public TextfileContentObject(
+    public FileHashObject(
                     final String id,
                     final int version,
                     final String comment
@@ -101,43 +97,8 @@ public class TextfileContentObject
         super( id, version, comment );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.textfilecontent;
+        _oval_component_type = OvalComponentType.filehash;
     }
-
-
-//    public TextfileContent54Object(
-//                    final String id,
-//                    final int version,
-//                    final String path,
-//                    final String filename,
-//                    final String pattern,
-//                    final String instance
-//                    )
-//    {
-//        this( id, version,
-//                        (path == null     ? null : new EntityObjectStringType( path )),
-//                        (filename == null ? null : new EntityObjectStringType( filename )),
-//                        (pattern == null  ? null : new EntityObjectStringType( pattern )),
-//                        (instance == null ? null : new EntityObjectIntType( instance ))
-//                        );
-//    }
-//
-//
-//    public TextfileContent54Object(
-//                    final String id,
-//                    final int version,
-//                    final EntityObjectStringType path,
-//                    final EntityObjectStringType filename,
-//                    final EntityObjectStringType pattern,
-//                    final EntityObjectIntType instance
-//                    )
-//    {
-//        super( id, version );
-//        setPath( path );
-//        setFilename( filename );
-//        setPattern( pattern );
-//        setInstance( instance );
-//    }
 
 
 
@@ -211,17 +172,17 @@ public class TextfileContentObject
 
     /**
      */
-    public void setLine(
-                    final EntityObjectStringType line
+    public void setFilepath(
+                    final EntityObjectStringType filepath
                     )
     {
-        this.line = line;
+        this.filepath = filepath;
     }
 
 
-    public EntityObjectStringType getLine()
+    public EntityObjectStringType getFilepath()
     {
-        return this.line;
+        return this.filepath;
     }
 
 
@@ -243,7 +204,7 @@ public class TextfileContentObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof TextfileContentObject)) {
+        if (!(obj instanceof FileHashObject)) {
             return false;
         }
 
@@ -255,14 +216,14 @@ public class TextfileContentObject
     @Override
     public String toString()
     {
-        return "textfilecontent_object[" + super.toString()
-                        + ", set=" + getSet()
+        return "filehash_object[" + super.toString()
+                        + ", set="       + getSet()
                         + ", behaviors=" + getBehaviors()
-                        + ", path=" + getPath()
-                        + ", filename=" + getFilename()
-                        + ", line=" + getLine()
+                        + ", filepath="  + getFilepath()
+                        + ", path="      + getPath()
+                        + ", filename="  + getFilename()
                         + "]";
     }
 
 }
-// TextfileContentObject
+//FileHashObject

@@ -28,31 +28,30 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
- * The textfilecontent test is used to check the contents of a text file
- * (aka a configuration file) by looking at individual lines.
+ * The filehash test is used to check the hashes associated with a specified file.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.4:
- *             Replaced by the textfilecontent54 test and
+ * @deprecated Deprecated as of version 5.8:
+ *             Replaced by the filehash58 test and
  *             will be removed in a future version of the language.
  */
 @Deprecated
-public class TextfileContentTest
+public class FileHashTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public TextfileContentTest()
+    public FileHashTest()
     {
         this( null, 0 );
     }
 
 
-    public TextfileContentTest(
+    public FileHashTest(
                     final String id,
                     final int version
                     )
@@ -61,7 +60,7 @@ public class TextfileContentTest
     }
 
 
-    public TextfileContentTest(
+    public FileHashTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -71,22 +70,8 @@ public class TextfileContentTest
         super( id, version, comment, check );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.textfilecontent;
+        _oval_component_type = OvalComponentType.filehash;
     }
-
-
-//    public TextfileContent54Test(
-//                    final String id,
-//                    final int version,
-//                    final String comment,
-//                    final CheckEnumeration check,
-//                    final SystemObjectRefType object,
-//                    final StateRefType[] stateList
-//                    )
-//    {
-//        super( id, version, comment, check, object, stateList );
-//    }
-
 
 
 
@@ -107,7 +92,7 @@ public class TextfileContentTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof TextfileContentTest)) {
+        if (!(obj instanceof FileHashTest)) {
             return false;
         }
 
@@ -119,8 +104,8 @@ public class TextfileContentTest
     @Override
     public String toString()
     {
-        return "textfilecontent_test[" + super.toString() + "]";
+        return "filehash_test[" + super.toString() + "]";
     }
 
 }
-// TextfileContentTest
+//FileHashTest
