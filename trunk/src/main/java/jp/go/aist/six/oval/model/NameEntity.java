@@ -30,7 +30,8 @@ package jp.go.aist.six.oval.model;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class NameEntity
-    implements OvalObject, Comparable<NameEntity>
+    implements OvalObject
+//  implements Comparable<T> in class T
 {
 
     private String  name;
@@ -71,17 +72,17 @@ public abstract class NameEntity
 
 
 
-    //**************************************************************
-    //  Comparable
-    //**************************************************************
-
-    @Override
-    public int compareTo(
-                    final NameEntity o
-                    )
-    {
-        return String.CASE_INSENSITIVE_ORDER.compare( getName(), o.getName() );
-    }
+//    //**************************************************************
+//    //  Comparable
+//    //**************************************************************
+//
+//    @Override
+//    public int compareTo(
+//                    final NameEntity o
+//                    )
+//    {
+//        return String.CASE_INSENSITIVE_ORDER.compare( getName(), o.getName() );
+//    }
 
 
 

@@ -25,32 +25,36 @@ import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 /**
- * The EntityItemString type is extended by the entities of an individual item.
- * This specific type describes simple string data.
+ * The EntityItemBoolType is extended by the entities of an individual item.
+ * This type provides uniformity to each entity by including the attributes
+ * found in the EntityItemSimpleBaseType.
+ * This specific type describes simple boolean data.
+ * The empty string is also allowed for cases where there was an error
+ * in the data collection of an entity and a status needs to be reported.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemStringType
+public class EntityItemBoolType
     extends EntityItemSimpleBaseType
 {
 
     public static final DatatypeEnumeration  FIXED_DATATYPE =
-        DatatypeEnumeration.STRING;
-    //{optional, fixed="string"}
+        DatatypeEnumeration.BOOLEAN;
+    //{required, fixed="boolean"}
 
 
 
     /**
      * Constructor.
      */
-    public EntityItemStringType()
+    public EntityItemBoolType()
     {
     }
 
 
-    public EntityItemStringType(
+    public EntityItemBoolType(
                     final String content
                     )
     {
@@ -98,20 +102,12 @@ public class EntityItemStringType
             return true;
         }
 
-        if (!(obj instanceof EntityItemStringType)) {
+        if (!(obj instanceof EntityItemBoolType)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
-
 }
-// EntityItemStringType
+// EntityItemBoolType
