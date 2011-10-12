@@ -18,17 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.xml.common;
+package jp.go.aist.six.oval.core.xml.independent;
 
-import jp.go.aist.six.oval.model.common.FamilyEnumeration;
+import jp.go.aist.six.oval.model.independent.WindowsViewEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class FamilyEnumerationHandler
+public class WindowsViewEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public FamilyEnumerationHandler()
+    public WindowsViewEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class FamilyEnumerationHandler
         if (value == null) {
             return null;
         }
-        FamilyEnumeration  e = FamilyEnumeration.class.cast( value );
+        WindowsViewEnumeration  e = WindowsViewEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class FamilyEnumerationHandler
         if (value == null) {
             return null;
         }
-        return FamilyEnumeration.fromValue( value.toString() );
+        return WindowsViewEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<FamilyEnumeration> getFieldType()
+    public Class<WindowsViewEnumeration> getFieldType()
     {
-        return FamilyEnumeration.class;
+        return WindowsViewEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class FamilyEnumerationHandler
 //    }
 
 }
-// FamilyEnumerationHandler
+//WindowsViewEnumerationHandler
