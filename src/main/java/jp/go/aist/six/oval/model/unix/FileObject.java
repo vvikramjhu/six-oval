@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.unix;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,6 +35,8 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 /**
  * The file object is used by a file test to define the specific file(s)
  * to be evaluated.
+ * The file object will collect all UNIX file types
+ * (directory, regular file, character device, block device, fifo, symbolic link, and socket).
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -73,10 +75,6 @@ public class FileObject
     private EntityObjectStringType  filename;
     //{1..1, nillable="true"}
 
-//    private final EntityPropertyMap<FileProperty>  _properties =
-//        FileProperty.createPropertyMap();
-
-
     private final Collection<Filter>  filter = new ArrayList<Filter>();
     //{0..*}
 
@@ -98,7 +96,7 @@ public class FileObject
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.windows;
+        _oval_platform_type = OvalPlatformType.unix;
         _oval_component_type = OvalComponentType.file;
     }
 
@@ -190,15 +188,12 @@ public class FileObject
                     )
     {
         this.filepath = filepath;
-//        _properties.setProperty( FileProperty.FILEPATH, filepath );
     }
 
 
     public EntityObjectStringType getFilepath()
     {
         return this.filepath;
-//        return _properties.getProperty(
-//                        FileProperty.FILEPATH, EntityObjectStringType.class );
     }
 
 
@@ -219,15 +214,12 @@ public class FileObject
                     )
     {
         this.path = path;
-//        _properties.setProperty( FileProperty.PATH, path );
     }
 
 
     public EntityObjectStringType getPath()
     {
         return this.path;
-//        return _properties.getProperty(
-//                        FileProperty.PATH, EntityObjectStringType.class );
     }
 
 
@@ -248,15 +240,12 @@ public class FileObject
                     )
     {
         this.filename = filename;
-//        _properties.setProperty( FileProperty.FILENAME, filename);
     }
 
 
     public EntityObjectStringType getFilename()
     {
         return this.filename;
-//        return _properties.getProperty(
-//                        FileProperty.FILENAME, EntityObjectStringType.class );
     }
 
 
