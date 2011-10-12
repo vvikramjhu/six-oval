@@ -16,7 +16,7 @@ import jp.go.aist.six.oval.model.common.OperationEnumeration;
 import jp.go.aist.six.oval.model.common.OperatorEnumeration;
 import jp.go.aist.six.oval.model.definitions.FilterActionEnumeration;
 import jp.go.aist.six.oval.model.definitions.SetOperatorEnumeration;
-import jp.go.aist.six.oval.model.independent.WindowsViewTypeEnumeration;
+import jp.go.aist.six.oval.model.independent.WindowsViewEnumeration;
 import jp.go.aist.six.oval.model.mitre.DefinitionStatusEnumeration;
 import jp.go.aist.six.oval.model.redhat.SeverityEnumeration;
 import jp.go.aist.six.oval.model.results.ContentEnumeration;
@@ -72,7 +72,7 @@ public class OvalConverter
         SetOperatorEnumeration.class,
 
         // independent //
-        WindowsViewTypeEnumeration.class,
+        WindowsViewEnumeration.class,
 
         // mitre //
         DefinitionStatusEnumeration.class,

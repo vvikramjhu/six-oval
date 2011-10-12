@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.model.OvalEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum WindowsViewTypeEnumeration
+public enum WindowsViewEnumeration
     implements OvalEnumeration
 {
 
@@ -45,11 +45,11 @@ public enum WindowsViewTypeEnumeration
     /**
      * A factory method.
      */
-    public static WindowsViewTypeEnumeration fromValue(
+    public static WindowsViewEnumeration fromValue(
                     final String value
                     )
     {
-        for (WindowsViewTypeEnumeration  e : WindowsViewTypeEnumeration.values()) {
+        for (WindowsViewEnumeration  e : WindowsViewEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -67,7 +67,7 @@ public enum WindowsViewTypeEnumeration
     /**
      * Constructor.
      */
-    WindowsViewTypeEnumeration(
+    WindowsViewEnumeration(
                     final String value
                     )
     {
