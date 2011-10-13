@@ -61,6 +61,8 @@
         factory-method="createDatastore"> 
         <constructor-arg ref="mongo"/> 
         <constructor-arg value="six"/> <!-- String: database name -->
+        <constructor-arg value="six"/> <!-- String: user name -->
+        <constructor-arg value="${six.oval.repository.password}"/> <!-- String: user password -->
     </bean>
 
 
