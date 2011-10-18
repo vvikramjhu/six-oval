@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.core.ws;
 import java.net.URI;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
-import jp.go.aist.six.oval.core.repository.mongodb.MongoDatastore;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalRepository;
 import jp.go.aist.six.oval.core.repository.mongodb.QueryBuilder;
 import jp.go.aist.six.oval.model.OvalObject;
@@ -84,10 +83,10 @@ public class OvalController
     // "&" ampa  = %26
 
 
-    /**
-     * The data store sole instance.
-     */
-    private MongoDatastore  _datastore;
+//    /**
+//     * The data store sole instance.
+//     */
+//    private MongoDatastore  _datastore;
 
 
 //    private MongoOvalService  _service;
@@ -105,20 +104,32 @@ public class OvalController
 
 
 
+
     /**
      */
-    public void setDatastore(
-                    final MongoDatastore datastore
+    public void setRepository(
+                    final MongoOvalRepository repository
                     )
     {
-        _datastore = datastore;
-
-//        _service = new MongoOvalService();
-//        _service.setDatastore( _datastore );
-
-        _repository = new MongoOvalRepository();
-        _repository.setDatastore( _datastore );
+        _repository = repository;
     }
+
+
+
+//    /**
+//     */
+//    public void setDatastore(
+//                    final MongoDatastore datastore
+//                    )
+//    {
+//        _datastore = datastore;
+//
+////        _service = new MongoOvalService();
+////        _service.setDatastore( _datastore );
+//
+//        _repository = new MongoOvalRepository();
+//        _repository.setDatastore( _datastore );
+//    }
 
 
 
