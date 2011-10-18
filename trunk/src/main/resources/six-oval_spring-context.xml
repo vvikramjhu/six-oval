@@ -30,99 +30,10 @@
 
 
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-    <!-- %  OVAL Datastore                                     % -->
+    <!-- %  OVAL Repository                                    % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-    <bean id="mongo" 
-        class="com.mongodb.Mongo">
-        <constructor-arg type="java.lang.String" value="${six.oval.repository.datastore.host}"/>
-        <constructor-arg type="int" value="${six.oval.repository.datastore.port}"/>
-    </bean> 
-
-
-    <bean id="morphia" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.MorphiaFactory" 
-        factory-method="create"> 
-        <constructor-arg>
-            <set>
-                <!-- value>#{ T(jp.go.aist.six.oval.model.definitions.DefinitionType) }</value -->
-            </set>
-        </constructor-arg>
-        <constructor-arg>
-            <set>
-                <value>#{ T(jp.go.aist.six.oval.core.repository.mongodb.OvalConverter) }</value>
-            </set>
-        </constructor-arg>
-    </bean>
-
-
-    <bean id="datastore" 
-        factory-bean="morphia" 
-        factory-method="createDatastore"> 
-        <constructor-arg ref="mongo"/> 
-        <constructor-arg value="${six.oval.repository.datastore.name}"/> <!-- String: database name -->
-        <constructor-arg value="${six.oval.repository.datastore.username}"/> <!-- String: user name -->
-        <constructor-arg value="${six.oval.repository.datastore.password}"/> <!-- String: user password -->
-    </bean>
-
-
-    <bean id="ovalDefinitionsDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.OvalDefinitionsDAO">
-        <constructor-arg ref="datastore"/> 
-    </bean> 
-
-    <bean id="definitionDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.DefinitionDAO">
-        <constructor-arg ref="datastore"/> 
-    </bean> 
-
-    <bean id="testDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.TestDAO">
-        <constructor-arg ref="datastore"/> 
-    </bean> 
-
-    <bean id="systemObjectDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.SystemObjectDAO">
-        <constructor-arg ref="datastore"/> 
-    </bean> 
-
-    <bean id="stateDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.StateDAO">
-        <constructor-arg ref="datastore"/> 
-    </bean> 
-
-    <bean id="variableDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.VariableDAO">
-        <constructor-arg ref="datastore"/> 
-    </bean> 
-
-
-    <bean id="ovalSystemCharacteristicsDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.OvalSystemCharacteristicsDAO">
-        <constructor-arg ref="datastore"/> 
-    </bean> 
-
-    <bean id="ovalResultsDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.OvalResultsDAO">
-        <constructor-arg ref="datastore"/> 
-    </bean> 
-
-
-    <bean id="datastoreService" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.MongoDatastore"> 
-        <property name="DAO">
-            <set>
-                <ref bean="ovalDefinitionsDAO"/>
-                <ref bean="definitionDAO"/>
-                <ref bean="testDAO"/>
-                <ref bean="systemObjectDAO"/>
-                <ref bean="stateDAO"/>
-                <ref bean="variableDAO"/>
-                <ref bean="ovalSystemCharacteristicsDAO"/>
-                <ref bean="ovalResultsDAO"/>
-            </set>
-        </property>
-    </bean>
+    
+    <import resource="context_repository"/>
 
 
 
@@ -130,61 +41,7 @@
     <!-- %  OVAL XML                                           % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-    <bean id="ovalMarshaller" 
-      class="org.springframework.oxm.castor.CastorMarshaller">
-        <property name="mappingLocations">
-            <list>
-                 <value>classpath:castor-xml_oval-5-six.xml</value>
-                 <value>classpath:castor-xml_oval-5-common.xml</value>
-                 <value>classpath:castor-xml_oval-5-definitions.xml</value>
-                 <value>classpath:castor-xml_oval-5-sc.xml</value>
-                 <value>classpath:castor-xml_oval-5-results.xml</value>
-                 <value>classpath:castor-xml_oval-5-independent.xml</value>
-                 <value>classpath:castor-xml_oval-5-linux.xml</value>
-                 <value>classpath:castor-xml_oval-5-unix.xml</value>
-                 <value>classpath:castor-xml_oval-5-windows.xml</value>
-                 <value>classpath:castor-xml_oval-six-core.xml</value>
-            </list>
-        </property>
-        <property name="ignoreExtraAttributes"
-                 value="false"/>
-        <property name="ignoreExtraElements"
-                 value="false"/>
-        <property name="suppressXsiType"
-                 value="true"/>
-        <property name="encoding"
-                 value="UTF-8"/>
-<!-- NO such property!!!
-        <property name="schemaLocation"
-                value="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5 oval-system-characteristics-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-results-5 oval-results-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows windows-system-characteristics-schema.xsd"/>
--->
-        <property name="namespaceMappings">
-            <map>
-                <entry key="xsi"
-                    value="http://www.w3.org/2001/XMLSchema-instance"/>
-                <entry key="oval"
-                    value="http://oval.mitre.org/XMLSchema/oval-common-5"/>
-                <entry key="opensearch"
-                    value="http://a9.com/-/spec/opensearch/1.1/"/>
-<!-- *****
--->
-<!--
-                <entry key="oval-def"
-                    value="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
-                <entry key="oval-sc"
-                    value="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"/>
-                <entry key="oval-sc-windows"
-                    value="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"/>
--->
-            </map>
-        </property>                    
-    </bean> 
-
-
-    <bean id="ovalXml" class="jp.go.aist.six.oval.core.xml.OvalXml">
-        <property name="marshaller"   ref="ovalMarshaller"/>
-        <property name="unmarshaller" ref="ovalMarshaller"/>
-    </bean>
+    <import resource="context_xml"/>
 
 
 

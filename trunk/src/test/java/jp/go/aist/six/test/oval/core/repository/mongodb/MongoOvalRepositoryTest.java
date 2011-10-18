@@ -30,7 +30,8 @@ public class MongoOvalRepositoryTest
 {
 
     private static final String _SPRING_MONGO_CONTEXT_
-    = "six-oval_spring-context.xml";
+    = "context_repository.xml";
+//    = "six-oval_spring-context.xml";
 //    = "jp/go/aist/six/test/oval/core/datastore/mongodb/mongo-context.xml";
 
 

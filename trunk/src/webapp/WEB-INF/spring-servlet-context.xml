@@ -88,12 +88,12 @@
 
     <bean id="ovalController" 
        class="jp.go.aist.six.oval.core.ws.OvalController">
-        <property name="datastore" ref="datastoreService" />
+        <property name="repository" ref="ovalRepository" />
     </bean>
-<!-- 
-    <bean id="ovalRepositoryController" 
-	   class="jp.go.aist.six.oval.core.rest.OvalRepositoryController">
-        <property name="store" ref="ovalStore" />
+<!-- backup
+    <bean id="ovalController" 
+       class="jp.go.aist.six.oval.core.ws.OvalController">
+        <property name="datastore" ref="datastoreService" />
     </bean>
 -->
 
