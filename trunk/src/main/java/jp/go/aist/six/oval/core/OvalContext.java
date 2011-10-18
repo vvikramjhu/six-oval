@@ -53,6 +53,19 @@ public class OvalContext
         = "six-oval_spring-context.xml";
 
 
+    /**
+     * The Spring application context specification: XML component.
+     */
+    private static final String _XML_CONTEXT_
+        = "context_xml.xml";
+
+
+    /**
+     * The Spring application context.
+     */
+    private ApplicationContext  _xmlContext;
+
+
 
     /**
      */
@@ -75,7 +88,7 @@ public class OvalContext
     /**
      * The XML mapper sole instance.
      */
-    private XmlMapper  _xml;
+    private XmlMapper  _xmlMapper;
 
 
 
@@ -177,15 +190,20 @@ public class OvalContext
 
     /**
      */
-    public XmlMapper getXml()
+    public XmlMapper getXmlMapper()
     {
-        if (_xml == null) {
-            _xml = _getContext().getBean( XmlMapper.class );
+        if (_xmlMapper == null) {
+            if (_xmlContext == null) {
+                _xmlContext = new ClassPathXmlApplicationContext( _XML_CONTEXT_ );
+                //throws BeansException: Runtime
+            }
+
+            _xmlMapper = _xmlContext.getBean( XmlMapper.class );
         }
 
-        return _xml;
+        return _xmlMapper;
     }
 
 }
-// OvalContext
+//OvalContext
 
