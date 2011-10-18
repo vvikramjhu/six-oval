@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.core;
 
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
+import jp.go.aist.six.oval.repository.OvalRepository;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -50,20 +51,35 @@ public class OvalContext
      * The Spring application context specification.
      */
     private static final String _SPRING_APP_CONTEXT_
-        = "six-oval_spring-context.xml";
+        = "six-oval_context.xml";
 
 
     /**
      * The Spring application context specification: XML component.
      */
     private static final String _XML_CONTEXT_
-        = "context_xml.xml";
+        = "six-oval_context_xml.xml";
+
+
+    /**
+     * The Spring application context specification: XML component.
+     */
+    private static final String _REPOSITORY_CONTEXT_
+        = "six-oval_context_repository.xml";
+
 
 
     /**
      * The Spring application context.
      */
     private ApplicationContext  _xmlContext;
+
+
+
+    /**
+     * The Spring application context.
+     */
+    private ApplicationContext  _repositoryContext;
 
 
 
@@ -176,16 +192,18 @@ public class OvalContext
 
 
 
-//    /**
-//     */
-//    public DataStore getStore()
-//    {
-//        if (_store == null) {
-//            _store = _getContext().getBean( "ovalStore", DataStore.class );
-//        }
-//
-//        return _store;
-//    }
+    /**
+     */
+    public OvalRepository getRepository()
+    {
+        if (_repositoryContext == null) {
+            _repositoryContext = new ClassPathXmlApplicationContext( _REPOSITORY_CONTEXT_ );
+            //throws BeansException: Runtime
+        }
+
+        return _repositoryContext.getBean( OvalRepository.class );
+    }
+
 
 
     /**

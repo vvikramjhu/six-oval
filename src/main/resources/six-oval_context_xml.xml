@@ -80,7 +80,7 @@
     </bean> 
 
 
-    <bean id="ovalXml" class="jp.go.aist.six.oval.core.xml.OvalXmlMapper">
+    <bean id="ovalXmlMapper" class="jp.go.aist.six.oval.core.xml.OvalXmlMapper">
         <property name="marshaller"   ref="ovalMarshaller"/>
         <property name="unmarshaller" ref="ovalMarshaller"/>
     </bean>
