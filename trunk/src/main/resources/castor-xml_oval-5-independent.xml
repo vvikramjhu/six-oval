@@ -264,7 +264,7 @@
 
     <class name="jp.go.aist.six.oval.model.independent.FileHashState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
-        <map-to xml="textfilecontent_state"
+        <map-to xml="filehash_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
             ns-prefix=""/>
 

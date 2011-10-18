@@ -33,7 +33,7 @@
     <!-- %  OVAL Repository                                    % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     
-    <import resource="context_repository.xml"/>
+    <import resource="six-oval_context_repository.xml"/>
 
 
 
@@ -41,7 +41,7 @@
     <!-- %  OVAL XML                                           % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-    <import resource="context_xml.xml"/>
+    <import resource="six-oval_context_xml.xml"/>
 
 
 

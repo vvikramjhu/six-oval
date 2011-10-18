@@ -21,6 +21,8 @@
 package jp.go.aist.six.oval.core.xml;
 
 import jp.go.aist.six.util.castor.CastorXmlMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 
@@ -32,8 +34,21 @@ public class OvalXmlMapper
     extends CastorXmlMapper
 {
 
-}
-// OvalXmlImpl
+    /**
+     * Logger.
+     */
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvalXmlMapper.class );
 
-/* vim:set tabstop=4:set expandtab:set shiftwidth=4: */
+
+
+    /**
+     * Constructor.
+     */
+    public OvalXmlMapper()
+    {
+        _LOG_.debug( "instantiated" );
+    }
+
+}
+//OvalXmlMapper
 

@@ -62,7 +62,7 @@
     </test>
 
 
-    <test name="oval.core.repository.mongodb.datastore" enabled="true">
+    <test name="oval.core.repository.mongodb.datastore" enabled="false">
         <groups>
             <run>
                 <include name="oval.core.repository.mongodb.saveAndLoad"/>
@@ -86,11 +86,12 @@
     <!-- *  XML                                                * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.xml" enabled="false">
+    <test name="oval.core.xml" enabled="true">
         <groups>
             <run>
                 <include name="oval.definitions.oval_definitions"/>
                 <!--
+                <include name="oval.results.oval_results"/>
                 <include name="oval.definitions.oval_definitions"/>
                 <include name="oval.results.oval_results"/>
                 <include name="oval.core.xml.searchresult"/>
