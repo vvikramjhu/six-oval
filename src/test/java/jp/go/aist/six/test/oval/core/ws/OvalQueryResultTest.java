@@ -25,7 +25,7 @@ public class OvalQueryResultTest
     throws Exception
     {
         OvalContext  _context = new OvalContext();
-        _xmlmapper = _context.getXml();
+        _xmlmapper = _context.getXmlMapper();
     }
 
 

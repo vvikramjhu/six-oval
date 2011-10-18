@@ -28,7 +28,7 @@ import jp.go.aist.six.util.castor.CastorXmlMapper;
  * @author  Akihito Nakamura, AIST
  * @version $Id: OvalXmlImpl.java 440 2010-03-23 05:11:44Z akihito $
  */
-public class OvalXml
+public class OvalXmlMapper
     extends CastorXmlMapper
 {
 

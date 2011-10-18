@@ -22,7 +22,7 @@ public abstract class CoreTestBase
 
     private OvalContext  _context = null;
 
-    private XmlMapper  _xml = null;
+    private XmlMapper  _xmlMapper = null;
 //    private DataStore  _store = null;
 
 
@@ -52,14 +52,14 @@ public abstract class CoreTestBase
     }
 
 
-    protected XmlMapper _getXml()
+    protected XmlMapper _getXmlMapper()
     throws Exception
     {
-        if (_xml == null) {
-            _xml = _context.getXml();
+        if (_xmlMapper == null) {
+            _xmlMapper = _context.getXmlMapper();
         }
 
-        return _xml;
+        return _xmlMapper;
     }
 
 
@@ -91,7 +91,7 @@ public abstract class CoreTestBase
         File  file = new File( filepath );
         Reporter.log( "unmarshalling XML...", true );
         long  time = System.currentTimeMillis();
-        Object  obj = _getXml().unmarshal( new FileInputStream( file ) );
+        Object  obj = _getXmlMapper().unmarshal( new FileInputStream( file ) );
         Reporter.log( "...unmarshalling done: " + (System.currentTimeMillis() - time) + "(ms)", true );
 
         Reporter.log( "  @ unmarshalled object: " + obj, true );
@@ -129,7 +129,7 @@ public abstract class CoreTestBase
 
         Reporter.log( "marshalling...", true );
         long  time = System.currentTimeMillis();
-        _getXml().marshal( object, output );
+        _getXmlMapper().marshal( object, output );
         Reporter.log( "...marshalling done: " + (System.currentTimeMillis() - time) + "(ms)", true );
     }
 
