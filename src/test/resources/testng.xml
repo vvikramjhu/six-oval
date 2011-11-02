@@ -105,6 +105,10 @@
 
         <classes>
             <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlTest"/>
+            <!--
+            <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlTest"/>
+            <class name="jp.go.aist.six.test.oval.core.xml.XmlTransformTest"/>
+            -->
         </classes>
     </test>
 

@@ -1,9 +1,12 @@
 package jp.go.aist.six.test.oval.core.xml;
 
-import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.results.OvalResults;
-import jp.go.aist.six.test.oval.core.CoreTestBase;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.net.URL;
+import jp.go.aist.six.util.xml.XmlTransformer;
 import org.testng.Reporter;
+import org.testng.annotations.DataProvider;
 
 
 
@@ -11,80 +14,63 @@ import org.testng.Reporter;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalXmlTest
-    extends CoreTestBase
+public class XmlTransformTest
 {
 
-    /**
-     */
-    public OvalXmlTest()
-    {
-    }
+    private static final String  _XSLT_STYLESHEET_ =
+        "/oval5.xsl";
 
 
 
     /**
      */
-    protected <T> void _testXml(
-                    final Class<T> type,
-                    final String sourceFilepath,
-//                    final String xpath,
-                    final T expected,
-                    final String resultFilepath
-                    )
-    throws Exception
+    public XmlTransformTest()
     {
-        T  actual = _unmarshalWithValidation( type, sourceFilepath, /* xpath, */ expected );
-        _marshal( actual, resultFilepath );
-        _unmarshalWithValidation( type, resultFilepath, /* xpath, */ expected );
     }
 
 
 
     //**************************************************************
-    //  OVAL definitions
+    //
     //**************************************************************
+
+    @DataProvider( name="oval.definitions.xml.transform" )
+    public Object[][] provideOvalResultsXml()
+    {
+        return new Object[][] {
+                        // OVAL5.9, def:12313-5, vulnerability, Windows
+                        // file, family, registry
+                        {
+                            "test/resources/data/oval5/oval5.9_def12313-5_v_windows_CVE-2011-0031.xml",
+                            "transformed_oval5.9_def12313-5_v_windows_CVE-2011-0031.xml"
+                        }
+        };
+    }
+
+
 
     @org.testng.annotations.Test(
                     groups={"oval.core.xml", "oval.definitions.oval_definitions"},
-                    dataProvider="oval.definitions.xml",
+                    dataProvider="oval.definitions.xml.transform",
                     alwaysRun=true
                     )
-    public void testDefinitionsOvalDefinitions(
-                    final Class<OvalDefinitions> type,
+    public void testTransform(
                     final String sourceFilepath,
-//                  final String xpath,
-                    final OvalDefinitions expected,
                     final String resultFilepath
                     )
     throws Exception
     {
         Reporter.log( "\n////////////////////////////////////////////", true );
-        _testXml( type, sourceFilepath, /* xpath, */ expected, resultFilepath );
-    }
 
+        URL  stylesheetLocation = getClass().getResource( _XSLT_STYLESHEET_ );
+//        File  stylesheetLocation = new File( _XSLT_STYLESHEET_ );
+        Reporter.log( "  @ XSLT stylesheet location: " + stylesheetLocation, true );
+        XmlTransformer  transformer = new XmlTransformer( stylesheetLocation );
 
-
-    //**************************************************************
-    //  OVAL results
-    //**************************************************************
-
-    @org.testng.annotations.Test(
-                    groups={"oval.core.xml", "oval.results.oval_results"},
-                    dataProvider="oval.results.xml",
-                    alwaysRun=true
-                    )
-    public void testResutlsOvalResults(
-                    final Class<OvalResults> type,
-                    final String sourceFilepath,
-                    final OvalResults expected,
-                    final String resultFilepath
-                    )
-    throws Exception
-    {
-        Reporter.log( "\n////////////////////////////////////////////", true );
-        _testXml( type, sourceFilepath, expected, resultFilepath );
+        transformer.transform(
+                        new FileInputStream( new File( sourceFilepath ) ),
+                        new FileOutputStream( new File( resultFilepath ) ) );
     }
 
 }
-// OvalXmlTest
+// XmlTransformTest
