@@ -47,6 +47,7 @@ public enum OvalComponentType
 //    rpmverify,
 
     // unix //
+    //file,  //same name in the windows namespace
     uname,
 
     // windows //

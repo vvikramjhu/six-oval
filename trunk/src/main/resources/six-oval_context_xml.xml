@@ -80,6 +80,14 @@
     </bean> 
 
 
+    <bean id="unmarshalTransformer" 
+        class="jp.go.aist.six.util.xml.XmlTransformer"> 
+        <constructor-arg>
+            <value>classpath:oval5.xsl</value>
+        </constructor-arg>
+    </bean>
+
+
     <bean id="ovalXmlMapper" class="jp.go.aist.six.oval.core.xml.OvalXmlMapper">
         <property name="marshaller"   ref="ovalMarshaller"/>
         <property name="unmarshaller" ref="ovalMarshaller"/>
