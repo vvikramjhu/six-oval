@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xsl:stylesheet version="1.0" 
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:win-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
   >
 <!--
   xmlns:ind-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
@@ -33,6 +32,22 @@
 <!-- global variables                                            -->
 <!-- *********************************************************** -->
 
+<xsl:variable name="var_ns-unix-def-5">
+    <xsl:value-of select="'http://oval.mitre.org/XMLSchema/oval-definitions-5#unix'"/>
+</xsl:variable>
+
+<xsl:variable name="var_ns-win-def-5">
+    <xsl:value-of select="'http://oval.mitre.org/XMLSchema/oval-definitions-5#windows'"/>
+</xsl:variable>
+
+
+<xsl:variable name="var_file-element-unchanged-ns-def-5">
+    <xsl:value-of select="$var_ns-win-def-5"/>
+<!--
+    <xsl:value-of select="$var_ns-unix-def-5"/>
+-->
+</xsl:variable>
+
 
 
 <!-- *********************************************************** -->
@@ -40,34 +55,34 @@
 <!-- *********************************************************** -->
 
 <!--
-TEMPLATE:  file_test
+TEMPLATE:  Change element names for the file components.
 -->
-<xsl:template match="*[local-name() = 'file_test'  and  namespace-uri() = 'http://oval.mitre.org/XMLSchema/oval-definitions-5#windows']">
+<xsl:template match="*[local-name() = 'file_test'  or  local-name() = 'file_object'  or  local-name() = 'file_state']">
+    <xsl:variable name="var_ns" select="namespace-uri()"/>
+    <xsl:variable name="var_element" select="local-name()"/>
+
 <!-- DEBUG
-    <xsl:variable name="ns" select="namespace-uri()"/>
-    <xsl:message><xsl:value-of select="$ns"/></xsl:message>
 -->
+    <xsl:message>
+        <xsl:value-of select="concat($var_element, ', ', $var_ns)"/>
+    </xsl:message>
 
-<!-- NG, xmlns attribute is not generated.
-    <win_file_test xmlns="{$ns}">
-        <xsl:copy-of select="@*[name() != 'xmlns']"/>
-        <xsl:copy-of select="node()"/>
-    </win_file_test>
--->
 
-<!-- NG, namespace prefix is generated, e.g. ns0:win_file_test xmlns:ns0="..."
-    <xsl:element name="{concat('win_', local-name())}" namespace="{namespace-uri()}">
-        <xsl:copy-of select="@*[name() != 'xmlns']"/>
-        <xsl:copy-of select="node()"/>
-    </xsl:element>
--->
-
-<!-- OK
--->
-    <win_file_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
-        <xsl:copy-of select="@*[name() != 'xmlns']"/>
-        <xsl:copy-of select="node()"/>
-    </win_file_test>
+    <xsl:choose>
+        <xsl:when test="$var_ns = $var_file-element-unchanged-ns-def-5">
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:when>
+        
+        <xsl:otherwise>
+            <xsl:call-template name="func_output-file-component">
+                <xsl:with-param name="lvar_element" select="$var_element"/>
+                <xsl:with-param name="lvar_ns" select="$var_ns"/>
+            </xsl:call-template>
+        </xsl:otherwise>
+    </xsl:choose>
 
 </xsl:template>
 
@@ -75,7 +90,7 @@ TEMPLATE:  file_test
 
 
 <!-- 
-Copy Idiom
+TEMPLATE:  Copy idiom.
 -->
 <xsl:template match="node() | @*">
     <xsl:copy>
@@ -83,6 +98,68 @@ Copy Idiom
     </xsl:copy>
 </xsl:template>
 
+
+
+<!-- *********************************************************** -->
+<!-- NAMED TEMPLATE                                              -->
+<!-- *********************************************************** -->
+
+<!--
+NAMED TEMPLATE: Outputs the transformed file components.
+-->
+<xsl:template name="func_output-file-component">
+    <xsl:param name="lvar_element"/>
+    <xsl:param name="lvar_ns"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-unix-def-5">
+            <xsl:choose>
+                <xsl:when test="$lvar_element = 'file_test'">
+                    <unix_file_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </unix_file_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'file_object'">
+                    <unix_file_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </unix_file_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'file_state'">
+                    <unix_file_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </unix_file_state>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:when>
+
+        <xsl:when test="$lvar_ns = $var_ns-win-def-5">
+            <xsl:choose>
+                <xsl:when test="$lvar_element = 'file_test'">
+                    <win_file_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </win_file_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'file_object'">
+                    <win_file_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </win_file_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'file_state'">
+                    <win_file_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </win_file_state>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:when>
+    </xsl:choose>
+
+</xsl:template>
 
 
 </xsl:stylesheet>
