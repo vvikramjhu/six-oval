@@ -31,15 +31,15 @@
     -->
     <class name="jp.go.aist.six.oval.model.unix.FileTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
-        <map-to xml="unix:file_test"
-                xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
-                />
-
-<!-- backup
         <map-to xml="file_test"
                 xmlns:oval-sc="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
             ns-prefix=""/>
+
+<!-- backup
+        <map-to xml="unix:file_test"
+                xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+                />
  -->
 
         <field name="object" 
@@ -56,7 +56,6 @@
 
 
 
-<!--
     <class name="jp.go.aist.six.oval.model.unix.FileObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
         <map-to xml="file_object"
@@ -219,7 +218,6 @@
             <bind-xml name="has_extended_acl" node="element"/>
         </field>
     </class>
--->
 
 
 

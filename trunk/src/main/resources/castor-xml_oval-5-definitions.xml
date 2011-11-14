@@ -721,6 +721,10 @@
         extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
     </class>
 
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateBoolType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
+    </class>
+
     <class name="jp.go.aist.six.oval.model.definitions.EntityStateEVRStringType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
     </class>

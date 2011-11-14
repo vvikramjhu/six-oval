@@ -154,13 +154,13 @@ public abstract class CoreTestBase
         return new Object[][] {
 
                         // XSLT transformed
-                        // def:7222, windows, vulnerability, CVE-2010-0176
-                        {
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "transformed_oval5.9_def12313-5_v_windows_CVE-2011-0031.xml",
-                            null,
-                            "marshalled_oval5.9_def12313-5_v_windows_CVE-2011-0031.xml"
-                        }
+//                        // def:7222, windows, vulnerability, CVE-2010-0176
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "transformed_oval5.9_def12313-5_v_windows_CVE-2011-0031.xml",
+//                            null,
+//                            "marshalled_oval5.9_def12313-5_v_windows_CVE-2011-0031.xml"
+//                        }
 //                        ,
 
 //                        /*** inventory ***/
@@ -269,6 +269,13 @@ public abstract class CoreTestBase
 //                          "marshalled_2011-09-26_v_red.hat.enterprise.linux.5.xml"
 //                      }
 
+                        // def, vulnerability, Red Hat Enterprise Linux 4, all
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "test/resources/data/oval5/oval5.10_def1073-3_v_rhel4_CVE-2005-2267.xml",
+                            null,
+                            "marshalled_oval5.10_def1073-3_v_rhel4_CVE-2005-2267.xml"
+                        }
 
 
 //                        /***  ***/
