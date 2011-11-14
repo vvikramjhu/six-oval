@@ -26,7 +26,10 @@
 
     <class name="jp.go.aist.six.oval.model.windows.FileTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
+<!--
         <map-to xml="win_file_test"
+-->
+        <map-to xml="file_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
             ns-prefix=""/>
 
