@@ -46,38 +46,69 @@ import org.springframework.web.client.RestTemplate;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class NetOvalInterpreter
-    extends OvalDefinitionInterpreter
+public class NetworkingOvaldiProxy
+    extends OvaldiProxy
 {
 
-    private static class NetOption
-    extends Option
+    /**
+     * Command line entry point.
+     *
+     * @param args
+     *  the OVAL Interpreter program and its arguments.
+     */
+    public static void main(
+                    final String[] args
+                    )
+    throws Exception
     {
-        public static final NetOption WORK_DIR = new NetOption(
-                        "-workdir", true, "dir name", null,
-                        null,
-                        "path to the directory in which the temporary file resources are stored\n"
-                        + "(default is the Java temporary directory specified by 'java.io.tmpdir' system property)"
-        );
-
-
-        /**
-         * Constructor.
-         */
-        protected NetOption(
-                        final String name,
-                        final boolean hasArgument,
-                        final String argumentName,
-                        final String defaultArgument,
-                        final String contentType,
-                        final String description
-                        )
-        {
-            super( name, hasArgument, argumentName, defaultArgument, contentType, description );
+        if (args.length < 1) {
+            System.err.println( "no program and arguments specified" );
+            System.exit( 1 );
         }
 
+        List<String>  strings = Arrays.asList( args );
+        strings.remove( 0 );
+        Options  options = Options.fromCommandLine( strings );
+
+        NetworkingOvaldiProxy  ovaldi = new NetworkingOvaldiProxy();
+        ovaldi.setExecutable( args[0] );
+        ovaldi.setOptions( options );
+
+        int  exit_value = ovaldi.execute();
+        System.exit( exit_value );
     }
-    // NetOption
+
+
+
+
+//    private static class NetOption
+//    extends Option
+//    {
+//        public static final NetOption WORK_DIR = new NetOption(
+//                        "-workdir", true, "dir name", null,
+//                        null,
+//                        "path to the directory in which the temporary file resources are stored\n"
+//                        + "(default is the Java temporary directory specified by 'java.io.tmpdir' system property)"
+//        );
+//
+//
+//        /**
+//         * Constructor.
+//         */
+//        protected NetOption(
+//                        final String name,
+//                        final boolean hasArgument,
+//                        final String argumentName,
+//                        final String defaultArgument,
+//                        final String contentType,
+//                        final String description
+//                        )
+//        {
+//            super( name, hasArgument, argumentName, defaultArgument, contentType, description );
+//        }
+//
+//    }
+//    // NetOption
 
 
 
@@ -86,12 +117,12 @@ public class NetOvalInterpreter
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( NetOvalInterpreter.class );
+        LoggerFactory.getLogger( NetworkingOvaldiProxy.class );
 
 
 
-    private static final List<MediaType>  _OVAL_FILE_MEDIA_TYPES_ =
-        Arrays.asList( new MediaType[] { MediaType.APPLICATION_XML } );
+//    private static final List<MediaType>  _OVAL_FILE_MEDIA_TYPES_ =
+//        Arrays.asList( new MediaType[] { MediaType.APPLICATION_XML } );
 
 
 
@@ -115,7 +146,7 @@ public class NetOvalInterpreter
     /**
      * Constructor.
      */
-    public NetOvalInterpreter()
+    public NetworkingOvaldiProxy()
     {
 
     }
@@ -171,27 +202,27 @@ public class NetOvalInterpreter
 
 
 
-    /**
-     */
-    private URL _toUrl(
-                    final String value
-                    )
-    {
-        if (value == null) {
-            return null;
-        }
-
-        URL  url = null;
-        try {
-            url = new URL( value );
-                  //throws MalformedURLException
-        } catch (MalformedURLException ex) {
-            // in case of a local file
-            url = null;
-        }
-
-        return (url == null ? null : url);
-    }
+//    /**
+//     */
+//    private URL _toUrl(
+//                    final String value
+//                    )
+//    {
+//        if (value == null) {
+//            return null;
+//        }
+//
+//        URL  url = null;
+//        try {
+//            url = new URL( value );
+//                  //throws MalformedURLException
+//        } catch (MalformedURLException ex) {
+//            // in case of a local file
+//            url = null;
+//        }
+//
+//        return (url == null ? null : url);
+//    }
 
 
 
@@ -236,6 +267,7 @@ public class NetOvalInterpreter
                     _restGetFile( url, file, option.contentType );
 
                     localOptions.set( option, file.getAbsolutePath() );
+                    //TODO: use file.getCanonicalPath() ???
                 }
             }
         }
@@ -310,6 +342,7 @@ public class NetOvalInterpreter
                      */
                     File  file = _createWorkingFile( _workingDir, _workingFilePrefix, option );
                     localOptions.set( option, file.getAbsolutePath() );
+                    //TODO: use file.getCanonicalPath() ???
                 }
             }
         }
@@ -499,7 +532,7 @@ public class NetOvalInterpreter
 
         _preProcess( localOptions );
 
-        OvalDefinitionInterpreter  ovaldi = new OvalDefinitionInterpreter( localOptions );
+        OvaldiProxy  ovaldi = new OvaldiProxy( localOptions );
         ovaldi.setExecutable( getExecutable() );
         int  exitValue = ovaldi.execute();
 

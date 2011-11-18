@@ -39,7 +39,8 @@ import org.slf4j.LoggerFactory;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalDefinitionInterpreter
+public class OvaldiProxy
+    implements OvalDefinitionInterpreter
 {
 
     /**
@@ -62,7 +63,7 @@ public class OvalDefinitionInterpreter
         strings.remove( 0 );
         Options  options = Options.fromCommandLine( strings );
 
-        OvalDefinitionInterpreter  ovaldi = new OvalDefinitionInterpreter();
+        OvaldiProxy  ovaldi = new OvaldiProxy();
         ovaldi.setExecutable( args[0] );
         ovaldi.setOptions( options );
 
@@ -122,7 +123,7 @@ public class OvalDefinitionInterpreter
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( OvalDefinitionInterpreter.class );
+        LoggerFactory.getLogger( OvaldiProxy.class );
 
 
     private final Map<Property, String>  _config =
@@ -136,12 +137,12 @@ public class OvalDefinitionInterpreter
     /**
      * Constructor.
      */
-    public OvalDefinitionInterpreter()
+    public OvaldiProxy()
     {
     }
 
 
-    public OvalDefinitionInterpreter(
+    public OvaldiProxy(
                     final Options options
                     )
     {
@@ -151,29 +152,9 @@ public class OvalDefinitionInterpreter
 
 
     /**
-     */
-    public void setOptions(
-                    final Options options
-                    )
-    {
-        _options = options;
-    }
-
-
-    public Options getOptions()
-    {
-        if (_options == null) {
-            _options = new Options();
-        }
-
-        return _options;
-    }
-
-
-
-    /**
      * Starts a new OVAL interpreter process.
      */
+    @Override
     public int execute()
     throws OvalInterpreterException
     {
@@ -341,6 +322,28 @@ public class OvalDefinitionInterpreter
         return _getConfigProperty( Property.EXECUTABLE );
     }
 
+
+
+
+    //**************************************************************
+    //  OvalDefinitionsInterpreter
+    //**************************************************************
+
+    @Override
+    public OvalDefinitionInterpreter setOptions(
+                    final Options options
+                    )
+    {
+        _options = options;
+        return this;
+    }
+
+
+    @Override
+    public Options getOptions()
+    {
+        return _options;
+    }
 
 
 //    /**
