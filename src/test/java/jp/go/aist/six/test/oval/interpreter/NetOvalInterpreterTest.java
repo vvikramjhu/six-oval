@@ -1,6 +1,6 @@
 package jp.go.aist.six.test.oval.interpreter;
 
-import jp.go.aist.six.oval.interpreter.NetOvalInterpreter;
+import jp.go.aist.six.oval.interpreter.NetworkingOvaldiProxy;
 import jp.go.aist.six.oval.interpreter.Option;
 import jp.go.aist.six.oval.interpreter.Options;
 import org.testng.Reporter;
@@ -72,7 +72,7 @@ public class NetOvalInterpreterTest
         Reporter.log( "* executable: " + executable, true );
         Reporter.log( "* options: " + options, true );
 
-        NetOvalInterpreter  ovaldi = new NetOvalInterpreter();
+        NetworkingOvaldiProxy  ovaldi = new NetworkingOvaldiProxy();
         if (executable != null) {
             ovaldi.setExecutable( executable );
         }

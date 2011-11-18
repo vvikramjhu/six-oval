@@ -2,7 +2,7 @@ package jp.go.aist.six.test.oval.interpreter;
 
 import jp.go.aist.six.oval.interpreter.Option;
 import jp.go.aist.six.oval.interpreter.Options;
-import jp.go.aist.six.oval.interpreter.OvalDefinitionInterpreter;
+import jp.go.aist.six.oval.interpreter.OvaldiProxy;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
 
@@ -57,7 +57,7 @@ public class OvalInterpreterTest
         Reporter.log( "* executable: " + executable, true );
         Reporter.log( "* options: " + options, true );
 
-        OvalDefinitionInterpreter  ovaldi = new OvalDefinitionInterpreter();
+        OvaldiProxy  ovaldi = new OvaldiProxy();
         if (executable != null) {
             ovaldi.setExecutable( executable );
         }

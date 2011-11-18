@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.interpreter;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
@@ -37,7 +38,7 @@ import org.slf4j.LoggerFactory;
  * @version $Id$
  */
 public class Options
-    implements Cloneable, Serializable
+    implements Iterable<Option>, Cloneable, Serializable
 {
 
     /**
@@ -249,6 +250,13 @@ public class Options
         }
 
         return _options.containsKey( option );
+    }
+
+
+    @Override
+    public Iterator<Option> iterator()
+    {
+        return _options.keySet().iterator();
     }
 
 
