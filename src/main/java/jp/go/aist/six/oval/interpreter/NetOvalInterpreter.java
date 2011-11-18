@@ -47,7 +47,7 @@ import org.springframework.web.client.RestTemplate;
  * @version $Id$
  */
 public class NetOvalInterpreter
-    extends OvalInterpreter
+    extends OvalDefinitionInterpreter
 {
 
     private static class NetOption
@@ -499,7 +499,7 @@ public class NetOvalInterpreter
 
         _preProcess( localOptions );
 
-        OvalInterpreter  ovaldi = new OvalInterpreter( localOptions );
+        OvalDefinitionInterpreter  ovaldi = new OvalDefinitionInterpreter( localOptions );
         ovaldi.setExecutable( getExecutable() );
         int  exitValue = ovaldi.execute();
 
