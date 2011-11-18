@@ -39,7 +39,7 @@ import org.slf4j.LoggerFactory;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalInterpreter
+public class OvalDefinitionInterpreter
 {
 
     /**
@@ -51,7 +51,7 @@ public class OvalInterpreter
     public static void main(
                     final String[] args
                     )
-    throws OvalInterpreterException
+    throws Exception
     {
         if (args.length < 1) {
             System.err.println( "no program and arguments specified" );
@@ -62,7 +62,7 @@ public class OvalInterpreter
         strings.remove( 0 );
         Options  options = Options.fromCommandLine( strings );
 
-        OvalInterpreter  ovaldi = new OvalInterpreter();
+        OvalDefinitionInterpreter  ovaldi = new OvalDefinitionInterpreter();
         ovaldi.setExecutable( args[0] );
         ovaldi.setOptions( options );
 
@@ -92,7 +92,7 @@ public class OvalInterpreter
 
         final String  name;
         final String  defaultValue;
-        final Option  option;
+//        final Option  option;
 
 
         /**
@@ -106,7 +106,7 @@ public class OvalInterpreter
         {
             this.name= name;
             this.defaultValue = defaultValue;
-            this.option = option;
+//            this.option = option;
         }
 
 
@@ -122,7 +122,7 @@ public class OvalInterpreter
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( OvalInterpreter.class );
+        LoggerFactory.getLogger( OvalDefinitionInterpreter.class );
 
 
     private final Map<Property, String>  _config =
@@ -136,12 +136,12 @@ public class OvalInterpreter
     /**
      * Constructor.
      */
-    public OvalInterpreter()
+    public OvalDefinitionInterpreter()
     {
     }
 
 
-    public OvalInterpreter(
+    public OvalDefinitionInterpreter(
                     final Options options
                     )
     {
