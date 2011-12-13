@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.independent;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
-import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
@@ -38,13 +37,14 @@ import jp.go.aist.six.oval.model.definitions.StateType;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.8:
+ *             Replaced by the environmentvariable58 state and
+ *             will be removed in a future version of the language.
  */
-public class EnvironmentVariable58State
+@Deprecated
+public class EnvironmentVariableState
     extends StateType
 {
-
-    private EntityStateIntType  pid;
-    //{0..1}
 
     private EntityStateStringType  name;
     //{0..1}
@@ -57,13 +57,13 @@ public class EnvironmentVariable58State
     /**
      * Constructor.
      */
-    public EnvironmentVariable58State()
+    public EnvironmentVariableState()
     {
         this( null, 0 );
     }
 
 
-    public EnvironmentVariable58State(
+    public EnvironmentVariableState(
                     final String id,
                     final int version
                     )
@@ -72,7 +72,7 @@ public class EnvironmentVariable58State
     }
 
 
-    public EnvironmentVariable58State(
+    public EnvironmentVariableState(
                     final String id,
                     final int version,
                     final String comment
@@ -81,24 +81,7 @@ public class EnvironmentVariable58State
         super( id, version, comment );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.environmentvariable58;
-    }
-
-
-
-    /**
-     */
-    public void setPid(
-                    final EntityStateIntType pid
-                    )
-    {
-        this.pid = pid;
-    }
-
-
-    public EntityStateIntType getPid()
-    {
-        return this.pid;
+        _oval_component_type = OvalComponentType.environmentvariable;
     }
 
 
@@ -154,7 +137,7 @@ public class EnvironmentVariable58State
                     final Object obj
                     )
     {
-        if (!(obj instanceof EnvironmentVariable58State)) {
+        if (!(obj instanceof EnvironmentVariableState)) {
             return false;
         }
 
@@ -166,12 +149,11 @@ public class EnvironmentVariable58State
     @Override
     public String toString()
     {
-        return "environmentvariable58_state[" + super.toString()
-                        + ", pid="       + getPid()
+        return "environmentvariable_state[" + super.toString()
                         + ", name="      + getName()
                         + ", value="     + getValue()
                         + "]";
     }
 
 }
-// EnvironmentVariable58State
+// EnvironmentVariableState

@@ -20,14 +20,9 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.definitions.EntityObjectIntType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
-import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
@@ -40,45 +35,39 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.8:
+ *             Replaced by the environmentvariable58 object and
+ *             will be removed in a future version of the language.
  */
-public class EnvironmentVariable58Object
+@Deprecated
+public class EnvironmentVariableObject
     extends SystemObjectType
 {
     // XSD model:
     // choice(
     //         set
-    //         sequence(
-    //              .....
-    //          )
+    //         name
     // )
 
     private Set  set;
     //{1..1}
 
 
-    private EntityObjectIntType  pid;
-    //{1..1, nillable="true"}
-
-
     private EntityObjectStringType  name;
     //{1..1}
-
-
-    private final Collection<Filter>  filter = new ArrayList<Filter>();
-    //{0..*}
 
 
 
     /**
      * Constructor.
      */
-    public EnvironmentVariable58Object()
+    public EnvironmentVariableObject()
     {
         this( null, 0 );
     }
 
 
-    public EnvironmentVariable58Object(
+    public EnvironmentVariableObject(
                     final String id,
                     final int version
                     )
@@ -87,7 +76,7 @@ public class EnvironmentVariable58Object
     }
 
 
-    public EnvironmentVariable58Object(
+    public EnvironmentVariableObject(
                     final String id,
                     final int version,
                     final String comment
@@ -96,7 +85,7 @@ public class EnvironmentVariable58Object
         super( id, version, comment );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.environmentvariable58;
+        _oval_component_type = OvalComponentType.environmentvariable;
     }
 
 
@@ -120,23 +109,6 @@ public class EnvironmentVariable58Object
 
     /**
      */
-    public void setPid(
-                    final EntityObjectIntType pid
-                    )
-    {
-        this.pid = pid;
-    }
-
-
-    public EntityObjectIntType getPid()
-    {
-        return this.pid;
-    }
-
-
-
-    /**
-     */
     public void setName(
                     final EntityObjectStringType name
                     )
@@ -148,55 +120,6 @@ public class EnvironmentVariable58Object
     public EntityObjectStringType getName()
     {
         return this.name;
-    }
-
-
-
-    /**
-     */
-    public void setFilter(
-                    final Collection<? extends Filter> filterList
-                    )
-    {
-        if (this.filter != filterList) {
-            this.filter.clear();
-            if (filterList != null  &&  filterList.size() > 0) {
-                this.filter.addAll( filterList );
-            }
-        }
-    }
-
-
-    public boolean addFilter(
-                    final Filter filter
-                    )
-    {
-        if (filter == null) {
-            return false;
-        }
-
-        return this.filter.add( filter );
-    }
-
-
-    public Collection<Filter> getFilter()
-    {
-        return this.filter;
-    }
-
-
-    public Iterator<Filter> iterateFilter()
-    {
-        return this.filter.iterator();
-    }
-
-
-    public EnvironmentVariable58Object filter(
-                    final Filter filter
-                    )
-    {
-        addFilter( filter );
-        return this;
     }
 
 
@@ -218,7 +141,7 @@ public class EnvironmentVariable58Object
                     final Object obj
                     )
     {
-        if (!(obj instanceof EnvironmentVariable58Object)) {
+        if (!(obj instanceof EnvironmentVariableObject)) {
             return false;
         }
 
@@ -230,13 +153,11 @@ public class EnvironmentVariable58Object
     @Override
     public String toString()
     {
-        return "environmentvariable58_object[" + super.toString()
+        return "environmentvariable_object[" + super.toString()
                         + ", set=" + getSet()
-                        + ", pid=" + getPid()
                         + ", name=" + getName()
-                        + ", filter=" + getFilter()
                         + "]";
     }
 
 }
-// EnvironmentVariable58Object
+// EnvironmentVariableObject
