@@ -25,26 +25,27 @@ import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 
 
 /**
- * The EntityItemWindowsViewType restricts a string value
- * to a specific set of values: 32-bit and 64-bit.
+ * The EntityItemHashTypeType restricts a string value to
+ * a specific set of values that specify the different
+ * hash algorithms that are supported.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemWindowsViewType
+public class EntityItemHashTypeType
     extends EntityItemStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemWindowsViewType()
+    public EntityItemHashTypeType()
     {
     }
 
 
-    public EntityItemWindowsViewType(
+    public EntityItemHashTypeType(
                     final String content
                     )
     {
@@ -53,8 +54,8 @@ public class EntityItemWindowsViewType
 
 
 
-    public EntityItemWindowsViewType(
-                    final WindowsViewEnumeration content
+    public EntityItemHashTypeType(
+                    final HashTypeEnumeration content
                     )
     {
         super( (content == null ? null : content.value()) );
@@ -73,7 +74,7 @@ public class EntityItemWindowsViewType
     {
         if (content != null) {
             //validation
-            WindowsViewEnumeration.fromValue( content );
+            HashTypeEnumeration.fromValue( content );
         }
 
         super.setContent( content );
@@ -102,7 +103,7 @@ public class EntityItemWindowsViewType
             return true;
         }
 
-        if (!(obj instanceof EntityItemWindowsViewType)) {
+        if (!(obj instanceof EntityItemHashTypeType)) {
             return false;
         }
 
@@ -110,4 +111,4 @@ public class EntityItemWindowsViewType
     }
 
 }
-//EntityItemWindowsViewType
+//EntityItemHashTypeType

@@ -28,17 +28,13 @@ import jp.go.aist.six.oval.model.sc.ItemType;
 
 
 /**
- * The filehash item stores the different hash values associated with a specific file.
+ * The filehash58 item stores a hash value associated with a specific file.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.8:
- *             Replaced by the filehash58 item and
- *             will be removed in a future version of the language.
  */
-@Deprecated
-public class FileHashItem
+public class FileHash58Item
     extends ItemType
 {
 
@@ -51,10 +47,10 @@ public class FileHashItem
     private EntityItemStringType  filename;
     //{0..1}
 
-    private EntityItemStringType  md5;
+    private EntityItemHashTypeType  hash_type;
     //{0..1}
 
-    private EntityItemStringType  sha1;
+    private EntityItemStringType  hash;
     //{0..1}
 
 
@@ -66,20 +62,20 @@ public class FileHashItem
     /**
      * Constructor.
      */
-    public FileHashItem()
+    public FileHash58Item()
     {
         this( 0 );
     }
 
 
-    public FileHashItem(
+    public FileHash58Item(
                     final int id
                     )
     {
         super( id );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.filehash;
+        _oval_component_type = OvalComponentType.filehash58;
     }
 
 
@@ -137,34 +133,34 @@ public class FileHashItem
 
     /**
      */
-    public void setMd5(
-                    final EntityItemStringType md5
+    public void setHashType(
+                    final EntityItemHashTypeType hash_type
                     )
     {
-        this.md5 = md5;
+        this.hash_type = hash_type;
     }
 
 
-    public EntityItemStringType getMd5()
+    public EntityItemHashTypeType getHashType()
     {
-        return this.md5;
+        return this.hash_type;
     }
 
 
 
     /**
      */
-    public void setCha1(
-                    final EntityItemStringType sha1
+    public void setHash(
+                    final EntityItemStringType hash
                     )
     {
-        this.sha1 = sha1;
+        this.hash = hash;
     }
 
 
-    public EntityItemStringType getSha1()
+    public EntityItemStringType getHash()
     {
-        return this.sha1;
+        return this.hash;
     }
 
 
@@ -203,7 +199,7 @@ public class FileHashItem
                     final Object obj
                     )
     {
-        if (!(obj instanceof FileHashItem)) {
+        if (!(obj instanceof FileHash58Item)) {
             return false;
         }
 
@@ -215,15 +211,15 @@ public class FileHashItem
     @Override
     public String toString()
     {
-        return "filehash_item[" + super.toString()
+        return "filehash58_item[" + super.toString()
                         + ", filepath="     + getFilepath()
                         + ", path="         + getPath()
                         + ", filename="     + getFilename()
-                        + ", md5="          + getMd5()
-                        + ", sha1="         + getSha1()
+                        + ", hash_type="    + getHashType()
+                        + ", hash="         + getHash()
                         + ", windows_view=" + getWindowsView()
                         + "]";
     }
 
 }
-// FileHashState
+// FileHash58Item

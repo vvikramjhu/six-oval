@@ -48,7 +48,7 @@ public class FileHash58State
     private EntityStateStringType  filename;
     //{0..1}
 
-    private EntityStateStringType  hash_type;
+    private EntityStateHashTypeType  hash_type;
     //{0..1}
 
     private EntityStateStringType  hash;
@@ -146,14 +146,14 @@ public class FileHash58State
     /**
      */
     public void setHashType(
-                    final EntityStateStringType hash_type
+                    final EntityStateHashTypeType hash_type
                     )
     {
         this.hash_type = hash_type;
     }
 
 
-    public EntityStateStringType getHashType()
+    public EntityStateHashTypeType getHashType()
     {
         return this.hash_type;
     }
@@ -234,4 +234,4 @@ public class FileHash58State
     }
 
 }
-// FileHashState
+// FileHash58State
