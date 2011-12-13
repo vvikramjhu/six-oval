@@ -74,9 +74,11 @@ public class FileBehaviors
     }
 
 
-    protected final RecurseEnumeration _recurse()
+    protected static final RecurseEnumeration _recurse(
+                    final FileBehaviors behaviors
+                    )
     {
-        RecurseEnumeration  recurse = getRecurse();
+        RecurseEnumeration  recurse = behaviors.getRecurse();
         return (recurse == null ? DEFAULT_RECURSE : recurse);
     }
 
@@ -92,7 +94,7 @@ public class FileBehaviors
         final int  prime = 37;
         int  result = super.hashCode();
 
-        result = prime * result + _recurse().hashCode();
+        result = prime * result + _recurse( this ).hashCode();
 
         return result;
     }
@@ -114,7 +116,7 @@ public class FileBehaviors
 
         if (super.equals( obj )) {
             FileBehaviors  other = (FileBehaviors)obj;
-            if (this._recurse() == other._recurse()) {
+            if (_recurse( this ) == _recurse( other )) {
                 return true;
             }
         }

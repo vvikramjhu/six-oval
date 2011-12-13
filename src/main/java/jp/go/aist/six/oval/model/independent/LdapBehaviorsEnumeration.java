@@ -25,23 +25,19 @@ import jp.go.aist.six.oval.model.OvalEnumeration;
 
 
 /**
- * The hash algorithm enumeration.
+ * The LDAP behaviors enumeration.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum HashTypeEnumeration
+public enum LdapBehaviorsEnumeration
     implements OvalEnumeration
 {
 
-    MD5      ( "MD5" ),
-    SHA_1    ( "SHA-1" ),
-    SHA_224  ( "SHA-224" ),
-    SHA_256  ( "SHA-256" ),
-    SHA_384  ( "SHA-384" ),
-    SHA_512  ( "SHA-512" ),
-    EMPTY    ( "" )
+    BASE     ( "BASE" ),
+    ONE      ( "ONE" ),
+    SUBTREE  ( "SUBTREE" )
     ;
 
 
@@ -49,11 +45,11 @@ public enum HashTypeEnumeration
     /**
      * A factory method.
      */
-    public static HashTypeEnumeration fromValue(
+    public static LdapBehaviorsEnumeration fromValue(
                     final String value
                     )
     {
-        for (HashTypeEnumeration  e : HashTypeEnumeration.values()) {
+        for (LdapBehaviorsEnumeration  e : LdapBehaviorsEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -71,7 +67,7 @@ public enum HashTypeEnumeration
     /**
      * Constructor.
      */
-    HashTypeEnumeration(
+    LdapBehaviorsEnumeration(
                     final String value
                     )
     {
@@ -99,4 +95,4 @@ public enum HashTypeEnumeration
     }
 
 }
-// HashTypeEnumeration
+// LdapBehaviorsEnumeration

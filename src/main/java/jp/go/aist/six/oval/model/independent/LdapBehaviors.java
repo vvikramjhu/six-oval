@@ -20,39 +20,34 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.AbstractFileBehaviors;
-import jp.go.aist.six.oval.model.RecurseEnumeration;
+import jp.go.aist.six.oval.model.OvalObject;
 
 
 
 /**
- * The FileBehaviors type defines a number of behaviors
- * that allow a more detailed definition of a set of files
- * or file related items to collect.
+ * The LdapBehaviors defines a number of behaviors that allow
+ * a more detailed definition of the ldap_object being specified.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class FileBehaviors
-    extends AbstractFileBehaviors
+public class LdapBehaviors
+    implements OvalObject
 {
 
-    /**
-     * The default recurseDirection: "symlinks and directories".
-     */
-    public static final RecurseEnumeration  DEFAULT_RECURSE =
-        RecurseEnumeration.SYMLINKS_AND_DIRECTORIES;
+    public static final LdapBehaviorsEnumeration  DEFAULT_SCOPE =
+        LdapBehaviorsEnumeration.BASE;
 
-    private RecurseEnumeration  recurse;
-    //{optional, default='symlinks and directories'}
+    private LdapBehaviorsEnumeration  scope;
+    //{optional, default='BASE'}
 
 
 
     /**
      * Constructor.
      */
-    public FileBehaviors()
+    public LdapBehaviors()
     {
     }
 
@@ -60,24 +55,26 @@ public class FileBehaviors
 
     /**
      */
-    public void setRecurse(
-                    final RecurseEnumeration recurse
+    public void setScope(
+                    final LdapBehaviorsEnumeration scope
                     )
     {
-        this.recurse = recurse;
+        this.scope = scope;
     }
 
 
-    public RecurseEnumeration getRecurse()
+    public LdapBehaviorsEnumeration getScope()
     {
-        return this.recurse;
+        return this.scope;
     }
 
 
-    protected final RecurseEnumeration _recurse()
+    protected static final LdapBehaviorsEnumeration _scope(
+                    final LdapBehaviors behaviors
+                    )
     {
-        RecurseEnumeration  recurse = getRecurse();
-        return (recurse == null ? DEFAULT_RECURSE : recurse);
+        LdapBehaviorsEnumeration  scope = behaviors.getScope();
+        return (scope == null ? DEFAULT_SCOPE : scope);
     }
 
 
@@ -92,7 +89,7 @@ public class FileBehaviors
         final int  prime = 37;
         int  result = super.hashCode();
 
-        result = prime * result + _recurse().hashCode();
+        result = prime * result + _scope( this ).hashCode();
 
         return result;
     }
@@ -108,13 +105,13 @@ public class FileBehaviors
             return true;
         }
 
-        if (!(obj instanceof FileBehaviors)) {
+        if (!(obj instanceof LdapBehaviors)) {
             return false;
         }
 
         if (super.equals( obj )) {
-            FileBehaviors  other = (FileBehaviors)obj;
-            if (this._recurse() == other._recurse()) {
+            LdapBehaviors  other = (LdapBehaviors)obj;
+            if (_scope( this ) == _scope( other )) {
                 return true;
             }
         }
@@ -128,9 +125,9 @@ public class FileBehaviors
     public String toString()
     {
         return super.toString()
-                        + ", recurse=" + getRecurse()
+                        + ", scope=" + getScope()
                         ;
     }
 
 }
-// FileBehaviors
+// LdapBehaviors
