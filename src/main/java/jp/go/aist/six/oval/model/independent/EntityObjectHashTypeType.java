@@ -25,21 +25,24 @@ import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 /**
- * The EntityStateWindowsViewType restricts a string value
- * to a specific set of values: 32-bit and 64-bit.
+ * The EntityObjectHashTypeType restricts a string value
+ * to a specific set of values that specify the different
+ * hash algorithms that are supported.
+ * The empty string is also allowed to support empty elements
+ * associated with variable references.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateWindowsViewType
+public class EntityObjectHashTypeType
     extends EntityStateStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityStateWindowsViewType()
+    public EntityObjectHashTypeType()
     {
     }
 
@@ -55,7 +58,7 @@ public class EntityStateWindowsViewType
                     )
     {
         if (content != null) {
-            WindowsViewEnumeration.fromValue( content );
+            HashTypeEnumeration.fromValue( content );
         }
 
         super.setContent( content );
@@ -84,7 +87,7 @@ public class EntityStateWindowsViewType
             return true;
         }
 
-        if (!(obj instanceof EntityStateWindowsViewType)) {
+        if (!(obj instanceof EntityObjectHashTypeType)) {
             return false;
         }
 
@@ -92,4 +95,4 @@ public class EntityStateWindowsViewType
     }
 
 }
-// EntityStateWindowsViewType
+// EntityObjectHashTypeType

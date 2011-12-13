@@ -28,30 +28,26 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
- * The filehash test is used to check the hashes associated with a specified file.
+ * The file hash test is used to check a specific hash type associated with a specified file.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.8:
- *             Replaced by the filehash58 test and
- *             will be removed in a future version of the language.
  */
-@Deprecated
-public class FileHashTest
+public class FileHash58Test
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public FileHashTest()
+    public FileHash58Test()
     {
         this( null, 0 );
     }
 
 
-    public FileHashTest(
+    public FileHash58Test(
                     final String id,
                     final int version
                     )
@@ -60,7 +56,7 @@ public class FileHashTest
     }
 
 
-    public FileHashTest(
+    public FileHash58Test(
                     final String id,
                     final int version,
                     final String comment,
@@ -70,7 +66,7 @@ public class FileHashTest
         super( id, version, comment, check );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.filehash;
+        _oval_component_type = OvalComponentType.filehash58;
     }
 
 
@@ -92,7 +88,7 @@ public class FileHashTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof FileHashTest)) {
+        if (!(obj instanceof FileHash58Test)) {
             return false;
         }
 
@@ -104,8 +100,8 @@ public class FileHashTest
     @Override
     public String toString()
     {
-        return "filehash_test[" + super.toString() + "]";
+        return "filehash58_test[" + super.toString() + "]";
     }
 
 }
-//FileHashTest
+//FileHash58Test

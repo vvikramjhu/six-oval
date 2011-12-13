@@ -37,7 +37,8 @@ public enum OvalComponentType
     environmentvariable,    //@deprecated
     environmentvariable58,
     family,
-    filehash,
+    filehash,               //@deprecated
+    filehash58,
     textfilecontent,        //@deprecated
     textfilecontent54,
     unknown,
