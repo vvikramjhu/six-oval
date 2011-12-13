@@ -166,7 +166,7 @@ public class FileHashState
 
     /**
      */
-    public void setCha1(
+    public void setSha1(
                     final EntityStateStringType sha1
                     )
     {

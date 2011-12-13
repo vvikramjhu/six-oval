@@ -25,24 +25,22 @@ import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 /**
- * The EntityObjectHashTypeType restricts a string value
- * to a specific set of values that specify the different
- * hash algorithms that are supported.
- * The empty string is also allowed to support empty elements
- * associated with variable references.
+ * The EntityStateHashTypeType restricts a string value
+ * to a specific set of values that specify
+ * the different hash algorithms that are supported.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityObjectHashTypeType
+public class EntityStateHashTypeType
     extends EntityStateStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityObjectHashTypeType()
+    public EntityStateHashTypeType()
     {
     }
 
@@ -87,7 +85,7 @@ public class EntityObjectHashTypeType
             return true;
         }
 
-        if (!(obj instanceof EntityObjectHashTypeType)) {
+        if (!(obj instanceof EntityStateHashTypeType)) {
             return false;
         }
 
@@ -95,4 +93,4 @@ public class EntityObjectHashTypeType
     }
 
 }
-// EntityObjectHashTypeType
+// EntityStateHashTypeType
