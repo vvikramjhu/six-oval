@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.independent;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
-import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 
@@ -37,13 +36,14 @@ import jp.go.aist.six.oval.model.sc.ItemType;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.8:
+ *             Replaced by the environmentvariable58 item and
+ *             will be removed in a future version of the language.
  */
-public class EnvironmentVariable58Item
+@Deprecated
+public class EnvironmentVariableItem
     extends ItemType
 {
-
-    private EntityItemIntType  pid;
-    //{0..1}
 
     private EntityItemStringType  name;
     //{0..1}
@@ -56,37 +56,20 @@ public class EnvironmentVariable58Item
     /**
      * Constructor.
      */
-    public EnvironmentVariable58Item()
+    public EnvironmentVariableItem()
     {
         this( 0 );
     }
 
 
-    public EnvironmentVariable58Item(
+    public EnvironmentVariableItem(
                     final int id
                     )
     {
         super( id );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.environmentvariable58;
-    }
-
-
-
-    /**
-     */
-    public void setPid(
-                    final EntityItemIntType pid
-                    )
-    {
-        this.pid = pid;
-    }
-
-
-    public EntityItemIntType getPid()
-    {
-        return this.pid;
+        _oval_component_type = OvalComponentType.environmentvariable;
     }
 
 
@@ -132,12 +115,11 @@ public class EnvironmentVariable58Item
     @Override
     public String toString()
     {
-        return "environmentvariable58_item[" + super.toString()
-             + ", pid="     + getPid()
+        return "environmentvariable_item[" + super.toString()
              + ", name="    + getName()
              + ", value="   + getValue()
              + "]";
     }
 
 }
-//EnvironmentVariable58Item
+//EnvironmentVariableItem

@@ -34,10 +34,11 @@ public enum OvalComponentType
 {
 
     // independent //
+    environmentvariable,    //@deprecated
     environmentvariable58,
     family,
     filehash,
-    textfilecontent,
+    textfilecontent,        //@deprecated
     textfilecontent54,
     unknown,
 

@@ -34,21 +34,25 @@ import jp.go.aist.six.oval.model.definitions.TestType;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.8:
+ *             Replaced by the environmentvariable58 test and
+ *             will be removed in a future version of the language.
  */
-public class EnvironmentVariable58Test
+@Deprecated
+public class EnvironmentVariableTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public EnvironmentVariable58Test()
+    public EnvironmentVariableTest()
     {
         this( null, 0 );
     }
 
 
-    public EnvironmentVariable58Test(
+    public EnvironmentVariableTest(
                     final String id,
                     final int version
                     )
@@ -57,7 +61,7 @@ public class EnvironmentVariable58Test
     }
 
 
-    public EnvironmentVariable58Test(
+    public EnvironmentVariableTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -67,11 +71,11 @@ public class EnvironmentVariable58Test
         super( id, version, comment, check );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.environmentvariable58;
+        _oval_component_type = OvalComponentType.environmentvariable;
     }
 
 
-//    public TextfileContent54Test(
+//    public TextfileContentTest(
 //                    final String id,
 //                    final int version,
 //                    final String comment,
@@ -103,7 +107,7 @@ public class EnvironmentVariable58Test
                     final Object obj
                     )
     {
-        if (!(obj instanceof EnvironmentVariable58Test)) {
+        if (!(obj instanceof EnvironmentVariableTest)) {
             return false;
         }
 
@@ -115,8 +119,8 @@ public class EnvironmentVariable58Test
     @Override
     public String toString()
     {
-        return "environmentvariable58_test[" + super.toString() + "]";
+        return "environmentvariable_test[" + super.toString() + "]";
     }
 
 }
-//EnvironmentVariable58Test
+//EnvironmentVariableTest
