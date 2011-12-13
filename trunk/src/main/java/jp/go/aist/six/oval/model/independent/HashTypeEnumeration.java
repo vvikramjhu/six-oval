@@ -25,19 +25,23 @@ import jp.go.aist.six.oval.model.OvalEnumeration;
 
 
 /**
- * The Windows view type enumeration.
+ * The hash algorithm enumeration.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum WindowsViewEnumeration
+public enum HashTypeEnumeration
     implements OvalEnumeration
 {
 
-    WINDOWS_32_BIT    ( "32_bit" ),
-    WINDOWS_64_BIT    ( "64_bit" ),
-    EMPTY             ( "" )
+    MD5      ( "MD5" ),
+    SHA_1    ( "SHA-1" ),
+    SHA_224  ( "SHA-224" ),
+    SHA_256  ( "SHA-256" ),
+    SHA_384  ( "SHA-384" ),
+    SHA_512  ( "SHA-512" ),
+    EMPTY    ( "" )
     ;
 
 
@@ -45,11 +49,11 @@ public enum WindowsViewEnumeration
     /**
      * A factory method.
      */
-    public static WindowsViewEnumeration fromValue(
+    public static HashTypeEnumeration fromValue(
                     final String value
                     )
     {
-        for (WindowsViewEnumeration  e : WindowsViewEnumeration.values()) {
+        for (HashTypeEnumeration  e : HashTypeEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -67,7 +71,7 @@ public enum WindowsViewEnumeration
     /**
      * Constructor.
      */
-    WindowsViewEnumeration(
+    HashTypeEnumeration(
                     final String value
                     )
     {
@@ -95,4 +99,4 @@ public enum WindowsViewEnumeration
     }
 
 }
-// WindowsViewTypeEnumeration
+// HashTypeEnumeration

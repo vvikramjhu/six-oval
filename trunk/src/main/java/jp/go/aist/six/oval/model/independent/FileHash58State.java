@@ -28,18 +28,14 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The filehash state contains entities that are used to check the file path,
- * name, and the different hashes associated with a specific file.
+ * The filehash58 state contains entities that are used to check the file path,
+ * name, hash_type, and hash associated with a specific file.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.8:
- *             Replaced by the filehash58 state and
- *             will be removed in a future version of the language.
  */
-@Deprecated
-public class FileHashState
+public class FileHash58State
     extends StateType
 {
 
@@ -52,10 +48,10 @@ public class FileHashState
     private EntityStateStringType  filename;
     //{0..1}
 
-    private EntityStateStringType  md5;
+    private EntityStateStringType  hash_type;
     //{0..1}
 
-    private EntityStateStringType  sha1;
+    private EntityStateStringType  hash;
     //{0..1}
 
 
@@ -67,13 +63,13 @@ public class FileHashState
     /**
      * Constructor.
      */
-    public FileHashState()
+    public FileHash58State()
     {
         this( null, 0 );
     }
 
 
-    public FileHashState(
+    public FileHash58State(
                     final String id,
                     final int version
                     )
@@ -82,7 +78,7 @@ public class FileHashState
     }
 
 
-    public FileHashState(
+    public FileHash58State(
                     final String id,
                     final int version,
                     final String comment
@@ -91,7 +87,7 @@ public class FileHashState
         super( id, version, comment );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.filehash;
+        _oval_component_type = OvalComponentType.filehash58;
     }
 
 
@@ -149,34 +145,34 @@ public class FileHashState
 
     /**
      */
-    public void setMd5(
-                    final EntityStateStringType md5
+    public void setHashType(
+                    final EntityStateStringType hash_type
                     )
     {
-        this.md5 = md5;
+        this.hash_type = hash_type;
     }
 
 
-    public EntityStateStringType getMd5()
+    public EntityStateStringType getHashType()
     {
-        return this.md5;
+        return this.hash_type;
     }
 
 
 
     /**
      */
-    public void setCha1(
-                    final EntityStateStringType sha1
+    public void setHash(
+                    final EntityStateStringType hash
                     )
     {
-        this.sha1 = sha1;
+        this.hash = hash;
     }
 
 
-    public EntityStateStringType getSha1()
+    public EntityStateStringType getHash()
     {
-        return this.sha1;
+        return this.hash;
     }
 
 
@@ -215,7 +211,7 @@ public class FileHashState
                     final Object obj
                     )
     {
-        if (!(obj instanceof FileHashState)) {
+        if (!(obj instanceof FileHash58State)) {
             return false;
         }
 
@@ -231,8 +227,8 @@ public class FileHashState
                         + ", filepath="     + getFilepath()
                         + ", path="         + getPath()
                         + ", filename="     + getFilename()
-                        + ", md5="          + getMd5()
-                        + ", sha1="         + getSha1()
+                        + ", hash_type="    + getHashType()
+                        + ", hash="         + getHash()
                         + ", windows_view=" + getWindowsView()
                         + "]";
     }

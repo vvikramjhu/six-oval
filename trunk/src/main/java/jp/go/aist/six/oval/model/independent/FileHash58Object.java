@@ -20,27 +20,27 @@
 
 package jp.go.aist.six.oval.model.independent;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 
 /**
- * The filehash object is used by a file hash test to define
+ * The filehash58 object is used by a file hash test to define
  * the specific file(s) to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.8:
- *             Replaced by the filehash58 object and
- *             will be removed in a future version of the language.
  */
-@Deprecated
-public class FileHashObject
+public class FileHash58Object
     extends SystemObjectType
 {
     // XSD model:
@@ -55,6 +55,8 @@ public class FileHashObject
     //                                     filename
     //                           )
     //                   )
+    //                   hash_type
+    //                   filter
     //          )
     // )
 
@@ -68,18 +70,24 @@ public class FileHashObject
 
     private EntityObjectStringType  filename;
 
+    private EntityObjectHashTypeType  hash_type;
+    //{1..1}
+
+    private final Collection<Filter>  filter = new ArrayList<Filter>();
+    //{0..*}
+
 
 
     /**
      * Constructor.
      */
-    public FileHashObject()
+    public FileHash58Object()
     {
         this( null, 0 );
     }
 
 
-    public FileHashObject(
+    public FileHash58Object(
                     final String id,
                     final int version
                     )
@@ -88,7 +96,7 @@ public class FileHashObject
     }
 
 
-    public FileHashObject(
+    public FileHash58Object(
                     final String id,
                     final int version,
                     final String comment
@@ -97,7 +105,7 @@ public class FileHashObject
         super( id, version, comment );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.filehash;
+        _oval_component_type = OvalComponentType.filehash58;
     }
 
 
@@ -187,6 +195,63 @@ public class FileHashObject
 
 
 
+    /**
+     */
+    public void setHashType(
+                    final EntityObjectHashTypeType hash_type
+                    )
+    {
+        this.hash_type = hash_type;
+    }
+
+
+    public EntityObjectHashTypeType getHashType()
+    {
+        return this.hash_type;
+    }
+
+
+
+    /**
+     */
+    public void setFilter(
+                    final Collection<? extends Filter> filterList
+                    )
+    {
+        if (this.filter != filterList) {
+            this.filter.clear();
+            if (filterList != null  &&  filterList.size() > 0) {
+                this.filter.addAll( filterList );
+            }
+        }
+    }
+
+
+    public boolean addFilter(
+                    final Filter filter
+                    )
+    {
+        if (filter == null) {
+            return false;
+        }
+
+        return this.filter.add( filter );
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return this.filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return this.filter.iterator();
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -204,7 +269,7 @@ public class FileHashObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof FileHashObject)) {
+        if (!(obj instanceof FileHash58Object)) {
             return false;
         }
 
@@ -216,14 +281,16 @@ public class FileHashObject
     @Override
     public String toString()
     {
-        return "filehash_object[" + super.toString()
+        return "filehash58_object[" + super.toString()
                         + ", set="       + getSet()
                         + ", behaviors=" + getBehaviors()
                         + ", filepath="  + getFilepath()
                         + ", path="      + getPath()
                         + ", filename="  + getFilename()
-                        + "]";
+                        + ", hash_type=" + getHashType()
+                        + ", filter=" + getFilter()
+                       + "]";
     }
 
 }
-//FileHashObject
+//FileHash58Object
