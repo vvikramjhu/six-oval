@@ -89,7 +89,7 @@
     <test name="oval.core.xml" enabled="true">
         <groups>
             <run>
-                <include name="oval.definitions.oval_definitions"/>
+                <include name="oval.test-content"/>
                 <!--
                 <include name="oval.results.oval_results"/>
                 <include name="oval.definitions.oval_definitions"/>
@@ -104,7 +104,7 @@
         </groups>
 
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlTest"/>
+            <class name="jp.go.aist.six.test.oval.core.xml.OvalTestContentXmlTest"/>
             <!--
             <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlTest"/>
             <class name="jp.go.aist.six.test.oval.core.xml.XmlTransformTest"/>

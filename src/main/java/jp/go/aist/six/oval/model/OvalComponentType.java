@@ -60,6 +60,7 @@ public enum OvalComponentType
     wmi57,
 
     // variable //
+    constant,
     local,
     external;
 

@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.common;
+package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.OvalObject;
 
@@ -26,34 +26,25 @@ import jp.go.aist.six.oval.model.OvalObject;
 
 
 /**
- * The Message type defines the structure for which messages
- * are relayed from the data collection engine.
- * Each message is a text string that has an associated
- * level attribute identifying the type of message being sent.
+ * The ValueType holds the actual value of the variable
+ * when dealing with a constant variable.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class MessageType
+public class ValueType
     implements OvalObject
 {
 
     private String  content;
 
 
-    public static final MessageLevelEnumeration  DEFAULT_LEVEL =
-        MessageLevelEnumeration.INFO;
-
-    private MessageLevelEnumeration  level;
-    //{optional, default="info"}
-
-
 
     /**
      * Constructor.
      */
-    public MessageType()
+    public ValueType()
     {
     }
 
@@ -76,23 +67,6 @@ public class MessageType
 
 
 
-    /**
-     */
-    public void setLevel(
-                    final MessageLevelEnumeration level
-                    )
-    {
-        this.level = level;
-    }
-
-
-    public MessageLevelEnumeration getLevel()
-    {
-        return this.level;
-    }
-
-
-
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -100,10 +74,8 @@ public class MessageType
     @Override
     public String toString()
     {
-        return "[level=" + getLevel()
-             + ", " + getContent()
-             + "]";
+        return "[" + getContent() + "]";
     }
 
 }
-// MessageType
+// ValueType
