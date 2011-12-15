@@ -62,7 +62,7 @@ public class OvalTestContentXmlTest
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
                             "test/resources/OvalTestContent/5.10/windows",
-                            "ind-def_family_test.xml"
+                            "ind-def_filehash58_test.xml"
                         }
         };
     }

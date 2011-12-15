@@ -250,20 +250,6 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.independent.EntityStateFamilyType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
-
-<!--
-        <field name="content"
-            type="string"
-            handler="jp.go.aist.six.oval.core.xml.FamilyEnumerationHandler">
-            <bind-xml node="text"/>
-        </field>
--->
-    </class>
-
-
-
     <class name ="jp.go.aist.six.oval.model.independent.FamilyItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
         <map-to xml="family_item"
@@ -274,12 +260,6 @@
             type="jp.go.aist.six.oval.model.independent.EntityItemFamilyType">
             <bind-xml name="family" node="element"/>
         </field>
-    </class>
-
-
-
-    <class name="jp.go.aist.six.oval.model.independent.EntityItemFamilyType"
-        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
 
 
@@ -526,6 +506,7 @@
             <bind-xml name="windows_view" node="element"/>
         </field>
     </class>
+
 
 
     <class name ="jp.go.aist.six.oval.model.independent.FileHash58Item"
@@ -861,5 +842,50 @@
     </class>
 
 
+
+
+    <!-- ******************************************************* -->
+    <!-- entity attribute types                                  -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.independent.EntityStateFamilyType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+
+<!--
+        <field name="content"
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.FamilyEnumerationHandler">
+            <bind-xml node="text"/>
+        </field>
+-->
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.independent.EntityItemFamilyType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.independent.EntityObjectHashTypeType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.independent.EntityStateHashTypeType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.independent.EntityItemHashTypeType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.independent.EntityStateWindowsViewType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.independent.EntityItemWindowsViewType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
 
 </mapping>
