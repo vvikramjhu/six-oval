@@ -25,18 +25,18 @@ import jp.go.aist.six.oval.model.common.GeneratorInformation;
 
 
 /**
- * An additional generator information from Mitre.
+ * The terms of use.
  * This is not part of the official OVAL Schema.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class Vendor
+public class TermsOfUse
     extends GeneratorInformation
 {
 
-    private String  _name;
+    private String  content;
     //{xsd:string}
 
 
@@ -44,7 +44,7 @@ public class Vendor
     /**
      * Constructor.
      */
-    public Vendor()
+    public TermsOfUse()
     {
     }
 
@@ -52,17 +52,17 @@ public class Vendor
 
     /**
      */
-    public void setName(
-                    final String name
+    public void setContent(
+                    final String content
                     )
     {
-        _name = name;
+        this.content = content;
     }
 
 
-    public String getName()
+    public String getContent()
     {
-        return _name;
+        return content;
     }
 
 
@@ -74,8 +74,8 @@ public class Vendor
     @Override
     public String toString()
     {
-        return "vendor[" + getName() + "]";
+        return "term_of_use[" + getContent() + "]";
     }
 
 }
-// Vendor
+// TermsOfUse

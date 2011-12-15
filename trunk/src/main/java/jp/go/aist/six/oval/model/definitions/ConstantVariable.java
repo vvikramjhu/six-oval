@@ -20,22 +20,27 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
 
 /**
- * The LocalVariable extends the Variable and defines a variable
- * with some local source.
+ * The ConstantVariable extends the VariableType and
+ * defines a variable with a constant value(s).
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class LocalVariable
+public class ConstantVariable
     extends VariableType
 {
+
+    private final Collection<ValueType>  value = new ArrayList<ValueType>();
 
     private ComponentGroup  component;
     //{1..1}
@@ -48,13 +53,13 @@ public class LocalVariable
     /**
      * Constructor.
      */
-    public LocalVariable()
+    public ConstantVariable()
     {
         this( null, 0 );
     }
 
 
-    public LocalVariable(
+    public ConstantVariable(
                     final String id,
                     final int version
                     )
@@ -63,7 +68,7 @@ public class LocalVariable
     }
 
 
-    public LocalVariable(
+    public ConstantVariable(
                     final String id,
                     final int version,
                     final String comment
@@ -73,7 +78,7 @@ public class LocalVariable
     }
 
 
-    public LocalVariable(
+    public ConstantVariable(
                     final String id,
                     final int version,
                     final String comment,
@@ -81,50 +86,47 @@ public class LocalVariable
                     )
     {
         super( id, version, comment, datatype );
-        _oval_component_type = OvalComponentType.local;
+        _oval_component_type = OvalComponentType.constant;
     }
 
 
 
     /**
      */
-    public void setComponent(
-                    final ComponentGroup component
+    public void setValue(
+                    final Collection<? extends ValueType> values
                     )
     {
-        this.component = component;
+        this.value.clear();
+        if (values != null  &&  values.size() > 0) {
+            for (ValueType  value : values) {
+                addValue( value );
+            }
+        }
     }
 
 
-    public ComponentGroup getComponent()
-    {
-        return this.component;
-    }
-
-
-    public LocalVariable component(
-                    final ComponentGroup component
+    public boolean addValue(
+                    final ValueType value
                     )
     {
-        setComponent( component );
-        return this;
+        if (value == null) {
+            throw new IllegalArgumentException( "empty value" );
+        }
+
+        return this.value.add( value );
     }
 
 
-
-    /**
-     */
-    public void xmlSetComponent(
-                    final String xml
-                    )
+    public Collection<ValueType> getValue()
     {
-        _componentXml = xml;
+        return this.value;
     }
 
 
-    public String xmlGetComponent()
+    public Iterator<ValueType> iterateValue()
     {
-        return _componentXml;
+        return this.value.iterator();
     }
 
 
@@ -146,7 +148,7 @@ public class LocalVariable
                     final Object obj
                     )
     {
-        if (!(obj instanceof LocalVariable)) {
+        if (!(obj instanceof ConstantVariable)) {
             return false;
         }
 
@@ -158,10 +160,10 @@ public class LocalVariable
     @Override
     public String toString()
     {
-        return "local_variable[" + super.toString()
-             + ", " + getComponent()
+        return "constant_variable[" + super.toString()
+             + ", value=" + getValue()
              + "]";
     }
 
 }
-// LocalVariable
+// ConstantVariable

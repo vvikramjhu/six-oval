@@ -1,9 +1,11 @@
 package jp.go.aist.six.test.oval.core.xml;
 
+import java.io.File;
+import java.io.FilenameFilter;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
-import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import org.testng.Reporter;
+import org.testng.annotations.DataProvider;
 
 
 
@@ -11,13 +13,13 @@ import org.testng.Reporter;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalXmlTest
+public class OvalTestContentXmlTest
     extends CoreTestBase
 {
 
     /**
      */
-    public OvalXmlTest()
+    public OvalTestContentXmlTest()
     {
     }
 
@@ -28,63 +30,98 @@ public class OvalXmlTest
     protected <T> void _testXml(
                     final Class<T> type,
                     final String sourceFilepath,
-//                    final String xpath,
                     final T expected,
                     final String resultFilepath
                     )
     throws Exception
     {
-        T  actual = _unmarshalWithValidation( type, sourceFilepath, /* xpath, */ expected );
+        T  actual = _unmarshalWithValidation( type, sourceFilepath, expected );
         _marshal( actual, resultFilepath );
         _unmarshalWithValidation( type, resultFilepath, /* xpath, */ expected );
     }
 
 
+    //**************************************************************
+    //  OVAL Test Content
+    //**************************************************************
 
-    //**************************************************************
-    //  OVAL definitions
-    //**************************************************************
+    @DataProvider( name="oval.test-content" )
+    public Object[][] provideOvalTestContentXml()
+    {
+        return new Object[][] {
+                        //Java class
+                        //directory that contains OVAL definitions XML files
+                        //target OVAL Definitions file. If it is null, all the XML files are targets.
+
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/OvalTestContent/5.10/windows",
+//                            null
+//                        }
+//                        ,
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "test/resources/OvalTestContent/5.10/windows",
+                            "ind-def_family_test.xml"
+                        }
+        };
+    }
+
+
 
     @org.testng.annotations.Test(
-                    groups={"oval.core.xml", "oval.definitions.oval_definitions"},
-                    dataProvider="oval.definitions.xml",
+                    groups={"oval.core.xml", "oval.test-content"},
+                    dataProvider="oval.test-content",
                     alwaysRun=true
                     )
     public void testDefinitionsOvalDefinitions(
                     final Class<OvalDefinitions> type,
-                    final String sourceFilepath,
-//                  final String xpath,
-                    final OvalDefinitions expected,
-                    final String resultFilepath
+                    final String dirpath,
+                    final String filename
                     )
     throws Exception
     {
         Reporter.log( "\n////////////////////////////////////////////", true );
-        _testXml( type, sourceFilepath, /* xpath, */ expected, resultFilepath );
+        Reporter.log( "// OVAL Test Content", true );
+
+        File  dir = new File( dirpath );
+
+        if (filename == null) {
+            FilenameFilter  filter = new XmlFilenameFilter();
+            File[]  files = dir.listFiles( filter );
+            for (File  file : files) {
+                Reporter.log( "  * file= " + file, true );
+                _testXml( type, file.getCanonicalPath(), null, "unmarshalled_" + file.getName() );
+            }
+        } else {
+            File  file = new File( dir, filename );
+            Reporter.log( "  * file= " + file, true );
+            _testXml( type, file.getCanonicalPath(), null, "unmarshalled_" + file.getName() );
+        }
+//        _testXml( type, filename, /* xpath, */ expected, resultFilepath );
     }
 
 
 
-    //**************************************************************
-    //  OVAL results
-    //**************************************************************
-
-    @org.testng.annotations.Test(
-                    groups={"oval.core.xml", "oval.results.oval_results"},
-                    dataProvider="oval.results.xml",
-                    alwaysRun=true
-                    )
-    public void testResutlsOvalResults(
-                    final Class<OvalResults> type,
-                    final String sourceFilepath,
-                    final OvalResults expected,
-                    final String resultFilepath
-                    )
-    throws Exception
+    private static class XmlFilenameFilter
+    implements FilenameFilter
     {
-        Reporter.log( "\n////////////////////////////////////////////", true );
-        _testXml( type, sourceFilepath, expected, resultFilepath );
+
+        public XmlFilenameFilter()
+        {
+        }
+
+
+        @Override
+        public boolean accept(
+                        final File dir,
+                        final String name
+                        )
+        {
+            return name.endsWith( ".xml" );
+        }
+
     }
 
 }
-// OvalXmlTest
+// OvalTestContentXmlTest
