@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 
 
 
@@ -36,7 +36,7 @@ import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class EntityObjectHashTypeType
-    extends EntityStateStringType
+    extends EntityObjectStringType
 {
 
     /**
