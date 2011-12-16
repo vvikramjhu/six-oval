@@ -20,63 +20,72 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
-import jp.go.aist.six.oval.model.sc.EntityItemStringType;
-import jp.go.aist.six.oval.model.sc.ItemType;
+import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
+import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * This element holds information about specific entries in the LDAP directory.
+ * The ldap state defines the different information that can be used
+ * to evaluate the specified entries in an LDAP directory.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class LdapItem
-    extends ItemType
+public class LdapState
+    extends StateType
 {
 
-    private EntityItemStringType  suffix;
+    private EntityStateStringType  suffix;
     //{0..1}
 
-    private EntityItemStringType  relative_dn;
+    private EntityStateStringType  relative_dn;
     //{0..1}
 
-    private EntityItemStringType  attribute;
+    private EntityStateStringType  attribute;
     //{0..1}
 
-    private EntityItemStringType  object_class;
+    private EntityStateStringType  object_class;
     //{0..1}
 
-    private EntityItemLdaptypeType  ldaptype;
+    private EntityStateLdaptypeTypeType  ldaptype;
     //{0..1}
 
 
-    private final Collection<EntityItemAnySimpleType>  value = new ArrayList<EntityItemAnySimpleType>();
-    //{0..*}
+    private EntityStateAnySimpleType  value;
+    //{0..1}
 
 
 
     /**
      * Constructor.
      */
-    public LdapItem()
+    public LdapState()
     {
-        this( 0 );
+        this( null, 0 );
     }
 
 
-    public LdapItem(
-                    final int id
+    public LdapState(
+                    final String id,
+                    final int version
                     )
     {
-        super( id );
+        this( id, version, null );
+    }
+
+
+    public LdapState(
+                    final String id,
+                    final int version,
+                    final String comment
+                    )
+    {
+        super( id, version, comment );
 
         _oval_platform_type = OvalPlatformType.independent;
         _oval_component_type = OvalComponentType.ldap;
@@ -87,14 +96,14 @@ public class LdapItem
     /**
      */
     public void setSuffix(
-                    final EntityItemStringType suffix
+                    final EntityStateStringType suffix
                     )
     {
         this.suffix = suffix;
     }
 
 
-    public EntityItemStringType getSuffix()
+    public EntityStateStringType getSuffix()
     {
         return this.suffix;
     }
@@ -104,14 +113,14 @@ public class LdapItem
     /**
      */
     public void setRelativeDn(
-                    final EntityItemStringType relative_dn
+                    final EntityStateStringType relative_dn
                     )
     {
         this.relative_dn = relative_dn;
     }
 
 
-    public EntityItemStringType getRelativeDn()
+    public EntityStateStringType getRelativeDn()
     {
         return this.relative_dn;
     }
@@ -121,14 +130,14 @@ public class LdapItem
     /**
      */
     public void setAttribute(
-                    final EntityItemStringType attribute
+                    final EntityStateStringType attribute
                     )
     {
         this.attribute = attribute;
     }
 
 
-    public EntityItemStringType getAttribute()
+    public EntityStateStringType getAttribute()
     {
         return this.attribute;
     }
@@ -137,32 +146,15 @@ public class LdapItem
 
     /**
      */
-    public void setLdaptype(
-                    final EntityItemLdaptypeType ldaptype
-                    )
-    {
-        this.ldaptype = ldaptype;
-    }
-
-
-    public EntityItemLdaptypeType getLdaptype()
-    {
-        return this.ldaptype;
-    }
-
-
-
-    /**
-     */
     public void setObjectClass(
-                    final EntityItemStringType object_class
+                    final EntityStateStringType object_class
                     )
     {
         this.object_class = object_class;
     }
 
 
-    public EntityItemStringType getObjectClass()
+    public EntityStateStringType getObjectClass()
     {
         return this.object_class;
     }
@@ -171,40 +163,34 @@ public class LdapItem
 
     /**
      */
+    public void setLdapType(
+                    final EntityStateLdaptypeTypeType ldaptype
+                    )
+    {
+        this.ldaptype = ldaptype;
+    }
+
+
+    public EntityStateLdaptypeTypeType getLdapType()
+    {
+        return this.ldaptype;
+    }
+
+
+
+    /**
+     */
     public void setValue(
-                    final Collection<? extends EntityItemAnySimpleType> values
+                    final EntityStateAnySimpleType value
                     )
     {
-        this.value.clear();
-        if (values != null  &&  values.size() > 0) {
-            for (EntityItemAnySimpleType  value : values) {
-                addValue( value );
-            }
-        }
+        this.value = value;
     }
 
 
-    public boolean addValue(
-                    final EntityItemAnySimpleType value
-                    )
-    {
-        if (value == null) {
-            throw new IllegalArgumentException( "empty value" );
-        }
-
-        return this.value.add( value );
-    }
-
-
-    public Collection<EntityItemAnySimpleType> getValue()
+    public EntityStateAnySimpleType getValue()
     {
         return this.value;
-    }
-
-
-    public Iterator<EntityItemAnySimpleType> iterateValue()
-    {
-        return this.value.iterator();
     }
 
 
@@ -226,7 +212,7 @@ public class LdapItem
                     final Object obj
                     )
     {
-        if (!(obj instanceof LdapItem)) {
+        if (!(obj instanceof LdapState)) {
             return false;
         }
 
@@ -238,15 +224,15 @@ public class LdapItem
     @Override
     public String toString()
     {
-        return "ldap_item[" + super.toString()
+        return "ldap_state[" + super.toString()
                         + ", suffix="       + getSuffix()
                         + ", relative_dn="  + getRelativeDn()
                         + ", attribute="    + getAttribute()
-                        + ", ldaptype="     + getLdaptype()
                         + ", object_class=" + getObjectClass()
+                        + ", ldaptype="     + getLdapType()
                         + ", value="        + getValue()
                         + "]";
     }
 
 }
-// LdapItem
+// LdapState

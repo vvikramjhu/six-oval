@@ -20,64 +20,53 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.common.CheckEnumeration;
+import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 
 /**
- * The EntityItemLdaptypeType restricts a string value
- * to a specific set of values that specify the different types
- * of information that an ldap attribute can represent.
+ * The LDAP test is used to check information about specific entries in an LDAP directory.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemLdaptypeType
-    extends EntityItemStringType
+public class LdapTest
+    extends TestType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemLdaptypeType()
+    public LdapTest()
     {
+        this( null, 0 );
     }
 
 
-    public EntityItemLdaptypeType(
-                    final String content
+    public LdapTest(
+                    final String id,
+                    final int version
                     )
     {
-        super( content );
+        this( id, version, null, null );
     }
 
 
-
-    public EntityItemLdaptypeType(
-                    final HashTypeEnumeration content
+    public LdapTest(
+                    final String id,
+                    final int version,
+                    final String comment,
+                    final CheckEnumeration check
                     )
     {
-        super( (content == null ? null : content.value()) );
-    }
+        super( id, version, comment, check );
 
-
-
-    //**************************************************************
-    //  EntityItemBase
-    //**************************************************************
-
-    @Override
-    public void setContent(
-                    final String content
-                    )
-    {
-        if (content != null) {
-            //validation
-            HashTypeEnumeration.fromValue( content );
-        }
-
-        super.setContent( content );
+        _oval_platform_type = OvalPlatformType.independent;
+        _oval_component_type = OvalComponentType.ldap;
     }
 
 
@@ -99,16 +88,20 @@ public class EntityItemLdaptypeType
                     final Object obj
                     )
     {
-        if (this == obj) {
-            return true;
-        }
-
-        if (!(obj instanceof EntityItemLdaptypeType)) {
+        if (!(obj instanceof LdapTest)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
+
+
+    @Override
+    public String toString()
+    {
+        return "ldap_test[" + super.toString() + "]";
+    }
+
 }
-//EntityItemLdaptypeType
+//LdapTest
