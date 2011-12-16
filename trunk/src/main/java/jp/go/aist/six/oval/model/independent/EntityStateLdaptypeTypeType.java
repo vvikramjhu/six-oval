@@ -20,12 +20,12 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 
 /**
- * The EntityItemLdaptypeType restricts a string value
+ * The EntityStateLdapTypeType restricts a string value
  * to a specific set of values that specify the different types
  * of information that an ldap attribute can represent.
  *
@@ -33,38 +33,21 @@ import jp.go.aist.six.oval.model.sc.EntityItemStringType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemLdaptypeType
-    extends EntityItemStringType
+public class EntityStateLdaptypeTypeType
+    extends EntityStateStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemLdaptypeType()
+    public EntityStateLdaptypeTypeType()
     {
-    }
-
-
-    public EntityItemLdaptypeType(
-                    final String content
-                    )
-    {
-        super( content );
-    }
-
-
-
-    public EntityItemLdaptypeType(
-                    final HashTypeEnumeration content
-                    )
-    {
-        super( (content == null ? null : content.value()) );
     }
 
 
 
     //**************************************************************
-    //  EntityItemBase
+    //  EntitySimpleBaseType
     //**************************************************************
 
     @Override
@@ -73,8 +56,7 @@ public class EntityItemLdaptypeType
                     )
     {
         if (content != null) {
-            //validation
-            HashTypeEnumeration.fromValue( content );
+            LdaptypeTypeEnumeration.fromValue( content );
         }
 
         super.setContent( content );
@@ -103,7 +85,7 @@ public class EntityItemLdaptypeType
             return true;
         }
 
-        if (!(obj instanceof EntityItemLdaptypeType)) {
+        if (!(obj instanceof EntityStateLdaptypeTypeType)) {
             return false;
         }
 
@@ -111,4 +93,4 @@ public class EntityItemLdaptypeType
     }
 
 }
-//EntityItemLdaptypeType
+// EntityStateLdapTypeType

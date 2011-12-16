@@ -42,12 +42,6 @@ public class ConstantVariable
 
     private final Collection<ValueType>  value = new ArrayList<ValueType>();
 
-    private ComponentGroup  component;
-    //{1..1}
-
-
-    private String  _componentXml;
-
 
 
     /**
