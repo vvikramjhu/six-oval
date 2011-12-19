@@ -28,30 +28,26 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
- * The SQL test is used to check information stored in a database.
+ * The variable test allows the value of a variable to be compared to a defined value.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.7:
- *             Replaced by the sql57 test and
- *             will be removed in a future version of the language.
  */
-@Deprecated
-public class SqlTest
+public class VariableTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public SqlTest()
+    public VariableTest()
     {
         this( null, 0 );
     }
 
 
-    public SqlTest(
+    public VariableTest(
                     final String id,
                     final int version
                     )
@@ -60,7 +56,7 @@ public class SqlTest
     }
 
 
-    public SqlTest(
+    public VariableTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -70,7 +66,7 @@ public class SqlTest
         super( id, version, comment, check );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.sql;
+        _oval_component_type = OvalComponentType.variable;
     }
 
 
@@ -92,7 +88,7 @@ public class SqlTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof SqlTest)) {
+        if (!(obj instanceof VariableTest)) {
             return false;
         }
 
@@ -104,8 +100,8 @@ public class SqlTest
     @Override
     public String toString()
     {
-        return "sql_test[" + super.toString() + "]";
+        return "variable_test[" + super.toString() + "]";
     }
 
 }
-//SqlTest
+//VariableTest

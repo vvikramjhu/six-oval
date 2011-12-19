@@ -25,22 +25,21 @@ import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 
 
 /**
- * The EntityObjectEngineType defines a string entity value
- * that is restricted to a set of enumerations.
- * Each valid enumeration is a valid database engine.
+ * The EntityObjectVariableRefType defines a string object entity
+ * that has a valid OVAL variable id as the value.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityObjectEngineType
+public class EntityObjectVvariableRefType
     extends EntityObjectStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityObjectEngineType()
+    public EntityObjectVvariableRefType()
     {
     }
 
@@ -50,17 +49,15 @@ public class EntityObjectEngineType
     //  EntitySimpleBaseType
     //**************************************************************
 
-    @Override
-    public void setContent(
-                    final String content
-                    )
-    {
-        if (content != null) {
-            EngineEnumeration.fromValue( content );
-        }
-
-        super.setContent( content );
-    }
+//    @Override
+//    public void setContent(
+//                    final String content
+//                    )
+//    {
+//        //TODO: some validation code
+//
+//        super.setContent( content );
+//    }
 
 
 
@@ -85,7 +82,7 @@ public class EntityObjectEngineType
             return true;
         }
 
-        if (!(obj instanceof EntityObjectEngineType)) {
+        if (!(obj instanceof EntityObjectVvariableRefType)) {
             return false;
         }
 
@@ -93,4 +90,4 @@ public class EntityObjectEngineType
     }
 
 }
-// EntityObjectEngineType
+// EntityObjectVariableRefType

@@ -25,27 +25,26 @@ import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 
 
 /**
- * The EntityItemHashTypeType restricts a string value to
- * a specific set of values that specify the different
- * hash algorithms that are supported.
+ * The EntityItemVariableRefType defines a string item entity
+ * that has a valid OVAL variable id as the value.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemHashTypeType
+public class EntityItemVariableRefType
     extends EntityItemStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemHashTypeType()
+    public EntityItemVariableRefType()
     {
     }
 
 
-    public EntityItemHashTypeType(
+    public EntityItemVariableRefType(
                     final String content
                     )
     {
@@ -54,31 +53,22 @@ public class EntityItemHashTypeType
 
 
 
-    public EntityItemHashTypeType(
-                    final HashTypeEnumeration content
-                    )
-    {
-        super( (content == null ? null : content.value()) );
-    }
-
-
-
     //**************************************************************
     //  EntityItemBase
     //**************************************************************
 
-    @Override
-    public void setContent(
-                    final String content
-                    )
-    {
-        if (content != null) {
-            //validation
-            HashTypeEnumeration.fromValue( content );
-        }
-
-        super.setContent( content );
-    }
+//    @Override
+//    public void setContent(
+//                    final String content
+//                    )
+//    {
+//        if (content != null) {
+//            //validation
+//            //TODO: some validation code.
+//        }
+//
+//        super.setContent( content );
+//    }
 
 
 
@@ -103,7 +93,7 @@ public class EntityItemHashTypeType
             return true;
         }
 
-        if (!(obj instanceof EntityItemHashTypeType)) {
+        if (!(obj instanceof EntityItemVariableRefType)) {
             return false;
         }
 
@@ -111,4 +101,4 @@ public class EntityItemHashTypeType
     }
 
 }
-//EntityItemHashTypeType
+//EntityItemVariableRefType
