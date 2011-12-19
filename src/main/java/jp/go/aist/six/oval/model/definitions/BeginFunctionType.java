@@ -23,14 +23,14 @@ package jp.go.aist.six.oval.model.definitions;
 
 
 /**
- * The escape_regex function takes a single string component
- * and escapes all of the regular expression characters.
+ * The begin function takes a single string component
+ * and defines a character (or string) that the component string should start with.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EscapeRegexFunctionType
+public class BeginFunctionType
     extends FunctionGroup
 {
 
@@ -38,11 +38,16 @@ public class EscapeRegexFunctionType
     //{1..1}
 
 
+    private String  character;
+    //{required}
+
+
+
 
     /**
      * Constructor.
      */
-    public EscapeRegexFunctionType()
+    public BeginFunctionType()
     {
     }
 
@@ -65,6 +70,23 @@ public class EscapeRegexFunctionType
 
 
 
+    /**
+     */
+    public void setCharacter(
+                    final String character
+                    )
+    {
+        this.character = character;
+    }
+
+
+    public String getCharacter()
+    {
+        return this.character;
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -72,9 +94,10 @@ public class EscapeRegexFunctionType
     @Override
     public String toString()
     {
-        return "escape_regex[" + getComponent()
+        return "begin[" + getComponent()
+             + ", character=" + getCharacter()
              + "]";
     }
 
 }
-// EscapeRegexFunctionType
+//BeginFunctionType

@@ -594,6 +594,10 @@
 
 
 
+    <!-- ******************************************************* -->
+    <!-- function                                                -->
+    <!-- ******************************************************* -->
+
 <!--
     <class name="jp.go.aist.six.oval.model.definitions.FunctionGroup"
         verify-constructable="false">
@@ -617,6 +621,22 @@
             type="string"
             handler="jp.go.aist.six.oval.core.xml.definitions.ArithmeticEnumerationHandler">
             <bind-xml name="arithmetic_operation" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.definitions.BeginFunctionType">
+        <map-to xml="begin"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="component" 
+            type="jp.go.aist.six.oval.model.definitions.ComponentGroup">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+
+        <field name="character" type="string">
+            <bind-xml name="character" node="attribute"/>
         </field>
     </class>
 
