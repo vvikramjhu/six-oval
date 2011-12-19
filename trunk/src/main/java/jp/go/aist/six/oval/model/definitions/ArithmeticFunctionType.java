@@ -27,14 +27,14 @@ import java.util.Iterator;
 
 
 /**
- * The concat function takes two or more components
- * and concatenates them together to form a single string.
+ * The arithmetic function takes two or more integer or float components
+ * and performs a basic mathematical function on them.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class ConcatFunctionType
+public class ArithmeticFunctionType
     extends FunctionGroup
 {
 
@@ -43,11 +43,15 @@ public class ConcatFunctionType
     //{2..*}
 
 
+    private ArithmeticEnumeration  arithmetic_operation;
+    //{required}
+
+
 
     /**
      * Constructor.
      */
-    public ConcatFunctionType()
+    public ArithmeticFunctionType()
     {
     }
 
@@ -56,13 +60,16 @@ public class ConcatFunctionType
     /**
      */
     public void setComponent(
-                    final Collection<? extends ComponentGroup> component
+                    final Collection<? extends ComponentGroup> components
                     )
     {
-        if (component != this.component) {
+        if (components != this.component) {
             this.component.clear();
-            if (component != null  &&  component.size() > 0) {
-                this.component.addAll( component );
+            if (components != null  &&  components.size() > 0) {
+                for (ComponentGroup  component : components) {
+                    addComponent( component );
+                }
+//                this.component.addAll( components );
             }
         }
     }
@@ -72,6 +79,10 @@ public class ConcatFunctionType
                     final ComponentGroup component
                     )
     {
+        if (component == null) {
+            return false;
+        }
+
         return this.component.add( component );
     }
 
@@ -89,6 +100,24 @@ public class ConcatFunctionType
 
 
 
+    /**
+     *
+     */
+    public void setArithmeticOperation(
+                    final ArithmeticEnumeration arithmetic_operation
+                    )
+    {
+        this.arithmetic_operation = arithmetic_operation;
+    }
+
+
+    public ArithmeticEnumeration getArithmeticOperation()
+    {
+        return this.arithmetic_operation;
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -96,9 +125,10 @@ public class ConcatFunctionType
     @Override
     public String toString()
     {
-        return "concat[" + getComponent()
+        return "arithmetic[" + getComponent()
+                        + ", arithmetic_operation=" + getArithmeticOperation()
              + "]";
     }
 
 }
-// ConcatFunctionType
+// ArithmeticFunctionType
