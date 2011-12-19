@@ -1120,6 +1120,244 @@
 
 
     <!-- ******************************************************* -->
+    <!-- variable                                                -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.independent.VariableTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="variable_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.independent.VariableObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="variable_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="varRef" 
+            type="jp.go.aist.six.oval.model.independent.EntityObjectVariableRefType">
+            <bind-xml name="var_ref" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.independent.VariableState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="variable_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="varRef" 
+            type="jp.go.aist.six.oval.model.independent.EntityStateVariableRefType">
+            <bind-xml name="var_ref" node="element"/>
+        </field>
+
+        <field name="value" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
+            <bind-xml name="value" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.independent.VariableItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="variable_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent"
+            ns-prefix=""/>
+
+        <field name="varRef" 
+            type="jp.go.aist.six.oval.model.independent.EntityItemVariableRefType">
+            <bind-xml name="var_ref" node="element"/>
+        </field>
+
+        <field name="value" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType"
+            collection="collection">
+            <bind-xml name="value" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- xmlfilecontent                                          -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.independent.XmlfileContentTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="xmlfilecontent_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.independent.XmlfileContentObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="xmlfilecontent_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="behaviors" 
+            type="jp.go.aist.six.oval.model.independent.FileBehaviors">
+            <bind-xml name="behaviors" node="element"/>
+        </field>
+
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+        
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="path" node="element"/>
+        </field>
+
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="filename" node="element"/>
+        </field>
+
+        <field name="xpath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="xpath" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.independent.XmlfileContentState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="xmlfilecontent_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="path" node="element"/>
+        </field>
+
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="filename" node="element"/>
+        </field>
+
+        <field name="xpath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="xpath" node="element"/>
+        </field>
+
+        <field name="valueOf" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
+            <bind-xml name="value_of" node="element"/>
+        </field>
+
+        <field name="windowsView" 
+            type="jp.go.aist.six.oval.model.independent.EntityStateWindowsViewType">
+            <bind-xml name="windows_view" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.independent.XmlfileContentItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="xmlfilecontent_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent"
+            ns-prefix=""/>
+
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="path" node="element"/>
+        </field>
+
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="filename" node="element"/>
+        </field>
+
+        <field name="xpath" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="xpath" node="element"/>
+        </field>
+
+        <field name="valueOf" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType"
+            collection="collection">
+            <bind-xml name="value_of" node="element"/>
+        </field>
+
+        <field name="windowsView" 
+            type="jp.go.aist.six.oval.model.independent.EntityItemWindowsViewType">
+            <bind-xml name="windows_view" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- entity attribute types                                  -->
     <!-- ******************************************************* -->
 
@@ -1177,6 +1415,21 @@
     </class>
 
     <class name="jp.go.aist.six.oval.model.independent.EntityItemEngineType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
+
+<!-- variable -->
+    <class name="jp.go.aist.six.oval.model.independent.EntityObjectVariableRefType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.independent.EntityStateVariableRefType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.independent.EntityItemVariableRefType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
 

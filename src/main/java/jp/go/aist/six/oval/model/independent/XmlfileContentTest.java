@@ -28,27 +28,26 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
- * The textfilecontent54 test is used to check the contents of a text file
- * (aka a configuration file) by looking at individual blocks of text.
+ * The xmlfilecontent test is used to explore the contents of an xml file.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class TextfileContent54Test
+public class XmlfileContentTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public TextfileContent54Test()
+    public XmlfileContentTest()
     {
         this( null, 0 );
     }
 
 
-    public TextfileContent54Test(
+    public XmlfileContentTest(
                     final String id,
                     final int version
                     )
@@ -57,7 +56,7 @@ public class TextfileContent54Test
     }
 
 
-    public TextfileContent54Test(
+    public XmlfileContentTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -67,11 +66,11 @@ public class TextfileContent54Test
         super( id, version, comment, check );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.textfilecontent54;
+        _oval_component_type = OvalComponentType.xmlfilecontent;
     }
 
 
-//    public TextfileContent54Test(
+//    public XmlfileContentTest(
 //                    final String id,
 //                    final int version,
 //                    final String comment,
@@ -103,7 +102,7 @@ public class TextfileContent54Test
                     final Object obj
                     )
     {
-        if (!(obj instanceof TextfileContent54Test)) {
+        if (!(obj instanceof XmlfileContentTest)) {
             return false;
         }
 
@@ -115,8 +114,8 @@ public class TextfileContent54Test
     @Override
     public String toString()
     {
-        return "textfilecontent54_test[" + super.toString() + "]";
+        return "xmlfilecontent_test[" + super.toString() + "]";
     }
 
 }
-// TextfileContent54Test
+//XmlfileContentTest
