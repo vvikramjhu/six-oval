@@ -23,14 +23,14 @@ package jp.go.aist.six.oval.model.definitions;
 
 
 /**
- * The begin function takes a single string component
- * and defines a character (or string) that the component string should start with.
+ * The end function takes a single string component
+ * and defines a character (or string) that the component string should end with.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class BeginFunctionType
+public class EndFunctionType
     extends FunctionGroup
 {
 
@@ -43,11 +43,10 @@ public class BeginFunctionType
 
 
 
-
     /**
      * Constructor.
      */
-    public BeginFunctionType()
+    public EndFunctionType()
     {
     }
 
@@ -94,10 +93,10 @@ public class BeginFunctionType
     @Override
     public String toString()
     {
-        return "begin[" + getComponent()
+        return "end[" + getComponent()
              + ", character=" + getCharacter()
              + "]";
     }
 
 }
-//BeginFunctionType
+//EndFunctionType

@@ -656,6 +656,22 @@
 
 
 
+    <class name="jp.go.aist.six.oval.model.definitions.EndFunctionType">
+        <map-to xml="end"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="component" 
+            type="jp.go.aist.six.oval.model.definitions.ComponentGroup">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+
+        <field name="character" type="string">
+            <bind-xml name="character" node="attribute"/>
+        </field>
+    </class>
+
+
+
     <class name="jp.go.aist.six.oval.model.definitions.EscapeRegexFunctionType">
         <map-to xml="escape_regex"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
