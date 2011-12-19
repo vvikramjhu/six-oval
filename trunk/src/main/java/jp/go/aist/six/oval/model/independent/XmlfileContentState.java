@@ -23,22 +23,21 @@ package jp.go.aist.six.oval.model.independent;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
-import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The textfilecontent54 state contains entities that are used to check
- * the file path and name, as well as the text block in question
- * and the value of the subexpressions.
+ * The xmlfilecontent state contains entities that are used
+ * to check the file path and name, as well as the xpath used
+ * and the value of the this xpath.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class TextfileContent54State
+public class XmlfileContentState
     extends StateType
 {
 
@@ -51,34 +50,27 @@ public class TextfileContent54State
     private EntityStateStringType  filename;
     //{0..1}
 
-    private EntityStateStringType  pattern;
+    private EntityStateStringType  xpath;
     //{0..1}
 
-    private EntityStateIntType  instance;
+    private EntityStateAnySimpleType  value_of;
     //{0..1}
 
-    private EntityStateAnySimpleType  text;
+    private EntityStateWindowsViewType  windows_view;
     //{0..1}
-
-    private EntityStateAnySimpleType  subexpression;
-    //{0..1}
-
-
-//    private final EntityPropertyMap<TextfileContentProperty>  _properties =
-//        TextfileContentProperty.createPropertyMap();
 
 
 
     /**
      * Constructor.
      */
-    public TextfileContent54State()
+    public XmlfileContentState()
     {
         this( null, 0 );
     }
 
 
-    public TextfileContent54State(
+    public XmlfileContentState(
                     final String id,
                     final int version
                     )
@@ -87,7 +79,7 @@ public class TextfileContent54State
     }
 
 
-    public TextfileContent54State(
+    public XmlfileContentState(
                     final String id,
                     final int version,
                     final String comment
@@ -96,7 +88,7 @@ public class TextfileContent54State
         super( id, version, comment );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.textfilecontent54;
+        _oval_component_type = OvalComponentType.xmlfilecontent;
     }
 
 
@@ -108,24 +100,12 @@ public class TextfileContent54State
                     )
     {
         this.filepath = filepath;
-//        _properties.setProperty( TextfileContentProperty.FILEPATH, filepath );
     }
 
 
     public EntityStateStringType getFilepath()
     {
         return this.filepath;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.FILEPATH, EntityStateStringType.class );
-    }
-
-
-    public TextfileContent54State filepath(
-                    final EntityStateStringType filepath
-                    )
-    {
-        setFilepath( filepath );
-        return this;
     }
 
 
@@ -137,24 +117,12 @@ public class TextfileContent54State
                     )
     {
         this.path = path;
-//        _properties.setProperty( TextfileContentProperty.PATH, path );
     }
 
 
     public EntityStateStringType getPath()
     {
         return this.path;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.PATH, EntityStateStringType.class );
-    }
-
-
-    public TextfileContent54State path(
-                    final EntityStateStringType path
-                    )
-    {
-        setPath( path );
-        return this;
     }
 
 
@@ -166,140 +134,63 @@ public class TextfileContent54State
                     )
     {
         this.filename = filename;
-//        _properties.setProperty( TextfileContentProperty.FILENAME, filename );
     }
 
 
     public EntityStateStringType getFilename()
     {
         return this.filename;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.FILENAME, EntityStateStringType.class );
-    }
-
-
-    public TextfileContent54State filename(
-                    final EntityStateStringType filename
-                    )
-    {
-        setFilename( filename );
-        return this;
     }
 
 
 
     /**
      */
-    public void setPattern(
-                    final EntityStateStringType pattern
+    public void setXpath(
+                    final EntityStateStringType xpath
                     )
     {
-        this.pattern = pattern;
-//        _properties.setProperty( TextfileContentProperty.PATTERN, pattern );
+        this.xpath = xpath;
     }
 
 
-    public EntityStateStringType getPattern()
+    public EntityStateStringType getXpath()
     {
-        return this.pattern;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.PATTERN, EntityStateStringType.class );
-    }
-
-
-    public TextfileContent54State pattern(
-                    final EntityStateStringType pattern
-                    )
-    {
-        setPattern( pattern );
-        return this;
+        return this.xpath;
     }
 
 
 
     /**
      */
-    public void setInstance(
-                    final EntityStateIntType instance
+    public void setValueOf(
+                    final EntityStateAnySimpleType value_of
                     )
     {
-        this.instance = instance;
-//        _properties.setProperty( TextfileContentProperty.INSTANCE, instance );
+        this.value_of = value_of;
     }
 
 
-    public EntityStateIntType getInstance()
+    public EntityStateAnySimpleType getValueOf()
     {
-        return this.instance;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.INSTANCE, EntityStateIntType.class );
-    }
-
-
-    public TextfileContent54State instance(
-                    final EntityStateIntType instance
-                    )
-    {
-        setInstance( instance );
-        return this;
+        return this.value_of;
     }
 
 
 
     /**
      */
-    public void setText(
-                    final EntityStateAnySimpleType text
+    public void setWindowsView(
+                    final EntityStateWindowsViewType windows_view
                     )
     {
-        this.text = text;
-//        _properties.setProperty( TextfileContentProperty.TEXT, text );
+        this.windows_view = windows_view;
     }
 
 
-    public EntityStateAnySimpleType getText()
+    public EntityStateWindowsViewType getWindowsView()
     {
-        return this.text;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.TEXT, EntityStateAnySimpleType.class );
-    }
-
-
-    public TextfileContent54State text(
-                    final EntityStateAnySimpleType text
-                    )
-    {
-        setText( text );
-        return this;
-    }
-
-
-
-    /**
-     */
-    public void setSubexpression(
-                    final EntityStateAnySimpleType subexpression
-                    )
-    {
-        this.subexpression = subexpression;
-//        _properties.setProperty( TextfileContentProperty.SUBEXPRESSION, subexpression );
-    }
-
-
-    public EntityStateAnySimpleType getSubexpression()
-    {
-        return this.subexpression;
-//        return _properties.getProperty(
-//                        TextfileContentProperty.SUBEXPRESSION, EntityStateAnySimpleType.class );
-    }
-
-
-    public TextfileContent54State subexpression(
-                    final EntityStateAnySimpleType subexpression
-                    )
-    {
-        setSubexpression( subexpression );
-        return this;
+        return this.windows_view;
     }
 
 
@@ -321,7 +212,7 @@ public class TextfileContent54State
                     final Object obj
                     )
     {
-        if (!(obj instanceof TextfileContent54State)) {
+        if (!(obj instanceof XmlfileContentState)) {
             return false;
         }
 
@@ -333,17 +224,15 @@ public class TextfileContent54State
     @Override
     public String toString()
     {
-        return "textfilecontent54_state[" + super.toString()
-                        + ", filepath="      + getFilepath()
-                        + ", path="          + getPath()
-                        + ", filename="      + getFilename()
-                        + ", pattern="       + getPattern()
-                        + ", instance="      + getInstance()
-                        + ", text="          + getText()
-                        + ", subexpression=" + getSubexpression()
-//                        + ", " + String.valueOf( _properties )
+        return "xmlfilecontent_state[" + super.toString()
+                        + ", filepath="     + getFilepath()
+                        + ", path="         + getPath()
+                        + ", filename="     + getFilename()
+                        + ", xpath="        + getXpath()
+                        + ", value_of="     + getValueOf()
+                        + ", windows_view=" + getWindowsView()
                         + "]";
     }
 
 }
-// TextFileContent54State
+//XmlfileContentState

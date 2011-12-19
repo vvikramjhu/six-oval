@@ -45,6 +45,7 @@ public enum OvalComponentType
     textfilecontent54,
     unknown,
     variable,
+    xmlfilecontent,
 
     // linux //
     dpkginfo,

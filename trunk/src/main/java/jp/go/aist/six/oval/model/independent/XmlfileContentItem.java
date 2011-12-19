@@ -20,21 +20,25 @@
 
 package jp.go.aist.six.oval.model.independent;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 
 
 
 /**
- * The filehash58 item stores a hash value associated with a specific file.
+ * This item stores results from checking the contents of an XML file.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class FileHash58Item
+public class XmlfileContentItem
     extends ItemType
 {
 
@@ -47,12 +51,11 @@ public class FileHash58Item
     private EntityItemStringType  filename;
     //{0..1}
 
-    private EntityItemHashTypeType  hash_type;
+    private EntityItemStringType  xpath;
     //{0..1}
 
-    private EntityItemStringType  hash;
-    //{0..1}
-
+    private final Collection<EntityItemAnySimpleType>  value_of = new ArrayList<EntityItemAnySimpleType>();
+    //{0..*}
 
     private EntityItemWindowsViewType  windows_view;
     //{0..1}
@@ -62,20 +65,20 @@ public class FileHash58Item
     /**
      * Constructor.
      */
-    public FileHash58Item()
+    public XmlfileContentItem()
     {
         this( 0 );
     }
 
 
-    public FileHash58Item(
+    public XmlfileContentItem(
                     final int id
                     )
     {
         super( id );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.filehash58;
+        _oval_component_type = OvalComponentType.xmlfilecontent;
     }
 
 
@@ -133,34 +136,59 @@ public class FileHash58Item
 
     /**
      */
-    public void setHashType(
-                    final EntityItemHashTypeType hash_type
+    public void setXpath(
+                    final EntityItemStringType xpath
                     )
     {
-        this.hash_type = hash_type;
+        this.xpath = xpath;
     }
 
 
-    public EntityItemHashTypeType getHashType()
+    public EntityItemStringType getXpath()
     {
-        return this.hash_type;
+        return this.xpath;
     }
 
 
 
     /**
      */
-    public void setHash(
-                    final EntityItemStringType hash
+    public void setValueOf(
+                    final Collection<? extends EntityItemAnySimpleType> value_ofs
                     )
     {
-        this.hash = hash;
+        if (this.value_of != value_ofs) {
+            this.value_of.clear();
+            if (value_ofs != null  &&  value_ofs.size() > 0) {
+                for (EntityItemAnySimpleType  result : value_ofs) {
+                    addValueOf( result );
+                }
+            }
+        }
     }
 
 
-    public EntityItemStringType getHash()
+    public boolean addValueOf(
+                    final EntityItemAnySimpleType value_of
+                    )
     {
-        return this.hash;
+        if (value_of == null) {
+            throw new IllegalArgumentException( "empty value_of" );
+        }
+
+        return this.value_of.add( value_of );
+    }
+
+
+    public Collection<EntityItemAnySimpleType> getValueOf()
+    {
+        return this.value_of;
+    }
+
+
+    public Iterator<EntityItemAnySimpleType> iterateValueOf()
+    {
+        return this.value_of.iterator();
     }
 
 
@@ -199,7 +227,7 @@ public class FileHash58Item
                     final Object obj
                     )
     {
-        if (!(obj instanceof FileHash58Item)) {
+        if (!(obj instanceof XmlfileContentItem)) {
             return false;
         }
 
@@ -211,15 +239,15 @@ public class FileHash58Item
     @Override
     public String toString()
     {
-        return "filehash58_item[" + super.toString()
+        return "xmlfilecontent_item[" + super.toString()
                         + ", filepath="     + getFilepath()
                         + ", path="         + getPath()
                         + ", filename="     + getFilename()
-                        + ", hash_type="    + getHashType()
-                        + ", hash="         + getHash()
+                        + ", xpath="        + getXpath()
+                        + ", value_of="     + getValueOf()
                         + ", windows_view=" + getWindowsView()
                         + "]";
     }
 
 }
-// FileHash58Item
+//XmlfileContentItem

@@ -51,7 +51,7 @@ public class VariableObject
 
     private Set  set;
 
-    private EntityObjectVvariableRefType  var_ref;
+    private EntityObjectVariableRefType  var_ref;
     //{1..1}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();
@@ -111,14 +111,14 @@ public class VariableObject
     /**
      */
     public void setVarRef(
-                    final EntityObjectVvariableRefType var_ref
+                    final EntityObjectVariableRefType var_ref
                     )
     {
         this.var_ref = var_ref;
     }
 
 
-    public EntityObjectVvariableRefType getVarRef()
+    public EntityObjectVariableRefType getVarRef()
     {
         return this.var_ref;
     }

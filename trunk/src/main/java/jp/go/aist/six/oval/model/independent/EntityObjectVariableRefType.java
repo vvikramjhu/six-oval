@@ -32,14 +32,14 @@ import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityObjectVvariableRefType
+public class EntityObjectVariableRefType
     extends EntityObjectStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityObjectVvariableRefType()
+    public EntityObjectVariableRefType()
     {
     }
 
@@ -82,7 +82,7 @@ public class EntityObjectVvariableRefType
             return true;
         }
 
-        if (!(obj instanceof EntityObjectVvariableRefType)) {
+        if (!(obj instanceof EntityObjectVariableRefType)) {
             return false;
         }
 
