@@ -26,37 +26,23 @@ import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
-import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 
 
 
 /**
- * This element holds information about specific entries in the LDAP directory.
+ * This item stores information about OVAL Variables and their values.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class LdapItem
+public class VariableItem
     extends ItemType
 {
 
-    private EntityItemStringType  suffix;
+    private EntityItemVariableRefType  var_ref;
     //{0..1}
-
-    private EntityItemStringType  relative_dn;
-    //{0..1}
-
-    private EntityItemStringType  attribute;
-    //{0..1}
-
-    private EntityItemStringType  object_class;
-    //{0..1}
-
-    private EntityItemLdaptypeType  ldaptype;
-    //{0..1}
-
 
     private final Collection<EntityItemAnySimpleType>  value = new ArrayList<EntityItemAnySimpleType>();
     //{0..*}
@@ -66,105 +52,37 @@ public class LdapItem
     /**
      * Constructor.
      */
-    public LdapItem()
+    public VariableItem()
     {
         this( 0 );
     }
 
 
-    public LdapItem(
+    public VariableItem(
                     final int id
                     )
     {
         super( id );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.ldap;
+        _oval_component_type = OvalComponentType.variable;
     }
 
 
 
     /**
      */
-    public void setSuffix(
-                    final EntityItemStringType suffix
+    public void setVarRef(
+                    final EntityItemVariableRefType var_ref
                     )
     {
-        this.suffix = suffix;
+        this.var_ref = var_ref;
     }
 
 
-    public EntityItemStringType getSuffix()
+    public EntityItemVariableRefType getVarRef()
     {
-        return this.suffix;
-    }
-
-
-
-    /**
-     */
-    public void setRelativeDn(
-                    final EntityItemStringType relative_dn
-                    )
-    {
-        this.relative_dn = relative_dn;
-    }
-
-
-    public EntityItemStringType getRelativeDn()
-    {
-        return this.relative_dn;
-    }
-
-
-
-    /**
-     */
-    public void setAttribute(
-                    final EntityItemStringType attribute
-                    )
-    {
-        this.attribute = attribute;
-    }
-
-
-    public EntityItemStringType getAttribute()
-    {
-        return this.attribute;
-    }
-
-
-
-    /**
-     */
-    public void setLdaptype(
-                    final EntityItemLdaptypeType ldaptype
-                    )
-    {
-        this.ldaptype = ldaptype;
-    }
-
-
-    public EntityItemLdaptypeType getLdaptype()
-    {
-        return this.ldaptype;
-    }
-
-
-
-    /**
-     */
-    public void setObjectClass(
-                    final EntityItemStringType object_class
-                    )
-    {
-        this.object_class = object_class;
-    }
-
-
-    public EntityItemStringType getObjectClass()
-    {
-        return this.object_class;
+        return this.var_ref;
     }
 
 
@@ -226,7 +144,7 @@ public class LdapItem
                     final Object obj
                     )
     {
-        if (!(obj instanceof LdapItem)) {
+        if (!(obj instanceof VariableItem)) {
             return false;
         }
 
@@ -238,15 +156,11 @@ public class LdapItem
     @Override
     public String toString()
     {
-        return "ldap_item[" + super.toString()
-                        + ", suffix="       + getSuffix()
-                        + ", relative_dn="  + getRelativeDn()
-                        + ", attribute="    + getAttribute()
-                        + ", ldaptype="     + getLdaptype()
-                        + ", object_class=" + getObjectClass()
+        return "variable_item[" + super.toString()
+                        + ", var_ref="       + getVarRef()
                         + ", value="        + getValue()
                         + "]";
     }
 
 }
-// LdapItem
+//VariableItem

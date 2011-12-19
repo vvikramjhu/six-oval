@@ -25,7 +25,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
@@ -33,44 +32,26 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The filehash58 object is used by a file hash test to define
- * the specific file(s) to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class FileHash58Object
+public class VariableObject
     extends SystemObjectType
 {
     // XSD model:
     // choice(
     //         set
     //         sequence(
-    //                   behaviors
-    //                   choice(
-    //                           filepath
-    //                           sequence(
-    //                                     path
-    //                                     filename
-    //                           )
-    //                   )
-    //                   hash_type
+    //                   var_ref
     //                   filter
     //          )
     // )
 
     private Set  set;
 
-    private FileBehaviors  behaviors;
-
-    private EntityObjectStringType  filepath;
-
-    private EntityObjectStringType  path;
-
-    private EntityObjectStringType  filename;
-
-    private EntityObjectHashTypeType  hash_type;
+    private EntityObjectVvariableRefType  var_ref;
     //{1..1}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();
@@ -81,13 +62,13 @@ public class FileHash58Object
     /**
      * Constructor.
      */
-    public FileHash58Object()
+    public VariableObject()
     {
         this( null, 0 );
     }
 
 
-    public FileHash58Object(
+    public VariableObject(
                     final String id,
                     final int version
                     )
@@ -96,7 +77,7 @@ public class FileHash58Object
     }
 
 
-    public FileHash58Object(
+    public VariableObject(
                     final String id,
                     final int version,
                     final String comment
@@ -105,7 +86,7 @@ public class FileHash58Object
         super( id, version, comment );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.filehash58;
+        _oval_component_type = OvalComponentType.variable;
     }
 
 
@@ -129,85 +110,17 @@ public class FileHash58Object
 
     /**
      */
-    public void setBehaviors(
-                    final FileBehaviors behaviors
+    public void setVarRef(
+                    final EntityObjectVvariableRefType var_ref
                     )
     {
-        this.behaviors = behaviors;
+        this.var_ref = var_ref;
     }
 
 
-    public FileBehaviors getBehaviors()
+    public EntityObjectVvariableRefType getVarRef()
     {
-        return this.behaviors;
-    }
-
-
-
-    /**
-     */
-    public void setPath(
-                    final EntityObjectStringType path
-                    )
-    {
-        this.path = path;
-    }
-
-
-    public EntityObjectStringType getPath()
-    {
-        return path;
-    }
-
-
-
-    /**
-     */
-    public void setFilename(
-                    final EntityObjectStringType filename
-                    )
-    {
-        this.filename = filename;
-    }
-
-
-    public EntityObjectStringType getFilename()
-    {
-        return this.filename;
-    }
-
-
-
-    /**
-     */
-    public void setFilepath(
-                    final EntityObjectStringType filepath
-                    )
-    {
-        this.filepath = filepath;
-    }
-
-
-    public EntityObjectStringType getFilepath()
-    {
-        return this.filepath;
-    }
-
-
-
-    /**
-     */
-    public void setHashType(
-                    final EntityObjectHashTypeType hash_type
-                    )
-    {
-        this.hash_type = hash_type;
-    }
-
-
-    public EntityObjectHashTypeType getHashType()
-    {
-        return this.hash_type;
+        return this.var_ref;
     }
 
 
@@ -215,13 +128,13 @@ public class FileHash58Object
     /**
      */
     public void setFilter(
-                    final Collection<? extends Filter> filterList
+                    final Collection<? extends Filter> filters
                     )
     {
-        if (this.filter != filterList) {
+        if (this.filter != filters) {
             this.filter.clear();
-            if (filterList != null  &&  filterList.size() > 0) {
-                this.filter.addAll( filterList );
+            if (filters != null  &&  filters.size() > 0) {
+                this.filter.addAll( filters );
             }
         }
     }
@@ -269,7 +182,7 @@ public class FileHash58Object
                     final Object obj
                     )
     {
-        if (!(obj instanceof FileHash58Object)) {
+        if (!(obj instanceof VariableObject)) {
             return false;
         }
 
@@ -281,16 +194,12 @@ public class FileHash58Object
     @Override
     public String toString()
     {
-        return "filehash58_object[" + super.toString()
-                        + ", set="       + getSet()
-                        + ", behaviors=" + getBehaviors()
-                        + ", filepath="  + getFilepath()
-                        + ", path="      + getPath()
-                        + ", filename="  + getFilename()
-                        + ", hash_type=" + getHashType()
-                        + ", filter=" + getFilter()
+        return "variable_object[" + super.toString()
+                        + ", set="      + getSet()
+                        + ", var_ref="  + getVarRef()
+                        + ", filter="   + getFilter()
                        + "]";
     }
 
 }
-//FileHash58Object
+//VariableObject

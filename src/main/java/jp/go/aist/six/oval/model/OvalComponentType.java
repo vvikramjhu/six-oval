@@ -44,6 +44,7 @@ public enum OvalComponentType
     textfilecontent,        //@deprecated
     textfilecontent54,
     unknown,
+    variable,
 
     // linux //
     dpkginfo,

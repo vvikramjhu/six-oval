@@ -23,38 +23,24 @@ package jp.go.aist.six.oval.model.independent;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
-import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The ldap state defines the different information that can be used
- * to evaluate the specified entries in an LDAP directory.
+ * The variable state contains two entities that are used
+ * to check the var_ref of the specified varible and the value associated with it.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class LdapState
+public class VariableState
     extends StateType
 {
 
-    private EntityStateStringType  suffix;
+    private EntityStateVariableRefType  var_ref;
     //{0..1}
-
-    private EntityStateStringType  relative_dn;
-    //{0..1}
-
-    private EntityStateStringType  attribute;
-    //{0..1}
-
-    private EntityStateStringType  object_class;
-    //{0..1}
-
-    private EntityStateLdaptypeType  ldaptype;
-    //{0..1}
-
 
     private EntityStateAnySimpleType  value;
     //{0..1}
@@ -64,13 +50,13 @@ public class LdapState
     /**
      * Constructor.
      */
-    public LdapState()
+    public VariableState()
     {
         this( null, 0 );
     }
 
 
-    public LdapState(
+    public VariableState(
                     final String id,
                     final int version
                     )
@@ -79,7 +65,7 @@ public class LdapState
     }
 
 
-    public LdapState(
+    public VariableState(
                     final String id,
                     final int version,
                     final String comment
@@ -88,92 +74,24 @@ public class LdapState
         super( id, version, comment );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.ldap;
+        _oval_component_type = OvalComponentType.variable;
     }
 
 
 
     /**
      */
-    public void setSuffix(
-                    final EntityStateStringType suffix
+    public void setVarRef(
+                    final EntityStateVariableRefType var_ref
                     )
     {
-        this.suffix = suffix;
+        this.var_ref = var_ref;
     }
 
 
-    public EntityStateStringType getSuffix()
+    public EntityStateVariableRefType getVarRef()
     {
-        return this.suffix;
-    }
-
-
-
-    /**
-     */
-    public void setRelativeDn(
-                    final EntityStateStringType relative_dn
-                    )
-    {
-        this.relative_dn = relative_dn;
-    }
-
-
-    public EntityStateStringType getRelativeDn()
-    {
-        return this.relative_dn;
-    }
-
-
-
-    /**
-     */
-    public void setAttribute(
-                    final EntityStateStringType attribute
-                    )
-    {
-        this.attribute = attribute;
-    }
-
-
-    public EntityStateStringType getAttribute()
-    {
-        return this.attribute;
-    }
-
-
-
-    /**
-     */
-    public void setObjectClass(
-                    final EntityStateStringType object_class
-                    )
-    {
-        this.object_class = object_class;
-    }
-
-
-    public EntityStateStringType getObjectClass()
-    {
-        return this.object_class;
-    }
-
-
-
-    /**
-     */
-    public void setLdaptype(
-                    final EntityStateLdaptypeType ldaptype
-                    )
-    {
-        this.ldaptype = ldaptype;
-    }
-
-
-    public EntityStateLdaptypeType getLdaptype()
-    {
-        return this.ldaptype;
+        return this.var_ref;
     }
 
 
@@ -212,7 +130,7 @@ public class LdapState
                     final Object obj
                     )
     {
-        if (!(obj instanceof LdapState)) {
+        if (!(obj instanceof VariableState)) {
             return false;
         }
 
@@ -224,15 +142,11 @@ public class LdapState
     @Override
     public String toString()
     {
-        return "ldap_state[" + super.toString()
-                        + ", suffix="       + getSuffix()
-                        + ", relative_dn="  + getRelativeDn()
-                        + ", attribute="    + getAttribute()
-                        + ", object_class=" + getObjectClass()
-                        + ", ldaptype="     + getLdaptype()
+        return "variable_state[" + super.toString()
+                        + ", var_ref="       + getVarRef()
                         + ", value="        + getValue()
                         + "]";
     }
 
 }
-// LdapState
+//VariableState

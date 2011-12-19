@@ -25,22 +25,21 @@ import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 /**
- * The EntityStateEngineType defines a string entity value
- * that is restricted to a set of enumerations.
- * Each valid enumeration is a valid database engine.
+ * The EntityStateVariableRefType defines a string state entity
+ * that has a valid OVAL variable id as the value.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateEngineType
+public class EntityStateVariableRefType
     extends EntityStateStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityStateEngineType()
+    public EntityStateVariableRefType()
     {
     }
 
@@ -50,17 +49,15 @@ public class EntityStateEngineType
     //  EntitySimpleBaseType
     //**************************************************************
 
-    @Override
-    public void setContent(
-                    final String content
-                    )
-    {
-        if (content != null) {
-            EngineEnumeration.fromValue( content );
-        }
-
-        super.setContent( content );
-    }
+//    @Override
+//    public void setContent(
+//                    final String content
+//                    )
+//    {
+//        //TODO: some validation code.
+//
+//        super.setContent( content );
+//    }
 
 
 
@@ -85,7 +82,7 @@ public class EntityStateEngineType
             return true;
         }
 
-        if (!(obj instanceof EntityStateEngineType)) {
+        if (!(obj instanceof EntityStateVariableRefType)) {
             return false;
         }
 
@@ -93,4 +90,4 @@ public class EntityStateEngineType
     }
 
 }
-// EntityStateEngineType
+// EntityStateVariableRefType
