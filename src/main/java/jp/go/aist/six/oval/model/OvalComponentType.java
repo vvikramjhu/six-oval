@@ -40,6 +40,7 @@ public enum OvalComponentType
     filehash,               //@deprecated
     filehash58,
     ldap,
+    sql,                    //@deprecated
     textfilecontent,        //@deprecated
     textfilecontent54,
     unknown,

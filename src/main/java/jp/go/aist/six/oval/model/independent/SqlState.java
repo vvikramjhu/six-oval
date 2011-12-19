@@ -29,34 +29,34 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The ldap state defines the different information that can be used
- * to evaluate the specified entries in an LDAP directory.
+ * The SQL state contains two entities that are used to check
+ * the name of the specified field and the value associated with it.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.7:
+ *             Replaced by the sql57 state and
+ *             will be removed in a future version of the language.
  */
-public class LdapState
+@Deprecated
+public class SqlState
     extends StateType
 {
 
-    private EntityStateStringType  suffix;
+    private EntityStateEngineType  engine;
     //{0..1}
 
-    private EntityStateStringType  relative_dn;
+    private EntityStateStringType  version;
     //{0..1}
 
-    private EntityStateStringType  attribute;
+    private EntityStateStringType  connection_string;
     //{0..1}
 
-    private EntityStateStringType  object_class;
+    private EntityStateStringType  sql;
     //{0..1}
 
-    private EntityStateLdaptypeType  ldaptype;
-    //{0..1}
-
-
-    private EntityStateAnySimpleType  value;
+    private EntityStateAnySimpleType  result;
     //{0..1}
 
 
@@ -64,13 +64,13 @@ public class LdapState
     /**
      * Constructor.
      */
-    public LdapState()
+    public SqlState()
     {
         this( null, 0 );
     }
 
 
-    public LdapState(
+    public SqlState(
                     final String id,
                     final int version
                     )
@@ -79,7 +79,7 @@ public class LdapState
     }
 
 
-    public LdapState(
+    public SqlState(
                     final String id,
                     final int version,
                     final String comment
@@ -88,109 +88,92 @@ public class LdapState
         super( id, version, comment );
 
         _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.ldap;
+        _oval_component_type = OvalComponentType.sql;
     }
 
 
 
     /**
      */
-    public void setSuffix(
-                    final EntityStateStringType suffix
+    public void setEngine(
+                    final EntityStateEngineType engine
                     )
     {
-        this.suffix = suffix;
+        this.engine = engine;
     }
 
 
-    public EntityStateStringType getSuffix()
+    public EntityStateEngineType getEngine()
     {
-        return this.suffix;
+        return this.engine;
     }
 
 
 
     /**
      */
-    public void setRelativeDn(
-                    final EntityStateStringType relative_dn
+    public void setVersion(
+                    final EntityStateStringType version
                     )
     {
-        this.relative_dn = relative_dn;
+        this.version = version;
     }
 
 
-    public EntityStateStringType getRelativeDn()
+    public EntityStateStringType getVersion()
     {
-        return this.relative_dn;
+        return this.version;
     }
 
 
 
     /**
      */
-    public void setAttribute(
-                    final EntityStateStringType attribute
+    public void setConnectionString(
+                    final EntityStateStringType connection_string
                     )
     {
-        this.attribute = attribute;
+        this.connection_string = connection_string;
     }
 
 
-    public EntityStateStringType getAttribute()
+    public EntityStateStringType getConnectionString()
     {
-        return this.attribute;
+        return this.connection_string;
     }
 
 
 
     /**
      */
-    public void setObjectClass(
-                    final EntityStateStringType object_class
+    public void setSql(
+                    final EntityStateStringType sql
                     )
     {
-        this.object_class = object_class;
+        this.sql = sql;
     }
 
 
-    public EntityStateStringType getObjectClass()
+    public EntityStateStringType getSql()
     {
-        return this.object_class;
+        return this.sql;
     }
 
 
 
     /**
      */
-    public void setLdaptype(
-                    final EntityStateLdaptypeType ldaptype
+    public void setResult(
+                    final EntityStateAnySimpleType result
                     )
     {
-        this.ldaptype = ldaptype;
+        this.result = result;
     }
 
 
-    public EntityStateLdaptypeType getLdaptype()
+    public EntityStateAnySimpleType getResult()
     {
-        return this.ldaptype;
-    }
-
-
-
-    /**
-     */
-    public void setValue(
-                    final EntityStateAnySimpleType value
-                    )
-    {
-        this.value = value;
-    }
-
-
-    public EntityStateAnySimpleType getValue()
-    {
-        return this.value;
+        return this.result;
     }
 
 
@@ -212,7 +195,7 @@ public class LdapState
                     final Object obj
                     )
     {
-        if (!(obj instanceof LdapState)) {
+        if (!(obj instanceof SqlState)) {
             return false;
         }
 
@@ -224,15 +207,14 @@ public class LdapState
     @Override
     public String toString()
     {
-        return "ldap_state[" + super.toString()
-                        + ", suffix="       + getSuffix()
-                        + ", relative_dn="  + getRelativeDn()
-                        + ", attribute="    + getAttribute()
-                        + ", object_class=" + getObjectClass()
-                        + ", ldaptype="     + getLdaptype()
-                        + ", value="        + getValue()
+        return "sql_state[" + super.toString()
+                        + ", engine="           + getEngine()
+                        + ", version="          + getVersion()
+                        + ", conection_string=" + getConnectionString()
+                        + ", sql="              + getSql()
+                        + ", result="           + getResult()
                         + "]";
     }
 
 }
-// LdapState
+// SqlState
