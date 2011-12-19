@@ -25,22 +25,22 @@ import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 /**
- * The EntityStateLdapTypeType restricts a string value
- * to a specific set of values that specify the different types
- * of information that an ldap attribute can represent.
+ * The EntityStateEngineType defines a string entity value
+ * that is restricted to a set of enumerations.
+ * Each valid enumeration is a valid database engine.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateLdaptypeTypeType
+public class EntityStateEngineType
     extends EntityStateStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityStateLdaptypeTypeType()
+    public EntityStateEngineType()
     {
     }
 
@@ -56,7 +56,7 @@ public class EntityStateLdaptypeTypeType
                     )
     {
         if (content != null) {
-            LdaptypeTypeEnumeration.fromValue( content );
+            EngineEnumeration.fromValue( content );
         }
 
         super.setContent( content );
@@ -85,7 +85,7 @@ public class EntityStateLdaptypeTypeType
             return true;
         }
 
-        if (!(obj instanceof EntityStateLdaptypeTypeType)) {
+        if (!(obj instanceof EntityStateEngineType)) {
             return false;
         }
 
@@ -93,4 +93,4 @@ public class EntityStateLdaptypeTypeType
     }
 
 }
-// EntityStateLdapTypeType
+// EntityStateEngineType

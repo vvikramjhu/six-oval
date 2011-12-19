@@ -25,31 +25,39 @@ import jp.go.aist.six.oval.model.OvalEnumeration;
 
 
 /**
- * The types of information that an LDAP attribute can represent.
+ * A set of valid database engines.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum LdaptypeTypeEnumeration
+public enum EngineEnumeration
     implements OvalEnumeration
 {
 
-    LDAPTYPE_ATTRIBUTE_TYPE_DESCRIP_STRING  ( "LDAPTYPE_ATTRIBUTE_TYPE_DESCRIP_STRING" ),
-    LDAPTYPE_DN_STRING          ( "LDAPTYPE_DN_STRING" ),
-    LDAPTYPE_BIT_STRING         ( "LDAPTYPE_BIT_STRING" ),
-    LDAPTYPE_PRINTABLE_STRING   ( "LDAPTYPE_PRINTABLE_STRING" ),
-    LDAPTYPE_NUMERIC_STRING     ( "LDAPTYPE_NUMERIC_STRING" ),
-    LDAPTYPE_BOOLEAN            ( "LDAPTYPE_BOOLEAN" ),
-    LDAPTYPE_INTEGER            ( "LDAPTYPE_INTEGER" ),
-    LDAPTYPE_UTC_TIME           ( "LDAPTYPE_UTC_TIME" ),
-    LDAPTYPE_GENERALIZED_TIME   ( "LDAPTYPE_GENERALIZED_TIME" ),
-    LDAPTYPE_DIRECTORY_STRING   ( "LDAPTYPE_DIRECTORY_STRING" ),
-    LDAPTYPE_OBJECT_CLASS_DESCRIP_STRING    ( "LDAPTYPE_OBJECT_CLASS_DESCRIP_STRING" ),
-    LDAPTYPE_BINARY             ( "LDAPTYPE_BINARY" ),
-    LDAPTYPE_TIMESTAMP          ( "LDAPTYPE_TIMESTAMP" ),
-    LDAPTYPE_EMAIL              ( "LDAPTYPE_EMAIL" ),
-    EMPTY ( "" )
+    ACCESS      ( "access" ),
+    DB2         ( "db2" ),
+    CACHE       ( "cache" ),
+    FIREBIRD    ( "firebird" ),
+    FIRSTSQL    ( "firstsql" ),
+    FOXPRO      ( "foxpro" ),
+    INFORMIX    ( "informix" ),
+    INGRES      ( "ingres" ),
+    INTERBASE   ( "interbase" ),
+    LIGHTBASE   ( "lightbase" ),
+    MAXDB       ( "maxdb" ),
+    MONETDB     ( "monetdb" ),
+    MIMER       ( "mimer" ),
+    MYSQL       ( "mysql" ),
+    ORACLE      ( "oracle" ),
+    PARADOX     ( "paradox" ),
+    PERVASIVE   ( "pervasive" ),
+    POSTGRE     ( "postgre" ),
+    SQLBASE     ( "sqlbase" ),
+    SQLITE      ( "sqlite" ),
+    SQLSERVER   ( "sqlserver" ),
+    SYBASE      ( "sybase" ),
+    EMPTY       ( "" )
     ;
 
 
@@ -57,11 +65,11 @@ public enum LdaptypeTypeEnumeration
     /**
      * A factory method.
      */
-    public static LdaptypeTypeEnumeration fromValue(
+    public static EngineEnumeration fromValue(
                     final String value
                     )
     {
-        for (LdaptypeTypeEnumeration  e : LdaptypeTypeEnumeration.values()) {
+        for (EngineEnumeration  e : EngineEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -79,7 +87,7 @@ public enum LdaptypeTypeEnumeration
     /**
      * Constructor.
      */
-    LdaptypeTypeEnumeration(
+    EngineEnumeration(
                     final String value
                     )
     {
@@ -107,4 +115,4 @@ public enum LdaptypeTypeEnumeration
     }
 
 }
-// LdapTypeEnumeration
+// EngineEnumeration

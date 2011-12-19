@@ -34,7 +34,7 @@
             type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
             <bind-xml name="object" node="element"/>
         </field>
-        
+
         <field name="state" 
             type="jp.go.aist.six.oval.model.definitions.StateRefType"
             collection="collection">
@@ -549,6 +549,281 @@
 
 
     <!-- ******************************************************* -->
+    <!-- ldap                                                    -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.independent.LdapTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="ldap_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.independent.LdapObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="ldap_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="behaviors" 
+            type="jp.go.aist.six.oval.model.independent.LdapBehaviors">
+            <bind-xml name="behaviors" node="element"/>
+        </field>
+
+        <field name="suffix" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="suffix" node="element"/>
+        </field>
+        
+        <field name="relativeDn" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="relative_dn" node="element"/>
+        </field>
+
+        <field name="attribute" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="attribute" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.independent.LdapState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="ldap_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="suffix" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="suffix" node="element"/>
+        </field>
+
+        <field name="relativeDn" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="relative_dn" node="element"/>
+        </field>
+
+        <field name="attribute" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="attribute" node="element"/>
+        </field>
+
+        <field name="objectClass" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="object_class" node="element"/>
+        </field>
+
+        <field name="ldaptype" 
+            type="jp.go.aist.six.oval.model.independent.EntityStateLdaptypeType">
+            <bind-xml name="ldaptype" node="element"/>
+        </field>
+
+        <field name="value" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
+            <bind-xml name="value" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.independent.LdapItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="ldap_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent"
+            ns-prefix=""/>
+
+        <field name="suffix" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="suffix" node="element"/>
+        </field>
+
+        <field name="relativeDn" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="relative_dn" node="element"/>
+        </field>
+
+        <field name="attribute" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="attribute" node="element"/>
+        </field>
+
+        <field name="objectClass" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="object_class" node="element"/>
+        </field>
+
+        <field name="ldaptype" 
+            type="jp.go.aist.six.oval.model.independent.EntityItemLdaptypeType">
+            <bind-xml name="ldaptype" node="element"/>
+        </field>
+
+        <field name="value" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType"
+            collection="collection">
+            <bind-xml name="value" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.independent.LdapBehaviors">
+        <field name="scope"
+            type="jp.go.aist.six.oval.model.independent.LdapBehaviorsEnumeration">
+            <bind-xml name="scope" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- sql                                                     -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.independent.SqlTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="sql_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.independent.SqlObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="sql_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="engine" 
+            type="jp.go.aist.six.oval.model.independent.EntityObjectEngineType">
+            <bind-xml name="engine" node="element"/>
+        </field>
+        
+        <field name="version" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="version" node="element"/>
+        </field>
+        
+        <field name="connectionString" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="connection_string" node="element"/>
+        </field>
+        
+        <field name="sql" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="sql" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.independent.SqlState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="sql_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            ns-prefix=""/>
+
+        <field name="engine" 
+            type="jp.go.aist.six.oval.model.independent.EntityStateEngineType">
+            <bind-xml name="engine" node="element"/>
+        </field>
+
+        <field name="version" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="version" node="element"/>
+        </field>
+
+        <field name="connectionString" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="connection_string" node="element"/>
+        </field>
+
+        <field name="sql" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="sql" node="element"/>
+        </field>
+
+        <field name="result" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
+            <bind-xml name="result" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.independent.SqlItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="sql_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#independent"
+            ns-prefix=""/>
+
+        <field name="engine" 
+            type="jp.go.aist.six.oval.model.independent.EntityItemEngineType">
+            <bind-xml name="engine" node="element"/>
+        </field>
+
+        <field name="version" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="version" node="element"/>
+        </field>
+
+        <field name="connectionString" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="connection_string" node="element"/>
+        </field>
+
+        <field name="sql" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="sql" node="element"/>
+        </field>
+
+        <field name="result" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType"
+            collection="collection">
+            <bind-xml name="result" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- textfilecontent                                         -->
     <!-- ******************************************************* -->
 
@@ -848,6 +1123,7 @@
     <!-- entity attribute types                                  -->
     <!-- ******************************************************* -->
 
+<!-- family -->
     <class name="jp.go.aist.six.oval.model.independent.EntityStateFamilyType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
 
@@ -866,6 +1142,7 @@
 
 
 
+<!-- filehash -->
     <class name="jp.go.aist.six.oval.model.independent.EntityObjectHashTypeType"
         extends="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
     </class>
@@ -880,6 +1157,32 @@
 
 
 
+<!-- ldap -->
+    <class name="jp.go.aist.six.oval.model.independent.EntityStateLdaptypeType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.independent.EntityItemLdaptypeType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
+<!-- sql -->
+    <class name="jp.go.aist.six.oval.model.independent.EntityObjectEngineType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.independent.EntityStateEngineType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.independent.EntityItemEngineType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
+
+<!-- windows_view -->
     <class name="jp.go.aist.six.oval.model.independent.EntityStateWindowsViewType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
     </class>
