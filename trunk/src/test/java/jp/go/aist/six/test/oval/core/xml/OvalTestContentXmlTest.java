@@ -91,11 +91,11 @@ public class OvalTestContentXmlTest
             File[]  files = dir.listFiles( filter );
             for (File  file : files) {
                 Reporter.log( "  * file= " + file, true );
-                try {
+//                try {
                     _testXml( type, file.getCanonicalPath(), null, "unmarshalled_" + file.getName() );
-                } catch (Exception ex) {
-                    Reporter.log( "  !!! exception= " + ex, true );
-                }
+//                } catch (Exception ex) {
+//                    Reporter.log( "  !!! exception= " + ex, true );
+//                }
             }
         } else {
             File  file = new File( dir, filename );
