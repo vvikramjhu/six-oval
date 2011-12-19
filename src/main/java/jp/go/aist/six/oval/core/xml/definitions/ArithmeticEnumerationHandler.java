@@ -20,15 +20,15 @@
 
 package jp.go.aist.six.oval.core.xml.definitions;
 
-import jp.go.aist.six.oval.model.definitions.FilterActionEnumeration;
+import jp.go.aist.six.oval.model.definitions.ArithmeticEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 
-public class FilterActionEnumerationHandler
+public class ArithmeticEnumerationHandler
     extends GeneralizedFieldHandler
 {
 
-    public FilterActionEnumerationHandler()
+    public ArithmeticEnumerationHandler()
     {
         super();
     }
@@ -43,7 +43,7 @@ public class FilterActionEnumerationHandler
         if (value == null) {
             return null;
         }
-        FilterActionEnumeration  e = FilterActionEnumeration.class.cast( value );
+        ArithmeticEnumeration  e = ArithmeticEnumeration.class.cast( value );
         return e.value();
     }
 
@@ -57,15 +57,15 @@ public class FilterActionEnumerationHandler
         if (value == null) {
             return null;
         }
-        return FilterActionEnumeration.fromValue( value.toString() );
+        return ArithmeticEnumeration.fromValue( value.toString() );
     }
 
 
 
     @Override
-    public Class<FilterActionEnumeration> getFieldType()
+    public Class<ArithmeticEnumeration> getFieldType()
     {
-        return FilterActionEnumeration.class;
+        return ArithmeticEnumeration.class;
     }
 
 
@@ -80,4 +80,4 @@ public class FilterActionEnumerationHandler
 //    }
 
 }
-// FilterActionEnumerationHandler
+//ArithmeticEnumerationHandler

@@ -602,6 +602,26 @@
 -->
 
 
+    <class name="jp.go.aist.six.oval.model.definitions.ArithmeticFunctionType">
+        <map-to xml="arithmetic"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="component" 
+            type="jp.go.aist.six.oval.model.definitions.ComponentGroup"
+            collection="collection">
+            <!-- set-method="addComponent" get-method="iterateComponent" -->
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+
+        <field name="arithmeticOperation"
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.definitions.ArithmeticEnumerationHandler">
+            <bind-xml name="arithmetic_operation" node="attribute"/>
+        </field>
+    </class>
+
+
+
     <class name="jp.go.aist.six.oval.model.definitions.ConcatFunctionType">
         <map-to xml="concat"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>

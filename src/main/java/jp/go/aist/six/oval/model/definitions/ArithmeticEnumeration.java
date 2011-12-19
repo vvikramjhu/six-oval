@@ -25,30 +25,29 @@ import jp.go.aist.six.oval.model.OvalEnumeration;
 
 
 /**
- * The FilterAction enumeration defines the different options
- * for filtering sets of items.
+ * The ArithmeticEnumeration defines basic arithmetic operations.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum FilterActionEnumeration
+public enum ArithmeticEnumeration
     implements OvalEnumeration
 {
 
-    EXCLUDE ( "exclude" ),
-    INCLUDE ( "include" );
+    ADD         ( "add" ),
+    MULTIPLY    ( "multiply" );
 
 
 
     /**
      * A factory method.
      */
-    public static FilterActionEnumeration fromValue(
+    public static ArithmeticEnumeration fromValue(
                     final String value
                     )
     {
-        for (FilterActionEnumeration  e : FilterActionEnumeration.values()) {
+        for (ArithmeticEnumeration  e : ArithmeticEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -66,7 +65,7 @@ public enum FilterActionEnumeration
     /**
      * Constructor.
      */
-    FilterActionEnumeration(
+    ArithmeticEnumeration(
                     final String value
                     )
     {
@@ -94,4 +93,4 @@ public enum FilterActionEnumeration
     }
 
 }
-// FilterActionEnumeration
+// ArithmeticEnumeration
