@@ -58,8 +58,10 @@ public class MetadataType
     //{1..1}
 
 
-    private final Collection<MetadataItem>  additionalMetadata =
-        new ArrayList<MetadataItem>();
+    private final Collection<OvalObject>  additionalMetadata =
+        new ArrayList<OvalObject>();
+//    private final Collection<MetadataItem>  additionalMetadata =
+//        new ArrayList<MetadataItem>();
     //{xsd:any, 0..*}
 
 
@@ -252,7 +254,7 @@ public class MetadataType
     /**
      */
     public void setAdditionalMetadata(
-                    final Collection<? extends MetadataItem> items
+                    final Collection<? extends OvalObject> items
                     )
     {
         if (items != this.additionalMetadata) {
@@ -264,34 +266,69 @@ public class MetadataType
     }
 
 
-    public Collection<MetadataItem> getAdditionalMetadata()
+    public Collection<OvalObject> getAdditionalMetadata()
     {
         return this.additionalMetadata;
     }
 
 
-    public Iterator<MetadataItem> iterateAdditionalMetadata()
+    public Iterator<OvalObject> iterateAdditionalMetadata()
     {
         return this.additionalMetadata.iterator();
     }
 
 
     public boolean addAdditionalMetadata(
-                    final MetadataItem item
+                    final OvalObject item
                     )
     {
         return this.additionalMetadata.add( item );
     }
 
 
-    public MetadataType additionalMetadata(
-                    final MetadataItem item
-                    )
-    {
-        this.additionalMetadata.add( item );
-        return this;
-    }
 
+//    /**
+//     */
+//    public void setAdditionalMetadata(
+//                    final Collection<? extends MetadataItem> items
+//                    )
+//    {
+//        if (items != this.additionalMetadata) {
+//            this.additionalMetadata.clear();
+//            if (items != null  &&  items.size() > 0) {
+//                this.additionalMetadata.addAll( items );
+//            }
+//        }
+//    }
+//
+//
+//    public Collection<MetadataItem> getAdditionalMetadata()
+//    {
+//        return this.additionalMetadata;
+//    }
+//
+//
+//    public Iterator<MetadataItem> iterateAdditionalMetadata()
+//    {
+//        return this.additionalMetadata.iterator();
+//    }
+//
+//
+//    public boolean addAdditionalMetadata(
+//                    final MetadataItem item
+//                    )
+//    {
+//        return this.additionalMetadata.add( item );
+//    }
+//
+//
+//    public MetadataType additionalMetadata(
+//                    final MetadataItem item
+//                    )
+//    {
+//        this.additionalMetadata.add( item );
+//        return this;
+//    }
 
 
     //==============================================================
