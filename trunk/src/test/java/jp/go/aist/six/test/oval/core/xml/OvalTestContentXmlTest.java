@@ -53,17 +53,17 @@ public class OvalTestContentXmlTest
                         //directory that contains OVAL definitions XML files
                         //target OVAL Definitions file. If it is null, all the XML files are targets.
 
-//                        {
-//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-//                            "test/resources/OvalTestContent/5.10/windows",
-//                            null
-//                        }
-//                        ,
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
                             "test/resources/OvalTestContent/5.10/windows",
-                            "oval-def_time_difference_function.xml"
+                            null
                         }
+//                        ,
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/OvalTestContent/5.10/windows",
+//                            "oval-def_time_difference_function.xml"
+//                        }
         };
     }
 
