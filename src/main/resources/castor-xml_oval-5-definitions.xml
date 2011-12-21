@@ -141,10 +141,17 @@
         </field>
 
         <field name="additionalMetadata" 
+            type="jp.go.aist.six.oval.model.OvalObject"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+<!--
+        <field name="additionalMetadata" 
             type="jp.go.aist.six.oval.model.definitions.MetadataItem"
             collection="collection">
             <bind-xml auto-naming="deriveByClass" node="element"/>
         </field>
+-->
     </class>
 
     <class name ="jp.go.aist.six.oval.model.definitions.MetadataItem"
@@ -522,6 +529,71 @@
 
 
 
+    <class name="jp.go.aist.six.oval.model.definitions.ExternalVariable"
+        extends="jp.go.aist.six.oval.model.definitions.VariableType">
+        <map-to xml="external_variable"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="possibleValue" 
+            type="jp.go.aist.six.oval.model.definitions.PossibleValueType"
+            collection="collection">
+            <bind-xml name="possible_value" node="element"/>
+        </field>
+
+        <field name="possibleRestriction" 
+            type="jp.go.aist.six.oval.model.definitions.PossibleRestrictionType"
+            collection="collection">
+            <bind-xml name="possible_restriction" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.PossibleValueType">
+        <map-to xml="possible_value"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="content" type="string">
+            <bind-xml node="text"/>
+        </field>
+
+        <field name="hint" type="string">
+            <bind-xml name="hint" node="attribute"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.PossibleRestrictionType">
+        <map-to xml="possible_restriction"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="restriction" 
+            type="jp.go.aist.six.oval.model.definitions.RestrictionType"
+            collection="collection">
+            <bind-xml name="restriction" node="element"/>
+        </field>
+
+        <field name="hint" type="string">
+            <bind-xml name="hint" node="attribute"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.definitions.RestrictionType">
+        <map-to xml="restriction"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="content" type="string">
+            <bind-xml node="text"/>
+        </field>
+
+        <field name="operation"
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.common.OperationEnumerationHandler">
+            <bind-xml name="operation" node="attribute"/>
+        </field>
+    </class>
+
+
+
+
+
     <class name="jp.go.aist.six.oval.model.definitions.ValueType">
         <map-to xml="value"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
@@ -731,6 +803,31 @@
 
         <field name="substringLength" type="integer">
             <bind-xml name="substring_length" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.definitions.TimeDifferenceFunctionType">
+        <map-to xml="time_difference"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+
+        <field name="component" 
+            type="jp.go.aist.six.oval.model.definitions.ComponentGroup"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element"/>
+        </field>
+
+        <field name="format1"
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.definitions.DateTimeFormatEnumerationHandler">
+            <bind-xml name="format_1" node="attribute"/>
+        </field>
+
+        <field name="format2"
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.definitions.DateTimeFormatEnumerationHandler">
+            <bind-xml name="format_2" node="attribute"/>
         </field>
     </class>
 
