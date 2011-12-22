@@ -2,6 +2,7 @@ package jp.go.aist.six.test.oval.core.xml;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import org.testng.Reporter;
@@ -35,9 +36,25 @@ public class OvalTestContentXmlTest
                     )
     throws Exception
     {
-        T  actual = _unmarshalWithValidation( type, sourceFilepath, expected );
-        _marshal( actual, resultFilepath );
-        _unmarshalWithValidation( type, resultFilepath, /* xpath, */ expected );
+        T  actual = null;
+        try {
+            actual = _unmarshalWithValidation( type, sourceFilepath, expected );
+            if (actual instanceof OvalDefinitions) {
+                OvalDefinitions  oval_defs = OvalDefinitions.class.cast( actual );
+                for (DefinitionType  def : oval_defs.getDefinitions().getDefinition()) {
+                    Reporter.log( "  @ definition: id=" + def.getOvalID(), true );
+                    Reporter.log( "                title=" + def.getMetadata().getTitle(), true );
+                }
+            }
+        } catch (Exception ex) {
+            Reporter.log( "  !!! Unsupported XML element(s) found.", true );
+            throw ex;
+        }
+
+        if (actual != null) {
+            _marshal( actual, resultFilepath );
+            _unmarshalWithValidation( type, resultFilepath, /* xpath, */ expected );
+        }
     }
 
 
@@ -53,6 +70,14 @@ public class OvalTestContentXmlTest
                         //directory that contains OVAL definitions XML files
                         //target OVAL Definitions file. If it is null, all the XML files are targets.
 
+//                        //linux
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/OvalTestContent/5.10/linux",
+//                            null
+//                        }
+//                        ,
+//                        //windows
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
                             "test/resources/OvalTestContent/5.10/windows",
