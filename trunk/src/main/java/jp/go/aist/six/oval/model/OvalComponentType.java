@@ -57,6 +57,7 @@ public enum OvalComponentType
     uname,
 
     // windows //
+    accesstoken,
     file,
     metabase,
     registry,
