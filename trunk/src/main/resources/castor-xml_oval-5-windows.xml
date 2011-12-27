@@ -315,6 +315,157 @@
 
 
     <!-- ******************************************************* -->
+    <!-- activedirectory                                         -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.windows.ActiveDirectoryTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="activedirectory_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.ActiveDirectoryObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="activedirectory_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="namingContext" 
+            type="jp.go.aist.six.oval.model.windows.EntityObjectNamingContextType" >
+            <bind-xml name="naming_context" node="element"/>
+        </field>
+
+        <field name="relativeDn" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="relative_dn" node="element"/>
+        </field>
+        
+        <field name="attribute" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="attribute" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.ActiveDirectoryState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="activedirectory_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="namingContext" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateNamingContextType">
+            <bind-xml name="naming_context" node="element"/>
+        </field>
+
+        <field name="relativeDn" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="relative_dn" node="element"/>
+        </field>
+
+        <field name="attribute" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="attribute" node="element"/>
+        </field>
+
+        <field name="objectClass" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="object_class" node="element"/>
+        </field>
+
+        <field name="adstype" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAdstypeType">
+            <bind-xml name="adstype" node="element"/>
+        </field>
+
+        <field name="value" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType">
+            <bind-xml name="value" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityObjectNamingContextType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityStateNamingContextType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityStateAdstypeType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.windows.ActiveDirectoryItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="activedirectory_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""/>
+
+        <field name="namingContext"
+            type="jp.go.aist.six.oval.model.windows.EntityItemNamingContextType">
+            <bind-xml name="naming_context" node="element"/>
+        </field>
+
+        <field name="relativeDn" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="relative_dn" node="element"/>
+        </field>
+
+        <field name="attribute" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="attribute" node="element"/>
+        </field>
+
+        <field name="objectClass" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="object_class" node="element"/>
+        </field>
+
+        <field name="adstype" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemAdstypeType">
+            <bind-xml name="adstype" node="element"/>
+        </field>
+
+        <field name="value" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType"
+            collection="collection">
+            <bind-xml name="value" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- file                                                    -->
     <!-- ******************************************************* -->
 
