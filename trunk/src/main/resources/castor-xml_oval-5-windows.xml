@@ -21,6 +21,300 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     
     <!-- ******************************************************* -->
+    <!-- accesstoken                                             -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.windows.AccesstokenTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="accesstoken_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"
+            />
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.AccesstokenObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="accesstoken_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="behaviors" 
+            type="jp.go.aist.six.oval.model.windows.AccesstokenBehaviors">
+            <bind-xml name="behaviors" node="element"/>
+        </field>
+        
+        <field name="securityPrinciple" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="security_principle" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.AccesstokenState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="accesstoken_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="securityPrinciple" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="security_principle" node="element"/>
+        </field>
+
+        <field name="seassignprimarytokenprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="seassignprimarytokenprivilege" node="element"/>
+        </field>
+
+        <field name="sechangenotifyprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="sechangenotifyprivilege" node="element"/>
+        </field>
+
+        <field name="secreateglobalprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="secreateglobalprivilege" node="element"/>
+        </field>
+
+        <field name="secreatepagefileprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="secreatepagefileprivilege" node="element"/>
+        </field>
+
+        <field name="secreatepermanentprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="secreatepermanentprivilege" node="element"/>
+        </field>
+
+        <field name="secreatesymboliclinkprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="secreatesymboliclinkprivilege" node="element"/>
+        </field>
+
+        <field name="secreatetokenprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="secreatetokenprivilege" node="element"/>
+        </field>
+
+        <field name="sedebugprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="sedebugprivilege" node="element"/>
+        </field>
+
+        <field name="seenabledelegationprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="seenabledelegationprivilege" node="element"/>
+        </field>
+
+        <field name="seimpersonateprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="seimpersonateprivilege" node="element"/>
+        </field>
+
+        <field name="seincreasebasepriorityprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="seincreasebasepriorityprivilege" node="element"/>
+        </field>
+
+        <field name="seincreasequotaprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="seincreasequotaprivilege" node="element"/>
+        </field>
+
+        <field name="seincreaseworkingsetprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="seincreaseworkingsetprivilege" node="element"/>
+        </field>
+
+        <field name="selockmemoryprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="selockmemoryprivilege" node="element"/>
+        </field>
+
+        <field name="semachineaccountprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="semachineaccountprivilege" node="element"/>
+        </field>
+
+        <field name="semanagevolumeprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="semanagevolumeprivilege" node="element"/>
+        </field>
+
+        <field name="seprofilesingleprocessprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="seprofilesingleprocessprivilege" node="element"/>
+        </field>
+
+        <field name="serelabelprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="serelabelprivilege" node="element"/>
+        </field>
+
+        <field name="seremoteshutdownprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="seremoteshutdownprivilege" node="element"/>
+        </field>
+
+        <field name="serestoreprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="serestoreprivilege" node="element"/>
+        </field>
+
+        <field name="sesecurityprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="sesecurityprivilege" node="element"/>
+        </field>
+
+        <field name="seshutdownprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="seshutdownprivilege" node="element"/>
+        </field>
+
+        <field name="sesyncagentprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="sesyncagentprivilege" node="element"/>
+        </field>
+
+        <field name="sesystemenvironmentprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="sesystemenvironmentprivilege" node="element"/>
+        </field>
+
+        <field name="sesystemprofileprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="sesystemprofileprivilege" node="element"/>
+        </field>
+
+        <field name="sesystemtimeprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="sesystemtimeprivilege" node="element"/>
+        </field>
+
+        <field name="setakeownershipprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="setakeownershipprivilege" node="element"/>
+        </field>
+
+        <field name="setcbprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="setcbprivilege" node="element"/>
+        </field>
+
+        <field name="setimezoneprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="setimezoneprivilege" node="element"/>
+        </field>
+
+        <field name="seundockprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="seundockprivilege" node="element"/>
+        </field>
+
+        <field name="seunsolicitedinputprivilege" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="seunsolicitedinputprivilege" node="element"/>
+        </field>
+
+        <field name="sebatchlogonright" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="sebatchlogonright" node="element"/>
+        </field>
+
+        <field name="seinteractivelogonright" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="seinteractivelogonright" node="element"/>
+        </field>
+
+        <field name="senetworklogonright" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="senetworklogonright" node="element"/>
+        </field>
+
+        <field name="seremoteinteractivelogonright" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="seremoteinteractivelogonright" node="element"/>
+        </field>
+
+        <field name="seservicelogonright" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="seservicelogonright" node="element"/>
+        </field>
+
+        <field name="sedenybatchLogonright" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="sedenybatchLogonright" node="element"/>
+        </field>
+
+        <field name="sedenyinteractivelogonright" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="sedenyinteractivelogonright" node="element"/>
+        </field>
+
+        <field name="sedenynetworklogonright" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="sedenynetworklogonright" node="element"/>
+        </field>
+
+        <field name="sedenyremoteInteractivelogonright" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="sedenyremoteInteractivelogonright" node="element"/>
+        </field>
+
+        <field name="sedenyservicelogonright" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="sedenyservicelogonright" node="element"/>
+        </field>
+
+        <field name="setrustedcredmanaccessnameright" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="setrustedcredmanaccessnameright" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.AccesstokenBehaviors"
+        extends="jp.go.aist.six.oval.model.OvalObject">
+
+        <field name="includeGroup" type="boolean">
+            <bind-xml name="include_group" node="attribute"/>
+        </field>
+
+        <field name="resolveGroup" type="boolean">
+            <bind-xml name="resolve_group" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- file                                                    -->
     <!-- ******************************************************* -->
 
