@@ -466,6 +466,160 @@
 
 
     <!-- ******************************************************* -->
+    <!-- auditeventpolicy                                        -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.windows.AuditEventPolicyTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="auditeventpolicy_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.AuditEventPolicyObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="auditeventpolicy_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.AuditEventPolicyState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="auditeventpolicy_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="accountLogon" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="account_logon" node="element"/>
+        </field>
+
+        <field name="accountManagement" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="account_management" node="element"/>
+        </field>
+
+        <field name="detailedTracking" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="detailed_tracking" node="element"/>
+        </field>
+
+        <field name="directoryServiceAccess" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="directory_service_access" node="element"/>
+        </field>
+
+        <field name="logon" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="logon" node="element"/>
+        </field>
+
+        <field name="objectAccess" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="object_access" node="element"/>
+        </field>
+
+        <field name="policyChange" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="policy_change" node="element"/>
+        </field>
+
+        <field name="privilegeUse" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="privilege_use" node="element"/>
+        </field>
+
+        <field name="system" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="system" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityStateAuditType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.windows.AuditEventPolicyItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="auditeventpolicy_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""/>
+
+        <field name="accountLogon" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
+            <bind-xml name="account_logon" node="element"/>
+        </field>
+
+        <field name="accountManagement" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
+            <bind-xml name="account_management" node="element"/>
+        </field>
+
+        <field name="detailedTracking" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
+            <bind-xml name="detailed_tracking" node="element"/>
+        </field>
+
+        <field name="directoryServiceAccess" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
+            <bind-xml name="directory_service_access" node="element"/>
+        </field>
+
+        <field name="logon" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
+            <bind-xml name="logon" node="element"/>
+        </field>
+
+        <field name="objectAccess" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
+            <bind-xml name="object_access" node="element"/>
+        </field>
+
+        <field name="policyChange" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
+            <bind-xml name="policy_change" node="element"/>
+        </field>
+
+        <field name="privilegeUse" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
+            <bind-xml name="privilege_use" node="element"/>
+        </field>
+
+        <field name="system" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
+            <bind-xml name="system" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemAuditType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- file                                                    -->
     <!-- ******************************************************* -->
 
