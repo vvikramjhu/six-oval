@@ -60,6 +60,7 @@ public enum OvalComponentType
     accesstoken,
     activedirectory,
     auditeventpolicy,
+    auditeventpolicysubcategories,
     file,
     metabase,
     registry,
