@@ -59,6 +59,7 @@ public enum OvalComponentType
     // windows //
     accesstoken,
     activedirectory,
+    auditeventpolicy,
     file,
     metabase,
     registry,
