@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.independent;
+package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.WindowsViewEnumeration;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;

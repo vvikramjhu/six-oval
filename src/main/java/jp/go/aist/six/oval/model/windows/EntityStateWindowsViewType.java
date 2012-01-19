@@ -18,53 +18,36 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.independent;
+package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.WindowsViewEnumeration;
-import jp.go.aist.six.oval.model.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 
 /**
- * The EntityItemWindowsViewType restricts a string value
+ * The EntityStateWindowsViewType restricts a string value
  * to a specific set of values: 32-bit and 64-bit.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemWindowsViewType
-    extends EntityItemStringType
+public class EntityStateWindowsViewType
+    extends EntityStateStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemWindowsViewType()
+    public EntityStateWindowsViewType()
     {
-    }
-
-
-    public EntityItemWindowsViewType(
-                    final String content
-                    )
-    {
-        super( content );
-    }
-
-
-
-    public EntityItemWindowsViewType(
-                    final WindowsViewEnumeration content
-                    )
-    {
-        super( (content == null ? null : content.value()) );
     }
 
 
 
     //**************************************************************
-    //  EntityItemBase
+    //  EntitySimpleBaseType
     //**************************************************************
 
     @Override
@@ -73,7 +56,6 @@ public class EntityItemWindowsViewType
                     )
     {
         if (content != null) {
-            //validation
             WindowsViewEnumeration.fromValue( content );
         }
 
@@ -103,7 +85,7 @@ public class EntityItemWindowsViewType
             return true;
         }
 
-        if (!(obj instanceof EntityItemWindowsViewType)) {
+        if (!(obj instanceof EntityStateWindowsViewType)) {
             return false;
         }
 
@@ -111,4 +93,4 @@ public class EntityItemWindowsViewType
     }
 
 }
-//EntityItemWindowsViewType
+//EntityStateWindowsViewType

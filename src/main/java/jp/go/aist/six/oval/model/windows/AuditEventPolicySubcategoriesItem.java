@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.model.sc.ItemType;
  * about the audit event policy settings on a Windows system.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: AuditEventPolicyItem.java 2173 2011-12-28 06:06:02Z nakamura5akihito $
+ * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class AuditEventPolicySubcategoriesItem

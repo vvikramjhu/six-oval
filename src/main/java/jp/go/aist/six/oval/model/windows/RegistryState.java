@@ -26,6 +26,7 @@ import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
+import jp.go.aist.six.oval.model.windows.EntityStateWindowsViewType;
 
 
 
@@ -59,10 +60,8 @@ public class RegistryState
     private EntityStateAnySimpleType  value;
     //{0..1}
 
-
-
-//    private final EntityPropertyMap<RegistryProperty>  _properties =
-//        RegistryProperty.createPropertyMap();
+    private EntityStateWindowsViewType  windows_view;
+    //{0..1}
 
 
 
@@ -105,15 +104,12 @@ public class RegistryState
                     )
     {
         this.hive = hive;
-//        _properties.setProperty( RegistryProperty.HIVE, hive );
     }
 
 
     public EntityStateRegistryHiveType getHive()
     {
         return this.hive;
-//        return _properties.getProperty(
-//                        RegistryProperty.HIVE, EntityStateRegistryHiveType.class );
     }
 
 
@@ -134,15 +130,12 @@ public class RegistryState
                     )
     {
         this.key = key;
-//        _properties.setProperty( RegistryProperty.KEY, key );
     }
 
 
     public EntityStateStringType getKey()
     {
         return this.key;
-//        return _properties.getProperty(
-//                        RegistryProperty.KEY, EntityStateStringType.class );
     }
 
 
@@ -163,15 +156,12 @@ public class RegistryState
                     )
     {
         this.name = name;
-//        _properties.setProperty( RegistryProperty.NAME, name );
     }
 
 
     public EntityStateStringType getName()
     {
         return this.name;
-//        return _properties.getProperty(
-//                        RegistryProperty.NAME, EntityStateStringType.class );
     }
 
 
@@ -209,15 +199,12 @@ public class RegistryState
                     )
     {
         this.type = type;
-//        _properties.setProperty( RegistryProperty.TYPE, type );
     }
 
 
     public EntityStateRegistryTypeType getType()
     {
         return this.type;
-//        return _properties.getProperty(
-//                        RegistryProperty.TYPE, EntityStateRegistryTypeType.class );
     }
 
 
@@ -238,15 +225,12 @@ public class RegistryState
                     )
     {
         this.value = value;
-//        _properties.setProperty( RegistryProperty.VALUE, value );
     }
 
 
     public EntityStateAnySimpleType getValue()
     {
         return this.value;
-//        return _properties.getProperty(
-//                        RegistryProperty.VALUE, EntityStateAnySimpleType.class );
     }
 
 
@@ -256,6 +240,23 @@ public class RegistryState
     {
         setValue( value );
         return this;
+    }
+
+
+
+    /**
+     */
+    public void setWindowsView(
+                    final EntityStateWindowsViewType windows_view
+                    )
+    {
+        this.windows_view = windows_view;
+    }
+
+
+    public EntityStateWindowsViewType getWindowsView()
+    {
+        return this.windows_view;
     }
 
 
@@ -290,13 +291,13 @@ public class RegistryState
     public String toString()
     {
         return "registry_state[" + super.toString()
-                        + ", hive=" + getHive()
-                        + ", key=" + getKey()
-                        + ", name=" + getName()
-                        + ", last_write_time=" + getLastWriteTime()
-                        + ", type=" + getType()
-                        + ", value=" + getValue()
-//                        + ", " + String.valueOf( _properties )
+                        + ", hive="             + getHive()
+                        + ", key="              + getKey()
+                        + ", name="             + getName()
+                        + ", last_write_time="  + getLastWriteTime()
+                        + ", type="             + getType()
+                        + ", value="            + getValue()
+                        + ", windows_view="     + getWindowsView()
                         + "]";
     }
 

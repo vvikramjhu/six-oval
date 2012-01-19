@@ -62,6 +62,8 @@ public enum OvalComponentType
     auditeventpolicy,
     auditeventpolicysubcategories,
     file,
+    fileauditedpermissions,
+    fileauditedpermissions53,
     metabase,
     registry,
     wmi,

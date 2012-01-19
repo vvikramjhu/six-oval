@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.independent;
 
+import jp.go.aist.six.oval.model.WindowsViewEnumeration;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 

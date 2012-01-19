@@ -26,6 +26,7 @@ import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.EntityStateVersionType;
 import jp.go.aist.six.oval.model.definitions.StateType;
+import jp.go.aist.six.oval.model.windows.EntityStateWindowsViewType;
 
 
 
@@ -59,10 +60,9 @@ public class FileState
     private EntityStateStringType    original_filename;
     private EntityStateStringType    product_name;
     private EntityStateVersionType   product_version;
-
-
-//    private final EntityPropertyMap<FileProperty>  _properties =
-//        FileProperty.createPropertyMap();
+    
+    private EntityStateWindowsViewType  windows_view;
+    //{0..1}
 
 
 
@@ -450,15 +450,12 @@ public class FileState
                     )
     {
         this.original_filename = original_filename;
-//        _properties.setProperty( FileProperty.ORIGINAL_FILENAME, original_filename );
     }
 
 
     public EntityStateStringType getOriginalFilename()
     {
         return this.original_filename;
-//        return _properties.getProperty(
-//                        FileProperty.ORIGINAL_FILENAME, EntityStateStringType.class );
     }
 
 
@@ -512,6 +509,23 @@ public class FileState
 
 
 
+    /**
+     */
+    public void setWindowsView(
+                    final EntityStateWindowsViewType windows_view
+                    )
+    {
+        this.windows_view = windows_view;
+    }
+
+
+    public EntityStateWindowsViewType getWindowsView()
+    {
+        return this.windows_view;
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -560,7 +574,7 @@ public class FileState
              + ", original_filename="   + getOriginalFilename()
              + ", product_name="        + getProductName()
              + ", product_version="     + getProductVersion()
-//           + ", " + String.valueOf( _properties )
+             + ", windows_view="        + getWindowsView()
              + "]";
     }
 
