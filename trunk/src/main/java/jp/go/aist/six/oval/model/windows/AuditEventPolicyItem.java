@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.windows;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.sc.ItemType;
+import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 
@@ -80,7 +81,16 @@ public class AuditEventPolicyItem
                     final int id
                     )
     {
-        super( id );
+        this( id, null );
+    }
+
+
+    public AuditEventPolicyItem(
+                    final int id,
+                    final StatusEnumeration status
+                    )
+    {
+        super( id, status );
 
         _oval_platform_type = OvalPlatformType.windows;
         _oval_component_type = OvalComponentType.auditeventpolicy;

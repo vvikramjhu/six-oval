@@ -61,6 +61,9 @@ public class FileItem
     private EntityItemStringType    product_name;
     private EntityItemVersionType   product_version;
 
+    private EntityItemWindowsViewType  windows_view;
+    //{0..1}
+
 
 //    private final Map<FileProperty, EntityAttributeGroup>  _properties =
 //        new EnumMap<FileProperty, EntityAttributeGroup>( FileProperty.class );
@@ -156,7 +159,7 @@ public class FileItem
                     final String productVersion
                     )
     {
-        this( id, status );
+        super( id, status );
 
         setFilepath( new EntityItemStringType( filepath ) );
         setPath( new EntityItemStringType( path ) );
@@ -736,6 +739,23 @@ public class FileItem
 
 
 
+    /**
+     */
+    public void setWindowsView(
+                    final EntityItemWindowsViewType windows_view
+                    )
+    {
+        this.windows_view = windows_view;
+    }
+
+
+    public EntityItemWindowsViewType getWindowsView()
+    {
+        return this.windows_view;
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -762,6 +782,7 @@ public class FileItem
              + ", original_filename="   + getOriginalFilename()
              + ", product_name="        + getProductName()
              + ", product_version="     + getProductVersion()
+             + ", windows_view="        + getWindowsView()
 //                        + ", " + _properties
              + "]";
     }

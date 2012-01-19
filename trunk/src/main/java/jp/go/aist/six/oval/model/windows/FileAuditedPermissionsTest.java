@@ -30,27 +30,30 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
- * The auditeventpolicysubcategories test is used to check
- * the audit event policy settings on a Windows system.
+ * The file audit permissions test is used to check 
+ * the audit permissions associated with Windows files.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.3:
+ *             Replaced by the fileauditedpermissions53 test and
+ *             will be removed in version 6.0 of the language.
  */
-public class AuditEventPolicySubcategoriesTest
+public class FileAuditedPermissionsTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public AuditEventPolicySubcategoriesTest()
+    public FileAuditedPermissionsTest()
     {
         this( null, 0 );
     }
 
 
-    public AuditEventPolicySubcategoriesTest(
+    public FileAuditedPermissionsTest(
                     final String id,
                     final int version
                     )
@@ -59,7 +62,7 @@ public class AuditEventPolicySubcategoriesTest
     }
 
 
-    public AuditEventPolicySubcategoriesTest(
+    public FileAuditedPermissionsTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -70,7 +73,7 @@ public class AuditEventPolicySubcategoriesTest
     }
 
 
-    public AuditEventPolicySubcategoriesTest(
+    public FileAuditedPermissionsTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -82,7 +85,7 @@ public class AuditEventPolicySubcategoriesTest
         super( id, version, comment, check, object, stateList );
 
         _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.auditeventpolicysubcategories;
+        _oval_component_type = OvalComponentType.fileauditedpermissions;
     }
 
 
@@ -104,7 +107,7 @@ public class AuditEventPolicySubcategoriesTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof AuditEventPolicySubcategoriesTest)) {
+        if (!(obj instanceof FileAuditedPermissionsTest)) {
             return false;
         }
 
@@ -116,8 +119,8 @@ public class AuditEventPolicySubcategoriesTest
     @Override
     public String toString()
     {
-        return "auditeventpolicysubcategories_test[" + super.toString() + "]";
+        return "fileauditedpermissions_test[" + super.toString() + "]";
     }
 
 }
-//AuditEventPolicySubcategoriesTest
+//FileAuditedPermissionsTest

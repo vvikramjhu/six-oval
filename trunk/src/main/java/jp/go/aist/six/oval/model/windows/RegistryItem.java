@@ -66,6 +66,9 @@ public class RegistryItem
 //    private EntityItemAnySimpleType  _value;
     // We have never found a registry item that has more than one value!!! //
 
+    private EntityItemWindowsViewType  windows_view;
+    //{0..1}
+
 
 
     /**
@@ -218,6 +221,23 @@ public class RegistryItem
 
 
 
+    /**
+     */
+    public void setWindowsView(
+                    final EntityItemWindowsViewType windows_view
+                    )
+    {
+        this.windows_view = windows_view;
+    }
+
+
+    public EntityItemWindowsViewType getWindowsView()
+    {
+        return this.windows_view;
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -226,14 +246,15 @@ public class RegistryItem
     public String toString()
     {
         return "registry_item[" + super.toString()
-             + ", hive="    + getHive()
-             + ", key="     + getKey()
-             + ", name="    + getName()
-             + ", last_write_time="    + getLastWriteTime()
-             + ", type="    + getType()
-             + ", value="   + getValue()
+             + ", hive="            + getHive()
+             + ", key="             + getKey()
+             + ", name="            + getName()
+             + ", last_write_time=" + getLastWriteTime()
+             + ", type="            + getType()
+             + ", value="           + getValue()
+             + ", windows_view="    + getWindowsView()
              + "]";
     }
 
 }
-// RegistryItem
+//RegistryItem

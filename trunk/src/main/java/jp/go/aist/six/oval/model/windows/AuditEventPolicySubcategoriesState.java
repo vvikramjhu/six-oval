@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
  * the different system activities that can be audited.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: AuditEventPolicyState.java 2173 2011-12-28 06:06:02Z nakamura5akihito $
+ * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class AuditEventPolicySubcategoriesState
