@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
@@ -29,14 +30,15 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * The fileauditedpermissions53_state defines the different audit permissions 
- * that can be associated with a given fileauditedpermissions53_object. 
+ * This item stores the effective rights of a file 
+ * that a discretionary access control list (DACL) structure 
+ * grants to a specified trustee.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class FileAuditedPermissionsItem
+public class FileEffectiveRightsItem
     extends ItemType
 {
 
@@ -47,25 +49,25 @@ public class FileAuditedPermissionsItem
     //{nillable="true"}
     private EntityItemStringType   trustee_sid;
     private EntityItemStringType   trustee_name;
-    private EntityItemAuditType    standard_delete;
-    private EntityItemAuditType    standard_read_control;
-    private EntityItemAuditType    standard_write_doc;
-    private EntityItemAuditType    standard_write_owner;
-    private EntityItemAuditType    standard_syncronize;
-    private EntityItemAuditType    access_system_security;
-    private EntityItemAuditType    generic_read;
-    private EntityItemAuditType    generic_write;
-    private EntityItemAuditType    generic_execute;
-    private EntityItemAuditType    generic_all;
-    private EntityItemAuditType    file_read_data;
-    private EntityItemAuditType    file_write_data;
-    private EntityItemAuditType    file_append_data;
-    private EntityItemAuditType    file_read_ea;
-    private EntityItemAuditType    file_write_ea;
-    private EntityItemAuditType    file_execute;
-    private EntityItemAuditType    file_delete_child;
-    private EntityItemAuditType    file_read_attributes;
-    private EntityItemAuditType    file_write_attributes;
+    private EntityItemBoolType    standard_delete;
+    private EntityItemBoolType    standard_read_control;
+    private EntityItemBoolType    standard_write_doc;
+    private EntityItemBoolType    standard_write_owner;
+    private EntityItemBoolType    standard_syncronize;
+    private EntityItemBoolType    access_system_security;
+    private EntityItemBoolType    generic_read;
+    private EntityItemBoolType    generic_write;
+    private EntityItemBoolType    generic_execute;
+    private EntityItemBoolType    generic_all;
+    private EntityItemBoolType    file_read_data;
+    private EntityItemBoolType    file_write_data;
+    private EntityItemBoolType    file_append_data;
+    private EntityItemBoolType    file_read_ea;
+    private EntityItemBoolType    file_write_ea;
+    private EntityItemBoolType    file_execute;
+    private EntityItemBoolType    file_delete_child;
+    private EntityItemBoolType    file_read_attributes;
+    private EntityItemBoolType    file_write_attributes;
 
     private EntityItemWindowsViewType  windows_view;
     //{0..1}
@@ -75,13 +77,13 @@ public class FileAuditedPermissionsItem
     /**
      * Constructor.
      */
-    public FileAuditedPermissionsItem()
+    public FileEffectiveRightsItem()
     {
         this( 0 );
     }
 
 
-    public FileAuditedPermissionsItem(
+    public FileEffectiveRightsItem(
                     final int id
                     )
     {
@@ -89,7 +91,7 @@ public class FileAuditedPermissionsItem
     }
 
 
-    public FileAuditedPermissionsItem(
+    public FileEffectiveRightsItem(
                     final int id,
                     final StatusEnumeration status
                     )
@@ -97,7 +99,7 @@ public class FileAuditedPermissionsItem
         super( id, status );
         
         _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.fileauditedpermissions;
+        _oval_component_type = OvalComponentType.fileeffectiverights;
     }
 
 
@@ -190,14 +192,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setStandardDelete(
-                    final EntityItemAuditType standard_delete
+                    final EntityItemBoolType standard_delete
                     )
     {
         this.standard_delete = standard_delete;
     }
 
 
-    public EntityItemAuditType getStandardDelete()
+    public EntityItemBoolType getStandardDelete()
     {
         return this.standard_delete;
     }
@@ -207,14 +209,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setStandardReadControl(
-                    final EntityItemAuditType standard_read_control
+                    final EntityItemBoolType standard_read_control
                     )
     {
         this.standard_read_control = standard_read_control;
     }
 
 
-    public EntityItemAuditType getStandardReadControl()
+    public EntityItemBoolType getStandardReadControl()
     {
         return this.standard_read_control;
     }
@@ -224,14 +226,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setStandardWriteDoc(
-                    final EntityItemAuditType standard_write_doc
+                    final EntityItemBoolType standard_write_doc
                     )
     {
         this.standard_write_doc = standard_write_doc;
     }
 
 
-    public EntityItemAuditType getStandardWriteDoc()
+    public EntityItemBoolType getStandardWriteDoc()
     {
         return this.standard_write_doc;
     }
@@ -241,14 +243,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setStandardWriteOwner(
-                    final EntityItemAuditType standard_write_owner
+                    final EntityItemBoolType standard_write_owner
                     )
     {
         this.standard_write_owner = standard_write_owner;
     }
 
 
-    public EntityItemAuditType getStandardWriteOwner()
+    public EntityItemBoolType getStandardWriteOwner()
     {
         return this.standard_write_owner;
     }
@@ -258,14 +260,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setStandardSyncronize(
-                    final EntityItemAuditType standard_syncronize
+                    final EntityItemBoolType standard_syncronize
                     )
     {
         this.standard_syncronize = standard_syncronize;
     }
 
 
-    public EntityItemAuditType getStandardSyncronize()
+    public EntityItemBoolType getStandardSyncronize()
     {
         return this.standard_syncronize;
     }
@@ -275,14 +277,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setAccessSystemSecurity(
-                    final EntityItemAuditType access_system_security
+                    final EntityItemBoolType access_system_security
                     )
     {
         this.access_system_security = access_system_security;
     }
 
 
-    public EntityItemAuditType getAccessSystemSecurity()
+    public EntityItemBoolType getAccessSystemSecurity()
     {
         return this.access_system_security;
     }
@@ -292,14 +294,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setGenericRead(
-                    final EntityItemAuditType generic_read
+                    final EntityItemBoolType generic_read
                     )
     {
         this.generic_read = generic_read;
     }
 
 
-    public EntityItemAuditType getGenericRead()
+    public EntityItemBoolType getGenericRead()
     {
         return this.generic_read;
     }
@@ -309,14 +311,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setGenericWrite(
-                    final EntityItemAuditType generic_write
+                    final EntityItemBoolType generic_write
                     )
     {
         this.generic_write = generic_write;
     }
 
 
-    public EntityItemAuditType getGenericWrite()
+    public EntityItemBoolType getGenericWrite()
     {
         return this.generic_write;
     }
@@ -326,14 +328,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setGenericExecute(
-                    final EntityItemAuditType generic_execute
+                    final EntityItemBoolType generic_execute
                     )
     {
         this.generic_execute = generic_execute;
     }
 
 
-    public EntityItemAuditType getGenericExecute()
+    public EntityItemBoolType getGenericExecute()
     {
         return this.generic_execute;
     }
@@ -343,14 +345,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setGenericAll(
-                    final EntityItemAuditType generic_all
+                    final EntityItemBoolType generic_all
                     )
     {
         this.generic_all = generic_all;
     }
 
 
-    public EntityItemAuditType getGenericAll()
+    public EntityItemBoolType getGenericAll()
     {
         return this.generic_all;
     }
@@ -360,14 +362,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setFileReadData(
-                    final EntityItemAuditType file_read_data
+                    final EntityItemBoolType file_read_data
                     )
     {
         this.file_read_data = file_read_data;
     }
 
 
-    public EntityItemAuditType getFileReadData()
+    public EntityItemBoolType getFileReadData()
     {
         return this.file_read_data;
     }
@@ -377,14 +379,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setFileWriteData(
-                    final EntityItemAuditType file_write_data
+                    final EntityItemBoolType file_write_data
                     )
     {
         this.file_write_data = file_write_data;
     }
 
 
-    public EntityItemAuditType getFileWriteData()
+    public EntityItemBoolType getFileWriteData()
     {
         return this.file_write_data;
     }
@@ -394,14 +396,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setFileAppendData(
-                    final EntityItemAuditType file_append_data
+                    final EntityItemBoolType file_append_data
                     )
     {
         this.file_append_data = file_append_data;
     }
 
 
-    public EntityItemAuditType getFileAppendData()
+    public EntityItemBoolType getFileAppendData()
     {
         return this.file_append_data;
     }
@@ -411,14 +413,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setFileReadEa(
-                    final EntityItemAuditType file_read_ea
+                    final EntityItemBoolType file_read_ea
                     )
     {
         this.file_read_ea = file_read_ea;
     }
 
 
-    public EntityItemAuditType getFileReadEa()
+    public EntityItemBoolType getFileReadEa()
     {
         return this.file_read_ea;
     }
@@ -428,14 +430,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setFileWriteEa(
-                    final EntityItemAuditType file_write_ea
+                    final EntityItemBoolType file_write_ea
                     )
     {
         this.file_write_ea = file_write_ea;
     }
 
 
-    public EntityItemAuditType getFileWriteEa()
+    public EntityItemBoolType getFileWriteEa()
     {
         return this.file_write_ea;
     }
@@ -445,14 +447,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setFileExecute(
-                    final EntityItemAuditType file_execute
+                    final EntityItemBoolType file_execute
                     )
     {
         this.file_execute = file_execute;
     }
 
 
-    public EntityItemAuditType getFileExecute()
+    public EntityItemBoolType getFileExecute()
     {
         return this.file_execute;
     }
@@ -462,14 +464,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setFileDeleteChild(
-                    final EntityItemAuditType file_delete_child
+                    final EntityItemBoolType file_delete_child
                     )
     {
         this.file_delete_child = file_delete_child;
     }
 
 
-    public EntityItemAuditType getFileDeleteChild()
+    public EntityItemBoolType getFileDeleteChild()
     {
         return this.file_delete_child;
     }
@@ -479,14 +481,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setFileReadAttributes(
-                    final EntityItemAuditType file_read_attributes
+                    final EntityItemBoolType file_read_attributes
                     )
     {
         this.file_read_attributes = file_read_attributes;
     }
 
 
-    public EntityItemAuditType getFileReadAttributes()
+    public EntityItemBoolType getFileReadAttributes()
     {
         return this.file_read_attributes;
     }
@@ -496,14 +498,14 @@ public class FileAuditedPermissionsItem
     /**
      */
     public void setFileWriteAttributes(
-                    final EntityItemAuditType file_write_attributes
+                    final EntityItemBoolType file_write_attributes
                     )
     {
         this.file_write_attributes = file_write_attributes;
     }
 
 
-    public EntityItemAuditType getFileWriteAttributes()
+    public EntityItemBoolType getFileWriteAttributes()
     {
         return this.file_write_attributes;
     }
@@ -544,7 +546,7 @@ public class FileAuditedPermissionsItem
                     final Object obj
                     )
     {
-        if (!(obj instanceof FileAuditedPermissionsItem)) {
+        if (!(obj instanceof FileEffectiveRightsItem)) {
             return false;
         }
 
