@@ -20,27 +20,26 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
-import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 
 /**
- * The fileeffectiverights53 object is used by a file effective rights test 
+ * The fileeffectiverights object is used by a file effective rights test 
  * to define the objects used to evalutate against the specified state.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.3:
+ *             Replaced by the fileeffectiverights53 object and
+ *             will be removed in version 6.0 of the language.
  */
-public class FileEffectiveRights53Object
+public class FileEffectiveRightsObject
     extends SystemObjectType
 {
 
@@ -49,26 +48,17 @@ public class FileEffectiveRights53Object
 	//    set
     //    sequence(
     //           behaviors
-    //           choice(
-    //                      filepath
-    //                      sequence(
-    //                                 path
-    //                                 filename
-    //                              )
-    //           )
-    //           trustee_sid
-    //           filter
+    //           path
+    //           filename
+    //           trustee_name
     //   )
 
     private Set  set;
     //{1..1}
 
 
-    private FileEffectiveRights53Behaviors  behaviors;
+    private FileEffectiveRightsBehaviors  behaviors;
     //{0..1}
-
-    private EntityObjectStringType  filepath;
-    //{1..1}
 
     private EntityObjectStringType  path;
     //{1..1}
@@ -76,24 +66,21 @@ public class FileEffectiveRights53Object
     private EntityObjectStringType  filename;
     //{1..1, nillable="true"}
 
-    private EntityObjectStringType  trustee_sid;
+    private EntityObjectStringType  trustee_name;
     //{1..1}
-
-    private final Collection<Filter>  filter = new ArrayList<Filter>();
-    //{0..*}
 
 
 
     /**
      * Constructor.
      */
-    public FileEffectiveRights53Object()
+    public FileEffectiveRightsObject()
     {
         this( null, 0 );
     }
 
 
-    public FileEffectiveRights53Object(
+    public FileEffectiveRightsObject(
                     final String id,
                     final int version
                     )
@@ -101,7 +88,7 @@ public class FileEffectiveRights53Object
         super( id, version );
 
         _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.fileeffectiverights53;
+        _oval_component_type = OvalComponentType.fileeffectiverights;
     }
 
 
@@ -163,33 +150,16 @@ public class FileEffectiveRights53Object
     /**
      */
     public void setBehaviors(
-                    final FileEffectiveRights53Behaviors behaviors
+                    final FileEffectiveRightsBehaviors behaviors
                     )
     {
         this.behaviors = behaviors;
     }
 
 
-    public FileEffectiveRights53Behaviors getBehaviors()
+    public FileEffectiveRightsBehaviors getBehaviors()
     {
         return this.behaviors;
-    }
-
-
-
-    /**
-     */
-    public void setFilepath(
-                    final EntityObjectStringType filepath
-                    )
-    {
-        this.filepath = filepath;
-    }
-
-
-    public EntityObjectStringType getFilepath()
-    {
-        return this.filepath;
     }
 
 
@@ -230,57 +200,17 @@ public class FileEffectiveRights53Object
 
     /**
      */
-    public void setTrusteeSid(
-                    final EntityObjectStringType trustee_sid
+    public void setTrusteeName(
+                    final EntityObjectStringType trustee_name
                     )
     {
-        this.trustee_sid = trustee_sid;
+        this.trustee_name = trustee_name;
     }
 
 
-    public EntityObjectStringType getTrusteeSid()
+    public EntityObjectStringType getTrusteeName()
     {
-        return this.trustee_sid;
-    }
-
-
-
-    /**
-     */
-    public void setFilter(
-                    final Collection<? extends Filter> filterList
-                    )
-    {
-        if (this.filter != filterList) {
-            this.filter.clear();
-            if (filterList != null  &&  filterList.size() > 0) {
-                this.filter.addAll( filterList );
-            }
-        }
-    }
-
-
-    public boolean addFilter(
-                    final Filter filter
-                    )
-    {
-        if (filter == null) {
-            return false;
-        }
-
-        return this.filter.add( filter );
-    }
-
-
-    public Collection<Filter> getFilter()
-    {
-        return this.filter;
-    }
-
-
-    public Iterator<Filter> iterateFilter()
-    {
-        return filter.iterator();
+        return this.trustee_name;
     }
 
 
@@ -301,7 +231,7 @@ public class FileEffectiveRights53Object
                     final Object obj
                     )
     {
-        if (!(obj instanceof FileEffectiveRights53Object)) {
+        if (!(obj instanceof FileEffectiveRightsObject)) {
             return false;
         }
 
@@ -313,14 +243,12 @@ public class FileEffectiveRights53Object
     @Override
     public String toString()
     {
-        return "fileeffectiverights53_object[" + super.toString()
-                        + ", set="          + getSet()
-                        + ", behaviors="    + getBehaviors()
-                        + ", filepath="     + getFilepath()
-                        + ", path="         + getPath()
-                        + ", filename="     + getFilename()
-                        + ", trustee_sid="  + getTrusteeSid()
-                        + ", filter="       + getFilter()
+        return "fileeffectiverights_object[" + super.toString()
+                        + ", set=" 			+ getSet()
+                        + ", behaviors="	+ getBehaviors()
+                        + ", path=" 		+ getPath()
+                        + ", filename=" 	+ getFilename()
+                        + ", trustee_name="	+ getTrusteeName()
                         + "]";
     }
 

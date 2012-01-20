@@ -66,6 +66,8 @@ public enum OvalComponentType
     fileauditedpermissions53,
     fileeffectiverights,
     fileeffectiverights53,
+    group,
+    group_sid,
     metabase,
     registry,
     wmi,
