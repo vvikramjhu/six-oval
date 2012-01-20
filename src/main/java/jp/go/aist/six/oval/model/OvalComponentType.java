@@ -68,6 +68,7 @@ public enum OvalComponentType
     fileeffectiverights53,
     group,
     group_sid,
+    network_interface,  //"interface"
     metabase,
     registry,
     wmi,
