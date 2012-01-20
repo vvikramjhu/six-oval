@@ -18,45 +18,33 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
+import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 
 
 
 /**
- * The EntityItemString type is extended by the entities of an individual item.
- * This specific type describes simple string data.
+ * The EntityItemNetworkInterfaceTypeType restricts a string value 
+ * to a specific set of values that describe the different types of network interfaces.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemIPAddressStringType
-    extends EntityItemSimpleBaseType
+public class EntityItemNetworkInterfaceTypeType
+    extends EntityItemStringType
 {
 
-    //{optional, default="string"}
-    public static final DatatypeEnumeration  DEFAULT_DATATYPE =
-        DatatypeEnumeration.STRING;
-
-//  private static final DatatypeEnumeration[]  _DATATYPE_RESTRICTION_ = new DatatypeEnumeration[] {
-//  DatatypeEnumeration.IPV4_ADDRESS,
-//  DatatypeEnumeration.IPV6_ADDRESS,
-//  DEFAULT_DATATYPE
-//};
-
-    
-    
     /**
      * Constructor.
      */
-    public EntityItemIPAddressStringType()
+    public EntityItemNetworkInterfaceTypeType()
     {
     }
 
 
-    public EntityItemIPAddressStringType(
+    public EntityItemNetworkInterfaceTypeType(
                     final String content
                     )
     {
@@ -70,22 +58,16 @@ public class EntityItemIPAddressStringType
     //**************************************************************
 
     @Override
-    public void setDatatype(
-                    final DatatypeEnumeration datatype
+    public void setContent(
+                    final String content
                     )
     {
-        if (datatype != null) {
-            if (datatype == DatatypeEnumeration.IPV4_ADDRESS
-                            ||  datatype == DatatypeEnumeration.IPV6_ADDRESS
-                            ||  datatype == DatatypeEnumeration.STRING
-                            ) {
-                // xsd:restriction satisfied.
-            } else {
-                throw new IllegalArgumentException( "invalid datatype: " + datatype);
-            }
+        if (content != null) {
+            // validation
+            NetworkInterfaceTypeEnumeration.fromValue( content );
         }
 
-        super.setDatatype( datatype );
+        super.setContent( content );
     }
 
 
@@ -111,20 +93,12 @@ public class EntityItemIPAddressStringType
             return true;
         }
 
-        if (!(obj instanceof EntityItemIPAddressStringType)) {
+        if (!(obj instanceof EntityItemNetworkInterfaceTypeType)) {
             return false;
         }
 
         return super.equals( obj );
     }
 
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return "[" + super.toString() + "]";
-//    }
-
 }
-//EntityItemIPAddressStringType
+//EntityItemNetworkInterfaceTypeType

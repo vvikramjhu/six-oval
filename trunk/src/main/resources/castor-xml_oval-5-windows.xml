@@ -2781,6 +2781,156 @@
 
 
     <!-- ******************************************************* -->
+    <!-- interface                                               -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.windows.NetworkInterfaceTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="interface_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"
+            />
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.NetworkInterfaceObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="interface_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.NetworkInterfaceState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="interface_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="index" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="index" node="element"/>
+        </field>
+
+        <field name="type" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateNetworkInterfaceTypeType">
+            <bind-xml name="type" node="element"/>
+        </field>
+
+        <field name="hardwareAddr" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="hardware_addr" node="element"/>
+        </field>
+
+        <field name="inetAddr" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType">
+            <bind-xml name="inet_addr" node="element"/>
+        </field>
+
+        <field name="broadcastAddr" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType">
+            <bind-xml name="broadcast_addr" node="element"/>
+        </field>
+
+        <field name="netmask" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType">
+            <bind-xml name="netmask" node="element"/>
+        </field>
+
+        <field name="addrType" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAddrTypeType">
+            <bind-xml name="addr_type" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.windows.NetworkInterfaceItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="interface_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""/>
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="index" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="index" node="element"/>
+        </field>
+
+        <field name="type" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemNetworkInterfaceTypeType">
+            <bind-xml name="type" node="element"/>
+        </field>
+
+        <field name="hardwareAddr" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="hardware_addr" node="element"/>
+        </field>
+
+        <field name="inetAddr" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType">
+            <bind-xml name="inet_addr" node="element"/>
+        </field>
+
+        <field name="broadcastAddr" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType">
+            <bind-xml name="broadcast_addr" node="element"/>
+        </field>
+
+        <field name="netmask" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType">
+            <bind-xml name="netmask" node="element"/>
+        </field>
+
+        <field name="addrType" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemAddrTypeType"
+            collection="collection">
+            <bind-xml name="addr_type" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- metabase                                                -->
     <!-- ******************************************************* -->
 
@@ -3188,6 +3338,28 @@
     <!-- ******************************************************* -->
     <!-- entity                                                  -->
     <!-- ******************************************************* -->
+
+<!-- interface/addr_type -->
+    <class name="jp.go.aist.six.oval.model.windows.EntityStateAddrTypeType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemAddrTypeType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
+
+<!-- interface/type -->
+    <class name="jp.go.aist.six.oval.model.windows.EntityStateNetworkInterfaceTypeType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemNetworkInterfaceTypeType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
 
     <class name="jp.go.aist.six.oval.model.windows.EntityItemFileTypeType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">

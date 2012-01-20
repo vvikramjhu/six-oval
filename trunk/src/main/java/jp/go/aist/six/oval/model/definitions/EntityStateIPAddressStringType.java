@@ -18,45 +18,49 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.model.definitions;
 
+import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
+import jp.go.aist.six.oval.model.common.OperationEnumeration;
 
 
 
 /**
- * The EntityItemString type is extended by the entities of an individual item.
- * This specific type describes simple string data.
+ * The EntityStateIPAddressStringType is extended by the entities 
+ * of an individual OVAL State.
+ * This specific type describes any IPv4/IPv6 address, address prefix,  
+ * or its string representation.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemIPAddressStringType
-    extends EntityItemSimpleBaseType
+public class EntityStateIPAddressStringType
+    extends EntityStateSimpleBaseType
 {
 
     //{optional, default="string"}
     public static final DatatypeEnumeration  DEFAULT_DATATYPE =
         DatatypeEnumeration.STRING;
 
-//  private static final DatatypeEnumeration[]  _DATATYPE_RESTRICTION_ = new DatatypeEnumeration[] {
-//  DatatypeEnumeration.IPV4_ADDRESS,
-//  DatatypeEnumeration.IPV6_ADDRESS,
-//  DEFAULT_DATATYPE
-//};
+//    private static final DatatypeEnumeration[]  _DATATYPE_RESTRICTION_ = new DatatypeEnumeration[] {
+//        DatatypeEnumeration.IPV4_ADDRESS,
+//        DatatypeEnumeration.IPV6_ADDRESS,
+//        DEFAULT_DATATYPE
+//    };
 
-    
+
     
     /**
      * Constructor.
      */
-    public EntityItemIPAddressStringType()
+    public EntityStateIPAddressStringType()
     {
     }
 
 
-    public EntityItemIPAddressStringType(
+    public EntityStateIPAddressStringType(
                     final String content
                     )
     {
@@ -64,9 +68,35 @@ public class EntityItemIPAddressStringType
     }
 
 
+    public EntityStateIPAddressStringType(
+                    final DatatypeEnumeration datatype,
+                    final OperationEnumeration operation,
+                    final Boolean mask,
+                    final String var_ref,
+                    final CheckEnumeration var_check,
+                    final String content
+                    )
+    {
+        super( datatype, operation, mask, var_ref, var_check, content );
+    }
+
+
+    public EntityStateIPAddressStringType(
+                    final String datatype,
+                    final String operation,
+                    final Boolean mask,
+                    final String var_ref,
+                    final String var_check,
+                    final String content
+                    )
+    {
+        super( datatype, operation, mask, var_ref, var_check, content );
+    }
+
+
 
     //**************************************************************
-    //  EntityItemBase
+    //  EntityBase
     //**************************************************************
 
     @Override
@@ -111,7 +141,7 @@ public class EntityItemIPAddressStringType
             return true;
         }
 
-        if (!(obj instanceof EntityItemIPAddressStringType)) {
+        if (!(obj instanceof EntityStateIPAddressStringType)) {
             return false;
         }
 
@@ -127,4 +157,4 @@ public class EntityItemIPAddressStringType
 //    }
 
 }
-//EntityItemIPAddressStringType
+// EntityStateIPAddressStringType

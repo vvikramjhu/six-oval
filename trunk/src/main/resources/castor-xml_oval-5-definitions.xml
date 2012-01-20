@@ -915,6 +915,10 @@
     </class>
 
 
+    <class name="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
+    </class>
+
     <class name="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
     </class>
