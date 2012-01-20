@@ -33,14 +33,14 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The fileeffectiverights53 object is used by a file effective rights test 
- * to define the objects used to evalutate against the specified state.
+ * The group object is used by a group test to define 
+ * the specific group(s) (identified by name) to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class FileEffectiveRights53Object
+public class GroupObject
     extends SystemObjectType
 {
 
@@ -48,35 +48,14 @@ public class FileEffectiveRights53Object
 	// choice(
 	//    set
     //    sequence(
-    //           behaviors
-    //           choice(
-    //                      filepath
-    //                      sequence(
-    //                                 path
-    //                                 filename
-    //                              )
-    //           )
-    //           trustee_sid
+    //           group
     //           filter
     //   )
 
     private Set  set;
     //{1..1}
 
-
-    private FileEffectiveRights53Behaviors  behaviors;
-    //{0..1}
-
-    private EntityObjectStringType  filepath;
-    //{1..1}
-
-    private EntityObjectStringType  path;
-    //{1..1}
-
-    private EntityObjectStringType  filename;
-    //{1..1, nillable="true"}
-
-    private EntityObjectStringType  trustee_sid;
+    private EntityObjectStringType  group;
     //{1..1}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();
@@ -87,13 +66,13 @@ public class FileEffectiveRights53Object
     /**
      * Constructor.
      */
-    public FileEffectiveRights53Object()
+    public GroupObject()
     {
         this( null, 0 );
     }
 
 
-    public FileEffectiveRights53Object(
+    public GroupObject(
                     final String id,
                     final int version
                     )
@@ -101,7 +80,7 @@ public class FileEffectiveRights53Object
         super( id, version );
 
         _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.fileeffectiverights53;
+        _oval_component_type = OvalComponentType.group;
     }
 
 
@@ -162,85 +141,17 @@ public class FileEffectiveRights53Object
 
     /**
      */
-    public void setBehaviors(
-                    final FileEffectiveRights53Behaviors behaviors
+    public void setGroup(
+                    final EntityObjectStringType group
                     )
     {
-        this.behaviors = behaviors;
+        this.group = group;
     }
 
 
-    public FileEffectiveRights53Behaviors getBehaviors()
+    public EntityObjectStringType getGroup()
     {
-        return this.behaviors;
-    }
-
-
-
-    /**
-     */
-    public void setFilepath(
-                    final EntityObjectStringType filepath
-                    )
-    {
-        this.filepath = filepath;
-    }
-
-
-    public EntityObjectStringType getFilepath()
-    {
-        return this.filepath;
-    }
-
-
-
-    /**
-     */
-    public void setPath(
-                    final EntityObjectStringType path
-                    )
-    {
-        this.path = path;
-    }
-
-
-    public EntityObjectStringType getPath()
-    {
-        return this.path;
-    }
-
-
-
-    /**
-     */
-    public void setFilename(
-                    final EntityObjectStringType filename
-                    )
-    {
-        this.filename = filename;
-    }
-
-
-    public EntityObjectStringType getFilename()
-    {
-        return this.filename;
-    }
-
-
-
-    /**
-     */
-    public void setTrusteeSid(
-                    final EntityObjectStringType trustee_sid
-                    )
-    {
-        this.trustee_sid = trustee_sid;
-    }
-
-
-    public EntityObjectStringType getTrusteeSid()
-    {
-        return this.trustee_sid;
+        return this.group;
     }
 
 
@@ -301,7 +212,7 @@ public class FileEffectiveRights53Object
                     final Object obj
                     )
     {
-        if (!(obj instanceof FileEffectiveRights53Object)) {
+        if (!(obj instanceof GroupObject)) {
             return false;
         }
 
@@ -313,16 +224,12 @@ public class FileEffectiveRights53Object
     @Override
     public String toString()
     {
-        return "fileeffectiverights53_object[" + super.toString()
-                        + ", set="          + getSet()
-                        + ", behaviors="    + getBehaviors()
-                        + ", filepath="     + getFilepath()
-                        + ", path="         + getPath()
-                        + ", filename="     + getFilename()
-                        + ", trustee_sid="  + getTrusteeSid()
-                        + ", filter="       + getFilter()
+        return "group_object[" + super.toString()
+                        + ", set"       + getSet()
+                        + ", group="    + getGroup()
+                        + ", filter="   + getFilter()
                         + "]";
     }
 
 }
-//FileEffectiveRightsObject
+//GroupObject
