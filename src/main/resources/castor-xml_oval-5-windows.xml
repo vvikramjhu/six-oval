@@ -2931,6 +2931,97 @@
 
 
     <!-- ******************************************************* -->
+    <!-- lockoutpolicy                                           -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.windows.LockoutPolicyTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="lockoutpolicy_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.LockoutPolicyObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="lockoutpolicy_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.LockoutPolicyState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="lockoutpolicy_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="forceLogoff" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="force_logoff" node="element"/>
+        </field>
+
+        <field name="lockoutDuration" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="lockout_duration" node="element"/>
+        </field>
+
+        <field name="lockoutObservationWindow" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="lockout_observation_window" node="element"/>
+        </field>
+
+        <field name="lockoutThreshold" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="lockout_threshold" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.windows.LockoutPolicyItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="lockoutpolicy_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""/>
+
+        <field name="forceLogoff" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="force_logoff" node="element"/>
+        </field>
+
+        <field name="lockoutDuration" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="lockout_duration" node="element"/>
+        </field>
+
+        <field name="lockoutObservationWindow" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="lockout_observation_window" node="element"/>
+        </field>
+
+        <field name="lockoutThreshold" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="lockout_threshold" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- metabase                                                -->
     <!-- ******************************************************* -->
 

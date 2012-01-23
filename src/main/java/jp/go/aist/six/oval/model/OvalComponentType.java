@@ -69,6 +69,7 @@ public enum OvalComponentType
     group,
     group_sid,
     network_interface,  //"interface"
+    lockoutpolicy,
     metabase,
     registry,
     wmi,
@@ -80,5 +81,5 @@ public enum OvalComponentType
     external;
 
 }
-// OvalComponentType
+//OvalComponentType
 
