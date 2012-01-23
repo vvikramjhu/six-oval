@@ -291,15 +291,14 @@ public class MetabaseState
     public String toString()
     {
         return "metabase_state[" + super.toString()
-                        + ", " + getKey()
-                        + ", " + getID()
-                        + ", " + getName()
-                        + ", " + getUserType()
-                        + ", " + getDataType()
-                        + ", " + getData()
-//                        + ", " + String.valueOf( _properties )
+                        + ", key="          + getKey()
+                        + ", ID="           + getID()
+                        + ", name="         + getName()
+                        + ", user_type="    + getUserType()
+                        + ", data_type="    + getDataType()
+                        + ", data="         + getData()
                         + "]";
     }
 
 }
-// MetabaseState
+//MetabaseState
