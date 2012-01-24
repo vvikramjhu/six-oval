@@ -882,6 +882,13 @@
     </class>
 
 
+
+    <class name="jp.go.aist.six.oval.model.definitions.EntityObjectIPAddressStringType"
+        extends="jp.go.aist.six.oval.model.definitions.EntitySimpleBaseType">
+    </class>
+
+
+
     <class name="jp.go.aist.six.oval.model.definitions.EntityComplexBaseType"
         extends="jp.go.aist.six.oval.model.definitions.EntityAttributeGroup"
         verify-constructable="false">
@@ -918,6 +925,7 @@
     <class name="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
     </class>
+
 
     <class name="jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateSimpleBaseType">
