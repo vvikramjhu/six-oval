@@ -3151,6 +3151,117 @@
 
 
     <!-- ******************************************************* -->
+    <!-- passwordpolicy                                          -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.windows.PasswordPolicyTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="passwordpolicy_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.PasswordPolicyObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="passwordpolicy_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.PasswordPolicyState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="passwordpolicy_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="maxPasswdAge" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="max_passwd_age" node="element"/>
+        </field>
+
+        <field name="minPasswdAge" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="min_passwd_age" node="element"/>
+        </field>
+
+        <field name="minPasswdLen" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="min_passwd_len" node="element"/>
+        </field>
+
+        <field name="passwordHistLen" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="password_hist_len" node="element"/>
+        </field>
+
+        <field name="passwordComplexity" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="password_complexity" node="element"/>
+        </field>
+
+        <field name="reversibleEncryption" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="reversible_encryption" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.windows.PasswordPolicyItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="passwordpolicy_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""/>
+
+        <field name="maxPasswdAge" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="max_passwd_age" node="element"/>
+        </field>
+
+        <field name="minPasswdAge" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="min_passwd_age" node="element"/>
+        </field>
+
+        <field name="minPasswdLen" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="min_passwd_len" node="element"/>
+        </field>
+
+        <field name="passwordHistLen" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="password_hist_len" node="element"/>
+        </field>
+
+        <field name="passwordComplexity" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="password_complexity" node="element"/>
+        </field>
+
+        <field name="reversibleEncryption" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="reversible_encryption" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- registry                                                -->
     <!-- ******************************************************* -->
 
