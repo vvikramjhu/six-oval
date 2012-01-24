@@ -71,6 +71,7 @@ public enum OvalComponentType
     network_interface,  //"interface"
     lockoutpolicy,
     metabase,
+    passwordpolicy,
     registry,
     wmi,
     wmi57,
