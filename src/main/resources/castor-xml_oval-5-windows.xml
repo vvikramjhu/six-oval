@@ -3262,6 +3262,144 @@
 
 
     <!-- ******************************************************* -->
+    <!-- port                                                    -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.windows.PortTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="port_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.PortObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="port_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="localAddress" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectIPAddressStringType">
+            <bind-xml name="local_address" node="element"/>
+        </field>
+        
+        <field name="localPort" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectIntType" >
+            <bind-xml name="local_port" node="element"/>
+        </field>
+
+        <field name="protocol" 
+            type="jp.go.aist.six.oval.model.windows.EntityObjectProtocolType">
+            <bind-xml name="protocol" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.PortState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="port_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="localAddress" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType">
+            <bind-xml name="local_address" node="element"/>
+        </field>
+
+        <field name="localPort" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType" >
+            <bind-xml name="local_port" node="element"/>
+        </field>
+
+        <field name="protocol" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateProtocolType">
+            <bind-xml name="protocol" node="element"/>
+        </field>
+
+        <field name="pid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType" >
+            <bind-xml name="pid" node="element"/>
+        </field>
+
+        <field name="foreignAddress" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType">
+            <bind-xml name="foreign_address" node="element"/>
+        </field>
+
+        <field name="foreignPort" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType" >
+            <bind-xml name="foreign_port" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.windows.PortItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="port_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""/>
+
+        <field name="localAddress" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType">
+            <bind-xml name="local_address" node="element"/>
+        </field>
+
+        <field name="localPort" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType" >
+            <bind-xml name="local_port" node="element"/>
+        </field>
+
+        <field name="protocol" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemProtocolType">
+            <bind-xml name="protocol" node="element"/>
+        </field>
+
+        <field name="pid" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType" >
+            <bind-xml name="pid" node="element"/>
+        </field>
+
+        <field name="foreignAddress" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType">
+            <bind-xml name="foreign_address" node="element"/>
+        </field>
+
+        <field name="foreignPort" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType" >
+            <bind-xml name="foreign_port" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- registry                                                -->
     <!-- ******************************************************* -->
 
@@ -3541,7 +3679,7 @@
     <!-- entity                                                  -->
     <!-- ******************************************************* -->
 
-<!-- interface/addr_type -->
+<!-- interface (network_interface) -->
     <class name="jp.go.aist.six.oval.model.windows.EntityStateAddrTypeType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
     </class>
@@ -3551,8 +3689,6 @@
     </class>
 
 
-
-<!-- interface/type -->
     <class name="jp.go.aist.six.oval.model.windows.EntityStateNetworkInterfaceTypeType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
     </class>
@@ -3563,17 +3699,32 @@
 
 
 
+<!-- file -->
     <class name="jp.go.aist.six.oval.model.windows.EntityItemFileTypeType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
 
 
 
-    <class name="jp.go.aist.six.oval.model.windows.EntityItemRegistryHiveType"
+<!-- protocol -->
+    <class name="jp.go.aist.six.oval.model.windows.EntityObjectProtocolType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityStateProtocolType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemProtocolType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
 
 
+
+<!-- registry -->
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemRegistryHiveType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
 
     <class name="jp.go.aist.six.oval.model.windows.EntityItemRegistryTypeType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">

@@ -72,6 +72,7 @@ public enum OvalComponentType
     lockoutpolicy,
     metabase,
     passwordpolicy,
+    port,
     registry,
     wmi,
     wmi57,
