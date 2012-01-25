@@ -74,6 +74,8 @@ public enum OvalComponentType
     passwordpolicy,
     port,
     printereffectiverights,
+    process,
+    process58,
     registry,
     wmi,
     wmi57,
