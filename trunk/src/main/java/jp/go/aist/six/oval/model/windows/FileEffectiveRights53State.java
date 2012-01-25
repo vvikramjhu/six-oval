@@ -47,7 +47,7 @@ public class FileEffectiveRights53State
     private EntityStateStringType   trustee_sid;
     private EntityStateBoolType    standard_delete;
     private EntityStateBoolType    standard_read_control;
-    private EntityStateBoolType    standard_write_doc;
+    private EntityStateBoolType    standard_write_dac;
     private EntityStateBoolType    standard_write_owner;
     private EntityStateBoolType    standard_syncronize;
     private EntityStateBoolType    access_system_security;
@@ -206,17 +206,17 @@ public class FileEffectiveRights53State
 
     /**
      */
-    public void setStandardWriteDoc(
-                    final EntityStateBoolType standard_write_doc
+    public void setStandardWriteDac(
+                    final EntityStateBoolType standard_write_dac
                     )
     {
-        this.standard_write_doc = standard_write_doc;
+        this.standard_write_dac = standard_write_dac;
     }
 
 
-    public EntityStateBoolType getStandardWriteDoc()
+    public EntityStateBoolType getStandardWriteDac()
     {
-        return this.standard_write_doc;
+        return this.standard_write_dac;
     }
 
 
@@ -546,7 +546,7 @@ public class FileEffectiveRights53State
              + ", trustee_sid="             + getTrusteeSid()
              + ", standard_delete="         + getStandardDelete()
              + ", standard_read_control="   + getStandardReadControl()
-             + ", standard_write_doc="      + getStandardWriteDoc()
+             + ", standard_write_dac="      + getStandardWriteDac()
              + ", standard_write_owner="    + getStandardWriteOwner()
              + ", standard_syncronize="     + getStandardSyncronize()
              + ", access_system_security="  + getAccessSystemSecurity()
