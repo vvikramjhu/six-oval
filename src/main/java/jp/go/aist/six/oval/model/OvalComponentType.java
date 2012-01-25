@@ -73,6 +73,7 @@ public enum OvalComponentType
     metabase,
     passwordpolicy,
     port,
+    printereffectiverights,
     registry,
     wmi,
     wmi57,

@@ -49,7 +49,7 @@ public class FileAuditedPermissionsItem
     private EntityItemStringType   trustee_name;
     private EntityItemAuditType    standard_delete;
     private EntityItemAuditType    standard_read_control;
-    private EntityItemAuditType    standard_write_doc;
+    private EntityItemAuditType    standard_write_dac;
     private EntityItemAuditType    standard_write_owner;
     private EntityItemAuditType    standard_syncronize;
     private EntityItemAuditType    access_system_security;
@@ -223,17 +223,17 @@ public class FileAuditedPermissionsItem
 
     /**
      */
-    public void setStandardWriteDoc(
-                    final EntityItemAuditType standard_write_doc
+    public void setStandardWriteDac(
+                    final EntityItemAuditType standard_write_dac
                     )
     {
-        this.standard_write_doc = standard_write_doc;
+        this.standard_write_dac = standard_write_dac;
     }
 
 
-    public EntityItemAuditType getStandardWriteDoc()
+    public EntityItemAuditType getStandardWriteDac()
     {
-        return this.standard_write_doc;
+        return this.standard_write_dac;
     }
 
 
@@ -564,7 +564,7 @@ public class FileAuditedPermissionsItem
              + ", trustee_name="            + getTrusteeName()
              + ", standard_delete="         + getStandardDelete()
              + ", standard_read_control="   + getStandardReadControl()
-             + ", standard_write_doc="      + getStandardWriteDoc()
+             + ", standard_write_dac="      + getStandardWriteDac()
              + ", standard_write_owner="    + getStandardWriteOwner()
              + ", standard_syncronize="     + getStandardSyncronize()
              + ", access_system_security="  + getAccessSystemSecurity()

@@ -38,17 +38,13 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class FileEffectiveRightsItem
+public class PrinterEffectiveRightsItem
     extends ItemType
 {
 
     //{0..1}
-    private EntityItemStringType   filepath;
-    private EntityItemStringType   path;
-    private EntityItemStringType   filename;
-    //{nillable="true"}
+    private EntityItemStringType   printer_name;
     private EntityItemStringType   trustee_sid;
-    private EntityItemStringType   trustee_name;
     private EntityItemBoolType    standard_delete;
     private EntityItemBoolType    standard_read_control;
     private EntityItemBoolType    standard_write_dac;
@@ -59,31 +55,23 @@ public class FileEffectiveRightsItem
     private EntityItemBoolType    generic_write;
     private EntityItemBoolType    generic_execute;
     private EntityItemBoolType    generic_all;
-    private EntityItemBoolType    file_read_data;
-    private EntityItemBoolType    file_write_data;
-    private EntityItemBoolType    file_append_data;
-    private EntityItemBoolType    file_read_ea;
-    private EntityItemBoolType    file_write_ea;
-    private EntityItemBoolType    file_execute;
-    private EntityItemBoolType    file_delete_child;
-    private EntityItemBoolType    file_read_attributes;
-    private EntityItemBoolType    file_write_attributes;
-
-    private EntityItemWindowsViewType  windows_view;
-    //{0..1}
+    private EntityItemBoolType    printer_access_administer;
+    private EntityItemBoolType    printer_access_use;
+    private EntityItemBoolType    job_access_administer;
+    private EntityItemBoolType    job_access_read;
 
 
 
     /**
      * Constructor.
      */
-    public FileEffectiveRightsItem()
+    public PrinterEffectiveRightsItem()
     {
         this( 0 );
     }
 
 
-    public FileEffectiveRightsItem(
+    public PrinterEffectiveRightsItem(
                     final int id
                     )
     {
@@ -91,7 +79,7 @@ public class FileEffectiveRightsItem
     }
 
 
-    public FileEffectiveRightsItem(
+    public PrinterEffectiveRightsItem(
                     final int id,
                     final StatusEnumeration status
                     )
@@ -99,58 +87,24 @@ public class FileEffectiveRightsItem
         super( id, status );
         
         _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.fileeffectiverights;
+        _oval_component_type = OvalComponentType.printereffectiverights;
     }
 
 
 
     /**
      */
-    public void setFilepath(
-                    final EntityItemStringType filepath
+    public void setPrinterName(
+                    final EntityItemStringType printer_name
                     )
     {
-        this.filepath = filepath;
+        this.printer_name = printer_name;
     }
 
 
-    public EntityItemStringType getFilepath()
+    public EntityItemStringType getPrinterName()
     {
-        return this.filepath;
-    }
-
-
-
-    /**
-     */
-    public void setPath(
-                    final EntityItemStringType path
-                    )
-    {
-        this.path = path;
-    }
-
-
-    public EntityItemStringType getPath()
-    {
-        return this.path;
-    }
-
-
-
-    /**
-     */
-    public void setFilename(
-                    final EntityItemStringType filename
-                    )
-    {
-        this.filename = filename;
-    }
-
-
-    public EntityItemStringType getFilename()
-    {
-        return this.filename;
+        return this.printer_name;
     }
 
 
@@ -168,23 +122,6 @@ public class FileEffectiveRightsItem
     public EntityItemStringType getTrusteeSid()
     {
         return this.trustee_sid;
-    }
-
-
-
-    /**
-     */
-    public void setTrusteeName(
-                    final EntityItemStringType trustee_name
-                    )
-    {
-        this.trustee_name = trustee_name;
-    }
-
-
-    public EntityItemStringType getTrusteeName()
-    {
-        return this.trustee_name;
     }
 
 
@@ -361,170 +298,68 @@ public class FileEffectiveRightsItem
 
     /**
      */
-    public void setFileReadData(
-                    final EntityItemBoolType file_read_data
+    public void setPrinterAccessAdminister(
+                    final EntityItemBoolType printer_access_administer
                     )
     {
-        this.file_read_data = file_read_data;
+        this.printer_access_administer = printer_access_administer;
     }
 
 
-    public EntityItemBoolType getFileReadData()
+    public EntityItemBoolType getPrinterAccessAdminister()
     {
-        return this.file_read_data;
+        return this.printer_access_administer;
     }
 
 
 
     /**
      */
-    public void setFileWriteData(
-                    final EntityItemBoolType file_write_data
+    public void setPrinterAccessUse(
+                    final EntityItemBoolType printer_access_use
                     )
     {
-        this.file_write_data = file_write_data;
+        this.printer_access_use = printer_access_use;
     }
 
 
-    public EntityItemBoolType getFileWriteData()
+    public EntityItemBoolType getPrinterAccessUse()
     {
-        return this.file_write_data;
+        return this.printer_access_use;
     }
 
 
 
     /**
      */
-    public void setFileAppendData(
-                    final EntityItemBoolType file_append_data
+    public void setJobAccessAdminister(
+                    final EntityItemBoolType job_access_administer
                     )
     {
-        this.file_append_data = file_append_data;
+        this.job_access_administer = job_access_administer;
     }
 
 
-    public EntityItemBoolType getFileAppendData()
+    public EntityItemBoolType getJobAccessAdminister()
     {
-        return this.file_append_data;
+        return this.job_access_administer;
     }
 
 
 
     /**
      */
-    public void setFileReadEa(
-                    final EntityItemBoolType file_read_ea
+    public void setJobAccessRead(
+                    final EntityItemBoolType job_access_read
                     )
     {
-        this.file_read_ea = file_read_ea;
+        this.job_access_read = job_access_read;
     }
 
 
-    public EntityItemBoolType getFileReadEa()
+    public EntityItemBoolType getJobAccessRead()
     {
-        return this.file_read_ea;
-    }
-
-
-
-    /**
-     */
-    public void setFileWriteEa(
-                    final EntityItemBoolType file_write_ea
-                    )
-    {
-        this.file_write_ea = file_write_ea;
-    }
-
-
-    public EntityItemBoolType getFileWriteEa()
-    {
-        return this.file_write_ea;
-    }
-
-
-
-    /**
-     */
-    public void setFileExecute(
-                    final EntityItemBoolType file_execute
-                    )
-    {
-        this.file_execute = file_execute;
-    }
-
-
-    public EntityItemBoolType getFileExecute()
-    {
-        return this.file_execute;
-    }
-
-
-
-    /**
-     */
-    public void setFileDeleteChild(
-                    final EntityItemBoolType file_delete_child
-                    )
-    {
-        this.file_delete_child = file_delete_child;
-    }
-
-
-    public EntityItemBoolType getFileDeleteChild()
-    {
-        return this.file_delete_child;
-    }
-
-
-
-    /**
-     */
-    public void setFileReadAttributes(
-                    final EntityItemBoolType file_read_attributes
-                    )
-    {
-        this.file_read_attributes = file_read_attributes;
-    }
-
-
-    public EntityItemBoolType getFileReadAttributes()
-    {
-        return this.file_read_attributes;
-    }
-
-
-
-    /**
-     */
-    public void setFileWriteAttributes(
-                    final EntityItemBoolType file_write_attributes
-                    )
-    {
-        this.file_write_attributes = file_write_attributes;
-    }
-
-
-    public EntityItemBoolType getFileWriteAttributes()
-    {
-        return this.file_write_attributes;
-    }
-
-
-
-    /**
-     */
-    public void setWindowsView(
-                    final EntityItemWindowsViewType windows_view
-                    )
-    {
-        this.windows_view = windows_view;
-    }
-
-
-    public EntityItemWindowsViewType getWindowsView()
-    {
-        return this.windows_view;
+        return this.job_access_read;
     }
 
 
@@ -546,7 +381,7 @@ public class FileEffectiveRightsItem
                     final Object obj
                     )
     {
-        if (!(obj instanceof FileEffectiveRightsItem)) {
+        if (!(obj instanceof PrinterEffectiveRightsItem)) {
             return false;
         }
 
@@ -558,12 +393,9 @@ public class FileEffectiveRightsItem
     @Override
     public String toString()
     {
-        return "fileauditedpermissions_item[" + super.toString()
-             + ", filepath="                + getFilepath()
-             + ", path="                    + getPath()
-             + ", filename="                + getFilename()
+        return "printereffectiverights_item[" + super.toString()
+             + ", printer_name="            + getPrinterName()
              + ", trustee_sid="             + getTrusteeSid()
-             + ", trustee_name="            + getTrusteeName()
              + ", standard_delete="         + getStandardDelete()
              + ", standard_read_control="   + getStandardReadControl()
              + ", standard_write_dac="      + getStandardWriteDac()
@@ -574,17 +406,11 @@ public class FileEffectiveRightsItem
              + ", generic_write="           + getGenericWrite()
              + ", generic_execute="         + getGenericExecute()
              + ", generic_all="             + getGenericAll()
-             + ", file_read_data="          + getFileReadData()
-             + ", file_write_data="         + getFileWriteData()
-             + ", file_append_data="        + getFileAppendData()
-             + ", file_read_ea="            + getFileReadEa()
-             + ", file_write_ea="           + getFileWriteEa()
-             + ", file_execute="            + getFileExecute()
-             + ", file_delete_child="       + getFileDeleteChild()
-             + ", file_read_attributes="    + getFileReadAttributes()
-             + ", file_write_attributes="   + getFileWriteAttributes()
-             + ", windows_view="            + getWindowsView()
+             + ", printer_access_administer=" + getPrinterAccessAdminister()
+             + ", printer_access_use="      + getPrinterAccessUse()
+             + ", job_access_administer="   + getJobAccessAdminister()
+             + ", job_access_read="         + getJobAccessRead()
              + "]";
     }
 }
-//FileAuditedPermissionsItem
+//PrinterEffectiveRightsItem
