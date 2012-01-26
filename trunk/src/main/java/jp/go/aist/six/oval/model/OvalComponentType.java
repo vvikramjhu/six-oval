@@ -77,6 +77,7 @@ public enum OvalComponentType
     process,
     process58,
     registry,
+    regkeyauditedpermissions53,
     wmi,
     wmi57,
 
