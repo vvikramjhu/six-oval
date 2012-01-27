@@ -20,27 +20,26 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
-import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 
 /**
- * The regkeyeffectiverights53 object is used by a registry key effective rights test 
+ * The regkeyeffectiverights object is used by a registry key effective rights test 
  * to define the objects used to evaluate against the specified state.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
+ * @deprecated Deprecated as of version 5.3:
+ *             Replaced by the regkeyeffectiverights53 object and
+ *             will be removed in version 6.0 of the language.
  */
-public class RegkeyEffectiveRights53Object
+public class RegkeyEffectiveRightsObject
     extends SystemObjectType
 {
 
@@ -58,33 +57,30 @@ public class RegkeyEffectiveRights53Object
     private Set  set;
     //{1..1}
 
-    private RegkeyEffectiveRights53Behaviors  behaviors;
+    private RegkeyEffectiveRightsBehaviors  behaviors;
     //{0..1}
 
     private EntityObjectRegistryHiveType  hive;
     //{1..1}
 
     private EntityObjectStringType  key;
-    //{1..1, nillable="true"}
-
-    private EntityObjectStringType  trustee_sid;
     //{1..1}
 
-    private final Collection<Filter>  filter = new ArrayList<Filter>();
-    //{0..*}
+    private EntityObjectStringType  trustee_name;
+    //{1..1}
 
 
 
     /**
      * Constructor.
      */
-    public RegkeyEffectiveRights53Object()
+    public RegkeyEffectiveRightsObject()
     {
         this( null, 0 );
     }
 
 
-    public RegkeyEffectiveRights53Object(
+    public RegkeyEffectiveRightsObject(
                     final String id,
                     final int version
                     )
@@ -92,7 +88,7 @@ public class RegkeyEffectiveRights53Object
         super( id, version );
 
         _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.regkeyeffectiverights53;
+        _oval_component_type = OvalComponentType.regkeyeffectiverights;
     }
 
 
@@ -154,14 +150,14 @@ public class RegkeyEffectiveRights53Object
     /**
      */
     public void setBehaviors(
-                    final RegkeyEffectiveRights53Behaviors behaviors
+                    final RegkeyEffectiveRightsBehaviors behaviors
                     )
     {
         this.behaviors = behaviors;
     }
 
 
-    public RegkeyEffectiveRights53Behaviors getBehaviors()
+    public RegkeyEffectiveRightsBehaviors getBehaviors()
     {
         return this.behaviors;
     }
@@ -204,57 +200,17 @@ public class RegkeyEffectiveRights53Object
 
     /**
      */
-    public void setTrusteeSid(
-                    final EntityObjectStringType trustee_sid
+    public void setTrusteeName(
+                    final EntityObjectStringType trustee_name
                     )
     {
-        this.trustee_sid = trustee_sid;
+        this.trustee_name = trustee_name;
     }
 
 
-    public EntityObjectStringType getTrusteeSid()
+    public EntityObjectStringType getTrusteeName()
     {
-        return this.trustee_sid;
-    }
-
-
-
-    /**
-     */
-    public void setFilter(
-                    final Collection<? extends Filter> filters
-                    )
-    {
-        if (this.filter != filters) {
-            this.filter.clear();
-            if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
-            }
-        }
-    }
-
-
-    public boolean addFilter(
-                    final Filter filter
-                    )
-    {
-        if (filter == null) {
-            return false;
-        }
-
-        return this.filter.add( filter );
-    }
-
-
-    public Collection<Filter> getFilter()
-    {
-        return this.filter;
-    }
-
-
-    public Iterator<Filter> iterateFilter()
-    {
-        return filter.iterator();
+        return this.trustee_name;
     }
 
 
@@ -275,7 +231,7 @@ public class RegkeyEffectiveRights53Object
                     final Object obj
                     )
     {
-        if (!(obj instanceof RegkeyEffectiveRights53Object)) {
+        if (!(obj instanceof RegkeyEffectiveRightsObject)) {
             return false;
         }
 
@@ -287,15 +243,14 @@ public class RegkeyEffectiveRights53Object
     @Override
     public String toString()
     {
-        return "regkeyeffectiverights53_object[" + super.toString()
+        return "regkeyeffectiverights_object[" + super.toString()
                         + ", set=" 			+ getSet()
                         + ", behaviors="	+ getBehaviors()
                         + ", hive="		    + getHive()
                         + ", key=" 		    + getKey()
-                        + ", trustee_sid="  + getTrusteeSid()
-                        + ", filter=" 		+ getFilter()
+                        + ", trustee_name=" + getTrusteeName()
                         + "]";
     }
 
 }
-//RegkeyEffectiveRights53Object
+//RegkeyEffectiveRightsObject
