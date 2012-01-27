@@ -79,6 +79,8 @@ public enum OvalComponentType
     registry,
     regkeyauditedpermissions,
     regkeyauditedpermissions53,
+    regkeyeffectiverights,
+    regkeyeffectiverights53,
     wmi,
     wmi57,
 

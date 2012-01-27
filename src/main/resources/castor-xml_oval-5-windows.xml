@@ -4097,6 +4097,198 @@
 
 
 
+    <class name="jp.go.aist.six.oval.model.windows.RegkeyAuditedPermissionsTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="regkeyauditedpermissions_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"
+            />
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.RegkeyAuditedPermissionsObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="regkeyauditedpermissions_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="behaviors" 
+            type="jp.go.aist.six.oval.model.windows.RegkeyAuditPermissionsBehaviors">
+            <bind-xml name="behaviors" node="element"/>
+        </field>
+        
+        <field name="hive" 
+            type="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHiveType">
+            <bind-xml name="hive" node="element"/>
+        </field>
+        
+        <field name="key" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="key" node="element"/>
+        </field>
+
+        <field name="trusteeName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="trustee_name" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.RegkeyAuditPermissionsBehaviors"
+        extends="jp.go.aist.six.oval.model.windows.RegistryBehaviors">
+
+        <field name="includeGroup" type="boolean">
+            <bind-xml name="include_group" node="attribute"/>
+        </field>
+
+        <field name="resolveGroup" type="boolean">
+            <bind-xml name="resolve_group" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.RegkeyAuditedPermissionsState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="regkeyauditedpermissions_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="hive" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateRegistryHiveType">
+            <bind-xml name="hive" node="element"/>
+        </field>
+
+        <field name="key" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="key" node="element"/>
+        </field>
+
+        <field name="trusteeName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="trustee_name" node="element"/>
+        </field>
+
+        <field name="standardDelete" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="standard_delete" node="element"/>
+        </field>
+
+        <field name="standardReadControl" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="standard_read_control" node="element"/>
+        </field>
+
+        <field name="standardWriteDac" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="standard_write_dac" node="element"/>
+        </field>
+
+        <field name="standardWriteOwner" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="standard_write_owner" node="element"/>
+        </field>
+
+        <field name="standardSyncronize" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="standard_syncronize" node="element"/>
+        </field>
+
+        <field name="accessSystemSecurity" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="access_system_security" node="element"/>
+        </field>
+
+        <field name="genericRead" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="generic_read" node="element"/>
+        </field>
+
+        <field name="genericWrite" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="generic_write" node="element"/>
+        </field>
+
+        <field name="genericExecute" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="generic_execute" node="element"/>
+        </field>
+
+        <field name="genericAll" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="generic_all" node="element"/>
+        </field>
+
+        <field name="keyQueryValue" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="key_query_value" node="element"/>
+        </field>
+
+        <field name="keySetValue" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="key_set_value" node="element"/>
+        </field>
+
+        <field name="keyCreateSubKey" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="key_create_sub_key" node="element"/>
+        </field>
+
+        <field name="keyEnumerateSubKeys" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="key_enumerate_sub_keys" node="element"/>
+        </field>
+
+        <field name="keyNotify" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="key_notify" node="element"/>
+        </field>
+
+        <field name="keyCreateLink" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="key_create_link" node="element"/>
+        </field>
+
+        <field name="keyWow6464key" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="key_wow64_64key" node="element"/>
+        </field>
+
+        <field name="keyWow6432key" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="keyWow6432key" node="element"/>
+        </field>
+
+        <field name="keyWow64Res" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateAuditType">
+            <bind-xml name="key_wow64_res" node="element"/>
+        </field>
+
+        <field name="windowsView" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateWindowsViewType">
+            <bind-xml name="windows_view" node="element"/>
+        </field>
+    </class>
+
+
+
     <class name ="jp.go.aist.six.oval.model.windows.RegkeyAuditedPermissionsItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
         <map-to xml="regkeyauditedpermissions_item"
@@ -4210,6 +4402,332 @@
 
         <field name="keyWow64Res" 
             type="jp.go.aist.six.oval.model.windows.EntityItemAuditType">
+            <bind-xml name="key_wow64_res" node="element"/>
+        </field>
+
+        <field name="windowsView" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemWindowsViewType">
+            <bind-xml name="windows_view" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- regkeyeffectiverights, 53                               -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.windows.RegkeyEffectiveRights53Test"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="regkeyeffectiverights53_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"
+            />
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.RegkeyEffectiveRights53Object"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="regkeyeffectiverights53_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="behaviors" 
+            type="jp.go.aist.six.oval.model.windows.RegkeyEffectiveRights53Behaviors">
+            <bind-xml name="behaviors" node="element"/>
+        </field>
+        
+        <field name="hive" 
+            type="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHiveType">
+            <bind-xml name="hive" node="element"/>
+        </field>
+        
+        <field name="key" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="key" node="element"/>
+        </field>
+
+        <field name="trusteeSid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="trustee_sid" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.RegkeyEffectiveRights53Behaviors"
+        extends="jp.go.aist.six.oval.model.windows.RegistryBehaviors">
+
+        <field name="includeGroup" type="boolean">
+            <bind-xml name="include_group" node="attribute"/>
+        </field>
+
+        <field name="resolveGroup" type="boolean">
+            <bind-xml name="resolve_group" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.RegkeyEffectiveRights53State"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="regkeyeffectiverights53_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="hive" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateRegistryHiveType">
+            <bind-xml name="hive" node="element"/>
+        </field>
+
+        <field name="key" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="key" node="element"/>
+        </field>
+
+        <field name="trusteeSid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="trustee_sid" node="element"/>
+        </field>
+
+        <field name="standardDelete" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="standard_delete" node="element"/>
+        </field>
+
+        <field name="standardReadControl" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="standard_read_control" node="element"/>
+        </field>
+
+        <field name="standardWriteDac" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="standard_write_dac" node="element"/>
+        </field>
+
+        <field name="standardWriteOwner" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="standard_write_owner" node="element"/>
+        </field>
+
+        <field name="standardSyncronize" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="standard_syncronize" node="element"/>
+        </field>
+
+        <field name="accessSystemSecurity" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="access_system_security" node="element"/>
+        </field>
+
+        <field name="genericRead" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="generic_read" node="element"/>
+        </field>
+
+        <field name="genericWrite" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="generic_write" node="element"/>
+        </field>
+
+        <field name="genericExecute" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="generic_execute" node="element"/>
+        </field>
+
+        <field name="genericAll" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="generic_all" node="element"/>
+        </field>
+
+        <field name="keyQueryValue" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="key_query_value" node="element"/>
+        </field>
+
+        <field name="keySetValue" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="key_set_value" node="element"/>
+        </field>
+
+        <field name="keyCreateSubKey" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="key_create_sub_key" node="element"/>
+        </field>
+
+        <field name="keyEnumerateSubKeys" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="key_enumerate_sub_keys" node="element"/>
+        </field>
+
+        <field name="keyNotify" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="key_notify" node="element"/>
+        </field>
+
+        <field name="keyCreateLink" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="key_create_link" node="element"/>
+        </field>
+
+        <field name="keyWow6464key" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="key_wow64_64key" node="element"/>
+        </field>
+
+        <field name="keyWow6432key" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="keyWow6432key" node="element"/>
+        </field>
+
+        <field name="keyWow64Res" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="key_wow64_res" node="element"/>
+        </field>
+
+        <field name="windowsView" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateWindowsViewType">
+            <bind-xml name="windows_view" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.windows.RegkeyEffectiveRightsItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="regkeyeffectiverights_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""/>
+
+        <field name="hive" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemRegistryHiveType">
+            <bind-xml name="hive" node="element"/>
+        </field>
+
+        <field name="key" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="key" node="element"/>
+        </field>
+
+        <field name="trusteeSid" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="trustee_sid" node="element"/>
+        </field>
+
+        <field name="standardDelete" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="standard_delete" node="element"/>
+        </field>
+
+        <field name="standardReadControl" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="standard_read_control" node="element"/>
+        </field>
+
+        <field name="standardWriteDac" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="standard_write_dac" node="element"/>
+        </field>
+
+        <field name="standardWriteOwner" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="standard_write_owner" node="element"/>
+        </field>
+
+        <field name="standardSyncronize" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="standard_syncronize" node="element"/>
+        </field>
+
+        <field name="accessSystemSecurity" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="access_system_security" node="element"/>
+        </field>
+
+        <field name="genericRead" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="generic_read" node="element"/>
+        </field>
+
+        <field name="genericWrite" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="generic_write" node="element"/>
+        </field>
+
+        <field name="genericExecute" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="generic_execute" node="element"/>
+        </field>
+
+        <field name="genericAll" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="generic_all" node="element"/>
+        </field>
+
+        <field name="keyQueryValue" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="key_query_value" node="element"/>
+        </field>
+
+        <field name="keySetValue" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="key_set_value" node="element"/>
+        </field>
+
+        <field name="keyCreateSubKey" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="key_create_sub_key" node="element"/>
+        </field>
+
+        <field name="keyEnumerateSubKeys" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="key_enumerate_sub_keys" node="element"/>
+        </field>
+
+        <field name="keyNotify" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="key_notify" node="element"/>
+        </field>
+
+        <field name="keyCreateLink" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="key_create_link" node="element"/>
+        </field>
+
+        <field name="keyWow6464key" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="key_wow64_64key" node="element"/>
+        </field>
+
+        <field name="keyWow6432key" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="keyWow6432key" node="element"/>
+        </field>
+
+        <field name="keyWow64Res" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
             <bind-xml name="key_wow64_res" node="element"/>
         </field>
 
