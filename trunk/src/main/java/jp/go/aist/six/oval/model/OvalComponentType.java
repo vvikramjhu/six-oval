@@ -49,6 +49,7 @@ public enum OvalComponentType
 
     // linux //
     dpkginfo,
+    inetlisteningservers,
     rpminfo,
 //    rpmverify,
 

@@ -18,54 +18,77 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.windows;
+package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
+import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 
 
 
 /**
- * The port item specifies information about open listening ports.
+ * An inet listening server item stores the results of checking 
+ * for network servers currently active on a system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class PortItem
+public class InetListeningServersItem
     extends ItemType
 {
 
     //{0..1}
+    private EntityItemStringType           protocol;
     private EntityItemIPAddressStringType  local_address;
     private EntityItemIntType              local_port;
-    private EntityItemProtocolType         protocol;
-    private EntityItemIntType              pid;
+    private EntityItemStringType           local_full_address;
+    private EntityItemStringType           program_name;
     private EntityItemIPAddressStringType  foreign_address;
     private EntityItemIntType              foreign_port;
+    private EntityItemStringType           foreign_full_address;
+    private EntityItemIntType              pid;
+    private EntityItemIntType              user_id;
 
 
 
     /**
      * Constructor.
      */
-    public PortItem()
+    public InetListeningServersItem()
     {
         this( 0 );
     }
 
 
-    public PortItem(
+    public InetListeningServersItem(
                     final int id
                     )
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.port;
+        _oval_platform_type = OvalPlatformType.linux;
+        _oval_component_type = OvalComponentType.inetlisteningservers;
+    }
+
+
+
+    /**
+     */
+    public void setProtocol(
+                    final EntityItemStringType protocol
+                    )
+    {
+        this.protocol = protocol;
+    }
+
+
+    public EntityItemStringType getProtocol()
+    {
+        return this.protocol;
     }
 
 
@@ -106,34 +129,34 @@ public class PortItem
 
     /**
      */
-    public void setProtocol(
-                    final EntityItemProtocolType protocol
+    public void setLocalFullAddress(
+                    final EntityItemStringType local_full_address
                     )
     {
-        this.protocol = protocol;
+        this.local_full_address = local_full_address;
     }
 
 
-    public EntityItemProtocolType getProtocol()
+    public EntityItemStringType getLocalFullAddress()
     {
-        return this.protocol;
+        return this.local_full_address;
     }
 
 
 
     /**
      */
-    public void setPid(
-                    final EntityItemIntType pid
+    public void setProgramName(
+                    final EntityItemStringType program_name
                     )
     {
-        this.pid = pid;
+        this.program_name = program_name;
     }
 
 
-    public EntityItemIntType getPid()
+    public EntityItemStringType getProgramName()
     {
-        return this.pid;
+        return this.program_name;
     }
 
 
@@ -172,6 +195,57 @@ public class PortItem
 
 
 
+    /**
+     */
+    public void setForeignFullAddress(
+                    final EntityItemStringType foreign_full_address
+                    )
+    {
+        this.foreign_full_address = foreign_full_address;
+    }
+
+
+    public EntityItemStringType getForeignFullAddress()
+    {
+        return this.foreign_full_address;
+    }
+
+
+
+    /**
+     */
+    public void setPid(
+                    final EntityItemIntType pid
+                    )
+    {
+        this.pid = pid;
+    }
+
+
+    public EntityItemIntType getPid()
+    {
+        return this.pid;
+    }
+
+
+
+    /**
+     */
+    public void setUserId(
+                    final EntityItemIntType user_id
+                    )
+    {
+        this.user_id = user_id;
+    }
+
+
+    public EntityItemIntType getUserId()
+    {
+        return this.user_id;
+    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -179,15 +253,19 @@ public class PortItem
     @Override
     public String toString()
     {
-        return "port_item[" + super.toString()
-                        + ", local_address="    + getLocalAddress()
-                        + ", local_port="       + getLocalPort()
-                        + ", protocol="         + getProtocol()
-                        + ", pid="              + getPid()
-                        + ", foreign_address="  + getForeignAddress()
-                        + ", foreign_port="     + getForeignPort()
+        return "inetlisteningserver_item[" + super.toString()
+                        + ", protocol="             + getProtocol()
+                        + ", local_address="        + getLocalAddress()
+                        + ", local_port="           + getLocalPort()
+                        + ", local_full_address="   + getLocalFullAddress()
+                        + ", program_name="         + getProgramName()
+                        + ", foreign_address="      + getForeignAddress()
+                        + ", foreign_port="         + getForeignPort()
+                        + ", foreign_full_address=" + getForeignFullAddress()
+                        + ", pid="                  + getPid()
+                        + ", user_id="              + getUserId()
              + "]";
     }
 
 }
-//PortItem
+//InetListeningServersItem
