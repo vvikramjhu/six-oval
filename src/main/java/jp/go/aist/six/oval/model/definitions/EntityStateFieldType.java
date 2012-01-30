@@ -36,7 +36,7 @@ import jp.go.aist.six.oval.model.common.OperationEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class EntityStateFieldType
+public class EntityStateFieldType
     extends EntityAttributeGroup
 {
 
