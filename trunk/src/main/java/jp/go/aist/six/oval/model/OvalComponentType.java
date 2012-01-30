@@ -92,6 +92,7 @@ public enum OvalComponentType
     volume,
     wmi,
     wmi57,
+    wuaupdatesearcher,
 
     // variable //
     constant,
