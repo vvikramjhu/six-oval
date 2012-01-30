@@ -33,7 +33,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
  * associate with a Windows process.
  *
  * @author  Akihito Nakamura, AIST
- * @version $Id: Process58State.java 2183 2012-01-25 11:49:38Z nakamura5akihito@gmail.com $
+ * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  * @deprecated Deprecated as of version 5.8:
  *             Replaced by the process58 object and

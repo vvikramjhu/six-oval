@@ -20,53 +20,61 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 
 /**
- * The process object is used by a process test to define 
- * the specific process(es) to be evaluated.
+ * The sharedresource object is used by a shared resource test 
+ * to define the object, in this case a shared resource, to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.8:
- *             Replaced by the process58 object and
- *             will be removed in a future version of the language.
  */
-public class ProcessObject
+public class SharedResourceObject
     extends SystemObjectType
 {
 
-    //TODO: XSD model.
 	// choice(
+    //TODO: XSD model.
 	//    set
-    //    command_line
+    //    sequence(
+    //           netname
+    //           pid
+    //           filter
+    //    )
     // )
 
     private Set  set;
     //{1..1}
 
-    private EntityObjectStringType  command_line;
+    private EntityObjectStringType  netname;
     //{1..1}
+
+    private final Collection<Filter>  filter = new ArrayList<Filter>();
+    //{0..*}
 
 
 
     /**
      * Constructor.
      */
-    public ProcessObject()
+    public SharedResourceObject()
     {
         this( null, 0 );
     }
 
 
-    public ProcessObject(
+    public SharedResourceObject(
                     final String id,
                     final int version
                     )
@@ -74,7 +82,7 @@ public class ProcessObject
         super( id, version );
 
         _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.process;
+        _oval_component_type = OvalComponentType.sharedresource;
     }
 
 
@@ -135,17 +143,57 @@ public class ProcessObject
 
     /**
      */
-    public void setCommandLine(
-                    final EntityObjectStringType command_line
+    public void setNetname(
+                    final EntityObjectStringType netname
                     )
     {
-        this.command_line = command_line;
+        this.netname = netname;
     }
 
 
-    public EntityObjectStringType getCommandLine()
+    public EntityObjectStringType getNetname()
     {
-        return this.command_line;
+        return this.netname;
+    }
+
+
+
+    /**
+     */
+    public void setFilter(
+                    final Collection<? extends Filter> filters
+                    )
+    {
+        if (this.filter != filters) {
+            this.filter.clear();
+            if (filters != null  &&  filters.size() > 0) {
+                this.filter.addAll( filters );
+            }
+        }
+    }
+
+
+    public boolean addFilter(
+                    final Filter filter
+                    )
+    {
+        if (filter == null) {
+            return false;
+        }
+
+        return this.filter.add( filter );
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return this.filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return filter.iterator();
     }
 
 
@@ -166,7 +214,7 @@ public class ProcessObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof ProcessObject)) {
+        if (!(obj instanceof SharedResourceObject)) {
             return false;
         }
 
@@ -178,11 +226,12 @@ public class ProcessObject
     @Override
     public String toString()
     {
-        return "process_object[" + super.toString()
+        return "sharedresource_object[" + super.toString()
                         + ", set="          + getSet()
-                        + ", command_line=" + getCommandLine()
+                        + ", netname="      + getNetname()
+                        + ", filter="       + getFilter()
                         + "]";
     }
 
 }
-//ProcessObject
+//SharedResourceObject

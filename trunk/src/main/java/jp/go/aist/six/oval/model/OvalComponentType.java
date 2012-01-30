@@ -82,6 +82,10 @@ public enum OvalComponentType
     regkeyeffectiverights,
     regkeyeffectiverights53,
     serviceeffectiverights,
+    sharedresource,
+    sid,
+    sid_sid,
+    uac,
     wmi,
     wmi57,
 

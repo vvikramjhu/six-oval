@@ -20,53 +20,63 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 
 /**
- * The process object is used by a process test to define 
- * the specific process(es) to be evaluated.
+ * The sid_sid object is used by a sid_sid_test to define the object set, 
+ * in this case a set of SIDs, to be evaluated. 
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.8:
- *             Replaced by the process58 object and
- *             will be removed in a future version of the language.
  */
-public class ProcessObject
+public class SidSidObject
     extends SystemObjectType
 {
 
     //TODO: XSD model.
 	// choice(
 	//    set
-    //    command_line
-    // )
+    //    sequence(
+    //           behaviors
+    //           trustee_sid
+    //           filter
+    //   ))
 
     private Set  set;
     //{1..1}
 
-    private EntityObjectStringType  command_line;
+    private SidSidBehaviors  behaviors;
+    //{0..1}
+
+    private EntityObjectStringType  trustee_sid;
     //{1..1}
+
+    private final Collection<Filter>  filter = new ArrayList<Filter>();
+    //{0..*}
 
 
 
     /**
      * Constructor.
      */
-    public ProcessObject()
+    public SidSidObject()
     {
         this( null, 0 );
     }
 
 
-    public ProcessObject(
+    public SidSidObject(
                     final String id,
                     final int version
                     )
@@ -74,7 +84,7 @@ public class ProcessObject
         super( id, version );
 
         _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.process;
+        _oval_component_type = OvalComponentType.sid_sid;
     }
 
 
@@ -135,17 +145,74 @@ public class ProcessObject
 
     /**
      */
-    public void setCommandLine(
-                    final EntityObjectStringType command_line
+    public void setBehaviors(
+                    final SidSidBehaviors behaviors
                     )
     {
-        this.command_line = command_line;
+        this.behaviors = behaviors;
     }
 
 
-    public EntityObjectStringType getCommandLine()
+    public SidSidBehaviors getBehaviors()
     {
-        return this.command_line;
+        return this.behaviors;
+    }
+
+
+
+    /**
+     */
+    public void setTrusteeSid(
+                    final EntityObjectStringType trustee_sid
+                    )
+    {
+        this.trustee_sid = trustee_sid;
+    }
+
+
+    public EntityObjectStringType getTrusteeSid()
+    {
+        return this.trustee_sid;
+    }
+
+
+
+    /**
+     */
+    public void setFilter(
+                    final Collection<? extends Filter> filters
+                    )
+    {
+        if (this.filter != filters) {
+            this.filter.clear();
+            if (filters != null  &&  filters.size() > 0) {
+                this.filter.addAll( filters );
+            }
+        }
+    }
+
+
+    public boolean addFilter(
+                    final Filter filter
+                    )
+    {
+        if (filter == null) {
+            return false;
+        }
+
+        return this.filter.add( filter );
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return this.filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return filter.iterator();
     }
 
 
@@ -166,7 +233,7 @@ public class ProcessObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof ProcessObject)) {
+        if (!(obj instanceof SidSidObject)) {
             return false;
         }
 
@@ -178,11 +245,13 @@ public class ProcessObject
     @Override
     public String toString()
     {
-        return "process_object[" + super.toString()
-                        + ", set="          + getSet()
-                        + ", command_line=" + getCommandLine()
+        return "sid_sid_object[" + super.toString()
+                        + ", set=" 			+ getSet()
+                        + ", behaviors="	+ getBehaviors()
+                        + ", trustee_sid="  + getTrusteeSid()
+                        + ", filter=" 		+ getFilter()
                         + "]";
     }
 
 }
-//ProcessObject
+//SidSidObject

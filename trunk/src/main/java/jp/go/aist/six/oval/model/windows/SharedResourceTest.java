@@ -30,29 +30,27 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
- * The process test is used to check information found in the Windows processes.
+ * The shared resource test is used to check properties 
+ * associated with any shared resource on the system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.8:
- *             Replaced by the process58 test and
- *             will be removed in a future version of the language.
  */
-public class ProcessTest
+public class SharedResourceTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public ProcessTest()
+    public SharedResourceTest()
     {
         this( null, 0 );
     }
 
 
-    public ProcessTest(
+    public SharedResourceTest(
                     final String id,
                     final int version
                     )
@@ -61,7 +59,7 @@ public class ProcessTest
     }
 
 
-    public ProcessTest(
+    public SharedResourceTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -72,7 +70,7 @@ public class ProcessTest
     }
 
 
-    public ProcessTest(
+    public SharedResourceTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -84,7 +82,7 @@ public class ProcessTest
         super( id, version, comment, check, object, stateList );
 
         _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.process;
+        _oval_component_type = OvalComponentType.sharedresource;
     }
 
 
@@ -106,7 +104,7 @@ public class ProcessTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof ProcessTest)) {
+        if (!(obj instanceof SharedResourceTest)) {
             return false;
         }
 
@@ -118,8 +116,8 @@ public class ProcessTest
     @Override
     public String toString()
     {
-        return "process_test[" + super.toString() + "]";
+        return " sharedresource_test[" + super.toString() + "]";
     }
 
 }
-//ProcessTest
+//SharedResourceTest

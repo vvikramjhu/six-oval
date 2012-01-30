@@ -22,51 +22,32 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
-import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 
 /**
- * The process object is used by a process test to define 
- * the specific process(es) to be evaluated.
+ * The uac object is used by a user access control test 
+ * to define those objects to evaluate based on a specified state.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.8:
- *             Replaced by the process58 object and
- *             will be removed in a future version of the language.
  */
-public class ProcessObject
+public class UacObject
     extends SystemObjectType
 {
-
-    //TODO: XSD model.
-	// choice(
-	//    set
-    //    command_line
-    // )
-
-    private Set  set;
-    //{1..1}
-
-    private EntityObjectStringType  command_line;
-    //{1..1}
-
-
 
     /**
      * Constructor.
      */
-    public ProcessObject()
+    public UacObject()
     {
         this( null, 0 );
     }
 
 
-    public ProcessObject(
+    public UacObject(
                     final String id,
                     final int version
                     )
@@ -74,7 +55,7 @@ public class ProcessObject
         super( id, version );
 
         _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.process;
+        _oval_component_type = OvalComponentType.uac;
     }
 
 
@@ -116,40 +97,6 @@ public class ProcessObject
 
 
 
-    /**
-     */
-    public void setSet(
-                    final Set set
-                    )
-    {
-        this.set = set;
-    }
-
-
-    public Set getSet()
-    {
-        return this.set;
-    }
-
-
-
-    /**
-     */
-    public void setCommandLine(
-                    final EntityObjectStringType command_line
-                    )
-    {
-        this.command_line = command_line;
-    }
-
-
-    public EntityObjectStringType getCommandLine()
-    {
-        return this.command_line;
-    }
-
-
-
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -166,7 +113,7 @@ public class ProcessObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof ProcessObject)) {
+        if (!(obj instanceof UacObject)) {
             return false;
         }
 
@@ -178,11 +125,9 @@ public class ProcessObject
     @Override
     public String toString()
     {
-        return "process_object[" + super.toString()
-                        + ", set="          + getSet()
-                        + ", command_line=" + getCommandLine()
+        return "uac_object[" + super.toString()
                         + "]";
     }
 
 }
-//ProcessObject
+//UacObject
