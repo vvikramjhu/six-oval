@@ -81,7 +81,7 @@ public class InetListeningServersState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
+        _oval_platform_type = OvalPlatformType.linux;
         _oval_component_type = OvalComponentType.inetlisteningservers;
     }
 
