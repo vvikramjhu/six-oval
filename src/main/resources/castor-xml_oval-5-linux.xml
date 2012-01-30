@@ -163,6 +163,184 @@
 
 
     <!-- ******************************************************* -->
+    <!-- inetlisteningserver                                     -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.linux.InetListeningServersTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="inetlisteningservers_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.linux.InetListeningServersObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="inetlisteningservers_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="protocol" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="protocol" node="element"/>
+        </field>
+
+        <field name="localAddress" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectIPAddressStringType">
+            <bind-xml name="local_address" node="element"/>
+        </field>
+        
+        <field name="localPort" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectIntType" >
+            <bind-xml name="local_port" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.linux.InetListeningServersState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="inetlisteningservers_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
+            ns-prefix=""/>
+
+        <field name="protocol" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="protocol" node="element"/>
+        </field>
+
+        <field name="localAddress" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType">
+            <bind-xml name="local_address" node="element"/>
+        </field>
+
+        <field name="localPort" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType" >
+            <bind-xml name="local_port" node="element"/>
+        </field>
+
+        <field name="localFullAddress" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="local_full_address" node="element"/>
+        </field>
+
+        <field name="programName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="program_name" node="element"/>
+        </field>
+
+        <field name="foreignAddress" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType">
+            <bind-xml name="foreign_address" node="element"/>
+        </field>
+
+        <field name="foreignPort" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType" >
+            <bind-xml name="foreign_port" node="element"/>
+        </field>
+
+        <field name="foreignFullAddress" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="foreign_full_address" node="element"/>
+        </field>
+
+        <field name="pid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType" >
+            <bind-xml name="pid" node="element"/>
+        </field>
+
+        <field name="userId" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType" >
+            <bind-xml name="user_id" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.linux.InetListeningServersItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="inetlisteningservers_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux"
+            ns-prefix=""/>
+
+        <field name="protocol" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="protocol" node="element"/>
+        </field>
+
+        <field name="localAddress" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType">
+            <bind-xml name="local_address" node="element"/>
+        </field>
+
+        <field name="localPort" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType" >
+            <bind-xml name="local_port" node="element"/>
+        </field>
+
+        <field name="localFullAddress" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="local_full_address" node="element"/>
+        </field>
+
+        <field name="programName" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="program_name" node="element"/>
+        </field>
+
+        <field name="foreignAddress" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType">
+            <bind-xml name="foreign_address" node="element"/>
+        </field>
+
+        <field name="foreignPort" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType" >
+            <bind-xml name="foreign_port" node="element"/>
+        </field>
+
+        <field name="foreignFullAddress" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="foreign_full_address" node="element"/>
+        </field>
+
+        <field name="pid" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType" >
+            <bind-xml name="pid" node="element"/>
+        </field>
+
+        <field name="userId" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType" >
+            <bind-xml name="user_id" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- RpmInfo                                                 -->
     <!-- ******************************************************* -->
 
