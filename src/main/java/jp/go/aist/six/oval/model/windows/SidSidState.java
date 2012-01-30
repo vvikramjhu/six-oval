@@ -22,69 +22,109 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.common.CheckEnumeration;
-import jp.go.aist.six.oval.model.definitions.StateRefType;
-import jp.go.aist.six.oval.model.definitions.SystemObjectRefType;
-import jp.go.aist.six.oval.model.definitions.TestType;
+import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The process test is used to check information found in the Windows processes.
+ * The sid_sid state defines the different metadata 
+ * associate with a Windows trustee (identified by SID).
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
- * @deprecated Deprecated as of version 5.8:
- *             Replaced by the process58 test and
- *             will be removed in a future version of the language.
  */
-public class ProcessTest
-    extends TestType
+public class SidSidState
+    extends StateType
 {
+
+    //{0..1}
+    private EntityStateStringType   trustee_sid;
+    private EntityStateStringType   trustee_name;
+    private EntityStateStringType   trustee_domain;
+
+
 
     /**
      * Constructor.
      */
-    public ProcessTest()
+    public SidSidState()
     {
         this( null, 0 );
     }
 
 
-    public ProcessTest(
+    public SidSidState(
                     final String id,
                     final int version
                     )
     {
-        this( id, version, null, null );
+        this( id, version, null );
     }
 
 
-    public ProcessTest(
+    public SidSidState(
                     final String id,
                     final int version,
-                    final String comment,
-                    final CheckEnumeration check
+                    final String comment
                     )
     {
-        this( id, version, comment, check, null, null );
-    }
-
-
-    public ProcessTest(
-                    final String id,
-                    final int version,
-                    final String comment,
-                    final CheckEnumeration check,
-                    final SystemObjectRefType object,
-                    final StateRefType[] stateList
-                    )
-    {
-        super( id, version, comment, check, object, stateList );
+        super( id, version, comment );
 
         _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.process;
+        _oval_component_type = OvalComponentType.sid_sid;
+    }
+
+
+
+    /**
+     */
+    public void setTrusteeSid(
+                    final EntityStateStringType trustee_sid
+                    )
+    {
+        this.trustee_sid = trustee_sid;
+    }
+
+
+    public EntityStateStringType getTrusteeSid()
+    {
+        return this.trustee_sid;
+    }
+
+
+
+    /**
+     */
+    public void setTrusteeName(
+                    final EntityStateStringType trustee_name
+                    )
+    {
+        this.trustee_name = trustee_name;
+    }
+
+
+    public EntityStateStringType getTrusteeName()
+    {
+        return this.trustee_name;
+    }
+
+
+
+    /**
+     */
+    public void setTrusteeDomain(
+                    final EntityStateStringType trustee_domain
+                    )
+    {
+        this.trustee_domain = trustee_domain;
+    }
+
+
+    public EntityStateStringType getTrusteeDomain()
+    {
+        return this.trustee_domain;
     }
 
 
@@ -106,7 +146,7 @@ public class ProcessTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof ProcessTest)) {
+        if (!(obj instanceof SidSidState)) {
             return false;
         }
 
@@ -118,8 +158,11 @@ public class ProcessTest
     @Override
     public String toString()
     {
-        return "process_test[" + super.toString() + "]";
+        return "sid_sid_state[" + super.toString()
+             + ", trustee_sid="     + getTrusteeSid()
+             + ", trustee_name="    + getTrusteeName()
+             + ", trustee_domain="  + getTrusteeDomain()
+             + "]";
     }
-
 }
-//ProcessTest
+//SidSidState

@@ -5384,6 +5384,579 @@
 
 
     <!-- ******************************************************* -->
+    <!-- sharedresource                                          -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.windows.SharedResourceTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="sharedresource_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"
+            />
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.SharedResourceObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="sharedresource_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="netname" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="netname" node="element"/>
+        </field>
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.SharedResourceState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="sharedresource_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="netname" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="netname" node="element"/>
+        </field>
+
+        <field name="sharedType" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateSharedResourceTypeType">
+            <bind-xml name="shared_type" node="element"/>
+        </field>
+
+        <field name="maxUses" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="max_uses" node="element"/>
+        </field>
+
+        <field name="currentUses" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="current_uses" node="element"/>
+        </field>
+
+        <field name="localPath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="local_path" node="element"/>
+        </field>
+
+        <field name="accessReadPermission" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="access_read_permission" node="element"/>
+        </field>
+
+        <field name="accessWritePermission" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="access_write_permission" node="element"/>
+        </field>
+
+        <field name="accessCreatePermission" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="access_create_permission" node="element"/>
+        </field>
+
+        <field name="accessExecPermission" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="access_exec_permission" node="element"/>
+        </field>
+
+        <field name="accessDeletePermission" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="access_delete_permission" node="element"/>
+        </field>
+
+        <field name="accessAtribPermission" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="access_atrib_permission" node="element"/>
+        </field>
+
+        <field name="accessPermPermission" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="access_perm_permission" node="element"/>
+        </field>
+
+        <field name="accessAllPermission" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="access_all_permission" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.windows.SharedResourceItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="sharedresource_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""/>
+
+        <field name="netname" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="netname" node="element"/>
+        </field>
+
+        <field name="sharedType" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemSharedResourceTypeType">
+            <bind-xml name="shared_type" node="element"/>
+        </field>
+
+        <field name="maxUses" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="max_uses" node="element"/>
+        </field>
+
+        <field name="currentUses" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="current_uses" node="element"/>
+        </field>
+
+        <field name="localPath" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="local_path" node="element"/>
+        </field>
+
+        <field name="accessReadPermission" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="access_read_permission" node="element"/>
+        </field>
+
+        <field name="accessWritePermission" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="access_write_permission" node="element"/>
+        </field>
+
+        <field name="accessCreatePermission" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="access_create_permission" node="element"/>
+        </field>
+
+        <field name="accessExecPermission" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="access_exec_permission" node="element"/>
+        </field>
+
+        <field name="accessDeletePermission" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="access_delete_permission" node="element"/>
+        </field>
+
+        <field name="accessAtribPermission" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="access_atrib_permission" node="element"/>
+        </field>
+
+        <field name="accessPermPermission" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="access_perm_permission" node="element"/>
+        </field>
+
+        <field name="accessAllPermission" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="access_all_permission" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- sid                                                 -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.windows.SidTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="sid_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"
+            />
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.SidObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="sid_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="behaviors" 
+            type="jp.go.aist.six.oval.model.windows.SidBehaviors">
+            <bind-xml name="behaviors" node="element"/>
+        </field>
+
+        <field name="trusteeName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="trustee_name" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.SidBehaviors"
+        extends="jp.go.aist.six.oval.model.OvalObject">
+
+        <field name="includeGroup" type="boolean">
+            <bind-xml name="include_group" node="attribute"/>
+        </field>
+
+        <field name="resolveGroup" type="boolean">
+            <bind-xml name="resolve_group" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.SidState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="sid_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="trusteeName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="trustee_name" node="element"/>
+        </field>
+
+        <field name="trusteeSid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="trustee_sid" node="element"/>
+        </field>
+
+        <field name="trusteeDomain" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="trustee_domain" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.windows.SidItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="sid_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""/>
+
+        <field name="trusteeName" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="trustee_name" node="element"/>
+        </field>
+
+        <field name="trusteeSid" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="trustee_sid" node="element"/>
+        </field>
+
+        <field name="trusteeDomain" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="trustee_domain" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- sid_sid                                                 -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.windows.SidSidTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="sid_sid_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"
+            />
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.SidSidObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="sid_sid_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="behaviors" 
+            type="jp.go.aist.six.oval.model.windows.SidSidBehaviors">
+            <bind-xml name="behaviors" node="element"/>
+        </field>
+
+        <field name="trusteeSid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="trustee_sid" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.SidSidBehaviors"
+        extends="jp.go.aist.six.oval.model.OvalObject">
+
+        <field name="includeGroup" type="boolean">
+            <bind-xml name="include_group" node="attribute"/>
+        </field>
+
+        <field name="resolveGroup" type="boolean">
+            <bind-xml name="resolve_group" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.SidSidState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="sid_sid_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="trusteeSid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="trustee_sid" node="element"/>
+        </field>
+
+        <field name="trusteeName" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="trustee_name" node="element"/>
+        </field>
+
+        <field name="trusteeDomain" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="trustee_domain" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.windows.SidSidItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="sid_sid_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""/>
+
+        <field name="trusteeSid" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="trustee_sid" node="element"/>
+        </field>
+
+        <field name="trusteeName" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="trustee_name" node="element"/>
+        </field>
+
+        <field name="trusteeDomain" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="trustee_domain" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- uac                                                     -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.windows.UacTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="uac_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"
+            />
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.UacObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="uac_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.UacState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="uac_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="adminApprovalMode" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="admin_approval_mode" node="element"/>
+        </field>
+
+        <field name="elevationPromptAdmin" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="elevation_prompt_admin" node="element"/>
+        </field>
+
+        <field name="elevationPromptStandard" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="elevation_prompt_standard" node="element"/>
+        </field>
+
+        <field name="detectInstallations" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="detect_installations" node="element"/>
+        </field>
+
+        <field name="elevateSignedExecutables" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="elevate_signed_executables" node="element"/>
+        </field>
+
+        <field name="elevateUiaccess" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="elevate_uiaccess" node="element"/>
+        </field>
+
+        <field name="runAdminsAam" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="run_admins_aam" node="element"/>
+        </field>
+
+        <field name="secureDesktop" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="secure_desktop" node="element"/>
+        </field>
+
+        <field name="virtualizeWriteFailures" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="virtualize_write_failures" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.windows.UacItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="serviceeffectiverights_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""/>
+
+        <field name="adminApprovalMode" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="admin_approval_mode" node="element"/>
+        </field>
+
+        <field name="elevationPromptAdmin" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="elevation_prompt_admin" node="element"/>
+        </field>
+
+        <field name="elevationPromptStandard" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="elevation_prompt_standard" node="element"/>
+        </field>
+
+        <field name="detectInstallations" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="detect_installations" node="element"/>
+        </field>
+
+        <field name="elevateSignedExecutables" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="elevate_signed_executables" node="element"/>
+        </field>
+
+        <field name="elevateUiaccess" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="elevate_uiaccess" node="element"/>
+        </field>
+
+        <field name="runAdminsAam" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="run_admins_aam" node="element"/>
+        </field>
+
+        <field name="secureDesktop" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="secure_desktop" node="element"/>
+        </field>
+
+        <field name="virtualizeWriteFailures" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="virtualize_write_failures" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- wmi                                                     -->
     <!-- ******************************************************* -->
 
@@ -5533,6 +6106,17 @@
     </class>
 
     <class name="jp.go.aist.six.oval.model.windows.EntityItemRegistryTypeType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
+
+<!-- sharedresource-->
+    <class name="jp.go.aist.six.oval.model.windows.EntityStateSharedResourceTypeType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemSharedResourceTypeType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
 
