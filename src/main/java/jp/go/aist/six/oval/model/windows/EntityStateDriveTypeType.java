@@ -20,41 +20,77 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 
 /**
- * The EntityItemSharedResourceTypeType defines the different values 
- * that are valid for the type entity of a shared resource item.
+ * The EntityStateDriveTypeType defines the different values 
+ * that are valid for the drive_type entity of a volume state. 
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemSharedResourceTypeType
-    extends EntityItemStringType
+public class EntityStateDriveTypeType
+    extends EntityStateStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemSharedResourceTypeType()
+    public EntityStateDriveTypeType()
     {
     }
 
 
-    public EntityItemSharedResourceTypeType(
-                    final String content
-                    )
-    {
-        super( content );
-    }
+//    public EntityStateRegistryTypeType(
+//                    final String data
+//                    )
+//    {
+//        this( data, DEFAULT_OPERATION );
+//    }
+//
+//
+//    public EntityStateRegistryTypeType(
+//                    final String data,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        this( data, FIXED_DATATYPE, operation );
+//    }
+//
+//
+//    public EntityStateRegistryTypeType(
+//                    final String data,
+//                    final DatatypeEnumeration datatype,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        super( data, datatype, operation );
+//    }
+//
+//
+//    public EntityStateRegistryTypeType(
+//                    final RegistryTypeEnumeration data
+//                    )
+//    {
+//        this( data, DEFAULT_OPERATION );
+//    }
+//
+//
+//    public EntityStateRegistryTypeType(
+//                    final RegistryTypeEnumeration data,
+//                    final Operation operation
+//                    )
+//    {
+//        this( (data == null ? null : data.getName()), operation );
+//    }
 
 
 
     //**************************************************************
-    //  EntityItemBase
+    //  EntitySimpleBaseType
     //**************************************************************
 
     @Override
@@ -63,8 +99,7 @@ public class EntityItemSharedResourceTypeType
                     )
     {
         if (content != null) {
-            // validation
-            SharedResourceTypeEnumeration.fromValue( content );
+            DriveTypeEnumeration.fromValue( content );
         }
 
         super.setContent( content );
@@ -93,7 +128,7 @@ public class EntityItemSharedResourceTypeType
             return true;
         }
 
-        if (!(obj instanceof EntityItemSharedResourceTypeType)) {
+        if (!(obj instanceof EntityStateDriveTypeType)) {
             return false;
         }
 
@@ -101,4 +136,4 @@ public class EntityItemSharedResourceTypeType
     }
 
 }
-//EntityItemSharedResourceTypeType
+//EntityStateDriveTypeType

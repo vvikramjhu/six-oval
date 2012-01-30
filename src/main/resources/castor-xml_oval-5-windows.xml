@@ -6165,6 +6165,275 @@
 
 
     <!-- ******************************************************* -->
+    <!-- volume                                                  -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.windows.VolumeTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="volume_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"
+            />
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.VolumeObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="volume_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="rootpath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="rootpath" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.VolumeState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="volume_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="rootpath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="rootpath" node="element"/>
+        </field>
+
+        <field name="fileSystem" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="file_system" node="element"/>
+        </field>
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="driveType" 
+            type="jp.go.aist.six.oval.model.windows.EntityStateDriveTypeType">
+            <bind-xml name="drive_type" node="element"/>
+        </field>
+
+        <field name="volumeMaxComponentLength" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="volume_max_component_length" node="element"/>
+        </field>
+
+        <field name="serialNumber" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="serial_number" node="element"/>
+        </field>
+
+        <field name="fileCaseSensitiveSearch" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="file_case_sensitive_search" node="element"/>
+        </field>
+
+        <field name="fileCasePreservedNames" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="file_case_preserved_names" node="element"/>
+        </field>
+
+        <field name="fileUnicodeOnDisk" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="file_unicode_on_disk" node="element"/>
+        </field>
+
+        <field name="filePersistentAcls" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="file_persistent_acls" node="element"/>
+        </field>
+
+        <field name="fileFileCompression" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="file_file_compression" node="element"/>
+        </field>
+
+        <field name="fileVolumeQuotas" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="file_volume_quotas" node="element"/>
+        </field>
+
+        <field name="fileSupportsSparseFiles" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="file_supports_sparse_files" node="element"/>
+        </field>
+
+        <field name="fileSupportsReparsePoints" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="file_supports_reparse_points" node="element"/>
+        </field>
+
+        <field name="fileSupportsRemoteStorage" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="file_supports_remote_storage" node="element"/>
+        </field>
+
+        <field name="fileVolumeIsCompressed" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="file_volume_is_compressed" node="element"/>
+        </field>
+
+        <field name="fileSupportsObjectIds" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="file_supports_object_ids" node="element"/>
+        </field>
+
+        <field name="fileSupportsEncryption" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="file_supports_encryption" node="element"/>
+        </field>
+
+        <field name="fileNamedStreams" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="file_named_streams" node="element"/>
+        </field>
+
+        <field name="fileReadOnlyVolume" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="file_read_only_volume" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.windows.VolumeItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="volume_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
+            ns-prefix=""/>
+
+        <field name="rootpath" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="rootpath" node="element"/>
+        </field>
+
+        <field name="fileSystem" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="file_system" node="element"/>
+        </field>
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="driveType" 
+            type="jp.go.aist.six.oval.model.windows.EntityItemDriveTypeType">
+            <bind-xml name="drive_type" node="element"/>
+        </field>
+
+        <field name="volumeMaxComponentLength" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="volume_max_component_length" node="element"/>
+        </field>
+
+        <field name="serialNumber" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="serial_number" node="element"/>
+        </field>
+
+        <field name="fileCaseSensitiveSearch" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="file_case_sensitive_search" node="element"/>
+        </field>
+
+        <field name="fileCasePreservedNames" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="file_case_preserved_names" node="element"/>
+        </field>
+
+        <field name="fileUnicodeOnDisk" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="file_unicode_on_disk" node="element"/>
+        </field>
+
+        <field name="filePersistentAcls" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="file_persistent_acls" node="element"/>
+        </field>
+
+        <field name="fileFileCompression" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="file_file_compression" node="element"/>
+        </field>
+
+        <field name="fileVolumeQuotas" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="file_volume_quotas" node="element"/>
+        </field>
+
+        <field name="fileSupportsSparseFiles" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="file_supports_sparse_files" node="element"/>
+        </field>
+
+        <field name="fileSupportsReparsePoints" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="file_supports_reparse_points" node="element"/>
+        </field>
+
+        <field name="fileSupportsRemoteStorage" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="file_supports_remote_storage" node="element"/>
+        </field>
+
+        <field name="fileVolumeIsCompressed" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="file_volume_is_compressed" node="element"/>
+        </field>
+
+        <field name="fileSupportsObjectIds" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="file_supports_object_ids" node="element"/>
+        </field>
+
+        <field name="fileSupportsEncryption" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="file_supports_encryption" node="element"/>
+        </field>
+
+        <field name="fileNamedStreams" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="file_named_streams" node="element"/>
+        </field>
+
+        <field name="fileReadOnlyVolume" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="file_read_only_volume" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- wmi                                                     -->
     <!-- ******************************************************* -->
 
@@ -6325,6 +6594,17 @@
     </class>
 
     <class name="jp.go.aist.six.oval.model.windows.EntityItemSharedResourceTypeType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
+
+<!-- volume -->
+    <class name="jp.go.aist.six.oval.model.windows.EntityStateDriveTypeType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemDriveTypeType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
 

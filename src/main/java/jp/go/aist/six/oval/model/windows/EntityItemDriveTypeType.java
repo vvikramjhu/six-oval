@@ -25,26 +25,26 @@ import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 
 
 /**
- * The EntityItemSharedResourceTypeType defines the different values 
- * that are valid for the type entity of a shared resource item.
+ * The EntityItemDriveTypeType defines the different values 
+ * that are valid for the drive_type entity of a volume item. 
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemSharedResourceTypeType
+public class EntityItemDriveTypeType
     extends EntityItemStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemSharedResourceTypeType()
+    public EntityItemDriveTypeType()
     {
     }
 
 
-    public EntityItemSharedResourceTypeType(
+    public EntityItemDriveTypeType(
                     final String content
                     )
     {
@@ -64,7 +64,7 @@ public class EntityItemSharedResourceTypeType
     {
         if (content != null) {
             // validation
-            SharedResourceTypeEnumeration.fromValue( content );
+            DriveTypeEnumeration.fromValue( content );
         }
 
         super.setContent( content );
@@ -93,7 +93,7 @@ public class EntityItemSharedResourceTypeType
             return true;
         }
 
-        if (!(obj instanceof EntityItemSharedResourceTypeType)) {
+        if (!(obj instanceof EntityItemDriveTypeType)) {
             return false;
         }
 
@@ -101,4 +101,4 @@ public class EntityItemSharedResourceTypeType
     }
 
 }
-//EntityItemSharedResourceTypeType
+//EntityItemDriveTypeType

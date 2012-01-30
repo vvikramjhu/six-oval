@@ -89,6 +89,7 @@ public enum OvalComponentType
     user,
     user_sid,
     user_sid55,
+    volume,
     wmi,
     wmi57,
 
