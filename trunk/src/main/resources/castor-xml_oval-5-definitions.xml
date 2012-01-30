@@ -967,13 +967,23 @@
         <field name="field" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateFieldType"
             collection="collection">
-            <bind-xml name="field" node="element"/>
+            <bind-xml name="field" node="element"
+                />
         </field>
     </class>
 
+<!-- TODO:
+    These mappings of EntityStateRecordType and EntityStateFieldType are NOT correct.
+    The namespace of "field" elements are NOT correctly marshalled;
+    NO xmlns or ns-prefix.
+ -->
 
     <class name="jp.go.aist.six.oval.model.definitions.EntityStateFieldType"
         extends="jp.go.aist.six.oval.model.definitions.EntityAttributeGroup">
+        <map-to xml="field"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            ns-prefix=""/>
+
         <field name="content" type="string">
             <bind-xml node="text"/>
         </field>

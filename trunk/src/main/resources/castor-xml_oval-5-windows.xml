@@ -6434,8 +6434,83 @@
 
 
     <!-- ******************************************************* -->
-    <!-- wmi                                                     -->
+    <!-- wmi, 57                                                 -->
     <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.windows.Wmi57Test"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="wmi57_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.Wmi57Object"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="wmi57_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="namespace" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="namespace" node="element"/>
+        </field>
+        
+        <field name="wql" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="wql" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.Wmi57State"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="wmi57_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+            ns-prefix=""/>
+
+        <field name="namespace" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="namespace" node="element"/>
+        </field>
+
+        <field name="wql" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="wql" node="element"/>
+        </field>
+
+        <field name="result" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateRecordType">
+            <bind-xml name="result" node="element"/>
+        </field>
+    </class>
+
+
 
     <class name="jp.go.aist.six.oval.model.windows.WmiTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">

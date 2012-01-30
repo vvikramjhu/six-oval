@@ -55,7 +55,6 @@ public class Wmi57Object
     private Set  set;
     //{1..1}
 
-
     private EntityObjectStringType  namespace;
     //{1..1}
 
@@ -181,13 +180,13 @@ public class Wmi57Object
     /**
      */
     public void setFilter(
-                    final Collection<? extends Filter> filterList
+                    final Collection<? extends Filter> filters
                     )
     {
-        if (filterList != this.filter) {
+        if (filters != this.filter) {
             this.filter.clear();
-            if (filterList != null  &&  filterList.size() > 0) {
-                this.filter.addAll( filterList );
+            if (filters != null  &&  filters.size() > 0) {
+                this.filter.addAll( filters );
             }
         }
     }
@@ -237,9 +236,9 @@ public class Wmi57Object
     {
         return "wmi57_object[" + super.toString()
                         + ", set=" + getSet()
-                        + ", " + getNamespace()
-                        + ", " + getWql()
-                        + ", " + getFilter()
+                        + ", namespace="    + getNamespace()
+                        + ", wql="          + getWql()
+                        + ", fileter="      + getFilter()
                         + "]";
     }
 
