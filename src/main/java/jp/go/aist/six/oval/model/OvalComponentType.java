@@ -86,6 +86,8 @@ public enum OvalComponentType
     sid,
     sid_sid,
     uac,
+    user_sid,
+    user_sid55,
     wmi,
     wmi57,
 
