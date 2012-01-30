@@ -22,75 +22,78 @@ package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
-import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
-import jp.go.aist.six.oval.model.sc.EntityItemStringType;
-import jp.go.aist.six.oval.model.sc.ItemType;
-import jp.go.aist.six.oval.model.sc.StatusEnumeration;
+import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
+import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
+import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The windows user_sid item allows the different groups (identified by SID) 
- * that a user belongs to be collected.
+ * The user state enumerates the different groups (identified by name) 
+ * that a Windows user might belong to.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class UserSidItem
-    extends ItemType
+public class UserState
+    extends StateType
 {
 
     //{0..1}
-    private EntityItemStringType       user_sid;
-    private EntityItemBoolType         enabled;
-    private EntityItemStringType       group_sid;
+    private EntityStateStringType       user;
+    private EntityStateBoolType         enabled;
+    private EntityStateStringType       group;
+    private EntityStateIntType          last_logon;
 
 
 
     /**
      * Constructor.
      */
-    public UserSidItem()
+    public UserState()
     {
-        this( 0 );
+        this( null, 0 );
     }
 
 
-    public UserSidItem(
-                    final int id
+    public UserState(
+                    final String id,
+                    final int version
                     )
     {
-        this( id, null );
+        this( id, version, null );
     }
 
 
-    public UserSidItem(
-                    final int id,
-                    final StatusEnumeration status
+    public UserState(
+                    final String id,
+                    final int version,
+                    final String comment
                     )
     {
-        super( id, status );
-        
+        super( id, version, comment );
+
         _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.user_sid;
+        _oval_component_type = OvalComponentType.user;
     }
 
 
 
     /**
      */
-    public void setUserSid(
-                    final EntityItemStringType user_sid
+    public void setUser(
+                    final EntityStateStringType user
                     )
     {
-        this.user_sid = user_sid;
+        this.user = user;
     }
 
 
-    public EntityItemStringType getUserSid()
+    public EntityStateStringType getUser()
     {
-        return this.user_sid;
+        return this.user;
     }
 
 
@@ -98,14 +101,14 @@ public class UserSidItem
     /**
      */
     public void setEnabled(
-                    final EntityItemBoolType enabled
+                    final EntityStateBoolType enabled
                     )
     {
         this.enabled = enabled;
     }
 
 
-    public EntityItemBoolType getEnabled()
+    public EntityStateBoolType getEnabled()
     {
         return this.enabled;
     }
@@ -114,17 +117,34 @@ public class UserSidItem
 
     /**
      */
-    public void setGroupSid(
-                    final EntityItemStringType group_sid
+    public void setGroup(
+                    final EntityStateStringType group
                     )
     {
-        this.group_sid = group_sid;
+        this.group = group;
     }
 
 
-    public EntityItemStringType getGroupSid()
+    public EntityStateStringType getGroup()
     {
-        return this.group_sid;
+        return this.group;
+    }
+
+
+
+    /**
+     */
+    public void setLastLogon(
+                    final EntityStateIntType last_logon
+                    )
+    {
+        this.last_logon = last_logon;
+    }
+
+
+    public EntityStateIntType getLastLogon()
+    {
+        return this.last_logon;
     }
 
 
@@ -146,7 +166,7 @@ public class UserSidItem
                     final Object obj
                     )
     {
-        if (!(obj instanceof UserSidItem)) {
+        if (!(obj instanceof UserState)) {
             return false;
         }
 
@@ -158,11 +178,13 @@ public class UserSidItem
     @Override
     public String toString()
     {
-        return "user_sid_item[" + super.toString()
-                        + ", user_sid="     + getUserSid()
+        return "user_state[" + super.toString()
+                        + ", user="         + getUser()
                         + ", enabled="      + getEnabled()
-                        + ", group_sid="    + getGroupSid()
+                        + ", group="        + getGroup()
+                        + ", last_logon="   + getLastLogon()
              + "]";
     }
+
 }
-//UserSidItem
+//UserState

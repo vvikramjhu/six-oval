@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.windows;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
+import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
@@ -30,34 +31,35 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * The windows user_sid item allows the different groups (identified by SID) 
+ * The windows user item allows the different groups (identified by name) 
  * that a user belongs to be collected.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class UserSidItem
+public class UserItem
     extends ItemType
 {
 
     //{0..1}
-    private EntityItemStringType       user_sid;
+    private EntityItemStringType       user;
     private EntityItemBoolType         enabled;
-    private EntityItemStringType       group_sid;
+    private EntityItemStringType       group;
+    private EntityItemIntType          last_logon;
 
 
 
     /**
      * Constructor.
      */
-    public UserSidItem()
+    public UserItem()
     {
         this( 0 );
     }
 
 
-    public UserSidItem(
+    public UserItem(
                     final int id
                     )
     {
@@ -65,7 +67,7 @@ public class UserSidItem
     }
 
 
-    public UserSidItem(
+    public UserItem(
                     final int id,
                     final StatusEnumeration status
                     )
@@ -73,24 +75,24 @@ public class UserSidItem
         super( id, status );
         
         _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.user_sid;
+        _oval_component_type = OvalComponentType.user;
     }
 
 
 
     /**
      */
-    public void setUserSid(
-                    final EntityItemStringType user_sid
+    public void setUser(
+                    final EntityItemStringType user
                     )
     {
-        this.user_sid = user_sid;
+        this.user = user;
     }
 
 
-    public EntityItemStringType getUserSid()
+    public EntityItemStringType getUser()
     {
-        return this.user_sid;
+        return this.user;
     }
 
 
@@ -114,17 +116,34 @@ public class UserSidItem
 
     /**
      */
-    public void setGroupSid(
-                    final EntityItemStringType group_sid
+    public void setGroup(
+                    final EntityItemStringType group
                     )
     {
-        this.group_sid = group_sid;
+        this.group = group;
     }
 
 
-    public EntityItemStringType getGroupSid()
+    public EntityItemStringType getGroup()
     {
-        return this.group_sid;
+        return this.group;
+    }
+
+
+
+    /**
+     */
+    public void setLastLogon(
+                    final EntityItemIntType last_logon
+                    )
+    {
+        this.last_logon = last_logon;
+    }
+
+
+    public EntityItemIntType getLastLogon()
+    {
+        return this.last_logon;
     }
 
 
@@ -146,7 +165,7 @@ public class UserSidItem
                     final Object obj
                     )
     {
-        if (!(obj instanceof UserSidItem)) {
+        if (!(obj instanceof UserItem)) {
             return false;
         }
 
@@ -158,11 +177,12 @@ public class UserSidItem
     @Override
     public String toString()
     {
-        return "user_sid_item[" + super.toString()
-                        + ", user_sid="     + getUserSid()
+        return "user_item[" + super.toString()
+                        + ", user="         + getUser()
                         + ", enabled="      + getEnabled()
-                        + ", group_sid="    + getGroupSid()
+                        + ", group="        + getGroup()
+                        + ", last_logon="   + getLastLogon()
              + "]";
     }
 }
-//UserSidItem
+//UserItem
