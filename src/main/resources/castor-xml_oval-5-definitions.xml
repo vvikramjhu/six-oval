@@ -964,10 +964,17 @@
 
     <class name="jp.go.aist.six.oval.model.definitions.EntityStateRecordType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateComplexBaseType">
+<!--
+        <map-to xml="record"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            ns-prefix=""/>
+-->
+
         <field name="field" 
             type="jp.go.aist.six.oval.model.definitions.EntityStateFieldType"
             collection="collection">
             <bind-xml name="field" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"
                 />
         </field>
     </class>
