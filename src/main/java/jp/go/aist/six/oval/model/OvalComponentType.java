@@ -53,6 +53,7 @@ public enum OvalComponentType
     partition,
     rpminfo,
     rpmverify,
+    selinuxboolean,
 
     // unix //
     //file,  //same name in the windows namespace
