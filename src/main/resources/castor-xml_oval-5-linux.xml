@@ -584,4 +584,256 @@
 
 
     
+    <!-- ******************************************************* -->
+    <!-- rpmverify                                               -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.linux.RpmVerifyTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="rpmverify_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"/>
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.linux.RpmVerifyObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="rpmverify_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="behaviors" 
+            type="jp.go.aist.six.oval.model.linux.RpmVerifyBehaviors">
+            <bind-xml name="behaviors" node="element"/>
+        </field>
+        
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.linux.RpmVerifyState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="rpmverify_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
+            ns-prefix=""/>
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+
+        <field name="sizeDiffers" 
+            type="jp.go.aist.six.oval.model.linux.EntityStateRpmVerifyResultType" >
+            <bind-xml name="size_differs" node="element"/>
+        </field>
+
+        <field name="modeDiffers" 
+            type="jp.go.aist.six.oval.model.linux.EntityStateRpmVerifyResultType" >
+            <bind-xml name="mode_differs" node="element"/>
+        </field>
+
+        <field name="md5Differs" 
+            type="jp.go.aist.six.oval.model.linux.EntityStateRpmVerifyResultType" >
+            <bind-xml name="md5_differs" node="element"/>
+        </field>
+
+        <field name="deviceDiffers" 
+            type="jp.go.aist.six.oval.model.linux.EntityStateRpmVerifyResultType" >
+            <bind-xml name="device_differs" node="element"/>
+        </field>
+
+        <field name="linkMismatch" 
+            type="jp.go.aist.six.oval.model.linux.EntityStateRpmVerifyResultType" >
+            <bind-xml name="link_mismatch" node="element"/>
+        </field>
+
+        <field name="ownershipDiffers" 
+            type="jp.go.aist.six.oval.model.linux.EntityStateRpmVerifyResultType" >
+            <bind-xml name="ownership_differs" node="element"/>
+        </field>
+
+        <field name="groupDiffers" 
+            type="jp.go.aist.six.oval.model.linux.EntityStateRpmVerifyResultType" >
+            <bind-xml name="group_differs" node="element"/>
+        </field>
+
+        <field name="mtimeDiffers" 
+            type="jp.go.aist.six.oval.model.linux.EntityStateRpmVerifyResultType" >
+            <bind-xml name="mtime_differs" node="element"/>
+        </field>
+
+        <field name="capabilitiesDiffer" 
+            type="jp.go.aist.six.oval.model.linux.EntityStateRpmVerifyResultType" >
+            <bind-xml name="capabilities_differ" node="element"/>
+        </field>
+
+        <field name="configurationFile" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType" >
+            <bind-xml name="configuration_file" node="element"/>
+        </field>
+
+        <field name="documentationFile" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType" >
+            <bind-xml name="documentation_file" node="element"/>
+        </field>
+
+        <field name="ghostFile" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType" >
+            <bind-xml name="ghost_file" node="element"/>
+        </field>
+
+        <field name="licenseFile" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType" >
+            <bind-xml name="license_file" node="element"/>
+        </field>
+
+        <field name="readmeFile" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType" >
+            <bind-xml name="readme_file" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.linux.RpmVerifyItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="rpmverify_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux"
+            ns-prefix=""/>
+
+        <field name="name" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="name" node="element"/>
+        </field>
+
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+
+        <field name="sizeDiffers" 
+            type="jp.go.aist.six.oval.model.linux.EntityItemRpmVerifyResultType" >
+            <bind-xml name="size_differs" node="element"/>
+        </field>
+
+        <field name="modeDiffers" 
+            type="jp.go.aist.six.oval.model.linux.EntityItemRpmVerifyResultType" >
+            <bind-xml name="mode_differs" node="element"/>
+        </field>
+
+        <field name="md5Differs" 
+            type="jp.go.aist.six.oval.model.linux.EntityItemRpmVerifyResultType" >
+            <bind-xml name="md5_differs" node="element"/>
+        </field>
+
+        <field name="deviceDiffers" 
+            type="jp.go.aist.six.oval.model.linux.EntityItemRpmVerifyResultType" >
+            <bind-xml name="device_differs" node="element"/>
+        </field>
+
+        <field name="linkMismatch" 
+            type="jp.go.aist.six.oval.model.linux.EntityItemRpmVerifyResultType" >
+            <bind-xml name="link_mismatch" node="element"/>
+        </field>
+
+        <field name="ownershipDiffers" 
+            type="jp.go.aist.six.oval.model.linux.EntityItemRpmVerifyResultType" >
+            <bind-xml name="ownership_differs" node="element"/>
+        </field>
+
+        <field name="groupDiffers" 
+            type="jp.go.aist.six.oval.model.linux.EntityItemRpmVerifyResultType" >
+            <bind-xml name="group_differs" node="element"/>
+        </field>
+
+        <field name="mtimeDiffers" 
+            type="jp.go.aist.six.oval.model.linux.EntityItemRpmVerifyResultType" >
+            <bind-xml name="mtime_differs" node="element"/>
+        </field>
+
+        <field name="capabilitiesDiffer" 
+            type="jp.go.aist.six.oval.model.linux.EntityItemRpmVerifyResultType" >
+            <bind-xml name="capabilities_differ" node="element"/>
+        </field>
+
+        <field name="configurationFile" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType" >
+            <bind-xml name="configuration_file" node="element"/>
+        </field>
+
+        <field name="documentationFile" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType" >
+            <bind-xml name="documentation_file" node="element"/>
+        </field>
+
+        <field name="ghostFile" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType" >
+            <bind-xml name="ghost_file" node="element"/>
+        </field>
+
+        <field name="licenseFile" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType" >
+            <bind-xml name="license_file" node="element"/>
+        </field>
+
+        <field name="readmeFile" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType" >
+            <bind-xml name="readme_file" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
+    <!-- entity                                                  -->
+    <!-- ******************************************************* -->
+
+<!-- volume -->
+    <class name="jp.go.aist.six.oval.model.linux.EntityStateRpmVerifyResultType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.linux.EntityItemRpmVerifyResultType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
+
 </mapping>
