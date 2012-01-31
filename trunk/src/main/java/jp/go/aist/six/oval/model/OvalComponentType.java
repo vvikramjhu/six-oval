@@ -52,7 +52,7 @@ public enum OvalComponentType
     inetlisteningservers,
     partition,
     rpminfo,
-//    rpmverify,
+    rpmverify,
 
     // unix //
     //file,  //same name in the windows namespace
