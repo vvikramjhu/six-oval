@@ -55,9 +55,11 @@ public enum OvalComponentType
     rpmverify,
     selinuxboolean,
     selinuxsecuritycontext,
+    slackwarepkginfo,
 
     // unix //
     //file,  //same name in the windows namespace
+    inetd,
     uname,
 
     // windows //
