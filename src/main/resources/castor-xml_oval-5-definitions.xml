@@ -1016,6 +1016,19 @@
     <!-- %                                                     % -->
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
+    <!-- child of metadata, OVAL test content for Linux, unix-def_password_test.xml -->
+    <class name="jp.go.aist.six.oval.model.definitions.mitre.Ovalnotes"
+        extends="jp.go.aist.six.oval.model.OvalObject">
+        <map-to xml="ovalnotes"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            ns-prefix=""/>
+
+        <field name="content" type="string">
+            <bind-xml node="text"/>
+        </field>
+    </class>
+
+
     <class name="jp.go.aist.six.oval.model.mitre.Vendor"
         extends="jp.go.aist.six.oval.model.common.GeneratorInfo">
         <map-to xml="vendor"
