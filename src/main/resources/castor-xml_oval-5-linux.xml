@@ -920,6 +920,251 @@
 
 
     <!-- ******************************************************* -->
+    <!-- selinuxsecuritycontext                                  -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.linux.SelinuxSecurityContextTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="selinuxsecuritycontext_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"
+            />
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.linux.SelinuxSecurityContextObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="selinuxsecuritycontext_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="behaviors" 
+            type="jp.go.aist.six.oval.model.linux.FileBehaviors">
+            <bind-xml name="behaviors" node="element"/>
+        </field>
+        
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="path" node="element"/>
+        </field>
+        
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="filename" node="element"/>
+        </field>
+
+        <field name="pid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectIntType">
+            <bind-xml name="pid" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.linux.SelinuxSecurityContextState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="selinuxsecuritycontext_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
+            ns-prefix=""/>
+
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="path" node="element"/>
+        </field>
+
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="filename" node="element"/>
+        </field>
+
+        <field name="pid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="pid" node="element"/>
+        </field>
+
+        <field name="user" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="user" node="element"/>
+        </field>
+
+        <field name="role" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="role" node="element"/>
+        </field>
+
+        <field name="type" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="type" node="element"/>
+        </field>
+
+        <field name="lowSensitivity" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="low_sensitivity" node="element"/>
+        </field>
+
+        <field name="lowCategory" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="low_category" node="element"/>
+        </field>
+
+        <field name="highSensitivity" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="high_sensitivity" node="element"/>
+        </field>
+
+        <field name="highCategory" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="high_category" node="element"/>
+        </field>
+
+        <field name="rawLowSensitivity" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="rawlow_sensitivity" node="element"/>
+        </field>
+
+        <field name="rawLowCategory" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="rawlow_category" node="element"/>
+        </field>
+
+        <field name="rawHighSensitivity" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="rawhigh_sensitivity" node="element"/>
+        </field>
+
+        <field name="rawHighCategory" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="rawhigh_category" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.linux.FileBehaviors"
+        extends="jp.go.aist.six.oval.model.AbstractFileBehaviors">
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.linux.SelinuxSecurityContextItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="selinuxsecuritycontext_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#linux"
+            ns-prefix=""/>
+
+        <field name="filepath" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="filepath" node="element"/>
+        </field>
+
+        <field name="path" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="path" node="element"/>
+        </field>
+
+        <field name="filename" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="filename" node="element"/>
+        </field>
+
+        <field name="pid" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="pid" node="element"/>
+        </field>
+
+        <field name="user" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="user" node="element"/>
+        </field>
+
+        <field name="role" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="role" node="element"/>
+        </field>
+
+        <field name="type" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="type" node="element"/>
+        </field>
+
+        <field name="lowSensitivity" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="low_sensitivity" node="element"/>
+        </field>
+
+        <field name="lowCategory" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="low_category" node="element"/>
+        </field>
+
+        <field name="highSensitivity" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="high_sensitivity" node="element"/>
+        </field>
+
+        <field name="highCategory" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="high_category" node="element"/>
+        </field>
+
+        <field name="rawLowSensitivity" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="rawlow_sensitivity" node="element"/>
+        </field>
+
+        <field name="rawLowCategory" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="rawlow_category" node="element"/>
+        </field>
+
+        <field name="rawHighSensitivity" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="rawhigh_sensitivity" node="element"/>
+        </field>
+
+        <field name="rawHighCategory" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="rawhigh_category" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- entity                                                  -->
     <!-- ******************************************************* -->
 
