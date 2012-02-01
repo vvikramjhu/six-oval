@@ -54,6 +54,7 @@ public enum OvalComponentType
     rpminfo,
     rpmverify,
     selinuxboolean,
+    selinuxsecuritycontext,
 
     // unix //
     //file,  //same name in the windows namespace
