@@ -33,14 +33,13 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The interface object is used by an interface test 
- * to define the specific interfaces(s) to be evaluated.
+ * The password object is used by a password test to define the object to be evaluated. 
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class NetworkInterfaceObject
+public class PasswordObject
     extends SystemObjectType
 {
 
@@ -48,14 +47,14 @@ public class NetworkInterfaceObject
 	// choice(
 	//    set
     //    sequence(
-    //           name
+    //           username
     //           filter
     //   ))
 
     private Set  set;
     //{1..1}
 
-    private EntityObjectStringType  name;
+    private EntityObjectStringType  username;
     //{1..1}
 
     private final Collection<Filter>  filter = new ArrayList<Filter>();
@@ -66,13 +65,13 @@ public class NetworkInterfaceObject
     /**
      * Constructor.
      */
-    public NetworkInterfaceObject()
+    public PasswordObject()
     {
         this( null, 0 );
     }
 
 
-    public NetworkInterfaceObject(
+    public PasswordObject(
                     final String id,
                     final int version
                     )
@@ -80,7 +79,7 @@ public class NetworkInterfaceObject
         super( id, version );
 
         _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.network_interface;
+        _oval_component_type = OvalComponentType.password;
     }
 
 
@@ -141,17 +140,17 @@ public class NetworkInterfaceObject
 
     /**
      */
-    public void setName(
-                    final EntityObjectStringType name
+    public void setUsername(
+                    final EntityObjectStringType username
                     )
     {
-        this.name = name;
+        this.username = username;
     }
 
 
-    public EntityObjectStringType getName()
+    public EntityObjectStringType getUsername()
     {
-        return this.name;
+        return this.username;
     }
 
 
@@ -212,7 +211,7 @@ public class NetworkInterfaceObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof NetworkInterfaceObject)) {
+        if (!(obj instanceof PasswordObject)) {
             return false;
         }
 
@@ -224,12 +223,12 @@ public class NetworkInterfaceObject
     @Override
     public String toString()
     {
-        return "network_interface_object[" + super.toString()
+        return "password_object[" + super.toString()
                         + ", set"       + getSet()
-                        + ", name="     + getName()
+                        + ", username=" + getUsername()
                         + ", filter="   + getFilter()
                         + "]";
     }
 
 }
-//NetworkInterfaceObject
+//PasswordObject

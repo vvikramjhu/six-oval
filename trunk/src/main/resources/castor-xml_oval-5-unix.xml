@@ -660,6 +660,155 @@
 
 
     <!-- ******************************************************* -->
+    <!-- password                                                -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.unix.PasswordTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="password_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"
+            />
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.unix.PasswordObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="password_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="username" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="username" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.unix.PasswordState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="password_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="username" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="username" node="element"/>
+        </field>
+
+        <field name="password" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="password" node="element"/>
+        </field>
+
+        <field name="userId" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="user_id" node="element"/>
+        </field>
+
+        <field name="groupId" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="group_id" node="element"/>
+        </field>
+
+        <field name="gcos" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="gcos" node="element"/>
+        </field>
+
+        <field name="homeDir" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="home_dir" node="element"/>
+        </field>
+
+        <field name="loginShell" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="login_shell" node="element"/>
+        </field>
+
+        <field name="lastLogin" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="last_login" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.unix.PasswordItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="password_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"
+            ns-prefix=""/>
+
+        <field name="username" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="username" node="element"/>
+        </field>
+
+        <field name="password" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="password" node="element"/>
+        </field>
+
+        <field name="userId" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="user_id" node="element"/>
+        </field>
+
+        <field name="groupId" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="group_id" node="element"/>
+        </field>
+
+        <field name="gcos" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="gcos" node="element"/>
+        </field>
+
+        <field name="homeDir" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="home_dir" node="element"/>
+        </field>
+
+        <field name="loginShell" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="login_shell" node="element"/>
+        </field>
+
+        <field name="lastLogin" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="last_login" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- uname                                                   -->
     <!-- ******************************************************* -->
 

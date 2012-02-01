@@ -60,6 +60,7 @@ public enum OvalComponentType
     // unix //
     //file,  //same name in the windows namespace
     inetd,
+    password,
     uname,
 
     // windows //
