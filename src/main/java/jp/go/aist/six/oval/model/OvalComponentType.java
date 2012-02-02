@@ -58,10 +58,12 @@ public enum OvalComponentType
     slackwarepkginfo,
 
     // unix //
-    //file,  //same name in the windows namespace
+//  file,  //same name in the windows namespace
     inetd,
     password,
-//    process58,    //same component in the windows namespace
+//  process,        //same component in the windows namespace
+//  process58,      //same component in the windows namespace
+    runlevel,
     uname,
 
     // windows //
