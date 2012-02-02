@@ -809,6 +809,230 @@
 
 
     <!-- ******************************************************* -->
+    <!-- process58                                               -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.unix.Process58Test"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="process58_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"
+            />
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.unix.Process58Object"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="process58_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="commandLine" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="command_line" node="element"/>
+        </field>
+
+        <field name="pid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectIntType">
+            <bind-xml name="pid" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.unix.Process58State"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="process58_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="commandLine" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="command_line" node="element"/>
+        </field>
+
+        <field name="execTime" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="exec_time" node="element"/>
+        </field>
+
+        <field name="pid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="pid" node="element"/>
+        </field>
+
+        <field name="ppid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="ppid" node="element"/>
+        </field>
+
+        <field name="priority" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="priority" node="element"/>
+        </field>
+
+        <field name="ruid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="ruid" node="element"/>
+        </field>
+
+        <field name="schedulingClass" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="scheduling_class" node="element"/>
+        </field>
+
+        <field name="startTime" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="start_time" node="element"/>
+        </field>
+
+        <field name="tty" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="tty" node="element"/>
+        </field>
+
+        <field name="userId" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="user_id" node="element"/>
+        </field>
+
+        <field name="execShield" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateBoolType">
+            <bind-xml name="exec_shield" node="element"/>
+        </field>
+
+        <field name="loginuid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="loginuid" node="element"/>
+        </field>
+
+        <field name="posixCapability" 
+            type="jp.go.aist.six.oval.model.unix.EntityStateCapabilityType">
+            <bind-xml name="posix_capability" node="element"/>
+        </field>
+
+        <field name="selinuxDomainLabel" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="selinux_domain_label" node="element"/>
+        </field>
+
+        <field name="sessionId" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="session_id" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.unix.Process58Item"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="process58_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"
+            ns-prefix=""/>
+
+        <field name="commandLine" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="command_line" node="element"/>
+        </field>
+
+        <field name="execTime" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="exec_time" node="element"/>
+        </field>
+
+        <field name="pid" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="pid" node="element"/>
+        </field>
+
+        <field name="ppid" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="ppid" node="element"/>
+        </field>
+
+        <field name="priority" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="priority" node="element"/>
+        </field>
+
+        <field name="ruid" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="ruid" node="element"/>
+        </field>
+
+        <field name="schedulingClass" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="scheduling_class" node="element"/>
+        </field>
+
+        <field name="startTime" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="start_time" node="element"/>
+        </field>
+
+        <field name="tty" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="tty" node="element"/>
+        </field>
+
+        <field name="userId" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="user_id" node="element"/>
+        </field>
+
+        <field name="execShield" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemBoolType">
+            <bind-xml name="exec_shield" node="element"/>
+        </field>
+
+        <field name="loginuid" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="loginuid" node="element"/>
+        </field>
+
+        <field name="posixCapability" 
+            type="jp.go.aist.six.oval.model.unix.EntityItemCapabilityType">
+            <bind-xml name="posix_capability" node="element"/>
+        </field>
+
+        <field name="selinuxDomainLabel" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="selinux_domain_label" node="element"/>
+        </field>
+
+        <field name="sessionId" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="session_id" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- uname                                                   -->
     <!-- ******************************************************* -->
 
@@ -922,6 +1146,17 @@
     <!-- ******************************************************* -->
     <!-- entity attribute types                                  -->
     <!-- ******************************************************* -->
+
+<!-- capability -->
+    <class name="jp.go.aist.six.oval.model.unix.EntityStateCapabilityType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.unix.EntityItemCapabilityType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
 
 <!-- endpoint -->
     <class name="jp.go.aist.six.oval.model.unix.EntityStateEndpointType"
