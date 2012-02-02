@@ -809,7 +809,7 @@
 
 
     <!-- ******************************************************* -->
-    <!-- process58                                               -->
+    <!-- process, 58                                             -->
     <!-- ******************************************************* -->
 
     <class name="jp.go.aist.six.oval.model.unix.Process58Test"
@@ -1027,6 +1027,165 @@
         <field name="sessionId" 
             type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
             <bind-xml name="session_id" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.unix.ProcessTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="process_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"
+            />
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.unix.ProcessObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="process_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="command" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="command" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.unix.ProcessState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="process_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="command" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="command" node="element"/>
+        </field>
+
+        <field name="execTime" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="exec_time" node="element"/>
+        </field>
+
+        <field name="pid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="pid" node="element"/>
+        </field>
+
+        <field name="ppid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="ppid" node="element"/>
+        </field>
+
+        <field name="priority" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="priority" node="element"/>
+        </field>
+
+        <field name="ruid" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="ruid" node="element"/>
+        </field>
+
+        <field name="schedulingClass" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="scheduling_class" node="element"/>
+        </field>
+
+        <field name="startTime" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="start_time" node="element"/>
+        </field>
+
+        <field name="tty" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="tty" node="element"/>
+        </field>
+
+        <field name="userId" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="user_id" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.unix.ProcessItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="process_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"
+            ns-prefix=""/>
+
+        <field name="command" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="command" node="element"/>
+        </field>
+
+        <field name="execTime" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="exec_time" node="element"/>
+        </field>
+
+        <field name="pid" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="pid" node="element"/>
+        </field>
+
+        <field name="ppid" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="ppid" node="element"/>
+        </field>
+
+        <field name="priority" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="priority" node="element"/>
+        </field>
+
+        <field name="ruid" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="ruid" node="element"/>
+        </field>
+
+        <field name="schedulingClass" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="scheduling_class" node="element"/>
+        </field>
+
+        <field name="startTime" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="start_time" node="element"/>
+        </field>
+
+        <field name="tty" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="tty" node="element"/>
+        </field>
+
+        <field name="userId" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="user_id" node="element"/>
         </field>
     </class>
 
