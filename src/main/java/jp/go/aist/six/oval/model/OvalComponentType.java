@@ -61,6 +61,7 @@ public enum OvalComponentType
     //file,  //same name in the windows namespace
     inetd,
     password,
+//    process58,    //same component in the windows namespace
     uname,
 
     // windows //

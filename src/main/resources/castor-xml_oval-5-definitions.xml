@@ -1017,7 +1017,7 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <!-- child of metadata, OVAL test content for Linux, unix-def_password_test.xml -->
-    <class name="jp.go.aist.six.oval.model.definitions.mitre.Ovalnotes"
+    <class name="jp.go.aist.six.oval.model.mitre.Ovalnotes"
         extends="jp.go.aist.six.oval.model.OvalObject">
         <map-to xml="ovalnotes"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
