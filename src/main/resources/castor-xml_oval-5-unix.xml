@@ -1305,6 +1305,175 @@
 
 
     <!-- ******************************************************* -->
+    <!-- shadow                                                  -->
+    <!-- ******************************************************* -->
+
+    <class name="jp.go.aist.six.oval.model.unix.ShadowTest"
+        extends="jp.go.aist.six.oval.model.definitions.TestType">
+        <map-to xml="shadow_test"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="object" 
+            type="jp.go.aist.six.oval.model.definitions.SystemObjectRefType">
+            <bind-xml name="object" node="element"
+            />
+        </field>
+        
+        <field name="state" 
+            type="jp.go.aist.six.oval.model.definitions.StateRefType"
+            collection="collection">
+            <bind-xml name="state" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.unix.ShadowObject"
+        extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
+        <map-to xml="shadow_object"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="set" 
+            type="jp.go.aist.six.oval.model.definitions.Set">
+            <bind-xml name="set" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+        </field>
+
+        <field name="username" 
+            type="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+            <bind-xml name="username" node="element"/>
+        </field>
+
+        <field name="filter" 
+            type="jp.go.aist.six.oval.model.definitions.Filter"
+            collection="collection">
+            <bind-xml name="filter" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.unix.ShadowState"
+        extends="jp.go.aist.six.oval.model.definitions.StateType">
+        <map-to xml="shadow_state"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            ns-prefix=""/>
+
+        <field name="username" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="username" node="element"/>
+        </field>
+
+        <field name="password" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="password" node="element"/>
+        </field>
+
+        <field name="chgLst" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="chg_lst" node="element"/>
+        </field>
+
+        <field name="chgAllow" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="chg_allow" node="element"/>
+        </field>
+
+        <field name="chgReq" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="chg_req" node="element"/>
+        </field>
+
+        <field name="expWarn" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="exp_warn" node="element"/>
+        </field>
+
+        <field name="expInact" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="exp_inact" node="element"/>
+        </field>
+
+        <field name="expDate" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateIntType">
+            <bind-xml name="exp_date" node="element"/>
+        </field>
+
+        <field name="flag" 
+            type="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+            <bind-xml name="flag" node="element"/>
+        </field>
+
+        <field name="encryptMethod" 
+            type="jp.go.aist.six.oval.model.unix.EntityStateEncryptMethodType">
+            <bind-xml name="encrypt_method" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.unix.ShadowItem"
+        extends="jp.go.aist.six.oval.model.sc.ItemType">
+        <map-to xml="shadow_item"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"
+            ns-prefix=""/>
+
+        <field name="username" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="username" node="element"/>
+        </field>
+
+        <field name="password" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="password" node="element"/>
+        </field>
+
+        <field name="chgLst" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="chg_lst" node="element"/>
+        </field>
+
+        <field name="chgAllow" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="chg_allow" node="element"/>
+        </field>
+
+        <field name="chgReq" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="chg_req" node="element"/>
+        </field>
+
+        <field name="expWarn" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="exp_warn" node="element"/>
+        </field>
+
+        <field name="expInact" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="exp_inact" node="element"/>
+        </field>
+
+        <field name="expDate" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemIntType">
+            <bind-xml name="exp_date" node="element"/>
+        </field>
+
+        <field name="flag" 
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            <bind-xml name="flag" node="element"/>
+        </field>
+
+        <field name="encryptMethod" 
+            type="jp.go.aist.six.oval.model.unix.EntityItemEncryptMethodType">
+            <bind-xml name="encrypt_method" node="element"/>
+        </field>
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- uname                                                   -->
     <!-- ******************************************************* -->
 

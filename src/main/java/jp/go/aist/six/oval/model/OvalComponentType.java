@@ -64,6 +64,7 @@ public enum OvalComponentType
 //  process,        //same component in the windows namespace
 //  process58,      //same component in the windows namespace
     runlevel,
+    shadow,
     uname,
 
     // windows //
