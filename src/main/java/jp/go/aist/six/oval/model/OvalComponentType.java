@@ -66,6 +66,7 @@ public enum OvalComponentType
     runlevel,
     shadow,
     uname,
+    xinetd,
 
     // windows //
     accesstoken,
