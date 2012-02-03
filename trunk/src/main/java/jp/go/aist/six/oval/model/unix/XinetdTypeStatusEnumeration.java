@@ -25,23 +25,22 @@ import jp.go.aist.six.oval.model.OvalEnumeration;
 
 
 /**
- * The set of encrypt methods used for protected passwords in a shadow file.  
+ * The set of types of services registered in xinetd.   
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum EncryptMethodEnumeration
+public enum XinetdTypeStatusEnumeration
     implements OvalEnumeration
 {
 
-    DES         ( "DES" ),
-    BSDI        ( "BSDi" ),
+    INTERNAL    ( "INTERNAL" ),
+    RPC         ( "RPC" ),
     MD5         ( "MD5" ),
-    BLOWFISH    ( "Blowfish" ),
-    SUN_MD5     ( "Sun MD5" ),
-    SHA_256     ( "SHA-256" ),
-    SHA_512     ( "SHA-512" ),
+    UNLISTED    ( "UNLISTED" ),
+    TCPMUX      ( "TCPMUX" ),
+    TCPMUXPLUS  ( "TCPMUXPLUS" ),
     NONE        ( "" );
 
 
@@ -49,11 +48,11 @@ public enum EncryptMethodEnumeration
     /**
      * A factory method.
      */
-    public static EncryptMethodEnumeration fromValue(
+    public static XinetdTypeStatusEnumeration fromValue(
                     final String value
                     )
     {
-        for (EncryptMethodEnumeration  e : EncryptMethodEnumeration.values()) {
+        for (XinetdTypeStatusEnumeration  e : XinetdTypeStatusEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -71,7 +70,7 @@ public enum EncryptMethodEnumeration
     /**
      * Constructor.
      */
-    EncryptMethodEnumeration(
+    XinetdTypeStatusEnumeration(
                     final String value
                     )
     {
@@ -99,4 +98,4 @@ public enum EncryptMethodEnumeration
     }
 
 }
-//EncryptMethodEnumeration
+//XinetdTypeStatusEnumeration
