@@ -25,6 +25,7 @@ import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateEVRStringType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
@@ -37,13 +38,21 @@ import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class RpmInfoState
-    extends LinuxEvrPkgInfoState
+    extends StateType
 {
 
-    private EntityStateStringType  signature_keyid;
     //{0..1}
+    private EntityStateStringType       name;
+    private EntityStateStringType       arch;
+    private EntityStateAnySimpleType    epoch;
+    private EntityStateAnySimpleType    release;
+    private EntityStateAnySimpleType    version;
+    private EntityStateEVRStringType    evr;
+    private EntityStateStringType       signature_keyid;
+    private EntityStateStringType       extended_name;
+    private EntityStateStringType       filepath;
 
-
+    
 
     /**
      * Constructor.
@@ -67,14 +76,105 @@ public class RpmInfoState
 
 
 
-    public RpmInfoState version(
+    /**
+     */
+    public void setName(
+                    final EntityStateStringType name
+                    )
+    {
+        this.name = name;
+    }
+
+
+    public EntityStateStringType getName()
+    {
+        return this.name;
+    }
+
+
+
+    /**
+     */
+    public void setArch(
+                    final EntityStateStringType arch
+                    )
+    {
+        this.arch = arch;
+    }
+
+
+    public EntityStateStringType getArch()
+    {
+        return this.arch;
+    }
+
+
+
+    /**
+     */
+    public void setEpoch(
+                    final EntityStateAnySimpleType epoch
+                    )
+    {
+        this.epoch = epoch;
+    }
+
+
+    public EntityStateAnySimpleType getEpoch()
+    {
+        return this.epoch;
+    }
+
+
+
+    /**
+     */
+    public void setRelease(
+                    final EntityStateAnySimpleType release
+                    )
+    {
+        this.release = release;
+    }
+
+
+    public EntityStateAnySimpleType getRelease()
+    {
+        return this.release;
+    }
+
+
+
+    /**
+     */
+    public void setVersion(
                     final EntityStateAnySimpleType version
                     )
     {
-        setVersion( version );
-        return this;
+        this.version = version;
     }
 
+
+    public EntityStateAnySimpleType getVersion()
+    {
+        return this.version;
+    }
+
+    
+    
+    /**
+     */
+    public void setEvr(
+                    final EntityStateEVRStringType evr
+                    )
+    {
+        this.evr = evr;
+    }
+
+
+    public EntityStateEVRStringType getEvr()
+    {
+        return this.evr;
+    }
 
 
     public RpmInfoState evr(
@@ -94,24 +194,55 @@ public class RpmInfoState
                     )
     {
         this.signature_keyid = keyid;
-//        _setProperty( LinuxPkgProperty.SIGNATURE_KEYID, keyid );
     }
 
 
-    public EntityStateStringType getSignatureKeyID()
+    public EntityStateStringType getSignatureKeyId()
     {
         return this.signature_keyid;
-//        return _getProperty(
-//                        LinuxPkgProperty.SIGNATURE_KEYID, EntityStateStringType.class );
     }
 
 
-    public RpmInfoState signatureKeyID(
+    public RpmInfoState signatureKeyId(
                     final EntityStateStringType keyid
                     )
     {
         setSignatureKeyID( keyid );
         return this;
+    }
+
+
+
+    /**
+     */
+    public void setExtendedName(
+                    final EntityStateStringType extended_name
+                    )
+    {
+        this.extended_name = extended_name;
+    }
+
+
+    public EntityStateStringType getExtendedName()
+    {
+        return this.extended_name;
+    }
+
+
+
+    /**
+     */
+    public void setFilepath(
+                    final EntityStateStringType filepath
+                    )
+    {
+        this.filepath = filepath;
+    }
+
+
+    public EntityStateStringType getFilepath()
+    {
+        return this.filepath;
     }
 
 
@@ -146,10 +277,17 @@ public class RpmInfoState
     public String toString()
     {
         return "rpminfo_state[" + super.toString()
-                        + ", signature_keyid=" + getSignatureKeyID()
-//                        + ", " + String.valueOf( _getProperties() )
+                        + ", name="     + getName()
+                        + ", arch="     + getArch()
+                        + ", epoch="    + getEpoch()
+                        + ", release="  + getRelease()
+                        + ", version="  + getVersion()
+                        + ", evr="      + getEvr()
+                        + ", signature_keyid="  + getSignatureKeyId()
+                        + ", extended_name="    + getExtendedName()
+                        + ", filepath=" + getFilepath()
                         + "]";
     }
 
 }
-// RpmInfoState
+//RpmInfoState

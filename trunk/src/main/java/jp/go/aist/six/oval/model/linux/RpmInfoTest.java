@@ -120,4 +120,4 @@ public class RpmInfoTest
     }
 
 }
-// RpmInfoTest
+//RpmInfoTest
