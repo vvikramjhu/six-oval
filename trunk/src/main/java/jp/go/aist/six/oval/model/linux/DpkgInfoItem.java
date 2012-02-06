@@ -22,9 +22,11 @@ package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemEVRStringType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.sc.ItemType;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
@@ -37,9 +39,19 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class DpkgInfoItem
-    extends LinuxEvrPkgInfoItem
+    extends ItemType
 {
 
+    //{0..1}
+    private EntityItemStringType        name;
+    private EntityItemStringType        arch;
+    private EntityItemAnySimpleType     epoch;
+    private EntityItemAnySimpleType     release;
+    private EntityItemAnySimpleType     version;
+    private EntityItemEVRStringType     evr;
+
+
+    
     /**
      * Constructor.
      */
@@ -152,6 +164,20 @@ public class DpkgInfoItem
 
     /**
      */
+    public void setName(
+                    final EntityItemStringType name
+                    )
+    {
+        this.name = name;
+    }
+
+
+    public EntityItemStringType getName()
+    {
+        return this.name;
+    }
+
+
     public DpkgInfoItem name(
                     final String name
                     )
@@ -171,14 +197,59 @@ public class DpkgInfoItem
 
 
 
+
     /**
      */
+    public void setArch(
+                    final EntityItemStringType arch
+                    )
+    {
+        this.arch = arch;
+    }
+
+
+    public EntityItemStringType getArch()
+    {
+        return this.arch;
+    }
+
+
     public DpkgInfoItem arch(
                     final String arch
                     )
     {
         setArch( new EntityItemStringType( arch ) );
         return this;
+    }
+
+
+
+    /**
+     */
+    public void setEpoch(
+                    final EntityItemAnySimpleType epoch
+                    )
+    {
+        if (epoch != null) {
+            DatatypeEnumeration  datatype = epoch.getDatatype();
+            if (datatype != null) {
+                if (datatype == DatatypeEnumeration.STRING
+                                ||  datatype == DatatypeEnumeration.INT) {
+                    //validation: xsd:restriction satisfied.
+                } else {
+                    throw new IllegalArgumentException(
+                                    "invalid epoch: datatype=" + datatype );
+                }
+            }
+        }
+
+        this.epoch = epoch;
+    }
+
+
+    public EntityItemAnySimpleType getEpoch()
+    {
+        return this.epoch;
     }
 
 
@@ -194,12 +265,69 @@ public class DpkgInfoItem
 
     /**
      */
+    public void setRelease(
+                    final EntityItemAnySimpleType release
+                    )
+    {
+        if (release != null) {
+            DatatypeEnumeration  datatype = release.getDatatype();
+            if (datatype != null) {
+                if (datatype == DatatypeEnumeration.STRING
+                                ||  datatype == DatatypeEnumeration.VERSION) {
+                    // xsd:restriction satisfied.
+                } else {
+                    throw new IllegalArgumentException(
+                                    "invalid release: datatype=" + datatype );
+                }
+            }
+        }
+
+        this.release = release;
+    }
+
+
+    public EntityItemAnySimpleType getRelease()
+    {
+        return this.release;
+    }
+
+
     public DpkgInfoItem release(
                     final String release
                     )
     {
         setRelease( new EntityItemAnySimpleType( release ) );
         return this;
+    }
+
+
+
+    /**
+     */
+    public void setVersion(
+                    final EntityItemAnySimpleType version
+                    )
+    {
+        if (version != null) {
+            DatatypeEnumeration  datatype = version.getDatatype();
+            if (datatype != null) {
+                if (datatype == DatatypeEnumeration.STRING
+                                ||  datatype == DatatypeEnumeration.VERSION) {
+                    // xsd:restriction satisfied.
+                } else {
+                    throw new IllegalArgumentException(
+                                    "invalid version: datatype=" + datatype );
+                }
+            }
+        }
+
+        this.version = version;
+    }
+
+
+    public EntityItemAnySimpleType getVersion()
+    {
+        return this.version;
     }
 
 
@@ -215,6 +343,20 @@ public class DpkgInfoItem
 
     /**
      */
+    public void setEvr(
+                    final EntityItemEVRStringType evr
+                    )
+    {
+        this.evr = evr;
+    }
+
+
+    public EntityItemEVRStringType getEvr()
+    {
+        return this.evr;
+    }
+
+
     public DpkgInfoItem evr(
                     final String evr
                     )
@@ -222,6 +364,7 @@ public class DpkgInfoItem
         setEvr( new EntityItemEVRStringType( evr ) );
         return this;
     }
+
 
 
 
@@ -233,8 +376,14 @@ public class DpkgInfoItem
     public String toString()
     {
         return "dpkginfo_item[" + super.toString()
+                        + ", name="    + getName()
+                        + ", arch="    + getArch()
+                        + ", epoch="   + getEpoch()
+                        + ", release=" + getRelease()
+                        + ", version=" + getVersion()
+                        + ", evr="     + getEvr()
              + "]";
     }
 
 }
-// DpkgInfoItem
+//DpkgInfoItem

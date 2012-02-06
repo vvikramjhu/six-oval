@@ -22,7 +22,10 @@ package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateEVRStringType;
+import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
+import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
@@ -35,9 +38,19 @@ import jp.go.aist.six.oval.model.definitions.EntityStateEVRStringType;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class DpkgInfoState
-    extends LinuxEvrPkgInfoState
+    extends StateType
 {
 
+    //{0..1}
+    private EntityStateStringType       name;
+    private EntityStateStringType       arch;
+    private EntityStateAnySimpleType    epoch;
+    private EntityStateAnySimpleType    release;
+    private EntityStateAnySimpleType    version;
+    private EntityStateEVRStringType    evr;
+
+    
+    
     /**
      * Constructor.
      */
@@ -58,6 +71,107 @@ public class DpkgInfoState
         _oval_component_type = OvalComponentType.dpkginfo;
     }
 
+
+
+    /**
+     */
+    public void setName(
+                    final EntityStateStringType name
+                    )
+    {
+        this.name = name;
+    }
+
+
+    public EntityStateStringType getName()
+    {
+        return this.name;
+    }
+
+
+
+    /**
+     */
+    public void setArch(
+                    final EntityStateStringType arch
+                    )
+    {
+        this.arch = arch;
+    }
+
+
+    public EntityStateStringType getArch()
+    {
+        return this.arch;
+    }
+
+
+
+    /**
+     */
+    public void setEpoch(
+                    final EntityStateAnySimpleType epoch
+                    )
+    {
+        this.epoch = epoch;
+    }
+
+
+    public EntityStateAnySimpleType getEpoch()
+    {
+        return this.epoch;
+    }
+
+
+
+    /**
+     */
+    public void setRelease(
+                    final EntityStateAnySimpleType release
+                    )
+    {
+        this.release = release;
+    }
+
+
+    public EntityStateAnySimpleType getRelease()
+    {
+        return this.release;
+    }
+
+
+
+    /**
+     */
+    public void setVersion(
+                    final EntityStateAnySimpleType version
+                    )
+    {
+        this.version = version;
+    }
+
+
+    public EntityStateAnySimpleType getVersion()
+    {
+        return this.version;
+    }
+
+    
+    
+    /**
+     */
+    public void setEvr(
+                    final EntityStateEVRStringType evr
+                    )
+    {
+        this.evr = evr;
+    }
+
+
+    public EntityStateEVRStringType getEvr()
+    {
+        return this.evr;
+    }
 
 
     public DpkgInfoState evr(
@@ -100,9 +214,14 @@ public class DpkgInfoState
     public String toString()
     {
         return "dpkginfo_state[" + super.toString()
-//                        + ", " + String.valueOf( _getProperties() )
+                        + ", name="     + getName()
+                        + ", arch="     + getArch()
+                        + ", epoch="    + getEpoch()
+                        + ", release="  + getRelease()
+                        + ", version="  + getVersion()
+                        + ", evr="      + getEvr()
                         + "]";
     }
 
 }
-// DpkgInfoState
+//DpkgInfoState
