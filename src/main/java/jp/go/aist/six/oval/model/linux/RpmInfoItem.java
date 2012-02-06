@@ -22,10 +22,12 @@ package jp.go.aist.six.oval.model.linux;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemEVRStringType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
-
+import jp.go.aist.six.oval.model.sc.ItemType;
+import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 
@@ -37,11 +39,19 @@ import jp.go.aist.six.oval.model.sc.EntityItemStringType;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class RpmInfoItem
-    extends LinuxEvrPkgInfoItem
+    extends ItemType
 {
 
-    private EntityItemStringType  signature_keyid;
     //{0..1}
+    private EntityItemStringType        name;
+    private EntityItemStringType        arch;
+    private EntityItemAnySimpleType     epoch;
+    private EntityItemAnySimpleType     release;
+    private EntityItemAnySimpleType     version;
+    private EntityItemEVRStringType     evr;
+    private EntityItemStringType        signature_keyid;
+    private EntityItemStringType        extended_name;
+    private EntityItemStringType        filepath;
 
 
 
@@ -58,39 +68,58 @@ public class RpmInfoItem
                     final int id
                     )
     {
-        this( id,
-                        (String)null,
-                        (String)null,
-                        (String)null,
-                        (String)null,
-                        (String)null,
-                        (String)null,
-                        (String)null
-                        );
+        this( id, DEFAULT_STATUS );
     }
-
-
-
+    
+    
     public RpmInfoItem(
                     final int id,
-                    final String arch,
-                    final String name,
-                    final String version,
-                    final String release,
-                    final String epoch,
-                    final String evr,
-                    final String sigkeyid
+                    final StatusEnumeration status
                     )
     {
-        super( id, arch, name, version, release, epoch, evr );
-
-        if (sigkeyid != null) {
-            setSignatureKeyID( new EntityItemStringType( sigkeyid ) );
-        }
+        super( id, status );
 
         _oval_platform_type = OvalPlatformType.linux;
         _oval_component_type = OvalComponentType.rpminfo;
     }
+    
+//    public RpmInfoItem(
+//                    final int id
+//                    )
+//    {
+//        this( id,
+//                        (String)null,
+//                        (String)null,
+//                        (String)null,
+//                        (String)null,
+//                        (String)null,
+//                        (String)null,
+//                        (String)null
+//                        );
+//    }
+//
+//
+//
+//    public RpmInfoItem(
+//                    final int id,
+//                    final String arch,
+//                    final String name,
+//                    final String version,
+//                    final String release,
+//                    final String epoch,
+//                    final String evr,
+//                    final String sigkeyid
+//                    )
+//    {
+//        super( id, arch, name, version, release, epoch, evr );
+//
+//        if (sigkeyid != null) {
+//            setSignatureKeyId( new EntityItemStringType( sigkeyid ) );
+//        }
+//
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.rpminfo;
+//    }
 
 
 //    public RpmInfoItem(
@@ -113,40 +142,53 @@ public class RpmInfoItem
 
     /**
      */
-    public void setSignatureKeyID(
-                    final EntityItemStringType signature_keyid
+    public void setName(
+                    final EntityItemStringType name
                     )
     {
-        this.signature_keyid = signature_keyid;
-//        _properties.put( LinuxPkgProperty.SIGNATURE_KEYID, signatureKeyID);
+        this.name = name;
     }
 
 
-    public EntityItemStringType getSignatureKeyID()
+    public EntityItemStringType getName()
     {
-        return this.signature_keyid;
-//        return (EntityItemStringType)_properties.get( LinuxPkgProperty.SIGNATURE_KEYID );
+        return this.name;
     }
 
 
-    public RpmInfoItem signatureKeyID(
-                    final String signature_keyid
-                    )
-    {
-        setSignatureKeyID( new EntityItemStringType( signature_keyid ) );
-        return this;
-    }
-
-
-
-    /**
-     */
     public RpmInfoItem name(
                     final String name
                     )
     {
         setName( new EntityItemStringType( name ) );
         return this;
+    }
+
+
+    public RpmInfoItem name(
+                    final EntityItemStringType name
+                    )
+    {
+        setName( name );
+        return this;
+    }
+
+
+
+
+    /**
+     */
+    public void setArch(
+                    final EntityItemStringType arch
+                    )
+    {
+        this.arch = arch;
+    }
+
+
+    public EntityItemStringType getArch()
+    {
+        return this.arch;
     }
 
 
@@ -159,12 +201,72 @@ public class RpmInfoItem
     }
 
 
+
+    /**
+     */
+    public void setEpoch(
+                    final EntityItemAnySimpleType epoch
+                    )
+    {
+        if (epoch != null) {
+            DatatypeEnumeration  datatype = epoch.getDatatype();
+            if (datatype != null) {
+                if (datatype == DatatypeEnumeration.STRING
+                                ||  datatype == DatatypeEnumeration.INT) {
+                    //validation: xsd:restriction satisfied.
+                } else {
+                    throw new IllegalArgumentException(
+                                    "invalid epoch: datatype=" + datatype );
+                }
+            }
+        }
+
+        this.epoch = epoch;
+    }
+
+
+    public EntityItemAnySimpleType getEpoch()
+    {
+        return this.epoch;
+    }
+
+
     public RpmInfoItem epoch(
                     final String epoch
                     )
     {
         setEpoch( new EntityItemAnySimpleType( epoch ) );
         return this;
+    }
+
+
+
+    /**
+     */
+    public void setRelease(
+                    final EntityItemAnySimpleType release
+                    )
+    {
+        if (release != null) {
+            DatatypeEnumeration  datatype = release.getDatatype();
+            if (datatype != null) {
+                if (datatype == DatatypeEnumeration.STRING
+                                ||  datatype == DatatypeEnumeration.VERSION) {
+                    // xsd:restriction satisfied.
+                } else {
+                    throw new IllegalArgumentException(
+                                    "invalid release: datatype=" + datatype );
+                }
+            }
+        }
+
+        this.release = release;
+    }
+
+
+    public EntityItemAnySimpleType getRelease()
+    {
+        return this.release;
     }
 
 
@@ -177,6 +279,36 @@ public class RpmInfoItem
     }
 
 
+
+    /**
+     */
+    public void setVersion(
+                    final EntityItemAnySimpleType version
+                    )
+    {
+        if (version != null) {
+            DatatypeEnumeration  datatype = version.getDatatype();
+            if (datatype != null) {
+                if (datatype == DatatypeEnumeration.STRING
+                                ||  datatype == DatatypeEnumeration.VERSION) {
+                    // xsd:restriction satisfied.
+                } else {
+                    throw new IllegalArgumentException(
+                                    "invalid version: datatype=" + datatype );
+                }
+            }
+        }
+
+        this.version = version;
+    }
+
+
+    public EntityItemAnySimpleType getVersion()
+    {
+        return this.version;
+    }
+
+
     public RpmInfoItem version(
                     final String version
                     )
@@ -186,12 +318,89 @@ public class RpmInfoItem
     }
 
 
+
+    /**
+     */
+    public void setEvr(
+                    final EntityItemEVRStringType evr
+                    )
+    {
+        this.evr = evr;
+    }
+
+
+    public EntityItemEVRStringType getEvr()
+    {
+        return this.evr;
+    }
+
+
     public RpmInfoItem evr(
                     final String evr
                     )
     {
         setEvr( new EntityItemEVRStringType( evr ) );
         return this;
+    }
+
+    
+    
+    /**
+     */
+    public void setSignatureKeyId(
+                    final EntityItemStringType signature_keyid
+                    )
+    {
+        this.signature_keyid = signature_keyid;
+    }
+
+
+    public EntityItemStringType getSignatureKeyId()
+    {
+        return this.signature_keyid;
+    }
+
+
+    public RpmInfoItem signatureKeyId(
+                    final String signature_keyid
+                    )
+    {
+        setSignatureKeyId( new EntityItemStringType( signature_keyid ) );
+        return this;
+    }
+
+
+
+    /**
+     */
+    public void setExtendedName(
+                    final EntityItemStringType extended_name
+                    )
+    {
+        this.extended_name = extended_name;
+    }
+
+
+    public EntityItemStringType getExtendedName()
+    {
+        return this.extended_name;
+    }
+
+
+
+    /**
+     */
+    public void setFilepath(
+                    final EntityItemStringType filepath
+                    )
+    {
+        this.filepath = filepath;
+    }
+
+
+    public EntityItemStringType getFilepath()
+    {
+        return this.filepath;
     }
 
 
@@ -204,9 +413,17 @@ public class RpmInfoItem
     public String toString()
     {
         return "rpminfo_item[" + super.toString()
-             + ", sig_keyid=" + getSignatureKeyID()
+                        + ", name="         + getName()
+                        + ", arch="         + getArch()
+                        + ", epoch="        + getEpoch()
+                        + ", release="      + getRelease()
+                        + ", version="      + getVersion()
+                        + ", evr="          + getEvr()
+                        + ", signature_keyid="  + getSignatureKeyId()
+                        + ", extended_name="    + getExtendedName()
+                        + ", filepath="     + getFilepath()
              + "]";
     }
 
 }
-// RpmInfoItem
+//RpmInfoItem

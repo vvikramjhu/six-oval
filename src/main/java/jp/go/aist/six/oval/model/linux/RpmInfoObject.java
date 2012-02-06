@@ -20,9 +20,15 @@
 
 package jp.go.aist.six.oval.model.linux;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
+import jp.go.aist.six.oval.model.definitions.Filter;
+import jp.go.aist.six.oval.model.definitions.Set;
+import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 
@@ -35,9 +41,35 @@ import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class RpmInfoObject
-    extends LinuxPkgInfoObject
+    extends SystemObjectType
 {
 
+    //TODO: XSD model
+    // xsd:choice(
+    //            set
+    //            xsd:sequence(
+    //                     behaviors
+    //                     name
+    //                     filter
+    //            )
+    // )
+
+
+    private Set  set;
+    //{1..1}
+
+    private RpmInfoBehaviors  behaviors;
+    //{0..1}
+
+    private EntityObjectStringType  name;
+    //{1..1}
+
+    private final Collection<Filter>  filter = new ArrayList<Filter>();
+    //{0..*}
+
+
+
+    
     /**
      * Constructor.
      */
@@ -72,6 +104,54 @@ public class RpmInfoObject
 
     /**
      */
+    public void setSet(
+                    final Set set
+                    )
+    {
+        this.set = set;
+    }
+
+
+    public Set getSet()
+    {
+        return this.set;
+    }
+
+
+
+    /**
+     */
+    public void setBehaviors(
+                    final RpmInfoBehaviors behaviors
+                    )
+    {
+        this.behaviors = behaviors;
+    }
+
+
+    public RpmInfoBehaviors getBehaviors()
+    {
+        return this.behaviors;
+    }
+
+
+
+    /**
+     */
+    public void setName(
+                    final EntityObjectStringType name
+                    )
+    {
+        this.name = name;
+    }
+
+
+    public EntityObjectStringType getName()
+    {
+        return this.name;
+    }
+
+
     public RpmInfoObject name(
                     final EntityObjectStringType name
                     )
@@ -86,6 +166,46 @@ public class RpmInfoObject
                     )
     {
         return name( new EntityObjectStringType( name ) );
+    }
+
+
+
+    /**
+     */
+    public void setFilter(
+                    final Collection<? extends Filter> filters
+                    )
+    {
+        if (this.filter != filters) {
+            this.filter.clear();
+            if (filters != null  &&  filters.size() > 0) {
+                this.filter.addAll( filters );
+            }
+        }
+    }
+
+
+    public boolean addFilter(
+                    final Filter filter
+                    )
+    {
+        if (filter == null) {
+            return false;
+        }
+
+        return this.filter.add( filter );
+    }
+
+
+    public Collection<Filter> getFilter()
+    {
+        return this.filter;
+    }
+
+
+    public Iterator<Filter> iterateFilter()
+    {
+        return this.filter.iterator();
     }
 
 
@@ -120,9 +240,12 @@ public class RpmInfoObject
     public String toString()
     {
         return "rpminfo_object[" + super.toString()
-                        + ", name=" + getName()
+                        + ", set="      + getSet()
+                        + ", behaviors="    + getBehaviors()
+                        + ", name="     + getName()
+                        + ", filter="   + getFilter()
                         + "]";
     }
 
 }
-// RpmInfoObject
+//RpmInfoObject
