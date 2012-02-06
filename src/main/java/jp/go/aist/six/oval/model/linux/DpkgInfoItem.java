@@ -154,8 +154,16 @@ public class DpkgInfoItem
                     final EntityItemEVRStringType evr
                     )
     {
-        super( id, status, arch, name, version, release, epoch, evr );
+        super( id, status );
+//        super( id, status, arch, name, version, release, epoch, evr );
 
+        setName( name );
+        setArch( arch);
+        setEpoch( epoch);
+        setRelease( release);
+        setVersion( version);
+        setEvr( evr );
+        
         _oval_platform_type = OvalPlatformType.linux;
         _oval_component_type = OvalComponentType.dpkginfo;
     }
