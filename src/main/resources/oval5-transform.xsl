@@ -22,17 +22,17 @@
 -->
 
 
-<!-- *********************************************************** -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- output                                                      -->
-<!-- *********************************************************** -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 <xsl:output method="xml" indent="yes"/>
 
 
 
-<!-- *********************************************************** -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- global variables                                            -->
-<!-- *********************************************************** -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 <!-- namespaces -->
 <xsl:variable name="var_ns-def-5-unix"
@@ -46,17 +46,23 @@
     select="'http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows'"/>
 
 
-<!-- components -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- TEMPLATE                                                    -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<!-- DUPLICATED components 
+    @see OvalComponentType.java
+-->
 <!-- 
     file:       unix, windows
+    interface:  unix, windows
     process:    unix, windows
     process58:  unix, windows
 -->
 
 
-
 <!-- *********************************************************** -->
-<!-- TEMPLATE                                                    -->
+<!-- file                                                        -->
 <!-- *********************************************************** -->
 
 <!-- file (pre-unmarshalling)
@@ -91,9 +97,86 @@
 </xsl:template>
 
 
-<!-- process (pre-unmarshalling)
-<xsl:template match="oval-def-5:tests/*[local-name() = 'process_test'] | oval-def-5:objects/*[local-name() = 'process_object'] | oval-def-5:states/*[local-name() = 'process_state'] | oval-sc-5:system_data/*[local-name() = 'process_item']">
--->
+<!-- file (post-marshalling) -->
+<xsl:template match="*[local-name() = 'unix_file_test'  or  local-name() = 'unix_file_object'  or  local-name() = 'unix_file_state'  or  local-name() = 'unix_file_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-unix  or  $lvar_ns = $var_ns-sc-5-unix">
+            <xsl:call-template name="func_output-oval-5-unix-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+
+
+<!-- *********************************************************** -->
+<!-- interface                                                   -->
+<!-- *********************************************************** -->
+
+<!-- interface (pre-unmarshalling) -->
+<xsl:template match="*[local-name() = 'interface_test'  or  local-name() = 'interface_object'  or  local-name() = 'interface_state'  or  local-name() = 'interface_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-unix  or  $lvar_ns = $var_ns-sc-5-unix">
+            <xsl:call-template name="func_output-oval-5-unix-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+
+<!-- interface (post-marshalling) -->
+<xsl:template match="*[local-name() = 'unix_interface_test'  or  local-name() = 'unix_interface_object'  or  local-name() = 'unix_interface_state'  or  local-name() = 'unix_interface_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-unix  or  $lvar_ns = $var_ns-sc-5-unix">
+            <xsl:call-template name="func_output-oval-5-unix-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+
+
+<!-- *********************************************************** -->
+<!-- process                                                     -->
+<!-- *********************************************************** -->
+
+<!-- process (pre-unmarshalling) -->
 <xsl:template match="*[local-name() = 'process_test'  or  local-name() = 'process_object'  or  local-name() = 'process_state'  or  local-name() = 'process_item']">
     <xsl:variable name="lvar_element" select="local-name(.)"/>
     <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
@@ -113,13 +196,10 @@
             </xsl:copy>
         </xsl:otherwise>
     </xsl:choose>
-
 </xsl:template>
 
 
-<!-- process (post-marshalling)
-<xsl:template match="oval-def-5:tests/*[local-name() = 'process_test'] | oval-def-5:objects/*[local-name() = 'process_object'] | oval-def-5:states/*[local-name() = 'process_state'] | oval-sc-5:system_data/*[local-name() = 'process_item']">
--->
+<!-- process (post-marshalling) -->
 <xsl:template match="*[local-name() = 'unix_process_test'  or  local-name() = 'unix_process_object'  or  local-name() = 'unix_process_state'  or  local-name() = 'unix_process_item']">
     <xsl:variable name="lvar_element" select="local-name(.)"/>
     <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
@@ -139,15 +219,15 @@
             </xsl:copy>
         </xsl:otherwise>
     </xsl:choose>
-
 </xsl:template>
 
 
 
+<!-- *********************************************************** -->
+<!-- process58                                                   -->
+<!-- *********************************************************** -->
 
-<!-- process58 
-<xsl:template match="oval-def-5:tests/*[local-name() = 'process58_test'] | oval-def-5:objects/*[local-name() = 'process58_object'] | oval-def-5:states/*[local-name() = 'process58_state'] | oval-sc-5:system_data/*[local-name() = 'process58_item']">
--->
+<!-- process58 (pre-unmarshalling) -->
 <xsl:template match="*[local-name() = 'process58_test'  or  local-name() = 'process58_object'  or  local-name() = 'process58_state'  or  local-name() = 'process58_item']">
     <xsl:variable name="lvar_element" select="local-name(.)"/>
     <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
@@ -167,10 +247,36 @@
             </xsl:copy>
         </xsl:otherwise>
     </xsl:choose>
-
 </xsl:template>
 
 
+<!-- process58 (post-marshalling) -->
+<xsl:template match="*[local-name() = 'unix_process58_test'  or  local-name() = 'unix_process58_object'  or  local-name() = 'unix_process58_state'  or  local-name() = 'unix_process58_item']">
+    <xsl:variable name="lvar_element" select="local-name(.)"/>
+    <xsl:variable name="lvar_ns" select="namespace-uri(.)"/>
+
+    <xsl:choose>
+        <xsl:when test="$lvar_ns = $var_ns-def-5-unix  or  $lvar_ns = $var_ns-sc-5-unix">
+            <xsl:call-template name="func_output-oval-5-unix-component">
+                <xsl:with-param name="lvar_element" select="$lvar_element"/>
+                <xsl:with-param name="lvar_ns" select="$lvar_ns"/>
+            </xsl:call-template>
+        </xsl:when>
+        
+        <xsl:otherwise>
+            <!-- copy the element deeply, i.e. output the element as it is -->
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+
+
+<!-- *********************************************************** -->
+<!-- misc                                                        -->
+<!-- *********************************************************** -->
 
 <!-- 
 TEMPLATE:  Copy idiom.
@@ -184,9 +290,9 @@ TEMPLATE:  Copy idiom.
 
 
 
-<!-- *********************************************************** -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- NAMED TEMPLATE                                              -->
-<!-- *********************************************************** -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 <xsl:template name="func_output-oval-5-unix-component">
     <xsl:param name="lvar_element"/>

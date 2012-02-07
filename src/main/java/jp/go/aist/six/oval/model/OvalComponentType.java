@@ -33,7 +33,14 @@ package jp.go.aist.six.oval.model;
 public enum OvalComponentType
 {
 
-    // independent //
+    // DUPLICATED components:
+    //  file:               unix, windows
+    //  interface:          unix, windows   (renamed to "network_interface")
+    //  process:            unix, windows
+    //  process58:          unix, windows
+
+    
+    // #independent //
     environmentvariable,    //@deprecated
     environmentvariable58,
     family,
@@ -47,7 +54,7 @@ public enum OvalComponentType
     variable,
     xmlfilecontent,
 
-    // linux //
+    // #linux //
     dpkginfo,
     inetlisteningservers,
     partition,
@@ -57,9 +64,10 @@ public enum OvalComponentType
     selinuxsecuritycontext,
     slackwarepkginfo,
 
-    // unix //
+    // #unix //
 //  file,  //same name in the windows namespace
     inetd,
+//  network_interface,  //same component in the windows namespace
     password,
 //  process,        //same component in the windows namespace
 //  process58,      //same component in the windows namespace
@@ -68,7 +76,7 @@ public enum OvalComponentType
     uname,
     xinetd,
 
-    // windows //
+    // #windows //
     accesstoken,
     activedirectory,
     auditeventpolicy,
@@ -106,7 +114,7 @@ public enum OvalComponentType
     wmi57,
     wuaupdatesearcher,
 
-    // variable //
+    // #variable //
     constant,
     local,
     external;
