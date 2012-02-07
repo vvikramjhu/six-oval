@@ -523,7 +523,7 @@
 
     <class name="jp.go.aist.six.oval.model.unix.NetworkInterfaceTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
-        <map-to xml="interface_test"
+        <map-to xml="unix_interface_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
             ns-prefix=""/>
 
@@ -544,7 +544,7 @@
 
     <class name="jp.go.aist.six.oval.model.unix.NetworkInterfaceObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
-        <map-to xml="interface_object"
+        <map-to xml="unix_interface_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
             ns-prefix=""/>
 
@@ -570,7 +570,7 @@
 
     <class name="jp.go.aist.six.oval.model.unix.NetworkInterfaceState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
-        <map-to xml="interface_state"
+        <map-to xml="unix_interface_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
             ns-prefix=""/>
 
@@ -614,7 +614,7 @@
 
     <class name ="jp.go.aist.six.oval.model.unix.NetworkInterfaceItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
-        <map-to xml="interface_item"
+        <map-to xml="unix_interface_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"
             ns-prefix=""/>
 
