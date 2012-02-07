@@ -250,10 +250,9 @@
     </class>
 
 
-<!--
     <class name ="jp.go.aist.six.oval.model.unix.FileItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
-        <map-to xml="file_item"
+        <map-to xml="unix_file_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"
             ns-prefix=""/>
 
@@ -372,8 +371,6 @@
             <bind-xml name="has_extended_acl" node="element"/>
         </field>
     </class>
--->
-
 
 
 
@@ -814,7 +811,7 @@
 
     <class name="jp.go.aist.six.oval.model.unix.Process58Test"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
-        <map-to xml="process58_test"
+        <map-to xml="unix_process58_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
             ns-prefix=""/>
 
@@ -835,7 +832,7 @@
 
     <class name="jp.go.aist.six.oval.model.unix.Process58Object"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
-        <map-to xml="process58_object"
+        <map-to xml="unix_process58_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
             ns-prefix=""/>
 
@@ -866,7 +863,7 @@
 
     <class name="jp.go.aist.six.oval.model.unix.Process58State"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
-        <map-to xml="process58_state"
+        <map-to xml="unix_process58_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
             ns-prefix=""/>
 
@@ -950,7 +947,7 @@
 
     <class name ="jp.go.aist.six.oval.model.unix.Process58Item"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
-        <map-to xml="process58_item"
+        <map-to xml="unix_process58_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"
             ns-prefix=""/>
 
@@ -1034,7 +1031,7 @@
 
     <class name="jp.go.aist.six.oval.model.unix.ProcessTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
-        <map-to xml="process_test"
+        <map-to xml="unix_process_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
             ns-prefix=""/>
 
@@ -1055,7 +1052,7 @@
 
     <class name="jp.go.aist.six.oval.model.unix.ProcessObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
-        <map-to xml="process_object"
+        <map-to xml="unix_process_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
             ns-prefix=""/>
 
@@ -1075,7 +1072,7 @@
 
     <class name="jp.go.aist.six.oval.model.unix.ProcessState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
-        <map-to xml="process_state"
+        <map-to xml="unix_process_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
             ns-prefix=""/>
 
@@ -1134,7 +1131,7 @@
 
     <class name ="jp.go.aist.six.oval.model.unix.ProcessItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
-        <map-to xml="process_item"
+        <map-to xml="unix_process_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"
             ns-prefix=""/>
 

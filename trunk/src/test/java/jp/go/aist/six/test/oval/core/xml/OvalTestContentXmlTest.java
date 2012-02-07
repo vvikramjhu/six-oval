@@ -70,12 +70,23 @@ public class OvalTestContentXmlTest
                         //directory that contains OVAL definitions XML files
                         //target OVAL Definitions file. If it is null, all the XML files are targets.
 
-//                        //linux
+                        //linux
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "test/resources/OvalTestContent/5.10/linux",
+//                            "unix-def_process_test.xml"
+//                        }
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
                             "test/resources/OvalTestContent/5.10/linux",
                             null
                         }
+//                        ,
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            ".",
+//                            "transformed_unix-def_process_test.xml"
+//                        }
 //                        ,
 //                        //windows
 //                        {
