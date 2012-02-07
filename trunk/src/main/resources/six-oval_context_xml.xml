@@ -82,9 +82,13 @@
 
     <bean id="ovalTransformer" 
         class="jp.go.aist.six.util.xml.XmlTransformer"> 
+        <constructor-arg type="java.net.URL" value="classpath:oval5-transform.xsl"/>
+<!-- The following constructor-based DI does NOT work, 
+     because there is the constructor with a String argument: XmlTransformer( String stylesheet ) .
         <constructor-arg>
             <value>classpath:oval5-transform.xsl</value>
         </constructor-arg>
+-->
     </bean>
 
 
