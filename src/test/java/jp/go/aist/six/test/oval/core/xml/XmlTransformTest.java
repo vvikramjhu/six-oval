@@ -18,7 +18,8 @@ public class XmlTransformTest
 {
 
     private static final String  _XSLT_STYLESHEET_ =
-        "/oval5.xsl";
+        "/oval5-transform.xsl";
+//    "/oval5.xsl";
 
 
 
@@ -38,11 +39,34 @@ public class XmlTransformTest
     public Object[][] provideOvalResultsXml()
     {
         return new Object[][] {
-                        // OVAL5.9, def:12313-5, vulnerability, Windows
-                        // file, family, registry
                         {
-                            "test/resources/data/oval5/oval5.9_def12313-5_v_windows_CVE-2011-0031.xml",
-                            "transformed_oval5.9_def12313-5_v_windows_CVE-2011-0031.xml"
+                            "test/resources/OvalTestContent/5.10/linux/unix-def_file_test.xml",
+                            "transformed_unix-def_file_test.xml"
+                        }
+                        ,
+                        {
+                            "test/resources/OvalTestContent/5.10/linux/unix-def_process_test.xml",
+                            "transformed_unix-def_process_test.xml"
+                        }
+                        ,
+                        {
+                            "test/resources/OvalTestContent/5.10/linux/unix-def_process58_test.xml",
+                            "transformed_unix-def_process58_test.xml"
+                        }
+                        ,
+                        {
+                            "test/resources/OvalTestContent/5.10/windows/win-def_file_test.xml",
+                            "transformed_win-def_file_test.xml"
+                        }
+                        ,
+                        {
+                            "test/resources/OvalTestContent/5.10/windows/win-def_process_test.xml",
+                            "transformed_win-def_process_test.xml"
+                        }
+                        ,
+                        {
+                            "test/resources/OvalTestContent/5.10/windows/win-def_process58_test.xml",
+                            "transformed_win-def_process58_test.xml"
                         }
         };
     }
