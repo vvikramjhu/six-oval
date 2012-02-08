@@ -48,61 +48,6 @@ public class Options
 
 
 
-    /**
-     * A factory method.
-     */
-    public static Options fromCommandLine(
-                    final List<String> strings
-                    )
-    throws OvalInterpreterException
-    {
-        Options  options = new Options();
-        if (strings == null  ||  strings.size() == 0) {
-            return options;
-        }
-
-        Map<String, Option>  map = new HashMap<String, Option>();
-        for (Option  option : Option.values()) {
-            map.put( option.command, option );
-        }
-
-        int  num_strings = strings.size();
-        for (int  i = 0; i < num_strings; i++) {
-            String  string = strings.get( i );
-            Option  option = map.get( string );
-
-            if (option == null) {
-                if (string.startsWith( "-" )) {
-                    throw new OvalInterpreterException(
-                                    "unknown command option: " + string );
-                }
-
-                // MD5Hash
-                options.set( Option.MD5_HASH, string );
-
-            } else {
-                if (option.hasArgument) {
-                    if ((i + 1) < num_strings) {
-                        String  arg_value = strings.get( i + 1 );
-                        i++;
-                        options.set( option, arg_value );
-                    } else {
-                        throw new OvalInterpreterException(
-                                        "invalid command line: "
-                                        + String.valueOf( strings )
-                                        + ", error around: " + string );
-                    }
-                } else {
-                    // no-argument option
-                    options.set( option );
-                }
-            }
-        }
-
-        return options;
-    }
-
-
 
     /**
      * NOTE: This "field" is NOT "final"
@@ -139,30 +84,47 @@ public class Options
     public List<String> toCommandLine()
     throws OvalInterpreterException
     {
-        List<String>  command = new ArrayList<String>();
+        List<String>  command_line = new ArrayList<String>();
 
-        for (Option  option : Option.values()) {
-            if (contains( option )) {
-                command.add( option.command );  //e.g. "-o"
+//        for (Option  option : Option.values()) {
+        for (Option  option : this) {
+//            if (contains( option )) {
+                command_line.add( option.command );  //e.g. "-o"
                 if (option.hasArgument) {
                     String  value = get( option );
                     if (value == null) {
                         throw new OvalInterpreterException(
-                                        "no command argument: " + option.command );
+                                        "no command argument: " + option );
                     }
-                    command.add( value );       //e.g. "def.xml"
+                    command_line.add( value );       //e.g. "def.xml"
                 }
-            }
+//            }
         }
 
-        _LOG_.debug( "command: " + String.valueOf( command ) );
-        return command;
+        _LOG_.debug( "command line: " + String.valueOf( command_line ) );
+        return command_line;
     }
 
 
 
     /**
      */
+    public Options set(
+                    final Options options
+                    )
+    {
+        if (options == null) {
+            throw new IllegalArgumentException( "no option specified" );
+        }
+
+        for (Option  option : options) {
+            set( option, options.get( option ) );
+        }
+
+        return this;
+    }
+
+
     public Options set(
                     final Map<Option, String> options
                     )

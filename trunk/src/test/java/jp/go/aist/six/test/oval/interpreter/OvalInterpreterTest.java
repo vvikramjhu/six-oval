@@ -1,8 +1,8 @@
 package jp.go.aist.six.test.oval.interpreter;
 
-import jp.go.aist.six.oval.interpreter.Option;
+import jp.go.aist.six.oval.core.interpreter.OvaldiOption;
+import jp.go.aist.six.oval.core.interpreter.OvaldiProxy;
 import jp.go.aist.six.oval.interpreter.Options;
-import jp.go.aist.six.oval.interpreter.OvaldiProxy;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
 
@@ -23,9 +23,9 @@ public class OvalInterpreterTest
     {
         //minimum options
         Options  options1 = new Options();
-        options1.set( Option.NO_VERIFY )
-                .set( Option.OVAL_XML_DIR, "C:\\app\\ovaldi-5.10.1.1-x64\\xml" )
-                .set( Option.OVAL_DEFINITIONS,
+        options1.set( OvaldiOption.NO_VERIFY )
+//                .set( OvaldiOption.OVAL_XML_DIR, "C:\\app\\ovaldi-5.10.1.1-x64\\xml" )
+                .set( OvaldiOption.OVAL_DEFINITIONS,
                                 "test/resources/OvalTestContent/5.10/windows/ind-def_family_test.xml" );
 
         return new Object[][] {

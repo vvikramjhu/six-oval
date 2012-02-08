@@ -18,52 +18,52 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.interpreter;
+package jp.go.aist.six.oval.core.interpreter;
 
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
+import jp.go.aist.six.oval.interpreter.Option;
 
 
 
 
 /**
- * The OVAL Interpreter command line options.
+ * The ovaldi command line options.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class Option
-    implements Serializable
+public class OvaldiOption
+    extends Option
 {
 
     //==============================================================
     // input resources
     //==============================================================
 
-    public static final Option OVAL_DEFINITIONS = new Option(
+    public static final OvaldiOption OVAL_DEFINITIONS = new OvaldiOption(
+                    "path to the oval definitions XML file",
                     "-o", true, "filename", "definitions.xml",
-                    "application/xml",
-                    "path to the oval definitions XML file"
+                    "application/xml"
     );
 
-    public static final Option EVALUATE_DEFINITIONS = new Option(
-                    "-e", true, "definition IDs", null,
-                    "text/plain",
+    public static final OvaldiOption EVALUATE_DEFINITIONS = new OvaldiOption(
                     "evaluate the specified list of definitions \n" +
-                    "(supply definition IDs as a comma seperated list)"
+                    "(supply definition IDs as a comma seperated list)",
+                    "-e", true, "definition IDs", null,
+                    "text/plain"
     );
 
-    public static final Option OVAL_XML_DIR = new Option(
+    public static final OvaldiOption OVAL_XML_DIR = new OvaldiOption(
+                    "path to the directory that contains the OVAL schema and other xml resources",
                     "-a", true, "dir name", null,
-                    null,
-                    "path to the directory that contains the OVAL schema and other xml resources"
+                    null
     );
 
-    public static final Option MD5_HASH = new Option(
+    public static final OvaldiOption MD5_HASH = new OvaldiOption(
+                    "MD5 checksum expected for the current OVAL Definitions document",
                     null, true, "MD5Hash", null,
-                    null,
-                    "MD5 checksum expected for the current OVAL Definitions document"
+                    null
     );
 
 
@@ -71,10 +71,10 @@ public class Option
     // input resources
     //==============================================================
 
-    public static final Option OVAL_RESULTS = new Option(
+    public static final OvaldiOption OVAL_RESULTS = new OvaldiOption(
+                    "save oval-results to the specified XML file",
                     "-r", true, "filename", "results.xml",
-                    "application/xml",
-                    "save oval-results to the specified XML file"
+                    "application/xml"
     );
 
 
@@ -82,22 +82,22 @@ public class Option
     // control
     //==============================================================
 
-    public static final Option NO_VERIFY = new Option(
+    public static final OvaldiOption NO_VERIFY = new OvaldiOption(
+                    "do not verify the oval-definitions file with an MD5 hash",
                     "-m", false, null, null,
-                    null,
-                    "do not verify the oval-definitions file with an MD5 hash"
+                    null
     );
 
-    public static final Option LOG_LEVEL = new Option(
-                    "-l", true, "integer", "2",
-                    null,
+    public static final OvaldiOption LOG_LEVEL = new OvaldiOption(
                     "log messages at the specified level \n"
-                    + "(DEBUG = 1, INFO = 2, MESSAGE = 3, FATAL = 4)"
+                    + "(DEBUG = 1, INFO = 2, MESSAGE = 3, FATAL = 4)",
+                    "-l", true, "integer", "2",
+                    null
     );
 
 
 
-    private static final Option[]  _DEFINED_VALUES_ = new Option[] {
+    private static final Option[]  _DEFINED_VALUES_ = new OvaldiOption[] {
         OVAL_DEFINITIONS,
         EVALUATE_DEFINITIONS,
         OVAL_RESULTS,
@@ -113,33 +113,20 @@ public class Option
 
 
 
-    public final String  command;
-    public final boolean  hasArgument;
-    public final String  argumentName;
-    public final String  defaultArgument;
-    public final String  contentType;
-    public final String  description;
-
-
 
     /**
      * Constructor.
      */
-    protected Option(
-                    final String name,
+    protected OvaldiOption(
+                    final String  description,
+                    final String  command,
                     final boolean hasArgument,
-                    final String argumentName,
-                    final String defaultArgument,
-                    final String contentType,
-                    final String description
+                    final String  argumentName,
+                    final String  defaultArgument,
+                    final String  contentType
                     )
     {
-        this.command = name;
-        this.hasArgument = hasArgument;
-        this.argumentName = argumentName;
-        this.defaultArgument = defaultArgument;
-        this.contentType = contentType;
-        this.description = description;
+        super( description, command, hasArgument, argumentName, defaultArgument, contentType );
     }
 
 
@@ -158,18 +145,6 @@ public class Option
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public String toString()
-    {
-        return "Option["
-                + (command != null ? command : "")
-                + (hasArgument ? (" " + argumentName) : "")
-//                + " = " + description
-//                + " (default: " + defaultArgument
-                + (contentType != null ? ("(" + contentType + ")") : "")
-                + "]";
-    }
-
 }
-// Option
+//OvaldiOption
 

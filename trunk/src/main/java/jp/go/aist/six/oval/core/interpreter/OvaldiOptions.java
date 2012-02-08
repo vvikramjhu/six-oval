@@ -18,33 +18,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.interpreter;
+package jp.go.aist.six.oval.core.interpreter;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import jp.go.aist.six.oval.interpreter.Option;
+import jp.go.aist.six.oval.interpreter.Options;
+import jp.go.aist.six.oval.interpreter.OvalInterpreterException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
 
 /**
- * A collection of OVAL Interpreter options.
+ * A collection of ovaldi options.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class Options
-    implements Iterable<Option>, Cloneable, Serializable
+public class OvaldiOptions
+    extends Options
 {
 
     /**
      * Logger.
      */
-    private static final Logger  _LOG_ = LoggerFactory.getLogger( Options.class );
+    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvaldiOptions.class );
 
 
 
@@ -56,13 +57,13 @@ public class Options
                     )
     throws OvalInterpreterException
     {
-        Options  options = new Options();
+        Options  options = new OvaldiOptions();
         if (strings == null  ||  strings.size() == 0) {
             return options;
         }
 
         Map<String, Option>  map = new HashMap<String, Option>();
-        for (Option  option : Option.values()) {
+        for (Option  option : OvaldiOption.values()) {
             map.put( option.command, option );
         }
 
@@ -78,7 +79,7 @@ public class Options
                 }
 
                 // MD5Hash
-                options.set( Option.MD5_HASH, string );
+                options.set( OvaldiOption.MD5_HASH, string );
 
             } else {
                 if (option.hasArgument) {
@@ -104,335 +105,30 @@ public class Options
 
 
 
-    /**
-     * NOTE: This "field" is NOT "final"
-     * because it has to be created whenever this object is cloned.
-     * Since this "class" is NOT "final", and {@link #clone()} method
-     * must return the same class as this object,
-     * the copy constructor {@link #Options(Map)} can't be used.
-     *
-     * @see #clone()
-     */
-    private Map<Option, String>  _options = new HashMap<Option, String>();
-
-
-
-    /**
-     * Constructor.
-     */
-    public Options()
-    {
-    }
-
-
-    public Options(
-                    final Map<Option, String> options
-                    )
-    {
-        set( options );
-    }
-
-
-
-    /**
-     */
+    @Override
     public List<String> toCommandLine()
     throws OvalInterpreterException
     {
-        List<String>  command = new ArrayList<String>();
+        List<String>  command_line = new ArrayList<String>();
 
-        for (Option  option : Option.values()) {
+        for (Option  option : OvaldiOption.values()) {
             if (contains( option )) {
-                command.add( option.command );  //e.g. "-o"
+                command_line.add( option.command );  //e.g. "-o"
                 if (option.hasArgument) {
                     String  value = get( option );
                     if (value == null) {
                         throw new OvalInterpreterException(
-                                        "no command argument: " + option.command );
+                                        "no command argument: " + option );
                     }
-                    command.add( value );       //e.g. "def.xml"
+                    command_line.add( value );       //e.g. "def.xml"
                 }
             }
         }
 
-        _LOG_.debug( "command: " + String.valueOf( command ) );
-        return command;
-    }
-
-
-
-    /**
-     */
-    public Options set(
-                    final Map<Option, String> options
-                    )
-    {
-        if (options == null) {
-            throw new IllegalArgumentException( "no option specified" );
-        }
-
-        for (Option  option : options.keySet()) {
-            set( option, options.get( option ) );
-        }
-
-        return this;
-    }
-
-
-    public Options set(
-                    final Option option
-                    )
-    {
-        set( option, null );
-        return this;
-    }
-
-
-    public Options set(
-                    final Option option,
-                    final String value
-                    )
-    {
-        if (option == null) {
-            throw new IllegalArgumentException( "no option specified" );
-        }
-
-        if (option.hasArgument) {
-            if (value == null  ||  value.length() == 0) {
-                throw new IllegalArgumentException(
-                                "no option argument specified: " + option.command );
-            }
-        }
-
-        _options.put( option, value );
-        return this;
-    }
-
-
-    public Options remove(
-                    final Option option
-                    )
-    {
-        if (option == null) {
-            throw new IllegalArgumentException( "no option specified" );
-        }
-
-        _options.remove( option );
-        return this;
-    }
-
-
-    public Options clear()
-    {
-        _options.clear();
-        return this;
-    }
-
-
-    public String get(
-                    final Option option
-                    )
-    {
-        if (option == null) {
-            throw new IllegalArgumentException( "no option specified" );
-        }
-
-        return _options.get( option );
-    }
-
-
-    public boolean contains(
-                    final Option option
-                    )
-    {
-        if (option == null) {
-            throw new IllegalArgumentException( "no option specified" );
-        }
-
-        return _options.containsKey( option );
-    }
-
-
-    @Override
-    public Iterator<Option> iterator()
-    {
-        return _options.keySet().iterator();
-    }
-
-
-
-//    //==============================================================
-//    //  individual options
-//    //==============================================================
-//
-//    /**
-//     * -o
-//     */
-//    public void setOvalDefinitions(
-//                    final String filepath
-//                    )
-//    {
-//        set( Option.OVAL_DEFINITIONS, filepath );
-//    }
-//
-//
-//    public String getOvalDefinitions()
-//    {
-//        return get( Option.OVAL_DEFINITIONS );
-//    }
-//
-//
-//
-//    /**
-//     * -e
-//     */
-//    public void setEvaluateDefinitions(
-//                    final List<String> defIDs
-//                    )
-//    {
-//        if (defIDs == null  ||  defIDs.size() == 0) {
-//            remove( Option.EVALUATE_DEFINITIONS );
-//        } else {
-//            StringBuilder  s = new StringBuilder();
-//            for (String  defID : defIDs) {
-//                if (s.length() > 0) {
-//                    s.append( "," );
-//                }
-//                s.append( defID );
-//            }
-//
-//            setEvaluateDefinitions( s.toString() );
-//        }
-//    }
-//
-//
-//    public void setEvaluateDefinitions(
-//                    final String defIDs
-//                    )
-//    {
-//        if (defIDs == null  ||  defIDs.length() == 0) {
-//            remove( Option.EVALUATE_DEFINITIONS );
-//        } else {
-//            set( Option.EVALUATE_DEFINITIONS, defIDs );
-//        }
-//    }
-//
-//
-//    public String getEvaluateDefinitions()
-//    {
-//        return get( Option.EVALUATE_DEFINITIONS );
-//    }
-//
-//
-//
-//    /**
-//     * -r
-//     */
-//    public void setOvalResults(
-//                    final String filepath
-//                    )
-//    {
-//        set( Option.OVAL_RESULTS, filepath );
-//    }
-//
-//
-//    public String getOvalResults()
-//    {
-//        return get( Option.OVAL_RESULTS );
-//    }
-//
-//
-//
-//    /**
-//     * -a
-//     */
-//    public void setOvalXmlDir(
-//                    final String dirpath
-//                    )
-//    {
-//        set( Option.OVAL_XML_DIR, dirpath );
-//    }
-//
-//
-//    public String getOvalXmlDir()
-//    {
-//        return get( Option.OVAL_XML_DIR );
-//    }
-//
-//
-//
-//    /**
-//     * -m
-//     */
-//    public void setNoVerify(
-//                    final boolean noVerify
-//                    )
-//    {
-//        if (noVerify) {
-//            set( Option.NO_VERIFY );
-//        } else {
-//            remove( Option.NO_VERIFY );
-//        }
-//    }
-//
-//
-//    public boolean isNoVerify()
-//    {
-//        return contains( Option.NO_VERIFY );
-//    }
-//
-//
-//
-//    /**
-//     * MD5Hash
-//     */
-//    public void setMD5Hash(
-//                    final String hash
-//                    )
-//    {
-//        set( Option.MD5_HASH, hash );
-//    }
-//
-//
-//    public String getMD5Hash()
-//    {
-//        return get( Option.MD5_HASH );
-//    }
-
-
-
-    //**************************************************************
-    //  java.lang.Cloneable
-    //**************************************************************
-
-    @Override
-    public Options clone()
-    throws CloneNotSupportedException
-    {
-        Options  clone = null;
-        try {
-            clone = (Options)super.clone();
-            clone._options = new HashMap<Option, String>( _options );
-            //Copy all the mapping to a new Map object.
-        } catch (CloneNotSupportedException ex) {
-            throw new AssertionError();
-        }
-
-        return clone;
-    }
-
-
-
-    //**************************************************************
-    //  java.lang.Object
-    //**************************************************************
-
-    @Override
-    public String toString()
-    {
-        return "Options" + String.valueOf( _options );
+        _LOG_.debug( "command line: " + String.valueOf( command_line ) );
+        return command_line;
     }
 
 }
-// Options
+//OvaldiOptions
 
