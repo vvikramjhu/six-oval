@@ -34,7 +34,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * An OVAL Interpreter wrapper.
- * We assume the reference implementation: ovaldi.
+ * We assume the Mitre's reference implementation: ovaldi.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -60,14 +60,14 @@ public class OvaldiProxy
         }
 
         List<String>  strings = Arrays.asList( args );
-        strings.remove( 0 );
+        String  executable = strings.remove( 0 );
         Options  options = Options.fromCommandLine( strings );
 
-        OvaldiProxy  ovaldi = new OvaldiProxy();
-        ovaldi.setExecutable( args[0] );
+        final OvaldiProxy  ovaldi = new OvaldiProxy();
+        ovaldi.setExecutable( executable );
         ovaldi.setOptions( options );
 
-        int  exit_value = ovaldi.execute();
+        final int  exit_value = ovaldi.execute();
         System.exit( exit_value );
     }
 
@@ -160,13 +160,13 @@ public class OvaldiProxy
     {
         _LOG_.debug( "current options: " + getOptions() );
 
-        ProcessBuilder  builder = _createProcessBuilder();
+        final ProcessBuilder  builder = _createProcessBuilder();
         Process  process = null;
         int  exitValue = 0;
         try {
             process = builder.start();
                            //throws IOException, SecurityException
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
             throw new OvalInterpreterException( ex );
         }
 
@@ -189,12 +189,12 @@ public class OvaldiProxy
                     )
     throws OvalInterpreterException
     {
-        String  lineSeparator = System.getProperty( "line.separator" );
-        BufferedReader  reader = new BufferedReader(
+        final String  lineSeparator = System.getProperty( "line.separator" );
+        final BufferedReader  reader = new BufferedReader(
                         new InputStreamReader( process.getInputStream() ) );
 
         int  exitValue = 0;
-        StringBuilder  log = new StringBuilder();
+        final StringBuilder  log = new StringBuilder();
         try {
             String  line = null;
             while (true) {
@@ -213,13 +213,13 @@ public class OvaldiProxy
             exitValue = process.waitFor();
                                 //throws InterruptedException
 
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
            throw new OvalInterpreterException( ex );
         } finally {
             try {
                 reader.close();
                        //throws IOException
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 // ignorable.
                 _LOG_.warn( ex.getMessage() );
             }
@@ -239,8 +239,8 @@ public class OvaldiProxy
      */
     private ProcessBuilder _createProcessBuilder()
     {
-        List<String>  command = _createCommand();
-        ProcessBuilder  builder = new ProcessBuilder( command );
+        final List<String>  command = _createCommand();
+        final ProcessBuilder  builder = new ProcessBuilder( command );
 
 //        String  workingDir = getWorkingDir();
 //        if (workingDir != null) {
@@ -265,7 +265,7 @@ public class OvaldiProxy
     private List<String> _createCommand()
     throws OvalInterpreterException
     {
-        List<String>  command = new ArrayList<String>();
+        final List<String>  command = new ArrayList<String>();
 
         command.add( getExecutable() );
 
@@ -329,13 +329,14 @@ public class OvaldiProxy
     //  OvalDefinitionsInterpreter
     //**************************************************************
 
+//    public OvalDefinitionInterpreter setOptions(
     @Override
-    public OvalDefinitionInterpreter setOptions(
+    public void setOptions(
                     final Options options
                     )
     {
         _options = options;
-        return this;
+//        return this;
     }
 
 
@@ -376,5 +377,5 @@ public class OvaldiProxy
 //    }
 
 }
-// OvalInterpreter
+//OvaldiProxy
 

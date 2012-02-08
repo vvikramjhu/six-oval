@@ -21,15 +21,16 @@ public class OvalInterpreterTest
     @DataProvider( name="oval.interpreter.options" )
     public Object[][] provideOvalInterpreterOptions()
     {
+        //minimum options
         Options  options1 = new Options();
         options1.set( Option.NO_VERIFY )
-                .set( Option.OVAL_XML_DIR, "C:\\app\\ovaldi-5.9.2-x64\\xml" )
+                .set( Option.OVAL_XML_DIR, "C:\\app\\ovaldi-5.10.1.1-x64\\xml" )
                 .set( Option.OVAL_DEFINITIONS,
-                                "test/resources/data/oval5/oval5.9_def12313-5_v_windows_CVE-2011-0031.xml" );
+                                "test/resources/OvalTestContent/5.10/windows/ind-def_family_test.xml" );
 
         return new Object[][] {
                         {
-                            "C:\\app\\ovaldi-5.9.2-x64\\ovaldi.exe",
+                            "C:\\app\\ovaldi-5.10.1.1-x64\\ovaldi.exe",
                             options1
                         }
         };
@@ -45,7 +46,7 @@ public class OvalInterpreterTest
                     dataProvider="oval.interpreter.options",
                     alwaysRun=true
                     )
-    public void testOvalInterpreter(
+    public void testOvaldiProxy(
                     final String executable,
                     final Options options
                     )
@@ -68,4 +69,4 @@ public class OvalInterpreterTest
     }
 
 }
-// OvalInterpreterTest
+//OvalInterpreterTest
