@@ -1,4 +1,4 @@
-package jp.go.aist.six.test.oval.interpreter;
+package jp.go.aist.six.test.oval.core.interpreter;
 
 import jp.go.aist.six.oval.core.interpreter.NetworkingOvaldiProxy;
 import jp.go.aist.six.oval.core.interpreter.OvaldiOption;
