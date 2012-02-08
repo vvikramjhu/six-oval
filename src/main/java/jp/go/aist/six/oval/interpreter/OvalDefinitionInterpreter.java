@@ -22,10 +22,8 @@ package jp.go.aist.six.oval.interpreter;
 
 
 
-
-
 /**
- * A prescription of the OVAL Interpreter basic interface.
+ * A prescription of the OVAL Definition Interpreter basic interface.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -39,10 +37,15 @@ public interface OvalDefinitionInterpreter
     public int execute()
     throws OvalInterpreterException;
 
+    
+    
+    /**
+     */
+    public void setOptions( Options options );
+//  public OvalDefinitionInterpreter setOptions( Options options );
 
-    public OvalDefinitionInterpreter setOptions( Options options );
     public Options getOptions();
 
 }
-// OvalInterpreter
+//OvalDefinitionInterpreter
 
