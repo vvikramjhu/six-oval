@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.interpreter;
+package jp.go.aist.six.oval.core.interpreter;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -27,6 +27,11 @@ import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
+import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.interpreter.Option;
+import jp.go.aist.six.oval.interpreter.Options;
+import jp.go.aist.six.oval.interpreter.OvalDefinitionInterpreter;
+import jp.go.aist.six.oval.interpreter.OvalInterpreterException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,7 +66,7 @@ public class OvaldiProxy
 
         List<String>  strings = Arrays.asList( args );
         String  executable = strings.remove( 0 );
-        Options  options = Options.fromCommandLine( strings );
+        Options  options = OvaldiOptions.fromCommandLine( strings );
 
         final OvaldiProxy  ovaldi = new OvaldiProxy();
         ovaldi.setExecutable( executable );
@@ -84,8 +89,8 @@ public class OvaldiProxy
     private static enum Property
     {
         EXECUTABLE(   "six.oval.interpreter.executable", "ovaldi", null ),
-//        OVAL_XML_DIR( "six.oval.interpreter.xml",        null,     Option.OVAL_XML_DIR ),
-//        LOG_LEVEL(    "six.oval.interpreter.log",        "1",      Option.LOG_LEVEL ),
+        OVAL_XML_DIR( "six.oval.interpreter.xml",        null,     OvaldiOption.OVAL_XML_DIR ),
+//        LOG_LEVEL(    "six.oval.interpreter.log",        "1",      OvaldiOption.LOG_LEVEL ),
 //        WORKING_DIR(  "six.oval.interpreter.dir",        null,     null ),
 //        TMP_DIR(      "java.io.tmpdir",                  null,     null )
         ;
@@ -93,7 +98,7 @@ public class OvaldiProxy
 
         final String  name;
         final String  defaultValue;
-//        final Option  option;
+        final Option  option;
 
 
         /**
@@ -107,15 +112,11 @@ public class OvaldiProxy
         {
             this.name= name;
             this.defaultValue = defaultValue;
-//            this.option = option;
+            this.option = option;
         }
 
-
-        boolean hasProperty()
-        {
-            return (name == null ? false : true);
-        }
     }
+    //Property
 
 
 
@@ -158,8 +159,6 @@ public class OvaldiProxy
     public int execute()
     throws OvalInterpreterException
     {
-        _LOG_.debug( "current options: " + getOptions() );
-
         final ProcessBuilder  builder = _createProcessBuilder();
         Process  process = null;
         int  exitValue = 0;
@@ -171,7 +170,6 @@ public class OvaldiProxy
         }
 
         exitValue = _waitFor( process );
-        _LOG_.debug( "exit value=" + exitValue );
 
         return exitValue;
     }
@@ -227,6 +225,7 @@ public class OvaldiProxy
 
         _LOG_.debug( "==== ovaldi log ====\n" + log.toString() );
 
+        _LOG_.debug( "exit value=" + exitValue );
         return exitValue;
     }
 
@@ -269,14 +268,51 @@ public class OvaldiProxy
 
         command.add( getExecutable() );
 
-        Options  options = getOptions();
+        Options  options = _adjustDefaultOptions( getOptions() );
         if (options == null) {
             options = new Options();
         }
+        _LOG_.debug( "current options: " + options );
         command.addAll( options.toCommandLine() );
 
         _LOG_.debug( "command: " + String.valueOf( command ) );
         return command;
+    }
+
+
+
+    /**
+     *
+     */
+    private Options _adjustDefaultOptions(
+                    final Options options
+                    )
+    {
+        Options  complete_options = null;
+
+        if (options != null) {
+            try {
+                complete_options = options.clone();
+            } catch (CloneNotSupportedException ex) {
+                // never happen
+            }
+        }
+
+        if (complete_options == null) {
+            complete_options = new OvaldiOptions();
+        }
+
+        for (Property  property : Property.values()) {
+            if (property.option != null) {
+                String  value = options.get( property.option );
+                if (value == null) {
+                    value = _getConfigProperty( property );
+                    complete_options.set( property.option, value );
+                }
+            }
+        }
+
+        return complete_options;
     }
 
 
@@ -288,9 +324,9 @@ public class OvaldiProxy
                     )
     {
         String  value = _config.get( property );
-        if (value == null  &&  property.hasProperty()) {
-            value = System.getProperty( property.name );
-//            value = OvalContext.INSTANCE.getProperty( property.name );
+        if (value == null) {
+//            value = System.getProperty( property.name );
+            value = OvalContext.INSTANCE.getProperty( property.name );
         }
 
         return (value == null ? property.defaultValue : value);

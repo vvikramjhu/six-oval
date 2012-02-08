@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.interpreter;
+package jp.go.aist.six.oval.core.interpreter;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,6 +29,9 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import jp.go.aist.six.oval.interpreter.Option;
+import jp.go.aist.six.oval.interpreter.Options;
+import jp.go.aist.six.oval.interpreter.OvalInterpreterException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;
@@ -68,7 +71,7 @@ public class NetworkingOvaldiProxy
 
         List<String>  strings = Arrays.asList( args );
         strings.remove( 0 );
-        Options  options = Options.fromCommandLine( strings );
+        Options  options = OvaldiOptions.fromCommandLine( strings );
 
         NetworkingOvaldiProxy  ovaldi = new NetworkingOvaldiProxy();
         ovaldi.setExecutable( args[0] );
@@ -127,12 +130,12 @@ public class NetworkingOvaldiProxy
 
 
     private static final Option[]  _NET_RCV_OPTIONS_ = new Option[] {
-        Option.OVAL_DEFINITIONS
+        OvaldiOption.OVAL_DEFINITIONS
     };
 
 
     private static final Option[]  _NET_SND_OPTIONS_ = new Option[] {
-        Option.OVAL_RESULTS
+        OvaldiOption.OVAL_RESULTS
     };
 
 
