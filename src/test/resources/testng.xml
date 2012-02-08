@@ -19,14 +19,14 @@
 
     <test name="oval.interpreter" enabled="true">
         <classes>
-            <class name="jp.go.aist.six.test.oval.interpreter.OvalInterpreterTest"/>
+            <class name="jp.go.aist.six.test.oval.core.interpreter.OvalInterpreterTest"/>
         </classes>
     </test>
 
 
     <test name="oval.interpreter.networking" enabled="false">
         <classes>
-            <class name="jp.go.aist.six.test.oval.interpreter.NetOvalInterpreterTest"/>
+            <class name="jp.go.aist.six.test.oval.core.interpreter.NetOvalInterpreterTest"/>
         </classes>
     </test>
 
