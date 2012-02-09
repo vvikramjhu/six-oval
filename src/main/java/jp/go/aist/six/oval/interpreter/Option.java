@@ -26,7 +26,7 @@ import java.io.Serializable;
 
 
 /**
- * The OVAL Interpreter command line options.
+ * The OVAL Definition Interpreter option.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -34,82 +34,6 @@ import java.io.Serializable;
 public class Option
     implements Serializable
 {
-
-//    //==============================================================
-//    // input resources
-//    //==============================================================
-//
-//    public static final Option OVAL_DEFINITIONS = new Option(
-//                    "-o", true, "filename", "definitions.xml",
-//                    "application/xml",
-//                    "path to the oval definitions XML file"
-//    );
-//
-//    public static final Option EVALUATE_DEFINITIONS = new Option(
-//                    "-e", true, "definition IDs", null,
-//                    "text/plain",
-//                    "evaluate the specified list of definitions \n" +
-//                    "(supply definition IDs as a comma seperated list)"
-//    );
-//
-//    public static final Option OVAL_XML_DIR = new Option(
-//                    "-a", true, "dir name", null,
-//                    null,
-//                    "path to the directory that contains the OVAL schema and other xml resources"
-//    );
-//
-//    public static final Option MD5_HASH = new Option(
-//                    null, true, "MD5Hash", null,
-//                    null,
-//                    "MD5 checksum expected for the current OVAL Definitions document"
-//    );
-//
-//
-//    //==============================================================
-//    // input resources
-//    //==============================================================
-//
-//    public static final Option OVAL_RESULTS = new Option(
-//                    "-r", true, "filename", "results.xml",
-//                    "application/xml",
-//                    "save oval-results to the specified XML file"
-//    );
-//
-//
-//    //==============================================================
-//    // control
-//    //==============================================================
-//
-//    public static final Option NO_VERIFY = new Option(
-//                    "-m", false, null, null,
-//                    null,
-//                    "do not verify the oval-definitions file with an MD5 hash"
-//    );
-//
-//    public static final Option LOG_LEVEL = new Option(
-//                    "-l", true, "integer", "2",
-//                    null,
-//                    "log messages at the specified level \n"
-//                    + "(DEBUG = 1, INFO = 2, MESSAGE = 3, FATAL = 4)"
-//    );
-//
-//
-//
-//    private static final Option[]  _DEFINED_VALUES_ = new Option[] {
-//        OVAL_DEFINITIONS,
-//        EVALUATE_DEFINITIONS,
-//        OVAL_RESULTS,
-//        NO_VERIFY,
-//        OVAL_XML_DIR,
-//        MD5_HASH,
-//        LOG_LEVEL
-//    };
-//
-//
-//    private static final Collection<Option>  _VALUES_ = Arrays.asList( _DEFINED_VALUES_ );
-////        new ArrayList<Option>();
-
-
 
     public final String   description;
     public final String   command;
@@ -123,7 +47,7 @@ public class Option
     /**
      * Constructor.
      */
-    protected Option(
+    public Option(
                     final String  description,
                     final String  command,
                     final boolean hasArgument,

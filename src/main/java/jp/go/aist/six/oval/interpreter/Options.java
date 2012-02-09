@@ -32,7 +32,7 @@ import org.slf4j.LoggerFactory;
 
 
 /**
- * A collection of OVAL Interpreter options.
+ * A collection of OVAL Definitions Interpreter options.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

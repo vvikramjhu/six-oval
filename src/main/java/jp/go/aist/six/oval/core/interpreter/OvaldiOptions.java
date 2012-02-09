@@ -105,6 +105,10 @@ public class OvaldiOptions
 
 
 
+    //**************************************************************
+    //  Options
+    //**************************************************************
+
     @Override
     public List<String> toCommandLine()
     throws OvalInterpreterException

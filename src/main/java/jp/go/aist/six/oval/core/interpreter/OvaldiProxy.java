@@ -38,11 +38,12 @@ import org.slf4j.LoggerFactory;
 
 
 /**
- * An OVAL Interpreter wrapper.
+ * An ovaldi wrapper.
  * We assume the Mitre's reference implementation: ovaldi.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/interpreter.html">OVAL Interpreter</a>
  */
 public class OvaldiProxy
     implements OvalDefinitionInterpreter
