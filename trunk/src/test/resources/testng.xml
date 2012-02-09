@@ -20,18 +20,12 @@
     <test name="oval.interpreter" enabled="true">
         <groups>
             <run>
+                <include name="oval.interpreter"/>
                 <include name="oval.interpreter.networking"/>
             </run>
         </groups>
         <classes>
             <class name="jp.go.aist.six.test.oval.core.interpreter.OvalInterpreterTest"/>
-        </classes>
-    </test>
-
-
-    <test name="oval.interpreter.networking" enabled="false">
-        <classes>
-            <class name="jp.go.aist.six.test.oval.core.interpreter.NetOvalInterpreterTest"/>
         </classes>
     </test>
 
