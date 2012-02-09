@@ -33,7 +33,7 @@ import org.slf4j.LoggerFactory;
 
 
 /**
- * A collection of ovaldi options.
+ * A collection of the ovaldi options.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

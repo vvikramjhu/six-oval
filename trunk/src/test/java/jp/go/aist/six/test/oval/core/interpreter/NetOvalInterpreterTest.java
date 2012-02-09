@@ -15,6 +15,7 @@ import org.testng.annotations.DataProvider;
  * @version $Id$
  */
 public class NetOvalInterpreterTest
+    extends OvalInterpreterTest
 {
 
 
@@ -60,7 +61,7 @@ public class NetOvalInterpreterTest
                     dataProvider="oval.interpreter.options",
                     alwaysRun=true
                     )
-    public void testNetOvalInterpreter(
+    public void testNetworkingOvaldiProxy(
                     final String executable,
                     final Options options
                     )
@@ -69,18 +70,14 @@ public class NetOvalInterpreterTest
         Reporter.log( "\n//////////////////////////////////////////////////////////",
                         true );
 
-        Reporter.log( "* executable: " + executable, true );
-        Reporter.log( "* options: " + options, true );
-
         NetworkingOvaldiProxy  ovaldi = new NetworkingOvaldiProxy();
+        Reporter.log( "* executable: " + executable, true );
         if (executable != null) {
             ovaldi.setExecutable( executable );
         }
-        ovaldi.setOptions( options );
 
-        int  exitValue = ovaldi.execute();
-        Reporter.log( "@ exit value: " + exitValue, true );
+        _executeOvalInterpreter( ovaldi, options );
     }
 
 }
-// NetOvalInterpreterTest
+//NetworkingOvalInterpreterTest
