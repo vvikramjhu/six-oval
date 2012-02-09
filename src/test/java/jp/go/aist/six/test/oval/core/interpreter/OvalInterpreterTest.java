@@ -166,6 +166,7 @@ public class OvalInterpreterTest
     @org.testng.annotations.Test(
                     groups={ "oval.interpreter.networking" },
                     dataProvider="oval.interpreter.options.networking",
+                    dependsOnGroups={ "oval.interpreter" },
                     alwaysRun=true
                     )
     public void testNetworkingOvaldiProxy(
