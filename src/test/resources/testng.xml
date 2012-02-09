@@ -17,7 +17,7 @@
     <!-- *  interpreter                                        * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.interpreter" enabled="true">
+    <test name="oval.interpreter" enabled="false">
         <classes>
             <class name="jp.go.aist.six.test.oval.core.interpreter.OvalInterpreterTest"/>
         </classes>
@@ -90,7 +90,7 @@
     <!-- *  XML                                                * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.xml" enabled="false">
+    <test name="oval.core.xml" enabled="true">
         <groups>
             <run>
                 <include name="oval.test-content"/>
