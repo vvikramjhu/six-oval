@@ -28,7 +28,8 @@ import jp.go.aist.six.oval.interpreter.Option;
 
 
 /**
- * The ovaldi command line options.
+ * The ovaldi command options.
+ *
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

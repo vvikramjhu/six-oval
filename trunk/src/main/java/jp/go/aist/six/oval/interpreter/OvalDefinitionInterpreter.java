@@ -27,6 +27,7 @@ package jp.go.aist.six.oval.interpreter;
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/interpreter.html">OVAL Interpreter</a>
  */
 public interface OvalDefinitionInterpreter
 {
@@ -37,8 +38,8 @@ public interface OvalDefinitionInterpreter
     public int execute()
     throws OvalInterpreterException;
 
-    
-    
+
+
     /**
      */
     public void setOptions( Options options );

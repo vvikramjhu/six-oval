@@ -48,6 +48,7 @@ import org.springframework.web.client.RestTemplate;
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
+ * @see <a href="http://oval.mitre.org/language/interpreter.html">OVAL Interpreter</a>
  */
 public class NetworkingOvaldiProxy
     extends OvaldiProxy

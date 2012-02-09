@@ -25,7 +25,7 @@ import jp.go.aist.six.oval.OvalException;
 
 
 /**
- * An exceptional condition that occurred during the OVAL interpreter execution.
+ * An exceptional condition that occurred during the OVAL Definition Interpreter execution.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
