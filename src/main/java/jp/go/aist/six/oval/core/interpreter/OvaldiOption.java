@@ -28,7 +28,7 @@ import jp.go.aist.six.oval.interpreter.Option;
 
 
 /**
- * The ovaldi command options.
+ * The definition of the ovaldi command options.
  *
  *
  * @author  Akihito Nakamura, AIST
@@ -69,13 +69,20 @@ public class OvaldiOption
 
 
     //==============================================================
-    // input resources
+    // output resources
     //==============================================================
 
     public static final OvaldiOption OVAL_RESULTS = new OvaldiOption(
                     "save oval-results to the specified XML file",
                     "-r", true, "filename", "results.xml",
                     "application/xml"
+    );
+
+
+    public static final OvaldiOption OVAL_TRANSFORMED_RESULTS = new OvaldiOption(
+                    "output xsl transform results to the specified file",
+                    "-x", true, "filename", "results.html",
+                    "text/html"
     );
 
 
@@ -102,6 +109,7 @@ public class OvaldiOption
         OVAL_DEFINITIONS,
         EVALUATE_DEFINITIONS,
         OVAL_RESULTS,
+        OVAL_TRANSFORMED_RESULTS,
         NO_VERIFY,
         OVAL_XML_DIR,
         MD5_HASH,

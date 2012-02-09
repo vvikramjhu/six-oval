@@ -23,13 +23,13 @@ package jp.go.aist.six.oval.interpreter;
 
 
 /**
- * A prescription of the OVAL Definition Interpreter basic interface.
+ * A prescription of the OVAL Interpreter basic interface.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/interpreter.html">OVAL Interpreter</a>
  */
-public interface OvalDefinitionInterpreter
+public interface OvalInterpreter
 {
 
     /**

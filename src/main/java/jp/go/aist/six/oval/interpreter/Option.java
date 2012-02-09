@@ -26,7 +26,7 @@ import java.io.Serializable;
 
 
 /**
- * The OVAL Definition Interpreter option.
+ * The OVAL Interpreter option.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

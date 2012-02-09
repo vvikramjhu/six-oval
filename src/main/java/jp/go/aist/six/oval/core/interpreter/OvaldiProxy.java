@@ -30,7 +30,7 @@ import java.util.Map;
 import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.interpreter.Option;
 import jp.go.aist.six.oval.interpreter.Options;
-import jp.go.aist.six.oval.interpreter.OvalDefinitionInterpreter;
+import jp.go.aist.six.oval.interpreter.OvalInterpreter;
 import jp.go.aist.six.oval.interpreter.OvalInterpreterException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,14 +39,16 @@ import org.slf4j.LoggerFactory;
 
 /**
  * An ovaldi wrapper.
- * We assume the Mitre's reference implementation: ovaldi.
+ * The ovaldi is a Mitre's reference implementation which evaluates OVAL Definitions.
+ * Based on a set of OVAL Definitions the interpreter collects system information,
+ * evaluates it, and generates a detailed OVAL Results file.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/interpreter.html">OVAL Interpreter</a>
  */
 public class OvaldiProxy
-    implements OvalDefinitionInterpreter
+    implements OvalInterpreter
 {
 
     /**
@@ -273,7 +275,7 @@ public class OvaldiProxy
         if (options == null) {
             options = new Options();
         }
-        _LOG_.debug( "current options: " + options );
+        _LOG_.debug( "options: " + options );
         command.addAll( options.toCommandLine() );
 
         _LOG_.debug( "command: " + String.valueOf( command ) );

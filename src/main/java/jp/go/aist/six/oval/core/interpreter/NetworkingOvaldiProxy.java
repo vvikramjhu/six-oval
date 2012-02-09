@@ -44,7 +44,12 @@ import org.springframework.web.client.RestTemplate;
 
 
 /**
- * An OVAL Interpreter wrapper.
+ * An ovaldi wrapper that enables network transfer of OVAL data.
+ *
+ * <ul>
+ *   <li>-o filename|URL: path to the oval definitions XML file</li>
+ *   <li>-r filename|URL: save oval-results to the specified XML file</li>
+ * </ul>
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -130,12 +135,12 @@ public class NetworkingOvaldiProxy
 
 
 
-    private static final Option[]  _NET_RCV_OPTIONS_ = new Option[] {
+    private static final Option[]  _NETWORK_INPUT_OPTIONS_ = new Option[] {
         OvaldiOption.OVAL_DEFINITIONS
     };
 
 
-    private static final Option[]  _NET_SND_OPTIONS_ = new Option[] {
+    private static final Option[]  _NETWORK_OUTPUT_OPTIONS_ = new Option[] {
         OvaldiOption.OVAL_RESULTS
     };
 
@@ -152,7 +157,14 @@ public class NetworkingOvaldiProxy
      */
     public NetworkingOvaldiProxy()
     {
+    }
 
+
+    public NetworkingOvaldiProxy(
+                    final Options options
+                    )
+    {
+        super( options );
     }
 
 
@@ -162,7 +174,7 @@ public class NetworkingOvaldiProxy
      */
     private void _init()
     {
-        _workingFilePrefix = _createFilePrefix();
+        _workingFilePrefix = _createWorkingFilePrefix();
         _workingDir = _getWorkingDir();
 
         _LOG_.debug( "working file prefix: " + _workingFilePrefix );
@@ -171,15 +183,65 @@ public class NetworkingOvaldiProxy
 
 
 
-    private static SimpleDateFormat  _DATETIME_FORMATTER_ =
-        new SimpleDateFormat( "yyyyMMdd'T'HHmmss" );
+    /**
+    *
+    */
+   private void _preProcess(
+                   final Options localOptions
+                   )
+   throws OvalInterpreterException
+   {
+       _prepareInputFiles( localOptions );
+       _prepareOutputFiles( localOptions );
+   }
+
+
+
+   /**
+    */
+   private void _postProcess(
+                   final Options localizedOptions
+                   )
+   throws OvalInterpreterException
+   {
+       Options  originalOptions = getOptions();
+       for (Option  option : _NETWORK_OUTPUT_OPTIONS_) {
+           String  original_file_location = originalOptions.get( option );
+           if (original_file_location != null) {
+               URL  url = _toURL( original_file_location );
+               if (url == null) {
+                   // local filepath
+               } else {
+                   /** This option argument is an URL.
+                    * Obtain the local filepath, and
+                    * send the file to the remote execution.
+                    */
+                   String  filepath = localizedOptions.get( option );
+                   _restPostFile( url, new File( filepath ), option.contentType );
+               }
+           }
+       }
+   }
+
+
+
+   /**
+    * TODO: Send all the error results to the given locations.
+    * @param netOptions
+    */
+   private void _postErrorProcess()
+   {
+   }
+
 
 
     /**
+     * A prefix string like "yyyyMMdd'T'HHmmss'_oval_'".
      */
-    private String _createFilePrefix()
+    private String _createWorkingFilePrefix()
     {
-        String  prefix = _DATETIME_FORMATTER_.format( new Date() );
+        SimpleDateFormat  formatter = new SimpleDateFormat( "yyyyMMdd'T'HHmmss" );
+        String  prefix = formatter.format( new Date() );
         prefix = prefix + "_oval_";
 
         return prefix;
@@ -188,7 +250,8 @@ public class NetworkingOvaldiProxy
 
 
     /**
-     *
+     * Obtains the directory for work.
+     * We use the Java tmp directory.
      */
     private File _getWorkingDir()
     {
@@ -197,7 +260,8 @@ public class NetworkingOvaldiProxy
         if (dir.exists()  &&  dir.canWrite()  &&  dir.canRead()) {
             //OK!!!
         } else {
-            throw new IllegalStateException( "working directory not found or not ready: " + dirpath );
+            throw new IllegalStateException(
+                            "Java tmp directory as the working directory not found or not ready: path=" + dirpath );
         }
 
         return dir;
@@ -205,104 +269,98 @@ public class NetworkingOvaldiProxy
 
 
 
+    /**
+     * Creates a tmp working file in the specified directory.
+     * The filename is generated using the specified prefix
+     * and the option's default value.
+     */
+    private File _createWorkingFile(
+                    final String postfix
+                    )
+    {
+        _LOG_.debug( "creating working file: dir=" + _workingDir
+                        + ", prefix=" + _workingFilePrefix
+                        + ", postfix=" + postfix );
 
-//    /**
-//     */
-//    private URL _toUrl(
-//                    final String value
-//                    )
-//    {
-//        if (value == null) {
-//            return null;
-//        }
-//
-//        URL  url = null;
-//        try {
-//            url = new URL( value );
-//                  //throws MalformedURLException
-//        } catch (MalformedURLException ex) {
-//            // in case of a local file
-//            url = null;
-//        }
-//
-//        return (url == null ? null : url);
-//    }
+        String  filename = _workingFilePrefix + postfix;
+        File  file = new File( _workingDir, filename );
+
+        _LOG_.debug( "working file created: file=" + file );
+        return file;
+    }
 
 
 
     /**
-     * For each input resources, if its location is given as an URL,
-     * it is read and saved into a local temporary file.
      */
-    protected void _prepareInputFiles(
-                    final Options localOptions
+    private URL _toURL(
+                    final String value
                     )
     {
-        Options  options = getOptions();
-        for (Option  option : _NET_RCV_OPTIONS_) {
-            if (option.hasArgument
-                            &&  option.defaultArgument != null
-                            &&  option.contentType != null) {
-                //valid option
-            } else {
-                throw new IllegalStateException(
-                                "INTERNAL ERROR: option not configured for remote resource: "
-                                + option );
-            }
+        if (value == null) {
+            return null;
+        }
 
-            String  value = options.get( option );
-            if (value != null) {
-                URL  url = null;
-                try {
-                    url = new URL( value );
-                } catch (MalformedURLException ex) {
-                    //ignorable
-                    url = null;
-                }
+        URL  url = null;
+        try {
+            url = new URL( value );
+        } catch (MalformedURLException ex) {
+            // in case of a local file
+            url = null;
+        }
 
-                if (url == null) {
-                    // local filepath
-                } else {
-                    /** This option argument is an URL.
-                     * Download the resource and save it to a local file.
-                     * Then, replace the argument for local execution.
-                     */
-                    File  file = _createWorkingFile( _workingDir, _workingFilePrefix, option );
-                    _restGetFile( url, file, option.contentType );
+        return url;
+    }
 
-                    localOptions.set( option, file.getAbsolutePath() );
-                    //TODO: use file.getCanonicalPath() ???
-                }
-            }
+
+
+    /**
+     */
+    private void _validateNetworkingFileOption(
+                    final Option option
+                    )
+    {
+        if (option.hasArgument
+                        &&  option.defaultArgument != null
+                        &&  option.contentType != null) {
+            //valid option
+        } else {
+            throw new IllegalStateException(
+                            "INTERNAL ERROR: option not configured for networking resource: "
+                                            + option );
         }
     }
 
 
 
     /**
-     * Creates a temporary working file in the specified directory.
+     * For each input resources, if its location is given as an URL,
+     * it is read and saved into a local temporary file.
+     * And, the option values are adjusted to use those local files.
      */
-    private File _createWorkingFile(
-                    final File dir,
-                    final String prefix,
-                    final Option option
+    protected void _prepareInputFiles(
+                    final Options localizedOptions
                     )
     {
-        _LOG_.debug( "creating a working file: dir=" + dir
-                        + ", prefix=" + prefix
-                        + ", option=" + option );
+        for (Option  option : _NETWORK_INPUT_OPTIONS_) {
+            _validateNetworkingFileOption( option );
 
-        String  defaultFilename = option.defaultArgument;
-        if (defaultFilename == null) {
-            throw new IllegalArgumentException(
-                            "option has no default value (filename): " + option );
+            String  file_location = localizedOptions.get( option );
+            if (file_location != null) {
+                URL  url = _toURL( file_location );
+                if (url == null) {
+                    // local filepath as it is
+                } else {
+                    /** This option argument is an URL.
+                     * Download the resource and save it to a local file.
+                     * Then, replace the argument for local execution.
+                     */
+                    File  file = _createWorkingFile( option.defaultArgument );
+                    _restGetFile( url, file, option.contentType );
+                    localizedOptions.set( option, file.getAbsolutePath() );
+                }
+            }
         }
-
-        String  filename = prefix + defaultFilename;
-        File  file = new File( dir, filename );
-        _LOG_.debug( "a working file created: file=" + file );
-
-        return file;
     }
 
 
@@ -312,31 +370,15 @@ public class NetworkingOvaldiProxy
      * the output from the interpreter is written to a local working file.
      */
     private void _prepareOutputFiles(
-                    final Options localOptions
+                    final Options localizedOptions
                     )
     {
-        Options  options = getOptions();
-        for (Option  option : _NET_SND_OPTIONS_) {
-            if (option.hasArgument
-                            &&  option.defaultArgument != null
-                            &&  option.contentType != null) {
-                //valid option
-            } else {
-                throw new IllegalStateException(
-                                "INTERNAL ERROR: option not configured for remote resource: "
-                                + option );
-            }
+        for (Option  option : _NETWORK_OUTPUT_OPTIONS_) {
+            _validateNetworkingFileOption( option );
 
-            String  value = options.get( option );
-            if (value != null) {
-                URL  url = null;
-                try {
-                    url = new URL( value );
-                } catch (MalformedURLException ex) {
-                    //ignorable
-                    url = null;
-                }
-
+            String  file_location = localizedOptions.get( option );
+            if (file_location != null) {
+                URL  url = _toURL( file_location );
                 if (url == null) {
                     // local filepath
                 } else {
@@ -344,72 +386,11 @@ public class NetworkingOvaldiProxy
                      * Decide the local filename, and
                      * replace the argument for local execution.
                      */
-                    File  file = _createWorkingFile( _workingDir, _workingFilePrefix, option );
-                    localOptions.set( option, file.getAbsolutePath() );
-                    //TODO: use file.getCanonicalPath() ???
+                    File  file = _createWorkingFile( option.defaultArgument );
+                    localizedOptions.set( option, file.getAbsolutePath() );
                 }
             }
         }
-    }
-
-
-
-    /**
-     *
-     */
-    private void _preProcess(
-                    final Options localOptions
-                    )
-    throws OvalInterpreterException
-    {
-        _prepareInputFiles( localOptions );
-        _prepareOutputFiles( localOptions );
-    }
-
-
-
-    /**
-     * TODO: Send all the output files to the given locations.
-     */
-    private void _postProcess(
-                    final Options localOptions
-                    )
-    throws OvalInterpreterException
-    {
-        Options  options = getOptions();
-        for (Option  option : _NET_SND_OPTIONS_) {
-            String  value = options.get( option );
-            if (value != null) {
-                URL  url = null;
-                try {
-                    url = new URL( value );
-                } catch (MalformedURLException ex) {
-                    //ignorable
-                    url = null;
-                }
-
-                if (url == null) {
-                    // local filepath
-                } else {
-                    /** This option argument is an URL.
-                     * Obtain the local filepath, and
-                     * send the file to the remote execution.
-                     */
-                    String  filepath = localOptions.get( option );
-                    _restPostFile( url, new File( filepath ), option.contentType );
-                }
-            }
-        }
-    }
-
-
-
-    /**
-     * TODO: Send all the error results to the given locations.
-     * @param netOptions
-     */
-    private void _postErrorProcess()
-    {
     }
 
 
@@ -453,7 +434,7 @@ public class NetworkingOvaldiProxy
         try {
             FileResponseExtractor  extractor = new FileResponseExtractor( file );
             MediaType  mediaType = MediaType.valueOf( contentType );
-            List<MediaType>  mediaTypes = Arrays.asList( new MediaType[] { mediaType} );
+            List<MediaType>  mediaTypes = Arrays.asList( new MediaType[] { mediaType } );
             AcceptHeaderRequestCallback  callback =
                 new AcceptHeaderRequestCallback( mediaTypes );
             rest.execute(
@@ -527,21 +508,16 @@ public class NetworkingOvaldiProxy
          * The backup is used in the post process to send the results
          * to the given locations, if required.
          */
-        Options  localOptions = null;
-        try {
-            localOptions = getOptions().clone();
-        } catch (CloneNotSupportedException ex) {
-            throw new OvalInterpreterException( ex );
-        }
+        Options  localizedOptions = new OvaldiOptions();
+        localizedOptions.set( getOptions() );
+        _preProcess( localizedOptions );
 
-        _preProcess( localOptions );
-
-        OvaldiProxy  ovaldi = new OvaldiProxy( localOptions );
+        OvaldiProxy  ovaldi = new OvaldiProxy( localizedOptions );
         ovaldi.setExecutable( getExecutable() );
         int  exitValue = ovaldi.execute();
 
         if (exitValue == 0) {
-            _postProcess( localOptions );
+            _postProcess( localizedOptions );
         } else {
             _postErrorProcess();
         }
