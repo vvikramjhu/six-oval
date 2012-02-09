@@ -16,8 +16,6 @@ import jp.go.aist.six.oval.model.definitions.VariableType;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.test.oval.core.DefinitionsSample;
 import jp.go.aist.six.util.persist.Persistable;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -29,13 +27,13 @@ public class MongoOvalRepositoryTest
     extends CoreTestBase
 {
 
-    private static final String _SPRING_MONGO_CONTEXT_
-    = "context_repository.xml";
+//    private static final String _SPRING_MONGO_CONTEXT_
+//    = "context_repository.xml";
 //    = "six-oval_spring-context.xml";
 //    = "jp/go/aist/six/test/oval/core/datastore/mongodb/mongo-context.xml";
 
 
-    private ApplicationContext  _mongoContext;
+    private MongoDatastore  _datastore;
 
 
 
@@ -48,7 +46,7 @@ public class MongoOvalRepositoryTest
 	{
         super.setUp();
 
-        _mongoContext = new ClassPathXmlApplicationContext( _SPRING_MONGO_CONTEXT_ );
+        _datastore = _getContext().getBean( MongoDatastore.class );
 	}
 
 
@@ -75,6 +73,11 @@ public class MongoOvalRepositoryTest
     public Object[][] provideOvalResultsXml()
     {
         return new Object[][] {
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "test/resources/OvalTestContent/5.10/windows/ind-def_family_test.xml",
+                            null
+                        }
                         /* Windows */
 //                        // def:7222 version=3, windows, vulnerability, CVE-2010-0176
 //                        {
@@ -98,11 +101,11 @@ public class MongoOvalRepositoryTest
 //                            null
 //                        }
 //                        ,
-                        {
-                            jp.go.aist.six.oval.model.results.OvalResults.class,
-                            "test/resources/data/oval5/oval5.10_def7222-5_v_windows_CVE-2010-0176_results.xml",
-                            null
-                        }
+//                        {
+//                            jp.go.aist.six.oval.model.results.OvalResults.class,
+//                            "test/resources/data/oval5/oval5.10_def7222-5_v_windows_CVE-2010-0176_results.xml",
+//                            null
+//                        }
 //                  ,
 //                        // def:12313, windows, vulnerability, CVE-2011-0031
 //                      {
@@ -159,8 +162,6 @@ public class MongoOvalRepositoryTest
 
         T  object = _readObjectFromXml( type, xmlFilepath, expectedObject );
 
-        MongoDatastore  datastore = _mongoContext.getBean( MongoDatastore.class );
-
         Reporter.log( "save..." , true );
         Reporter.log( "  * object: " + object, true );
 
@@ -168,11 +169,11 @@ public class MongoOvalRepositoryTest
 //            mongo.getDAO( DefinitionType.class ).save( def );
 //        }
 
-        K  pid = datastore.create( type, object );
+        K  pid = _datastore.create( type, object );
         Reporter.log( "  >>> object created: pid=" + pid, true );
 
         Reporter.log( "load each object by concrete class...", true );
-        T  p_object = datastore.load( type, object.getPersistentID() );
+        T  p_object = _datastore.load( type, object.getPersistentID() );
         Reporter.log( "  @ object: " + p_object, true );
 
         if (p_object instanceof OvalDefinitions) {
@@ -250,19 +251,17 @@ public class MongoOvalRepositoryTest
 
         OvalDefinitions  object = _readObjectFromXml( OvalDefinitions.class, xmlFilepath, expectedObject );
 
-        MongoDatastore  mongo = _mongoContext.getBean( MongoDatastore.class );
-
         Reporter.log( "save..." , true );
         Reporter.log( "  * object: " + object, true );
 
 //        for (DefinitionType  def : object.getDefinitions().getDefinition()) {
 //            mongo.getDAO( DefinitionType.class ).save( def );
 //        }
-        mongo.getDAO( OvalDefinitions.class ).save( object );
+        _datastore.getDAO( OvalDefinitions.class ).save( object );
 
 
         Reporter.log( "load each object by concrete class...", true );
-        OvalDefinitions  p_object = mongo.getDAO( OvalDefinitions.class ).get( object.getPersistentID() );
+        OvalDefinitions  p_object = _datastore.getDAO( OvalDefinitions.class ).get( object.getPersistentID() );
         Reporter.log( "  @ object: " + p_object, true );
         for (DefinitionType  p_def : p_object.getDefinitions().getDefinition()) {
             Reporter.log( "  @ definition: " + p_def, true );
@@ -305,11 +304,9 @@ public class MongoOvalRepositoryTest
                         + ", method=testSaveAndLoadEntityUsingDatastoreService",
                         true );
 
-        MongoDatastore  mongo = _mongoContext.getBean( MongoDatastore.class );
-
         Reporter.log( "save..." , true );
         Reporter.log( "  * object: " + entity, true );
-        mongo.getDAO( entityType ).save( entity );
+        _datastore.getDAO( entityType ).save( entity );
     }
 
 
@@ -330,7 +327,7 @@ public class MongoOvalRepositoryTest
                         + ", method=testOvalDefinitionsVariable",
                         true );
 
-        DAO<VariableType, String>  dao = _mongoContext.getBean( VariableDAO.class );
+        DAO<VariableType, String>  dao = _getContext().getBean( VariableDAO.class );
         dao.getCollection().drop();
 
         VariableType  entity = DefinitionsSample.VAR_200;
@@ -364,7 +361,7 @@ public class MongoOvalRepositoryTest
                         + ", method=testOvalDefinitionsState",
                         true );
 
-        DAO<StateType, String>  dao = _mongoContext.getBean( StateDAO.class );
+        DAO<StateType, String>  dao = _getContext().getBean( StateDAO.class );
         dao.getCollection().drop();
 
         StateType  entity = DefinitionsSample.STE_5310;
@@ -398,7 +395,7 @@ public class MongoOvalRepositoryTest
                         + ", method=testOvalDefinitionsObject",
                         true );
 
-        DAO<SystemObjectType, String>  dao = _mongoContext.getBean( SystemObjectDAO.class );
+        DAO<SystemObjectType, String>  dao = _getContext().getBean( SystemObjectDAO.class );
         dao.getCollection().drop();
 
         SystemObjectType  entity = DefinitionsSample.OBJ_6886;
@@ -432,7 +429,7 @@ public class MongoOvalRepositoryTest
                         + ", method=testOvalDefinitionsTest",
                         true );
 
-        DAO<TestType, String>  dao = _mongoContext.getBean( TestDAO.class );
+        DAO<TestType, String>  dao = _getContext().getBean( TestDAO.class );
         dao.getCollection().drop();
 
         TestType  entity = DefinitionsSample.TST_11127;
@@ -466,7 +463,7 @@ public class MongoOvalRepositoryTest
                         + ", method=testSaveAndLoadDefinition",
                         true );
 
-        DAO<DefinitionType, String>  definitionDAO = _mongoContext.getBean( DefinitionDAO.class );
+        DAO<DefinitionType, String>  definitionDAO = _getContext().getBean( DefinitionDAO.class );
         definitionDAO.getCollection().drop();
 //        definitionDAO.getDatastore().getDB().getCollection( "oval.definitions.definition" ).drop();
 

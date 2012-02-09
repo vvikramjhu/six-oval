@@ -17,7 +17,7 @@
     <!-- *  interpreter                                        * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.interpreter" enabled="true">
+    <test name="oval.interpreter" enabled="false">
         <groups>
             <run>
                 <include name="oval.interpreter"/>
@@ -65,7 +65,7 @@
     </test>
 
 
-    <test name="oval.core.repository.mongodb.datastore" enabled="false">
+    <test name="oval.core.repository.mongodb.datastore" enabled="true">
         <groups>
             <run>
                 <include name="oval.core.repository.mongodb.saveAndLoad"/>

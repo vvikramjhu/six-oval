@@ -41,7 +41,7 @@ public abstract class CoreTestBase
     public void setUp()
     throws Exception
     {
-        _context = new OvalContext();
+        _context = OvalContext.INSTANCE;
     }
 
 

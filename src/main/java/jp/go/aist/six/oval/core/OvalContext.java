@@ -183,6 +183,14 @@ public class OvalContext
 
 
     public <T> T getBean(
+                    final Class<T> requiredType
+                    )
+    {
+        return _getContext().getBean( requiredType );
+    }
+
+
+    public <T> T getBean(
                     final String name,
                     final Class<T> requiredType
                     )
