@@ -25,7 +25,7 @@ import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 /**
- * The EntityStateLdapTypeType restricts a string value
+ * The EntityStateLdaptypeType restricts a string value
  * to a specific set of values that specify the different types
  * of information that an ldap attribute can represent.
  *
@@ -56,7 +56,7 @@ public class EntityStateLdaptypeType
                     )
     {
         if (content != null) {
-            LdaptTypeEnumeration.fromValue( content );
+            LdaptypeEnumeration.fromValue( content );
         }
 
         super.setContent( content );
