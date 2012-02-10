@@ -15,8 +15,15 @@ import jp.go.aist.six.oval.model.common.FamilyEnumeration;
 import jp.go.aist.six.oval.model.common.MessageLevelEnumeration;
 import jp.go.aist.six.oval.model.common.OperationEnumeration;
 import jp.go.aist.six.oval.model.common.OperatorEnumeration;
+import jp.go.aist.six.oval.model.definitions.ArithmeticEnumeration;
+import jp.go.aist.six.oval.model.definitions.DateTimeFormatEnumeration;
 import jp.go.aist.six.oval.model.definitions.FilterActionEnumeration;
 import jp.go.aist.six.oval.model.definitions.SetOperatorEnumeration;
+import jp.go.aist.six.oval.model.independent.EngineEnumeration;
+import jp.go.aist.six.oval.model.independent.HashTypeEnumeration;
+import jp.go.aist.six.oval.model.independent.LdapBehaviorsEnumeration;
+import jp.go.aist.six.oval.model.independent.LdapTtypeEnumeration;
+import jp.go.aist.six.oval.model.independent.TextfileContentProperty;
 import jp.go.aist.six.oval.model.mitre.DefinitionStatusEnumeration;
 import jp.go.aist.six.oval.model.redhat.SeverityEnumeration;
 import jp.go.aist.six.oval.model.results.ContentEnumeration;
@@ -56,8 +63,9 @@ public class OvalConverter
         RecurseDirectionEnumeration.class,
         RecurseEnumeration.class,
         RecurseFileSystemEnumeration.class,
+        WindowsViewEnumeration.class,
 
-        // commons //
+        // common //
         CheckEnumeration.class,
         ClassEnumeration.class,
         DatatypeEnumeration.class,
@@ -68,11 +76,18 @@ public class OvalConverter
         OperatorEnumeration.class,
 
         // definitions //
+        ArithmeticEnumeration.class,
+        DateTimeFormatEnumeration.class,
         FilterActionEnumeration.class,
         SetOperatorEnumeration.class,
 
         // independent //
-        WindowsViewEnumeration.class,
+        EngineEnumeration.class,
+        HashTypeEnumeration.class,
+        LdapBehaviorsEnumeration.class,
+        LdapTtypeEnumeration.class,
+        TextfileContentProperty.class,
+//        WindowsViewEnumeration.class,
 
         // mitre //
         DefinitionStatusEnumeration.class,

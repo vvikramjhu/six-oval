@@ -56,7 +56,7 @@ public class EntityStateLdaptypeType
                     )
     {
         if (content != null) {
-            LdaptypeEnumeration.fromValue( content );
+            LdapTtypeEnumeration.fromValue( content );
         }
 
         super.setContent( content );
