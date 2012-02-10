@@ -5,6 +5,7 @@ import java.io.FilenameFilter;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
+import jp.go.aist.six.test.oval.core.XmlFilenameFilter;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
 
@@ -150,25 +151,25 @@ public class OvalTestContentXmlTest
 
 
 
-    private static class XmlFilenameFilter
-    implements FilenameFilter
-    {
-
-        public XmlFilenameFilter()
-        {
-        }
-
-
-        @Override
-        public boolean accept(
-                        final File dir,
-                        final String name
-                        )
-        {
-            return name.endsWith( ".xml" );
-        }
-
-    }
+//    private static class XmlFilenameFilter
+//    implements FilenameFilter
+//    {
+//
+//        public XmlFilenameFilter()
+//        {
+//        }
+//
+//
+//        @Override
+//        public boolean accept(
+//                        final File dir,
+//                        final String name
+//                        )
+//        {
+//            return name.endsWith( ".xml" );
+//        }
+//
+//    }
 
 }
 // OvalTestContentXmlTest

@@ -65,7 +65,7 @@
     </test>
 
 
-    <test name="oval.core.repository.mongodb.datastore" enabled="true">
+    <test name="oval.core.repository.mongodb.repository" enabled="false">
         <groups>
             <run>
                 <include name="oval.core.repository.mongodb.saveAndLoad"/>
@@ -83,6 +83,25 @@
         </classes>
     </test>
 
+
+
+    <test name="oval.core.repository.mongodb.datastore" enabled="true">
+        <groups>
+            <run>
+                <include name="oval.core.repository.mongodb.saveAndLoad"/>
+                <!--
+                <include name="oval.definitions.oval_definitions"/>
+                <include name="oval.definitions.definition"/>
+                <include name="oval.definitions.state"/>
+                <include name="oval.definitions.variable"/>
+                -->
+            </run>
+        </groups>
+
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoDatastoreTest"/>
+        </classes>
+    </test>
 
 
     <!-- ******************************************************* -->
