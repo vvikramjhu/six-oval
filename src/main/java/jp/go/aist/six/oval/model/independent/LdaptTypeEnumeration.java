@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.model.OvalEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum LdapTypeEnumeration
+public enum LdaptTypeEnumeration
     implements OvalEnumeration
 {
 
@@ -57,11 +57,11 @@ public enum LdapTypeEnumeration
     /**
      * A factory method.
      */
-    public static LdapTypeEnumeration fromValue(
+    public static LdaptTypeEnumeration fromValue(
                     final String value
                     )
     {
-        for (LdapTypeEnumeration  e : LdapTypeEnumeration.values()) {
+        for (LdaptTypeEnumeration  e : LdaptTypeEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -79,7 +79,7 @@ public enum LdapTypeEnumeration
     /**
      * Constructor.
      */
-    LdapTypeEnumeration(
+    LdaptTypeEnumeration(
                     final String value
                     )
     {
