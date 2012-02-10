@@ -22,17 +22,32 @@ import jp.go.aist.six.oval.model.definitions.SetOperatorEnumeration;
 import jp.go.aist.six.oval.model.independent.EngineEnumeration;
 import jp.go.aist.six.oval.model.independent.HashTypeEnumeration;
 import jp.go.aist.six.oval.model.independent.LdapBehaviorsEnumeration;
-import jp.go.aist.six.oval.model.independent.LdapTtypeEnumeration;
+import jp.go.aist.six.oval.model.independent.LdapTypeEnumeration;
 import jp.go.aist.six.oval.model.independent.TextfileContentProperty;
+import jp.go.aist.six.oval.model.linux.RpmVerifyResultEnumeration;
 import jp.go.aist.six.oval.model.mitre.DefinitionStatusEnumeration;
 import jp.go.aist.six.oval.model.redhat.SeverityEnumeration;
 import jp.go.aist.six.oval.model.results.ContentEnumeration;
 import jp.go.aist.six.oval.model.results.ResultEnumeration;
 import jp.go.aist.six.oval.model.sc.FlagEnumeration;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
+import jp.go.aist.six.oval.model.unix.CapabilityEnumeration;
+import jp.go.aist.six.oval.model.unix.EncryptMethodEnumeration;
+import jp.go.aist.six.oval.model.unix.EndpointEnumeration;
+import jp.go.aist.six.oval.model.unix.NetworkInterfaceEnumeration;
+import jp.go.aist.six.oval.model.unix.WaitStatusEnumeration;
+import jp.go.aist.six.oval.model.unix.XinetdTypeStatusEnumeration;
+import jp.go.aist.six.oval.model.windows.AddrTypeEnumeration;
+import jp.go.aist.six.oval.model.windows.AdstypeEnumeration;
+import jp.go.aist.six.oval.model.windows.AuditEnumeration;
+import jp.go.aist.six.oval.model.windows.DriveTypeEnumeration;
 import jp.go.aist.six.oval.model.windows.FileTypeEnumeration;
+import jp.go.aist.six.oval.model.windows.NamingContextEnumeration;
+import jp.go.aist.six.oval.model.windows.NetworkInterfaceTypeEnumeration;
+import jp.go.aist.six.oval.model.windows.ProtocolEnumeration;
 import jp.go.aist.six.oval.model.windows.RegistryHiveEnumeration;
 import jp.go.aist.six.oval.model.windows.RegistryTypeEnumeration;
+import jp.go.aist.six.oval.model.windows.SharedResourceTypeEnumeration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.google.code.morphia.converters.SimpleValueConverter;
@@ -85,9 +100,11 @@ public class OvalConverter
         EngineEnumeration.class,
         HashTypeEnumeration.class,
         LdapBehaviorsEnumeration.class,
-        LdapTtypeEnumeration.class,
+        LdapTypeEnumeration.class,
         TextfileContentProperty.class,
-//        WindowsViewEnumeration.class,
+
+        // linux //
+        RpmVerifyResultEnumeration.class,
 
         // mitre //
         DefinitionStatusEnumeration.class,
@@ -99,14 +116,30 @@ public class OvalConverter
         ContentEnumeration.class,
         ResultEnumeration.class,
 
-        // sc
+        // sc //
         FlagEnumeration.class,
         StatusEnumeration.class,
 
+        // unix //
+        CapabilityEnumeration.class,
+        EncryptMethodEnumeration.class,
+        EndpointEnumeration.class,
+        NetworkInterfaceEnumeration.class,
+        WaitStatusEnumeration.class,
+        XinetdTypeStatusEnumeration.class,
+
         //windows
+        AddrTypeEnumeration.class,
+        AdstypeEnumeration.class,
+        AuditEnumeration.class,
+        DriveTypeEnumeration.class,
         FileTypeEnumeration.class,
+        NamingContextEnumeration.class,
+        NetworkInterfaceTypeEnumeration.class,
+        ProtocolEnumeration.class,
         RegistryHiveEnumeration.class,
-        RegistryTypeEnumeration.class
+        RegistryTypeEnumeration.class,
+        SharedResourceTypeEnumeration.class
 
 //        Platform.class,
 //        Product.class
