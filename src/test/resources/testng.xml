@@ -31,6 +31,14 @@
 
 
 
+    <test name="oval.interpreter" enabled="true">
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.interpreter.OvalInterpreterTestContentTest"/>
+        </classes>
+    </test>
+
+
+
     <!-- ******************************************************* -->
     <!-- *  ws                                                 * -->
     <!-- ******************************************************* -->
@@ -85,7 +93,7 @@
 
 
 
-    <test name="oval.core.repository.mongodb.datastore" enabled="true">
+    <test name="oval.core.repository.mongodb.datastore" enabled="false">
         <groups>
             <run>
                 <include name="oval.core.repository.mongodb.saveAndLoad"/>

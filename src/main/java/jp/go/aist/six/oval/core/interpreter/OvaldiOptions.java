@@ -129,7 +129,7 @@ public class OvaldiOptions
             }
         }
 
-        _LOG_.debug( "command line: " + String.valueOf( command_line ) );
+//        _LOG_.debug( "command line: " + String.valueOf( command_line ) );
         return command_line;
     }
 

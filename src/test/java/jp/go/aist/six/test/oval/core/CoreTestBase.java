@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -143,6 +144,51 @@ public abstract class CoreTestBase
     //  Test Suites
     //
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    //**************************************************************
+    //  OVAL Test Content
+    //**************************************************************
+
+    /**
+     * Provides OVAL test content.
+     *  Class<T>            model_type,
+     *  String              oval_schema_version,
+     *  OvalPlatformType    platform,
+     *  String              dirpath,
+     *  String              filename
+     */
+    @DataProvider( name="oval.test_content" )
+    public Object[][] provideOvalTestContent()
+    {
+        return new Object[][] {
+                        /* Windows */
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "5.10",
+                            OvalPlatformType.windows,
+                            "test/resources/OvalTestContent/5.10/windows",
+                            null
+                        }
+//                        ,
+//                        /* linux */
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "5.10",
+//                            OvalPlatformType.linux,
+//                            "test/resources/OvalTestContent/5.10/linux",
+//                            null
+//                        }
+//                      {
+//                      jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                      "test/resources/OvalTestContent/5.10/windows/ind-def_family_test.xml",
+//                      null
+//                  }
+        };
+
+    }
+
+
+
 
     //**************************************************************
     //  OVAL definitions
@@ -704,7 +750,7 @@ public abstract class CoreTestBase
     //**************************************************************
 
     @DataProvider( name="oval.results.xml" )
-    public Object[][] provideOvalResultsXml()
+    public Object[][] provideOvalXml()
     {
         return new Object[][] {
                         // OVAL 5.7, def:7432-3, patch, Debian 5

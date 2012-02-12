@@ -72,6 +72,13 @@ public class OvaldiOption
     // output resources
     //==============================================================
 
+    public static final OvaldiOption OVAL_SC = new OvaldiOption(
+                    "save system-characteristics data to the specified XML file",
+                    "-d", true, "filename", "system-characteristics.xml",
+                    "application/xml"
+    );
+
+
     public static final OvaldiOption OVAL_RESULTS = new OvaldiOption(
                     "save oval-results to the specified XML file",
                     "-r", true, "filename", "results.xml",
@@ -96,6 +103,14 @@ public class OvaldiOption
                     null
     );
 
+
+    public static final OvaldiOption PRINT_ALL_INFO = new OvaldiOption(
+                    "print all information and error messages",
+                    "-p", false, null, null,
+                    null
+    );
+
+
     public static final OvaldiOption LOG_LEVEL = new OvaldiOption(
                     "log messages at the specified level \n"
                     + "(DEBUG = 1, INFO = 2, MESSAGE = 3, FATAL = 4)",
@@ -105,14 +120,17 @@ public class OvaldiOption
 
 
 
+
     private static final Option[]  _DEFINED_VALUES_ = new OvaldiOption[] {
         OVAL_DEFINITIONS,
         EVALUATE_DEFINITIONS,
+        OVAL_SC,
         OVAL_RESULTS,
         OVAL_TRANSFORMED_RESULTS,
         NO_VERIFY,
         OVAL_XML_DIR,
         MD5_HASH,
+        PRINT_ALL_INFO,
         LOG_LEVEL
     };
 
