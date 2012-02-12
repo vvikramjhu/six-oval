@@ -70,7 +70,7 @@ public class MongoOvalRepositoryTest
 
     @Override
     @DataProvider( name="oval.xml" )
-    public Object[][] provideOvalResultsXml()
+    public Object[][] provideOvalXml()
     {
         return new Object[][] {
                         {

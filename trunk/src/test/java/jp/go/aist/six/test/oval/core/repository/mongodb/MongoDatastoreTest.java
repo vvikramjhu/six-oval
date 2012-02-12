@@ -90,7 +90,7 @@ public class MongoDatastoreTest
 
     @Override
     @DataProvider( name="oval.xml" )
-    public Object[][] provideOvalResultsXml()
+    public Object[][] provideOvalXml()
     {
         return new Object[][] {
 //                        {
@@ -102,6 +102,14 @@ public class MongoDatastoreTest
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
                             "test/resources/OvalTestContent/5.10/windows",
+                            null,
+                            null
+                        }
+                        ,
+                        /* linux */
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "test/resources/OvalTestContent/5.10/linux",
                             null,
                             null
                         }
