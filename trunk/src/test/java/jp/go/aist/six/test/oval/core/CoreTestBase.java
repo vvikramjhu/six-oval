@@ -178,11 +178,13 @@ public abstract class CoreTestBase
 //                            "test/resources/OvalTestContent/5.10/linux",
 //                            null
 //                        }
-//                      {
-//                      jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-//                      "test/resources/OvalTestContent/5.10/windows/ind-def_family_test.xml",
-//                      null
-//                  }
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "5.10",
+//                            OvalPlatformType.windows,
+//                            "test/resources/OvalTestContent/5.10/windows",
+//                            "ind-def_family_test.xml"
+//                        }
         };
 
     }

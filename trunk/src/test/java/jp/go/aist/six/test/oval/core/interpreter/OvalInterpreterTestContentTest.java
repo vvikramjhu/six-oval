@@ -25,7 +25,6 @@ public class OvalInterpreterTestContentTest
 {
 
     private static final String  _OVALDI_DIR_ = "C:\\app\\ovaldi-5.10.1.1-x64";
-
     private static final String  _OVALDI_EXECUTABLE_ = _OVALDI_DIR_ + "\\ovaldi.exe";
     private static final String  _OVALDI_XML_ = _OVALDI_DIR_ + "\\xml";
 
@@ -38,6 +37,9 @@ public class OvalInterpreterTestContentTest
     throws Exception
     {
         String  executable = _getContext().getProperty( "six.oval.interpreter.executable" );
+        if (executable == null) {
+            executable = _OVALDI_EXECUTABLE_;
+        }
         Reporter.log( "* executable: " + executable, true );
         OvaldiProxy  ovaldi = new OvaldiProxy();
         if (executable != null) {
@@ -115,13 +117,13 @@ public class OvalInterpreterTestContentTest
             File[]  files = dir.listFiles( filter );
             for (File  file : files) {
                 Reporter.log( "  * file= " + file, true );
-                Options  options = _createOptions( file );
+                Options  options = _createOptions( platform, file );
                 _executeOvalInterpreter( ovaldi, options );
             }
         } else {
             File  file = new File( dir, filename );
             Reporter.log( "  * file= " + file, true );
-            Options  options = _createOptions( file );
+            Options  options = _createOptions( platform, file );
             _executeOvalInterpreter( ovaldi, options );
         }
     }
@@ -131,15 +133,29 @@ public class OvalInterpreterTestContentTest
     /**
      */
     private Options _createOptions(
+                    final OvalPlatformType    platform,
                     final File oval_def_file
                     )
     {
-        String  out_dirpath = System.getProperty( "java.io.tmpdir" );
+        //Which directory does the ovaldi write the output files to?
+        //--- $TMP/platform
+        String  tmp_dirpath = System.getProperty( "java.io.tmpdir" );
+        String  file_sep = System.getProperty( "file.separator" );
+        String  out_dirpath = (tmp_dirpath == null
+                        ? platform.name()
+                        : tmp_dirpath + file_sep + platform.name() );
+        File  out_dir = new File( out_dirpath );
+        if (!out_dir.exists()) {
+            boolean  out_dir_created = out_dir.mkdir();
+            if (!out_dir_created) {
+                out_dir = new File( tmp_dirpath );
+            }
+        }
 
         String  oval_def_filename = oval_def_file.getName();
-        File  oval_sc_file =      new File( out_dirpath, oval_def_filename + ".sc.xml" );
-        File  oval_results_file = new File( out_dirpath, oval_def_filename + ".results.xml" );
-        File  oval_trans_file =   new File( out_dirpath, oval_def_filename + ".results.html") ;
+        File  oval_sc_file =      new File( out_dir, oval_def_filename + ".sc.xml" );
+        File  oval_results_file = new File( out_dir, oval_def_filename + ".results.xml" );
+        File  oval_trans_file =   new File( out_dir, oval_def_filename + ".results.html") ;
 
         Options  options = new OvaldiOptions();
         options.set( OvaldiOption.NO_VERIFY );
