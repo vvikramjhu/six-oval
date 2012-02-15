@@ -151,11 +151,12 @@ public abstract class CoreTestBase
 
     /**
      * Provides OVAL test content.
-     *  Class<T>            model_type,
+     *  Class<T>            object_type,
      *  String              oval_schema_version,
      *  OvalPlatformType    platform,
      *  String              dirpath,
      *  String              filename
+     *  T                   expectedObject
      */
     @DataProvider( name="oval.test_content" )
     public Object[][] provideOvalTestContent()
@@ -167,6 +168,7 @@ public abstract class CoreTestBase
                             "5.10",
                             OvalPlatformType.windows,
                             "test/resources/OvalTestContent/5.10/windows",
+                            null,
                             null
                         }
 //                        ,
@@ -176,6 +178,7 @@ public abstract class CoreTestBase
 //                            "5.10",
 //                            OvalPlatformType.linux,
 //                            "test/resources/OvalTestContent/5.10/linux",
+//                        null,
 //                            null
 //                        }
 //                        {
@@ -184,6 +187,7 @@ public abstract class CoreTestBase
 //                            OvalPlatformType.windows,
 //                            "test/resources/OvalTestContent/5.10/windows",
 //                            "ind-def_family_test.xml"
+//                            null
 //                        }
         };
 
