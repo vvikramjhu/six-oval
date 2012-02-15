@@ -27,8 +27,6 @@ import java.util.Map;
 import jp.go.aist.six.oval.interpreter.Option;
 import jp.go.aist.six.oval.interpreter.Options;
 import jp.go.aist.six.oval.interpreter.OvalInterpreterException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 
@@ -42,10 +40,10 @@ public class OvaldiOptions
     extends Options
 {
 
-    /**
-     * Logger.
-     */
-    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvaldiOptions.class );
+//    /**
+//     * Logger.
+//     */
+//    private static final Logger  _LOG_ = LoggerFactory.getLogger( OvaldiOptions.class );
 
 
 
