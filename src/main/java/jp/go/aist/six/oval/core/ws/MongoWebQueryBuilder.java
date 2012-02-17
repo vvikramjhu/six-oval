@@ -34,7 +34,13 @@ import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.repository.CommonQueryParams;
+import jp.go.aist.six.oval.repository.DefinitionsQueryParams;
+import jp.go.aist.six.oval.repository.OvalEntityQueryParams;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
+import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
+import jp.go.aist.six.oval.repository.QueryParams;
+import jp.go.aist.six.oval.repository.TestQueryParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.google.code.morphia.query.Query;
@@ -113,7 +119,7 @@ implements QueryBuilder
                     final QueryParams params
                     )
     {
-        this._params = params;
+        _params = params;
     }
 
 
@@ -284,7 +290,7 @@ implements QueryBuilder
                         final String operator
                         )
         {
-            this._operator = operator;
+            _operator = operator;
         }
 
 

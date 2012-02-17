@@ -131,4 +131,23 @@
         <property name="datastore" ref="datastore"/>
     </bean>
 
+
+
+    <bean id="ovalDefinitionRepository" 
+        class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository"> 
+        <property name="DAO">
+            <set>
+                <ref bean="ovalDefinitionsDAO"/>
+                <ref bean="definitionDAO"/>
+                <ref bean="testDAO"/>
+                <ref bean="systemObjectDAO"/>
+                <ref bean="stateDAO"/>
+                <ref bean="variableDAO"/>
+                <ref bean="ovalSystemCharacteristicsDAO"/>
+                <ref bean="ovalResultsDAO"/>
+            </set>
+        </property>
+    </bean>
+
+
 </beans>

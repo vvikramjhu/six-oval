@@ -66,6 +66,13 @@
     <!-- *  repository                                         * -->
     <!-- ******************************************************* -->
 
+    <test name="oval.core.repository.mongodb.MongoOvalDefinitionRepository" enabled="true">
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalDefinitionRepositoryTests"/>
+        </classes>
+    </test>
+
+
     <test name="oval.core.repository.mongodb.query" enabled="false">
         <classes>
             <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MorphiaQueryBuilderTest"/>
@@ -116,7 +123,7 @@
     <!-- *  XML                                                * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.xml" enabled="true">
+    <test name="oval.core.xml" enabled="false">
         <groups>
             <run>
                 <include name="oval.test-content"/>

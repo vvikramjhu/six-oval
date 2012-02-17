@@ -18,10 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.ws;
-
-
-
+package jp.go.aist.six.oval.repository;
 
 
 
@@ -39,7 +36,7 @@ public class OvalEntityQueryParams
         public static final String  ID                  = "id";
         public static final String  VERSION             = "version";
 
-        public static final String  SCHEMA_VERSION      = "schema_version";
+        public static final String  SCHEMA_VERSION      = "schemaVersion";
         public static final String  PLATFORM            = "platform";
         public static final String  COMPONENT           = "component";
     }
@@ -100,7 +97,7 @@ public class OvalEntityQueryParams
 
     /**
      */
-    public void setSchema_version(
+    public void setSchemaVersion(
                     final String schema_version
     )
     {
@@ -108,7 +105,7 @@ public class OvalEntityQueryParams
     }
 
 
-    public String getSchema_version()
+    public String getSchemaVersion()
     {
         return get( Key.SCHEMA_VERSION );
     }
@@ -148,5 +145,5 @@ public class OvalEntityQueryParams
     }
 
 }
-// OvalEntityQueryParams
+//
 

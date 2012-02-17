@@ -18,7 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.ws;
+package jp.go.aist.six.oval.repository;
+
 
 
 
