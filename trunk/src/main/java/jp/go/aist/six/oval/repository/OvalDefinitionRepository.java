@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.repository;
 
 import java.util.List;
+import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 
 
@@ -75,42 +76,20 @@ public interface OvalDefinitionRepository
 
 
 
-//    /**
-//     * Searches for the OVAL Definitions that match the specified query parameters.
-//     *
-//     * @param   params
-//     *  the query parameters.
-//     * @param   ordering
-//     *  the ordering of the result object.
-//     * @param   limit
-//     *  the number of objects and offset of the first object.
-//     * @return
-//     *  the Definitions.
-//     */
-//    public List<DefinitionType> findDefinition(
-//                    QueryParams params,
-//                    List<? extends Order> ordering,
-//                    Limit limit
-//                    )
-//    throws OvalRepositoryException;
+    /**
+     * Returns the OVAL entity of the specified OVAL-ID.
+     * If no such entity exists, this method returns null.
+     *
+     * @param   oval_id
+     *  the OVAL-ID.
+     */
+    public OvalEntity findEntityById(
+                    String oval_id
+                    )
+    throws OvalRepositoryException;
 
 
 
-
-//    /**
-//     * Returns the OVAL entity of the specified OVAL-ID.
-//     * If no such entity exists, this method returns null.
-//     *
-//     * @param   oval_id
-//     *  the OVAL-ID.
-//     */
-//    public DefinitionType findEntityById(
-//                    String oval_id
-//                    )
-//    throws OvalRepositoryException;
-//
-//
-//
 //    /**
 //     * Returns all the entities.
 //     *
