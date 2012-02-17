@@ -166,6 +166,22 @@ public final class OvalId
 
     /**
      */
+    public static final Type typeOf(
+                    final String oval_id
+                    )
+    {
+        String[]  components = oval_id.split( ":" );
+        if (components.length != 4) {
+            throw new OvalIdSyntaxException( "invalid OVAL-ID: " + oval_id );
+        }
+
+        return Type.valueOf( components[2] );
+    }
+
+
+
+    /**
+     */
     private void _set(
                     final String prefix,
                     final String namespace,
