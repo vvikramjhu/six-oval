@@ -22,7 +22,7 @@ package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.util.List;
 import jp.go.aist.six.oval.model.OvalEntity;
-import jp.go.aist.six.oval.model.OvalIdD;
+import jp.go.aist.six.oval.model.OvalId;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
@@ -150,18 +150,18 @@ public class MongoOvalDefinitionRepository
                     )
     throws OvalRepositoryException
     {
-        OvalIdD  obj_id = new OvalIdD( oval_id );
+        OvalId  obj_id = new OvalId( oval_id );
 
         Class<? extends OvalEntity>  objectType = null;
-        if (OvalIdD.Type.def == obj_id.getType()) {
+        if (OvalId.Type.def == obj_id.getType()) {
             objectType = DefinitionType.class;
-        } else if (OvalIdD.Type.tst == obj_id.getType()) {
+        } else if (OvalId.Type.tst == obj_id.getType()) {
             objectType = TestType.class;
-        } else if (OvalIdD.Type.obj == obj_id.getType()) {
+        } else if (OvalId.Type.obj == obj_id.getType()) {
             objectType = SystemObjectType.class;
-        } else if (OvalIdD.Type.ste == obj_id.getType()) {
+        } else if (OvalId.Type.ste == obj_id.getType()) {
             objectType = StateType.class;
-        } else if (OvalIdD.Type.var == obj_id.getType()) {
+        } else if (OvalId.Type.var == obj_id.getType()) {
             objectType = VariableType.class;
         } else {
             throw new OvalRepositoryException( "unknown OVAL entity type in OVAL-ID: " + oval_id );

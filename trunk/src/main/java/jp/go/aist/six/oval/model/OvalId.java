@@ -33,7 +33,7 @@ import java.util.Arrays;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public final class OvalIdD
+public final class OvalId
     implements Cloneable, Serializable
 {
 
@@ -68,12 +68,12 @@ public final class OvalIdD
     /**
      * Constructor.
      */
-    protected OvalIdD()
+    protected OvalId()
     {
     }
 
 
-    public OvalIdD(
+    public OvalId(
                     final String oval_id
                     )
     throws OvalIdSyntaxException
@@ -82,7 +82,7 @@ public final class OvalIdD
     }
 
 
-    public OvalIdD(
+    public OvalId(
                     final String[] components
                     )
     throws OvalIdSyntaxException
@@ -100,7 +100,7 @@ public final class OvalIdD
     }
 
 
-    public OvalIdD(
+    public OvalId(
                     final String namespace,
                     final String type,
                     final String id_value
@@ -111,7 +111,7 @@ public final class OvalIdD
     }
 
 
-    public OvalIdD(
+    public OvalId(
                     final String namespace,
                     final Type type,
                     final int id_value
@@ -122,7 +122,7 @@ public final class OvalIdD
     }
 
 
-    public OvalIdD(
+    public OvalId(
                     final String prefix,
                     final String namespace,
                     final String type,
@@ -134,7 +134,7 @@ public final class OvalIdD
     }
 
 
-    public OvalIdD(
+    public OvalId(
                     final String prefix,
                     final String namespace,
                     final Type type,
@@ -159,7 +159,7 @@ public final class OvalIdD
         }
 
         //validation
-        new OvalIdD( oval_id );
+        new OvalId( oval_id );
     }
 
 
@@ -343,7 +343,7 @@ public final class OvalIdD
     public Object clone()
     throws CloneNotSupportedException
     {
-        return (new OvalIdD( _namespace, _type, _idValue ));
+        return (new OvalId( _namespace, _type, _idValue ));
     }
 
 
@@ -376,11 +376,11 @@ public final class OvalIdD
             return true;
         }
 
-        if (!(obj instanceof OvalIdD)) {
+        if (!(obj instanceof OvalId)) {
             return false;
         }
 
-        OvalIdD  other = (OvalIdD)obj;
+        OvalId  other = (OvalId)obj;
         if (this.getIdValue() == other.getIdValue()) {
             if (this.getType() == other.getType()) {
                 String  this_namespace = getNamespace();
