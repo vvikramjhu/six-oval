@@ -18,9 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.ws;
-
-
+package jp.go.aist.six.oval.repository;
 
 
 
@@ -41,10 +39,10 @@ public class CommonQueryParams
         public static final String  ORDER  = "order";
 
         // OpenSearch Time
-        public static final String  DT_START = "dtstart";
-        public static final String  DT_END   = "dtend";
+        public static final String  DTSTART = "dtstart";
+        public static final String  DTEND   = "dtend";
     }
-    // Key
+    //
 
 
 
@@ -119,13 +117,13 @@ public class CommonQueryParams
                     final String dtstart
     )
     {
-        set( Key.DT_START, dtstart );
+        set( Key.DTSTART, dtstart );
     }
 
 
     public String getDtstart()
     {
-        return get( Key.DT_START );
+        return get( Key.DTSTART );
     }
 
 
@@ -136,13 +134,13 @@ public class CommonQueryParams
                     final String dtend
     )
     {
-        set( Key.DT_END, dtend );
+        set( Key.DTEND, dtend );
     }
 
 
     public String getDtend()
     {
-        return get( Key.DT_END );
+        return get( Key.DTEND );
     }
 
 
@@ -152,5 +150,5 @@ public class CommonQueryParams
     //**************************************************************
 
 }
-// CommonQueryParams
+//
 

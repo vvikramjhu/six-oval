@@ -18,7 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.ws;
+package jp.go.aist.six.oval.repository;
+
+
+
 
 
 
@@ -27,17 +30,61 @@ package jp.go.aist.six.oval.core.ws;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class ResultsQueryParams
+public class OvalSystemCharacteristicsQueryParams
     extends CommonQueryParams
 {
+
+    public static class Key
+    extends CommonQueryParams.Key
+    {
+        public static final String  PRIMARY_HOST_NAME   = "primary_host_name";
+        public static final String  OS_NAME             = "os_name";
+    }
+    // Key
+
+
 
     /**
      * Constructor.
      */
-    public ResultsQueryParams()
+    public OvalSystemCharacteristicsQueryParams()
     {
     }
 
+
+
+    /**
+     */
+    public void setPrimary_host_name(
+                    final String primary_host_name
+                    )
+    {
+        set( Key.PRIMARY_HOST_NAME, primary_host_name );
+    }
+
+
+    public String getPrimary_host_name()
+    {
+        return get( Key.PRIMARY_HOST_NAME );
+    }
+
+
+
+    /**
+     */
+    public void setOs_name(
+                    final String os_name
+    )
+    {
+        set( Key.OS_NAME, os_name );
+    }
+
+
+    public String getOs_name()
+    {
+        return get( Key.OS_NAME );
+    }
+
 }
-// ResultsQueryParams
+// OvalSystemCharacteristicsQueryParams
 

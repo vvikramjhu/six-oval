@@ -18,11 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.ws;
-
-
-
-
+package jp.go.aist.six.oval.repository;
 
 
 
@@ -37,11 +33,12 @@ public class DefinitionsQueryParams
     public static class Key
     extends OvalEntityQueryParams.Key
     {
-        public static final String  DEFINITION_CLASS    = "definition_class";
+        public static final String  DEFINITION_CLASS    = "definitionClass";
         public static final String  FAMILY              = "family";
         public static final String  PLATFORM            = "platform"; //override
         public static final String  PRODUCT             = "product";
-        public static final String  REF_ID              = "ref_id";
+        public static final String  REF_SOURCE          = "refSource";
+        public static final String  REF_ID              = "refId";
     }
     // Key
 
@@ -58,7 +55,7 @@ public class DefinitionsQueryParams
 
     /**
      */
-    public void setDefinition_class(
+    public void setDefinitionClass(
                     final String definition_class
                     )
     {
@@ -66,7 +63,7 @@ public class DefinitionsQueryParams
     }
 
 
-    public String getDefinition_class()
+    public String getDefinitionClass()
     {
         return get( Key.DEFINITION_CLASS );
     }
@@ -128,7 +125,24 @@ public class DefinitionsQueryParams
 
     /**
      */
-    public void setRef_id(
+    public void setRefSourceId(
+                    final String ref_source
+    )
+    {
+        set( Key.REF_SOURCE, ref_source );
+    }
+
+
+    public String getRefSource()
+    {
+        return get( Key.REF_SOURCE );
+    }
+
+
+
+    /**
+     */
+    public void setRefId(
                     final String ref_id
     )
     {
@@ -136,11 +150,11 @@ public class DefinitionsQueryParams
     }
 
 
-    public String getRef_id()
+    public String getRefId()
     {
         return get( Key.REF_ID );
     }
 
 }
-//DefinitionQueryParams
+//
 

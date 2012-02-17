@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.ws;
+package jp.go.aist.six.oval.repository;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +27,8 @@ import java.util.Set;
 
 
 /**
- * A set of URL query parameters.
+ * A set of query parameters to be interpreted as a filter
+ * for collections of OVAL entities.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -69,12 +70,14 @@ public class QueryParams
 
     /**
      */
-    public void set(
+    public QueryParams set(
                     final String key,
                     final String value
                     )
     {
         _params.put( key, value );
+
+        return this;
     }
 
 
@@ -110,5 +113,5 @@ public class QueryParams
     }
 
 }
-// QueryParams
+//
 
