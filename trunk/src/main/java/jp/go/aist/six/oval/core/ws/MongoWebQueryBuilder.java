@@ -35,7 +35,7 @@ import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.repository.CommonQueryParams;
-import jp.go.aist.six.oval.repository.DefinitionsQueryParams;
+import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.OvalEntityQueryParams;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
@@ -378,6 +378,8 @@ implements QueryBuilder
     protected static class PatternHandler
     extends Handler
     {
+        public static final PatternHandler INSTANCE = new PatternHandler();
+
 
         public PatternHandler()
         {
@@ -501,8 +503,8 @@ implements QueryBuilder
 
 
             Map<String, Handler>  mapping = new HashMap<String, Handler>();
-            mapping.put( CommonQueryParams.Key.OFFSET,  offsetHandler );
-            mapping.put( CommonQueryParams.Key.LIMIT,   limitHandler );
+            mapping.put( CommonQueryParams.Key.START_INDEX,  offsetHandler );
+            mapping.put( CommonQueryParams.Key.COUNT,   limitHandler );
             mapping.put( CommonQueryParams.Key.ORDER,   new OrderHandler());
 
             return mapping;
@@ -674,12 +676,13 @@ implements QueryBuilder
         {
             Map<String, String>  mapping = OvalEntityBuilder._createFieldMapping();
 
-            mapping.put( DefinitionsQueryParams.Key.DEFINITION_CLASS,  "class" );
-            mapping.put( DefinitionsQueryParams.Key.FAMILY,            "metadata.affected.family" );
+            mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    "class" );
+            mapping.put( DefinitionQueryParams.Key.TITLE,               "metadata.title" );
+            mapping.put( DefinitionQueryParams.Key.FAMILY,              "metadata.affected.family" );
 
-            mapping.put( DefinitionsQueryParams.Key.PLATFORM,          "metadata.affected.platform" ); //override
-            mapping.put( DefinitionsQueryParams.Key.PRODUCT,           "metadata.affected.product" );
-            mapping.put( DefinitionsQueryParams.Key.REF_ID,            "metadata.reference.ref_id" );
+            mapping.put( DefinitionQueryParams.Key.PLATFORM,            "metadata.affected.platform" ); //override
+            mapping.put( DefinitionQueryParams.Key.PRODUCT,             "metadata.affected.product" );
+            mapping.put( DefinitionQueryParams.Key.REF_ID,              "metadata.reference.ref_id" );
 
             return mapping;
         }
@@ -710,12 +713,13 @@ implements QueryBuilder
             };
 
 
-            Map<String, Handler>  mapping = BasicBuilder._createHandlers();
-            mapping.put( DefinitionsQueryParams.Key.DEFINITION_CLASS, definitionClassHandler );
-            mapping.put( DefinitionsQueryParams.Key.FAMILY,           _DEFAULT_HANDLER_ );
-            mapping.put( DefinitionsQueryParams.Key.PLATFORM,         _DEFAULT_HANDLER_ );
-            mapping.put( DefinitionsQueryParams.Key.PRODUCT,          _DEFAULT_HANDLER_ );
-            mapping.put( DefinitionsQueryParams.Key.REF_ID,           _DEFAULT_HANDLER_ );
+            Map<String, Handler>  mapping = OvalEntityBuilder._createHandlers();
+            mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    definitionClassHandler );
+            mapping.put( DefinitionQueryParams.Key.TITLE,               PatternHandler.INSTANCE );
+            mapping.put( DefinitionQueryParams.Key.FAMILY,              _DEFAULT_HANDLER_ );
+            mapping.put( DefinitionQueryParams.Key.PLATFORM,            _DEFAULT_HANDLER_ );
+            mapping.put( DefinitionQueryParams.Key.PRODUCT,             _DEFAULT_HANDLER_ );
+            mapping.put( DefinitionQueryParams.Key.REF_ID,              _DEFAULT_HANDLER_ );
 
             return mapping;
         }

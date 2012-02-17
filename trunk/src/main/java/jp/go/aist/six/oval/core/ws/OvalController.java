@@ -34,7 +34,7 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.definitions.VariableType;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
-import jp.go.aist.six.oval.repository.DefinitionsQueryParams;
+import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.oval.repository.QueryResult;
@@ -404,7 +404,7 @@ public class OvalController
                     ,headers="Accept=application/xml"
     )
     public @ResponseBody QueryResult<DefinitionType> findDefinitions(
-                    final DefinitionsQueryParams params
+                    final DefinitionQueryParams params
                     )
     throws OvalException
     {

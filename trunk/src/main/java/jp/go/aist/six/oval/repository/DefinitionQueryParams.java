@@ -26,7 +26,7 @@ package jp.go.aist.six.oval.repository;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class DefinitionsQueryParams
+public class DefinitionQueryParams
     extends OvalEntityQueryParams
 {
 
@@ -34,6 +34,7 @@ public class DefinitionsQueryParams
     extends OvalEntityQueryParams.Key
     {
         public static final String  DEFINITION_CLASS    = "definitionClass";
+        public static final String  TITLE               = "title";
         public static final String  FAMILY              = "family";
         public static final String  PLATFORM            = "platform"; //override
         public static final String  PRODUCT             = "product";
@@ -47,7 +48,7 @@ public class DefinitionsQueryParams
     /**
      * Constructor.
      */
-    public DefinitionsQueryParams()
+    public DefinitionQueryParams()
     {
     }
 
@@ -66,6 +67,23 @@ public class DefinitionsQueryParams
     public String getDefinitionClass()
     {
         return get( Key.DEFINITION_CLASS );
+    }
+
+
+
+    /**
+     */
+    public void setTitle(
+                    final String title
+    )
+    {
+        set( Key.TITLE, title );
+    }
+
+
+    public String getTitle()
+    {
+        return get( Key.TITLE );
     }
 
 
