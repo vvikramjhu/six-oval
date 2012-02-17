@@ -133,8 +133,10 @@
 
 
 
-    <bean id="ovalDefinitionRepository" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository"> 
+    <!-- ******************************************************* -->
+
+    <bean id="mongoOvalDatastore" 
+        class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore"> 
         <property name="DAO">
             <set>
                 <ref bean="ovalDefinitionsDAO"/>
@@ -147,6 +149,12 @@
                 <ref bean="ovalResultsDAO"/>
             </set>
         </property>
+    </bean>
+
+
+    <bean id="ovalDefinitionRepository" 
+        class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository">
+        <property name="datastore" ref="mongoOvalDatastore"/>
     </bean>
 
 
