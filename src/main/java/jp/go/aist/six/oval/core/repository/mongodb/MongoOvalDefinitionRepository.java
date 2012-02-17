@@ -84,9 +84,8 @@ public class MongoOvalDefinitionRepository
                     )
     throws OvalRepositoryException
     {
-//      DefinitionType  p_object = _findObjectById( DefinitionType.class, oval_id );
-
         long  ts_start = System.currentTimeMillis();
+
         DefinitionType  p_object = null;
         try {
             p_object = _datastore.findById( DefinitionType.class, oval_id );
@@ -110,9 +109,8 @@ public class MongoOvalDefinitionRepository
     public List<DefinitionType> findDefinition()
     throws OvalRepositoryException
     {
-//        List<DefinitionType>  p_list = _findObject( DefinitionType.class, null );
-
         long  ts_start = System.currentTimeMillis();
+
         List<DefinitionType>  p_list = null;
         try {
             p_list = _datastore.find( DefinitionType.class );
@@ -140,9 +138,8 @@ public class MongoOvalDefinitionRepository
                     )
     throws OvalRepositoryException
     {
-//        List<DefinitionType>  p_list = _findObject( DefinitionType.class, params );
-
         long  ts_start = System.currentTimeMillis();
+
         List<DefinitionType>  p_list = null;
         try {
             p_list = _datastore.find( DefinitionType.class, params );

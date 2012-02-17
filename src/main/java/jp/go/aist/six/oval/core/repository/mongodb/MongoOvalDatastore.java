@@ -129,6 +129,7 @@ public class MongoOvalDatastore
            Query<T>  query = dao.createQuery();
            QueryBuilder  builder = MongoWebQueryBuilder.createInstance( type, params );
            query = builder.build( query );
+           _LOG_.debug( "query=" + query );
            list = dao.find( query ).asList();
        }
 

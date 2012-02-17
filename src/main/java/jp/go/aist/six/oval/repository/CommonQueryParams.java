@@ -32,15 +32,15 @@ public class CommonQueryParams
 
     public static class Key
     {
-        // TODO: adopt to OpenSearch ??? --- count, startIndex
-        public static final String  LIMIT  = "limit";
-        public static final String  OFFSET = "offset";
+        public static final String  ORDER       = "order";
 
-        public static final String  ORDER  = "order";
+        // OpenSearch
+        public static final String  COUNT       = "count";
+        public static final String  START_INDEX = "startIndex";
 
         // OpenSearch Time
-        public static final String  DTSTART = "dtstart";
-        public static final String  DTEND   = "dtend";
+        public static final String  DTSTART     = "dtstart";
+        public static final String  DTEND       = "dtend";
     }
     //
 
@@ -57,36 +57,36 @@ public class CommonQueryParams
 
     /**
      */
-    public void setLimit(
-                    final String limit
+    public void setCount(
+                    final String count
                     )
     {
-        set( Key.LIMIT, limit );
+        set( Key.COUNT, count );
     }
 
 
-    public String getLimit()
+    public String getCount()
     {
-        return get( Key.LIMIT );
+        return get( Key.COUNT );
     }
 
 
 
     /**
-     * @param   offset
+     * @param   start_index
      *  at which object the service should begin returning results.
      */
-    public void setOffset(
-                    final String offset
+    public void setStartIndex(
+                    final String start_index
                     )
     {
-        set( Key.OFFSET, offset );
+        set( Key.START_INDEX, start_index );
     }
 
 
-    public String getOffset()
+    public String getStartIndex()
     {
-        return get( Key.OFFSET );
+        return get( Key.START_INDEX );
     }
 
 

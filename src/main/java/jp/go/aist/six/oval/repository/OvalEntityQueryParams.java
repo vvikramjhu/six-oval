@@ -56,7 +56,11 @@ public class OvalEntityQueryParams
      */
     public OvalEntityQueryParams()
     {
-        setOrder( DEFAULT_ORDER );
+//        setOrder( DEFAULT_ORDER );
+
+        //NOTE: Since the type of the OVAL-IDs is String,
+        //      this ordering specifies the lexicographical sorting,
+        //      e.g. def:99 is bigger than def:111.
     }
 
 
