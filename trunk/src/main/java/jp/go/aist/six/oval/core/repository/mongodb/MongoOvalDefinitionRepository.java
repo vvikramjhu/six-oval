@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.core.repository.mongodb;
 import java.util.List;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.OvalId;
+import jp.go.aist.six.oval.model.OvalIdSyntaxException;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
@@ -145,23 +146,27 @@ public class MongoOvalDefinitionRepository
 
 
 
+
+    /**
+     */
     private Class<? extends OvalEntity> _objectTypeOf(
                     final String oval_id
                     )
-    throws OvalRepositoryException
+    throws OvalIdSyntaxException, OvalRepositoryException
     {
-        OvalId  obj_id = new OvalId( oval_id );
+        OvalId  id = new OvalId( oval_id );
+        OvalId.Type  type = id.getType();
 
         Class<? extends OvalEntity>  objectType = null;
-        if (OvalId.Type.def == obj_id.getType()) {
+        if (OvalId.Type.def == type) {
             objectType = DefinitionType.class;
-        } else if (OvalId.Type.tst == obj_id.getType()) {
+        } else if (OvalId.Type.tst == type) {
             objectType = TestType.class;
-        } else if (OvalId.Type.obj == obj_id.getType()) {
+        } else if (OvalId.Type.obj == type) {
             objectType = SystemObjectType.class;
-        } else if (OvalId.Type.ste == obj_id.getType()) {
+        } else if (OvalId.Type.ste == type) {
             objectType = StateType.class;
-        } else if (OvalId.Type.var == obj_id.getType()) {
+        } else if (OvalId.Type.var == type) {
             objectType = VariableType.class;
         } else {
             throw new OvalRepositoryException( "unknown OVAL entity type in OVAL-ID: " + oval_id );
@@ -184,6 +189,8 @@ public class MongoOvalDefinitionRepository
         OvalEntity p_object = null;
         try {
             p_object = _datastore.findById( objectType, oval_id );
+        } catch (OvalRepositoryException ex) {
+            throw ex;
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
