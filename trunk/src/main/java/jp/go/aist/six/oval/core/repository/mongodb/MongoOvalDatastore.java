@@ -2,14 +2,15 @@ package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import jp.go.aist.six.oval.repository.OvalRepositoryException;
+import jp.go.aist.six.oval.core.ws.MongoWebQueryBuilder;
+import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.util.persist.Persistable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.google.code.morphia.dao.DAO;
 import com.google.code.morphia.query.Query;
-import com.google.code.morphia.query.QueryResults;
 
 
 
@@ -33,8 +34,7 @@ public class MongoOvalDatastore
     /**
      * Class - DAO
      */
-    private final Map<Class<?>, DAO<?, ?>>  _daoMap =
-        new HashMap<Class<?>, DAO<?, ?>>();
+    private final Map<Class<?>, DAO<?, ?>>  _daoMap = new HashMap<Class<?>, DAO<?, ?>>();
 
 
 
@@ -48,6 +48,7 @@ public class MongoOvalDatastore
 
 
     /**
+     * DAO list injection point.
      */
     public void setDAO(
                     final Collection<? extends DAO<?, ?>> daoList
@@ -69,129 +70,96 @@ public class MongoOvalDatastore
     }
 
 
-
-    //**************************************************************
-    //  DAORegistry
-    //**************************************************************
-
-    @Override
-    public <T, K> DAO<T, K> getDAO(
-                    final Class<T> entityClass
-                    )
-    {
-        if (entityClass == null) {
-            throw new IllegalArgumentException( "null entity class" );
-        }
-
-        @SuppressWarnings( "unchecked" )
-        DAO<T, K>  dao = (DAO<T, K>)_daoMap.get( entityClass );
-        if (dao == null) {
-            throw new IllegalArgumentException(
-                            "unknown entity class: " + entityClass );
-        }
-
-        return dao;
-    }
-
-
-
-    //**************************************************************
-
-//    @PrePersist
-//    public void prePersist(
-//                    final OvalDefinitions oval_definitions
-//                    )
-//    {
-//        DAO<TestType, ObjectId>  testDAO = getDAO( TestType.class );
-//        TestsType  tests = oval_definitions.getTests();
-//        if (tests != null) {
-//            for (TestType  test : tests.getTest()) {
-//                testDAO.save( test );
-//            }
-//        }
-//    }
-
-
-
-    //**************************************************************
-    //  Datastore
-    //**************************************************************
+    ////////////////////////////////////////////////////////////////
+    //  data access methods
+    ////////////////////////////////////////////////////////////////
 
     /**
+     *
      */
     public <K, T extends Persistable<K>>
-    T get(
+    T findById(
                     final Class<T> type,
                     final K id
                     )
-    throws OvalRepositoryException
     {
-        _LOG_.debug( "type=" + type + ", id=" + id );
+       _LOG_.debug( "type=" + type + ", ID=" + id );
 
-        T  p_object = null;
-        try {
-            p_object = getDAO( type ).get( id );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
+       T  p_object = getDAO( type ).get( id );
 
-        return p_object;
-    }
+       _LOG_.debug( (p_object == null ? "object NOT found" : "object found") );
+       return p_object;
+   }
 
 
 
-    /**
-     *
-     * @param type
-     * @param query
-     * @return
-     * @throws OvalRepositoryException
-     */
-    public <K, T extends Persistable<K>>
-    QueryResults<T> find(
-                    final Class<T> type
-                    )
-    throws OvalRepositoryException
-    {
-        _LOG_.debug( "type=" + type );
+   /**
+    */
+   public <K, T extends Persistable<K>>
+   List<T> find(
+                   final Class<T> type
+                   )
+   {
+       _LOG_.debug( "type=" + type );
 
-        QueryResults<T>  results = null;
-        try {
-            results = getDAO( type ).find();
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
+       DAO<T, K>  dao = getDAO( type );
+       List<T>  list = dao.find().asList();
 
-        return results;
-    }
+       _LOG_.debug( "#objects found: " + (list == null ? 0 : list.size()) );
+       return list;
+   }
 
 
 
-    /**
-     *
-     * @param type
-     * @param query
-     * @return
-     * @throws OvalRepositoryException
-     */
-    public <K, T extends Persistable<K>>
-    QueryResults<T> find(
-                    final Class<T> type,
-                    final Query<T> query
-                    )
-    throws OvalRepositoryException
-    {
-        _LOG_.debug( "type=" + type + ", query=" + query );
+   /**
+    */
+   public <K, T extends Persistable<K>>
+   List<T> find(
+                   final Class<T> type,
+                   final QueryParams params
+                   )
+   {
+       _LOG_.debug( "type=" + type + ", params=" + params );
 
-        QueryResults<T>  results = null;
-        try {
-            results = getDAO( type ).find( query );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
+       DAO<T, K>  dao = getDAO( type );
+       List<T>  list = null;
+       if (params == null) {
+           list = dao.find().asList();
+       } else {
+           Query<T>  query = dao.createQuery();
+           QueryBuilder  builder = MongoWebQueryBuilder.createInstance( type, params );
+           query = builder.build( query );
+           list = dao.find( query ).asList();
+       }
 
-        return results;
-    }
+       _LOG_.debug( "#objects found: " + (list == null ? 0 : list.size()) );
+       return list;
+   }
+
+
+
+   //**************************************************************
+   //  DAORegistry
+   //**************************************************************
+
+   @Override
+   public <T, K> DAO<T, K> getDAO(
+                   final Class<T> objectType
+                   )
+   {
+       if (objectType == null) {
+           throw new IllegalArgumentException( "object type NOT specified (null)" );
+       }
+
+       @SuppressWarnings( "unchecked" )
+       DAO<T, K>  dao = (DAO<T, K>)_daoMap.get( objectType );
+       if (dao == null) {
+           throw new IllegalArgumentException(
+                           "unknown entity class: " + objectType );
+       }
+
+       return dao;
+   }
 
 }
 //

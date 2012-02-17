@@ -20,23 +20,13 @@
 
 package jp.go.aist.six.oval.core.repository.mongodb;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import jp.go.aist.six.oval.core.ws.MongoWebQueryBuilder;
-import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.repository.OvalDefinitionRepository;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.QueryParams;
-import jp.go.aist.six.util.persist.Persistable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.google.code.morphia.Key;
-import com.google.code.morphia.dao.DAO;
-import com.google.code.morphia.query.Query;
 
 
 
@@ -47,7 +37,7 @@ import com.google.code.morphia.query.Query;
  * @version $Id$
  */
 public class MongoOvalDefinitionRepository
-    implements OvalDefinitionRepository, DAORegistry
+    implements OvalDefinitionRepository
 {
 
     /**
@@ -58,10 +48,7 @@ public class MongoOvalDefinitionRepository
 
 
 
-    /**
-     * DAOs
-     */
-    private final Map<Class<?>, DAO<?, ?>>  _daoMap = new HashMap<Class<?>, DAO<?, ?>>();
+    private MongoOvalDatastore  _datastore;
 
 
 
@@ -74,132 +61,15 @@ public class MongoOvalDefinitionRepository
 
 
 
-    /**
-     * Converts Morphia Key<T> list to K, i.e. "_id", list.
-     */
-    private <K, T extends OvalObject & Persistable<K>>
-    List<K> _keys2IDs(
-                    final Collection<Key<T>> keys
-                    )
-    throws OvalRepositoryException
-    {
-        List<K>  ids = new ArrayList<K>();
-        if (keys != null ) {
-            for (Key<T>  key : keys) {
-                @SuppressWarnings( "unchecked" )
-                K  id = (K)key.getId();
-                ids.add( id );
-            }
-        }
-
-        return ids;
-    }
-
-
 
     /**
      *
      */
-    protected <K, T extends Persistable<K>>
-    T _findObjectById(
-                    final Class<T> type,
-                    final K id
-                    )
-    throws OvalRepositoryException
-    {
-        _LOG_.debug( "type=" + type + ", ID=" + id );
-
-        T  p_object = null;
-        try {
-            p_object = getDAO( type ).get( id );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-        _LOG_.debug( "object ID= " + id + ": " + (p_object == null ? "NOT found" : "found") );
-        return p_object;
-    }
-
-
-
-    /**
-     * Retrieves the resources.
-     */
-    protected <K, T extends Persistable<K>>
-    List<T> _findObject(
-                    final Class<T> type,
-                    final QueryParams params
-                    )
-    throws OvalRepositoryException
-    {
-        _LOG_.debug( "type=" + type + ", params=" + params );
-
-        List<T>  list = null;
-        try {
-            DAO<T, K>  dao = getDAO( type );
-            if (params == null) {
-                list = dao.find().asList();
-            } else {
-                Query<T>  query = dao.createQuery();
-                QueryBuilder  builder = MongoWebQueryBuilder.createInstance( type, params );
-                query = builder.build( query );
-
-                list = dao.find( query ).asList();
-            }
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-        _LOG_.debug( "#objects found: " + (list == null ? 0 : list.size()) );
-        return list;
-    }
-
-
-
-    /**
-     */
-    public void setDAO(
-                    final Collection<? extends DAO<?, ?>> daoList
-                                    )
-    {
-        for (DAO<?, ?> dao : daoList) {
-            if (dao == null) {
-                continue;
-            }
-
-            Class<?>  entityClass = dao.getEntityClass();
-            _LOG_.debug( "adding DAO: " + entityClass );
-            _daoMap.put( entityClass, dao );
-
-            if (dao instanceof BaseDAO) {
-                BaseDAO.class.cast( dao ).setDAORegistry( this );
-            }
-        }
-    }
-
-
-
-    //**************************************************************
-    //  DAORegistry
-    //**************************************************************
-
-    @Override
-    public <T, K> DAO<T, K> getDAO(
-                    final Class<T> entityClass
+    public void setDatastore(
+                    final MongoOvalDatastore datastore
                     )
     {
-        if (entityClass == null) {
-            throw new IllegalArgumentException( "entity class NOT specified (null)" );
-        }
-
-        @SuppressWarnings( "unchecked" )
-        DAO<T, K>  dao = (DAO<T, K>)_daoMap.get( entityClass );
-        if (dao == null) {
-            throw new IllegalArgumentException(
-                            "unknown entity class: " + entityClass );
-        }
-
-        return dao;
+        _datastore = datastore;
     }
 
 
@@ -214,10 +84,18 @@ public class MongoOvalDefinitionRepository
                     )
     throws OvalRepositoryException
     {
-        DefinitionType  p_object = _findObjectById( DefinitionType.class, oval_id );
+//      DefinitionType  p_object = _findObjectById( DefinitionType.class, oval_id );
 
+        long  ts_start = System.currentTimeMillis();
+        DefinitionType  p_object = null;
+        try {
+            p_object = _datastore.findById( DefinitionType.class, oval_id );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
         return p_object;
-
     }
 
 
@@ -232,9 +110,18 @@ public class MongoOvalDefinitionRepository
     public List<DefinitionType> findDefinition()
     throws OvalRepositoryException
     {
-        List<DefinitionType>  list = _findObject( DefinitionType.class, null );
+//        List<DefinitionType>  p_list = _findObject( DefinitionType.class, null );
 
-        return list;
+        long  ts_start = System.currentTimeMillis();
+        List<DefinitionType>  p_list = null;
+        try {
+            p_list = _datastore.find( DefinitionType.class );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+        return p_list;
     }
 
 
@@ -253,11 +140,19 @@ public class MongoOvalDefinitionRepository
                     )
     throws OvalRepositoryException
     {
-        List<DefinitionType>  list = _findObject( DefinitionType.class, params );
+//        List<DefinitionType>  p_list = _findObject( DefinitionType.class, params );
 
-        return list;
+        long  ts_start = System.currentTimeMillis();
+        List<DefinitionType>  p_list = null;
+        try {
+            p_list = _datastore.find( DefinitionType.class, params );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+        return p_list;
     }
-
 
 }
 //
