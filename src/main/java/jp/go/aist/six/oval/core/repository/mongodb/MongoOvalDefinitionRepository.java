@@ -21,7 +21,13 @@
 package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.util.List;
+import jp.go.aist.six.oval.model.OvalEntity;
+import jp.go.aist.six.oval.model.OvalIdD;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.StateType;
+import jp.go.aist.six.oval.model.definitions.SystemObjectType;
+import jp.go.aist.six.oval.model.definitions.TestType;
+import jp.go.aist.six.oval.model.definitions.VariableType;
 import jp.go.aist.six.oval.repository.OvalDefinitionRepository;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.QueryParams;
@@ -99,12 +105,6 @@ public class MongoOvalDefinitionRepository
 
 
 
-    /**
-     * Returns all the Definitions.
-     *
-     * @return
-     *  all the Definitions in the repository.
-     */
     @Override
     public List<DefinitionType> findDefinition()
     throws OvalRepositoryException
@@ -124,14 +124,6 @@ public class MongoOvalDefinitionRepository
 
 
 
-    /**
-     * Searches for the OVAL Definitions that match the specified query parameters.
-     *
-     * @param   params
-     *  the query parameters.
-     * @return
-     *  the Definitions.
-     */
     @Override
     public List<DefinitionType> findDefinition(
                     final QueryParams params
@@ -149,6 +141,55 @@ public class MongoOvalDefinitionRepository
 
         _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
         return p_list;
+    }
+
+
+
+    private Class<? extends OvalEntity> _objectTypeOf(
+                    final String oval_id
+                    )
+    throws OvalRepositoryException
+    {
+        OvalIdD  obj_id = new OvalIdD( oval_id );
+
+        Class<? extends OvalEntity>  objectType = null;
+        if (OvalIdD.Type.def == obj_id.getType()) {
+            objectType = DefinitionType.class;
+        } else if (OvalIdD.Type.tst == obj_id.getType()) {
+            objectType = TestType.class;
+        } else if (OvalIdD.Type.obj == obj_id.getType()) {
+            objectType = SystemObjectType.class;
+        } else if (OvalIdD.Type.ste == obj_id.getType()) {
+            objectType = StateType.class;
+        } else if (OvalIdD.Type.var == obj_id.getType()) {
+            objectType = VariableType.class;
+        } else {
+            throw new OvalRepositoryException( "unknown OVAL entity type in OVAL-ID: " + oval_id );
+        }
+
+        return objectType;
+    }
+
+
+
+    @Override
+    public OvalEntity findEntityById(
+                    final String oval_id
+                    )
+    throws OvalRepositoryException
+    {
+        long  ts_start = System.currentTimeMillis();
+
+        Class<? extends OvalEntity>  objectType = _objectTypeOf( oval_id );
+        OvalEntity p_object = null;
+        try {
+            p_object = _datastore.findById( objectType, oval_id );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+        return p_object;
     }
 
 }

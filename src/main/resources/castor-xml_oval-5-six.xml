@@ -14,12 +14,14 @@
 
 <mapping>
 
-    <class name ="jp.go.aist.six.oval.model.OvalID">
+<!--
+    <class name ="jp.go.aist.six.oval.model.OvalId">
 
         <field name="value" type="string">
             <bind-xml node="text"/>
         </field>
     </class>
+-->
 
 
 
