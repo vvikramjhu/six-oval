@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.model;
 
 
 
-
 /**
  * An OVAL entity type.
  *
@@ -33,11 +32,37 @@ package jp.go.aist.six.oval.model;
 public enum OvalEntityType
 {
 
-    definition,
-    test,
-    object,
-    state,
-    variable;
+    definition( OvalId.Type.def ),
+    test(       OvalId.Type.tst ),
+    object(     OvalId.Type.obj ),
+    state(      OvalId.Type.ste ),
+    variable(   OvalId.Type.var );
+
+
+
+    private OvalId.Type  id_type = null;
+
+
+
+    /**
+     * Constructor.
+     */
+    OvalEntityType(
+                    final OvalId.Type value
+                    )
+    {
+        id_type = value;
+    }
+
+
+
+    /**
+     * The types of OVAL entity for which the OVAL-ID is used.
+     */
+    public OvalId.Type idType()
+    {
+        return id_type;
+    }
 
 }
 // OvalEntityType

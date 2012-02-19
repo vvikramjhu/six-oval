@@ -3,7 +3,9 @@ package jp.go.aist.six.test.oval.core.repository.mongodb;
 import java.util.List;
 import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository;
+import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalEntity;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
@@ -109,21 +111,33 @@ public class MongoOvalDefinitionRepositoryTests
     {
         // order, count
         OvalEntityQueryParams  params_common1 = new OvalEntityQueryParams();
-        params_common1.setType( "ste" );
+        params_common1.setType( "state" );
         params_common1.setOrder( "-version" );
         params_common1.setCount( "3" );
 
         // order, count, startIndex
         OvalEntityQueryParams  params_common2 = new OvalEntityQueryParams();
-        params_common2.setType( "tst" );
+        params_common2.setType( "test" );
         params_common2.setOrder( "-version" );
         params_common2.setCount( "3" );
         params_common2.setStartIndex( "2" );
 
         // version
         OvalEntityQueryParams  params_entity1 = new OvalEntityQueryParams();
-        params_entity1.setType( "obj" );
+        params_entity1.setType( "object" );
         params_entity1.setVersion( "3" );
+
+        // component
+        OvalEntityQueryParams  params_entity2 = new OvalEntityQueryParams();
+        params_entity2.setType( "test" );
+        params_entity2.setComponent( "textfilecontent54" );
+
+        // component, platform
+        OvalEntityQueryParams  params_entity3 = new OvalEntityQueryParams();
+        params_entity3.setType( "test" );
+        params_entity3.setComponent( OvalComponentType.regkeyeffectiverights53.name() );
+        params_entity3.setPlatform( OvalPlatformType.windows.name() );
+
 
 //        // class
 //        DefinitionQueryParams  params_def1 = new DefinitionQueryParams();
@@ -139,10 +153,10 @@ public class MongoOvalDefinitionRepositoryTests
                         { params_common2 }
                         ,
                         { params_entity1 }
-//                        ,
-//                        { params_def1 }
-//                        ,
-//                        { params_def2 }
+                        ,
+                        { params_entity2 }
+                        ,
+                        { params_entity3 }
         };
     }
 
@@ -245,11 +259,11 @@ public class MongoOvalDefinitionRepositoryTests
         Reporter.log( "\n//////////////////////////////////////////////////////////",
                         true );
 
-        List<? extends OvalEntity>  def_list = _oval_def_repository.findEntity( params );
-        Assert.assertNotNull( def_list );
-        Reporter.log( "#entities: " + def_list.size(), true );
+        List<OvalEntity>  list = _oval_def_repository.findEntity( params );
+        Assert.assertNotNull( list );
+        Reporter.log( "#entities: " + list.size(), true );
 
-        for (OvalEntity  p_def : def_list) {
+        for (OvalEntity  p_def : list) {
             Reporter.log( "  @ entity: ID=" + p_def.getOvalID(), true );
         }
     }

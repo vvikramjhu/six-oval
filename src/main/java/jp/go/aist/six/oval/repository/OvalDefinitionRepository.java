@@ -119,7 +119,7 @@ public interface OvalDefinitionRepository
      * @return
      *  the entities.
      */
-    public List<? extends OvalEntity> findEntity(
+    public List<OvalEntity> findEntity(
                     QueryParams params
                     )
     throws OvalRepositoryException;

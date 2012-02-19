@@ -24,8 +24,8 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import jp.go.aist.six.oval.model.OvalEntity;
+import jp.go.aist.six.oval.model.OvalEntityType;
 import jp.go.aist.six.oval.model.OvalId;
-import jp.go.aist.six.oval.model.OvalIdSyntaxException;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
@@ -68,7 +68,6 @@ public class MongoOvalDefinitionRepository
     public MongoOvalDefinitionRepository()
     {
     }
-
 
 
 
@@ -188,18 +187,40 @@ public class MongoOvalDefinitionRepository
     private Class<? extends OvalEntity> _objectTypeOf(
                     final String oval_id
                     )
-    throws OvalIdSyntaxException
+    throws OvalRepositoryException
     {
-        OvalId  id = new OvalId( oval_id );
-        OvalId.Type  type = id.getType();
+        Class<? extends OvalEntity>  objectType = null;
 
-        Class<? extends OvalEntity>  objectType = _TYPE_MAP_.get( type );
+        try {
+            OvalId  id = new OvalId( oval_id );
+            OvalId.Type  id_type = id.getType();
+            objectType = _TYPE_MAP_.get( id_type );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
         if (objectType == null) {
-            throw new IllegalArgumentException( "unknown OVAL entity type in OVAL-ID: " + oval_id );
+            throw new OvalRepositoryException( "unknown OVAL entity type in OVAL-ID: " + oval_id );
         }
 
         return objectType;
     }
+
+
+
+    /**
+     */
+    private Class<? extends OvalEntity> _objectTypeOf(
+                    final OvalEntityType entity_type
+                    )
+    throws OvalRepositoryException
+    {
+        OvalId.Type  id_type = entity_type.idType();
+        Class<? extends OvalEntity>  objectType = _TYPE_MAP_.get( id_type );
+
+        return objectType;
+    }
+
 
 
 
@@ -228,50 +249,52 @@ public class MongoOvalDefinitionRepository
 
 
     @Override
-    public List<? extends OvalEntity> findEntity(
+    public List<OvalEntity> findEntity(
                     final QueryParams params
                     )
     throws OvalRepositoryException
     {
         long  ts_start = System.currentTimeMillis();
 
-        List<OvalEntity>  p_list = new ArrayList<OvalEntity>();
-        String  type = params.get( OvalEntityQueryParams.Key.TYPE );
+        List<OvalEntity>  p_list = null;
         try {
+            QueryParams  adjustedParams = null;
+            if (params == null) {
+                adjustedParams = new QueryParams();
+            } else {
+                adjustedParams = QueryParams.class.cast( params.clone() );
+            }
+            String  type = adjustedParams.get( OvalEntityQueryParams.Key.TYPE );
+
             List<? extends OvalEntity>  p_sub_list = null;
             if (type == null) {
-                p_sub_list = _datastore.find( TestType.class, params );
+                p_list = new ArrayList<OvalEntity>();
+                p_sub_list = _datastore.find( TestType.class,         adjustedParams );
                 p_list.addAll( p_sub_list );
-                p_sub_list = _datastore.find( SystemObjectType.class, params );
+                p_sub_list = _datastore.find( SystemObjectType.class, adjustedParams );
                 p_list.addAll( p_sub_list );
-                p_sub_list = _datastore.find( StateType.class, params );
+                p_sub_list = _datastore.find( StateType.class,        adjustedParams );
+                p_list.addAll( p_sub_list );
+                p_sub_list = _datastore.find( VariableType.class,     adjustedParams );
                 p_list.addAll( p_sub_list );
             } else {
-                //TODO: make QueryParams cloneable, and add remove(key) method.
-                QueryParams  adjustedParams = new QueryParams();
-                for (String  key : params.keys()) {
-                    if (! key.equals( OvalEntityQueryParams.Key.TYPE )) {
-                        adjustedParams.set( key, params.get( key ) );
-                    }
-                }
-
-                Class<? extends OvalEntity>  objectType = _TYPE_MAP_.get( OvalId.Type.valueOf( type ) );
-                _LOG_.info( "object type: " +  objectType );
+                adjustedParams.remove( OvalEntityQueryParams.Key.TYPE );
+                Class<? extends OvalEntity>  objectType = _objectTypeOf( OvalEntityType.valueOf( type ) );
                 try {
                     p_sub_list = _datastore.find( objectType, adjustedParams );
-                    p_list.addAll( p_sub_list );
+                    p_list = new ArrayList<OvalEntity>( p_sub_list );
                 } catch (Exception ex) {
                     throw new OvalRepositoryException( ex );
                 }
             }
+        } catch (OvalRepositoryException ex) {
+            throw ex;
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
 
         _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
         return p_list;
-
-
     }
 
 }

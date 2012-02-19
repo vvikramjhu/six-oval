@@ -603,6 +603,7 @@ implements QueryBuilder
                     }
 
                     OvalComponentType  component = OvalComponentType.valueOf( value );
+//                    _LOG_.debug( "component type handler: value=" + value + ", component=" + component );
                     query.filter( field, component );
                 }
             };
@@ -778,7 +779,7 @@ implements QueryBuilder
         protected static Map<String, Handler> _createHandlers()
         {
 
-            Map<String, Handler>  mapping = BasicBuilder._createHandlers();
+            Map<String, Handler>  mapping = OvalEntityBuilder._createHandlers();
             mapping.put( TestQueryParams.Key.OBJECT_REF,    _DEFAULT_HANDLER_ );
             mapping.put( TestQueryParams.Key.STATE_REF,     _DEFAULT_HANDLER_ );
 
