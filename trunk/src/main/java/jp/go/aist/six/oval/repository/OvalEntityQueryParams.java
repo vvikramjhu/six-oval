@@ -35,6 +35,7 @@ public class OvalEntityQueryParams
     {
         public static final String  ID                  = "id";
         public static final String  VERSION             = "version";
+        public static final String  TYPE                = "type";
 
         public static final String  SCHEMA_VERSION      = "schemaVersion";
         public static final String  PLATFORM            = "platform";
@@ -44,10 +45,10 @@ public class OvalEntityQueryParams
 
 
 
-    /**
-     * The default sorting order.
-     */
-    public static final String  DEFAULT_ORDER = Key.ID;
+//    /**
+//     * The default sorting order.
+//     */
+//    public static final String  DEFAULT_ORDER = Key.ID;
 
 
 
@@ -95,6 +96,23 @@ public class OvalEntityQueryParams
     public String getVersion()
     {
         return get( Key.VERSION );
+    }
+
+
+
+    /**
+     */
+    public void setType(
+                    final String type
+    )
+    {
+        set( Key.TYPE, type );
+    }
+
+
+    public String getType()
+    {
+        return get( Key.TYPE );
     }
 
 

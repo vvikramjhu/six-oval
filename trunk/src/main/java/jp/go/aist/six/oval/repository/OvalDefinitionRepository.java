@@ -111,18 +111,18 @@ public interface OvalDefinitionRepository
 //
 //
 //
-//    /**
-//     * Searches for the OVAL entity that match the specified query parameters.
-//     *
-//     * @param   params
-//     *  the query parameters.
-//     * @return
-//     *  the entities.
-//     */
-//    public List<OvalEntity> findEntity(
-//                    QueryParams params
-//                    )
-//    throws OvalRepositoryException;
+    /**
+     * Searches for the OVAL entity that match the specified query parameters.
+     *
+     * @param   params
+     *  the query parameters.
+     * @return
+     *  the entities.
+     */
+    public List<? extends OvalEntity> findEntity(
+                    QueryParams params
+                    )
+    throws OvalRepositoryException;
 //
 //
 //
