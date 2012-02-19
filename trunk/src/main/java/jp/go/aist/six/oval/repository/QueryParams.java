@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.repository;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -34,6 +35,7 @@ import java.util.Set;
  * @version $Id$
  */
 public class QueryParams
+    implements Cloneable, Serializable
 {
 
     private final Map<String, String>  _params = new HashMap<String, String>();
@@ -45,6 +47,14 @@ public class QueryParams
      */
     public QueryParams()
     {
+    }
+
+
+    public QueryParams(
+                    final Map<String, String> params
+                    )
+    {
+        _params.putAll( params );
     }
 
 
@@ -98,6 +108,31 @@ public class QueryParams
     {
         String  value = get( key );
         return (value == null ? defaultValue : value);
+    }
+
+
+
+    /**
+     *
+     */
+    public String remove(
+                    final String key
+                    )
+    {
+        return _params.remove( key );
+    }
+
+
+
+    //**************************************************************
+    //  java.lang.Cloneable
+    //**************************************************************
+
+    @Override
+    public Object clone()
+    throws CloneNotSupportedException
+    {
+        return (new QueryParams( _params ));
     }
 
 
