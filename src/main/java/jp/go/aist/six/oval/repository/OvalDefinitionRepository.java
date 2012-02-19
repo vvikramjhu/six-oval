@@ -75,6 +75,16 @@ public interface OvalDefinitionRepository
 
 
 
+    /**
+     * Returns The number of OVAL Definitions in the repository.
+     *
+     * @return
+     *  the number of Definitions in the repository.
+     */
+    public long countDefinition()
+    throws OvalRepositoryException;
+
+
 
     /**
      * Returns the OVAL entity of the specified OVAL-ID.
