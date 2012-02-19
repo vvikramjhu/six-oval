@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.core.repository.mongodb;
 
+import java.util.EnumMap;
 import java.util.List;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.OvalId;
@@ -146,30 +147,53 @@ public class MongoOvalDefinitionRepository
 
 
 
+    @Override
+    public long countDefinition()
+    throws OvalRepositoryException
+    {
+        long  ts_start = System.currentTimeMillis();
+
+        long  count = 0L;
+        try {
+            count = _datastore.count( DefinitionType.class );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+        return count;
+    }
+
+
+
+    /**
+     * OVAL entity type - Java class mapping.
+     */
+    private static EnumMap<OvalId.Type, Class<? extends OvalEntity>>  _TYPE_MAP_ =
+                    new EnumMap<OvalId.Type, Class<? extends OvalEntity>>( OvalId.Type.class );
+
+    static {
+            _TYPE_MAP_.put( OvalId.Type.def, DefinitionType.class );
+            _TYPE_MAP_.put( OvalId.Type.tst, TestType.class );
+            _TYPE_MAP_.put( OvalId.Type.obj, SystemObjectType.class );
+            _TYPE_MAP_.put( OvalId.Type.ste, StateType.class );
+            _TYPE_MAP_.put( OvalId.Type.var, VariableType.class );
+    }
+
 
     /**
      */
     private Class<? extends OvalEntity> _objectTypeOf(
                     final String oval_id
                     )
-    throws OvalIdSyntaxException, OvalRepositoryException
+    throws OvalIdSyntaxException
     {
         OvalId  id = new OvalId( oval_id );
         OvalId.Type  type = id.getType();
 
-        Class<? extends OvalEntity>  objectType = null;
-        if (OvalId.Type.def == type) {
-            objectType = DefinitionType.class;
-        } else if (OvalId.Type.tst == type) {
-            objectType = TestType.class;
-        } else if (OvalId.Type.obj == type) {
-            objectType = SystemObjectType.class;
-        } else if (OvalId.Type.ste == type) {
-            objectType = StateType.class;
-        } else if (OvalId.Type.var == type) {
-            objectType = VariableType.class;
-        } else {
-            throw new OvalRepositoryException( "unknown OVAL entity type in OVAL-ID: " + oval_id );
+        Class<? extends OvalEntity>  objectType = _TYPE_MAP_.get( type );
+        if (objectType == null) {
+            throw new IllegalArgumentException( "unknown OVAL entity type in OVAL-ID: " + oval_id );
         }
 
         return objectType;

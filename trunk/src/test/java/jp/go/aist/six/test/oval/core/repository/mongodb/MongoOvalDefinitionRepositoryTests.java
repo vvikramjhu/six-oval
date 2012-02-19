@@ -93,6 +93,8 @@ public class MongoOvalDefinitionRepositoryTests
     {
         return new Object[][] {
                         { "oval:org.mitre.oval.test:tst:826" }
+                        ,
+                        { "oval:org.mitre.oval.test:def:165" }
         };
     }
 
@@ -116,8 +118,11 @@ public class MongoOvalDefinitionRepositoryTests
                         true );
 
         List<DefinitionType>  def_list = _oval_def_repository.findDefinition();
+        long  count = _oval_def_repository.countDefinition();
         Assert.assertNotNull( def_list );
         Reporter.log( "#Definitions: " + def_list.size(), true );
+        Reporter.log( "count: " + count, true );
+        Assert.assertTrue( def_list.size() == count );
 
         for (DefinitionType  p_def : def_list) {
             Reporter.log( "  @ definition: ID=" + p_def.getOvalID(), true );
@@ -171,6 +176,7 @@ public class MongoOvalDefinitionRepositoryTests
 
         OvalEntity   p_object = _oval_def_repository.findEntityById( oval_id );
         Reporter.log( "  @ entity: " + p_object, true );
+        Assert.assertTrue( oval_id.equals( p_object.getOvalID() ) );
     }
 
 }

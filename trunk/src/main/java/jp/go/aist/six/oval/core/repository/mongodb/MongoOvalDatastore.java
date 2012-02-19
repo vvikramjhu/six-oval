@@ -139,6 +139,24 @@ public class MongoOvalDatastore
 
 
 
+   /**
+    */
+   public <K, T extends Persistable<K>>
+   long count(
+                   final Class<T> type
+                   )
+   {
+       _LOG_.debug( "type=" + type );
+
+       DAO<T, K>  dao = getDAO( type );
+       long  count = dao.count();
+
+       _LOG_.debug( "count: " + count );
+       return count;
+   }
+
+
+
    //**************************************************************
    //  DAORegistry
    //**************************************************************
