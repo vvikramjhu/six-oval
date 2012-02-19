@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.core.repository.mongodb;
 
+import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import jp.go.aist.six.oval.model.OvalEntity;
@@ -31,6 +32,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.definitions.VariableType;
 import jp.go.aist.six.oval.repository.OvalDefinitionRepository;
+import jp.go.aist.six.oval.repository.OvalEntityQueryParams;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.QueryParams;
 import org.slf4j.Logger;
@@ -173,7 +175,7 @@ public class MongoOvalDefinitionRepository
                     new EnumMap<OvalId.Type, Class<? extends OvalEntity>>( OvalId.Type.class );
 
     static {
-            _TYPE_MAP_.put( OvalId.Type.def, DefinitionType.class );
+//            _TYPE_MAP_.put( OvalId.Type.def, DefinitionType.class );
             _TYPE_MAP_.put( OvalId.Type.tst, TestType.class );
             _TYPE_MAP_.put( OvalId.Type.obj, SystemObjectType.class );
             _TYPE_MAP_.put( OvalId.Type.ste, StateType.class );
@@ -221,6 +223,55 @@ public class MongoOvalDefinitionRepository
 
         _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
         return p_object;
+    }
+
+
+
+    @Override
+    public List<? extends OvalEntity> findEntity(
+                    final QueryParams params
+                    )
+    throws OvalRepositoryException
+    {
+        long  ts_start = System.currentTimeMillis();
+
+        List<OvalEntity>  p_list = new ArrayList<OvalEntity>();
+        String  type = params.get( OvalEntityQueryParams.Key.TYPE );
+        try {
+            List<? extends OvalEntity>  p_sub_list = null;
+            if (type == null) {
+                p_sub_list = _datastore.find( TestType.class, params );
+                p_list.addAll( p_sub_list );
+                p_sub_list = _datastore.find( SystemObjectType.class, params );
+                p_list.addAll( p_sub_list );
+                p_sub_list = _datastore.find( StateType.class, params );
+                p_list.addAll( p_sub_list );
+            } else {
+                //TODO: make QueryParams cloneable, and add remove(key) method.
+                QueryParams  adjustedParams = new QueryParams();
+                for (String  key : params.keys()) {
+                    if (! key.equals( OvalEntityQueryParams.Key.TYPE )) {
+                        adjustedParams.set( key, params.get( key ) );
+                    }
+                }
+
+                Class<? extends OvalEntity>  objectType = _TYPE_MAP_.get( OvalId.Type.valueOf( type ) );
+                _LOG_.info( "object type: " +  objectType );
+                try {
+                    p_sub_list = _datastore.find( objectType, adjustedParams );
+                    p_list.addAll( p_sub_list );
+                } catch (Exception ex) {
+                    throw new OvalRepositoryException( ex );
+                }
+            }
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+        return p_list;
+
+
     }
 
 }
