@@ -9,6 +9,7 @@ import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.util.persist.Persistable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.google.code.morphia.Key;
 import com.google.code.morphia.dao.DAO;
 import com.google.code.morphia.query.Query;
 
@@ -135,6 +136,48 @@ public class MongoOvalDatastore
 
        _LOG_.debug( "#objects found: " + (list == null ? 0 : list.size()) );
        return list;
+   }
+
+
+
+   public <K, T extends Persistable<K>>
+   List<K> findIds(
+                   final Class<T> type
+                   )
+   {
+       _LOG_.debug( "type=" + type );
+
+       DAO<T, K>  dao = getDAO( type );
+       List<Key<T>>  list = dao.find().asKeyList();
+
+       _LOG_.debug( "#IDs found: " + (list == null ? 0 : list.size()) );
+       return MorphiaHelper.keys2IDs( list );
+   }
+
+
+
+   public <K, T extends Persistable<K>>
+   List<K> findIds(
+                   final Class<T> type,
+                   final QueryParams params
+                   )
+   {
+       _LOG_.debug( "type=" + type + ", params=" + params );
+
+       DAO<T, K>  dao = getDAO( type );
+       List<Key<T>>  list = null;
+       if (params == null) {
+           list = dao.find().asKeyList();
+       } else {
+           Query<T>  query = dao.createQuery();
+           QueryBuilder  builder = MongoWebQueryBuilder.createInstance( type, params );
+           query = builder.build( query );
+           _LOG_.debug( "query=" + query );
+           list = dao.find( query ).asKeyList();
+       }
+
+       _LOG_.debug( "#IDs found: " + (list == null ? 0 : list.size()) );
+       return MorphiaHelper.keys2IDs( list );
    }
 
 

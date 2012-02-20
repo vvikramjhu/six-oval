@@ -82,6 +82,12 @@ public class MongoOvalDefinitionRepository
     }
 
 
+    protected MongoOvalDatastore _getDatastore()
+    {
+        return _datastore;
+    }
+
+
 
     //**************************************************************
     //  OvalDefinitionRepository
