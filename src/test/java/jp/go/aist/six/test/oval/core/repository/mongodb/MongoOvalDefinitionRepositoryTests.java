@@ -3,6 +3,7 @@ package jp.go.aist.six.test.oval.core.repository.mongodb;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.List;
+import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalEntity;
@@ -10,8 +11,11 @@ import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.StateType;
+import jp.go.aist.six.oval.model.definitions.SystemObjectType;
+import jp.go.aist.six.oval.model.definitions.TestType;
+import jp.go.aist.six.oval.model.definitions.VariableType;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
-import jp.go.aist.six.oval.repository.OvalDefinitionRepository;
 import jp.go.aist.six.oval.repository.OvalEntityQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.test.oval.core.TestBase;
@@ -51,7 +55,7 @@ extends TestBase
 
 
 
-    protected OvalDefinitionRepository _getDefinitionRepository()
+    protected MongoOvalDefinitionRepository _getDefinitionRepository()
     {
         return _oval_def_repository;
     }
@@ -287,7 +291,6 @@ extends TestBase
 
 
     /**
-                    dependsOnMethods= { "testFindDefinition" },
      */
     @org.testng.annotations.Test(
                     groups={ "oval.core.repository.mongodb" },
@@ -352,6 +355,30 @@ extends TestBase
         for (DefinitionType  p_def : p_object.getDefinitions().getDefinition()) {
             Reporter.log( "  @ definition: " + p_def, true );
         }
+    }
+
+
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={ "oval.core.repository.mongodb.delete" },
+                    alwaysRun=true
+                    )
+    public void testDeleteAll()
+    throws Exception
+    {
+        Reporter.log( "\n//////////////////////////////////////////////////////////",
+                        true );
+
+        MongoOvalDatastore  ds = _getDefinitionRepository().getDatastore();
+
+        ds.delete( OvalDefinitions.class );
+        ds.delete( DefinitionType.class );
+        ds.delete( TestType.class );
+        ds.delete( SystemObjectType.class );
+        ds.delete( StateType.class );
+        ds.delete( VariableType.class );
     }
 
 }

@@ -71,7 +71,7 @@ public class MongoOvalDefinitionResultsRepository
 
         OvalResults  p_object = null;
         try {
-            p_object = _getDatastore().findById( OvalResults.class, id );
+            p_object = getDatastore().findById( OvalResults.class, id );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -89,7 +89,7 @@ public class MongoOvalDefinitionResultsRepository
 
         List<OvalResults>  p_list = null;
         try {
-            p_list = _getDatastore().find( OvalResults.class );
+            p_list = getDatastore().find( OvalResults.class );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -109,7 +109,7 @@ public class MongoOvalDefinitionResultsRepository
 
         List<OvalResults>  p_list = null;
         try {
-            p_list = _getDatastore().find( OvalResults.class, params );
+            p_list = getDatastore().find( OvalResults.class, params );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -127,7 +127,7 @@ public class MongoOvalDefinitionResultsRepository
 
         List<String>  list = null;
         try {
-            list = _getDatastore().findIds( OvalResults.class );
+            list = getDatastore().findIds( OvalResults.class );
 //            keys = dao.findIds(); // this code does NOT work. why???
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
@@ -148,7 +148,7 @@ public class MongoOvalDefinitionResultsRepository
 
         List<String>  p_list = null;
         try {
-            p_list = _getDatastore().findIds( OvalResults.class, params );
+            p_list = getDatastore().findIds( OvalResults.class, params );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -166,7 +166,7 @@ public class MongoOvalDefinitionResultsRepository
 
         long  count = 0L;
         try {
-            count = _getDatastore().count( OvalResults.class );
+            count = getDatastore().count( OvalResults.class );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }

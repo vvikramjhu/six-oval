@@ -67,6 +67,13 @@
     <!-- ******************************************************* -->
 
     <test name="oval.core.repository.mongodb.MongoOvalDefinitionRepository" enabled="true">
+        <groups>
+            <run>
+                <include name="oval.core.repository.mongodb"/>
+                <!--
+                -->
+            </run>
+        </groups>
         <classes>
             <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalDefinitionRepositoryTests"/>
         </classes>
