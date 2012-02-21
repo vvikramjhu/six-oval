@@ -67,7 +67,7 @@ extends TestBase
     //**************************************************************
 
     /**
-     * Query parameters for OVAL Definitions.
+     * Query parameters for OVAL Definition.
      */
     @DataProvider( name="oval.repository.definition.queryParams" )
     public Object[][] provideOvalDefinitionRepositoryDefinitionQueryParams()

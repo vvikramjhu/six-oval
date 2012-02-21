@@ -153,7 +153,7 @@ public abstract class TestBase
      *  T                   expectedObject
      */
     @DataProvider( name="oval.test_content.def" )
-    public Object[][] provideOvalTestContent()
+    public Object[][] provideOvalTestContentOvalDefinitions()
     {
         return new Object[][] {
                         /* Windows */
@@ -192,6 +192,34 @@ public abstract class TestBase
 //                            "ind-def_family_test.xml"
 //                            null
 //                        }
+        };
+
+    }
+
+
+
+    /**
+     * Provides OVAL test content.
+     *  Class<T>            object_type,
+     *  String              oval_schema_version,
+     *  OvalPlatformType    platform,
+     *  String              dirpath,
+     *  String              filename
+     *  T                   expectedObject
+     */
+    @DataProvider( name="oval.test_content.res" )
+    public Object[][] provideOvalTestContentOvalResutls()
+    {
+        return new Object[][] {
+                        /* Windows */
+                        {
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            "5.10",
+                            OvalPlatformType.windows,
+                            "test/resources/OvalTestContent/5.10/win-res",
+                            null,
+                            null
+                        }
         };
 
     }

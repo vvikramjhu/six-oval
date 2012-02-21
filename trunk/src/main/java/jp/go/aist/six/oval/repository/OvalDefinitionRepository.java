@@ -204,7 +204,7 @@ public interface OvalDefinitionRepository
      * @param   defs
      *  the OVAL Definitions document.
      * @return
-     *  the IDs of the entities.
+     *  the ID of the document.
      */
     public String saveOvalDefinitions(
                     OvalDefinitions defs
