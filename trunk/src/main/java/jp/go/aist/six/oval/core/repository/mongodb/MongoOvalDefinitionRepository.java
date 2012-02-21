@@ -89,7 +89,7 @@ public class MongoOvalDefinitionRepository
     }
 
 
-    protected MongoOvalDatastore _getDatastore()
+    public MongoOvalDatastore getDatastore()
     {
         return _datastore;
     }
