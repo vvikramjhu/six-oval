@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.repository;
 import java.util.List;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 
 
 
@@ -146,5 +147,69 @@ public interface OvalDefinitionRepository
 //                    )
 //    throws OvalRepositoryException;
 
-}
 
+
+    /**
+     * Returns the OVAL Definitions document object of the specified ID.
+     * If no such Definition exists, this method returns null.
+     *
+     * @param   id
+     *  the ID.
+     */
+    public OvalDefinitions findOvalDefinitionsById(
+                    String id
+                    )
+    throws OvalRepositoryException;
+
+
+
+    /**
+     * Saves the entity, either inserting or updating the existing one.
+     *
+     * @param   entity
+     *  the entity to save.
+     * @return
+     *  the ID of the entity.
+     */
+//    public String saveEntity(
+//                    OvalEntity entity
+//                    )
+    public <T extends OvalEntity>
+    String saveEntity(
+                    final T entity
+                    )
+    throws OvalRepositoryException;
+
+
+
+    /**
+     * Saves the entities which are contained in the specified OVAL Definitions document.
+     *
+     * @param   oval_defs
+     *  the OVAL Definitions document.
+     * @return
+     *  the IDs of the entities.
+     */
+    public List<String> saveEntities(
+                    OvalDefinitions oval_defs
+                    )
+    throws OvalRepositoryException;
+
+
+
+    /**
+     * Saves the OVAL Definitions document and the entities
+     * which are contained in that document.
+     *
+     * @param   defs
+     *  the OVAL Definitions document.
+     * @return
+     *  the IDs of the entities.
+     */
+    public String saveOvalDefinitions(
+                    OvalDefinitions defs
+                    )
+    throws OvalRepositoryException;
+
+}
+//

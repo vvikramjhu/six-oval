@@ -21,16 +21,23 @@
 package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.EnumMap;
 import java.util.List;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.OvalEntityType;
 import jp.go.aist.six.oval.model.OvalId;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.DefinitionsType;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.StateType;
+import jp.go.aist.six.oval.model.definitions.StatesType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
+import jp.go.aist.six.oval.model.definitions.SystemObjectsType;
 import jp.go.aist.six.oval.model.definitions.TestType;
+import jp.go.aist.six.oval.model.definitions.TestsType;
 import jp.go.aist.six.oval.model.definitions.VariableType;
+import jp.go.aist.six.oval.model.definitions.VariablesType;
 import jp.go.aist.six.oval.repository.OvalDefinitionRepository;
 import jp.go.aist.six.oval.repository.OvalEntityQueryParams;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
@@ -229,6 +236,17 @@ public class MongoOvalDefinitionRepository
 
 
 
+    /**
+     */
+    private Class<? extends OvalEntity> _objectTypeOf(
+                    final OvalEntity entity
+                    )
+    throws OvalRepositoryException
+    {
+        return _objectTypeOf( entity.getOvalID() );
+    }
+
+
 
     @Override
     public OvalEntity findEntityById(
@@ -301,6 +319,149 @@ public class MongoOvalDefinitionRepository
 
         _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
         return p_list;
+    }
+
+
+
+
+    @Override
+    public <T extends OvalEntity> String saveEntity(
+                    final T entity
+                    )
+    throws OvalRepositoryException
+    {
+        long  ts_start = System.currentTimeMillis();
+
+        @SuppressWarnings( "unchecked" )
+        Class<T>  objectType = (Class<T>)_objectTypeOf( entity );
+        String  id = null;
+        try {
+            id = _datastore.save( objectType, entity );
+//            if (entity instanceof DefinitionType) {
+//                id = _datastore.save( DefinitionType.class, (DefinitionType)entity );
+//            } else if (entity instanceof TestType) {
+//                id = _datastore.save( TestType.class, (TestType)entity );
+//            } else if (entity instanceof SystemObjectType) {
+//                id = _datastore.save( SystemObjectType.class, (SystemObjectType)entity );
+//            } else if (entity instanceof StateType) {
+//                id = _datastore.save( StateType.class, (StateType)entity );
+//            } else if (entity instanceof VariableType) {
+//                id = _datastore.save( VariableType.class, (VariableType)entity );
+//            }
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+        return id;
+    }
+
+
+
+    @Override
+    public OvalDefinitions findOvalDefinitionsById(
+                    final String id
+                    )
+    throws OvalRepositoryException
+    {
+        long  ts_start = System.currentTimeMillis();
+
+        OvalDefinitions  p_object = null;
+        try {
+            p_object = _datastore.findById( OvalDefinitions.class, id );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+        return p_object;
+    }
+
+
+
+    protected <T extends OvalEntity> List<String> _saveEntities(
+                    final Class<T> type,
+                    final Collection<T> entity_list
+                    )
+    throws OvalRepositoryException
+    {
+        List<String>  id_list = new ArrayList<String>();
+        for (T  entity : entity_list) {
+            String  id = _datastore.save( type, entity );
+            id_list.add( id );
+        }
+
+        return id_list;
+    }
+
+
+
+    @Override
+    public List<String> saveEntities(
+                    final OvalDefinitions oval_defs
+                    )
+    throws OvalRepositoryException
+    {
+        long  ts_start = System.currentTimeMillis();
+
+        List<String>  id_list = new ArrayList<String>();
+        try {
+            DefinitionsType  defs = oval_defs.getDefinitions();
+            if (defs != null) {
+                List<String>  def_id_list = _saveEntities( DefinitionType.class, defs.getDefinition() );
+                id_list.addAll( def_id_list );
+            }
+
+            TestsType  tests = oval_defs.getTests();
+            if (tests != null) {
+                List<String>  tst_id_list = _saveEntities( TestType.class, tests.getTest() );
+                id_list.addAll( tst_id_list );
+            }
+
+            SystemObjectsType  objects = oval_defs.getObjects();
+            if (objects != null) {
+                List<String>  obj_id_list = _saveEntities( SystemObjectType.class, objects.getObject() );
+                id_list.addAll( obj_id_list );
+            }
+
+            StatesType  states = oval_defs.getStates();
+            if (states != null) {
+                List<String>  ste_id_list = _saveEntities( StateType.class, states.getState() );
+                id_list.addAll( ste_id_list );
+            }
+
+            VariablesType  variables = oval_defs.getVariables();
+            if (variables != null) {
+                List<String>  var_id_list = _saveEntities( VariableType.class, variables.getVariable() );
+                id_list.addAll( var_id_list );
+            }
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+        return id_list;
+    }
+
+
+
+    @Override
+    public String saveOvalDefinitions(
+                    final OvalDefinitions defs
+                    )
+    throws OvalRepositoryException
+    {
+        long  ts_start = System.currentTimeMillis();
+
+        String  id = null;
+        try {
+            id = _datastore.save( OvalDefinitions.class, defs );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+        return id;
     }
 
 }

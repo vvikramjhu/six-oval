@@ -56,10 +56,26 @@ public class MorphiaHelper
 
 
     /**
+     * Converts Morphia Key<T> to K, i.e. "_id".
+     */
+    public static final <K, T extends Persistable<K>>
+    K key2Id(
+                    final Key<T> key
+                    )
+    throws OvalRepositoryException
+    {
+        @SuppressWarnings( "unchecked" )
+        K  id = (K)key.getId();
+        return id;
+    }
+
+
+
+    /**
      * Converts Morphia Key<T> list to K, i.e. "_id", list.
      */
-    public static <K, T extends Persistable<K>>
-    List<K> keys2IDs(
+    public static final <K, T extends Persistable<K>>
+    List<K> keys2Ids(
                     final Collection<Key<T>> keys
                     )
     throws OvalRepositoryException
@@ -67,9 +83,7 @@ public class MorphiaHelper
         List<K>  ids = new ArrayList<K>();
         if (keys != null ) {
             for (Key<T>  key : keys) {
-                @SuppressWarnings( "unchecked" )
-                K  id = (K)key.getId();
-                ids.add( id );
+                ids.add( key2Id( key ) );
             }
         }
 
