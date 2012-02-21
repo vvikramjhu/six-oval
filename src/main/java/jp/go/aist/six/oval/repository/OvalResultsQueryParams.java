@@ -22,23 +22,19 @@ package jp.go.aist.six.oval.repository;
 
 
 
-
-
-
-
 /**
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalSystemCharacteristicsQueryParams
-    extends CommonQueryParams
+public class OvalResultsQueryParams
+    extends OvalSystemCharacteristicsQueryParams
 {
 
     public static class Key
-    extends CommonQueryParams.Key
+    extends OvalSystemCharacteristicsQueryParams.Key
     {
-        public static final String  PRIMARY_HOST_NAME   = "primary_host_name";
-        public static final String  OS_NAME             = "os_name";
+        public static final String  RESULT_TRUE_DEF = "result_true_def";
+        public static final String  RESULT_FALSE_DEF = "result_false_def";
     }
     // Key
 
@@ -47,7 +43,7 @@ public class OvalSystemCharacteristicsQueryParams
     /**
      * Constructor.
      */
-    public OvalSystemCharacteristicsQueryParams()
+    public OvalResultsQueryParams()
     {
     }
 
@@ -55,36 +51,36 @@ public class OvalSystemCharacteristicsQueryParams
 
     /**
      */
-    public void setPrimary_host_name(
-                    final String primary_host_name
+    public void setResult_true_def(
+                    final String oval_id
                     )
     {
-        set( Key.PRIMARY_HOST_NAME, primary_host_name );
+        set( Key.RESULT_TRUE_DEF, oval_id );
     }
 
 
-    public String getPrimary_host_name()
+    public String getResult_true_def()
     {
-        return get( Key.PRIMARY_HOST_NAME );
+        return get( Key.RESULT_TRUE_DEF );
     }
 
 
 
     /**
      */
-    public void setOs_name(
-                    final String os_name
-    )
+    public void setResult_false_def(
+                    final String oval_id
+                    )
     {
-        set( Key.OS_NAME, os_name );
+        set( Key.RESULT_FALSE_DEF, oval_id );
     }
 
 
-    public String getOs_name()
+    public String getResult_false_def()
     {
-        return get( Key.OS_NAME );
+        return get( Key.RESULT_FALSE_DEF );
     }
 
 }
-//
+//OvalResultsQueryParams
 

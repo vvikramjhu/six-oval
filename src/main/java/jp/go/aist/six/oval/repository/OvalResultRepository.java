@@ -110,5 +110,20 @@ public interface OvalResultRepository
     public long countOvalResults()
     throws OvalRepositoryException;
 
+
+
+    /**
+     * Saves the OVAL Results document.
+     *
+     * @param   oval_results
+     *  the OVAL Results document.
+     * @return
+     *  the ID of the document.
+     */
+    public String saveOvalResults(
+                    OvalResults oval_results
+                    )
+    throws OvalRepositoryException;
+
 }
 //

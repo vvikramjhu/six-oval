@@ -62,6 +62,7 @@ public class MongoOvalDefinitionResultsRepository
     //  OvalResultsRepository
     //**************************************************************
 
+    @Override
     public OvalResults findOvalResultsById(
                     final String id
                     )
@@ -82,6 +83,7 @@ public class MongoOvalDefinitionResultsRepository
 
 
 
+    @Override
     public List<OvalResults> findOvalResults()
     throws OvalRepositoryException
     {
@@ -100,6 +102,7 @@ public class MongoOvalDefinitionResultsRepository
 
 
 
+    @Override
     public List<OvalResults> findOvalResults(
                     final QueryParams params
                     )
@@ -120,6 +123,7 @@ public class MongoOvalDefinitionResultsRepository
 
 
 
+    @Override
     public List<String> findOvalResultsIds()
     throws OvalRepositoryException
     {
@@ -139,6 +143,7 @@ public class MongoOvalDefinitionResultsRepository
 
 
 
+    @Override
     public List<String> findOvalResultsIds(
                     final QueryParams params
                     )
@@ -159,6 +164,7 @@ public class MongoOvalDefinitionResultsRepository
 
 
 
+    @Override
     public long countOvalResults()
     throws OvalRepositoryException
     {
@@ -173,6 +179,27 @@ public class MongoOvalDefinitionResultsRepository
 
         _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
         return count;
+    }
+
+
+
+    @Override
+    public String saveOvalResults(
+                    final OvalResults oval_results
+                    )
+    throws OvalRepositoryException
+    {
+        long  ts_start = System.currentTimeMillis();
+
+        String  id = null;
+        try {
+            id = getDatastore().save( OvalResults.class, oval_results );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+        return id;
     }
 
 }

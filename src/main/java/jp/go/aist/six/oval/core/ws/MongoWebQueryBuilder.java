@@ -33,11 +33,13 @@ import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.TestType;
+import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.OvalEntityQueryParams;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
+import jp.go.aist.six.oval.repository.OvalResultsQueryParams;
 import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.oval.repository.TestQueryParams;
@@ -80,6 +82,8 @@ implements QueryBuilder
             return (new OvalEntityBuilder( params ));
         } else if (OvalSystemCharacteristics.class.isAssignableFrom( type )) {
             return (new OvalSystemCharacteristicsBuilder( params ));
+        } else if (OvalResults.class.isAssignableFrom( type )) {
+            return (new OvalResultsBuilder( params ));
         }
 
         return (new BasicBuilder( params ));
@@ -447,7 +451,6 @@ implements QueryBuilder
     //==============================================================
     //  builders
     //==============================================================
-
 
     public static class BasicBuilder
     extends MongoWebQueryBuilder
@@ -818,6 +821,8 @@ implements QueryBuilder
 
 
 
+    /**
+     */
     public static class OvalSystemCharacteristicsBuilder
     extends BasicBuilder
     {
@@ -827,7 +832,7 @@ implements QueryBuilder
             Map<String, String>  mapping = new HashMap<String, String>();
 
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.PRIMARY_HOST_NAME, "system_info.os_name" );
-            mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS_NAME,           "system_info.primaary_host_name" );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS_NAME,           "system_info.primary_host_name" );
 
             return mapping;
         }
@@ -874,6 +879,68 @@ implements QueryBuilder
 
     }
     // OvalSystemCharacteristics
+
+
+
+    /**
+     */
+    public static class OvalResultsBuilder
+    extends BasicBuilder
+    {
+
+        protected static Map<String, String> _createFieldMapping()
+        {
+            Map<String, String>  mapping = new HashMap<String, String>();
+
+            mapping.put( OvalResultsQueryParams.Key.PRIMARY_HOST_NAME, "results.system.oval_system_characteristics.system_info.primary_host_name" );
+            mapping.put( OvalResultsQueryParams.Key.OS_NAME,           "results.system.oval_system_characteristics.system_info.os_name" );
+
+            return mapping;
+        }
+
+
+        private static final Map<String, String>  _FIELDS_ = _createFieldMapping();
+
+
+
+        protected static Map<String, Handler> _createHandlers()
+        {
+            Map<String, Handler>  mapping = BasicBuilder._createHandlers();
+            mapping.put( OvalResultsQueryParams.Key.PRIMARY_HOST_NAME,  _DEFAULT_HANDLER_ );
+            mapping.put( OvalResultsQueryParams.Key.OS_NAME,            _DEFAULT_HANDLER_ );
+
+            return mapping;
+        }
+
+
+        private static final Map<String, Handler>  _HANDLERS_ = _createHandlers();
+
+
+
+        public OvalResultsBuilder(
+                        final QueryParams params
+                        )
+        {
+            super( params );
+        }
+
+
+
+        @Override
+        protected Map<String, Handler> _handlerMapping()
+        {
+            return _HANDLERS_;
+        }
+
+
+        @Override
+        protected Map<String, String> _fieldMapping()
+        {
+            return _FIELDS_;
+        }
+
+    }
+    //OvalReuslts
 
 }
 // MongoQueryBuilder
