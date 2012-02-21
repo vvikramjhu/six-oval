@@ -151,7 +151,7 @@ public class MongoOvalDatastore
        List<Key<T>>  list = dao.find().asKeyList();
 
        _LOG_.debug( "#IDs found: " + (list == null ? 0 : list.size()) );
-       return MorphiaHelper.keys2IDs( list );
+       return MorphiaHelper.keys2Ids( list );
    }
 
 
@@ -177,7 +177,7 @@ public class MongoOvalDatastore
        }
 
        _LOG_.debug( "#IDs found: " + (list == null ? 0 : list.size()) );
-       return MorphiaHelper.keys2IDs( list );
+       return MorphiaHelper.keys2Ids( list );
    }
 
 
@@ -197,6 +197,54 @@ public class MongoOvalDatastore
        _LOG_.debug( "count: " + count );
        return count;
    }
+
+
+
+   public <K, T extends Persistable<K>>
+   K save(
+                   final Class<T> type,
+                   final T object
+                   )
+   {
+      _LOG_.debug( "type=" + type );
+
+      Key<T>  key = getDAO( type ).save( object );
+      K  id = MorphiaHelper.key2Id( key );
+
+      _LOG_.debug( "id: " + id );
+      return id;
+  }
+
+
+
+   public <K, T extends Persistable<K>>
+   void deleteById(
+                   final Class<T> type,
+                   final K id
+                   )
+   {
+       _LOG_.debug( "type=" + type + ", ID=" + id );
+
+      getDAO( type ).deleteById( id );
+   }
+
+
+
+   public <K, T extends Persistable<K>>
+   void delete(
+                   final Class<T> type
+                   )
+   {
+       _LOG_.debug( "type=" + type );
+
+       List<K>  id_list = findIds( type );
+       DAO<T, K>  dao = getDAO( type );
+       for (K  id : id_list) {
+           dao.deleteById( id );
+       }
+   }
+
+
 
 
 

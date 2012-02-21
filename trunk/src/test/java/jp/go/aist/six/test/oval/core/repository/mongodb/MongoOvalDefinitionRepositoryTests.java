@@ -1,16 +1,21 @@
 package jp.go.aist.six.test.oval.core.repository.mongodb;
 
+import java.io.File;
+import java.io.FilenameFilter;
 import java.util.List;
-import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
+import jp.go.aist.six.oval.repository.OvalDefinitionRepository;
 import jp.go.aist.six.oval.repository.OvalEntityQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
+import jp.go.aist.six.test.oval.core.TestBase;
+import jp.go.aist.six.test.oval.core.XmlFilenameFilter;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -25,6 +30,7 @@ import org.testng.annotations.DataProvider;
  * @version $Id$
  */
 public class MongoOvalDefinitionRepositoryTests
+extends TestBase
 {
 
     private MongoOvalDefinitionRepository  _oval_def_repository;
@@ -33,13 +39,22 @@ public class MongoOvalDefinitionRepositoryTests
 
     /**
      */
+    @Override
     @BeforeClass( alwaysRun=true )
 	public void setUp()
     throws Exception
 	{
-        _oval_def_repository = OvalContext.INSTANCE.getBean( MongoOvalDefinitionRepository.class );
+        super.setUp();
+
+        _oval_def_repository = _getContext().getBean( MongoOvalDefinitionRepository.class );
 	}
 
+
+
+    protected OvalDefinitionRepository _getDefinitionRepository()
+    {
+        return _oval_def_repository;
+    }
 
 
 
@@ -170,6 +185,7 @@ public class MongoOvalDefinitionRepositoryTests
      */
     @org.testng.annotations.Test(
                     groups={ "oval.core.repository.mongodb" },
+                    dependsOnMethods= { "testSaveOvalDefinitions" },
                     alwaysRun=true
                     )
     public void testFindDefinition(
@@ -269,6 +285,74 @@ public class MongoOvalDefinitionRepositoryTests
     }
 
 
+
+    /**
+                    dependsOnMethods= { "testFindDefinition" },
+     */
+    @org.testng.annotations.Test(
+                    groups={ "oval.core.repository.mongodb" },
+                    dataProvider="oval.test_content.def",
+                    alwaysRun=true
+                    )
+    public void testSaveOvalDefinitions(
+                    final Class<OvalDefinitions>          object_type,
+                    final String            oval_schema_version,
+                    final OvalPlatformType  platform,
+                    final String            dirpath,
+                    final String            xml_filepath,
+                    final OvalDefinitions   expected_object
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n//////////////////////////////////////////////////////////",
+                        true );
+        Reporter.log( "* object type: " + object_type, true );
+        Reporter.log( "* OVAL schema version: " + oval_schema_version, true );
+        Reporter.log( "* platform: " + platform.name(), true );
+        Reporter.log( "* dir: " + dirpath, true );
+        Reporter.log( "* XML file: " + xml_filepath, true );
+
+        File  dir = new File( dirpath );
+
+        if (xml_filepath == null) {
+            FilenameFilter  filter = new XmlFilenameFilter();
+            File[]  files = dir.listFiles( filter );
+            for (File  file : files) {
+                Reporter.log( "  * file= " + file, true );
+                _saveOvalDefinitions( file.getCanonicalPath(), expected_object );
+            }
+        } else {
+            File  file = new File( dir, xml_filepath );
+            Reporter.log( "  * file= " + file, true );
+            _saveOvalDefinitions( file.getCanonicalPath(), expected_object );
+        }
+
+    }
+
+
+
+    /**
+     */
+    private void _saveOvalDefinitions(
+                    final String xmlFilepath,
+                    final OvalDefinitions expectedObject
+                    )
+    throws Exception
+    {
+        OvalDefinitions  object = _unmarshalObject( OvalDefinitions.class, xmlFilepath, expectedObject );
+
+        Reporter.log( "save..." , true );
+        String  pid = _getDefinitionRepository().saveOvalDefinitions( object );
+        Reporter.log( "  >>> object saved: pid=" + pid, true );
+
+        Reporter.log( "find object...", true );
+        OvalDefinitions  p_object = _getDefinitionRepository().findOvalDefinitionsById( pid );
+        Reporter.log( "  @ object: " + p_object, true );
+
+        for (DefinitionType  p_def : p_object.getDefinitions().getDefinition()) {
+            Reporter.log( "  @ definition: " + p_def, true );
+        }
+    }
 
 }
 //
