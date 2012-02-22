@@ -34,6 +34,7 @@ import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.model.results.ResultEnumeration;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
@@ -894,6 +895,7 @@ implements QueryBuilder
 
             mapping.put( OvalResultsQueryParams.Key.PRIMARY_HOST_NAME, "results.system.oval_system_characteristics.system_info.primary_host_name" );
             mapping.put( OvalResultsQueryParams.Key.OS_NAME,           "results.system.oval_system_characteristics.system_info.os_name" );
+            mapping.put( OvalResultsQueryParams.Key.RESULT_TRUE_DEF,   "results.system.definitions.definition" );
 
             return mapping;
         }
@@ -905,9 +907,32 @@ implements QueryBuilder
 
         protected static Map<String, Handler> _createHandlers()
         {
+            Handler  resultTrueHandler = new Handler()
+            {
+                @Override
+                public void build(
+                                final Query<?> query,
+                                final String field,
+                                final String value  //def's oval_id
+                                )
+                {
+                    if (value == null  ||  value.length() == 0) {
+                        return;
+                    }
+
+                    jp.go.aist.six.oval.model.results.DefinitionType  result_def =
+                                    new jp.go.aist.six.oval.model.results.DefinitionType();
+                    result_def.setOvalID( value );
+                    result_def.setResult( ResultEnumeration.TRUE );
+                    query.filter( field + " elem", result_def );
+                }
+            };
+
+
             Map<String, Handler>  mapping = BasicBuilder._createHandlers();
             mapping.put( OvalResultsQueryParams.Key.PRIMARY_HOST_NAME,  _DEFAULT_HANDLER_ );
             mapping.put( OvalResultsQueryParams.Key.OS_NAME,            _DEFAULT_HANDLER_ );
+            mapping.put( OvalResultsQueryParams.Key.RESULT_TRUE_DEF,    resultTrueHandler );
 
             return mapping;
         }

@@ -39,7 +39,7 @@ public abstract class OvalElement
     private String  oval_id;
     //{required, oval:DefinitionIDPattern}
 
-    private int  oval_version;
+    private Integer  oval_version;
     //{required, xsd:nonNegativeInteger}
 
 
@@ -88,7 +88,7 @@ public abstract class OvalElement
                     final String id
                     )
     {
-        this.oval_id = id;
+        oval_id = id;
     }
 
 
@@ -100,7 +100,7 @@ public abstract class OvalElement
      */
     public String getOvalID()
     {
-        return this.oval_id;
+        return oval_id;
     }
 
 
@@ -112,14 +112,14 @@ public abstract class OvalElement
      *  the version.
      */
     public void setOvalVersion(
-                    final int version
+                    final Integer version
                     )
     {
-        if (version < 0) {
+        if (version != null  &&  version < 0) {
             throw new IllegalArgumentException(
                             "negative version: " + version );
         }
-        this.oval_version = version;
+        oval_version = version;
     }
 
 
@@ -129,9 +129,9 @@ public abstract class OvalElement
      * @return
      *  the version.
      */
-    public int getOvalVersion()
+    public Integer getOvalVersion()
     {
-        return this.oval_version;
+        return oval_version;
     }
 
 
