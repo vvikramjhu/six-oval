@@ -1,6 +1,5 @@
 package jp.go.aist.six.test.oval.core.repository.mongodb;
 
-import java.io.File;
 import java.io.FilenameFilter;
 import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionResultsRepository;
@@ -70,10 +69,16 @@ extends TestBase
         OvalResultsQueryParams  params2 = new OvalResultsQueryParams();
         params2.setPrimary_host_name( "host2" );
 
+        // primary_host_name
+        OvalResultsQueryParams  params3 = new OvalResultsQueryParams();
+        params3.setResult_true_def( "oval:org.mitre.oval.test:def:600" );
+
         return new Object[][] {
                         { params1 }
                         ,
                         { params2 }
+                        ,
+                        { params3 }
         };
     }
 
@@ -86,14 +91,14 @@ extends TestBase
     //**************************************************************
 
     /**
+                    dependsOnMethods= { "testSaveOvalResults" },
      */
     @org.testng.annotations.Test(
                     groups={ "oval.core.repository.mongodb" },
                     dataProvider="oval.repository.results.queryParams",
-                    dependsOnMethods= { "testSaveOvalResults" },
                     alwaysRun=true
                     )
-    public void testFindDefinitionByQueryParams(
+    public void testFindOvalResultsByQueryParams(
                     final QueryParams params
                     )
     throws Exception
