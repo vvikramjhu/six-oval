@@ -18,9 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.redhat;
-
-import jp.go.aist.six.oval.model.NameEntity;
+package jp.go.aist.six.oval.model;
 
 
 

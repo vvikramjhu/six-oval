@@ -66,10 +66,10 @@
     <!-- *  repository                                         * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.repository.mongodb.MongoRepository" enabled="true">
+    <test name="oval.core.repository.mongodb.MongoRepository" enabled="false">
         <groups>
             <run>
-                <include name="oval.core.repository.mongodb"/>
+                <include name="oval.core.repository.mongodb.query"/>
                 <!--
                 -->
             </run>
@@ -129,15 +129,23 @@
     </test>
 
 
+    <test name="oval.core.repository.mongodb" enabled="true">
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalDatastoreTests"/>
+        </classes>
+    </test>
+
+
+
     <!-- ******************************************************* -->
     <!-- *  XML                                                * -->
     <!-- ******************************************************* -->
 
     <test name="oval.core.xml" enabled="false">
+                <!--
         <groups>
             <run>
                 <include name="oval.test-content"/>
-                <!--
                 <include name="oval.results.oval_results"/>
                 <include name="oval.definitions.oval_definitions"/>
                 <include name="oval.results.oval_results"/>
@@ -146,13 +154,14 @@
                 <include name="definitions.oval_definitions"/>
                 <include name="sc.oval_sc"/>
                 <include name="results.oval_results"/>
-                -->
             </run>
         </groups>
+                -->
 
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.xml.OvalTestContentXmlTest"/>
+            <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlMapperTests"/>
             <!--
+            <class name="jp.go.aist.six.test.oval.core.xml.OvalTestContentXmlTest"/>
             <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlTest"/>
             <class name="jp.go.aist.six.test.oval.core.xml.XmlTransformTest"/>
             -->

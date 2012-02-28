@@ -113,5 +113,32 @@
     </class>
 
 
+
+    <class name="jp.go.aist.six.oval.model.AffectedCpeList">
+    <!--
+        <map-to 
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+    -->
+
+        <field name="cpe" 
+            type="jp.go.aist.six.oval.model.Cpe"
+            collection="collection">
+            <bind-xml name="cpe" node="element"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.Cpe">
+    <!--
+        <map-to xml="cpe"
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
+    -->
+
+        <field name="name" type="string">
+            <bind-xml node="text"/>
+        </field>
+    </class>
+
 </mapping>
 

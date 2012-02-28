@@ -159,7 +159,7 @@
 
 
     <bean id="ovalResultRepository" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionResultsRepository">
+        class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionResultRepository">
         <property name="datastore" ref="mongoOvalDatastore"/>
     </bean>
 

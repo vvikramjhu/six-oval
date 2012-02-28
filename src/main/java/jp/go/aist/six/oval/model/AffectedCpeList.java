@@ -18,17 +18,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.redhat;
+package jp.go.aist.six.oval.model;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import jp.go.aist.six.oval.model.Container;
 
 
 
 /**
+ * A list of CPE names.
+ * This list appears in the metadata extension part of Definitions
+ * from Mitre and Red Hat.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -104,7 +106,7 @@ public class AffectedCpeList
     @Override
     protected Collection<Cpe> _getElement()
     {
-        return this.cpe;
+        return cpe;
     }
 
 
@@ -114,4 +116,4 @@ public class AffectedCpeList
     //**************************************************************
 
 }
-// AffectedCpeList
+//AffectedCpeList

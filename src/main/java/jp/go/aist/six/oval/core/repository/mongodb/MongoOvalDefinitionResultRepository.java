@@ -36,7 +36,7 @@ import org.slf4j.LoggerFactory;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class MongoOvalDefinitionResultsRepository
+public class MongoOvalDefinitionResultRepository
     extends MongoOvalDefinitionRepository
     implements OvalResultRepository
 {
@@ -45,14 +45,14 @@ public class MongoOvalDefinitionResultsRepository
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( MongoOvalDefinitionResultsRepository.class );
+        LoggerFactory.getLogger( MongoOvalDefinitionResultRepository.class );
 
 
 
     /**
      * Constructor.
      */
-    public MongoOvalDefinitionResultsRepository()
+    public MongoOvalDefinitionResultRepository()
     {
     }
 
