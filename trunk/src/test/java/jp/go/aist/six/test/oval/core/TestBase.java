@@ -156,15 +156,24 @@ public abstract class TestBase
     public Object[][] provideOvalTestContentOvalDefinitions()
     {
         return new Object[][] {
-                        /* Windows */
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "5.10",
-                            OvalPlatformType.windows,
-                            "test/resources/OvalTestContent/5.10/windows",
-                            null,
+                            "5.10.1",
+                            OvalPlatformType.unix,
+                            "test/resources/OvalTestContent/5.10.1",
+                            "oval_def-8987-1_i.xml",
                             null
                         }
+//                        ,
+//                        /* Windows */
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "5.10",
+//                            OvalPlatformType.windows,
+//                            "test/resources/OvalTestContent/5.10/windows",
+//                            null,
+//                            null
+//                        }
 //                        ,
 //                        {
 //                            jp.go.aist.six.oval.model.results.OvalResults.class,
@@ -223,6 +232,7 @@ public abstract class TestBase
         };
 
     }
+
 
 }
 //

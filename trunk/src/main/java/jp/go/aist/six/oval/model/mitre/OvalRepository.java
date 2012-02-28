@@ -23,6 +23,7 @@ package jp.go.aist.six.oval.model.mitre;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.AffectedCpeList;
 import jp.go.aist.six.oval.model.definitions.MetadataItem;
 
 
@@ -44,7 +45,7 @@ public class OvalRepository
 
 
 //    @Transient
-//    private AffectedCpeList  _affectedCpeList;
+    private AffectedCpeList  affected_cpe_list;
 
 
 
@@ -63,10 +64,10 @@ public class OvalRepository
                     final Collection<? extends Event> events
                     )
     {
-        if (events != this.dates) {
+        if (events != dates) {
             dates.clear();
             if (events != null  &&  events.size() > 0) {
-                this.dates.addAll( events );
+                dates.addAll( events );
             }
         }
     }
@@ -74,13 +75,13 @@ public class OvalRepository
 
     public Collection<Event> getDates()
     {
-        return this.dates;
+        return dates;
     }
 
 
     public Iterator<Event> iterateDates()
     {
-        return this.dates.iterator();
+        return dates.iterator();
     }
 
 
@@ -88,7 +89,7 @@ public class OvalRepository
                     final Event event
                     )
     {
-        this.dates.add( event );
+        dates.add( event );
         return this;
     }
 
@@ -106,7 +107,7 @@ public class OvalRepository
 
     public DefinitionStatusEnumeration getStatus()
     {
-        return this.status;
+        return status;
     }
 
 
@@ -120,21 +121,21 @@ public class OvalRepository
 
 
 
-//    /**
-//     */
-//    public void setAffectedCpeList(
-//                    final AffectedCpeList affectedCpeList
-//                    )
-//    {
-//        _affectedCpeList = affectedCpeList;
-//    }
-//
-//
-//
-//    public AffectedCpeList getAffectedCpeList()
-//    {
-//        return _affectedCpeList;
-//    }
+    /**
+     */
+    public void setAffectedCpeList(
+                    final AffectedCpeList affectedCpeList
+                    )
+    {
+        affected_cpe_list = affectedCpeList;
+    }
+
+
+
+    public AffectedCpeList getAffectedCpeList()
+    {
+        return affected_cpe_list;
+    }
 
 
 
@@ -147,8 +148,9 @@ public class OvalRepository
     {
         return "oval_repository[status=" + getStatus()
                         + ", dates=" + getDates()
+                        + ", affected_cpe_list=" + getAffectedCpeList()
                         + "]";
     }
 
 }
-// OvalRepository
+//OvalRepository

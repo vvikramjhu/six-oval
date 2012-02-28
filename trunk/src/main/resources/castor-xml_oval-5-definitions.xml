@@ -1058,6 +1058,13 @@
         <map-to xml="oval_repository"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
 
+        <field name="dates" 
+            type="jp.go.aist.six.oval.model.mitre.Event"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element"
+                location="dates"/>
+        </field>
+
         <field name="status" 
             type="string"
             handler="jp.go.aist.six.oval.core.xml.mitre.DefinitionStatusEnumerationHandler">
@@ -1065,11 +1072,9 @@
             <bind-xml name="status" node="element"/>
         </field>
 
-        <field name="dates" 
-            type="jp.go.aist.six.oval.model.mitre.Event"
-            collection="collection">
-            <bind-xml auto-naming="deriveByClass" node="element"
-                location="dates"/>
+        <field name="affectedCpeList" 
+            type="jp.go.aist.six.oval.model.AffectedCpeList">
+            <bind-xml name="affected_cpe_list" node="element"/>
         </field>
     </class>
 
@@ -1223,9 +1228,15 @@
         </field>
 
         <field name="affectedCpeList" 
+            type="jp.go.aist.six.oval.model.AffectedCpeList">
+            <bind-xml name="affected_cpe_list" node="element"/>
+        </field>
+<!--
+        <field name="affectedCpeList" 
             type="jp.go.aist.six.oval.model.redhat.AffectedCpeList">
             <bind-xml name="affected_cpe_list" node="element"/>
         </field>
+-->
     </class>
 
 
@@ -1262,7 +1273,11 @@
     </class>
 
 
-
+<!-- TODO:
+Move AffectedCpeList class from "redhat" package to "model" one.
+Mitre's definition metadata must include the affected_cpe_list element. 
+-->
+<!--
     <class name="jp.go.aist.six.oval.model.redhat.AffectedCpeList">
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"/>
@@ -1284,6 +1299,7 @@
             <bind-xml node="text"/>
         </field>
     </class>
+-->
 
 </mapping>
 

@@ -1,8 +1,9 @@
 package jp.go.aist.six.test.oval.core.repository.mongodb;
 
+import java.io.File;
 import java.io.FilenameFilter;
 import java.util.List;
-import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionResultsRepository;
+import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionResultRepository;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.repository.OvalResultsQueryParams;
@@ -26,7 +27,7 @@ public class MongoOvalResultRepositoryTests
 extends TestBase
 {
 
-    private MongoOvalDefinitionResultsRepository  _oval_repository;
+    private MongoOvalDefinitionResultRepository  _oval_repository;
 
 
 
@@ -39,12 +40,12 @@ extends TestBase
 	{
         super.setUp();
 
-        _oval_repository = _getContext().getBean( MongoOvalDefinitionResultsRepository.class );
+        _oval_repository = _getContext().getBean( MongoOvalDefinitionResultRepository.class );
 	}
 
 
 
-    protected MongoOvalDefinitionResultsRepository _getResultsRepository()
+    protected MongoOvalDefinitionResultRepository _getResultsRepository()
     {
         return _oval_repository;
     }
@@ -69,9 +70,13 @@ extends TestBase
         OvalResultsQueryParams  params2 = new OvalResultsQueryParams();
         params2.setPrimary_host_name( "host2" );
 
-        // primary_host_name
+        // result_true_def
         OvalResultsQueryParams  params3 = new OvalResultsQueryParams();
         params3.setResult_true_def( "oval:org.mitre.oval.test:def:600" );
+
+        // result_false_def
+        OvalResultsQueryParams  params4 = new OvalResultsQueryParams();
+        params4.setResult_false_def( "oval:org.mitre.oval:def:7222" );
 
         return new Object[][] {
                         { params1 }
@@ -79,6 +84,8 @@ extends TestBase
                         { params2 }
                         ,
                         { params3 }
+                        ,
+                        { params4 }
         };
     }
 
@@ -91,11 +98,11 @@ extends TestBase
     //**************************************************************
 
     /**
-                    dependsOnMethods= { "testSaveOvalResults" },
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.repository.mongodb" },
+                    groups={ "oval.core.repository.mongodb.query" },
                     dataProvider="oval.repository.results.queryParams",
+                    dependsOnMethods= { "testSaveOvalResults" },
                     alwaysRun=true
                     )
     public void testFindOvalResultsByQueryParams(
@@ -120,7 +127,7 @@ extends TestBase
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.repository.mongodb" },
+                    groups={ "oval.core.repository.mongodb.save" },
                     dataProvider="oval.test_content.res",
                     alwaysRun=true
                     )
