@@ -71,6 +71,28 @@ public class MongoOvalDatastore
     }
 
 
+//    private final void _startOperation(
+//                    final String operation_name,
+//                    final String message
+//                    )
+//    {
+//        _LOG_.info( operation_name + ": " + message );
+//    }
+//
+//
+//    private final void _endOperation(
+//                    final String operation_name,
+//                    final long start_timestamp,
+//                    final String message
+//                    )
+//    {
+//        _LOG_.info( operation_name
+//                        + ": elapsed time (ms)="
+//                        +  (System.currentTimeMillis() - start_timestamp) );
+//        _LOG_.debug( message );
+//    }
+
+
     ////////////////////////////////////////////////////////////////
     //  data access methods
     ////////////////////////////////////////////////////////////////
@@ -84,11 +106,13 @@ public class MongoOvalDatastore
                     final K id
                     )
     {
-       _LOG_.debug( "type=" + type + ", ID=" + id );
+       _LOG_.info( "findById: type=" + type + ", ID=" + id );
+       long  ts_start = System.currentTimeMillis();
 
        T  p_object = getDAO( type ).get( id );
 
-       _LOG_.debug( (p_object == null ? "object NOT found" : "object found") );
+       _LOG_.info( "findById: elapsed time (ms)=" +  (System.currentTimeMillis() - ts_start) );
+       _LOG_.debug( (p_object == null ? "findById: object NOT found" : "findById: object found") );
        return p_object;
    }
 
@@ -101,12 +125,14 @@ public class MongoOvalDatastore
                    final Class<T> type
                    )
    {
-       _LOG_.debug( "type=" + type );
+       _LOG_.info( "find: type=" + type );
+       long  ts_start = System.currentTimeMillis();
 
        DAO<T, K>  dao = getDAO( type );
        List<T>  list = dao.find().asList();
 
-       _LOG_.debug( "#objects found: " + (list == null ? 0 : list.size()) );
+       _LOG_.info( "find: elapsed time (ms)=" +  (System.currentTimeMillis() - ts_start) );
+       _LOG_.debug( "find: #objects=" + (list == null ? 0 : list.size()) );
        return list;
    }
 
@@ -120,7 +146,8 @@ public class MongoOvalDatastore
                    final QueryParams params
                    )
    {
-       _LOG_.debug( "type=" + type + ", params=" + params );
+       _LOG_.info( "find: type=" + type + ", params=" + params );
+       long  ts_start = System.currentTimeMillis();
 
        DAO<T, K>  dao = getDAO( type );
        List<T>  list = null;
@@ -134,7 +161,8 @@ public class MongoOvalDatastore
            list = dao.find( query ).asList();
        }
 
-       _LOG_.debug( "#objects found: " + (list == null ? 0 : list.size()) );
+       _LOG_.info( "find: elapsed time (ms)=" +  (System.currentTimeMillis() - ts_start) );
+       _LOG_.debug( "find: #objects=: " + (list == null ? 0 : list.size()) );
        return list;
    }
 
@@ -145,12 +173,14 @@ public class MongoOvalDatastore
                    final Class<T> type
                    )
    {
-       _LOG_.debug( "type=" + type );
+       _LOG_.info( "findIds: type=" + type );
+       long  ts_start = System.currentTimeMillis();
 
        DAO<T, K>  dao = getDAO( type );
        List<Key<T>>  list = dao.find().asKeyList();
 
-       _LOG_.debug( "#IDs found: " + (list == null ? 0 : list.size()) );
+       _LOG_.info( "findIds: elapsed time (ms)=" +  (System.currentTimeMillis() - ts_start) );
+       _LOG_.debug( "findIds: #IDs=: " + (list == null ? 0 : list.size()) );
        return MorphiaHelper.keys2Ids( list );
    }
 
@@ -162,7 +192,8 @@ public class MongoOvalDatastore
                    final QueryParams params
                    )
    {
-       _LOG_.debug( "type=" + type + ", params=" + params );
+       _LOG_.debug( "findIds: type=" + type + ", params=" + params );
+       long  ts_start = System.currentTimeMillis();
 
        DAO<T, K>  dao = getDAO( type );
        List<Key<T>>  list = null;
@@ -176,7 +207,8 @@ public class MongoOvalDatastore
            list = dao.find( query ).asKeyList();
        }
 
-       _LOG_.debug( "#IDs found: " + (list == null ? 0 : list.size()) );
+       _LOG_.info( "findIds: elapsed time (ms)=" +  (System.currentTimeMillis() - ts_start) );
+       _LOG_.debug( "findIds: #IDs=: " + (list == null ? 0 : list.size()) );
        return MorphiaHelper.keys2Ids( list );
    }
 
@@ -189,12 +221,14 @@ public class MongoOvalDatastore
                    final Class<T> type
                    )
    {
-       _LOG_.debug( "type=" + type );
+       _LOG_.info( "count: type=" + type );
+       long  ts_start = System.currentTimeMillis();
 
        DAO<T, K>  dao = getDAO( type );
        long  count = dao.count();
 
-       _LOG_.debug( "count: " + count );
+       _LOG_.info( "count: elapsed time (ms)=" +  (System.currentTimeMillis() - ts_start) );
+       _LOG_.debug( "count: count=" + count );
        return count;
    }
 
@@ -206,12 +240,14 @@ public class MongoOvalDatastore
                    final T object
                    )
    {
-      _LOG_.debug( "type=" + type );
+      _LOG_.info( "save: type=" + type );
+      long  ts_start = System.currentTimeMillis();
 
       Key<T>  key = getDAO( type ).save( object );
       K  id = MorphiaHelper.key2Id( key );
 
-      _LOG_.debug( "id: " + id );
+      _LOG_.info( "save: elapsed time (ms)=" +  (System.currentTimeMillis() - ts_start) );
+      _LOG_.debug( "save: id=" + id );
       return id;
   }
 
@@ -223,9 +259,12 @@ public class MongoOvalDatastore
                    final K id
                    )
    {
-       _LOG_.debug( "type=" + type + ", ID=" + id );
+       _LOG_.info( "deleteById: type=" + type + ", ID=" + id );
+       long  ts_start = System.currentTimeMillis();
 
       getDAO( type ).deleteById( id );
+
+      _LOG_.info( "deleteById: elapsed time (ms)=" +  (System.currentTimeMillis() - ts_start) );
    }
 
 
@@ -235,13 +274,20 @@ public class MongoOvalDatastore
                    final Class<T> type
                    )
    {
-       _LOG_.debug( "type=" + type );
+       _LOG_.debug( "delete: type=" + type );
+       long  ts_start = System.currentTimeMillis();
 
+       /* TODO: performance
+        *   Is it possible to delete all the objects by query?
+        *   dao.deleteByQuery( Query q )
+        */
        List<K>  id_list = findIds( type );
        DAO<T, K>  dao = getDAO( type );
        for (K  id : id_list) {
            dao.deleteById( id );
        }
+
+       _LOG_.info( "delete: elapsed time (ms)=" +  (System.currentTimeMillis() - ts_start) );
    }
 
 
