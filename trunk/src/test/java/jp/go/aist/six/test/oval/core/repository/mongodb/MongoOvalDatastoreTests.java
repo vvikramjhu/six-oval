@@ -51,33 +51,50 @@ public class MongoOvalDatastoreTests
 
     /**
      */
-    private <K, T extends Persistable<K>> void _testSaveAndLoad(
-                    final Class<T> type,
-                    final String xmlFilepath,
-                    final T expectedObject
+    private <K, T extends Persistable<K>>
+    void _saveObject(
+                    final Class<T>  object_type,
+                    final T         object,
+                    final boolean   to_load
                     )
     throws Exception
     {
-        Reporter.log( "target object type: " + type, true );
-
-        T  object = _unmarshalObject( type, xmlFilepath, expectedObject );
+        Reporter.log( "object type: " + object_type, true );
 
         Reporter.log( "save..." , true );
         Reporter.log( "  * object: " + object, true );
 
-        K  pid = _datastore.save( type, object );
-        Reporter.log( "  >>> object created: pid=" + pid, true );
+        K  pid = _datastore.save( object_type, object );
+        Reporter.log( "  >>> object saved: PID=" + pid, true );
 
-        Reporter.log( "load each object by concrete class...", true );
-        T  p_object = _datastore.findById( type, pid );
-        Reporter.log( "  @ object: " + p_object, true );
+        if (to_load) {
+            Reporter.log( "load object by PID...", true );
+            T  p_object = _datastore.findById( object_type, pid );
+            Reporter.log( "  @ object: " + p_object, true );
 
-        if (p_object instanceof OvalDefinitions) {
-            OvalDefinitions  p_oval_defs = OvalDefinitions.class.cast( p_object );
-            for (DefinitionType  p_def : p_oval_defs.getDefinitions().getDefinition()) {
-                Reporter.log( "  @ definition: " + p_def, true );
+            if (p_object instanceof OvalDefinitions) {
+                OvalDefinitions  p_oval_defs = OvalDefinitions.class.cast( p_object );
+                for (DefinitionType  p_def : p_oval_defs.getDefinitions().getDefinition()) {
+                    Reporter.log( "  @ definition: " + p_def, true );
+                }
             }
         }
+    }
+
+
+    private <K, T extends Persistable<K>>
+    void _readFromFileAndSave(
+                    final Class<T> object_type,
+                    final String   xml_filepath,
+                    final T        expected_object,
+                    final boolean  to_load
+                    )
+    throws Exception
+    {
+        Reporter.log( "object type: " + object_type, true );
+
+        T  object = _unmarshalObject( object_type, xml_filepath, expected_object );
+        _saveObject( object_type, object, to_load );
     }
 
 
@@ -99,7 +116,7 @@ public class MongoOvalDatastoreTests
                     final OvalPlatformType  platform,
                     final String            dirpath,
                     final String            xml_filepath,
-                    final T                 expectedObject
+                    final T                 expected_object
                     )
     throws Exception
     {
@@ -116,12 +133,12 @@ public class MongoOvalDatastoreTests
             File[]  files = dir.listFiles( filter );
             for (File  file : files) {
                 Reporter.log( "  * file= " + file, true );
-                _testSaveAndLoad( object_type, file.getCanonicalPath(), expectedObject );
+                _readFromFileAndSave( object_type, file.getCanonicalPath(), expected_object, true );
             }
         } else {
             File  file = new File( dir, xml_filepath );
             Reporter.log( "  * file= " + file, true );
-            _testSaveAndLoad( object_type, file.getCanonicalPath(), expectedObject );
+            _readFromFileAndSave( object_type, file.getCanonicalPath(), expected_object, true );
         }
     }
 

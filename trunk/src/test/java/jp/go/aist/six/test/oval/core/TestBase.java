@@ -76,25 +76,25 @@ public abstract class TestBase
     /**
      */
     protected <T> T _unmarshalObject(
-                    final Class<T> type,
-                    final String filepath,
-                    final T expected
+                    final Class<T>  object_type,
+                    final String    xml_filepath,
+                    final T         expected_object
                     )
     throws Exception
     {
         Reporter.log( "unmarshalling XML...", true );
-        Reporter.log( "  * type: " + type, true );
-        Reporter.log( "  * XML file: " + filepath, true );
+        Reporter.log( "  * object type: " + object_type, true );
+        Reporter.log( "  * XML file: " + xml_filepath, true );
 
-        File  file = new File( filepath );
+        File  file = new File( xml_filepath );
         long  time = System.currentTimeMillis();
         Object  obj = _getXmlMapper().unmarshal( new FileInputStream( file ) );
         Reporter.log( "...unmarshalling done: " + (System.currentTimeMillis() - time) + "(ms)", true );
 
         Reporter.log( "  @ unmarshalled object: " + obj, true );
-        Assert.assertTrue( type.isInstance( obj ) );
+        Assert.assertTrue( object_type.isInstance( obj ) );
 
-        T  actual = type.cast( obj );
+        T  actual = object_type.cast( obj );
 
         /* validation */
 //        if (expected != null) {
