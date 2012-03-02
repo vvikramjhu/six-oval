@@ -82,7 +82,7 @@ public abstract class AbstractBehaviors
 
     public Integer getMaxDepth()
     {
-        return this.max_depth;
+        return max_depth;
     }
 
 
@@ -106,7 +106,7 @@ public abstract class AbstractBehaviors
 
     public RecurseDirectionEnumeration getRecurseDirection()
     {
-        return this.recurse_direction;
+        return recurse_direction;
     }
 
 

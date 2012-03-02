@@ -16,7 +16,7 @@ import com.google.code.morphia.query.Query;
 
 
 /**
- * A datastore for OVAL entities.
+ * A datastore for OVAL objects.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$

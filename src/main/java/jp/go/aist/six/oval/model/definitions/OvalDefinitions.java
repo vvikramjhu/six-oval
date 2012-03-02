@@ -139,7 +139,7 @@ public class OvalDefinitions
 
     public DefinitionsType getDefinitions()
     {
-        return this.definitions;
+        return definitions;
     }
 
 
@@ -171,7 +171,7 @@ public class OvalDefinitions
 
     public TestsType getTests()
     {
-        return this.tests;
+        return tests;
     }
 
 
@@ -203,7 +203,7 @@ public class OvalDefinitions
 
     public SystemObjectsType getObjects()
     {
-        return this.objects;
+        return objects;
     }
 
 
@@ -235,7 +235,7 @@ public class OvalDefinitions
 
     public StatesType getStates()
     {
-        return this.states;
+        return states;
     }
 
 
@@ -267,7 +267,7 @@ public class OvalDefinitions
 
     public VariablesType getVariables()
     {
-        return this.variables;
+        return variables;
     }
 
 
@@ -301,10 +301,10 @@ public class OvalDefinitions
     public String getDefinitionsDigest()
     {
         //Morphia
-        this.definitions_digest =
-            (this.definitions == null ? null : this.definitions.getDigest());
+        definitions_digest =
+            (definitions == null ? null : definitions.getDigest());
 
-        return this.definitions_digest;
+        return definitions_digest;
     }
 
 

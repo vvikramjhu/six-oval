@@ -68,7 +68,7 @@ public class MongoOvalDefinitionResultRepository
                     )
     throws OvalRepositoryException
     {
-        long  ts_start = System.currentTimeMillis();
+//        long  ts_start = System.currentTimeMillis();
 
         OvalResults  p_object = null;
         try {
@@ -77,7 +77,7 @@ public class MongoOvalDefinitionResultRepository
             throw new OvalRepositoryException( ex );
         }
 
-        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
         return p_object;
     }
 
@@ -87,7 +87,7 @@ public class MongoOvalDefinitionResultRepository
     public List<OvalResults> findOvalResults()
     throws OvalRepositoryException
     {
-        long  ts_start = System.currentTimeMillis();
+//        long  ts_start = System.currentTimeMillis();
 
         List<OvalResults>  p_list = null;
         try {
@@ -96,7 +96,7 @@ public class MongoOvalDefinitionResultRepository
             throw new OvalRepositoryException( ex );
         }
 
-        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
         return p_list;
     }
 
@@ -108,7 +108,7 @@ public class MongoOvalDefinitionResultRepository
                     )
     throws OvalRepositoryException
     {
-        long  ts_start = System.currentTimeMillis();
+//        long  ts_start = System.currentTimeMillis();
 
         List<OvalResults>  p_list = null;
         try {
@@ -117,7 +117,7 @@ public class MongoOvalDefinitionResultRepository
             throw new OvalRepositoryException( ex );
         }
 
-        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
         return p_list;
     }
 
@@ -127,7 +127,7 @@ public class MongoOvalDefinitionResultRepository
     public List<String> findOvalResultsIds()
     throws OvalRepositoryException
     {
-        long  ts_start = System.currentTimeMillis();
+//        long  ts_start = System.currentTimeMillis();
 
         List<String>  list = null;
         try {
@@ -137,7 +137,7 @@ public class MongoOvalDefinitionResultRepository
             throw new OvalRepositoryException( ex );
         }
 
-        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
         return list;
     }
 
@@ -149,7 +149,7 @@ public class MongoOvalDefinitionResultRepository
                     )
     throws OvalRepositoryException
     {
-        long  ts_start = System.currentTimeMillis();
+//        long  ts_start = System.currentTimeMillis();
 
         List<String>  p_list = null;
         try {
@@ -158,7 +158,7 @@ public class MongoOvalDefinitionResultRepository
             throw new OvalRepositoryException( ex );
         }
 
-        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
         return p_list;
     }
 
@@ -168,7 +168,7 @@ public class MongoOvalDefinitionResultRepository
     public long countOvalResults()
     throws OvalRepositoryException
     {
-        long  ts_start = System.currentTimeMillis();
+//        long  ts_start = System.currentTimeMillis();
 
         long  count = 0L;
         try {
@@ -177,7 +177,7 @@ public class MongoOvalDefinitionResultRepository
             throw new OvalRepositoryException( ex );
         }
 
-        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
         return count;
     }
 
@@ -189,7 +189,7 @@ public class MongoOvalDefinitionResultRepository
                     )
     throws OvalRepositoryException
     {
-        long  ts_start = System.currentTimeMillis();
+//        long  ts_start = System.currentTimeMillis();
 
         String  id = null;
         try {
@@ -198,7 +198,7 @@ public class MongoOvalDefinitionResultRepository
             throw new OvalRepositoryException( ex );
         }
 
-        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
         return id;
     }
 

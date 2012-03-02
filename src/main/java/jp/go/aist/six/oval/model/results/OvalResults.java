@@ -27,6 +27,7 @@ import jp.go.aist.six.oval.model.common.AbstractOvalDocument;
 import jp.go.aist.six.oval.model.common.GeneratorType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Reference;
 
 
 
@@ -54,7 +55,7 @@ public class OvalResults
     //{0..5}
 
 
-//    @Reference
+    @Reference
     private OvalDefinitions  oval_definitions;
     //{0..1}
 
@@ -135,7 +136,7 @@ public class OvalResults
 
     public DefaultDirectivesType getDirectives()
     {
-        return this.directives;
+        return directives;
     }
 
 
@@ -146,10 +147,10 @@ public class OvalResults
                     final Collection<? extends ClassDirectivesType> classDirectives
                     )
     {
-        if (classDirectives != this.class_directives) {
-            this.class_directives.clear();
+        if (classDirectives != class_directives) {
+            class_directives.clear();
             if (classDirectives != null  &&  classDirectives.size() > 0) {
-                this.class_directives.addAll( classDirectives );
+                class_directives.addAll( classDirectives );
             }
         }
     }
@@ -159,19 +160,19 @@ public class OvalResults
                     final ClassDirectivesType classDirectives
                     )
     {
-        return this.class_directives.add( classDirectives );
+        return class_directives.add( classDirectives );
     }
 
 
     public Collection<ClassDirectivesType> getClassDirectives()
     {
-        return this.class_directives;
+        return class_directives;
     }
 
 
     public Iterator<ClassDirectivesType> iterateClassDirectives()
     {
-        return this.class_directives.iterator();
+        return class_directives.iterator();
     }
 
 
@@ -182,13 +183,13 @@ public class OvalResults
                     final OvalDefinitions definitions
                     )
     {
-        this.oval_definitions = definitions;
+        oval_definitions = definitions;
     }
 
 
     public OvalDefinitions getOvalDefinitions()
     {
-        return this.oval_definitions;
+        return oval_definitions;
     }
 
 
@@ -214,7 +215,7 @@ public class OvalResults
 
     public ResultsType getResults()
     {
-        return this.results;
+        return results;
     }
 
 

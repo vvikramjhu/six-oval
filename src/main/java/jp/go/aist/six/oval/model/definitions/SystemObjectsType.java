@@ -25,6 +25,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import jp.go.aist.six.oval.model.OvalElementContainer;
+import com.google.code.morphia.annotations.Reference;
 
 
 
@@ -42,7 +43,7 @@ public class SystemObjectsType
 //extends Container<SystemObject>  //{1..*}
 {
 
-//    @Reference
+    @Reference
     private final Set<SystemObjectType>  object = new HashSet<SystemObjectType>();
 
 
@@ -108,7 +109,7 @@ public class SystemObjectsType
     @Override
     protected Collection<SystemObjectType> _getElement()
     {
-        return this.object;
+        return object;
     }
 
 }

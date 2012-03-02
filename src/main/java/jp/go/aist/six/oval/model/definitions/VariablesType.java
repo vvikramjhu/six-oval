@@ -25,6 +25,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import jp.go.aist.six.oval.model.OvalElementContainer;
+import com.google.code.morphia.annotations.Reference;
 
 
 
@@ -39,7 +40,7 @@ public class VariablesType
     extends OvalElementContainer<VariableType>  //{1..*}
 {
 
-//    @Reference
+    @Reference
     private final Set<VariableType>  variable = new HashSet<VariableType>();
 
 
@@ -107,7 +108,7 @@ public class VariablesType
     @Override
     protected Collection<VariableType> _getElement()
     {
-        return this.variable;
+        return variable;
     }
 
 }

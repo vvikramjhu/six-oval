@@ -129,7 +129,20 @@
     </test>
 
 
-    <test name="oval.core.repository.mongodb" enabled="true">
+    <test name="oval.core.repository.mongodb" enabled="false">
+        <classes>
+            <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalDatastoreTests"/>
+        </classes>
+    </test>
+
+
+    <test name="oval.core.repository.mongodb.performance" enabled="true">
+        <groups>
+            <run>
+                <include name="oval.core.repository.mongodb.performance"/>
+            </run>
+        </groups>
+
         <classes>
             <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalDatastoreTests"/>
         </classes>

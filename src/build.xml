@@ -250,6 +250,7 @@ CONTENTS:
             fork="true"
             maxmemory="512m"
             >
+            <!-- arg line="-install src/test/resources/OvalTestContent/5.10/2011-10-03_v_windows.xml"/ -->
             <arg line="-install src/test/resources/OvalTestContent/5.10.1/oval_def-8987-1_i.xml"/>
             <!-- arg line="-install src/test/resources/OvalTestContent/5.10/oval_def-7222_CVE-2010-0176.xml"/ -->
             <!-- arg line="-install src/test/resources/OvalTestContent/5.10/2011-10-02_oval5.10_v.xml"/ -->
