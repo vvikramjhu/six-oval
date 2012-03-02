@@ -82,16 +82,33 @@ public abstract class TestBase
                     )
     throws Exception
     {
-        Reporter.log( "unmarshalling XML...", true );
-        Reporter.log( "  * object type: " + object_type, true );
-        Reporter.log( "  * XML file: " + xml_filepath, true );
+        return _unmarshalObject( object_type, xml_filepath, expected_object, true );
+    }
+
+
+
+    protected <T> T _unmarshalObject(
+                    final Class<T>  object_type,
+                    final String    xml_filepath,
+                    final T         expected_object,
+                    final boolean   need_log
+                    )
+    throws Exception
+    {
+        if (need_log) {
+            Reporter.log( "unmarshalling XML...", true );
+            Reporter.log( "  * object type: " + object_type, true );
+            Reporter.log( "  * XML file: " + xml_filepath, true );
+        }
 
         File  file = new File( xml_filepath );
         long  time = System.currentTimeMillis();
         Object  obj = _getXmlMapper().unmarshal( new FileInputStream( file ) );
-        Reporter.log( "...unmarshalling done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+        if (need_log) {
+            Reporter.log( "...unmarshalling done: " + (System.currentTimeMillis() - time) + "(ms)", true );
+            Reporter.log( "  @ unmarshalled object: " + obj, true );
+        }
 
-        Reporter.log( "  @ unmarshalled object: " + obj, true );
         Assert.assertTrue( object_type.isInstance( obj ) );
 
         T  actual = object_type.cast( obj );
@@ -158,12 +175,28 @@ public abstract class TestBase
         return new Object[][] {
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "5.10.1",
-                            OvalPlatformType.unix,
-                            "test/resources/OvalTestContent/5.10.1",
-                            "oval_def-8987-1_i.xml",
+                            "5.10",
+                            OvalPlatformType.windows,
+                            "test/resources/OvalTestContent/5.10",
+                            "20120301_v_microsoft.windows.7.xml",
                             null
                         }
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "5.10",
+//                            OvalPlatformType.unix,
+//                            "test/resources/OvalTestContent/5.10",
+//                            "oval_def-7222_CVE-2010-0176.xml",
+//                            null
+//                        }
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "5.10.1",
+//                            OvalPlatformType.unix,
+//                            "test/resources/OvalTestContent/5.10.1",
+//                            "oval_def-8987-1_i.xml",
+//                            null
+//                        }
 //                        ,
 //                        /* Windows */
 //                        {

@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.windows;
 
 import jp.go.aist.six.oval.model.AbstractBehaviors;
+import jp.go.aist.six.oval.model.WindowsViewEnumeration;
 
 
 
@@ -37,10 +38,46 @@ public class RegistryBehaviors
 {
 
     /**
+     * The default windowsView: "64_bit".
+     */
+    public static final WindowsViewEnumeration  DEFAULT_WINDOWS_VIEW=
+        WindowsViewEnumeration.WINDOWS_64_BIT;
+
+    private WindowsViewEnumeration  windows_view;
+    //{optional, default="64_bit"}
+
+
+
+
+    /**
      * Constructor.
      */
     public RegistryBehaviors()
     {
+    }
+
+
+
+    /**
+     */
+    public void setWindowsView(
+                    final WindowsViewEnumeration windows_view
+                    )
+    {
+        this.windows_view = windows_view;
+    }
+
+
+    public WindowsViewEnumeration getWindowsView()
+    {
+        return windows_view;
+    }
+
+
+    protected final WindowsViewEnumeration _windowsView()
+    {
+        WindowsViewEnumeration  windows_view = getWindowsView();
+        return (windows_view == null ? DEFAULT_WINDOWS_VIEW: windows_view);
     }
 
 
@@ -69,5 +106,13 @@ public class RegistryBehaviors
         return super.equals( obj );
     }
 
+    @Override
+    public String toString()
+    {
+        return super.toString()
+                        + ", windows_view=" + getWindowsView()
+                        ;
+    }
+
 }
-// RegistryBehaviors
+//RegistryBehaviors

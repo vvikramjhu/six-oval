@@ -21,6 +21,125 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     
     <!-- ******************************************************* -->
+    <!-- entity                                                  -->
+    <!-- ******************************************************* -->
+
+<!-- interface (network_interface) -->
+    <class name="jp.go.aist.six.oval.model.windows.EntityStateAddrTypeType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemAddrTypeType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityStateNetworkInterfaceTypeType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemNetworkInterfaceTypeType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
+
+<!-- file -->
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemFileTypeType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
+
+<!-- protocol -->
+    <class name="jp.go.aist.six.oval.model.windows.EntityObjectProtocolType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityStateProtocolType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemProtocolType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
+
+<!-- registry -->
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemRegistryHiveType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemRegistryTypeType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
+
+<!-- sharedresource-->
+    <class name="jp.go.aist.six.oval.model.windows.EntityStateSharedResourceTypeType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemSharedResourceTypeType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
+
+<!-- volume -->
+    <class name="jp.go.aist.six.oval.model.windows.EntityStateDriveTypeType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemDriveTypeType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+
+
+<!-- windows_view -->
+    <class name="jp.go.aist.six.oval.model.windows.EntityStateWindowsViewType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemWindowsViewType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+    </class>
+
+    <class name="jp.go.aist.six.oval.model.windows.RegistryBehaviors"
+        extends="jp.go.aist.six.oval.model.AbstractBehaviors">
+
+        <field name="windowsView"
+            type="string"
+            handler="jp.go.aist.six.oval.core.xml.WindowsViewEnumerationHandler">
+            <!-- type="jp.go.aist.six.oval.model.WindowsViewEnumeration" -->
+            <bind-xml name="windows_view" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHiveType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityStateRegistryHiveType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+
+
+    <class name="jp.go.aist.six.oval.model.windows.EntityStateRegistryTypeType"
+        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
+    </class>
+
+
+
+    <!-- ******************************************************* -->
     <!-- accesstoken                                             -->
     <!-- ******************************************************* -->
 
@@ -5040,30 +5159,6 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.windows.RegistryBehaviors"
-        extends="jp.go.aist.six.oval.model.AbstractBehaviors">
-    </class>
-
-
-
-    <class name="jp.go.aist.six.oval.model.windows.EntityObjectRegistryHiveType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
-    </class>
-
-
-
-    <class name="jp.go.aist.six.oval.model.windows.EntityStateRegistryHiveType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
-    </class>
-
-
-
-    <class name="jp.go.aist.six.oval.model.windows.EntityStateRegistryTypeType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
-    </class>
-
-
-
     <class name ="jp.go.aist.six.oval.model.windows.RegistryItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
         <map-to xml="registry_item"
@@ -6708,93 +6803,5 @@
     </class>
 
 
-
-    <!-- ******************************************************* -->
-    <!-- entity                                                  -->
-    <!-- ******************************************************* -->
-
-<!-- interface (network_interface) -->
-    <class name="jp.go.aist.six.oval.model.windows.EntityStateAddrTypeType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.windows.EntityItemAddrTypeType"
-        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
-    </class>
-
-
-    <class name="jp.go.aist.six.oval.model.windows.EntityStateNetworkInterfaceTypeType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.windows.EntityItemNetworkInterfaceTypeType"
-        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
-    </class>
-
-
-
-<!-- file -->
-    <class name="jp.go.aist.six.oval.model.windows.EntityItemFileTypeType"
-        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
-    </class>
-
-
-
-<!-- protocol -->
-    <class name="jp.go.aist.six.oval.model.windows.EntityObjectProtocolType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityObjectStringType">
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.windows.EntityStateProtocolType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.windows.EntityItemProtocolType"
-        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
-    </class>
-
-
-
-<!-- registry -->
-    <class name="jp.go.aist.six.oval.model.windows.EntityItemRegistryHiveType"
-        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.windows.EntityItemRegistryTypeType"
-        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
-    </class>
-
-
-
-<!-- sharedresource-->
-    <class name="jp.go.aist.six.oval.model.windows.EntityStateSharedResourceTypeType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.windows.EntityItemSharedResourceTypeType"
-        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
-    </class>
-
-
-
-<!-- volume -->
-    <class name="jp.go.aist.six.oval.model.windows.EntityStateDriveTypeType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.windows.EntityItemDriveTypeType"
-        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
-    </class>
-
-
-
-<!-- windows_view -->
-    <class name="jp.go.aist.six.oval.model.windows.EntityStateWindowsViewType"
-        extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
-    </class>
-
-    <class name="jp.go.aist.six.oval.model.windows.EntityItemWindowsViewType"
-        extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
-    </class>
 
 </mapping>
