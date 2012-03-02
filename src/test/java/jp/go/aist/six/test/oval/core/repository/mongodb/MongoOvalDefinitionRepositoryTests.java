@@ -50,7 +50,7 @@ extends TestBase
 	{
         super.setUp();
 
-        _oval_def_repository = _getContext().getBean( MongoOvalDefinitionRepository.class );
+        _oval_def_repository = _getContext().getBean( "ovalDefinitionRepository", MongoOvalDefinitionRepository.class );
 	}
 
 
@@ -95,6 +95,10 @@ extends TestBase
         DefinitionQueryParams  params_def2 = new DefinitionQueryParams();
         params_def2.setTitle( "ind-def:f" );
 
+        // definition: refId
+        DefinitionQueryParams  params_def3 = new DefinitionQueryParams();
+        params_def3.setRefId( "CVE-2010-0176" );
+
         return new Object[][] {
                         { params_common1 }
                         ,
@@ -105,6 +109,8 @@ extends TestBase
                         { params_def1 }
                         ,
                         { params_def2 }
+                        ,
+                        { params_def3 }
         };
     }
 
@@ -216,7 +222,7 @@ extends TestBase
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.repository.mongodb" },
+                    groups={ "oval.core.repository.mongodb.query" },
                     dataProvider="oval.repository.definition.queryParams",
                     dependsOnMethods= { "testFindDefinition" },
                     alwaysRun=true
