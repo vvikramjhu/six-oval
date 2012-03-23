@@ -25,8 +25,6 @@ import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.OvalResultRepository;
 import jp.go.aist.six.oval.repository.QueryParams;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 
@@ -41,11 +39,11 @@ public class MongoOvalDefinitionResultRepository
     implements OvalResultRepository
 {
 
-    /**
-     * Logger.
-     */
-    private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( MongoOvalDefinitionResultRepository.class );
+//    /**
+//     * Logger.
+//     */
+//    private static final Logger  _LOG_ =
+//        LoggerFactory.getLogger( MongoOvalDefinitionResultRepository.class );
 
 
 

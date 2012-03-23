@@ -38,13 +38,13 @@ public class QueryResultMetadata
 
 
 
-    private Integer  _totalResults;
+    private Long  _totalResults;
     //{0..1}
 
-    private Integer  _startIndex;
+    private Long  _startIndex;
     //{0..1}
 
-    private Integer  _itemsPerPage;
+    private Long  _itemsPerPage;
     //{0..1}
 
 
@@ -61,9 +61,9 @@ public class QueryResultMetadata
      * Constructor.
      */
     public QueryResultMetadata(
-                    final int totalResults,
-                    final int startIndex,
-                    final int itemsPerPage
+                    final long totalResults,
+                    final long startIndex,
+                    final long itemsPerPage
                     )
     {
         setTotalResults( totalResults );
@@ -76,14 +76,14 @@ public class QueryResultMetadata
     /**
      */
     public void setTotalResults(
-                    final Integer totalResults
+                    final Long totalResults
                     )
     {
-        this._totalResults = totalResults;
+        _totalResults = totalResults;
     }
 
 
-    public Integer getTotalResults()
+    public Long getTotalResults()
     {
         return _totalResults;
     }
@@ -93,14 +93,14 @@ public class QueryResultMetadata
     /**
      */
     public void setStartIndex(
-                    final Integer startIndex
+                    final Long startIndex
                     )
     {
-        this._startIndex = startIndex;
+        _startIndex = startIndex;
     }
 
 
-    public Integer getStartIndex()
+    public Long getStartIndex()
     {
         return _startIndex;
     }
@@ -110,14 +110,14 @@ public class QueryResultMetadata
     /**
      */
     public void setItemsPerPage(
-                    final Integer itemsPerPage
+                    final Long itemsPerPage
                     )
     {
-        this._itemsPerPage = itemsPerPage;
+        _itemsPerPage = itemsPerPage;
     }
 
 
-    public Integer getItemsPerPage()
+    public Long getItemsPerPage()
     {
         return _itemsPerPage;
     }

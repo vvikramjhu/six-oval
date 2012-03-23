@@ -234,6 +234,36 @@ public class MongoOvalDatastore
 
 
 
+   /**
+    */
+   public <K, T extends Persistable<K>>
+   long count(
+                   final Class<T> type,
+                   final QueryParams params
+                   )
+   {
+       _LOG_.info( "count: type=" + type + ", params=" + params );
+       long  ts_start = System.currentTimeMillis();
+
+       DAO<T, K>  dao = getDAO( type );
+       long  count = 0L;
+       if (params == null) {
+           count = dao.count();
+       } else {
+           Query<T>  query = dao.createQuery();
+           QueryBuilder  builder = MongoWebQueryBuilder.createInstance( type, params );
+           query = builder.build( query );
+           _LOG_.debug( "query=" + query );
+           count = dao.count( query );
+       }
+
+       _LOG_.info( "count: elapsed time (ms)=" +  (System.currentTimeMillis() - ts_start) );
+       _LOG_.debug( "count: count=" + count );
+       return count;
+   }
+
+
+
    public <K, T extends Persistable<K>>
    K save(
                    final Class<T> type,
