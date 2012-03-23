@@ -36,12 +36,16 @@ import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 public interface OvalDefinitionRepository
 {
 
+    //==============================================================
+    // Definition
+    //==============================================================
+
     /**
      * Returns the OVAL Definition of the specified OVAL-ID.
      * If no such Definition exists, this method returns null.
      *
      * @param   oval_id
-     *  the OVAL-ID.
+     *  the OVAL-ID of the Definition.
      */
     public DefinitionType findDefinitionById(
                     String oval_id
@@ -77,7 +81,7 @@ public interface OvalDefinitionRepository
 
 
     /**
-     * Returns The number of OVAL Definitions in the repository.
+     * Returns the number of OVAL Definitions in the repository.
      *
      * @return
      *  the number of Definitions in the repository.
@@ -86,6 +90,40 @@ public interface OvalDefinitionRepository
     throws OvalRepositoryException;
 
 
+
+    /**
+     * Returns the number of OVAL Definitions that match the specified query parameters.
+     *
+     * @param   params
+     *  the query parameters.
+     * @return
+     *  the number of Definitions.
+     */
+    public long countDefinition(
+                    QueryParams params
+                    )
+    throws OvalRepositoryException;
+
+
+
+    /**
+     * Saves the Definition, either inserting or updating the existing one.
+     *
+     * @param   def
+     *  the Definition to save.
+     * @return
+     *  the ID of the Definition.
+     */
+    public String saveDefinition(
+                    final DefinitionType def
+                    )
+    throws OvalRepositoryException;
+
+
+
+    //==============================================================
+    // entities (Definition, Test, Object, State, Variable)
+    //==============================================================
 
     /**
      * Returns the OVAL entity of the specified OVAL-ID.
@@ -150,20 +188,6 @@ public interface OvalDefinitionRepository
 
 
     /**
-     * Returns the OVAL Definitions document object of the specified ID.
-     * If no such Definition exists, this method returns null.
-     *
-     * @param   id
-     *  the ID.
-     */
-    public OvalDefinitions findOvalDefinitionsById(
-                    String id
-                    )
-    throws OvalRepositoryException;
-
-
-
-    /**
      * Saves the entity, either inserting or updating the existing one.
      *
      * @param   entity
@@ -171,14 +195,15 @@ public interface OvalDefinitionRepository
      * @return
      *  the ID of the entity.
      */
-//    public String saveEntity(
-//                    OvalEntity entity
-//                    )
     public <T extends OvalEntity>
     String saveEntity(
                     final T entity
                     )
     throws OvalRepositoryException;
+
+//  public String saveEntity(
+//  OvalEntity entity
+//  )
 
 
 
@@ -192,6 +217,24 @@ public interface OvalDefinitionRepository
      */
     public List<String> saveEntities(
                     OvalDefinitions oval_defs
+                    )
+    throws OvalRepositoryException;
+
+
+
+    //==============================================================
+    // OvalDefinitions
+    //==============================================================
+
+    /**
+     * Returns the OVAL Definitions document object of the specified ID.
+     * If no such Definition exists, this method returns null.
+     *
+     * @param   id
+     *  the ID.
+     */
+    public OvalDefinitions findOvalDefinitionsById(
+                    String id
                     )
     throws OvalRepositoryException;
 

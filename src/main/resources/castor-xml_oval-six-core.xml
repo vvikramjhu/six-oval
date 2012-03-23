@@ -71,15 +71,15 @@
             xml="opensearch_response"
 -->
 
-        <field name="totalResults" type="integer">
+        <field name="totalResults" type="long">
             <bind-xml name="totalResults" node="element"/>
         </field>
 
-        <field name="startIndex" type="integer">
+        <field name="startIndex" type="long">
             <bind-xml name="startIndex" node="element"/>
         </field>
 
-        <field name="itemsPerPage" type="integer">
+        <field name="itemsPerPage" type="long">
             <bind-xml name="itemsPerPage" node="element"/>
         </field>
     </class>

@@ -194,7 +194,7 @@ extends TestBase
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.repository.mongodb" },
+                    groups={ "oval.core.repository.mongodb.read" },
                     dependsOnMethods= { "testSaveOvalDefinitions" },
                     alwaysRun=true
                     )
@@ -222,7 +222,7 @@ extends TestBase
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.repository.mongodb.query" },
+                    groups={ "oval.core.repository.mongodb.read" },
                     dataProvider="oval.repository.definition.queryParams",
                     dependsOnMethods= { "testFindDefinition" },
                     alwaysRun=true
@@ -249,7 +249,7 @@ extends TestBase
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.repository.mongodb" },
+                    groups={ "oval.core.repository.mongodb.read" },
                     dataProvider="oval.repository.entity.oval_id",
                     dependsOnMethods= { "testFindDefinition" },
                     alwaysRun=true
@@ -261,10 +261,13 @@ extends TestBase
     {
         Reporter.log( "\n//////////////////////////////////////////////////////////",
                         true );
+        Reporter.log( "* OVAL ID: " + oval_id, true );
 
         OvalEntity   p_object = _oval_def_repository.findEntityById( oval_id );
         Reporter.log( "  @ entity: " + p_object, true );
-        Assert.assertTrue( oval_id.equals( p_object.getOvalID() ) );
+        if (p_object != null) {
+            Assert.assertTrue( oval_id.equals( p_object.getOvalID() ) );
+        }
     }
 
 
@@ -272,7 +275,7 @@ extends TestBase
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.repository.mongodb" },
+                    groups={ "oval.core.repository.mongodb.read" },
                     dataProvider="oval.repository.entity.queryParams",
                     dependsOnMethods= { "testFindDefinition" },
                     alwaysRun=true
@@ -299,7 +302,7 @@ extends TestBase
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.repository.mongodb" },
+                    groups={ "oval.core.repository.mongodb.write" },
                     dataProvider="oval.test_content.def",
                     alwaysRun=true
                     )
@@ -368,7 +371,7 @@ extends TestBase
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.repository.mongodb.delete" },
+                    groups={ "oval.core.repository.mongodb.write" },
                     alwaysRun=true
                     )
     public void testDeleteAll()

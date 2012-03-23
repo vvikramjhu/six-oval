@@ -242,16 +242,16 @@ CONTENTS:
     <!-- *  datastore / MongoDB                                * -->
     <!-- ******************************************************* -->
 
-    <!-- datastore: Deletes all the data in the datastore. -->
-    <target name="oval.repository.install-definitions" depends="compile,init">
+    <!-- datastore: Installs the OVAL objects to the datastore. -->
+    <target name="oval.datastore.install-definitions" depends="compile,init">
         <java
             classname="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastoreTool"
             classpathref="java.run.classpath"
             fork="true"
             maxmemory="512m"
             >
-            <!-- arg line="-install src/test/resources/OvalTestContent/5.10/2011-10-03_v_windows.xml"/ -->
-            <arg line="-install src/test/resources/OvalTestContent/5.10.1/oval_def-8987-1_i.xml"/>
+            <arg line="-install src/test/resources/OvalTestContent/5.10/20120301_v_microsoft.windows.7.xml"/>
+            <!-- arg line="-install src/test/resources/OvalTestContent/5.10.1/oval_def-8987-1_i.xml"/ --> 
             <!-- arg line="-install src/test/resources/OvalTestContent/5.10/oval_def-7222_CVE-2010-0176.xml"/ -->
             <!-- arg line="-install src/test/resources/OvalTestContent/5.10/2011-10-02_oval5.10_v.xml"/ -->
         </java>
@@ -260,7 +260,7 @@ CONTENTS:
 	
 	
     <!-- datastore: Deletes all the data in the datastore. -->
-    <target name="oval.repository.delete-all" depends="compile,init">
+    <target name="oval.datastore.delete-all" depends="compile,init">
         <java
             classname="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastoreTool"
             classpathref="java.run.classpath"

@@ -20,6 +20,10 @@
 
 package jp.go.aist.six.oval.repository;
 
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalEntityType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
+
 
 
 /**
@@ -35,11 +39,21 @@ public class OvalEntityQueryParams
     {
         public static final String  ID                  = "id";
         public static final String  VERSION             = "version";
+
         public static final String  TYPE                = "type";
+        //(definition, test, object, state, variable)
 
         public static final String  SCHEMA_VERSION      = "schemaVersion";
+
         public static final String  PLATFORM            = "platform";
+        //(linux, unix, windows, ...)
+
         public static final String  COMPONENT           = "component";
+        //(family, file, ...)
+
+        public static final String  REFERER             = "referer";
+
+        public static final String  COMMENT             = "comment";
     }
     // Key
 
@@ -104,8 +118,12 @@ public class OvalEntityQueryParams
      */
     public void setType(
                     final String type
-    )
+                    )
     {
+        if (type != null) {
+            OvalEntityType.valueOf( type );
+        }
+
         set( Key.TYPE, type );
     }
 
@@ -138,8 +156,12 @@ public class OvalEntityQueryParams
      */
     public void setPlatform(
                     final String platform
-    )
+                    )
     {
+        if (platform != null) {
+            OvalPlatformType.valueOf( platform);
+        }
+
         set( Key.PLATFORM, platform );
     }
 
@@ -155,8 +177,12 @@ public class OvalEntityQueryParams
      */
     public void setComponent(
                     final String component
-    )
+                    )
     {
+        if (component != null) {
+            OvalComponentType.valueOf( component );
+        }
+
         set( Key.COMPONENT, component );
     }
 
@@ -164,6 +190,40 @@ public class OvalEntityQueryParams
     public String getComponent()
     {
         return get( Key.COMPONENT );
+    }
+
+
+
+    /**
+     */
+    public void setReferer(
+                    final String referer
+    )
+    {
+        set( Key.REFERER, referer );
+    }
+
+
+    public String getReferer()
+    {
+        return get( Key.REFERER );
+    }
+
+
+
+    /**
+     */
+    public void setComment(
+                    final String comment
+    )
+    {
+        set( Key.COMMENT, comment );
+    }
+
+
+    public String getComment()
+    {
+        return get( Key.COMMENT );
     }
 
 }

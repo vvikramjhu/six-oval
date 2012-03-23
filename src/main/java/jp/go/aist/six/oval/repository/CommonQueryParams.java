@@ -41,8 +41,20 @@ public class CommonQueryParams
         // OpenSearch Time
         public static final String  DTSTART     = "dtstart";
         public static final String  DTEND       = "dtend";
+
+        //predefined projection
+        public static final String  VIEW        = "view";
     }
     //
+
+
+    public static enum View
+    {
+        summary,
+        complete,
+        count
+    }
+    //View
 
 
 
@@ -141,6 +153,28 @@ public class CommonQueryParams
     public String getDtend()
     {
         return get( Key.DTEND );
+    }
+
+
+
+    /**
+     */
+    public void setView(
+                    final String view
+    )
+    {
+        if (view != null) {
+            // validation
+            View.valueOf( view );
+        }
+
+        set( Key.VIEW, view );
+    }
+
+
+    public String getView()
+    {
+        return get( Key.VIEW );
     }
 
 

@@ -98,6 +98,10 @@ public class MongoOvalDefinitionRepository
     //  OvalDefinitionRepository
     //**************************************************************
 
+    //==============================================================
+    // Definition
+    //==============================================================
+
     @Override
     public DefinitionType findDefinitionById(
                     final String oval_id
@@ -177,6 +181,46 @@ public class MongoOvalDefinitionRepository
     }
 
 
+
+    @Override
+    public long countDefinition(
+                    final QueryParams params
+                    )
+    throws OvalRepositoryException
+    {
+        long  count = 0L;
+        try {
+            count = _datastore.count( DefinitionType.class, params );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        return count;
+    }
+
+
+
+    @Override
+    public String saveDefinition(
+                    final DefinitionType def
+                    )
+    throws OvalRepositoryException
+    {
+        String  p_id = null;
+        try {
+            p_id = _datastore.save( DefinitionType.class, def );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        return p_id;
+    }
+
+
+
+    //==============================================================
+    // entities (Definition, Test, Object, State, Variable)
+    //==============================================================
 
     /**
      * OVAL entity type - Java class mapping.
@@ -357,44 +401,6 @@ public class MongoOvalDefinitionRepository
 
 
     @Override
-    public OvalDefinitions findOvalDefinitionsById(
-                    final String id
-                    )
-    throws OvalRepositoryException
-    {
-//        long  ts_start = System.currentTimeMillis();
-
-        OvalDefinitions  p_object = null;
-        try {
-            p_object = _datastore.findById( OvalDefinitions.class, id );
-        } catch (Exception ex) {
-            throw new OvalRepositoryException( ex );
-        }
-
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
-        return p_object;
-    }
-
-
-
-    protected <T extends OvalEntity> List<String> _saveEntities(
-                    final Class<T> type,
-                    final Collection<T> entity_list
-                    )
-    throws OvalRepositoryException
-    {
-        List<String>  id_list = new ArrayList<String>();
-        for (T  entity : entity_list) {
-            String  id = _datastore.save( type, entity );
-            id_list.add( id );
-        }
-
-        return id_list;
-    }
-
-
-
-    @Override
     public List<String> saveEntities(
                     final OvalDefinitions oval_defs
                     )
@@ -443,6 +449,48 @@ public class MongoOvalDefinitionRepository
 
 
 
+    //==============================================================
+    // OvalDefinitions
+    //==============================================================
+
+    @Override
+    public OvalDefinitions findOvalDefinitionsById(
+                    final String id
+                    )
+    throws OvalRepositoryException
+    {
+//        long  ts_start = System.currentTimeMillis();
+
+        OvalDefinitions  p_object = null;
+        try {
+            p_object = _datastore.findById( OvalDefinitions.class, id );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
+        return p_object;
+    }
+
+
+
+    protected <T extends OvalEntity> List<String> _saveEntities(
+                    final Class<T> type,
+                    final Collection<T> entity_list
+                    )
+    throws OvalRepositoryException
+    {
+        List<String>  id_list = new ArrayList<String>();
+        for (T  entity : entity_list) {
+            String  id = _datastore.save( type, entity );
+            id_list.add( id );
+        }
+
+        return id_list;
+    }
+
+
+
     @Override
     public String saveOvalDefinitions(
                     final OvalDefinitions defs
@@ -463,4 +511,4 @@ public class MongoOvalDefinitionRepository
     }
 
 }
-//MongoOvalDefinitionsRepository
+//MongoOvalDefinitionRepository
