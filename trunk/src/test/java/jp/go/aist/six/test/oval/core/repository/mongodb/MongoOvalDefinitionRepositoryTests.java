@@ -50,7 +50,7 @@ extends TestBase
 	{
         super.setUp();
 
-        _oval_def_repository = _getContext().getBean( "ovalDefinitionRepository", MongoOvalDefinitionRepository.class );
+        _oval_def_repository = _getContext().getBean( MongoOvalDefinitionRepository.class );
 	}
 
 

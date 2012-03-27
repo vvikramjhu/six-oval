@@ -50,6 +50,7 @@ public class CommonQueryParams
 
     public static enum View
     {
+        id,
         summary,
         complete,
         count

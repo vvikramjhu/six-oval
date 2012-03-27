@@ -84,9 +84,9 @@ public class OvalQueryResultTest
 
 
         QueryResultMetadata  os = new QueryResultMetadata();
-        os.setTotalResults( 222 );
-        os.setStartIndex( 55 );
-        os.setItemsPerPage( 1 );
+        os.setTotalResults( 222L );
+        os.setStartIndex( 55L );
+        os.setItemsPerPage( 1L );
         result.setMetadata( os );
 
         Reporter.log( "\nobject: " + result, true );
