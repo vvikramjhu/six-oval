@@ -41,11 +41,13 @@ public interface OvalDefinitionRepository
     //==============================================================
 
     /**
-     * Returns the OVAL Definition of the specified OVAL-ID.
+     * Returns the Definition of the specified OVAL-ID.
      * If no such Definition exists, this method returns null.
      *
      * @param   oval_id
      *  the OVAL-ID of the Definition.
+     * @return
+     *  the found Definition, or null if such Definition does not exist.
      */
     public DefinitionType findDefinitionById(
                     String oval_id
@@ -55,10 +57,10 @@ public interface OvalDefinitionRepository
 
 
     /**
-     * Returns all the Definitions.
+     * Returns all the Definitions in the repository.
      *
      * @return
-     *  all the Definitions in the repository.
+     *  all the Definitions.
      */
     public List<DefinitionType> findDefinition()
     throws OvalRepositoryException;
@@ -66,12 +68,12 @@ public interface OvalDefinitionRepository
 
 
     /**
-     * Searches for the OVAL Definitions that match the specified query parameters.
+     * Searches for the Definitions that match the specified query parameters.
      *
      * @param   params
      *  the query parameters.
      * @return
-     *  the Definitions.
+     *  the found Definitions.
      */
     public List<DefinitionType> findDefinition(
                     QueryParams params
@@ -81,10 +83,10 @@ public interface OvalDefinitionRepository
 
 
     /**
-     * Returns the number of OVAL Definitions in the repository.
+     * Returns the number of Definitions in the repository.
      *
      * @return
-     *  the number of Definitions in the repository.
+     *  the number of Definitions.
      */
     public long countDefinition()
     throws OvalRepositoryException;
@@ -92,7 +94,7 @@ public interface OvalDefinitionRepository
 
 
     /**
-     * Returns the number of OVAL Definitions that match the specified query parameters.
+     * Returns the number of Definitions that match the specified query parameters.
      *
      * @param   params
      *  the query parameters.
@@ -106,18 +108,18 @@ public interface OvalDefinitionRepository
 
 
 
-    /**
-     * Saves the Definition, either inserting or updating the existing one.
-     *
-     * @param   def
-     *  the Definition to save.
-     * @return
-     *  the ID of the Definition.
-     */
-    public String saveDefinition(
-                    final DefinitionType def
-                    )
-    throws OvalRepositoryException;
+//    /**
+//     * Saves the Definition, either inserting or updating the existing one.
+//     *
+//     * @param   def
+//     *  the Definition to save.
+//     * @return
+//     *  the ID of the Definition.
+//     */
+//    public String saveDefinition(
+//                    final DefinitionType def
+//                    )
+//    throws OvalRepositoryException;
 
 
 
@@ -126,11 +128,13 @@ public interface OvalDefinitionRepository
     //==============================================================
 
     /**
-     * Returns the OVAL entity of the specified OVAL-ID.
+     * Returns the entity of the specified OVAL-ID.
      * If no such entity exists, this method returns null.
      *
      * @param   oval_id
      *  the OVAL-ID.
+     * @return
+     *  the found entity, or null if such entity does not exist.
      */
     public OvalEntity findEntityById(
                     String oval_id
@@ -147,43 +151,36 @@ public interface OvalDefinitionRepository
 //     */
 //    public List<OvalEntity> findEntity()
 //    throws OvalRepositoryException;
-//
-//
-//
+
+
+
     /**
-     * Searches for the OVAL entity that match the specified query parameters.
+     * Searches for the entity that match the specified query parameters.
      *
      * @param   params
      *  the query parameters.
      * @return
-     *  the entities.
+     *  the found entities.
      */
     public List<OvalEntity> findEntity(
                     QueryParams params
                     )
     throws OvalRepositoryException;
-//
-//
-//
-//
-//    /**
-//     * Searches for the OVAL entities that match the specified query parameters.
-//     *
-//     * @param   params
-//     *  the query parameters.
-//     * @param   ordering
-//     *  the ordering of the result object.
-//     * @param   limit
-//     *  the number of objects and offset of the first object.
-//     * @return
-//     *  the entities.
-//     */
-//    public List<OvalEntity> findEntity(
-//                    QueryParams params,
-//                    List<? extends Order> ordering,
-//                    Limit limit
-//                    )
-//    throws OvalRepositoryException;
+
+
+
+    /**
+     * Returns the number of entities that match the specified query parameters.
+     *
+     * @param   params
+     *  the query parameters.
+     * @return
+     *  the number of entities.
+     */
+    public long countEntity(
+                    QueryParams params
+                    )
+    throws OvalRepositoryException;
 
 
 
@@ -195,30 +192,40 @@ public interface OvalDefinitionRepository
      * @return
      *  the ID of the entity.
      */
-    public <T extends OvalEntity>
-    String saveEntity(
-                    final T entity
+    public String saveEntity(
+                    OvalEntity entity
                     )
     throws OvalRepositoryException;
 
-//  public String saveEntity(
-//  OvalEntity entity
-//  )
+
+
+//    /**
+//     * Saves the entities which are contained in the specified OVAL Definitions document.
+//     *
+//     * @param   oval_defs
+//     *  the OVAL Definitions document.
+//     * @return
+//     *  the IDs of the entities.
+//     */
+//    public List<String> saveEntities(
+//                    OvalDefinitions oval_defs
+//                    )
+//    throws OvalRepositoryException;
 
 
 
-    /**
-     * Saves the entities which are contained in the specified OVAL Definitions document.
-     *
-     * @param   oval_defs
-     *  the OVAL Definitions document.
-     * @return
-     *  the IDs of the entities.
-     */
-    public List<String> saveEntities(
-                    OvalDefinitions oval_defs
-                    )
-    throws OvalRepositoryException;
+//    /**
+//     * Updates the existing entity.
+//     *
+//     * @param   entity
+//     *  the entity to update.
+//     * @return
+//     *  the ID of the entity.
+//     */
+//    public String updateEntity(
+//                    OvalEntity entity
+//                    )
+//    throws OvalRepositoryException;
 
 
 
@@ -227,11 +234,13 @@ public interface OvalDefinitionRepository
     //==============================================================
 
     /**
-     * Returns the OVAL Definitions document object of the specified ID.
-     * If no such Definition exists, this method returns null.
+     * Returns the OVAL Definition Document of the specified ID.
+     * If no such object exists, this method returns null.
      *
      * @param   id
      *  the ID.
+     * @return
+     *  the found OVAL Definition Document, or null if such object does not exist.
      */
     public OvalDefinitions findOvalDefinitionsById(
                     String id
@@ -241,16 +250,16 @@ public interface OvalDefinitionRepository
 
 
     /**
-     * Saves the OVAL Definitions document and the entities
+     * Saves the OVAL Definition Document object and the entities
      * which are contained in that document.
      *
-     * @param   defs
-     *  the OVAL Definitions document.
+     * @param   oval_defs
+     *  the OVAL Definition Document object.
      * @return
-     *  the ID of the document.
+     *  the ID of the object.
      */
     public String saveOvalDefinitions(
-                    OvalDefinitions defs
+                    OvalDefinitions oval_defs
                     )
     throws OvalRepositoryException;
 

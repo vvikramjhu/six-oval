@@ -152,13 +152,13 @@
     </bean>
 
 
-    <bean id="ovalDefinitionRepository" 
+    <bean id="mongoOvalDefinitionRepository" 
         class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository">
         <property name="datastore" ref="mongoOvalDatastore"/>
     </bean>
 
 
-    <bean id="ovalResultRepository" 
+    <bean id="mongoOvalDefinitionResultRepository" 
         class="jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionResultRepository">
         <property name="datastore" ref="mongoOvalDatastore"/>
     </bean>

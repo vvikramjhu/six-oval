@@ -21,10 +21,10 @@
 package jp.go.aist.six.oval.core.ws;
 
 import java.net.URI;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import jp.go.aist.six.oval.OvalException;
-import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalRepository;
-import jp.go.aist.six.oval.core.repository.mongodb.QueryBuilder;
+import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
@@ -65,14 +65,14 @@ import com.sun.syndication.feed.atom.Feed;
  * @version $Id$
  */
 @Controller
-public class OvalController
+public class OvalRepositoryController
 {
 
     /**
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( OvalController.class );
+        LoggerFactory.getLogger( OvalRepositoryController.class );
 
 
     public static final String  DEFINITIONS_REL = "http://aist.go.jp/six/oval/rels/oval_definitions";
@@ -96,14 +96,14 @@ public class OvalController
 
 //    private MongoOvalService  _service;
 
-    private MongoOvalRepository  _repository;
+    private MongoOvalDatastore  _repository;
 
 
 
     /**
      * Constructor.
      */
-    public OvalController()
+    public OvalRepositoryController()
     {
     }
 
@@ -113,7 +113,7 @@ public class OvalController
     /**
      */
     public void setRepository(
-                    final MongoOvalRepository repository
+                    final MongoOvalDatastore repository
                     )
     {
         _repository = repository;
@@ -168,8 +168,7 @@ public class OvalController
     {
         _LOG_.debug( "GET: type=" + type + ", id=" + id );
 
-        T  resource = _repository.get( type, id );
-//        T  resource = _service.getObject( type, id );
+        T  resource = _repository.findById( type, id );
 
         return resource;
     }
@@ -189,7 +188,7 @@ public class OvalController
     {
         _LOG_.debug( "POST: type=" + type + ", object=" + object );
 
-        K  id = _repository.create( type, object );
+        K  id = _repository.save( type, object );
 //        K  id = _service.createObject( type, object );
 
         URI  locationUri = _buildResourceLocation( request, String.valueOf( id ) );
@@ -217,8 +216,9 @@ public class OvalController
     {
         _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
 
-        QueryBuilder  builder = MongoWebQueryBuilder.createInstance( type, params );
-        QueryResult<T>  result = _repository.find( type, builder );
+        List<T>  objects = _repository.find( type, params );
+        //TODO: ordering, paging, ...
+        QueryResult<T>  result = new QueryResult<T>( objects );
         return result;
     }
 
@@ -235,7 +235,8 @@ public class OvalController
     {
         _LOG_.debug( "GET (find): type=" + type );
 
-        QueryResult<K>  result = _repository.findIDs( type );
+        List<K>  ids = _repository.findIds( type );
+        QueryResult<K>  result = new QueryResult<K>( ids );
         return result;
     }
 
@@ -249,8 +250,9 @@ public class OvalController
     {
         _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
 
-        QueryBuilder  builder = MongoWebQueryBuilder.createInstance( type, params );
-        QueryResult<K>  result = _repository.findIDs( type, builder );
+        List<K>  ids = _repository.findIds( type, params );
+        //TODO: ordering, paging, ...
+        QueryResult<K>  result = new QueryResult<K>( ids );
         return result;
     }
 
