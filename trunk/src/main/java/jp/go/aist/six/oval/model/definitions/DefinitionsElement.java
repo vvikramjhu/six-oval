@@ -18,8 +18,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model;
+package jp.go.aist.six.oval.model.definitions;
 
+import jp.go.aist.six.oval.model.DocumentGenerator;
+import jp.go.aist.six.oval.model.Element;
+import jp.go.aist.six.oval.model.OvalComponentType;
+import jp.go.aist.six.oval.model.OvalEntityType;
+import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.PrePersist;
@@ -36,7 +41,7 @@ import com.google.code.morphia.annotations.PrePersist;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class OvalEntity
+public abstract class DefinitionsElement
     extends Element
     implements Persistable<String>
 {
@@ -63,7 +68,7 @@ public abstract class OvalEntity
     /**
      * Constructor.
      */
-    public OvalEntity()
+    public DefinitionsElement()
     {
     }
 
@@ -71,7 +76,7 @@ public abstract class OvalEntity
     /**
      * Constructor.
      */
-    public OvalEntity(
+    public DefinitionsElement(
                     final String id,
                     final int version
                     )
@@ -183,7 +188,7 @@ public abstract class OvalEntity
                     final Object obj
                     )
     {
-        if (!(obj instanceof OvalEntity)) {
+        if (!(obj instanceof DefinitionsElement)) {
             return false;
         }
 

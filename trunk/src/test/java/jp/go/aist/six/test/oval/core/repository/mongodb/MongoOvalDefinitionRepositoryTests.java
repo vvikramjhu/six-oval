@@ -6,11 +6,11 @@ import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository;
 import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.StateType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.definitions.TestType;
@@ -263,7 +263,7 @@ extends TestBase
                         true );
         Reporter.log( "* OVAL ID: " + oval_id, true );
 
-        OvalEntity   p_object = _oval_def_repository.findEntityById( oval_id );
+        DefinitionsElement   p_object = _oval_def_repository.findEntityById( oval_id );
         Reporter.log( "  @ entity: " + p_object, true );
         if (p_object != null) {
             Assert.assertTrue( oval_id.equals( p_object.getOvalID() ) );
@@ -288,11 +288,11 @@ extends TestBase
         Reporter.log( "\n//////////////////////////////////////////////////////////",
                         true );
 
-        List<OvalEntity>  list = _oval_def_repository.findEntity( params );
+        List<DefinitionsElement>  list = _oval_def_repository.findEntity( params );
         Assert.assertNotNull( list );
         Reporter.log( "#entities: " + list.size(), true );
 
-        for (OvalEntity  p_def : list) {
+        for (DefinitionsElement  p_def : list) {
             Reporter.log( "  @ entity: ID=" + p_def.getOvalID(), true );
         }
     }

@@ -38,7 +38,7 @@ import jp.go.aist.six.oval.model.common.OperatorEnumeration;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class TestType
-    extends OvalResultElement
+    extends ResultsElement
 //    implements Dependent<SystemType>
 {
 

@@ -18,7 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model;
+package jp.go.aist.six.oval.model.definitions;
+
 
 
 
@@ -28,8 +29,8 @@ package jp.go.aist.six.oval.model;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class CommentedOvalEntity
-    extends OvalEntity
+public abstract class DefinitionsComponent
+    extends DefinitionsElement
 {
 
     private String  comment;
@@ -42,7 +43,7 @@ public abstract class CommentedOvalEntity
     /**
      * Constructor.
      */
-    public CommentedOvalEntity()
+    public DefinitionsComponent()
     {
     }
 
@@ -50,7 +51,7 @@ public abstract class CommentedOvalEntity
     /**
      * Constructor.
      */
-    public CommentedOvalEntity(
+    public DefinitionsComponent(
                     final String id,
                     final int version
                     )
@@ -62,7 +63,7 @@ public abstract class CommentedOvalEntity
     /**
      * Constructor.
      */
-    public CommentedOvalEntity(
+    public DefinitionsComponent(
                     final String id,
                     final int version,
                     final String comment
@@ -90,7 +91,7 @@ public abstract class CommentedOvalEntity
     }
 
 
-    public CommentedOvalEntity comment(
+    public DefinitionsComponent comment(
                     final String comment
                     )
     {

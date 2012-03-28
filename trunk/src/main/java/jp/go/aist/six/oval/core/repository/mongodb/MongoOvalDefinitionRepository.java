@@ -24,11 +24,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumMap;
 import java.util.List;
-import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.OvalEntityType;
 import jp.go.aist.six.oval.model.OvalId;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.StateType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.definitions.TestType;
@@ -219,8 +219,8 @@ public class MongoOvalDefinitionRepository
     /**
      * OVAL entity type - Java class mapping.
      */
-    private static EnumMap<OvalId.Type, Class<? extends OvalEntity>>  _TYPE_MAP_ =
-                    new EnumMap<OvalId.Type, Class<? extends OvalEntity>>( OvalId.Type.class );
+    private static EnumMap<OvalId.Type, Class<? extends DefinitionsElement>>  _TYPE_MAP_ =
+                    new EnumMap<OvalId.Type, Class<? extends DefinitionsElement>>( OvalId.Type.class );
 
     static {
             _TYPE_MAP_.put( OvalId.Type.def, DefinitionType.class );
@@ -233,12 +233,12 @@ public class MongoOvalDefinitionRepository
 
     /**
      */
-    private Class<? extends OvalEntity> _objectTypeOf(
+    private Class<? extends DefinitionsElement> _objectTypeOf(
                     final String oval_id
                     )
     throws OvalRepositoryException
     {
-        Class<? extends OvalEntity>  objectType = null;
+        Class<? extends DefinitionsElement>  objectType = null;
 
         try {
             OvalId  id = new OvalId( oval_id );
@@ -259,13 +259,13 @@ public class MongoOvalDefinitionRepository
 
     /**
      */
-    private Class<? extends OvalEntity> _objectTypeOf(
+    private Class<? extends DefinitionsElement> _objectTypeOf(
                     final OvalEntityType entity_type
                     )
     throws OvalRepositoryException
     {
         OvalId.Type  id_type = entity_type.idType();
-        Class<? extends OvalEntity>  objectType = _TYPE_MAP_.get( id_type );
+        Class<? extends DefinitionsElement>  objectType = _TYPE_MAP_.get( id_type );
 
         return objectType;
     }
@@ -285,15 +285,15 @@ public class MongoOvalDefinitionRepository
 
 
     @Override
-    public OvalEntity findEntityById(
+    public DefinitionsElement findEntityById(
                     final String oval_id
                     )
     throws OvalRepositoryException
     {
 //        long  ts_start = System.currentTimeMillis();
 
-        Class<? extends OvalEntity>  objectType = _objectTypeOf( oval_id );
-        OvalEntity p_object = null;
+        Class<? extends DefinitionsElement>  objectType = _objectTypeOf( oval_id );
+        DefinitionsElement p_object = null;
         try {
             p_object = _datastore.findById( objectType, oval_id );
         } catch (OvalRepositoryException ex) {
@@ -309,14 +309,14 @@ public class MongoOvalDefinitionRepository
 
 
     @Override
-    public List<OvalEntity> findEntity(
+    public List<DefinitionsElement> findEntity(
                     final QueryParams params
                     )
     throws OvalRepositoryException
     {
 //        long  ts_start = System.currentTimeMillis();
 
-        List<OvalEntity>  p_list = null;
+        List<DefinitionsElement>  p_list = null;
         try {
             QueryParams  adjustedParams = null;
             if (params == null) {
@@ -326,9 +326,9 @@ public class MongoOvalDefinitionRepository
             }
             String  type = adjustedParams.get( OvalEntityQueryParams.Key.TYPE );
 
-            List<? extends OvalEntity>  p_sub_list = null;
+            List<? extends DefinitionsElement>  p_sub_list = null;
             if (type == null) {
-                p_list = new ArrayList<OvalEntity>();
+                p_list = new ArrayList<DefinitionsElement>();
                 p_sub_list = _datastore.find( DefinitionType.class,   adjustedParams );
                 p_list.addAll( p_sub_list );
                 p_sub_list = _datastore.find( TestType.class,         adjustedParams );
@@ -341,10 +341,10 @@ public class MongoOvalDefinitionRepository
                 p_list.addAll( p_sub_list );
             } else {
                 adjustedParams.remove( OvalEntityQueryParams.Key.TYPE );
-                Class<? extends OvalEntity>  objectType = _objectTypeOf( OvalEntityType.valueOf( type ) );
+                Class<? extends DefinitionsElement>  objectType = _objectTypeOf( OvalEntityType.valueOf( type ) );
                 try {
                     p_sub_list = _datastore.find( objectType, adjustedParams );
-                    p_list = new ArrayList<OvalEntity>( p_sub_list );
+                    p_list = new ArrayList<DefinitionsElement>( p_sub_list );
                 } catch (Exception ex) {
                     throw new OvalRepositoryException( ex );
                 }
@@ -391,7 +391,7 @@ public class MongoOvalDefinitionRepository
                 p_count += p_sub_count;
             } else {
                 adjustedParams.remove( OvalEntityQueryParams.Key.TYPE );
-                Class<? extends OvalEntity>  objectType = _objectTypeOf( OvalEntityType.valueOf( type ) );
+                Class<? extends DefinitionsElement>  objectType = _objectTypeOf( OvalEntityType.valueOf( type ) );
                 try {
                     p_count = _datastore.count( objectType, adjustedParams );
                 } catch (Exception ex) {
@@ -412,7 +412,7 @@ public class MongoOvalDefinitionRepository
 
     @Override
     public String saveEntity(
-                    final OvalEntity entity
+                    final DefinitionsElement entity
                     )
     throws OvalRepositoryException
     {
@@ -570,7 +570,7 @@ public class MongoOvalDefinitionRepository
 
 
 
-    protected <T extends OvalEntity> List<String> _saveEntities(
+    protected <T extends DefinitionsElement> List<String> _saveEntities(
                     final Class<T> type,
                     final Collection<T> entity_list
                     )

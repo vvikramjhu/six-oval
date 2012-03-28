@@ -28,10 +28,10 @@ import java.util.Map;
 import java.util.regex.Pattern;
 import jp.go.aist.six.oval.core.repository.mongodb.QueryBuilder;
 import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.ResultEnumeration;
@@ -79,7 +79,7 @@ implements QueryBuilder
             return (new DefinitionBuilder( params ));
         } else if (TestType.class.isAssignableFrom( type )) {
             return (new TestBuilder( params ));
-        } else if (OvalEntity.class.isAssignableFrom( type )) {
+        } else if (DefinitionsElement.class.isAssignableFrom( type )) {
             return (new OvalEntityBuilder( params ));
         } else if (OvalSystemCharacteristics.class.isAssignableFrom( type )) {
             return (new OvalSystemCharacteristicsBuilder( params ));

@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.OvalEntityType;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 import com.google.code.morphia.annotations.Entity;
@@ -39,7 +38,7 @@ import com.google.code.morphia.annotations.Entity;
  */
 @Entity( "oval.d.variable" )
 public class VariableType
-    extends CommentedOvalEntity
+    extends DefinitionsComponent
 {
 
     private DatatypeEnumeration  datatype;
