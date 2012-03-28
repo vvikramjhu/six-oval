@@ -30,7 +30,7 @@ package jp.go.aist.six.oval.model;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Cpe
-    extends NameEntity
+    extends Name
     implements Comparable<Cpe>
 {
 

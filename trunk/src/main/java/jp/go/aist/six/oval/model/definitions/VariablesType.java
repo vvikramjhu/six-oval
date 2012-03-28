@@ -24,7 +24,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import jp.go.aist.six.oval.model.OvalElementContainer;
+import jp.go.aist.six.oval.model.ElementContainer;
 import com.google.code.morphia.annotations.Reference;
 
 
@@ -37,7 +37,7 @@ import com.google.code.morphia.annotations.Reference;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class VariablesType
-    extends OvalElementContainer<VariableType>  //{1..*}
+    extends ElementContainer<VariableType>  //{1..*}
 {
 
     @Reference

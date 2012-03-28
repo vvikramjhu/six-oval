@@ -24,65 +24,40 @@ package jp.go.aist.six.oval.model;
 
 
 /**
+ * A reference to an OVAL element, independent of its version.
  *
- * @author	Akihito Nakamura, AIST
+ * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class NameEntity
+public abstract class ElementRef
     implements OvalObject
-//  implements Comparable<T> in class T
 {
 
-    private String  name;
-
+//    private String  _ovalID;
 
 
     /**
      * Constructor.
      */
-    public NameEntity()
+    public ElementRef()
     {
     }
 
 
-    public NameEntity(
-                    final String name
-                    )
-    {
-        setName( name );
-    }
+//    public OvalEntityRef(
+//                    final String ref
+//                    )
+//    {
+//        _setRef( ref );
+//    }
 
 
 
     /**
      */
-    public void setName(
-                    final String name
-                    )
-    {
-        this.name = name;
-    }
-
-
-    public String getName()
-    {
-        return this.name;
-    }
-
-
-
-//    //**************************************************************
-//    //  Comparable
-//    //**************************************************************
-//
-//    @Override
-//    public int compareTo(
-//                    final NameEntity o
-//                    )
-//    {
-//        return String.CASE_INSENSITIVE_ORDER.compare( getName(), o.getName() );
-//    }
+    protected abstract void _setRef( String id );
+    protected abstract String _getRef();
 
 
 
@@ -96,11 +71,8 @@ public abstract class NameEntity
         final int  prime = 37;
         int  result = 17;
 
-        String  name = getName();
-        if (name != null) {
-            name = name.toLowerCase();
-        }
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        String  id = _getRef();
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
 
         return result;
     }
@@ -116,17 +88,16 @@ public abstract class NameEntity
             return true;
         }
 
-        if (!(obj instanceof NameEntity)) {
+        if (!(obj instanceof ElementRef)) {
             return false;
         }
 
-        NameEntity  other = (NameEntity)obj;
-        String  other_name = other.getName();
-        String   this_name =  this.getName();
-        if (this_name == other_name
-                        ||  (this_name != null
-                                        &&  this_name.equalsIgnoreCase( other_name ))) {
-                return true;
+        ElementRef  other = (ElementRef)obj;
+        String  other_id = other._getRef();
+        String   this_id =  this._getRef();
+        if (this_id == other_id
+                        ||  (this_id != null  &&  this_id.equals( other_id ))) {
+            return true;
         }
 
         return false;
@@ -137,8 +108,9 @@ public abstract class NameEntity
     @Override
     public String toString()
     {
-        return getName();
+        return _getRef();
     }
 
 }
-// NameEntity
+//ElementRef
+

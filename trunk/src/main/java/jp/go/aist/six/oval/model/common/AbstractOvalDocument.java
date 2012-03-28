@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.common;
 
-import jp.go.aist.six.oval.model.OvalDocument;
+import jp.go.aist.six.oval.model.Document;
 
 
 
@@ -32,7 +32,7 @@ import jp.go.aist.six.oval.model.OvalDocument;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class AbstractOvalDocument
-    extends OvalDocument
+    extends Document
 {
 
     private GeneratorType  generator = new GeneratorType();

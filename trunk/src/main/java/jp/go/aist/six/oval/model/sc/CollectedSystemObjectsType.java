@@ -24,7 +24,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import jp.go.aist.six.oval.model.OvalElementContainer;
+import jp.go.aist.six.oval.model.ElementContainer;
 
 
 
@@ -39,7 +39,7 @@ import jp.go.aist.six.oval.model.OvalElementContainer;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class CollectedSystemObjectsType
-    extends OvalElementContainer<SystemObjectType>    //{1..*}
+    extends ElementContainer<SystemObjectType>    //{1..*}
 {
 
     private final Set<SystemObjectType>  object = new HashSet<SystemObjectType>();

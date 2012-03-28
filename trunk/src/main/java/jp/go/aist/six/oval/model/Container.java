@@ -26,7 +26,7 @@ import java.util.Iterator;
 
 
 /**
- * A set of element objects.
+ * A generic container which can contain objects.
  * Every element MUST NOT be null.
  *
  * @author  Akihito Nakamura, AIST
@@ -174,4 +174,4 @@ public abstract class Container<E>
     }
 
 }
-// Container
+//Container

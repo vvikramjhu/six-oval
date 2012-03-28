@@ -28,7 +28,7 @@ import com.google.code.morphia.annotations.PrePersist;
 
 
 /**
- * A marker class for all the OVAL documents.
+ * The abstract superclass of the OVAL documents.
  *
  * <p>
  * IMPLEMENTATION NOTE:
@@ -40,7 +40,7 @@ import com.google.code.morphia.annotations.PrePersist;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class OvalDocument
+public abstract class Document
     implements OvalObject, Persistable<String>
 {
 
@@ -56,7 +56,7 @@ public abstract class OvalDocument
     /**
      * Constructor.
      */
-    public OvalDocument()
+    public Document()
     {
     }
 
@@ -74,7 +74,7 @@ public abstract class OvalDocument
 
     public String getSchemaLocation()
     {
-        return this.schemaLocation;
+        return schemaLocation;
 //        return (_schemaLocation == null ? RESULTS_SCHEMA_LOCATION : _schemaLocation);
     }
 
@@ -119,15 +119,15 @@ public abstract class OvalDocument
                     final String pid
                     )
     {
-        this._id = pid;
+        _id = pid;
     }
 
 
     @Override
     public String getPersistentID()
     {
-        return this._id;
+        return _id;
     }
 
 }
-//OvalDocument
+//Document

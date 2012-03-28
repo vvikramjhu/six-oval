@@ -24,7 +24,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import jp.go.aist.six.oval.model.OvalElementContainer;
+import jp.go.aist.six.oval.model.ElementContainer;
 import com.google.code.morphia.annotations.Reference;
 
 
@@ -37,7 +37,7 @@ import com.google.code.morphia.annotations.Reference;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class StatesType
-    extends OvalElementContainer<StateType> //{1..*}
+    extends ElementContainer<StateType> //{1..*}
 //extends Container<State> //{1..*}
 {
 

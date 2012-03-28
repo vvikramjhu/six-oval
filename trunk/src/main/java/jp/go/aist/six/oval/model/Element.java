@@ -24,16 +24,15 @@ import com.google.code.morphia.annotations.Transient;
 
 
 
-
 /**
- * An OVAL entity or an entity reference.
+ * An OVAL element.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class OvalElement
-    implements OvalObject, Comparable<OvalElement>
+public abstract class Element
+    implements OvalObject, Comparable<Element>
 {
 
     private String  oval_id;
@@ -54,7 +53,7 @@ public abstract class OvalElement
     /**
      * Constructor.
      */
-    public OvalElement()
+    public Element()
     {
     }
 
@@ -67,7 +66,7 @@ public abstract class OvalElement
      * @param   version
      *  the version of the entity.
      */
-    public OvalElement(
+    public Element(
                     final String id,
                     final int version
                     )
@@ -139,7 +138,7 @@ public abstract class OvalElement
     /**
      */
     public static final String globalRefOf(
-                    final OvalElement e
+                    final Element e
                     )
     {
         if (e == null) {
@@ -191,7 +190,7 @@ public abstract class OvalElement
 
     @Override
     public int compareTo(
-                    final OvalElement o
+                    final Element o
                     )
     {
         String  id1 = getOvalID();
@@ -237,11 +236,11 @@ public abstract class OvalElement
             return true;
         }
 
-        if (!(obj instanceof OvalElement)) {
+        if (!(obj instanceof Element)) {
             return false;
         }
 
-        OvalElement  other = (OvalElement)obj;
+        Element  other = (Element)obj;
         String  other_id = other.getOvalID();
         String   this_id =  this.getOvalID();
         if (this_id == other_id
@@ -264,4 +263,4 @@ public abstract class OvalElement
     }
 
 }
-// OvalElement
+//Element

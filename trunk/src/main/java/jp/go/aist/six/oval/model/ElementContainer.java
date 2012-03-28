@@ -31,25 +31,25 @@ import com.google.code.morphia.annotations.Transient;
 
 
 /**
- * A set of OvalElement instances.
+ * A container which can contain OvalElement objects.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class OvalElementContainer<E extends OvalElement>
+public abstract class ElementContainer<E extends Element>
     extends Container<E>
 {
 
     /**
      * Constructor.
      */
-    public OvalElementContainer()
+    public ElementContainer()
     {
     }
 
 
-    public OvalElementContainer(
+    public ElementContainer(
                     final Collection<? extends E> elements
                     )
     {
@@ -57,7 +57,7 @@ public abstract class OvalElementContainer<E extends OvalElement>
     }
 
 
-    public OvalElementContainer(
+    public ElementContainer(
                     final E[] elements
                     )
     {
@@ -190,7 +190,7 @@ public abstract class OvalElementContainer<E extends OvalElement>
             Collections.sort( list, new OvalElementComparator() );
             // OvalElement is Comparable
 
-            for (OvalElement  element : list) {
+            for (Element  element : list) {
                 _updateDigest( digest, element );
             }
         }
@@ -204,7 +204,7 @@ public abstract class OvalElementContainer<E extends OvalElement>
      */
     private static void _updateDigest(
                     final MessageDigest digest,
-                    final OvalElement element
+                    final Element element
                     )
     {
         _updateDigest( digest, element.ovalGetGlobalRef() );
@@ -271,7 +271,7 @@ public abstract class OvalElementContainer<E extends OvalElement>
 
 
     private static class OvalElementComparator
-    implements Comparator<OvalElement>
+    implements Comparator<Element>
     {
 
         public OvalElementComparator()
@@ -282,8 +282,8 @@ public abstract class OvalElementContainer<E extends OvalElement>
 
         @Override
         public int compare(
-                        final OvalElement e1,
-                        final OvalElement e2
+                        final Element e1,
+                        final Element e2
                         )
         {
             String  id1 = e1.getOvalID();
@@ -310,4 +310,4 @@ public abstract class OvalElementContainer<E extends OvalElement>
     }
 
 }
-// OvalElementContainer
+//ElementContainer

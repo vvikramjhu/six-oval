@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.OvalEntityRefType;
+import jp.go.aist.six.oval.model.ElementRef;
 
 
 
@@ -32,7 +32,7 @@ import jp.go.aist.six.oval.model.OvalEntityRefType;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class SystemObjectRefType
-    extends OvalEntityRefType
+    extends ElementRef
 //    implements Dependent<TestType>
 {
 
