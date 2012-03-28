@@ -32,7 +32,7 @@ import jp.go.aist.six.oval.model.common.ClassEnumeration;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class DefinitionType
-    extends OvalResultElement
+    extends ResultsElement
 //    implements Dependent<SystemType>
 {
 

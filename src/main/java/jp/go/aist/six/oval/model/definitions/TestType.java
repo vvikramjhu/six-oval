@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.definitions;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.OvalEntityType;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.ExistenceEnumeration;
@@ -41,7 +40,7 @@ import com.google.code.morphia.annotations.Entity;
  */
 @Entity( "oval.d.test" )
 public class TestType
-    extends CommentedOvalEntity
+    extends DefinitionsComponent
 {
 
     private NotesType  notes;

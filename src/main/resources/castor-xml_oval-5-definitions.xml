@@ -14,6 +14,28 @@
 
 <mapping>
 
+    <class name ="jp.go.aist.six.oval.model.definitions.DefinitionsElement"
+        extends="jp.go.aist.six.oval.model.Element"
+        verify-constructable="false">
+
+        <field name="deprecated" type="boolean">
+            <bind-xml name="deprecated" node="attribute"/>
+        </field>
+    </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.definitions.DefinitionsComponent"
+        extends="jp.go.aist.six.oval.model.definitions.DefinitionsElement"
+        verify-constructable="false">
+
+        <field name="comment" type="string">
+            <bind-xml name="comment" node="attribute"/>
+        </field>
+    </class>
+
+
+
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <!-- %                                                     % -->
     <!-- %  xmlns:oval-definitions-5                           % -->
@@ -85,7 +107,7 @@
 
     <!-- definition -->
     <class name="jp.go.aist.six.oval.model.definitions.DefinitionType"
-        extends="jp.go.aist.six.oval.model.OvalEntity">
+        extends="jp.go.aist.six.oval.model.definitions.DefinitionsElement">
         <map-to xml="definition" 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
             ns-prefix=""/>
@@ -325,7 +347,7 @@
 
 
     <class name="jp.go.aist.six.oval.model.definitions.TestType"
-        extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
+        extends="jp.go.aist.six.oval.model.definitions.DefinitionsComponent"
         >
 <!--
         <map-to
@@ -397,7 +419,7 @@
 
 
     <class name="jp.go.aist.six.oval.model.definitions.SystemObjectType"
-        extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
+        extends="jp.go.aist.six.oval.model.definitions.DefinitionsComponent"
         verify-constructable="false">
 
         <field name="notes" 
@@ -469,7 +491,7 @@
 
 
     <class name="jp.go.aist.six.oval.model.definitions.StateType"
-        extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
+        extends="jp.go.aist.six.oval.model.definitions.DefinitionsComponent"
         verify-constructable="false">
 
         <field name="notes" 
@@ -502,7 +524,7 @@
 
 
     <class name="jp.go.aist.six.oval.model.definitions.VariableType"
-        extends="jp.go.aist.six.oval.model.CommentedOvalEntity"
+        extends="jp.go.aist.six.oval.model.definitions.DefinitionsComponent"
         verify-constructable="false">
 
         <field name="datatype" 

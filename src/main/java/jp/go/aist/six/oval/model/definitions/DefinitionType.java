@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.OvalEntity;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Property;
@@ -36,7 +35,7 @@ import com.google.code.morphia.annotations.Property;
  */
 @Entity( "oval.d.definition" )
 public class DefinitionType
-    extends OvalEntity
+    extends DefinitionsElement
 {
 
     private MetadataType  metadata;

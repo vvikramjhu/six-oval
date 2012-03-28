@@ -35,7 +35,7 @@ import jp.go.aist.six.oval.model.common.MessageType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class OvalResultElement
+public abstract class ResultsElement
     extends Element
 //    extends OvalAnalysisElement
 {
@@ -59,12 +59,12 @@ public abstract class OvalResultElement
     /**
      * Constructor.
      */
-    public OvalResultElement()
+    public ResultsElement()
     {
     }
 
 
-    public OvalResultElement(
+    public ResultsElement(
                     final String id,
                     final int version
                     )
@@ -73,7 +73,7 @@ public abstract class OvalResultElement
     }
 
 
-    public OvalResultElement(
+    public ResultsElement(
                     final String id,
                     final int version,
                     final ResultEnumeration result
@@ -91,10 +91,10 @@ public abstract class OvalResultElement
                     final Collection<? extends MessageType> messageList
                     )
     {
-        if (this.message != messageList) {
-            this.message.clear();
+        if (message != messageList) {
+            message.clear();
             if (messageList != null  &&  messageList.size() > 0) {
-                this.message.addAll( messageList );
+                message.addAll( messageList );
             }
         }
     }
@@ -102,13 +102,13 @@ public abstract class OvalResultElement
 
     public Collection<MessageType> getMessage()
     {
-        return this.message;
+        return message;
     }
 
 
     public Iterator<MessageType> iterateMessage()
     {
-        return this.message.iterator();
+        return message.iterator();
     }
 
 
@@ -130,7 +130,7 @@ public abstract class OvalResultElement
 
     public Integer getVariableInstance()
     {
-        return this.variable_instance;
+        return variable_instance;
     }
 
 
@@ -147,7 +147,7 @@ public abstract class OvalResultElement
 
     public ResultEnumeration getResult()
     {
-        return this.result;
+        return result;
     }
 
 
@@ -178,12 +178,12 @@ public abstract class OvalResultElement
                     final Object obj
                     )
     {
-        if (!(obj instanceof OvalResultElement)) {
+        if (!(obj instanceof ResultsElement)) {
             return false;
         }
 
         if (super.equals( obj )) {
-            OvalResultElement  other = (OvalResultElement)obj;
+            ResultsElement  other = (ResultsElement)obj;
             if (getResult() == other.getResult()) {
                 final Integer   this_varins = getVariableInstance();
                 final Integer  other_varins = other.getVariableInstance();
@@ -208,4 +208,4 @@ public abstract class OvalResultElement
     }
 
 }
-// OvalResultElement
+//ResultsElement

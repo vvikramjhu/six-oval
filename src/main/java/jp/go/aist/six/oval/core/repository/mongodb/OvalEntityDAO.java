@@ -1,6 +1,6 @@
 package jp.go.aist.six.oval.core.repository.mongodb;
 
-import jp.go.aist.six.oval.model.OvalEntity;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Key;
 import com.google.code.morphia.dao.BasicDAO;
@@ -12,7 +12,7 @@ import com.google.code.morphia.query.Query;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalEntityDAO<T extends OvalEntity>
+public class OvalEntityDAO<T extends DefinitionsElement>
     extends BasicDAO<T, String>
 {
 

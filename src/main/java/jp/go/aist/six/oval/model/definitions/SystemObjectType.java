@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.CommentedOvalEntity;
 import jp.go.aist.six.oval.model.OvalEntityType;
 import com.google.code.morphia.annotations.Entity;
 
@@ -37,7 +36,7 @@ import com.google.code.morphia.annotations.Entity;
  */
 @Entity( "oval.d.object" )
 public class SystemObjectType
-    extends CommentedOvalEntity
+    extends DefinitionsComponent
 {
 
     private NotesType  notes;

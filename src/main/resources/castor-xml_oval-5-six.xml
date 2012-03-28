@@ -47,28 +47,6 @@
 
 
 
-    <class name ="jp.go.aist.six.oval.model.OvalEntity"
-        extends="jp.go.aist.six.oval.model.Element"
-        verify-constructable="false">
-
-        <field name="deprecated" type="boolean">
-            <bind-xml name="deprecated" node="attribute"/>
-        </field>
-    </class>
-
-
-
-    <class name ="jp.go.aist.six.oval.model.CommentedOvalEntity"
-        extends="jp.go.aist.six.oval.model.OvalEntity"
-        verify-constructable="false">
-
-        <field name="comment" type="string">
-            <bind-xml name="comment" node="attribute"/>
-        </field>
-    </class>
-
-
-
     <class name="jp.go.aist.six.oval.model.Document"
         verify-constructable="false">
 
