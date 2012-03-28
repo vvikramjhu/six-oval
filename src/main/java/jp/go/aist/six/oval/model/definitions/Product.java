@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.NameEntity;
+import jp.go.aist.six.oval.model.Name;
 
 
 
@@ -32,7 +32,7 @@ import jp.go.aist.six.oval.model.NameEntity;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class Product
-    extends NameEntity
+    extends Name
     implements Comparable<Product>
 //extends NamedEntry<Integer>
 {

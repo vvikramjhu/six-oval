@@ -37,7 +37,7 @@ import com.google.code.morphia.annotations.PrePersist;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class OvalEntity
-    extends OvalElement
+    extends Element
     implements Persistable<String>
 {
 
@@ -53,7 +53,7 @@ public abstract class OvalEntity
 
 
     // SIX extension
-    protected OvalGenerator      _oval_generator;
+    protected DocumentGenerator      _oval_generator;
     protected OvalEntityType     _oval_entity_type;
     protected OvalPlatformType   _oval_platform_type;
     protected OvalComponentType  _oval_component_type;
@@ -103,7 +103,7 @@ public abstract class OvalEntity
     //**************************************************************
 
     public void generator(
-                    final OvalGenerator generator
+                    final DocumentGenerator generator
                     )
     {
         this._oval_generator = generator;

@@ -20,12 +20,11 @@
 
 package jp.go.aist.six.oval.model;
 
-import java.io.Serializable;
 
 
 
 /**
- * The OvalGenerator defines an element that is used to hold
+ * The DocumentGenerator defines an element that is used to hold
  * information about when a particular OVAL document was compiled,
  * what version of the schema was used,
  * what tool compiled the document, and
@@ -33,15 +32,15 @@ import java.io.Serializable;
  *
  *<p>
  * This type is extracted from GeneratorType defined in the OVAL Common schema
- * to refer from the OVAL entities.
+ * to refer from the OVAL Definitions elements: Definition, Test, systemObject, and State.
  * </p>
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class OvalGenerator
-    implements Serializable
+public class DocumentGenerator
+    implements OvalObject
 {
 
     private String  product_name;
@@ -51,7 +50,8 @@ public class OvalGenerator
     //{xsd:string, 0..1}
 
     private String  schema_version;
-    //{xsd:decimal, 1..1}
+    //5.10  {xsd:decimal, 1..1}
+    //5.10.1{xsd:pattern value="[0-9]+\.[0-9]+(\.[0-9]+)?"}
 
     /**
      * The required timestamp specifies when the particular
@@ -67,12 +67,12 @@ public class OvalGenerator
     /**
      * Constructor.
      */
-    public OvalGenerator()
+    public DocumentGenerator()
     {
     }
 
 
-    public OvalGenerator(
+    public DocumentGenerator(
                     final String schema_version,
                     final String timestamp
                     )
@@ -81,7 +81,7 @@ public class OvalGenerator
     }
 
 
-    public OvalGenerator(
+    public DocumentGenerator(
                     final String schema_version,
                     final String timestamp,
                     final String prod_name,
@@ -108,7 +108,7 @@ public class OvalGenerator
 
     public String getProductName()
     {
-        return this.product_name;
+        return product_name;
     }
 
 
@@ -125,7 +125,7 @@ public class OvalGenerator
 
     public String getProductVersion()
     {
-        return this.product_version;
+        return product_version;
     }
 
 
@@ -142,7 +142,7 @@ public class OvalGenerator
 
     public String getSchemaVersion()
     {
-        return this.schema_version;
+        return schema_version;
     }
 
 
@@ -157,7 +157,7 @@ public class OvalGenerator
 
     public String getTimestamp()
     {
-        return this.timestamp;
+        return timestamp;
     }
 
 
@@ -200,11 +200,11 @@ public class OvalGenerator
             return true;
         }
 
-        if (!(obj instanceof OvalGenerator)) {
+        if (!(obj instanceof DocumentGenerator)) {
             return false;
         }
 
-        OvalGenerator  other = (OvalGenerator)obj;
+        DocumentGenerator  other = (DocumentGenerator)obj;
         String  other_ts = other.getTimestamp();
         String   this_ts =  this.getTimestamp();
         if (this_ts == other_ts
@@ -243,4 +243,4 @@ public class OvalGenerator
     }
 
 }
-// OvalGenerator
+//DocumentGenerator

@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.common;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalGenerator;
+import jp.go.aist.six.oval.model.DocumentGenerator;
 import jp.go.aist.six.oval.model.OvalObject;
 
 
@@ -40,7 +40,7 @@ import jp.go.aist.six.oval.model.OvalObject;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class GeneratorType
-    extends OvalGenerator
+    extends DocumentGenerator
     implements OvalObject
 {
 

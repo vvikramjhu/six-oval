@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.results;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalElement;
+import jp.go.aist.six.oval.model.Element;
 import jp.go.aist.six.oval.model.common.MessageType;
 
 
@@ -36,7 +36,7 @@ import jp.go.aist.six.oval.model.common.MessageType;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public abstract class OvalResultElement
-    extends OvalElement
+    extends Element
 //    extends OvalAnalysisElement
 {
 
