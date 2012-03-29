@@ -36,4 +36,4 @@ public interface OvalEnumeration
     public String value();
 
 }
-// OvalEnumeration
+//OvalEnumeration

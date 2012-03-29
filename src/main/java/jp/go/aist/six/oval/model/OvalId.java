@@ -34,7 +34,7 @@ import java.util.Arrays;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public final class OvalId
-    implements Cloneable, Serializable
+    implements OvalObject, Cloneable, Serializable
 {
 
     public static final String  PREFIX = "oval";
