@@ -214,12 +214,12 @@ public class Oval
 
 
     /**
-     * An OVAL Component Namespace.
+     * An operating system family defined in as the OVAL component namespace.
      *
      * @author	Akihito Nakamura, AIST
      * @version $Id$
      */
-    public static enum Namespace
+    public static enum Family
     {
 //      aix,
 //      apache,
@@ -244,7 +244,7 @@ public class Oval
         /**
          * Constructor.
          */
-        Namespace(
+        Family(
                         final Component[] components
                         )
         {
@@ -268,14 +268,14 @@ public class Oval
 
     public static final String  SCHEMA_VERSION = "5.10";
 
-    public static final Namespace  INDEPENDENT  = Namespace.independent;
-    public static final Namespace  LINUX        = Namespace.linux;
-    public static final Namespace  UNIX         = Namespace.unix;
-    public static final Namespace  WINDOWS      = Namespace.windows;
+    public static final Family  INDEPENDENT  = Family.independent;
+    public static final Family  LINUX        = Family.linux;
+    public static final Family  UNIX         = Family.unix;
+    public static final Family  WINDOWS      = Family.windows;
 
 
-    private static final Collection<Namespace>  _NAMESPACES_ =
-                    Collections.unmodifiableCollection( Arrays.asList( Namespace.values() ) );
+    private static final Collection<Family>  _FAMILIES_ =
+                    Collections.unmodifiableCollection( Arrays.asList( Family.values() ) );
 
 
     protected Oval()
@@ -297,14 +297,14 @@ public class Oval
 
 
     /**
-     * Returns the OVAL namespaces.
+     * Returns the families.
      *
      * @return
      *  an immutable collection of the namespaces.
      */
-    public static Collection<Namespace> getNamespaces()
+    public static Collection<Family> getFamilies()
     {
-        return _NAMESPACES_;
+        return _FAMILIES_;
     }
 
 }
