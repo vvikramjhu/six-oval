@@ -71,6 +71,7 @@ public class SystemObjectType
         super( id, version, comment );
 
         _oval_entity_type = OvalEntityType.object;
+//        _definitions_element_type = DefinitionsElement.Type.object;
     }
 
 
@@ -87,7 +88,7 @@ public class SystemObjectType
 
     public NotesType getNotes()
     {
-        return this.notes;
+        return notes;
     }
 
 
@@ -102,6 +103,18 @@ public class SystemObjectType
 //    {
 //        return _EMPTY_LIST_.iterator();
 //    }
+
+
+
+    //**************************************************************
+    //  SIX extension
+    //**************************************************************
+
+    @Override
+    public final Type elementType()
+    {
+        return DefinitionsElement.Type.object;
+    }
 
 
 

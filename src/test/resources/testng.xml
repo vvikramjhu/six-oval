@@ -130,7 +130,7 @@
     </test>
 
 
-    <test name="oval.core.repository.mongodb" enabled="false">
+    <test name="oval.core.repository.mongodb" enabled="true">
         <classes>
             <class name="jp.go.aist.six.test.oval.core.repository.mongodb.MongoOvalDatastoreTests"/>
         </classes>
@@ -155,7 +155,7 @@
     <!-- *  XML                                                * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.xml" enabled="true">
+    <test name="oval.core.xml" enabled="false">
                 <!--
         <groups>
             <run>

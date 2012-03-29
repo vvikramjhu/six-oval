@@ -85,6 +85,7 @@ public class VariableType
         setDatatype( datatype );
 
         _oval_entity_type = OvalEntityType.variable;
+//        _definitions_element_type = DefinitionsElement.Type.variable;
     }
 
 
@@ -101,7 +102,19 @@ public class VariableType
 
     public DatatypeEnumeration getDatatype()
     {
-        return this.datatype;
+        return datatype;
+    }
+
+
+
+    //**************************************************************
+    //  SIX extension
+    //**************************************************************
+
+    @Override
+    public final Type elementType()
+    {
+        return DefinitionsElement.Type.variable;
     }
 
 
