@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.independent;
 
+import jp.go.aist.six.oval.model.Oval;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
@@ -72,6 +73,8 @@ public class EnvironmentVariableTest
 
         _oval_platform_type = OvalPlatformType.independent;
         _oval_component_type = OvalComponentType.environmentvariable;
+
+        _oval_family = Oval.Family.independent;
     }
 
 
