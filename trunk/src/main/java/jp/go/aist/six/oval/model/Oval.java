@@ -48,11 +48,55 @@ public class Oval
     }
 
 
+
+    /**
+     * The components defined in the "independent" namespace.
+     *
+     * @author	Akihito Nakamura, AIST
+     * @version $Id$
+     */
+    public static enum IndependentComponent
+    implements Component
+    {
+        environmentvariable,    //@deprecated
+        environmentvariable58,
+        family,
+        filehash,               //@deprecated
+        filehash58,
+        ldap,
+        sql,                    //@deprecated
+        textfilecontent,        //@deprecated
+        textfilecontent54,
+        unknown,
+        variable,
+        xmlfilecontent;
+
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
+
+
+
+    /**
+     * The components defined in the "linux" namespace.
+     *
+     * @author  Akihito Nakamura, AIST
+     * @version $Id$
+     */
     public static enum LinuxComponent
     implements Component
     {
         dpkginfo,
-        rpminfo;
+        inetlisteningservers,
+        partition,
+        rpminfo,
+        rpmverify,
+        selinuxboolean,
+        selinuxsecuritycontext,
+        slackwarepkginfo;
 
         @Override
         public String getName()
@@ -62,11 +106,26 @@ public class Oval
     }
 
 
-    public static enum WindowsComponent
+
+    /**
+     * The components defined in the "unix" namespace.
+     *
+     * @author  Akihito Nakamura, AIST
+     * @version $Id$
+     */
+    public static enum UnixComponent
     implements Component
     {
         file,
-        registry;
+        inetd,
+        network_interface,  //"interface"
+        password,
+        process,
+        process58,
+        runlevel,
+        shadow,
+        uname,
+        xinetd;
 
         @Override
         public String getName()
@@ -74,6 +133,83 @@ public class Oval
             return this.name();
         }
     }
+
+
+
+    /**
+     * The components defined in the "windows" namespace.
+     *
+     * @author  Akihito Nakamura, AIST
+     * @version $Id$
+     */
+    public static enum WindowsComponent
+    implements Component
+    {
+        accesstoken,
+        activedirectory,
+        auditeventpolicy,
+        auditeventpolicysubcategories,
+        file,
+        fileauditedpermissions,
+        fileauditedpermissions53,
+        fileeffectiverights,
+        fileeffectiverights53,
+        group,
+        group_sid,
+        network_interface,  //"interface"
+        lockoutpolicy,
+        metabase,
+        passwordpolicy,
+        port,
+        printereffectiverights,
+        process,
+        process58,
+        registry,
+        regkeyauditedpermissions,
+        regkeyauditedpermissions53,
+        regkeyeffectiverights,
+        regkeyeffectiverights53,
+        serviceeffectiverights,
+        sharedresource,
+        sid,
+        sid_sid,
+        uac,
+        user,
+        user_sid,
+        user_sid55,
+        volume,
+        wmi,
+        wmi57,
+        wuaupdatesearcher;
+
+        @Override
+        public String getName()
+        {
+            return this.name();
+        }
+    }
+
+
+
+//    /**
+//     * The sub-types of the OVAL variable.
+//     *
+//     * @author  Akihito Nakamura, AIST
+//     * @version $Id$
+//     */
+//    public static enum VariableComponent
+//    implements Component
+//    {
+//        constant,
+//        local,
+//        external;
+//
+//        @Override
+//        public String getName()
+//        {
+//            return this.name();
+//        }
+//    }
 
 
 
@@ -92,19 +228,22 @@ public class Oval
 //      freebsd,
 //      hpux,
 //      ios,
-//      independent,
-        linux(     LinuxComponent.values() ),
+        independent(     IndependentComponent.values() ),
+        linux(                 LinuxComponent.values() ),
 //        macos,
 //        pixos,
 //        sharepoint,
 //        solaris,
-//        unix,
-        windows( WindowsComponent.values() );
+        unix(                   UnixComponent.values() ),
+        windows(             WindowsComponent.values() );
 
 
         private final Collection<Component>  _components;
 
 
+        /**
+         * Constructor.
+         */
         Namespace(
                         final Component[] components
                         )
@@ -129,8 +268,10 @@ public class Oval
 
     public static final String  SCHEMA_VERSION = "5.10";
 
-    public static final Namespace  LINUX   = Namespace.linux;
-    public static final Namespace  WINDOWS = Namespace.windows;
+    public static final Namespace  INDEPENDENT  = Namespace.independent;
+    public static final Namespace  LINUX        = Namespace.linux;
+    public static final Namespace  UNIX         = Namespace.unix;
+    public static final Namespace  WINDOWS      = Namespace.windows;
 
 
     private static final Collection<Namespace>  _NAMESPACES_ =
@@ -142,17 +283,29 @@ public class Oval
     }
 
 
+
+    /**
+     * Returns the version of the OVAL schema.
+     *
+     * @return
+     *  the version.
+     */
     public static String getSchemaVersion()
     {
         return SCHEMA_VERSION;
     }
 
 
+    /**
+     * Returns the OVAL namespaces.
+     *
+     * @return
+     *  an immutable collection of the namespaces.
+     */
     public static Collection<Namespace> getNamespaces()
     {
         return _NAMESPACES_;
     }
 
 }
-//OvalSpec
-
+//Oval

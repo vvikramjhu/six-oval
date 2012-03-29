@@ -45,9 +45,6 @@ public abstract class Container<E>
     }
 
 
-    /**
-     * Constructor.
-     */
     public Container(
                     final Collection<? extends E> elements
                     )
@@ -56,9 +53,6 @@ public abstract class Container<E>
     }
 
 
-    /**
-     * Constructor.
-     */
     public Container(
                     final E[] elements
                     )
