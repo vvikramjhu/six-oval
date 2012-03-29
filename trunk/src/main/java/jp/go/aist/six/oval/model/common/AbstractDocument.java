@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.model.Document;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public abstract class AbstractOvalDocument
+public abstract class AbstractDocument
     extends Document
 {
 
@@ -43,13 +43,13 @@ public abstract class AbstractOvalDocument
     /**
      * Constructor.
      */
-    public AbstractOvalDocument()
+    public AbstractDocument()
     {
     }
 
 
 
-    public AbstractOvalDocument(
+    public AbstractDocument(
                     final GeneratorType generator
                     )
     {

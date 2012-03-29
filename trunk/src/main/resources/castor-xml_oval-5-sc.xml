@@ -21,7 +21,7 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <class name="jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics"
-        extends="jp.go.aist.six.oval.model.OvalDocument">
+        extends="jp.go.aist.six.oval.model.Document">
     
         <map-to xml="oval_system_characteristics"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"

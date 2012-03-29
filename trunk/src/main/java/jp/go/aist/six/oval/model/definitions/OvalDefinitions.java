@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.common.AbstractOvalDocument;
+import jp.go.aist.six.oval.model.common.AbstractDocument;
 import jp.go.aist.six.oval.model.common.GeneratorType;
 import com.google.code.morphia.annotations.Entity;
 
@@ -35,7 +35,7 @@ import com.google.code.morphia.annotations.Entity;
  */
 @Entity( "oval.d.oval_definitions" )
 public class OvalDefinitions
-    extends AbstractOvalDocument
+    extends AbstractDocument
 {
 
 //    private GeneratorType  generator = new GeneratorType();

@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import jp.go.aist.six.oval.model.DocumentGenerator;
-import jp.go.aist.six.oval.model.OvalObject;
 
 
 
@@ -41,7 +40,7 @@ import jp.go.aist.six.oval.model.OvalObject;
  */
 public class GeneratorType
     extends DocumentGenerator
-    implements OvalObject
+//    implements OvalObject
 {
 
 //    private String  product_name;
@@ -173,10 +172,10 @@ public class GeneratorType
                     final Collection<? extends GeneratorInformation> info
                     )
     {
-        if (info != this.additional_information) {
-            this.additional_information.clear();
+        if (info != additional_information) {
+            additional_information.clear();
             if (info != null  &&  info.size() > 0) {
-                this.additional_information.addAll( info );
+                additional_information.addAll( info );
             }
         }
     }
@@ -184,13 +183,13 @@ public class GeneratorType
 
     public Collection<GeneratorInformation> getAdditionalInformation()
     {
-        return this.additional_information;
+        return additional_information;
     }
 
 
     public Iterator<GeneratorInformation> iterateAdditionalInformation()
     {
-        return this.additional_information.iterator();
+        return additional_information.iterator();
     }
 
 
@@ -198,7 +197,7 @@ public class GeneratorType
                     final GeneratorInformation info
                     )
     {
-        this.additional_information.add( info );
+        additional_information.add( info );
         return this;
     }
 

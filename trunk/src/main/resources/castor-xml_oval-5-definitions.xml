@@ -43,7 +43,7 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <class name="jp.go.aist.six.oval.model.definitions.OvalDefinitions"
-        extends="jp.go.aist.six.oval.model.OvalDocument">
+        extends="jp.go.aist.six.oval.model.Document">
         <map-to xml="oval_definitions"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5"
             ns-prefix=""/>
