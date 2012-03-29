@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.results;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.common.AbstractOvalDocument;
+import jp.go.aist.six.oval.model.common.AbstractDocument;
 import jp.go.aist.six.oval.model.common.GeneratorType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import com.google.code.morphia.annotations.Entity;
@@ -40,7 +40,7 @@ import com.google.code.morphia.annotations.Reference;
  */
 @Entity( "oval.r.oval_results" )
 public class OvalResults
-    extends AbstractOvalDocument
+    extends AbstractDocument
 {
 
 //    private GeneratorType  generator = new GeneratorType();

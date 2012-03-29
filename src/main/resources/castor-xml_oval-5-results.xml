@@ -21,7 +21,7 @@
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
     <class name="jp.go.aist.six.oval.model.results.OvalResults"
-        extends="jp.go.aist.six.oval.model.OvalDocument">
+        extends="jp.go.aist.six.oval.model.Document">
         <map-to xml="oval_results"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
 

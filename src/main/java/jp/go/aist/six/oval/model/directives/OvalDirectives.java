@@ -23,7 +23,7 @@ package jp.go.aist.six.oval.model.directives;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.common.AbstractOvalDocument;
+import jp.go.aist.six.oval.model.common.AbstractDocument;
 import jp.go.aist.six.oval.model.common.GeneratorType;
 import jp.go.aist.six.oval.model.results.ClassDirectivesType;
 import jp.go.aist.six.oval.model.results.DefaultDirectivesType;
@@ -41,7 +41,7 @@ import com.google.code.morphia.annotations.Entity;
  */
 @Entity( "oval.directives.oval_directives" )
 public class OvalDirectives
-    extends AbstractOvalDocument
+    extends AbstractDocument
 {
 
     private DefaultDirectivesType  directives;

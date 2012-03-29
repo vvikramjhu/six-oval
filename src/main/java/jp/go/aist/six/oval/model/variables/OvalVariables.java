@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.variables;
 
-import jp.go.aist.six.oval.model.common.AbstractOvalDocument;
+import jp.go.aist.six.oval.model.common.AbstractDocument;
 import jp.go.aist.six.oval.model.common.GeneratorType;
 import com.google.code.morphia.annotations.Entity;
 
@@ -35,7 +35,7 @@ import com.google.code.morphia.annotations.Entity;
  */
 @Entity( "oval.v.oval_variables" )
 public class OvalVariables
-    extends AbstractOvalDocument
+    extends AbstractDocument
 {
 
 //    private GeneratorType  generator = new GeneratorType();
