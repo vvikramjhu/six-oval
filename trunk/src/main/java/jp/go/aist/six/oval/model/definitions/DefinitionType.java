@@ -69,6 +69,7 @@ public class DefinitionType
      */
     public DefinitionType()
     {
+        this( null, 0 );
     }
 
 
@@ -77,7 +78,7 @@ public class DefinitionType
                     final int version
                     )
     {
-        super( id, version );
+        this( id, version, null );
     }
 
 
@@ -87,8 +88,7 @@ public class DefinitionType
                     final ClassEnumeration clazz
                     )
     {
-        super( id, version );
-        setDefinitionClass( clazz );
+        this( id, version, clazz, null );
     }
 
 
@@ -99,8 +99,11 @@ public class DefinitionType
                     final MetadataType metadata
                     )
     {
-        this( id, version, clazz );
+        super( id, version );
+        setDefinitionClass( clazz );
         setMetadata( metadata );
+
+//        _definitions_element_type = DefinitionsElement.Type.definition;
     }
 
 
@@ -117,10 +120,10 @@ public class DefinitionType
 
     public MetadataType getMetadata()
     {
-        if (this.metadata == null) {
-            this.metadata = new MetadataType();
+        if (metadata == null) {
+            metadata = new MetadataType();
         }
-        return this.metadata;
+        return metadata;
     }
 
 
@@ -148,7 +151,7 @@ public class DefinitionType
      */
     public NotesType getNotes()
     {
-        return this.notes;
+        return notes;
     }
 
 
@@ -165,7 +168,7 @@ public class DefinitionType
 
     public CriteriaType getCriteria()
     {
-        return this.criteria;
+        return criteria;
     }
 
 
@@ -202,20 +205,26 @@ public class DefinitionType
                     final ClassEnumeration clazz
                     )
     {
-        this.definitionClass = clazz;
+        definitionClass = clazz;
     }
 
 
     public ClassEnumeration getDefinitionClass()
     {
-        return this.definitionClass;
+        return definitionClass;
     }
 
 
 
-    //==============================================================
-    //  SIX: extended properties
-    //==============================================================
+    //**************************************************************
+    //  SIX extension
+    //**************************************************************
+
+    @Override
+    public final Type elementType()
+    {
+        return DefinitionsElement.Type.definition;
+    }
 
 //    /**
 //     */

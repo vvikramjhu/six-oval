@@ -173,14 +173,14 @@ public abstract class TestBase
     public Object[][] provideOvalTestContentOvalDefinitions()
     {
         return new Object[][] {
-                        {
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "5.10",
-                            OvalPlatformType.windows,
-                            "test/resources/OvalTestContent/5.10",
-                            "20120301_v_microsoft.windows.7.xml",
-                            null
-                        }
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "5.10",
+//                            OvalPlatformType.windows,
+//                            "test/resources/OvalTestContent/5.10",
+//                            "20120301_v_microsoft.windows.7.xml",
+//                            null
+//                        }
 //                        {
 //                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
 //                            "5.10",
@@ -199,14 +199,14 @@ public abstract class TestBase
 //                        }
 //                        ,
 //                        /* Windows */
-//                        {
-//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-//                            "5.10",
-//                            OvalPlatformType.windows,
-//                            "test/resources/OvalTestContent/5.10/windows",
-//                            null,
-//                            null
-//                        }
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "5.10",
+                            OvalPlatformType.windows,
+                            "test/resources/OvalTestContent/5.10/windows",
+                            null,
+                            null
+                        }
 //                        ,
 //                        {
 //                            jp.go.aist.six.oval.model.results.OvalResults.class,

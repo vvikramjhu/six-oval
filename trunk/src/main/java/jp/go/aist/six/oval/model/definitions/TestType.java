@@ -113,6 +113,8 @@ public class TestType
         super( id, version, comment );
         setCheck( check );
         _oval_entity_type = OvalEntityType.test;
+
+//        _definitions_element_type = DefinitionsElement.Type.test;
     }
 
 
@@ -166,7 +168,7 @@ public class TestType
 
     public NotesType getNotes()
     {
-        return this.notes;
+        return notes;
     }
 
 
@@ -183,7 +185,7 @@ public class TestType
 
     public ExistenceEnumeration getCheckExistence()
     {
-        return this.check_existence;
+        return check_existence;
     }
 
 
@@ -209,7 +211,7 @@ public class TestType
 
     public CheckEnumeration getCheck()
     {
-        return this.check;
+        return check;
     }
 
 
@@ -229,13 +231,13 @@ public class TestType
                     final OperatorEnumeration stateOperator
                     )
     {
-        this.state_operator = stateOperator;
+        state_operator = stateOperator;
     }
 
 
     public OperatorEnumeration getStateOperator()
     {
-        return this.state_operator;
+        return state_operator;
     }
 
 
@@ -261,7 +263,7 @@ public class TestType
 
     public SystemObjectRefType getObject()
     {
-        return this.object;
+        return object;
     }
 
 
@@ -289,10 +291,10 @@ public class TestType
                     final Collection<? extends StateRefType> stateList
                     )
     {
-        if (stateList != this.state) {
-            this.state.clear();
+        if (stateList != state) {
+            state.clear();
             if (stateList != null  &&  stateList.size() > 0) {
-                this.state.addAll( stateList );
+                state.addAll( stateList );
             }
         }
     }
@@ -314,19 +316,19 @@ public class TestType
 
     public Collection<StateRefType> getState()
     {
-        return this.state;
+        return state;
     }
 
 
     public Iterator<StateRefType> iterateState()
     {
-        return this.state.iterator();
+        return state.iterator();
     }
 
 
     public void clearState()
     {
-        this.state.clear();
+        state.clear();
     }
 
 
@@ -344,6 +346,18 @@ public class TestType
                     )
     {
         return state( new StateRefType( stateRef ) );
+    }
+
+
+
+    //**************************************************************
+    //  SIX extension
+    //**************************************************************
+
+    @Override
+    public final Type elementType()
+    {
+        return DefinitionsElement.Type.test;
     }
 
 

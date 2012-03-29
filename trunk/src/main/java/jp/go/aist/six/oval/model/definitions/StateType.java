@@ -81,6 +81,7 @@ public class StateType
         super( id, version, comment );
 
         _oval_entity_type = OvalEntityType.state;
+//        _definitions_element_type = DefinitionsElement.Type.state;
     }
 
 
@@ -97,7 +98,7 @@ public class StateType
 
     public NotesType getNotes()
     {
-        return this.notes;
+        return notes;
     }
 
 
@@ -114,7 +115,7 @@ public class StateType
 
     public OperatorEnumeration getOperator()
     {
-        return this.operator;
+        return operator;
     }
 
 
@@ -141,6 +142,18 @@ public class StateType
         }
 
         return operator;
+    }
+
+
+
+    //**************************************************************
+    //  SIX extension
+    //**************************************************************
+
+    @Override
+    public final Type elementType()
+    {
+        return DefinitionsElement.Type.state;
     }
 
 

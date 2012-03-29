@@ -24,6 +24,7 @@ import jp.go.aist.six.oval.model.DocumentGenerator;
 import jp.go.aist.six.oval.model.Element;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalEntityType;
+import jp.go.aist.six.oval.model.OvalId;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.annotations.Id;
@@ -46,6 +47,38 @@ public abstract class DefinitionsElement
     implements Persistable<String>
 {
 
+    public enum Type
+    {
+        definition( OvalId.Type.def ),
+        test(       OvalId.Type.tst ),
+        object(     OvalId.Type.obj ),
+        state(      OvalId.Type.ste ),
+        variable(   OvalId.Type.var );
+
+
+        private OvalId.Type  id_type = null;
+
+
+        Type(
+                        final OvalId.Type value
+                        )
+        {
+            id_type = value;
+        }
+
+
+        /**
+         * The type indicator in the OVAL-ID.
+         */
+        public OvalId.Type getOvalIdType()
+        {
+            return id_type;
+        }
+    }
+    //Type
+
+
+
     // MongoDB
     @Id
     private String  _id;
@@ -62,6 +95,9 @@ public abstract class DefinitionsElement
     protected OvalEntityType     _oval_entity_type;
     protected OvalPlatformType   _oval_platform_type;
     protected OvalComponentType  _oval_component_type;
+
+//    @Transient
+//    protected Type  _definitions_element_type;
 
 
 
@@ -98,7 +134,7 @@ public abstract class DefinitionsElement
 
     public Boolean getDeprecated()
     {
-        return this.deprecated;
+        return deprecated;
     }
 
 
@@ -111,8 +147,15 @@ public abstract class DefinitionsElement
                     final DocumentGenerator generator
                     )
     {
-        this._oval_generator = generator;
+        _oval_generator = generator;
     }
+
+
+
+    public abstract Type elementType();
+//    {
+//        return _definitions_element_type;
+//    }
 
 
 
@@ -159,14 +202,14 @@ public abstract class DefinitionsElement
                     final String pid
                     )
     {
-        this._id = pid;
+        _id = pid;
     }
 
 
     @Override
     public String getPersistentID()
     {
-        return this._id;
+        return _id;
     }
 
 

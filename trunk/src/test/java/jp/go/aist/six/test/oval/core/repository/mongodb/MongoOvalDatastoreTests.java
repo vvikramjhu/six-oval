@@ -272,11 +272,15 @@ public class MongoOvalDatastoreTests
             _evaluateFindDefinitionById( def_ids );
         }
 
-        _evaluateFindDefinitionByCve( _saved_cves );
-        _saved_cves.clear();
+        if (_saved_cves != null) {
+            _evaluateFindDefinitionByCve( _saved_cves );
+            _saved_cves.clear();
+        }
 
-        _evaluateFindDefinitionByPlatform( _saved_platforms );
-        _saved_platforms.clear();
+        if (_saved_platforms != null) {
+            _evaluateFindDefinitionByPlatform( _saved_platforms );
+            _saved_platforms.clear();
+        }
     }
 
 
@@ -404,6 +408,10 @@ public class MongoOvalDatastoreTests
         long  lap_times_sum = 0L;
 
         Reporter.log( "*** Finding OVAL Definitions by CVE ID #cves=" + count, true );
+        if (count == 0) {
+            return;
+        }
+
 //        Reporter.log( "OVAL ID,#defs,elapsed time (ms)", true );
 //        int  index = 0;
         for (String  cve_id : cve_ids) {
@@ -435,6 +443,10 @@ public class MongoOvalDatastoreTests
         long  lap_times_sum = 0L;
 
         Reporter.log( "*** Finding OVAL Definitions by platform #platforms=" + count, true );
+        if (count == 0) {
+            return;
+        }
+
         Reporter.log( "platform,#defs,elapsed time (ms)", true );
 //        int  index = 0;
         for (Platform  platform : platform_list) {
