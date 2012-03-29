@@ -48,7 +48,6 @@ public class Oval
     }
 
 
-
     /**
      * The components defined in the "independent" namespace.
      *
@@ -209,6 +208,88 @@ public class Oval
 //        {
 //            return this.name();
 //        }
+//    }
+
+
+
+//    public static enum Component
+//    {
+//        // independent //
+//        environmentvariable,    //@deprecated
+//        environmentvariable58,
+//        family,
+//        filehash,               //@deprecated
+//        filehash58,
+//        ldap,
+//        sql,                    //@deprecated
+//        textfilecontent,        //@deprecated
+//        textfilecontent54,
+//        unknown,
+//        variable,
+//        xmlfilecontent,
+//
+//
+//        // linux //
+//        dpkginfo,
+//        inetlisteningservers,
+//        partition,
+//        rpminfo,
+//        rpmverify,
+//        selinuxboolean,
+//        selinuxsecuritycontext,
+//        slackwarepkginfo,
+//
+//
+//        // unix //
+//        file,
+//        inetd,
+//        network_interface,  //"interface"
+//        password,
+//        process,
+//        process58,
+//        runlevel,
+//        shadow,
+//        uname,
+//        xinetd,
+//
+//
+//        // windows //
+//        accesstoken,
+//        activedirectory,
+//        auditeventpolicy,
+//        auditeventpolicysubcategories,
+////        file,
+//        fileauditedpermissions,
+//        fileauditedpermissions53,
+//        fileeffectiverights,
+//        fileeffectiverights53,
+//        group,
+//        group_sid,
+////        network_interface,  //"interface"
+//        lockoutpolicy,
+//        metabase,
+//        passwordpolicy,
+//        port,
+//        printereffectiverights,
+////        process,
+////        process58,
+//        registry,
+//        regkeyauditedpermissions,
+//        regkeyauditedpermissions53,
+//        regkeyeffectiverights,
+//        regkeyeffectiverights53,
+//        serviceeffectiverights,
+//        sharedresource,
+//        sid,
+//        sid_sid,
+//        uac,
+//        user,
+//        user_sid,
+//        user_sid55,
+//        volume,
+//        wmi,
+//        wmi57,
+//        wuaupdatesearcher;
 //    }
 
 

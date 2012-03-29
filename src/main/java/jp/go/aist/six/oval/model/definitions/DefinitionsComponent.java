@@ -20,6 +20,8 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import jp.go.aist.six.oval.model.Oval;
+
 
 
 
@@ -37,6 +39,9 @@ public abstract class DefinitionsComponent
     //{required:TestType}
     //{optional:ObjectType}
     //{optional:StateType}
+
+
+    protected Oval.Family  _oval_family;
 
 
 
@@ -87,7 +92,7 @@ public abstract class DefinitionsComponent
 
     public String getComment()
     {
-        return this.comment;
+        return comment;
     }
 
 
