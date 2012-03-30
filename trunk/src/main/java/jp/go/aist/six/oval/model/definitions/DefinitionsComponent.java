@@ -41,7 +41,8 @@ public abstract class DefinitionsComponent
     //{optional:StateType}
 
 
-    protected Oval.Family  _oval_family;
+    protected Oval.Family       _oval_family;
+    protected Oval.Component    _oval_component;
 
 
 

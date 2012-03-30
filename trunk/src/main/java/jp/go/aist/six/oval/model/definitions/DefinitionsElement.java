@@ -152,7 +152,7 @@ public abstract class DefinitionsElement
 
 
 
-    public abstract Type elementType();
+    public abstract Type ovalGetElementType();
 //    {
 //        return _definitions_element_type;
 //    }

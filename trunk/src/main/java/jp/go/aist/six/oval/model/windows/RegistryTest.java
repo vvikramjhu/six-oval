@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import jp.go.aist.six.oval.model.Oval;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
@@ -84,6 +85,9 @@ public class RegistryTest
 
         _oval_platform_type = OvalPlatformType.windows;
         _oval_component_type = OvalComponentType.registry;
+
+        _oval_family = Oval.Family.windows;
+        _oval_component = Oval.Component.registry;
     }
 
 
