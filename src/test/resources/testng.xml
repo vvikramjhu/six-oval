@@ -14,6 +14,17 @@
 <suite name="six-oval" verbose="1" parallel="tests">
 
     <!-- ******************************************************* -->
+    <!-- * oval.model                                          * -->
+    <!-- ******************************************************* -->
+
+    <test name="oval.model" enabled="true">
+        <classes>
+            <class name="jp.go.aist.six.test.oval.model.ComponentTests"/>
+        </classes>
+    </test>
+
+
+    <!-- ******************************************************* -->
     <!-- *  interpreter                                        * -->
     <!-- ******************************************************* -->
 
@@ -130,7 +141,7 @@
     </test>
 
 
-    <test name="oval.core.repository.mongodb" enabled="true">
+    <test name="oval.core.repository.mongodb" enabled="false">
         <groups>
             <run>
                 <include name="oval.core.repository.mongodb"/>
