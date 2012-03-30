@@ -2,6 +2,7 @@ package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
+import jp.go.aist.six.oval.model.Oval;
 import jp.go.aist.six.oval.model.OvalEnumeration;
 import jp.go.aist.six.oval.model.RecurseDirectionEnumeration;
 import jp.go.aist.six.oval.model.RecurseEnumeration;
@@ -75,6 +76,9 @@ public class OvalConverter
 
     private static final Class<?>[]  _SUPPORTED_CLASSES_ = new Class[] {
         // six //
+        Oval.Family.class,
+        Oval.Component.class,
+
         RecurseDirectionEnumeration.class,
         RecurseEnumeration.class,
         RecurseFileSystemEnumeration.class,
@@ -264,6 +268,11 @@ public class OvalConverter
 
         if (object instanceof OvalEnumeration) {
             return enumerationValue( object );
+//*****
+        } else if (object instanceof Oval.Family) {
+            return Oval.Family.class.cast( object ).name();
+        } else if (object instanceof Oval.Component) {
+            return Oval.Component.class.cast( object ).name();
 //        } else if (object instanceof NameEntity) {
 //            return NameEntity.class.cast( object ).getName();
         }
@@ -275,7 +284,7 @@ public class OvalConverter
 
 
     // simple value (Mongo) --> Object (Java)
-    @SuppressWarnings( "rawtypes" )
+    @SuppressWarnings( { "rawtypes", "unchecked" } )
     @Override
     public Object decode(
                     final Class targetClass,
@@ -290,10 +299,17 @@ public class OvalConverter
         }
 
         if (OvalEnumeration.class.isAssignableFrom( targetClass )) {
-            @SuppressWarnings( "unchecked" )
+//            @SuppressWarnings( "unchecked" )
             Class<? extends OvalEnumeration>  enumClass =
                 targetClass.asSubclass( OvalEnumeration.class );
             return enumerationFromValue( enumClass, fromDBObject.toString() );
+
+//*****
+//        } else if (Oval.Family.class.isAssignableFrom( targetClass )) {
+//            return Oval.Family.valueOf( fromDBObject.toString() );
+//        } else if (Oval.Component.class.isAssignableFrom( targetClass )) {
+        } else {
+            return Enum.valueOf( targetClass, fromDBObject.toString() );
 
 //        } else if (NameEntity.class.isAssignableFrom( targetClass )) {
 //            @SuppressWarnings( "unchecked" )
@@ -302,8 +318,8 @@ public class OvalConverter
 //            return nameFromValue( nameClass, fromDBObject.toString() );
         }
 
-        throw new MappingException( "unsupported type: "
-                        + String.valueOf( targetClass ) );
+//        throw new MappingException( "unsupported type: "
+//                        + String.valueOf( targetClass ) );
     }
 
 }

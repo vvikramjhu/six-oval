@@ -22,7 +22,6 @@ package jp.go.aist.six.oval.repository;
 
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalEntityType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
 
 
 
@@ -153,14 +152,15 @@ public class OvalEntityQueryParams
 
 
     /**
+     * TODO: rename this property to "family".
      */
     public void setPlatform(
                     final String platform
                     )
     {
-        if (platform != null) {
-            OvalPlatformType.valueOf( platform);
-        }
+//        if (platform != null) {
+//            OvalPlatformType.valueOf( platform);
+//        }
 
         set( Key.PLATFORM, platform );
     }

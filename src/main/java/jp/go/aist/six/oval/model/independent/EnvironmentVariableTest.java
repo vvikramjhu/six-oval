@@ -75,6 +75,7 @@ public class EnvironmentVariableTest
         _oval_component_type = OvalComponentType.environmentvariable;
 
         _oval_family = Oval.Family.independent;
+        _oval_component = Oval.Component.environmentvariable;
     }
 
 

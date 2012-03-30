@@ -112,7 +112,7 @@ public class VariableType
     //**************************************************************
 
     @Override
-    public final Type elementType()
+    public final Type ovalGetElementType()
     {
         return DefinitionsElement.Type.variable;
     }

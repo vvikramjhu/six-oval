@@ -34,29 +34,9 @@ import java.util.Collections;
 public class Oval
 {
 
-    /**
-     * A specific component.
-     *
-     * @author	Akihito Nakamura, AIST
-     * @version $Id$
-     */
-    public static interface Component
+    public static enum Component
     {
-        public String  getName();
-
-//        public Family getFamily();
-    }
-
-
-    /**
-     * The components defined in the "independent" namespace.
-     *
-     * @author	Akihito Nakamura, AIST
-     * @version $Id$
-     */
-    public static enum IndependentComponent
-    implements Component
-    {
+        // independent //
         environmentvariable,    //@deprecated
         environmentvariable58,
         family,
@@ -68,26 +48,10 @@ public class Oval
         textfilecontent54,
         unknown,
         variable,
-        xmlfilecontent;
-
-        @Override
-        public String getName()
-        {
-            return this.name();
-        }
-    }
+        xmlfilecontent,
 
 
-
-    /**
-     * The components defined in the "linux" namespace.
-     *
-     * @author  Akihito Nakamura, AIST
-     * @version $Id$
-     */
-    public static enum LinuxComponent
-    implements Component
-    {
+        // linux //
         dpkginfo,
         inetlisteningservers,
         partition,
@@ -95,26 +59,10 @@ public class Oval
         rpmverify,
         selinuxboolean,
         selinuxsecuritycontext,
-        slackwarepkginfo;
-
-        @Override
-        public String getName()
-        {
-            return this.name();
-        }
-    }
+        slackwarepkginfo,
 
 
-
-    /**
-     * The components defined in the "unix" namespace.
-     *
-     * @author  Akihito Nakamura, AIST
-     * @version $Id$
-     */
-    public static enum UnixComponent
-    implements Component
-    {
+        // unix //
         file,
         inetd,
         network_interface,  //"interface"
@@ -124,45 +72,28 @@ public class Oval
         runlevel,
         shadow,
         uname,
-        xinetd;
+        xinetd,
 
-        @Override
-        public String getName()
-        {
-            return this.name();
-        }
-    }
-
-
-
-    /**
-     * The components defined in the "windows" namespace.
-     *
-     * @author  Akihito Nakamura, AIST
-     * @version $Id$
-     */
-    public static enum WindowsComponent
-    implements Component
-    {
+        // windows //
         accesstoken,
         activedirectory,
         auditeventpolicy,
         auditeventpolicysubcategories,
-        file,
+        // file,
         fileauditedpermissions,
         fileauditedpermissions53,
         fileeffectiverights,
         fileeffectiverights53,
         group,
         group_sid,
-        network_interface,  //"interface"
+        // network_interface, //"interface"
         lockoutpolicy,
         metabase,
         passwordpolicy,
         port,
         printereffectiverights,
-        process,
-        process58,
+        // process,
+        // process58,
         registry,
         regkeyauditedpermissions,
         regkeyauditedpermissions53,
@@ -180,13 +111,244 @@ public class Oval
         wmi,
         wmi57,
         wuaupdatesearcher;
-
-        @Override
-        public String getName()
-        {
-            return this.name();
-        }
     }
+
+
+    public static final Component[]  INDEPENDENT_COMPONENTS = new Component[] {
+        Component.environmentvariable,    //@deprecated
+        Component.environmentvariable58,
+        Component.family,
+        Component.filehash,               //@deprecated
+        Component.filehash58,
+        Component.ldap,
+        Component.sql,                    //@deprecated
+        Component.textfilecontent,        //@deprecated
+        Component.textfilecontent54,
+        Component.unknown,
+        Component.variable,
+        Component.xmlfilecontent
+    };
+
+
+    public static final Component[]  LINUX_COMPONENTS = new Component[] {
+        Component.dpkginfo,
+        Component.inetlisteningservers,
+        Component.partition,
+        Component.rpminfo,
+        Component.rpmverify,
+        Component.selinuxboolean,
+        Component.selinuxsecuritycontext,
+        Component.slackwarepkginfo,
+    };
+
+
+    public static final Component[]  UNIX_COMPONENTS = new Component[] {
+        Component.file,
+        Component.inetd,
+        Component.network_interface,  //"interface"
+        Component.password,
+        Component.process,
+        Component.process58,
+        Component.runlevel,
+        Component.shadow,
+        Component.uname,
+        Component.xinetd
+    };
+
+
+    public static final Component[]  WINDOWS_COMPONENTS = new Component[] {
+        Component.accesstoken,
+        Component.activedirectory,
+        Component.auditeventpolicy,
+        Component.auditeventpolicysubcategories,
+        Component.file,
+        Component.fileauditedpermissions,
+        Component.fileauditedpermissions53,
+        Component.fileeffectiverights,
+        Component.fileeffectiverights53,
+        Component.group,
+        Component.group_sid,
+        Component.network_interface, //"interface"
+        Component.lockoutpolicy,
+        Component.metabase,
+        Component.passwordpolicy,
+        Component.port,
+        Component.printereffectiverights,
+        Component.process,
+        Component.process58,
+        Component.registry,
+        Component.regkeyauditedpermissions,
+        Component.regkeyauditedpermissions53,
+        Component.regkeyeffectiverights,
+        Component.regkeyeffectiverights53,
+        Component.serviceeffectiverights,
+        Component.sharedresource,
+        Component.sid,
+        Component.sid_sid,
+        Component.uac,
+        Component.user,
+        Component.user_sid,
+        Component.user_sid55,
+        Component.volume,
+        Component.wmi,
+        Component.wmi57,
+        Component.wuaupdatesearcher
+    };
+
+
+//    /**
+//     * A specific component.
+//     *
+//     * @author	Akihito Nakamura, AIST
+//     * @version $Id$
+//     */
+//    public static interface Component
+//    {
+//        public String  getName();
+//
+////        public Family getFamily();
+//    }
+
+
+//    /**
+//     * The components defined in the "independent" namespace.
+//     *
+//     * @author	Akihito Nakamura, AIST
+//     * @version $Id$
+//     */
+//    public static enum IndependentComponent
+//    implements Component
+//    {
+//        environmentvariable,    //@deprecated
+//        environmentvariable58,
+//        family,
+//        filehash,               //@deprecated
+//        filehash58,
+//        ldap,
+//        sql,                    //@deprecated
+//        textfilecontent,        //@deprecated
+//        textfilecontent54,
+//        unknown,
+//        variable,
+//        xmlfilecontent;
+//
+//        @Override
+//        public String getName()
+//        {
+//            return this.name();
+//        }
+//    }
+//
+//
+//
+//    /**
+//     * The components defined in the "linux" namespace.
+//     *
+//     * @author  Akihito Nakamura, AIST
+//     * @version $Id$
+//     */
+//    public static enum LinuxComponent
+//    implements Component
+//    {
+//        dpkginfo,
+//        inetlisteningservers,
+//        partition,
+//        rpminfo,
+//        rpmverify,
+//        selinuxboolean,
+//        selinuxsecuritycontext,
+//        slackwarepkginfo;
+//
+//        @Override
+//        public String getName()
+//        {
+//            return this.name();
+//        }
+//    }
+//
+//
+//
+//    /**
+//     * The components defined in the "unix" namespace.
+//     *
+//     * @author  Akihito Nakamura, AIST
+//     * @version $Id$
+//     */
+//    public static enum UnixComponent
+//    implements Component
+//    {
+//        file,
+//        inetd,
+//        network_interface,  //"interface"
+//        password,
+//        process,
+//        process58,
+//        runlevel,
+//        shadow,
+//        uname,
+//        xinetd;
+//
+//        @Override
+//        public String getName()
+//        {
+//            return this.name();
+//        }
+//    }
+//
+//
+//
+//    /**
+//     * The components defined in the "windows" namespace.
+//     *
+//     * @author  Akihito Nakamura, AIST
+//     * @version $Id$
+//     */
+//    public static enum WindowsComponent
+//    implements Component
+//    {
+//        accesstoken,
+//        activedirectory,
+//        auditeventpolicy,
+//        auditeventpolicysubcategories,
+//        file,
+//        fileauditedpermissions,
+//        fileauditedpermissions53,
+//        fileeffectiverights,
+//        fileeffectiverights53,
+//        group,
+//        group_sid,
+//        network_interface,  //"interface"
+//        lockoutpolicy,
+//        metabase,
+//        passwordpolicy,
+//        port,
+//        printereffectiverights,
+//        process,
+//        process58,
+//        registry,
+//        regkeyauditedpermissions,
+//        regkeyauditedpermissions53,
+//        regkeyeffectiverights,
+//        regkeyeffectiverights53,
+//        serviceeffectiverights,
+//        sharedresource,
+//        sid,
+//        sid_sid,
+//        uac,
+//        user,
+//        user_sid,
+//        user_sid55,
+//        volume,
+//        wmi,
+//        wmi57,
+//        wuaupdatesearcher;
+//
+//        @Override
+//        public String getName()
+//        {
+//            return this.name();
+//        }
+//    }
 
 
 
@@ -212,88 +374,6 @@ public class Oval
 
 
 
-//    public static enum Component
-//    {
-//        // independent //
-//        environmentvariable,    //@deprecated
-//        environmentvariable58,
-//        family,
-//        filehash,               //@deprecated
-//        filehash58,
-//        ldap,
-//        sql,                    //@deprecated
-//        textfilecontent,        //@deprecated
-//        textfilecontent54,
-//        unknown,
-//        variable,
-//        xmlfilecontent,
-//
-//
-//        // linux //
-//        dpkginfo,
-//        inetlisteningservers,
-//        partition,
-//        rpminfo,
-//        rpmverify,
-//        selinuxboolean,
-//        selinuxsecuritycontext,
-//        slackwarepkginfo,
-//
-//
-//        // unix //
-//        file,
-//        inetd,
-//        network_interface,  //"interface"
-//        password,
-//        process,
-//        process58,
-//        runlevel,
-//        shadow,
-//        uname,
-//        xinetd,
-//
-//
-//        // windows //
-//        accesstoken,
-//        activedirectory,
-//        auditeventpolicy,
-//        auditeventpolicysubcategories,
-////        file,
-//        fileauditedpermissions,
-//        fileauditedpermissions53,
-//        fileeffectiverights,
-//        fileeffectiverights53,
-//        group,
-//        group_sid,
-////        network_interface,  //"interface"
-//        lockoutpolicy,
-//        metabase,
-//        passwordpolicy,
-//        port,
-//        printereffectiverights,
-////        process,
-////        process58,
-//        registry,
-//        regkeyauditedpermissions,
-//        regkeyauditedpermissions53,
-//        regkeyeffectiverights,
-//        regkeyeffectiverights53,
-//        serviceeffectiverights,
-//        sharedresource,
-//        sid,
-//        sid_sid,
-//        uac,
-//        user,
-//        user_sid,
-//        user_sid55,
-//        volume,
-//        wmi,
-//        wmi57,
-//        wuaupdatesearcher;
-//    }
-
-
-
     /**
      * An operating system family defined in as the OVAL component namespace.
      *
@@ -309,14 +389,86 @@ public class Oval
 //      freebsd,
 //      hpux,
 //      ios,
-        independent(     IndependentComponent.values() ),
-        linux(                 LinuxComponent.values() ),
+        independent(     new Component[] {
+                        Component.environmentvariable,    //@deprecated
+                        Component.environmentvariable58,
+                        Component.family,
+                        Component.filehash,               //@deprecated
+                        Component.filehash58,
+                        Component.ldap,
+                        Component.sql,                    //@deprecated
+                        Component.textfilecontent,        //@deprecated
+                        Component.textfilecontent54,
+                        Component.unknown,
+                        Component.variable,
+                        Component.xmlfilecontent
+                    }),
+        linux(                 new Component[] {
+                        Component.dpkginfo,
+                        Component.inetlisteningservers,
+                        Component.partition,
+                        Component.rpminfo,
+                        Component.rpmverify,
+                        Component.selinuxboolean,
+                        Component.selinuxsecuritycontext,
+                        Component.slackwarepkginfo,
+                    }),
+//        independent(     IndependentComponent.values() ),
+//        linux(                 LinuxComponent.values() ),
 //        macos,
 //        pixos,
 //        sharepoint,
 //        solaris,
-        unix(                   UnixComponent.values() ),
-        windows(             WindowsComponent.values() );
+        unix(                   new Component[] {
+                        Component.file,
+                        Component.inetd,
+                        Component.network_interface,  //"interface"
+                        Component.password,
+                        Component.process,
+                        Component.process58,
+                        Component.runlevel,
+                        Component.shadow,
+                        Component.uname,
+                        Component.xinetd
+                    }),
+        windows(             new Component[] {
+                        Component.accesstoken,
+                        Component.activedirectory,
+                        Component.auditeventpolicy,
+                        Component.auditeventpolicysubcategories,
+                        Component.file,
+                        Component.fileauditedpermissions,
+                        Component.fileauditedpermissions53,
+                        Component.fileeffectiverights,
+                        Component.fileeffectiverights53,
+                        Component.group,
+                        Component.group_sid,
+                        Component.network_interface, //"interface"
+                        Component.lockoutpolicy,
+                        Component.metabase,
+                        Component.passwordpolicy,
+                        Component.port,
+                        Component.printereffectiverights,
+                        Component.process,
+                        Component.process58,
+                        Component.registry,
+                        Component.regkeyauditedpermissions,
+                        Component.regkeyauditedpermissions53,
+                        Component.regkeyeffectiverights,
+                        Component.regkeyeffectiverights53,
+                        Component.serviceeffectiverights,
+                        Component.sharedresource,
+                        Component.sid,
+                        Component.sid_sid,
+                        Component.uac,
+                        Component.user,
+                        Component.user_sid,
+                        Component.user_sid55,
+                        Component.volume,
+                        Component.wmi,
+                        Component.wmi57,
+                        Component.wuaupdatesearcher
+                    });
 
 
         private final Collection<Component>  _components;
@@ -381,7 +533,7 @@ public class Oval
      * Returns the families.
      *
      * @return
-     *  an immutable collection of the namespaces.
+     *  an immutable collection of the families.
      */
     public static Collection<Family> getFamilies()
     {
