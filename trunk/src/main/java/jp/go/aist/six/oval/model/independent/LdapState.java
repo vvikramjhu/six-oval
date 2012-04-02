@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -87,8 +87,10 @@ public class LdapState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.ldap;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.ldap;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.LDAP;
     }
 
 
@@ -105,7 +107,7 @@ public class LdapState
 
     public EntityStateStringType getSuffix()
     {
-        return this.suffix;
+        return suffix;
     }
 
 
@@ -122,7 +124,7 @@ public class LdapState
 
     public EntityStateStringType getRelativeDn()
     {
-        return this.relative_dn;
+        return relative_dn;
     }
 
 
@@ -139,7 +141,7 @@ public class LdapState
 
     public EntityStateStringType getAttribute()
     {
-        return this.attribute;
+        return attribute;
     }
 
 
@@ -156,7 +158,7 @@ public class LdapState
 
     public EntityStateStringType getObjectClass()
     {
-        return this.object_class;
+        return object_class;
     }
 
 
@@ -173,7 +175,7 @@ public class LdapState
 
     public EntityStateLdaptypeType getLdaptype()
     {
-        return this.ldaptype;
+        return ldaptype;
     }
 
 
@@ -190,7 +192,7 @@ public class LdapState
 
     public EntityStateAnySimpleType getValue()
     {
-        return this.value;
+        return value;
     }
 
 

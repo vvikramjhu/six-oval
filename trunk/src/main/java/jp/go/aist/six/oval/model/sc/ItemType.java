@@ -23,6 +23,8 @@ package jp.go.aist.six.oval.model.sc;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.model.OvalPlatformType;
@@ -72,6 +74,8 @@ public class ItemType
     // SIX extension
     protected OvalPlatformType   _oval_platform_type;
     protected OvalComponentType  _oval_component_type;
+    protected Family       _oval_family;
+    protected Component    _oval_component;
 
 
 
@@ -108,10 +112,10 @@ public class ItemType
                     final Collection<? extends MessageType> messageList
                     )
     {
-        if (this.message != messageList) {
-            this.message.clear();
+        if (message != messageList) {
+            message.clear();
             if (messageList != null  &&  messageList.size() > 0) {
-                this.message.addAll( messageList );
+                message.addAll( messageList );
             }
         }
     }
@@ -119,13 +123,13 @@ public class ItemType
 
     public Collection<MessageType> getMessage()
     {
-        return this.message;
+        return message;
     }
 
 
     public Iterator<MessageType> iterateMessage()
     {
-        return this.message.iterator();
+        return message.iterator();
     }
 
 //    /**
@@ -157,7 +161,7 @@ public class ItemType
 
     public int getID()
     {
-        return this.id;
+        return id;
     }
 
 
@@ -174,7 +178,7 @@ public class ItemType
 
     public StatusEnumeration getStatus()
     {
-        return this.status;
+        return status;
     }
 
 

@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.independent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -107,8 +107,10 @@ public class XmlfileContentObject
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.xmlfilecontent;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.xmlfilecontent;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.XMLFILECONTENT;
     }
 
 
@@ -160,7 +162,7 @@ public class XmlfileContentObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -177,7 +179,7 @@ public class XmlfileContentObject
 
     public FileBehaviors getBehaviors()
     {
-        return this.behaviors;
+        return behaviors;
     }
 
 
@@ -194,7 +196,7 @@ public class XmlfileContentObject
 
     public EntityObjectStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 
@@ -228,7 +230,7 @@ public class XmlfileContentObject
 
     public EntityObjectStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -245,7 +247,7 @@ public class XmlfileContentObject
 
     public EntityObjectStringType getXpath()
     {
-        return this.xpath;
+        return xpath;
     }
 
 
@@ -256,10 +258,10 @@ public class XmlfileContentObject
                     final Collection<? extends Filter> filters
                     )
     {
-        if (this.filter != filters) {
-            this.filter.clear();
+        if (filter != filters) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -279,13 +281,13 @@ public class XmlfileContentObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 
     public Iterator<Filter> iterateFilter()
     {
-        return this.filter.iterator();
+        return filter.iterator();
     }
 
 

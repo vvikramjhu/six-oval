@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
@@ -90,8 +90,10 @@ public class FileHashState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.filehash;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.filehash;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.FILEHASH;
     }
 
 
@@ -108,7 +110,7 @@ public class FileHashState
 
     public EntityStateStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 
@@ -125,7 +127,7 @@ public class FileHashState
 
     public EntityStateStringType getPath()
     {
-        return this.path;
+        return path;
     }
 
 
@@ -142,7 +144,7 @@ public class FileHashState
 
     public EntityStateStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -159,7 +161,7 @@ public class FileHashState
 
     public EntityStateStringType getMd5()
     {
-        return this.md5;
+        return md5;
     }
 
 
@@ -176,7 +178,7 @@ public class FileHashState
 
     public EntityStateStringType getSha1()
     {
-        return this.sha1;
+        return sha1;
     }
 
 
@@ -193,7 +195,7 @@ public class FileHashState
 
     public EntityStateWindowsViewType getWindowsView()
     {
-        return this.windows_view;
+        return windows_view;
     }
 
 

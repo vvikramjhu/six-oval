@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.independent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -104,8 +104,10 @@ public class FileHash58Object
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.filehash58;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.filehash58;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.FILEHASH58;
     }
 
 
@@ -122,7 +124,7 @@ public class FileHash58Object
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -139,7 +141,7 @@ public class FileHash58Object
 
     public FileBehaviors getBehaviors()
     {
-        return this.behaviors;
+        return behaviors;
     }
 
 
@@ -173,7 +175,7 @@ public class FileHash58Object
 
     public EntityObjectStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -190,7 +192,7 @@ public class FileHash58Object
 
     public EntityObjectStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 
@@ -207,7 +209,7 @@ public class FileHash58Object
 
     public EntityObjectHashTypeType getHashType()
     {
-        return this.hash_type;
+        return hash_type;
     }
 
 
@@ -218,10 +220,10 @@ public class FileHash58Object
                     final Collection<? extends Filter> filterList
                     )
     {
-        if (this.filter != filterList) {
-            this.filter.clear();
+        if (filter != filterList) {
+            filter.clear();
             if (filterList != null  &&  filterList.size() > 0) {
-                this.filter.addAll( filterList );
+                filter.addAll( filterList );
             }
         }
     }
@@ -241,13 +243,13 @@ public class FileHash58Object
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 
     public Iterator<Filter> iterateFilter()
     {
-        return this.filter.iterator();
+        return filter.iterator();
     }
 
 

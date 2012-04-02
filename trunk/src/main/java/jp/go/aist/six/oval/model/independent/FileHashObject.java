@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
@@ -96,8 +96,10 @@ public class FileHashObject
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.filehash;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.filehash;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.FILEHASH;
     }
 
 
@@ -114,7 +116,7 @@ public class FileHashObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -131,7 +133,7 @@ public class FileHashObject
 
     public FileBehaviors getBehaviors()
     {
-        return this.behaviors;
+        return behaviors;
     }
 
 
@@ -165,7 +167,7 @@ public class FileHashObject
 
     public EntityObjectStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -182,7 +184,7 @@ public class FileHashObject
 
     public EntityObjectStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 

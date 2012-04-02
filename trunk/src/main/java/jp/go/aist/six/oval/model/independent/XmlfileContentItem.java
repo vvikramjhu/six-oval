@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.independent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
@@ -77,8 +77,10 @@ public class XmlfileContentItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.xmlfilecontent;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.xmlfilecontent;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.XMLFILECONTENT;
     }
 
 
@@ -95,7 +97,7 @@ public class XmlfileContentItem
 
     public EntityItemStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 
@@ -112,7 +114,7 @@ public class XmlfileContentItem
 
     public EntityItemStringType getPath()
     {
-        return this.path;
+        return path;
     }
 
 
@@ -129,7 +131,7 @@ public class XmlfileContentItem
 
     public EntityItemStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -146,7 +148,7 @@ public class XmlfileContentItem
 
     public EntityItemStringType getXpath()
     {
-        return this.xpath;
+        return xpath;
     }
 
 
@@ -157,8 +159,8 @@ public class XmlfileContentItem
                     final Collection<? extends EntityItemAnySimpleType> value_ofs
                     )
     {
-        if (this.value_of != value_ofs) {
-            this.value_of.clear();
+        if (value_of != value_ofs) {
+            value_of.clear();
             if (value_ofs != null  &&  value_ofs.size() > 0) {
                 for (EntityItemAnySimpleType  result : value_ofs) {
                     addValueOf( result );
@@ -182,13 +184,13 @@ public class XmlfileContentItem
 
     public Collection<EntityItemAnySimpleType> getValueOf()
     {
-        return this.value_of;
+        return value_of;
     }
 
 
     public Iterator<EntityItemAnySimpleType> iterateValueOf()
     {
-        return this.value_of.iterator();
+        return value_of.iterator();
     }
 
 
@@ -205,7 +207,7 @@ public class XmlfileContentItem
 
     public EntityItemWindowsViewType getWindowsView()
     {
-        return this.windows_view;
+        return windows_view;
     }
 
 

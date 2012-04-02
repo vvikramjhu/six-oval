@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -95,8 +95,10 @@ public class TextfileContent54State
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.textfilecontent54;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.textfilecontent54;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.TEXTFILECONTENT54;
     }
 
 
@@ -114,7 +116,7 @@ public class TextfileContent54State
 
     public EntityStateStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
 //        return _properties.getProperty(
 //                        TextfileContentProperty.FILEPATH, EntityStateStringType.class );
     }
@@ -143,7 +145,7 @@ public class TextfileContent54State
 
     public EntityStateStringType getPath()
     {
-        return this.path;
+        return path;
 //        return _properties.getProperty(
 //                        TextfileContentProperty.PATH, EntityStateStringType.class );
     }
@@ -172,7 +174,7 @@ public class TextfileContent54State
 
     public EntityStateStringType getFilename()
     {
-        return this.filename;
+        return filename;
 //        return _properties.getProperty(
 //                        TextfileContentProperty.FILENAME, EntityStateStringType.class );
     }
@@ -201,7 +203,7 @@ public class TextfileContent54State
 
     public EntityStateStringType getPattern()
     {
-        return this.pattern;
+        return pattern;
 //        return _properties.getProperty(
 //                        TextfileContentProperty.PATTERN, EntityStateStringType.class );
     }
@@ -230,7 +232,7 @@ public class TextfileContent54State
 
     public EntityStateIntType getInstance()
     {
-        return this.instance;
+        return instance;
 //        return _properties.getProperty(
 //                        TextfileContentProperty.INSTANCE, EntityStateIntType.class );
     }
@@ -259,7 +261,7 @@ public class TextfileContent54State
 
     public EntityStateAnySimpleType getText()
     {
-        return this.text;
+        return text;
 //        return _properties.getProperty(
 //                        TextfileContentProperty.TEXT, EntityStateAnySimpleType.class );
     }
@@ -288,7 +290,7 @@ public class TextfileContent54State
 
     public EntityStateAnySimpleType getSubexpression()
     {
-        return this.subexpression;
+        return subexpression;
 //        return _properties.getProperty(
 //                        TextfileContentProperty.SUBEXPRESSION, EntityStateAnySimpleType.class );
     }

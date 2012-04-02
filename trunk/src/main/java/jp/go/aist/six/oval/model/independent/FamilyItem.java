@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.FamilyEnumeration;
 import jp.go.aist.six.oval.model.sc.ItemType;
 
@@ -59,8 +59,10 @@ public class FamilyItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.family;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.family;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.FAMILY;
     }
 
 
@@ -77,7 +79,7 @@ public class FamilyItem
 
     public EntityItemFamilyType getFamily()
     {
-        return this.family;
+        return family;
     }
 
 

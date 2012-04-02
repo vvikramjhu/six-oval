@@ -21,8 +21,8 @@
 package jp.go.aist.six.oval.model.independent;
 
 import java.util.Collection;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.definitions.StateRefType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectRefType;
@@ -68,8 +68,10 @@ public class UnknownTest
     {
         super( id, version, comment, check );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.unknown;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.unknown;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.UNKNOWN;
     }
 
 
