@@ -57,6 +57,24 @@ public enum Family
 
     ////////////////////////////////////////////////////////////////
 
+    /**
+     * A factory method.
+     */
+    public static Family fromValue(
+                    final String value
+                    )
+    {
+        for (Family  e : Family.values()) {
+            if (e.value.equals( value )) {
+                return e;
+            }
+        }
+
+        throw new IllegalArgumentException( value );
+    }
+
+
+
     private String  value = null;
     private final Collection<Component>  _components;
 

@@ -117,6 +117,25 @@ public enum Component
 
     ////////////////////////////////////////////////////////////////
 
+    /**
+     * A factory method.
+     */
+    public static Component fromValue(
+                    final String value
+                    )
+    {
+        return valueOf( value.toUpperCase() );
+//        for (Component  e : Component.values()) {
+//            if (e.value.equals( value )) {
+//                return e;
+//            }
+//        }
+//
+//        throw new IllegalArgumentException( value );
+    }
+
+
+
     private String  value = null;
 
 
