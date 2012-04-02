@@ -17,7 +17,7 @@
     <!-- * oval.model                                          * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.model" enabled="true">
+    <test name="oval.model" enabled="false">
         <classes>
             <class name="jp.go.aist.six.test.oval.model.ComponentTests"/>
         </classes>
@@ -141,7 +141,7 @@
     </test>
 
 
-    <test name="oval.core.repository.mongodb" enabled="false">
+    <test name="oval.core.repository.mongodb" enabled="true">
         <groups>
             <run>
                 <include name="oval.core.repository.mongodb"/>

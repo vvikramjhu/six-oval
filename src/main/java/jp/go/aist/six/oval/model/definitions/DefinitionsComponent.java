@@ -20,7 +20,8 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.Oval;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 
 
 
@@ -41,8 +42,8 @@ public abstract class DefinitionsComponent
     //{optional:StateType}
 
 
-    protected Oval.Family       _oval_family;
-    protected Oval.Component    _oval_component;
+    protected Family       _oval_family;
+    protected Component    _oval_component;
 
 
 
