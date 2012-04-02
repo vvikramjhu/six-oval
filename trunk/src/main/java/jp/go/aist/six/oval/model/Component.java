@@ -22,8 +22,10 @@ package jp.go.aist.six.oval.model;
 
 
 
+
+
 /**
- * An enumeration of OVAL component types.
+ * A OVAL component type.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -32,81 +34,84 @@ package jp.go.aist.six.oval.model;
 public enum Component
     implements OvalEnumeration
 {
+    // independent, linux, unix, windows
 
-    // independent //
-    environmentvariable,            //@deprecated
-    environmentvariable58,
-    family,
-    filehash,                       //@deprecated
-    filehash58,
-    ldap,
-    sql, // @deprecated
-    textfilecontent, // @deprecated
-    textfilecontent54,
-    unknown,
-    variable,
-    xmlfilecontent,
+    ACCESSTOKEN,                    // windows
+    ACTIVEDIRECTORY,                // windows
+    AUDITEVENTPOLICY,               // windows
+    AUDITEVENTPOLICYSUBCATEGORIES,  // windows
 
-    // linux //
-    dpkginfo,
-    inetlisteningservers,
-    partition,
-    rpminfo,
-    rpmverify,
-    selinuxboolean,
-    selinuxsecuritycontext,
-    slackwarepkginfo,
+    DPKGINFO,                       // linux
+    ENVIRONMENTVARIABLE,            // independent @deprecated
+    ENVIRONMENTVARIABLE58,          // independent
 
-    // unix //
-    file,
-    inetd,
-    INTERFACE, // "interface"
-//    network_interface( "interface" ), // "interface"
-    password,
-    process,
-    process58,
-    runlevel,
-    shadow,
-    uname,
-    xinetd,
+    FAMILY,                         // independent
+    FILE,                           // unix, windows
+    FILEAUDITEDPERMISSIONS,         // windows
+    FILEAUDITEDPERMISSIONS53,       // windows
+    FILEEFFECTIVERIGHTS,            // windows
+    FILEEFFECTIVERIGHTS53,          // windows
+    FILEHASH,                       // independent @deprecated
+    FILEHASH58,                     // independent
 
-    // windows //
-    accesstoken,                    //windows
-    activedirectory,                //windows
-    auditeventpolicy,               //windows
-    auditeventpolicysubcategories,  //windows
-    // file,                        //windows
-    fileauditedpermissions,         //windows
-    fileauditedpermissions53,       //windows
-    fileeffectiverights,            //windows
-    fileeffectiverights53,          //windows
-    group,                          //windows
-    group_sid,                      //windows
-    // network_interface, //"interface"
-    lockoutpolicy,
-    metabase,
-    passwordpolicy,
-    port,
-    printereffectiverights,
-    // process,
-    // process58,
-    registry,
-    regkeyauditedpermissions,
-    regkeyauditedpermissions53,
-    regkeyeffectiverights,
-    regkeyeffectiverights53,
-    serviceeffectiverights,
-    sharedresource,
-    sid,
-    sid_sid,
-    uac,
-    user,
-    user_sid,
-    user_sid55,
-    volume,
-    wmi,
-    wmi57,
-    wuaupdatesearcher;
+    GROUP,                          // windows
+    GROUP_SID,                      // windows
+
+    INETD,                          // unix
+    INETLISTENINGSERVERS,           // linux
+    INTERFACE,                      // unix windows
+
+    LDAP,                           // independent
+    LOCKOUTPOLICY,                  // windows
+
+    METABASE,                       // windows
+
+    PARTITION,                      // linux
+    PASSWORD,                       // unix
+    PASSWORDPOLICY,                 // windows
+    PROCESS,                        // unix, windows
+    PROCESS58,                      // unix, windows
+    PORT,                           // windows
+    PRINTEREFFECTIVERIGHTS,         // windows
+
+    REGISTRY,                       // windows
+    REGKEYAUDITEDPERMISSIONS,       // windows
+    REGKEYAUDITEDPERMISSIONS53,     // windows
+    REGKEYEFFECTIVERIGHTS,          // windows
+    REGKEYEFFECTIVERIGHTS53,        // windows
+    RPMINFO,                        // linux
+    RPMVERIFY,                      // linux
+    RUNLEVEL,                       // unix
+
+    SELINUXBOOLEAN,                 // linux
+    SELINUXSECURITYCONTEXT,         // linux
+    SERVICEEFFECTIVERIGHTS,         // windows
+    SHADOW,                         // unix
+    SHAREDRESOURCE,                 // windows
+    SID,                            // windows
+    SID_SID,                        // windows
+    SLACKWAREPKGINFO,               // linux
+    SQL,                            // independent @deprecated
+
+    TEXTFILECONTENT,                // independent @deprecated
+    TEXTFILECONTENT54,              // independent
+
+    UAC,                            // windows
+    UNAME,                          // unix
+    UNKNOWN,                        // independent
+    USER,                           // windows
+    USER_SID,                       // windows
+    USER_SID55,                     // windows
+
+    VARIABLE,                       // independent
+    VOLUME,                         // windows
+
+    WMI,                            // windows
+    WMI57,                          // windows
+    WUAUPDATESEARCHER,              // windows
+
+    XINETD,                         // unix
+    XMLFILECONTENT;                 // independent
 
 
 
@@ -150,6 +155,93 @@ public enum Component
     {
         return value;
     }
+
+
+
+    ////////////////////////////////////////////////////////////////
+    // grouped by the OS family, i.e. OVAL namespace
+    ////////////////////////////////////////////////////////////////
+
+    public static final Component[]  INDEPENDENT = new Component[] {
+        Component.ENVIRONMENTVARIABLE,
+        Component.ENVIRONMENTVARIABLE58,
+        Component.FAMILY,
+        Component.FILEHASH,
+        Component.FILEHASH58,
+        Component.LDAP,
+        Component.SQL,
+        Component.TEXTFILECONTENT,
+        Component.TEXTFILECONTENT54,
+        Component.UNKNOWN,
+        Component.VARIABLE,
+        Component.XMLFILECONTENT
+    };
+
+
+    public static final Component[]  LINUX = new Component[] {
+        Component.DPKGINFO,
+        Component.INETLISTENINGSERVERS,
+        Component.PARTITION,
+        Component.RPMINFO,
+        Component.RPMVERIFY,
+        Component.SELINUXBOOLEAN,
+        Component.SELINUXSECURITYCONTEXT,
+        Component.SLACKWAREPKGINFO,
+    };
+
+
+    public static final Component[]  UNIX = new Component[] {
+        Component.FILE,
+        Component.INETD,
+        Component.INTERFACE,
+        Component.PASSWORD,
+        Component.PROCESS,
+        Component.PROCESS58,
+        Component.RUNLEVEL,
+        Component.SHADOW,
+        Component.UNAME,
+        Component.XINETD
+    };
+
+
+    public static final Component[]  WINDOWS = new Component[] {
+        Component.ACCESSTOKEN,
+        Component.ACTIVEDIRECTORY,
+        Component.AUDITEVENTPOLICY,
+        Component.AUDITEVENTPOLICYSUBCATEGORIES,
+        Component.FILE,
+        Component.FILEAUDITEDPERMISSIONS,
+        Component.FILEAUDITEDPERMISSIONS53,
+        Component.FILEEFFECTIVERIGHTS,
+        Component.FILEEFFECTIVERIGHTS53,
+        Component.GROUP,
+        Component.GROUP_SID,
+        Component.INTERFACE,
+        Component.LOCKOUTPOLICY,
+        Component.METABASE,
+        Component.PASSWORDPOLICY,
+        Component.PORT,
+        Component.PRINTEREFFECTIVERIGHTS,
+        Component.PROCESS,
+        Component.PROCESS58,
+        Component.REGISTRY,
+        Component.REGKEYAUDITEDPERMISSIONS,
+        Component.REGKEYAUDITEDPERMISSIONS53,
+        Component.REGKEYEFFECTIVERIGHTS,
+        Component.REGKEYEFFECTIVERIGHTS53,
+        Component.SERVICEEFFECTIVERIGHTS,
+        Component.SHAREDRESOURCE,
+        Component.SID,
+        Component.SID_SID,
+        Component.UAC,
+        Component.USER,
+        Component.USER_SID,
+        Component.USER_SID55,
+        Component.VOLUME,
+        Component.WMI,
+        Component.WMI57,
+        Component.WUAUPDATESEARCHER
+    };
 
 }
 //
