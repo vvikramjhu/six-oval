@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -89,8 +89,10 @@ public class TextfileContentState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.textfilecontent;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.textfilecontent;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.TEXTFILECONTENT;
     }
 
 
@@ -107,7 +109,7 @@ public class TextfileContentState
 
     public EntityStateStringType getPath()
     {
-        return this.path;
+        return path;
     }
 
 
@@ -124,7 +126,7 @@ public class TextfileContentState
 
     public EntityStateStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -141,7 +143,7 @@ public class TextfileContentState
 
     public EntityStateStringType getLine()
     {
-        return this.line;
+        return line;
     }
 
 
@@ -158,7 +160,7 @@ public class TextfileContentState
 
     public EntityStateAnySimpleType getSubexpression()
     {
-        return this.subexpression;
+        return subexpression;
     }
 
 
@@ -175,7 +177,7 @@ public class TextfileContentState
 
     public EntityStateWindowsViewType getWindowsView()
     {
-        return this.windows_view;
+        return windows_view;
     }
 
 

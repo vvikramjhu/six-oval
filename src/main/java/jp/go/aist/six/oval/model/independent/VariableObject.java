@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.independent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
@@ -85,8 +85,10 @@ public class VariableObject
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.variable;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.variable;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.VARIABLE;
     }
 
 
@@ -103,7 +105,7 @@ public class VariableObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -120,7 +122,7 @@ public class VariableObject
 
     public EntityObjectVariableRefType getVarRef()
     {
-        return this.var_ref;
+        return var_ref;
     }
 
 
@@ -131,10 +133,10 @@ public class VariableObject
                     final Collection<? extends Filter> filters
                     )
     {
-        if (this.filter != filters) {
-            this.filter.clear();
+        if (filter != filters) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -154,13 +156,13 @@ public class VariableObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 
     public Iterator<Filter> iterateFilter()
     {
-        return this.filter.iterator();
+        return filter.iterator();
     }
 
 

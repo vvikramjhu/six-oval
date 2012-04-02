@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.independent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
@@ -74,8 +74,10 @@ public class SqlItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.sql;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.sql;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.SQL;
     }
 
 
@@ -92,7 +94,7 @@ public class SqlItem
 
     public EntityItemEngineType getEngine()
     {
-        return this.engine;
+        return engine;
     }
 
 
@@ -109,7 +111,7 @@ public class SqlItem
 
     public EntityItemStringType getVersion()
     {
-        return this.version;
+        return version;
     }
 
 
@@ -126,7 +128,7 @@ public class SqlItem
 
     public EntityItemStringType getConnectionString()
     {
-        return this.connection_string;
+        return connection_string;
     }
 
 
@@ -143,7 +145,7 @@ public class SqlItem
 
     public EntityItemStringType getSql()
     {
-        return this.sql;
+        return sql;
     }
 
 
@@ -154,7 +156,7 @@ public class SqlItem
                     final Collection<? extends EntityItemAnySimpleType> results
                     )
     {
-        this.result.clear();
+        result.clear();
         if (results != null  &&  results.size() > 0) {
             for (EntityItemAnySimpleType  result : results) {
                 addResult( result );
@@ -177,13 +179,13 @@ public class SqlItem
 
     public Collection<EntityItemAnySimpleType> getResult()
     {
-        return this.result;
+        return result;
     }
 
 
     public Iterator<EntityItemAnySimpleType> iterateResult()
     {
-        return this.result.iterator();
+        return result.iterator();
     }
 
 

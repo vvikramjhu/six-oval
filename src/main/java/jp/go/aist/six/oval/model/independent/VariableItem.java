@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.independent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 
@@ -64,8 +64,10 @@ public class VariableItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.variable;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.variable;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.VARIABLE;
     }
 
 
@@ -82,7 +84,7 @@ public class VariableItem
 
     public EntityItemVariableRefType getVarRef()
     {
-        return this.var_ref;
+        return var_ref;
     }
 
 
@@ -93,7 +95,7 @@ public class VariableItem
                     final Collection<? extends EntityItemAnySimpleType> values
                     )
     {
-        this.value.clear();
+        value.clear();
         if (values != null  &&  values.size() > 0) {
             for (EntityItemAnySimpleType  value : values) {
                 addValue( value );
@@ -116,13 +118,13 @@ public class VariableItem
 
     public Collection<EntityItemAnySimpleType> getValue()
     {
-        return this.value;
+        return value;
     }
 
 
     public Iterator<EntityItemAnySimpleType> iterateValue()
     {
-        return this.value.iterator();
+        return value.iterator();
     }
 
 

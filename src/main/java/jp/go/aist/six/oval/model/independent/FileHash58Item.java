@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 
@@ -74,8 +74,10 @@ public class FileHash58Item
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.filehash58;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.filehash58;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.FILEHASH58;
     }
 
 
@@ -92,7 +94,7 @@ public class FileHash58Item
 
     public EntityItemStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 
@@ -109,7 +111,7 @@ public class FileHash58Item
 
     public EntityItemStringType getPath()
     {
-        return this.path;
+        return path;
     }
 
 
@@ -126,7 +128,7 @@ public class FileHash58Item
 
     public EntityItemStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -143,7 +145,7 @@ public class FileHash58Item
 
     public EntityItemHashTypeType getHashType()
     {
-        return this.hash_type;
+        return hash_type;
     }
 
 
@@ -160,7 +162,7 @@ public class FileHash58Item
 
     public EntityItemStringType getHash()
     {
-        return this.hash;
+        return hash;
     }
 
 
@@ -177,7 +179,7 @@ public class FileHash58Item
 
     public EntityItemWindowsViewType getWindowsView()
     {
-        return this.windows_view;
+        return windows_view;
     }
 
 

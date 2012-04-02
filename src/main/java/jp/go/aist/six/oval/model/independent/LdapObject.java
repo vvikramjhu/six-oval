@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
@@ -91,8 +91,10 @@ public class LdapObject
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.ldap;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.ldap;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.LDAP;
     }
 
 
@@ -109,7 +111,7 @@ public class LdapObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -126,7 +128,7 @@ public class LdapObject
 
     public LdapBehaviors getBehaviors()
     {
-        return this.behaviors;
+        return behaviors;
     }
 
 
@@ -143,7 +145,7 @@ public class LdapObject
 
     public EntityObjectStringType getSuffix()
     {
-        return this.suffix;
+        return suffix;
     }
 
 
@@ -177,7 +179,7 @@ public class LdapObject
 
     public EntityObjectStringType getAttribute()
     {
-        return this.attribute;
+        return attribute;
     }
 
 

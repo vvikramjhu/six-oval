@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.independent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectIntType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
@@ -121,8 +121,10 @@ public class TextfileContent54Object
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.textfilecontent54;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.textfilecontent54;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.TEXTFILECONTENT54;
     }
 
 
@@ -174,7 +176,7 @@ public class TextfileContent54Object
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -191,7 +193,7 @@ public class TextfileContent54Object
 
     public TextfileContent54Behaviors getBehaviors()
     {
-        return this.behaviors;
+        return behaviors;
     }
 
 
@@ -218,7 +220,7 @@ public class TextfileContent54Object
 
     public EntityObjectStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
 //        return _properties.getProperty(
 //                        TextfileContentProperty.FILEPATH, EntityObjectStringType.class );
     }
@@ -276,7 +278,7 @@ public class TextfileContent54Object
 
     public EntityObjectStringType getFilename()
     {
-        return this.filename;
+        return filename;
 //        return _properties.getProperty(
 //                        TextfileContentProperty.FILENAME, EntityObjectStringType.class );
     }
@@ -305,7 +307,7 @@ public class TextfileContent54Object
 
     public EntityObjectStringType getPattern()
     {
-        return this.pattern;
+        return pattern;
 //        return _properties.getProperty(
 //                        TextfileContentProperty.PATTERN, EntityObjectStringType.class );
     }
@@ -334,7 +336,7 @@ public class TextfileContent54Object
 
     public EntityObjectIntType getInstance()
     {
-        return this.instance;
+        return instance;
 //        return _properties.getProperty(
 //                        TextfileContentProperty.INSTANCE, EntityObjectIntType.class );
     }
@@ -356,10 +358,10 @@ public class TextfileContent54Object
                     final Collection<? extends Filter> filterList
                     )
     {
-        if (this.filter != filterList) {
-            this.filter.clear();
+        if (filter != filterList) {
+            filter.clear();
             if (filterList != null  &&  filterList.size() > 0) {
-                this.filter.addAll( filterList );
+                filter.addAll( filterList );
             }
         }
     }
@@ -379,13 +381,13 @@ public class TextfileContent54Object
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 
     public Iterator<Filter> iterateFilter()
     {
-        return this.filter.iterator();
+        return filter.iterator();
     }
 
 

@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -80,8 +80,10 @@ public class EnvironmentVariable58State
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.environmentvariable58;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.environmentvariable58;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.ENVIRONMENTVARIABLE58;
     }
 
 
@@ -98,7 +100,7 @@ public class EnvironmentVariable58State
 
     public EntityStateIntType getPid()
     {
-        return this.pid;
+        return pid;
     }
 
 
@@ -109,13 +111,13 @@ public class EnvironmentVariable58State
                     final EntityStateStringType pattern
                     )
     {
-        this.name = pattern;
+        name = pattern;
     }
 
 
     public EntityStateStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -132,7 +134,7 @@ public class EnvironmentVariable58State
 
     public EntityStateAnySimpleType getValue()
     {
-        return this.value;
+        return value;
     }
 
 

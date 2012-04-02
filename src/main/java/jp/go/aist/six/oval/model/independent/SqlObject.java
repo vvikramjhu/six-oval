@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
@@ -96,8 +96,10 @@ public class SqlObject
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.sql;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.sql;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.SQL;
     }
 
 
@@ -114,7 +116,7 @@ public class SqlObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -131,7 +133,7 @@ public class SqlObject
 
     public EntityObjectEngineType getEngine()
     {
-        return this.engine;
+        return engine;
     }
 
 
@@ -148,7 +150,7 @@ public class SqlObject
 
     public EntityObjectStringType getVersion()
     {
-        return this.version;
+        return version;
     }
 
 
@@ -182,7 +184,7 @@ public class SqlObject
 
     public EntityObjectStringType getSql()
     {
-        return this.sql;
+        return sql;
     }
 
 

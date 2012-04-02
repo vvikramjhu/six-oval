@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.independent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
@@ -78,8 +78,10 @@ public class LdapItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.ldap;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.ldap;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.LDAP;
     }
 
 
@@ -96,7 +98,7 @@ public class LdapItem
 
     public EntityItemStringType getSuffix()
     {
-        return this.suffix;
+        return suffix;
     }
 
 
@@ -113,7 +115,7 @@ public class LdapItem
 
     public EntityItemStringType getRelativeDn()
     {
-        return this.relative_dn;
+        return relative_dn;
     }
 
 
@@ -130,7 +132,7 @@ public class LdapItem
 
     public EntityItemStringType getAttribute()
     {
-        return this.attribute;
+        return attribute;
     }
 
 
@@ -147,7 +149,7 @@ public class LdapItem
 
     public EntityItemLdaptypeType getLdaptype()
     {
-        return this.ldaptype;
+        return ldaptype;
     }
 
 
@@ -164,7 +166,7 @@ public class LdapItem
 
     public EntityItemStringType getObjectClass()
     {
-        return this.object_class;
+        return object_class;
     }
 
 
@@ -175,7 +177,7 @@ public class LdapItem
                     final Collection<? extends EntityItemAnySimpleType> values
                     )
     {
-        this.value.clear();
+        value.clear();
         if (values != null  &&  values.size() > 0) {
             for (EntityItemAnySimpleType  value : values) {
                 addValue( value );
@@ -198,13 +200,13 @@ public class LdapItem
 
     public Collection<EntityItemAnySimpleType> getValue()
     {
-        return this.value;
+        return value;
     }
 
 
     public Iterator<EntityItemAnySimpleType> iterateValue()
     {
-        return this.value.iterator();
+        return value.iterator();
     }
 
 

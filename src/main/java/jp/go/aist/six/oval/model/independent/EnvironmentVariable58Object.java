@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.independent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectIntType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
@@ -95,8 +95,10 @@ public class EnvironmentVariable58Object
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.environmentvariable58;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.environmentvariable58;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.ENVIRONMENTVARIABLE58;
     }
 
 
@@ -113,7 +115,7 @@ public class EnvironmentVariable58Object
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -130,7 +132,7 @@ public class EnvironmentVariable58Object
 
     public EntityObjectIntType getPid()
     {
-        return this.pid;
+        return pid;
     }
 
 
@@ -147,7 +149,7 @@ public class EnvironmentVariable58Object
 
     public EntityObjectStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -158,10 +160,10 @@ public class EnvironmentVariable58Object
                     final Collection<? extends Filter> filterList
                     )
     {
-        if (this.filter != filterList) {
-            this.filter.clear();
+        if (filter != filterList) {
+            filter.clear();
             if (filterList != null  &&  filterList.size() > 0) {
-                this.filter.addAll( filterList );
+                filter.addAll( filterList );
             }
         }
     }
@@ -181,13 +183,13 @@ public class EnvironmentVariable58Object
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 
     public Iterator<Filter> iterateFilter()
     {
-        return this.filter.iterator();
+        return filter.iterator();
     }
 
 

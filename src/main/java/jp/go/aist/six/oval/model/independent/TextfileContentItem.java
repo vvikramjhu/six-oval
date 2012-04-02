@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.independent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
@@ -86,8 +86,10 @@ public class TextfileContentItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.textfilecontent;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.textfilecontent;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.TEXTFILECONTENT;
     }
 
 
@@ -104,7 +106,7 @@ public class TextfileContentItem
 
     public EntityItemStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 
@@ -130,7 +132,7 @@ public class TextfileContentItem
 
     public EntityItemStringType getPath()
     {
-        return this.path;
+        return path;
     }
 
 
@@ -156,7 +158,7 @@ public class TextfileContentItem
 
     public EntityItemStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -182,7 +184,7 @@ public class TextfileContentItem
 
     public EntityItemStringType getPattern()
     {
-        return this.pattern;
+        return pattern;
     }
 
 
@@ -208,7 +210,7 @@ public class TextfileContentItem
 
     public EntityItemIntType getInstance()
     {
-        return this.instance;
+        return instance;
     }
 
 
@@ -234,7 +236,7 @@ public class TextfileContentItem
 
     public EntityItemStringType getLine()
     {
-        return this.line;
+        return line;
     }
 
 
@@ -260,7 +262,7 @@ public class TextfileContentItem
 
     public EntityItemAnySimpleType getText()
     {
-        return this.text;
+        return text;
     }
 
 
@@ -291,13 +293,13 @@ public class TextfileContentItem
 
     public Collection<EntityItemAnySimpleType> getSubexpression()
     {
-        return this.subexpression;
+        return subexpression;
     }
 
 
     public Iterator<EntityItemAnySimpleType> iterateSubexpression()
     {
-        return this.subexpression.iterator();
+        return subexpression.iterator();
     }
 
 

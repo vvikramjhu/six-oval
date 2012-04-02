@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -87,8 +87,10 @@ public class SqlState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.independent;
-        _oval_component_type = OvalComponentType.sql;
+//        _oval_platform_type = OvalPlatformType.independent;
+//        _oval_component_type = OvalComponentType.sql;
+        _oval_family = Family.INDEPENDENT;
+        _oval_component = Component.SQL;
     }
 
 
@@ -105,7 +107,7 @@ public class SqlState
 
     public EntityStateEngineType getEngine()
     {
-        return this.engine;
+        return engine;
     }
 
 
@@ -122,7 +124,7 @@ public class SqlState
 
     public EntityStateStringType getVersion()
     {
-        return this.version;
+        return version;
     }
 
 
@@ -139,7 +141,7 @@ public class SqlState
 
     public EntityStateStringType getConnectionString()
     {
-        return this.connection_string;
+        return connection_string;
     }
 
 
@@ -156,7 +158,7 @@ public class SqlState
 
     public EntityStateStringType getSql()
     {
-        return this.sql;
+        return sql;
     }
 
 
@@ -173,7 +175,7 @@ public class SqlState
 
     public EntityStateAnySimpleType getResult()
     {
-        return this.result;
+        return result;
     }
 
 
