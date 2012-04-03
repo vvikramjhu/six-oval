@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemEVRStringType;
@@ -70,8 +70,8 @@ public class RpmInfoItem
     {
         this( id, DEFAULT_STATUS );
     }
-    
-    
+
+
     public RpmInfoItem(
                     final int id,
                     final StatusEnumeration status
@@ -79,10 +79,12 @@ public class RpmInfoItem
     {
         super( id, status );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.rpminfo;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.rpminfo;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.RPMINFO;
     }
-    
+
 //    public RpmInfoItem(
 //                    final int id
 //                    )
@@ -152,7 +154,7 @@ public class RpmInfoItem
 
     public EntityItemStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -188,7 +190,7 @@ public class RpmInfoItem
 
     public EntityItemStringType getArch()
     {
-        return this.arch;
+        return arch;
     }
 
 
@@ -227,7 +229,7 @@ public class RpmInfoItem
 
     public EntityItemAnySimpleType getEpoch()
     {
-        return this.epoch;
+        return epoch;
     }
 
 
@@ -266,7 +268,7 @@ public class RpmInfoItem
 
     public EntityItemAnySimpleType getRelease()
     {
-        return this.release;
+        return release;
     }
 
 
@@ -305,7 +307,7 @@ public class RpmInfoItem
 
     public EntityItemAnySimpleType getVersion()
     {
-        return this.version;
+        return version;
     }
 
 
@@ -331,7 +333,7 @@ public class RpmInfoItem
 
     public EntityItemEVRStringType getEvr()
     {
-        return this.evr;
+        return evr;
     }
 
 
@@ -343,8 +345,8 @@ public class RpmInfoItem
         return this;
     }
 
-    
-    
+
+
     /**
      */
     public void setSignatureKeyId(
@@ -357,7 +359,7 @@ public class RpmInfoItem
 
     public EntityItemStringType getSignatureKeyId()
     {
-        return this.signature_keyid;
+        return signature_keyid;
     }
 
 
@@ -383,7 +385,7 @@ public class RpmInfoItem
 
     public EntityItemStringType getExtendedName()
     {
-        return this.extended_name;
+        return extended_name;
     }
 
 
@@ -400,7 +402,7 @@ public class RpmInfoItem
 
     public EntityItemStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 

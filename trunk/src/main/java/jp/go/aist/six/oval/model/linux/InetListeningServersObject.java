@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.linux;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectIPAddressStringType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectIntType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
@@ -35,8 +35,8 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The inetlisteningservers object is used by an inet listening servers test 
- * to define the specific protocol-address-port to be evaluated. 
+ * The inetlisteningservers object is used by an inet listening servers test
+ * to define the specific protocol-address-port to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -100,8 +100,10 @@ public class InetListeningServersObject
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.inetlisteningservers;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.inetlisteningservers;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.INETLISTENINGSERVERS;
     }
 
 
@@ -118,7 +120,7 @@ public class InetListeningServersObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -135,7 +137,7 @@ public class InetListeningServersObject
 
     public EntityObjectStringType getProtocol()
     {
-        return this.protocol;
+        return protocol;
     }
 
 
@@ -152,7 +154,7 @@ public class InetListeningServersObject
 
     public EntityObjectIPAddressStringType getLocalAddress()
     {
-        return this.local_address;
+        return local_address;
     }
 
 
@@ -169,7 +171,7 @@ public class InetListeningServersObject
 
     public EntityObjectIntType getLocalPort()
     {
-        return this.local_port;
+        return local_port;
     }
 
 
@@ -180,10 +182,10 @@ public class InetListeningServersObject
                     final Collection<? extends Filter> filters
                     )
     {
-        if (filters != this.filter) {
-            this.filter.clear();
+        if (filters != filter) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -191,13 +193,13 @@ public class InetListeningServersObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 
     public Iterator<Filter> iterateFilter()
     {
-        return this.filter.iterator();
+        return filter.iterator();
     }
 
 

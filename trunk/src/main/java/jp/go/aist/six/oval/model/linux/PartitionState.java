@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The partition state defines the different information 
+ * The partition state defines the different information
  * associated with a partition.
  *
  * @author  Akihito Nakamura, AIST
@@ -78,8 +78,10 @@ public class PartitionState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.partition;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.partition;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.PARTITION;
     }
 
 
@@ -96,7 +98,7 @@ public class PartitionState
 
     public EntityStateStringType getMountPoint()
     {
-        return this.mount_point;
+        return mount_point;
     }
 
 
@@ -113,7 +115,7 @@ public class PartitionState
 
     public EntityStateStringType getDevice()
     {
-        return this.device;
+        return device;
     }
 
 
@@ -130,7 +132,7 @@ public class PartitionState
 
     public EntityStateStringType getUuid()
     {
-        return this.uuid;
+        return uuid;
     }
 
 
@@ -147,7 +149,7 @@ public class PartitionState
 
     public EntityStateStringType getFsType()
     {
-        return this.fs_type;
+        return fs_type;
     }
 
 
@@ -164,7 +166,7 @@ public class PartitionState
 
     public EntityStateStringType getMountOptions()
     {
-        return this.mount_options;
+        return mount_options;
     }
 
 
@@ -181,7 +183,7 @@ public class PartitionState
 
     public EntityStateIntType getTotalSpace()
     {
-        return this.total_space;
+        return total_space;
     }
 
 
@@ -198,7 +200,7 @@ public class PartitionState
 
     public EntityStateIntType getSpaceUsed()
     {
-        return this.space_used;
+        return space_used;
     }
 
 
@@ -215,7 +217,7 @@ public class PartitionState
 
     public EntityStateIntType getSpaceLeft()
     {
-        return this.space_left;
+        return space_left;
     }
 
 

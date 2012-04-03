@@ -20,15 +20,15 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The slackwarepkginfo state defines the different information 
+ * The slackwarepkginfo state defines the different information
  * that can be used to evaluate the specified package.
  *
  * @author  Akihito Nakamura, AIST
@@ -45,8 +45,8 @@ public class SlackwarePkgInfoState
     private EntityStateStringType  architecture;
     private EntityStateStringType  revision;
 
-    
-    
+
+
     /**
      * Constructor.
      */
@@ -63,8 +63,10 @@ public class SlackwarePkgInfoState
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.slackwarepkginfo;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.slackwarepkginfo;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.SLACKWAREPKGINFO;
     }
 
 
@@ -81,7 +83,7 @@ public class SlackwarePkgInfoState
 
     public EntityStateStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -98,7 +100,7 @@ public class SlackwarePkgInfoState
 
     public EntityStateStringType getArchitecture()
     {
-        return this.architecture;
+        return architecture;
     }
 
 
@@ -115,7 +117,7 @@ public class SlackwarePkgInfoState
 
     public EntityStateStringType getVersion()
     {
-        return this.version;
+        return version;
     }
 
 
@@ -132,7 +134,7 @@ public class SlackwarePkgInfoState
 
     public EntityStateStringType getRevision()
     {
-        return this.revision;
+        return revision;
     }
 
 

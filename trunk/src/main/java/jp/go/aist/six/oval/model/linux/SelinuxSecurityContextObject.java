@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.linux;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectIntType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
@@ -34,8 +34,8 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The selinuxsecuritycontext object is used by an selinuxsecuritycontext test 
- * to define the security contexts of files and processes to collect 
+ * The selinuxsecuritycontext object is used by an selinuxsecuritycontext test
+ * to define the security contexts of files and processes to collect
  * from the local system.
  *
  * @author  Akihito Nakamura, AIST
@@ -107,8 +107,10 @@ public class SelinuxSecurityContextObject
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.selinuxsecuritycontext;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.selinuxsecuritycontext;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.SELINUXSECURITYCONTEXT;
     }
 
 
@@ -125,7 +127,7 @@ public class SelinuxSecurityContextObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -142,7 +144,7 @@ public class SelinuxSecurityContextObject
 
     public FileBehaviors getBehaviors()
     {
-        return this.behaviors;
+        return behaviors;
     }
 
 
@@ -159,7 +161,7 @@ public class SelinuxSecurityContextObject
 
     public EntityObjectStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 
@@ -193,7 +195,7 @@ public class SelinuxSecurityContextObject
 
     public EntityObjectStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -210,7 +212,7 @@ public class SelinuxSecurityContextObject
 
     public EntityObjectIntType getPid()
     {
-        return this.pid;
+        return pid;
     }
 
 
@@ -221,10 +223,10 @@ public class SelinuxSecurityContextObject
                     final Collection<? extends Filter> filters
                     )
     {
-        if (this.filter != filters) {
-            this.filter.clear();
+        if (filter != filters) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -244,13 +246,13 @@ public class SelinuxSecurityContextObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 
     public Iterator<Filter> iterateFilter()
     {
-        return this.filter.iterator();
+        return filter.iterator();
     }
 
 

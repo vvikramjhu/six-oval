@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
@@ -66,8 +66,10 @@ public class PartitionItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.partition;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.partition;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.PARTITION;
     }
 
 
@@ -84,7 +86,7 @@ public class PartitionItem
 
     public EntityItemStringType getMountPoint()
     {
-        return this.mount_point;
+        return mount_point;
     }
 
 
@@ -101,7 +103,7 @@ public class PartitionItem
 
     public EntityItemStringType getDevice()
     {
-        return this.device;
+        return device;
     }
 
 
@@ -118,7 +120,7 @@ public class PartitionItem
 
     public EntityItemStringType getUuid()
     {
-        return this.uuid;
+        return uuid;
     }
 
 
@@ -135,7 +137,7 @@ public class PartitionItem
 
     public EntityItemStringType getFsType()
     {
-        return this.fs_type;
+        return fs_type;
     }
 
 
@@ -152,7 +154,7 @@ public class PartitionItem
 
     public EntityItemStringType getMountOptions()
     {
-        return this.mount_options;
+        return mount_options;
     }
 
 
@@ -169,7 +171,7 @@ public class PartitionItem
 
     public EntityItemIntType getTotalSpace()
     {
-        return this.total_space;
+        return total_space;
     }
 
 
@@ -186,7 +188,7 @@ public class PartitionItem
 
     public EntityItemIntType getSpaceUsed()
     {
-        return this.space_used;
+        return space_used;
     }
 
 
@@ -203,7 +205,7 @@ public class PartitionItem
 
     public EntityItemIntType getSpaceLeft()
     {
-        return this.space_left;
+        return space_left;
     }
 
 

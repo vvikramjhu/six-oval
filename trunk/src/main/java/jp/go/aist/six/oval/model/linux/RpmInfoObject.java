@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.linux;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -69,7 +69,7 @@ public class RpmInfoObject
 
 
 
-    
+
     /**
      * Constructor.
      */
@@ -96,8 +96,10 @@ public class RpmInfoObject
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.rpminfo;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.rpminfo;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.RPMINFO;
     }
 
 
@@ -114,7 +116,7 @@ public class RpmInfoObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -131,7 +133,7 @@ public class RpmInfoObject
 
     public RpmInfoBehaviors getBehaviors()
     {
-        return this.behaviors;
+        return behaviors;
     }
 
 
@@ -148,7 +150,7 @@ public class RpmInfoObject
 
     public EntityObjectStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -176,10 +178,10 @@ public class RpmInfoObject
                     final Collection<? extends Filter> filters
                     )
     {
-        if (this.filter != filters) {
-            this.filter.clear();
+        if (filter != filters) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -199,13 +201,13 @@ public class RpmInfoObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 
     public Iterator<Filter> iterateFilter()
     {
-        return this.filter.iterator();
+        return filter.iterator();
     }
 
 

@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.sc.ItemType;
 
 
 /**
- * An inet listening server item stores the results of checking 
+ * An inet listening server item stores the results of checking
  * for network servers currently active on a system.
  *
  * @author  Akihito Nakamura, AIST
@@ -70,8 +70,10 @@ public class InetListeningServersItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.inetlisteningservers;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.inetlisteningservers;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.INETLISTENINGSERVERS;
     }
 
 
@@ -88,7 +90,7 @@ public class InetListeningServersItem
 
     public EntityItemStringType getProtocol()
     {
-        return this.protocol;
+        return protocol;
     }
 
 
@@ -105,7 +107,7 @@ public class InetListeningServersItem
 
     public EntityItemIPAddressStringType getLocalAddress()
     {
-        return this.local_address;
+        return local_address;
     }
 
 
@@ -122,7 +124,7 @@ public class InetListeningServersItem
 
     public EntityItemIntType getLocalPort()
     {
-        return this.local_port;
+        return local_port;
     }
 
 
@@ -139,7 +141,7 @@ public class InetListeningServersItem
 
     public EntityItemStringType getLocalFullAddress()
     {
-        return this.local_full_address;
+        return local_full_address;
     }
 
 
@@ -156,7 +158,7 @@ public class InetListeningServersItem
 
     public EntityItemStringType getProgramName()
     {
-        return this.program_name;
+        return program_name;
     }
 
 
@@ -173,7 +175,7 @@ public class InetListeningServersItem
 
     public EntityItemIPAddressStringType getForeignAddress()
     {
-        return this.foreign_address;
+        return foreign_address;
     }
 
 
@@ -190,7 +192,7 @@ public class InetListeningServersItem
 
     public EntityItemIntType getForeignPort()
     {
-        return this.foreign_port;
+        return foreign_port;
     }
 
 
@@ -207,7 +209,7 @@ public class InetListeningServersItem
 
     public EntityItemStringType getForeignFullAddress()
     {
-        return this.foreign_full_address;
+        return foreign_full_address;
     }
 
 
@@ -224,7 +226,7 @@ public class InetListeningServersItem
 
     public EntityItemIntType getPid()
     {
-        return this.pid;
+        return pid;
     }
 
 
@@ -241,7 +243,7 @@ public class InetListeningServersItem
 
     public EntityItemIntType getUserId()
     {
-        return this.user_id;
+        return user_id;
     }
 
 

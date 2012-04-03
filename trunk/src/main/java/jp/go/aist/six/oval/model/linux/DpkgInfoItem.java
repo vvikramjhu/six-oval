@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemEVRStringType;
@@ -51,7 +51,7 @@ public class DpkgInfoItem
     private EntityItemEVRStringType     evr;
 
 
-    
+
     /**
      * Constructor.
      */
@@ -163,9 +163,11 @@ public class DpkgInfoItem
         setRelease( release);
         setVersion( version);
         setEvr( evr );
-        
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.dpkginfo;
+
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.dpkginfo;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.DPKGINFO;
     }
 
 
@@ -182,7 +184,7 @@ public class DpkgInfoItem
 
     public EntityItemStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -218,7 +220,7 @@ public class DpkgInfoItem
 
     public EntityItemStringType getArch()
     {
-        return this.arch;
+        return arch;
     }
 
 
@@ -257,7 +259,7 @@ public class DpkgInfoItem
 
     public EntityItemAnySimpleType getEpoch()
     {
-        return this.epoch;
+        return epoch;
     }
 
 
@@ -296,7 +298,7 @@ public class DpkgInfoItem
 
     public EntityItemAnySimpleType getRelease()
     {
-        return this.release;
+        return release;
     }
 
 
@@ -335,7 +337,7 @@ public class DpkgInfoItem
 
     public EntityItemAnySimpleType getVersion()
     {
-        return this.version;
+        return version;
     }
 
 
@@ -361,7 +363,7 @@ public class DpkgInfoItem
 
     public EntityItemEVRStringType getEvr()
     {
-        return this.evr;
+        return evr;
     }
 
 

@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateEVRStringType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -52,7 +52,7 @@ public class RpmInfoState
     private EntityStateStringType       extended_name;
     private EntityStateStringType       filepath;
 
-    
+
 
     /**
      * Constructor.
@@ -70,8 +70,10 @@ public class RpmInfoState
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.rpminfo;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.rpminfo;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.RPMINFO;
     }
 
 
@@ -88,7 +90,7 @@ public class RpmInfoState
 
     public EntityStateStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -105,7 +107,7 @@ public class RpmInfoState
 
     public EntityStateStringType getArch()
     {
-        return this.arch;
+        return arch;
     }
 
 
@@ -122,7 +124,7 @@ public class RpmInfoState
 
     public EntityStateAnySimpleType getEpoch()
     {
-        return this.epoch;
+        return epoch;
     }
 
 
@@ -139,7 +141,7 @@ public class RpmInfoState
 
     public EntityStateAnySimpleType getRelease()
     {
-        return this.release;
+        return release;
     }
 
 
@@ -156,11 +158,11 @@ public class RpmInfoState
 
     public EntityStateAnySimpleType getVersion()
     {
-        return this.version;
+        return version;
     }
 
-    
-    
+
+
     /**
      */
     public void setEvr(
@@ -173,7 +175,7 @@ public class RpmInfoState
 
     public EntityStateEVRStringType getEvr()
     {
-        return this.evr;
+        return evr;
     }
 
 
@@ -193,13 +195,13 @@ public class RpmInfoState
                     final EntityStateStringType keyid
                     )
     {
-        this.signature_keyid = keyid;
+        signature_keyid = keyid;
     }
 
 
     public EntityStateStringType getSignatureKeyId()
     {
-        return this.signature_keyid;
+        return signature_keyid;
     }
 
 
@@ -225,7 +227,7 @@ public class RpmInfoState
 
     public EntityStateStringType getExtendedName()
     {
-        return this.extended_name;
+        return extended_name;
     }
 
 
@@ -242,7 +244,7 @@ public class RpmInfoState
 
     public EntityStateStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 

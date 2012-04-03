@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.linux;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -33,7 +33,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The rpmverify object is used by a rpmverity test to define 
+ * The rpmverify object is used by a rpmverity test to define
  * a set of files within a set of RPMs to verify.
  *
  * @author  Akihito Nakamura, AIST
@@ -43,6 +43,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
  *             Replaced by the rpmverifyfile object and rpmverifypackage object
  *             and will be removed in version 6.0 of the language.
  */
+@Deprecated
 public class RpmVerifyObject
     extends SystemObjectType
 {
@@ -90,8 +91,10 @@ public class RpmVerifyObject
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.rpmverify;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.rpmverify;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.RPMVERIFY;
     }
 
 
@@ -145,7 +148,7 @@ public class RpmVerifyObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -162,7 +165,7 @@ public class RpmVerifyObject
 
     public RpmVerifyBehaviors getBehaviors()
     {
-        return this.behaviors;
+        return behaviors;
     }
 
 
@@ -179,7 +182,7 @@ public class RpmVerifyObject
 
     public EntityObjectStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -196,7 +199,7 @@ public class RpmVerifyObject
 
     public EntityObjectStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 
@@ -207,10 +210,10 @@ public class RpmVerifyObject
                     final Collection<? extends Filter> filters
                     )
     {
-        if (this.filter != filters) {
-            this.filter.clear();
+        if (filter != filters) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -230,7 +233,7 @@ public class RpmVerifyObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 

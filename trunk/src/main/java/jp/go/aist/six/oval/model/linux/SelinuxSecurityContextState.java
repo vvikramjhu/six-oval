@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The selinuxsecuritycontext state defines the different information 
+ * The selinuxsecuritycontext state defines the different information
  * that can be used to evaluate the specified SELinux security context.
  *
  * @author  Akihito Nakamura, AIST
@@ -85,8 +85,10 @@ public class SelinuxSecurityContextState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.selinuxsecuritycontext;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.selinuxsecuritycontext;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.SELINUXSECURITYCONTEXT;
     }
 
 
@@ -103,7 +105,7 @@ public class SelinuxSecurityContextState
 
     public EntityStateStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 
@@ -120,7 +122,7 @@ public class SelinuxSecurityContextState
 
     public EntityStateStringType getPath()
     {
-        return this.path;
+        return path;
     }
 
 
@@ -137,7 +139,7 @@ public class SelinuxSecurityContextState
 
     public EntityStateStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -154,7 +156,7 @@ public class SelinuxSecurityContextState
 
     public EntityStateIntType getPid()
     {
-        return this.pid;
+        return pid;
     }
 
 
@@ -171,7 +173,7 @@ public class SelinuxSecurityContextState
 
     public EntityStateStringType getUser()
     {
-        return this.user;
+        return user;
     }
 
 
@@ -188,7 +190,7 @@ public class SelinuxSecurityContextState
 
     public EntityStateStringType getRole()
     {
-        return this.role;
+        return role;
     }
 
 
@@ -205,7 +207,7 @@ public class SelinuxSecurityContextState
 
     public EntityStateStringType getType()
     {
-        return this.type;
+        return type;
     }
 
 
@@ -222,7 +224,7 @@ public class SelinuxSecurityContextState
 
     public EntityStateStringType getLowSensitivity()
     {
-        return this.low_sensitivity;
+        return low_sensitivity;
     }
 
 
@@ -239,7 +241,7 @@ public class SelinuxSecurityContextState
 
     public EntityStateStringType getLowCategory()
     {
-        return this.low_category;
+        return low_category;
     }
 
 
@@ -256,7 +258,7 @@ public class SelinuxSecurityContextState
 
     public EntityStateStringType getHighSensitivity()
     {
-        return this.high_sensitivity;
+        return high_sensitivity;
     }
 
 
@@ -273,7 +275,7 @@ public class SelinuxSecurityContextState
 
     public EntityStateStringType getHighCategory()
     {
-        return this.high_category;
+        return high_category;
     }
 
 
@@ -290,7 +292,7 @@ public class SelinuxSecurityContextState
 
     public EntityStateStringType getRawLowSensitivity()
     {
-        return this.rawlow_sensitivity;
+        return rawlow_sensitivity;
     }
 
 
@@ -307,7 +309,7 @@ public class SelinuxSecurityContextState
 
     public EntityStateStringType getRawLowCategory()
     {
-        return this.rawlow_category;
+        return rawlow_category;
     }
 
 
@@ -324,7 +326,7 @@ public class SelinuxSecurityContextState
 
     public EntityStateStringType getRawHighSensitivity()
     {
-        return this.rawhigh_sensitivity;
+        return rawhigh_sensitivity;
     }
 
 
@@ -341,7 +343,7 @@ public class SelinuxSecurityContextState
 
     public EntityStateStringType getRawHighCategory()
     {
-        return this.rawhigh_category;
+        return rawhigh_category;
     }
 
 
