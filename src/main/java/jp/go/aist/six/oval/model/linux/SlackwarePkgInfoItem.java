@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 
@@ -44,8 +44,8 @@ public class SlackwarePkgInfoItem
     private EntityItemStringType  architecture;
     private EntityItemStringType  revision;
 
-    
-    
+
+
     /**
      * Constructor.
      */
@@ -61,8 +61,10 @@ public class SlackwarePkgInfoItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.slackwarepkginfo;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.slackwarepkginfo;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.SLACKWAREPKGINFO;
     }
 
 
@@ -79,7 +81,7 @@ public class SlackwarePkgInfoItem
 
     public EntityItemStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -96,7 +98,7 @@ public class SlackwarePkgInfoItem
 
     public EntityItemStringType getArchitecture()
     {
-        return this.architecture;
+        return architecture;
     }
 
 
@@ -113,7 +115,7 @@ public class SlackwarePkgInfoItem
 
     public EntityItemStringType getVersion()
     {
-        return this.version;
+        return version;
     }
 
 
@@ -130,7 +132,7 @@ public class SlackwarePkgInfoItem
 
     public EntityItemStringType getRevision()
     {
-        return this.revision;
+        return revision;
     }
 
 

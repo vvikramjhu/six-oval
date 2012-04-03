@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The selinuxboolean state defines the different information 
+ * The selinuxboolean state defines the different information
  * that can be used to evaluate the specified SELinux boolean.
  *
  * @author  Akihito Nakamura, AIST
@@ -73,8 +73,10 @@ public class SelinuxBooleanState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.selinuxboolean;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.selinuxboolean;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.SELINUXBOOLEAN;
     }
 
 
@@ -91,7 +93,7 @@ public class SelinuxBooleanState
 
     public EntityStateStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -108,7 +110,7 @@ public class SelinuxBooleanState
 
     public EntityStateBoolType getCurrentStatus()
     {
-        return this.current_status;
+        return current_status;
     }
 
 
@@ -125,7 +127,7 @@ public class SelinuxBooleanState
 
     public EntityStateBoolType getPendingStatus()
     {
-        return this.pending_status;
+        return pending_status;
     }
 
 

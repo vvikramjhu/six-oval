@@ -20,15 +20,15 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 
 /**
- * The selinuxsecuritycontext test is used to check the security context 
+ * The selinuxsecuritycontext test is used to check the security context
  * of a file or process on the local system.
  *
  * @author  Akihito Nakamura, AIST
@@ -66,8 +66,10 @@ public class SelinuxSecurityContextTest
     {
         super( id, version, comment, check );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.selinuxsecuritycontext;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.selinuxsecuritycontext;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.SELINUXSECURITYCONTEXT;
     }
 
 

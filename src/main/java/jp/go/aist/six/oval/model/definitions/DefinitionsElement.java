@@ -143,6 +143,7 @@ public abstract class DefinitionsElement
     //  SIX extension
     //**************************************************************
 
+    //TODO: rename this to "ovalGetGenrator"
     public void generator(
                     final DocumentGenerator generator
                     )

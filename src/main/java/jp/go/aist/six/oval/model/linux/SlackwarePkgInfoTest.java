@@ -20,15 +20,15 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 
 /**
- * The slackware package info test is used to check information 
+ * The slackware package info test is used to check information
  * associated with a given Slackware package.
  *
  * @author  Akihito Nakamura, AIST
@@ -66,8 +66,10 @@ public class SlackwarePkgInfoTest
     {
         super( id, version, comment, check );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.slackwarepkginfo;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.slackwarepkginfo;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.SLACKWAREPKGINFO;
     }
 
 

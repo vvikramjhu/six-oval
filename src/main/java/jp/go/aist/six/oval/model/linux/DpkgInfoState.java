@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateEVRStringType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -49,8 +49,8 @@ public class DpkgInfoState
     private EntityStateAnySimpleType    version;
     private EntityStateEVRStringType    evr;
 
-    
-    
+
+
     /**
      * Constructor.
      */
@@ -67,8 +67,10 @@ public class DpkgInfoState
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.dpkginfo;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.dpkginfo;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.DPKGINFO;
     }
 
 
@@ -85,7 +87,7 @@ public class DpkgInfoState
 
     public EntityStateStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -102,7 +104,7 @@ public class DpkgInfoState
 
     public EntityStateStringType getArch()
     {
-        return this.arch;
+        return arch;
     }
 
 
@@ -119,7 +121,7 @@ public class DpkgInfoState
 
     public EntityStateAnySimpleType getEpoch()
     {
-        return this.epoch;
+        return epoch;
     }
 
 
@@ -136,7 +138,7 @@ public class DpkgInfoState
 
     public EntityStateAnySimpleType getRelease()
     {
-        return this.release;
+        return release;
     }
 
 
@@ -153,11 +155,11 @@ public class DpkgInfoState
 
     public EntityStateAnySimpleType getVersion()
     {
-        return this.version;
+        return version;
     }
 
-    
-    
+
+
     /**
      */
     public void setEvr(
@@ -170,7 +172,7 @@ public class DpkgInfoState
 
     public EntityStateEVRStringType getEvr()
     {
-        return this.evr;
+        return evr;
     }
 
 

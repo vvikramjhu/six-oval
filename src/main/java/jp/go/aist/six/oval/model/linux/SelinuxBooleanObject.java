@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.linux;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -33,7 +33,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The selinuxboolean object is used by an selinuxboolean test 
+ * The selinuxboolean object is used by an selinuxboolean test
  * to define the items to evaluate based on a specified state.
  *
  * @author  Akihito Nakamura, AIST
@@ -79,8 +79,10 @@ public class SelinuxBooleanObject
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.selinuxboolean;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.selinuxboolean;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.SELINUXBOOLEAN;
     }
 
 
@@ -134,7 +136,7 @@ public class SelinuxBooleanObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -151,7 +153,7 @@ public class SelinuxBooleanObject
 
     public EntityObjectStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -162,10 +164,10 @@ public class SelinuxBooleanObject
                     final Collection<? extends Filter> filters
                     )
     {
-        if (this.filter != filters) {
-            this.filter.clear();
+        if (filter != filters) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -185,7 +187,7 @@ public class SelinuxBooleanObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 

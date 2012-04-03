@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The rpmverify state defines the different information 
+ * The rpmverify state defines the different information
  * that can be used to evaluate the specified rpm.
  *
  * @author  Akihito Nakamura, AIST
@@ -39,6 +39,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
  *             Replaced by the rpmverifyfile state and rpmverifypackage state
  *             and will be removed in version 6.0 of the language.
  */
+@Deprecated
 public class RpmVerifyState
     extends StateType
 {
@@ -89,8 +90,10 @@ public class RpmVerifyState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.rpmverify;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.rpmverify;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.RPMVERIFY;
     }
 
 
@@ -107,7 +110,7 @@ public class RpmVerifyState
 
     public EntityStateStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -124,7 +127,7 @@ public class RpmVerifyState
 
     public EntityStateStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 
@@ -141,7 +144,7 @@ public class RpmVerifyState
 
     public EntityStateRpmVerifyResultType getSizeDiffers()
     {
-        return this.size_differs;
+        return size_differs;
     }
 
 
@@ -158,7 +161,7 @@ public class RpmVerifyState
 
     public EntityStateRpmVerifyResultType getModeDiffers()
     {
-        return this.mode_differs;
+        return mode_differs;
     }
 
 
@@ -175,7 +178,7 @@ public class RpmVerifyState
 
     public EntityStateRpmVerifyResultType getMd5Differs()
     {
-        return this.md5_differs;
+        return md5_differs;
     }
 
 
@@ -192,7 +195,7 @@ public class RpmVerifyState
 
     public EntityStateRpmVerifyResultType getDeviceDiffers()
     {
-        return this.device_differs;
+        return device_differs;
     }
 
 
@@ -209,7 +212,7 @@ public class RpmVerifyState
 
     public EntityStateRpmVerifyResultType getLinkMismatch()
     {
-        return this.link_mismatch;
+        return link_mismatch;
     }
 
 
@@ -226,7 +229,7 @@ public class RpmVerifyState
 
     public EntityStateRpmVerifyResultType getOwnershipDiffers()
     {
-        return this.ownership_differs;
+        return ownership_differs;
     }
 
 
@@ -243,7 +246,7 @@ public class RpmVerifyState
 
     public EntityStateRpmVerifyResultType getGroupDiffers()
     {
-        return this.group_differs;
+        return group_differs;
     }
 
 
@@ -260,7 +263,7 @@ public class RpmVerifyState
 
     public EntityStateRpmVerifyResultType getMtimeDiffers()
     {
-        return this.mtime_differs;
+        return mtime_differs;
     }
 
 
@@ -277,7 +280,7 @@ public class RpmVerifyState
 
     public EntityStateRpmVerifyResultType getCapabilitiesDiffer()
     {
-        return this.capabilities_differ;
+        return capabilities_differ;
     }
 
 
@@ -294,7 +297,7 @@ public class RpmVerifyState
 
     public EntityStateBoolType getConfigurationFile()
     {
-        return this.configuration_file;
+        return configuration_file;
     }
 
 
@@ -311,7 +314,7 @@ public class RpmVerifyState
 
     public EntityStateBoolType getDocumentationFile()
     {
-        return this.documentation_file;
+        return documentation_file;
     }
 
 
@@ -328,7 +331,7 @@ public class RpmVerifyState
 
     public EntityStateBoolType getGhostFile()
     {
-        return this.ghost_file;
+        return ghost_file;
     }
 
 
@@ -345,7 +348,7 @@ public class RpmVerifyState
 
     public EntityStateBoolType getLicenseFile()
     {
-        return this.license_file;
+        return license_file;
     }
 
 
@@ -362,7 +365,7 @@ public class RpmVerifyState
 
     public EntityStateBoolType getReadmeFile()
     {
-        return this.readme_file;
+        return readme_file;
     }
 
 

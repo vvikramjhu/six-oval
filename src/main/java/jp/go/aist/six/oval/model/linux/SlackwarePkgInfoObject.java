@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.linux;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -33,7 +33,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The slackwarepkginfo object is used by a slackware package info test 
+ * The slackwarepkginfo object is used by a slackware package info test
  * to define the object to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
@@ -54,7 +54,7 @@ public class SlackwarePkgInfoObject
     //{0..*}
 
 
-    
+
     /**
      * Constructor.
      */
@@ -81,8 +81,10 @@ public class SlackwarePkgInfoObject
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.slackwarepkginfo;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.slackwarepkginfo;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.SLACKWAREPKGINFO;
     }
 
 
@@ -99,7 +101,7 @@ public class SlackwarePkgInfoObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -116,7 +118,7 @@ public class SlackwarePkgInfoObject
 
     public EntityObjectStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -127,10 +129,10 @@ public class SlackwarePkgInfoObject
                     final Collection<? extends Filter> filters
                     )
     {
-        if (this.filter != filters) {
-            this.filter.clear();
+        if (filter != filters) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -150,13 +152,13 @@ public class SlackwarePkgInfoObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 
     public Iterator<Filter> iterateFilter()
     {
-        return this.filter.iterator();
+        return filter.iterator();
     }
 
 
@@ -190,7 +192,7 @@ public class SlackwarePkgInfoObject
     @Override
     public String toString()
     {
-        return "slackwarepkginfo_object[" + super.toString() 
+        return "slackwarepkginfo_object[" + super.toString()
                         + ", set="      + getSet()
                         + ", name="     + getName()
                         + ", filter="   + getFilter()

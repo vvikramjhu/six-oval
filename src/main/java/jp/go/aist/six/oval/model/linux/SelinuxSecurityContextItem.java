@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
@@ -73,8 +73,10 @@ public class SelinuxSecurityContextItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.selinuxsecuritycontext;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.selinuxsecuritycontext;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.SELINUXSECURITYCONTEXT;
     }
 
 
@@ -91,7 +93,7 @@ public class SelinuxSecurityContextItem
 
     public EntityItemStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 
@@ -108,7 +110,7 @@ public class SelinuxSecurityContextItem
 
     public EntityItemStringType getPath()
     {
-        return this.path;
+        return path;
     }
 
 
@@ -125,7 +127,7 @@ public class SelinuxSecurityContextItem
 
     public EntityItemStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -142,7 +144,7 @@ public class SelinuxSecurityContextItem
 
     public EntityItemIntType getPid()
     {
-        return this.pid;
+        return pid;
     }
 
 
@@ -159,7 +161,7 @@ public class SelinuxSecurityContextItem
 
     public EntityItemStringType getUser()
     {
-        return this.user;
+        return user;
     }
 
 
@@ -176,7 +178,7 @@ public class SelinuxSecurityContextItem
 
     public EntityItemStringType getRole()
     {
-        return this.role;
+        return role;
     }
 
 
@@ -193,7 +195,7 @@ public class SelinuxSecurityContextItem
 
     public EntityItemStringType getType()
     {
-        return this.type;
+        return type;
     }
 
 
@@ -210,7 +212,7 @@ public class SelinuxSecurityContextItem
 
     public EntityItemStringType getLowSensitivity()
     {
-        return this.low_sensitivity;
+        return low_sensitivity;
     }
 
 
@@ -227,7 +229,7 @@ public class SelinuxSecurityContextItem
 
     public EntityItemStringType getLowCategory()
     {
-        return this.low_category;
+        return low_category;
     }
 
 
@@ -244,7 +246,7 @@ public class SelinuxSecurityContextItem
 
     public EntityItemStringType getHighSensitivity()
     {
-        return this.high_sensitivity;
+        return high_sensitivity;
     }
 
 
@@ -261,7 +263,7 @@ public class SelinuxSecurityContextItem
 
     public EntityItemStringType getHighCategory()
     {
-        return this.high_category;
+        return high_category;
     }
 
 
@@ -278,7 +280,7 @@ public class SelinuxSecurityContextItem
 
     public EntityItemStringType getRawLowSensitivity()
     {
-        return this.rawlow_sensitivity;
+        return rawlow_sensitivity;
     }
 
 
@@ -295,7 +297,7 @@ public class SelinuxSecurityContextItem
 
     public EntityItemStringType getRawLowCategory()
     {
-        return this.rawlow_category;
+        return rawlow_category;
     }
 
 
@@ -312,7 +314,7 @@ public class SelinuxSecurityContextItem
 
     public EntityItemStringType getRawHighSensitivity()
     {
-        return this.rawhigh_sensitivity;
+        return rawhigh_sensitivity;
     }
 
 
@@ -329,7 +331,7 @@ public class SelinuxSecurityContextItem
 
     public EntityItemStringType getRawHighCategory()
     {
-        return this.rawhigh_category;
+        return rawhigh_category;
     }
 
 

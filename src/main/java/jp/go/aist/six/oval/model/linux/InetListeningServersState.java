@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -30,8 +30,8 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The inetlisteningservers state defines the different information 
- * that can be used to evaluate the specified inet listening server. 
+ * The inetlisteningservers state defines the different information
+ * that can be used to evaluate the specified inet listening server.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -81,8 +81,10 @@ public class InetListeningServersState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.linux;
-        _oval_component_type = OvalComponentType.inetlisteningservers;
+//        _oval_platform_type = OvalPlatformType.linux;
+//        _oval_component_type = OvalComponentType.inetlisteningservers;
+        _oval_family = Family.LINUX;
+        _oval_component = Component.INETLISTENINGSERVERS;
     }
 
 
@@ -99,7 +101,7 @@ public class InetListeningServersState
 
     public EntityStateStringType getProtocol()
     {
-        return this.protocol;
+        return protocol;
     }
 
 
@@ -116,7 +118,7 @@ public class InetListeningServersState
 
     public EntityStateIPAddressStringType getLocalAddress()
     {
-        return this.local_address;
+        return local_address;
     }
 
 
@@ -133,7 +135,7 @@ public class InetListeningServersState
 
     public EntityStateIntType getLocalPort()
     {
-        return this.local_port;
+        return local_port;
     }
 
 
@@ -150,7 +152,7 @@ public class InetListeningServersState
 
     public EntityStateStringType getLocalFullAddress()
     {
-        return this.local_full_address;
+        return local_full_address;
     }
 
 
@@ -167,7 +169,7 @@ public class InetListeningServersState
 
     public EntityStateStringType getProgramName()
     {
-        return this.program_name;
+        return program_name;
     }
 
 
@@ -184,7 +186,7 @@ public class InetListeningServersState
 
     public EntityStateIPAddressStringType getForeignAddress()
     {
-        return this.foreign_address;
+        return foreign_address;
     }
 
 
@@ -201,7 +203,7 @@ public class InetListeningServersState
 
     public EntityStateIntType getForeignPort()
     {
-        return this.foreign_port;
+        return foreign_port;
     }
 
 
@@ -218,7 +220,7 @@ public class InetListeningServersState
 
     public EntityStateStringType getForeignFullAddress()
     {
-        return this.foreign_full_address;
+        return foreign_full_address;
     }
 
 
@@ -235,7 +237,7 @@ public class InetListeningServersState
 
     public EntityStateIntType getPid()
     {
-        return this.pid;
+        return pid;
     }
 
 
@@ -252,7 +254,7 @@ public class InetListeningServersState
 
     public EntityStateIntType getUserId()
     {
-        return this.user_id;
+        return user_id;
     }
 
 
