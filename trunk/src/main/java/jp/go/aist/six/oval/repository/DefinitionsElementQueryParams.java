@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class OvalEntityQueryParams
+public class DefinitionsElementQueryParams
     extends CommonQueryParams
 {
 
@@ -71,7 +71,7 @@ public class OvalEntityQueryParams
     /**
      * Constructor.
      */
-    public OvalEntityQueryParams()
+    public DefinitionsElementQueryParams()
     {
 //        setOrder( DEFAULT_ORDER );
 

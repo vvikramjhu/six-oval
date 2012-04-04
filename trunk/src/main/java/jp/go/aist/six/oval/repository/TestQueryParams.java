@@ -31,11 +31,11 @@ package jp.go.aist.six.oval.repository;
  * @version $Id$
  */
 public class TestQueryParams
-    extends OvalEntityQueryParams
+    extends DefinitionsElementQueryParams
 {
 
     public static class Key
-    extends OvalEntityQueryParams.Key
+    extends DefinitionsElementQueryParams.Key
     {
         public static final String  OBJECT_REF  = "object_ref";
         public static final String  STATE_REF   = "state_ref";
