@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.OvalEntityType;
 import jp.go.aist.six.oval.model.common.OperatorEnumeration;
 import com.google.code.morphia.annotations.Entity;
 
@@ -80,7 +79,7 @@ public class StateType
     {
         super( id, version, comment );
 
-        _oval_entity_type = OvalEntityType.state;
+//        _oval_entity_type = OvalEntityType.state;
 //        _definitions_element_type = DefinitionsElement.Type.state;
     }
 
@@ -153,7 +152,7 @@ public class StateType
     @Override
     public final Type ovalGetElementType()
     {
-        return DefinitionsElement.Type.state;
+        return DefinitionsElement.Type.STATE;
     }
 
 

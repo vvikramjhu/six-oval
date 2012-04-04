@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.definitions;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
@@ -80,7 +79,8 @@ public class ConstantVariable
                     )
     {
         super( id, version, comment, datatype );
-        _oval_component_type = OvalComponentType.constant;
+
+//        _oval_component_type = OvalComponentType.constant;
     }
 
 
@@ -91,7 +91,7 @@ public class ConstantVariable
                     final Collection<? extends ValueType> values
                     )
     {
-        this.value.clear();
+        value.clear();
         if (values != null  &&  values.size() > 0) {
             for (ValueType  value : values) {
                 addValue( value );
@@ -114,13 +114,25 @@ public class ConstantVariable
 
     public Collection<ValueType> getValue()
     {
-        return this.value;
+        return value;
     }
 
 
     public Iterator<ValueType> iterateValue()
     {
-        return this.value.iterator();
+        return value.iterator();
+    }
+
+
+
+    //**************************************************************
+    //  SIX extension
+    //**************************************************************
+
+    @Override
+    public VariableType.Type ovalGetVariableType()
+    {
+        return VariableType.Type.CONSTANT;
     }
 
 

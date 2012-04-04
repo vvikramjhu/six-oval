@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.OvalEntityType;
 import com.google.code.morphia.annotations.Entity;
 
 
@@ -70,7 +69,7 @@ public class SystemObjectType
     {
         super( id, version, comment );
 
-        _oval_entity_type = OvalEntityType.object;
+//        _oval_entity_type = OvalEntityType.object;
 //        _definitions_element_type = DefinitionsElement.Type.object;
     }
 
@@ -113,7 +112,7 @@ public class SystemObjectType
     @Override
     public final Type ovalGetElementType()
     {
-        return DefinitionsElement.Type.object;
+        return DefinitionsElement.Type.OBJECT;
     }
 
 
