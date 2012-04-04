@@ -16,7 +16,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.definitions.VariableType;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
-import jp.go.aist.six.oval.repository.OvalEntityQueryParams;
+import jp.go.aist.six.oval.repository.DefinitionsElementQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.test.oval.core.TestBase;
 import jp.go.aist.six.test.oval.core.XmlFilenameFilter;
@@ -135,30 +135,30 @@ extends TestBase
     public Object[][] provideOvalDefinitionRepositoryEntityQueryParams()
     {
         // order, count
-        OvalEntityQueryParams  params_common1 = new OvalEntityQueryParams();
+        DefinitionsElementQueryParams  params_common1 = new DefinitionsElementQueryParams();
         params_common1.setType( "state" );
         params_common1.setOrder( "-version" );
         params_common1.setCount( "3" );
 
         // order, count, startIndex
-        OvalEntityQueryParams  params_common2 = new OvalEntityQueryParams();
+        DefinitionsElementQueryParams  params_common2 = new DefinitionsElementQueryParams();
         params_common2.setType( "test" );
         params_common2.setOrder( "-version" );
         params_common2.setCount( "3" );
         params_common2.setStartIndex( "2" );
 
         // version
-        OvalEntityQueryParams  params_entity1 = new OvalEntityQueryParams();
+        DefinitionsElementQueryParams  params_entity1 = new DefinitionsElementQueryParams();
         params_entity1.setType( "object" );
         params_entity1.setVersion( "3" );
 
         // component
-        OvalEntityQueryParams  params_entity2 = new OvalEntityQueryParams();
+        DefinitionsElementQueryParams  params_entity2 = new DefinitionsElementQueryParams();
         params_entity2.setType( "test" );
         params_entity2.setComponent( "textfilecontent54" );
 
         // component, platform
-        OvalEntityQueryParams  params_entity3 = new OvalEntityQueryParams();
+        DefinitionsElementQueryParams  params_entity3 = new DefinitionsElementQueryParams();
         params_entity3.setType( "test" );
         params_entity3.setComponent( Component.REGKEYEFFECTIVERIGHTS53.value() );
         params_entity3.setFamily( Family.WINDOWS.value() );

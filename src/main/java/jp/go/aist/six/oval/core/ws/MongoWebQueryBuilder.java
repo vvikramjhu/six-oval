@@ -38,7 +38,7 @@ import jp.go.aist.six.oval.model.results.ResultEnumeration;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
-import jp.go.aist.six.oval.repository.OvalEntityQueryParams;
+import jp.go.aist.six.oval.repository.DefinitionsElementQueryParams;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.OvalResultsQueryParams;
 import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
@@ -557,12 +557,12 @@ implements QueryBuilder
         {
             Map<String, String>  mapping = new HashMap<String, String>();
 
-            mapping.put( OvalEntityQueryParams.Key.ID,                "oval_id" );
-            mapping.put( OvalEntityQueryParams.Key.VERSION,           "oval_version" );
+            mapping.put( DefinitionsElementQueryParams.Key.ID,                "oval_id" );
+            mapping.put( DefinitionsElementQueryParams.Key.VERSION,           "oval_version" );
 
-            mapping.put( OvalEntityQueryParams.Key.SCHEMA,    "_oval_generator.schema_version" );
-            mapping.put( OvalEntityQueryParams.Key.FAMILY,            "_oval_family" );
-            mapping.put( OvalEntityQueryParams.Key.COMPONENT,         "_oval_component" );
+            mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,    "_oval_generator.schema_version" );
+            mapping.put( DefinitionsElementQueryParams.Key.FAMILY,            "_oval_family" );
+            mapping.put( DefinitionsElementQueryParams.Key.COMPONENT,         "_oval_component" );
 
             return mapping;
         }
@@ -632,11 +632,11 @@ implements QueryBuilder
 
 
             Map<String, Handler>  mapping = BasicBuilder._createHandlers();
-            mapping.put( OvalEntityQueryParams.Key.ID,              _DEFAULT_HANDLER_ );
-            mapping.put( OvalEntityQueryParams.Key.VERSION,         version_handler );
-            mapping.put( OvalEntityQueryParams.Key.SCHEMA,  _DEFAULT_HANDLER_ );
-            mapping.put( OvalEntityQueryParams.Key.FAMILY,          family_handler );
-            mapping.put( OvalEntityQueryParams.Key.COMPONENT,       component_handler );
+            mapping.put( DefinitionsElementQueryParams.Key.ID,              _DEFAULT_HANDLER_ );
+            mapping.put( DefinitionsElementQueryParams.Key.VERSION,         version_handler );
+            mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,  _DEFAULT_HANDLER_ );
+            mapping.put( DefinitionsElementQueryParams.Key.FAMILY,          family_handler );
+            mapping.put( DefinitionsElementQueryParams.Key.COMPONENT,       component_handler );
 
             return mapping;
         }

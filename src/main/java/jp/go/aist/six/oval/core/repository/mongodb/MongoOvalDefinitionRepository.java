@@ -33,7 +33,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.definitions.VariableType;
 import jp.go.aist.six.oval.repository.OvalDefinitionRepository;
-import jp.go.aist.six.oval.repository.OvalEntityQueryParams;
+import jp.go.aist.six.oval.repository.DefinitionsElementQueryParams;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.QueryParams;
 
@@ -334,7 +334,7 @@ public class MongoOvalDefinitionRepository
             } else {
                 adjustedParams = QueryParams.class.cast( params.clone() );
             }
-            String  type = adjustedParams.get( OvalEntityQueryParams.Key.TYPE );
+            String  type = adjustedParams.get( DefinitionsElementQueryParams.Key.TYPE );
 
             List<? extends DefinitionsElement>  p_sub_list = null;
             if (type == null) {
@@ -350,7 +350,7 @@ public class MongoOvalDefinitionRepository
                 p_sub_list = _datastore.find( VariableType.class,     adjustedParams );
                 p_list.addAll( p_sub_list );
             } else {
-                adjustedParams.remove( OvalEntityQueryParams.Key.TYPE );
+                adjustedParams.remove( DefinitionsElementQueryParams.Key.TYPE );
                 Class<? extends DefinitionsElement>  objectType = _objectTypeOf( DefinitionsElement.Type.fromValue( type ) );
 //                Class<? extends DefinitionsElement>  objectType = _objectTypeOf( OvalEntityType.valueOf( type ) );
                 try {
@@ -386,7 +386,7 @@ public class MongoOvalDefinitionRepository
             } else {
                 adjustedParams = QueryParams.class.cast( params.clone() );
             }
-            String  type = adjustedParams.get( OvalEntityQueryParams.Key.TYPE );
+            String  type = adjustedParams.get( DefinitionsElementQueryParams.Key.TYPE );
 
             if (type == null) {
                 long  p_sub_count = 0L;
@@ -401,7 +401,7 @@ public class MongoOvalDefinitionRepository
                 p_sub_count = _datastore.count( VariableType.class,     adjustedParams );
                 p_count += p_sub_count;
             } else {
-                adjustedParams.remove( OvalEntityQueryParams.Key.TYPE );
+                adjustedParams.remove( DefinitionsElementQueryParams.Key.TYPE );
                 Class<? extends DefinitionsElement>  objectType = _objectTypeOf( DefinitionsElement.Type.fromValue( type ) );
 //                Class<? extends DefinitionsElement>  objectType = _objectTypeOf( OvalEntityType.valueOf( type ) );
                 try {

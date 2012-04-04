@@ -27,11 +27,11 @@ package jp.go.aist.six.oval.repository;
  * @version $Id$
  */
 public class DefinitionQueryParams
-    extends OvalEntityQueryParams
+    extends DefinitionsElementQueryParams
 {
 
     public static class Key
-    extends OvalEntityQueryParams.Key
+    extends DefinitionsElementQueryParams.Key
     {
         public static final String  DEFINITION_CLASS    = "class";
 //        public static final String  TITLE               = "title"; // Use "searchTerms" instead!!!
