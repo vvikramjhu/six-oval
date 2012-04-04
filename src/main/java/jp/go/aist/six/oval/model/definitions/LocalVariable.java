@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
@@ -81,7 +80,8 @@ public class LocalVariable
                     )
     {
         super( id, version, comment, datatype );
-        _oval_component_type = OvalComponentType.local;
+
+//        _oval_component_type = OvalComponentType.local;
     }
 
 
@@ -98,7 +98,7 @@ public class LocalVariable
 
     public ComponentGroup getComponent()
     {
-        return this.component;
+        return component;
     }
 
 
@@ -125,6 +125,18 @@ public class LocalVariable
     public String xmlGetComponent()
     {
         return _componentXml;
+    }
+
+
+
+    //**************************************************************
+    //  SIX extension
+    //**************************************************************
+
+    @Override
+    public VariableType.Type ovalGetVariableType()
+    {
+        return VariableType.Type.LOCAL;
     }
 
 

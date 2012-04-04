@@ -22,10 +22,8 @@ package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.DocumentGenerator;
 import jp.go.aist.six.oval.model.Element;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalEntityType;
+import jp.go.aist.six.oval.model.OvalEnumeration;
 import jp.go.aist.six.oval.model.OvalId;
-import jp.go.aist.six.oval.model.OvalPlatformType;
 import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.PrePersist;
@@ -48,23 +46,46 @@ public abstract class DefinitionsElement
 {
 
     public enum Type
+    implements OvalEnumeration
     {
-        definition( OvalId.Type.def ),
-        test(       OvalId.Type.tst ),
-        object(     OvalId.Type.obj ),
-        state(      OvalId.Type.ste ),
-        variable(   OvalId.Type.var );
+        DEFINITION( OvalId.Type.def ),
+        TEST(       OvalId.Type.tst ),
+        OBJECT(     OvalId.Type.obj ),
+        STATE(      OvalId.Type.ste ),
+        VARIABLE(   OvalId.Type.var );
 
 
+        ////////////////////////////////////////////////////////////
+
+        /**
+         * A factory method.
+         */
+        public static Type fromValue(
+                        final String value
+                        )
+        {
+            for (Type  e : Type.values()) {
+                if (e.value.equals( value )) {
+                    return e;
+                }
+            }
+
+            throw new IllegalArgumentException( value );
+        }
+
+
+        private String  value;
         private OvalId.Type  id_type = null;
 
 
         Type(
-                        final OvalId.Type value
+                        final OvalId.Type type
                         )
         {
-            id_type = value;
+            value = name().toLowerCase();
+            id_type = type;
         }
+
 
 
         /**
@@ -73,6 +94,23 @@ public abstract class DefinitionsElement
         public OvalId.Type getOvalIdType()
         {
             return id_type;
+        }
+
+
+
+        //OvalEnumeration
+        @Override
+        public String value()
+        {
+            return value;
+        }
+
+
+        // java.lang.String
+        @Override
+        public String toString()
+        {
+            return value;
         }
     }
     //Type
@@ -92,9 +130,9 @@ public abstract class DefinitionsElement
 
     // SIX extension
     protected DocumentGenerator      _oval_generator;
-    protected OvalEntityType     _oval_entity_type;
-    protected OvalPlatformType   _oval_platform_type;
-    protected OvalComponentType  _oval_component_type;
+//    protected OvalEntityType     _oval_entity_type;
+//    protected OvalPlatformType   _oval_platform_type;
+//    protected OvalComponentType  _oval_component_type;
 
 //    @Transient
 //    protected Type  _definitions_element_type;

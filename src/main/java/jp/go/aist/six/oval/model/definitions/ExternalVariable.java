@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.definitions;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 
 
@@ -84,7 +83,8 @@ public class ExternalVariable
                     )
     {
         super( id, version, comment, datatype );
-        _oval_component_type = OvalComponentType.external;
+
+//        _oval_component_type = OvalComponentType.external;
     }
 
 
@@ -95,8 +95,8 @@ public class ExternalVariable
                     final Collection<? extends PossibleValueType> possible_values
                     )
     {
-        if (possible_values != this.possible_value) {
-            this.possible_value.clear();
+        if (possible_values != possible_value) {
+            possible_value.clear();
             if (possible_values != null  &&  possible_values.size() > 0) {
                 for (PossibleValueType  value : possible_values) {
                     addPossibleValue( value );
@@ -120,13 +120,13 @@ public class ExternalVariable
 
     public Collection<PossibleValueType> getPossibleValue()
     {
-        return this.possible_value;
+        return possible_value;
     }
 
 
     public Iterator<PossibleValueType> iteratePossibleValue()
     {
-        return this.possible_value.iterator();
+        return possible_value.iterator();
     }
 
 
@@ -137,8 +137,8 @@ public class ExternalVariable
                     final Collection<? extends PossibleRestrictionType> restrictions
                     )
     {
-        if (restrictions != this.possible_restriction) {
-            this.possible_restriction.clear();
+        if (restrictions != possible_restriction) {
+            possible_restriction.clear();
             if (restrictions != null  &&  restrictions.size() > 0) {
                 for (PossibleRestrictionType  restriction : restrictions) {
                     addPossibleRestriction( restriction );
@@ -156,21 +156,33 @@ public class ExternalVariable
             return false;
         }
 
-        return this.possible_restriction.add( restriction );
+        return possible_restriction.add( restriction );
     }
 
 
     public Collection<PossibleRestrictionType> getPossibleRestriction()
     {
-        return this.possible_restriction;
+        return possible_restriction;
     }
 
 
     public Iterator<PossibleRestrictionType> iteratePossibleRestriction()
     {
-        return this.possible_restriction.iterator();
+        return possible_restriction.iterator();
     }
 
+
+
+
+    //**************************************************************
+    //  SIX extension
+    //**************************************************************
+
+    @Override
+    public VariableType.Type ovalGetVariableType()
+    {
+        return VariableType.Type.EXTERNAL;
+    }
 
 
 

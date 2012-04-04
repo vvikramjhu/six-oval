@@ -23,7 +23,6 @@ package jp.go.aist.six.oval.model.definitions;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalEntityType;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.common.ExistenceEnumeration;
 import jp.go.aist.six.oval.model.common.OperatorEnumeration;
@@ -112,8 +111,8 @@ public class TestType
     {
         super( id, version, comment );
         setCheck( check );
-        _oval_entity_type = OvalEntityType.test;
 
+//        _oval_entity_type = OvalEntityType.test;
 //        _definitions_element_type = DefinitionsElement.Type.test;
     }
 
@@ -357,7 +356,7 @@ public class TestType
     @Override
     public final Type ovalGetElementType()
     {
-        return DefinitionsElement.Type.test;
+        return DefinitionsElement.Type.TEST;
     }
 
 

@@ -223,7 +223,7 @@ public class DefinitionType
     @Override
     public final Type ovalGetElementType()
     {
-        return DefinitionsElement.Type.definition;
+        return DefinitionsElement.Type.DEFINITION;
     }
 
 //    /**

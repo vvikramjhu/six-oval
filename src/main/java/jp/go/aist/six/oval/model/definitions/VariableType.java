@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import jp.go.aist.six.oval.model.OvalEntityType;
 import jp.go.aist.six.oval.model.OvalEnumeration;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 import com.google.code.morphia.annotations.Entity;
@@ -45,9 +44,9 @@ public class VariableType
     public enum Type
     implements OvalEnumeration
     {
-        CONSTANT(   "constant" ),
-        LOCAL(      "local"    ),
-        EXTERNAL(   "external" );
+        CONSTANT,
+        LOCAL,
+        EXTERNAL;
 
 
         /**
@@ -57,6 +56,8 @@ public class VariableType
                         final String value
                         )
         {
+//            return valueOf( value.toUpperCase() );
+
             for (Type  e : Type.values()) {
                 if (e.value.equals( value )) {
                     return e;
@@ -75,11 +76,9 @@ public class VariableType
         /**
          * Constructor.
          */
-        Type(
-                        final String value
-                        )
+        Type()
         {
-            this.value = value;
+            value = name().toLowerCase();
         }
 
 
@@ -92,10 +91,6 @@ public class VariableType
 
 
 
-        //**************************************************************
-        //  java.lang.Object
-        //**************************************************************
-
         @Override
         public String toString()
         {
@@ -105,6 +100,8 @@ public class VariableType
     //Type
 
 
+
+    ////////////////////////////////////////////////////////////////
 
     private DatatypeEnumeration  datatype;
     //{required}
@@ -149,7 +146,7 @@ public class VariableType
         super( id, version, comment );
         setDatatype( datatype );
 
-        _oval_entity_type = OvalEntityType.variable;
+//        _oval_entity_type = OvalEntityType.variable;
 //        _definitions_element_type = DefinitionsElement.Type.variable;
     }
 
@@ -179,13 +176,16 @@ public class VariableType
     @Override
     public final DefinitionsElement.Type ovalGetElementType()
     {
-        return DefinitionsElement.Type.variable;
+        return DefinitionsElement.Type.VARIABLE;
     }
 
 
-    public final Type ovalGetVariableType()
+    public VariableType.Type ovalGetVariableType()
     {
-        return Type.LOCAL;
+        throw new UnsupportedOperationException(
+                        "concrete VariableType must return its type.");
+
+//        return Type.LOCAL;
     }
 
 
