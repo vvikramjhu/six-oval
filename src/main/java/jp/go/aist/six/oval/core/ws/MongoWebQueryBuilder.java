@@ -27,8 +27,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 import jp.go.aist.six.oval.core.repository.mongodb.QueryBuilder;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
@@ -561,8 +561,8 @@ implements QueryBuilder
             mapping.put( OvalEntityQueryParams.Key.VERSION,           "oval_version" );
 
             mapping.put( OvalEntityQueryParams.Key.SCHEMA_VERSION,    "_oval_generator.schema_version" );
-            mapping.put( OvalEntityQueryParams.Key.PLATFORM,          "_oval_platform_type" );
-            mapping.put( OvalEntityQueryParams.Key.COMPONENT,         "_oval_component_type" );
+            mapping.put( OvalEntityQueryParams.Key.FAMILY,            "_oval_family" );
+            mapping.put( OvalEntityQueryParams.Key.COMPONENT,         "_oval_component" );
 
             return mapping;
         }
@@ -574,7 +574,7 @@ implements QueryBuilder
 
         protected static Map<String, Handler> _createHandlers()
         {
-            Handler  versionHandler = new Handler()
+            Handler  version_handler = new Handler()
             {
                 @Override
                 public void build(
@@ -593,7 +593,7 @@ implements QueryBuilder
             };
 
 
-            Handler  ovalComponentTypeHandler = new Handler()
+            Handler  component_handler = new Handler()
             {
                 @Override
                 public void build(
@@ -606,13 +606,13 @@ implements QueryBuilder
                         return;
                     }
 
-                    OvalComponentType  component = OvalComponentType.valueOf( value );
+                    Component  component = Component.fromValue( value );
 //                    _LOG_.debug( "component type handler: value=" + value + ", component=" + component );
                     query.filter( field, component );
                 }
             };
 
-            Handler  ovalPlatformTypeHandler = new FilterHandler()
+            Handler  family_handler = new FilterHandler()
             {
                 @Override
                 public void build(
@@ -625,18 +625,18 @@ implements QueryBuilder
                         return;
                     }
 
-                    OvalPlatformType  platform = OvalPlatformType.valueOf( value );
-                    query.filter( field, platform );
+                    Family  family = Family.fromValue( value );
+                    query.filter( field, family );
                 }
             };
 
 
             Map<String, Handler>  mapping = BasicBuilder._createHandlers();
             mapping.put( OvalEntityQueryParams.Key.ID,              _DEFAULT_HANDLER_ );
-            mapping.put( OvalEntityQueryParams.Key.VERSION,         versionHandler );
+            mapping.put( OvalEntityQueryParams.Key.VERSION,         version_handler );
             mapping.put( OvalEntityQueryParams.Key.SCHEMA_VERSION,  _DEFAULT_HANDLER_ );
-            mapping.put( OvalEntityQueryParams.Key.PLATFORM,        ovalPlatformTypeHandler );
-            mapping.put( OvalEntityQueryParams.Key.COMPONENT,       ovalComponentTypeHandler );
+            mapping.put( OvalEntityQueryParams.Key.FAMILY,          family_handler );
+            mapping.put( OvalEntityQueryParams.Key.COMPONENT,       component_handler );
 
             return mapping;
         }
@@ -683,8 +683,7 @@ implements QueryBuilder
 
             mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    "class" );
             mapping.put( DefinitionQueryParams.Key.TITLE,               "metadata.title" );
-            mapping.put( DefinitionQueryParams.Key.FAMILY,              "metadata.affected.family" );
-
+            mapping.put( DefinitionQueryParams.Key.FAMILY,              "metadata.affected.family" );   //override
             mapping.put( DefinitionQueryParams.Key.PLATFORM,            "metadata.affected.platform" ); //override
             mapping.put( DefinitionQueryParams.Key.PRODUCT,             "metadata.affected.product" );
             mapping.put( DefinitionQueryParams.Key.REF_ID,              "metadata.reference.ref_id" );

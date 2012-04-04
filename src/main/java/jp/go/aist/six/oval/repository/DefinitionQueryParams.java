@@ -35,8 +35,8 @@ public class DefinitionQueryParams
     {
         public static final String  DEFINITION_CLASS    = "definitionClass";
         public static final String  TITLE               = "title";
-        public static final String  FAMILY              = "family";
-//        public static final String  PLATFORM            = "platform"; //override
+//        public static final String  FAMILY              = "family";   //override
+        public static final String  PLATFORM            = "platform";
         public static final String  PRODUCT             = "product";
         public static final String  REF_SOURCE          = "refSource";
         public static final String  REF_ID              = "refId";
@@ -88,20 +88,20 @@ public class DefinitionQueryParams
 
 
 
-    /**
-     */
-    public void setFamily(
-                    final String family
-    )
-    {
-        set( Key.FAMILY, family );
-    }
-
-
-    public String getFamily()
-    {
-        return get( Key.FAMILY );
-    }
+//    /**
+//     */
+//    public void setFamily(
+//                    final String family
+//    )
+//    {
+//        set( Key.FAMILY, family );
+//    }
+//
+//
+//    public String getFamily()
+//    {
+//        return get( Key.FAMILY );
+//    }
 
 
 
@@ -122,22 +122,20 @@ public class DefinitionQueryParams
 
 
 
-//    /**
-//     */
-//    @Override
-//    public void setPlatform(
-//                    final String platform
-//    )
-//    {
-//        set( Key.PLATFORM, platform );
-//    }
-//
-//
-//    @Override
-//    public String getPlatform()
-//    {
-//        return get( Key.PLATFORM );
-//    }
+    /**
+     */
+    public void setPlatform(
+                    final String platform
+    )
+    {
+        set( Key.PLATFORM, platform );
+    }
+
+
+    public String getPlatform()
+    {
+        return get( Key.PLATFORM );
+    }
 
 
 

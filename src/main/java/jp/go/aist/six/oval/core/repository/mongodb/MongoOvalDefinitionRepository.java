@@ -24,11 +24,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumMap;
 import java.util.List;
-import jp.go.aist.six.oval.model.OvalEntityType;
 import jp.go.aist.six.oval.model.OvalId;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
-import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.StateType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.definitions.TestType;
@@ -260,15 +259,26 @@ public class MongoOvalDefinitionRepository
     /**
      */
     private Class<? extends DefinitionsElement> _objectTypeOf(
-                    final OvalEntityType entity_type
+                    final DefinitionsElement.Type entity_type
                     )
     throws OvalRepositoryException
     {
-        OvalId.Type  id_type = entity_type.idType();
+        OvalId.Type  id_type = entity_type.getOvalIdType();
         Class<? extends DefinitionsElement>  objectType = _TYPE_MAP_.get( id_type );
 
         return objectType;
     }
+
+//    private Class<? extends DefinitionsElement> _objectTypeOf(
+//                    final OvalEntityType entity_type
+//                    )
+//    throws OvalRepositoryException
+//    {
+//        OvalId.Type  id_type = entity_type.idType();
+//        Class<? extends DefinitionsElement>  objectType = _TYPE_MAP_.get( id_type );
+//
+//        return objectType;
+//    }
 
 
 
@@ -341,7 +351,8 @@ public class MongoOvalDefinitionRepository
                 p_list.addAll( p_sub_list );
             } else {
                 adjustedParams.remove( OvalEntityQueryParams.Key.TYPE );
-                Class<? extends DefinitionsElement>  objectType = _objectTypeOf( OvalEntityType.valueOf( type ) );
+                Class<? extends DefinitionsElement>  objectType = _objectTypeOf( DefinitionsElement.Type.fromValue( type ) );
+//                Class<? extends DefinitionsElement>  objectType = _objectTypeOf( OvalEntityType.valueOf( type ) );
                 try {
                     p_sub_list = _datastore.find( objectType, adjustedParams );
                     p_list = new ArrayList<DefinitionsElement>( p_sub_list );
@@ -391,7 +402,8 @@ public class MongoOvalDefinitionRepository
                 p_count += p_sub_count;
             } else {
                 adjustedParams.remove( OvalEntityQueryParams.Key.TYPE );
-                Class<? extends DefinitionsElement>  objectType = _objectTypeOf( OvalEntityType.valueOf( type ) );
+                Class<? extends DefinitionsElement>  objectType = _objectTypeOf( DefinitionsElement.Type.fromValue( type ) );
+//                Class<? extends DefinitionsElement>  objectType = _objectTypeOf( OvalEntityType.valueOf( type ) );
                 try {
                     p_count = _datastore.count( objectType, adjustedParams );
                 } catch (Exception ex) {
