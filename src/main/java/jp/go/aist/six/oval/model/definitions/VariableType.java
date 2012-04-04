@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.model.definitions;
 
 import jp.go.aist.six.oval.model.OvalEntityType;
+import jp.go.aist.six.oval.model.OvalEnumeration;
 import jp.go.aist.six.oval.model.common.DatatypeEnumeration;
 import com.google.code.morphia.annotations.Entity;
 
@@ -40,6 +41,70 @@ import com.google.code.morphia.annotations.Entity;
 public class VariableType
     extends DefinitionsComponent
 {
+
+    public enum Type
+    implements OvalEnumeration
+    {
+        CONSTANT(   "constant" ),
+        LOCAL(      "local"    ),
+        EXTERNAL(   "external" );
+
+
+        /**
+         * A factory method.
+         */
+        public static Type fromValue(
+                        final String value
+                        )
+        {
+            for (Type  e : Type.values()) {
+                if (e.value.equals( value )) {
+                    return e;
+                }
+            }
+
+            throw new IllegalArgumentException( value );
+        }
+
+
+
+        private String  value = null;
+
+
+
+        /**
+         * Constructor.
+         */
+        Type(
+                        final String value
+                        )
+        {
+            this.value = value;
+        }
+
+
+
+        @Override
+        public String value()
+        {
+            return value;
+        }
+
+
+
+        //**************************************************************
+        //  java.lang.Object
+        //**************************************************************
+
+        @Override
+        public String toString()
+        {
+            return value;
+        }
+    }
+    //Type
+
+
 
     private DatatypeEnumeration  datatype;
     //{required}
@@ -112,9 +177,15 @@ public class VariableType
     //**************************************************************
 
     @Override
-    public final Type ovalGetElementType()
+    public final DefinitionsElement.Type ovalGetElementType()
     {
         return DefinitionsElement.Type.variable;
+    }
+
+
+    public final Type ovalGetVariableType()
+    {
+        return Type.LOCAL;
     }
 
 
