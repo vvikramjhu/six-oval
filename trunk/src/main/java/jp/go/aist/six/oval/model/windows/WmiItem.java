@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
@@ -73,8 +73,10 @@ public class WmiItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.wmi;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.wmi;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.WMI;
     }
 
 
@@ -91,7 +93,7 @@ public class WmiItem
 
     public EntityItemStringType getNamespace()
     {
-        return this.namespace;
+        return namespace;
     }
 
 
@@ -108,7 +110,7 @@ public class WmiItem
 
     public EntityItemStringType getWql()
     {
-        return this.wql;
+        return wql;
     }
 
 
@@ -119,10 +121,10 @@ public class WmiItem
                     final Collection<? extends EntityItemAnySimpleType> results
                     )
     {
-        if (results != this.result ) {
-            this.result.clear();
+        if (results != result ) {
+            result.clear();
             if (results != null  &&  results.size() > 0) {
-                this.result.addAll( results );
+                result.addAll( results );
             }
         }
     }
@@ -130,13 +132,13 @@ public class WmiItem
 
     public Collection<EntityItemAnySimpleType> getResult()
     {
-        return this.result;
+        return result;
     }
 
 
     public Iterator<EntityItemAnySimpleType> iterateResult()
     {
-        return this.result.iterator();
+        return result.iterator();
     }
 
 

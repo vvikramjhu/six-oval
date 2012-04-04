@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
@@ -98,8 +98,10 @@ public class AuditEventPolicyState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.auditeventpolicy;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.auditeventpolicy;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.AUDITEVENTPOLICY;
     }
 
 
@@ -116,7 +118,7 @@ public class AuditEventPolicyState
 
     public EntityStateAuditType getAccountLogon()
     {
-        return this.account_logon;
+        return account_logon;
     }
 
 
@@ -133,7 +135,7 @@ public class AuditEventPolicyState
 
     public EntityStateAuditType getAccountManagement()
     {
-        return this.account_management;
+        return account_management;
     }
 
 
@@ -150,7 +152,7 @@ public class AuditEventPolicyState
 
     public EntityStateAuditType getDetailedTracking()
     {
-        return this.detailed_tracking;
+        return detailed_tracking;
     }
 
 
@@ -167,7 +169,7 @@ public class AuditEventPolicyState
 
     public EntityStateAuditType getDirectoryServiceAccess()
     {
-        return this.directory_service_access;
+        return directory_service_access;
     }
 
 
@@ -184,7 +186,7 @@ public class AuditEventPolicyState
 
     public EntityStateAuditType getLogon()
     {
-        return this.logon;
+        return logon;
     }
 
 
@@ -201,7 +203,7 @@ public class AuditEventPolicyState
 
     public EntityStateAuditType getObjectAccess()
     {
-        return this.object_access;
+        return object_access;
     }
 
 
@@ -218,7 +220,7 @@ public class AuditEventPolicyState
 
     public EntityStateAuditType getPolicyChange()
     {
-        return this.policy_change;
+        return policy_change;
     }
 
 
@@ -235,7 +237,7 @@ public class AuditEventPolicyState
 
     public EntityStateAuditType getPrivilegeUse()
     {
-        return this.privilege_use;
+        return privilege_use;
     }
 
 
@@ -252,7 +254,7 @@ public class AuditEventPolicyState
 
     public EntityStateAuditType getSystem()
     {
-        return this.system;
+        return system;
     }
 
 

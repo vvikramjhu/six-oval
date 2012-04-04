@@ -20,15 +20,15 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The sid_sid state defines the different metadata 
+ * The sid_sid state defines the different metadata
  * associate with a Windows trustee (identified by SID).
  *
  * @author  Akihito Nakamura, AIST
@@ -72,8 +72,10 @@ public class SidSidState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.sid_sid;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.sid_sid;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.SID_SID;
     }
 
 
@@ -90,7 +92,7 @@ public class SidSidState
 
     public EntityStateStringType getTrusteeSid()
     {
-        return this.trustee_sid;
+        return trustee_sid;
     }
 
 
@@ -107,7 +109,7 @@ public class SidSidState
 
     public EntityStateStringType getTrusteeName()
     {
-        return this.trustee_name;
+        return trustee_name;
     }
 
 
@@ -124,7 +126,7 @@ public class SidSidState
 
     public EntityStateStringType getTrusteeDomain()
     {
-        return this.trustee_domain;
+        return trustee_domain;
     }
 
 

@@ -20,16 +20,16 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The wuaupdatesearcher state defines entities that can be tested 
- * related to a uaupdatesearcher object. 
+ * The wuaupdatesearcher state defines entities that can be tested
+ * related to a uaupdatesearcher object.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -71,8 +71,10 @@ public class WuaUpdateSearcherState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.wuaupdatesearcher;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.wuaupdatesearcher;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.WUAUPDATESEARCHER;
     }
 
 
@@ -89,7 +91,7 @@ public class WuaUpdateSearcherState
 
     public EntityStateStringType getSearchCriteria()
     {
-        return this.search_criteria;
+        return search_criteria;
     }
 
 
@@ -106,7 +108,7 @@ public class WuaUpdateSearcherState
 
     public EntityStateStringType getUpdateId()
     {
-        return this.update_id;
+        return update_id;
     }
 
 

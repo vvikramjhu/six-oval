@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The process state defines the different metadata 
+ * The process state defines the different metadata
  * associate with a Windows process.
  *
  * @author  Akihito Nakamura, AIST
@@ -39,6 +39,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
  *             Replaced by the process58 object and
  *             will be removed in a future version of the language.
  */
+@Deprecated
 public class ProcessState
     extends StateType
 {
@@ -79,8 +80,10 @@ public class ProcessState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.process;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.process;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.PROCESS;
     }
 
 
@@ -97,7 +100,7 @@ public class ProcessState
 
     public EntityStateStringType getCommandLine()
     {
-        return this.command_line;
+        return command_line;
     }
 
 
@@ -114,7 +117,7 @@ public class ProcessState
 
     public EntityStateIntType getPid()
     {
-        return this.pid;
+        return pid;
     }
 
 
@@ -131,7 +134,7 @@ public class ProcessState
 
     public EntityStateIntType getPpid()
     {
-        return this.ppid;
+        return ppid;
     }
 
 
@@ -148,7 +151,7 @@ public class ProcessState
 
     public EntityStateStringType getPriority()
     {
-        return this.priority;
+        return priority;
     }
 
 
@@ -165,7 +168,7 @@ public class ProcessState
 
     public EntityStateStringType getImagePath()
     {
-        return this.image_path;
+        return image_path;
     }
 
 
@@ -182,7 +185,7 @@ public class ProcessState
 
     public EntityStateStringType getCurrentDir()
     {
-        return this.current_dir;
+        return current_dir;
     }
 
 

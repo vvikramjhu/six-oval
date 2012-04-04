@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
@@ -32,8 +32,8 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * The wuaupdatesearcher item outlines information defined 
- * through the Search method of the IUpdateSearcher interface 
+ * The wuaupdatesearcher item outlines information defined
+ * through the Search method of the IUpdateSearcher interface
  * as part of Microsoft's WUA (Windows Update Agent) API.
  *
  * @author  Akihito Nakamura, AIST
@@ -46,7 +46,7 @@ public class WuaUpdateSearcherItem
 
     private EntityItemStringType  search_criteria;
     //{0..1}
-    
+
     private final Collection<EntityItemStringType>  update_id = new ArrayList<EntityItemStringType>();
     //{0..*}
 
@@ -75,9 +75,11 @@ public class WuaUpdateSearcherItem
                     )
     {
         super( id, status );
-        
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.wuaupdatesearcher;
+
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.wuaupdatesearcher;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.WUAUPDATESEARCHER;
     }
 
 
@@ -94,7 +96,7 @@ public class WuaUpdateSearcherItem
 
     public EntityItemStringType getSearchCriteria()
     {
-        return this.search_criteria;
+        return search_criteria;
     }
 
 
@@ -105,10 +107,10 @@ public class WuaUpdateSearcherItem
                     final Collection<? extends EntityItemStringType> update_ids
                     )
     {
-        if (this.update_id != update_ids) {
-            this.update_id.clear();
+        if (update_id != update_ids) {
+            update_id.clear();
             if (update_ids != null  &&  update_ids.size() > 0) {
-                this.update_id.addAll( update_ids );
+                update_id.addAll( update_ids );
             }
         }
     }
@@ -128,7 +130,7 @@ public class WuaUpdateSearcherItem
 
     public Collection<EntityItemStringType> getUpdateId()
     {
-        return this.update_id;
+        return update_id;
     }
 
 

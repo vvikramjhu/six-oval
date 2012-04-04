@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The volume state defines the different metadata 
+ * The volume state defines the different metadata
  * associate with a storage volume in Windows.
  *
  * @author  Akihito Nakamura, AIST
@@ -91,8 +91,10 @@ public class VolumeState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.volume;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.volume;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.VOLUME;
     }
 
 
@@ -109,7 +111,7 @@ public class VolumeState
 
     public EntityStateStringType getRootpath()
     {
-        return this.rootpath;
+        return rootpath;
     }
 
 
@@ -126,7 +128,7 @@ public class VolumeState
 
     public EntityStateStringType getFileSystem()
     {
-        return this.file_system;
+        return file_system;
     }
 
 
@@ -143,7 +145,7 @@ public class VolumeState
 
     public EntityStateStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -160,7 +162,7 @@ public class VolumeState
 
     public EntityStateDriveTypeType getDriveType()
     {
-        return this.drive_type;
+        return drive_type;
     }
 
 
@@ -177,7 +179,7 @@ public class VolumeState
 
     public EntityStateIntType getVolumeMaxComponentLength()
     {
-        return this.volume_max_component_length;
+        return volume_max_component_length;
     }
 
 
@@ -194,7 +196,7 @@ public class VolumeState
 
     public EntityStateIntType getSerialNumber()
     {
-        return this.serial_number;
+        return serial_number;
     }
 
 
@@ -211,7 +213,7 @@ public class VolumeState
 
     public EntityStateBoolType getFileCaseSensitiveSearch()
     {
-        return this.file_case_sensitive_search;
+        return file_case_sensitive_search;
     }
 
 
@@ -228,7 +230,7 @@ public class VolumeState
 
     public EntityStateBoolType getFileCasePreservedNames()
     {
-        return this.file_case_preserved_names;
+        return file_case_preserved_names;
     }
 
 
@@ -245,7 +247,7 @@ public class VolumeState
 
     public EntityStateBoolType getFileUnicodeOnDisk()
     {
-        return this.file_unicode_on_disk;
+        return file_unicode_on_disk;
     }
 
 
@@ -262,7 +264,7 @@ public class VolumeState
 
     public EntityStateBoolType getFilePersistentAcls()
     {
-        return this.file_persistent_acls;
+        return file_persistent_acls;
     }
 
 
@@ -279,7 +281,7 @@ public class VolumeState
 
     public EntityStateBoolType getFileFileCompression()
     {
-        return this.file_file_compression;
+        return file_file_compression;
     }
 
 
@@ -296,7 +298,7 @@ public class VolumeState
 
     public EntityStateBoolType getFileVolumeQuotas()
     {
-        return this.file_volume_quotas;
+        return file_volume_quotas;
     }
 
 
@@ -313,7 +315,7 @@ public class VolumeState
 
     public EntityStateBoolType getFileSupportsSparseFiles()
     {
-        return this.file_supports_sparse_files;
+        return file_supports_sparse_files;
     }
 
 
@@ -330,7 +332,7 @@ public class VolumeState
 
     public EntityStateBoolType getFileSupportsReparsePoints()
     {
-        return this.file_supports_reparse_points;
+        return file_supports_reparse_points;
     }
 
 
@@ -347,7 +349,7 @@ public class VolumeState
 
     public EntityStateBoolType getFileSupportsRemoteStorage()
     {
-        return this.file_supports_remote_storage;
+        return file_supports_remote_storage;
     }
 
 
@@ -364,7 +366,7 @@ public class VolumeState
 
     public EntityStateBoolType getFileVolumeIsCompressed()
     {
-        return this.file_volume_is_compressed;
+        return file_volume_is_compressed;
     }
 
 
@@ -381,7 +383,7 @@ public class VolumeState
 
     public EntityStateBoolType getFileSupportsObjectIds()
     {
-        return this.file_supports_object_ids;
+        return file_supports_object_ids;
     }
 
 
@@ -398,7 +400,7 @@ public class VolumeState
 
     public EntityStateBoolType getFileSupportsEncryption()
     {
-        return this.file_supports_encryption;
+        return file_supports_encryption;
     }
 
 
@@ -415,7 +417,7 @@ public class VolumeState
 
     public EntityStateBoolType getFileNamedStreams()
     {
-        return this.file_named_streams;
+        return file_named_streams;
     }
 
 
@@ -432,7 +434,7 @@ public class VolumeState
 
     public EntityStateBoolType getFileReadOnlyVolume()
     {
-        return this.file_read_only_volume;
+        return file_read_only_volume;
     }
 
 

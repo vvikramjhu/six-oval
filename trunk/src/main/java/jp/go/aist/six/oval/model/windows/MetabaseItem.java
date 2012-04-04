@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
@@ -88,8 +88,10 @@ public class MetabaseItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.metabase;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.metabase;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.METABASE;
     }
 
 
@@ -107,7 +109,7 @@ public class MetabaseItem
 
     public EntityItemStringType getKey()
     {
-        return this.key;
+        return key;
 //        return (EntityItemStringType)_properties.get( MetabaseProperty.KEY );
     }
 
@@ -128,7 +130,7 @@ public class MetabaseItem
 
     public EntityItemIntType getObjectID()
     {
-        return this.id;
+        return id;
 //        return (EntityItemIntType)_properties.get( MetabaseProperty.ID );
     }
 
@@ -147,7 +149,7 @@ public class MetabaseItem
 
     public EntityItemStringType getObjectName()
     {
-        return this.name;
+        return name;
 //        return (EntityItemStringType)_properties.get( MetabaseProperty.NAME );
     }
 
@@ -166,7 +168,7 @@ public class MetabaseItem
 
     public EntityItemStringType getUserType()
     {
-        return this.user_type;
+        return user_type;
 //        return (EntityItemStringType)_properties.get( MetabaseProperty.USER_TYPE );
     }
 
@@ -185,7 +187,7 @@ public class MetabaseItem
 
     public EntityItemStringType getDataType()
     {
-        return this.data_type;
+        return data_type;
 //        return (EntityItemStringType)_properties.get( MetabaseProperty.DATA_TYPE );
     }
 
@@ -208,13 +210,13 @@ public class MetabaseItem
 
     public Collection<EntityItemAnySimpleType> getData()
     {
-        return this.data;
+        return data;
     }
 
 
     public Iterator<EntityItemAnySimpleType> iterateData()
     {
-        return this.data.iterator();
+        return data.iterator();
     }
 
 

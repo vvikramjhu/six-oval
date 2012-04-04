@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -131,8 +131,10 @@ public class RegistryObject
         setKey( key );
         setName( name );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.registry;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.registry;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.REGISTRY;
     }
 
 
@@ -149,7 +151,7 @@ public class RegistryObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -166,7 +168,7 @@ public class RegistryObject
 
     public RegistryBehaviors getBehaviors()
     {
-        return this.behaviors;
+        return behaviors;
     }
 
 
@@ -193,7 +195,7 @@ public class RegistryObject
 
     public EntityObjectRegistryHiveType getHive()
     {
-        return this.hive;
+        return hive;
 //        return _properties.getProperty(
 //                        RegistryProperty.HIVE, EntityObjectRegistryHiveType.class );
     }
@@ -220,7 +222,7 @@ public class RegistryObject
 
     public EntityObjectStringType getKey()
     {
-        return this.key;
+        return key;
 //        return _properties.getProperty(
 //                        RegistryProperty.KEY, EntityObjectStringType.class );
     }
@@ -258,7 +260,7 @@ public class RegistryObject
 
     public EntityObjectStringType getName()
     {
-        return this.name;
+        return name;
 //        return _properties.getProperty(
 //                        RegistryProperty.NAME, EntityObjectStringType.class );
     }
@@ -280,10 +282,10 @@ public class RegistryObject
                     final Collection<? extends Filter> filterList
                     )
     {
-        if (filterList != this.filter) {
-            this.filter.clear();
+        if (filterList != filter) {
+            filter.clear();
             if (filterList != null  &&  filterList.size() > 0) {
-                this.filter.addAll( filterList );
+                filter.addAll( filterList );
             }
         }
     }
@@ -291,13 +293,13 @@ public class RegistryObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 
     public Iterator<Filter> iterateFilter()
     {
-        return this.filter.iterator();
+        return filter.iterator();
     }
 
 

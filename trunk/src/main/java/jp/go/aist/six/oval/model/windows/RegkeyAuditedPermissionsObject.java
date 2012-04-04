@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The regkeyauditedpermissions object is used by a registry key audited permissions test 
+ * The regkeyauditedpermissions object is used by a registry key audited permissions test
  * to define the objects used to evalutate against the specified state.
  *
  * @author  Akihito Nakamura, AIST
@@ -39,6 +39,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
  *             Replaced by the regkeyauditedpermissions53 object and
  *             will be removed in version 6.0 of the language.
  */
+@Deprecated
 public class RegkeyAuditedPermissionsObject
     extends SystemObjectType
 {
@@ -86,8 +87,10 @@ public class RegkeyAuditedPermissionsObject
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.regkeyauditedpermissions;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.regkeyauditedpermissions;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.REGKEYAUDITEDPERMISSIONS;
     }
 
 
@@ -141,7 +144,7 @@ public class RegkeyAuditedPermissionsObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -158,7 +161,7 @@ public class RegkeyAuditedPermissionsObject
 
     public RegkeyAuditPermissionsBehaviors getBehaviors()
     {
-        return this.behaviors;
+        return behaviors;
     }
 
 
@@ -175,7 +178,7 @@ public class RegkeyAuditedPermissionsObject
 
     public EntityObjectRegistryHiveType getHive()
     {
-        return this.hive;
+        return hive;
     }
 
 
@@ -192,7 +195,7 @@ public class RegkeyAuditedPermissionsObject
 
     public EntityObjectStringType getKey()
     {
-        return this.key;
+        return key;
     }
 
 
@@ -209,7 +212,7 @@ public class RegkeyAuditedPermissionsObject
 
     public EntityObjectStringType getTrusteeName()
     {
-        return this.trustee_name;
+        return trustee_name;
     }
 
 

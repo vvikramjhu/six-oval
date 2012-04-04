@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The sharedresource state defines the different metadata 
+ * The sharedresource state defines the different metadata
  * associated with a Windows shared resource.
  *
  * @author  Akihito Nakamura, AIST
@@ -56,7 +56,7 @@ public class SharedResourceState
     private EntityStateBoolType     access_perm_permission;
     private EntityStateBoolType     access_all_permission;
 
-    
+
 
     /**
      * Constructor.
@@ -84,8 +84,10 @@ public class SharedResourceState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.sharedresource;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.sharedresource;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.SHAREDRESOURCE;
     }
 
 
@@ -102,7 +104,7 @@ public class SharedResourceState
 
     public EntityStateStringType getNetname()
     {
-        return this.netname;
+        return netname;
     }
 
 
@@ -119,7 +121,7 @@ public class SharedResourceState
 
     public EntityStateSharedResourceTypeType getSharedType()
     {
-        return this.shared_type;
+        return shared_type;
     }
 
 
@@ -136,7 +138,7 @@ public class SharedResourceState
 
     public EntityStateIntType getMaxUses()
     {
-        return this.max_uses;
+        return max_uses;
     }
 
 
@@ -153,7 +155,7 @@ public class SharedResourceState
 
     public EntityStateIntType getCurrentUses()
     {
-        return this.current_uses;
+        return current_uses;
     }
 
 
@@ -170,7 +172,7 @@ public class SharedResourceState
 
     public EntityStateStringType getLocalPath()
     {
-        return this.local_path;
+        return local_path;
     }
 
 
@@ -187,7 +189,7 @@ public class SharedResourceState
 
     public EntityStateBoolType getAccessReadPermission()
     {
-        return this.access_read_permission;
+        return access_read_permission;
     }
 
 
@@ -204,7 +206,7 @@ public class SharedResourceState
 
     public EntityStateBoolType getAccessWritePermission()
     {
-        return this.access_write_permission;
+        return access_write_permission;
     }
 
 
@@ -221,7 +223,7 @@ public class SharedResourceState
 
     public EntityStateBoolType getAccessCreatePermission()
     {
-        return this.access_create_permission;
+        return access_create_permission;
     }
 
 
@@ -238,7 +240,7 @@ public class SharedResourceState
 
     public EntityStateBoolType getAccessExecPermission()
     {
-        return this.access_exec_permission;
+        return access_exec_permission;
     }
 
 
@@ -255,7 +257,7 @@ public class SharedResourceState
 
     public EntityStateBoolType getAccessDeletePermission()
     {
-        return this.access_delete_permission;
+        return access_delete_permission;
     }
 
 
@@ -272,7 +274,7 @@ public class SharedResourceState
 
     public EntityStateBoolType getAccessAtribPermission()
     {
-        return this.access_atrib_permission;
+        return access_atrib_permission;
     }
 
 
@@ -289,7 +291,7 @@ public class SharedResourceState
 
     public EntityStateBoolType getAccessPermPermission()
     {
-        return this.access_perm_permission;
+        return access_perm_permission;
     }
 
 
@@ -306,7 +308,7 @@ public class SharedResourceState
 
     public EntityStateBoolType getAccessAllPermission()
     {
-        return this.access_all_permission;
+        return access_all_permission;
     }
 
 

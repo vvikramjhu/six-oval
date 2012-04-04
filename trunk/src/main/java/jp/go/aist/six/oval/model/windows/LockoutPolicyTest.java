@@ -20,16 +20,16 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 
 /**
- * The lockout policy test enumerates various attributes 
- * associated with lockout information for users and global groups 
+ * The lockout policy test enumerates various attributes
+ * associated with lockout information for users and global groups
  * in the security database.
  *
  * @author  Akihito Nakamura, AIST
@@ -67,8 +67,10 @@ public class LockoutPolicyTest
     {
         super( id, version, comment, check );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.lockoutpolicy;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.lockoutpolicy;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.LOCKOUTPOLICY;
     }
 
 

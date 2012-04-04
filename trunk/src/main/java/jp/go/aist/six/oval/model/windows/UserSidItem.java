@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * The windows user_sid item allows the different groups (identified by SID) 
+ * The windows user_sid item allows the different groups (identified by SID)
  * that a user belongs to be collected.
  *
  * @author  Akihito Nakamura, AIST
@@ -71,9 +71,11 @@ public class UserSidItem
                     )
     {
         super( id, status );
-        
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.user_sid;
+
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.user_sid;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.USER_SID;
     }
 
 
@@ -90,7 +92,7 @@ public class UserSidItem
 
     public EntityItemStringType getUserSid()
     {
-        return this.user_sid;
+        return user_sid;
     }
 
 
@@ -107,7 +109,7 @@ public class UserSidItem
 
     public EntityItemBoolType getEnabled()
     {
-        return this.enabled;
+        return enabled;
     }
 
 
@@ -124,7 +126,7 @@ public class UserSidItem
 
     public EntityItemStringType getGroupSid()
     {
-        return this.group_sid;
+        return group_sid;
     }
 
 

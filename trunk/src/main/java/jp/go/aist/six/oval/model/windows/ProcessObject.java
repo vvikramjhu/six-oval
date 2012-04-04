@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The process object is used by a process test to define 
+ * The process object is used by a process test to define
  * the specific process(es) to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
@@ -39,6 +39,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
  *             Replaced by the process58 object and
  *             will be removed in a future version of the language.
  */
+@Deprecated
 public class ProcessObject
     extends SystemObjectType
 {
@@ -73,8 +74,10 @@ public class ProcessObject
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.process;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.process;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.PROCESS;
     }
 
 
@@ -128,7 +131,7 @@ public class ProcessObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -145,7 +148,7 @@ public class ProcessObject
 
     public EntityObjectStringType getCommandLine()
     {
-        return this.command_line;
+        return command_line;
     }
 
 

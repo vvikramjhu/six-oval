@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -33,7 +33,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The serviceeffectiverights object is used by the serviceeffectiverights test 
+ * The serviceeffectiverights object is used by the serviceeffectiverights test
  * to define the objects used to evalutate against the specified state.
  *
  * @author  Akihito Nakamura, AIST
@@ -80,8 +80,10 @@ public class VolumeObject
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.volume;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.volume;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.VOLUME;
     }
 
 
@@ -135,7 +137,7 @@ public class VolumeObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -152,7 +154,7 @@ public class VolumeObject
 
     public EntityObjectStringType getRootpath()
     {
-        return this.rootpath;
+        return rootpath;
     }
 
 
@@ -163,10 +165,10 @@ public class VolumeObject
                     final Collection<? extends Filter> filters
                     )
     {
-        if (this.filter != filters) {
-            this.filter.clear();
+        if (filter != filters) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -186,7 +188,7 @@ public class VolumeObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 

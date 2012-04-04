@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
@@ -68,9 +68,11 @@ public class SidSidItem
                     )
     {
         super( id, status );
-        
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.sid_sid;
+
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.sid_sid;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.SID_SID;
     }
 
 
@@ -87,7 +89,7 @@ public class SidSidItem
 
     public EntityItemStringType getTrusteeSid()
     {
-        return this.trustee_sid;
+        return trustee_sid;
     }
 
 
@@ -104,7 +106,7 @@ public class SidSidItem
 
     public EntityItemStringType getTrusteeName()
     {
-        return this.trustee_name;
+        return trustee_name;
     }
 
 
@@ -121,7 +123,7 @@ public class SidSidItem
 
     public EntityItemStringType getTrusteeDomain()
     {
-        return this.trustee_domain;
+        return trustee_domain;
     }
 
 

@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
@@ -80,8 +80,10 @@ public class ActiveDirectoryItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.activedirectory;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.activedirectory;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.ACTIVEDIRECTORY;
     }
 
 
@@ -92,13 +94,13 @@ public class ActiveDirectoryItem
                     final EntityItemNamingContextType hive
                     )
     {
-        this.naming_context = hive;
+        naming_context = hive;
     }
 
 
     public EntityItemNamingContextType getNamingContext()
     {
-        return this.naming_context;
+        return naming_context;
     }
 
 
@@ -107,7 +109,7 @@ public class ActiveDirectoryItem
      */
     public EntityItemStringType getRelativeDn()
     {
-        return this.relative_dn;
+        return relative_dn;
     }
 
 
@@ -124,7 +126,7 @@ public class ActiveDirectoryItem
      */
     public EntityItemStringType getAttribute()
     {
-        return this.attribute;
+        return attribute;
     }
 
 
@@ -149,7 +151,7 @@ public class ActiveDirectoryItem
 
     public EntityItemStringType getObjectClass()
     {
-        return this.object_class;
+        return object_class;
     }
 
 
@@ -158,7 +160,7 @@ public class ActiveDirectoryItem
      */
     public EntityItemAdstypeType getAdstype()
     {
-        return this.adstype;
+        return adstype;
     }
 
 
@@ -188,13 +190,13 @@ public class ActiveDirectoryItem
 
     public Collection<EntityItemAnySimpleType> getValue()
     {
-        return this.value;
+        return value;
     }
 
 
     public Iterator<EntityItemAnySimpleType> iterateValue()
     {
-        return this.value.iterator();
+        return value.iterator();
     }
 
 

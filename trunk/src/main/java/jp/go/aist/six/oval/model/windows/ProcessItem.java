@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
@@ -77,9 +77,11 @@ public class ProcessItem
                     )
     {
         super( id, status );
-        
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.process;
+
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.process;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.PROCESS;
     }
 
 
@@ -96,7 +98,7 @@ public class ProcessItem
 
     public EntityItemStringType getCommandLine()
     {
-        return this.command_line;
+        return command_line;
     }
 
 
@@ -113,7 +115,7 @@ public class ProcessItem
 
     public EntityItemIntType getPid()
     {
-        return this.pid;
+        return pid;
     }
 
 
@@ -130,7 +132,7 @@ public class ProcessItem
 
     public EntityItemIntType getPpid()
     {
-        return this.ppid;
+        return ppid;
     }
 
 
@@ -147,7 +149,7 @@ public class ProcessItem
 
     public EntityItemStringType getPriority()
     {
-        return this.priority;
+        return priority;
     }
 
 
@@ -164,7 +166,7 @@ public class ProcessItem
 
     public EntityItemStringType getImagePath()
     {
-        return this.image_path;
+        return image_path;
     }
 
 
@@ -181,7 +183,7 @@ public class ProcessItem
 
     public EntityItemStringType getCurrentDir()
     {
-        return this.current_dir;
+        return current_dir;
     }
 
 
@@ -198,7 +200,7 @@ public class ProcessItem
 
     public EntityItemIntType getCreationTime()
     {
-        return this.creation_time;
+        return creation_time;
     }
 
 
@@ -215,7 +217,7 @@ public class ProcessItem
 
     public EntityItemBoolType getDepEnabled()
     {
-        return this.dep_enabled;
+        return dep_enabled;
     }
 
 
@@ -232,7 +234,7 @@ public class ProcessItem
 
     public EntityItemStringType getPrimaryWindowText()
     {
-        return this.primary_window_text;
+        return primary_window_text;
     }
 
 

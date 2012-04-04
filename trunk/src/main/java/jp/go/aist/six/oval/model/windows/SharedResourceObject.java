@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -33,7 +33,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The sharedresource object is used by a shared resource test 
+ * The sharedresource object is used by a shared resource test
  * to define the object, in this case a shared resource, to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
@@ -81,8 +81,10 @@ public class SharedResourceObject
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.sharedresource;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.sharedresource;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.SHAREDRESOURCE;
     }
 
 
@@ -136,7 +138,7 @@ public class SharedResourceObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -153,7 +155,7 @@ public class SharedResourceObject
 
     public EntityObjectStringType getNetname()
     {
-        return this.netname;
+        return netname;
     }
 
 
@@ -164,10 +166,10 @@ public class SharedResourceObject
                     final Collection<? extends Filter> filters
                     )
     {
-        if (this.filter != filters) {
-            this.filter.clear();
+        if (filter != filters) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -187,7 +189,7 @@ public class SharedResourceObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 

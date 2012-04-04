@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
@@ -75,9 +75,11 @@ public class UacItem
                     )
     {
         super( id, status );
-        
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.uac;
+
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.uac;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.UAC;
     }
 
 
@@ -94,7 +96,7 @@ public class UacItem
 
     public EntityItemStringType getElevationPromptAdmin()
     {
-        return this.elevation_prompt_admin;
+        return elevation_prompt_admin;
     }
 
 
@@ -111,7 +113,7 @@ public class UacItem
 
     public EntityItemBoolType getAdminApprovalMode()
     {
-        return this.admin_approval_mode;
+        return admin_approval_mode;
     }
 
 
@@ -128,7 +130,7 @@ public class UacItem
 
     public EntityItemStringType getElevationPromptStandard()
     {
-        return this.elevation_prompt_standard;
+        return elevation_prompt_standard;
     }
 
 
@@ -145,7 +147,7 @@ public class UacItem
 
     public EntityItemBoolType getDetectInstallations()
     {
-        return this.detect_installations;
+        return detect_installations;
     }
 
 
@@ -162,7 +164,7 @@ public class UacItem
 
     public EntityItemBoolType getElevateSignedExecutables()
     {
-        return this.elevate_signed_executables;
+        return elevate_signed_executables;
     }
 
 
@@ -179,7 +181,7 @@ public class UacItem
 
     public EntityItemBoolType getElevateUiaccess()
     {
-        return this.elevate_uiaccess;
+        return elevate_uiaccess;
     }
 
 
@@ -196,7 +198,7 @@ public class UacItem
 
     public EntityItemBoolType getRunAdminsAam()
     {
-        return this.run_admins_aam;
+        return run_admins_aam;
     }
 
 
@@ -213,7 +215,7 @@ public class UacItem
 
     public EntityItemBoolType getSecureDesktop()
     {
-        return this.secure_desktop;
+        return secure_desktop;
     }
 
 
@@ -230,7 +232,7 @@ public class UacItem
 
     public EntityItemBoolType getVirtualizeWriteFailures()
     {
-        return this.virtualize_write_failures;
+        return virtualize_write_failures;
     }
 
 

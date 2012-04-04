@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -81,8 +81,10 @@ public class MetabaseState
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.metabase;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.metabase;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.METABASE;
     }
 
 
@@ -100,7 +102,7 @@ public class MetabaseState
 
     public EntityStateStringType getKey()
     {
-        return this.key;
+        return key;
 //        return _properties.getProperty(
 //                        MetabaseProperty.KEY, EntityStateStringType.class );
     }
@@ -129,7 +131,7 @@ public class MetabaseState
 
     public EntityStateIntType getID()
     {
-        return this.id;
+        return id;
 //        return _properties.getProperty(
 //                        MetabaseProperty.ID, EntityStateIntType.class );
     }
@@ -158,7 +160,7 @@ public class MetabaseState
 
     public EntityStateStringType getName()
     {
-        return this.name;
+        return name;
 //        return _properties.getProperty(
 //                        MetabaseProperty.NAME, EntityStateStringType.class );
     }
@@ -187,7 +189,7 @@ public class MetabaseState
 
     public EntityStateStringType getUserType()
     {
-        return this.user_type;
+        return user_type;
 //        return _properties.getProperty(
 //                        MetabaseProperty.USER_TYPE, EntityStateStringType.class );
     }
@@ -216,7 +218,7 @@ public class MetabaseState
 
     public EntityStateStringType getDataType()
     {
-        return this.data_type;
+        return data_type;
 //        return _properties.getProperty(
 //                        MetabaseProperty.DATA_TYPE, EntityStateStringType.class );
     }
@@ -245,7 +247,7 @@ public class MetabaseState
 
     public EntityStateAnySimpleType getData()
     {
-        return this.data;
+        return data;
 //        return _properties.getProperty(
 //                        MetabaseProperty.DATA, EntityStateAnySimpleType.class );
     }

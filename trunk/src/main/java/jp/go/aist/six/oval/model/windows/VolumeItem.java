@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * The volume item enumerates various attributes 
+ * The volume item enumerates various attributes
  * about a particular volume mounted to a machine.
  *
  * @author  Akihito Nakamura, AIST
@@ -89,9 +89,11 @@ public class VolumeItem
                     )
     {
         super( id, status );
-        
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.volume;
+
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.volume;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.VOLUME;
     }
 
 
@@ -108,7 +110,7 @@ public class VolumeItem
 
     public EntityItemStringType getRootpath()
     {
-        return this.rootpath;
+        return rootpath;
     }
 
 
@@ -125,7 +127,7 @@ public class VolumeItem
 
     public EntityItemStringType getFileSystem()
     {
-        return this.file_system;
+        return file_system;
     }
 
 
@@ -142,7 +144,7 @@ public class VolumeItem
 
     public EntityItemStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -159,7 +161,7 @@ public class VolumeItem
 
     public EntityItemDriveTypeType getDriveType()
     {
-        return this.drive_type;
+        return drive_type;
     }
 
 
@@ -176,7 +178,7 @@ public class VolumeItem
 
     public EntityItemIntType getVolumeMaxComponentLength()
     {
-        return this.volume_max_component_length;
+        return volume_max_component_length;
     }
 
 
@@ -193,7 +195,7 @@ public class VolumeItem
 
     public EntityItemIntType getSerialNumber()
     {
-        return this.serial_number;
+        return serial_number;
     }
 
 
@@ -210,7 +212,7 @@ public class VolumeItem
 
     public EntityItemBoolType getFileCaseSensitiveSearch()
     {
-        return this.file_case_sensitive_search;
+        return file_case_sensitive_search;
     }
 
 
@@ -227,7 +229,7 @@ public class VolumeItem
 
     public EntityItemBoolType getFileCasePreservedNames()
     {
-        return this.file_case_preserved_names;
+        return file_case_preserved_names;
     }
 
 
@@ -244,7 +246,7 @@ public class VolumeItem
 
     public EntityItemBoolType getFileUnicodeOnDisk()
     {
-        return this.file_unicode_on_disk;
+        return file_unicode_on_disk;
     }
 
 
@@ -261,7 +263,7 @@ public class VolumeItem
 
     public EntityItemBoolType getFilePersistentAcls()
     {
-        return this.file_persistent_acls;
+        return file_persistent_acls;
     }
 
 
@@ -278,7 +280,7 @@ public class VolumeItem
 
     public EntityItemBoolType getFileFileCompression()
     {
-        return this.file_file_compression;
+        return file_file_compression;
     }
 
 
@@ -295,7 +297,7 @@ public class VolumeItem
 
     public EntityItemBoolType getFileVolumeQuotas()
     {
-        return this.file_volume_quotas;
+        return file_volume_quotas;
     }
 
 
@@ -312,7 +314,7 @@ public class VolumeItem
 
     public EntityItemBoolType getFileSupportsSparseFiles()
     {
-        return this.file_supports_sparse_files;
+        return file_supports_sparse_files;
     }
 
 
@@ -329,7 +331,7 @@ public class VolumeItem
 
     public EntityItemBoolType getFileSupportsReparsePoints()
     {
-        return this.file_supports_reparse_points;
+        return file_supports_reparse_points;
     }
 
 
@@ -346,7 +348,7 @@ public class VolumeItem
 
     public EntityItemBoolType getFileSupportsRemoteStorage()
     {
-        return this.file_supports_remote_storage;
+        return file_supports_remote_storage;
     }
 
 
@@ -363,7 +365,7 @@ public class VolumeItem
 
     public EntityItemBoolType getFileVolumeIsCompressed()
     {
-        return this.file_volume_is_compressed;
+        return file_volume_is_compressed;
     }
 
 
@@ -380,7 +382,7 @@ public class VolumeItem
 
     public EntityItemBoolType getFileSupportsObjectIds()
     {
-        return this.file_supports_object_ids;
+        return file_supports_object_ids;
     }
 
 
@@ -397,7 +399,7 @@ public class VolumeItem
 
     public EntityItemBoolType getFileSupportsEncryption()
     {
-        return this.file_supports_encryption;
+        return file_supports_encryption;
     }
 
 
@@ -414,7 +416,7 @@ public class VolumeItem
 
     public EntityItemBoolType getFileNamedStreams()
     {
-        return this.file_named_streams;
+        return file_named_streams;
     }
 
 
@@ -431,7 +433,7 @@ public class VolumeItem
 
     public EntityItemBoolType getFileReadOnlyVolume()
     {
-        return this.file_read_only_volume;
+        return file_read_only_volume;
     }
 
 

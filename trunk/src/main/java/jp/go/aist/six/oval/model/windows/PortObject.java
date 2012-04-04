@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectIPAddressStringType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectIntType;
 import jp.go.aist.six.oval.model.definitions.Filter;
@@ -34,8 +34,8 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The port object is used by a port test to define 
- * the specific port(s) to be evaluated. 
+ * The port object is used by a port test to define
+ * the specific port(s) to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -99,8 +99,10 @@ public class PortObject
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.port;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.port;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.PORT;
     }
 
 
@@ -117,7 +119,7 @@ public class PortObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -134,7 +136,7 @@ public class PortObject
 
     public EntityObjectIPAddressStringType getLocalAddress()
     {
-        return this.local_address;
+        return local_address;
     }
 
 
@@ -151,7 +153,7 @@ public class PortObject
 
     public EntityObjectIntType getLocalPort()
     {
-        return this.local_port;
+        return local_port;
     }
 
 
@@ -168,7 +170,7 @@ public class PortObject
 
     public EntityObjectProtocolType getProtocol()
     {
-        return this.protocol;
+        return protocol;
     }
 
 
@@ -179,10 +181,10 @@ public class PortObject
                     final Collection<? extends Filter> filters
                     )
     {
-        if (filters != this.filter) {
-            this.filter.clear();
+        if (filters != filter) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -190,13 +192,13 @@ public class PortObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 
     public Iterator<Filter> iterateFilter()
     {
-        return this.filter.iterator();
+        return filter.iterator();
     }
 
 

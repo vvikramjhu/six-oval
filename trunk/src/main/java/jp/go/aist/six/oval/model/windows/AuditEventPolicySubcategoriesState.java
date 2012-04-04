@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
@@ -123,8 +123,10 @@ public class AuditEventPolicySubcategoriesState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.auditeventpolicysubcategories;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.auditeventpolicysubcategories;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.AUDITEVENTPOLICYSUBCATEGORIES;
     }
 
 
@@ -141,7 +143,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getCredentialValidation()
     {
-        return this.credential_validation;
+        return credential_validation;
     }
 
 
@@ -158,7 +160,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getKerberosAuthenticationService()
     {
-        return this.kerberos_authentication_service;
+        return kerberos_authentication_service;
     }
 
 
@@ -175,7 +177,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getKerberosServiceTicketOperations()
     {
-        return this.kerberos_service_ticket_operations;
+        return kerberos_service_ticket_operations;
     }
 
 
@@ -192,7 +194,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getKerberosTicketEvents()
     {
-        return this.kerberos_ticket_events;
+        return kerberos_ticket_events;
     }
 
 
@@ -209,7 +211,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getOtherAccountLogonEvents()
     {
-        return this.other_account_logon_events;
+        return other_account_logon_events;
     }
 
 
@@ -226,7 +228,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getApplicationGroupManagement()
     {
-        return this.application_group_management;
+        return application_group_management;
     }
 
 
@@ -243,7 +245,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getComputerAccountManagement()
     {
-        return this.computer_account_management;
+        return computer_account_management;
     }
 
 
@@ -260,7 +262,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getDistributionGroupManagement()
     {
-        return this.distribution_group_management;
+        return distribution_group_management;
     }
 
 
@@ -277,7 +279,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getOtherAccountManagementEvents()
     {
-        return this.other_account_management_events;
+        return other_account_management_events;
     }
 
 
@@ -294,7 +296,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getSecurityGroupManagement()
     {
-        return this.security_group_management;
+        return security_group_management;
     }
 
 
@@ -311,7 +313,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getUserAccountManagement()
     {
-        return this.user_account_management;
+        return user_account_management;
     }
 
 
@@ -328,7 +330,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getDpapiActivity()
     {
-        return this.dpapi_activity;
+        return dpapi_activity;
     }
 
 
@@ -345,7 +347,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getProcessCreation()
     {
-        return this.process_creation;
+        return process_creation;
     }
 
 
@@ -362,7 +364,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getProcessTermination()
     {
-        return this.process_termination;
+        return process_termination;
     }
 
 
@@ -379,7 +381,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getRpcEvents()
     {
-        return this.rpc_events;
+        return rpc_events;
     }
 
 
@@ -396,7 +398,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getDirectoryServiceAccess()
     {
-        return this.directory_service_access;
+        return directory_service_access;
     }
 
 
@@ -413,7 +415,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getDirectoryServiceChanges()
     {
-        return this.directory_service_changes;
+        return directory_service_changes;
     }
 
 
@@ -430,7 +432,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getDirectoryServiceReplication()
     {
-        return this.directory_service_replication;
+        return directory_service_replication;
     }
 
 
@@ -447,7 +449,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getDetailedDirectoryServiceReplication()
     {
-        return this.detailed_directory_service_replication;
+        return detailed_directory_service_replication;
     }
 
 
@@ -464,7 +466,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getAccountLockout()
     {
-        return this.account_lockout;
+        return account_lockout;
     }
 
 
@@ -481,7 +483,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getIpsecExtendedMode()
     {
-        return this.ipsec_extended_mode;
+        return ipsec_extended_mode;
     }
 
 
@@ -498,7 +500,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getIpsecMainMode()
     {
-        return this.ipsec_main_mode;
+        return ipsec_main_mode;
     }
 
 
@@ -515,7 +517,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getIpsecQuickMode()
     {
-        return this.ipsec_quick_mode;
+        return ipsec_quick_mode;
     }
 
 
@@ -532,7 +534,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getLogoff()
     {
-        return this.logoff;
+        return logoff;
     }
 
 
@@ -549,7 +551,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getLogon()
     {
-        return this.logon;
+        return logon;
     }
 
 
@@ -566,7 +568,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getNetworkPolicyServer()
     {
-        return this.network_policy_server;
+        return network_policy_server;
     }
 
 
@@ -583,7 +585,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getOtherLogonLogoffEvents()
     {
-        return this.other_logon_logoff_events;
+        return other_logon_logoff_events;
     }
 
 
@@ -600,7 +602,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getSpecialLogon()
     {
-        return this.special_logon;
+        return special_logon;
     }
 
 
@@ -617,7 +619,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getApplicationGenerated()
     {
-        return this.application_generated;
+        return application_generated;
     }
 
 
@@ -634,7 +636,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getCertificationServices()
     {
-        return this.certification_services;
+        return certification_services;
     }
 
 
@@ -651,7 +653,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getDetailedFileShare()
     {
-        return this.detailed_file_share;
+        return detailed_file_share;
     }
 
 
@@ -668,7 +670,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getFileShare()
     {
-        return this.file_share;
+        return file_share;
     }
 
 
@@ -685,7 +687,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getFileSystem()
     {
-        return this.file_system;
+        return file_system;
     }
 
 
@@ -702,7 +704,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getFilteringPlatformConnection()
     {
-        return this.filtering_platform_connection;
+        return filtering_platform_connection;
     }
 
 
@@ -719,7 +721,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getFilteringPlatformPacketDrop()
     {
-        return this.filtering_platform_packet_drop;
+        return filtering_platform_packet_drop;
     }
 
 
@@ -736,7 +738,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getHandleManipulation()
     {
-        return this.handle_manipulation;
+        return handle_manipulation;
     }
 
 
@@ -753,7 +755,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getKernelObject()
     {
-        return this.kernel_object;
+        return kernel_object;
     }
 
 
@@ -770,7 +772,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getOtherObjectAccessEvents()
     {
-        return this.other_object_access_events;
+        return other_object_access_events;
     }
 
 
@@ -787,7 +789,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getRegistry()
     {
-        return this.registry;
+        return registry;
     }
 
 
@@ -804,7 +806,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getSam()
     {
-        return this.sam;
+        return sam;
     }
 
 
@@ -821,7 +823,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getAuditPolicyChange()
     {
-        return this.audit_policy_change;
+        return audit_policy_change;
     }
 
 
@@ -838,7 +840,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getAuthenticationPolicyChange()
     {
-        return this.authentication_policy_change;
+        return authentication_policy_change;
     }
 
 
@@ -855,7 +857,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getAuthorizationPolicyChange()
     {
-        return this.authorization_policy_change;
+        return authorization_policy_change;
     }
 
 
@@ -872,7 +874,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getFilteringPlatformPolicyChange()
     {
-        return this.filtering_platform_policy_change;
+        return filtering_platform_policy_change;
     }
 
 
@@ -889,7 +891,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getMpssvcRuleLevelPolicyChange()
     {
-        return this.mpssvc_rule_level_policy_change;
+        return mpssvc_rule_level_policy_change;
     }
 
 
@@ -906,7 +908,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getOtherPolicyChangeEvents()
     {
-        return this.other_policy_change_events;
+        return other_policy_change_events;
     }
 
 
@@ -923,7 +925,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getNonSensitivePrivilegeUse()
     {
-        return this.non_sensitive_privilege_use;
+        return non_sensitive_privilege_use;
     }
 
 
@@ -940,7 +942,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getOtherPrivilegeUseEvents()
     {
-        return this.other_privilege_use_events;
+        return other_privilege_use_events;
     }
 
 
@@ -957,7 +959,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getSensitivePrivilegeUse()
     {
-        return this.sensitive_privilege_use;
+        return sensitive_privilege_use;
     }
 
 
@@ -974,7 +976,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getIpsecDriver()
     {
-        return this.ipsec_driver;
+        return ipsec_driver;
     }
 
 
@@ -991,7 +993,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getOtherSystemEvents()
     {
-        return this.other_system_events;
+        return other_system_events;
     }
 
 
@@ -1008,7 +1010,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getSecurityStateChange()
     {
-        return this.security_state_change;
+        return security_state_change;
     }
 
 
@@ -1025,7 +1027,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getSecuritySystemExtension()
     {
-        return this.security_system_extension;
+        return security_system_extension;
     }
 
 
@@ -1042,7 +1044,7 @@ public class AuditEventPolicySubcategoriesState
 
     public EntityStateAuditType getSystemIntegrity()
     {
-        return this.system_integrity;
+        return system_integrity;
     }
 
 

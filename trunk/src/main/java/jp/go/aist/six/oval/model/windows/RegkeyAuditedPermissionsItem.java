@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * This item stores the audited access rights of a registry key 
+ * This item stores the audited access rights of a registry key
  * that a system access control list (SACL) structure grants to a specified trustee.
  *
  * @author  Akihito Nakamura, AIST
@@ -93,9 +93,11 @@ public class RegkeyAuditedPermissionsItem
                     )
     {
         super( id, status );
-        
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.regkeyauditedpermissions;
+
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.regkeyauditedpermissions;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.REGKEYAUDITEDPERMISSIONS;
     }
 
 
@@ -112,7 +114,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemRegistryHiveType getHive()
     {
-        return this.hive;
+        return hive;
     }
 
 
@@ -129,7 +131,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemStringType getKey()
     {
-        return this.key;
+        return key;
     }
 
 
@@ -146,7 +148,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemStringType getTrusteeSid()
     {
-        return this.trustee_sid;
+        return trustee_sid;
     }
 
 
@@ -163,7 +165,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getStandardDelete()
     {
-        return this.standard_delete;
+        return standard_delete;
     }
 
 
@@ -180,7 +182,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getStandardReadControl()
     {
-        return this.standard_read_control;
+        return standard_read_control;
     }
 
 
@@ -197,7 +199,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getStandardWriteDac()
     {
-        return this.standard_write_dac;
+        return standard_write_dac;
     }
 
 
@@ -214,7 +216,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getStandardWriteOwner()
     {
-        return this.standard_write_owner;
+        return standard_write_owner;
     }
 
 
@@ -231,7 +233,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getStandardSyncronize()
     {
-        return this.standard_syncronize;
+        return standard_syncronize;
     }
 
 
@@ -248,7 +250,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getAccessSystemSecurity()
     {
-        return this.access_system_security;
+        return access_system_security;
     }
 
 
@@ -265,7 +267,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getGenericRead()
     {
-        return this.generic_read;
+        return generic_read;
     }
 
 
@@ -282,7 +284,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getGenericWrite()
     {
-        return this.generic_write;
+        return generic_write;
     }
 
 
@@ -299,7 +301,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getGenericExecute()
     {
-        return this.generic_execute;
+        return generic_execute;
     }
 
 
@@ -316,7 +318,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getGenericAll()
     {
-        return this.generic_all;
+        return generic_all;
     }
 
 
@@ -333,7 +335,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getKeyQueryValue()
     {
-        return this.key_query_value;
+        return key_query_value;
     }
 
 
@@ -350,7 +352,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getKeySetValue()
     {
-        return this.key_set_value;
+        return key_set_value;
     }
 
 
@@ -367,7 +369,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getKeyCreateSubKey()
     {
-        return this.key_create_sub_key;
+        return key_create_sub_key;
     }
 
 
@@ -384,7 +386,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getKeyEnumerateSubKeys()
     {
-        return this.key_enumerate_sub_keys;
+        return key_enumerate_sub_keys;
     }
 
 
@@ -401,7 +403,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getKeyNotify()
     {
-        return this.key_notify;
+        return key_notify;
     }
 
 
@@ -418,7 +420,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getKeyCreateLink()
     {
-        return this.key_create_link;
+        return key_create_link;
     }
 
 
@@ -435,7 +437,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getKeyWow6464key()
     {
-        return this.key_wow64_64key;
+        return key_wow64_64key;
     }
 
 
@@ -452,7 +454,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getKeyWow6432key()
     {
-        return this.key_wow64_32key;
+        return key_wow64_32key;
     }
 
 
@@ -469,7 +471,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemAuditType getKeyWow64Res()
     {
-        return this.key_wow64_res;
+        return key_wow64_res;
     }
 
 
@@ -486,7 +488,7 @@ public class RegkeyAuditedPermissionsItem
 
     public EntityItemWindowsViewType getWindowsView()
     {
-        return this.windows_view;
+        return windows_view;
     }
 
 

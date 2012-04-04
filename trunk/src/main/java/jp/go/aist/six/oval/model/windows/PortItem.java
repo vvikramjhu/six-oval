@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.ItemType;
@@ -64,8 +64,10 @@ public class PortItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.port;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.port;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.PORT;
     }
 
 
@@ -82,7 +84,7 @@ public class PortItem
 
     public EntityItemIPAddressStringType getLocalAddress()
     {
-        return this.local_address;
+        return local_address;
     }
 
 
@@ -99,7 +101,7 @@ public class PortItem
 
     public EntityItemIntType getLocalPort()
     {
-        return this.local_port;
+        return local_port;
     }
 
 
@@ -116,7 +118,7 @@ public class PortItem
 
     public EntityItemProtocolType getProtocol()
     {
-        return this.protocol;
+        return protocol;
     }
 
 
@@ -133,7 +135,7 @@ public class PortItem
 
     public EntityItemIntType getPid()
     {
-        return this.pid;
+        return pid;
     }
 
 
@@ -150,7 +152,7 @@ public class PortItem
 
     public EntityItemIPAddressStringType getForeignAddress()
     {
-        return this.foreign_address;
+        return foreign_address;
     }
 
 
@@ -167,7 +169,7 @@ public class PortItem
 
     public EntityItemIntType getForeignPort()
     {
-        return this.foreign_port;
+        return foreign_port;
     }
 
 

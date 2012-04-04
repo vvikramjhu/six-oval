@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -30,8 +30,8 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The network_interface state enumerates the different properties 
- * associate with a Windows interface. 
+ * The network_interface state enumerates the different properties
+ * associate with a Windows interface.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -79,8 +79,10 @@ public class NetworkInterfaceState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.network_interface;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.network_interface;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.INTERFACE;
     }
 
 
@@ -97,7 +99,7 @@ public class NetworkInterfaceState
 
     public EntityStateStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -114,7 +116,7 @@ public class NetworkInterfaceState
 
     public EntityStateIntType getIndex()
     {
-        return this.index;
+        return index;
     }
 
 
@@ -131,7 +133,7 @@ public class NetworkInterfaceState
 
     public EntityStateNetworkInterfaceTypeType getType()
     {
-        return this.type;
+        return type;
     }
 
 
@@ -148,7 +150,7 @@ public class NetworkInterfaceState
 
     public EntityStateStringType getHardwareAddr()
     {
-        return this.hardware_addr;
+        return hardware_addr;
     }
 
 
@@ -165,7 +167,7 @@ public class NetworkInterfaceState
 
     public EntityStateIPAddressStringType getInetAddr()
     {
-        return this.inet_addr;
+        return inet_addr;
     }
 
 
@@ -182,7 +184,7 @@ public class NetworkInterfaceState
 
     public EntityStateIPAddressStringType getBroadcastAddr()
     {
-        return this.broadcast_addr;
+        return broadcast_addr;
     }
 
 
@@ -199,7 +201,7 @@ public class NetworkInterfaceState
 
     public EntityStateIPAddressStringType getNetmask()
     {
-        return this.netmask;
+        return netmask;
     }
 
 
@@ -216,7 +218,7 @@ public class NetworkInterfaceState
 
     public EntityStateAddrTypeType getAddrType()
     {
-        return this.addr_type;
+        return addr_type;
     }
 
 

@@ -20,15 +20,15 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The group_sid state enumerates the different users and subgroups 
+ * The group_sid state enumerates the different users and subgroups
  * directly associated with a Windows group.
  *
  * @author  Akihito Nakamura, AIST
@@ -72,8 +72,10 @@ public class GroupSidState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.group_sid;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.group_sid;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.GROUP_SID;
     }
 
 
@@ -90,7 +92,7 @@ public class GroupSidState
 
     public EntityStateStringType getGroupSid()
     {
-        return this.group_sid;
+        return group_sid;
     }
 
 
@@ -107,7 +109,7 @@ public class GroupSidState
 
     public EntityStateStringType getUserSid()
     {
-        return this.user_sid;
+        return user_sid;
     }
 
 
@@ -124,7 +126,7 @@ public class GroupSidState
 
     public EntityStateStringType getSubgroupSid()
     {
-        return this.subgroup_sid;
+        return subgroup_sid;
     }
 
 

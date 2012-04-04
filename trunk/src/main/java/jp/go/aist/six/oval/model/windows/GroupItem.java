@@ -23,15 +23,15 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 
 
 
 /**
- * The Windows group item allows the different users and subgroups, 
+ * The Windows group item allows the different users and subgroups,
  * that directly belong to specific groups (identified by name), to be collected.
  *
  * @author  Akihito Nakamura, AIST
@@ -70,8 +70,10 @@ public class GroupItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.group;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.group;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.GROUP;
     }
 
 
@@ -80,7 +82,7 @@ public class GroupItem
      */
     public EntityItemStringType getGroup()
     {
-        return this.group;
+        return group;
     }
 
 
@@ -99,10 +101,10 @@ public class GroupItem
                     final Collection<? extends EntityItemStringType> users
                     )
     {
-        if (this.user != users) {
-            this.user.clear();
+        if (user != users) {
+            user.clear();
             if (users != null  &&  users.size() > 0) {
-                this.user.addAll( users );
+                user.addAll( users );
             }
         }
     }
@@ -110,13 +112,13 @@ public class GroupItem
 
     public Collection<EntityItemStringType> getUser()
     {
-        return this.user;
+        return user;
     }
 
 
     public Iterator<EntityItemStringType> iterateUser()
     {
-        return this.user.iterator();
+        return user.iterator();
     }
 
 
@@ -127,10 +129,10 @@ public class GroupItem
                     final Collection<? extends EntityItemStringType> subgroups
                     )
     {
-        if (this.subgroup != subgroups) {
-            this.subgroup.clear();
+        if (subgroup != subgroups) {
+            subgroup.clear();
             if (subgroups != null  &&  subgroups.size() > 0) {
-                this.subgroup.addAll( subgroups );
+                subgroup.addAll( subgroups );
             }
         }
     }
@@ -138,13 +140,13 @@ public class GroupItem
 
     public Collection<EntityItemStringType> getSubgroup()
     {
-        return this.subgroup;
+        return subgroup;
     }
 
 
     public Iterator<EntityItemStringType> iterateSubgroup()
     {
-        return this.subgroup.iterator();
+        return subgroup.iterator();
     }
 
 

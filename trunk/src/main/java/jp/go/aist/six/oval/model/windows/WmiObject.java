@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
@@ -114,8 +114,10 @@ public class WmiObject
         setNamespace( namespace );
         setWql( wql );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.wmi;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.wmi;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.WMI;
     }
 
 
@@ -132,7 +134,7 @@ public class WmiObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -150,7 +152,7 @@ public class WmiObject
 
     public EntityObjectStringType getNamespace()
     {
-        return this.namespace;
+        return namespace;
 //        return _properties.getProperty(
 //                        WmiProperty.NAMESPACE, EntityObjectStringType.class );
     }
@@ -170,7 +172,7 @@ public class WmiObject
 
     public EntityObjectStringType getWql()
     {
-        return this.wql;
+        return wql;
 //        return _properties.getProperty(
 //                        WmiProperty.WQL, EntityObjectStringType.class );
     }

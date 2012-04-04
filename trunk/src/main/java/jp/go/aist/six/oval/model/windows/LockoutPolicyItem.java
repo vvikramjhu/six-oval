@@ -20,16 +20,16 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 
 
 
 /**
- * The lockoutpolicy item enumerates various attributes 
- * associated with lockout information for users and global groups 
+ * The lockoutpolicy item enumerates various attributes
+ * associated with lockout information for users and global groups
  * in the security database.
  *
  * @author  Akihito Nakamura, AIST
@@ -69,8 +69,10 @@ public class LockoutPolicyItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.lockoutpolicy;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.lockoutpolicy;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.LOCKOUTPOLICY;
     }
 
 
@@ -87,7 +89,7 @@ public class LockoutPolicyItem
 
     public EntityItemIntType getForceLogoff()
     {
-        return this.force_logoff;
+        return force_logoff;
     }
 
 
@@ -104,7 +106,7 @@ public class LockoutPolicyItem
 
     public EntityItemIntType getLockoutDuration()
     {
-        return this.lockout_duration;
+        return lockout_duration;
     }
 
 
@@ -121,7 +123,7 @@ public class LockoutPolicyItem
 
     public EntityItemIntType getLockoutObservationWindow()
     {
-        return this.lockout_observation_window;
+        return lockout_observation_window;
     }
 
 
@@ -138,7 +140,7 @@ public class LockoutPolicyItem
 
     public EntityItemIntType getLockoutThreshold()
     {
-        return this.lockout_threshold;
+        return lockout_threshold;
     }
 
 

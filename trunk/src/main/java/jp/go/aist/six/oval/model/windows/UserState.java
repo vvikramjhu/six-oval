@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The user state enumerates the different groups (identified by name) 
+ * The user state enumerates the different groups (identified by name)
  * that a Windows user might belong to.
  *
  * @author  Akihito Nakamura, AIST
@@ -75,8 +75,10 @@ public class UserState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.user;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.user;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.USER;
     }
 
 
@@ -93,7 +95,7 @@ public class UserState
 
     public EntityStateStringType getUser()
     {
-        return this.user;
+        return user;
     }
 
 
@@ -110,7 +112,7 @@ public class UserState
 
     public EntityStateBoolType getEnabled()
     {
-        return this.enabled;
+        return enabled;
     }
 
 
@@ -127,7 +129,7 @@ public class UserState
 
     public EntityStateStringType getGroup()
     {
-        return this.group;
+        return group;
     }
 
 
@@ -144,7 +146,7 @@ public class UserState
 
     public EntityStateIntType getLastLogon()
     {
-        return this.last_logon;
+        return last_logon;
     }
 
 

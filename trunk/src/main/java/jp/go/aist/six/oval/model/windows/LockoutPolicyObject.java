@@ -20,15 +20,15 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 
 /**
- * The lockout policy object is used by a lockout policy test to define 
- * those objects to evaluated based on a specified state. 
+ * The lockout policy object is used by a lockout policy test to define
+ * those objects to evaluated based on a specified state.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -64,8 +64,10 @@ public class LockoutPolicyObject
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.lockoutpolicy;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.lockoutpolicy;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.LOCKOUTPOLICY;
     }
 
 
