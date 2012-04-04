@@ -7,7 +7,7 @@ import jp.go.aist.six.oval.core.interpreter.OvaldiOptions;
 import jp.go.aist.six.oval.core.interpreter.OvaldiProxy;
 import jp.go.aist.six.oval.interpreter.Options;
 import jp.go.aist.six.oval.interpreter.OvalInterpreter;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
 import jp.go.aist.six.test.oval.core.XmlFilenameFilter;
 import org.testng.Reporter;
@@ -26,7 +26,7 @@ public class OvalInterpreterTestContentTest
 
     private static final String  _OVALDI_DIR_ = "C:\\app\\ovaldi-5.10.1.1-x64";
     private static final String  _OVALDI_EXECUTABLE_ = _OVALDI_DIR_ + "\\ovaldi.exe";
-    private static final String  _OVALDI_XML_ = _OVALDI_DIR_ + "\\xml";
+//    private static final String  _OVALDI_XML_ = _OVALDI_DIR_ + "\\xml";
 
 
 
@@ -97,11 +97,11 @@ public class OvalInterpreterTestContentTest
                     alwaysRun=true
                     )
     public <T> void testOvaldiProxy(
-                    final Class<T>            model_type,
-                    final String              oval_schema_version,
-                    final OvalPlatformType    platform,
-                    final String              dirpath,
-                    final String              filename
+                    final Class<T>          model_type,
+                    final String            oval_schema_version,
+                    final Family            family,
+                    final String            dirpath,
+                    final String            filename
                     )
     throws Exception
     {
@@ -117,13 +117,13 @@ public class OvalInterpreterTestContentTest
             File[]  files = dir.listFiles( filter );
             for (File  file : files) {
                 Reporter.log( "  * file= " + file, true );
-                Options  options = _createOptions( platform, file );
+                Options  options = _createOptions( family, file );
                 _executeOvalInterpreter( ovaldi, options );
             }
         } else {
             File  file = new File( dir, filename );
             Reporter.log( "  * file= " + file, true );
-            Options  options = _createOptions( platform, file );
+            Options  options = _createOptions( family, file );
             _executeOvalInterpreter( ovaldi, options );
         }
     }
@@ -133,7 +133,7 @@ public class OvalInterpreterTestContentTest
     /**
      */
     private Options _createOptions(
-                    final OvalPlatformType    platform,
+                    final Family family,
                     final File oval_def_file
                     )
     {
@@ -142,8 +142,8 @@ public class OvalInterpreterTestContentTest
         String  tmp_dirpath = System.getProperty( "java.io.tmpdir" );
         String  file_sep = System.getProperty( "file.separator" );
         String  out_dirpath = (tmp_dirpath == null
-                        ? platform.name()
-                        : tmp_dirpath + file_sep + platform.name() );
+                        ? family.value()
+                        : tmp_dirpath + file_sep + family.value() );
         File  out_dir = new File( out_dirpath );
         if (!out_dir.exists()) {
             boolean  out_dir_created = out_dir.mkdir();

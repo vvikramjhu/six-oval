@@ -3,7 +3,7 @@ package jp.go.aist.six.test.oval.core.repository.mongodb;
 import java.io.File;
 import java.io.FilenameFilter;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoDatastore;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.test.oval.core.CoreTestBase;
@@ -114,7 +114,7 @@ public class MongoDatastoreTest
     public <K, T extends Persistable<K>> void testSaveAndLoad(
                     final Class<T>          object_type,
                     final String            oval_schema_version,
-                    final OvalPlatformType  platform,
+                    final Family            family,
                     final String            dirpath,
                     final String            xmlFilepath,
                     final T                 expectedObject
@@ -125,7 +125,7 @@ public class MongoDatastoreTest
                         true );
         Reporter.log( "// using OVAL Test Content", true );
         Reporter.log( "* OVAL schema version: " + oval_schema_version, true );
-        Reporter.log( "* platform: " + platform.name(), true );
+        Reporter.log( "* family: " + family, true );
 
         File  dir = new File( dirpath );
 
