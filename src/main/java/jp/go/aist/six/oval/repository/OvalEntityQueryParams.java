@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.repository;
 
+import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.Family;
-import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 
 
@@ -181,7 +181,8 @@ public class OvalEntityQueryParams
                     )
     {
         if (component != null) {
-            OvalComponentType.valueOf( component );
+            Component.fromValue( component );
+//            OvalComponentType.valueOf( component );
         }
 
         set( Key.COMPONENT, component );
