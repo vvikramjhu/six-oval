@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
@@ -74,8 +74,10 @@ public class InetdItem
     {
         super( id, status );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.inetd;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.inetd;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.INETD;
     }
 
 
@@ -92,7 +94,7 @@ public class InetdItem
 
     public EntityItemStringType getProtocol()
     {
-        return this.protocol;
+        return protocol;
     }
 
 
@@ -109,7 +111,7 @@ public class InetdItem
 
     public EntityItemStringType getServiceName()
     {
-        return this.service_name;
+        return service_name;
     }
 
 
@@ -126,7 +128,7 @@ public class InetdItem
 
     public EntityItemStringType getServerProgram()
     {
-        return this.server_program;
+        return server_program;
     }
 
 
@@ -143,7 +145,7 @@ public class InetdItem
 
     public EntityItemStringType getServerArguments()
     {
-        return this.server_arguments;
+        return server_arguments;
     }
 
 
@@ -160,7 +162,7 @@ public class InetdItem
 
     public EntityItemEndpointType getEndpointType()
     {
-        return this.endpoint_type;
+        return endpoint_type;
     }
 
 
@@ -177,7 +179,7 @@ public class InetdItem
 
     public EntityItemStringType getExecAsUser()
     {
-        return this.exec_as_user;
+        return exec_as_user;
     }
 
 
@@ -194,7 +196,7 @@ public class InetdItem
 
     public EntityItemWaitStatusType getWaitStatus()
     {
-        return this.wait_status;
+        return wait_status;
     }
 
 

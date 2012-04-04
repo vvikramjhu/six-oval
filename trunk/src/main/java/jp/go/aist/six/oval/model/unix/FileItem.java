@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
@@ -93,8 +93,10 @@ public class FileItem
     {
         super( id, status );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.file;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.file;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.FILE;
     }
 
 
@@ -111,7 +113,7 @@ public class FileItem
 
     public EntityItemStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 
@@ -128,7 +130,7 @@ public class FileItem
 
     public EntityItemStringType getPath()
     {
-        return this.path;
+        return path;
     }
 
 
@@ -145,7 +147,7 @@ public class FileItem
 
     public EntityItemStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -162,7 +164,7 @@ public class FileItem
 
     public EntityItemStringType getType()
     {
-        return this.type;
+        return type;
     }
 
 
@@ -179,7 +181,7 @@ public class FileItem
 
     public EntityItemIntType getGroupID()
     {
-        return this.group_id;
+        return group_id;
     }
 
 
@@ -205,7 +207,7 @@ public class FileItem
 
     public EntityItemIntType getUserID()
     {
-        return this.user_id;
+        return user_id;
     }
 
 
@@ -222,7 +224,7 @@ public class FileItem
 
     public EntityItemIntType getATime()
     {
-        return this.a_time;
+        return a_time;
     }
 
 
@@ -239,7 +241,7 @@ public class FileItem
 
     public EntityItemIntType getCTime()
     {
-        return this.c_time;
+        return c_time;
     }
 
 
@@ -256,7 +258,7 @@ public class FileItem
 
     public EntityItemIntType getMTime()
     {
-        return this.m_time;
+        return m_time;
     }
 
 
@@ -273,7 +275,7 @@ public class FileItem
 
     public EntityItemIntType getSize()
     {
-        return this.size;
+        return size;
     }
 
 
@@ -290,7 +292,7 @@ public class FileItem
 
     public EntityItemBoolType getSuID()
     {
-        return this.suid;
+        return suid;
     }
 
 
@@ -307,7 +309,7 @@ public class FileItem
 
     public EntityItemBoolType getSgID()
     {
-        return this.sgid;
+        return sgid;
     }
 
 
@@ -324,7 +326,7 @@ public class FileItem
 
     public EntityItemBoolType getSticky()
     {
-        return this.sticky;
+        return sticky;
     }
 
 
@@ -341,7 +343,7 @@ public class FileItem
 
     public EntityItemBoolType getURead()
     {
-        return this.uread;
+        return uread;
     }
 
 
@@ -357,7 +359,7 @@ public class FileItem
 
     public EntityItemBoolType getUWrite()
     {
-        return this.uwrite;
+        return uwrite;
     }
 
 
@@ -374,7 +376,7 @@ public class FileItem
 
     public EntityItemBoolType getUExec()
     {
-        return this.uexec;
+        return uexec;
     }
 
 
@@ -391,7 +393,7 @@ public class FileItem
 
     public EntityItemBoolType getGRead()
     {
-        return this.gread;
+        return gread;
     }
 
 
@@ -401,13 +403,13 @@ public class FileItem
                     final EntityItemBoolType gwrite
                     )
     {
-        this.uwrite = gwrite;
+        uwrite = gwrite;
     }
 
 
     public EntityItemBoolType getGWrite()
     {
-        return this.gwrite;
+        return gwrite;
     }
 
 
@@ -424,7 +426,7 @@ public class FileItem
 
     public EntityItemBoolType getGExec()
     {
-        return this.gexec;
+        return gexec;
     }
 
 
@@ -441,7 +443,7 @@ public class FileItem
 
     public EntityItemBoolType getORead()
     {
-        return this.oread;
+        return oread;
     }
 
 
@@ -457,7 +459,7 @@ public class FileItem
 
     public EntityItemBoolType getOWrite()
     {
-        return this.owrite;
+        return owrite;
     }
 
 
@@ -474,7 +476,7 @@ public class FileItem
 
     public EntityItemBoolType getOExec()
     {
-        return this.oexec;
+        return oexec;
     }
 
 
@@ -491,7 +493,7 @@ public class FileItem
 
     public EntityItemBoolType getHasExtendedAcl()
     {
-        return this.has_extended_acl;
+        return has_extended_acl;
     }
 
 

@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
@@ -67,8 +67,10 @@ public class ShadowItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.shadow;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.shadow;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.SHADOW;
     }
 
 
@@ -85,7 +87,7 @@ public class ShadowItem
 
     public EntityItemStringType getUsername()
     {
-        return this.username;
+        return username;
     }
 
 
@@ -102,7 +104,7 @@ public class ShadowItem
 
     public EntityItemStringType getPassword()
     {
-        return this.password;
+        return password;
     }
 
 
@@ -119,7 +121,7 @@ public class ShadowItem
 
     public EntityItemIntType getChgLst()
     {
-        return this.chg_lst;
+        return chg_lst;
     }
 
 
@@ -136,7 +138,7 @@ public class ShadowItem
 
     public EntityItemIntType getChgAllow()
     {
-        return this.chg_allow;
+        return chg_allow;
     }
 
 
@@ -153,7 +155,7 @@ public class ShadowItem
 
     public EntityItemIntType getChgReq()
     {
-        return this.chg_req;
+        return chg_req;
     }
 
 
@@ -170,7 +172,7 @@ public class ShadowItem
 
     public EntityItemIntType getExpWarn()
     {
-        return this.exp_warn;
+        return exp_warn;
     }
 
 
@@ -187,58 +189,58 @@ public class ShadowItem
 
     public EntityItemIntType getExpInact()
     {
-        return this.exp_inact;
+        return exp_inact;
     }
 
 
 
     /**
      */
-    public void setExpDate( 
-                    final EntityItemIntType exp_date 
+    public void setExpDate(
+                    final EntityItemIntType exp_date
                     )
     {
         this.exp_date = exp_date;
     }
 
-    
+
     public EntityItemIntType getExpDate()
     {
         return exp_date;
     }
 
 
-    
+
     /**
      */
-    public void setFlag( 
-                    final EntityItemStringType flag 
+    public void setFlag(
+                    final EntityItemStringType flag
                     )
     {
         this.flag = flag;
     }
 
-    
+
     public EntityItemStringType getFlag()
     {
-        return this.flag;
+        return flag;
     }
 
 
-    
+
     /**
      */
-    public void setEncryptMethod( 
-                    final EntityItemEncryptMethodType encrypt_method 
+    public void setEncryptMethod(
+                    final EntityItemEncryptMethodType encrypt_method
                     )
     {
         this.encrypt_method = encrypt_method;
     }
 
-    
+
     public EntityItemEncryptMethodType getEncryptMethod()
     {
-        return this.encrypt_method;
+        return encrypt_method;
     }
 
 

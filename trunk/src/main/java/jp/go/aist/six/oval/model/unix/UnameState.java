@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
@@ -90,8 +90,10 @@ public class UnameState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.uname;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.uname;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.UNAME;
     }
 
 
@@ -109,7 +111,7 @@ public class UnameState
 
     public EntityStateStringType getMachineClass()
     {
-        return this.machine_class;
+        return machine_class;
 //        return _properties.getProperty(
 //                        UnameProperty.MACHINE_CLASS, EntityStateStringType.class );
     }
@@ -147,7 +149,7 @@ public class UnameState
 
     public EntityStateStringType getNodeName()
     {
-        return this.node_name;
+        return node_name;
 //        return _properties.getProperty(
 //                        UnameProperty.NODE_NAME, EntityStateStringType.class );
     }
@@ -167,7 +169,7 @@ public class UnameState
 
     public EntityStateStringType getOsName()
     {
-        return this.os_name;
+        return os_name;
 //        return _properties.getProperty(
 //                        UnameProperty.OS_NAME, EntityStateStringType.class );
     }
@@ -196,7 +198,7 @@ public class UnameState
 
     public EntityStateStringType getOsRelease()
     {
-        return this.os_release;
+        return os_release;
 //        return _properties.getProperty(
 //                        UnameProperty.OS_RELEASE, EntityStateStringType.class );
     }
@@ -225,7 +227,7 @@ public class UnameState
 
     public EntityStateStringType getOsVersion()
     {
-        return this.os_version;
+        return os_version;
 //        return _properties.getProperty(
 //                        UnameProperty.OS_VERSION, EntityStateStringType.class );
     }
@@ -247,14 +249,14 @@ public class UnameState
                     final EntityStateStringType type
                     )
     {
-        this.processor_type = type;
+        processor_type = type;
 //        _properties.setProperty( UnameProperty.PROCESSOR_TYPE, type );
     }
 
 
     public EntityStateStringType getProcessorType()
     {
-        return this.processor_type;
+        return processor_type;
 //        return _properties.getProperty(
 //                        UnameProperty.PROCESSOR_TYPE, EntityStateStringType.class );
     }

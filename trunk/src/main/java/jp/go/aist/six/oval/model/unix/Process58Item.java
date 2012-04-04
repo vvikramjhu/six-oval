@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
@@ -84,8 +84,10 @@ public class Process58Item
     {
         super( id, status );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.process58;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.process58;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.PROCESS58;
     }
 
 
@@ -102,7 +104,7 @@ public class Process58Item
 
     public EntityItemStringType getCommandLine()
     {
-        return this.command_line;
+        return command_line;
     }
 
 
@@ -119,7 +121,7 @@ public class Process58Item
 
     public EntityItemStringType getExecTime()
     {
-        return this.exec_time;
+        return exec_time;
     }
 
 
@@ -136,7 +138,7 @@ public class Process58Item
 
     public EntityItemIntType getPid()
     {
-        return this.pid;
+        return pid;
     }
 
 
@@ -153,7 +155,7 @@ public class Process58Item
 
     public EntityItemIntType getPpid()
     {
-        return this.ppid;
+        return ppid;
     }
 
 
@@ -170,7 +172,7 @@ public class Process58Item
 
     public EntityItemIntType getPriority()
     {
-        return this.priority;
+        return priority;
     }
 
 
@@ -187,7 +189,7 @@ public class Process58Item
 
     public EntityItemIntType getRuid()
     {
-        return this.ruid;
+        return ruid;
     }
 
 
@@ -204,7 +206,7 @@ public class Process58Item
 
     public EntityItemStringType getSchedulingClass()
     {
-        return this.scheduling_class;
+        return scheduling_class;
     }
 
 
@@ -221,7 +223,7 @@ public class Process58Item
 
     public EntityItemStringType getStartTime()
     {
-        return this.start_time;
+        return start_time;
     }
 
 
@@ -238,7 +240,7 @@ public class Process58Item
 
     public EntityItemStringType getTty()
     {
-        return this.tty;
+        return tty;
     }
 
 
@@ -255,7 +257,7 @@ public class Process58Item
 
     public EntityItemIntType getUserId()
     {
-        return this.user_id;
+        return user_id;
     }
 
 
@@ -272,7 +274,7 @@ public class Process58Item
 
     public EntityItemBoolType getExecShield()
     {
-        return this.exec_shield;
+        return exec_shield;
     }
 
 
@@ -289,7 +291,7 @@ public class Process58Item
 
     public EntityItemIntType getLoginuid()
     {
-        return this.loginuid;
+        return loginuid;
     }
 
 
@@ -306,7 +308,7 @@ public class Process58Item
 
     public EntityItemCapabilityType getPosixCapability()
     {
-        return this.posix_capability;
+        return posix_capability;
     }
 
 
@@ -323,7 +325,7 @@ public class Process58Item
 
     public EntityItemStringType getSelinuxDomainLabel()
     {
-        return this.selinux_domain_label;
+        return selinux_domain_label;
     }
 
 
@@ -339,7 +341,7 @@ public class Process58Item
 
     public EntityItemIntType getSessionId()
     {
-        return this.session_id;
+        return session_id;
     }
 
 

@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
@@ -37,6 +37,7 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
  * @deprecated Deprecated as of version 5.8:
  *             Replaced by the process58 item.
  */
+@Deprecated
 public class ProcessItem
     extends ItemType
 {
@@ -79,8 +80,10 @@ public class ProcessItem
     {
         super( id, status );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.process;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.process;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.PROCESS;
     }
 
 
@@ -97,7 +100,7 @@ public class ProcessItem
 
     public EntityItemStringType getCommand()
     {
-        return this.command;
+        return command;
     }
 
 
@@ -114,7 +117,7 @@ public class ProcessItem
 
     public EntityItemStringType getExecTime()
     {
-        return this.exec_time;
+        return exec_time;
     }
 
 
@@ -131,7 +134,7 @@ public class ProcessItem
 
     public EntityItemIntType getPid()
     {
-        return this.pid;
+        return pid;
     }
 
 
@@ -148,7 +151,7 @@ public class ProcessItem
 
     public EntityItemIntType getPpid()
     {
-        return this.ppid;
+        return ppid;
     }
 
 
@@ -165,7 +168,7 @@ public class ProcessItem
 
     public EntityItemIntType getPriority()
     {
-        return this.priority;
+        return priority;
     }
 
 
@@ -182,7 +185,7 @@ public class ProcessItem
 
     public EntityItemIntType getRuid()
     {
-        return this.ruid;
+        return ruid;
     }
 
 
@@ -199,7 +202,7 @@ public class ProcessItem
 
     public EntityItemStringType getSchedulingClass()
     {
-        return this.scheduling_class;
+        return scheduling_class;
     }
 
 
@@ -216,7 +219,7 @@ public class ProcessItem
 
     public EntityItemStringType getStartTime()
     {
-        return this.start_time;
+        return start_time;
     }
 
 
@@ -233,7 +236,7 @@ public class ProcessItem
 
     public EntityItemStringType getTty()
     {
-        return this.tty;
+        return tty;
     }
 
 
@@ -250,7 +253,7 @@ public class ProcessItem
 
     public EntityItemIntType getUserId()
     {
-        return this.user_id;
+        return user_id;
     }
 
 

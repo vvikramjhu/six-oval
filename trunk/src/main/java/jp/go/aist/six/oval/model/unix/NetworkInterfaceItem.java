@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.sc.ItemType;
 
 
 /**
- * The network_interface item enumerates various attributes 
+ * The network_interface item enumerates various attributes
  * about the network interfaces on a system.
  *
  * @author  Akihito Nakamura, AIST
@@ -66,8 +66,10 @@ public class NetworkInterfaceItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.network_interface;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.network_interface;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.INTERFACE;
     }
 
 
@@ -84,7 +86,7 @@ public class NetworkInterfaceItem
 
     public EntityItemStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -101,7 +103,7 @@ public class NetworkInterfaceItem
 
     public EntityItemNetworkInterfaceType getType()
     {
-        return this.type;
+        return type;
     }
 
 
@@ -118,7 +120,7 @@ public class NetworkInterfaceItem
 
     public EntityItemStringType getHardwareAddr()
     {
-        return this.hardware_addr;
+        return hardware_addr;
     }
 
 
@@ -135,7 +137,7 @@ public class NetworkInterfaceItem
 
     public EntityItemIPAddressStringType getInetAddr()
     {
-        return this.inet_addr;
+        return inet_addr;
     }
 
 
@@ -152,7 +154,7 @@ public class NetworkInterfaceItem
 
     public EntityItemIPAddressStringType getBroadcastAddr()
     {
-        return this.broadcast_addr;
+        return broadcast_addr;
     }
 
 
@@ -169,7 +171,7 @@ public class NetworkInterfaceItem
 
     public EntityItemIPAddressStringType getNetmask()
     {
-        return this.netmask;
+        return netmask;
     }
 
 
@@ -186,7 +188,7 @@ public class NetworkInterfaceItem
 
     public EntityItemStringType getFlag()
     {
-        return this.flag;
+        return flag;
     }
 
 

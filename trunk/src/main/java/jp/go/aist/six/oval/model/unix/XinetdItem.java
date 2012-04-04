@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
 import jp.go.aist.six.oval.model.sc.EntityItemIPAddressStringType;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
@@ -32,7 +32,7 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * The xinetd item holds information associated with different Internet services. 
+ * The xinetd item holds information associated with different Internet services.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -83,8 +83,10 @@ public class XinetdItem
     {
         super( id, status );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.xinetd;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.xinetd;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.XINETD;
     }
 
 
@@ -101,7 +103,7 @@ public class XinetdItem
 
     public EntityItemStringType getProtocol()
     {
-        return this.protocol;
+        return protocol;
     }
 
 
@@ -118,7 +120,7 @@ public class XinetdItem
 
     public EntityItemStringType getServiceName()
     {
-        return this.service_name;
+        return service_name;
     }
 
 
@@ -135,7 +137,7 @@ public class XinetdItem
 
     public EntityItemStringType getFlags()
     {
-        return this.flags;
+        return flags;
     }
 
 
@@ -152,7 +154,7 @@ public class XinetdItem
 
     public EntityItemStringType getNoAccess()
     {
-        return this.no_access;
+        return no_access;
     }
 
 
@@ -169,7 +171,7 @@ public class XinetdItem
 
     public EntityItemIPAddressStringType getOnlyFrom()
     {
-        return this.only_from;
+        return only_from;
     }
 
 
@@ -186,7 +188,7 @@ public class XinetdItem
 
     public EntityItemIntType getPort()
     {
-        return this.port;
+        return port;
     }
 
 
@@ -203,7 +205,7 @@ public class XinetdItem
 
     public EntityItemStringType getServer()
     {
-        return this.server;
+        return server;
     }
 
 
@@ -220,7 +222,7 @@ public class XinetdItem
 
     public EntityItemStringType getServerArguments()
     {
-        return this.server_arguments;
+        return server_arguments;
     }
 
 
@@ -237,7 +239,7 @@ public class XinetdItem
 
     public EntityItemStringType getSocketType()
     {
-        return this.socket_type;
+        return socket_type;
     }
 
 
@@ -254,7 +256,7 @@ public class XinetdItem
 
     public EntityItemXinetdTypeStatusType getType()
     {
-        return this.type;
+        return type;
     }
 
 
@@ -271,7 +273,7 @@ public class XinetdItem
 
     public EntityItemStringType getUser()
     {
-        return this.user;
+        return user;
     }
 
 
@@ -288,7 +290,7 @@ public class XinetdItem
 
     public EntityItemBoolType getWait()
     {
-        return this.wait;
+        return wait;
     }
 
 
@@ -305,7 +307,7 @@ public class XinetdItem
 
     public EntityItemBoolType getDisabled()
     {
-        return this.disabled;
+        return disabled;
     }
 
 

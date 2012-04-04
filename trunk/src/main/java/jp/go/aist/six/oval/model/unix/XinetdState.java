@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The xinetd state defines the different information 
+ * The xinetd state defines the different information
  * associated with a specific Internet service.
  *
  * @author  Akihito Nakamura, AIST
@@ -85,8 +85,10 @@ public class XinetdState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.xinetd;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.xinetd;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.XINETD;
     }
 
 
@@ -103,7 +105,7 @@ public class XinetdState
 
     public EntityStateStringType getProtocol()
     {
-        return this.protocol;
+        return protocol;
     }
 
 
@@ -120,7 +122,7 @@ public class XinetdState
 
     public EntityStateStringType getServiceName()
     {
-        return this.service_name;
+        return service_name;
     }
 
 
@@ -137,7 +139,7 @@ public class XinetdState
 
     public EntityStateStringType getFlags()
     {
-        return this.flags;
+        return flags;
     }
 
 
@@ -154,7 +156,7 @@ public class XinetdState
 
     public EntityStateStringType getNoAccess()
     {
-        return this.no_access;
+        return no_access;
     }
 
 
@@ -171,7 +173,7 @@ public class XinetdState
 
     public EntityStateIPAddressStringType getOnlyFrom()
     {
-        return this.only_from;
+        return only_from;
     }
 
 
@@ -188,7 +190,7 @@ public class XinetdState
 
     public EntityStateIntType getPort()
     {
-        return this.port;
+        return port;
     }
 
 
@@ -205,7 +207,7 @@ public class XinetdState
 
     public EntityStateStringType getServer()
     {
-        return this.server;
+        return server;
     }
 
 
@@ -222,7 +224,7 @@ public class XinetdState
 
     public EntityStateStringType getServerArguments()
     {
-        return this.server_arguments;
+        return server_arguments;
     }
 
 
@@ -239,7 +241,7 @@ public class XinetdState
 
     public EntityStateStringType getSocketType()
     {
-        return this.socket_type;
+        return socket_type;
     }
 
 
@@ -256,7 +258,7 @@ public class XinetdState
 
     public EntityStateXinetdTypeStatusType getType()
     {
-        return this.type;
+        return type;
     }
 
 
@@ -273,7 +275,7 @@ public class XinetdState
 
     public EntityStateStringType getUser()
     {
-        return this.user;
+        return user;
     }
 
 
@@ -290,7 +292,7 @@ public class XinetdState
 
     public EntityStateBoolType getWait()
     {
-        return this.wait;
+        return wait;
     }
 
 
@@ -307,7 +309,7 @@ public class XinetdState
 
     public EntityStateBoolType getDisabled()
     {
-        return this.disabled;
+        return disabled;
     }
 
 

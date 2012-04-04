@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -94,8 +94,10 @@ public class FileState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.file;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.file;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.FILE;
     }
 
 
@@ -112,7 +114,7 @@ public class FileState
 
     public EntityStateStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 
@@ -138,7 +140,7 @@ public class FileState
 
     public EntityStateStringType getPath()
     {
-        return this.path;
+        return path;
     }
 
 
@@ -164,7 +166,7 @@ public class FileState
 
     public EntityStateStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -190,7 +192,7 @@ public class FileState
 
     public EntityStateStringType getType()
     {
-        return this.type;
+        return type;
     }
 
 
@@ -207,7 +209,7 @@ public class FileState
 
     public EntityStateIntType getGroupID()
     {
-        return this.group_id;
+        return group_id;
     }
 
 
@@ -233,7 +235,7 @@ public class FileState
 
     public EntityStateIntType getUserID()
     {
-        return this.user_id;
+        return user_id;
     }
 
 
@@ -259,7 +261,7 @@ public class FileState
 
     public EntityStateIntType getATime()
     {
-        return this.a_time;
+        return a_time;
     }
 
 
@@ -276,7 +278,7 @@ public class FileState
 
     public EntityStateIntType getCTime()
     {
-        return this.c_time;
+        return c_time;
     }
 
 
@@ -293,7 +295,7 @@ public class FileState
 
     public EntityStateIntType getMTime()
     {
-        return this.m_time;
+        return m_time;
     }
 
 
@@ -310,7 +312,7 @@ public class FileState
 
     public EntityStateIntType getSize()
     {
-        return this.size;
+        return size;
     }
 
 
@@ -327,7 +329,7 @@ public class FileState
 
     public EntityStateBoolType getSuID()
     {
-        return this.suid;
+        return suid;
     }
 
 
@@ -344,7 +346,7 @@ public class FileState
 
     public EntityStateBoolType getSgID()
     {
-        return this.sgid;
+        return sgid;
     }
 
 
@@ -361,7 +363,7 @@ public class FileState
 
     public EntityStateBoolType getSticky()
     {
-        return this.sticky;
+        return sticky;
     }
 
 
@@ -378,7 +380,7 @@ public class FileState
 
     public EntityStateBoolType getURead()
     {
-        return this.uread;
+        return uread;
     }
 
 
@@ -394,7 +396,7 @@ public class FileState
 
     public EntityStateBoolType getUWrite()
     {
-        return this.uwrite;
+        return uwrite;
     }
 
 
@@ -411,7 +413,7 @@ public class FileState
 
     public EntityStateBoolType getUExec()
     {
-        return this.uexec;
+        return uexec;
     }
 
 
@@ -428,7 +430,7 @@ public class FileState
 
     public EntityStateBoolType getGRead()
     {
-        return this.gread;
+        return gread;
     }
 
 
@@ -438,13 +440,13 @@ public class FileState
                     final EntityStateBoolType gwrite
                     )
     {
-        this.uwrite = gwrite;
+        uwrite = gwrite;
     }
 
 
     public EntityStateBoolType getGWrite()
     {
-        return this.gwrite;
+        return gwrite;
     }
 
 
@@ -461,7 +463,7 @@ public class FileState
 
     public EntityStateBoolType getGExec()
     {
-        return this.gexec;
+        return gexec;
     }
 
 
@@ -478,7 +480,7 @@ public class FileState
 
     public EntityStateBoolType getORead()
     {
-        return this.oread;
+        return oread;
     }
 
 
@@ -494,7 +496,7 @@ public class FileState
 
     public EntityStateBoolType getOWrite()
     {
-        return this.owrite;
+        return owrite;
     }
 
 
@@ -511,7 +513,7 @@ public class FileState
 
     public EntityStateBoolType getOExec()
     {
-        return this.oexec;
+        return oexec;
     }
 
 
@@ -528,7 +530,7 @@ public class FileState
 
     public EntityStateBoolType getHasExtendedAcl()
     {
-        return this.has_extended_acl;
+        return has_extended_acl;
     }
 
 

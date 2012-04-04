@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.unix;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -33,7 +33,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The password object is used by a password test to define the object to be evaluated. 
+ * The password object is used by a password test to define the object to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -78,8 +78,10 @@ public class PasswordObject
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.password;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.password;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.PASSWORD;
     }
 
 
@@ -133,7 +135,7 @@ public class PasswordObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -150,7 +152,7 @@ public class PasswordObject
 
     public EntityObjectStringType getUsername()
     {
-        return this.username;
+        return username;
     }
 
 
@@ -161,10 +163,10 @@ public class PasswordObject
                     final Collection<? extends Filter> filters
                     )
     {
-        if (this.filter != filters) {
-            this.filter.clear();
+        if (filter != filters) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -184,7 +186,7 @@ public class PasswordObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 

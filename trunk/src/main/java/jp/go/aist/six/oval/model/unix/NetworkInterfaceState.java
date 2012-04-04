@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -76,8 +76,10 @@ public class NetworkInterfaceState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.network_interface;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.network_interface;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.INTERFACE;
     }
 
 
@@ -94,7 +96,7 @@ public class NetworkInterfaceState
 
     public EntityStateStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -111,7 +113,7 @@ public class NetworkInterfaceState
 
     public EntityStateNetworkInterfaceType getType()
     {
-        return this.type;
+        return type;
     }
 
 
@@ -128,7 +130,7 @@ public class NetworkInterfaceState
 
     public EntityStateStringType getHardwareAddr()
     {
-        return this.hardware_addr;
+        return hardware_addr;
     }
 
 
@@ -145,7 +147,7 @@ public class NetworkInterfaceState
 
     public EntityStateIPAddressStringType getInetAddr()
     {
-        return this.inet_addr;
+        return inet_addr;
     }
 
 
@@ -162,7 +164,7 @@ public class NetworkInterfaceState
 
     public EntityStateIPAddressStringType getBroadcastAddr()
     {
-        return this.broadcast_addr;
+        return broadcast_addr;
     }
 
 
@@ -179,7 +181,7 @@ public class NetworkInterfaceState
 
     public EntityStateIPAddressStringType getNetmask()
     {
-        return this.netmask;
+        return netmask;
     }
 
 
@@ -196,7 +198,7 @@ public class NetworkInterfaceState
 
     public EntityStateStringType getFlag()
     {
-        return this.flag;
+        return flag;
     }
 
 

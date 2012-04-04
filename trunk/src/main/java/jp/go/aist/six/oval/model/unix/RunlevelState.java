@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The runlevel state holds information about 
+ * The runlevel state holds information about
  * whether a specific service is scheduled to start or stop at a given runlevel.
  *
  * @author  Akihito Nakamura, AIST
@@ -74,8 +74,10 @@ public class RunlevelState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.runlevel;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.runlevel;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.RUNLEVEL;
     }
 
 
@@ -92,7 +94,7 @@ public class RunlevelState
 
     public EntityStateStringType getServiceName()
     {
-        return this.service_name;
+        return service_name;
     }
 
 
@@ -109,7 +111,7 @@ public class RunlevelState
 
     public EntityStateStringType getRunlevel()
     {
-        return this.runlevel;
+        return runlevel;
     }
 
 
@@ -126,7 +128,7 @@ public class RunlevelState
 
     public EntityStateBoolType getStart()
     {
-        return this.start;
+        return start;
     }
 
 
@@ -143,7 +145,7 @@ public class RunlevelState
 
     public EntityStateBoolType getKill()
     {
-        return this.kill;
+        return kill;
     }
 
 

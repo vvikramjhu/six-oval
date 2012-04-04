@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -51,7 +51,7 @@ public class PasswordState
 
 
 
-    
+
     /**
      * Constructor.
      */
@@ -78,8 +78,10 @@ public class PasswordState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.password;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.password;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.PASSWORD;
     }
 
 
@@ -96,7 +98,7 @@ public class PasswordState
 
     public EntityStateStringType getUsername()
     {
-        return this.username;
+        return username;
     }
 
 
@@ -113,7 +115,7 @@ public class PasswordState
 
     public EntityStateStringType getPassword()
     {
-        return this.password;
+        return password;
     }
 
 
@@ -130,7 +132,7 @@ public class PasswordState
 
     public EntityStateIntType getUserId()
     {
-        return this.user_id;
+        return user_id;
     }
 
 
@@ -147,7 +149,7 @@ public class PasswordState
 
     public EntityStateIntType getGroupId()
     {
-        return this.group_id;
+        return group_id;
     }
 
 
@@ -164,7 +166,7 @@ public class PasswordState
 
     public EntityStateStringType getGcos()
     {
-        return this.gcos;
+        return gcos;
     }
 
 
@@ -181,7 +183,7 @@ public class PasswordState
 
     public EntityStateStringType getHomeDir()
     {
-        return this.home_dir;
+        return home_dir;
     }
 
 
@@ -198,28 +200,28 @@ public class PasswordState
 
     public EntityStateStringType getLoginShell()
     {
-        return this.login_shell;
+        return login_shell;
     }
 
 
 
     /**
      */
-    public void setLastLogin( 
-                    final EntityStateIntType last_login 
+    public void setLastLogin(
+                    final EntityStateIntType last_login
                     )
     {
         this.last_login = last_login;
     }
 
-    
+
     public EntityStateIntType getLastLogin()
     {
         return last_login;
     }
 
 
-    
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
