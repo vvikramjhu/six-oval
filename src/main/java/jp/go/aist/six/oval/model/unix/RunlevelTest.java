@@ -20,16 +20,16 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 
 /**
- * The runlevel test is used to check information about 
- * which runlevel specified services are scheduled to exist at. 
+ * The runlevel test is used to check information about
+ * which runlevel specified services are scheduled to exist at.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -66,8 +66,10 @@ public class RunlevelTest
     {
         super( id, version, comment, check );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.runlevel;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.runlevel;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.RUNLEVEL;
     }
 
 

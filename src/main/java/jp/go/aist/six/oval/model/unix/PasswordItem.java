@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
@@ -65,8 +65,10 @@ public class PasswordItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.password;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.password;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.PASSWORD;
     }
 
 
@@ -83,7 +85,7 @@ public class PasswordItem
 
     public EntityItemStringType getUsername()
     {
-        return this.username;
+        return username;
     }
 
 
@@ -100,7 +102,7 @@ public class PasswordItem
 
     public EntityItemStringType getPassword()
     {
-        return this.password;
+        return password;
     }
 
 
@@ -117,7 +119,7 @@ public class PasswordItem
 
     public EntityItemIntType getUserId()
     {
-        return this.user_id;
+        return user_id;
     }
 
 
@@ -134,7 +136,7 @@ public class PasswordItem
 
     public EntityItemIntType getGroupId()
     {
-        return this.group_id;
+        return group_id;
     }
 
 
@@ -151,7 +153,7 @@ public class PasswordItem
 
     public EntityItemStringType getGcos()
     {
-        return this.gcos;
+        return gcos;
     }
 
 
@@ -168,7 +170,7 @@ public class PasswordItem
 
     public EntityItemStringType getHomeDir()
     {
-        return this.home_dir;
+        return home_dir;
     }
 
 
@@ -185,21 +187,21 @@ public class PasswordItem
 
     public EntityItemStringType getLoginShell()
     {
-        return this.login_shell;
+        return login_shell;
     }
 
 
 
     /**
      */
-    public void setLastLogin( 
-                    final EntityItemIntType last_login 
+    public void setLastLogin(
+                    final EntityItemIntType last_login
                     )
     {
         this.last_login = last_login;
     }
 
-    
+
     public EntityItemIntType getLastLogin()
     {
         return last_login;

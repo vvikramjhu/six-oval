@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
@@ -137,8 +137,10 @@ public class UnameItem
         setOsVersion( osVersion );
         setProcessorType( processorType );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.uname;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.uname;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.UNAME;
     }
 
 
@@ -156,7 +158,7 @@ public class UnameItem
 
     public EntityItemStringType getMachineClass()
     {
-        return this.machine_class;
+        return machine_class;
 //        return _properties.get( UnameProperty.MACHINE_CLASS );
     }
 
@@ -175,7 +177,7 @@ public class UnameItem
 
     public EntityItemStringType getNodeName()
     {
-        return this.node_name;
+        return node_name;
 //        return _properties.get( UnameProperty.NODE_NAME );
     }
 
@@ -194,7 +196,7 @@ public class UnameItem
 
     public EntityItemStringType getOsName()
     {
-        return this.os_name;
+        return os_name;
 //        return _properties.get( UnameProperty.OS_NAME );
     }
 
@@ -213,7 +215,7 @@ public class UnameItem
 
     public EntityItemStringType getOsRelease()
     {
-        return this.os_release;
+        return os_release;
 //        return _properties.get( UnameProperty.OS_RELEASE );
     }
 
@@ -232,7 +234,7 @@ public class UnameItem
 
     public EntityItemStringType getOsVersion()
     {
-        return this.os_version;
+        return os_version;
 //        return _properties.get( UnameProperty.OS_VERSION );
     }
 
@@ -251,7 +253,7 @@ public class UnameItem
 
     public EntityItemStringType getProcessorType()
     {
-        return this.processor_type;
+        return processor_type;
 //        return _properties.get( UnameProperty.PROCESSOR_TYPE );
     }
 

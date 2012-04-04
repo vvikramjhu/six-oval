@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -52,7 +52,7 @@ public class ShadowState
     private EntityStateEncryptMethodType    encrypt_method;
 
 
-    
+
     /**
      * Constructor.
      */
@@ -79,8 +79,10 @@ public class ShadowState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.shadow;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.shadow;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.SHADOW;
     }
 
 
@@ -97,7 +99,7 @@ public class ShadowState
 
     public EntityStateStringType getUsername()
     {
-        return this.username;
+        return username;
     }
 
 
@@ -114,7 +116,7 @@ public class ShadowState
 
     public EntityStateStringType getPassword()
     {
-        return this.password;
+        return password;
     }
 
 
@@ -131,7 +133,7 @@ public class ShadowState
 
     public EntityStateIntType getChgLst()
     {
-        return this.chg_lst;
+        return chg_lst;
     }
 
 
@@ -148,7 +150,7 @@ public class ShadowState
 
     public EntityStateIntType getChgAllow()
     {
-        return this.chg_allow;
+        return chg_allow;
     }
 
 
@@ -165,7 +167,7 @@ public class ShadowState
 
     public EntityStateIntType getChgReq()
     {
-        return this.chg_req;
+        return chg_req;
     }
 
 
@@ -182,7 +184,7 @@ public class ShadowState
 
     public EntityStateIntType getExpWarn()
     {
-        return this.exp_warn;
+        return exp_warn;
     }
 
 
@@ -199,62 +201,62 @@ public class ShadowState
 
     public EntityStateIntType getExpInact()
     {
-        return this.exp_inact;
+        return exp_inact;
     }
 
 
 
     /**
      */
-    public void setExpDate( 
-                    final EntityStateIntType exp_date 
+    public void setExpDate(
+                    final EntityStateIntType exp_date
                     )
     {
         this.exp_date = exp_date;
     }
 
-    
+
     public EntityStateIntType getExpDate()
     {
         return exp_date;
     }
 
 
-    
+
     /**
      */
-    public void setFlag( 
-                    final EntityStateStringType flag 
+    public void setFlag(
+                    final EntityStateStringType flag
                     )
     {
         this.flag = flag;
     }
 
-    
+
     public EntityStateStringType getFlag()
     {
-        return this.flag;
+        return flag;
     }
 
 
-    
+
     /**
      */
-    public void setEncryptMethod( 
-                    final EntityStateEncryptMethodType encrypt_method 
+    public void setEncryptMethod(
+                    final EntityStateEncryptMethodType encrypt_method
                     )
     {
         this.encrypt_method = encrypt_method;
     }
 
-    
+
     public EntityStateEncryptMethodType getEncryptMethod()
     {
-        return this.encrypt_method;
+        return encrypt_method;
     }
 
 
-    
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************

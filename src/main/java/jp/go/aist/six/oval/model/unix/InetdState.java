@@ -20,16 +20,16 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The inetd state defines the different information 
- * associated with a specific Internet service. 
+ * The inetd state defines the different information
+ * associated with a specific Internet service.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -76,8 +76,10 @@ public class InetdState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.inetd;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.inetd;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.INETD;
     }
 
 
@@ -94,7 +96,7 @@ public class InetdState
 
     public EntityStateStringType getProtocol()
     {
-        return this.protocol;
+        return protocol;
     }
 
 
@@ -111,7 +113,7 @@ public class InetdState
 
     public EntityStateStringType getServiceName()
     {
-        return this.service_name;
+        return service_name;
     }
 
 
@@ -128,7 +130,7 @@ public class InetdState
 
     public EntityStateStringType getServerProgram()
     {
-        return this.server_program;
+        return server_program;
     }
 
 
@@ -145,7 +147,7 @@ public class InetdState
 
     public EntityStateStringType getServerArguments()
     {
-        return this.server_arguments;
+        return server_arguments;
     }
 
 
@@ -162,7 +164,7 @@ public class InetdState
 
     public EntityStateEndpointType getEndpointType()
     {
-        return this.endpoint_type;
+        return endpoint_type;
     }
 
 
@@ -179,7 +181,7 @@ public class InetdState
 
     public EntityStateStringType getExecAsUser()
     {
-        return this.exec_as_user;
+        return exec_as_user;
     }
 
 
@@ -196,7 +198,7 @@ public class InetdState
 
     public EntityStateWaitStatusType getWaitStatus()
     {
-        return this.wait_status;
+        return wait_status;
     }
 
 

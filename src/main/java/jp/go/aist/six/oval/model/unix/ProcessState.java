@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -36,6 +36,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
  * @deprecated Deprecated as of version 5.8:
  *             Replaced by the process58 state.
  */
+@Deprecated
 public class ProcessState
     extends StateType
 {
@@ -80,8 +81,10 @@ public class ProcessState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.process;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.process;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.PROCESS;
     }
 
 
@@ -98,7 +101,7 @@ public class ProcessState
 
     public EntityStateStringType getCommand()
     {
-        return this.command;
+        return command;
     }
 
 
@@ -115,7 +118,7 @@ public class ProcessState
 
     public EntityStateStringType getExecTime()
     {
-        return this.exec_time;
+        return exec_time;
     }
 
 
@@ -132,7 +135,7 @@ public class ProcessState
 
     public EntityStateIntType getPid()
     {
-        return this.pid;
+        return pid;
     }
 
 
@@ -149,7 +152,7 @@ public class ProcessState
 
     public EntityStateIntType getPpid()
     {
-        return this.ppid;
+        return ppid;
     }
 
 
@@ -166,7 +169,7 @@ public class ProcessState
 
     public EntityStateIntType getPriority()
     {
-        return this.priority;
+        return priority;
     }
 
 
@@ -183,7 +186,7 @@ public class ProcessState
 
     public EntityStateIntType getRuid()
     {
-        return this.ruid;
+        return ruid;
     }
 
 
@@ -200,7 +203,7 @@ public class ProcessState
 
     public EntityStateStringType getSchedulingClass()
     {
-        return this.scheduling_class;
+        return scheduling_class;
     }
 
 
@@ -217,7 +220,7 @@ public class ProcessState
 
     public EntityStateStringType getStartTime()
     {
-        return this.start_time;
+        return start_time;
     }
 
 
@@ -234,7 +237,7 @@ public class ProcessState
 
     public EntityStateStringType getTty()
     {
-        return this.tty;
+        return tty;
     }
 
 
@@ -251,7 +254,7 @@ public class ProcessState
 
     public EntityStateIntType getUserId()
     {
-        return this.user_id;
+        return user_id;
     }
 
 

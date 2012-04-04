@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
@@ -30,8 +30,8 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * The runlevel item holds information 
- * about the start or kill state of a specified service at a given runlevel. 
+ * The runlevel item holds information
+ * about the start or kill state of a specified service at a given runlevel.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -73,8 +73,10 @@ public class RunlevelItem
     {
         super( id, status );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.runlevel;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.runlevel;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.RUNLEVEL;
     }
 
 
@@ -91,7 +93,7 @@ public class RunlevelItem
 
     public EntityItemStringType getServiceName()
     {
-        return this.service_name;
+        return service_name;
     }
 
 
@@ -108,7 +110,7 @@ public class RunlevelItem
 
     public EntityItemStringType getRunlevel()
     {
-        return this.runlevel;
+        return runlevel;
     }
 
 
@@ -125,7 +127,7 @@ public class RunlevelItem
 
     public EntityItemBoolType getStart()
     {
-        return this.start;
+        return start;
     }
 
 
@@ -142,7 +144,7 @@ public class RunlevelItem
 
     public EntityItemBoolType getKill()
     {
-        return this.kill;
+        return kill;
     }
 
 

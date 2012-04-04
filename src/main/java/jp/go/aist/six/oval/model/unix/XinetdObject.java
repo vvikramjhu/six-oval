@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.unix;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -33,7 +33,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The xinetd object is used by an xinetd test to define 
+ * The xinetd object is used by an xinetd test to define
  * the specific protocol-service to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
@@ -76,8 +76,10 @@ public class XinetdObject
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.xinetd;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.xinetd;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.XINETD;
     }
 
 
@@ -131,7 +133,7 @@ public class XinetdObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -148,7 +150,7 @@ public class XinetdObject
 
     public EntityObjectStringType getProtocol()
     {
-        return this.protocol;
+        return protocol;
     }
 
 
@@ -165,7 +167,7 @@ public class XinetdObject
 
     public EntityObjectStringType getServiceName()
     {
-        return this.service_name;
+        return service_name;
     }
 
 
@@ -176,10 +178,10 @@ public class XinetdObject
                     final Collection<? extends Filter> filters
                     )
     {
-        if (this.filter != filters) {
-            this.filter.clear();
+        if (filter != filters) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -199,7 +201,7 @@ public class XinetdObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 

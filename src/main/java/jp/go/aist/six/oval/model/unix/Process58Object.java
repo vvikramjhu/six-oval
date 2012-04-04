@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.unix;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectIntType;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
@@ -34,8 +34,8 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The process58 object is used by a process58 test 
- * to define the specific process(es) to be evaluated. 
+ * The process58 object is used by a process58 test
+ * to define the specific process(es) to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -85,8 +85,10 @@ public class Process58Object
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.unix;
-        _oval_component_type = OvalComponentType.process58;
+//        _oval_platform_type = OvalPlatformType.unix;
+//        _oval_component_type = OvalComponentType.process58;
+        _oval_family = Family.UNIX;
+        _oval_component = Component.PROCESS58;
     }
 
 
@@ -140,7 +142,7 @@ public class Process58Object
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -157,7 +159,7 @@ public class Process58Object
 
     public EntityObjectStringType getCommandLine()
     {
-        return this.command_line;
+        return command_line;
     }
 
 
@@ -174,7 +176,7 @@ public class Process58Object
 
     public EntityObjectIntType getPid()
     {
-        return this.pid;
+        return pid;
     }
 
 
@@ -185,10 +187,10 @@ public class Process58Object
                     final Collection<? extends Filter> filters
                     )
     {
-        if (this.filter != filters) {
-            this.filter.clear();
+        if (filter != filters) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -208,7 +210,7 @@ public class Process58Object
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 
