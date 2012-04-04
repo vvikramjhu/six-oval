@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.repository;
 
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.OvalComponentType;
 import jp.go.aist.six.oval.model.OvalEntityType;
 
@@ -40,15 +41,15 @@ public class OvalEntityQueryParams
         public static final String  VERSION             = "version";
 
         public static final String  TYPE                = "type";
-        //(definition, test, object, state, variable)
+        //DefinitionsElement.Type {definition, test, object, state, variable}
 
         public static final String  SCHEMA_VERSION      = "schemaVersion";
 
-        public static final String  PLATFORM            = "platform";
-        //(linux, unix, windows, ...)
+        public static final String  FAMILY              = "family";
+        //Family {linux, unix, windows, ...}
 
         public static final String  COMPONENT           = "component";
-        //(family, file, ...)
+        //Component {file, rpminfo, registry, ...}
 
         public static final String  REFERER             = "referer";
 
@@ -152,23 +153,22 @@ public class OvalEntityQueryParams
 
 
     /**
-     * TODO: rename this property to "family".
      */
-    public void setPlatform(
-                    final String platform
+    public void setFamily(
+                    final String family
                     )
     {
-//        if (platform != null) {
-//            OvalPlatformType.valueOf( platform);
-//        }
+        if (family != null) {
+            Family.valueOf( family );
+        }
 
-        set( Key.PLATFORM, platform );
+        set( Key.FAMILY, family );
     }
 
 
-    public String getPlatform()
+    public String getFamily()
     {
-        return get( Key.PLATFORM );
+        return get( Key.FAMILY );
     }
 
 
