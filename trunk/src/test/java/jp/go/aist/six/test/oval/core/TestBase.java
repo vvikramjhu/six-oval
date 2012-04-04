@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import jp.go.aist.six.oval.core.OvalContext;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -221,7 +221,7 @@ public abstract class TestBase
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
                             "5.10",
-                            OvalPlatformType.linux,
+                            Family.LINUX,
                             "test/resources/OvalTestContent/5.10/linux",
                             null,
                             null
@@ -244,7 +244,7 @@ public abstract class TestBase
      * Provides OVAL test content.
      *  Class<T>            object_type,
      *  String              oval_schema_version,
-     *  OvalPlatformType    platform,
+     *  Family              family,
      *  String              dirpath,
      *  String              filename
      *  T                   expectedObject
@@ -257,7 +257,7 @@ public abstract class TestBase
                         {
                             jp.go.aist.six.oval.model.results.OvalResults.class,
                             "5.10",
-                            OvalPlatformType.windows,
+                            Family.WINDOWS,
                             "test/resources/OvalTestContent/5.10/win-res",
                             null,
                             null

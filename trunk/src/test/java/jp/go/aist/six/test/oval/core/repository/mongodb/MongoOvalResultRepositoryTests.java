@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionResultRepository;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.repository.OvalResultsQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
@@ -134,7 +134,7 @@ extends TestBase
     public void testSaveOvalResults(
                     final Class<OvalResults>          object_type,
                     final String            oval_schema_version,
-                    final OvalPlatformType  platform,
+                    final Family            family,
                     final String            dirpath,
                     final String            xml_filepath,
                     final OvalResults       expected_object
@@ -145,7 +145,7 @@ extends TestBase
                         true );
         Reporter.log( "* object type: " + object_type, true );
         Reporter.log( "* OVAL schema version: " + oval_schema_version, true );
-        Reporter.log( "* platform: " + platform.name(), true );
+        Reporter.log( "* family: " + family, true );
         Reporter.log( "* dir: " + dirpath, true );
         Reporter.log( "* XML file: " + xml_filepath, true );
 

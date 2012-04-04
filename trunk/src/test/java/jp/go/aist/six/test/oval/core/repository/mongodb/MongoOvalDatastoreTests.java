@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.AffectedType;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsType;
@@ -194,7 +194,7 @@ public class MongoOvalDatastoreTests
     public <K, T extends Persistable<K>> void testSaveAndLoad(
                     final Class<T>          object_type,
                     final String            oval_schema_version,
-                    final OvalPlatformType  platform,
+                    final Family            family,
                     final String            dirpath,
                     final String            xml_filepath,
                     final T                 expected_object
@@ -204,7 +204,7 @@ public class MongoOvalDatastoreTests
         Reporter.log( "\n//////////////////////////////////////////////////////////",
                         true );
         Reporter.log( "* OVAL schema version: " + oval_schema_version, true );
-        Reporter.log( "* platform: " + platform.name(), true );
+        Reporter.log( "* family: " + family, true );
 
         File  dir = new File( dirpath );
 
@@ -239,7 +239,7 @@ public class MongoOvalDatastoreTests
     void evaluateSaveDefinitions(
                     final Class<OvalDefinitions> object_type,
                     final String            oval_schema_version,
-                    final OvalPlatformType  platform,
+                    final Family            family,
                     final String            dirpath,
                     final String            xml_filepath,
                     final OvalDefinitions   expected_object
@@ -249,7 +249,7 @@ public class MongoOvalDatastoreTests
         Reporter.log( "\n//////////////////////////////////////////////////////////",
                         true );
         Reporter.log( "* OVAL schema version: " + oval_schema_version, true );
-        Reporter.log( "* platform: " + platform.name(), true );
+        Reporter.log( "* family: " + family, true );
 
         File  dir = new File( dirpath );
         final boolean  to_log = false;

@@ -2,7 +2,7 @@ package jp.go.aist.six.test.oval.core.xml;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.test.oval.core.TestBase;
@@ -77,7 +77,7 @@ public class OvalXmlMapperTests
     public void testOvalDefinitions(
                     final Class<OvalDefinitions> object_type,
                     final String            oval_schema_version,
-                    final OvalPlatformType  platform,
+                    final Family            family,
                     final String            dirpath,
                     final String            xml_filepath,
                     final OvalDefinitions   expected_object
@@ -88,7 +88,7 @@ public class OvalXmlMapperTests
                         true );
         Reporter.log( "* object type: " + object_type, true );
         Reporter.log( "* OVAL schema version: " + oval_schema_version, true );
-        Reporter.log( "* platform: " + platform.name(), true );
+        Reporter.log( "* family: " + family, true );
         Reporter.log( "* dir: " + dirpath, true );
         Reporter.log( "* XML file: " + xml_filepath, true );
 

@@ -5,12 +5,12 @@ import java.io.FilenameFilter;
 import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
-import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.StateType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.definitions.TestType;
@@ -160,8 +160,8 @@ extends TestBase
         // component, platform
         OvalEntityQueryParams  params_entity3 = new OvalEntityQueryParams();
         params_entity3.setType( "test" );
-        params_entity3.setComponent( OvalComponentType.regkeyeffectiverights53.name() );
-        params_entity3.setPlatform( OvalPlatformType.windows.name() );
+        params_entity3.setComponent( Component.REGKEYEFFECTIVERIGHTS53.value() );
+        params_entity3.setFamily( Family.WINDOWS.value() );
 
 
 //        // class
@@ -309,7 +309,7 @@ extends TestBase
     public void testSaveOvalDefinitions(
                     final Class<OvalDefinitions>          object_type,
                     final String            oval_schema_version,
-                    final OvalPlatformType  platform,
+                    final Family            family,
                     final String            dirpath,
                     final String            xml_filepath,
                     final OvalDefinitions   expected_object
@@ -320,7 +320,7 @@ extends TestBase
                         true );
         Reporter.log( "* object type: " + object_type, true );
         Reporter.log( "* OVAL schema version: " + oval_schema_version, true );
-        Reporter.log( "* platform: " + platform.name(), true );
+        Reporter.log( "* family: " + family, true );
         Reporter.log( "* dir: " + dirpath, true );
         Reporter.log( "* XML file: " + xml_filepath, true );
 
