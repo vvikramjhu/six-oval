@@ -33,8 +33,8 @@ public class DefinitionQueryParams
     public static class Key
     extends OvalEntityQueryParams.Key
     {
-        public static final String  DEFINITION_CLASS    = "definitionClass";
-        public static final String  TITLE               = "title";
+        public static final String  DEFINITION_CLASS    = "class";
+//        public static final String  TITLE               = "title"; // Use "searchTerms" instead!!!
 //        public static final String  FAMILY              = "family";   //override
         public static final String  PLATFORM            = "platform";
         public static final String  PRODUCT             = "product";
@@ -71,20 +71,20 @@ public class DefinitionQueryParams
 
 
 
-    /**
-     */
-    public void setTitle(
-                    final String title
-    )
-    {
-        set( Key.TITLE, title );
-    }
-
-
-    public String getTitle()
-    {
-        return get( Key.TITLE );
-    }
+//    /**
+//     */
+//    public void setTitle(
+//                    final String title
+//    )
+//    {
+//        set( Key.TITLE, title );
+//    }
+//
+//
+//    public String getTitle()
+//    {
+//        return get( Key.TITLE );
+//    }
 
 
 
@@ -107,23 +107,6 @@ public class DefinitionQueryParams
 
     /**
      */
-    public void setProduct(
-                    final String product
-    )
-    {
-        set( Key.PRODUCT, product );
-    }
-
-
-    public String getProduct()
-    {
-        return get( Key.PRODUCT );
-    }
-
-
-
-    /**
-     */
     public void setPlatform(
                     final String platform
     )
@@ -141,7 +124,24 @@ public class DefinitionQueryParams
 
     /**
      */
-    public void setRefSourceId(
+    public void setProduct(
+                    final String product
+    )
+    {
+        set( Key.PRODUCT, product );
+    }
+
+
+    public String getProduct()
+    {
+        return get( Key.PRODUCT );
+    }
+
+
+
+    /**
+     */
+    public void setRefSource(
                     final String ref_source
     )
     {

@@ -32,18 +32,21 @@ public class CommonQueryParams
 
     public static class Key
     {
-        public static final String  ORDER       = "order";
-
         // OpenSearch
-        public static final String  COUNT       = "count";
-        public static final String  START_INDEX = "startIndex";
+        public static final String  SEARCH_TERMS    = "searchTerms";
+        public static final String  COUNT           = "count";
+        public static final String  START_INDEX     = "startIndex";
+        public static final String  START_PAGE      = "startPage";
 
         // OpenSearch Time
-        public static final String  DTSTART     = "dtstart";
-        public static final String  DTEND       = "dtend";
+        public static final String  DTSTART         = "dtstart";
+        public static final String  DTEND           = "dtend";
+
+        //sorting
+        public static final String  ORDER           = "order";
 
         //predefined projection
-        public static final String  VIEW        = "view";
+        public static final String  VIEW            = "view";
     }
     //
 
@@ -64,6 +67,23 @@ public class CommonQueryParams
      */
     public CommonQueryParams()
     {
+    }
+
+
+
+    /**
+     */
+    public void setSearchTerms(
+                    final String searchTerms
+                    )
+    {
+        set( Key.SEARCH_TERMS, searchTerms );
+    }
+
+
+    public String getSearchTerms()
+    {
+        return get( Key.SEARCH_TERMS );
     }
 
 
@@ -105,21 +125,18 @@ public class CommonQueryParams
 
 
     /**
-     * @param   order
-     *  items be returned in a particular order.
-     *  The content must be comma-separated, e.g. "age,-date"
      */
-    public void setOrder(
-                    final String order
-    )
+    public void setStartPage(
+                    final String start_page
+                    )
     {
-        set( Key.ORDER, order );
+        set( Key.START_PAGE, start_page );
     }
 
 
-    public String getOrder()
+    public String getStartPage()
     {
-        return get( Key.ORDER );
+        return get( Key.START_PAGE );
     }
 
 
@@ -154,6 +171,26 @@ public class CommonQueryParams
     public String getDtend()
     {
         return get( Key.DTEND );
+    }
+
+
+
+    /**
+     * @param   order
+     *  items be returned in a particular order.
+     *  The content must be comma-separated, e.g. "age,-date"
+     */
+    public void setOrder(
+                    final String order
+    )
+    {
+        set( Key.ORDER, order );
+    }
+
+
+    public String getOrder()
+    {
+        return get( Key.ORDER );
     }
 
 

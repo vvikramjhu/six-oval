@@ -560,7 +560,7 @@ implements QueryBuilder
             mapping.put( OvalEntityQueryParams.Key.ID,                "oval_id" );
             mapping.put( OvalEntityQueryParams.Key.VERSION,           "oval_version" );
 
-            mapping.put( OvalEntityQueryParams.Key.SCHEMA_VERSION,    "_oval_generator.schema_version" );
+            mapping.put( OvalEntityQueryParams.Key.SCHEMA,    "_oval_generator.schema_version" );
             mapping.put( OvalEntityQueryParams.Key.FAMILY,            "_oval_family" );
             mapping.put( OvalEntityQueryParams.Key.COMPONENT,         "_oval_component" );
 
@@ -634,7 +634,7 @@ implements QueryBuilder
             Map<String, Handler>  mapping = BasicBuilder._createHandlers();
             mapping.put( OvalEntityQueryParams.Key.ID,              _DEFAULT_HANDLER_ );
             mapping.put( OvalEntityQueryParams.Key.VERSION,         version_handler );
-            mapping.put( OvalEntityQueryParams.Key.SCHEMA_VERSION,  _DEFAULT_HANDLER_ );
+            mapping.put( OvalEntityQueryParams.Key.SCHEMA,  _DEFAULT_HANDLER_ );
             mapping.put( OvalEntityQueryParams.Key.FAMILY,          family_handler );
             mapping.put( OvalEntityQueryParams.Key.COMPONENT,       component_handler );
 
@@ -682,7 +682,7 @@ implements QueryBuilder
             Map<String, String>  mapping = OvalEntityBuilder._createFieldMapping();
 
             mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    "class" );
-            mapping.put( DefinitionQueryParams.Key.TITLE,               "metadata.title" );
+            mapping.put( DefinitionQueryParams.Key.SEARCH_TERMS,        "metadata.title" );
             mapping.put( DefinitionQueryParams.Key.FAMILY,              "metadata.affected.family" );   //override
             mapping.put( DefinitionQueryParams.Key.PLATFORM,            "metadata.affected.platform" ); //override
             mapping.put( DefinitionQueryParams.Key.PRODUCT,             "metadata.affected.product" );
@@ -719,7 +719,7 @@ implements QueryBuilder
 
             Map<String, Handler>  mapping = OvalEntityBuilder._createHandlers();
             mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    definitionClassHandler );
-            mapping.put( DefinitionQueryParams.Key.TITLE,               PatternHandler.INSTANCE );
+            mapping.put( DefinitionQueryParams.Key.SEARCH_TERMS,        PatternHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.FAMILY,              _DEFAULT_HANDLER_ );
             mapping.put( DefinitionQueryParams.Key.PLATFORM,            _DEFAULT_HANDLER_ );
             mapping.put( DefinitionQueryParams.Key.PRODUCT,             _DEFAULT_HANDLER_ );
