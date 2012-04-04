@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIPAddressStringType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The port state defines the different metadata associate with a Windows port. 
+ * The port state defines the different metadata associate with a Windows port.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -75,8 +75,10 @@ public class PortState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.port;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.port;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.PORT;
     }
 
 
@@ -93,7 +95,7 @@ public class PortState
 
     public EntityStateIPAddressStringType getLocalAddress()
     {
-        return this.local_address;
+        return local_address;
     }
 
 
@@ -110,7 +112,7 @@ public class PortState
 
     public EntityStateIntType getLocalPort()
     {
-        return this.local_port;
+        return local_port;
     }
 
 
@@ -127,7 +129,7 @@ public class PortState
 
     public EntityStateProtocolType getProtocol()
     {
-        return this.protocol;
+        return protocol;
     }
 
 
@@ -144,7 +146,7 @@ public class PortState
 
     public EntityStateIntType getPid()
     {
-        return this.pid;
+        return pid;
     }
 
 
@@ -161,7 +163,7 @@ public class PortState
 
     public EntityStateIPAddressStringType getForeignAddress()
     {
-        return this.foreign_address;
+        return foreign_address;
     }
 
 
@@ -178,7 +180,7 @@ public class PortState
 
     public EntityStateIntType getForeignPort()
     {
-        return this.foreign_port;
+        return foreign_port;
     }
 
 

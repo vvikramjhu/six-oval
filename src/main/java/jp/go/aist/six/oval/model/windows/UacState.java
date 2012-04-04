@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The uac state specifies the different settings that are available 
+ * The uac state specifies the different settings that are available
  * under User Access Control.
  *
  * @author  Akihito Nakamura, AIST
@@ -79,8 +79,10 @@ public class UacState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.uac;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.uac;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.UAC;
     }
 
 
@@ -97,7 +99,7 @@ public class UacState
 
     public EntityStateStringType getElevationPromptAdmin()
     {
-        return this.elevation_prompt_admin;
+        return elevation_prompt_admin;
     }
 
 
@@ -114,7 +116,7 @@ public class UacState
 
     public EntityStateBoolType getAdminApprovalMode()
     {
-        return this.admin_approval_mode;
+        return admin_approval_mode;
     }
 
 
@@ -131,7 +133,7 @@ public class UacState
 
     public EntityStateStringType getElevationPromptStandard()
     {
-        return this.elevation_prompt_standard;
+        return elevation_prompt_standard;
     }
 
 
@@ -148,7 +150,7 @@ public class UacState
 
     public EntityStateBoolType getDetectInstallations()
     {
-        return this.detect_installations;
+        return detect_installations;
     }
 
 
@@ -165,7 +167,7 @@ public class UacState
 
     public EntityStateBoolType getElevateSignedExecutables()
     {
-        return this.elevate_signed_executables;
+        return elevate_signed_executables;
     }
 
 
@@ -182,7 +184,7 @@ public class UacState
 
     public EntityStateBoolType getElevateUiaccess()
     {
-        return this.elevate_uiaccess;
+        return elevate_uiaccess;
     }
 
 
@@ -199,7 +201,7 @@ public class UacState
 
     public EntityStateBoolType getRunAdminsAam()
     {
-        return this.run_admins_aam;
+        return run_admins_aam;
     }
 
 
@@ -216,7 +218,7 @@ public class UacState
 
     public EntityStateBoolType getSecureDesktop()
     {
-        return this.secure_desktop;
+        return secure_desktop;
     }
 
 
@@ -233,7 +235,7 @@ public class UacState
 
     public EntityStateBoolType getVirtualizeWriteFailures()
     {
-        return this.virtualize_write_failures;
+        return virtualize_write_failures;
     }
 
 

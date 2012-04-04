@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -114,8 +114,10 @@ public class Wmi57Object
         setNamespace( namespace );
         setWql( wql );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.wmi57;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.wmi57;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.WMI57;
     }
 
 
@@ -132,7 +134,7 @@ public class Wmi57Object
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -150,7 +152,7 @@ public class Wmi57Object
 
     public EntityObjectStringType getNamespace()
     {
-        return this.namespace;
+        return namespace;
 //        return _properties.getProperty(
 //                        WmiProperty.NAMESPACE, EntityObjectStringType.class );
     }
@@ -170,7 +172,7 @@ public class Wmi57Object
 
     public EntityObjectStringType getWql()
     {
-        return this.wql;
+        return wql;
 //        return _properties.getProperty(
 //                        WmiProperty.WQL, EntityObjectStringType.class );
     }
@@ -183,10 +185,10 @@ public class Wmi57Object
                     final Collection<? extends Filter> filters
                     )
     {
-        if (filters != this.filter) {
-            this.filter.clear();
+        if (filters != filter) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -194,13 +196,13 @@ public class Wmi57Object
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 
     public Iterator<Filter> iterateFilter()
     {
-        return this.filter.iterator();
+        return filter.iterator();
     }
 
 

@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -33,7 +33,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The wuaupdatesearcher object is used by a wuaupdatesearcher test 
+ * The wuaupdatesearcher object is used by a wuaupdatesearcher test
  * to define the specific search criteria to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
@@ -83,8 +83,10 @@ public class WuaUpdateSearcherObject
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.wuaupdatesearcher;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.wuaupdatesearcher;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.WUAUPDATESEARCHER;
     }
 
 
@@ -138,7 +140,7 @@ public class WuaUpdateSearcherObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -155,7 +157,7 @@ public class WuaUpdateSearcherObject
 
     public WuaUpdateSearcherBehaviors getBehaviors()
     {
-        return this.behaviors;
+        return behaviors;
     }
 
 
@@ -172,7 +174,7 @@ public class WuaUpdateSearcherObject
 
     public EntityObjectStringType getSearchCriteria()
     {
-        return this.search_criteria;
+        return search_criteria;
     }
 
 
@@ -183,10 +185,10 @@ public class WuaUpdateSearcherObject
                     final Collection<? extends Filter> filters
                     )
     {
-        if (this.filter != filters) {
-            this.filter.clear();
+        if (filter != filters) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -206,7 +208,7 @@ public class WuaUpdateSearcherObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 

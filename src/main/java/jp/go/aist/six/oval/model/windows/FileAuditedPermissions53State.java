@@ -20,16 +20,16 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The fileauditedpermissions53_state defines the different audit permissions 
- * that can be associated with a given fileauditedpermissions53_object. 
+ * The fileauditedpermissions53_state defines the different audit permissions
+ * that can be associated with a given fileauditedpermissions53_object.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -95,8 +95,10 @@ public class FileAuditedPermissions53State
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.fileauditedpermissions53;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.fileauditedpermissions53;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.FILEAUDITEDPERMISSIONS53;
     }
 
 
@@ -113,7 +115,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 
@@ -130,7 +132,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateStringType getPath()
     {
-        return this.path;
+        return path;
     }
 
 
@@ -147,7 +149,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -164,7 +166,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateStringType getTrusteeSid()
     {
-        return this.trustee_sid;
+        return trustee_sid;
     }
 
 
@@ -181,7 +183,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getStandardDelete()
     {
-        return this.standard_delete;
+        return standard_delete;
     }
 
 
@@ -198,7 +200,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getStandardReadControl()
     {
-        return this.standard_read_control;
+        return standard_read_control;
     }
 
 
@@ -215,7 +217,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getStandardWriteDac()
     {
-        return this.standard_write_dac;
+        return standard_write_dac;
     }
 
 
@@ -232,7 +234,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getStandardWriteOwner()
     {
-        return this.standard_write_owner;
+        return standard_write_owner;
     }
 
 
@@ -249,7 +251,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getStandardSyncronize()
     {
-        return this.standard_syncronize;
+        return standard_syncronize;
     }
 
 
@@ -266,7 +268,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getAccessSystemSecurity()
     {
-        return this.access_system_security;
+        return access_system_security;
     }
 
 
@@ -283,7 +285,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getGenericRead()
     {
-        return this.generic_read;
+        return generic_read;
     }
 
 
@@ -300,7 +302,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getGenericWrite()
     {
-        return this.generic_write;
+        return generic_write;
     }
 
 
@@ -317,7 +319,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getGenericExecute()
     {
-        return this.generic_execute;
+        return generic_execute;
     }
 
 
@@ -334,7 +336,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getGenericAll()
     {
-        return this.generic_all;
+        return generic_all;
     }
 
 
@@ -351,7 +353,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getFileReadData()
     {
-        return this.file_read_data;
+        return file_read_data;
     }
 
 
@@ -368,7 +370,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getFileWriteData()
     {
-        return this.file_write_data;
+        return file_write_data;
     }
 
 
@@ -385,7 +387,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getFileAppendData()
     {
-        return this.file_append_data;
+        return file_append_data;
     }
 
 
@@ -402,7 +404,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getFileReadEa()
     {
-        return this.file_read_ea;
+        return file_read_ea;
     }
 
 
@@ -419,7 +421,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getFileWriteEa()
     {
-        return this.file_write_ea;
+        return file_write_ea;
     }
 
 
@@ -436,7 +438,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getFileExecute()
     {
-        return this.file_execute;
+        return file_execute;
     }
 
 
@@ -453,7 +455,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getFileDeleteChild()
     {
-        return this.file_delete_child;
+        return file_delete_child;
     }
 
 
@@ -470,7 +472,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getFileReadAttributes()
     {
-        return this.file_read_attributes;
+        return file_read_attributes;
     }
 
 
@@ -487,7 +489,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateAuditType getFileWriteAttributes()
     {
-        return this.file_write_attributes;
+        return file_write_attributes;
     }
 
 
@@ -504,7 +506,7 @@ public class FileAuditedPermissions53State
 
     public EntityStateWindowsViewType getWindowsView()
     {
-        return this.windows_view;
+        return windows_view;
     }
 
 

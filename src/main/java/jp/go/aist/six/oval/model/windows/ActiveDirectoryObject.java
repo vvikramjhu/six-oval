@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
@@ -119,8 +119,10 @@ public class ActiveDirectoryObject
         setRelativeDn( relative_dn );
         setAttribute( attribute );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.activedirectory;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.activedirectory;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.ACTIVEDIRECTORY;
     }
 
 
@@ -137,7 +139,7 @@ public class ActiveDirectoryObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -154,7 +156,7 @@ public class ActiveDirectoryObject
 
     public EntityObjectNamingContextType getNamingContext()
     {
-        return this.naming_context;
+        return naming_context;
     }
 
 
@@ -170,7 +172,7 @@ public class ActiveDirectoryObject
 
     public EntityObjectStringType getRelativeDn()
     {
-        return this.relative_dn;
+        return relative_dn;
     }
 
 
@@ -186,7 +188,7 @@ public class ActiveDirectoryObject
 
     public EntityObjectStringType getAttribute()
     {
-        return this.attribute;
+        return attribute;
     }
 
 

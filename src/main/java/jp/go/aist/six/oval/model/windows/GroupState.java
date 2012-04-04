@@ -20,15 +20,15 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The group state enumerates the different users and subgroups 
+ * The group state enumerates the different users and subgroups
  * directly associated with a Windows group.
  *
  * @author  Akihito Nakamura, AIST
@@ -72,8 +72,10 @@ public class GroupState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.group;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.group;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.GROUP;
     }
 
 
@@ -90,7 +92,7 @@ public class GroupState
 
     public EntityStateStringType getGroup()
     {
-        return this.group;
+        return group;
     }
 
 
@@ -107,7 +109,7 @@ public class GroupState
 
     public EntityStateStringType getUser()
     {
-        return this.user;
+        return user;
     }
 
 
@@ -124,7 +126,7 @@ public class GroupState
 
     public EntityStateStringType getSubgroup()
     {
-        return this.subgroup;
+        return subgroup;
     }
 
 

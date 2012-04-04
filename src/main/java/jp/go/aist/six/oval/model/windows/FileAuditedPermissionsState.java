@@ -20,16 +20,16 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The fileauditedpermissions53_state defines the different audit permissions 
- * that can be associated with a given fileauditedpermissions53_object. 
+ * The fileauditedpermissions53_state defines the different audit permissions
+ * that can be associated with a given fileauditedpermissions53_object.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -38,6 +38,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
  *             Replaced by the fileauditedpermissions53 state and
  *             will be removed in version 6.0 of the language.
  */
+@Deprecated
 public class FileAuditedPermissionsState
     extends StateType
 {
@@ -97,8 +98,10 @@ public class FileAuditedPermissionsState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.fileauditedpermissions;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.fileauditedpermissions;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.FILEAUDITEDPERMISSIONS;
     }
 
 
@@ -115,7 +118,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateStringType getPath()
     {
-        return this.path;
+        return path;
     }
 
 
@@ -132,7 +135,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -149,7 +152,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateStringType getTrusteeName()
     {
-        return this.trustee_name;
+        return trustee_name;
     }
 
 
@@ -166,7 +169,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getStandardDelete()
     {
-        return this.standard_delete;
+        return standard_delete;
     }
 
 
@@ -183,7 +186,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getStandardReadControl()
     {
-        return this.standard_read_control;
+        return standard_read_control;
     }
 
 
@@ -200,7 +203,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getStandardWriteDac()
     {
-        return this.standard_write_dac;
+        return standard_write_dac;
     }
 
 
@@ -217,7 +220,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getStandardWriteOwner()
     {
-        return this.standard_write_owner;
+        return standard_write_owner;
     }
 
 
@@ -234,7 +237,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getStandardSyncronize()
     {
-        return this.standard_syncronize;
+        return standard_syncronize;
     }
 
 
@@ -251,7 +254,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getAccessSystemSecurity()
     {
-        return this.access_system_security;
+        return access_system_security;
     }
 
 
@@ -268,7 +271,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getGenericRead()
     {
-        return this.generic_read;
+        return generic_read;
     }
 
 
@@ -285,7 +288,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getGenericWrite()
     {
-        return this.generic_write;
+        return generic_write;
     }
 
 
@@ -302,7 +305,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getGenericExecute()
     {
-        return this.generic_execute;
+        return generic_execute;
     }
 
 
@@ -319,7 +322,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getGenericAll()
     {
-        return this.generic_all;
+        return generic_all;
     }
 
 
@@ -336,7 +339,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getFileReadData()
     {
-        return this.file_read_data;
+        return file_read_data;
     }
 
 
@@ -353,7 +356,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getFileWriteData()
     {
-        return this.file_write_data;
+        return file_write_data;
     }
 
 
@@ -370,7 +373,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getFileAppendData()
     {
-        return this.file_append_data;
+        return file_append_data;
     }
 
 
@@ -387,7 +390,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getFileReadEa()
     {
-        return this.file_read_ea;
+        return file_read_ea;
     }
 
 
@@ -404,7 +407,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getFileWriteEa()
     {
-        return this.file_write_ea;
+        return file_write_ea;
     }
 
 
@@ -421,7 +424,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getFileExecute()
     {
-        return this.file_execute;
+        return file_execute;
     }
 
 
@@ -438,7 +441,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getFileDeleteChild()
     {
-        return this.file_delete_child;
+        return file_delete_child;
     }
 
 
@@ -455,7 +458,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getFileReadAttributes()
     {
-        return this.file_read_attributes;
+        return file_read_attributes;
     }
 
 
@@ -472,7 +475,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateAuditType getFileWriteAttributes()
     {
-        return this.file_write_attributes;
+        return file_write_attributes;
     }
 
 
@@ -489,7 +492,7 @@ public class FileAuditedPermissionsState
 
     public EntityStateWindowsViewType getWindowsView()
     {
-        return this.windows_view;
+        return windows_view;
     }
 
 

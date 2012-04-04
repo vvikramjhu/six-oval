@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -85,8 +85,10 @@ public class AccesstokenObject
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.accesstoken;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.accesstoken;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.ACCESSTOKEN;
     }
 
 
@@ -103,7 +105,7 @@ public class AccesstokenObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -120,7 +122,7 @@ public class AccesstokenObject
 
     public AccesstokenBehaviors getBehaviors()
     {
-        return this.behaviors;
+        return behaviors;
     }
 
 
@@ -137,7 +139,7 @@ public class AccesstokenObject
 
     public EntityObjectStringType getSecurityPrinciple()
     {
-        return this.security_principle;
+        return security_principle;
     }
 
 
@@ -148,8 +150,8 @@ public class AccesstokenObject
                     final Collection<? extends Filter> filters
                     )
     {
-        if (this.filter != filters) {
-            this.filter.clear();
+        if (filter != filters) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
                 for (Filter  filter : filters) {
                     addFilter( filter );
@@ -173,7 +175,7 @@ public class AccesstokenObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 

@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.definitions.StateRefType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectRefType;
@@ -30,7 +30,7 @@ import jp.go.aist.six.oval.model.definitions.TestType;
 
 
 /**
- * The volume test is used to check information 
+ * The volume test is used to check information
  * about different storage volumes found on a Windows system.
  *
  * @author  Akihito Nakamura, AIST
@@ -81,8 +81,10 @@ public class VolumeTest
     {
         super( id, version, comment, check, object, stateList );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.volume;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.volume;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.VOLUME;
     }
 
 

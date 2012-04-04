@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.EntityItemVersionType;
@@ -180,8 +180,10 @@ public class FileItem
         setProductName( new EntityItemStringType( productName ) );
         setProductVersion( new EntityItemVersionType( productVersion ) );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.file;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.file;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.FILE;
     }
 
 
@@ -229,8 +231,10 @@ public class FileItem
         setProductName( productName );
         setProductVersion( productVersion );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.file;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.file;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.FILE;
     }
 
 
@@ -248,7 +252,7 @@ public class FileItem
 
     public EntityItemStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
 //        return (EntityItemStringType)_properties.get( FileProperty.FILEPATH );
     }
 
@@ -276,7 +280,7 @@ public class FileItem
 
     public EntityItemStringType getPath()
     {
-        return this.path;
+        return path;
 //        return (EntityItemStringType)_properties.get( FileProperty.PATH );
     }
 
@@ -304,7 +308,7 @@ public class FileItem
 
     public EntityItemStringType getFilename()
     {
-        return this.filename;
+        return filename;
 //        return (EntityItemStringType)_properties.get( FileProperty.FILENAME );
     }
 
@@ -332,7 +336,7 @@ public class FileItem
 
     public EntityItemStringType getOwner()
     {
-        return this.owner;
+        return owner;
 //        return (EntityItemStringType)_properties.get( FileProperty.OWNER );
     }
 
@@ -360,7 +364,7 @@ public class FileItem
 
     public EntityItemIntType getSize()
     {
-        return this.size;
+        return size;
 //        return (EntityItemIntType)_properties.get( FileProperty.SIZE );
     }
 
@@ -388,7 +392,7 @@ public class FileItem
 
     public EntityItemIntType getATime()
     {
-        return this.a_time;
+        return a_time;
 //        return (EntityItemIntType)_properties.get( FileProperty.A_TIME );
     }
 
@@ -416,7 +420,7 @@ public class FileItem
 
     public EntityItemIntType getCTime()
     {
-        return this.c_time;
+        return c_time;
 //        return (EntityItemIntType)_properties.get( FileProperty.C_TIME );
     }
 
@@ -444,7 +448,7 @@ public class FileItem
 
     public EntityItemIntType getMTime()
     {
-        return this.m_time;
+        return m_time;
 //        return (EntityItemIntType)_properties.get( FileProperty.M_TIME );
     }
 
@@ -472,7 +476,7 @@ public class FileItem
 
     public EntityItemStringType getMsChecksum()
     {
-        return this.ms_checksum;
+        return ms_checksum;
 //        return (EntityItemStringType)_properties.get( FileProperty.MS_CHECKSUM );
     }
 
@@ -500,7 +504,7 @@ public class FileItem
 
     public EntityItemVersionType getVersion()
     {
-        return this.version;
+        return version;
 //        return (EntityItemVersionType)_properties.get( FileProperty.VERSION );
     }
 
@@ -528,7 +532,7 @@ public class FileItem
 
     public EntityItemFileTypeType getType()
     {
-        return this.type;
+        return type;
 //        return (EntityItemFileTypeType)_properties.get( FileProperty.TYPE );
     }
 
@@ -556,7 +560,7 @@ public class FileItem
 
     public EntityItemStringType getDevelopmentClass()
     {
-        return this.development_class;
+        return development_class;
 //        return (EntityItemStringType)_properties.get( FileProperty.DEVELOPMENT_CLASS );
     }
 
@@ -584,7 +588,7 @@ public class FileItem
 
     public EntityItemStringType getCompany()
     {
-        return this.company;
+        return company;
 //        return (EntityItemStringType)_properties.get( FileProperty.COMPANY );
     }
 
@@ -612,7 +616,7 @@ public class FileItem
 
     public EntityItemStringType getInternalName()
     {
-        return this.internal_name;
+        return internal_name;
 //        return (EntityItemStringType)_properties.get( FileProperty.INTERNAL_NAME );
     }
 
@@ -640,7 +644,7 @@ public class FileItem
 
     public EntityItemStringType getLanguage()
     {
-        return this.language;
+        return language;
 //        return (EntityItemStringType)_properties.get( FileProperty.LANGUAGE );
     }
 
@@ -668,7 +672,7 @@ public class FileItem
 
     public EntityItemStringType getOriginalFilename()
     {
-        return this.original_filename;
+        return original_filename;
 //        return (EntityItemStringType)_properties.get( FileProperty.ORIGINAL_FILENAME );
     }
 
@@ -696,7 +700,7 @@ public class FileItem
 
     public EntityItemStringType getProductName()
     {
-        return this.product_name;
+        return product_name;
 //        return (EntityItemStringType)_properties.get( FileProperty.PRODUCT_NAME );
     }
 
@@ -724,7 +728,7 @@ public class FileItem
 
     public EntityItemVersionType getProductVersion()
     {
-        return this.product_version;
+        return product_version;
 //        return (EntityItemVersionType)_properties.get( FileProperty.PRODUCT_VERSION );
     }
 
@@ -751,7 +755,7 @@ public class FileItem
 
     public EntityItemWindowsViewType getWindowsView()
     {
-        return this.windows_view;
+        return windows_view;
     }
 
 

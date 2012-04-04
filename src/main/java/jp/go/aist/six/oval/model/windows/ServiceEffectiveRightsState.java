@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The serviceeffectiverights state defines the different rights 
+ * The serviceeffectiverights state defines the different rights
  * that can be associated with a given serviceeffectiverights object.
  *
  * @author  Akihito Nakamura, AIST
@@ -90,8 +90,10 @@ public class ServiceEffectiveRightsState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.serviceeffectiverights;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.serviceeffectiverights;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.SERVICEEFFECTIVERIGHTS;
     }
 
 
@@ -108,7 +110,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateStringType getServiceName()
     {
-        return this.service_name;
+        return service_name;
     }
 
 
@@ -125,7 +127,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateStringType getTrusteeSid()
     {
-        return this.trustee_sid;
+        return trustee_sid;
     }
 
 
@@ -142,7 +144,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateBoolType getStandardDelete()
     {
-        return this.standard_delete;
+        return standard_delete;
     }
 
 
@@ -159,7 +161,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateBoolType getStandardReadControl()
     {
-        return this.standard_read_control;
+        return standard_read_control;
     }
 
 
@@ -176,7 +178,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateBoolType getStandardWriteDac()
     {
-        return this.standard_write_dac;
+        return standard_write_dac;
     }
 
 
@@ -193,7 +195,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateBoolType getStandardWriteOwner()
     {
-        return this.standard_write_owner;
+        return standard_write_owner;
     }
 
 
@@ -210,7 +212,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateBoolType getStandardSyncronize()
     {
-        return this.standard_syncronize;
+        return standard_syncronize;
     }
 
 
@@ -227,7 +229,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateBoolType getAccessSystemSecurity()
     {
-        return this.access_system_security;
+        return access_system_security;
     }
 
 
@@ -244,7 +246,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateBoolType getGenericRead()
     {
-        return this.generic_read;
+        return generic_read;
     }
 
 
@@ -261,7 +263,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateBoolType getGenericWrite()
     {
-        return this.generic_write;
+        return generic_write;
     }
 
 
@@ -278,7 +280,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateBoolType getGenericExecute()
     {
-        return this.generic_execute;
+        return generic_execute;
     }
 
 
@@ -295,7 +297,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateBoolType getServiceQueryConf()
     {
-        return this.service_query_conf;
+        return service_query_conf;
     }
 
 
@@ -312,7 +314,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateBoolType getServiceChangeConf()
     {
-        return this.service_change_conf;
+        return service_change_conf;
     }
 
 
@@ -329,7 +331,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateBoolType getServiceQueryStat()
     {
-        return this.service_query_stat;
+        return service_query_stat;
     }
 
 
@@ -346,7 +348,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateBoolType getServiceEnumDependents()
     {
-        return this.service_enum_dependents;
+        return service_enum_dependents;
     }
 
 
@@ -363,7 +365,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateBoolType getServiceStart()
     {
-        return this.service_start;
+        return service_start;
     }
 
 
@@ -380,7 +382,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateBoolType getServiceStop()
     {
-        return this.service_stop;
+        return service_stop;
     }
 
 
@@ -397,7 +399,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateBoolType getServicePause()
     {
-        return this.service_pause;
+        return service_pause;
     }
 
 
@@ -414,7 +416,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateBoolType getServiceInterrogate()
     {
-        return this.service_interrogate;
+        return service_interrogate;
     }
 
 
@@ -431,7 +433,7 @@ public class ServiceEffectiveRightsState
 
     public EntityStateBoolType getServiceUserDefined()
     {
-        return this.service_user_defined;
+        return service_user_defined;
     }
 
 

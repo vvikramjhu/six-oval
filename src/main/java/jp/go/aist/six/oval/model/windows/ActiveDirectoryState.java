@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -86,8 +86,10 @@ public class ActiveDirectoryState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.activedirectory;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.activedirectory;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.ACTIVEDIRECTORY;
     }
 
 
@@ -98,13 +100,13 @@ public class ActiveDirectoryState
                     final EntityStateNamingContextType hive
                     )
     {
-        this.naming_context = hive;
+        naming_context = hive;
     }
 
 
     public EntityStateNamingContextType getNamingContext()
     {
-        return this.naming_context;
+        return naming_context;
     }
 
 
@@ -121,7 +123,7 @@ public class ActiveDirectoryState
 
     public EntityStateStringType getRelativeDn()
     {
-        return this.relative_dn;
+        return relative_dn;
     }
 
 
@@ -138,7 +140,7 @@ public class ActiveDirectoryState
 
     public EntityStateStringType getAttribute()
     {
-        return this.attribute;
+        return attribute;
     }
 
 
@@ -155,7 +157,7 @@ public class ActiveDirectoryState
 
     public EntityStateStringType getObjectClass()
     {
-        return this.object_class;
+        return object_class;
     }
 
 
@@ -172,7 +174,7 @@ public class ActiveDirectoryState
 
     public EntityStateAdstypeType getAdstype()
     {
-        return this.adstype;
+        return adstype;
     }
 
 
@@ -189,7 +191,7 @@ public class ActiveDirectoryState
 
     public EntityStateAnySimpleType getValue()
     {
-        return this.value;
+        return value;
     }
 
 

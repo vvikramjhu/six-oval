@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
@@ -31,7 +31,7 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * The windows user item allows the different groups (identified by name) 
+ * The windows user item allows the different groups (identified by name)
  * that a user belongs to be collected.
  *
  * @author  Akihito Nakamura, AIST
@@ -73,9 +73,11 @@ public class UserItem
                     )
     {
         super( id, status );
-        
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.user;
+
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.user;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.USER;
     }
 
 
@@ -92,7 +94,7 @@ public class UserItem
 
     public EntityItemStringType getUser()
     {
-        return this.user;
+        return user;
     }
 
 
@@ -109,7 +111,7 @@ public class UserItem
 
     public EntityItemBoolType getEnabled()
     {
-        return this.enabled;
+        return enabled;
     }
 
 
@@ -126,7 +128,7 @@ public class UserItem
 
     public EntityItemStringType getGroup()
     {
-        return this.group;
+        return group;
     }
 
 
@@ -143,7 +145,7 @@ public class UserItem
 
     public EntityItemIntType getLastLogon()
     {
-        return this.last_logon;
+        return last_logon;
     }
 
 

@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -33,8 +33,8 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The sid_sid object is used by a sid_sid_test to define the object set, 
- * in this case a set of SIDs, to be evaluated. 
+ * The sid_sid object is used by a sid_sid_test to define the object set,
+ * in this case a set of SIDs, to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -83,8 +83,10 @@ public class SidSidObject
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.sid_sid;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.sid_sid;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.SID_SID;
     }
 
 
@@ -138,7 +140,7 @@ public class SidSidObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -155,7 +157,7 @@ public class SidSidObject
 
     public SidSidBehaviors getBehaviors()
     {
-        return this.behaviors;
+        return behaviors;
     }
 
 
@@ -172,7 +174,7 @@ public class SidSidObject
 
     public EntityObjectStringType getTrusteeSid()
     {
-        return this.trustee_sid;
+        return trustee_sid;
     }
 
 
@@ -183,10 +185,10 @@ public class SidSidObject
                     final Collection<? extends Filter> filters
                     )
     {
-        if (this.filter != filters) {
-            this.filter.clear();
+        if (filter != filters) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -206,7 +208,7 @@ public class SidSidObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 

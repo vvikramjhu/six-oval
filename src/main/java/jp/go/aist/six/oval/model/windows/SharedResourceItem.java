@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
@@ -80,9 +80,11 @@ public class SharedResourceItem
                     )
     {
         super( id, status );
-        
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.sharedresource;
+
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.sharedresource;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.SHAREDRESOURCE;
     }
 
 
@@ -99,7 +101,7 @@ public class SharedResourceItem
 
     public EntityItemStringType getNetname()
     {
-        return this.netname;
+        return netname;
     }
 
 
@@ -116,7 +118,7 @@ public class SharedResourceItem
 
     public EntityItemSharedResourceTypeType getSharedType()
     {
-        return this.shared_type;
+        return shared_type;
     }
 
 
@@ -133,7 +135,7 @@ public class SharedResourceItem
 
     public EntityItemIntType getMaxUses()
     {
-        return this.max_uses;
+        return max_uses;
     }
 
 
@@ -150,7 +152,7 @@ public class SharedResourceItem
 
     public EntityItemIntType getCurrentUses()
     {
-        return this.current_uses;
+        return current_uses;
     }
 
 
@@ -167,7 +169,7 @@ public class SharedResourceItem
 
     public EntityItemStringType getLocalPath()
     {
-        return this.local_path;
+        return local_path;
     }
 
 
@@ -184,7 +186,7 @@ public class SharedResourceItem
 
     public EntityItemBoolType getAccessReadPermission()
     {
-        return this.access_read_permission;
+        return access_read_permission;
     }
 
 
@@ -201,7 +203,7 @@ public class SharedResourceItem
 
     public EntityItemBoolType getAccessWritePermission()
     {
-        return this.access_write_permission;
+        return access_write_permission;
     }
 
 
@@ -218,7 +220,7 @@ public class SharedResourceItem
 
     public EntityItemBoolType getAccessCreatePermission()
     {
-        return this.access_create_permission;
+        return access_create_permission;
     }
 
 
@@ -235,7 +237,7 @@ public class SharedResourceItem
 
     public EntityItemBoolType getAccessExecPermission()
     {
-        return this.access_exec_permission;
+        return access_exec_permission;
     }
 
 
@@ -252,7 +254,7 @@ public class SharedResourceItem
 
     public EntityItemBoolType getAccessDeletePermission()
     {
-        return this.access_delete_permission;
+        return access_delete_permission;
     }
 
 
@@ -269,7 +271,7 @@ public class SharedResourceItem
 
     public EntityItemBoolType getAccessAtribPermission()
     {
-        return this.access_atrib_permission;
+        return access_atrib_permission;
     }
 
 
@@ -286,7 +288,7 @@ public class SharedResourceItem
 
     public EntityItemBoolType getAccessPermPermission()
     {
-        return this.access_perm_permission;
+        return access_perm_permission;
     }
 
 
@@ -303,7 +305,7 @@ public class SharedResourceItem
 
     public EntityItemBoolType getAccessAllPermission()
     {
-        return this.access_all_permission;
+        return access_all_permission;
     }
 
 

@@ -20,14 +20,14 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 
 /**
- * The passwordpolicy object is used by a password policy test 
+ * The passwordpolicy object is used by a password policy test
  * to define those objects to evaluated based on a specified state.
  *
  * @author  Akihito Nakamura, AIST
@@ -64,8 +64,10 @@ public class PasswordPolicyObject
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.passwordpolicy;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.passwordpolicy;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.PASSWORDPOLICY;
     }
 
 

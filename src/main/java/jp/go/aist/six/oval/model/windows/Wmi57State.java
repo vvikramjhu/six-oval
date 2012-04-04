@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateRecordType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -65,8 +65,10 @@ public class Wmi57State
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.wmi57;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.wmi57;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.WMI57;
     }
 
 
@@ -83,7 +85,7 @@ public class Wmi57State
 
     public EntityStateStringType getNamespace()
     {
-        return this.namespace;
+        return namespace;
     }
 
 
@@ -100,7 +102,7 @@ public class Wmi57State
 
     public EntityStateStringType getWql()
     {
-        return this.wql;
+        return wql;
     }
 
 
@@ -117,7 +119,7 @@ public class Wmi57State
 
     public EntityStateRecordType getResult()
     {
-        return this.result;
+        return result;
     }
 
 

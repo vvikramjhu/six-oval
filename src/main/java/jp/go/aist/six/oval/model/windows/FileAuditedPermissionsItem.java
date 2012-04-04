@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 import jp.go.aist.six.oval.model.sc.StatusEnumeration;
@@ -29,8 +29,8 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * The fileauditedpermissions53_state defines the different audit permissions 
- * that can be associated with a given fileauditedpermissions53_object. 
+ * The fileauditedpermissions53_state defines the different audit permissions
+ * that can be associated with a given fileauditedpermissions53_object.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -95,9 +95,11 @@ public class FileAuditedPermissionsItem
                     )
     {
         super( id, status );
-        
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.fileauditedpermissions;
+
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.fileauditedpermissions;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.FILEAUDITEDPERMISSIONS;
     }
 
 
@@ -114,7 +116,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 
@@ -131,7 +133,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemStringType getPath()
     {
-        return this.path;
+        return path;
     }
 
 
@@ -148,7 +150,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -165,7 +167,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemStringType getTrusteeSid()
     {
-        return this.trustee_sid;
+        return trustee_sid;
     }
 
 
@@ -182,7 +184,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemStringType getTrusteeName()
     {
-        return this.trustee_name;
+        return trustee_name;
     }
 
 
@@ -199,7 +201,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getStandardDelete()
     {
-        return this.standard_delete;
+        return standard_delete;
     }
 
 
@@ -216,7 +218,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getStandardReadControl()
     {
-        return this.standard_read_control;
+        return standard_read_control;
     }
 
 
@@ -233,7 +235,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getStandardWriteDac()
     {
-        return this.standard_write_dac;
+        return standard_write_dac;
     }
 
 
@@ -250,7 +252,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getStandardWriteOwner()
     {
-        return this.standard_write_owner;
+        return standard_write_owner;
     }
 
 
@@ -267,7 +269,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getStandardSyncronize()
     {
-        return this.standard_syncronize;
+        return standard_syncronize;
     }
 
 
@@ -284,7 +286,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getAccessSystemSecurity()
     {
-        return this.access_system_security;
+        return access_system_security;
     }
 
 
@@ -301,7 +303,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getGenericRead()
     {
-        return this.generic_read;
+        return generic_read;
     }
 
 
@@ -318,7 +320,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getGenericWrite()
     {
-        return this.generic_write;
+        return generic_write;
     }
 
 
@@ -335,7 +337,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getGenericExecute()
     {
-        return this.generic_execute;
+        return generic_execute;
     }
 
 
@@ -352,7 +354,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getGenericAll()
     {
-        return this.generic_all;
+        return generic_all;
     }
 
 
@@ -369,7 +371,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getFileReadData()
     {
-        return this.file_read_data;
+        return file_read_data;
     }
 
 
@@ -386,7 +388,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getFileWriteData()
     {
-        return this.file_write_data;
+        return file_write_data;
     }
 
 
@@ -403,7 +405,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getFileAppendData()
     {
-        return this.file_append_data;
+        return file_append_data;
     }
 
 
@@ -420,7 +422,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getFileReadEa()
     {
-        return this.file_read_ea;
+        return file_read_ea;
     }
 
 
@@ -437,7 +439,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getFileWriteEa()
     {
-        return this.file_write_ea;
+        return file_write_ea;
     }
 
 
@@ -454,7 +456,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getFileExecute()
     {
-        return this.file_execute;
+        return file_execute;
     }
 
 
@@ -471,7 +473,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getFileDeleteChild()
     {
-        return this.file_delete_child;
+        return file_delete_child;
     }
 
 
@@ -488,7 +490,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getFileReadAttributes()
     {
-        return this.file_read_attributes;
+        return file_read_attributes;
     }
 
 
@@ -505,7 +507,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemAuditType getFileWriteAttributes()
     {
-        return this.file_write_attributes;
+        return file_write_attributes;
     }
 
 
@@ -522,7 +524,7 @@ public class FileAuditedPermissionsItem
 
     public EntityItemWindowsViewType getWindowsView()
     {
-        return this.windows_view;
+        return windows_view;
     }
 
 

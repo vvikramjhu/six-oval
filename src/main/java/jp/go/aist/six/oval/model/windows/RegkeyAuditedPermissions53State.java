@@ -20,15 +20,15 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 
 /**
- * The regkeyauditedpermissions53 state defines the different audit permissions 
+ * The regkeyauditedpermissions53 state defines the different audit permissions
  * that can be associated with a given regkeyauditedpermissions53 object.
  *
  * @author  Akihito Nakamura, AIST
@@ -94,8 +94,10 @@ public class RegkeyAuditedPermissions53State
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.regkeyauditedpermissions53;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.regkeyauditedpermissions53;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.REGKEYAUDITEDPERMISSIONS53;
     }
 
 
@@ -112,7 +114,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateRegistryHiveType getHive()
     {
-        return this.hive;
+        return hive;
     }
 
 
@@ -129,7 +131,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateStringType getKey()
     {
-        return this.key;
+        return key;
     }
 
 
@@ -146,7 +148,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateStringType getTrusteeSid()
     {
-        return this.trustee_sid;
+        return trustee_sid;
     }
 
 
@@ -163,7 +165,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getStandardDelete()
     {
-        return this.standard_delete;
+        return standard_delete;
     }
 
 
@@ -180,7 +182,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getStandardReadControl()
     {
-        return this.standard_read_control;
+        return standard_read_control;
     }
 
 
@@ -197,7 +199,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getStandardWriteDac()
     {
-        return this.standard_write_dac;
+        return standard_write_dac;
     }
 
 
@@ -214,7 +216,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getStandardWriteOwner()
     {
-        return this.standard_write_owner;
+        return standard_write_owner;
     }
 
 
@@ -231,7 +233,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getStandardSyncronize()
     {
-        return this.standard_syncronize;
+        return standard_syncronize;
     }
 
 
@@ -248,7 +250,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getAccessSystemSecurity()
     {
-        return this.access_system_security;
+        return access_system_security;
     }
 
 
@@ -265,7 +267,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getGenericRead()
     {
-        return this.generic_read;
+        return generic_read;
     }
 
 
@@ -282,7 +284,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getGenericWrite()
     {
-        return this.generic_write;
+        return generic_write;
     }
 
 
@@ -299,7 +301,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getGenericExecute()
     {
-        return this.generic_execute;
+        return generic_execute;
     }
 
 
@@ -316,7 +318,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getGenericAll()
     {
-        return this.generic_all;
+        return generic_all;
     }
 
 
@@ -333,7 +335,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getKeyQueryValue()
     {
-        return this.key_query_value;
+        return key_query_value;
     }
 
 
@@ -350,7 +352,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getKeySetValue()
     {
-        return this.key_set_value;
+        return key_set_value;
     }
 
 
@@ -367,7 +369,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getKeyCreateSubKey()
     {
-        return this.key_create_sub_key;
+        return key_create_sub_key;
     }
 
 
@@ -384,7 +386,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getKeyEnumerateSubKeys()
     {
-        return this.key_enumerate_sub_keys;
+        return key_enumerate_sub_keys;
     }
 
 
@@ -401,7 +403,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getKeyNotify()
     {
-        return this.key_notify;
+        return key_notify;
     }
 
 
@@ -418,7 +420,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getKeyCreateLink()
     {
-        return this.key_create_link;
+        return key_create_link;
     }
 
 
@@ -435,7 +437,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getKeyWow6464key()
     {
-        return this.key_wow64_64key;
+        return key_wow64_64key;
     }
 
 
@@ -452,7 +454,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getKeyWow6432key()
     {
-        return this.key_wow64_32key;
+        return key_wow64_32key;
     }
 
 
@@ -469,7 +471,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateAuditType getKeyWow64Res()
     {
-        return this.key_wow64_res;
+        return key_wow64_res;
     }
 
 
@@ -486,7 +488,7 @@ public class RegkeyAuditedPermissions53State
 
     public EntityStateWindowsViewType getWindowsView()
     {
-        return this.windows_view;
+        return windows_view;
     }
 
 

@@ -20,13 +20,12 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateAnySimpleType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
-import jp.go.aist.six.oval.model.windows.EntityStateWindowsViewType;
 
 
 
@@ -91,8 +90,10 @@ public class RegistryState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.registry;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.registry;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.REGISTRY;
     }
 
 
@@ -109,7 +110,7 @@ public class RegistryState
 
     public EntityStateRegistryHiveType getHive()
     {
-        return this.hive;
+        return hive;
     }
 
 
@@ -135,7 +136,7 @@ public class RegistryState
 
     public EntityStateStringType getKey()
     {
-        return this.key;
+        return key;
     }
 
 
@@ -161,7 +162,7 @@ public class RegistryState
 
     public EntityStateStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -187,7 +188,7 @@ public class RegistryState
 
     public EntityStateIntType getLastWriteTime()
     {
-        return this.last_write_time;
+        return last_write_time;
     }
 
 
@@ -204,7 +205,7 @@ public class RegistryState
 
     public EntityStateRegistryTypeType getType()
     {
-        return this.type;
+        return type;
     }
 
 
@@ -230,7 +231,7 @@ public class RegistryState
 
     public EntityStateAnySimpleType getValue()
     {
-        return this.value;
+        return value;
     }
 
 
@@ -256,7 +257,7 @@ public class RegistryState
 
     public EntityStateWindowsViewType getWindowsView()
     {
-        return this.windows_view;
+        return windows_view;
     }
 
 

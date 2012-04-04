@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The regkeyeffectiverights object is used by a registry key effective rights test 
+ * The regkeyeffectiverights object is used by a registry key effective rights test
  * to define the objects used to evaluate against the specified state.
  *
  * @author  Akihito Nakamura, AIST
@@ -39,6 +39,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
  *             Replaced by the regkeyeffectiverights53 object and
  *             will be removed in version 6.0 of the language.
  */
+@Deprecated
 public class RegkeyEffectiveRightsObject
     extends SystemObjectType
 {
@@ -87,8 +88,10 @@ public class RegkeyEffectiveRightsObject
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.regkeyeffectiverights;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.regkeyeffectiverights;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.REGKEYEFFECTIVERIGHTS;
     }
 
 
@@ -142,7 +145,7 @@ public class RegkeyEffectiveRightsObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -159,7 +162,7 @@ public class RegkeyEffectiveRightsObject
 
     public RegkeyEffectiveRightsBehaviors getBehaviors()
     {
-        return this.behaviors;
+        return behaviors;
     }
 
 
@@ -176,7 +179,7 @@ public class RegkeyEffectiveRightsObject
 
     public EntityObjectRegistryHiveType getHive()
     {
-        return this.hive;
+        return hive;
     }
 
 
@@ -193,7 +196,7 @@ public class RegkeyEffectiveRightsObject
 
     public EntityObjectStringType getKey()
     {
-        return this.key;
+        return key;
     }
 
 
@@ -210,7 +213,7 @@ public class RegkeyEffectiveRightsObject
 
     public EntityObjectStringType getTrusteeName()
     {
-        return this.trustee_name;
+        return trustee_name;
     }
 
 

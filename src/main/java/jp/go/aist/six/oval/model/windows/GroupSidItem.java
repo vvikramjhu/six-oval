@@ -23,15 +23,15 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
 
 
 
 /**
- * The Windows group_sid item allows the different users and subgroups, 
+ * The Windows group_sid item allows the different users and subgroups,
  * that directly belong to specific groups (identified by SID), to be collected.
  *
  * @author  Akihito Nakamura, AIST
@@ -70,8 +70,10 @@ public class GroupSidItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.group_sid;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.group_sid;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.GROUP_SID;
     }
 
 
@@ -80,7 +82,7 @@ public class GroupSidItem
      */
     public EntityItemStringType getGroupSid()
     {
-        return this.group_sid;
+        return group_sid;
     }
 
 
@@ -99,10 +101,10 @@ public class GroupSidItem
                     final Collection<? extends EntityItemStringType> user_sids
                     )
     {
-        if (this.user_sid != user_sids) {
-            this.user_sid.clear();
+        if (user_sid != user_sids) {
+            user_sid.clear();
             if (user_sids != null  &&  user_sids.size() > 0) {
-                this.user_sid.addAll( user_sids );
+                user_sid.addAll( user_sids );
             }
         }
     }
@@ -110,13 +112,13 @@ public class GroupSidItem
 
     public Collection<EntityItemStringType> getUserSid()
     {
-        return this.user_sid;
+        return user_sid;
     }
 
 
     public Iterator<EntityItemStringType> iterateUserSid()
     {
-        return this.user_sid.iterator();
+        return user_sid.iterator();
     }
 
 
@@ -127,10 +129,10 @@ public class GroupSidItem
                     final Collection<? extends EntityItemStringType> subgroup_sids
                     )
     {
-        if (this.subgroup_sid != subgroup_sids) {
-            this.subgroup_sid.clear();
+        if (subgroup_sid != subgroup_sids) {
+            subgroup_sid.clear();
             if (subgroup_sids != null  &&  subgroup_sids.size() > 0) {
-                this.subgroup_sid.addAll( subgroup_sids );
+                subgroup_sid.addAll( subgroup_sids );
             }
         }
     }
@@ -138,13 +140,13 @@ public class GroupSidItem
 
     public Collection<EntityItemStringType> getSubgroupSid()
     {
-        return this.subgroup_sid;
+        return subgroup_sid;
     }
 
 
     public Iterator<EntityItemStringType> iterateSubgroupSid()
     {
-        return this.subgroup_sid.iterator();
+        return subgroup_sid.iterator();
     }
 
 

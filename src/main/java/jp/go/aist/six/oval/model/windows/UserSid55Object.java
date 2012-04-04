@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -78,8 +78,10 @@ public class UserSid55Object
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.user_sid55;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.user_sid55;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.USER_SID55;
     }
 
 
@@ -133,7 +135,7 @@ public class UserSid55Object
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -150,7 +152,7 @@ public class UserSid55Object
 
     public EntityObjectStringType getUserSid()
     {
-        return this.user_sid;
+        return user_sid;
     }
 
 
@@ -161,10 +163,10 @@ public class UserSid55Object
                     final Collection<? extends Filter> filters
                     )
     {
-        if (this.filter != filters) {
-            this.filter.clear();
+        if (filter != filters) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -184,7 +186,7 @@ public class UserSid55Object
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 

@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -33,7 +33,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The group_sid object is used by a group_test 
+ * The group_sid object is used by a group_test
  * to define the specific group(s) (identified by SID) to be evaluated.
  *
  * @author  Akihito Nakamura, AIST
@@ -79,8 +79,10 @@ public class GroupSidObject
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.group_sid;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.group_sid;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.GROUP_SID;
     }
 
 
@@ -134,7 +136,7 @@ public class GroupSidObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -151,7 +153,7 @@ public class GroupSidObject
 
     public EntityObjectStringType getGroupSid()
     {
-        return this.group_sid;
+        return group_sid;
     }
 
 
@@ -162,10 +164,10 @@ public class GroupSidObject
                     final Collection<? extends Filter> filterList
                     )
     {
-        if (this.filter != filterList) {
-            this.filter.clear();
+        if (filter != filterList) {
+            filter.clear();
             if (filterList != null  &&  filterList.size() > 0) {
-                this.filter.addAll( filterList );
+                filter.addAll( filterList );
             }
         }
     }
@@ -185,7 +187,7 @@ public class GroupSidObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 

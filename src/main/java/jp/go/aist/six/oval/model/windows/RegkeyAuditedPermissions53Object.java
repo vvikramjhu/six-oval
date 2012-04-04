@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -33,7 +33,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The regkeyauditedpermissions53 object is used by a registry key audited permissions test 
+ * The regkeyauditedpermissions53 object is used by a registry key audited permissions test
  * to define the objects used to evalutate against the specified state.
  *
  * @author  Akihito Nakamura, AIST
@@ -91,8 +91,10 @@ public class RegkeyAuditedPermissions53Object
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.regkeyauditedpermissions53;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.regkeyauditedpermissions53;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.REGKEYAUDITEDPERMISSIONS53;
     }
 
 
@@ -146,7 +148,7 @@ public class RegkeyAuditedPermissions53Object
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -163,7 +165,7 @@ public class RegkeyAuditedPermissions53Object
 
     public RegkeyAuditPermissions53Behaviors getBehaviors()
     {
-        return this.behaviors;
+        return behaviors;
     }
 
 
@@ -180,7 +182,7 @@ public class RegkeyAuditedPermissions53Object
 
     public EntityObjectRegistryHiveType getHive()
     {
-        return this.hive;
+        return hive;
     }
 
 
@@ -197,7 +199,7 @@ public class RegkeyAuditedPermissions53Object
 
     public EntityObjectStringType getKey()
     {
-        return this.key;
+        return key;
     }
 
 
@@ -214,7 +216,7 @@ public class RegkeyAuditedPermissions53Object
 
     public EntityObjectStringType getTrusteeSid()
     {
-        return this.trustee_sid;
+        return trustee_sid;
     }
 
 
@@ -225,10 +227,10 @@ public class RegkeyAuditedPermissions53Object
                     final Collection<? extends Filter> filters
                     )
     {
-        if (this.filter != filters) {
-            this.filter.clear();
+        if (filter != filters) {
+            filter.clear();
             if (filters != null  &&  filters.size() > 0) {
-                this.filter.addAll( filters );
+                filter.addAll( filters );
             }
         }
     }
@@ -248,7 +250,7 @@ public class RegkeyAuditedPermissions53Object
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 

@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
@@ -30,8 +30,8 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The process58 state defines the different metadata 
- * associate with a Windows process. 
+ * The process58 state defines the different metadata
+ * associate with a Windows process.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -80,8 +80,10 @@ public class Process58State
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.process58;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.process58;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.PROCESS58;
     }
 
 
@@ -98,7 +100,7 @@ public class Process58State
 
     public EntityStateStringType getCommandLine()
     {
-        return this.command_line;
+        return command_line;
     }
 
 
@@ -115,7 +117,7 @@ public class Process58State
 
     public EntityStateIntType getPid()
     {
-        return this.pid;
+        return pid;
     }
 
 
@@ -132,7 +134,7 @@ public class Process58State
 
     public EntityStateIntType getPpid()
     {
-        return this.ppid;
+        return ppid;
     }
 
 
@@ -149,7 +151,7 @@ public class Process58State
 
     public EntityStateStringType getPriority()
     {
-        return this.priority;
+        return priority;
     }
 
 
@@ -166,7 +168,7 @@ public class Process58State
 
     public EntityStateStringType getImagePath()
     {
-        return this.image_path;
+        return image_path;
     }
 
 
@@ -183,7 +185,7 @@ public class Process58State
 
     public EntityStateStringType getCurrentDir()
     {
-        return this.current_dir;
+        return current_dir;
     }
 
 
@@ -200,7 +202,7 @@ public class Process58State
 
     public EntityStateIntType getCreationTime()
     {
-        return this.creation_time;
+        return creation_time;
     }
 
 
@@ -217,7 +219,7 @@ public class Process58State
 
     public EntityStateBoolType getDepEnabled()
     {
-        return this.dep_enabled;
+        return dep_enabled;
     }
 
 
@@ -234,7 +236,7 @@ public class Process58State
 
     public EntityStateStringType getPrimaryWindowText()
     {
-        return this.primary_window_text;
+        return primary_window_text;
     }
 
 

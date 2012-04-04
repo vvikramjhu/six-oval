@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
@@ -30,8 +30,8 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * This item stores the effective rights of a file 
- * that a discretionary access control list (DACL) structure 
+ * This item stores the effective rights of a file
+ * that a discretionary access control list (DACL) structure
  * grants to a specified trustee.
  *
  * @author  Akihito Nakamura, AIST
@@ -97,9 +97,11 @@ public class FileEffectiveRightsItem
                     )
     {
         super( id, status );
-        
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.fileeffectiverights;
+
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.fileeffectiverights;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.FILEEFFECTIVERIGHTS;
     }
 
 
@@ -116,7 +118,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 
@@ -133,7 +135,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemStringType getPath()
     {
-        return this.path;
+        return path;
     }
 
 
@@ -150,7 +152,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -167,7 +169,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemStringType getTrusteeSid()
     {
-        return this.trustee_sid;
+        return trustee_sid;
     }
 
 
@@ -184,7 +186,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemStringType getTrusteeName()
     {
-        return this.trustee_name;
+        return trustee_name;
     }
 
 
@@ -201,7 +203,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getStandardDelete()
     {
-        return this.standard_delete;
+        return standard_delete;
     }
 
 
@@ -218,7 +220,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getStandardReadControl()
     {
-        return this.standard_read_control;
+        return standard_read_control;
     }
 
 
@@ -235,7 +237,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getStandardWriteDac()
     {
-        return this.standard_write_dac;
+        return standard_write_dac;
     }
 
 
@@ -252,7 +254,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getStandardWriteOwner()
     {
-        return this.standard_write_owner;
+        return standard_write_owner;
     }
 
 
@@ -269,7 +271,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getStandardSyncronize()
     {
-        return this.standard_syncronize;
+        return standard_syncronize;
     }
 
 
@@ -286,7 +288,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getAccessSystemSecurity()
     {
-        return this.access_system_security;
+        return access_system_security;
     }
 
 
@@ -303,7 +305,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getGenericRead()
     {
-        return this.generic_read;
+        return generic_read;
     }
 
 
@@ -320,7 +322,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getGenericWrite()
     {
-        return this.generic_write;
+        return generic_write;
     }
 
 
@@ -337,7 +339,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getGenericExecute()
     {
-        return this.generic_execute;
+        return generic_execute;
     }
 
 
@@ -354,7 +356,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getGenericAll()
     {
-        return this.generic_all;
+        return generic_all;
     }
 
 
@@ -371,7 +373,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getFileReadData()
     {
-        return this.file_read_data;
+        return file_read_data;
     }
 
 
@@ -388,7 +390,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getFileWriteData()
     {
-        return this.file_write_data;
+        return file_write_data;
     }
 
 
@@ -405,7 +407,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getFileAppendData()
     {
-        return this.file_append_data;
+        return file_append_data;
     }
 
 
@@ -422,7 +424,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getFileReadEa()
     {
-        return this.file_read_ea;
+        return file_read_ea;
     }
 
 
@@ -439,7 +441,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getFileWriteEa()
     {
-        return this.file_write_ea;
+        return file_write_ea;
     }
 
 
@@ -456,7 +458,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getFileExecute()
     {
-        return this.file_execute;
+        return file_execute;
     }
 
 
@@ -473,7 +475,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getFileDeleteChild()
     {
-        return this.file_delete_child;
+        return file_delete_child;
     }
 
 
@@ -490,7 +492,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getFileReadAttributes()
     {
-        return this.file_read_attributes;
+        return file_read_attributes;
     }
 
 
@@ -507,7 +509,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemBoolType getFileWriteAttributes()
     {
-        return this.file_write_attributes;
+        return file_write_attributes;
     }
 
 
@@ -524,7 +526,7 @@ public class FileEffectiveRightsItem
 
     public EntityItemWindowsViewType getWindowsView()
     {
-        return this.windows_view;
+        return windows_view;
     }
 
 

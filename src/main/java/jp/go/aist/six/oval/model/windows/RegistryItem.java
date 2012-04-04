@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemAnySimpleType;
 import jp.go.aist.six.oval.model.sc.EntityItemIntType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
@@ -86,8 +86,10 @@ public class RegistryItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.registry;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.registry;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.REGISTRY;
     }
 
 
@@ -104,7 +106,7 @@ public class RegistryItem
 
     public EntityItemRegistryHiveType getHive()
     {
-        return this.hive;
+        return hive;
     }
 
 
@@ -113,7 +115,7 @@ public class RegistryItem
      */
     public EntityItemStringType getKey()
     {
-        return this.key;
+        return key;
     }
 
 
@@ -130,7 +132,7 @@ public class RegistryItem
      */
     public EntityItemStringType getName()
     {
-        return this.name;
+        return name;
     }
 
 
@@ -155,7 +157,7 @@ public class RegistryItem
 
     public EntityItemIntType getLastWriteTime()
     {
-        return this.last_write_time;
+        return last_write_time;
     }
 
 
@@ -164,7 +166,7 @@ public class RegistryItem
      */
     public EntityItemRegistryTypeType getType()
     {
-        return this.type;
+        return type;
     }
 
 
@@ -194,13 +196,13 @@ public class RegistryItem
 
     public Collection<EntityItemAnySimpleType> getValue()
     {
-        return this.value;
+        return value;
     }
 
 
     public Iterator<EntityItemAnySimpleType> iterateValue()
     {
-        return this.value.iterator();
+        return value.iterator();
     }
 
 
@@ -233,7 +235,7 @@ public class RegistryItem
 
     public EntityItemWindowsViewType getWindowsView()
     {
-        return this.windows_view;
+        return windows_view;
     }
 
 

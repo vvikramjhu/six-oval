@@ -20,13 +20,12 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.EntityStateVersionType;
 import jp.go.aist.six.oval.model.definitions.StateType;
-import jp.go.aist.six.oval.model.windows.EntityStateWindowsViewType;
 
 
 
@@ -60,7 +59,7 @@ public class FileState
     private EntityStateStringType    original_filename;
     private EntityStateStringType    product_name;
     private EntityStateVersionType   product_version;
-    
+
     private EntityStateWindowsViewType  windows_view;
     //{0..1}
 
@@ -92,8 +91,10 @@ public class FileState
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.file;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.file;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.FILE;
     }
 
 
@@ -111,7 +112,7 @@ public class FileState
 
     public EntityStateStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
 //        return _properties.getProperty(
 //                        FileProperty.FILEPATH, EntityStateStringType.class );
     }
@@ -140,7 +141,7 @@ public class FileState
 
     public EntityStateStringType getPath()
     {
-        return this.path;
+        return path;
 //        return _properties.getProperty(
 //                        FileProperty.PATH, EntityStateStringType.class );
     }
@@ -169,7 +170,7 @@ public class FileState
 
     public EntityStateStringType getFilename()
     {
-        return this.filename;
+        return filename;
 //        return _properties.getProperty(
 //                        FileProperty.FILENAME, EntityStateStringType.class );
     }
@@ -198,7 +199,7 @@ public class FileState
 
     public EntityStateStringType getOwner()
     {
-        return this.owner;
+        return owner;
 //        return _properties.getProperty(
 //                        FileProperty.OWNER, EntityStateStringType.class );
     }
@@ -227,7 +228,7 @@ public class FileState
 
     public EntityStateIntType getSize()
     {
-        return this.size;
+        return size;
 //        return _properties.getProperty(
 //                        FileProperty.SIZE, EntityStateIntType.class );
     }
@@ -247,7 +248,7 @@ public class FileState
 
     public EntityStateIntType getATime()
     {
-        return this.a_time;
+        return a_time;
 //        return _properties.getProperty(
 //                        FileProperty.A_TIME, EntityStateIntType.class );
     }
@@ -267,7 +268,7 @@ public class FileState
 
     public EntityStateIntType getCTime()
     {
-        return this.c_time;
+        return c_time;
 //        return _properties.getProperty(
 //                        FileProperty.C_TIME, EntityStateIntType.class );
     }
@@ -287,7 +288,7 @@ public class FileState
 
     public EntityStateIntType getMTime()
     {
-        return this.m_time;
+        return m_time;
 //        return _properties.getProperty(
 //                        FileProperty.M_TIME, EntityStateIntType.class );
     }
@@ -307,7 +308,7 @@ public class FileState
 
     public EntityStateStringType getMsChecksum()
     {
-        return this.ms_checksum;
+        return ms_checksum;
 //        return _properties.getProperty(
 //                        FileProperty.MS_CHECKSUM, EntityStateStringType.class );
     }
@@ -327,7 +328,7 @@ public class FileState
 
     public EntityStateVersionType getVersion()
     {
-        return this.version;
+        return version;
 //        return _properties.getProperty(
 //                        FileProperty.VERSION, EntityStateVersionType.class );
     }
@@ -356,7 +357,7 @@ public class FileState
 
     public EntityStateFileTypeType getType()
     {
-        return this.type;
+        return type;
 //        return _properties.getProperty(
 //                        FileProperty.TYPE, EntityStateFileTypeType.class );
     }
@@ -376,7 +377,7 @@ public class FileState
 
     public EntityStateStringType getDevelopmentClass()
     {
-        return this.development_class;
+        return development_class;
 //        return _properties.getProperty(
 //                        FileProperty.DEVELOPMENT_CLASS, EntityStateStringType.class );
     }
@@ -396,7 +397,7 @@ public class FileState
 
     public EntityStateStringType getCompany()
     {
-        return this.company;
+        return company;
 //        return _properties.getProperty(
 //                        FileProperty.COMPANY, EntityStateStringType.class );
     }
@@ -416,7 +417,7 @@ public class FileState
 
     public EntityStateStringType getInternalName()
     {
-        return this.internal_name;
+        return internal_name;
 //        return _properties.getProperty(
 //                        FileProperty.INTERNAL_NAME, EntityStateStringType.class );
     }
@@ -436,7 +437,7 @@ public class FileState
 
     public EntityStateStringType getLanguage()
     {
-        return this.language;
+        return language;
 //        return _properties.getProperty(
 //                        FileProperty.LANGUAGE, EntityStateStringType.class );
     }
@@ -455,7 +456,7 @@ public class FileState
 
     public EntityStateStringType getOriginalFilename()
     {
-        return this.original_filename;
+        return original_filename;
     }
 
 
@@ -473,7 +474,7 @@ public class FileState
 
     public EntityStateStringType getProductName()
     {
-        return this.product_name;
+        return product_name;
 //        return _properties.getProperty(
 //                        FileProperty.PRODUCT_NAME, EntityStateStringType.class );
     }
@@ -493,7 +494,7 @@ public class FileState
 
     public EntityStateVersionType getProductVersion()
     {
-        return this.product_version;
+        return product_version;
 //        return _properties.getProperty(
 //                        FileProperty.PRODUCT_VERSION, EntityStateVersionType.class );
     }
@@ -521,7 +522,7 @@ public class FileState
 
     public EntityStateWindowsViewType getWindowsView()
     {
-        return this.windows_view;
+        return windows_view;
     }
 
 

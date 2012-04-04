@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateIntType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -65,8 +65,10 @@ public class PasswordPolicyState
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.passwordpolicy;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.passwordpolicy;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.PASSWORDPOLICY;
     }
 
 
@@ -83,7 +85,7 @@ public class PasswordPolicyState
 
     public EntityStateIntType getMaxPasswdAge()
     {
-        return this.max_passwd_age;
+        return max_passwd_age;
     }
 
 
@@ -100,7 +102,7 @@ public class PasswordPolicyState
 
     public EntityStateIntType getMinPasswdAge()
     {
-        return this.min_passwd_age;
+        return min_passwd_age;
     }
 
 
@@ -117,7 +119,7 @@ public class PasswordPolicyState
 
     public EntityStateIntType getMinPasswdLen()
     {
-        return this.min_passwd_len;
+        return min_passwd_len;
     }
 
 
@@ -134,7 +136,7 @@ public class PasswordPolicyState
 
     public EntityStateIntType getPasswordHistLen()
     {
-        return this.password_hist_len;
+        return password_hist_len;
     }
 
 
@@ -151,7 +153,7 @@ public class PasswordPolicyState
 
     public EntityStateBoolType getPasswordComplexity()
     {
-        return this.password_complexity;
+        return password_complexity;
     }
 
 
@@ -168,7 +170,7 @@ public class PasswordPolicyState
 
     public EntityStateBoolType getReversibleEncryption()
     {
-        return this.reversible_encryption;
+        return reversible_encryption;
     }
 
 

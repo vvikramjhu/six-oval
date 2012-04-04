@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -29,8 +29,8 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The fileeffectiverights53 state defines the different rights 
- * that can be associated with a given fileeffectiverights53_object. 
+ * The fileeffectiverights53 state defines the different rights
+ * that can be associated with a given fileeffectiverights53_object.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -96,8 +96,10 @@ public class FileEffectiveRights53State
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.fileeffectiverights53;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.fileeffectiverights53;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.FILEEFFECTIVERIGHTS53;
     }
 
 
@@ -114,7 +116,7 @@ public class FileEffectiveRights53State
 
     public EntityStateStringType getFilepath()
     {
-        return this.filepath;
+        return filepath;
     }
 
 
@@ -131,7 +133,7 @@ public class FileEffectiveRights53State
 
     public EntityStateStringType getPath()
     {
-        return this.path;
+        return path;
     }
 
 
@@ -148,7 +150,7 @@ public class FileEffectiveRights53State
 
     public EntityStateStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -165,7 +167,7 @@ public class FileEffectiveRights53State
 
     public EntityStateStringType getTrusteeSid()
     {
-        return this.trustee_sid;
+        return trustee_sid;
     }
 
 
@@ -182,7 +184,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getStandardDelete()
     {
-        return this.standard_delete;
+        return standard_delete;
     }
 
 
@@ -199,7 +201,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getStandardReadControl()
     {
-        return this.standard_read_control;
+        return standard_read_control;
     }
 
 
@@ -216,7 +218,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getStandardWriteDac()
     {
-        return this.standard_write_dac;
+        return standard_write_dac;
     }
 
 
@@ -233,7 +235,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getStandardWriteOwner()
     {
-        return this.standard_write_owner;
+        return standard_write_owner;
     }
 
 
@@ -250,7 +252,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getStandardSyncronize()
     {
-        return this.standard_syncronize;
+        return standard_syncronize;
     }
 
 
@@ -267,7 +269,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getAccessSystemSecurity()
     {
-        return this.access_system_security;
+        return access_system_security;
     }
 
 
@@ -284,7 +286,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getGenericRead()
     {
-        return this.generic_read;
+        return generic_read;
     }
 
 
@@ -301,7 +303,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getGenericWrite()
     {
-        return this.generic_write;
+        return generic_write;
     }
 
 
@@ -318,7 +320,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getGenericExecute()
     {
-        return this.generic_execute;
+        return generic_execute;
     }
 
 
@@ -335,7 +337,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getGenericAll()
     {
-        return this.generic_all;
+        return generic_all;
     }
 
 
@@ -352,7 +354,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getFileReadData()
     {
-        return this.file_read_data;
+        return file_read_data;
     }
 
 
@@ -369,7 +371,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getFileWriteData()
     {
-        return this.file_write_data;
+        return file_write_data;
     }
 
 
@@ -386,7 +388,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getFileAppendData()
     {
-        return this.file_append_data;
+        return file_append_data;
     }
 
 
@@ -403,7 +405,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getFileReadEa()
     {
-        return this.file_read_ea;
+        return file_read_ea;
     }
 
 
@@ -420,7 +422,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getFileWriteEa()
     {
-        return this.file_write_ea;
+        return file_write_ea;
     }
 
 
@@ -437,7 +439,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getFileExecute()
     {
-        return this.file_execute;
+        return file_execute;
     }
 
 
@@ -454,7 +456,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getFileDeleteChild()
     {
-        return this.file_delete_child;
+        return file_delete_child;
     }
 
 
@@ -471,7 +473,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getFileReadAttributes()
     {
-        return this.file_read_attributes;
+        return file_read_attributes;
     }
 
 
@@ -488,7 +490,7 @@ public class FileEffectiveRights53State
 
     public EntityStateBoolType getFileWriteAttributes()
     {
-        return this.file_write_attributes;
+        return file_write_attributes;
     }
 
 
@@ -505,7 +507,7 @@ public class FileEffectiveRights53State
 
     public EntityStateWindowsViewType getWindowsView()
     {
-        return this.windows_view;
+        return windows_view;
     }
 
 

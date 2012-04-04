@@ -20,14 +20,14 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 
 /**
- * The uac object is used by a user access control test 
+ * The uac object is used by a user access control test
  * to define those objects to evaluate based on a specified state.
  *
  * @author  Akihito Nakamura, AIST
@@ -54,8 +54,10 @@ public class UacObject
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.uac;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.uac;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.UAC;
     }
 
 

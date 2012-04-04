@@ -23,8 +23,8 @@ package jp.go.aist.six.oval.model.windows;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Filter;
 import jp.go.aist.six.oval.model.definitions.Set;
@@ -33,7 +33,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The fileeffectiverights53 object is used by a file effective rights test 
+ * The fileeffectiverights53 object is used by a file effective rights test
  * to define the objects used to evalutate against the specified state.
  *
  * @author  Akihito Nakamura, AIST
@@ -88,8 +88,10 @@ public class PrinterEffectiveRightsObject
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.printereffectiverights;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.printereffectiverights;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.PRINTEREFFECTIVERIGHTS;
     }
 
 
@@ -143,7 +145,7 @@ public class PrinterEffectiveRightsObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -160,7 +162,7 @@ public class PrinterEffectiveRightsObject
 
     public PrinterEffectiveRightsBehaviors getBehaviors()
     {
-        return this.behaviors;
+        return behaviors;
     }
 
 
@@ -177,7 +179,7 @@ public class PrinterEffectiveRightsObject
 
     public EntityObjectStringType getPrinterName()
     {
-        return this.printer_name;
+        return printer_name;
     }
 
 
@@ -194,7 +196,7 @@ public class PrinterEffectiveRightsObject
 
     public EntityObjectStringType getTrusteeSid()
     {
-        return this.trustee_sid;
+        return trustee_sid;
     }
 
 
@@ -205,10 +207,10 @@ public class PrinterEffectiveRightsObject
                     final Collection<? extends Filter> filterList
                     )
     {
-        if (this.filter != filterList) {
-            this.filter.clear();
+        if (filter != filterList) {
+            filter.clear();
             if (filterList != null  &&  filterList.size() > 0) {
-                this.filter.addAll( filterList );
+                filter.addAll( filterList );
             }
         }
     }
@@ -228,7 +230,7 @@ public class PrinterEffectiveRightsObject
 
     public Collection<Filter> getFilter()
     {
-        return this.filter;
+        return filter;
     }
 
 

@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.CheckEnumeration;
 import jp.go.aist.six.oval.model.definitions.StateRefType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectRefType;
@@ -80,8 +80,10 @@ public class UserSid55Test
     {
         super( id, version, comment, check, object, stateList );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.user_sid55;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.user_sid55;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.USER_SID55;
     }
 
 

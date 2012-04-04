@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
 import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 import jp.go.aist.six.oval.model.sc.ItemType;
@@ -30,8 +30,8 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 
 
 /**
- * This item stores the effective rights of a file 
- * that a discretionary access control list (DACL) structure 
+ * This item stores the effective rights of a file
+ * that a discretionary access control list (DACL) structure
  * grants to a specified trustee.
  *
  * @author  Akihito Nakamura, AIST
@@ -85,9 +85,11 @@ public class PrinterEffectiveRightsItem
                     )
     {
         super( id, status );
-        
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.printereffectiverights;
+
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.printereffectiverights;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.PRINTEREFFECTIVERIGHTS;
     }
 
 
@@ -104,7 +106,7 @@ public class PrinterEffectiveRightsItem
 
     public EntityItemStringType getPrinterName()
     {
-        return this.printer_name;
+        return printer_name;
     }
 
 
@@ -121,7 +123,7 @@ public class PrinterEffectiveRightsItem
 
     public EntityItemStringType getTrusteeSid()
     {
-        return this.trustee_sid;
+        return trustee_sid;
     }
 
 
@@ -138,7 +140,7 @@ public class PrinterEffectiveRightsItem
 
     public EntityItemBoolType getStandardDelete()
     {
-        return this.standard_delete;
+        return standard_delete;
     }
 
 
@@ -155,7 +157,7 @@ public class PrinterEffectiveRightsItem
 
     public EntityItemBoolType getStandardReadControl()
     {
-        return this.standard_read_control;
+        return standard_read_control;
     }
 
 
@@ -172,7 +174,7 @@ public class PrinterEffectiveRightsItem
 
     public EntityItemBoolType getStandardWriteDac()
     {
-        return this.standard_write_dac;
+        return standard_write_dac;
     }
 
 
@@ -189,7 +191,7 @@ public class PrinterEffectiveRightsItem
 
     public EntityItemBoolType getStandardWriteOwner()
     {
-        return this.standard_write_owner;
+        return standard_write_owner;
     }
 
 
@@ -206,7 +208,7 @@ public class PrinterEffectiveRightsItem
 
     public EntityItemBoolType getStandardSyncronize()
     {
-        return this.standard_syncronize;
+        return standard_syncronize;
     }
 
 
@@ -223,7 +225,7 @@ public class PrinterEffectiveRightsItem
 
     public EntityItemBoolType getAccessSystemSecurity()
     {
-        return this.access_system_security;
+        return access_system_security;
     }
 
 
@@ -240,7 +242,7 @@ public class PrinterEffectiveRightsItem
 
     public EntityItemBoolType getGenericRead()
     {
-        return this.generic_read;
+        return generic_read;
     }
 
 
@@ -257,7 +259,7 @@ public class PrinterEffectiveRightsItem
 
     public EntityItemBoolType getGenericWrite()
     {
-        return this.generic_write;
+        return generic_write;
     }
 
 
@@ -274,7 +276,7 @@ public class PrinterEffectiveRightsItem
 
     public EntityItemBoolType getGenericExecute()
     {
-        return this.generic_execute;
+        return generic_execute;
     }
 
 
@@ -291,7 +293,7 @@ public class PrinterEffectiveRightsItem
 
     public EntityItemBoolType getGenericAll()
     {
-        return this.generic_all;
+        return generic_all;
     }
 
 
@@ -308,7 +310,7 @@ public class PrinterEffectiveRightsItem
 
     public EntityItemBoolType getPrinterAccessAdminister()
     {
-        return this.printer_access_administer;
+        return printer_access_administer;
     }
 
 
@@ -325,7 +327,7 @@ public class PrinterEffectiveRightsItem
 
     public EntityItemBoolType getPrinterAccessUse()
     {
-        return this.printer_access_use;
+        return printer_access_use;
     }
 
 
@@ -342,7 +344,7 @@ public class PrinterEffectiveRightsItem
 
     public EntityItemBoolType getJobAccessAdminister()
     {
-        return this.job_access_administer;
+        return job_access_administer;
     }
 
 
@@ -359,7 +361,7 @@ public class PrinterEffectiveRightsItem
 
     public EntityItemBoolType getJobAccessRead()
     {
-        return this.job_access_read;
+        return job_access_read;
     }
 
 

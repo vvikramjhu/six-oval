@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.ItemType;
 
 
@@ -111,8 +111,10 @@ public class AuditEventPolicySubcategoriesItem
     {
         super( id );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.auditeventpolicysubcategories;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.auditeventpolicysubcategories;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.AUDITEVENTPOLICYSUBCATEGORIES;
     }
 
 
@@ -129,7 +131,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getCredentialValidation()
     {
-        return this.credential_validation;
+        return credential_validation;
     }
 
 
@@ -146,7 +148,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getKerberosAuthenticationService()
     {
-        return this.kerberos_authentication_service;
+        return kerberos_authentication_service;
     }
 
 
@@ -163,7 +165,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getKerberosServiceTicketOperations()
     {
-        return this.kerberos_service_ticket_operations;
+        return kerberos_service_ticket_operations;
     }
 
 
@@ -180,7 +182,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getKerberosTicketEvents()
     {
-        return this.kerberos_ticket_events;
+        return kerberos_ticket_events;
     }
 
 
@@ -197,7 +199,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getOtherAccountLogonEvents()
     {
-        return this.other_account_logon_events;
+        return other_account_logon_events;
     }
 
 
@@ -214,7 +216,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getApplicationGroupManagement()
     {
-        return this.application_group_management;
+        return application_group_management;
     }
 
 
@@ -231,7 +233,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getComputerAccountManagement()
     {
-        return this.computer_account_management;
+        return computer_account_management;
     }
 
 
@@ -248,7 +250,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getDistributionGroupManagement()
     {
-        return this.distribution_group_management;
+        return distribution_group_management;
     }
 
 
@@ -265,7 +267,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getOtherAccountManagementEvents()
     {
-        return this.other_account_management_events;
+        return other_account_management_events;
     }
 
 
@@ -282,7 +284,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getSecurityGroupManagement()
     {
-        return this.security_group_management;
+        return security_group_management;
     }
 
 
@@ -299,7 +301,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getUserAccountManagement()
     {
-        return this.user_account_management;
+        return user_account_management;
     }
 
 
@@ -316,7 +318,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getDpapiActivity()
     {
-        return this.dpapi_activity;
+        return dpapi_activity;
     }
 
 
@@ -333,7 +335,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getProcessCreation()
     {
-        return this.process_creation;
+        return process_creation;
     }
 
 
@@ -350,7 +352,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getProcessTermination()
     {
-        return this.process_termination;
+        return process_termination;
     }
 
 
@@ -367,7 +369,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getRpcEvents()
     {
-        return this.rpc_events;
+        return rpc_events;
     }
 
 
@@ -384,7 +386,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getDirectoryServiceAccess()
     {
-        return this.directory_service_access;
+        return directory_service_access;
     }
 
 
@@ -401,7 +403,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getDirectoryServiceChanges()
     {
-        return this.directory_service_changes;
+        return directory_service_changes;
     }
 
 
@@ -418,7 +420,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getDirectoryServiceReplication()
     {
-        return this.directory_service_replication;
+        return directory_service_replication;
     }
 
 
@@ -435,7 +437,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getDetailedDirectoryServiceReplication()
     {
-        return this.detailed_directory_service_replication;
+        return detailed_directory_service_replication;
     }
 
 
@@ -452,7 +454,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getAccountLockout()
     {
-        return this.account_lockout;
+        return account_lockout;
     }
 
 
@@ -469,7 +471,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getIpsecExtendedMode()
     {
-        return this.ipsec_extended_mode;
+        return ipsec_extended_mode;
     }
 
 
@@ -486,7 +488,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getIpsecMainMode()
     {
-        return this.ipsec_main_mode;
+        return ipsec_main_mode;
     }
 
 
@@ -503,7 +505,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getIpsecQuickMode()
     {
-        return this.ipsec_quick_mode;
+        return ipsec_quick_mode;
     }
 
 
@@ -520,7 +522,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getLogoff()
     {
-        return this.logoff;
+        return logoff;
     }
 
 
@@ -537,7 +539,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getLogon()
     {
-        return this.logon;
+        return logon;
     }
 
 
@@ -554,7 +556,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getNetworkPolicyServer()
     {
-        return this.network_policy_server;
+        return network_policy_server;
     }
 
 
@@ -571,7 +573,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getOtherLogonLogoffEvents()
     {
-        return this.other_logon_logoff_events;
+        return other_logon_logoff_events;
     }
 
 
@@ -588,7 +590,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getSpecialLogon()
     {
-        return this.special_logon;
+        return special_logon;
     }
 
 
@@ -605,7 +607,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getApplicationGenerated()
     {
-        return this.application_generated;
+        return application_generated;
     }
 
 
@@ -622,7 +624,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getCertificationServices()
     {
-        return this.certification_services;
+        return certification_services;
     }
 
 
@@ -639,7 +641,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getDetailedFileShare()
     {
-        return this.detailed_file_share;
+        return detailed_file_share;
     }
 
 
@@ -656,7 +658,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getFileShare()
     {
-        return this.file_share;
+        return file_share;
     }
 
 
@@ -673,7 +675,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getFileSystem()
     {
-        return this.file_system;
+        return file_system;
     }
 
 
@@ -690,7 +692,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getFilteringPlatformConnection()
     {
-        return this.filtering_platform_connection;
+        return filtering_platform_connection;
     }
 
 
@@ -707,7 +709,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getFilteringPlatformPacketDrop()
     {
-        return this.filtering_platform_packet_drop;
+        return filtering_platform_packet_drop;
     }
 
 
@@ -724,7 +726,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getHandleManipulation()
     {
-        return this.handle_manipulation;
+        return handle_manipulation;
     }
 
 
@@ -741,7 +743,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getKernelObject()
     {
-        return this.kernel_object;
+        return kernel_object;
     }
 
 
@@ -758,7 +760,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getOtherObjectAccessEvents()
     {
-        return this.other_object_access_events;
+        return other_object_access_events;
     }
 
 
@@ -775,7 +777,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getRegistry()
     {
-        return this.registry;
+        return registry;
     }
 
 
@@ -792,7 +794,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getSam()
     {
-        return this.sam;
+        return sam;
     }
 
 
@@ -809,7 +811,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getAuditPolicyChange()
     {
-        return this.audit_policy_change;
+        return audit_policy_change;
     }
 
 
@@ -826,7 +828,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getAuthenticationPolicyChange()
     {
-        return this.authentication_policy_change;
+        return authentication_policy_change;
     }
 
 
@@ -843,7 +845,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getAuthorizationPolicyChange()
     {
-        return this.authorization_policy_change;
+        return authorization_policy_change;
     }
 
 
@@ -860,7 +862,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getFilteringPlatformPolicyChange()
     {
-        return this.filtering_platform_policy_change;
+        return filtering_platform_policy_change;
     }
 
 
@@ -877,7 +879,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getMpssvcRuleLevelPolicyChange()
     {
-        return this.mpssvc_rule_level_policy_change;
+        return mpssvc_rule_level_policy_change;
     }
 
 
@@ -894,7 +896,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getOtherPolicyChangeEvents()
     {
-        return this.other_policy_change_events;
+        return other_policy_change_events;
     }
 
 
@@ -911,7 +913,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getNonSensitivePrivilegeUse()
     {
-        return this.non_sensitive_privilege_use;
+        return non_sensitive_privilege_use;
     }
 
 
@@ -928,7 +930,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getOtherPrivilegeUseEvents()
     {
-        return this.other_privilege_use_events;
+        return other_privilege_use_events;
     }
 
 
@@ -945,7 +947,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getSensitivePrivilegeUse()
     {
-        return this.sensitive_privilege_use;
+        return sensitive_privilege_use;
     }
 
 
@@ -962,7 +964,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getIpsecDriver()
     {
-        return this.ipsec_driver;
+        return ipsec_driver;
     }
 
 
@@ -979,7 +981,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getOtherSystemEvents()
     {
-        return this.other_system_events;
+        return other_system_events;
     }
 
 
@@ -996,7 +998,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getSecurityStateChange()
     {
-        return this.security_state_change;
+        return security_state_change;
     }
 
 
@@ -1013,7 +1015,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getSecuritySystemExtension()
     {
-        return this.security_system_extension;
+        return security_system_extension;
     }
 
 
@@ -1030,7 +1032,7 @@ public class AuditEventPolicySubcategoriesItem
 
     public EntityItemAuditType getSystemIntegrity()
     {
-        return this.system_integrity;
+        return system_integrity;
     }
 
 

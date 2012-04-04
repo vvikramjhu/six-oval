@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -29,8 +29,8 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The regkeyeffectiverights53 state defines the different rights 
- * that can be associated with a given regkeyeffectiverights53_object. 
+ * The regkeyeffectiverights53 state defines the different rights
+ * that can be associated with a given regkeyeffectiverights53_object.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
@@ -95,8 +95,10 @@ public class RegkeyEffectiveRights53State
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.regkeyeffectiverights53;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.regkeyeffectiverights53;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.REGKEYEFFECTIVERIGHTS53;
     }
 
 
@@ -113,7 +115,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateRegistryHiveType getHive()
     {
-        return this.hive;
+        return hive;
     }
 
 
@@ -130,7 +132,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateStringType getKey()
     {
-        return this.key;
+        return key;
     }
 
 
@@ -147,7 +149,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateStringType getTrusteeSid()
     {
-        return this.trustee_sid;
+        return trustee_sid;
     }
 
 
@@ -164,7 +166,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getStandardDelete()
     {
-        return this.standard_delete;
+        return standard_delete;
     }
 
 
@@ -181,7 +183,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getStandardReadControl()
     {
-        return this.standard_read_control;
+        return standard_read_control;
     }
 
 
@@ -198,7 +200,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getStandardWriteDac()
     {
-        return this.standard_write_dac;
+        return standard_write_dac;
     }
 
 
@@ -215,7 +217,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getStandardWriteOwner()
     {
-        return this.standard_write_owner;
+        return standard_write_owner;
     }
 
 
@@ -232,7 +234,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getStandardSyncronize()
     {
-        return this.standard_syncronize;
+        return standard_syncronize;
     }
 
 
@@ -249,7 +251,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getAccessSystemSecurity()
     {
-        return this.access_system_security;
+        return access_system_security;
     }
 
 
@@ -266,7 +268,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getGenericRead()
     {
-        return this.generic_read;
+        return generic_read;
     }
 
 
@@ -283,7 +285,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getGenericWrite()
     {
-        return this.generic_write;
+        return generic_write;
     }
 
 
@@ -300,7 +302,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getGenericExecute()
     {
-        return this.generic_execute;
+        return generic_execute;
     }
 
 
@@ -317,7 +319,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getGenericAll()
     {
-        return this.generic_all;
+        return generic_all;
     }
 
 
@@ -334,7 +336,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getKeyQueryValue()
     {
-        return this.key_query_value;
+        return key_query_value;
     }
 
 
@@ -351,7 +353,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getKeySetValue()
     {
-        return this.key_set_value;
+        return key_set_value;
     }
 
 
@@ -368,7 +370,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getKeyCreateSubKey()
     {
-        return this.key_create_sub_key;
+        return key_create_sub_key;
     }
 
 
@@ -385,7 +387,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getKeyEnumerateSubKeys()
     {
-        return this.key_enumerate_sub_keys;
+        return key_enumerate_sub_keys;
     }
 
 
@@ -402,7 +404,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getKeyNotify()
     {
-        return this.key_notify;
+        return key_notify;
     }
 
 
@@ -419,7 +421,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getKeyCreateLink()
     {
-        return this.key_create_link;
+        return key_create_link;
     }
 
 
@@ -436,7 +438,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getKeyWow6464key()
     {
-        return this.key_wow64_64key;
+        return key_wow64_64key;
     }
 
 
@@ -453,7 +455,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getKeyWow6432key()
     {
-        return this.key_wow64_32key;
+        return key_wow64_32key;
     }
 
 
@@ -470,7 +472,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateBoolType getKeyWow64Res()
     {
-        return this.key_wow64_res;
+        return key_wow64_res;
     }
 
 
@@ -487,7 +489,7 @@ public class RegkeyEffectiveRights53State
 
     public EntityStateWindowsViewType getWindowsView()
     {
-        return this.windows_view;
+        return windows_view;
     }
 
 

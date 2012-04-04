@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityStateBoolType;
 import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 import jp.go.aist.six.oval.model.definitions.StateType;
@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 
 
 /**
- * The user_sid55 state enumerates the different groups (identified by SID) 
+ * The user_sid55 state enumerates the different groups (identified by SID)
  * that a Windows user might belong to.
  *
  * @author  Akihito Nakamura, AIST
@@ -73,8 +73,10 @@ public class UserSid55State
     {
         super( id, version, comment );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.user_sid55;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.user_sid55;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.USER_SID55;
     }
 
 
@@ -91,7 +93,7 @@ public class UserSid55State
 
     public EntityStateStringType getUserSid()
     {
-        return this.user_sid;
+        return user_sid;
     }
 
 
@@ -108,7 +110,7 @@ public class UserSid55State
 
     public EntityStateBoolType getEnabled()
     {
-        return this.enabled;
+        return enabled;
     }
 
 
@@ -125,7 +127,7 @@ public class UserSid55State
 
     public EntityStateStringType getGroupSid()
     {
-        return this.group_sid;
+        return group_sid;
     }
 
 

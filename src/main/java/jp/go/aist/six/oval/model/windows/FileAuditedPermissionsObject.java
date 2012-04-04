@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.OvalComponentType;
-import jp.go.aist.six.oval.model.OvalPlatformType;
+import jp.go.aist.six.oval.model.Component;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.EntityObjectStringType;
 import jp.go.aist.six.oval.model.definitions.Set;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
@@ -29,7 +29,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 
 
 /**
- * The fileauditedpermissions object is used by a file audited permissions test 
+ * The fileauditedpermissions object is used by a file audited permissions test
  * to define the objects used to evaluate against the specified state.
  *
  * @author  Akihito Nakamura, AIST
@@ -39,6 +39,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
  *             Replaced by the fileauditedpermissions53 object and
  *             will be removed in version 6.0 of the language.
  */
+@Deprecated
 public class FileAuditedPermissionsObject
     extends SystemObjectType
 {
@@ -87,8 +88,10 @@ public class FileAuditedPermissionsObject
     {
         super( id, version );
 
-        _oval_platform_type = OvalPlatformType.windows;
-        _oval_component_type = OvalComponentType.fileauditedpermissions;
+//        _oval_platform_type = OvalPlatformType.windows;
+//        _oval_component_type = OvalComponentType.fileauditedpermissions;
+        _oval_family = Family.WINDOWS;
+        _oval_component = Component.FILEAUDITEDPERMISSIONS;
     }
 
 
@@ -142,7 +145,7 @@ public class FileAuditedPermissionsObject
 
     public Set getSet()
     {
-        return this.set;
+        return set;
     }
 
 
@@ -159,7 +162,7 @@ public class FileAuditedPermissionsObject
 
     public FileAuditPermissionsBehaviors getBehaviors()
     {
-        return this.behaviors;
+        return behaviors;
     }
 
 
@@ -176,7 +179,7 @@ public class FileAuditedPermissionsObject
 
     public EntityObjectStringType getPath()
     {
-        return this.path;
+        return path;
     }
 
 
@@ -193,7 +196,7 @@ public class FileAuditedPermissionsObject
 
     public EntityObjectStringType getFilename()
     {
-        return this.filename;
+        return filename;
     }
 
 
@@ -210,7 +213,7 @@ public class FileAuditedPermissionsObject
 
     public EntityObjectStringType getTrusteeName()
     {
-        return this.trustee_name;
+        return trustee_name;
     }
 
 
