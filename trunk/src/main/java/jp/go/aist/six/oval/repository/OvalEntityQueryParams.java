@@ -37,23 +37,25 @@ public class OvalEntityQueryParams
     public static class Key
     extends CommonQueryParams.Key
     {
-        public static final String  ID                  = "id";
-        public static final String  VERSION             = "version";
+        public static final String  ID              = "id";
+        public static final String  VERSION         = "version";
 
-        public static final String  TYPE                = "type";
+        public static final String  TYPE            = "type";
         //DefinitionsElement.Type {definition, test, object, state, variable}
 
-        public static final String  SCHEMA_VERSION      = "schemaVersion";
-
-        public static final String  FAMILY              = "family";
+        public static final String  FAMILY          = "family";
         //Family {linux, unix, windows, ...}
 
-        public static final String  COMPONENT           = "component";
+        public static final String  COMPONENT       = "component";
         //Component {file, rpminfo, registry, ...}
 
-        public static final String  REFERER             = "referer";
+        public static final String  REFERER         = "referer";
 
-        public static final String  COMMENT             = "comment";
+//        public static final String  COMMENT         = "comment"; // Use searchTerms instead!
+
+        //TODO: Is this required???
+        public static final String  SCHEMA          = "schema";
+        public static final String  DOCUMENT        = "document";
     }
     // Key
 
@@ -76,6 +78,23 @@ public class OvalEntityQueryParams
         //NOTE: Since the type of the OVAL-IDs is String,
         //      this ordering specifies the lexicographical sorting,
         //      e.g. def:99 is bigger than def:111.
+    }
+
+
+
+    /**
+     */
+    public void setSchema(
+                    final String schema
+    )
+    {
+        set( Key.SCHEMA, schema );
+    }
+
+
+    public String getSchema()
+    {
+        return get( Key.SCHEMA );
     }
 
 
@@ -132,23 +151,6 @@ public class OvalEntityQueryParams
     public String getType()
     {
         return get( Key.TYPE );
-    }
-
-
-
-    /**
-     */
-    public void setSchemaVersion(
-                    final String schema_version
-    )
-    {
-        set( Key.SCHEMA_VERSION, schema_version );
-    }
-
-
-    public String getSchemaVersion()
-    {
-        return get( Key.SCHEMA_VERSION );
     }
 
 
@@ -213,20 +215,20 @@ public class OvalEntityQueryParams
 
 
 
-    /**
-     */
-    public void setComment(
-                    final String comment
-    )
-    {
-        set( Key.COMMENT, comment );
-    }
-
-
-    public String getComment()
-    {
-        return get( Key.COMMENT );
-    }
+//    /**
+//     */
+//    public void setComment(
+//                    final String comment
+//    )
+//    {
+//        set( Key.COMMENT, comment );
+//    }
+//
+//
+//    public String getComment()
+//    {
+//        return get( Key.COMMENT );
+//    }
 
 }
 //
