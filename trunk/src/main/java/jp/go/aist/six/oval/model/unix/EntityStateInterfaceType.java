@@ -25,22 +25,22 @@ import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 /**
- * The EntityStateNetworkInterfaceType restricts a string value 
- * to a specific set of values. 
+ * The EntityStateInterfaceType restricts a string value
+ * to a specific set of values.
  * These values describe the different interface types which are defined in 'if_arp.h'.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityStateNetworkInterfaceType
+public class EntityStateInterfaceType
     extends EntityStateStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityStateNetworkInterfaceType()
+    public EntityStateInterfaceType()
     {
     }
 
@@ -100,7 +100,7 @@ public class EntityStateNetworkInterfaceType
                     )
     {
         if (content != null) {
-            NetworkInterfaceEnumeration.fromValue( content );
+            InterfaceEnumeration.fromValue( content );
         }
 
         super.setContent( content );
@@ -129,7 +129,7 @@ public class EntityStateNetworkInterfaceType
             return true;
         }
 
-        if (!(obj instanceof EntityStateNetworkInterfaceType)) {
+        if (!(obj instanceof EntityStateInterfaceType)) {
             return false;
         }
 
@@ -137,4 +137,4 @@ public class EntityStateNetworkInterfaceType
     }
 
 }
-//EntityStateNetworkInterfaceType
+//EntityStateInterfaceType

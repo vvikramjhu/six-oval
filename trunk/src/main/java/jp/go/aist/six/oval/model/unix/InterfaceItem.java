@@ -29,20 +29,20 @@ import jp.go.aist.six.oval.model.sc.ItemType;
 
 
 /**
- * The network_interface item enumerates various attributes
+ * The interface item enumerates various attributes
  * about the network interfaces on a system.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class NetworkInterfaceItem
+public class InterfaceItem
     extends ItemType
 {
 
     //{0..1}
     private EntityItemStringType               name;
-    private EntityItemNetworkInterfaceType     type;
+    private EntityItemInterfaceType     type;
     private EntityItemStringType               hardware_addr;
     private EntityItemIPAddressStringType      inet_addr;
     private EntityItemIPAddressStringType      broadcast_addr;
@@ -54,13 +54,13 @@ public class NetworkInterfaceItem
     /**
      * Constructor.
      */
-    public NetworkInterfaceItem()
+    public InterfaceItem()
     {
         this( 0 );
     }
 
 
-    public NetworkInterfaceItem(
+    public InterfaceItem(
                     final int id
                     )
     {
@@ -94,14 +94,14 @@ public class NetworkInterfaceItem
     /**
      */
     public void setType(
-                    final EntityItemNetworkInterfaceType type
+                    final EntityItemInterfaceType type
                     )
     {
         this.type = type;
     }
 
 
-    public EntityItemNetworkInterfaceType getType()
+    public EntityItemInterfaceType getType()
     {
         return type;
     }
@@ -200,7 +200,7 @@ public class NetworkInterfaceItem
     @Override
     public String toString()
     {
-        return "network_interface_item[" + super.toString()
+        return "interface_item[" + super.toString()
                         + ", name="            + getName()
                         + ", type="            + getType()
                         + ", hadware_addr="    + getHardwareAddr()
@@ -212,4 +212,4 @@ public class NetworkInterfaceItem
     }
 
 }
-//NetworkInterfaceItem
+//InterfaceItem

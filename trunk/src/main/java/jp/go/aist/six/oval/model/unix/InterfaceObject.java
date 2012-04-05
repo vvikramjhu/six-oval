@@ -40,7 +40,7 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class NetworkInterfaceObject
+public class InterfaceObject
     extends SystemObjectType
 {
 
@@ -66,13 +66,13 @@ public class NetworkInterfaceObject
     /**
      * Constructor.
      */
-    public NetworkInterfaceObject()
+    public InterfaceObject()
     {
         this( null, 0 );
     }
 
 
-    public NetworkInterfaceObject(
+    public InterfaceObject(
                     final String id,
                     final int version
                     )
@@ -214,7 +214,7 @@ public class NetworkInterfaceObject
                     final Object obj
                     )
     {
-        if (!(obj instanceof NetworkInterfaceObject)) {
+        if (!(obj instanceof InterfaceObject)) {
             return false;
         }
 
@@ -226,7 +226,7 @@ public class NetworkInterfaceObject
     @Override
     public String toString()
     {
-        return "network_interface_object[" + super.toString()
+        return "interface_object[" + super.toString()
                         + ", set"       + getSet()
                         + ", name="     + getName()
                         + ", filter="   + getFilter()
@@ -234,4 +234,4 @@ public class NetworkInterfaceObject
     }
 
 }
-//NetworkInterfaceObject
+//InterfaceObject

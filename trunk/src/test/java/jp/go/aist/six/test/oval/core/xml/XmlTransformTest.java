@@ -45,6 +45,11 @@ public class XmlTransformTest
                         }
                         ,
                         {
+                            "test/resources/OvalTestContent/5.10/linux/unix-def_interface_test.xml",
+                            "transformed_unix-def_interface_test.xml"
+                        }
+                        ,
+                        {
                             "test/resources/OvalTestContent/5.10/linux/unix-def_process_test.xml",
                             "transformed_unix-def_process_test.xml"
                         }
@@ -57,6 +62,11 @@ public class XmlTransformTest
                         {
                             "test/resources/OvalTestContent/5.10/windows/win-def_file_test.xml",
                             "transformed_win-def_file_test.xml"
+                        }
+                        ,
+                        {
+                            "test/resources/OvalTestContent/5.10/windows/win-def_interface_test.xml",
+                            "transformed_win-def_interface_test.xml"
                         }
                         ,
                         {

@@ -35,13 +35,13 @@ import jp.go.aist.six.oval.model.definitions.StateType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class NetworkInterfaceState
+public class InterfaceState
     extends StateType
 {
 
     //{0..1}
     private EntityStateStringType               name;
-    private EntityStateNetworkInterfaceType     type;
+    private EntityStateInterfaceType     type;
     private EntityStateStringType               hardware_addr;
     private EntityStateIPAddressStringType      inet_addr;
     private EntityStateIPAddressStringType      broadcast_addr;
@@ -53,13 +53,13 @@ public class NetworkInterfaceState
     /**
      * Constructor.
      */
-    public NetworkInterfaceState()
+    public InterfaceState()
     {
         this( null, 0 );
     }
 
 
-    public NetworkInterfaceState(
+    public InterfaceState(
                     final String id,
                     final int version
                     )
@@ -68,7 +68,7 @@ public class NetworkInterfaceState
     }
 
 
-    public NetworkInterfaceState(
+    public InterfaceState(
                     final String id,
                     final int version,
                     final String comment
@@ -104,14 +104,14 @@ public class NetworkInterfaceState
     /**
      */
     public void setType(
-                    final EntityStateNetworkInterfaceType type
+                    final EntityStateInterfaceType type
                     )
     {
         this.type = type;
     }
 
 
-    public EntityStateNetworkInterfaceType getType()
+    public EntityStateInterfaceType getType()
     {
         return type;
     }
@@ -220,7 +220,7 @@ public class NetworkInterfaceState
                     final Object obj
                     )
     {
-        if (!(obj instanceof NetworkInterfaceState)) {
+        if (!(obj instanceof InterfaceState)) {
             return false;
         }
 
@@ -232,7 +232,7 @@ public class NetworkInterfaceState
     @Override
     public String toString()
     {
-        return "neytwork_interface_state[" + super.toString()
+        return "interface_state[" + super.toString()
              + ", name="            + getName()
              + ", type="            + getType()
              + ", hadware_addr="    + getHardwareAddr()
@@ -243,4 +243,4 @@ public class NetworkInterfaceState
              + "]";
     }
 }
-//NetworkInterfaceState
+//InterfaceState

@@ -93,7 +93,7 @@ extends TestBase
 
         // definition: title
         DefinitionQueryParams  params_def2 = new DefinitionQueryParams();
-        params_def2.setTitle( "ind-def:f" );
+        params_def2.setSearchTerms( "ind-def:f" );
 
         // definition: refId
         DefinitionQueryParams  params_def3 = new DefinitionQueryParams();

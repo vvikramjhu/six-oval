@@ -301,6 +301,47 @@ TEMPLATE:  Copy idiom.
     <xsl:choose>
         <xsl:when test="$lvar_ns = $var_ns-def-5-unix">
             <xsl:choose>
+                <!-- interface -->
+                <xsl:when test="$lvar_element = 'interface_test'">
+                    <unix_interface_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </unix_interface_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'interface_object'">
+                    <unix_interface_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </unix_interface_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'interface_state'">
+                    <unix_interface_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </unix_interface_state>
+                </xsl:when>
+
+                <xsl:when test="$lvar_element = 'unix_interface_test'">
+                    <interface_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </interface_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'unix_interface_object'">
+                    <interface_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </interface_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'unix_interface_state'">
+                    <interface_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </interface_state>
+                </xsl:when>
+
+
+                <!-- file -->
                 <xsl:when test="$lvar_element = 'file_test'">
                     <unix_file_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
                         <xsl:copy-of select="@*"/>
@@ -319,6 +360,26 @@ TEMPLATE:  Copy idiom.
                         <xsl:copy-of select="node()"/>
                     </unix_file_state>
                 </xsl:when>
+
+                <xsl:when test="$lvar_element = 'unix_file_test'">
+                    <file_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </file_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'unix_file_object'">
+                    <file_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </file_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'unix_file_state'">
+                    <file_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </file_state>
+                </xsl:when>
+
 
                 <!-- process -->
                 <xsl:when test="$lvar_element = 'process_test'">
@@ -379,11 +440,47 @@ TEMPLATE:  Copy idiom.
                         <xsl:copy-of select="node()"/>
                     </unix_process58_state>
                 </xsl:when>
+
+                <xsl:when test="$lvar_element = 'unix_process58_test'">
+                    <process58_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </process58_test>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'unix_process58_object'">
+                    <process58_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </process58_object>
+                </xsl:when>
+                <xsl:when test="$lvar_element = 'unix_process58_state'">
+                    <process58_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </process58_state>
+                </xsl:when>
             </xsl:choose>
         </xsl:when>
 
         <xsl:when test="$lvar_ns = $var_ns-sc-5-unix">
             <xsl:choose>
+                <!-- interface -->
+                <xsl:when test="$lvar_element = 'interface_item'">
+                    <unix_interface_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </unix_interface_item>
+                </xsl:when>
+
+                <xsl:when test="$lvar_element = 'unix_interface_item'">
+                    <interface_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </interface_item>
+                </xsl:when>
+
+
+                <!-- file -->
                 <xsl:when test="$lvar_element = 'file_item'">
                     <unix_file_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
                         <xsl:copy-of select="@*"/>
@@ -391,6 +488,15 @@ TEMPLATE:  Copy idiom.
                     </unix_file_item>
                 </xsl:when>
 
+                <xsl:when test="$lvar_element = 'unix_file_item'">
+                    <file_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </file_item>
+                </xsl:when>
+
+
+                <!-- process -->
                 <xsl:when test="$lvar_element = 'process_item'">
                     <unix_process_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
                         <xsl:copy-of select="@*"/>
@@ -398,11 +504,27 @@ TEMPLATE:  Copy idiom.
                     </unix_process_item>
                 </xsl:when>
 
+                <xsl:when test="$lvar_element = 'unix_process_item'">
+                    <process_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </process_item>
+                </xsl:when>
+
+
+                <!-- process58 -->
                 <xsl:when test="$lvar_element = 'process58_item'">
                     <unix_process58_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
                         <xsl:copy-of select="@*"/>
                         <xsl:copy-of select="node()"/>
                     </unix_process58_item>
+                </xsl:when>
+
+                <xsl:when test="$lvar_element = 'unix_process58_item'">
+                    <process58_item xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix">
+                        <xsl:copy-of select="@*"/>
+                        <xsl:copy-of select="node()"/>
+                    </process58_item>
                 </xsl:when>
             </xsl:choose>
         </xsl:when>
