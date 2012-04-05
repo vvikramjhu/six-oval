@@ -80,46 +80,16 @@ public class FileBehaviors
     }
 
 
-//    /**
-//     */
-//    public void setRecurse(
-//                    final RecurseEnumeration recurse
-//                    )
-//    {
-//        this.recurse = recurse;
-//    }
-//
-//
-//    public RecurseEnumeration getRecurse()
-//    {
-//        return this.recurse;
-//    }
-//
-//
-//    protected static final RecurseEnumeration _recurse(
-//                    final FileBehaviors behaviors
-//                    )
-//    {
-//        RecurseEnumeration  recurse = behaviors.getRecurse();
-//        return (recurse == null ? DEFAULT_RECURSE : recurse);
-//    }
-
-
 
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
 
-//    @Override
-//    public int hashCode()
-//    {
-//        final int  prime = 37;
-//        int  result = super.hashCode();
-//
-//        result = prime * result + _recurse( this ).hashCode();
-//
-//        return result;
-//    }
+    @Override
+    public int hashCode()
+    {
+        return super.hashCode();
+    }
 
 
 
@@ -136,25 +106,8 @@ public class FileBehaviors
             return false;
         }
 
-        if (super.equals( obj )) {
-//            FileBehaviors  other = (FileBehaviors)obj;
-//            if (_recurse( this ) == _recurse( other )) {
-                return true;
-//            }
-        }
-
-        return false;
+        return super.equals( obj );
     }
-
-
-
-//    @Override
-//    public String toString()
-//    {
-//        return super.toString()
-//                        + ", recurse=" + getRecurse()
-//                        ;
-//    }
 
 }
 // FileBehaviors

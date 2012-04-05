@@ -75,11 +75,11 @@ public class FileBehaviors
     //  java.lang.Object
     //**************************************************************
 
-//    @Override
-//    public int hashCode()
-//    {
-//        return super.hashCode();
-//    }
+    @Override
+    public int hashCode()
+    {
+        return super.hashCode();
+    }
 
 
 
