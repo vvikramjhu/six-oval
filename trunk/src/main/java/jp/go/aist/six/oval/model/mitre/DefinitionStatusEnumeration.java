@@ -33,12 +33,13 @@ public enum DefinitionStatusEnumeration
     implements OvalEnumeration
 {
 
-    DRAFT      ( "DRAFT" ),
-    INTERIM    ( "INTERIM" ),
-    ACCEPTED   ( "ACCEPTED" ),
-    DEPRECATED ( "DEPRECATED" );
+    DRAFT,
+    INTERIM,
+    ACCEPTED,
+    DEPRECATED;
 
 
+    ////////////////////////////////////////////////////////////////
 
     /**
      * A factory method.
@@ -65,11 +66,9 @@ public enum DefinitionStatusEnumeration
     /**
      * Constructor.
      */
-    DefinitionStatusEnumeration(
-                    final String value
-                    )
+    DefinitionStatusEnumeration()
     {
-        this.value = value;
+        value = name();
     }
 
 
@@ -77,7 +76,7 @@ public enum DefinitionStatusEnumeration
     @Override
     public String value()
     {
-        return this.value;
+        return value;
     }
 
 
@@ -89,7 +88,7 @@ public enum DefinitionStatusEnumeration
     @Override
     public String toString()
     {
-        return this.value;
+        return value;
     }
 
 }
