@@ -828,6 +828,10 @@
     <!-- ******************************************************* -->
 
     <class name="jp.go.aist.six.oval.model.independent.FileBehaviors"
+        extends="jp.go.aist.six.oval.model.common.AbstractRecurseFileBehaviors">
+    </class>
+<!-- backup
+    <class name="jp.go.aist.six.oval.model.independent.FileBehaviors"
         extends="jp.go.aist.six.oval.model.common.AbstractFileBehaviors">
 
         <field name="recurse"
@@ -835,6 +839,7 @@
             <bind-xml name="recurse" node="attribute"/>
         </field>
     </class>
+-->
 
 
 
