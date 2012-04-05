@@ -18,41 +18,39 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model;
+package jp.go.aist.six.oval.model.common;
 
+import jp.go.aist.six.oval.model.OvalEnumeration;
 
 
 
 
 /**
- * The RecurseFileSystemEnumeration defines the file system limitation of any recursion,
- * either 'local' limiting data collection to local file systems
- * (as opposed to file systems mounted from an external system),
- * or 'defined' to keep any recursion within the file system
- * that the file_object (path+filename) has specified.
+ * The Windows view type enumeration.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum RecurseFileSystemEnumeration
+public enum WindowsViewEnumeration
     implements OvalEnumeration
 {
 
-    ALL       ( "all" ),
-    LOCAL     ( "local" ),
-    DEFINED   ( "defined" );
+    WINDOWS_32_BIT    ( "32_bit" ),
+    WINDOWS_64_BIT    ( "64_bit" ),
+    EMPTY             ( "" )
+    ;
 
 
 
     /**
      * A factory method.
      */
-    public static RecurseFileSystemEnumeration fromValue(
+    public static WindowsViewEnumeration fromValue(
                     final String value
                     )
     {
-        for (RecurseFileSystemEnumeration  e : RecurseFileSystemEnumeration.values()) {
+        for (WindowsViewEnumeration  e : WindowsViewEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -70,7 +68,7 @@ public enum RecurseFileSystemEnumeration
     /**
      * Constructor.
      */
-    RecurseFileSystemEnumeration(
+    WindowsViewEnumeration(
                     final String value
                     )
     {
@@ -98,4 +96,4 @@ public enum RecurseFileSystemEnumeration
     }
 
 }
-// RecurseFileSystemEnumeration
+// WindowsViewTypeEnumeration

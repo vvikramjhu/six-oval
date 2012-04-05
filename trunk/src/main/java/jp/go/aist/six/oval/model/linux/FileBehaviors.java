@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.linux;
 
-import jp.go.aist.six.oval.model.AbstractFileBehaviors;
-import jp.go.aist.six.oval.model.RecurseEnumeration;
+import jp.go.aist.six.oval.model.common.AbstractFileBehaviors;
+import jp.go.aist.six.oval.model.common.RecurseEnumeration;
 
 
 

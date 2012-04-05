@@ -109,11 +109,11 @@
     </class>
 
     <class name="jp.go.aist.six.oval.model.windows.RegistryBehaviors"
-        extends="jp.go.aist.six.oval.model.AbstractBehaviors">
+        extends="jp.go.aist.six.oval.model.common.AbstractBehaviors">
 
         <field name="windowsView"
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.WindowsViewEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.common.WindowsViewEnumerationHandler">
             <!-- type="jp.go.aist.six.oval.model.WindowsViewEnumeration" -->
             <bind-xml name="windows_view" node="attribute"/>
         </field>
@@ -1504,7 +1504,7 @@
 
 
     <class name="jp.go.aist.six.oval.model.windows.FileBehaviors"
-        extends="jp.go.aist.six.oval.model.AbstractFileBehaviors">
+        extends="jp.go.aist.six.oval.model.common.AbstractFileBehaviors">
     </class>
 
 

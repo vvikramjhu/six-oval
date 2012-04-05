@@ -20,8 +20,8 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.AbstractBehaviors;
-import jp.go.aist.six.oval.model.WindowsViewEnumeration;
+import jp.go.aist.six.oval.model.common.AbstractBehaviors;
+import jp.go.aist.six.oval.model.common.WindowsViewEnumeration;
 
 
 

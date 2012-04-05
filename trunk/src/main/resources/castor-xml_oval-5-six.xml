@@ -58,40 +58,6 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.AbstractBehaviors"
-        verify-constructable="false">
-
-        <field name="maxDepth" type="integer">
-            <bind-xml name="max_depth" node="attribute"/>
-        </field>
-
-        <field name="recurseDirection" 
-            type="string"
-            handler="jp.go.aist.six.oval.core.xml.RecurseDirectionEnumerationHandler">
-            <bind-xml name="recurse_direction" node="attribute"/>
-        </field>
-<!--
-        <field name="recurseDirection"
-            type="jp.go.aist.six.oval.model.RecurseDirectionEnumeration">
-            <bind-xml name="recurse_direction" node="attribute"/>
-        </field>
--->
-    </class>
-
-
-
-    <class name="jp.go.aist.six.oval.model.AbstractFileBehaviors"
-        extends="jp.go.aist.six.oval.model.AbstractBehaviors"
-        verify-constructable="false">
-
-        <field name="recurseFileSystem"
-            type="jp.go.aist.six.oval.model.RecurseFileSystemEnumeration">
-            <bind-xml name="recurse_file_system" node="attribute"/>
-        </field>
-    </class>
-
-
-
     <class name="jp.go.aist.six.oval.model.AffectedCpeList">
     <!--
         <map-to 

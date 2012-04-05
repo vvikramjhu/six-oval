@@ -132,10 +132,10 @@ public class SystemObjectType
                     final Collection<? extends MessageType> messageList
                     )
     {
-        if (this.message != messageList) {
-            this.message.clear();
+        if (message != messageList) {
+            message.clear();
             if (messageList != null  &&  messageList.size() > 0) {
-                this.message.addAll( messageList );
+                message.addAll( messageList );
             }
         }
     }
@@ -143,13 +143,13 @@ public class SystemObjectType
 
     public Collection<MessageType> getMessage()
     {
-        return this.message;
+        return message;
     }
 
 
     public Iterator<MessageType> iterateMessage()
     {
-        return this.message.iterator();
+        return message.iterator();
     }
 
 //    /**
@@ -198,7 +198,7 @@ public class SystemObjectType
 
     public Collection<VariableValueType> getVariableValue()
     {
-        return this.variable_value;
+        return variable_value;
     }
 
 
@@ -241,13 +241,13 @@ public class SystemObjectType
 
     public Collection<ReferenceType> getReference()
     {
-        return this.reference;
+        return reference;
     }
 
 
     public Iterator<ReferenceType> iterateReference()
     {
-        return this.reference.iterator();
+        return reference.iterator();
     }
 
 
@@ -282,7 +282,7 @@ public class SystemObjectType
 
     public Integer getVariableInstance()
     {
-        return this.variable_instance;
+        return variable_instance;
     }
 
 
@@ -299,7 +299,7 @@ public class SystemObjectType
 
     public String getComment()
     {
-        return this.comment;
+        return comment;
     }
 
 
@@ -325,7 +325,7 @@ public class SystemObjectType
 
     public FlagEnumeration getFlag()
     {
-        return this.flag;
+        return flag;
     }
 
 
@@ -372,4 +372,4 @@ public class SystemObjectType
     }
 
 }
-// CollectedSystemObject
+//
