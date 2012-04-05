@@ -18,23 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.linux;
-
-import jp.go.aist.six.oval.model.common.AbstractFileBehaviors;
-import jp.go.aist.six.oval.model.common.RecurseEnumeration;
+package jp.go.aist.six.oval.model.common;
 
 
 
 /**
- * The FileBehaviors defines a number of behaviors 
- * that allow a more detailed definition of a set of files 
- * or file related items to collect.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class FileBehaviors
+public class AbstractRecurseFileBehaviors
     extends AbstractFileBehaviors
 {
 
@@ -52,7 +46,7 @@ public class FileBehaviors
     /**
      * Constructor.
      */
-    public FileBehaviors()
+    public AbstractRecurseFileBehaviors()
     {
     }
 
@@ -64,27 +58,23 @@ public class FileBehaviors
                     final String recurse
                     )
     {
-        if (RecurseEnumeration.DIRECTORIES.value().equals( recurse )
-                        ||  RecurseEnumeration.SYMLINKS.value().equals( recurse )
-                        ||  RecurseEnumeration.SYMLINKS_AND_DIRECTORIES.value().equals( recurse )
-                        ) {
+        if (recurse != null) {
+            RecurseEnumeration.fromValue( recurse );
             // valid value!!!
-        } else {
-            throw new IllegalArgumentException( recurse );
         }
-        
+
         this.recurse = recurse;
     }
 
 
     public String getRecurse()
     {
-        return this.recurse;
+        return recurse;
     }
 
 
     public static String recurse(
-                    final FileBehaviors behaviors
+                    final AbstractRecurseFileBehaviors behaviors
                     )
     {
         String  recurse = behaviors.getRecurse();
@@ -119,12 +109,12 @@ public class FileBehaviors
             return true;
         }
 
-        if (!(obj instanceof FileBehaviors)) {
+        if (!(obj instanceof AbstractRecurseFileBehaviors)) {
             return false;
         }
 
         if (super.equals( obj )) {
-            FileBehaviors  other = (FileBehaviors)obj;
+            AbstractRecurseFileBehaviors  other = (AbstractRecurseFileBehaviors)obj;
             if (recurse( this ).equals( recurse( other ) )) {
                 return true;
             }
@@ -144,4 +134,4 @@ public class FileBehaviors
     }
 
 }
-//FileBehaviors
+//

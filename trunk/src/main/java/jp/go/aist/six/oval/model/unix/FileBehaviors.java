@@ -20,8 +20,7 @@
 
 package jp.go.aist.six.oval.model.unix;
 
-import jp.go.aist.six.oval.model.common.AbstractFileBehaviors;
-import jp.go.aist.six.oval.model.common.RecurseEnumeration;
+import jp.go.aist.six.oval.model.common.AbstractRecurseFileBehaviors;
 
 
 
@@ -34,14 +33,14 @@ import jp.go.aist.six.oval.model.common.RecurseEnumeration;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class FileBehaviors
-    extends AbstractFileBehaviors
+    extends AbstractRecurseFileBehaviors
 {
 
 //    NOTE: AbstractBehaviors & AbstractFileBehaviors are distilled.
 
 
-    private RecurseEnumeration  recurse;
-    //{optional, default="symlinks and directories"}
+//    private RecurseEnumeration  recurse;
+//    //{optional, default="symlinks and directories"}
 
 
 
@@ -55,20 +54,20 @@ public class FileBehaviors
 
 
 
-    /**
-     */
-    public void setRecurse(
-                    final RecurseEnumeration recurse
-                    )
-    {
-        this.recurse = recurse;
-    }
-
-
-    public RecurseEnumeration getRecurse()
-    {
-        return this.recurse;
-    }
+//    /**
+//     */
+//    public void setRecurse(
+//                    final RecurseEnumeration recurse
+//                    )
+//    {
+//        this.recurse = recurse;
+//    }
+//
+//
+//    public RecurseEnumeration getRecurse()
+//    {
+//        return this.recurse;
+//    }
 
 
 
@@ -76,11 +75,11 @@ public class FileBehaviors
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public int hashCode()
-    {
-        return super.hashCode();
-    }
+//    @Override
+//    public int hashCode()
+//    {
+//        return super.hashCode();
+//    }
 
 
 
@@ -98,13 +97,13 @@ public class FileBehaviors
 
 
 
-    @Override
-    public String toString()
-    {
-        return super.toString()
-                        + ", recurse=" + getRecurse()
-                        ;
-    }
+//    @Override
+//    public String toString()
+//    {
+//        return super.toString()
+//                        + ", recurse=" + getRecurse()
+//                        ;
+//    }
 
 }
 //FileBehaviors

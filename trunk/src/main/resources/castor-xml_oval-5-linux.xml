@@ -1167,7 +1167,7 @@
 
 
     <class name="jp.go.aist.six.oval.model.linux.FileBehaviors"
-        extends="jp.go.aist.six.oval.model.common.AbstractFileBehaviors">
+        extends="jp.go.aist.six.oval.model.common.AbstractRecurseFileBehaviors">
     </class>
 
 

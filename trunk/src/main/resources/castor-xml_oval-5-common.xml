@@ -47,6 +47,15 @@
     </class>
 
 
+    <class name="jp.go.aist.six.oval.model.common.AbstractRecurseFileBehaviors"
+        extends="jp.go.aist.six.oval.model.common.AbstractFileBehaviors">
+
+        <field name="recurse" type="string">
+            <bind-xml name="recurse" node="attribute"/>
+        </field>
+    </class>
+
+
 
     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <!-- %                                                     % -->

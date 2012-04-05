@@ -20,7 +20,7 @@
 
 package jp.go.aist.six.oval.model.independent;
 
-import jp.go.aist.six.oval.model.common.AbstractFileBehaviors;
+import jp.go.aist.six.oval.model.common.AbstractRecurseFileBehaviors;
 import jp.go.aist.six.oval.model.common.RecurseEnumeration;
 
 
@@ -35,17 +35,17 @@ import jp.go.aist.six.oval.model.common.RecurseEnumeration;
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
 public class FileBehaviors
-    extends AbstractFileBehaviors
+    extends AbstractRecurseFileBehaviors
 {
 
-    /**
-     * The default recurseDirection: "symlinks and directories".
-     */
-    public static final RecurseEnumeration  DEFAULT_RECURSE =
-        RecurseEnumeration.SYMLINKS_AND_DIRECTORIES;
-
-    private RecurseEnumeration  recurse;
-    //{optional, default='symlinks and directories'}
+//    /**
+//     * The default recurseDirection: "symlinks and directories".
+//     */
+//    public static final RecurseEnumeration  DEFAULT_RECURSE =
+//        RecurseEnumeration.SYMLINKS_AND_DIRECTORIES;
+//
+//    private RecurseEnumeration  recurse;
+//    //{optional, default='symlinks and directories'}
 
 
 
@@ -58,29 +58,51 @@ public class FileBehaviors
 
 
 
-    /**
-     */
+    //**************************************************************
+    //  AbstractRecurseFileBehaviors
+    //**************************************************************
+
+    @Override
     public void setRecurse(
-                    final RecurseEnumeration recurse
+                    final String recurse
                     )
     {
-        this.recurse = recurse;
+        if (recurse != null) {
+            if (RecurseEnumeration.DIRECTORIES.value().equals( recurse )
+                            ||  RecurseEnumeration.SYMLINKS.value().equals( recurse )
+                            ||  RecurseEnumeration.SYMLINKS_AND_DIRECTORIES.value().equals( recurse )
+                            ) {
+                // valid value!!!
+            }
+        }
+
+        super.setRecurse( recurse );
     }
 
 
-    public RecurseEnumeration getRecurse()
-    {
-        return this.recurse;
-    }
-
-
-    protected static final RecurseEnumeration _recurse(
-                    final FileBehaviors behaviors
-                    )
-    {
-        RecurseEnumeration  recurse = behaviors.getRecurse();
-        return (recurse == null ? DEFAULT_RECURSE : recurse);
-    }
+//    /**
+//     */
+//    public void setRecurse(
+//                    final RecurseEnumeration recurse
+//                    )
+//    {
+//        this.recurse = recurse;
+//    }
+//
+//
+//    public RecurseEnumeration getRecurse()
+//    {
+//        return this.recurse;
+//    }
+//
+//
+//    protected static final RecurseEnumeration _recurse(
+//                    final FileBehaviors behaviors
+//                    )
+//    {
+//        RecurseEnumeration  recurse = behaviors.getRecurse();
+//        return (recurse == null ? DEFAULT_RECURSE : recurse);
+//    }
 
 
 
@@ -88,16 +110,16 @@ public class FileBehaviors
     //  java.lang.Object
     //**************************************************************
 
-    @Override
-    public int hashCode()
-    {
-        final int  prime = 37;
-        int  result = super.hashCode();
-
-        result = prime * result + _recurse( this ).hashCode();
-
-        return result;
-    }
+//    @Override
+//    public int hashCode()
+//    {
+//        final int  prime = 37;
+//        int  result = super.hashCode();
+//
+//        result = prime * result + _recurse( this ).hashCode();
+//
+//        return result;
+//    }
 
 
 
@@ -115,10 +137,10 @@ public class FileBehaviors
         }
 
         if (super.equals( obj )) {
-            FileBehaviors  other = (FileBehaviors)obj;
-            if (_recurse( this ) == _recurse( other )) {
+//            FileBehaviors  other = (FileBehaviors)obj;
+//            if (_recurse( this ) == _recurse( other )) {
                 return true;
-            }
+//            }
         }
 
         return false;
@@ -126,13 +148,13 @@ public class FileBehaviors
 
 
 
-    @Override
-    public String toString()
-    {
-        return super.toString()
-                        + ", recurse=" + getRecurse()
-                        ;
-    }
+//    @Override
+//    public String toString()
+//    {
+//        return super.toString()
+//                        + ", recurse=" + getRecurse()
+//                        ;
+//    }
 
 }
 // FileBehaviors
