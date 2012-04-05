@@ -50,7 +50,7 @@ public class SystemInfoType
     private String  primary_host_name;
     //{1..1}
 
-    private NetworkInterfacesType  interfaces;// = new NetInterfaces();
+    private InterfacesType  interfaces;// = new NetInterfaces();
     //{1..1}
 
 
@@ -87,11 +87,11 @@ public class SystemInfoType
                     final String osVersion,
                     final String arch,
                     final String hostName,
-                    final Collection<? extends NetworkInterfaceType> ifs
+                    final Collection<? extends InterfaceType> ifs
                     )
     {
         this( osName, osVersion, arch, hostName );
-        setInterfaces( new NetworkInterfacesType( ifs ) );
+        setInterfaces( new InterfacesType( ifs ) );
     }
 
 
@@ -101,11 +101,11 @@ public class SystemInfoType
                     final String osVersion,
                     final String arch,
                     final String hostName,
-                    final NetworkInterfaceType[] ifs
+                    final InterfaceType[] ifs
                     )
     {
         this( osName, osVersion, arch, hostName );
-        setInterfaces( new NetworkInterfacesType( ifs ) );
+        setInterfaces( new InterfacesType( ifs ) );
     }
 
 
@@ -182,14 +182,14 @@ public class SystemInfoType
     /**
      */
     public void setInterfaces(
-                    final NetworkInterfacesType interfaces
+                    final InterfacesType interfaces
                     )
     {
         this.interfaces = interfaces;
     }
 
 
-    public NetworkInterfacesType getInterfaces()
+    public InterfacesType getInterfaces()
     {
         return this.interfaces;
     }

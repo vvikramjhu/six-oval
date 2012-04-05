@@ -30,42 +30,41 @@ import com.google.code.morphia.annotations.Embedded;
 
 
 /**
- * A container for one or more NetInterface instances.
- * The name "interfaces" in the OVAL Schema is renamed
- * because the name "Object" has the special meaning in Java.
+ * The InterfacesType is a container for zero or more interface elements.
+ * Each interface element is used to describe an existing network interface on the system.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class NetworkInterfacesType
-    extends Container<NetworkInterfaceType> //{0..*}
+public class InterfacesType
+    extends Container<InterfaceType> //{0..*}
 {
 
     @Embedded( "interface" )
-    private final Set<NetworkInterfaceType>  network_interface =
-        new HashSet<NetworkInterfaceType>();
+    private final Set<InterfaceType>  network_interface =
+        new HashSet<InterfaceType>();
 
 
 
     /**
      * Constructor.
      */
-    public NetworkInterfacesType()
+    public InterfacesType()
     {
     }
 
 
-    public NetworkInterfacesType(
-                    final Collection<? extends NetworkInterfaceType> netifs
+    public InterfacesType(
+                    final Collection<? extends InterfaceType> netifs
                     )
     {
         super( netifs );
     }
 
 
-    public NetworkInterfacesType(
-                    final NetworkInterfaceType[] netifs
+    public InterfacesType(
+                    final InterfaceType[] netifs
                     )
     {
         super( netifs );
@@ -76,7 +75,7 @@ public class NetworkInterfacesType
     /**
      */
     public void setInterface(
-                    final Collection<? extends NetworkInterfaceType> network_interface
+                    final Collection<? extends InterfaceType> network_interface
                     )
     {
         _setElement( network_interface );
@@ -84,7 +83,7 @@ public class NetworkInterfacesType
 
 
     public void setInterface(
-                    final NetworkInterfaceType[] network_interface
+                    final InterfaceType[] network_interface
                     )
     {
         _setElement( network_interface );
@@ -92,20 +91,20 @@ public class NetworkInterfacesType
 
 
     public boolean addInterface(
-                    final NetworkInterfaceType network_interface
+                    final InterfaceType network_interface
                     )
     {
         return _addElement( network_interface );
     }
 
 
-    public Collection<NetworkInterfaceType> getInterface()
+    public Collection<InterfaceType> getInterface()
     {
         return _getElement();
     }
 
 
-    public Iterator<NetworkInterfaceType> iterateInterface()
+    public Iterator<InterfaceType> iterateInterface()
     {
         return _iterateElement();
     }
@@ -117,9 +116,9 @@ public class NetworkInterfacesType
     //**************************************************************
 
     @Override
-    protected Collection<NetworkInterfaceType> _getElement()
+    protected Collection<InterfaceType> _getElement()
     {
-        return this.network_interface;
+        return network_interface;
     }
 
 
@@ -129,4 +128,4 @@ public class NetworkInterfacesType
     //**************************************************************
 
 }
-// NetworkInterfacesType
+//InterfacesType

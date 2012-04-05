@@ -34,7 +34,7 @@ import jp.go.aist.six.oval.model.OvalObject;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class NetworkInterfaceType
+public class InterfaceType
     implements OvalObject
 //    implements Dependent<OvalSystemCharacteristics>
 //implements Dependent<SystemInfo>
@@ -55,7 +55,7 @@ public class NetworkInterfaceType
     /**
      * Constructor.
      */
-    public NetworkInterfaceType()
+    public InterfaceType()
     {
     }
 
@@ -63,7 +63,7 @@ public class NetworkInterfaceType
     /**
      * Constructor.
      */
-    public NetworkInterfaceType(
+    public InterfaceType(
                     final String name,
                     final String ip,
                     final String mac
@@ -88,7 +88,7 @@ public class NetworkInterfaceType
 
     public String getInterfaceName()
     {
-        return this.interface_name;
+        return interface_name;
     }
 
 
@@ -113,7 +113,7 @@ public class NetworkInterfaceType
 
     public EntityItemIPAddressStringType getIpAddress()
     {
-        return this.ip_address;
+        return ip_address;
     }
 
 
@@ -130,7 +130,7 @@ public class NetworkInterfaceType
 
     public String getMacAddress()
     {
-        return this.mac_address;
+        return mac_address;
     }
 
 
@@ -193,11 +193,11 @@ public class NetworkInterfaceType
             return true;
         }
 
-        if (!(obj instanceof NetworkInterfaceType)) {
+        if (!(obj instanceof InterfaceType)) {
             return false;
         }
 
-        NetworkInterfaceType  other = (NetworkInterfaceType)obj;
+        InterfaceType  other = (InterfaceType)obj;
         EntityItemIPAddressStringType  other_ip = other.getIpAddress();
         EntityItemIPAddressStringType   this_ip =  this.getIpAddress();
         if (this_ip == other_ip
@@ -230,4 +230,4 @@ public class NetworkInterfaceType
     }
 
 }
-// NetworkInterfaceType
+//InterfaceType
