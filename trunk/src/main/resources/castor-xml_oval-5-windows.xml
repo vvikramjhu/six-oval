@@ -34,11 +34,11 @@
     </class>
 
 
-    <class name="jp.go.aist.six.oval.model.windows.EntityStateNetworkInterfaceTypeType"
+    <class name="jp.go.aist.six.oval.model.windows.EntityStateInterfaceTypeType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
     </class>
 
-    <class name="jp.go.aist.six.oval.model.windows.EntityItemNetworkInterfaceTypeType"
+    <class name="jp.go.aist.six.oval.model.windows.EntityItemInterfaceType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
 
@@ -2903,7 +2903,7 @@
     <!-- interface                                               -->
     <!-- ******************************************************* -->
 
-    <class name="jp.go.aist.six.oval.model.windows.NetworkInterfaceTest"
+    <class name="jp.go.aist.six.oval.model.windows.InterfaceTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="interface_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
@@ -2924,7 +2924,7 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.windows.NetworkInterfaceObject"
+    <class name="jp.go.aist.six.oval.model.windows.InterfaceObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
         <map-to xml="interface_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
@@ -2950,7 +2950,7 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.windows.NetworkInterfaceState"
+    <class name="jp.go.aist.six.oval.model.windows.InterfaceState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
         <map-to xml="interface_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
@@ -2967,7 +2967,7 @@
         </field>
 
         <field name="type" 
-            type="jp.go.aist.six.oval.model.windows.EntityStateNetworkInterfaceTypeType">
+            type="jp.go.aist.six.oval.model.windows.EntityStateInterfaceTypeType">
             <bind-xml name="type" node="element"/>
         </field>
 
@@ -2999,7 +2999,7 @@
 
 
 
-    <class name ="jp.go.aist.six.oval.model.windows.NetworkInterfaceItem"
+    <class name ="jp.go.aist.six.oval.model.windows.InterfaceItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
         <map-to xml="interface_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows"
@@ -3016,7 +3016,7 @@
         </field>
 
         <field name="type" 
-            type="jp.go.aist.six.oval.model.windows.EntityItemNetworkInterfaceTypeType">
+            type="jp.go.aist.six.oval.model.windows.EntityItemInterfaceType">
             <bind-xml name="type" node="element"/>
         </field>
 

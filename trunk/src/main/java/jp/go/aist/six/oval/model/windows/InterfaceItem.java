@@ -40,7 +40,7 @@ import jp.go.aist.six.oval.model.sc.ItemType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class NetworkInterfaceItem
+public class InterfaceItem
     extends ItemType
 {
 
@@ -50,7 +50,7 @@ public class NetworkInterfaceItem
     private EntityItemIntType  index;
     //{0..1}
 
-    private EntityItemNetworkInterfaceTypeType  type;
+    private EntityItemInterfaceType  type;
     //{0..1}
 
     private EntityItemStringType  hardware_addr;
@@ -74,13 +74,13 @@ public class NetworkInterfaceItem
     /**
      * Constructor.
      */
-    public NetworkInterfaceItem()
+    public InterfaceItem()
     {
         this( 0 );
     }
 
 
-    public NetworkInterfaceItem(
+    public InterfaceItem(
                     final int id
                     )
     {
@@ -130,14 +130,14 @@ public class NetworkInterfaceItem
 
     /**
      */
-    public EntityItemNetworkInterfaceTypeType getType()
+    public EntityItemInterfaceType getType()
     {
         return type;
     }
 
 
     public void setType(
-                    final EntityItemNetworkInterfaceTypeType name
+                    final EntityItemInterfaceType name
                     )
     {
         type = name;

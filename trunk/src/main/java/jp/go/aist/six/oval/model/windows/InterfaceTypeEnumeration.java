@@ -31,29 +31,29 @@ import jp.go.aist.six.oval.model.OvalEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum NetworkInterfaceTypeEnumeration
+public enum InterfaceTypeEnumeration
     implements OvalEnumeration
 {
 
-    MIB_IF_TYPE_ETHERNET    ( "MIB_IF_TYPE_ETHERNET" ),
-    MIB_IF_TYPE_FDDI        ( "MIB_IF_TYPE_FDDI" ),
-    MIB_IF_TYPE_LOOPBACK    ( "MIB_IF_TYPE_LOOPBACK" ),
-    MIB_IF_TYPE_OTHER       ( "MIB_IF_TYPE_OTHER" ),
-    MIB_IF_TYPE_PPP         ( "MIB_IF_TYPE_PPP" ),
-    MIB_IF_TYPE_SLIP        ( "MIB_IF_TYPE_SLIP" ),
-    MIB_IF_TYPE_TOKENRING   ( "MIB_IF_TYPE_TOKENRING" ),
-    NONE                    ( "" );
+    MIB_IF_TYPE_ETHERNET,
+    MIB_IF_TYPE_FDDI,
+    MIB_IF_TYPE_LOOPBACK,
+    MIB_IF_TYPE_OTHER,
+    MIB_IF_TYPE_PPP,
+    MIB_IF_TYPE_SLIP,
+    MIB_IF_TYPE_TOKENRING,
+    NONE ( "" );
 
 
 
     /**
      * A factory method.
      */
-    public static NetworkInterfaceTypeEnumeration fromValue(
+    public static InterfaceTypeEnumeration fromValue(
                     final String value
                     )
     {
-        for (NetworkInterfaceTypeEnumeration  e : NetworkInterfaceTypeEnumeration.values()) {
+        for (InterfaceTypeEnumeration  e : InterfaceTypeEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -71,7 +71,13 @@ public enum NetworkInterfaceTypeEnumeration
     /**
      * Constructor.
      */
-    NetworkInterfaceTypeEnumeration(
+    InterfaceTypeEnumeration()
+    {
+        value = name();
+    }
+
+
+    InterfaceTypeEnumeration(
                     final String value
                     )
     {
@@ -83,7 +89,7 @@ public enum NetworkInterfaceTypeEnumeration
     @Override
     public String value()
     {
-        return this.value;
+        return value;
     }
 
 
@@ -95,8 +101,8 @@ public enum NetworkInterfaceTypeEnumeration
     @Override
     public String toString()
     {
-        return this.value;
+        return value;
     }
 
 }
-// NetworkInterfaceTypeEnumeration
+//InterfaceTypeEnumeration

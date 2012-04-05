@@ -36,20 +36,20 @@ import jp.go.aist.six.oval.model.definitions.TestType;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class NetworkInterfaceTest
+public class InterfaceTest
     extends TestType
 {
 
     /**
      * Constructor.
      */
-    public NetworkInterfaceTest()
+    public InterfaceTest()
     {
         this( null, 0 );
     }
 
 
-    public NetworkInterfaceTest(
+    public InterfaceTest(
                     final String id,
                     final int version
                     )
@@ -58,7 +58,7 @@ public class NetworkInterfaceTest
     }
 
 
-    public NetworkInterfaceTest(
+    public InterfaceTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -69,7 +69,7 @@ public class NetworkInterfaceTest
     }
 
 
-    public NetworkInterfaceTest(
+    public InterfaceTest(
                     final String id,
                     final int version,
                     final String comment,
@@ -105,7 +105,7 @@ public class NetworkInterfaceTest
                     final Object obj
                     )
     {
-        if (!(obj instanceof NetworkInterfaceTest)) {
+        if (!(obj instanceof InterfaceTest)) {
             return false;
         }
 
@@ -117,8 +117,8 @@ public class NetworkInterfaceTest
     @Override
     public String toString()
     {
-        return "network_interface_test[" + super.toString() + "]";
+        return "interface_test[" + super.toString() + "]";
     }
 
 }
-//NetwotrkInterfaceTest
+//InterfaceTest
