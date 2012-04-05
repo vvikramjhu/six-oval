@@ -22,8 +22,6 @@ package jp.go.aist.six.oval.model;
 
 
 
-
-
 /**
  * A OVAL component type.
  *
