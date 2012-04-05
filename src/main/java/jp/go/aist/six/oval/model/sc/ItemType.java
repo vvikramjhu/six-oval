@@ -55,7 +55,7 @@ public class ItemType
 //    // TODO: We have never seen any item which has multiple messages.
 
 
-    private int  id;
+    private Integer  id;
     //{oval:ItemIDPattern, required}
 
 
@@ -150,14 +150,14 @@ public class ItemType
     /**
      */
     public void setID(
-                    final int id
+                    final Integer id
                     )
     {
         this.id = id;
     }
 
 
-    public int getID()
+    public Integer getID()
     {
         return id;
     }

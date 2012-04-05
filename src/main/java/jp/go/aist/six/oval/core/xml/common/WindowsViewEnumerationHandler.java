@@ -18,9 +18,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.xml;
+package jp.go.aist.six.oval.core.xml.common;
 
-import jp.go.aist.six.oval.model.WindowsViewEnumeration;
+import jp.go.aist.six.oval.model.common.WindowsViewEnumeration;
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 
 

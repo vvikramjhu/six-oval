@@ -828,10 +828,10 @@
     <!-- ******************************************************* -->
 
     <class name="jp.go.aist.six.oval.model.independent.FileBehaviors"
-        extends="jp.go.aist.six.oval.model.AbstractFileBehaviors">
+        extends="jp.go.aist.six.oval.model.common.AbstractFileBehaviors">
 
         <field name="recurse"
-            type="jp.go.aist.six.oval.model.RecurseEnumeration">
+            type="jp.go.aist.six.oval.model.common.RecurseEnumeration">
             <bind-xml name="recurse" node="attribute"/>
         </field>
     </class>

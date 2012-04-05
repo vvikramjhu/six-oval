@@ -237,13 +237,13 @@
 
 
     <class name="jp.go.aist.six.oval.model.unix.FileBehaviors"
-        extends="jp.go.aist.six.oval.model.AbstractFileBehaviors">
+        extends="jp.go.aist.six.oval.model.common.AbstractFileBehaviors">
 
         <field name="recurse"
             type="string"
-            handler="jp.go.aist.six.oval.core.xml.RecurseEnumerationHandler">
+            handler="jp.go.aist.six.oval.core.xml.common.RecurseEnumerationHandler">
 <!--
-            type="jp.go.aist.six.oval.model.RecurseEnumeration">
+            type="jp.go.aist.six.oval.model.common.RecurseEnumeration">
 -->
             <bind-xml name="recurse" node="attribute"/>
         </field>
