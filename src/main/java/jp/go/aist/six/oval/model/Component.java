@@ -59,7 +59,7 @@ public enum Component
 
     INETD,                          // unix
     INETLISTENINGSERVERS,           // linux
-    INTERFACE,                      // unix windows
+    INTERFACE,                      // unix, windows
 
     LDAP,                           // independent
     LOCKOUTPOLICY,                  // windows

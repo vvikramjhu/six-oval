@@ -25,27 +25,27 @@ import jp.go.aist.six.oval.model.sc.EntityItemStringType;
 
 
 /**
- * The EntityItemNetworkInterfaceType restricts a string value 
- * to a specific set of values. 
- * These values describe the different interface types which are defined in 'if_arp.h'. 
+ * The EntityItemInterfaceType restricts a string value
+ * to a specific set of values.
+ * These values describe the different interface types which are defined in 'if_arp.h'.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemNetworkInterfaceType
+public class EntityItemInterfaceType
     extends EntityItemStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemNetworkInterfaceType()
+    public EntityItemInterfaceType()
     {
     }
 
 
-    public EntityItemNetworkInterfaceType(
+    public EntityItemInterfaceType(
                     final String content
                     )
     {
@@ -65,7 +65,7 @@ public class EntityItemNetworkInterfaceType
     {
         if (content != null) {
             // validation
-            NetworkInterfaceEnumeration.fromValue( content );
+            InterfaceEnumeration.fromValue( content );
         }
 
         super.setContent( content );
@@ -94,7 +94,7 @@ public class EntityItemNetworkInterfaceType
             return true;
         }
 
-        if (!(obj instanceof EntityItemNetworkInterfaceType)) {
+        if (!(obj instanceof EntityItemInterfaceType)) {
             return false;
         }
 
@@ -102,4 +102,4 @@ public class EntityItemNetworkInterfaceType
     }
 
 }
-//EntityItemNetworkInterfaceType
+//EntityItemInterfaceType

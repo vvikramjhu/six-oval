@@ -521,7 +521,7 @@
     <!-- interface                                               -->
     <!-- ******************************************************* -->
 
-    <class name="jp.go.aist.six.oval.model.unix.NetworkInterfaceTest"
+    <class name="jp.go.aist.six.oval.model.unix.InterfaceTest"
         extends="jp.go.aist.six.oval.model.definitions.TestType">
         <map-to xml="unix_interface_test"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
@@ -542,7 +542,7 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.unix.NetworkInterfaceObject"
+    <class name="jp.go.aist.six.oval.model.unix.InterfaceObject"
         extends="jp.go.aist.six.oval.model.definitions.SystemObjectType">
         <map-to xml="unix_interface_object"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
@@ -568,7 +568,7 @@
 
 
 
-    <class name="jp.go.aist.six.oval.model.unix.NetworkInterfaceState"
+    <class name="jp.go.aist.six.oval.model.unix.InterfaceState"
         extends="jp.go.aist.six.oval.model.definitions.StateType">
         <map-to xml="unix_interface_state"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
@@ -580,7 +580,7 @@
         </field>
 
         <field name="type" 
-            type="jp.go.aist.six.oval.model.unix.EntityStateNetworkInterfaceType">
+            type="jp.go.aist.six.oval.model.unix.EntityStateInterfaceType">
             <bind-xml name="type" node="element"/>
         </field>
 
@@ -612,7 +612,7 @@
 
 
 
-    <class name ="jp.go.aist.six.oval.model.unix.NetworkInterfaceItem"
+    <class name ="jp.go.aist.six.oval.model.unix.InterfaceItem"
         extends="jp.go.aist.six.oval.model.sc.ItemType">
         <map-to xml="unix_interface_item"
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#unix"
@@ -624,7 +624,7 @@
         </field>
 
         <field name="type" 
-            type="jp.go.aist.six.oval.model.unix.EntityItemNetworkInterfaceType">
+            type="jp.go.aist.six.oval.model.unix.EntityItemInterfaceType">
             <bind-xml name="type" node="element"/>
         </field>
 
@@ -1811,11 +1811,11 @@
 
 
 <!-- interface (network_interface) -->
-    <class name="jp.go.aist.six.oval.model.unix.EntityStateNetworkInterfaceType"
+    <class name="jp.go.aist.six.oval.model.unix.EntityStateInterfaceType"
         extends="jp.go.aist.six.oval.model.definitions.EntityStateStringType">
     </class>
 
-    <class name="jp.go.aist.six.oval.model.unix.EntityItemNetworkInterfaceType"
+    <class name="jp.go.aist.six.oval.model.unix.EntityItemInterfaceType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemStringType">
     </class>
 

@@ -32,29 +32,29 @@ import jp.go.aist.six.oval.model.OvalEnumeration;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public enum NetworkInterfaceEnumeration
+public enum InterfaceEnumeration
     implements OvalEnumeration
 {
 
-    ARPHRD_ETHER    ( "ARPHRD_ETHER" ),
-    ARPHRD_FDDI     ( "ARPHRD_FDDI" ),
-    ARPHRD_LOOPBACK ( "ARPHRD_LOOPBACK" ),
-    ARPHRD_VOID     ( "ARPHRD_VOID" ),
-    ARPHRD_PPP      ( "ARPHRD_PPP" ),
-    ARPHRD_SLIP     ( "ARPHRD_SLIP" ),
-    ARPHRD_PRONET   ( "ARPHRD_PRONET" ),
-    NONE            ( "" );
+    ARPHRD_ETHER,
+    ARPHRD_FDDI,
+    ARPHRD_LOOPBACK,
+    ARPHRD_VOID,
+    ARPHRD_PPP,
+    ARPHRD_SLIP,
+    ARPHRD_PRONET,
+    NONE( "" );
 
 
 
     /**
      * A factory method.
      */
-    public static NetworkInterfaceEnumeration fromValue(
+    public static InterfaceEnumeration fromValue(
                     final String value
                     )
     {
-        for (NetworkInterfaceEnumeration  e : NetworkInterfaceEnumeration.values()) {
+        for (InterfaceEnumeration  e : InterfaceEnumeration.values()) {
             if (e.value.equals( value )) {
                 return e;
             }
@@ -72,7 +72,13 @@ public enum NetworkInterfaceEnumeration
     /**
      * Constructor.
      */
-    NetworkInterfaceEnumeration(
+    InterfaceEnumeration()
+    {
+        value = name();
+    }
+
+
+    InterfaceEnumeration(
                     final String value
                     )
     {
@@ -84,7 +90,7 @@ public enum NetworkInterfaceEnumeration
     @Override
     public String value()
     {
-        return this.value;
+        return value;
     }
 
 
@@ -96,8 +102,8 @@ public enum NetworkInterfaceEnumeration
     @Override
     public String toString()
     {
-        return this.value;
+        return value;
     }
 
 }
-//NetworkInterfaceEnumeration
+//InterfaceEnumeration

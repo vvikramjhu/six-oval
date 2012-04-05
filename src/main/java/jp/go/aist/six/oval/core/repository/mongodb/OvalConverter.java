@@ -36,7 +36,7 @@ import jp.go.aist.six.oval.model.sc.StatusEnumeration;
 import jp.go.aist.six.oval.model.unix.CapabilityEnumeration;
 import jp.go.aist.six.oval.model.unix.EncryptMethodEnumeration;
 import jp.go.aist.six.oval.model.unix.EndpointEnumeration;
-import jp.go.aist.six.oval.model.unix.NetworkInterfaceEnumeration;
+import jp.go.aist.six.oval.model.unix.InterfaceEnumeration;
 import jp.go.aist.six.oval.model.unix.WaitStatusEnumeration;
 import jp.go.aist.six.oval.model.unix.XinetdTypeStatusEnumeration;
 import jp.go.aist.six.oval.model.windows.AddrTypeEnumeration;
@@ -129,7 +129,7 @@ public class OvalConverter
         CapabilityEnumeration.class,
         EncryptMethodEnumeration.class,
         EndpointEnumeration.class,
-        NetworkInterfaceEnumeration.class,
+        InterfaceEnumeration.class,
         WaitStatusEnumeration.class,
         XinetdTypeStatusEnumeration.class,
 
