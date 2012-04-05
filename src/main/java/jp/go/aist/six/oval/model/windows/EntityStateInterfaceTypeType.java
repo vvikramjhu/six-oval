@@ -20,41 +20,77 @@
 
 package jp.go.aist.six.oval.model.windows;
 
-import jp.go.aist.six.oval.model.sc.EntityItemStringType;
+import jp.go.aist.six.oval.model.definitions.EntityStateStringType;
 
 
 
 /**
- * The EntityItemNetworkInterfaceTypeType restricts a string value 
- * to a specific set of values that describe the different types of network interfaces.
+ * The EntityStateInterfaceTypeType restricts a string value
+ * to a set of the network interface types.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class EntityItemNetworkInterfaceTypeType
-    extends EntityItemStringType
+public class EntityStateInterfaceTypeType
+    extends EntityStateStringType
 {
 
     /**
      * Constructor.
      */
-    public EntityItemNetworkInterfaceTypeType()
+    public EntityStateInterfaceTypeType()
     {
     }
 
 
-    public EntityItemNetworkInterfaceTypeType(
-                    final String content
-                    )
-    {
-        super( content );
-    }
+//    public EntityStateRegistryTypeType(
+//                    final String data
+//                    )
+//    {
+//        this( data, DEFAULT_OPERATION );
+//    }
+//
+//
+//    public EntityStateRegistryTypeType(
+//                    final String data,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        this( data, FIXED_DATATYPE, operation );
+//    }
+//
+//
+//    public EntityStateRegistryTypeType(
+//                    final String data,
+//                    final DatatypeEnumeration datatype,
+//                    final OperationEnumeration operation
+//                    )
+//    {
+//        super( data, datatype, operation );
+//    }
+//
+//
+//    public EntityStateRegistryTypeType(
+//                    final RegistryTypeEnumeration data
+//                    )
+//    {
+//        this( data, DEFAULT_OPERATION );
+//    }
+//
+//
+//    public EntityStateRegistryTypeType(
+//                    final RegistryTypeEnumeration data,
+//                    final Operation operation
+//                    )
+//    {
+//        this( (data == null ? null : data.getName()), operation );
+//    }
 
 
 
     //**************************************************************
-    //  EntityItemBase
+    //  EntitySimpleBaseType
     //**************************************************************
 
     @Override
@@ -63,8 +99,7 @@ public class EntityItemNetworkInterfaceTypeType
                     )
     {
         if (content != null) {
-            // validation
-            NetworkInterfaceTypeEnumeration.fromValue( content );
+            InterfaceTypeEnumeration.fromValue( content );
         }
 
         super.setContent( content );
@@ -93,7 +128,7 @@ public class EntityItemNetworkInterfaceTypeType
             return true;
         }
 
-        if (!(obj instanceof EntityItemNetworkInterfaceTypeType)) {
+        if (!(obj instanceof EntityStateInterfaceTypeType)) {
             return false;
         }
 
@@ -101,4 +136,4 @@ public class EntityItemNetworkInterfaceTypeType
     }
 
 }
-//EntityItemNetworkInterfaceTypeType
+//EntityStateInterfaceTypeType

@@ -199,14 +199,14 @@ public abstract class TestBase
 //                        }
 //                        ,
 //                        /* Windows */
-//                        {
-//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-//                            "5.10",
-//                            OvalPlatformType.windows,
-//                            "test/resources/OvalTestContent/5.10/windows",
-//                            null,
-//                            null
-//                        }
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "5.10",
+                            Family.WINDOWS,
+                            "test/resources/OvalTestContent/5.10/windows",
+                            null,
+                            null
+                        }
 //                        ,
 //                        {
 //                            jp.go.aist.six.oval.model.results.OvalResults.class,
@@ -218,14 +218,14 @@ public abstract class TestBase
 //                        }
 //                        ,
 //                        /* linux */
-                        {
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "5.10",
-                            Family.LINUX,
-                            "test/resources/OvalTestContent/5.10/linux",
-                            null,
-                            null
-                        }
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "5.10",
+//                            Family.LINUX,
+//                            "test/resources/OvalTestContent/5.10/linux",
+//                            null,
+//                            null
+//                        }
 //                        {
 //                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
 //                            "5.10",

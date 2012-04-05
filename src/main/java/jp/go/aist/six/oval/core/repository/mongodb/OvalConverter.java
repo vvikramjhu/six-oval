@@ -45,7 +45,7 @@ import jp.go.aist.six.oval.model.windows.AuditEnumeration;
 import jp.go.aist.six.oval.model.windows.DriveTypeEnumeration;
 import jp.go.aist.six.oval.model.windows.FileTypeEnumeration;
 import jp.go.aist.six.oval.model.windows.NamingContextEnumeration;
-import jp.go.aist.six.oval.model.windows.NetworkInterfaceTypeEnumeration;
+import jp.go.aist.six.oval.model.windows.InterfaceTypeEnumeration;
 import jp.go.aist.six.oval.model.windows.ProtocolEnumeration;
 import jp.go.aist.six.oval.model.windows.RegistryHiveEnumeration;
 import jp.go.aist.six.oval.model.windows.RegistryTypeEnumeration;
@@ -140,7 +140,7 @@ public class OvalConverter
         DriveTypeEnumeration.class,
         FileTypeEnumeration.class,
         NamingContextEnumeration.class,
-        NetworkInterfaceTypeEnumeration.class,
+        InterfaceTypeEnumeration.class,
         ProtocolEnumeration.class,
         RegistryHiveEnumeration.class,
         RegistryTypeEnumeration.class,
