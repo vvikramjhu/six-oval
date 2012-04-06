@@ -79,7 +79,7 @@ public class DirectiveType
 
     public boolean isReported()
     {
-        return this.reported;
+        return reported;
     }
 
 
@@ -96,7 +96,7 @@ public class DirectiveType
 
     public ContentEnumeration getContent()
     {
-        return this.content;
+        return content;
     }
 
 
