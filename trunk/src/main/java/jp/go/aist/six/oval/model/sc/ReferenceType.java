@@ -24,7 +24,6 @@ import jp.go.aist.six.oval.model.OvalObject;
 
 
 
-
 /**
  * The ItemReference specifies an item in the system characteristics.
  * This reference is used to link global OVAL Objects to specific items.
@@ -38,7 +37,7 @@ public class ReferenceType
 //    implements Dependent<SystemObjectType>
 {
 
-    private int  item_ref;
+    private Integer  item_ref;
     //{required, oval:ItemIDPattern}
 
 
@@ -63,16 +62,16 @@ public class ReferenceType
     /**
      */
     public void setItemRef(
-                    final int item_ref
+                    final Integer item_ref
                     )
     {
         this.item_ref = item_ref;
     }
 
 
-    public int getItemRef()
+    public Integer getItemRef()
     {
-        return this.item_ref;
+        return item_ref;
     }
 
 
@@ -112,7 +111,8 @@ public class ReferenceType
         final int  prime = 37;
         int  result = 17;
 
-        result = prime * result + getItemRef();
+        Integer  item_ref = getItemRef();
+        result = prime * result + (item_ref == null ? 0 : item_ref.intValue());
 
         return result;
     }
@@ -133,7 +133,11 @@ public class ReferenceType
         }
 
         ReferenceType  other = (ReferenceType)obj;
-        if (this.getItemRef() == other.getItemRef()) {
+        Integer  other_item_ref = other.getItemRef();
+        Integer   this_item_ref =  this.getItemRef();
+        if (this_item_ref == other_item_ref
+                        ||  (this_item_ref != null
+                                        &&  other_item_ref.equals( other_item_ref ))) {
             return true;
         }
 
@@ -150,4 +154,4 @@ public class ReferenceType
     }
 
 }
-// ReferenceType
+//

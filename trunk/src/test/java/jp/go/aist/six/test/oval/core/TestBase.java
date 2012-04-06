@@ -169,6 +169,32 @@ public abstract class TestBase
      *  String              filename
      *  T                   expectedObject
      */
+    @DataProvider( name="oval.test_content.sc" )
+    public Object[][] provideOvalTestContentOvalSc()
+    {
+        return new Object[][] {
+                        {
+                            jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
+                            "5.10",
+                            Family.WINDOWS,
+                            "test/resources/OvalTestContent/5.10/win-sc",
+                            null,
+                            null
+                        }
+        };
+    }
+
+
+
+    /**
+     * Provides OVAL test content.
+     *  Class<T>            object_type,
+     *  String              oval_schema_version,
+     *  OvalPlatformType    platform,
+     *  String              dirpath,
+     *  String              filename
+     *  T                   expectedObject
+     */
     @DataProvider( name="oval.test_content.def" )
     public Object[][] provideOvalTestContentOvalDefinitions()
     {
@@ -181,14 +207,14 @@ public abstract class TestBase
 //                            "20120301_v_microsoft.windows.7.xml",
 //                            null
 //                        }
-//                        {
-//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-//                            "5.10",
-//                            OvalPlatformType.unix,
-//                            "test/resources/OvalTestContent/5.10",
-//                            "oval_def-7222_CVE-2010-0176.xml",
-//                            null
-//                        }
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "5.10",
+                            Family.UNIX,
+                            "test/resources/OvalTestContent/5.10",
+                            "oval_def-7222_CVE-2010-0176.xml",
+                            null
+                        }
 //                        {
 //                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
 //                            "5.10.1",
@@ -199,14 +225,14 @@ public abstract class TestBase
 //                        }
 //                        ,
 //                        /* Windows */
-                        {
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "5.10",
-                            Family.WINDOWS,
-                            "test/resources/OvalTestContent/5.10/windows",
-                            null,
-                            null
-                        }
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "5.10",
+//                            Family.WINDOWS,
+//                            "test/resources/OvalTestContent/5.10/windows",
+//                            null,
+//                            null
+//                        }
 //                        ,
 //                        {
 //                            jp.go.aist.six.oval.model.results.OvalResults.class,

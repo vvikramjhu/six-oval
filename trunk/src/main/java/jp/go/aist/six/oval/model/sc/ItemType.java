@@ -50,10 +50,6 @@ public class ItemType
     private final Collection<MessageType>  message =
         new ArrayList<MessageType>();
     //{0..50}
-//
-//    private MessageType  _message;
-//    // TODO: We have never seen any item which has multiple messages.
-
 
     private Integer  id;
     //{oval:ItemIDPattern, required}
@@ -98,7 +94,7 @@ public class ItemType
                     final StatusEnumeration status
                     )
     {
-        setID( id );
+        setId( id );
         setStatus( status );
     }
 
@@ -149,7 +145,7 @@ public class ItemType
 
     /**
      */
-    public void setID(
+    public void setId(
                     final Integer id
                     )
     {
@@ -157,7 +153,7 @@ public class ItemType
     }
 
 
-    public Integer getID()
+    public Integer getId()
     {
         return id;
     }
@@ -276,7 +272,7 @@ public class ItemType
     @Override
     public String toString()
     {
-        return "id=" + getID()
+        return "id=" + getId()
                 + ", status=" + getStatus();
     }
 
