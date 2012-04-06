@@ -187,13 +187,50 @@ public class MongoOvalDatastoreTests
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.repository.mongodb" },
+                    groups={ "oval.core.repository.mongodb", "oval.def" },
                     dataProvider="oval.test_content.def",
                     alwaysRun=true
                     )
     public <K, T extends Persistable<K>> void testSaveAndLoad(
                     final Class<T>          object_type,
-                    final String            oval_schema_version,
+                    final String            schema_version,
+                    final Family            family,
+                    final String            dirpath,
+                    final String            xml_filepath,
+                    final T                 expected_object
+                    )
+    throws Exception
+    {
+        _testSaveAndLoad( object_type, schema_version, family, dirpath, xml_filepath, expected_object );
+    }
+
+
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={ "oval.core.repository.mongodb", "oval.sc" },
+                    dataProvider="oval.test_content.sc",
+                    alwaysRun=true
+                    )
+    public <K, T extends Persistable<K>> void testSaveAndLoadOvalSc(
+                    final Class<T>          object_type,
+                    final String            schema_version,
+                    final Family            family,
+                    final String            dirpath,
+                    final String            xml_filepath,
+                    final T                 expected_object
+                    )
+    throws Exception
+    {
+        _testSaveAndLoad( object_type, schema_version, family, dirpath, xml_filepath, expected_object );
+    }
+
+
+
+    private <K, T extends Persistable<K>> void _testSaveAndLoad(
+                    final Class<T>          object_type,
+                    final String            schema_version,
                     final Family            family,
                     final String            dirpath,
                     final String            xml_filepath,
@@ -203,8 +240,11 @@ public class MongoOvalDatastoreTests
     {
         Reporter.log( "\n//////////////////////////////////////////////////////////",
                         true );
-        Reporter.log( "* OVAL schema version: " + oval_schema_version, true );
+        Reporter.log( "* object type: " + object_type, true );
+        Reporter.log( "* schema version: " + schema_version, true );
         Reporter.log( "* family: " + family, true );
+        Reporter.log( "* dir path: " + dirpath, true );
+        Reporter.log( "* XML file path: " + xml_filepath, true );
 
         File  dir = new File( dirpath );
 
@@ -382,7 +422,7 @@ public class MongoOvalDatastoreTests
 //        int  index = 0;
         for (String  def_id : def_ids) {
             long  ts_start = System.currentTimeMillis();
-            DefinitionType  def = _findObjectById( DefinitionType.class, def_id, to_log );
+            _findObjectById( DefinitionType.class, def_id, to_log );
             long  lap_time = System.currentTimeMillis() - ts_start;
             lap_times_sum += lap_time;
 //            index++;
@@ -418,7 +458,7 @@ public class MongoOvalDatastoreTests
             DefinitionQueryParams  params = new DefinitionQueryParams();
             params.setRefId( cve_id );
             long  ts_start = System.currentTimeMillis();
-            List<DefinitionType>  def_list = _findObjectByQuery( DefinitionType.class, params, to_log );
+            _findObjectByQuery( DefinitionType.class, params, to_log );
             long  lap_time = System.currentTimeMillis() - ts_start;
             lap_times_sum += lap_time;
 //            index++;

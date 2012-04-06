@@ -43,8 +43,8 @@ public class InterfaceType
     private String  interface_name;
     //{1..1}
 
-    private EntityItemIPAddressStringType  ip_address;
-//    private String  _ipAddress;
+//    private EntityItemIPAddressStringType  ip_address;    // -5.9
+    private String  ip_address;                             //5.10-
     //{1..1}
 
     private String  mac_address;
@@ -99,22 +99,28 @@ public class InterfaceType
                     final String ip_address
                     )
     {
-        setIpAddress( new EntityItemIPAddressStringType( ip_address ) );
-    }
-
-
-    public void setIpAddress(
-                    final EntityItemIPAddressStringType ip_address
-                    )
-    {
         this.ip_address = ip_address;
+//        setIpAddress( new EntityItemIPAddressStringType( ip_address ) );
     }
 
 
-    public EntityItemIPAddressStringType getIpAddress()
+    public String getIpAddress()
     {
         return ip_address;
     }
+
+//    public void setIpAddress(
+//                    final EntityItemIPAddressStringType ip_address
+//                    )
+//    {
+//        this.ip_address = ip_address;
+//    }
+//
+//
+//    public EntityItemIPAddressStringType getIpAddress()
+//    {
+//        return ip_address;
+//    }
 
 
 
@@ -173,7 +179,8 @@ public class InterfaceType
         String  interface_name = getInterfaceName();
         result = prime * result + ((interface_name == null) ? 0 : interface_name.hashCode());
 
-        EntityItemIPAddressStringType  ip_address = getIpAddress();
+//        EntityItemIPAddressStringType  ip_address = getIpAddress();
+        String  ip_address = getIpAddress();
         result = prime * result + ((ip_address == null) ? 0 : ip_address.hashCode());
 
         String  mac_address = getMacAddress();
@@ -198,8 +205,8 @@ public class InterfaceType
         }
 
         InterfaceType  other = (InterfaceType)obj;
-        EntityItemIPAddressStringType  other_ip = other.getIpAddress();
-        EntityItemIPAddressStringType   this_ip =  this.getIpAddress();
+        String  other_ip = other.getIpAddress();
+        String   this_ip =  this.getIpAddress();
         if (this_ip == other_ip
                         ||  (this_ip != null  &&  this_ip.equals( other_ip ))) {
             String  other_mac = other.getMacAddress();
