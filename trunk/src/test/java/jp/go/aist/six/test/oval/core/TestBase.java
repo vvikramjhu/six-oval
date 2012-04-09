@@ -279,12 +279,23 @@ public abstract class TestBase
     public Object[][] provideOvalTestContentOvalResutls()
     {
         return new Object[][] {
-                        /* Windows */
+//                        /* Windows */
+//                        {
+//                            jp.go.aist.six.oval.model.results.OvalResults.class,
+//                            "5.10",
+//                            Family.WINDOWS,
+//                            "test/resources/OvalTestContent/5.10/win-res",
+//                            null,
+//                            null
+//                        }
+//                        ,
+
+                        /* Linux / Debian */
                         {
                             jp.go.aist.six.oval.model.results.OvalResults.class,
-                            "5.10",
-                            Family.WINDOWS,
-                            "test/resources/OvalTestContent/5.10/win-res",
+                            "5.9",
+                            Family.LINUX,
+                            "test/resources/OvalTestContent/5.10/linux-res",
                             null,
                             null
                         }

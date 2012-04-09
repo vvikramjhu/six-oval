@@ -144,8 +144,9 @@
     <test name="oval.core.repository.mongodb" enabled="true">
         <groups>
             <run>
-                <include name="oval.sc"/>
+                <include name="oval.res"/>
 <!--
+                <include name="oval.sc"/>
                 <include name="oval.core.repository.mongodb"/>
 -->
             </run>
