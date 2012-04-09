@@ -14,6 +14,35 @@
 
 <mapping>
 
+    <class name="jp.go.aist.six.oval.repository.QueryResults">
+        <map-to xml="query_results"
+            ns-uri="http://aist.go.jp/six/oval/"
+            />
+<!--
+            xml="opensearch_response"
+            ns-uri="http://a9.com/-/spec/opensearch/1.1/"
+            ns-prefix="opensearch"
+-->
+
+        <field name="totalResults" type="long">
+            <bind-xml name="totalResults" node="element"
+                xmlns="http://a9.com/-/spec/opensearch/1.1/"
+                />
+        </field>
+
+        <field name="startIndex" type="long">
+            <bind-xml name="startIndex" node="element"/>
+        </field>
+
+        <field name="itemsPerPage" type="long">
+            <bind-xml name="itemsPerPage" node="element"/>
+        </field>
+    </class>
+
+
+
+<!-- *********************************************************** -->
+
     <class name="jp.go.aist.six.oval.repository.QueryResult">
         <map-to xml="query_result"
             ns-uri="http://aist.go.jp/six/oval/"
