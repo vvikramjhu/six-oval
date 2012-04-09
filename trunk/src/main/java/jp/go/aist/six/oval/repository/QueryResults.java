@@ -45,7 +45,7 @@ public class QueryResults<T>
     //{0..1}
 
 
-    private QueryResultElements<T>  _elements;
+    private QueryResultsElements<T>  _elements;
 //    private final List<T>  _elements = new ArrayList<T>();
 
 
@@ -87,7 +87,7 @@ public class QueryResults<T>
         setItemsPerPage( itemsPerPage );
 
         if (elements != null) {
-            setElements( new QueryResultElements<T>( elements ) );
+            setElements( new QueryResultsElements<T>( elements ) );
         }
     }
 
@@ -148,14 +148,14 @@ public class QueryResults<T>
     /**
      */
     public void setElements(
-                    final QueryResultElements<T> elements
+                    final QueryResultsElements<T> elements
                     )
     {
         this._elements = elements;
     }
 
 
-    public QueryResultElements<T> getElements()
+    public QueryResultsElements<T> getElements()
     {
         return this._elements;
     }

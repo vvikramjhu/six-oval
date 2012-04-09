@@ -18,107 +18,109 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.model.sc;
+package jp.go.aist.six.oval.repository;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
-import jp.go.aist.six.oval.model.Container;
-import com.google.code.morphia.annotations.Embedded;
+import java.util.List;
 
 
 
 /**
- * The InterfacesType is a container for zero or more interface elements.
- * Each interface element is used to describe an existing network interface on the system.
  *
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-public class InterfacesType
-    extends Container<InterfaceType> //{0..*}
+public class QueryResultsElements<T>
+    implements Iterable<T>, Serializable
 {
 
-    @Embedded( "interface" )
-    private final Set<InterfaceType>  network_interface =
-        new HashSet<InterfaceType>();
+    private final List<T>  _elements = new ArrayList<T>();
+    //{0..*}
 
 
 
     /**
      * Constructor.
      */
-    public InterfacesType()
+    public QueryResultsElements()
     {
     }
 
 
-    public InterfacesType(
-                    final Collection<? extends InterfaceType> netifs
+    public QueryResultsElements(
+                    final Collection<? extends T> elements
                     )
     {
-        super( netifs );
+        setElements( elements );
     }
 
 
-    public InterfacesType(
-                    final InterfaceType[] netifs
+    public QueryResultsElements(
+                    final T[] elements
                     )
     {
-        super( netifs );
+        if (elements != null) {
+            setElements( Arrays.asList( elements ) );
+        }
     }
 
 
 
     /**
      */
-    public void setInterface(
-                    final Collection<? extends InterfaceType> network_interface
+    public void setElements(
+                    final Collection<? extends T> elements
                     )
     {
-        _setElement( network_interface );
+        if (elements != this._elements) {
+            this._elements.clear();
+            if (elements != null  &&  elements.size() > 0) {
+                this._elements.addAll( elements );
+            }
+        }
     }
 
 
-    public void setInterface(
-                    final InterfaceType[] network_interface
+    public boolean addElement(
+                    final T element
                     )
     {
-        _setElement( network_interface );
+        return this._elements.add( element );
     }
 
 
-    public boolean addInterface(
-                    final InterfaceType network_interface
-                    )
+    public List<T> getElements()
     {
-        return _addElement( network_interface );
+        return this._elements;
     }
 
 
-    public Collection<InterfaceType> getInterface()
+    public Iterator<T> iterateElements()
     {
-        return _getElement();
+        return this._elements.iterator();
     }
 
 
-    public Iterator<InterfaceType> iterateInterface()
+
+    public int size()
     {
-        return _iterateElement();
+        return getElements().size();
     }
-
 
 
     //**************************************************************
-    //  Container
+    //  java.lang.Iterable
     //**************************************************************
 
     @Override
-    protected Collection<InterfaceType> _getElement()
+    public Iterator<T> iterator()
     {
-        return network_interface;
+        return this._elements.iterator();
     }
 
 
@@ -127,5 +129,11 @@ public class InterfacesType
     //  java.lang.Object
     //**************************************************************
 
+    @Override
+    public String toString()
+    {
+        return String.valueOf( getElements() );
+    }
+
 }
-//InterfacesType
+//
