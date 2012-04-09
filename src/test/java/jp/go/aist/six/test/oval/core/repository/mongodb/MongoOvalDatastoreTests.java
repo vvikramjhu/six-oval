@@ -191,7 +191,7 @@ public class MongoOvalDatastoreTests
                     dataProvider="oval.test_content.def",
                     alwaysRun=true
                     )
-    public <K, T extends Persistable<K>> void testSaveAndLoad(
+    public <K, T extends Persistable<K>> void testSaveAndLoadDef(
                     final Class<T>          object_type,
                     final String            schema_version,
                     final Family            family,
@@ -214,6 +214,28 @@ public class MongoOvalDatastoreTests
                     alwaysRun=true
                     )
     public <K, T extends Persistable<K>> void testSaveAndLoadOvalSc(
+                    final Class<T>          object_type,
+                    final String            schema_version,
+                    final Family            family,
+                    final String            dirpath,
+                    final String            xml_filepath,
+                    final T                 expected_object
+                    )
+    throws Exception
+    {
+        _testSaveAndLoad( object_type, schema_version, family, dirpath, xml_filepath, expected_object );
+    }
+
+
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={ "oval.core.repository.mongodb", "oval.res" },
+                    dataProvider="oval.test_content.res",
+                    alwaysRun=true
+                    )
+    public <K, T extends Persistable<K>> void testSaveAndLoadOvalRes(
                     final Class<T>          object_type,
                     final String            schema_version,
                     final Family            family,
