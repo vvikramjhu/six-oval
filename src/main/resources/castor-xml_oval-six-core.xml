@@ -37,6 +37,20 @@
         <field name="itemsPerPage" type="long">
             <bind-xml name="itemsPerPage" node="element"/>
         </field>
+
+        <field name="elements" 
+            type="jp.go.aist.six.oval.repository.QueryResultElements"
+            container="false"
+            >
+            <bind-xml name="elements" node="element"/>
+        </field>
+<!--
+        <field name="elements" 
+            type="jp.go.aist.six.oval.model.OvalObject"
+            collection="collection">
+            <bind-xml auto-naming="deriveByClass" node="element" location="elements"/>
+        </field>
+-->
     </class>
 
 
