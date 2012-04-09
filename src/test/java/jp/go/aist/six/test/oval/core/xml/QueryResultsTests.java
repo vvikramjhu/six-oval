@@ -85,7 +85,8 @@ public class QueryResultsTests
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
                             new String[] {
-                                "test/resources/OvalTestContent/5.10/windows/ind-def_family_test.xml"
+                                "test/resources/OvalTestContent/5.10/windows/ind-def_family_test.xml",
+                                "test/resources/OvalTestContent/5.10/windows/win-def_file_test.xml"
                             }
                         }
         };
@@ -146,7 +147,7 @@ public class QueryResultsTests
                         _unmarshalObject( QueryResults.class, output_xml_filepath, null );
         Reporter.log( "* query results (unmarshalled): " + oval_defs_results2, true );
 
-        for (OvalDefinitions  oval_defs2 : oval_defs_results2.getElements().getElements()) {
+        for (OvalDefinitions  oval_defs2 : oval_defs_results2.getElements()) {
             Reporter.log( "*   element (unmarshalled): " + oval_defs2, true );
         }
     }
