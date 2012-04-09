@@ -25,26 +25,22 @@ import java.io.Serializable;
 
 
 /**
- * Metadata of query results.
+ * Query results.
  *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public class QueryResultMetadata
+public class QueryResults<T>
     implements Serializable
 {
 
-    public static final String  NAMESPACE = "http://a9.com/-/spec/opensearch/1.1/";
-
-
-
-    private Long  _totalResults;
+    private Long  _totalResults;    //OpenSearch
     //{0..1}
 
-    private Long  _startIndex;
+    private Long  _startIndex;      //OpenSearch
     //{0..1}
 
-    private Long  _itemsPerPage;
+    private Long  _itemsPerPage;    //OpenSearch
     //{0..1}
 
 
@@ -52,7 +48,7 @@ public class QueryResultMetadata
     /**
      * Constructor.
      */
-    public QueryResultMetadata()
+    public QueryResults()
     {
     }
 
@@ -60,10 +56,10 @@ public class QueryResultMetadata
     /**
      * Constructor.
      */
-    public QueryResultMetadata(
-                    final long totalResults,
-                    final long startIndex,
-                    final long itemsPerPage
+    public QueryResults(
+                    final Long totalResults,
+                    final Long startIndex,
+                    final Long itemsPerPage
                     )
     {
         setTotalResults( totalResults );
@@ -131,7 +127,7 @@ public class QueryResultMetadata
     @Override
     public String toString()
     {
-        return "QueryResultMetadata[totalResults=" + getTotalResults()
+        return "QueryResults[totalResults=" + getTotalResults()
              + ", startIndex=" + getStartIndex()
              + ", itemsPerPage=" + getItemsPerPage()
              + "]"
@@ -139,4 +135,4 @@ public class QueryResultMetadata
     }
 
 }
-// QueryResultMetadata
+//QueryResults

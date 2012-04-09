@@ -84,23 +84,6 @@ public class DefinitionsElementQueryParams
 
     /**
      */
-    public void setSchema(
-                    final String schema
-    )
-    {
-        set( Key.SCHEMA, schema );
-    }
-
-
-    public String getSchema()
-    {
-        return get( Key.SCHEMA );
-    }
-
-
-
-    /**
-     */
     public void setId(
                     final String id
     )
@@ -215,20 +198,37 @@ public class DefinitionsElementQueryParams
 
 
 
-//    /**
-//     */
-//    public void setComment(
-//                    final String comment
-//    )
-//    {
-//        set( Key.COMMENT, comment );
-//    }
-//
-//
-//    public String getComment()
-//    {
-//        return get( Key.COMMENT );
-//    }
+    /**
+     */
+    public void setSchema(
+                    final String schema
+    )
+    {
+        set( Key.SCHEMA, schema );
+    }
+
+
+    public String getSchema()
+    {
+        return get( Key.SCHEMA );
+    }
+
+
+
+    /**
+     */
+    public void setDocument(
+                    final String document
+    )
+    {
+        set( Key.DOCUMENT, document );
+    }
+
+
+    public String getDocument()
+    {
+        return get( Key.DOCUMENT );
+    }
 
 }
 //
