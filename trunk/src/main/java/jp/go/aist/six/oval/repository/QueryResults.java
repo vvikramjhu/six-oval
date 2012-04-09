@@ -21,6 +21,7 @@
 package jp.go.aist.six.oval.repository;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 
 
@@ -44,6 +45,11 @@ public class QueryResults<T>
     //{0..1}
 
 
+    private QueryResultElements<T>  _elements;
+//    private final List<T>  _elements = new ArrayList<T>();
+
+
+
 
     /**
      * Constructor.
@@ -62,10 +68,29 @@ public class QueryResults<T>
                     final Long itemsPerPage
                     )
     {
+        this( totalResults, startIndex, itemsPerPage, null );
+//        setTotalResults( totalResults );
+//        setStartIndex( startIndex );
+//        setItemsPerPage( itemsPerPage );
+    }
+
+
+    public QueryResults(
+                    final Long totalResults,
+                    final Long startIndex,
+                    final Long itemsPerPage,
+                    final Collection<? extends T> elements
+                    )
+    {
         setTotalResults( totalResults );
         setStartIndex( startIndex );
         setItemsPerPage( itemsPerPage );
+
+        if (elements != null) {
+            setElements( new QueryResultElements<T>( elements ) );
+        }
     }
+
 
 
 
@@ -120,6 +145,44 @@ public class QueryResults<T>
 
 
 
+    /**
+     */
+    public void setElements(
+                    final QueryResultElements<T> elements
+                    )
+    {
+        this._elements = elements;
+    }
+
+
+    public QueryResultElements<T> getElements()
+    {
+        return this._elements;
+    }
+
+
+
+//    /**
+//     *
+//     */
+//    public void setElements( final Collection<? extends T> elements )
+//    {
+//        if (elements != _elements) {
+//            _elements.clear();
+//            if (elements != null  &&  elements.size() > 0) {
+//                _elements.addAll( elements );
+//            }
+//        }
+//    }
+//
+//
+//    public List<T> getElements()
+//    {
+//        return _elements;
+//    }
+
+
+
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
@@ -130,6 +193,7 @@ public class QueryResults<T>
         return "QueryResults[totalResults=" + getTotalResults()
              + ", startIndex=" + getStartIndex()
              + ", itemsPerPage=" + getItemsPerPage()
+             + ", #elements=" + getElements().size()
              + "]"
              ;
     }

@@ -132,11 +132,23 @@ public class QueryResultsTests
 
         // oval_definitions results
         QueryResults<OvalDefinitions>  oval_defs_results =
-                        new QueryResults<OvalDefinitions>( (long)oval_defs.size(), 0L, (long)oval_defs.size() );
+                        new QueryResults<OvalDefinitions>(
+                                        (long)oval_defs.size(), 0L, (long)oval_defs.size(),
+                                        oval_defs );
 
         Reporter.log( "* query results: " + oval_defs_results, true );
         File  output_xml_file = File.createTempFile( "query_results_oval_defs", ".xml" );
-        _marshalObject( oval_defs_results, output_xml_file.getCanonicalPath() );
+        String  output_xml_filepath = output_xml_file.getCanonicalPath();
+        _marshalObject( oval_defs_results, output_xml_filepath );
+
+        @SuppressWarnings( "unchecked" )
+        QueryResults<OvalDefinitions>  oval_defs_results2 =
+                        _unmarshalObject( QueryResults.class, output_xml_filepath, null );
+        Reporter.log( "* query results (unmarshalled): " + oval_defs_results2, true );
+
+        for (OvalDefinitions  oval_defs2 : oval_defs_results2.getElements().getElements()) {
+            Reporter.log( "*   element (unmarshalled): " + oval_defs2, true );
+        }
     }
 
 }
