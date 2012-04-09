@@ -147,7 +147,7 @@ public class QueryResultsTests
                         _unmarshalObject( QueryResults.class, output_xml_filepath, null );
         Reporter.log( "* query results (unmarshalled): " + oval_defs_results2, true );
 
-        for (OvalDefinitions  oval_defs2 : oval_defs_results2.getElements()) {
+        for (OvalDefinitions  oval_defs2 : oval_defs_results2.getResults()) {
             Reporter.log( "*   element (unmarshalled): " + oval_defs2, true );
         }
     }
