@@ -38,11 +38,11 @@
             <bind-xml name="itemsPerPage" node="element"/>
         </field>
 
-        <field name="elements" 
+        <field name="results" 
             type="jp.go.aist.six.oval.repository.QueryResultsElements"
             container="false"
             >
-            <bind-xml name="elements" node="element"/>
+            <bind-xml name="results" node="element"/>
         </field>
 <!--
         <field name="elements" 

@@ -45,7 +45,7 @@ public class QueryResults<T>
     //{0..1}
 
 
-    private QueryResultsElements<T>  _elements;
+    private QueryResultsElements<T>  _results;
 //    private final List<T>  _elements = new ArrayList<T>();
 
 
@@ -79,15 +79,15 @@ public class QueryResults<T>
                     final Long totalResults,
                     final Long startIndex,
                     final Long itemsPerPage,
-                    final Collection<? extends T> elements
+                    final Collection<? extends T> results
                     )
     {
         setTotalResults( totalResults );
         setStartIndex( startIndex );
         setItemsPerPage( itemsPerPage );
 
-        if (elements != null) {
-            setElements( new QueryResultsElements<T>( elements ) );
+        if (results != null) {
+            setResults( new QueryResultsElements<T>( results ) );
         }
     }
 
@@ -147,17 +147,17 @@ public class QueryResults<T>
 
     /**
      */
-    public void setElements(
-                    final QueryResultsElements<T> elements
+    public void setResults(
+                    final QueryResultsElements<T> results
                     )
     {
-        this._elements = elements;
+        this._results = results;
     }
 
 
-    public QueryResultsElements<T> getElements()
+    public QueryResultsElements<T> getResults()
     {
-        return this._elements;
+        return this._results;
     }
 
 
@@ -193,7 +193,7 @@ public class QueryResults<T>
         return "QueryResults[totalResults=" + getTotalResults()
              + ", startIndex=" + getStartIndex()
              + ", itemsPerPage=" + getItemsPerPage()
-             + ", #elements=" + getElements().size()
+             + ", #elements=" + getResults().size()
              + "]"
              ;
     }
