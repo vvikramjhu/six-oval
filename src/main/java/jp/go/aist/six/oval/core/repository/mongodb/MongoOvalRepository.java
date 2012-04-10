@@ -26,7 +26,7 @@ import java.util.List;
 import jp.go.aist.six.oval.model.OvalObject;
 import jp.go.aist.six.oval.repository.OvalRepository;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
-import jp.go.aist.six.oval.repository.QueryResult;
+import jp.go.aist.six.oval.repository.QueryResults;
 import jp.go.aist.six.util.persist.Persistable;
 import jp.go.aist.six.util.search.Binding;
 import jp.go.aist.six.util.search.Limit;
@@ -199,7 +199,7 @@ public class MongoOvalRepository
 
     @Override
     public <K, T extends OvalObject & Persistable<K>>
-    QueryResult<T> find(
+    QueryResults<T> find(
                     final Class<T> type
                     )
     throws OvalRepositoryException
@@ -214,7 +214,7 @@ public class MongoOvalRepository
         }
 
         _LOG_.debug( "#objects found: " + (list == null ? 0 : list.size()) );
-        QueryResult<T>  result = new QueryResult<T>( list );
+        QueryResults<T>  result = new QueryResults<T>( list );
 
         return result;
     }
@@ -223,7 +223,7 @@ public class MongoOvalRepository
 
     @Override
     public <K, T extends OvalObject & Persistable<K>>
-    QueryResult<T> find(
+    QueryResults<T> find(
                     final Class<T> type,
                     final Binding filter
                     )
@@ -244,7 +244,7 @@ public class MongoOvalRepository
         }
 
         _LOG_.debug( "#objects found: " + (list == null ? 0 : list.size()) );
-        QueryResult<T>  result = new QueryResult<T>( list );
+        QueryResults<T>  result = new QueryResults<T>( list );
 
         return result;
     }
@@ -253,7 +253,7 @@ public class MongoOvalRepository
 
     @Override
     public <K, T extends OvalObject & Persistable<K>>
-    QueryResult<T> find(
+    QueryResults<T> find(
                     final Class<T> type,
                     final Binding filter,
                     final List<? extends Order> ordering,
@@ -277,7 +277,7 @@ public class MongoOvalRepository
         }
 
         _LOG_.debug( "#objects found: " + (list == null ? 0 : list.size()) );
-        QueryResult<T>  result = new QueryResult<T>( list );
+        QueryResults<T>  result = new QueryResults<T>( list );
 
         return result;
     }
@@ -313,7 +313,7 @@ public class MongoOvalRepository
 
     //////
     public <K, T extends OvalObject & Persistable<K>>
-    QueryResult<T> find(
+    QueryResults<T> find(
                     final Class<T> type,
                     final QueryBuilder builder
                     )
@@ -333,7 +333,7 @@ public class MongoOvalRepository
         }
 
         _LOG_.debug( "#objects found: " + (list == null ? 0 : list.size()) );
-        QueryResult<T>  result = new QueryResult<T>( list );
+        QueryResults<T>  result = new QueryResults<T>( list );
 
         return result;
     }
@@ -345,7 +345,7 @@ public class MongoOvalRepository
 
     @Override
     public <K, T extends OvalObject & Persistable<K>>
-    QueryResult<K> findIDs(
+    QueryResults<K> findIDs(
                     final Class<T> type
                     )
     throws OvalRepositoryException
@@ -361,7 +361,7 @@ public class MongoOvalRepository
         }
 
         _LOG_.debug( "#IDs found: " + keys.size() );
-        QueryResult<K>  result = new QueryResult<K>( _keys2IDs( keys ) );
+        QueryResults<K>  result = new QueryResults<K>( _keys2IDs( keys ) );
 
         return result;
     }
@@ -369,7 +369,7 @@ public class MongoOvalRepository
 
     @Override
     public <K, T extends OvalObject & Persistable<K>>
-    QueryResult<K> findIDs(
+    QueryResults<K> findIDs(
                     final Class<T> type,
                     final Binding filter
                     )
@@ -388,7 +388,7 @@ public class MongoOvalRepository
         }
 
         _LOG_.debug( "#IDs found: " + keys.size() );
-        QueryResult<K>  result = new QueryResult<K>( _keys2IDs( keys ) );
+        QueryResults<K>  result = new QueryResults<K>( _keys2IDs( keys ) );
 
         return result;
     }
@@ -396,7 +396,7 @@ public class MongoOvalRepository
 
     @Override
     public <K, T extends OvalObject & Persistable<K>>
-    QueryResult<K> findIDs(
+    QueryResults<K> findIDs(
                     final Class<T> type,
                     final Binding filter,
                     final List<? extends Order> ordering,
@@ -417,7 +417,7 @@ public class MongoOvalRepository
         }
 
         _LOG_.debug( "#IDs found: " + keys.size() );
-        QueryResult<K>  result = new QueryResult<K>( _keys2IDs( keys ) );
+        QueryResults<K>  result = new QueryResults<K>( _keys2IDs( keys ) );
 
         return result;
     }
@@ -426,7 +426,7 @@ public class MongoOvalRepository
 
 
     public <K, T extends OvalObject & Persistable<K>>
-    QueryResult<K> findIDs(
+    QueryResults<K> findIDs(
                     final Class<T> type,
                     final QueryBuilder builder
                     )
@@ -448,7 +448,7 @@ public class MongoOvalRepository
         List<K>  ids = _keys2IDs( keys );
         _LOG_.debug( "#IDs found: " + ids.size() );
 
-        QueryResult<K>  result = new QueryResult<K>( ids );
+        QueryResults<K>  result = new QueryResults<K>( ids );
         return result;
     }
 

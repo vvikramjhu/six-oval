@@ -3,9 +3,8 @@ package jp.go.aist.six.test.oval.core.ws;
 import java.util.Date;
 import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
-import jp.go.aist.six.oval.repository.QueryResult;
-import jp.go.aist.six.oval.repository.QueryResultElements;
-import jp.go.aist.six.oval.repository.QueryResultMetadata;
+import jp.go.aist.six.oval.repository.QueryResults;
+import jp.go.aist.six.oval.repository.QueryResultsElements;
 import jp.go.aist.six.test.oval.core.DefinitionsSample;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.testng.Reporter;
@@ -42,7 +41,7 @@ public class OvalQueryResultTest
         Reporter.log( "\n//////////////////////////////////////////////////////////",
                         true );
 
-        QueryResult<DefinitionType>  result = new QueryResult<DefinitionType>();
+        QueryResults<DefinitionType>  result = new QueryResults<DefinitionType>();
         result.setTimestamp( new Date() );
 
 //        String  rel = "http://six.org/rels/oval_results";
@@ -63,13 +62,13 @@ public class OvalQueryResultTest
 
         Reporter.log( ">>> unmarshalling...", true );
         @SuppressWarnings( "unchecked" )
-        QueryResult<DefinitionType>  result2 = (QueryResult<DefinitionType>)_xmlmapper.unmarshalFromString( xml );
+        QueryResults<DefinitionType>  result2 = (QueryResults<DefinitionType>)_xmlmapper.unmarshalFromString( xml );
         Reporter.log( "<<< unmarshalling done.", true );
         Reporter.log( "object: " + result2, true );
 
-        QueryResultElements<DefinitionType>  elements = new QueryResultElements<DefinitionType>();
+        QueryResultsElements<DefinitionType>  elements = new QueryResultsElements<DefinitionType>();
         elements.addElement( DefinitionsSample.DEF_7222 );
-        result.setElements( elements );
+        result.setResults( elements );
         Reporter.log( "\nobject: " + result, true );
         Reporter.log( ">>> marshalling...", true );
         xml = _xmlmapper.marshalToString( result );
@@ -78,16 +77,14 @@ public class OvalQueryResultTest
 
         Reporter.log( ">>> unmarshalling...", true );
         @SuppressWarnings( "unchecked" )
-        QueryResult<DefinitionType>  result3 = (QueryResult<DefinitionType>)_xmlmapper.unmarshalFromString( xml );
+        QueryResults<DefinitionType>  result3 = (QueryResults<DefinitionType>)_xmlmapper.unmarshalFromString( xml );
         Reporter.log( "<<< unmarshalling done.", true );
         Reporter.log( "object: " + result3, true );
 
 
-        QueryResultMetadata  os = new QueryResultMetadata();
-        os.setTotalResults( 222L );
-        os.setStartIndex( 55L );
-        os.setItemsPerPage( 1L );
-        result.setMetadata( os );
+        result.setTotalResults( 222 );
+        result.setStartIndex( 55 );
+        result.setItemsPerPage( 1 );
 
         Reporter.log( "\nobject: " + result, true );
         Reporter.log( ">>> marshalling...", true );
@@ -97,7 +94,7 @@ public class OvalQueryResultTest
 
         Reporter.log( ">>> unmarshalling...", true );
         @SuppressWarnings( "unchecked" )
-        QueryResult<DefinitionType>  result4 = (QueryResult<DefinitionType>)_xmlmapper.unmarshalFromString( xml );
+        QueryResults<DefinitionType>  result4 = (QueryResults<DefinitionType>)_xmlmapper.unmarshalFromString( xml );
         Reporter.log( "<<< unmarshalling done.", true );
         Reporter.log( "object: " + result4, true );
 

@@ -105,7 +105,7 @@ public interface OvalRepository
      *  the objects.
      */
     public <K, T extends OvalObject & Persistable<K>>
-    QueryResult<T> find(
+    QueryResults<T> find(
                     Class<T> type
                     )
     throws OvalRepositoryException;
@@ -123,7 +123,7 @@ public interface OvalRepository
      *  the objects.
      */
     public <K, T extends OvalObject & Persistable<K>>
-    QueryResult<T> find(
+    QueryResults<T> find(
                     Class<T> type,
                     Binding filter
                     )
@@ -152,7 +152,7 @@ public interface OvalRepository
      *  the objects.
      */
     public <K, T extends OvalObject & Persistable<K>>
-    QueryResult<T> find(
+    QueryResults<T> find(
                     Class<T> type,
                     Binding filter,
                     List<? extends Order> ordering,
@@ -171,7 +171,7 @@ public interface OvalRepository
      *  the identifiers.
      */
     public <K, T extends OvalObject & Persistable<K>>
-    QueryResult<K> findIDs(
+    QueryResults<K> findIDs(
                     Class<T> type
                     )
     throws OvalRepositoryException;
@@ -190,7 +190,7 @@ public interface OvalRepository
      *  the identifiers.
      */
     public <K, T extends OvalObject & Persistable<K>>
-    QueryResult<K> findIDs(
+    QueryResults<K> findIDs(
                     Class<T> type,
                     Binding filter
                     )
@@ -220,7 +220,7 @@ public interface OvalRepository
      *  the identifiers.
      */
     public <K, T extends OvalObject & Persistable<K>>
-    QueryResult<K> findIDs(
+    QueryResults<K> findIDs(
                     Class<T> type,
                     Binding filter,
                     List<? extends Order> ordering,

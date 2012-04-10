@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.repository;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 
 
 
@@ -35,19 +36,25 @@ public class QueryResults<T>
     implements Serializable
 {
 
-    private Long  _totalResults;    //OpenSearch
+    //TODO:
+    //Integer.MAX_VALUE == 2^31 - 1 == 2147483647
+    //Is this sufficient?
+
+    private Integer  _totalResults;    //OpenSearch
     //{0..1}
 
-    private Long  _startIndex;      //OpenSearch
+    private Integer  _startIndex;      //OpenSearch
     //{0..1}
 
-    private Long  _itemsPerPage;    //OpenSearch
+    private Integer  _itemsPerPage;    //OpenSearch
     //{0..1}
 
 
     private QueryResultsElements<T>  _results;
 //    private final List<T>  _elements = new ArrayList<T>();
 
+
+    private Date  _timestamp;
 
 
 
@@ -56,6 +63,7 @@ public class QueryResults<T>
      */
     public QueryResults()
     {
+        this( 0, 0, 0, null );
     }
 
 
@@ -63,22 +71,40 @@ public class QueryResults<T>
      * Constructor.
      */
     public QueryResults(
-                    final Long totalResults,
-                    final Long startIndex,
-                    final Long itemsPerPage
+                    final Integer totalResults,
+                    final Integer startIndex,
+                    final Integer itemsPerPage
                     )
     {
         this( totalResults, startIndex, itemsPerPage, null );
-//        setTotalResults( totalResults );
-//        setStartIndex( startIndex );
-//        setItemsPerPage( itemsPerPage );
     }
 
 
     public QueryResults(
-                    final Long totalResults,
-                    final Long startIndex,
-                    final Long itemsPerPage,
+                    final Integer totalResults,
+                    final Integer startIndex,
+                    final Integer itemsPerPage,
+                    final Collection<? extends T> results
+                    )
+    {
+        _init( totalResults, startIndex, itemsPerPage, results );
+    }
+
+
+    public QueryResults(
+                    final Collection<? extends T> results
+                    )
+    {
+        _init( (results == null ? 0 : results.size()), null, null, results );
+    }
+
+
+    /**
+     */
+    private void _init(
+                    final Integer totalResults,
+                    final Integer startIndex,
+                    final Integer itemsPerPage,
                     final Collection<? extends T> results
                     )
     {
@@ -86,25 +112,24 @@ public class QueryResults<T>
         setStartIndex( startIndex );
         setItemsPerPage( itemsPerPage );
 
-        if (results != null) {
-            setResults( new QueryResultsElements<T>( results ) );
-        }
-    }
+        setResults( new QueryResultsElements<T>( results ) );
 
+        setTimestamp( new Date() );
+    }
 
 
 
     /**
      */
     public void setTotalResults(
-                    final Long totalResults
+                    final Integer totalResults
                     )
     {
         _totalResults = totalResults;
     }
 
 
-    public Long getTotalResults()
+    public Integer getTotalResults()
     {
         return _totalResults;
     }
@@ -114,14 +139,14 @@ public class QueryResults<T>
     /**
      */
     public void setStartIndex(
-                    final Long startIndex
+                    final Integer startIndex
                     )
     {
         _startIndex = startIndex;
     }
 
 
-    public Long getStartIndex()
+    public Integer getStartIndex()
     {
         return _startIndex;
     }
@@ -131,14 +156,14 @@ public class QueryResults<T>
     /**
      */
     public void setItemsPerPage(
-                    final Long itemsPerPage
+                    final Integer itemsPerPage
                     )
     {
         _itemsPerPage = itemsPerPage;
     }
 
 
-    public Long getItemsPerPage()
+    public Integer getItemsPerPage()
     {
         return _itemsPerPage;
     }
@@ -161,6 +186,30 @@ public class QueryResults<T>
     }
 
 
+
+    /**
+     */
+    public void setTimestamp(
+                    final Date timestamp
+                    )
+    {
+        _timestamp = timestamp;
+    }
+
+
+    public Date getTimestamp()
+    {
+        return _timestamp;
+    }
+
+
+
+    /**
+     */
+    public int size()
+    {
+        return (_results == null ? 0 : _results.size());
+    }
 
 //    /**
 //     *
