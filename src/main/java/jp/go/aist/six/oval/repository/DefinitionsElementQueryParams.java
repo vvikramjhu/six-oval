@@ -145,7 +145,7 @@ public class DefinitionsElementQueryParams
                     )
     {
         if (family != null) {
-            Family.valueOf( family );
+            Family.fromValue( family );
         }
 
         set( Key.FAMILY, family );

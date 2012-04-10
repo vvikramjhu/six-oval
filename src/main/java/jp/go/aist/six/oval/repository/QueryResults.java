@@ -40,13 +40,13 @@ public class QueryResults<T>
     //Integer.MAX_VALUE == 2^31 - 1 == 2147483647
     //Is this sufficient?
 
-    private Integer  _totalResults;    //OpenSearch
+    private Long  _totalResults;    //OpenSearch
     //{0..1}
 
-    private Integer  _startIndex;      //OpenSearch
+    private Long  _startIndex;      //OpenSearch
     //{0..1}
 
-    private Integer  _itemsPerPage;    //OpenSearch
+    private Long  _itemsPerPage;    //OpenSearch
     //{0..1}
 
 
@@ -63,7 +63,7 @@ public class QueryResults<T>
      */
     public QueryResults()
     {
-        this( 0, 0, 0, null );
+        this( 0L, null, null, null );
     }
 
 
@@ -71,9 +71,9 @@ public class QueryResults<T>
      * Constructor.
      */
     public QueryResults(
-                    final Integer totalResults,
-                    final Integer startIndex,
-                    final Integer itemsPerPage
+                    final Long totalResults,
+                    final Long startIndex,
+                    final Long itemsPerPage
                     )
     {
         this( totalResults, startIndex, itemsPerPage, null );
@@ -81,9 +81,9 @@ public class QueryResults<T>
 
 
     public QueryResults(
-                    final Integer totalResults,
-                    final Integer startIndex,
-                    final Integer itemsPerPage,
+                    final Long totalResults,
+                    final Long startIndex,
+                    final Long itemsPerPage,
                     final Collection<? extends T> results
                     )
     {
@@ -95,16 +95,16 @@ public class QueryResults<T>
                     final Collection<? extends T> results
                     )
     {
-        _init( (results == null ? 0 : results.size()), null, null, results );
+        _init( (results == null ? 0L : results.size()), null, null, results );
     }
 
 
     /**
      */
     private void _init(
-                    final Integer totalResults,
-                    final Integer startIndex,
-                    final Integer itemsPerPage,
+                    final Long totalResults,
+                    final Long startIndex,
+                    final Long itemsPerPage,
                     final Collection<? extends T> results
                     )
     {
@@ -122,14 +122,14 @@ public class QueryResults<T>
     /**
      */
     public void setTotalResults(
-                    final Integer totalResults
+                    final Long totalResults
                     )
     {
         _totalResults = totalResults;
     }
 
 
-    public Integer getTotalResults()
+    public Long getTotalResults()
     {
         return _totalResults;
     }
@@ -139,14 +139,14 @@ public class QueryResults<T>
     /**
      */
     public void setStartIndex(
-                    final Integer startIndex
+                    final Long startIndex
                     )
     {
         _startIndex = startIndex;
     }
 
 
-    public Integer getStartIndex()
+    public Long getStartIndex()
     {
         return _startIndex;
     }
@@ -156,14 +156,14 @@ public class QueryResults<T>
     /**
      */
     public void setItemsPerPage(
-                    final Integer itemsPerPage
+                    final Long itemsPerPage
                     )
     {
         _itemsPerPage = itemsPerPage;
     }
 
 
-    public Integer getItemsPerPage()
+    public Long getItemsPerPage()
     {
         return _itemsPerPage;
     }

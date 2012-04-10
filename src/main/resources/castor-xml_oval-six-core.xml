@@ -23,19 +23,19 @@
             <bind-xml name="timestamp" node="element"/>
         </field>
 
-        <field name="totalResults" type="integer">
+        <field name="totalResults" type="long">
             <bind-xml name="totalResults" node="element"
                 xmlns="http://a9.com/-/spec/opensearch/1.1/"
                 />
         </field>
 
-        <field name="startIndex" type="integer">
+        <field name="startIndex" type="long">
             <bind-xml name="startIndex" node="element"
                 xmlns="http://a9.com/-/spec/opensearch/1.1/"
                 />
         </field>
 
-        <field name="itemsPerPage" type="integer">
+        <field name="itemsPerPage" type="long">
             <bind-xml name="itemsPerPage" node="element"
                 xmlns="http://a9.com/-/spec/opensearch/1.1/"
                 />

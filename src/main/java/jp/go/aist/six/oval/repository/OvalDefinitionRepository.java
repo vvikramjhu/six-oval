@@ -22,8 +22,8 @@ package jp.go.aist.six.oval.repository;
 
 import java.util.List;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
-import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 
 
 
