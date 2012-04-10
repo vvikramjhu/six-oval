@@ -19,6 +19,10 @@
             ns-uri="http://aist.go.jp/six/oval/"
             />
 
+        <field name="timestamp" type="date">
+            <bind-xml name="timestamp" node="element"/>
+        </field>
+
         <field name="totalResults" type="integer">
             <bind-xml name="totalResults" node="element"
                 xmlns="http://a9.com/-/spec/opensearch/1.1/"
