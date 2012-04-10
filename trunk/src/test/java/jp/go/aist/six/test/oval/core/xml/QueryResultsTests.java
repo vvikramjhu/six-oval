@@ -133,9 +133,9 @@ public class QueryResultsTests
 
         // (2) build QueryResults
         QueryResults<OvalDefinitions>  oval_defs_results =
-                        new QueryResults<OvalDefinitions>(
-                                        (long)oval_defs.size(), 0L, (long)oval_defs.size(),
-                                        oval_defs );
+                        new QueryResults<OvalDefinitions>( oval_defs );
+//                        new QueryResults<OvalDefinitions>(
+//                                        oval_defs.size(), 0, oval_defs.size(), oval_defs );
         Reporter.log( "* query results: " + oval_defs_results, true );
 
         // (3) marshal the QueryResults to an XML file
@@ -191,8 +191,7 @@ public class QueryResultsTests
         // (2) build QueryResults
         QueryResults<DefinitionType>  def_results =
                         new QueryResults<DefinitionType>(
-                                        (long)def_set.size(), 0L, (long)def_set.size(),
-                                        def_set );
+                                        def_set.size(), 0, def_set.size(), def_set );
         Reporter.log( "* query results: " + def_results, true );
 
         // (3) marshal the QueryResults to an XML file
