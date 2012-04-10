@@ -31,11 +31,15 @@
         </field>
 
         <field name="startIndex" type="long">
-            <bind-xml name="startIndex" node="element"/>
+            <bind-xml name="startIndex" node="element"
+                xmlns="http://a9.com/-/spec/opensearch/1.1/"
+                />
         </field>
 
         <field name="itemsPerPage" type="long">
-            <bind-xml name="itemsPerPage" node="element"/>
+            <bind-xml name="itemsPerPage" node="element"
+                xmlns="http://a9.com/-/spec/opensearch/1.1/"
+                />
         </field>
 
         <field name="results" 
