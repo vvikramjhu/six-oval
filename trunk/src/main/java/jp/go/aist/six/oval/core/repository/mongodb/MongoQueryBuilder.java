@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package jp.go.aist.six.oval.core.ws;
+package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,7 +26,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
-import jp.go.aist.six.oval.core.repository.mongodb.QueryBuilder;
 import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
@@ -55,7 +54,7 @@ import com.google.code.morphia.query.Query;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class MongoWebQueryBuilder
+public abstract class MongoQueryBuilder
 implements QueryBuilder
 {
 
@@ -63,7 +62,7 @@ implements QueryBuilder
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( MongoWebQueryBuilder.class );
+        LoggerFactory.getLogger( MongoQueryBuilder.class );
 
 
 
@@ -80,7 +79,7 @@ implements QueryBuilder
         } else if (TestType.class.isAssignableFrom( type )) {
             return (new TestBuilder( params ));
         } else if (DefinitionsElement.class.isAssignableFrom( type )) {
-            return (new OvalEntityBuilder( params ));
+            return (new DefinitionsElementBuilder( params ));
         } else if (OvalSystemCharacteristics.class.isAssignableFrom( type )) {
             return (new OvalSystemCharacteristicsBuilder( params ));
         } else if (OvalResults.class.isAssignableFrom( type )) {
@@ -103,13 +102,13 @@ implements QueryBuilder
     /**
      * Constructor.
      */
-    protected MongoWebQueryBuilder()
+    protected MongoQueryBuilder()
     {
 
     }
 
 
-    public MongoWebQueryBuilder(
+    public MongoQueryBuilder(
                     final QueryParams params
                     )
     {
@@ -454,7 +453,7 @@ implements QueryBuilder
     //==============================================================
 
     public static class BasicBuilder
-    extends MongoWebQueryBuilder
+    extends MongoQueryBuilder
     {
 
         /**
@@ -549,7 +548,13 @@ implements QueryBuilder
 
 
 
-    public static class OvalEntityBuilder
+    /**
+     * QueryBuilder for the DefinitionsElement.
+     *
+     * @author	Akihito Nakamura, AIST
+     * @version $Id$
+     */
+    public static class DefinitionsElementBuilder
     extends BasicBuilder
     {
 
@@ -646,7 +651,7 @@ implements QueryBuilder
 
 
 
-        public OvalEntityBuilder(
+        public DefinitionsElementBuilder(
                         final QueryParams params
                         )
         {
@@ -669,17 +674,17 @@ implements QueryBuilder
         }
 
     }
-    // OvalEntity
+    //DefinitionsElement
 
 
 
     public static class DefinitionBuilder
-    extends OvalEntityBuilder
+    extends DefinitionsElementBuilder
     {
 
         protected static Map<String, String> _createFieldMapping()
         {
-            Map<String, String>  mapping = OvalEntityBuilder._createFieldMapping();
+            Map<String, String>  mapping = DefinitionsElementBuilder._createFieldMapping();
 
             mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    "class" );
             mapping.put( DefinitionQueryParams.Key.SEARCH_TERMS,        "metadata.title" );
@@ -717,7 +722,7 @@ implements QueryBuilder
             };
 
 
-            Map<String, Handler>  mapping = OvalEntityBuilder._createHandlers();
+            Map<String, Handler>  mapping = DefinitionsElementBuilder._createHandlers();
             mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    definitionClassHandler );
             mapping.put( DefinitionQueryParams.Key.SEARCH_TERMS,        PatternHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.FAMILY,              _DEFAULT_HANDLER_ );
@@ -761,12 +766,12 @@ implements QueryBuilder
 
 
     public static class TestBuilder
-    extends OvalEntityBuilder
+    extends DefinitionsElementBuilder
     {
 
         protected static Map<String, String> _createFieldMapping()
         {
-            Map<String, String>  mapping = OvalEntityBuilder._createFieldMapping();
+            Map<String, String>  mapping = DefinitionsElementBuilder._createFieldMapping();
 
             mapping.put( TestQueryParams.Key.OBJECT_REF,    "object.object_ref" );
             mapping.put( TestQueryParams.Key.STATE_REF,     "state.state_ref" );
@@ -782,7 +787,7 @@ implements QueryBuilder
         protected static Map<String, Handler> _createHandlers()
         {
 
-            Map<String, Handler>  mapping = OvalEntityBuilder._createHandlers();
+            Map<String, Handler>  mapping = DefinitionsElementBuilder._createHandlers();
             mapping.put( TestQueryParams.Key.OBJECT_REF,    _DEFAULT_HANDLER_ );
             mapping.put( TestQueryParams.Key.STATE_REF,     _DEFAULT_HANDLER_ );
 

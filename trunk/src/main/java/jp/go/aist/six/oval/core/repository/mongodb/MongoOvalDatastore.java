@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import jp.go.aist.six.oval.core.ws.MongoWebQueryBuilder;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.util.persist.Persistable;
 import org.slf4j.Logger;
@@ -155,7 +154,7 @@ public class MongoOvalDatastore
            list = dao.find().asList();
        } else {
            Query<T>  query = dao.createQuery();
-           QueryBuilder  builder = MongoWebQueryBuilder.createInstance( type, params );
+           QueryBuilder  builder = MongoQueryBuilder.createInstance( type, params );
            query = builder.build( query );
            _LOG_.debug( "query=" + query );
            list = dao.find( query ).asList();
@@ -201,7 +200,7 @@ public class MongoOvalDatastore
            list = dao.find().asKeyList();
        } else {
            Query<T>  query = dao.createQuery();
-           QueryBuilder  builder = MongoWebQueryBuilder.createInstance( type, params );
+           QueryBuilder  builder = MongoQueryBuilder.createInstance( type, params );
            query = builder.build( query );
            _LOG_.debug( "query=" + query );
            list = dao.find( query ).asKeyList();
@@ -251,7 +250,7 @@ public class MongoOvalDatastore
            count = dao.count();
        } else {
            Query<T>  query = dao.createQuery();
-           QueryBuilder  builder = MongoWebQueryBuilder.createInstance( type, params );
+           QueryBuilder  builder = MongoQueryBuilder.createInstance( type, params );
            query = builder.build( query );
            _LOG_.debug( "query=" + query );
            count = dao.count( query );
