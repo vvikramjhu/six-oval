@@ -239,12 +239,13 @@ public class QueryResults<T>
     @Override
     public String toString()
     {
-        return "QueryResults[totalResults=" + getTotalResults()
-             + ", startIndex=" + getStartIndex()
-             + ", itemsPerPage=" + getItemsPerPage()
-             + ", #elements=" + getResults().size()
-             + "]"
-             ;
+        return "QueryResults[timestamp=" + getTimestamp()
+                        + ", totalResults=" + getTotalResults()
+                        + ", startIndex=" + getStartIndex()
+                        + ", itemsPerPage=" + getItemsPerPage()
+                        + ", #elements=" + getResults().size()
+                        + "]"
+                        ;
     }
 
 }
