@@ -224,7 +224,7 @@ public class OvalContext
                 //throws BeansException: Runtime
             }
 
-            _xmlMapper = _xmlContext.getBean( XmlMapper.class );
+            _xmlMapper = _xmlContext.getBean( "ovalXmlMapper", XmlMapper.class );
         }
 
         return _xmlMapper;
