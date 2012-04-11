@@ -91,7 +91,7 @@ implements QueryBuilder
 
 
 
-    protected static final Handler  _DEFAULT_HANDLER_ = new FilterHandler();
+//    protected static final Handler  _DEFAULT_HANDLER_ = new FilterHandler();
 
 
 
@@ -171,7 +171,8 @@ implements QueryBuilder
                     )
     {
         Handler  handler = _handlerMapping().get( key );
-        return (handler == null ? _DEFAULT_HANDLER_ : handler);
+        return (handler == null ? FilterHandler.INSTANCE : handler);
+//        return (handler == null ? _DEFAULT_HANDLER_ : handler);
     }
 
 
@@ -279,6 +280,7 @@ implements QueryBuilder
     protected static class FilterHandler
     extends Handler
     {
+        public static final FilterHandler  INSTANCE = new FilterHandler();
 
         public static final String  DEFAULT_OPERATOR = "=";
 
@@ -327,6 +329,9 @@ implements QueryBuilder
     protected static class OrderHandler
     extends Handler
     {
+
+        public static final OrderHandler  INSTANCE = new OrderHandler();
+
 
         public OrderHandler()
         {
@@ -467,7 +472,7 @@ implements QueryBuilder
 
         protected static Map<String, Handler> _createHandlers()
         {
-            Handler  offsetHandler = new Handler()
+            Handler  offset_handler = new Handler()
             {
                 @Override
                 public void build(
@@ -486,7 +491,7 @@ implements QueryBuilder
             };
 
 
-            Handler  limitHandler = new Handler()
+            Handler  limit_handler = new Handler()
             {
                 @Override
                 public void build(
@@ -506,9 +511,9 @@ implements QueryBuilder
 
 
             Map<String, Handler>  mapping = new HashMap<String, Handler>();
-            mapping.put( CommonQueryParams.Key.START_INDEX,  offsetHandler );
-            mapping.put( CommonQueryParams.Key.COUNT,   limitHandler );
-            mapping.put( CommonQueryParams.Key.ORDER,   new OrderHandler());
+            mapping.put( CommonQueryParams.Key.START_INDEX, offset_handler );
+            mapping.put( CommonQueryParams.Key.COUNT,       limit_handler );
+            mapping.put( CommonQueryParams.Key.ORDER,       OrderHandler.INSTANCE );
 
             return mapping;
         }
@@ -544,7 +549,7 @@ implements QueryBuilder
         }
 
     }
-    // Basic
+    //BasicBuilder
 
 
 
@@ -562,12 +567,15 @@ implements QueryBuilder
         {
             Map<String, String>  mapping = new HashMap<String, String>();
 
-            mapping.put( DefinitionsElementQueryParams.Key.ID,                "oval_id" );
-            mapping.put( DefinitionsElementQueryParams.Key.VERSION,           "oval_version" );
+            mapping.put( DefinitionsElementQueryParams.Key.ID,          "oval_id" );
+            mapping.put( DefinitionsElementQueryParams.Key.VERSION,     "oval_version" );
+            mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      "_oval_family" );
+            mapping.put( DefinitionsElementQueryParams.Key.COMPONENT,   "_oval_component" );
 
-            mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,    "_oval_generator.schema_version" );
-            mapping.put( DefinitionsElementQueryParams.Key.FAMILY,            "_oval_family" );
-            mapping.put( DefinitionsElementQueryParams.Key.COMPONENT,         "_oval_component" );
+            mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,      "_oval_generator.schema_version" );
+
+            //common params
+            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            "comment" );
 
             return mapping;
         }
@@ -617,6 +625,7 @@ implements QueryBuilder
                 }
             };
 
+
             Handler  family_handler = new FilterHandler()
             {
                 @Override
@@ -637,11 +646,11 @@ implements QueryBuilder
 
 
             Map<String, Handler>  mapping = BasicBuilder._createHandlers();
-            mapping.put( DefinitionsElementQueryParams.Key.ID,              _DEFAULT_HANDLER_ );
-            mapping.put( DefinitionsElementQueryParams.Key.VERSION,         version_handler );
-            mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,  _DEFAULT_HANDLER_ );
-            mapping.put( DefinitionsElementQueryParams.Key.FAMILY,          family_handler );
-            mapping.put( DefinitionsElementQueryParams.Key.COMPONENT,       component_handler );
+            mapping.put( DefinitionsElementQueryParams.Key.ID,          FilterHandler.INSTANCE );
+            mapping.put( DefinitionsElementQueryParams.Key.VERSION,     version_handler );
+            mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,      FilterHandler.INSTANCE );
+            mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      family_handler );
+            mapping.put( DefinitionsElementQueryParams.Key.COMPONENT,   component_handler );
 
             return mapping;
         }
@@ -674,7 +683,7 @@ implements QueryBuilder
         }
 
     }
-    //DefinitionsElement
+    //DefinitionsElementBuilder
 
 
 
@@ -687,11 +696,14 @@ implements QueryBuilder
             Map<String, String>  mapping = DefinitionsElementBuilder._createFieldMapping();
 
             mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    "class" );
-            mapping.put( DefinitionQueryParams.Key.SEARCH_TERMS,        "metadata.title" );
             mapping.put( DefinitionQueryParams.Key.FAMILY,              "metadata.affected.family" );   //override
-            mapping.put( DefinitionQueryParams.Key.PLATFORM,            "metadata.affected.platform" ); //override
+            mapping.put( DefinitionQueryParams.Key.PLATFORM,            "metadata.affected.platform" );
             mapping.put( DefinitionQueryParams.Key.PRODUCT,             "metadata.affected.product" );
+            mapping.put( DefinitionQueryParams.Key.REF_SOURCE,          "metadata.reference.source" );
             mapping.put( DefinitionQueryParams.Key.REF_ID,              "metadata.reference.ref_id" );
+
+            // common
+            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            "metadata.title" );
 
             return mapping;
         }
@@ -703,7 +715,7 @@ implements QueryBuilder
 
         protected static Map<String, Handler> _createHandlers()
         {
-            Handler  definitionClassHandler = new Handler()
+            Handler  class_handler = new Handler()
             {
                 @Override
                 public void build(
@@ -723,12 +735,15 @@ implements QueryBuilder
 
 
             Map<String, Handler>  mapping = DefinitionsElementBuilder._createHandlers();
-            mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    definitionClassHandler );
-            mapping.put( DefinitionQueryParams.Key.SEARCH_TERMS,        PatternHandler.INSTANCE );
-            mapping.put( DefinitionQueryParams.Key.FAMILY,              _DEFAULT_HANDLER_ );
-            mapping.put( DefinitionQueryParams.Key.PLATFORM,            _DEFAULT_HANDLER_ );
-            mapping.put( DefinitionQueryParams.Key.PRODUCT,             _DEFAULT_HANDLER_ );
-            mapping.put( DefinitionQueryParams.Key.REF_ID,              _DEFAULT_HANDLER_ );
+            //merge the super class's handler mapping
+            mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    class_handler );
+            mapping.put( DefinitionQueryParams.Key.PLATFORM,            FilterHandler.INSTANCE );
+            mapping.put( DefinitionQueryParams.Key.PRODUCT,             FilterHandler.INSTANCE );
+            mapping.put( DefinitionQueryParams.Key.REF_SOURCE,          FilterHandler.INSTANCE );
+            mapping.put( DefinitionQueryParams.Key.REF_ID,              FilterHandler.INSTANCE );
+
+            mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      FilterHandler.INSTANCE );
+            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
 
             return mapping;
         }
@@ -761,7 +776,7 @@ implements QueryBuilder
         }
 
     }
-    // Definition
+    //DefinitionBuilder
 
 
 
@@ -788,8 +803,8 @@ implements QueryBuilder
         {
 
             Map<String, Handler>  mapping = DefinitionsElementBuilder._createHandlers();
-            mapping.put( TestQueryParams.Key.OBJECT_REF,    _DEFAULT_HANDLER_ );
-            mapping.put( TestQueryParams.Key.STATE_REF,     _DEFAULT_HANDLER_ );
+            mapping.put( TestQueryParams.Key.OBJECT_REF,    FilterHandler.INSTANCE );
+            mapping.put( TestQueryParams.Key.STATE_REF,     FilterHandler.INSTANCE );
 
             return mapping;
         }
@@ -957,8 +972,8 @@ implements QueryBuilder
 
 
             Map<String, Handler>  mapping = BasicBuilder._createHandlers();
-            mapping.put( OvalResultsQueryParams.Key.PRIMARY_HOST_NAME,  _DEFAULT_HANDLER_ );
-            mapping.put( OvalResultsQueryParams.Key.OS_NAME,            _DEFAULT_HANDLER_ );
+            mapping.put( OvalResultsQueryParams.Key.PRIMARY_HOST_NAME,  FilterHandler.INSTANCE );
+            mapping.put( OvalResultsQueryParams.Key.OS_NAME,            FilterHandler.INSTANCE );
             mapping.put( OvalResultsQueryParams.Key.RESULT_TRUE_DEF,    resultTrueHandler );
             mapping.put( OvalResultsQueryParams.Key.RESULT_FALSE_DEF,   resultFalseHandler );
 
