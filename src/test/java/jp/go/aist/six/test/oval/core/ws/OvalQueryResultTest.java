@@ -82,9 +82,9 @@ public class OvalQueryResultTest
         Reporter.log( "object: " + result3, true );
 
 
-        result.setTotalResults( 222 );
-        result.setStartIndex( 55 );
-        result.setItemsPerPage( 1 );
+        result.setTotalResults( 222L );
+        result.setStartIndex( 55L );
+        result.setItemsPerPage( 1L );
 
         Reporter.log( "\nobject: " + result, true );
         Reporter.log( ">>> marshalling...", true );

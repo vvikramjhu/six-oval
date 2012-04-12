@@ -94,7 +94,7 @@ public class AffectedCpeList
 
     public Iterator<Cpe> iterateCpe()
     {
-        return _iterateElement();
+        return iterator();
     }
 
 

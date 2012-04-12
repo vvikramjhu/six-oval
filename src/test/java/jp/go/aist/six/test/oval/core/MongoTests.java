@@ -69,7 +69,7 @@ public abstract class MongoTests
         File[]  files = _toXmlFileList( dirpath, xml_filepath );
         for (File  file : files) {
             Reporter.log( "  * file= " + file, true );
-            T  object = _unmarshalFromFile( object_type, xml_filepath, expected_object );
+            T  object = _unmarshalFromFile( object_type, file.getCanonicalPath(), expected_object );
             _saveToDatastore( object_type, object, true );
         }
     }
@@ -116,7 +116,7 @@ public abstract class MongoTests
             if (to_log) {
                 Reporter.log( "<<< ...object found", true );
                 Reporter.log( "  @ object: " + p_object, true );
-                _dumpObject( object_type, p_object );
+                _printObject( object_type, p_object );
             }
         }
     }
@@ -129,7 +129,11 @@ public abstract class MongoTests
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.repository.mongodb", "oval.def" },
+                    groups={
+                                    "java:oval.core.repository.mongodb",
+                                    "oval:oval.def",
+                                    "operation:datastore.save"
+                                    },
                     dataProvider="oval.test_content.def",
                     alwaysRun=true
                     )
@@ -154,9 +158,13 @@ public abstract class MongoTests
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.repository.mongodb", "oval.sc" },
+                    groups={
+                                    "java:oval.core.repository.mongodb",
+                                    "oval:oval.sc",
+                                    "operation:datastore.save"
+                                    },
                     dataProvider="oval.test_content.sc",
-                    dependsOnMethods= { "testSaveDef" },
+                    dependsOnMethods={ "testSaveDef" },
                     alwaysRun=true
                     )
     public <K, T extends Persistable<K>>
@@ -180,9 +188,13 @@ public abstract class MongoTests
     /**
      */
     @org.testng.annotations.Test(
-                    groups={ "oval.core.repository.mongodb", "oval.res" },
+                    groups={
+                                    "java:oval.core.repository.mongodb",
+                                    "oval:oval.res",
+                                    "operation:datastore.save"
+                                    },
                     dataProvider="oval.test_content.res",
-                    dependsOnMethods= { "testSaveSc" },
+                    dependsOnMethods={ "testSaveSc" },
                     alwaysRun=true
                     )
     public <K, T extends Persistable<K>>

@@ -107,7 +107,7 @@ public abstract class Container<E>
     }
 
 
-    protected Iterator<E> _iterateElement()
+    public Iterator<E> iterator()
     {
         return _getElement().iterator();
     }

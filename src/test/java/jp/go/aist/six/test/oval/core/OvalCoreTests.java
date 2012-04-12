@@ -5,7 +5,12 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.OutputStream;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.core.OvalContext;
+import jp.go.aist.six.oval.model.Element;
+import jp.go.aist.six.oval.model.ElementContainer;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsType;
@@ -88,8 +93,9 @@ public abstract class OvalCoreTests
                     )
     throws Exception
     {
-        Reporter.log( "* dir: " + dirpath, true );
-        Reporter.log( "* filepath: " + xml_filepath, true );
+        Reporter.log( ">>> list XML files..." + dirpath, true );
+        Reporter.log( "  * dir: " + dirpath, true );
+        Reporter.log( "  * filepath: " + xml_filepath, true );
 
         File[]  list = null;
         if (dirpath == null) {
@@ -105,6 +111,8 @@ public abstract class OvalCoreTests
                 list = new File[] { new File( dir, xml_filepath ) };
             }
         }
+        Reporter.log( "<<< ...list XML files" + dirpath, true );
+        Reporter.log( "  * files: " + Arrays.toString( list ), true );
 
         return list;
     }
@@ -172,7 +180,7 @@ public abstract class OvalCoreTests
 
 
     protected <K, T extends Persistable<K>>
-    void _dumpObject(
+    void _printObject(
                     final Class<T>  object_type,
                     final T         object
                     )
@@ -211,6 +219,41 @@ public abstract class OvalCoreTests
                     Reporter.log( "  @ state: " + ste.getOvalID(), true );
                 }
             }
+        }
+    }
+
+
+    protected <T extends Element>
+    void _printOvalIds(
+                    final ElementContainer<T> container
+                    )
+    throws Exception
+    {
+        if (container == null) {
+            Reporter.log( "  #elements: 0", true );
+        } else {
+            Iterator<T>  i = container.iterator();
+            while (i.hasNext()) {
+                Reporter.log( "  @ : " + i.next().getOvalID(), true );
+            }
+            Reporter.log( "  #elements: " + container.size(), true );
+        }
+    }
+
+
+    protected <T extends Element>
+    void _printOvalIds(
+                    final Collection<T> container
+                    )
+    throws Exception
+    {
+        if (container == null) {
+            Reporter.log( "  #elements: 0", true );
+        } else {
+            for (Element  e : container) {
+                Reporter.log( "  @ : " + e.getOvalID(), true );
+            }
+            Reporter.log( "  #elements: " + container.size(), true );
         }
     }
 

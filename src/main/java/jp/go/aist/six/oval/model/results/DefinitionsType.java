@@ -103,7 +103,7 @@ public class DefinitionsType
 
     public Iterator<DefinitionType> iterateDefinition()
     {
-        return _iterateElement();
+        return iterator();
     }
 
 

@@ -106,7 +106,7 @@ public class InterfacesType
 
     public Iterator<InterfaceType> iterateInterface()
     {
-        return _iterateElement();
+        return iterator();
     }
 
 

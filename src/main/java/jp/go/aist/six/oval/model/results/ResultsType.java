@@ -103,7 +103,7 @@ public class ResultsType
 
     public Iterator<SystemType> iterateSystem()
     {
-        return _iterateElement();
+        return iterator();
     }
 
 
