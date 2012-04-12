@@ -2,7 +2,9 @@ package jp.go.aist.six.test.oval.core;
 
 import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository;
+import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -55,6 +57,7 @@ extends MongoTests
     ////////////////////////////////////////////////////////////////
 
     /**
+     * findDefinition(), countDefinition()
      */
     @org.testng.annotations.Test(
                     groups={
@@ -84,6 +87,42 @@ extends MongoTests
         Reporter.log( "  @ #Definitions: " + count, true );
 
         Assert.assertTrue( def_list.size() == count );
+    }
+
+
+
+    /**
+     * findDefinitionById(oval_id)
+     */
+    @org.testng.annotations.Test(
+                    groups={
+                                    "java:oval.core.repository.mongodb",
+                                    "oval:oval.def",
+                                    "operation:repository.findById"
+                                    },
+                    dependsOnGroups={ "operation:repository.find" },
+                    dataProvider="oval.test_content.def.definition",
+                    alwaysRun=true
+                    )
+    public void testFindDefinitionById(
+                    final Class<DefinitionType>     object_type,
+                    final String                    schema_version,
+                    final DefinitionsElement.Type   type,
+                    final ClassEnumeration          definition_class,
+                    final String                    oval_id,
+                    final DefinitionType            expected_object
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n//////////////////////////////////////////////////////////",
+                        true );
+
+        Reporter.log( ">>> findDefinitionById(oval_id)...", true );
+        Reporter.log( "  * oval_id: " + oval_id, true );
+        DefinitionType  def = _getDefinitionRepository().findDefinitionById( oval_id );
+        Reporter.log( "<<< ...findDefinitionById(oval_id)", true );
+        Assert.assertNotNull( def );
+        Assert.assertEquals( def.getOvalID(), oval_id );
     }
 
 }
