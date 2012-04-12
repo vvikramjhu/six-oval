@@ -107,7 +107,7 @@ public class CollectedSystemObjectsType
 
     public Iterator<SystemObjectType> iterateObject()
     {
-        return _iterateElement();
+        return iterator();
     }
 
 

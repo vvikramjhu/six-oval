@@ -94,7 +94,7 @@ public class NotesType
 
     public Iterator<Note> iterateNote()
     {
-        return _iterateElement();
+        return iterator();
     }
 
 

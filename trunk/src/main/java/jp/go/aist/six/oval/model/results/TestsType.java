@@ -102,7 +102,7 @@ public class TestsType
 
     public Iterator<TestType> iterateTest()
     {
-        return _iterateElement();
+        return iterator();
     }
 
 

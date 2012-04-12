@@ -95,7 +95,7 @@ public class StatesType
 
     public Iterator<StateType> iterateState()
     {
-        return _iterateElement();
+        return iterator();
     }
 
 

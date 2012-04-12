@@ -95,7 +95,7 @@ public class SystemDataType
 
     public Iterator<ItemType> iterateItem()
     {
-        return _iterateElement();
+        return iterator();
     }
 
 

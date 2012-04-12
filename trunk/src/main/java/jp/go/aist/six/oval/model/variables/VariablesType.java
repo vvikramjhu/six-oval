@@ -94,7 +94,7 @@ public class VariablesType
 
     public Iterator<VariableType> iterateVariable()
     {
-        return _iterateElement();
+        return iterator();
     }
 
 
