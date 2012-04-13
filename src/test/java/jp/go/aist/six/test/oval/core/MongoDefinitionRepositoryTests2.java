@@ -5,6 +5,7 @@ import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
+import jp.go.aist.six.oval.repository.QueryParams;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -123,6 +124,44 @@ extends MongoTests
         Reporter.log( "<<< ...findDefinitionById(oval_id)", true );
         Assert.assertNotNull( def );
         Assert.assertEquals( def.getOvalID(), oval_id );
+    }
+
+
+
+    /**
+     * findDefinition(params)
+     */
+    @org.testng.annotations.Test(
+                    groups={
+                                    "java:oval.core.repository.mongodb",
+                                    "oval:oval.def",
+                                    "operation:repository.query"
+                                    },
+                    dependsOnGroups={ "operation:repository.findById" },
+                    dataProvider="oval.repository.query_params.def",
+                    alwaysRun=true
+                    )
+    public void testFindDefinition(
+                    final Class<DefinitionType>     object_type,
+                    final String                    schema_version,
+                    final DefinitionsElement.Type   type,
+                    final QueryParams               params
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n//////////////////////////////////////////////////////////",
+                        true );
+        Reporter.log( ">>> findDefinition(params)...", true );
+        Reporter.log( "* object type: "     + object_type, true );
+        Reporter.log( "* schema version: "  + schema_version, true );
+        Reporter.log( "* type: "            + type, true );
+        Reporter.log( "* params: "          + params, true );
+
+        List<DefinitionType>  def_list = _getDefinitionRepository().findDefinition( params );
+        Reporter.log( "<<< ...findDefinitionById(params)", true );
+        Assert.assertNotNull( def_list );
+        Reporter.log( "* #objects: " + def_list.size(), true );
+        _printOvalIds( def_list );
     }
 
 }

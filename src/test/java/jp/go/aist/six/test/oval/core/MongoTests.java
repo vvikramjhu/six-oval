@@ -3,9 +3,12 @@ package jp.go.aist.six.test.oval.core;
 import java.io.File;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
 import jp.go.aist.six.oval.model.Family;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
+import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.util.persist.Persistable;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 
 
 
@@ -120,6 +123,52 @@ public abstract class MongoTests
             }
         }
     }
+
+
+
+    ////////////////////////////////////////////////////////////////
+    //  test data
+    ////////////////////////////////////////////////////////////////
+
+    /**
+     * OVAL Definitions documents contained in the OVAL Test Content.
+     *
+     *  Class<DefinitionType>     object_type,
+     *  String                    schema_version,
+     *  DefinitionsElement.Type   type,
+     *  QueryParams               params
+     */
+    @DataProvider( name="oval.repository.query_params.def" )
+    public Object[][] provideQueryParamsDef()
+    {
+        // common: order, count
+        DefinitionQueryParams  params1 = new DefinitionQueryParams();
+        params1.setOrder( "id" );
+        params1.setCount( "3" );
+
+        // common: order, count, startIndex
+        DefinitionQueryParams  params2 = new DefinitionQueryParams();
+        params2.setOrder( "id" );
+        params2.setCount( "2" );
+        params2.setStartIndex( "4" );
+
+        return new Object[][] {
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "5.10",
+                            DefinitionsElement.Type.DEFINITION,
+                            params1
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "5.10",
+                            DefinitionsElement.Type.DEFINITION,
+                            params2
+                        }
+        };
+    }
+
 
 
     ////////////////////////////////////////////////////////////////
