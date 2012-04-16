@@ -45,6 +45,7 @@ import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.oval.repository.TestQueryParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.google.code.morphia.query.Criteria;
 import com.google.code.morphia.query.Query;
 
 
@@ -406,8 +407,25 @@ implements QueryBuilder
                 return;
             }
 
+
             Pattern  pattern = Pattern.compile( ".*" + value + ".*", Pattern.CASE_INSENSITIVE );
-            query.filter( field, pattern );
+            if (field.contains( "," )) {
+                String[]  fs = field.split( "," );
+                int  size = fs.length;
+                Criteria[]  criteria = new Criteria[size];
+                for (int  i = 0; i < size; i++) {
+                    criteria[i] = query.criteria( fs[i] ).equal( pattern );
+                }
+                query.or( criteria );
+            } else {
+
+//                Pattern  pattern = Pattern.compile( ".*" + value + ".*", Pattern.CASE_INSENSITIVE );
+                query.criteria( field ).equal( pattern );
+            }
+
+            //backup
+//            Pattern  pattern = Pattern.compile( ".*" + value + ".*", Pattern.CASE_INSENSITIVE );
+//            query.filter( field, pattern );
         }
 
     }
@@ -703,7 +721,8 @@ implements QueryBuilder
             mapping.put( DefinitionQueryParams.Key.REF_ID,              "metadata.reference.ref_id" );
 
             // common
-            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            "metadata.title" );
+            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            "metadata.title,metadata.description" );
+//            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            "metadata.title" );
 
             return mapping;
         }

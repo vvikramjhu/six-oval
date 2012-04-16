@@ -5,6 +5,7 @@ import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
+import jp.go.aist.six.oval.repository.DefinitionsElementQueryParams;
 import jp.go.aist.six.util.persist.Persistable;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -152,6 +153,29 @@ public abstract class MongoTests
         params2.setCount( "2" );
         params2.setStartIndex( "4" );
 
+        // common: order, count, startIndex
+        DefinitionQueryParams  params3 = new DefinitionQueryParams();
+        params3.setOrder( "-id" );
+        params3.setCount( "5" );
+
+        // common: searchTerms, order
+        DefinitionQueryParams  params4 = new DefinitionQueryParams();
+        params4.setOrder( "id" );
+        params4.setSearchTerms( "linux-def:s" );
+
+        // common: searchTerms, order
+        DefinitionQueryParams  params5 = new DefinitionQueryParams();
+        params5.setOrder( "id" );
+        params5.setSearchTerms( "negate" );
+
+        // element: version
+        DefinitionsElementQueryParams  params11 = new DefinitionsElementQueryParams();
+        params11.setVersion( "7" );
+
+        // definition: definitionClass
+        DefinitionQueryParams  params21 = new DefinitionQueryParams();
+        params21.setDefinitionClass( "compliance" );
+
         return new Object[][] {
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
@@ -165,6 +189,41 @@ public abstract class MongoTests
                             "5.10",
                             DefinitionsElement.Type.DEFINITION,
                             params2
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "5.10",
+                            DefinitionsElement.Type.DEFINITION,
+                            params3
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "5.10",
+                            DefinitionsElement.Type.DEFINITION,
+                            params4
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "5.10",
+                            DefinitionsElement.Type.DEFINITION,
+                            params5
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "5.10",
+                            DefinitionsElement.Type.DEFINITION,
+                            params11
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "5.10",
+                            DefinitionsElement.Type.DEFINITION,
+                            params21
                         }
         };
     }
