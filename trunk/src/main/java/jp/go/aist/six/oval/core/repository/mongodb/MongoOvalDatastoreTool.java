@@ -9,6 +9,7 @@ import java.util.Arrays;
 import jp.go.aist.six.oval.OvalException;
 import jp.go.aist.six.oval.core.OvalContext;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElementAssoc;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.StateType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
@@ -172,6 +173,9 @@ public class MongoOvalDatastoreTool
     public static void deleteAllData()
     {
         MongoOvalDatastore  ds = _getDatastore();
+
+        _LOG_.debug( "delete DefinitonsElementAssoc..." );
+        ds.delete( DefinitionsElementAssoc.class );
 
         _LOG_.debug( "delete OvalDefinitons..." );
         ds.delete( OvalDefinitions.class );
