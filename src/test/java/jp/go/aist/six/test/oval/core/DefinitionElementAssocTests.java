@@ -3,9 +3,11 @@ package jp.go.aist.six.test.oval.core;
 import java.io.File;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElementAssoc;
 import jp.go.aist.six.oval.model.definitions.DefinitionsType;
-import jp.go.aist.six.oval.model.definitions.ElementReferencingMap;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.TestType;
+import jp.go.aist.six.oval.model.definitions.TestsType;
 import jp.go.aist.six.util.persist.Persistable;
 import org.testng.Reporter;
 
@@ -77,7 +79,15 @@ public class DefinitionElementAssocTests
             DefinitionsType  defs =  OvalDefinitions.class.cast( object ).getDefinitions();
             if (defs != null) {
                 for (DefinitionType  def : defs.getDefinition()) {
-                    ElementReferencingMap  assoc = new ElementReferencingMap( def );
+                    DefinitionsElementAssoc  assoc = new DefinitionsElementAssoc( def );
+                    Reporter.log( "  @ assoc= " + assoc, true );
+                }
+            }
+
+            TestsType  tsts =  OvalDefinitions.class.cast( object ).getTests();
+            if (tsts != null) {
+                for (TestType  tst : tsts.getTest()) {
+                    DefinitionsElementAssoc  assoc = new DefinitionsElementAssoc( tst );
                     Reporter.log( "  @ assoc= " + assoc, true );
                 }
             }
