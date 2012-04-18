@@ -36,8 +36,8 @@ import com.google.code.morphia.annotations.Entity;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-@Entity( "oval.def.element_references" )
-public class ElementReferencingMap
+@Entity( "oval.def.element_assoc" )
+public class DefinitionsElementAssoc
 implements Persistable<String>
 {
     public static final class Ref
@@ -130,14 +130,14 @@ implements Persistable<String>
     /**
      * Constructor.
      */
-    public ElementReferencingMap()
+    public DefinitionsElementAssoc()
     {
     }
 
 
     /**
      */
-    public ElementReferencingMap(
+    public DefinitionsElementAssoc(
                     final DefinitionType def
                     )
     {
@@ -148,7 +148,7 @@ implements Persistable<String>
     }
 
 
-    public ElementReferencingMap(
+    public DefinitionsElementAssoc(
                     final TestType tst
                     )
     {
@@ -216,9 +216,8 @@ implements Persistable<String>
 
         if (references != refs) {
             references.clear();
+            references.addAll( refs );
         }
-
-        references.addAll( refs );
     }
 
 
@@ -291,15 +290,15 @@ implements Persistable<String>
 
 
     /**
-     * test/object
+     * test/state
      */
     private void _build(
                     final Set<Ref> refs,
-                    final StateRefType object
+                    final StateRefType state
                     )
     {
-        if (object != null) {
-            String  oval_id = object.getStateRef();
+        if (state != null) {
+            String  oval_id = state.getStateRef();
             if (oval_id != null) {
                 refs.add( new Ref( DefinitionsElement.Type.STATE, oval_id ) );
             }

@@ -108,8 +108,8 @@
         <constructor-arg ref="database"/> 
     </bean> 
 
-    <bean id="elementAssocDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.ElementAssocDAO">
+    <bean id="definitionsElementAssocDAO" 
+        class="jp.go.aist.six.oval.core.repository.mongodb.definitionsElementAssocDAO">
         <constructor-arg ref="database"/> 
     </bean> 
 
@@ -153,7 +153,7 @@
                 <ref bean="ovalSystemCharacteristicsDAO"/>
                 <ref bean="ovalResultsDAO"/>
 
-                <ref bean="elementAssocDAO"/>
+                <ref bean="definitionsElementAssocDAO"/>
             </set>
         </property>
     </bean>
