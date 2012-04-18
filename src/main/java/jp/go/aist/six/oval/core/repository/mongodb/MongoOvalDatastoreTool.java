@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
 /**
  *
  * @author	Akihito Nakamura, AIST
- * @version $Id: MongoOvalDefinitionRepositoryTests.java 2252 2012-02-21 04:05:09Z nakamura5akihito@gmail.com $
+ * @version $Id$
  */
 public class MongoOvalDatastoreTool
 {

@@ -74,6 +74,28 @@ public abstract class DefinitionsElement
         }
 
 
+        public static Type fromOvalIdType(
+                        final OvalId.Type id_type
+                        )
+        {
+            for (Type  e : Type.values()) {
+                if (e.getOvalIdType() == id_type) {
+                    return e;
+                }
+            }
+
+            throw new IllegalArgumentException( String.valueOf( id_type ) );
+        }
+
+
+        public static Type fromOvalId(
+                        final String oval_id
+                        )
+        {
+            return fromOvalIdType( OvalId.typeOf( oval_id ) );
+        }
+
+
         private String  value;
         private OvalId.Type  id_type = null;
 

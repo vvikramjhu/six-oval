@@ -20,8 +20,12 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.Set;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.PrePersist;
 import com.google.code.morphia.annotations.Property;
 
 
@@ -62,6 +66,15 @@ public class DefinitionType
 //    private String  _lastModifiedDate;
 //    private final Collection<Cve>  _relatedCve = new ArrayList<Cve>();
 
+//    private static <K,V> HashMap<K,V> _createHashMap()
+//    {
+//        return new HashMap<K,V>();
+//    }
+//
+//    private final Map<DefinitionsElement.Type,Set<String>>  _referencing_elements = _createHashMap();
+
+    private final Map<DefinitionsElement.Type,Set<String>>  _referencing_elements =
+                    new EnumMap<DefinitionsElement.Type,Set<String>>( DefinitionsElement.Type.class );
 
 
     /**
@@ -280,6 +293,30 @@ public class DefinitionType
 //
 //        return _relatedCve;
 //    }
+
+
+
+    //**************************************************************
+    //  MongoDB/Morphia Lifecycle
+    //**************************************************************
+
+    @PrePersist
+    protected void _computeReferencingElements()
+    {
+        for (DefinitionsElement.Type  type : DefinitionsElement.Type.values()) {
+            Set<String>  set = _referencing_elements.get( type );
+            if (set != null) {
+                set.clear();
+            }
+        }
+
+        CriteriaType  criteria = getCriteria();
+        if (criteria == null) {
+            return;
+        }
+
+        //TODO: collect test and definition references!!!
+    }
 
 
 
