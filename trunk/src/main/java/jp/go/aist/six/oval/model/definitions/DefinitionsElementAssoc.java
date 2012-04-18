@@ -27,6 +27,7 @@ import java.util.Iterator;
 import java.util.Set;
 import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Id;
 
 
 
@@ -122,8 +123,10 @@ implements Persistable<String>
     //
 
 
-    private DefinitionsElement.Type  type;
+    @Id
     private String  oval_id;
+
+    private DefinitionsElement.Type  type;
     private final Set<Ref>  references = new HashSet<Ref>();
 
 

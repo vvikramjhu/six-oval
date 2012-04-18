@@ -1,7 +1,10 @@
 package jp.go.aist.six.oval.core.repository.mongodb;
 
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
+import jp.go.aist.six.oval.model.definitions.DefinitionsElementAssoc;
 import com.google.code.morphia.Datastore;
+import com.google.code.morphia.Key;
+import com.google.code.morphia.dao.DAO;
 
 
 
@@ -10,7 +13,7 @@ import com.google.code.morphia.Datastore;
  * @version $Id$
  */
 public class DefinitionDAO
-    extends OvalEntityDAO<DefinitionType>
+    extends DefinitionsElementDAO<DefinitionType>
 //extends BasicDAO<DefinitionType, String>
 {
 
@@ -23,6 +26,24 @@ public class DefinitionDAO
         super( DefinitionType.class, ds );
     }
 
+
+
+    //**************************************************************
+    //  DAO
+    //**************************************************************
+
+    @Override
+    public Key<DefinitionType> save(
+                    final DefinitionType def
+                    )
+    {
+        DAO<DefinitionsElementAssoc, String>  assoc_dao = _getForwardingDAO( DefinitionsElementAssoc.class );
+        DefinitionsElementAssoc  assoc = new DefinitionsElementAssoc( def );
+        assoc_dao.save( assoc );
+
+        return super.save( def );
+    }
+
 }
-// DefinitionDAO
+//DefinitionDAO
 

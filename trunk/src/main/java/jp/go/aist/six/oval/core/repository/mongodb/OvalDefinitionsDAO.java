@@ -3,7 +3,6 @@ package jp.go.aist.six.oval.core.repository.mongodb;
 import jp.go.aist.six.oval.model.common.GeneratorType;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsType;
-import jp.go.aist.six.oval.model.definitions.DefinitionsElementAssoc;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.definitions.StateType;
 import jp.go.aist.six.oval.model.definitions.StatesType;
@@ -125,14 +124,9 @@ public class OvalDefinitionsDAO
         DefinitionsType  definitions = oval_definitions.getDefinitions();
         if (definitions != null) {
             DAO<DefinitionType, String>  dao = _getForwardingDAO( DefinitionType.class );
-            DAO<DefinitionsElementAssoc, String>  assoc_dao = _getForwardingDAO( DefinitionsElementAssoc.class );
             for (DefinitionType  definition : definitions.getDefinition()) {
                 definition.generator( oval_definitions.getGenerator() );
                 dao.save( definition );
-
-                //TODO: Move this to DefinitionDAO!!!
-                DefinitionsElementAssoc  assoc = new DefinitionsElementAssoc( definition );
-                assoc_dao.save( assoc );
             }
         }
 
