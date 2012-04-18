@@ -69,5 +69,5 @@ public abstract class BaseDAO<T, K>
     }
 
 }
-// OvalDefinitionsDAO
+//
 

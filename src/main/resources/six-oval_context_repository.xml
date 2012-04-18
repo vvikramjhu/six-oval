@@ -109,7 +109,7 @@
     </bean> 
 
     <bean id="definitionsElementAssocDAO" 
-        class="jp.go.aist.six.oval.core.repository.mongodb.definitionsElementAssocDAO">
+        class="jp.go.aist.six.oval.core.repository.mongodb.DefinitionsElementAssocDAO">
         <constructor-arg ref="database"/> 
     </bean> 
 
