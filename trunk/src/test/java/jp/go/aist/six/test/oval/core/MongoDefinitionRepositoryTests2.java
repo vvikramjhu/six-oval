@@ -102,7 +102,7 @@ extends MongoTests
                                     "operation:repository.findById"
                                     },
                     dependsOnGroups={ "operation:repository.find" },
-                    dataProvider="oval.test_content.def.definition",
+                    dataProvider="oval.model.def.definition",
                     alwaysRun=true
                     )
     public void testFindDefinitionById(

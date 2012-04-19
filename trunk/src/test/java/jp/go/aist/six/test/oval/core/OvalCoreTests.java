@@ -273,6 +273,7 @@ public abstract class OvalCoreTests
     /**
      * OVAL Definitions documents contained in the OVAL Test Content.
      *
+     *  OvalContentCategory  category,  //TODO: Add this!
      *  Class<T>    object_type,
      *  String      schema_version,
      *  Family      family,
@@ -280,30 +281,51 @@ public abstract class OvalCoreTests
      *  String      filename
      *  T           expected_object
      */
-    @DataProvider( name="oval.test_content.def" )
+    @DataProvider( name="oval.model.def.oval_definitions" )
     public Object[][] provideOvalTestContentDef()
     {
         return new Object[][] {
-                        /* Windows */
+                        // Windows //
                         {
+                            OvalContentCategory.OVAL_TEST_CONTENT,
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "5.10",
+                            "5.9",
                             Family.WINDOWS,
-                            "test/resources/OvalTestContent/5.10/windows",
+                            "test/resources/oval_test-content/oval-5.9/def/windows",
                             null,
                             null
                         }
                         ,
-
-                        /* linux */
+                        // linux //
                         {
+                            OvalContentCategory.OVAL_TEST_CONTENT,
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "5.10",
+                            "5.9",
                             Family.LINUX,
-                            "test/resources/OvalTestContent/5.10/linux",
+                            "test/resources/oval_test-content/oval-5.9/def/linux",
                             null,
                             null
                         }
+//                        /* Windows */
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "5.10",
+//                            Family.WINDOWS,
+//                            "test/resources/OvalTestContent/5.10/windows",
+//                            null,
+//                            null
+//                        }
+//                        ,
+//
+//                        /* linux */
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            "5.10",
+//                            Family.LINUX,
+//                            "test/resources/OvalTestContent/5.10/linux",
+//                            null,
+//                            null
+//                        }
         };
 
     }
@@ -317,10 +339,11 @@ public abstract class OvalCoreTests
      *  String                  schema_version,
      *  DefinitionsElement.Type type,
      *  ClassEnumeration        definition_class,
+     *  Family                  family,                 //TODO: Add this parameter!!!
      *  String                  oval_id,
      *  T                       expected_object
      */
-    @DataProvider( name="oval.test_content.def.definition" )
+    @DataProvider( name="oval.model.def.definition" )
     public Object[][] provideOvalTestContentDefDefinition()
     {
         return new Object[][] {
@@ -361,7 +384,7 @@ public abstract class OvalCoreTests
      *  String                  oval_id,
      *  T                       expected_object
      */
-    @DataProvider( name="oval.test_content.def.element" )
+    @DataProvider( name="oval.model.def.element" )
     public Object[][] provideOvalTestContentDefElement()
     {
         return new Object[][] {
@@ -401,7 +424,7 @@ public abstract class OvalCoreTests
      *  String      filename
      *  T           expected_object
      */
-    @DataProvider( name="oval.test_content.sc" )
+    @DataProvider( name="oval.model.sc.oval_system_characteristics" )
     public Object[][] provideOvalTestContentSc()
     {
         return new Object[][] {
@@ -425,7 +448,7 @@ public abstract class OvalCoreTests
      *  String      filename
      *  T           expected_object
      */
-    @DataProvider( name="oval.test_content.res" )
+    @DataProvider( name="oval.model.res.oval_results" )
     public Object[][] provideOvalTestContentRes()
     {
         return new Object[][] {
