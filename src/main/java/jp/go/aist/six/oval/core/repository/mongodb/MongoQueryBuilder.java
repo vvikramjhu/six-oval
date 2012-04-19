@@ -324,6 +324,43 @@ implements QueryBuilder
 
 
 
+    protected static class HasAnyOfHandler
+    extends Handler
+    {
+        public static final HasAnyOfHandler  INSTANCE = new HasAnyOfHandler();
+
+        public static final String  VALUE_DELIMITER = ",";
+
+
+        public HasAnyOfHandler()
+        {
+        }
+
+
+        @Override
+        public void build(
+                        final Query<?> query,
+                        final String field,
+                        final String value
+                        )
+        {
+            if (value == null  ||  value.length() == 0) {
+                return;
+            }
+
+            String[]  elements = value.split( VALUE_DELIMITER );
+            if (elements.length > 1) {
+                query.filter( field + " in", elements );
+            } else {
+                query.filter( field, value );
+            }
+        }
+
+    }
+    //HasAnyOf
+
+
+
     /**
      * A query param handler for result ordering.
      */
@@ -468,7 +505,6 @@ implements QueryBuilder
         }
     }
     // DatetimeHandler
-
 
 
     //==============================================================
@@ -664,7 +700,8 @@ implements QueryBuilder
 
 
             Map<String, Handler>  mapping = BasicBuilder._createHandlers();
-            mapping.put( DefinitionsElementQueryParams.Key.ID,          FilterHandler.INSTANCE );
+            mapping.put( DefinitionsElementQueryParams.Key.ID,          HasAnyOfHandler.INSTANCE );
+//            mapping.put( DefinitionsElementQueryParams.Key.ID,          FilterHandler.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.VERSION,     version_handler );
             mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,      FilterHandler.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      family_handler );

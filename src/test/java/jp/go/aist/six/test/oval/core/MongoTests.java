@@ -172,6 +172,14 @@ public abstract class MongoTests
         DefinitionsElementQueryParams  params11 = new DefinitionsElementQueryParams();
         params11.setVersion( "7" );
 
+        // element: id
+        DefinitionsElementQueryParams  params12 = new DefinitionsElementQueryParams();
+        params12.setId( "oval:org.mitre.oval.test:def:889" );
+
+        // element: id
+        DefinitionsElementQueryParams  params13 = new DefinitionsElementQueryParams();
+        params13.setId( "oval:org.mitre.oval.test:def:889,oval:org.mitre.oval.test:def:121,oval:org.mitre.oval.test:def:140" );
+
         // definition: definitionClass
         DefinitionQueryParams  params21 = new DefinitionQueryParams();
         params21.setDefinitionClass( "compliance" );
@@ -217,6 +225,20 @@ public abstract class MongoTests
                             "5.10",
                             DefinitionsElement.Type.DEFINITION,
                             params11
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "5.10",
+                            DefinitionsElement.Type.DEFINITION,
+                            params12
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "5.10",
+                            DefinitionsElement.Type.DEFINITION,
+                            params13
                         }
                         ,
                         {
