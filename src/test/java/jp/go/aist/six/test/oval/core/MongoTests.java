@@ -180,6 +180,10 @@ public abstract class MongoTests
         DefinitionsElementQueryParams  params13 = new DefinitionsElementQueryParams();
         params13.setId( "oval:org.mitre.oval.test:def:889,oval:org.mitre.oval.test:def:121,oval:org.mitre.oval.test:def:140" );
 
+        // element: id
+        DefinitionsElementQueryParams  params14 = new DefinitionsElementQueryParams();
+        params14.setId( "oval:org.mitre.oval.test:def:1000" );
+
         // definition: definitionClass
         DefinitionQueryParams  params21 = new DefinitionQueryParams();
         params21.setDefinitionClass( "compliance" );
@@ -245,6 +249,13 @@ public abstract class MongoTests
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
                             "5.10",
                             DefinitionsElement.Type.DEFINITION,
+                            params14
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            "5.10",
+                            DefinitionsElement.Type.DEFINITION,
                             params21
                         }
         };
@@ -264,11 +275,12 @@ public abstract class MongoTests
                                     "oval:oval.def",
                                     "operation:datastore.save"
                                     },
-                    dataProvider="oval.test_content.def",
+                    dataProvider="oval.model.def.oval_definitions",
                     alwaysRun=true
                     )
     public <K, T extends Persistable<K>>
     void testSaveDef(
+                    final OvalContentCategory category,
                     final Class<T>  object_type,
                     final String    schema_version,
                     final Family    family,
@@ -293,7 +305,7 @@ public abstract class MongoTests
                                     "oval:oval.sc",
                                     "operation:datastore.save"
                                     },
-                    dataProvider="oval.test_content.sc",
+                    dataProvider="oval.model.sc.oval_system_characteristics",
                     dependsOnMethods={ "testSaveDef" },
                     alwaysRun=true
                     )
@@ -323,7 +335,7 @@ public abstract class MongoTests
                                     "oval:oval.res",
                                     "operation:datastore.save"
                                     },
-                    dataProvider="oval.test_content.res",
+                    dataProvider="oval.model.res.oval_results",
                     dependsOnMethods={ "testSaveSc" },
                     alwaysRun=true
                     )
