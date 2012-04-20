@@ -793,8 +793,10 @@ implements QueryBuilder
             Map<String, Handler>  mapping = DefinitionsElementBuilder._createHandlers();
             //merge the super class's handler mapping
             mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    class_handler );
-            mapping.put( DefinitionQueryParams.Key.PLATFORM,            FilterHandler.INSTANCE );
-            mapping.put( DefinitionQueryParams.Key.PRODUCT,             FilterHandler.INSTANCE );
+            mapping.put( DefinitionQueryParams.Key.PLATFORM,            HasAnyOfHandler.INSTANCE );
+            mapping.put( DefinitionQueryParams.Key.PRODUCT,             HasAnyOfHandler.INSTANCE );
+//          mapping.put( DefinitionQueryParams.Key.PLATFORM,            FilterHandler.INSTANCE );
+//          mapping.put( DefinitionQueryParams.Key.PRODUCT,             FilterHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.REF_SOURCE,          FilterHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.REF_ID,              FilterHandler.INSTANCE );
 
