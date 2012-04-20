@@ -2,6 +2,7 @@ package jp.go.aist.six.test.oval.core;
 
 import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository;
+import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
@@ -63,11 +64,11 @@ extends MongoTests
     @org.testng.annotations.Test(
                     groups={
                                     "java:oval.core.repository.mongodb",
-                                    "oval:oval.def",
-                                    "operation:repository.find",
-                                    "operation:repository.count"
+                                    "model:oval.def",
+                                    "control:repository.find",
+                                    "control:repository.count"
                                     },
-                    dependsOnGroups={ "operation:datastore.save" },
+                    dependsOnGroups={ "control:datastore.save" },
                     alwaysRun=true
                     )
     public void testFindAndCountDefinition()
@@ -98,18 +99,20 @@ extends MongoTests
     @org.testng.annotations.Test(
                     groups={
                                     "java:oval.core.repository.mongodb",
-                                    "oval:oval.def",
-                                    "operation:repository.findById"
+                                    "model:oval.def",
+                                    "control:repository.findById"
                                     },
-                    dependsOnGroups={ "operation:repository.find" },
-                    dataProvider="oval.model.def.definition",
+                    dependsOnGroups={ "control:repository.find" },
+                    dataProvider="model:oval.def.definition",
                     alwaysRun=true
                     )
     public void testFindDefinitionById(
-                    final Class<DefinitionType>     object_type,
+                    final OvalContentCategory       category,
                     final String                    schema_version,
+                    final Class<DefinitionType>     object_type,
                     final DefinitionsElement.Type   type,
                     final ClassEnumeration          definition_class,
+                    final Family                    family,
                     final String                    oval_id,
                     final DefinitionType            expected_object
                     )
@@ -134,11 +137,11 @@ extends MongoTests
     @org.testng.annotations.Test(
                     groups={
                                     "java:oval.core.repository.mongodb",
-                                    "oval:oval.def",
-                                    "operation:repository.query"
+                                    "model:oval.def",
+                                    "control:repository.query"
                                     },
-                    dependsOnGroups={ "operation:repository.findById" },
-                    dataProvider="oval.repository.query_params.def",
+                    dependsOnGroups={ "control:repository.findById" },
+                    dataProvider="data:oval.repository.query_params.def",
                     alwaysRun=true
                     )
     public void testFindDefinition(

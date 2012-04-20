@@ -24,6 +24,8 @@ import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectsType;
 import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.definitions.TestsType;
+import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.util.persist.Persistable;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.testng.Assert;
@@ -266,30 +268,27 @@ public abstract class OvalCoreTests
     //  test data
     ////////////////////////////////////////////////////////////////
 
-    //**************************************************************
-    //  OVAL Test Content
-    //**************************************************************
-
     /**
-     * OVAL Definitions documents contained in the OVAL Test Content.
+     * OVAL Definitions documents.
      *
-     *  OvalContentCategory  category,  //TODO: Add this!
-     *  Class<T>    object_type,
-     *  String      schema_version,
-     *  Family      family,
-     *  String      dirpath,
-     *  String      filename
-     *  T           expected_object
+     * Test method params:
+     *   OvalContentCategory    category,
+     *   String                 schema_version,
+     *   Class<T>               object_type,
+     *   Family                 family,
+     *   String                 dirpath,
+     *   String                 filename
+     *   T                      expected_object
      */
-    @DataProvider( name="oval.model.def.oval_definitions" )
-    public Object[][] provideOvalTestContentDef()
+    @DataProvider( name="model:oval.def.oval_definitions" )
+    public Object[][] provideModelOvalDefOvalDefinitions()
     {
         return new Object[][] {
                         // Windows //
                         {
                             OvalContentCategory.OVAL_TEST_CONTENT,
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
                             "5.9",
+                            OvalDefinitions.class,
                             Family.WINDOWS,
                             "test/resources/oval_test-content/oval-5.9/def/windows",
                             null,
@@ -299,33 +298,13 @@ public abstract class OvalCoreTests
                         // linux //
                         {
                             OvalContentCategory.OVAL_TEST_CONTENT,
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
                             "5.9",
+                            OvalDefinitions.class,
                             Family.LINUX,
                             "test/resources/oval_test-content/oval-5.9/def/linux",
                             null,
                             null
                         }
-//                        /* Windows */
-//                        {
-//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-//                            "5.10",
-//                            Family.WINDOWS,
-//                            "test/resources/OvalTestContent/5.10/windows",
-//                            null,
-//                            null
-//                        }
-//                        ,
-//
-//                        /* linux */
-//                        {
-//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-//                            "5.10",
-//                            Family.LINUX,
-//                            "test/resources/OvalTestContent/5.10/linux",
-//                            null,
-//                            null
-//                        }
         };
 
     }
@@ -333,26 +312,29 @@ public abstract class OvalCoreTests
 
 
     /**
-     * Definitions contained in the OVAL Test Content.
+     * Definition.
      *
-     *  Class<T>                object_type,
-     *  String                  schema_version,
-     *  DefinitionsElement.Type type,
-     *  ClassEnumeration        definition_class,
-     *  Family                  family,                 //TODO: Add this parameter!!!
-     *  String                  oval_id,
-     *  T                       expected_object
+     *   OvalContentCategory        category,
+     *   String                     schema_version,
+     *   Class<T>                   object_type,
+     *   DefinitionsElement.Type    type,
+     *   ClassEnumeration           definition_class,
+     *   Family                     family,
+     *   String                     oval_id,
+     *   T                          expected_object
      */
-    @DataProvider( name="oval.model.def.definition" )
-    public Object[][] provideOvalTestContentDefDefinition()
+    @DataProvider( name="model:oval.def.definition" )
+    public Object[][] provideModelOvalDefDefinition()
     {
         return new Object[][] {
                         /* Windows */
                         {
-                            jp.go.aist.six.oval.model.definitions.DefinitionType.class,
+                            OvalContentCategory.OVAL_TEST_CONTENT,
                             "5.10",
+                            DefinitionType.class,
                             DefinitionsElement.Type.DEFINITION,
                             ClassEnumeration.MISCELLANEOUS,
+                            null,
                             "oval:org.mitre.oval.test:def:140",
                             null
                         }
@@ -360,10 +342,12 @@ public abstract class OvalCoreTests
 
                         /* linux */
                         {
-                            jp.go.aist.six.oval.model.definitions.DefinitionType.class,
+                            OvalContentCategory.OVAL_TEST_CONTENT,
                             "5.10",
+                            DefinitionType.class,
                             DefinitionsElement.Type.DEFINITION,
                             ClassEnumeration.MISCELLANEOUS,
+                            null,
                             "oval:org.mitre.oval.test:def:683",
                             null
                         }
@@ -374,24 +358,26 @@ public abstract class OvalCoreTests
 
 
     /**
-     * Definition elements contained in the OVAL Test Content.
+     * Definition.
      *
-     *  Class<T>                object_type,
-     *  String                  schema_version,
-     *  DefinitionsElement.Type type,
-     *  Family                  family,
-     *  Component               component,
-     *  String                  oval_id,
-     *  T                       expected_object
+     *   OvalContentCategory        category,
+     *   String                     schema_version,
+     *   Class<T>                   object_type,
+     *   DefinitionsElement.Type    type,
+     *   Family                     family,
+     *   Component                  component,
+     *   String                     oval_id,
+     *   T                          expected_object
      */
-    @DataProvider( name="oval.model.def.element" )
-    public Object[][] provideOvalTestContentDefElement()
+    @DataProvider( name="model:oval.def.element" )
+    public Object[][] provideModelOvalDefElement()
     {
         return new Object[][] {
                         /* Windows */
                         {
-                            jp.go.aist.six.oval.model.definitions.TestType.class,
-                            "5.10",
+                            OvalContentCategory.OVAL_TEST_CONTENT,
+                            "5.9",
+                            TestType.class,
                             DefinitionsElement.Type.TEST,
                             Family.WINDOWS,
                             Component.FILE,
@@ -402,8 +388,9 @@ public abstract class OvalCoreTests
 
                         /* linux */
                         {
-                            jp.go.aist.six.oval.model.definitions.TestType.class,
-                            "5.10",
+                            OvalContentCategory.OVAL_TEST_CONTENT,
+                            "5.9",
+                            TestType.class,
                             DefinitionsElement.Type.TEST,
                             Family.LINUX,
                             Component.DPKGINFO,
@@ -417,58 +404,60 @@ public abstract class OvalCoreTests
 
 
     /**
-     *  Class<T>    object_type,
-     *  String      schema_version,
-     *  Family      family,
-     *  String      dirpath,
-     *  String      filename
-     *  T           expected_object
+     * OVAL System Characteristics documents.
+     *
+     * Test method params:
+     *   OvalContentCategory    category,
+     *   String                 schema_version,
+     *   Class<T>               object_type,
+     *   Family                 family,
+     *   String                 dirpath,
+     *   String                 filename
+     *   T                      expected_object
      */
-    @DataProvider( name="oval.model.sc.oval_system_characteristics" )
-    public Object[][] provideOvalTestContentSc()
+    @DataProvider( name="model:oval.sc.oval_system_characteristics" )
+    public Object[][] provideModelOvalScOvalSystemCharacteristics()
     {
         return new Object[][] {
+                        // Windows //
                         {
-                            jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
-                            "5.10",
+                            OvalContentCategory.MITRE_REPOSITORY,
+                            "5.10.1",
+                            OvalSystemCharacteristics.class,
                             Family.WINDOWS,
-                            "test/resources/OvalTestContent/5.10/win-sc",
+                            "test/resources/mitre_repository/oval-5.10/sc/windows",
                             null,
                             null
                         }
         };
+
     }
+
 
 
     /**
-     *  Class<T>    object_type,
-     *  String      schema_version,
-     *  Family      family,
-     *  String      dirpath,
-     *  String      filename
-     *  T           expected_object
+     * OVAL Results documents.
+     *
+     * Test method params:
+     *   OvalContentCategory    category,
+     *   String                 schema_version,
+     *   Class<T>               object_type,
+     *   Family                 family,
+     *   String                 dirpath,
+     *   String                 filename
+     *   T                      expected_object
      */
-    @DataProvider( name="oval.model.res.oval_results" )
-    public Object[][] provideOvalTestContentRes()
+    @DataProvider( name="model:oval.res.oval_results" )
+    public Object[][] provideModelOvalResOvalResults()
     {
         return new Object[][] {
-                        /* Windows */
+                        // Windows //
                         {
-                            jp.go.aist.six.oval.model.results.OvalResults.class,
-                            "5.10",
+                            OvalContentCategory.MITRE_REPOSITORY,
+                            "5.10.1",
+                            OvalResults.class,
                             Family.WINDOWS,
-                            "test/resources/OvalTestContent/5.10/win-res",
-                            null,
-                            null
-                        }
-                        ,
-
-                        /* Linux */
-                        {
-                            jp.go.aist.six.oval.model.results.OvalResults.class,
-                            "5.9",
-                            Family.LINUX,
-                            "test/resources/OvalTestContent/5.10/linux-res",
+                            "test/resources/mitre_repository/oval-5.10/res/windows",
                             null,
                             null
                         }
@@ -476,6 +465,5 @@ public abstract class OvalCoreTests
 
     }
 
-
 }
-//OvalCoreTests
+//
