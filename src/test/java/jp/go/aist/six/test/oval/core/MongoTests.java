@@ -139,7 +139,7 @@ public abstract class MongoTests
      *  DefinitionsElement.Type   type,
      *  QueryParams               params
      */
-    @DataProvider( name="oval.repository.query_params.def" )
+    @DataProvider( name="data:oval.repository.query_params.def" )
     public Object[][] provideQueryParamsDef()
     {
         // common: order, count
@@ -272,17 +272,17 @@ public abstract class MongoTests
     @org.testng.annotations.Test(
                     groups={
                                     "java:oval.core.repository.mongodb",
-                                    "oval:oval.def",
-                                    "operation:datastore.save"
+                                    "model:oval.def",
+                                    "control:datastore.save"
                                     },
-                    dataProvider="oval.model.def.oval_definitions",
+                    dataProvider="model:oval.def.oval_definitions",
                     alwaysRun=true
                     )
     public <K, T extends Persistable<K>>
-    void testSaveDef(
+    void testSaveOvalDefOvalDefinitions(
                     final OvalContentCategory category,
-                    final Class<T>  object_type,
                     final String    schema_version,
+                    final Class<T>  object_type,
                     final Family    family,
                     final String    dirpath,
                     final String    xml_filepath,
@@ -302,17 +302,17 @@ public abstract class MongoTests
     @org.testng.annotations.Test(
                     groups={
                                     "java:oval.core.repository.mongodb",
-                                    "oval:oval.sc",
-                                    "operation:datastore.save"
+                                    "model:oval.sc",
+                                    "control:datastore.save"
                                     },
-                    dataProvider="oval.model.sc.oval_system_characteristics",
-                    dependsOnMethods={ "testSaveDef" },
+                    dataProvider="model:oval.sc.oval_system_characteristics",
                     alwaysRun=true
                     )
     public <K, T extends Persistable<K>>
-    void testSaveSc(
-                    final Class<T>  object_type,
+    void testSaveOvalScOvalSystemCharacteristics(
+                    final OvalContentCategory category,
                     final String    schema_version,
+                    final Class<T>  object_type,
                     final Family    family,
                     final String    dirpath,
                     final String    xml_filepath,
@@ -332,17 +332,17 @@ public abstract class MongoTests
     @org.testng.annotations.Test(
                     groups={
                                     "java:oval.core.repository.mongodb",
-                                    "oval:oval.res",
-                                    "operation:datastore.save"
+                                    "model:oval.res",
+                                    "control:datastore.save"
                                     },
-                    dataProvider="oval.model.res.oval_results",
-                    dependsOnMethods={ "testSaveSc" },
+                    dataProvider="model:oval.res.oval_results",
                     alwaysRun=true
                     )
     public <K, T extends Persistable<K>>
-    void testSaveRes(
-                    final Class<T>  object_type,
+    void testSaveOvalResOvalResults(
+                    final OvalContentCategory category,
                     final String    schema_version,
+                    final Class<T>  object_type,
                     final Family    family,
                     final String    dirpath,
                     final String    xml_filepath,
