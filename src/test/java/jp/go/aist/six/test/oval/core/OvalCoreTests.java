@@ -280,8 +280,8 @@ public abstract class OvalCoreTests
      *   String                 filename
      *   T                      expected_object
      */
-    @DataProvider( name="model:oval.def.oval_definitions" )
-    public Object[][] provideModelOvalDefOvalDefinitions()
+    @DataProvider( name="data:oval.def.oval_definitions" )
+    public Object[][] provideOvalDefOvalDefinitions()
     {
         return new Object[][] {
                         // Windows //
@@ -323,8 +323,8 @@ public abstract class OvalCoreTests
      *   String                     oval_id,
      *   T                          expected_object
      */
-    @DataProvider( name="model:oval.def.definition" )
-    public Object[][] provideModelOvalDefDefinition()
+    @DataProvider( name="data:oval.def.definition" )
+    public Object[][] provideOvalDefDefinition()
     {
         return new Object[][] {
                         /* Windows */
@@ -369,8 +369,8 @@ public abstract class OvalCoreTests
      *   String                     oval_id,
      *   T                          expected_object
      */
-    @DataProvider( name="model:oval.def.element" )
-    public Object[][] provideModelOvalDefElement()
+    @DataProvider( name="data:oval.def.element" )
+    public Object[][] provideOvalDefElement()
     {
         return new Object[][] {
                         /* Windows */
@@ -415,8 +415,8 @@ public abstract class OvalCoreTests
      *   String                 filename
      *   T                      expected_object
      */
-    @DataProvider( name="model:oval.sc.oval_system_characteristics" )
-    public Object[][] provideModelOvalScOvalSystemCharacteristics()
+    @DataProvider( name="data:oval.sc.oval_system_characteristics" )
+    public Object[][] provideOvalScOvalSystemCharacteristics()
     {
         return new Object[][] {
                         // Windows //
@@ -447,8 +447,8 @@ public abstract class OvalCoreTests
      *   String                 filename
      *   T                      expected_object
      */
-    @DataProvider( name="model:oval.res.oval_results" )
-    public Object[][] provideModelOvalResOvalResults()
+    @DataProvider( name="data:oval.res.oval_results" )
+    public Object[][] provideOvalResOvalResults()
     {
         return new Object[][] {
                         // Windows //
@@ -458,6 +458,17 @@ public abstract class OvalCoreTests
                             OvalResults.class,
                             Family.WINDOWS,
                             "test/resources/mitre_repository/oval-5.10/res/windows",
+                            null,
+                            null
+                        }
+                        ,
+                        // linux //
+                        {
+                            OvalContentCategory.MITRE_REPOSITORY,
+                            "5.9",
+                            OvalResults.class,
+                            Family.LINUX,
+                            "test/resources/mitre_repository/oval-5.9/res/linux",
                             null,
                             null
                         }

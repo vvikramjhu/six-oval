@@ -135,12 +135,11 @@ public abstract class MongoTests
      * OVAL Definitions documents contained in the OVAL Test Content.
      *
      *  Class<DefinitionType>     object_type,
-     *  String                    schema_version,
      *  DefinitionsElement.Type   type,
      *  QueryParams               params
      */
-    @DataProvider( name="data:oval.repository.query_params.def" )
-    public Object[][] provideQueryParamsDef()
+    @DataProvider( name="data:oval.repository.query_params.def.definition" )
+    public Object[][] provideRepositoryQueryParamsOvalDefElement()
     {
         // common: order, count
         DefinitionQueryParams  params1 = new DefinitionQueryParams();
@@ -188,75 +187,95 @@ public abstract class MongoTests
         DefinitionQueryParams  params21 = new DefinitionQueryParams();
         params21.setDefinitionClass( "compliance" );
 
+        // definition: family
+        DefinitionQueryParams  params22 = new DefinitionQueryParams();
+        params22.setFamily( "unix" );
+
+        // definition: platform
+        DefinitionQueryParams  params23 = new DefinitionQueryParams();
+        params23.setPlatform( "Microsoft Windows XP" );
+
+        // definition: product
+        DefinitionQueryParams  params24 = new DefinitionQueryParams();
+        params24.setProduct( "Mozilla Firefox,Mozilla Thunderbird" );
+
         return new Object[][] {
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "5.10",
                             DefinitionsElement.Type.DEFINITION,
                             params1
                         }
                         ,
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "5.10",
                             DefinitionsElement.Type.DEFINITION,
                             params2
                         }
                         ,
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "5.10",
                             DefinitionsElement.Type.DEFINITION,
                             params3
                         }
                         ,
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "5.10",
                             DefinitionsElement.Type.DEFINITION,
                             params4
                         }
                         ,
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "5.10",
                             DefinitionsElement.Type.DEFINITION,
                             params5
                         }
                         ,
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "5.10",
                             DefinitionsElement.Type.DEFINITION,
                             params11
                         }
                         ,
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "5.10",
                             DefinitionsElement.Type.DEFINITION,
                             params12
                         }
                         ,
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "5.10",
                             DefinitionsElement.Type.DEFINITION,
                             params13
                         }
                         ,
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "5.10",
                             DefinitionsElement.Type.DEFINITION,
                             params14
                         }
                         ,
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            "5.10",
                             DefinitionsElement.Type.DEFINITION,
                             params21
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            DefinitionsElement.Type.DEFINITION,
+                            params22
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            DefinitionsElement.Type.DEFINITION,
+                            params23
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            DefinitionsElement.Type.DEFINITION,
+                            params24
                         }
         };
     }
@@ -272,10 +291,10 @@ public abstract class MongoTests
     @org.testng.annotations.Test(
                     groups={
                                     "java:oval.core.repository.mongodb",
-                                    "model:oval.def",
+                                    "data:oval.def",
                                     "control:datastore.save"
                                     },
-                    dataProvider="model:oval.def.oval_definitions",
+                    dataProvider="data:oval.def.oval_definitions",
                     alwaysRun=true
                     )
     public <K, T extends Persistable<K>>
@@ -302,10 +321,10 @@ public abstract class MongoTests
     @org.testng.annotations.Test(
                     groups={
                                     "java:oval.core.repository.mongodb",
-                                    "model:oval.sc",
+                                    "data:oval.sc",
                                     "control:datastore.save"
                                     },
-                    dataProvider="model:oval.sc.oval_system_characteristics",
+                    dataProvider="data:oval.sc.oval_system_characteristics",
                     alwaysRun=true
                     )
     public <K, T extends Persistable<K>>
@@ -332,10 +351,10 @@ public abstract class MongoTests
     @org.testng.annotations.Test(
                     groups={
                                     "java:oval.core.repository.mongodb",
-                                    "model:oval.res",
+                                    "data:oval.res",
                                     "control:datastore.save"
                                     },
-                    dataProvider="model:oval.res.oval_results",
+                    dataProvider="data:oval.res.oval_results",
                     alwaysRun=true
                     )
     public <K, T extends Persistable<K>>

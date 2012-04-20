@@ -64,7 +64,7 @@ extends MongoTests
     @org.testng.annotations.Test(
                     groups={
                                     "java:oval.core.repository.mongodb",
-                                    "model:oval.def",
+                                    "data:oval.def",
                                     "control:repository.find",
                                     "control:repository.count"
                                     },
@@ -99,11 +99,11 @@ extends MongoTests
     @org.testng.annotations.Test(
                     groups={
                                     "java:oval.core.repository.mongodb",
-                                    "model:oval.def",
+                                    "data:oval.def",
                                     "control:repository.findById"
                                     },
                     dependsOnGroups={ "control:repository.find" },
-                    dataProvider="model:oval.def.definition",
+                    dataProvider="data:oval.def.definition",
                     alwaysRun=true
                     )
     public void testFindDefinitionById(
@@ -137,16 +137,15 @@ extends MongoTests
     @org.testng.annotations.Test(
                     groups={
                                     "java:oval.core.repository.mongodb",
-                                    "model:oval.def",
+                                    "data:oval.def",
                                     "control:repository.query"
                                     },
                     dependsOnGroups={ "control:repository.findById" },
-                    dataProvider="data:oval.repository.query_params.def",
+                    dataProvider="data:oval.repository.query_params.def.definition",
                     alwaysRun=true
                     )
     public void testFindDefinition(
                     final Class<DefinitionType>     object_type,
-                    final String                    schema_version,
                     final DefinitionsElement.Type   type,
                     final QueryParams               params
                     )
@@ -156,7 +155,6 @@ extends MongoTests
                         true );
         Reporter.log( ">>> findDefinition(params)...", true );
         Reporter.log( "* object type: "     + object_type, true );
-        Reporter.log( "* schema version: "  + schema_version, true );
         Reporter.log( "* type: "            + type, true );
         Reporter.log( "* params: "          + params, true );
 
