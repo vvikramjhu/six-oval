@@ -144,7 +144,7 @@ extends MongoTests
                     dataProvider="data:oval.repository.query_params.def.definition",
                     alwaysRun=true
                     )
-    public void testFindDefinition(
+    public void testFindAndCountDefinition(
                     final Class<DefinitionType>     object_type,
                     final DefinitionsElement.Type   type,
                     final QueryParams               params
@@ -155,7 +155,7 @@ extends MongoTests
                         true );
         Reporter.log( ">>> findDefinition(params)...", true );
         Reporter.log( "* object type: "     + object_type, true );
-        Reporter.log( "* type: "            + type, true );
+//        Reporter.log( "* type: "            + type, true );
         Reporter.log( "* params: "          + params, true );
 
         List<DefinitionType>  def_list = _getDefinitionRepository().findDefinition( params );
@@ -163,6 +163,13 @@ extends MongoTests
         Assert.assertNotNull( def_list );
         Reporter.log( "* #objects: " + def_list.size(), true );
         _printOvalIds( def_list );
+
+        Reporter.log( ">>> countDefinition(params)...", true );
+        long  count = _getDefinitionRepository().countDefinition( params );
+        Reporter.log( "<<< ...countDefinition(params)", true );
+        Reporter.log( "  @ #Definitions: " + count, true );
+
+        Assert.assertTrue( def_list.size() == count );
     }
 
 }
