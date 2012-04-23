@@ -63,6 +63,7 @@ public final class OvalId
     private Type  _type;
     private int  _idValue;
 
+    private String  _string_representation;
 
 
     /**
@@ -217,6 +218,8 @@ public final class OvalId
         _setNamespace( namespace );
         _setType( type );
         _setIdValue( id_value );
+
+        _string_representation = toString();
     }
 
 
@@ -315,7 +318,7 @@ public final class OvalId
     }
 
 
-    public boolean isSystemObject()
+    public boolean isObject()
     {
         return (Type.obj == _type);
     }
@@ -330,6 +333,13 @@ public final class OvalId
     public boolean isVariable()
     {
         return (Type.var == _type);
+    }
+
+
+
+    public String getValue()
+    {
+        return _string_representation;
     }
 
 

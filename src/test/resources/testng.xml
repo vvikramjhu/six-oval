@@ -77,7 +77,7 @@
     <!-- *  repository                                         * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.repository.mongodb" enabled="true">
+    <test name="oval.core.repository.mongodb" enabled="false">
                 <!--
         <groups>
             <run>
@@ -179,11 +179,12 @@
     <!-- *  XML                                                * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.xml" enabled="false">
+    <test name="oval.core.xml" enabled="true">
+                <!--
         <groups>
             <run>
                 <include name="xmlns:oval-def.*"/>
-                <!--
+
                 <include name="oval.test-content"/>
                 <include name="oval.results.oval_results"/>
                 <include name="oval.definitions.oval_definitions"/>
@@ -193,13 +194,14 @@
                 <include name="definitions.oval_definitions"/>
                 <include name="sc.oval_sc"/>
                 <include name="results.oval_results"/>
-                -->
             </run>
         </groups>
+                -->
 
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.xml.QueryResultsTests"/>
+            <class name="jp.go.aist.six.test.oval.core.OvalIdTests"/>
             <!--
+            <class name="jp.go.aist.six.test.oval.core.xml.QueryResultsTests"/>
             <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlMapperTests"/>
             <class name="jp.go.aist.six.test.oval.core.xml.OvalTestContentXmlTest"/>
             <class name="jp.go.aist.six.test.oval.core.xml.OvalXmlTest"/>

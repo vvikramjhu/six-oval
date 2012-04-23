@@ -14,21 +14,42 @@
 
 <mapping>
 
-<!--
-    <class name ="jp.go.aist.six.oval.model.OvalId">
-
-        <field name="value" type="string">
-            <bind-xml node="text"/>
-        </field>
-    </class>
--->
-
-
-
     <class name ="jp.go.aist.six.oval.model.OvalObject"
         verify-constructable="false">
 
     </class>
+
+
+
+    <class name ="jp.go.aist.six.oval.model.OvalId"
+        extends="jp.go.aist.six.oval.model.OvalObject"
+        verify-constructable="false">
+
+        <map-to xml="oval-id"
+            />
+
+        <field name="value" type="string"
+            get-method="getValue"
+            set-method="%1">
+            <bind-xml name="value" node="attribute"/>
+        </field>
+    </class>
+<!--
+-->
+
+
+    <class name="jp.go.aist.six.oval.model.OvalIdContainer">
+        <map-to  xml="oval-id-list"/>
+
+        <field name="ids" 
+            type="jp.go.aist.six.oval.model.OvalId"
+            collection="collection">
+            <bind-xml name="oval-id" node="element"/>
+        </field>
+    </class>
+
+
+
 
 
 
