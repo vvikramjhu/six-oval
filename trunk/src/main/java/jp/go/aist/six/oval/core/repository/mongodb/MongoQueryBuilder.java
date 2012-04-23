@@ -811,17 +811,16 @@ implements QueryBuilder
 
 
             Map<String, Handler>  mapping = DefinitionsElementBuilder._createHandlers();
-            //merge the super class's handler mapping
+            //common
+            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
+            //definitions element
             mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    class_handler );
             mapping.put( DefinitionQueryParams.Key.PLATFORM,            HasAnyOfHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.PRODUCT,             HasAnyOfHandler.INSTANCE );
-//          mapping.put( DefinitionQueryParams.Key.PLATFORM,            FilterHandler.INSTANCE );
-//          mapping.put( DefinitionQueryParams.Key.PRODUCT,             FilterHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.REF_SOURCE,          FilterHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.REF_ID,              FilterHandler.INSTANCE );
-
+            //definition: Overrides the "family" handler defined for DefinitionsElement params.
             mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      family_handler );
-            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
 
             return mapping;
         }
