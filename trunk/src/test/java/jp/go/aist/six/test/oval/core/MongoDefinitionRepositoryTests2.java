@@ -262,5 +262,47 @@ extends MongoTests
 
 
 
+    /**
+     * findElement(params), countElement(params)
+     */
+    @org.testng.annotations.Test(
+                    groups={
+                                    "java:oval.core.repository.mongodb",
+                                    "data:oval.def",
+                                    "control:repository.queryElement"
+                                    },
+                    dependsOnGroups={ "control:repository.findElementById" },
+                    dataProvider="data:oval.repository.query_params.def.element",
+                    alwaysRun=true
+                    )
+    public void testFindAndCountElement(
+                    final Class<? extends DefinitionsElement>   object_type,
+                    final DefinitionsElement.Type               type,
+                    final QueryParams                           params
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n//////////////////////////////////////////////////////////",
+                        true );
+        Reporter.log( ">>> findElement(params)...", true );
+        Reporter.log( "* object type: "     + object_type, true );
+        Reporter.log( "* type: "            + type, true );
+        Reporter.log( "* params: "          + params, true );
+
+        List<DefinitionsElement>  element_list = _getDefinitionRepository().findElement( params );
+        Reporter.log( "<<< ...findElementById(params)", true );
+        Assert.assertNotNull( element_list );
+        Reporter.log( "* #objects: " + element_list.size(), true );
+        _printOvalIds( element_list );
+
+        //TODO: the count() methods ignore startIndex/count params!!!
+//        Reporter.log( ">>> countElement(params)...", true );
+//        long  count = _getDefinitionRepository().countElement( params );
+//        Reporter.log( "<<< ...countElement(params)", true );
+//        Reporter.log( "  @ #elements: " + count, true );
+//
+//        Assert.assertTrue( element_list.size() == count );
+    }
+
 }
 //

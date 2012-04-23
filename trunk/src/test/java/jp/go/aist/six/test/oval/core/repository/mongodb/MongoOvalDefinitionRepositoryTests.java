@@ -288,7 +288,7 @@ extends TestBase
         Reporter.log( "\n//////////////////////////////////////////////////////////",
                         true );
 
-        List<DefinitionsElement>  list = _oval_def_repository.findEntity( params );
+        List<DefinitionsElement>  list = _oval_def_repository.findElement( params );
         Assert.assertNotNull( list );
         Reporter.log( "#entities: " + list.size(), true );
 

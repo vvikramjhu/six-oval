@@ -124,12 +124,12 @@ public interface OvalDefinitionRepository
 
 
     //==============================================================
-    // entities (Definition, Test, Object, State, Variable)
+    // definitions element (Definition, Test, Object, State, Variable)
     //==============================================================
 
     /**
-     * Returns the entity of the specified OVAL-ID.
-     * If no such entity exists, this method returns null.
+     * Returns the element of the specified OVAL-ID.
+     * If no such element exists, this method returns null.
      *
      * @param   oval_id
      *  the OVAL-ID.
@@ -155,14 +155,14 @@ public interface OvalDefinitionRepository
 
 
     /**
-     * Searches for the entity that match the specified query parameters.
+     * Searches for the elements that match the specified query parameters.
      *
      * @param   params
      *  the query parameters.
      * @return
      *  the found entities.
      */
-    public List<DefinitionsElement> findEntity(
+    public List<DefinitionsElement> findElement(
                     QueryParams params
                     )
     throws OvalRepositoryException;
@@ -170,14 +170,14 @@ public interface OvalDefinitionRepository
 
 
     /**
-     * Returns the number of entities that match the specified query parameters.
+     * Returns the number of elements that match the specified query parameters.
      *
      * @param   params
      *  the query parameters.
      * @return
      *  the number of entities.
      */
-    public long countEntity(
+    public long countElement(
                     QueryParams params
                     )
     throws OvalRepositoryException;
