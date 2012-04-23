@@ -199,61 +199,65 @@ public abstract class MongoTests
         DefinitionQueryParams  params24 = new DefinitionQueryParams();
         params24.setProduct( "Mozilla Firefox,Mozilla Thunderbird" );
 
+        // definition: refId
+        DefinitionQueryParams  params25 = new DefinitionQueryParams();
+        params25.setRefId( "CVE-2010-0176" );
+
         return new Object[][] {
-                        {
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params1
-                        }
-                        ,
-                        {
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params2
-                        }
-                        ,
-                        {
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params3
-                        }
-                        ,
-                        {
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params4
-                        }
-                        ,
-                        {
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params5
-                        }
-                        ,
-                        {
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params11
-                        }
-                        ,
-                        {
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params12
-                        }
-                        ,
-                        {
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params13
-                        }
-                        ,
-                        {
-                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
-                            DefinitionsElement.Type.DEFINITION,
-                            params14
-                        }
-                        ,
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params1
+//                        }
+//                        ,
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params2
+//                        }
+//                        ,
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params3
+//                        }
+//                        ,
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params4
+//                        }
+//                        ,
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params5
+//                        }
+//                        ,
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params11
+//                        }
+//                        ,
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params12
+//                        }
+//                        ,
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params13
+//                        }
+//                        ,
+//                        {
+//                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            params14
+//                        }
+//                        ,
                         {
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
                             DefinitionsElement.Type.DEFINITION,
@@ -276,6 +280,12 @@ public abstract class MongoTests
                             jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
                             DefinitionsElement.Type.DEFINITION,
                             params24
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.definitions.OvalDefinitions.class,
+                            DefinitionsElement.Type.DEFINITION,
+                            params25
                         }
         };
     }

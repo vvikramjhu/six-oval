@@ -29,6 +29,7 @@ import java.util.regex.Pattern;
 import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
+import jp.go.aist.six.oval.model.common.FamilyEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.TestType;
@@ -790,6 +791,25 @@ implements QueryBuilder
             };
 
 
+            Handler  family_handler = new FilterHandler()
+            {
+                @Override
+                public void build(
+                                final Query<?> query,
+                                final String field,
+                                final String value
+                                )
+                {
+                    if (value == null  ||  value.length() == 0) {
+                        return;
+                    }
+
+                    FamilyEnumeration  family = FamilyEnumeration.fromValue( value );
+                    query.filter( field, family );
+                }
+            };
+
+
             Map<String, Handler>  mapping = DefinitionsElementBuilder._createHandlers();
             //merge the super class's handler mapping
             mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    class_handler );
@@ -800,7 +820,7 @@ implements QueryBuilder
             mapping.put( DefinitionQueryParams.Key.REF_SOURCE,          FilterHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.REF_ID,              FilterHandler.INSTANCE );
 
-            mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      FilterHandler.INSTANCE );
+            mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      family_handler );
             mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
 
             return mapping;

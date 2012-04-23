@@ -284,6 +284,18 @@ public abstract class OvalCoreTests
     public Object[][] provideOvalDefOvalDefinitions()
     {
         return new Object[][] {
+// OVAL test content //
+                        // linux //
+                        {
+                            OvalContentCategory.OVAL_TEST_CONTENT,
+                            "5.9",
+                            OvalDefinitions.class,
+                            Family.LINUX,
+                            "test/resources/oval_test-content/oval-5.9/def/linux",
+                            null,
+                            null
+                        }
+                        ,
                         // Windows //
                         {
                             OvalContentCategory.OVAL_TEST_CONTENT,
@@ -294,14 +306,26 @@ public abstract class OvalCoreTests
                             null,
                             null
                         }
+//mitre repository//
                         ,
                         // linux //
                         {
-                            OvalContentCategory.OVAL_TEST_CONTENT,
-                            "5.9",
+                            OvalContentCategory.MITRE_REPOSITORY,
+                            "5.10.1",
                             OvalDefinitions.class,
                             Family.LINUX,
-                            "test/resources/oval_test-content/oval-5.9/def/linux",
+                            "test/resources/mitre_repository/oval-5.10/def/linux",
+                            null,
+                            null
+                        }
+                        ,
+                        // windows //
+                        {
+                            OvalContentCategory.MITRE_REPOSITORY,
+                            "5.10.1",
+                            OvalDefinitions.class,
+                            Family.WINDOWS,
+                            "test/resources/mitre_repository/oval-5.10/def/windows",
                             null,
                             null
                         }
