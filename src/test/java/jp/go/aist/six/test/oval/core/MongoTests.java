@@ -4,6 +4,7 @@ import java.io.File;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
+import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.DefinitionsElementQueryParams;
 import jp.go.aist.six.util.persist.Persistable;
@@ -132,14 +133,41 @@ public abstract class MongoTests
     ////////////////////////////////////////////////////////////////
 
     /**
-     * OVAL Definitions documents contained in the OVAL Test Content.
+     * definitions element.
+     *
+     *  Class<? extends DefinitionsElement>     object_type,
+     *  DefinitionsElement.Type   type,
+     *  QueryParams               params
+     */
+    @DataProvider( name="data:oval.repository.query_params.def.element" )
+    public Object[][] provideRepositoryQueryParamsOvalDefElement()
+    {
+        // common: order, count
+        DefinitionsElementQueryParams  params1 = new DefinitionsElementQueryParams();
+        params1.setOrder( "id" );
+        params1.setCount( "3" );
+        params1.setType( DefinitionsElement.Type.TEST.value() );
+
+        return new Object[][] {
+                        {
+                            TestType.class,
+                            DefinitionsElement.Type.TEST,
+                            params1
+                        }
+        };
+    }
+
+
+
+    /**
+     * Definition.
      *
      *  Class<DefinitionType>     object_type,
      *  DefinitionsElement.Type   type,
      *  QueryParams               params
      */
     @DataProvider( name="data:oval.repository.query_params.def.definition" )
-    public Object[][] provideRepositoryQueryParamsOvalDefElement()
+    public Object[][] provideRepositoryQueryParamsOvalDefDefinition()
     {
         // common: order, count
         DefinitionQueryParams  params1 = new DefinitionQueryParams();
