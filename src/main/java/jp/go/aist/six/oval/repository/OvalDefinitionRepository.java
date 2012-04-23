@@ -136,7 +136,7 @@ public interface OvalDefinitionRepository
      * @return
      *  the found entity, or null if such entity does not exist.
      */
-    public DefinitionsElement findEntityById(
+    public DefinitionsElement findElementById(
                     String oval_id
                     )
     throws OvalRepositoryException;

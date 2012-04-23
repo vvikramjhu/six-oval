@@ -382,7 +382,7 @@ public abstract class OvalCoreTests
 
 
     /**
-     * Definition.
+     * definitions element.
      *
      *   OvalContentCategory        category,
      *   String                     schema_version,
@@ -409,6 +409,28 @@ public abstract class OvalCoreTests
                             null
                         }
                         ,
+                        {
+                            OvalContentCategory.OVAL_TEST_CONTENT,
+                            "5.9",
+                            SystemObjectType.class,
+                            DefinitionsElement.Type.OBJECT,
+                            Family.WINDOWS,
+                            Component.FILE,
+                            "oval:org.mitre.oval.test:obj:1060",
+                            null
+                        }
+                        ,
+                        {
+                            OvalContentCategory.OVAL_TEST_CONTENT,
+                            "5.9",
+                            StateType.class,
+                            DefinitionsElement.Type.STATE,
+                            Family.WINDOWS,
+                            Component.FILE,
+                            "oval:org.mitre.oval.test:ste:1161",
+                            null
+                        }
+                        ,
 
                         /* linux */
                         {
@@ -419,6 +441,28 @@ public abstract class OvalCoreTests
                             Family.LINUX,
                             Component.DPKGINFO,
                             "oval:org.mitre.oval.test:tst:709",
+                            null
+                        }
+                        ,
+                        {
+                            OvalContentCategory.OVAL_TEST_CONTENT,
+                            "5.9",
+                            SystemObjectType.class,
+                            DefinitionsElement.Type.OBJECT,
+                            Family.LINUX,
+                            Component.DPKGINFO,
+                            "oval:org.mitre.oval.test:obj:102",
+                            null
+                        }
+                        ,
+                        {
+                            OvalContentCategory.OVAL_TEST_CONTENT,
+                            "5.9",
+                            StateType.class,
+                            DefinitionsElement.Type.STATE,
+                            Family.LINUX,
+                            Component.DPKGINFO,
+                            "oval:org.mitre.oval.test:ste:787",
                             null
                         }
         };

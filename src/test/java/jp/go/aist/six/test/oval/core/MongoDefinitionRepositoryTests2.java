@@ -2,6 +2,7 @@ package jp.go.aist.six.test.oval.core;
 
 import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository;
+import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
@@ -65,8 +66,8 @@ extends MongoTests
                     groups={
                                     "java:oval.core.repository.mongodb",
                                     "data:oval.def",
-                                    "control:repository.find",
-                                    "control:repository.count"
+                                    "control:repository.findDefinition",
+                                    "control:repository.countDefinition"
                                     },
                     dependsOnGroups={ "control:datastore.save" },
                     alwaysRun=true
@@ -100,9 +101,9 @@ extends MongoTests
                     groups={
                                     "java:oval.core.repository.mongodb",
                                     "data:oval.def",
-                                    "control:repository.findById"
+                                    "control:repository.findDefinitionById"
                                     },
-                    dependsOnGroups={ "control:repository.find" },
+                    dependsOnGroups={ "control:repository.findDefinition" },
                     dataProvider="data:oval.def.definition",
                     alwaysRun=true
                     )
@@ -138,9 +139,9 @@ extends MongoTests
                     groups={
                                     "java:oval.core.repository.mongodb",
                                     "data:oval.def",
-                                    "control:repository.query"
+                                    "control:repository.queryDefinition"
                                     },
-                    dependsOnGroups={ "control:repository.findById" },
+                    dependsOnGroups={ "control:repository.findDefinitionById" },
                     dataProvider="data:oval.repository.query_params.def.definition",
                     alwaysRun=true
                     )
@@ -171,6 +172,95 @@ extends MongoTests
 
         Assert.assertTrue( def_list.size() == count );
     }
+
+
+
+    ////////////////////////////////////////////////////////////////
+    //  definitions element
+    ////////////////////////////////////////////////////////////////
+
+    /**
+     * findElementById(oval_id)
+     */
+    @org.testng.annotations.Test(
+                    groups={
+                                    "java:oval.core.repository.mongodb",
+                                    "data:oval.def",
+                                    "control:repository.findElementById"
+                                    },
+                    dependsOnGroups={ "control:repository.queryDefinition" },
+                    dataProvider="data:oval.def.element",
+                    alwaysRun=true
+                    )
+    public void testFindElementById(
+                    final OvalContentCategory       category,
+                    final String                    schema_version,
+                    final Class<DefinitionsElement> object_type,
+                    final DefinitionsElement.Type   type,
+                    final Family                    family,
+                    final Component                 component,
+                    final String                    oval_id,
+                    final DefinitionsElement        expected_object
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n//////////////////////////////////////////////////////////",
+                        true );
+        Reporter.log( ">>> findElementById(oval_id)...", true );
+        Reporter.log( "  * type: "       + type, true );
+        Reporter.log( "  * family: "     + family, true );
+        Reporter.log( "  * component: "  + component, true );
+        Reporter.log( "  * oval_id: "    + oval_id, true );
+
+        DefinitionsElement  element = _getDefinitionRepository().findElementById( oval_id );
+        Reporter.log( "<<< ...findElementById(oval_id)", true );
+        Reporter.log( "  @ element: " + element, true );
+        Assert.assertNotNull( element );
+        Assert.assertEquals( element.getOvalID(), oval_id );
+    }
+
+
+
+    /**
+     * findElementById(oval_id)
+     */
+    @org.testng.annotations.Test(
+                    groups={
+                                    "java:oval.core.repository.mongodb",
+                                    "data:oval.def",
+                                    "control:repository.findElementById"
+                                    },
+                    dependsOnGroups={ "control:repository.queryDefinition" },
+                    dataProvider="data:oval.def.definition",
+                    alwaysRun=true
+                    )
+    public void testFindElementById(
+                    final OvalContentCategory       category,
+                    final String                    schema_version,
+                    final Class<DefinitionType>     object_type,
+                    final DefinitionsElement.Type   type,
+                    final ClassEnumeration          definition_class,
+                    final Family                    family,
+                    final String                    oval_id,
+                    final DefinitionType            expected_object
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n//////////////////////////////////////////////////////////",
+                        true );
+
+        Reporter.log( ">>> findElementById(oval_id)...", true );
+        Reporter.log( "  * type: "       + type, true );
+        Reporter.log( "  * oval_id: "    + oval_id, true );
+
+        DefinitionsElement  def = _getDefinitionRepository().findElementById( oval_id );
+        Reporter.log( "<<< ...findElementById(oval_id)", true );
+        Reporter.log( "  @ element: " + def, true );
+        Assert.assertNotNull( def );
+        Assert.assertEquals( def.getOvalID(), oval_id );
+    }
+
+
 
 }
 //

@@ -263,7 +263,7 @@ extends TestBase
                         true );
         Reporter.log( "* OVAL ID: " + oval_id, true );
 
-        DefinitionsElement   p_object = _oval_def_repository.findEntityById( oval_id );
+        DefinitionsElement   p_object = _oval_def_repository.findElementById( oval_id );
         Reporter.log( "  @ entity: " + p_object, true );
         if (p_object != null) {
             Assert.assertTrue( oval_id.equals( p_object.getOvalID() ) );

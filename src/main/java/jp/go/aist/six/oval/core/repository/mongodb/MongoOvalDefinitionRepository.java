@@ -32,8 +32,8 @@ import jp.go.aist.six.oval.model.definitions.StateType;
 import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.model.definitions.VariableType;
-import jp.go.aist.six.oval.repository.OvalDefinitionRepository;
 import jp.go.aist.six.oval.repository.DefinitionsElementQueryParams;
+import jp.go.aist.six.oval.repository.OvalDefinitionRepository;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.QueryParams;
 
@@ -232,7 +232,7 @@ public class MongoOvalDefinitionRepository
 
     /**
      */
-    private Class<? extends DefinitionsElement> _objectTypeOf(
+    private Class<? extends DefinitionsElement> _toObjectType(
                     final String oval_id
                     )
     throws OvalRepositoryException
@@ -248,7 +248,7 @@ public class MongoOvalDefinitionRepository
         }
 
         if (objectType == null) {
-            throw new OvalRepositoryException( "unknown OVAL entity type in OVAL-ID: " + oval_id );
+            throw new OvalRepositoryException( "unknown OVAL element type in OVAL-ID: " + oval_id );
         }
 
         return objectType;
@@ -295,14 +295,14 @@ public class MongoOvalDefinitionRepository
 
 
     @Override
-    public DefinitionsElement findEntityById(
+    public DefinitionsElement findElementById(
                     final String oval_id
                     )
     throws OvalRepositoryException
     {
 //        long  ts_start = System.currentTimeMillis();
 
-        Class<? extends DefinitionsElement>  objectType = _objectTypeOf( oval_id );
+        Class<? extends DefinitionsElement>  objectType = _toObjectType( oval_id );
         DefinitionsElement p_object = null;
         try {
             p_object = _datastore.findById( objectType, oval_id );
