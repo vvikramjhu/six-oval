@@ -235,7 +235,7 @@ public class OvalRepositoryController
     {
         _LOG_.debug( "GET (find): type=" + type );
 
-        List<K>  ids = _repository.findIds( type );
+        List<K>  ids = _repository.findId( type );
         QueryResults<K>  result = new QueryResults<K>( ids );
         return result;
     }
@@ -250,7 +250,7 @@ public class OvalRepositoryController
     {
         _LOG_.debug( "GET (find): type=" + type + ", params=" + params );
 
-        List<K>  ids = _repository.findIds( type, params );
+        List<K>  ids = _repository.findId( type, params );
         //TODO: ordering, paging, ...
         QueryResults<K>  result = new QueryResults<K>( ids );
         return result;

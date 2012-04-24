@@ -168,7 +168,7 @@ public class MongoOvalDatastore
 
 
    public <K, T extends Persistable<K>>
-   List<K> findIds(
+   List<K> findId(
                    final Class<T> type
                    )
    {
@@ -186,7 +186,7 @@ public class MongoOvalDatastore
 
 
    public <K, T extends Persistable<K>>
-   List<K> findIds(
+   List<K> findId(
                    final Class<T> type,
                    final QueryParams params
                    )
@@ -310,7 +310,7 @@ public class MongoOvalDatastore
         *   Is it possible to delete all the objects by query?
         *   dao.deleteByQuery( Query q )
         */
-       List<K>  id_list = findIds( type );
+       List<K>  id_list = findId( type );
        DAO<T, K>  dao = getDAO( type );
        for (K  id : id_list) {
            dao.deleteById( id );

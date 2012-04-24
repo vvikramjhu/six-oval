@@ -1,5 +1,6 @@
 package jp.go.aist.six.test.oval.core;
 
+import java.io.File;
 import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository;
 import jp.go.aist.six.oval.model.Component;
@@ -7,11 +8,22 @@ import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
+import jp.go.aist.six.oval.model.definitions.DefinitionsType;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.definitions.StateType;
+import jp.go.aist.six.oval.model.definitions.StatesType;
+import jp.go.aist.six.oval.model.definitions.SystemObjectType;
+import jp.go.aist.six.oval.model.definitions.SystemObjectsType;
+import jp.go.aist.six.oval.model.definitions.TestType;
+import jp.go.aist.six.oval.model.definitions.TestsType;
+import jp.go.aist.six.oval.model.definitions.VariableType;
+import jp.go.aist.six.oval.model.definitions.VariablesType;
 import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 
 
 
@@ -53,6 +65,37 @@ extends MongoTests
     ////////////////////////////////////////////////////////////////
     //  test data
     ////////////////////////////////////////////////////////////////
+
+    /**
+     * OVAL Definitions documents.
+     *
+     * Test method params:
+     *   OvalContentCategory    category,
+     *   String                 schema_version,
+     *   Class<T>               object_type,
+     *   Family                 family,
+     *   String                 dirpath,
+     *   String                 filename
+     *   T                      expected_object
+     */
+    @DataProvider( name="data:oval.def.oval_definitions.save-element" )
+    public Object[][] provideOvalDefOvalDefinitionsSaveElement()
+    {
+        return new Object[][] {
+//mitre repository//
+                        // windows //
+                        {
+                            OvalContentCategory.MITRE_REPOSITORY,
+                            "5.10.1",
+                            OvalDefinitions.class,
+                            Family.WINDOWS,
+                            "test/resources/mitre_repository/oval-5.10/def",
+                            "oval-5.10.1_def-12953_CVE-2011-1987.xml",
+                            null
+                        }
+        };
+
+    }
 
 
 
@@ -134,7 +177,7 @@ extends MongoTests
 
 
     /**
-     * findDefinition(params)
+     * findDefinition(params), findDefinitionId(params), countDefinition(params)
      */
     @org.testng.annotations.Test(
                     groups={
@@ -156,22 +199,37 @@ extends MongoTests
         Reporter.log( "\n//////////////////////////////////////////////////////////",
                         true );
         Reporter.log( ">>> findDefinition(params)...", true );
-        Reporter.log( "* object type: "     + object_type, true );
-//        Reporter.log( "* type: "            + type, true );
-        Reporter.log( "* params: "          + params, true );
+        Reporter.log( "  * params: "          + params, true );
 
         List<DefinitionType>  def_list = _getDefinitionRepository().findDefinition( params );
-        Reporter.log( "<<< ...findDefinitionById(params)", true );
+        Reporter.log( "<<< ...findDefinition(params)", true );
         Assert.assertNotNull( def_list );
-        Reporter.log( "* #objects: " + def_list.size(), true );
+        Reporter.log( "  @ #Definition: " + def_list.size(), true );
         _printOvalIds( def_list );
 
-        Reporter.log( ">>> countDefinition(params)...", true );
-        long  count = _getDefinitionRepository().countDefinition( params );
-        Reporter.log( "<<< ...countDefinition(params)", true );
-        Reporter.log( "  @ #Definitions: " + count, true );
 
-        Assert.assertTrue( def_list.size() == count );
+        Reporter.log( ">>> findDefinitionId(params)...", true );
+        Reporter.log( "  * params: "          + params, true );
+
+        List<String>  def_id_list = _getDefinitionRepository().findDefinitionId( params );
+        Reporter.log( "<<< ...findDefinitionId(params)", true );
+        Assert.assertNotNull( def_id_list );
+        Reporter.log( "  @ #IDs: " + def_id_list.size(), true );
+
+        Assert.assertEquals( def_list.size(), def_id_list.size() );
+
+
+        String  count_param = params.get( CommonQueryParams.Key.COUNT );
+        //If the "count" param is specified, finxXxx() methods returns at most "count" objects.
+        //And then, the number of results does not equal to the number returned from the countXxx() methods.
+        if (count_param == null) {
+            Reporter.log( ">>> countDefinition(params)...", true );
+            long  count = _getDefinitionRepository().countDefinition( params );
+            Reporter.log( "<<< ...countDefinition(params)", true );
+            Reporter.log( "  @ #Definitions: " + count, true );
+
+            Assert.assertEquals( def_list.size(), count );
+        }
     }
 
 
@@ -270,7 +328,7 @@ extends MongoTests
                     groups={
                                     "java:oval.core.repository.mongodb",
                                     "data:oval.def",
-                                    "control.repository.queryElement"
+                                    "control:repository.queryElement"
                                     },
                     dependsOnGroups={ "control:repository.findElementById" },
                     dataProvider="data:oval.repository.query_params.def.element",
@@ -306,6 +364,116 @@ extends MongoTests
             Reporter.log( "  @ #elements: " + count, true );
 
             Assert.assertTrue( element_list.size() == count );
+        }
+    }
+
+
+
+    /**
+     * saveElement(element)
+     */
+    @org.testng.annotations.Test(
+                    groups={
+                                    "java:oval.core.repository.mongodb",
+                                    "data:oval.def",
+                                    "control:repository.saveElement"
+                                    },
+                    dependsOnGroups={ "control:repository.queryElement" },
+                    dataProvider="data:oval.def.oval_definitions.save-element",
+                    alwaysRun=true
+                    )
+    public void testSaveElement(
+                    final OvalContentCategory   category,
+                    final String                schema_version,
+                    final Class<OvalDefinitions> object_type,
+                    final Family                family,
+                    final String                dirpath,
+                    final String                xml_filepath,
+                    final OvalDefinitions       expected_object
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n//////////////////////////////////////////////////////////",
+                        true );
+
+        File[]  files = _toXmlFileList( dirpath, xml_filepath );
+        for (File  file : files) {
+            Reporter.log( "  * file= " + file, true );
+            OvalDefinitions  oval_defs = _unmarshalFromFile( object_type, file.getCanonicalPath(), expected_object );
+            _saveElements( oval_defs );
+        }
+    }
+
+
+
+    private void _saveElements(
+                    final OvalDefinitions oval_definitions
+                    )
+    throws Exception
+    {
+        VariablesType  variables = oval_definitions.getVariables();
+        if (variables != null) {
+            for (VariableType  variable : variables.getVariable()) {
+                _saveElement( variable, true );
+            }
+        }
+
+        StatesType  states = oval_definitions.getStates();
+        if (states != null) {
+            for (StateType  state : states.getState()) {
+                _saveElement( state, true );
+            }
+        }
+
+        SystemObjectsType  objects = oval_definitions.getObjects();
+        if (objects != null) {
+            for (SystemObjectType  object : objects.getObject()) {
+                _saveElement( object, true );
+            }
+        }
+
+        TestsType  tests = oval_definitions.getTests();
+        if (tests != null) {
+            for (TestType  test : tests.getTest()) {
+                _saveElement( test, true );
+            }
+        }
+
+        DefinitionsType  definitions = oval_definitions.getDefinitions();
+        if (definitions != null) {
+            for (DefinitionType  definition : definitions.getDefinition()) {
+                _saveElement( definition, true );
+            }
+        }
+
+    }
+
+
+
+    protected <K, T extends DefinitionsElement>
+    void _saveElement(
+                    final T         element,
+                    final boolean   to_load
+                    )
+    throws Exception
+    {
+        Reporter.log( ">>> saveElement(element)...", true );
+
+        String  oval_id = element.getOvalID();
+        Reporter.log( "  * OVAL-ID: " + oval_id, true );
+
+        String  p_oval_id = _getDefinitionRepository().saveElement( element );
+        Reporter.log( "<<< ...saveElement(element)", true );
+        Assert.assertEquals( p_oval_id, oval_id );
+
+        if (to_load) {
+            Reporter.log( ">>> findElementById(oval_id)...", true );
+            DefinitionsElement  p_element = _getDefinitionRepository().findElementById( oval_id );
+            Reporter.log( "<<< ...findElementById(oval_id)", true );
+            p_oval_id = p_element.getOvalID();
+            Reporter.log( "  @ OVAL-ID: " + p_oval_id, true );
+            Assert.assertEquals( oval_id, p_oval_id );
+            Assert.assertEquals( element.ovalGetElementType(), p_element.ovalGetElementType() );
         }
     }
 

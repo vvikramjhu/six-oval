@@ -57,7 +57,7 @@ public abstract class MongoTests
 
     /**
      */
-    private <K, T extends Persistable<K>>
+    protected <K, T extends Persistable<K>>
     void _unmarshalFromFileAndSaveToDatastore(
                     final Class<T>  object_type,
                     final String    schema_version,
