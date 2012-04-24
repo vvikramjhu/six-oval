@@ -7,6 +7,7 @@ import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
+import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -295,13 +296,17 @@ extends MongoTests
         Reporter.log( "* #objects: " + element_list.size(), true );
         _printOvalIds( element_list );
 
-        //TODO: the count() methods ignore startIndex/count params!!!
-//        Reporter.log( ">>> countElement(params)...", true );
-//        long  count = _getDefinitionRepository().countElement( params );
-//        Reporter.log( "<<< ...countElement(params)", true );
-//        Reporter.log( "  @ #elements: " + count, true );
-//
-//        Assert.assertTrue( element_list.size() == count );
+        String  count_param = params.get( CommonQueryParams.Key.COUNT );
+        //If the "count" param is specified, finxXxx() methods returns at most "count" objects.
+        //And then, the number of results does not equal to the number returned from the countXxx() methods.
+        if (count_param == null) {
+            Reporter.log( ">>> countElement(params)...", true );
+            long  count = _getDefinitionRepository().countElement( params );
+            Reporter.log( "<<< ...countElement(params)", true );
+            Reporter.log( "  @ #elements: " + count, true );
+
+            Assert.assertTrue( element_list.size() == count );
+        }
     }
 
 }
