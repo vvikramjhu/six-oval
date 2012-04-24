@@ -2,8 +2,11 @@ package jp.go.aist.six.test.oval.core;
 
 import java.io.File;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDatastore;
+import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
+import jp.go.aist.six.oval.model.definitions.StateType;
+import jp.go.aist.six.oval.model.definitions.SystemObjectType;
 import jp.go.aist.six.oval.model.definitions.TestType;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
 import jp.go.aist.six.oval.repository.DefinitionsElementQueryParams;
@@ -143,16 +146,126 @@ public abstract class MongoTests
     public Object[][] provideRepositoryQueryParamsOvalDefElement()
     {
         // common: order, count
-        DefinitionsElementQueryParams  params1 = new DefinitionsElementQueryParams();
-        params1.setOrder( "id" );
-        params1.setCount( "3" );
-        params1.setType( DefinitionsElement.Type.TEST.value() );
+        DefinitionsElementQueryParams  params01 = new DefinitionsElementQueryParams();
+        params01.setOrder( "id" );
+        params01.setCount( "3" );
+        params01.setType( DefinitionsElement.Type.TEST.value() );
+
+        // common: order, count, startIndex
+        DefinitionsElementQueryParams  params02 = new DefinitionsElementQueryParams();
+        params02.setOrder( "id" );
+        params02.setCount( "2" );
+        params02.setStartIndex( "4" );
+        params02.setType( DefinitionsElement.Type.TEST.value() );
+
+        // common: order, count, startIndex
+        DefinitionsElementQueryParams  params03 = new DefinitionsElementQueryParams();
+        params03.setOrder( "-id" );
+        params03.setCount( "5" );
+        params03.setType( DefinitionsElement.Type.TEST.value() );
+
+        // common: searchTerms, order
+        DefinitionsElementQueryParams  params04 = new DefinitionsElementQueryParams();
+        params04.setOrder( "id" );
+        params04.setSearchTerms( "iexplore.exe" );
+        params04.setType( DefinitionsElement.Type.OBJECT.value() );
+
+        // common: searchTerms, order
+        DefinitionsElementQueryParams  params05 = new DefinitionsElementQueryParams();
+        params05.setOrder( "-id" );
+        params05.setSearchTerms( "regular expression" );
+        params05.setType( DefinitionsElement.Type.STATE.value() );
+
+        // element: version
+        DefinitionsElementQueryParams  params11 = new DefinitionsElementQueryParams();
+        params11.setVersion( "3" );
+        params11.setType( DefinitionsElement.Type.TEST.value() );
+
+        // element: id --- linux rpminfo
+        DefinitionsElementQueryParams  params12 = new DefinitionsElementQueryParams();
+        params12.setId( "oval:org.mitre.oval.test:ste:599" );
+
+        // element: id
+        DefinitionsElementQueryParams  params13 = new DefinitionsElementQueryParams();
+        params13.setId( "oval:org.mitre.oval.test:def:889,oval:org.mitre.oval.test:ste:599,oval:org.mitre.oval.test:def:140" );
+
+        // element: id --- NOT found
+        DefinitionsElementQueryParams  params14 = new DefinitionsElementQueryParams();
+        params14.setId( "oval:org.mitre.oval.test:obj:99999" );
+
+        // element: component
+        DefinitionsElementQueryParams  params21 = new DefinitionsElementQueryParams();
+        params21.setComponent( Component.DPKGINFO.value() );
+
+        // definition: family
+        DefinitionsElementQueryParams  params22 = new DefinitionsElementQueryParams();
+        params22.setFamily( "unix" );
 
         return new Object[][] {
                         {
                             TestType.class,
                             DefinitionsElement.Type.TEST,
-                            params1
+                            params01
+                        }
+                        ,
+                        {
+                            TestType.class,
+                            DefinitionsElement.Type.TEST,
+                            params02
+                        }
+                        ,
+                        {
+                            TestType.class,
+                            DefinitionsElement.Type.TEST,
+                            params03
+                        }
+                        ,
+                        {
+                            SystemObjectType.class,
+                            DefinitionsElement.Type.OBJECT,
+                            params04
+                        }
+                        ,
+                        {
+                            StateType.class,
+                            DefinitionsElement.Type.STATE,
+                            params05
+                        }
+                        ,
+                        {
+                            TestType.class,
+                            DefinitionsElement.Type.TEST,
+                            params11
+                        }
+                        ,
+                        {
+                            null,
+                            null,
+                            params12
+                        }
+                        ,
+                        {
+                            null,
+                            null,
+                            params13
+                        }
+                        ,
+                        {
+                            null,
+                            null,
+                            params14
+                        }
+                        ,
+                        {
+                            null,
+                            null,
+                            params21
+                        }
+                        ,
+                        {
+                            null,
+                            null,
+                            params22
                         }
         };
     }
@@ -192,23 +305,23 @@ public abstract class MongoTests
 
         // common: searchTerms, order
         DefinitionQueryParams  params5 = new DefinitionQueryParams();
-        params5.setOrder( "id" );
+        params5.setOrder( "-id" );
         params5.setSearchTerms( "negate" );
 
         // element: version
-        DefinitionsElementQueryParams  params11 = new DefinitionsElementQueryParams();
+        DefinitionQueryParams  params11 = new DefinitionQueryParams();
         params11.setVersion( "7" );
 
         // element: id
-        DefinitionsElementQueryParams  params12 = new DefinitionsElementQueryParams();
+        DefinitionQueryParams  params12 = new DefinitionQueryParams();
         params12.setId( "oval:org.mitre.oval.test:def:889" );
 
         // element: id
-        DefinitionsElementQueryParams  params13 = new DefinitionsElementQueryParams();
+        DefinitionQueryParams  params13 = new DefinitionQueryParams();
         params13.setId( "oval:org.mitre.oval.test:def:889,oval:org.mitre.oval.test:def:121,oval:org.mitre.oval.test:def:140" );
 
         // element: id
-        DefinitionsElementQueryParams  params14 = new DefinitionsElementQueryParams();
+        DefinitionQueryParams  params14 = new DefinitionQueryParams();
         params14.setId( "oval:org.mitre.oval.test:def:1000" );
 
         // definition: definitionClass
