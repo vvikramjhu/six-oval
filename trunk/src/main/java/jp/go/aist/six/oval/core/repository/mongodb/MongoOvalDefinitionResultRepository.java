@@ -129,7 +129,7 @@ public class MongoOvalDefinitionResultRepository
 
         List<String>  list = null;
         try {
-            list = getDatastore().findIds( OvalResults.class );
+            list = getDatastore().findId( OvalResults.class );
 //            keys = dao.findIds(); // this code does NOT work. why???
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
@@ -151,7 +151,7 @@ public class MongoOvalDefinitionResultRepository
 
         List<String>  p_list = null;
         try {
-            p_list = getDatastore().findIds( OvalResults.class, params );
+            p_list = getDatastore().findId( OvalResults.class, params );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }

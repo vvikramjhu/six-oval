@@ -83,6 +83,21 @@ public interface OvalDefinitionRepository
 
 
     /**
+     * Searches for the Definition IDs that match the specified query parameters.
+     *
+     * @param   params
+     *  the query parameters.
+     * @return
+     *  the found Definition IDs.
+     */
+    public List<String> findDefinitionId(
+                    final QueryParams params
+                    )
+    throws OvalRepositoryException;
+
+
+
+    /**
      * Returns the number of Definitions in the repository.
      *
      * @return
@@ -187,13 +202,13 @@ public interface OvalDefinitionRepository
     /**
      * Saves the entity, either inserting or updating the existing one.
      *
-     * @param   entity
+     * @param   element
      *  the entity to save.
      * @return
      *  the ID of the entity.
      */
-    public String saveEntity(
-                    DefinitionsElement entity
+    public String saveElement(
+                    DefinitionsElement element
                     )
     throws OvalRepositoryException;
 

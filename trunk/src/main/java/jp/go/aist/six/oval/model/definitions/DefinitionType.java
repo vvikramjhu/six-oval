@@ -60,7 +60,7 @@ public class DefinitionType
 
 
     // SIX: extended properties //
-    private final Component    _oval_component = null;
+    protected final Component    _oval_component = null;
 
 //    private String  _lastModifiedDate;
 //    private final Collection<Cve>  _relatedCve = new ArrayList<Cve>();
