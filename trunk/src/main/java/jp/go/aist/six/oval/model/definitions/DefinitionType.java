@@ -20,12 +20,9 @@
 
 package jp.go.aist.six.oval.model.definitions;
 
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.Set;
+import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import com.google.code.morphia.annotations.Entity;
-import com.google.code.morphia.annotations.PrePersist;
 import com.google.code.morphia.annotations.Property;
 
 
@@ -63,6 +60,8 @@ public class DefinitionType
 
 
     // SIX: extended properties //
+    private final Component    _oval_component = null;
+
 //    private String  _lastModifiedDate;
 //    private final Collection<Cve>  _relatedCve = new ArrayList<Cve>();
 
@@ -73,8 +72,10 @@ public class DefinitionType
 //
 //    private final Map<DefinitionsElement.Type,Set<String>>  _referencing_elements = _createHashMap();
 
-    private final Map<DefinitionsElement.Type,Set<String>>  _referencing_elements =
-                    new EnumMap<DefinitionsElement.Type,Set<String>>( DefinitionsElement.Type.class );
+
+    //NOTE: Create Assoc class and persist the instances in the isolated collection.
+//    private final Map<DefinitionsElement.Type,Set<String>>  _referencing_elements =
+//                    new EnumMap<DefinitionsElement.Type,Set<String>>( DefinitionsElement.Type.class );
 
 
     /**
@@ -300,25 +301,25 @@ public class DefinitionType
     //  MongoDB/Morphia Lifecycle
     //**************************************************************
 
-    @PrePersist
-    protected void _computeReferencingElements()
-    {
-        for (DefinitionsElement.Type  type : DefinitionsElement.Type.values()) {
-            Set<String>  set = _referencing_elements.get( type );
-            if (set != null) {
-                set.clear();
-            }
-        }
-
-        CriteriaType  criteria = getCriteria();
-        if (criteria == null) {
-            return;
-        }
-
-        //TODO: collect test and definition references!!!
-    }
-
-
+//    @PrePersist
+//    protected void _computeReferencingElements()
+//    {
+//        for (DefinitionsElement.Type  type : DefinitionsElement.Type.values()) {
+//            Set<String>  set = _referencing_elements.get( type );
+//            if (set != null) {
+//                set.clear();
+//            }
+//        }
+//
+//        CriteriaType  criteria = getCriteria();
+//        if (criteria == null) {
+//            return;
+//        }
+//
+//        //TODO: collect test and definition references!!!
+//    }
+//
+//
 
     //**************************************************************
     //  java.lang.Object

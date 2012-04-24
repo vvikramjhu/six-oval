@@ -180,7 +180,7 @@ extends MongoTests
     ////////////////////////////////////////////////////////////////
 
     /**
-     * findElementById(oval_id)
+     * findElementById(oval_id): definition
      */
     @org.testng.annotations.Test(
                     groups={
@@ -222,7 +222,7 @@ extends MongoTests
 
 
     /**
-     * findElementById(oval_id)
+     * findElementById(oval_id): test, object, state, variable
      */
     @org.testng.annotations.Test(
                     groups={
@@ -263,13 +263,13 @@ extends MongoTests
 
 
     /**
-     * findElement(params), countElement(params)
+     * findElement(params)
      */
     @org.testng.annotations.Test(
                     groups={
                                     "java:oval.core.repository.mongodb",
                                     "data:oval.def",
-                                    "control:repository.queryElement"
+                                    "control.repository.queryElement"
                                     },
                     dependsOnGroups={ "control:repository.findElementById" },
                     dataProvider="data:oval.repository.query_params.def.element",

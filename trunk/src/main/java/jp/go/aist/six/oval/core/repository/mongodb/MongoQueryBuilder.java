@@ -138,6 +138,8 @@ implements QueryBuilder
                     final QueryParams params
                     )
     {
+//        query.disableValidation();
+
         for (String  key : params.keys()) {
             Handler  handler = _getHandler( key );
             String  field = _getField( key );
@@ -150,15 +152,6 @@ implements QueryBuilder
             handler.build( query, field, value );
         }
     }
-//    {
-//        for (String  key : params.keys()) {
-//            Handler  handler = _getHandler( key );
-//            String  field = getField( key );
-//            String  value = params.get( key );
-//
-//            handler.build( query, field, value );
-//        }
-//    }
 
 
 
@@ -276,6 +269,31 @@ implements QueryBuilder
 
     }
     // Handler
+
+
+
+    protected static class IgnoringHandler
+    extends Handler
+    {
+        public static final IgnoringHandler  INSTANCE = new IgnoringHandler();
+
+        public IgnoringHandler()
+        {
+        }
+
+
+        @Override
+        public void build(
+                        final Query<?> query,
+                        final String field,
+                        final String value
+                        )
+        {
+            //Ignore the field!
+        }
+
+    }
+    //IgnoringHandler
 
 
 
@@ -701,6 +719,8 @@ implements QueryBuilder
 
 
             Map<String, Handler>  mapping = BasicBuilder._createHandlers();
+            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
+
             mapping.put( DefinitionsElementQueryParams.Key.ID,          HasAnyOfHandler.INSTANCE );
 //            mapping.put( DefinitionsElementQueryParams.Key.ID,          FilterHandler.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.VERSION,     version_handler );
@@ -813,13 +833,13 @@ implements QueryBuilder
             Map<String, Handler>  mapping = DefinitionsElementBuilder._createHandlers();
             //common
             mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
-            //definitions element
+            //definition
             mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    class_handler );
             mapping.put( DefinitionQueryParams.Key.PLATFORM,            HasAnyOfHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.PRODUCT,             HasAnyOfHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.REF_SOURCE,          FilterHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.REF_ID,              FilterHandler.INSTANCE );
-            //definition: Overrides the "family" handler defined for DefinitionsElement params.
+            // Overrides.
             mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      family_handler );
 
             return mapping;

@@ -81,7 +81,7 @@
                 <!--
         <groups>
             <run>
-                <include name="oval.core.repository.mongodb.read"/>
+                <include name="control.repository.queryElement"/>
             </run>
         </groups>
                 -->
