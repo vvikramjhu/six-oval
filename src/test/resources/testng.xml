@@ -86,7 +86,7 @@
         </groups>
                 -->
         <classes>
-            <class name="jp.go.aist.six.test.oval.core.MongoDefinitionRepositoryTests2"/>
+            <class name="jp.go.aist.six.test.oval.core.MongoOvalDefinitionResultRepositoryTests"/>
             <!--
             <class name="jp.go.aist.six.test.oval.core.DefinitionElementAssocTests"/>
             <class name="jp.go.aist.six.test.oval.core.MongoDefinitionRepositoryTests2"/>

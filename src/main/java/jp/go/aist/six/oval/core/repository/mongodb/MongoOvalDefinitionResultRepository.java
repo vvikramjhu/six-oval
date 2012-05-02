@@ -187,8 +187,6 @@ public class MongoOvalDefinitionResultRepository
                     )
     throws OvalRepositoryException
     {
-//        long  ts_start = System.currentTimeMillis();
-
         String  id = null;
         try {
             id = getDatastore().save( OvalResults.class, oval_results );
@@ -196,7 +194,6 @@ public class MongoOvalDefinitionResultRepository
             throw new OvalRepositoryException( ex );
         }
 
-//        _LOG_.info( "elapsed time (ms): " +  (System.currentTimeMillis() - ts_start) );
         return id;
     }
 

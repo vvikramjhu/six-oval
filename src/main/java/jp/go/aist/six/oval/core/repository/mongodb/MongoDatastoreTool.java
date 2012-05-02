@@ -21,6 +21,10 @@ import jp.go.aist.six.util.xml.XmlException;
 import jp.go.aist.six.util.xml.XmlMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.google.code.morphia.Morphia;
+import com.google.code.morphia.mapping.MappedClass;
+import com.mongodb.DB;
+import com.mongodb.Mongo;
 
 
 
@@ -29,14 +33,14 @@ import org.slf4j.LoggerFactory;
  * @author	Akihito Nakamura, AIST
  * @version $Id$
  */
-public class MongoOvalDatastoreTool
+public class MongoDatastoreTool
 {
 
     /**
      * Logger.
      */
     private static final Logger  _LOG_ =
-        LoggerFactory.getLogger( MongoOvalDatastoreTool.class );
+        LoggerFactory.getLogger( MongoDatastoreTool.class );
 
 
 
@@ -57,10 +61,20 @@ public class MongoOvalDatastoreTool
             }
         } else if (cmd.equals( "-delete-all" )) {
             deleteAllData();
+        } else if (cmd.equals( "-drop-all-collections" )) {
+            _INSTANCE_.dropAllCollections();
         }
     }
 
 
+
+    private static final MongoDatastoreTool  _INSTANCE_ = new MongoDatastoreTool();
+
+
+    private OvalContext  _context;
+    private Mongo  _mongo;
+    private Morphia  _morphia;
+    private String  _db_name;
 
 
     private static MongoOvalDatastore  _DATASTORE_;
@@ -72,11 +86,41 @@ public class MongoOvalDatastoreTool
     /**
      * Constructor.
      */
-    public MongoOvalDatastoreTool()
+    public MongoDatastoreTool()
     {
+        _setUp();
     }
 
 
+
+    private void _setUp()
+    {
+        _context = OvalContext.INSTANCE;
+        _mongo = _context.getBean( "mongo", Mongo.class );
+        _morphia = _context.getBean( "morphia", Morphia.class );
+
+        _db_name = _context.getProperty( "six.oval.repository.datastore.name" );
+        _LOG_.info( "DB name: " + _db_name );
+        for (MappedClass  clazz : _morphia.getMapper().getMappedClasses()) {
+            _LOG_.info( "% Morphia mapped collection: " + clazz.getCollectionName(), true );
+        }
+    }
+
+
+
+    public void dropAllCollections()
+    {
+        DB  db = _mongo.getDB( _db_name );
+        for (MappedClass  clazz : _morphia.getMapper().getMappedClasses()) {
+            _LOG_.info( "dropping collection: " + clazz.getCollectionName(), true );
+            db.getCollection( clazz.getCollectionName() ).drop();
+        }
+    }
+
+
+
+
+    ////////////////////////////////////////////////////////////////
 
     /**
      */
