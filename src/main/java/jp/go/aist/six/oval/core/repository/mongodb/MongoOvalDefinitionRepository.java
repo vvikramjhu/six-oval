@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.EnumMap;
 import java.util.List;
 import jp.go.aist.six.oval.model.OvalId;
@@ -257,8 +256,9 @@ public class MongoOvalDefinitionRepository
     {
         OvalId.Type  id_type = null;
         try {
-            OvalId  id = new OvalId( oval_id );
-            id_type = id.getType();
+            id_type = OvalId.typeOf( oval_id );
+//            OvalId  id = new OvalId( oval_id );
+//            id_type = id.getType();
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }
@@ -490,20 +490,21 @@ public class MongoOvalDefinitionRepository
 
 
 
-    protected <T extends DefinitionsElement> List<String> _saveEntities(
-                    final Class<T> type,
-                    final Collection<T> entity_list
-                    )
-    throws OvalRepositoryException
-    {
-        List<String>  id_list = new ArrayList<String>();
-        for (T  entity : entity_list) {
-            String  id = _datastore.save( type, entity );
-            id_list.add( id );
-        }
-
-        return id_list;
-    }
+    //TODO: Remove!
+//    protected <T extends DefinitionsElement> List<String> _saveEntities(
+//                    final Class<T> type,
+//                    final Collection<T> entity_list
+//                    )
+//    throws OvalRepositoryException
+//    {
+//        List<String>  id_list = new ArrayList<String>();
+//        for (T  entity : entity_list) {
+//            String  id = _datastore.save( type, entity );
+//            id_list.add( id );
+//        }
+//
+//        return id_list;
+//    }
 
 
 

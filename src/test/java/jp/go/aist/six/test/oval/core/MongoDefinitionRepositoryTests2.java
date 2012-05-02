@@ -78,19 +78,50 @@ extends MongoTests
      *   String                 filename
      *   T                      expected_object
      */
-    @DataProvider( name="data:oval.def.oval_definitions.save-element" )
-    public Object[][] provideOvalDefOvalDefinitionsSaveElement()
+    @DataProvider( name="data:oval.def.oval_definitions.repository.save-element" )
+    public Object[][] provideOvalDefOvalDefinitionsRepositorySaveElement()
     {
         return new Object[][] {
 //mitre repository//
-                        // windows //
                         {
                             OvalContentCategory.MITRE_REPOSITORY,
                             "5.10.1",
                             OvalDefinitions.class,
                             Family.WINDOWS,
                             "test/resources/mitre_repository/oval-5.10/def",
-                            "oval-5.10.1_def-12953_CVE-2011-1987.xml",
+                            "oval-5.10.1_def-12953_CVE-2011-1987.xml",      //Windows, Excel vulnerability
+                            null
+                        }
+        };
+
+    }
+
+
+
+    /**
+     * OVAL Definitions documents.
+     *
+     * Test method params:
+     *   OvalContentCategory    category,
+     *   String                 schema_version,
+     *   Class<T>               object_type,
+     *   Family                 family,
+     *   String                 dirpath,
+     *   String                 filename
+     *   T                      expected_object
+     */
+    @DataProvider( name="data:oval.def.oval_definitions.repository.save-oval-definitions" )
+    public Object[][] provideOvalDefOvalDefinitionsRepositorySaveOvalDefinitions()
+    {
+        return new Object[][] {
+//mitre repository//
+                        {
+                            OvalContentCategory.MITRE_REPOSITORY,
+                            "5.10.1",
+                            OvalDefinitions.class,
+                            Family.WINDOWS,
+                            "test/resources/mitre_repository/oval-5.10/def",
+                            "oval-5.10.1_def-14809_CVE-2011-4371.xml",      //Windows, Acrobat vulnerability
                             null
                         }
         };
@@ -379,7 +410,7 @@ extends MongoTests
                                     "control:repository.saveElement"
                                     },
                     dependsOnGroups={ "control:repository.queryElement" },
-                    dataProvider="data:oval.def.oval_definitions.save-element",
+                    dataProvider="data:oval.def.oval_definitions.repository.save-element",
                     alwaysRun=true
                     )
     public void testSaveElement(
@@ -474,6 +505,67 @@ extends MongoTests
             Reporter.log( "  @ OVAL-ID: " + p_oval_id, true );
             Assert.assertEquals( oval_id, p_oval_id );
             Assert.assertEquals( element.ovalGetElementType(), p_element.ovalGetElementType() );
+        }
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////
+    //  OVAL Definitions document
+    ////////////////////////////////////////////////////////////////
+
+    /*
+     * Saving and loading OVAL Definitions documents are tested in the super class MongoTests.
+     */
+
+    /**
+     * saveOvalDefinitions(oval_defs)
+     */
+    @org.testng.annotations.Test(
+                    groups={
+                                    "java:oval.core.repository.mongodb",
+                                    "data:oval.def",
+                                    "control:repository.saveOvalDefinitions"
+                                    },
+                    dependsOnGroups={ "control:repository.saveElement" },
+                    dataProvider="data:oval.def.oval_definitions.repository.save-oval-definitions",
+                    alwaysRun=true
+                    )
+    public void testSaveOvalDefinitions(
+                    final OvalContentCategory   category,
+                    final String                schema_version,
+                    final Class<OvalDefinitions> object_type,
+                    final Family                family,
+                    final String                dirpath,
+                    final String                xml_filepath,
+                    final OvalDefinitions       expected_object
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n//////////////////////////////////////////////////////////",
+                        true );
+
+        File[]  files = _toXmlFileList( dirpath, xml_filepath );
+        for (File  file : files) {
+            Reporter.log( "  * file= " + file, true );
+            OvalDefinitions  oval_defs = _unmarshalFromFile( object_type, file.getCanonicalPath(), expected_object );
+
+            Reporter.log( ">>> saveOvalDefinitions(oval_defs)...", true );
+            String  p_id = _getDefinitionRepository().saveOvalDefinitions( oval_defs );
+            Reporter.log( "<<< ...saveOvalDefinitions(oval_defs)", true );
+            Reporter.log( "  @ ID: " + p_id, true );
+            Assert.assertNotNull( p_id );
+
+            Reporter.log( ">>> findOvalDefinitionsById(id)...", true );
+            OvalDefinitions  p_oval_defs = _getDefinitionRepository().findOvalDefinitionsById( p_id );
+            Reporter.log( "<<< ...findOvalDefinitionsById(id)", true );
+            String  p_id2 = p_oval_defs.getPersistentID();
+            Reporter.log( "  @ OVAL Definitions doc: " + p_oval_defs, true );
+            Assert.assertEquals( p_id, p_id2 );
+
+            String    digest =   oval_defs.getDefinitionsDigest();
+            String  p_digest = p_oval_defs.getDefinitionsDigest();
+            Assert.assertEquals( digest, p_digest );
         }
     }
 
