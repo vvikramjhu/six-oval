@@ -14,6 +14,8 @@ import jp.go.aist.six.util.persist.Persistable;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
+import com.google.code.morphia.Morphia;
+import com.google.code.morphia.mapping.MappedClass;
 
 
 
@@ -40,6 +42,11 @@ public abstract class MongoTests
         super.setUp();
 
         _datastore = _getContext().getBean( MongoOvalDatastore.class );
+
+        Morphia  morphia = _getContext().getBean( "morphia", Morphia.class );
+        for (MappedClass  clazz : morphia.getMapper().getMappedClasses()) {
+            Reporter.log( "% Morphia mapped MongoDB collection: " + clazz.getCollectionName(), true );
+        }
 	}
 
 

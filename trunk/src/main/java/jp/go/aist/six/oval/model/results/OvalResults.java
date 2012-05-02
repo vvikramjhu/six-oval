@@ -38,7 +38,7 @@ import com.google.code.morphia.annotations.Reference;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-@Entity( "oval.r.oval_results" )
+@Entity( "oval.res.oval_results" )
 public class OvalResults
     extends AbstractDocument
 {

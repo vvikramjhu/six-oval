@@ -385,6 +385,17 @@ public class MongoOvalDefinitionRepository
 
 
 
+    //TODO: How can we sort the result of elements obtained from multiple collections?
+
+//    public List<String> findElementId(
+//                    final QueryParams params
+//                    )
+//    throws OvalRepositoryException
+//    {
+//    }
+
+
+
     @Override
     public long countElement(
                     final QueryParams params

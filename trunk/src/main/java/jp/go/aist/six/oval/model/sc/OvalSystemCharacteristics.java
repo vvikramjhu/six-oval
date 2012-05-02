@@ -33,7 +33,7 @@ import com.google.code.morphia.annotations.Entity;
  * @version $Id$
  * @see <a href="http://oval.mitre.org/language/">OVAL Language</a>
  */
-@Entity( "oval.s.oval_system_characteristics" )
+@Entity( "oval.sc.oval_system_characteristics" )
 public class OvalSystemCharacteristics
     extends AbstractDocument
 {
@@ -170,7 +170,7 @@ public class OvalSystemCharacteristics
 
     public SystemInfoType getSystemInfo()
     {
-        return this.system_info;
+        return system_info;
     }
 
 
@@ -187,7 +187,7 @@ public class OvalSystemCharacteristics
 
     public CollectedSystemObjectsType getCollectedObjects()
     {
-        return this.collected_objects;
+        return collected_objects;
     }
 
 
@@ -204,7 +204,7 @@ public class OvalSystemCharacteristics
 
     public SystemDataType getSystemData()
     {
-        return this.system_data;
+        return system_data;
     }
 
 
