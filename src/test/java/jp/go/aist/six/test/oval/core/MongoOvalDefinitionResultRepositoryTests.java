@@ -85,13 +85,17 @@ extends OvalCoreTests
         OvalSystemCharacteristicsQueryParams  params21 = new OvalSystemCharacteristicsQueryParams();
         params21.setHost( "host55.foo.com" );
 
-        // sc: IP
+        // sc: host
         OvalSystemCharacteristicsQueryParams  params22 = new OvalSystemCharacteristicsQueryParams();
-        params22.setIp( "192.168.140.1" );
+        params22.setHost( "host100" );
+
+        // sc: IP
+        OvalSystemCharacteristicsQueryParams  params23 = new OvalSystemCharacteristicsQueryParams();
+        params23.setIp( "192.168" );
 
         // sc: MAC
-        OvalSystemCharacteristicsQueryParams  params23 = new OvalSystemCharacteristicsQueryParams();
-        params23.setMac( "00-0C-29-37-69-D8" );
+        OvalSystemCharacteristicsQueryParams  params24 = new OvalSystemCharacteristicsQueryParams();
+        params24.setMac( "00-0C-29-37-69-D8" );
 
 
         return new Object[][] {
@@ -124,6 +128,11 @@ extends OvalCoreTests
                         {
                             jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
                             params23
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
+                            params24
                         }
         };
     }

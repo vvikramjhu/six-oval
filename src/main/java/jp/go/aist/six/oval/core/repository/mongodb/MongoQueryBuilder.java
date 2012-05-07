@@ -466,6 +466,7 @@ implements QueryBuilder
 
             Pattern  pattern = Pattern.compile( ".*" + value + ".*", Pattern.CASE_INSENSITIVE );
             if (field.contains( "," )) {
+                // e.g. title,comment = ".*buffer overflow.*"
                 String[]  fs = field.split( "," );
                 int  size = fs.length;
                 Criteria[]  criteria = new Criteria[size];
@@ -962,13 +963,29 @@ implements QueryBuilder
 
 
 
+//        protected static Map<String, Handler> _createHandlers()
+//        {
+//
+//            Map<String, Handler>  mapping = BasicBuilder._createHandlers();
+//
+//            return mapping;
+//        }
         protected static Map<String, Handler> _createHandlers()
         {
-
             Map<String, Handler>  mapping = BasicBuilder._createHandlers();
+            //common
+//            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
+            //sc
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.HOST,         PatternHandler.INSTANCE );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS,           PatternHandler.INSTANCE );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS_VERSION,   FilterHandler.INSTANCE );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.IP,           PatternHandler.INSTANCE );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.MAC,          PatternHandler.INSTANCE );
 
             return mapping;
         }
+
+
 
 
         private static final Map<String, Handler>  _HANDLERS_ = _createHandlers();
