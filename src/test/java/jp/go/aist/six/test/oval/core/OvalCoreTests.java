@@ -280,7 +280,7 @@ public abstract class OvalCoreTests
      *   String                 filename
      *   T                      expected_object
      */
-    @DataProvider( name="data:oval.def.oval_definitions" )
+    @DataProvider( name="DATA.oval.def.oval_definitions" )
     public Object[][] provideOvalDefOvalDefinitions()
     {
         return new Object[][] {
@@ -347,7 +347,7 @@ public abstract class OvalCoreTests
      *   String                     oval_id,
      *   T                          expected_object
      */
-    @DataProvider( name="data:oval.def.definition" )
+    @DataProvider( name="DATA.oval.def.definition" )
     public Object[][] provideOvalDefDefinition()
     {
         return new Object[][] {
@@ -393,7 +393,7 @@ public abstract class OvalCoreTests
      *   String                     oval_id,
      *   T                          expected_object
      */
-    @DataProvider( name="data:oval.def.element" )
+    @DataProvider( name="DATA.oval.def.element" )
     public Object[][] provideOvalDefElement()
     {
         return new Object[][] {
@@ -480,10 +480,10 @@ public abstract class OvalCoreTests
      *   Class<T>               object_type,
      *   Family                 family,
      *   String                 dirpath,
-     *   String                 filename
+     *   String                 xml_filepath
      *   T                      expected_object
      */
-    @DataProvider( name="data:oval.sc.oval_system_characteristics" )
+    @DataProvider( name="DATA.oval.sc.oval_sc" )
     public Object[][] provideOvalScOvalSystemCharacteristics()
     {
         return new Object[][] {
@@ -515,7 +515,7 @@ public abstract class OvalCoreTests
      *   String                 filename
      *   T                      expected_object
      */
-    @DataProvider( name="data:oval.res.oval_results" )
+    @DataProvider( name="DATA.oval.res.oval_results" )
     public Object[][] provideOvalResOvalResults()
     {
         return new Object[][] {

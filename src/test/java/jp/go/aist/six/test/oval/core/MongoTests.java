@@ -149,7 +149,7 @@ public abstract class MongoTests
      *  DefinitionsElement.Type   type,
      *  QueryParams               params
      */
-    @DataProvider( name="data:oval.repository.query_params.def.element" )
+    @DataProvider( name="DATA.oval.repository.query_params.def.element" )
     public Object[][] provideRepositoryQueryParamsOvalDefElement()
     {
         // common: order, count
@@ -286,7 +286,7 @@ public abstract class MongoTests
      *  DefinitionsElement.Type   type,
      *  QueryParams               params
      */
-    @DataProvider( name="data:oval.repository.query_params.def.definition" )
+    @DataProvider( name="DATA.oval.repository.query_params.def.definition" )
     public Object[][] provideRepositoryQueryParamsOvalDefDefinition()
     {
         // common: order, count
@@ -458,11 +458,11 @@ public abstract class MongoTests
      */
     @org.testng.annotations.Test(
                     groups={
-                                    "java:oval.core.repository.mongodb",
-                                    "data:oval.def",
-                                    "control:datastore.save"
+                                    "MODEL.oval.def",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.core.repository.mongodb.datastore.save"
                                     },
-                    dataProvider="data:oval.def.oval_definitions",
+                    dataProvider="DATA.oval.def.oval_definitions",
                     alwaysRun=true
                     )
     public <K, T extends Persistable<K>>
@@ -488,11 +488,11 @@ public abstract class MongoTests
      */
     @org.testng.annotations.Test(
                     groups={
-                                    "java:oval.core.repository.mongodb",
-                                    "data:oval.sc",
-                                    "control:datastore.save"
+                                    "MODEL.oval.sc",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.core.repository.mongodb.datastore.save"
                                     },
-                    dataProvider="data:oval.sc.oval_system_characteristics",
+                    dataProvider="DATA.oval.sc.oval_system_characteristics",
                     alwaysRun=true
                     )
     public <K, T extends Persistable<K>>
@@ -518,11 +518,11 @@ public abstract class MongoTests
      */
     @org.testng.annotations.Test(
                     groups={
-                                    "java:oval.core.repository.mongodb",
-                                    "data:oval.res",
-                                    "control:datastore.save"
+                                    "MODEL.oval.res",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.core.repository.mongodb.datastore.save"
                                     },
-                    dataProvider="data:oval.res.oval_results",
+                    dataProvider="DATA.oval.res.oval_results",
                     alwaysRun=true
                     )
     public <K, T extends Persistable<K>>
