@@ -205,6 +205,10 @@ extends OvalCoreTests
 
 
 
+    //**************************************************************
+    //  OVAL SC
+    //**************************************************************
+
     /**
      * findOvalSc(params)
      */
@@ -214,7 +218,7 @@ extends OvalCoreTests
                                     "PACKAGE.oval.core.repository.mongodb",
                                     "CONTROL.oval.repository.querySc"
                                     },
-                    dependsOnGroups={ "CONTROL.oval.repository.findOvalScById" },
+//                    dependsOnGroups={ "CONTROL.oval.repository.findOvalScById" },
                     dataProvider="DATA.oval.repository.query_params.sc.oval_sc",
                     alwaysRun=true
                     )
