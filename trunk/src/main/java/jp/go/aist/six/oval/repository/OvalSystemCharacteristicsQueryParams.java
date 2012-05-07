@@ -22,11 +22,8 @@ package jp.go.aist.six.oval.repository;
 
 
 
-
-
-
-
 /**
+ *
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
@@ -37,8 +34,11 @@ public class OvalSystemCharacteristicsQueryParams
     public static class Key
     extends CommonQueryParams.Key
     {
-        public static final String  PRIMARY_HOST_NAME   = "primary_host_name";
-        public static final String  OS_NAME             = "os_name";
+        public static final String  HOST        = "primary_host_name";
+        public static final String  OS          = "os_name";
+        public static final String  OS_VERSION  = "os_version";
+        public static final String  IP          = "ip_address";
+        public static final String  MAC         = "mac_address";
     }
     // Key
 
@@ -55,34 +55,85 @@ public class OvalSystemCharacteristicsQueryParams
 
     /**
      */
-    public void setPrimary_host_name(
-                    final String primary_host_name
+    public void setHost(
+                    final String host
                     )
     {
-        set( Key.PRIMARY_HOST_NAME, primary_host_name );
+        set( Key.HOST, host );
     }
 
 
-    public String getPrimary_host_name()
+    public String getHost()
     {
-        return get( Key.PRIMARY_HOST_NAME );
+        return get( Key.HOST );
     }
 
 
 
     /**
      */
-    public void setOs_name(
+    public void setOs(
                     final String os_name
     )
     {
-        set( Key.OS_NAME, os_name );
+        set( Key.OS, os_name );
     }
 
 
-    public String getOs_name()
+    public String getOs()
     {
-        return get( Key.OS_NAME );
+        return get( Key.OS );
+    }
+
+
+
+    /**
+     */
+    public void setOsVersion(
+                    final String os_version
+    )
+    {
+        set( Key.OS_VERSION, os_version );
+    }
+
+
+    public String getOsVersion()
+    {
+        return get( Key.OS_VERSION );
+    }
+
+
+
+    /**
+     */
+    public void setIp(
+                    final String ip_address
+    )
+    {
+        set( Key.IP, ip_address );
+    }
+
+
+    public String getIp()
+    {
+        return get( Key.IP );
+    }
+
+
+
+    /**
+     */
+    public void setMac(
+                    final String mac_address
+    )
+    {
+        set( Key.MAC, mac_address );
+    }
+
+
+    public String getMac()
+    {
+        return get( Key.MAC );
     }
 
 }

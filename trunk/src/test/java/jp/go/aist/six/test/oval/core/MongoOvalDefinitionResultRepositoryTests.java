@@ -1,14 +1,19 @@
 package jp.go.aist.six.test.oval.core;
 
 import java.io.File;
+import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionResultRepository;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
+import jp.go.aist.six.oval.model.sc.SystemInfoType;
+import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
+import jp.go.aist.six.oval.repository.QueryParams;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 
 
 
@@ -51,34 +56,79 @@ extends OvalCoreTests
     //  test data
     ////////////////////////////////////////////////////////////////
 
-//    /**
-//     * OVAL Results documents.
-//     *
-//     * Test method params:
-//     *   OvalContentCategory    category,
-//     *   String                 schema_version,
-//     *   Class<T>               object_type,
-//     *   Family                 family,
-//     *   String                 dirpath,
-//     *   String                 filename
-//     *   T                      expected_object
-//     */
-//    @DataProvider( name="data:oval.res.oval_results.repository.save-oval-results" )
-//    public Object[][] provideOvalResOvalResultsRepositorySaveOvalResults()
-//    {
-//        return new Object[][] {
-//                        {
-//                            OvalContentCategory.MITRE_REPOSITORY,
-//                            "5.10.1",
-//                            OvalResults.class,
-//                            Family.WINDOWS,
-//                            "test/resources/mitre_repository/oval-5.10/res/windows",
-//                            null,
-//                            null
-//                        }
-//        };
-//
-//    }
+    /**
+     * OVAL SC document.
+     *
+     *  Class<OvalSystemCharacteristics>    object_type,
+     *  QueryParams                         params
+     */
+    @DataProvider( name="DATA.oval.repository.query_params.sc.oval_sc" )
+    public Object[][] provideRepositoryQueryParamsOvalSystemCharacteristics()
+    {
+        // common: order, count
+        OvalSystemCharacteristicsQueryParams  params01 = new OvalSystemCharacteristicsQueryParams();
+        params01.setOrder( "_id" );
+        params01.setCount( "3" );
+
+        // common: order, count, startIndex
+        OvalSystemCharacteristicsQueryParams  params02 = new OvalSystemCharacteristicsQueryParams();
+        params02.setOrder( "_id" );
+        params02.setCount( "2" );
+        params02.setStartIndex( "4" );
+
+        // common: order, count, startIndex
+        OvalSystemCharacteristicsQueryParams  params03 = new OvalSystemCharacteristicsQueryParams();
+        params03.setOrder( "-_id" );
+        params03.setCount( "5" );
+
+        // sc: host
+        OvalSystemCharacteristicsQueryParams  params21 = new OvalSystemCharacteristicsQueryParams();
+        params21.setHost( "host55.foo.com" );
+
+        // sc: IP
+        OvalSystemCharacteristicsQueryParams  params22 = new OvalSystemCharacteristicsQueryParams();
+        params22.setIp( "192.168.140.1" );
+
+        // sc: MAC
+        OvalSystemCharacteristicsQueryParams  params23 = new OvalSystemCharacteristicsQueryParams();
+        params23.setMac( "00-0C-29-37-69-D8" );
+
+
+        return new Object[][] {
+                        {
+                            jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
+                            params01
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
+                            params02
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
+                            params03
+                        }
+                        ,
+
+                        {
+                            jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
+                            params21
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
+                            params22
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
+                            params23
+                        }
+        };
+    }
+
+
 
 
 
@@ -156,6 +206,66 @@ extends OvalCoreTests
 
 
     /**
+     * findOvalSc(params)
+     */
+    @org.testng.annotations.Test(
+                    groups={
+                                    "MODEL.oval.sc",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.repository.querySc"
+                                    },
+                    dependsOnGroups={ "CONTROL.oval.repository.findOvalScById" },
+                    dataProvider="DATA.oval.repository.query_params.sc.oval_sc",
+                    alwaysRun=true
+                    )
+    public void testFindOvalSc(
+                    final Class<OvalSystemCharacteristics>  object_type,
+                    final QueryParams                       params
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n//////////////////////////////////////////////////////////",
+                        true );
+        Reporter.log( ">>> findOvalSc(params)...", true );
+        Reporter.log( "  * params: " + params, true );
+
+        List<OvalSystemCharacteristics>  oval_sc_list = _getDefinitionResultRepository().findOvalSc( params );
+        Reporter.log( "<<< ...findOvalSc(params)", true );
+        Assert.assertNotNull( oval_sc_list );
+        Reporter.log( "  @ #Oval SC: " + oval_sc_list.size(), true );
+        for (OvalSystemCharacteristics  oval_sc : oval_sc_list) {
+            SystemInfoType  sys = oval_sc.getSystemInfo();
+            Reporter.log( "  @ SC.system_info: " + sys, true );
+        }
+
+
+//        Reporter.log( ">>> findDefinitionId(params)...", true );
+//        Reporter.log( "  * params: "          + params, true );
+//
+//        List<String>  def_id_list = _getDefinitionResultRepository().findDefinitionId( params );
+//        Reporter.log( "<<< ...findDefinitionId(params)", true );
+//        Assert.assertNotNull( def_id_list );
+//        Reporter.log( "  @ #IDs: " + def_id_list.size(), true );
+//
+//        Assert.assertEquals( def_list.size(), def_id_list.size() );
+
+
+//        String  count_param = params.get( CommonQueryParams.Key.COUNT );
+//        //If the "count" param is specified, finxXxx() methods returns at most "count" objects.
+//        //And then, the number of results does not equal to the number returned from the countXxx() methods.
+//        if (count_param == null) {
+//            Reporter.log( ">>> countDefinition(params)...", true );
+//            long  count = _getDefinitionRepository().countDefinition( params );
+//            Reporter.log( "<<< ...countDefinition(params)", true );
+//            Reporter.log( "  @ #Definitions: " + count, true );
+//
+//            Assert.assertEquals( def_list.size(), count );
+//        }
+    }
+
+
+
+    /**
      * saveOvalSc(oval_results), findOvalScById(id)
      */
     @org.testng.annotations.Test(
@@ -164,10 +274,10 @@ extends OvalCoreTests
                                     "PACKAGE.oval.core.repository.mongodb",
                                     "CONTROL.oval.repository.saveOvalSc",
                                     "CONTROL.oval.repository.findOvalScById"
-                                    },
+                                    }
 //                    dependsOnGroups={ "control:repository.saveElement" },
-                    dataProvider="DATA.oval.sc.oval_sc",
-                    alwaysRun=true
+                    ,dataProvider="DATA.oval.sc.oval_sc"
+                    ,alwaysRun=true
                     )
     public void testSaveOvalScAndFindById(
                     final OvalContentCategory               category,

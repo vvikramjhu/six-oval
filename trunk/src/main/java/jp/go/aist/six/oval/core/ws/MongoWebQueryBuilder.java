@@ -831,8 +831,8 @@ implements QueryBuilder
         {
             Map<String, String>  mapping = new HashMap<String, String>();
 
-            mapping.put( OvalSystemCharacteristicsQueryParams.Key.PRIMARY_HOST_NAME, "system_info.os_name" );
-            mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS_NAME,           "system_info.primary_host_name" );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.HOST, "system_info.os_name" );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS,           "system_info.primary_host_name" );
 
             return mapping;
         }
@@ -892,8 +892,8 @@ implements QueryBuilder
         {
             Map<String, String>  mapping = new HashMap<String, String>();
 
-            mapping.put( OvalResultsQueryParams.Key.PRIMARY_HOST_NAME, "results.system.oval_system_characteristics.system_info.primary_host_name" );
-            mapping.put( OvalResultsQueryParams.Key.OS_NAME,           "results.system.oval_system_characteristics.system_info.os_name" );
+            mapping.put( OvalResultsQueryParams.Key.HOST, "results.system.oval_system_characteristics.system_info.primary_host_name" );
+            mapping.put( OvalResultsQueryParams.Key.OS,           "results.system.oval_system_characteristics.system_info.os_name" );
             mapping.put( OvalResultsQueryParams.Key.RESULT_TRUE_DEF,   "results.system.definitions.definition" );
             mapping.put( OvalResultsQueryParams.Key.RESULT_FALSE_DEF,  "results.system.definitions.definition" );
 
@@ -952,8 +952,8 @@ implements QueryBuilder
 
 
             Map<String, Handler>  mapping = BasicBuilder._createHandlers();
-            mapping.put( OvalResultsQueryParams.Key.PRIMARY_HOST_NAME,  _DEFAULT_HANDLER_ );
-            mapping.put( OvalResultsQueryParams.Key.OS_NAME,            _DEFAULT_HANDLER_ );
+            mapping.put( OvalResultsQueryParams.Key.HOST,  _DEFAULT_HANDLER_ );
+            mapping.put( OvalResultsQueryParams.Key.OS,            _DEFAULT_HANDLER_ );
             mapping.put( OvalResultsQueryParams.Key.RESULT_TRUE_DEF,    resultTrueHandler );
             mapping.put( OvalResultsQueryParams.Key.RESULT_FALSE_DEF,   resultFalseHandler );
 

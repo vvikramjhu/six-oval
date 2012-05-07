@@ -219,6 +219,24 @@ public class MongoOvalDefinitionResultRepository
 
 
     @Override
+    public List<OvalSystemCharacteristics> findOvalSc(
+                    final QueryParams params
+                    )
+    throws OvalRepositoryException
+    {
+        List<OvalSystemCharacteristics>  p_list = null;
+        try {
+            p_list = getDatastore().find( OvalSystemCharacteristics.class, params );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        return p_list;
+    }
+
+
+
+    @Override
     public String saveOvalSc(
                     final OvalSystemCharacteristics oval_sc
                     )
