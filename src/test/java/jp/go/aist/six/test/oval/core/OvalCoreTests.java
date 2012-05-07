@@ -497,6 +497,16 @@ public abstract class OvalCoreTests
                             null,
                             null
                         }
+                        ,
+                        {
+                            OvalContentCategory.OVAL_TEST_CONTENT,
+                            "5.9",
+                            OvalSystemCharacteristics.class,
+                            Family.WINDOWS,
+                            "test/resources/oval_test-content/oval-5.9/sc/windows",
+                            null,
+                            null
+                        }
         };
 
     }

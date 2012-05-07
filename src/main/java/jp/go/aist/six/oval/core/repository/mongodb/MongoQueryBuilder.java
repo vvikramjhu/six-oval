@@ -948,8 +948,11 @@ implements QueryBuilder
         {
             Map<String, String>  mapping = new HashMap<String, String>();
 
-            mapping.put( OvalSystemCharacteristicsQueryParams.Key.PRIMARY_HOST_NAME, "system_info.os_name" );
-            mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS_NAME,           "system_info.primary_host_name" );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.HOST,         "system_info.primary_host_name" );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS,           "system_info.os_name" );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS_VERSION,   "system_info.os_version" );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.IP,           "system_info.interfaces.interface.ip_address" );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.MAC,          "system_info.interfaces.interface.mac_address" );
 
             return mapping;
         }
@@ -1009,8 +1012,8 @@ implements QueryBuilder
         {
             Map<String, String>  mapping = new HashMap<String, String>();
 
-            mapping.put( OvalResultsQueryParams.Key.PRIMARY_HOST_NAME, "results.system.oval_system_characteristics.system_info.primary_host_name" );
-            mapping.put( OvalResultsQueryParams.Key.OS_NAME,           "results.system.oval_system_characteristics.system_info.os_name" );
+            mapping.put( OvalResultsQueryParams.Key.HOST, "results.system.oval_system_characteristics.system_info.primary_host_name" );
+            mapping.put( OvalResultsQueryParams.Key.OS,           "results.system.oval_system_characteristics.system_info.os_name" );
             mapping.put( OvalResultsQueryParams.Key.RESULT_TRUE_DEF,   "results.system.definitions.definition" );
             mapping.put( OvalResultsQueryParams.Key.RESULT_FALSE_DEF,  "results.system.definitions.definition" );
 
@@ -1069,8 +1072,8 @@ implements QueryBuilder
 
 
             Map<String, Handler>  mapping = BasicBuilder._createHandlers();
-            mapping.put( OvalResultsQueryParams.Key.PRIMARY_HOST_NAME,  FilterHandler.INSTANCE );
-            mapping.put( OvalResultsQueryParams.Key.OS_NAME,            FilterHandler.INSTANCE );
+            mapping.put( OvalResultsQueryParams.Key.HOST,  FilterHandler.INSTANCE );
+            mapping.put( OvalResultsQueryParams.Key.OS,            FilterHandler.INSTANCE );
             mapping.put( OvalResultsQueryParams.Key.RESULT_TRUE_DEF,    resultTrueHandler );
             mapping.put( OvalResultsQueryParams.Key.RESULT_FALSE_DEF,   resultFalseHandler );
 

@@ -147,6 +147,21 @@ public interface OvalResultRepository
 
 
     /**
+     * Searches for the OVAL System Characteristics that match the specified query parameters.
+     *
+     * @param   params
+     *  the query parameters.
+     * @return
+     *  the OVAL System Characteristics objects.
+     */
+    public List<OvalSystemCharacteristics> findOvalSc(
+                    QueryParams params
+                    )
+    throws OvalRepositoryException;
+
+
+
+    /**
      * Saves the OVAL System Characteristics document.
      *
      * @param   oval_sc

@@ -227,7 +227,9 @@ not the family-specific one.
         <field name="message" 
             type="jp.go.aist.six.oval.model.common.MessageType"
             collection="collection">
-            <bind-xml name="message" node="element"/>
+            <bind-xml name="message" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"
+            />
             <!--
                 xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"
             -->

@@ -388,11 +388,11 @@
           <os_name>Linux</os_name>
           <os_version>#1 SMP Sat Jun 11 14:54:10 UTC 2011</os_version>
           <architecture>i686</architecture>
-          <primary_host_name>dhcp149181.a01.aist.go.jp</primary_host_name>
+          <primary_host_name>dhcp149181.bar.org</primary_host_name>
           <interfaces>
             <interface>
               <interface_name>eth0</interface_name>
-              <ip_address>150.29.149.181</ip_address>
+              <ip_address>192.168.149.181</ip_address>
               <mac_address>00-0C-29-37-69-D8</mac_address>
             </interface>
           </interfaces>
