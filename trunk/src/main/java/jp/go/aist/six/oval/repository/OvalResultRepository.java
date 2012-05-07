@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.repository;
 
 import java.util.List;
 import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 
 
 
@@ -40,6 +41,8 @@ public interface OvalResultRepository
      *
      * @param   id
      *  the ID.
+     * @return
+     *  the OVAL Results object if exists, null otherwise.
      */
     public OvalResults findOvalResultsById(
                     String id
@@ -122,6 +125,37 @@ public interface OvalResultRepository
      */
     public String saveOvalResults(
                     OvalResults oval_results
+                    )
+    throws OvalRepositoryException;
+
+
+
+    /**
+     * Returns the OVAL System Characteristics of the specified ID.
+     * If no such object exists, this method returns null.
+     *
+     * @param   id
+     *  the ID.
+     * @return
+     *  the OVAL System Characteristics object if exists, null otherwise.
+     */
+    public OvalSystemCharacteristics findOvalScById(
+                    String id
+                    )
+    throws OvalRepositoryException;
+
+
+
+    /**
+     * Saves the OVAL System Characteristics document.
+     *
+     * @param   oval_sc
+     *  the OVAL System Characteristics document.
+     * @return
+     *  the ID of the document.
+     */
+    public String saveOvalSc(
+                    OvalSystemCharacteristics oval_sc
                     )
     throws OvalRepositoryException;
 

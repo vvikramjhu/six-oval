@@ -78,12 +78,12 @@
     <!-- ******************************************************* -->
 
     <test name="oval.core.repository.mongodb" enabled="true">
-                <!--
         <groups>
             <run>
-                <include name="control.repository.queryElement"/>
+                <include name="CONTROL.oval.repository.saveOvalSc"/>
             </run>
         </groups>
+                <!--
                 -->
         <classes>
             <class name="jp.go.aist.six.test.oval.core.MongoOvalDefinitionResultRepositoryTests"/>

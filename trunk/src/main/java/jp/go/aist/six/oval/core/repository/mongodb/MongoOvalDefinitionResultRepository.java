@@ -22,6 +22,7 @@ package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.util.List;
 import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.repository.OvalRepositoryException;
 import jp.go.aist.six.oval.repository.OvalResultRepository;
 import jp.go.aist.six.oval.repository.QueryParams;
@@ -190,6 +191,42 @@ public class MongoOvalDefinitionResultRepository
         String  id = null;
         try {
             id = getDatastore().save( OvalResults.class, oval_results );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        return id;
+    }
+
+
+
+    @Override
+    public OvalSystemCharacteristics findOvalScById(
+                    final String id
+                    )
+    throws OvalRepositoryException
+    {
+        OvalSystemCharacteristics  p_object = null;
+        try {
+            p_object = getDatastore().findById( OvalSystemCharacteristics.class, id );
+        } catch (Exception ex) {
+            throw new OvalRepositoryException( ex );
+        }
+
+        return p_object;
+    }
+
+
+
+    @Override
+    public String saveOvalSc(
+                    final OvalSystemCharacteristics oval_sc
+                    )
+    throws OvalRepositoryException
+    {
+        String  id = null;
+        try {
+            id = getDatastore().save( OvalSystemCharacteristics.class, oval_sc );
         } catch (Exception ex) {
             throw new OvalRepositoryException( ex );
         }

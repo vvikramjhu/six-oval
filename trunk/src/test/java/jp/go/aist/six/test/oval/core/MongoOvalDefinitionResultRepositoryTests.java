@@ -5,6 +5,7 @@ import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionResultRepo
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -90,15 +91,15 @@ extends OvalCoreTests
      */
     @org.testng.annotations.Test(
                     groups={
-                                    "java:oval.core.repository.mongodb",
-                                    "data:oval.res",
-                                    "control:repository.saveOvalResults"
+                                    "MODEL.oval.res",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.repository.saveOvalResults"
                                     },
 //                    dependsOnGroups={ "control:repository.saveElement" },
-                    dataProvider="data:oval.res.oval_results",
+                    dataProvider="DATA.oval.res.oval_results",
                     alwaysRun=true
                     )
-    public void testSaveOvalResults(
+    public void testSaveOvalResultsAndFindById(
                     final OvalContentCategory   category,
                     final String                schema_version,
                     final Class<OvalResults>    object_type,
@@ -150,6 +151,68 @@ extends OvalCoreTests
         }
 
         return p_oval_results;
+    }
+
+
+
+    /**
+     * saveOvalSc(oval_results), findOvalScById(id)
+     */
+    @org.testng.annotations.Test(
+                    groups={
+                                    "MODEL.oval.sc",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.repository.saveOvalSc",
+                                    "CONTROL.oval.repository.findOvalScById"
+                                    },
+//                    dependsOnGroups={ "control:repository.saveElement" },
+                    dataProvider="DATA.oval.sc.oval_sc",
+                    alwaysRun=true
+                    )
+    public void testSaveOvalScAndFindById(
+                    final OvalContentCategory               category,
+                    final String                            schema_version,
+                    final Class<OvalSystemCharacteristics>  object_type,
+                    final Family                            family,
+                    final String                            dirpath,
+                    final String                            xml_filepath,
+                    final OvalSystemCharacteristics         expected_object
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n//////////////////////////////////////////////////////////",
+                        true );
+
+        File[]  files = _toXmlFileList( dirpath, xml_filepath );
+        for (File  file : files) {
+            OvalSystemCharacteristics  oval_results = _unmarshalFromFile( object_type, file.getCanonicalPath(), expected_object );
+            _saveOvalScAndFindById( oval_results );
+        }
+    }
+
+
+
+    protected OvalSystemCharacteristics _saveOvalScAndFindById(
+                    final OvalSystemCharacteristics oval_sc
+                    )
+    throws Exception
+    {
+        Reporter.log( ">>> saveOvalSc(oval_sc)...", true );
+        String  p_id = _getDefinitionResultRepository().saveOvalSc( oval_sc );
+        Reporter.log( "<<< ...saveOvalSc(oval_sc)", true );
+        Reporter.log( "  @ persistent ID: " + p_id, true );
+        Assert.assertNotNull( p_id );
+
+        Reporter.log( ">>> findOvalScById(id)...", true );
+        OvalSystemCharacteristics  p_oval_sc = _getDefinitionResultRepository().findOvalScById( p_id );
+        Reporter.log( "<<< ...findOvalScById(id)", true );
+        Assert.assertNotNull( p_oval_sc );
+        String  p_id2 = p_oval_sc.getPersistentID();
+        Assert.assertEquals( p_id, p_id2 );
+        Assert.assertEquals( oval_sc.getGenerator(), p_oval_sc.getGenerator() );
+        Assert.assertEquals( oval_sc.getSystemInfo(), p_oval_sc.getSystemInfo() );
+
+        return p_oval_sc;
     }
 
 }

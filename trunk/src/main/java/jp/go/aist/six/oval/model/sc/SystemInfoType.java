@@ -122,7 +122,7 @@ public class SystemInfoType
 
     public String getOsName()
     {
-        return this.os_name;
+        return os_name;
     }
 
 
@@ -139,7 +139,7 @@ public class SystemInfoType
 
     public String getOsVersion()
     {
-        return this.os_version;
+        return os_version;
     }
 
 
@@ -156,7 +156,7 @@ public class SystemInfoType
 
     public String getArchitecture()
     {
-        return this.architecture;
+        return architecture;
     }
 
 
@@ -174,7 +174,7 @@ public class SystemInfoType
 
     public String getPrimaryHostName()
     {
-        return this.primary_host_name;
+        return primary_host_name;
     }
 
 
@@ -191,7 +191,7 @@ public class SystemInfoType
 
     public InterfacesType getInterfaces()
     {
-        return this.interfaces;
+        return interfaces;
     }
 
 
@@ -223,6 +223,70 @@ public class SystemInfoType
     //**************************************************************
     //  java.lang.Object
     //**************************************************************
+
+    @Override
+    public int hashCode()
+    {
+        final int  prime = 37;
+        int  result = 17;
+
+        String  os_name = getOsName();
+        result = prime * result + ((os_name == null) ? 0 : os_name.hashCode());
+
+        String  os_version = getOsVersion();
+        result = prime * result + ((os_version == null) ? 0 : os_version.hashCode());
+
+        String  arch = getArchitecture();
+        result = prime * result + ((arch == null) ? 0 : arch.hashCode());
+
+        String  host_name = getPrimaryHostName();
+        result = prime * result + ((host_name == null) ? 0 : host_name.hashCode());
+
+        return result;
+    }
+
+
+
+    @Override
+    public boolean equals(
+                    final Object obj
+                    )
+    {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof SystemInfoType)) {
+            return false;
+        }
+
+        SystemInfoType  other = (SystemInfoType)obj;
+        String  other_host = other.getPrimaryHostName();
+        String   this_host =  this.getPrimaryHostName();
+        if (this_host == other_host
+                        ||  (this_host != null  &&  this_host.equals( other_host ))) {
+            String  other_os_version = other.getOsVersion();
+            String   this_os_version =  this.getOsVersion();
+            if (this_os_version == other_os_version
+                            ||  (this_os_version != null  &&  this_os_version.equals( other_os_version ))) {
+                String  other_os_name = other.getOsName();
+                String   this_os_name =  this.getOsName();
+                if (this_os_name == other_os_name
+                                ||  (this_os_name != null  &&  this_os_name.equals( other_os_name ))) {
+                    String  other_arch = other.getArchitecture();
+                    String   this_arch =  this.getArchitecture();
+                    if (this_arch == other_arch
+                                    ||  (this_arch != null  &&  this_arch.equals( other_arch ))) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
+
 
     @Override
     public String toString()

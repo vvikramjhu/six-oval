@@ -78,7 +78,7 @@ extends MongoTests
      *   String                 filename
      *   T                      expected_object
      */
-    @DataProvider( name="data:oval.def.oval_definitions.repository.save-element" )
+    @DataProvider( name="DATA.oval.def.oval_definitions.repository.save-element" )
     public Object[][] provideOvalDefOvalDefinitionsRepositorySaveElement()
     {
         return new Object[][] {
@@ -110,7 +110,7 @@ extends MongoTests
      *   String                 filename
      *   T                      expected_object
      */
-    @DataProvider( name="data:oval.def.oval_definitions.repository.save-oval-definitions" )
+    @DataProvider( name="DATA.oval.def.oval_definitions.repository.save-oval-definitions" )
     public Object[][] provideOvalDefOvalDefinitionsRepositorySaveOvalDefinitions()
     {
         return new Object[][] {
@@ -139,12 +139,12 @@ extends MongoTests
      */
     @org.testng.annotations.Test(
                     groups={
-                                    "java:oval.core.repository.mongodb",
-                                    "data:oval.def",
-                                    "control:repository.findDefinition",
-                                    "control:repository.countDefinition"
+                                    "MODEL.oval.def",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.repository.findDefinition",
+                                    "CONTROL.oval.repository.countDefinition"
                                     },
-                    dependsOnGroups={ "control:datastore.save" },
+                    dependsOnGroups={ "CONTROL.oval.core.repository.mongodb.datastore.save" },
                     alwaysRun=true
                     )
     public void testFindAndCountDefinition()
@@ -174,12 +174,12 @@ extends MongoTests
      */
     @org.testng.annotations.Test(
                     groups={
-                                    "java:oval.core.repository.mongodb",
-                                    "data:oval.def",
-                                    "control:repository.findDefinitionById"
+                                    "MODEL.oval.def",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.repository.findDefinitionById"
                                     },
-                    dependsOnGroups={ "control:repository.findDefinition" },
-                    dataProvider="data:oval.def.definition",
+                    dependsOnGroups={ "CONTROL.oval.repository.findDefinition" },
+                    dataProvider="DATA.oval.def.definition",
                     alwaysRun=true
                     )
     public void testFindDefinitionById(
@@ -212,12 +212,12 @@ extends MongoTests
      */
     @org.testng.annotations.Test(
                     groups={
-                                    "java:oval.core.repository.mongodb",
-                                    "data:oval.def",
-                                    "control:repository.queryDefinition"
+                                    "MODEL.oval.def",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.repository.queryDefinition"
                                     },
-                    dependsOnGroups={ "control:repository.findDefinitionById" },
-                    dataProvider="data:oval.repository.query_params.def.definition",
+                    dependsOnGroups={ "CONTROL.oval.repository.findDefinitionById" },
+                    dataProvider="DATA.oval.repository.query_params.def.definition",
                     alwaysRun=true
                     )
     public void testFindAndCountDefinition(
@@ -274,12 +274,12 @@ extends MongoTests
      */
     @org.testng.annotations.Test(
                     groups={
-                                    "java:oval.core.repository.mongodb",
-                                    "data:oval.def",
-                                    "control:repository.findElementById"
+                                    "MODEL.oval.def",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.repository.findElementById"
                                     },
-                    dependsOnGroups={ "control:repository.queryDefinition" },
-                    dataProvider="data:oval.def.element",
+                    dependsOnGroups={ "CONTROL.oval.repository.queryDefinition" },
+                    dataProvider="DATA.oval.def.element",
                     alwaysRun=true
                     )
     public void testFindElementById(
@@ -316,12 +316,12 @@ extends MongoTests
      */
     @org.testng.annotations.Test(
                     groups={
-                                    "java:oval.core.repository.mongodb",
-                                    "data:oval.def",
-                                    "control:repository.findElementById"
+                                    "MODEL.oval.def",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.repository.findElementById"
                                     },
-                    dependsOnGroups={ "control:repository.queryDefinition" },
-                    dataProvider="data:oval.def.definition",
+                    dependsOnGroups={ "CONTROL.oval.repository.queryDefinition" },
+                    dataProvider="DATA.oval.def.definition",
                     alwaysRun=true
                     )
     public void testFindElementById(
@@ -357,12 +357,12 @@ extends MongoTests
      */
     @org.testng.annotations.Test(
                     groups={
-                                    "java:oval.core.repository.mongodb",
-                                    "data:oval.def",
-                                    "control:repository.queryElement"
+                                    "MODEL.oval.def",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.repository.queryElement"
                                     },
-                    dependsOnGroups={ "control:repository.findElementById" },
-                    dataProvider="data:oval.repository.query_params.def.element",
+                    dependsOnGroups={ "CONTROL.oval.repository.findElementById" },
+                    dataProvider="DATA.oval.repository.query_params.def.element",
                     alwaysRun=true
                     )
     public void testFindAndCountElement(
@@ -405,12 +405,12 @@ extends MongoTests
      */
     @org.testng.annotations.Test(
                     groups={
-                                    "java:oval.core.repository.mongodb",
-                                    "data:oval.def",
-                                    "control:repository.saveElement"
+                                    "MODEL.oval.def",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.repository.saveElement"
                                     },
-                    dependsOnGroups={ "control:repository.queryElement" },
-                    dataProvider="data:oval.def.oval_definitions.repository.save-element",
+                    dependsOnGroups={ "CONTROL.oval.repository.queryElement" },
+                    dataProvider="DATA.oval.def.oval_definitions.repository.save-element",
                     alwaysRun=true
                     )
     public void testSaveElement(
@@ -523,12 +523,12 @@ extends MongoTests
      */
     @org.testng.annotations.Test(
                     groups={
-                                    "java:oval.core.repository.mongodb",
-                                    "data:oval.def",
-                                    "control:repository.saveOvalDefinitions"
+                                    "MODEL.oval.def",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.repository.saveOvalDefinitions"
                                     },
-                    dependsOnGroups={ "control:repository.saveElement" },
-                    dataProvider="data:oval.def.oval_definitions.repository.save-oval-definitions",
+                    dependsOnGroups={ "CONTROL.oval.repository.saveElement" },
+                    dataProvider="DATA.oval.def.oval_definitions.repository.save-oval-definitions",
                     alwaysRun=true
                     )
     public void testSaveOvalDefinitions(
