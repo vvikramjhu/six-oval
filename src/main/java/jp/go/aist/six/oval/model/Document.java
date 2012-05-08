@@ -20,10 +20,8 @@
 
 package jp.go.aist.six.oval.model;
 
-import java.util.UUID;
 import jp.go.aist.six.util.persist.Persistable;
 import com.google.code.morphia.annotations.Id;
-import com.google.code.morphia.annotations.PrePersist;
 
 
 
@@ -84,16 +82,16 @@ public abstract class Document
     //  MongoDB/Morphia Lifecycle
     //**************************************************************
 
-    @SuppressWarnings( "unused" )
-    @PrePersist
-    private void _assignPersistentID()
-    {
-        String  pid = getPersistentID();
-        if (pid == null) {
-            pid = UUID.randomUUID().toString();
-            setPersistentID( pid );
-        }
-    }
+//    @SuppressWarnings( "unused" )
+//    @PrePersist
+//    private void _assignPersistentID()
+//    {
+//        String  pid = getPersistentID();
+//        if (pid == null) {
+//            pid = UUID.randomUUID().toString();
+//            setPersistentID( pid );
+//        }
+//    }
 
 
 
