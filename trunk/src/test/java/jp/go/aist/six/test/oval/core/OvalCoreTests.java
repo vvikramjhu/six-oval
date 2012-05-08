@@ -269,7 +269,7 @@ public abstract class OvalCoreTests
     ////////////////////////////////////////////////////////////////
 
     /**
-     * OVAL Definitions documents.
+     * OVAL Definitions XML documents.
      *
      * Test method params:
      *   OvalContentCategory    category,
@@ -277,7 +277,7 @@ public abstract class OvalCoreTests
      *   Class<T>               object_type,
      *   Family                 family,
      *   String                 dirpath,
-     *   String                 filename
+     *   String                 xml_filepath
      *   T                      expected_object
      */
     @DataProvider( name="DATA.oval.def.oval_definitions" )
@@ -285,17 +285,17 @@ public abstract class OvalCoreTests
     {
         return new Object[][] {
 // OVAL test content //
-                        // linux //
-                        {
-                            OvalContentCategory.OVAL_TEST_CONTENT,
-                            "5.9",
-                            OvalDefinitions.class,
-                            Family.LINUX,
-                            "test/resources/oval_test-content/oval-5.9/def/linux",
-                            null,
-                            null
-                        }
-                        ,
+//                        // linux //
+//                        {
+//                            OvalContentCategory.OVAL_TEST_CONTENT,
+//                            "5.9",
+//                            OvalDefinitions.class,
+//                            Family.LINUX,
+//                            "test/resources/oval_test-content/oval-5.9/def/linux",
+//                            null,
+//                            null
+//                        }
+//                        ,
                         // Windows //
                         {
                             OvalContentCategory.OVAL_TEST_CONTENT,
@@ -354,7 +354,7 @@ public abstract class OvalCoreTests
                         /* Windows */
                         {
                             OvalContentCategory.OVAL_TEST_CONTENT,
-                            "5.10",
+                            "5.9",
                             DefinitionType.class,
                             DefinitionsElement.Type.DEFINITION,
                             ClassEnumeration.MISCELLANEOUS,
@@ -363,18 +363,29 @@ public abstract class OvalCoreTests
                             null
                         }
                         ,
-
-                        /* linux */
                         {
                             OvalContentCategory.OVAL_TEST_CONTENT,
-                            "5.10",
+                            "5.9",
                             DefinitionType.class,
                             DefinitionsElement.Type.DEFINITION,
                             ClassEnumeration.MISCELLANEOUS,
                             null,
-                            "oval:org.mitre.oval.test:def:683",
+                            "oval:org.mitre.oval.test:def:16",
                             null
                         }
+//                        ,
+//
+//                        /* linux */
+//                        {
+//                            OvalContentCategory.OVAL_TEST_CONTENT,
+//                            "5.10",
+//                            DefinitionType.class,
+//                            DefinitionsElement.Type.DEFINITION,
+//                            ClassEnumeration.MISCELLANEOUS,
+//                            null,
+//                            "oval:org.mitre.oval.test:def:683",
+//                            null
+//                        }
         };
 
     }
@@ -483,27 +494,36 @@ public abstract class OvalCoreTests
      *   String                 xml_filepath
      *   T                      expected_object
      */
-    @DataProvider( name="DATA.oval.sc.oval_sc" )
+    @DataProvider( name="DATA.oval.sc.oval_system_characteristics" )
     public Object[][] provideOvalScOvalSystemCharacteristics()
     {
         return new Object[][] {
-                        // Windows //
                         {
-                            OvalContentCategory.MITRE_REPOSITORY,
+                            OvalContentCategory.OVAL_TEST_CONTENT,
                             "5.10.1",
                             OvalSystemCharacteristics.class,
                             Family.WINDOWS,
-                            "test/resources/mitre_repository/oval-5.10/sc/windows",
+                            "test/resources/oval_test-content/oval-5.9/sc/windows",
                             null,
                             null
                         }
                         ,
                         {
                             OvalContentCategory.OVAL_TEST_CONTENT,
-                            "5.9",
+                            "5.10.1",
                             OvalSystemCharacteristics.class,
                             Family.WINDOWS,
-                            "test/resources/oval_test-content/oval-5.9/sc/windows",
+                            "test/resources/oval_test-content/oval-5.10/sc/windows",
+                            null,
+                            null
+                        }
+                        ,
+                        {
+                            OvalContentCategory.MITRE_REPOSITORY,
+                            "5.10.1",
+                            OvalSystemCharacteristics.class,
+                            Family.WINDOWS,
+                            "test/resources/mitre_repository/oval-5.10/sc/windows",
                             null,
                             null
                         }
@@ -529,7 +549,16 @@ public abstract class OvalCoreTests
     public Object[][] provideOvalResOvalResults()
     {
         return new Object[][] {
-                        // Windows //
+                        {
+                            OvalContentCategory.OVAL_TEST_CONTENT,
+                            "5.10.1",
+                            OvalResults.class,
+                            Family.WINDOWS,
+                            "test/resources/oval_test-content/oval-5.10/res/windows",
+                            null,
+                            null
+                        }
+                        ,
                         {
                             OvalContentCategory.MITRE_REPOSITORY,
                             "5.10.1",
@@ -540,7 +569,6 @@ public abstract class OvalCoreTests
                             null
                         }
                         ,
-                        // linux //
                         {
                             OvalContentCategory.MITRE_REPOSITORY,
                             "5.9",
