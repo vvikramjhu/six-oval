@@ -503,16 +503,6 @@ public abstract class OvalCoreTests
                             "5.10.1",
                             OvalSystemCharacteristics.class,
                             Family.WINDOWS,
-                            "test/resources/oval_test-content/oval-5.9/sc/windows",
-                            null,
-                            null
-                        }
-                        ,
-                        {
-                            OvalContentCategory.OVAL_TEST_CONTENT,
-                            "5.10.1",
-                            OvalSystemCharacteristics.class,
-                            Family.WINDOWS,
                             "test/resources/oval_test-content/oval-5.10/sc/windows",
                             null,
                             null

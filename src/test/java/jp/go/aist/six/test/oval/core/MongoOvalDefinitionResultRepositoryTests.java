@@ -62,7 +62,7 @@ extends OvalCoreTests
      *  Class<OvalSystemCharacteristics>    object_type,
      *  QueryParams                         params
      */
-    @DataProvider( name="DATA.oval.repository.query_params.sc.oval_sc" )
+    @DataProvider( name="DATA.oval.repository.query_params.sc.oval_system_characteristics" )
     public Object[][] provideRepositoryQueryParamsOvalSystemCharacteristics()
     {
         // common: order, count
@@ -150,7 +150,7 @@ extends OvalCoreTests
      */
     @org.testng.annotations.Test(
                     groups={
-                                    "MODEL.oval.res",
+                                    "MODEL.oval.res.oval_results",
                                     "PACKAGE.oval.core.repository.mongodb",
                                     "CONTROL.oval.repository.saveOvalResults"
                                     },
@@ -223,12 +223,12 @@ extends OvalCoreTests
      */
     @org.testng.annotations.Test(
                     groups={
-                                    "MODEL.oval.sc",
+                                    "MODEL.oval.sc.oval_system_characteristics",
                                     "PACKAGE.oval.core.repository.mongodb",
-                                    "CONTROL.oval.repository.querySc"
+                                    "CONTROL.oval.repository.findOvalScByQuery"
                                     },
 //                    dependsOnGroups={ "CONTROL.oval.repository.findOvalScById" },
-                    dataProvider="DATA.oval.repository.query_params.sc.oval_sc",
+                    dataProvider="DATA.oval.repository.query_params.sc.oval_system_characteristics",
                     alwaysRun=true
                     )
     public void testFindOvalSc(
@@ -283,13 +283,13 @@ extends OvalCoreTests
      */
     @org.testng.annotations.Test(
                     groups={
-                                    "MODEL.oval.sc",
+                                    "MODEL.oval.sc.oval_system_characteristics",
                                     "PACKAGE.oval.core.repository.mongodb",
                                     "CONTROL.oval.repository.saveOvalSc",
                                     "CONTROL.oval.repository.findOvalScById"
                                     }
 //                    dependsOnGroups={ "control:repository.saveElement" },
-                    ,dataProvider="DATA.oval.sc.oval_sc"
+                    ,dataProvider="DATA.oval.sc.oval_system_characteristics"
                     ,alwaysRun=true
                     )
     public void testSaveOvalScAndFindById(

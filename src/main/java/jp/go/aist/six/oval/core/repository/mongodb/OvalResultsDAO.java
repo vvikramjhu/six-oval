@@ -1,6 +1,7 @@
 package jp.go.aist.six.oval.core.repository.mongodb;
 
 import java.util.Collection;
+import java.util.UUID;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.results.ResultsType;
@@ -40,6 +41,13 @@ public class OvalResultsDAO
                     final OvalResults oval_results
                     )
     {
+        String  pid = oval_results.getPersistentID();
+        if (pid == null) {
+            pid = UUID.randomUUID().toString();
+            oval_results.setPersistentID( pid );
+        }
+
+
         //oval_definitions
         OvalDefinitions  oval_definitions = oval_results.getOvalDefinitions();
         if (oval_definitions != null) {

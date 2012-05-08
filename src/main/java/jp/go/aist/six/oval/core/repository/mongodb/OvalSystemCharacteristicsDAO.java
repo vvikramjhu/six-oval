@@ -1,7 +1,9 @@
 package jp.go.aist.six.oval.core.repository.mongodb;
 
+import java.util.UUID;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import com.google.code.morphia.Datastore;
+import com.google.code.morphia.Key;
 
 
 
@@ -27,6 +29,20 @@ public class OvalSystemCharacteristicsDAO
     //**************************************************************
     //  DAO
     //**************************************************************
+
+    @Override
+    public Key<OvalSystemCharacteristics> save(
+                    final OvalSystemCharacteristics oval_sc
+                    )
+    {
+        String  pid = oval_sc.getPersistentID();
+        if (pid == null) {
+            pid = UUID.randomUUID().toString();
+            oval_sc.setPersistentID( pid );
+        }
+
+        return super.save( oval_sc );
+    }
 
 }
 // OvalSystemCharacteristicsDAO
