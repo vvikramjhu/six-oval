@@ -186,11 +186,16 @@
     <!-- ******************************************************* -->
 
     <test name="oval.core.xml" enabled="true">
-                <!--
         <groups>
             <run>
+                <include name="MODEL.oval.res.oval_results"/>
+            </run>
+        </groups>
+        <!--
+        -->
+                <!--
+                <include name="MODEL.oval.sc.oval_system_characteristics"/>
                 <include name="xmlns:oval-def.*"/>
-
                 <include name="oval.test-content"/>
                 <include name="oval.results.oval_results"/>
                 <include name="oval.definitions.oval_definitions"/>
@@ -200,8 +205,6 @@
                 <include name="definitions.oval_definitions"/>
                 <include name="sc.oval_sc"/>
                 <include name="results.oval_results"/>
-            </run>
-        </groups>
                 -->
 
         <classes>

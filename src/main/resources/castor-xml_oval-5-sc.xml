@@ -224,24 +224,34 @@ not the family-specific one.
 
 
     <class name="jp.go.aist.six.oval.model.sc.ItemType">
+<!--
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"
             />
-
-<!-- TODO:
-The "message" field's namespace is "oval-sc".
-It can be unmarshalled correctly.
-The marshalled XML is NOT correct because the element's namespace is omitted 
-and put in the parent's one, i.e. ".../oval-system-characteristics-5#windows".
-
-Currently, we avoid the error by using "transient" configuration.    
 -->
-        <field name="message" 
-            transient="true"
+
+<!-- NOTE:
+We need the namespaceMapping property of the Caster marshaller to be configured
+to add the OVAL namspaces.
+
+If so, the "message" field's namespace and the prefix are correctly marshalled,
+i.e. "oval-sc:message".
+If NOT, it is marshalled as "<message ...>" with the parent's namespace, 
+i.e. ".../oval-system-characteristics-5#windows".
+
+The marshalling succeeds only in oval_system_characteristics documents,
+fails in oval_results ones.
+The error is avoided by using the "transient" attribute,
+i.e. the field is NOT marshalled.
+
+TODO: 
+-->
+        <field name="message"
+            transient="true" 
             type="jp.go.aist.six.oval.model.common.MessageType"
             collection="collection">
-            <bind-xml name="oval-sc:message" node="element"
-                xmlns:oval-sc="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"
+            <bind-xml name="message" node="element"
+                xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5"
             />
         </field>
             <!--

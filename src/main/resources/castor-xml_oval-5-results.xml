@@ -23,7 +23,9 @@
     <class name="jp.go.aist.six.oval.model.results.OvalResults"
         extends="jp.go.aist.six.oval.model.Document">
         <map-to xml="oval_results"
-            ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"/>
+            ns-uri="http://oval.mitre.org/XMLSchema/oval-results-5"
+            ns-prefix=""/>
+
 
         <field name="generator" 
             type="jp.go.aist.six.oval.model.common.GeneratorType">
