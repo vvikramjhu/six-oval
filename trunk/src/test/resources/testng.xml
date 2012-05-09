@@ -77,7 +77,7 @@
     <!-- *  repository                                         * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.repository.mongodb" enabled="false">
+    <test name="oval.core.repository.mongodb" enabled="true">
         <!--
         <groups>
             <run>
@@ -185,7 +185,7 @@
     <!-- *  XML                                                * -->
     <!-- ******************************************************* -->
 
-    <test name="oval.core.xml" enabled="true">
+    <test name="oval.core.xml" enabled="false">
         <groups>
             <run>
                 <include name="MODEL.oval.res.oval_results"/>

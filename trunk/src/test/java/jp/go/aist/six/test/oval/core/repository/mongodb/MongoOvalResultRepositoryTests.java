@@ -205,10 +205,10 @@ extends OvalCoreTestBase
                                     "MODEL.oval.sc.oval_system_characteristics",
                                     "PACKAGE.oval.core.repository.mongodb",
                                     "CONTROL.oval.repository.findOvalScByQuery"
-                                    },
-                    dependsOnGroups={ "CONTROL.oval.repository.saveOvalSc" },
-                    dataProvider="DATA.oval.repository.query_params.oval_system_characteristics",
-                    alwaysRun=true
+                                    }
+                    ,dependsOnGroups={ "CONTROL.oval.repository.saveOvalSc" }
+                    ,dataProvider="DATA.oval.repository.query_params.oval_system_characteristics"
+                    ,alwaysRun=true
                     )
     public void testFindOvalSc(
                     final Class<OvalSystemCharacteristics>  object_type,
