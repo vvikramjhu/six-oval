@@ -97,6 +97,11 @@ implements QueryBuilder
 
 
 
+    public static final String  LIST_DELIMITER = ",";
+    public static final String  WILD_CARD = "*";
+    private static final String  _INTERNAL_WILD_CARD_ = ".*";
+
+
     private QueryParams  _params;
 
 
@@ -490,6 +495,72 @@ implements QueryBuilder
 
 
 
+    /**
+     * f=a
+     * f=a,b,c
+     * f=x*
+     * f=x*,y
+     * f=x*,y,z*
+     */
+    protected static class ListPatternHandler
+    extends Handler
+    {
+        public static final ListPatternHandler INSTANCE = new ListPatternHandler();
+
+
+        public ListPatternHandler()
+        {
+        }
+
+
+        @Override
+        public void build(
+                        final Query<?> query,
+                        final String field,
+                        final String value
+                        )
+        {
+            if (value == null  ||  value.length() == 0) {
+                return;
+            }
+
+            String[]  value_elem = (value.contains( LIST_DELIMITER )
+                                            ? value.split( LIST_DELIMITER )
+                                            : (new String[] { value }));
+            int  num_value_elem = value_elem.length;
+            boolean  wild_card_contained = value.contains( WILD_CARD );
+
+            if (wild_card_contained) {
+                if (num_value_elem > 1) {
+                    // f=x*,y
+                    // f=x*,y,z*
+                    Criteria[]  criteria = new Criteria[num_value_elem];
+                    for (int  i = 0; i < num_value_elem; i++) {
+                        String  pattern_value = value_elem[i].replace( WILD_CARD, _INTERNAL_WILD_CARD_ );
+                        criteria[i] = query.criteria( field ).equal( pattern_value );
+                    }
+                    query.or( criteria );
+                } else {
+                    // f=x*
+                    String  pattern_value = value.replace( WILD_CARD, _INTERNAL_WILD_CARD_ );
+                    Pattern  pattern = Pattern.compile( pattern_value, Pattern.CASE_INSENSITIVE );
+                    query.filter( field, pattern );
+                }
+            } else {
+                if (num_value_elem > 1) {
+                    // f=a,b,c
+                    query.filter( field + " in", value_elem );
+                } else {
+                    // f=a
+                    query.filter( field, value );
+                }
+            }
+        }
+    }
+    //ListPatternHandler
+
+
+
     protected static class DatetimeHandler
     extends Handler
     {
@@ -778,6 +849,7 @@ implements QueryBuilder
             mapping.put( DefinitionQueryParams.Key.PRODUCT,             "metadata.affected.product" );
             mapping.put( DefinitionQueryParams.Key.REF_SOURCE,          "metadata.reference.source" );
             mapping.put( DefinitionQueryParams.Key.REF_ID,              "metadata.reference.ref_id" );
+            mapping.put( DefinitionQueryParams.Key.CVE,                 "metadata.reference.ref_id" );
 
             // common
             mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            "metadata.title,metadata.description" );
@@ -976,11 +1048,11 @@ implements QueryBuilder
             //common
 //            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
             //sc
-            mapping.put( OvalSystemCharacteristicsQueryParams.Key.HOST,         PatternHandler.INSTANCE );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.HOST,         ListPatternHandler.INSTANCE );
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS,           PatternHandler.INSTANCE );
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS_VERSION,   FilterHandler.INSTANCE );
-            mapping.put( OvalSystemCharacteristicsQueryParams.Key.IP,           PatternHandler.INSTANCE );
-            mapping.put( OvalSystemCharacteristicsQueryParams.Key.MAC,          PatternHandler.INSTANCE );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.IP,           ListPatternHandler.INSTANCE );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.MAC,          ListPatternHandler.INSTANCE );
 
             return mapping;
         }

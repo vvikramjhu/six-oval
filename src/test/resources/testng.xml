@@ -78,15 +78,15 @@
     <!-- ******************************************************* -->
 
     <test name="oval.core.repository.mongodb" enabled="true">
-        <!--
         <groups>
             <run>
-                <include name="CONTROL.oval.repository.saveOvalSc"/>
-                <include name="CONTROL.oval.repository.saveOvalResults"/>
+                <include name="MODEL.oval.sc.oval_system_characteristics"/>
             </run>
         </groups>
+        <!--
         -->
                 <!--
+                <include name="CONTROL.oval.repository.saveOvalResults"/>
                 <include name="CONTROL.oval.repository.saveOvalDefinitions"/>
                 -->
         <classes>

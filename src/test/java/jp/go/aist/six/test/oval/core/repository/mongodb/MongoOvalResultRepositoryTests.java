@@ -89,15 +89,19 @@ extends OvalCoreTestBase
 
         // sc: host
         OvalSystemCharacteristicsQueryParams  params22 = new OvalSystemCharacteristicsQueryParams();
-        params22.setHost( "host66" );
+        params22.setHost( "*.bar.com" );
 
         // sc: IP
         OvalSystemCharacteristicsQueryParams  params23 = new OvalSystemCharacteristicsQueryParams();
-        params23.setIp( "192.168.10." );
+        params23.setIp( "192.168.10.*" );
 
         // sc: MAC
         OvalSystemCharacteristicsQueryParams  params24 = new OvalSystemCharacteristicsQueryParams();
         params24.setMac( "00-50-56-C0-00-01" );
+
+        // sc: OS
+        OvalSystemCharacteristicsQueryParams  params25 = new OvalSystemCharacteristicsQueryParams();
+        params25.setOs( "Windows" );
 
 
         return new Object[][] {
@@ -135,6 +139,11 @@ extends OvalCoreTestBase
                         {
                             jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
                             params24
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics.class,
+                            params25
                         }
         };
     }
