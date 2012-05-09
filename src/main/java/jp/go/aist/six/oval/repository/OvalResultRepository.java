@@ -139,7 +139,7 @@ public interface OvalResultRepository
      * @return
      *  the OVAL System Characteristics object if exists, null otherwise.
      */
-    public OvalSystemCharacteristics findOvalScById(
+    public OvalSystemCharacteristics findOvalSystemCharacteristicsById(
                     String id
                     )
     throws OvalRepositoryException;
@@ -154,7 +154,7 @@ public interface OvalResultRepository
      * @return
      *  the OVAL System Characteristics objects.
      */
-    public List<OvalSystemCharacteristics> findOvalSc(
+    public List<OvalSystemCharacteristics> findOvalSystemCharacteristics(
                     QueryParams params
                     )
     throws OvalRepositoryException;
@@ -169,7 +169,7 @@ public interface OvalResultRepository
      * @return
      *  the ID of the document.
      */
-    public String saveOvalSc(
+    public String saveOvalSystemCharacteristics(
                     OvalSystemCharacteristics oval_sc
                     )
     throws OvalRepositoryException;
