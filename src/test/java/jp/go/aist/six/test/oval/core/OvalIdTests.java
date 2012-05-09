@@ -17,7 +17,7 @@ import org.testng.Reporter;
  * @version $Id$
  */
 public class OvalIdTests
-    extends OvalCoreTests
+    extends OvalCoreTestBase
 {
 
 

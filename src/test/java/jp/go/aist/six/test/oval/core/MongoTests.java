@@ -25,7 +25,7 @@ import com.google.code.morphia.mapping.MappedClass;
  * @version $Id$
  */
 public abstract class MongoTests
-    extends OvalCoreTests
+    extends OvalCoreTestBase
 {
 
     private MongoOvalDatastore  _datastore;

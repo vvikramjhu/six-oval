@@ -39,7 +39,7 @@ import org.testng.annotations.DataProvider;
  * @author  Akihito Nakamura, AIST
  * @version $Id$
  */
-public abstract class OvalCoreTests
+public abstract class OvalCoreTestBase
 {
 
     private OvalContext  _context = null;
@@ -50,7 +50,7 @@ public abstract class OvalCoreTests
 
     /**
      */
-    public OvalCoreTests()
+    public OvalCoreTestBase()
     {
     }
 

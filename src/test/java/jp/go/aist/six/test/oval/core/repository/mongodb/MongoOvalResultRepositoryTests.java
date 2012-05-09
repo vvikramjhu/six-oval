@@ -9,7 +9,7 @@ import jp.go.aist.six.oval.model.sc.SystemInfoType;
 import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.test.oval.core.OvalContentCategory;
-import jp.go.aist.six.test.oval.core.OvalCoreTests;
+import jp.go.aist.six.test.oval.core.OvalCoreTestBase;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -24,7 +24,7 @@ import org.testng.annotations.DataProvider;
  * @version $Id$
  */
 public class MongoOvalResultRepositoryTests
-extends OvalCoreTests
+extends OvalCoreTestBase
 {
 
     private MongoOvalDefinitionResultRepository  _oval_res_repository;
