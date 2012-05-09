@@ -123,7 +123,7 @@ public class MongoOvalDefinitionResultRepository
 
 
     @Override
-    public List<String> findOvalResultsIds()
+    public List<String> findOvalResultsId()
     throws OvalRepositoryException
     {
 //        long  ts_start = System.currentTimeMillis();
@@ -143,7 +143,7 @@ public class MongoOvalDefinitionResultRepository
 
 
     @Override
-    public List<String> findOvalResultsIds(
+    public List<String> findOvalResultsId(
                     final QueryParams params
                     )
     throws OvalRepositoryException

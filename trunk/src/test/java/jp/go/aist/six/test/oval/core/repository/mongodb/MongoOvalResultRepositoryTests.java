@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionResultRepository;
 import jp.go.aist.six.oval.model.Family;
+import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
+import jp.go.aist.six.oval.model.results.OvalResults;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemInfoType;
 import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
@@ -144,6 +146,106 @@ extends OvalCoreTestBase
     ////////////////////////////////////////////////////////////////
 
     //**************************************************************
+    //  OVAL Results
+    //**************************************************************
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={
+                                    "MODEL.oval.res.oval_results",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.repository.saveOvalResults",
+                                    "CONTROL.oval.repository.findOvalResultsById"
+                                    }
+                    ,dependsOnGroups={ "CONTROL.oval.repository.findOvalSystemCharacteristicsByQuery" }
+                    ,dataProvider="DATA.oval.res.oval_results"
+//                    ,alwaysRun=true
+                    )
+    public void testSaveOvalResultsAndFindOvalResultsById(
+                    final OvalContentCategory   category,
+                    final String                schema_version,
+                    final Class<OvalResults>    object_type,
+                    final Family                family,
+                    final String                dirpath,
+                    final String                xml_filepath,
+                    final OvalResults           expected_object
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n//////////////////////////////////////////////////////////", true );
+
+        File[]  files = _toXmlFileList( dirpath, xml_filepath );
+
+        for (File  file : files) {
+            OvalResults  oval_results = _unmarshalFromFile( object_type, file.getCanonicalPath(), expected_object );
+            Reporter.log( ">>> saveOvalResults(oval_results)...", true );
+            String  p_id = _getDefinitionResultRepository().saveOvalResults( oval_results );
+            Reporter.log( "<<< ...saveOvalResults(oval_results)", true );
+            Reporter.log( "  @ persistent ID: " + p_id, true );
+            Assert.assertNotNull( p_id );
+
+            Reporter.log( ">>> findOvalResultsById(id)...", true );
+            OvalResults  p_oval_results = _getDefinitionResultRepository().findOvalResultsById( p_id );
+            Reporter.log( "<<< ...findOvalResultsById(id)", true );
+            Assert.assertNotNull( p_oval_results );
+            String  p_id2 = p_oval_results.getPersistentID();
+            Assert.assertEquals( p_id, p_id2 );
+            Assert.assertEquals( oval_results.getGenerator(), p_oval_results.getGenerator() );
+
+            OvalDefinitions    oval_defs =   oval_results.getOvalDefinitions();
+            if (oval_defs != null) {
+                OvalDefinitions  p_oval_defs = p_oval_results.getOvalDefinitions();
+                Assert.assertEquals( oval_defs.getDefinitionsDigest(), p_oval_defs.getDefinitionsDigest() );
+            }
+        }
+    }
+
+
+
+    /**
+     */
+    @org.testng.annotations.Test(
+                    groups={
+                                    "MODEL.oval.res.oval_results",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.repository.findOvalResults",
+                                    "CONTROL.oval.repository.findOvalResultsId",
+                                    "CONTROL.oval.repository.countOvalResults"
+                                    }
+                    ,dependsOnGroups={ "CONTROL.oval.repository.saveOvalResults" }
+//                    ,alwaysRun=true
+                    )
+    public void testFindOvalResultsAndFindOvalResultsIdAndCountOvalResults()
+    throws Exception
+    {
+        Reporter.log( "\n//////////////////////////////////////////////////////////", true );
+
+        Reporter.log( ">>> countOvalResults()...", true );
+        long  count = _getDefinitionResultRepository().countOvalResults();
+        Reporter.log( "<<< ...countOvalResults()", true );
+
+        Reporter.log( ">>> findOvalResults()...", true );
+        List<OvalResults>  res_list = _getDefinitionResultRepository().findOvalResults();
+        Reporter.log( "<<< ...findOvalResults()", true );
+        Assert.assertNotNull( res_list );
+        Assert.assertEquals( count, res_list.size() );
+
+        Reporter.log( ">>> findOvalResultsId()...", true );
+        List<String>  id_list = _getDefinitionResultRepository().findOvalResultsId();
+        Reporter.log( "<<< ...findOvalResultsId()", true );
+        Assert.assertNotNull( id_list );
+        Assert.assertEquals( count, id_list.size() );
+
+        for (OvalResults  res : res_list) {
+            String  id = res.getPersistentID();
+            Assert.assertTrue( id_list.contains( id ) );
+        }
+    }
+
+
+
+    //**************************************************************
     //  OVAL SC
     //**************************************************************
 
@@ -157,9 +259,8 @@ extends OvalCoreTestBase
                                     "CONTROL.oval.repository.saveOvalSystemCharacteristics",
                                     "CONTROL.oval.repository.findOvalSystemCharacteristicsById"
                                     }
-//                    dependsOnGroups={ "control:repository.saveElement" },
                     ,dataProvider="DATA.oval.sc.oval_system_characteristics"
-                    ,alwaysRun=true
+//                    ,alwaysRun=true
                     )
     public void testSaveOvalScAndFindOvalScById(
                     final OvalContentCategory               category,
@@ -206,9 +307,9 @@ extends OvalCoreTestBase
                                     "PACKAGE.oval.core.repository.mongodb",
                                     "CONTROL.oval.repository.findOvalSystemCharacteristicsByQuery"
                                     }
-                    ,dependsOnGroups={ "CONTROL.oval.repository.saveOvalSc" }
+                    ,dependsOnGroups={ "CONTROL.oval.repository.saveOvalSystemCharacteristics" }
                     ,dataProvider="DATA.oval.repository.query_params.oval_system_characteristics"
-                    ,alwaysRun=true
+//                    ,alwaysRun=true
                     )
     public void testFindOvalSc(
                     final Class<OvalSystemCharacteristics>  object_type,
