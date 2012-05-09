@@ -7,7 +7,7 @@
       <terms_of_use>Copyright (c) 2002-2011, The MITRE Corporation. All rights reserved. The contents of this file are subject to the license described in terms.txt.</terms_of_use>
     </generator>
     <definitions>
-        <definition id="oval:org.mitre.oval.test:def:219" version="3" class="miscellaneous">
+        <definition id="oval:org.mitre.oval.test.six:def:219" version="3" class="miscellaneous">
             <metadata>
                 <title>Evaluate to true if the win-def:fileeffectiverights_test is properly supported</title>
                 <description>This definition is intended to evalutate to true if the interpreter properly supports the win-def:fileeffectiverights_test.</description>

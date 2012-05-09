@@ -7,7 +7,7 @@
     <terms_of_use>Copyright (c) 2002-2011, The MITRE Corporation. All rights reserved. The contents of this file are subject to the license described in terms.txt.</terms_of_use>
   </generator>
   <definitions>
-    <definition id="oval:org.mitre.oval.test:def:29" version="1" class="miscellaneous">
+    <definition id="oval:org.mitre.oval.test.six:def:29" version="1" class="miscellaneous">
       <metadata>
         <title>Evaluate to true if the oval:CheckEnumeration simple type is properly supported for the relationship between objects and states</title>
         <description>This definition is intended to evalutate to true if the interpreter properly supports the oval:CheckEnumeration simple type for the relationship between objects and states.</description>

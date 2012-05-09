@@ -912,6 +912,7 @@ implements QueryBuilder
             mapping.put( DefinitionQueryParams.Key.PRODUCT,             HasAnyOfHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.REF_SOURCE,          FilterHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.REF_ID,              FilterHandler.INSTANCE );
+            mapping.put( DefinitionQueryParams.Key.CVE,                 ListPatternHandler.INSTANCE );
             // Overrides.
             mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      family_handler );
 
