@@ -83,7 +83,7 @@ public interface OvalResultRepository
      * @return
      *  the IDs of all the OVAL Results in the repository.
      */
-    public List<String> findOvalResultsIds()
+    public List<String> findOvalResultsId()
     throws OvalRepositoryException;
 
 
@@ -97,7 +97,7 @@ public interface OvalResultRepository
      * @return
      *  the IDs of OVAL Results.
      */
-    public List<String> findOvalResultsIds(
+    public List<String> findOvalResultsId(
                     QueryParams params
                     )
     throws OvalRepositoryException;
