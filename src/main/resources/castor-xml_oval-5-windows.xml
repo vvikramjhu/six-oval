@@ -6148,7 +6148,8 @@
         </field>
 
         <field name="group" 
-            type="jp.go.aist.six.oval.model.sc.EntityItemStringType">
+            type="jp.go.aist.six.oval.model.sc.EntityItemStringType"
+            collection="collection">
             <bind-xml name="group" node="element"/>
         </field>
 

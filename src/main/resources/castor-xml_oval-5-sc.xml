@@ -298,6 +298,12 @@ not the family-specific one.
 
 
 
+    <class name="jp.go.aist.six.oval.model.sc.EntityItemBoolType"
+        extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
+    </class>
+
+
+
     <class name="jp.go.aist.six.oval.model.sc.EntityItemIntType"
         extends="jp.go.aist.six.oval.model.sc.EntityItemSimpleBaseType">
     </class>

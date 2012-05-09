@@ -20,6 +20,9 @@
 
 package jp.go.aist.six.oval.model.windows;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.sc.EntityItemBoolType;
@@ -45,7 +48,11 @@ public class UserItem
     //{0..1}
     private EntityItemStringType       user;
     private EntityItemBoolType         enabled;
-    private EntityItemStringType       group;
+
+//  private EntityItemStringType       group;
+    private final Collection<EntityItemStringType>  group = new ArrayList<EntityItemStringType>();
+    //{0..*}
+
     private EntityItemIntType          last_logon;
 
 
@@ -116,19 +123,45 @@ public class UserItem
 
 
 
+//    /**
+//     */
+//    public void setGroup(
+//                    final EntityItemStringType group
+//                    )
+//    {
+//        this.group = group;
+//    }
+//
+//
+//    public EntityItemStringType getGroup()
+//    {
+//        return group;
+//    }
+
     /**
      */
     public void setGroup(
-                    final EntityItemStringType group
+                    final Collection<? extends EntityItemStringType> group
                     )
     {
-        this.group = group;
+        if (this.group != group) {
+            this.group.clear();
+            if (group != null  &&  group.size() > 0) {
+                this.group.addAll( group );
+            }
+        }
     }
 
 
-    public EntityItemStringType getGroup()
+    public Collection<EntityItemStringType> getGroup()
     {
         return group;
+    }
+
+
+    public Iterator<EntityItemStringType> iterateGroup()
+    {
+        return group.iterator();
     }
 
 
