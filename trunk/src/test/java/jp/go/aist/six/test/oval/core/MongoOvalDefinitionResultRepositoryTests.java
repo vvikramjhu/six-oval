@@ -242,7 +242,7 @@ extends OvalCoreTestBase
         Reporter.log( ">>> findOvalSc(params)...", true );
         Reporter.log( "  * params: " + params, true );
 
-        List<OvalSystemCharacteristics>  oval_sc_list = _getDefinitionResultRepository().findOvalSc( params );
+        List<OvalSystemCharacteristics>  oval_sc_list = _getDefinitionResultRepository().findOvalSystemCharacteristics( params );
         Reporter.log( "<<< ...findOvalSc(params)", true );
         Assert.assertNotNull( oval_sc_list );
         Reporter.log( "  @ #Oval SC: " + oval_sc_list.size(), true );
@@ -321,13 +321,13 @@ extends OvalCoreTestBase
     throws Exception
     {
         Reporter.log( ">>> saveOvalSc(oval_sc)...", true );
-        String  p_id = _getDefinitionResultRepository().saveOvalSc( oval_sc );
+        String  p_id = _getDefinitionResultRepository().saveOvalSystemCharacteristics( oval_sc );
         Reporter.log( "<<< ...saveOvalSc(oval_sc)", true );
         Reporter.log( "  @ persistent ID: " + p_id, true );
         Assert.assertNotNull( p_id );
 
         Reporter.log( ">>> findOvalScById(id)...", true );
-        OvalSystemCharacteristics  p_oval_sc = _getDefinitionResultRepository().findOvalScById( p_id );
+        OvalSystemCharacteristics  p_oval_sc = _getDefinitionResultRepository().findOvalSystemCharacteristicsById( p_id );
         Reporter.log( "<<< ...findOvalScById(id)", true );
         Assert.assertNotNull( p_oval_sc );
         String  p_id2 = p_oval_sc.getPersistentID();

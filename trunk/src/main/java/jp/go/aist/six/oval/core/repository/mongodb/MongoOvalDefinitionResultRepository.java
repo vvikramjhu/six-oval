@@ -201,7 +201,7 @@ public class MongoOvalDefinitionResultRepository
 
 
     @Override
-    public OvalSystemCharacteristics findOvalScById(
+    public OvalSystemCharacteristics findOvalSystemCharacteristicsById(
                     final String id
                     )
     throws OvalRepositoryException
@@ -219,7 +219,7 @@ public class MongoOvalDefinitionResultRepository
 
 
     @Override
-    public List<OvalSystemCharacteristics> findOvalSc(
+    public List<OvalSystemCharacteristics> findOvalSystemCharacteristics(
                     final QueryParams params
                     )
     throws OvalRepositoryException
@@ -237,7 +237,7 @@ public class MongoOvalDefinitionResultRepository
 
 
     @Override
-    public String saveOvalSc(
+    public String saveOvalSystemCharacteristics(
                     final OvalSystemCharacteristics oval_sc
                     )
     throws OvalRepositoryException
