@@ -99,9 +99,11 @@
 
 
     <class name="jp.go.aist.six.oval.model.common.MessageType">
+<!--
         <map-to 
             ns-uri="http://oval.mitre.org/XMLSchema/oval-common-5"
             ns-prefix=""/>
+-->
 
         <field name="content" type="string">
             <bind-xml node="text"/>
