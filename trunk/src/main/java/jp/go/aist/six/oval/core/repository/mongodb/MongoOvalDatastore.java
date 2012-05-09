@@ -276,7 +276,7 @@ public class MongoOvalDatastore
       K  id = MorphiaHelper.key2Id( key );
 
       _LOG_.info( "save: elapsed time (ms)=" +  (System.currentTimeMillis() - ts_start) );
-      _LOG_.debug( "save: id=" + id );
+      _LOG_.info( "save: ID=" + id );
       return id;
   }
 

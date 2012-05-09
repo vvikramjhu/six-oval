@@ -228,15 +228,15 @@ public class OvalSystemCharacteristics
     @Override
     public String toString()
     {
-//        CollectedSystemObjectsType  collectedObjects = getCollectedObjects();
-//        SystemDataType  systemData = getSystemData();
+        CollectedSystemObjectsType  collected_objects = getCollectedObjects();
+        SystemDataType  system_data = getSystemData();
 
         return "oval_system_characteristics[generator=" + getGenerator()
                         + ", system_info=" + getSystemInfo()
-                        + ", collected_objects=" + getCollectedObjects()
-//                        + (collectedObjects == null ? 0 : collectedObjects.size())
-                        + ", system_data=" + getSystemData()
-//                        + (systemData == null ? 0 : systemData.size())
+//                        + ", collected_objects=" + collected_objects
+                        + ", #collected_objects=" + (collected_objects == null ? 0 : collected_objects.size())
+//                        + ", system_data=" + system_data
+                        + ", #system_data=" + (system_data == null ? 0 : system_data.size())
                         + "]";
     }
 
