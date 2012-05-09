@@ -40,6 +40,7 @@ public class DefinitionQueryParams
         public static final String  PRODUCT             = "product";
         public static final String  REF_SOURCE          = "refSource";
         public static final String  REF_ID              = "refId";
+        public static final String  CVE                 = "cve";
     }
     // Key
 
@@ -169,6 +170,23 @@ public class DefinitionQueryParams
     public String getRefId()
     {
         return get( Key.REF_ID );
+    }
+
+
+
+    /**
+     */
+    public void setCve(
+                    final String cve
+    )
+    {
+        set( Key.CVE, cve );
+    }
+
+
+    public String getCve()
+    {
+        return get( Key.CVE );
     }
 
 }
