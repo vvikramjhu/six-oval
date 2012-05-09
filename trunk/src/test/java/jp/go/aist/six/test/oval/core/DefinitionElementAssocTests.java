@@ -19,7 +19,7 @@ import org.testng.Reporter;
  * @version $Id$
  */
 public class DefinitionElementAssocTests
-    extends OvalCoreTests
+    extends OvalCoreTestBase
 {
 
 

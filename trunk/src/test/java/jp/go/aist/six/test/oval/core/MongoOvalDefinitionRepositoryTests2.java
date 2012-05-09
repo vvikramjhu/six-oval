@@ -25,7 +25,7 @@ import org.testng.annotations.DataProvider;
  * @version $Id$
  */
 public class MongoOvalDefinitionRepositoryTests2
-extends OvalCoreTests
+extends OvalCoreTestBase
 {
 
     private MongoOvalDefinitionRepository  _oval_def_repository;
