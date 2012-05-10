@@ -11,6 +11,6 @@ public enum OvalContentCategory
 {
     OVAL_TEST_CONTENT,
     MITRE_REPOSITORY,
-    REDHAT_REPOSITORY;
+    REDHAT_ERRATA_SYSTEM;
 }
 //

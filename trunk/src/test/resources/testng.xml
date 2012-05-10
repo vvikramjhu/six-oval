@@ -86,8 +86,9 @@
         <!--
         -->
                 <!--
-                <include name="CONTROL.oval.repository.findDefinitionByQuery"/>
+                <include name="MODEL.oval.res.oval_results"/>
                 <include name="MODEL.oval.sc.oval_system_characteristics"/>
+                <include name="CONTROL.oval.repository.findDefinitionByQuery"/>
                 <include name="CONTROL.oval.repository.saveOvalResults"/>
                 <include name="CONTROL.oval.repository.saveOvalDefinitions"/>
                 -->
