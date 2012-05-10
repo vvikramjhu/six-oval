@@ -353,8 +353,6 @@ implements QueryBuilder
     {
         public static final HasAnyOfHandler  INSTANCE = new HasAnyOfHandler();
 
-        public static final String  VALUE_DELIMITER = ",";
-
 
         public HasAnyOfHandler()
         {
@@ -372,7 +370,7 @@ implements QueryBuilder
                 return;
             }
 
-            String[]  elements = value.split( VALUE_DELIMITER );
+            String[]  elements = value.split( LIST_DELIMITER );
             if (elements.length > 1) {
                 query.filter( field + " in", elements );
             } else {
@@ -1058,7 +1056,7 @@ implements QueryBuilder
 //            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
             //sc
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.HOST,         ListPatternHandler.INSTANCE );
-            mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS,           PatternHandler.INSTANCE );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS,           ListPatternHandler.INSTANCE );
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS_VERSION,   FilterHandler.INSTANCE );
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.IP,           ListPatternHandler.INSTANCE );
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.MAC,          ListPatternHandler.INSTANCE );
@@ -1108,12 +1106,15 @@ implements QueryBuilder
 
         protected static Map<String, String> _createFieldMapping()
         {
-            Map<String, String>  mapping = new HashMap<String, String>();
+            Map<String, String>  mapping = OvalSystemCharacteristicsBuilder._createFieldMapping();
+            for (String  key : mapping.keySet()) {
+                String  field = mapping.get( key );
+                field = "results.system.oval_system_characteristics." + field;
+                mapping.put( key, field );
+            }
 
-            mapping.put( OvalResultsQueryParams.Key.HOST, "results.system.oval_system_characteristics.system_info.primary_host_name" );
-            mapping.put( OvalResultsQueryParams.Key.OS,           "results.system.oval_system_characteristics.system_info.os_name" );
-            mapping.put( OvalResultsQueryParams.Key.RESULT_TRUE_DEF,   "results.system.definitions.definition" );
-            mapping.put( OvalResultsQueryParams.Key.RESULT_FALSE_DEF,  "results.system.definitions.definition" );
+            mapping.put( OvalResultsQueryParams.Key.DEFINITION,         "results.system.definitions.definition.oval_id" );
+            mapping.put( OvalResultsQueryParams.Key.DEFINITION_TRUE,    "results.system.definitions.definition" );
 
             return mapping;
         }
@@ -1125,7 +1126,7 @@ implements QueryBuilder
 
         protected static Map<String, Handler> _createHandlers()
         {
-            Handler  resultTrueHandler = new Handler()
+            Handler  definitionTrueHandler = new Handler()
             {
                 @Override
                 public void build(
@@ -1138,42 +1139,33 @@ implements QueryBuilder
                         return;
                     }
 
-                    jp.go.aist.six.oval.model.results.DefinitionType  result_def =
-                                    new jp.go.aist.six.oval.model.results.DefinitionType();
-                    result_def.setOvalID( value );
-                    result_def.setResult( ResultEnumeration.TRUE );
-                    query.filter( field + " elem", result_def );
-                }
-            };
-
-
-            Handler  resultFalseHandler = new Handler()
-            {
-                @Override
-                public void build(
-                                final Query<?> query,
-                                final String field,
-                                final String value  //def's oval_id
-                                )
-                {
-                    if (value == null  ||  value.length() == 0) {
-                        return;
+                    if (value.contains( LIST_DELIMITER )) {
+                        String[]  value_elem = value.split( LIST_DELIMITER );
+                        int  num_value_elem = value_elem.length;
+                        Criteria[]  criteria = new Criteria[num_value_elem];
+                        for (int  i = 0; i < num_value_elem; i++) {
+                            jp.go.aist.six.oval.model.results.DefinitionType  result_def =
+                                            new jp.go.aist.six.oval.model.results.DefinitionType();
+                            result_def.setOvalID( value_elem[i] );
+                            result_def.setResult( ResultEnumeration.TRUE );
+                            criteria[i] = query.criteria( field ).hasThisElement( result_def );
+                        }
+                        query.or( criteria );
+                    } else {
+                        jp.go.aist.six.oval.model.results.DefinitionType  result_def =
+                                        new jp.go.aist.six.oval.model.results.DefinitionType();
+                        result_def.setDefinitionID( value );
+                        result_def.setResult( ResultEnumeration.TRUE );
+                        query.filter( field + " elem", result_def );
                     }
 
-                    jp.go.aist.six.oval.model.results.DefinitionType  result_def =
-                                    new jp.go.aist.six.oval.model.results.DefinitionType();
-                    result_def.setOvalID( value );
-                    result_def.setResult( ResultEnumeration.FALSE );
-                    query.filter( field + " elem", result_def );
                 }
             };
 
 
-            Map<String, Handler>  mapping = BasicBuilder._createHandlers();
-            mapping.put( OvalResultsQueryParams.Key.HOST,  FilterHandler.INSTANCE );
-            mapping.put( OvalResultsQueryParams.Key.OS,            FilterHandler.INSTANCE );
-            mapping.put( OvalResultsQueryParams.Key.RESULT_TRUE_DEF,    resultTrueHandler );
-            mapping.put( OvalResultsQueryParams.Key.RESULT_FALSE_DEF,   resultFalseHandler );
+            Map<String, Handler>  mapping = OvalSystemCharacteristicsBuilder._createHandlers();
+            mapping.put( OvalResultsQueryParams.Key.DEFINITION_TRUE,    definitionTrueHandler );
+            mapping.put( OvalResultsQueryParams.Key.DEFINITION,         HasAnyOfHandler.INSTANCE );
 
             return mapping;
         }

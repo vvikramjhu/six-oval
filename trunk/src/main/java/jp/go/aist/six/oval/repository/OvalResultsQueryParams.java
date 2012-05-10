@@ -33,8 +33,8 @@ public class OvalResultsQueryParams
     public static class Key
     extends OvalSystemCharacteristicsQueryParams.Key
     {
-        public static final String  RESULT_TRUE_DEF = "result_true_def";
-        public static final String  RESULT_FALSE_DEF = "result_false_def";
+        public static final String  DEFINITION = "definition";
+        public static final String  DEFINITION_TRUE = "definition_true";
     }
     // Key
 
@@ -51,34 +51,34 @@ public class OvalResultsQueryParams
 
     /**
      */
-    public void setResult_true_def(
+    public void setDefinition(
                     final String oval_id
                     )
     {
-        set( Key.RESULT_TRUE_DEF, oval_id );
+        set( Key.DEFINITION, oval_id );
     }
 
 
-    public String getResult_true_def()
+    public String getDefinition()
     {
-        return get( Key.RESULT_TRUE_DEF );
+        return get( Key.DEFINITION );
     }
 
 
 
     /**
      */
-    public void setResult_false_def(
+    public void setDefinitionTrue(
                     final String oval_id
                     )
     {
-        set( Key.RESULT_FALSE_DEF, oval_id );
+        set( Key.DEFINITION_TRUE, oval_id );
     }
 
 
-    public String getResult_false_def()
+    public String getDefinitionTrue()
     {
-        return get( Key.RESULT_FALSE_DEF );
+        return get( Key.DEFINITION_TRUE );
     }
 
 }

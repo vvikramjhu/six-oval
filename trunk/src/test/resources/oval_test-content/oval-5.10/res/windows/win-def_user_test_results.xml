@@ -116,27 +116,17 @@
           <vendor>The MITRE Corporation</vendor>
         </generator>
         <system_info>
-          <os_name>unknown Professional Service Pack 1</os_name>
-          <os_version>6.1.7601</os_version>
-          <architecture>AMD64</architecture>
-          <primary_host_name>t420s</primary_host_name>
-          <interfaces>
-            <interface>
-              <interface_name>VMware Virtual Ethernet Adapter for VMnet1</interface_name>
-              <ip_address>192.168.190.1</ip_address>
-              <mac_address>00-50-56-C0-00-01</mac_address>
-            </interface>
-            <interface>
-              <interface_name>VMware Virtual Ethernet Adapter for VMnet8</interface_name>
-              <ip_address>192.168.140.1</ip_address>
-              <mac_address>00-50-56-C0-00-08</mac_address>
-            </interface>
-            <interface>
-              <interface_name>Intel(R) Centrino(R) Advanced-N 6250 AGN</interface_name>
-              <ip_address>150.29.149.209</ip_address>
-              <mac_address>64-80-99-23-1F-88</mac_address>
-            </interface>
-          </interfaces>
+    <os_name>Windows 7 Professional Service Pack 1</os_name>
+    <os_version>6.1.7601</os_version>
+    <architecture>AMD64</architecture>
+    <primary_host_name>pc199.bar.com</primary_host_name>
+    <interfaces>
+      <interface>
+        <interface_name>Network Adopter</interface_name>
+        <ip_address>192.168.20.199</ip_address>
+        <mac_address>00-50-56-C0-00-99</mac_address>
+      </interface>
+    </interfaces>
         </system_info>
         <collected_objects>
           <object comment="Retrieves a user_object where user equals the 'ADMINISTRATOR' account." flag="complete" id="oval:org.mitre.oval.test:obj:1064" version="1">

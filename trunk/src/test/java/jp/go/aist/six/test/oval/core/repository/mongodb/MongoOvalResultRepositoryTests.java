@@ -6,8 +6,11 @@ import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionResultRepo
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.model.results.OvalResults;
+import jp.go.aist.six.oval.model.results.ResultsType;
+import jp.go.aist.six.oval.model.results.SystemType;
 import jp.go.aist.six.oval.model.sc.OvalSystemCharacteristics;
 import jp.go.aist.six.oval.model.sc.SystemInfoType;
+import jp.go.aist.six.oval.repository.OvalResultsQueryParams;
 import jp.go.aist.six.oval.repository.OvalSystemCharacteristicsQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
 import jp.go.aist.six.test.oval.core.OvalContentCategory;
@@ -59,6 +62,107 @@ extends OvalCoreTestBase
     ////////////////////////////////////////////////////////////////
 
     /**
+     * OVAL Results document.
+     *
+     *  Class<OvalSystemCharacteristics>    object_type,
+     *  QueryParams                         params
+     */
+    @DataProvider( name="DATA.oval.repository.query_params.oval_results" )
+    public Object[][] provideRepositoryQueryParamsOvalResults()
+    {
+        // sc: host
+        OvalResultsQueryParams  params21 = new OvalResultsQueryParams();
+        params21.setHost( "host66.foo.com" );
+
+        // sc: host
+        OvalResultsQueryParams  params22 = new OvalResultsQueryParams();
+        params22.setHost( "*.bar.com" );
+
+        // sc: IP
+        OvalResultsQueryParams  params23 = new OvalResultsQueryParams();
+        params23.setIp( "192.168.10.*" );
+
+        // sc: MAC
+        OvalResultsQueryParams  params24 = new OvalResultsQueryParams();
+        params24.setMac( "00-50-56-C0-00-01" );
+
+        // sc: OS
+        OvalResultsQueryParams  params25 = new OvalResultsQueryParams();
+        params25.setOs( "Windows*" );
+
+        // sc: OS
+        OvalResultsQueryParams  params26 = new OvalResultsQueryParams();
+        params26.setOs( "Linux" );
+
+
+        // res: definition
+        OvalResultsQueryParams  params31 = new OvalResultsQueryParams();
+        params31.setDefinition( "oval:org.mitre.oval:def:6210" );
+
+
+        // res: definition
+        OvalResultsQueryParams  params32 = new OvalResultsQueryParams();
+        params32.setDefinitionTrue( "oval:org.mitre.oval:def:6210" );
+
+
+        // res: definition
+        OvalResultsQueryParams  params33 = new OvalResultsQueryParams();
+        params33.setDefinitionTrue( "oval:org.mitre.oval:def:11985" );
+
+
+
+
+        return new Object[][] {
+                        {
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            params21
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            params22
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            params23
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            params24
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            params25
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            params26
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            params31
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            params32
+                        }
+                        ,
+                        {
+                            jp.go.aist.six.oval.model.results.OvalResults.class,
+                            params33
+                        }
+        };
+    }
+
+
+
+    /**
      * OVAL SC document.
      *
      *  Class<OvalSystemCharacteristics>    object_type,
@@ -101,7 +205,7 @@ extends OvalCoreTestBase
 
         // sc: OS
         OvalSystemCharacteristicsQueryParams  params25 = new OvalSystemCharacteristicsQueryParams();
-        params25.setOs( "Windows" );
+        params25.setOs( "Windows*" );
 
 
         return new Object[][] {
@@ -249,6 +353,46 @@ extends OvalCoreTestBase
         for (OvalResults  res : res_list) {
             String  id = res.getPersistentID();
             Assert.assertTrue( id_list.contains( id ) );
+        }
+    }
+
+
+
+    /**
+     * findOvalResults(params)
+     */
+    @org.testng.annotations.Test(
+                    groups={
+                                    "MODEL.oval.res.oval_results",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.repository.findOvalResultsByQuery"
+                                    }
+                    ,dependsOnGroups={ "CONTROL.oval.repository.findOvalResults" }
+                    ,dataProvider="DATA.oval.repository.query_params.oval_results"
+//                    ,alwaysRun=true
+                    )
+    public void testFindOvalResults(
+                    final Class<OvalResults>    object_type,
+                    final QueryParams           params
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n//////////////////////////////////////////////////////////", true );
+
+        Reporter.log( ">>> findOvalResults(params)...", true );
+        Reporter.log( "  * params: " + params, true );
+
+        List<OvalResults>  oval_results_list = _getDefinitionResultRepository().findOvalResults( params );
+        Reporter.log( "<<< ...findOvalResults(params)", true );
+        Assert.assertNotNull( oval_results_list );
+        Reporter.log( "  @ #OVAL Results: " + oval_results_list.size(), true );
+        for (OvalResults  oval_results : oval_results_list) {
+            Reporter.log( "  @ ID: " + oval_results.getPersistentID(), true );
+            ResultsType  results = oval_results.getResults();
+            for (SystemType  sys : results.getSystem()) {
+                SystemInfoType  sys_info = sys.getOvalSystemCharacteristics().getSystemInfo();
+                Reporter.log( "  @ SC.system_info: " + sys_info, true );
+            }
         }
     }
 
