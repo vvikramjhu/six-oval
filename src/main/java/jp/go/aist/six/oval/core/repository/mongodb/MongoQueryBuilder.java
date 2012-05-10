@@ -536,8 +536,16 @@ implements QueryBuilder
                     // f=x*,y,z*
                     Criteria[]  criteria = new Criteria[num_value_elem];
                     for (int  i = 0; i < num_value_elem; i++) {
-                        String  pattern_value = value_elem[i].replace( WILD_CARD, _INTERNAL_WILD_CARD_ );
-                        criteria[i] = query.criteria( field ).equal( pattern_value );
+                        Object  normalized_value = null;
+                        if (value_elem[i].contains( WILD_CARD )) {
+                            // x*
+                            String  pattern_value = value_elem[i].replace( WILD_CARD, _INTERNAL_WILD_CARD_ );
+                            normalized_value = Pattern.compile( pattern_value, Pattern.CASE_INSENSITIVE );
+                        } else {
+                            // y
+                            normalized_value = value_elem[i];
+                        }
+                        criteria[i] = query.criteria( field ).equal( normalized_value );
                     }
                     query.or( criteria );
                 } else {
