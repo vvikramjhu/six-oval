@@ -517,6 +517,16 @@ public abstract class OvalCoreTestBase
                             null,
                             null
                         }
+                        ,
+                        {
+                            OvalContentCategory.MITRE_REPOSITORY,
+                            "5.9",
+                            OvalSystemCharacteristics.class,
+                            Family.LINUX,
+                            "test/resources/mitre_repository/oval-5.9/sc/linux",
+                            null,
+                            null
+                        }
         };
 
     }
@@ -565,6 +575,16 @@ public abstract class OvalCoreTestBase
                             OvalResults.class,
                             Family.LINUX,
                             "test/resources/mitre_repository/oval-5.9/res/linux",
+                            null,
+                            null
+                        }
+                        ,
+                        {
+                            OvalContentCategory.REDHAT_ERRATA_SYSTEM,
+                            "5.7",
+                            OvalResults.class,
+                            Family.LINUX,
+                            "test/resources/redhat_errata_system/oval-5.7/res/linux",
                             null,
                             null
                         }
