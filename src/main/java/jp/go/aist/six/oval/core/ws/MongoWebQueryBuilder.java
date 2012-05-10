@@ -894,8 +894,8 @@ implements QueryBuilder
 
             mapping.put( OvalResultsQueryParams.Key.HOST, "results.system.oval_system_characteristics.system_info.primary_host_name" );
             mapping.put( OvalResultsQueryParams.Key.OS,           "results.system.oval_system_characteristics.system_info.os_name" );
-            mapping.put( OvalResultsQueryParams.Key.RESULT_TRUE_DEF,   "results.system.definitions.definition" );
-            mapping.put( OvalResultsQueryParams.Key.RESULT_FALSE_DEF,  "results.system.definitions.definition" );
+            mapping.put( OvalResultsQueryParams.Key.DEFINITION_TRUE,   "results.system.definitions.definition" );
+            mapping.put( OvalResultsQueryParams.Key.DEFINITION,  "results.system.definitions.definition" );
 
             return mapping;
         }
@@ -954,8 +954,8 @@ implements QueryBuilder
             Map<String, Handler>  mapping = BasicBuilder._createHandlers();
             mapping.put( OvalResultsQueryParams.Key.HOST,  _DEFAULT_HANDLER_ );
             mapping.put( OvalResultsQueryParams.Key.OS,            _DEFAULT_HANDLER_ );
-            mapping.put( OvalResultsQueryParams.Key.RESULT_TRUE_DEF,    resultTrueHandler );
-            mapping.put( OvalResultsQueryParams.Key.RESULT_FALSE_DEF,   resultFalseHandler );
+            mapping.put( OvalResultsQueryParams.Key.DEFINITION_TRUE,    resultTrueHandler );
+            mapping.put( OvalResultsQueryParams.Key.DEFINITION,   resultFalseHandler );
 
             return mapping;
         }
