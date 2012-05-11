@@ -1,6 +1,8 @@
-package jp.go.aist.six.test.oval.core;
+package jp.go.aist.six.test.oval.core.repository.mongodb;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository;
 import jp.go.aist.six.oval.model.Family;
@@ -10,7 +12,10 @@ import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 import jp.go.aist.six.oval.model.definitions.OvalDefinitions;
 import jp.go.aist.six.oval.repository.CommonQueryParams;
 import jp.go.aist.six.oval.repository.DefinitionQueryParams;
+import jp.go.aist.six.oval.repository.DefinitionsElementQueryParams;
 import jp.go.aist.six.oval.repository.QueryParams;
+import jp.go.aist.six.test.oval.core.OvalContentCategory;
+import jp.go.aist.six.test.oval.core.OvalCoreTestBase;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
@@ -60,6 +65,31 @@ extends OvalCoreTestBase
     ////////////////////////////////////////////////////////////////
     //  test data
     ////////////////////////////////////////////////////////////////
+
+    /**
+     * DefinitionsElement.
+     *
+     *  QueryParams               params,
+     *  DefinitionsElement.Type[] types
+     */
+    @DataProvider( name="DATA.oval.repository.query_params.definitions_element" )
+    public Object[][] provideRepositoryQueryParamsOvalDefDefinitionsElement()
+    {
+        // common: order, count
+        DefinitionsElementQueryParams  params1 = new DefinitionsElementQueryParams();
+        params1.setType( DefinitionsElement.Type.TEST.value() );
+        params1.setOrder( "id" );
+        params1.setCount( "3" );
+
+        return new Object[][] {
+                        {
+                            params1,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
+        };
+    }
+
+
 
     /**
      * Definition.
@@ -316,6 +346,60 @@ extends OvalCoreTestBase
     //**************************************************************
     //  oval-def:element
     //**************************************************************
+
+    /**
+     * findElement(params), countElement(params)
+     */
+    @org.testng.annotations.Test(
+                    groups={
+                                    "MODEL.oval.def.element",
+                                    "PACKAGE.oval.core.repository.mongodb",
+                                    "CONTROL.oval.repository.findElementByQuery",
+                                    "CONTROL.oval.repository.countElementByQuery"
+                                    }
+                    ,dependsOnGroups={ "CONTROL.oval.repository.saveOvalDefinitions" }
+                    ,dataProvider="DATA.oval.repository.query_params.definitions_element"
+//                    ,alwaysRun=true
+                    )
+    public void testFindElementAndCountElementByQuery(
+                    final QueryParams               params,
+                    final DefinitionsElement.Type[] types
+                    )
+    throws Exception
+    {
+        Reporter.log( "\n//////////////////////////////////////////////////////////", true );
+        Reporter.log( ">>> findElement(params)...", true );
+        Reporter.log( "  * params: " + params, true );
+
+        List<DefinitionsElement>  element_list = _getDefinitionRepository().findElement( params );
+        Reporter.log( "<<< ...findElement(params)", true );
+        Assert.assertNotNull( element_list );
+        Reporter.log( "  @ #Elements: " + element_list.size(), true );
+        _printOvalIds( element_list );
+
+        if (element_list.size() > 0) {
+            Collection<DefinitionsElement.Type>  type_set = Arrays.asList( types );
+            for (DefinitionsElement  e : element_list) {
+                Assert.assertTrue( type_set.contains( e.ovalGetElementType() ) );
+            }
+        }
+
+
+        String  count_param = params.get( CommonQueryParams.Key.COUNT );
+        //If the "count" param is specified, finxXxx() methods returns at most "count" objects.
+        //The countXxx() method ignore the "count" param.
+        //And then, the number of results does not equal to the number returned from the countXxx() methods.
+        if (count_param == null) {
+            Reporter.log( ">>> countElement(params)...", true );
+            long  count = _getDefinitionRepository().countElement( params );
+            Reporter.log( "<<< ...countElement(params)", true );
+            Reporter.log( "  @ #Elements: " + count, true );
+
+            Assert.assertEquals( element_list.size(), count );
+        }
+    }
+
+
 
     //**************************************************************
     //  oval-def:definition

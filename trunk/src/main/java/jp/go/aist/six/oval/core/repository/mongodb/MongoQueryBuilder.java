@@ -500,13 +500,13 @@ implements QueryBuilder
      * f=x*,y
      * f=x*,y,z*
      */
-    protected static class ListPatternHandler
+    protected static class PatternListHandler
     extends Handler
     {
-        public static final ListPatternHandler INSTANCE = new ListPatternHandler();
+        public static final PatternListHandler INSTANCE = new PatternListHandler();
 
 
-        public ListPatternHandler()
+        public PatternListHandler()
         {
         }
 
@@ -604,9 +604,10 @@ implements QueryBuilder
     // DatetimeHandler
 
 
-    //==============================================================
+
+    ////////////////////////////////////////////////////////////////
     //  builders
-    //==============================================================
+    ////////////////////////////////////////////////////////////////
 
     public static class BasicBuilder
     extends MongoQueryBuilder
@@ -705,7 +706,7 @@ implements QueryBuilder
 
 
     /**
-     * QueryBuilder for the DefinitionsElement.
+     * DefinitionsElement.
      *
      * @author	Akihito Nakamura, AIST
      * @version $Id$
@@ -717,6 +718,9 @@ implements QueryBuilder
         protected static Map<String, String> _createFieldMapping()
         {
             Map<String, String>  mapping = new HashMap<String, String>();
+
+            //NOTE:
+            // DefinitionsElementQueryParams.Key.TYPE param is handled by the MongoOvalDefinitionRepository.
 
             mapping.put( DefinitionsElementQueryParams.Key.ID,          "oval_id" );
             mapping.put( DefinitionsElementQueryParams.Key.VERSION,     "oval_version" );
@@ -799,8 +803,8 @@ implements QueryBuilder
             Map<String, Handler>  mapping = BasicBuilder._createHandlers();
             mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
 
-            mapping.put( DefinitionsElementQueryParams.Key.ID,          HasAnyOfHandler.INSTANCE );
-//            mapping.put( DefinitionsElementQueryParams.Key.ID,          FilterHandler.INSTANCE );
+            mapping.put( DefinitionsElementQueryParams.Key.ID,          PatternListHandler.INSTANCE );
+//            mapping.put( DefinitionsElementQueryParams.Key.ID,          HasAnyOfHandler.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.VERSION,     version_handler );
             mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,      FilterHandler.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      family_handler );
@@ -918,7 +922,7 @@ implements QueryBuilder
             mapping.put( DefinitionQueryParams.Key.PRODUCT,             HasAnyOfHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.REF_SOURCE,          FilterHandler.INSTANCE );
             mapping.put( DefinitionQueryParams.Key.REF_ID,              FilterHandler.INSTANCE );
-            mapping.put( DefinitionQueryParams.Key.CVE,                 ListPatternHandler.INSTANCE );
+            mapping.put( DefinitionQueryParams.Key.CVE,                 PatternListHandler.INSTANCE );
             // Overrides.
             mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      family_handler );
 
@@ -1055,11 +1059,11 @@ implements QueryBuilder
             //common
 //            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
             //sc
-            mapping.put( OvalSystemCharacteristicsQueryParams.Key.HOST,         ListPatternHandler.INSTANCE );
-            mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS,           ListPatternHandler.INSTANCE );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.HOST,         PatternListHandler.INSTANCE );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS,           PatternListHandler.INSTANCE );
             mapping.put( OvalSystemCharacteristicsQueryParams.Key.OS_VERSION,   FilterHandler.INSTANCE );
-            mapping.put( OvalSystemCharacteristicsQueryParams.Key.IP,           ListPatternHandler.INSTANCE );
-            mapping.put( OvalSystemCharacteristicsQueryParams.Key.MAC,          ListPatternHandler.INSTANCE );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.IP,           PatternListHandler.INSTANCE );
+            mapping.put( OvalSystemCharacteristicsQueryParams.Key.MAC,          PatternListHandler.INSTANCE );
 
             return mapping;
         }
