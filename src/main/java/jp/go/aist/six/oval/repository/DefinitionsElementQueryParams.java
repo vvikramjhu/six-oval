@@ -21,7 +21,6 @@
 package jp.go.aist.six.oval.repository;
 
 import jp.go.aist.six.oval.model.Component;
-import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 
 
@@ -144,9 +143,10 @@ public class DefinitionsElementQueryParams
                     final String family
                     )
     {
-        if (family != null) {
-            Family.fromValue( family );
-        }
+        //NOTE: list value!!!
+//        if (family != null) {
+//            Family.fromValue( family );
+//        }
 
         set( Key.FAMILY, family );
     }
