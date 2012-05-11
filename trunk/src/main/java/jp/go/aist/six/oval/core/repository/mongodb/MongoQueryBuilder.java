@@ -348,6 +348,43 @@ implements QueryBuilder
 
 
 
+    protected static class IntegerHandler
+    extends Handler
+    {
+        public static final IntegerHandler  INSTANCE = new IntegerHandler();
+
+
+        public IntegerHandler()
+        {
+        }
+
+
+        @Override
+        public void build(
+                        final Query<?> query,
+                        final String field,
+                        final String value
+                        )
+        {
+            if (value == null  ||  value.length() == 0) {
+                return;
+            }
+
+            char  operator = value.charAt( 0 );
+            if (operator == '>'  ||  operator == '<') {
+                Integer  int_value = Integer.valueOf( value.substring( 1 ) );
+                query.filter( field + " " + operator, int_value );
+            } else {
+                Integer  int_value = Integer.valueOf( value );
+                query.filter( field, int_value );
+            }
+        }
+
+    }
+    //Integer
+
+
+
     protected static class HasAnyOfHandler
     extends Handler
     {
@@ -742,23 +779,23 @@ implements QueryBuilder
 
         protected static Map<String, Handler> _createHandlers()
         {
-            Handler  version_handler = new Handler()
-            {
-                @Override
-                public void build(
-                                final Query<?> query,
-                                final String field,
-                                final String value
-                                )
-                {
-                    if (value == null  ||  value.length() == 0) {
-                        return;
-                    }
-
-                    Integer  version = Integer.valueOf( value );
-                    query.filter( field, version );
-                }
-            };
+//            Handler  version_handler = new Handler()
+//            {
+//                @Override
+//                public void build(
+//                                final Query<?> query,
+//                                final String field,
+//                                final String value
+//                                )
+//                {
+//                    if (value == null  ||  value.length() == 0) {
+//                        return;
+//                    }
+//
+//                    Integer  version = Integer.valueOf( value );
+//                    query.filter( field, version );
+//                }
+//            };
 
 
             Handler  component_handler = new Handler()
@@ -805,7 +842,8 @@ implements QueryBuilder
 
             mapping.put( DefinitionsElementQueryParams.Key.ID,          PatternListHandler.INSTANCE );
 //            mapping.put( DefinitionsElementQueryParams.Key.ID,          HasAnyOfHandler.INSTANCE );
-            mapping.put( DefinitionsElementQueryParams.Key.VERSION,     version_handler );
+            mapping.put( DefinitionsElementQueryParams.Key.VERSION,     IntegerHandler.INSTANCE );
+//            mapping.put( DefinitionsElementQueryParams.Key.VERSION,     version_handler );
             mapping.put( DefinitionsElementQueryParams.Key.SCHEMA,      FilterHandler.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.FAMILY,      family_handler );
             mapping.put( DefinitionsElementQueryParams.Key.COMPONENT,   component_handler );

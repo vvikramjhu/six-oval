@@ -75,15 +75,101 @@ extends OvalCoreTestBase
     @DataProvider( name="DATA.oval.repository.query_params.definitions_element" )
     public Object[][] provideRepositoryQueryParamsOvalDefDefinitionsElement()
     {
-        // common: order, count
-        DefinitionsElementQueryParams  params1 = new DefinitionsElementQueryParams();
-        params1.setType( DefinitionsElement.Type.TEST.value() );
-        params1.setOrder( "id" );
-        params1.setCount( "3" );
+        // order, count
+        DefinitionsElementQueryParams  params01 = new DefinitionsElementQueryParams();
+        params01.setType( DefinitionsElement.Type.TEST.value() );
+        params01.setOrder( "id" );
+        params01.setCount( "3" );
+
+
+        // OVAL ID (1) --- single
+        DefinitionsElementQueryParams  params21 = new DefinitionsElementQueryParams();
+//        params21.setType( DefinitionsElement.Type.TEST.value() );
+        params21.setOrder( "id" );
+        params21.setId( "oval:org.mitre.oval.test:tst:124" );
+
+        // OVAL ID (2) --- multiple
+        DefinitionsElementQueryParams  params22 = new DefinitionsElementQueryParams();
+        params22.setOrder( "id" );
+        params22.setId( "oval:org.mitre.oval.test:tst:124,oval:org.mitre.oval:tst:8775,oval:org.mitre.oval.test:tst:1180" );
+
+        // OVAL ID (3) --- multiple, mixed types
+        DefinitionsElementQueryParams  params23 = new DefinitionsElementQueryParams();
+        params23.setOrder( "id" );
+        params23.setId( "oval:org.mitre.oval.test:tst:124,oval:org.mitre.oval:obj:2156,oval:org.mitre.oval.test:ste:1002" );
+
+        // OVAL ID (4) --- multiple, mixed types
+        DefinitionsElementQueryParams  params24 = new DefinitionsElementQueryParams();
+        params24.setOrder( "id" );
+        params24.setId( "oval:org.mitre.oval.test:tst:124,oval:org.mitre.oval:obj:2156,oval:org.mitre.oval.test:ste:1002,oval:org.mitre.oval.test:def:889" );
+
+        // OVAL ID (5) --- wildcard
+        DefinitionsElementQueryParams  params25 = new DefinitionsElementQueryParams();
+        params25.setOrder( "id" );
+        params25.setId( "oval:org.mitre.oval.test:tst:9*" );
+
+        // OVAL ID (6) --- list, wildcard
+        DefinitionsElementQueryParams  params26 = new DefinitionsElementQueryParams();
+        params26.setOrder( "id" );
+        params26.setId( "oval:org.mitre.oval.test:tst:9*,oval:org.mitre.oval.test:ste:7*" );
+
+        // OVAL version, order
+        DefinitionsElementQueryParams  params31 = new DefinitionsElementQueryParams();
+        params31.setType( DefinitionsElement.Type.TEST.value() );
+        params31.setOrder( "id" );
+        params31.setVersion( ">1" );
+
 
         return new Object[][] {
                         {
-                            params1,
+                            params01,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
+                        ,
+                        {
+                            params21,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
+                        ,
+                        {
+                            params22,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
+                        ,
+                        {
+                            params23,
+                            new DefinitionsElement.Type[] {
+                                            DefinitionsElement.Type.TEST,
+                                            DefinitionsElement.Type.OBJECT,
+                                            DefinitionsElement.Type.STATE
+                                            }
+                        }
+                        ,
+                        {
+                            params24,
+                            new DefinitionsElement.Type[] {
+                                            DefinitionsElement.Type.TEST,
+                                            DefinitionsElement.Type.OBJECT,
+                                            DefinitionsElement.Type.STATE,
+                                            DefinitionsElement.Type.DEFINITION
+                                            }
+                        }
+                        ,
+                        {
+                            params25,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
+                        ,
+                        {
+                            params26,
+                            new DefinitionsElement.Type[] {
+                                            DefinitionsElement.Type.TEST,
+                                            DefinitionsElement.Type.STATE
+                                            }
+                        }
+                        ,
+                        {
+                            params31,
                             new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
                         }
         };
