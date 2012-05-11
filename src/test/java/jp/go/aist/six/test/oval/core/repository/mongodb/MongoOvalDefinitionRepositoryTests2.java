@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import jp.go.aist.six.oval.core.repository.mongodb.MongoOvalDefinitionRepository;
+import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.Family;
 import jp.go.aist.six.oval.model.common.ClassEnumeration;
 import jp.go.aist.six.oval.model.definitions.DefinitionType;
@@ -133,6 +134,19 @@ extends OvalCoreTestBase
         params42.setFamily( Family.LINUX.value() + "," + Family.UNIX.value() );
 
 
+        // component (1) --- single
+        DefinitionsElementQueryParams  params51 = new DefinitionsElementQueryParams();
+        params51.setType( DefinitionsElement.Type.TEST.value() );
+        params51.setOrder( "id" );
+        params51.setComponent( Component.FAMILY.value() );
+
+        // family (2) --- list
+        DefinitionsElementQueryParams  params52 = new DefinitionsElementQueryParams();
+        params52.setType( DefinitionsElement.Type.TEST.value() );
+        params52.setOrder( "id" );
+        params52.setComponent( Component.FILE.value() + "," + Component.FAMILY.value() );
+
+
         return new Object[][] {
                         {
                             params01,
@@ -193,6 +207,16 @@ extends OvalCoreTestBase
                         ,
                         {
                             params42,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
+                        ,
+                        {
+                            params51,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
+                        ,
+                        {
+                            params52,
                             new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
                         }
         };

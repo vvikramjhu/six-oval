@@ -792,9 +792,19 @@ implements QueryBuilder
                         return;
                     }
 
-                    Component  component = Component.fromValue( value );
-//                    _LOG_.debug( "component type handler: value=" + value + ", component=" + component );
-                    query.filter( field, component );
+                    //TODO: create method isList( value )
+                    if (value.contains( LIST_DELIMITER )) {
+                        String[]  value_elem = value.split( LIST_DELIMITER );
+                        int  size = value_elem.length;
+                        Component[]  component_list = new Component[size];
+                        for (int  i = 0; i < size; i++) {
+                            component_list[i] = Component.fromValue( value_elem[i] );
+                        }
+                        query.filter( field + " in", component_list );
+                    } else {
+                        Component  component = Component.fromValue( value );
+                        query.filter( field, component );
+                    }
                 }
             };
 
@@ -825,7 +835,6 @@ implements QueryBuilder
                         Family  family = Family.fromValue( value );
                         query.filter( field, family );
                     }
-
                 }
             };
 

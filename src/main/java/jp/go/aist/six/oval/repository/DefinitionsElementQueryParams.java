@@ -20,7 +20,6 @@
 
 package jp.go.aist.six.oval.repository;
 
-import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 
 
@@ -165,10 +164,9 @@ public class DefinitionsElementQueryParams
                     final String component
                     )
     {
-        if (component != null) {
-            Component.fromValue( component );
-//            OvalComponentType.valueOf( component );
-        }
+//        if (component != null) {
+//            Component.fromValue( component );
+//        }
 
         set( Key.COMPONENT, component );
     }
