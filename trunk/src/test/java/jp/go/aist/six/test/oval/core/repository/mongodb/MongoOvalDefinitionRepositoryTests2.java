@@ -120,6 +120,19 @@ extends OvalCoreTestBase
         params31.setVersion( ">1" );
 
 
+        // family (1) --- single
+        DefinitionsElementQueryParams  params41 = new DefinitionsElementQueryParams();
+        params41.setType( DefinitionsElement.Type.TEST.value() );
+        params41.setOrder( "id" );
+        params41.setFamily( Family.LINUX.value() );
+
+        // family (2) --- list
+        DefinitionsElementQueryParams  params42 = new DefinitionsElementQueryParams();
+        params42.setType( DefinitionsElement.Type.TEST.value() );
+        params42.setOrder( "id" );
+        params42.setFamily( Family.LINUX.value() + "," + Family.UNIX.value() );
+
+
         return new Object[][] {
                         {
                             params01,
@@ -170,6 +183,16 @@ extends OvalCoreTestBase
                         ,
                         {
                             params31,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
+                        ,
+                        {
+                            params41,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
+                        ,
+                        {
+                            params42,
                             new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
                         }
         };

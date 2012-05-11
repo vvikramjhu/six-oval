@@ -779,25 +779,6 @@ implements QueryBuilder
 
         protected static Map<String, Handler> _createHandlers()
         {
-//            Handler  version_handler = new Handler()
-//            {
-//                @Override
-//                public void build(
-//                                final Query<?> query,
-//                                final String field,
-//                                final String value
-//                                )
-//                {
-//                    if (value == null  ||  value.length() == 0) {
-//                        return;
-//                    }
-//
-//                    Integer  version = Integer.valueOf( value );
-//                    query.filter( field, version );
-//                }
-//            };
-
-
             Handler  component_handler = new Handler()
             {
                 @Override
@@ -831,8 +812,20 @@ implements QueryBuilder
                         return;
                     }
 
-                    Family  family = Family.fromValue( value );
-                    query.filter( field, family );
+                    //TODO: create method isList( value )
+                    if (value.contains( LIST_DELIMITER )) {
+                        String[]  value_elem = value.split( LIST_DELIMITER );
+                        int  size = value_elem.length;
+                        Family[]  family_list = new Family[size];
+                        for (int  i = 0; i < size; i++) {
+                            family_list[i] = Family.fromValue( value_elem[i] );
+                        }
+                        query.filter( field + " in", family_list );
+                    } else {
+                        Family  family = Family.fromValue( value );
+                        query.filter( field, family );
+                    }
+
                 }
             };
 
