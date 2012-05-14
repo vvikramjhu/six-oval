@@ -89,17 +89,29 @@ extends OvalCoreTestBase
         params02.setStartIndex( "3" );
         params02.setCount( "2" );
 
-        // searchTerms, order
+        // order, count
         DefinitionsElementQueryParams  params03 = new DefinitionsElementQueryParams();
-        params03.setType( DefinitionsElement.Type.STATE.value() );
-        params03.setOrder( "id" );
-        params03.setSearchTerms( "Validation" );
+        params03.setType( DefinitionsElement.Type.TEST.value() );
+        params03.setOrder( "-id" );
+        params03.setCount( "5" );
+
+        // order, count
+        DefinitionsElementQueryParams  params04 = new DefinitionsElementQueryParams();
+        params04.setType( DefinitionsElement.Type.TEST.value() );
+        params04.setOrder( "-version,-id" );
+        params04.setCount( "5" );
 
         // searchTerms, order
-        DefinitionsElementQueryParams  params04 = new DefinitionsElementQueryParams();
-        params04.setType( DefinitionsElement.Type.STATE.value() );
-        params04.setOrder( "id" );
-        params04.setSearchTerms( "Validation,security" );
+        DefinitionsElementQueryParams  params05 = new DefinitionsElementQueryParams();
+        params05.setType( DefinitionsElement.Type.STATE.value() );
+        params05.setOrder( "id" );
+        params05.setSearchTerms( "Validation" );
+
+        // searchTerms, order
+        DefinitionsElementQueryParams  params06 = new DefinitionsElementQueryParams();
+        params06.setType( DefinitionsElement.Type.STATE.value() );
+        params06.setOrder( "id" );
+        params06.setSearchTerms( "Validation,security" );
 
 
         // OVAL ID (1) --- single
@@ -167,91 +179,101 @@ extends OvalCoreTestBase
 
         return new Object[][] {
                         {
-                            params01,
+                            "01", params01,
                             new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
                         }
                         ,
                         {
-                            params02,
+                            "02", params02,
                             new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
                         }
                         ,
                         {
-                            params03,
+                            "03", params03,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
+                        ,
+                        {
+                            "04", params04,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
+                        ,
+                        {
+                            "05", params05,
                             new DefinitionsElement.Type[] { DefinitionsElement.Type.STATE }
                         }
                         ,
                         {
-                            params04,
+                            "06", params06,
                             new DefinitionsElement.Type[] { DefinitionsElement.Type.STATE }
                         }
-//                        ,
-//                        {
-//                            params21,
-//                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
-//                        }
-//                        ,
-//                        {
-//                            params22,
-//                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
-//                        }
-//                        ,
-//                        {
-//                            params23,
-//                            new DefinitionsElement.Type[] {
-//                                            DefinitionsElement.Type.TEST,
-//                                            DefinitionsElement.Type.OBJECT,
-//                                            DefinitionsElement.Type.STATE
-//                                            }
-//                        }
-//                        ,
-//                        {
-//                            params24,
-//                            new DefinitionsElement.Type[] {
-//                                            DefinitionsElement.Type.TEST,
-//                                            DefinitionsElement.Type.OBJECT,
-//                                            DefinitionsElement.Type.STATE,
-//                                            DefinitionsElement.Type.DEFINITION
-//                                            }
-//                        }
-//                        ,
-//                        {
-//                            params25,
-//                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
-//                        }
-//                        ,
-//                        {
-//                            params26,
-//                            new DefinitionsElement.Type[] {
-//                                            DefinitionsElement.Type.TEST,
-//                                            DefinitionsElement.Type.STATE
-//                                            }
-//                        }
-//                        ,
-//                        {
-//                            params31,
-//                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
-//                        }
-//                        ,
-//                        {
-//                            params41,
-//                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
-//                        }
-//                        ,
-//                        {
-//                            params42,
-//                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
-//                        }
-//                        ,
-//                        {
-//                            params51,
-//                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
-//                        }
-//                        ,
-//                        {
-//                            params52,
-//                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
-//                        }
+                        ,
+                        {
+                            "21", params21,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
+                        ,
+                        {
+                            "22", params22,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
+                        ,
+                        {
+                            "23", params23,
+                            new DefinitionsElement.Type[] {
+                                            DefinitionsElement.Type.TEST,
+                                            DefinitionsElement.Type.OBJECT,
+                                            DefinitionsElement.Type.STATE
+                                            }
+                        }
+                        ,
+                        {
+                            "24", params24,
+                            new DefinitionsElement.Type[] {
+                                            DefinitionsElement.Type.TEST,
+                                            DefinitionsElement.Type.OBJECT,
+                                            DefinitionsElement.Type.STATE,
+                                            DefinitionsElement.Type.DEFINITION
+                                            }
+                        }
+                        ,
+                        {
+                            "25", params25,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
+                        ,
+                        {
+                            "26", params26,
+                            new DefinitionsElement.Type[] {
+                                            DefinitionsElement.Type.TEST,
+                                            DefinitionsElement.Type.STATE
+                                            }
+                        }
+                        ,
+                        {
+                            "31", params31,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
+                        ,
+                        {
+                            "41", params41,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
+                        ,
+                        {
+                            "42", params42,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
+                        ,
+                        {
+                            "51", params51,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
+                        ,
+                        {
+                            "52", params52,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                        }
         };
     }
 
@@ -528,12 +550,13 @@ extends OvalCoreTestBase
 //                    ,alwaysRun=true
                     )
     public void testFindElementAndCountElementByQuery(
+                    final String                    dataId,
                     final QueryParams               params,
                     final DefinitionsElement.Type[] types
                     )
     throws Exception
     {
-        Reporter.log( "\n//////////////////////////////////////////////////////////", true );
+        Reporter.log( "\n" + dataId + " //////////////////////////////////////////////////////////", true );
         Reporter.log( ">>> findElement(params)...", true );
         Reporter.log( "  * params: " + params, true );
 
