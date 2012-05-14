@@ -82,10 +82,28 @@ extends OvalCoreTestBase
         params01.setOrder( "id" );
         params01.setCount( "3" );
 
+        // order, count, starIndex
+        DefinitionsElementQueryParams  params02 = new DefinitionsElementQueryParams();
+        params02.setType( DefinitionsElement.Type.TEST.value() );
+        params02.setOrder( "id" );
+        params02.setStartIndex( "3" );
+        params02.setCount( "2" );
+
+        // searchTerms, order
+        DefinitionsElementQueryParams  params03 = new DefinitionsElementQueryParams();
+        params03.setType( DefinitionsElement.Type.STATE.value() );
+        params03.setOrder( "id" );
+        params03.setSearchTerms( "Validation" );
+
+        // searchTerms, order
+        DefinitionsElementQueryParams  params04 = new DefinitionsElementQueryParams();
+        params04.setType( DefinitionsElement.Type.STATE.value() );
+        params04.setOrder( "id" );
+        params04.setSearchTerms( "Validation,security" );
+
 
         // OVAL ID (1) --- single
         DefinitionsElementQueryParams  params21 = new DefinitionsElementQueryParams();
-//        params21.setType( DefinitionsElement.Type.TEST.value() );
         params21.setOrder( "id" );
         params21.setId( "oval:org.mitre.oval.test:tst:124" );
 
@@ -154,71 +172,86 @@ extends OvalCoreTestBase
                         }
                         ,
                         {
-                            params21,
+                            params02,
                             new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
                         }
                         ,
                         {
-                            params22,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+                            params03,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.STATE }
                         }
                         ,
                         {
-                            params23,
-                            new DefinitionsElement.Type[] {
-                                            DefinitionsElement.Type.TEST,
-                                            DefinitionsElement.Type.OBJECT,
-                                            DefinitionsElement.Type.STATE
-                                            }
+                            params04,
+                            new DefinitionsElement.Type[] { DefinitionsElement.Type.STATE }
                         }
-                        ,
-                        {
-                            params24,
-                            new DefinitionsElement.Type[] {
-                                            DefinitionsElement.Type.TEST,
-                                            DefinitionsElement.Type.OBJECT,
-                                            DefinitionsElement.Type.STATE,
-                                            DefinitionsElement.Type.DEFINITION
-                                            }
-                        }
-                        ,
-                        {
-                            params25,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
-                        }
-                        ,
-                        {
-                            params26,
-                            new DefinitionsElement.Type[] {
-                                            DefinitionsElement.Type.TEST,
-                                            DefinitionsElement.Type.STATE
-                                            }
-                        }
-                        ,
-                        {
-                            params31,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
-                        }
-                        ,
-                        {
-                            params41,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
-                        }
-                        ,
-                        {
-                            params42,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
-                        }
-                        ,
-                        {
-                            params51,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
-                        }
-                        ,
-                        {
-                            params52,
-                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
-                        }
+//                        ,
+//                        {
+//                            params21,
+//                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+//                        }
+//                        ,
+//                        {
+//                            params22,
+//                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+//                        }
+//                        ,
+//                        {
+//                            params23,
+//                            new DefinitionsElement.Type[] {
+//                                            DefinitionsElement.Type.TEST,
+//                                            DefinitionsElement.Type.OBJECT,
+//                                            DefinitionsElement.Type.STATE
+//                                            }
+//                        }
+//                        ,
+//                        {
+//                            params24,
+//                            new DefinitionsElement.Type[] {
+//                                            DefinitionsElement.Type.TEST,
+//                                            DefinitionsElement.Type.OBJECT,
+//                                            DefinitionsElement.Type.STATE,
+//                                            DefinitionsElement.Type.DEFINITION
+//                                            }
+//                        }
+//                        ,
+//                        {
+//                            params25,
+//                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+//                        }
+//                        ,
+//                        {
+//                            params26,
+//                            new DefinitionsElement.Type[] {
+//                                            DefinitionsElement.Type.TEST,
+//                                            DefinitionsElement.Type.STATE
+//                                            }
+//                        }
+//                        ,
+//                        {
+//                            params31,
+//                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+//                        }
+//                        ,
+//                        {
+//                            params41,
+//                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+//                        }
+//                        ,
+//                        {
+//                            params42,
+//                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+//                        }
+//                        ,
+//                        {
+//                            params51,
+//                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+//                        }
+//                        ,
+//                        {
+//                            params52,
+//                            new DefinitionsElement.Type[] { DefinitionsElement.Type.TEST }
+//                        }
         };
     }
 

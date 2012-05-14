@@ -530,6 +530,84 @@ implements QueryBuilder
 
 
 
+    protected static class SearchTermHandler
+    extends Handler
+    {
+        public static final SearchTermHandler  INSTANCE = new SearchTermHandler();
+
+
+        public SearchTermHandler()
+        {
+        }
+
+
+        @Override
+        public void build(
+                        final Query<?> query,
+                        final String field,
+                        final String value
+                        )
+        {
+            if (value == null  ||  value.length() == 0) {
+                return;
+            }
+
+            String[] field_elem = (field.contains( LIST_DELIMITER ) ? field.split( LIST_DELIMITER )
+                            : (new String[] { field }));
+            int  num_field_elem = field_elem.length;
+
+            // prepare patterns
+            String[] value_elem = (value.contains( LIST_DELIMITER ) ? value.split( LIST_DELIMITER )
+                            : (new String[] { value }));
+            int  num_value_elem = value_elem.length;
+            Pattern[]  pattern = new Pattern[num_value_elem];
+            for (int  j = 0; j < num_value_elem; j++) {
+                pattern[j] = Pattern.compile( ".*" + value_elem[j] + ".*", Pattern.CASE_INSENSITIVE );
+            }
+
+
+            if (num_field_elem > 1) {
+                if (num_value_elem > 1) {
+                    //f1,f2,...=v1,v2,...
+                    int  num_criteria = num_field_elem * num_value_elem;
+                    Criteria[]  criteria = new Criteria[num_criteria];
+                    for (int  i = 0; i < num_field_elem; i++) {
+                        for (int  j = 0; j < num_field_elem; j++) {
+                            int  index = i * j + j;
+                            criteria[index] = query.criteria( field_elem[i] ).equal( pattern[j] );
+                        }
+                    }
+                    query.or( criteria );
+                } else {
+                    //f1,f2,...=v1
+                    int  num_criteria = num_field_elem;
+                    Criteria[]  criteria = new Criteria[num_criteria];
+                    for (int  i = 0; i < num_field_elem; i++) {
+                        criteria[i] = query.criteria( field_elem[i] ).equal( pattern[0] );
+                    }
+                    query.or( criteria );
+                }
+
+            } else {
+                if (num_value_elem > 1) {
+                    //f1=v1,v2,...
+                    int  num_criteria = num_value_elem;
+                    Criteria[]  criteria = new Criteria[num_criteria];
+                    for (int  j = 0; j < num_value_elem; j++) {
+                        criteria[j] = query.criteria( field ).equal( pattern[j] );
+                    }
+                    query.or( criteria );
+                } else {
+                    //f1=v1
+                    query.criteria( field ).equal( pattern[0] );
+                }
+            }
+        }
+    }
+    // SearchTermHandler
+
+
+
     /**
      * f=a
      * f=a,b,c
@@ -840,7 +918,8 @@ implements QueryBuilder
 
 
             Map<String, Handler>  mapping = BasicBuilder._createHandlers();
-            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
+            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            SearchTermHandler.INSTANCE );
+//            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
 
             mapping.put( DefinitionsElementQueryParams.Key.ID,          PatternListHandler.INSTANCE );
 //            mapping.put( DefinitionsElementQueryParams.Key.ID,          HasAnyOfHandler.INSTANCE );
@@ -955,7 +1034,9 @@ implements QueryBuilder
 
             Map<String, Handler>  mapping = DefinitionsElementBuilder._createHandlers();
             //common
-            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
+            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            SearchTermHandler.INSTANCE );
+//            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
+
             //definition
             mapping.put( DefinitionQueryParams.Key.DEFINITION_CLASS,    class_handler );
             mapping.put( DefinitionQueryParams.Key.PLATFORM,            HasAnyOfHandler.INSTANCE );
