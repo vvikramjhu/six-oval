@@ -88,7 +88,7 @@ implements QueryBuilder
             return (new OvalResultsBuilder( params ));
         }
 
-        return (new BasicBuilder( params ));
+        return (new CommonBuilder( params ));
     }
 
 
@@ -200,7 +200,8 @@ implements QueryBuilder
                     )
     {
         StringBuilder  s = new StringBuilder();
-        String[]  keys = ordering.split( "," );
+        String[]  keys = _asList( ordering );
+//        String[]  keys = ordering.split( "," );
         for (String  key : keys) {
             if (s.length() > 0) {
                 s.append( "," );
@@ -217,6 +218,80 @@ implements QueryBuilder
         return s.toString();
     }
 
+
+
+    ////////////////////////////////////////////////////////////////
+    //  utility functions
+    ////////////////////////////////////////////////////////////////
+
+    /**
+     * "aaa,b*,cc" --> new String[] { "aaa", "b*", "cc" }
+     * null or ""  --> new String[0]
+     */
+    protected static String[] _asList(
+                    final String value
+                    )
+    {
+        if (value == null  ||  value.length() == 0) {
+            return (new String[0]);
+        }
+
+        return (value.contains( LIST_DELIMITER ) ? value.split( LIST_DELIMITER ) : (new String[] { value }));
+    }
+
+
+//TODO:
+//    protected static <T extends OvalEnumeration> T[] _asList(
+//                    final Class<T> type,
+//                    final String value
+//                    )
+//    {
+//        .....
+//    }
+
+
+    protected static boolean _isList(
+                    final String value
+                    )
+    {
+        if (value == null  ||  value.length() == 0) {
+            return false;
+        }
+
+        return value.contains( LIST_DELIMITER );
+    }
+
+
+
+    protected static boolean _isEmpty(
+                    final String s
+                    )
+    {
+        return (s == null  ||  s.length() == 0);
+    }
+
+
+
+    protected static boolean _isPattern(
+                    final String s
+                    )
+    {
+        return (_isEmpty( s ) ? false : s.contains( WILD_CARD ));
+    }
+
+
+    protected static Object _asMatchingObject(
+                    final String s
+                    )
+    {
+        if (!_isPattern( s )) {
+            return s;
+        }
+
+        String  regex = s.replace( ".", "\\." );
+        regex = s.replace( WILD_CARD, _INTERNAL_WILD_CARD_ );
+        return Pattern.compile( regex, Pattern.CASE_INSENSITIVE );
+    }
 
 
 
@@ -332,7 +407,7 @@ implements QueryBuilder
                         final String value
                         )
         {
-            if (value == null  ||  value.length() == 0) {
+            if (_isEmpty( value )) {
                 return;
             }
 
@@ -366,7 +441,7 @@ implements QueryBuilder
                         final String value
                         )
         {
-            if (value == null  ||  value.length() == 0) {
+            if (_isEmpty( value )) {
                 return;
             }
 
@@ -403,13 +478,14 @@ implements QueryBuilder
                         final String value
                         )
         {
-            if (value == null  ||  value.length() == 0) {
+            if (_isEmpty( value )) {
                 return;
             }
 
-            String[]  elements = value.split( LIST_DELIMITER );
-            if (elements.length > 1) {
-                query.filter( field + " in", elements );
+            String[]  value_elements = _asList( value );
+//            String[]  value_elements = value.split( LIST_DELIMITER );
+            if (value_elements.length > 1) {
+                query.filter( field + " in", value_elements );
             } else {
                 query.filter( field, value );
             }
@@ -465,7 +541,7 @@ implements QueryBuilder
                         final String value
                         )
         {
-            if (value == null  ||  value.length() == 0) {
+            if (_isEmpty( value )) {
                 return;
             }
 
@@ -499,15 +575,16 @@ implements QueryBuilder
                         final String value
                         )
         {
-            if (value == null  ||  value.length() == 0) {
+            if (_isEmpty( value )) {
                 return;
             }
 
 
             Pattern  pattern = Pattern.compile( ".*" + value + ".*", Pattern.CASE_INSENSITIVE );
-            if (field.contains( "," )) {
+            if (_isList( field )) {
                 // e.g. title,comment = ".*buffer overflow.*"
-                String[]  fs = field.split( "," );
+                String[]  fs = _asList( field );
+//                String[]  fs = field.split( "," );
                 int  size = fs.length;
                 Criteria[]  criteria = new Criteria[size];
                 for (int  i = 0; i < size; i++) {
@@ -515,14 +592,8 @@ implements QueryBuilder
                 }
                 query.or( criteria );
             } else {
-
-//                Pattern  pattern = Pattern.compile( ".*" + value + ".*", Pattern.CASE_INSENSITIVE );
                 query.criteria( field ).equal( pattern );
             }
-
-            //backup
-//            Pattern  pattern = Pattern.compile( ".*" + value + ".*", Pattern.CASE_INSENSITIVE );
-//            query.filter( field, pattern );
         }
 
     }
@@ -548,17 +619,19 @@ implements QueryBuilder
                         final String value
                         )
         {
-            if (value == null  ||  value.length() == 0) {
+            if (_isEmpty( value )) {
                 return;
             }
 
-            String[] field_elem = (field.contains( LIST_DELIMITER ) ? field.split( LIST_DELIMITER )
-                            : (new String[] { field }));
+            String[] field_elem = _asList( field );
+//            String[] field_elem = (field.contains( LIST_DELIMITER ) ? field.split( LIST_DELIMITER )
+//                            : (new String[] { field }));
             int  num_field_elem = field_elem.length;
 
             // prepare patterns
-            String[] value_elem = (value.contains( LIST_DELIMITER ) ? value.split( LIST_DELIMITER )
-                            : (new String[] { value }));
+            String[] value_elem = _asList( value );
+//            String[] value_elem = (value.contains( LIST_DELIMITER ) ? value.split( LIST_DELIMITER )
+//                            : (new String[] { value }));
             int  num_value_elem = value_elem.length;
             Pattern[]  pattern = new Pattern[num_value_elem];
             for (int  j = 0; j < num_value_elem; j++) {
@@ -633,13 +706,11 @@ implements QueryBuilder
                         final String value
                         )
         {
-            if (value == null  ||  value.length() == 0) {
+            if (_isEmpty( value )) {
                 return;
             }
 
-            String[]  value_elem = (value.contains( LIST_DELIMITER )
-                                            ? value.split( LIST_DELIMITER )
-                                            : (new String[] { value }));
+            String[]  value_elem = _asList( value );
             int  num_value_elem = value_elem.length;
             boolean  wild_card_contained = value.contains( WILD_CARD );
 
@@ -678,7 +749,7 @@ implements QueryBuilder
             }
         }
     }
-    //ListPatternHandler
+    //PatternList
 
 
 
@@ -702,7 +773,7 @@ implements QueryBuilder
                         final String value
                         )
         {
-            if (value == null  ||  value.length() == 0) {
+            if (_isEmpty( value )) {
                 return;
             }
 
@@ -724,7 +795,7 @@ implements QueryBuilder
     //  builders
     ////////////////////////////////////////////////////////////////
 
-    public static class BasicBuilder
+    public static class CommonBuilder
     extends MongoQueryBuilder
     {
 
@@ -748,7 +819,7 @@ implements QueryBuilder
                                 final String value
                                 )
                 {
-                    if (value == null  ||  value.length() == 0) {
+                    if (_isEmpty( value )) {
                         return;
                     }
 
@@ -767,7 +838,7 @@ implements QueryBuilder
                                 final String value
                                 )
                 {
-                    if (value == null  ||  value.length() == 0) {
+                    if (_isEmpty( value )) {
                         return;
                     }
 
@@ -793,7 +864,7 @@ implements QueryBuilder
 
 
 
-        public BasicBuilder(
+        public CommonBuilder(
                         final QueryParams params
                         )
         {
@@ -816,7 +887,7 @@ implements QueryBuilder
         }
 
     }
-    //BasicBuilder
+    //Common
 
 
 
@@ -827,7 +898,7 @@ implements QueryBuilder
      * @version $Id$
      */
     public static class DefinitionsElementBuilder
-    extends BasicBuilder
+    extends CommonBuilder
     {
 
         protected static Map<String, String> _createFieldMapping()
@@ -866,13 +937,12 @@ implements QueryBuilder
                                 final String value
                                 )
                 {
-                    if (value == null  ||  value.length() == 0) {
+                    if (_isEmpty( value )) {
                         return;
                     }
 
-                    //TODO: create method isList( value )
-                    if (value.contains( LIST_DELIMITER )) {
-                        String[]  value_elem = value.split( LIST_DELIMITER );
+                    if (_isList( value )) {
+                        String[]  value_elem = _asList( value );
                         int  size = value_elem.length;
                         Component[]  component_list = new Component[size];
                         for (int  i = 0; i < size; i++) {
@@ -883,6 +953,19 @@ implements QueryBuilder
                         Component  component = Component.fromValue( value );
                         query.filter( field, component );
                     }
+//backup
+//                    if (value.contains( LIST_DELIMITER )) {
+//                        String[]  value_elem = value.split( LIST_DELIMITER );
+//                        int  size = value_elem.length;
+//                        Component[]  component_list = new Component[size];
+//                        for (int  i = 0; i < size; i++) {
+//                            component_list[i] = Component.fromValue( value_elem[i] );
+//                        }
+//                        query.filter( field + " in", component_list );
+//                    } else {
+//                        Component  component = Component.fromValue( value );
+//                        query.filter( field, component );
+//                    }
                 }
             };
 
@@ -896,13 +979,12 @@ implements QueryBuilder
                                 final String value
                                 )
                 {
-                    if (value == null  ||  value.length() == 0) {
+                    if (_isEmpty( value )) {
                         return;
                     }
 
-                    //TODO: create method isList( value )
-                    if (value.contains( LIST_DELIMITER )) {
-                        String[]  value_elem = value.split( LIST_DELIMITER );
+                    if (_isList( value )) {
+                        String[]  value_elem = _asList( value );
                         int  size = value_elem.length;
                         Family[]  family_list = new Family[size];
                         for (int  i = 0; i < size; i++) {
@@ -917,10 +999,11 @@ implements QueryBuilder
             };
 
 
-            Map<String, Handler>  mapping = BasicBuilder._createHandlers();
+            Map<String, Handler>  mapping = CommonBuilder._createHandlers();
             mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            SearchTermHandler.INSTANCE );
 //            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
 
+            //definitions element
             mapping.put( DefinitionsElementQueryParams.Key.ID,          PatternListHandler.INSTANCE );
 //            mapping.put( DefinitionsElementQueryParams.Key.ID,          HasAnyOfHandler.INSTANCE );
             mapping.put( DefinitionsElementQueryParams.Key.VERSION,     IntegerHandler.INSTANCE );
@@ -964,6 +1047,9 @@ implements QueryBuilder
 
 
 
+    /**
+     * Definition.
+     */
     public static class DefinitionBuilder
     extends DefinitionsElementBuilder
     {
@@ -1003,7 +1089,7 @@ implements QueryBuilder
                                 final String value
                                 )
                 {
-                    if (value == null  ||  value.length() == 0) {
+                    if (_isEmpty( value )) {
                         return;
                     }
 
@@ -1022,7 +1108,7 @@ implements QueryBuilder
                                 final String value
                                 )
                 {
-                    if (value == null  ||  value.length() == 0) {
+                    if (_isEmpty( value )) {
                         return;
                     }
 
@@ -1146,7 +1232,7 @@ implements QueryBuilder
     /**
      */
     public static class OvalSystemCharacteristicsBuilder
-    extends BasicBuilder
+    extends CommonBuilder
     {
 
         protected static Map<String, String> _createFieldMapping()
@@ -1176,7 +1262,7 @@ implements QueryBuilder
 //        }
         protected static Map<String, Handler> _createHandlers()
         {
-            Map<String, Handler>  mapping = BasicBuilder._createHandlers();
+            Map<String, Handler>  mapping = CommonBuilder._createHandlers();
             //common
 //            mapping.put( CommonQueryParams.Key.SEARCH_TERMS,            PatternHandler.INSTANCE );
             //sc
@@ -1226,7 +1312,7 @@ implements QueryBuilder
     /**
      */
     public static class OvalResultsBuilder
-    extends BasicBuilder
+    extends CommonBuilder
     {
 
         protected static Map<String, String> _createFieldMapping()
@@ -1260,12 +1346,12 @@ implements QueryBuilder
                                 final String value  //def's oval_id
                                 )
                 {
-                    if (value == null  ||  value.length() == 0) {
+                    if (_isEmpty( value )) {
                         return;
                     }
 
-                    if (value.contains( LIST_DELIMITER )) {
-                        String[]  value_elem = value.split( LIST_DELIMITER );
+                    if (_isList( value )) {
+                        String[]  value_elem = _asList( value );
                         int  num_value_elem = value_elem.length;
                         Criteria[]  criteria = new Criteria[num_value_elem];
                         for (int  i = 0; i < num_value_elem; i++) {

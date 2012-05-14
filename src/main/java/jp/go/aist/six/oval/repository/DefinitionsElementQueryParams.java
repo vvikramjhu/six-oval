@@ -20,6 +20,7 @@
 
 package jp.go.aist.six.oval.repository;
 
+import jp.go.aist.six.oval.model.Component;
 import jp.go.aist.six.oval.model.definitions.DefinitionsElement;
 
 
@@ -169,6 +170,44 @@ public class DefinitionsElementQueryParams
 //        }
 
         set( Key.COMPONENT, component );
+    }
+
+
+    public void setComponent(
+                    final Component component
+                    )
+    {
+//        if (component != null) {
+//            Component.fromValue( component );
+//        }
+
+        if (component == null) {
+            setComponent( (String)null );
+        } else {
+            setComponent( component.value() );
+        }
+    }
+
+
+    public void setComponent(
+                    final Component[] component_list
+                    )
+    {
+
+        if (component_list == null  ||  component_list.length == 0) {
+            setComponent( (String)null );
+        } else {
+            StringBuffer  s = new StringBuffer();
+            for (Component  c : component_list) {
+                if (c != null) {
+                    if (s.length() > 0) {
+                        s.append( LIST_DELIMITER );
+                    }
+                    s.append( c.value() );
+                }
+            }
+            setComponent( s.toString() );
+        }
     }
 
 
